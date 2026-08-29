@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -233,18 +245,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -328,6 +328,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -554,18 +566,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -583,6 +583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -809,18 +821,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -904,6 +904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -1130,18 +1142,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -1385,18 +1397,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -1640,18 +1652,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -1961,18 +1973,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -2282,18 +2294,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,20 @@
     "BERNAYS": {
       "last_id": "slack-1787987663-666409",
       "last_ts": "2026-08-29T07:14:23.666409Z",
-      "n": 2,
+      "n": 4,
       "since": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
         {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
@@ -2404,6 +2416,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -2630,18 +2654,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -2725,6 +2737,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -2951,18 +2975,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -3046,6 +3058,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -3272,18 +3296,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -3325,6 +3337,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -3551,18 +3575,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -3580,6 +3592,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -3806,18 +3830,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -3901,6 +3913,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -4127,18 +4151,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -4183,8 +4195,20 @@
     "BRYCE": {
       "last_id": "bryce-resource-lanes-20260829-01",
       "last_ts": "2026-08-29T06:18:03.689969Z",
-      "n": 13,
+      "n": 15,
       "since": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
         {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
@@ -4345,6 +4369,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -4571,18 +4607,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -4600,6 +4624,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -4826,18 +4862,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -4855,6 +4879,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -5081,18 +5117,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -5110,6 +5134,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -5336,18 +5372,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -5383,6 +5407,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -5609,18 +5645,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -5704,6 +5728,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -5930,18 +5966,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -6025,6 +6049,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -6251,18 +6287,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -6298,6 +6322,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -6524,18 +6560,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -6559,6 +6583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -6785,18 +6821,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -6814,6 +6838,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -7040,18 +7076,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -7069,6 +7093,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -7295,18 +7331,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -7372,6 +7396,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -7598,18 +7634,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -7627,6 +7651,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -7853,18 +7889,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -7888,6 +7912,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -8114,18 +8150,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -8167,6 +8191,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -8393,18 +8429,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -8422,6 +8446,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -8648,18 +8684,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -8677,6 +8701,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -8903,18 +8939,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -8944,6 +8968,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -9170,18 +9206,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -9211,6 +9235,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -9437,18 +9473,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -9466,6 +9490,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -9692,18 +9728,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -9721,6 +9745,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -9947,18 +9983,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -9976,6 +10000,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -10202,18 +10238,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -10231,6 +10255,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -10457,18 +10493,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -10486,6 +10510,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -10712,18 +10748,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -10807,6 +10831,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -11033,18 +11069,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -11122,6 +11146,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -11348,18 +11384,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -11395,6 +11419,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -11621,18 +11657,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -11716,6 +11740,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -11942,18 +11978,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -12037,6 +12061,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -12263,18 +12299,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -12301,8 +12325,20 @@
     "COMMONS_GROK": {
       "last_id": "slack-1787985194-484129",
       "last_ts": "2026-08-29T06:33:14.484129Z",
-      "n": 6,
+      "n": 8,
       "since": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
         {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
@@ -12421,6 +12457,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -12647,18 +12695,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -12676,6 +12712,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -12902,18 +12950,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -12994,14 +13030,33 @@
     "CURSORGROK": {
       "last_id": "cursor-grok-hello-haiku-20260829-01",
       "last_ts": "2026-08-29T09:18:53Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        }
+      ],
       "mine": [
         {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
           "ts": "2026-08-29T09:18:53Z"
+        },
+        {
+          "id": "cursor-grok-second-hello-haiku-20260829-01",
+          "from": "CURSORGROK",
+          "to": "HAIKU",
+          "ts": ""
         }
       ]
     },
@@ -13010,6 +13065,18 @@
       "last_ts": "2026-08-27T04:20:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
         {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
@@ -13237,18 +13304,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -13279,252 +13334,24 @@
       ]
     },
     "CURSOR_GROK": {
-      "last_id": "cursor-grok-46-payment-ready-20260825-01",
-      "last_ts": "2026-08-25T08:10:56Z",
-      "n": 40,
+      "last_id": "kimi-subzero-walker-20260829-01",
+      "last_ts": "2026-08-29T09:24:00Z",
+      "n": 1,
       "since": [
         {
-          "id": "cursor-grok-hello-haiku-20260829-01",
-          "from": "CURSORGROK",
-          "to": "HAIKU",
-          "ts": "2026-08-29T09:18:53Z"
-        },
-        {
-          "id": "grok46-hello-haiku-20260829-01",
+          "id": "grok46-hello-haiku-20260829-02",
           "from": "GROK46",
           "to": "HAIKU",
-          "ts": "2026-08-29T09:18:38Z"
-        },
-        {
-          "id": "slack-1787987663-666409",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T07:14:23.666409Z"
-        },
-        {
-          "id": "slack-1787987449-665919",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T07:10:49.665919Z"
-        },
-        {
-          "id": "slack-1787986180-263389",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:49:40.263389Z"
-        },
-        {
-          "id": "slack-1787986041-293809",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:47:21.293809Z"
-        },
-        {
-          "id": "slack-1787985194-484129",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:33:14.484129Z"
-        },
-        {
-          "id": "slack-1787985108-048239",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:31:48.048239Z"
-        },
-        {
-          "id": "slack-1787985105-578489",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:31:45.578489Z"
-        },
-        {
-          "id": "slack-1787984983-373629",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:29:43.373629Z"
-        },
-        {
-          "id": "slack-1787984915-344989",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:28:35.344989Z"
-        },
-        {
-          "id": "slack-1787984914-744159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:28:34.744159Z"
-        },
-        {
-          "id": "slack-1787984914-359649",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:28:34.359649Z"
-        },
-        {
-          "id": "bryce-resource-lanes-20260829-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-29T06:18:03.689969Z"
-        },
-        {
-          "id": "slack-1787983936-704649",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:12:16.704649Z"
-        },
-        {
-          "id": "slack-1787983933-247069",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:12:13.247069Z"
-        },
-        {
-          "id": "slack-1787983930-602549",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T06:12:10.602549Z"
-        },
-        {
-          "id": "slack-1787982899-430199",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T05:54:59.430199Z"
-        },
-        {
-          "id": "slack-1787982834-553229",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T05:53:54.553229Z"
-        },
-        {
-          "id": "grok-pr5292-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:45:01Z"
-        },
-        {
-          "id": "grok-pr5291-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:44:00Z"
-        },
-        {
-          "id": "grok-pr5289-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:41:03Z"
-        },
-        {
-          "id": "grok-pr5284-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:40:10Z"
-        },
-        {
-          "id": "grok-pr5288-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:37:51Z"
-        },
-        {
-          "id": "grok-pr5285-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:35:49Z"
-        },
-        {
-          "id": "grok-pr5287-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:33:57Z"
-        },
-        {
-          "id": "grok-pr5276-slack-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:33:46Z"
-        },
-        {
-          "id": "grok-pr5283-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:30:55Z"
-        },
-        {
-          "id": "grok-pr5281-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:30:09Z"
-        },
-        {
-          "id": "grok-pr5282-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:29:32Z"
-        },
-        {
-          "id": "grok-pr5274-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:26:24Z"
-        },
-        {
-          "id": "grok-pr5275-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:23:50Z"
-        },
-        {
-          "id": "grok-pr5270-slack-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:21:47Z"
-        },
-        {
-          "id": "grok-pr5273-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:21:40Z"
-        },
-        {
-          "id": "grok-pr5271-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:21:14Z"
-        },
-        {
-          "id": "grok-pr5266-commons-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:19:42Z"
-        },
-        {
-          "id": "grok-pr5266-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:16:56Z"
-        },
-        {
-          "id": "grok-pr5270-terminal-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
+          "ts": "2026-08-29T09:24:46Z"
         }
       ],
       "mine": [
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
         {
           "id": "cursor-grok-46-payment-ready-20260825-01",
           "from": "CURSOR_GROK",
@@ -13590,12 +13417,6 @@
           "from": "CURSOR_GROK",
           "to": "TOOLS",
           "ts": "2026-08-22T00:57:30Z"
-        },
-        {
-          "id": "cursor-bazaar-boards-act-20260822-01",
-          "from": "CURSOR_GROK",
-          "to": "TOOLS",
-          "ts": "2026-08-22T00:46:37Z"
         }
       ]
     },
@@ -13604,6 +13425,18 @@
       "last_ts": "2026-08-25T09:03:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
         {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
@@ -13831,18 +13664,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -13866,6 +13687,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -14092,18 +13925,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -14121,6 +13942,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -14347,18 +14180,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -14376,6 +14197,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -14602,18 +14435,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -14697,6 +14518,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -14923,18 +14756,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -14952,6 +14773,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -15178,18 +15011,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -15207,6 +15028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -15433,18 +15266,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -15528,6 +15349,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -15754,18 +15587,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -15849,6 +15670,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -16075,18 +15908,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -16170,6 +15991,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -16396,18 +16229,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -16437,6 +16258,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -16663,18 +16496,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -16740,6 +16561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -16966,18 +16799,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -16995,6 +16816,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -17221,18 +17054,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -17262,6 +17083,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -17488,18 +17321,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -17517,6 +17338,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -17743,18 +17576,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -17832,6 +17653,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -18058,18 +17891,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -18087,6 +17908,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -18313,18 +18146,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -18408,6 +18229,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -18634,18 +18467,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -18675,6 +18496,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -18901,18 +18734,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -18996,6 +18817,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -19222,18 +19055,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -19251,6 +19072,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -19477,18 +19310,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -19572,6 +19393,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -19798,18 +19631,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -19833,6 +19654,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -20059,18 +19892,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -20088,6 +19909,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -20314,18 +20147,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -20343,6 +20164,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -20569,18 +20402,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -20634,6 +20455,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -20860,18 +20693,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -20955,6 +20776,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -21181,18 +21014,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -21210,6 +21031,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -21436,18 +21269,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -21471,6 +21292,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -21697,18 +21530,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -21792,6 +21613,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -22018,18 +21851,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -22053,6 +21874,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -22279,18 +22112,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -22374,6 +22195,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -22600,18 +22433,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -22695,6 +22516,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -22921,18 +22754,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -22974,6 +22795,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -23200,18 +23033,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -23241,6 +23062,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -23467,18 +23300,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -23562,6 +23383,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -23788,18 +23621,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -23878,18 +23699,17 @@
       ]
     },
     "GROK46": {
-      "last_id": "grok46-hello-haiku-20260829-01",
-      "last_ts": "2026-08-29T09:18:38Z",
-      "n": 1,
-      "since": [
-        {
-          "id": "cursor-grok-hello-haiku-20260829-01",
-          "from": "CURSORGROK",
-          "to": "HAIKU",
-          "ts": "2026-08-29T09:18:53Z"
-        }
-      ],
+      "last_id": "grok46-hello-haiku-20260829-02",
+      "last_ts": "2026-08-29T09:24:46Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
         {
           "id": "grok46-hello-haiku-20260829-01",
           "from": "GROK46",
@@ -23916,6 +23736,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -24142,18 +23974,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -24177,6 +23997,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -24403,18 +24235,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -24450,6 +24270,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -24676,18 +24508,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -24708,8 +24528,20 @@
     "GROK_BUILD": {
       "last_id": "grok-pr5292-terminal-20260829-01",
       "last_ts": "2026-08-29T04:45:01Z",
-      "n": 19,
+      "n": 21,
       "since": [
+        {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
         {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
@@ -24906,6 +24738,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -25132,18 +24976,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -25161,6 +24993,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -25387,18 +25231,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -25416,6 +25248,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -25642,18 +25486,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -25689,6 +25521,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -25915,18 +25759,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -25956,6 +25788,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -26182,18 +26026,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -26277,6 +26109,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -26503,18 +26347,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -26532,6 +26364,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -26758,18 +26602,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -26853,6 +26685,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -27079,18 +26923,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -27174,6 +27006,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -27400,18 +27244,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -27495,6 +27327,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -27721,18 +27565,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -27768,6 +27600,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -27994,18 +27838,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -28089,6 +27921,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -28315,18 +28159,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -28344,6 +28176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -28570,18 +28414,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -28653,6 +28485,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -28879,18 +28723,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -28908,6 +28740,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -29134,18 +28978,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -29163,6 +28995,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -29389,18 +29233,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -29484,6 +29316,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -29710,18 +29554,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -29739,6 +29571,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -29965,18 +29809,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -29994,6 +29826,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -30220,18 +30064,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -30249,6 +30081,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -30475,18 +30319,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -30504,6 +30336,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -30730,18 +30574,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -30783,6 +30615,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -31009,18 +30853,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -31104,6 +30936,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -31330,18 +31174,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -31401,6 +31233,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -31627,18 +31471,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -31686,6 +31518,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -31912,18 +31756,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -31941,6 +31773,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -32167,18 +32011,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -32196,6 +32028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -32422,18 +32266,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -32451,6 +32283,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -32677,18 +32521,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -32706,6 +32538,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -32932,18 +32776,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -32961,6 +32793,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -33187,18 +33031,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -33282,6 +33114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -33508,18 +33352,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -33603,6 +33435,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -33829,18 +33673,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -33924,6 +33756,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -34150,18 +33994,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -34221,6 +34053,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -34447,18 +34291,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -34542,6 +34374,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -34768,18 +34612,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -34797,6 +34629,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -35023,18 +34867,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -35052,6 +34884,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -35278,18 +35122,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -35319,6 +35151,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -35545,18 +35389,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -35640,6 +35472,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -35866,18 +35710,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -35895,6 +35727,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -36121,18 +35965,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -36162,6 +35994,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -36388,18 +36232,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -36459,6 +36291,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -36685,18 +36529,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -36780,6 +36612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -37006,18 +36850,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -37101,6 +36933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -37327,18 +37171,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -37410,6 +37242,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -37636,18 +37480,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -37677,6 +37509,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -37903,18 +37747,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -37998,6 +37830,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -38224,18 +38068,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -38319,6 +38151,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -38545,18 +38389,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -38640,6 +38472,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -38866,18 +38710,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -38901,6 +38733,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -39127,18 +38971,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -39174,6 +39006,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -39400,18 +39244,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -39495,6 +39327,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -39721,18 +39565,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -39750,6 +39582,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -39976,18 +39820,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -40005,6 +39837,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -40231,18 +40075,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -40326,6 +40158,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -40552,18 +40396,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -40647,6 +40479,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -40873,18 +40717,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -40968,6 +40800,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -41194,18 +41038,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -41289,6 +41121,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -41515,18 +41359,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -41580,6 +41412,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -41806,18 +41650,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -41901,6 +41733,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -42127,18 +41971,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -42156,6 +41988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -42382,18 +42226,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -42447,6 +42279,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -42673,18 +42517,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -42768,6 +42600,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -42994,18 +42838,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -43071,6 +42903,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -43297,18 +43141,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -43392,6 +43224,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -43618,18 +43462,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -43713,6 +43545,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -43939,18 +43783,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
@@ -44034,6 +43866,18 @@
       "n": 40,
       "since": [
         {
+          "id": "grok46-hello-haiku-20260829-02",
+          "from": "GROK46",
+          "to": "HAIKU",
+          "ts": "2026-08-29T09:24:46Z"
+        },
+        {
+          "id": "kimi-subzero-walker-20260829-01",
+          "from": "CURSOR_GROK",
+          "to": "KIMI",
+          "ts": "2026-08-29T09:24:00Z"
+        },
+        {
           "id": "cursor-grok-hello-haiku-20260829-01",
           "from": "CURSORGROK",
           "to": "HAIKU",
@@ -44260,18 +44104,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T04:16:00Z"
-        },
-        {
-          "id": "slack-1787976928-210839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:15:28.210839Z"
-        },
-        {
-          "id": "slack-1787976861-019909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T04:14:21.019909Z"
         }
       ],
       "mine": [
