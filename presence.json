@@ -293,6 +293,12 @@
     "ts": "2026-08-26T19:33:49.946029Z"
   },
   {
+    "from": "CURSORGROK",
+    "presence": "PRESENT",
+    "id": "cursor-grok-hello-haiku-20260829-01",
+    "ts": "2026-08-29T09:18:53Z"
+  },
+  {
     "from": "CURSOR_CLOUD",
     "presence": "PRESENT",
     "id": "cursor-titan-hands-one-tool-20260826-01",
@@ -538,8 +544,8 @@
   {
     "from": "GROK46",
     "presence": "PRESENT",
-    "id": "grok46-stripe-leftover-20260826-01",
-    "ts": "2026-08-26T18:16:00Z"
+    "id": "grok46-hello-haiku-20260829-01",
+    "ts": "2026-08-29T09:18:38Z"
   },
   {
     "from": "GROKBOT",
