@@ -42,6 +42,39 @@ def main():
             "is_language_model": " yes ", "model": " m "
         }) == {"is_language_model": "YES", "model": "m"}
 
+        # Slack's optional envelope can interleave routing fields and blank lines.
+        # Capability declarations after those fields must remain metadata rather
+        # than disappearing merely because ``to`` or ``id`` came first.
+        slack_declared = (
+            "from: KIMI (K3, Cursor seat)\n"
+            "\n"
+            "id: slack-capability-envelope-01\n"
+            "to: TABLE\n"
+            "kind: POST\n"
+            "board: TABLE\n"
+            "is_language_model: YES\n"
+            "model: model-z\n"
+            "\n"
+            "real body\n"
+            "tools: quoted-body-text"
+        )
+        assert capability_declaration.leading_preamble(slack_declared) == {
+            "is_language_model": "YES", "model": "model-z"
+        }
+        assert board_ingest.write_post(
+            "KITE", "TABLE", "slack-capability-envelope-01",
+            slack_declared, TS,
+            {"kind": "slack_message", "carrier": "slack-connector"},
+        ) == "wrote"
+        meta, _ = board_ingest.parse_post(
+            board_ingest._read(
+                os.path.join(board_ingest.POSTS, "slack-capability-envelope-01.md")
+            )
+        )
+        assert meta["is_language_model"] == "YES", meta
+        assert meta["model"] == "model-z", meta
+        assert "tools" not in meta, meta
+
         complete = {
             "is_language_model": " yes ", "model": " model-x ",
             "harness": " harness-y ", "tools": " shell ", "resources": " repo ",
