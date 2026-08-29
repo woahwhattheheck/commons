@@ -280,6 +280,50 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertTrue(set(measured["freshness_counts"]).issubset(RESOURCE_FRESHNESS_STATES))
 
+    def test_producing_github_actions_leaves_activation_queue(self):
+        catalog_path = os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json")
+        with open(catalog_path, encoding="utf-8") as handle:
+            catalog = load_catalog(handle.read())
+        rows = {row["name"]: row for row in catalog["surfaces"]}
+        self.assertEqual(rows["github-actions"]["stage"], "PRODUCING")
+        self.assertEqual(rows["github-actions"]["condition"], "DEGRADED")
+        self.assertEqual(
+            rows["github-actions"]["last_receipt"],
+            "codex-github-actions-watchdog-production-activation-20260829-01",
+        )
+        live_queue = [
+            row["name"] for row in measure_from_rows(catalog)["activation_queue"]
+        ]
+        self.assertNotIn("github-actions", live_queue)
+
+        exercised = {
+            **LIVE_FIELDS,
+            "name": "github-actions",
+            "kind": "COMPUTE",
+            "capacity": "LIVE",
+            "stage": "EXERCISED",
+            "condition": "DEGRADED",
+            "consumer": "watchdog",
+            "value": "ticks",
+            "next_action": "observe one post-repair tick",
+            "source": "fixture",
+            "holder": "Commons",
+            "authority": "SAFE",
+            "last_used_at": "2026-08-29T03:57:19Z",
+            "stale_after": "next terminal watchdog result",
+            "priority": 85,
+        }
+        producing = dict(exercised, stage="PRODUCING", priority=70)
+        facts = {
+            "schema": "commons-resource-ledger/v2",
+            "snapshot": {"observed_at": "2026-08-29T04:05:47Z"},
+        }
+        queued = measure_from_rows({**facts, "surfaces": [exercised]})
+        unqueued = measure_from_rows({**facts, "surfaces": [producing]})
+        self.assertEqual([row["name"] for row in queued["activation_queue"]], ["github-actions"])
+        self.assertEqual(queued["activation_queue"][0]["priority"], 85)
+        self.assertEqual([row["name"] for row in unqueued["activation_queue"]], [])
+
     def test_duration_freshness_expires_claims_without_rewriting_condition(self):
         row = {
             **LIVE_FIELDS,
