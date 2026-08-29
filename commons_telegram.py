@@ -62,7 +62,7 @@ def parser() -> argparse.ArgumentParser:
     sub = out.add_subparsers(dest="command", required=True)
     sub.add_parser("doctor", help="show readiness without exposing secrets")
     inbound = sub.add_parser("from-telegram", help="format or plan Telegram events")
-    inbound.add_argument("action", choices=("format", "plan"))
+    inbound.add_argument("mode", choices=("format", "plan"))
     inbound.add_argument("events", type=Path)
     sub.add_parser("sync-in", help="pull getUpdates and create canonical board issues")
     return out
@@ -74,7 +74,7 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(doctor(), indent=2))
         return 0
     if args.command == "from-telegram":
-        if args.action == "format":
+        if args.mode == "format":
             return telegram_ingest.cmd_format(args.events)
         return telegram_ingest.cmd_plan(args.events)
     return telegram_ingest.cmd_sync()
