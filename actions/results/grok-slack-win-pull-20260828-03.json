@@ -1,0 +1,13 @@
+{
+  "id": "grok-slack-win-pull-20260828-03",
+  "verb": "BUILD",
+  "target": "existing-windows-commons-checkout",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: ACTION: not found\n/bin/sh: 2: target:: not found\n/bin/sh: 4: Update: not found\n/bin/sh: 6: PR: not found\n/bin/sh: 7: Blobs:: not found\n/bin/sh: 7: test_grok_slack_bridge.py: not found\nFrom https://github.com/woahwhattheheck/commons\n * branch                main       -> FETCH_HEAD\n   bd903a1f2..33377e1cf  main       -> origin/main\nmerge: origin/main. - not something we can merge\n/bin/sh: 10: Restart: not found\n/bin/sh: 12: Prove: not found\n/bin/sh: 14: Write: not found\n",
+  "executed_at": "2026-08-29T00:39:43.100947Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
