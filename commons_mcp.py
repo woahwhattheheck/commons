@@ -1390,7 +1390,7 @@ TOOL_DEFINITIONS = [
     {
         "name": "route_grokcom_revenue_work",
         "title": "Route Bidirectional Grok Revenue Work",
-        "description": "Route any Slack, Commons, GPT, or Grok event through the canonical stable task, grok.com result, review, Git landing, and continue loop. Empty and future fields remain open.",
+        "description": "Route any Slack, Commons, GPT, or Grok event through the canonical stable task, grok.com result, direct Git landing, and continue loop. Empty and future fields remain open.",
         "inputSchema": {"type": "object", "additionalProperties": True},
         "annotations": {"readOnlyHint": False, "destructiveHint": False, "idempotentHint": True, "openWorldHint": True},
         "_meta": {"ui": {"visibility": ["model", "app"]}},

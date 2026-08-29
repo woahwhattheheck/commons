@@ -1,7 +1,7 @@
-"""Deterministic Slack -> grok.com -> GPT review -> Git/revenue work packets.
+"""Deterministic Slack -> grok.com -> direct Git/revenue work packets.
 
 This module is deliberately transport-neutral.  A Slack connector supplies an
-event, grok.com or GPT supplies later-stage receipts, and the Commons MCP returns
+event, grok.com supplies later-stage receipts, and the Commons MCP returns
 the next packet.  It stores no credentials, performs no provider mutation, and
 never upgrades an unverified sales or cash report into a fact.
 """
@@ -419,7 +419,7 @@ def orchestrate(arguments: Any) -> dict[str, Any]:
         response.update({
             "state": "GROKCOM_WORK",
             "next": "WRITE_CAPTURE_START_THEN_SEND_TO_GROKCOM_ONCE",
-            "slack_reply": f"CLAIMED {task_id} | grok.com {mode.lower()} | structural START precedes one submission; GPT review follows capture.",
+            "slack_reply": f"CLAIMED {task_id} | grok.com {mode.lower()} | structural START precedes one submission; direct landing follows capture.",
             "grokcom": {
                 "surface": "grok.com",
                 "run_key": run_key,
@@ -449,10 +449,15 @@ def orchestrate(arguments: Any) -> dict[str, Any]:
         if not artifact:
             raise ValueError("GROKCOM_RESULT requires artifact")
         response.update({
-            "state": "GPT_REVIEW",
-            "next": "SEND_TO_GPT_REVIEW",
-            "slack_reply": f"BUILT {task_id} | grok.com receipt captured | GPT independent review queued.",
-            "gpt_review": _review_packet(task_id, artifact),
+            "state": "GIT_LAND",
+            "next": "REFRESH_MAIN_COMMIT_PUSH_PR_MERGE_READBACK",
+            "slack_reply": f"BUILT {task_id} | grok.com receipt captured | direct fresh-main landing queued.",
+            "artifact": artifact,
+            "git": {
+                "force_push": False,
+                "preserve_unrelated_dirt": True,
+                "required_receipt": ["base_sha", "head_sha", "main_sha", "pr_url", "blobs", "tests"],
+            },
         })
         return response
     if stage == "GPT_REVIEW":

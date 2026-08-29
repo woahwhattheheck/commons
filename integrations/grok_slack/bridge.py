@@ -2281,21 +2281,22 @@ class GrokSlackBridge:
             if job is None or not _job_is_terminal(job):
                 if addressable:
                     return {"ok": True, "state": "OBSERVING", "job_id": job_id, "task_id": packet.get("task_id")}
-                self.store.set_phase(event_id, "FAILED", result_id=DURABILITY_NEVER_APPEARED)
+                # A successfully submitted fire_action is pending work, even when
+                # its durable projection is temporarily unavailable. Keep the
+                # event recoverable and observable; never turn lag into rejection.
+                self.store.set_phase(event_id, "OBSERVING")
                 row = self.store.get(event_id)
                 diagnostics = str(row.diagnostics or "") if row is not None else ""
-                failed = {
-                    "ok": False,
-                    "state": "FAILED",
-                    "kind": "rejected",
+                return {
+                    "ok": True,
+                    "state": "OBSERVING",
+                    "reason": "DURABILITY_PENDING",
                     "retryable": True,
-                    "code": DURABILITY_NEVER_APPEARED,
+                    "submit": False,
                     "job_id": job_id,
                     "task_id": packet.get("task_id"),
                     "diagnostics": diagnostics,
                 }
-                self._post_rejection(event_id, contract, failed)
-                return failed
         if _job_submission_open(job):
             return {"ok": True, "state": "OBSERVING", "reason": "PREPARE_SUBMISSION_PENDING", "job_id": job_id}
         capture = _job_capture(job)

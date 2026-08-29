@@ -13,7 +13,7 @@ Slack Socket Mode
      when live tools/list does not advertise that tool
   -> fire_action once with grokcom.executor_job.arguments
   -> wake_jobs/<job_id>.json on SHA-pinned current main
-  -> GROKCOM_RESULT / GPT review / Git landing
+  -> GROKCOM_RESULT / direct Git landing
   -> lossless reply in the originating Slack thread
 ```
 
