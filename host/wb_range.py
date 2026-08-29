@@ -739,6 +739,488 @@ def load_index(path: Path) -> dict:
     return index
 
 
+# ------------------------------------------- metric wiring (host/wb_metrics.py)
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import wb_metrics as metrics
+
+
+def _tensor_row_layout(tensor: dict) -> tuple[int, int]:
+    """(rows, width) — N-D tensors flatten to (product(shape[1:]), shape[0])."""
+    shape = tensor["shape"]
+    if len(shape) < 2:
+        raise WbRangeError("tensor must be >= 2-D for row ops")
+    width = shape[0]
+    rows = 1
+    for dim in shape[1:]:
+        rows *= dim
+    return rows, width
+
+
+def fetch_rows(index: dict, cache_dir: Path, tensor_name: str,
+               row_idxs: list[int], *, limit: int = DEFAULT_LIMIT_BYTES,
+               raw: bool = False) -> list:
+    """Fetch and decode (or raw) rows of a >= 2-D tensor by address."""
+    source, tensor = find_tensor(index, tensor_name)
+    dtype = tensor["dtype"]
+    entry = SAFETENSORS_DTYPES.get(dtype)
+    if entry is None:
+        raise WbRangeError("row ops need a known dtype, got %s" % dtype)
+    _, elem = entry
+    rows, width = _tensor_row_layout(tensor)
+    reader = RangeReader(source["url"], cache_dir, limit=limit)
+    out = []
+    for i in row_idxs:
+        if i < 0 or i >= rows:
+            raise WbRangeError("row %d outside [0, %d)" % (i, rows))
+        offset = tensor["begin"] + i * width * elem
+        data = reader.read(offset, width * elem)
+        out.append(data if raw else decode_values(dtype, data))
+    return out
+
+
+def fetch_span(index: dict, cache_dir: Path, tensor_name: str, begin: int,
+               length: int, *, limit: int = DEFAULT_LIMIT_BYTES) -> bytes:
+    source, tensor = find_tensor(index, tensor_name)
+    if tensor["bytes"] is None:
+        raise WbRangeError("tensor extent unknown")
+    if begin < 0 or begin + length > tensor["bytes"]:
+        raise WbRangeError("span outside tensor")
+    reader = RangeReader(source["url"], cache_dir, limit=limit)
+    return reader.read(tensor["begin"] + begin, length)
+
+
+def load_vocab(index: dict, cache_dir: Path, *, limit: int = DEFAULT_LIMIT_BYTES) -> list:
+    """Token strings for the indexed model: GGUF metadata, or the repo's
+    tokenizer.json fetched once and cached (safetensors)."""
+    for source in index["sources"]:
+        if source["format"] == "gguf":
+            tokens = source["metadata"].get("tokenizer.ggml.tokens")
+            if isinstance(tokens, list) and tokens:
+                return [str(t) for t in tokens]
+    for source in index["sources"]:
+        base = source["url"].rsplit("/", 1)[0]
+        tok_url = base + "/tokenizer.json"
+        reader = RangeReader(tok_url, cache_dir,
+                             limit=max(limit, 128 * 1024 * 1024))
+        try:
+            size = reader.remote_size()
+        except WbRangeError:
+            continue
+        payload = json.loads(reader.read(0, size).decode("utf-8"))
+        model = payload.get("model", {})
+        vocab = model.get("vocab", {})
+        added = payload.get("added_tokens", [])
+        width = len(vocab) + len(added) + 16
+        tokens = [""] * width
+        for text, idx in vocab.items():
+            if 0 <= idx < width:
+                tokens[idx] = text
+        for item in added:
+            if isinstance(item, dict) and 0 <= item.get("id", -1) < width:
+                tokens[item["id"]] = item.get("content", "")
+        if any(tokens):
+            return tokens
+    raise WbRangeError("no vocabulary found (gguf metadata or tokenizer.json)")
+
+
+def word_row_map(index: dict, cache_dir: Path, tensor_name: str, vocab: list,
+                 words: list[str], *, limit: int = DEFAULT_LIMIT_BYTES) -> dict:
+    """word -> decoded embedding row; tries surface, ▁-prefixed, capitalized."""
+    lookup = {}
+    for i, token in enumerate(vocab):
+        for form in (token, token.lstrip("▁"), token.replace("▁", " ").strip()):
+            if form and form not in lookup:
+                lookup[form] = i
+    targets = {}
+    for word in words:
+        for form in (word, "▁" + word, word.capitalize(),
+                     "▁" + word.capitalize(), " " + word):
+            if form in lookup:
+                targets[word] = lookup[form]
+                break
+    rows = {}
+    if targets:
+        uniq = sorted(set(targets.values()))
+        fetched = fetch_rows(index, cache_dir, tensor_name, uniq, limit=limit)
+        by_row = dict(zip(uniq, fetched))
+        for word, idx in targets.items():
+            rows[word] = by_row[idx]
+    missing = [w for w in words if w not in targets]
+    return {"rows": rows, "missing": missing, "token_ids": targets}
+
+
+def embed_tensor_name(index: dict) -> str:
+    for source in index["sources"]:
+        for name in source["tensors"]:
+            low = name.lower()
+            if "embed" in low and "norm" not in low:
+                return name
+    raise WbRangeError("no embedding tensor found in index")
+
+
+def _ffn_names(index: dict, layer: int) -> dict:
+    candidates = {
+        "gate": ["blk.%d.ffn_gate.weight",
+                 "language_model.model.layers.%d.mlp.gate_proj.weight",
+                 "model.layers.%d.mlp.gate_proj.weight",
+                 "layers.%d.mlp.gate_proj.weight"],
+        "up": ["blk.%d.ffn_up.weight",
+               "language_model.model.layers.%d.mlp.up_proj.weight",
+               "model.layers.%d.mlp.up_proj.weight",
+               "layers.%d.mlp.up_proj.weight"],
+        "down": ["blk.%d.ffn_down.weight",
+                 "language_model.model.layers.%d.mlp.down_proj.weight",
+                 "model.layers.%d.mlp.down_proj.weight",
+                 "layers.%d.mlp.down_proj.weight"],
+    }
+    out = {}
+    for key, patterns in candidates.items():
+        for pattern in patterns:
+            name = pattern % layer
+            try:
+                find_tensor(index, name)
+                out[key] = name
+                break
+            except WbRangeError:
+                continue
+        if key not in out:
+            raise WbRangeError("no %s tensor found for layer %d" % (key, layer))
+    return out
+
+
+METRIC_OPS = ("recipe", "stats", "entropysweep", "magics", "experts",
+              "circuitry", "layerscan", "direction", "anisotropy", "mechanism",
+              "bits", "clean", "concept", "analogy", "neurons", "walk",
+              "constellations", "order", "axispure")
+
+
+def metric_op(op: str, index: dict, archive: Archive, cache_dir: Path,
+              args: dict) -> dict:
+    """Dispatch one metric op over ranged reads; archive the receipt."""
+    limit = int(args.get("limit") or DEFAULT_LIMIT_BYTES)
+    tensor = args.get("tensor") or ""
+    sample = int(args.get("sample") or 256)
+    seed = int(args.get("seed") or 7)
+
+    if op == "recipe":
+        tensors = {}
+        for source in index["sources"]:
+            tensors.update(source["tensors"])
+        result = metrics.precision_recipe(tensors)
+        result["tensor_count"] = len(tensors)
+
+    elif op == "stats":
+        if not tensor:
+            raise WbRangeError("stats needs a tensor")
+        source, t = find_tensor(index, tensor)
+        if len(t["shape"]) < 2:
+            # 1-D tensor (layernorm/bias): one row, whole-span stats
+            raw = fetch_span(index, cache_dir, tensor, 0, t["bytes"],
+                             limit=limit)
+            decoded = [decode_values(t["dtype"], raw)]
+            raw_rows = [raw]
+        else:
+            rows, width = _tensor_row_layout(t)
+            idxs = metrics.strided(rows, sample)
+            decoded = fetch_rows(index, cache_dir, tensor, idxs, limit=limit)
+            raw_rows = fetch_rows(index, cache_dir, tensor,
+                                  metrics.strided(rows, min(sample, 256)),
+                                  limit=limit, raw=True)
+        flat = [v for row in decoded for v in row]
+        result = metrics.tensor_stats(
+            flat, block=256 if "K" in t["dtype"] else 32)
+        result.update(metrics.row_norm_stats(decoded))
+        result["entropy"] = metrics.entropy_scan([r[:384] for r in raw_rows])
+        result["tensor"] = tensor
+        result["dtype"] = t["dtype"]
+        result["rows_sampled"] = len(decoded)
+
+    elif op == "entropysweep":
+        source, t = find_tensor(index, tensor)
+        rows, width = _tensor_row_layout(t)
+        idxs = metrics.strided(rows, sample)
+        raw_rows = fetch_rows(index, cache_dir, tensor, idxs, limit=limit,
+                              raw=True)
+        result = metrics.entropy_scan_mad([r[:512] for r in raw_rows])
+        result["tensor"] = tensor
+        result["rows_sampled"] = len(raw_rows)
+
+    elif op == "magics":
+        source, t = find_tensor(index, tensor)
+        if t["bytes"] is None:
+            raise WbRangeError("tensor extent unknown")
+        chunk = min(int(args.get("chunk") or 4 * 1024 * 1024), limit)
+        max_bytes = int(args.get("max_bytes") or chunk * 8)
+        found = {"hits": 0, "tags": {}}
+        scanned = 0
+        while scanned < min(t["bytes"], max_bytes):
+            length = min(chunk, t["bytes"] - scanned, max_bytes - scanned)
+            if length <= 0:
+                break
+            data = fetch_span(index, cache_dir, tensor, scanned, length,
+                              limit=limit)
+            part = metrics.magic_scan(data, base_offset=t["begin"] + scanned)
+            found["hits"] += part["hits"]
+            for tag, info in part["tags"].items():
+                entry = found["tags"].setdefault(tag, {"count": 0,
+                                                       "offsets": []})
+                entry["count"] += info["count"]
+                entry["offsets"].extend(info["offsets"])
+            scanned += length
+        result = dict(found)
+        result["tensor"] = tensor
+        result["bytes_scanned"] = scanned
+
+    elif op == "experts":
+        source, t = find_tensor(index, tensor)
+        shape = t["shape"]
+        if len(shape) < 3:
+            raise WbRangeError("expert health needs a >= 3-D (MoE) tensor")
+        n_exp = shape[-1]
+        per_expert_rows = 1
+        for dim in shape[1:-1]:
+            per_expert_rows *= dim
+        per_expert = {}
+        take = metrics.strided(n_exp, min(sample, n_exp))
+        for e in take:
+            row_idxs = [e * per_expert_rows + r
+                        for r in metrics.strided(per_expert_rows, 8)]
+            decoded = fetch_rows(index, cache_dir, tensor, row_idxs,
+                                 limit=limit)
+            per_expert[e] = [v for row in decoded for v in row]
+        result = metrics.expert_health(per_expert)
+        result["tensor"] = tensor
+        result["experts_sampled"] = len(take)
+
+    elif op == "circuitry":
+        layer = int(args.get("layer") or 0)
+        units = int(args.get("units") or 512)
+        band = int(args.get("band") or 1024)
+        names = _ffn_names(index, layer)
+        gs, gt = find_tensor(index, names["gate"])
+        ds, dt = find_tensor(index, names["down"])
+        n_ff = gt["shape"][1] if len(gt["shape"]) == 2 else gt["shape"][0]
+        sel = metrics.strided(n_ff, units)
+        gate_rows = fetch_rows(index, cache_dir, names["gate"], sel,
+                               limit=limit)
+        up_rows = fetch_rows(index, cache_dir, names["up"], sel, limit=limit)
+        d_rows, d_width = _tensor_row_layout(dt)
+        band = min(band, d_rows)
+        band_rows = fetch_rows(index, cache_dir, names["down"],
+                               list(range(band)), limit=limit)
+        down_cols = [[band_rows[r][j] for r in range(band)] for j in sel]
+        result = metrics.circuitry(gate_rows, up_rows, down_cols)
+        result["logic"]["decode_orth"] = metrics.decoder_sharpness(
+            gate_rows, sample=min(512, len(gate_rows)))["decode_orth"]
+        result["logic"]["drain_conv"] = metrics.decoder_sharpness(
+            down_cols, sample=min(512, len(down_cols)))["decode_orth"]
+        result["mode"] = "subspace-drain" if band < d_rows else "full"
+        result["drain_band_dims"] = band
+        result["layer"] = layer
+        result["units_sampled"] = len(sel)
+        if band < d_rows:
+            gate_band = [list(row[:band]) for row in gate_rows]
+            result["latch_subspace"] = metrics.circuitry(
+                gate_band, up_rows, down_cols)["logic"]
+
+    elif op == "layerscan":
+        role = args.get("role") or "ffn_down"
+        per = {}
+        for source in index["sources"]:
+            for name, t in source["tensors"].items():
+                layer = metrics.layer_of(name)
+                if layer < 0 or metrics.role_of(name) != role:
+                    continue
+                try:
+                    rows_n, width = _tensor_row_layout(t)
+                    idxs = metrics.strided(rows_n, 8)
+                    decoded = fetch_rows(index, cache_dir, name, idxs,
+                                         limit=limit)
+                    flat = [v for row in decoded for v in row]
+                    st = metrics.tensor_stats(flat)
+                    per[layer] = {"std": st["std"], "mean": st["mean"],
+                                  "absmax": max(abs(st["min"]),
+                                                abs(st["max"])),
+                                  "zero": st["sparsity"],
+                                  "dtype": t["dtype"]}
+                except WbRangeError:
+                    continue
+        result = metrics.depth_profile(per)
+        result["role"] = role
+
+    elif op == "direction":
+        source, t = find_tensor(index, tensor)
+        rows, width = _tensor_row_layout(t)
+        idxs = metrics.strided(rows, min(sample, 384))
+        decoded = fetch_rows(index, cache_dir, tensor, idxs, limit=limit)
+        result = {"tensor": tensor, "rows_sampled": len(decoded)}
+        result.update(metrics.value_sanity(decoded))
+        result["manifold"] = metrics.manifold_residual(
+            decoded, k=int(args.get("k") or 8),
+            sample=min(192, len(decoded)))
+
+    elif op in ("anisotropy", "mechanism", "bits", "clean", "concept",
+                "analogy", "neurons", "walk", "constellations", "order",
+                "axispure"):
+        result = _embed_op(op, index, cache_dir, args, limit, sample, seed)
+
+    else:
+        raise WbRangeError("unknown metric op %r" % op)
+
+    receipt = archive.put(
+        "metric",
+        json.dumps(result, sort_keys=True, default=str).encode(),
+        {"op": op, "tensor": tensor, "note": str(args.get("note") or "")})
+    return {"status": "ARCHIVED", "op": op, "entry_id": receipt["id"],
+            "result": result}
+
+
+def _embed_op(op: str, index: dict, cache_dir: Path, args: dict,
+              limit: int, sample: int, seed: int) -> dict:
+    tensor = args.get("tensor") or embed_tensor_name(index)
+    source, t = find_tensor(index, tensor)
+    rows_total, width = _tensor_row_layout(t)
+    vocab_sample = int(args.get("vocab_sample") or 1200)
+    idxs = metrics.strided(rows_total, vocab_sample)
+
+    def word_rows(words):
+        vocab = load_vocab(index, cache_dir, limit=limit)
+        mapped = word_row_map(index, cache_dir, tensor, vocab, words,
+                              limit=limit)
+        return mapped["rows"], mapped["missing"]
+
+    if op in ("anisotropy", "mechanism", "clean", "bits"):
+        decoded = fetch_rows(index, cache_dir, tensor, idxs, limit=limit)
+        ant_rows, miss_a = word_rows(
+            [w for pair in metrics.ANTONYMS for w in pair])
+        rand_rows, miss_r = word_rows(metrics.RANDOM_WORDS)
+        ant_pairs = [(ant_rows[a], ant_rows[b]) for a, b in metrics.ANTONYMS
+                     if a in ant_rows and b in ant_rows]
+        rand_pairs = []
+        words = [w for w in metrics.RANDOM_WORDS if w in rand_rows]
+        for i in range(len(words)):
+            for j in range(i + 1, len(words)):
+                rand_pairs.append((rand_rows[words[i]], rand_rows[words[j]]))
+        if op == "anisotropy":
+            result = metrics.anisotropy(decoded, seed=seed)
+            freq_rows, _ = word_rows(metrics.FREQ_LADDER)
+            result["norm_by_frequency"] = metrics.norm_by_frequency(freq_rows)
+        elif op == "mechanism":
+            result = metrics.sign_cos_pearson(decoded, seed=seed)
+            result["separation"] = metrics.sign_only_ratio(ant_pairs,
+                                                           rand_pairs)
+            result["rogue_dims"] = {
+                k: v for k, v in metrics.rogue_dims(decoded).items()
+                if k not in ("mean_vector", "per_dim_var")}
+        elif op == "clean":
+            result = metrics.cleanup_ab(ant_pairs, rand_pairs, decoded)
+        else:
+            probes = {}
+            if "true" in ant_rows and "false" in ant_rows:
+                probes["true/false"] = (ant_rows["true"], ant_rows["false"])
+            if "love" in ant_rows and "hate" in ant_rows:
+                probes["love/hate"] = (ant_rows["love"], ant_rows["hate"])
+            result = {"curve": metrics.bitdepth_curve(ant_pairs, rand_pairs,
+                                                      probes)}
+        result["tensor"] = tensor
+        result["vocab_rows_sampled"] = len(decoded)
+        result["missing_words"] = sorted(set(miss_a + miss_r))
+        return result
+
+    if op == "concept":
+        word = str(args.get("word") or "university")
+        k = int(args.get("k") or 30)
+        rows_map, missing = word_rows([word])
+        if word not in rows_map:
+            raise WbRangeError("%r is not an embeddable token" % word)
+        decoded = fetch_rows(index, cache_dir, tensor, idxs, limit=limit)
+        vocab = load_vocab(index, cache_dir, limit=limit)
+        vocab_rows = {vocab[i]: decoded[p] for p, i in enumerate(idxs)
+                      if i < len(vocab) and vocab[i]}
+        result = metrics.concept_neighbors(rows_map[word], vocab_rows,
+                                           k=k, query_word=word)
+        result["tensor"] = tensor
+        result["vocab_rows_scanned"] = len(vocab_rows)
+        return result
+
+    if op == "analogy":
+        a, b, c = (str(args.get(x) or "") for x in ("a", "b", "c"))
+        if not (a and b and c):
+            raise WbRangeError("analogy needs a, b, c words")
+        cands = [w.strip() for w in
+                 str(args.get("candidates") or "").split(",") if w.strip()]
+        rows_map, missing = word_rows([a, b, c] + cands)
+        if any(w not in rows_map for w in (a, b, c)):
+            raise WbRangeError("missing tokens: %s" % missing)
+        cand_rows = {w: rows_map[w] for w in cands if w in rows_map}
+        result = metrics.analogy(rows_map[a], rows_map[b], rows_map[c],
+                                 cand_rows)
+        result["missing"] = missing
+        return result
+
+    if op == "neurons":
+        layer = int(args.get("layer") or 0)
+        kind = str(args.get("kind") or "down")
+        names = _ffn_names(index, layer)
+        n_tensor = names.get(kind) or names["down"]
+        ns, nt = find_tensor(index, n_tensor)
+        n_rows, n_width = _tensor_row_layout(nt)
+        sel = metrics.strided(n_rows, int(args.get("units") or 96))
+        neuron_rows = fetch_rows(index, cache_dir, n_tensor, sel, limit=limit)
+        decoded = fetch_rows(index, cache_dir, tensor, idxs, limit=limit)
+        vocab = load_vocab(index, cache_dir, limit=limit)
+        vocab_rows = {vocab[i]: decoded[p] for p, i in enumerate(idxs)
+                      if i < len(vocab) and vocab[i]}
+        result = metrics.neuron_cleanliness(neuron_rows, vocab_rows)
+        result["tensor"] = n_tensor
+        result["vocab_rows_scanned"] = len(vocab_rows)
+        return result
+
+    if op in ("walk", "constellations", "order", "axispure"):
+        words = [w.strip() for w in
+                 str(args.get("words") or "").split(",") if w.strip()]
+        if not words:
+            raise WbRangeError("%s needs words" % op)
+        rows_map, missing = word_rows(words)
+        if op == "walk":
+            start = str(args.get("word") or words[0])
+            if start not in rows_map:
+                raise WbRangeError("start word %r not embeddable" % start)
+            result = metrics.semantic_walk(
+                rows_map[start], rows_map,
+                steps=int(args.get("steps") or 8), start_label=start)
+        elif op == "constellations":
+            result = metrics.constellations(
+                rows_map, threshold=float(args.get("threshold") or 0.18))
+        elif op == "order":
+            truth = [w for w in words if w in rows_map]
+            if len(truth) < 3:
+                raise WbRangeError("order needs >= 3 embeddable words")
+            lo, hi = rows_map[truth[0]], rows_map[truth[-1]]
+            axis = metrics.unit([h - l for h, l in zip(hi, lo)])
+            result = metrics.order_recovery(axis, rows_map, truth)
+        else:
+            pair_words = str(args.get("pairs") or "")
+            pairs = []
+            for item in pair_words.split(","):
+                left, sep, right = item.strip().partition(":")
+                if sep and left in rows_map and right in rows_map:
+                    pairs.append((rows_map[left], rows_map[right]))
+            if not pairs:
+                raise WbRangeError("axispure needs pairs neg:pos,...")
+            place = str(args.get("word") or "")
+            built = metrics.axis_with_purity(
+                pairs, place_row=rows_map.get(place))
+            axis = built.pop("_axis")
+            built["poles"] = metrics.pole_readout(axis, rows_map)
+            result = built
+        result["missing"] = missing
+        return result
+
+    raise WbRangeError("unhandled embed op %r" % op)
+
+
 def write_json(path: Path, value: dict) -> None:
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -909,6 +1391,30 @@ button.primary { border-color: var(--amber); color: var(--amber); }
 </fieldset>
 
 <fieldset class="full">
+  <legend>METRICS</legend>
+  <div class="row">
+    <div><label>OP</label>
+    <select id="metric-op">
+      <option>recipe</option><option>stats</option><option>entropysweep</option>
+      <option>magics</option><option>experts</option><option>circuitry</option>
+      <option>layerscan</option><option>direction</option>
+      <option>anisotropy</option><option>mechanism</option><option>bits</option>
+      <option>clean</option><option>concept</option><option>analogy</option>
+      <option>neurons</option><option>walk</option><option>constellations</option>
+      <option>order</option><option>axispure</option>
+    </select></div>
+    <div><label>TENSOR (BLANK = AUTO FOR EMBED OPS)</label>
+    <input id="metric-tensor"></div>
+    <div><label>LAYER</label><input id="metric-layer" type="number" value="0"></div>
+    <div><label>SAMPLE</label><input id="metric-sample" type="number" value="256"></div>
+  </div>
+  <label>PARAMS (word / words / pairs / a,b,c,candidates / role — op dependent)</label>
+  <input id="metric-params" placeholder='word=university  or  pairs=cold:warm,low:high  or  a=man b=king c=woman candidates=queen,princess'>
+  <button id="btn-metric" class="primary">RUN METRIC</button>
+  <div class="kv" id="metric-kv"></div>
+</fieldset>
+
+<fieldset class="full">
   <legend>ARCHIVE</legend>
   <button id="btn-archive">REFRESH</button>
   <div class="list" id="archive-list" style="max-height:140px"></div>
@@ -1064,6 +1570,36 @@ $("btn-score").onclick = async () => {
   } catch (e) { log("score failed: " + e.message, "err"); }
 };
 
+$("btn-metric").onclick = async () => {
+  const body = {
+    op: $("metric-op").value, tensor: $("metric-tensor").value || null,
+    layer: parseInt($("metric-layer").value || "0", 10),
+    sample: parseInt($("metric-sample").value || "256", 10),
+    limit: limitBytes(),
+  };
+  for (const tok of ($("metric-params").value || "").split(/\s+/)) {
+    if (!tok) continue;
+    const eq = tok.indexOf("=");
+    if (eq < 0) continue;
+    const key = tok.slice(0, eq), val = tok.slice(eq + 1);
+    body[key] = (key === "k" || key === "steps" || key === "units" ||
+                 key === "band" || key === "vocab_sample")
+      ? parseInt(val, 10) : (key === "threshold" ? parseFloat(val) : val);
+  }
+  log("metric " + body.op + (body.tensor ? " on " + body.tensor : ""));
+  $("btn-metric").disabled = true;
+  try {
+    const data = await api("/api/metric", body);
+    const r = data.result;
+    const keys = Object.keys(r).filter(k => !k.startsWith("_")).slice(0, 14);
+    $("metric-kv").textContent =
+      "archived " + data.entry_id + "\n" +
+      keys.map(k => k + " = " + JSON.stringify(r[k]).slice(0, 220)).join("\n");
+    log("metric " + body.op + " archived: " + data.entry_id, "ok");
+  } catch (e) { log("metric failed: " + e.message, "err"); }
+  $("btn-metric").disabled = false;
+};
+
 $("btn-archive").onclick = async () => {
   try {
     const data = await api("/api/archive", {});
@@ -1194,6 +1730,14 @@ class PanelHandler(http.server.BaseHTTPRequestHandler):
                 limit=limit,
             )
             self._send_json(result)
+        elif self.path == "/api/metric":
+            index = self._index(state)
+            op = str(request.get("op") or "")
+            if op not in METRIC_OPS:
+                raise WbRangeError("unknown metric op %r" % op)
+            result = metric_op(op, index, state["archive"],
+                               state["cache_dir"], request)
+            self._send_json(result)
         elif self.path == "/api/archive":
             self._send_json({"entries": state["archive"].manifest["entries"]})
         else:
@@ -1288,6 +1832,35 @@ def _parser() -> argparse.ArgumentParser:
     archive_cmd = commands.add_parser("archive", help="list the archive of answers")
     archive_cmd.add_argument("--work-dir", type=Path, default=Path("wb-range-out"))
 
+    metric_cmd = commands.add_parser(
+        "metric", help="run a White Box metric op over ranged reads")
+    metric_cmd.add_argument("index", type=Path)
+    metric_cmd.add_argument("op", choices=METRIC_OPS)
+    metric_cmd.add_argument("--tensor", default=None)
+    metric_cmd.add_argument("--layer", type=int, default=0)
+    metric_cmd.add_argument("--role", default=None, help="layerscan role")
+    metric_cmd.add_argument("--sample", type=int, default=256)
+    metric_cmd.add_argument("--vocab-sample", type=int, default=1200)
+    metric_cmd.add_argument("--units", type=int, default=512,
+                            help="circuitry/neurons units sampled")
+    metric_cmd.add_argument("--band", type=int, default=1024,
+                            help="circuitry drain band dims")
+    metric_cmd.add_argument("--k", type=int, default=8)
+    metric_cmd.add_argument("--seed", type=int, default=7)
+    metric_cmd.add_argument("--word", default=None)
+    metric_cmd.add_argument("--words", default=None, help="comma separated")
+    metric_cmd.add_argument("--pairs", default=None, help="neg:pos,neg:pos")
+    metric_cmd.add_argument("--a", default=None)
+    metric_cmd.add_argument("--b", default=None)
+    metric_cmd.add_argument("--c", default=None)
+    metric_cmd.add_argument("--candidates", default=None)
+    metric_cmd.add_argument("--steps", type=int, default=8)
+    metric_cmd.add_argument("--threshold", type=float, default=0.18)
+    metric_cmd.add_argument("--max-bytes", type=int, default=None)
+    metric_cmd.add_argument("--note", default="")
+    metric_cmd.add_argument("--work-dir", type=Path, default=Path("wb-range-out"))
+    metric_cmd.add_argument("--limit", type=int, default=DEFAULT_LIMIT_BYTES)
+
     serve_cmd = commands.add_parser("serve", help="run the control panel")
     serve_cmd.add_argument("--port", type=int, default=7863)
     serve_cmd.add_argument("--work-dir", type=Path, default=Path("wb-range-out"))
@@ -1348,6 +1921,17 @@ def main(argv: list[str] | None = None) -> int:
     index = load_index(args.index)
     archive = Archive(work_dir / "archive")
 
+    if args.command == "metric":
+        op_args = {key: getattr(args, key, None) for key in
+                   ("tensor", "layer", "role", "sample", "units", "band",
+                    "k", "seed", "word", "words", "pairs", "a", "b", "c",
+                    "candidates", "steps", "threshold", "note", "limit")}
+        op_args["vocab_sample"] = args.vocab_sample
+        if args.max_bytes is not None:
+            op_args["max_bytes"] = args.max_bytes
+        result = metric_op(args.op, index, archive, cache_dir, op_args)
+        print(json.dumps(result, sort_keys=True, default=str))
+        return 0
     if args.command == "slice":
         result = slice_tensor(index, archive, cache_dir, args.tensor,
                               begin=args.begin, end=args.end,
