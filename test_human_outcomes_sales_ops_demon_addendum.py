@@ -31,7 +31,7 @@ PEER_BLOBS = {
     "revenue/human_outcomes/sales_ops/invoice_template.md": "9a727d12fed5aa039a10c938efb46287b38ac917",
     "revenue/human_outcomes/sales_ops/outreach.json": "a67a0c97f9f4bf96a868964cf54eab00a06d4612",
     "revenue/human_outcomes/sales_ops/targets.json": "3e484fafcb9a619eb04c254e44073370f2674a83",
-    "test_human_outcomes_sales_ops.py": "506b13adb16beb5132b760a538076bf34b2661c6",
+    "test_human_outcomes_sales_ops.py": "58aaa7229202f23634818a886ff19c6d86155314",
     "p/demon-human-outcomes-sales-ops-20260825-01.md": "fe19cfb7e57c4932d3db5f161166a91814a037f9",
 }
 CATALOG_BLOBS = {
