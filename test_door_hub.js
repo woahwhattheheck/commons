@@ -64,6 +64,7 @@ doors.TABS.forEach(function (tab) {
 assert(seen["gpt-grok-ship-loop.html"], "hub surfaces gpt-grok-ship-loop.html");
 assert(seen["feature-tracker.html"], "hub surfaces feature-tracker.html");
 assert(seen["swarm-dc.html"], "hub surfaces swarm-dc.html");
+assert(seen["telegram.html"], "hub surfaces telegram.html");
 assert(Object.keys(seen).length >= 40, "hub surfaces a full door set, got " + Object.keys(seen).length);
 
 const hubHtml = index.match(/<nav id="door-hub"[\s\S]*?<\/nav>/);
