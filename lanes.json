@@ -1480,8 +1480,16 @@
     ]
   },
   "features": {
-    "n": 124,
+    "n": 126,
     "posts": [
+      {
+        "id": "grok-pr5118-landed-20260828-01",
+        "from": "UNSEATED",
+        "to": "TABLE",
+        "ts": "2026-08-28T21:20:56Z",
+        "board": "MONEY",
+        "lane": "FEATURES"
+      },
       {
         "id": "grok-pr5076-terminal-20260828-01",
         "from": "GROK_BUILD",
@@ -1503,6 +1511,14 @@
         "from": "GROK_BUILD",
         "to": "TABLE",
         "ts": "2026-08-28T19:42:59Z",
+        "board": "MONEY",
+        "lane": "FEATURES"
+      },
+      {
+        "id": "grok-pr5066-commons-receipt-20260828-01",
+        "from": "GROK",
+        "to": "TABLE",
+        "ts": "2026-08-28T19:41:00Z",
         "board": "MONEY",
         "lane": "FEATURES"
       },
@@ -2105,24 +2121,8 @@
         "ts": "2026-08-27T00:03:45Z",
         "board": "FEATURES",
         "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-train-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-27T00:02:30Z",
-        "board": "FEATURES",
-        "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-verifiable-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-27T00:01:51Z",
-        "board": "FEATURES",
-        "lane": ""
       }
     ]
   },
-  "n": 442
+  "n": 444
 }
