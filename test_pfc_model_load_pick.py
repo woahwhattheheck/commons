@@ -17,7 +17,7 @@ class PfcModelLoadPickTests(unittest.TestCase):
         self.assertIn("Host work remains address/fire/read/display", directives)
         todo = (ROOT / "todo.html").read_text(encoding="utf-8")
         self.assertIn(
-            "inbox path and exact PFC model/load choice PICKED 2026-08-30 CODEX",
+            "inbox path PICKED; clock fanout/autofab N + purpose SELECTED 2026-08-30 CODEX; exact PFC model/load PICKED 2026-08-30 DEMON",
             todo,
         )
 
