@@ -23,6 +23,7 @@ from host import smart_outreach  # noqa: E402
 
 
 CATALOG_PATH = ROOT / "revenue" / "right_now" / "catalog.json"
+DIAGNOSTIC_PATH = ROOT / "revenue" / "right_now" / "diagnostic_offer.json"
 OUTREACH_PATH = ROOT / "revenue" / "smart_outreach" / "candidates.json"
 PAYMENT_PATH = ROOT / "revenue" / "payment_ready" / "current_receipt.json"
 HUMAN_PATH = ROOT / "revenue" / "human_outcomes" / "offers.json"
@@ -86,9 +87,11 @@ def validate_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
 
     human = read_object(HUMAN_PATH)
     survival = read_object(SURVIVAL_PATH)
+    diagnostic = read_object(DIAGNOSTIC_PATH)
     canonical = {row["id"]: row for row in human["offers"]}
     entry = survival["entry_offer"]
     canonical[entry["id"]] = entry
+    canonical[diagnostic["id"]] = diagnostic
     offers = catalog["offers"]
     if not isinstance(offers, list) or not offers:
         raise ControlError("catalog.offers must be non-empty")
@@ -214,7 +217,14 @@ def build_control() -> dict[str, Any]:
         },
     ]
 
-    source_paths = [CATALOG_PATH, OUTREACH_PATH, PAYMENT_PATH, HUMAN_PATH, SURVIVAL_PATH]
+    source_paths = [
+        CATALOG_PATH,
+        DIAGNOSTIC_PATH,
+        OUTREACH_PATH,
+        PAYMENT_PATH,
+        HUMAN_PATH,
+        SURVIVAL_PATH,
+    ]
     sources = [
         {"path": path.relative_to(ROOT).as_posix(), "sha256": sha256_file(path)}
         for path in source_paths

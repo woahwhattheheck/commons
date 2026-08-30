@@ -6,7 +6,7 @@ queue. It is deliberately larger than a new SKU: it joins what Commons can
 sell, who has evidenced pain, what must not be resent, what can happen next,
 and which external fact still blocks cash.
 
-The compiler reads five canonical public sources and every canonical outreach
+The compiler reads six canonical public sources and every canonical outreach
 suppression receipt. It validates prices against their owner catalogs, keeps
 cash/payment/reply/acceptance facts separate, reuses Smart Outreach's measured
 qualification decisions, ranks the work queue, and emits SHA-256 receipts for
@@ -21,6 +21,7 @@ python3 -m unittest test_right_now.py test_right_now_execution.py test_smart_out
 ```
 
 Buyer-facing first rung: [agent-triage.html](../../agent-triage.html).
+Canonical $199 terms: [diagnostic_offer.json](./diagnostic_offer.json).
 GPT packets: [action_packets.json](./action_packets.json).
 Demand ledger: [demand_ledger.json](./demand_ledger.json).
 Experiments: [experiments.json](./experiments.json).

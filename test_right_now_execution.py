@@ -48,6 +48,7 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(
             {row["id"]: row["price_usd"] for row in value["offers"]},
             {
+                "ho-agent-failure-diagnostic": 199,
                 "same-day-agent-survival-proof": 2500,
                 "ho-pixel-pack": 800,
                 "ho-meeting-packet": 1200,
@@ -61,6 +62,7 @@ class RightNowExecutionTests(unittest.TestCase):
             {row["path"] for row in receipts},
             {
                 "revenue/right_now/catalog.json",
+                "revenue/right_now/diagnostic_offer.json",
                 "revenue/smart_outreach/candidates.json",
                 "revenue/payment_ready/current_receipt.json",
                 "revenue/human_outcomes/offers.json",
@@ -114,7 +116,7 @@ class RightNowExecutionTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(result.stdout.strip(), "VALID 4 offers 4 opportunities 0 transports USD 0 cash")
+        self.assertEqual(result.stdout.strip(), "VALID 5 offers 4 opportunities 0 transports USD 0 cash")
 
     def test_cli_rejects_drifted_projection(self) -> None:
         drift = control.build_control()

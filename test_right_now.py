@@ -23,6 +23,11 @@ class RightNowRevenueTest(unittest.TestCase):
                 encoding="utf-8"
             )
         )
+        cls.diagnostic = json.loads(
+            (ROOT / "revenue" / "right_now" / "diagnostic_offer.json").read_text(
+                encoding="utf-8"
+            )
+        )
 
     def test_catalog_keeps_cash_and_checkout_truth_separate(self):
         truth = self.catalog["truth"]
@@ -49,11 +54,18 @@ class RightNowRevenueTest(unittest.TestCase):
         }
         entry = self.survival["entry_offer"]
         canonical[entry["id"]] = entry
+        canonical[self.diagnostic["id"]] = self.diagnostic
         for row in self.catalog["offers"]:
             self.assertIn(row["id"], canonical)
             self.assertEqual(row["price_usd"], canonical[row["id"]]["fixed_amount"])
             self.assertIn(row["start_route"].split("#", 1)[0], self.page)
             self.assertIn(row["id"], self.page)
+
+    def test_diagnostic_has_a_bounded_scope_first_contract(self):
+        self.assertEqual(self.diagnostic["fixed_amount"], 199)
+        self.assertEqual(self.diagnostic["payment_collection"], "BUYER_SPECIFIC_HANDOFF_REQUIRED")
+        self.assertEqual(len(self.diagnostic["acceptance"]), 5)
+        self.assertIn("agent-triage.html", self.diagnostic["source_paths"])
 
     def test_long_horizon_catalog_is_preserved(self):
         self.assertEqual(set(self.catalog["portfolio"]), {"NOW", "SOON", "LATER"})

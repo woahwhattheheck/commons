@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-28T03:13:00Z",
+  "as_of": "2026-08-30T18:24:00Z",
   "blockers": [
     {
       "condition": "A chargeable buyer path and processor receipt are independently evidenced.",
@@ -99,6 +99,18 @@
   "kind": "RIGHT_NOW_REVENUE_CONTROL",
   "offers": [
     {
+      "commons_bottleneck": "Deliver the Markdown and JSON receipt against all five acceptance checks after funding.",
+      "delivery_window": "one business day",
+      "founder_bottleneck": "Confirm the exact diagnostic scope and window, then issue the buyer-specific $199 payment handoff.",
+      "id": "ho-agent-failure-diagnostic",
+      "name": "Agent Failure Diagnostic",
+      "next_external_event": "A real buyer sends one client-safe failure sentence and accepts the exact diagnostic scope.",
+      "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
+      "price_usd": 199,
+      "rank": 1,
+      "start_route": "agent-triage.html"
+    },
+    {
       "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding.",
       "delivery_window": "one agreed business day",
       "founder_bottleneck": "Accept the exact sentence and window, then issue the buyer-specific payment handoff.",
@@ -107,7 +119,7 @@
       "next_external_event": "A real buyer sends the one-sentence failure and agrees to a start window.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 2500,
-      "rank": 1,
+      "rank": 2,
       "start_route": "agent-rescue.html"
     },
     {
@@ -119,7 +131,7 @@
       "next_external_event": "A real buyer posts a public interest signal naming the page and job.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 800,
-      "rank": 2,
+      "rank": 3,
       "start_route": "humans.html#interest"
     },
     {
@@ -131,7 +143,7 @@
       "next_external_event": "A real buyer posts the meeting name, date, and public inputs.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 1200,
-      "rank": 3,
+      "rank": 4,
       "start_route": "humans.html#interest"
     },
     {
@@ -143,7 +155,7 @@
       "next_external_event": "A real buyer names the issue and confirms they can accept or sponsor the merged result.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 2500,
-      "rank": 4,
+      "rank": 5,
       "start_route": "humans.html#interest"
     }
   ],
@@ -165,7 +177,11 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "f65207fdebfcf9dbff2d974c08536cf8199b7827eb03ceb59b95d84f5ddfb4d0"
+      "sha256": "05d3ffb76143fde2c958af182c2932fa43a6d60458127ff35c3250525d7616fa"
+    },
+    {
+      "path": "revenue/right_now/diagnostic_offer.json",
+      "sha256": "ea5cfa1ba7be0972f188f35149e18dab1733a79b000a0268eff64433df8d7cda"
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
