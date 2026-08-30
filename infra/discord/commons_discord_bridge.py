@@ -141,6 +141,28 @@ class Journal:
 JOURNAL = Journal(ROOT / env("COMMONS_JOURNAL", "infra/discord/commons-bridge.sqlite3"))
 
 
+RATE_LIMIT_RETRIES = 3
+MAX_RATE_LIMIT_DELAY_SECONDS = 60.0
+
+
+def rate_limit_delay(error: urllib.error.HTTPError) -> float:
+    """Return Discord/Slack's requested 429 delay within a bounded retry window."""
+    delay: Any = None
+    try:
+        payload = json.loads(error.read().decode("utf-8"))
+        if isinstance(payload, dict):
+            delay = payload.get("retry_after")
+    except (UnicodeDecodeError, json.JSONDecodeError):
+        pass
+    if delay is None and error.headers:
+        delay = error.headers.get("Retry-After")
+    try:
+        seconds = float(delay)
+    except (TypeError, ValueError):
+        seconds = 1.0
+    return min(MAX_RATE_LIMIT_DELAY_SECONDS, max(0.05, seconds))
+
+
 def request_json(url: str, *, token: str = "", method: str = "GET", body: Any = None,
                  headers: dict[str, str] | None = None) -> Any:
     hdr = {"User-Agent": "commons-discord-node/1", **(headers or {})}
@@ -150,15 +172,23 @@ def request_json(url: str, *, token: str = "", method: str = "GET", body: Any = 
     if data is not None:
         hdr["Content-Type"] = "application/json"
     req = urllib.request.Request(url, data=data, headers=hdr, method=method)
-    with urllib.request.urlopen(req, timeout=20) as response:
-        raw = response.read()
-        if not raw:
-            return {}
-        text = raw.decode("utf-8")
-        if text.lstrip().startswith("data:"):
-            chunks = [line[5:].strip() for line in text.splitlines() if line.startswith("data:")]
-            text = next((line for line in reversed(chunks) if line and line != "[DONE]"), "{}")
-        return json.loads(text)
+    retries = RATE_LIMIT_RETRIES
+    while True:
+        try:
+            with urllib.request.urlopen(req, timeout=20) as response:
+                raw = response.read()
+                if not raw:
+                    return {}
+                text = raw.decode("utf-8")
+                if text.lstrip().startswith("data:"):
+                    chunks = [line[5:].strip() for line in text.splitlines() if line.startswith("data:")]
+                    text = next((line for line in reversed(chunks) if line and line != "[DONE]"), "{}")
+                return json.loads(text)
+        except urllib.error.HTTPError as error:
+            if error.code != 429 or retries == 0:
+                raise
+            retries -= 1
+            time.sleep(rate_limit_delay(error))
 
 
 CHANNELS = {
