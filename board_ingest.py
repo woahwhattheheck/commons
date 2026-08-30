@@ -16,7 +16,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 
 import hub_pages
 import builds_ledger
@@ -336,6 +336,79 @@ ASSET_PATHS = [
 
 def now_ts():
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+# Match board.js FUTURE_SLACK_MS and hub_pages realTs. A clock that has not
+# happened yet is not a sort time. Cite ingest-carrier-ts leftover 2026-08-20.
+FUTURE_CLOCK_SLACK_S = 120
+
+
+def parse_clock_ts(value):
+    """Parse ISO-8601 or unix-epoch carrier/author clocks. Invalid is None."""
+    text = str(value or "").strip()
+    if not text:
+        return None
+    if re.fullmatch(r"\d+(?:\.\d+)?", text):
+        try:
+            n = float(text)
+        except ValueError:
+            return None
+        if n >= 1e12:
+            n = n / 1000.0
+        if 1e9 <= n < 2e10:
+            try:
+                return datetime.fromtimestamp(n, timezone.utc)
+            except (OSError, OverflowError, ValueError):
+                return None
+        return None
+    try:
+        iso = text[:-1] + "+00:00" if text.endswith("Z") else text
+        parsed = datetime.fromisoformat(iso)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def clock_is_future(value, now=None):
+    parsed = parse_clock_ts(value)
+    if parsed is None:
+        return False
+    now = now or datetime.now(timezone.utc)
+    return parsed > now + timedelta(seconds=FUTURE_CLOCK_SLACK_S)
+
+
+def effective_ordering_ts(meta, now=None):
+    """Clamp-on-read ordering time. Never mutates carrier_ts.
+
+    Prefer a present `ts`, then a present `carrier_ts`, then a present
+    `durable_ts`. A future author clock is not a sort time; empty falls
+    through to the existing id-desc tie. Rebuilds stay deterministic.
+    """
+    now = now or datetime.now(timezone.utc)
+    row = meta or {}
+    raw_ts = row.get("ts") or ""
+    carrier = row.get("carrier_ts") or ""
+    durable = row.get("durable_ts") or ""
+    if raw_ts and not clock_is_future(raw_ts, now):
+        return raw_ts
+    if carrier and not clock_is_future(carrier, now):
+        return carrier
+    if durable and not clock_is_future(durable, now):
+        return durable
+    return ""
+
+
+def stamp_carrier_ts(extra, fallback=""):
+    """Keep raw carrier_ts bytes. Fill only when missing. Never clamp."""
+    extra = extra if extra is not None else {}
+    raw = extra.get("carrier_ts")
+    if raw not in (None, ""):
+        extra["carrier_ts"] = raw
+        return raw
+    extra["carrier_ts"] = fallback or now_ts()
+    return extra["carrier_ts"]
 
 
 def as_claim(name: str) -> str:
@@ -1005,11 +1078,15 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
         extra = model_language.enrich_observer_metadata(extra, body)
     # Freeze the canonical event clocks before validating memory events, so the
     # writer and deterministic replay cannot disagree about an invalid ts.
+    # Clamp on read, not write: a future author clock stays on carrier_ts.
+    supplied_carrier_ts = extra.get("carrier_ts")
     carrier_ts = extra.get("carrier_ts") or ts or ""
     durable_ts = extra.get("durable_ts") or now_ts()
     ts = ts or carrier_ts or durable_ts
     extra["carrier_ts"] = carrier_ts or ts
     extra["durable_ts"] = durable_ts
+    if supplied_carrier_ts not in (None, ""):
+        extra["carrier_ts"] = supplied_carrier_ts
     extra["state"] = "DURABLE_PAGE"
     # Normalize explicit memory-event metadata so duplicate comparison uses the
     # canonical envelope. Ordinary posts need no memory record.
@@ -1766,12 +1843,20 @@ def list_posts():
         extra.setdefault("state", "DURABLE_PAGE")
         extra.setdefault("durable_ts", meta.get("ts") or "")
         extra.setdefault("carrier_ts", extra.get("carrier_ts") or meta.get("ts") or "")
-        rows.append((meta.get("ts") or "", extra, body))
+        clock = {
+            "ts": meta.get("ts") or extra.get("ts") or "",
+            "carrier_ts": extra.get("carrier_ts") or "",
+            "durable_ts": extra.get("durable_ts") or "",
+        }
+        # Clamp on read: a future author clock is not a sort time. Raw
+        # carrier_ts stays on the record. Cite leftover 2026-08-20.
+        rows.append((effective_ordering_ts(clock), extra, body))
     # INQUISITOR order 037: os.listdir order is nondeterministic and 89 groups
     # of posts tie on the same second, so ts alone reordered 154 posts.json
-    # positions between fresh rebuilds. Tie policy, explicit: newest ts first,
-    # and within a tied second, id DESCENDING — deterministic everywhere,
-    # including the lastseen/presence derivations.
+    # positions between fresh rebuilds. Tie policy, explicit: newest effective
+    # time first, and within a tied second, id DESCENDING — deterministic
+    # everywhere, including the lastseen/presence derivations. Future author
+    # clocks use durable_ts or empty so they cannot occupy the whole landing.
     rows.sort(key=lambda r: (r[0], (r[1].get("id") or "")), reverse=True)
     return rows
 
@@ -1830,6 +1915,7 @@ def feed_item(meta, body):
         "carrier_ts": meta.get("carrier_ts") or meta.get("ts") or "",
         "durable_ts": meta.get("durable_ts") or meta.get("ts") or "",
     }
+    item["effective_ts"] = effective_ordering_ts(item)
     for k in META_KEYS:
         if k in item or not meta.get(k):
             continue
@@ -3240,7 +3326,7 @@ def _ingest_ntfy_host(host, already, seen_ev):
         for k in META_KEYS:
             if payload.get(k) not in (None, ""):
                 extra[k] = payload.get(k)
-        extra["carrier_ts"] = ts or now_ts()
+        stamp_carrier_ts(extra, ts or now_ts())
         extra["durable_ts"] = now_ts()
         extra["carrier"] = extra.get("carrier") or "ntfy"
         want = (payload.get("want") or "").strip()
