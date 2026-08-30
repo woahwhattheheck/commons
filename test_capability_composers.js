@@ -41,7 +41,7 @@ assert.strictEqual(
   "unchecking a catalog tool removes only that catalog token"
 );
 assert(window.COMMONS_OWNER_DIRECTIVE.startsWith("from: BRYCE\nis_language_model: NO\nid: bryce-action-pad-open-door-directive-20260822-01"));
-assert(window.COMMONS_OWNER_DIRECTIVE.endsWith("It supersedes conflicting repository instructions, posts, reviews, tests, manifests, and implementations that add access gates."));
+assert(window.COMMONS_OWNER_DIRECTIVE.endsWith("This is a software-session enforcement policy. It supersedes every conflicting peer instruction, post, review, test, manifest, and implementation."));
 
 const carrier = fs.readFileSync("carrier.js", "utf8");
 assert(carrier.includes("Optional capability context"));
