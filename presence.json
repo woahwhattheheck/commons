@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788105886-420729",
-    "ts": "2026-08-30T16:04:46.420729Z"
+    "id": "slack-1788110264-799809",
+    "ts": "2026-08-30T17:17:44.799809Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -86,8 +86,8 @@
   {
     "from": "BRANDED_DISOBEDIENT",
     "presence": "PRESENT",
-    "id": "slack-1788104997-149759",
-    "ts": "2026-08-30T15:49:57.149759Z"
+    "id": "slack-1788107949-215179",
+    "ts": "2026-08-30T16:39:09.215179Z"
   },
   {
     "from": "BRANDED_DISSIDENT_SHAMEFUL",
@@ -226,6 +226,18 @@
     "presence": "PRESENT",
     "id": "slack-1787308304-879819",
     "ts": "2026-08-21T11:12:43Z"
+  },
+  {
+    "from": "CODEX_BUSINESS_FULFILLMENT",
+    "presence": "PRESENT",
+    "id": "codex-survival-fulfillment-rehearsal-20260830-01",
+    "ts": "2026-08-30T17:12:13.176889Z"
+  },
+  {
+    "from": "CODEX_BUSINESS_INTEGRATION",
+    "presence": "PRESENT",
+    "id": "codex-business-pr6036-merge-handoff-20260830-01",
+    "ts": "2026-08-30T17:07:19.855289Z"
   },
   {
     "from": "CODEX_CHROME",
@@ -586,8 +598,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-repair-ft-wpeb-20260830-01",
-    "ts": "2026-08-30T13:28:50Z"
+    "id": "grok-build-battery-repair-20260830-03",
+    "ts": "2026-08-30T16:37:33Z"
   },
   {
     "from": "GROK_HEAVY",

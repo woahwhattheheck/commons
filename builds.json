@@ -350,23 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 6018,
-   "author": "woahwhattheheck",
-   "title": "Stage one evidence-bound Composio buyer draft on current main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6018",
-   "base_freshness": {
-    "base_sha": "c54a791f63e044304dfe7845c5efbc502e5c36bb",
-    "main_sha": "6c5b847dd1f5142374f99da82496374874b3e9b5",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
