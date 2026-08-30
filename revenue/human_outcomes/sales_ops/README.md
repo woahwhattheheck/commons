@@ -16,7 +16,7 @@ the four named human-outcome jobs already landed by PR #2312. It does
 - `test_human_outcomes.py`
 
 Those blobs stay the catalog. This leftover adds private SOW/invoice
-readiness, an owner-only field manifest, current public buyer-side
+readiness, a private-surface field manifest, current public buyer-side
 URLs, founder-reviewed outreach drafts, and a rail decision.
 
 ## Truth gate
@@ -29,7 +29,7 @@ stored. No buyer is invented. Demand is UNKNOWN. No auth. No gate.
 
 | File | What it is |
 |---|---|
-| [owner_activation.json](./owner_activation.json) | Owner-only field manifest + rail decision. Surfaces, never values |
+| [owner_activation.json](./owner_activation.json) | Private-surface field manifest + rail decision. Agents may operate authorized provider sessions; this file stores surfaces, never values |
 | [sow_template.md](./sow_template.md) | Private SOW blanks for all four SKUs. Unsigned. Not a contract |
 | [invoice_template.md](./invoice_template.md) | Private invoice blanks. Fill only inside an official invoicing UI |
 | [targets.json](./targets.json) | Current public buyer-side URLs measured 2026-08-25. Venues, not named buyers |

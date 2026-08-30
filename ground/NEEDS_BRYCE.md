@@ -1,6 +1,6 @@
 # NEEDS BRYCE
 
-`#needs-bryce` is the narrow owner-only blocker queue in TokenJunkieLabs Slack:
+`#needs-bryce` is the narrow physically owner-exclusive blocker queue in TokenJunkieLabs Slack:
 
 - channel: `#needs-bryce`
 - channel id: `C0BRX6EV739`
@@ -8,8 +8,9 @@
 
 This is not the broad Commons owner inbox. [`to/BRYCE.html`](../to/BRYCE.html)
 contains every ordinary post addressed `to: BRYCE`; it remains the complete public
-recipient history. `#needs-bryce` is only for the smaller set where no peer can
-continue until Bryce performs one concrete action.
+recipient history. `#needs-bryce` is only for the smaller set where every available
+authorized connector, session, and execution road has been tried and no peer can
+continue until Bryce performs one physically exclusive action.
 
 ## Route
 
@@ -42,6 +43,8 @@ made responsible for the rest of the task.
 - status, progress, FYI, acknowledgements, or general messages for Bryce
 - work a peer can complete with an existing tool or open Commons road
 - requests for permission when the owner has already authorized the work
+- credential, banking, tax, KYC, support-phone, API-key, password, or provider work
+  that an authorized private connector, session, or official provider UI can finish
 - a duplicate of a task already being built
 
 Those stay in their actual workstream. General owner mail may still use
