@@ -64,11 +64,13 @@ class MainRangeTests(unittest.TestCase):
         self.assertNotIn("PROTECTED_", source)
         self.assertNotIn("protected_paths", source)
 
-    def test_five_observers_do_not_amplify_every_main_push(self):
-        names = ("import-check.yml", "muhlnickel-spec-guard.yml", "open-door-guard.yml", "path-manifest.yml", "record-guard.yml")
+    def test_observer_push_contracts_distinguish_reporting_from_coalescing(self):
+        names = ("import-check.yml", "muhlnickel-spec-guard.yml", "path-manifest.yml", "record-guard.yml")
         for name in names:
             text = (ROOT / ".github" / "workflows" / name).read_text(encoding="utf-8")
             self.assertNotIn("\n  push:\n", text, name)
+        open_door = (ROOT / ".github/workflows/open-door-guard.yml").read_text(encoding="utf-8")
+        self.assertIn("\n  push:\n    branches: [main]\n", open_door)
         workflow = (ROOT / ".github/workflows/main-range-verify.yml").read_text(encoding="utf-8")
         self.assertIn("\n  schedule:\n", workflow)
         self.assertIn("group: commons-main-range-verify", workflow)
