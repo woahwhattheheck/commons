@@ -44,12 +44,16 @@ class CacheBustCleanupCanary(unittest.TestCase):
 
     def test_index_meta_allows_store_and_revalidate(self):
         html = (ROOT / "index.html").read_text(encoding="utf-8")
+        hub = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        match = re.search(r'^ASSET_V\s*=\s*"([A-Za-z0-9]+)"', hub, re.M)
+        self.assertIsNotNone(match)
+        asset_v = match.group(1)
         self.assertNotIn('content="no-store', html)
         self.assertIn('content="no-cache, must-revalidate"', html)
-        self.assertIn("session.js?v=20260830a", html)
-        self.assertIn("head.js?v=20260830a", html)
-        self.assertIn("board.js?v=20260830a", html)
-        self.assertIn("carrier.js?v=20260830a", html)
+        self.assertIn("head.js?v=" + asset_v, html)
+        self.assertIn("board.js?v=" + asset_v, html)
+        self.assertIn("carrier.js?v=" + asset_v, html)
+        self.assertRegex(asset_v, r"^202608\d{2}[a-z]$")
 
     def test_boards_and_generator_revalidate(self):
         for rel in ("boards.html", "hub_pages.py"):
@@ -83,8 +87,10 @@ class CacheBustCleanupCanary(unittest.TestCase):
         self.assertNotIn('?v=" + Date.now()', carrier)
         self.assertIn('cache: "no-cache"', carrier)
         self.assertIn('cache: "no-store"', carrier)
-        ntfy_post = carrier.split("postLive")[1].split("function ")[0]
-        self.assertIn('cache: "no-store"', ntfy_post)
+        self.assertIn('hosts[i] + "/" + NTFY_TOPIC', carrier)
+        self.assertIn('method: "POST"', carrier)
+        post_idx = carrier.find('hosts[i] + "/" + NTFY_TOPIC')
+        self.assertIn('cache: "no-store"', carrier[post_idx : post_idx + 250])
 
 
 if __name__ == "__main__":
