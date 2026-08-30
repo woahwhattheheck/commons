@@ -149,17 +149,42 @@
         intakeAnchor(row, funnel) + checkoutAnchor(row, funnel) + funnelDetails(row, funnel) + '</article>';
     }).join("");
   }
-  function wireIntake() {
+  function selectIntake(sku) {
+    var row = data.listings.filter(function (item) { return item.id === sku; })[0];
+    if (!row || !data.funnels || !Object.prototype.hasOwnProperty.call(data.funnels, sku)) return false;
+    var funnel = data.funnels[sku];
+    if (!funnel.qualification || funnel.qualification.route === "NONE") return false;
     var body = document.getElementById("sku-intake-body");
     var selected = document.getElementById("sku-intake-selected");
+    selected.textContent = sku;
+    body.value = "PLAIN: Public, non-confidential Commons SKU purchase intent.\nOFFER_ID: " + sku +
+      "\nPUBLIC_OBJECTIVE:\nPUBLIC_ARTIFACT:\nPUBLIC_CONTACT_URL:\nSTART_WINDOW:\nSELECTED_DELIVERABLE (if applicable):";
+    return true;
+  }
+  function wireIntake() {
     Array.prototype.forEach.call(document.querySelectorAll(".funnel-intake"), function (link) {
       link.addEventListener("click", function () {
-        var sku = link.getAttribute("data-funnel-sku");
-        selected.textContent = sku;
-        body.value = "PLAIN: Public, non-confidential Commons SKU purchase intent.\nOFFER_ID: " + sku +
-          "\nPUBLIC_OBJECTIVE:\nPUBLIC_ARTIFACT:\nPUBLIC_CONTACT_URL:\nSTART_WINDOW:\nSELECTED_DELIVERABLE (if applicable):";
+        selectIntake(link.getAttribute("data-funnel-sku"));
       });
     });
+  }
+  function resolveHashIntake() {
+    if (!window.location.hash || window.location.hash.length < 2) return false;
+    var sku;
+    try {
+      sku = decodeURIComponent(window.location.hash.slice(1));
+    } catch (error) {
+      return false;
+    }
+    if (!data || !data.funnels || !Object.prototype.hasOwnProperty.call(data.funnels, sku)) return false;
+    var funnel = data.funnels[sku];
+    if (!funnel.qualification || funnel.qualification.route !== "commerce.html#" + sku) return false;
+    var target = document.getElementById(sku);
+    if (!target || !selectIntake(sku)) return false;
+    var intake = target.querySelector(".funnel-intake");
+    if (intake) intake.focus({preventScroll: true});
+    target.scrollIntoView({block: "start"});
+    return true;
   }
   function renderMetrics() {
     var id = document.getElementById("listing").value;
@@ -190,6 +215,7 @@
     renderPriority();
     renderCatalog();
     wireIntake();
+    resolveHashIntake();
     var select = document.getElementById("listing");
     select.innerHTML = data.listings.map(function (row) { return '<option value="' + esc(row.id) + '">' + esc(row.name) + '</option>'; }).join("");
     select.addEventListener("change", renderMetrics);

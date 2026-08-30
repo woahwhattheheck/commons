@@ -1233,6 +1233,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         html = (ROOT / "commerce.html").read_text(encoding="utf-8")
         self.assertIn(".checkout-active,.funnel-intake", html)
         self.assertIn('id="sku-intake"', html)
+        self.assertIn('src="./commerce.js?v=20260830a"', html)
         self.assertIn('name="to" value="OFFER"', html)
         self.assertIn('name="subject" value="COMMONS SKU PURCHASE INTENT"', html)
         self.assertIn("carrier.js", html)
@@ -1393,6 +1394,151 @@ process.stdout.write(JSON.stringify([
         self.assertEqual(rendered[2], "")
         self.assertIn('class="checkout-active"', rendered[3])
         self.assertIn('href="' + "https://buy.stripe.com/abcDEF123456" + '"', rendered[3])
+
+    def test_scope_first_checkout_hashes_resolve_after_async_catalog_render(self) -> None:
+        node = shutil.which("node")
+        self.assertIsNotNone(node, "Node.js is required to execute the intake deep-link resolver")
+        scope_first = [
+            row["id"]
+            for row in self.catalog["listings"]
+            if self.catalog["funnels"][row["id"]]["qualification"]["route"]
+            == "commerce.html#" + row["id"]
+        ]
+        self.assertEqual(
+            scope_first,
+            [
+                "sku-seat-20260826",
+                "sku-unlock-20260826",
+                "sku-boost-20260826",
+                "sku-whitebox-hour-20260826",
+                "sku-muhlnickel-titan-20260826",
+            ],
+        )
+
+        pay_js = (ROOT / "pay.js").read_text(encoding="utf-8").replace(
+            "function fillSlot(slot, listing, snapshot, funnel)",
+            "globalThis.fillSlot = function fillSlot(slot, listing, snapshot, funnel)",
+            1,
+        )
+        commerce_js = (ROOT / "commerce.js").read_text(encoding="utf-8")
+        commerce_js = commerce_js.replace(
+            "var data;", "var data = globalThis.__catalog;", 1
+        ).replace(
+            "function resolveHashIntake()",
+            "globalThis.resolveHashIntake = function resolveHashIntake()",
+            1,
+        )
+        harness = r"""
+globalThis.fetch = function () { return new Promise(function () {}); };
+var ids = %s;
+globalThis.__catalog = {listings: [], funnels: {}};
+ids.forEach(function (id) {
+  globalThis.__catalog.listings.push({id: id});
+  globalThis.__catalog.funnels[id] = {
+    qualification: {route: "commerce.html#" + id}
+  };
+});
+%s
+%s
+var checkout = {
+  status: "ACTIVE_CHARGEABLE",
+  provider: "stripe",
+  url: "https://buy.stripe.com/abcDEF123456",
+  link_active: true,
+  account_charges_enabled: true,
+  account_payouts_enabled: true,
+  capability_evidence: {reference: "stripe:test", observed_at: "2026-08-30T00:00:00Z"}
+};
+var snapshot = {
+  provider: {
+    name: "stripe", livemode: true, charges_enabled: true, payouts_enabled: true,
+    currently_due: []
+  },
+  inert_duplicate_urls: []
+};
+var payHrefs = ids.map(function (id) {
+  var slot = {innerHTML: ""};
+  globalThis.fillSlot(slot, {id: id, checkout: checkout}, snapshot, {readiness: "READY_FOR_QUALIFICATION"});
+  var match = slot.innerHTML.match(/href="([^"]+)"/);
+  return match && match[1];
+});
+
+var selected = {textContent: "choose a Start intake link above"};
+var body = {value: "DEFAULT INTAKE"};
+var focusCalls = [];
+var scrollCalls = [];
+globalThis.document = {
+  getElementById: function (id) {
+    if (id === "sku-intake-selected") return selected;
+    if (id === "sku-intake-body") return body;
+    if (ids.indexOf(id) !== -1) {
+      return {
+        querySelector: function (selector) {
+          if (selector !== ".funnel-intake") return null;
+          return {focus: function (options) { focusCalls.push([id, options.preventScroll]); }};
+        },
+        scrollIntoView: function (options) { scrollCalls.push([id, options.block]); }
+      };
+    }
+    return null;
+  }
+};
+globalThis.window = {location: {hash: ""}};
+
+var resolved = ids.map(function (id) {
+  selected.textContent = "choose a Start intake link above";
+  body.value = "DEFAULT INTAKE";
+  focusCalls = [];
+  scrollCalls = [];
+  window.location.hash = "#" + encodeURIComponent(id);
+  return {
+    result: globalThis.resolveHashIntake(),
+    selected: selected.textContent,
+    body: body.value,
+    focus: focusCalls,
+    scroll: scrollCalls
+  };
+});
+selected.textContent = "choose a Start intake link above";
+body.value = "DEFAULT INTAKE";
+focusCalls = [];
+scrollCalls = [];
+window.location.hash = "";
+var noHash = {
+  result: globalThis.resolveHashIntake(), selected: selected.textContent, body: body.value,
+  focus: focusCalls, scroll: scrollCalls
+};
+process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noHash: noHash}));
+""" % (json.dumps(scope_first), pay_js, commerce_js)
+        proc = subprocess.run(
+            [node, "-e", harness],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
+        rendered = json.loads(proc.stdout)
+        self.assertEqual(
+            rendered["payHrefs"], ["./commerce.html#" + sku for sku in scope_first]
+        )
+        for sku, state in zip(scope_first, rendered["resolved"]):
+            with self.subTest(sku=sku):
+                self.assertIs(state["result"], True)
+                self.assertEqual(state["selected"], sku)
+                self.assertIn("OFFER_ID: " + sku, state["body"])
+                self.assertEqual(state["focus"], [[sku, True]])
+                self.assertEqual(state["scroll"], [[sku, "start"]])
+        self.assertEqual(
+            rendered["noHash"],
+            {
+                "result": False,
+                "selected": "choose a Start intake link above",
+                "body": "DEFAULT INTAKE",
+                "focus": [],
+                "scroll": [],
+            },
+        )
 
     def test_commerce_surfaces_add_no_admission_gate(self) -> None:
         js = (ROOT / "commerce.js").read_text(encoding="utf-8")
