@@ -15,7 +15,7 @@
   ],
   "id": "website-prospect-boundary-repair-20260830-01",
   "name": "Website external prospect boundary",
-  "next_gap": "Current catalog has zero send-eligible unoccupied prospects. Add first-party prospect evidence and verified routes through Smart Outreach; never invent mailboxes or claim sends/bookings.",
+  "next_gap": "One evidence-bound Composio draft is staged, not sent. Review and dispatch it once from the live owner Gmail seat, then record the exact provider receipt; never claim sends, bookings, or cash before provider evidence.",
   "owner_subsystem": "website-people-email-book",
   "public_entrypoint": "website-people-email-book.html",
   "related": {
