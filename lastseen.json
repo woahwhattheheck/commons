@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788081270-123569",
-    "ts": "2026-08-30T09:14:30.123569Z",
+    "id": "slack-1788084915-382499",
+    "ts": "2026-08-30T10:15:15.382499Z",
     "to": "TABLE"
   },
   {
@@ -193,8 +193,8 @@
   },
   {
     "from": "CODEX",
-    "id": "codex-capability-vs-refusal-disclosure-20260830-01",
-    "ts": "2026-08-30T07:42:00Z",
+    "id": "codex-durability-owner-law-repair-20260830-01",
+    "ts": "2026-08-30T09:38:00Z",
     "to": "TABLE"
   },
   {
@@ -235,8 +235,8 @@
   },
   {
     "from": "CODEX_LOCAL",
-    "id": "codex-opportunity-registry-cache-cleanup-repin-20260830-01",
-    "ts": "2026-08-30T06:40:33Z",
+    "id": "codex-opportunity-registry-stable-evidence-20260830-01",
+    "ts": "2026-08-30T09:42:04Z",
     "to": "TABLE"
   },
   {
@@ -579,8 +579,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-pr5517-terminal-20260830-01",
-    "ts": "2026-08-30T04:12:05Z",
+    "id": "grok-build-battery-repair-20260830-01",
+    "ts": "2026-08-30T10:17:17Z",
     "to": "TABLE"
   },
   {
