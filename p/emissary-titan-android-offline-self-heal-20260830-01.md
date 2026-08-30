@@ -27,6 +27,10 @@ the recycled process ids. If ADB becomes online but Android still misses the ful
 recycles that same exact process once and retries one bounded boot attempt; it never loops or starts alongside a
 process that failed to exit.
 
+Online and boot-complete success are bound to the exact AVD name reported by `adb emu avd name`, so a different
+peer emulator cannot satisfy the proof. Process recycling matches the complete `-avd <name>` and `-no-window`
+command-line tokens, so a similarly prefixed AVD cannot be targeted.
+
 ## Exact paths
 
 - `host/titan_hands/start_android_headless.ps1`

@@ -30,9 +30,20 @@ function Get-AdbEmulators {
     foreach ($rawLine in @(& $adb devices 2>$null)) {
         $line = "$rawLine".Trim()
         if ($line -match '^(emulator-\d+)\s+(device|offline)$') {
+            $serial = $Matches[1]
+            $state = $Matches[2]
+            $reportedAvd = $null
+            if ($state -eq 'device') {
+                $reportedAvd = @(& $adb -s $serial emu avd name 2>$null |
+                    ForEach-Object { "$($_)".Trim() } |
+                    Where-Object { $_ -and $_ -ne 'OK' } |
+                    Select-Object -First 1)
+                if ($reportedAvd.Count -gt 0) { $reportedAvd = $reportedAvd[0] }
+            }
             $records += [pscustomobject]@{
-                serial = $Matches[1]
-                state = $Matches[2]
+                serial = $serial
+                state = $state
+                avd = $reportedAvd
             }
         }
     }
@@ -40,16 +51,13 @@ function Get-AdbEmulators {
 }
 
 function Get-ExactAvdProcesses {
-    $plainArgument = "-avd $AvdName"
-    $quotedArgument = "-avd `"$AvdName`""
+    $escapedAvdName = [regex]::Escape($AvdName)
+    $avdArgumentPattern = '(?i)(?:^|\s)-avd\s+(?:"' + $escapedAvdName + '"|' + $escapedAvdName + ')(?=\s|$)'
+    $headlessArgumentPattern = '(?i)(?:^|\s)-no-window(?=\s|$)'
     return @(Get-CimInstance -ClassName Win32_Process -Filter "Name = 'emulator.exe'" `
         -ErrorAction SilentlyContinue | Where-Object {
             $commandLine = "$($_.CommandLine)"
-            $namesExactAvd =
-                $commandLine.IndexOf($plainArgument, [System.StringComparison]::OrdinalIgnoreCase) -ge 0 -or
-                $commandLine.IndexOf($quotedArgument, [System.StringComparison]::OrdinalIgnoreCase) -ge 0
-            $namesExactAvd -and
-                $commandLine.IndexOf('-no-window', [System.StringComparison]::OrdinalIgnoreCase) -ge 0
+            $commandLine -match $avdArgumentPattern -and $commandLine -match $headlessArgumentPattern
         })
 }
 
@@ -58,7 +66,9 @@ function Get-ExactAvdProcesses {
 # recoverable transport interruption into a persistent collision. Reconnect first; if the exact named
 # headless process remains stale, recycle only that process. Userdata and AVD files are never removed or wiped.
 $emulatorRecords = @(Get-AdbEmulators)
-$online = $emulatorRecords | Where-Object { $_.state -eq 'device' } | Select-Object -First 1
+$online = $emulatorRecords | Where-Object {
+    $_.state -eq 'device' -and $_.avd -eq $AvdName
+} | Select-Object -First 1
 $offline = @($emulatorRecords | Where-Object { $_.state -eq 'offline' })
 $exactAvdProcesses = @(Get-ExactAvdProcesses)
 $offlineReconnectAttempted = $false
@@ -71,7 +81,9 @@ if (-not $online -and ($offline.Count -gt 0 -or $exactAvdProcesses.Count -gt 0))
     $reconnectDeadline = [DateTime]::UtcNow.AddSeconds([Math]::Min(12, [Math]::Max(2, $TimeoutSeconds)))
     while ([DateTime]::UtcNow -lt $reconnectDeadline) {
         $emulatorRecords = @(Get-AdbEmulators)
-        $online = $emulatorRecords | Where-Object { $_.state -eq 'device' } | Select-Object -First 1
+        $online = $emulatorRecords | Where-Object {
+            $_.state -eq 'device' -and $_.avd -eq $AvdName
+        } | Select-Object -First 1
         if ($online) { break }
         Start-Sleep -Seconds 1
     }
@@ -162,9 +174,11 @@ function Wait-HeadlessBoot {
                 throw "Headless Android emulator exited before ADB registration (exit $($Process.ExitCode)). $tail"
             }
         }
-        $line = & $adb devices | Select-String -Pattern '^(emulator-\d+)\s+device$' | Select-Object -First 1
-        if ($line) {
-            $candidateSerial = $line.Matches[0].Groups[1].Value
+        $candidate = @(Get-AdbEmulators | Where-Object {
+            $_.state -eq 'device' -and $_.avd -eq $AvdName
+        } | Select-Object -First 1)
+        if ($candidate.Count -gt 0) {
+            $candidateSerial = $candidate[0].serial
             $booted = (& $adb -s $candidateSerial shell getprop sys.boot_completed 2>$null).Trim()
             if ($booted -eq '1') { return $candidateSerial }
         }
