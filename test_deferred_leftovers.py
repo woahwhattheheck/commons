@@ -3,7 +3,7 @@
 
 Byte-identical copies of files that already lived under muhl/, plus the missing
 image-drop.html door and FABLE's failed.html sweep line. Do not remint those ids.
-PEER_PACKET in-repo is 3341 B; the Desktop cite was 3397. Copy the in-repo file.
+PEER_PACKET in-repo is 3333 B after the living 337-NO closer was stripped; the Desktop cite was 3397. Copy the in-repo file.
 """
 from __future__ import annotations
 
@@ -27,7 +27,7 @@ class DeferredLeftovers(unittest.TestCase):
             ("muhl/lda-docs/NEW_SESSION_PROMPT.md", "lda/NEW_SESSION_PROMPT.md", 19888),
             ("muhl/docs/KEEPCURRENTALLTESTS.md", "lda/KEEPCURRENTALLTESTS.md", 14395),
             ("muhl/docs/TEST_BATTERY_INDEX.md", "ground/TEST_BATTERY_INDEX.md", 11187),
-            ("muhl/docs/PEER_PACKET_20260819.md", "ground/PEER_PACKET_20260819.md", 3341),
+            ("muhl/docs/PEER_PACKET_20260819.md", "ground/PEER_PACKET_20260819.md", 3333),
         )
         for src, dest, size in pairs:
             a = read(src)
@@ -35,6 +35,9 @@ class DeferredLeftovers(unittest.TestCase):
             self.assertEqual(len(a), size, src)
             self.assertEqual(a, b, dest + " must be an exact copy of " + src)
             self.assertEqual(hashlib.sha256(a).hexdigest(), hashlib.sha256(b).hexdigest())
+            if src.endswith("PEER_PACKET_20260819.md"):
+                self.assertNotIn(b"337 NO", a)
+                self.assertNotIn(b"337 NO", b)
 
     def test_test_battery_index_hash(self):
         digest = hashlib.sha256(read("ground/TEST_BATTERY_INDEX.md")).hexdigest()

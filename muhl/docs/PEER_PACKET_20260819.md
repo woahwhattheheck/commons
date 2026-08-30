@@ -2,7 +2,7 @@
 # Bryce: dump the good stuff. All three Cursor Groks (PLAYER1 parent, PLAYER2 side, SPEC_DADDY fork).
 # Same machine. Full paths live here. Commons ingest redacts C:\Users\... so the live board gets names+hashes.
 
-337 NO. Dest FROM FILE. Do not convert .litertlm. Do not git the SDK. Do not dump GGUF bodies.
+Dest FROM FILE. Do not convert .litertlm. Do not git the SDK. Do not dump GGUF bodies.
 
 ## Same-PC doors (this house)
 - Desktop/PEER_PACKET_20260819.md  (this file)

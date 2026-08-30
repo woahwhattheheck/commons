@@ -82,6 +82,15 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
                 hits.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(hits, [], f"invented signature still in living sources: {hits}")
 
+    def test_player2_projection_does_not_reintroduce_invented_closer(self) -> None:
+        """memory/PLAYER2 is a living projection; the historical p/ receipt stays untouched."""
+        for rel in ("memory/PLAYER2.json", "memory/PLAYER2.html"):
+            raw = (ROOT / rel).read_bytes()
+            self.assertNotIn(SIGNATURE.encode("utf-8"), raw, rel)
+        receipt = ROOT / "p/p2-memory-create-20260821-01.md"
+        self.assertTrue(receipt.is_file(), receipt)
+        self.assertIn(SIGNATURE, receipt.read_text(encoding="utf-8"))
+
     def test_historical_chargeable_checkout_receipt_blob_is_untouched(self) -> None:
         import subprocess
 
