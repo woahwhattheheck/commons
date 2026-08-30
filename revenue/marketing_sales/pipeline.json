@@ -654,8 +654,8 @@
     "payment_evidence": 0,
     "positive_human_replies": 0,
     "production_survival_cash_usd": 0,
-    "production_survival_sends": 1,
-    "public_email_routes_in_seed": 1,
+    "production_survival_sends": 5,
+    "public_email_routes_in_seed": 5,
     "scope_acceptances": 0,
     "source_rows_labeled_qualified": 14,
     "verified_organizations_in_seed": 3

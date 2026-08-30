@@ -170,8 +170,8 @@ class MarketingSalesTests(unittest.TestCase):
         self.assertEqual(len(pipeline["research_queue"]), 50)
         self.assertEqual(pipeline["seed_audit"]["source_rows_labeled_qualified"], 14)
         self.assertEqual(pipeline["seed_audit"]["verified_organizations_in_seed"], 3)
-        self.assertEqual(pipeline["seed_audit"]["public_email_routes_in_seed"], 1)
-        self.assertEqual(pipeline["seed_audit"]["production_survival_sends"], 1)
+        self.assertEqual(pipeline["seed_audit"]["public_email_routes_in_seed"], 5)
+        self.assertEqual(pipeline["seed_audit"]["production_survival_sends"], 5)
         self.assertEqual(pipeline["current"]["cash_usd"], 0)
 
     def test_pipeline_rejects_false_counts_gaps_queue_and_boundaries(self) -> None:

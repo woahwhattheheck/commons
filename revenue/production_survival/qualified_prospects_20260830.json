@@ -8,9 +8,9 @@
     "pain_date": "2026-08-23",
     "fit_rationale": "Binary test PASSES. Live production AI-agent workflow hangs with no error and no timeout; author already built a watchdog that restarts the container after 60s stuck executions and says that recovers the system but not the customer message. A same-day stop path, rollback path, and durable receipt is exactly the gap they described.",
     "contact_route": {
-      "kind": "public_thread",
-      "value_or_url": "https://github.com/n8n-io/n8n/issues/36886",
-      "where_found_url": "https://github.com/n8n-io/n8n/issues/36886"
+      "kind": "email",
+      "value_or_url": "dijalmap@gmail.com",
+      "where_found_url": "https://github.com/Dijalma-Porto/lojinhaAPIAutomacao/commit/df6fc610157da6b5e3748cb7d644a04b87005b4e"
     },
     "disqualifiers": "",
     "confidence": "HIGH"
@@ -24,9 +24,9 @@
     "pain_date": "2026-04-05",
     "fit_rationale": "Binary test PASSES. They run deepagents SubAgentMiddleware on LangGraph Cloud Plus (EU); 3–10 minute sub-agents are silently replayed at ~180s with identical args and no preceding model node. That is duplicate side-effects plus cost, and they asked for the recommended pattern for long tool calls. Stop + idempotent receipt is the product.",
     "contact_route": {
-      "kind": "public_thread",
-      "value_or_url": "https://github.com/langchain-ai/langgraph/issues/7417",
-      "where_found_url": "https://github.com/langchain-ai/langgraph/issues/7417"
+      "kind": "email",
+      "value_or_url": "marioalessandronapoli@gmail.com",
+      "where_found_url": "https://github.com/MarioAlessandroNapoli/langgraph-threads-migration/commit/ac26f39274bfa4466dc14b88661b279bdf7efd60"
     },
     "disqualifiers": "Vendor-adjacent: GitHub also lists public repo 'aegra' described as an open-source alternative to LangGraph Platform. Confirm they would buy as an Expleo/LangGraph Cloud operator, not as a competing runtime vendor.",
     "confidence": "HIGH"
@@ -72,11 +72,11 @@
     "pain_date": "2026-01-30",
     "fit_rationale": "Binary test PASSES. Agent retries slight variations of the same broken Databricks SQL until recursion_limit=20. Stop/loop-detection would have halted before the recursion wall. UNVERIFIED whether the looping run is customer-facing production versus an internal agent; system info is Darwin, logs look like an app route.",
     "contact_route": {
-      "kind": "public_thread",
-      "value_or_url": "https://github.com/langchain-ai/langgraph/issues/6731",
-      "where_found_url": "https://github.com/langchain-ai/langgraph/issues/6731"
+      "kind": "email",
+      "value_or_url": "jacobreesmontgomery@gmail.com",
+      "where_found_url": "https://github.com/jacobreesmontgomery/GoonSquadAI/commit/b2a18219abfcdc3601d15c810cdcf4f727f10d85"
     },
-    "disqualifiers": "GitHub profile https://github.com/jacobreesmontgomery has no email and no website. No company listed.",
+    "disqualifiers": "No company is listed. The email route is public commit metadata from the prospect's own repository, not a company-domain address.",
     "confidence": "HIGH"
   },
   {
@@ -152,11 +152,11 @@
     "pain_date": "2025-12-19",
     "fit_rationale": "Binary test PASSES on rollback. AgentFlow V2 state corruption causes duplicate node execution; author says the only recovery is rebuilding the project from scratch. A rollback path plus a receipt that a node ran once would be the proof. Recency is ~8 months (Dec 2025).",
     "contact_route": {
-      "kind": "public_thread",
-      "value_or_url": "https://github.com/FlowiseAI/Flowise/issues/5603",
-      "where_found_url": "https://github.com/FlowiseAI/Flowise/issues/5603"
+      "kind": "email",
+      "value_or_url": "elio1.fiore@gmail.com",
+      "where_found_url": "https://github.com/elio1fiore/flowise-whatsapp-bot/commit/4f3f6880d137097bee5a28c1e3e41fee89790e91"
     },
-    "disqualifiers": "No email/website on https://github.com/elio1fiore. Location Italy. Recency slightly older than the ~6 month hunt window.",
+    "disqualifiers": "Location Italy. Recency is slightly older than the ~6 month hunt window. The email route is public commit metadata from the prospect's own repository.",
     "confidence": "MEDIUM"
   },
   {
