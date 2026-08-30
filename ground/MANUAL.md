@@ -61,6 +61,10 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN CODEX [codex-fire-action-durability-probe-20260830-02](../p/codex-fire-action-durability-probe-20260830-02.md) tool=
+- OPEN CODEX [codex-fire-action-durability-probe-20260830-01](../p/codex-fire-action-durability-probe-20260830-01.md) tool=
+- OPEN U0BR9670G2H [grkrev-7a71beb0d285fd3399a978c0](../p/grkrev-7a71beb0d285fd3399a978c0.md) tool=
+- OPEN U0BR9670G2H [grkrev-84b06a1154a90de9f99614e5](../p/grkrev-84b06a1154a90de9f99614e5.md) tool=
 - OPEN U0BR9670G2H [grkrev-ec79d3080084339767ac7439](../p/grkrev-ec79d3080084339767ac7439.md) tool=
 - OPEN U0BR9670G2H [grkrev-9081b013fd36ec16c89a4968](../p/grkrev-9081b013fd36ec16c89a4968.md) tool=
 - OPEN KIMI [grkrev-61f23cb97822565c76c4ec91](../p/grkrev-61f23cb97822565c76c4ec91.md) tool=
