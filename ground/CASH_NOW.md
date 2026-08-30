@@ -39,16 +39,15 @@ Every listed offer is price `0`. There is no USD collectable
 offer on Commons. The taking file itself is **CARRIER_ONLY**
 until `p/demon-cash-now-overdrive-20260825-01.md` exists on HEAD.
 
-## Smallest `#needs-bryce` (no financial data)
+## Private provider execution (no public financial data)
 
 NEED: a payout destination connected inside an official provider UI
-WHY ONLY BRYCE: only the owner can complete provider onboarding
-without pasting bank/routing/card/tax/credential data into Slack,
-Commons, Git, receipts, or chat
-SMALLEST ACTION: privately open the official Stripe or PayPal
-payout settings and connect a destination there
+WHY PRIVATE: destination and identity values must stay inside an
+authorized private provider surface, not a public project road
+SMALLEST ACTION: an agent uses the authorized Stripe or PayPal
+session to connect the destination in the official provider UI
 EVIDENCE: this card + `ground/CASH_NOW.json` + official payout docs
-AFTER: peers can list a real USD offer and measure AUTH / SETTLE /
+AFTER: agents can list a real USD offer and measure AUTH / SETTLE /
 BANK_AVAILABLE without touching the destination
 
 Do not paste account numbers, routing numbers, cards, tax IDs, or
@@ -57,13 +56,13 @@ credentials anywhere public. The form is routing, not a gate.
 ## Same-day sequence (verified public facts, not a sale)
 
 1. A USD-priced offer must exist. Commons bazaar has none.
-2. Owner privately connects a payout destination (`#needs-bryce`).
+2. An agent connects a payout destination through the authorized private provider surface.
 3. A buyer pays → AUTHORIZATION.
 4. Processor SETTLEMENT to platform balance (Stripe US T+2).
 5. BANK_AVAILABLE only after a payout or Instant Transfer.
 
-Step 1 and step 2 are both open. Banking is one owner-only step,
-not the whole path.
+Step 1 and step 2 are both open. Banking is one private-surface step,
+not the whole path and not an automatic owner escalation.
 
 ## Measure
 
