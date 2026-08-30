@@ -1,8 +1,8 @@
-# Binary acceptance lock
+# Binary acceptance and capture lock
 
 This operationalizes the already-published `same-day-agent-survival-proof`; it does not change its price, term, or ladder.
 
-Before payment is authorized, Bernays and the buyer write one binary test in this form:
+The public Stripe checkout collects the buyer's non-confidential failure sentence and asks Stripe to place a manual-capture USD 2,500 authorization. Checkout completion is not scope acceptance and does not capture the amount. Before capture, Bernays and the buyer write one binary test in this form:
 
 > Given [public or synthetic input], when [named failure] is forced, the delivered proof [observable recovery outcome] and its receipt shows [named fields].
 
@@ -10,12 +10,14 @@ The written acceptance records the exact input, expected output, public-safe env
 
 ## Quote-to-clock path
 
-1. The buyer sends the one non-confidential sentence.
-2. Bernays returns the Given/When/Then test, delivery environment, exact America/New_York window, exclusions, fixed USD 2,500 price, and refund choice.
-3. The buyer accepts those terms in writing.
-4. A customer-specific hosted invoice is created under [`../payment_ready/processor_handoff.md`](../payment_ready/processor_handoff.md). No reusable payment link or private processor data is posted to Commons.
-5. The delivery clock begins only at the agreed `window_start` after the processor confirms cleared authorization. An email, invoice draft, or pending processor event does not start the clock.
-6. If the exact binary test has not passed by `window_end`, the authorized amount is refunded unless the buyer elects in writing to receive one free next-business-day repair attempt instead.
+1. The buyer uses the provider-hosted link in [`../../agent-rescue.html`](../../agent-rescue.html), entering the required non-confidential failure sentence and, optionally, one public evidence link.
+2. Successful checkout creates a Stripe customer and attempts a USD 2,500 authorization with manual capture. It is not capture, settlement, payout, or cash.
+3. Bernays returns the Given/When/Then test, delivery environment, exact America/New_York window, exclusions, fixed USD 2,500 price, and refund choice.
+4. The buyer accepts those terms in writing before capture. If the scope is a bad fit or is not accepted, the authorization is canceled and no delivery clock starts.
+5. For an accepted scope, the authorized amount is captured through Stripe. The delivery clock begins only at the agreed `window_start` after confirmed capture; a link open, checkout draft, pending event, or authorization alone does not start it.
+6. If the exact binary test has not passed by `window_end`, the captured authorized amount is refunded unless the buyer elects in writing to receive one free next-business-day repair attempt instead.
+
+The link has a one-completed-session limit so fulfillment stays one buyer at a time. After a completed checkout, do not reactivate it or mint a duplicate until that authorization is canceled or the accepted proof is delivered and capacity is explicitly available again.
 
 The handoff includes:
 
@@ -27,7 +29,7 @@ The handoff includes:
 
 The entry proof excludes credentials, private data, PII/PHI, authentication, billing, production migration, ongoing hosting or SLA, and all White Box/model-file work. Those exclusions are not silently traded for a shorter deadline.
 
-`AUTHORIZATION != SETTLEMENT != PAYOUT != BANK_AVAILABLE`. A public receipt may contain only the permitted opaque processor reference and hash described in the existing processor handoff; it does not contain payment credentials or prove bank availability.
+`AUTHORIZATION != CAPTURE != SETTLEMENT != PAYOUT != BANK_AVAILABLE`. A public receipt may contain only the public link identifier or the permitted opaque processor reference and hash described in the existing processor handoff; it does not contain payment credentials or prove capture, settlement, payout, or bank availability.
 
 The included synthetic example forces a timeout after an external effect but before the completion checkpoint. Recovery reuses an idempotency key, records a dedupe hit, and finishes with one external effect:
 

@@ -176,7 +176,18 @@ class TestMuhlSwarmDc(unittest.TestCase):
         self.assertEqual(row["misses"], [])
         self.assertEqual(row["remint_missing"], [])
         self.assertGreaterEqual(len(row["remint_present"]), 6)
-        self.assertEqual(row["queue_states"], EXPECTED_QUEUE)
+        for name, state in EXPECTED_QUEUE.items():
+            self.assertEqual(row["queue_states"].get(name), state, name)
+        self.assertEqual(
+            row["queue_states"].get("seth-live-dc-new-ring-20260830-01.json"),
+            "PACKET_OK",
+        )
+        unexpected = {
+            name: state
+            for name, state in row["queue_states"].items()
+            if name not in EXPECTED_QUEUE and state != "PACKET_OK"
+        }
+        self.assertEqual(unexpected, {})
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertTrue(row["no_auth"])
         self.assertTrue(row["no_gate"])

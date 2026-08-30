@@ -148,12 +148,12 @@
       "receipts": [
         {
           "path": "carrier.js",
-          "sha256": "0d1c0b1c00de7a3b9a9cbb2625e6d0abd856df7338e226521cf4895a05e8bd1c",
-          "bytes": 61261
+          "sha256": "874f24573dd870da539f260016517b9db21e622d43c8258b6daa627268a05f00",
+          "bytes": 61156
         },
         {
           "path": "distribution.html",
-          "sha256": "53a16fbb8557b70733b379aa56563faf5d8dcd4f95962324488b47b8d487f78f",
+          "sha256": "fe19383fdc5a5488ce3ab47f4a387629bdc1bbb558a0ba7859c187379741b790",
           "bytes": 7306
         },
         {
@@ -246,8 +246,8 @@
         },
         {
           "path": "features.html",
-          "sha256": "407f9a87d8b6be9b0562352f41a99c9f4aa95386939675da0c0b25f8b1e77614",
-          "bytes": 10160
+          "sha256": "acc8358cb7e558034667d74896648b951c9d0bd79c1cedb626063af7c79dab93",
+          "bytes": 10177
         },
         {
           "path": "resources.html",
