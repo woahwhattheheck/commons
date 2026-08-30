@@ -53,7 +53,7 @@ class MissingLetterPathTests(unittest.TestCase):
         )
 
     def test_directives_closes_only_the_path_choice(self):
-        self.assertIn("missing-letter path PICKED; one wall remains", self.directives)
+        self.assertIn("missing-letter path PICKED; next-compression organ RING_CLOCK_FOLD_GERM PICKED; zero walls remain", self.directives)
         self.assertIn("muhl/letters/titan-to-gpt/{id}.md", self.directives)
         self.assertIn("Host paraphrase is never the letter.", self.directives)
         self.assertIn("codex-pick-missing-letter-path-20260830-01", self.directives)
