@@ -17,6 +17,7 @@ import json
 import os
 import urllib.error
 import urllib.request
+from datetime import datetime, timezone
 
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
@@ -25,6 +26,7 @@ HOSTS = list(NTFY_HOSTS)
 TOPIC = NTFY_TOPIC
 HOME = HOSTS[0]
 SINCE = "24h"
+REJECTS_PATH = "rejects.json"
 
 
 def _host(value: object) -> str:
@@ -193,6 +195,55 @@ def replay(message: str) -> bool:
         return False
 
 
+def _now_ts() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def record_relay_drop(event: dict) -> bool:
+    """Expose one failed replay on FAILED POSTS without suppressing its retry."""
+    post_id = str(event.get("id") or "")
+    source_host = _host(event.get("source_host") or event.get("host"))
+    if not post_id or not source_host:
+        return False
+    try:
+        with open(REJECTS_PATH, encoding="utf-8") as handle:
+            rows = json.load(handle)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        rows = []
+    if not isinstance(rows, list):
+        rows = []
+    if any(
+        row.get("reason") == "relay-drop"
+        and row.get("pid") == post_id
+        and _host(row.get("host")) == source_host
+        for row in rows
+        if isinstance(row, dict)
+    ):
+        return False
+
+    payload = event.get("payload") if isinstance(event.get("payload"), dict) else {}
+    rows.insert(
+        0,
+        {
+            "id": post_id,
+            "from": str(payload.get("from") or ""),
+            "to": str(payload.get("to") or ""),
+            "reason": "relay-drop",
+            "host": source_host,
+            "pid": post_id,
+            "event_id": str(event.get("event_id") or ""),
+            "destination_host": _host(HOME),
+            "ts": _now_ts(),
+            "message": f"replay {source_host} -> {_host(HOME)} failed; next run retries {post_id}",
+            "state": "INGEST_ERROR",
+        },
+    )
+    with open(REJECTS_PATH, "w", encoding="utf-8") as handle:
+        json.dump(rows[:100], handle, ensure_ascii=False, indent=2)
+        handle.write("\n")
+    return True
+
+
 def main() -> int:
     polled = []
     for host in HOSTS:
@@ -215,8 +266,9 @@ def main() -> int:
             replayed += 1
             print(f"replay {post_id} from {event['source_host']}")
         else:
-            # No durable retry ledger is needed: the same remote event remains
-            # pollable and the next run retries the same id without reminting.
+            # The same remote event remains pollable, so keep retrying its
+            # caller-supplied id while making the failed attempt visible.
+            record_relay_drop(event)
             print(f"retry {post_id} from {event['source_host']}")
     print(f"done unique={len(union)} replayed={replayed} skipped={skipped}")
     return 0
