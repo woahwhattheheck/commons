@@ -14,10 +14,11 @@ import re
 from typing import Any
 
 
-SCHEMA_VERSION = "grokcom-revenue-orchestrator/v2"
+SCHEMA_VERSION = "grokcom-revenue-orchestrator/v3"
 CONNECTOR_ORIGIN = "COMMONS_GROKCOM_REVENUE"
 STAGES = frozenset({"INTAKE", "GROKCOM_RESULT", "GPT_REVIEW", "GROK_CONTINUE", "GIT_LAND", "SALES_OUTCOME"})
 MODES = frozenset({"AUTO", "BUILD", "RESEARCH", "SALES", "OPERATE"})
+CAPACITY_STATES = frozenset({"AVAILABLE", "EXHAUSTED", "UNKNOWN"})
 REVIEW_CHECKS = (
     "artifact_readback",
     "focused_tests",
@@ -97,6 +98,24 @@ def _mode(requested: Any, text: str) -> str:
     if any(word in lowered for word in ("build", "implement", "fix", "code", "commit", "pull request", " pr ")):
         return "BUILD"
     return "OPERATE"
+
+
+def _grokcom_capacity(value: Any) -> dict[str, Any]:
+    """Describe observed capacity without accepting credentials or inferring availability."""
+    row = _object(value, "grokcom_capacity")
+    state = _string(row.get("state") or "UNKNOWN", "grokcom_capacity.state", maximum=32).upper()
+    if state not in CAPACITY_STATES:
+        state = "UNKNOWN"
+    evidence = _string(row.get("evidence"), "grokcom_capacity.evidence", maximum=2_000)
+    observed_at = _string(row.get("observed_at"), "grokcom_capacity.observed_at", maximum=128)
+    if state == "AVAILABLE" and (not evidence or not observed_at):
+        state = "UNKNOWN"
+    return {
+        "state": state,
+        "evidence": evidence,
+        "observed_at": observed_at,
+        "can_submit": state == "AVAILABLE",
+    }
 
 
 def _event_text(value: Any) -> str:
@@ -392,6 +411,7 @@ def orchestrate(arguments: Any) -> dict[str, Any]:
     })[:24]
     truth = _truth(args.get("revenue"))
     sales = _sales_packet(truth)
+    capacity = _grokcom_capacity(args.get("grokcom_capacity"))
     is_echo = event["connector_origin"] == CONNECTOR_ORIGIN
     response: dict[str, Any] = {
         "ok": True,
@@ -408,18 +428,30 @@ def orchestrate(arguments: Any) -> dict[str, Any]:
             "loop_disposition": "OWN_ECHO_NO_POST" if is_echo else "PROCESS_AND_REPLY",
         },
         "sales": sales,
+        "grokcom_capacity": capacity,
         "cash_claimed": False,
     }
     if is_echo:
         response.update({"state": "ECHO_PROCESSED", "next": "NO_POST", "slack_reply": ""})
         return response
     if stage == "INTAKE":
+        if not capacity["can_submit"]:
+            response["connector"].update({
+                "post_reply": False,
+                "loop_disposition": "CAPACITY_UNAVAILABLE_NO_POST",
+            })
+            response.update({
+                "state": "WAITING_CAPACITY",
+                "next": "NO_SUBMISSION_UNTIL_CAPACITY_OBSERVED",
+                "slack_reply": "",
+            })
+            return response
         prompt = _grok_prompt(task_id, mode, event, sales)
         run_key = f"{task_id}-run-1"
         response.update({
             "state": "GROKCOM_WORK",
             "next": "WRITE_CAPTURE_START_THEN_SEND_TO_GROKCOM_ONCE",
-            "slack_reply": f"CLAIMED {task_id} | grok.com {mode.lower()} | structural START precedes one submission; direct landing follows capture.",
+            "slack_reply": f"QUEUED {task_id} | grok.com {mode.lower()} | capacity evidence recorded; work is not claimed until a submission receipt returns.",
             "grokcom": {
                 "surface": "grok.com",
                 "run_key": run_key,
