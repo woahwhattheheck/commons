@@ -2,10 +2,10 @@
   "opportunity_id": "kimi-data-license-traces-20260830-01",
   "category": "DATA_LICENSE",
   "state": "DISCOVERY",
-  "public_use_case": "License the Commons' unique agent-coordination and White Box research artifacts (7,946-file / 16.17 GB inventoried archive, exact tree SHA-256 d67234a1...7bc9; plus the curated public CI receipt corpus) to AI labs and tooling vendors who already buy agentic-trajectory and reasoning-trace data. Buyer category is proven: Spire Light sells verbatim agentic coding sessions on Datarade; Solstice sells agentic-trace suites at published prices.",
+  "public_use_case": "License the Commons' unique agent-coordination and White Box research artifacts (7,946-file / 16.17 GB inventoried archive, exact tree SHA-256 d67234a1...7bc9; plus the curated public CI receipt corpus) to AI labs and tooling vendors who already buy agentic-trajectory and reasoning-trace data. Buyer category is proven: Spire Light sells verbatim agentic coding sessions on Datarade; Solstice sells agentic-trace suites at published prices. Comparable band once cleared: $5,000-$25,000 per non-exclusive license (Solstice pilot/suite anchors the low end; the 2026 niche-corpora survey anchors the middle); edge approaches price minus clearance labor because reproduction is copy-scale.",
   "source_side": {
-    "description": "Owner-held inventory measured on 2026-08-26: White Box Research Archive (7,946 files, 56 directories, 16,172,446,060 bytes, 8/8 model groups, exact tree hash recorded) and a 9-receipt curated public CI corpus. BOTH ARE BLOCKED: archive transfer is not cleared (provenance, upstream terms, redaction, sensitivity review outstanding); corpus reuse rights are NOASSERTION. Marginal reproduction cost is near zero once cleared; the clearance work is the cost.",
-    "price_status": "NOT_PUBLISHED"
+    "description": "Owner-held inventory measured on 2026-08-26: White Box Research Archive (7,946 files, 56 directories, 16,172,446,060 bytes, 8/8 model groups, exact tree hash recorded) and a 9-receipt curated public CI corpus. BOTH ARE BLOCKED: archive transfer is not cleared (provenance, upstream terms, redaction, sensitivity review outstanding); corpus reuse rights are NOASSERTION. Marginal reproduction cost is near zero once cleared; the clearance work is the cost. No price is quoted while blocked.",
+    "price_status": "UNKNOWN"
   },
   "buyer_side": {
     "description": "Public comparables: Solstice sells a 25k-record synthetic pilot at $5,000 one-time and agentic-trace suites from $12,000; Spire Light lists verbatim agentic coding trajectory data on Datarade (pricing on request, category demand exists); Troveo's disclosed-deal table runs $10M-$250M for archives at the top end; aitrademarkreview's 2026 survey puts niche proprietary corpora at tens of thousands per license. No public rate card exists for agent-coordination traces; deals are negotiated case-by-case.",
@@ -19,8 +19,7 @@
     "unit_fees": 0,
     "unit_delivery_cost": 0,
     "unit_edge_before_tax": 0,
-    "total_edge_before_tax": 0,
-    "notes": "Zeros are honest: the source side is blocked, so no price is quoted. Comparable band once cleared: $5,000-$25,000 per non-exclusive license (Solstice pilot/suite anchors the low end; niche-corpora survey anchors the middle). Edge approaches 100% of price minus clearance labor because reproduction is copy-scale."
+    "total_edge_before_tax": 0
   },
   "evidence": [
     {
@@ -65,7 +64,6 @@
     "automatic_trade": false,
     "rights_cleared": false,
     "provider_authorization_required": true,
-    "cash_claimed": false,
-    "blocker": "Source-side clearance is the gate: exact quantized-copy provenance, upstream terms and notices, redaction, and sampled manual sensitivity review are owner-side legal work. Until that clears, this record stays DISCOVERY and no price is quoted."
+    "cash_claimed": false
   }
 }
