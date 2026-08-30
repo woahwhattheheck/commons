@@ -41,4 +41,7 @@ python3 -m unittest -v test_website_people_email_book.py
 `--send` is illegal and exits 3. `--url https://...` fetches a public seller
 page. `--prospects` and `--receipts` select the existing Smart Outreach inputs.
 The default measured run uses `fixture_seller.html` plus the current checked-in
-real prospect catalog; current collision/route truth yields zero eligible drafts.
+real prospect catalog. Current truth is four external prospects and one eligible
+Composio draft. The need signal comes from Composio's first-party changelog and
+the route from its first-party support page. The draft remains `STAGED_NOT_SENT`;
+no booking or cash is claimed.
