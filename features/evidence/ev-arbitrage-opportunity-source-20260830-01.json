@@ -1,0 +1,14 @@
+{
+  "feature_id": "arbitrage-opportunity-road-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-arbitrage-opportunity-source-20260830-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Product bytes landed by Codex #5528. This row does not remint them.",
+  "paths": [
+    "arbitrage.html",
+    "revenue/arbitrage/opportunity.schema.json",
+    "test_arbitrage.py"
+  ],
+  "recorded_at": "2026-08-30T05:15:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

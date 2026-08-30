@@ -1,0 +1,10 @@
+{
+  "feature_id": "arbitrage-opportunity-road-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-arbitrage-opportunity-git-20260830-01",
+  "kind": "GIT_SHA",
+  "note": "Merge commit that landed the public arbitrage scout on main.",
+  "recorded_at": "2026-08-30T05:15:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "832cdf82cc8d3dc3655e71f878c3b2fe0242a935"
+}

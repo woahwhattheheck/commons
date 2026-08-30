@@ -235,6 +235,22 @@ def test_live_tree_shape_and_golden():
             "hub-failover tested",
             by_id["payment-capability-hub-failover-20260828-02"]["test_status"] == "TESTED",
         )
+    check("arbitrage row", "arbitrage-opportunity-road-20260830-01" in by_id, sorted(by_id))
+    check("data-license row", "unique-data-license-door-20260830-01" in by_id, sorted(by_id))
+    if "arbitrage-opportunity-road-20260830-01" in by_id:
+        arb = by_id["arbitrage-opportunity-road-20260830-01"]
+        check("arbitrage source built", arb["source_status"] == "SOURCE_BUILT", arb)
+        check("arbitrage tested", arb["test_status"] == "TESTED", arb)
+        check("arbitrage live measured", arb["live_status"] == "LIVE" and arb["rollup"] == "LIVE", arb)
+        check("arbitrage live cites sha", bool(arb.get("main_sha")), arb)
+        check("arbitrage does not claim commerce.html", "commerce.html" not in arb["claimed_paths"], arb)
+    if "unique-data-license-door-20260830-01" in by_id:
+        data = by_id["unique-data-license-door-20260830-01"]
+        check("data-license source built", data["source_status"] == "SOURCE_BUILT", data)
+        check("data-license tested", data["test_status"] == "TESTED", data)
+        check("data-license live measured", data["live_status"] == "LIVE" and data["rollup"] == "LIVE", data)
+        check("data-license live cites sha", bool(data.get("main_sha")), data)
+        check("data-license does not claim commerce.html", "commerce.html" not in data["claimed_paths"], data)
     json_path = os.path.join(ROOT, ft.JSON_OUT)
     html_path = os.path.join(ROOT, ft.HTML_OUT)
     check("committed json exists", os.path.isfile(json_path))

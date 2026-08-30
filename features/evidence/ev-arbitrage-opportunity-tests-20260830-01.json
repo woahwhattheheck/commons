@@ -1,0 +1,12 @@
+{
+  "feature_id": "arbitrage-opportunity-road-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-arbitrage-opportunity-tests-20260830-01",
+  "kind": "TEST_PATHS",
+  "note": "Contract tests for the public scout, schema, and non-execution gates.",
+  "paths": [
+    "test_arbitrage.py"
+  ],
+  "recorded_at": "2026-08-30T05:15:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

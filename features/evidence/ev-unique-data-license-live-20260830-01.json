@@ -1,0 +1,12 @@
+{
+  "blob": "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
+  "feature_id": "unique-data-license-door-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unique-data-license-live-20260830-01",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "GET 200 on SHA-pinned raw; git blob f416d7031fa05134d3bb16b8bd3b01910ebd0835; sha256 db6cc7f2c4abd4dd5b8bbde515962ac78b75c861e866a5c5257371ecf83e9c3d; 6872 bytes. Pages bake matched those bytes at the prior measurement. LIVE cites SHA-pinned raw, not Pages.",
+  "recorded_at": "2026-08-30T05:18:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "1d1b29374c131eacb900dca01b2725a138addb92",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/1d1b29374c131eacb900dca01b2725a138addb92/data-license.html"
+}

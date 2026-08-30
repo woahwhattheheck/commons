@@ -1,0 +1,13 @@
+{
+  "feature_id": "unique-data-license-door-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unique-data-license-source-20260830-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Product bytes landed by Codex #5526. This row does not remint them.",
+  "paths": [
+    "data-license.html",
+    "test_data_license.py"
+  ],
+  "recorded_at": "2026-08-30T05:15:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

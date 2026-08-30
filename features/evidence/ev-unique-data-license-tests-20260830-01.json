@@ -1,0 +1,12 @@
+{
+  "feature_id": "unique-data-license-door-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unique-data-license-tests-20260830-01",
+  "kind": "TEST_PATHS",
+  "note": "Exact-source tests for inventory, blocked transfer, and the open inquiry door.",
+  "paths": [
+    "test_data_license.py"
+  ],
+  "recorded_at": "2026-08-30T05:15:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
