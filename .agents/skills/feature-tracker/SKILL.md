@@ -41,4 +41,4 @@ Same id + identical bytes is idempotent. Same id + different bytes is `CONFLICT`
 - Fabricate a `LIVE_MEASUREMENT` (needs a public URL and a 40-character SHA)
 - Add auth, secrets, or a generated-history rewrite
 
-LIVE is SOURCE_BUILT plus a valid `LIVE_MEASUREMENT` evidence row. HTTP is a bake.
+LIVE is SOURCE_BUILT plus a valid `LIVE_MEASUREMENT` evidence row. HTTP is a bake. A cited blob that no longer matches the tree is stale; append a new evidence id. Do not overwrite.

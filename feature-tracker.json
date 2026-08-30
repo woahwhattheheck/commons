@@ -21,7 +21,9 @@
       "author_claim_ignored": "",
       "blob_proof": [
         "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
-        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48"
+        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "0f6249cd06eadf2b2dbd75796320a743fb20f433"
       ],
       "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
       "carrier": "CODEX",
@@ -44,19 +46,23 @@
         "ev-arbitrage-opportunity-source-20260830-01",
         "ev-arbitrage-opportunity-tests-20260830-01",
         "ev-arbitrage-opportunity-blob-20260830-01",
-        "ev-arbitrage-opportunity-live-20260830-01"
+        "ev-arbitrage-opportunity-live-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-02",
+        "ev-arbitrage-opportunity-live-20260830-02",
+        "ev-arbitrage-opportunity-receipt-20260830-02"
       ],
       "file": "arbitrage-opportunity-road-20260830-01.json",
       "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-08-30T05:18:00Z",
+      "last_change": "2026-08-30T05:50:00Z",
       "live_status": "LIVE",
-      "main_sha": "1d1b29374c131eacb900dca01b2725a138addb92",
+      "main_sha": "c7444ffa60fff77e5daaf7a1e3eef4a2e0020dc0",
       "name": "Arbitrage opportunity road",
       "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
       "owner_subsystem": "commerce",
       "public_entrypoint": "arbitrage.html",
       "receipts": [
-        "codex-arbitrage-opportunity-road-20260830-01"
+        "codex-arbitrage-opportunity-road-20260830-01",
+        "unseated-feature-tracker-commerce-doors-20260830-02"
       ],
       "related": {
         "boards": false,

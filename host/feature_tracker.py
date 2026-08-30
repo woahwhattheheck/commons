@@ -161,6 +161,37 @@ def exists_on_tree(root, rel, names=None):
     return any(name.startswith(prefix) for name in names)
 
 
+def tree_blob(root, rel):
+    """Git blob of a path on the worktree or HEAD. Empty when unreadable."""
+    if not isinstance(rel, str) or not rel or rel.startswith("/") or ".." in rel.split("/"):
+        return ""
+    path = os.path.join(root, rel)
+    if os.path.isfile(path):
+        try:
+            blob = subprocess.check_output(
+                ["git", "hash-object", path],
+                stderr=subprocess.DEVNULL,
+                text=True,
+            ).strip()
+            if BLOB_RE.match(blob):
+                return blob
+        except (OSError, subprocess.CalledProcessError):
+            pass
+    git_dir = os.path.join(root, ".git")
+    if os.path.isdir(git_dir) or os.path.isfile(git_dir):
+        try:
+            blob = subprocess.check_output(
+                ["git", "-C", root, "rev-parse", "HEAD:" + rel],
+                stderr=subprocess.DEVNULL,
+                text=True,
+            ).strip()
+            if BLOB_RE.match(blob):
+                return blob
+        except (OSError, subprocess.CalledProcessError):
+            pass
+    return ""
+
+
 def validate_feature(rec, filename=""):
     problems = []
     if not isinstance(rec, dict):
@@ -377,19 +408,33 @@ def derive_feature(feature, evidence, root, snapshot=None):
         test_status = "UNTESTED"
 
     live_ok = []
+    live_stale = []
+    entry = str(feature.get("public_entrypoint") or "")
     for row in ev:
         if row.get("kind") != "LIVE_MEASUREMENT":
             continue
-        if SHA_RE.match(str(row.get("sha") or "")) and row.get("url"):
-            live_ok.append(row)
+        if not (SHA_RE.match(str(row.get("sha") or "")) and row.get("url")):
+            continue
+        cited = str(row.get("blob") or "")
+        path = str(row.get("path") or entry or "")
+        if cited and path:
+            current = tree_blob(root, path)
+            if current and current != cited:
+                live_stale.append(row)
+                continue
+        live_ok.append(row)
     if live_ok and source == "SOURCE_BUILT":
         live = "LIVE"
+    elif live_stale and not live_ok:
+        live = "DEGRADED"
     elif live_ok:
         live = "DEGRADED"
     else:
         live = "UNMEASURED"
 
-    shas = [str(row.get("sha")) for row in ev if SHA_RE.match(str(row.get("sha") or ""))]
+    shas = [str(row.get("sha")) for row in live_ok if SHA_RE.match(str(row.get("sha") or ""))]
+    if not shas:
+        shas = [str(row.get("sha")) for row in ev if SHA_RE.match(str(row.get("sha") or ""))]
     blobs = []
     for row in ev:
         if row.get("kind") == "BLOB" and row.get("blob"):

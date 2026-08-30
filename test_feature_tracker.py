@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 
@@ -119,6 +120,46 @@ def test_derivation_and_no_prose_promotion():
         )
         live = {row["id"]: row for row in ft.project(tmp)["features"]}["alpha-feature-20260828-01"]
         check("live only after measurement", live["live_status"] == "LIVE" and live["rollup"] == "LIVE", live)
+
+        door_path = os.path.join(tmp, "src", "door.py")
+        current_blob = subprocess.check_output(["git", "hash-object", door_path], text=True).strip()
+        _write(
+            os.path.join(tmp, ft.EVIDENCE_DIR, "ev-alpha-live-stale-20260828-01.json"),
+            {
+                "schema": ft.SCHEMA_EVIDENCE,
+                "id": "ev-alpha-live-stale-20260828-01",
+                "feature_id": "alpha-feature-20260828-01",
+                "kind": "LIVE_MEASUREMENT",
+                "sha": "c" * 40,
+                "blob": "d" * 40,
+                "path": "src/door.py",
+                "url": "https://woahwhattheheck.github.io/commons/src/door.py",
+                "recorded_at": "2026-08-28T12:05:00Z",
+            },
+        )
+        stale = {row["id"]: row for row in ft.project(tmp)["features"]}["alpha-feature-20260828-01"]
+        check("stale blob does not unseat a matching live pin", stale["live_status"] == "LIVE", stale)
+
+        os.remove(os.path.join(tmp, ft.EVIDENCE_DIR, "ev-alpha-live-20260828-01.json"))
+        only_stale = {row["id"]: row for row in ft.project(tmp)["features"]}["alpha-feature-20260828-01"]
+        check("stale-only live is degraded", only_stale["live_status"] == "DEGRADED" and only_stale["rollup"] == "DEGRADED", only_stale)
+
+        _write(
+            os.path.join(tmp, ft.EVIDENCE_DIR, "ev-alpha-live-fresh-20260828-01.json"),
+            {
+                "schema": ft.SCHEMA_EVIDENCE,
+                "id": "ev-alpha-live-fresh-20260828-01",
+                "feature_id": "alpha-feature-20260828-01",
+                "kind": "LIVE_MEASUREMENT",
+                "sha": "e" * 40,
+                "blob": current_blob,
+                "path": "src/door.py",
+                "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/" + ("e" * 40) + "/src/door.py",
+                "recorded_at": "2026-08-28T12:10:00Z",
+            },
+        )
+        fresh = {row["id"]: row for row in ft.project(tmp)["features"]}["alpha-feature-20260828-01"]
+        check("matching blob live pin restores LIVE", fresh["live_status"] == "LIVE" and fresh["main_sha"] == "e" * 40, fresh)
 
         _write(
             os.path.join(tmp, ft.REGISTRY_DIR, "gone-feature-20260828-01.json"),
@@ -251,6 +292,23 @@ def test_live_tree_shape_and_golden():
         check("data-license live measured", data["live_status"] == "LIVE" and data["rollup"] == "LIVE", data)
         check("data-license live cites sha", bool(data.get("main_sha")), data)
         check("data-license does not claim commerce.html", "commerce.html" not in data["claimed_paths"], data)
+        check(
+            "data-license live blob matches tree",
+            ft.tree_blob(ROOT, "data-license.html") in " ".join(data.get("blob_proof") or []),
+            data.get("blob_proof"),
+        )
+    if "arbitrage-opportunity-road-20260830-01" in by_id:
+        arb_blob = ft.tree_blob(ROOT, "arbitrage.html")
+        check(
+            "arbitrage live blob matches tree",
+            arb_blob and arb_blob in " ".join(by_id["arbitrage-opportunity-road-20260830-01"].get("blob_proof") or []),
+            (arb_blob, by_id["arbitrage-opportunity-road-20260830-01"].get("blob_proof")),
+        )
+        check(
+            "arbitrage live sha is not the stale first pin when a fresh pin exists",
+            by_id["arbitrage-opportunity-road-20260830-01"].get("main_sha") != "1d1b29374c131eacb900dca01b2725a138addb92",
+            by_id["arbitrage-opportunity-road-20260830-01"].get("main_sha"),
+        )
     json_path = os.path.join(ROOT, ft.JSON_OUT)
     html_path = os.path.join(ROOT, ft.HTML_OUT)
     check("committed json exists", os.path.isfile(json_path))
