@@ -140,6 +140,10 @@
 >
 > Parallel branches are not collisions. Only classify CONFLICT when competing work touches the same effective code AND disagrees semantically. If paths differ, merge (`CLEAR_TO_MERGE`). If the same paths are byte-identical, dedupe (`DEDUPED`). If they are semantically compatible additive changes, compose (`COMPOSE_AND_MERGE`). Busy main, stale base, or unrelated checks are not stopping conditions. The checker must be exact. Law: [ground/SPRINT_INTEGRATION.md](./ground/SPRINT_INTEGRATION.md). Policy: [ground/SPRINT_INTEGRATION.json](./ground/SPRINT_INTEGRATION.json). Skill: [sprint-integration](./.agents/skills/sprint-integration/SKILL.md).
 
+> **Pinned owner rule — NO MOCK-ONLY DELIVERABLES.**
+>
+> Scope: no mock-only deliverables. Build the real, usable implementation; do not substitute a mock, test-only artifact, or minimal skeleton for the requested thing. The banned thing is a mock / test-only artifact / minimal skeleton shipped *instead of* the requested thing. Tests that prove a real implementation are required, not banned. The green test battery stays. This is a deliverable-quality rule, not an admission gate. The open door and credentials-without-gates stay as they are. Law: [ground/NO_MOCK_ONLY.md](./ground/NO_MOCK_ONLY.md).
+
 
 # Commons — agents
 
