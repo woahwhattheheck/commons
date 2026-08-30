@@ -52,9 +52,12 @@ Run:
 python infra/discord/commons_discord_bridge.py
 ```
 
-On Windows, install the real bridge and moving-main watcher as per-user tasks.
-Both start immediately and at logon, the bridge restarts after failure, and the
-watcher performs a fetch plus fast-forward pull every minute:
+On Windows, install the real bridge, moving-main watcher, and health watcher as
+per-user tasks. All start immediately and at logon. The bridge runs through
+an absolute, no-output runner and restarts after failure; the main watcher
+performs a fast-forward pull every minute only when tracked work is clean. The
+health watcher independently probes `/health` every minute and restarts only
+the exact bridge task when its process is alive but its server is unhealthy:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File infra\discord\install_windows_runtime.ps1
