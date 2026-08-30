@@ -1,0 +1,36 @@
+{
+  "id": "demon-cure-fold-first-target-20260830-01",
+  "kind": "CURE_FOLD_FIRST_TARGET_CHOICE",
+  "state": "CHOICE_ONLY",
+  "rule": "SAME_JOB_LIVE_STRATUM_TARGET",
+  "binding": {
+    "target_from": "nbits of the exact same live Stratum job/header used for the candidate run",
+    "never_mix_target_and_header_jobs": true,
+    "hard_code_live_target": false
+  },
+  "reference_vector": {
+    "source": "muhl/docs/MUHL_FOLD_PORT_MAP.md",
+    "job_id": "6a72bdc000001e1c",
+    "height": 961467,
+    "nbits_hex": "0x17023ad4",
+    "target_int_decimal": "213572157266439505242940871974495870228360734370168832",
+    "target_be_hex": "000000000000000000023ad40000000000000000000000000000000000000000",
+    "cli_target32_le_hex": "0000000000000000000000000000000000000000d43a02000000000000000000",
+    "target_bytes": 32,
+    "bit_length": 178,
+    "leading_zero_bits": 78,
+    "cli_target32_sha256": "be16de28c0358774add1605a2c5e8aa1fe2c6ea3ed98eaedc8ce377ab467e9e0"
+  },
+  "boundary": {
+    "live_target_claimed": false,
+    "live_run_executed": false,
+    "go": false,
+    "fire_337": false,
+    "pulse_78": false,
+    "titan_written": false,
+    "block_submitted": false,
+    "profitability_claimed": false,
+    "no_auth": true,
+    "no_gate": true
+  }
+}
