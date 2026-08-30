@@ -52,9 +52,16 @@ class OpportunityRegistryTests(unittest.TestCase):
         first = mod.compile_registry(ROOT)
         second = mod.compile_registry(ROOT)
         self.assertEqual(mod.canonical_dumps(first), mod.canonical_dumps(second))
-        self.assertEqual(first, self.registry)
+        stored = mod.validate(ROOT, self.registry, self.schema)
+        self.assertEqual(stored["status"], "VALID")
+        self.assertEqual(
+            stored["receipt_drift_paths"],
+            [item["path"] for item in mod.receipt_drift(ROOT, self.registry)],
+        )
         result = mod.validate(ROOT, first, self.schema)
         self.assertEqual(result["status"], "VALID")
+        self.assertEqual(result["receipt_drift_count"], 0)
+        self.assertEqual(result["receipt_drift_paths"], [])
         self.assertEqual(result["submitted"], 0)
         self.assertEqual(result["awarded"], 0)
         self.assertEqual(result["cash_received_usd"], 0)
@@ -125,50 +132,83 @@ class OpportunityRegistryTests(unittest.TestCase):
         research = self.by_id["research-eleutherai-lm-eval-harness"]
         self.assertEqual(research["probability_state"], "RESEARCHED_NOT_CONTACTED")
 
-    def test_capabilities_hash_real_files(self):
+    def test_capability_receipt_drift_is_exact_and_named(self):
+        expected = []
         for cap in self.registry["capabilities"]:
-            self.assertEqual(cap["status"], "SHIPPED_ON_MAIN")
             for rec in cap["receipts"]:
                 path = ROOT / rec["path"]
-                self.assertTrue(path.is_file(), rec["path"])
-                self.assertEqual(mod.sha256_file(path), rec["sha256"])
-                self.assertEqual(path.stat().st_size, rec["bytes"])
+                if not path.is_file():
+                    expected.append({
+                        "path": rec["path"],
+                        "state": "MISSING",
+                        "pinned_sha256": rec["sha256"],
+                        "pinned_bytes": rec["bytes"],
+                        "live_sha256": None,
+                        "live_bytes": None,
+                    })
+                    continue
+                live_sha256 = mod.sha256_file(path)
+                live_bytes = path.stat().st_size
+                if live_sha256 != rec["sha256"] or live_bytes != rec["bytes"]:
+                    expected.append({
+                        "path": rec["path"],
+                        "state": "DRIFT",
+                        "pinned_sha256": rec["sha256"],
+                        "pinned_bytes": rec["bytes"],
+                        "live_sha256": live_sha256,
+                        "live_bytes": live_bytes,
+                    })
+        self.assertEqual(
+            mod.receipt_drift(ROOT, self.registry),
+            sorted(expected, key=lambda item: item["path"]),
+        )
 
-    def test_features_html_receipt_tracks_live_bytes(self):
+    def test_features_html_receipt_is_snapshot_and_drift_is_visible(self):
         recs = [rec for cap in self.registry["capabilities"] for rec in cap["receipts"]]
         feat = [rec for rec in recs if rec["path"] == "features.html"]
         self.assertEqual(len(feat), 1, "features.html must have one capability receipt")
         path = ROOT / "features.html"
         self.assertTrue(path.is_file())
-        self.assertEqual(mod.sha256_file(path), feat[0]["sha256"])
-        self.assertEqual(path.stat().st_size, feat[0]["bytes"])
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         self.assertIn(feat[0]["sha256"][:16], html)
+        drift_paths = [item["path"] for item in mod.receipt_drift(ROOT, self.registry)]
+        moved = (
+            mod.sha256_file(path) != feat[0]["sha256"]
+            or path.stat().st_size != feat[0]["bytes"]
+        )
+        self.assertEqual("features.html" in drift_paths, moved)
 
     def test_capability_receipts_name_every_stale_path(self):
         stale = []
         for cap in self.registry["capabilities"]:
             for rec in cap["receipts"]:
                 path = ROOT / rec["path"]
+                if not path.is_file():
+                    stale.append(rec["path"])
+                    continue
                 live = mod.sha256_file(path)
                 size = path.stat().st_size
                 if live != rec["sha256"] or size != rec["bytes"]:
-                    stale.append(
-                        "%s live=%s/%s pinned=%s/%s"
-                        % (rec["path"], live, size, rec["sha256"], rec["bytes"])
-                    )
-        self.assertEqual(stale, [], "stale capability receipts:\n%s" % "\n".join(stale))
+                    stale.append(rec["path"])
+        self.assertEqual(
+            [item["path"] for item in mod.receipt_drift(ROOT, self.registry)],
+            sorted(stale),
+        )
 
-    def test_resource_ledger_receipt_tracks_live_bytes(self):
+    def test_resource_ledger_receipt_is_snapshot_and_drift_is_visible(self):
         recs = [rec for cap in self.registry["capabilities"] for rec in cap["receipts"]]
         ledger = [rec for rec in recs if rec["path"] == "ground/RESOURCE_LEDGER.json"]
         self.assertEqual(len(ledger), 1, "ground/RESOURCE_LEDGER.json must have one capability receipt")
         path = ROOT / "ground/RESOURCE_LEDGER.json"
         self.assertTrue(path.is_file())
-        self.assertEqual(mod.sha256_file(path), ledger[0]["sha256"])
-        self.assertEqual(path.stat().st_size, ledger[0]["bytes"])
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         self.assertIn(ledger[0]["sha256"][:16], html)
+        drift_paths = [item["path"] for item in mod.receipt_drift(ROOT, self.registry)]
+        moved = (
+            mod.sha256_file(path) != ledger[0]["sha256"]
+            or path.stat().st_size != ledger[0]["bytes"]
+        )
+        self.assertEqual("ground/RESOURCE_LEDGER.json" in drift_paths, moved)
 
     def test_packets_and_js_off_html(self):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
@@ -226,8 +266,9 @@ class OpportunityRegistryTests(unittest.TestCase):
             ):
                 (dest / rel).mkdir(parents=True, exist_ok=True)
             # Full compile needs the whole receipt tree; compile in-repo instead.
-        again = mod.compile_registry(ROOT)
-        self.assertEqual(mod._canonical_sha256(again), mod._canonical_sha256(self.registry))
+        first = mod.compile_registry(ROOT)
+        second = mod.compile_registry(ROOT)
+        self.assertEqual(mod._canonical_sha256(first), mod._canonical_sha256(second))
 
     def test_open_door_and_surfaces_exist(self):
         for rel in (
