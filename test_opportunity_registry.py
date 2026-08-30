@@ -135,6 +135,7 @@ class OpportunityRegistryTests(unittest.TestCase):
     def test_capability_receipt_drift_is_exact_and_named(self):
         expected = []
         for cap in self.registry["capabilities"]:
+            self.assertEqual(cap["status"], "SHIPPED_ON_MAIN")
             for rec in cap["receipts"]:
                 path = ROOT / rec["path"]
                 if not path.is_file():
