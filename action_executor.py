@@ -76,12 +76,242 @@ def parse_record(path: Path) -> dict | None:
         lines.pop(0)
     while lines and not lines[0].strip():
         lines.pop(0)
+    if lines and lines[0].lower().startswith("circuit:"):
+        # Additive composition marker. Absent on ordinary single-verb pastes.
+        meta.setdefault("circuit", lines[0].split(":", 1)[1].strip())
+        lines.pop(0)
+        while lines and not lines[0].strip():
+            lines.pop(0)
     try:
         record_path = str(path.relative_to(ROOT)).replace("\\", "/")
     except ValueError:
         record_path = str(path)
     return {"path": record_path, "meta": meta, "verb": verb,
             "target": meta.get("target", "").strip(), "payload": "\n".join(lines)}
+
+
+CIRCUIT_WRAPPERS = {"CIRCUIT", "COMPOSE"}
+STEP_MARK = re.compile(r"(?m)^---\s*STEP(?:\s+\d+)?\s*---\s*$")
+
+
+def split_circuit_verbs(text: str) -> list[str]:
+    """Split an ordered verb list. Comma / semicolon / pipe / arrow / newline.
+
+    Spaces inside a token stay part of the verb (`MAKE IT SO`). This is not an
+    allowlist: every nonempty token is kept.
+    """
+    if not (text or "").strip():
+        return []
+    parts = re.split(r"\s*(?:,|;|\||->|→|\n)\s*", text.strip())
+    return [part.strip().upper() for part in parts if part.strip()]
+
+
+def circuit_step_id(ident: str, index: int) -> str:
+    suffix = "-s%02d" % index
+    keep = max(8, 80 - len(suffix))
+    return ident[:keep] + suffix
+
+
+def _parse_step_block(text: str, default_verb: str = "", default_target: str = "") -> dict:
+    """Parse one step body: optional verb line, optional target:, then payload."""
+    lines = text.splitlines()
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    verb = (default_verb or "").strip().upper()
+    target = default_target
+    if lines and lines[0].lower().startswith("verb:"):
+        verb = lines.pop(0).split(":", 1)[1].strip().upper()
+    elif lines and lines[0].lower().startswith("act:"):
+        verb = lines.pop(0).split(":", 1)[1].strip().upper()
+    elif lines and verb and lines[0].strip().upper() == verb:
+        lines.pop(0)
+    elif (
+        not verb
+        and lines
+        and not lines[0].lower().startswith("target:")
+        and ":" not in lines[0]
+    ):
+        verb = lines.pop(0).strip().upper()
+    if lines and lines[0].lower().startswith("target:"):
+        target = lines.pop(0).split(":", 1)[1].strip()
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    return {"verb": verb, "target": target, "payload": "\n".join(lines)}
+
+
+def _parse_verb_headed_steps(payload: str, verbs: list[str], default_target: str) -> list[dict] | None:
+    """Split a paste on exact verb-header lines when circuit: listed those verbs."""
+    if len(verbs) < 2:
+        return None
+    pat = re.compile(r"(?im)^(" + "|".join(re.escape(v) for v in verbs) + r")\s*$")
+    matches = list(pat.finditer(payload))
+    if len(matches) < 2:
+        return None
+    steps = []
+    for i, match in enumerate(matches):
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(payload)
+        step = _parse_step_block(payload[match.end():end], match.group(1).upper(), default_target)
+        if step["verb"]:
+            steps.append(step)
+    return steps if len(steps) >= 2 else None
+
+
+def parse_circuit_steps(rec: dict) -> list[dict] | None:
+    """Return ordered steps when this paste is an explicit circuit; else None.
+
+    Single-verb records stay on the existing execute() path. Circuit mode is
+    opt-in via `circuit:`, act CIRCUIT/COMPOSE, ---STEP--- plus a circuit
+    marker, or a JSON step array on a circuit wrapper. Bare `---` is not a
+    separator (PATCH diffs use it).
+    """
+    meta = rec.get("meta") or {}
+    verb = (rec.get("verb") or "").strip().upper()
+    payload = rec.get("payload") or ""
+    default_target = rec.get("target") or ""
+    circuit_field = (meta.get("circuit") or "").strip()
+    wrapper = verb in CIRCUIT_WRAPPERS
+    verbs = split_circuit_verbs(circuit_field)
+    marked = bool(STEP_MARK.search(payload))
+
+    if not wrapper and not verbs and not marked:
+        return None
+
+    if wrapper or verbs:
+        stripped = payload.strip()
+        if stripped.startswith("["):
+            try:
+                data = json.loads(stripped)
+            except json.JSONDecodeError:
+                data = None
+            if isinstance(data, list) and len(data) >= 2 and all(isinstance(item, dict) for item in data):
+                steps = []
+                for item in data:
+                    step_verb = str(item.get("verb") or item.get("act") or "").strip().upper()
+                    if not step_verb:
+                        continue
+                    raw_payload = item.get("payload")
+                    if raw_payload is None:
+                        step_payload = ""
+                    elif isinstance(raw_payload, str):
+                        step_payload = raw_payload
+                    else:
+                        step_payload = json.dumps(raw_payload)
+                    steps.append({
+                        "verb": step_verb,
+                        "target": str(item.get("target") or default_target or "").strip(),
+                        "payload": step_payload,
+                    })
+                if len(steps) >= 2:
+                    return steps
+
+    if marked and (wrapper or verbs):
+        blocks = [block.strip("\n") for block in STEP_MARK.split(payload)]
+        if blocks and not blocks[0].strip():
+            blocks = blocks[1:]
+        elif blocks and verbs and not _parse_step_block(blocks[0], verbs[0], default_target)["verb"]:
+            blocks = blocks[1:]
+        elif blocks and wrapper and not _parse_step_block(blocks[0], "", default_target)["verb"]:
+            blocks = blocks[1:]
+        steps = []
+        for i, block in enumerate(blocks):
+            default = verbs[i] if i < len(verbs) else ""
+            step = _parse_step_block(block, default, default_target)
+            if step["verb"]:
+                steps.append(step)
+        return steps if len(steps) >= 2 else None
+
+    headed = _parse_verb_headed_steps(payload, verbs, default_target)
+    if headed:
+        return headed
+    return None
+
+
+def execute_circuit(rec: dict, scope: str, steps: list[dict]) -> dict:
+    """Run parsed steps in order through execute(). No identity/approval/allowlist."""
+    ident = rec["meta"]["id"]
+    step_rows: list[dict] = []
+    all_changed: list[str] = []
+    canonical_records: dict[str, str] = {}
+    action_outputs: dict[str, str] = {}
+    action_deletions: list[str] = []
+    failed_step = None
+    for index, step in enumerate(steps, start=1):
+        step_id = circuit_step_id(ident, index)
+        step_meta = {key: value for key, value in rec["meta"].items() if key != "circuit"}
+        step_meta["id"] = step_id
+        step_meta["act"] = step["verb"]
+        step_rec = {
+            "path": rec.get("path", ""),
+            "meta": step_meta,
+            "verb": step["verb"],
+            "target": step["target"],
+            "payload": step["payload"],
+        }
+        try:
+            result = execute(step_rec, scope, _skip_circuit=True)
+        except Exception as exc:
+            result = {
+                "id": step_id,
+                "verb": step["verb"],
+                "target": step["target"],
+                "scope": scope,
+                "ok": False,
+                "error": str(exc),
+                "changed": [],
+                "canonical_records": {},
+                "action_outputs": {},
+                "action_deletions": [],
+                "executed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+            }
+        result["step"] = index
+        result["circuit_id"] = ident
+        path = result_path(step_id)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+        result_name = str(path.relative_to(ROOT)).replace("\\", "/")
+        step_rows.append({
+            "step": index,
+            "id": step_id,
+            "verb": step["verb"],
+            "target": step["target"],
+            "ok": bool(result.get("ok")),
+            "error": result.get("error"),
+            "output": result.get("output"),
+            "result": result_name,
+        })
+        all_changed.extend(result.get("changed") or [])
+        all_changed.append(result_name)
+        canonical_records.update(result.get("canonical_records") or {})
+        action_outputs.update(result.get("action_outputs") or {})
+        action_outputs[result_name] = file_sha256(path)
+        action_deletions.extend(result.get("action_deletions") or [])
+        if not result.get("ok"):
+            failed_step = index
+            break
+    ok = failed_step is None
+    error = None
+    if not ok:
+        last = step_rows[-1]
+        error = "circuit step %d (%s) failed: %s" % (
+            failed_step, last.get("verb") or "?", last.get("error") or "step failed",
+        )
+    return {
+        "id": ident,
+        "verb": rec["verb"],
+        "target": rec.get("target") or "",
+        "scope": scope,
+        "ok": ok,
+        "circuit": True,
+        "steps": step_rows,
+        "failed_step": failed_step,
+        "error": error,
+        "output": "circuit %d/%d ok" % (sum(1 for row in step_rows if row.get("ok")), len(steps)),
+        "changed": sorted(set(all_changed)),
+        "canonical_records": canonical_records,
+        "action_outputs": action_outputs,
+        "action_deletions": sorted(set(action_deletions)),
+        "executed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+    }
 
 
 def is_device_target(target: str) -> bool:
@@ -609,7 +839,11 @@ def canonical_action_post(meta: dict, target: str, payload: str, ident: str, *, 
     return result
 
 
-def execute(rec: dict, scope: str) -> dict:
+def execute(rec: dict, scope: str, *, _skip_circuit: bool = False) -> dict:
+    if not _skip_circuit:
+        steps = parse_circuit_steps(rec)
+        if steps is not None:
+            return execute_circuit(rec, scope, steps)
     meta, verb, target, payload = rec["meta"], rec["verb"], rec["target"], rec["payload"]
     ident = meta["id"]
     changed: list[str] = []
