@@ -31,7 +31,7 @@ class SlackIngestTests(unittest.TestCase):
         record = si.issue_record({"ts": "1787539715.067529", "text": text, "user": "U1"})
         self.assertEqual(record.title, "gpt-caller-id-20260824-01")
         self.assertIn(
-            "observed_event: slack:C0BRGMDQB6G:1787539715.067529:1\n",
+            "observed_event: slack:UNKNOWN_WORKSPACE:C0BRGMDQB6G:1787539715.067529:1\n",
             record.body,
         )
 
@@ -57,8 +57,13 @@ class SlackIngestTests(unittest.TestCase):
         record = si.issue_record({"ts": "1787472270.224369", "text": SOURCE, "user": "U1"})
         self.assertEqual(record.title, "slack-1787472270-224369")
         self.assertIn("from: PLUMB\n", record.body)
-        self.assertIn("observed_event: slack:C0BRGMDQB6G:1787472270.224369:1\n", record.body)
+        self.assertIn(
+            "observed_event: slack:UNKNOWN_WORKSPACE:C0BRGMDQB6G:1787472270.224369:1\n",
+            record.body,
+        )
         self.assertIn("carrier_ts: 1787472270.224369\n", record.body)
+        self.assertIn("event_ts: 1787472270.224369\n", record.body)
+        self.assertIn("revision: 1\n", record.body)
         self.assertIn("kind: slack_message\n", record.body)
         self.assertIn("model: Claude Opus 5\n", record.body)
         self.assertEqual(si._record_body(record.body), SOURCE)
@@ -127,7 +132,10 @@ class SlackIngestTests(unittest.TestCase):
                 "user": "U1",
             }
         )
-        self.assertIn("observed_event: slack:C0SOMEOTHER1:1787539718.3:1\n", record.body)
+        self.assertIn(
+            "observed_event: slack:UNKNOWN_WORKSPACE:C0SOMEOTHER1:1787539718.3:1\n",
+            record.body,
+        )
         self.assertEqual(record.title, "slack-1787539718-3")
 
     def test_history_and_thread_pagination_are_exhaustive(self) -> None:
@@ -190,6 +198,19 @@ payload
 """,
                 encoding="utf-8",
             )
+            (posts / "edited-revision.md").write_text(
+                """---
+from: GPT
+to: TABLE
+id: edited-revision
+observed_event: slack:T0TEAM:COTHER:10.0:25.5
+event_ts: 25.5
+revision: 25.5
+---
+edited payload
+""",
+                encoding="utf-8",
+            )
             self.assertEqual(si.high_water(posts), "99.0")
 
     def test_sync_scans_old_roots_for_new_replies_then_applies_high_water(self) -> None:
@@ -198,6 +219,8 @@ payload
 
         def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
             calls.append((method, params))
+            if method == "auth.test":
+                return {"ok": True, "team_id": "T0BRETUB5TK"}
             if method == "conversations.list":
                 return {"ok": True, "channels": [{"id": "C0BRGMDQB6G", "is_im": False}]}
             if method == "conversations.history":
@@ -219,6 +242,7 @@ payload
         events = client.events("9.0")
         self.assertEqual([event["ts"] for event in events], ["9.1"])
         self.assertEqual(events[0]["author_name"], "Cursor")
+        self.assertEqual(events[0]["_team_id"], "T0BRETUB5TK")
         history_params = next(params for method, params in calls if method == "conversations.history")
         self.assertNotIn("oldest", history_params)
 
@@ -315,6 +339,99 @@ PLAIN: Slack :left_right_arrow: Commons exact body.
         with tempfile.TemporaryDirectory() as tmp:
             with self.assertRaises(si.ImmutableMismatch):
                 si.plan(events, Path(tmp))
+
+    def test_edited_history_message_mints_append_only_revision(self) -> None:
+        event = {
+            "team_id": "T0BRETUB5TK",
+            "channel": "C0BRGMDQB6G",
+            "ts": "10.1",
+            "text": "from: GPT\nid: durable-object-01\n\ncorrected bytes",
+            "edited": {"user": "U1", "ts": "12.5"},
+            "user": "U1",
+        }
+        record = si.issue_record(event)
+        self.assertEqual(record.title, "durable-object-01-r12-5")
+        self.assertEqual(record.kind, "slack_message_edit")
+        self.assertEqual(record.target, "durable-object-01")
+        self.assertIn("revision: 12.5\n", record.body)
+        self.assertIn("event_ts: 12.5\n", record.body)
+        self.assertIn(
+            "observed_event: slack:T0BRETUB5TK:C0BRGMDQB6G:10.1:12.5\n",
+            record.body,
+        )
+        self.assertTrue(record.body.endswith("corrected bytes"))
+
+    def test_delete_event_mints_tombstone_without_overwriting_or_republishing_body(self) -> None:
+        event = {
+            "team_id": "T0BRETUB5TK",
+            "channel": "C0BRGMDQB6G",
+            "subtype": "message_deleted",
+            "deleted_ts": "10.1",
+            "event_ts": "13.6",
+            "ts": "13.6",
+            "previous_message": {
+                "ts": "10.1",
+                "text": "from: GPT\nid: durable-object-01\n\nprivate old bytes",
+                "user": "U1",
+            },
+        }
+        record = si.issue_record(event)
+        self.assertEqual(record.title, "durable-object-01-r13-6")
+        self.assertEqual(record.kind, "slack_message_delete")
+        self.assertEqual(record.target, "durable-object-01")
+        self.assertIn("revision: 13.6\n", record.body)
+        self.assertNotIn("private old bytes", record.body)
+        self.assertTrue(record.body.endswith("prior canonical record remains immutable.\n"))
+
+    def test_original_and_edit_are_both_planned_in_event_clock_order(self) -> None:
+        original = {
+            "team_id": "T0BRETUB5TK",
+            "channel": "C0BRGMDQB6G",
+            "ts": "10.1",
+            "text": "from: GPT\nid: durable-object-01\n\noriginal",
+            "user": "U1",
+        }
+        edited = {
+            **original,
+            "text": "from: GPT\nid: durable-object-01\n\ncorrected",
+            "edited": {"user": "U1", "ts": "12.5"},
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            records = si.plan([edited, original], Path(tmp))
+        self.assertEqual(
+            [record.title for record in records],
+            ["durable-object-01", "durable-object-01-r12-5"],
+        )
+
+    def test_sync_uses_edit_clock_so_old_message_revision_crosses_high_water(self) -> None:
+        client = si.SlackClient("token")
+
+        def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
+            if method == "auth.test":
+                return {"ok": True, "team_id": "T0BRETUB5TK"}
+            if method == "conversations.list":
+                return {"ok": True, "channels": [{"id": "C0BRGMDQB6G"}]}
+            if method == "conversations.history":
+                return {
+                    "ok": True,
+                    "messages": [
+                        {
+                            "ts": "1.0",
+                            "text": "edited now",
+                            "edited": {"user": "U1", "ts": "9.1"},
+                            "user": "U1",
+                        }
+                    ],
+                }
+            if method == "users.info":
+                return {"ok": True, "user": {"profile": {"display_name": "GPT"}}}
+            raise AssertionError(method)
+
+        client.call = fake_call  # type: ignore[method-assign]
+        events = client.events("9.0")
+        self.assertEqual(len(events), 1)
+        self.assertEqual(si.event_native_ts(events[0]), "1.0")
+        self.assertEqual(si.event_clock(events[0]), "9.1")
 
     def test_cli_format_emits_issue_payload(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
