@@ -99,6 +99,31 @@ def _earliest_add(root: Path, path: str) -> tuple[str, str]:
     return commit, timestamp
 
 
+def _is_shallow(root: Path) -> bool:
+    return _git(root, "rev-parse", "--is-shallow-repository") == "true"
+
+
+def _validate_pinned_add(root: Path, commit: str, path: str, at: str) -> str:
+    try:
+        status = _git(
+            root,
+            "diff-tree",
+            "--root",
+            "--no-commit-id",
+            "--name-status",
+            "-r",
+            commit,
+            "--",
+            path,
+        )
+        timestamp = _git(root, "show", "-s", "--format=%cI", commit)
+        _git(root, "cat-file", "-e", "%s:%s" % (commit, path))
+    except DocketError:
+        raise DocketError("%s earliest commit drift" % at) from None
+    _require(status == "A\t%s" % path, "%s earliest commit drift" % at)
+    return timestamp
+
+
 def _walk_private_keys(value, at: str = "$.") -> None:
     if isinstance(value, dict):
         found = sorted(PRIVATE_KEYS.intersection(value))
@@ -148,7 +173,15 @@ def _validate_receipt(root: Path, receipt: dict, source_path: str, at: str) -> N
     _require(path == source_path, "%s path must equal source path" % at)
     _require(bool(HEX40.fullmatch(receipt["commit_sha"])), "%s commit_sha invalid" % at)
     earliest_commit, earliest_at = _earliest_add(root, path)
-    _require(receipt["commit_sha"] == earliest_commit, "%s earliest commit drift" % at)
+    if receipt["commit_sha"] != earliest_commit:
+        # A shallow boundary makes every path present at that boundary look newly
+        # added to `git log --diff-filter=A`. In that environment, validate the
+        # pinned public receipt itself as an add commit instead of accepting the
+        # synthetic boundary. Full-history checkouts retain the stronger exact-
+        # earliest comparison above.
+        _require(_is_shallow(root), "%s earliest commit drift" % at)
+        earliest_commit = receipt["commit_sha"]
+        earliest_at = _validate_pinned_add(root, earliest_commit, path, at)
     _require(receipt["disclosed_at"] == earliest_at, "%s disclosure timestamp drift" % at)
     expected_url = "https://github.com/woahwhattheheck/commons/blob/%s/%s" % (
         earliest_commit,
