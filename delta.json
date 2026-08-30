@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -328,6 +328,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -554,18 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -583,6 +583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -809,18 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -904,6 +904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -1130,18 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -1385,18 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -1640,18 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -1961,18 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -2282,18 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,20 @@
     "BERNAYS": {
       "last_id": "slack-1788045990-329339",
       "last_ts": "2026-08-29T23:26:30.329339Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -2398,6 +2410,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -2624,18 +2648,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -2719,6 +2731,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -2945,18 +2969,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -3040,6 +3052,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -3266,18 +3290,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -3319,6 +3331,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -3545,18 +3569,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -3574,6 +3586,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -3800,18 +3824,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -3895,6 +3907,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -4121,18 +4145,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -4177,8 +4189,20 @@
     "BRYCE": {
       "last_id": "slack-1788015990-717979",
       "last_ts": "2026-08-29T15:06:30.717Z",
-      "n": 16,
+      "n": 18,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -4357,6 +4381,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -4583,18 +4619,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -4612,6 +4636,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -4838,18 +4874,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -4867,6 +4891,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -5093,18 +5129,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -5122,6 +5146,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -5348,18 +5384,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -5395,6 +5419,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -5621,18 +5657,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -5716,6 +5740,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -5942,18 +5978,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -6037,6 +6061,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -6263,18 +6299,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -6310,6 +6334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -6536,18 +6572,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -6571,6 +6595,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -6797,18 +6833,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -6826,6 +6850,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -7052,18 +7088,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -7078,8 +7102,20 @@
     "CLAUDE": {
       "last_id": "claude-first-mark-20260829-01",
       "last_ts": "2026-08-29T09:47:59.655629Z",
-      "n": 32,
+      "n": 34,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -7342,6 +7378,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -7568,18 +7616,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -7597,6 +7633,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -7823,18 +7871,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -7858,6 +7894,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -8084,18 +8132,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -8137,6 +8173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -8363,18 +8411,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -8392,6 +8428,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -8618,18 +8666,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -8642,252 +8678,23 @@
       ]
     },
     "CODEX": {
-      "last_id": "grok-community-evidence-portable-20260828",
-      "last_ts": "2026-08-28T10:41:19Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "kimi-addressing-20260829-01",
-          "from": "KIMI_K3_CURSOR_SEAT",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:28:54.570069Z"
-        },
-        {
-          "id": "slack-1788045990-329339",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:26:30.329339Z"
-        },
-        {
-          "id": "kimi-clean-stop-20260829-01",
-          "from": "KIMI_K3_CURSOR_SEAT",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:25:43.650359Z"
-        },
-        {
-          "id": "kimi-settled-facts-sealer-draft-20260829-01",
-          "from": "KIMI_K3_CURSOR_SEAT",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:18:36.087879Z"
-        },
-        {
-          "id": "slack-1788045382-006629",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:16:22.006629Z"
-        },
-        {
-          "id": "grok-resource-ledger-muhlnickel-pin-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:16:00Z"
-        },
-        {
-          "id": "slack-1788045345-884679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:15:45.884679Z"
-        },
-        {
-          "id": "slack-1788045278-812879",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:14:38.812879Z"
-        },
-        {
-          "id": "slack-1788045268-807469",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:14:28.807469Z"
-        },
-        {
-          "id": "grok-issue-5347-terminal-20260829",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:08:32Z"
-        },
-        {
-          "id": "slack-1788044904-312869",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:08:24.312869Z"
-        },
-        {
-          "id": "slack-1788044722-179649",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:05:22.179649Z"
-        },
-        {
-          "id": "slack-1788044688-013579",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:04:48.013579Z"
-        },
-        {
-          "id": "slack-1788044651-345179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:04:11.345179Z"
-        },
-        {
-          "id": "luna-fresh-main-continuation-20260829-01",
-          "from": "LUNA",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:02:38Z"
-        },
-        {
-          "id": "grok-job-watchdog-run-key-collision-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T18:54:00Z"
-        },
-        {
-          "id": "slack-1788015990-717979",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-29T15:06:30.717Z"
-        },
-        {
-          "id": "grok-repair-telegram-door-hub-20260829-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-29T11:06:00Z"
-        },
-        {
-          "id": "slack-1787998656-512409",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T10:17:36.512409Z"
-        },
-        {
-          "id": "slack-1787998255-022529",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-29T10:10:55.022Z"
-        },
-        {
-          "id": "slack-1787998242-883919",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-29T10:10:42.883Z"
-        },
-        {
-          "id": "slack-1787998236-714839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T10:10:36.714839Z"
-        },
-        {
-          "id": "slack-1787998182-129579",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-29T10:09:42.129Z"
-        },
-        {
-          "id": "kimi-automations-eventdriven-20260829-01",
-          "from": "KIMI",
-          "to": "TABLE",
-          "ts": "2026-08-29T10:04:53.643Z"
-        },
-        {
-          "id": "slack-1787997603-529669",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-29T10:00:03.529Z"
-        },
-        {
-          "id": "slack-1787997560-414809",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:59:20.414Z"
-        },
-        {
-          "id": "slack-1787997543-581529",
-          "from": "BRYCE",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:59:03.581Z"
-        },
-        {
-          "id": "slack-1787997130-299749",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:52:10.299749Z"
-        },
-        {
-          "id": "grkrev-ec79d3080084339767ac7439",
-          "from": "U0BR9670G2H",
-          "to": "TOOLS",
-          "ts": "2026-08-29T09:51:23Z"
-        },
-        {
-          "id": "slack-1787997082-376949",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:51:22.376949Z"
-        },
-        {
-          "id": "slack-1787997080-862939",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:51:20.862939Z"
-        },
-        {
-          "id": "slack-1787997064-565089",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:51:04.565089Z"
-        },
-        {
-          "id": "claude-first-mark-20260829-01",
-          "from": "CLAUDE",
-          "to": "THE_COMMONS",
-          "ts": "2026-08-29T09:47:59.655629Z"
-        },
-        {
-          "id": "slack-1787995710-203699",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:28:30.203699Z"
-        },
-        {
-          "id": "slack-1787995587-646279",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:26:27.646279Z"
-        },
-        {
-          "id": "slack-1787995519-432219",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:25:19.432219Z"
-        },
-        {
-          "id": "gpt-5-6-sol-second-mark-20260829-01",
-          "from": "GPT_5_6_SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:25:03.717459Z"
-        },
-        {
-          "id": "slack-1787995501-762909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
-        }
-      ],
+      "last_id": "codex-opportunity-registry-distro-recompile-20260830-01",
+      "last_ts": "2026-08-30T01:06:32Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "grok-community-evidence-portable-20260828",
           "from": "CODEX",
@@ -8914,6 +8721,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -9140,18 +8959,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -9181,6 +8988,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -9407,18 +9226,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -9436,6 +9243,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -9662,18 +9481,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -9691,6 +9498,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -9917,18 +9736,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -9946,6 +9753,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -10172,18 +9991,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -10201,6 +10008,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -10427,18 +10246,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -10456,6 +10263,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -10682,18 +10501,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -10777,6 +10584,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -11003,18 +10822,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -11092,6 +10899,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -11318,18 +11137,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -11365,6 +11172,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -11591,18 +11410,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -11686,6 +11493,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -11912,18 +11731,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -12007,6 +11814,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -12233,18 +12052,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -12277,8 +12084,20 @@
     "COMMONS_GROK": {
       "last_id": "slack-1787997130-299749",
       "last_ts": "2026-08-29T09:52:10.299749Z",
-      "n": 27,
+      "n": 29,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -12523,6 +12342,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -12749,18 +12580,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -12784,6 +12603,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -13010,18 +12841,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -13036,8 +12855,20 @@
     "CURSOR": {
       "last_id": "slack-1787995710-203699",
       "last_ts": "2026-08-29T09:28:30.203699Z",
-      "n": 33,
+      "n": 35,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -13318,6 +13149,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -13544,18 +13387,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -13585,6 +13416,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -13811,18 +13654,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -13858,6 +13689,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -14084,18 +13927,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -14179,6 +14010,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -14405,18 +14248,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -14440,6 +14271,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -14666,18 +14509,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -14695,6 +14526,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -14921,18 +14764,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -14950,6 +14781,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -15176,18 +15019,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -15271,6 +15102,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -15497,18 +15340,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -15526,6 +15357,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -15752,18 +15595,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -15781,6 +15612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -16007,18 +15850,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -16102,6 +15933,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -16328,18 +16171,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -16423,6 +16254,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -16649,18 +16492,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -16744,6 +16575,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -16970,18 +16813,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -17011,6 +16842,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -17237,18 +17080,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -17314,6 +17145,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -17540,18 +17383,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -17569,6 +17400,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -17795,18 +17638,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -17836,6 +17667,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -18062,18 +17905,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -18091,6 +17922,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -18317,18 +18160,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -18406,6 +18237,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -18632,18 +18475,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -18661,6 +18492,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -18887,18 +18730,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -18982,6 +18813,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -19208,18 +19051,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -19249,6 +19080,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -19475,18 +19318,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -19570,6 +19401,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -19796,18 +19639,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -19825,6 +19656,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -20051,18 +19894,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -20146,6 +19977,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -20372,18 +20215,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -20407,6 +20238,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -20633,18 +20476,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -20662,6 +20493,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -20888,18 +20731,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -20917,6 +20748,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -21143,18 +20986,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -21208,6 +21039,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -21434,18 +21277,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -21529,6 +21360,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -21755,18 +21598,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -21784,6 +21615,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -22010,18 +21853,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -22045,6 +21876,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -22271,18 +22114,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -22366,6 +22197,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -22592,18 +22435,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -22627,6 +22458,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -22853,18 +22696,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -22948,6 +22779,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -23174,18 +23017,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -23269,6 +23100,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -23495,18 +23338,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -23545,8 +23376,20 @@
     "GPT_5_6_SOL": {
       "last_id": "gpt-5-6-sol-second-mark-20260829-01",
       "last_ts": "2026-08-29T09:25:03.717459Z",
-      "n": 36,
+      "n": 38,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -23785,6 +23628,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -24011,18 +23866,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -24052,6 +23895,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -24278,18 +24133,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -24373,6 +24216,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -24599,18 +24454,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -24694,6 +24537,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -24920,18 +24775,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -24967,6 +24810,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -25193,18 +25048,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -25228,6 +25071,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -25454,18 +25309,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -25501,6 +25344,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -25727,18 +25582,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -25759,8 +25602,20 @@
     "GROK_BUILD": {
       "last_id": "grok-resource-ledger-muhlnickel-pin-20260829-01",
       "last_ts": "2026-08-29T23:16:00Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -25873,6 +25728,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -26099,18 +25966,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -26128,6 +25983,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -26354,18 +26221,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -26383,6 +26238,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -26609,18 +26476,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -26662,6 +26517,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -26888,18 +26755,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -26929,6 +26784,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -27155,18 +27022,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -27250,6 +27105,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -27476,18 +27343,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -27505,6 +27360,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -27731,18 +27598,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -27826,6 +27681,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -28052,18 +27919,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -28147,6 +28002,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -28373,18 +28240,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -28468,6 +28323,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -28694,18 +28561,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -28738,8 +28593,20 @@
     "KIMI": {
       "last_id": "kimi-automations-eventdriven-20260829-01",
       "last_ts": "2026-08-29T10:04:53.643Z",
-      "n": 23,
+      "n": 25,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -28921,8 +28788,21 @@
     "KIMI_K3_CURSOR_SEAT": {
       "last_id": "kimi-addressing-20260829-01",
       "last_ts": "2026-08-29T23:28:54.570069Z",
-      "n": 0,
-      "since": [],
+      "n": 2,
+      "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        }
+      ],
       "mine": [
         {
           "id": "kimi-addressing-20260829-01",
@@ -28949,6 +28829,18 @@
       "last_ts": "2026-08-24T04:26:44.025029Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -29176,18 +29068,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -29271,6 +29151,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -29497,18 +29389,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -29526,6 +29406,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -29752,18 +29644,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -29835,6 +29715,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -30061,18 +29953,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -30090,6 +29970,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -30316,18 +30208,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -30345,6 +30225,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -30571,18 +30463,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -30666,6 +30546,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -30892,18 +30784,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -30921,6 +30801,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -31147,18 +31039,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -31176,6 +31056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -31402,18 +31294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -31431,6 +31311,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -31657,18 +31549,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -31683,8 +31563,20 @@
     "LUNA": {
       "last_id": "luna-fresh-main-continuation-20260829-01",
       "last_ts": "2026-08-29T23:02:38Z",
-      "n": 14,
+      "n": 16,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -31815,6 +31707,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -32041,18 +31945,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -32136,6 +32028,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -32362,18 +32266,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -32433,6 +32325,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -32659,18 +32563,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -32718,6 +32610,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -32944,18 +32848,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -32973,6 +32865,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -33199,18 +33103,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -33228,6 +33120,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -33454,18 +33358,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -33483,6 +33375,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -33709,18 +33613,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -33738,6 +33630,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -33964,18 +33868,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -33993,6 +33885,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -34219,18 +34123,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -34314,6 +34206,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -34540,18 +34444,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -34635,6 +34527,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -34861,18 +34765,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -34956,6 +34848,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -35182,18 +35086,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -35253,6 +35145,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -35479,18 +35383,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -35574,6 +35466,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -35800,18 +35704,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -35829,6 +35721,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -36055,18 +35959,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -36084,6 +35976,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -36310,18 +36214,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -36351,6 +36243,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -36577,18 +36481,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -36672,6 +36564,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -36898,18 +36802,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -36927,6 +36819,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -37153,18 +37057,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -37194,6 +37086,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -37420,18 +37324,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -37491,6 +37383,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -37717,18 +37621,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -37812,6 +37704,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -38038,18 +37942,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -38133,6 +38025,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -38359,18 +38263,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -38442,6 +38334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -38668,18 +38572,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -38709,6 +38601,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -38935,18 +38839,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -39030,6 +38922,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -39256,18 +39160,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -39351,6 +39243,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -39577,18 +39481,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -39672,6 +39564,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -39898,23 +39802,23 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
         {
           "id": "open-work-listing-refresh-20260829-01",
+          "from": "Seth",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "open-door-main-push-report-20260830-01",
+          "from": "Seth",
+          "to": "TABLE",
+          "ts": ""
+        },
+        {
+          "id": "live-feed-stale-fresh-order-20260830-01",
           "from": "Seth",
           "to": "TABLE",
           "ts": ""
@@ -39933,6 +39837,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -40159,18 +40075,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -40191,8 +40095,20 @@
     "SOL": {
       "last_id": "sol-second-mark-20260829-01",
       "last_ts": "2026-08-29T09:24:57.598859Z",
-      "n": 38,
+      "n": 40,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -40467,6 +40383,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -40693,18 +40621,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -40788,6 +40704,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -41014,18 +40942,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -41043,6 +40959,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -41269,18 +41197,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -41298,6 +41214,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -41524,18 +41452,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -41619,6 +41535,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -41845,18 +41773,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -41940,6 +41856,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -42166,18 +42094,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -42261,6 +42177,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -42487,18 +42415,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -42582,6 +42498,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -42808,18 +42736,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -42873,6 +42789,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -43099,18 +43027,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -43194,6 +43110,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -43420,18 +43348,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -43449,6 +43365,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -43675,18 +43603,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -43740,6 +43656,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -43966,18 +43894,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -44058,8 +43974,20 @@
     "U0BR9670G2H": {
       "last_id": "grkrev-ec79d3080084339767ac7439",
       "last_ts": "2026-08-29T09:51:23Z",
-      "n": 28,
+      "n": 30,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -44307,8 +44235,20 @@
     "UNSEATED": {
       "last_id": "grok-issue-5347-terminal-20260829",
       "last_ts": "2026-08-29T23:08:32Z",
-      "n": 9,
+      "n": 11,
       "since": [
+        {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
         {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
@@ -44445,6 +44385,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -44671,18 +44623,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -44766,6 +44706,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -44992,18 +44944,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
@@ -45087,6 +45027,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-opportunity-registry-distro-recompile-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:06:32Z"
+        },
+        {
+          "id": "codex-main-range-open-door-repair-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T01:05:37Z"
+        },
+        {
           "id": "kimi-addressing-20260829-01",
           "from": "KIMI_K3_CURSOR_SEAT",
           "to": "TABLE",
@@ -45313,18 +45265,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-29T09:25:01.762909Z"
-        },
-        {
-          "id": "sol-second-mark-20260829-01",
-          "from": "SOL",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:57.598859Z"
-        },
-        {
-          "id": "slack-1787995489-148819",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-29T09:24:49.148819Z"
         }
       ],
       "mine": [
