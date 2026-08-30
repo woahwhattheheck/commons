@@ -31,7 +31,7 @@ FORBIDDEN_VALUE_MARKERS = (
     "ein:",
 )
 PEER_BLOBS = {
-    "revenue/human_outcomes/sales_ops/README.md": "2a0a731c0eaddf2ecb7f7f08c88890a7a838111e",
+    "revenue/human_outcomes/sales_ops/README.md": "6ab7f858a39525ffe631602e9cfd8bb22bbcabb6",
     "revenue/human_outcomes/sales_ops/owner_activation.json": "3c0afab7bffe015a5c041d92fe0332696f86c2f6",
     "revenue/human_outcomes/sales_ops/sow_template.md": "feb07e99ac15ab072fd0f4c70c3d045456dd7efb",
     "revenue/human_outcomes/sales_ops/invoice_template.md": "9a727d12fed5aa039a10c938efb46287b38ac917",
