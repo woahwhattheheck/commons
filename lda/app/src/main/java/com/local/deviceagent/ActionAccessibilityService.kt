@@ -31,7 +31,7 @@ object GridSpec { const val COLS = 8; const val ROWS = 12 }
  *  hallucination - the #1 grounding failure). [screenW]/[screenH] let it scale to the image. */
 data class ScreenMarks(val screenW: Int, val screenH: Int, val boxes: List<Rect>, val ids: List<Int> = emptyList())
 
-enum class ActionResult { CONTINUE, DONE, FAILED, WAIT, NEEDS_CONFIRM, ASK }
+enum class ActionResult { CONTINUE, DONE, FAILED, WAIT, ASK }
 data class ActionOutcome(
     val result: ActionResult,
     val say: String?,
