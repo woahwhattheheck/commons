@@ -58,6 +58,11 @@ class TestReviewLane(unittest.TestCase):
         )
         self.assertEqual(classify(measured)["state"], "NOT_LANDED")
 
+    def test_non_list_candidates_are_invalid_not_an_exception(self):
+        catalog = load_catalog('{"candidates": true}')
+        self.assertEqual(catalog["candidates"], [])
+        self.assertEqual(catalog["error"], "candidates is not a list")
+
     def test_claiming_pr3_integrated_is_not_landed(self):
         measured = measure_from_rows(
             {
