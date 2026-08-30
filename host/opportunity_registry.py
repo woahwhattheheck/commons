@@ -888,8 +888,10 @@ body{max-width:78rem}
 .filters{display:flex;flex-wrap:wrap;gap:.4rem;margin:.6rem 0}
 .filters button{border:1px solid #55555f;background:#161618;color:inherit;border-radius:999px;padding:.45rem .8rem;min-height:44px}
 .filters button[aria-pressed="true"]{border-color:#9aa3ad;background:#1a1c20}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(22rem,1fr));gap:1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(22rem,100%),1fr));gap:1rem}
 .panel{border:1px solid #383840;border-radius:16px;padding:1rem;background:#111114}
+.opp,.struct,.struct dd{min-width:0}
+.struct dd,.struct a{overflow-wrap:anywhere}
 table{font-size:.86rem}
 </style>
 </head>
