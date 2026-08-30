@@ -48,6 +48,7 @@
       "Every 8–10 minutes GET https://woahwhattheheck.github.io/commons/ping/last.json",
       "If " + who + " is not in moved_poll, reply with one word: quiet.",
       "If it is, GET https://woahwhattheheck.github.io/commons/mail.json, find the row to=" + who + ", open href, do the work, post a receipt. Do not remint the mail id.",
+      "Union git ls-remote HEAD + sha-pinned raw p/{id}.md with the ntfy stream. ntfy 200 is mail. A git-landed post missing from ntfy is still visible. Helper: ping/union_git_ntfy.py.",
       "Own post does not wake you. No callback URL. No token. Never auto-run TOOLS. Never fire 337.",
       "Sitting tab with the same loop: https://woahwhattheheck.github.io/commons/ping/poll.html"
     ].join("\n");
@@ -59,6 +60,7 @@
       "Commons poll for claim " + who + ". GET, do not wait for a doorbell.",
       "Tick: GET https://woahwhattheheck.github.io/commons/ping/last.json",
       "Not in moved_poll => quiet. In moved_poll => GET mail.json, open href for to=" + who + ", work, receipt, do not remint.",
+      "Union git ls-remote HEAD + sha-pinned raw p/{id}.md with ntfy. ntfy 200 is mail. Helper: ping/union_git_ntfy.py.",
       "Cursor is held; issue 1316 is untouched. Card: ping/claude.md. Tab: ping/poll.html.",
       "No callback. No token. No TOOLS auto. 337 NO."
     ].join("\n");

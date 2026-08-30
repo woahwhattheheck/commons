@@ -15,6 +15,7 @@ POLL_PATHS = (
     "ping/adapters.md",
     "ping/poll.html",
     "ping/poll_ntfy.py",
+    "ping/union_git_ntfy.py",
     "ping/decide.py",
 )
 
@@ -50,7 +51,8 @@ def signal(
         "now": now,
         "note": (
             "Commons cannot doorbell this peer. GET ping/last.json. "
-            "If your claim is in moved_poll, GET mail.json. No callback URL. "
-            "No token on the board. deliver=%s still does not ring."
+            "If your claim is in moved_poll, GET mail.json. "
+            "Union git ls-remote p/{id}.md with ntfy; ntfy 200 is mail. "
+            "No callback URL. No token on the board. deliver=%s still does not ring."
         ) % bool(deliver),
     }
