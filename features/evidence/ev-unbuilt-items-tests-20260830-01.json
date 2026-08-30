@@ -1,0 +1,12 @@
+{
+  "feature_id": "unbuilt-items-surface-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unbuilt-items-tests-20260830-01",
+  "kind": "TEST_PATHS",
+  "note": "Contract tests: leftover stays UNBUILT; aliases stay OPEN_ALIAS.",
+  "paths": [
+    "test_unbuilt_items.py"
+  ],
+  "recorded_at": "2026-08-30T06:48:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

@@ -309,6 +309,19 @@ def test_live_tree_shape_and_golden():
             by_id["arbitrage-opportunity-road-20260830-01"].get("main_sha") != "1d1b29374c131eacb900dca01b2725a138addb92",
             by_id["arbitrage-opportunity-road-20260830-01"].get("main_sha"),
         )
+    check("unbuilt-items row", "unbuilt-items-surface-20260830-01" in by_id, sorted(by_id))
+    if "unbuilt-items-surface-20260830-01" in by_id:
+        ub = by_id["unbuilt-items-surface-20260830-01"]
+        check("unbuilt-items source built", ub["source_status"] == "SOURCE_BUILT", ub)
+        check("unbuilt-items tested", ub["test_status"] == "TESTED", ub)
+        check("unbuilt-items live measured", ub["live_status"] == "LIVE" and ub["rollup"] == "LIVE", ub)
+        check("unbuilt-items does not claim hub_pages", "hub_pages.py" not in ub["claimed_paths"], ub)
+        ub_blob = ft.tree_blob(ROOT, "unbuilt-items.html")
+        check(
+            "unbuilt-items live blob matches tree",
+            ub_blob and ub_blob in " ".join(ub.get("blob_proof") or []),
+            (ub_blob, ub.get("blob_proof")),
+        )
     json_path = os.path.join(ROOT, ft.JSON_OUT)
     html_path = os.path.join(ROOT, ft.HTML_OUT)
     check("committed json exists", os.path.isfile(json_path))
