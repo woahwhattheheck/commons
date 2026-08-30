@@ -10,13 +10,145 @@
   },
   "counts": {
     "DEGRADED": 0,
-    "LIVE": 0,
+    "LIVE": 2,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
     "TESTED": 10
   },
   "features": [
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "0f6249cd06eadf2b2dbd75796320a743fb20f433"
+      ],
+      "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-arbitrage-opportunity-git-20260830-01",
+        "ev-arbitrage-opportunity-receipt-20260830-01",
+        "ev-arbitrage-opportunity-source-20260830-01",
+        "ev-arbitrage-opportunity-tests-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-01",
+        "ev-arbitrage-opportunity-live-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-02",
+        "ev-arbitrage-opportunity-live-20260830-02",
+        "ev-arbitrage-opportunity-receipt-20260830-02"
+      ],
+      "file": "arbitrage-opportunity-road-20260830-01.json",
+      "id": "arbitrage-opportunity-road-20260830-01",
+      "last_change": "2026-08-30T05:50:00Z",
+      "live_status": "LIVE",
+      "main_sha": "c7444ffa60fff77e5daaf7a1e3eef4a2e0020dc0",
+      "name": "Arbitrage opportunity road",
+      "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "arbitrage.html",
+      "receipts": [
+        "codex-arbitrage-opportunity-road-20260830-01",
+        "unseated-feature-tracker-commerce-doors-20260830-02"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "commerce.html",
+        "data-license.html",
+        "opportunity.html",
+        "p/codex-arbitrage-opportunity-road-20260830-01.md",
+        "agent-rescue.html"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_arbitrage.py",
+        "revenue/arbitrage/opportunity.schema.json"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "data-license.html:f416d7031fa05134d3bb16b8bd3b01910ebd0835",
+        "f416d7031fa05134d3bb16b8bd3b01910ebd0835"
+      ],
+      "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "data-license.html",
+        "test_data_license.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "data-license.html",
+        "test_data_license.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-unique-data-license-git-20260830-01",
+        "ev-unique-data-license-receipt-20260830-01",
+        "ev-unique-data-license-source-20260830-01",
+        "ev-unique-data-license-tests-20260830-01",
+        "ev-unique-data-license-blob-20260830-01",
+        "ev-unique-data-license-live-20260830-01"
+      ],
+      "file": "unique-data-license-door-20260830-01.json",
+      "id": "unique-data-license-door-20260830-01",
+      "last_change": "2026-08-30T05:18:00Z",
+      "live_status": "LIVE",
+      "main_sha": "1d1b29374c131eacb900dca01b2725a138addb92",
+      "name": "Unique data license door",
+      "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "data-license.html",
+      "receipts": [
+        "codex-unique-data-license-door-20260830-01"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "commerce.html",
+        "commercial.html",
+        "revenue/ip/whitebox_archive_inventory.json",
+        "revenue/ip/whitebox_archive_license_probe.json",
+        "revenue/data/ci_receipt_corpus.json",
+        "p/codex-unique-data-license-door-20260830-01.md"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_data_license.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
     {
       "author_claim_ignored": "",
       "blob_proof": [],
@@ -706,7 +838,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 13,
+  "n_features": 15,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

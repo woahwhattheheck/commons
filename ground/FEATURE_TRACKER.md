@@ -18,8 +18,8 @@ Status is derived. Author prose, chat, Slack, ntfy 200, an open PR, a Pages card
 - **PLANNED** — registry row, no claimed source paths.
 - **SOURCE_BUILT** — every `claimed_paths` entry exists on the measured tree or cited 40-character SHA.
 - **TESTED** — SOURCE_BUILT plus every `test_paths` entry exists. Existence is the proof this instrument can see; a green CI run is extra evidence, not a substitute for the files.
-- **LIVE** — SOURCE_BUILT plus a `LIVE_MEASUREMENT` evidence row with a public URL and a 40-character SHA. HTTP is a bake. Listing `public_entrypoint` only proves a source door.
-- **DEGRADED** — claimed paths, tests, or a live measurement that no longer hold.
+- **LIVE** — SOURCE_BUILT plus a `LIVE_MEASUREMENT` evidence row with a public URL and a 40-character SHA. HTTP is a bake. Listing `public_entrypoint` only proves a source door. A cited `blob` that no longer matches the measured tree is stale; append a new row, never overwrite.
+- **DEGRADED** — claimed paths, tests, or a live measurement that no longer hold. Stale-only LIVE (cited blob moved, no current pin) is DEGRADED.
 - **SUPERSEDED** — a `SUPERSEDE` evidence row (or `superseded_by`) names the replacement. History stays.
 
 Source-built and live stay separate columns. Never collapse them.

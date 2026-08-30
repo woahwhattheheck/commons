@@ -1,0 +1,10 @@
+{
+  "feature_id": "arbitrage-opportunity-road-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-arbitrage-opportunity-receipt-20260830-02",
+  "kind": "RECEIPT",
+  "note": "Correction receipt for the stale LIVE/BLOB pin. Do not remint 01 registry ids or product doors.",
+  "receipt": "unseated-feature-tracker-commerce-doors-20260830-02",
+  "recorded_at": "2026-08-30T05:50:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
