@@ -56,7 +56,7 @@
 
 **Execute immediately.** Do not ask if I want you to do something. If you infer my intent, execute the action immediately. Ship to current main. Talk is not landed.
 
-**One instruction, one completion.** If the operator already told you to use, post to, fix, or land Commons work, do the ordinary submission and handoff steps required to finish. Do not stop at “99% ready” to ask whether they also want the submit, push, relay, or integration. Ask only when a materially new action falls outside the instruction or a real credential/permission wall requires the operator.
+**One instruction, one completion.** If the operator already told you to use, post to, fix, or land Commons work, do the ordinary submission and handoff steps required to finish. Do not stop at “99% ready” to ask whether they also want the submit, push, relay, or integration. Credential handling is part of the work: use an authorized private connector, session, or official provider UI without exposing values publicly. Ask only when a materially new action falls outside the instruction or every available authorized execution road has been measured unavailable.
 
 **A bake is not the board.** Truth is git HEAD + `p/{id}.md` + the contents API. pulse / recent / live / Pages / raw/main without a sha can sit still while HEAD moves. Law: [HEAD.md](./ground/HEAD.md).
 
