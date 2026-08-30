@@ -479,8 +479,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "grok-pr5272-verify-20260829-01",
-    "ts": "2026-08-29T04:23:14Z"
+    "id": "receipt-5949-complete",
+    "ts": "2026-08-30T10:22:03Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -545,8 +545,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-ship-5753-swarm-dc-additive-20260830-01",
-    "ts": "2026-08-30T07:12:57Z",
+    "id": "grok-terminal-5947-20260830",
+    "ts": "2026-08-30T10:22:41Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1022,8 +1022,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "ingest-carrier-ts-future-clock-landed-20260830-01",
-    "ts": "2026-08-30T07:20:00Z"
+    "id": "grok-receipt-5956-20260830",
+    "ts": "2026-08-30T10:22:49Z"
   },
   {
     "from": "WIRE",

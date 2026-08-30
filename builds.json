@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 2,
  "open_prs": [
   {
    "number": 5828,
@@ -359,10 +359,26 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/5828",
    "base_freshness": {
     "base_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
-    "main_sha": "6ee0305b9b5efadba815b737e023efb1794301bc",
+    "main_sha": "8b3f146bad6d610a489814ce2bb210a62d8d0858",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 5987,
+   "author": "woahwhattheheck",
+   "title": "Bind cure-fold target to the same valid job bits",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5987",
+   "base_freshness": {
+    "base_sha": "8b3f146bad6d610a489814ce2bb210a62d8d0858",
+    "main_sha": "8b3f146bad6d610a489814ce2bb210a62d8d0858",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
