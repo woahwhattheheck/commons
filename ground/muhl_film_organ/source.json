@@ -1,0 +1,39 @@
+{
+  "kind": "MUHL_FILM_SOURCE",
+  "title": "Lawful deterministic Conway Life reference source",
+  "license": "original deterministic Conway Life seed; no third-party media",
+  "organ": "muhl/docs/FILM_REEL.pfc",
+  "grid": [
+    64,
+    64
+  ],
+  "cells": 4096,
+  "prng": "lcg",
+  "lcg": {
+    "a": 1664525,
+    "c": 1013904223,
+    "m": 4294967296,
+    "seed": 7
+  },
+  "density_num": 30,
+  "density_den": 100,
+  "expected_live_cells": 1212,
+  "expected_final_state": 1936723975,
+  "expected_prefix_bits": "0000000000001011100000001011011010000000000000010000100000011000",
+  "feature_length_pulses_declared": 129600,
+  "fps": 24,
+  "runtime_s_declared": 5400,
+  "executed_pulses": 0,
+  "movie_executed": false,
+  "byte_exact_feature_run": false,
+  "host_frame_simulation": false,
+  "titan": "NOT_WRITTEN",
+  "invented_dest": false,
+  "invented_mouth": false,
+  "fire_337": false,
+  "pulse_78": false,
+  "light_7913": false,
+  "dc_injected": false,
+  "mp4": false,
+  "ffmpeg": false
+}
