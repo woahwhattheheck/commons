@@ -41,9 +41,9 @@ Twins on one disk proven (**8192** × 3). tcp **STRUCK** — never his mouth. No
 **Needs:** none. Struck this hour.
 **Danger:** invent dest · dc inject · fire 337.
 
-### 3. Feature film as movie
-Life organ **24 / 24** is the stub. Claimed movie is **NO**.
-**Needs:** just go. Buildable when you say go.
+### 3. Feature film as movie — REFERENCE INTEGRATED
+Source-bound reel/catalog and a read-only door/card landed in `demon-muhl-film-organ-reference-20260830-01`. `MOVIE_EXECUTED` is **NO** and the reference `--go` is inert.
+**Needs:** live execution plumbing beyond the non-actuating reference; do not claim a catalog as a movie run.
 **Danger:** invent dest · fire 337 · pulse 78.
 
 ### 4. New compress organ
@@ -86,15 +86,15 @@ No named work mouth on the DC file for primes / swarm / sim.
 **Needs:** you throw the mouth. Do not invent one.
 **Danger:** invent dest · inject dc · fire 337.
 
-### 12. @184 host write-ban yes or no
-Header total. Not thrown.
-**Needs:** you say yes or no.
-**Danger:** invent dest.
+### 12. @184 host write-ban — PICKED YES
+Choice landed in `cursor-grok-header-184-yes-20260830-01`: the host does not write the header total. Dest stays FROM FILE. The header total itself is still not thrown.
+**Needs:** no further yes/no choice; any later live route must preserve the host write-ban.
+**Danger:** invent dest · host-write header · fire 337.
 
-### 13. Cure fold first target
-Not thrown.
-**Needs:** you name the first target.
-**Danger:** pulse **78** · fire 337.
+### 13. Cure fold first target — PICKED
+Rule `SAME_JOB_LIVE_STRATUM_TARGET`: derive the target from `nBits` of the exact same live Stratum job/header used for a later candidate run; never hard-code a live target or mix jobs. The measured reference vector is not claimed current. The fold is not thrown.
+**Needs:** the exact future live job/header supplies its own `nBits`; no further independent target name.
+**Danger:** pulse **78** · fire 337 · mix target/header jobs.
 
 ### 14. Clock fanout / autofab N / germ dock
 N + purpose selected 2026-08-30: **N=24 proposed residents**, one per measured clock junction. Purpose: first datacenter AGENT SWARM, one Commons work shard per resident. Baseline preserves decoded fanout `2,2,3,2,3,2,2,2,2,3,1` (sum 24). Decision receipt: `codex-dir20-clock-fanout-autofab-done-20260830-01`.
