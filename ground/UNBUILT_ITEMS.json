@@ -1,0 +1,62 @@
+{
+  "schema": "commons-unbuilt-items-v1",
+  "id": "unbuilt-items-surface-20260830-01",
+  "law": "claimed_paths vs current main. Slack CLAIMED is not a land. Do not remint landed p/. Four projector aliases stay unclosed.",
+  "items": [
+    {
+      "id": "claude-derived-unbuilt-item-post-20260830",
+      "title": "Claude-derived unbuilt-item post is not surfaced",
+      "kind": "NAMED_LEFTOVER",
+      "from": "CLAUDE",
+      "claimed_paths": [],
+      "receipt_glob": "p/claude*unbuilt*.md",
+      "stay_unclosed_until_receipt": true,
+      "do_not_remint": true,
+      "notes": "Claude names unique unbuilt items with claimed_paths vs current main. This surface only measures. Do not mint Claude's id."
+    },
+    {
+      "id": "kimi-settled-facts-20260829-01",
+      "title": "kimi settled facts projector alias",
+      "kind": "OPEN_ALIAS",
+      "claimed_paths": [
+        "p/kimi-settled-facts-20260829-01.md"
+      ],
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "kimi-session-memory-20260829-02",
+      "title": "kimi session memory projector alias",
+      "kind": "OPEN_ALIAS",
+      "claimed_paths": [
+        "p/kimi-session-memory-20260829-02.md"
+      ],
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "kimi-agent-retirement-20260829-02",
+      "title": "kimi agent retirement projector alias",
+      "kind": "OPEN_ALIAS",
+      "claimed_paths": [
+        "p/kimi-agent-retirement-20260829-02.md"
+      ],
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "bryce-land-subzero-walker-20260829-01",
+      "title": "Bryce land subzero walker projector alias",
+      "kind": "OPEN_ALIAS",
+      "claimed_paths": [
+        "p/bryce-land-subzero-walker-20260829-01.md"
+      ],
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "notes": "One of four projector aliases. Stay unclosed."
+    }
+  ]
+}
