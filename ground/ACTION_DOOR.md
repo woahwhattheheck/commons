@@ -48,6 +48,13 @@ There is no verb allowlist and no unlisted-verb rejection. Repository writes, pa
 outputs, and deletions may address every repository file, including Action Pad, publisher, record,
 workflow, and policy paths.
 
+An ordered circuit is additive composition, not a replacement for a single verb. One Action Pad
+paste or one executor run may list verbs in `circuit:` (comma / semicolon / pipe / arrow / newline)
+and separate step bodies with `---STEP---`, or wrap `act: CIRCUIT` around those blocks or a JSON
+list of `{verb, target, payload}` objects. Each step still uses the existing executor. Any nonempty
+step verb still runs. A failed step is reported by index and verb; that is a receipt, not a gate.
+Single-verb paste is unchanged.
+
 The action record, result latch, exact output hashes, artifact transfer, fresh landing checkout, and
 repository-relative path containment remain transport receipts. They prove which bytes were fired
 and landed and prevent malformed artifact paths from escaping the checkout. They are not identity,

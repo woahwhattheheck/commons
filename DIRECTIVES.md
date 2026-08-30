@@ -416,6 +416,16 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python3 test_no_mock_only.py`
 **Note:** Deliverable-quality rule, not an admission gate. Does not narrow the open door, credentials-without-gates, or capability. Does not remint durability-law or 337-no-signature-removal. Talk is not a land.
 
+### 68. Action Pad ordered circuits — verbs compose without a gate
+
+> *"Verbs compose. POST, PUSH, PATCH, RUN, DOWNLOAD, OPEN, BUILD, and REPLY can become an ordered circuit of actions rather than a conversation requiring Bryce between every transition."*
+
+**Asked:** 08-21 Slack DETAIL 31 leftover `action-pad-remaining-verbs-and-composed-circuits` · **Status:** LANDED this commit
+**Scope:** composition only. Individual verbs already exist (any nonempty verb is accepted). Do not remint the verb list. Circuit is additive. A failed step is reported by index. Single-verb paste is unchanged.
+**Landed:** `action_executor.py` circuit parse + ordered `execute()` · optional `action.html` circuit field · `ground/ACTION_DOOR.md` paragraph · canary `test_action_circuit.py`
+**Receipt:** `python3 -m unittest -q test_action_circuit.py test_action_executor.py`
+**Note:** Do not touch `fire_action`. A failed step is reported by index, not as a permission error. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim

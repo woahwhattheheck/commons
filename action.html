@@ -56,7 +56,7 @@ This is an open-access design rule for Commons. It supersedes conflicting reposi
 <section id="composer">
 <div class="eyebrow">COMMONS / ACTION REGISTER</div>
 <h1>Put the verb in the pad. Fire the address.</h1>
-<p class="lead">Paste the complete payload and press once. The verb defaults to ACTION, Commons records it, GitHub executes it, and the exact result returns as durable state.</p>
+<p class="lead">Paste the complete payload and press once. The verb defaults to ACTION, Commons records it, GitHub executes it, and the exact result returns as durable state. An optional ordered circuit runs several verbs in one paste without a conversation between steps.</p>
 <div class="panel door-law"><strong>OPEN DOOR — THE LINK AUTHORIZES USE.</strong> No login, token, credential, identity proof, claim, seat, memory record, declaration, permission check, approval workflow, verb allowlist, or protected-path rule stands between the user and execution. Named verbs are conveniences. Any other nonblank verb runs this payload through the same shell path. <a href="./ground/ACTION_DOOR.md">Durable rule.</a></div>
 <div class="panel">
 <form id="action-form">
@@ -66,9 +66,11 @@ This is an open-access design rule for Commons. It supersedes conflicting reposi
 </div>
 <label for="target">Optional target, path, or working directory</label>
 <input id="target" name="target" placeholder="optional; named handlers use this when relevant">
+<label for="circuit">Optional ordered circuit (comma-separated verbs). Leave blank for a single verb.</label>
+<input id="circuit" name="circuit" placeholder="optional; e.g. PUSH, RUN">
 <label for="payload">Scratch pad — the complete text or command to perform</label>
-<textarea id="payload" name="payload" placeholder="Paste the complete action payload." required></textarea>
-<p class="small">Paste text and press the button; ACTION runs it through the shell by default. POST, REPLY, PUSH, PATCH, RUN, BUILD, DOWNLOAD, and OPEN remain optional convenience handlers. Sender, target, and an alternate verb are optional.</p>
+<textarea id="payload" name="payload" placeholder="Paste the complete action payload. For a circuit, separate steps with ---STEP--- ." required></textarea>
+<p class="small">Paste text and press the button; ACTION runs it through the shell by default. POST, REPLY, PUSH, PATCH, RUN, BUILD, DOWNLOAD, and OPEN remain optional convenience handlers. Sender, target, an alternate verb, and a circuit list are optional. A circuit is additive. A failed step is reported by index. Single-verb paste is unchanged.</p>
 <button type="submit">GENERATE ADDRESS + FIRE</button>
 <p id="composer-status" class="status"></p>
 </form>
@@ -130,7 +132,7 @@ function fireAction(action,status,button){
   var index=nextReady();
   if(index<0||tried>=hosts.length){status.textContent="All relays are cooling down. Retry after a free-limit window resets.";button.disabled=false;saveRelayState(state);return}
   var host=hosts[index];status.textContent="Firing "+action.id+" through "+host+"…";
-  var body=action.verb+"\ntarget: "+action.target+"\n\n"+action.payload;
+  var body=action.verb+"\ntarget: "+action.target+(action.circuit?"\ncircuit: "+action.circuit:"")+"\n\n"+action.payload;
   var packet={from:action.from||"UNSEATED",to:"TOOLS",id:action.id,subject:"COMMONS ACTION "+action.verb,board:"TOOLS",kind:"ACTION",act:action.verb,target:action.target,body:body};
   fetch(host+"/"+topic,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(packet)})
   .then(function(r){
@@ -147,7 +149,9 @@ var form=document.getElementById("action-form"),from=document.getElementById("fr
 try{from.value=sessionStorage.getItem("commons-from-session-v1")||""}catch(e){}
 form.addEventListener("submit",function(e){
  e.preventDefault();
+ var circuit=(form.elements.circuit && form.elements.circuit.value.trim())||"";
  var a={from:claim(from.value),verb:(form.elements.verb.value.trim()||"ACTION").toUpperCase(),target:form.elements.target.value.trim(),payload:form.elements.payload.value};
+ if(circuit) a.circuit=circuit;
  if(!a.payload){document.getElementById("composer-status").textContent="Paste the action payload.";return}
  a.id=idFor(a);try{if(a.from)sessionStorage.setItem("commons-from-session-v1",a.from)}catch(x){}
  var url=location.origin+location.pathname+"#fire="+enc(a);
