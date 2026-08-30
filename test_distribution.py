@@ -268,6 +268,20 @@ class DistributionLayerTests(unittest.TestCase):
         for hay in (text, html):
             self.assertNotRegex(hay, r"requireAuth|login required|permission gate|api[-_]?key required")
 
+    def test_browser_script_parses_and_escapes_dynamic_html(self):
+        script = ROOT / "distribution.js"
+        checked = subprocess.run(
+            ["node", "--check", str(script)],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(checked.returncode, 0, checked.stderr)
+        source = script.read_text(encoding="utf-8")
+        for escaped in ("&amp;", "&lt;", "&gt;", "&quot;", "&#39;"):
+            self.assertIn(escaped, source)
+
     def _pair(self, offer_id: str, channel_id: str) -> dict:
         for pair in self.matrix["pairs"]:
             if pair["offer_id"] == offer_id and pair["channel_id"] == channel_id:
