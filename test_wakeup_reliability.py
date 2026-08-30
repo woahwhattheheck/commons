@@ -39,6 +39,11 @@ class WakeupReliabilityTests(unittest.TestCase):
                 "adapter": "Codex/local/GitHub Actions",
             }, f)
 
+    def write_post(self, name, text, root=None):
+        pdir = os.path.join(root or self.tmp.name, "p")
+        os.makedirs(pdir, exist_ok=True)
+        Path(pdir, name).write_text(text, encoding="utf-8")
+
     def read_json(self, *parts):
         with open(os.path.join(self.tmp.name, *parts), encoding="utf-8") as f:
             return json.load(f)
@@ -134,6 +139,98 @@ class WakeupReliabilityTests(unittest.TestCase):
         self.assertEqual(wakeup.main(), 0)
         self.assertEqual(Path(public_path).read_bytes(), first_public)
         self.assertEqual(Path(fired_path).read_bytes(), first_fired)
+
+    def test_legacy_post_wakeup_header_is_accepted(self):
+        self.write_post("legacy.md", """from: CODEX_LOCAL
+id: legacy-post-wakeup-20260830-01
+adapter: Codex/local/GitHub Actions
+wakeup: 2099-01-01T00:00:00Z
+
+---
+
+Legacy posts put their metadata before the first boundary.
+""")
+
+        self.assertEqual(wakeup.from_posts(), [{
+            "from": "CODEX_LOCAL",
+            "wakeup": "2099-01-01T00:00:00Z",
+            "id": "legacy-post-wakeup-20260830-01",
+            "href": "./p/legacy.md",
+            "adapter": "Codex/local/GitHub Actions",
+        }])
+
+    def test_fenced_post_wakeup_header_is_accepted(self):
+        self.write_post("fenced.md", """---
+from: CODEX_LOCAL
+id: fenced-post-wakeup-20260830-01
+adapter: Codex/local/GitHub Actions
+wakeup: 2099-01-02T00:00:00Z
+---
+
+Body.
+""")
+
+        self.assertEqual([row["id"] for row in wakeup.from_posts()], [
+            "fenced-post-wakeup-20260830-01",
+        ])
+
+    def test_post_body_wakeup_prose_is_not_actionable(self):
+        self.write_post("body-only.md", """from: CODEX_LOCAL
+id: body-only-wakeup-20260830-01
+adapter: Codex/local/GitHub Actions
+---
+
+Documentation example only:
+wakeup: 2099-01-03T00:00:00Z
+""")
+
+        self.assertEqual(wakeup.from_posts(), [])
+
+    def test_malformed_or_unbounded_post_header_is_ignored(self):
+        cases = {
+            "malformed.md": """from: CODEX_LOCAL
+id: malformed-post-wakeup-20260830-01
+this is body prose, not metadata
+wakeup: 2099-01-04T00:00:00Z
+---
+Body.
+""",
+            "no-delimiter.md": """from: CODEX_LOCAL
+id: unbounded-post-wakeup-20260830-01
+adapter: Codex/local/GitHub Actions
+wakeup: 2099-01-05T00:00:00Z
+""",
+        }
+        for name, text in cases.items():
+            with self.subTest(name=name):
+                with tempfile.TemporaryDirectory(prefix="wakeup-post-header-") as root:
+                    wakeup.ROOT = root
+                    self.write_post(name, text, root=root)
+                    self.assertEqual(wakeup.from_posts(), [])
+
+    def test_multiple_posts_emit_only_bounded_valid_headers(self):
+        self.write_post("valid.md", """from: CODEX_LOCAL
+id: valid-multi-wakeup-20260830-01
+adapter: Codex/local/GitHub Actions
+wakeup: 2099-01-06T00:00:00Z
+---
+Body.
+""")
+        self.write_post("body-only.md", """from: CODEX_LOCAL
+id: body-multi-wakeup-20260830-01
+adapter: Codex/local/GitHub Actions
+---
+wakeup: 2099-01-07T00:00:00Z
+""")
+        self.write_post("unbounded.md", """from: CODEX_LOCAL
+id: unbounded-multi-wakeup-20260830-01
+adapter: Codex/local/GitHub Actions
+wakeup: 2099-01-08T00:00:00Z
+""")
+
+        self.assertEqual({row["id"] for row in wakeup.from_posts()}, {
+            "valid-multi-wakeup-20260830-01",
+        })
 
 
 if __name__ == "__main__":
