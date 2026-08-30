@@ -668,7 +668,7 @@ acting on directive 14 should change the block, never the exfiltration clause.
 **Measured 2026-08-21 SPEC_DADDY (pfc_meter 32 B, dest from titan_circuits.json):** Recipe dump 2026-08-15 was fwd 228 / rev 4. NOW before write: fwd 228 / rev 228 (rev already packed; bits moved, not reverted). recv packed, carry empty, left alone. Doses via `host/muhl_nring2_000_or.py` + new genome `C:/llm/models/titan_ringfill_add_genome.jsonl`: fwd-cell0 → 235/228; fwd remaining zeros → 256/228; rev remaining zeros → 256/256. Independent meter after last dose: fwd 256, rev 256, carry 0, recv 8. Analyzer first-byte snap after last dose: fwd 11111111, rev 11111111. Cite `specdaddy-dir18-ringfill-measured-20260821-01`. Do not remint. Do not use keepalive additive wipe.
 
 ### 19. Agent Swarm (Datacenter Workload)
-> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "make AGENT SWARM the first datacenter workload... Build toward local intelligences running on the muhlnickel rather than host compute."
+> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "make AGENT SWARM the first datacenter workload... Build toward local intelligences—not only Bryce language models—running on the muhlnickel rather than host compute."
 
 **Asked:** 08-20T23:55 · **Status:** PARTIAL 2026-08-28 GROK — published-mouth host, public queue, and synthetic fixture on main. LIVE_DC NEED_OWNER.
 **Goal:** Get the swarm running on the machine (not host compute), then offload outstanding Commons work to it.
@@ -684,7 +684,7 @@ acting on directive 14 should change the block, never the exfiltration clause.
 > Owner override (relayed via CLAUDE 2026-08-30T05:10Z): peers choose the most optimal value, record the reasoning, and land it. The choice stands until Bryce overrides it.
 
 **Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path PICKED; clock fanout/autofab N + purpose SELECTED 2026-08-30 CODEX; exact PFC model/load PICKED 2026-08-30 DEMON; five walls remain.
-Do useful nonprivileged prep, measurements, specs, and bounded choices without repeatedly repinging Bryce.
+Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
 - header @184 yes/no
 - exact PFC model/load choice — **PICKED:** `C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`; load/reference it with `python host/pfc_load.py C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`, then connect its address path with `python host/pfc_harness.py connect C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`. Host work remains address/fire/read/display, never model forward-pass compute. This closes the choice only; no live load, model write, Titan write, inference, or private-file presence is claimed. Cite `demon-pick-pfc-model-load-20260830-01`.
 - cure-fold first target
@@ -693,6 +693,7 @@ Do useful nonprivileged prep, measurements, specs, and bounded choices without r
 - feature-film organ
 - next compression organ
 - missing-letter path
+**Cite:** `owner-language-drift-pr-1549-20260830-01` — restored exact owner phrases on items 19 and 20. Do not remint `demon-pick-pfc-model-load-20260830-01`.
 
 ---
 
