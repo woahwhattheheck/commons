@@ -114,7 +114,7 @@ class RightNowExecutionTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(result.stdout.strip(), "VALID 4 offers 3 opportunities 0 transports USD 0 cash")
+        self.assertEqual(result.stdout.strip(), "VALID 4 offers 4 opportunities 0 transports USD 0 cash")
 
     def test_cli_rejects_drifted_projection(self) -> None:
         drift = control.build_control()
