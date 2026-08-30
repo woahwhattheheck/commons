@@ -1,7 +1,7 @@
 {
   "schema_version": "commons-smart-outreach/v1",
   "kind": "SMART_OUTREACH_CANDIDATES",
-  "generated_at": "2026-08-27T00:56:00Z",
+  "generated_at": "2026-08-30T15:20:37Z",
   "offer": {
     "sku_id": "same-day-agent-survival-proof",
     "name": "Same-Day Agent Survival Proof",
@@ -66,6 +66,26 @@
         "state": "UNVERIFIED"
       },
       "proof_hypothesis": "Can one schema-breaking trace fail visibly and preserve an exact replay receipt?",
+      "occupied_by": null,
+      "do_not_contact": false,
+      "disqualifiers": []
+    },
+    {
+      "prospect_id": "composio",
+      "organization": "Composio",
+      "recipient_email": "support@composio.dev",
+      "evidence": {
+        "source_url": "https://docs.composio.dev/reference/changelog",
+        "observed_at": "2026-08-30T15:20:37Z",
+        "exact_quote": "tools.execute() and tools.proxyExecute() no longer retry non-idempotent writes, preventing a timeout from repeating side effects such as sending the same email twice."
+      },
+      "owner_role": "agent platform reliability team",
+      "route": {
+        "kind": "EMAIL",
+        "value": "support@composio.dev",
+        "state": "VERIFIED"
+      },
+      "proof_hypothesis": "Can one timed-out non-idempotent agent tool call fail closed without duplicate side effects and leave an exact replay receipt?",
       "occupied_by": null,
       "do_not_contact": false,
       "disqualifiers": []

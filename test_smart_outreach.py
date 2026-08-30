@@ -49,7 +49,12 @@ class SmartOutreachTests(unittest.TestCase):
         self.assertEqual(decisions["anythingllm-mintplex"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(decisions["metaforms"], "HOLD_DO_NOT_RESEND")
         self.assertEqual(decisions["signoz"], "RESEARCH_REQUIRED")
-        self.assertEqual(plan["truth"]["drafts_created"], 0)
+        self.assertEqual(decisions["composio"], "READY_TO_DRAFT")
+        composio = next(item for item in plan["items"] if item["prospect_id"] == "composio")
+        self.assertEqual(composio["recipient_email"], "support@composio.dev")
+        self.assertEqual(composio["score"], 85)
+        self.assertIn("sending the same email twice", composio["draft"]["body"])
+        self.assertEqual(plan["truth"]["drafts_created"], 1)
         self.assertEqual(plan["truth"]["transport_actions"], 0)
         self.assertEqual(plan["truth"]["cash_usd"], 0)
 
@@ -113,7 +118,7 @@ class SmartOutreachTests(unittest.TestCase):
             capture_output=True,
             text=True,
         ).stdout
-        self.assertEqual(validate.strip(), "VALID 3 prospects 0 drafts 0 transport actions")
+        self.assertEqual(validate.strip(), "VALID 4 prospects 1 drafts 0 transport actions")
 
 
 if __name__ == "__main__":
