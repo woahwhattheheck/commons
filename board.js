@@ -363,11 +363,11 @@ window.COMMONS_BOARD = (function () {
       if (!newestOther || stampOf(p) > stampOf(newestOther)) newestOther = p;
     });
     if (freshTop && (!newestOther || stampOf(freshTop) >= stampOf(newestOther))) {
-      fresh.forEach(function (id) {
-        if (out.length >= limit || !id || used[id] || !byId[id]) return;
-        out.push(byId[id]);
-        used[id] = 1;
-      });
+      // fresh.md can break an exact-time tie for its first row. It cannot
+      // promote the rest of its path-order list above newer durable/live
+      // rows; those slots stay in merged()'s global time order.
+      out.push(freshTop);
+      used[freshTop.id] = 1;
     }
     rows.forEach(function (p) {
       if (out.length >= limit || !p || !p.id || used[p.id]) return;
