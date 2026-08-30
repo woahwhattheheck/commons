@@ -1,0 +1,134 @@
+{
+  "schema_version": "commons-website-people-email-book/v1",
+  "kind": "WEBSITE_PEOPLE_EMAIL_BOOK_LOOP",
+  "generated_at": "2026-08-30T12:50:00Z",
+  "website": {
+    "source": "revenue/website_people_email_book/fixture_seller.html",
+    "title": "Commons White Box — crash-resume for production agents",
+    "headline": "Crash-resume proof for production agent teams",
+    "description": "Same-day crash-resume proof for teams whose agents die mid-job.",
+    "icp": "For founders and platform owners whose agents die mid-job.",
+    "book_url": "https://cal.com/tokenjunkielabs/intro"
+  },
+  "people": [
+    {
+      "person_id": "ava-example-test",
+      "name": "Ava Platform",
+      "role": "Head of Agent Reliability",
+      "email": "ava@example.test",
+      "need": "Our agents die mid-job and we have no crash-resume receipt.",
+      "source": "page-person",
+      "route": {"kind": "EMAIL", "value": "ava@example.test", "state": "VERIFIED"},
+      "next_action": "stage email and booking CTA; do not send until owner mailbox"
+    },
+    {
+      "person_id": "noah-example-test",
+      "name": "Noah Ops",
+      "role": "Production owner",
+      "email": "noah@example.test",
+      "need": "We keep replaying failed agent runs by hand for a year.",
+      "source": "page-person",
+      "route": {"kind": "EMAIL", "value": "noah@example.test", "state": "VERIFIED"},
+      "next_action": "stage email and booking CTA; do not send until owner mailbox"
+    },
+    {
+      "person_id": "riley-quiet",
+      "name": "Riley Quiet",
+      "role": "Observer",
+      "email": null,
+      "need": "I want the proof but I did not publish an email on this page.",
+      "source": "page-person",
+      "route": {"kind": "EMAIL", "value": null, "state": "UNVERIFIED"},
+      "next_action": "no verified email on the website; do not invent a mailbox"
+    },
+    {
+      "person_id": "sam-example-test",
+      "name": "Sam Catalog",
+      "role": "Founder",
+      "email": "sam@example.test",
+      "need": "Need a same-day proof our catalog agents recover after a crash.",
+      "source": "json-ld",
+      "route": {"kind": "EMAIL", "value": "sam@example.test", "state": "VERIFIED"},
+      "next_action": "stage email and booking CTA; do not send until owner mailbox"
+    }
+  ],
+  "emails": [
+    {
+      "person_id": "ava-example-test",
+      "to": "ava@example.test",
+      "transport": "STAGED_NOT_SENT",
+      "draft": {
+        "subject": "Ava, book a call — Crash-resume proof for production agent teams",
+        "body": "Hi Ava Platform,\n\nI read revenue/website_people_email_book/fixture_seller.html — Crash-resume proof for production agent teams. Same-day crash-resume proof for teams whose agents die mid-job.\n\nYou wrote: \"Our agents die mid-job and we have no crash-resume receipt.\"\n\nThat matches who this is for: For founders and platform owners whose agents die mid-job.\n\nIf that is still true, book a call: https://cal.com/tokenjunkielabs/intro\n\nIf this is not relevant, reply no or opt out and I will close it.\n\n— Commons draft only. Not sent. Live send waits on the owner mailbox."
+      }
+    },
+    {
+      "person_id": "noah-example-test",
+      "to": "noah@example.test",
+      "transport": "STAGED_NOT_SENT",
+      "draft": {
+        "subject": "Noah, book a call — Crash-resume proof for production agent teams",
+        "body": "Hi Noah Ops,\n\nI read revenue/website_people_email_book/fixture_seller.html — Crash-resume proof for production agent teams. Same-day crash-resume proof for teams whose agents die mid-job.\n\nYou wrote: \"We keep replaying failed agent runs by hand for a year.\"\n\nThat matches who this is for: For founders and platform owners whose agents die mid-job.\n\nIf that is still true, book a call: https://cal.com/tokenjunkielabs/intro\n\nIf this is not relevant, reply no or opt out and I will close it.\n\n— Commons draft only. Not sent. Live send waits on the owner mailbox."
+      }
+    },
+    {
+      "person_id": "sam-example-test",
+      "to": "sam@example.test",
+      "transport": "STAGED_NOT_SENT",
+      "draft": {
+        "subject": "Sam, book a call — Crash-resume proof for production agent teams",
+        "body": "Hi Sam Catalog,\n\nI read revenue/website_people_email_book/fixture_seller.html — Crash-resume proof for production agent teams. Same-day crash-resume proof for teams whose agents die mid-job.\n\nYou wrote: \"Need a same-day proof our catalog agents recover after a crash.\"\n\nThat matches who this is for: For founders and platform owners whose agents die mid-job.\n\nIf that is still true, book a call: https://cal.com/tokenjunkielabs/intro\n\nIf this is not relevant, reply no or opt out and I will close it.\n\n— Commons draft only. Not sent. Live send waits on the owner mailbox."
+      }
+    }
+  ],
+  "bookings": [
+    {
+      "person_id": "ava-example-test",
+      "state": "STAGED_NOT_BOOKED",
+      "book_url": "https://cal.com/tokenjunkielabs/intro",
+      "calendar": "SITE_BOOK_URL",
+      "calls_booked": 0,
+      "next_action": "copy the book URL into the draft; do not write a live calendar event"
+    },
+    {
+      "person_id": "noah-example-test",
+      "state": "STAGED_NOT_BOOKED",
+      "book_url": "https://cal.com/tokenjunkielabs/intro",
+      "calendar": "SITE_BOOK_URL",
+      "calls_booked": 0,
+      "next_action": "copy the book URL into the draft; do not write a live calendar event"
+    },
+    {
+      "person_id": "sam-example-test",
+      "state": "STAGED_NOT_BOOKED",
+      "book_url": "https://cal.com/tokenjunkielabs/intro",
+      "calendar": "SITE_BOOK_URL",
+      "calls_booked": 0,
+      "next_action": "copy the book URL into the draft; do not write a live calendar event"
+    }
+  ],
+  "truth": {
+    "websites_ingested": 1,
+    "people_found": 4,
+    "people_with_verified_email": 3,
+    "emails_drafted": 3,
+    "calls_booked": 0,
+    "transport_actions": 0,
+    "contacts_claimed": 0,
+    "cash_usd": 0,
+    "mailbox": "NEEDS_OWNER_MAILBOX"
+  },
+  "compose": {
+    "smart_outreach": "later evidence-bound qualification; do not remint candidates.json",
+    "swarm_mail": "later exact-once transport after owner mailbox",
+    "subzero_gtm": "different surface; SUBZERO SKU architecture; that leftover forbids outreach",
+    "reply_to_revenue": "inbound cash truth after replies exist"
+  },
+  "does_not_replace": [
+    "revenue/smart_outreach",
+    "host/smart_outreach.py",
+    "revenue/subzero_gtm",
+    "host/swarm_mail.py",
+    "revenue/reply_to_revenue"
+  ]
+}
