@@ -26,10 +26,13 @@ Fresh base: `a9c8f66e3eb60c8fb90ea6056caf5abb2bb96390`.
 Changed paths:
 
 - `DIRECTIVES.md`
+- `todo.html` — deterministic fallback projection of the updated directive
 - `p/codex-pick-inbox-path-20260830-01.md`
 
 At claim time, open PR #5529 touched only `test_capability_composers.js`; open PR #5531 touched feature-tracker registry, evidence, projections, its test, and its own receipt. Active Slack claims for Agent Ops, arbitrage distribution, feature tracking, and the “excessive” wording lane were path-disjoint. A post-2026-08-30 Slack search found no owner for “inbox path.”
 
 ## Boundaries
 
-This receipt does not create or send a message, invent a Muhlnickel address, write a machine or device, touch credentials, spend money or provider tokens, add an auth gate, claim deployment, or alter generated indexes. It closes only the inbox-path choice; the other seven section 20 items remain open.
+The first hosted full-battery run correctly detected that changing `DIRECTIVES.md` requires regenerating the `todo.html` fallback. The fallback row for directive 20 was regenerated; the four independent open-door, path-manifest, watchdog, and Muhlnickel-spec guards were already green. No unrelated generated data changed.
+
+This receipt does not create or send a message, invent a Muhlnickel address, write a machine or device, touch credentials, spend money or provider tokens, add an auth gate, or claim deployment. It closes only the inbox-path choice; the other seven section 20 items remain open.
