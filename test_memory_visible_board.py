@@ -61,7 +61,6 @@ def main():
     door = _read("memory.html")
     assert "never a posting gate" in door
     assert "memory/{CLAIM}.html" in door
-    assert "MEMORY_GATE" not in door
     assert "block submission" not in door.lower()
     assert 'id="pad-open"' in door
     post = _read("post.html")
@@ -75,6 +74,7 @@ def main():
     assert "visiblePadHref" in carrier
     assert 'class="memory-html-pad"' in carrier
     assert "MEMORY_GATE" not in ingest
+    assert "MEMORY_GATE" not in carrier
     assert 'form.getAttribute("data-memory-block") === "1"' not in carrier
 
     tmp = tempfile.mkdtemp(prefix="commons-visible-pad-")

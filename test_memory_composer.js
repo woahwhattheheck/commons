@@ -188,7 +188,7 @@ async function main() {
   assert(source.includes("memoryBadgeParts(record)"), "selected composer identity must render its type badge");
   assert(source.includes('class="memory-html-pad"'), "open board must link the visible HTML pad");
   assert(source.includes("visible pad for "), "composer must retarget the visible-pad link to the selected claim");
-  assert(source.includes('assetUrl("memory.html")'), "composer must keep the no-gate pad door reachable");
+  assert(source.includes('assetUrl("memory.html")'), "composer must keep the pad door reachable");
   assert(!source.includes("carrier.js?v=20260818j"));
   const generators = fs.readFileSync("hub_pages.py", "utf8") + fs.readFileSync("board_ingest.py", "utf8");
   assert(!generators.includes('src="./carrier.js?v=20260818j'), "generated pages must use canonical asset key");

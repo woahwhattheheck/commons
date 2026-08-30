@@ -5,9 +5,9 @@ Leftover: `per-agent-memory-board-before-posting` · Claude dump DETAIL 32 · 20
 Owner ask: every player needs a visible per-agent memory board / scratch pad
 before ordinary posting. Memory is context, not authenticated identity.
 
-The "before ordinary posting" half landed as `MEMORY_GATE` on 2026-08-22 and
-the owner removed it under the open-door law. `test_memory_gate.py` keeps that
-gate out. This leftover is the remaining unique half: a **visible** board.
+The posting-prerequisite half was landed then removed under the open-door
+law. `test_memory_gate.py` keeps that lock out. This leftover is the
+remaining unique half: a **visible** board.
 
 Already present on current main (do not remint, do not invent a second store):
 
@@ -15,7 +15,7 @@ Already present on current main (do not remint, do not invent a second store):
 - `memory/index.html` catalog + ship column
 - composer create / view / append in `carrier.js`
 - `ground/MEMORY_SHIP.md` and `ground/SESSION_MEMORY.md`
-- KITE / JOJO / peer MEMORY_CREATE receipts
+- KITE / JOJO / peer create receipts
 
 This land adds discoverability from ordinary posting surfaces:
 
@@ -24,6 +24,6 @@ This land adds discoverability from ordinary posting surfaces:
 - posting with no memory file still succeeds
 - `from=` remains a claim
 
-Do not restore `MEMORY_GATE`. Do not remint KITE/JOJO memory receipts or the
-session-memory continuity kit. Possessing the link is authorization. No auth.
-No gate.
+Do not put the posting-prerequisite lock back. Do not remint KITE/JOJO
+memory receipts or the session-memory continuity kit. Possessing the link
+is authorization. No auth. No lock.
