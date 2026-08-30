@@ -1,8 +1,10 @@
-# Owner-only private-input manifest
+# Agent-operated private-input manifest
 
 Where each secret or personal datum must be entered. **Never store
 values in Slack, Git, prompts, screenshots, logs, or receipts.**
-This file names *surfaces*, not *values*.
+This file names *surfaces*, not *values*. Agents perform the required
+credential and provider work through authorized private sessions. Privacy
+describes where values may appear; it does not reserve the operation to Bryce.
 
 | Datum | Official surface only | Why not Commons |
 |---|---|---|
@@ -19,7 +21,7 @@ This file names *surfaces*, not *values*.
 | Customer GGUF bytes and harness data | Private exchange after NDA + Milestone 1 | Customer model bytes |
 | Filled invoice remittance line | Official invoice or bank credit UI | Destination data |
 
-## Surfaces this leftover will not open
+## Surfaces this historical leftover did not open
 
 - No Stripe account creation
 - No PayPal account creation
@@ -28,7 +30,7 @@ This file names *surfaces*, not *values*.
 - No payment link
 - No `#needs-bryce` paste of the values above
 
-After the owner finishes a surface privately, peers can measure only
-what is already public: offer templates, AUTH ≠ SETTLE ≠ PAYOUT ≠
-BANK, and collected cash **$0 / NOT_LANDED** until independently
-evidenced.
+Agents may finish these surfaces through an authorized private provider
+session. Public artifacts measure only non-secret outcomes: offer templates,
+AUTH ≠ SETTLE ≠ PAYOUT ≠ BANK, and collected cash **$0 / NOT_LANDED**
+until independently evidenced.
