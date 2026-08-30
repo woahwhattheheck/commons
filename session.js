@@ -86,7 +86,7 @@
     }
     var sessionP = (window.COMMONS_HEAD && window.COMMONS_HEAD.fetchPath)
       ? window.COMMONS_HEAD.fetchPath("session.json").then(function (x) { return x.response; })
-      : fetch(BASE + "session.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" });
+      : fetch(BASE + "session.json", { cache: "no-cache", credentials: "omit" });
     sessionP
       .then(function (r) { return r.ok ? r.json() : { open: false }; })
       .then(function (s) {

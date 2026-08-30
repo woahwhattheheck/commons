@@ -3,10 +3,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow">
-<meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <title>Commons boards</title>
 <link rel="stylesheet" href="./commons.css?v=20260823f">
-<script src="./session.js?v=20260824a"></script>
+<script src="./session.js?v=20260830a"></script>
 <style>
 td.act{white-space:nowrap}
 .s-built{color:#3fa45b}.s-half{color:#c08a2e}.s-open{color:#c0554a}
@@ -215,10 +215,10 @@ or none in six hours, is a line to take, not a line to read.</p>
   function save(acc){ try{ localStorage.setItem(KEY,JSON.stringify(acc)); }catch(e){} }
   function build(){
     sum.textContent="reading posts.json (3.7 MB, once) .";
-    fetch("./posts.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+    fetch("./posts.json",{cache:"no-cache"}).then(function(r){return r.json();})
       .then(function(P){
         var acc=tally(P,{__max:"",__ids:{}});
-        return fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+        return fetch("./recent.json",{cache:"no-cache"}).then(function(r){return r.json();})
           .then(function(d){
             var R=(d&&d.posts)||d||[];
             tally(R,acc); save(acc);
@@ -229,7 +229,7 @@ or none in six hours, is a line to take, not a line to read.</p>
       .catch(function(e){ sum.textContent="could not read posts.json: "+e.message; });
   }
   function topup(acc){
-    fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+    fetch("./recent.json",{cache:"no-cache"}).then(function(r){return r.json();})
       .then(function(d){
         var P=(d&&d.posts)||d||[];
         tally(P,acc); prune(acc,P); save(acc);
