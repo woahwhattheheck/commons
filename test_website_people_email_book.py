@@ -27,6 +27,22 @@ def fixture_loop() -> dict:
     return loop.build_loop(FIXTURE.read_text(encoding="utf-8"), SOURCE)
 
 
+def measured_mailbox_status() -> dict:
+    return {
+        "kind": "SWARM_MAIL_PRIVATE_RUNTIME_STATUS",
+        "inboxes": [
+            {
+                "inbox_id": "codex-sales",
+                "model_family": "CODEX",
+                "state": "MEASURED",
+                "address_ref": "opaque:address:codex-owner-0001",
+            }
+        ],
+        "counts": {"measured_inboxes": 1},
+        "commercial_success": "UNMEASURED_BY_MAIL",
+    }
+
+
 def prospect_catalog(email: str = "buyer@prospect.test") -> dict:
     return {
         "schema_version": "commons-smart-outreach/v1",
@@ -94,6 +110,45 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
         self.assertIn("opt out", email["draft"]["body"])
         self.assertEqual(result["bookings"][0]["state"], "STAGED_NOT_BOOKED")
 
+    def test_redacted_swarm_status_can_measure_owner_mailbox_without_enabling_send(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            result = loop.build_loop(
+                FIXTURE.read_text(encoding="utf-8"),
+                SOURCE,
+                prospect_catalog(),
+                Path(directory),
+                mailbox_status=measured_mailbox_status(),
+            )
+        loop.validate_loop(result)
+        self.assertEqual(result["truth"]["mailbox"], "OWNER_MAILBOX_MEASURED")
+        self.assertEqual(result["truth"]["transport_actions"], 0)
+        self.assertEqual(result["emails"][0]["transport"], "STAGED_NOT_SENT")
+        self.assertNotIn("@", json.dumps(result["mailbox_runtime"]))
+
+    def test_mailbox_truth_cannot_be_promoted_without_redacted_runtime_evidence(self) -> None:
+        result = fixture_loop()
+        result["truth"]["mailbox"] = "OWNER_MAILBOX_MEASURED"
+        with self.assertRaisesRegex(loop.LoopError, "must match"):
+            loop.validate_loop(result)
+
+    def test_mailbox_status_rejects_raw_address_or_inconsistent_count(self) -> None:
+        exposed = measured_mailbox_status()
+        exposed["inboxes"][0]["address_ref"] = "codex@example.test"
+        with self.assertRaisesRegex(loop.LoopError, "must not contain"):
+            loop.build_loop(
+                FIXTURE.read_text(encoding="utf-8"),
+                SOURCE,
+                mailbox_status=exposed,
+            )
+        inconsistent = measured_mailbox_status()
+        inconsistent["counts"]["measured_inboxes"] = 0
+        with self.assertRaisesRegex(loop.LoopError, "does not match"):
+            loop.build_loop(
+                FIXTURE.read_text(encoding="utf-8"),
+                SOURCE,
+                mailbox_status=inconsistent,
+            )
+
     def test_seller_contact_is_never_reclassified_as_external_prospect(self) -> None:
         catalog = prospect_catalog("ava@example.test")
         with tempfile.TemporaryDirectory() as directory:
@@ -153,7 +208,8 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
             text=True,
         )
         self.assertEqual(proc.returncode, 3)
-        self.assertIn("owner mailbox", proc.stderr.casefold())
+        self.assertIn("this planner never transports mail", proc.stderr.casefold())
+        self.assertIn("swarm mail", proc.stderr.casefold())
         self.assertEqual(proc.stdout.strip(), "")
 
     def test_cli_run_is_deterministic_and_validate_matches(self) -> None:

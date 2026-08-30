@@ -358,12 +358,60 @@ def _prospects(
     return results
 
 
+def _mailbox_state(status: dict[str, Any] | None) -> str:
+    if status is None:
+        return "NEEDS_OWNER_MAILBOX"
+    if not isinstance(status, dict):
+        raise LoopError("mailbox status must be one redacted Swarm Mail status object")
+    if set(status) != {"kind", "inboxes", "counts", "commercial_success"}:
+        raise LoopError("mailbox status fields differ from the Swarm Mail redacted projection")
+    if status["kind"] != "SWARM_MAIL_PRIVATE_RUNTIME_STATUS":
+        raise LoopError("mailbox status kind is invalid")
+    if status["commercial_success"] != "UNMEASURED_BY_MAIL":
+        raise LoopError("mailbox status cannot claim commercial success")
+    if "@" in canonical_text(status):
+        raise LoopError("mailbox status must not contain an email address")
+    inboxes = status["inboxes"]
+    counts = status["counts"]
+    if not isinstance(inboxes, list) or not isinstance(counts, dict):
+        raise LoopError("mailbox status inboxes and counts are invalid")
+    measured_count = counts.get("measured_inboxes")
+    if type(measured_count) is not int or measured_count < 0:
+        raise LoopError("mailbox measured_inboxes must be one non-negative integer")
+    measured = 0
+    codex: list[dict[str, Any]] = []
+    for index, inbox in enumerate(inboxes):
+        if not isinstance(inbox, dict) or set(inbox) != {
+            "inbox_id", "model_family", "state", "address_ref"
+        }:
+            raise LoopError(f"mailbox status inboxes[{index}] fields are invalid")
+        if inbox["state"] not in {"UNPROVISIONED", "MEASURED"}:
+            raise LoopError(f"mailbox status inboxes[{index}].state is invalid")
+        address_ref = inbox["address_ref"]
+        if inbox["state"] == "MEASURED":
+            measured += 1
+            if not isinstance(address_ref, str) or not address_ref.startswith("opaque:"):
+                raise LoopError("measured mailbox needs one opaque address reference")
+        elif address_ref is not None:
+            raise LoopError("unprovisioned mailbox cannot expose an address reference")
+        if inbox["inbox_id"] == "codex-sales":
+            codex.append(inbox)
+    if measured_count != measured:
+        raise LoopError("mailbox measured_inboxes count does not match inbox states")
+    if len(codex) != 1 or codex[0]["model_family"] != "CODEX":
+        raise LoopError("mailbox status must contain exactly one Codex sales inbox")
+    if codex[0]["state"] == "MEASURED":
+        return "OWNER_MAILBOX_MEASURED"
+    return "NEEDS_OWNER_MAILBOX"
+
+
 def build_loop(
     html: str,
     source: str,
     prospect_catalog: dict[str, Any] | None = None,
     receipt_directory: Path = DEFAULT_RECEIPTS,
     generated_at: str = MEASURED_AT,
+    mailbox_status: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     if not isinstance(html, str) or not html.strip():
         raise LoopError("html must be non-empty")
@@ -372,6 +420,7 @@ def build_loop(
     if prospect_catalog is None:
         prospect_catalog = json.loads(DEFAULT_PROSPECTS.read_text(encoding="utf-8"))
     prospects = _prospects(prospect_catalog, receipt_directory, seller_contacts, source)
+    mailbox_state = _mailbox_state(mailbox_status)
     emails: list[dict[str, Any]] = []
     bookings: list[dict[str, Any]] = []
     for prospect in prospects:
@@ -395,6 +444,7 @@ def build_loop(
         "prospects": prospects,
         "emails": emails,
         "bookings": bookings,
+        "mailbox_runtime": mailbox_status,
         "truth": {
             "websites_ingested": 1,
             "prospects_found": len(prospects),
@@ -405,7 +455,7 @@ def build_loop(
             "transport_actions": 0,
             "contacts_claimed": 0,
             "cash_usd": 0,
-            "mailbox": "NEEDS_OWNER_MAILBOX",
+            "mailbox": mailbox_state,
         },
         "compose": dict(COMPOSE),
         "does_not_replace": list(DOES_NOT_REPLACE),
@@ -424,8 +474,9 @@ def validate_loop(value: dict[str, Any]) -> dict[str, Any]:
         raise LoopError("this lane cannot claim live bookings")
     if truth.get("cash_usd") != 0:
         raise LoopError("this lane cannot claim cash")
-    if truth.get("mailbox") != "NEEDS_OWNER_MAILBOX":
-        raise LoopError("mailbox must stay NEEDS_OWNER_MAILBOX until owner attaches one")
+    mailbox_state = _mailbox_state(value.get("mailbox_runtime"))
+    if truth.get("mailbox") != mailbox_state:
+        raise LoopError("mailbox truth must match the redacted Swarm Mail runtime status")
     emails = value.get("emails")
     if not isinstance(emails, list):
         raise LoopError("emails must be an array")
@@ -486,6 +537,11 @@ def build_parser() -> argparse.ArgumentParser:
     run.add_argument("--url")
     run.add_argument("--prospects", type=Path, default=DEFAULT_PROSPECTS)
     run.add_argument("--receipts", type=Path, default=DEFAULT_RECEIPTS)
+    run.add_argument(
+        "--mailbox-status",
+        type=Path,
+        help="redacted output from swarm_mail.py status; never an address or credential file",
+    )
     run.add_argument("--output", type=Path)
     run.add_argument("--generated-at", default=MEASURED_AT)
     subparsers.add_parser("validate").add_argument("--input", type=Path, default=DEFAULT_LOOP)
@@ -496,7 +552,8 @@ def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if "--send" in argv or (argv[:1] == ["send"]):
         sys.stderr.write(
-            "REFUSED live send: owner mailbox is not attached. Drafts and bookings stay staged.\n"
+            "REFUSED live send: this planner never transports mail. "
+            "Use Swarm Mail after measured provisioning; drafts and bookings stay staged.\n"
         )
         return 3
     args = build_parser().parse_args(argv)
@@ -515,12 +572,18 @@ def main(argv: list[str] | None = None) -> int:
         except ValueError:
             source = str(args.html)
     catalog = json.loads(args.prospects.read_text(encoding="utf-8"))
+    mailbox_status = (
+        json.loads(args.mailbox_status.read_text(encoding="utf-8"))
+        if args.mailbox_status
+        else None
+    )
     loop = build_loop(
         html,
         source,
         prospect_catalog=catalog,
         receipt_directory=args.receipts,
         generated_at=args.generated_at,
+        mailbox_status=mailbox_status,
     )
     validate_loop(loop)
     rendered = canonical_text(loop)
