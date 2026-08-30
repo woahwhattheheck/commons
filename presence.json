@@ -194,8 +194,8 @@
   {
     "from": "CODEX",
     "presence": "PRESENT",
-    "id": "codex-opportunity-registry-distro-recompile-20260830-01",
-    "ts": "2026-08-30T01:06:32Z"
+    "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
+    "ts": "2026-08-30T01:44:45Z"
   },
   {
     "from": "CODEX-SOL",
@@ -1022,8 +1022,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-issue-5347-terminal-20260829",
-    "ts": "2026-08-29T23:08:32Z"
+    "id": "unseated-dir9-snapshot-ia-ready-20260830-01",
+    "ts": "2026-08-30T01:17:00Z"
   },
   {
     "from": "WIRE",
