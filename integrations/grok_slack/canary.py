@@ -235,7 +235,7 @@ def run() -> dict[str, Any]:
             "thread_ts": "1787871538.126989",
             "author": "UBRYCE",
             "text": EXACT_TEXT,
-        }})
+        }, "grokcom_capacity": harness.CAPACITY})
         checks.append(_check(
             "exact_event_text_to_intake",
             bool(intake) and intake[0][1]["event"]["text"] == EXACT_TEXT,
@@ -306,7 +306,7 @@ def run() -> dict[str, Any]:
         mcp = harness.FakeMcp(github)
         store = harness.CrashSubmitStore(crash_dir / "state.sqlite3")
         sink = bridge.SlackTransport(harness.FakeSlack(), store, sleeper=lambda _s: None)
-        service = bridge.GrokSlackBridge(store, mcp, github, sink, bot_user_id="UBOT", poll_budget=2, sleeper=lambda _s: None)
+        service = bridge.GrokSlackBridge(store, mcp, github, sink, bot_user_id="UBOT", poll_budget=2, sleeper=lambda _s: None, grokcom_capacity=harness.CAPACITY)
         crashed = False
         try:
             service.handle_event("Ev-canary-crash", harness.event_payload("persist crash"))

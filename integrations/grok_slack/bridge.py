@@ -50,6 +50,7 @@ REQUIRED_TOOLS = ("route_grokcom_revenue_work", "fire_action")
 PHASES = (
     "CLAIMED",
     "INTAKE",
+    "WAITING_CAPACITY",
     "JOB_PERSISTED",
     "SUBMITTED",
     "OBSERVING",
@@ -63,7 +64,7 @@ PHASES = (
     "DELIVERY_UNKNOWN",
     "FIRE_ACTION_UNKNOWN",
 )
-PRE_SUBMIT_PHASES = frozenset({"CLAIMED", "INTAKE", "JOB_PERSISTED"})
+PRE_SUBMIT_PHASES = frozenset({"CLAIMED", "INTAKE", "WAITING_CAPACITY", "JOB_PERSISTED"})
 POST_SUBMIT_PHASES = frozenset({
     "SUBMITTED", "OBSERVING", "RESULT", "DELIVERING", "DELIVERED",
     "DELIVERY_UNKNOWN", "FIRE_ACTION_UNKNOWN",
@@ -75,6 +76,9 @@ ENV_FILE_VAR = "COMMONS_GROK_SLACK_ENV_FILE"
 STATE_DB_VAR = "COMMONS_GROK_SLACK_STATE_DB"
 HEALTH_BIND_VAR = "COMMONS_GROK_SLACK_HEALTH_BIND"
 GIT_ROOT_VAR = "COMMONS_GROK_SLACK_GIT_ROOT"
+GROKCOM_CAPACITY_STATE_VAR = "COMMONS_GROKCOM_CAPACITY_STATE"
+GROKCOM_CAPACITY_EVIDENCE_VAR = "COMMONS_GROKCOM_CAPACITY_EVIDENCE"
+GROKCOM_CAPACITY_OBSERVED_AT_VAR = "COMMONS_GROKCOM_CAPACITY_OBSERVED_AT"
 DEFAULT_HEALTH_BIND = "127.0.0.1:8788"
 SLACK_APP_ID = "A0BTJMFPTT6"
 HOST_PACK_FILES = (
@@ -657,6 +661,16 @@ def local_health_report(
     return report
 
 
+def grokcom_capacity_from_env(env: dict[str, str] | None = None) -> dict[str, str]:
+    """Read descriptive provider capacity state; never read or return credentials."""
+    source = env if env is not None else os.environ
+    return {
+        "state": str(source.get(GROKCOM_CAPACITY_STATE_VAR) or "UNKNOWN"),
+        "evidence": str(source.get(GROKCOM_CAPACITY_EVIDENCE_VAR) or ""),
+        "observed_at": str(source.get(GROKCOM_CAPACITY_OBSERVED_AT_VAR) or ""),
+    }
+
+
 class BridgeStore:
     """Crash-recovery routing state. Content and secrets are never stored."""
 
@@ -878,7 +892,7 @@ class BridgeStore:
             rows = self._connection.execute(
                 """
                 SELECT * FROM slack_events
-                WHERE phase NOT IN ('DELIVERED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED')
+                WHERE phase NOT IN ('DELIVERED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED', 'WAITING_CAPACITY')
                   AND NOT (
                     phase = 'FAILED'
                     AND EXISTS (
@@ -1595,6 +1609,7 @@ class GrokSlackBridge:
         executor_slack: Any | None = None,
         grok_provider: Any | None = None,
         git_root: str | Path | None = None,
+        grokcom_capacity: dict[str, Any] | None = None,
     ) -> None:
         self.store = store
         self.mcp = mcp
@@ -1607,6 +1622,7 @@ class GrokSlackBridge:
         self.executor_slack = executor_slack
         self.grok_provider = grok_provider
         self.git_root = Path(git_root) if git_root is not None else None
+        self.grokcom_capacity = dict(grokcom_capacity or {})
         self.ack_log: list[str] = []
         self.work_log: list[str] = []
         self.delivery_owner = FINAL_DELIVERY_OWNER
@@ -1684,6 +1700,14 @@ class GrokSlackBridge:
     def _run_claimed(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
         self._active_event_id = event_id
         packet = self._intake(event_id, contract)
+        if packet.get("state") == "WAITING_CAPACITY":
+            self.store.set_phase(event_id, "WAITING_CAPACITY")
+            return {
+                "ok": True,
+                "state": "WAITING_CAPACITY",
+                "task_id": packet.get("task_id"),
+                "submit": False,
+            }
         if packet.get("state") == "ECHO_PROCESSED" or packet.get("connector", {}).get("post_reply") is False:
             self.store.set_phase(event_id, "ECHO_SUPPRESSED")
             return {"ok": True, "state": "ECHO_SUPPRESSED", "task_id": packet.get("task_id")}
@@ -1729,7 +1753,12 @@ class GrokSlackBridge:
         }
         if contract.get("connector_origin"):
             event["connector_origin"] = contract["connector_origin"]
-        packet = self._route_revenue({"stage": "INTAKE", "mode": "AUTO", "event": event})
+        packet = self._route_revenue({
+            "stage": "INTAKE",
+            "mode": "AUTO",
+            "event": event,
+            "grokcom_capacity": self.grokcom_capacity,
+        })
         self.store.set_phase(event_id, "INTAKE", task_id=str(packet.get("task_id") or ""))
         return packet
 
@@ -2902,6 +2931,7 @@ def serve(args: argparse.Namespace) -> int:
         store, mcp, github, sink,
         bot_user_id=str(bot_user_id) if bot_user_id else None,
         git_root=git_root,
+        grokcom_capacity=grokcom_capacity_from_env(),
     )
     recovered = bridge.recover_pending()
     executor = ThreadPoolExecutor(max_workers=args.workers, thread_name_prefix="grok-slack")
