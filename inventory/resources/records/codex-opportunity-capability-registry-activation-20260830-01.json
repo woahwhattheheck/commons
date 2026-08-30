@@ -1,0 +1,84 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-opportunity-capability-registry-activation-20260830-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-30T10:01:00Z",
+  "selected_resource": "opportunity-capability-registry",
+  "before": {
+    "ledger_state": "NOT_RECORDED",
+    "product_state": "LANDED_ON_MAIN",
+    "evidence": "The public opportunity compiler, registry, packets, and door existed on main. PR #5926 made their capability receipts durable across unrelated board regeneration, but the resulting commercial evidence registry was absent from the canonical resource ledger."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "140244ce8170f32156bb751ff8fe74bd02289933",
+    "product_merge_sha": "c9c853f151a41e7e2f11d2c812f1bfbf583572f0"
+  },
+  "authority": "PUBLIC_READ_AND_LOCAL_COMPILE; OWNER_ONLY_IDENTITY_APPLICATION_TERMS_ACCEPTANCE_AND_SUBMISSION",
+  "concrete_consumer": "Commons commercialization triage selecting among verified grants, pilots, licensing, procurement, and research roads",
+  "measurable_outcome": "A fail-closed public registry compiles 21 opportunity rows and evidence packets from seven shipped capability groups without breaking on unrelated board projection churn.",
+  "counts": {
+    "opportunities": 21,
+    "grants": 5,
+    "pilots": 4,
+    "licensing": 2,
+    "procurement": 3,
+    "research": 7,
+    "submitted": 0,
+    "awarded": 0,
+    "cash_received_usd": 0,
+    "none_ready": 11
+  },
+  "exact_blobs": {
+    "revenue/ip/opportunity_registry.json": "4bc19c749b66b7e3b7c8bf3dd160f04000b9c622",
+    "revenue/ip/opportunity_seed.json": "887f36c3df917b79266b2cee81bda141f1f65c0b",
+    "host/opportunity_registry.py": "71d69f20b98bd05ae2c4b4f5687291ae355a5975",
+    "opportunity.html": "e1d84d6ae924049097ae578836f3579b131983ea",
+    "p/codex-opportunity-registry-stable-evidence-20260830-01.md": "973793ceb14a1d46db51d60198f2c3b92439b032",
+    "test_opportunity_registry.py": "555cd57e15dd5d29ed6503a46740060e6bcea0ba"
+  },
+  "projection": {
+    "resources": 63,
+    "producing": 29
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 4,
+    "paused_automations": 5,
+    "total_automations": 9,
+    "callable_tools": 405,
+    "codex_app_tools": 390,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded_from_capacity": true
+  },
+  "verification": {
+    "current_main_readback": "Six exact primary product, compiler, test, and evidence blobs read from main 140244ce8170f32156bb751ff8fe74bd02289933.",
+    "registry_truth": "schema commons-opportunity-registry/v1; 21 rows; seven exact shipped capability groups; legal_scope contains no eligibility, submission, award, partnership, IP, funding-success, or cash claim.",
+    "compiler_stability": "PR #5926 rejects features.html, feature-tracker.html, and feature-tracker.json as volatile evidence and recompiles against stable feature-tracker receipts.",
+    "tests": "PR #5926 reports opportunity registry 15/15, feature tracker ALL PASS, features board 3/3, plus open-door, Python compile, diff, added-secret, and zero-fabrication PASS.",
+    "fresh_main_collision_audit": "Fresh base 140244ce8170f32156bb751ff8fe74bd02289933 follows product merge c9c853f151a41e7e2f11d2c812f1bfbf583572f0. Open PRs #5927, #5828, and #5894 are disjoint from the three activation evidence paths.",
+    "secrets_and_open_door": "The public opportunity door requires no login; omitted private fields stay absent; no credentials are recorded.",
+    "stale_claim_policy": "No capacity reservation was created. Evidence freshness expires after P1D; a later run must re-read official opportunity state instead of reserving it indefinitely."
+  },
+  "evidence": {
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/5926",
+    "product_merge": "https://github.com/woahwhattheheck/commons/commit/c9c853f151a41e7e2f11d2c812f1bfbf583572f0",
+    "product_receipt": "https://github.com/woahwhattheheck/commons/blob/main/p/codex-opportunity-registry-stable-evidence-20260830-01.md",
+    "public_door": "https://woahwhattheheck.github.io/commons/opportunity.html",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788083921230169"
+  },
+  "next_action": "Revalidate an urgent row's official deadline and applicant eligibility from public sources. Stop before identity, portal, terms, or submission unless Bryce performs or explicitly scopes the owner-only action.",
+  "rate_plan_boundary": "A registry row or packet is research, not filing; no application, acceptance, award, payment, revenue, or cash.",
+  "non_claims": [
+    "No applicant eligibility adjudication",
+    "No application, filing, submission, acceptance, award, partnership, or outreach",
+    "No payment, settlement, payout, revenue, or cash",
+    "No owner identity, portal, KYC, bank, policy, call, or physical-device action",
+    "No Cursor use in this activation; prior landed provenance remains explicit",
+    "No Claude verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
