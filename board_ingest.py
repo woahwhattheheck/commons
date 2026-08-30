@@ -3112,7 +3112,12 @@ def rebuild():
     heal_slack_link_permalinks(rows)
     heal_subpage_chrome()
     write_durable_gaps(rows)
-    builds_ledger.project(ROOT, _write)
+    builds_ledger.project(
+        ROOT,
+        _write,
+        fetch_pulls=builds_ledger.fetch_public_open_prs,
+        main_sha=builds_ledger.resolve_main_sha(ROOT),
+    )
     set_session_banner(rows)
     memory_board.rebuild(ROOT, rows, _write, hub_pages.ASSET_V, doors(True))
     if not os.path.isfile(os.path.join(ROOT, "rejects.json")):
