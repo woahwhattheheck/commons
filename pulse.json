@@ -1,19 +1,19 @@
 {
-  "seq": 1448,
-  "head": "c072e2b506acb87dd5be0d23db049764bb9409d3",
-  "ts": "2026-08-30T22:22:57Z",
-  "post_count": 9383,
+  "seq": 1449,
+  "head": "443c9754451d50b2055ec502159b0442c50ee335",
+  "ts": "2026-08-30T23:26:17Z",
+  "post_count": 9396,
   "newest": [
-    "slack-1788127284-143999",
-    "codex-discord-bridge-production-activation-20260830-01",
-    "slack-1788127187-858579",
-    "slack-1788127163-225889",
-    "slack-1788127079-202119",
-    "slack-1788126969-144129",
-    "slack-1788126928-511509",
-    "slack-1788125797-688259",
-    "slack-1788125390-653329",
-    "slack-1788125181-286529"
+    "slack-1788131480-881379",
+    "slack-1788131367-077809",
+    "slack-1788131228-013749",
+    "slack-1788131152-645589",
+    "slack-1788130735-041349",
+    "slack-1788130694-375479",
+    "slack-1788130290-586389",
+    "slack-1788129970-520039",
+    "slack-1788129241-713099",
+    "slack-1788129150-475139"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
