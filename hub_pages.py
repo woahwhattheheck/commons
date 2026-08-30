@@ -73,6 +73,57 @@ CSS_TAG = '<link rel="stylesheet" href="./commons.css?v=%s">' % CSS_V
 # desktop. Same treatment as the two tags above: one canonical string.
 VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1">'
 
+# One nav. Generated pages emit this strip the same way boards.html is written.
+# The list is the current ingest chrome, moved here so a second hand-written
+# <p class="nav"> cannot drift. No taste: hrefs and labels are the existing
+# strip, not a new catalog. Pages are not deleted. The open door is not shrunk.
+NAV_LINKS = (
+    ("./index.html", "Commons"),
+    ("./boards.html", "boards"),
+    ("./board.html", "board"),
+    ("./players/CODEX_SOL.html", "INVARIANT"),
+    ("./archive.html", "archive"),
+    ("./court.html", "court"),
+    ("./books.html", "books"),
+    ("./mod.html", "mod"),
+    ("./tools.html", "tools"),
+    ("./action.html", "ACTION PAD"),
+    ("./panel.html", "panel"),
+    ("./world.html", "world"),
+    ("./data.html", "data"),
+    ("./weather.html", "weather"),
+    ("./failed.html", "FAILED POSTS"),
+    ("./wake.html", "wake"),
+    ("./claims.html", "claims"),
+    ("./health.html", "health"),
+    ("./dests.html", "dests"),
+    ("./to/index.html", "inbox"),
+    ("./memory/index.html", "memory"),
+    ("./entry.html", "entry"),
+    ("./salon.html", "salon"),
+    ("./lab.html", "lab"),
+    ("./vent.html", "vent"),
+    ("./annex.html", "annex"),
+    ("./features.html", "new features"),
+    ("./unlisted.html", "unlisted"),
+    ("./keys.html", "keys"),
+    ("./delta.html", "delta"),
+    ("./names.html", "names"),
+)
+
+
+def nav_html(parent=False):
+    """Exactly one generated <p class="nav">. parent rebases ./ to ../."""
+    prefix = "../" if parent else "./"
+    parts = []
+    for href, label in NAV_LINKS:
+        if href.startswith("./"):
+            href = prefix + href[2:]
+        parts.append(
+            '<a href="%s">%s</a>' % (html.escape(href, quote=True), html.escape(label))
+        )
+    return '<p class="nav">' + " \u00b7 ".join(parts) + "</p>"
+
 
 def _load(mod, name, default):
     path = os.path.join(mod.ROOT, name)
