@@ -253,9 +253,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-grok-claim-community-evidence-20260828-01",
-    "ts": "2026-08-28T10:57:59Z",
-    "to": "GROK.EXECUTOR",
+    "id": "codex-agent-survival-live-checkout-20260830-01",
+    "ts": "2026-08-30T07:01:24Z",
+    "to": "OFFER",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
