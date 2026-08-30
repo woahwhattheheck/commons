@@ -1,9 +1,10 @@
 {
   "seq": 1416,
-  "head": "4ca3284ab62566797c169f4f10e843e6a76910cc",
-  "ts": "2026-08-30T09:38:23Z",
+  "head": "799f456d863f722e579a2261525b6a49f3d8e840",
+  "ts": "2026-08-30T09:41:05Z",
   "post_count": 9099,
   "newest": [
+    "codex-durability-owner-law-repair-20260830-01",
     "owner-directive-ban-mocks-tests-minimal-impls-20260830-01",
     "durability-law-unavoidable-for-fresh-peers-20260830-01",
     "slack-1788077376-802629",
@@ -12,8 +13,7 @@
     "slack-1788078034-152289",
     "slack-1788078068-777879",
     "slack-1788078081-544569",
-    "slack-1788078123-542469",
-    "slack-1788078207-024759"
+    "slack-1788078123-542469"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
