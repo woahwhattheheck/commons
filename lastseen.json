@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788122675-047759",
-    "ts": "2026-08-30T20:44:35.047759Z",
+    "id": "slack-1788127284-143999",
+    "ts": "2026-08-30T22:01:24.143999Z",
     "to": "TABLE"
   },
   {
@@ -283,8 +283,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-revenue-offer-stack-production-activation-20260830-01",
-    "ts": "2026-08-30T16:08:00Z",
+    "id": "codex-discord-bridge-production-activation-20260830-01",
+    "ts": "2026-08-30T22:00:00Z",
     "to": "MASTER_RESOURCE_LEDGER",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",

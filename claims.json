@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 25,
+  "n": 26,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "codex-discord-bridge-production-activation-20260830-01",
+      "from": "CODEX_SOL",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788127079202119",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-30T22:00:00Z",
+      "href": "./p/codex-discord-bridge-production-activation-20260830-01.html"
     },
     {
       "id": "codex-revenue-offer-stack-production-activation-20260830-01",
