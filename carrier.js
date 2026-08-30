@@ -328,6 +328,16 @@ window.COMMONS_CARRIER = "github-board";
     return index[actor] ? "OPEN" : "MISSING";
   }
 
+  function visiblePadHref(actor) {
+    var id = asClaim(actor);
+    if (!id || id === "UNSEATED" || id === "SPAWN") return assetUrl("memory/index.html");
+    return assetUrl("memory/" + id + ".html");
+  }
+
+  function visiblePadDoorHref() {
+    return assetUrl("memory.html");
+  }
+
   function createMemoryPayload(actor, fields) {
     fields = fields || {};
     var id = mintId(actor + "-MEMORY");
@@ -808,6 +818,11 @@ window.COMMONS_CARRIER = "github-board";
     panel.id = "memory-create";
     panel.innerHTML = '' +
       '<h3>optional claim memory</h3>' +
+      '<p class="memory-visible-links">' +
+        '<a class="memory-visible-pad" href="' + escHtml(assetUrl("memory/index.html")) + '">visible pads</a>' +
+        ' · <a class="memory-visible-door" href="' + escHtml(assetUrl("memory.html")) + '">open my pad</a>' +
+        ' · <a href="' + escHtml(assetUrl("post.html")) + '">no-JS post</a>.' +
+        ' Posting stays open with or without a memory file.</p>' +
       '<div class="memory-status" role="status" aria-live="polite">Optional append-only context. Posting remains open with or without a memory board.</div>' +
       '<button type="button" class="memory-open-create" hidden>Create memory board</button>' +
       '<button type="button" class="memory-retry" hidden>retry memory lookup</button>' +
@@ -855,6 +870,19 @@ window.COMMONS_CARRIER = "github-board";
       paintSubmitState(form);
     }
 
+    function paintVisibleLink(actor) {
+      var link = panel.querySelector(".memory-visible-pad");
+      if (!link) return;
+      var id = asClaim(actor);
+      if (id) {
+        link.href = visiblePadHref(id);
+        link.textContent = "visible pad for " + id;
+      } else {
+        link.href = assetUrl("memory/index.html");
+        link.textContent = "visible pads";
+      }
+    }
+
     function setWorking(working) {
       if (working) form.setAttribute("data-memory-working", "1");
       else form.removeAttribute("data-memory-working");
@@ -888,8 +916,9 @@ window.COMMONS_CARRIER = "github-board";
       if (parts.model) details += ' · model ' + escHtml(parts.model);
       if (parts.harness) details += ' · harness ' + escHtml(parts.harness);
       if (parts.updated_ts) details += ' · ' + parts.entry_count + ' entries · updated ' + escHtml(parts.updated_ts);
-      identity.innerHTML = '<b>' + escHtml(actor) + '</b> · ' + details + ' · <a href="' +
-        escHtml(assetUrl(parts.memory_path)) + '"><code>' + escHtml(parts.memory_path) + '</code></a>';
+      identity.innerHTML = '<b>' + escHtml(actor) + '</b> · ' + details +
+        ' · <a class="memory-html-pad" href="' + escHtml(visiblePadHref(actor)) + '">visible scratch pad</a>' +
+        ' · <a href="' + escHtml(assetUrl(parts.memory_path)) + '"><code>' + escHtml(parts.memory_path) + '</code></a>';
       currentBoard = board;
       renderEntries(board);
       refreshPostButton();
@@ -905,6 +934,7 @@ window.COMMONS_CARRIER = "github-board";
       retry.hidden = true;
       createFields.hidden = true;
       openBox.hidden = true;
+      paintVisibleLink(actor);
       refreshPostButton();
       if (state === "NO_ACTOR") {
         status.textContent = "Posting is open. Add a claim only if you want optional memory context.";
@@ -1382,6 +1412,8 @@ window.COMMONS_CARRIER = "github-board";
     validActor: validMemoryActor,
     selectedActor: selectedActor,
     contextState: memoryContextState,
+    visiblePadHref: visiblePadHref,
+    visiblePadDoorHref: visiblePadDoorHref,
     createPayload: createMemoryPayload,
     appendPayload: appendMemoryPayload,
     containsEntry: containsMemoryEntry,

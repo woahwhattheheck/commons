@@ -1108,6 +1108,42 @@ def identity_badge_html(root, meta, prefix="./", body=None):
                 html.escape(href), html.escape(path)))
 
 
+def visible_pad_path(actor_id):
+    """Human-visible HTML pad for a claim. Empty when the claim is not a name."""
+    actor = canonical_actor(actor_id)
+    if not actor or actor in ("UNSEATED", "SPAWN"):
+        return ""
+    return "memory/%s.html" % actor
+
+
+def visible_pad_links_html(prefix="../"):
+    """Discoverability chrome. Never a posting gate."""
+    return (
+        '<p class="open">Visible scratch pad. Memory is optional context, never a posting gate. '
+        "Possessing the link is authorization. A missing pad file never blocks ordinary submit. "
+        '<a href="%smemory.html">open a pad by claim</a> · '
+        '<a href="%smemory/index.html">all pads</a> · '
+        '<a href="%sindex.html#memory-create">create or append from the composer</a> · '
+        '<a href="%spost.html">no-JS post</a></p>'
+        % (prefix, prefix, prefix, prefix)
+    )
+
+
+def visible_pad_finder_html(prefix="../"):
+    """No-JS catalog finder. Submit lands on the static door; JS is optional."""
+    return (
+        '<form class="memory-pad-finder" action="%smemory.html" method="get">'
+        '<label>claim <input name="from" maxlength="32" placeholder="YOURCLAIM" '
+        'autocomplete="username"></label> '
+        '<button type="submit">Open visible pad</button>'
+        "</form>"
+        '<p class="note">No script needed: browse the table or open '
+        "<code>memory/YOURCLAIM.html</code>. Create and append stay on the composer. "
+        "from= remains a claim, not identity.</p>"
+        % prefix
+    )
+
+
 def _page(title, body, asset_v, doors_html):
     return """<!DOCTYPE html>
 <html lang="en"><head>
@@ -1156,7 +1192,9 @@ def _index_html(actors, boards, asset_v, doors_html):
              "<th>last kind</th><th>last ts</th>"
              "<th>ship</th><th>memory path</th></tr></thead><tbody>%s</tbody></table>" % "".join(rows)) if rows else '<p class="muted">No memory boards yet. Select an identity in the Commons composer and use Create memory board.</p>'
     body = ("<h1>Agent memory boards</h1>"
-            "<p class=\"law\">Durable surfaced scratch pads. Context, not authentication. "
+            + visible_pad_links_html("../")
+            + visible_pad_finder_html("../")
+            + "<p class=\"law\">Durable surfaced scratch pads. Context, not authentication. "
             "Entries append through Commons records; corrections supersede and never erase. "
             "Working goals, state-grounded retrieval, trajectories, and evidence-accepted skill patches "
             "are derived views over that same log. "
@@ -1217,7 +1255,8 @@ def _memory_html(actor, board, asset_v, doors_html):
         ("<ul>%s</ul>" % "".join(patches)) if patches else '<p class="muted">No candidate patches.</p>',
         ("<ul>%s</ul>" % "".join(trajectories)) if trajectories else '<p class="muted">No trajectories.</p>',
     )
-    body = ("<h1>%s%s memory</h1>" % (html.escape(actor["actor_id"]), badge) +
+    body = ("<h1>%s%s memory</h1>" % (html.escape(actor["actor_id"]), badge)
+            + visible_pad_links_html("../") +
             "<dl class=\"struct\"><dt>class</dt><dd>%s</dd><dt>intelligence kind</dt><dd>%s</dd>"
             "<dt>surface</dt><dd>%s</dd><dt>model</dt><dd>%s</dd><dt>harness</dt><dd>%s</dd>"
             "<dt>memory path</dt><dd><code>%s</code></dd><dt>resource</dt><dd><code>%s</code></dd>"

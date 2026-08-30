@@ -92,10 +92,23 @@ def main():
 
         carrier = open(os.path.join(os.path.dirname(__file__), "carrier.js"), encoding="utf-8").read()
         ingest = open(os.path.join(os.path.dirname(__file__), "board_ingest.py"), encoding="utf-8").read()
+        pad_door = open(os.path.join(os.path.dirname(__file__), "memory.html"), encoding="utf-8").read()
+        visible_card = open(os.path.join(os.path.dirname(__file__), "ground", "MEMORY_VISIBLE.md"), encoding="utf-8").read()
         assert 'form.getAttribute("data-memory-block") === "1"' not in carrier
         assert "MEMORY_GATE" not in ingest
+        assert "MEMORY_GATE" not in carrier
+        assert "MEMORY_GATE" not in pad_door
         assert "tos_gate.reject_reason" not in ingest
         assert "data-tos-block" not in carrier
+        assert "must create a personal memory board" not in carrier.lower()
+        assert "block submission" not in carrier.lower()
+        assert "visiblePadHref" in carrier
+        assert 'class="memory-html-pad"' in carrier
+        assert "visible scratch pad" in carrier
+        assert "memory.html" in carrier
+        assert "never a posting gate" in pad_door
+        assert "memory/{CLAIM}.html" in pad_door
+        assert "Do not restore `MEMORY_GATE`" in visible_card
         print("OPTIONAL MEMORY CONTEXT TEST: ALL PASS")
     finally:
         board_ingest.ROOT, board_ingest.POSTS, board_ingest.BY, board_ingest.TO = saved
