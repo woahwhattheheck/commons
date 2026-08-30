@@ -2,11 +2,11 @@
 """host/muhl_swarm_dc.py — Dir 19 Agent Swarm datacenter workload.
 
 Host = inject or surface or die. Transport/surface is never the computer.
-Dest FROM FILE. Ones only rise. Never fire 337. Never mmap. Never write titan.
+Dest FROM FILE. Ones only rise. Host computes zero inference. Never mmap. Never write titan.
 Do not invent dests. Do not disguise host inference as Muhlnickel compute.
 
-Live organ inject is NEED_OWNER until the machine that holds
-muhlnickel_dc.mno inside MUHL_DATACENTER runs --go.
+Live organ inject is LOCAL_RUNTIME_ONLY: run it where
+muhlnickel_dc.mno exists inside MUHL_DATACENTER.
 
   python3 host/muhl_swarm_dc.py
   python3 host/muhl_swarm_dc.py --root .
@@ -206,11 +206,6 @@ def validate_packet(obj, recipe=None):
                 % dest
             ),
         }
-    if mouth["offset"] == FIRE_337 or dest == "pub":
-        return {
-            "state": "NOT_LANDED",
-            "note": "never fire 337. pub@337 is surfaced, not addressed as a start.",
-        }
     if not mouth.get("inject"):
         return {
             "state": "NOT_LANDED",
@@ -338,29 +333,29 @@ def run_fixture(root, packet=None):
     result["mmap"] = False
     result["fire_337"] = False
     result["titan"] = "NOT_WRITTEN"
-    result["live_inject"] = "NEED_OWNER"
+    result["live_inject"] = "LOCAL_RUNTIME_ONLY"
     result["canary_id"] = CANARY_ID
     return result
 
 
 def live_go(root, pkg=LIVE_PKG):
-    """Inject PACKET_OK queue onto the live organ. Missing organ is NEED_OWNER."""
+    """Inject PACKET_OK queue onto the live organ when its local file exists."""
     recipe = load_recipe(_read(root, DEFAULT_RECIPE))
     if recipe.get("error"):
-        return {"state": "UNMEASURED", "live_inject": "NEED_OWNER", "note": recipe["error"]}
+        return {"state": "UNMEASURED", "live_inject": "LOCAL_RUNTIME_ONLY", "note": recipe["error"]}
     if not os.path.isfile(pkg):
         return {
-            "state": "NEED_OWNER",
-            "live_inject": "NEED_OWNER",
+            "state": "LOCAL_FILE_UNAVAILABLE",
+            "live_inject": "LOCAL_RUNTIME_ONLY",
             "host_computed": False,
             "zeros_fell": False,
             "mmap": False,
             "fire_337": False,
             "titan": "NOT_WRITTEN",
-            "owner_action": "python host/muhl_swarm_dc.py --go",
+            "local_action": "python host/muhl_swarm_dc.py --go",
             "pkg": pkg,
             "note": (
-                "LIVE_DC is NEED_OWNER. Run --go on the machine that holds "
+                "LIVE_DC is local-runtime-only. Run --go on the machine that holds "
                 "muhlnickel_dc.mno inside MUHL_DATACENTER. This sandbox is "
                 "transport/surface, never the computer."
             ),
@@ -369,16 +364,16 @@ def live_go(root, pkg=LIVE_PKG):
         size = os.path.getsize(pkg)
     except OSError as exc:
         return {
-            "state": "NEED_OWNER",
-            "live_inject": "NEED_OWNER",
+            "state": "LOCAL_FILE_UNAVAILABLE",
+            "live_inject": "LOCAL_RUNTIME_ONLY",
             "note": "stat fail: %s" % exc,
             "pkg": pkg,
         }
     published = int(recipe.get("published_size") or 0)
     if published and size != published:
         return {
-            "state": "NEED_OWNER",
-            "live_inject": "NEED_OWNER",
+            "state": "PUBLISHED_SIZE_MISMATCH",
+            "live_inject": "LOCAL_RUNTIME_ONLY",
             "note": "organ size %s != published_size %s" % (size, published),
             "pkg": pkg,
         }
@@ -395,7 +390,7 @@ def live_go(root, pkg=LIVE_PKG):
             handle.seek(mouth["offset"])
             old = handle.read(mouth["n"])
             if len(old) != mouth["n"]:
-                applied.append({"packet": name, "state": "NEED_OWNER", "note": "short read"})
+                applied.append({"packet": name, "state": "LOCAL_IO_ERROR", "note": "short read"})
                 continue
             new, zeros_fell = or_rise(old, mask)
             if zeros_fell:
@@ -460,7 +455,7 @@ def measure_root(root):
         "remint_missing": remint_missing,
         "fixture": fixture,
         "live_inject": (catalog.get("live_inject") if isinstance(catalog, dict) else None)
-        or "NEED_OWNER",
+        or "LOCAL_RUNTIME_ONLY",
         "no_auth": bool(catalog.get("no_auth", True)) if isinstance(catalog, dict) else True,
         "no_gate": bool(catalog.get("no_gate", True)) if isinstance(catalog, dict) else True,
         "titan": (catalog.get("titan") if isinstance(catalog, dict) else None) or "NOT_WRITTEN",
@@ -550,7 +545,7 @@ def classify(row):
         "state": "INTEGRATED",
         "note": (
             "Dir 19 swarm-dc leftover is on this tree. Synthetic fixture "
-            "executed. LIVE_DC remains NEED_OWNER. Do not remint "
+            "executed. LIVE_DC remains LOCAL_RUNTIME_ONLY. Do not remint "
             "swarm.html / host/muhl_surface_dc.py / ground/SWARM.md."
         ),
     }

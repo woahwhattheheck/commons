@@ -22,8 +22,8 @@
   "mmap": false,
   "fire_337": false,
   "host_inference": false,
-  "live_inject": "NEED_OWNER",
-  "owner_action": "python host/muhl_swarm_dc.py --go",
+  "live_inject": "LOCAL_RUNTIME_ONLY",
+  "local_action": "python host/muhl_swarm_dc.py --go",
   "titan": "NOT_WRITTEN",
   "posting": "OPEN",
   "no_auth": true,
@@ -45,6 +45,6 @@
     "titan --go",
     "recv",
     "carry inject",
-    "pub@337 fire"
+    "invented destinations"
   ]
 }

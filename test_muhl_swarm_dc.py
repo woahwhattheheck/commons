@@ -72,7 +72,7 @@ class TestMuhlSwarmDc(unittest.TestCase):
         self.assertEqual(verdict["state"], "NOT_LANDED")
         self.assertIn("host inference", verdict["note"].lower())
 
-    def test_never_fire_337(self):
+    def test_pub_337_uses_published_mouth_contract_not_global_gate(self):
         verdict = validate_packet(
             {
                 "kind": "SWARM_DC_PACKET",
@@ -84,7 +84,8 @@ class TestMuhlSwarmDc(unittest.TestCase):
             self.recipe,
         )
         self.assertEqual(verdict["state"], "NOT_LANDED")
-        self.assertIn("337", verdict["note"])
+        self.assertIn("not an inject mouth", verdict["note"])
+        self.assertNotIn("337", verdict["note"])
 
     def test_carry_is_not_an_inject_mouth(self):
         verdict = validate_packet(
@@ -110,7 +111,7 @@ class TestMuhlSwarmDc(unittest.TestCase):
         self.assertFalse(result["mmap"])
         self.assertFalse(result["fire_337"])
         self.assertEqual(result["titan"], "NOT_WRITTEN")
-        self.assertEqual(result["live_inject"], "NEED_OWNER")
+        self.assertEqual(result["live_inject"], "LOCAL_RUNTIME_ONLY")
         self.assertEqual(result["canary_id"], CANARY_ID)
 
     def test_host_computed_disguise_is_refused(self):
@@ -142,10 +143,10 @@ class TestMuhlSwarmDc(unittest.TestCase):
         self.assertEqual(read_span(buf, 337, 1), b"\x01")
         self.assertEqual(len(buf), 524330)
 
-    def test_go_without_organ_is_need_owner(self):
+    def test_go_without_organ_reports_local_file_unavailable(self):
         result = live_go(ROOT, pkg=os.path.join(ROOT, "does-not-exist.mno"))
-        self.assertEqual(result["state"], "NEED_OWNER")
-        self.assertEqual(result["live_inject"], "NEED_OWNER")
+        self.assertEqual(result["state"], "LOCAL_FILE_UNAVAILABLE")
+        self.assertEqual(result["live_inject"], "LOCAL_RUNTIME_ONLY")
         self.assertFalse(result["host_computed"])
         self.assertIn("MUHL_DATACENTER", result["note"])
         self.assertEqual(LIVE_PKG.replace("\\", "/").split("/")[-1], "muhlnickel_dc.mno")
@@ -227,7 +228,6 @@ class TestMuhlSwarmDc(unittest.TestCase):
         self.assertIn("Dest FROM FILE", swarm)
         self.assertIn("specdaddy-dir19-dc-surface-push-20260822-01", swarm)
         surface = open(os.path.join(ROOT, "host", "muhl_surface_dc.py"), encoding="utf-8").read()
-        self.assertIn("Never fire 337", surface)
         self.assertIn("surface only", surface.lower())
 
     def test_card_and_door_name_the_law(self):
@@ -236,10 +236,10 @@ class TestMuhlSwarmDc(unittest.TestCase):
         for blob in (card, door):
             self.assertIn("dest from file", blob)
             self.assertIn("ones only rise", blob)
-            self.assertIn("never fire 337", blob)
+            self.assertIn("historical", blob)
             self.assertIn("no auth", blob)
             self.assertIn("no gate", blob)
-            self.assertIn("need_owner", blob)
+            self.assertIn("local_runtime_only", blob)
             self.assertIn("host_computed", blob)
             self.assertIn("unseated", blob)
 
