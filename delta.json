@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,15 @@
     "BERNAYS": {
       "last_id": "slack-1788131480-881379",
       "last_ts": "2026-08-30T23:11:20.881379Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1788131480-881379",
@@ -2391,6 +2398,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2623,12 +2636,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -2712,6 +2719,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2944,12 +2957,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -3033,6 +3040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3265,12 +3278,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -3306,6 +3313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3538,12 +3551,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -3591,6 +3598,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3823,12 +3836,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -3846,6 +3853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4078,12 +4091,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -4167,6 +4174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4399,12 +4412,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -4452,6 +4459,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4684,12 +4697,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -4773,6 +4780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5005,12 +5018,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -5028,6 +5035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5260,12 +5273,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -5283,6 +5290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5515,12 +5528,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -5538,6 +5545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5770,12 +5783,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -5811,6 +5818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6043,12 +6056,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -6132,6 +6139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6364,12 +6377,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -6453,6 +6460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6685,12 +6698,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -6726,6 +6733,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6958,12 +6971,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -6987,6 +6994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7219,12 +7232,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -7242,6 +7249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7474,12 +7487,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -7497,6 +7504,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7729,12 +7742,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -7806,6 +7813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8038,12 +8051,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -8061,6 +8068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8293,12 +8306,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -8322,6 +8329,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8554,12 +8567,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -8601,6 +8608,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8833,12 +8846,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -8856,6 +8863,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9088,12 +9101,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -9111,6 +9118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9343,12 +9356,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -9432,6 +9439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9664,12 +9677,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -9699,6 +9706,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9931,12 +9944,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -9954,6 +9961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10186,12 +10199,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -10209,6 +10216,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10441,12 +10454,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -10464,6 +10471,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10696,12 +10709,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -10719,6 +10726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10951,12 +10964,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -10974,6 +10981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11206,12 +11219,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -11229,6 +11236,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11461,12 +11474,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -11484,6 +11491,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11716,12 +11729,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -11739,6 +11746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11971,12 +11984,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -11994,6 +12001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12226,12 +12239,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -12315,6 +12322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12547,12 +12560,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -12630,6 +12637,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12862,12 +12875,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -12900,8 +12907,14 @@
     "CODEX_SOL": {
       "last_id": "codex-discord-bridge-production-activation-20260830-01",
       "last_ts": "2026-08-30T22:00:00Z",
-      "n": 14,
+      "n": 15,
       "since": [
+        {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
         {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
@@ -13068,6 +13081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13300,12 +13319,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -13389,6 +13402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13621,12 +13640,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -13662,6 +13675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13894,12 +13913,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -13983,6 +13996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14215,12 +14234,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -14244,6 +14257,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14476,12 +14495,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -14496,8 +14509,14 @@
     "CURSOR": {
       "last_id": "slack-1788121725-377249",
       "last_ts": "2026-08-30T20:28:45.377249Z",
-      "n": 30,
+      "n": 31,
       "since": [
+        {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
         {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
@@ -14760,6 +14779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14992,12 +15017,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -15039,6 +15058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15271,12 +15296,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -15318,6 +15337,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15550,12 +15575,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -15639,6 +15658,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15871,12 +15896,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -15900,6 +15919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16132,12 +16157,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -16155,6 +16174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16387,12 +16412,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -16410,6 +16429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16642,12 +16667,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -16731,6 +16750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16963,12 +16988,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -16986,6 +17005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17218,12 +17243,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -17241,6 +17260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17473,12 +17498,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -17562,6 +17581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17794,12 +17819,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -17883,6 +17902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18115,12 +18140,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -18204,6 +18223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18436,12 +18461,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -18471,6 +18490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18703,12 +18728,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -18774,6 +18793,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19006,12 +19031,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -19029,6 +19048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19261,12 +19286,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -19296,6 +19315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19528,12 +19553,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -19551,6 +19570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19783,12 +19808,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -19866,6 +19885,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20098,12 +20123,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -20121,6 +20140,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20353,12 +20378,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -20442,6 +20461,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20674,12 +20699,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -20709,6 +20728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20941,12 +20966,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -21030,6 +21049,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21262,12 +21287,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -21285,6 +21304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21517,12 +21542,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -21606,6 +21625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21838,12 +21863,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -21867,6 +21886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22099,12 +22124,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -22122,6 +22141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22354,12 +22379,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -22377,6 +22396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22609,12 +22634,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -22668,6 +22687,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22900,12 +22925,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -22989,6 +23008,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23221,12 +23246,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -23244,6 +23263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23476,12 +23501,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -23505,6 +23524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23737,12 +23762,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -23826,6 +23845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24058,12 +24083,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -24087,6 +24106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24319,12 +24344,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -24408,6 +24427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24640,12 +24665,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -24729,6 +24748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24961,12 +24986,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -25008,6 +25027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25240,12 +25265,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -25269,6 +25288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25501,12 +25526,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -25536,6 +25555,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25768,12 +25793,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -25852,252 +25871,17 @@
       ]
     },
     "GROK": {
-      "last_id": "mcp-gemini-bbc91d990c2bfd1a827eb779",
-      "last_ts": "2026-08-30T13:34:45Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "slack-1788131480-881379",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T23:11:20.881379Z"
-        },
-        {
-          "id": "slack-1788131367-077809",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T23:09:27.077809Z"
-        },
-        {
-          "id": "slack-1788131228-013749",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T23:07:08.013749Z"
-        },
-        {
-          "id": "slack-1788131152-645589",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T23:05:52.645589Z"
-        },
-        {
-          "id": "slack-1788130735-041349",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:58:55.041349Z"
-        },
-        {
-          "id": "slack-1788130694-375479",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:58:14.375479Z"
-        },
-        {
-          "id": "slack-1788130290-586389",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:51:30.586389Z"
-        },
-        {
-          "id": "slack-1788129970-520039",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:46:10.520039Z"
-        },
-        {
-          "id": "slack-1788129241-713099",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:34:01.713099Z"
-        },
-        {
-          "id": "slack-1788129150-475139",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:32:30.475139Z"
-        },
-        {
-          "id": "slack-1788129100-494019",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:31:40.494019Z"
-        },
-        {
-          "id": "slack-1788128957-320909",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:29:17.320909Z"
-        },
-        {
-          "id": "slack-1788128716-990729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:25:16.990729Z"
-        },
-        {
-          "id": "slack-1788127284-143999",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T22:01:24.143999Z"
-        },
-        {
-          "id": "codex-discord-bridge-production-activation-20260830-01",
-          "from": "CODEX_SOL",
-          "to": "MASTER_RESOURCE_LEDGER",
-          "ts": "2026-08-30T22:00:00Z"
-        },
-        {
-          "id": "slack-1788127187-858579",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:59:47.858579Z"
-        },
-        {
-          "id": "slack-1788127163-225889",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:59:23.225889Z"
-        },
-        {
-          "id": "slack-1788127079-202119",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:57:59.202119Z"
-        },
-        {
-          "id": "slack-1788126969-144129",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:56:09.144129Z"
-        },
-        {
-          "id": "slack-1788126928-511509",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:55:28.511509Z"
-        },
-        {
-          "id": "slack-1788125797-688259",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:36:37.688259Z"
-        },
-        {
-          "id": "slack-1788125390-653329",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:29:50.653329Z"
-        },
-        {
-          "id": "slack-1788125181-286529",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:26:21.286529Z"
-        },
-        {
-          "id": "slack-1788125056-111729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:24:16.111729Z"
-        },
-        {
-          "id": "slack-1788124962-564669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:22:42.564669Z"
-        },
-        {
-          "id": "slack-1788124692-671549",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:18:12.671549Z"
-        },
-        {
-          "id": "slack-1788124376-741869",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T21:12:56.741869Z"
-        },
-        {
-          "id": "slack-1788122675-047759",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:44:35.047759Z"
-        },
-        {
-          "id": "slack-1788122415-802879",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:40:15.802879Z"
-        },
-        {
-          "id": "slack-1788121943-308939",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:32:23.308939Z"
-        },
-        {
-          "id": "slack-1788121725-377249",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:28:45.377249Z"
-        },
-        {
-          "id": "slack-1788121606-600289",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:26:46.600289Z"
-        },
-        {
-          "id": "slack-1788121578-895629",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:26:18.895629Z"
-        },
-        {
-          "id": "slack-1788121438-104469",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:23:58.104469Z"
-        },
-        {
-          "id": "slack-1788121370-242869",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:22:50.242869Z"
-        },
-        {
-          "id": "slack-1788121209-959299",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:20:09.959299Z"
-        },
-        {
-          "id": "slack-1788121168-750419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:19:28.750419Z"
-        },
-        {
-          "id": "codex-source-parser-repair-handoff-20260830-01",
-          "from": "CODEX_SOL",
-          "to": "ASTER",
-          "ts": "2026-08-30T20:11:42Z"
-        },
-        {
-          "id": "slack-1788120698-344689",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
-        }
-      ],
+      "last_id": "grok-6191-cloud-only-placement-20260830-01",
+      "last_ts": "2026-08-30T23:17:27Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
         {
           "id": "mcp-gemini-bbc91d990c2bfd1a827eb779",
           "from": "GROK",
@@ -26163,12 +25947,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-08-30T10:21:40Z"
-        },
-        {
-          "id": "grok-ship-5753-swarm-dc-additive-20260830-01",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-30T07:12:57Z"
         }
       ]
     },
@@ -26177,6 +25955,12 @@
       "last_ts": "2026-08-29T09:24:46Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
         {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
@@ -26410,12 +26194,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -26451,6 +26229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26683,12 +26467,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -26712,6 +26490,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26944,12 +26728,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -26985,6 +26763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27217,12 +27001,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -27246,6 +27024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27478,12 +27262,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -27567,6 +27345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27799,12 +27583,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -27822,6 +27600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28054,12 +27838,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -28077,6 +27855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28309,12 +28093,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -28356,6 +28134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28588,12 +28372,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -28623,6 +28401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28855,12 +28639,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -28944,6 +28722,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29176,12 +28960,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -29199,6 +28977,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29431,12 +29215,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -29520,6 +29298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29752,12 +29536,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -29841,6 +29619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30073,12 +29857,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -30162,6 +29940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30394,12 +30178,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -30435,6 +30213,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30667,12 +30451,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -30720,6 +30498,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30952,12 +30736,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -30987,6 +30765,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31219,12 +31003,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -31308,6 +31086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31540,12 +31324,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -31563,6 +31341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31795,12 +31579,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -31872,6 +31650,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32104,12 +31888,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -32127,6 +31905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32359,12 +32143,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -32382,6 +32160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32614,12 +32398,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -32703,6 +32481,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32935,12 +32719,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -32958,6 +32736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33190,12 +32974,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -33213,6 +32991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33445,12 +33229,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -33468,6 +33246,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33700,12 +33484,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -33723,6 +33501,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33955,12 +33739,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -34008,6 +33786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34240,12 +34024,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -34329,6 +34107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34561,12 +34345,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -34626,6 +34404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34858,12 +34642,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -34911,6 +34689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35143,12 +34927,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -35166,6 +34944,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35398,12 +35182,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -35421,6 +35199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35653,12 +35437,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -35676,6 +35454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35908,12 +35692,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -35931,6 +35709,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36163,12 +35947,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -36186,6 +35964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36418,12 +36202,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -36507,6 +36285,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36739,12 +36523,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -36828,6 +36606,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37060,12 +36844,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -37149,6 +36927,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37381,12 +37165,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -37446,6 +37224,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37678,12 +37462,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -37767,6 +37545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37999,12 +37783,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -38022,6 +37800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38254,12 +38038,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -38277,6 +38055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38509,12 +38293,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -38544,6 +38322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38776,12 +38560,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -38865,6 +38643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39097,12 +38881,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -39120,6 +38898,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39352,12 +39136,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -39387,6 +39165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39619,12 +39403,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -39684,6 +39462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39916,12 +39700,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -40005,6 +39783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40237,12 +40021,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -40326,6 +40104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40558,12 +40342,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -40635,6 +40413,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40867,12 +40651,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -40902,6 +40680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41134,12 +40918,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -41223,6 +41001,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41455,12 +41239,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -41544,6 +41322,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41776,12 +41560,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -41865,6 +41643,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42097,12 +41881,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -42186,6 +41964,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42418,12 +42202,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -42447,6 +42225,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42679,12 +42463,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -42732,6 +42510,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42964,12 +42748,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -43053,6 +42831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43285,12 +43069,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -43308,6 +43086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43540,12 +43324,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -43563,6 +43341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43795,12 +43579,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -43884,6 +43662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44116,12 +43900,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -44205,6 +43983,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44437,12 +44221,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -44526,6 +44304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44758,12 +44542,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -44847,6 +44625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45079,12 +44863,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -45138,6 +44916,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45370,12 +45154,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -45459,6 +45237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45691,12 +45475,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -45714,6 +45492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45946,12 +45730,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -46005,6 +45783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -46237,12 +46021,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -46326,6 +46104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -46558,12 +46342,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -46647,6 +46425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -46879,12 +46663,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -46968,6 +46746,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -47200,12 +46984,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -47289,6 +47067,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -47521,12 +47305,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [
@@ -47610,6 +47388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-6191-cloud-only-placement-20260830-01",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T23:17:27Z"
+        },
+        {
           "id": "slack-1788131480-881379",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -47842,12 +47626,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T20:11:38.344689Z"
-        },
-        {
-          "id": "slack-1788120655-740419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T20:10:55.740419Z"
         }
       ],
       "mine": [

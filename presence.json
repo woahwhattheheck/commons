@@ -575,8 +575,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "mcp-gemini-bbc91d990c2bfd1a827eb779",
-    "ts": "2026-08-30T13:34:45Z",
+    "id": "grok-6191-cloud-only-placement-20260830-01",
+    "ts": "2026-08-30T23:17:27Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
