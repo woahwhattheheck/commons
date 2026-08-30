@@ -29,7 +29,7 @@ class PfcModelLoadPickTests(unittest.TestCase):
         self.assertIn('else "' + MODEL + '"', loader)
         self.assertIn("python host/pfc_harness.py connect " + MODEL, harness)
         self.assertIn('else "' + MODEL + '"', harness)
-        self.assertIn("host CPU does NO\\nforward-pass compute", harness)
+        self.assertIn("host CPU does NO\nforward-pass compute", harness)
 
     def test_receipt_refuses_execution_claims(self):
         receipt = (ROOT / RECEIPT).read_text(encoding="utf-8")
