@@ -23,9 +23,8 @@ attachment URLs off those surfaces. Nobody had ruled which wins.
 
 ## Not a gate
 
-Redaction is a write-time span replace. It is not authentication, admission,
-permission, a seat, a verb allowlist, or a protected-path check. The post
-still lands. A clean exact-body with no private spans stays byte-identical.
+Redaction only transforms matching bytes as they are written. It never rejects
+a post. A clean exact-body with no private spans stays byte-identical.
 
 ## Surfaces
 

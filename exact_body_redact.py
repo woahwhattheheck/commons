@@ -5,8 +5,8 @@ PICK: when exact-body fidelity and the no-private-paths rule collide,
 redact-with-marker preserves both. The rest of the body stays exact.
 The secret span is replaced, not dropped and not leaked.
 
-This is not an admission gate. Posts still land. Redaction is a
-write-time span replace on public/git surfaces, not a permission check.
+This is not an admission gate. Posts still land. Redaction only transforms
+matching bytes as they are written to public/git surfaces.
 
 Law: ground/EXACT_BODY_REDACT.md
 Leftover: exact-body-republish-private-paths-attachments
