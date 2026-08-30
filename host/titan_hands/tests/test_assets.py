@@ -13,7 +13,8 @@ class AssetTests(unittest.TestCase):
         self.assertIn("host.titan_hands.mcp_one", script)
         self.assertNotIn("'host.titan_hands.mcp_server'", script)
         self.assertIn('default_tools_approval_mode = \"approve\"', script)
-        self.assertIn("TITAN_HANDS_ANDROID_AUTOSTART=1", script)
+        self.assertIn("TITAN_HANDS_ANDROID_AUTOSTART=0", script)
+        self.assertNotIn("TITAN_HANDS_ANDROID_AUTOSTART=1", script)
         self.assertIn("TITAN_HANDS_ANDROID_BACKEND=auto", script)
 
     def test_headless_setup_uses_verified_official_archive(self):

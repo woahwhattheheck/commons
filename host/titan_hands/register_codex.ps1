@@ -25,7 +25,10 @@ $arguments = @(
     '--env',("PYTHONPATH=" + $repoRoot),
     '--env','PYTHONUTF8=1',
     '--env','TITAN_HANDS_DEFAULT_TARGET=windows',
-    '--env','TITAN_HANDS_ANDROID_AUTOSTART=1',
+    # The laptop is a terminal, not an emulator host. Android remains reachable
+    # when an operator explicitly starts or selects a target, but MCP calls may
+    # never allocate the 1.5 GB emulator as a side effect.
+    '--env','TITAN_HANDS_ANDROID_AUTOSTART=0',
     '--env','TITAN_HANDS_ANDROID_BACKEND=auto',
     '--env',("TITAN_HANDS_ANDROID_AVD=" + $AvdName),
     '--env','TITAN_HANDS_ANDROID_BOOT_TIMEOUT=240',

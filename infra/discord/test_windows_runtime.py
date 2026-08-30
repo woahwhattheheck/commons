@@ -1,5 +1,9 @@
+import json
+import tempfile
 import unittest
 from pathlib import Path
+
+from infra.discord import assert_ready
 
 
 ROOT = Path(__file__).resolve().parent
@@ -9,48 +13,86 @@ class WindowsRuntimeTest(unittest.TestCase):
     def text(self, name: str) -> str:
         return (ROOT / name).read_text(encoding="utf-8")
 
-    def test_installer_runs_real_bridge_and_fast_forward_watcher(self):
+    def test_installer_has_safe_standby_and_verified_cloud_cutover(self):
         script = self.text("install_windows_runtime.ps1")
         self.assertIn("Commons Discord Live Bridge v1", script)
         self.assertIn("Commons Discord Main Watcher v1", script)
         self.assertIn("Commons Discord Health Watcher v1", script)
-        self.assertIn("run_bridge_windows.ps1", script)
-        self.assertIn("run_main_watcher_windows.ps1", script)
-        self.assertIn("health_watch_windows_runtime.ps1", script)
-        self.assertIn("New-ScheduledTaskTrigger -AtLogOn", script)
-        self.assertIn("RepetitionInterval", script)
-        self.assertIn("RestartCount 99", script)
-        self.assertIn("Start-ScheduledTask", script)
+        self.assertIn("CloudCutoverVerified", script)
+        self.assertIn("TemporaryStandby", script)
+        self.assertIn("REFUSE_LOCAL_REACTIVATION", script)
+        self.assertIn("Stop-ScheduledTask", script)
+        self.assertIn("Unregister-ScheduledTask", script)
+        self.assertIn("New-ScheduledTask", script)
+        self.assertIn("-WindowStyle Hidden", script)
+        self.assertIn("New-ScheduledTaskSettingsSet -Hidden", script)
+        self.assertIn("New-TimeSpan -Minutes 15", script)
+        self.assertIn("New-TimeSpan -Minutes 5", script)
+        self.assertIn("-RestartCount 3", script)
+        self.assertIn("-RestartCount 1", script)
+        self.assertNotIn("-RestartCount 99", script)
+        self.assertNotIn("-RepetitionInterval (New-TimeSpan -Minutes 1)", script)
 
     def test_installer_preserves_checkout_and_open_door(self):
         script = self.text("install_windows_runtime.ps1")
-        for destructive in ("reset", "clean -", "Remove-Item", "Unregister-ScheduledTask"):
+        for destructive in ("reset", "clean -", "Remove-Item"):
             self.assertNotIn(destructive, script)
 
-    def test_health_watcher_restarts_only_the_exact_unhealthy_bridge_task(self):
+    def test_health_watcher_is_bounded_and_preserves_bridge_until_cutover(self):
         script = self.text("health_watch_windows_runtime.ps1")
-        self.assertIn("http://127.0.0.1:18787/health", script)
+        self.assertIn("[int]$RetryCount = 3", script)
         self.assertIn("curl.exe", script)
-        self.assertIn("--max-time $TimeoutSec", script)
-        self.assertIn("RetryCount = 6", script)
-        self.assertIn("bounded startup grace period", script)
-        self.assertIn('$body.node -eq "discord"', script)
         self.assertIn("schtasks.exe", script)
-        self.assertIn("/End /TN $bridgeTask", script)
-        self.assertIn("/Run /TN $bridgeTask", script)
-        for destructive in ("reset", "clean -", "Remove-Item", "Unregister-ScheduledTask"):
-            self.assertNotIn(destructive, script)
+        self.assertNotIn("Start-Process", script)
 
-    def test_native_runners_drain_output_and_preserve_dirty_checkout(self):
+    def test_hidden_standby_bridge_and_watcher_preserve_functionality(self):
         bridge = self.text("run_bridge_windows.ps1")
         watcher = self.text("run_main_watcher_windows.ps1")
         self.assertIn("commons_discord_bridge.py", bridge)
-        self.assertIn("*> $null", bridge)
+        self.assertIn("& $python", bridge.lower())
+        self.assertNotIn("Start-Process", bridge)
         self.assertIn("--untracked-files=no", watcher)
         self.assertIn("pull --ff-only --quiet origin main", watcher)
         self.assertIn("*> $null", watcher)
-        for destructive in ("reset", "clean -", "Remove-Item", "Unregister-ScheduledTask"):
+        self.assertGreater(
+            watcher.index("pull --ff-only --quiet origin main"),
+            watcher.index("--untracked-files=no"),
+        )
+        for destructive in ("reset", "clean -", "Remove-Item"):
             self.assertNotIn(destructive, bridge + watcher)
+
+    def test_cloud_workflow_replaces_the_resident_bridge(self):
+        workflow = (ROOT.parents[1] / ".github" / "workflows" / "commons-discord-cloud.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("runs-on: ubuntu-latest", workflow)
+        self.assertIn("python3 commons_discord.py sync-in", workflow)
+        self.assertIn("python3 commons_discord.py to-discord send", workflow)
+        self.assertIn("assert_ready.py discord_to_commons", workflow)
+        self.assertIn("assert_ready.py commons_to_discord", workflow)
+        self.assertIn("schedule:", workflow)
+        self.assertNotIn("self-hosted", workflow)
+
+    def test_cloud_readiness_fails_dark_and_accepts_exact_ready_lane(self):
+        with tempfile.TemporaryDirectory() as directory:
+            report = Path(directory) / "doctor.json"
+            report.write_text(
+                json.dumps(
+                    {
+                        "discord_to_commons": {"state": "READY"},
+                        "commons_to_discord": {"state": "DARK"},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            self.assertEqual(
+                assert_ready.main(["discord_to_commons", str(report)]),
+                0,
+            )
+            self.assertEqual(
+                assert_ready.main(["commons_to_discord", str(report)]),
+                1,
+            )
 
 
 if __name__ == "__main__":

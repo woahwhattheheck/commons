@@ -288,6 +288,9 @@ jobs:
   device:
     needs: ingest
     if: always() && needs.ingest.outputs.ingest_complete == 'true' && needs.ingest.outputs.has_pending_device == 'true'
-    uses: ./.github/workflows/commons-device-executor.yml
-    permissions:
-      contents: write
+    runs-on: ubuntu-latest
+    steps:
+      - name: retain physical-device actions without automatic laptop dispatch
+        run: >-
+          echo "Pending DEVICE actions remain durable and unexecuted; ordinary board ingest
+          does not allocate the owner's self-hosted laptop runner."

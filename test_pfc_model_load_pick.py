@@ -21,20 +21,25 @@ class PfcModelLoadPickTests(unittest.TestCase):
             todo,
         )
 
-    def test_current_loader_and_harness_agree(self):
+    def test_current_loader_and_live_surface_agree(self):
         loader = (ROOT / "host/pfc_load.py").read_text(encoding="utf-8")
         harness = (ROOT / "host/pfc_harness.py").read_text(encoding="utf-8")
+        live = (ROOT / "infra/host/pfc_desktop.py").read_text(encoding="utf-8")
         self.assertIn("python host/pfc_load.py " + MODEL, loader)
         self.assertIn('MAGIC = b"PFCLOAD1"', loader)
         self.assertIn('else "' + MODEL + '"', loader)
-        self.assertIn("python host/pfc_harness.py connect " + MODEL, harness)
-        self.assertIn('else "' + MODEL + '"', harness)
-        self.assertIn("host CPU does NO\nforward-pass compute", harness)
+        self.assertIn("REFUSE_HOST_COMPUTE", harness)
+        self.assertNotIn("mmap.mmap", harness)
+        self.assertNotIn("subprocess", harness)
+        self.assertIn("class Pfc:", live)
+        self.assertIn("ADDRESS the prompt", live)
+        self.assertIn("READ the answer register", live)
         doctrine = (ROOT / "ground/tokens/pfc.md").read_text(encoding="utf-8")
         self.assertIn("Host computes **zero** inference", doctrine)
         self.assertIn("**Never recreate the model.**", doctrine)
         self.assertIn("`host/pfc_load.py` installs", doctrine)
-        self.assertIn("`host/pfc_harness.py` connects", doctrine)
+        self.assertIn("`infra/host/pfc_desktop.py`", doctrine)
+        self.assertIn("must fail before model I/O", doctrine)
         self.assertIn("No small models", doctrine)
 
     def test_receipt_refuses_execution_claims(self):

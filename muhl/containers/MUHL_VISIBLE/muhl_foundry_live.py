@@ -206,6 +206,13 @@ def round_once(rng, elite, keep):
 
 
 def main():
+    if os.environ.get("GITHUB_ACTIONS", "").lower() != "true":
+        print(
+            "REFUSE_LOCAL_COMPUTE: the foundry runs only in GitHub Actions; "
+            "dispatch .github/workflows/muhlnickel-foundry-cloud.yml",
+            file=sys.stderr,
+        )
+        return 2
     rng = random.Random()
     rng.seed(int(time.time()) & 0xFFFF)
     print("=" * 78)
