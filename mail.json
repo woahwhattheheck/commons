@@ -1,6 +1,6 @@
 {
-  "seq": 1446,
-  "ts": "2026-08-30T22:16:48Z",
+  "seq": 1447,
+  "ts": "2026-08-30T22:20:23Z",
   "n": 100,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
