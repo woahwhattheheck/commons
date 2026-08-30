@@ -55,6 +55,11 @@ class TestSittingPr(unittest.TestCase):
         )
         self.assertEqual(classify(measured)["state"], "NOT_LANDED")
 
+    def test_non_list_sitting_remints_are_invalid_not_an_exception(self):
+        catalog = load_catalog('{"sitting_remints": 1}')
+        self.assertEqual(catalog["sitting_remints"], [])
+        self.assertEqual(catalog["error"], "sitting_remints is not a list")
+
     def test_claiming_2207_integrated_is_not_landed(self):
         measured = measure_from_rows(
             {
