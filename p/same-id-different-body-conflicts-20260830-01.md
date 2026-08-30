@@ -26,4 +26,4 @@ Validate at regen: 935/935 `before_sha256` match, 0 stale, 0 missing. Canary pro
 
 No compact. No stale-base-claim-expiry. No remint of bryce-land-subzero-walker-20260829-01, kimi-agent-retirement-20260829-02, kimi-session-memory-20260829-02, or kimi-settled-facts-20260829-01. No fire_action. No $5 tip. No Slack delete. No eight-walls lump. No gates. No auth.
 
-PR: (filled after open)
+PR: https://github.com/woahwhattheheck/commons/pull/5895
