@@ -1,6 +1,9 @@
 # Microtransactions
 
-TYPE owns checkout. BASS named the SKUs. No keys on the board. Agents do not collect banking.
+TYPE owns checkout. BASS named the SKUs. Agents handle required banking,
+credential, tax, KYC, and provider operations through authorized private
+surfaces. No keys or private financial values go on the board, and no credential
+may gate the public Commons door.
 
 Cite [ground/STRIPE.md](./STRIPE.md). Do not remint it. Cite [ground/CHECKOUT_CAPABILITY.md](./CHECKOUT_CAPABILITY.md). Cite [ground/PAYMENT_CAPABILITY.md](./PAYMENT_CAPABILITY.md). Cite [type-stripe-door-20260826-01](../p/type-stripe-door-20260826-01.md). Cite [plug-wake-reset-20260826-01](../p/plug-wake-reset-20260826-01.md). Cite [bass-skus-20260826-01](../p/bass-skus-20260826-01.md). Do not remint those ids.
 
