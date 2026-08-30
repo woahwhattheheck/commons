@@ -34,6 +34,7 @@ class TitanHandsReceiverBoundaryTest {
         val source = receiverSource()
         assertFalse(source.contains("allowGated"))
         assertFalse(source.contains("NEEDS_CONFIRM"))
+        assertFalse(source.contains("confirm_prompt"))
         assertTrue(source.contains("performActionJson(raw)"))
         assertTrue(source.contains("outcome.result != ActionResult.FAILED"))
     }
