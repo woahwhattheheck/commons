@@ -64,7 +64,7 @@ def validate(registry: dict[str, Any]) -> list[str]:
             errors.append("contact_methods.$.type")
         if not _public_url(str(row.get("url") or "")):
             errors.append("contact_methods.$.url")
-        if "preferred" in row and not isinstance(row.get("preferred"), bool):
+        if not isinstance(row.get("preferred"), bool):
             errors.append("contact_methods.$.preferred")
     for index, row in enumerate(registry.get("capabilities") or []):
         if not isinstance(row, dict):

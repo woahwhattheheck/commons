@@ -51,7 +51,7 @@ class AgentDiscoveryTests(unittest.TestCase):
         self.assertIn("https://commons-spark-mcp.vercel.app/mcp", projected["agents.txt"])
         self.assertIn("harnesses/catalog.json", projected["agents.txt"])
 
-    def test_validation_rejects_fields_render_requires(self) -> None:
+    def test_validation_catches_every_field_rendering_requires(self) -> None:
         cases = (
             (lambda value: value["runtime_signals"].pop("runtime_state"), "runtime_signals.runtime_state"),
             (lambda value: value["contact_methods"][0].pop("preferred"), "contact_methods.$.preferred"),
@@ -64,8 +64,7 @@ class AgentDiscoveryTests(unittest.TestCase):
             with self.subTest(expected=expected):
                 registry = json.loads(json.dumps(self.registry))
                 mutate(registry)
-                errors = agent_discovery.validate(registry)
-                self.assertIn(expected, errors)
+                self.assertIn(expected, agent_discovery.validate(registry))
                 with self.assertRaisesRegex(ValueError, "INVALID"):
                     agent_discovery.projections(registry)
 
