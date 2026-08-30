@@ -1,12 +1,14 @@
 {
   "added": "2026-08-30",
-  "capability": "A three-tier Muhlnickel attested inference and general-compute service is encoded as a Shopify-native product import and surfaced through the public Commons catalog without inventing a store publication or sale.",
+  "capability": "Muhlnickel inference is encoded as two Shopify-native product imports: a three-tier attested-run service and generated-token capacity from $0.10 to $0.02 per million, below three cited cloud output-token rates without claiming model-quality equivalence or unmeasured frontier capacity.",
   "carrier": "CODEX",
   "claimed_paths": [
     "attested-inference.html",
     "commerce.html",
     "revenue/muhlnickel_inference/offer.json",
     "revenue/muhlnickel_inference/shopify_products.csv",
+    "revenue/muhlnickel_inference/token_capacity_offer.json",
+    "revenue/muhlnickel_inference/shopify_token_capacity.csv",
     "test_muhlnickel_inference_offer.py"
   ],
   "dependencies": [],
@@ -25,7 +27,9 @@
     "attested-inference.html",
     "commerce.html",
     "revenue/muhlnickel_inference/offer.json",
-    "revenue/muhlnickel_inference/shopify_products.csv"
+    "revenue/muhlnickel_inference/shopify_products.csv",
+    "revenue/muhlnickel_inference/token_capacity_offer.json",
+    "revenue/muhlnickel_inference/shopify_token_capacity.csv"
   ],
   "schema": "commons-feature-v1",
   "test_paths": [
