@@ -38,7 +38,6 @@ def measure(target: str = "HEAD", high_velocity_per_hour: float = 30.0) -> dict:
         "high_velocity": per_hour >= high_velocity_per_hour,
         "high_velocity_threshold_per_hour": high_velocity_per_hour,
         "integration_mode": "coalesce_ranges" if per_hour >= high_velocity_per_hour else "range_batch",
-        "approval_required": False,
     }
 
 
