@@ -402,7 +402,12 @@ class MirrorCapsuleTests(unittest.TestCase):
         self.assertTrue(boundary["portable_snapshot"])
         mirrors = json.loads((ROOT / "mirrors.json").read_text(encoding="utf-8"))
         self.assertIn("EXTERNAL_PROVIDER_ACTION", mirrors["still_open"])
-        self.assertIn("HTTP 523", mirrors["still_open"])
+        self.assertNotIn("HTTP 523", mirrors["still_open"])
+        internet_archive = next(row for row in mirrors["read"] if row["id"] == "internet-archive")
+        self.assertIn("HTTP 200", internet_archive["notes"])
+        self.assertIn("Historical 523 receipt", internet_archive["notes"])
+        historical_523 = ROOT / "ci/moving_main/receipts/ia-save-523.json"
+        self.assertTrue(historical_523.is_file())
 
     def test_planner_queue_search_open_door(self):
         files = _fixture(Path(tempfile.mkdtemp()))
