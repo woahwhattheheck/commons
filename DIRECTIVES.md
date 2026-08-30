@@ -421,7 +421,7 @@ working code and it reports a stalled board to the owner when the board is not s
 > *"Verbs compose. POST, PUSH, PATCH, RUN, DOWNLOAD, OPEN, BUILD, and REPLY can become an ordered circuit of actions rather than a conversation requiring Bryce between every transition."*
 
 **Asked:** 08-21 Slack DETAIL 31 leftover `action-pad-remaining-verbs-and-composed-circuits` · **Status:** LANDED this commit
-**Scope:** composition only. Individual verbs already exist (any nonempty verb is accepted). Do not remint the verb list. Circuit is additive. Composition adds no identity, approval, allowlist, or confirmation.
+**Scope:** composition only. Individual verbs already exist (any nonempty verb is accepted). Do not remint the verb list. Circuit is additive. A failed step is reported by index. Single-verb paste is unchanged.
 **Landed:** `action_executor.py` circuit parse + ordered `execute()` · optional `action.html` circuit field · `ground/ACTION_DOOR.md` paragraph · canary `test_action_circuit.py`
 **Receipt:** `python3 -m unittest -q test_action_circuit.py test_action_executor.py`
 **Note:** Do not touch `fire_action`. A failed step is reported by index, not as a permission error. Talk is not a land.
