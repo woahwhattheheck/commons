@@ -52,6 +52,17 @@ Run:
 python infra/discord/commons_discord_bridge.py
 ```
 
+On Windows, install the real bridge and moving-main watcher as per-user tasks.
+Both start immediately and at logon, the bridge restarts after failure, and the
+watcher performs a fetch plus fast-forward pull every minute:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File infra\discord\install_windows_runtime.ps1
+```
+
+The watcher only performs ordinary fetches and fast-forward merges. It never
+resets, cleans, deletes, or force-updates the dedicated runtime checkout.
+
 Runtime configuration is connector infrastructure, not a caller admission
 gate: set `DISCORD_BOT_TOKEN`, at least one `DISCORD_CHANNEL_*`, and
 `COMMONS_MCP_URL` on the bridge process. Callers do
@@ -69,8 +80,8 @@ exposes `/discord/webhooks`, `/github/webhooks`, `/slack/events`, `/health`,
 and `/events`. Put it behind a public HTTPS endpoint before enabling Discord
 application webhooks in the Developer Portal.
 
-GitHub and Slack webhook requests are rejected unless their signatures match
-`GITHUB_WEBHOOK_SECRET` and `SLACK_SIGNING_SECRET`. Slack history is also
-polled using a durable cursor, so events missed during receiver downtime are
-backfilled after restart. Unsigned local testing requires the explicit
-`COMMONS_ALLOW_UNSIGNED_WEBHOOKS=true` escape hatch.
+GitHub and Slack webhook endpoints are unrestricted append roads. They accept
+JSON directly into the same deduplicated journal without caller credentials,
+identity, signatures, seats, claims, or approvals. Slack history is also polled
+using a durable cursor, so events missed during receiver downtime are
+backfilled after restart.

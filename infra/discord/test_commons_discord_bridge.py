@@ -1,5 +1,6 @@
 import importlib.util
 import io
+import json
 import sys
 import tempfile
 import unittest
@@ -138,6 +139,41 @@ class BridgeTest(unittest.TestCase):
         rendered = bridge.render(event)
         self.assertNotIn("@everyone", rendered)
         self.assertIn("commons:id", rendered)
+
+    def test_unattended_runtime_logging_never_writes_non_tty_stdout(self):
+        stream = mock.Mock()
+        stream.isatty.return_value = False
+        with mock.patch.object(bridge.sys, "stdout", stream):
+            with mock.patch.object(bridge, "runtime_log") as logged:
+                bridge.operational_log("scheduled bridge ready")
+
+        logged.assert_called_once_with("scheduled bridge ready")
+        stream.write.assert_not_called()
+
+    def test_github_and_slack_webhooks_are_open_append_roads(self):
+        with tempfile.TemporaryDirectory() as td:
+            journal = bridge.Journal(Path(td) / "events.sqlite3")
+            replies = []
+            previous = bridge.JOURNAL
+            bridge.JOURNAL = journal
+            try:
+                for path, payload in (
+                    ("/github/webhooks", {"id": "github-open-1", "type": "push"}),
+                    ("/slack/events", {"id": "slack-open-1", "type": "message"}),
+                ):
+                    raw = json.dumps(payload).encode("utf-8")
+                    handler = bridge.Handler.__new__(bridge.Handler)
+                    handler.path = path
+                    handler.headers = {"Content-Length": str(len(raw))}
+                    handler.rfile = io.BytesIO(raw)
+                    handler.reply = lambda code, value: replies.append((code, value))
+                    handler.do_POST()
+            finally:
+                bridge.JOURNAL = previous
+
+            self.assertEqual([code for code, _ in replies], [202, 202])
+            self.assertEqual({event.source for event in journal.pending("discord")}, {"github", "slack"})
+            journal.db.close()
 
     def test_discord_to_commons_uses_canonical_issue_road_once(self):
         class FakeGitHub:
