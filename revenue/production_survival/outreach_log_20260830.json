@@ -34,10 +34,11 @@
       "pain_reference": "https://github.com/n8n-io/n8n/issues/36886",
       "offer": "Same-Day Agent Survival Proof, $2,500, manual capture, one business day or refund",
       "links_sent": ["https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a"],
-      "honesty_notes": "One-off incident-specific send; scope confirmed before capture, bad-fit cancellation and opt-out stated.",
+      "honesty_notes": "Post-send audit disqualified this personal-Gmail issue-reporter route: no named paying owner, company-domain route, buyer-authored failure sentence, or accepted scope. Hard do not resend.",
       "verification": "Gmail message 1a053d7978410414 read back with label SENT and intended To/Subject headers",
       "do_not_resend": true,
-      "reply_status": "AWAITING"
+      "reply_status": "NO_REPLY",
+      "qualification_status": "DISQUALIFIED"
     },
     {
       "send_id": "send-20260830-mario-03",
@@ -50,10 +51,11 @@
       "pain_reference": "https://github.com/langchain-ai/langgraph/issues/7417",
       "offer": "Same-Day Agent Survival Proof, $2,500, manual capture, one business day or refund",
       "links_sent": ["https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a"],
-      "honesty_notes": "One-off incident-specific send; scope confirmed before capture, bad-fit cancellation and opt-out stated.",
+      "honesty_notes": "Post-send audit disqualified this personal-Gmail issue-reporter route: no named paying owner, company-domain route, buyer-authored failure sentence, or accepted scope. Hard do not resend.",
       "verification": "Gmail message 1a053d7a9d567f66 read back with label SENT and intended To/Subject headers",
       "do_not_resend": true,
-      "reply_status": "AWAITING"
+      "reply_status": "NO_REPLY",
+      "qualification_status": "DISQUALIFIED"
     },
     {
       "send_id": "send-20260830-jacob-04",
@@ -66,10 +68,11 @@
       "pain_reference": "https://github.com/langchain-ai/langgraph/issues/6731",
       "offer": "Same-Day Agent Survival Proof, $2,500, manual capture, one business day or refund",
       "links_sent": ["https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a"],
-      "honesty_notes": "One-off incident-specific send; scope confirmed before capture, bad-fit cancellation and opt-out stated.",
+      "honesty_notes": "Post-send audit disqualified this personal-Gmail issue-reporter route: no named paying owner, company-domain route, buyer-authored failure sentence, or accepted scope. Hard do not resend.",
       "verification": "Gmail message 1a053d7ba2b64238 read back with label SENT and intended To/Subject headers",
       "do_not_resend": true,
-      "reply_status": "AWAITING"
+      "reply_status": "NO_REPLY",
+      "qualification_status": "DISQUALIFIED"
     },
     {
       "send_id": "send-20260830-elio-05",
@@ -82,10 +85,11 @@
       "pain_reference": "https://github.com/FlowiseAI/Flowise/issues/5603",
       "offer": "Same-Day Agent Survival Proof, $2,500, manual capture, one business day or refund",
       "links_sent": ["https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a"],
-      "honesty_notes": "One-off incident-specific send; scope confirmed before capture, bad-fit cancellation and opt-out stated.",
+      "honesty_notes": "Post-send audit disqualified this personal-Gmail issue-reporter route: no named paying owner, company-domain route, buyer-authored failure sentence, or accepted scope. Hard do not resend.",
       "verification": "Gmail message 1a053d7cf5fdbb18 read back with label SENT and intended To/Subject headers",
       "do_not_resend": true,
-      "reply_status": "AWAITING"
+      "reply_status": "NO_REPLY",
+      "qualification_status": "DISQUALIFIED"
     }
   ],
   "not_sent": [
