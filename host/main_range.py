@@ -16,8 +16,8 @@ import main_velocity
 
 DATA_PREFIXES = ("p/", "by/", "to/", "d/", "chunks/", "excerpts/", "projection/")
 DATA_FILES = {"board.md", "posts.json", "recent.json", "pulse.json", "fresh.md", "export.txt"}
-PROTECTED_PREFIXES = ("p/", "conflicts/", "memory/", ".github/workflows/")
-PROTECTED_FILES = {
+VERIFICATION_PREFIXES = ("p/", "conflicts/", "memory/", ".github/workflows/")
+VERIFICATION_FILES = {
     "board.js", "carrier.js", "court.js", "session.js", "commons.css", "index.html",
     "hub_pages.py", "board_ingest.py", "memory_board.py", "capability_declaration.py",
     "commons_mcp.py", "action_executor.py", "action_land.py", "device_action_state.py",
@@ -48,8 +48,14 @@ def changed_paths(base: str, head: str) -> list[str]:
     return sorted(set(git("diff", "--name-only", base, head).splitlines()))
 
 
-def protected_paths(paths: list[str]) -> list[str]:
-    return [p for p in paths if p in PROTECTED_FILES or p.startswith(PROTECTED_PREFIXES) or p.startswith("test_")]
+def verification_paths(paths: list[str]) -> list[str]:
+    return [
+        path
+        for path in paths
+        if path in VERIFICATION_FILES
+        or path.startswith(VERIFICATION_PREFIXES)
+        or path.startswith("test_")
+    ]
 
 
 def plan(paths: list[str]) -> list[tuple[str, list[str]]]:
@@ -86,7 +92,7 @@ def build_receipt(head: str, base: str | None, lookback_minutes: int, execute: b
     paths = changed_paths(frozen_base, frozen_head)
     tasks = [name for name, _ in plan(paths)]
     results, ok = run_batch(frozen_base, frozen_head, paths) if execute else ([], True)
-    protected = protected_paths(paths)
+    verification = verification_paths(paths)
     return {
         "schema": "commons.main-range.v1",
         "created_at": dt.datetime.now(dt.timezone.utc).isoformat(),
@@ -94,16 +100,15 @@ def build_receipt(head: str, base: str | None, lookback_minutes: int, execute: b
         "head": frozen_head,
         "commit_count": commit_count,
         "changed_path_count": len(paths),
-        "protected_paths": protected,
+        "verification_paths": verification,
         "observations": {
-            "protected_path_touches": len(protected),
-            "record_guard": "OBSERVED" if protected else "CLEAR",
+            "verification_path_touches": len(verification),
+            "record_guard": "OBSERVED" if verification else "CLEAR",
         },
         "tasks": tasks,
         "results": results,
         "status": "PASS" if ok else "FINDINGS",
         "main_movement_policy": "freeze_then_next_range",
-        "approval_required": False,
         "velocity": main_velocity.measure(frozen_head),
     }
 
@@ -122,8 +127,8 @@ def main(argv=None) -> int:
         with open(args.receipt, "w", encoding="utf-8") as fh:
             fh.write(text)
     print(text, end="")
-    # Findings are reported in one receipt. They are not an approval gate and
-    # do not create a notification storm; primary tests retain blocking status.
+    # Findings are reported in one receipt without amplifying notifications;
+    # primary tests retain their ordinary status.
     return 0
 
 
