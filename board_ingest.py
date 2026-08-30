@@ -27,6 +27,7 @@ import capability_declaration
 import model_language
 from host import correction_link
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
+import exact_body_redact
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 POSTS = os.path.join(ROOT, "p")
@@ -500,7 +501,7 @@ def share_mark(body: str, extra: dict, dest: str = "") -> dict:
 
 
 def _clean_body(text: str) -> str:
-    text = text or ""
+    text = exact_body_redact.redact_private_spans(text or "")
     if len(text) > MAX_BODY:
         text = text[:MAX_BODY]
     return text
@@ -979,6 +980,7 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
     supplied_extra = dict(extra or {})
+    body = exact_body_redact.redact_private_spans(body or "")
     slack_chat = capability_declaration.is_slack_chat(supplied_extra)
     extra = struct_from_body(body, supplied_extra)
     if slack_chat:
@@ -1132,6 +1134,12 @@ def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
         new_h = hashlib.sha256((body or "").encode("utf-8")).hexdigest()
         old_h = hashlib.sha256((old_body or "").rstrip("\n").encode("utf-8")).hexdigest()
         if old_h != new_h:
+            if exact_body_redact.same_after_redact(old_body, body):
+                try:
+                    panel_mod.materialize(ROOT, mid, src, dest, extra, old_body)
+                except Exception as exc:
+                    print("panel materialize skip: %s" % exc, flush=True)
+                return "exists"
             cdir = os.path.join(ROOT, "conflicts")
             os.makedirs(cdir, exist_ok=True)
             row_ts = ts or now_ts()
