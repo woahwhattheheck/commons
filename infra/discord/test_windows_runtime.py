@@ -1,12 +1,13 @@
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
-from infra.discord import assert_ready
-
-
 ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT.parents[1]))
+
+from infra.discord import assert_ready
 
 
 class WindowsRuntimeTest(unittest.TestCase):
