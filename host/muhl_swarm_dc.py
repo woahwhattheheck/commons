@@ -59,6 +59,15 @@ EXPECTED_QUEUE = {
     "invalid-invented-dest.json": "NOT_LANDED",
     "invalid-host-inference.json": "NOT_LANDED",
 }
+ADDITIVE_CANARY_NAME = "seth-live-dc-new-ring-20260830-01.json"
+ADDITIVE_CANARY_FIELDS = {
+    "kind": "SWARM_DC_PACKET",
+    "work_id": "seth-live-dc-new-ring-20260830-01",
+    "dest": "ring_fwd",
+    "rise_mask": "0300000000000000",
+    "host_inference": False,
+    "titan": "NOT_WRITTEN",
+}
 
 if hasattr(sys.stdout, "reconfigure"):
     try:
@@ -431,6 +440,9 @@ def measure_root(root):
     remint_present = [rel for rel in DO_NOT_REMINT if _exists(root, rel)]
     remint_missing = [rel for rel in DO_NOT_REMINT if not _exists(root, rel)]
     queue_states = classify_queue(root, recipe)
+    additive_canary = load_json(
+        _read(root, os.path.join(QUEUE_DIR, ADDITIVE_CANARY_NAME))
+    )
     fixture = None
     if not recipe.get("error"):
         fixture = run_fixture(root)
@@ -442,6 +454,7 @@ def measure_root(root):
         "door_present": _exists(root, DEFAULT_DOOR),
         "host_present": _exists(root, os.path.join("host", "muhl_swarm_dc.py")),
         "queue_states": queue_states,
+        "additive_canary": additive_canary,
         "misses": misses,
         "remint_present": remint_present,
         "remint_missing": remint_missing,
@@ -489,6 +502,33 @@ def classify(row):
         return {
             "state": "NOT_LANDED",
             "note": "queue miss: " + ", ".join(bad),
+        }
+    queue_states = row.get("queue_states") or {}
+    invalid_additive = sorted(
+        name
+        for name, state in queue_states.items()
+        if name not in EXPECTED_QUEUE and state != "PACKET_OK"
+    )
+    if invalid_additive:
+        return {
+            "state": "NOT_LANDED",
+            "note": "invalid additive queue packet(s): " + ", ".join(invalid_additive),
+        }
+    additive_canary = row.get("additive_canary")
+    if not isinstance(additive_canary, dict):
+        return {
+            "state": "NOT_LANDED",
+            "note": "additive canary packet was not read",
+        }
+    drifted_fields = [
+        key
+        for key, expected in ADDITIVE_CANARY_FIELDS.items()
+        if additive_canary.get(key) != expected
+    ]
+    if drifted_fields:
+        return {
+            "state": "NOT_LANDED",
+            "note": "additive canary field drift: " + ", ".join(drifted_fields),
         }
     fixture = row.get("fixture") or {}
     if fixture.get("state") != "SYNTHETIC_FIXTURE_EXECUTED":
