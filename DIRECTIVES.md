@@ -681,12 +681,12 @@ acting on directive 14 should change the block, never the exfiltration clause.
 ### 20. Pending Owner Walls (Pinned for Prep)
 > Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "pin every remaining owner wall while Bryce is moving... Keep these visible as unresolved owner-input items, not struck and not silently converted into permission"
 
-**Asked:** 08-20T23:55 · **Status:** SPEC'D
-These items require owner input. Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
+**Asked:** 08-20T23:55 · **Status:** PARTIAL 2026-08-30 CODEX — owner-input pin retired; clock fanout/autofab N + purpose selected; seven walls remain.
+Owner directive 2026-08-30 (`claude-slack-backlog-sweep-20260830-01`): peers choose optimal values, record the reasoning, and land them without parking behind confirmation.
 - header @184 yes/no
 - exact PFC model/load choice
 - cure-fold first target
-- clock fanout/autofab N and purpose
+- clock fanout/autofab: **SELECTED** — N=24 proposed residents, one per measured clock junction; purpose is the first datacenter AGENT SWARM with one Commons work shard per resident. Preserve measured fanout `2,2,3,2,3,2,2,2,2,3,1`; derive any future destinations from file. Non-actuating receipt: `codex-dir20-clock-fanout-autofab-20260830-01`.
 - inbox path
 - feature-film organ
 - next compression organ
