@@ -134,16 +134,32 @@ class OpportunityRegistryTests(unittest.TestCase):
                 self.assertEqual(mod.sha256_file(path), rec["sha256"])
                 self.assertEqual(path.stat().st_size, rec["bytes"])
 
-    def test_features_html_receipt_tracks_live_bytes(self):
-        recs = [rec for cap in self.registry["capabilities"] for rec in cap["receipts"]]
-        feat = [rec for rec in recs if rec["path"] == "features.html"]
-        self.assertEqual(len(feat), 1, "features.html must have one capability receipt")
-        path = ROOT / "features.html"
-        self.assertTrue(path.is_file())
-        self.assertEqual(mod.sha256_file(path), feat[0]["sha256"])
-        self.assertEqual(path.stat().st_size, feat[0]["bytes"])
-        html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
-        self.assertIn(feat[0]["sha256"][:16], html)
+    def test_capability_receipts_use_stable_sources(self):
+        paths = [rec["path"] for cap in self.registry["capabilities"] for rec in cap["receipts"]]
+        self.assertNotIn(
+            "features.html",
+            paths,
+            "the continuously regenerated board projection is not stable capability evidence",
+        )
+        for path in (
+            "ground/FEATURES.md",
+            "ground/FEATURE_TRACKER.md",
+            "host/feature_tracker.py",
+            "test_feature_tracker.py",
+            "features/registry/feature-tracker-20260828-01.json",
+            "resources.html",
+            "ground/RESOURCE_LEDGER.json",
+            "host/resource_ledger.py",
+        ):
+            self.assertEqual(paths.count(path), 1, "%s must have one capability receipt" % path)
+
+    def test_volatile_capability_projections_fail_closed(self):
+        paths = [rec["path"] for cap in self.registry["capabilities"] for rec in cap["receipts"]]
+        self.assertTrue(mod.VOLATILE_CAPABILITY_PROJECTIONS.isdisjoint(paths))
+        for path in sorted(mod.VOLATILE_CAPABILITY_PROJECTIONS):
+            with self.subTest(path=path):
+                with self.assertRaisesRegex(mod.RegistryError, "volatile generated capability projections"):
+                    mod._receipts(ROOT, [path])
 
     def test_capability_receipts_name_every_stale_path(self):
         stale = []

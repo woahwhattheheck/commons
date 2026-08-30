@@ -89,6 +89,11 @@ COMMON_NONCLAIMS = [
     "No application, award, partnership, IP assignment, or cash is recorded.",
     "A packet is not a submission.",
 ]
+VOLATILE_CAPABILITY_PROJECTIONS = frozenset({
+    "features.html",
+    "feature-tracker.html",
+    "feature-tracker.json",
+})
 
 
 class RegistryError(ValueError):
@@ -293,6 +298,11 @@ def _row(
 
 
 def _receipts(root: Path, paths: list[str]) -> list[dict]:
+    volatile = sorted(VOLATILE_CAPABILITY_PROJECTIONS.intersection(paths))
+    _require(
+        not volatile,
+        "volatile generated capability projections are not evidence: %r" % volatile,
+    )
     out = []
     for rel in paths:
         path = root / rel

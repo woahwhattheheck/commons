@@ -106,7 +106,10 @@
       "status": "SHIPPED_ON_MAIN",
       "receipts": [
         "ground/FEATURES.md",
-        "features.html",
+        "ground/FEATURE_TRACKER.md",
+        "host/feature_tracker.py",
+        "test_feature_tracker.py",
+        "features/registry/feature-tracker-20260828-01.json",
         "resources.html",
         "ground/RESOURCE_LEDGER.json",
         "host/resource_ledger.py"
