@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parent
 OFFER = ROOT / "revenue" / "muhlnickel_inference" / "offer.json"
 PAGE = ROOT / "attested-inference.html"
 SHOPIFY = ROOT / "revenue" / "muhlnickel_inference" / "shopify_products.csv"
+TOKEN_OFFER = ROOT / "revenue" / "muhlnickel_inference" / "token_capacity_offer.json"
+TOKEN_SHOPIFY = ROOT / "revenue" / "muhlnickel_inference" / "shopify_token_capacity.csv"
 FEATURE = ROOT / "features" / "registry" / "muhlnickel-attested-inference-shopify-20260830-01.json"
 
 
@@ -21,7 +23,39 @@ class StrictHTMLParser(HTMLParser):
 class MuhlnickelInferenceOfferTests(unittest.TestCase):
     def setUp(self) -> None:
         self.offer = json.loads(OFFER.read_text(encoding="utf-8"))
+        self.token_offer = json.loads(TOKEN_OFFER.read_text(encoding="utf-8"))
         self.page = PAGE.read_text(encoding="utf-8")
+
+    def test_generated_token_ladder_undercuts_cited_cloud_output_rates(self) -> None:
+        variants = self.token_offer["variants"]
+        self.assertEqual([row["price_usd"] for row in variants], [1, 5, 20])
+        self.assertEqual(
+            [row["generated_tokens"] for row in variants],
+            [10_000_000, 100_000_000, 1_000_000_000],
+        )
+        rates = [row["usd_per_million_generated_tokens"] for row in variants]
+        cited = [
+            row["usd_per_million_output_tokens"]
+            for row in self.token_offer["competitive_snapshot"]["providers"]
+        ]
+        self.assertEqual(rates, [0.1, 0.05, 0.02])
+        self.assertLess(max(rates), min(cited))
+        self.assertFalse(self.token_offer["truth"]["model_quality_equivalence_claimed"])
+        self.assertFalse(self.token_offer["truth"]["frontier_capacity_claimed"])
+
+    def test_token_shopify_import_has_three_non_shipping_variants(self) -> None:
+        with TOKEN_SHOPIFY.open(newline="", encoding="utf-8") as source:
+            rows = list(csv.DictReader(source))
+        self.assertEqual(len(rows), 3)
+        self.assertEqual(
+            [row["SKU"] for row in rows],
+            ["MUHL-TOK-10M", "MUHL-TOK-100M", "MUHL-TOK-1B"],
+        )
+        self.assertEqual([row["Price"] for row in rows], ["1.00", "5.00", "20.00"])
+        self.assertEqual({row["Requires shipping"] for row in rows}, {"false"})
+        self.assertEqual({row["Fulfillment service"] for row in rows}, {"manual"})
+        self.assertEqual(self.token_offer["commerce"]["state"], "SHOPIFY_IMPORT_READY")
+        self.assertIsNone(self.token_offer["commerce"]["storefront_url"])
 
     def test_price_ladder_is_a_real_range(self) -> None:
         prices = [self.offer["entry_offer"]["price_usd"]] + [
@@ -45,7 +79,7 @@ class MuhlnickelInferenceOfferTests(unittest.TestCase):
         parser = StrictHTMLParser()
         parser.feed(self.page)
         parser.close()
-        for marker in ("$500", "$1,500", "$2,500", "Send the task for scope confirmation", "Current buyer-side fit"):
+        for marker in ("10 million generated tokens for $1", "$500", "$1,500", "$2,500", "Send the task for scope confirmation", "Current buyer-side fit"):
             self.assertIn(marker, self.page)
         for field in ("buyer_contacted_for_this_offer", "accepted_scope", "paid"):
             self.assertFalse(self.offer["truth"][field])
