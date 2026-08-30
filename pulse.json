@@ -1,19 +1,19 @@
 {
   "seq": 1431,
-  "head": "d5084f970258f05419c91c86889f2808cc58bd4c",
-  "ts": "2026-08-30T16:13:48Z",
+  "head": "d8343f2e52ca21b3dc97e558808c65a2df8d56e0",
+  "ts": "2026-08-30T16:40:03Z",
   "post_count": 9221,
   "newest": [
-    "codex-revenue-offer-stack-production-activation-20260830-01",
-    "slack-1788105886-420729",
-    "slack-1788105728-688239",
-    "slack-1788105675-204939",
-    "slack-1788105451-403099",
-    "slack-1788105449-154059",
-    "slack-1788105383-776789",
-    "slack-1788105163-413179",
+    "composio-qualified-prospect-20260830-01",
+    "slack-1788103746-619119",
+    "slack-1788104093-836769",
+    "slack-1788104360-121459",
+    "slack-1788104376-206749",
+    "slack-1788104765-470459",
     "slack-1788104997-149759",
-    "slack-1788104765-470459"
+    "slack-1788105163-413179",
+    "slack-1788105383-776789",
+    "slack-1788105449-154059"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
