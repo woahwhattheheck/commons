@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-29T23:06:24.617Z",
-    "base_main_sha": "5e6238f8cab35f044543ecde142be8df76b27cff",
+    "observed_at": "2026-08-30T03:59:00Z",
+    "base_main_sha": "c96d08bf6ed9890782c9b7a48bf4ce4cb5c3f683",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1787997064.565089",
-  "source_id": "codex-muhlnickel-distro-sales-door-activation-20260829-01",
+  "slack_ts": "1788062418.023819",
+  "source_id": "codex-internet-archive-mirror-activation-20260830-01",
   "supersedes_source_ids": [
+    "codex-muhlnickel-distro-sales-door-activation-20260829-01",
     "codex-github-actions-watchdog-production-activation-20260829-01",
     "codex-supergrok-commons-tool-consumer-activation-20260828-01",
     "codex-github-actions-watchdog-advancement-20260828-01",
@@ -49,7 +50,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Muhlnickel DISTRO public sales door discovered and producing; checkout, delivery, buyer, and cash remain unlanded",
+  "subject": "MASTER RESOURCE LEDGER — Internet Archive history mirror discovered and producing; Pages bake remains noncanonical",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -72,7 +73,8 @@
     "inventory/resources/records/codex-github-actions-watchdog-advancement-20260828-01.json",
     "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
     "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
-    "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json"
+    "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
+    "inventory/resources/records/codex-internet-archive-mirror-activation-20260830-01.json"
   ],
   "priority_queue": [
     {
@@ -1407,6 +1409,28 @@
       "last_used_at": "2026-08-29T09:51:04Z",
       "stale_after": "P7D",
       "priority": 80
+    },
+    {
+      "name": "internet-archive-history-mirror",
+      "kind": "PUBLIC_ARCHIVE_MIRROR",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Internet Archive",
+      "authority": "PUBLIC_READ_AND_ZERO_CREDENTIAL_SAVE; CANONICAL_GIT_UNCHANGED",
+      "consumer": "Humans and agents needing a public non-GitHub historical readback of the Commons Pages mirror catalog",
+      "value": "Independent Wayback memento, CDX/availability discovery, and a bounded public readback outside GitHub serving",
+      "next_action": "Let the existing moving-main courier refresh the archive only on its bounded schedule; verify a later memento before claiming freshness, and never treat a Pages bake as git HEAD.",
+      "source": "PR #5472; PR #5476; ci/moving_main/receipts/ia-save-200-20260830.json; p/unseated-dir9-snapshot-ia-ready-20260830-01.md",
+      "evidence_ts": "2026-08-30T01:17:12Z",
+      "auth_surface": "current-main exact Git blobs plus public Internet Archive HTTP receipts",
+      "exact_safe_probe": "SavePageNow HTTP 200; availability closest 20260829195122; CDX 7 hits with latest 20260830011603; memento GET 200, 8,698 bytes; historical HTTP 523 receipt remains present.",
+      "rate_plan_boundary": "A Wayback memento is a historical Pages bake, not git HEAD, canonical durability, a deployment by this activation, provider-account authority, traffic, revenue, or cash.",
+      "assigned_backlog": "one later scheduled freshness readback; no duplicate archive write merely to consume capacity",
+      "last_receipt": "unseated-dir9-snapshot-ia-ready-20260830-01",
+      "last_used_at": "2026-08-30T01:17:12Z",
+      "stale_after": "P7D",
+      "priority": 68
     }
   ]
 }
