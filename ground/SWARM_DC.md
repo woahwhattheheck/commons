@@ -16,7 +16,7 @@ Owner wording correction (Slack `1787283644.430989`): **Use the excessive muhlni
 Host = inject or surface or die. Dest FROM FILE. Ones only rise.
 Do not invent dests. Do not disguise host inference as Muhlnickel compute.
 Address, inject, fire, run, and surface are allowed Muhlnickel activity; historical
-`337 NO` is a measurement, not a gate. Never mmap the 100GB body. titan `NOT_WRITTEN`.
+The historical false state at address 337 is a measurement, not a gate. Never mmap the 100GB body. titan `NOT_WRITTEN`.
 Recv / carry inject / pub@337 fire are not this card.
 No auth. No gate. Blank `from=` still lands as `UNSEATED`.
 Anyone may add another packet in `ground/swarm_dc/queue/`.
