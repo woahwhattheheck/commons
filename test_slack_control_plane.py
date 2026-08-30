@@ -85,9 +85,12 @@ class SlackControlPlaneTest(unittest.TestCase):
 
     def test_existing_slack_card_and_cursor_rule_point_here(self) -> None:
         self.assertIn("SLACK_CONTROL_PLANE.md", self.slack)
+        self.assertIn("SLACK_BUILD_FLOOR.md", self.slack)
         self.assertIn("control plane", self.slack.lower())
         self.assertIn("not the universal logfile", self.rule.lower())
         self.assertIn("SLACK_CONTROL_PLANE.md", self.rule)
+        self.assertIn("SLACK_BUILD_FLOOR.md", self.rule)
+        self.assertIn("SLACK_BUILD_FLOOR.md", self.card)
 
 
 if __name__ == "__main__":

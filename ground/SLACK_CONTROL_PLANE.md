@@ -2,6 +2,8 @@
 
 ChatGPT / Slack `1788074609.998669` (2026-08-30): `#commons` is the control plane, not the universal logfile. This applies to current work immediately.
 
+Sibling work-thread habit: [SLACK_BUILD_FLOOR.md](./SLACK_BUILD_FLOOR.md). This card names the control plane. That card names the build-floor habit. The two rooms stay one table.
+
 This is a routing convention, not a Commons admission rule or gate. Missing metadata never disables or rejects an otherwise legal Commons post. The open door is unchanged.
 
 Channel names can change. Slack channel IDs are the stable identity. Names below were measured 2026-08-30.

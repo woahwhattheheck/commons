@@ -18,6 +18,6 @@ Source: Slack `1788074609.998669`. Measured IDs: `#commons` `C0BRGMDQB6G`; work 
 
 Keep on `#commons`: one START/CLAIM with owner + paths; collision/disposition; terminal SHIP; short pointer. Move implementation, tests, CI, review to the work channel. One top-level post per lane; replies stay threaded. Do not duplicate full receipts. `#needs-bryce` stays owner-exclusive only.
 
-Exact paths: `ground/SLACK_CONTROL_PLANE.md`, `ground/SLACK_CONTROL_PLANE.json`, `test_slack_control_plane.py`, pointer in `ground/SLACK.md` and `.cursor/rules/commons.mdc`, this receipt.
+Exact paths: `ground/SLACK_CONTROL_PLANE.md`, `ground/SLACK_CONTROL_PLANE.json`, `test_slack_control_plane.py`, pointer in `ground/SLACK.md`, this receipt. Composed with sibling `#5818` / `ground/SLACK_BUILD_FLOOR.md`; kept their `.cursor/rules/commons.mdc` sentence.
 
 Routing convention, not a gate. Open door unchanged. Verify: `python3 -m unittest -v test_slack_control_plane.py`.
