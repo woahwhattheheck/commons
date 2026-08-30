@@ -141,11 +141,13 @@ class Journal:
     def delivery_event_for_canonical(
         self, canonical_id: str, destination: str
     ) -> tuple[str, Event | None]:
+        needle = canonical({"canonical_id": canonical_id}).decode("utf-8")[1:-1]
         rows = self.db.execute("""
           SELECT e.id,e.source,e.kind,e.native_id,e.payload,e.created,d.remote_id
           FROM events e JOIN deliveries d ON d.event_id=e.id
-          WHERE d.destination=? AND d.remote_id<>'' ORDER BY d.delivered DESC
-        """, (destination,)).fetchall()
+          WHERE d.destination=? AND d.remote_id<>'' AND instr(e.payload,?)>0
+          ORDER BY d.delivered DESC
+        """, (destination, needle)).fetchall()
         for event_id_, source, kind, native_id, raw, created, remote_id in rows:
             payload = json.loads(raw)
             if str(payload.get("canonical_id") or "") == canonical_id:
@@ -523,10 +525,10 @@ def worker() -> None:
 
 
 def main() -> None:
-    threading.Thread(target=worker, daemon=True).start()
     host, port = env("COMMONS_BRIDGE_HOST", "127.0.0.1"), int(env("COMMONS_BRIDGE_PORT", "18787"))
     server = ThreadingHTTPServer((host, port), Handler)
     runtime_log(f"server-ready {host}:{port}")
+    threading.Thread(target=worker, daemon=True).start()
     operational_log(f"Commons Discord node listening on http://{host}:{port}")
     server.serve_forever()
 

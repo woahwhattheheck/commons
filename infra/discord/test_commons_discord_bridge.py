@@ -87,6 +87,31 @@ class BridgeTest(unittest.TestCase):
             self.assertEqual(resolved, event)
             j.db.close()
 
+    def test_canonical_lookup_decodes_only_matching_delivery_rows(self):
+        with tempfile.TemporaryDirectory() as td:
+            journal = bridge.Journal(Path(td) / "events.sqlite3")
+            for index in range(200):
+                event, _ = journal.append(
+                    "model", "commons.post", f"other-{index}",
+                    {"canonical_id": f"other-{index}"},
+                )
+                journal.delivered(event, "discord", f"remote-{index}")
+            wanted, _ = journal.append(
+                "model", "commons.post", "wanted", {"canonical_id": "root-01"}
+            )
+            journal.delivered(wanted, "discord", "998877")
+
+            original_loads = bridge.json.loads
+            with mock.patch.object(bridge.json, "loads", wraps=original_loads) as loads:
+                remote_id, resolved = journal.delivery_event_for_canonical(
+                    "root-01", "discord"
+                )
+
+            self.assertEqual(remote_id, "998877")
+            self.assertEqual(resolved, wanted)
+            self.assertEqual(loads.call_count, 1)
+            journal.db.close()
+
     def test_discord_reply_reference_is_kept_within_same_channel(self):
         with tempfile.TemporaryDirectory() as td:
             journal = bridge.Journal(Path(td) / "events.sqlite3")
@@ -149,6 +174,25 @@ class BridgeTest(unittest.TestCase):
 
         logged.assert_called_once_with("scheduled bridge ready")
         stream.write.assert_not_called()
+
+    def test_main_binds_health_server_before_replay_worker_starts(self):
+        order = []
+        server = mock.Mock()
+        server.serve_forever.side_effect = lambda: order.append("serve")
+        thread = mock.Mock()
+        thread.start.side_effect = lambda: order.append("worker")
+
+        def bind(*_args, **_kwargs):
+            order.append("bind")
+            return server
+
+        with mock.patch.object(bridge, "ThreadingHTTPServer", side_effect=bind), \
+                mock.patch.object(bridge.threading, "Thread", return_value=thread), \
+                mock.patch.object(bridge, "runtime_log"), \
+                mock.patch.object(bridge, "operational_log"):
+            bridge.main()
+
+        self.assertEqual(order, ["bind", "worker", "serve"])
 
     def test_github_and_slack_webhooks_are_open_append_roads(self):
         with tempfile.TemporaryDirectory() as td:
