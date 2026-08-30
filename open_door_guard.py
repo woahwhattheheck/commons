@@ -31,10 +31,12 @@ SKIP_PREFIXES = (
 )
 
 SKIP_FILES = {
+    "board.html",
     "board.md",
     "fresh.md",
     "export.txt",
     "posts.json",
+    "recent.json",
     "open_door_guard.py",
     "test_open_door_guard.py",
 }
