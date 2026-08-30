@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1787997064.565089")
+        self.assertEqual(catalog["slack_ts"], "1788062418.023819")
         self.assertEqual(
             catalog["source_id"],
+            "codex-internet-archive-mirror-activation-20260830-01",
+        )
+        self.assertIn(
             "codex-muhlnickel-distro-sales-door-activation-20260829-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-github-actions-watchdog-production-activation-20260829-01",
@@ -171,17 +175,17 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
+            "codex-internet-archive-mirror-activation-20260830-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
         self.assertEqual(activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            activation["selected_resource"], "muhlnickel-distro-public-sales-door"
+            activation["selected_resource"], "internet-archive-history-mirror"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, activation["evidence"]["slack_receipt"])
+        self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
         watchdog_production_path = os.path.join(
             ROOT,
             "inventory",
@@ -214,6 +218,7 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1787997064.565089")
         self.assertNotEqual(catalog["slack_ts"], "1787976347.829539")
         self.assertNotEqual(catalog["slack_ts"], "1787954879.428259")
         self.assertNotEqual(catalog["slack_ts"], "1787933005.065549")
@@ -243,10 +248,18 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             rows["muhlnickel-distro-public-sales-door"]["condition"], "CONSTRAINED"
         )
+        self.assertEqual(rows["internet-archive-history-mirror"]["stage"], "PRODUCING")
+        self.assertEqual(
+            rows["internet-archive-history-mirror"]["condition"], "CONSTRAINED"
+        )
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
         self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
-        self.assertEqual(activation["projection"]["resources"], 61)
-        self.assertEqual(activation["projection"]["producing"], 27)
+        self.assertEqual(activation["projection"]["resources"], 62)
+        self.assertEqual(activation["projection"]["producing"], 28)
+        self.assertIn(
+            "inventory/resources/records/codex-internet-archive-mirror-activation-20260830-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertIn(
             "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
             raw.get("record_sources") or [],
@@ -403,6 +416,61 @@ class TestResourceLedger(unittest.TestCase):
             "No buyer inquiry, order, acceptance, payment, settlement, payout, revenue, or cash",
             activation["non_claims"],
         )
+
+    def test_internet_archive_history_mirror_is_producing_without_canonical_claim(self):
+        catalog_path = os.path.join(ROOT, "ground", "RESOURCE_LEDGER.json")
+        with open(catalog_path, encoding="utf-8") as handle:
+            catalog = load_catalog(handle.read())
+        rows = {row["name"]: row for row in catalog["surfaces"]}
+        mirror = rows["internet-archive-history-mirror"]
+        self.assertEqual(mirror["capacity"], "LIVE")
+        self.assertEqual(mirror["stage"], "PRODUCING")
+        self.assertEqual(mirror["condition"], "CONSTRAINED")
+        self.assertEqual(
+            mirror["last_receipt"],
+            "unseated-dir9-snapshot-ia-ready-20260830-01",
+        )
+        self.assertIn("not git head", mirror["rate_plan_boundary"].lower())
+        self.assertIn("public_read", mirror["authority"].lower())
+        live_queue = [
+            row["name"] for row in measure_from_rows(catalog)["activation_queue"]
+        ]
+        self.assertNotIn("internet-archive-history-mirror", live_queue)
+
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-internet-archive-mirror-activation-20260830-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        self.assertEqual(
+            activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION"
+        )
+        self.assertEqual(
+            activation["selected_resource"], "internet-archive-history-mirror"
+        )
+        self.assertEqual(activation["after"]["capacity"], "LIVE")
+        self.assertEqual(activation["after"]["stage"], "PRODUCING")
+        self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
+        self.assertEqual(activation["projection"]["resources"], 62)
+        self.assertEqual(activation["projection"]["producing"], 28)
+        self.assertIn(
+            "No archive write or provider token spend by this activation",
+            activation["non_claims"],
+        )
+        self.assertIn(
+            "No canonical current-main durability through Internet Archive",
+            activation["non_claims"],
+        )
+        self.assertIn(
+            "No deployment, device actuation, payment, settlement, payout, revenue, or cash",
+            activation["non_claims"],
+        )
+        self.assertIn("NO_AUTH", activation["authority"])
+        self.assertIn("no login", activation["verification"]["open_door_contract"].lower())
 
     def test_duration_freshness_expires_claims_without_rewriting_condition(self):
         row = {
