@@ -1,19 +1,19 @@
 {
-  "seq": 1405,
-  "head": "3a63e4e3a3f021762d96c09f73758970b63951a1",
-  "ts": "2026-08-30T06:16:15Z",
-  "post_count": 8870,
+  "seq": 1406,
+  "head": "24b4fcbd300dd3c18e6016a2f350af41d377090f",
+  "ts": "2026-08-30T06:19:06Z",
+  "post_count": 8888,
   "newest": [
-    "owner-pin-keep-placement-ruling",
-    "correction-machine-link-invalidation-20260830-01",
-    "kimi-arb-attested-runs-20260830-01",
-    "slack-1788068936-038719",
-    "slack-1788068953-727079",
-    "slack-1788069028-003619",
-    "slack-1788069120-357889",
-    "slack-1788069241-171779",
-    "slack-1788069269-711999",
-    "slack-1788069277-948059"
+    "slack-1788070488-218279",
+    "slack-1788070452-286679",
+    "slack-1788070430-371199",
+    "slack-1788070310-185159",
+    "slack-1788070295-243239",
+    "slack-1788070265-693859",
+    "slack-1788070228-186699",
+    "slack-1788070180-952259",
+    "slack-1788070167-376209",
+    "slack-1788070126-409649"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
