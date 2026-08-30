@@ -63,16 +63,22 @@ def prospect_catalog(email: str = "buyer@prospect.test") -> dict:
 class WebsitePeopleEmailBookTests(unittest.TestCase):
     def test_default_uses_external_evidence_catalog_not_seller_people(self) -> None:
         result = fixture_loop()
-        self.assertEqual(result["truth"]["prospects_found"], 3)
+        self.assertEqual(result["truth"]["prospects_found"], 4)
         self.assertEqual(result["truth"]["seller_contacts_observed"], 4)
-        self.assertEqual(result["truth"]["emails_drafted"], 0)
+        self.assertEqual(result["truth"]["emails_drafted"], 1)
         self.assertEqual(result["truth"]["calls_booked"], 0)
         self.assertEqual(result["truth"]["transport_actions"], 0)
         self.assertEqual(result["truth"]["cash_usd"], 0)
         self.assertEqual(result["truth"]["mailbox"], "NEEDS_OWNER_MAILBOX")
         organizations = {item["organization"] for item in result["prospects"]}
-        self.assertEqual(organizations, {"AnythingLLM / Mintplex Labs", "Metaforms", "SigNoz"})
+        self.assertEqual(
+            organizations,
+            {"AnythingLLM / Mintplex Labs", "Composio", "Metaforms", "SigNoz"},
+        )
         self.assertNotIn("Ava Platform", organizations)
+        composio = next(item for item in result["emails"] if item["prospect_id"] == "composio")
+        self.assertEqual(composio["to"], "support@composio.dev")
+        self.assertEqual(composio["transport"], "STAGED_NOT_SENT")
 
     def test_qualified_external_prospect_gets_evidence_bound_draft(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -175,7 +181,7 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
                 capture_output=True,
                 text=True,
             ).stdout
-        self.assertEqual(validate.strip(), "VALID 1 website 3 prospects 0 drafts 0 booked 0 sent")
+        self.assertEqual(validate.strip(), "VALID 1 website 4 prospects 1 drafts 0 booked 0 sent")
 
     def test_checked_in_loop_matches_current_evidence_catalog(self) -> None:
         landed = json.loads(LOOP_JSON.read_text(encoding="utf-8"))
