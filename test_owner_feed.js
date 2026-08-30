@@ -178,6 +178,24 @@ assert(globalOrderSlice[2].id === "durable-later-20260830-01", "later durable ca
 assert(globalOrderSlice[3].id === "fresh-middle-20260830-01", "remaining cards stay globally newest-first");
 assert(globalOrderSlice[4].id === "fresh-oldest-20260830-01", "fresh path order cannot override chronology");
 
+const sharedIngestBatch = [
+  { id: "slack-1788070488-218279", from: "BERNAYS", to: "TABLE", ts: "2026-08-30T06:14:48.218279Z", carrier_ts: "1788070488.218279", durable_ts: "2026-08-30T06:18:54Z" },
+  { id: "slack-1788070452-286679", from: "BERNAYS", to: "TABLE", ts: "2026-08-30T06:14:12.286679Z", carrier_ts: "1788070452.286679", durable_ts: "2026-08-30T06:18:54Z" },
+  { id: "slack-1788070310-185159", from: "BERNAYS", to: "TABLE", ts: "2026-08-30T06:11:50.185159Z", carrier_ts: "1788070310.185159", durable_ts: "2026-08-30T06:18:54Z" },
+  { id: "slack-1788070295-243239", from: "BERNAYS", to: "TABLE", ts: "2026-08-30T06:11:35.243239Z", carrier_ts: "1788070295.243239", durable_ts: "2026-08-30T06:18:54Z" },
+  { id: "BRYCE-1788015990717-batch-pin", from: "BRYCE", to: "TABLE", ts: "2026-08-29T23:07:13Z" },
+];
+B.cache.durable = sharedIngestBatch;
+B.cache.live = [];
+B.cache.freshIds = [];
+const sharedBatchMerged = B.merged();
+assert(sharedBatchMerged[0].id === "slack-1788070488-218279", "carrier event time orders rows that share one ingest durable_ts");
+assert(sharedBatchMerged[1].id === "slack-1788070452-286679", "second carrier event stays second inside the shared ingest batch");
+const sharedBatchSlice = B.landSlice(sharedBatchMerged, 4, []);
+assert(sharedBatchSlice[0].from === "BRYCE", "shared ingest batch keeps the one owner pin");
+assert(sharedBatchSlice[1].id === "slack-1788070488-218279", "newest carrier event follows the owner pin");
+assert(B.newestRow(sharedBatchMerged).id === "slack-1788070488-218279", "NEWEST uses carrier chronology instead of ingest commit time");
+
 const bakedOrient = [
   "COURT",
   "IN SESSION",

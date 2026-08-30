@@ -38,16 +38,18 @@ price, transfer, delivery, payment, revenue, or cash is claimed.
 Verification exposed one path-disjoint CI edge not included by #5739: the
 diff-based open-door guard treated quoted historical gate language inside the
 frozen JSON as active policy. The guard already excludes durable board records
-and generated projections. Its exclusion now also names only the frozen
-`revenue/data/board_feed_sample_` data prefix, with a regression proving active
-source gates still fail while quoted corpus rows do not.
+and generated projections. A pre-merge review proved that a stem prefix would
+also exempt an active source lookalike such as `board_feed_sample_policy.py`;
+that candidate was not merged. The exclusion now names only the exact frozen
+`revenue/data/board_feed_sample_20260830.json` artifact, with regressions proving
+active source gates and the lookalike still fail while quoted corpus rows do not.
 
 Focused verification on current-main corpus bytes and this two-file guard fix:
 
 - `python3 -m unittest -v test_board_feed_corpus.py` — 13/13 PASS
-- data-license plus outcome-commerce — 37/38 PASS; the unchanged main baseline
-  still pins `carrier.js?v=20260824a` while generated `data-license.html` now
-  loads `v=20260830a`, separately handed to the current-main test owner
+- `python3 -m unittest -v test_data_license.py test_outcome_commerce.py` —
+  38/38 PASS after main `6a2b572e838ebfd69c67626d715c4dd9d70ff305`
+  independently corrected the stale generated carrier-version assertions
 - Python compile for the validator and its test — PASS
 - JSON parse for manifest, schema, and 500-row sample — PASS
 - open-door diff guard and focused guard regression — PASS

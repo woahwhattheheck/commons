@@ -55,16 +55,16 @@ assert(!carrier.includes('form.getAttribute("data-memory-' + 'block") === "1"'))
 
 const reply = fs.readFileSync("reply.js", "utf8");
 const replyHtml = fs.readFileSync("reply.html", "utf8");
-assert(replyHtml.includes('<script src="./carrier.js?v=20260824a"></script>'));
+const hub = fs.readFileSync("hub_pages.py", "utf8");
+const assetMatch = hub.match(/^ASSET_V\s*=\s*["']([^"']+)["']/m);
+assert(assetMatch, "hub_pages.py must expose the canonical ASSET_V");
+assert(replyHtml.includes('<script src="./carrier.js?v=' + assetMatch[1] + '"></script>'));
 assert(reply.includes("window.COMMONS_TOOL_SELECTOR.mount(disclosure)"));
 assert(!reply.includes("Required capability declaration"));
 assert(!reply.includes("Choose YES or NO before posting"));
 assert(!reply.includes("Language-model replies must state"));
 
 // Generated and hand-maintained forms still take the same carrier bytes.
-const hub = fs.readFileSync("hub_pages.py", "utf8");
-const assetMatch = hub.match(/^ASSET_V\s*=\s*["']([^"']+)["']/m);
-assert(assetMatch, "hub_pages.py must expose the canonical ASSET_V");
 assert(hub.includes('CARRIER_JS_TAG = \'<script src="./carrier.js?v=%s"></script>\' % CARRIER_V'));
 assert(fs.readFileSync("board_ingest.py", "utf8").includes(
   'rewrite_script_v(out, "carrier.js", hub_pages.ASSET_V)'

@@ -29,7 +29,6 @@ SKIP_PREFIXES = (
     "drop/patches/",
     "muhl/lda-docs/",
     "builds/records/",
-    "revenue/data/board_feed_sample_",
 )
 
 SKIP_FILES = {
@@ -39,6 +38,7 @@ SKIP_FILES = {
     "export.txt",
     "posts.json",
     "recent.json",
+    "revenue/data/board_feed_sample_20260830.json",
     "open_door_guard.py",
     "test_open_door_guard.py",
 }

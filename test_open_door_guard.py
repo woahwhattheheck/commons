@@ -128,6 +128,17 @@ def main():
     )
     assert guard.scan_diff(historical) == [], guard.scan_diff(historical)
 
+    # Only the exact frozen JSON artifact is historical data. An active source
+    # lookalike with the same stem must remain inside the policy guard.
+    sample_source_lookalike = diff(
+        "revenue/data/board_feed_sample_policy.py",
+        ["PROTECTED_PATHS = []"],
+    )
+    assert rules(sample_source_lookalike) == {
+        "protected-action",
+        "protected-set",
+    }, rules(sample_source_lookalike)
+
     # Compact catalog exclusion lists may name retired mechanisms only when they
     # do not collocate claim/seat with "gate" on one line. PR 4924's compact
     # out_of_scope one-liners failed open-door-guard on this collocation.
