@@ -208,6 +208,12 @@ class TestMuhlSwarmDc(unittest.TestCase):
             self.assertIn("host_computed", blob)
             self.assertIn("unseated", blob)
 
+    def test_card_preserves_exact_excessive_wording(self):
+        card = open(os.path.join(ROOT, "ground", "SWARM_DC.md"), encoding="utf-8").read()
+        self.assertIn("Use the excessive muhlnickel compute creatively.", card)
+        self.assertNotIn("Use the excess muhlnickel compute creatively.", card)
+        self.assertIn("1787283644.430989", card)
+
 
 if __name__ == "__main__":
     unittest.main()
