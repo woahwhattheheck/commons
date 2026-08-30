@@ -348,5 +348,89 @@
    ],
    "latest_status": "LANDED"
   }
+ ],
+ "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
+ "n_open_prs": 5,
+ "open_prs": [
+  {
+   "number": 5695,
+   "author": "woahwhattheheck",
+   "title": "Build truthful Muhlnickel film-organ reference visor",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5695",
+   "base_freshness": {
+    "base_sha": "e887ae109dd8cb5c3297ae8397ec2149e250c767",
+    "main_sha": "b2be969478eb08165ad56391b318fc0e27ee3dad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 5810,
+   "author": "woahwhattheheck",
+   "title": "Repin registry after post-merge board ingest",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5810",
+   "base_freshness": {
+    "base_sha": "a86fef60894386fd8c1cbebf50cdaaa7a61e956d",
+    "main_sha": "b2be969478eb08165ad56391b318fc0e27ee3dad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 5812,
+   "author": "woahwhattheheck",
+   "title": "Lock read-time from casing normalization",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5812",
+   "base_freshness": {
+    "base_sha": "9622070a9e8f54800c2fd052f2a67469657cad49",
+    "main_sha": "b2be969478eb08165ad56391b318fc0e27ee3dad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 5747,
+   "author": "woahwhattheheck",
+   "title": "Exclude frozen board-feed samples from source guard",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5747",
+   "base_freshness": {
+    "base_sha": "6a2b572e838ebfd69c67626d715c4dd9d70ff305",
+    "main_sha": "b2be969478eb08165ad56391b318fc0e27ee3dad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 5813,
+   "author": "woahwhattheheck",
+   "title": "Keep human-outcomes calibration stable across carrier tokens",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5813",
+   "base_freshness": {
+    "base_sha": "b2be969478eb08165ad56391b318fc0e27ee3dad",
+    "main_sha": "b2be969478eb08165ad56391b318fc0e27ee3dad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
  ]
 }
