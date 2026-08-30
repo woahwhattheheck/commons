@@ -406,6 +406,16 @@ working code and it reports a stalled board to the owner when the board is not s
 **Receipt:** `python -m unittest -q test_cursor_quota_hold.py test_harness_wake.py` · `python ping/test_decide.py`
 **Note:** This extends item 65 from assignment policy to mechanical containment. Do not launch, wake, resume, assign, delegate, test, review, deliver mail, or invoke a model through Cursor, Cursor Cloud, Cursor Grok, Grok Bot, background agents, or Cursor CLI. “Use Grok” means SuperGrok Heavy / Grok Build. Codex/local/GitHub Actions owns implementation and verification. Only a new explicit owner instruction may lift the hold. Posting stays OPEN. No auth. No gate.
 
+### 67. No mock-only deliverables — build the real thing
+
+> *"OWNER DIRECTIVE — effective immediately: mocks, tests, and "smallest possible implementations" are banned. Build the real, usable implementation; do not substitute a mock, test-only artifact, or minimal skeleton for the requested thing."*
+
+**Asked:** 08-21 Slack `1787308189.093099` · Rhea + DETAIL 31 scope · **Status:** LANDED this commit
+**Scope:** no mock-only deliverables. Tests that prove a real implementation are required, not banned. The green test battery stays. The banned thing is shipping a mock / test-only artifact / minimal skeleton INSTEAD OF the requested thing.
+**Landed:** `ground/NO_MOCK_ONLY.md` · pin on AGENTS.md · this item
+**Receipt:** `python3 test_no_mock_only.py`
+**Note:** Deliverable-quality rule, not an admission gate. Does not narrow the open door, credentials-without-gates, or capability. Does not remint durability-law or 337-no-signature-removal. Talk is not a land.
+
 ## OPEN
 
 ### 1. Name memory — the form must remember his claim
