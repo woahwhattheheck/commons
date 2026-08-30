@@ -235,7 +235,8 @@ class MovingMainMirrorTests(unittest.TestCase):
         self.assertTrue(by_id["ntfy-cursor"]["independent_origin"])
         self.assertTrue(by_id["software-heritage"]["operational"])
         self.assertFalse(by_id["jsdelivr-main"]["independent_origin"])
-        self.assertFalse(by_id["internet-archive"]["operational"])
+        self.assertTrue(by_id["internet-archive"]["operational"])
+        self.assertIn("200", by_id["internet-archive"]["notes"])
         self.assertIn("523", by_id["internet-archive"]["notes"])
 
     def test_no_secret_logs_and_open_door(self) -> None:
@@ -330,10 +331,96 @@ class MovingMainMirrorTests(unittest.TestCase):
         self.assertEqual(ready["state"], "SNAPSHOT_READY")
         self.assertTrue(ready["origin_readable"])
         self.assertTrue(ready["verified"])
+        hex_ready = mmm.classify_swh_origin(
+            origin,
+            [{"status": "full", "snapshot": "e840cec6d1ebcc876c723024e9931dd6842d038f"}],
+        )
+        self.assertEqual(hex_ready["state"], "SNAPSHOT_READY")
+        self.assertEqual(
+            hex_ready["snapshot_swhid"],
+            "swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f",
+        )
+        self.assertEqual(
+            mmm.normalize_snapshot_swhid("e840cec6d1ebcc876c723024e9931dd6842d038f"),
+            "swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f",
+        )
+        self.assertIsNone(mmm.normalize_snapshot_swhid(None))
         self.assertEqual(mmm.classify_swh_origin({}, []).get("state"), "MISS")
         skip = mmm.request_swh_vault(None)
         self.assertEqual(skip["state"], "SKIP")
         self.assertFalse(skip["verified"])
+
+    def test_internet_archive_classifies_523_miss_and_memento_ready(self) -> None:
+        miss = mmm.classify_internet_archive(save_status=523, availability={"archived_snapshots": {}})
+        self.assertEqual(miss["state"], "MISS")
+        self.assertFalse(miss["verified"])
+        self.assertFalse(miss["operational"])
+        ready = mmm.classify_internet_archive(
+            save_status=200,
+            availability={
+                "archived_snapshots": {
+                    "closest": {
+                        "status": "200",
+                        "available": True,
+                        "url": "http://web.archive.org/web/20260829195122/https://woahwhattheheck.github.io/commons/mirrors.json",
+                        "timestamp": "20260829195122",
+                    }
+                }
+            },
+            cdx_rows=[
+                ["urlkey", "timestamp"],
+                ["io,github,woahwhattheheck)/commons/mirrors.json", "20260829195122"],
+            ],
+            memento_status=200,
+        )
+        self.assertEqual(ready["state"], "READY")
+        self.assertTrue(ready["verified"])
+        self.assertTrue(ready["operational"])
+        self.assertEqual(ready["cdx_hits"], 1)
+        self.assertTrue(str(ready["closest_url"]).startswith("https://"))
+        readback = mmm.classify_internet_archive(
+            availability={
+                "archived_snapshots": {
+                    "closest": {
+                        "status": "200",
+                        "available": True,
+                        "url": "https://web.archive.org/web/20260829195122/https://woahwhattheheck.github.io/commons/mirrors.json",
+                        "timestamp": "20260829195122",
+                    }
+                }
+            },
+            memento_status=200,
+        )
+        self.assertEqual(readback["state"], "READBACK")
+        cdx_only = mmm.classify_internet_archive(
+            cdx_rows=[
+                ["urlkey", "timestamp", "original", "mimetype", "statuscode", "digest", "length"],
+                [
+                    "io,github,woahwhattheheck)/commons/mirrors.json",
+                    "20260829195122",
+                    "https://woahwhattheheck.github.io/commons/mirrors.json",
+                    "application/json",
+                    "200",
+                    "YJPTXMUWQR33YMVEHUBABGZTMOP6AXFM",
+                    "3984",
+                ],
+            ],
+            memento_status=200,
+        )
+        self.assertEqual(cdx_only["state"], "READBACK")
+        self.assertEqual(cdx_only["closest_timestamp"], "20260829195122")
+        self.assertIn("20260829195122", cdx_only["closest_url"])
+        self.assertEqual(
+            mmm.latest_cdx_memento(
+                [
+                    ["urlkey", "timestamp", "original"],
+                    ["k", "20260828154648", "https://woahwhattheheck.github.io/commons/mirrors.json"],
+                    ["k", "20260829195122", "https://woahwhattheheck.github.io/commons/mirrors.json"],
+                ]
+            )["timestamp"],
+            "20260829195122",
+        )
+        self.assertTrue((ROOT / "ci" / "moving_main" / "receipts" / "ia-save-523.json").is_file())
 
     def test_prefer_skips_empty_keys_so_save_receipt_does_not_false_conflict(self) -> None:
         ntfy = {

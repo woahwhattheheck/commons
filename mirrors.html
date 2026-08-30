@@ -25,7 +25,7 @@
 <tbody id="status-rows"><tr><td colspan="4">…</td></tr></tbody>
 </table>
 <p id="live-status" class="note">live probes wait for this browser.</p>
-<p class="open" id="still-open">Automatic moving-main courier, ntfy cursor, and Software Heritage Save Code Now are wired. Software Heritage origin GET 200 listed; snapshot_swhid still null so directory browse 404. jsDelivr @main stays a GitHub-backed CDN. Internet Archive SavePageNow last measured HTTP 523. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. None of these is canonical durability.</p>
+<p class="open" id="still-open">Automatic moving-main courier, ntfy cursor, Software Heritage snapshot, and Internet Archive Pages memento are wired. Software Heritage vault git-bare status new so restore fetch is not READY. jsDelivr @main stays a GitHub-backed CDN. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. Pages bake is not git HEAD. None of these is canonical durability.</p>
 <p class="note">HTTP is a transport, not the computer; this mirror catalog does not actuate devices or <code>.mno</code> files. No secrets are printed.</p>
 <script>
 (function () {
@@ -79,7 +79,9 @@
     ping("jsdelivr", "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/mirrors.json"),
     ping("ntfy-cursor", "https://ntfy.sh/woahwhattheheck-commons-main/json?poll=1&since=24h"),
     ping("swh-origin", "https://archive.softwareheritage.org/api/1/origin/https://github.com/woahwhattheheck/commons/get/"),
-    ping("swh-save", "https://archive.softwareheritage.org/api/1/origin/save/2456178/")
+    ping("swh-visits", "https://archive.softwareheritage.org/api/1/origin/https://github.com/woahwhattheheck/commons/visits/"),
+    ping("swh-browse", "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/woahwhattheheck/commons"),
+    ping("ia-avail", "https://archive.org/wayback/available?url=https://woahwhattheheck.github.io/commons/mirrors.json")
   ]).then(function (rows) {
     document.getElementById("live-status").textContent = "live this tab: " + rows.join(" · ");
   });

@@ -27,7 +27,7 @@
       "id": "software-heritage",
       "independent_origin": true,
       "kind": "independent-origin-git-save",
-      "notes": "Zero-new-credential Save Code Now from GitHub Actions. Origin GET 200 listed (ori swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb). Visit created, snapshot_swhid null, directory browse 404. Not origin-readable restore yet.",
+      "notes": "Zero-new-credential Save Code Now. Visit 11 status full; snapshot swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f; directory browse HTTP 200. Vault git-bare accepted status new \u2014 not a restore fetch. Independent origin is snapshot-readable, not canonical durability.",
       "operational": true
     },
     {
@@ -37,8 +37,8 @@
       "id": "internet-archive",
       "independent_origin": true,
       "kind": "independent-origin-web-save",
-      "notes": "Repo-controlled SavePageNow adapter. Last measured HTTP 523 from Wayback. Status stays exact; not READY.",
-      "operational": false
+      "notes": "SavePageNow HTTP 200 (was 523 on 2026-08-28). Wayback availability closest 20260829195122 plus CDX hits and memento GET 200 for mirrors.json. Pages bake is not git HEAD. Not canonical durability.",
+      "operational": true
     },
     {
       "credentials": "none",
@@ -101,6 +101,6 @@
   ],
   "law": "git HEAD is canonical. Mirrors copy and can post back. A receipt is not the board.",
   "schema_version": "commons-moving-main-mirror/v1",
-  "still_open": "Software Heritage origin GET 200 listed; snapshot_swhid still null so directory browse 404. GitLab/Codeberg/object-store full-bundle independent origins remain EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow last measured HTTP 523. jsDelivr is GitHub-backed. None of these is canonical durability.",
-  "ts": "2026-08-28T15:50:00Z"
+  "still_open": "Software Heritage snapshot swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f is origin-readable; vault git-bare status new so restore fetch is not READY. GitLab/Codeberg/object-store full-bundle independent origins remain EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow and CDX/availability readback of Pages mirrors.json are READY; that bake is not git HEAD. jsDelivr is GitHub-backed. None of these is canonical durability.",
+  "ts": "2026-08-30T01:17:00Z"
 }
