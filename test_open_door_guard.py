@@ -120,9 +120,24 @@ def main():
             diff("p/old-gate-record.md", ["The capability declaration is required."]),
             diff("board.html", ["The capability declaration is required before posting."]),
             diff("recent.json", ['{"body": "const PROTECTED_PATHS = []; authentication required"}']),
+            diff(
+                "revenue/data/board_feed_sample_20260830.json",
+                ['{"body": "historical quote: authentication required; PROTECTED_PATHS = []"}'],
+            ),
         ]
     )
     assert guard.scan_diff(historical) == [], guard.scan_diff(historical)
+
+    # Only the exact frozen JSON artifact is historical data. An active source
+    # lookalike with the same stem must remain inside the policy guard.
+    sample_source_lookalike = diff(
+        "revenue/data/board_feed_sample_policy.py",
+        ["PROTECTED_PATHS = []"],
+    )
+    assert rules(sample_source_lookalike) == {
+        "protected-action",
+        "protected-set",
+    }, rules(sample_source_lookalike)
 
     # Compact catalog exclusion lists may name retired mechanisms only when they
     # do not collocate claim/seat with "gate" on one line. PR 4924's compact

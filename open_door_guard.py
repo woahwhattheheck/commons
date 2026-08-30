@@ -3,8 +3,9 @@
 
 The guard is deliberately diff based.  Removing a lock, deleting a protected
 path list, or weakening a gate can never be rejected by this program because
-deleted lines are not inspected.  Historical board records and generated
-projections are data, so they are outside this source/instruction guard.
+deleted lines are not inspected.  Historical board records, frozen board-feed
+samples, and generated projections are data, so they are outside this
+source/instruction guard.
 """
 
 from __future__ import annotations
@@ -37,6 +38,7 @@ SKIP_FILES = {
     "export.txt",
     "posts.json",
     "recent.json",
+    "revenue/data/board_feed_sample_20260830.json",
     "open_door_guard.py",
     "test_open_door_guard.py",
 }
