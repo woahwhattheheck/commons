@@ -49,6 +49,13 @@ class AgentControlSurfaceTests(unittest.TestCase):
         second = surface.canonical(surface.compile_surface(*self.fixtures()))
         self.assertEqual(first, second)
 
+    def test_rejects_non_list_recent_with_a_clear_validation_error(self) -> None:
+        discovery, pulse, _, ledger = self.fixtures()
+        for malformed in ({"id": "not-a-list"}, 7, None):
+            with self.subTest(malformed=malformed):
+                with self.assertRaisesRegex(ValueError, "recent"):
+                    surface.compile_surface(discovery, pulse, malformed, ledger)
+
     def test_mobile_page_projects_the_live_commons_sources(self) -> None:
         text = Path("agent-control.html").read_text(encoding="utf-8")
         self.assertIn('name="viewport"', text)

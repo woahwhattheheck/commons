@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "host"))
 import current_work as cw
@@ -89,10 +90,32 @@ def test_conflict_same_id():
     check("same id different bytes CONFLICT", any("CONFLICT" in p for p in problems), problems)
 
 
+def test_malformed_catalog_is_reported_not_crashed():
+    with tempfile.TemporaryDirectory() as root:
+        ground = os.path.join(root, "ground")
+        os.makedirs(ground)
+        catalog = {
+            "schema": cw.SCHEMA,
+            "add_work": {"preferred": cw.SHIP_LOOP},
+            "historical_directives": [],
+            "items": ["not-an-object", {"id": "malformed-item-20260830-01", "title": "Malformed claimed paths", "kind": "BUILDABLE", "claimed_paths": 7}],
+        }
+        with open(os.path.join(ground, "CURRENT_WORK.json"), "w", encoding="utf-8") as handle:
+            json.dump(catalog, handle)
+        measured = cw.measure_tree(root)
+        check("malformed catalog returns problems", bool(measured.get("problems")), measured)
+        check(
+            "malformed catalog does not fabricate closure",
+            all(row.get("status") != "CLOSED" for row in measured.get("items") or []),
+            measured,
+        )
+
+
 def main():
     test_self_and_catalog()
     test_close_rule()
     test_conflict_same_id()
+    test_malformed_catalog_is_reported_not_crashed()
     if FAILED:
         print("CURRENT WORK TEST: FAIL", len(FAILED), ":", ", ".join(FAILED))
         return 1

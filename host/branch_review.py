@@ -356,16 +356,27 @@ def classify(row):
 
 def measure_root(root):
     root = os.path.abspath(root)
+    card_text = _read(root, DEFAULT_CARD)
+    catalog_text = _read(root, DEFAULT_CATALOG)
+    catalog = load_catalog(catalog_text) if catalog_text else {}
+    packet = catalog.get("packet") or {}
+    pfc = catalog.get("pfc_census") or {}
+    packet_path = packet.get("path") or PACKET_PATH
+    pfc_census_path = pfc.get("path") or PFC_CENSUS_PATH
+    search_space = (
+        DEFAULT_CARD,
+        DEFAULT_CATALOG,
+        os.path.join("host", "branch_review.py"),
+        packet_path,
+        pfc_census_path,
+    )
     misses = []
     search_hits = {}
-    for rel in SEARCH_SPACE:
+    for rel in search_space:
         text = _read(root, rel)
         if not text:
             misses.append(rel)
         search_hits[rel] = text
-    card_text = search_hits.get(DEFAULT_CARD, "")
-    catalog_text = search_hits.get(DEFAULT_CATALOG, "")
-    catalog = load_catalog(catalog_text) if catalog_text else {}
     blob = "\n".join(
         [
             card_text,
@@ -375,15 +386,14 @@ def measure_root(root):
     ).lower()
     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
-    pfc = catalog.get("pfc_census") or {}
     facts = {
         "card_present": bool(card_text) and "branch_review" in card_text.lower(),
         "catalog_present": bool(catalog) and not catalog.get("error"),
         "found_phrases": found,
         "families": catalog.get("families") or [],
         "branches": catalog.get("branches") or [],
-        "packet_present": bool(search_hits.get(PACKET_PATH)),
-        "pfc_census_present": bool(search_hits.get(PFC_CENSUS_PATH)),
+        "packet_present": bool(search_hits.get(packet_path)),
+        "pfc_census_present": bool(search_hits.get(pfc_census_path)),
         "clearance_retracted": str(pfc.get("clearance_sentence") or "").upper()
         == "RETRACTED",
         "retracted_stays_retracted": bool(catalog.get("retracted_stays_retracted")),
@@ -397,7 +407,7 @@ def measure_root(root):
         "xyz_required": bool(catalog.get("xyz_required")),
         "calibration_ok": len(calibration_hits) == len(CALIBRATION),
         "calibration_hits": calibration_hits,
-        "search_space": list(SEARCH_SPACE),
+        "search_space": list(search_space),
         "misses": misses,
         "titan": catalog.get("titan") or "NOT_WRITTEN",
         "slack_ts": catalog.get("slack_ts") or SLACK_TS,

@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import os
+import json
 import sys
+import tempfile
 import unittest
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -159,6 +161,32 @@ class TestBranchReview(unittest.TestCase):
         verdict = classify(measure_from_rows(_complete_facts()))
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertIn("still not the file", verdict["note"])
+
+    def test_catalog_paths_drive_packet_and_census_measurement(self):
+        with tempfile.TemporaryDirectory() as root:
+            for rel in (
+                "ground/BRANCH_REVIEW.md",
+                "ground/HEAD.md",
+                "ground/EXECUTE.md",
+                "host/branch_review.py",
+                "alternate/packet.json",
+                "alternate/PFC_CENSUS.md",
+            ):
+                path = os.path.join(root, rel)
+                os.makedirs(os.path.dirname(path), exist_ok=True)
+                with open(path, "w", encoding="utf-8") as handle:
+                    handle.write("branch_review\n")
+            catalog = {
+                "packet": {"path": "alternate/packet.json"},
+                "pfc_census": {"path": "alternate/PFC_CENSUS.md", "clearance_sentence": "RETRACTED"},
+            }
+            with open(os.path.join(root, "ground", "BRANCH_REVIEW.json"), "w", encoding="utf-8") as handle:
+                json.dump(catalog, handle)
+            row = measure_root(root)
+            self.assertTrue(row["packet_present"])
+            self.assertTrue(row["pfc_census_present"])
+            self.assertIn("alternate/packet.json", row["search_space"])
+            self.assertIn("alternate/PFC_CENSUS.md", row["search_space"])
 
     def test_live_tree_matches_the_report(self):
         catalog_path = os.path.join(ROOT, "ground", "BRANCH_REVIEW.json")
