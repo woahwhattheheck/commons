@@ -1,0 +1,45 @@
+{
+  "id": "codex-dir20-clock-fanout-autofab-20260830-01",
+  "receipt_id": "codex-dir20-clock-fanout-autofab-done-20260830-01",
+  "status": "SELECTED_NOT_ACTUATED",
+  "autofab_n": 24,
+  "unit": "proposed_resident",
+  "purpose": "first datacenter AGENT SWARM; one isolated Commons work shard per resident",
+  "mapping": "one proposed resident per measured clock junction",
+  "destination_source": "FROM_FILE_AT_FUTURE_ACTUATION",
+  "evidence": {
+    "commit": "35e3861fa7eef4242c04f9545043fac5fb30c383",
+    "snapshot_sha256": "1cf1a9f3c1649b82d19fc78440d468483d5d4bd3bff49a3da1cc0179a3f4911d",
+    "bytes": 586918,
+    "records": 22563,
+    "rings": 11,
+    "clocks": 24,
+    "clock_fanout_per_ring": [
+      2,
+      2,
+      3,
+      2,
+      3,
+      2,
+      2,
+      2,
+      2,
+      3,
+      1
+    ],
+    "clock_bank_upper_bound": 288
+  },
+  "actuation": {
+    "performed": false,
+    "mno_opened": false,
+    "mno_written": false,
+    "fabricated": false,
+    "fired_337": false,
+    "pulsed_78": false,
+    "host_computes_inference": false
+  },
+  "unresolved": [
+    "germ dock/magic"
+  ],
+  "supersedes_pin": "Do not pick N"
+}
