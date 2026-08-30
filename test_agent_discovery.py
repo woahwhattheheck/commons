@@ -34,10 +34,11 @@ class AgentDiscoveryTests(unittest.TestCase):
             (root / "agents.txt").write_text("stale", encoding="utf-8")
             self.assertEqual(agent_discovery.check(root), ["agents.txt"])
 
-    def test_continuity_capsule_starts_with_pulse_and_points_to_receipts(self) -> None:
+    def test_continuity_capsule_starts_with_capability_map_and_points_to_receipts(self) -> None:
         capsule = json.loads(agent_discovery.projections(self.registry)["continuity.json"])
-        self.assertEqual(capsule["startup_order"][0], "pulse.json")
-        self.assertIn("recent.json", capsule["startup_order"])
+        self.assertEqual(capsule["startup_order"][0], "harnesses/catalog.json")
+        self.assertIn("boards.html", capsule["startup_order"])
+        self.assertIn("discover_commons_capabilities", capsule["instruction"])
         self.assertTrue(capsule["receipts"].endswith("/tree/main/p"))
         self.assertEqual(capsule["runtime_signals"]["source_of_truth"], "git-head")
 
@@ -48,6 +49,7 @@ class AgentDiscoveryTests(unittest.TestCase):
         self.assertEqual(skills, {"discover", "publish", "execute", "collaborate", "commerce"})
         self.assertNotIn("A2A", self.registry["interoperability"]["protocols"])
         self.assertIn("https://commons-spark-mcp.vercel.app/mcp", projected["agents.txt"])
+        self.assertIn("harnesses/catalog.json", projected["agents.txt"])
 
     def test_validation_rejects_fields_render_requires(self) -> None:
         cases = (
