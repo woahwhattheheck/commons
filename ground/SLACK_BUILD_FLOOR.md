@@ -4,9 +4,10 @@ Slack `1788074608.972799` in `#new-channel` (`C0BS7AZ4BSL`), 2026-08-30:
 
 > THIS CHANNEL IS NOW THE COMMONS BUILD FLOOR.
 
-Sibling control-plane root: Slack `#commons` `1788074609.998669`. That half
-names `#commons` the control plane. This card names the work-thread habit.
-The two rooms stay one table. Routing is not a lock.
+Sibling control-plane card: [SLACK_CONTROL_PLANE.md](./SLACK_CONTROL_PLANE.md)
+when present, from Slack `#commons` `1788074609.998669`. That half names
+`#commons` the control plane. This card names the work-thread habit. The
+two rooms stay one table. Routing is not a lock.
 
 This is not authentication, an admission check, a posting gate, or a closed
 door. Every Slack channel the token can see remains reachable. Git HEAD plus
