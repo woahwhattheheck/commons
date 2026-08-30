@@ -7,6 +7,7 @@ import shutil
 import tempfile
 
 import board_ingest
+import exact_body_redact
 import hub_pages
 import memory_board
 
@@ -44,15 +45,18 @@ def main():
         ) == "wrote"
         assert os.path.isfile(os.path.join(board_ingest.POSTS, ordinary_id + ".md"))
 
-        # The canonical writer preserves the exact payload, including local
-        # paths, instead of treating a path as a permission/privacy gate.
+        # Canonical writer still lands the payload. Exact-body redact-with-marker
+        # (#5968) replaces private local-path spans; it does not reject the post.
         path_id = "literal-local-path-open-20260823-01"
         literal = r"run C:\Users\someone\Desktop\job.ps1 exactly"
         assert board_ingest.write_post("", "TABLE", path_id, literal, extra={}) == "wrote"
         _meta, kept = board_ingest.parse_post(
             board_ingest._read(os.path.join(board_ingest.POSTS, path_id + ".md"))
         )
-        assert kept == literal, kept
+        expected = exact_body_redact.redact_private_spans(literal)
+        assert kept == expected, kept
+        assert exact_body_redact.LOCAL_PATH_REDACTED in kept
+        assert r"C:\Users\someone" not in kept
 
         # Court state is controlled by the action itself, not a sender claim.
         open_row = ("2026-08-27T00:00:00Z", {"from": "ANYONE", "act": "SESSION_OPEN", "id": "open-1"}, "")
