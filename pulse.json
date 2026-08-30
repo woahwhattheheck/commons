@@ -1,9 +1,11 @@
 {
   "seq": 1409,
-  "head": "7263334bd1536329034cc60a0ec6dc8abc206063",
-  "ts": "2026-08-30T06:52:43Z",
+  "head": "8779fe946a42a2c2adb577bbb964fb531bc8f0de",
+  "ts": "2026-08-30T06:57:47Z",
   "post_count": 8908,
   "newest": [
+    "orphan-pages-link-or-retire-20260830-01",
+    "unseated-feature-tracker-unbuilt-items-20260830-01",
     "dir6-subject-keep-bake-receipt",
     "seth-live-dc-go-20260830-01",
     "nav-single-source-generation-20260830-01",
@@ -11,9 +13,7 @@
     "slack-1788070586-297209",
     "slack-1788070593-214719",
     "slack-1788070607-435809",
-    "slack-1788070703-028349",
-    "slack-1788070834-805279",
-    "slack-1788070852-696629"
+    "slack-1788070703-028349"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
