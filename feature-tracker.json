@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 11
+    "TESTED": 12
   },
   "features": [
     {
@@ -837,6 +837,65 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Seller websites now compose external evidence-bound prospects, collision suppression, email drafts, and staged booking CTAs. Seller-page contacts are context and cannot become outreach targets.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/website_people_email_book.py",
+        "test_website_people_email_book.py",
+        "revenue/website_people_email_book/loop.json",
+        "website-people-email-book.html",
+        "website-people-email-book.js",
+        "p/website-prospect-boundary-repair-20260830-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/website_people_email_book.py",
+        "test_website_people_email_book.py",
+        "revenue/website_people_email_book/loop.json",
+        "website-people-email-book.html",
+        "website-people-email-book.js",
+        "p/website-prospect-boundary-repair-20260830-01.md"
+      ],
+      "dependencies": [
+        "website-people-email-book-20260830-01"
+      ],
+      "evidence_ids": [],
+      "file": "website-prospect-boundary-repair-20260830-01.json",
+      "id": "website-prospect-boundary-repair-20260830-01",
+      "last_change": "2026-08-30",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Website external prospect boundary",
+      "next_gap": "Current catalog has zero send-eligible unoccupied prospects. Add first-party prospect evidence and verified routes through Smart Outreach; never invent mailboxes or claim sends/bookings.",
+      "owner_subsystem": "website-people-email-book",
+      "public_entrypoint": "website-people-email-book.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "website-people-email-book.html",
+        "revenue/website_people_email_book/README.md",
+        "p/website-prospect-boundary-repair-20260830-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_website_people_email_book.py",
+        "test_smart_outreach.py",
+        "host/website_people_email_book.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "High-productivity build loop. GPT scouts; Grok Build/Heavy ships. Main is the ledger.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -970,7 +1029,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 17,
+  "n_features": 18,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
