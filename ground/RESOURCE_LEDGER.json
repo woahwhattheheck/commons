@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-30T10:01:00Z",
-    "base_main_sha": "140244ce8170f32156bb751ff8fe74bd02289933",
+    "observed_at": "2026-08-30T16:08:00Z",
+    "base_main_sha": "c54a791f63e044304dfe7845c5efbc502e5c36bb",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788083921.230169",
-  "source_id": "codex-opportunity-capability-registry-activation-20260830-01",
+  "slack_ts": "1788105886.420729",
+  "source_id": "codex-revenue-offer-stack-production-activation-20260830-01",
   "supersedes_source_ids": [
+    "codex-opportunity-capability-registry-activation-20260830-01",
     "codex-internet-archive-mirror-activation-20260830-01",
     "codex-muhlnickel-distro-sales-door-activation-20260829-01",
     "codex-github-actions-watchdog-production-activation-20260829-01",
@@ -51,7 +52,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — stable opportunity-capability registry discovered and producing; eligibility, submission, awards, and cash remain unclaimed",
+  "subject": "MASTER RESOURCE LEDGER — existing revenue offer stack is producing through a live bounded checkout and four public buyer-intent doors; buyer, authorization, capture, settlement, payout, and cash remain unclaimed",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -76,7 +77,8 @@
     "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
     "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
     "inventory/resources/records/codex-internet-archive-mirror-activation-20260830-01.json",
-    "inventory/resources/records/codex-opportunity-capability-registry-activation-20260830-01.json"
+    "inventory/resources/records/codex-opportunity-capability-registry-activation-20260830-01.json",
+    "inventory/resources/records/codex-revenue-offer-stack-production-activation-20260830-01.json"
   ],
   "priority_queue": [
     {
@@ -1007,23 +1009,23 @@
       "name": "revenue-offer-stack",
       "kind": "COMMERCIAL_ASSET",
       "capacity": "LIVE",
-      "stage": "EXERCISED",
+      "stage": "PRODUCING",
       "condition": "CONSTRAINED",
       "holder": "Commons / Bryce",
-      "authority": "PUBLIC_OFFER; CUSTOMER_PAYMENT_REQUIRES_BRYCE",
-      "consumer": "Qualified production-agent buyers",
-      "value": "Public same-day survival proof offer at $2,500 with canary evidence",
-      "next_action": "On positive reply, bind acceptance and have Bryce create customer-specific invoice.",
-      "source": "agent-rescue.html; revenue/production_survival/offer.json",
-      "evidence_ts": "2026-08-26T14:23:34Z",
-      "auth_surface": "public offer and proof audit",
-      "exact_safe_probe": "offer and local canary receipt matched",
-      "rate_plan_boundary": "no acceptance, invoice, payment, or cash yet",
-      "assigned_backlog": "wait for positive reply; then acceptance and invoice",
-      "last_receipt": "production-survival audit 2026-08-26",
-      "last_used_at": "2026-08-26T14:09:00Z",
-      "stale_after": "P1D",
-      "priority": 75
+      "authority": "PUBLIC_READ_AND_CHECKOUT; BUYER_SUBMITS; OWNER_ONLY_SCOPE_ACCEPTANCE_CAPTURE_REFUND_AND_FINANCIAL_ACTION",
+      "consumer": "Qualified production-agent buyers arriving through four public buyer-intent doors",
+      "value": "Live one-time $2,500 manual-capture survival-proof checkout, four public buyer-intent doors, and 14 evidence-backed public-pain prospect records",
+      "next_action": "Wait for a real buyer or route one nonduplicate qualified contact through an already-permitted channel; Bryce retains scope acceptance, capture, refund, and every financial action.",
+      "source": "PR #5754; agent-rescue.html; three buyer-intent pages; revenue/production_survival/qualified_prospects_20260830.json",
+      "evidence_ts": "2026-08-30T16:08:00Z",
+      "auth_surface": "public no-login pages plus provider-hosted Stripe checkout; private processor data stays outside Commons",
+      "exact_safe_probe": "Current main retains the active live manual-capture checkout contract (0/1 completed), four public pages with the exact $2,500 CTA, 14 qualified public-pain records including five HIGH, and the six-file checkout regression/receipt set.",
+      "rate_plan_boundary": "A live checkout, page, prospect record, click, or checkout open is not a buyer, scope acceptance, authorization, capture, settlement, payout, bank availability, revenue, or cash. Cash remains USD 0.",
+      "assigned_backlog": "one real buyer event or one nonduplicate permitted contact; no resend and no owner-only financial act by agents",
+      "last_receipt": "codex-revenue-offer-stack-production-activation-20260830-01",
+      "last_used_at": "2026-08-30T16:08:00Z",
+      "stale_after": "PT6H",
+      "priority": 90
     },
     {
       "name": "expert-network-road",
