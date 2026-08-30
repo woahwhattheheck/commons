@@ -134,8 +134,8 @@ window.COMMONS_CARRIER = "github-board";
   function loadCommonsToolCatalog() {
     if (!commonsToolCatalogPromise) {
       commonsToolCatalogPromise = timedFetch(
-        assetUrl("tools.json") + "?v=" + Date.now(),
-        { method: "GET", credentials: "omit", cache: "no-store" },
+        assetUrl("tools.json"),
+        { method: "GET", credentials: "omit", cache: "no-cache" },
         5000
       ).then(function (response) {
         if (!response.ok) throw new Error("tools.json HTTP " + response.status);
@@ -563,10 +563,10 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function getPost(id) {
-    return timedFetch(assetUrl("p/" + encodeURIComponent(id) + ".html") + "?v=" + Date.now(), {
+    return timedFetch(assetUrl("p/" + encodeURIComponent(id) + ".html"), {
       method: "GET",
       credentials: "omit",
-      cache: "no-store"
+      cache: "no-cache"
     }, 2000).then(function (r) {
       if (!r.ok) throw new Error("not on board yet");
       return r.text();
@@ -741,8 +741,8 @@ window.COMMONS_CARRIER = "github-board";
   }
 
   function readMemoryIndex() {
-    return timedFetch(assetUrl("memory/index.json") + "?v=" + Date.now(), {
-      method: "GET", credentials: "omit", cache: "no-store"
+    return timedFetch(assetUrl("memory/index.json"), {
+      method: "GET", credentials: "omit", cache: "no-cache"
     }, 5000).then(function (r) {
       if (!r.ok) throw new Error("memory index HTTP " + r.status);
       return r.json();
@@ -756,8 +756,8 @@ window.COMMONS_CARRIER = "github-board";
     if (!expectedActor || path !== expectedPath) {
       return Promise.reject(new Error("invalid memory path in durable index"));
     }
-    return timedFetch(assetUrl(path) + "?v=" + Date.now(), {
-      method: "GET", credentials: "omit", cache: "no-store"
+    return timedFetch(assetUrl(path), {
+      method: "GET", credentials: "omit", cache: "no-cache"
     }, 5000).then(function (r) {
       if (!r.ok) throw new Error("memory board HTTP " + r.status);
       return r.json();
@@ -1214,7 +1214,7 @@ window.COMMONS_CARRIER = "github-board";
       if (document.body) document.body.insertBefore(host, document.body.firstChild);
     }
     var court = assetUrl("court.html");
-    fetch(assetUrl("session.json") + "?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+    fetch(assetUrl("session.json"), { cache: "no-cache", credentials: "omit" })
       .then(function (r) { return r.ok ? r.json() : { open: false }; })
       .then(function (s) {
         host.className = s && s.open ? "session open" : "session closed";

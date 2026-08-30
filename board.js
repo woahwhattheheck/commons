@@ -881,8 +881,8 @@ window.COMMONS_BOARD = (function () {
       });
     }
     var rel = String(path || "").replace(/^\.\//, "");
-    return fetch(href(rel) + "?v=" + Date.now(), {
-      cache: "no-store",
+    return fetch(href(rel), {
+      cache: "no-cache",
       credentials: "omit"
     });
   }

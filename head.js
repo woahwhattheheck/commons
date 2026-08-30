@@ -38,8 +38,21 @@ window.COMMONS_HEAD = (function () {
 
   function pagesUrl(path, bust) {
     var u = base() + cleanPath(path);
-    if (bust) u += (u.indexOf("?") >= 0 ? "&" : "?") + "v=" + Date.now();
+    // Commit-stable bust only. Date.now() made every visit a unique URL, so
+    // HTTP cache could never warm. A string token (content hash / asset stamp)
+    // stays cacheable across visits and changes when the bytes change.
+    if (bust && bust !== true) {
+      u += (u.indexOf("?") >= 0 ? "&" : "?") + "v=" + encodeURIComponent(String(bust));
+    }
     return u;
+  }
+
+  function fetchCacheMode(url) {
+    var u = String(url || "");
+    if (u.indexOf("ntfy.sh/") >= 0 || u.indexOf("ntfy.") >= 0) return "no-store";
+    // Store + revalidate: second visit can 304; a new commit is not treated as
+    // already-seen HEAD.
+    return "no-cache";
   }
 
   function getCached(key, maxAge) {
@@ -60,7 +73,7 @@ window.COMMONS_HEAD = (function () {
   function fetchOk(url, ms) {
     var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
     var t = setTimeout(function () { if (ctrl) ctrl.abort(); }, ms || 15000);
-    var opts = { cache: "no-store", credentials: "omit" };
+    var opts = { cache: fetchCacheMode(url), credentials: "omit" };
     if (ctrl) opts.signal = ctrl.signal;
     return fetch(url, opts).then(function (r) {
       clearTimeout(t);
@@ -137,7 +150,7 @@ window.COMMONS_HEAD = (function () {
     opts = opts || {};
     path = safePath(path);
     if (!path) return Promise.reject(new Error("empty or unsafe path"));
-    var rel = pagesUrl(path, opts.bust !== false);
+    var rel = pagesUrl(path, opts.bust);
     return fetchOk(rel, opts.ms || 15000).then(function (r) {
       if (r && r.ok) return { response: r, via: "pages", sha: "" };
       return rawFallback(path, r && r.status);
@@ -294,7 +307,7 @@ window.COMMONS_HEAD = (function () {
   }
 
   function pagesFresh() {
-    return fetchOk(pagesUrl("fresh.md", true), 15000).then(function (r) {
+    return fetchOk(pagesUrl("fresh.md"), 15000).then(function (r) {
       return r && r.ok ? r.text() : "";
     }).then(function (fallback) {
       return parseFreshMd(fallback);
@@ -550,6 +563,7 @@ window.COMMONS_HEAD = (function () {
     freshPosts: freshPosts,
     utcIso: utcIso,
     paintChip: paintChip,
-    pathFromSearch: pathFromSearch
+    pathFromSearch: pathFromSearch,
+    fetchCacheMode: fetchCacheMode
   };
 })();

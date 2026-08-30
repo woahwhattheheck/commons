@@ -90,7 +90,7 @@ def _page(mod, title, body, extra_head="", body_lead=""):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow">
-<meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <title>%s</title>
 %s
 %s
@@ -375,10 +375,10 @@ BOARDS_ACTIVITY_JS = """<script>
   function save(acc){ try{ localStorage.setItem(KEY,JSON.stringify(acc)); }catch(e){} }
   function build(){
     sum.textContent="reading posts.json (3.7 MB, once) .";
-    fetch("./posts.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+    fetch("./posts.json",{cache:"no-cache"}).then(function(r){return r.json();})
       .then(function(P){
         var acc=tally(P,{__max:"",__ids:{}});
-        return fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+        return fetch("./recent.json",{cache:"no-cache"}).then(function(r){return r.json();})
           .then(function(d){
             var R=(d&&d.posts)||d||[];
             tally(R,acc); save(acc);
@@ -389,7 +389,7 @@ BOARDS_ACTIVITY_JS = """<script>
       .catch(function(e){ sum.textContent="could not read posts.json: "+e.message; });
   }
   function topup(acc){
-    fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+    fetch("./recent.json",{cache:"no-cache"}).then(function(r){return r.json();})
       .then(function(d){
         var P=(d&&d.posts)||d||[];
         tally(P,acc); prune(acc,P); save(acc);
@@ -1920,7 +1920,7 @@ def rebuild_delta(mod, rows):
       list("since your last post", rec.since) +
       list("your last 12", rec.mine);
   }
-  fetch("./delta.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+  fetch("./delta.json", { cache: "no-cache", credentials: "omit" })
     .then(function (r) { return r.json(); })
     .then(function (j) { data = j; paint(); })
     .catch(function () {
