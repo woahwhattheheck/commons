@@ -117,16 +117,23 @@ class Journal:
                             (event.id, destination, remote_id, time.time()))
             self.db.commit()
 
-    def delivery_for_canonical(self, canonical_id: str, destination: str) -> str:
+    def delivery_event_for_canonical(
+        self, canonical_id: str, destination: str
+    ) -> tuple[str, Event | None]:
         rows = self.db.execute("""
-          SELECT e.payload,d.remote_id FROM events e JOIN deliveries d ON d.event_id=e.id
+          SELECT e.id,e.source,e.kind,e.native_id,e.payload,e.created,d.remote_id
+          FROM events e JOIN deliveries d ON d.event_id=e.id
           WHERE d.destination=? AND d.remote_id<>'' ORDER BY d.delivered DESC
         """, (destination,)).fetchall()
-        for raw, remote_id in rows:
+        for event_id_, source, kind, native_id, raw, created, remote_id in rows:
             payload = json.loads(raw)
             if str(payload.get("canonical_id") or "") == canonical_id:
-                return str(remote_id)
-        return ""
+                event = Event(event_id_, source, kind, native_id, payload, created)
+                return str(remote_id), event
+        return "", None
+
+    def delivery_for_canonical(self, canonical_id: str, destination: str) -> str:
+        return self.delivery_event_for_canonical(canonical_id, destination)[0]
 
     def cursor(self, surface: str, default: str = "") -> str:
         row = self.db.execute("SELECT value FROM cursors WHERE surface=?", (surface,)).fetchone()
@@ -229,8 +236,11 @@ def deliver_discord() -> None:
             continue
         body: dict[str, Any] = {"content": render(event)}
         target = str(event.payload.get("target") or "")
-        parent = JOURNAL.delivery_for_canonical(target, "discord") if target else ""
-        if parent:
+        parent, parent_event = (
+            JOURNAL.delivery_event_for_canonical(target, "discord")
+            if target else ("", None)
+        )
+        if parent and parent_event is not None and route(parent_event) == channel:
             body["message_reference"] = {"message_id": parent}
         out = request_json(f"https://discord.com/api/v10/channels/{channel}/messages",
                            token=f"Bot {token}", method="POST", body=body)
