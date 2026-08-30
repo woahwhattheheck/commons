@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 4,
+ "n_open_prs": 3,
  "open_prs": [
   {
    "number": 5810,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/5810",
    "base_freshness": {
     "base_sha": "a86fef60894386fd8c1cbebf50cdaaa7a61e956d",
-    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
+    "main_sha": "774b98a742c323452413d94cdc756f6de18aea95",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/5747",
    "base_freshness": {
     "base_sha": "6a2b572e838ebfd69c67626d715c4dd9d70ff305",
-    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
+    "main_sha": "774b98a742c323452413d94cdc756f6de18aea95",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,23 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/5828",
    "base_freshness": {
     "base_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
-    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 5831,
-   "author": "woahwhattheheck",
-   "title": "Attribute main-range findings to frozen evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/5831",
-   "base_freshness": {
-    "base_sha": "663550b6ca466a1801094a59d2be850ced46ea75",
-    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
+    "main_sha": "774b98a742c323452413d94cdc756f6de18aea95",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
