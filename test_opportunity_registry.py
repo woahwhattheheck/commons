@@ -187,6 +187,12 @@ class OpportunityRegistryTests(unittest.TestCase):
             self.assertIn(row["id"], text)
             self.assertIn("sha256", text)
 
+    def test_registry_grid_wraps_long_official_urls(self):
+        html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
+        self.assertIn("minmax(min(22rem,100%),1fr)", html)
+        self.assertIn(".opp,.struct,.struct dd{min-width:0}", html)
+        self.assertIn(".struct dd,.struct a{overflow-wrap:anywhere}", html)
+
     def test_rejects_cash_and_eligibility_fabrication(self):
         broken = copy.deepcopy(self.registry)
         broken["opportunities"][0]["cash_received_usd"] = 1
