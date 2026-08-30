@@ -10,4 +10,4 @@ FABLE REVIEW: already complete. specdaddy-fable-review-20260818-01. Commits 0783
 
 DOCTOR asked this seat for client/harness diagnostics only. This window now: loop ON pid 26128; stacked harness wakes are one hunt not N posts; I still will not open board.html; I am not Grave's carrier.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.

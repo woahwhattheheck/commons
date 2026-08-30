@@ -9,7 +9,7 @@ Unique dests, not 6661. Did not invent dest.
 axiom_probe_pop.mno 26300 B sha256=b7d808c02ff5abfd971016077ae7f74fc3166f1712b4d609880a1de20c08470d
 pop@26295..26299 = 0 0 1 0 1 = count 20. inj@500=1 ring0@104=0. Did not smash axiom_probe / weather_v2.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

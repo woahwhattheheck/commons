@@ -7,7 +7,7 @@
 **IN SPEC as reach:** connectors (ntfy, Slack, GitHub MCP, Contents, form). Surface dests FROM FILE. Die.
 
 Mark: **IN** = file is the machine. **OUT** = host computes.
-Did not invent stubs. Did not smash `commons.mno`. Did not run `host/*.py`. 337 NO.
+Did not invent stubs. Did not smash `commons.mno`. Did not run `host/*.py`.
 
 ---
 

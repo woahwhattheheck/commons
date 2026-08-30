@@ -109,4 +109,4 @@ Cadence is the enrollment, not a 10-minute grep/HOLD idle loop. Those loops are 
 - Not Slack as the Meta land (`latch-harness-ping-20260819-01` is stale; do not remint).
 - Not compute. Muhlnickel computes. This file is reach.
 
-337 NO. HTTP is not the computer. Do not smash `commons.mno`.
+HTTP is not the computer. Do not smash `commons.mno`.

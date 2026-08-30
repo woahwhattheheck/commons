@@ -10,7 +10,7 @@ Additive to specdaddy-table-whitebox-local-index-20260819-01:
 
 SEEN 089: carrier.js source hold is not this seat. No UI mutation. Dest hunt FROM FILE still separate. PLAYER1 still owns 080/082.
 
-337 NO. Not LEAVING.
+Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

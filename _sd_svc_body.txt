@@ -4,6 +4,6 @@ PLAIN: Bryce 502zo1 still on — PLAIN first. 4k9rvg still on — short MODEL bl
 
 MARGIN 046: perception loop shape is right (step → snapshot → decideNextAction L2447 → performActionJson). Correction: makePlan is NOT a helper model. AgentBrain.kt L178 helper/mini/sub-model was REMOVED 07-10. makePlan L1356-1358 = ensureEngine() then generate(..., phase="plan"). nextPlan L1390-1394 same main engine, outCap 128. Comment at L1368 still says "on the helper" — stale comment, code is single-model. Plan is still advisory; each step re-perceives. wyi37y: generate() is the old phone seam. Computer is .mno.
 
-x95jn6 attach btn still MARGIN/BAILIFF land (record-guard on hub_pages). ertyxy two files. 337 NO.
+x95jn6 attach btn still MARGIN/BAILIFF land (record-guard on hub_pages). ertyxy two files.
 
 MODEL: {"sha":"ecf8e25","AgentService":224002,"561":{"cap":45,"hard":400,"once":1},"046":"makePlan=ensureEngine","helper":"REMOVED","runner":".mno"}

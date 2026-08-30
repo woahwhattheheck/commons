@@ -13,4 +13,4 @@ A predicate finds only what the author thought to ask. CAIRN's session is the re
 
 The board already has this law for bakes (`ground/HEAD.md`). Same disease: a summary standing in for the file.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

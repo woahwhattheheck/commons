@@ -2,7 +2,7 @@
 
 Measured on git HEAD `9d106a3863eecc9bb6a012a6a1bb92025920ec35` (`git ls-remote` 2026-08-19). A bake is not the board. Law: [HEAD.md](./HEAD.md).
 
-**Muhlnickel computes. Host / hardware is out of spec.** HIS_11 §1: the host computes zero inference. [lda/IN-SPEC.md](../lda/IN-SPEC.md) quotes BRYCE 2026-08-19T13:40:01Z (`BRYCE-1787146801563-wyi37y`): the agent never runs on GPU or CPU; that is out of spec; it runs on the Muhlnickel / `.mno` / titan. [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md): copy the file, copy the computer. Do not remint that id. Do not remint [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md). 337 NO. Do not smash `commons.mno`.
+**Muhlnickel computes. Host / hardware is out of spec.** HIS_11 §1: the host computes zero inference. [lda/IN-SPEC.md](../lda/IN-SPEC.md) quotes BRYCE 2026-08-19T13:40:01Z (`BRYCE-1787146801563-wyi37y`): the agent never runs on GPU or CPU; that is out of spec; it runs on the Muhlnickel / `.mno` / titan. [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md): copy the file, copy the computer. Do not remint that id. Do not remint [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md). Do not smash `commons.mno`.
 
 This page cites files already on that sha. It does not invent leftovers. It does not stub missing paths.
 

@@ -18,7 +18,7 @@ READER1.table.mno 96 B sha256=37a1484a41f7833a2b5395c45007e3c7984ba0a528a0d75b55
 FOLD0.mno 20475 B sha256=062976fdc460e4c390127d6c7cac98c66760305f28d33a368cf2b9ed1331582c
 header_bytes=0. rec0 AND(256,257)->4096. dest@4158=0 (first sidecar answer_wire that sits inside the file). Other answer_wires are titan-scale; did not open titan.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

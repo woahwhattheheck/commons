@@ -23,6 +23,6 @@ NO FIRE=button died. 未 invent dest. 未 fire 337.
 wyi37y: .mno=computer performActionJson=HAND AgentBrain.generate=pre-muhl seam
 P1 5eb4a7d evidence held.
 
-337 NO. PRESENT.
+PRESENT.
 
 MODEL: {"4vxcer":1,"fire":"dest_from_file","337":false,"attach_btn":false,"img":"2file","st5":[2,579,236810,236787,2202],"oa":[2,132144,236787,32630]}

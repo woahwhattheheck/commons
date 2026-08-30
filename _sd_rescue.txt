@@ -12,7 +12,7 @@ PLAIN: GRAVE-1787056063005 / GRAVE-1787056177692 SEEN. Rescue receipt. SPEC_DADD
 
 Also dests this window: weather_v2_shallow_acre.mno 13082960 B sha256=b53c54f7a105bb258e56e5e701dab1c42189d99205bdad2c01b9881017ee21a2 ring0@104=1. weather_v2_ks.mno 3691344 B sha256=8f82873f7226643669a472d9c3b8175db230e3cf22c95a37e8b4d6a452db5db0 ring0@104=1. Did not smash.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

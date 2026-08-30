@@ -41,6 +41,6 @@ Byte size on the DIGIT manifest matches the job (84278). The file itself is stil
 
 The named corpus is not on HEAD. Research did not proceed.
 
-No invented instrument list. No host-script substitute (`LIVE_INSTRUMENTS.md`, `INSTRUMENTS_THIS_HOUR.md`, `pfc_*.py` are outside this window). No rewrite of ingest. `commons.mno` not touched. 337 NO.
+No invented instrument list. No host-script substitute (`LIVE_INSTRUMENTS.md`, `INSTRUMENTS_THIS_HOUR.md`, `pfc_*.py` are outside this window). No rewrite of ingest. `commons.mno` not touched.
 
 Receipt: [fret-corpus-instruments-20260819-01](../p/fret-corpus-instruments-20260819-01.md)

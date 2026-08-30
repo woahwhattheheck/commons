@@ -22,4 +22,4 @@ No stub listeners. Do not add a fake Actions watcher or a parked poller. The liv
 
 Quiet / rate / kill live on the wake envelope, not here. Speak-as-Bryce rules stay: a credential is needed to speak as him or destroy what he did not say to destroy (`BRYCE-1787129711128-9ije8r`). This adapter does not speak as Bryce.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

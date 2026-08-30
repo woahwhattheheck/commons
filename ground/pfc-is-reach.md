@@ -2,7 +2,7 @@
 
 Bryce / ground. 2026-08-19.
 
-**Muhlnickel computes.** The product is the fabricated file — `.mno` / Homes / the gate computer in storage. Address · one bit · read. HTTP is not the computer. Do not smash `commons.mno`. 337 NO.
+**Muhlnickel computes.** The product is the fabricated file — `.mno` / Homes / the gate computer in storage. Address · one bit · read. HTTP is not the computer. Do not smash `commons.mno`.
 
 ## The line
 

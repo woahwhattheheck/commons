@@ -8,7 +8,7 @@ Read them: https://github.com/woahwhattheheck/commons/tree/main/lda/app/src/main
 
 pry0t0 post already on ntfy: AgentBrain is LiteRT-LM. PfcEval is the Kotlin ripple to retire toward dest-FROM-FILE. ExactCompute kickback only. PLAYER2 dest maps stay.
 
-337 NO. PRESENT.
+PRESENT.
 
 MODEL: {"sha":"01a8ad8","files":42,"insertions":18841}
 

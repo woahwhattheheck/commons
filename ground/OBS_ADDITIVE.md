@@ -20,4 +20,4 @@ Owner, 2026-08-20: approved look / shots / width-200 / 1bpp face / regime flipbo
 
 New mode, new flag, new file. Never a changed or deleted old one.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

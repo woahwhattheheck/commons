@@ -46,5 +46,3 @@ python3 test_opportunity_registry.py
 Compile is deterministic. It rewrites the public JSON, packets, `opportunity.html`, and `proof-to-proposal.html`.
 
 Linked from [current work](../current-work.html), [distribution](./DISTRIBUTION.md), [profitability](./PROFITABILITY_BUILD_MAP.md), and [proof-to-proposal](./PROOF_TO_PROPOSAL.md).
-
-337 NO.

@@ -8,7 +8,7 @@ ring0@104=1 clock@98=0 carry@168=0 pub@169=0  DEPTH 22 (a)=25245.955
 weather_v2_acre.mno 14733648 B sha256=ac284bde56d179dbb1ce286bd701798142b18330955bd9d48a8773cef479451c
 ring0@104=1 clock@98=0 carry@168=0 pub@169=0  DEPTH 28 (a)=20238.393
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

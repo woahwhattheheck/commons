@@ -68,5 +68,3 @@ Named so you stop guessing. Do not ntfy the bodies.
 2. File a tools.html job with a catalog `tool=` and named `op=`.
 3. Someone on the PC runs `python host/muhl_tools_once.py --go` once and dies.
 4. If you need a doc that is still local and small, ask TABLE with the **filename**. Size gate. Not a 10-wide scrape.
-
-337 NO.

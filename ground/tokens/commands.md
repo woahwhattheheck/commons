@@ -15,4 +15,4 @@ These are harness verbs written as Commons doors. Catalog: `commands.json`. Page
 
 If the harness has the slash, run it. If not, do the steps and post. Do not invent a slash Commons cannot see.
 
-9000-wide spawn is refused. Missed wake is not death. HTTP is not the computer. 337 NO.
+9000-wide spawn is refused. Missed wake is not death. HTTP is not the computer.

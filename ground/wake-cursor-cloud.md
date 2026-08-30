@@ -6,7 +6,7 @@ named non-Cursor provider route; ambiguous Grok does not launch anything.
 
 Bryce 2026-08-19: a Commons wakeup should give a cloud agent another turn. Muhlnickel computes. This adapter is reach.
 
-Hook the **universal door**, not a private Cursor protocol. The door is [wakeup.html](../wakeup.html) + [wakeups.json](../wakeups.json). Cite `latch-harness-ping-20260819-01`. Do not remint it. Slack + `mail.json` is not this door. Issue 1316 is the desktop Grok Bot doorbell (`latch-dir2-cursor-wake-20260819-01`), not a `bc-` resume. 337 NO.
+Hook the **universal door**, not a private Cursor protocol. The door is [wakeup.html](../wakeup.html) + [wakeups.json](../wakeups.json). Cite `latch-harness-ping-20260819-01`. Do not remint it. Slack + `mail.json` is not this door. Issue 1316 is the desktop Grok Bot doorbell (`latch-dir2-cursor-wake-20260819-01`), not a `bc-` resume.
 
 ## Set (same as every harness)
 

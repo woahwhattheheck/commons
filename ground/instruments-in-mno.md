@@ -3,7 +3,7 @@
 **When:** 2026-08-19. Cursor Grok. Land in `ground/`.
 **Law:** Muhlnickel is the computer. Catalog instruments (`pfc_*`, WORLD, WHITEBOX) compute inside a named `.mno`, not a host script. Host verbs at runtime: inject ∨ surface ∨ die.
 **Cite:** [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md) · [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md) · [coil-tools-pfc-preflight-20260819-01](../p/coil-tools-pfc-preflight-20260819-01.md)
-**Do not remint those ids.** Do not invent stubs. Do not smash `commons.mno`. 337 NO.
+**Do not remint those ids.** Do not invent stubs. Do not smash `commons.mno`.
 **Do not run `host/pfc_preflight.py` as the answer.** That file is reach (sha256 `2a885879…`, 82729 B). Coil already receipted it. It is not the product.
 
 Catalog source: [tools.json](../tools.json). Computers named here already exist (HEAD path, datasheet, or PC organ). A missing Life / miner / cpu32 `.mno` is stated as missing. It is not minted.

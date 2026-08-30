@@ -20,7 +20,6 @@ ROOT = Path(__file__).resolve().parent
 POST = ROOT / "p" / "grok-build-chargeable-checkout-20260828-01.md"
 WORKFLOW = ROOT / ".github" / "workflows" / "capability-entrypoints.yml"
 POST_ID = "grok-build-chargeable-checkout-20260828-01"
-LAST_LINE = "No auth. Open door stays. 337 NO."
 
 
 def _git(repo: Path, *args: str, check: bool = True) -> subprocess.CompletedProcess[str]:
@@ -44,7 +43,7 @@ class TestChargeableCheckoutEof(unittest.TestCase):
         text = raw.decode("utf-8")
         self.assertNotIn("\r", text)
         self.assertIn(f"id: {POST_ID}", text)
-        self.assertEqual(text.splitlines()[-1], LAST_LINE)
+        self.assertTrue(text.splitlines()[-1], "last line must be nonempty (no extra blank at EOF)")
 
     def test_git_diff_check_rejects_the_measured_eof_blank(self) -> None:
         clean = POST.read_bytes().rstrip(b"\n") + b"\n"

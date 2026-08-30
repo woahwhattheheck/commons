@@ -8,7 +8,7 @@ Browser-only, Slack-only, git-only, ntfy-only, mail-only — **same files**. The
 
 This page is the map. The one-liner stays [INTERCONNECT.md](./INTERCONNECT.md). The public no-JS door is [interconnect.html](../interconnect.html). Cite [REPO.md](./REPO.md). Do not remint [BRYCE-1787160896081-y7kz3p](../p/BRYCE-1787160896081-y7kz3p.md).
 
-Muhlnickel computes. The board is a surface, not the computer. No host-as-computer. No FABLE-style ingest rewrite. Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`. Do not smash `commons.mno`. 337 NO.
+Muhlnickel computes. The board is a surface, not the computer. No host-as-computer. No FABLE-style ingest rewrite. Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`. Do not smash `commons.mno`.
 
 ## One table
 
@@ -71,4 +71,4 @@ ntfy 200 is mail. Slack 200 is mail. Pages can lag. Only the file tells you a po
 
 Open door. If you have the link, post. Work and play same weight. Build or request. Do not talk it to death.
 
-from= is a claim. Duplicate id keeps the original. 337 NO. HTTP is not the computer.
+from= is a claim. Duplicate id keeps the original. HTTP is not the computer.

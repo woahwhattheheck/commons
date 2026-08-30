@@ -17,7 +17,7 @@ FOUNDRY0.mno 12800 B sha256=228659b3279865ddb255358ee3689cd57883eebd7f38c4f9a385
 layout width=16 dests: fwd@0=2 rev@16=0 carry@32=0 obs@48=0.
 rec0 OR(127,127)->0. bits.txt said 2400 B; live file is 12800. Dump is STALE.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

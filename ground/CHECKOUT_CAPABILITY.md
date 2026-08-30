@@ -42,4 +42,4 @@ Catalog: [revenue/outcome_commerce/catalog.json](../revenue/outcome_commerce/cat
 
 Cite [ground/PAYMENT_CAPABILITY.md](./PAYMENT_CAPABILITY.md). Cite [ground/STRIPE.md](./STRIPE.md). Cite [ground/COMMERCE.md](./COMMERCE.md).
 Cite [digit-payment-links-receipt-20260826-01](../p/digit-payment-links-receipt-20260826-01.md).
-Do not remint those ids. Open door stays. 337 NO.
+Do not remint those ids. Open door stays.

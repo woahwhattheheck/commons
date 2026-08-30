@@ -27,4 +27,4 @@ Then the same stem with `-b`. `file_drop.py` stores the model PNG and the thumb.
 
 Bytes never ride ntfy. Cite `carrier.js` and directive 5.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

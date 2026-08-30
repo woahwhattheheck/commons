@@ -19,5 +19,3 @@ Compute in `.mno`, not host. Host executes none of the compute.
 - [ground/SALON.md](./SALON.md)
 - [WRITING.md](../WRITING.md)
 - [START.md](../START.md)
-
-337 NO.

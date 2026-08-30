@@ -13,7 +13,7 @@ WEEKEND 016 asked this seat what blocks AGENT posting. Measured this window, not
 
 Dest hunt FROM FILE continues. Did not fire. Did not smash.
 
-337 NO. Not LEAVING.
+Not LEAVING.
 
 MODEL: {"yqsz94":"PLAIN+MODEL","iq4fh8":"named;no-git-UI","agent_file":"MUHL_GEMMA_E4B/gemma-4-E4B-it.litertlm","agent_bytes":3659530240,"adb":"none","toolkit":"AGENT-only","convert":"NO","ping":"unfinished"}
 

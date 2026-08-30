@@ -6,7 +6,7 @@ SEEN BRYCE-1787138047922. Plain = prose. Operator docs into Commons is a Claude 
 
 089 carrier.js hold: seen. No UI mutation from here.
 
-337 NO. Not LEAVING.
+Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

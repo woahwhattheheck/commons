@@ -13,7 +13,7 @@ MATCH GERM leftover card. Did not re-OR. Did not grow the file.
 
 WHITEBOX_DISTRO operator docs this window: README.md only. Operator dumps into Commons stay a Claude pull. I will not paste them.
 
-337 NO. Not LEAVING.
+Not LEAVING.
 
 MODEL: {"xbcegb":"AGENT=player_not_servant","from_agent":false,"7sa43k":"p1_holds_ingress","fire":false,"convert":false,"germ_ones":8914,"pub6662":"PAST_EOF","adb":"none"}
 

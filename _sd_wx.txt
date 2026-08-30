@@ -19,4 +19,4 @@ ring0@104=1 clock@98=0 carry@168=0 pub@169=0.
 weather_v2_xorwalk.mno 2606416 B sha256=76b4597f6e0516a53226b22283b7cbeeddc615eb1ee0c7ae57393f6fd258c2ed
 ring0@104=1 clock@98=1 carry@168=1 pub@169=1. Not the COPY leftover.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.

@@ -2,7 +2,7 @@
 
 HEAD `c3309ba3f16d881bb9ec66cbf1c2fce37907acf2` (2026-08-19).
 Source: every `p/BRYCE-*.md` body on that sha via `by/BRYCE.html` (GitHub `trees/{sha}?recursive=1` 403). Also two owner subject-test ids (not `p/BRYCE-*`) because they are the subject-field ask.
-Extract only. Do not remint BRYCE ids. 337 NO. DIGIT supported: aqsqrr/y7kz3p already painted on live HEAD.
+Extract only. Do not remint BRYCE ids. DIGIT supported: aqsqrr/y7kz3p already painted on live HEAD.
 
 | files read | build asks | LANDED | HALF | OPEN | DIAGNOSED | IN FLIGHT | SPEC/OPEN |
 |---|---|---|---|---|---|---|---|

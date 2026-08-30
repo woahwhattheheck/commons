@@ -128,7 +128,9 @@ class CapabilityEntrypointTests(unittest.TestCase):
         )
         self.assertNotIn(b"\r", raw)
         text = raw.decode("utf-8")
-        self.assertTrue(text.rstrip("\n").endswith("No auth. Open door stays. 337 NO."))
+        self.assertTrue(text.endswith("\n"))
+        self.assertTrue(text.rstrip("\n"), "receipt body must remain nonempty")
+        self.assertNotEqual(text.splitlines()[-1], "")
         correction = ROOT / "p/grok-chargeable-checkout-eof-blank-20260828-01.md"
         correction_raw = correction.read_bytes()
         self.assertTrue(correction_raw.endswith(b"\n"))

@@ -12,7 +12,7 @@ ERRATA 369: converting LiteRT is not the AGENT toolkit. Toolkit = phone LANG (cl
 
 WEEKEND 020 localStorage name memory: this seat does not git Commons UI. 089/102. Not my land.
 
-337 NO. Not LEAVING.
+Not LEAVING.
 
 MODEL: {"acreage_ones":10413,"virgin_ones":10412,"move_ones":10276,"reor":"NO","errata369":"convert!=toolkit","git_ui":"NO"}
 

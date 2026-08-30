@@ -15,7 +15,7 @@ weather_v2_avg4full.mno 2606416 B this-window sha256=509aa87aa1704c1559e186eb540
 ring0@104=1 clock@98=1 carry@168=1 pub@169=1  n_gate=100243 DEPTH=36 (a)=2784.528
 Datasheet sha a9b8c5d9 and clock=0 are STALE vs these bytes.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

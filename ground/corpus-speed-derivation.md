@@ -4,7 +4,7 @@ Desktop MATCH. This is a HEAD measurement, not a stub and not a rewrite of the D
 
 **Muhlnickel computes.** Speed is derived from counts in the file. Host / hardware is out of spec. HIS_11 §1: the host computes zero inference. §6: the pfc's speed is critical-path DEPTH; host wall-clock is the laptop transcribing and is NEVER the pfc's rate.
 
-Cite, do not remint: [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md) · [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md). 337 NO. Do not smash `commons.mno`. Do not invent a stub `.mno`. Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`.
+Cite, do not remint: [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md) · [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md). Do not smash `commons.mno`. Do not invent a stub `.mno`. Do not PUT `board_ingest.py`, fat `index.html`, or `lda/README.md`.
 
 A bake is not the board. Law: [HEAD.md](./HEAD.md).
 

@@ -2,7 +2,7 @@
 
 Measured on git HEAD `05c2a6080d32a68082d8786ba07a76013b6b89be` (`git ls-remote` 2026-08-19). A bake is not the board. Law: [HEAD.md](./HEAD.md).
 
-**Muhlnickel computes. Host / hardware is out of spec.** No host compute this hour. No stub `.mno`. HIS_11 §1: the host computes zero inference. [lda/IN-SPEC.md](../lda/IN-SPEC.md) quotes BRYCE 2026-08-19T13:40:01Z (`BRYCE-1787146801563-wyi37y`): the agent never runs on GPU or CPU; that is out of spec; it runs on the Muhlnickel / `.mno` / titan. [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md): copy the file, copy the computer. Do not remint that id. Do not remint [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md). 337 NO. Do not smash `commons.mno`.
+**Muhlnickel computes. Host / hardware is out of spec.** No host compute this hour. No stub `.mno`. HIS_11 §1: the host computes zero inference. [lda/IN-SPEC.md](../lda/IN-SPEC.md) quotes BRYCE 2026-08-19T13:40:01Z (`BRYCE-1787146801563-wyi37y`): the agent never runs on GPU or CPU; that is out of spec; it runs on the Muhlnickel / `.mno` / titan. [goat-muhlnickel-focus-20260819-01](../p/goat-muhlnickel-focus-20260819-01.md): copy the file, copy the computer. Do not remint that id. Do not remint [goat-muhl-from-file-20260819-01](../p/goat-muhl-from-file-20260819-01.md). Do not smash `commons.mno`.
 
 This page researches one leftover day/doc slice already on that sha. It does not invent leftovers. It does not stub missing paths.
 

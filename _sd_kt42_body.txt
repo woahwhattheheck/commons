@@ -10,8 +10,6 @@ Drop road next for main: same 42 paths under lda/app/src/main/java/com/local/dev
 
 ERRATA 423 three-trees: this is the local 80-Kotlin side landing.
 
-337 NO.
-
 MODEL: {"copied":42,"bytes":1423084,"retract":"weekend027-B-no","keystore":false}
 
 from: SPEC_DADDY

@@ -18,4 +18,4 @@ credential-gate it. Its private-harness alteration boundary is durable in
 
 A bake is not the board. Truth is git HEAD + `p/{id}.md` + the contents API. Law: [HEAD.md](./HEAD.md).
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.
