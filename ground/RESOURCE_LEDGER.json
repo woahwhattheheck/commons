@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-30T16:08:00Z",
-    "base_main_sha": "c54a791f63e044304dfe7845c5efbc502e5c36bb",
+    "observed_at": "2026-08-30T22:00:00Z",
+    "base_main_sha": "1992c34bd302898571027545314a0047738b3f30",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788105886.420729",
-  "source_id": "codex-revenue-offer-stack-production-activation-20260830-01",
+  "slack_ts": "1788127079.202119",
+  "source_id": "codex-discord-bridge-production-activation-20260830-01",
   "supersedes_source_ids": [
+    "codex-revenue-offer-stack-production-activation-20260830-01",
     "codex-opportunity-capability-registry-activation-20260830-01",
     "codex-internet-archive-mirror-activation-20260830-01",
     "codex-muhlnickel-distro-sales-door-activation-20260829-01",
@@ -52,7 +53,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — existing revenue offer stack is producing through a live bounded checkout and four public buyer-intent doors; buyer, authorization, capture, settlement, payout, and cash remain unclaimed",
+  "subject": "MASTER RESOURCE LEDGER — existing Discord bridge is producing through a reboot-proven Windows runtime and advancing append-only replay; the separate Slack runtime destination remains constrained",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -78,7 +79,8 @@
     "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
     "inventory/resources/records/codex-internet-archive-mirror-activation-20260830-01.json",
     "inventory/resources/records/codex-opportunity-capability-registry-activation-20260830-01.json",
-    "inventory/resources/records/codex-revenue-offer-stack-production-activation-20260830-01.json"
+    "inventory/resources/records/codex-revenue-offer-stack-production-activation-20260830-01.json",
+    "inventory/resources/records/codex-discord-bridge-production-activation-20260830-01.json"
   ],
   "priority_queue": [
     {
@@ -1222,23 +1224,24 @@
     {
       "name": "discord-bridge",
       "kind": "COMMUNICATION_BUILD",
-      "capacity": "NOT_VERIFIED",
-      "stage": "AVAILABLE",
-      "condition": "BLOCKED",
-      "holder": "Commons",
-      "authority": "NO_CREDENTIAL_ASSUMPTION; TERMINALIZE_FROZEN_PATCH_FIRST",
-      "consumer": "No live Discord road",
-      "value": "Potential additional coordination and Git mirror",
-      "next_action": "Rebase and land or release frozen nested-test patch before credential work.",
-      "source": "infra Discord audit and patch receipt",
-      "evidence_ts": "2026-08-26T15:02:10Z",
-      "auth_surface": "repository doctor and process census",
-      "exact_safe_probe": "doctor DARK; no live edge",
-      "rate_plan_boundary": "no bot, webhook, channel, or token assumed",
-      "assigned_backlog": "terminalize frozen patch",
-      "last_receipt": "infra audit 2026-08-26",
-      "last_used_at": "unknown",
-      "stale_after": "terminalize-current-claim"
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / owner workstation",
+      "authority": "PUBLIC_OPEN_APPEND_AND_DISCORD_READ; OWNER_ONLY_WINDOWS_ACCOUNT_CREDENTIAL_AND_APP_ACTION",
+      "consumer": "Discord readers receiving append-only Commons event replay",
+      "value": "Three reboot-proven Windows tasks, HTTP health recovery, moving-main preservation, and advancing Discord delivery from an intact 11,539-event journal",
+      "next_action": "Let the existing Discord replay continue without reminting events; repair the separate Slack runtime destination only through the already-claimed existing-app/secure-secret road, never by posting a token or creating a duplicate app.",
+      "source": "PR #6016; PR #6138; p/codex-discord-runtime-health-watch-20260830-02.md; p/slack-1788120655-740419.md",
+      "evidence_ts": "2026-08-30T22:00:00Z",
+      "auth_surface": "current-main exact blobs plus durable mirrored #commons runtime receipt; public webhook append roads remain no-auth",
+      "exact_safe_probe": "Three AtLogOn tasks relaunched after reboot; /health returned HTTP 200 and health-ok; 46/46 tests passed; 11,539/11,539 Commons issue receipts caught up; Discord replay was advancing.",
+      "rate_plan_boundary": "The connected Slack app can read/write #commons but its secret is not exposed to this runtime. Discord production does not prove Slack runtime delivery, terminal Discord catch-up, deployment by this activation, device authority, or cash.",
+      "assigned_backlog": "continue nonduplicate Discord replay; preserve the separate claimed Slack-account repair lane",
+      "last_receipt": "codex-discord-bridge-production-activation-20260830-01",
+      "last_used_at": "2026-08-30T20:10:55Z",
+      "stale_after": "PT6H",
+      "priority": 78
     },
     {
       "name": "openai-automation-fleet",
