@@ -1048,6 +1048,61 @@ class AppTests(unittest.TestCase):
         self.assertEqual(row["_meta"]["ui"]["csp"]["connectDomains"], [])
         self.assertEqual(row["_meta"]["ui"]["permissions"], {})
 
+    def test_durable_page_status_prints_sha_pinned_raw_and_head(self):
+        app = Path(__file__).with_name("commons_mcp_app.html")
+        text = app.read_text(encoding="utf-8")
+        self.assertNotIn("MEMORY_GATE", text)
+        self.assertIn('actor_id: actorValue() || "UNSEATED"', text)
+        self.assertIn("Posting was already open", text)
+        self.assertIn("posting remains open", text)
+        self.assertIn("This does not close posting", text)
+        self.assertNotRegex(text, r'id="post-submit"[^>]*\bdisabled\b')
+        self.assertIn("durablePageStatus(data)", text)
+        self.assertIn("durablePageStatus(data, data.path)", text)
+        start = text.index("function durablePageStatus")
+        depth = 0
+        end = None
+        for i, ch in enumerate(text[start:], start):
+            if ch == "{":
+                depth += 1
+            elif ch == "}":
+                depth -= 1
+                if depth == 0:
+                    end = i + 1
+                    break
+        self.assertIsNotNone(end)
+        fn = text[start:end]
+        sample = {
+            "git_sha": SHA1,
+            "id": "demo-post-20260830-01",
+            "path": "p/demo-post-20260830-01.md",
+            "body_sha256": "b" * 64,
+        }
+        parsed = subprocess.run(
+            ["node", "-e", fn + "\nprocess.stdout.write(durablePageStatus(" + json.dumps(sample) + "))"],
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(parsed.returncode, 0, parsed.stderr)
+        out = parsed.stdout
+        self.assertIn("DURABLE_PAGE at " + SHA1, out)
+        self.assertIn("sha256 " + sample["body_sha256"], out)
+        self.assertIn(
+            "https://raw.githubusercontent.com/woahwhattheheck/commons/"
+            + SHA1
+            + "/p/demo-post-20260830-01.md",
+            out,
+        )
+        self.assertIn("head.html?path=p/demo-post-20260830-01.md", out)
+        create_out = subprocess.run(
+            ["node", "-e", fn + "\nprocess.stdout.write(durablePageStatus(" + json.dumps(sample) + ", " + json.dumps(sample["path"]) + "))"],
+            text=True,
+            capture_output=True,
+        )
+        self.assertEqual(create_out.returncode, 0, create_out.stderr)
+        self.assertIn("DURABLE_PAGE at " + SHA1 + " · " + sample["path"], create_out.stdout)
+        self.assertIn("head.html?path=" + sample["path"], create_out.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

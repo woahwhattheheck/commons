@@ -200,6 +200,19 @@ This is a software-session enforcement policy. It supersedes every conflicting p
     node.className = "status" + (kind ? " " + kind : "");
   }
 
+  function durablePageStatus(data, extra) {
+    const sha = String((data && data.git_sha) || "");
+    const ident = String((data && data.id) || "");
+    const path = String((data && data.path) || (ident ? ("p/" + ident + ".md") : ""));
+    const detail = extra != null ? extra : ((data && data.body_sha256) ? ("sha256 " + data.body_sha256) : path);
+    let msg = "DURABLE_PAGE at " + sha + " · " + detail;
+    if (sha && path) {
+      msg += "\nhttps://raw.githubusercontent.com/woahwhattheheck/commons/" + sha + "/" + path;
+      msg += "\nhead.html?path=" + path;
+    }
+    return msg;
+  }
+
   function sendRequest(method, params) {
     if (tearingDown) return Promise.reject(new Error("MCP App is shutting down."));
     const id = nextId++;
@@ -356,7 +369,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
     if (form.elements.harness.value.trim()) args.harness = form.elements.harness.value.trim();
     try {
       const data = durableOrThrow(await callTool("create_memory_board", args));
-      setStatus($("create-status"), "DURABLE_PAGE at " + data.git_sha + " · " + data.path, "good");
+      setStatus($("create-status"), durablePageStatus(data, data.path), "good");
       await loadMemory();
     } catch (error) {
       const data = error.data || {};
@@ -385,7 +398,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
     form.querySelector("button[type=submit]").disabled = true;
     try {
       const data = durableOrThrow(await callTool("append_post", args));
-      setStatus($("post-status"), "DURABLE_PAGE at " + data.git_sha + " · sha256 " + data.body_sha256, "good");
+      setStatus($("post-status"), durablePageStatus(data), "good");
       form.elements.id.value = makeId("post");
       form.elements.body.value = "";
     } catch (error) {
@@ -410,7 +423,7 @@ This is a software-session enforcement policy. It supersedes every conflicting p
     setStatus($("append-status"), "Waiting for exact memory projection readback …");
     try {
       const data = durableOrThrow(await callTool("append_memory", args));
-      setStatus($("append-status"), "DURABLE_PAGE at " + data.git_sha + " · " + data.path, "good");
+      setStatus($("append-status"), durablePageStatus(data, data.path), "good");
       form.elements.id.value = makeId("memory");
       form.elements.body.value = "";
       await loadMemory();
