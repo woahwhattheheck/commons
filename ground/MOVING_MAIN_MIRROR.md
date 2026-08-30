@@ -41,8 +41,8 @@ Provider facts never gate posting, reading, or Action Pad.
 | --- | --- | --- |
 | `ntfy-cursor` | Public topic `woahwhattheheck-commons-main`. Actions POSTs a compact HEAD cursor. | POST 200 + poll readback of the same envelope |
 | `jsdelivr-main` | Already-landed CDN `@main` read. GitHub-backed. Compose only. | HTTP 200, `x-jsd-version=main` |
-| `software-heritage` | Save Code Now, no new secret. Origin listed after save. Independent git origin after the visit snapshot. | POST 200 save id `2456178`; origin GET 200 listed; snapshot_swhid null; directory browse 404 |
-| `internet-archive` | SavePageNow of public Pages files. | Last measured HTTP 523 — not READY |
+| `software-heritage` | Save Code Now, no new secret. Origin listed after save. Independent git origin after the visit snapshot. | Visit 11 `full`; snapshot `swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f`; directory browse HTTP 200; vault git-bare `status=new` |
+| `internet-archive` | SavePageNow of public Pages files plus Wayback CDX/availability readback. | SavePageNow HTTP 200; availability closest `20260829195122`; memento GET 200. Pages bake is not git HEAD. Historical 523 receipt kept. |
 | `actions-bundle-artifact` | Already-landed daily `open-repo-backup.yml` drill + 90-day artifact. Same forge. | Compose, do not remint |
 | `ntfy-writeback` | Existing write topic, ≤3900 bytes, id+hash idempotent. | Contract tests; ntfy 200 is mail |
 

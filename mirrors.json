@@ -1,12 +1,14 @@
 {
-  "ts": "2026-08-28T15:30:00Z",
+  "ts": "2026-08-30T01:17:00Z",
   "law": "git HEAD is canonical. A bake is not the board. Mirrors copy and can post back. Not indexed.",
   "cite": [
     "BRYCE-1787050390335",
     "kite-bryce-commons-mirror-mesh-open-20260818-151",
     "digit-mirror-read-20260826-01",
     "spur-dir9-ntfy-read-20260820-01",
-    "grok-dir9-moving-main-mirror-20260828-01"
+    "grok-dir9-moving-main-mirror-20260828-01",
+    "grok-dir9-swh-origin-listed-20260828-01",
+    "unseated-dir9-snapshot-ia-ready-20260830-01"
   ],
   "canonical": {
     "git": "https://github.com/woahwhattheheck/commons",
@@ -106,16 +108,16 @@
     {
       "id": "software-heritage",
       "kind": "independent-origin-git-save",
-      "href": "https://archive.softwareheritage.org/api/1/origin/save/2456178/",
-      "receipt": "./ci/moving_main/receipts/swh-save-2456178.json",
-      "notes": "Zero-new-credential Save Code Now from GitHub Actions. Save id 2456178 accepted and running. Origin GET 200 listed 2026-08-28 (ori swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb). Visit 1 created, snapshot_swhid still null, directory browse 404. Independent origin listed, not origin-readable restore, not canonical durability."
+      "href": "https://archive.softwareheritage.org/browse/origin/directory/?origin_url=https://github.com/woahwhattheheck/commons",
+      "receipt": "./ci/moving_main/receipts/swh-snapshot-ready-20260830.json",
+      "notes": "Zero-new-credential Save Code Now. Visit 11 status full; snapshot swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f; save 2457507 succeeded; directory browse HTTP 200. Vault git-bare status new — not a restore fetch. Independent origin is snapshot-readable, not canonical durability. Historical origin-listed receipt stays at ./ci/moving_main/receipts/swh-origin-listed-20260828.json."
     },
     {
       "id": "internet-archive",
       "kind": "independent-origin-web-save",
-      "href": "https://web.archive.org/save/https://woahwhattheheck.github.io/commons/mirrors.json",
-      "receipt": "./ci/moving_main/receipts/ia-save-523.json",
-      "notes": "Repo-controlled SavePageNow adapter. Last measured HTTP 523 UNKNOWN and empty availability. Status is MISS, not READY."
+      "href": "https://web.archive.org/web/20260829195122/https://woahwhattheheck.github.io/commons/mirrors.json",
+      "receipt": "./ci/moving_main/receipts/ia-save-200-20260830.json",
+      "notes": "SavePageNow HTTP 200 (was 523 on 2026-08-28). Wayback availability closest 20260829195122 plus CDX hits and memento GET 200 for mirrors.json. Pages bake is not git HEAD. Not canonical durability. Historical 523 receipt stays at ./ci/moving_main/receipts/ia-save-523.json."
     }
   ],
   "external_provider_action": [
@@ -132,5 +134,5 @@
       "action": "Provision a public-read object prefix (R2, S3, or equivalent) that can store the sibling .bundle and .manifest.json from host/repo_backup.py. Do not put access keys in this repository. After a public HTTPS origin exists, set adapter object-store-bundle.origin to that prefix."
     }
   ],
-  "still_open": "Automatic moving-main courier, ntfy cursor, and Software Heritage Save Code Now are wired. Software Heritage origin GET 200 listed; snapshot_swhid still null so directory browse 404. jsDelivr @main stays a GitHub-backed CDN. Internet Archive SavePageNow last measured HTTP 523. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. None of these is canonical durability. This file is the catalog, not the mesh."
+  "still_open": "Automatic moving-main courier, ntfy cursor, Software Heritage snapshot, and Internet Archive Pages memento are wired. Software Heritage vault git-bare status new so restore fetch is not READY. jsDelivr @main stays a GitHub-backed CDN. GitLab/Codeberg/object-store full-bundle origins remain EXTERNAL_PROVIDER_ACTION. Pages bake is not git HEAD. None of these is canonical durability. This file is the catalog, not the mesh."
 }
