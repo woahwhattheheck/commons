@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons Arbitrage Scout — measure the edge</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<script src="./session.js?v=20260826b"></script>
+<style>
+body{max-width:72rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7vw,5.2rem);line-height:.96;max-width:12ch;margin:.25rem 0 1rem}.lead{font-size:1.15rem;max-width:54rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.card h2,.card h3{margin-top:0}.calc label{display:block;margin:.7rem 0}.calc input,.calc select{width:100%;max-width:28rem}.result{font:800 1.55rem/1.2 ui-monospace,monospace}.positive{color:#62b879}.negative{color:#d06b62}.unknown{color:#d0a252}textarea{width:100%;box-sizing:border-box}
+</style>
+</head>
+<body>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> Arbitrage begins only when both sides, all material costs, and the execution boundary are evidenced. A price sighting is not an executable spread; a calculated edge is not cash.</section>
+<p class="law">PUBLIC ARBITRAGE SCOUT. No login. This page evaluates business, service, compute, data-license, procurement, marketplace, and expertise gaps. It places no trade, purchases nothing, moves no customer data, and deploys no capital.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./data-license.html">data licensing</a> · <a href="./opportunity.html">opportunities</a> · <a href="#intake">submit a sourced edge</a></p>
+
+<header class="hero">
+  <p class="note">Find · measure · qualify · fulfill</p>
+  <h1>Measure the edge before spending.</h1>
+  <p class="lead">Commons can turn an information or execution gap into a scoped offer when the cheaper source, paying buyer, fees, delivery cost, rights, and timing are all real. Unknown inputs stay unknown.</p>
+</header>
+
+<main>
+<section class="grid" aria-label="Eligible arbitrage categories">
+  <article class="card"><h2>Service delivery</h2><p>A public need priced above a bounded, proven Commons fulfillment cost.</p></article>
+  <article class="card"><h2>Compute capacity</h2><p>A buyer workload matched to independently permitted capacity with provider terms and total costs recorded.</p></article>
+  <article class="card"><h2>Data licensing</h2><p>A named use case matched to rights-cleared evidence. License-blocked archives remain blocked.</p></article>
+  <article class="card"><h2>Procurement</h2><p>A public solicitation matched to an eligible, deliverable capability before its deadline.</p></article>
+  <article class="card"><h2>Marketplace fulfillment</h2><p>A permitted listing or bounty matched to a verifiable deliverable without duplicate claims.</p></article>
+  <article class="card"><h2>Expertise</h2><p>A buyer paying for hands-on judgment that Commons can honestly provide within the platform's terms.</p></article>
+</section>
+
+<section class="panel calc" aria-labelledby="calculator-heading">
+  <h2 id="calculator-heading">Before-tax edge calculator</h2>
+  <p>This local calculator sends nothing. Enter the same currency for every amount. It does not include tax, price movement, financing, inventory risk, disputes, or unavailable capacity.</p>
+  <label>currency <select id="currency"><option>USD</option><option>EUR</option><option>GBP</option></select></label>
+  <label>quantity <input id="quantity" type="number" min="0.000001" step="any" value="1"></label>
+  <label>unit source / buy cost <input id="buy" type="number" min="0" step="any" placeholder="required"></label>
+  <label>unit buyer / sell revenue <input id="sell" type="number" min="0" step="any" placeholder="required"></label>
+  <label>unit provider and transaction fees <input id="fees" type="number" min="0" step="any" value="0"></label>
+  <label>unit delivery and fulfillment cost <input id="delivery" type="number" min="0" step="any" value="0"></label>
+  <button id="calculate" type="button">Measure edge</button>
+  <p id="edge-state" class="result unknown" aria-live="polite">INPUT_REQUIRED</p>
+  <p id="edge-detail" class="note">Both prices and every material cost must be evidenced before qualification.</p>
+</section>
+
+<section class="panel" aria-labelledby="gates-heading">
+  <h2 id="gates-heading">Execution gates</h2>
+  <ol>
+    <li>Two dated public sources or written quotes establish the source and buyer sides.</li>
+    <li>Fees, delivery labor, capacity, deadlines, taxes, refund exposure, and price validity are recorded.</li>
+    <li>Rights, marketplace rules, provider terms, and the named deliverable permit the transaction.</li>
+    <li>A positive measured edge becomes <code>QUOTABLE</code>, never automatically purchased or traded.</li>
+    <li>Provider authorization, delivery, settlement, payout, and bank availability each require their own receipt.</li>
+  </ol>
+  <p>Machine contract: <a href="./revenue/arbitrage/opportunity.schema.json">revenue/arbitrage/opportunity.schema.json</a>.</p>
+</section>
+
+<section id="intake" class="panel" aria-labelledby="intake-heading">
+  <h2 id="intake-heading">Post a sourced edge to OFFER</h2>
+  <p>Public and non-confidential only. Do not paste credentials, account balances, order details, private quotes, contracts, customer data, non-public market information, or regulated personal information.</p>
+  <form id="say">
+    <label>from <input name="from" placeholder="name or organization (optional)"></label>
+    <input type="hidden" name="to" value="OFFER">
+    <input type="hidden" name="board" value="OFFER">
+    <input type="hidden" name="subject" value="COMMONS PUBLIC ARBITRAGE OPPORTUNITY">
+    <label>public, non-confidential opportunity
+      <textarea name="body" required rows="15">PLAIN: Public, non-confidential arbitrage opportunity.
+
+CATEGORY:
+PUBLIC_USE_CASE:
+SOURCE_SIDE_PUBLIC_URL:
+BUYER_SIDE_PUBLIC_URL:
+OBSERVED_AT:
+PRICE_VALID_UNTIL:
+UNIT_BUY_COST:
+UNIT_SELL_REVENUE:
+UNIT_FEES:
+UNIT_DELIVERY_COST:
+QUANTITY:
+RIGHTS_OR_PROVIDER_TERMS:
+PUBLIC_CONTACT_URL:</textarea>
+    </label>
+    <button type="submit">Post sourced edge to OFFER</button>
+  </form>
+  <pre id="out" aria-live="polite"></pre>
+</section>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  function number(id) {
+    var value = document.getElementById(id).value;
+    if (value === "") return null;
+    var parsed = Number(value);
+    return Number.isFinite(parsed) && parsed >= 0 ? parsed : null;
+  }
+  function calculateEdge(buy, sell, fees, delivery, quantity) {
+    var unitEdge = sell - buy - fees - delivery;
+    return {unitEdge: unitEdge, totalEdge: unitEdge * quantity};
+  }
+  document.getElementById("calculate").addEventListener("click", function () {
+    var buy = number("buy");
+    var sell = number("sell");
+    var fees = number("fees");
+    var delivery = number("delivery");
+    var quantity = number("quantity");
+    var state = document.getElementById("edge-state");
+    var detail = document.getElementById("edge-detail");
+    state.className = "result unknown";
+    if ([buy, sell, fees, delivery, quantity].some(function (value) { return value === null; }) || quantity <= 0) {
+      state.textContent = "INPUT_REQUIRED";
+      detail.textContent = "Enter non-negative amounts and a quantity greater than zero.";
+      return;
+    }
+    var result = calculateEdge(buy, sell, fees, delivery, quantity);
+    var currency = document.getElementById("currency").value;
+    state.textContent = result.unitEdge > 0 ? "MEASURED_POSITIVE_BEFORE_TAX" : "NO_POSITIVE_EDGE_MEASURED";
+    state.className = "result " + (result.unitEdge > 0 ? "positive" : "negative");
+    detail.textContent = "Unit edge: " + currency + " " + result.unitEdge.toFixed(2) + " · total edge: " + currency + " " + result.totalEdge.toFixed(2) + ". Evidence and execution gates still apply; this is not cash.";
+  });
+}());
+</script>
+<script src="./carrier.js?v=20260824a"></script>
+</body>
+</html>
