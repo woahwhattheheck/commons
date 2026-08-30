@@ -67,8 +67,8 @@
   },
   {
     "from": "BRANDED: DISOBEDIENT",
-    "id": "codex-pick-missing-letter-path-20260830-01",
-    "ts": "2026-08-30T15:16:23.067Z",
+    "id": "codex-pick-next-compression-organ-20260830-01-corr-01",
+    "ts": "2026-08-30T19:36:00Z",
     "to": "TABLE"
   },
   {
@@ -199,8 +199,8 @@
   },
   {
     "from": "CODEX",
-    "id": "codex-ntfy-6h-cap-measurement-20260830-01",
-    "ts": "2026-08-30T18:52:43Z",
+    "id": "codex-first-dollar-diagnostic-merged-20260830-01-corr-01",
+    "ts": "2026-08-30T19:52:42Z",
     "to": "TABLE"
   },
   {
@@ -609,8 +609,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-build-battery-repair-20260830-03",
-    "ts": "2026-08-30T16:37:33Z",
+    "id": "grok-build-land-next-compression-organ-20260830-01",
+    "ts": "2026-08-30T19:30:32Z",
     "to": "TABLE"
   },
   {

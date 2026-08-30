@@ -350,39 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
- "open_prs": [
-  {
-   "number": 6114,
-   "author": "woahwhattheheck",
-   "title": "Pick ring-clock fold germ as next compression organ",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6114",
-   "base_freshness": {
-    "base_sha": "eb023c6e635ee066071e302b83763d30e9b08348",
-    "main_sha": "004ab105f257b50e0d2c925b0d12ebb193fb7b0b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6138,
-   "author": "woahwhattheheck",
-   "title": "Recover unhealthy Commons Discord bridge tasks",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6138",
-   "base_freshness": {
-    "base_sha": "1142e74d28fdc7ea3d2bb009e8d57873a49d97c3",
-    "main_sha": "004ab105f257b50e0d2c925b0d12ebb193fb7b0b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
