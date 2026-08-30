@@ -110,7 +110,7 @@ class CureFoldFirstTargetTests(unittest.TestCase):
         self.assertIn("header @184 yes/no — **PICKED: YES**", directives)
         self.assertIn("cure-fold first target — **PICKED:** `SAME_JOB_LIVE_STRATUM_TARGET`", directives)
         self.assertIn("feature-film organ — **INTEGRATED:**", directives)
-        self.assertIn("two walls remain", directives)
+        self.assertIn("one wall remains", directives)
         self.assertIn("### 12. @184 host write-ban yes or no", unfinished)
         self.assertIn("### 13. Cure fold first target", unfinished)
         self.assertIn("Not thrown.", unfinished)
