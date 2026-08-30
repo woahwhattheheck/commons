@@ -1,0 +1,76 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-internet-archive-mirror-activation-20260830-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-30T03:59:00Z",
+  "selected_resource": "internet-archive-history-mirror",
+  "before": {
+    "ledger_state": "NOT_RECORDED",
+    "product_state": "LANDED_ON_MAIN",
+    "evidence": "PR #5472 had already landed a current HTTP 200/Wayback readback and PR #5476 corrected the current-versus-historical contract, but the independent archive mirror was absent from the canonical resource ledger."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "c96d08bf6ed9890782c9b7a48bf4ce4cb5c3f683",
+    "product_merge_sha": "ac40e5b2568c0a4f960246ba0aa83267b5e8f6ea",
+    "contract_merge_sha": "16a2fb26e21ff2aa6b708dc15ddd0a3c30b186f9"
+  },
+  "concrete_consumer": "Humans and agents needing a public non-GitHub historical readback of the Commons Pages mirror catalog",
+  "measurable_outcome": "The current-main receipt records SavePageNow HTTP 200, availability and CDX discovery, and a memento GET 200. A bounded historical copy is publicly addressable outside GitHub serving.",
+  "exact_blobs": {
+    "ci/moving_main/receipts/ia-save-200-20260830.json": "3ee97577f0e51349f3467b32330c66365f763322",
+    "ci/moving_main/receipts/ia-save-523.json": "14dad8cc4268c47d338740e92264f0bb3c3cdbd8",
+    "host/moving_main_mirror.py": "4fdcf29b429bf1cc7940d90f5d2522d6ca8a6656",
+    "mirrors.json": "98160c01a08d6209a07212f705700e9cfabe59d3",
+    "p/unseated-dir9-snapshot-ia-ready-20260830-01.md": "8a3b452b3be10b40eba735f840ae77885914ed7a",
+    "test_mirror_capsule.py": "84e93633c36ff8d0101897f1f88e50a326e9c2c8",
+    "test_moving_main_mirror.py": "70f0bde1bbf787a5905d273356127e2fd328b1b1"
+  },
+  "projection": {
+    "resources": 62,
+    "producing": 28
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 4,
+    "callable_tools": 405,
+    "codex_app_tools": 390,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "browser": "AVAILABLE_BUT_NOT_USED_FOR_ARCHIVE_CLAIM",
+    "disabled_automations_excluded": true
+  },
+  "verification": {
+    "current_main_readback": "Eight exact product, historical, test, and evidence blobs read from main c96d08bf6ed9890782c9b7a48bf4ce4cb5c3f683.",
+    "archive_receipt": "SavePageNow 200; availability closest 20260829195122; CDX HTTP 200 with 7 hits and latest 20260830011603; memento HTTP 200, 8,698 bytes.",
+    "historical_truth": "ci/moving_main/receipts/ia-save-523.json remains present; test_mirror_capsule.py requires the old receipt while rejecting 523 as current state.",
+    "product_contract": "mirrors.json marks internet-archive operational and explicitly says the Pages bake is not git HEAD or canonical durability.",
+    "test_evidence": "PR #5472 reported test_moving_main_mirror.py 15/15; PR #5476 reported mirror 24/24, moving-main 15/15, main-range 6/6, open-door, path-manifest, skills, compile, and diff checks passing. Exact test blobs remain on current main.",
+    "fresh_main_collision_audit": "Main remained c96d08bf6ed9890782c9b7a48bf4ce4cb5c3f683, open PR count was zero, and the three activation paths were absent or unchanged before branch creation.",
+    "secrets_and_open_door": "No credential material is recorded; public reads require no login; canonical Git boundary remains explicit.",
+    "stale_claim_policy": "No capacity claim was created. Evidence expires after P7D and a later run must re-read rather than reserve the mirror indefinitely."
+  },
+  "evidence": {
+    "product_pull_request": "https://github.com/woahwhattheheck/commons/pull/5472",
+    "product_merge": "https://github.com/woahwhattheheck/commons/commit/ac40e5b2568c0a4f960246ba0aa83267b5e8f6ea",
+    "contract_pull_request": "https://github.com/woahwhattheheck/commons/pull/5476",
+    "contract_merge": "https://github.com/woahwhattheheck/commons/commit/16a2fb26e21ff2aa6b708dc15ddd0a3c30b186f9",
+    "product_receipt": "https://github.com/woahwhattheheck/commons/blob/main/p/unseated-dir9-snapshot-ia-ready-20260830-01.md",
+    "archive_receipt": "https://github.com/woahwhattheheck/commons/blob/main/ci/moving_main/receipts/ia-save-200-20260830.json",
+    "public_memento": "https://web.archive.org/web/20260829195122/https://woahwhattheheck.github.io/commons/mirrors.json",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788062418023819"
+  },
+  "next_action": "Allow the existing courier to create later bounded snapshots; verify a new memento before refreshing last-use evidence, and do not duplicate the archive request solely to spend capacity.",
+  "rate_plan_boundary": "Archive reachability is not current-main truth, deployment, traffic, adoption, payment, settlement, payout, revenue, or cash.",
+  "non_claims": [
+    "No archive write or provider token spend by this activation",
+    "No canonical current-main durability through Internet Archive",
+    "No deployment, device actuation, payment, settlement, payout, revenue, or cash",
+    "No owner identity, KYC, bank, policy, call, or physical-device action",
+    "No Cursor use in this activation; prior landed provenance remains explicit",
+    "No Claude verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
