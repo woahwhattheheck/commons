@@ -32,6 +32,7 @@
     {"id": "slack", "name": "Slack #commons", "card": "carriers/slack.json"},
     {"id": "grokcom-slack", "name": "grok.com Slack connector", "card": "carriers/grokcom-slack.json"},
     {"id": "microsoft-teams", "name": "Microsoft Teams", "card": "carriers/microsoft-teams.json"},
+    {"id": "telegram", "name": "Telegram peer group", "card": "carriers/telegram.json"},
     {"id": "ntfy", "name": "ntfy", "card": "carriers/ntfy.json"},
     {"id": "git", "name": "git / Contents", "card": "carriers/git.json"}
   ],

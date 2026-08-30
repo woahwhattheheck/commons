@@ -1,0 +1,219 @@
+{
+  "schema": "commons-unbuilt-items-v1",
+  "problems": [],
+  "main_sha": "1d1b29374c131eacb900dca01b2725a138addb92",
+  "chat_ignored": false,
+  "items": [
+    {
+      "id": "claude-derived-unbuilt-item-post-20260830",
+      "title": "Claude-derived unbuilt-item post is not surfaced",
+      "kind": "NAMED_LEFTOVER",
+      "from": "CLAUDE",
+      "claimed_paths": [],
+      "present": [],
+      "missing": [],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": false,
+      "do_not_remint": true,
+      "status": "UNBUILT",
+      "notes": "Claude names unique unbuilt items with claimed_paths vs current main. This surface only measures. Do not mint Claude's id."
+    },
+    {
+      "id": "kimi-settled-facts-20260829-01",
+      "title": "kimi settled facts projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/kimi-settled-facts-20260829-01.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/kimi-settled-facts-20260829-01.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "kimi-session-memory-20260829-02",
+      "title": "kimi session memory projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/kimi-session-memory-20260829-02.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/kimi-session-memory-20260829-02.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "kimi-agent-retirement-20260829-02",
+      "title": "kimi agent retirement projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/kimi-agent-retirement-20260829-02.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/kimi-agent-retirement-20260829-02.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "bryce-land-subzero-walker-20260829-01",
+      "title": "Bryce land subzero walker projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/bryce-land-subzero-walker-20260829-01.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/bryce-land-subzero-walker-20260829-01.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    }
+  ],
+  "unbuilt": [
+    {
+      "id": "claude-derived-unbuilt-item-post-20260830",
+      "title": "Claude-derived unbuilt-item post is not surfaced",
+      "kind": "NAMED_LEFTOVER",
+      "from": "CLAUDE",
+      "claimed_paths": [],
+      "present": [],
+      "missing": [],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": false,
+      "do_not_remint": true,
+      "status": "UNBUILT",
+      "notes": "Claude names unique unbuilt items with claimed_paths vs current main. This surface only measures. Do not mint Claude's id."
+    }
+  ],
+  "open_aliases": [
+    {
+      "id": "kimi-settled-facts-20260829-01",
+      "title": "kimi settled facts projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/kimi-settled-facts-20260829-01.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/kimi-settled-facts-20260829-01.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "kimi-session-memory-20260829-02",
+      "title": "kimi session memory projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/kimi-session-memory-20260829-02.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/kimi-session-memory-20260829-02.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "kimi-agent-retirement-20260829-02",
+      "title": "kimi agent retirement projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/kimi-agent-retirement-20260829-02.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/kimi-agent-retirement-20260829-02.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    },
+    {
+      "id": "bryce-land-subzero-walker-20260829-01",
+      "title": "Bryce land subzero walker projector alias",
+      "kind": "OPEN_ALIAS",
+      "from": "",
+      "claimed_paths": [
+        "p/bryce-land-subzero-walker-20260829-01.md"
+      ],
+      "present": [],
+      "missing": [
+        "p/bryce-land-subzero-walker-20260829-01.md"
+      ],
+      "receipt_hits": [],
+      "chat_ignored": false,
+      "main_sha": "",
+      "stay_unclosed": true,
+      "do_not_remint": true,
+      "status": "OPEN_ALIAS",
+      "notes": "One of four projector aliases. Stay unclosed."
+    }
+  ],
+  "alias_ids": [
+    "kimi-settled-facts-20260829-01",
+    "kimi-session-memory-20260829-02",
+    "kimi-agent-retirement-20260829-02",
+    "bryce-land-subzero-walker-20260829-01"
+  ],
+  "named_leftover": "claude-derived-unbuilt-item-post-20260830",
+  "do_not": [
+    "remint landed p/",
+    "close four projector aliases",
+    "queue exhausted grok.com wake_jobs",
+    "name fire_action",
+    "spend the $5 tip",
+    "add seats or gates"
+  ]
+}
