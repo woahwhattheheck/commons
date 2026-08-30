@@ -277,4 +277,7 @@ if os.path.exists(outside_path):
     os.remove(outside_path)
 shutil.rmtree(absolute_dir, ignore_errors=True)
 print("\n%d passed, %d failed" % (ok, fail))
-sys.exit(1 if fail else 0)
+if __name__ == "__main__":
+    sys.exit(1 if fail else 0)
+if fail:
+    raise AssertionError("file_drop standalone cases failed during discovery")

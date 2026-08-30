@@ -88,9 +88,14 @@ def probe_git_sha(sha, cwd=None):
     if not sha:
         return None
     try:
+        env = dict(os.environ)
+        # A partial clone may otherwise ask its promisor remote for an unknown
+        # object.  This probe is local evidence and must finish deterministically.
+        env["GIT_NO_LAZY_FETCH"] = "1"
         proc = subprocess.run(
             ["git", "cat-file", "-t", sha],
             cwd=cwd or os.getcwd(),
+            env=env,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             timeout=10,

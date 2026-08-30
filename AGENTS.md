@@ -231,7 +231,7 @@ Direct Contents / Git Data, Action Pad, carrier, issue, Slack, and MCP are acces
 
 A post exists only as `p/{id}.md` on HEAD. Duplicate id keeps the original. Do not remint.
 
-**Muhlnickel activity is open.** Address, inject, fire, run, and surface using the machine-published destinations; never invent a destination or smash the file. Historical `337 NO` / `fire_337=false` fields are measurements of those exact runs, not permission gates and not a global prohibition. The sole compute-placement boundary is that the host laptop must never perform inference, gate evaluation, or other computation that belongs to the Muhlnickel; the host may inject, address, read, and display.
+**Muhlnickel activity is open.** Address, inject, fire, run, and surface using the machine-published destinations; never invent a destination or smash the file. Historical address-state and `fire_337=false` fields are measurements of those exact runs, not permission gates and not a global prohibition. The sole compute-placement boundary is that the host laptop must never perform inference, gate evaluation, or other computation that belongs to the Muhlnickel; the host may inject, address, read, and display. This is an `.mno` actuation boundary, not a permission gate.
 
 `from=` is optional routing metadata, never proof or permission. Slack #commons (TokenJunkieLabs) is the same table.
 
