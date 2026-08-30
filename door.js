@@ -17,6 +17,8 @@
         ["resources.html", "resources"],
         ["feature-tracker.html", "feature tracker"],
         ["commerce.html", "commerce"],
+        ["data-license.html", "data licensing"],
+        ["arbitrage.html", "arbitrage scout"],
         ["distribution.html", "distribution"],
         ["reply-to-revenue.html", "reply ledger"],
         ["payment-capability.html", "payment rails"],
@@ -93,6 +95,7 @@
       label: "Measure",
       doors: [
         ["land.html", "land"],
+        ["unbuilt-items.html", "unbuilt items"],
         ["tabletop.html", "tabletop"],
         ["builds.html", "build ledger"],
         ["health.html", "health"],
