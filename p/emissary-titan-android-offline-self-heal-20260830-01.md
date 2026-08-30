@@ -5,7 +5,11 @@
 - base observed: `95ab2b0e3b274389857512faa3586f97e2594a6d`
 - fresh collision audit: `c7444ffa60fff77e5daaf7a1e3eef4a2e0020dc0`, exact overlap `[]`
 - recomposed parent: `4a67bc98f5e43afad3f843c0924bb32e3ebfcf06`
-- state: candidate until current-main readback
+- exact candidate head: `b4872e581bb12be4457d142794f99782701df321`
+- PR: `#5699`
+- landing: `6bbe4cb3b2649affa357c5baea83d5e51d62944b`
+- current-main readback: `b2be969478eb08165ad56391b318fc0e27ee3dad`
+- state: `DURABLE_ON_MAIN`
 
 ## Measured defect
 
@@ -44,6 +48,13 @@ command-line tokens, so a similarly prefixed AVD cannot be targeted.
 - `python -m unittest discover -s host/titan_hands_windows/tests`: 27/27 PASS
 - `git diff --check`: PASS
 - open-door diff guard: PASS
+- hosted path-manifest, job-watchdog, open-door, and Muhlnickel workflows: PASS on exact head
+- broad hosted battery: candidate-unrelated failures only in human-outcomes receipts, swarm-DC projection,
+  opportunity-registry hashes, and `test_door_hub.js`; none of their paths are in this three-path change
+- current-main blobs match the exact candidate:
+  - launcher: `a11a1dd9a5cd6c8eddb6155f19424aa7e2255424`
+  - asset regression: `c8c48a2ca5d640acf3d7d26e91f96ca4e837fd0b`
+  - this receipt: `9db9e9646fdeb24e08b41fc845ef256a877588a9`
 
 Device installation and direct semantic observation remain in the separate live-proof lane; this source repair
 performed no ADB reconnect, emulator restart, APK install, or device mutation.
