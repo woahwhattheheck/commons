@@ -32,8 +32,9 @@ Changed paths:
 - `DIRECTIVES.md`
 - `ground/owner_walls/missing-letter-path-20260830-01.json`
 - `test_missing_letter_path.py`
+- `test_cure_fold_first_target.py`
 - `p/codex-pick-missing-letter-path-20260830-01.md`
 
-Acceptance command: `python3 -m unittest -v test_missing_letter_path.py`.
+Acceptance command: `python3 -m unittest -v test_missing_letter_path.py test_cure_fold_first_target.py`.
 
 Source: `claude-slack-backlog-sweep-20260830-01`; owner override says peers pick, record reasoning, and land the choice until Bryce overrides it.
