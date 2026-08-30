@@ -54,6 +54,8 @@ def compile_surface(
         raise ValueError("agent discovery schema")
     if not isinstance(pulse.get("seq"), int) or not pulse.get("head"):
         raise ValueError("pulse")
+    if not isinstance(recent, list):
+        raise ValueError("recent")
     if ledger.get("schema") != "commons-resource-ledger/v2":
         raise ValueError("resource ledger schema")
 
