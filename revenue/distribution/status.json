@@ -14,7 +14,7 @@
       ],
       "name":"Upwork Project Catalog",
       "submit_allowed":false,
-      "unfit_count":8
+      "unfit_count":10
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -28,7 +28,7 @@
       ],
       "name":"Upwork job feed",
       "submit_allowed":false,
-      "unfit_count":7
+      "unfit_count":9
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -42,7 +42,7 @@
       ],
       "name":"Contra Services",
       "submit_allowed":false,
-      "unfit_count":10
+      "unfit_count":12
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -56,12 +56,12 @@
       ],
       "name":"Fiverr Gig",
       "submit_allowed":false,
-      "unfit_count":10
+      "unfit_count":12
     },
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "family":"commons_surface",
-      "fit_count":15,
+      "fit_count":17,
       "honest_live":true,
       "id":"commons-pages",
       "listing_states":[
@@ -74,7 +74,7 @@
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "family":"partner",
-      "fit_count":15,
+      "fit_count":17,
       "honest_live":true,
       "id":"tokenjunkielabs-slack",
       "listing_states":[
@@ -87,7 +87,7 @@
     {
       "account_status":"CONTACT_RECORDED",
       "family":"partner",
-      "fit_count":15,
+      "fit_count":17,
       "honest_live":true,
       "id":"founder-email",
       "listing_states":[
@@ -109,7 +109,7 @@
       ],
       "name":"SAM.gov",
       "submit_allowed":false,
-      "unfit_count":11
+      "unfit_count":13
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -123,7 +123,7 @@
       ],
       "name":"GSA Schedule",
       "submit_allowed":false,
-      "unfit_count":11
+      "unfit_count":13
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -137,7 +137,7 @@
       ],
       "name":"Public RFP response pack",
       "submit_allowed":false,
-      "unfit_count":8
+      "unfit_count":10
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -150,7 +150,7 @@
       ],
       "name":"GitHub Marketplace",
       "submit_allowed":false,
-      "unfit_count":15
+      "unfit_count":17
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -163,7 +163,7 @@
       ],
       "name":"Public MCP registry",
       "submit_allowed":false,
-      "unfit_count":15
+      "unfit_count":17
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -176,7 +176,7 @@
       ],
       "name":"npm public registry",
       "submit_allowed":false,
-      "unfit_count":15
+      "unfit_count":17
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",
@@ -189,34 +189,35 @@
       ],
       "name":"Hugging Face Hub",
       "submit_allowed":false,
-      "unfit_count":15
+      "unfit_count":17
     },
     {
       "account_status":"LIVEMODE_CHARGES_PAYOUTS_ENABLED",
       "family":"recorded_rail",
-      "fit_count":7,
+      "fit_count":8,
       "honest_live":false,
       "id":"stripe-payment-links",
       "listing_states":[
+        "BLOCKED_CHARGES_DISABLED",
         "NOT_LISTED"
       ],
       "name":"Stripe Payment Links",
       "submit_allowed":false,
-      "unfit_count":8
+      "unfit_count":9
     }
   ],
   "conversion_rule":"Buyer interest from any channel is an OFFER-board public signal plus the listing's routes.human page. Do not open a second CRM. Existing pipeline map: revenue/production_survival/crm.md.",
   "counts":{
-    "blocked_pairs":40,
+    "blocked_pairs":41,
     "channels":15,
     "collected_cash_usd":"0.00",
-    "fit_pairs":92,
-    "live_commons_surfaces":45,
+    "fit_pairs":99,
+    "live_commons_surfaces":51,
     "live_marketplace_listings":0,
-    "offers":15,
-    "packages_ready":92,
-    "pairs":225,
-    "unfit_pairs":133,
+    "offers":17,
+    "packages_ready":99,
+    "pairs":255,
+    "unfit_pairs":156,
     "verified_customers":0,
     "verified_leads":0,
     "verified_positive_replies":0

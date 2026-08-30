@@ -82,7 +82,9 @@ OFFER_CLASS = {
     "sku-unlock-20260826": "micro_sku",
     "sku-monthly-tip-20260826": "micro_sku",
     "sku-boost-20260826": "micro_sku",
+    "sku-muhlnickel-generated-token-capacity": "micro_sku",
     "sku-whitebox-hour-20260826": "expertise_hour",
+    "sku-muhlnickel-attested-inference": "bounded_service",
     "sku-muhlnickel-titan-20260826": "high_ticket_product",
 }
 

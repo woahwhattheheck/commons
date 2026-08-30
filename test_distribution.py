@@ -55,15 +55,15 @@ class DistributionLayerTests(unittest.TestCase):
     def test_catalog_listings_all_appear(self):
         offer_ids = {p["offer_id"] for p in self.matrix["pairs"]}
         self.assertEqual(offer_ids, set(self.listings))
-        self.assertEqual(self.matrix["offer_count"], 15)
-        self.assertEqual(self.matrix["pair_count"], 15 * len(self.channels["channels"]))
+        self.assertEqual(self.matrix["offer_count"], 17)
+        self.assertEqual(self.matrix["pair_count"], 17 * len(self.channels["channels"]))
 
     def test_does_not_replace_canonical_commerce(self):
         for path in self.channels["does_not_replace"]:
             self.assertTrue((ROOT / path).exists(), path)
         catalog = json.loads((ROOT / "revenue/outcome_commerce/catalog.json").read_text(encoding="utf-8"))
         self.assertEqual(catalog["kind"], "OUTCOME_COMMERCE_CATALOG")
-        self.assertEqual(len(catalog["listings"]), 15)
+        self.assertEqual(len(catalog["listings"]), 17)
 
     def test_micro_skus_unfit_marketplaces(self):
         for oid in (
@@ -72,6 +72,7 @@ class DistributionLayerTests(unittest.TestCase):
             "sku-unlock-20260826",
             "sku-monthly-tip-20260826",
             "sku-boost-20260826",
+            "sku-muhlnickel-generated-token-capacity",
         ):
             for cid in (
                 "upwork-project-catalog",
@@ -201,13 +202,17 @@ class DistributionLayerTests(unittest.TestCase):
 
     def test_classify_offer_amounts(self):
         self.assertEqual(self.mod.classify_offer(self.listings["sku-tip-20260826"]), "micro_sku")
+        self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-generated-token-capacity"]), "micro_sku")
         self.assertEqual(self.mod.classify_offer(self.listings["same-day-agent-survival-proof"]), "bounded_service")
+        self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-attested-inference"]), "bounded_service")
         self.assertEqual(self.mod.classify_offer(self.listings["gguf-diagnostic-10d-12k"]), "high_ticket_service")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-whitebox-hour-20260826"]), "expertise_hour")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-titan-20260826"]), "high_ticket_product")
         self.assertEqual(self.mod.listing_amount(self.listings["same-day-agent-survival-proof"]), Decimal("2500.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["gguf-diagnostic-10d-12k"]), Decimal("12000.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["sku-whitebox-hour-20260826"]), Decimal("250.00"))
+        self.assertEqual(self.mod.listing_amount(self.listings["sku-muhlnickel-generated-token-capacity"]), Decimal("1.00"))
+        self.assertEqual(self.mod.listing_amount(self.listings["sku-muhlnickel-attested-inference"]), Decimal("500.00"))
 
     def test_developer_channels_unfit_current_catalog(self):
         for cid in ("github-marketplace", "mcp-public-registry", "npm-public-registry", "huggingface-hub"):
