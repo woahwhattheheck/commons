@@ -115,7 +115,13 @@ def main():
     assert rules(positive_assertions) == {"explicit-denial", "protected-set"}, rules(positive_assertions)
 
     # Durable/generated board data is not executable policy and stays out of this guard.
-    historical = diff("p/old-gate-record.md", ["The capability declaration is required."])
+    historical = "\n".join(
+        [
+            diff("p/old-gate-record.md", ["The capability declaration is required."]),
+            diff("board.html", ["The capability declaration is required before posting."]),
+            diff("recent.json", ['{"body": "const PROTECTED_PATHS = []; authentication required"}']),
+        ]
+    )
     assert guard.scan_diff(historical) == [], guard.scan_diff(historical)
 
     # Compact catalog exclusion lists may name retired mechanisms only when they
