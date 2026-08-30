@@ -1,9 +1,10 @@
 {
   "seq": 1409,
-  "head": "0abcf6069cacd4fd49f779483ed054fc256093c6",
-  "ts": "2026-08-30T06:39:41Z",
+  "head": "a0f7cf5a99a4fbf1a1a047337b949973bacc607d",
+  "ts": "2026-08-30T06:47:55Z",
   "post_count": 8908,
   "newest": [
+    "seth-live-dc-go-20260830-01",
     "nav-single-source-generation-20260830-01",
     "kimi-data-feed-corpus-20260830-01",
     "slack-1788070586-297209",
@@ -12,8 +13,7 @@
     "slack-1788070703-028349",
     "slack-1788070834-805279",
     "slack-1788070852-696629",
-    "slack-1788070948-302059",
-    "slack-1788070948-688339"
+    "slack-1788070948-302059"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
