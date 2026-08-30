@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1788052922-090719",
       "last_ts": "2026-08-30T01:22:02.090719Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
         {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
@@ -2404,6 +2410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -2636,12 +2648,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -2725,6 +2731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -2957,12 +2969,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -3046,6 +3052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -3278,12 +3290,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -3325,6 +3331,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -3557,12 +3569,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -3580,6 +3586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -3812,12 +3824,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -3901,6 +3907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -4133,12 +4145,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -4186,6 +4192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -4418,12 +4430,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -4507,6 +4513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -4739,12 +4751,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -4762,6 +4768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -4994,12 +5006,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -5017,6 +5023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -5249,12 +5261,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -5272,6 +5278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -5504,12 +5516,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -5545,6 +5551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -5777,12 +5789,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -5866,6 +5872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -6098,12 +6110,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -6187,6 +6193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -6419,12 +6431,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -6460,6 +6466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -6692,12 +6704,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -6721,6 +6727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -6953,12 +6965,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -6976,6 +6982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -7208,12 +7220,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -7231,6 +7237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -7463,12 +7475,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -7540,6 +7546,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -7772,12 +7784,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -7795,6 +7801,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -8027,12 +8039,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -8056,6 +8062,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -8288,12 +8300,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -8335,6 +8341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -8567,12 +8579,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -8590,6 +8596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -8822,12 +8834,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -8840,11 +8846,17 @@
       ]
     },
     "CODEX": {
-      "last_id": "codex-independent-mcp-test-transport-isolation-20260830-01",
-      "last_ts": "2026-08-30T01:44:45Z",
+      "last_id": "codex-todo-fallback-regenerate-20260830-01",
+      "last_ts": "2026-08-30T02:03:50Z",
       "n": 0,
       "since": [],
       "mine": [
+        {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
         {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
@@ -8895,6 +8907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -9127,12 +9145,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -9162,6 +9174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -9394,12 +9412,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -9417,6 +9429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -9649,12 +9667,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -9672,6 +9684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -9904,12 +9922,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -9927,6 +9939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -10159,12 +10177,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -10182,6 +10194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -10414,12 +10432,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -10437,6 +10449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -10669,12 +10687,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -10758,6 +10770,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -10990,12 +11008,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -11073,6 +11085,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -11305,12 +11323,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -11346,6 +11358,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -11578,12 +11596,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -11667,6 +11679,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -11899,12 +11917,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -11988,6 +12000,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -12220,12 +12238,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -12261,6 +12273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -12493,12 +12511,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -12582,6 +12594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -12814,12 +12832,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -12843,6 +12855,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -13075,12 +13093,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -13098,6 +13110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -13330,12 +13348,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -13419,6 +13431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -13651,12 +13669,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -13686,6 +13698,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -13918,12 +13936,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -13959,6 +13971,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -14191,12 +14209,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -14280,6 +14292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -14512,12 +14530,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -14541,6 +14553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -14773,12 +14791,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -14796,6 +14808,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -15028,12 +15046,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -15051,6 +15063,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -15283,12 +15301,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -15372,6 +15384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -15604,12 +15622,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -15627,6 +15639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -15859,12 +15877,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -15882,6 +15894,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -16114,12 +16132,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -16203,6 +16215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -16435,12 +16453,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -16524,6 +16536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -16756,12 +16774,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -16845,6 +16857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -17077,12 +17095,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -17112,6 +17124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -17344,12 +17362,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -17415,6 +17427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -17647,12 +17665,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -17670,6 +17682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -17902,12 +17920,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -17937,6 +17949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -18169,12 +18187,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -18192,6 +18204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -18424,12 +18442,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -18507,6 +18519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -18739,12 +18757,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -18762,6 +18774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -18994,12 +19012,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -19083,6 +19095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -19315,12 +19333,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -19350,6 +19362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -19582,12 +19600,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -19671,6 +19683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -19903,12 +19921,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -19926,6 +19938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -20158,12 +20176,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -20247,6 +20259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -20479,12 +20497,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -20508,6 +20520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -20740,12 +20758,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -20763,6 +20775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -20995,12 +21013,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -21018,6 +21030,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -21250,12 +21268,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -21309,6 +21321,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -21541,12 +21559,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -21630,6 +21642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -21862,12 +21880,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -21885,6 +21897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -22117,12 +22135,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -22146,6 +22158,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -22378,12 +22396,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -22467,6 +22479,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -22699,12 +22717,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -22728,6 +22740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -22960,12 +22978,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -23049,6 +23061,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -23281,12 +23299,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -23370,6 +23382,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -23602,12 +23620,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -23649,6 +23661,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -23881,12 +23899,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -23910,6 +23922,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -24142,12 +24160,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -24177,6 +24189,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -24409,12 +24427,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -24495,8 +24507,14 @@
     "GROK": {
       "last_id": "grok-receipt-5426-20260830",
       "last_ts": "2026-08-30T01:13:22Z",
-      "n": 12,
+      "n": 13,
       "since": [
+        {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
         {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
@@ -24651,6 +24669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -24883,12 +24907,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -24924,6 +24942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -25156,12 +25180,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -25185,6 +25203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -25417,12 +25441,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -25458,6 +25476,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -25690,12 +25714,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -25719,6 +25737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -25951,12 +25975,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -26040,6 +26058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -26272,12 +26296,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -26295,6 +26313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -26527,12 +26551,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -26550,6 +26568,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -26782,12 +26806,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -26829,6 +26847,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -27061,12 +27085,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -27096,6 +27114,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -27328,12 +27352,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -27417,6 +27435,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -27649,12 +27673,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -27672,6 +27690,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -27904,12 +27928,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -27993,6 +28011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -28225,12 +28249,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -28314,6 +28332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -28546,12 +28570,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -28635,6 +28653,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -28867,12 +28891,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -28908,6 +28926,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -29140,12 +29164,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -29193,6 +29211,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -29425,12 +29449,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -29460,6 +29478,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -29692,12 +29716,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -29781,6 +29799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -30013,12 +30037,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -30036,6 +30054,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -30268,12 +30292,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -30345,6 +30363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -30577,12 +30601,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -30600,6 +30618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -30832,12 +30856,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -30855,6 +30873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -31087,12 +31111,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -31176,6 +31194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -31408,12 +31432,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -31431,6 +31449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -31663,12 +31687,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -31686,6 +31704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -31918,12 +31942,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -31941,6 +31959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -32173,12 +32197,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -32196,6 +32214,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -32428,12 +32452,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -32481,6 +32499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -32713,12 +32737,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -32802,6 +32820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -33034,12 +33058,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -33099,6 +33117,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -33331,12 +33355,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -33384,6 +33402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -33616,12 +33640,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -33639,6 +33657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -33871,12 +33895,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -33894,6 +33912,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -34126,12 +34150,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -34149,6 +34167,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -34381,12 +34405,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -34404,6 +34422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -34636,12 +34660,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -34659,6 +34677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -34891,12 +34915,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -34980,6 +34998,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -35212,12 +35236,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -35301,6 +35319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -35533,12 +35557,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -35622,6 +35640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -35854,12 +35878,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -35919,6 +35937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -36151,12 +36175,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -36240,6 +36258,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -36472,12 +36496,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -36495,6 +36513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -36727,12 +36751,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -36750,6 +36768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -36982,12 +37006,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -37017,6 +37035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -37249,12 +37273,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -37338,6 +37356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -37570,12 +37594,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -37593,6 +37611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -37825,12 +37849,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -37860,6 +37878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -38092,12 +38116,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -38157,6 +38175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -38389,12 +38413,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -38478,6 +38496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -38710,12 +38734,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -38799,6 +38817,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -39031,12 +39055,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -39108,6 +39126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -39340,12 +39364,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -39375,6 +39393,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -39607,12 +39631,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -39696,6 +39714,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -39928,12 +39952,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -40017,6 +40035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -40249,12 +40273,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -40338,6 +40356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -40570,12 +40594,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -40611,6 +40629,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -40843,12 +40867,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -40872,6 +40890,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -41104,12 +41128,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -41157,6 +41175,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -41389,12 +41413,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -41478,6 +41496,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -41710,12 +41734,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -41733,6 +41751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -41965,12 +41989,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -41988,6 +42006,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -42220,12 +42244,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -42309,6 +42327,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -42541,12 +42565,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -42630,6 +42648,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -42862,12 +42886,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -42951,6 +42969,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -43183,12 +43207,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -43272,6 +43290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -43504,12 +43528,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -43563,6 +43581,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -43795,12 +43819,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -43884,6 +43902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -44116,12 +44140,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -44139,6 +44157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -44371,12 +44395,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -44430,6 +44448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -44662,12 +44686,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -44751,6 +44769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -44983,12 +45007,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -45069,8 +45087,14 @@
     "UNSEATED": {
       "last_id": "unseated-dir9-snapshot-ia-ready-20260830-01",
       "last_ts": "2026-08-30T01:17:00Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
         {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
@@ -45195,6 +45219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -45427,12 +45457,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -45516,6 +45540,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -45748,12 +45778,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
@@ -45837,6 +45861,12 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-todo-fallback-regenerate-20260830-01",
+          "from": "CODEX",
+          "to": "TABLE",
+          "ts": "2026-08-30T02:03:50Z"
+        },
+        {
           "id": "codex-independent-mcp-test-transport-isolation-20260830-01",
           "from": "CODEX",
           "to": "TABLE",
@@ -46069,12 +46099,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-30T00:47:31.682999Z"
-        },
-        {
-          "id": "slack-1788050799-858729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-30T00:46:39.858729Z"
         }
       ],
       "mine": [
