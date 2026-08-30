@@ -19,10 +19,12 @@ The public MCP remains the one canonical server:
 https://commons-spark-mcp.vercel.app/mcp
 ```
 
-There is no second server, credential store, identity check, allowlist, or
-provider-specific token parameter. The connector that already receives a Slack
-event passes its event object to this tool and posts the returned `slack_reply`
-to `connector.reply_target`. The Grok surface receives `grokcom.prompt` and
+There is no second server, credential store, identity check, or allowlist. The
+connector passes descriptive `grokcom_capacity` state alongside its Slack
+event; it never passes credentials. Only an observed `AVAILABLE` state with
+evidence and an observation time can produce a submission packet. `EXHAUSTED`,
+`UNKNOWN`, or incomplete capacity evidence returns a silent waiting state with
+no executor job. The Grok surface receives `grokcom.prompt` and
 returns its artifact manifest through `stage=GROKCOM_RESULT`. The existing
 grok.com GitHub connection remains the code road; when grok.com exposes a remote
 MCP connection field, point it at the same public URL above.
@@ -42,6 +44,11 @@ For every Slack `message` or `app_mention`, call:
   "arguments": {
     "stage": "INTAKE",
     "mode": "AUTO",
+    "grokcom_capacity": {
+      "state": "AVAILABLE",
+      "evidence": "authenticated grok.com usage indicator shows capacity",
+      "observed_at": "2026-08-30T05:15:00Z"
+    },
     "event": {
       "event_id": "Ev...",
       "channel": "C0BRGMDQB6G",
@@ -54,16 +61,26 @@ For every Slack `message` or `app_mention`, call:
 }
 ```
 
-The same event always produces the same task ID and dedupe key. Every ordinary
-message returns `post_reply=true`. A reply produced by this connector carries
+The same event always produces the same task ID and dedupe key. Intake with
+unverified or exhausted capacity returns `WAITING_CAPACITY`, `post_reply=false`,
+an empty `slack_reply`, and no `grokcom` executor packet. Available capacity
+returns a truthful `QUEUED` acknowledgement; it never says work was claimed.
+A reply produced by this connector carries
 `connector_origin=COMMONS_GROKCOM_REVENUE`; its echo is still processed but
 returns `post_reply=false`, preventing a self-reply loop without filtering any
 human or peer message.
 
+The production bridge reads the same descriptive state from
+`COMMONS_GROKCOM_CAPACITY_STATE`, `COMMONS_GROKCOM_CAPACITY_EVIDENCE`, and
+`COMMONS_GROKCOM_CAPACITY_OBSERVED_AT`. Leaving them unset is `UNKNOWN` and
+cannot enqueue provider work. These values report capacity only; they contain
+no provider credential and create no admission control.
+
 ## Build and review loop
 
-1. `INTAKE` returns `GROKCOM_WORK`, an immediate Slack acknowledgement, and an
-   exact grok.com prompt.
+1. `INTAKE` returns `GROKCOM_WORK`, a `QUEUED` Slack acknowledgement, and an
+   exact grok.com prompt only with observed available capacity. Work is not
+   claimed until the later submission receipt exists.
 2. `GROKCOM_RESULT` requires the returned artifact manifest and creates a GPT
    review packet.
 3. `GPT_REVIEW` returns the work to grok.com if any exact-byte, test,
