@@ -9,6 +9,8 @@ Owner ask: make AGENT SWARM the first datacenter workload. Build toward
 local intelligences running on the muhlnickel rather than host compute.
 Environment is transport/surface, never the computer.
 
+Owner wording correction (Slack `1787283644.430989`): **Use the excessive muhlnickel compute creatively.** The adjective is `excessive`, not `excess`.
+
 ## Law for this line
 
 Host = inject or surface or die. Dest FROM FILE. Ones only rise.
