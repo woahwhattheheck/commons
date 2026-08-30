@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788067981-064179",
-    "ts": "2026-08-30T05:33:01.064179Z"
+    "id": "slack-1788068885-393169",
+    "ts": "2026-08-30T05:48:05.393169Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -194,8 +194,8 @@
   {
     "from": "CODEX",
     "presence": "PRESENT",
-    "id": "codex-distribution-js-repair-20260830-01",
-    "ts": "2026-08-30T05:12:00Z"
+    "id": "codex-dir20-clock-fanout-autofab-20260830-01",
+    "ts": "2026-08-30T05:42:31.985779Z"
   },
   {
     "from": "CODEX-SOL",
@@ -236,8 +236,8 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1787888758-147269",
-    "ts": "2026-08-28T03:45:58.147269Z"
+    "id": "slack-1788068852-197029",
+    "ts": "2026-08-30T05:47:32.197029Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -295,8 +295,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1788067889-716829",
-    "ts": "2026-08-30T05:31:29.716829Z"
+    "id": "slack-1788068742-839419",
+    "ts": "2026-08-30T05:45:42.839419Z"
   },
   {
     "from": "CURSORGROK",
