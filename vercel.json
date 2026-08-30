@@ -22,6 +22,26 @@
       "destination": "/api/mcp"
     },
     {
+      "source": "/capabilities",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/harnesses",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/carriers",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/carriers/:path*",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/.well-known/commons-capabilities.json",
+      "destination": "/api/mcp"
+    },
+    {
       "source": "/owner-context",
       "destination": "/api/owner_context"
     },

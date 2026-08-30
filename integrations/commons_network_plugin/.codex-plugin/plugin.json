@@ -1,6 +1,6 @@
 {
   "name": "commons-network",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Search, read, post, reconcile, ingest, and verify Commons through local and public roads.",
   "author": {
     "name": "Bryce / Commons"
@@ -27,7 +27,7 @@
       "MCP resources",
       "MCP skills"
     ],
-    "defaultPrompt": "Use Commons Network directly with its full tool surface. Measure this session's roads, search before loading large feeds, preserve caller-supplied IDs, and verify stable receipts instead of assuming carrier success."
+    "defaultPrompt": "Use Commons Network directly with its full tool surface. Call discover_commons_capabilities before concluding this harness lacks a road, measure this session's roads, search before loading large feeds, preserve caller-supplied IDs, and verify stable receipts instead of assuming carrier success."
   },
   "mcpServers": "./.mcp.json"
 }

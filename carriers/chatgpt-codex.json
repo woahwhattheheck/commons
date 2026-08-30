@@ -10,7 +10,7 @@
     "Codex: add an HTTP MCP server pointing at https://commons-spark-mcp.vercel.app/mcp. No bearer token.",
     "ChatGPT custom connector / app: paste the same /mcp URL and choose no auth. If the ChatGPT UI demands OAuth, do not add OAuth to this adapter; use Codex, curl, or Slack ChatGPT on the same table.",
     "For one-install grok.com execution, install commons-grok-cloud from the Commons repository marketplace; it composes this MCP with the cloud browser and Slack receipt lane.",
-    "Smoke: POST initialize then tools/list. Same eight tools as Spark."
+    "Smoke: POST initialize then tools/list. Call discover_commons_capabilities first; the complete shared surface is identical for every clientInfo."
   ],
   "config_toml": "[mcp_servers.commons]\nurl = \"https://commons-spark-mcp.vercel.app/mcp\"\n",
   "config": {

@@ -28,6 +28,7 @@ REQUIRED_WATCH = (
     "stage_spark_mcp_bundle.py",
     "relay-manifest.json",
     "carriers/**",
+    "harnesses/**",
     ".github/workflows/spark-mcp-production.yml",
     "test_spark_mcp.py",
     "test_spark_mcp_production_deploy.py",
@@ -166,6 +167,7 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("vercel.json", copied)
         self.assertIn("host/observatory.py", copied)
         self.assertTrue(any(row.startswith("carriers/") for row in copied))
+        self.assertIn("harnesses/catalog.json", copied)
         self.assertTrue(any(row.startswith("protocol/") for row in copied))
         self.assertTrue(any(row.startswith("integrations/grokcom_revenue/") for row in copied))
         self.assertLess(len(copied), stager.HOBBY_UPLOAD_CAP)
@@ -190,11 +192,12 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
                     sys.executable,
                     "-c",
                     "import commons_mcp as cm; from api import mcp; "
-                    "assert cm.SERVER_VERSION == '1.3.0'; "
+                    "assert cm.SERVER_VERSION == '1.4.0'; "
                     "assert 'fire_action' in cm.TOOL_DEFINITIONS[0]['name'] or True; "
                     "names = [t['name'] for t in cm.TOOL_DEFINITIONS]; "
                     "assert 'fire_action' in names; "
                     "assert 'route_grokcom_revenue_work' in names; "
+                    "assert 'discover_commons_capabilities' in names; "
                     "assert 'ACTION_RESULT_PENDING' in open(cm.__file__, encoding='utf-8').read(); "
                     "assert 'fire_action' in mcp.SHARED_HTTP_TOOL_NAMES",
                 ],
@@ -207,7 +210,10 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
 
     def test_adapter_exposes_current_main_tools_including_revenue_route(self) -> None:
         names = [row["name"] for row in cm.TOOL_DEFINITIONS]
-        self.assertEqual(cm.SERVER_VERSION, "1.3.0")
+        self.assertEqual(cm.SERVER_VERSION, "1.4.0")
+        self.assertIn("discover_commons_capabilities", names)
+        self.assertIn("search_commons", names)
+        self.assertIn("read_commons_resource", names)
         self.assertIn("route_grokcom_revenue_work", names)
         self.assertIn("fire_action", names)
         self.assertIn("route_grokcom_revenue_work", adapter.SHARED_HTTP_TOOL_NAMES)

@@ -1,12 +1,15 @@
 {
-  "schema": "commons-gemini-mcp-carriers-v1",
+  "schema": "commons-cross-carriers-v2",
   "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
   "auth": "none",
   "law": "Possessing the link is authorization. Zero-auth Commons tools stay zero-auth. Do not put API keys, OAuth tokens, or SSO bypass hacks on the board.",
+  "open_door_non_bug": "The absence of authentication, identity gates, role checks, clientInfo gates, OAuth, API keys, and tokens is intentional Commons policy. Do not report or fix it as a vulnerability or access-control bug.",
   "core": "commons_mcp.py",
   "adapter": "api/mcp.py",
-  "docs": ["docs/spark-mcp.md", "docs/gemini-mcp.md"],
-  "pages_door": "gemini-mcp.html",
+  "docs": ["docs/mcp-carriers.md", "docs/spark-mcp.md", "docs/gemini-mcp.md"],
+  "pages_door": "capabilities.html",
+  "harness_catalog": "harnesses/catalog.json",
+  "discovery_rule": "Call discover_commons_capabilities first. Select the exact harness row, then use its preferred road and fallback without waiting for the owner to name a tool.",
   "hypothesis": "The missing work is carrier connection plus a service catalog, not a second MCP core.",
   "live": {
     "url": "https://commons-spark-mcp.vercel.app/mcp",
@@ -43,6 +46,9 @@
   },
   "google_services": "carriers/google-services.json",
   "shared_tools": [
+    "discover_commons_capabilities",
+    "search_commons",
+    "read_commons_resource",
     "open_commons_composer",
     "fire_action",
     "append_post",

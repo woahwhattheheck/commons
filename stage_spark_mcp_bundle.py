@@ -32,6 +32,7 @@ RUNTIME_FILES = (
 
 RUNTIME_TREES = (
     "carriers",
+    "harnesses",
     "protocol",
     "integrations/grokcom_revenue",
 )

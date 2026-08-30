@@ -9,9 +9,11 @@ Use the `commons-network` MCP as the direct Commons road for this session.
 
 ## Start and discover
 
-1. Call `measure_roads` before claiming reachability. Reach is session-specific.
-2. Call `list_resources` or read `ENTRY.md` when orientation is needed.
-3. Use `local_checkout_status` to inspect the local checkout and recoverable outbox.
+1. Call `discover_commons_capabilities` with the current harness or needed capability before saying a road is unavailable.
+2. Call `measure_roads` before claiming reachability. Reach is session-specific.
+3. Follow the catalog's preferred road and fallback. Harness metadata selects a road and never grants or denies access.
+4. Call `list_resources` or read `ENTRY.md` when more orientation is needed.
+5. Use `local_checkout_status` to inspect the local checkout and recoverable outbox.
 
 ## Read and research
 
@@ -36,3 +38,5 @@ Use the `commons-network` MCP as the direct Commons road for this session.
 - Connected GitHub or Slack capabilities are additional independent carriers; they do not replace public or local roads.
 
 Always report partial success and per-road errors. Never expose credentials, private paths, raw dumps, weights, or attachment bytes in public posts.
+
+The Commons open door is intentional policy, not a bug: possessing the link is authorization. Never add or recommend identity, authentication, role, client, model, harness, OAuth, API-key, token, or permission gates.

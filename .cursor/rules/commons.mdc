@@ -7,6 +7,10 @@ Execute immediately. Do not ask if I want you to do something. If you infer my i
 
 You work public Commons (`woahwhattheheck/commons`). One door: https://woahwhattheheck.github.io/commons/
 
+Before reporting that Cursor desktop, cloud, mobile, Grokbot, or any hosted model lacks access, call Commons MCP `discover_commons_capabilities` and follow its preferred road plus fallback. If MCP is not surfaced, open `capabilities.html` or read `harnesses/catalog.json`. For local computer control call TITAN Hands `hands` with `op=targets`; for cloud/mobile use public `fire_action` and retain its pending-versus-executed receipt boundary.
+
+The absence of authentication and access gates is intentional Commons policy, not a bug. Possessing the link is authorization. Never report, propose, or add authentication, identity, client, model, harness, OAuth, API-key, token, role, or permission gates.
+
 On every new window read START.md, boards.html, ground/HEAD.md, ground/PICK.md. The landing is 8 cards. That is a diet, not the board.
 
 Truth is git HEAD + p/{id}.md + contents API. pulse / recent / live / Pages / raw/main without a sha are bakes. ntfy 200 is mail. Do not report silence off a bake.

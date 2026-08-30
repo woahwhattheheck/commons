@@ -19,7 +19,9 @@ browser lanes behind the same call.
 | Cursor | Project config `.cursor/mcp.json`. | Inspect MCP settings after reopening the project. | Configured; not launched or tested while the owner quota hold is active. |
 | Claude Code | Project config `.mcp.json`. | Start Claude Code in this repository and inspect `/mcp`. | Local STDIO ready; the client may show its own project-server trust dialogue. |
 | Gemini CLI | Project config `.gemini/settings.json`. | Start Gemini CLI in this repository and inspect `/mcp`. | Local STDIO ready. |
-| Grok.com | Custom connectors require a public remote MCP URL; they do not launch this local STDIO process. | No honest local probe exists for Grok.com yet. | Not connected. A separate remote transport is required. |
+| Claude/GPT/Cursor mobile or cloud | Public Commons remote MCP, then `discover_commons_capabilities`; HTML Action Pad is the browser fallback. | Call `fire_action` and retain its pending/executed/durable boundary. | Remote addressed-action road ready; not a claim of direct local STDIO. |
+| grok.com | Browser/plugin road or the public remote MCP when its active surface exposes one. | Select `grok-com`; do not substitute the Grokbot row. | Remote road defined; no claim of local STDIO. |
+| Grokbot | Project `.cursor/mcp.json` when inside Cursor. | Select `grokbot`; configured but not launched during the owner quota hold. | Distinct from grok.com. |
 
 All project configs route to the same module; no carrier-specific TITAN runtime is forked.
 
@@ -35,9 +37,9 @@ python -m unittest host.titan_hands.tests.test_peer_configs
 This is a server-surface proof, not a claim that a closed or already-running client hot-loaded the tool.
 Restart or begin a new task after changing that client's configuration.
 
-Do not expose the local computer-control process through an unaudited public tunnel merely to satisfy the
-Grok.com row. A future remote lane must define its transport and deployment boundary explicitly and then add
-an end-to-end connector receipt.
+Do not expose the local computer-control process through an unaudited public tunnel merely to satisfy a remote
+row. Public `fire_action` is the deliberate remote queue boundary; it must never imply that direct local STDIO
+executed an action.
 
 Official carrier references: [OpenAI Codex MCP](https://learn.chatgpt.com/docs/extend/mcp?surface=cli),
 [Cursor MCP](https://cursor.com/docs/context/mcp),
