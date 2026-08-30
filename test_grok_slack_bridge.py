@@ -32,6 +32,11 @@ from integrations.grokcom_revenue.orchestrator import orchestrate
 SECRET_MARKER = "slack-secret-token-BOT-test-marker"
 RESULT_MARKER = "grok-result-private-bytes-☃"
 MAIN_SHA = "a" * 40
+CAPACITY = {
+    "state": "AVAILABLE",
+    "evidence": "authenticated grok.com usage indicator shows capacity",
+    "observed_at": "2026-08-30T05:15:00Z",
+}
 
 
 def sha256_text(text: str) -> str:
@@ -402,11 +407,24 @@ def build_bridge(directory: str, slack: FakeSlack | None = None, github: FakeGit
         executor_slack=extra.get("executor_slack"),
         grok_provider=extra.get("grok_provider"),
         git_root=extra.get("git_root"),
+        grokcom_capacity=extra.get("grokcom_capacity", CAPACITY),
     )
     return service, slack, github, mcp, store
 
 
 class GrokSlackBridgeTests(unittest.TestCase):
+    def test_unverified_capacity_is_silent_and_does_not_fire(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            service, slack, _github, mcp, store = build_bridge(directory, grokcom_capacity={})
+            result = service.handle_event("Ev-no-capacity", event_payload("do not claim this"))
+            self.assertEqual(result["state"], "WAITING_CAPACITY")
+            self.assertFalse(result["submit"])
+            self.assertEqual(store.get("Ev-no-capacity").phase, "WAITING_CAPACITY")
+            self.assertEqual(slack.posts, [])
+            self.assertEqual([name for name, _ in mcp.calls if name == "fire_action"], [])
+            self.assertEqual(service.recover_pending(), 0)
+            store.close()
+
     def test_bridge_owned_windows_subprocesses_never_open_terminal_windows(self) -> None:
         windows = bridge.subprocess_window_kwargs("win32")
         self.assertEqual(windows["creationflags"] & 0x08000000, 0x08000000)
@@ -506,7 +524,7 @@ class GrokSlackBridgeTests(unittest.TestCase):
             mcp = FakeMcp(github)
             store = CrashSubmitStore(Path(directory) / "state.sqlite3")
             sink = bridge.SlackTransport(slack, store, sleeper=lambda _s: None)
-            service = bridge.GrokSlackBridge(store, mcp, github, sink, bot_user_id="UBOT", poll_budget=2, sleeper=lambda _s: None)
+            service = bridge.GrokSlackBridge(store, mcp, github, sink, bot_user_id="UBOT", poll_budget=2, sleeper=lambda _s: None, grokcom_capacity=CAPACITY)
             with self.assertRaises(RuntimeError):
                 service.handle_event("Ev-fire", event_payload("persist crash"))
             self.assertEqual(store.get("Ev-fire").phase, "JOB_PERSISTED")
@@ -549,7 +567,7 @@ class GrokSlackBridgeTests(unittest.TestCase):
             mcp = FakeMcp(github)
             store = CrashSentStore(Path(directory) / "state.sqlite3")
             sink = bridge.SlackTransport(slack, store, sleeper=lambda _s: None)
-            service = bridge.GrokSlackBridge(store, mcp, github, sink, bot_user_id="UBOT", poll_budget=2, sleeper=lambda _s: None)
+            service = bridge.GrokSlackBridge(store, mcp, github, sink, bot_user_id="UBOT", poll_budget=2, sleeper=lambda _s: None, grokcom_capacity=CAPACITY)
             with self.assertRaises(RuntimeError):
                 service.handle_event("Ev-sent", event_payload("chunk persist"))
             self.assertGreaterEqual(len(slack.posts), 1)
@@ -717,7 +735,7 @@ class GrokSlackBridgeTests(unittest.TestCase):
                 "thread_ts": event["ts"],
                 "author": "UBRYCE",
                 "text": "stable keys",
-            }})
+            }, "grokcom_capacity": CAPACITY})
             self.assertEqual(result["task_id"], packet["task_id"])
             self.assertEqual(result["job_id"], packet["grokcom"]["executor_job"]["job_id"])
             self.assertEqual(result["run_key"], packet["grokcom"]["run_key"])
@@ -1175,7 +1193,7 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(store.get("Ev-dur-pending").phase, "OBSERVING")
             self.assertEqual(store.get("Ev-dur-pending").fire_action_calls, 1)
             self.assertFalse(store.has_sent_rejected_delivery("Ev-dur-pending"))
-            self.assertTrue(any("CLAIMED" in (row.get("text") or "") for row in slack.posts))
+            self.assertTrue(any("QUEUED" in (row.get("text") or "") for row in slack.posts))
             self.assertFalse(any("rejected" in (row.get("text") or "").casefold() for row in slack.posts))
             self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
             pending = store.pending()
