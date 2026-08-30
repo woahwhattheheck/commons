@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788057566-539099",
-    "ts": "2026-08-30T02:39:26.539099Z"
+    "id": "slack-1788062627-523629",
+    "ts": "2026-08-30T04:03:47.523629Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -580,8 +580,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-resource-ledger-muhlnickel-pin-20260829-01",
-    "ts": "2026-08-29T23:16:00Z"
+    "id": "grok-pr5517-terminal-20260830-01",
+    "ts": "2026-08-30T04:12:05Z"
   },
   {
     "from": "GROK_HEAVY",
