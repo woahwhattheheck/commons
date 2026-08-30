@@ -39,6 +39,8 @@ from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from typing import Any, Callable, Iterable, Iterator
 
+import exact_body_redact
+
 
 ROOT = Path(os.environ.get("GITHUB_WORKSPACE", Path(__file__).resolve().parent))
 POSTS_DIR = ROOT / "p"
@@ -351,11 +353,11 @@ def issue_record(message: dict[str, Any], channel_id: str | None = None) -> Issu
         envelope.append(("target", target))
     envelope.append(("kind", kind))
     for key in COPY_FIELDS:
-        value = fields.get(key, "").strip()
+        value = exact_body_redact.redact_private_spans(fields.get(key, "").strip())
         if value:
             envelope.append((key, value))
     header = "\n".join("%s: %s" % pair for pair in envelope)
-    payload = "Slack message deleted; prior canonical record remains immutable.\n" if deleted else text
+    payload = "Slack message deleted; prior canonical record remains immutable.\n" if deleted else exact_body_redact.redact_private_spans(text)
     body = header + "\n---\n" + payload
     return IssueRecord(native_ts=native_ts, title=ident, body=body, kind=kind, target=target)
 
@@ -386,6 +388,9 @@ def verify_existing(path: Path, record: IssueRecord, channel_id: str = CHANNEL_I
     incoming = _record_body(record.body)
     # The canonical writer normalizes the final newline; source bytes otherwise stay.
     if body.rstrip("\n") == incoming.rstrip("\n"):
+        return True
+    # A later republish may redact private spans. Same event, original stays.
+    if exact_body_redact.same_after_redact(body, incoming):
         return True
     # A Git-first record may already be canonical before its Slack copy is
     # observed.  Accept only a measured carrier-normalized exact body match;
