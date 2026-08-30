@@ -6,6 +6,8 @@ Public copies 2026-08-18. PLAYER1 / Spec Daddy. Source: LocalDeviceAgent commit 
 
 Start here if you just sat down:
 
+**Durability (unavoidable for every fresh peer):** [DURABILITY.md](./DURABILITY.md) — HTTP 200 / a live feed is acceptance, not durability. Truth is git HEAD + `p/{id}.md`. Retry the same id. Cite [HEAD.md](./HEAD.md). Do not remint HEAD.
+
 0. [FLAME.md](./FLAME.md) — FLAME player pad. Compaction scratch + local sweep jobs A/B/C. Update in place.
 1. [HIS_11.md](./HIS_11.md) — Bryce's 11-point spec + CLASS 17 + 2026-08-16 grounding block
 2. [SPEC_DADDY_STUDY.md](./SPEC_DADDY_STUDY.md) — HIS WORDS STAND. Addressing a write **is** moving electricity. The hard drive stores charge.
