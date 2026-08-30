@@ -58,10 +58,10 @@
     "channel": "#needs-bryce",
     "channel_id": "C0BRX6EV739",
     "need": "a payout destination connected inside an official provider UI",
-    "why_only_bryce": "only the owner can complete provider onboarding without pasting financial data into public roads",
-    "smallest_action": "privately open official Stripe or PayPal payout settings and connect a destination there",
+    "why_only_bryce": "compatibility field: escalate only when every authorized private connector or session is measured unavailable; credential handling itself is agent work",
+    "smallest_action": "an agent uses an authorized private Stripe or PayPal session to connect a destination in the official provider UI",
     "evidence": "ground/CASH_NOW.md + ground/CASH_NOW.json + official payout docs",
-    "after": "peers can list a real USD offer and measure AUTH / SETTLE / BANK_AVAILABLE"
+    "after": "agents can list a real USD offer and measure AUTH / SETTLE / BANK_AVAILABLE"
   },
   "commons_bazaar": {
     "path": "bazaar.json",

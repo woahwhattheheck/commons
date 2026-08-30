@@ -50,6 +50,71 @@ def main():
         assert sum(1 for r in p1["records"] if r.get("_invalid")) == 1
         assert os.path.join(tmp, "builds.json") in written and os.path.join(tmp, "builds.html") in written
         assert 'href="./index.html"' in written[os.path.join(tmp, "builds.html")]
+        assert proj["open_prs"] == [] and proj["n_open_prs"] == 0
+        assert "Open pull requests" in written[os.path.join(tmp, "builds.html")]
+
+        canary = {
+            "number": 4242,
+            "title": "canary leftover projection",
+            "html_url": "https://github.com/woahwhattheheck/commons/pull/4242",
+            "state": "open",
+            "draft": False,
+            "user": {"login": "canary-author"},
+            "base": {"sha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+            "ahead_by": 3,
+            "behind_by": 2,
+        }
+        fresh = {
+            "number": 7,
+            "title": "fresh base",
+            "html_url": "https://github.com/woahwhattheheck/commons/pull/7",
+            "state": "open",
+            "user": {"login": "fresh-author"},
+            "base": {"sha": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},
+        }
+        written_pr = {}
+        pr_proj = builds_ledger.project(
+            tmp,
+            lambda p, t: written_pr.__setitem__(p, t),
+            open_prs=[canary, fresh],
+            main_sha="bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        )
+        assert pr_proj["n_open_prs"] == 2, pr_proj["n_open_prs"]
+        row = pr_proj["open_prs"][0]
+        assert row["number"] == 4242
+        assert row["author"] == "canary-author"
+        assert row["title"] == "canary leftover projection"
+        assert row["status"] == "PR_OPEN"
+        assert row["base_freshness"]["label"] == "BEHIND_2", row["base_freshness"]
+        assert row["base_freshness"]["ahead_by"] == 3
+        assert pr_proj["open_prs"][1]["base_freshness"]["label"] == "FRESH"
+        page = written_pr[os.path.join(tmp, "builds.html")]
+        assert "#4242" in page and "canary-author" in page
+        assert "canary leftover projection" in page
+        assert "BEHIND_2" in page and "PR_OPEN" in page
+        baked = json.loads(written_pr[os.path.join(tmp, "builds.json")])
+        assert baked["open_prs"][0]["number"] == 4242
+        assert baked["open_prs"][0]["author"] == "canary-author"
+        assert baked["open_prs"][0]["title"] == "canary leftover projection"
+        assert baked["open_prs"][0]["status"] == "PR_OPEN"
+        assert baked["open_prs"][0]["base_freshness"]["label"] == "BEHIND_2"
+
+        seen = {}
+        def fake_opener(req, timeout=20):
+            seen["url"] = getattr(req, "full_url", None) or ""
+            seen["headers"] = {str(k).lower(): v for k, v in dict(req.headers).items()}
+            class _Resp:
+                def read(self):
+                    return json.dumps([canary]).encode("utf-8")
+                def __enter__(self):
+                    return self
+                def __exit__(self, *a):
+                    return False
+            return _Resp()
+        pulled = builds_ledger.fetch_public_open_prs(opener=fake_opener)
+        assert pulled[0]["number"] == 4242
+        assert "authorization" not in seen["headers"]
+        assert "/pulls" in (seen["url"] or "")
 
         # append-only: projecting twice changes no record file and is deterministic
         before = {f: hashlib.sha256(open(os.path.join(rdir, f), "rb").read()).hexdigest()

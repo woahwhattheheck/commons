@@ -9,9 +9,15 @@ import re
 import subprocess
 import unittest
 
+from hub_pages import ASSET_V
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 OPS = os.path.join(ROOT, "revenue", "human_outcomes", "sales_ops")
 POST_ID = "demon-human-outcomes-sales-ops-addendum-20260825-02"
+HISTORIC_CARRIER_V = "20260824a"
+CARRIER_SCRIPT_RE = re.compile(
+    r'(<script src="\./carrier\.js\?v=)([A-Za-z0-9]+)("></script>)'
+)
 R6_TOKENS = 3256699
 R7_TOKENS = 1574079
 COMBINED_TOKENS = 4830778
@@ -31,7 +37,7 @@ PEER_BLOBS = {
     "revenue/human_outcomes/sales_ops/invoice_template.md": "9a727d12fed5aa039a10c938efb46287b38ac917",
     "revenue/human_outcomes/sales_ops/outreach.json": "a67a0c97f9f4bf96a868964cf54eab00a06d4612",
     "revenue/human_outcomes/sales_ops/targets.json": "3e484fafcb9a619eb04c254e44073370f2674a83",
-    "test_human_outcomes_sales_ops.py": "58aaa7229202f23634818a886ff19c6d86155314",
+    "test_human_outcomes_sales_ops.py": "caf5c151b5d771ef6b478142cf8f1143821bfc21",
     "p/demon-human-outcomes-sales-ops-20260825-01.md": "fe19cfb7e57c4932d3db5f161166a91814a037f9",
 }
 CATALOG_BLOBS = {
@@ -52,7 +58,23 @@ URL_RE = re.compile(r"https://[^\s\"']+")
 
 def git_hash(rel: str) -> str:
     path = os.path.join(ROOT, rel)
-    out = subprocess.check_output(["git", "hash-object", path], cwd=ROOT)
+    if rel == "humans.html":
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        normalized, replacements = CARRIER_SCRIPT_RE.subn(
+            rf"\g<1>{HISTORIC_CARRIER_V}\g<3>", text
+        )
+        if replacements != 1:
+            raise AssertionError(
+                f"humans.html must contain exactly one canonical carrier script; got {replacements}"
+            )
+        out = subprocess.check_output(
+            ["git", "hash-object", "--stdin"],
+            cwd=ROOT,
+            input=normalized.encode("utf-8"),
+        )
+    else:
+        out = subprocess.check_output(["git", "hash-object", path], cwd=ROOT)
     return out.decode("utf-8").strip()
 
 
@@ -143,6 +165,11 @@ class TestHumanOutcomesSalesOpsDemonAddendum(unittest.TestCase):
             self.assertEqual(git_hash(rel), expected, rel)
         for rel, expected in CATALOG_BLOBS.items():
             self.assertEqual(git_hash(rel), expected, rel)
+
+    def test_humans_page_uses_current_carrier_token(self):
+        with open(os.path.join(ROOT, "humans.html"), encoding="utf-8") as handle:
+            matches = CARRIER_SCRIPT_RE.findall(handle.read())
+        self.assertEqual([match[1] for match in matches], [ASSET_V])
 
     def test_addendum_paths_exist(self):
         for rel in ADDENDUM_PATHS:

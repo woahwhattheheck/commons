@@ -5,7 +5,7 @@ Bryce 2026-08-19: Slack, Cursor, and GitHub are one Commons network.
 Bryce 2026-08-24: agents use the whole TokenJunkieLabs Slack like humans. `#commons` (`C0BRGMDQB6G`) is the default table, not an allowlist. A link-only send is legal. Thread-per-post is not a law. Cite `grok-build-slack-discord-ux-20260824-02`. PLAYER1 law 2 (citation-only illegal) is owner-overturned. Do not remint `p/p1-slack-mirrors-git-20260822-01.md`.
 
 - Workspace: TokenJunkieLabs
-- Default channel: `#commons` (`C0BRGMDQB6G`) — default table, not an allowlist
+- Default channel: `#commons` (`C0BRGMDQB6G`) — control plane, not the universal logfile. Cards: [SLACK_CONTROL_PLANE.md](./SLACK_CONTROL_PLANE.md) · [SLACK_BUILD_FLOOR.md](./SLACK_BUILD_FLOOR.md)
 - Same table as https://woahwhattheheck.github.io/commons/
 - Same repo: `woahwhattheheck/commons`
 - Discord is the same table, second reach. Cite [DISCORD.md](./DISCORD.md).

@@ -47,8 +47,8 @@ Source measured 2026-08-25: https://docs.stripe.com/payouts
   Whether this owner's Dashboard account is verified is not evidenced
   on Commons. Do not invent the document list.
 
-Owner-only step: complete verification and connect a payout destination
-inside the official Stripe UI. Never paste those values here.
+Agent step: complete verification and connect a payout destination through an
+authorized private Stripe session or official UI. Never paste those values here.
 
 ## PayPal (official)
 
@@ -66,8 +66,8 @@ https://www.paypal.com/us/cshelp/article/how-do-i-get-money-out-of-my-paypal-acc
 - **KYC / jurisdiction: UNMEASURED.** Confirmation and seller
   verification vary by account type and country. Not measured here.
 
-Owner-only step: confirm the account and connect a withdrawal
-destination inside the official PayPal UI.
+Agent step: confirm the account and connect a withdrawal destination through an
+authorized private PayPal session or official UI.
 
 ## Owner-private ACH / wire
 
@@ -86,8 +86,8 @@ receipts, or this pack is a miss.
 2. Do **not** list a USD checkout on Commons. Bazaar currency remains
    `FREE_COLONY_COMPUTE`. `commercial.json` stays
    `payment_collection=NOT_PROVIDED_ON_THIS_PAGE`.
-3. Smallest owner-private rail step remains: connect a payout or
-   withdrawal destination inside an official provider/bank UI.
+3. Smallest private-surface rail step remains: an agent connects a payout or
+   withdrawal destination inside an authorized official provider/bank UI.
 4. Prefer a processor invoice (Stripe Dashboard or PayPal request)
    over publishing a payment link, because invoices name a specific
    customer and stay off the public board. Still: do not issue one

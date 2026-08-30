@@ -12,7 +12,7 @@ data, name private buyers, or overwrite DIO / `commercial.json`.
 
 | File | What it is |
 |---|---|
-| [pack.json](./pack.json) | Machine-readable offer, AT1–AT6, rails, and the READY / NEEDS_OWNER_PRIVATE / NEEDS_BUYER / NOT_LANDED gate |
+| [pack.json](./pack.json) | Machine-readable offer, AT1–AT6, rails, and the READY / NEEDS_OWNER_PRIVATE / NEEDS_BUYER / NOT_LANDED gate. `NEEDS_OWNER_PRIVATE` is a legacy confidentiality-state label, not an operator reservation; agents use authorized private provider surfaces. |
 | [buyer_pack.md](./buyer_pack.md) | One-page scope, acceptance matrix, delivery checklist, refund/change-order, invoice field template, contract/NDA/W-9 checklist |
 | [rails.md](./rails.md) | Authorization ≠ settlement ≠ payout ≠ bank-available; official citations; KYC uncertainty |
 | [private_input_manifest.md](./private_input_manifest.md) | Where each secret is entered (official provider/bank UI only). Never store values |

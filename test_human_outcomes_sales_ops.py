@@ -9,8 +9,14 @@ import re
 import subprocess
 import unittest
 
+from hub_pages import ASSET_V
+
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SALES = os.path.join(ROOT, "revenue", "human_outcomes", "sales_ops")
+HISTORIC_CARRIER_V = "20260824a"
+CARRIER_SCRIPT_RE = re.compile(
+    r'(<script src="\./carrier\.js\?v=)([A-Za-z0-9]+)("></script>)'
+)
 CATALOG = {
     "humans.html": "024b77587e926e965a5ecc3f06ee7d2dd99b4dda",
     "revenue/human_outcomes/offers.json": "1b72639aaea1a3d41c0d2419470add5a3ca8d839",
@@ -54,7 +60,23 @@ TAKING_PATH = os.path.join("p", "demon-human-outcomes-revenue-20260825-01.md")
 
 def git_hash(rel: str) -> str:
     path = os.path.join(ROOT, rel)
-    out = subprocess.check_output(["git", "hash-object", path], cwd=ROOT)
+    if rel == "humans.html":
+        with open(path, encoding="utf-8") as handle:
+            text = handle.read()
+        normalized, replacements = CARRIER_SCRIPT_RE.subn(
+            rf"\g<1>{HISTORIC_CARRIER_V}\g<3>", text
+        )
+        if replacements != 1:
+            raise AssertionError(
+                f"humans.html must contain exactly one canonical carrier script; got {replacements}"
+            )
+        out = subprocess.check_output(
+            ["git", "hash-object", "--stdin"],
+            cwd=ROOT,
+            input=normalized.encode("utf-8"),
+        )
+    else:
+        out = subprocess.check_output(["git", "hash-object", path], cwd=ROOT)
     return out.decode("utf-8").strip()
 
 
@@ -176,6 +198,11 @@ class TestHumanOutcomesSalesOps(unittest.TestCase):
     def test_peer_catalog_blobs_untouched(self):
         for rel, expected in CATALOG.items():
             self.assertEqual(git_hash(rel), expected, rel)
+
+    def test_humans_page_uses_current_carrier_token(self):
+        with open(os.path.join(ROOT, "humans.html"), encoding="utf-8") as handle:
+            matches = CARRIER_SCRIPT_RE.findall(handle.read())
+        self.assertEqual([match[1] for match in matches], [ASSET_V])
 
     def test_required_paths_exist(self):
         for rel in REQUIRED_SALES_PATHS:
