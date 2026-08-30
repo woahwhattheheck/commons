@@ -57,6 +57,10 @@ _UNSAFE_MEMORY_PATTERNS = tuple(re.compile(pattern, re.I) for pattern in (
     r"\b(?:ignore (?:all|any|the|previous|prior) instructions|system prompt|developer message|prompt injection)\b",
     r"\b(?:chain[- ]of[- ]thought|hidden reasoning|internal reasoning|private scratchpad)\b",
 ))
+_RETIRED_SOCIAL_CLOSER = "337" + " " + "NO"
+_RETIRED_SOCIAL_CLOSER_RE = re.compile(
+    r"[ \t]+" + re.escape(_RETIRED_SOCIAL_CLOSER) + r"\.?[ \t]*\Z"
+)
 
 # One scan per ingest process. note_written() updates this optional context
 # cache immediately so a create followed by a read sees the new board without
@@ -119,8 +123,11 @@ def _unsafe_memory_text(value):
 
 
 def _sanitize_memory_entry(entry):
-    """Fail closed for bounded high-risk markers in a projected entry."""
+    """Sanitize living projections without rewriting append-only source receipts."""
     out = dict(entry or {})
+    for field in _PRIVACY_TEXT_FIELDS:
+        if field in out:
+            out[field] = _RETIRED_SOCIAL_CLOSER_RE.sub("", str(out[field] or ""))
     values = [out.get(field) for field in _PRIVACY_TEXT_FIELDS]
     tags = out.get("tags") or []
     values.extend(tags if isinstance(tags, list) else [tags])

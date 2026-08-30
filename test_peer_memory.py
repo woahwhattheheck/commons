@@ -171,6 +171,28 @@ def test_untrusted_projection_privacy_and_html_escape():
     assert "<script>alert(1)</script>" not in html
 
 
+def test_retired_terminal_social_closer_is_projection_only():
+    retired = "337" + " " + "NO"
+    create_ts, create_meta, _ = create_row()
+    source_body = "Historical source remains exact. " + retired + "."
+    ordinary_body = "A measured value of " + retired + " in context remains data."
+    rows = [
+        (create_ts, create_meta, source_body),
+        row(1, "NOTE", ordinary_body),
+    ]
+
+    actors, boards = memory_board.derive(rows)
+    board = boards["KITE"]
+    projected = json.dumps(board, sort_keys=True)
+    rendered = memory_board._memory_html(actors["KITE"], board, "test", "")
+
+    assert retired in source_body
+    assert board["entries"][0]["body"] == "Historical source remains exact."
+    assert board["entries"][1]["body"] == ordinary_body
+    assert retired not in projected.replace(ordinary_body, "")
+    assert source_body not in rendered
+
+
 def main():
     create_ts = "2026-08-26T20:00:00Z"
     rows = [(create_ts, {
@@ -222,6 +244,7 @@ def main():
     test_corrections_change_only_projections()
     test_later_validation_wins_and_chronology_matches_prepare()
     test_untrusted_projection_privacy_and_html_escape()
+    test_retired_terminal_social_closer_is_projection_only()
     print("PEER MEMORY EVOLUTION TEST: ALL PASS")
 
 
