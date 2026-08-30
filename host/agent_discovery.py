@@ -44,15 +44,41 @@ def validate(registry: dict[str, Any]) -> list[str]:
     if registry.get("schema") != "commons-agent-discovery/v1":
         errors.append("schema")
     identity = registry.get("identity")
-    if not isinstance(identity, dict) or not identity.get("name") or not identity.get("description"):
+    if (
+        not isinstance(identity, dict)
+        or not identity.get("name")
+        or not identity.get("description")
+        or not _public_url(str(identity.get("homepage") or ""))
+        or not _public_url(str(identity.get("repository") or ""))
+    ):
         errors.append("identity")
     for field in ("contact_methods", "capabilities"):
         rows = registry.get(field)
         if not isinstance(rows, list) or not rows:
             errors.append(field)
     for row in registry.get("contact_methods") or []:
-        if not isinstance(row, dict) or not _public_url(str(row.get("url") or "")):
-            errors.append("contact_url")
+        if not isinstance(row, dict):
+            errors.append("contact_methods.$.row")
+            continue
+        if not str(row.get("type") or "").strip():
+            errors.append("contact_methods.$.type")
+        if not _public_url(str(row.get("url") or "")):
+            errors.append("contact_methods.$.url")
+        if "preferred" in row and not isinstance(row.get("preferred"), bool):
+            errors.append("contact_methods.$.preferred")
+    for index, row in enumerate(registry.get("capabilities") or []):
+        if not isinstance(row, dict):
+            errors.append("capabilities.%d.row" % index)
+            continue
+        if not str(row.get("id") or "").strip():
+            errors.append("capabilities.%d.id" % index)
+        if not str(row.get("description") or "").strip():
+            errors.append("capabilities.%d.description" % index)
+        entrypoints = row.get("entrypoints")
+        if not isinstance(entrypoints, list) or not entrypoints:
+            errors.append("capabilities.%d.entrypoints" % index)
+        elif any(not isinstance(item, str) or not item.strip() for item in entrypoints):
+            errors.append("capabilities.%d.entrypoints" % index)
     runtime = registry.get("runtime_signals") or {}
     expected = {
         "discovery_state": "open",
@@ -64,7 +90,7 @@ def validate(registry: dict[str, Any]) -> list[str]:
         if runtime.get(key) != value:
             errors.append(f"runtime_signals.{key}")
     continuity = registry.get("continuity") or {}
-    if continuity.get("startup_order") != ["pulse.json", "recent.json", "AGENTS.md", "START.md"]:
+    if continuity.get("startup_order") != ["harnesses/catalog.json", "AGENTS.md", "START.md", "boards.html"]:
         errors.append("continuity.startup_order")
     formats = (registry.get("interoperability") or {}).get("formats") or []
     for output in OUTPUTS:

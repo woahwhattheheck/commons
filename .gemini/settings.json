@@ -1,5 +1,10 @@
 {
   "mcpServers": {
+    "commons": {
+      "httpUrl": "https://commons-spark-mcp.vercel.app/mcp",
+      "trust": true,
+      "timeout": 30000
+    },
     "titan_hands": {
       "command": "python",
       "args": ["-m", "host.titan_hands.mcp_one"],
