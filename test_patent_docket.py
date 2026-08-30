@@ -10,6 +10,7 @@ from pathlib import Path
 import subprocess
 import sys
 import unittest
+from unittest import mock
 
 
 ROOT = Path(__file__).resolve().parent
@@ -69,6 +70,36 @@ class PatentDocketTests(unittest.TestCase):
         broken["entries"][1]["earliest_public_receipt"]["commit_sha"] = "0" * 40
         with self.assertRaisesRegex(patent_docket.DocketError, "earliest commit drift"):
             patent_docket.validate(ROOT, broken, self.schema)
+
+    def test_shallow_boundary_validates_pinned_add_receipt(self):
+        receipt = self.docket["entries"][0]["earliest_public_receipt"]
+        with mock.patch.object(
+            patent_docket,
+            "_earliest_add",
+            return_value=("f" * 40, "2026-08-29T04:49:36Z"),
+        ), mock.patch.object(patent_docket, "_is_shallow", return_value=True):
+            patent_docket._validate_receipt(
+                ROOT,
+                receipt,
+                self.docket["entries"][0]["source"]["path"],
+                "receipt",
+            )
+
+    def test_shallow_boundary_rejects_forged_receipt_timestamp(self):
+        receipt = copy.deepcopy(self.docket["entries"][0]["earliest_public_receipt"])
+        receipt["disclosed_at"] = "2026-08-29T04:49:36Z"
+        with mock.patch.object(
+            patent_docket,
+            "_earliest_add",
+            return_value=("f" * 40, "2026-08-29T04:49:36Z"),
+        ), mock.patch.object(patent_docket, "_is_shallow", return_value=True):
+            with self.assertRaisesRegex(patent_docket.DocketError, "disclosure timestamp drift"):
+                patent_docket._validate_receipt(
+                    ROOT,
+                    receipt,
+                    self.docket["entries"][0]["source"]["path"],
+                    "receipt",
+                )
 
     def test_private_key_injection_fails_closed(self):
         broken = copy.deepcopy(self.docket)
