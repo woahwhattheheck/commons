@@ -141,7 +141,10 @@ def reconcile_item(item, snapshot):
     item = item if isinstance(item, dict) else {}
     kind = item.get("kind")
     job_id = str(item.get("id") or "")
-    claimed = [p for p in (item.get("claimed_paths") or []) if isinstance(p, str) and p]
+    claimed_paths = item.get("claimed_paths")
+    if not isinstance(claimed_paths, list):
+        claimed_paths = []
+    claimed = [p for p in claimed_paths if isinstance(p, str) and p]
     chat_ignored = bool(
         snapshot.get("chat_text")
         or snapshot.get("chat_said_done")
@@ -228,8 +231,18 @@ def measure_tree(root, main_sha=""):
     if catalog.get("error"):
         return {"error": catalog["error"], "open_now": [], "items": []}
     snapshot = {"main_paths": {}, "main_sha": str(main_sha or "")}
-    for item in catalog.get("items") or []:
-        for path in item.get("claimed_paths") or []:
+    items = catalog.get("items")
+    if not isinstance(items, list):
+        items = []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        paths = item.get("claimed_paths")
+        if not isinstance(paths, list):
+            continue
+        for path in paths:
+            if not isinstance(path, str) or not path:
+                continue
             snapshot["main_paths"][path] = os.path.exists(os.path.join(root, path))
     return project(catalog, snapshot)
 
