@@ -49,6 +49,24 @@ class AgentDiscoveryTests(unittest.TestCase):
         self.assertNotIn("A2A", self.registry["interoperability"]["protocols"])
         self.assertIn("https://commons-spark-mcp.vercel.app/mcp", projected["agents.txt"])
 
+    def test_validation_rejects_fields_render_requires(self) -> None:
+        cases = (
+            (lambda value: value["runtime_signals"].pop("runtime_state"), "runtime_signals.runtime_state"),
+            (lambda value: value["contact_methods"][0].pop("preferred"), "contact_methods.$.preferred"),
+            (lambda value: value["continuity"].pop("pulse"), "continuity.pulse"),
+            (lambda value: value["continuity"].pop("recent"), "continuity.recent"),
+            (lambda value: value["continuity"].pop("receipts"), "continuity.receipts"),
+            (lambda value: value["continuity"].pop("instruction"), "continuity.instruction"),
+        )
+        for mutate, expected in cases:
+            with self.subTest(expected=expected):
+                registry = json.loads(json.dumps(self.registry))
+                mutate(registry)
+                errors = agent_discovery.validate(registry)
+                self.assertIn(expected, errors)
+                with self.assertRaisesRegex(ValueError, "INVALID"):
+                    agent_discovery.projections(registry)
+
 
 if __name__ == "__main__":
     unittest.main()

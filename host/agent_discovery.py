@@ -51,9 +51,18 @@ def validate(registry: dict[str, Any]) -> list[str]:
         if not isinstance(rows, list) or not rows:
             errors.append(field)
     for row in registry.get("contact_methods") or []:
-        if not isinstance(row, dict) or not _public_url(str(row.get("url") or "")):
+        if not isinstance(row, dict):
             errors.append("contact_url")
-    runtime = registry.get("runtime_signals") or {}
+            continue
+        if not _public_url(str(row.get("url") or "")):
+            errors.append("contact_url")
+        if not isinstance(row.get("preferred"), bool):
+            errors.append("contact_methods.$.preferred")
+    runtime = registry.get("runtime_signals")
+    if not isinstance(runtime, dict):
+        if runtime is not None:
+            errors.append("runtime_signals")
+        runtime = {}
     expected = {
         "discovery_state": "open",
         "runtime_access": "public",
@@ -63,9 +72,18 @@ def validate(registry: dict[str, Any]) -> list[str]:
     for key, value in expected.items():
         if runtime.get(key) != value:
             errors.append(f"runtime_signals.{key}")
-    continuity = registry.get("continuity") or {}
+    if not str(runtime.get("runtime_state") or "").strip():
+        errors.append("runtime_signals.runtime_state")
+    continuity = registry.get("continuity")
+    if not isinstance(continuity, dict):
+        if continuity is not None:
+            errors.append("continuity")
+        continuity = {}
     if continuity.get("startup_order") != ["pulse.json", "recent.json", "AGENTS.md", "START.md"]:
         errors.append("continuity.startup_order")
+    for field in ("pulse", "recent", "receipts", "instruction"):
+        if not str(continuity.get(field) or "").strip():
+            errors.append(f"continuity.{field}")
     formats = (registry.get("interoperability") or {}).get("formats") or []
     for output in OUTPUTS:
         if output not in formats:
