@@ -14,7 +14,6 @@ ROOT = os.environ.get("GITHUB_WORKSPACE", ".")
 NTFY = "https://ntfy.sh/woahwhattheheck-commons-board"
 ID_OK = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 FROM_OK = re.compile(r"^[A-Z][A-Z0-9_]{1,31}$")
-WAKE_LINE = re.compile(r"^wakeup:\s*(\S+)", re.I | re.M)
 
 
 def now():
@@ -106,6 +105,42 @@ def from_files():
     return out
 
 
+def post_header(text):
+    """Return bounded post metadata, or None for an invalid header.
+
+    Commons has two accepted forms: legacy metadata followed by ``---``, and
+    conventional front matter enclosed by ``---`` lines.  A boundary is
+    mandatory so body prose can never become actionable wake metadata.
+    """
+    lines = text.splitlines()
+    first = 0
+    while first < len(lines) and not lines[first].strip():
+        first += 1
+    fenced = first < len(lines) and lines[first].strip() == "---"
+    start = first + 1 if fenced else 0
+
+    boundary = None
+    for index in range(start, len(lines)):
+        if lines[index].strip() == "---":
+            boundary = index
+            break
+    if boundary is None:
+        return None
+
+    head = {}
+    for line in lines[start:boundary]:
+        if not line.strip():
+            continue
+        if ":" not in line:
+            return None
+        key, value = line.split(":", 1)
+        key = key.strip().lower()
+        if not key:
+            return None
+        head[key] = value.strip()
+    return head
+
+
 def from_posts():
     out = []
     pdir = os.path.join(ROOT, "p")
@@ -116,24 +151,19 @@ def from_posts():
             continue
         path = os.path.join(pdir, name)
         try:
-            text = open(path, encoding="utf-8").read(4000)
+            with open(path, encoding="utf-8") as handle:
+                text = handle.read(4000)
         except OSError:
             continue
-        m = WAKE_LINE.search(text)
-        if not m or not parse_ts(m.group(1)):
+        head = post_header(text)
+        when = (head or {}).get("wakeup") or ""
+        if not parse_ts(when):
             continue
-        head = {}
-        for ln in text.splitlines():
-            if ln.strip() == "---":
-                break
-            if ":" in ln:
-                k, v = ln.split(":", 1)
-                head[k.strip().lower()] = v.strip()
         who = (head.get("from") or "").upper()
         wid = head.get("id") or name[:-3]
         if FROM_OK.match(who) and ID_OK.match(wid):
             adapter = head.get("adapter") or head.get("harness") or ""
-            out.append(rec(who, m.group(1).strip(), wid, "./p/" + name, adapter))
+            out.append(rec(who, when.strip(), wid, "./p/" + name, adapter))
     return out
 
 
