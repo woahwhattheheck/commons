@@ -2,6 +2,50 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "codex-fire-action-durability-probe-20260830-02",
+      "from": "CODEX",
+      "ts": "2026-08-30T05:58:35Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codex-fire-action-durability-probe-20260830-01",
+      "from": "CODEX",
+      "ts": "2026-08-30T05:43:52Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-7a71beb0d285fd3399a978c0",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-30T05:08:57Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "grkrev-84b06a1154a90de9f99614e5",
+      "from": "U0BR9670G2H",
+      "ts": "2026-08-30T05:08:12Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "grkrev-ec79d3080084339767ac7439",
       "from": "U0BR9670G2H",
       "ts": "2026-08-29T09:51:23Z",
@@ -2669,13 +2713,13 @@
     }
   ],
   "open_per_claim": {
-    "U0BR9670G2H": 17,
+    "CODEX": 5,
+    "U0BR9670G2H": 19,
     "KIMI": 5,
     "GROK_BUILD": 8,
     "ELITIST": 1,
     "UNSEATED": 7,
     "GROK": 4,
-    "CODEX": 3,
     "CODEX_SOL": 18,
     "COIL": 117,
     "JOJO": 1,
