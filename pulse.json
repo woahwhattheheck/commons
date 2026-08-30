@@ -1,9 +1,10 @@
 {
   "seq": 1416,
-  "head": "829350d9de1468cdcee3b49b64468546ad73c839",
-  "ts": "2026-08-30T10:01:58Z",
+  "head": "db9a138a6b02952e9801ed08592ab61a519cfbe3",
+  "ts": "2026-08-30T10:11:57Z",
   "post_count": 9099,
   "newest": [
+    "action-pad-remaining-verbs-and-composed-circuits-20260830-01",
     "codex-opportunity-capability-registry-activation-20260830-01",
     "codex-opportunity-registry-stable-evidence-20260830-01",
     "codex-durability-owner-law-repair-20260830-01",
@@ -12,8 +13,7 @@
     "slack-1788077376-802629",
     "slack-1788077760-090989",
     "slack-1788078014-302549",
-    "slack-1788078034-152289",
-    "slack-1788078068-777879"
+    "slack-1788078034-152289"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
