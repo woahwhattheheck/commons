@@ -30,7 +30,7 @@ class MainVelocityTests(unittest.TestCase):
         self.assertEqual(result["windows"]["24h"]["commits"], 2400)
         self.assertTrue(result["high_velocity"])
         self.assertEqual(result["integration_mode"], "coalesce_ranges")
-        self.assertFalse(result["approval_required"])
+        self.assertNotIn("approval_required", result)
 
 
 class MainRangeTests(unittest.TestCase):
@@ -43,15 +43,26 @@ class MainRangeTests(unittest.TestCase):
         names = [name for name, _ in main_range.plan(["p/1.md", "fresh.md"])]
         self.assertEqual(names, ["imports", "open-door", "muhlnickel"])
 
-    def test_receipt_freezes_range_and_has_no_approval_gate(self):
+    def test_receipt_freezes_range_and_reports_verification_touches(self):
         with mock.patch.object(main_range, "resolve_range", return_value=("base", "head", 2375)), \
              mock.patch.object(main_range, "changed_paths", return_value=["host/a.py"]), \
              mock.patch.object(main_range.main_velocity, "measure", return_value={"high_velocity": True}):
             receipt = main_range.build_receipt("HEAD", None, 30, False)
         self.assertEqual(receipt["commit_count"], 2375)
         self.assertEqual(receipt["main_movement_policy"], "freeze_then_next_range")
-        self.assertFalse(receipt["approval_required"])
-        self.assertEqual(receipt["observations"]["protected_path_touches"], 0)
+        self.assertNotIn("approval_required", receipt)
+        self.assertEqual(receipt["verification_paths"], [])
+        self.assertEqual(receipt["observations"]["verification_path_touches"], 0)
+
+    def test_verification_path_receipt_uses_open_door_vocabulary(self):
+        paths = ["host/a.py", "p/one.md", "test_main_range.py"]
+        self.assertEqual(
+            main_range.verification_paths(paths),
+            ["p/one.md", "test_main_range.py"],
+        )
+        source = (ROOT / "host/main_range.py").read_text(encoding="utf-8")
+        self.assertNotIn("PROTECTED_", source)
+        self.assertNotIn("protected_paths", source)
 
     def test_five_observers_do_not_amplify_every_main_push(self):
         names = ("import-check.yml", "muhlnickel-spec-guard.yml", "open-door-guard.yml", "path-manifest.yml", "record-guard.yml")
