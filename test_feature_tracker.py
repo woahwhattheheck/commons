@@ -322,6 +322,22 @@ def test_live_tree_shape_and_golden():
             ub_blob and ub_blob in " ".join(ub.get("blob_proof") or []),
             (ub_blob, ub.get("blob_proof")),
         )
+    check("website-people-email-book row", "website-people-email-book-20260830-01" in by_id, sorted(by_id))
+    if "website-people-email-book-20260830-01" in by_id:
+        wpeb = by_id["website-people-email-book-20260830-01"]
+        check("website-people-email-book source built", wpeb["source_status"] == "SOURCE_BUILT", wpeb)
+        check("website-people-email-book tested", wpeb["test_status"] == "TESTED", wpeb)
+        check(
+            "website-people-email-book live unmeasured",
+            wpeb["live_status"] == "UNMEASURED" and wpeb["rollup"] == "TESTED",
+            wpeb,
+        )
+        check(
+            "website-people-email-book claimed host+tests",
+            "host/website_people_email_book.py" in wpeb["claimed_paths"]
+            and "test_website_people_email_book.py" in wpeb["test_paths"],
+            wpeb,
+        )
     json_path = os.path.join(ROOT, ft.JSON_OUT)
     html_path = os.path.join(ROOT, ft.HTML_OUT)
     check("committed json exists", os.path.isfile(json_path))
