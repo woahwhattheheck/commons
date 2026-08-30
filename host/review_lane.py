@@ -120,8 +120,11 @@ def load_catalog(text):
         return {"error": "catalog is not JSON", "candidates": []}
     if not isinstance(data, dict):
         return {"error": "catalog is not an object", "candidates": []}
+    raw_candidates = data.get("candidates") or []
+    if not isinstance(raw_candidates, list):
+        return {"error": "candidates is not a list", "candidates": []}
     rows = []
-    for item in data.get("candidates") or []:
+    for item in raw_candidates:
         if not isinstance(item, dict):
             continue
         number = str(item.get("number") or "").strip()
