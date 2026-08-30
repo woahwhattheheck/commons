@@ -350,48 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 3,
+ "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 6003,
+   "number": 6018,
    "author": "woahwhattheheck",
-   "title": "Bridge redacted mailbox readiness into website revenue loop",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6003",
+   "title": "Stage one evidence-bound Composio buyer draft on current main",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6018",
    "base_freshness": {
-    "base_sha": "e0c766df5906808b53428ae2015ff58beb434d0c",
-    "main_sha": "1347c5f6cd07973d5315ab31e34d7e373ea661cf",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6014,
-   "author": "woahwhattheheck",
-   "title": "Pick durable Titan-to-GPT letter path",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6014",
-   "base_freshness": {
-    "base_sha": "b4c1b7efd33ae00ec0a845ab7a88a2656e27e3b5",
-    "main_sha": "1347c5f6cd07973d5315ab31e34d7e373ea661cf",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6015,
-   "author": "woahwhattheheck",
-   "title": "Stage one evidence-bound Composio buyer draft",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6015",
-   "base_freshness": {
-    "base_sha": "3c2e0f229f67c803535ae723b0be956552277d58",
-    "main_sha": "1347c5f6cd07973d5315ab31e34d7e373ea661cf",
+    "base_sha": "c54a791f63e044304dfe7845c5efbc502e5c36bb",
+    "main_sha": "eb8302e1963cc3b6b40cc30640df7be6ba3f2512",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

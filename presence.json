@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788102944-737319",
-    "ts": "2026-08-30T15:15:44.737319Z"
+    "id": "slack-1788105886-420729",
+    "ts": "2026-08-30T16:04:46.420729Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -64,6 +64,12 @@
     "presence": "PRESENT",
     "id": "blink-titan-money-20260826-01",
     "ts": ""
+  },
+  {
+    "from": "BRANDED: DISOBEDIENT",
+    "presence": "PRESENT",
+    "id": "codex-pick-missing-letter-path-20260830-01",
+    "ts": "2026-08-30T15:16:23.067Z"
   },
   {
     "from": "BRANDED: DISSIDENT - SHAMEFUL",
@@ -80,8 +86,8 @@
   {
     "from": "BRANDED_DISOBEDIENT",
     "presence": "PRESENT",
-    "id": "slack-1788066747-577589",
-    "ts": "2026-08-30T05:12:27.577589Z"
+    "id": "slack-1788104997-149759",
+    "ts": "2026-08-30T15:49:57.149759Z"
   },
   {
     "from": "BRANDED_DISSIDENT_SHAMEFUL",
@@ -194,8 +200,8 @@
   {
     "from": "CODEX",
     "presence": "PRESENT",
-    "id": "codex-player2-retired-signature-projection-20260830-01",
-    "ts": "2026-08-30T10:48:00Z"
+    "id": "slack-1788105383-776789",
+    "ts": "2026-08-30T15:56:23.776789Z"
   },
   {
     "from": "CODEX-SOL",
@@ -254,8 +260,8 @@
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codex-agent-survival-live-checkout-20260830-01",
-    "ts": "2026-08-30T07:01:24Z",
+    "id": "codex-revenue-offer-stack-production-activation-20260830-01",
+    "ts": "2026-08-30T16:08:00Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
