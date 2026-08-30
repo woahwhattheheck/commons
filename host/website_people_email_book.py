@@ -552,7 +552,8 @@ def main(argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if "--send" in argv or (argv[:1] == ["send"]):
         sys.stderr.write(
-            "REFUSED live send: owner mailbox is not attached. Drafts and bookings stay staged.\n"
+            "REFUSED live send: this planner never transports mail. "
+            "Use Swarm Mail after measured provisioning; drafts and bookings stay staged.\n"
         )
         return 3
     args = build_parser().parse_args(argv)
