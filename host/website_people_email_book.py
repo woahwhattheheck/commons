@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Website → people → email drafts → staged call bookings.
+"""Website → external prospects → email drafts → staged call bookings.
 
 Commons composition of the Explee auto-GTM loop. The website is the seed.
 Live send is refused until an owner mailbox exists. This lane does not remint
@@ -9,6 +9,7 @@ revenue/smart_outreach, revenue/subzero_gtm, or Swarm Mail.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import re
 import sys
@@ -16,14 +17,17 @@ import urllib.error
 import urllib.request
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_FIXTURE = ROOT / "revenue" / "website_people_email_book" / "fixture_seller.html"
 DEFAULT_LOOP = ROOT / "revenue" / "website_people_email_book" / "loop.json"
-SCHEMA_VERSION = "commons-website-people-email-book/v1"
+DEFAULT_PROSPECTS = ROOT / "revenue" / "smart_outreach" / "candidates.json"
+DEFAULT_RECEIPTS = ROOT / "revenue" / "payment_ready" / "outreach_receipts"
+SCHEMA_VERSION = "commons-website-people-email-book/v2"
 KIND = "WEBSITE_PEOPLE_EMAIL_BOOK_LOOP"
-MEASURED_AT = "2026-08-30T12:50:00Z"
+MEASURED_AT = "2026-08-30T13:14:08Z"
 EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
 TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.I | re.S)
 H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.I | re.S)
@@ -63,7 +67,7 @@ DOES_NOT_REPLACE = [
     "revenue/reply_to_revenue",
 ]
 COMPOSE = {
-    "smart_outreach": "later evidence-bound qualification; do not remint candidates.json",
+    "smart_outreach": "current evidence-bound prospect discovery and collision qualification",
     "swarm_mail": "later exact-once transport after owner mailbox",
     "subzero_gtm": "different surface; SUBZERO SKU architecture; that leftover forbids outreach",
     "reply_to_revenue": "inbound cash truth after replies exist",
@@ -235,11 +239,11 @@ def extract_website(html: str, source: str) -> dict[str, Any]:
     }
 
 
-def _finish_person(raw: dict[str, Any]) -> dict[str, Any]:
+def _finish_seller_contact(raw: dict[str, Any]) -> dict[str, Any]:
     email = raw["email"]
     name = raw["name"]
     return {
-        "person_id": person_id(name, email),
+        "contact_id": person_id(name, email),
         "name": name,
         "role": raw["role"],
         "email": email,
@@ -250,24 +254,22 @@ def _finish_person(raw: dict[str, Any]) -> dict[str, Any]:
             "value": email,
             "state": "VERIFIED" if email else "UNVERIFIED",
         },
-        "next_action": (
-            "stage email and booking CTA; do not send until owner mailbox"
-            if email
-            else "no verified email on the website; do not invent a mailbox"
-        ),
+        "next_action": "seller context only; never treat this site's own contact as a prospect",
     }
 
 
-def _draft(person: dict[str, Any], website: dict[str, Any]) -> dict[str, str]:
-    first = person["name"].split()[0] if person["name"] else "there"
-    need = person["need"] or website["icp"] or website["description"]
+def _draft(prospect: dict[str, Any], website: dict[str, Any]) -> dict[str, str]:
+    organization = prospect["organization"]
+    role = prospect["owner_role"] or f"{organization} team"
+    need = prospect["evidence"]["exact_quote"]
     book = website["book_url"] or "reply with a time (owner calendar not attached yet)"
-    subject = f"{first}, book a call — {website['headline']}"
+    subject = f"One bounded proof for {organization}"
     body = (
-        f"Hi {person['name']},\n\n"
-        f"I read {website['source']} — {website['headline']}. {website['description']}\n\n"
-        f"You wrote: \"{need}\"\n\n"
-        f"That matches who this is for: {website['icp']}\n\n"
+        f"Hi {role},\n\n"
+        f"Your public page says: \"{need}\"\n"
+        f"Source: {prospect['evidence']['source_url']}\n\n"
+        f"{website['headline']}. {website['description']}\n"
+        f"This is for: {website['icp']}\n\n"
         f"If that is still true, book a call: {book}\n\n"
         f"If this is not relevant, reply no or opt out and I will close it.\n\n"
         f"— Commons draft only. Not sent. Live send waits on the owner mailbox."
@@ -275,10 +277,10 @@ def _draft(person: dict[str, Any], website: dict[str, Any]) -> dict[str, str]:
     return {"subject": subject, "body": body}
 
 
-def _booking(person: dict[str, Any], website: dict[str, Any]) -> dict[str, Any]:
+def _booking(prospect: dict[str, Any], website: dict[str, Any]) -> dict[str, Any]:
     book_url = website["book_url"]
     return {
-        "person_id": person["person_id"],
+        "prospect_id": prospect["prospect_id"],
         "state": "STAGED_NOT_BOOKED",
         "book_url": book_url,
         "calendar": "SITE_BOOK_URL" if book_url else "NEEDS_OWNER_CALENDAR",
@@ -287,36 +289,116 @@ def _booking(person: dict[str, Any], website: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_loop(html: str, source: str, generated_at: str = MEASURED_AT) -> dict[str, Any]:
+def _load_smart_outreach() -> Any:
+    path = ROOT / "host" / "smart_outreach.py"
+    spec = importlib.util.spec_from_file_location("commons_smart_outreach", path)
+    if spec is None or spec.loader is None:
+        raise LoopError("cannot load evidence-bound smart outreach planner")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _seller_domains(source: str, contacts: list[dict[str, Any]]) -> set[str]:
+    domains = {
+        contact["email"].rsplit("@", 1)[1]
+        for contact in contacts
+        if isinstance(contact.get("email"), str)
+    }
+    if source.startswith("https://"):
+        hostname = (urlparse(source).hostname or "").casefold()
+        if hostname:
+            domains.add(hostname.removeprefix("www."))
+    return domains
+
+
+def _prospects(
+    catalog: dict[str, Any],
+    receipt_directory: Path,
+    seller_contacts: list[dict[str, Any]],
+    source: str,
+) -> list[dict[str, Any]]:
+    planner = _load_smart_outreach()
+    plan = planner.build_plan(catalog, receipt_directory)
+    seller_emails = {
+        contact["email"] for contact in seller_contacts if isinstance(contact.get("email"), str)
+    }
+    seller_domains = _seller_domains(source, seller_contacts)
+    results: list[dict[str, Any]] = []
+    for item in plan["items"]:
+        recipient = item["recipient_email"]
+        decision = item["decision"]
+        next_action = item["next_action"]
+        recipient_domain = recipient.rsplit("@", 1)[1] if isinstance(recipient, str) else None
+        if recipient in seller_emails or recipient_domain in seller_domains:
+            decision = "HOLD_SELLER_CONTACT"
+            next_action = "seller contact is context, not an external prospect; do not draft"
+        elif decision == "READY_TO_DRAFT" and (
+            not isinstance(recipient, str)
+            or item["route"].get("kind") != "EMAIL"
+            or item["route"].get("state") != "VERIFIED"
+        ):
+            decision = "RESEARCH_REQUIRED"
+            next_action = "find one verified first-party email route; do not invent a mailbox"
+        results.append(
+            {
+                "prospect_id": item["prospect_id"],
+                "organization": item["organization"],
+                "owner_role": item["owner_role"],
+                "recipient_email": recipient,
+                "evidence": dict(item["evidence"]),
+                "route": dict(item["route"]),
+                "score": item["score"],
+                "decision": decision,
+                "collision_receipts": list(item["collision_receipts"]),
+                "occupied_by": item["occupied_by"],
+                "next_action": next_action,
+            }
+        )
+    return results
+
+
+def build_loop(
+    html: str,
+    source: str,
+    prospect_catalog: dict[str, Any] | None = None,
+    receipt_directory: Path = DEFAULT_RECEIPTS,
+    generated_at: str = MEASURED_AT,
+) -> dict[str, Any]:
     if not isinstance(html, str) or not html.strip():
         raise LoopError("html must be non-empty")
     website = extract_website(html, source)
-    people = [_finish_person(raw) for raw in _page_people(html)]
+    seller_contacts = [_finish_seller_contact(raw) for raw in _page_people(html)]
+    if prospect_catalog is None:
+        prospect_catalog = json.loads(DEFAULT_PROSPECTS.read_text(encoding="utf-8"))
+    prospects = _prospects(prospect_catalog, receipt_directory, seller_contacts, source)
     emails: list[dict[str, Any]] = []
     bookings: list[dict[str, Any]] = []
-    for person in people:
-        if not person["email"]:
+    for prospect in prospects:
+        if prospect["decision"] != "READY_TO_DRAFT":
             continue
         emails.append(
             {
-                "person_id": person["person_id"],
-                "to": person["email"],
-                "draft": _draft(person, website),
+                "prospect_id": prospect["prospect_id"],
+                "to": prospect["recipient_email"],
+                "draft": _draft(prospect, website),
                 "transport": "STAGED_NOT_SENT",
             }
         )
-        bookings.append(_booking(person, website))
+        bookings.append(_booking(prospect, website))
     return {
         "schema_version": SCHEMA_VERSION,
         "kind": KIND,
         "generated_at": generated_at,
         "website": website,
-        "people": people,
+        "seller_contacts": seller_contacts,
+        "prospects": prospects,
         "emails": emails,
         "bookings": bookings,
         "truth": {
             "websites_ingested": 1,
-            "people_found": len(people),
+            "prospects_found": len(prospects),
+            "seller_contacts_observed": len(seller_contacts),
             "people_with_verified_email": len(emails),
             "emails_drafted": len(emails),
             "calls_booked": 0,
@@ -347,12 +429,30 @@ def validate_loop(value: dict[str, Any]) -> dict[str, Any]:
     emails = value.get("emails")
     if not isinstance(emails, list):
         raise LoopError("emails must be an array")
+    prospects = value.get("prospects")
+    if not isinstance(prospects, list):
+        raise LoopError("prospects must be an array")
+    ready = {
+        item.get("prospect_id"): item
+        for item in prospects
+        if isinstance(item, dict) and item.get("decision") == "READY_TO_DRAFT"
+    }
+    seller_emails = {
+        item.get("email")
+        for item in value.get("seller_contacts", [])
+        if isinstance(item, dict) and isinstance(item.get("email"), str)
+    }
     for item in emails:
         if not isinstance(item, dict) or item.get("transport") != "STAGED_NOT_SENT":
             raise LoopError("every email must remain STAGED_NOT_SENT")
         to = item.get("to")
         if not isinstance(to, str) or normalize_email(to) is None:
-            raise LoopError("email to= must be a real address from the website")
+            raise LoopError("email to= must be one verified external prospect address")
+        prospect = ready.get(item.get("prospect_id"))
+        if prospect is None or prospect.get("recipient_email") != to:
+            raise LoopError("every email must map to one READY_TO_DRAFT prospect")
+        if to in seller_emails:
+            raise LoopError("seller contacts cannot be used as outreach prospects")
     return value
 
 
@@ -373,7 +473,7 @@ def fetch_url(url: str) -> str:
 def summary(loop: dict[str, Any]) -> str:
     truth = loop["truth"]
     return (
-        f"VALID {truth['websites_ingested']} website {truth['people_found']} people "
+        f"VALID {truth['websites_ingested']} website {truth['prospects_found']} prospects "
         f"{truth['emails_drafted']} drafts {truth['calls_booked']} booked {truth['transport_actions']} sent"
     )
 
@@ -384,6 +484,8 @@ def build_parser() -> argparse.ArgumentParser:
     run = subparsers.add_parser("run")
     run.add_argument("--html", type=Path, default=DEFAULT_FIXTURE)
     run.add_argument("--url")
+    run.add_argument("--prospects", type=Path, default=DEFAULT_PROSPECTS)
+    run.add_argument("--receipts", type=Path, default=DEFAULT_RECEIPTS)
     run.add_argument("--output", type=Path)
     run.add_argument("--generated-at", default=MEASURED_AT)
     subparsers.add_parser("validate").add_argument("--input", type=Path, default=DEFAULT_LOOP)
@@ -412,7 +514,14 @@ def main(argv: list[str] | None = None) -> int:
             source = args.html.resolve().relative_to(ROOT).as_posix()
         except ValueError:
             source = str(args.html)
-    loop = build_loop(html, source, generated_at=args.generated_at)
+    catalog = json.loads(args.prospects.read_text(encoding="utf-8"))
+    loop = build_loop(
+        html,
+        source,
+        prospect_catalog=catalog,
+        receipt_directory=args.receipts,
+        generated_at=args.generated_at,
+    )
     validate_loop(loop)
     rendered = canonical_text(loop)
     if args.output:
