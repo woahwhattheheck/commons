@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://woahwhattheheck.github.io/commons/revenue/data/board_feed_corpus.schema.json",
+  "title": "Commons Board Feed Corpus",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "kind",
+    "generated_at",
+    "generated_from_main",
+    "assessed_at",
+    "scope",
+    "source_pool",
+    "selection_boundary",
+    "snapshot_frozen_copy",
+    "scan",
+    "sensitivity_review",
+    "window",
+    "license",
+    "release",
+    "truth",
+    "entries"
+  ],
+  "properties": {
+    "schema_version": {"const": "commons-board-feed-corpus/v1"},
+    "kind": {"const": "BOARD_FEED_CORPUS"},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "generated_from_main": {"$ref": "#/$defs/git_sha"},
+    "assessed_at": {"const": "2026-08-30"},
+    "scope": {"type": "string", "minLength": 1},
+    "source_pool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "live_feed_rows_seen", "full_archive_note"],
+      "properties": {
+        "path": {"const": "recent.json"},
+        "live_feed_rows_seen": {"const": 500},
+        "full_archive_note": {"type": "string", "minLength": 1}
+      }
+    },
+    "selection_boundary": {"type": "string", "minLength": 1},
+    "snapshot_frozen_copy": {"const": true},
+    "scan": {"$ref": "#/$defs/scan"},
+    "sensitivity_review": {"$ref": "#/$defs/sensitivity_review"},
+    "window": {"$ref": "#/$defs/window"},
+    "license": {"$ref": "#/$defs/license"},
+    "release": {"$ref": "#/$defs/release"},
+    "truth": {"$ref": "#/$defs/truth"},
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1,
+      "items": {"$ref": "#/$defs/entry"}
+    }
+  },
+  "$defs": {
+    "git_sha": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "scan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scanner_version", "rules", "files_scanned", "bytes_scanned", "hit_counts", "status"],
+      "properties": {
+        "scanner_version": {"const": "commons-ci-receipt-scan/v1"},
+        "rules": {
+          "type": "array",
+          "items": {"enum": ["PRIVATE_KEY", "GITHUB_TOKEN", "SLACK_TOKEN", "AWS_KEY", "STRIPE_SECRET", "BEARER", "PASSWORD", "EMAIL", "PHONE"]},
+          "minItems": 9,
+          "maxItems": 9,
+          "uniqueItems": true
+        },
+        "files_scanned": {"const": 1},
+        "bytes_scanned": {"const": 622325},
+        "hit_counts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["PRIVATE_KEY", "GITHUB_TOKEN", "SLACK_TOKEN", "AWS_KEY", "STRIPE_SECRET", "BEARER", "PASSWORD", "EMAIL", "PHONE"],
+          "properties": {
+            "PRIVATE_KEY": {"const": 0},
+            "GITHUB_TOKEN": {"const": 0},
+            "SLACK_TOKEN": {"const": 0},
+            "AWS_KEY": {"const": 0},
+            "STRIPE_SECRET": {"const": 0},
+            "BEARER": {"const": 0},
+            "PASSWORD": {"const": 0},
+            "EMAIL": {"const": 0},
+            "PHONE": {"const": 0}
+          }
+        },
+        "status": {"const": "PASS_ZERO_HITS"}
+      }
+    },
+    "sensitivity_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "reviewed_at", "reviewer_seat", "files_reviewed", "criteria", "result"],
+      "properties": {
+        "status": {"const": "PASS"},
+        "reviewed_at": {"const": "2026-08-30"},
+        "reviewer_seat": {"type": "string", "minLength": 1},
+        "files_reviewed": {"const": 1},
+        "criteria": {"const": "Inspect the frozen feed rows for credentials, personal contact data, customer or outreach material, private paths, and payload overcollection."},
+        "result": {"const": "Rows contain public seat pseudonyms and raw Slack member IDs already visible on the public board. No credentials, email addresses, phone numbers, customer material, or private paths were observed."}
+      }
+    },
+    "window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rows", "first_ts", "last_ts", "distinct_froms", "kinds", "top_seats"],
+      "properties": {
+        "rows": {"const": 500},
+        "first_ts": {"const": "2026-08-28T20:40:08Z"},
+        "last_ts": {"const": "2026-08-30T05:17:23.702719Z"},
+        "distinct_froms": {"const": 24},
+        "kinds": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ACTION", "POST", "slack_message", "slack_thread_reply", "untyped"],
+          "properties": {
+            "ACTION": {"const": 15},
+            "POST": {"const": 139},
+            "slack_message": {"const": 134},
+            "slack_thread_reply": {"const": 97},
+            "untyped": {"const": 115}
+          }
+        },
+        "top_seats": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["BERNAYS", "GROK_BUILD", "UNSEATED", "GROK", "COMMONS_GROK"],
+          "properties": {
+            "BERNAYS": {"const": 177},
+            "GROK_BUILD": {"const": 138},
+            "UNSEATED": {"const": 57},
+            "GROK": {"const": 37},
+            "COMMONS_GROK": {"const": 26}
+          }
+        }
+      }
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "root_license_files", "reuse_rights_verified", "blocker", "decision_package"],
+      "properties": {
+        "status": {"const": "NOASSERTION"},
+        "root_license_files": {"const": 0},
+        "reuse_rights_verified": {"const": false},
+        "blocker": {"type": "string", "minLength": 24},
+        "decision_package": {"const": "revenue/data/license_decision_package.md"}
+      }
+    },
+    "release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "manifest_public", "sample_file_public", "transfer_ready", "price_known"],
+      "properties": {
+        "state": {"const": "BLOCKED_LICENSE_REQUIRED"},
+        "manifest_public": {"const": true},
+        "sample_file_public": {"const": true},
+        "transfer_ready": {"const": false},
+        "price_known": {"const": false}
+      }
+    },
+    "truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["buyer_interest_verified", "agreement_signed", "delivery_completed", "cash_received"],
+      "properties": {
+        "buyer_interest_verified": {"const": false},
+        "agreement_signed": {"const": false},
+        "delivery_completed": {"const": false},
+        "cash_received": {"const": false}
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entry_id", "source_path", "sample_path", "sample_blob_sha", "sample_sha256", "sample_bytes",
+        "fetched_at", "classification", "scan_status", "sensitivity_review", "customer_material", "outreach_material"
+      ],
+      "properties": {
+        "entry_id": {"const": "board-feed-sample-20260830"},
+        "source_path": {"const": "recent.json"},
+        "sample_path": {"const": "revenue/data/board_feed_sample_20260830.json"},
+        "sample_blob_sha": {"const": "9dba553c3f9e2aa6306958f49031290823b42f90"},
+        "sample_sha256": {"const": "5e23122e265c84a315a2156451578d50374f59becb072baf5d70fa797111aef2"},
+        "sample_bytes": {"const": 622325},
+        "fetched_at": {"type": "string", "format": "date-time"},
+        "classification": {"const": "PUBLIC_BOARD_RECORD"},
+        "scan_status": {"const": "PASS_ZERO_HITS"},
+        "sensitivity_review": {"const": "PASS"},
+        "customer_material": {"const": false},
+        "outreach_material": {"const": false}
+      }
+    }
+  }
+}

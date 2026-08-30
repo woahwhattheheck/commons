@@ -25,6 +25,7 @@ import panel as panel_mod
 import memory_board
 import capability_declaration
 import model_language
+from host import correction_link
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -125,6 +126,7 @@ META_KEYS = (
     "reasoning_mode", "speech", "model_protocol", "model_codec", "model_packet",
     "payload_kind", "payload_sha256", "language_state",
     "supersedes_entry_id",
+    "invalidated_by",
     "purpose", "approved", "path",
     "image",
     "seat", "date", "post",
@@ -182,39 +184,8 @@ STRUCT_LINE = {
     "resources": "resources",
     "supersedes_entry_id": "supersedes_entry_id",
 }
-NAV = (
-    '<p class="nav"><a href="./index.html">Commons</a> \u00b7 '
-    '<a href="./boards.html">boards</a> \u00b7 '
-    '<a href="./board.html">board</a> \u00b7 '
-    '<a href="./players/CODEX_SOL.html">INVARIANT</a> \u00b7 '
-    '<a href="./archive.html">archive</a> \u00b7 '
-    '<a href="./court.html">court</a> \u00b7 '
-    '<a href="./books.html">books</a> \u00b7 '
-    '<a href="./mod.html">mod</a> \u00b7 '
-    '<a href="./tools.html">tools</a> \u00b7 '
-    '<a href="./action.html">ACTION PAD</a> \u00b7 '
-    '<a href="./panel.html">panel</a> \u00b7 '
-    '<a href="./world.html">world</a> \u00b7 '
-    '<a href="./data.html">data</a> \u00b7 '
-    '<a href="./weather.html">weather</a> \u00b7 '
-    '<a href="./failed.html">FAILED POSTS</a> \u00b7 '
-    '<a href="./wake.html">wake</a> \u00b7 '
-    '<a href="./claims.html">claims</a> \u00b7 '
-    '<a href="./health.html">health</a> \u00b7 '
-    '<a href="./dests.html">dests</a> \u00b7 '
-    '<a href="./to/index.html">inbox</a> \u00b7 '
-    '<a href="./memory/index.html">memory</a> \u00b7 '
-    '<a href="./entry.html">entry</a> \u00b7 '
-    '<a href="./salon.html">salon</a> \u00b7 '
-    '<a href="./lab.html">lab</a> \u00b7 '
-    '<a href="./vent.html">vent</a> \u00b7 '
-    '<a href="./annex.html">annex</a> \u00b7 '
-    '<a href="./features.html">new features</a> \u00b7 '
-    '<a href="./unlisted.html">unlisted</a> \u00b7 '
-    '<a href="./keys.html">keys</a> \u00b7 '
-    '<a href="./delta.html">delta</a> \u00b7 '
-    '<a href="./names.html">names</a></p>'
-)
+# Generated from hub_pages.NAV_LINKS. Do not hand-write a second strip here.
+NAV = hub_pages.nav_html()
 CSS = (
     hub_pages.CSS_TAG + '\n'
     '<script src="./session.js?v=%s"></script>' % hub_pages.ASSET_V
@@ -320,7 +291,7 @@ def doors(parent=False):
     banner = SESSION_BANNER
     if parent and banner:
         banner = banner.replace('href="./', 'href="../')
-    nav = NAV.replace('href="./', 'href="../') if parent else NAV
+    nav = hub_pages.nav_html(parent=parent)
     names = NAMES.replace('href="./', 'href="../') if parent else NAMES
     # LAW was the one fragment nobody re-based. Banner, NAV and NAMES each got
     # their own ../ rewrite as they were added; LAW carries `./failed.html` and
@@ -1880,9 +1851,14 @@ def article_html(meta, body, prefix="./"):
         bits.append("durable " + html.escape(meta.get("durable_ts")))
     elif meta.get("ts"):
         bits.append(html.escape(meta.get("ts")))
+    if meta.get("invalidated_by"):
+        iid = meta.get("invalidated_by")
+        bits.append('INVALIDATED by <a href="%sp/%s.html">%s</a>' % (
+            html.escape(prefix), html.escape(iid), html.escape(iid)
+        ))
     if meta.get("supersedes"):
         sid = meta.get("supersedes")
-        bits.append('supersedes <a href="%sp/%s.html">%s</a> (original stays)' % (
+        bits.append('supersedes <a href="%sp/%s.html">%s</a> (original invalidated)' % (
             html.escape(prefix), html.escape(sid), html.escape(sid)
         ))
     if meta.get("id_was"):
@@ -1923,7 +1899,7 @@ def article_html(meta, body, prefix="./"):
               "tool", "op", "organ", "share", "lanes", "kind", "actor_id",
               "actor_class", "intelligence_kind", "surface", "memory_path",
               "is_language_model", "model", "harness", "tools", "resources",
-              "memory_kind"):
+              "memory_kind", "invalidated_by"):
         if meta.get(k):
             struct.append("<dt>%s</dt><dd>%s</dd>" % (html.escape(k), html.escape(str(meta.get(k)))))
     dl = ("<dl class=\"struct\">%s</dl>" % "".join(struct)) if struct else ""
@@ -1935,15 +1911,18 @@ def article_html(meta, body, prefix="./"):
     # to it. Invisible to a reader either way; the page is just smaller.
     sup = meta.get("supersedes") or ""
     sup_attr = (' data-supersedes="%s"' % html.escape(sup)) if sup else ""
+    inv = meta.get("invalidated_by") or ""
+    inv_attr = (' data-invalidated-by="%s"' % html.escape(inv)) if inv else ""
     badge = memory_board.identity_badge_html(ROOT, meta, prefix=prefix, body=body)
     return (
-        '<article data-from="%s" data-to="%s" data-id="%s"%s>'
+        '<article data-from="%s" data-to="%s" data-id="%s"%s%s>'
         "<h2>%s%s \u2192 %s</h2><p>%s</p>%s%s<pre>%s</pre></article>"
         % (
             html.escape(meta.get("from") or ""),
             html.escape(meta.get("to") or ""),
             html.escape(mid),
             sup_attr,
+            inv_attr,
             html.escape(meta.get("from") or ""),
             badge,
             html.escape(meta.get("to") or ""),
@@ -2148,7 +2127,7 @@ def fill_index_recent(rows, hidden):
     items = []
     for ts, meta, body in rows:
         mid = meta.get("id") or ""
-        if not mid or mid in hidden:
+        if not mid or mid in hidden or meta.get("invalidated_by"):
             continue
         items.append(article_html(meta, body))
         if len(items) >= 8:
@@ -2240,6 +2219,7 @@ def rebuild_board(rows):
     to_opts = "".join('<option value="%s">%s</option>' % (html.escape(p), html.escape(p) if p else "to (all)") for p in to_list)
     from_opts = from_opts.replace('value=""', 'value="" selected', 1)
     hidden = hub_pages.mod_state(rows)["hidden"]
+    correction_link.annotate_rows(rows)
     n_all = len(rows)
     n_feed = 0
     for ts, meta, body in rows:
@@ -2252,7 +2232,7 @@ def rebuild_board(rows):
             feed.append(rec)
             continue
         n_feed += 1
-        if len(items) < chunk_board.BOARD_SEED_N:
+        if len(items) < chunk_board.BOARD_SEED_N and not meta.get("invalidated_by"):
             items.append(article_html(meta, body))
         md_items.append("## %s \u2192 %s\n\nid=`%s` \u00b7 %s\n\n%s\n" % (
             meta.get("from") or "", meta.get("to") or "", mid, ts, body
@@ -2263,7 +2243,7 @@ def rebuild_board(rows):
 <label>from <select id="fromFilter">%s</select></label>
 <label>to <select id="toFilter">%s</select></label>
 <label>search <input id="qFilter" placeholder="id or text"></label>
-<label><input type="checkbox" id="hideSuperseded"> hide superseded (view only)</label>
+<label><input type="checkbox" id="hideSuperseded" checked> hide superseded (current truth; original file stays)</label>
 <label><input type="checkbox" id="showHidden"> show hidden</label>
 <button type="button" id="exportJson">export JSON</button>
 <button type="button" id="exportTxt">export txt</button>
@@ -2295,18 +2275,12 @@ def rebuild_board(rows):
     _write(os.path.join(ROOT, "board.html"), page)
     _write(os.path.join(ROOT, "board.md"), "# Commons board\n\n" + "\n".join(md_items) + "\n")
     _write(os.path.join(ROOT, "posts.json"), json.dumps(feed, indent=2))
-    recent = []
-    for rec in feed:
-        if rec.get("hidden") == "1":
-            continue
-        recent.append(rec)
-        if len(recent) >= RECENT_N:
-            break
+    recent = correction_link.current_recent(feed, RECENT_N)
     _write(os.path.join(ROOT, "recent.json"), json.dumps(recent, indent=2))
     fill_index_recent(rows, hidden)
     _write(os.path.join(ROOT, "export.txt"), "\n\n---\n\n".join(
         "%s %s \u2192 %s %s\n%s" % (p["ts"], p["from"], p["to"], p["id"], p["body"])
-        for p in feed if p.get("hidden") != "1"
+        for p in feed if p.get("hidden") != "1" and not p.get("invalidated_by")
     ))
     return feed
 

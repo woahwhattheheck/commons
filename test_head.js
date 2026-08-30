@@ -16,8 +16,10 @@ global.sessionStorage = {
 };
 
 const calls = [];
-global.fetch = function (url) {
+const optsLog = [];
+global.fetch = function (url, options) {
   calls.push(String(url));
+  optsLog.push(options || {});
   return global.__fetchImpl(url);
 };
 
@@ -37,6 +39,11 @@ function assert(cond, msg) {
 }
 
 assert(H.cleanPath("./recent.json?v=1") === "recent.json", "cleanPath strips ./ and query");
+assert(H.pagesUrl("recent.json") === "./recent.json", "pagesUrl is visit-stable");
+assert(H.pagesUrl("recent.json", true) === "./recent.json", "boolean true no longer mints Date.now()");
+assert(H.pagesUrl("recent.json", "20260830a") === "./recent.json?v=20260830a", "commit-stable token bust is allowed");
+assert(H.fetchCacheMode("./recent.json") === "no-cache", "site assets revalidate");
+assert(H.fetchCacheMode("https://ntfy.sh/woahwhattheheck-commons-fresh/json?poll=1") === "no-store", "live ntfy stays no-store");
 assert(H.safePath("../secret") === "", "safePath refuses ..");
 assert(H.safePath("p/ok-id-20260820-01.md") === "p/ok-id-20260820-01.md", "safePath keeps p/{id}.md");
 assert(H.pathFromSearch("?path=p/ok-id-20260820-01.md") === "p/ok-id-20260820-01.md", "pathFromSearch reads ?path=");
@@ -100,6 +107,8 @@ H.fetchPath("../secret").then(function () {
 }).then(function (x) {
   assert(x.via === "pages" && x.sha === "", "Pages 200 uses Pages");
   assert(calls.every(function (u) { return u.indexOf("api.github.com") < 0; }), "Pages 200 does not call GitHub API");
+  assert(calls.every(function (u) { return !/[?&]v=\d{10,}/.test(u); }), "Pages URL has no Date.now() bust");
+  assert(optsLog.some(function (o) { return o.cache === "no-cache"; }), "Pages fetch uses no-cache so a second visit can 304");
 
   calls.length = 0;
   global.sessionStorage._s = {};

@@ -49,7 +49,9 @@ class ArbitrageScoutTests(unittest.TestCase):
     def test_page_is_open_and_non_executing(self):
         self.assertIn('name="to" value="OFFER"', self.page)
         self.assertIn('name="board" value="OFFER"', self.page)
-        self.assertIn('src="./carrier.js?v=20260824a"', self.page)
+        hub = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        asset_v = re.search(r'^ASSET_V\s*=\s*"([^"]+)"', hub, re.M).group(1)
+        self.assertIn('src="./carrier.js?v=%s"' % asset_v, self.page)
         self.assertIn("No login", self.page)
         self.assertIn("places no trade, purchases nothing", self.page)
         self.assertIn("License-blocked archives remain blocked", self.page)

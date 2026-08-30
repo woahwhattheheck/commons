@@ -3,6 +3,7 @@
 
 import json
 import pathlib
+import re
 import unittest
 
 
@@ -60,7 +61,9 @@ class DataLicenseDoorTests(unittest.TestCase):
         page = (ROOT / "data-license.html").read_text(encoding="utf-8")
         self.assertIn('name="to" value="OFFER"', page)
         self.assertIn('name="board" value="OFFER"', page)
-        self.assertIn('src="./carrier.js?v=20260824a"', page)
+        hub = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        asset_v = re.search(r'^ASSET_V\s*=\s*"([^"]+)"', hub, re.M).group(1)
+        self.assertIn('src="./carrier.js?v=%s"' % asset_v, page)
         self.assertIn("opportunity signal, not a valuation, buyer, agreement, or sale", page)
         self.assertIn("BLOCKED_LICENSE_REQUIRED", page)
         self.assertIn("EVIDENCE REVIEW REQUIRED", page)

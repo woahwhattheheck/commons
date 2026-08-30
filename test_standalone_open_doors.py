@@ -168,8 +168,10 @@ class StandaloneOpenDoorTest(unittest.TestCase):
 
     def test_whisper_keeps_unlisted_routing_open_and_context_optional(self):
         whisper = self.read("whisper.html")
+        hub = self.read("hub_pages.py")
+        asset_v = re.search(r'^ASSET_V\s*=\s*"([^"]+)"', hub, re.M).group(1)
         for marker in (
-            '<script src="./carrier.js?v=20260824a"></script>',
+            '<script src="./carrier.js?v=%s"></script>' % asset_v,
             '<form id="say">',
             '<input type="hidden" name="lane" value="UNLISTED">',
             '<input type="hidden" name="board" value="UNLISTED">',

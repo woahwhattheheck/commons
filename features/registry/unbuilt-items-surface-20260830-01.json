@@ -1,0 +1,37 @@
+{
+  "added": "2026-08-30",
+  "capability": "Measures named leftovers with claimed_paths versus current main. Slack CLAIMED is not a land. Does not remint landed posts or close projector aliases.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "unbuilt-items.html",
+    "unbuilt-items.json",
+    "host/unbuilt_items.py",
+    "ground/UNBUILT_ITEMS.md",
+    "ground/UNBUILT_ITEMS.json",
+    "test_unbuilt_items.py"
+  ],
+  "dependencies": [],
+  "id": "unbuilt-items-surface-20260830-01",
+  "name": "Unbuilt items surface",
+  "next_gap": "Claude-derived unbuilt-item post stays UNBUILT. Do not remint Claude's id. Four projector aliases stay OPEN_ALIAS. fire_action stays unnamed.",
+  "owner_subsystem": "current-work",
+  "public_entrypoint": "unbuilt-items.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "current-work.html",
+    "feature-tracker.html",
+    "p/cursor-unbuilt-items-surface-20260830-01.md",
+    "arbitrage.html",
+    "data-license.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_unbuilt_items.py",
+    "host/unbuilt_items.py"
+  ]
+}

@@ -10,7 +10,7 @@
   },
   "counts": {
     "DEGRADED": 0,
-    "LIVE": 2,
+    "LIVE": 3,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
@@ -23,7 +23,9 @@
         "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
         "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
         "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
-        "0f6249cd06eadf2b2dbd75796320a743fb20f433"
+        "0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
+        "28a40d31b6bec435b4906addc0241f22419fb339"
       ],
       "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
       "carrier": "CODEX",
@@ -49,13 +51,15 @@
         "ev-arbitrage-opportunity-live-20260830-01",
         "ev-arbitrage-opportunity-blob-20260830-02",
         "ev-arbitrage-opportunity-live-20260830-02",
-        "ev-arbitrage-opportunity-receipt-20260830-02"
+        "ev-arbitrage-opportunity-receipt-20260830-02",
+        "ev-arbitrage-opportunity-blob-20260830-03",
+        "ev-arbitrage-opportunity-live-20260830-03"
       ],
       "file": "arbitrage-opportunity-road-20260830-01.json",
       "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-08-30T05:50:00Z",
+      "last_change": "2026-08-30T06:53:00Z",
       "live_status": "LIVE",
-      "main_sha": "c7444ffa60fff77e5daaf7a1e3eef4a2e0020dc0",
+      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
       "name": "Arbitrage opportunity road",
       "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
       "owner_subsystem": "commerce",
@@ -90,8 +94,80 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [
+        "unbuilt-items.html:f44566c640736a08ad09cf77f458a99cf74a9e3d",
+        "f44566c640736a08ad09cf77f458a99cf74a9e3d"
+      ],
+      "capability": "Measures named leftovers with claimed_paths versus current main. Slack CLAIMED is not a land. Does not remint landed posts or close projector aliases.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "unbuilt-items.html",
+        "unbuilt-items.json",
+        "host/unbuilt_items.py",
+        "ground/UNBUILT_ITEMS.md",
+        "ground/UNBUILT_ITEMS.json",
+        "test_unbuilt_items.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "unbuilt-items.html",
+        "unbuilt-items.json",
+        "host/unbuilt_items.py",
+        "ground/UNBUILT_ITEMS.md",
+        "ground/UNBUILT_ITEMS.json",
+        "test_unbuilt_items.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-unbuilt-items-git-20260830-01",
+        "ev-unbuilt-items-receipt-20260830-01",
+        "ev-unbuilt-items-source-20260830-01",
+        "ev-unbuilt-items-tests-20260830-01",
+        "ev-unbuilt-items-blob-20260830-01",
+        "ev-unbuilt-items-live-20260830-01"
+      ],
+      "file": "unbuilt-items-surface-20260830-01.json",
+      "id": "unbuilt-items-surface-20260830-01",
+      "last_change": "2026-08-30T06:53:00Z",
+      "live_status": "LIVE",
+      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
+      "name": "Unbuilt items surface",
+      "next_gap": "Claude-derived unbuilt-item post stays UNBUILT. Do not remint Claude's id. Four projector aliases stay OPEN_ALIAS. fire_action stays unnamed.",
+      "owner_subsystem": "current-work",
+      "public_entrypoint": "unbuilt-items.html",
+      "receipts": [
+        "cursor-unbuilt-items-surface-20260830-01"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "current-work.html",
+        "feature-tracker.html",
+        "p/cursor-unbuilt-items-surface-20260830-01.md",
+        "arbitrage.html",
+        "data-license.html"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_unbuilt_items.py",
+        "host/unbuilt_items.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
         "data-license.html:f416d7031fa05134d3bb16b8bd3b01910ebd0835",
-        "f416d7031fa05134d3bb16b8bd3b01910ebd0835"
+        "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
+        "data-license.html:0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
+        "0e1bbbd9e51b30fa1e51142456bda02cf879aa82"
       ],
       "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
       "carrier": "CODEX",
@@ -112,13 +188,15 @@
         "ev-unique-data-license-source-20260830-01",
         "ev-unique-data-license-tests-20260830-01",
         "ev-unique-data-license-blob-20260830-01",
-        "ev-unique-data-license-live-20260830-01"
+        "ev-unique-data-license-live-20260830-01",
+        "ev-unique-data-license-blob-20260830-02",
+        "ev-unique-data-license-live-20260830-02"
       ],
       "file": "unique-data-license-door-20260830-01.json",
       "id": "unique-data-license-door-20260830-01",
-      "last_change": "2026-08-30T05:18:00Z",
+      "last_change": "2026-08-30T06:53:00Z",
       "live_status": "LIVE",
-      "main_sha": "1d1b29374c131eacb900dca01b2725a138addb92",
+      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
       "name": "Unique data license door",
       "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
       "owner_subsystem": "commerce",
@@ -838,7 +916,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 15,
+  "n_features": 16,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

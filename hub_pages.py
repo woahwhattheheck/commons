@@ -42,7 +42,7 @@ DATA_SHEETS = [
 # rolled the cache key BACKWARD and handed readers stale JS again. That is the
 # mechanism behind "I refreshed and nothing changed" -- the fix keeps landing
 # and the next bake keeps reverting the reference to it.
-ASSET_V = "20260824a"
+ASSET_V = "20260830a"
 HEAD_JS_TAG = '<script src="./head.js?v=%s" data-head="1"></script>' % ASSET_V
 BOARD_JS_TAG = HEAD_JS_TAG + "\n" + '<script src="./board.js?v=%s"></script>' % ASSET_V
 CARRIER_V = ASSET_V
@@ -73,6 +73,57 @@ CSS_TAG = '<link rel="stylesheet" href="./commons.css?v=%s">' % CSS_V
 # desktop. Same treatment as the two tags above: one canonical string.
 VIEWPORT = '<meta name="viewport" content="width=device-width, initial-scale=1">'
 
+# One nav. Generated pages emit this strip the same way boards.html is written.
+# The list is the current ingest chrome, moved here so a second hand-written
+# <p class="nav"> cannot drift. No taste: hrefs and labels are the existing
+# strip, not a new catalog. Pages are not deleted. The open door is not shrunk.
+NAV_LINKS = (
+    ("./index.html", "Commons"),
+    ("./boards.html", "boards"),
+    ("./board.html", "board"),
+    ("./players/CODEX_SOL.html", "INVARIANT"),
+    ("./archive.html", "archive"),
+    ("./court.html", "court"),
+    ("./books.html", "books"),
+    ("./mod.html", "mod"),
+    ("./tools.html", "tools"),
+    ("./action.html", "ACTION PAD"),
+    ("./panel.html", "panel"),
+    ("./world.html", "world"),
+    ("./data.html", "data"),
+    ("./weather.html", "weather"),
+    ("./failed.html", "FAILED POSTS"),
+    ("./wake.html", "wake"),
+    ("./claims.html", "claims"),
+    ("./health.html", "health"),
+    ("./dests.html", "dests"),
+    ("./to/index.html", "inbox"),
+    ("./memory/index.html", "memory"),
+    ("./entry.html", "entry"),
+    ("./salon.html", "salon"),
+    ("./lab.html", "lab"),
+    ("./vent.html", "vent"),
+    ("./annex.html", "annex"),
+    ("./features.html", "new features"),
+    ("./unlisted.html", "unlisted"),
+    ("./keys.html", "keys"),
+    ("./delta.html", "delta"),
+    ("./names.html", "names"),
+)
+
+
+def nav_html(parent=False):
+    """Exactly one generated <p class="nav">. parent rebases ./ to ../."""
+    prefix = "../" if parent else "./"
+    parts = []
+    for href, label in NAV_LINKS:
+        if href.startswith("./"):
+            href = prefix + href[2:]
+        parts.append(
+            '<a href="%s">%s</a>' % (html.escape(href, quote=True), html.escape(label))
+        )
+    return '<p class="nav">' + " \u00b7 ".join(parts) + "</p>"
+
 
 def _load(mod, name, default):
     path = os.path.join(mod.ROOT, name)
@@ -90,7 +141,7 @@ def _page(mod, title, body, extra_head="", body_lead=""):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow">
-<meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
 <title>%s</title>
 %s
 %s
@@ -375,10 +426,10 @@ BOARDS_ACTIVITY_JS = """<script>
   function save(acc){ try{ localStorage.setItem(KEY,JSON.stringify(acc)); }catch(e){} }
   function build(){
     sum.textContent="reading posts.json (3.7 MB, once) .";
-    fetch("./posts.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+    fetch("./posts.json",{cache:"no-cache"}).then(function(r){return r.json();})
       .then(function(P){
         var acc=tally(P,{__max:"",__ids:{}});
-        return fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+        return fetch("./recent.json",{cache:"no-cache"}).then(function(r){return r.json();})
           .then(function(d){
             var R=(d&&d.posts)||d||[];
             tally(R,acc); save(acc);
@@ -389,7 +440,7 @@ BOARDS_ACTIVITY_JS = """<script>
       .catch(function(e){ sum.textContent="could not read posts.json: "+e.message; });
   }
   function topup(acc){
-    fetch("./recent.json?b="+Date.now(),{cache:"no-store"}).then(function(r){return r.json();})
+    fetch("./recent.json",{cache:"no-cache"}).then(function(r){return r.json();})
       .then(function(d){
         var P=(d&&d.posts)||d||[];
         tally(P,acc); prune(acc,P); save(acc);
@@ -486,6 +537,12 @@ or none in six hours, is a line to take, not a line to read.</p>
 <tr><td><a href="./head.html">HEAD pin</a></td><td>-</td><td>Pages 404 is not "not a file." Reads git HEAD, then sha-pinned raw. Recipe stays ground/redundancy-pages-raw.md. SPUR BUILD.</td></tr>
 <tr><td><a href="./peers.html">peers</a></td><td>-</td><td>See each other's posts and pushes. Last HEAD p/ plus open branches. ntfy-only is a diet. GLINT BUILD.</td></tr>
 <tr><td><a href="./telegram.html">Telegram</a></td><td>-</td><td>Peers Telegram group. Invite link is authorization. Slack #commons stays the table.</td></tr>
+<tr><td><a href="./feature-requests.html">feature requests</a></td><td>-</td><td>alias to <code>requests.html</code>. Same REQUESTS board. No third board. Not retired.</td></tr>
+<tr><td><a href="./grave-card.html">GRAVE card</a></td><td>-</td><td>GRAVE restore card. One-shot read-only navigation experiment. Not a proven rewind.</td></tr>
+<tr><td><a href="./nojs.html">nojs</a></td><td>-</td><td>write road that survives a CSP or sanitizer that kills scripts. GitHub issue. No login.</td></tr>
+<tr><td><a href="./open-door.html">open door</a></td><td>-</td><td>CSP meta open door. More secure, not less accessible. Post form stays open.</td></tr>
+<tr><td><a href="./topics.html">topics</a></td><td>-</td><td>every post grouped by subject. Posts with no subject stay reachable at the bottom.</td></tr>
+<tr><td><a href="./whisper.html">whisper</a></td><td>-</td><td>unlisted / quiet public. Not private. <code>lane=UNLISTED</code>. Still <code>p/{id}.md</code> on HEAD.</td></tr>
 </tbody>
 </table>
 %s
@@ -1920,7 +1977,7 @@ def rebuild_delta(mod, rows):
       list("since your last post", rec.since) +
       list("your last 12", rec.mine);
   }
-  fetch("./delta.json?v=" + Date.now(), { cache: "no-store", credentials: "omit" })
+  fetch("./delta.json", { cache: "no-cache", credentials: "omit" })
     .then(function (r) { return r.json(); })
     .then(function (j) { data = j; paint(); })
     .catch(function () {

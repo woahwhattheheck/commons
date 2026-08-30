@@ -1,0 +1,83 @@
+{
+  "schema": "commons-ai-engineering-toolkit-v1",
+  "toolkit_id": "bryce-ai-engineering-toolkit",
+  "inventor": "Bryce Muhlnickel",
+  "purpose": "Compose existing public Commons inventions into evidence-bound AI system build plans without training a new model.",
+  "cost_contract": {
+    "cash_required_for_planning_usd": 0,
+    "training_required": false,
+    "private_artifact_required": false
+  },
+  "truth_contract": {
+    "superiority_state": "BENCHMARK_REQUIRED",
+    "source_resolution": "CURRENT_GIT_TREE",
+    "live_titan_binding": false,
+    "private_distro_bytes": false
+  },
+  "commercial_contract": {
+    "public_sale_allowed": true,
+    "artifact_publication_allowed": true,
+    "capability_claims_require_evidence": true,
+    "checkout_and_distribution_owner": "KIMI"
+  },
+  "operating_profiles": {
+    "blockchain-puzzle": {
+      "source": "titan/engines/muhl_chain.py",
+      "candidate_lab": "host/muhlnickel_candidate_lab.py",
+      "comparison_unit": "attempts_per_second_on_one_named_puzzle",
+      "fastest_claim_requires_comparable_receipts": true,
+      "candidate_creation_and_firing": "OWNER_APPROVED",
+      "revenue_state": "HANDOFF_AFTER_MEASUREMENT"
+    }
+  },
+  "components": [
+    {
+      "id": "muhlnickel",
+      "role": "file-native substrate and addressed topology",
+      "evidence_class": "STRUCTURAL_ONLY",
+      "sources": [
+        "muhl/lda-docs/MUHLNICKEL_CANON.md",
+        "muhl/lda-docs/PFC_COMPUTER.md"
+      ],
+      "capabilities": ["file-native-compute", "addressed-topology", "persistent-state"]
+    },
+    {
+      "id": "titan",
+      "role": "agent and organ composition over explicit interfaces",
+      "evidence_class": "STRUCTURAL_ONLY",
+      "sources": [
+        "titan/engines/muhl_chain.py",
+        "ground/TITAN_TEST_QUARANTINE.md"
+      ],
+      "capabilities": ["agent-composition", "organ-routing", "synthetic-test-interface"]
+    },
+    {
+      "id": "whitebox",
+      "role": "inspectable state, axes, circuits, and evidence export",
+      "evidence_class": "STRUCTURAL_ONLY",
+      "sources": [
+        "muhl/whitebox/whitebox.py",
+        "muhl/whitebox-data/MUHL_WHITEBOX_TREE_MAP.md"
+      ],
+      "capabilities": ["inspectable-state", "circuit-evidence", "artifact-export"]
+    },
+    {
+      "id": "subzero",
+      "role": "model artifact exploration and evidence classification",
+      "evidence_class": "STRUCTURAL_ONLY",
+      "sources": [
+        "revenue/subzero_gtm/architecture.json",
+        "revenue/subzero_buyers/validation_receipt.schema.json"
+      ],
+      "capabilities": ["artifact-exploration", "model-structure", "validation-receipts"]
+    }
+  ],
+  "build_stages": [
+    "resolve-current-source-bytes",
+    "compose-all-four-components",
+    "declare-objective-and-measurement",
+    "run-synthetic-or-source-only-validation",
+    "bind-real-artifact-only-with-a-distinct-receipt",
+    "compare-against-a-named-language-model-baseline"
+  ]
+}
