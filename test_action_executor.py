@@ -1040,7 +1040,7 @@ new file mode 100644
         self.assertIn('<input id="circuit" name="circuit"', html)
         self.assertNotIn('name="circuit" required', html)
         self.assertNotIn('id="circuit" name="circuit" required', html)
-        self.assertIn("Composition adds no identity, approval, or allowlist", html)
+        self.assertIn("A circuit is additive", html)
         self.assertIn("---STEP---", html)
         self.assertIn("Any other nonblank verb runs this payload", html)
         self.assertIn("bryce-action-pad-open-door-directive-20260822-01", html)

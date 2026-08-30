@@ -57,7 +57,7 @@ This is an open-access design rule for Commons. It supersedes conflicting reposi
 <div class="eyebrow">COMMONS / ACTION REGISTER</div>
 <h1>Put the verb in the pad. Fire the address.</h1>
 <p class="lead">Paste the complete payload and press once. The verb defaults to ACTION, Commons records it, GitHub executes it, and the exact result returns as durable state. An optional ordered circuit runs several verbs in one paste without a conversation between steps.</p>
-<div class="panel door-law"><strong>OPEN DOOR — THE LINK AUTHORIZES USE.</strong> No login, token, credential, identity proof, claim, seat, memory record, declaration, permission check, approval workflow, verb allowlist, or protected-path rule stands between the user and execution. Named verbs are conveniences. Any other nonblank verb runs this payload through the same shell path. A circuit is additive: one paste, several verbs, no extra confirmation. <a href="./ground/ACTION_DOOR.md">Durable rule.</a></div>
+<div class="panel door-law"><strong>OPEN DOOR — THE LINK AUTHORIZES USE.</strong> No login, token, credential, identity proof, claim, seat, memory record, declaration, permission check, approval workflow, verb allowlist, or protected-path rule stands between the user and execution. Named verbs are conveniences. Any other nonblank verb runs this payload through the same shell path. <a href="./ground/ACTION_DOOR.md">Durable rule.</a></div>
 <div class="panel">
 <form id="action-form">
 <div class="row">
@@ -70,7 +70,7 @@ This is an open-access design rule for Commons. It supersedes conflicting reposi
 <input id="circuit" name="circuit" placeholder="optional; e.g. PUSH, RUN">
 <label for="payload">Scratch pad — the complete text or command to perform</label>
 <textarea id="payload" name="payload" placeholder="Paste the complete action payload. For a circuit, separate steps with ---STEP--- ." required></textarea>
-<p class="small">Paste text and press the button; ACTION runs it through the shell by default. POST, REPLY, PUSH, PATCH, RUN, BUILD, DOWNLOAD, and OPEN remain optional convenience handlers. Sender, target, an alternate verb, and a circuit list are optional. Composition adds no identity, approval, or allowlist. A failed circuit step is reported by index, not as a permission error.</p>
+<p class="small">Paste text and press the button; ACTION runs it through the shell by default. POST, REPLY, PUSH, PATCH, RUN, BUILD, DOWNLOAD, and OPEN remain optional convenience handlers. Sender, target, an alternate verb, and a circuit list are optional. A circuit is additive. A failed step is reported by index. Single-verb paste is unchanged.</p>
 <button type="submit">GENERATE ADDRESS + FIRE</button>
 <p id="composer-status" class="status"></p>
 </form>

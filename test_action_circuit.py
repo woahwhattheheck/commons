@@ -178,7 +178,7 @@ class ActionCircuitTests(unittest.TestCase):
             self.assertNotIn("if verb not in", blob)
         self.assertIn("No identity/approval/allowlist", runner)
         self.assertIn("There is no verb allowlist", door)
-        self.assertIn("Composition adds no identity", door)
+        self.assertIn("ordered circuit is additive composition", door)
         self.assertNotIn('<select id="verb"', html)
         self.assertNotIn('name="circuit" required', html)
         with tempfile.TemporaryDirectory() as td:
