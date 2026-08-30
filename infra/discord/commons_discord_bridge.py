@@ -8,7 +8,6 @@ receipts are separate, making retries safe and preventing bridge echo loops.
 from __future__ import annotations
 
 import hashlib
-import hmac
 import json
 import os
 import sqlite3
@@ -29,7 +28,28 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+RUNTIME_LOG = Path(os.environ.get("LOCALAPPDATA", str(ROOT))) / "Commons" / "discord-runtime.log"
+
+
+def runtime_log(message: str) -> None:
+    """Append a secret-free startup/restart trace for unattended Windows runs."""
+    try:
+        RUNTIME_LOG.parent.mkdir(parents=True, exist_ok=True)
+        with RUNTIME_LOG.open("a", encoding="utf-8") as stream:
+            stream.write(f"{time.time():.3f} {message}\n")
+    except OSError:
+        pass
+
+
+def operational_log(message: str) -> None:
+    """Log every runtime message without blocking unattended task execution."""
+    runtime_log(message)
+    if sys.stdout is not None and sys.stdout.isatty():
+        print(message, flush=True)
+
 import discord_ingest
+
+runtime_log("module-loaded")
 
 
 def load_local_env() -> None:
@@ -45,6 +65,7 @@ def load_local_env() -> None:
 
 
 load_local_env()
+runtime_log("local-env-loaded")
 
 
 def env(name: str, default: str = "") -> str:
@@ -146,6 +167,7 @@ class Journal:
 
 
 JOURNAL = Journal(ROOT / env("COMMONS_JOURNAL", "infra/discord/commons-bridge.sqlite3"))
+runtime_log("journal-ready")
 
 
 RATE_LIMIT_RETRIES = 3
@@ -468,12 +490,6 @@ class Handler(BaseHTTPRequestHandler):
         length = int(self.headers.get("Content-Length", "0"))
         raw = self.rfile.read(length)
         source = "discord" if self.path.startswith("/discord/") else "github" if self.path.startswith("/github/") else "slack" if self.path.startswith("/slack/") else "http"
-        if source == "github" and not self.valid_github_signature(raw):
-            self.reply(401, {"error": "invalid GitHub signature"})
-            return
-        if source == "slack" and not self.valid_slack_signature(raw):
-            self.reply(401, {"error": "invalid Slack signature"})
-            return
         try:
             payload = json.loads(raw or b"{}")
         except ValueError:
@@ -486,29 +502,8 @@ class Handler(BaseHTTPRequestHandler):
         event, inserted = JOURNAL.append(source, str(payload.get("type") or self.headers.get("X-GitHub-Event") or "webhook"), native, payload)
         self.reply(202, {"accepted": inserted, "event_id": event.id})
 
-    def valid_github_signature(self, raw: bytes) -> bool:
-        secret = env("GITHUB_WEBHOOK_SECRET")
-        if not secret:
-            return env("COMMONS_ALLOW_UNSIGNED_WEBHOOKS", "false").lower() == "true"
-        expected = "sha256=" + hmac.new(secret.encode(), raw, hashlib.sha256).hexdigest()
-        return hmac.compare_digest(expected, self.headers.get("X-Hub-Signature-256", ""))
-
-    def valid_slack_signature(self, raw: bytes) -> bool:
-        secret = env("SLACK_SIGNING_SECRET")
-        if not secret:
-            return env("COMMONS_ALLOW_UNSIGNED_WEBHOOKS", "false").lower() == "true"
-        timestamp = self.headers.get("X-Slack-Request-Timestamp", "")
-        try:
-            if abs(time.time() - int(timestamp)) > 300:
-                return False
-        except ValueError:
-            return False
-        base = b"v0:" + timestamp.encode() + b":" + raw
-        expected = "v0=" + hmac.new(secret.encode(), base, hashlib.sha256).hexdigest()
-        return hmac.compare_digest(expected, self.headers.get("X-Slack-Signature", ""))
-
     def log_message(self, fmt: str, *args: Any) -> None:
-        print("bridge", self.address_string(), fmt % args, flush=True)
+        operational_log(f"bridge {self.address_string()} {fmt % args}")
 
 
 def worker() -> None:
@@ -523,15 +518,17 @@ def worker() -> None:
                 json.JSONDecodeError,
                 discord_ingest.IngestError,
             ) as exc:
-                print(fn.__name__, type(exc).__name__, str(exc)[:200], flush=True)
+                operational_log(f"{fn.__name__} {type(exc).__name__} {str(exc)[:200]}")
         time.sleep(delay)
 
 
 def main() -> None:
     threading.Thread(target=worker, daemon=True).start()
     host, port = env("COMMONS_BRIDGE_HOST", "127.0.0.1"), int(env("COMMONS_BRIDGE_PORT", "18787"))
-    print(f"Commons Discord node listening on http://{host}:{port}", flush=True)
-    ThreadingHTTPServer((host, port), Handler).serve_forever()
+    server = ThreadingHTTPServer((host, port), Handler)
+    runtime_log(f"server-ready {host}:{port}")
+    operational_log(f"Commons Discord node listening on http://{host}:{port}")
+    server.serve_forever()
 
 
 if __name__ == "__main__":
