@@ -28,8 +28,8 @@
         ". " +
         truth.websites_ingested +
         " website, " +
-        truth.people_found +
-        " people, " +
+        truth.prospects_found +
+        " external prospects, " +
         truth.emails_drafted +
         " drafts, " +
         truth.calls_booked +
@@ -43,7 +43,7 @@
     if (truthRoot) {
       truthRoot.replaceChildren(
         cell(truth.websites_ingested, "website"),
-        cell(truth.people_found, "people"),
+        cell(truth.prospects_found, "prospects"),
         cell(truth.emails_drafted, "drafts"),
         cell(truth.calls_booked, "booked"),
         cell(truth.transport_actions, "sent"),
@@ -53,35 +53,16 @@
     var body = document.getElementById("people");
     if (body) {
       body.replaceChildren();
-      (loop.people || []).forEach(function (row) {
+      (loop.prospects || []).forEach(function (row) {
         var tr = document.createElement("tr");
-        tr.appendChild(text("td", row.name));
-        tr.appendChild(text("td", row.role || ""));
-        tr.appendChild(text("td", row.email || "UNVERIFIED"));
-        tr.appendChild(text("td", row.need || ""));
-        tr.appendChild(text("td", row.next_action || ""));
+        tr.appendChild(text("td", row.organization));
+        tr.appendChild(text("td", row.owner_role || ""));
+        tr.appendChild(text("td", row.recipient_email || row.route.state));
+        tr.appendChild(text("td", row.evidence.exact_quote + " — " + row.evidence.source_url));
+        tr.appendChild(text("td", row.decision + ": " + (row.next_action || "")));
         body.appendChild(tr);
       });
     }
-  }
-
-  function previewHtml(html) {
-    var doc = new DOMParser().parseFromString(html, "text/html");
-    var title = doc.querySelector("title") ? doc.querySelector("title").textContent : "";
-    var people = [];
-    var nodes = doc.querySelectorAll("[data-person], [itemtype*='Person']");
-    nodes.forEach(function (node) {
-      var nameNode = node.querySelector("[itemprop='name'], h2, h3");
-      var mail = node.querySelector("a[href^='mailto:']");
-      var needNode = node.querySelector("[data-need], blockquote");
-      var email = mail ? String(mail.getAttribute("href") || "").replace(/^mailto:/i, "").split("?")[0] : "";
-      people.push({
-        name: nameNode ? nameNode.textContent.trim() : "",
-        email: email,
-        need: needNode ? needNode.textContent.trim() : ""
-      });
-    });
-    return { title: title.trim(), people: people, sent: 0 };
   }
 
   var button = document.getElementById("preview");
@@ -90,19 +71,18 @@
       var paste = document.getElementById("paste");
       var out = document.getElementById("preview-out");
       if (!paste || !out) return;
-      var result = previewHtml(paste.value || "");
-      out.textContent =
-        (result.title || "(no title)") +
-        " — " +
-        result.people.length +
-        " people, " +
-        result.sent +
-        " sent. " +
-        result.people
-          .map(function (person) {
-            return (person.name || "unnamed") + (person.email ? " <" + person.email + ">" : " (no mailto)");
-          })
-          .join("; ");
+      var value = String(paste.value || "").trim();
+      if (!/^https:\/\//i.test(value)) {
+        out.textContent = "Use one public https:// website URL.";
+        return;
+      }
+      out.textContent = JSON.stringify({
+        command: "run",
+        url: value,
+        prospects: "revenue/smart_outreach/candidates.json",
+        receipts: "revenue/payment_ready/outreach_receipts",
+        transport: "STAGED_NOT_SENT"
+      }, null, 2);
     });
   }
 
