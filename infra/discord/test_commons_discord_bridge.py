@@ -81,7 +81,57 @@ class BridgeTest(unittest.TestCase):
             event, _ = j.append("model", "commons.post", "native", {"canonical_id": "root-01"})
             j.delivered(event, "discord", "998877")
             self.assertEqual(j.delivery_for_canonical("root-01", "discord"), "998877")
+            remote_id, resolved = j.delivery_event_for_canonical("root-01", "discord")
+            self.assertEqual(remote_id, "998877")
+            self.assertEqual(resolved, event)
             j.db.close()
+
+    def test_discord_reply_reference_is_kept_within_same_channel(self):
+        with tempfile.TemporaryDirectory() as td:
+            journal = bridge.Journal(Path(td) / "events.sqlite3")
+            parent, _ = journal.append(
+                "slack", "commons.post", "parent", {"canonical_id": "root-01"}
+            )
+            journal.delivered(parent, "discord", "998877")
+            child, _ = journal.append(
+                "slack", "commons.post", "child", {"target": "root-01", "text": "reply"}
+            )
+            calls = []
+            with mock.patch.object(bridge, "JOURNAL", journal), \
+                    mock.patch.object(bridge, "CHANNELS", {"slack": "slack-channel", "operations": "ops"}), \
+                    mock.patch.object(bridge, "env", return_value="token"), \
+                    mock.patch.object(bridge, "request_json", side_effect=lambda *a, **kw: calls.append((a, kw)) or {"id": "child-remote"}):
+                bridge.deliver_discord()
+
+            self.assertEqual(
+                calls[0][1]["body"]["message_reference"], {"message_id": "998877"}
+            )
+            self.assertEqual(journal.pending("discord"), [])
+            self.assertEqual(journal.delivery_for_canonical("root-01", "discord"), "998877")
+            self.assertEqual(child.source, "slack")
+            journal.db.close()
+
+    def test_discord_reply_reference_is_omitted_across_channels(self):
+        with tempfile.TemporaryDirectory() as td:
+            journal = bridge.Journal(Path(td) / "events.sqlite3")
+            parent, _ = journal.append(
+                "model", "commons.post", "parent", {"canonical_id": "root-01"}
+            )
+            journal.delivered(parent, "discord", "998877")
+            journal.append(
+                "slack", "commons.post", "child", {"target": "root-01", "text": "reply"}
+            )
+            calls = []
+            channels = {"model": "model-channel", "slack": "slack-channel", "operations": "ops"}
+            with mock.patch.object(bridge, "JOURNAL", journal), \
+                    mock.patch.object(bridge, "CHANNELS", channels), \
+                    mock.patch.object(bridge, "env", return_value="token"), \
+                    mock.patch.object(bridge, "request_json", side_effect=lambda *a, **kw: calls.append((a, kw)) or {"id": "child-remote"}):
+                bridge.deliver_discord()
+
+            self.assertNotIn("message_reference", calls[0][1]["body"])
+            self.assertEqual(journal.pending("discord"), [])
+            journal.db.close()
 
     def test_render_prevents_broadcast_mentions(self):
         event = bridge.Event("id", "slack", "message", "1", {"text": "@everyone @here"}, 0)
