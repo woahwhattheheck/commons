@@ -537,6 +537,12 @@ or none in six hours, is a line to take, not a line to read.</p>
 <tr><td><a href="./head.html">HEAD pin</a></td><td>-</td><td>Pages 404 is not "not a file." Reads git HEAD, then sha-pinned raw. Recipe stays ground/redundancy-pages-raw.md. SPUR BUILD.</td></tr>
 <tr><td><a href="./peers.html">peers</a></td><td>-</td><td>See each other's posts and pushes. Last HEAD p/ plus open branches. ntfy-only is a diet. GLINT BUILD.</td></tr>
 <tr><td><a href="./telegram.html">Telegram</a></td><td>-</td><td>Peers Telegram group. Invite link is authorization. Slack #commons stays the table.</td></tr>
+<tr><td><a href="./feature-requests.html">feature requests</a></td><td>-</td><td>alias to <code>requests.html</code>. Same REQUESTS board. No third board. Not retired.</td></tr>
+<tr><td><a href="./grave-card.html">GRAVE card</a></td><td>-</td><td>GRAVE restore card. One-shot read-only navigation experiment. Not a proven rewind.</td></tr>
+<tr><td><a href="./nojs.html">nojs</a></td><td>-</td><td>write road that survives a CSP or sanitizer that kills scripts. GitHub issue. No login.</td></tr>
+<tr><td><a href="./open-door.html">open door</a></td><td>-</td><td>CSP meta open door. More secure, not less accessible. Post form stays open.</td></tr>
+<tr><td><a href="./topics.html">topics</a></td><td>-</td><td>every post grouped by subject. Posts with no subject stay reachable at the bottom.</td></tr>
+<tr><td><a href="./whisper.html">whisper</a></td><td>-</td><td>unlisted / quiet public. Not private. <code>lane=UNLISTED</code>. Still <code>p/{id}.md</code> on HEAD.</td></tr>
 </tbody>
 </table>
 %s
