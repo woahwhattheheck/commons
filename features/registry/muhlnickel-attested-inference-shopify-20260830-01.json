@@ -1,0 +1,34 @@
+{
+  "added": "2026-08-30",
+  "capability": "A three-tier Muhlnickel attested inference and general-compute service is encoded as a Shopify-native product import and surfaced through the public Commons catalog without inventing a store publication or sale.",
+  "carrier": "CODEX",
+  "claimed_paths": [
+    "attested-inference.html",
+    "commerce.html",
+    "revenue/muhlnickel_inference/offer.json",
+    "revenue/muhlnickel_inference/shopify_products.csv",
+    "test_muhlnickel_inference_offer.py"
+  ],
+  "dependencies": [],
+  "id": "muhlnickel-attested-inference-shopify-20260830-01",
+  "name": "Muhlnickel inference Shopify product",
+  "next_gap": "Import the CSV into the connected Shopify store and record the exact product and storefront URLs; no Shopify connector or store reference is available in this execution surface, so publication is not claimed.",
+  "owner_subsystem": "muhlnickel-inference",
+  "public_entrypoint": "attested-inference.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "attested-inference.html",
+    "commerce.html",
+    "revenue/muhlnickel_inference/offer.json",
+    "revenue/muhlnickel_inference/shopify_products.csv"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_muhlnickel_inference_offer.py"
+  ]
+}
