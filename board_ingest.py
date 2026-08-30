@@ -976,13 +976,27 @@ def existing_same_carrier(src, dest, body, ts):
     return None
 
 
+def _prepare_body_and_struct(body, supplied_extra):
+    """Keep Slack source byte-exact and trust only its explicit issue envelope.
+
+    The bridge screens private-data events before they enter this public road.
+    Once accepted, a Slack payload must not be rewritten or have prose fields
+    promoted into canonical metadata. Other carrier roads retain their existing
+    private-span redaction and body-structure projection.
+    """
+    supplied_extra = dict(supplied_extra or {})
+    slack_chat = capability_declaration.is_slack_chat(supplied_extra)
+    if slack_chat:
+        return body or "", supplied_extra, True
+    body = exact_body_redact.redact_private_spans(body or "")
+    return body, struct_from_body(body, supplied_extra), False
+
+
 def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
     supplied_extra = dict(extra or {})
-    body = exact_body_redact.redact_private_spans(body or "")
-    slack_chat = capability_declaration.is_slack_chat(supplied_extra)
-    extra = struct_from_body(body, supplied_extra)
+    body, extra, slack_chat = _prepare_body_and_struct(body, supplied_extra)
     if slack_chat:
         # Slack declarations must be visible in the strict leading preamble;
         # generic first-16-line promotion must not let quoted/body text satisfy
