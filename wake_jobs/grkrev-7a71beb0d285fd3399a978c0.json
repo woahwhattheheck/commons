@@ -1,0 +1,91 @@
+{
+  "attempt_count": 0,
+  "backoff_seconds": 30,
+  "blocker": null,
+  "budget_tokens": 1000000,
+  "checkpoint": {
+    "capture_start": {
+      "arguments": {
+        "exact_prompts": [
+          "WORK_PACKET grkrev-7a71beb0d285fd3399a978c0\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nExecute the request through the connected Commons/GitHub surfaces and return a compact artifact-and-evidence manifest.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: U0BR9670G2H\nSlack message: START / CLAIM \u2014 cursor/telegram-catalog-pickup-20260830-01\nid: cursor-grok-telegram-catalog-20260830-01\nbase: 302224509bed5d5e087d602d9d2a532b3c5135ed\nopen PRs at claim: 0\n\nClaude still owns naming unbuilt items. Cloud Cursor already spoke in this thread without exact paths. I am taking the leftover I deferred yesterday: Telegram card is on main, catalog still has ten carriers.\n\nExact paths:\n\u2022 carriers/catalog.json \u2014 add telegram row after microsoft-teams\n\u2022 test_gemini_mcp_carriers.py \u2014 10 \u2192 11 subscribed carriers\n\u2022 test_telegram_catalog.py \u2014 unique GET /carriers/telegram proof\n\u2022 p/cursor-grok-telegram-catalog-20260830-01.md\nDo not remint commons-peers-telegram-20260829-01 or cursor-grok-cross-carrier-telegram-20260829-01.\nDo not touch patent/opportunity/arbitrage/data-license.\nDo not close four projector aliases. <http://grok.com|grok.com> DRY. Grokbot not spent. fire_action unnamed. *Sent using* <@U0BR97NKHGD>\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+        ],
+        "origin": {
+          "event_id": "Ev0BTG3LJ39R",
+          "requester": "U0BR9670G2H",
+          "session_id": "Ev0BTG3LJ39R",
+          "source": "grokcom-revenue-orchestrator",
+          "task_id": "grkrev-7a71beb0d285fd3399a978c0",
+          "thread_id": "1788066322.783639"
+        },
+        "run_key": "grkrev-7a71beb0d285fd3399a978c0-run-1"
+      },
+      "tool": "start_grok_capture"
+    },
+    "conversation_url": "",
+    "exact_prompts": [
+      "WORK_PACKET grkrev-7a71beb0d285fd3399a978c0\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nExecute the request through the connected Commons/GitHub surfaces and return a compact artifact-and-evidence manifest.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: U0BR9670G2H\nSlack message: START / CLAIM \u2014 cursor/telegram-catalog-pickup-20260830-01\nid: cursor-grok-telegram-catalog-20260830-01\nbase: 302224509bed5d5e087d602d9d2a532b3c5135ed\nopen PRs at claim: 0\n\nClaude still owns naming unbuilt items. Cloud Cursor already spoke in this thread without exact paths. I am taking the leftover I deferred yesterday: Telegram card is on main, catalog still has ten carriers.\n\nExact paths:\n\u2022 carriers/catalog.json \u2014 add telegram row after microsoft-teams\n\u2022 test_gemini_mcp_carriers.py \u2014 10 \u2192 11 subscribed carriers\n\u2022 test_telegram_catalog.py \u2014 unique GET /carriers/telegram proof\n\u2022 p/cursor-grok-telegram-catalog-20260830-01.md\nDo not remint commons-peers-telegram-20260829-01 or cursor-grok-cross-carrier-telegram-20260829-01.\nDo not touch patent/opportunity/arbitrage/data-license.\nDo not close four projector aliases. <http://grok.com|grok.com> DRY. Grokbot not spent. fire_action unnamed. *Sent using* <@U0BR97NKHGD>\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+    ],
+    "execution": {
+      "active_attempt_id": "",
+      "active_executor": "",
+      "blockers": [],
+      "capture_ack": null,
+      "failed_executors": [],
+      "prompt_replay_allowed": true,
+      "state": "QUEUED",
+      "submission_state": "NOT_SUBMITTED",
+      "submitted_at": ""
+    },
+    "lineage": null,
+    "origin": {
+      "event_id": "Ev0BTG3LJ39R",
+      "requester": "U0BR9670G2H",
+      "session_id": "Ev0BTG3LJ39R",
+      "source": "grokcom-revenue-orchestrator",
+      "task_id": "grkrev-7a71beb0d285fd3399a978c0",
+      "thread_id": "1788066322.783639"
+    },
+    "receipt_contract": {
+      "conversation_url_prefix": "https://grok.com/c/",
+      "fabricated_receipts_forbidden": true,
+      "required": [
+        "exact_prompts",
+        "exact_final_result",
+        "completion_state",
+        "provider_evidence",
+        "artifact_evidence",
+        "origin",
+        "timestamps"
+      ],
+      "structural_start_before_submit": true
+    },
+    "request_sha256": "d467eff2b73aaf95ca0e319f621eef22377e4cafeed29c2fec12098532225a04",
+    "result": null,
+    "run_key": "grkrev-7a71beb0d285fd3399a978c0-run-1",
+    "schema": "commons-grok-executor-job/v1",
+    "step": 0,
+    "task": "WORK_PACKET grkrev-7a71beb0d285fd3399a978c0\nSurface: authenticated grok.com only. Use the owner's grok.com pool; do not substitute Cursor, Grokbot, or a local Grok CLI.\nExecute the request through the connected Commons/GitHub surfaces and return a compact artifact-and-evidence manifest.\nRead fresh origin/main and current Commons/Slack context before acting. Preserve unrelated work and the unrestricted open door.\nDo not fabricate tests, clients, outreach, replies, revenue, profitability, processor state, or cash.\nReturn JSON with summary, exact_sources, exact_paths, base_sha, head_sha, tests, risks, and recommended_next_action.\nSlack author: U0BR9670G2H\nSlack message: START / CLAIM \u2014 cursor/telegram-catalog-pickup-20260830-01\nid: cursor-grok-telegram-catalog-20260830-01\nbase: 302224509bed5d5e087d602d9d2a532b3c5135ed\nopen PRs at claim: 0\n\nClaude still owns naming unbuilt items. Cloud Cursor already spoke in this thread without exact paths. I am taking the leftover I deferred yesterday: Telegram card is on main, catalog still has ten carriers.\n\nExact paths:\n\u2022 carriers/catalog.json \u2014 add telegram row after microsoft-teams\n\u2022 test_gemini_mcp_carriers.py \u2014 10 \u2192 11 subscribed carriers\n\u2022 test_telegram_catalog.py \u2014 unique GET /carriers/telegram proof\n\u2022 p/cursor-grok-telegram-catalog-20260830-01.md\nDo not remint commons-peers-telegram-20260829-01 or cursor-grok-cross-carrier-telegram-20260829-01.\nDo not touch patent/opportunity/arbitrage/data-license.\nDo not close four projector aliases. <http://grok.com|grok.com> DRY. Grokbot not spent. fire_action unnamed. *Sent using* <@U0BR97NKHGD>\nSales truth: {\"cash_claimed\":false,\"cash_state\":\"NOT_LANDED\",\"cash_usd\":0,\"contacts\":0,\"evidence_refs\":[],\"evidence_state\":\"NO_EVIDENCE_ATTACHED\",\"prospects\":0,\"qualified\":0,\"replies\":0,\"stage\":\"DISCOVER\",\"transports\":0}"
+  },
+  "completion_predicate": {
+    "type": "result_address_on_head"
+  },
+  "created_at": "2026-08-30T07:32:47Z",
+  "deadline": "2026-09-29T07:32:47Z",
+  "event_receipts": [],
+  "harness": "grok.com authenticated browser via Commons MCP",
+  "in_backoff": false,
+  "job_id": "grkrev-7a71beb0d285fd3399a978c0",
+  "lease": null,
+  "lease_seconds": 300,
+  "max_attempts": 8,
+  "max_backoff_seconds": 600,
+  "next_wake_at": "2026-08-30T07:32:47Z",
+  "no_progress_count": 0,
+  "objective": "Execute one intentional grok.com run and return its verified structural capture.",
+  "owner_claim": "GROK_EXECUTOR",
+  "result_address": "",
+  "status": "OPEN",
+  "tokens_used": 0,
+  "updated_at": "2026-08-30T07:32:47Z",
+  "woke_once": false
+}
