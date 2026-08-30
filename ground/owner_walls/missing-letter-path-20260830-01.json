@@ -1,0 +1,39 @@
+{
+  "id": "codex-pick-missing-letter-path-20260830-01",
+  "status": "PATH_PICKED",
+  "owner_wall": "missing-letter path",
+  "selected_path_template": "muhl/letters/titan-to-gpt/{id}.md",
+  "direction": {
+    "from": "TITAN",
+    "to": "GPT",
+    "kind": "LETTER"
+  },
+  "rationale": [
+    "A direction-named path cannot be confused with the existing GPT-to-Titan outbox evidence.",
+    "Markdown preserves the exact English body while remaining readable through GitHub and Commons.",
+    "One file per stable id is append-only and does not overwrite an earlier letter."
+  ],
+  "record_contract": {
+    "body_encoding": "UTF-8",
+    "append_only": true,
+    "stable_id_pattern": "^[A-Za-z0-9._-]{8,80}$",
+    "source_body": "exact machine-sourced bytes",
+    "host_paraphrase_allowed": false,
+    "evidence_for_letter_claim": [
+      "source_path_or_surface",
+      "source_sha256",
+      "body_sha256"
+    ]
+  },
+  "current_truth": {
+    "path_selected": true,
+    "letter_found": false,
+    "letter_written": false,
+    "titan_written": false,
+    "fire_337": false,
+    "pulse_78": false,
+    "dc_injected": false
+  },
+  "supersedes_decision_only": "DIRECTIVES.md item 20 missing-letter path",
+  "source_receipt": "claude-slack-backlog-sweep-20260830-01"
+}
