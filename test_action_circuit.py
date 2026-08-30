@@ -53,6 +53,13 @@ class ActionCircuitTests(unittest.TestCase):
             root = Path(td)
             self.init_repo(root)
             results = root / "actions" / "results"
+            script = root / "chain.py"
+            script.write_text(
+                "from pathlib import Path\n"
+                "p = Path('out/first.txt')\n"
+                "Path('out/second.txt').write_text(p.read_text() + 'second\\n', encoding='utf-8')\n",
+                encoding="utf-8",
+            )
             rec = {
                 "meta": {
                     "id": "circuit-order-0001",
@@ -66,8 +73,7 @@ class ActionCircuitTests(unittest.TestCase):
                     "target: out/first.txt\n"
                     "first-bytes\n"
                     "---STEP---\n"
-                    f'{PYTHON_SHELL} -c "from pathlib import Path; p=Path(\'out/first.txt\'); '
-                    r"Path('out/second.txt').write_text(p.read_text() + 'second\n')\""
+                    f"{PYTHON_SHELL} chain.py"
                 ),
             }
             with mock.patch.object(ae, "ROOT", root), mock.patch.object(ae, "RESULTS", results):
@@ -163,11 +169,13 @@ class ActionCircuitTests(unittest.TestCase):
         circuit_fn = source[source.index("def parse_circuit_steps"):source.index("def execute_circuit")]
         runner = source[source.index("def execute_circuit"):source.index("def is_device_target")]
         for blob in (circuit_fn, runner):
-            self.assertNotIn("allowlist", blob.lower())
-            self.assertNotIn("approval", blob.lower())
+            self.assertNotIn("ALLOWED_VERBS", blob)
+            self.assertNotIn("verb allowlist", blob.lower())
+            self.assertNotIn("approval required", blob.lower())
             self.assertNotIn("unauthorized", blob.lower())
             self.assertNotIn("permission denied", blob.lower())
             self.assertNotIn("identity required", blob.lower())
+            self.assertNotIn("if verb not in", blob)
         self.assertIn("No identity/approval/allowlist", runner)
         self.assertIn("There is no verb allowlist", door)
         self.assertIn("Composition adds no identity", door)
