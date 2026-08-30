@@ -1,5 +1,14 @@
 {
-  "bookings": [],
+  "bookings": [
+    {
+      "book_url": "https://cal.com/tokenjunkielabs/intro",
+      "calendar": "SITE_BOOK_URL",
+      "calls_booked": 0,
+      "next_action": "copy the book URL into the draft; do not write a live calendar event",
+      "prospect_id": "composio",
+      "state": "STAGED_NOT_BOOKED"
+    }
+  ],
   "compose": {
     "reply_to_revenue": "inbound cash truth after replies exist",
     "smart_outreach": "current evidence-bound prospect discovery and collision qualification",
@@ -13,10 +22,41 @@
     "host/swarm_mail.py",
     "revenue/reply_to_revenue"
   ],
-  "emails": [],
-  "generated_at": "2026-08-30T13:14:08Z",
+  "emails": [
+    {
+      "draft": {
+        "body": "Hi agent platform reliability team,\n\nYour public page says: \"tools.execute() and tools.proxyExecute() no longer retry non-idempotent writes, preventing a timeout from repeating side effects such as sending the same email twice.\"\nSource: https://docs.composio.dev/reference/changelog\n\nCrash-resume proof for production agent teams. Same-day crash-resume proof for teams whose agents die mid-job.\nThis is for: For founders and platform owners whose agents die mid-job.\n\nIf that is still true, book a call: https://cal.com/tokenjunkielabs/intro\n\nIf this is not relevant, reply no or opt out and I will close it.\n\n— Commons draft only. Not sent. Live send waits on the owner mailbox.",
+        "subject": "One bounded proof for Composio"
+      },
+      "prospect_id": "composio",
+      "to": "support@composio.dev",
+      "transport": "STAGED_NOT_SENT"
+    }
+  ],
+  "generated_at": "2026-08-30T15:20:37Z",
   "kind": "WEBSITE_PEOPLE_EMAIL_BOOK_LOOP",
   "prospects": [
+    {
+      "collision_receipts": [],
+      "decision": "READY_TO_DRAFT",
+      "evidence": {
+        "exact_quote": "tools.execute() and tools.proxyExecute() no longer retry non-idempotent writes, preventing a timeout from repeating side effects such as sending the same email twice.",
+        "observed_at": "2026-08-30T15:20:37Z",
+        "source_url": "https://docs.composio.dev/reference/changelog"
+      },
+      "next_action": "record the private draft in Swarm Mail; this planner does not dispatch",
+      "occupied_by": null,
+      "organization": "Composio",
+      "owner_role": "agent platform reliability team",
+      "prospect_id": "composio",
+      "recipient_email": "support@composio.dev",
+      "route": {
+        "kind": "EMAIL",
+        "state": "VERIFIED",
+        "value": "support@composio.dev"
+      },
+      "score": 85
+    },
     {
       "collision_receipts": [],
       "decision": "RESEARCH_REQUIRED",
@@ -149,10 +189,10 @@
     "calls_booked": 0,
     "cash_usd": 0,
     "contacts_claimed": 0,
-    "emails_drafted": 0,
+    "emails_drafted": 1,
     "mailbox": "NEEDS_OWNER_MAILBOX",
-    "people_with_verified_email": 0,
-    "prospects_found": 3,
+    "people_with_verified_email": 1,
+    "prospects_found": 4,
     "seller_contacts_observed": 4,
     "transport_actions": 0,
     "websites_ingested": 1
