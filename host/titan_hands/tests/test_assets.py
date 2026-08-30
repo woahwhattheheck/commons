@@ -48,6 +48,9 @@ class AssetTests(unittest.TestCase):
         self.assertIn("refusing to start a duplicate emulator", script)
         self.assertIn("offline_reconnect_attempted", script)
         self.assertIn("offline_process_restarted", script)
+        self.assertIn("function Wait-HeadlessBoot", script)
+        self.assertIn("boot_incomplete_process_restarted", script)
+        self.assertIn("timeout_seconds_per_attempt", script)
         self.assertNotIn("-wipe-data", script)
         self.assertLess(
             script.index("& $adb reconnect offline"),

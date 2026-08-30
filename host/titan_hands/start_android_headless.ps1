@@ -131,8 +131,7 @@ function Get-EmulatorLogTail {
     return (($lines | Where-Object { $_ }) -join ' | ')
 }
 
-$emulatorProcess = $null
-if (-not $online) {
+function Start-ExactHeadlessEmulator {
     [System.IO.File]::WriteAllText($stdoutLog, '')
     [System.IO.File]::WriteAllText($stderrLog, '')
     $arguments = @(
@@ -147,32 +146,65 @@ if (-not $online) {
         '-no-snapstorage',
         '-feature', '-QuickbootFileBacked'
     )
-    $emulatorProcess = Start-Process -FilePath $emulator -ArgumentList $arguments -WindowStyle Hidden `
+    return Start-Process -FilePath $emulator -ArgumentList $arguments -WindowStyle Hidden `
         -RedirectStandardOutput $stdoutLog -RedirectStandardError $stderrLog -PassThru
 }
 
-$deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
-$serial = $null
-while ([DateTime]::UtcNow -lt $deadline) {
-    if ($emulatorProcess) {
-        $emulatorProcess.Refresh()
-        if ($emulatorProcess.HasExited) {
-            $tail = Get-EmulatorLogTail
-            throw "Headless Android emulator exited before ADB registration (exit $($emulatorProcess.ExitCode)). $tail"
+function Wait-HeadlessBoot {
+    param([System.Diagnostics.Process]$Process)
+
+    $deadline = [DateTime]::UtcNow.AddSeconds($TimeoutSeconds)
+    while ([DateTime]::UtcNow -lt $deadline) {
+        if ($Process) {
+            $Process.Refresh()
+            if ($Process.HasExited) {
+                $tail = Get-EmulatorLogTail
+                throw "Headless Android emulator exited before ADB registration (exit $($Process.ExitCode)). $tail"
+            }
+        }
+        $line = & $adb devices | Select-String -Pattern '^(emulator-\d+)\s+device$' | Select-Object -First 1
+        if ($line) {
+            $candidateSerial = $line.Matches[0].Groups[1].Value
+            $booted = (& $adb -s $candidateSerial shell getprop sys.boot_completed 2>$null).Trim()
+            if ($booted -eq '1') { return $candidateSerial }
+        }
+        Start-Sleep -Seconds 2
+    }
+    return $null
+}
+
+$emulatorProcess = $null
+if (-not $online) {
+    $emulatorProcess = Start-ExactHeadlessEmulator
+}
+
+$serial = Wait-HeadlessBoot -Process $emulatorProcess
+$bootIncompleteProcessRestarted = $false
+if (-not $serial -and -not $offlineProcessRestarted) {
+    $exactAvdProcesses = @(Get-ExactAvdProcesses)
+    foreach ($process in $exactAvdProcesses) {
+        $liveProcess = Get-Process -Id $process.ProcessId -ErrorAction SilentlyContinue
+        if ($liveProcess) {
+            Stop-Process -Id $process.ProcessId -Force -PassThru |
+                Wait-Process -Timeout 10 -ErrorAction SilentlyContinue
+            if (Get-Process -Id $process.ProcessId -ErrorAction SilentlyContinue) {
+                throw "Exact TITAN AVD process $($process.ProcessId) did not exit after incomplete boot; refusing to start a duplicate emulator"
+            }
+            $recycledProcessIds += [int]$process.ProcessId
         }
     }
-    $line = & $adb devices | Select-String -Pattern '^(emulator-\d+)\s+device$' | Select-Object -First 1
-    if ($line) {
-        $serial = $line.Matches[0].Groups[1].Value
-        $booted = (& $adb -s $serial shell getprop sys.boot_completed 2>$null).Trim()
-        if ($booted -eq '1') { break }
+    if ($exactAvdProcesses.Count -gt 0) {
+        $bootIncompleteProcessRestarted = $true
+        Start-Sleep -Seconds 1
+        $emulatorProcess = Start-ExactHeadlessEmulator
+        $serial = Wait-HeadlessBoot -Process $emulatorProcess
     }
-    Start-Sleep -Seconds 2
 }
-if (-not $serial -or (& $adb -s $serial shell getprop sys.boot_completed 2>$null).Trim() -ne '1') {
+
+if (-not $serial) {
     $tail = Get-EmulatorLogTail
     $recycled = if ($recycledProcessIds.Count -gt 0) { $recycledProcessIds -join ',' } else { 'none' }
-    throw "Headless Android emulator did not boot within $TimeoutSeconds seconds. offline_reconnect_attempted=$offlineReconnectAttempted; offline_process_restarted=$offlineProcessRestarted; recycled_process_ids=$recycled. $tail"
+    throw "Headless Android emulator did not boot. offline_reconnect_attempted=$offlineReconnectAttempted; offline_process_restarted=$offlineProcessRestarted; boot_incomplete_process_restarted=$bootIncompleteProcessRestarted; timeout_seconds_per_attempt=$TimeoutSeconds; recycled_process_ids=$recycled. $tail"
 }
 
 & $adb -s $serial shell settings put global window_animation_scale 0 | Out-Null
@@ -188,6 +220,7 @@ if (-not $serial -or (& $adb -s $serial shell getprop sys.boot_completed 2>$null
     pixels = 'on-demand-only'
     offline_reconnect_attempted = $offlineReconnectAttempted
     offline_process_restarted = $offlineProcessRestarted
+    boot_incomplete_process_restarted = $bootIncompleteProcessRestarted
     recycled_process_ids = @($recycledProcessIds)
     snapshot_cache_reclaimed_bytes = $snapshotCacheReclaimedBytes
     stdout_log = $stdoutLog

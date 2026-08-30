@@ -13,13 +13,19 @@
 `TitanHands_AOSP_API34` AVD. The launcher recognized only `device`, so it could treat that live process as
 absent and start a second emulator against the same console port.
 
+After ADB transport recovery, the same guest was measured as `device` while `sys.boot_completed` remained
+blank minutes after launch. A transport reconnect alone therefore was not sufficient proof of a usable Android
+framework.
+
 ## Repair
 
 The launcher now inventories `device` and `offline` emulator transports, attempts a bounded
 `adb reconnect offline`, and re-reads the transport. If the exact named `-avd ... -no-window` process remains
 stale, it recycles only that process before using the existing cold-start arguments. It never removes or wipes
 userdata or AVD files. The JSON receipt reports whether reconnect or exact-process recycling occurred and lists
-the recycled process ids.
+the recycled process ids. If ADB becomes online but Android still misses the full boot deadline, the launcher
+recycles that same exact process once and retries one bounded boot attempt; it never loops or starts alongside a
+process that failed to exit.
 
 ## Exact paths
 
