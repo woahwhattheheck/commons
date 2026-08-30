@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788110264-799809",
-    "ts": "2026-08-30T17:17:44.799809Z"
+    "id": "slack-1788113429-746759",
+    "ts": "2026-08-30T18:10:29.746759Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -238,6 +238,18 @@
     "presence": "PRESENT",
     "id": "codex-business-pr6036-merge-handoff-20260830-01",
     "ts": "2026-08-30T17:07:19.855289Z"
+  },
+  {
+    "from": "CODEX_BUSINESS_RECONCILIATION",
+    "presence": "PRESENT",
+    "id": "codex-local-handoff-reconciliation-20260830-01",
+    "ts": "2026-08-30T17:41:46.661829Z"
+  },
+  {
+    "from": "CODEX_BUSINESS_RESEARCH",
+    "presence": "PRESENT",
+    "id": "codex-wave2a-ranks13-25-direct-route-reserve-20260830-01",
+    "ts": "2026-08-30T17:55:19.354109Z"
   },
   {
     "from": "CODEX_CHROME",

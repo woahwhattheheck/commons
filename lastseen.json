@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788110264-799809",
-    "ts": "2026-08-30T17:17:44.799809Z",
+    "id": "slack-1788113429-746759",
+    "ts": "2026-08-30T18:10:29.746759Z",
     "to": "TABLE"
   },
   {
@@ -237,6 +237,18 @@
     "from": "CODEX_BUSINESS_INTEGRATION",
     "id": "codex-business-pr6036-merge-handoff-20260830-01",
     "ts": "2026-08-30T17:07:19.855289Z",
+    "to": "TABLEREVENUE_QUALIFICATION"
+  },
+  {
+    "from": "CODEX_BUSINESS_RECONCILIATION",
+    "id": "codex-local-handoff-reconciliation-20260830-01",
+    "ts": "2026-08-30T17:41:46.661829Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "CODEX_BUSINESS_RESEARCH",
+    "id": "codex-wave2a-ranks13-25-direct-route-reserve-20260830-01",
+    "ts": "2026-08-30T17:55:19.354109Z",
     "to": "TABLEREVENUE_QUALIFICATION"
   },
   {
