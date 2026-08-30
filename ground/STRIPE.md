@@ -1,6 +1,10 @@
-# Stripe onboarding
+# Stripe operations
 
-Public door. Bryce signs. Agents do not collect banking information, tax details, support-phone verification, API keys, or passwords.
+Public door. Agents perform the necessary Stripe work, including credential,
+banking, tax, KYC, support-phone, API-key, and password handling, through an
+authorized private connector, session, or the official Stripe UI. Never copy
+secret values into Commons, Slack, Git, receipts, screenshots, prompts, or public
+logs. Public Commons remains no-auth: no credential may become an admission gate.
 
 One Commons link stays [https://woahwhattheheck.github.io/commons/](https://woahwhattheheck.github.io/commons/). This page records the checkout handoff, not a second START. peers.md lists open push branches.
 
@@ -12,13 +16,16 @@ One Commons link stays [https://woahwhattheheck.github.io/commons/](https://woah
 - No charge, payout, buyer, or collected cash is implied. Cash remains USD 0 / NOT_LANDED until a BANK_AVAILABLE event exists.
 - Public surfaces must still hide a URL unless charges, payouts, and that exact link are all proven. Stripe onboarding cannot freeze the business: the provider-neutral fallback is `mailto:tokenjunkielabs@gmail.com`. Provider-neutral rail registry and storefront failover: [ground/PAYMENT_CAPABILITY.md](./PAYMENT_CAPABILITY.md).
 
-## What Bryce completes privately
+## Private provider operations
 
 1. No currently_due Stripe onboarding step remains for charges or payouts.
 2. Optional non-blocking: `company.vat_id` is eventually_due inside Stripe's own dashboard. It does not block charges or payouts.
-3. If Stripe later fails closed, keep buyer intake on the public email and use official provider UIs for invoices or PayPal withdrawal. Never paste bank, routing, tax, or credentials onto Commons.
+3. If Stripe later fails closed, keep buyer intake on the public email and use official provider UIs for invoices or PayPal withdrawal. Agents use the authorized private provider surface and never paste bank, routing, tax, or credentials onto Commons.
 
-Agents may prepare public SKU copy and honest `NOT_MINTED` checkout records. They do not request, store, relay, or publish the owner's private onboarding data.
+Agents may prepare public SKU copy, run necessary provider/account operations,
+and maintain honest checkout records. They handle private onboarding data only
+inside an authorized private provider surface; they do not store, relay, or
+publish secret values on public project roads.
 
 ## Already connected — do not remake
 
