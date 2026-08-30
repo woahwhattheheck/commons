@@ -7,6 +7,7 @@ import hashlib
 import io
 import os
 import sys
+from pathlib import Path
 import unittest
 from contextlib import redirect_stdout
 
@@ -88,20 +89,20 @@ class TestMuhlFilmOrgan(unittest.TestCase):
 
     def test_go_is_inert_and_reel_unchanged(self):
         path = os.path.join(ROOT, "muhl", "docs", "FILM_REEL.pfc")
-        before = hashlib.sha256(open(path, "rb").read()).hexdigest()
+        before = hashlib.sha256(Path(path).read_bytes()).hexdigest()
         output = io.StringIO()
         with redirect_stdout(output):
             code = main(["--root", ROOT, "--go"])
-        after = hashlib.sha256(open(path, "rb").read()).hexdigest()
+        after = hashlib.sha256(Path(path).read_bytes()).hexdigest()
         self.assertEqual(code, 1)
         self.assertEqual(before, after)
         self.assertIn('"state": "REFUSED"', output.getvalue())
         self.assertIn('"executed_pulses": 0', output.getvalue())
 
     def test_card_page_and_catalog_preserve_truth_boundary(self):
-        card = open(os.path.join(ROOT, "ground", "MUHL_FILM_ORGAN.md"), encoding="utf-8").read()
-        page = open(os.path.join(ROOT, "film.html"), encoding="utf-8").read()
-        catalog = load_json(open(os.path.join(ROOT, "ground", "MUHL_FILM_ORGAN.json"), encoding="utf-8").read())
+        card = Path(ROOT, "ground", "MUHL_FILM_ORGAN.md").read_text(encoding="utf-8")
+        page = Path(ROOT, "film.html").read_text(encoding="utf-8")
+        catalog = load_json(Path(ROOT, "ground", "MUHL_FILM_ORGAN.json").read_text(encoding="utf-8"))
         for blob in (card, page):
             self.assertIn("REFERENCE VISOR", blob)
             self.assertIn("MOVIE_EXECUTED: NO", blob)
@@ -117,7 +118,7 @@ class TestMuhlFilmOrgan(unittest.TestCase):
         self.assertTrue(catalog["no_gate"])
 
     def test_host_contains_no_execution_engine(self):
-        source = open(os.path.join(ROOT, "host", "muhl_film_organ.py"), encoding="utf-8").read()
+        source = Path(ROOT, "host", "muhl_film_organ.py").read_text(encoding="utf-8")
         self.assertNotIn("subprocess", source)
         self.assertNotIn("mmap", source)
         self.assertNotIn("render_frame", source)
