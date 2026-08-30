@@ -1,8 +1,11 @@
 import importlib.util
+import io
 import sys
 import tempfile
 import unittest
+import urllib.error
 from pathlib import Path
+from unittest import mock
 
 
 PATH = Path(__file__).with_name("commons_discord_bridge.py")
@@ -13,6 +16,48 @@ SPEC.loader.exec_module(bridge)
 
 
 class BridgeTest(unittest.TestCase):
+    def test_request_json_honors_retry_after_on_http_429(self):
+        class Response:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *_args):
+                return False
+
+            def read(self):
+                return b'{"id":"delivered"}'
+
+        limited = urllib.error.HTTPError(
+            "https://discord.test/messages", 429, "rate limited",
+            {"Retry-After": "9"}, io.BytesIO(b'{"retry_after":0.25}'),
+        )
+        with mock.patch.object(bridge.urllib.request, "urlopen", side_effect=[limited, Response()]) as opened:
+            with mock.patch.object(bridge.time, "sleep") as slept:
+                result = bridge.request_json("https://discord.test/messages", method="POST", body={"x": 1})
+
+        self.assertEqual(result, {"id": "delivered"})
+        self.assertEqual(opened.call_count, 2)
+        slept.assert_called_once_with(0.25)
+
+    def test_request_json_does_not_retry_non_rate_limit_errors(self):
+        failed = urllib.error.HTTPError(
+            "https://discord.test/messages", 403, "forbidden", {}, io.BytesIO(b"{}"),
+        )
+        with mock.patch.object(bridge.urllib.request, "urlopen", side_effect=failed) as opened:
+            with mock.patch.object(bridge.time, "sleep") as slept:
+                with self.assertRaises(urllib.error.HTTPError):
+                    bridge.request_json("https://discord.test/messages")
+
+        self.assertEqual(opened.call_count, 1)
+        slept.assert_not_called()
+
+    def test_rate_limit_delay_falls_back_to_header_and_caps_wait(self):
+        limited = urllib.error.HTTPError(
+            "https://discord.test/messages", 429, "rate limited",
+            {"Retry-After": "999"}, io.BytesIO(b""),
+        )
+        self.assertEqual(bridge.rate_limit_delay(limited), 60.0)
+
     def test_event_id_is_stable(self):
         a = bridge.event_id("github", "delivery-1", {"x": 1})
         b = bridge.event_id("github", "delivery-1", {"x": 2})
