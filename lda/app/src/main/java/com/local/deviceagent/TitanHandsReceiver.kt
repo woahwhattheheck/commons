@@ -117,7 +117,6 @@ class TitanHandsReceiver : BroadcastReceiver() {
                 .put("kickback", outcome.kickback)
                 .put("say", outcome.say ?: JSONObject.NULL)
                 .put("question", outcome.question ?: JSONObject.NULL)
-                .put("confirm_prompt", outcome.confirmPrompt ?: JSONObject.NULL)
                 .put("before", before)
         } finally {
             AgentService.isAgentBusy = wasBusy

@@ -36,7 +36,6 @@ data class ActionOutcome(
     val result: ActionResult,
     val say: String?,
     val summary: String,
-    val confirmPrompt: String? = null,
     val question: String? = null,
     // W4 (owner: "malformed json or whatever shouldn't be REJECTED, but KICKED BACK to the operator"):
     // FAILED only. true (default) = a fixable improper call (unparseable/off-list/off-target) the loop hands
