@@ -899,6 +899,129 @@
         "Buyer class, exact scope, deliverables, clock, capacity, acceptance, support, and refund terms remain UNKNOWN",
         "No buyer or accepted scope is evidenced"
       ]
+    },
+    "sku-muhlnickel-generated-token-capacity": {
+      "priority": 16,
+      "readiness": "READY_FOR_QUALIFICATION",
+      "buyer": "A team paying cloud output-token rates who needs dirty-cheap generated capacity on an already-connected model.",
+      "trigger": "Published cloud output rates make a high-volume generation job too expensive relative to the outcome.",
+      "acquisition": {
+        "primary_channel": "Founder email and Slack product-range pitches that are not only the $2,500 survival proof",
+        "alternate_channels": [
+          "attested-inference.html direct share",
+          "Upwork LLM cost-optimization briefs as buyer-side fit only"
+        ],
+        "message": "10 million generated tokens for $1 on Muhlnickel \u2014 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
+        "route": "commerce.html#sku-muhlnickel-generated-token-capacity",
+        "cta": "Send the capacity ask"
+      },
+      "qualification": {
+        "route": "attested-inference.html",
+        "required": [
+          "Already-connected model family named in writing",
+          "Accepted delivery window, context limit, and maximum parallelism",
+          "Public or non-confidential generation task",
+          "Public contact URL"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "CUSTOMER_SPECIFIC_INVOICE",
+        "status": "NOT_ISSUED",
+        "next_step": "Accept the written capacity window, then receive a buyer-specific checkout or Shopify storefront link once published. Do not invent a storefront URL.",
+        "state_after": "FUNDED",
+        "evidence_required": "Provider readback of an issued checkout or published Shopify product URL; a click or mailto is not cash."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Selected model and tokenizer named in the receipt",
+          "Generated-token count by that tokenizer",
+          "Output and run-manifest hashes",
+          "Substrate identity and timestamps"
+        ],
+        "acceptance": [
+          "Capacity window offered within seven calendar days or full refund",
+          "Only an already-connected model is sold",
+          "No model-quality-equivalence claim versus cited cloud providers"
+        ],
+        "refund": "If no capacity window is offered within seven calendar days, the buyer may cancel for a full refund."
+      },
+      "measurement": {
+        "dom_action": "qualification-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "DISCOVERED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [
+        "sku-muhlnickel-attested-inference"
+      ],
+      "gaps": [
+        "Shopify storefront URL is null until a local authenticated session imports shopify_token_capacity.csv.",
+        "Stripe Payment Links for MUHL-TOK-* are NOT_MINTED from this cloud surface (no live Stripe dashboard session).",
+        "Collected cash remains USD 0."
+      ]
+    },
+    "sku-muhlnickel-attested-inference": {
+      "priority": 17,
+      "readiness": "READY_FOR_QUALIFICATION",
+      "buyer": "A team with one public or non-confidential model task and an exact evaluation rule.",
+      "trigger": "The buyer needs a checkable model run or bounded compute job without buying a five-figure engagement first.",
+      "acquisition": {
+        "primary_channel": "Product-range founder email that offers attested runs alongside token capacity and survival proof",
+        "alternate_channels": [
+          "attested-inference.html",
+          "commerce.html#sku-muhlnickel-attested-inference"
+        ],
+        "message": "One attested Muhlnickel run for $500: outputs, hashes, timing, substrate identity, and reconstruction instructions.",
+        "route": "commerce.html#sku-muhlnickel-attested-inference",
+        "cta": "Send the task for scope confirmation"
+      },
+      "qualification": {
+        "route": "attested-inference.html",
+        "required": [
+          "Public or non-confidential input",
+          "One already-connected model or deterministic program",
+          "Maximum output size",
+          "Machine-checkable acceptance rule",
+          "Public contact URL"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "CUSTOMER_SPECIFIC_INVOICE",
+        "status": "NOT_ISSUED",
+        "next_step": "Accept the written scope, then receive a buyer-specific checkout or Shopify storefront link once published. Do not invent a storefront URL.",
+        "state_after": "FUNDED",
+        "evidence_required": "Provider readback of an issued checkout or published Shopify product URL; a click or mailto is not cash."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Raw outputs and machine-readable run manifest",
+          "Prompt, model, output, and receipt hashes",
+          "Timing, substrate identity, and reconstruction instructions"
+        ],
+        "acceptance": [
+          "Buyer-supplied acceptance rule is machine-checkable",
+          "Receipt exists before any customer-run claim",
+          "Owner-local Muhlnickel is the execution surface"
+        ],
+        "refund": "UNKNOWN"
+      },
+      "measurement": {
+        "dom_action": "qualification-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "DISCOVERED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [
+        "same-day-agent-survival-proof",
+        "sku-muhlnickel-titan-20260826"
+      ],
+      "gaps": [
+        "Shopify storefront URL is null until a local authenticated session imports shopify_products.csv.",
+        "Stripe Payment Links for MUHL-INFER-* are NOT_MINTED from this cloud surface.",
+        "Collected cash remains USD 0; no customer run is claimed."
+      ]
     }
   },
   "listings": [
@@ -1474,6 +1597,66 @@
           "reference": "stripe-livemode-GET-v1-accounts-acct_1U6HI9ATH4EDE7XD+GET-v1-payment_links",
           "observed_at": "2026-08-28T16:10:00Z"
         }
+      }
+    },
+    {
+      "id": "sku-muhlnickel-generated-token-capacity",
+      "name": "Muhlnickel Generated-Token Capacity",
+      "state": "PUBLIC_OFFER",
+      "pricing": {
+        "currency": "USD",
+        "mode": "prepaid_credit",
+        "components": [
+          {
+            "id": "tok_10m_entry",
+            "kind": "fixed",
+            "amount": "1.00",
+            "basis": "10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/muhlnickel_inference/token_capacity_offer.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "attested-inference.html",
+        "machine": "revenue/muhlnickel_inference/token_capacity_offer.json"
+      },
+      "source_artifact": {
+        "path": "revenue/muhlnickel_inference/token_capacity_offer.json",
+        "blob_sha": "02e632e2444ffa98404bd731b9854591d50f2416",
+        "terms_authority": "source"
+      }
+    },
+    {
+      "id": "sku-muhlnickel-attested-inference",
+      "name": "Muhlnickel Attested Inference",
+      "state": "PUBLIC_OFFER",
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed_outcome",
+        "components": [
+          {
+            "id": "entry_attested_run",
+            "kind": "fixed",
+            "amount": "500.00",
+            "basis": "one attested run; ladder also has $1,500 evaluated batch and $2,500 bespoke job in the source offer"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/muhlnickel_inference/offer.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "attested-inference.html",
+        "machine": "revenue/muhlnickel_inference/offer.json"
+      },
+      "source_artifact": {
+        "path": "revenue/muhlnickel_inference/offer.json",
+        "blob_sha": "960beb887a6af6e58740abc26a72934eb6efaa93",
+        "terms_authority": "source"
       }
     }
   ]

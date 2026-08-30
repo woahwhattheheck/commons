@@ -108,6 +108,7 @@ class MuhlnickelInferenceOfferTests(unittest.TestCase):
         commerce = (ROOT / "commerce.html").read_text(encoding="utf-8")
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn("sku-muhlnickel-attested-inference", commerce)
+        self.assertIn("sku-muhlnickel-generated-token-capacity", commerce)
         self.assertIn("./attested-inference.html", commerce)
         self.assertIn("/attested-inference.html", sitemap)
 
@@ -116,6 +117,49 @@ class MuhlnickelInferenceOfferTests(unittest.TestCase):
         self.assertEqual(feature["schema"], "commons-feature-v1")
         self.assertEqual(feature["public_entrypoint"], "attested-inference.html")
         self.assertIn("revenue/muhlnickel_inference/shopify_products.csv", feature["claimed_paths"])
+
+    def test_pitch_pack_covers_product_range_not_only_survival_proof(self) -> None:
+        pack = json.loads(
+            (ROOT / "revenue/muhlnickel_inference/pitch_pack.json").read_text(encoding="utf-8")
+        )
+        prices = [row["price_usd"] for row in pack["pitches"] if row["price_usd"] is not None]
+        self.assertEqual(prices, [1, 5, 20, 500, 1500, 2500])
+        self.assertFalse(pack["truth"]["shopify_product_published"])
+        self.assertEqual(pack["truth"]["cash_usd"], 0)
+        self.assertIn("Pitch only the $2,500 survival proof", " ".join(pack["do_not"]))
+
+    def test_local_shopify_handoff_names_exact_collision_keys(self) -> None:
+        handoff = json.loads(
+            (ROOT / "revenue/muhlnickel_inference/shopify_local_handoff.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        keys = handoff["required_local_actions"][1]["keys"]
+        for key in (
+            "muhlnickel-attested-inference",
+            "MUHL-TOK-10M",
+            "MUHL-INFER-500",
+            "muhlnickel-generated-token-capacity",
+        ):
+            self.assertIn(key, keys)
+        self.assertEqual(
+            handoff["cloud_measurement"]["shopify_admin"],
+            "BLOCKED_CLOUDFLARE_VERIFY_YOU_ARE_HUMAN",
+        )
+
+    def test_outcome_commerce_catalog_lists_both_muhlnickel_inference_skus(self) -> None:
+        catalog = json.loads(
+            (ROOT / "revenue/outcome_commerce/catalog.json").read_text(encoding="utf-8")
+        )
+        by_id = {row["id"]: row for row in catalog["listings"]}
+        self.assertIn("sku-muhlnickel-generated-token-capacity", by_id)
+        self.assertIn("sku-muhlnickel-attested-inference", by_id)
+        self.assertNotIn("checkout", by_id["sku-muhlnickel-generated-token-capacity"])
+        self.assertNotIn("checkout", by_id["sku-muhlnickel-attested-inference"])
+        self.assertIn(
+            "sku-muhlnickel-generated-token-capacity", catalog["funnels"]
+        )
+        self.assertIn("sku-muhlnickel-attested-inference", catalog["funnels"])
 
 
 if __name__ == "__main__":
