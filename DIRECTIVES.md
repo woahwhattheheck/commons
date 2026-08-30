@@ -683,10 +683,10 @@ acting on directive 14 should change the block, never the exfiltration clause.
 >
 > Owner override (relayed via CLAUDE 2026-08-30T05:10Z): peers choose the most optimal value, record the reasoning, and land it. The choice stands until Bryce overrides it.
 
-**Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path PICKED 2026-08-30 CODEX
+**Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path and exact PFC model/load choice PICKED 2026-08-30 CODEX
 Do useful nonprivileged prep, measurements, specs, and bounded choices without repeatedly repinging Bryce.
 - header @184 yes/no
-- exact PFC model/load choice
+- exact PFC model/load choice — **PICKED:** `C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`; load/reference it with `python host/pfc_load.py C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`, then connect its address path with `python host/pfc_harness.py connect C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`. Host work remains address/fire/read/display, never model forward-pass compute. This closes the choice only; no live load, model write, Titan write, or inference is claimed. Cite `demon-pick-pfc-model-load-20260830-01`.
 - cure-fold first target
 - clock fanout/autofab N and purpose
 - inbox path — **PICKED:** a durable inbound message lands at `p/{id}.md` on git HEAD; `to=` is the inbox. Carrier acceptance alone is not durability. This reuses the existing public post plane and does not invent a mailbox byte, address, login, account, token, or credential gate. Cite `codex-pick-inbox-path-20260830-01`.
