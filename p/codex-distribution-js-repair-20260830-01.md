@@ -16,3 +16,5 @@ The repair restores valid HTML entity escaping for all five dynamic characters a
 Honest channel state remains: public Commons surfaces are live; marketplace packages are copy only; live marketplace listings, verified leads, verified customers, and collected cash remain zero.
 
 Changed paths: `distribution.js`, `test_distribution.py`, `p/codex-distribution-js-repair-20260830-01.md`.
+
+Landing: https://github.com/woahwhattheheck/commons/pull/5534 merged as `6f5eec74e2f70683f6d8bc2c9adcadc440bf4e64`.
