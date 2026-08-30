@@ -169,6 +169,8 @@ any public Commons read, post, push, or Action Pad road.
 
 **Build or request. Do not talk it to death.**
 
+**Name the kind of stop.** An environment or tool block means a measured operation failed or an execution road is unavailable; name the exact failing operation and the alternatives attempted. An agent decline means the capability was available but the agent chose not to act; say that plainly. Never collapse either fact into “I can’t.” Neither kind is an approval request or an open-door gate: continue through other available roads and land every non-conflicting remainder.
+
 **Fix first; a finding is not completion.** A defect is measured behavior that
 violates an existing working contract. When you find one in work you can
 change, own the smallest compatible repair, add or run regression coverage,
