@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-30T03:59:00Z",
-    "base_main_sha": "c96d08bf6ed9890782c9b7a48bf4ce4cb5c3f683",
+    "observed_at": "2026-08-30T10:01:00Z",
+    "base_main_sha": "140244ce8170f32156bb751ff8fe74bd02289933",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788062418.023819",
-  "source_id": "codex-internet-archive-mirror-activation-20260830-01",
+  "slack_ts": "1788083921.230169",
+  "source_id": "codex-opportunity-capability-registry-activation-20260830-01",
   "supersedes_source_ids": [
+    "codex-internet-archive-mirror-activation-20260830-01",
     "codex-muhlnickel-distro-sales-door-activation-20260829-01",
     "codex-github-actions-watchdog-production-activation-20260829-01",
     "codex-supergrok-commons-tool-consumer-activation-20260828-01",
@@ -50,7 +51,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Internet Archive history mirror discovered and producing; Pages bake remains noncanonical",
+  "subject": "MASTER RESOURCE LEDGER — stable opportunity-capability registry discovered and producing; eligibility, submission, awards, and cash remain unclaimed",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -74,7 +75,8 @@
     "inventory/resources/records/codex-supergrok-commons-tool-consumer-activation-20260828-01.json",
     "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
     "inventory/resources/records/codex-muhlnickel-distro-sales-door-activation-20260829-01.json",
-    "inventory/resources/records/codex-internet-archive-mirror-activation-20260830-01.json"
+    "inventory/resources/records/codex-internet-archive-mirror-activation-20260830-01.json",
+    "inventory/resources/records/codex-opportunity-capability-registry-activation-20260830-01.json"
   ],
   "priority_queue": [
     {
@@ -1431,6 +1433,28 @@
       "last_used_at": "2026-08-30T01:17:12Z",
       "stale_after": "P7D",
       "priority": 68
+    },
+    {
+      "name": "opportunity-capability-registry",
+      "kind": "COMMERCIAL_EVIDENCE_REGISTRY",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons",
+      "authority": "PUBLIC_READ_AND_LOCAL_COMPILE; OWNER_ONLY_IDENTITY_APPLICATION_TERMS_ACCEPTANCE_AND_SUBMISSION",
+      "consumer": "Commons commercialization triage for selecting grants, pilots, licensing, procurement, and research opportunities from exact shipped capability evidence",
+      "value": "A public fail-closed compiler, 21 composed opportunity rows, evidence packets, seven shipped capability groups, deadline state, and exact zero-truth boundaries",
+      "next_action": "Recheck urgent official deadlines and applicant eligibility using public evidence; advance only a genuinely eligible row, and require owner action before identity, portal, terms, or submission.",
+      "source": "PR #5926; revenue/ip/opportunity_registry.json; opportunity.html; p/codex-opportunity-registry-stable-evidence-20260830-01.md",
+      "evidence_ts": "2026-08-30T09:57:17Z",
+      "auth_surface": "current-main exact Git blobs and public no-auth opportunity door",
+      "exact_safe_probe": "PR #5926 merged as c9c853f151a41e7e2f11d2c812f1bfbf583572f0. Registry compiles 21 opportunities across 5 grants, 4 pilots, 2 licensing, 3 procurement, and 7 research rows; submitted 0, awarded 0, cash USD 0, none_ready 11. Volatile board projections fail closed as evidence.",
+      "rate_plan_boundary": "Research, packets, deadlines, prices, or fit analysis are not applicant eligibility, a submission, acceptance, award, partnership, payment, settlement, payout, revenue, or cash.",
+      "assigned_backlog": "public eligibility and deadline triage for one urgent row; no application, outreach, or identity action without exact owner scope",
+      "last_receipt": "codex-opportunity-registry-stable-evidence-20260830-01",
+      "last_used_at": "2026-08-30T09:57:17Z",
+      "stale_after": "P1D",
+      "priority": 85
     }
   ]
 }
