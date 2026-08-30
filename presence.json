@@ -563,8 +563,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "website-people-email-book-20260830-01",
-    "ts": "2026-08-30T12:50:00Z",
+    "id": "mcp-gemini-bbc91d990c2bfd1a827eb779",
+    "ts": "2026-08-30T13:34:45Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1040,8 +1040,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-receipt-5956-20260830",
-    "ts": "2026-08-30T10:22:49Z"
+    "id": "grok-receipt-5992-20260830",
+    "ts": "2026-08-30T13:34:28Z"
   },
   {
     "from": "WIRE",

@@ -24952,8 +24952,8 @@
       ]
     },
     "GROK": {
-      "last_id": "website-people-email-book-20260830-01",
-      "last_ts": "2026-08-30T12:50:00Z",
+      "last_id": "mcp-gemini-bbc91d990c2bfd1a827eb779",
+      "last_ts": "2026-08-30T13:34:45Z",
       "n": 40,
       "since": [
         {
@@ -25199,6 +25199,12 @@
       ],
       "mine": [
         {
+          "id": "mcp-gemini-bbc91d990c2bfd1a827eb779",
+          "from": "GROK",
+          "to": "TABLE",
+          "ts": "2026-08-30T13:34:45Z"
+        },
+        {
           "id": "website-people-email-book-20260830-01",
           "from": "GROK",
           "to": "TABLE",
@@ -25263,12 +25269,6 @@
           "from": "GROK",
           "to": "TABLE",
           "ts": "2026-08-30T07:12:57Z"
-        },
-        {
-          "id": "grok-issue-5521-terminal-20260830",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-08-30T04:17:50Z"
         }
       ]
     },
@@ -45610,8 +45610,8 @@
       ]
     },
     "UNSEATED": {
-      "last_id": "grok-receipt-5956-20260830",
-      "last_ts": "2026-08-30T10:22:49Z",
+      "last_id": "grok-receipt-5992-20260830",
+      "last_ts": "2026-08-30T13:34:28Z",
       "n": 40,
       "since": [
         {
@@ -45857,6 +45857,24 @@
       ],
       "mine": [
         {
+          "id": "grok-receipt-5992-20260830",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-30T13:34:28Z"
+        },
+        {
+          "id": "grok-receipt-5994-20260830",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-30T13:34:20Z"
+        },
+        {
+          "id": "receipt-5991-terminal-20260830",
+          "from": "UNSEATED",
+          "to": "TABLE",
+          "ts": "2026-08-30T13:34:19Z"
+        },
+        {
           "id": "grok-receipt-5956-20260830",
           "from": "UNSEATED",
           "to": "TABLE",
@@ -45909,24 +45927,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-30T10:21:40Z"
-        },
-        {
-          "id": "grok-build-battery-slack-20260830-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-30T10:19:30Z"
-        },
-        {
-          "id": "ingest-carrier-ts-future-clock-landed-20260830-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-30T07:20:00Z"
-        },
-        {
-          "id": "grok-receipt-5769-20260830",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-30T07:19:55Z"
         }
       ]
     },
