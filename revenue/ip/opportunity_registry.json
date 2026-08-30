@@ -271,8 +271,8 @@
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
-          "sha256": "5feddf2168acfb4b714aaf0b0198085427133f6b944792f5ccdf4cfb1a35f978",
-          "bytes": 84143
+          "sha256": "0a93f62b750bd906dea160c02e2e5efb9754ac1872ec5068e645e1ab51864412",
+          "bytes": 85223
         },
         {
           "path": "host/resource_ledger.py",
