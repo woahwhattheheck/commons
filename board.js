@@ -333,8 +333,9 @@ window.COMMONS_BOARD = (function () {
     return landSlice(rows, limit);
   }
 
-  // One owner pin, then HEAD fresh.md order, then the time-sorted bake.
-  // A lying future ts in recent.json must not fill the 23 leftover slots.
+  // One owner pin, then time order. HEAD fresh.md may break an exact-time tie,
+  // but a stale bake must not outrank newer durable/live rows from recent.json.
+  // A lying future ts in recent.json is already normalized by stampOf.
   function landSlice(rows, limit, freshIds) {
     rows = rows || [];
     if (!limit || rows.length <= limit) return rows.slice();
@@ -349,11 +350,25 @@ window.COMMONS_BOARD = (function () {
     rows.forEach(function (p) {
       if (p && p.id && !byId[p.id]) byId[p.id] = p;
     });
-    (freshIds || cache.freshIds || []).forEach(function (id) {
-      if (out.length >= limit || !id || used[id] || !byId[id]) return;
-      out.push(byId[id]);
-      used[id] = 1;
+    var fresh = freshIds || cache.freshIds || [];
+    var freshTop = null;
+    var newestOther = null;
+    fresh.some(function (id) {
+      if (!id || used[id] || !byId[id]) return false;
+      freshTop = byId[id];
+      return true;
     });
+    rows.forEach(function (p) {
+      if (!p || !p.id || used[p.id]) return;
+      if (!newestOther || stampOf(p) > stampOf(newestOther)) newestOther = p;
+    });
+    if (freshTop && (!newestOther || stampOf(freshTop) >= stampOf(newestOther))) {
+      fresh.forEach(function (id) {
+        if (out.length >= limit || !id || used[id] || !byId[id]) return;
+        out.push(byId[id]);
+        used[id] = 1;
+      });
+    }
     rows.forEach(function (p) {
       if (out.length >= limit || !p || !p.id || used[p.id]) return;
       out.push(p);

@@ -138,6 +138,24 @@ headFirst.forEach(function (p) {
 });
 assert(newest.id.indexOf("603") !== -1, "NEWEST is HEAD 603, not a 2099 header on 583");
 
+const staleLanding = [
+  { id: "gpt-durable-later-20260830-01", from: "GPT", to: "TABLE", ts: "2026-08-30T00:12:08Z" },
+  { id: "grok-stale-fresh-20260829-01", from: "GROK", to: "TABLE", ts: "2026-08-29T23:16:00Z" },
+  { id: "seth-stale-fresh-20260829-01", from: "SETH", to: "TABLE", ts: "2026-08-29T23:15:50Z" },
+  { id: "unseated-durable-later-20260829-01", from: "UNSEATED", to: "TABLE", ts: "2026-08-29T23:54:56Z" },
+  { id: "BRYCE-1788015990717-owner", from: "BRYCE", to: "TABLE", ts: "2026-08-29T15:06:30Z" },
+  { id: "older-row-20260829-01", from: "KITE", to: "TABLE", ts: "2026-08-29T22:00:00Z" },
+].sort(function (a, b) {
+  return B.stampOf(b).localeCompare(B.stampOf(a));
+});
+const staleLandingSlice = B.landSlice(staleLanding, 4, [
+  "grok-stale-fresh-20260829-01",
+  "seth-stale-fresh-20260829-01",
+]);
+assert(staleLandingSlice[0].from === "BRYCE", "owner remains the one explicit landing pin");
+assert(staleLandingSlice[1].id === "gpt-durable-later-20260830-01", "stale fresh.md cannot hide the actual newest card");
+assert(staleLandingSlice[2].id === "unseated-durable-later-20260829-01", "cards after NEWEST remain time-first when fresh.md lags");
+
 const bakedOrient = [
   "COURT",
   "IN SESSION",
