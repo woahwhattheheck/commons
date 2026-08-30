@@ -862,20 +862,35 @@ class ServerTests(unittest.TestCase):
         self.assertIn("measure_roads", html)
 
 
-class LiveProbeTests(unittest.TestCase):
-    """GET-only. Failure here is a measured miss, not a skip."""
+class TransportIsolationTests(unittest.TestCase):
+    """Conformance uses injected transports; production defaults stay live."""
 
-    def test_known_receipt_on_live_head(self):
-        gw = Gateway(timeout=8.0, poll_interval=0.2)
-        result = gw.verify_receipt({"id": KNOWN})
+    def setUp(self):
+        self.gw, self.net = make_gateway(timeout=8.0)
+        self.net.pages[KNOWN] = page(KNOWN, actor="MOTH")
+
+    def _without_live_transport(self, operation):
+        with (
+            mock.patch(
+                "independent_commons_mcp.truth.urllib.request.urlopen",
+                side_effect=AssertionError("tests must not open public URLs"),
+            ),
+            mock.patch(
+                "independent_commons_mcp.truth.subprocess.run",
+                side_effect=AssertionError("tests must not resolve git over the network"),
+            ),
+        ):
+            return operation()
+
+    def test_known_receipt_on_injected_head(self):
+        result = self._without_live_transport(lambda: self.gw.verify_receipt({"id": KNOWN}))
         self.assertEqual(result.get("state"), "DURABLE_PAGE", result)
         self.assertTrue(result.get("ok"))
         self.assertIn("/p/%s.md" % KNOWN, result.get("sha_pinned_raw") or "")
-        self.assertEqual(len(result.get("git_sha") or ""), 40)
+        self.assertEqual(result.get("git_sha"), SHA)
 
-    def test_measure_roads_distinguishes_transport(self):
-        gw = Gateway(timeout=8.0, poll_interval=0.2)
-        result = gw.measure_roads({})
+    def test_measure_roads_distinguishes_injected_transport(self):
+        result = self._without_live_transport(lambda: self.gw.measure_roads({}))
         self.assertEqual(result["state"], "MEASURED")
         by_lane = {}
         for row in result["lanes"]:
@@ -895,6 +910,11 @@ class LiveProbeTests(unittest.TestCase):
         self.assertIn("discord", by_lane)
         discord = by_lane["discord"][0]
         self.assertIn(discord["state"], {"CONFIGURED", "UNCONFIGURED"})
+        ntfy_gets = [
+            call for call in self.net.calls
+            if call["method"] == "GET" and "ntfy" in call["url"]
+        ]
+        self.assertEqual(len(ntfy_gets), 3)
 
 
 if __name__ == "__main__":
