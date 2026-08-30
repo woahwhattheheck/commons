@@ -256,8 +256,8 @@
         },
         {
           "path": "test_feature_tracker.py",
-          "sha256": "3e8f2422b5adc3089c150a4d989e69a4a035fa0bd3fbd3eed9d8501617112df5",
-          "bytes": 18030
+          "sha256": "936d59b980fa66e0b1c4853cbd598341b91289b11cd2d70c23933e21b7996ba9",
+          "bytes": 18855
         },
         {
           "path": "features/registry/feature-tracker-20260828-01.json",
