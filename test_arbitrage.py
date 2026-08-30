@@ -3,10 +3,13 @@
 
 import json
 import pathlib
+import re
 import unittest
 
 
 ROOT = pathlib.Path(__file__).resolve().parent
+KIMI_RECORD = ROOT / "revenue/arbitrage/kimi-agent-survival-proof-20260830-01.json"
+WHITEBOX_RECORD = ROOT / "revenue/arbitrage/whitebox-range-audit-20260830.json"
 
 
 class ArbitrageScoutTests(unittest.TestCase):
@@ -14,6 +17,8 @@ class ArbitrageScoutTests(unittest.TestCase):
     def setUpClass(cls):
         cls.page = (ROOT / "arbitrage.html").read_text(encoding="utf-8")
         cls.schema = json.loads((ROOT / "revenue/arbitrage/opportunity.schema.json").read_text(encoding="utf-8"))
+        cls.kimi = json.loads(KIMI_RECORD.read_text(encoding="utf-8"))
+        cls.whitebox = json.loads(WHITEBOX_RECORD.read_text(encoding="utf-8"))
 
     def test_schema_is_fail_closed_and_requires_both_sides(self):
         self.assertFalse(self.schema["additionalProperties"])
@@ -62,6 +67,47 @@ class ArbitrageScoutTests(unittest.TestCase):
     def test_commerce_links_scout(self):
         commerce = (ROOT / "commerce.html").read_text(encoding="utf-8")
         self.assertIn('<a href="./arbitrage.html">arbitrage scout</a>', commerce)
+
+    def test_quotable_candidate_cards_match_machine_records(self):
+        self.assertEqual(self.page.count('id="quotable-candidates"'), 1)
+        self.assertIn(
+            "Opening a buyer page or checkout is not acceptance, payment, settlement, payout, or cash.",
+            self.page,
+        )
+        ids = re.findall(r'data-opportunity-id="([^"]+)"', self.page)
+        self.assertEqual(ids, [
+            "kimi-agent-survival-proof-20260830-01",
+            "whitebox-range-audit-20260830",
+        ])
+        expected = (
+            (
+                self.kimi,
+                "./agent-rescue.html",
+                "./revenue/arbitrage/kimi-agent-survival-proof-20260830-01.json",
+            ),
+            (
+                self.whitebox,
+                "./commercial.html",
+                "./revenue/arbitrage/whitebox-range-audit-20260830.json",
+            ),
+        )
+        for record, buyer_href, json_href in expected:
+            self.assertEqual(record["state"], "QUOTABLE")
+            self.assertGreater(record["economics"]["unit_edge_before_tax"], 0)
+            self.assertIs(record["execution_boundary"]["cash_claimed"], False)
+            oid = record["opportunity_id"]
+            card = re.search(
+                rf'<article class="card" data-opportunity-id="{re.escape(oid)}">.*?</article>',
+                self.page,
+                flags=re.S,
+            )
+            self.assertIsNotNone(card, oid)
+            self.assertIn(f'href="{buyer_href}"', card.group(0))
+            self.assertIn(f'href="{json_href}"', card.group(0))
+            self.assertIn(
+                "No buyer, acceptance, payment, settlement, payout, or cash is claimed.",
+                card.group(0),
+            )
 
 
 class ArbitrageRecordTests(unittest.TestCase):
