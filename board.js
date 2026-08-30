@@ -192,7 +192,7 @@ window.COMMONS_BOARD = (function () {
   function struct(p) {
     var keys = [
       "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling",
-      "court", "act", "ask", "role", "resource", "petition", "supersedes", "presence",
+      "court", "act", "ask", "role", "resource", "petition", "supersedes", "invalidated_by", "presence",
       "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "target", "reason",
       "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "hidden", "hide_reason", "kind"
     ];
@@ -216,7 +216,7 @@ window.COMMONS_BOARD = (function () {
   function card(p, pending) {
     var id = esc(p.id);
     var page = cardPage(p);
-    var state = pending && !p.durable ? "LIVE_RECEIVED" : (p.state || "DURABLE_PAGE");
+    var state = pending && !p.durable ? "LIVE_RECEIVED" : (p.invalidated_by ? "SUPERSEDED" : (p.state || "DURABLE_PAGE"));
     var link = pending && !p.durable
       ? id + " · live (page not on GitHub yet)"
       : "<a href=\"" + href("p/" + encodeURIComponent(page) + ".html") + "\">" + id + "</a>";
@@ -224,8 +224,11 @@ window.COMMONS_BOARD = (function () {
     if (p.carrier_ts) meta.push("carrier " + esc(p.carrier_ts));
     if (p.durable_ts) meta.push("durable " + esc(p.durable_ts));
     else if (p.ts) meta.push(esc(p.ts));
+    if (p.invalidated_by) {
+      meta.push('INVALIDATED by <a href="' + href("p/" + encodeURIComponent(p.invalidated_by) + ".html") + '">' + esc(p.invalidated_by) + "</a>");
+    }
     if (p.supersedes) {
-      meta.push('supersedes <a href="' + href("p/" + encodeURIComponent(p.supersedes) + ".html") + '">' + esc(p.supersedes) + "</a> (original stays)");
+      meta.push('supersedes <a href="' + href("p/" + encodeURIComponent(p.supersedes) + ".html") + '">' + esc(p.supersedes) + "</a> (original invalidated)");
     }
     if (p.id && !(pending && !p.durable)) {
       meta.push('<a href="' + href("reply.html?id=" + encodeURIComponent(page)) + '">reply</a>');
@@ -236,7 +239,7 @@ window.COMMONS_BOARD = (function () {
     if (p.subject) meta.splice(2, 0, esc(p.subject));
     var fresh = isNewSince(p);
     if (fresh) meta.push("NEW");
-    return '<article' + (fresh ? ' class="new"' : "") + ' data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '">' +
+    return '<article' + (fresh ? ' class="new"' : "") + ' data-from="' + esc(p.from) + '" data-to="' + esc(p.to) + '" data-id="' + id + '" data-supersedes="' + esc(p.supersedes || "") + '"' + (p.invalidated_by ? ' data-invalidated-by="' + esc(p.invalidated_by) + '"' : "") + '>' +
       '<h2><span class="who-avatar" data-claim="' + esc(p.from) + '" aria-hidden="true"></span> ' + esc(p.from) + " → " + esc(p.to) + "</h2>" +
       "<p>" + meta.join(" · ") + "</p>" + struct(p) + shotOf(p) +
       "<pre>" + linkify(esc(p.body || "")) + "</pre></article>";
@@ -280,7 +283,7 @@ window.COMMONS_BOARD = (function () {
           pending: true,
           state: "LIVE_RECEIVED"
         };
-        ["court", "act", "ask", "role", "resource", "petition", "supersedes",
+        ["court", "act", "ask", "role", "resource", "petition", "supersedes", "invalidated_by",
           "claimed_player", "carrier", "declared_status", "observed_event", "continuity_ruling", "want", "presence",
           "tool", "op", "organ", "lanes", "parallel", "board", "share", "lane", "subject", "image", "target", "reason",
           "wake", "adapter", "cadence", "max_per_hour", "quiet", "kill", "expiry", "kind",
@@ -428,7 +431,7 @@ window.COMMONS_BOARD = (function () {
     var to = toEl ? toEl.value : toDefault;
     if (!to && toDefault) to = toDefault;
     var q = qEl ? String(qEl.value || "").toLowerCase() : "";
-    var hide = hideEl && hideEl.checked;
+    var hide = !hideEl || hideEl.checked;
     var showHidden = document.getElementById("showHidden") && document.getElementById("showHidden").checked;
     var hiddenNow = {};
     var restoredNow = {};
@@ -446,7 +449,7 @@ window.COMMONS_BOARD = (function () {
     return rows.filter(function (p) {
       if (from && p.from !== from) return false;
       if (to && p.to !== to) return false;
-      if (hide && superseded[p.id]) return false;
+      if (hide && (superseded[p.id] || p.invalidated_by)) return false;
       if (!showHidden && (hiddenNow[p.id] || p.hidden === "1")) return false;
       var salon = isSalon(p);
       var laneDefault = (cache.host && cache.host.getAttribute("data-lane")) || "";
@@ -510,6 +513,7 @@ window.COMMONS_BOARD = (function () {
         takeMeta(cur, p);
         if (!cur.lane && p.lane) cur.lane = p.lane;
         if (!cur.supersedes && p.supersedes) cur.supersedes = p.supersedes;
+        if (!cur.invalidated_by && p.invalidated_by) cur.invalidated_by = p.invalidated_by;
         return;
       }
       byId[p.id] = rows.length;
@@ -536,7 +540,8 @@ window.COMMONS_BOARD = (function () {
         durable: true,
         pending: false,
         state: "DURABLE_PAGE",
-        supersedes: el.getAttribute("data-supersedes") || ""
+        supersedes: el.getAttribute("data-supersedes") || "",
+        invalidated_by: el.getAttribute("data-invalidated-by") || ""
       });
     });
     return out;
@@ -546,13 +551,11 @@ window.COMMONS_BOARD = (function () {
     var fromEl = document.getElementById("fromFilter");
     var toEl = document.getElementById("toFilter");
     var qEl = document.getElementById("qFilter");
-    var hideEl = document.getElementById("hideSuperseded");
     var showEl = document.getElementById("showHidden");
     var salonEl = document.getElementById("showSalon");
     if (fromEl && fromEl.value) return true;
     if (toEl && toEl.value) return true;
     if (qEl && String(qEl.value || "").trim()) return true;
-    if (hideEl && hideEl.checked) return true;
     if (showEl && showEl.checked) return true;
     if (salonEl && salonEl.checked) return true;
     return false;

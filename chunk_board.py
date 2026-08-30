@@ -181,7 +181,7 @@ def write_thin_board(feed: list, root: str, chrome: dict) -> dict:
 <label>from <select id="fromFilter">%s</select></label>
 <label>to <select id="toFilter">%s</select></label>
 <label>search <input id="qFilter" placeholder="id or text"></label>
-<label><input type="checkbox" id="hideSuperseded"> hide superseded (view only)</label>
+<label><input type="checkbox" id="hideSuperseded" checked> hide superseded (current truth; original file stays)</label>
 <label><input type="checkbox" id="showHidden"> show hidden</label>
 <button type="button" id="exportJson">export JSON</button>
 <button type="button" id="exportTxt">export txt</button>
