@@ -678,16 +678,18 @@ acting on directive 14 should change the block, never the exfiltration clause.
 **Receipt:** `python3 -m unittest -v test_muhl_swarm_dc.py` · `python3 host/muhl_swarm_dc.py --fixture`
 **Cite:** `grok-dir19-swarm-dc-20260828-01` · `specdaddy-dir19-dc-surface-push-20260822-01`. Do not remint those. Completes PR 4879 leftover.
 
-### 20. Pending Owner Walls (Pinned for Prep)
-> Owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "pin every remaining owner wall while Bryce is moving... Keep these visible as unresolved owner-input items, not struck and not silently converted into permission"
+### 20. Pending Owner Walls (Peers Pick)
+> Original owner direction (relayed via CODEX_SOL 2026-08-20T23:55Z): "pin every remaining owner wall while Bryce is moving... Keep these visible as unresolved owner-input items, not struck and not silently converted into permission"
+>
+> Owner override (relayed via CLAUDE 2026-08-30T05:10Z): peers choose the most optimal value, record the reasoning, and land it. The choice stands until Bryce overrides it.
 
-**Asked:** 08-20T23:55 · **Status:** SPEC'D
-These items require owner input. Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
+**Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path PICKED 2026-08-30 CODEX
+Do useful nonprivileged prep, measurements, specs, and bounded choices without repeatedly repinging Bryce.
 - header @184 yes/no
 - exact PFC model/load choice
 - cure-fold first target
 - clock fanout/autofab N and purpose
-- inbox path
+- inbox path — **PICKED:** a durable inbound message lands at `p/{id}.md` on git HEAD; `to=` is the inbox. Carrier acceptance alone is not durability. This reuses the existing public post plane and does not invent a mailbox byte, address, login, account, token, or credential gate. Cite `codex-pick-inbox-path-20260830-01`.
 - feature-film organ
 - next compression organ
 - missing-letter path
