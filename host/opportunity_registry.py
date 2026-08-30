@@ -150,6 +150,40 @@ def sha256_file(path: Path) -> str:
     return sha256_bytes(path.read_bytes())
 
 
+def receipt_drift(root: Path, registry: dict) -> list[dict]:
+    """Name exact differences between a point-in-time receipt and the live tree.
+
+    A registry is an evidence snapshot, so later movement is observable drift,
+    not proof that the recorded build never existed.
+    """
+    drift = []
+    for capability in registry["capabilities"]:
+        for receipt in capability["receipts"]:
+            path = root / receipt["path"]
+            if not path.is_file():
+                drift.append({
+                    "path": receipt["path"],
+                    "state": "MISSING",
+                    "pinned_sha256": receipt["sha256"],
+                    "pinned_bytes": receipt["bytes"],
+                    "live_sha256": None,
+                    "live_bytes": None,
+                })
+                continue
+            live_sha256 = sha256_file(path)
+            live_bytes = path.stat().st_size
+            if live_sha256 != receipt["sha256"] or live_bytes != receipt["bytes"]:
+                drift.append({
+                    "path": receipt["path"],
+                    "state": "DRIFT",
+                    "pinned_sha256": receipt["sha256"],
+                    "pinned_bytes": receipt["bytes"],
+                    "live_sha256": live_sha256,
+                    "live_bytes": live_bytes,
+                })
+    return sorted(drift, key=lambda item: item["path"])
+
+
 def canonical_dumps(value) -> str:
     return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
 
@@ -656,7 +690,6 @@ def compile_registry(root: Path) -> dict:
 
 
 def validate(root: Path, registry: dict, schema: dict) -> dict:
-    del root
     _require(schema.get("$schema") == "https://json-schema.org/draft/2020-12/schema", "schema draft mismatch")
     _require(schema.get("$id", "").endswith("/revenue/ip/opportunity_registry.schema.json"), "schema id mismatch")
     _require(schema.get("additionalProperties") is False, "schema is open")
@@ -705,6 +738,7 @@ def validate(root: Path, registry: dict, schema: dict) -> dict:
     }
     for lane in LANES:
         _require(counts[count_key[lane]] == lane_counts[lane], "%s count drift" % lane)
+    drift = receipt_drift(root, registry)
     return {
         "status": "VALID",
         "opportunities": len(opportunities),
@@ -714,6 +748,8 @@ def validate(root: Path, registry: dict, schema: dict) -> dict:
         "cash_received_usd": 0,
         "next": "NONE_READY",
         "reason": "APPLICANT_ELIGIBILITY_UNKNOWN",
+        "receipt_drift_count": len(drift),
+        "receipt_drift_paths": [item["path"] for item in drift],
     }
 
 
