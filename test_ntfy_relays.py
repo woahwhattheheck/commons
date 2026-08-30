@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 import io
 import json
+import os
+import tempfile
 import unittest
 import urllib.error
 from contextlib import redirect_stdout
@@ -187,22 +189,72 @@ class NtfyRelaysTests(unittest.TestCase):
             payload["source_hosts"], ["https://a.example", "https://b.example"]
         )
 
+    def test_record_relay_drop_writes_one_stable_failed_posts_row(self):
+        stable = event(
+            "same-id-every-time",
+            "https://relay.example/",
+            event_id="carrier-event",
+        )
+        stable["payload"].update({"from": "UNSEATED", "to": "TABLE"})
+        with tempfile.TemporaryDirectory() as tmp:
+            rejects_path = os.path.join(tmp, "rejects.json")
+            with open(rejects_path, "w", encoding="utf-8") as handle:
+                json.dump([{"id": "older", "reason": "bad-id"}], handle)
+            with mock.patch.object(ntfy_relays, "REJECTS_PATH", rejects_path), mock.patch.object(
+                ntfy_relays, "HOME", "https://home.example/"
+            ), mock.patch.object(
+                ntfy_relays, "_now_ts", return_value="2026-08-30T06:30:00Z"
+            ):
+                self.assertTrue(ntfy_relays.record_relay_drop(stable))
+                self.assertFalse(ntfy_relays.record_relay_drop(stable))
+
+            with open(rejects_path, encoding="utf-8") as handle:
+                rows = json.load(handle)
+
+        self.assertEqual(len(rows), 2)
+        row = rows[0]
+        self.assertEqual(row["id"], "same-id-every-time")
+        self.assertEqual(row["pid"], "same-id-every-time")
+        self.assertEqual(row["reason"], "relay-drop")
+        self.assertEqual(row["host"], "https://relay.example")
+        self.assertEqual(row["destination_host"], "https://home.example")
+        self.assertEqual(row["event_id"], "carrier-event")
+        self.assertEqual(row["from"], "UNSEATED")
+        self.assertEqual(row["to"], "TABLE")
+        self.assertEqual(row["state"], "INGEST_ERROR")
+        self.assertIn("next run retries same-id-every-time", row["message"])
+        self.assertEqual(rows[1]["id"], "older")
+
     def test_failed_replay_retries_the_same_id_on_the_next_run(self):
         stable = event("same-id-every-time", "https://relay.example")
-        with mock.patch.object(ntfy_relays, "HOSTS", ["https://relay.example"]), mock.patch.object(
-            ntfy_relays, "HOME", "https://home.example"
-        ), mock.patch.object(ntfy_relays, "poll", return_value=[stable]), mock.patch.object(
-            ntfy_relays, "already", return_value=False
-        ), mock.patch.object(ntfy_relays, "replay", return_value=False) as replay:
-            with redirect_stdout(io.StringIO()):
-                self.assertEqual(ntfy_relays.main(), 0)
-                self.assertEqual(ntfy_relays.main(), 0)
+        with tempfile.TemporaryDirectory() as tmp:
+            rejects_path = os.path.join(tmp, "rejects.json")
+            with mock.patch.object(ntfy_relays, "HOSTS", ["https://relay.example"]), mock.patch.object(
+                ntfy_relays, "HOME", "https://home.example"
+            ), mock.patch.object(ntfy_relays, "REJECTS_PATH", rejects_path), mock.patch.object(
+                ntfy_relays, "poll", return_value=[stable]
+            ), mock.patch.object(
+                ntfy_relays, "already", return_value=False
+            ), mock.patch.object(
+                ntfy_relays, "replay", return_value=False
+            ) as replay, mock.patch.object(
+                ntfy_relays, "_now_ts", return_value="2026-08-30T06:30:00Z"
+            ):
+                with redirect_stdout(io.StringIO()):
+                    self.assertEqual(ntfy_relays.main(), 0)
+                    self.assertEqual(ntfy_relays.main(), 0)
+
+            with open(rejects_path, encoding="utf-8") as handle:
+                rejects = json.load(handle)
 
         self.assertEqual(replay.call_count, 2)
         self.assertEqual(
             [json.loads(call.args[0])["id"] for call in replay.call_args_list],
             ["same-id-every-time", "same-id-every-time"],
         )
+        self.assertEqual(len(rejects), 1)
+        self.assertEqual(rejects[0]["reason"], "relay-drop")
+        self.assertEqual(rejects[0]["pid"], "same-id-every-time")
 
 
 if __name__ == "__main__":
