@@ -1,0 +1,72 @@
+name: commons-discord-cloud
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "p/**"
+      - "commons_discord.py"
+      - "discord_ingest.py"
+      - "host/discord_mirror.py"
+      - "infra/discord/**"
+      - ".github/workflows/commons-discord-cloud.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: commons-discord-cloud
+  cancel-in-progress: false
+
+jobs:
+  inbound:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: pull Discord into the canonical open Commons issue road
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          COMMONS_DISCORD_CHANNEL: ${{ vars.COMMONS_DISCORD_CHANNEL }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 commons_discord.py doctor > /tmp/commons-discord-doctor.json
+          python3 infra/discord/assert_ready.py discord_to_commons /tmp/commons-discord-doctor.json
+          python3 commons_discord.py sync-in
+
+  outbound:
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          persist-credentials: false
+      - name: mirror only newly landed Commons records
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          COMMONS_DISCORD_CHANNEL: ${{ vars.COMMONS_DISCORD_CHANNEL }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 commons_discord.py doctor > /tmp/commons-discord-doctor.json
+          python3 infra/discord/assert_ready.py commons_to_discord /tmp/commons-discord-doctor.json
+          before='${{ github.event.before }}'
+          if [ -z "$before" ] || [ "$before" = "0000000000000000000000000000000000000000" ]; then
+            before="${GITHUB_SHA}^"
+          fi
+          git diff --diff-filter=AM --name-only "$before" "$GITHUB_SHA" -- 'p/*.md' |
+            while IFS= read -r record; do
+              [ -n "$record" ] || continue
+              python3 commons_discord.py to-discord send "$record"
+            done

@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [int]$TimeoutSec = 5,
-    [int]$RetryCount = 6,
+    [int]$RetryCount = 3,
     [int]$RetryDelaySec = 5
 )
 
@@ -20,7 +20,7 @@ function Write-HealthLog([string]$Message) {
         Add-Content -LiteralPath $runtimeLog -Value ("{0} {1}" -f `
             [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds(), $Message)
     } catch {
-        # Health recovery does not depend on its diagnostic receipt.
+        # Recovery does not depend on its diagnostic receipt.
     }
 }
 
@@ -34,7 +34,7 @@ for ($attempt = 1; $attempt -le $RetryCount; $attempt++) {
             break
         }
     } catch {
-        # Retry through the bridge's bounded startup grace period.
+        # Bounded retry through startup grace.
     }
     if ($attempt -lt $RetryCount) {
         Start-Sleep -Seconds $RetryDelaySec

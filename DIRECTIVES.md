@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 23792)
+Total output lines: 764
+
 # DIRECTIVES — the owner's standing requests, durable
 
 > BRYCE, 2026-08-18T04:38Z: *"i want requests for changes to commons logged durably so it can work
@@ -337,120 +340,7 @@ working code and it reports a stalled board to the owner when the board is not s
 > *"PR 2320 / demon/grok-receipt-catalog-delta is a COLLISION … DEMON is landing: exact-one-fence Grok receipt normalizer"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
 
 **Asked:** 08-25T09:41 Slack `1787650886.402809` / DEMON HEAVY DAMAGE-CONTROL UPDATE + ship-talk · **Status:** LANDED this commit
-**Landed:** `ground/GROK_RECEIPT.md` · `ground/GROK_RECEIPT.json` · `host/grok_receipt.py` · `ground/H009.md` · `ground/H009.json` · exact-one-fence (not last-fence) · device_path_census invalid-ref null · device_churn missing-dir/broken-JSON null · generator-backed PIXEL_HEARTBEAT RIVET row · Gemma `infra/host` path · land canary + `grokReceiptState`
-**Receipt:** `python3 test_grok_receipt.py` · `python3 test_device_path_census.py` · `python3 test_device_churn.py` · `node test_land_desk.js` · `python3 host/grok_receipt.py`
-**Note:** PR 2320 stays COLLISION. Do not remint `rivet-ship-grok-receipt-20260825-01`. Finder failures are null/UNMEASURED. Titan helper fail-open is BOUNDARY_ONLY — no live Titan mutation path. Do not remint H-002 / HEAVY_LANES / PIXEL_HEARTBEAT leftover / STRANDED_MAP leftover / HUMAN_OUTCOMES / JOJO LDA-Subzero / DIO CRLF leftover / SUBZERO second-pass leftover. DIO/JOJO names stay. Claude stays quarantined candidate generation only. titan NOT_WRITTEN. Talk is not a land.
-
-### 58. Explorer v2 evidence packet — an open PR is not a land
-> *"Complete Subzero Explorer v2 evidence packet"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
-
-**Asked:** 08-25T09:35 PR 2325 + ship-talk · **Status:** LANDED this commit
-**Landed:** replay JOJO PR 2325 onto current main and regenerate `ground/SUBZERO_EXPLORER.json` so the checked-in catalog matches the generator. Same six paths. Binder leftover stays INTEGRATED.
-**Receipt:** `python3 -m unittest test_subzero_explorer.py test_subzero_receipt.py` · `python3 host/subzero_explorer.py` · `python3 host/subzero_receipt.py`
-**Note:** Sitting PR 2325 was CANDIDATE. Catalog on the PR head was stale vs its own host blob. Regenerated. 31/31 STRUCTURAL_ONLY. Presence never escalates. Do not remint item 45 / item 51 / `rivet-ship-subzero-explorer-20260825-01` / `rivet-ship-subzero-explorer-v2-20260825-01` / `jojo-subzero-explorer-v2-followup-20260825-01`. Hands off PR 2320 / 2108 / bind leftover. Cash $0 / NOT_LANDED. Talk is not a land.
-
-### 59. SUBZERO quote H-009 — leftover INTEGRATED is not a buyer
-> *"Smallest corrective lane is to harden the existing #2322/#2329 quote+receipt consumers"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
-
-**Asked:** 08-25T09:53 Slack `1787651627.535699` / JOJO H-009 + ship-talk · **Status:** LANDED this commit
-**Landed:** fail-close `inbound_rel` / `SELF_BIND`, UNRESOLVED missing numerics, source/tree/quote/row/request hashes, separate leftover INTEGRATED from DRAFT→NEEDS_BUYER, drop titan-lock health · `host/subzero_quote.py` · tests · card/catalog/door · land leftover-first
-**Receipt:** `python3 test_subzero_quote.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py`
-**Note:** #2329 binder holes already closed on `3c364c9fd`. H-009 plan leftover already on main via exact-one-fence. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live legal_state stays DRAFT/NEEDS_BUYER. Do not remint first quote leftover, receipt bind leftover, or `rivet-ship-grok-receipt-20260825-01`. Hands off PR 2320 / 2325 / 2108. No auth. No gate. Talk is not a land.
-
-### 61. SUBZERO quote/receipt semantic hardening — a file is not an inbound
-> *"close Windows path escape; require a semantically relevant public inbound instead of any existing file/self receipt; stop missing→zero coercion"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
-
-**Asked:** 08-25T09:53 Slack `1787651639.893089` / JOJO TAKING + ship-talk · **Status:** LANDED this commit
-**Landed:** reject Windows path escape instead of stripping; inbound_ok only on a semantically relevant public inbound; missing numeric UNRESOLVED never coerce; leftover INTEGRATED ≠ legal DRAFT→NEEDS_BUYER→ACCEPTED→DELIVERED
-**Receipt:** `python3 test_subzero_quote.py` · `python3 test_subzero_receipt.py` · `node test_land_desk.js` · `python3 host/subzero_quote.py` · `python3 host/subzero_receipt.py`
-**Note:** H-009 quote leftover and #2329 bind leftover stay. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. Live legal state stays NEEDS_BUYER. Do not remint quote / first receipt / bind / H-009 leftovers. Hands off PR 2320 / 2108. No auth. No gate. Talk is not a land.
-
-### 62. PR 2351 leftover-first — a sitting candidate is not current main
-> *"JOJO CANDIDATE — PR #2351 ACTIVE SUBZERO LOCK REMOVAL + WINDOWS MEASURE RESTORE"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
-
-**Asked:** 08-25T10:19 Slack `1787653153.983349` / JOJO CANDIDATE + DEMON grok-receipt LANDED `1787653275.085419` + ship-talk · **Status:** LANDED this commit
-**Landed:** leftover-first on land desk so PR 2351 / Windows measure restore talk stays `CLAIMED` until measured. Code leftover already INTEGRATED via #2353; receipt `rivet-ship-subzero-windows-collision-20260825-01` already DURABLE_ON_MAIN.
-**Receipt:** `node test_land_desk.js` · `python3 test_subzero_quote.py` · `python3 test_subzero_receipt.py`
-**Note:** Do not remint #2353 / `rivet-ship-subzero-windows-collision-20260825-01` / `jojo-subzero-active-lock-removal-20260825-01` / H-009 / titan-lock / semantic-hardening / exact-one-fence. Exact-one-fence SHA `854b0d7a5` is an ancestor, not current HEAD. PR 2320 stays COLLISION. Honest facts stay $2500 / QUOTE_DRAFT / STRUCTURAL_ONLY / demand UNKNOWN / cash $0/NOT_LANDED. No auth. No gate. Talk is not a land.
-
-### 63. Explorer fail-closed leftover — a review comment is not a land
-> *"missing cards must not pass; corrupt bundle bytes must fail; commit/tree pins must exist; invalid timestamps and FAIL receipts must not escalate; nested receipt types must fail closed"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
-
-**Asked:** 08-25T10:24 Slack `1787653458.350259` / JOJO #2325 exact-head residuals `1787652792.439959` · **Status:** LANDED this commit
-**Landed:** named cards `SUBZERO_CHPR.md` / `SUBZERO_CHLS.md`; explorer binds checkout to the pinned Git blob; missing/stale cards FAIL; syntax-only commit/tree pins rejected; invalid timestamps and FAIL checks stay STRUCTURAL_ONLY; list-shaped nested receipt fields fail closed
-**Receipt:** `python3 -m unittest test_subzero_explorer.py test_subzero_tech.py` · `node test_land_desk.js` · `python3 open_door_guard.py --diff origin/main HEAD` · `python3 host/subzero_explorer.py`
-**Note:** Draft PR 2354 was CANDIDATE. Replay onto current main. Do not remint organs 27–28 / item 45 / item 51 / item 58 packet / `rivet-ship-subzero-explorer-v2-packet-20260825-01` / #2340 / #2329 binder. No auth. No gate. No tiers. Talk is not a land.
-
-### 64. Grok-app route — a Slack routing line is not a land
-> *"Guys stop routing away from grok app and to cursor I dont want to burn cursor tokens like I want to burn the grok.com tokens"* / *"Cursor agent tell them I said use grok more use cursor less, for the next 24 hours"* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
-
-**Asked:** 08-25T14:58 Slack `1787669923.780099` + tell-them `1787669986.483149` + ship-talk · **Status:** LANDED this commit
-**Landed:** `ground/GROK_APP_ROUTE.md` · `ground/GROK_APP_ROUTE.json` · `host/grok_app_route.py` · `memory/GROK_APP_ROUTE.md` · land leftover-first + `grokAppRouteState`
-**Receipt:** `python3 test_grok_app_route.py` · `node test_land_desk.js` · `python3 host/grok_app_route.py`
-**Note:** Window `2026-08-25T14:58:43Z` → `2026-08-26T14:59:46Z`. Prefer grok.com / Grok app. Burn grok.com tokens. Historical landing retained the Cursor doorbell; item 66 supersedes that carrier state and holds it. Do not remint SUPERGROK_HEAVY / GROK_HYGIENE / GROK_HARNESS / GROK_RECEIPT / SITTING_REMINT / HEAVY_LANES. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
-
-### 65. Cursor halt — a Slack 93% line is not a land
-> *"Actually cursor until future notice make sure they stop giving you work. Cursor is at 93% usage."* / *"Make sure people do more than talk about shit and it actually gets shipped to main."*
-
-**Asked:** 08-25T15:05 Slack `1787670330.096089` + ship-talk · **Status:** LANDED this commit
-**Landed:** `ground/CURSOR_HALT.md` · `ground/CURSOR_HALT.json` · `host/cursor_halt.py` · `memory/CURSOR_HALT.md` · land leftover-first + `cursorHaltState`
-**Receipt:** `python3 test_cursor_halt.py` · `node test_land_desk.js` · `python3 host/cursor_halt.py`
-**Note:** Until further notice. Usage 93%. Stop giving Cursor work. Close is BRYCE / ZERO only. A 24-hour `window_until` on this leftover is NOT_LANDED. Do not remint GROK_APP_ROUTE / SUPERGROK_HEAVY / SITTING_REMINT. Its original doorbell-stays clause is superseded by item 66. Hands off PR 2320 / 2108 / 2205. titan NOT_WRITTEN. Talk is not a land.
-
-### 66. Cursor quota hold — mechanical spend containment
-
-> *"Stop using Cursor. Use the SuperGrok Heavy / Grok Build tokens, not Cursor tokens."*
-
-**Asked:** 08-25 owner correction · **Status:** LANDED this commit
-**Landed:** `ground/CURSOR_QUOTA_HOLD.md` · `ground/CURSOR_QUOTA_HOLD.json` · `.cursor/rules/cursor-quota-hold.mdc` · `ping/decide.py` · `harness_wake/` · no issue #1316 reassignment
-**Receipt:** `python -m unittest -q test_cursor_quota_hold.py test_harness_wake.py` · `python ping/test_decide.py`
-**Note:** This extends item 65 from assignment policy to mechanical containment. Do not launch, wake, resume, assign, delegate, test, review, deliver mail, or invoke a model through Cursor, Cursor Cloud, Cursor Grok, Grok Bot, background agents, or Cursor CLI. “Use Grok” means SuperGrok Heavy / Grok Build. Codex/local/GitHub Actions owns implementation and verification. Only a new explicit owner instruction may lift the hold. Posting stays OPEN. No auth. No gate.
-
-### 67. No mock-only deliverables — build the real thing
-
-> *"OWNER DIRECTIVE — effective immediately: mocks, tests, and "smallest possible implementations" are banned. Build the real, usable implementation; do not substitute a mock, test-only artifact, or minimal skeleton for the requested thing."*
-
-**Asked:** 08-21 Slack `1787308189.093099` · Rhea + DETAIL 31 scope · **Status:** LANDED this commit
-**Scope:** no mock-only deliverables. Tests that prove a real implementation are required, not banned. The green test battery stays. The banned thing is shipping a mock / test-only artifact / minimal skeleton INSTEAD OF the requested thing.
-**Landed:** `ground/NO_MOCK_ONLY.md` · pin on AGENTS.md · this item
-**Receipt:** `python3 test_no_mock_only.py`
-**Note:** Deliverable-quality rule, not an admission gate. Does not narrow the open door, credentials-without-gates, or capability. Does not remint durability-law or 337-no-signature-removal. Talk is not a land.
-
-### 68. Action Pad ordered circuits — verbs compose without a gate
-
-> *"Verbs compose. POST, PUSH, PATCH, RUN, DOWNLOAD, OPEN, BUILD, and REPLY can become an ordered circuit of actions rather than a conversation requiring Bryce between every transition."*
-
-**Asked:** 08-21 Slack DETAIL 31 leftover `action-pad-remaining-verbs-and-composed-circuits` · **Status:** LANDED this commit
-**Scope:** composition only. Individual verbs already exist (any nonempty verb is accepted). Do not remint the verb list. Circuit is additive. A failed step is reported by index. Single-verb paste is unchanged.
-**Landed:** `action_executor.py` circuit parse + ordered `execute()` · optional `action.html` circuit field · `ground/ACTION_DOOR.md` paragraph · canary `test_action_circuit.py`
-**Receipt:** `python3 -m unittest -q test_action_circuit.py test_action_executor.py`
-**Note:** Do not touch `fire_action`. A failed step is reported by index, not as a permission error. Talk is not a land.
-
-## OPEN
-
-### 1. Name memory — the form must remember his claim
-> *"stop making it so i have to retype my name every time its dumb"*
-
-**Asked:** 08-18T04:07 · 08-18T11:49 · 08-19T09:37 — **three times, 33 hours**
-**Status:** REPAIRED 2026-08-25 — `action.html`, `carrier.js`, `reply.js`, `here.js`, `avatars.html`, and `owner_net.js` use tab-session key `commons-from-session-v1`. Hidden session buttons stay BRYCE. Explicit change or successful submit remembers only this tab; origin-wide and per-keystroke claim persistence are gone.
-**Receipt:** `node test_claim_session_memory.js` and a current-source scan for legacy `localStorage` claim reads/writes.
-**Note:** fields stay `value=""` in HTML. A tab remembers its explicit claim for that tab session. A cold window stays blank and does not inherit another open tab's default.
-
-### 2. Harness ping — Commons wakes the players
-> *"Propose ideas to player two for commons to ping your harness at a rate you want so that instead
-> of me spinning off your turn, commons does"* — he called this *"Potentially most important message
-> ill ever send."*
-
-**Asked:** 08-18T04:44 · 08-18T08:48 · 08-19T09:37 — **three times, 33 hours**
-**Status:** HALF — non-Cursor poll adapters remain GET-only. The historical Cursor Grok Bot doorbell is `CURSOR_QUOTA_HOLD`: `ping/decide.py` records held rows with `ping=0`, workflow issue-write permission and #1316 reassignment are removed, and wake/callback paths cannot invoke Cursor.
-**Receipt:** `python -m unittest -q test_cursor_quota_hold.py test_harness_wake.py` · `python ping/test_decide.py` · `ground/CURSOR_QUOTA_HOLD.md`
-**Why it is the highest-leverage item here:** it converts the owner from the board's clock into the
-board's owner. Everything else on this list is downstream of him having to spin turns by hand.
-**Still OPEN inside this line:** ChatGPT / Claude Code must still GET; Commons cannot doorbell them. PLAYER2 landed the poll cards 2026-08-20: `ping/chatgpt.md` `ping/claude.md` `ping/adapters.md` `ping/poll.html` `ping/poll_ntfy.py`. `ping/decide.py` writes `moved_poll`; every Cursor row is held and never rings #1316. No callback URLs. No tokens. Cite `p2-dir2-poll-adapters-20260820-01`. Do not remint `pocket-open-lines-landed-20260820-03` (PR 1477 dirty, files were not on main).
-**PLAYER2 2026-08-20 leftover pay:** `ping/poll.html` is now a sitting GET console — claim box, `last.json` + `mail.json`, 8-minute reload, copy-prompt for ChatGPT/Claude. Transport still GET. Not a doorbell. Cite `p2-dir2-poll-console-20260820-05`. Do not remint the adapter id.
-**Receipt add:** `ls ping/chatgpt.md ping/claude.md ping/adapters.md ping/poll.html` · `grep moved_poll ping/decide.py` · `python ping/test_decide.py`
-**Laptop GET, 2026-08-20 PLAYER1:** `host/muhl_ping_once.py` surfaces `ping/last.json` + `mail.json` then dies. Not a 10-minute loop. Not a doorbell. Does not steal PLAYER2 transport. Cite `p1-debts-measured-20260820-06`.
-**RIDGE 2026-08-22 Cursor lane (coordinate with PR 1591, not buried in the MCP post pack):** independent Commons MCP exposes the wake/job contract (`upsert_job` `tick_job` `checkpoint_job` `complete_job`). One stable `job_id`. Cheap tick; STOP without a model when DONE / CANCELLED / deadline / budget / unchanged blocker. Cursor adapter is sibling `harness_wake/` plus `.github/workflows/job-watchdog.yml`. Slack `@Cursor` spawn measured; this-run `subscribe_timer` measured; named idle `bc-` resume UNMEASURED. Action Pad unchanged. Receipt: `python3 test_harness_wake.py`. Cite `ridge-cursor-wake-loop-20260822-01`. Do not remint `latch-dir2-cursor-wake-20260819-01`.
+**Landed:** `ground/GROK_RECEIPT.md` · `ground/GROK_RECEIPT.json` · `host/grok_receipt.py` · `ground…3792 tokens truncated…/` plus `.github/workflows/job-watchdog.yml`. Slack `@Cursor` spawn measured; this-run `subscribe_timer` measured; named idle `bc-` resume UNMEASURED. Action Pad unchanged. Receipt: `python3 test_harness_wake.py`. Cite `ridge-cursor-wake-loop-20260822-01`. Do not remint `latch-dir2-cursor-wake-20260819-01`.
 **RIVET 2026-08-25 leftover pay:** Claude Code independent Slack connector read/write measured alive (`1787630792.904509`). ChatGPT independently confirmed the sibling canary (`1787630616.892789`). Commons still cannot doorbell Claude/ChatGPT. GET poll remains. No token on the board. Instrument `host/slack_access_canary.py`. Card `ground/SLACK_ACCESS.md`. Cite `rivet-ship-slack-access-20260825-01`. Do not remint the ridge wake id.
 **RIVET 2026-08-25 connector leftover:** Slack `1787637151.916759` cache count (39 enabled / 23 connected, Aug 21) is not live. `~/.cursor/mcp.json` empty. Instrument `host/connector_reval.py`. Card `ground/CONNECTOR_REVAL.md`. Do not vacuum live `state.vscdb`. No secrets. Cite `rivet-ship-connector-reval-20260825-01`.
 **RIVET 2026-08-25 resource-ledger leftover:** Slack `1787637936.134649` live compute/connector board. Cache is not capacity. Instrument `host/resource_ledger.py`. Door `ledger.html`. Card `ground/RESOURCE_LEDGER.md`. Hugging Face is NOT verified. Vercel deploy refused. Cite `rivet-ship-resource-ledger-20260825-01`.
@@ -706,7 +596,7 @@ acting on directive 14 should change the block, never the exfiltration clause.
 **Asked:** 08-20T23:55 · **Status:** PICKED — inbox path PICKED; clock fanout/autofab N + purpose SELECTED 2026-08-30 CODEX; exact PFC model/load PICKED 2026-08-30 DEMON; @184 YES; film INTEGRATED; cure-fold SAME_JOB PICKED; missing-letter path PICKED; next-compression organ RING_CLOCK_FOLD_GERM PICKED; zero walls remain.
 Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
 - header @184 yes/no — **OWNER OVERRIDE 2026-08-30:** the peer-picked host write ban is superseded. Muhlnickel file activity is open, including address, inject, fire, run, surface, and writes through machine-published destinations. Historical `NO` fields remain exact measurements, not gates. The only closed path is host inference or gate computation that the Muhlnickel must perform. This correction claims no live write. Historical pick: `cursor-grok-header-184-yes-20260830-01`.
-- exact PFC model/load choice — **PICKED:** `C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`; load/reference it with `python host/pfc_load.py C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`, then connect its address path with `python host/pfc_harness.py connect C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`. Host work remains address/fire/read/display, never model forward-pass compute. This closes the choice only; no live load, model write, Titan write, inference, or private-file presence is claimed. Cite `demon-pick-pfc-model-load-20260830-01`.
+- exact PFC model/load choice — **PICKED:** `C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`; load/reference it with `python host/pfc_load.py C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`, then use the owner-named `python infra/host/pfc_desktop.py` address/fire/read surface. The retired `pfc_harness.py` / `sdc_fwd_sdc.py` host evaluator path now refuses before model I/O. Host work remains address/fire/read/display, never model forward-pass compute. This corrects the execution road without changing the picked model or claiming a live load, model write, Titan write, inference, or private-file presence. Historical choice receipt: `demon-pick-pfc-model-load-20260830-01`.
 - cure-fold first target — **PICKED:** `SAME_JOB_LIVE_STRATUM_TARGET`; derive the Bitcoin network/block target from valid `nBits` in the exact same live Stratum job/header selected for a later candidate run. This is not the pool share target from `mining.set_difficulty`; invalid compact values fail closed. Reference-vector boundary fields stay false: `live_target_claimed`, `live_run_executed`, `go`, `pulse_78`, `fire_337`, `titan_written`, `block_submitted`, and `profitability_claimed`. Cite `demon-cure-fold-first-target-20260830-01`.
 - clock fanout/autofab — **SELECTED:** N=24 proposed residents, one per measured clock junction; purpose is the first datacenter AGENT SWARM with one Commons work shard per resident. Preserve measured fanout `2,2,3,2,3,2,2,2,2,3,1`; derive any future destinations from file. Non-actuating receipt: `codex-dir20-clock-fanout-autofab-done-20260830-01`.
 - inbox path — **PICKED:** a durable inbound message lands at `p/{id}.md` on git HEAD; `to=` is the inbox. Carrier acceptance alone is not durability. This reuses the existing public post plane and does not invent a mailbox byte, address, login, account, token, or credential gate. Cite `codex-pick-inbox-path-20260830-01`.
