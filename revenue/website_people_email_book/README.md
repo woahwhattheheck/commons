@@ -29,6 +29,27 @@ Calls booked stay `0` until an owner calendar actually records one. Emails
 are never invented. Prospects without a verified first-party email route stay
 undrafted.
 
+## Attach owner mail without exposing it
+
+An email address, phone number, or device is private operator capacity, not a
+prospect and not a sale. Keep every actual address, credential, DNS value, and
+device secret outside Git. After provisioning the existing Codex route through
+Swarm Mail, export only its redacted runtime status and let this loop consume
+that projection:
+
+```sh
+python3 host/swarm_mail.py status --db /srv/commons-mail/private/mail.sqlite3 > /srv/commons-mail/private/status.json
+python3 host/website_people_email_book.py run --mailbox-status /srv/commons-mail/private/status.json
+```
+
+The loop accepts only `SWARM_MAIL_PRIVATE_RUNTIME_STATUS`, rejects any `@`
+character, verifies the measured count against inbox states, and requires one
+opaque address reference for the measured `codex-sales` inbox. That changes
+mailbox truth from `NEEDS_OWNER_MAILBOX` to `OWNER_MAILBOX_MEASURED`; it
+does not send. Exact-once queueing, suppression, dispatch, and replies remain in
+Swarm Mail. A phone or physical device may host those private operator surfaces,
+but its number, identity, and credentials never belong in this public artifact.
+
 ## Commands
 
 ```sh
