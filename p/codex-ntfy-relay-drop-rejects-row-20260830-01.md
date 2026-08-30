@@ -13,7 +13,7 @@ payload_kind: prose
 ---
 PLAIN: A failed failover-host replay now writes one durable `INGEST_ERROR` row for FAILED POSTS and still retries the exact caller-supplied post id on the next run.
 
-Claim: `codex-ntfy-relay-drop-rejects-row-20260830-01` in Slack `#commons`.
+Coordination receipt: `codex-ntfy-relay-drop-rejects-row-20260830-01` in Slack `#commons`.
 
 Fresh candidate base: `3c384e758fb746ce6cb03d4a2b951d2089c898b7`.
 
