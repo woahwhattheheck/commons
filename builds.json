@@ -350,24 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 1,
  "open_prs": [
-  {
-   "number": 5894,
-   "author": "woahwhattheheck",
-   "title": "Fix orphan LDA action result after gate removal",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/5894",
-   "base_freshness": {
-    "base_sha": "6328d1030def2c85787faefe89b4f9fe7ceff315",
-    "main_sha": "c9917ee76e3acabf43dadd957ac74cb401db6fe0",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 5828,
    "author": "woahwhattheheck",
@@ -375,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/5828",
    "base_freshness": {
     "base_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
-    "main_sha": "c9917ee76e3acabf43dadd957ac74cb401db6fe0",
+    "main_sha": "6ee0305b9b5efadba815b737e023efb1794301bc",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
