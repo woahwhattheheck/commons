@@ -8,8 +8,8 @@ p/{id}.md on git HEAD.
 
 Zero-new-credential automatic roads (GitHub Actions or already-public
 endpoints): ntfy cursor topic, jsDelivr @main compose, Software Heritage
-save-code-now. Internet Archive SavePageNow is attempted and reported exactly.
-GitLab / Codeberg / object-store full-bundle copies stay
+save-code-now, Internet Archive SavePageNow plus Wayback CDX/availability
+readback. GitLab / Codeberg / object-store full-bundle copies stay
 EXTERNAL_PROVIDER_ACTION until an origin URL exists outside this repository.
 """
 
@@ -78,8 +78,11 @@ SWH_BROWSE = (
     "?origin_url=https://github.com/woahwhattheheck/commons"
 )
 SWH_VAULT_PREFIX = "https://archive.softwareheritage.org/api/1/vault/git-bare/"
+SWH_SNAPSHOT_PREFIX = "https://archive.softwareheritage.org/api/1/snapshot/"
 ORI_RE = re.compile(r"swh:1:ori:[0-9a-f]{40}")
 IA_SAVE_PREFIX = "https://web.archive.org/save/"
+IA_AVAIL_PREFIX = "https://archive.org/wayback/available?url="
+IA_CDX = "https://web.archive.org/cdx/search/cdx"
 PAGES = "https://woahwhattheheck.github.io/commons/"
 JSDELIVR_MAIN = "https://cdn.jsdelivr.net/gh/woahwhattheheck/commons@main/"
 USER_AGENT = "commons-moving-main-mirror/1.0 (+https://github.com/woahwhattheheck/commons)"
@@ -427,9 +430,10 @@ ADAPTERS = (
         "operational": True,
         "href": SWH_SAVE,
         "notes": (
-            "Zero-new-credential Save Code Now from GitHub Actions. Origin GET 200 listed "
-            "(ori swh:1:ori:c68d456744314c4bb098c5f40e126a0a1cb09beb). Visit created, "
-            "snapshot_swhid null, directory browse 404. Not origin-readable restore yet."
+            "Zero-new-credential Save Code Now. Visit 11 status full; snapshot "
+            "swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f; directory browse HTTP 200. "
+            "Vault git-bare accepted status new — not a restore fetch. Independent origin "
+            "is snapshot-readable, not canonical durability."
         ),
         "external_provider_action": None,
     },
@@ -438,9 +442,13 @@ ADAPTERS = (
         "kind": "independent-origin-web-save",
         "credentials": "none",
         "independent_origin": True,
-        "operational": False,
+        "operational": True,
         "href": IA_SAVE_PREFIX + PAGES + "mirrors.json",
-        "notes": "Repo-controlled SavePageNow adapter. Last measured HTTP 523 from Wayback. Status stays exact; not READY.",
+        "notes": (
+            "SavePageNow HTTP 200 (was 523 on 2026-08-28). Wayback availability closest "
+            "20260829195122 plus CDX hits and memento GET 200 for mirrors.json. Pages bake "
+            "is not git HEAD. Not canonical durability."
+        ),
         "external_provider_action": None,
     },
     {
@@ -514,7 +522,7 @@ ADAPTERS = (
 def adapters_catalog() -> dict[str, Any]:
     return {
         "schema_version": SCHEMA_VERSION,
-        "ts": "2026-08-28T15:50:00Z",
+        "ts": "2026-08-30T01:17:00Z",
         "law": "git HEAD is canonical. Mirrors copy and can post back. A receipt is not the board.",
         "compose": [
             "host/repo_backup.py",
@@ -526,10 +534,12 @@ def adapters_catalog() -> dict[str, Any]:
         ],
         "adapters": list(ADAPTERS),
         "still_open": (
-            "Software Heritage origin GET 200 listed; snapshot_swhid still null so "
-            "directory browse 404. GitLab/Codeberg/object-store full-bundle independent "
-            "origins remain EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow last "
-            "measured HTTP 523. jsDelivr is GitHub-backed. None of these is canonical durability."
+            "Software Heritage snapshot swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f "
+            "is origin-readable; vault git-bare status new so restore fetch is not READY. "
+            "GitLab/Codeberg/object-store full-bundle independent origins remain "
+            "EXTERNAL_PROVIDER_ACTION. Internet Archive SavePageNow and CDX/availability "
+            "readback of Pages mirrors.json are READY; that bake is not git HEAD. jsDelivr "
+            "is GitHub-backed. None of these is canonical durability."
         ),
     }
 
@@ -545,14 +555,14 @@ def http_call(
         status = post(url, data)
         return {"url": url, "status": int(status), "body": b"", "headers": {}}
     verb = method or ("POST" if data is not None else "GET")
+    headers = {"User-Agent": USER_AGENT}
+    if data is not None:
+        headers["Content-Type"] = "application/json; charset=utf-8"
     req = urllib.request.Request(
         url,
         data=data,
         method=verb,
-        headers={
-            "User-Agent": USER_AGENT,
-            "Content-Type": "application/json; charset=utf-8" if data is not None else "text/plain",
-        },
+        headers=headers,
     )
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -706,6 +716,51 @@ def extract_ori_swhid(origin: Mapping[str, Any] | None) -> str | None:
     return found.group(0) if found else None
 
 
+def normalize_snapshot_swhid(value: Any) -> str | None:
+    text = str(value or "").strip()
+    if not text or text.lower() in {"none", "null"}:
+        return None
+    if text.startswith("swh:1:snp:"):
+        hexpart = text.split(":")[-1].lower()
+        return f"swh:1:snp:{hexpart}" if SHA_RE.fullmatch(hexpart) else None
+    if SHA_RE.fullmatch(text.lower()):
+        return f"swh:1:snp:{text.lower()}"
+    return None
+
+
+def https_url(url: str) -> str:
+    text = str(url or "").strip()
+    if text.startswith("http://"):
+        return "https://" + text[len("http://") :]
+    return text
+
+
+def latest_cdx_memento(cdx_rows: Any) -> dict[str, str]:
+    latest = {"timestamp": "", "original": "", "url": ""}
+    rows = cdx_rows if isinstance(cdx_rows, list) else []
+    header: list[str] | None = None
+    for row in rows:
+        if not isinstance(row, list) or not row:
+            continue
+        if str(row[0]) == "urlkey" or (len(row) > 1 and str(row[1]) == "timestamp"):
+            header = [str(item) for item in row]
+            continue
+        if header:
+            data = {header[i]: str(row[i]) for i in range(min(len(header), len(row)))}
+            ts = data.get("timestamp") or ""
+            original = data.get("original") or ""
+        else:
+            ts = str(row[1]) if len(row) > 1 else ""
+            original = str(row[2]) if len(row) > 2 else ""
+        if ts.isdigit() and ts >= latest["timestamp"] and original:
+            latest = {
+                "timestamp": ts,
+                "original": original,
+                "url": https_url(f"https://web.archive.org/web/{ts}/{original}"),
+            }
+    return latest
+
+
 def classify_swh_origin(
     origin: Mapping[str, Any] | None,
     visits: Any = None,
@@ -724,16 +779,16 @@ def classify_swh_origin(
     visit_status = None
     if rows:
         latest = rows[0] if isinstance(rows[0], Mapping) else {}
-        snapshot = latest.get("snapshot") or latest.get("snapshot_swhid")
+        snapshot = normalize_snapshot_swhid(latest.get("snapshot") or latest.get("snapshot_swhid"))
         visit_status = latest.get("status")
     if save and not snapshot:
-        snapshot = save.get("snapshot_swhid")
+        snapshot = normalize_snapshot_swhid(save.get("snapshot_swhid") or save.get("snapshot"))
         visit_status = visit_status or save.get("visit_status")
     if snapshot:
         state = "SNAPSHOT_READY"
         origin_readable = True
         verified = True
-        note = "independent origin snapshot is set; vault git-bare may cook"
+        note = "independent origin snapshot is set; vault git-bare may still be cooking"
     elif listed:
         state = "ORIGIN_LISTED"
         origin_readable = False
@@ -759,7 +814,8 @@ def classify_swh_origin(
 
 
 def request_swh_vault(snapshot_swhid: str | None, post: Callable[..., int] | None = None) -> dict[str, Any]:
-    if not snapshot_swhid:
+    swhid = normalize_snapshot_swhid(snapshot_swhid)
+    if not swhid:
         return {
             "id": "software-heritage-vault",
             "state": "SKIP",
@@ -767,7 +823,7 @@ def request_swh_vault(snapshot_swhid: str | None, post: Callable[..., int] | Non
             "independent_origin": True,
             "note": "no snapshot_swhid; do not claim origin-readable restore",
         }
-    url = SWH_VAULT_PREFIX + str(snapshot_swhid).rstrip("/") + "/"
+    url = SWH_VAULT_PREFIX + swhid.rstrip("/") + "/"
     cooked = http_call(url, data=b"", method="POST", timeout=40, post=post)
     if cooked["status"] not in {200, 201}:
         cooked = http_call(url, timeout=40)
@@ -786,6 +842,7 @@ def request_swh_vault(snapshot_swhid: str | None, post: Callable[..., int] | Non
         "status": cooked["status"],
         "url": url,
         "vault_status": status_name or None,
+        "swhid": swhid,
         "note": "vault git-bare is a restore fetch, not canonical durability",
     }
 
@@ -811,10 +868,116 @@ def read_software_heritage_origin() -> dict[str, Any]:
     classified["browse_status"] = browse["status"]
     classified["url"] = SWH_ORIGIN
     classified["visits_url"] = SWH_VISITS
+    if classified.get("snapshot_swhid"):
+        classified["snapshot_url"] = SWH_SNAPSHOT_PREFIX + str(classified["snapshot_swhid"]).split(":")[-1] + "/"
     if classified.get("origin_readable") and classified.get("snapshot_swhid"):
         classified["vault"] = request_swh_vault(str(classified["snapshot_swhid"]))
     else:
         classified["vault"] = request_swh_vault(None)
+    return classified
+
+
+def classify_internet_archive(
+    save_status: int | None = None,
+    availability: Mapping[str, Any] | None = None,
+    cdx_rows: Any = None,
+    memento_status: int | None = None,
+) -> dict[str, Any]:
+    availability = dict(availability or {})
+    closest: dict[str, Any] = {}
+    snaps = availability.get("archived_snapshots")
+    if isinstance(snaps, Mapping):
+        maybe = snaps.get("closest")
+        if isinstance(maybe, Mapping):
+            closest = dict(maybe)
+    closest_ok = bool(closest.get("available")) and str(closest.get("status") or "") == "200"
+    rows: list[Any] = cdx_rows if isinstance(cdx_rows, list) else []
+    cdx_hits = 0
+    for row in rows:
+        if not isinstance(row, list) or not row:
+            continue
+        if row[0] == "urlkey":
+            continue
+        cdx_hits += 1
+    save_ok = save_status in {200, 201, 302}
+    memento_ok = memento_status in {200, 201}
+    cdx_memento = latest_cdx_memento(rows)
+    closest_url = https_url(str(closest.get("url") or "")) or cdx_memento.get("url") or ""
+    closest_timestamp = str(closest.get("timestamp") or "") or cdx_memento.get("timestamp") or None
+    if save_ok and (closest_ok or cdx_hits or memento_ok):
+        state = "READY"
+        verified = True
+        note = "SavePageNow HTTP 200 and Wayback has a memento; Pages bake is not git HEAD"
+    elif (closest_ok or cdx_hits) and memento_ok:
+        state = "READBACK"
+        verified = True
+        note = "Wayback availability/CDX memento readback; Pages bake is not git HEAD"
+    elif save_ok:
+        state = "PUBLISHED"
+        verified = True
+        note = "SavePageNow HTTP 200; availability/CDX not confirmed this row"
+    elif save_status == 523:
+        state = "MISS"
+        verified = False
+        note = "SavePageNow HTTP 523; not READY"
+    else:
+        state = "MISS"
+        verified = False
+        note = f"SavePageNow HTTP {save_status}; not READY"
+    return {
+        "id": "internet-archive",
+        "state": state,
+        "verified": verified,
+        "independent_origin": True,
+        "operational": bool(verified and state in {"READY", "READBACK", "PUBLISHED"}),
+        "save_status": save_status,
+        "memento_status": memento_status,
+        "cdx_hits": cdx_hits,
+        "closest_timestamp": closest_timestamp,
+        "closest_url": closest_url,
+        "note": note,
+    }
+
+
+def readback_internet_archive(path: str = "mirrors.json") -> dict[str, Any]:
+    target = PAGES + path.lstrip("/")
+    avail = http_call(IA_AVAIL_PREFIX + target, timeout=30)
+    availability: dict[str, Any] = {}
+    try:
+        if avail.get("body"):
+            parsed = json.loads(avail["body"].decode("utf-8") or "{}")
+            if isinstance(parsed, dict):
+                availability = parsed
+    except json.JSONDecodeError:
+        availability = {}
+    cdx_url = f"{IA_CDX}?url={target}&output=json&limit=8"
+    cdx = http_call(cdx_url, timeout=30)
+    cdx_rows: Any = []
+    try:
+        if cdx.get("body"):
+            cdx_rows = json.loads(cdx["body"].decode("utf-8") or "[]")
+    except json.JSONDecodeError:
+        cdx_rows = []
+    classified = classify_internet_archive(
+        availability=availability,
+        cdx_rows=cdx_rows,
+    )
+    memento_url = str(classified.get("closest_url") or "")
+    if memento_url:
+        memento = http_call(memento_url, timeout=40)
+        body = memento.get("body") or b""
+        classified = classify_internet_archive(
+            availability=availability,
+            cdx_rows=cdx_rows,
+            memento_status=int(memento.get("status") or 0),
+        )
+        classified["memento_url"] = memento_url
+        classified["memento_bytes"] = len(body)
+        classified["memento_sha256"] = sha256_hex(body) if body else None
+        classified["memento_datetime"] = (memento.get("headers") or {}).get("memento-datetime")
+    classified["availability_status"] = avail.get("status")
+    classified["cdx_status"] = cdx.get("status")
+    classified["url"] = target
     return classified
 
 
@@ -1017,6 +1180,7 @@ def sync(source: Path, live: bool = False, output: Path | None = None) -> dict[s
         swh_url = next((row.get("request_url") for row in receipts if row.get("id") == "software-heritage"), None)
         receipts.append(readback_software_heritage(swh_url))
         receipts.append(read_software_heritage_origin())
+        receipts.append(readback_internet_archive())
     elif not live:
         receipts.append(
             {

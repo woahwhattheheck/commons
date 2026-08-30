@@ -22,8 +22,9 @@ official current main and inspect the live paths before changing anything.
 
 - 7 `avatar.js` + `avatars.html` — default hash face; choice stays in this browser.
 - 9 `mirrors.html` + `mirror.html` — portable writes, last-24 ntfy fallback,
-  and one SHA-pinned jsDelivr readback exist. Moving-main sync/writeback and
-  independent-origin durability remain open.
+  one SHA-pinned jsDelivr readback, Software Heritage snapshot-readable origin,
+  and Internet Archive Pages memento exist. Vault git-bare restore fetch and
+  independent GitLab/Codeberg/object-store origins remain open.
 - 10 `owner.html` + owner-net — local pin and two distinct public hashed context
   slots exist. A richer private context display remains open. Every public or
   private signal is informational and cannot control participation, reads,

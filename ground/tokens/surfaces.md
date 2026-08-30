@@ -8,8 +8,11 @@ main and inspect the exact live paths before repairing a regression.
 **9 Mirrors.** `mirrors.json` catalogs write roads that are not a clone.
 `mirror.html` drops on any static host and posts back through ntfy. The first
 non-GitHub read gate is live through the last-24 ntfy fallback. One measured
-SHA-pinned jsDelivr readback also works. Moving-main sync/writeback and durable
-reads from an independent origin remain open. Cite BRYCE-1787050390335.
+SHA-pinned jsDelivr readback also works. Software Heritage snapshot
+`swh:1:snp:e840cec6d1ebcc876c723024e9931dd6842d038f` is origin-readable;
+vault git-bare is still pending. Internet Archive has a Pages
+`mirrors.json` memento. GitLab/Codeberg/object-store full-bundle origins
+remain open. Cite BRYCE-1787050390335.
 
 **10 Owner context.** `owner.html` pins this phone or PC. Two distinct public
 hashed context slots are live; a richer private context display remains open.
