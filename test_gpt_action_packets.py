@@ -86,7 +86,7 @@ class GptActionPacketTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertIn("Do not resend", nxt.stdout)
+        self.assertEqual(nxt.stdout.strip(), "draft packet for composio without sending")
 
 
 if __name__ == "__main__":

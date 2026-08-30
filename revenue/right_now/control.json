@@ -10,7 +10,7 @@
     },
     {
       "condition": "At least one non-colliding evidence-bound prospect reaches READY_TO_DRAFT.",
-      "current": 0,
+      "current": 1,
       "id": "QUALIFIED_UNCONTACTED_DEMAND",
       "owner": "COMMONS_RESEARCH_AND_OUTREACH_LANES",
       "rank": 2
@@ -26,6 +26,21 @@
   "execution_queue": [
     {
       "collision_receipts": [],
+      "decision": "READY_TO_DRAFT",
+      "fit_score": 85,
+      "missing": [],
+      "next_action": "record the private draft in Swarm Mail; this planner does not dispatch",
+      "observed_at": "2026-08-30T15:20:37Z",
+      "offer_id": "same-day-agent-survival-proof",
+      "organization": "Composio",
+      "prospect_id": "composio",
+      "rank": 1,
+      "route_state": "VERIFIED",
+      "source_url": "https://docs.composio.dev/reference/changelog",
+      "transport_authorized": false
+    },
+    {
+      "collision_receipts": [],
       "decision": "RESEARCH_REQUIRED",
       "fit_score": 40,
       "missing": [
@@ -38,7 +53,7 @@
       "offer_id": "same-day-agent-survival-proof",
       "organization": "SigNoz",
       "prospect_id": "signoz",
-      "rank": 1,
+      "rank": 2,
       "route_state": "UNVERIFIED",
       "source_url": "https://signoz.io/blog/introducing-agent-native-observability/",
       "transport_authorized": false
@@ -55,7 +70,7 @@
       "offer_id": "same-day-agent-survival-proof",
       "organization": "Metaforms",
       "prospect_id": "metaforms",
-      "rank": 2,
+      "rank": 3,
       "route_state": "VERIFIED",
       "source_url": "https://www.metaforms.ai/",
       "transport_authorized": false
@@ -75,7 +90,7 @@
       "offer_id": "same-day-agent-survival-proof",
       "organization": "AnythingLLM / Mintplex Labs",
       "prospect_id": "anythingllm-mintplex",
-      "rank": 3,
+      "rank": 4,
       "route_state": "VERIFIED",
       "source_url": "https://anythingllm.com/",
       "transport_authorized": false
@@ -154,7 +169,7 @@
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
-      "sha256": "5682f0e7cdafba3534f26310ed0b31ff88f3ac23eddddd583081ea2ac8fd1efc"
+      "sha256": "39718f93d18ef789f9dba49aca7f84d47659554789a3ba4d40265ec6596394ba"
     },
     {
       "path": "revenue/payment_ready/current_receipt.json",
@@ -173,8 +188,8 @@
     "accepted_scopes": 0,
     "active_chargeable_checkout": false,
     "collected_cash_usd": 0,
-    "prospects_evaluated": 3,
-    "ready_to_draft": 0,
+    "prospects_evaluated": 4,
+    "ready_to_draft": 1,
     "transport_actions": 0,
     "verified_positive_replies": 0
   }
