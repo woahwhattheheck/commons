@@ -64,5 +64,64 @@ class ArbitrageScoutTests(unittest.TestCase):
         self.assertIn('<a href="./arbitrage.html">arbitrage scout</a>', commerce)
 
 
+class ArbitrageRecordTests(unittest.TestCase):
+    """Measured opportunity records must conform to the fail-closed schema."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.schema = json.loads((ROOT / "revenue/arbitrage/opportunity.schema.json").read_text(encoding="utf-8"))
+        cls.record = json.loads((ROOT / "revenue/arbitrage/whitebox-range-audit-20260830.json").read_text(encoding="utf-8"))
+
+    def test_record_has_exactly_the_schema_keys(self):
+        self.assertEqual(set(self.record), set(self.schema["required"]))
+        self.assertRegex(self.record["opportunity_id"], r"^[a-z0-9][a-z0-9-]{7,95}$")
+
+    def test_record_category_and_state_are_in_enum(self):
+        props = self.schema["properties"]
+        self.assertIn(self.record["category"], props["category"]["enum"])
+        self.assertIn(self.record["state"], props["state"]["enum"])
+
+    def test_record_sides_match_side_def(self):
+        for key in ("source_side", "buyer_side"):
+            side = self.record[key]
+            with self.subTest(side=key):
+                self.assertEqual(set(side), {"description", "price_status"})
+                self.assertIn(side["price_status"], ("UNKNOWN", "PUBLIC_OBSERVED", "WRITTEN_QUOTE", "CONTRACTED"))
+                self.assertTrue(side["description"].strip())
+
+    def test_record_economics_are_internally_exact(self):
+        econ = self.record["economics"]
+        self.assertEqual(set(econ), set(self.schema["properties"]["economics"]["required"]))
+        self.assertRegex(econ["currency"], r"^[A-Z]{3}$")
+        unit = econ["unit_sell_revenue"] - econ["unit_buy_cost"] - econ["unit_fees"] - econ["unit_delivery_cost"]
+        self.assertAlmostEqual(unit, econ["unit_edge_before_tax"], places=6)
+        self.assertAlmostEqual(unit * econ["quantity"], econ["total_edge_before_tax"], places=6)
+        self.assertGreater(econ["quantity"], 0)
+        self.assertGreater(econ["unit_edge_before_tax"], 0)
+
+    def test_record_evidence_is_public_and_two_sided(self):
+        evidence = self.record["evidence"]
+        self.assertGreaterEqual(len(evidence), 2)
+        sides = {row["side"] for row in evidence}
+        self.assertIn("SOURCE", sides)
+        self.assertIn("BUYER", sides)
+        for row in evidence:
+            with self.subTest(url=row["public_url"]):
+                self.assertEqual(set(row), {"side", "public_url", "observed_at", "establishes"})
+                self.assertTrue(row["public_url"].startswith("https://"))
+                self.assertIn(row["side"], ("SOURCE", "BUYER", "FEE", "DELIVERY"))
+                self.assertTrue(row["establishes"].strip())
+
+    def test_record_executes_nothing_and_claims_no_cash(self):
+        boundary = self.record["execution_boundary"]
+        self.assertEqual(set(boundary), set(self.schema["properties"]["execution_boundary"]["required"]))
+        self.assertIs(boundary["automatic_purchase"], False)
+        self.assertIs(boundary["automatic_trade"], False)
+        self.assertIs(boundary["provider_authorization_required"], True)
+        self.assertIs(boundary["cash_claimed"], False)
+        self.assertIsInstance(boundary["rights_cleared"], bool)
+        self.assertNotEqual(self.record["state"], "SETTLED")
+
+
 if __name__ == "__main__":
     unittest.main()
