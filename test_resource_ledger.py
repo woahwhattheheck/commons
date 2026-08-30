@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788062418.023819")
+        self.assertEqual(catalog["slack_ts"], "1788083921.230169")
         self.assertEqual(
             catalog["source_id"],
+            "codex-opportunity-capability-registry-activation-20260830-01",
+        )
+        self.assertIn(
             "codex-internet-archive-mirror-activation-20260830-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-muhlnickel-distro-sales-door-activation-20260829-01",
@@ -175,14 +179,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-internet-archive-mirror-activation-20260830-01.json",
+            "codex-opportunity-capability-registry-activation-20260830-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
         self.assertEqual(activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            activation["selected_resource"], "internet-archive-history-mirror"
+            activation["selected_resource"], "opportunity-capability-registry"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
@@ -218,6 +222,7 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1788062418.023819")
         self.assertNotEqual(catalog["slack_ts"], "1787997064.565089")
         self.assertNotEqual(catalog["slack_ts"], "1787976347.829539")
         self.assertNotEqual(catalog["slack_ts"], "1787954879.428259")
@@ -252,10 +257,18 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             rows["internet-archive-history-mirror"]["condition"], "CONSTRAINED"
         )
+        self.assertEqual(rows["opportunity-capability-registry"]["stage"], "PRODUCING")
+        self.assertEqual(
+            rows["opportunity-capability-registry"]["condition"], "CONSTRAINED"
+        )
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
         self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
-        self.assertEqual(activation["projection"]["resources"], 62)
-        self.assertEqual(activation["projection"]["producing"], 28)
+        self.assertEqual(activation["projection"]["resources"], 63)
+        self.assertEqual(activation["projection"]["producing"], 29)
+        self.assertIn(
+            "inventory/resources/records/codex-opportunity-capability-registry-activation-20260830-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertIn(
             "inventory/resources/records/codex-internet-archive-mirror-activation-20260830-01.json",
             raw.get("record_sources") or [],
