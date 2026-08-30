@@ -23,4 +23,4 @@ Existing Commons evidence in `muhl/docs/MUHL_FOLD_PORT_MAP.md` supplies a real-d
 
 ## Boundary
 
-This does not fire a fold, pass `--go`, pulse 78, fire 337, write Titan, submit a block, prove profit, or claim the reference target is current/live now. The stale FF×32/everything-wins target is rejected. No auth. No gate.
+This does not fire a fold, pass `--go`, pulse 78, fire 337, write Titan, submit a block, prove profit, or claim the reference target is current/live now. The stale FF×32/everything-wins target is rejected. This choice only records the target-derivation rule and its measured reference vector.
