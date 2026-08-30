@@ -196,7 +196,8 @@ class ActionCircuitTests(unittest.TestCase):
                     f'{PYTHON_SHELL} -c "from pathlib import Path; Path(\'open-ran.txt\').write_text(\'yes\')"'
                 ),
             }
-            with mock.patch.object(ae, "ROOT", root):
+            results = root / "actions" / "results"
+            with mock.patch.object(ae, "ROOT", root), mock.patch.object(ae, "RESULTS", results):
                 result = ae.execute(rec, "github")
             self.assertTrue(result["ok"], result)
             self.assertEqual([row["verb"] for row in result["steps"]], ["PUSH", "COMPUTE WHATEVER"])

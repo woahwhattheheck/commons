@@ -268,7 +268,10 @@ def execute_circuit(rec: dict, scope: str, steps: list[dict]) -> dict:
         path = result_path(step_id)
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
-        result_name = str(path.relative_to(ROOT)).replace("\\", "/")
+        try:
+            result_name = str(path.relative_to(ROOT)).replace("\\", "/")
+        except ValueError:
+            result_name = "actions/results/%s.json" % step_id
         step_rows.append({
             "step": index,
             "id": step_id,
