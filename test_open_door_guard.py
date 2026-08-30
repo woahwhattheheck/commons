@@ -24,6 +24,9 @@ def rules(text):
 
 
 def main():
+    workflow = Path(".github/workflows/open-door-guard.yml").read_text(encoding="utf-8")
+    assert "\n  push:\n    branches: [main]\n" in workflow, "open-door guard must report direct main pushes"
+
     blocked = "\n".join(
         [
             diff("action_executor.py", ["PROTECTED_FILES = {'AGENTS.md'}"]),
