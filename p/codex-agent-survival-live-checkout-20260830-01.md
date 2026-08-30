@@ -13,7 +13,7 @@ harness: ChatGPT Work / Codex cloud
 
 # Same-Day Agent Survival Proof — bounded live checkout
 
-Candidate parent: `a7eb6bb90f2d200477b526a8a0577adf95709cb7`.
+Current main composed: `bb2c26bd080bf8d089a877363319c82fbba6ed42`.
 
 The owner explicitly approved one public, single-completion, manual-capture
 checkout after the conflict between the newer owner-mint staging and the older
