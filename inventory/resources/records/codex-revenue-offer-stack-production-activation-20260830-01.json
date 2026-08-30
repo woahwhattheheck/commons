@@ -1,0 +1,93 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-revenue-offer-stack-production-activation-20260830-01",
+  "event_type": "RESOURCE_LIFECYCLE_ADVANCEMENT",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-30T16:08:00Z",
+  "selected_resource": "revenue-offer-stack",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "EXERCISED",
+    "condition": "CONSTRAINED",
+    "evidence": "The offer and canary existed, but the ledger still described a reply-gated customer-specific invoice path from 2026-08-26."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "c54a791f63e044304dfe7845c5efbc502e5c36bb",
+    "product_merge_sha": "d66d7e6cba8ee9009a7d35567ba6276ca8846b8d"
+  },
+  "authority": "PUBLIC_READ_AND_CHECKOUT; BUYER_SUBMITS; OWNER_ONLY_SCOPE_ACCEPTANCE_CAPTURE_REFUND_AND_FINANCIAL_ACTION",
+  "concrete_consumer": "Qualified production-agent buyers arriving through four public buyer-intent doors",
+  "measurable_outcome": "A qualified buyer can traverse a public no-login offer door into one active livemode $2,500 manual-capture checkout; three additional buyer-intent pages and 14 qualified public-pain records supply measurable discovery and targeting inputs.",
+  "counts": {
+    "public_buyer_intent_doors": 4,
+    "qualified_public_pain_records": 14,
+    "high_confidence_records": 5,
+    "completed_checkout_sessions": 0,
+    "completed_checkout_session_limit": 1,
+    "accepted_scopes": 0,
+    "authorizations": 0,
+    "captures": 0,
+    "settlements": 0,
+    "payouts": 0,
+    "cash_received_usd": 0
+  },
+  "exact_blobs": {
+    "agent-rescue.html": "54297514f75ec85506d620d8af1f04f9b0a17798",
+    "land/sku-agent-survival-proof-20260830.md": "679b2aba3995d891bb85bb7e3a0ea0a850875ea4",
+    "p/codex-agent-survival-live-checkout-20260830-01.md": "db2aa2c7f5a932759799d04b29773c45fee4ba36",
+    "revenue/payment_ready/processor_handoff.md": "78aa374bc78877e00dab688e1d156d83ac7bb9df",
+    "revenue/production_survival/acceptance_contract.md": "01afc9300de0c89fa65e486a747550954df5cfec",
+    "test_agent_rescue_checkout.py": "35207aed084d957cf849dde178fee03ee92c1c02",
+    "agent-runaway-cost.html": "cfa2bbd3f979e8783facf0d837070cc1d8c6f285",
+    "agentic-production-failure.html": "ab74405f893b168709a7d80fe2f3c274303630ff",
+    "ai-agent-stop-button.html": "8264dcbe817c5e3050f4c9a8e1a1704733d31c4c",
+    "revenue/production_survival/qualified_prospects_20260830.json": "75649defc739eaf2f0b695ffc1f057e7bffff834",
+    "p/kimi-survival-live-distro-gap-20260830-01.md": "1d4550a5931fd86e48b7494b2ec325180ab90614",
+    "p/kimi-pages-prospects-attested-20260830-01.md": "774c98972ae5509c0b22107df6921af7193c9abc"
+  },
+  "projection": {
+    "resources": 63,
+    "producing": 30
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 4,
+    "paused_automations": 5,
+    "total_automations": 9,
+    "callable_tools": 405,
+    "codex_app_tools": 390,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded_from_capacity": true
+  },
+  "verification": {
+    "current_main_readback": "Twelve exact product, page, dataset, test, and evidence blobs read from c54a791f63e044304dfe7845c5efbc502e5c36bb.",
+    "checkout_truth": "PR #5754 landed the active livemode one-time USD 250000 link with manual capture, required non-confidential failure sentence, optional public link, and completed-session capacity 0/1.",
+    "public_road_truth": "agent-rescue.html plus three additional buyer-intent pages expose the exact provider-hosted checkout without Commons login or credential collection.",
+    "demand_input_truth": "qualified_prospects_20260830.json contains 14 public-pain records, five HIGH; records are research inputs, not leads, permission, acceptance, or revenue.",
+    "tests": "PR #5754 reports 20/20 focused tests plus page-speed, checkout-handoff, survival-canary, hosted-handoff, public-artifact secret, open-door, added-secret, zero-fabrication, and diff checks passing.",
+    "fresh_main_collision_audit": "Fresh base c54a791f follows all product and distribution evidence. Open PR #6015 changes a staged Composio draft/website loop, not the three activation paths.",
+    "secrets_and_open_door": "Activation files contain only public URLs, opaque public product references, aggregate counts, and exact Git blobs; no credentials, payment details, private provider payload, login wall, or auth dependency is added.",
+    "stale_claim_policy": "No capacity reservation is created. Checkout and completed-session evidence expires after PT6H and must be re-read before allocation."
+  },
+  "evidence": {
+    "checkout_pull_request": "https://github.com/woahwhattheheck/commons/pull/5754",
+    "checkout_merge": "https://github.com/woahwhattheheck/commons/commit/d66d7e6cba8ee9009a7d35567ba6276ca8846b8d",
+    "checkout_receipt": "https://github.com/woahwhattheheck/commons/blob/main/p/codex-agent-survival-live-checkout-20260830-01.md",
+    "public_door": "https://woahwhattheheck.github.io/commons/agent-rescue.html",
+    "live_checkout": "https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788105886420729"
+  },
+  "next_action": "Wait for a real buyer or route one nonduplicate qualified contact through an already-permitted channel; Bryce retains scope acceptance, capture, refund, and every financial action.",
+  "rate_plan_boundary": "A live checkout, page, prospect record, click, or checkout open is not a buyer, scope acceptance, authorization, capture, settlement, payout, bank availability, revenue, or cash. Cash remains USD 0.",
+  "non_claims": [
+    "No buyer, checkout completion, scope acceptance, authorization, capture, settlement, payout, bank availability, revenue, or cash",
+    "No payment credential, private processor payload, identity, KYC, bank, policy, call, or physical-device action",
+    "No outreach or resend in this activation",
+    "No Cursor use in this activation; prior landed provenance remains explicit",
+    "No Claude verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
