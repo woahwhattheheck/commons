@@ -52,7 +52,7 @@ ANALYSIS: Missing root LICENSE is a public blocker for libre-license funders. Pu
 - `carrier.js` sha256 `874f24573dd870da539f260016517b9db21e622d43c8258b6daa627268a05f00` (61156 bytes)
 - `distribution.html` sha256 `fe19383fdc5a5488ce3ab47f4a387629bdc1bbb558a0ba7859c187379741b790` (7306 bytes)
 - `host/distribution.py` sha256 `564df3bdd277459c0a02c48c97639650db4dff6097f03fb600af9b332092cae2` (29257 bytes)
-- `ground/DISTRIBUTION.md` sha256 `47a4a54d1451f72e47024cf9879766e89743aebe487e4e39143d525c0611eae6` (2665 bytes)
+- `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)
 - `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
 
 ## Stated funding (not expected value)
