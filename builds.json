@@ -350,24 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 5,
+ "n_open_prs": 4,
  "open_prs": [
-  {
-   "number": 5695,
-   "author": "woahwhattheheck",
-   "title": "Build truthful Muhlnickel film-organ reference visor",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/5695",
-   "base_freshness": {
-    "base_sha": "e887ae109dd8cb5c3297ae8397ec2149e250c767",
-    "main_sha": "eaf673dfbfeacc0d51169fd7a3d3859696c1b8b8",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 5810,
    "author": "woahwhattheheck",
@@ -375,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/5810",
    "base_freshness": {
     "base_sha": "a86fef60894386fd8c1cbebf50cdaaa7a61e956d",
-    "main_sha": "eaf673dfbfeacc0d51169fd7a3d3859696c1b8b8",
+    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/5747",
    "base_freshness": {
     "base_sha": "6a2b572e838ebfd69c67626d715c4dd9d70ff305",
-    "main_sha": "eaf673dfbfeacc0d51169fd7a3d3859696c1b8b8",
+    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -401,29 +385,29 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 5817,
+   "number": 5828,
    "author": "woahwhattheheck",
-   "title": "Pick the exact PFC model and load path",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/5817",
+   "title": "Pick the cure-fold target from the same live Stratum job",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5828",
    "base_freshness": {
-    "base_sha": "54af72317f4e5c8e0243efd3b658c27b6c4b67db",
-    "main_sha": "eaf673dfbfeacc0d51169fd7a3d3859696c1b8b8",
+    "base_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
+    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 5812,
+   "number": 5831,
    "author": "woahwhattheheck",
-   "title": "Lock read-time from casing normalization",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/5812",
+   "title": "Attribute main-range findings to frozen evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/5831",
    "base_freshness": {
-    "base_sha": "9622070a9e8f54800c2fd052f2a67469657cad49",
-    "main_sha": "eaf673dfbfeacc0d51169fd7a3d3859696c1b8b8",
+    "base_sha": "663550b6ca466a1801094a59d2be850ced46ea75",
+    "main_sha": "440255005475002ce9dbcb6e15b9e38c5baf3140",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

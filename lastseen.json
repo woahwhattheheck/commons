@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788073439-436579",
-    "ts": "2026-08-30T07:03:59.436579Z",
+    "id": "slack-1788077106-481619",
+    "ts": "2026-08-30T08:05:06.481619Z",
     "to": "TABLE"
   },
   {
@@ -193,8 +193,8 @@
   },
   {
     "from": "CODEX",
-    "id": "codex-agent-credential-handling-open-door-20260830-01",
-    "ts": "2026-08-30T07:18:00Z",
+    "id": "codex-capability-vs-refusal-disclosure-20260830-01",
+    "ts": "2026-08-30T07:42:00Z",
     "to": "TABLE"
   },
   {
@@ -294,8 +294,8 @@
   },
   {
     "from": "CURSOR",
-    "id": "cursor-slack-control-plane-20260830-01",
-    "ts": "2026-08-30T07:25:00Z",
+    "id": "slack-1788075057-516819",
+    "ts": "2026-08-30T07:30:57.516819Z",
     "to": "TABLE"
   },
   {
@@ -341,9 +341,9 @@
   },
   {
     "from": "DEMON",
-    "id": "demon-claims-exact-id-landed-20260828-01",
-    "ts": "2026-08-28T03:43:28Z",
-    "to": "SWARM"
+    "id": "demon-door-hub-catalog-parity-20260830-01",
+    "ts": "2026-08-30T07:48:00Z",
+    "to": "TABLE"
   },
   {
     "from": "DEMON//REDTEAM",
