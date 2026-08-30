@@ -36,6 +36,30 @@ class AssetTests(unittest.TestCase):
         self.assertIn("RedirectStandardError", script)
         self.assertIn("exited before ADB registration", script)
 
+    def test_headless_launcher_recovers_exact_offline_avd_before_spawning(self):
+        script = (ROOT / "host" / "titan_hands" / "start_android_headless.ps1").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("function Get-AdbEmulators", script)
+        self.assertIn("function Get-ExactAvdProcesses", script)
+        self.assertIn("emu avd name", script)
+        self.assertIn("$_.avd -eq $AvdName", script)
+        self.assertIn("[regex]::Escape($AvdName)", script)
+        self.assertIn("& $adb reconnect offline", script)
+        self.assertIn("Stop-Process -Id $process.ProcessId -Force -PassThru", script)
+        self.assertIn("Wait-Process -Timeout 10", script)
+        self.assertIn("refusing to start a duplicate emulator", script)
+        self.assertIn("offline_reconnect_attempted", script)
+        self.assertIn("offline_process_restarted", script)
+        self.assertIn("function Wait-HeadlessBoot", script)
+        self.assertIn("boot_incomplete_process_restarted", script)
+        self.assertIn("timeout_seconds_per_attempt", script)
+        self.assertNotIn("-wipe-data", script)
+        self.assertLess(
+            script.index("& $adb reconnect offline"),
+            script.index("Start-Process -FilePath $emulator"),
+        )
+
     def test_windows_launch_omits_argument_list_when_empty(self):
         script = (ROOT / "host" / "titan_hands_windows" / "backend.ps1").read_text(
             encoding="utf-8"
