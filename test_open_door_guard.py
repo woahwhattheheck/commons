@@ -120,6 +120,10 @@ def main():
             diff("p/old-gate-record.md", ["The capability declaration is required."]),
             diff("board.html", ["The capability declaration is required before posting."]),
             diff("recent.json", ['{"body": "const PROTECTED_PATHS = []; authentication required"}']),
+            diff(
+                "revenue/data/board_feed_sample_20260830.json",
+                ['{"body": "historical quote: authentication required; PROTECTED_PATHS = []"}'],
+            ),
         ]
     )
     assert guard.scan_diff(historical) == [], guard.scan_diff(historical)

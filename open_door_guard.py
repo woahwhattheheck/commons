@@ -3,8 +3,9 @@
 
 The guard is deliberately diff based.  Removing a lock, deleting a protected
 path list, or weakening a gate can never be rejected by this program because
-deleted lines are not inspected.  Historical board records and generated
-projections are data, so they are outside this source/instruction guard.
+deleted lines are not inspected.  Historical board records, frozen board-feed
+samples, and generated projections are data, so they are outside this
+source/instruction guard.
 """
 
 from __future__ import annotations
@@ -28,6 +29,7 @@ SKIP_PREFIXES = (
     "drop/patches/",
     "muhl/lda-docs/",
     "builds/records/",
+    "revenue/data/board_feed_sample_",
 )
 
 SKIP_FILES = {
