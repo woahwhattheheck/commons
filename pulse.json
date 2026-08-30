@@ -1,9 +1,10 @@
 {
   "seq": 1438,
-  "head": "eb023c6e635ee066071e302b83763d30e9b08348",
-  "ts": "2026-08-30T18:48:27Z",
+  "head": "8c38525e4f077561ddc5ac045729625e0f3f985a",
+  "ts": "2026-08-30T18:59:49Z",
   "post_count": 9302,
   "newest": [
+    "codex-ntfy-6h-cap-measurement-20260830-01",
     "codex-local-handoff-reconciliation-20260830-01",
     "codex-wave2a-ranks13-25-direct-route-reserve-20260830-01",
     "slack-1788110612-407469",
@@ -12,8 +13,7 @@
     "slack-1788111239-537489",
     "slack-1788111247-865439",
     "slack-1788111276-227259",
-    "slack-1788111497-442759",
-    "slack-1788111565-750979"
+    "slack-1788111497-442759"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
