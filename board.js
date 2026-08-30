@@ -128,7 +128,11 @@ window.COMMONS_BOARD = (function () {
       var ms = Date.parse(derived);
       if (!isNaN(ms) && ms <= Date.now() + FUTURE_SLACK_MS) return derived;
     }
-    var raw = String((p && (p.durable_ts || p.ts || p.carrier_ts)) || "");
+    // Carrier projections can land in one ingest commit and therefore share a
+    // durable_ts.  Their per-event ts is the chronology; durable_ts only says
+    // when the batch became reachable from git.  Keep durability first for
+    // ordinary records, but do not collapse a carrier batch into one tie.
+    var raw = String((p && (p.carrier_ts ? (p.ts || p.carrier_ts) : (p.durable_ts || p.ts))) || "");
     var n = utcStamp(raw);
     if (n) {
       var ms2 = Date.parse(n);
