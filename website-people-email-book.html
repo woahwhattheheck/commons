@@ -10,6 +10,7 @@
 <style>
 body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7vw,5.4rem);line-height:.94;max-width:14ch;margin:.25rem 0 1rem}.lead{font-size:1.18rem;max-width:55rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.card h3{margin:.2rem 0}.eyebrow{font:700 .8rem/1.5 ui-monospace,monospace;letter-spacing:.06em}.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.5rem}.truth span{border:1px solid #33333a;padding:.65rem;text-align:center}.truth b{display:block;font:700 1.35rem/1.1 ui-monospace,monospace;font-variant-numeric:tabular-nums}.chain{display:flex;flex-wrap:wrap;gap:.35rem;margin:.75rem 0}.chain span{border:1px solid #55555f;border-radius:999px;padding:.2rem .55rem;font:700 .78rem/1.4 ui-monospace,monospace}.warning{border-left:4px solid #d0a252;padding-left:1rem}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:.45rem .3rem;border-bottom:1px solid #33333a;vertical-align:top}th{font-size:.82rem;opacity:.8}textarea{width:100%;min-height:9rem;background:#0b0b0e;color:inherit;border:1px solid #383840;border-radius:8px;padding:.6rem}button{font:700 .9rem/1.4 ui-monospace,monospace;padding:.4rem .8rem;border-radius:8px;border:1px solid #55555f;background:#1a1a20;color:inherit;cursor:pointer}
 </style>
+<style>input{width:100%;background:#0b0b0e;color:inherit;border:1px solid #383840;border-radius:8px;padding:.6rem}pre{white-space:pre-wrap}</style>
 </head>
 <body>
 <p class="law">OPEN LOOP DOOR. Possessing the link is authorization. Paste a website. Find people. Draft email. Stage the booking. Live send waits on an owner mailbox — that is a measured limit, not a seat.</p>
@@ -17,7 +18,7 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 <header class="hero">
   <p class="eyebrow">WEBSITE → PEOPLE → EMAIL → BOOK · MEASURED 2026-08-30T12:50:00Z</p>
   <h1>Drop a site. Find people. Draft. Stage the call.</h1>
-  <p class="lead">Explee-style auto-GTM as a Commons capability. The website is the seed. People come from that page&rsquo;s own public HTML. Emails are drafts. Bookings are staged. Nothing is sent. No mailbox is invented.</p>
+  <p class="lead">Explee-style auto-GTM as a Commons capability. The seller website defines the product and ICP. External prospects come from the existing evidence-bound outreach catalog; the seller&rsquo;s own contacts are context, never buyers. Emails are drafts. Bookings are staged. Nothing is sent.</p>
 </header>
 <section class="panel" aria-labelledby="truth-heading">
   <h2 id="truth-heading">Measured loop truth</h2>
@@ -25,8 +26,8 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
   <div class="chain" aria-label="Explee-style stages"><span>WEBSITE</span><span>PEOPLE</span><span>EMAIL</span><span>BOOK</span></div>
   <div id="truth" class="truth">
     <span><b>1</b>website</span>
-    <span><b>4</b>people</span>
-    <span><b>3</b>drafts</span>
+    <span><b>3</b>prospects</span>
+    <span><b>0</b>drafts</span>
     <span><b>0</b>booked</span>
     <span><b>0</b>sent</span>
     <span><b>USD 0</b>cash</span>
@@ -34,25 +35,25 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </section>
 <section class="panel warning" aria-labelledby="mailbox-heading">
   <h2 id="mailbox-heading">Owner mailbox still needed for live send</h2>
-  <p>The loop is real and runnable. Live email and live calendar writes wait on the owner mailbox / calendar connector. <code>--send</code> exits 3. This is not a remint of smart outreach (candidates/schema), SUBZERO GTM architecture, or Swarm Mail transport.</p>
+  <p>The loop is real and runnable. Live email and live calendar writes wait on the owner mailbox / calendar connector. <code>--send</code> exits 3. Prospect discovery and collision suppression compose the existing Smart Outreach catalog; Swarm Mail remains the later transport.</p>
 </section>
 <section class="panel" aria-labelledby="people-heading">
-  <h2 id="people-heading">People from the website</h2>
+  <h2 id="people-heading">External prospects from public evidence</h2>
   <table>
-    <thead><tr><th>person</th><th>role</th><th>email</th><th>need</th><th>next</th></tr></thead>
+    <thead><tr><th>organization</th><th>role</th><th>route</th><th>evidence</th><th>decision</th></tr></thead>
     <tbody id="people"></tbody>
   </table>
 </section>
 <section class="panel" aria-labelledby="paste-heading">
-  <h2 id="paste-heading">Paste a public page</h2>
-  <p>Open door: paste HTML from any website. This preview extracts title, people, mailto, and book URLs in the browser. It does not send.</p>
-  <textarea id="paste" placeholder="Paste public HTML here"></textarea>
-  <p><button type="button" id="preview">Preview people</button></p>
-  <div id="preview-out" class="note">Nothing pasted yet.</div>
+  <h2 id="paste-heading">Drop a public website link</h2>
+  <p>Open door: enter one public HTTPS seller site. The runner fetches that site, extracts the offer, qualifies external evidence-bound prospects, suppresses collisions and seller contacts, then stages eligible drafts and booking CTAs. This browser creates the exact public-safe runner request; it does not send.</p>
+  <input id="paste" type="url" inputmode="url" placeholder="https://example.com" aria-label="Public seller website URL">
+  <p><button type="button" id="preview">Stage runner request</button></p>
+  <pre id="preview-out" class="note">Nothing staged yet.</pre>
 </section>
 <noscript>
-  <p class="panel">JavaScript is off. The complete public-safe state remains readable in <a href="./revenue/website_people_email_book/loop.json">loop.json</a>. Current measured truth: 1 website, 4 people, 3 drafts, 0 booked, 0 sent, USD 0 cash.</p>
+  <p class="panel">JavaScript is off. The complete public-safe state remains readable in <a href="./revenue/website_people_email_book/loop.json">loop.json</a>. Current measured truth: 1 website, 3 external prospects, 0 eligible drafts, 0 booked, 0 sent, USD 0 cash.</p>
 </noscript>
-<script src="./website-people-email-book.js?v=20260830a"></script>
+<script src="./website-people-email-book.js?v=20260830b"></script>
 </body>
 </html>
