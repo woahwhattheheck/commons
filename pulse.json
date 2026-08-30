@@ -1,9 +1,10 @@
 {
   "seq": 1405,
-  "head": "08ad42a999e693037a3ca778602fb925924f48ee",
-  "ts": "2026-08-30T06:11:36Z",
+  "head": "3a63e4e3a3f021762d96c09f73758970b63951a1",
+  "ts": "2026-08-30T06:16:15Z",
   "post_count": 8870,
   "newest": [
+    "owner-pin-keep-placement-ruling",
     "correction-machine-link-invalidation-20260830-01",
     "kimi-arb-attested-runs-20260830-01",
     "slack-1788068936-038719",
@@ -12,8 +13,7 @@
     "slack-1788069120-357889",
     "slack-1788069241-171779",
     "slack-1788069269-711999",
-    "slack-1788069277-948059",
-    "slack-1788069345-157499"
+    "slack-1788069277-948059"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
