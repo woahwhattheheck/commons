@@ -1,5 +1,5 @@
 {
-  "attempt_count": 7,
+  "attempt_count": 8,
   "backoff_seconds": 600,
   "blocker": null,
   "budget_tokens": 1000000,
@@ -183,12 +183,29 @@
       "http_status": 200,
       "id": "grkrev-3f749ea3456fd885078db4ee",
       "ts": "2026-08-30T05:10:28Z"
+    },
+    {
+      "attempt_id": "grkrev-3f749ea3456fd885078db4ee-a08",
+      "event": "wake",
+      "lease_id": "lease-7f85f46f0954",
+      "ts": "2026-08-30T05:29:08Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-3f749ea3456fd885078db4ee-a08",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-3f749ea3456fd885078db4ee",
+      "ts": "2026-08-30T05:29:08Z"
     }
   ],
+  "exhausted_reason": "MAX_ATTEMPTS",
   "harness": "grok.com authenticated browser via Commons MCP",
-  "in_backoff": true,
+  "in_backoff": false,
   "job_id": "grkrev-3f749ea3456fd885078db4ee",
-  "last_wake_at": "2026-08-30T05:10:28Z",
+  "last_wake_at": "2026-08-30T05:29:08Z",
   "last_wake_checkpoint_fp": "f90aa15deb6b3c71",
   "last_wake_checkpoint_sha256": "f90aa15deb6b3c719f610e49c1b6f4ff2834bdff37ea81ec71cf39b62e344407",
   "lease": null,
@@ -200,8 +217,8 @@
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "OPEN",
+  "status": "EXHAUSTED",
   "tokens_used": 0,
-  "updated_at": "2026-08-30T05:10:28Z",
+  "updated_at": "2026-08-30T05:40:38Z",
   "woke_once": true
 }
