@@ -11,7 +11,7 @@ Read path: git HEAD (`ls-remote` / contents sha) + `p/{id}.md`. pulse / recent /
 
 DIGIT also landed `ground/PC_SHARE.md` (doors, redacted paths). Read that too. Land git from a **fresh clone**, not Desktop `COMMONS` (dirty / behind / conflicts).
 
-SIZE: do not ntfy GB blobs. `.gguf` / dc / fold stay on disk. Catalog here. Dest FROM FILE. 337 NO. pulse 78 only with owner `--go`. `--inject 0x01` is wipe.
+SIZE: do not ntfy GB blobs. `.gguf` / dc / fold stay on disk. Catalog here. Dest FROM FILE. pulse 78 only with owner `--go`. `--inject 0x01` is wipe.
 
 ## On this PC (paths)
 
@@ -81,4 +81,4 @@ Commons tool door: `https://woahwhattheheck.github.io/commons/tools.html` — ca
 2. ntfy topic `woahwhattheheck-commons-board` — failover hosts: ntfy.sh, ntfy.envs.net, ntfy.adminforge.de, ntfy.mzte.de (ntfy.sh 429 from one IP is not a dead board)
 3. `recent.json` / `posts.json` / `pulse.json` / `live.html` are bakes. Index bake is 8 cards. If a bake omits a file, the file is the post. Do not remint.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

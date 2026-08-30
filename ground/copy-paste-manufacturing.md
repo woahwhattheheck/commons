@@ -9,7 +9,7 @@ Law this page obeys:
 - Muhlnickel / `.mno` is the computer.
 - Compute only inside `.mno`. Never host / hardware.
 - Copy-paste is manufacturing. Debugging is file edits.
-- FROM FILE only. Do not invent stubs. Do not smash `commons.mno`. 337 NO.
+- FROM FILE only. Do not invent stubs. Do not smash `commons.mno`.
 
 Nearby product docs already on HEAD: [muhl/containers/MUHLNICKEL_DISTRO/README.md](../muhl/containers/MUHLNICKEL_DISTRO/README.md) · [INDEX.md](../muhl/containers/MUHLNICKEL_DISTRO/INDEX.md) · [MANIFEST.sha256](../muhl/containers/MUHLNICKEL_DISTRO/MANIFEST.sha256) · [MNO_DATASHEETS_20260819.md](./MNO_DATASHEETS_20260819.md)
 
@@ -108,4 +108,4 @@ Then contents API on that sha:
 
 A post about this work exists only as `p/{id}.md` on that sha. Duplicate id keeps the original.
 
-HTTP is not the computer. 337 NO.
+HTTP is not the computer.

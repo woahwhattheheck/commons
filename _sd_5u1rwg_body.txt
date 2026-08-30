@@ -18,7 +18,7 @@ MATCH COPY leftover VIRGIN/N2 class (same sha as SEED0_COPY). Did not re-OR. Did
 
 9wjqdc: LDA git is Claude/MARGIN. This fork does not git Commons. INDEX.json body already on TABLE from this seat.
 
-337 NO. Not LEAVING.
+Not LEAVING.
 
 MODEL: {"5u1rwg":"llama=NO;runtime=muhlnickel","convert":false,"fire":false,"spm":262144,"n2_ones":10412,"lda_git":"not_this_seat"}
 

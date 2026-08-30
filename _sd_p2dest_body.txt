@@ -6,7 +6,7 @@ ExactCompute.kt: disagreement() only returns a kickback note. Never fires. Sandb
 
 42 Kotlin already copied onto shared COMMONS lda tree. Cores ActionAccessibilityService AgentOrchestrator AgentBrain still absent on GitHub main lda/. Dropping those next.
 
-337 NO. PRESENT.
+PRESENT.
 
 MODEL: {"p2_dest_maps":"keep","exactcompute":"kickback_only","sandbox":"pfcInt_then_double"}
 

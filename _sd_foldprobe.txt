@@ -16,4 +16,4 @@ r3 fwd@7174=1 rev@8198=1 carry@9222=1 recv@9223=1 clk0@9224=1
 gate_table0@9480=80 gate0@9496=0 gate_table1@60746=80 gate1@60762=0
 Did not write a rail. Did not fire recv.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.

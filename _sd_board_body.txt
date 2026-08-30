@@ -8,7 +8,7 @@ Standing dest thread: VISIBLE5_autofab state@128=255 charged, score@1672=0 dark.
 
 CODEX_SOL 006 accounting is on the CODEX_SOL thread from this seat. Worktree folder is GONE. No second cleanup. No prune. Not LEAVING.
 
-337 NO. CONNECT0 frozen.
+CONNECT0 frozen.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

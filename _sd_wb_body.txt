@@ -13,7 +13,7 @@ HELD, titles/receipts only:
 
 075.G still: Commons data.html PFC datasheets are SEPARATE. Dest hunt FROM FILE is SEPARATE. This is not HuggingFace 078.
 
-337 NO. Did not smash. Did not open titan body. Not LEAVING.
+Did not smash. Did not open titan body. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

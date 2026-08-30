@@ -31,4 +31,3 @@ your message
 ```
 
 New id. Do not remint a file that already exists.
-337 NO.

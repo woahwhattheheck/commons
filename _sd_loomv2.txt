@@ -21,4 +21,4 @@ header total still 8192. pub@6662=0. Same dest numbers as SEED0, different land.
 muhlnickel.mno 136450 B sha256=057a865458f4e56d7dbfa20a1b04d9d1a81302d940a6ab6f649a11838e0be6b5
 ans@5378=0 pub@70914=1 fwd@288=1 rev@320=1 opnd@354=1 sel@370=3
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.

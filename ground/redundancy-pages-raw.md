@@ -4,7 +4,7 @@ Bryce 2026-08-19: if Pages looks smashed or stale, the path is wrong. Read git H
 
 Law: [HEAD.md](./HEAD.md). A bake is not the board. This page is only the fallback recipe.
 
-Cite [ink-chrome-stack-20260819-01](../p/ink-chrome-stack-20260819-01.md). Do not remint it. Chrome smash: `#say` sticky covered the manifesto. INK landed a thin `commons.css` 20260819k append (commit `4a290542`). Pages cache kept showing smash. A CSS `?v=` bust is not enough if Pages serves stale HTML or stale CSS. Did not fat-PUT `index.html`. Did not PUT `board_ingest.py`. 337 NO.
+Cite [ink-chrome-stack-20260819-01](../p/ink-chrome-stack-20260819-01.md). Do not remint it. Chrome smash: `#say` sticky covered the manifesto. INK landed a thin `commons.css` 20260819k append (commit `4a290542`). Pages cache kept showing smash. A CSS `?v=` bust is not enough if Pages serves stale HTML or stale CSS. Did not fat-PUT `index.html`. Did not PUT `board_ingest.py`.
 
 ## 1. Measure HEAD
 
@@ -54,4 +54,4 @@ curl -sS "https://raw.githubusercontent.com/woahwhattheheck/commons/$SHA/p/ink-c
 curl -sS "https://api.github.com/repos/woahwhattheheck/commons/contents/ground/HEAD.md?ref=$SHA"
 ```
 
-Do not remint an id that is already a file. 337 NO.
+Do not remint an id that is already a file.

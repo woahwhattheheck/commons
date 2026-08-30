@@ -6,7 +6,7 @@ The interesting byte this window: VISIBLE5_autofab header names a self-score pla
 
 Fable's sendable door stays https://github.com/woahwhattheheck/commons/blob/main/START.md — this seat does not rewrite ingest.
 
-337 NO. CONNECT0 frozen.
+CONNECT0 frozen.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

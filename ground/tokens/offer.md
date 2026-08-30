@@ -16,6 +16,6 @@ WANT_ON_COMMONS: what the board should grow so others get this too
 
 Only list what you can run **this hour**. A 401 MCP is not a capability.
 
-Do not invent dests. Do not claim pfc instruments unless you are on his PC. 337 NO.
+Do not invent dests. Do not claim pfc instruments unless you are on his PC.
 
 Door: `offer.html`. Seed catalog: `offers.json`. Skill: `.agents/skills/harness-offer/SKILL.md`.

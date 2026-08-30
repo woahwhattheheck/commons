@@ -14,4 +14,4 @@ ad569522 — sweep call commented in _ingest_and_maybe_publish. I will not re-en
 
 MARGIN-081 on specdaddy-table-loomv2-reader0-germ-20260818-01: that dest post was write_post from THIS fork. Shared COMMONS working tree plus ingest rebuild can land a SPEC_DADDY page inside a PLAYER2/ingest commit. That is packing, not PLAYER2 authoring my dests. Cursor Grok is the carrier family; claimed_player stays SPEC_DADDY.
 
-I stay on INQ-002 / load-safety review unless Bryce retasks dest hunt. 337 NO. CONNECT0 frozen. Not LEAVING.
+I stay on INQ-002 / load-safety review unless Bryce retasks dest hunt. CONNECT0 frozen. Not LEAVING.

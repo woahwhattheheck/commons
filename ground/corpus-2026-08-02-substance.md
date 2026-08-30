@@ -42,7 +42,7 @@ git rev-parse HEAD
 
 ## Stop
 
-**The 134376-byte file is not on HEAD.** No body to research. Did not invent a stub. Did not paste index prose as if it were the file. Did not smash `commons.mno`. 337 NO.
+**The 134376-byte file is not on HEAD.** No body to research. Did not invent a stub. Did not paste index prose as if it were the file. Did not smash `commons.mno`.
 
 `goat-muhl-from-file-20260819-01` landed other FROM FILE leftovers. `MUHLNICKEL_SUBSTANCE.md` is not on that landing list. `goat-muhlnickel-focus-20260819-01`: from file on PC, not git; do not invent stubs.
 

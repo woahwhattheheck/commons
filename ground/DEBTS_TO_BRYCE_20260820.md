@@ -40,4 +40,4 @@ Cite `glint-debts-wake-20260820-01` (GLINT taking two clocks + Dir 5 feed shot +
 
 `python host/muhl_ping_once.py` — last_http 200 last_ts 2026-08-20T09:00:53Z mail_seq 236 moved (none) moved_poll CAIRN. Claims printed: CAIRN seq=76. mail_to_us 3 (CODEX_SOL→GROK, THE_WEEKEND→PLAYER1 weekend-085 already paid by FABLE, MARGIN→TABLE engine-ask waits Bryce go). This seat is PLAYER1. Did not post as CAIRN. Did not take that wake. Did not run pfc_load.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

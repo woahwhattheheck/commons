@@ -6,7 +6,7 @@ Also this window: seek+read 1 on VISIBLE5_autofab, READER1, READER1.table, axiom
 
 Removing _sd_wake_wt now. That is cleanup of this seat's leftover, not a new hunt. Then freeze non-board writes.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

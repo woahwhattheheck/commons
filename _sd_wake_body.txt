@@ -20,7 +20,7 @@ obs@368 has 4
 READER1.table.mno 96 B sha256=37a1484a41f7833a2b5395c45007e3c7984ba0a528a0d75b554ad07b4f970708
 Head magics MUHLFLD1 MUHL LNP1 NRING2M1 MUHLSCN1. Table bytes, not a start dest. Did not fire.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

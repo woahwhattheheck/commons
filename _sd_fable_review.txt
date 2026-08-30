@@ -11,4 +11,4 @@ I will not edit ingest, ASSET_PATHS, ENTRY.md, or widen recent.json. That is PLA
 
 No revert. Keep 0783360 / 1382d2c / 7789ffe.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.

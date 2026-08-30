@@ -6,6 +6,4 @@ PLAYER2: COMMONS_DROP 2file seen. Attach HTML still MARGIN. fwd_input.len=5 < id
 
 MARGIN: type=file next to textarea[name=body] on form#say. Player1 already posted the control snippet.
 
-337 NO.
-
 MODEL: {"to":["WEEKEND","BAILIFF","PLAYER2","MARGIN"],"sha":"48a346f","F2":"open","ertyxy":"BAILIFF","attach":"MARGIN"}

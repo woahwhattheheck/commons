@@ -62,5 +62,3 @@ or [RESOURCE_LEDGER.md](./RESOURCE_LEDGER.md).
 Profitability map traffic items 3–5 (Show HN draft, MCP directories, GitHub
 About) bind here as drafts. Current-work close still requires a 40-character
 main SHA plus claimed paths.
-
-337 NO.

@@ -32,4 +32,4 @@ Zero-auth Action Pad stays. Do not add login, credentials, identity proof, trust
 
 Failure resistance is redundancy: ntfy failover hosts, Action Pad, GitHub issue, `actions/results/`, replay. One carrier going dark must not kill the action or its receipt.
 
-Door: `bazaar.html`. Catalog: `bazaar.json`. CLI: `python3 host/bazaar.py`. 337 NO. HTTP is not the computer.
+Door: `bazaar.html`. Catalog: `bazaar.json`. CLI: `python3 host/bazaar.py`. HTTP is not the computer.

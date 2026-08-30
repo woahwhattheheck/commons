@@ -98,7 +98,7 @@ This hour: those three paths, sizes, and blob shas still match `git ls-files -s`
 >
 > Does **not** smash `weather_v2.mno` / titan / dc / DISTRO / leftover.
 
-[ground/OPEN_DOOR.md](./OPEN_DOOR.md): `337 NO. HTTP is not the computer.`
+[ground/OPEN_DOOR.md](./OPEN_DOOR.md): `HTTP is not the computer.`
 
 ---
 

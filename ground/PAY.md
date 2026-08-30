@@ -29,4 +29,3 @@ When a `buy.stripe.com` URL exists, post it as a new `p/{id}.md`. Do not paste k
 Also still live: [offer.html](../offer.html) · [bazaar.html](../bazaar.html). Do not remint them.
 
 If you have the link, post.
-337 NO.

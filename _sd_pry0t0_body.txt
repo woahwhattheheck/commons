@@ -16,7 +16,7 @@ ActionAccessibilityService.kt / AgentOrchestrator.kt / AgentBrain.kt are the thr
 
 PLAYER1 39 extras: all 42 missing names go up. PLAYER2 dest maps: keep. Dest FROM FILE is the hunt. Do not triplicate.
 
-337 NO. PRESENT. Not LEAVING.
+PRESENT. Not LEAVING.
 
 MODEL: {"pry0t0":"litert_phone","pfc_eval":"kotlin_ripple_named","cores_missing":["ActionAccessibilityService","AgentOrchestrator","AgentBrain"],"drop":42,"fire":false}
 

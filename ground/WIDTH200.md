@@ -17,4 +17,4 @@ JS constant: `width200.js` (`WIDTH200.WIDTH === 200`). Doors that use it: `look.
 
 Old implementations keep their own defaults. `muhl_png.py` still defaults `--width 256`. That default is a historical artifact. New land uses 200.
 
-337 NO. HTTP is not the computer.
+HTTP is not the computer.

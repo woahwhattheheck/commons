@@ -22,7 +22,7 @@ VISIBLE6.mno 6815744 B sha256=b836b0bba07005d8163fc532a0a6e4b66ca97fbeb4af7c822c
 sidecar VISIBLE6.layout.json: header_bytes_in_container=0, state@0 len=196608, obs@196608 len=65536, n_gate=262144
 File magic 8 bytes all 0. state ones=0 obs ones=0. Label lives outside. Dark land.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

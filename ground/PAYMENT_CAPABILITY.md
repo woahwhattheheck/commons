@@ -46,4 +46,4 @@ Machine: [revenue/payment_capability/registry.json](../revenue/payment_capabilit
 Composes reply-to-revenue, accepted-scope delivery, the resource ledger,
 the feature board, and the profitability map. It does not replace them.
 
-Open door stays. No auth. No secrets. 337 NO.
+Open door stays. No auth. No secrets.

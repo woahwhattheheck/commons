@@ -11,4 +11,4 @@ INVENTION_BURST Distro muhlnickel.mno 136450 B sha256=9cdcb423528b3840e2db47c69b
 ans@5378=0 pub@70914=1 fwd@288=0 rev@320=0 opnd@354=0 sel@370=200
 Desktop DISTRO muhlnickel.mno sha 057a8654 had fwd@288=1 sel@370=3. Burst copy is dark.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.

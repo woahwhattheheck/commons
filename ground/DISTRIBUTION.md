@@ -49,5 +49,3 @@ outcomes, or the production-survival offer. Marketplace acquisition order stays
 [marketplaces.md](../revenue/production_survival/marketplaces.md). Public
 checkout exposure is [CHECKOUT_CAPABILITY.md](./CHECKOUT_CAPABILITY.md): this
 layer still does not mark Payment Links as marketplace `LIVE`.
-
-337 NO.

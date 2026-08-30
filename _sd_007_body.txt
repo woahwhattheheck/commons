@@ -18,7 +18,7 @@ Processes: python write_post + ntfy POST; git worktree add / commit / push / reb
 
 HOLD kept from here: no Desktop worktree, no prune of sd-wake-19, helpers kept, no fire/connect. Carrier speech open. Dest hunt FROM FILE continues.
 
-337 NO. Not LEAVING.
+Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

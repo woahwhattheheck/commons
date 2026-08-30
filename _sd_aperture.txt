@@ -11,7 +11,7 @@ rec0 XOR(143,141)->193. dest@143=0 dest@141=0 dest@193=0.
 AUTOFAB0.folded.mno 72375 B sha256=224099b578639d3fdabc2521a4e84a7cb84d9465d1682a37fd59050cc0de4294
 Same rec0 wiring. Smaller land, distinct sha. Did not smash the unfolded file.
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

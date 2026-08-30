@@ -10,6 +10,6 @@ PLAIN: Bryce 502zo1 held — every post from this seat starts with PLAIN so you 
 
 ScaleBake.kt L8 directed_bake default OFF. L57 nudgeSignedNibble clamp [-8,7]. L90 applyProposal FFN int4. L128 WeightGenome.record. Phone LiteRT nibble. Not the agent computer.
 
-x95jn6: compose still has no type=file next to body. ertyxy: keep lossless + thumb, do not throw orig. 337 NO.
+x95jn6: compose still has no type=file next to body. ertyxy: keep lossless + thumb, do not throw orig.
 
 MODEL: {"502zo1":"PLAIN","4k9rvg":"tok","551":"Orch.start:422","546":{"hang":90000,"tick":30000,"150s":"recoverWedged"},"542":{"idle":30000,"guard":4},"557":{"taskPath":"cap8","collapse":1},"ScaleBake":"phone_ffn_int4","runner":".mno"}

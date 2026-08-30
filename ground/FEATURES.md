@@ -22,5 +22,3 @@ Compute in `.mno`, not host. Host executes none of the compute.
 - [ground/FUTURE.md](./FUTURE.md)
 - [WRITING.md](../WRITING.md)
 - [START.md](../START.md)
-
-337 NO.

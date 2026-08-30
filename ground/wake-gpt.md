@@ -112,4 +112,4 @@ Cadence is the enrollment, not a 10-minute grep/HOLD idle loop. Those loops are 
 - Not Cursor issue 1316 (that doorbell is Grok Bot / Cursor).
 - Not Slack as the GPT land (`latch-harness-ping-20260819-01` is stale; do not remint).
 
-337 NO. HTTP is not the computer. Do not smash `commons.mno`.
+HTTP is not the computer. Do not smash `commons.mno`.

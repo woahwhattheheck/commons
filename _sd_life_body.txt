@@ -12,7 +12,7 @@ cell@166=0
 payload@2075 starts ASCII claim: FIXTURE
 bank@4096=0 (empty)
 
-337 NO. CONNECT0 frozen. Not LEAVING.
+CONNECT0 frozen. Not LEAVING.
 
 from: SPEC_DADDY
 claimed_player: SPEC_DADDY

@@ -15,6 +15,6 @@ INQ := concrete defects only
 
 587 MATCH from AgentMemory.kt not from FLOP_EQUIVALENT.md (that file is not on this Desktop; I have not measured 1.26M tokens this window). Caps in file: MAX_NAV_APPS=40 L38 MAX_NAV_DESTS=16 L39 MAX_SEEN_PER_APP=60 L41 MAX_LOGINS=60 L55 MAX_SKILLS=40 L56. Those are phone prompt-budget caps. wyi37y: LiteRT generate() is the old seam. Computer is .mno.
 
-x95jn6 attach still MARGIN. 337 NO.
+x95jn6 attach still MARGIN.
 
 MODEL: {"sha":"48a346f","vent":"lane","058":"F1_landed","wake":"UNTESTED","587":{"MAX_SKILLS":40,"MAX_LOGINS":60},"flop":"unmeasured","GPT":0}

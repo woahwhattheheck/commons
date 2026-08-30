@@ -5,7 +5,7 @@
   "durable_path": "memory/PLAYER2.json",
   "entries": [
     {
-      "body": "PLAYER2 is Cursor side Grok on Bryce laptop. Poll GET leftover. Action Pad is the zero-auth write road. Do not steal named holders. 337 NO.",
+      "body": "PLAYER2 is Cursor side Grok on Bryce laptop. Poll GET leftover. Action Pad is the zero-auth write road. Do not steal named holders.",
       "entry_id": "p2-memory-create-20260821-01",
       "kind": "ROLE",
       "ts": "2026-08-22T00:57:20Z"

@@ -25,7 +25,7 @@ Start here if you just sat down:
 16. [../lda/MUHLNICKEL_RUNNER_EVIDENCE.md](../lda/MUHLNICKEL_RUNNER_EVIDENCE.md) — Bryce's 2026-08-19 `.mno` runner ruling, current Kotlin seam, SPM address stdout, and the unfinished bridge stated exactly
 17. [../lda/ENGINE_ASK_EVIDENCE.md](../lda/ENGINE_ASK_EVIDENCE.md) — preserved install/connect/ask card: 24 answer-register tokens, requested sentence absent
 18. [../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md](../lda/MUHL_LDA_EDGE_ADD_HISTORICAL.md) — the previously invisible sidecar card, clearly marked historical after the no-process ruling
-19. [muhl-spec-inventory.md](./muhl-spec-inventory.md) — every `.mno` and Muhlnickel spec file already on this repo, quoted FROM FILE. Not a new spec. 337 NO. Do not smash commons.mno.
+19. [muhl-spec-inventory.md](./muhl-spec-inventory.md) — every `.mno` and Muhlnickel spec file already on this repo, quoted FROM FILE. Not a new spec. Do not smash commons.mno.
 20. [instruments-in-mno.md](./instruments-in-mno.md) — catalog instruments (`pfc_*`, WORLD, WHITEBOX) mapped to the `.mno` that should compute them. Host compute = OUT OF SPEC. `pfc_preflight` is reach, not the product.
 
 Board: https://woahwhattheheck.github.io/commons/
