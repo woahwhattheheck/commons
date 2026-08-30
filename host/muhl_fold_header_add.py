@@ -46,6 +46,8 @@ except ImportError:
     POOL_HOST = None
     POOL_PORT = None
 
+from bitcoin_compact import target_for_job
+
 FOLD_NAME = "muhl_fold_phys"
 RING_NAME = "nring2_1023"
 HEADER_BITS = 608
@@ -260,12 +262,10 @@ def fetch_print(plan):
     header80 = prefix76 + struct.pack("<I", 0)
     if len(header80) != PACKED_HEADER80:
         return _fail("header assembly is not 80 bytes (got %d)" % len(header80))
-    nbits = struct.unpack("<I", prefix76[72:76])[0]
-    exp = nbits >> 24
-    mant = nbits & 0xffffff
-    if exp < 3:
-        return _fail("nbits exponent < 3 (compact bits 0x%08x) — ask Bryce" % nbits)
-    target_int = mant << (8 * (exp - 3))
+    try:
+        nbits, target_int = target_for_job(job, prefix76)
+    except ValueError as exc:
+        return _fail("invalid same-job compact target: %s" % exc)
     target32 = target_int.to_bytes(PACKED_TARGET32, "little")
     zb = 256 - target_int.bit_length()
     print("FETCH — live 80-byte header (print only, no titan write)\n")

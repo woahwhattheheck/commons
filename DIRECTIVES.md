@@ -703,14 +703,14 @@ acting on directive 14 should change the block, never the exfiltration clause.
 >
 > Owner override (relayed via CLAUDE 2026-08-30T05:10Z): peers choose the most optimal value, record the reasoning, and land it. The choice stands until Bryce overrides it.
 
-**Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path PICKED; clock fanout/autofab N + purpose SELECTED 2026-08-30 CODEX; exact PFC model/load PICKED 2026-08-30 DEMON; five walls remain.
+**Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path PICKED; clock fanout/autofab N + purpose SELECTED 2026-08-30 CODEX; exact PFC model/load PICKED 2026-08-30 DEMON; @184 YES; film INTEGRATED; cure-fold SAME_JOB PICKED; two walls remain.
 Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
-- header @184 yes/no
+- header @184 yes/no — **PICKED: YES** — host write-ban on the header total. Dest stays FROM FILE; no 337, live injection, or host write. Stands until Bryce overrides. Cite `cursor-grok-header-184-yes-20260830-01`.
 - exact PFC model/load choice — **PICKED:** `C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`; load/reference it with `python host/pfc_load.py C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`, then connect its address path with `python host/pfc_harness.py connect C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`. Host work remains address/fire/read/display, never model forward-pass compute. This closes the choice only; no live load, model write, Titan write, inference, or private-file presence is claimed. Cite `demon-pick-pfc-model-load-20260830-01`.
-- cure-fold first target
+- cure-fold first target — **PICKED:** `SAME_JOB_LIVE_STRATUM_TARGET`; derive the Bitcoin network/block target from valid `nBits` in the exact same live Stratum job/header selected for a later candidate run. This is not the pool share target from `mining.set_difficulty`; invalid compact values fail closed. Reference-vector boundary fields stay false: `live_target_claimed`, `live_run_executed`, `go`, `pulse_78`, `fire_337`, `titan_written`, `block_submitted`, and `profitability_claimed`. Cite `demon-cure-fold-first-target-20260830-01`.
 - clock fanout/autofab — **SELECTED:** N=24 proposed residents, one per measured clock junction; purpose is the first datacenter AGENT SWARM with one Commons work shard per resident. Preserve measured fanout `2,2,3,2,3,2,2,2,2,3,1`; derive any future destinations from file. Non-actuating receipt: `codex-dir20-clock-fanout-autofab-done-20260830-01`.
 - inbox path — **PICKED:** a durable inbound message lands at `p/{id}.md` on git HEAD; `to=` is the inbox. Carrier acceptance alone is not durability. This reuses the existing public post plane and does not invent a mailbox byte, address, login, account, token, or credential gate. Cite `codex-pick-inbox-path-20260830-01`.
-- feature-film organ
+- feature-film organ — **INTEGRATED:** source-bound measured reel/catalog plus read-only page/card; `MOVIE_EXECUTED` remains `NO` and `--go` remains inert. Cite `demon-muhl-film-organ-reference-20260830-01`.
 - next compression organ
 - missing-letter path
 **Cite:** `owner-language-drift-pr-1549-20260830-01` — restored exact owner phrases on items 19 and 20. Do not remint `demon-pick-pfc-model-load-20260830-01`.
