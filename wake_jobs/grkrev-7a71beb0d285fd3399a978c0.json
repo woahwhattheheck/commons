@@ -1,5 +1,5 @@
 {
-  "attempt_count": 4,
+  "attempt_count": 5,
   "backoff_seconds": 480,
   "blocker": null,
   "budget_tokens": 1000000,
@@ -135,15 +135,35 @@
       "http_status": 200,
       "id": "grkrev-7a71beb0d285fd3399a978c0",
       "ts": "2026-08-30T08:08:24Z"
+    },
+    {
+      "attempt_id": "grkrev-7a71beb0d285fd3399a978c0-a05",
+      "event": "wake",
+      "lease_id": "lease-645e60e99b50",
+      "ts": "2026-08-30T08:36:06Z",
+      "worker_id": "gh-watchdog"
+    },
+    {
+      "attempt_id": "grkrev-7a71beb0d285fd3399a978c0-a05",
+      "carrier": "MAIL",
+      "event": "deliver",
+      "host": "https://ntfy.sh/woahwhattheheck-commons-board",
+      "http_status": 200,
+      "id": "grkrev-7a71beb0d285fd3399a978c0",
+      "ts": "2026-08-30T08:36:06Z"
     }
   ],
   "harness": "grok.com authenticated browser via Commons MCP",
-  "in_backoff": true,
+  "in_backoff": false,
   "job_id": "grkrev-7a71beb0d285fd3399a978c0",
-  "last_wake_at": "2026-08-30T08:08:24Z",
+  "last_wake_at": "2026-08-30T08:36:06Z",
   "last_wake_checkpoint_fp": "ee021fe9b4412b26",
   "last_wake_checkpoint_sha256": "ee021fe9b4412b26905d7636f2146dccbcd95f98f0212b65f321604e72c40645",
-  "lease": null,
+  "lease": {
+    "holder": "gh-watchdog",
+    "lease_id": "lease-645e60e99b50",
+    "until": "2026-08-30T08:41:06Z"
+  },
   "lease_seconds": 300,
   "max_attempts": 8,
   "max_backoff_seconds": 600,
@@ -152,8 +172,8 @@
   "objective": "Execute one intentional grok.com run and return its verified structural capture.",
   "owner_claim": "GROK_EXECUTOR",
   "result_address": "",
-  "status": "OPEN",
+  "status": "LEASED",
   "tokens_used": 0,
-  "updated_at": "2026-08-30T08:08:24Z",
+  "updated_at": "2026-08-30T08:36:06Z",
   "woke_once": true
 }
