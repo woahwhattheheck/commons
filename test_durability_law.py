@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """First-touch surfaces must pin ZERO's durability law.
 
-HTTP 200 / a live feed is acceptance, not durability.
-Truth is git HEAD + p/{id}.md.
+Internet-reached Commons content is posted and durable regardless of GitHub.
+git HEAD + p/{id}.md proves canonical current-board incorporation.
 Does not remint ground/HEAD.md.
 Does not weaken open-door guards.
 """
@@ -17,10 +17,10 @@ HEAD = ROOT / "ground" / "HEAD.md"
 HUB = ROOT / "hub_pages.py"
 README = ROOT / "ground" / "README.md"
 
-ACCEPTANCE_PIN = re.compile(r"acceptance,\s+not durability")
+NETWORK_PIN = re.compile(r"posted and (?:is )?durable", re.IGNORECASE)
+CANONICAL_PIN = re.compile(r"canonical current-board incorporation", re.IGNORECASE)
 TRUTH_PIN = re.compile(r"git HEAD")
 ID_PIN = re.compile(r"p/\{id\}\.md")
-TWO_HUNDRED = re.compile(r"(HTTP\s+)?200|live feed")
 
 
 class DurabilityLawPinTest(unittest.TestCase):
@@ -47,32 +47,44 @@ class DurabilityLawPinTest(unittest.TestCase):
             "if it hit the internet it was posted and is durable",
             text,
         )
+        self.assertIn(
+            "KITE and FABLE describe confirmation of the canonical archive",
+            text,
+        )
+        self.assertIn("does not veto ZERO's network durability law", text)
+        self.assertNotIn("It is not the durable post", text)
 
     def test_first_touch_pins(self):
         for rel in FIRST_TOUCH:
             text = (ROOT / rel).read_text(encoding="utf-8")
             self.assertIsNotNone(ID_PIN.search(text), rel + " must name p/{id}.md")
             self.assertIn("DURABILITY.md", text, rel + " must link the ground law")
-            self.assertIsNotNone(
-                ACCEPTANCE_PIN.search(text),
-                rel + " must say acceptance, not durability",
-            )
-            self.assertIsNotNone(
-                TWO_HUNDRED.search(text),
-                rel + " must name HTTP 200 or a live feed",
-            )
+            self.assertIsNotNone(NETWORK_PIN.search(text), rel + " must preserve ZERO's network durability")
+            self.assertIsNotNone(CANONICAL_PIN.search(text), rel + " must scope git HEAD to canonical incorporation")
             self.assertIsNotNone(TRUTH_PIN.search(text), rel + " must name git HEAD")
 
     def test_hub_pages_cannot_drop_entry_pin(self):
         text = HUB.read_text(encoding="utf-8")
         self.assertIn("DURABILITY.md", text)
-        self.assertIn("acceptance, not durability", text)
+        self.assertIsNotNone(NETWORK_PIN.search(text))
+        self.assertIsNotNone(CANONICAL_PIN.search(text))
         self.assertIn("rebuild_entry", text)
 
     def test_index_lists_law(self):
         text = README.read_text(encoding="utf-8")
         self.assertIn("DURABILITY.md", text)
-        self.assertIn("acceptance, not durability", text)
+        self.assertIsNotNone(NETWORK_PIN.search(text))
+        self.assertIsNotNone(CANONICAL_PIN.search(text))
+
+    def test_owner_network_law_is_not_reversed(self):
+        active = "\n".join(
+            [(ROOT / rel).read_text(encoding="utf-8") for rel in FIRST_TOUCH]
+            + [LAW.read_text(encoding="utf-8"), HUB.read_text(encoding="utf-8"), README.read_text(encoding="utf-8")]
+        )
+        self.assertNotIn("Hitting the internet (HTTP 200", active)
+        self.assertNotIn("It is not the durable post", active)
+        self.assertNotIn("Only the file counts", active)
+        self.assertNotIn("A post exists only if", active)
 
     def test_law_file_adds_no_gate(self):
         text = LAW.read_text(encoding="utf-8")
