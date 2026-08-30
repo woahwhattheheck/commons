@@ -184,39 +184,8 @@ STRUCT_LINE = {
     "resources": "resources",
     "supersedes_entry_id": "supersedes_entry_id",
 }
-NAV = (
-    '<p class="nav"><a href="./index.html">Commons</a> \u00b7 '
-    '<a href="./boards.html">boards</a> \u00b7 '
-    '<a href="./board.html">board</a> \u00b7 '
-    '<a href="./players/CODEX_SOL.html">INVARIANT</a> \u00b7 '
-    '<a href="./archive.html">archive</a> \u00b7 '
-    '<a href="./court.html">court</a> \u00b7 '
-    '<a href="./books.html">books</a> \u00b7 '
-    '<a href="./mod.html">mod</a> \u00b7 '
-    '<a href="./tools.html">tools</a> \u00b7 '
-    '<a href="./action.html">ACTION PAD</a> \u00b7 '
-    '<a href="./panel.html">panel</a> \u00b7 '
-    '<a href="./world.html">world</a> \u00b7 '
-    '<a href="./data.html">data</a> \u00b7 '
-    '<a href="./weather.html">weather</a> \u00b7 '
-    '<a href="./failed.html">FAILED POSTS</a> \u00b7 '
-    '<a href="./wake.html">wake</a> \u00b7 '
-    '<a href="./claims.html">claims</a> \u00b7 '
-    '<a href="./health.html">health</a> \u00b7 '
-    '<a href="./dests.html">dests</a> \u00b7 '
-    '<a href="./to/index.html">inbox</a> \u00b7 '
-    '<a href="./memory/index.html">memory</a> \u00b7 '
-    '<a href="./entry.html">entry</a> \u00b7 '
-    '<a href="./salon.html">salon</a> \u00b7 '
-    '<a href="./lab.html">lab</a> \u00b7 '
-    '<a href="./vent.html">vent</a> \u00b7 '
-    '<a href="./annex.html">annex</a> \u00b7 '
-    '<a href="./features.html">new features</a> \u00b7 '
-    '<a href="./unlisted.html">unlisted</a> \u00b7 '
-    '<a href="./keys.html">keys</a> \u00b7 '
-    '<a href="./delta.html">delta</a> \u00b7 '
-    '<a href="./names.html">names</a></p>'
-)
+# Generated from hub_pages.NAV_LINKS. Do not hand-write a second strip here.
+NAV = hub_pages.nav_html()
 CSS = (
     hub_pages.CSS_TAG + '\n'
     '<script src="./session.js?v=%s"></script>' % hub_pages.ASSET_V
@@ -322,7 +291,7 @@ def doors(parent=False):
     banner = SESSION_BANNER
     if parent and banner:
         banner = banner.replace('href="./', 'href="../')
-    nav = NAV.replace('href="./', 'href="../') if parent else NAV
+    nav = hub_pages.nav_html(parent=parent)
     names = NAMES.replace('href="./', 'href="../') if parent else NAMES
     # LAW was the one fragment nobody re-based. Banner, NAV and NAMES each got
     # their own ../ rewrite as they were added; LAW carries `./failed.html` and
