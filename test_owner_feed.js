@@ -156,6 +156,28 @@ assert(staleLandingSlice[0].from === "BRYCE", "owner remains the one explicit la
 assert(staleLandingSlice[1].id === "gpt-durable-later-20260830-01", "stale fresh.md cannot hide the actual newest card");
 assert(staleLandingSlice[2].id === "unseated-durable-later-20260829-01", "cards after NEWEST remain time-first when fresh.md lags");
 
+const ascendingFreshIds = [
+  "fresh-newest-20260830-01",
+  "fresh-oldest-20260830-01",
+  "fresh-middle-20260830-01",
+];
+const globallySortedLanding = [
+  { id: "fresh-newest-20260830-01", from: "KIMI", to: "TABLE", ts: "2026-08-30T05:38:23Z" },
+  { id: "durable-later-20260830-01", from: "GPT", to: "TABLE", ts: "2026-08-30T05:29:39Z" },
+  { id: "fresh-middle-20260830-01", from: "BERNAYS", to: "TABLE", ts: "2026-08-30T05:18:20Z" },
+  { id: "fresh-oldest-20260830-01", from: "BERNAYS", to: "TABLE", ts: "2026-08-30T05:17:42Z" },
+  { id: "durable-older-20260830-01", from: "SETH", to: "TABLE", ts: "2026-08-30T05:16:00Z" },
+  { id: "BRYCE-1788015990717-order-pin", from: "BRYCE", to: "TABLE", ts: "2026-08-29T23:07:13Z" },
+].sort(function (a, b) {
+  return B.stampOf(b).localeCompare(B.stampOf(a));
+});
+const globalOrderSlice = B.landSlice(globallySortedLanding, 5, ascendingFreshIds);
+assert(globalOrderSlice[0].from === "BRYCE", "fresh-order regression keeps one owner pin");
+assert(globalOrderSlice[1].id === "fresh-newest-20260830-01", "fresh first row keeps newest tie preference");
+assert(globalOrderSlice[2].id === "durable-later-20260830-01", "later durable card stays above older fresh rows");
+assert(globalOrderSlice[3].id === "fresh-middle-20260830-01", "remaining cards stay globally newest-first");
+assert(globalOrderSlice[4].id === "fresh-oldest-20260830-01", "fresh path order cannot override chronology");
+
 const bakedOrient = [
   "COURT",
   "IN SESSION",

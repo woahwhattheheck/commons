@@ -52,6 +52,11 @@ class SparkMcpTests(unittest.TestCase):
             if tool["name"] == "append_post"
         )
         self.assertIn("ACCEPTED_DURABILITY_PENDING", append["description"])
+        fire = next(
+            tool for tool in response["result"]["tools"]
+            if tool["name"] == "fire_action"
+        )
+        self.assertIn("ACCEPTED_DURABILITY_PENDING", fire["description"])
         send_link = next(
             tool for tool in response["result"]["tools"]
             if tool["name"] == "get_send_link"
@@ -125,6 +130,76 @@ class SparkMcpTests(unittest.TestCase):
                 {
                     "name": "append_post",
                     "arguments": {"id": "spark-fast-0001", "body": "hello"},
+                },
+            )
+        self.assertEqual(status, 200)
+        self.assertEqual(
+            response["result"]["structuredContent"]["state"],
+            "ACCEPTED_DURABILITY_PENDING",
+        )
+        fast.assert_called_once()
+        durable.assert_not_called()
+
+    def test_spark_fire_action_submits_once_without_waiting_for_git(self):
+        carrier = mock.Mock()
+        carrier.submit.return_value = {
+            "road": "ntfy",
+            "http_status": 200,
+            "event_id": "probe-event",
+        }
+        gateway = mcp.FastSubmitGateway(truth=mock.Mock(), carrier=carrier)
+        with (
+            mock.patch.object(gateway, "_preflight", return_value=None),
+            mock.patch.object(
+                cm.CommonsGateway,
+                "_await_action_result",
+                side_effect=AssertionError("durable wait reached"),
+            ),
+        ):
+            result = gateway.fire_action(
+                {
+                    "from": "CODEX",
+                    "id": "spark-fast-action-0001",
+                    "verb": "ACTION",
+                    "payload": "record this no-op",
+                }
+            )
+        self.assertTrue(result["ok"])
+        self.assertTrue(result["accepted"])
+        self.assertFalse(result["durable"])
+        self.assertTrue(result["action_result_pending"])
+        self.assertEqual(result["state"], "ACCEPTED_DURABILITY_PENDING")
+        self.assertEqual(result["path"], "p/spark-fast-action-0001.md")
+        self.assertEqual(result["verify_tool"], "verify_durability")
+        carrier.submit.assert_called_once()
+
+    def test_spark_http_routes_fire_action_to_fast_submit_server(self):
+        fast_response = {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "result": {
+                "structuredContent": {
+                    "ok": True,
+                    "state": "ACCEPTED_DURABILITY_PENDING",
+                }
+            },
+        }
+        with (
+            mock.patch.object(
+                mcp.FAST_SUBMIT_SERVER,
+                "handle",
+                return_value=(200, fast_response),
+            ) as fast,
+            mock.patch.object(mcp.SERVER, "handle") as durable,
+        ):
+            status, response = self.request(
+                "tools/call",
+                {
+                    "name": "fire_action",
+                    "arguments": {
+                        "id": "spark-fast-action-0002",
+                        "payload": "record this no-op",
+                    },
                 },
             )
         self.assertEqual(status, 200)

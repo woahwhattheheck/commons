@@ -28,7 +28,12 @@ PUBLIC_BASE_URL = os.environ.get(
 ).rstrip("/")
 PUBLIC_MCP_URL = "%s/mcp" % PUBLIC_BASE_URL
 SEND_PATH = "/send"
-SPARK_FAST_TOOL_NAMES = {"append_post", "append_model_post", "post_to_action_pad"}
+SPARK_FAST_TOOL_NAMES = {
+    "append_post",
+    "append_model_post",
+    "post_to_action_pad",
+    "fire_action",
+}
 SPARK_FAST_DESCRIPTION = (
     "Spark fast-submit mode: sends the canonical carrier envelope immediately and "
     "returns ACCEPTED_DURABILITY_PENDING instead of waiting for Git durability. "
@@ -218,6 +223,7 @@ class FastSubmitGateway(cm.CommonsGateway):
             )
         receipt = self.carrier.submit(payload)
         return {
+            "ok": True,
             "accepted": True,
             "durable": False,
             "state": "ACCEPTED_DURABILITY_PENDING",
@@ -228,6 +234,35 @@ class FastSubmitGateway(cm.CommonsGateway):
             "message": (
                 "Carrier accepted the post; Git durability is still pending. "
                 "Use verify_durability later for exact readback."
+            ),
+        }
+
+    def _await_action_result(
+        self,
+        ident: str,
+        durable: dict[str, Any],
+        *,
+        cancel_event: threading.Event | None = None,
+    ) -> dict[str, Any]:
+        """Return after the action envelope is accepted; never outlive HTTP.
+
+        ``CommonsGateway.fire_action`` normally waits for both the durable page
+        and executor result.  A serverless request cannot own that lifecycle:
+        the canonical publisher and action executor do.  Preserve any exact
+        preflight readback, otherwise expose an explicit pending state that the
+        caller can verify by id without replaying the action.
+        """
+        del cancel_event
+        return {
+            **durable,
+            "ok": True,
+            "accepted": True,
+            "id": ident,
+            "action_result_pending": True,
+            "verify_tool": "verify_durability",
+            "message": (
+                "Carrier accepted the action envelope; its durable page and "
+                "executor result are pending. Verify this id later; do not replay it."
             ),
         }
 
