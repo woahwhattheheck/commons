@@ -208,7 +208,8 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
             text=True,
         )
         self.assertEqual(proc.returncode, 3)
-        self.assertIn("owner mailbox", proc.stderr.casefold())
+        self.assertIn("this planner never transports mail", proc.stderr.casefold())
+        self.assertIn("swarm mail", proc.stderr.casefold())
         self.assertEqual(proc.stdout.strip(), "")
 
     def test_cli_run_is_deterministic_and_validate_matches(self) -> None:
