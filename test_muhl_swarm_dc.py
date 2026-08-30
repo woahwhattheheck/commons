@@ -17,6 +17,8 @@ from muhl_swarm_dc import (
     CITE,
     DO_NOT_REMINT,
     EXPECTED_QUEUE,
+    ADDITIVE_CANARY_FIELDS,
+    ADDITIVE_CANARY_NAME,
     LIVE_PKG,
     build_fixture,
     classify,
@@ -179,9 +181,11 @@ class TestMuhlSwarmDc(unittest.TestCase):
         for name, state in EXPECTED_QUEUE.items():
             self.assertEqual(row["queue_states"].get(name), state, name)
         self.assertEqual(
-            row["queue_states"].get("seth-live-dc-new-ring-20260830-01.json"),
+            row["queue_states"].get(ADDITIVE_CANARY_NAME),
             "PACKET_OK",
         )
+        for key, expected in ADDITIVE_CANARY_FIELDS.items():
+            self.assertEqual(row["additive_canary"].get(key), expected, key)
         unexpected = {
             name: state
             for name, state in row["queue_states"].items()
@@ -195,6 +199,26 @@ class TestMuhlSwarmDc(unittest.TestCase):
         self.assertEqual(classify(row)["state"], "INTEGRATED")
         for rel in DO_NOT_REMINT:
             self.assertTrue(os.path.isfile(os.path.join(ROOT, rel)), rel)
+
+    def test_classify_rejects_invalid_additive_queue_states(self):
+        for state in ("NOT_LANDED", "UNMEASURED"):
+            row = measure_root(ROOT)
+            row["queue_states"] = dict(row["queue_states"])
+            row["queue_states"]["later-invalid.json"] = state
+            self.assertEqual(classify(row)["state"], "NOT_LANDED", state)
+
+    def test_classify_rejects_additive_canary_retargeting(self):
+        for key, value in (
+            ("work_id", "forged-work"),
+            ("dest", "cell"),
+            ("rise_mask", "0100000000000000"),
+            ("host_inference", True),
+            ("titan", "WRITTEN"),
+        ):
+            row = measure_root(ROOT)
+            row["additive_canary"] = dict(row["additive_canary"])
+            row["additive_canary"][key] = value
+            self.assertEqual(classify(row)["state"], "NOT_LANDED", key)
 
     def test_do_not_remint_named_paths_untouched_in_this_tree(self):
         # These files must remain on disk. Repair work adds swarm-dc, it does
