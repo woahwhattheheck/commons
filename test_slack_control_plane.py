@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+"""Contract for Slack control-plane routing. Not a send gate."""
+
+from __future__ import annotations
+
+import json
+import unittest
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parent
+CARD = ROOT / "ground" / "SLACK_CONTROL_PLANE.md"
+MAP = ROOT / "ground" / "SLACK_CONTROL_PLANE.json"
+SLACK = ROOT / "ground" / "SLACK.md"
+CURSOR_RULE = ROOT / ".cursor" / "rules" / "commons.mdc"
+NEEDS_BRYCE = ROOT / "ground" / "NEEDS_BRYCE.md"
+
+CHANNELS = {
+    "control_plane": "C0BRGMDQB6G",
+    "work": "C0BS7AZ4BSL",
+    "owner_exclusive": "C0BRX6EV739",
+    "ideas": "C0BRB1M9RL6",
+    "announcements": "C0BS7ASU1LY",
+}
+
+
+class SlackControlPlaneTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.card = CARD.read_text(encoding="utf-8")
+        self.slack = SLACK.read_text(encoding="utf-8")
+        self.rule = CURSOR_RULE.read_text(encoding="utf-8")
+        self.needs = NEEDS_BRYCE.read_text(encoding="utf-8")
+        self.mp = json.loads(MAP.read_text(encoding="utf-8"))
+
+    def test_map_pins_measured_channel_ids_and_roles(self) -> None:
+        self.assertEqual(self.mp["id"], "cursor-slack-control-plane-20260830-01")
+        self.assertEqual(self.mp["control_plane_not"], "universal_logfile")
+        self.assertIs(self.mp["gate"], False)
+        self.assertIs(self.mp["duplicate_full_receipts"], False)
+        self.assertEqual(self.mp["work_channel_shape"]["top_level_posts_per_lane"], 1)
+        self.assertEqual(self.mp["work_channel_shape"]["replies"], "thread")
+        for role, channel_id in CHANNELS.items():
+            self.assertEqual(self.mp["channels"][role]["id"], channel_id)
+            self.assertIn(channel_id, self.card)
+            self.assertIn(
+                "https://tokenjunkielabs.slack.com/archives/" + channel_id,
+                self.card,
+            )
+
+    def test_commons_is_control_plane_not_logfile(self) -> None:
+        lowered = self.card.lower()
+        self.assertIn("control plane", lowered)
+        self.assertIn("not the universal logfile", lowered)
+        self.assertIn("start/claim", lowered)
+        self.assertIn("implementation", lowered)
+        self.assertIn("test output", lowered)
+        self.assertIn("ci triage", lowered)
+        self.assertIn("review discussion", lowered)
+        self.assertIn("do not duplicate full receipts", lowered)
+
+    def test_work_channel_gets_implementation_and_one_root(self) -> None:
+        work = self.mp["channels"]["work"]
+        self.assertEqual(work["id"], "C0BS7AZ4BSL")
+        self.assertEqual(
+            work["move"],
+            ["implementation", "test_output", "ci_triage", "review_discussion"],
+        )
+        self.assertIn("One top-level post per lane", self.card)
+        self.assertIn("Replies stay threaded", self.card)
+
+    def test_needs_bryce_stays_owner_exclusive(self) -> None:
+        owner = self.mp["channels"]["owner_exclusive"]
+        self.assertEqual(owner["id"], "C0BRX6EV739")
+        self.assertEqual(owner["law"], "ground/NEEDS_BRYCE.md")
+        self.assertIn("C0BRX6EV739", self.needs)
+        self.assertIn("OWNER_BLOCKER", self.needs)
+        self.assertIn("only exact, genuinely owner-exclusive", self.card.lower())
+
+    def test_convention_never_becomes_an_ingest_gate(self) -> None:
+        lowered = self.card.lower()
+        self.assertIn("routing convention", lowered)
+        self.assertIn("not a commons admission rule or gate", lowered)
+        self.assertIn("missing metadata never", lowered)
+        self.assertIn("open door", lowered)
+
+    def test_existing_slack_card_and_cursor_rule_point_here(self) -> None:
+        self.assertIn("SLACK_CONTROL_PLANE.md", self.slack)
+        self.assertIn("control plane", self.slack.lower())
+        self.assertIn("not the universal logfile", self.rule.lower())
+        self.assertIn("SLACK_CONTROL_PLANE.md", self.rule)
+
+
+if __name__ == "__main__":
+    unittest.main()

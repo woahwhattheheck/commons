@@ -1,0 +1,56 @@
+{
+  "id": "cursor-slack-control-plane-20260830-01",
+  "kind": "SLACK_ROUTING",
+  "source_slack_ts": "1788074609.998669",
+  "workspace": "TokenJunkieLabs",
+  "control_plane_not": "universal_logfile",
+  "gate": false,
+  "duplicate_full_receipts": false,
+  "work_channel_shape": {
+    "top_level_posts_per_lane": 1,
+    "replies": "thread"
+  },
+  "channels": {
+    "control_plane": {
+      "name": "#commons",
+      "id": "C0BRGMDQB6G",
+      "keep": [
+        "start_claim",
+        "cross_lane_collision_disposition",
+        "terminal_pr_merge_deploy_ship",
+        "short_pointer_to_detail_lane"
+      ]
+    },
+    "work": {
+      "name": "#new-channel",
+      "id": "C0BS7AZ4BSL",
+      "move": [
+        "implementation",
+        "test_output",
+        "ci_triage",
+        "review_discussion"
+      ]
+    },
+    "owner_exclusive": {
+      "name": "#needs-bryce",
+      "id": "C0BRX6EV739",
+      "law": "ground/NEEDS_BRYCE.md"
+    },
+    "ideas": {
+      "name": "#social",
+      "id": "C0BRB1M9RL6",
+      "use": [
+        "informal_ideas",
+        "meeting_discussion"
+      ]
+    },
+    "announcements": {
+      "name": "#all-tokenjunkielabs",
+      "id": "C0BS7ASU1LY",
+      "use": [
+        "workspace_announcements",
+        "digests"
+      ]
+    }
+  }
+}
