@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 import pathlib
+import subprocess
 import unittest
 from unittest import mock
 
@@ -63,6 +64,55 @@ class MainRangeTests(unittest.TestCase):
         source = (ROOT / "host/main_range.py").read_text(encoding="utf-8")
         self.assertNotIn("PROTECTED_", source)
         self.assertNotIn("protected_paths", source)
+
+    def test_each_result_carries_frozen_range_provenance(self):
+        def run(command, **_kwargs):
+            return subprocess.CompletedProcess(
+                command,
+                1 if "open_door_guard.py" in command else 0,
+                stdout="finding\n",
+            )
+
+        paths = ["docs/changed.md"]
+        with mock.patch.object(main_range.subprocess, "run", side_effect=run):
+            results, ok = main_range.run_batch("base123", "head456", paths)
+
+        self.assertFalse(ok)
+        self.assertEqual(len(results), 4)
+        for result in results:
+            provenance = result["provenance"]
+            self.assertEqual(provenance["base"], "base123")
+            self.assertEqual(provenance["head"], "head456")
+            self.assertEqual(provenance["range"], "base123..head456")
+        open_door = next(row for row in results if row["name"] == "open-door")
+        self.assertEqual(open_door["provenance"]["scope"], "FROZEN_RANGE")
+        self.assertEqual(open_door["provenance"]["attribution"], "DIRECT_RANGE")
+
+    def test_unrelated_snapshot_failure_stays_unattributed(self):
+        provenance = main_range.finding_provenance(
+            "imports",
+            1,
+            "base",
+            "head",
+            ["docs/unrelated.md"],
+        )
+        self.assertEqual(provenance["scope"], "FROZEN_HEAD")
+        self.assertEqual(provenance["candidate_paths"], [])
+        self.assertEqual(
+            provenance["attribution"],
+            "NO_DIRECT_RANGE_PROVENANCE",
+        )
+
+    def test_snapshot_failure_with_named_input_is_direct(self):
+        provenance = main_range.finding_provenance(
+            "imports",
+            1,
+            "base",
+            "head",
+            ["hub_pages.py", "docs/unrelated.md"],
+        )
+        self.assertEqual(provenance["candidate_paths"], ["hub_pages.py"])
+        self.assertEqual(provenance["attribution"], "DIRECT_RANGE")
 
     def test_observer_push_contracts_distinguish_reporting_from_coalescing(self):
         names = ("import-check.yml", "muhlnickel-spec-guard.yml", "path-manifest.yml", "record-guard.yml")
