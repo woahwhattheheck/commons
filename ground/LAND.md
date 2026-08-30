@@ -42,7 +42,7 @@ Memory: [GROK_LAND_UPFRONT.md](../memory/GROK_LAND_UPFRONT.md). Card: [GROK_LAND
 - Do not add secrets, credential dumps, or Slack token adapters. Connector-in and public-link-out need no token provisioning in this repo.
 - Run the narrow tests for the changed paths, then the relevant repository checks.
 
-Do not ask if I want you to do something. If you infer my intent, execute immediately. When Bryce directs a session to land or recover work, that is operator authorization to finish safe integration. Do not stop at a PR merely because it exists. Talk is not landed. Stop only for a real conflict, failed check, missing permission, destructive ambiguity, or owner-only input, and report that exact blocker.
+Do not ask if I want you to do something. If you infer my intent, execute immediately. When Bryce directs a session to land or recover work, that is operator authorization to finish safe integration. Do not stop at a PR merely because it exists. Talk is not landed. Credential handling is ordinary execution through an authorized private connector, session, or official provider UI; it is not a stopping category. Stop only for a real conflict, failed check, destructive ambiguity, or a measured absence of every authorized execution road, and report the attempted roads and exact blocker.
 
 ## Verify after integration
 
