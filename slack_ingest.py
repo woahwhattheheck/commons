@@ -50,7 +50,7 @@ GITHUB_API = "https://api.github.com"
 ID_RE = re.compile(r"^slack-(\d+)-(\d+)$")
 DECLARED_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 OBSERVED_SLACK_RE = re.compile(
-    r"^slack:[A-Z0-9]+:(\d+(?:\.\d+)?):\d+$"
+    r"^slack:(?:[A-Z0-9_-]+:)?[A-Z0-9_-]+:(\d+(?:\.\d+)?):[^:]+$"
 )
 CLAIM_RE = re.compile(r"[^A-Z0-9_]+")
 SENDER_DISCLOSURE_RE = re.compile(
@@ -88,9 +88,9 @@ PROJECTION_FIELDS = {
 STRUCTURAL_SUBTYPES = {
     "channel_join",
     "channel_leave",
-    "message_deleted",
-    "tombstone",
 }
+EDIT_SUBTYPES = {"message_changed"}
+DELETE_SUBTYPES = {"message_deleted", "tombstone"}
 
 
 class IngestError(RuntimeError):
@@ -148,6 +148,54 @@ def declared_id(fields: dict[str, str]) -> str:
 
 def record_id(native_ts: str, fields: dict[str, str]) -> str:
     return declared_id(fields) or canonical_id(native_ts)
+
+
+def event_source(message: dict[str, Any]) -> dict[str, Any]:
+    """Return the current message payload carried by a Slack event."""
+    subtype = str(message.get("subtype") or "")
+    if subtype in EDIT_SUBTYPES and isinstance(message.get("message"), dict):
+        return message["message"]
+    if subtype in DELETE_SUBTYPES and isinstance(message.get("previous_message"), dict):
+        return message["previous_message"]
+    return message
+
+
+def event_native_ts(message: dict[str, Any]) -> str:
+    """Return the stable native message timestamp across every revision."""
+    subtype = str(message.get("subtype") or "")
+    source = event_source(message)
+    if subtype in DELETE_SUBTYPES:
+        value = message.get("deleted_ts") or source.get("ts")
+    else:
+        value = source.get("ts") or message.get("ts")
+    raw = str(value or "").strip()
+    _decimal_ts(raw)
+    return raw
+
+
+def event_clock(message: dict[str, Any]) -> str:
+    """Return the append-only revision clock, not merely the original ts."""
+    source = event_source(message)
+    edited = source.get("edited") if isinstance(source.get("edited"), dict) else {}
+    value = edited.get("ts") or message.get("event_ts") or message.get("ts")
+    raw = str(value or "").strip()
+    _decimal_ts(raw)
+    return raw
+
+
+def event_revision(message: dict[str, Any]) -> str:
+    subtype = str(message.get("subtype") or "")
+    source = event_source(message)
+    if subtype in EDIT_SUBTYPES or subtype in DELETE_SUBTYPES or source.get("edited"):
+        return event_clock(message)
+    return "1"
+
+
+def revision_record_id(base_id: str, revision: str) -> str:
+    if revision == "1":
+        return base_id
+    suffix = "-r" + revision.replace(".", "-")
+    return base_id[: 80 - len(suffix)].rstrip("._-") + suffix
 
 
 def iso_from_slack(native_ts: str) -> str:
@@ -227,10 +275,14 @@ def source_claim(message: dict[str, Any], fields: dict[str, str]) -> str:
 
 
 def should_skip(message: dict[str, Any]) -> bool:
-    text = str(message.get("text") or "")
+    subtype = str(message.get("subtype") or "")
+    if subtype in DELETE_SUBTYPES:
+        return False
+    source = event_source(message)
+    text = str(source.get("text") or "")
     if not text.strip():
         return True
-    if str(message.get("subtype") or "") in STRUCTURAL_SUBTYPES:
+    if subtype in STRUCTURAL_SUBTYPES:
         return True
     fields = leading_fields(text)
     return legal_claim(fields.get("from", "")) == "COMMONS_SLACK_MIRROR"
@@ -239,23 +291,43 @@ def should_skip(message: dict[str, Any]) -> bool:
 def issue_record(message: dict[str, Any], channel_id: str | None = None) -> IssueRecord:
     if should_skip(message):
         raise IngestError("event is not mirrorable")
-    text = str(message.get("text") or "")
-    native_ts = str(message.get("ts") or "").strip()
+    subtype = str(message.get("subtype") or "")
+    source = event_source(message)
+    deleted = subtype in DELETE_SUBTYPES
+    text = str(source.get("text") or "")
+    native_ts = event_native_ts(message)
+    clock = event_clock(message)
+    revision = event_revision(message)
     channel_id = str(channel_id or message.get("channel") or CHANNEL_ID).strip() or CHANNEL_ID
+    workspace_id = str(
+        message.get("team_id")
+        or message.get("team")
+        or message.get("_team_id")
+        or "UNKNOWN_WORKSPACE"
+    ).strip()
     fields = leading_fields(text)
-    ident = record_id(native_ts, fields)
-    stamp = iso_from_slack(native_ts)
-    src = source_claim(message, fields)
+    base_id = record_id(native_ts, fields)
+    ident = revision_record_id(base_id, revision)
+    stamp = iso_from_slack(clock)
+    src = source_claim(source, fields)
     dest = legal_claim(fields.get("to", "TABLE"))
-    thread_ts = str(message.get("thread_ts") or "").strip()
+    thread_ts = str(source.get("thread_ts") or message.get("thread_ts") or "").strip()
     is_reply = bool(thread_ts and thread_ts != native_ts)
-    kind = "slack_thread_reply" if is_reply else "slack_message"
+    if deleted:
+        kind = "slack_message_delete"
+    elif revision != "1":
+        kind = "slack_message_edit"
+    else:
+        kind = "slack_thread_reply" if is_reply else "slack_message"
     parent_id = str(message.get("_thread_canonical_id") or "").strip()
-    target = (
-        parent_id
-        if is_reply and DECLARED_ID_RE.fullmatch(parent_id)
-        else canonical_id(thread_ts) if is_reply else ""
-    )
+    if revision != "1":
+        target = base_id
+    else:
+        target = (
+            parent_id
+            if is_reply and DECLARED_ID_RE.fullmatch(parent_id)
+            else canonical_id(thread_ts) if is_reply else ""
+        )
 
     envelope: list[tuple[str, str]] = [
         ("from", src),
@@ -263,12 +335,17 @@ def issue_record(message: dict[str, Any], channel_id: str | None = None) -> Issu
         ("id", ident),
         ("ts", stamp),
         ("carrier", "slack-connector"),
-        ("observed_event", "slack:%s:%s:1" % (channel_id, native_ts)),
+        (
+            "observed_event",
+            "slack:%s:%s:%s:%s" % (workspace_id, channel_id, native_ts, revision),
+        ),
         # Preserve Slack's native event clock as carrier provenance. ``ts`` is
         # the canonical ISO projection used for ordering; ``carrier_ts`` is
         # the exact value needed to reconcile the source event without
         # reconstructing it from a rounded or reformatted timestamp.
         ("carrier_ts", native_ts),
+        ("event_ts", clock),
+        ("revision", revision),
     ]
     if target:
         envelope.append(("target", target))
@@ -278,7 +355,8 @@ def issue_record(message: dict[str, Any], channel_id: str | None = None) -> Issu
         if value:
             envelope.append((key, value))
     header = "\n".join("%s: %s" % pair for pair in envelope)
-    body = header + "\n---\n" + text
+    payload = "Slack message deleted; prior canonical record remains immutable.\n" if deleted else text
+    body = header + "\n---\n" + payload
     return IssueRecord(native_ts=native_ts, title=ident, body=body, kind=kind, target=target)
 
 
@@ -340,6 +418,10 @@ def high_water(posts_dir: Path = POSTS_DIR) -> str:
                 value = _decimal_ts(observed.group(1))
                 if value > newest:
                     newest = value
+            if fields.get("event_ts"):
+                value = _decimal_ts(fields["event_ts"])
+                if value > newest:
+                    newest = value
     return format(newest, "f")
 
 
@@ -371,12 +453,12 @@ def collect_events(
     replies_fetch: Callable[[str, str], dict[str, Any]],
 ) -> list[dict[str, Any]]:
     """Exhaust top-level history and every advertised reply thread."""
-    events: dict[str, dict[str, Any]] = {}
+    events: dict[tuple[str, str], dict[str, Any]] = {}
     roots = list(paged(history_fetch))
     for root in roots:
         ts = str(root.get("ts") or "")
         if ts:
-            events[ts] = root
+            events[(event_clock(root), event_native_ts(root))] = root
         if not ts or not int(root.get("reply_count") or 0):
             continue
         root_id = record_id(ts, leading_fields(str(root.get("text") or "")))
@@ -385,8 +467,8 @@ def collect_events(
             if reply_ts and reply_ts != ts:
                 reply = dict(reply)
                 reply["_thread_canonical_id"] = root_id
-                events[reply_ts] = reply
-    return [events[key] for key in sorted(events, key=_decimal_ts)]
+                events[(event_clock(reply), event_native_ts(reply))] = reply
+    return [events[key] for key in sorted(events, key=lambda item: (_decimal_ts(item[0]), _decimal_ts(item[1])))]
 
 
 class SlackClient:
@@ -396,6 +478,7 @@ class SlackClient:
         self.token = token.strip()
         self.channel_id = channel_id
         self._users: dict[str, str] = {}
+        self._team_id = ""
 
     def call(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
         query = urllib.parse.urlencode(params)
@@ -452,6 +535,17 @@ class SlackClient:
                 break
         return ids or [self.channel_id]
 
+    def workspace_id(self) -> str:
+        if self._team_id:
+            return self._team_id
+        configured = os.environ.get("COMMONS_SLACK_TEAM_ID", "").strip()
+        if configured:
+            self._team_id = configured
+            return configured
+        response = self.call("auth.test", {})
+        self._team_id = str(response.get("team_id") or "UNKNOWN_WORKSPACE")
+        return self._team_id
+
     def events(self, oldest: str) -> list[dict[str, Any]]:
         """Return new events while still discovering replies on old roots.
 
@@ -464,10 +558,14 @@ class SlackClient:
         Default: every public/private channel the bot is in. Not an allowlist.
         """
         floor = _decimal_ts(oldest)
+        team_id = self.workspace_id()
         collected: list[dict[str, Any]] = []
         for channel_id in self.list_channel_ids():
-            collected.extend(self._events_for_channel(channel_id, floor))
-        collected.sort(key=lambda event: _decimal_ts(event.get("ts")))
+            events = self._events_for_channel(channel_id, floor)
+            for event in events:
+                event["_team_id"] = team_id
+            collected.extend(events)
+        collected.sort(key=lambda event: (_decimal_ts(event_clock(event)), _decimal_ts(event_native_ts(event))))
         return collected
 
     def _events_for_channel(self, channel_id: str, floor: "Decimal") -> list[dict[str, Any]]:
@@ -493,7 +591,7 @@ class SlackClient:
         events = [
             event
             for event in collect_events(history, replies)
-            if _decimal_ts(event.get("ts")) > floor
+            if _decimal_ts(event_clock(event)) > floor
         ]
         for event in events:
             event["channel"] = channel_id
@@ -570,7 +668,10 @@ def load_events(path: Path) -> list[dict[str, Any]]:
 def plan(events: Iterable[dict[str, Any]], posts_dir: Path = POSTS_DIR) -> list[IssueRecord]:
     out: list[IssueRecord] = []
     seen: dict[str, IssueRecord] = {}
-    for event in sorted(events, key=lambda item: _decimal_ts(item.get("ts"))):
+    for event in sorted(
+        events,
+        key=lambda item: (_decimal_ts(event_clock(item)), _decimal_ts(event_native_ts(item))),
+    ):
         if should_skip(event):
             continue
         record = issue_record(event)
