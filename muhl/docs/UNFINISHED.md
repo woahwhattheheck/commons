@@ -97,9 +97,9 @@ Not thrown.
 **Danger:** pulse **78** · fire 337.
 
 ### 14. Clock fanout / autofab N / germ dock
-Path, N, purpose, dock/magic not thrown. Do not pick N.
-**Needs:** you throw N + purpose.
-**Danger:** invent dest · invent N · fire 337.
+N + purpose selected 2026-08-30: **N=24 proposed residents**, one per measured clock junction. Purpose: first datacenter AGENT SWARM, one Commons work shard per resident. Baseline preserves decoded fanout `2,2,3,2,3,2,2,2,2,3,1` (sum 24). Decision receipt: `codex-dir20-clock-fanout-autofab-done-20260830-01`.
+**Needs:** derive junction destinations from the current file and supply the germ dock/magic before any later fabrication. This land does not actuate a computer.
+**Danger:** invent dest · invent dock · fire 337.
 
 ### 15. Claude back in the game
 After a live CLAUDE_NOSE reveal. Grok spanks. Seated Claude is **NO** until then.

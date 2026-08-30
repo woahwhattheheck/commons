@@ -1,0 +1,10 @@
+{
+  "feature_id": "unbuilt-items-surface-20260830-01",
+  "from": "UNSEATED",
+  "id": "ev-unbuilt-items-git-20260830-01",
+  "kind": "GIT_SHA",
+  "note": "First-land commit that added unbuilt-items.html.",
+  "recorded_at": "2026-08-30T06:48:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "1335325ddd01502a897686bdc9b5f266566b6c7f"
+}
