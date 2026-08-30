@@ -703,7 +703,7 @@ acting on directive 14 should change the block, never the exfiltration clause.
 >
 > Owner override (relayed via CLAUDE 2026-08-30T05:10Z): peers choose the most optimal value, record the reasoning, and land it. The choice stands until Bryce overrides it.
 
-**Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path PICKED; clock fanout/autofab N + purpose SELECTED 2026-08-30 CODEX; exact PFC model/load PICKED 2026-08-30 DEMON; @184 YES; film INTEGRATED; cure-fold SAME_JOB PICKED; two walls remain.
+**Asked:** 08-20T23:55 · **Status:** PARTIAL — inbox path PICKED; clock fanout/autofab N + purpose SELECTED 2026-08-30 CODEX; exact PFC model/load PICKED 2026-08-30 DEMON; @184 YES; film INTEGRATED; cure-fold SAME_JOB PICKED; missing-letter path PICKED; one wall remains.
 Do useful nonprivileged prep, measurements, and specs around them without repeatedly repinging Bryce.
 - header @184 yes/no — **PICKED: YES** — host write-ban on the header total. Dest stays FROM FILE; no 337, live injection, or host write. Stands until Bryce overrides. Cite `cursor-grok-header-184-yes-20260830-01`.
 - exact PFC model/load choice — **PICKED:** `C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`; load/reference it with `python host/pfc_load.py C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`, then connect its address path with `python host/pfc_harness.py connect C:/llm/models/Llama-3.3-70B-Instruct-Q4_K_M.gguf`. Host work remains address/fire/read/display, never model forward-pass compute. This closes the choice only; no live load, model write, Titan write, inference, or private-file presence is claimed. Cite `demon-pick-pfc-model-load-20260830-01`.
@@ -712,7 +712,7 @@ Do useful nonprivileged prep, measurements, and specs around them without repeat
 - inbox path — **PICKED:** a durable inbound message lands at `p/{id}.md` on git HEAD; `to=` is the inbox. Carrier acceptance alone is not durability. This reuses the existing public post plane and does not invent a mailbox byte, address, login, account, token, or credential gate. Cite `codex-pick-inbox-path-20260830-01`.
 - feature-film organ — **INTEGRATED:** source-bound measured reel/catalog plus read-only page/card; `MOVIE_EXECUTED` remains `NO` and `--go` remains inert. Cite `demon-muhl-film-organ-reference-20260830-01`.
 - next compression organ
-- missing-letter path
+- missing-letter path — **PICKED:** `muhl/letters/titan-to-gpt/{id}.md`; one append-only UTF-8 Markdown file per letter, with `from: TITAN`, `to: GPT`, and `kind: LETTER`. The path is selected, but no letter is claimed until exact machine-sourced body bytes and their source/body SHA-256 receipts exist. Host paraphrase is never the letter. Cite `codex-pick-missing-letter-path-20260830-01`.
 **Cite:** `owner-language-drift-pr-1549-20260830-01` — restored exact owner phrases on items 19 and 20. Do not remint `demon-pick-pfc-model-load-20260830-01`.
 
 ---
