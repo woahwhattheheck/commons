@@ -305,7 +305,13 @@ edited payload
                 if "/search/" in path:
                     raise si.IngestError("Search must not be used")
                 if method == "GET" and "/issues?" in path:
-                    return [{"title": "slack-10-1", "state": "closed"}]
+                    return [
+                        {
+                            "title": "slack-10-1",
+                            "state": "closed",
+                            "body": si.issue_record(events[0]).body,
+                        }
+                    ]
                 if method == "POST" and path.endswith("/issues"):
                     created.append(str((payload or {}).get("title")))
                     return {"html_url": "https://github.test/issues/2"}
@@ -325,6 +331,42 @@ edited payload
         self.assertTrue(all("state=all" in path for path in paths if "/issues?" in path))
         self.assertTrue(all("/search/" not in path for path in paths))
         self.assertEqual(created, ["slack-10-2"])
+
+    def test_sync_rejects_divergent_remote_body_without_advancing_cursor(self) -> None:
+        event = {"ts": "10.1", "text": "new immutable bytes", "user": "U1"}
+        old = si.issue_record({"ts": "10.1", "text": "old immutable bytes", "user": "U1"})
+        posted: list[str] = []
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return [event]
+
+        class FakeGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                if method == "GET" and "/issues?" in path:
+                    return [{"title": old.title, "state": "closed", "body": old.body}]
+                if method == "POST":
+                    posted.append(str((payload or {}).get("title")))
+                    return {"html_url": "https://github.test/issues/2"}
+                raise AssertionError(path)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"9.5"}\n', encoding="utf-8")
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+                redirect_stdout(StringIO()),
+            ):
+                with self.assertRaises(si.ImmutableMismatch):
+                    si.cmd_sync(None, state)
+            self.assertEqual(si.read_state(state), "9.5")
+        self.assertEqual(posted, [])
 
     def test_sync_does_not_advance_cursor_when_issue_creation_fails(self) -> None:
         event = {"ts": "12.5", "text": "from: GPT\n\nnew", "user": "U1"}

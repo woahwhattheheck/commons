@@ -395,22 +395,28 @@ def verify_existing(path: Path, record: IssueRecord, channel_id: str = CHANNEL_I
     if not path.is_file():
         return False
     raw = path.read_text(encoding="utf-8")
+    verify_existing_body(raw, record, str(path))
+    return True
+
+
+def verify_existing_body(raw: str, record: IssueRecord, source: str) -> None:
+    """Reject a remote or local canonical id whose immutable body differs."""
     body = _record_body(raw)
     incoming = _record_body(record.body)
     # The canonical writer normalizes the final newline; source bytes otherwise stay.
     if body.rstrip("\n") == incoming.rstrip("\n"):
-        return True
+        return
     # A later republish may redact private spans. Same event, original stays.
     if exact_body_redact.same_after_redact(body, incoming):
-        return True
+        return
     # A Git-first record may already be canonical before its Slack copy is
     # observed.  Accept only a measured carrier-normalized exact body match;
     # never rewrite it and never collapse a real divergence into a receipt.
     if declared_id(leading_fields(incoming)):
         projected = canonical_projection_body(incoming)
         if projected.rstrip("\n") == body.rstrip("\n"):
-            return True
-    raise ImmutableMismatch("existing %s differs from Slack event %s" % (path, record.native_ts))
+            return
+    raise ImmutableMismatch("existing %s differs from Slack event %s" % (source, record.native_ts))
 
 
 def high_water(posts_dir: Path = POSTS_DIR) -> str:
@@ -694,7 +700,7 @@ class GitHubClient:
             raise IngestError("GITHUB_TOKEN is required for sync")
         self.token = token.strip()
         self.repository = repository
-        self._board_titles: set[str] | None = None
+        self._board_issue_bodies: dict[str, list[str]] | None = None
 
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
@@ -716,16 +722,16 @@ class GitHubClient:
             detail = exc.read().decode("utf-8", "replace")
             raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
 
-    def board_titles(self) -> set[str]:
-        """Load all ``label=board`` issue titles once via the Issues list API.
+    def board_issue_bodies(self) -> dict[str, list[str]]:
+        """Load all ``label=board`` issue bodies once via the Issues list API.
 
         Per-record ``/search/issues`` is not used: Search has a 30/min cap and
         whole-workspace Slack ingest may plan more than 30 records in one run.
         """
-        cached = getattr(self, "_board_titles", None)
+        cached = getattr(self, "_board_issue_bodies", None)
         if cached is not None:
             return cached
-        titles: set[str] = set()
+        issues: dict[str, list[str]] = {}
         page = 1
         while True:
             query = urllib.parse.urlencode(
@@ -744,15 +750,24 @@ class GitHubClient:
                     continue
                 title = str(item.get("title") or "")
                 if title:
-                    titles.add(title)
+                    issues.setdefault(title, []).append(str(item.get("body") or ""))
             if len(data) < 100:
                 break
             page += 1
-        self._board_titles = titles
-        return titles
+        self._board_issue_bodies = issues
+        return issues
 
-    def issue_exists(self, title: str) -> bool:
-        return title in self.board_titles()
+    def issue_exists(self, record: IssueRecord) -> bool:
+        bodies = self.board_issue_bodies().get(record.title)
+        if bodies is None:
+            return False
+        for index, body in enumerate(bodies, start=1):
+            verify_existing_body(
+                body,
+                record,
+                "GitHub board issue %s[%d]" % (record.title, index),
+            )
+        return True
 
     def create_issue(self, record: IssueRecord) -> str:
         data = self.request(
@@ -760,9 +775,9 @@ class GitHubClient:
             "/repos/%s/issues" % self.repository,
             record.as_issue(),
         )
-        titles = getattr(self, "_board_titles", None)
-        if titles is not None:
-            titles.add(record.title)
+        issues = getattr(self, "_board_issue_bodies", None)
+        if issues is not None:
+            issues.setdefault(record.title, []).append(record.body)
         return str(data.get("html_url") or "")
 
 
@@ -833,7 +848,7 @@ def cmd_sync(
     records = plan(events)
     created: list[dict[str, str]] = []
     for record in records:
-        if github.issue_exists(record.title):
+        if github.issue_exists(record):
             continue
         created.append({"id": record.title, "issue": github.create_issue(record)})
     cursor = max(
