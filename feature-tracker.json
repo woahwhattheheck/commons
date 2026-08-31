@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 36
+    "TESTED": 39
   },
   "features": [
     {
@@ -1321,6 +1321,70 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Oregon BrewLab sample/report reconciliation LIMS: a 120-row synthetic fixture makes 96 valid submissions READY once, holds 24 with FORM_CONTAINER_MISMATCH, DUPLICATE_ID, WARM_MICRO_VDK, and INSUFFICIENT_VOLUME, binds ASBC method/version/unit/source hashes to catalog 657d60b6f1e1b8ccfe4358950fa93cf21fd741fc714fd3444a6fe2d030f44613, notifies status on a simulated adapter, and keeps reports STAGED until a named human. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "oregon_brewlab_sample_report.py",
+        "oregon-brewlab-sample-report-reconciliation-lims.js",
+        "oregon-brewlab-sample-report-reconciliation-lims.html",
+        "test_oregon_brewlab_sample_report.py",
+        "revenue/oregon_brewlab_sample_report/contract.json",
+        "revenue/oregon_brewlab_sample_report/receipt.json",
+        "revenue/oregon_brewlab_sample_report/receipt.md",
+        "revenue/oregon_brewlab_sample_report/fixture.json",
+        "p/cursor-oregon-brewlab-sample-report-20260831-01.md",
+        "features/registry/oregon-brewlab-sample-report-reconciliation-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "oregon_brewlab_sample_report.py",
+        "oregon-brewlab-sample-report-reconciliation-lims.js",
+        "oregon-brewlab-sample-report-reconciliation-lims.html",
+        "test_oregon_brewlab_sample_report.py",
+        "revenue/oregon_brewlab_sample_report/contract.json",
+        "revenue/oregon_brewlab_sample_report/receipt.json",
+        "revenue/oregon_brewlab_sample_report/receipt.md",
+        "revenue/oregon_brewlab_sample_report/fixture.json",
+        "p/cursor-oregon-brewlab-sample-report-20260831-01.md",
+        "features/registry/oregon-brewlab-sample-report-reconciliation-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "oregon-brewlab-sample-report-reconciliation-lims-01.json",
+      "id": "oregon-brewlab-sample-report-reconciliation-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Oregon BrewLab sample/report reconciliation LIMS",
+      "next_gap": "Buyer-owned order schema, container photos, and de-identified golden round trip after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "oregon-brewlab-sample-report-reconciliation-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "oregon-brewlab-sample-report-reconciliation-lims.html",
+        "revenue/oregon_brewlab_sample_report/contract.json",
+        "p/cursor-oregon-brewlab-sample-report-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_oregon_brewlab_sample_report.py",
+        "oregon_brewlab_sample_report.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "OrganaBio multi-site donor-to-CoA federation: a synthetic five-site fixture seeds 240 valid collections producing 1,200 aliquots, blocks 24 consent/eligibility failures with exact reasons, recalls 40 donors for exactly 200 aliquots, keeps one immutable donor-to-vial lineage per vial, isolates OBA-SITE- namespaces including EXL- to SDG, reproduces CoA digest 3f3f9ab647c6d7e34cce48fc002c86150b3d83285b78de30e5ff25a0a845db01, replays with zero new records, and blocks material disposition until a named human. Adapters stay simulated.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1374,6 +1438,68 @@
       "test_paths": [
         "test_organabio_multisite_donor_coa.py",
         "organabio_multisite_donor_coa.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Paragon B6\u2013B20 biodiesel sample-to-CoA LIMS: a frozen 120-row synthetic manifest accessions 100 valid blends once, holds 5 incomplete CoC, 5 incomplete SDS, 5 duplicate IDs, and 5 OOS, matches signed golden values/units/qualifiers/report fields/source hashes, replays with zero new accessions, and requires a named human before CoA release. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "paragon_biodiesel_sample_coa.py",
+        "paragon-biodiesel-sample-coa-lims.js",
+        "paragon-biodiesel-sample-coa-lims.html",
+        "test_paragon_biodiesel_sample_coa.py",
+        "revenue/paragon_biodiesel_sample_coa/contract.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.md",
+        "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md",
+        "features/registry/paragon-biodiesel-sample-coa-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "paragon_biodiesel_sample_coa.py",
+        "paragon-biodiesel-sample-coa-lims.js",
+        "paragon-biodiesel-sample-coa-lims.html",
+        "test_paragon_biodiesel_sample_coa.py",
+        "revenue/paragon_biodiesel_sample_coa/contract.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.md",
+        "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md",
+        "features/registry/paragon-biodiesel-sample-coa-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "paragon-biodiesel-sample-coa-lims-01.json",
+      "id": "paragon-biodiesel-sample-coa-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Paragon B6\u2013B20 biodiesel sample-to-CoA LIMS",
+      "next_gap": "Buyer-owned CoC/SDS schema, D7467 method map, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "paragon-biodiesel-sample-coa-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "paragon-biodiesel-sample-coa-lims.html",
+        "revenue/paragon_biodiesel_sample_coa/contract.json",
+        "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_paragon_biodiesel_sample_coa.py",
+        "paragon_biodiesel_sample_coa.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1989,6 +2115,70 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Savant FE8 order-to-report LIMS: a 100-row synthetic Test Authorization Form plus SDS fixture accessions 80 valid FE8 jobs once, holds 20 with MISSING_SDS, MISSING_METADATA, DUPLICATE_ID, and INVALID_METHOD, schedules only documented rows, binds instrument/QC values and report digest a5853f7e35e396bdd9843053f3f45c14d4a340945996977db0b478921c0941fa, and denies autonomous release. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "savant_fe8_order_report.py",
+        "savant-fe8-order-report-lims.js",
+        "savant-fe8-order-report-lims.html",
+        "test_savant_fe8_order_report.py",
+        "revenue/savant_fe8_order_report/contract.json",
+        "revenue/savant_fe8_order_report/receipt.json",
+        "revenue/savant_fe8_order_report/receipt.md",
+        "revenue/savant_fe8_order_report/fixture.json",
+        "p/cursor-savant-fe8-order-report-lims-20260831-01.md",
+        "features/registry/savant-fe8-order-report-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "savant_fe8_order_report.py",
+        "savant-fe8-order-report-lims.js",
+        "savant-fe8-order-report-lims.html",
+        "test_savant_fe8_order_report.py",
+        "revenue/savant_fe8_order_report/contract.json",
+        "revenue/savant_fe8_order_report/receipt.json",
+        "revenue/savant_fe8_order_report/receipt.md",
+        "revenue/savant_fe8_order_report/fixture.json",
+        "p/cursor-savant-fe8-order-report-lims-20260831-01.md",
+        "features/registry/savant-fe8-order-report-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "savant-fe8-order-report-lims-01.json",
+      "id": "savant-fe8-order-report-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Savant FE8 order-to-report LIMS",
+      "next_gap": "Buyer-owned TAF/SDS schema, FE8 method revision, and de-identified golden instrument files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "savant-fe8-order-report-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "savant-fe8-order-report-lims.html",
+        "revenue/savant_fe8_order_report/contract.json",
+        "p/cursor-savant-fe8-order-report-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_savant_fe8_order_report.py",
+        "savant_fe8_order_report.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2503,7 +2693,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 42,
+  "n_features": 45,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
