@@ -3,11 +3,13 @@
 from __future__ import annotations
 
 import json
+import os
 import tempfile
 import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
+from unittest import mock
 
 import discord_ingest as di
 
@@ -104,6 +106,95 @@ class DiscordIngestTests(unittest.TestCase):
             payload = json.loads(buf.getvalue())
             self.assertEqual(payload["title"], "discord-42")
             self.assertEqual(payload["labels"], ["board"])
+
+    def test_issue_exists_lists_open_board_issues_once(self) -> None:
+        client = di.GitHubClient("token")
+        paths: list[str] = []
+
+        def request(method: str, path: str, payload: dict | None = None):
+            paths.append(path)
+            self.assertNotIn("/search/", path)
+            if path.endswith("&page=1"):
+                return [{"title": "keep-me"}] + [{"title": "page1-%s" % i} for i in range(99)]
+            if path.endswith("&page=2"):
+                return [{"title": "last-open"}, {"title": "pr-title", "pull_request": {"url": "https://x"}}]
+            raise AssertionError(path)
+
+        client.request = request  # type: ignore[method-assign]
+        self.assertTrue(client.issue_exists("keep-me"))
+        self.assertTrue(client.issue_exists("last-open"))
+        self.assertFalse(client.issue_exists("pr-title"))
+        self.assertFalse(client.issue_exists("missing"))
+        self.assertEqual(sum(1 for path in paths if "/issues?" in path), 2)
+        self.assertTrue(all("/search/" not in path for path in paths))
+
+    def test_sync_creates_missing_titles_without_search(self) -> None:
+        events = [
+            {"id": "1", "channel_id": "c", "content": "hello one", "author": {"username": "a"}},
+            {"id": "2", "channel_id": "c", "content": "hello two", "author": {"username": "a"}},
+            {"id": "3", "channel_id": "c", "content": "hello three", "author": {"username": "a"}},
+        ]
+        paths: list[str] = []
+        created: list[str] = []
+
+        class FakeDiscord:
+            def __init__(self, _token: str) -> None:
+                pass
+
+            def events(self) -> list[dict]:
+                return events
+
+        class FakeGitHub(di.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                paths.append(path)
+                if "/search/" in path:
+                    raise di.IngestError("GitHub HTTP 403: search must not be used")
+                if method == "GET" and "/issues?" in path:
+                    return [{"title": "discord-1"}]
+                if method == "POST" and path.endswith("/issues"):
+                    created.append(str((payload or {}).get("title")))
+                    return {"html_url": "https://github.test/issues/9"}
+                raise AssertionError(path)
+
+        buf = StringIO()
+        with (
+            mock.patch.object(di, "DiscordClient", FakeDiscord),
+            mock.patch.object(di, "GitHubClient", FakeGitHub),
+            mock.patch.dict(os.environ, {"DISCORD_BOT_TOKEN": "d", "GITHUB_TOKEN": "g"}),
+            redirect_stdout(buf),
+        ):
+            code = di.cmd_sync()
+        self.assertEqual(code, 0)
+        self.assertTrue(all("/search/" not in path for path in paths))
+        self.assertEqual(sum(1 for path in paths if "/issues?" in path), 1)
+        self.assertEqual(created, ["discord-2", "discord-3"])
+        payload = json.loads(buf.getvalue())
+        self.assertEqual(payload["planned"], 3)
+        self.assertEqual([row["id"] for row in payload["created"]], ["discord-2", "discord-3"])
+
+    def test_github_403_rate_limit_still_fails_closed(self) -> None:
+        class FakeDiscord:
+            def __init__(self, _token: str) -> None:
+                pass
+
+            def events(self) -> list[dict]:
+                return [{"id": "1", "channel_id": "c", "content": "hello", "author": {"username": "a"}}]
+
+        class FakeGitHub(di.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                raise di.IngestError(
+                    'GitHub HTTP 403: {"message": "API rate limit exceeded for installation."}'
+                )
+
+        with (
+            mock.patch.object(di, "DiscordClient", FakeDiscord),
+            mock.patch.object(di, "GitHubClient", FakeGitHub),
+            mock.patch.dict(os.environ, {"DISCORD_BOT_TOKEN": "d", "GITHUB_TOKEN": "g"}),
+        ):
+            with self.assertRaises(di.IngestError) as ctx:
+                di.cmd_sync()
+        self.assertIn("403", str(ctx.exception))
+        self.assertIn("rate limit exceeded for installation", str(ctx.exception))
 
 
 if __name__ == "__main__":
