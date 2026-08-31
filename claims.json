@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 34,
+  "n": 35,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+      "from": "CODEX_SOL",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788213736299499",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-31T22:09:39Z",
+      "href": "./p/codex-commons-data-corpus-alias-index-activation-20260831-01.html"
     },
     {
       "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
