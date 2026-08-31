@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -113,6 +114,77 @@ class OpenWorkContract(unittest.TestCase):
         )
         self.assertEqual(row["class"], "DEAD_CLAIM")
         self.assertEqual(row["receipt"], "404")
+
+    def test_work_order_after_structural_window_is_not_omitted(self):
+        body = "\n".join(["context line %s" % index for index in range(20)])
+        parsed = ow.parse_structured_record(
+            "from: PEER\nid: delayed-marker-record-20260831-01\n\n---\n\n"
+            + body
+            + "\nWORK ORDER delayed-work-order-20260831-01\n"
+        )
+        self.assertIn("delayed-work-order-20260831-01", parsed["work_ids"])
+
+    def test_main_sha_pins_receipt_existence_to_git_tree(self):
+        tmp = tempfile.mkdtemp(prefix="open-work-sha-")
+        ident = "sha-pinned-receipt-20260831-01"
+        try:
+            subprocess.check_call(["git", "init", "-q"], cwd=tmp)
+            _write(os.path.join(tmp, "seed.txt"), "seed\n")
+            subprocess.check_call(["git", "add", "seed.txt"], cwd=tmp)
+            subprocess.check_call(
+                [
+                    "git",
+                    "-c",
+                    "user.name=Open Work Test",
+                    "-c",
+                    "user.email=open-work@example.invalid",
+                    "commit",
+                    "-q",
+                    "-m",
+                    "seed",
+                ],
+                cwd=tmp,
+            )
+            before = subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=tmp, text=True
+            ).strip()
+            _write(
+                os.path.join(tmp, "p", "%s.md" % ident),
+                "id: %s\n\n---\n\nWORK ORDER %s\n" % (ident, ident),
+            )
+            subprocess.check_call(["git", "add", "p/%s.md" % ident], cwd=tmp)
+            subprocess.check_call(
+                [
+                    "git",
+                    "-c",
+                    "user.name=Open Work Test",
+                    "-c",
+                    "user.email=open-work@example.invalid",
+                    "commit",
+                    "-q",
+                    "-m",
+                    "receipt",
+                ],
+                cwd=tmp,
+            )
+            after = subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=tmp, text=True
+            ).strip()
+
+            old_snapshot = ow.project(
+                tmp, before, extra={"work_ids": [ident]}
+            )
+            new_snapshot = ow.project(
+                tmp, after, extra={"work_ids": [ident]}
+            )
+            old_row = {item["id"]: item for item in old_snapshot["items"]}[ident]
+            new_row = {item["id"]: item for item in new_snapshot["items"]}[ident]
+            self.assertEqual(old_row["class"], "OPEN")
+            self.assertEqual(old_row["receipt"], "404")
+            self.assertEqual(new_row["class"], "LANDED")
+            self.assertEqual(new_row["receipt"], "p/%s.md" % ident)
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
 
     def test_current_work_points_at_sibling_projector(self):
         live = cw.project(
