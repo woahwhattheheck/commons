@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 5,
+ "n_open_prs": 4,
  "open_prs": [
   {
    "number": 6206,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6206",
    "base_freshness": {
     "base_sha": "9b0a8bb0f6b3926fdc2d0647bf53c8bb71699217",
-    "main_sha": "79efafe2440ad7db8521b6c695b814e7d53a9e0d",
+    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,23 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6456",
    "base_freshness": {
     "base_sha": "c930a520177ef6c5e9bdaab73c2d0fedbdace6df",
-    "main_sha": "79efafe2440ad7db8521b6c695b814e7d53a9e0d",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6460,
-   "author": "woahwhattheheck",
-   "title": "docs: reconcile Muhlnickel live engine contracts",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6460",
-   "base_freshness": {
-    "base_sha": "0b1f1a5f62b8693665230ce76f1c882fe18a149a",
-    "main_sha": "79efafe2440ad7db8521b6c695b814e7d53a9e0d",
+    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6459",
    "base_freshness": {
     "base_sha": "c930a520177ef6c5e9bdaab73c2d0fedbdace6df",
-    "main_sha": "79efafe2440ad7db8521b6c695b814e7d53a9e0d",
+    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -417,18 +401,18 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 6589,
+   "number": 6597,
    "author": "woahwhattheheck",
-   "title": "docs: preserve measured Muhlnickel contract evidence",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6589",
+   "title": "Login-free embassy handshake (AI Village one practice)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6597",
    "base_freshness": {
-    "base_sha": "6fcfeda03069c8eedbfb754e67fddf4667b404f1",
-    "main_sha": "79efafe2440ad7db8521b6c695b814e7d53a9e0d",
+    "base_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
+    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
-   "status": "PR_OPEN",
+   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
