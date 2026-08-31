@@ -1,0 +1,26 @@
+{
+  "id": "catering-deposit-rescue",
+  "title": "Catering deposit rescue demo",
+  "status": "SHIPPED",
+  "kind": "public_product_demo",
+  "paths": [
+    "catering-deposit-rescue.html",
+    "catering-deposit-rescue.js",
+    "revenue/catering_deposit_rescue/contract.json",
+    "revenue/catering_deposit_rescue/receipt.json",
+    "test_catering_deposit_rescue.js",
+    "p/codex-catering-deposit-rescue-20260831-01.md"
+  ],
+  "evidence": {
+    "command": "node test_catering_deposit_rescue.js",
+    "expected": "catering-deposit-rescue: 8 scenarios PASS",
+    "acceptance": "fixed-rule quote; replay-safe follow-up and inert deposit intent; explicit exception, conflict, crash/resume, and rollback receipts"
+  },
+  "commercial": {
+    "entry_usd": 199,
+    "proof_usd": 2500,
+    "cash_usd": 0
+  },
+  "open_door": true,
+  "requires_login": false
+}
