@@ -1074,7 +1074,7 @@ new file mode 100644
         self.assertIn("device_action_state.py preflight", board)
         self.assertIn("has_pending_device", board)
         self.assertNotIn("uses: ./.github/workflows/commons-device-executor.yml", board)
-        self.assertIn("runs-on: ubuntu-latest", board)
+        self.assertIn("runs-on: ubuntu-24.04-arm", board)
         self.assertIn("does not allocate the owner's self-hosted laptop runner", board)
         self.assertIn("needs.ingest.outputs.has_pending_device == 'true'", board)
 
