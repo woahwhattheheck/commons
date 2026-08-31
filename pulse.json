@@ -1,9 +1,10 @@
 {
   "seq": 1467,
-  "head": "e410371c4e6684f055a84582a393cce481031e94",
-  "ts": "2026-08-31T05:34:39Z",
+  "head": "345078021f2ca0403ce3181132e17e17628a4f6f",
+  "ts": "2026-08-31T05:38:17Z",
   "post_count": 9996,
   "newest": [
+    "lm-gtm-agent-brief-20260831-01",
     "publisher-recovery-trigger---ARM-sweep-2026-08-31",
     "slack-1788149084-678269",
     "slack-1788149116-321959",
@@ -12,8 +13,7 @@
     "slack-1788150457-140469",
     "slack-1788150467-467539",
     "slack-1788150561-001389",
-    "slack-1788150587-478579",
-    "slack-1788150634-599089"
+    "slack-1788150587-478579"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
