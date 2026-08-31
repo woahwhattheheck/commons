@@ -346,6 +346,18 @@ def test_live_tree_shape_and_golden():
             gtm.get("public_entrypoint") == "lm-gtm-index.html",
             gtm.get("public_entrypoint"),
         )
+    check("lm-gtm-hot-lane row", "lm-gtm-hot-lane-20260831-01" in by_id, sorted(by_id))
+    if "lm-gtm-hot-lane-20260831-01" in by_id:
+        hot = by_id["lm-gtm-hot-lane-20260831-01"]
+        check("lm-gtm-hot-lane source built", hot["source_status"] == "SOURCE_BUILT", hot)
+        check("lm-gtm-hot-lane tested", hot["test_status"] == "TESTED", hot)
+        check("lm-gtm-hot-lane live unmeasured", hot["live_status"] == "UNMEASURED", hot)
+        check("lm-gtm-hot-lane rollup tested", hot["rollup"] == "TESTED", hot)
+        check(
+            "lm-gtm-hot-lane door is the public entry",
+            hot.get("public_entrypoint") == "lm-gtm-index.html",
+            hot.get("public_entrypoint"),
+        )
     check("patent-products row", "patent-products-20260831-01" in by_id, sorted(by_id))
     if "patent-products-20260831-01" in by_id:
         pp = by_id["patent-products-20260831-01"]
@@ -375,6 +387,7 @@ def test_live_tree_shape_and_golden():
         page = open(html_path, encoding="utf-8").read()
         check("html title", "Feature tracker" in page)
         check("committed html includes patent-products", "patent-products-20260831-01" in page)
+        check("committed html includes lm-gtm-hot-lane", "lm-gtm-hot-lane-20260831-01" in page)
         check("html does not replace features.html law", "Do not remint" in open(os.path.join(ROOT, "ground", "FEATURES.md"), encoding="utf-8").read())
         check("features.html still a lane", os.path.isfile(os.path.join(ROOT, "features.html")))
     law = open(os.path.join(ROOT, "ground", "FEATURE_TRACKER.md"), encoding="utf-8").read()

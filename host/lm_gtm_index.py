@@ -9,6 +9,10 @@ append-only overlay of events that cite existing subject ids.
 It does not mint crm/, people/, contacts/, sales/, accounts, or deals.
 It does not rewrite website-people-email-book loop.json schema v2.
 Live send is refused. Cash stays USD 0 without payment evidence.
+
+Hot lane: `python3 host/lm_gtm_index.py hot` lists only actionable live
+rows. Occupancy (`claim` / `release`) is an overlay event on the owner
+field; it does not rewrite loop.json and is not an admission gate.
 """
 
 from __future__ import annotations
@@ -34,6 +38,19 @@ CANONICAL_CRM = "JOJO Revenue Recovery CRM / Revenue Pipeline"
 SUBJECT_RE = re.compile(r"^[A-Za-z0-9._-]{3,80}$")
 EVENT_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 EMAIL_AT_RE = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
+PHONE_RE = re.compile(r"(?:\+?1[\s.-])?(?:\(?\d{3}\)?[\s.-])\d{3}[\s.-]\d{4}")
+POINTER_TYPES = frozenset({"MATERIAL_REPLY", "SENT_AWAITING_REPLY", "VERIFIED_LEAD_UNSENT"})
+OCCUPANCY_TYPES = frozenset({"CLAIM", "RELEASE", "STEAL"})
+NOTE_TYPE = "NOTE"
+ALLOWED_EVENT_TYPES = POINTER_TYPES | OCCUPANCY_TYPES | {NOTE_TYPE}
+LIVE_ROLES = frozenset({"external_prospect", "inbound_contact"})
+HOLD_DECISIONS = frozenset({"HOLD_DO_NOT_RESEND", "HOLD_DO_NOT_CONTACT"})
+HOT_RANK = {
+    "material_reply": 0,
+    "sent_awaiting_reply": 1,
+    "ready_to_draft": 2,
+    "verified_lead_unsent": 3,
+}
 ROLE_ORDER = {
     "external_prospect": 0,
     "inbound_contact": 1,
@@ -60,6 +77,7 @@ ROW_KEYS = {
     "occupied_by",
     "overlay_event_ids",
     "cash_usd",
+    "person",
 }
 DOES_NOT_REPLACE = [
     "revenue/website_people_email_book",
@@ -78,6 +96,7 @@ COMPOSE = {
     "marketing_sales": "public research universe; Airtable remains canonical CRM",
     "outreach_receipts": "DNR / collision receipts; not a contact book",
     "swarm_mail": "public inbox manifest; private addresses stay off git",
+    "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; not a contact book",
 }
 
 
@@ -187,6 +206,7 @@ def _blank_row(subject_id: str, role: str) -> dict[str, Any]:
         "occupied_by": None,
         "overlay_event_ids": [],
         "cash_usd": 0,
+        "person": None,
     }
 
 
@@ -211,8 +231,56 @@ def _route_from(source: dict[str, Any], row: dict[str, Any]) -> None:
 
 
 def _assert_no_email_in_index_blob(blob: str) -> None:
+    _assert_no_pii_in_index_blob(blob)
+
+
+def _assert_no_pii_in_index_blob(blob: str) -> None:
     if EMAIL_AT_RE.search(blob):
         raise IndexError_("INDEX projection copied an email; keep emails in source ledgers")
+    if PHONE_RE.search(blob):
+        raise IndexError_("INDEX projection copied a phone number; keep phones in source ledgers")
+
+
+def _assert_clean_pointer_text(value: Any, label: str) -> None:
+    if value is None:
+        return
+    text = value if isinstance(value, str) else json.dumps(value)
+    if EMAIL_AT_RE.search(text):
+        raise IndexError_(f"{label} copied an email; keep emails in source ledgers")
+    if PHONE_RE.search(text):
+        raise IndexError_(f"{label} copied a phone number; keep phones in source ledgers")
+
+
+def hot_class(row: dict[str, Any]) -> str | None:
+    if row.get("role") not in LIVE_ROLES or not row.get("live"):
+        return None
+    decision = row.get("decision")
+    if decision == "MATERIAL_REPLY":
+        return "material_reply"
+    if row.get("dnr") or decision in HOLD_DECISIONS:
+        return None
+    if decision == "SENT_AWAITING_REPLY":
+        return "sent_awaiting_reply"
+    if decision == "READY_TO_DRAFT":
+        return "ready_to_draft"
+    if decision == "VERIFIED_LEAD_UNSENT":
+        return "verified_lead_unsent"
+    return None
+
+
+def hot_next_actions(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
+    built = build_index(paths)
+    ranked: list[dict[str, Any]] = []
+    for row in built["rows"]:
+        klass = hot_class(row)
+        if klass is None:
+            continue
+        item = dict(row)
+        item["hot_class"] = klass
+        item["hot_rank"] = HOT_RANK[klass]
+        ranked.append(item)
+    ranked.sort(key=lambda row: (row["hot_rank"], row["id"]))
+    return ranked
 
 
 def load_receipts(paths: dict[str, Path]) -> list[dict[str, Any]]:
@@ -257,7 +325,89 @@ def load_events(paths: dict[str, Path]) -> list[dict[str, Any]]:
         if event.get("transport") not in {None, "NONE"}:
             raise IndexError_(f"overlay event {event_id} claimed transport")
         parse_time(str(event.get("ts")))
+        etype = event.get("type") or NOTE_TYPE
+        if etype not in ALLOWED_EVENT_TYPES:
+            raise IndexError_(f"overlay event {event_id} has illegal type {etype!r}")
+        event["type"] = etype
+        _assert_clean_pointer_text(event.get("organization"), f"overlay event {event_id} organization")
+        _assert_clean_pointer_text(event.get("person"), f"overlay event {event_id} person")
+        _assert_clean_pointer_text(event.get("next_action"), f"overlay event {event_id} next_action")
+        _assert_clean_pointer_text(event.get("source_paths"), f"overlay event {event_id} source_paths")
+        if etype in POINTER_TYPES:
+            role = event.get("role")
+            if role not in LIVE_ROLES:
+                raise IndexError_(f"overlay event {event_id} cannot mint role {role!r}")
+            organization = event.get("organization")
+            if not isinstance(organization, str) or not organization.strip():
+                raise IndexError_(f"overlay event {event_id} missing organization pointer")
+            paths_value = event.get("source_paths")
+            if not isinstance(paths_value, list) or not paths_value or not all(isinstance(item, str) and item for item in paths_value):
+                raise IndexError_(f"overlay event {event_id} missing source_paths pointers")
+        if etype in OCCUPANCY_TYPES:
+            owner = event.get("owner") or event.get("from")
+            if not isinstance(owner, str) or not owner.strip():
+                raise IndexError_(f"overlay event {event_id} occupancy missing owner")
+            event["owner"] = owner.strip()
     return events
+
+
+def apply_overlay_events(subjects: dict[str, dict[str, Any]], events: list[dict[str, Any]]) -> None:
+    for event in events:
+        etype = event.get("type") or NOTE_TYPE
+        subject_id = event["subject_id"]
+        if etype in POINTER_TYPES:
+            existing = subjects.get(subject_id)
+            if existing is None:
+                existing = _blank_row(subject_id, str(event["role"]))
+                subjects[subject_id] = existing
+            row = existing
+            if row["role"] not in LIVE_ROLES:
+                raise IndexError_(f"overlay event cannot attach to {row['role']} {subject_id}")
+            if row["role"] == "inbound_contact" and event.get("role") == "external_prospect":
+                row["role"] = "external_prospect"
+                row["live"] = True
+            _touch(row, "lm_gtm_overlay", EVENTS_REL)
+            for path in event.get("source_paths") or []:
+                if path not in row["source_paths"]:
+                    row["source_paths"].append(path)
+            if event.get("organization") and not row["organization"]:
+                row["organization"] = event["organization"]
+            if event.get("person"):
+                row["person"] = event["person"]
+            if event.get("route_kind"):
+                row["route_kind"] = event["route_kind"]
+            if event.get("route_ref"):
+                row["route_ref"] = event["route_ref"]
+            if etype == "MATERIAL_REPLY":
+                row["decision"] = "MATERIAL_REPLY"
+                row["dnr"] = False
+                row["live"] = True
+            elif etype == "SENT_AWAITING_REPLY":
+                row["decision"] = "SENT_AWAITING_REPLY"
+                row["live"] = True
+                if event.get("dnr") is True or event.get("decision") in HOLD_DECISIONS | {"HARD_DO_NOT_RESEND"}:
+                    row["dnr"] = True
+            elif etype == "VERIFIED_LEAD_UNSENT":
+                row["decision"] = "VERIFIED_LEAD_UNSENT"
+                row["dnr"] = False
+                row["live"] = True
+            if event.get("next_action"):
+                row["next_action"] = event["next_action"]
+        else:
+            if subject_id not in subjects:
+                raise IndexError_(
+                    f"overlay event cites unknown subject {subject_id}; composer does not mint a contact book"
+                )
+            row = subjects[subject_id]
+            if row["role"] not in LIVE_ROLES:
+                raise IndexError_(f"overlay event cannot attach to {row['role']} {subject_id}")
+            _touch(row, "lm_gtm_overlay", EVENTS_REL)
+            if etype == "CLAIM" or etype == "STEAL":
+                row["owner"] = event.get("owner") or event.get("from") or "UNSEATED"
+            elif etype == "RELEASE":
+                row["owner"] = "UNSEATED"
+        if event["id"] not in row["overlay_event_ids"]:
+            row["overlay_event_ids"].append(event["id"])
 
 
 def compose_subjects(paths: dict[str, Path]) -> dict[str, dict[str, Any]]:
@@ -394,18 +544,7 @@ def compose_subjects(paths: dict[str, Path]) -> dict[str, dict[str, Any]]:
     mailbox["live"] = False
     subjects[mailbox["id"]] = mailbox
 
-    by_subject: dict[str, list[str]] = {}
-    for event in events:
-        by_subject.setdefault(event["subject_id"], []).append(event["id"])
-    for subject_id, event_ids in by_subject.items():
-        if subject_id not in subjects:
-            raise IndexError_(
-                f"overlay event cites unknown subject {subject_id}; composer does not mint a contact book"
-            )
-        row = subjects[subject_id]
-        if row["role"] not in {"external_prospect", "inbound_contact"}:
-            raise IndexError_(f"overlay event cannot attach to {row['role']} {subject_id}")
-        row["overlay_event_ids"] = list(event_ids)
+    apply_overlay_events(subjects, events)
 
     for row in subjects.values():
         if set(row) != ROW_KEYS:
@@ -446,6 +585,7 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
         key=lambda row: (ROLE_ORDER.get(row["role"], 99), row["id"]),
     )
     live_rows = [row for row in rows if row["live"]]
+    hot_rows = [row for row in rows if hot_class(row)]
     header = {
         "schema_version": SCHEMA_VERSION,
         "kind": KIND_HEADER,
@@ -457,6 +597,7 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
         "composed_at": composed_at(paths, events),
         "row_count": len(rows),
         "live_next_action_count": len(live_rows),
+        "hot_next_action_count": len(hot_rows),
         "cash_usd": 0,
     }
     truth = {
@@ -469,6 +610,7 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
             (pipeline.get("current") or {}).get("research_entities") or 0
         ),
         "overlay_events": len(events),
+        "hot_next_actions": len(hot_rows),
         "calls_booked": int((loop.get("truth") or {}).get("calls_booked") or 0),
         "transport_actions": 0,
         "cash_usd": 0,
@@ -493,19 +635,24 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
             "signoz": "external_prospect RESEARCH_REQUIRED from loop.json + candidates.json",
             "metaforms": "EXISTING_CRM_RECORD airtable:recWHbHxQoQfGhS0q; HOLD_DO_NOT_RESEND",
             "anythingllm-mintplex": "HOLD_DO_NOT_RESEND from receipts + loop.json",
+            "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 Attachment E reopen; no bid submitted",
+            "msp-integris": "EXISTING_CRM_RECORD airtable:recyxAWjUjrUY1Xln SENT/NO_REPLY/HARD_DO_NOT_RESEND",
         },
         "contract": {
             "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
             "read_state": "revenue/lm_gtm_index/state.json",
             "list_next": "python3 host/lm_gtm_index.py next",
+            "list_hot": "python3 host/lm_gtm_index.py hot",
             "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id>",
             "append_event": "python3 host/lm_gtm_index.py append-event --subject <existing-id> --id <new-event-id> --body <text>",
+            "claim": "python3 host/lm_gtm_index.py claim --subject <id> --owner <name>",
+            "release": "python3 host/lm_gtm_index.py release --subject <id> --owner <name>",
             "send": "illegal; exits 3",
         },
     }
     blob = "".join(json.dumps(item, sort_keys=True, ensure_ascii=False) + "\n" for item in [header, *rows])
-    _assert_no_email_in_index_blob(blob)
-    _assert_no_email_in_index_blob(canonical_text(state))
+    _assert_no_pii_in_index_blob(blob)
+    _assert_no_pii_in_index_blob(canonical_text(state))
     return {"header": header, "rows": rows, "state": state, "events": events, "blob": blob}
 
 
@@ -649,6 +796,7 @@ def append_event(
         "ts": stamp,
         "from": speaker or "UNSEATED",
         "body": text,
+        "type": NOTE_TYPE,
         "cash_usd": 0,
         "transport": "NONE",
     }
@@ -659,6 +807,138 @@ def append_event(
     return {"event": event, "index": written}
 
 
+def _occupancy_event_id(kind: str, subject_id: str, stamp: str) -> str:
+    compact = stamp.replace("-", "").replace(":", "")
+    slug = f"lm-gtm-{kind}-{subject_id}-{compact}"
+    if len(slug) > 80:
+        slug = f"lm-gtm-{kind}-{compact}"
+    slug = re.sub(r"[^A-Za-z0-9._-]", "-", slug)
+    if not EVENT_ID_RE.fullmatch(slug):
+        raise IndexError_(f"illegal overlay event id: {slug}")
+    return slug
+
+
+def _live_row(subject_id: str, paths: dict[str, Path]) -> dict[str, Any]:
+    built = build_index(paths)
+    row = next((item for item in built["rows"] if item["id"] == subject_id), None)
+    if row is None:
+        raise IndexError_(
+            f"unknown subject {subject_id!r}: composer does not mint a contact book"
+        )
+    if row["role"] not in LIVE_ROLES:
+        raise IndexError_(
+            f"{subject_id} is {row['role']}; occupancy cites live ledger subjects only"
+        )
+    return row
+
+
+def claim_subject(
+    *,
+    subject_id: str,
+    owner: str,
+    steal: bool = False,
+    ts: str | None = None,
+    paths: dict[str, Path] | None = None,
+) -> dict[str, Any]:
+    paths = paths or default_paths()
+    name = (owner or "").strip() or "UNSEATED"
+    if name == "UNSEATED":
+        raise IndexError_("occupancy claim needs a named owner; UNSEATED is empty occupancy")
+    row = _live_row(subject_id, paths)
+    current = row.get("owner") or "UNSEATED"
+    if current == name and not steal:
+        return {
+            "schema_version": SCHEMA_VERSION,
+            "kind": "LM_GTM_OCCUPANCY",
+            "status": "already_occupied",
+            "subject_id": subject_id,
+            "owner": name,
+            "steal": False,
+            "cash_usd": 0,
+            "transport": "NONE",
+        }
+    if current not in {"UNSEATED", name} and not steal:
+        raise IndexError_(
+            f"{subject_id} occupied by {current}; second occupancy fails closed without --steal"
+        )
+    stamp = ts or iso_z(dt.datetime.now(dt.timezone.utc))
+    parse_time(stamp)
+    etype = "STEAL" if steal and current not in {"UNSEATED", name} else "CLAIM"
+    event_id = _occupancy_event_id(etype.lower(), subject_id, stamp)
+    existing_ids = {event["id"] for event in load_events(paths)}
+    if event_id in existing_ids:
+        raise IndexError_(f"overlay event remint refused: {event_id}")
+    event = {
+        "schema_version": SCHEMA_VERSION,
+        "kind": KIND_EVENT,
+        "id": event_id,
+        "subject_id": subject_id,
+        "type": etype,
+        "ts": stamp,
+        "from": name,
+        "owner": name,
+        "body": f"{etype} occupancy on {subject_id}",
+        "cash_usd": 0,
+        "transport": "NONE",
+    }
+    events = load_events(paths)
+    events.append(event)
+    write_jsonl(paths["events"], events)
+    written = write_index(paths)
+    return {"event": event, "index": written, "status": "occupied", "owner": name}
+
+
+def release_subject(
+    *,
+    subject_id: str,
+    owner: str,
+    ts: str | None = None,
+    paths: dict[str, Path] | None = None,
+) -> dict[str, Any]:
+    paths = paths or default_paths()
+    name = (owner or "").strip() or "UNSEATED"
+    row = _live_row(subject_id, paths)
+    current = row.get("owner") or "UNSEATED"
+    if current == "UNSEATED":
+        return {
+            "schema_version": SCHEMA_VERSION,
+            "kind": "LM_GTM_OCCUPANCY",
+            "status": "already_released",
+            "subject_id": subject_id,
+            "owner": "UNSEATED",
+            "cash_usd": 0,
+            "transport": "NONE",
+        }
+    if name == "UNSEATED" or current != name:
+        raise IndexError_(
+            f"{subject_id} occupied by {current}; release fails closed for {name}"
+        )
+    stamp = ts or iso_z(dt.datetime.now(dt.timezone.utc))
+    parse_time(stamp)
+    event_id = _occupancy_event_id("release", subject_id, stamp)
+    existing_ids = {event["id"] for event in load_events(paths)}
+    if event_id in existing_ids:
+        raise IndexError_(f"overlay event remint refused: {event_id}")
+    event = {
+        "schema_version": SCHEMA_VERSION,
+        "kind": KIND_EVENT,
+        "id": event_id,
+        "subject_id": subject_id,
+        "type": "RELEASE",
+        "ts": stamp,
+        "from": name,
+        "owner": name,
+        "body": f"RELEASE occupancy on {subject_id}",
+        "cash_usd": 0,
+        "transport": "NONE",
+    }
+    events = load_events(paths)
+    events.append(event)
+    write_jsonl(paths["events"], events)
+    written = write_index(paths)
+    return {"event": event, "index": written, "status": "released", "owner": "UNSEATED"}
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -666,6 +946,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("write-index")
     sub.add_parser("snapshot")
     sub.add_parser("next")
+    sub.add_parser("hot")
     show = sub.add_parser("show")
     show.add_argument("subject")
     append = sub.add_parser("append-event")
@@ -674,6 +955,15 @@ def build_parser() -> argparse.ArgumentParser:
     append.add_argument("--body", required=True)
     append.add_argument("--from", dest="speaker", default="UNSEATED")
     append.add_argument("--ts")
+    occupy = sub.add_parser("claim")
+    occupy.add_argument("--subject", default="")
+    occupy.add_argument("--owner", default="")
+    occupy.add_argument("--steal", action="store_true")
+    occupy.add_argument("--ts")
+    release = sub.add_parser("release")
+    release.add_argument("--subject", required=True)
+    release.add_argument("--owner", required=True)
+    release.add_argument("--ts")
     return parser
 
 
@@ -693,6 +983,7 @@ def main(argv: list[str] | None = None) -> int:
             print(
                 "VALID "
                 f"{truth['live_next_actions']} live-next "
+                f"{truth.get('hot_next_actions', 0)} hot "
                 f"{truth['external_prospects']} prospects "
                 f"{truth['inbound_contacts']} inbound "
                 f"{truth['seller_context_rows']} seller-context "
@@ -710,6 +1001,12 @@ def main(argv: list[str] | None = None) -> int:
                 "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
             )
             return 0
+        if args.command == "hot":
+            rows = hot_next_actions()
+            sys.stdout.write(
+                "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
+            )
+            return 0
         if args.command == "show":
             print(canonical_text(show_subject(args.subject)), end="")
             return 0
@@ -722,6 +1019,25 @@ def main(argv: list[str] | None = None) -> int:
                 ts=args.ts,
             )
             print(canonical_text(result["event"]), end="")
+            return 0
+        if args.command == "claim":
+            if not str(args.subject or "").strip() or not str(args.owner or "").strip():
+                raise IndexError_("occupancy command needs --subject and --owner")
+            result = claim_subject(
+                subject_id=args.subject,
+                owner=args.owner,
+                steal=args.steal,
+                ts=args.ts,
+            )
+            print(canonical_text(result.get("event") or result), end="")
+            return 0
+        if args.command == "release":
+            result = release_subject(
+                subject_id=args.subject,
+                owner=args.owner,
+                ts=args.ts,
+            )
+            print(canonical_text(result.get("event") or result), end="")
             return 0
         raise IndexError_(f"unknown command {args.command}")
     except SendError as error:
