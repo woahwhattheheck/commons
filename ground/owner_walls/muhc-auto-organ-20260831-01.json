@@ -1,0 +1,35 @@
+{
+  "id": "demon-muhc-auto-organ-20260831-01",
+  "kind": "MUHC_AUTO_ORGAN_CONTRACT",
+  "schema_version": 1,
+  "source_base": "c9e18ec669c3a67bd52f185057e80832bf82d831",
+  "owner_wall": "next compression organ",
+  "measured_gap": {
+    "existing_container": "muhc.py",
+    "existing_benchmark": "fixed stack, fixed fold, optional caller-supplied evolve program",
+    "existing_explorer": "evolve.py uses a persistent cross-source ledger and scores entropy payloads rather than complete MUHC containers"
+  },
+  "implementation": {
+    "entrypoint": "host/muhc_auto.py",
+    "test": "test_muhc_auto.py",
+    "selector": "bounded deterministic beam search plus raw, stack, and fold candidates",
+    "tie_break": "smallest complete container bytes, then canonical candidate id",
+    "persistent_ledger": false
+  },
+  "required_proof": {
+    "complete_container_bytes_counted": true,
+    "every_accepted_candidate_decoded": true,
+    "every_accepted_candidate_source_sha_matched": true,
+    "corrupt_or_nonroundtripping_candidate_rejected": true,
+    "source_bound_search": true
+  },
+  "claims": {
+    "specific_source_compression_win": false,
+    "hardware_execution": false,
+    "external_delivery": false,
+    "revenue": false,
+    "profit": false
+  },
+  "commons_open_door_unchanged": true,
+  "grok_used": false
+}
