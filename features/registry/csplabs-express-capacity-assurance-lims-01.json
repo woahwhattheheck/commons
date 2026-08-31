@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "CSP Labs Express capacity-assurance LIMS: a 240-order strawberry fixture accessions 200 valid four-assay orders once (800 jobs), blocks 40 photo/barcode/unsupported/label exceptions, classifies same-day vs next-business-day from signed receipt and verification, keeps staffing equal to the accepted-job manifest, holds one seeded failed-NTC plate, reconciles dashboard and report digests, and denies autonomous release.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "csplabs_express_capacity_assurance.py",
+    "csplabs-express-capacity-assurance-lims.js",
+    "csplabs-express-capacity-assurance-lims.html",
+    "test_csplabs_express_capacity_assurance.py",
+    "revenue/csplabs_express_capacity_assurance/contract.json",
+    "revenue/csplabs_express_capacity_assurance/receipt.json",
+    "revenue/csplabs_express_capacity_assurance/receipt.md",
+    "p/cursor-csplabs-express-capacity-assurance-lims-20260831-01.md",
+    "features/registry/csplabs-express-capacity-assurance-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "csplabs-express-capacity-assurance-lims-01",
+  "name": "CSP Labs Express capacity assurance",
+  "next_gap": "Buyer-owned Express order schema, cutoff, assay panel, and de-identified fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "csplabs-express-capacity-assurance-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "csplabs-express-capacity-assurance-lims.html",
+    "revenue/csplabs_express_capacity_assurance/contract.json",
+    "p/cursor-csplabs-express-capacity-assurance-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_csplabs_express_capacity_assurance.py",
+    "csplabs_express_capacity_assurance.py"
+  ]
+}
