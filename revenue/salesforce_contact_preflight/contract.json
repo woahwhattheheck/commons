@@ -1,0 +1,27 @@
+{
+  "id": "salesforce-contact-preflight-20260831-01",
+  "buyer": "Salesforce operations owner / executive reporting owner",
+  "input": "20 synthetic contact create, update, and merge events",
+  "outputs": [
+    "canonical match-key map",
+    "automation receipt ledger",
+    "duplicate/conflict ledger",
+    "dashboard-field lineage totals"
+  ],
+  "acceptance": [
+    "each unique person resolves to exactly one active canonical contact",
+    "exact event replay produces no second mutation",
+    "same event_id with different bytes is rejected",
+    "conflicts name the exact field and reason",
+    "dashboard department totals equal active canonical contacts"
+  ],
+  "boundaries": [
+    "synthetic data only",
+    "no Salesforce credentials",
+    "no live org write",
+    "no approval or denial",
+    "no authentication gate"
+  ],
+  "price_usd": 199,
+  "optional_proof_usd": 2500
+}
