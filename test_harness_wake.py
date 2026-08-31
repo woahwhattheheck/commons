@@ -19,6 +19,7 @@ import tempfile
 import threading
 import unittest
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 
 from harness_wake.callback import consume_delivery, finish_delivery
 from harness_wake.cursor_adapter import (
@@ -27,6 +28,8 @@ from harness_wake.cursor_adapter import (
     ntfy_payload,
     should_ring_issue_1316,
 )
+from harness_wake.idle_resume import probe_idle_resume
+from harness_wake.inbound import ingest_cursor_leftovers
 from harness_wake.watchdog import pinned_head_oracle, run
 from independent_commons_mcp.jobs import JobError, JobStore, utc_now
 from independent_commons_mcp.server import MCPServer
@@ -827,6 +830,11 @@ class BoundedSelfWakeTests(unittest.TestCase):
         self.assertTrue(paths["claimed"]["subscribe_timer"]["measured"])
         self.assertFalse(paths["claimed"]["subscribe_timer"]["enabled"])
         self.assertFalse(paths["claimed"]["ntfy_poll"]["enabled"])
+        self.assertFalse(paths["claimed"]["issue_1316"]["enabled"])
+        self.assertEqual(paths["claimed"]["issue_1316"]["state"], "CURSOR_QUOTA_HOLD")
+        self.assertTrue(paths["claimed"]["grokbot_seth"]["measured"])
+        self.assertTrue(paths["claimed"]["grokbot_seth"]["enabled"])
+        self.assertEqual(paths["claimed"]["grokbot_seth"]["state"], "LIVE")
         self.assertFalse(paths["unmeasured"]["named_idle_bc_resume"]["measured"])
         self.assertFalse(paths["unmeasured"]["claude_slack_app"]["claimed"])
         self.assertFalse(should_ring_issue_1316("cursor-desktop grok bot"))
@@ -1566,6 +1574,152 @@ class McpJobToolTests(unittest.TestCase):
             self.assertEqual(accepted["result"]["structuredContent"]["state"], "OPEN")
         finally:
             tmp.cleanup()
+
+
+class CursorLeftoverInboundTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix="wake-inbound-")
+        self.jobs = tempfile.TemporaryDirectory(prefix="wake-jobs-")
+        self.records = Path(self.tmp.name)
+        self.store = JobStore(self.jobs.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+        self.jobs.cleanup()
+
+    def _write(self, name, text):
+        path = self.records / name
+        path.write_text(text, encoding="utf-8")
+        return path
+
+    def test_inbound_upserts_cursor_leftover_and_does_not_remint(self):
+        self._write("cursor-leftover-md-20260831-01.md", """from: SETH
+to: TABLE
+id: cursor-leftover-md-20260831-01
+kind: LEFTOVER
+leftover: cursor-leftover-md-20260831-01
+harness: Cursor/Grok Bot
+job_id: cursor-leftover-md-20260831-01
+subject: named leftover from a fixture post
+
+---
+
+PLAIN: leftover on git HEAD should become a watchdog job.
+""")
+        self._write("cursor-leftover-json-20260831-01.json", json.dumps({
+            "job_id": "cursor-leftover-json-20260831-01",
+            "owner_claim": "SETH",
+            "harness": "cursor-grokbot",
+            "leftover": "cursor-leftover-json-20260831-01",
+            "kind": "LEFTOVER",
+            "objective": "named leftover from a wake record",
+        }))
+        first = ingest_cursor_leftovers(self.records, self.jobs.name, now=WATCHDOG)
+        self.assertTrue(first["ok"])
+        self.assertFalse(first["invoke_model"])
+        self.assertFalse(first["live_resume"])
+        self.assertEqual(first["process_model_invocations"], 0)
+        self.assertFalse(first["ntfy_sent"])
+        self.assertFalse(first["issue_1316"])
+        self.assertEqual(sorted(first["upserted"]), [
+            "cursor-leftover-json-20260831-01",
+            "cursor-leftover-md-20260831-01",
+        ])
+        md_job = self.store.get("cursor-leftover-md-20260831-01")
+        self.assertEqual(md_job["job_id"], "cursor-leftover-md-20260831-01")
+        self.assertEqual(md_job["harness"], "Cursor/Grok Bot")
+        self.assertEqual(md_job["attempt_count"], 0)
+        before = self.store.path_for("cursor-leftover-md-20260831-01").read_bytes()
+        second = ingest_cursor_leftovers(self.records, self.jobs.name, now=RESUME)
+        self.assertEqual(second["upserted"], [])
+        self.assertEqual(sorted(second["existing"]), [
+            "cursor-leftover-json-20260831-01",
+            "cursor-leftover-md-20260831-01",
+        ])
+        after = self.store.get("cursor-leftover-md-20260831-01")
+        self.assertEqual(after["job_id"], md_job["job_id"])
+        self.assertEqual(after["attempt_count"], 0)
+        self.assertEqual(self.store.path_for("cursor-leftover-md-20260831-01").read_bytes(), before)
+
+    def test_inbound_ignores_non_cursor_harness_records(self):
+        self._write("chatgpt-leftover-wake-20260831-01.md", """from: CHATGPT
+id: chatgpt-leftover-wake-20260831-01
+kind: LEFTOVER
+harness: ChatGPT
+job_id: chatgpt-leftover-wake-20260831-01
+subject: foreign leftover
+
+---
+
+not a Cursor job
+""")
+        self._write("claude-leftover-wake-20260831-01.md", """from: CLAUDE
+id: claude-leftover-wake-20260831-01
+kind: LEFTOVER
+harness: Claude Code
+job_id: claude-leftover-wake-20260831-01
+subject: foreign leftover
+
+---
+
+not a Cursor job
+""")
+        row = ingest_cursor_leftovers(self.records, self.jobs.name, now=WATCHDOG)
+        self.assertEqual(row["upserted"], [])
+        self.assertEqual(row["existing"], [])
+        reasons = {item["reason"] for item in row["ignored"]}
+        self.assertIn("NOT_CURSOR", reasons)
+        self.assertFalse(self.store.path_for("chatgpt-leftover-wake-20260831-01").exists())
+        self.assertFalse(self.store.path_for("claude-leftover-wake-20260831-01").exists())
+
+    def test_tick_ingests_leftover_without_invoking_a_model(self):
+        self._write("cursor-leftover-tick-20260831-01.md", """from: SETH
+id: cursor-leftover-tick-20260831-01
+kind: LEFTOVER
+harness: Cursor/Grok Bot
+job_id: cursor-leftover-tick-20260831-01
+subject: leftover becomes a hold-ticked job
+
+---
+
+named leftover
+""")
+        summary = run(
+            self.jobs.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            records_dirs=self.records,
+            http=FakeDeliver(),
+        )
+        self.assertEqual(summary["process_model_invocations"], 0)
+        self.assertFalse(summary["invoke_model"])
+        self.assertEqual(summary["inbound"]["process_model_invocations"], 0)
+        self.assertFalse(summary["inbound"]["invoke_model"])
+        self.assertIn("cursor-leftover-tick-20260831-01", summary["inbound"]["upserted"])
+        self.assertEqual(summary["hold_count"], 1)
+        self.assertEqual(summary["wake_count"], 0)
+        self.assertEqual(summary["jobs"][0]["action"], "HOLD")
+        self.assertFalse(summary["jobs"][0]["invoke_model"])
+        self.assertEqual(summary["deliveries"][0]["state"], "CURSOR_QUOTA_HOLD")
+        self.assertEqual(summary["delivered_count"], 0)
+
+    def test_probe_idle_resume_still_fail_closes(self):
+        row = probe_idle_resume("bc-c9544018-da63-5629-8586-67ca6393418d")
+        self.assertFalse(row["ok"])
+        self.assertFalse(row["live_resume"])
+        self.assertFalse(row["invoke_model"])
+        self.assertEqual(row["action"], "STOP")
+        self.assertEqual(row["state"], "UNMEASURED")
+
+    def test_held_slack_ntfy_1316_paths_stay_held(self):
+        paths = claimed_paths()
+        self.assertTrue(paths["cursor_quota_hold"])
+        for name in ("slack_cursor_app", "subscribe_timer", "issue_1316", "ntfy_poll"):
+            self.assertFalse(paths["claimed"][name]["enabled"])
+            self.assertEqual(paths["claimed"][name]["state"], "CURSOR_QUOTA_HOLD")
+        self.assertFalse(should_ring_issue_1316("cursor-desktop grok bot"))
+        self.assertFalse(should_ring_issue_1316("cursor-slack"))
 
 
 if __name__ == "__main__":
