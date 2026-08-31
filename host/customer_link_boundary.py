@@ -79,21 +79,35 @@ def _reason(host):
     return None
 
 
+def _nfkc_view_with_offsets(text):
+    normalized = []
+    offsets = []
+    for index, char in enumerate(text):
+        for output in unicodedata.normalize("NFKC", char):
+            normalized.append(output)
+            offsets.append(index)
+    return "".join(normalized), offsets
+
+
 def scan_customer_text(text):
     """Return exact forbidden-link findings; an empty list is customer-link safe."""
     if not isinstance(text, str):
         raise TypeError("customer text must be str")
+    normalized_text, offsets = _nfkc_view_with_offsets(text)
     findings = []
-    for match in _URL.finditer(text):
-        raw = match.group("url")
-        host = _normalized_host(raw)
+    for match in _URL.finditer(normalized_text):
+        normalized_raw = match.group("url")
+        start = offsets[match.start("url")]
+        end = offsets[match.end("url") - 1] + 1
+        raw = text[start:end]
+        host = _normalized_host(normalized_raw)
         reason = _reason(host)
         if reason:
             findings.append({
-                "start": match.start("url"),
-                "end": match.end("url"),
+                "start": start,
+                "end": end,
                 "raw": raw,
-                "normalized_url": _normalized_url(raw),
+                "normalized_url": _normalized_url(normalized_raw),
                 "host": host,
                 "reason": reason,
             })
