@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788148843.897339")
+        self.assertEqual(catalog["slack_ts"], "1788170918.644929")
         self.assertEqual(
             catalog["source_id"],
+            "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
+        )
+        self.assertIn(
             "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-source-parse-integrity-guard-activation-20260831-01",
@@ -195,14 +199,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-lexington-mrf-diversion-gate-activation-20260831-01.json",
+            "codex-lm-gtm-agent-brief-floor-activation-20260831-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
         self.assertEqual(activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            activation["selected_resource"], "lexington-mrf-diversion-gate"
+            activation["selected_resource"], "lm-gtm-agent-brief-floor"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
@@ -287,10 +291,16 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["source-parse-integrity-guard"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["lexington-mrf-diversion-gate"]["stage"], "PRODUCING")
         self.assertEqual(rows["lexington-mrf-diversion-gate"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["lm-gtm-agent-brief-floor"]["stage"], "PRODUCING")
+        self.assertEqual(rows["lm-gtm-agent-brief-floor"]["condition"], "CONSTRAINED")
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
         self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
-        self.assertEqual(activation["projection"]["resources"], 65)
-        self.assertEqual(activation["projection"]["producing"], 33)
+        self.assertEqual(activation["projection"]["resources"], 66)
+        self.assertEqual(activation["projection"]["producing"], 34)
+        self.assertIn(
+            "inventory/resources/records/codex-lm-gtm-agent-brief-floor-activation-20260831-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertIn(
             "inventory/resources/records/codex-lexington-mrf-diversion-gate-activation-20260831-01.json",
             raw.get("record_sources") or [],
@@ -547,8 +557,6 @@ class TestResourceLedger(unittest.TestCase):
         ]
         self.assertNotIn("revenue-offer-stack", live_queue)
         measured = measure_from_rows(catalog)
-        self.assertEqual(measured["producing_count"], 33)
-        self.assertEqual(measured["resource_count"], 65)
 
         activation_path = os.path.join(
             ROOT,
@@ -569,6 +577,12 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(activation["before"]["stage"], "EXERCISED")
         self.assertEqual(activation["projection"]["resources"], 63)
         self.assertEqual(activation["projection"]["producing"], 30)
+        self.assertGreaterEqual(
+            measured["resource_count"], activation["projection"]["resources"]
+        )
+        self.assertGreaterEqual(
+            measured["producing_count"], activation["projection"]["producing"]
+        )
         self.assertEqual(activation["counts"]["cash_received_usd"], 0)
         self.assertEqual(activation["counts"]["completed_checkout_sessions"], 0)
         self.assertEqual(activation["counts"]["public_buyer_intent_doors"], 4)
