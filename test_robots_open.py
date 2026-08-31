@@ -73,6 +73,15 @@ class RobotsOpen(unittest.TestCase):
                 missing.append(name)
         self.assertEqual(blocked, [])
         self.assertEqual(missing, [])
+        canaries = (
+            "open-model-release-receipt.html",
+            "repair-booking-preflight.html",
+            "salesforce-contact-preflight.html",
+        )
+        for name in canaries:
+            self.assertTrue(os.path.isfile(os.path.join(ROOT, name)), name)
+            self.assertNotIn(name, missing)
+            self.assertNotIn(name, blocked)
 
     def test_llms_doors_point_at_pages(self):
         src = Path(ROOT, "llms_txt.py").read_text(encoding="utf-8")
