@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 32
+    "TESTED": 36
   },
   "features": [
     {
@@ -374,6 +374,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "CSP Labs Express capacity-assurance LIMS: a 240-order strawberry fixture accessions 200 valid four-assay orders once (800 jobs), blocks 40 photo/barcode/unsupported/label exceptions, classifies same-day vs next-business-day from signed receipt and verification, keeps staffing equal to the accepted-job manifest, holds one seeded failed-NTC plate, reconciles dashboard and report digests, and denies autonomous release.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "csplabs_express_capacity_assurance.py",
+        "csplabs-express-capacity-assurance-lims.js",
+        "csplabs-express-capacity-assurance-lims.html",
+        "test_csplabs_express_capacity_assurance.py",
+        "revenue/csplabs_express_capacity_assurance/contract.json",
+        "revenue/csplabs_express_capacity_assurance/receipt.json",
+        "revenue/csplabs_express_capacity_assurance/receipt.md",
+        "p/cursor-csplabs-express-capacity-assurance-lims-20260831-01.md",
+        "features/registry/csplabs-express-capacity-assurance-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "csplabs_express_capacity_assurance.py",
+        "csplabs-express-capacity-assurance-lims.js",
+        "csplabs-express-capacity-assurance-lims.html",
+        "test_csplabs_express_capacity_assurance.py",
+        "revenue/csplabs_express_capacity_assurance/contract.json",
+        "revenue/csplabs_express_capacity_assurance/receipt.json",
+        "revenue/csplabs_express_capacity_assurance/receipt.md",
+        "p/cursor-csplabs-express-capacity-assurance-lims-20260831-01.md",
+        "features/registry/csplabs-express-capacity-assurance-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "csplabs-express-capacity-assurance-lims-01.json",
+      "id": "csplabs-express-capacity-assurance-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CSP Labs Express capacity assurance",
+      "next_gap": "Buyer-owned Express order schema, cutoff, assay panel, and de-identified fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "csplabs-express-capacity-assurance-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "csplabs-express-capacity-assurance-lims.html",
+        "revenue/csplabs_express_capacity_assurance/contract.json",
+        "p/cursor-csplabs-express-capacity-assurance-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_csplabs_express_capacity_assurance.py",
+        "csplabs_express_capacity_assurance.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Unfinished-now queue. Closes only from a 40-character main SHA plus claimed paths. DIRECTIVES OPEN/HALF stays historical.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -488,6 +550,68 @@
       "test_paths": [
         "test_dealer_service_lead_rescue.js",
         "dealer-service-lead-rescue.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "EagleTrax split-sample portal preflight: a 240-row fixture accessions 200 valid compounding submissions as one parent plus the exact chemistry/microbiology children, holds 40 predetermined absent-workbook, insufficient/unsplit-container, missing-handling, stale-client, or form/container mismatches, blocks wrong-child result attach, replays with zero new records, and keeps release named-human only. Adapters stay simulated and read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "eagletrax_split_sample_preflight.py",
+        "eagletrax-split-sample-preflight-lims.js",
+        "eagletrax-split-sample-preflight-lims.html",
+        "test_eagletrax_split_sample_preflight.py",
+        "revenue/eagletrax_split_sample_preflight/contract.json",
+        "revenue/eagletrax_split_sample_preflight/receipt.json",
+        "revenue/eagletrax_split_sample_preflight/receipt.md",
+        "p/cursor-eagletrax-split-sample-preflight-20260831-01.md",
+        "features/registry/eagletrax-split-sample-preflight-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "eagletrax_split_sample_preflight.py",
+        "eagletrax-split-sample-preflight-lims.js",
+        "eagletrax-split-sample-preflight-lims.html",
+        "test_eagletrax_split_sample_preflight.py",
+        "revenue/eagletrax_split_sample_preflight/contract.json",
+        "revenue/eagletrax_split_sample_preflight/receipt.json",
+        "revenue/eagletrax_split_sample_preflight/receipt.md",
+        "p/cursor-eagletrax-split-sample-preflight-20260831-01.md",
+        "features/registry/eagletrax-split-sample-preflight-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "eagletrax-split-sample-preflight-lims-01.json",
+      "id": "eagletrax-split-sample-preflight-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "EagleTrax split-sample preflight",
+      "next_gap": "Buyer/vendor golden round trip on de-identified EagleTrax portal records after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "eagletrax-split-sample-preflight-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "eagletrax-split-sample-preflight-lims.html",
+        "revenue/eagletrax_split_sample_preflight/contract.json",
+        "p/cursor-eagletrax-split-sample-preflight-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_eagletrax_split_sample_preflight.py",
+        "eagletrax_split_sample_preflight.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1197,6 +1321,66 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "OrganaBio multi-site donor-to-CoA federation: a synthetic five-site fixture seeds 240 valid collections producing 1,200 aliquots, blocks 24 consent/eligibility failures with exact reasons, recalls 40 donors for exactly 200 aliquots, keeps one immutable donor-to-vial lineage per vial, isolates OBA-SITE- namespaces including EXL- to SDG, reproduces CoA digest 3f3f9ab647c6d7e34cce48fc002c86150b3d83285b78de30e5ff25a0a845db01, replays with zero new records, and blocks material disposition until a named human. Adapters stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "organabio_multisite_donor_coa.py",
+        "organabio-multisite-donor-coa.js",
+        "organabio-multisite-donor-coa.html",
+        "test_organabio_multisite_donor_coa.py",
+        "revenue/organabio_multisite_donor_coa/contract.json",
+        "revenue/organabio_multisite_donor_coa/fixture.json",
+        "p/organabio-multisite-donor-coa-lims-01.md",
+        "features/registry/organabio-multisite-donor-coa-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "organabio_multisite_donor_coa.py",
+        "organabio-multisite-donor-coa.js",
+        "organabio-multisite-donor-coa.html",
+        "test_organabio_multisite_donor_coa.py",
+        "revenue/organabio_multisite_donor_coa/contract.json",
+        "revenue/organabio_multisite_donor_coa/fixture.json",
+        "p/organabio-multisite-donor-coa-lims-01.md",
+        "features/registry/organabio-multisite-donor-coa-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "organabio-multisite-donor-coa-lims-01.json",
+      "id": "organabio-multisite-donor-coa-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "OrganaBio multi-site donor-to-CoA federation",
+      "next_gap": "Buyer-owned de-identified site map and Excellos legacy golden after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "organabio-multisite-donor-coa.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "organabio-multisite-donor-coa.html",
+        "revenue/organabio_multisite_donor_coa/fixture.json",
+        "p/organabio-multisite-donor-coa-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_organabio_multisite_donor_coa.py",
+        "organabio_multisite_donor_coa.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Three practical applications of the Muhlnickel provisional patent family as runnable stdlib software: GERMLINE germ delivery (seed once, then injection-weight on the wire, byte-exact manufacture), MIRROR ORGAN twin-state sync proof (copy manufactures twins; same injection, same state; drift fails closed), and WINNER FOLD inverted return bandwidth (winner-only record; losers store zero; return bytes constant in lane count).",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1439,6 +1623,74 @@
       "test_paths": [
         "test_plant_downtime_handoff.js",
         "plant-downtime-handoff.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Q Connect cutover verification: an immutable 240-case synthetic manifest accessions 200 valid personal-care/pharma submissions once with the catalog route, holds 40 obsolete-code, wrong-department, missing-field, invalid account/user, shared-credential, or timeout-retry failures with exact reasons, denies shared credentials, never lets obsolete codes enter testing, keeps field/catalog/user provenance, replays with zero duplicates, and requires named human QA. Adapters stay simulated and read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "revenue/qlabs_qconnect_cutover/runner.py",
+        "revenue/qlabs_qconnect_cutover/fixture.json",
+        "revenue/qlabs_qconnect_cutover/source.json",
+        "revenue/qlabs_qconnect_cutover/README.md",
+        "revenue/qlabs_qconnect_cutover/contract.json",
+        "revenue/qlabs_qconnect_cutover/receipt.json",
+        "revenue/qlabs_qconnect_cutover/receipt.md",
+        "test_qlabs_qconnect_cutover.py",
+        "qlabs-qconnect-cutover-verification-lims.html",
+        "qlabs-qconnect-cutover-verification-lims.js",
+        "p/cursor-qlabs-qconnect-cutover-20260831-01.md",
+        "features/registry/qlabs-qconnect-cutover-verification-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "revenue/qlabs_qconnect_cutover/runner.py",
+        "revenue/qlabs_qconnect_cutover/fixture.json",
+        "revenue/qlabs_qconnect_cutover/source.json",
+        "revenue/qlabs_qconnect_cutover/README.md",
+        "revenue/qlabs_qconnect_cutover/contract.json",
+        "revenue/qlabs_qconnect_cutover/receipt.json",
+        "revenue/qlabs_qconnect_cutover/receipt.md",
+        "test_qlabs_qconnect_cutover.py",
+        "qlabs-qconnect-cutover-verification-lims.html",
+        "qlabs-qconnect-cutover-verification-lims.js",
+        "p/cursor-qlabs-qconnect-cutover-20260831-01.md",
+        "features/registry/qlabs-qconnect-cutover-verification-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "qlabs-qconnect-cutover-verification-lims-01.json",
+      "id": "qlabs-qconnect-cutover-verification-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Q Connect cutover verification",
+      "next_gap": "Buyer/vendor golden round trip on de-identified Q Connect catalog, user map, and submissions after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "qlabs-qconnect-cutover-verification-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "qlabs-qconnect-cutover-verification-lims.html",
+        "revenue/qlabs_qconnect_cutover/contract.json",
+        "p/cursor-qlabs-qconnect-cutover-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_qlabs_qconnect_cutover.py",
+        "revenue/qlabs_qconnect_cutover/runner.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2251,7 +2503,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 38,
+  "n_features": 42,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
