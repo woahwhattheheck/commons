@@ -600,6 +600,8 @@ class SlackClient:
                     continue
                 if channel.get("is_im") or channel.get("is_mpim"):
                     continue
+                if channel.get("is_member") is False:
+                    continue
                 cid = str(channel.get("id") or "").strip()
                 if cid:
                     ids.append(cid)
@@ -692,6 +694,7 @@ class GitHubClient:
             raise IngestError("GITHUB_TOKEN is required for sync")
         self.token = token.strip()
         self.repository = repository
+        self._board_titles: set[str] | None = None
 
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
@@ -713,10 +716,43 @@ class GitHubClient:
             detail = exc.read().decode("utf-8", "replace")
             raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
 
+    def board_titles(self) -> set[str]:
+        """Load all ``label=board`` issue titles once via the Issues list API.
+
+        Per-record ``/search/issues`` is not used: Search has a 30/min cap and
+        whole-workspace Slack ingest may plan more than 30 records in one run.
+        """
+        cached = getattr(self, "_board_titles", None)
+        if cached is not None:
+            return cached
+        titles: set[str] = set()
+        page = 1
+        while True:
+            query = urllib.parse.urlencode(
+                {
+                    "state": "all",
+                    "labels": "board",
+                    "per_page": "100",
+                    "page": str(page),
+                }
+            )
+            data = self.request("GET", "/repos/%s/issues?%s" % (self.repository, query))
+            if not isinstance(data, list) or not data:
+                break
+            for item in data:
+                if not isinstance(item, dict) or item.get("pull_request"):
+                    continue
+                title = str(item.get("title") or "")
+                if title:
+                    titles.add(title)
+            if len(data) < 100:
+                break
+            page += 1
+        self._board_titles = titles
+        return titles
+
     def issue_exists(self, title: str) -> bool:
-        query = urllib.parse.urlencode({"q": 'repo:%s in:title "%s"' % (self.repository, title)})
-        data = self.request("GET", "/search/issues?" + query)
-        return any(str(item.get("title")) == title for item in data.get("items") or [])
+        return title in self.board_titles()
 
     def create_issue(self, record: IssueRecord) -> str:
         data = self.request(
@@ -724,6 +760,9 @@ class GitHubClient:
             "/repos/%s/issues" % self.repository,
             record.as_issue(),
         )
+        titles = getattr(self, "_board_titles", None)
+        if titles is not None:
+            titles.add(record.title)
         return str(data.get("html_url") or "")
 
 

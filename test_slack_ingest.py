@@ -284,6 +284,48 @@ edited payload
             self.assertEqual(Created, ["slack-10-1-r12-5"])
             self.assertEqual(si.read_state(state), "12.5")
 
+    def test_sync_uses_one_all_state_board_census_and_skips_closed_title(self) -> None:
+        events = [
+            {"ts": "10.1", "text": "closed existing", "user": "U1"},
+            {"ts": "10.2", "text": "new record", "user": "U1"},
+        ]
+        paths: list[str] = []
+        created: list[str] = []
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return events
+
+        class FakeGitHub(si.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                paths.append(path)
+                if "/search/" in path:
+                    raise si.IngestError("Search must not be used")
+                if method == "GET" and "/issues?" in path:
+                    return [{"title": "slack-10-1", "state": "closed"}]
+                if method == "POST" and path.endswith("/issues"):
+                    created.append(str((payload or {}).get("title")))
+                    return {"html_url": "https://github.test/issues/2"}
+                raise AssertionError(path)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+                redirect_stdout(StringIO()),
+            ):
+                self.assertEqual(si.cmd_sync(None, state), 0)
+        self.assertEqual(sum(1 for path in paths if "/issues?" in path), 1)
+        self.assertTrue(all("state=all" in path for path in paths if "/issues?" in path))
+        self.assertTrue(all("/search/" not in path for path in paths))
+        self.assertEqual(created, ["slack-10-2"])
+
     def test_sync_does_not_advance_cursor_when_issue_creation_fails(self) -> None:
         event = {"ts": "12.5", "text": "from: GPT\n\nnew", "user": "U1"}
 
@@ -365,6 +407,7 @@ edited payload
                     {"id": "C0SOMEOTHER1"},
                     {"id": "D0IMCHANNEL1", "is_im": True},
                     {"id": "G0MPIMCHAN01", "is_mpim": True},
+                    {"id": "C0UNJOINED01", "is_member": False},
                 ],
             }
 
