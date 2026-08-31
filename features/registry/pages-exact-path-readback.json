@@ -1,0 +1,17 @@
+{
+  "id": "pages-exact-path-readback",
+  "title": "GitHub Pages exact-path readback",
+  "status": "SHIPPED",
+  "kind": "verification_tool",
+  "paths": [
+    "pages_readback.py",
+    "test_pages_readback.py"
+  ],
+  "evidence": {
+    "command": "python3 -m unittest -v test_pages_readback.py",
+    "expected": "Ran 7 tests; OK",
+    "acceptance": "pin main, prove the source blob, compare served bytes, and distinguish LIVE, STALE, MISMATCH, and UNAVAILABLE"
+  },
+  "open_door": true,
+  "requires_login": false
+}
