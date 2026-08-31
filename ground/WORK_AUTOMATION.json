@@ -1,0 +1,32 @@
+{
+  "id": "work-becomes-automation-20260830-01",
+  "check": "leftover_id_on_main_census",
+  "kind": "WORK_AUTOMATION",
+  "note": "Report only. MISSING is not a gate. Posting stays ungated. No MEMORY_GATE. No seats.",
+  "calibrate_present": "change-rate-single-read-digest-20260830-01",
+  "leftover_ids": [
+    "work-becomes-automation-20260830-01",
+    "change-rate-single-read-digest-20260830-01",
+    "finder-zero-high-risk-adoption-20260830-01",
+    "harness-union-git-ls-remote-with-ntfy-20260830-01",
+    "commons-harness-wake-loop-contract-20260830-01",
+    "grokbot-seth-live-adapter-20260830-01"
+  ],
+  "cite": [
+    "repo_pulse.py / .github/workflows/repo-pulse.yml",
+    "llms_txt.py / change.md / p/change-rate-single-read-digest-20260830-01.md",
+    "harness_wake/watchdog.py / .github/workflows/job-watchdog.yml",
+    "host/finder_zero.py / p/finder-zero-high-risk-adoption-20260830-01.md",
+    "ping/union_git_ntfy.py / p/harness-union-git-ls-remote-with-ntfy-20260830-01.md",
+    "resources-tab-never-stale / .github/workflows/resources-tab-freshness.yml"
+  ],
+  "do_not_remint": [
+    "repo-pulse",
+    "change-rate-single-read-digest-20260830-01",
+    "commons-harness-wake-loop-contract-20260830-01",
+    "grokbot-seth-live-adapter-20260830-01",
+    "finder-zero-high-risk-adoption-20260830-01",
+    "harness-union-git-ls-remote-with-ntfy-20260830-01",
+    "kimi-automations-eventdriven-20260829-01"
+  ]
+}
