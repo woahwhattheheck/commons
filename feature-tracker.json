@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 21
+    "TESTED": 22
   },
   "features": [
     {
@@ -952,6 +952,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Public no-login plant-maintenance diagnostic: a synthetic fault report becomes exactly one technician/parts handoff and a timestamped receipt. Duplicate sensor/report and worker restart do not duplicate dispatch. Never a live plant, CMMS write, purchase, or safety decision.",
+      "carrier": "SETH",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "plant-downtime-handoff.html",
+        "plant-downtime-handoff.js",
+        "test_plant_downtime_handoff.js",
+        "revenue/plant_downtime_handoff/contract.json",
+        "revenue/plant_downtime_handoff/receipt.json",
+        "revenue/plant_downtime_handoff/receipt.md",
+        "p/plant-downtime-handoff-20260831-01.md",
+        "features/registry/plant-downtime-handoff.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "plant-downtime-handoff.html",
+        "plant-downtime-handoff.js",
+        "test_plant_downtime_handoff.js",
+        "revenue/plant_downtime_handoff/contract.json",
+        "revenue/plant_downtime_handoff/receipt.json",
+        "revenue/plant_downtime_handoff/receipt.md",
+        "p/plant-downtime-handoff-20260831-01.md",
+        "features/registry/plant-downtime-handoff.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "plant-downtime-handoff.json",
+      "id": "plant-downtime-handoff",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Plant downtime handoff",
+      "next_gap": "Run the $199 diagnostic against one buyer-approved synthetic fault-handoff shape; discuss the $2,500 pilot only after fit. No outreach and no cash claim.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "plant-downtime-handoff.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "plant-downtime-handoff.html",
+        "revenue/plant_downtime_handoff/contract.json",
+        "p/plant-downtime-handoff-20260831-01.md",
+        "diagnostic.html",
+        "commercial.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_plant_downtime_handoff.js",
+        "plant-downtime-handoff.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Public no-login clinic-ops diagnostic: synthetic no-PHI referral packet becomes a required-field checklist, exactly one intake-queue ticket, and a timestamped receipt. Crash/replay does not duplicate the queue. Never a clinical decision.",
       "carrier": "SETH",
       "chat_ignored": false,
@@ -1567,7 +1629,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 27,
+  "n_features": 28,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
