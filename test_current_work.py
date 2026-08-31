@@ -67,6 +67,21 @@ def test_close_rule():
     closed = cw.reconcile_item(item, {"main_sha": sha, "main_paths": {p: True for p in claimed}})
     check("40-char SHA + claimed closes", closed["status"] == "CLOSED" and closed["main_sha"] == sha, closed)
 
+    closed_with_unrelated_pr = cw.reconcile_item(
+        item,
+        {
+            "open_prs": [999999],
+            "main_sha": sha,
+            "main_paths": {p: True for p in claimed},
+        },
+    )
+    check(
+        "unrelated open PR does not block main evidence",
+        closed_with_unrelated_pr["status"] == "CLOSED"
+        and closed_with_unrelated_pr["main_sha"] == sha,
+        closed_with_unrelated_pr,
+    )
+
     missing = dict((p, True) for p in claimed)
     if claimed:
         missing[claimed[0]] = False
