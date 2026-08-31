@@ -1,57 +1,97 @@
 #!/usr/bin/env python3
-"""List pages a phone cannot read.
+"""List every tracked HTML document a phone cannot read.
 
-BRYCE-1787154890706-5t8imm and the complaints around it were about the site being
-unusable on his phone. The cause was mundane: a page with <meta charset> but no
-<meta name="viewport"> renders at a 980px desktop width and gets scaled down, so the
-text is unreadable and taps land in the wrong place. It is invisible from a desktop
-browser, which is why it survived so long and why it keeps coming back -- every new
-page copies a head from an older one, and some of those heads never had it.
-
-This makes it checkable instead of discoverable-by-squinting. Exit 1 if any page is
-missing it, so it can gate something later without being rewritten.
+A document without ``<meta name="viewport">`` renders at a desktop width on
+phones.  This checker inventories HTML from git rather than from a shallow
+filesystem glob, so deep paths and old generated pages cannot disappear from
+the census.  Untracked scratch files are intentionally outside repository
+truth.
 
 Run: python3 viewport_check.py
 """
-import glob
-import os
+
+from __future__ import annotations
+
+import subprocess
 import sys
+from typing import List
+
 
 NEEDLE = 'name="viewport"'
 
 
-def main():
-    bad, ok = [], 0
-    pages = sorted(glob.glob("*.html") + glob.glob("*/*.html"))
-    # p/ is 3,000+ generated post pages sharing one head from board_ingest.py.
-    # Listing them all would bury the real answer under identical lines, so check
-    # the newest one as the representative -- it still catches a generator that
-    # stops emitting the tag.
-    posts = [x for x in pages if x.startswith("p/")]
-    if posts:
-        keep = max(posts, key=lambda f: os.path.getmtime(f))
-        pages = [x for x in pages if not x.startswith("p/") or x == keep]
+class GitInventoryError(RuntimeError):
+    """The tracked HTML inventory could not be read."""
+
+
+def _bounded_diagnostic(text: str, limit: int = 240) -> str:
+    detail = " ".join(text.split())
+    if not detail:
+        return "no diagnostic"
+    if len(detail) <= limit:
+        return detail
+    return detail[: limit - 3] + "..."
+
+
+def tracked_pages() -> List[str]:
+    """Return every tracked ``.html`` path, at any depth, deterministically."""
+    done = subprocess.run(
+        ["git", "ls-files", "-z", "--", "*.html"],
+        capture_output=True,
+        check=False,
+    )
+    if done.returncode != 0:
+        raw = done.stderr or done.stdout
+        detail = _bounded_diagnostic(raw.decode("utf-8", errors="replace"))
+        raise GitInventoryError(
+            "git ls-files failed with exit %d: %s" % (done.returncode, detail)
+        )
+    return sorted(
+        path.decode("utf-8", errors="surrogateescape")
+        for path in done.stdout.split(b"\0")
+        if path
+    )
+
+
+def main() -> int:
+    try:
+        pages = tracked_pages()
+    except GitInventoryError as exc:
+        print("viewport census: INVENTORY FAILED: %s" % exc, file=sys.stderr)
+        return 2
+
+    bad, ok, skipped = [], 0, 0
     for path in pages:
         try:
-            text = open(path, encoding="utf-8", errors="replace").read(4096)
-        except OSError:
+            with open(path, encoding="utf-8", errors="replace") as handle:
+                text = handle.read(4096)
+        except OSError as exc:
+            bad.append("%s (unreadable: %s)" % (path, exc))
             continue
-        # r/*.html are plain-text receipts that happen to carry an .html suffix --
-        # they start with "RECEIPT", not "<". A viewport meta in one of those would
-        # be corruption, not a fix, so anything that is not a document is skipped.
-        if not text.lstrip()[:1] == "<":
+
+        # Some tracked receipts carry an .html suffix but are plain text.  A
+        # viewport tag in one would be corruption, so only documents count.
+        if text.lstrip()[:1] != "<":
+            skipped += 1
             continue
         if NEEDLE in text:
             ok += 1
         else:
             bad.append(path)
-    for p in bad:
-        print("NO VIEWPORT: %s" % p)
-    print("%d pages checked, %d missing viewport" % (ok + len(bad), len(bad)))
+
+    for path in bad:
+        print("NO VIEWPORT: %s" % path)
+    checked = ok + len(bad)
+    print(
+        "%d tracked HTML documents checked, %d missing viewport, %d non-documents skipped"
+        % (checked, len(bad), skipped)
+    )
     if bad:
-        print("Generated pages need the fix in the generator, not the file: "
-              "hub_pages.VIEWPORT is the constant, and board_ingest.py / "
-              "builds_ledger.py carry their own head literals.")
+        print(
+            "Generated pages need the fix in the generator, not the file: "
+            "hub_pages.VIEWPORT is the constant, and board_ingest.py / "
+            "builds_ledger.py carry their own head literals."
+        )
     return 1 if bad else 0
 
 
