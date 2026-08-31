@@ -1,0 +1,65 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-discord-bridge-cloud-dark-correction-20260831-01",
+  "event_type": "RESOURCE_LIFECYCLE_CORRECTION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-31T12:43:32Z",
+  "selected_resource": "discord-bridge",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "evidence": "An expired activation still projected three Windows tasks, HTTP health, and advancing Discord replay."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "EXERCISED",
+    "condition": "BLOCKED",
+    "correction_base_main_sha": "333eb7f2d3c51ea753c889880f3a7ecf15e65c36",
+    "cloud_placement_merge_sha": "b893c601b3c873762034aea5ecb49578439307f2",
+    "cloud_import_fix_merge_sha": "c335c6395f1d0c4c9ce990910448aa7c91960a35"
+  },
+  "authority": "PUBLIC_OPEN_APPEND_AND_DISCORD_READ; OWNER_ONLY_WINDOWS_ACCOUNT_CREDENTIAL_AND_APP_ACTION",
+  "concrete_consumer": "No currently verified delivery consumer; source and cloud placement remain reachable.",
+  "measurable_outcome": "The ledger no longer calls Discord delivery producing while the local runtime is retired and GitHub Actions is deliberately dark.",
+  "counts": {
+    "local_windows_tasks": 0,
+    "local_matching_processes": 0,
+    "cloud_outbound_run_id": 33384940953,
+    "cloud_outbound_job_id": 99465359621,
+    "authenticated_cloud_syncs_verified": 0,
+    "credits_spent": 0,
+    "discord_contacts": 0
+  },
+  "projection": {
+    "resources": 66,
+    "producing": 33
+  },
+  "verification": {
+    "current_main_readback": "Current main 333eb7f2d3c51ea753c889880f3a7ecf15e65c36 preserves cloud placement and the fail-dark workflow.",
+    "local_runtime_truth": "The owner-laptop recovery receipt recorded zero remaining Commons Discord tasks and zero matching processes after retirement.",
+    "cloud_runtime_truth": "Run 33384940953 job 99465359621 reached assert_ready and failed DARK because DISCORD_BOT_TOKEN, DISCORD_WEBHOOK_URL, and COMMONS_DISCORD_CHANNEL were empty.",
+    "open_door_truth": "No public Commons posting, Action Pad, GitHub, Slack, or bridge source road was narrowed; this is lifecycle accounting only.",
+    "secrets_truth": "No credential value was read, written, requested in Slack, or copied into this record.",
+    "collision_audit": "The sole open PR #6816 changes two TITAN Android paths and does not overlap the ledger, resource record, test, resources projection, or receipt."
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788180414734879",
+    "local_retirement_receipt": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788128957320909",
+    "cloud_cutover_ship": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788130694375479",
+    "cloud_run": "https://github.com/woahwhattheheck/commons/actions/runs/33384940953",
+    "cloud_job": "https://github.com/woahwhattheheck/commons/actions/runs/33384940953/job/99465359621",
+    "cloud_placement_pr": "https://github.com/woahwhattheheck/commons/pull/6191"
+  },
+  "next_action": "Use the existing private provider-account lane to configure the existing GitHub Actions Discord credential and channel, then require one authenticated sync/readback before restoring PRODUCING. Never expose values or recreate laptop watchers.",
+  "rate_plan_boundary": "Source availability is not production delivery. No credit spend, Discord contact, credential mutation, or authenticated sync occurred in this correction.",
+  "non_claims": [
+    "No Discord message, webhook, sync, or external contact",
+    "No credential, repository secret, variable, provider-account, or app mutation",
+    "No Windows task or local process restoration",
+    "No workflow refactor or production-readiness claim",
+    "No outreach, payment, revenue, or cash",
+    "No Grok or Cursor activity"
+  ],
+  "titan": "NOT_WRITTEN"
+}

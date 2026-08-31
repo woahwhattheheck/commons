@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788170918.644929")
+        self.assertEqual(catalog["slack_ts"], "1788180414.734879")
         self.assertEqual(
             catalog["source_id"],
+            "codex-discord-bridge-cloud-dark-correction-20260831-01",
+        )
+        self.assertIn(
             "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-lexington-mrf-diversion-gate-activation-20260831-01",
@@ -199,15 +203,13 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-lm-gtm-agent-brief-floor-activation-20260831-01.json",
+            "codex-discord-bridge-cloud-dark-correction-20260831-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
-        self.assertEqual(activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
-        self.assertEqual(
-            activation["selected_resource"], "lm-gtm-agent-brief-floor"
-        )
+        self.assertEqual(activation["event_type"], "RESOURCE_LIFECYCLE_CORRECTION")
+        self.assertEqual(activation["selected_resource"], "discord-bridge")
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
         watchdog_production_path = os.path.join(
@@ -285,18 +287,22 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(rows["revenue-offer-stack"]["stage"], "PRODUCING")
         self.assertEqual(rows["revenue-offer-stack"]["condition"], "CONSTRAINED")
-        self.assertEqual(rows["discord-bridge"]["stage"], "PRODUCING")
-        self.assertEqual(rows["discord-bridge"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["discord-bridge"]["stage"], "EXERCISED")
+        self.assertEqual(rows["discord-bridge"]["condition"], "BLOCKED")
         self.assertEqual(rows["source-parse-integrity-guard"]["stage"], "PRODUCING")
         self.assertEqual(rows["source-parse-integrity-guard"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["lexington-mrf-diversion-gate"]["stage"], "PRODUCING")
         self.assertEqual(rows["lexington-mrf-diversion-gate"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["lm-gtm-agent-brief-floor"]["stage"], "PRODUCING")
         self.assertEqual(rows["lm-gtm-agent-brief-floor"]["condition"], "CONSTRAINED")
-        self.assertEqual(activation["after"]["stage"], "PRODUCING")
-        self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
+        self.assertEqual(activation["after"]["stage"], "EXERCISED")
+        self.assertEqual(activation["after"]["condition"], "BLOCKED")
         self.assertEqual(activation["projection"]["resources"], 66)
-        self.assertEqual(activation["projection"]["producing"], 34)
+        self.assertEqual(activation["projection"]["producing"], 33)
+        self.assertIn(
+            "inventory/resources/records/codex-discord-bridge-cloud-dark-correction-20260831-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertIn(
             "inventory/resources/records/codex-lm-gtm-agent-brief-floor-activation-20260831-01.json",
             raw.get("record_sources") or [],
