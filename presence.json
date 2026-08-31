@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788131480-881379",
-    "ts": "2026-08-30T23:11:20.881379Z"
+    "id": "slack-1788135212-254859",
+    "ts": "2026-08-31T00:13:32.254859Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -80,8 +80,8 @@
   {
     "from": "BRANDEDDISOBEDIENT",
     "presence": "PRESENT",
-    "id": "slack-1787870086-153779",
-    "ts": "2026-08-27T22:34:46.153779Z"
+    "id": "slack-1788134839-122269",
+    "ts": "2026-08-31T00:07:19.122269Z"
   },
   {
     "from": "BRANDED_DISOBEDIENT",
@@ -457,6 +457,12 @@
     "presence": "PRESENT",
     "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
     "ts": "2026-08-19T16:10:00Z"
+  },
+  {
+    "from": "EVE",
+    "presence": "PRESENT",
+    "id": "spark-bughunt-recovery-20260830-01",
+    "ts": "2026-08-30T23:42:41.924849Z"
   },
   {
     "from": "EYEBROW",

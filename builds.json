@@ -350,6 +350,39 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 2,
+ "open_prs": [
+  {
+   "number": 6206,
+   "author": "woahwhattheheck",
+   "title": "Repair Commons cross-harness capability discovery",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6206",
+   "base_freshness": {
+    "base_sha": "9b0a8bb0f6b3926fdc2d0647bf53c8bb71699217",
+    "main_sha": "050d7e309d198f24fda64c90348fdb15b36ba909",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 6219,
+   "author": "woahwhattheheck",
+   "title": "Require Android core services before headless ready",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6219",
+   "base_freshness": {
+    "base_sha": "050d7e309d198f24fda64c90348fdb15b36ba909",
+    "main_sha": "050d7e309d198f24fda64c90348fdb15b36ba909",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }
