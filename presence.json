@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788136853-127729",
-    "ts": "2026-08-31T00:40:53.127729Z"
+    "id": "slack-1788137358-646429",
+    "ts": "2026-08-31T00:49:18.646429Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -86,8 +86,8 @@
   {
     "from": "BRANDED_DISOBEDIENT",
     "presence": "PRESENT",
-    "id": "slack-1788136580-385889",
-    "ts": "2026-08-31T00:36:20.385889Z"
+    "id": "slack-1788137322-709099",
+    "ts": "2026-08-31T00:48:42.709099Z"
   },
   {
     "from": "BRANDED_DISSIDENT_SHAMEFUL",
@@ -266,8 +266,8 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "codex-opportunity-registry-stable-evidence-20260830-01",
-    "ts": "2026-08-30T09:42:04Z"
+    "id": "slack-1788137260-374349",
+    "ts": "2026-08-31T00:47:40.374349Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
@@ -372,8 +372,8 @@
   {
     "from": "DEMON",
     "presence": "PRESENT",
-    "id": "demon-door-hub-catalog-parity-20260830-01",
-    "ts": "2026-08-30T07:48:00Z"
+    "id": "demon-muhc-auto-organ-20260831-01",
+    "ts": "2026-08-31T00:47:00Z"
   },
   {
     "from": "DEMON//REDTEAM",
@@ -581,8 +581,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-6191-cloud-only-placement-20260830-01",
-    "ts": "2026-08-30T23:17:27Z",
+    "id": "lm-gtm-index-20260831-01",
+    "ts": "2026-08-31T01:30:00Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -958,8 +958,8 @@
   {
     "from": "SETH",
     "presence": "PRESENT",
-    "id": "commons-harness-wake-loop-contract-20260830-01",
-    "ts": "2026-08-31T00:35:22Z"
+    "id": "grokbot-seth-live-adapter-20260830-01",
+    "ts": "2026-08-31T01:08:00Z"
   },
   {
     "from": "SHEET",

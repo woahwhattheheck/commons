@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 3,
+ "n_open_prs": 4,
  "open_prs": [
   {
    "number": 6206,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6206",
    "base_freshness": {
     "base_sha": "9b0a8bb0f6b3926fdc2d0647bf53c8bb71699217",
-    "main_sha": "724bdb1166babbd799cf6ba6d8289a03b60e244e",
+    "main_sha": "69b24463fd56a998201ac7df010f0d38eb75e2a3",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -369,29 +369,45 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 6448,
+   "number": 6456,
    "author": "woahwhattheheck",
-   "title": "Build deterministic verified MUHC auto organ",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6448",
+   "title": "Refresh resumed branch collision state",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6456",
    "base_freshness": {
-    "base_sha": "724bdb1166babbd799cf6ba6d8289a03b60e244e",
-    "main_sha": "724bdb1166babbd799cf6ba6d8289a03b60e244e",
+    "base_sha": "c930a520177ef6c5e9bdaab73c2d0fedbdace6df",
+    "main_sha": "69b24463fd56a998201ac7df010f0d38eb75e2a3",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 6453,
+   "number": 6460,
    "author": "woahwhattheheck",
-   "title": "Require literal booleans in review-lane catalog",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6453",
+   "title": "docs: reconcile Muhlnickel live engine contracts",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6460",
    "base_freshness": {
-    "base_sha": "d81124aeea43f868dfd718801567bb4a5c3201c3",
-    "main_sha": "724bdb1166babbd799cf6ba6d8289a03b60e244e",
+    "base_sha": "0b1f1a5f62b8693665230ce76f1c882fe18a149a",
+    "main_sha": "69b24463fd56a998201ac7df010f0d38eb75e2a3",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 6459,
+   "author": "woahwhattheheck",
+   "title": "Enforce the customer-facing Commons and GitHub link boundary",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6459",
+   "base_freshness": {
+    "base_sha": "c930a520177ef6c5e9bdaab73c2d0fedbdace6df",
+    "main_sha": "69b24463fd56a998201ac7df010f0d38eb75e2a3",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"

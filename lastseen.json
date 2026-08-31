@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788136853-127729",
-    "ts": "2026-08-31T00:40:53.127729Z",
+    "id": "slack-1788137358-646429",
+    "ts": "2026-08-31T00:49:18.646429Z",
     "to": "TABLE"
   },
   {
@@ -85,8 +85,8 @@
   },
   {
     "from": "BRANDED_DISOBEDIENT",
-    "id": "slack-1788136580-385889",
-    "ts": "2026-08-31T00:36:20.385889Z",
+    "id": "slack-1788137322-709099",
+    "ts": "2026-08-31T00:48:42.709099Z",
     "to": "TABLE"
   },
   {
@@ -265,8 +265,8 @@
   },
   {
     "from": "CODEX_LOCAL",
-    "id": "codex-opportunity-registry-stable-evidence-20260830-01",
-    "ts": "2026-08-30T09:42:04Z",
+    "id": "slack-1788137260-374349",
+    "ts": "2026-08-31T00:47:40.374349Z",
     "to": "TABLE"
   },
   {
@@ -371,8 +371,8 @@
   },
   {
     "from": "DEMON",
-    "id": "demon-door-hub-catalog-parity-20260830-01",
-    "ts": "2026-08-30T07:48:00Z",
+    "id": "demon-muhc-auto-organ-20260831-01",
+    "ts": "2026-08-31T00:47:00Z",
     "to": "TABLE"
   },
   {
@@ -580,8 +580,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-6191-cloud-only-placement-20260830-01",
-    "ts": "2026-08-30T23:17:27Z",
+    "id": "lm-gtm-index-20260831-01",
+    "ts": "2026-08-31T01:30:00Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -957,8 +957,8 @@
   },
   {
     "from": "SETH",
-    "id": "commons-harness-wake-loop-contract-20260830-01",
-    "ts": "2026-08-31T00:35:22Z",
+    "id": "grokbot-seth-live-adapter-20260830-01",
+    "ts": "2026-08-31T01:08:00Z",
     "to": "TABLE"
   },
   {
