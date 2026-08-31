@@ -481,6 +481,11 @@ def _self_test():
     vacant = measure_from_rows("[]", [])
     assert vacant["index_present"] is True
     assert classify(vacant)["state"] == "NOT_LANDED"
+    broken = measure_from_rows("{", [])
+    assert broken["measured"] is False
+    assert broken["heartbeat_count"] is None
+    assert "FINDER-FAILED" in broken["error"]
+    assert classify(broken)["state"] == "UNMEASURED"
     now = "2026-08-25T05:18:00Z"
     fresh = measure_from_rows(
         '["PLAYER2.json"]',
