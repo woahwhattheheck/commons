@@ -1,0 +1,47 @@
+{
+  "accession_sha256": "5efe150981376c36cd1060e26516af979a77751e676d24858b0c1e3d0a299923",
+  "audit_sha256": "cbb6bfc3d8a5ebdfd7cb6a42a20cec9763278d2b0446093dae98133ab9080cbf",
+  "counts": {
+    "actual": {
+      "accessions": 160,
+      "autonomous_released": 0,
+      "billing_writes": 0,
+      "duplicate_accessions": 0,
+      "held_downstream": 0,
+      "holds": 40,
+      "human_released": 160,
+      "input_pairs": 200,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "valid": 160
+    },
+    "expected": {
+      "accessions": 160,
+      "autonomous_released": 0,
+      "billing_writes": 0,
+      "duplicate_accessions": 0,
+      "held_downstream": 0,
+      "holds": 40,
+      "human_released": 160,
+      "input_pairs": 200,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "valid": 160
+    },
+    "match": true
+  },
+  "hold_code_counts": {
+    "HOLD_BOM_MISMATCH": 5,
+    "HOLD_HANDLING_MISMATCH": 5,
+    "HOLD_INTENDED_USE_MISMATCH": 5,
+    "HOLD_LOT_SERIAL_MISMATCH": 5,
+    "HOLD_QTY_DISCREPANCY": 5,
+    "HOLD_SAFETY_OMISSION": 5,
+    "HOLD_STERILIZATION_DISCREPANCY": 5,
+    "HOLD_STORAGE_OMISSION": 5
+  },
+  "lineage_sha256": "f0052d3dcda4d800fc54e53f34da45a9aeb1590e35ea935f7bd73377bcd1e47a",
+  "report_sha256": "91ce2daa70195940131560074a94a1c248f3e4820605cda65ab3aff2017b970a"
+}
