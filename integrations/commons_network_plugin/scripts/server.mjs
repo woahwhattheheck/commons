@@ -13,6 +13,7 @@ const NTFY = process.env.COMMONS_NTFY_URL || "https://ntfy.sh/woahwhattheheck-co
 const RAW = String(process.env.COMMONS_RAW_BASE || "https://raw.githubusercontent.com/woahwhattheheck/commons/main").replace(/\/+$/, "");
 const GITHUB_API = String(process.env.COMMONS_GITHUB_API_BASE || "https://api.github.com").replace(/\/+$/, "");
 const GITHUB_RAW = String(process.env.COMMONS_GITHUB_RAW_BASE || "https://raw.githubusercontent.com").replace(/\/+$/, "");
+const GITHUB_SMART_HTTP = String(process.env.COMMONS_GITHUB_SMART_HTTP_BASE || "https://github.com").replace(/\/+$/, "");
 const GITHUB_REPO = process.env.COMMONS_GITHUB_REPO || "woahwhattheheck/commons";
 const GITHUB_BRANCH = process.env.COMMONS_GITHUB_BRANCH || "main";
 const DEFAULT_COMMONS_ROOT = path.join(process.env.USERPROFILE || process.env.HOME || process.cwd(), "Desktop", "COMMONS");
@@ -317,23 +318,75 @@ function githubHeaders() {
   return headers;
 }
 
+function parseGitAdvertisement(body, branch) {
+  if (!Buffer.isBuffer(body)) throw new Error("Git smart-HTTP advertisement omitted bytes");
+  const wanted = "refs/heads/" + branch;
+  let offset = 0;
+  while (offset + 4 <= body.length) {
+    const header = body.subarray(offset, offset + 4).toString("ascii");
+    if (!/^[0-9a-fA-F]{4}$/.test(header)) throw new Error("Git smart-HTTP advertisement had an invalid pkt-line header");
+    const length = Number.parseInt(header, 16);
+    offset += 4;
+    if (length === 0) continue;
+    if (length < 4 || offset + length - 4 > body.length) throw new Error("Git smart-HTTP advertisement had a truncated pkt-line");
+    const payload = body.subarray(offset, offset + length - 4);
+    offset += length - 4;
+    const nul = payload.indexOf(0);
+    const line = payload.subarray(0, nul < 0 ? payload.length : nul).toString("utf8").trimEnd();
+    const match = /^([0-9a-fA-F]{40}) (refs\/heads\/.+)$/.exec(line);
+    if (match && match[2] === wanted) return match[1].toLowerCase();
+  }
+  throw new Error("Git smart-HTTP advertisement omitted " + wanted);
+}
+
+async function resolveGitHead(repo, branch) {
+  const rest = await fetchState(GITHUB_API + "/repos/" + repo + "/commits/" + encodeURIComponent(branch), {
+    cache: "no-store", headers: githubHeaders()
+  });
+  if (rest.ok) {
+    try {
+      const payload = JSON.parse(rest.text);
+      const gitSha = String(payload && payload.sha || "").toLowerCase();
+      if (/^[0-9a-f]{40}$/.test(gitSha)) return { ok: true, git_sha: gitSha, resolution: "github_rest", lookups: { github_rest: trim(rest) } };
+    } catch {}
+  }
+  const smart = await fetchState(
+    GITHUB_SMART_HTTP + "/" + repo + ".git/info/refs?service=git-upload-pack",
+    { cache: "no-store", headers: { accept: "application/x-git-upload-pack-advertisement", "user-agent": "commons-network-mcp" } }
+  );
+  if (smart.ok) {
+    try {
+      return {
+        ok: true,
+        git_sha: parseGitAdvertisement(smart.body, branch),
+        resolution: "git_smart_http",
+        lookups: { github_rest: trim(rest), git_smart_http: trim(smart) }
+      };
+    } catch (error) {
+      return { ok: false, reached: true, status: smart.status, error: String(error.message || error), lookups: { github_rest: trim(rest), git_smart_http: trim(smart) } };
+    }
+  }
+  return {
+    ok: false,
+    reached: Boolean(rest.reached || smart.reached),
+    status: smart.status || rest.status,
+    error: smart.error || rest.error || "unable to resolve GitHub branch head",
+    lookups: { github_rest: trim(rest), git_smart_http: trim(smart) }
+  };
+}
+
 async function readGitTruth(relative) {
   const rel = safeRelative(relative);
   try {
     const { repo, branch } = githubConfig();
-    const head = await fetchState(GITHUB_API + "/repos/" + repo + "/commits/" + encodeURIComponent(branch), {
-      cache: "no-store", headers: githubHeaders()
-    });
-    if (!head.ok) return { road: "raw_github", path: rel, ok: false, reached: head.reached, status: head.status, error: head.error || "unable to resolve GitHub branch head", git_lookup: trim(head) };
-    let payload;
-    try { payload = JSON.parse(head.text); }
-    catch { return { road: "raw_github", path: rel, ok: false, reached: true, status: head.status, error: "GitHub branch head was not JSON", git_lookup: trim(head) }; }
-    const gitSha = String(payload && payload.sha || "");
-    if (!/^[0-9a-f]{40}$/i.test(gitSha)) return { road: "raw_github", path: rel, ok: false, reached: true, status: head.status, error: "GitHub branch head omitted a full commit SHA", git_lookup: trim(head) };
+    const head = await resolveGitHead(repo, branch);
+    if (!head.ok) return { road: "raw_github", path: rel, ok: false, reached: head.reached, status: head.status, error: head.error || "unable to resolve GitHub branch head", git_lookup: head.lookups };
+    const gitSha = head.git_sha;
     const content = await fetchState(GITHUB_RAW + "/" + repo + "/" + gitSha + "/" + publicPath(rel) + "?b=" + Date.now(), { cache: "no-store" });
     return {
       road: "raw_github", path: rel, ...content, git_sha: gitSha.toLowerCase(),
-      git_repo: repo, git_branch: branch, truth: "github_branch_head"
+      git_repo: repo, git_branch: branch, truth: "github_branch_head", git_resolution: head.resolution,
+      git_lookup: head.lookups
     };
   } catch (error) {
     return { road: "raw_github", path: rel, reached: false, ok: false, error: String(error.message || error) };
@@ -738,6 +791,7 @@ async function call(name, a) {
     return {
       ok: true, state: "CAPABILITY_MAP", road: item.road, sha256: item.sha256,
       git_sha: item.git_sha, git_repo: item.git_repo, git_branch: item.git_branch, truth: item.truth,
+      git_resolution: item.git_resolution,
       call_first: catalog.call_first, parity_rule: catalog.parity_rule, shared: catalog.shared,
       roads: catalog.roads, harnesses, capabilities,
       matched_harnesses: harnesses.length, matched_capabilities: capabilities.length

@@ -30,10 +30,32 @@ CATALOG = {
 
 
 class _GitTruthHandler(BaseHTTPRequestHandler):
+    api_limited = False
+
     def do_GET(self):
         path = self.path.split("?", 1)[0]
         if path == "/repos/test-owner/test-repo/commits/main":
+            if self.api_limited:
+                self._reply({"message": "API rate limit exceeded"}, status=403)
+                return
             self._reply({"sha": GIT_SHA})
+            return
+        if path == "/test-owner/test-repo.git/info/refs":
+            service = b"# service=git-upload-pack\n"
+            ref = (GIT_SHA + " refs/heads/main\x00symref=HEAD:refs/heads/main\n").encode("ascii")
+            body = (
+                f"{len(service) + 4:04x}".encode("ascii")
+                + service
+                + b"0000"
+                + f"{len(ref) + 4:04x}".encode("ascii")
+                + ref
+                + b"0000"
+            )
+            self.send_response(200)
+            self.send_header("Content-Type", "application/x-git-upload-pack-advertisement")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            self.wfile.write(body)
             return
         if path in {
             f"/test-owner/test-repo/{GIT_SHA}/harnesses/catalog.json",
@@ -44,9 +66,9 @@ class _GitTruthHandler(BaseHTTPRequestHandler):
         self.send_response(404)
         self.end_headers()
 
-    def _reply(self, payload):
+    def _reply(self, payload, status=200):
         body = json.dumps(payload).encode("utf-8")
-        self.send_response(200)
+        self.send_response(status)
         self.send_header("Content-Type", "application/json")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
@@ -114,6 +136,7 @@ class CommonsNetworkPluginTests(unittest.TestCase):
         self.assertEqual(second["id"], 2)
 
     def test_discovery_is_pinned_to_reported_git_head_and_alias_reads(self):
+        _GitTruthHandler.api_limited = False
         server = ThreadingHTTPServer(("127.0.0.1", 0), _GitTruthHandler)
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
@@ -124,6 +147,7 @@ class CommonsNetworkPluginTests(unittest.TestCase):
                 {
                     "COMMONS_GITHUB_API_BASE": base,
                     "COMMONS_GITHUB_RAW_BASE": base,
+                    "COMMONS_GITHUB_SMART_HTTP_BASE": base,
                     "COMMONS_GITHUB_REPO": "test-owner/test-repo",
                     "COMMONS_GITHUB_BRANCH": "main",
                     "COMMONS_RAW_BASE": base + "/test-owner/test-repo/main",
@@ -157,6 +181,45 @@ class CommonsNetworkPluginTests(unittest.TestCase):
         content = resource["result"]["contents"][0]
         self.assertEqual(content["uri"], "commons://capabilities")
         self.assertEqual(json.loads(content["text"])["call_first"]["tool"], "discover_commons_capabilities")
+
+    def test_discovery_uses_git_smart_http_when_rest_quota_is_exhausted(self):
+        _GitTruthHandler.api_limited = True
+        server = ThreadingHTTPServer(("127.0.0.1", 0), _GitTruthHandler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            base = f"http://127.0.0.1:{server.server_port}"
+            env = os.environ.copy()
+            env.update(
+                {
+                    "COMMONS_GITHUB_API_BASE": base,
+                    "COMMONS_GITHUB_RAW_BASE": base,
+                    "COMMONS_GITHUB_SMART_HTTP_BASE": base,
+                    "COMMONS_GITHUB_REPO": "test-owner/test-repo",
+                    "COMMONS_GITHUB_BRANCH": "main",
+                    "COMMONS_RAW_BASE": base + "/test-owner/test-repo/main",
+                    "COMMONS_PAGES_BASE": "http://127.0.0.1:9",
+                }
+            )
+            (discovery,) = self.run_jsonl(
+                {
+                    "jsonrpc": "2.0",
+                    "id": 1,
+                    "method": "tools/call",
+                    "params": {"name": "discover_commons_capabilities", "arguments": {"harness": "gemini"}},
+                },
+                env=env,
+            )
+        finally:
+            _GitTruthHandler.api_limited = False
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=5)
+        result = discovery["result"]["structuredContent"]
+        self.assertTrue(result["ok"])
+        self.assertEqual(result["git_sha"], GIT_SHA)
+        self.assertEqual(result["truth"], "github_branch_head")
+        self.assertEqual(result["git_resolution"], "git_smart_http")
 
 
 if __name__ == "__main__":
