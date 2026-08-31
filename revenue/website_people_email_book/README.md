@@ -16,6 +16,9 @@ Owner ask: Slack `#commons` `1788068123.766099` (2026-08-30 01:35 ET) —
 "Do what these guys are doing" + Explee auto-GTM screenshot. Receipt:
 [`p/website-people-email-book-20260830-01.md`](../../p/website-people-email-book-20260830-01.md).
 Public door: [`website-people-email-book.html`](../../website-people-email-book.html).
+Agent compose/query over this loop and its sibling ledgers:
+[`lm-gtm-index.html`](../../lm-gtm-index.html) / [`revenue/lm_gtm_index`](../lm_gtm_index/README.md).
+That layer projects existing ids; it does not replace this loop or mint a second CRM.
 
 This does **not** remint:
 

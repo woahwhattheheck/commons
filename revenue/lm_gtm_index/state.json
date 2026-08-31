@@ -1,0 +1,59 @@
+{
+  "canonical_crm": "JOJO Revenue Recovery CRM / Revenue Pipeline",
+  "compose": {
+    "marketing_sales": "public research universe; Airtable remains canonical CRM",
+    "outreach_receipts": "DNR / collision receipts; not a contact book",
+    "reply_to_revenue": "inbound cash truth; never opens a second CRM",
+    "smart_outreach": "evidence-bound candidates; does not open a second CRM",
+    "swarm_mail": "public inbox manifest; private addresses stay off git",
+    "website_people_email_book": "external prospects vs seller contacts; drafts only; --send exits 3"
+  },
+  "composed_at": "2026-08-30T16:49:59Z",
+  "contract": {
+    "append_event": "python3 host/lm_gtm_index.py append-event --subject <existing-id> --id <new-event-id> --body <text>",
+    "list_next": "python3 host/lm_gtm_index.py next",
+    "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id>",
+    "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
+    "read_state": "revenue/lm_gtm_index/state.json",
+    "send": "illegal; exits 3"
+  },
+  "does_not_create": [
+    "crm/",
+    "people/",
+    "contacts/",
+    "sales/"
+  ],
+  "does_not_replace": [
+    "revenue/website_people_email_book",
+    "revenue/smart_outreach",
+    "revenue/marketing_sales",
+    "revenue/reply_to_revenue",
+    "revenue/payment_ready/outreach_receipts",
+    "revenue/swarm_mail",
+    "Airtable JOJO Revenue Recovery CRM / Revenue Pipeline"
+  ],
+  "events": "revenue/lm_gtm_index/events.jsonl",
+  "index": "revenue/lm_gtm_index/INDEX.jsonl",
+  "kind": "LM_GTM_INDEX_STATE",
+  "named_subjects": {
+    "anythingllm-mintplex": "HOLD_DO_NOT_RESEND from receipts + loop.json",
+    "composio": "external_prospect READY_TO_DRAFT from loop.json + candidates.json",
+    "metaforms": "EXISTING_CRM_RECORD airtable:recWHbHxQoQfGhS0q; HOLD_DO_NOT_RESEND",
+    "signoz": "external_prospect RESEARCH_REQUIRED from loop.json + candidates.json"
+  },
+  "public_projection_is_not_crm": true,
+  "schema_version": "commons-lm-gtm-index/v1",
+  "truth": {
+    "calls_booked": 0,
+    "cash_usd": 0,
+    "external_prospects": 4,
+    "inbound_contacts": 10,
+    "index_rows": 20,
+    "live_next_actions": 14,
+    "mailbox": "NEEDS_OWNER_MAILBOX",
+    "overlay_events": 0,
+    "research_entities_not_live": 1000,
+    "seller_context_rows": 4,
+    "transport_actions": 0
+  }
+}

@@ -334,6 +334,18 @@ def test_live_tree_shape_and_golden():
             loop.get("public_entrypoint") == "website-people-email-book.html",
             loop.get("public_entrypoint"),
         )
+    check("lm-gtm-index row", "lm-gtm-index-20260831-01" in by_id, sorted(by_id))
+    if "lm-gtm-index-20260831-01" in by_id:
+        gtm = by_id["lm-gtm-index-20260831-01"]
+        check("lm-gtm-index source built", gtm["source_status"] == "SOURCE_BUILT", gtm)
+        check("lm-gtm-index tested", gtm["test_status"] == "TESTED", gtm)
+        check("lm-gtm-index live unmeasured", gtm["live_status"] == "UNMEASURED", gtm)
+        check("lm-gtm-index rollup tested", gtm["rollup"] == "TESTED", gtm)
+        check(
+            "lm-gtm-index door is the public entry",
+            gtm.get("public_entrypoint") == "lm-gtm-index.html",
+            gtm.get("public_entrypoint"),
+        )
     json_path = os.path.join(ROOT, ft.JSON_OUT)
     html_path = os.path.join(ROOT, ft.HTML_OUT)
     check("committed json exists", os.path.isfile(json_path))
