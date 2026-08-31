@@ -355,17 +355,24 @@ edited payload
 
         def fake_call(method: str, params: dict[str, object]) -> dict[str, object]:
             self.assertEqual(method, "conversations.list")
-            self.assertIn("public_channel,private_channel", str(params.get("types") or ""))
+            types = str(params.get("types") or "")
+            self.assertIn("public_channel,private_channel", types)
+            self.assertNotIn("im", types.replace("private_channel", ""))
             return {
                 "ok": True,
                 "channels": [
                     {"id": "C0BRGMDQB6G"},
                     {"id": "C0SOMEOTHER1"},
+                    {"id": "D0IMCHANNEL1", "is_im": True},
+                    {"id": "G0MPIMCHAN01", "is_mpim": True},
                 ],
             }
 
         client.call = fake_call  # type: ignore[method-assign]
-        ids = client.list_channel_ids()
+        # CI sets COMMONS_SLACK_CHANNEL to the default table. That is a
+        # default, not an exclusive destination allowlist.
+        with mock.patch.dict(si.os.environ, {"COMMONS_SLACK_CHANNEL": "C0BRGMDQB6G"}):
+            ids = client.list_channel_ids()
         self.assertEqual(ids, ["C0BRGMDQB6G", "C0SOMEOTHER1"])
 
     def test_exact_existing_record_is_noop_and_mismatch_is_immutable(self) -> None:

@@ -574,9 +574,6 @@ class SlackClient:
         DMs stay off the public board. Owner said use the whole Slack like a
         human; that is MCP send/read. Git ingest is channels, not DMs.
         """
-        pinned = os.environ.get("COMMONS_SLACK_CHANNEL", "").strip()
-        if pinned:
-            return [pinned]
         ids: list[str] = []
 
         def fetch(cursor: str) -> dict[str, Any]:
@@ -599,7 +596,11 @@ class SlackClient:
             if not response.get("ok", True):
                 raise IngestError("Slack API error: %s" % response.get("error", "unknown"))
             for channel in response.get("channels") or []:
-                cid = str((channel or {}).get("id") or "").strip()
+                if not isinstance(channel, dict):
+                    continue
+                if channel.get("is_im") or channel.get("is_mpim"):
+                    continue
+                cid = str(channel.get("id") or "").strip()
                 if cid:
                     ids.append(cid)
             cursor = _next_cursor(response)
