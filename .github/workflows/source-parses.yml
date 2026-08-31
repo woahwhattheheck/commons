@@ -1,0 +1,35 @@
+name: source-parses
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "**/*.py"
+      - "**/*.js"
+      - ".github/workflows/source-parses.yml"
+  pull_request:
+    paths:
+      - "**/*.py"
+      - "**/*.js"
+      - ".github/workflows/source-parses.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: source-parses-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  parse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify checker contract
+        run: python3 -m unittest -v test_source_parses.py
+
+      - name: Parse every tracked Python and JavaScript source
+        run: python3 source_parses.py
