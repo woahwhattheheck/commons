@@ -1,0 +1,51 @@
+{
+  "id": "referral-intake-completeness",
+  "version": 1,
+  "buyer": "clinic operations director",
+  "workflow": [
+    "synthetic no-PHI referral packet",
+    "deterministic required-field checklist",
+    "exactly one intake-queue ticket",
+    "timestamped progress and intake receipts"
+  ],
+  "referral_classes": {
+    "imaging-slot": {
+      "queue": "IMAGING_SCHEDULING",
+      "required": ["referringClinicId", "destinationClinicId", "laterality", "insuranceAuthFlag", "preferredWindow"]
+    },
+    "specialist-consult": {
+      "queue": "SPECIALIST_INTAKE",
+      "required": ["referringClinicId", "destinationClinicId", "reasonCategory", "insuranceAuthFlag", "recordsSetFlag"]
+    },
+    "procedure-slot": {
+      "queue": "PROCEDURE_SCHEDULING",
+      "required": ["referringClinicId", "destinationClinicId", "laterality", "procedureClass", "insuranceAuthFlag"]
+    },
+    "records-transfer": {
+      "queue": "RECORDS_INTAKE",
+      "required": ["referringClinicId", "destinationClinicId", "recordsSetFlag", "releaseAttestation"]
+    }
+  },
+  "acceptance": [
+    "every checklist item comes from the referral-class matrix",
+    "complete packets route once to the class lane",
+    "incomplete or hold packets route once to INCOMPLETE_INTAKE",
+    "replay creates no second queue ticket",
+    "crash after checklist or after queue leaves a timestamped progress receipt and resumes to one queue ticket",
+    "rollback of a crashed run clears the ticket and leaves a timestamped rollback receipt",
+    "same id with different bytes returns REFERRAL_CONFLICT",
+    "PHI-shaped or clinical keys are refused",
+    "diagnoses, care approvals, denials, and treatment advice remain zero"
+  ],
+  "commercial": {
+    "diagnostic_usd": 199,
+    "diagnostic_window": "one business day",
+    "optional_pilot_usd": 2500,
+    "proof_only_after_fit": true,
+    "cash_usd": 0
+  },
+  "open_door": true,
+  "requires_login": false,
+  "data_boundary": "browser-local synthetic fixtures only; no PHI; no server submission",
+  "decision_boundary": "completeness and routing only; never a clinical decision"
+}
