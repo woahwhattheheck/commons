@@ -29,7 +29,8 @@ What this claims (STRUCTURAL):
 - Cite, do not remint: emissary-titan-hands-features-20260826-01, emissary-titan-hands-unified-runtime-20260826-01, coil-titan-hands-peer-distribution-20260826-01, coil-titan-hands-linux-atspi-land-20260827-01, gpt-titan-hands-windows-direct-mcp-proof-20260826-01, latch-titan-hands-door-20260826-01, titan-hands.html.
 
 What this does not claim (DEVICE-UNVERIFIED / NOT-A-WALK):
-- Not a Titan walk. Not a fabricated live demo. Not a walker in the browser.
+- Not a live walk of Titan. Not a fabricated live demo. Not a walker in the browser.
+- No outreach.
 - Device runtime on the CI APK receipt stays DEVICE_UNVERIFIED. commons-apk.html release SHA `7e0bd4b2…` stays labeled not current main.
 - No emulator started. titan.gguf not hashed. Grok.com remote MCP stays not connected.
 - No buyers, cash, Stripe, Shopify, or outreach.

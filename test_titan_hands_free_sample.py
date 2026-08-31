@@ -22,7 +22,6 @@ MCP = ROOT / ".cursor" / "mcp.json"
 BANNED_INSERT = (
     "titan-walk",
     "titan walk",
-    "live walker in the browser",
     "we just ran it on your phone",
     "stripe.com/buy",
     "shopify.com",

@@ -35,7 +35,7 @@ Labels on the door: **STRUCTURAL** vs **DEVICE-UNVERIFIED** vs **NOT-A-WALK**.
 
 ## What it does NOT prove
 
-- Not a Titan walk. Not a live walker in the browser tab.
+- Not a live walk of Titan. Not a walker running in this tab.
 - Not a physical-phone proof. Not an emulator this page started.
 - Not Grok.com remote MCP (that row stays not connected).
 - Not buyers, invoices, cash, CRM, Stripe, or Shopify. This insert is for a package already in motion.
