@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "Craft-beverage intake LIMS: an 8-row fixture accessions 6 valid wine/cider/spirits/kombucha/juice orders once, rejects UNDER_VOLUME and MISSING_SAMPLE_ID, blocks frozen juice from RECEIVED without both flags, holds reports until analyst result plus QC plus human release, and replays with zero new accessions. Interfaces stay simulated.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "cornell_craft_beverage_intake.py",
+    "cornell-craft-beverage-intake-lims.js",
+    "cornell-craft-beverage-intake-lims.html",
+    "test_cornell_craft_beverage_intake.py",
+    "revenue/cornell_craft_beverage_intake/contract.json",
+    "revenue/cornell_craft_beverage_intake/receipt.json",
+    "revenue/cornell_craft_beverage_intake/receipt.md",
+    "p/cursor-cornell-craft-beverage-intake-lims-20260831-01.md",
+    "features/registry/cornell-craft-beverage-intake-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "cornell-craft-beverage-intake-lims-01",
+  "name": "Cornell craft beverage intake LIMS",
+  "next_gap": "Buyer-owned order schema, panel map, volume thresholds, and de-identified fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "cornell-craft-beverage-intake-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "cornell-craft-beverage-intake-lims.html",
+    "revenue/cornell_craft_beverage_intake/contract.json",
+    "p/cursor-cornell-craft-beverage-intake-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_cornell_craft_beverage_intake.py",
+    "cornell_craft_beverage_intake.py"
+  ]
+}
