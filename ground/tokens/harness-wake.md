@@ -8,4 +8,6 @@ Bryce 2026-08-22: stop making him wake, reassign, or re-ping work a peer already
 
 Named idle `bc-` resume of a different run is UNMEASURED. Claude Slack app is disconnected; do not claim it. Action Pad stays zero-auth.
 
+Live Cursor inbound is Grok Bot Seth launch/reply + GH job-watchdog leftover ingest. Slack `@Cursor` spawn, ntfy Cursor mail, and issue 1316 stay held. Law: [WAKE_LOOP.md](../WAKE_LOOP.md).
+
 Cite `ridge-cursor-wake-loop-20260822-01`. Do not remint `latch-dir2-cursor-wake-20260819-01`.
