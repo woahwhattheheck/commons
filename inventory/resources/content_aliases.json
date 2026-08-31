@@ -377,11 +377,11 @@
         },
         {
           "mode": "100644",
-          "path": "muhl/desktop/MUHLNICKEL_LOOM_v2/INDEX.md"
+          "path": "muhl/desktop/MUHLNICKEL_LOOM/INDEX.md"
         },
         {
           "mode": "100644",
-          "path": "muhl/desktop/MUHLNICKEL_LOOM/INDEX.md"
+          "path": "muhl/desktop/MUHLNICKEL_LOOM_v2/INDEX.md"
         }
       ],
       "canonical_mode": "100644",
@@ -912,11 +912,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "ground/pc-purge-20260820/SPEC_DADDY_STUDY.md"
+          "path": "ground/SPEC_DADDY_STUDY.md"
         },
         {
           "mode": "100644",
-          "path": "ground/SPEC_DADDY_STUDY.md"
+          "path": "ground/pc-purge-20260820/SPEC_DADDY_STUDY.md"
         },
         {
           "mode": "100644",
@@ -1448,11 +1448,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "muhl/desktop/WEATHER/SURFACE_TURN_001_BITS.txt"
+          "path": "muhl/desktop/WEATHER/_audit_bits_txt_pre.txt"
         }
       ],
       "canonical_mode": "100644",
-      "canonical_path": "muhl/desktop/WEATHER/_audit_bits_txt_pre.txt",
+      "canonical_path": "muhl/desktop/WEATHER/SURFACE_TURN_001_BITS.txt",
       "content_address": "git_blob:2b76a341487dd060b5223ccdd96082a9a2789986",
       "logical_bytes": 19384,
       "path_count": 2,
@@ -1598,15 +1598,19 @@
       "aliases": [
         {
           "mode": "100644",
+          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/genome.json"
+        },
+        {
+          "mode": "100644",
+          "path": "muhl/whitebox-research/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL/buttons/genome.json"
+        },
+        {
+          "mode": "100644",
           "path": "muhl/whitebox-research/gemma-4-31B-it-qat-UD-Q4_K_XL/buttons/genome.json"
         },
         {
           "mode": "100644",
           "path": "muhl/whitebox-research/google_gemma-3-27b-it-Q4_K_M/buttons/genome.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/genome.json"
         },
         {
           "mode": "100644",
@@ -1619,14 +1623,10 @@
         {
           "mode": "100644",
           "path": "muhl/whitebox-research/phi-4-Q4_K_M/buttons/genome.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/genome.json"
         }
       ],
       "canonical_mode": "100644",
-      "canonical_path": "muhl/whitebox-research/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL/buttons/genome.json",
+      "canonical_path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/genome.json",
       "content_address": "git_blob:2e19f051159cc14eb52e583e5e0058ef233e2c68",
       "logical_bytes": 88,
       "path_count": 8,
@@ -1909,11 +1909,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "ground/pc-purge-20260820/WALLS_PLAIN.md"
+          "path": "ground/WALLS_PLAIN.md"
         },
         {
           "mode": "100644",
-          "path": "ground/WALLS_PLAIN.md"
+          "path": "ground/pc-purge-20260820/WALLS_PLAIN.md"
         },
         {
           "mode": "100644",
@@ -3691,11 +3691,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "muhl/desktop/WEATHER/weather.mno"
+          "path": "muhl/desktop/WEATHER/weather_v1.mno"
         }
       ],
       "canonical_mode": "100644",
-      "canonical_path": "muhl/desktop/WEATHER/weather_v1.mno",
+      "canonical_path": "muhl/desktop/WEATHER/weather.mno",
       "content_address": "git_blob:591ff6a98f43c86c52d564c8fcdd68784c8eb351",
       "logical_bytes": 1770692,
       "path_count": 2,
@@ -4405,11 +4405,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "muhl/desktop/MUHLNICKEL_LOOM/run_muhlnickel.py"
+          "path": "muhl/desktop/MUHLNICKEL_LOOM_v2/run_muhlnickel.py"
         }
       ],
       "canonical_mode": "100644",
-      "canonical_path": "muhl/desktop/MUHLNICKEL_LOOM_v2/run_muhlnickel.py",
+      "canonical_path": "muhl/desktop/MUHLNICKEL_LOOM/run_muhlnickel.py",
       "content_address": "git_blob:6da735e269b480b5c005b8599385115002f04698",
       "logical_bytes": 15218,
       "path_count": 2,
@@ -5350,11 +5350,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml"
+          "path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml"
         }
       ],
       "canonical_mode": "100644",
-      "canonical_path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml",
+      "canonical_path": "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml",
       "content_address": "git_blob:88237f2c7204b678ee4ae04738b08fed63656388",
       "logical_bytes": 476,
       "path_count": 2,
@@ -6385,6 +6385,30 @@
       "aliases": [
         {
           "mode": "100644",
+          "path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/token_neurons_king.json"
+        },
+        {
+          "mode": "100644",
+          "path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/token_neurons_true.json"
+        },
+        {
+          "mode": "100644",
+          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/token_neurons_good.json"
+        },
+        {
+          "mode": "100644",
+          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/token_neurons_king.json"
+        },
+        {
+          "mode": "100644",
+          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/token_neurons_true.json"
+        },
+        {
+          "mode": "100644",
+          "path": "muhl/whitebox-research/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL/buttons/token_neurons_good.json"
+        },
+        {
+          "mode": "100644",
           "path": "muhl/whitebox-research/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL/buttons/token_neurons_king.json"
         },
         {
@@ -6414,18 +6438,6 @@
         {
           "mode": "100644",
           "path": "muhl/whitebox-research/google_gemma-3-27b-it-Q4_K_M/buttons/token_neurons_true.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/token_neurons_good.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/token_neurons_king.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/token_neurons_true.json"
         },
         {
           "mode": "100644",
@@ -6462,22 +6474,10 @@
         {
           "mode": "100644",
           "path": "muhl/whitebox-research/phi-4-Q4_K_M/buttons/token_neurons_true.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/token_neurons_good.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/token_neurons_king.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/token_neurons_true.json"
         }
       ],
       "canonical_mode": "100644",
-      "canonical_path": "muhl/whitebox-research/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL/buttons/token_neurons_good.json",
+      "canonical_path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/token_neurons_good.json",
       "content_address": "git_blob:a583630073baca6aa627fd2b498f8bac6408f069",
       "logical_bytes": 912,
       "path_count": 24,
@@ -8076,15 +8076,19 @@
       "aliases": [
         {
           "mode": "100644",
+          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/param_scan.json"
+        },
+        {
+          "mode": "100644",
+          "path": "muhl/whitebox-research/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL/buttons/param_scan.json"
+        },
+        {
+          "mode": "100644",
           "path": "muhl/whitebox-research/gemma-4-31B-it-qat-UD-Q4_K_XL/buttons/param_scan.json"
         },
         {
           "mode": "100644",
           "path": "muhl/whitebox-research/google_gemma-3-27b-it-Q4_K_M/buttons/param_scan.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/param_scan.json"
         },
         {
           "mode": "100644",
@@ -8097,14 +8101,10 @@
         {
           "mode": "100644",
           "path": "muhl/whitebox-research/phi-4-Q4_K_M/buttons/param_scan.json"
-        },
-        {
-          "mode": "100644",
-          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/param_scan.json"
         }
       ],
       "canonical_mode": "100644",
-      "canonical_path": "muhl/whitebox-research/gemma-4-26B-A4B-it-qat-UD-Q4_K_XL/buttons/param_scan.json",
+      "canonical_path": "muhl/whitebox-research/Llama-3.3-70B-Instruct-Q4_K_M/buttons/param_scan.json",
       "content_address": "git_blob:cc73ad7839b0e9c3fb143839a8a55a6a32742314",
       "logical_bytes": 224,
       "path_count": 8,
@@ -8230,11 +8230,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "muhl/desktop/MUHLNICKEL_LOOM_v2/Muhlnickel.bat"
+          "path": "muhl/desktop/MUHLNICKEL_LOOM/Muhlnickel.bat"
         },
         {
           "mode": "100644",
-          "path": "muhl/desktop/MUHLNICKEL_LOOM/Muhlnickel.bat"
+          "path": "muhl/desktop/MUHLNICKEL_LOOM_v2/Muhlnickel.bat"
         }
       ],
       "canonical_mode": "100644",
@@ -8589,11 +8589,11 @@
       "aliases": [
         {
           "mode": "100644",
-          "path": "muhl/whitebox-research/mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M/buttons/layerroles.json"
+          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/layerroles.json"
         },
         {
           "mode": "100644",
-          "path": "muhl/whitebox-research/SmolLM2-360M-Instruct-Q8_0/buttons/layerroles.json"
+          "path": "muhl/whitebox-research/mistralai_Mistral-Small-3.2-24B-Instruct-2506-Q4_K_M/buttons/layerroles.json"
         }
       ],
       "canonical_mode": "100644",
