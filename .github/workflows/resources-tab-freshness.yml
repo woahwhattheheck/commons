@@ -1,0 +1,84 @@
+# resources.html last-reviewed stamp. Regenerate when sources drift, or
+# alarm (fail + visible STALE mark). Does not block posting or seats.
+name: resources-tab-freshness
+
+on:
+  schedule:
+    - cron: "19 * * * *"
+  push:
+    branches:
+      - main
+    paths: &resource_paths
+      - "resources.html"
+      - "host/resources_tab.py"
+      - "test_resources_tab.py"
+      - ".github/workflows/resources-tab-freshness.yml"
+      - "ground/RESOURCE_LEDGER.json"
+      - "ground/RESOURCE_LEDGER.md"
+      - "ground/RESOURCES_TAB.md"
+      - "inventory/resources/**"
+      - "ci/provider_quotas.json"
+      - "revenue/outcome_commerce/manifest.json"
+      - "revenue/outcome_commerce/catalog.json"
+      - "orchestration/jeffersonville/frameworks.json"
+      - "orchestration/jeffersonville/topology.json"
+  pull_request:
+    paths: *resource_paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: unit contract
+        run: python3 test_resources_tab.py
+      - name: fail when resources.html is stale vs inputs
+        run: python3 host/resources_tab.py --check
+
+  regenerate-or-alarm:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 20
+      - name: unit contract
+        run: python3 test_resources_tab.py
+      - name: regenerate stamp when sources drifted, else leave FRESH
+        run: python3 host/resources_tab.py --regenerate-or-alarm --sha "${GITHUB_SHA}"
+      - name: commit regenerated stamp on main only
+        if: github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- resources.html
+          git diff --cached --quiet && { echo "resources.html stamp unchanged"; exit 0; }
+          git commit -m "resources-tab: refresh last-reviewed stamp"
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}" || { git rebase --abort; echo "rebase conflict"; exit 1; }
+            python3 host/resources_tab.py --regenerate-or-alarm
+            git add -- resources.html
+            git diff --cached --quiet || git commit -m "resources-tab: refresh last-reviewed stamp"
+            sleep $((i * 3))
+          done
+          echo "push failed after 5 attempts"
+          exit 1
+      - name: alarm if the served tab is still stale
+        run: python3 host/resources_tab.py --check
