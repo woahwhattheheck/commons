@@ -1083,6 +1083,7 @@ class AppTests(unittest.TestCase):
         parsed = subprocess.run(
             ["node", "-e", fn + "\nprocess.stdout.write(durablePageStatus(" + json.dumps(sample) + "))"],
             text=True,
+            encoding="utf-8",
             capture_output=True,
         )
         self.assertEqual(parsed.returncode, 0, parsed.stderr)
@@ -1099,6 +1100,7 @@ class AppTests(unittest.TestCase):
         create_out = subprocess.run(
             ["node", "-e", fn + "\nprocess.stdout.write(durablePageStatus(" + json.dumps(sample) + ", " + json.dumps(sample["path"]) + "))"],
             text=True,
+            encoding="utf-8",
             capture_output=True,
         )
         self.assertEqual(create_out.returncode, 0, create_out.stderr)
