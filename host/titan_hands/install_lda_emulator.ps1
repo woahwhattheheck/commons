@@ -13,7 +13,8 @@ $adb = Join-Path $SdkRoot 'platform-tools\adb.exe'
 $ldaRoot = Join-Path $repoRoot 'lda'
 $apk = Join-Path $ldaRoot 'app\build\outputs\apk\debug\app-debug.apk'
 $debugKey = Join-Path $ldaRoot 'app\debug.keystore'
-$service = 'com.local.deviceagent/com.local.deviceagent.ActionAccessibilityService'
+$packageName = 'com.local.deviceagent'
+$service = "$packageName/com.local.deviceagent.ActionAccessibilityService"
 
 if (-not (Test-Path -LiteralPath $adb)) { throw "adb not found: $adb" }
 if (-not (Test-Path -LiteralPath $Gradle)) { throw "Gradle not found: $Gradle" }
@@ -53,6 +54,14 @@ if ($SkipBuild) {
 
 & $adb -s $Serial install -r $apk | Out-Host
 if ($LASTEXITCODE -ne 0) { throw "LDA APK install failed with exit code $LASTEXITCODE" }
+
+# This application deliberately contains the owner's full Kotlin agent implementation. On a constrained
+# emulator, first-run bytecode verification can exceed Android's fixed service-attach deadline even though
+# the package is healthy. Compile the installed package once before asking AccessibilityManager to bind it.
+$compileResult = @(& $adb -s $Serial shell cmd package compile -m speed -f $packageName)
+if ($LASTEXITCODE -ne 0 -or ($compileResult -join ' ') -notmatch '(?i)\bSuccess\b') {
+    throw "LDA package precompile failed: $($compileResult -join ' ')"
+}
 
 $enabled = (& $adb -s $Serial shell settings get secure enabled_accessibility_services).Trim()
 $parts = @($enabled.Split(':') | Where-Object { $_ -and $_ -ne 'null' })
