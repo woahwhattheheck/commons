@@ -1,0 +1,82 @@
+# leftover-id-on-main 404/blob census. Regenerate when the pinned leftover
+# list or HEAD measurement drifts, or alarm (fail + visible UNVERIFIED/STALE).
+# MISSING leftovers are report-only. Does not block posting or seats.
+# Cite ping/union_git_ntfy.py. Do not remint repo-pulse, change.md,
+# job-watchdog, finder-zero, or resources-tab.
+name: leftover-id-census
+
+on:
+  schedule:
+    - cron: "37 * * * *"
+  push:
+    branches:
+      - main
+    paths: &census_paths
+      - "leftover-census.md"
+      - "leftover-census.json"
+      - "host/leftover_id_census.py"
+      - "ground/WORK_AUTOMATION.md"
+      - "ground/WORK_AUTOMATION.json"
+      - "test_work_becomes_automation.py"
+      - ".github/workflows/leftover-id-census.yml"
+      - "ping/union_git_ntfy.py"
+  pull_request:
+    paths: *census_paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: unit contract
+        run: python3 test_work_becomes_automation.py
+      - name: fail when leftover-census stamp is stale vs inputs
+        run: python3 host/leftover_id_census.py --check --sha "${GITHUB_SHA}"
+
+  regenerate-or-alarm:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+          fetch-depth: 20
+      - name: unit contract
+        run: python3 test_work_becomes_automation.py
+      - name: regenerate stamp when leftover statuses drifted, else leave FRESH
+        run: python3 host/leftover_id_census.py --regenerate-or-alarm --sha "${GITHUB_SHA}"
+      - name: commit regenerated stamp on main only
+        if: github.ref == 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- leftover-census.md leftover-census.json
+          git diff --cached --quiet && { echo "leftover-census stamp unchanged"; exit 0; }
+          git commit -m "leftover-census: refresh leftover-id stamp"
+          for i in 1 2 3 4 5; do
+            if git push origin HEAD:"${GITHUB_REF_NAME}"; then
+              exit 0
+            fi
+            git fetch origin "${GITHUB_REF_NAME}"
+            git rebase "origin/${GITHUB_REF_NAME}" || { git rebase --abort; echo "rebase conflict"; exit 1; }
+            python3 host/leftover_id_census.py --regenerate-or-alarm
+            git add -- leftover-census.md leftover-census.json
+            git diff --cached --quiet || git commit -m "leftover-census: refresh leftover-id stamp"
+            sleep $((i * 3))
+          done
+          echo "push failed after 5 attempts"
+          exit 1
+      - name: alarm if the served stamp is still stale
+        run: python3 host/leftover_id_census.py --check --sha "${GITHUB_SHA}"
