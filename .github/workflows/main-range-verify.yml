@@ -1,6 +1,7 @@
 name: main-range-verify
 
-# Busy main is sampled as a range. One run replaces five per-push observers.
+# Busy main is sampled as a range. One run replaces six per-push observers,
+# including source parsing when Python or JavaScript changed in the range.
 on:
   schedule:
     - cron: '7,22,37,52 * * * *'

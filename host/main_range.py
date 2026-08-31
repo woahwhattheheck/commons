@@ -41,6 +41,14 @@ VERIFIER_PROVENANCE = {
         "scope": "FROZEN_RANGE",
         "paths": ("muhlnickel_spec_guard.py", "test_muhlnickel_spec_guard.py"),
     },
+    "source-parses": {
+        "scope": "FROZEN_HEAD",
+        "paths": (
+            "source_parses.py",
+            "test_source_parses.py",
+            ".github/workflows/source-parses.yml",
+        ),
+    },
     "path-manifest": {
         "scope": "FROZEN_HEAD",
         "paths": (
@@ -95,9 +103,27 @@ def plan(paths: list[str]) -> list[tuple[str, list[str]]]:
         ("muhlnickel", [sys.executable, "muhlnickel_spec_guard.py", "--base", "{base}", "--worktree"]),
     ]
     only_projection_data = bool(paths) and all(p in DATA_FILES or p.startswith(DATA_PREFIXES) for p in paths)
+    source_changed = any(
+        path.endswith((".py", ".js"))
+        or path == ".github/workflows/source-parses.yml"
+        for path in paths
+    )
+    if source_changed:
+        commands.append(("source-parses", [sys.executable, "source_parses.py"]))
     if not only_projection_data:
         commands.append(("path-manifest", [sys.executable, "test_path_manifest.py"]))
     return commands
+
+
+def verifier_candidate_paths(name: str, paths: list[str]) -> list[str]:
+    """Return range paths capable of producing a verifier finding."""
+    if name == "source-parses":
+        return sorted(
+            path for path in paths
+            if path.endswith((".py", ".js"))
+            or path == ".github/workflows/source-parses.yml"
+        )
+    return sorted(set(paths).intersection(VERIFIER_PROVENANCE[name]["paths"]))
 
 
 def finding_provenance(
@@ -117,7 +143,7 @@ def finding_provenance(
     """
     config = VERIFIER_PROVENANCE[name]
     verifier_paths = list(config["paths"])
-    candidate_paths = sorted(set(paths).intersection(verifier_paths))
+    candidate_paths = verifier_candidate_paths(name, paths)
     scope = config["scope"]
     if exit_code == 0:
         attribution = "PASS"

@@ -2,13 +2,6 @@ name: source-parses
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - "**/*.py"
-      - "**/*.js"
-      - ".github/workflows/source-parses.yml"
   pull_request:
     paths:
       - "**/*.py"
