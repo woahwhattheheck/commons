@@ -1,0 +1,83 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-31T22:09:39Z",
+  "selected_resource": "commons-data-corpus",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "AVAILABLE",
+    "condition": "CONSTRAINED",
+    "evidence": "The ledger held a stale 2026-08-26 aggregate estimate of 366 duplicate-blob groups and 321.6 MB of logical aliases, with no durable path-to-content-address projection or reproducer."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "941c12f45fa4195bb6de5f11b20d18180c3c5a1e",
+    "source_tree_sha": "7d1125e9cdc861575ca0d2d50b49989174c3362b",
+    "product_head_sha": "68f6ca6089cb14942f90f54344e5e19a54b4b0c9"
+  },
+  "authority": "OPEN_GIT_TREE_READ; EXPLICIT_LOCAL_OUTPUT_ONLY; NO_DELETE_COPY_HISTORY_REWRITE_OR_SEMANTIC_EQUIVALENCE_CLAIM",
+  "concrete_consumer": "Commons Resource Master plus research, evidence, projection, Muhlnickel, model, and device agents that need one canonical path and explicit aliases per stored Git blob",
+  "measurable_outcome": "An exact, untruncated recursive Git tree was converted into a deterministic 504-group alias projection covering 32,127 tracked blobs, 1,736 logical files in duplicate groups, 1,232 extra alias paths, and 322,685,228 alias bytes without reading or copying blob contents.",
+  "counts": {
+    "alias_bytes": 322685228,
+    "duplicate_groups": 504,
+    "extra_alias_paths": 1232,
+    "logical_duplicate_bytes": 372972625,
+    "logical_files_in_duplicate_groups": 1736,
+    "tracked_blobs": 32127,
+    "unique_content_addresses": 30895,
+    "mno_paths": 913,
+    "focused_tests_passed": 8,
+    "deletions": 0,
+    "history_rewrites": 0,
+    "blob_content_copies": 0
+  },
+  "exact_blobs": {
+    "host/resource_alias_index.py": "84cd065ddfd7f362081288a27861cc09d0278867",
+    "inventory/resources/content_aliases.json": "a899685df58a019c81d7dc17ca3b0b2adc71fb72",
+    "test_resource_alias_index.py": "e3842248f3c9ebf979ed53b0a5e8b5010f5bfa30"
+  },
+  "projection": {
+    "resources": 66,
+    "producing": 35
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "paused_automations": 8,
+    "total_automations": 11,
+    "callable_tools": 405,
+    "codex_app_tools": 390,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded_from_capacity": true
+  },
+  "verification": {
+    "source_tree_truth": "Git data API returned recursive tree 7d1125e9cdc861575ca0d2d50b49989174c3362b for exact main 941c12f45fa4195bb6de5f11b20d18180c3c5a1e with truncated=false, 32,665 tree entries, and 32,127 blobs.",
+    "product_truth": "The checked-in projection contains 504 duplicate Git-blob groups, 1,232 noncanonical alias paths, 372,972,625 logical bytes across duplicate groups, and 322,685,228 alias bytes. Every group uses one Git blob object id as its content address and one lexicographically stable canonical path.",
+    "reproducer_truth": "host/resource_alias_index.py uses NUL-delimited `git ls-tree -r -l -z --full-tree`, validates Git object IDs, paths, and sizes, sorts deterministically, fails closed on inconsistent inputs, and can verify the pinned snapshot via `--check`.",
+    "tests": "8/8 focused unit tests and Python compile passed: exact summary/canonical paths, unique exclusion, input-order byte stability, duplicate path failure, inconsistent size failure, invalid object failure, NUL-delimited parser, and explicit zero-mutation truth boundary.",
+    "fresh_main_collision_audit": "The sole open PR #6816 changes two TITAN Android recovery paths. It overlaps none of the six activation paths and remains untouched under Titan and owner-device boundaries.",
+    "secrets_and_open_door": "The product reads public tracked Git metadata only, introduces no auth or admission gate, stores no blob contents or credentials, and performs zero deletions, history rewrites, device acts, or network sends.",
+    "stale_claim_policy": "The snapshot is pinned to its exact source commit/tree and is not called current after later material corpus changes. Re-run the read-only indexer rather than reserving or copying aliases."
+  },
+  "evidence": {
+    "source_commit": "https://github.com/woahwhattheheck/commons/commit/941c12f45fa4195bb6de5f11b20d18180c3c5a1e",
+    "source_tree": "https://api.github.com/repos/woahwhattheheck/commons/git/trees/7d1125e9cdc861575ca0d2d50b49989174c3362b",
+    "index": "https://github.com/woahwhattheheck/commons/blob/main/inventory/resources/content_aliases.json",
+    "reproducer": "https://github.com/woahwhattheheck/commons/blob/main/host/resource_alias_index.py",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788213736299499"
+  },
+  "next_action": "Use the alias projection before deriving or copying corpus artifacts; cite the canonical path plus content address, preserve every logical path and Git history, and refresh only after a material corpus-tree change.",
+  "rate_plan_boundary": "Identical Git blob identity proves byte identity inside this repository, not semantic equivalence, safe deletion, archive status, independent SHA-256 attestation, new physical capacity, model execution, device action, deployment, payment, revenue, or cash.",
+  "non_claims": [
+    "No file deletion, path replacement, history rewrite, archive/quarantine mutation, or blob-content copy",
+    "No semantic-equivalence, deduplication savings, disk reclamation, deployment, or device action",
+    "No outreach, resend, City contact, bid, submission, payment, revenue, or cash",
+    "No Grok, Cursor, or Claude execution or verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
