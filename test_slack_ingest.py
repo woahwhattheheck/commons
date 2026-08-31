@@ -407,6 +407,7 @@ edited payload
                     {"id": "C0SOMEOTHER1"},
                     {"id": "D0IMCHANNEL1", "is_im": True},
                     {"id": "G0MPIMCHAN01", "is_mpim": True},
+                    {"id": "C0UNJOINED01", "is_member": False},
                 ],
             }
 

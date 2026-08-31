@@ -600,6 +600,8 @@ class SlackClient:
                     continue
                 if channel.get("is_im") or channel.get("is_mpim"):
                     continue
+                if channel.get("is_member") is False:
+                    continue
                 cid = str(channel.get("id") or "").strip()
                 if cid:
                     ids.append(cid)
