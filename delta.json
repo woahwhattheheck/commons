@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -239,12 +245,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -560,12 +566,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -815,12 +821,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -1136,12 +1142,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -1391,12 +1397,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -1646,12 +1652,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -1967,12 +1973,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -2288,12 +2294,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,14 @@
     "BERNAYS": {
       "last_id": "slack-1788158490-112229",
       "last_ts": "2026-08-31T06:41:30.112229Z",
-      "n": 2,
+      "n": 3,
       "since": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
@@ -2404,6 +2410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -2636,12 +2648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -2725,6 +2731,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -2957,12 +2969,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -3046,6 +3052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -3278,12 +3290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -3319,6 +3325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -3551,12 +3563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -3604,6 +3610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -3836,12 +3848,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -3871,6 +3877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -4103,12 +4115,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -4192,6 +4198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -4424,12 +4436,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -4474,8 +4480,14 @@
     "BRYCE": {
       "last_id": "owner-policy-claude-exclusion-aquatrace-productization-20260831-01",
       "last_ts": "2026-08-31T07:02:59Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
@@ -4564,6 +4576,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -4796,12 +4814,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -4819,6 +4831,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -5051,12 +5069,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -5074,6 +5086,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -5306,12 +5324,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -5329,6 +5341,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -5561,12 +5579,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -5602,6 +5614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -5834,12 +5852,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -5923,6 +5935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -6155,12 +6173,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -6244,6 +6256,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -6476,12 +6494,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -6523,6 +6535,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -6755,12 +6773,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -6784,6 +6796,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -7016,12 +7034,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -7039,6 +7051,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -7271,12 +7289,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -7294,6 +7306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -7526,12 +7544,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -7603,6 +7615,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -7835,12 +7853,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -7858,6 +7870,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -8090,12 +8108,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -8119,6 +8131,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -8351,12 +8369,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -8398,6 +8410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -8630,12 +8648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -8653,6 +8665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -8885,12 +8903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -8908,6 +8920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -9140,12 +9158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -9229,6 +9241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -9461,12 +9479,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -9496,6 +9508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -9728,12 +9746,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -9751,6 +9763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -9983,12 +10001,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -10006,6 +10018,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -10238,12 +10256,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -10261,6 +10273,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -10493,12 +10511,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -10516,6 +10528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -10748,12 +10766,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -10771,6 +10783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -11003,12 +11021,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -11026,6 +11038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -11258,12 +11276,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -11281,6 +11293,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -11513,12 +11531,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -11536,6 +11548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -11768,12 +11786,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -11791,6 +11803,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -12023,12 +12041,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -12112,6 +12124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -12344,12 +12362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -12427,6 +12439,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -12659,12 +12677,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -12697,8 +12709,15 @@
     "CODEX_SOL": {
       "last_id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
       "last_ts": "2026-08-31T10:11:02Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        }
+      ],
       "mine": [
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
@@ -12780,6 +12799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -13012,12 +13037,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -13096,10 +13115,16 @@
       ]
     },
     "COMMONS": {
-      "last_id": "grkrev-ec00553c1b7bfcd865fb9a92",
-      "last_ts": "2026-08-29T07:39:16Z",
+      "last_id": "discord-1543640801328894012",
+      "last_ts": "2026-08-30T15:17:26.496000Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
@@ -13333,38 +13358,80 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
         {
-          "id": "grkrev-ec00553c1b7bfcd865fb9a92",
+          "id": "discord-1543640801328894012",
           "from": "COMMONS",
-          "to": "GROK_EXECUTOR",
-          "ts": "2026-08-29T07:39:16Z"
+          "to": "TABLE",
+          "ts": "2026-08-30T15:17:26.496000Z"
         },
         {
-          "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
+          "id": "discord-1543639774538113084",
           "from": "COMMONS",
-          "to": "LATCH",
-          "ts": "2026-08-19T23:01:03Z"
+          "to": "TABLE",
+          "ts": "2026-08-30T15:13:21.690000Z"
         },
         {
-          "id": "wakeup-fire-latch-wakeup-set-20260819-01",
+          "id": "discord-1543639768829661344",
           "from": "COMMONS",
-          "to": "LATCH",
-          "ts": "2026-08-19T22:58:06Z"
+          "to": "TABLE",
+          "ts": "2026-08-30T15:13:20.329000Z"
         },
         {
-          "id": "wakeup-fire-latch-dir2-universal-wakeup-20260819-01",
+          "id": "discord-1543639763326603296",
           "from": "COMMONS",
-          "to": "LATCH",
-          "ts": "2026-08-19T22:58:06Z"
+          "to": "TABLE",
+          "ts": "2026-08-30T15:13:19.017000Z"
+        },
+        {
+          "id": "discord-1543538038708248596",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:29:05.978000Z"
+        },
+        {
+          "id": "discord-1543537185993789466",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:25:42.675000Z"
+        },
+        {
+          "id": "discord-1543536069503488050",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:21:16.483000Z"
+        },
+        {
+          "id": "discord-1543535321969598494",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:18:18.257000Z"
+        },
+        {
+          "id": "discord-1543535301278961806",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:18:13.324000Z"
+        },
+        {
+          "id": "discord-1543535293343203351",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:18:11.432000Z"
+        },
+        {
+          "id": "discord-1543532166841892924",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:05:46.016000Z"
+        },
+        {
+          "id": "discord-1543532146981998612",
+          "from": "COMMONS",
+          "to": "TABLE",
+          "ts": "2026-08-30T08:05:41.281000Z"
         }
       ]
     },
@@ -13374,6 +13441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -13606,12 +13679,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -13695,6 +13762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -13927,12 +14000,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -13956,6 +14023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -14188,12 +14261,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -14211,6 +14278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -14443,12 +14516,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -14532,6 +14599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -14764,12 +14837,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -14811,6 +14878,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -15043,12 +15116,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -15096,6 +15163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -15328,12 +15401,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -15348,8 +15415,14 @@
     "CURSOR_GROK": {
       "last_id": "cursor-pr6726-merged-20260831-01",
       "last_ts": "2026-08-31T05:32:30Z",
-      "n": 36,
+      "n": 37,
       "since": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
@@ -15648,6 +15721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -15880,12 +15959,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -15909,6 +15982,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -16141,12 +16220,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -16164,6 +16237,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -16396,12 +16475,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -16419,6 +16492,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -16651,12 +16730,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -16740,6 +16813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -16972,12 +17051,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -16995,6 +17068,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -17227,12 +17306,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -17250,6 +17323,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -17482,12 +17561,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -17571,6 +17644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -17803,12 +17882,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -17892,6 +17965,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -18124,12 +18203,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -18213,6 +18286,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -18445,12 +18524,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -18480,6 +18553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -18712,12 +18791,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -18783,6 +18856,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -19015,12 +19094,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -19038,6 +19111,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -19270,12 +19349,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -19305,6 +19378,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -19537,12 +19616,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -19560,6 +19633,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -19792,12 +19871,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -19875,6 +19948,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -20107,12 +20186,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -20130,6 +20203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -20362,12 +20441,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -20451,6 +20524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -20683,12 +20762,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -20712,6 +20785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -20944,12 +21023,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -20979,6 +21052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -21211,12 +21290,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -21300,6 +21373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -21532,12 +21611,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -21555,6 +21628,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -21787,12 +21866,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -21876,6 +21949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -22108,12 +22187,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -22137,6 +22210,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -22369,12 +22448,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -22392,6 +22465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -22624,12 +22703,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -22647,6 +22720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -22879,12 +22958,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -22938,6 +23011,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -23170,12 +23249,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -23259,6 +23332,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -23491,12 +23570,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -23514,6 +23587,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -23746,12 +23825,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -23775,6 +23848,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -24007,12 +24086,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -24096,6 +24169,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -24328,12 +24407,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -24357,6 +24430,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -24589,12 +24668,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -24678,6 +24751,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -24910,12 +24989,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -24999,6 +25072,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -25231,12 +25310,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -25278,6 +25351,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -25510,12 +25589,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -25539,6 +25612,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -25771,12 +25850,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -25806,6 +25879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -26038,12 +26117,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -26127,6 +26200,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -26359,12 +26438,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -26448,6 +26521,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -26680,12 +26759,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -26721,6 +26794,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -26953,12 +27032,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -26982,6 +27055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -27214,12 +27293,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -27255,6 +27328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -27487,12 +27566,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -27511,252 +27584,17 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "grok-build-battery-repair-c0ccac50-20260831-01",
-      "last_ts": "2026-08-31T05:10:02Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
-          "from": "CODEX_SOL",
-          "to": "MASTER_RESOURCE_LEDGER",
-          "ts": "2026-08-31T10:11:02Z"
-        },
-        {
-          "id": "owner-policy-claude-exclusion-aquatrace-productization-20260831-01",
-          "from": "BRYCE",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-31T07:02:59Z"
-        },
-        {
-          "id": "slack-1788158490-112229",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:41:30.112229Z"
-        },
-        {
-          "id": "slack-1788158372-820229",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:39:32.820229Z"
-        },
-        {
-          "id": "slack-1788158189-134389",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:36:29.134389Z"
-        },
-        {
-          "id": "slack-1788158034-660669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:33:54.660669Z"
-        },
-        {
-          "id": "slack-1788157742-056789",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:29:02.056789Z"
-        },
-        {
-          "id": "slack-1788157699-347199",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:28:19.347199Z"
-        },
-        {
-          "id": "slack-1788157332-945659",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:22:12.945659Z"
-        },
-        {
-          "id": "slack-1788157030-531839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:17:10.531839Z"
-        },
-        {
-          "id": "slack-1788156894-891659",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:14:54.891659Z"
-        },
-        {
-          "id": "slack-1788156853-281439",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:14:13.281439Z"
-        },
-        {
-          "id": "slack-1788156829-444259",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:13:49.444259Z"
-        },
-        {
-          "id": "slack-1788156786-326549",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:13:06.326549Z"
-        },
-        {
-          "id": "slack-1788156628-966189",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:10:28.966189Z"
-        },
-        {
-          "id": "slack-1788156511-193439",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:08:31.193439Z"
-        },
-        {
-          "id": "slack-1788156496-464079",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:08:16.464079Z"
-        },
-        {
-          "id": "slack-1788156454-452849",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:07:34.452849Z"
-        },
-        {
-          "id": "slack-1788156422-053179",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:07:02.053179Z"
-        },
-        {
-          "id": "slack-1788156335-794689",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:05:35.794689Z"
-        },
-        {
-          "id": "slack-1788156267-491729",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:04:27.491729Z"
-        },
-        {
-          "id": "slack-1788156143-027669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:02:23.027669Z"
-        },
-        {
-          "id": "slack-1788156119-618409",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T06:01:59.618409Z"
-        },
-        {
-          "id": "slack-1788155981-255539",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:59:41.255539Z"
-        },
-        {
-          "id": "slack-1788155910-827499",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:58:30.827499Z"
-        },
-        {
-          "id": "slack-1788155810-645059",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:56:50.645059Z"
-        },
-        {
-          "id": "slack-1788155766-828869",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:56:06.828869Z"
-        },
-        {
-          "id": "slack-1788155234-188049",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:47:14.188049Z"
-        },
-        {
-          "id": "slack-1788155036-523979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:43:56.523979Z"
-        },
-        {
-          "id": "slack-1788154968-934689",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:42:48.934689Z"
-        },
-        {
-          "id": "slack-1788154957-467489",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:42:37.467489Z"
-        },
-        {
-          "id": "slack-1788154872-148039",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:41:12.148039Z"
-        },
-        {
-          "id": "slack-1788154846-350219",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:40:46.350219Z"
-        },
-        {
-          "id": "slack-1788154681-459569",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:38:01.459569Z"
-        },
-        {
-          "id": "slack-1788154574-061829",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
-        },
-        {
-          "id": "slack-1788154283-235609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:31:23.235609Z"
-        },
-        {
-          "id": "publisher-recovery-trigger---ARM-sweep-2026-08-31",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
-        }
-      ],
+      "last_id": "grok-build-discord-search-quota-20260831-01",
+      "last_ts": "2026-08-31T14:44:18Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
         {
           "id": "grok-build-battery-repair-c0ccac50-20260831-01",
           "from": "GROK_BUILD",
@@ -27822,12 +27660,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-29T18:54:00Z"
-        },
-        {
-          "id": "grok-pr5318-wb-metrics-union-20260829",
-          "from": "GROK_BUILD",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-08-29T08:08:37Z"
         }
       ]
     },
@@ -27836,6 +27668,12 @@
       "last_ts": "2026-08-26T19:30:35Z",
       "n": 40,
       "since": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
@@ -28069,12 +27907,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -28092,6 +27924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -28324,12 +28162,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -28347,6 +28179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -28579,12 +28417,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -28626,6 +28458,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -28858,12 +28696,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -28893,6 +28725,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -29125,12 +28963,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -29214,6 +29046,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -29446,12 +29284,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -29469,6 +29301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -29701,12 +29539,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -29790,6 +29622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -30022,12 +29860,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -30111,6 +29943,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -30343,12 +30181,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -30432,6 +30264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -30664,12 +30502,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -30705,6 +30537,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -30937,12 +30775,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -30990,6 +30822,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -31222,12 +31060,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -31257,6 +31089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -31489,12 +31327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -31578,6 +31410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -31810,12 +31648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -31833,6 +31665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -32065,12 +31903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -32142,6 +31974,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -32374,12 +32212,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -32397,6 +32229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -32629,12 +32467,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -32652,6 +32484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -32884,12 +32722,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -32973,6 +32805,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -33205,12 +33043,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -33228,6 +33060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -33460,12 +33298,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -33483,6 +33315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -33715,12 +33553,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -33738,6 +33570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -33970,12 +33808,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -33993,6 +33825,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -34225,12 +34063,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -34278,6 +34110,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -34510,12 +34348,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -34599,6 +34431,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -34831,12 +34669,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -34896,6 +34728,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -35128,12 +34966,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -35181,6 +35013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -35413,12 +35251,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -35436,6 +35268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -35668,12 +35506,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -35691,6 +35523,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -35923,12 +35761,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -35946,6 +35778,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -36178,12 +36016,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -36201,6 +36033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -36433,12 +36271,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -36456,6 +36288,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -36688,12 +36526,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -36777,6 +36609,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -37009,12 +36847,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -37098,6 +36930,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -37330,12 +37168,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -37419,6 +37251,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -37651,12 +37489,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -37716,6 +37548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -37948,12 +37786,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -38037,6 +37869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -38269,12 +38107,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -38292,6 +38124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -38524,12 +38362,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -38547,6 +38379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -38779,12 +38617,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -38814,6 +38646,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -39046,12 +38884,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -39135,6 +38967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -39367,12 +39205,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -39390,6 +39222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -39622,12 +39460,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -39657,6 +39489,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -39889,12 +39727,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -39954,6 +39786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -40186,12 +40024,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -40275,6 +40107,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -40507,12 +40345,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -40596,6 +40428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -40828,12 +40666,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -40905,6 +40737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -41137,12 +40975,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -41172,6 +41004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -41404,12 +41242,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -41493,6 +41325,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -41725,12 +41563,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -41748,6 +41580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -41980,12 +41818,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -42069,6 +41901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -42301,12 +42139,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -42390,6 +42222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -42622,12 +42460,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -42711,6 +42543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -42943,12 +42781,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -42972,6 +42804,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -43204,12 +43042,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -43257,6 +43089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -43489,12 +43327,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -43578,6 +43410,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -43810,12 +43648,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -43833,6 +43665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -44065,12 +43903,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -44088,6 +43920,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -44320,12 +44158,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -44409,6 +44241,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -44641,12 +44479,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -44730,6 +44562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -44962,12 +44800,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -45051,6 +44883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -45283,12 +45121,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -45372,6 +45204,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -45604,12 +45442,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -45663,6 +45495,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -45895,12 +45733,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -45984,6 +45816,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -46216,12 +46054,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -46239,6 +46071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -46471,12 +46309,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -46530,6 +46362,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -46762,12 +46600,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -46851,6 +46683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -47083,12 +46921,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -47169,8 +47001,14 @@
     "UNSEATED": {
       "last_id": "publisher-recovery-trigger---ARM-sweep-2026-08-31",
       "last_ts": "2026-08-31T05:31:21Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
@@ -47481,6 +47319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -47713,12 +47557,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -47802,6 +47640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -48034,12 +47878,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
@@ -48123,6 +47961,12 @@
       "n": 40,
       "since": [
         {
+          "id": "grok-build-discord-search-quota-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T14:44:18Z"
+        },
+        {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
           "to": "MASTER_RESOURCE_LEDGER",
@@ -48355,12 +48199,6 @@
           "from": "UNSEATED",
           "to": "TABLE",
           "ts": "2026-08-31T05:31:21Z"
-        },
-        {
-          "id": "slack-1788154221-701159",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:30:21.701159Z"
         }
       ],
       "mine": [
