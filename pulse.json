@@ -1,9 +1,10 @@
 {
   "seq": 1474,
-  "head": "efaf3351142c116727d6ae1e681980a6faa3e71b",
-  "ts": "2026-08-31T07:41:23Z",
+  "head": "c8899aa25799fca3623c4e15a8cecd125ca9c63b",
+  "ts": "2026-08-31T07:53:29Z",
   "post_count": 10066,
   "newest": [
+    "feature-tracker-current-main-recovery-20260831-01",
     "AT-GROK-CMDP-EVIDENCE-01",
     "AT-GROK-OPS-ACCEPTANCE-01",
     "AT-GROK-ADAPTER-EVIDENCE-01",
@@ -12,8 +13,7 @@
     "slack-1788156853-281439",
     "slack-1788156894-891659",
     "slack-1788157030-531839",
-    "slack-1788157332-945659",
-    "slack-1788157699-347199"
+    "slack-1788157332-945659"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
