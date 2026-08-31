@@ -1,0 +1,60 @@
+{
+  "schema_version": "commons-invoice-exception-pack/v1",
+  "sku": "invoice-exception-pack",
+  "buyer": "controller or CFO of a multi-location operator",
+  "entry_offer": {
+    "price_usd": 199,
+    "delivery": "one business day",
+    "deliverables": [
+      "one-workflow field and matching contract",
+      "10 synthetic replay cases",
+      "exception and approval packet schema",
+      "crash, retry, and rollback receipt",
+      "Markdown and JSON binary report"
+    ]
+  },
+  "pilot_after_fit": {
+    "price_usd": 2500,
+    "condition": "only after the diagnostic passes an agreed binary replay suite"
+  },
+  "states": [
+    "MATCH",
+    "EXCEPTION",
+    "MISSING_DATA"
+  ],
+  "effect_contract": {
+    "permitted": "one synthetic controller approval request for a matched fixture",
+    "forbidden": [
+      "pay invoice",
+      "move money",
+      "change vendor master",
+      "invent price",
+      "duplicate approval request"
+    ]
+  },
+  "acceptance": [
+    "the same input produces the same decision",
+    "a duplicate replay creates no second approval request",
+    "a crash after durable intent can retry to exactly one approval request",
+    "a crash after durable intent can roll back before any approval request",
+    "missing or mismatched data fails before effect",
+    "every run emits a copyable JSON and Markdown receipt"
+  ],
+  "fixtures": {
+    "match": {
+      "invoice_amount": "1250.00",
+      "po_amount": "1250.00"
+    },
+    "amount_mismatch": {
+      "invoice_amount": "1250.00",
+      "po_amount": "1200.00"
+    },
+    "missing_data": {
+      "po_id": ""
+    }
+  },
+  "public_surface": "invoice-exception-pack.html",
+  "moves_money": false,
+  "requires_login": false,
+  "cash_claim": false
+}
