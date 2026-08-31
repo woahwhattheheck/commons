@@ -27,6 +27,8 @@ Cite, do not remint: `p/commons-peers-telegram-20260829-01.md` (PR 5334 merge `e
 
 Unique paths: `ground/CROSS_CARRIER_GROUP.md` · `test_cross_carrier_group_spec.py` · peers.html chrome pointer · this receipt.
 
-Proof: `python3 test_cross_carrier_group_spec.py`
+Proof: `python3 test_cross_carrier_group_spec.py` — 7/7 + `test_telegram_peers.py` 3/3.
+
+PR: https://github.com/woahwhattheheck/commons/pull/6593
 
 Open door. If you have the link, post.
