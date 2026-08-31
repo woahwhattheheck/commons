@@ -32,6 +32,9 @@ on:
         default: false
   pull_request:
     paths:
+      - "slack_ingest.py"
+      - "test_slack_ingest.py"
+      - "exact_body_redact.py"
       - "repo_pulse.py"
       - "test_repo_pulse.py"
       - "host/sprint_integration.py"
@@ -41,6 +44,9 @@ on:
   push:
     branches: [main]
     paths:
+      - "slack_ingest.py"
+      - "test_slack_ingest.py"
+      - "exact_body_redact.py"
       - "repo_pulse.py"
       - "test_repo_pulse.py"
       - "host/sprint_integration.py"
@@ -54,7 +60,9 @@ concurrency:
 
 permissions:
   contents: read
-  issues: read
+  # slack_ingest creates ordinary label=board issues. The existing
+  # commons-board schedule consumes them; no second publisher is minted here.
+  issues: write
   pull-requests: read
   checks: read
   pages: read
@@ -69,7 +77,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: actions/cache/restore@v4
         with:
-          path: .pulse-state.json
+          path: |
+            .pulse-state.json
+            .slack-ingest-state.json
           key: repo-pulse-cursor-${{ github.run_id }}
           restore-keys: |
             repo-pulse-cursor-
@@ -83,6 +93,8 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           SLACK_CHANNEL_ID: ${{ vars.SLACK_CHANNEL_ID }}
+          COMMONS_SLACK_CHANNEL: ${{ vars.SLACK_CHANNEL_ID || 'C0BRGMDQB6G' }}
+          SLACK_INGEST_STATE: .slack-ingest-state.json
           PULSE_STATE: .pulse-state.json
           PULSE_EVIDENCE: repo-pulse/latest.json
           PULSE_REPORT_IDLE: "true"
@@ -106,11 +118,30 @@ jobs:
           fetch repo_pulse.py
           fetch test_repo_pulse.py
           fetch host/sprint_integration.py
+          fetch exact_body_redact.py
+          fetch slack_ingest.py
+          fetch test_slack_ingest.py
           cp /tmp/pulse/host/sprint_integration.py /tmp/pulse/sprint_integration.py
           python3 /tmp/pulse/test_repo_pulse.py
+          (
+            cd /tmp/pulse
+            python3 -m unittest -v test_slack_ingest.py
+          )
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             echo "PR dry-run: fixtures passed; skipping live digest so a preview cannot move the cursor."
             exit 0
+          fi
+          if [ -n "${SLACK_BOT_TOKEN}" ]; then
+            if [ ! -f "${SLACK_INGEST_STATE}" ]; then
+              # Bootstrap once from the SHA-pinned durable projection. Future
+              # runs use the exact cached Slack cursor and avoid a repo clone.
+              fetch posts.json
+            fi
+            python3 /tmp/pulse/slack_ingest.py sync \
+              --state "${SLACK_INGEST_STATE}" \
+              --posts-json /tmp/pulse/posts.json
+          else
+            echo "Slack ingest idle: SLACK_BOT_TOKEN is not configured."
           fi
           python3 /tmp/pulse/repo_pulse.py
           if [ -f repo-pulse/latest.json ]; then
@@ -130,5 +161,7 @@ jobs:
         if: always() && github.event_name != 'pull_request'
         uses: actions/cache/save@v4
         with:
-          path: .pulse-state.json
+          path: |
+            .pulse-state.json
+            .slack-ingest-state.json
           key: repo-pulse-cursor-${{ github.run_id }}

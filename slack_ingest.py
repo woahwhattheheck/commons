@@ -125,6 +125,17 @@ def _decimal_ts(value: Any) -> Decimal:
     return out
 
 
+def _cursor_decimal(value: Any) -> Decimal:
+    """Parse a scan cursor; unlike an event timestamp, the origin may be zero."""
+    try:
+        out = Decimal(str(value or "0").strip())
+    except InvalidOperation as exc:
+        raise IngestError("invalid Slack cursor: %r" % (value,)) from exc
+    if out < 0:
+        raise IngestError("invalid Slack cursor: %r" % (value,))
+    return out
+
+
 def canonical_id(native_ts: str) -> str:
     """Return the existing Commons Slack id grammar, independent of claim."""
     raw = str(native_ts or "").strip()
@@ -430,6 +441,62 @@ def high_water(posts_dir: Path = POSTS_DIR) -> str:
     return format(newest, "f")
 
 
+def posts_json_high_water(path: Path | None) -> str:
+    """Return the newest durable Slack event in a board projection.
+
+    Scheduled runners intentionally avoid cloning the large Commons tree. A
+    SHA-pinned ``posts.json`` is therefore a bootstrap source only; the runner
+    persists its own exact cursor after the first successful scan. Fallback
+    ids, caller-id receipts, and append-only edit clocks all count.
+    """
+    newest = Decimal(0)
+    if path is None or not path.is_file():
+        return format(newest, "f")
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError) as exc:
+        raise IngestError("invalid posts.json bootstrap: %s" % path) from exc
+    rows = payload.get("posts") if isinstance(payload, dict) else payload
+    if not isinstance(rows, list):
+        raise IngestError("posts.json bootstrap must contain a post array")
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        match = ID_RE.fullmatch(str(row.get("id") or ""))
+        if match:
+            newest = max(newest, Decimal("%s.%s" % match.groups()))
+        observed = OBSERVED_SLACK_RE.fullmatch(str(row.get("observed_event") or ""))
+        if observed:
+            newest = max(newest, _decimal_ts(observed.group(1)))
+        if row.get("event_ts"):
+            newest = max(newest, _decimal_ts(row["event_ts"]))
+    return format(newest, "f")
+
+
+def read_state(path: Path | None) -> str:
+    if path is None or not path.is_file():
+        return "0"
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        return format(_cursor_decimal(payload.get("cursor")), "f")
+    except (OSError, UnicodeError, json.JSONDecodeError, AttributeError) as exc:
+        raise IngestError("invalid Slack ingest state: %s" % path) from exc
+
+
+def write_state(path: Path | None, cursor: str) -> None:
+    """Atomically persist a cursor only after every issue operation succeeds."""
+    if path is None:
+        return
+    value = format(_cursor_decimal(cursor), "f")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_text(
+        json.dumps({"cursor": value}, sort_keys=True, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+
+
 def _next_cursor(response: dict[str, Any]) -> str:
     return str((response.get("response_metadata") or {}).get("next_cursor") or "").strip()
 
@@ -562,7 +629,7 @@ class SlackClient:
 
         Default: every public/private channel the bot is in. Not an allowlist.
         """
-        floor = _decimal_ts(oldest)
+        floor = _cursor_decimal(oldest)
         team_id = self.workspace_id()
         collected: list[dict[str, Any]] = []
         for channel_id in self.list_channel_ids():
@@ -711,17 +778,39 @@ def cmd_plan(path: Path) -> int:
     return 0
 
 
-def cmd_sync(after: str | None) -> int:
-    oldest = after or high_water()
+def cmd_sync(
+    after: str | None,
+    state_path: Path | None = None,
+    posts_json: Path | None = None,
+) -> int:
+    baselines = [high_water(), read_state(state_path), posts_json_high_water(posts_json)]
+    if after:
+        baselines.append(format(_cursor_decimal(after), "f"))
+    oldest = format(max(_cursor_decimal(value) for value in baselines), "f")
     slack = SlackClient(os.environ.get("SLACK_BOT_TOKEN", ""))
     github = GitHubClient(os.environ.get("GITHUB_TOKEN", ""))
-    records = plan(slack.events(oldest))
+    events = slack.events(oldest)
+    records = plan(events)
     created: list[dict[str, str]] = []
     for record in records:
         if github.issue_exists(record.title):
             continue
         created.append({"id": record.title, "issue": github.create_issue(record)})
-    print(json.dumps({"after": oldest, "planned": len(records), "created": created}, indent=2))
+    cursor = max(
+        [_cursor_decimal(oldest), *(_decimal_ts(event_clock(event)) for event in events)],
+    )
+    write_state(state_path, format(cursor, "f"))
+    print(
+        json.dumps(
+            {
+                "after": oldest,
+                "cursor": format(cursor, "f"),
+                "planned": len(records),
+                "created": created,
+            },
+            indent=2,
+        )
+    )
     return 0
 
 
@@ -734,6 +823,8 @@ def parser() -> argparse.ArgumentParser:
     batch.add_argument("events", type=Path)
     sync = sub.add_parser("sync", help="pull Slack and create canonical board issues")
     sync.add_argument("--after-ts", default=None)
+    sync.add_argument("--state", type=Path, default=None)
+    sync.add_argument("--posts-json", type=Path, default=None)
     return out
 
 
@@ -743,7 +834,7 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_format(args.event)
     if args.command == "plan":
         return cmd_plan(args.events)
-    return cmd_sync(args.after_ts)
+    return cmd_sync(args.after_ts, args.state, args.posts_json)
 
 
 if __name__ == "__main__":
