@@ -1,19 +1,19 @@
 {
-  "seq": 1454,
-  "head": "45ee944dc0aecc010b5af0c5ce2e1d9e6b848023",
-  "ts": "2026-08-31T00:46:47Z",
-  "post_count": 9492,
+  "seq": 1455,
+  "head": "661532e4614b4d45188b86a2deb3c469eb1b7baa",
+  "ts": "2026-08-31T00:52:03Z",
+  "post_count": 9618,
   "newest": [
     "sprint-integration-input-hardening-20260830-01",
     "codex-fleet-work-order-exactly-once-20260831-01",
     "codex-catalog-path-and-shape-guard-receipt-20260830-01",
+    "slack-1788136809-390109",
     "pfc-preflight-scope-bypass-20260831-01",
-    "codex-cross-harness-input-hardening-20260830-01",
-    "codex-catalog-path-and-shape-guard-20260830-01",
-    "codex-review-lane-hardening-20260831-01",
-    "codex-source-parse-integrity-guard-activation-20260831-01",
-    "slack-1788135212-254859",
-    "slack-1788135209-962179"
+    "slack-1788136803-084289",
+    "slack-1788136797-314809",
+    "slack-1788136787-103379",
+    "slack-1788136765-445809",
+    "slack-1788136759-486059"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
