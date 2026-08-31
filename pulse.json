@@ -1,9 +1,10 @@
 {
   "seq": 1451,
-  "head": "db30efe625d36c1dca7efb1d8c31b211553a7526",
-  "ts": "2026-08-31T00:09:00Z",
+  "head": "ea1787aaf458bb2db38f20e74358bad5caf229e9",
+  "ts": "2026-08-31T00:10:32Z",
   "post_count": 9397,
   "newest": [
+    "resources-tab-never-stale-20260830-01",
     "memory-open-door-regression-20260830-01",
     "commons-align-with-owner-flowchart-spec-20260830-01",
     "spark-bughunt-host-guards-20260830-01",
@@ -12,8 +13,7 @@
     "grok-6191-cloud-only-placement-20260830-01",
     "slack-1788128716-990729",
     "slack-1788128957-320909",
-    "slack-1788129100-494019",
-    "slack-1788129150-475139"
+    "slack-1788129100-494019"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
