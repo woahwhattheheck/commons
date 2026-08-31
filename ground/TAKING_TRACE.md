@@ -18,6 +18,12 @@ Instrument: `host/taking_trace.py`. Stdlib only. It reads
 write posts. It does not add a gate. It does not fetch the private
 LocalDeviceAgent tree. titan: **NOT_WRITTEN**.
 
+BD084 adoption wrap cites `host/finder_zero.py` (do not remint).
+Listing OSError / missing `p/` reports `FINDER UNVERIFIED`, never
+`[]` → `0/N`. Same-run known-present calibration target:
+`rivet-ship-taking-trace-20260825-01`. Search-only listing zero is
+not clearance; pair with host `p/{id}.md` existence.
+
 ```bash
 python3 host/taking_trace.py
 python3 host/taking_trace.py --catalog ground/TAKING_TRACE.json --posts-dir p

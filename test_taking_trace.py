@@ -11,7 +11,17 @@ import unittest
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
-from taking_trace import classify, load_catalog, measure_from_parts, measure_paths
+from taking_trace import (
+    CALIBRATION_ID,
+    classify,
+    load_catalog,
+    measure_from_parts,
+    measure_paths,
+)
+
+
+def _cal():
+    return CALIBRATION_ID + ".md"
 
 
 class TestTakingTrace(unittest.TestCase):
@@ -35,14 +45,17 @@ class TestTakingTrace(unittest.TestCase):
                 ],
             }
         )
-        measured = measure_from_parts(catalog, ["unrelated.md"])
+        measured = measure_from_parts(catalog, ["unrelated.md", _cal()])
         self.assertEqual(measured["commons_present_count"], 0)
         self.assertEqual(measured["commons_missing_count"], 2)
         self.assertFalse(measured["lda_measured"])
+        self.assertTrue(measured["calibrated"])
+        self.assertIsNone(measured["find_count"])
         verdict = classify(measured)
         self.assertEqual(verdict["state"], "NOT_LANDED")
         self.assertIn("grok-capacity-active", verdict["note"])
         self.assertIn("UNMEASURED", verdict["note"])
+        self.assertNotIn("0/", verdict["note"])
 
     def test_partial_commons_is_candidate(self):
         catalog = json.dumps(
@@ -54,7 +67,7 @@ class TestTakingTrace(unittest.TestCase):
             }
         )
         measured = measure_from_parts(
-            catalog, ["grok46-revenue-discovery-20260825-01.md"]
+            catalog, ["grok46-revenue-discovery-20260825-01.md", _cal()]
         )
         self.assertEqual(
             measured["commons_present"],
@@ -72,7 +85,7 @@ class TestTakingTrace(unittest.TestCase):
             }
         )
         measured = measure_from_parts(
-            catalog, ["grok46-open-revenue-desk-20260825-01.md"]
+            catalog, ["grok46-open-revenue-desk-20260825-01.md", _cal()]
         )
         verdict = classify(measured)
         self.assertEqual(verdict["state"], "CANDIDATE")
@@ -88,7 +101,7 @@ class TestTakingTrace(unittest.TestCase):
         )
         measured = measure_from_parts(
             catalog,
-            ["grok46-revenue-redteam-20260825-01.md"],
+            ["grok46-revenue-redteam-20260825-01.md", _cal()],
             ["host/muhl_revenue.py", "host/test_muhl_revenue.py"],
         )
         verdict = classify(measured)
@@ -106,6 +119,11 @@ class TestTakingTrace(unittest.TestCase):
         self.assertEqual(row["titan"], "NOT_WRITTEN")
         self.assertFalse(row["lda_measured"])
         self.assertEqual(row["lda_visibility"], "private")
+        self.assertTrue(row["listing_ok"])
+        self.assertTrue(row["calibrated"])
+        self.assertEqual(row["known_present"], CALIBRATION_ID)
+        self.assertIsNotNone(row["search_space"])
+        self.assertTrue(row["search_space"]["complete"])
         with open(path, encoding="utf-8") as handle:
             catalog = load_catalog(handle.read())
         self.assertEqual(catalog["slack_ts"], "1787634411.405189")
