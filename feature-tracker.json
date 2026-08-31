@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 36
+    "TESTED": 42
   },
   "features": [
     {
@@ -305,6 +305,144 @@
       "test_paths": [
         "test_builds_ledger.py",
         "builds_ledger.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Canyon Labs multi-site regulated sample-intake runner: a working CLI processes 300 synthetic submissions across Bluffdale, Rush, and Vista, accessions 240 complete forms once at the correct site, holds 60 missing/conflicting rows with exact reasons, preserves source hashes and field lineage, refuses testing on HOLD, denies autonomous release, and writes journal plus receipts. Replay changes no state. Adapters stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "canyon_multisite_regulated_intake.py",
+        "test_canyon_multisite_regulated_intake.py",
+        "canyon-multisite-regulated-intake.html",
+        "revenue/canyon_multisite_regulated_intake/fixture.json",
+        "revenue/canyon_multisite_regulated_intake/contract.json",
+        "revenue/canyon_multisite_regulated_intake/state/journal.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/run.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/accessions.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/holds.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/lineage.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/audit.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/replay.json",
+        "p/canyon-multisite-regulated-intake-lims-01.md",
+        "features/registry/canyon-multisite-regulated-intake-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "canyon_multisite_regulated_intake.py",
+        "test_canyon_multisite_regulated_intake.py",
+        "canyon-multisite-regulated-intake.html",
+        "revenue/canyon_multisite_regulated_intake/fixture.json",
+        "revenue/canyon_multisite_regulated_intake/contract.json",
+        "revenue/canyon_multisite_regulated_intake/state/journal.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/run.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/accessions.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/holds.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/lineage.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/audit.json",
+        "revenue/canyon_multisite_regulated_intake/receipts/replay.json",
+        "p/canyon-multisite-regulated-intake-lims-01.md",
+        "features/registry/canyon-multisite-regulated-intake-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "canyon-multisite-regulated-intake-lims-01.json",
+      "id": "canyon-multisite-regulated-intake-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Canyon multi-site regulated sample-intake runner",
+      "next_gap": "Buyer-owned de-identified site/method golden after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "canyon-multisite-regulated-intake.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "canyon-multisite-regulated-intake.html",
+        "revenue/canyon_multisite_regulated_intake/receipts/run.json",
+        "p/canyon-multisite-regulated-intake-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_canyon_multisite_regulated_intake.py",
+        "canyon_multisite_regulated_intake.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "ASTM D4172 Four-Ball wear proficiency and customer-CoA evidence lane: replay 60 frozen synthetic sets, keep participant/sample identities blinded until human disposition, hold missing replicates and r/R QC breaches, preserve immutable custody and calculation provenance, and deny autonomous release. Interfaces stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "clark_d4172_proficiency.py",
+        "clark-d4172-proficiency-lims.js",
+        "clark-d4172-proficiency-lims.html",
+        "test_clark_d4172_proficiency.py",
+        "revenue/clark_d4172_proficiency/contract.json",
+        "revenue/clark_d4172_proficiency/receipt.json",
+        "revenue/clark_d4172_proficiency/receipt.md",
+        "revenue/clark_d4172_proficiency/golden.json",
+        "revenue/clark_d4172_proficiency/public_fixture.json",
+        "p/cursor-clark-d4172-proficiency-lims-20260831-01.md",
+        "features/registry/clark-d4172-proficiency-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "clark_d4172_proficiency.py",
+        "clark-d4172-proficiency-lims.js",
+        "clark-d4172-proficiency-lims.html",
+        "test_clark_d4172_proficiency.py",
+        "revenue/clark_d4172_proficiency/contract.json",
+        "revenue/clark_d4172_proficiency/receipt.json",
+        "revenue/clark_d4172_proficiency/receipt.md",
+        "revenue/clark_d4172_proficiency/golden.json",
+        "revenue/clark_d4172_proficiency/public_fixture.json",
+        "p/cursor-clark-d4172-proficiency-lims-20260831-01.md",
+        "features/registry/clark-d4172-proficiency-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "clark-d4172-proficiency-lims-01.json",
+      "id": "clark-d4172-proficiency-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Clark ASTM D4172 proficiency LIMS",
+      "next_gap": "Buyer-owned method revision, official r/R table, and de-identified live-cycle fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "clark-d4172-proficiency-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "clark-d4172-proficiency-lims.html",
+        "revenue/clark_d4172_proficiency/contract.json",
+        "p/cursor-clark-d4172-proficiency-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_clark_d4172_proficiency.py",
+        "clark_d4172_proficiency.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -972,6 +1110,67 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Floor sync on the LLM-native GTM composer: positional claim/release CLI, FUSE HANDS SENT/AWAITING_REPLY DNR overlay, Billings STATUS refresh without reminting the MATERIAL_REPLY pointer, HOLD_BUILD_AND_VERIFY class for #leads LIMS HOLDs. Door distinguishes HOT vs SENT-DNR vs HOLD-build. Not a second CRM.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/events.jsonl",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-floor-sync-20260831-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/events.jsonl",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-floor-sync-20260831-01.md"
+      ],
+      "dependencies": [
+        "lm-gtm-hot-lane-20260831-01"
+      ],
+      "evidence_ids": [],
+      "file": "lm-gtm-floor-sync-20260831-01.json",
+      "id": "lm-gtm-floor-sync-20260831-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "LLM-native GTM floor sync",
+      "next_gap": "Owner mailbox still required for live send. Do not mint a second CRM. Do not resend FUSE HANDS or MSP SENT recs. Do not contact City of Billings or submit Bid 1421.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "p/lm-gtm-floor-sync-20260831-01.md",
+        "p/lm-gtm-hot-lane-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_index.py",
+        "host/lm_gtm_index.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Hot lane and occupancy overlay on the existing LLM-native GTM index. Actionable live JSONL, claim/release fail-closed occupancy, overlay pointers for Billings MATERIAL_REPLY, five MSP SENT Airtable recs, and bounded #leads verified posts. Not a second CRM.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -1374,6 +1573,68 @@
       "test_paths": [
         "test_organabio_multisite_donor_coa.py",
         "organabio_multisite_donor_coa.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Paragon B6\u2013B20 biodiesel sample-to-CoA LIMS: a frozen 120-row synthetic manifest accessions 100 valid blends once, holds 5 incomplete CoC, 5 incomplete SDS, 5 duplicate IDs, and 5 OOS, matches signed golden values/units/qualifiers/report fields/source hashes, replays with zero new accessions, and requires a named human before CoA release. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "paragon_biodiesel_sample_coa.py",
+        "paragon-biodiesel-sample-coa-lims.js",
+        "paragon-biodiesel-sample-coa-lims.html",
+        "test_paragon_biodiesel_sample_coa.py",
+        "revenue/paragon_biodiesel_sample_coa/contract.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.md",
+        "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md",
+        "features/registry/paragon-biodiesel-sample-coa-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "paragon_biodiesel_sample_coa.py",
+        "paragon-biodiesel-sample-coa-lims.js",
+        "paragon-biodiesel-sample-coa-lims.html",
+        "test_paragon_biodiesel_sample_coa.py",
+        "revenue/paragon_biodiesel_sample_coa/contract.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.json",
+        "revenue/paragon_biodiesel_sample_coa/receipt.md",
+        "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md",
+        "features/registry/paragon-biodiesel-sample-coa-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "paragon-biodiesel-sample-coa-lims-01.json",
+      "id": "paragon-biodiesel-sample-coa-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Paragon B6\u2013B20 biodiesel sample-to-CoA LIMS",
+      "next_gap": "Buyer-owned CoC/SDS schema, D7467 method map, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "paragon-biodiesel-sample-coa-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "paragon-biodiesel-sample-coa-lims.html",
+        "revenue/paragon_biodiesel_sample_coa/contract.json",
+        "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_paragon_biodiesel_sample_coa.py",
+        "paragon_biodiesel_sample_coa.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1873,6 +2134,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Read-only RMB/Beckton courier-to-accession shadow: a 300-row frozen water/lake fixture binds 240 valid receipts to exactly one incumbent-LIMS accession and facility, holds 60 rows with six exact truth-set codes, blocks client/site crossover, reconciles custody hashes and signed-manifest timestamps, replays with zero new records, and keeps release human-only. Existing LIMS stays authoritative.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "rmb_crosssite_courier_accession.py",
+        "rmb-crosssite-courier-accession-lims.js",
+        "rmb-crosssite-courier-accession-lims.html",
+        "test_rmb_crosssite_courier_accession.py",
+        "revenue/rmb_crosssite_courier_accession/contract.json",
+        "revenue/rmb_crosssite_courier_accession/receipt.json",
+        "revenue/rmb_crosssite_courier_accession/receipt.md",
+        "p/cursor-rmb-crosssite-courier-accession-20260831-01.md",
+        "features/registry/rmb-crosssite-courier-accession-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "rmb_crosssite_courier_accession.py",
+        "rmb-crosssite-courier-accession-lims.js",
+        "rmb-crosssite-courier-accession-lims.html",
+        "test_rmb_crosssite_courier_accession.py",
+        "revenue/rmb_crosssite_courier_accession/contract.json",
+        "revenue/rmb_crosssite_courier_accession/receipt.json",
+        "revenue/rmb_crosssite_courier_accession/receipt.md",
+        "p/cursor-rmb-crosssite-courier-accession-20260831-01.md",
+        "features/registry/rmb-crosssite-courier-accession-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "rmb-crosssite-courier-accession-lims-01.json",
+      "id": "rmb-crosssite-courier-accession-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "RMB cross-site courier accession",
+      "next_gap": "Buyer/vendor golden round trip against de-identified live courier and incumbent-LIMS fixtures. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "rmb-crosssite-courier-accession-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "rmb-crosssite-courier-accession-lims.html",
+        "revenue/rmb_crosssite_courier_accession/contract.json",
+        "p/cursor-rmb-crosssite-courier-accession-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_rmb_crosssite_courier_accession.py",
+        "rmb_crosssite_courier_accession.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "RoslinCT Hopkinton paperless QC: a 240-row synthetic RAW/IN_PROCESS/RELEASE/RETAIN/STABILITY fixture completes 216 valid samples once through accession, custody, scheduling, read-only results, inventory, and CoA, holds 24 seeded label/temperature/duplicate/late/OOS exceptions, uses 12 mock instruments and 3 mock contract labs, reproduces audit_sha256 93e5ce0ef00ca6de9ac87203b67ec05f9eb80d1cb10ffb284b1948a195dab83a, and blocks release until a named human. Adapters stay simulated.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1982,6 +2305,70 @@
       "superseded_by": "",
       "test_paths": [
         "test_sales_free_sample_pack.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Savant FE8 order-to-report LIMS: a 100-row synthetic Test Authorization Form plus SDS fixture accessions 80 valid FE8 jobs once, holds 20 with MISSING_SDS, MISSING_METADATA, DUPLICATE_ID, and INVALID_METHOD, schedules only documented rows, binds instrument/QC values and report digest a5853f7e35e396bdd9843053f3f45c14d4a340945996977db0b478921c0941fa, and denies autonomous release. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "savant_fe8_order_report.py",
+        "savant-fe8-order-report-lims.js",
+        "savant-fe8-order-report-lims.html",
+        "test_savant_fe8_order_report.py",
+        "revenue/savant_fe8_order_report/contract.json",
+        "revenue/savant_fe8_order_report/receipt.json",
+        "revenue/savant_fe8_order_report/receipt.md",
+        "revenue/savant_fe8_order_report/fixture.json",
+        "p/cursor-savant-fe8-order-report-lims-20260831-01.md",
+        "features/registry/savant-fe8-order-report-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "savant_fe8_order_report.py",
+        "savant-fe8-order-report-lims.js",
+        "savant-fe8-order-report-lims.html",
+        "test_savant_fe8_order_report.py",
+        "revenue/savant_fe8_order_report/contract.json",
+        "revenue/savant_fe8_order_report/receipt.json",
+        "revenue/savant_fe8_order_report/receipt.md",
+        "revenue/savant_fe8_order_report/fixture.json",
+        "p/cursor-savant-fe8-order-report-lims-20260831-01.md",
+        "features/registry/savant-fe8-order-report-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "savant-fe8-order-report-lims-01.json",
+      "id": "savant-fe8-order-report-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Savant FE8 order-to-report LIMS",
+      "next_gap": "Buyer-owned TAF/SDS schema, FE8 method revision, and de-identified golden instrument files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "savant-fe8-order-report-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "savant-fe8-order-report-lims.html",
+        "revenue/savant_fe8_order_report/contract.json",
+        "p/cursor-savant-fe8-order-report-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_savant_fe8_order_report.py",
+        "savant_fe8_order_report.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2503,7 +2890,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 42,
+  "n_features": 48,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",

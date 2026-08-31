@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "Floor sync on the LLM-native GTM composer: positional claim/release CLI, FUSE HANDS SENT/AWAITING_REPLY DNR overlay, Billings STATUS refresh without reminting the MATERIAL_REPLY pointer, HOLD_BUILD_AND_VERIFY class for #leads LIMS HOLDs. Door distinguishes HOT vs SENT-DNR vs HOLD-build. Not a second CRM.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "host/lm_gtm_index.py",
+    "test_lm_gtm_index.py",
+    "revenue/lm_gtm_index/events.jsonl",
+    "revenue/lm_gtm_index/INDEX.jsonl",
+    "revenue/lm_gtm_index/state.json",
+    "lm-gtm-index.html",
+    "p/lm-gtm-floor-sync-20260831-01.md"
+  ],
+  "dependencies": [
+    "lm-gtm-hot-lane-20260831-01"
+  ],
+  "id": "lm-gtm-floor-sync-20260831-01",
+  "name": "LLM-native GTM floor sync",
+  "next_gap": "Owner mailbox still required for live send. Do not mint a second CRM. Do not resend FUSE HANDS or MSP SENT recs. Do not contact City of Billings or submit Bid 1421.",
+  "owner_subsystem": "lm-gtm-index",
+  "public_entrypoint": "lm-gtm-index.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "lm-gtm-index.html",
+    "revenue/lm_gtm_index/README.md",
+    "p/lm-gtm-floor-sync-20260831-01.md",
+    "p/lm-gtm-hot-lane-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_lm_gtm_index.py",
+    "host/lm_gtm_index.py"
+  ]
+}
