@@ -1,9 +1,10 @@
 {
   "seq": 1460,
-  "head": "ff0add632ffc2e8956c398960715ac1f012f0f18",
-  "ts": "2026-08-31T01:46:31Z",
+  "head": "72995c54166c45bde46826f3db781dca8d9560e7",
+  "ts": "2026-08-31T01:51:17Z",
   "post_count": 9764,
   "newest": [
+    "patent-products-20260831-01",
     "finder-zero-high-risk-adoption-20260830-01",
     "recovery-muhlnickel-live-contract-reconciliation-20260830-01",
     "slack-1788137370-557649",
@@ -12,8 +13,7 @@
     "slack-1788137403-299099",
     "slack-1788137418-912229",
     "slack-1788137420-339159",
-    "slack-1788137438-289859",
-    "slack-1788137450-251299"
+    "slack-1788137438-289859"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
