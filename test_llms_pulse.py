@@ -89,6 +89,8 @@ class HeadPulse(unittest.TestCase):
         self.assertIn("write_head_pulse", src)
         self.assertIn("write_peers", src)
         self.assertIn("write_challenge", src)
+        self.assertIn("write_change_rate", src)
+        self.assertIn('"change.md"', src)
 
 
 if __name__ == "__main__":
