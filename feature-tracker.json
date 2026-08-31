@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 22
+    "TESTED": 28
   },
   "features": [
     {
@@ -138,6 +138,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Florida BADDL EIA accession + human release: a 24-row synthetic VS 10-11/VSPS/GVL fixture puts 22 cases on the EIA worklist, holds one unsigned paper form and one duplicate tube, imports 19 negative / 2 positive / 1 invalid simulated results, lets a named human release exactly 21, keeps invalid on HOLD, and reproduces audit_sha256 1849cde855a07b5eef7c389e36c3896bd257161d6d6970292ad17509b55cd204. Adapters stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "baddl_eia_accession_release.py",
+        "baddl-eia-accession-release-lims.js",
+        "baddl-eia-accession-release-lims.html",
+        "test_baddl_eia_accession_release.py",
+        "revenue/baddl_eia_accession_release/contract.json",
+        "revenue/baddl_eia_accession_release/receipt.json",
+        "revenue/baddl_eia_accession_release/receipt.md",
+        "p/cursor-baddl-eia-accession-release-lims-20260831-01.md",
+        "features/registry/baddl-eia-accession-release-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "baddl_eia_accession_release.py",
+        "baddl-eia-accession-release-lims.js",
+        "baddl-eia-accession-release-lims.html",
+        "test_baddl_eia_accession_release.py",
+        "revenue/baddl_eia_accession_release/contract.json",
+        "revenue/baddl_eia_accession_release/receipt.json",
+        "revenue/baddl_eia_accession_release/receipt.md",
+        "p/cursor-baddl-eia-accession-release-lims-20260831-01.md",
+        "features/registry/baddl-eia-accession-release-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "baddl-eia-accession-release-lims-01.json",
+      "id": "baddl-eia-accession-release-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Florida BADDL EIA accession + human release",
+      "next_gap": "Buyer-owned VS 10-11/VSPS/GVL schemas and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "baddl-eia-accession-release-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "baddl-eia-accession-release-lims.html",
+        "revenue/baddl_eia_accession_release/contract.json",
+        "p/cursor-baddl-eia-accession-release-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_baddl_eia_accession_release.py",
+        "baddl_eia_accession_release.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Append-only permit records in builds/records/. Projection is descriptive. Shape validation only.",
       "carrier": "INQUISITOR",
       "chat_ignored": false,
@@ -181,6 +243,68 @@
       "test_paths": [
         "test_builds_ledger.py",
         "builds_ledger.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Craft-beverage intake LIMS: an 8-row fixture accessions 6 valid wine/cider/spirits/kombucha/juice orders once, rejects UNDER_VOLUME and MISSING_SAMPLE_ID, blocks frozen juice from RECEIVED without both flags, holds reports until analyst result plus QC plus human release, and replays with zero new accessions. Interfaces stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "cornell_craft_beverage_intake.py",
+        "cornell-craft-beverage-intake-lims.js",
+        "cornell-craft-beverage-intake-lims.html",
+        "test_cornell_craft_beverage_intake.py",
+        "revenue/cornell_craft_beverage_intake/contract.json",
+        "revenue/cornell_craft_beverage_intake/receipt.json",
+        "revenue/cornell_craft_beverage_intake/receipt.md",
+        "p/cursor-cornell-craft-beverage-intake-lims-20260831-01.md",
+        "features/registry/cornell-craft-beverage-intake-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "cornell_craft_beverage_intake.py",
+        "cornell-craft-beverage-intake-lims.js",
+        "cornell-craft-beverage-intake-lims.html",
+        "test_cornell_craft_beverage_intake.py",
+        "revenue/cornell_craft_beverage_intake/contract.json",
+        "revenue/cornell_craft_beverage_intake/receipt.json",
+        "revenue/cornell_craft_beverage_intake/receipt.md",
+        "p/cursor-cornell-craft-beverage-intake-lims-20260831-01.md",
+        "features/registry/cornell-craft-beverage-intake-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "cornell-craft-beverage-intake-lims-01.json",
+      "id": "cornell-craft-beverage-intake-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Cornell craft beverage intake LIMS",
+      "next_gap": "Buyer-owned order schema, panel map, volume thresholds, and de-identified fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "cornell-craft-beverage-intake-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "cornell-craft-beverage-intake-lims.html",
+        "revenue/cornell_craft_beverage_intake/contract.json",
+        "p/cursor-cornell-craft-beverage-intake-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_cornell_craft_beverage_intake.py",
+        "cornell_craft_beverage_intake.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -240,6 +364,68 @@
       "test_paths": [
         "test_current_work.py",
         "host/current_work.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Public no-login dealer-service / BDC diagnostic: a synthetic missed web form, after-hours inquiry, or duplicate submit becomes exactly one customer follow-up and one booked-service / CRM record. Duplicate inquiry and worker restart do not create a second appointment. Never a live dealership, CRM write, outreach, or Stripe charge.",
+      "carrier": "CURSOR_CLOUD",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "dealer-service-lead-rescue.html",
+        "dealer-service-lead-rescue.js",
+        "test_dealer_service_lead_rescue.js",
+        "revenue/dealer_service_lead_rescue/contract.json",
+        "revenue/dealer_service_lead_rescue/receipt.json",
+        "revenue/dealer_service_lead_rescue/receipt.md",
+        "p/dealer-service-lead-rescue-20260831-01.md",
+        "features/registry/dealer-service-lead-rescue.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "dealer-service-lead-rescue.html",
+        "dealer-service-lead-rescue.js",
+        "test_dealer_service_lead_rescue.js",
+        "revenue/dealer_service_lead_rescue/contract.json",
+        "revenue/dealer_service_lead_rescue/receipt.json",
+        "revenue/dealer_service_lead_rescue/receipt.md",
+        "p/dealer-service-lead-rescue-20260831-01.md",
+        "features/registry/dealer-service-lead-rescue.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "dealer-service-lead-rescue.json",
+      "id": "dealer-service-lead-rescue",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Dealer service lead rescue",
+      "next_gap": "Run the $199 diagnostic against one buyer-approved synthetic service-lead shape; discuss the $2,500 pilot only after fit. No outreach and no cash claim.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "dealer-service-lead-rescue.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "dealer-service-lead-rescue.html",
+        "revenue/dealer_service_lead_rescue/contract.json",
+        "p/dealer-service-lead-rescue-20260831-01.md",
+        "diagnostic.html",
+        "commercial.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_dealer_service_lead_rescue.js",
+        "dealer-service-lead-rescue.js"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -352,6 +538,68 @@
       "superseded_by": "",
       "test_paths": [
         "test_features_board.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Read-only MRF downtime diversion handoff: a 50-row per-load fixture collapses 10 duplicates, ignores 8 stale notices, and emits exact 10 LANDFILL_CITY / 10 HOLD_HAULER / 15 ACCEPT / 5 HOLD_CAPACITY receipts with occupancy at or under 100t and identical replay. Never equipment control or an autonomous safety decision.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "lexington_mrf_diversion_gate.py",
+        "lexington-mrf-diversion-gate.js",
+        "lexington-mrf-diversion-gate.html",
+        "test_lexington_mrf_diversion_gate.py",
+        "revenue/lexington_mrf_diversion_gate/contract.json",
+        "revenue/lexington_mrf_diversion_gate/receipt.json",
+        "revenue/lexington_mrf_diversion_gate/receipt.md",
+        "p/cursor-lexington-mrf-diversion-gate-20260831-01.md",
+        "features/registry/lexington-mrf-diversion-gate-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "lexington_mrf_diversion_gate.py",
+        "lexington-mrf-diversion-gate.js",
+        "lexington-mrf-diversion-gate.html",
+        "test_lexington_mrf_diversion_gate.py",
+        "revenue/lexington_mrf_diversion_gate/contract.json",
+        "revenue/lexington_mrf_diversion_gate/receipt.json",
+        "revenue/lexington_mrf_diversion_gate/receipt.md",
+        "p/cursor-lexington-mrf-diversion-gate-20260831-01.md",
+        "features/registry/lexington-mrf-diversion-gate-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "lexington-mrf-diversion-gate-01.json",
+      "id": "lexington-mrf-diversion-gate-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Lexington MRF diversion gate",
+      "next_gap": "Buyer-approved live load-ticket shape after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "lexington-mrf-diversion-gate.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lexington-mrf-diversion-gate.html",
+        "revenue/lexington_mrf_diversion_gate/contract.json",
+        "p/cursor-lexington-mrf-diversion-gate-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lexington_mrf_diversion_gate.py",
+        "lexington_mrf_diversion_gate.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1189,6 +1437,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "RoslinCT Hopkinton paperless QC: a 240-row synthetic RAW/IN_PROCESS/RELEASE/RETAIN/STABILITY fixture completes 216 valid samples once through accession, custody, scheduling, read-only results, inventory, and CoA, holds 24 seeded label/temperature/duplicate/late/OOS exceptions, uses 12 mock instruments and 3 mock contract labs, reproduces audit_sha256 93e5ce0ef00ca6de9ac87203b67ec05f9eb80d1cb10ffb284b1948a195dab83a, and blocks release until a named human. Adapters stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "roslinct_hopkinton_paperless_qc.py",
+        "roslinct-hopkinton-paperless-qc-lims.js",
+        "roslinct-hopkinton-paperless-qc-lims.html",
+        "test_roslinct_hopkinton_paperless_qc.py",
+        "revenue/roslinct_hopkinton_paperless_qc/contract.json",
+        "revenue/roslinct_hopkinton_paperless_qc/receipt.json",
+        "revenue/roslinct_hopkinton_paperless_qc/receipt.md",
+        "p/cursor-roslinct-hopkinton-paperless-qc-20260831-01.md",
+        "features/registry/roslinct-hopkinton-paperless-qc-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "roslinct_hopkinton_paperless_qc.py",
+        "roslinct-hopkinton-paperless-qc-lims.js",
+        "roslinct-hopkinton-paperless-qc-lims.html",
+        "test_roslinct_hopkinton_paperless_qc.py",
+        "revenue/roslinct_hopkinton_paperless_qc/contract.json",
+        "revenue/roslinct_hopkinton_paperless_qc/receipt.json",
+        "revenue/roslinct_hopkinton_paperless_qc/receipt.md",
+        "p/cursor-roslinct-hopkinton-paperless-qc-20260831-01.md",
+        "features/registry/roslinct-hopkinton-paperless-qc-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "roslinct-hopkinton-paperless-qc-lims-01.json",
+      "id": "roslinct-hopkinton-paperless-qc-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "RoslinCT Hopkinton paperless QC LIMS",
+      "next_gap": "Buyer-owned sample classes, instrument map, contract-lab list, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "roslinct-hopkinton-paperless-qc-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "roslinct-hopkinton-paperless-qc-lims.html",
+        "revenue/roslinct_hopkinton_paperless_qc/contract.json",
+        "p/cursor-roslinct-hopkinton-paperless-qc-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_roslinct_hopkinton_paperless_qc.py",
+        "roslinct_hopkinton_paperless_qc.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Public no-login FREE SAMPLE door for sales packages: one GRBN organ look-inside plus a one-page insert. Structural evidence only. No Titan walk, outreach, or invented buyers.",
       "carrier": "SETH",
       "chat_ignored": false,
@@ -1236,6 +1546,68 @@
       "superseded_by": "",
       "test_paths": [
         "test_sales_free_sample_pack.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "trace_sila_ml_iatf.py",
+        "trace-sila-ml-iatf-lims.js",
+        "trace-sila-ml-iatf-lims.html",
+        "test_trace_sila_ml_iatf.py",
+        "revenue/trace_sila_ml_iatf/contract.json",
+        "revenue/trace_sila_ml_iatf/receipt.json",
+        "revenue/trace_sila_ml_iatf/receipt.md",
+        "p/cursor-trace-sila-ml-iatf-lims-20260831-01.md",
+        "features/registry/trace-sila-ml-iatf-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "trace_sila_ml_iatf.py",
+        "trace-sila-ml-iatf-lims.js",
+        "trace-sila-ml-iatf-lims.html",
+        "test_trace_sila_ml_iatf.py",
+        "revenue/trace_sila_ml_iatf/contract.json",
+        "revenue/trace_sila_ml_iatf/receipt.json",
+        "revenue/trace_sila_ml_iatf/receipt.md",
+        "p/cursor-trace-sila-ml-iatf-lims-20260831-01.md",
+        "features/registry/trace-sila-ml-iatf-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "trace-sila-ml-iatf-lims-01.json",
+      "id": "trace-sila-ml-iatf-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Sila Moses Lake IATF LIMS",
+      "next_gap": "Buyer/vendor golden MES/QMS/analytics round trip after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "trace-sila-ml-iatf-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "trace-sila-ml-iatf-lims.html",
+        "revenue/trace_sila_ml_iatf/contract.json",
+        "p/cursor-trace-sila-ml-iatf-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_trace_sila_ml_iatf.py",
+        "trace_sila_ml_iatf.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1629,7 +2001,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 28,
+  "n_features": 34,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
