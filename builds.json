@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 2,
  "open_prs": [
   {
    "number": 6206,
@@ -359,7 +359,23 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6206",
    "base_freshness": {
     "base_sha": "9b0a8bb0f6b3926fdc2d0647bf53c8bb71699217",
-    "main_sha": "7011b259cb901a57687ca7cd9005f34e2b1b3200",
+    "main_sha": "6d5e7afcccff908a684b21485aca35a7989f5a22",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 6707,
+   "author": "woahwhattheheck",
+   "title": "TESTED trace-sila-ml-iatf-lims-01 SILA-ML-01 gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6707",
+   "base_freshness": {
+    "base_sha": "b25ef46e88f0172dccd0c620ffff7e6346a50085",
+    "main_sha": "6d5e7afcccff908a684b21485aca35a7989f5a22",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
