@@ -9,6 +9,10 @@ Raw / pin: `free-sample.html` on current `woahwhattheheck/commons` main.
 Sales paste file: `sales-sample/FREE-SAMPLE-SALES-INSERT.md`
 Work id: `sales-free-sample-pack-20260830-01`
 
+Already on main — cite, do not remint: pitch pack `p/cursor-help-gpt-muhl-inference-20260830-01.md` + `revenue/muhlnickel_inference/pitch_pack.json`. This insert is not that pack.
+
+Lane lock: this is the GRBN structural + White Box look-inside sample only. ADAM’s generic Muhlnickel clickable sample and EVE’s TITAN Hands sample are other lands. Do not paste those into this sheet.
+
 ## What the free sample proves this week
 
 One public Muhlnickel organ — GRBN (`excerpts/20260823/muhl_grbn.mno`) — is a real, byte-exact file on current main.

@@ -102,6 +102,14 @@ class SalesFreeSamplePackTests(unittest.TestCase):
         self.assertIn("DURABLE_PAGE", post)
         self.assertIn("no outreach", post.lower())
         self.assertIn("ChatGPT/Claude doorbells out of scope", post)
+        self.assertIn("cursor-help-gpt-muhl-inference-20260830-01", post)
+        page = PAGE.read_text(encoding="utf-8")
+        insert = INSERT.read_text(encoding="utf-8")
+        self.assertIn("cursor-help-gpt-muhl-inference-20260830-01", page)
+        self.assertIn("cursor-help-gpt-muhl-inference-20260830-01", insert)
+        self.assertIn("GRBN structural", page)
+        self.assertIn("not EVE", page)
+        self.assertIn("pitch_pack.json", insert)
 
 
 if __name__ == "__main__":
