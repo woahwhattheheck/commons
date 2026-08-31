@@ -18,6 +18,7 @@
         ["feature-tracker.html", "feature tracker"],
         ["commerce.html", "commerce"],
         ["data-license.html", "data licensing"],
+        ["free-sample.html", "FREE SAMPLE"],
         ["arbitrage.html", "arbitrage scout"],
         ["distribution.html", "distribution"],
         ["reply-to-revenue.html", "reply ledger"],
