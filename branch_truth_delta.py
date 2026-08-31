@@ -258,6 +258,27 @@ def _mutable_evidence(pr_data: Any) -> dict[str, Any]:
     }
 
 
+def _current_delta_state(row: Mapping[str, Any], pr_data: Any) -> str:
+    """Overlay mutable collision evidence on the reusable content comparison."""
+    if row.get("comparison_completeness") != COMPLETE:
+        return "UNMEASURED"
+    if row.get("is_ancestor") is True:
+        content_state = "ANCESTRAL"
+    elif not row.get("unique_commit_ids") and row.get("patch_equivalent_commit_ids"):
+        content_state = "LANDED"
+    elif not row.get("unique_commit_ids") and not row.get("changed_path_blob_map"):
+        content_state = "EQUIVALENT"
+    else:
+        content_state = "UNIQUE"
+    if (
+        content_state == "UNIQUE"
+        and isinstance(pr_data, Mapping)
+        and pr_data.get("collision_state") == "CONFLICT"
+    ):
+        return "CONFLICT"
+    return content_state
+
+
 def collect_remote_branches(
     repo: Path,
     *,
@@ -292,7 +313,6 @@ def collect_remote_branches(
                 "ahead",
                 "behind",
                 "is_ancestor",
-                "unique_delta_state",
                 "unique_commit_ids",
                 "patch_equivalent_commit_ids",
                 "patches",
@@ -331,23 +351,12 @@ def collect_remote_branches(
                 combined_digest = hashlib.sha256(
                     f"patch={patch_digest or ''}\ncontent={content_digest}\n".encode("ascii")
                 ).hexdigest()
-                if ancestor:
-                    state = "ANCESTRAL"
-                elif not unique_commits and equivalent_commits:
-                    state = "LANDED"
-                elif not unique_commits and not changed:
-                    state = "EQUIVALENT"
-                elif isinstance(pr_data, Mapping) and pr_data.get("collision_state") == "CONFLICT":
-                    state = "CONFLICT"
-                else:
-                    state = "UNIQUE"
                 row.update(
                     {
                         "merge_base_sha": merge_base,
                         "ahead": int(ahead_text),
                         "behind": int(behind_text),
                         "is_ancestor": ancestor,
-                        "unique_delta_state": state,
                         "unique_commit_ids": unique_commits,
                         "patch_equivalent_commit_ids": equivalent_commits,
                         "patches": patches,
@@ -388,6 +397,7 @@ def collect_remote_branches(
                         "resumed_from_complete_observation": False,
                     }
                 )
+        row["unique_delta_state"] = _current_delta_state(row, pr_data)
         row.update(_mutable_evidence(pr_data))
         if progress:
             progress(dict(row))
