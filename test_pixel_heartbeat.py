@@ -6,7 +6,9 @@ from __future__ import annotations
 import json
 import os
 import sys
+import tempfile
 import unittest
+from unittest import mock
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
@@ -134,7 +136,66 @@ class TestPixelHeartbeat(unittest.TestCase):
         self.assertEqual(recon["listed_missing"], ["MISSING.json"])
         self.assertEqual(recon["unlisted"], ["EXTRA.json"])
         self.assertEqual(load_index('["PLAYER2"]'), ["PLAYER2.json"])
-        self.assertEqual(load_index("{"), [])
+        with self.assertRaises(ValueError):
+            load_index("{")
+        with self.assertRaises(ValueError):
+            load_index("{}")
+        with self.assertRaises(ValueError):
+            load_index("")
+
+    def test_invalid_index_is_unmeasured_not_empty(self):
+        measured = measure_from_rows("{", [])
+        self.assertFalse(measured["measured"])
+        self.assertTrue(measured["index_present"])
+        self.assertIsNone(measured["heartbeat_count"])
+        self.assertIn("FINDER-FAILED", measured["error"])
+        self.assertEqual(classify(measured)["state"], "UNMEASURED")
+
+    def test_listing_failure_is_unmeasured_not_empty(self):
+        with tempfile.TemporaryDirectory() as root:
+            pixel_dir = os.path.join(root, "pixels")
+            os.makedirs(pixel_dir)
+            with open(
+                os.path.join(pixel_dir, "index.json"),
+                "w",
+                encoding="utf-8",
+            ) as handle:
+                handle.write('["PLAYER2.json"]')
+            with mock.patch(
+                "pixel_heartbeat.os.listdir",
+                side_effect=OSError("listing denied"),
+            ):
+                measured = measure_root(root, "2026-08-25T05:18:00Z")
+        self.assertFalse(measured["measured"])
+        self.assertIsNone(measured["heartbeat_count"])
+        self.assertIn("listing failed", measured["error"])
+        self.assertIn("FINDER-FAILED", measured["error"])
+        self.assertEqual(classify(measured)["state"], "UNMEASURED")
+
+    def test_heartbeat_read_failure_is_unmeasured_not_empty(self):
+        with tempfile.TemporaryDirectory() as root:
+            pixel_dir = os.path.join(root, "pixels")
+            os.makedirs(pixel_dir)
+            index_path = os.path.join(pixel_dir, "index.json")
+            heartbeat_path = os.path.join(pixel_dir, "PLAYER2.json")
+            with open(index_path, "w", encoding="utf-8") as handle:
+                handle.write('["PLAYER2.json"]')
+            with open(heartbeat_path, "w", encoding="utf-8") as handle:
+                handle.write("{}")
+            real_open = open
+
+            def guarded_open(path, *args, **kwargs):
+                if os.path.basename(path) == "PLAYER2.json":
+                    raise OSError("heartbeat denied")
+                return real_open(path, *args, **kwargs)
+
+            with mock.patch("builtins.open", side_effect=guarded_open):
+                measured = measure_root(root, "2026-08-25T05:18:00Z")
+        self.assertFalse(measured["measured"])
+        self.assertIsNone(measured["heartbeat_count"])
+        self.assertIn("heartbeat read failed", measured["error"])
+        self.assertIn("FINDER-FAILED", measured["error"])
+        self.assertEqual(classify(measured)["state"], "UNMEASURED")
 
     def test_catalog_names_hands_off(self):
         catalog = catalog_from_row(
