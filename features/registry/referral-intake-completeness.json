@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "Public no-login clinic-ops diagnostic: synthetic no-PHI referral packet becomes a required-field checklist, exactly one intake-queue ticket, and a timestamped receipt. Crash/replay does not duplicate the queue. Never a clinical decision.",
+  "carrier": "SETH",
+  "claimed_paths": [
+    "referral-intake-completeness.html",
+    "referral-intake-completeness.js",
+    "test_referral_intake_completeness.js",
+    "revenue/referral_intake_completeness/contract.json",
+    "revenue/referral_intake_completeness/receipt.json",
+    "revenue/referral_intake_completeness/receipt.md",
+    "p/referral-intake-completeness-20260831-01.md",
+    "features/registry/referral-intake-completeness.json"
+  ],
+  "dependencies": [],
+  "id": "referral-intake-completeness",
+  "name": "Referral intake completeness",
+  "next_gap": "Run the $199 diagnostic against one buyer-approved synthetic referral-intake shape; discuss the $2,500 pilot only after fit. No outreach and no cash claim.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "referral-intake-completeness.html",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "referral-intake-completeness.html",
+    "revenue/referral_intake_completeness/contract.json",
+    "p/referral-intake-completeness-20260831-01.md",
+    "diagnostic.html",
+    "commercial.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_referral_intake_completeness.js",
+    "referral-intake-completeness.js"
+  ]
+}
