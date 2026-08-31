@@ -147,8 +147,8 @@ def load_catalog(text):
         "slack_ts": str(data.get("slack_ts") or "").strip() or SLACK_TS,
         "titan": str(data.get("titan") or "NOT_WRITTEN").strip().upper() or "NOT_WRITTEN",
         "posting": str(data.get("posting") or "").strip(),
-        "no_auth": bool(data.get("no_auth", True)),
-        "no_gate": bool(data.get("no_gate", True)),
+        "no_auth": data.get("no_auth", True) is True,
+        "no_gate": data.get("no_gate", True) is True,
         "candidates": rows,
         "error": "",
     }
