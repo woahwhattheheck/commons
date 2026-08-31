@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 2,
  "open_prs": [
   {
    "number": 6816,
@@ -359,10 +359,26 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6816",
    "base_freshness": {
     "base_sha": "fa0fc2f89332e5ef5900af13bcb09dfd4cff6282",
-    "main_sha": "d236f4484beb7c8acd30eb24b6739c7a3a7e9fdb",
+    "main_sha": "5e7913c9230d02af0c980d90bab69447364e8d86",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 6982,
+   "author": "woahwhattheheck",
+   "title": "Prevent closed Discord board issues from being recreated",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6982",
+   "base_freshness": {
+    "base_sha": "5e7913c9230d02af0c980d90bab69447364e8d86",
+    "main_sha": "5e7913c9230d02af0c980d90bab69447364e8d86",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
