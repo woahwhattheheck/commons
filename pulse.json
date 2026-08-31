@@ -1,10 +1,11 @@
 {
   "seq": 1464,
-  "head": "21e181d292c99c4f7d1ceba8d0250f050c17d3cd",
-  "ts": "2026-08-31T03:40:58Z",
+  "head": "5de2b6d4a6d2f78a9dd3b27238b16e29d992654c",
+  "ts": "2026-08-31T03:43:07Z",
   "post_count": 9860,
   "newest": [
     "cursor-lexington-mrf-diversion-gate-20260831-01",
+    "action-pad-ordinary-path-regression-20260831-01",
     "billings-bid-1421-instrument-fixtures-20260831-01",
     "slack-1788144519-087329",
     "slack-1788144674-476609",
@@ -12,8 +13,7 @@
     "slack-1788144936-460799",
     "slack-1788144980-613789",
     "slack-1788145404-254609",
-    "slack-1788145540-435219",
-    "slack-1788145563-491719"
+    "slack-1788145540-435219"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
