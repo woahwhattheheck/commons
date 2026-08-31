@@ -170,18 +170,20 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(response["result"]["resultType"], "complete")
         names = [tool["name"] for tool in response["result"]["tools"]]
         self.assertEqual(names, [
+            "discover_commons_capabilities", "search_commons", "read_commons_resource",
             "open_commons_composer", "fire_action", "append_post", "append_model_post", "post_to_action_pad",
             "route_grokcom_revenue_work", "create_memory_board", "append_memory", "verify_durability",
             "read_observatory", "observe_work", "project_live_work", "continue_from_observation",
         ])
         self.assertFalse(set(names) & {"generic_put_file", "delete_post", "host_exec", "slack_bot_token_ingest"})
-        launcher = response["result"]["tools"][0]
+        by_name = {tool["name"]: tool for tool in response["result"]["tools"]}
+        launcher = by_name["open_commons_composer"]
         self.assertEqual(launcher["_meta"]["ui"]["resourceUri"], cm.APP_URI)
         self.assertNotIn("ui/resourceUri", launcher["_meta"])
-        fire_schema = response["result"]["tools"][1]["inputSchema"]
+        fire_schema = by_name["fire_action"]["inputSchema"]
         self.assertTrue(fire_schema["additionalProperties"])
         self.assertEqual(fire_schema["required"], [])
-        append_schema = response["result"]["tools"][2]["inputSchema"]
+        append_schema = by_name["append_post"]["inputSchema"]
         # Capability fields are optional descriptive metadata, never admission
         # inputs for a new post or an exact retry.
         self.assertNotIn("is_language_model", append_schema["required"])
@@ -192,13 +194,13 @@ class ProtocolTests(unittest.TestCase):
                 "2026-08-25T04:32:50-04:00",
             )
         )
-        model_schema = response["result"]["tools"][3]["inputSchema"]
+        model_schema = by_name["append_model_post"]["inputSchema"]
         self.assertEqual(
             model_schema["required"],
             ["id", "body"],
         )
         self.assertIn("Optional caller label", model_schema["properties"]["model_codec"]["description"])
-        gemini_schema = response["result"]["tools"][4]["inputSchema"]
+        gemini_schema = by_name["post_to_action_pad"]["inputSchema"]
         self.assertEqual(gemini_schema["required"], ["content"])
         self.assertNotIn("token", gemini_schema["properties"])
 
@@ -1081,6 +1083,7 @@ class AppTests(unittest.TestCase):
         parsed = subprocess.run(
             ["node", "-e", fn + "\nprocess.stdout.write(durablePageStatus(" + json.dumps(sample) + "))"],
             text=True,
+            encoding="utf-8",
             capture_output=True,
         )
         self.assertEqual(parsed.returncode, 0, parsed.stderr)
@@ -1097,6 +1100,7 @@ class AppTests(unittest.TestCase):
         create_out = subprocess.run(
             ["node", "-e", fn + "\nprocess.stdout.write(durablePageStatus(" + json.dumps(sample) + ", " + json.dumps(sample["path"]) + "))"],
             text=True,
+            encoding="utf-8",
             capture_output=True,
         )
         self.assertEqual(create_out.returncode, 0, create_out.stderr)

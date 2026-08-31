@@ -66,6 +66,9 @@ GET_SEND_LINK_TOOL = {
 }
 
 SHARED_HTTP_TOOL_NAMES = (
+    "discover_commons_capabilities",
+    "search_commons",
+    "read_commons_resource",
     "open_commons_composer",
     "fire_action",
     "append_post",
@@ -83,6 +86,7 @@ SHARED_HTTP_TOOL_NAMES = (
 )
 _CARRIER_ID_RE = re.compile(r"^[a-z0-9-]+$")
 _CARRIERS_DIR = Path(__file__).resolve().parent.parent / "carriers"
+_HARNESS_CATALOG = Path(__file__).resolve().parent.parent / "harnesses" / "catalog.json"
 
 
 def load_carrier_card(name: str | None) -> tuple[int, dict[str, Any] | None]:
@@ -100,6 +104,17 @@ def load_carrier_card(name: str | None) -> tuple[int, dict[str, Any] | None]:
     except (OSError, UnicodeError, json.JSONDecodeError):
         return 404, None
     if not isinstance(payload, dict):
+        return 404, None
+    return 200, payload
+
+
+def load_harness_catalog() -> tuple[int, dict[str, Any] | None]:
+    """Serve the same call-first catalog used by the MCP tool and resource."""
+    try:
+        payload = json.loads(_HARNESS_CATALOG.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return 404, None
+    if not isinstance(payload, dict) or payload.get("schema") != "commons-cross-harness-capabilities/v1":
         return 404, None
     return 200, payload
 
@@ -454,6 +469,10 @@ class handler(BaseHTTPRequestHandler):
         if path == "/carriers" or path.startswith("/carriers/"):
             name = "" if path == "/carriers" else path[len("/carriers/"):]
             status, payload = load_carrier_card(name or None)
+            self._send_json(status, payload)
+            return
+        if path in {"/capabilities", "/harnesses", "/.well-known/commons-capabilities.json"}:
+            status, payload = load_harness_catalog()
             self._send_json(status, payload)
             return
         if path in {
