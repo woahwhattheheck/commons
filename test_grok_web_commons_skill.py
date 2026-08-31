@@ -348,7 +348,7 @@ class GrokWebCommonsSkillTests(unittest.TestCase):
         surface = self.checker.load_source_surface(str(ROOT))
         self.assertTrue(surface["imported"])
         self.assertEqual(surface["name"], "commons")
-        self.assertEqual(surface["version"], "1.3.0")
+        self.assertEqual(surface["version"], "1.4.0")
         self.assertEqual(surface["tools"], list(self.checker.EXPECTED_SOURCE_TOOLS))
         self.assertIn("commons://head", surface["resources"])
         self.assertIn("read_observatory", surface["tools"])
