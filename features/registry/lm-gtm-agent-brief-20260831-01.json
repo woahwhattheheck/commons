@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "Agent-first compact GTM floor on the existing LLM-native composer: brief JSONL for HOT, sent JSONL for HARD_DO_NOT_RESEND, compact default show, HOLD_BUILD product pointers to landed LIMS runners, Billings STATUS refresh. Not a second CRM.",
+  "carrier": "GROK",
+  "claimed_paths": [
+    "host/lm_gtm_index.py",
+    "test_lm_gtm_index.py",
+    "revenue/lm_gtm_index/events.jsonl",
+    "revenue/lm_gtm_index/INDEX.jsonl",
+    "revenue/lm_gtm_index/state.json",
+    "lm-gtm-index.html",
+    "p/lm-gtm-agent-brief-20260831-01.md"
+  ],
+  "dependencies": [
+    "lm-gtm-floor-sync-20260831-01"
+  ],
+  "id": "lm-gtm-agent-brief-20260831-01",
+  "name": "LLM-native GTM agent brief floor",
+  "next_gap": "Owner mailbox still required for live send. Do not mint a second CRM. Do not resend SENT-DNR. Do not contact City of Billings or submit Bid 1421.",
+  "owner_subsystem": "lm-gtm-index",
+  "public_entrypoint": "lm-gtm-index.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "lm-gtm-index.html",
+    "revenue/lm_gtm_index/README.md",
+    "p/lm-gtm-agent-brief-20260831-01.md",
+    "p/lm-gtm-floor-sync-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_lm_gtm_index.py",
+    "host/lm_gtm_index.py"
+  ]
+}

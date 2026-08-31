@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 49
+    "TESTED": 51
   },
   "features": [
     {
@@ -1293,6 +1293,67 @@
       "test_paths": [
         "test_listing_registry.py",
         "host/listing_registry.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Agent-first compact GTM floor on the existing LLM-native composer: brief JSONL for HOT, sent JSONL for HARD_DO_NOT_RESEND, compact default show, HOLD_BUILD product pointers to landed LIMS runners, Billings STATUS refresh. Not a second CRM.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/events.jsonl",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-agent-brief-20260831-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/events.jsonl",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-agent-brief-20260831-01.md"
+      ],
+      "dependencies": [
+        "lm-gtm-floor-sync-20260831-01"
+      ],
+      "evidence_ids": [],
+      "file": "lm-gtm-agent-brief-20260831-01.json",
+      "id": "lm-gtm-agent-brief-20260831-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "LLM-native GTM agent brief floor",
+      "next_gap": "Owner mailbox still required for live send. Do not mint a second CRM. Do not resend SENT-DNR. Do not contact City of Billings or submit Bid 1421.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "p/lm-gtm-agent-brief-20260831-01.md",
+        "p/lm-gtm-floor-sync-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_index.py",
+        "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2818,6 +2879,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "SLO CliniSys cutover evidence: a 1,000-bundle synthetic fixture classifies 850 READY and 150 predetermined HOLD (50 duplicate IDs, 40 broken sample-to-test refs, 30 method/version conflicts, 30 result/report/source hash mismatches), maps every valid object once with zero orphans or duplicates, replays with no new mappings, rolls the simulated CLS store back to the exact baseline, and blocks result/report release without a named approver. Adapters stay read-only/simulated. No public-health interpretation.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "slo_cls_cutover_evidence.py",
+        "slo-cls-cutover-evidence-lims.js",
+        "slo-cls-cutover-evidence-lims.html",
+        "test_slo_cls_cutover_evidence.py",
+        "revenue/slo_cls_cutover_evidence/contract.json",
+        "revenue/slo_cls_cutover_evidence/receipt.json",
+        "revenue/slo_cls_cutover_evidence/receipt.md",
+        "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md",
+        "features/registry/slo-cls-cutover-evidence-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "slo_cls_cutover_evidence.py",
+        "slo-cls-cutover-evidence-lims.js",
+        "slo-cls-cutover-evidence-lims.html",
+        "test_slo_cls_cutover_evidence.py",
+        "revenue/slo_cls_cutover_evidence/contract.json",
+        "revenue/slo_cls_cutover_evidence/receipt.json",
+        "revenue/slo_cls_cutover_evidence/receipt.md",
+        "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md",
+        "features/registry/slo-cls-cutover-evidence-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "slo-cls-cutover-evidence-lims-01.json",
+      "id": "slo-cls-cutover-evidence-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "SLO CliniSys cutover evidence LIMS",
+      "next_gap": "Buyer-owned de-identified incumbent bundles, Panther Fusion method/version map, and CLS object schema after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "slo-cls-cutover-evidence-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "slo-cls-cutover-evidence-lims.html",
+        "revenue/slo_cls_cutover_evidence/contract.json",
+        "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slo_cls_cutover_evidence.py",
+        "slo_cls_cutover_evidence.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -3332,7 +3455,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 55,
+  "n_features": 57,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",

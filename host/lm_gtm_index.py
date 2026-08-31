@@ -10,9 +10,10 @@ It does not mint crm/, people/, contacts/, sales/, accounts, or deals.
 It does not rewrite website-people-email-book loop.json schema v2.
 Live send is refused. Cash stays USD 0 without payment evidence.
 
-Hot lane: `python3 host/lm_gtm_index.py hot` lists only actionable live
-rows. Occupancy (`claim` / `release`) is an overlay event on the owner
-field; it does not rewrite loop.json and is not an admission gate.
+Agent floor: `python3 host/lm_gtm_index.py brief` lists compact HOT
+rows. `sent` lists HARD_DO_NOT_RESEND. Occupancy (`claim` / `release`)
+is an overlay event on the owner field; it does not rewrite loop.json
+and is not an admission gate.
 """
 
 from __future__ import annotations
@@ -94,6 +95,19 @@ DOES_NOT_REPLACE = [
     "Airtable JOJO Revenue Recovery CRM / Revenue Pipeline",
 ]
 DOES_NOT_CREATE = ["crm/", "people/", "contacts/", "sales/"]
+BRIEF_FIELDS = (
+    "id",
+    "lane",
+    "organization",
+    "person",
+    "decision",
+    "next_action",
+    "dnr",
+    "owner",
+    "due",
+    "route_ref",
+    "source",
+)
 COMPOSE = {
     "website_people_email_book": "external prospects vs seller contacts; drafts only; --send exits 3",
     "smart_outreach": "evidence-bound candidates; does not open a second CRM",
@@ -312,6 +326,91 @@ def sent_awaiting_dnr_rows(paths: dict[str, Path] | None = None) -> list[dict[st
     ]
     rows.sort(key=lambda row: row["id"])
     return rows
+
+
+def compact_source(row: dict[str, Any]) -> str | None:
+    paths = [item for item in (row.get("source_paths") or []) if isinstance(item, str) and item]
+    def pick(predicate: Any) -> str | None:
+        for path in paths:
+            if predicate(path):
+                return path
+        return None
+
+    return (
+        pick(lambda path: path.endswith(".py"))
+        or pick(lambda path: path.startswith("p/") and path.endswith(".md"))
+        or pick(lambda path: path.startswith("slack:"))
+        or pick(lambda path: path.startswith("airtable:") or (path.startswith("revenue/") and path != EVENTS_REL))
+        or pick(lambda path: path != EVENTS_REL)
+    )
+
+
+def compact_lane(row: dict[str, Any]) -> str:
+    klass = hot_class(row)
+    if klass:
+        return klass
+    if row.get("decision") == "SENT_AWAITING_REPLY" and row.get("dnr"):
+        return "sent_dnr"
+    if row.get("decision") == HOLD_BUILD_DECISION:
+        return "hold_build"
+    if row.get("dnr") or row.get("decision") in HOLD_DECISIONS:
+        return "dnr"
+    if row.get("live"):
+        return "live"
+    return str(row.get("role") or "context")
+
+
+def compact_row(row: dict[str, Any], *, lane: str | None = None) -> dict[str, Any]:
+    item = {
+        "id": row["id"],
+        "lane": lane or compact_lane(row),
+        "organization": row.get("organization"),
+        "person": row.get("person"),
+        "decision": row.get("decision"),
+        "next_action": row.get("next_action"),
+        "dnr": bool(row.get("dnr")),
+        "owner": row.get("owner") or "UNSEATED",
+        "due": row.get("due"),
+        "route_ref": row.get("route_ref"),
+        "source": compact_source(row),
+    }
+    compact = {key: item[key] for key in BRIEF_FIELDS if item[key] is not None and item[key] != ""}
+    blob = json.dumps(compact, sort_keys=True, ensure_ascii=False)
+    _assert_no_pii_in_index_blob(blob)
+    extra = set(compact) - set(BRIEF_FIELDS)
+    if extra:
+        raise IndexError_(f"compact row extra keys: {sorted(extra)}")
+    return compact
+
+
+def brief_header(paths: dict[str, Path] | None = None, built: dict[str, Any] | None = None) -> dict[str, Any]:
+    built = built or build_index(paths)
+    truth = built["state"]["truth"]
+    header = {
+        "hot": int(truth["hot_next_actions"]),
+        "hold": int(truth["hold_build_actions"]),
+        "sent_dnr": int(truth["sent_awaiting_dnr_actions"]),
+        "cash_usd": 0,
+        "canonical_crm": CANONICAL_CRM,
+    }
+    _assert_no_pii_in_index_blob(json.dumps(header, sort_keys=True, ensure_ascii=False))
+    return header
+
+
+def brief_hot_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
+    return [compact_row(row, lane=str(row["hot_class"])) for row in hot_next_actions(paths)]
+
+
+def compact_sent_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
+    return [compact_row(row, lane="sent_dnr") for row in sent_awaiting_dnr_rows(paths)]
+
+
+def compact_hold_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
+    return [compact_row(row, lane="hold_build") for row in hold_build_next_actions(paths)]
+
+
+def emit_jsonl(rows: list[dict[str, Any]]) -> str:
+    return "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
 
 
 def load_receipts(paths: dict[str, Path]) -> list[dict[str, Any]]:
@@ -695,7 +794,14 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
             "signoz": "external_prospect RESEARCH_REQUIRED from loop.json + candidates.json",
             "metaforms": "EXISTING_CRM_RECORD airtable:recWHbHxQoQfGhS0q; HOLD_DO_NOT_RESEND",
             "anythingllm-mintplex": "HOLD_DO_NOT_RESEND from receipts + loop.json",
-            "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 addenda 1-5 received; HOLD / NO SUBMISSION; no bid submitted; award target 2026-09-28",
+            "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 addenda 1-5 received; HOLD / NO SUBMISSION; production runners in flight; no bid submitted; award target 2026-09-28",
+            "pcl-ryan-ott": "HOLD_BUILD_AND_VERIFY demand pcl-scope-sla-routing-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "canyon-wendy-mach": "HOLD_BUILD_AND_VERIFY demand canyon-multisite-regulated-intake-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "ace-qat-erick-sharp": "HOLD_BUILD_AND_VERIFY demand ace-qat-thermal-rheology-capacity-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "sgspsi-kyle-copeland": "HOLD_BUILD_AND_VERIFY demand sgspsi-high-throughput-thermal-rheology-lineage-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "csanalytical-brandon-zurawlow": "HOLD_BUILD_AND_VERIFY demand csanalytical-expansion-crossline-evidence-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "rmb-robert-borash": "HOLD_BUILD_AND_VERIFY demand rmb-crosssite-courier-accession-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "preinnewhof-steve-bylsma": "HOLD_BUILD_AND_VERIFY demand preinnewhof-pfas-fieldblank-gate-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
             "msp-integris": "EXISTING_CRM_RECORD airtable:recyxAWjUjrUY1Xln SENT/NO_REPLY/HARD_DO_NOT_RESEND",
             "fuse-jovie-tim-white": "EXISTING_CRM_RECORD airtable:recBHZw2VsWWmALcR SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-avantstay-andrei-patseev": "EXISTING_CRM_RECORD airtable:recQL3RMLwizE6kgZ SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
@@ -706,10 +812,12 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
         "contract": {
             "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
             "read_state": "revenue/lm_gtm_index/state.json",
+            "list_brief": "python3 host/lm_gtm_index.py brief",
             "list_next": "python3 host/lm_gtm_index.py next",
             "list_hot": "python3 host/lm_gtm_index.py hot",
             "list_hold": "python3 host/lm_gtm_index.py hold",
-            "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id>",
+            "list_sent": "python3 host/lm_gtm_index.py sent",
+            "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id> [--sources]",
             "append_event": "python3 host/lm_gtm_index.py append-event --subject <existing-id> --id <new-event-id> --body <text>",
             "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <name>",
             "release": "python3 host/lm_gtm_index.py release <subject> --owner <name>",
@@ -762,7 +870,12 @@ def _source_excerpt(items: list[Any], key: str, value: str) -> dict[str, Any] | 
     return None
 
 
-def show_subject(subject_id: str, paths: dict[str, Path] | None = None) -> dict[str, Any]:
+def show_subject(
+    subject_id: str,
+    paths: dict[str, Path] | None = None,
+    *,
+    sources: bool = False,
+) -> dict[str, Any]:
     paths = paths or default_paths()
     built = build_index(paths)
     row = next((item for item in built["rows"] if item["id"] == subject_id), None)
@@ -770,15 +883,21 @@ def show_subject(subject_id: str, paths: dict[str, Path] | None = None) -> dict[
         raise IndexError_(
             f"unknown subject {subject_id!r}: composer opens existing ledger ids only and does not mint a contact book"
         )
-    sources: dict[str, Any] = {}
+    if not sources:
+        compact = compact_row(row)
+        compact["overlay_event_ids"] = list(row.get("overlay_event_ids") or [])
+        compact["source_paths"] = list(row.get("source_paths") or [])
+        _assert_no_pii_in_index_blob(json.dumps(compact, sort_keys=True, ensure_ascii=False))
+        return compact
+    ledgers: dict[str, Any] = {}
     loop = read_object(paths["loop"])
     if "website_people_email_book" in row["source_ledgers"]:
         if row["role"] == "seller_context":
-            sources["website_people_email_book"] = _source_excerpt(
+            ledgers["website_people_email_book"] = _source_excerpt(
                 loop.get("seller_contacts") or [], "contact_id", subject_id
             )
         else:
-            sources["website_people_email_book"] = _source_excerpt(
+            ledgers["website_people_email_book"] = _source_excerpt(
                 loop.get("prospects") or [], "prospect_id", subject_id
             )
             emails = [
@@ -792,21 +911,21 @@ def show_subject(subject_id: str, paths: dict[str, Path] | None = None) -> dict[
                 if isinstance(item, dict) and item.get("prospect_id") == subject_id
             ]
             if emails:
-                sources["website_people_email_book_emails"] = emails
+                ledgers["website_people_email_book_emails"] = emails
             if bookings:
-                sources["website_people_email_book_bookings"] = bookings
+                ledgers["website_people_email_book_bookings"] = bookings
     if "smart_outreach" in row["source_ledgers"]:
         candidates = read_object(paths["candidates"])
-        sources["smart_outreach"] = _source_excerpt(
+        ledgers["smart_outreach"] = _source_excerpt(
             candidates.get("prospects") or [], "prospect_id", subject_id
         )
     if "reply_to_revenue" in row["source_ledgers"]:
         funnel = read_object(paths["funnel"])
-        sources["reply_to_revenue"] = _source_excerpt(
+        ledgers["reply_to_revenue"] = _source_excerpt(
             funnel.get("contacts") or [], "prospect_key", subject_id
         )
     if "outreach_receipts" in row["source_ledgers"]:
-        sources["outreach_receipts"] = [
+        ledgers["outreach_receipts"] = [
             {"path": item["path"], "do_not_resend": item["do_not_resend"]}
             for item in load_receipts(paths)
             if item["target_id"] == subject_id
@@ -817,7 +936,7 @@ def show_subject(subject_id: str, paths: dict[str, Path] | None = None) -> dict[
         "kind": "LM_GTM_INDEX_SHOW",
         "subject_id": subject_id,
         "index": row,
-        "sources": sources,
+        "sources": ledgers,
         "overlay_events": overlay,
         "canonical_crm": CANONICAL_CRM,
         "cash_usd": 0,
@@ -1038,10 +1157,15 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("write-index")
     sub.add_parser("snapshot")
     sub.add_parser("next")
-    sub.add_parser("hot")
-    sub.add_parser("hold")
+    sub.add_parser("brief")
+    sub.add_parser("sent")
+    hot = sub.add_parser("hot")
+    hot.add_argument("--brief", action="store_true")
+    hold = sub.add_parser("hold")
+    hold.add_argument("--brief", action="store_true")
     show = sub.add_parser("show")
     show.add_argument("subject")
+    show.add_argument("--sources", action="store_true")
     append = sub.add_parser("append-event")
     append.add_argument("--subject", required=True)
     append.add_argument("--id", dest="event_id", required=True)
@@ -1089,20 +1213,33 @@ def main(argv: list[str] | None = None) -> int:
                 "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
             )
             return 0
+        if args.command == "brief":
+            built = build_index()
+            sys.stdout.write(emit_jsonl([brief_header(built=built), *brief_hot_rows()]))
+            return 0
+        if args.command == "sent":
+            sys.stdout.write(emit_jsonl(compact_sent_rows()))
+            return 0
         if args.command == "hot":
-            rows = hot_next_actions()
-            sys.stdout.write(
-                "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
-            )
+            if args.brief:
+                sys.stdout.write(emit_jsonl(brief_hot_rows()))
+            else:
+                rows = hot_next_actions()
+                sys.stdout.write(
+                    "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
+                )
             return 0
         if args.command == "hold":
-            rows = hold_build_next_actions()
-            sys.stdout.write(
-                "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
-            )
+            if args.brief:
+                sys.stdout.write(emit_jsonl(compact_hold_rows()))
+            else:
+                rows = hold_build_next_actions()
+                sys.stdout.write(
+                    "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
+                )
             return 0
         if args.command == "show":
-            print(canonical_text(show_subject(args.subject)), end="")
+            print(canonical_text(show_subject(args.subject, sources=args.sources)), end="")
             return 0
         if args.command == "append-event":
             result = append_event(

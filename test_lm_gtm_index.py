@@ -61,8 +61,38 @@ HOLD_BUILD = (
     "denton-marcos-diosdado",
     "preinnewhof-steve-bylsma",
     "eagle-ross-caputo",
+    "pcl-ryan-ott",
+    "canyon-wendy-mach",
+    "ace-qat-erick-sharp",
+    "sgspsi-kyle-copeland",
+    "csanalytical-brandon-zurawlow",
 )
+HOLD_PRODUCT = {
+    "rmb-robert-borash": "rmb-crosssite-courier-accession-lims-01",
+    "preinnewhof-steve-bylsma": "preinnewhof-pfas-fieldblank-gate-lims-01",
+    "pcl-ryan-ott": "pcl-scope-sla-routing-lims-01",
+    "canyon-wendy-mach": "canyon-multisite-regulated-intake-lims-01",
+    "ace-qat-erick-sharp": "ace-qat-thermal-rheology-capacity-lims-01",
+    "sgspsi-kyle-copeland": "sgspsi-high-throughput-thermal-rheology-lineage-lims-01",
+    "csanalytical-brandon-zurawlow": "csanalytical-expansion-crossline-evidence-lims-01",
+}
 BILLINGS_POINTER = "lm-gtm-billings-material-reply-20260831-01"
+BILLINGS_FLOOR_STATUS = "lm-gtm-billings-floor-status-20260831-01"
+BILLINGS_RUNNER_STATUS = "lm-gtm-billings-runner-status-20260831-01"
+BRIEF_KEYS = {
+    "id",
+    "lane",
+    "organization",
+    "person",
+    "decision",
+    "next_action",
+    "dnr",
+    "owner",
+    "due",
+    "route_ref",
+    "source",
+}
+SENT_DNR = MSP + FUSE
 LEADS = (
     "communitycare-katherine-reyes",
     "pitt-mark-henderson",
@@ -97,14 +127,15 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(truth["transport_actions"], 0)
         self.assertEqual(truth["calls_booked"], 0)
         self.assertEqual(truth["mailbox"], "NEEDS_OWNER_MAILBOX")
-        self.assertEqual(truth["live_next_actions"], 40)
+        self.assertEqual(truth["live_next_actions"], 45)
         self.assertEqual(truth["hot_next_actions"], 12)
-        self.assertEqual(truth["hold_build_actions"], 5)
+        self.assertEqual(truth["hold_build_actions"], 10)
         self.assertEqual(truth["sent_awaiting_dnr_actions"], 10)
-        self.assertEqual(truth["external_prospects"], 29)
+        self.assertEqual(truth["external_prospects"], 34)
         self.assertEqual(truth["inbound_contacts"], 11)
         self.assertEqual(truth["seller_context_rows"], 4)
-        self.assertEqual(truth["overlay_events"], 27)
+        self.assertEqual(truth["overlay_events"], 35)
+        self.assertEqual(truth["index_rows"], 51)
         self.assertEqual(truth["research_entities_not_live"], 1000)
         self.assertTrue(built["state"]["public_projection_is_not_crm"])
         self.assertEqual(
@@ -203,12 +234,15 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertIn("no bid submitted", next_action)
         self.assertIn("hold / no submission", next_action)
         self.assertIn("addenda", next_action)
+        self.assertIn("production runners in flight", next_action)
+        self.assertIn("no city contact", next_action)
+        self.assertIn("award target 2026-09-28", next_action)
         self.assertIn(BILLINGS_POINTER, row["overlay_event_ids"])
-        self.assertIn("lm-gtm-billings-floor-status-20260831-01", row["overlay_event_ids"])
-        self.assertNotEqual(
-            BILLINGS_POINTER,
-            "lm-gtm-billings-floor-status-20260831-01",
-        )
+        self.assertIn(BILLINGS_FLOOR_STATUS, row["overlay_event_ids"])
+        self.assertIn(BILLINGS_RUNNER_STATUS, row["overlay_event_ids"])
+        self.assertNotEqual(BILLINGS_POINTER, BILLINGS_FLOOR_STATUS)
+        self.assertNotEqual(BILLINGS_POINTER, BILLINGS_RUNNER_STATUS)
+        self.assertNotEqual(BILLINGS_FLOOR_STATUS, BILLINGS_RUNNER_STATUS)
         hot_ids = [item["id"] for item in idx.hot_next_actions()]
         self.assertEqual(hot_ids[0], "city-of-billings-bid-1421")
 
@@ -265,6 +299,11 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertTrue(any(path.startswith("slack:C0BTURDA3PW:") for path in row["source_paths"]))
             self.assertIn("PRE-SALE TRANSPORT NONE", row["next_action"])
             self.assertNotIn("mailto:", json.dumps(row))
+        for name, demand in HOLD_PRODUCT.items():
+            row = by_id[name]
+            self.assertIn(demand, row["next_action"])
+            self.assertTrue(any(path.endswith(".py") for path in row["source_paths"]))
+            self.assertTrue(any(path.startswith("p/") and path.endswith(".md") for path in row["source_paths"]))
         self.assertEqual(by_id["sara-shannon-tollison"]["person"], "Shannon Tollison")
         self.assertEqual(by_id["eagle-ross-caputo"]["person"], "Ross A. Caputo")
 
@@ -303,7 +342,7 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertNotIn(token, blob)
 
     def test_show_hydrates_existing_ledgers(self) -> None:
-        composio = idx.show_subject("composio")
+        composio = idx.show_subject("composio", sources=True)
         self.assertEqual(composio["index"]["id"], "composio")
         self.assertEqual(
             composio["sources"]["website_people_email_book"]["prospect_id"], "composio"
@@ -313,21 +352,21 @@ class LmGtmIndexTests(unittest.TestCase):
             composio["sources"]["website_people_email_book_emails"][0]["transport"],
             "STAGED_NOT_SENT",
         )
-        metaforms = idx.show_subject("metaforms")
+        metaforms = idx.show_subject("metaforms", sources=True)
         self.assertEqual(metaforms["index"]["route_ref"], "airtable:recWHbHxQoQfGhS0q")
         self.assertEqual(
             metaforms["sources"]["website_people_email_book"]["route"]["kind"],
             "EXISTING_CRM_RECORD",
         )
-        signoz = idx.show_subject("signoz")
+        signoz = idx.show_subject("signoz", sources=True)
         self.assertEqual(signoz["index"]["decision"], "RESEARCH_REQUIRED")
-        mintplex = idx.show_subject("anythingllm-mintplex")
+        mintplex = idx.show_subject("anythingllm-mintplex", sources=True)
         self.assertTrue(mintplex["index"]["dnr"])
         self.assertTrue(mintplex["sources"]["outreach_receipts"])
-        billings = idx.show_subject("city-of-billings-bid-1421")
+        billings = idx.show_subject("city-of-billings-bid-1421", sources=True)
         self.assertEqual(billings["index"]["decision"], "MATERIAL_REPLY")
         self.assertTrue(billings["overlay_events"])
-        integris = idx.show_subject("msp-integris")
+        integris = idx.show_subject("msp-integris", sources=True)
         self.assertEqual(integris["index"]["route_ref"], "airtable:recyxAWjUjrUY1Xln")
 
     def test_append_event_on_existing_id_without_minting_contacts(self) -> None:
@@ -344,7 +383,7 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertEqual(result["event"]["subject_id"], "composio")
             self.assertEqual(result["event"]["cash_usd"], 0)
             self.assertEqual(result["event"]["transport"], "NONE")
-            shown = idx.show_subject("composio", paths)
+            shown = idx.show_subject("composio", paths, sources=True)
             self.assertEqual(shown["overlay_events"][-1]["id"], "lm-gtm-index-note-20260831-99")
             self.assertFalse((dest / "crm").exists())
             self.assertFalse((dest / "people").exists())
@@ -383,7 +422,7 @@ class LmGtmIndexTests(unittest.TestCase):
                 paths=paths,
             )
             self.assertEqual(first["status"], "occupied")
-            shown = idx.show_subject("composio", paths)
+            shown = idx.show_subject("composio", paths, sources=True)
             self.assertEqual(shown["index"]["owner"], "GROK")
             with self.assertRaises(idx.IndexError_):
                 idx.claim_subject(
@@ -400,7 +439,7 @@ class LmGtmIndexTests(unittest.TestCase):
                 paths=paths,
             )
             self.assertEqual(stolen["event"]["type"], "STEAL")
-            shown = idx.show_subject("composio", paths)
+            shown = idx.show_subject("composio", paths, sources=True)
             self.assertEqual(shown["index"]["owner"], "CLAUDE")
             released = idx.release_subject(
                 subject_id="composio",
@@ -409,7 +448,7 @@ class LmGtmIndexTests(unittest.TestCase):
                 paths=paths,
             )
             self.assertEqual(released["status"], "released")
-            shown = idx.show_subject("composio", paths)
+            shown = idx.show_subject("composio", paths, sources=True)
             self.assertEqual(shown["index"]["owner"], "UNSEATED")
             with self.assertRaises(idx.IndexError_):
                 idx.claim_subject(
@@ -505,7 +544,7 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertEqual(hot_ids[0], "city-of-billings-bid-1421")
             self.assertIn("metaforms", hot_ids)
             self.assertLess(hot_ids.index("metaforms"), hot_ids.index("composio"))
-            shown = idx.show_subject("metaforms", paths)
+            shown = idx.show_subject("metaforms", paths, sources=True)
             self.assertEqual(shown["index"]["decision"], "MATERIAL_REPLY")
             self.assertFalse(shown["index"]["dnr"])
 
@@ -528,6 +567,11 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertTrue(receipt.is_file())
         self.assertIn("id: lm-gtm-hot-lane-20260831-01", receipt.read_text(encoding="utf-8"))
         self.assertNotIn("id: lm-gtm-floor-sync-20260831-01", receipt.read_text(encoding="utf-8"))
+
+    def test_floor_sync_receipt_not_reminted(self) -> None:
+        receipt = ROOT / "p" / "lm-gtm-floor-sync-20260831-01.md"
+        self.assertTrue(receipt.is_file())
+        self.assertIn("id: lm-gtm-floor-sync-20260831-01", receipt.read_text(encoding="utf-8"))
 
     def test_send_exits_3(self) -> None:
         proc = subprocess.run(
@@ -588,7 +632,172 @@ class LmGtmIndexTests(unittest.TestCase):
             text=True,
         ).stdout
         parsed = json.loads(show)
-        self.assertEqual(parsed["index"]["route_ref"], "airtable:recWHbHxQoQfGhS0q")
+        self.assertEqual(parsed["route_ref"], "airtable:recWHbHxQoQfGhS0q")
+        self.assertNotIn("sources", parsed)
+        self.assertNotIn("schema_version", parsed)
+        self.assertIsNone(EMAIL_RE.search(show))
+        self.assertIsNone(PHONE_RE.search(show))
+        hydrated = subprocess.run(
+            [sys.executable, str(HOST), "show", "composio", "--sources"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout
+        hydrated_obj = json.loads(hydrated)
+        self.assertEqual(
+            hydrated_obj["sources"]["website_people_email_book_emails"][0]["transport"],
+            "STAGED_NOT_SENT",
+        )
+
+    def test_brief_is_compact_hot_without_extra_keys_or_pii(self) -> None:
+        proc = subprocess.run(
+            [sys.executable, str(HOST), "brief"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        lines = [line for line in proc.stdout.splitlines() if line.strip()]
+        header = json.loads(lines[0])
+        self.assertEqual(
+            set(header),
+            {"hot", "hold", "sent_dnr", "cash_usd", "canonical_crm"},
+        )
+        self.assertEqual(header["hot"], 12)
+        self.assertEqual(header["hold"], 10)
+        self.assertEqual(header["sent_dnr"], 10)
+        self.assertEqual(header["cash_usd"], 0)
+        self.assertEqual(header["canonical_crm"], "JOJO Revenue Recovery CRM / Revenue Pipeline")
+        rows = [json.loads(line) for line in lines[1:]]
+        self.assertEqual(len(rows), 12)
+        self.assertEqual(rows[0]["id"], "city-of-billings-bid-1421")
+        self.assertEqual(rows[0]["lane"], "material_reply")
+        self.assertEqual(rows[0]["decision"], "MATERIAL_REPLY")
+        self.assertIn("hold / no submission", rows[0]["next_action"].casefold())
+        self.assertIn("production runners in flight", rows[0]["next_action"].casefold())
+        for row in rows:
+            extra = set(row) - BRIEF_KEYS
+            self.assertFalse(extra, extra)
+            self.assertNotIn("schema_version", row)
+            self.assertNotIn("kind", row)
+            self.assertNotIn("overlay_event_ids", row)
+            self.assertNotIn("cash_usd", row)
+            self.assertNotIn("source_ledgers", row)
+            self.assertTrue(all(value is not None for value in row.values()))
+            blob = json.dumps(row)
+            self.assertIsNone(EMAIL_RE.search(blob))
+            self.assertIsNone(PHONE_RE.search(blob))
+            self.assertNotIn("mailto:", blob)
+        hot_ids = [row["id"] for row in idx.hot_next_actions()]
+        self.assertEqual([row["id"] for row in rows], hot_ids)
+        for name in SENT_DNR + HOLD_BUILD:
+            self.assertNotIn(name, [row["id"] for row in rows])
+        self.assertIn("list_brief", idx.build_index()["state"]["contract"])
+        self.assertIn("list_sent", idx.build_index()["state"]["contract"])
+        self.assertEqual(
+            idx.build_index()["state"]["contract"]["list_brief"],
+            "python3 host/lm_gtm_index.py brief",
+        )
+        blob = proc.stdout
+        self.assertIsNone(EMAIL_RE.search(blob))
+        self.assertIsNone(PHONE_RE.search(blob))
+        for token in ("execdir@", "jpereira@", "hbest@", "info@5ktech", "sales@integrisit", "halo.live", "support@", "tim@jov"):
+            self.assertNotIn(token, blob)
+
+    def test_sent_lists_all_dnr_and_none_are_hot(self) -> None:
+        proc = subprocess.run(
+            [sys.executable, str(HOST), "sent"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        rows = [json.loads(line) for line in proc.stdout.splitlines() if line.strip()]
+        ids = [row["id"] for row in rows]
+        self.assertEqual(sorted(ids), sorted(SENT_DNR))
+        self.assertEqual(len(ids), 10)
+        hot_ids = {row["id"] for row in idx.hot_next_actions()}
+        for row in rows:
+            extra = set(row) - BRIEF_KEYS
+            self.assertFalse(extra, extra)
+            self.assertEqual(row["lane"], "sent_dnr")
+            self.assertEqual(row["decision"], "SENT_AWAITING_REPLY")
+            self.assertTrue(row["dnr"])
+            self.assertNotIn(row["id"], hot_ids)
+            self.assertTrue(str(row.get("route_ref") or "").startswith("airtable:rec"))
+            blob = json.dumps(row)
+            self.assertIsNone(EMAIL_RE.search(blob))
+            self.assertIsNone(PHONE_RE.search(blob))
+        self.assertIsNone(EMAIL_RE.search(proc.stdout))
+        self.assertIsNone(PHONE_RE.search(proc.stdout))
+
+    def test_hold_product_pointers_cite_demand_ids_without_pii(self) -> None:
+        hold = idx.hold_build_next_actions()
+        by_id = {row["id"]: row for row in hold}
+        for name, demand in HOLD_PRODUCT.items():
+            row = by_id[name]
+            compact = idx.compact_row(row, lane="hold_build")
+            self.assertIn(demand, row["next_action"])
+            self.assertIn(demand, compact["next_action"])
+            self.assertEqual(compact["lane"], "hold_build")
+            self.assertTrue(str(compact["source"]).endswith(".py"))
+            blob = json.dumps(row) + json.dumps(compact)
+            self.assertIsNone(EMAIL_RE.search(blob))
+            self.assertIsNone(PHONE_RE.search(blob))
+            self.assertNotIn("mailto:", blob)
+            self.assertNotIn("halo.live", blob)
+        hold_cli = subprocess.run(
+            [sys.executable, str(HOST), "hold", "--brief"],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout
+        hold_ids = [json.loads(line)["id"] for line in hold_cli.splitlines() if line.strip()]
+        self.assertEqual(sorted(hold_ids), sorted(HOLD_BUILD))
+        self.assertIsNone(EMAIL_RE.search(hold_cli))
+        self.assertIsNone(PHONE_RE.search(hold_cli))
+
+    def test_show_default_is_compact_without_pii(self) -> None:
+        shown = idx.show_subject("composio")
+        self.assertEqual(shown["id"], "composio")
+        self.assertEqual(shown["lane"], "ready_to_draft")
+        self.assertNotIn("sources", shown)
+        self.assertNotIn("schema_version", shown)
+        self.assertIn("overlay_event_ids", shown)
+        self.assertIn("source_paths", shown)
+        blob = json.dumps(shown)
+        self.assertIsNone(EMAIL_RE.search(blob))
+        self.assertIsNone(PHONE_RE.search(blob))
+        billings = idx.show_subject("city-of-billings-bid-1421")
+        self.assertEqual(billings["decision"], "MATERIAL_REPLY")
+        self.assertEqual(billings["lane"], "material_reply")
+        self.assertIn(BILLINGS_POINTER, billings["overlay_event_ids"])
+        self.assertIn(BILLINGS_RUNNER_STATUS, billings["overlay_event_ids"])
+        self.assertNotIn("sources", billings)
+
+    def test_prior_receipts_not_reminted(self) -> None:
+        for name, prefix in (
+            ("lm-gtm-index-20260831-01", "8845d65a"),
+            ("lm-gtm-hot-lane-20260831-01", "8cb3e49a"),
+            ("lm-gtm-floor-sync-20260831-01", "ce1482ef"),
+        ):
+            path = ROOT / "p" / f"{name}.md"
+            self.assertTrue(path.is_file(), name)
+            text = path.read_text(encoding="utf-8")
+            self.assertIn(f"id: {name}", text)
+            digest = subprocess.run(
+                ["git", "hash-object", str(path)],
+                cwd=ROOT,
+                check=True,
+                capture_output=True,
+                text=True,
+            ).stdout.strip()
+            self.assertTrue(digest.startswith(prefix), (name, digest))
+        agent = ROOT / "p" / "lm-gtm-agent-brief-20260831-01.md"
+        self.assertTrue(agent.is_file())
+        self.assertIn("id: lm-gtm-agent-brief-20260831-01", agent.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

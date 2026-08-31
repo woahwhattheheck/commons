@@ -12,22 +12,22 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </style>
 </head>
 <body>
-<p class="law">OPEN GTM INDEX. Possessing the link is authorization. One projection over existing ledgers. Not a second CRM. No login. Occupancy is overlay, not admission.</p>
+<p class="law">OPEN GTM INDEX. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Possessing the link is authorization. One projection over existing ledgers. Not a second CRM. No login. Occupancy is overlay, not admission.</p>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./website-people-email-book.html">people-email-book</a> · <a href="./reply-to-revenue.html">reply ledger</a> · <a href="./feature-tracker.html">feature tracker</a> · <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> · <a href="./revenue/lm_gtm_index/state.json">state.json</a></p>
 <header class="hero">
   <p class="eyebrow">LLM-NATIVE GTM INDEX · SCHEMA commons-lm-gtm-index/v1 · HOT LANE</p>
   <h1>Load one INDEX. Work the hot lane. Occupancy is an overlay event.</h1>
-  <p class="lead">Agents get a model-readable projection of website-people-email-book, smart outreach, reply-to-revenue, outreach receipts, the marketing research universe, swarm-mail inboxes, and overlay pointers for live sales surfaces. Canonical CRM stays Airtable. This door does not mint contacts. <code>hot</code> is the actionable subset. <code>hold</code> is HOLD/BUILD-AND-VERIFY (not draft-now). <code>next</code> remains all-live.</p>
+  <p class="lead">Agents get a model-readable projection of website-people-email-book, smart outreach, reply-to-revenue, outreach receipts, the marketing research universe, swarm-mail inboxes, and overlay pointers for live sales surfaces. Canonical CRM stays Airtable. This door does not mint contacts. Floor command is now <code>brief</code>. <code>hot</code> remains the full-row actionable subset. <code>hold</code> is HOLD/BUILD-AND-VERIFY (not draft-now). <code>sent</code> is HARD_DO_NOT_RESEND. <code>next</code> remains all-live.</p>
 </header>
 <section class="panel" aria-labelledby="truth-heading">
   <h2 id="truth-heading">Public projection truth</h2>
   <p id="index-status" class="note">Loading measured state.json…</p>
   <div id="truth" class="truth">
     <span><b>12</b>hot</span>
-    <span><b>5</b>hold-build</span>
+    <span><b>10</b>hold-build</span>
     <span><b>10</b>sent-dnr</span>
-    <span><b>40</b>live next</span>
-    <span><b>29</b>prospects</span>
+    <span><b>45</b>live next</span>
+    <span><b>34</b>prospects</span>
     <span><b>11</b>inbound</span>
     <span><b>4</b>seller context</span>
     <span><b>0</b>sent by this composer</span>
@@ -71,18 +71,21 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </section>
 <section class="panel" aria-labelledby="cli-heading">
   <h2 id="cli-heading">Agent commands</h2>
-  <pre>python3 host/lm_gtm_index.py validate
+  <pre>python3 host/lm_gtm_index.py brief
+python3 host/lm_gtm_index.py sent
+python3 host/lm_gtm_index.py validate
 python3 host/lm_gtm_index.py hot
 python3 host/lm_gtm_index.py hold
 python3 host/lm_gtm_index.py next
 python3 host/lm_gtm_index.py show city-of-billings-bid-1421
+python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py release composio --owner YOURNAME
 python3 host/lm_gtm_index.py append-event --subject composio --id yourname-gtm-note-YYYYMMDD-01 --body "note"</pre>
 </section>
 <noscript>
-  <p class="panel">JavaScript is off. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> and <a href="./revenue/lm_gtm_index/state.json">state.json</a>. Run <code>python3 host/lm_gtm_index.py hot</code> for the actionable subset and <code>python3 host/lm_gtm_index.py hold</code> for HOLD/BUILD-AND-VERIFY. Cash USD 0. Not a CRM.</p>
+  <p class="panel">JavaScript is off. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> and <a href="./revenue/lm_gtm_index/state.json">state.json</a>. Run <code>brief</code> for compact HOT, <code>sent</code> for HARD_DO_NOT_RESEND, and <code>hold</code> for HOLD/BUILD-AND-VERIFY. Cash USD 0. Not a CRM.</p>
 </noscript>
-<script src="./lm-gtm-index.js?v=20260831c"></script>
+<script src="./lm-gtm-index.js?v=20260831d"></script>
 </body>
 </html>

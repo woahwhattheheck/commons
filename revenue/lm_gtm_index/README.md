@@ -1,18 +1,19 @@
 # LLM-native GTM index
 
 One index-first compose/query layer over GTM ledgers Commons already has.
-Humans keep the existing UIs. Agents load one INDEX, list live next-actions,
-open an existing prospect by reference, and append an overlay event. This is
-not a second CRM and not a new contact book.
+Humans keep the existing UIs. Agents load one INDEX, run `brief` for compact
+HOT next-actions, open an existing prospect by reference, and append an overlay
+event. This is not a second CRM and not a new contact book.
 
 Canonical CRM remains Airtable `JOJO Revenue Recovery CRM / Revenue Pipeline`.
 Private routes stay off git. Public cash stays USD 0 unless a named payment
 evidence URL already exists in a source ledger.
 
-Hot lane (`python3 host/lm_gtm_index.py hot`) is the actionable subset: it
-excludes seller context, the research universe, mailbox manifests, DNR /
-HOLD_DO_NOT_RESEND / HOLD_DO_NOT_CONTACT, SENT/AWAITING_REPLY with
-HARD_DO_NOT_RESEND, and HOLD_BUILD_AND_VERIFY unless a MATERIAL_REPLY
+Floor command is now `python3 host/lm_gtm_index.py brief` — compact JSONL
+(header + HOT rows). `sent` is HARD_DO_NOT_RESEND. `hot` remains the full-row
+actionable subset: it excludes seller context, the research universe, mailbox
+manifests, DNR / HOLD_DO_NOT_RESEND / HOLD_DO_NOT_CONTACT, SENT/AWAITING_REPLY
+with HARD_DO_NOT_RESEND, and HOLD_BUILD_AND_VERIFY unless a MATERIAL_REPLY
 reopened them. Rank: material_reply > sent_awaiting_reply > ready_to_draft >
 verified_lead_unsent.
 
@@ -33,9 +34,13 @@ Read (any harness with git):
    Every later line is one `LM_GTM_INDEX_ROW` pointing at existing files.
 2. List all live next-actions: rows with `"live": true`, or
    `python3 host/lm_gtm_index.py next`.
-3. List only actionable live ones:
+3. Compact HOT (agent floor):
+   `python3 host/lm_gtm_index.py brief`
+4. HARD_DO_NOT_RESEND:
+   `python3 host/lm_gtm_index.py sent`
+5. Full-row actionable live ones:
    `python3 host/lm_gtm_index.py hot`
-4. Open one existing subject by id:
+6. Open one existing subject by id (compact; `--sources` hydrates ledgers):
    `python3 host/lm_gtm_index.py show composio`
    (also `city-of-billings-bid-1421`, `msp-integris`, `communitycare-katherine-reyes`,
    `signoz`, `metaforms`, `anythingllm-mintplex`, or any other INDEX id).
@@ -71,10 +76,13 @@ events. No `crm/`, `people/`, `contacts/`, or `sales/` tree is created.
 ```sh
 python3 host/lm_gtm_index.py validate
 python3 host/lm_gtm_index.py write-index
+python3 host/lm_gtm_index.py brief
+python3 host/lm_gtm_index.py sent
 python3 host/lm_gtm_index.py next
 python3 host/lm_gtm_index.py hot
 python3 host/lm_gtm_index.py hold
 python3 host/lm_gtm_index.py show city-of-billings-bid-1421
+python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 -m unittest -v test_lm_gtm_index.py
 ```
@@ -97,7 +105,9 @@ Seller contacts from the website loop stay `seller_context` and are never
 live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX`.
 
 Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
+`lm-gtm-floor-sync-20260831-01`,
 `website-people-email-book-20260830-01`, or
 `website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
 schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY
-pointer `lm-gtm-billings-material-reply-20260831-01`.
+pointer `lm-gtm-billings-material-reply-20260831-01`. Do not remint
+`lm-gtm-billings-floor-status-20260831-01`.
