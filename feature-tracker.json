@@ -9,88 +9,14 @@
     "same_id_same_bytes": "idempotent"
   },
   "counts": {
-    "DEGRADED": 0,
-    "LIVE": 3,
+    "DEGRADED": 2,
+    "LIVE": 1,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 14
+    "TESTED": 18
   },
   "features": [
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
-        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
-        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
-        "0f6249cd06eadf2b2dbd75796320a743fb20f433",
-        "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
-        "28a40d31b6bec435b4906addc0241f22419fb339"
-      ],
-      "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
-      "carrier": "CODEX",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "arbitrage.html",
-        "revenue/arbitrage/opportunity.schema.json",
-        "test_arbitrage.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "arbitrage.html",
-        "revenue/arbitrage/opportunity.schema.json",
-        "test_arbitrage.py"
-      ],
-      "dependencies": [],
-      "evidence_ids": [
-        "ev-arbitrage-opportunity-git-20260830-01",
-        "ev-arbitrage-opportunity-receipt-20260830-01",
-        "ev-arbitrage-opportunity-source-20260830-01",
-        "ev-arbitrage-opportunity-tests-20260830-01",
-        "ev-arbitrage-opportunity-blob-20260830-01",
-        "ev-arbitrage-opportunity-live-20260830-01",
-        "ev-arbitrage-opportunity-blob-20260830-02",
-        "ev-arbitrage-opportunity-live-20260830-02",
-        "ev-arbitrage-opportunity-receipt-20260830-02",
-        "ev-arbitrage-opportunity-blob-20260830-03",
-        "ev-arbitrage-opportunity-live-20260830-03"
-      ],
-      "file": "arbitrage-opportunity-road-20260830-01.json",
-      "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-08-30T06:53:00Z",
-      "live_status": "LIVE",
-      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
-      "name": "Arbitrage opportunity road",
-      "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
-      "owner_subsystem": "commerce",
-      "public_entrypoint": "arbitrage.html",
-      "receipts": [
-        "codex-arbitrage-opportunity-road-20260830-01",
-        "unseated-feature-tracker-commerce-doors-20260830-02"
-      ],
-      "related": {
-        "boards": false,
-        "current_work": false,
-        "profitability": true,
-        "resources": true
-      },
-      "resource_links": [
-        "commerce.html",
-        "data-license.html",
-        "opportunity.html",
-        "p/codex-arbitrage-opportunity-road-20260830-01.md",
-        "agent-rescue.html"
-      ],
-      "rollup": "LIVE",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_arbitrage.py",
-        "revenue/arbitrage/opportunity.schema.json"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTED"
-    },
     {
       "author_claim_ignored": "",
       "blob_proof": [
@@ -157,72 +83,6 @@
       "test_paths": [
         "test_unbuilt_items.py",
         "host/unbuilt_items.py"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTED"
-    },
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "data-license.html:f416d7031fa05134d3bb16b8bd3b01910ebd0835",
-        "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
-        "data-license.html:0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
-        "0e1bbbd9e51b30fa1e51142456bda02cf879aa82"
-      ],
-      "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
-      "carrier": "CODEX",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "data-license.html",
-        "test_data_license.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "data-license.html",
-        "test_data_license.py"
-      ],
-      "dependencies": [],
-      "evidence_ids": [
-        "ev-unique-data-license-git-20260830-01",
-        "ev-unique-data-license-receipt-20260830-01",
-        "ev-unique-data-license-source-20260830-01",
-        "ev-unique-data-license-tests-20260830-01",
-        "ev-unique-data-license-blob-20260830-01",
-        "ev-unique-data-license-live-20260830-01",
-        "ev-unique-data-license-blob-20260830-02",
-        "ev-unique-data-license-live-20260830-02"
-      ],
-      "file": "unique-data-license-door-20260830-01.json",
-      "id": "unique-data-license-door-20260830-01",
-      "last_change": "2026-08-30T06:53:00Z",
-      "live_status": "LIVE",
-      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
-      "name": "Unique data license door",
-      "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
-      "owner_subsystem": "commerce",
-      "public_entrypoint": "data-license.html",
-      "receipts": [
-        "codex-unique-data-license-door-20260830-01"
-      ],
-      "related": {
-        "boards": false,
-        "current_work": false,
-        "profitability": true,
-        "resources": true
-      },
-      "resource_links": [
-        "commerce.html",
-        "commercial.html",
-        "revenue/ip/whitebox_archive_inventory.json",
-        "revenue/ip/whitebox_archive_license_probe.json",
-        "revenue/data/ci_receipt_corpus.json",
-        "p/codex-unique-data-license-door-20260830-01.md"
-      ],
-      "rollup": "LIVE",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_data_license.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -556,6 +416,65 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "LLM-native compose/query layer over existing GTM ledgers. One INDEX, live next-actions, open-by-reference, overlay events. Not a second CRM or contact book.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-index-20260831-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-index-20260831-01.md"
+      ],
+      "dependencies": [
+        "website-people-email-book-20260830-01"
+      ],
+      "evidence_ids": [],
+      "file": "lm-gtm-index-20260831-01.json",
+      "id": "lm-gtm-index-20260831-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "LLM-native GTM index",
+      "next_gap": "Owner mailbox still required for live send. Do not mint a second CRM. Do not claim sends, bookings, or cash.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "website-people-email-book.html",
+        "p/lm-gtm-index-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_index.py",
+        "host/lm_gtm_index.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Muhlnickel inference is encoded as two Shopify-native product imports: a three-tier attested-run service and generated-token capacity from $0.10 to $0.02 per million, below three cited cloud output-token rates without claiming model-quality equivalence or unmeasured frontier capacity.",
       "carrier": "CODEX",
       "chat_ignored": false,
@@ -609,6 +528,57 @@
       "superseded_by": "",
       "test_paths": [
         "test_muhlnickel_inference_offer.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Public no-login Muhlnickel FREE SAMPLE page: computer-in-a-file via already-landed SEED0.mno plus one existing public proof. Sales-pack JSON is paste-only. Not a live 70B run and not a cash claim.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "muhlnickel-free-sample.html",
+        "revenue/muhlnickel_free_sample/sales_pack.json",
+        "test_muhlnickel_free_sample.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "muhlnickel-free-sample.html",
+        "revenue/muhlnickel_free_sample/sales_pack.json",
+        "test_muhlnickel_free_sample.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "muhlnickel-free-sample-20260830-01.json",
+      "id": "muhlnickel-free-sample-20260830-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Muhlnickel free sample page",
+      "next_gap": "Do not invent buyers, cash, Stripe, Shopify, live 70B, or Titan walks. Seth\u2019s GRBN + whitebox sample stays a separate leftover.",
+      "owner_subsystem": "muhlnickel-sales-sample",
+      "public_entrypoint": "muhlnickel-free-sample.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "muhlnickel-free-sample.html",
+        "revenue/muhlnickel_free_sample/sales_pack.json",
+        "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+        "resources.html",
+        "commerce.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_muhlnickel_free_sample.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -857,6 +827,62 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "A public browser diagnostic replays 20 synthetic repair-scheduling retry, timeout, crash, webhook, idempotency, and rollback fixtures; it proves exactly one booking or an explicit stopped/rolled-back terminal receipt, fails closed on a duplicate, identifies the first unsafe edge, and exports JSON evidence.",
+      "carrier": "CODEX_SOL",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "repair-booking-preflight.html",
+        "repair-booking-preflight.js",
+        "revenue/repair_booking_preflight/contract.json",
+        "test_repair_booking_preflight.py",
+        "p/repair-booking-exactly-once-preflight-20260831-01.md",
+        "features/registry/repair-booking-exactly-once-preflight-20260831-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "repair-booking-preflight.html",
+        "repair-booking-preflight.js",
+        "revenue/repair_booking_preflight/contract.json",
+        "test_repair_booking_preflight.py",
+        "p/repair-booking-exactly-once-preflight-20260831-01.md",
+        "features/registry/repair-booking-exactly-once-preflight-20260831-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "repair-booking-exactly-once-preflight-20260831-01.json",
+      "id": "repair-booking-exactly-once-preflight-20260831-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Repair-booking exactly-once preflight",
+      "next_gap": "Run the $199 diagnostic against one buyer-approved synthetic repair-scheduling payload shape; discuss the $2,500 fixed proof only after the bounded diagnostic is accepted.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "repair-booking-preflight.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "repair-booking-preflight.html",
+        "revenue/repair_booking_preflight/contract.json",
+        "p/repair-booking-exactly-once-preflight-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_repair_booking_preflight.py",
+        "repair-booking-preflight.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Capacity, lifecycle, condition, authority, and evidence freshness. Cache is not capacity. Secrets are not landed.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -907,6 +933,60 @@
       "test_paths": [
         "test_resource_ledger.py",
         "host/resource_ledger.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Public no-login FREE SAMPLE door for sales packages: one GRBN organ look-inside plus a one-page insert. Structural evidence only. No Titan walk, outreach, or invented buyers.",
+      "carrier": "SETH",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "free-sample.html",
+        "sales-sample/FREE-SAMPLE-SALES-INSERT.md",
+        "test_sales_free_sample_pack.py",
+        "p/sales-free-sample-pack-20260830-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "free-sample.html",
+        "sales-sample/FREE-SAMPLE-SALES-INSERT.md",
+        "test_sales_free_sample_pack.py",
+        "p/sales-free-sample-pack-20260830-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "sales-free-sample-pack-20260830-01.json",
+      "id": "sales-free-sample-pack-20260830-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Sales free sample pack",
+      "next_gap": "Do not claim a Titan walk, invent buyers, or treat Pages as HEAD. ChatGPT/Claude doorbells stay out of scope. Paid path cards stay the paid sheets.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "free-sample.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "ground/SUBZERO_GRBN.md",
+        "commercial.html",
+        "diagnostic.html",
+        "agent-rescue.html",
+        "subzero.html",
+        "sales-sample/FREE-SAMPLE-SALES-INSERT.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_sales_free_sample_pack.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1157,11 +1237,151 @@
       "test_paths": [],
       "test_paths_missing": [],
       "test_status": "UNTESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
+        "28a40d31b6bec435b4906addc0241f22419fb339"
+      ],
+      "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-arbitrage-opportunity-git-20260830-01",
+        "ev-arbitrage-opportunity-receipt-20260830-01",
+        "ev-arbitrage-opportunity-source-20260830-01",
+        "ev-arbitrage-opportunity-tests-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-01",
+        "ev-arbitrage-opportunity-live-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-02",
+        "ev-arbitrage-opportunity-live-20260830-02",
+        "ev-arbitrage-opportunity-receipt-20260830-02",
+        "ev-arbitrage-opportunity-blob-20260830-03",
+        "ev-arbitrage-opportunity-live-20260830-03"
+      ],
+      "file": "arbitrage-opportunity-road-20260830-01.json",
+      "id": "arbitrage-opportunity-road-20260830-01",
+      "last_change": "2026-08-30T06:53:00Z",
+      "live_status": "DEGRADED",
+      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
+      "name": "Arbitrage opportunity road",
+      "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "arbitrage.html",
+      "receipts": [
+        "codex-arbitrage-opportunity-road-20260830-01",
+        "unseated-feature-tracker-commerce-doors-20260830-02"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "commerce.html",
+        "data-license.html",
+        "opportunity.html",
+        "p/codex-arbitrage-opportunity-road-20260830-01.md",
+        "agent-rescue.html"
+      ],
+      "rollup": "DEGRADED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_arbitrage.py",
+        "revenue/arbitrage/opportunity.schema.json"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "data-license.html:f416d7031fa05134d3bb16b8bd3b01910ebd0835",
+        "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
+        "data-license.html:0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
+        "0e1bbbd9e51b30fa1e51142456bda02cf879aa82"
+      ],
+      "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "data-license.html",
+        "test_data_license.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "data-license.html",
+        "test_data_license.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-unique-data-license-git-20260830-01",
+        "ev-unique-data-license-receipt-20260830-01",
+        "ev-unique-data-license-source-20260830-01",
+        "ev-unique-data-license-tests-20260830-01",
+        "ev-unique-data-license-blob-20260830-01",
+        "ev-unique-data-license-live-20260830-01",
+        "ev-unique-data-license-blob-20260830-02",
+        "ev-unique-data-license-live-20260830-02"
+      ],
+      "file": "unique-data-license-door-20260830-01.json",
+      "id": "unique-data-license-door-20260830-01",
+      "last_change": "2026-08-30T06:53:00Z",
+      "live_status": "DEGRADED",
+      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
+      "name": "Unique data license door",
+      "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "data-license.html",
+      "receipts": [
+        "codex-unique-data-license-door-20260830-01"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "commerce.html",
+        "commercial.html",
+        "revenue/ip/whitebox_archive_inventory.json",
+        "revenue/ip/whitebox_archive_license_probe.json",
+        "revenue/data/ci_receipt_corpus.json",
+        "p/codex-unique-data-license-door-20260830-01.md"
+      ],
+      "rollup": "DEGRADED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_data_license.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 20,
-  "n_invalid": 0,
+  "n_features": 24,
+  "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
     "current-work.html": "unfinished-now ledger. Not shipped-state.",
@@ -1171,6 +1391,109 @@
     "right-now.html": "buyer / revenue desk.",
     "todo.html": "DIRECTIVES.md view. Historical."
   },
-  "problems": [],
+  "problems": [
+    "catering-deposit-rescue.json: schema must be commons-feature-v1",
+    "catering-deposit-rescue.json: missing field: schema",
+    "catering-deposit-rescue.json: missing field: name",
+    "catering-deposit-rescue.json: missing field: capability",
+    "catering-deposit-rescue.json: missing field: owner_subsystem",
+    "catering-deposit-rescue.json: missing field: carrier",
+    "catering-deposit-rescue.json: missing field: claimed_paths",
+    "catering-deposit-rescue.json: missing field: test_paths",
+    "catering-deposit-rescue.json: missing field: public_entrypoint",
+    "catering-deposit-rescue.json: missing field: dependencies",
+    "catering-deposit-rescue.json: missing field: resource_links",
+    "catering-deposit-rescue.json: missing field: next_gap",
+    "catering-deposit-rescue.json: name too short",
+    "catering-deposit-rescue.json: capability too short",
+    "catering-deposit-rescue.json: owner_subsystem too short",
+    "catering-deposit-rescue.json: carrier too short",
+    "catering-deposit-rescue.json: next_gap too short",
+    "fleet-work-order-exactly-once.json: schema must be commons-feature-v1",
+    "fleet-work-order-exactly-once.json: missing field: schema",
+    "fleet-work-order-exactly-once.json: missing field: name",
+    "fleet-work-order-exactly-once.json: missing field: capability",
+    "fleet-work-order-exactly-once.json: missing field: owner_subsystem",
+    "fleet-work-order-exactly-once.json: missing field: carrier",
+    "fleet-work-order-exactly-once.json: missing field: claimed_paths",
+    "fleet-work-order-exactly-once.json: missing field: test_paths",
+    "fleet-work-order-exactly-once.json: missing field: public_entrypoint",
+    "fleet-work-order-exactly-once.json: missing field: dependencies",
+    "fleet-work-order-exactly-once.json: missing field: resource_links",
+    "fleet-work-order-exactly-once.json: missing field: next_gap",
+    "fleet-work-order-exactly-once.json: name too short",
+    "fleet-work-order-exactly-once.json: capability too short",
+    "fleet-work-order-exactly-once.json: owner_subsystem too short",
+    "fleet-work-order-exactly-once.json: carrier too short",
+    "fleet-work-order-exactly-once.json: next_gap too short",
+    "open-model-release-receipt.json: schema must be commons-feature-v1",
+    "open-model-release-receipt.json: missing field: schema",
+    "open-model-release-receipt.json: missing field: id",
+    "open-model-release-receipt.json: missing field: capability",
+    "open-model-release-receipt.json: missing field: owner_subsystem",
+    "open-model-release-receipt.json: missing field: carrier",
+    "open-model-release-receipt.json: missing field: claimed_paths",
+    "open-model-release-receipt.json: missing field: test_paths",
+    "open-model-release-receipt.json: missing field: public_entrypoint",
+    "open-model-release-receipt.json: missing field: dependencies",
+    "open-model-release-receipt.json: missing field: resource_links",
+    "open-model-release-receipt.json: missing field: next_gap",
+    "open-model-release-receipt.json: id must match ^[A-Za-z0-9._-]{8,80}$",
+    "open-model-release-receipt.json: capability too short",
+    "open-model-release-receipt.json: owner_subsystem too short",
+    "open-model-release-receipt.json: carrier too short",
+    "open-model-release-receipt.json: next_gap too short",
+    "pages-exact-path-readback.json: schema must be commons-feature-v1",
+    "pages-exact-path-readback.json: missing field: schema",
+    "pages-exact-path-readback.json: missing field: name",
+    "pages-exact-path-readback.json: missing field: capability",
+    "pages-exact-path-readback.json: missing field: owner_subsystem",
+    "pages-exact-path-readback.json: missing field: carrier",
+    "pages-exact-path-readback.json: missing field: claimed_paths",
+    "pages-exact-path-readback.json: missing field: test_paths",
+    "pages-exact-path-readback.json: missing field: public_entrypoint",
+    "pages-exact-path-readback.json: missing field: dependencies",
+    "pages-exact-path-readback.json: missing field: resource_links",
+    "pages-exact-path-readback.json: missing field: next_gap",
+    "pages-exact-path-readback.json: name too short",
+    "pages-exact-path-readback.json: capability too short",
+    "pages-exact-path-readback.json: owner_subsystem too short",
+    "pages-exact-path-readback.json: carrier too short",
+    "pages-exact-path-readback.json: next_gap too short",
+    "permit-intake-receipt.json: schema must be commons-feature-v1",
+    "permit-intake-receipt.json: missing field: schema",
+    "permit-intake-receipt.json: missing field: name",
+    "permit-intake-receipt.json: missing field: capability",
+    "permit-intake-receipt.json: missing field: owner_subsystem",
+    "permit-intake-receipt.json: missing field: carrier",
+    "permit-intake-receipt.json: missing field: claimed_paths",
+    "permit-intake-receipt.json: missing field: test_paths",
+    "permit-intake-receipt.json: missing field: public_entrypoint",
+    "permit-intake-receipt.json: missing field: dependencies",
+    "permit-intake-receipt.json: missing field: resource_links",
+    "permit-intake-receipt.json: missing field: next_gap",
+    "permit-intake-receipt.json: name too short",
+    "permit-intake-receipt.json: capability too short",
+    "permit-intake-receipt.json: owner_subsystem too short",
+    "permit-intake-receipt.json: carrier too short",
+    "permit-intake-receipt.json: next_gap too short",
+    "salesforce-contact-preflight.json: schema must be commons-feature-v1",
+    "salesforce-contact-preflight.json: missing field: schema",
+    "salesforce-contact-preflight.json: missing field: name",
+    "salesforce-contact-preflight.json: missing field: capability",
+    "salesforce-contact-preflight.json: missing field: owner_subsystem",
+    "salesforce-contact-preflight.json: missing field: carrier",
+    "salesforce-contact-preflight.json: missing field: claimed_paths",
+    "salesforce-contact-preflight.json: missing field: test_paths",
+    "salesforce-contact-preflight.json: missing field: public_entrypoint",
+    "salesforce-contact-preflight.json: missing field: dependencies",
+    "salesforce-contact-preflight.json: missing field: resource_links",
+    "salesforce-contact-preflight.json: missing field: next_gap",
+    "salesforce-contact-preflight.json: name too short",
+    "salesforce-contact-preflight.json: capability too short",
+    "salesforce-contact-preflight.json: owner_subsystem too short",
+    "salesforce-contact-preflight.json: carrier too short",
+    "salesforce-contact-preflight.json: next_gap too short"
+  ],
   "schema": "commons-feature-tracker-v1"
 }
