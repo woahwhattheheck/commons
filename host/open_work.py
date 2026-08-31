@@ -125,6 +125,7 @@ def receipt_exists(root, ident, main_sha=""):
         commit_exists = _git_object_exists(root, "%s^{commit}" % sha)
         if commit_exists is True:
             return _git_object_exists(root, "%s:%s" % (sha, rel)) is True
+        return False
     return os.path.isfile(os.path.join(root, receipt_path(ident)))
 
 
@@ -272,15 +273,23 @@ def classify_record(record, exists, slack_claimed=False):
 def classify_id(ident, root, extra=None, record=None, main_sha=""):
     extra = extra if isinstance(extra, dict) else {}
     claimed = set(extra.get("slack_claimed") or [])
-    exists = receipt_exists(root, ident, main_sha)
+    sha = resolve_main_sha(root, main_sha)
+    measured = bool(SHA_RE.match(sha)) and _git_object_exists(
+        root, "%s^{commit}" % sha
+    ) is True
+    exists = receipt_exists(root, ident, sha)
     row_record = dict(record or {})
     row_record.setdefault("work", True)
     klass = classify_record(row_record, exists, slack_claimed=ident in claimed)
+    errors = []
+    if not measured:
+        errors.append({"code": "MAIN_SHA_UNMEASURED", "main_sha": sha})
     return {
         "id": ident,
         "class": klass,
         "receipt": receipt_path(ident) if exists else "404",
-        "last_sha": main_sha,
+        "last_sha": sha,
+        "errors": errors,
     }
 
 
@@ -437,6 +446,12 @@ def merge_candidates(rows, extra=None):
 
 def project(root, main_sha="", extra=None, include_salon=False):
     sha = resolve_main_sha(root, main_sha)
+    measured = bool(SHA_RE.match(sha)) and _git_object_exists(
+        root, "%s^{commit}" % sha
+    ) is True
+    errors = []
+    if not measured:
+        errors.append({"code": "MAIN_SHA_UNMEASURED", "main_sha": sha})
     extra = extra if isinstance(extra, dict) else {}
     rows = collect_posts(root, include_salon=include_salon)
     rows.extend(collect_wake_jobs(root))
@@ -465,6 +480,7 @@ def project(root, main_sha="", extra=None, include_salon=False):
     return {
         "schema": SCHEMA,
         "main_sha": sha,
+        "errors": errors,
         "items": items,
         "counts": counts,
         "human": HUMAN_REL,
