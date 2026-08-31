@@ -3,7 +3,7 @@ param(
     [string]$SdkRoot = $(if ($env:ANDROID_HOME) { $env:ANDROID_HOME } else { Join-Path $env:LOCALAPPDATA 'TitanHands\AndroidSdk' }),
     [string]$AndroidUserHome = $(if ($env:ANDROID_USER_HOME) { $env:ANDROID_USER_HOME } else { Join-Path $env:LOCALAPPDATA 'TitanHands\AndroidHome' }),
     [string]$AvdName = $(if ($env:TITAN_HANDS_ANDROID_AVD) { $env:TITAN_HANDS_ANDROID_AVD } else { 'TitanHands_AOSP_API34' }),
-    [int]$TimeoutSeconds = 240
+    [int]$TimeoutSeconds = 480
 )
 
 $ErrorActionPreference = 'Stop'
@@ -54,10 +54,14 @@ function Get-ExactAvdProcesses {
     $escapedAvdName = [regex]::Escape($AvdName)
     $avdArgumentPattern = '(?i)(?:^|\s)-avd\s+(?:"' + $escapedAvdName + '"|' + $escapedAvdName + ')(?=\s|$)'
     $headlessArgumentPattern = '(?i)(?:^|\s)-no-window(?=\s|$)'
-    return @(Get-CimInstance -ClassName Win32_Process -Filter "Name = 'emulator.exe'" `
-        -ErrorAction SilentlyContinue | Where-Object {
+    return @(Get-CimInstance -ClassName Win32_Process -ErrorAction SilentlyContinue | Where-Object {
+            $processName = "$($_.Name)"
             $commandLine = "$($_.CommandLine)"
-            $commandLine -match $avdArgumentPattern -and $commandLine -match $headlessArgumentPattern
+            $isHeadlessEmulator = $processName -ieq 'emulator.exe' -or
+                $processName -match '(?i)^qemu-system-.+-headless\.exe$'
+            $isHeadlessEmulator -and
+                $commandLine -match $avdArgumentPattern -and
+                $commandLine -match $headlessArgumentPattern
         })
 }
 

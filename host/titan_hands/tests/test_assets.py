@@ -43,6 +43,9 @@ class AssetTests(unittest.TestCase):
         )
         self.assertIn("function Get-AdbEmulators", script)
         self.assertIn("function Get-ExactAvdProcesses", script)
+        self.assertIn("[int]$TimeoutSeconds = 480", script)
+        self.assertIn("$processName -ieq 'emulator.exe'", script)
+        self.assertIn("^qemu-system-.+-headless\\.exe$", script)
         self.assertIn("emu avd name", script)
         self.assertIn("$_.avd -eq $AvdName", script)
         self.assertIn("[regex]::Escape($AvdName)", script)
@@ -82,6 +85,8 @@ class AssetTests(unittest.TestCase):
         self.assertIn(":app:assembleDebug", script)
         self.assertIn("com.local.deviceagent/.TitanHandsReceiver", script)
         self.assertIn("ActionAccessibilityService", script)
+        self.assertIn("cmd package compile -m speed -f $packageName", script)
+        self.assertIn("LDA package precompile failed", script)
 
     def test_receiver_exposes_marked_capture_op(self):
         receiver = (ROOT / "lda" / "app" / "src" / "main" / "java" / "com" / "local" / "deviceagent" / "TitanHandsReceiver.kt").read_text(
