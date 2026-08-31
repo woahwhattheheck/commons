@@ -1,6 +1,8 @@
 {
   "id": "luvak-ssa-lab-analytics-cutover-lims-01",
-  "state": "TESTED",
+  "state": "SHIPPED",
+  "integrated_main_sha": "011717b5ba8c5ebfedad923a62d99b488e8ce30e",
+  "pr": "https://github.com/woahwhattheheck/commons/pull/6740",
   "binary": "python3 test_luvak_ssa_lab_analytics_cutover.py",
   "tests": "10/10 OK",
   "input_rows": 100,
