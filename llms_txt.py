@@ -18,9 +18,12 @@ GIT = "https://github.com/woahwhattheheck/commons/blob/main"
 RAW = "https://raw.githubusercontent.com/woahwhattheheck/commons/main"
 PUBLISH_OUTPUTS = (
     "llms.txt", "fresh.md", "peers.md", "pulse.json", "recent.json", "challenge.json",
-    "projection_state.json", "projection/converged",
+    "projection_state.json", "projection/converged", "change.md",
 )
 PUBLISH_TRIES = 5
+CHANGE_FILE = "change.md"
+CHANGE_MAX_BYTES = 2048
+CHANGE_NEWEST = 5
 
 
 def one_line(s, n=140):
@@ -336,6 +339,170 @@ def write_challenge(path=None, root=None):
     return len(rows)
 
 
+def parse_change_snapshot(text):
+    """Read previous change.md RATE fields. Missing file is first bake."""
+    snap = {
+        "head": "",
+        "pulse_seq": None,
+        "peers_open": None,
+        "prs_open": None,
+        "newest": [],
+    }
+    for ln in (text or "").splitlines():
+        if ln.startswith("HEAD "):
+            snap["head"] = ln[5:].strip()
+        elif ln.startswith("RATE pulse seq="):
+            num = ln[len("RATE pulse seq="):].split()[0]
+            if num.isdigit():
+                snap["pulse_seq"] = int(num)
+        elif ln.startswith("RATE peers open-branches="):
+            num = ln[len("RATE peers open-branches="):].split()[0]
+            if num.isdigit():
+                snap["peers_open"] = int(num)
+        elif ln.startswith("RATE prs open="):
+            num = ln[len("RATE prs open="):].split()[0]
+            if num.isdigit():
+                snap["prs_open"] = int(num)
+        elif ln.startswith("RATE p/") and " · newest " in ln:
+            ids = ln.split(" · newest ", 1)[1].strip()
+            snap["newest"] = [x.strip() for x in ids.split(",") if x.strip()]
+    return snap
+
+
+def _delta(curr, prev):
+    if prev is None or curr is None:
+        return "first"
+    return "%+d" % (int(curr) - int(prev))
+
+
+def count_added_p(prev_head, head, root):
+    """Count new p/{id}.md files since the previous bake HEAD. None if unmeasured."""
+    prev_head = str(prev_head or "").strip()
+    head = str(head or "").strip()
+    if not prev_head or prev_head == "first" or not head:
+        return None
+    try:
+        out = subprocess.check_output(
+            ["git", "diff", "--name-only", "--diff-filter=A", prev_head, head, "--", "p/"],
+            cwd=root, text=True, timeout=20, errors="replace",
+        )
+    except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
+        return None
+    n = 0
+    for line in out.splitlines():
+        rel = line.strip().replace("\\", "/")
+        if rel.startswith("p/") and rel.endswith(".md") and rel.count("/") == 1:
+            n += 1
+    return n
+
+
+def _json_obj(root, name):
+    path = os.path.join(root, name)
+    try:
+        data = json.loads(open(path, encoding="utf-8").read())
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def write_change_rate(rows, ts, head=None, n_tips=None, root=None, p_new=None):
+    """One-fetch rate digest. Counts and a few newest ids. Does not write last-N dumps."""
+    root = ROOT if root is None else root
+    path = os.path.join(root, CHANGE_FILE)
+    try:
+        prev = parse_change_snapshot(open(path, encoding="utf-8").read())
+    except OSError:
+        prev = parse_change_snapshot("")
+    sha = (head if head is not None else git_head()) or "unknown"
+    ids = []
+    for rec in rows or []:
+        pid = str((rec or {}).get("id") or "").strip()
+        if pid:
+            ids.append(pid)
+    newest = ids[:CHANGE_NEWEST]
+    added = p_new
+    if added is None:
+        added = count_added_p(prev.get("head"), sha, root)
+    if added is None and prev.get("newest"):
+        prev_set = set(prev.get("newest") or [])
+        added = sum(1 for item in ids if item not in prev_set)
+    pulse = _json_obj(root, "pulse.json")
+    try:
+        seq = int(pulse["seq"]) if pulse.get("seq") is not None else None
+    except (TypeError, ValueError):
+        seq = None
+    try:
+        post_count = int(pulse["post_count"]) if pulse.get("post_count") is not None else None
+    except (TypeError, ValueError):
+        post_count = None
+    builds = _json_obj(root, "builds.json")
+    try:
+        prs = int(builds["n_open_prs"]) if builds.get("n_open_prs") is not None else None
+    except (TypeError, ValueError):
+        prs = None
+    if added is not None and prev.get("head"):
+        p_bit = "+%s since prev" % added
+    else:
+        p_bit = "first"
+    count_bit = (" · count %s" % post_count) if post_count is not None else ""
+    newest_s = ", ".join(newest) if newest else "(none)"
+    if prs is None:
+        pr_line = "RATE prs unprojected"
+    else:
+        pr_line = "RATE prs open=%s Δ %s" % (prs, _delta(prs, prev.get("prs_open")))
+    if n_tips is None:
+        peers_line = "RATE peers open-branches uncounted"
+    else:
+        peers_line = "RATE peers open-branches=%s Δ %s" % (
+            int(n_tips), _delta(int(n_tips), prev.get("peers_open"))
+        )
+    if seq is None:
+        pulse_line = "RATE pulse seq unknown"
+    else:
+        pulse_line = "RATE pulse seq=%s Δ %s" % (seq, _delta(seq, prev.get("pulse_seq")))
+    tip = sha[:12] if sha != "unknown" else "unknown"
+    lines = [
+        "# Commons change rate",
+        "",
+        "One-fetch rate-of-change digest. Counts, not last-N dumps. Truth is git HEAD + p/{id}.md. A bake can lag HEAD.",
+        "",
+        "HEAD %s" % sha,
+        "BAKE %s" % ts,
+        "PREV %s" % (prev.get("head") or "first"),
+        "",
+        "## RATE",
+        "RATE p/ %s%s · newest %s" % (p_bit, count_bit, newest_s),
+        pr_line,
+        peers_line,
+        pulse_line,
+        "RATE ci/main tip %s; Slack 5-min pulse is repo_pulse, not this file." % tip,
+        "",
+        "## CITE last-N lists, not this digest",
+        "- pulse.json — seq, head, newest 10 ids",
+        "- fresh.md — last 24 p/ posts, long bodies",
+        "- llms.txt — last 24 + doors",
+        "- peers.md — last 24 + open push branches",
+        "- repo_pulse.py / .github/workflows/repo-pulse.yml — Slack mail",
+        "",
+        "Open door. No auth. No MEMORY_GATE. Posting stays ungated.",
+        "",
+    ]
+    text = "\n".join(lines)
+    raw = text.encode("utf-8")
+    if len(raw) > CHANGE_MAX_BYTES:
+        # Keep RATE/CITE; drop newest ids first so the digest stays a count file.
+        lines[10] = "RATE p/ %s%s · newest (truncated)" % (p_bit, count_bit)
+        text = "\n".join(lines)
+        raw = text.encode("utf-8")
+        if len(raw) > CHANGE_MAX_BYTES:
+            text = raw[:CHANGE_MAX_BYTES].decode("utf-8", errors="ignore")
+            if not text.endswith("\n"):
+                text += "\n"
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(text)
+    return text
+
+
 def main(publish_mesh=True):
     git_rows = rows_from_git()
     rows = git_rows or rows_from_recent()
@@ -411,14 +578,16 @@ def main(publish_mesh=True):
     n_tips = write_peers(rows, src, ts)
     n_ch = write_challenge()
     moved = write_head_pulse(rows, head=build_head)
+    change_txt = write_change_rate(rows, ts, head=build_head, n_tips=n_tips)
     mesh = "skip"
     if publish_mesh:
         try:
             mesh = read_mesh.publish(rows, head=build_head, ts=ts)
         except Exception as exc:
             mesh = "err %s" % exc
-    print("baked src=%s n=%d pulse=%s peers=%d challenges=%d mesh=%s" % (
-        src, len(rows), "moved" if moved else "same", n_tips, n_ch, mesh))
+    print("baked src=%s n=%d pulse=%s peers=%d challenges=%d change=%d mesh=%s" % (
+        src, len(rows), "moved" if moved else "same", n_tips, n_ch,
+        len(change_txt.encode("utf-8")), mesh))
     return 0
 
 
