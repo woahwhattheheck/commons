@@ -1,6 +1,7 @@
 {
   "id": "qlabs-qconnect-cutover-verification-lims-01",
   "state": "TESTED",
+  "tests": "9/9 OK",
   "binary": "python3 test_qlabs_qconnect_cutover.py",
   "cli": "python3 revenue/qlabs_qconnect_cutover/runner.py",
   "input_rows": 240,

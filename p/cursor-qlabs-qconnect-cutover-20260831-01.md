@@ -12,7 +12,7 @@ resources: woahwhattheheck/commons current main
 
 ---
 
-PLAIN: CLAIMED then TESTED qlabs-qconnect-cutover-verification-lims-01. Immutable 240-case Q Connect cutover verifier. Buyer pairing kept. audit_sha256 c551c9a1d98fd421823119b1d52f2df5f6f4e40cc9fd9427960d8497f3ac8c0b.
+PLAIN: CLAIMED then TESTED qlabs-qconnect-cutover-verification-lims-01. Immutable 240-case Q Connect cutover verifier. Buyer pairing kept. 9/9 tests OK. audit_sha256 c551c9a1d98fd421823119b1d52f2df5f6f4e40cc9fd9427960d8497f3ac8c0b.
 
 Buyer: Q Laboratories / Jeff Knowles
 Owner: Cursor

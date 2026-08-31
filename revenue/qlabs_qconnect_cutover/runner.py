@@ -509,22 +509,22 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
 def release_build(
     journal: dict[str, Any],
     *,
-    actor_role: str,
-    actor: str,
+    role_name: str,
+    releaser: str,
 ) -> dict[str, Any]:
-    role = _text(actor_role).upper()
+    role = _text(role_name).upper()
     if role != HUMAN_ROLE:
         _event(
             journal,
             "RELEASE_DENIED",
-            {"code": "AUTONOMOUS_RELEASE_DENIED", "actor_role": role or None},
+            {"code": "AUTONOMOUS_RELEASE_DENIED", "role_name": role or None},
         )
         return {"ok": False, "code": "AUTONOMOUS_RELEASE_DENIED"}
-    if _text(actor) != HUMAN_QA:
+    if _text(releaser) != HUMAN_QA:
         _event(
             journal,
             "RELEASE_DENIED",
-            {"code": "NAMED_HUMAN_QA_REQUIRED", "actor": _text(actor) or None},
+            {"code": "NAMED_HUMAN_QA_REQUIRED", "releaser": _text(releaser) or None},
         )
         return {"ok": False, "code": "NAMED_HUMAN_QA_REQUIRED"}
     if journal["released"]:
@@ -625,7 +625,7 @@ def run_gate(rows: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     inbound = deepcopy(rows if rows is not None else load_fixture())
     journal = empty_journal()
     effects = [ingest_row(journal, row) for row in inbound]
-    autonomous = release_build(journal, actor_role="SYSTEM", actor="autonomous")
+    autonomous = release_build(journal, role_name="SYSTEM", releaser="autonomous")
     body = _audit_body(journal, effects)
     body["autonomous_release_effects"] = [autonomous]
     body["autonomous_released"] = 1 if journal["released"] else 0
@@ -760,7 +760,7 @@ def main() -> int:
     for row in rows:
         ingest_row(journal, row)
     replay = replay_into(journal, rows)
-    human = release_build(journal, actor_role=HUMAN_ROLE, actor=HUMAN_QA)
+    human = release_build(journal, role_name=HUMAN_ROLE, releaser=HUMAN_QA)
     failures = pass_contract(first)
     if sha256_hex({k: first[k] for k in ("accessioned", "held", "hold_code_counts", "manifest_sha256")}) != sha256_hex(
         {k: second[k] for k in ("accessioned", "held", "hold_code_counts", "manifest_sha256")}

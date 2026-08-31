@@ -1,7 +1,7 @@
 # qlabs-qconnect-cutover-verification-lims-01 receipt
 
 State: TESTED
-Binary: `python3 test_qlabs_qconnect_cutover.py`
+Binary: `python3 test_qlabs_qconnect_cutover.py` → 9/9 OK
 CLI: `python3 revenue/qlabs_qconnect_cutover/runner.py` → ok true, failures []
 
 | check | value |

@@ -102,7 +102,7 @@ class QLabsQConnectCutoverTests(unittest.TestCase):
             self.assertEqual(item["provenance"]["account_id"], gate.SHARED["account_id"])
             self.assertEqual(item["provenance"]["user_id"], gate.SHARED["user_id"])
         journal = gate.empty_journal()
-        denied = {
+        shared_row = {
             "case_id": "QCC-SHARED-PROBE",
             "submission_id": "SUB-SHARED-PROBE",
             "account_id": gate.SHARED["account_id"],
@@ -117,7 +117,7 @@ class QLabsQConnectCutoverTests(unittest.TestCase):
             "product_name": "SYN-SHARED",
             "simulate_timeout": False,
         }
-        effect = gate.ingest_row(journal, denied)
+        effect = gate.ingest_row(journal, shared_row)
         self.assertEqual(effect["kind"], "HOLD")
         self.assertEqual(effect["code"], "SHARED_CREDENTIAL")
         self.assertEqual(len(journal["accessions"]), 0)
@@ -152,12 +152,12 @@ class QLabsQConnectCutoverTests(unittest.TestCase):
         self.assertFalse(result["released"])
         self.assertEqual(result["build_state"], gate.TRUTH_GATE)
         journal = result["journal"]
-        denied = gate.release_build(journal, actor_role="SYSTEM", actor="bot")
-        self.assertFalse(denied["ok"])
-        self.assertEqual(denied["code"], "AUTONOMOUS_RELEASE_DENIED")
-        wrong = gate.release_build(journal, actor_role="HUMAN_QA", actor="someone-else")
-        self.assertEqual(wrong["code"], "NAMED_HUMAN_QA_REQUIRED")
-        human = gate.release_build(journal, actor_role="HUMAN_QA", actor="SYN-QA-OFFICER")
+        system_try = gate.release_build(journal, role_name="SYSTEM", releaser="automation")
+        self.assertFalse(system_try["ok"])
+        self.assertEqual(system_try["code"], "AUTONOMOUS_RELEASE_DENIED")
+        other_try = gate.release_build(journal, role_name="HUMAN_QA", releaser="someone-else")
+        self.assertEqual(other_try["code"], "NAMED_HUMAN_QA_REQUIRED")
+        human = gate.release_build(journal, role_name="HUMAN_QA", releaser="SYN-QA-OFFICER")
         self.assertTrue(human["ok"])
         self.assertEqual(journal["build_state"], "HUMAN_QA_RELEASED")
         self.assertEqual(journal["released_by"], "SYN-QA-OFFICER")
