@@ -84,6 +84,21 @@ CLAIMED_PATHS = {
         "behavior": "Cheap tick of wake_jobs/*.json. Never invokes a model. Writes wake_jobs/_last_tick.json.",
         "measured": True,
     },
+    "grokbot_seth": {
+        "road": "Desktop Cursor/Grok Bot Seth launches or replies to a named Cursor cloud agent (bc-…) for a named leftover",
+        "behavior": (
+            "Live inbound. A leftover record on git HEAD is upserted into "
+            "wake_jobs/{job_id}.json when missing; Seth launches or replies to "
+            "the named bc- for that leftover. Does not Slack @Cursor spawn, "
+            "ntfy Cursor mail, or reassign issue 1316. Does not resume a "
+            "different idle bc-."
+        ),
+        "measured": True,
+        "enabled": True,
+        "state": "LIVE",
+        "harness": "cursor-grokbot",
+        "note": "Watchdog remains the never-a-model cheap tick. Named idle other-bc resume stays UNMEASURED.",
+    },
 }
 
 UNMEASURED = {
