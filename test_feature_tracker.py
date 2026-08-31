@@ -346,6 +346,18 @@ def test_live_tree_shape_and_golden():
             gtm.get("public_entrypoint") == "lm-gtm-index.html",
             gtm.get("public_entrypoint"),
         )
+    check("patent-products row", "patent-products-20260831-01" in by_id, sorted(by_id))
+    if "patent-products-20260831-01" in by_id:
+        pp = by_id["patent-products-20260831-01"]
+        check("patent-products source built", pp["source_status"] == "SOURCE_BUILT", pp)
+        check("patent-products tested", pp["test_status"] == "TESTED", pp)
+        check("patent-products live unmeasured", pp["live_status"] == "UNMEASURED", pp)
+        check("patent-products rollup tested", pp["rollup"] == "TESTED", pp)
+        check(
+            "patent-products door is the public entry",
+            pp.get("public_entrypoint") == "patent-products.html",
+            pp.get("public_entrypoint"),
+        )
     json_path = os.path.join(ROOT, ft.JSON_OUT)
     html_path = os.path.join(ROOT, ft.HTML_OUT)
     check("committed json exists", os.path.isfile(json_path))
@@ -353,9 +365,16 @@ def test_live_tree_shape_and_golden():
     if os.path.isfile(json_path):
         committed = json.loads(open(json_path, encoding="utf-8").read())
         check("golden json matches projection", ft._sorted_json(committed) == ft._sorted_json(proj))
+        committed_ids = {row.get("id") for row in committed.get("features") or []}
+        check(
+            "committed json includes patent-products",
+            "patent-products-20260831-01" in committed_ids,
+            sorted(x for x in committed_ids if x),
+        )
     if os.path.isfile(html_path):
         page = open(html_path, encoding="utf-8").read()
         check("html title", "Feature tracker" in page)
+        check("committed html includes patent-products", "patent-products-20260831-01" in page)
         check("html does not replace features.html law", "Do not remint" in open(os.path.join(ROOT, "ground", "FEATURES.md"), encoding="utf-8").read())
         check("features.html still a lane", os.path.isfile(os.path.join(ROOT, "features.html")))
     law = open(os.path.join(ROOT, "ground", "FEATURE_TRACKER.md"), encoding="utf-8").read()
