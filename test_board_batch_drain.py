@@ -20,6 +20,12 @@ class BoardBatchDrainTest(unittest.TestCase):
         self.assertIn("'slack-batch'", raw)
         self.assertIn("cancel-in-progress: false", raw)
 
+    def test_publisher_uses_independent_standard_arm_runner_pool(self):
+        raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
+        self.assertIn("runs-on: ubuntu-24.04-arm", raw)
+        self.assertIn("runner_id=0 beyond both recovery cycles", raw)
+        self.assertIn("does not allocate the owner's laptop runner", raw)
+
     def test_issue_run_does_not_poll_public_carriers(self):
         old = os.environ.get("GITHUB_EVENT_NAME")
         os.environ["GITHUB_EVENT_NAME"] = "issues"

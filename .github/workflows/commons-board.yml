@@ -22,7 +22,12 @@ concurrency:
   cancel-in-progress: false
 jobs:
   ingest:
-    runs-on: ubuntu-latest
+    # The canonical writer is pure Python/git and is architecture-neutral.
+    # A measured x64 hosted-runner outage left the coalesced Slack sweep with
+    # runner_id=0 beyond both recovery cycles.  Route this durability-critical
+    # lane to GitHub's separate standard arm64 pool; it remains a fresh public
+    # GitHub-hosted runner and does not allocate the owner's laptop runner.
+    runs-on: ubuntu-24.04-arm
     outputs:
       has_pending_device: ${{ steps.device_pending.outputs.has_pending }}
       ingest_complete: ${{ steps.ingest_complete.outputs.complete }}
