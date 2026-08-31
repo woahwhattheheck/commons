@@ -72,6 +72,17 @@ class CustomerLinkBoundaryTests(unittest.TestCase):
         self.assertEqual(item["host"], "github.com")
         self.assertEqual(item["normalized_url"], "https://GitHub.Com./owner/repo")
 
+    def test_nfkc_fullwidth_url_is_blocked_with_original_offsets(self):
+        text = "\uff48\uff54\uff54\uff50\uff53\uff1a\uff0f\uff0f\uff27\uff49\uff54\uff28\uff55\uff42\uff0e\uff23\uff4f\uff4d\uff0fowner"
+        report = boundary.customer_link_report(text)
+        self.assertFalse(report["safe"])
+        item = report["violations"][0]
+        self.assertEqual(item["raw"], text)
+        self.assertEqual(item["start"], 0)
+        self.assertEqual(item["end"], len(text))
+        self.assertEqual(item["host"], "github.com")
+        self.assertEqual(item["normalized_url"], "https://GitHub.Com/owner")
+
     def test_exception_contains_machine_readable_report(self):
         with self.assertRaises(boundary.CustomerLinkBoundaryError) as caught:
             boundary.require_customer_link_safe("send https://github.com/acme/demo")
