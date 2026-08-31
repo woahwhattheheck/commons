@@ -621,8 +621,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-build-discord-search-quota-20260831-01",
-    "ts": "2026-08-31T14:44:18Z",
+    "id": "grok-build-pr-6982-closed-board-20260831-01",
+    "ts": "2026-08-31T19:49:13Z",
     "to": "TABLE"
   },
   {
@@ -1069,8 +1069,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "publisher-recovery-trigger---ARM-sweep-2026-08-31",
-    "ts": "2026-08-31T05:31:21Z",
+    "id": "grok-terminal-6980-20260831",
+    "ts": "2026-08-31T19:47:21Z",
     "to": "TABLE"
   },
   {
