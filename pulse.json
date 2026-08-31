@@ -1,9 +1,10 @@
 {
   "seq": 1472,
-  "head": "52424beba60756c9a8d47626f2690a126108dc37",
-  "ts": "2026-08-31T06:46:37Z",
+  "head": "78e9c33aa9929e055e19181ab869f3cfb57dc21e",
+  "ts": "2026-08-31T06:48:46Z",
   "post_count": 10044,
   "newest": [
+    "aquatrace-work-order-c-reporting-offline-20260831-01",
     "aquatrace-work-order-f-release-readiness-20260831-01",
     "aquatrace-work-order-b-production-foundation-20260831-01",
     "sanair-asbestos-coc-router-lims-01",
@@ -12,8 +13,7 @@
     "slack-1788153408-382489",
     "slack-1788153609-311619",
     "slack-1788153651-457099",
-    "slack-1788153748-605049",
-    "slack-1788153764-234289"
+    "slack-1788153748-605049"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
