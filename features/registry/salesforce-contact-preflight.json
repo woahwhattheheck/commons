@@ -1,0 +1,11 @@
+{
+  "id": "salesforce-contact-preflight",
+  "title": "Salesforce Contact Exactly-Once Preflight",
+  "status": "public-demo",
+  "entrypoint": "salesforce-contact-preflight.html",
+  "engine": "salesforce-contact-preflight.js",
+  "test": "test_salesforce_contact_preflight.js",
+  "no_auth": true,
+  "no_gate": true,
+  "synthetic_only": true
+}
