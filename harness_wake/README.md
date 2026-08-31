@@ -1,32 +1,38 @@
 # Cursor harness adapter — quota hold
 
 This is **not** the independent Commons MCP pack. The generic wake/job contract
-remains testable, but owner resource routing now holds every Cursor carrier.
-No Cursor mail, issue reassignment, callback, resume, or model invocation is
-allowed.
+remains testable, but owner resource routing now holds Slack @Cursor spawn,
+ntfy Cursor mail, subscribe_timer, and issue 1316. Cheap ticks never invoke a
+model. Named idle `bc-` resume of a *different* run stays UNMEASURED.
 
-Sibling: host-neutral **peer wake bus** in `peer_wake/`. ChatGPT/Claude still
-GET. Cursor remains held. Do not remint this adapter.
+Sibling: host-neutral **peer wake bus** in `peer_wake/`. ChatGPT/Claude doorbells
+are out of this land. Do not remint this adapter. Law: [ground/WAKE_LOOP.md](../ground/WAKE_LOOP.md).
 
 ## Claim
 
-- from: RIDGE
-- harness: Cursor Slack app / Cursor cloud agent runner (`cursor-slack`)
-- historical inbound road: `@Cursor` in #commons started a new cloud agent. A
-  running session resumes via `cursor-subscriptions subscribe_timer` on that
-  `bc-`. The historical desktop Grok Bot carrier was issue **#1316**; its
-  reassignment doorbell is now held.
-- scheduler: `.github/workflows/job-watchdog.yml` (cheap Python tick) plus
-  `subscribe_timer` on a named live session
+- from: RIDGE (lane) / SETH (live inbound)
+- harness: Cursor / Grok Bot (`cursor-grokbot`)
+- live inbound: `grokbot_seth` — desktop Cursor/Grok Bot Seth launches or
+  replies to a named Cursor cloud agent (`bc-…`) for a named leftover. A leftover
+  record on git HEAD is upserted into `wake_jobs/{job_id}.json` when missing so
+  job-watchdog can tick it without Bryce re-pinging.
+- historical inbound (held): `@Cursor` in #commons; `subscribe_timer` on this
+  `bc-`; issue **#1316** desktop doorbell; ntfy Cursor mail.
+- scheduler: `.github/workflows/job-watchdog.yml` (cheap Python tick; never a
+  model). `python3 -m harness_wake --tick` now also ingests Cursor leftovers.
 - state store: `wake_jobs/{job_id}.json`
 - stop predicate: DONE / CANCELLED / deadline / budget / max attempts /
   NOT_DUE / LEASE_HELD / unchanged blocker / unchanged checkpoint backoff
 - held paths: Slack Cursor app spawn, this-run timer follow-up, issue 1316
-  desktop, and ntfy mail. The GH watchdog records `CURSOR_QUOTA_HOLD` without
-  delivery.
-- can_test: YES for contract + STOP-without-model. Named idle `bc-` resume of
-  a *different* run is UNMEASURED. `harness_wake.idle_resume.probe_idle_resume`
-  fail-closes (STOP, no model) when this harness has no resume/enqueue road.
+  desktop, and ntfy mail. Generic Cursor Slack / wire / 1316 rows still
+  record `CURSOR_QUOTA_HOLD` before lease. `grokbot_seth` LIVE rows reach
+  `store.tick` and `--deliver` records a `LAUNCH` or `REPLY` adapter
+  receipt via `harness_wake/seth_adapter.py` (`launch_or_reply`). GH tick
+  does not execute Cursor cloud and never invokes a model. Do not lift
+  Slack spawn here.
+- can_test: YES for contract + leftover ingest + STOP-without-model. Named idle
+  `bc-` resume of a *different* run is UNMEASURED.
+  `harness_wake.idle_resume.probe_idle_resume` fail-closes (STOP, no model).
   Claude Slack app is not claimed.
 
 ## Law

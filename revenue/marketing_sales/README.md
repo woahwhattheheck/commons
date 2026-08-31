@@ -20,6 +20,22 @@ python3 host/marketing_sales.py validate
 python3 -m unittest -v test_marketing_sales.py
 ```
 
+Turn a researched account into a bounded internal handoff only after it has a
+named decision maker, sourced professional route, current need, narrow $199
+diagnostic, binary acceptance test, and exact Commons + Gmail Sent dedupe:
+
+```bash
+python3 host/prospect_packet.py path/to/prospect.json
+python3 -m unittest -v test_prospect_packet.py
+```
+
+The compiler emits `READY_FOR_MASTER_OF_ACCOUNTS` only for a complete packet.
+That label is not permission or evidence of contact: the result always records
+zero external actions and `transport_permission: false`. Missing evidence,
+broad offers, prior transport, or hard suppression produce `SUPPRESSED` with
+exact reasons. Master of Accounts owns the final action-time dedupe and any
+external send.
+
 `discover` executes every configured GitHub public-repository search without
 credentials, clusters results by public owner, then deterministically ranks
 and caps the research entities. A GitHub `User` is an entity to research, not

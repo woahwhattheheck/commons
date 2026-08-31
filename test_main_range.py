@@ -38,7 +38,11 @@ class MainRangeTests(unittest.TestCase):
     def test_many_commits_plan_each_verifier_once(self):
         paths = ["host/a.py", "ground/rule.md"] * 1000
         names = [name for name, _ in main_range.plan(paths)]
-        self.assertEqual(names, ["imports", "open-door", "muhlnickel", "path-manifest"])
+        self.assertEqual(
+            names,
+            ["imports", "open-door", "muhlnickel", "source-parses", "path-manifest"],
+        )
+        self.assertEqual(names.count("source-parses"), 1)
 
     def test_projection_only_range_skips_manifest_suite(self):
         names = [name for name, _ in main_range.plan(["p/1.md", "fresh.md"])]
@@ -114,6 +118,20 @@ class MainRangeTests(unittest.TestCase):
         self.assertEqual(provenance["candidate_paths"], ["hub_pages.py"])
         self.assertEqual(provenance["attribution"], "DIRECT_RANGE")
 
+    def test_source_parse_provenance_covers_every_changed_source(self):
+        provenance = main_range.finding_provenance(
+            "source-parses",
+            1,
+            "base",
+            "head",
+            ["feature/new_module.py", "web/new-widget.js", "docs/readme.md"],
+        )
+        self.assertEqual(
+            provenance["candidate_paths"],
+            ["feature/new_module.py", "web/new-widget.js"],
+        )
+        self.assertEqual(provenance["attribution"], "DIRECT_RANGE")
+
     def test_observer_push_contracts_distinguish_reporting_from_coalescing(self):
         names = ("import-check.yml", "muhlnickel-spec-guard.yml", "path-manifest.yml", "record-guard.yml")
         for name in names:
@@ -125,6 +143,10 @@ class MainRangeTests(unittest.TestCase):
         self.assertIn("\n  schedule:\n", workflow)
         self.assertIn("group: commons-main-range-verify", workflow)
         self.assertIn("cancel-in-progress: false", workflow)
+        source_parses = (ROOT / ".github/workflows/source-parses.yml").read_text(encoding="utf-8")
+        self.assertNotIn("\n  push:\n", source_parses)
+        self.assertIn("\n  pull_request:\n", source_parses)
+        self.assertIn("\n  workflow_dispatch:\n", source_parses)
 
 
 if __name__ == "__main__":

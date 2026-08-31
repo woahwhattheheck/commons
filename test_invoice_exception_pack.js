@@ -1,0 +1,32 @@
+"use strict";
+const assert = require("assert");
+const fs = require("fs");
+const api = require("./invoice-exception-pack.js");
+const input = {invoice_id:"INV-DEMO-1042",invoice_vendor:"Northstar Paper Co",invoice_amount:"1250.00",invoice_currency:"USD",po_id:"PO-DEMO-7701",po_vendor:"Northstar Paper Co",po_amount:"1250.00",po_currency:"USD"};
+const at = n => ({now:"2026-08-31T00:00:"+String(n).padStart(2,"0")+"Z"});
+let s=api.createMemoryStorage();
+let first=api.processInvoice(s,input,at(1)), duplicate=api.processInvoice(s,input,at(2));
+assert.equal(first.state,"COMPLETED"); assert.equal(first.approval_request_count,1);
+assert.equal(duplicate.approval_request_count,1); assert.equal(duplicate.approval_request.effect_id,first.approval_request.effect_id); assert.equal(duplicate.replayed,true);
+s=api.createMemoryStorage(); let crash;
+try { api.processInvoice(s,input,Object.assign(at(3),{forceCrashAfterIntent:true})); } catch(e) { crash=e; }
+assert.equal(crash.code,"SIMULATED_CRASH_AFTER_DURABLE_INTENT"); assert.equal(crash.receipt.state,"INTENT_RECORDED"); assert.equal(crash.receipt.approval_request_count,0);
+let retry=api.processInvoice(s,input,at(4)); assert.equal(retry.state,"COMPLETED"); assert.equal(retry.approval_request_count,1);
+assert(retry.audit.some(row=>row.event==="RETRY_COMPLETED_EXISTING_INTENT"));
+s=api.createMemoryStorage(); let pending;
+try { api.processInvoice(s,input,Object.assign(at(5),{forceCrashAfterIntent:true})); } catch(e) { pending=e.receipt; }
+let rolled=api.rollback(s,pending.idempotency_key,at(6)), replay=api.processInvoice(s,input,at(7));
+assert.equal(rolled.state,"ROLLED_BACK"); assert.equal(rolled.approval_request_count,0); assert.equal(replay.approval_request_count,0);
+s=api.createMemoryStorage();
+let missing=api.processInvoice(s,Object.assign({},input,{po_id:""}),at(8));
+let mismatch=api.processInvoice(s,Object.assign({},input,{po_amount:"1200.00"}),at(9));
+assert.equal(missing.decision.status,"MISSING_DATA"); assert(missing.decision.missing_fields.includes("po_id"));
+assert.equal(mismatch.decision.status,"EXCEPTION"); assert.deepEqual(mismatch.decision.exceptions,["AMOUNT_MISMATCH"]);
+assert.equal(missing.approval_request_count+mismatch.approval_request_count,0);
+const contract=JSON.parse(fs.readFileSync("invoice-exception-pack.json","utf8"));
+assert.equal(contract.entry_offer.price_usd,199); assert.equal(contract.pilot_after_fit.price_usd,2500);
+assert.equal(contract.moves_money,false); assert.equal(contract.requires_login,false); assert(contract.acceptance.length>=6);
+const html=fs.readFileSync("invoice-exception-pack.html","utf8");
+["PUBLIC OPEN DOOR","NO LOGIN","$199","$2,500","one business day","Force crash","Retry","Roll back","Duplicate replay","Copy JSON","Exact buyer intake","never pays an invoice","tokenjunkielabs@gmail.com"].forEach(x=>assert(html.includes(x),x));
+assert(html.includes("invoice-exception-pack.js?v=20260831a")); assert(!/type=["']password["']/.test(html));
+console.log("invoice-exception-pack: 5 acceptance groups PASS");

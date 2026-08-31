@@ -162,6 +162,18 @@ function Start-ExactHeadlessEmulator {
         -RedirectStandardOutput $stdoutLog -RedirectStandardError $stderrLog -PassThru
 }
 
+function Test-AndroidCoreServices {
+    param([string]$Serial)
+
+    # sys.boot_completed can remain 1 while system_server is still unavailable after a crash or
+    # interrupted restore. PackageManager is a small, read-only core-service probe that must be
+    # live before installs, settings, or TITAN's Android bridge can work.
+    $packageService = @(& $adb -s $Serial shell service check package 2>$null |
+        ForEach-Object { "$($_)".Trim() } |
+        Where-Object { $_ }) -join ' '
+    return $packageService -match '(?i)^Service package:\s+found$'
+}
+
 function Wait-HeadlessBoot {
     param([System.Diagnostics.Process]$Process)
 
@@ -180,7 +192,9 @@ function Wait-HeadlessBoot {
         if ($candidate.Count -gt 0) {
             $candidateSerial = $candidate[0].serial
             $booted = (& $adb -s $candidateSerial shell getprop sys.boot_completed 2>$null).Trim()
-            if ($booted -eq '1') { return $candidateSerial }
+            if ($booted -eq '1' -and (Test-AndroidCoreServices -Serial $candidateSerial)) {
+                return $candidateSerial
+            }
         }
         Start-Sleep -Seconds 2
     }
@@ -237,6 +251,7 @@ if (-not $serial) {
     boot_incomplete_process_restarted = $bootIncompleteProcessRestarted
     recycled_process_ids = @($recycledProcessIds)
     snapshot_cache_reclaimed_bytes = $snapshotCacheReclaimedBytes
+    readiness_probe = 'sys.boot_completed+service package'
     stdout_log = $stdoutLog
     stderr_log = $stderrLog
 } | ConvertTo-Json -Compress

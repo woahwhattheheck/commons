@@ -8,6 +8,7 @@ import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
+from unittest import mock
 
 import slack_ingest as si
 
@@ -212,6 +213,109 @@ edited payload
                 encoding="utf-8",
             )
             self.assertEqual(si.high_water(posts), "99.0")
+
+    def test_posts_json_bootstraps_fallback_declared_and_edit_clocks(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "posts.json"
+            path.write_text(
+                json.dumps(
+                    [
+                        {"id": "slack-5-25"},
+                        {
+                            "id": "caller-canonical-id",
+                            "observed_event": "slack:T0TEAM:C0BRGMDQB6G:9.75:1",
+                        },
+                        {"id": "caller-edit-id", "event_ts": "12.5"},
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            self.assertEqual(si.posts_json_high_water(path), "12.5")
+
+    def test_state_round_trip_is_exact_and_zero_is_a_valid_cursor(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "state.json"
+            self.assertEqual(si.read_state(path), "0")
+            self.assertEqual(si._cursor_decimal("0"), 0)
+            si.write_state(path, "1787987663.666409")
+            self.assertEqual(si.read_state(path), "1787987663.666409")
+
+    def test_sync_uses_newest_baseline_and_advances_to_edit_clock(self) -> None:
+        event = {
+            "ts": "10.1",
+            "edited": {"ts": "12.5"},
+            "text": "from: GPT\n\nnew",
+            "user": "U1",
+        }
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, oldest: str) -> list[dict[str, object]]:
+                SlackSeen.append(oldest)
+                return [event]
+
+        class FakeGitHub:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, _title: str) -> bool:
+                return False
+
+            def create_issue(self, record: si.IssueRecord) -> str:
+                Created.append(record.title)
+                return "https://example.invalid/issues/1"
+
+        SlackSeen: list[str] = []
+        Created: list[str] = []
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"11.25"}\n', encoding="utf-8")
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="10.0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+                redirect_stdout(StringIO()),
+            ):
+                self.assertEqual(si.cmd_sync("9.0", state), 0)
+            self.assertEqual(SlackSeen, ["11.25"])
+            self.assertEqual(Created, ["slack-10-1-r12-5"])
+            self.assertEqual(si.read_state(state), "12.5")
+
+    def test_sync_does_not_advance_cursor_when_issue_creation_fails(self) -> None:
+        event = {"ts": "12.5", "text": "from: GPT\n\nnew", "user": "U1"}
+
+        class FakeSlack:
+            def __init__(self, _token: str):
+                pass
+
+            def events(self, _oldest: str) -> list[dict[str, str]]:
+                return [event]
+
+        class FakeGitHub:
+            def __init__(self, _token: str):
+                pass
+
+            def issue_exists(self, _title: str) -> bool:
+                return False
+
+            def create_issue(self, _record: si.IssueRecord) -> str:
+                raise si.IngestError("measured write failure")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp) / "state.json"
+            state.write_text('{"cursor":"11.25"}\n', encoding="utf-8")
+            with (
+                mock.patch.object(si, "SlackClient", FakeSlack),
+                mock.patch.object(si, "GitHubClient", FakeGitHub),
+                mock.patch.object(si, "high_water", return_value="10.0"),
+                mock.patch.dict(si.os.environ, {"SLACK_BOT_TOKEN": "x", "GITHUB_TOKEN": "y"}),
+            ):
+                with self.assertRaises(si.IngestError):
+                    si.cmd_sync(None, state)
+            self.assertEqual(si.read_state(state), "11.25")
 
     def test_sync_scans_old_roots_for_new_replies_then_applies_high_water(self) -> None:
         client = si.SlackClient("token")

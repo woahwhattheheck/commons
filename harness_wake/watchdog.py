@@ -11,6 +11,8 @@ from independent_commons_mcp.jobs import JobStore, public_job, utc_now
 from independent_commons_mcp.truth import GitTruth
 
 from .cursor_adapter import deliver_ntfy, is_cursor_harness
+from .inbound import default_record_dirs, ingest_cursor_leftovers
+from .seth_adapter import is_grokbot_seth_live, launch_or_reply
 
 
 def pinned_head_oracle(
@@ -49,13 +51,31 @@ def run(
     http=None,
     page_exists: Callable[[str], bool] | None = None,
     truth: Any | None = None,
+    records_dirs: list[str | Path] | str | Path | None = None,
 ) -> dict[str, Any]:
     store = JobStore(jobs_dir)
+    inbound = {
+        "ok": True,
+        "state": "SKIPPED",
+        "upserted": [],
+        "existing": [],
+        "ignored": [],
+        "invoke_model": False,
+        "live_resume": False,
+        "process_model_invocations": 0,
+        "ntfy_sent": False,
+        "issue_1316": False,
+        "note": "Inbound ingest runs on the default watchdog jobs dir or when records_dirs is passed.",
+    }
+    if records_dirs is not None or jobs_dir in (None, ""):
+        sources = records_dirs if records_dirs is not None else default_record_dirs()
+        inbound = ingest_cursor_leftovers(sources, store.directory, now=now)
     oracle = page_exists if page_exists is not None else pinned_head_oracle(truth=truth)
     rows = []
     for ident in store.list_ids():
         job = store.get(ident)
-        if is_cursor_harness(str(job.get("harness") or "")):
+        harness = str(job.get("harness") or "")
+        if is_cursor_harness(harness) and not is_grokbot_seth_live(harness):
             rows.append({
                 "ok": True,
                 "state": "TICKED",
@@ -74,6 +94,7 @@ def run(
     summary = {
         "ok": True,
         "state": "TICKED",
+        "inbound": inbound,
         "jobs": rows,
         "wake_count": sum(1 for row in rows if row.get("action") == "WAKE"),
         "stop_count": sum(1 for row in rows if row.get("action") == "STOP"),
@@ -81,7 +102,10 @@ def run(
         "hold_count": sum(1 for row in rows if row.get("action") == "HOLD"),
         "invoke_model_count": sum(1 for row in rows if row.get("invoke_model")),
         "process_model_invocations": 0,
-        "note": "Watchdog never invokes a model; Cursor rows are held before lease acquisition.",
+        "note": (
+            "Watchdog never invokes a model. Generic Cursor Slack / ntfy / "
+            "1316 rows stay held. grokbot_seth LIVE rows tick."
+        ),
     }
     store._write_last_tick(summary)
     deliveries = []
@@ -106,6 +130,23 @@ def run(
                 continue
             job = (row.get("job") or {})
             harness = str(job.get("harness") or "")
+            if is_grokbot_seth_live(harness):
+                receipt = launch_or_reply(job)
+                receipt = dict(receipt)
+                receipt.setdefault("job_id", row["job_id"])
+                receipt.setdefault("attempt_id", row.get("attempt_id"))
+                store.append_receipt(row["job_id"], {
+                    "attempt_id": row.get("attempt_id"),
+                    "event": "deliver",
+                    "ts": row.get("now"),
+                    "carrier": receipt.get("state"),
+                    "road": "grokbot_seth",
+                    "action": receipt.get("action"),
+                    "bc_id": receipt.get("bc_id") or "",
+                    "id": job.get("job_id"),
+                })
+                deliveries.append(receipt)
+                continue
             receipt = deliver_ntfy(job, str(row.get("attempt_id") or ""), http=http)
             store.append_receipt(row["job_id"], {
                 "attempt_id": row.get("attempt_id"),
@@ -141,8 +182,13 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--tick", action="store_true", help="tick every job (default)")
     parser.add_argument("--deliver", action="store_true", help="mail ntfy on WAKE after the cheap pre-check; still no model")
     parser.add_argument("--jobs-dir", default="")
+    parser.add_argument("--records-dir", action="append", default=[], help="leftover p/ or wake records to ingest before tick")
     args = parser.parse_args(argv)
-    summary = run(args.jobs_dir or None, deliver=args.deliver)
+    summary = run(
+        args.jobs_dir or None,
+        deliver=args.deliver,
+        records_dirs=args.records_dir or None,
+    )
     json.dump(summary, sys.stdout, ensure_ascii=True, indent=2, sort_keys=True)
     sys.stdout.write("\n")
     return 0

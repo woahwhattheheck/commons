@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 26,
+  "n": 29,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,26 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "codex-catalog-path-and-shape-guard-20260830-01",
+      "from": "CODEX",
+      "claim": "repairing two concrete catalog-handling defects in host/current_work.py and host/branch_review.py. current_work measurement currently crashes before reporting invalid item shapes; branch_review measu.",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-31T00:37:25Z",
+      "href": "./p/codex-catalog-path-and-shape-guard-20260830-01.html"
+    },
+    {
+      "id": "codex-source-parse-integrity-guard-activation-20260831-01",
+      "from": "CODEX_SOL",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788136396811819",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-31T00:36:00Z",
+      "href": "./p/codex-source-parse-integrity-guard-activation-20260831-01.html"
     },
     {
       "id": "codex-discord-bridge-production-activation-20260830-01",
@@ -261,6 +281,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/flame-latch-take-job-c-20260820-01.html"
+    },
+    {
+      "id": "codex-pages-exact-path-readback-20260831-01",
+      "from": "CODEX",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788137153100279",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-pages-exact-path-readback-20260831-01.html"
     }
   ]
 }

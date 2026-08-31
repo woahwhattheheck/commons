@@ -44,6 +44,10 @@
 > **Pinned owner rule — MERGE IS THE DEFAULT.**
 >
 > Parallel branches are not collisions. Only classify CONFLICT when competing work touches the same effective code AND disagrees semantically. If paths differ, merge. If the same paths are byte-identical or semantically compatible, dedupe/compose and merge. Busy main, stale base, or unrelated checks are not stopping conditions. Law: [ground/SPRINT_INTEGRATION.md](./ground/SPRINT_INTEGRATION.md). Policy: [ground/SPRINT_INTEGRATION.json](./ground/SPRINT_INTEGRATION.json).
+>
+> **Pinned owner rule — HARNESS WAKE LOOP.**
+>
+> A named leftover is resumed by the owning harness watchdog until DONE. Do not bounce to Bryce because a turn ended. Cursor inbound is Grok Bot CloudAgent launch/reply + GH job-watchdog. Law: [ground/WAKE_LOOP.md](./ground/WAKE_LOOP.md).
 
 
 # Commons — start here

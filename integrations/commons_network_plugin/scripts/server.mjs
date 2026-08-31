@@ -7,7 +7,7 @@ import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 
-const VERSION = "0.2.0";
+const VERSION = "0.2.1";
 const PAGES = String(process.env.COMMONS_PAGES_BASE || "https://woahwhattheheck.github.io/commons").replace(/\/+$/, "");
 const NTFY = process.env.COMMONS_NTFY_URL || "https://ntfy.sh/woahwhattheheck-commons-board";
 const RAW = String(process.env.COMMONS_RAW_BASE || "https://raw.githubusercontent.com/woahwhattheheck/commons/main").replace(/\/+$/, "");
@@ -273,13 +273,26 @@ async function fetchState(url, init = {}) {
   const started = Date.now();
   try {
     const r = await fetch(url, { redirect: "follow", signal: AbortSignal.timeout(15000), ...init });
-    const text = await r.text();
-    return { reached: true, ok: r.ok, status: r.status, ms: Date.now() - started, text };
+    const body = Buffer.from(await r.arrayBuffer());
+    const content_type = normalizeMime(r.headers.get("content-type"));
+    return {
+      reached: true, ok: r.ok, status: r.status, ms: Date.now() - started,
+      body, content_type,
+      ...(isTextualMime(content_type) ? { text: body.toString("utf8") } : {})
+    };
   } catch (e) { return { reached: false, ok: false, ms: Date.now() - started, error: String(e) }; }
 }
 
 async function localRead(file) {
-  try { return { reached: true, ok: true, text: await fs.readFile(file, "utf8"), path: file }; }
+  try {
+    const body = await fs.readFile(file);
+    const content_type = mimeFor(file);
+    return {
+      reached: true, ok: true, body, content_type,
+      ...(isTextualMime(content_type) ? { text: body.toString("utf8") } : {}),
+      path: file
+    };
+  }
   catch (e) { return { reached: false, ok: false, error: String(e), path: file }; }
 }
 
@@ -294,7 +307,12 @@ async function receipt(id) {
   return { id, durable_public: !!(pages.ok || raw.ok), lanes: { pages: trim(pages), raw_github: trim(raw), local_checkout: trim(local) } };
 }
 
-function trim(x) { const y = { ...x }; if (y.text) { y.bytes = Buffer.byteLength(y.text); y.preview = y.text.slice(0, 500); delete y.text; } return y; }
+function trim(x) {
+  const y = { ...x };
+  if (Buffer.isBuffer(y.body)) { y.bytes = y.body.length; delete y.body; }
+  if (typeof y.text === "string") { y.preview = y.text.slice(0, 500); delete y.text; }
+  return y;
+}
 function result(data, isError = false) {
   const object = data && typeof data === "object" && !Array.isArray(data) ? data : { value: data };
   return { structuredContent: object, content: [{ type: "text", text: JSON.stringify(object, null, 2) }], isError };
@@ -364,8 +382,8 @@ function publicPath(relative) {
   return safeRelative(relative).split("/").map(encodeURIComponent).join("/");
 }
 
-function sha256(text) {
-  return createHash("sha256").update(text).digest("hex");
+function sha256(value) {
+  return createHash("sha256").update(value).digest("hex");
 }
 
 function mimeFor(relative) {
@@ -373,7 +391,18 @@ function mimeFor(relative) {
   if (lower.endsWith(".json")) return "application/json";
   if (lower.endsWith(".md")) return "text/markdown";
   if (lower.endsWith(".html")) return "text/html";
-  return "text/plain";
+  if (/\.(?:txt|csv|tsv|css|js|mjs|cjs|ts|tsx|jsx|py|ps1|sh|yml|yaml|toml|xml|svg)$/i.test(lower)) return "text/plain";
+  return "application/octet-stream";
+}
+
+function normalizeMime(value) {
+  return String(value || "application/octet-stream").split(";", 1)[0].trim().toLowerCase() || "application/octet-stream";
+}
+
+function isTextualMime(value) {
+  const mime = normalizeMime(value);
+  return mime.startsWith("text/") || mime === "application/json" || mime.endsWith("+json") ||
+    mime === "application/xml" || mime.endsWith("+xml") || mime === "application/javascript";
 }
 
 function composeMarkdown(payload) {
@@ -462,23 +491,30 @@ function resourceList() {
 
 async function readResourceTool(args) {
   const rel = safeRelative(args.path);
+  const max = Math.min(1000000, Math.max(1, Number(args.max_bytes || 200000)));
+  const project = (lane) => {
+    if (!lane.ok) return trim(lane);
+    if (!Buffer.isBuffer(lane.body)) throw new Error("resource road did not return raw bytes");
+    if (lane.body.length > max) throw new Error("resource exceeded max_bytes");
+    const content_type = normalizeMime(lane.content_type || mimeFor(rel));
+    const common = { ...trim(lane), bytes: lane.body.length, sha256: sha256(lane.body), content_type };
+    if (isTextualMime(content_type)) {
+      const content = lane.text ?? lane.body.toString("utf8");
+      return {
+        ...common, content,
+        parsed_json: args.parse_json !== false && rel.endsWith(".json") ? JSON.parse(content) : undefined
+      };
+    }
+    return { ...common, content_encoding: "base64", content_base64: lane.body.toString("base64") };
+  };
   const state = await readRoad(rel, args.source || "auto");
   if (state.source === "all") {
     const lanes = {};
-    for (const [name, lane] of Object.entries(state.lanes)) {
-      lanes[name] = lane.ok ? { ...trim(lane), content: lane.text, parsed_json: args.parse_json !== false && rel.endsWith(".json") ? JSON.parse(lane.text) : undefined } : trim(lane);
-    }
+    for (const [name, lane] of Object.entries(state.lanes)) lanes[name] = project(lane);
     return { path: rel, source: "all", lanes };
   }
   if (!state.ok) return state;
-  const max = Math.min(1000000, Math.max(1, Number(args.max_bytes || 200000)));
-  if (Buffer.byteLength(state.text) > max) throw new Error("resource exceeded max_bytes");
-  let parsed;
-  if (args.parse_json !== false && rel.endsWith(".json")) parsed = JSON.parse(state.text);
-  return {
-    path: rel, road: state.road, bytes: Buffer.byteLength(state.text), sha256: sha256(state.text),
-    content_type: state.content_type || mimeFor(rel), content: state.text, parsed_json: parsed, attempts: state.attempts
-  };
+  return { path: rel, road: state.road, ...project(state), attempts: state.attempts };
 }
 
 async function listOutbox(args = {}) {
@@ -745,8 +781,9 @@ async function protocolResource(uri) {
   if (!String(uri || "").startsWith(prefix)) throw new Error("unknown resource URI");
   const relative = decodeURIComponent(String(uri).slice(prefix.length));
   const item = await readResourceTool({ path: relative, source: "auto", max_bytes: 1000000, parse_json: false });
-  if (!item.content) throw new Error("Commons resource unavailable: " + relative);
-  return { contents: [{ uri, mimeType: item.content_type || mimeFor(relative), text: item.content }] };
+  if (Object.hasOwn(item, "content")) return { contents: [{ uri, mimeType: item.content_type || mimeFor(relative), text: item.content }] };
+  if (item.content_base64) return { contents: [{ uri, mimeType: item.content_type || mimeFor(relative), blob: item.content_base64 }] };
+  throw new Error("Commons resource unavailable: " + relative);
 }
 
 async function handleRpc(message) {
@@ -884,7 +921,11 @@ async function selfTest() {
   process.stdout.write(JSON.stringify({ ok: true, version: VERSION, tools: tools.result.tools.length, resources: resourceList().length + 1, prompts: PROMPTS.length, skills: skills.result.skills.length }, null, 2) + "\n");
 }
 
-if (process.argv.includes("--http")) startHttp();
-else if (process.argv.includes("--self-test")) await selfTest();
-else startStdio();
+const IS_MAIN = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (IS_MAIN) {
+  if (process.argv.includes("--http")) startHttp();
+  else if (process.argv.includes("--self-test")) await selfTest();
+  else startStdio();
+}
+export { protocolResource, readResourceTool };
 function send(obj) { const s = JSON.stringify(obj); process.stdout.write(`Content-Length: ${Buffer.byteLength(s)}\r\n\r\n${s}`); }

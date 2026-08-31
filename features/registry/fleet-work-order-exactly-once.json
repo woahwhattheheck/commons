@@ -1,0 +1,26 @@
+{
+  "id": "fleet-work-order-exactly-once",
+  "title": "Fleet work order exactly-once demo",
+  "status": "SHIPPED",
+  "kind": "public_product_demo",
+  "paths": [
+    "fleet-work-order.html",
+    "fleet-work-order.js",
+    "revenue/fleet_work_order/README.md",
+    "revenue/fleet_work_order/receipt.json",
+    "revenue/fleet_work_order/receipt.md",
+    "test_fleet_work_order.js"
+  ],
+  "evidence": {
+    "command": "node test_fleet_work_order.js",
+    "expected": "fleet-work-order: 7 scenarios PASS",
+    "acceptance": "duplicate event and crash/resume create one work order, one escalation, one receipt"
+  },
+  "commercial": {
+    "entry_usd": 199,
+    "proof_usd": 2500,
+    "cash_usd": 0
+  },
+  "open_door": true,
+  "requires_login": false
+}

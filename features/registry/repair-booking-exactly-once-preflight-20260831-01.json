@@ -1,0 +1,35 @@
+{
+  "added": "2026-08-31",
+  "capability": "A public browser diagnostic replays 20 synthetic repair-scheduling retry, timeout, crash, webhook, idempotency, and rollback fixtures; it proves exactly one booking or an explicit stopped/rolled-back terminal receipt, fails closed on a duplicate, identifies the first unsafe edge, and exports JSON evidence.",
+  "carrier": "CODEX_SOL",
+  "claimed_paths": [
+    "repair-booking-preflight.html",
+    "repair-booking-preflight.js",
+    "revenue/repair_booking_preflight/contract.json",
+    "test_repair_booking_preflight.py",
+    "p/repair-booking-exactly-once-preflight-20260831-01.md",
+    "features/registry/repair-booking-exactly-once-preflight-20260831-01.json"
+  ],
+  "dependencies": [],
+  "id": "repair-booking-exactly-once-preflight-20260831-01",
+  "name": "Repair-booking exactly-once preflight",
+  "next_gap": "Run the $199 diagnostic against one buyer-approved synthetic repair-scheduling payload shape; discuss the $2,500 fixed proof only after the bounded diagnostic is accepted.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "repair-booking-preflight.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "repair-booking-preflight.html",
+    "revenue/repair_booking_preflight/contract.json",
+    "p/repair-booking-exactly-once-preflight-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_repair_booking_preflight.py",
+    "repair-booking-preflight.js"
+  ]
+}
