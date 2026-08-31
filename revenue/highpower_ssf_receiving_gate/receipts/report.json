@@ -1,0 +1,48 @@
+{
+  "accession_sha256": "5efe150981376c36cd1060e26516af979a77751e676d24858b0c1e3d0a299923",
+  "accessions": 160,
+  "adapters": {
+    "instrument": {
+      "mode": "READ_ONLY",
+      "name": "SIMULATED_INSTRUMENT"
+    },
+    "lims": {
+      "mode": "READ_ONLY",
+      "name": "SIMULATED_LIMS"
+    },
+    "receiving": {
+      "mode": "READ_ONLY",
+      "name": "SYNTHETIC_RECEIVING"
+    },
+    "report": {
+      "mode": "READ_ONLY",
+      "name": "SIMULATED_REPORT"
+    },
+    "ssf": {
+      "mode": "READ_ONLY",
+      "name": "SYNTHETIC_SSF"
+    }
+  },
+  "audit_sha256": "cbb6bfc3d8a5ebdfd7cb6a42a20cec9763278d2b0446093dae98133ab9080cbf",
+  "autonomous_released": 0,
+  "buyer": "HIGHPOWER Validation Testing & Lab Services / Gary Socola",
+  "cash_usd": 0,
+  "demand_id": "highpower-ssf-receiving-gate-lims-01",
+  "held_downstream": 0,
+  "hold_code_counts": {
+    "HOLD_BOM_MISMATCH": 5,
+    "HOLD_HANDLING_MISMATCH": 5,
+    "HOLD_INTENDED_USE_MISMATCH": 5,
+    "HOLD_LOT_SERIAL_MISMATCH": 5,
+    "HOLD_QTY_DISCREPANCY": 5,
+    "HOLD_SAFETY_OMISSION": 5,
+    "HOLD_STERILIZATION_DISCREPANCY": 5,
+    "HOLD_STORAGE_OMISSION": 5
+  },
+  "holds": 40,
+  "human_released": 160,
+  "input_pairs": 200,
+  "lineage_sha256": "f0052d3dcda4d800fc54e53f34da45a9aeb1590e35ea935f7bd73377bcd1e47a",
+  "schema": "commons-highpower-ssf-receiving-gate-lims/v1",
+  "truth_gate": "HOLD / BUILD-AND-VERIFY"
+}
