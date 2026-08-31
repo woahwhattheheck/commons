@@ -246,9 +246,9 @@ class OpenWorkContract(unittest.TestCase):
             with open(os.path.join(tmp, ow.MACHINE_REL), encoding="utf-8") as handle:
                 machine = json.loads(handle.read())
             self.assertIn("LANDED", human)
-            self.assertIn(SHA, human)
+            self.assertIn(fixture_sha, human)
             self.assertEqual(machine["schema"], ow.SCHEMA)
-            self.assertEqual(machine["main_sha"], SHA)
+            self.assertEqual(machine["main_sha"], fixture_sha)
             self.assertEqual(machine["items"][0]["class"], "LANDED")
             self.assertTrue(os.path.isfile(os.path.join(tmp, ow.HUMAN_REL)))
             self.assertTrue(os.path.isfile(os.path.join(tmp, ow.POINTER_HUMAN_REL)))
