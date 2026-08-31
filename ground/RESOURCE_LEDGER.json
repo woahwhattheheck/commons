@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-31T00:36:00Z",
-    "base_main_sha": "03d428cd0b39f8636c149a2415e2258a4740459e",
+    "observed_at": "2026-08-31T04:03:14Z",
+    "base_main_sha": "3271de34a4fdcc9c35e5a759de8b83e346e422f1",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788136396.811819",
-  "source_id": "codex-source-parse-integrity-guard-activation-20260831-01",
+  "slack_ts": "1788148843.897339",
+  "source_id": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
   "supersedes_source_ids": [
+    "codex-source-parse-integrity-guard-activation-20260831-01",
     "codex-discord-bridge-production-activation-20260830-01",
     "codex-revenue-offer-stack-production-activation-20260830-01",
     "codex-opportunity-capability-registry-activation-20260830-01",
@@ -54,7 +55,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — source-parse integrity guard is producing through a real 2,001-file scan and an existing import-check consumer; board data remains outside its authority",
+  "subject": "MASTER RESOURCE LEDGER — Lexington MRF diversion gate is producing through an exact 50-row replay and named operational consumer; equipment control and buyer acceptance remain outside its authority",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -82,7 +83,8 @@
     "inventory/resources/records/codex-opportunity-capability-registry-activation-20260830-01.json",
     "inventory/resources/records/codex-revenue-offer-stack-production-activation-20260830-01.json",
     "inventory/resources/records/codex-discord-bridge-production-activation-20260830-01.json",
-    "inventory/resources/records/codex-source-parse-integrity-guard-activation-20260831-01.json"
+    "inventory/resources/records/codex-source-parse-integrity-guard-activation-20260831-01.json",
+    "inventory/resources/records/codex-lexington-mrf-diversion-gate-activation-20260831-01.json"
   ],
   "priority_queue": [
     {
@@ -1484,6 +1486,28 @@
       "last_used_at": "2026-08-31T00:29:39Z",
       "stale_after": "next tracked Python or JavaScript main change",
       "priority": 82
+    },
+    {
+      "name": "lexington-mrf-diversion-gate",
+      "kind": "COMMERCIAL_BUILD",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons",
+      "authority": "PUBLIC_READ_AND_LOCAL_SYNTHETIC_REPLAY; NO_EQUIPMENT_CONTROL_OR_AUTONOMOUS_SAFETY_DECISION; OWNER_ONLY_OUTREACH_TERMS_PAYMENT_AND_DEPLOYMENT",
+      "consumer": "Lexington Recycle Center / Julie Hatter and similarly situated materials-recovery operators needing deterministic per-load downtime and diversion receipts",
+      "value": "Public no-login per-load handoff road with 50-row replay, duplicate and stale-state handling, exact 10/10/15/5 dispositions, 90t accepted occupancy against a 100t cap, and identical manifest replay",
+      "next_action": "Keep the read-only receipt road available; route real buyer acceptance through the existing sales/account owner, preserve no-resend, and require owner scope for terms, payment, deployment, and equipment control.",
+      "source": "PR #6675; lexington_mrf_diversion_gate.py; lexington-mrf-diversion-gate.html; revenue/lexington_mrf_diversion_gate/contract.json; p/cursor-lexington-mrf-diversion-gate-20260831-01.md",
+      "evidence_ts": "2026-08-31T04:03:14Z",
+      "auth_surface": "current-main exact Git blobs and public no-auth product door",
+      "exact_safe_probe": "PR #6675 merged at 21e181d292c99c4f7d1ceba8d0250f050c17d3cd; 8/8 tests, CLI ok=true, 50 rows, 10 duplicates collapsed, 8 stale states ignored, exact 10 LANDFILL_CITY / 10 HOLD_HAULER / 15 ACCEPT / 5 HOLD_CAPACITY, occupancy 90t <= 100t, identical replay manifest 774dd5fc59cd297a680a870baf788ffc2e2ec1c3fd487175e16c7fd9808f7276",
+      "rate_plan_boundary": "Synthetic replay and buyer pairing are not buyer acceptance, procurement, deployment, equipment control, payment, settlement, payout, revenue, or cash.",
+      "assigned_backlog": "public read-only replay and evidence handoff; no outreach, resend, terms, payment, deployment, or equipment action",
+      "last_receipt": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+      "last_used_at": "2026-08-31T04:03:14Z",
+      "stale_after": "next product, buyer, contract, or deployment-state change",
+      "priority": 84
     }
   ]
 }

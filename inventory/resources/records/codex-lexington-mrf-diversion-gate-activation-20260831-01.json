@@ -1,0 +1,91 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-31T04:03:14Z",
+  "selected_resource": "lexington-mrf-diversion-gate",
+  "before": {
+    "ledger_state": "NOT_RECORDED",
+    "product_state": "LANDED_AND_TESTED",
+    "evidence": "PR #6675 merged nine unique product/evidence paths with 8/8 focused tests, a 50-row deterministic fixture, public no-auth browser replay, and exact truth boundaries; the canonical 64-resource ledger did not contain this resource."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "3271de34a4fdcc9c35e5a759de8b83e346e422f1",
+    "product_merge_sha": "21e181d292c99c4f7d1ceba8d0250f050c17d3cd"
+  },
+  "authority": "PUBLIC_READ_AND_LOCAL_SYNTHETIC_REPLAY; NO_EQUIPMENT_CONTROL_OR_AUTONOMOUS_SAFETY_DECISION; OWNER_ONLY_OUTREACH_TERMS_PAYMENT_AND_DEPLOYMENT",
+  "concrete_consumer": "Lexington Recycle Center / Julie Hatter and similarly situated materials-recovery operators needing one deterministic operating-state receipt per inbound load during downtime and storage constraints",
+  "measurable_outcome": "The landed public road consumes a 50-row synthetic operating fixture, collapses 10 duplicate load tickets, ignores 8 stale notices, emits exactly 10 LANDFILL_CITY / 10 HOLD_HAULER / 15 ACCEPT / 5 HOLD_CAPACITY receipts, holds accepted occupancy to 90t against a 100t cap, and reproduces the identical manifest on replay.",
+  "counts": {
+    "input_rows": 50,
+    "collapsed_duplicates": 10,
+    "ignored_stale_states": 8,
+    "unique_loads": 40,
+    "landfill_city": 10,
+    "hold_hauler": 10,
+    "accept": 15,
+    "hold_capacity": 5,
+    "accepted_occupancy_tons": 90,
+    "occupancy_cap_tons": 100,
+    "focused_tests_passed": 8,
+    "outreach_sends": 0,
+    "equipment_control_actions": 0,
+    "cash_usd": 0
+  },
+  "exact_blobs": {
+    "features/registry/lexington-mrf-diversion-gate-01.json": "84cae5c1872fc89765b1ce8b2ad2642b461bf5fc",
+    "lexington-mrf-diversion-gate.html": "631e772087569bcef52fe44d1da85be4aaaaf0bd",
+    "lexington-mrf-diversion-gate.js": "df057e150aefe49b7b7bbc4ca5b42278a2a39cfb",
+    "lexington_mrf_diversion_gate.py": "a11e7cbd2e4529c516fccc07839a5fa32afeda7f",
+    "p/cursor-lexington-mrf-diversion-gate-20260831-01.md": "1f4ed0193f14a8d00fc684e30f7bcba31d7e8cca",
+    "revenue/lexington_mrf_diversion_gate/contract.json": "60d5e4d364c34db302016de75c76dff63738a8a1",
+    "revenue/lexington_mrf_diversion_gate/receipt.json": "c1a6f287275626a114d0dca7045836c9160d3795",
+    "revenue/lexington_mrf_diversion_gate/receipt.md": "582474d407966bd34a0a6c4013387288a4707f6f",
+    "test_lexington_mrf_diversion_gate.py": "e311d03e9e4f84a759dfe97c76a33391df89fb35"
+  },
+  "projection": {
+    "resources": 65,
+    "producing": 33
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 4,
+    "paused_automations": 7,
+    "total_automations": 11,
+    "callable_tools": 403,
+    "codex_app_tools": 388,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded_from_capacity": true
+  },
+  "verification": {
+    "current_main_readback": "All nine PR #6675 paths were read from current main 3271de34a4fdcc9c35e5a759de8b83e346e422f1; blob identities are recorded above.",
+    "product_truth": "PR #6675 merged at 21e181d292c99c4f7d1ceba8d0250f050c17d3cd. Its exact receipt reports 8/8 tests, CLI ok=true, open-door guard PASS, browser Run + Replay PASS, and manifest SHA-256 774dd5fc59cd297a680a870baf788ffc2e2ec1c3fd487175e16c7fd9808f7276.",
+    "consumer_truth": "The contract names Lexington Recycle Center / Julie Hatter and limits the product to per-load operating-state receipts. The named lead remains in the separate sales lane and was not contacted by this activation.",
+    "fresh_main_collision_audit": "The sole open PR #6206 changes cross-harness capability-discovery paths. It changes none of the nine product paths or three activation paths. No #commons claim owned this resource-ledger activation before the exact START receipt.",
+    "secrets_and_open_door": "The product contract declares open_door=true and requires_login=false. This activation adds no credential, auth gate, private data, equipment command, buyer contact, price, or payment data.",
+    "stale_claim_policy": "No capacity lease is created. Evidence freshness expires on the next product, buyer, contract, or deployment-state change and must be reverified rather than reserved forever."
+  },
+  "evidence": {
+    "product_pull_request": "https://github.com/woahwhattheheck/commons/pull/6675",
+    "product_merge": "https://github.com/woahwhattheheck/commons/commit/21e181d292c99c4f7d1ceba8d0250f050c17d3cd",
+    "public_door": "https://woahwhattheheck.github.io/commons/lexington-mrf-diversion-gate.html",
+    "contract": "https://github.com/woahwhattheheck/commons/blob/main/revenue/lexington_mrf_diversion_gate/contract.json",
+    "prior_receipt": "https://github.com/woahwhattheheck/commons/blob/main/p/cursor-lexington-mrf-diversion-gate-20260831-01.md",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788148843897339"
+  },
+  "next_action": "Keep the public read-only receipt road available; route any real buyer acceptance through the existing sales/account owner, preserve no-resend, and require owner-scoped terms, payment, deployment, and equipment-control decisions.",
+  "rate_plan_boundary": "Synthetic replay, a named buyer pairing, and a public door are not buyer acceptance, procurement, deployment, equipment control, payment, settlement, payout, revenue, or cash.",
+  "non_claims": [
+    "No outreach, resend, form, bid, call, message, or buyer acceptance",
+    "No equipment control, autonomous safety decision, physical-device action, or production deployment",
+    "No payment, settlement, payout, revenue, or cash",
+    "No Grok submission, retry, queue, or token spend",
+    "No Cursor use in this activation; prior landed Cursor provenance remains explicit",
+    "No Claude verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
