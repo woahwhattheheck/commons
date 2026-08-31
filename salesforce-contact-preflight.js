@@ -58,9 +58,10 @@
     const seen = new Map();
     const receipts = [];
 
-    function resolve(key) {
+    function lookup(key) {
       const normalized = clean(key);
-      return aliases.get(normalized) || normalized;
+      const contactId = aliases.get(normalized) || normalized;
+      return contacts.has(contactId) ? contactId : "";
     }
 
     events.forEach((event, index) => {
@@ -111,8 +112,9 @@
           }
         }
       } else if (op === "update") {
-        const key = resolve(event.match_key || identity(event.fields || {}));
-        const contactId = aliases.get(key) || (contacts.has(key) ? key : "");
+        const suppliedKey = event.match_key || identity(event.fields || {});
+        const key = clean(suppliedKey);
+        const contactId = lookup(suppliedKey);
         if (!contactId || !contacts.get(contactId)?.active) {
           out = receipt(event, index, "REJECTED", "CONTACT_NOT_FOUND", "", { match_key: key });
         } else {
@@ -133,8 +135,8 @@
           }
         }
       } else {
-        const sourceId = aliases.get(resolve(event.source_key)) || "";
-        const targetId = aliases.get(resolve(event.target_key)) || "";
+        const sourceId = lookup(event.source_key);
+        const targetId = lookup(event.target_key);
         if (!sourceId || !targetId || sourceId === targetId || !contacts.get(sourceId)?.active || !contacts.get(targetId)?.active) {
           out = receipt(event, index, "REJECTED", "INVALID_MERGE", "", { source_key: clean(event.source_key), target_key: clean(event.target_key) });
         } else {
