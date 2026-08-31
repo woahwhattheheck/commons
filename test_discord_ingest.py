@@ -107,7 +107,7 @@ class DiscordIngestTests(unittest.TestCase):
             self.assertEqual(payload["title"], "discord-42")
             self.assertEqual(payload["labels"], ["board"])
 
-    def test_issue_exists_lists_open_board_issues_once(self) -> None:
+    def test_issue_exists_lists_all_board_issues_once(self) -> None:
         client = di.GitHubClient("token")
         paths: list[str] = []
 
@@ -117,16 +117,17 @@ class DiscordIngestTests(unittest.TestCase):
             if path.endswith("&page=1"):
                 return [{"title": "keep-me"}] + [{"title": "page1-%s" % i} for i in range(99)]
             if path.endswith("&page=2"):
-                return [{"title": "last-open"}, {"title": "pr-title", "pull_request": {"url": "https://x"}}]
+                return [{"title": "last-closed", "state": "closed"}, {"title": "pr-title", "pull_request": {"url": "https://x"}}]
             raise AssertionError(path)
 
         client.request = request  # type: ignore[method-assign]
         self.assertTrue(client.issue_exists("keep-me"))
-        self.assertTrue(client.issue_exists("last-open"))
+        self.assertTrue(client.issue_exists("last-closed"))
         self.assertFalse(client.issue_exists("pr-title"))
         self.assertFalse(client.issue_exists("missing"))
         self.assertEqual(sum(1 for path in paths if "/issues?" in path), 2)
         self.assertTrue(all("/search/" not in path for path in paths))
+        self.assertTrue(all("state=all" in path for path in paths if "/issues?" in path))
 
     def test_sync_creates_missing_titles_without_search(self) -> None:
         events = [
@@ -150,7 +151,7 @@ class DiscordIngestTests(unittest.TestCase):
                 if "/search/" in path:
                     raise di.IngestError("GitHub HTTP 403: search must not be used")
                 if method == "GET" and "/issues?" in path:
-                    return [{"title": "discord-1"}]
+                    return [{"title": "discord-1", "state": "closed"}]
                 if method == "POST" and path.endswith("/issues"):
                     created.append(str((payload or {}).get("title")))
                     return {"html_url": "https://github.test/issues/9"}
@@ -167,6 +168,7 @@ class DiscordIngestTests(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertTrue(all("/search/" not in path for path in paths))
         self.assertEqual(sum(1 for path in paths if "/issues?" in path), 1)
+        self.assertTrue(all("state=all" in path for path in paths if "/issues?" in path))
         self.assertEqual(created, ["discord-2", "discord-3"])
         payload = json.loads(buf.getvalue())
         self.assertEqual(payload["planned"], 3)
