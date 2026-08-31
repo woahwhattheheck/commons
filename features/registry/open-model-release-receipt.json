@@ -1,0 +1,16 @@
+{
+  "slug": "open-model-release-receipt",
+  "name": "Open Model Release Receipt",
+  "status": "ready",
+  "entry_offer_usd": 199,
+  "proof_offer_usd": 2500,
+  "public_path": "open-model-release-receipt.html",
+  "runner": "open_model_release_receipt.py",
+  "tests": "test_open_model_release_receipt.py",
+  "boundaries": [
+    "local or HTTP artifacts only",
+    "exactly eight artifacts and at most 10 MiB",
+    "no model training or quality claim",
+    "no production deployment"
+  ]
+}
