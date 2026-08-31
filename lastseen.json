@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788145971-891429",
-    "ts": "2026-08-31T03:12:51.891429Z",
+    "id": "slack-1788148843-897339",
+    "ts": "2026-08-31T04:00:43.897339Z",
     "to": "TABLE"
   },
   {
@@ -283,9 +283,9 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-pr6299-independent-review-20260831-01",
-    "ts": "2026-08-31T00:49:00Z",
-    "to": "TABLE",
+    "id": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+    "ts": "2026-08-31T04:03:14Z",
+    "to": "MASTER_RESOURCE_LEDGER",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,

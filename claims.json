@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 31,
+  "n": 32,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+      "from": "CODEX_SOL",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788148843897339",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-08-31T04:03:14Z",
+      "href": "./p/codex-lexington-mrf-diversion-gate-activation-20260831-01.html"
     },
     {
       "id": "slack-1788137727-795509",
