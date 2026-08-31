@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 32,
+  "n": 33,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -321,6 +321,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/codex-branch-truth-resume-collision-refresh-20260831-01.html"
+    },
+    {
+      "id": "AT-GROK-ADAPTER-EVIDENCE-01",
+      "from": "CURSOR",
+      "claim": "Ledger: at_grok_adapter_evidence/uncertainty_ledger.json",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/AT-GROK-ADAPTER-EVIDENCE-01.html"
     }
   ]
 }
