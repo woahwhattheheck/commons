@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 29
+    "TESTED": 32
   },
   "features": [
     {
@@ -495,6 +495,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "ElevateBio Pittsburgh greenfield LIMS replication: a 400-row synthetic two-site fixture ports signed Waltham master methods and MES/EBR/LIMS/monitoring/QMS contracts into an isolated Pittsburgh tenant, keeps 384 valid QC/MSAT samples identical across sites, holds 8 method/version and 8 permission defects, denies cross-site access by the exact role matrix, reproduces audit_sha256 b9d13ff324911223d626b20372fcc94c01280bded27d66acd346519881d7b679, and requires named-human batch disposition. Adapters stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "elevatebio_pittsburgh_replication.py",
+        "elevatebio-pittsburgh-replication-lims.js",
+        "elevatebio-pittsburgh-replication-lims.html",
+        "test_elevatebio_pittsburgh_replication.py",
+        "revenue/elevatebio_pittsburgh_replication/contract.json",
+        "revenue/elevatebio_pittsburgh_replication/receipt.json",
+        "revenue/elevatebio_pittsburgh_replication/receipt.md",
+        "p/elevatebio-pittsburgh-replication-lims-01.md",
+        "features/registry/elevatebio-pittsburgh-replication-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "elevatebio_pittsburgh_replication.py",
+        "elevatebio-pittsburgh-replication-lims.js",
+        "elevatebio-pittsburgh-replication-lims.html",
+        "test_elevatebio_pittsburgh_replication.py",
+        "revenue/elevatebio_pittsburgh_replication/contract.json",
+        "revenue/elevatebio_pittsburgh_replication/receipt.json",
+        "revenue/elevatebio_pittsburgh_replication/receipt.md",
+        "p/elevatebio-pittsburgh-replication-lims-01.md",
+        "features/registry/elevatebio-pittsburgh-replication-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "elevatebio-pittsburgh-replication-lims-01.json",
+      "id": "elevatebio-pittsburgh-replication-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "ElevateBio Pittsburgh replication LIMS",
+      "next_gap": "Buyer-approved golden round trip after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "elevatebio-pittsburgh-replication-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "elevatebio-pittsburgh-replication-lims.html",
+        "revenue/elevatebio_pittsburgh_replication/contract.json",
+        "p/elevatebio-pittsburgh-replication-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_elevatebio_pittsburgh_replication.py",
+        "elevatebio_pittsburgh_replication.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Evidence-derived shipped-state tracker. Source and live stay separate. Carriers add their own registry files.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -600,6 +662,66 @@
       "superseded_by": "",
       "test_paths": [
         "test_features_board.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Kincell Bio RTP commercial QC-release LIMS bridge: a 300-sample / 30-batch synthetic fixture replays in-process, final, and stability plans through mock QC, microbiology, and stability labs, opens 30 simulated QMS events, hashes read-only ERP/QMS payloads, blocks automatic release, and lets named QA release exactly 270 clean samples while 30 exceptions stay HOLD. audit_sha256 3771349f17f020256269857d865601789f3f41271df4fa51a90ce73231609e26.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "revenue/kincell_rtp_qc_release_bridge/fixture.json",
+        "revenue/kincell_rtp_qc_release_bridge/runner.py",
+        "revenue/kincell_rtp_qc_release_bridge/README.md",
+        "revenue/kincell_rtp_qc_release_bridge/source.json",
+        "test_kincell_rtp_qc_release_bridge.py",
+        "kincell-rtp-qc-release-bridge-lims.html",
+        "p/kincell-rtp-qc-release-bridge-lims-01.md",
+        "features/registry/kincell-rtp-qc-release-bridge-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "revenue/kincell_rtp_qc_release_bridge/fixture.json",
+        "revenue/kincell_rtp_qc_release_bridge/runner.py",
+        "revenue/kincell_rtp_qc_release_bridge/README.md",
+        "revenue/kincell_rtp_qc_release_bridge/source.json",
+        "test_kincell_rtp_qc_release_bridge.py",
+        "kincell-rtp-qc-release-bridge-lims.html",
+        "p/kincell-rtp-qc-release-bridge-lims-01.md",
+        "features/registry/kincell-rtp-qc-release-bridge-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "kincell-rtp-qc-release-bridge-lims-01.json",
+      "id": "kincell-rtp-qc-release-bridge-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Kincell RTP QC-release LIMS bridge",
+      "next_gap": "Buyer-owned de-identified golden files and actual Veeva/ERP stack confirmation after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "kincell-rtp-qc-release-bridge-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "kincell-rtp-qc-release-bridge-lims.html",
+        "revenue/kincell_rtp_qc_release_bridge/fixture.json",
+        "p/kincell-rtp-qc-release-bridge-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_kincell_rtp_qc_release_bridge.py",
+        "revenue/kincell_rtp_qc_release_bridge/runner.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1790,6 +1912,72 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Weck COC-to-LIMS pre-accession validator: a 400-COC synthetic fixture accessions 320 valid submissions with field parity, holds 80 truth-set exceptions with exact codes, keeps source hashes/coordinates, regenerates COA plus GeoTracker and EPA SEDD fixture digests after a named human signs, and reproduces audit_sha256 75c9c6ffa53e9c6cbaa025ad63254f6134ef9f9ba239d546e758c1c15476e5f3. Adapters stay simulated. Complement incumbent LIMS only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "revenue/weck_coc_preaccession_validator/runner.py",
+        "revenue/weck_coc_preaccession_validator/fixture.json",
+        "revenue/weck_coc_preaccession_validator/source.json",
+        "revenue/weck_coc_preaccession_validator/README.md",
+        "revenue/weck_coc_preaccession_validator/contract.json",
+        "revenue/weck_coc_preaccession_validator/receipt.json",
+        "revenue/weck_coc_preaccession_validator/receipt.md",
+        "test_weck_coc_preaccession_validator.py",
+        "weck-coc-preaccession-validator-lims.html",
+        "p/weck-coc-preaccession-validator-lims-01.md",
+        "features/registry/weck-coc-preaccession-validator-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "revenue/weck_coc_preaccession_validator/runner.py",
+        "revenue/weck_coc_preaccession_validator/fixture.json",
+        "revenue/weck_coc_preaccession_validator/source.json",
+        "revenue/weck_coc_preaccession_validator/README.md",
+        "revenue/weck_coc_preaccession_validator/contract.json",
+        "revenue/weck_coc_preaccession_validator/receipt.json",
+        "revenue/weck_coc_preaccession_validator/receipt.md",
+        "test_weck_coc_preaccession_validator.py",
+        "weck-coc-preaccession-validator-lims.html",
+        "p/weck-coc-preaccession-validator-lims-01.md",
+        "features/registry/weck-coc-preaccession-validator-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "weck-coc-preaccession-validator-lims-01.json",
+      "id": "weck-coc-preaccession-validator-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Weck COC-to-LIMS pre-accession validator",
+      "next_gap": "Buyer-owned de-identified COC / COA / EDD golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "weck-coc-preaccession-validator-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "weck-coc-preaccession-validator-lims.html",
+        "revenue/weck_coc_preaccession_validator/contract.json",
+        "p/weck-coc-preaccession-validator-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_weck_coc_preaccession_validator.py",
+        "revenue/weck_coc_preaccession_validator/runner.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "High-productivity build loop. GPT scouts; Grok Build/Heavy ships. Main is the ledger.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -2063,7 +2251,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 35,
+  "n_features": 38,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
