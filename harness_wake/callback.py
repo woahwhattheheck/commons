@@ -5,11 +5,15 @@ from typing import Any, Callable
 
 from independent_commons_mcp.jobs import JobStore
 from .cursor_adapter import is_cursor_harness
+from .seth_adapter import is_grokbot_seth_live
 
 
 def _cursor_hold(store: JobStore, job_id: str) -> dict[str, Any] | None:
     job = store.get(job_id)
-    if not is_cursor_harness(str(job.get("harness") or "")):
+    harness = str(job.get("harness") or "")
+    if is_grokbot_seth_live(harness):
+        return None
+    if not is_cursor_harness(harness):
         return None
     return {
         "ok": True,

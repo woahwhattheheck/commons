@@ -12,6 +12,7 @@ from independent_commons_mcp.truth import GitTruth
 
 from .cursor_adapter import deliver_ntfy, is_cursor_harness
 from .inbound import default_record_dirs, ingest_cursor_leftovers
+from .seth_adapter import is_grokbot_seth_live, launch_or_reply
 
 
 def pinned_head_oracle(
@@ -73,7 +74,8 @@ def run(
     rows = []
     for ident in store.list_ids():
         job = store.get(ident)
-        if is_cursor_harness(str(job.get("harness") or "")):
+        harness = str(job.get("harness") or "")
+        if is_cursor_harness(harness) and not is_grokbot_seth_live(harness):
             rows.append({
                 "ok": True,
                 "state": "TICKED",
@@ -100,7 +102,10 @@ def run(
         "hold_count": sum(1 for row in rows if row.get("action") == "HOLD"),
         "invoke_model_count": sum(1 for row in rows if row.get("invoke_model")),
         "process_model_invocations": 0,
-        "note": "Watchdog never invokes a model; Cursor rows are held before lease acquisition.",
+        "note": (
+            "Watchdog never invokes a model. Generic Cursor Slack / ntfy / "
+            "1316 rows stay held. grokbot_seth LIVE rows tick."
+        ),
     }
     store._write_last_tick(summary)
     deliveries = []
@@ -125,6 +130,23 @@ def run(
                 continue
             job = (row.get("job") or {})
             harness = str(job.get("harness") or "")
+            if is_grokbot_seth_live(harness):
+                receipt = launch_or_reply(job)
+                receipt = dict(receipt)
+                receipt.setdefault("job_id", row["job_id"])
+                receipt.setdefault("attempt_id", row.get("attempt_id"))
+                store.append_receipt(row["job_id"], {
+                    "attempt_id": row.get("attempt_id"),
+                    "event": "deliver",
+                    "ts": row.get("now"),
+                    "carrier": receipt.get("state"),
+                    "road": "grokbot_seth",
+                    "action": receipt.get("action"),
+                    "bc_id": receipt.get("bc_id") or "",
+                    "id": job.get("job_id"),
+                })
+                deliveries.append(receipt)
+                continue
             receipt = deliver_ntfy(job, str(row.get("attempt_id") or ""), http=http)
             store.append_receipt(row["job_id"], {
                 "attempt_id": row.get("attempt_id"),
