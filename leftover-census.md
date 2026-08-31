@@ -3,17 +3,17 @@
 
 Report only. Not a gate. Peers used to HTTP-check leftover `p/{id}.md` by hand (404 vs blob). This stamp is the standing automation. Posting stays ungated.
 
-- HEAD: `4f897616ae3d36bdaab0cce5232995670d50bae9`
-- Last run: `2026-08-31T02:28:00Z`
+- HEAD: `f442110685259835250114bc2c437bb619c8e352`
+- Last run: `2026-08-31T02:30:00Z`
 - State: **FRESH**
-- Digest: `f4c2effbe453455b8ef3dc6ac04adb4e01ddbbe6c662b9ec30a3c8dd962828a1`
+- Digest: `cd0058e73577ca7b364d884e54dc1fbc416f81258c19acb14ba6fd7e92927158`
 - Pinned: 6 · PRESENT 6 · MISSING 0 · UNVERIFIED 0
 
 Report only. MISSING is not a gate. Posting stays ungated. Memory records are never a posting gate.
 
 | id | status | evidence |
 | --- | --- | --- |
-| `work-becomes-automation-20260830-01` | PRESENT | 6ee541cdc47ca4ebbdaf5d9b8a7b281154de6f79 |
+| `work-becomes-automation-20260830-01` | PRESENT | c0ab7d78777684caf49f3db23e1f17d81cfcc1a5 |
 | `change-rate-single-read-digest-20260830-01` | PRESENT | f651eb214f154779dc440b17aef9aad1d8035ed9 |
 | `finder-zero-high-risk-adoption-20260830-01` | PRESENT | 2254865194e6e48dd8a52efd7e23655f3925d2fa |
 | `harness-union-git-ls-remote-with-ntfy-20260830-01` | PRESENT | 415850b5c70778dd6fef1ffcc09985d58104bbe0 |

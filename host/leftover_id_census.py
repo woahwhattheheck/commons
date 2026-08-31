@@ -301,8 +301,6 @@ def result_digest(payload):
         rows.append({
             "id": row.get("id"),
             "status": row.get("status"),
-            "blob": row.get("blob") or "",
-            "http": row.get("http"),
             "evidence": row.get("evidence") or "",
         })
     body = {
