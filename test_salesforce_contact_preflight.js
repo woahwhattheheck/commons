@@ -22,12 +22,20 @@ assert.strictEqual(first.contacts.length, 2);
 assert.strictEqual(first.dashboard.canonical_contacts, 2);
 assert.deepStrictEqual(first.dashboard.department_counts, { operations: 1, programs: 1 });
 assert.strictEqual(first.dashboard.reconciles, true);
+assert.strictEqual(new Set(first.contacts.map(c => c.id)).size, first.contacts.length);
+assert.strictEqual(first.totals.accepted + first.totals.rejected + first.totals.replayed, events.length);
 assert.strictEqual(first.totals.submitted, events.length);
 assert.strictEqual(first.receipts[0].reason, "CREATED");
 assert.strictEqual(first.receipts[3].reason, "CREATE_NOOP");
 assert.strictEqual(first.receipts[4].reason, "DUPLICATE_CONFLICT");
 assert.strictEqual(first.receipts[6].reason, "MERGED");
 assert.strictEqual(first.receipts[7].status, "REPLAYED");
+assert.strictEqual(first.receipts[7].reason, "EXACT_REPLAY");
+for (const item of first.receipts) {
+  const core = Object.assign({}, item);
+  delete core.receipt_hash;
+  assert.strictEqual(item.receipt_hash, preflight.hash(core), "receipt hash must cover visible receipt bytes");
+}
 assert.strictEqual(first.receipts[8].reason, "EVENT_ID_CONFLICT");
 assert.strictEqual(first.receipts[9].reason, "CONTACT_NOT_FOUND");
 assert.throws(() => preflight.run({}), /events must be an array/);
