@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-31T04:03:14Z",
-    "base_main_sha": "3271de34a4fdcc9c35e5a759de8b83e346e422f1",
+    "observed_at": "2026-08-31T10:11:02Z",
+    "base_main_sha": "3fcb441cb382782e46b44300f805afcf978f6881",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788148843.897339",
-  "source_id": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+  "slack_ts": "1788170918.644929",
+  "source_id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
   "supersedes_source_ids": [
+    "codex-lexington-mrf-diversion-gate-activation-20260831-01",
     "codex-source-parse-integrity-guard-activation-20260831-01",
     "codex-discord-bridge-production-activation-20260830-01",
     "codex-revenue-offer-stack-production-activation-20260830-01",
@@ -55,7 +56,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Lexington MRF diversion gate is producing through an exact 50-row replay and named operational consumer; equipment control and buyer acceptance remain outside its authority",
+  "subject": "MASTER RESOURCE LEDGER — the LLM-native GTM agent brief floor is producing 12 HOT actions and 10 hard-DNR rows for every harness; live send, bid submission, and payment remain outside its authority",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -84,7 +85,8 @@
     "inventory/resources/records/codex-revenue-offer-stack-production-activation-20260830-01.json",
     "inventory/resources/records/codex-discord-bridge-production-activation-20260830-01.json",
     "inventory/resources/records/codex-source-parse-integrity-guard-activation-20260831-01.json",
-    "inventory/resources/records/codex-lexington-mrf-diversion-gate-activation-20260831-01.json"
+    "inventory/resources/records/codex-lexington-mrf-diversion-gate-activation-20260831-01.json",
+    "inventory/resources/records/codex-lm-gtm-agent-brief-floor-activation-20260831-01.json"
   ],
   "priority_queue": [
     {
@@ -1508,6 +1510,28 @@
       "last_used_at": "2026-08-31T04:03:14Z",
       "stale_after": "next product, buyer, contract, or deployment-state change",
       "priority": 84
+    },
+    {
+      "name": "lm-gtm-agent-brief-floor",
+      "kind": "COMMERCIAL_CONTROL_PLANE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons",
+      "authority": "PUBLIC_READ_LOCAL_QUERY_AND_APPEND_ONLY_OCCUPANCY_OVERLAY; LIVE_SEND_ILLEGAL; OWNER_ONLY_OUTREACH_TERMS_PAYMENT_SUBMISSION_AND_ACCOUNT_ACTION",
+      "consumer": "Every Commons sales/build harness and Master of Accounts choosing the next commercial action while preserving the canonical Airtable CRM and hard no-resend receipts",
+      "value": "A compact shared floor with 51 indexed rows, 45 live-next, 12 HOT, 10 HOLD_BUILD, 10 SENT/DNR, zero public email/phone patterns, and explicit Billings HOLD / NO SUBMISSION truth",
+      "next_action": "Use `brief` before allocating commercial work, `sent` before any outreach lane, keep Billings HOLD / NO SUBMISSION until all owner-controlled mandatory gates are truthfully met, and recompose after source-ledger changes.",
+      "source": "PR #6813; host/lm_gtm_index.py; revenue/lm_gtm_index/INDEX.jsonl; revenue/lm_gtm_index/state.json; p/lm-gtm-agent-brief-20260831-01.md",
+      "evidence_ts": "2026-08-31T10:11:02Z",
+      "auth_surface": "current-main exact Git blobs and public no-auth GTM index door",
+      "exact_safe_probe": "PR #6813 merged at 345078021f2ca0403ce3181132e17e17628a4f6f; 29/29 focused tests; current-main INDEX independently parses as 51 rows / 45 live / 12 HOT / 10 HOLD_BUILD / 10 SENT-DNR / zero email and phone patterns / USD 0",
+      "rate_plan_boundary": "Public projection is not canonical CRM; HOT is not permission; HOLD_BUILD is not a sale; routes are not buyers; open checkouts are not acceptance, payment, settlement, payout, revenue, or cash.",
+      "assigned_backlog": "shared brief/sent query floor and bounded occupancy overlay; no outreach, resend, City contact, bid submission, account action, or payment",
+      "last_receipt": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
+      "last_used_at": "2026-08-31T10:11:02Z",
+      "stale_after": "next index, state, overlay, canonical-CRM, bid, outreach, or payment-state change",
+      "priority": 95
     }
   ]
 }
