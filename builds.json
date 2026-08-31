@@ -350,19 +350,19 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 4,
  "open_prs": [
   {
-   "number": 6219,
+   "number": 6299,
    "author": "woahwhattheheck",
-   "title": "Require Android core services before headless ready",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6219",
+   "title": "Cursor leftover inbound for harness wake loop",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6299",
    "base_freshness": {
-    "base_sha": "050d7e309d198f24fda64c90348fdb15b36ba909",
-    "main_sha": "050d7e309d198f24fda64c90348fdb15b36ba909",
+    "base_sha": "dd5759f5d4d4a3225183f725ed2ec4e11f3cc91b",
+    "main_sha": "8068385ac4f26b9bed3d14e93a2dc8a6d4a21ce6",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
@@ -375,7 +375,39 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6206",
    "base_freshness": {
     "base_sha": "9b0a8bb0f6b3926fdc2d0647bf53c8bb71699217",
-    "main_sha": "050d7e309d198f24fda64c90348fdb15b36ba909",
+    "main_sha": "8068385ac4f26b9bed3d14e93a2dc8a6d4a21ce6",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 6305,
+   "author": "woahwhattheheck",
+   "title": "Test unrelated open PR closure evidence",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6305",
+   "base_freshness": {
+    "base_sha": "ff2fab8eab86daa1bd4874ff5aab535ab2e10f47",
+    "main_sha": "8068385ac4f26b9bed3d14e93a2dc8a6d4a21ce6",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 6310,
+   "author": "woahwhattheheck",
+   "title": "Build invoice exception pack",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6310",
+   "base_freshness": {
+    "base_sha": "8fc8ece353eb0aa0750d87da290a49e753981b66",
+    "main_sha": "8068385ac4f26b9bed3d14e93a2dc8a6d4a21ce6",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
