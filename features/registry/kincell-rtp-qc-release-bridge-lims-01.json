@@ -1,0 +1,37 @@
+{
+  "added": "2026-08-31",
+  "capability": "Kincell Bio RTP commercial QC-release LIMS bridge: a 300-sample / 30-batch synthetic fixture replays in-process, final, and stability plans through mock QC, microbiology, and stability labs, opens 30 simulated QMS events, hashes read-only ERP/QMS payloads, blocks automatic release, and lets named QA release exactly 270 clean samples while 30 exceptions stay HOLD. audit_sha256 3771349f17f020256269857d865601789f3f41271df4fa51a90ce73231609e26.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "revenue/kincell_rtp_qc_release_bridge/fixture.json",
+    "revenue/kincell_rtp_qc_release_bridge/runner.py",
+    "revenue/kincell_rtp_qc_release_bridge/README.md",
+    "revenue/kincell_rtp_qc_release_bridge/source.json",
+    "test_kincell_rtp_qc_release_bridge.py",
+    "kincell-rtp-qc-release-bridge-lims.html",
+    "p/kincell-rtp-qc-release-bridge-lims-01.md",
+    "features/registry/kincell-rtp-qc-release-bridge-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "kincell-rtp-qc-release-bridge-lims-01",
+  "name": "Kincell RTP QC-release LIMS bridge",
+  "next_gap": "Buyer-owned de-identified golden files and actual Veeva/ERP stack confirmation after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "kincell-rtp-qc-release-bridge-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "kincell-rtp-qc-release-bridge-lims.html",
+    "revenue/kincell_rtp_qc_release_bridge/fixture.json",
+    "p/kincell-rtp-qc-release-bridge-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_kincell_rtp_qc_release_bridge.py",
+    "revenue/kincell_rtp_qc_release_bridge/runner.py"
+  ]
+}
