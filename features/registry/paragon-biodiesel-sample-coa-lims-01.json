@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "Paragon B6–B20 biodiesel sample-to-CoA LIMS: a frozen 120-row synthetic manifest accessions 100 valid blends once, holds 5 incomplete CoC, 5 incomplete SDS, 5 duplicate IDs, and 5 OOS, matches signed golden values/units/qualifiers/report fields/source hashes, replays with zero new accessions, and requires a named human before CoA release. Adapters stay simulated/read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "paragon_biodiesel_sample_coa.py",
+    "paragon-biodiesel-sample-coa-lims.js",
+    "paragon-biodiesel-sample-coa-lims.html",
+    "test_paragon_biodiesel_sample_coa.py",
+    "revenue/paragon_biodiesel_sample_coa/contract.json",
+    "revenue/paragon_biodiesel_sample_coa/receipt.json",
+    "revenue/paragon_biodiesel_sample_coa/receipt.md",
+    "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md",
+    "features/registry/paragon-biodiesel-sample-coa-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "paragon-biodiesel-sample-coa-lims-01",
+  "name": "Paragon B6–B20 biodiesel sample-to-CoA LIMS",
+  "next_gap": "Buyer-owned CoC/SDS schema, D7467 method map, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "paragon-biodiesel-sample-coa-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "paragon-biodiesel-sample-coa-lims.html",
+    "revenue/paragon_biodiesel_sample_coa/contract.json",
+    "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_paragon_biodiesel_sample_coa.py",
+    "paragon_biodiesel_sample_coa.py"
+  ]
+}
