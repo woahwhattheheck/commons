@@ -1,0 +1,64 @@
+{
+  "audit_sha256": "ca48bfcc283cc7f014c44cdbb469b3d3b16d553a94ccde0c1a4530ae5d55eb3b",
+  "counts": {
+    "actual": {
+      "authorized_transfers": 24,
+      "blocked": 40,
+      "blocked_expected_reason": 40,
+      "blocked_released": 0,
+      "cash_usd": 0,
+      "conditioning": 40,
+      "integrity": 40,
+      "jobs": 240,
+      "live_lims": 0,
+      "method_match": 200,
+      "production_writes": 0,
+      "released_after_named_human": 200,
+      "released_without_named_human": 0,
+      "replay_duplicate_custody_events": 0,
+      "replay_duplicate_job_events": 0,
+      "routed_exact": 200,
+      "stability": 40,
+      "thermal": 40,
+      "unauthorized_transfers": 0,
+      "valid": 200,
+      "vibration": 40
+    },
+    "expected": {
+      "authorized_transfers": 24,
+      "blocked": 40,
+      "blocked_expected_reason": 40,
+      "blocked_released": 0,
+      "cash_usd": 0,
+      "conditioning": 40,
+      "integrity": 40,
+      "jobs": 240,
+      "live_lims": 0,
+      "method_match": 200,
+      "production_writes": 0,
+      "released_after_named_human": 200,
+      "released_without_named_human": 0,
+      "replay_duplicate_custody_events": 0,
+      "replay_duplicate_job_events": 0,
+      "routed_exact": 200,
+      "stability": 40,
+      "thermal": 40,
+      "unauthorized_transfers": 0,
+      "valid": 200,
+      "vibration": 40
+    },
+    "match": true
+  },
+  "hold_code_counts": {
+    "HOLD_CAPACITY_EQUIPMENT_FULL": 8,
+    "HOLD_METHOD_MISMATCH": 8,
+    "HOLD_SCOPE_METHOD_NOT_AT_SITE": 8,
+    "HOLD_SEQUENCE_UNAVAILABLE": 8,
+    "HOLD_TRANSFER_NOT_AUTHORIZED": 8
+  },
+  "site_counts": {
+    "WPK_SAN_DIEGO": 80,
+    "WPK_SAN_JOSE": 88,
+    "WPK_UNION_CITY": 32
+  }
+}
