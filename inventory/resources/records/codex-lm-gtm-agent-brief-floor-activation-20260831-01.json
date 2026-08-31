@@ -1,0 +1,89 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-31T10:11:02Z",
+  "selected_resource": "lm-gtm-agent-brief-floor",
+  "before": {
+    "ledger_state": "NOT_RECORDED",
+    "product_state": "LANDED_TESTED_AND_SERVING_A_SHARED_AGENT_FLOOR",
+    "evidence": "PR #6813 merged the compact brief/sent/query floor with 29/29 tests and an exact validation receipt, but the canonical 65-resource ledger did not contain the resource."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "3fcb441cb382782e46b44300f805afcf978f6881",
+    "product_merge_sha": "345078021f2ca0403ce3181132e17e17628a4f6f"
+  },
+  "authority": "PUBLIC_READ_LOCAL_QUERY_AND_APPEND_ONLY_OCCUPANCY_OVERLAY; LIVE_SEND_ILLEGAL; OWNER_ONLY_OUTREACH_TERMS_PAYMENT_SUBMISSION_AND_ACCOUNT_ACTION",
+  "concrete_consumer": "Every Commons sales/build harness and Master of Accounts choosing the next commercial action while preserving the canonical Airtable CRM and hard no-resend receipts",
+  "measurable_outcome": "Exact current-main index parsing yields 51 rows, 45 live-next actions, 12 HOT actions, 10 HOLD_BUILD pointers, and 10 SENT/DNR rows; Billings remains a MATERIAL_REPLY with HOLD / NO SUBMISSION; the public index contains zero email or phone patterns and cash remains USD 0.",
+  "counts": {
+    "indexed_rows": 51,
+    "live_next_actions": 45,
+    "hot_next_actions": 12,
+    "hold_build_actions": 10,
+    "sent_awaiting_dnr_actions": 10,
+    "index_jsonl_parse_errors": 0,
+    "public_email_patterns": 0,
+    "public_phone_patterns": 0,
+    "focused_tests_passed": 29,
+    "transport_actions": 0,
+    "calls_booked": 0,
+    "cash_usd": 0
+  },
+  "exact_blobs": {
+    "features/registry/lm-gtm-agent-brief-20260831-01.json": "e30779a56eac890bf25de187ff00dd27566cb5bc",
+    "host/lm_gtm_index.py": "67fd1402300a7db35203a0cba8418ed7c3b7a2ba",
+    "lm-gtm-index.html": "f1c5571b2ffd526f248c66164b2039de296807dd",
+    "revenue/lm_gtm_index/INDEX.jsonl": "5949c347e7beba9f6a216561a31e8821b9beec1c",
+    "revenue/lm_gtm_index/state.json": "0aaadfcb31458edc1aa811cdf51817eb54085f1c",
+    "test_lm_gtm_index.py": "720fe94032d8417f6b1de4e97f942a7fbff04a09",
+    "p/lm-gtm-agent-brief-20260831-01.md": "5727847fb214d1b0bb2e5117d3c2e83fd2c8162b"
+  },
+  "projection": {
+    "resources": 66,
+    "producing": 34
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 3,
+    "paused_automations": 8,
+    "total_automations": 11,
+    "callable_tools": 403,
+    "codex_app_tools": 388,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded_from_capacity": true
+  },
+  "verification": {
+    "current_main_readback": "Composer, test, public door, INDEX.jsonl, state, feature registry, and receipt were read exactly from main 3fcb441cb382782e46b44300f805afcf978f6881; blob identities are recorded above.",
+    "product_truth": "PR #6813 merged at 345078021f2ca0403ce3181132e17e17628a4f6f. It reports 29/29 focused tests and VALID 45 live-next / 12 hot / USD 0.",
+    "independent_projection_check": "The exact current-main INDEX.jsonl was parsed independently: one header plus 51 unique rows, 45 live rows, 12 HOT rows, 10 HOLD_BUILD rows, 10 SENT/DNR rows, zero parse failures, zero email patterns, zero phone patterns, and cash sum USD 0.",
+    "billings_truth": "The Billings row is MATERIAL_REPLY and its next action explicitly remains HOLD / NO SUBMISSION with no City contact and no bid submitted. This floor does not adjudicate mandatory bid gates or authorize submission.",
+    "consumer_truth": "The landed command `python3 host/lm_gtm_index.py brief` exposes compact next-action rows to every harness; `sent` exposes hard no-resend rows; `send` is explicitly illegal and exits 3.",
+    "fresh_main_collision_audit": "The sole open PR #6816 changes only TITAN Android recovery paths. It overlaps none of the product or three activation paths and remains untouched under the Titan mutation and owner-device boundaries.",
+    "secrets_and_open_door": "The public index contains zero email or phone patterns. The product receipt declares open door/no auth; this activation adds no credential, account identifier, private route, auth gate, contact, or payment data.",
+    "stale_claim_policy": "No resource lease is created. Evidence expires on the next index, state, overlay, canonical-CRM, bid, outreach, or payment-state change and must be reverified rather than reserved."
+  },
+  "evidence": {
+    "product_pull_request": "https://github.com/woahwhattheheck/commons/pull/6813",
+    "product_merge": "https://github.com/woahwhattheheck/commons/commit/345078021f2ca0403ce3181132e17e17628a4f6f",
+    "public_door": "https://woahwhattheheck.github.io/commons/lm-gtm-index.html",
+    "composer": "https://github.com/woahwhattheheck/commons/blob/main/host/lm_gtm_index.py",
+    "prior_receipt": "https://github.com/woahwhattheheck/commons/blob/main/p/lm-gtm-agent-brief-20260831-01.md",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788170918644929"
+  },
+  "next_action": "Use `brief` before allocating commercial work, use `sent` before any outreach lane, keep Billings HOLD / NO SUBMISSION until every owner-controlled mandatory gate is truthfully met, and recompose after source-ledger changes.",
+  "rate_plan_boundary": "The index is a public projection, not the canonical CRM; HOT is prioritization, not permission; HOLD_BUILD is not a sale; a route is not a buyer; an open checkout is not acceptance, payment, settlement, payout, revenue, or cash.",
+  "non_claims": [
+    "No outreach, resend, form, bid, submission, call, or buyer acceptance",
+    "No account, identity, legal-signature, insurance, price, payment, or physical-device action",
+    "No production deployment, LIMS release, City contact, award, settlement, payout, revenue, or cash",
+    "No Grok submission, retry, queue, or token spend",
+    "No Cursor use in this activation; prior landed Cursor provenance remains explicit",
+    "No Claude participation or verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
