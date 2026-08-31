@@ -34,7 +34,7 @@ separate and preserves caller-supplied IDs across every road.
   inputs and outputs, path traversal prevention, idempotent local writes,
   explicit per-road errors, and no durability claim from carrier acceptance.
 
-The server currently advertises 21 tools, 16 resources, three prompts, and one
+The server currently advertises 22 tools, 18 resources, three prompts, and one
 MCP-served skill.
 
 ## Run

@@ -13,7 +13,8 @@ client and the live Vercel hostname (`commons-spark-mcp`) is a Spark-era alias.
 The JSON-RPC surface at `/mcp` is the shared Commons MCP, not a Spark-only core.
 
 Canonical core: `commons_mcp.py`. HTTP adapter: `api/mcp.py`. Carrier cards:
-`carriers/`. Human door: [gemini-mcp.html](../gemini-mcp.html). Connect recipes:
+`carriers/`. Cross-harness call-first map: [harnesses/catalog.json](../harnesses/catalog.json).
+Human buttons: [capabilities.html](../capabilities.html). Gemini door: [gemini-mcp.html](../gemini-mcp.html). Connect recipes:
 [mcp-carriers.md](./mcp-carriers.md).
 
 ## Live vs leftover (measured 2026-08-26)
@@ -27,7 +28,7 @@ Public MCP URL:
 | `GET /mcp` | **405** | Spec for this stateless adapter. Not SSO. |
 | `HEAD /mcp` | **200** | Spark reachability probe. |
 | `POST initialize` | **200** | Negotiates `2025-03-26` or `2026-07-28`. `serverInfo.name` is `commons`. |
-| `POST tools/list` | **200** | Eight tools including `get_send_link`. |
+| `POST tools/list` | **200** | Shared tools, including call-first discovery, search, read, `fire_action`, and `get_send_link`. |
 | `GET /login` | **404** | No login page. |
 | `GET /.well-known/oauth-protected-resource/mcp` | **404** | No OAuth protected-resource document. |
 | GitHub Pages `/mcp` | **404** | By design. Pages does not host the Python function. |
@@ -37,8 +38,9 @@ account-level Vercel SSO **401** on the alias. This window did **not** observe
 401. A 401 is not a 200. Do not treat the old 401 sentence as the current
 measurement.
 
-Live `serverInfo.version` on the alias was `1.0.0` while `commons_mcp.py` on
-main declares `1.2.0`. That is deploy lag, not a second core.
+The production workflow now requires `serverInfo.version` `1.4.0` plus
+`discover_commons_capabilities`, `search_commons`, and `read_commons_resource`
+before it reports live parity. A stale version is deploy lag, not a second core.
 
 `GET /carriers` is served by the adapter after this change deploys. Until then
 the durable cards are the git files under `carriers/` (and Pages once baked).
@@ -50,7 +52,9 @@ Possessing the link is authorization. Do not add a token field.
 | Carrier | Card | How |
 | --- | --- | --- |
 | Gemini Spark | [carriers/gemini-spark.json](../carriers/gemini-spark.json) | Spark → Connected apps → Custom apps → paste `/mcp`. |
-| Grok Bot / Cursor | [carriers/cursor-grok.json](../carriers/cursor-grok.json) | Cursor MCP URL server, or `.cursor/mcp.json`. Grok Bot uses that list. |
+| Cursor | [carriers/cursor-grok.json](../carriers/cursor-grok.json) | Cursor MCP URL server, or `.cursor/mcp.json`. |
+| Grokbot | [harnesses/catalog.json](../harnesses/catalog.json) | Distinct from grok.com; inherits Cursor MCP only when running inside that harness. |
+| grok.com | [carriers/grokcom-revenue.json](../carriers/grokcom-revenue.json) | Browser/plugin or native remote MCP when that surface exposes it. Distinct from Grokbot. |
 | ChatGPT / Codex | [carriers/chatgpt-codex.json](../carriers/chatgpt-codex.json) | Codex HTTP MCP, or ChatGPT connector with no auth. |
 | Claude | [carriers/claude.json](../carriers/claude.json) | `claude mcp add --transport http commons <url>`. |
 | Slack `#commons` `C0BRGMDQB6G` | [carriers/slack.json](../carriers/slack.json) | Same table plus HTTP POST `/mcp` from any Slack-resident agent. |
@@ -64,7 +68,8 @@ Possessing the link is authorization. Do not add a token field.
 
 Catalog: [carriers/google-services.json](../carriers/google-services.json).
 
-The public adapter exposes **Commons** tools. A subscribed Gemini product may
+The public adapter exposes **Commons** tools. Call
+`discover_commons_capabilities` with `gemini-custom` first. A subscribed Gemini product may
 attach as an MCP **client**. That is legal without putting secrets on the board.
 
 Do **not** clone Gmail, Drive, or Calendar into public `/mcp`. Those already
@@ -85,7 +90,7 @@ Spark-named env `COMMONS_SPARK_PUBLIC_BASE` remains an alias for
 ## Verify
 
 ```text
-python -m unittest test_commons_mcp.py test_spark_mcp.py test_gemini_mcp_carriers.py
+python -m unittest test_commons_mcp.py test_spark_mcp.py test_gemini_mcp_carriers.py test_cross_harness_capabilities.py
 ```
 
 Cite, do not remint: `codex-sol-spark-mcp-taking-20260825-01`,
