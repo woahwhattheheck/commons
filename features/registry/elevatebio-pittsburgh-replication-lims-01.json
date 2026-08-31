@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "ElevateBio Pittsburgh greenfield LIMS replication: a 400-row synthetic two-site fixture ports signed Waltham master methods and MES/EBR/LIMS/monitoring/QMS contracts into an isolated Pittsburgh tenant, keeps 384 valid QC/MSAT samples identical across sites, holds 8 method/version and 8 permission defects, denies cross-site access by the exact role matrix, reproduces audit_sha256 b9d13ff324911223d626b20372fcc94c01280bded27d66acd346519881d7b679, and requires named-human batch disposition. Adapters stay simulated.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "elevatebio_pittsburgh_replication.py",
+    "elevatebio-pittsburgh-replication-lims.js",
+    "elevatebio-pittsburgh-replication-lims.html",
+    "test_elevatebio_pittsburgh_replication.py",
+    "revenue/elevatebio_pittsburgh_replication/contract.json",
+    "revenue/elevatebio_pittsburgh_replication/receipt.json",
+    "revenue/elevatebio_pittsburgh_replication/receipt.md",
+    "p/elevatebio-pittsburgh-replication-lims-01.md",
+    "features/registry/elevatebio-pittsburgh-replication-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "elevatebio-pittsburgh-replication-lims-01",
+  "name": "ElevateBio Pittsburgh replication LIMS",
+  "next_gap": "Buyer-approved golden round trip after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "elevatebio-pittsburgh-replication-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "elevatebio-pittsburgh-replication-lims.html",
+    "revenue/elevatebio_pittsburgh_replication/contract.json",
+    "p/elevatebio-pittsburgh-replication-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_elevatebio_pittsburgh_replication.py",
+    "elevatebio_pittsburgh_replication.py"
+  ]
+}
