@@ -644,7 +644,7 @@ class OutcomeCommerceTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        self.assertIn("OK 15 listings", proc.stdout)
+        self.assertIn("OK 17 listings", proc.stdout)
         self.assertIn("CHARGEABLE != AUTHORIZATION != SETTLEMENT != PAYOUT != BANK_AVAILABLE", proc.stdout)
 
         proc = subprocess.run(
@@ -742,7 +742,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         )
         self.assertEqual(
             sorted(row["priority"] for row in funnels.values()),
-            list(range(1, 16)),
+            list(range(1, 18)),
         )
         ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
         self.assertEqual(ordered[:3], [
@@ -865,8 +865,8 @@ class OutcomeCommerceTests(unittest.TestCase):
     def test_fifteen_unique_listings_preserve_frozen_eight(self) -> None:
         listings = self.catalog["listings"]
         ids = [row["id"] for row in listings]
-        self.assertEqual(len(listings), 15)
-        self.assertEqual(len(set(ids)), 15)
+        self.assertEqual(len(listings), 17)
+        self.assertEqual(len(set(ids)), 17)
         self.assertEqual(
             hashlib.sha256(canonical(listings[:8]).encode("utf-8")).hexdigest(),
             FROZEN_EIGHT_SHA256,
@@ -900,7 +900,11 @@ class OutcomeCommerceTests(unittest.TestCase):
     def test_seven_recorded_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
         by_id = {row["id"]: row for row in self.catalog["listings"]}
         recorded = [row for row in self.catalog["listings"] if "checkout" in row]
-        artifacts = [row for row in self.catalog["listings"] if "source_artifact" in row]
+        artifacts = [
+            row
+            for row in self.catalog["listings"]
+            if "source_artifact" in row and row["id"] in {spec["id"] for spec in RECORDED_STRIPE_SKUS}
+        ]
         self.assertEqual(len(recorded), 7)
         self.assertEqual(len(artifacts), 7)
         self.assertEqual(

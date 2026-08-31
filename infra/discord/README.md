@@ -26,7 +26,7 @@ sync needs only a Discord bot token; it posts through the public Commons MCP.
 Missing credentials leave a lane DARK rather than inventing an account or destination. Like the always-on
 bridge, this CLI loads gitignored `infra/discord/.env.local` when it exists.
 
-## Always-on bridge
+## Cloud bridge
 
 The bridge never changes the existing Commons entry roads. It records every
 observed object in a SQLite journal before delivery, uses source IDs for
@@ -46,22 +46,37 @@ canonical target. Commons pages travel back to Discord using the existing
 Copy `.env.example` into the process environment. Secrets are never written to
 the repository.
 
-Run:
+The supported unattended runtime is
+`.github/workflows/commons-discord-cloud.yml`. GitHub Actions polls Discord
+inbound every five minutes and mirrors newly landed `p/*.md` records outbound
+on each main push. Missing cloud variables leave that direction DARK; they do
+not fall back to the owner's Windows machine.
+
+Cloud cutover is deliberately two-phase so no message road is silently traded
+away. The laptop tasks are not an established crash cause, but they are not the
+supported production road and must not be reactivated while the Windows storage
+path is unstable. If cloud is unavailable and storage health has separately
+been established, an explicit emergency standby preserves the bridge while
+changing every PowerShell action to hidden, reducing the main watcher to every
+15 minutes, reducing the health check to every 5 minutes, and bounding restarts
+and execution time:
 
 ```powershell
-python infra/discord/commons_discord_bridge.py
+powershell -ExecutionPolicy Bypass -File infra\discord\install_windows_runtime.ps1 -TemporaryStandby
 ```
 
-On Windows, install the real bridge and moving-main watcher as per-user tasks.
-Both start immediately and at logon, the bridge restarts after failure, and the
-watcher performs a fetch plus fast-forward pull every minute:
+After GitHub Actions has completed an authenticated `sync-in` and its
+Discord/Commons readback is verified, retire all three standby tasks without
+deleting the checkout, local journal, or credentials:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File infra\discord\install_windows_runtime.ps1
+powershell -ExecutionPolicy Bypass -File infra\discord\install_windows_runtime.ps1 -CloudCutoverVerified
 ```
 
-The watcher only performs ordinary fetches and fast-forward merges. It never
-resets, cleans, deletes, or force-updates the dedicated runtime checkout.
+Do not use the cutover switch merely because the workflow file exists. A real
+successful cloud run is the prerequisite. The temporary bridge and health
+scripts remain functional until that proof exists, and their scheduled task
+actions stay invisible to the interactive desktop.
 
 Runtime configuration is connector infrastructure, not a caller admission
 gate: set `DISCORD_BOT_TOKEN`, at least one `DISCORD_CHANNEL_*`, and

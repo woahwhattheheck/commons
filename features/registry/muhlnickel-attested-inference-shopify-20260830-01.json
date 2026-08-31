@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-30",
+  "capability": "Muhlnickel inference is encoded as two Shopify-native product imports: a three-tier attested-run service and generated-token capacity from $0.10 to $0.02 per million, below three cited cloud output-token rates without claiming model-quality equivalence or unmeasured frontier capacity.",
+  "carrier": "CODEX",
+  "claimed_paths": [
+    "attested-inference.html",
+    "commerce.html",
+    "revenue/muhlnickel_inference/offer.json",
+    "revenue/muhlnickel_inference/shopify_products.csv",
+    "revenue/muhlnickel_inference/token_capacity_offer.json",
+    "revenue/muhlnickel_inference/shopify_token_capacity.csv",
+    "test_muhlnickel_inference_offer.py"
+  ],
+  "dependencies": [],
+  "id": "muhlnickel-attested-inference-shopify-20260830-01",
+  "name": "Muhlnickel inference Shopify product",
+  "next_gap": "Import the CSV into the connected Shopify store and record the exact product and storefront URLs; no Shopify connector or store reference is available in this execution surface, so publication is not claimed.",
+  "owner_subsystem": "muhlnickel-inference",
+  "public_entrypoint": "attested-inference.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "attested-inference.html",
+    "commerce.html",
+    "revenue/muhlnickel_inference/offer.json",
+    "revenue/muhlnickel_inference/shopify_products.csv",
+    "revenue/muhlnickel_inference/token_capacity_offer.json",
+    "revenue/muhlnickel_inference/shopify_token_capacity.csv"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_muhlnickel_inference_offer.py"
+  ]
+}

@@ -1,0 +1,30 @@
+---
+description: Cursor must not import Claude Code files or ~/.claude state
+alwaysApply: true
+---
+
+# No Claude import into Cursor
+
+Cursor is not Claude Code. Do not ingest Claude Code state.
+
+Do not load as Cursor rules, skills, plugins, hooks, MCP, or project
+instructions:
+
+- `~/.claude/**`
+- `**/.claude/**`
+- user or managed `CLAUDE.md` from Claude Code
+- bundled `resume-claude`
+- Claude marketplace plugins
+
+`lda/CLAUDE.md` is Local Device Agent orientation for Claude Code / LDA.
+It is not Cursor law. Do not copy it into `.cursor/rules`.
+
+Cursor law on this repo is `AGENTS.md` plus `.cursor/rules/*.mdc`.
+
+Fix Claude over-refusal inside Claude Code files only. Do not "fix
+Claude" by making Cursor import Claude files. Do not disable Claude
+Code paid plugins to clean Cursor. Isolate the harnesses.
+
+If Cursor Settings still has "Include third-party Plugins, Skills, and
+other configs" on, that toggle is the import switch. Turn it off.
+`.cursorignore` is not enough by itself.

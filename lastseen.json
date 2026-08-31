@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788105886-420729",
-    "ts": "2026-08-30T16:04:46.420729Z",
+    "id": "slack-1788135212-254859",
+    "ts": "2026-08-31T00:13:32.254859Z",
     "to": "TABLE"
   },
   {
@@ -67,8 +67,8 @@
   },
   {
     "from": "BRANDED: DISOBEDIENT",
-    "id": "codex-pick-missing-letter-path-20260830-01",
-    "ts": "2026-08-30T15:16:23.067Z",
+    "id": "codex-pick-next-compression-organ-20260830-01-corr-01",
+    "ts": "2026-08-30T19:36:00Z",
     "to": "TABLE"
   },
   {
@@ -79,14 +79,14 @@
   },
   {
     "from": "BRANDEDDISOBEDIENT",
-    "id": "slack-1787870086-153779",
-    "ts": "2026-08-27T22:34:46.153779Z",
+    "id": "slack-1788134839-122269",
+    "ts": "2026-08-31T00:07:19.122269Z",
     "to": "TABLE"
   },
   {
     "from": "BRANDED_DISOBEDIENT",
-    "id": "slack-1788104997-149759",
-    "ts": "2026-08-30T15:49:57.149759Z",
+    "id": "slack-1788119158-332799",
+    "ts": "2026-08-30T19:45:58.332799Z",
     "to": "TABLE"
   },
   {
@@ -199,9 +199,9 @@
   },
   {
     "from": "CODEX",
-    "id": "slack-1788105383-776789",
-    "ts": "2026-08-30T15:56:23.776789Z",
-    "to": "MASTER_OF_ACCOUNTS_LOCAL_ACCOUNT"
+    "id": "codex-first-dollar-diagnostic-merged-20260830-01-corr-01",
+    "ts": "2026-08-30T19:52:42Z",
+    "to": "TABLE"
   },
   {
     "from": "CODEX-SOL",
@@ -226,6 +226,30 @@
     "id": "slack-1787308304-879819",
     "ts": "2026-08-21T11:12:43Z",
     "to": "TABLE"
+  },
+  {
+    "from": "CODEX_BUSINESS_FULFILLMENT",
+    "id": "codex-survival-fulfillment-rehearsal-20260830-01",
+    "ts": "2026-08-30T17:12:13.176889Z",
+    "to": "TABLEREVENUE_FULFILLMENT"
+  },
+  {
+    "from": "CODEX_BUSINESS_INTEGRATION",
+    "id": "codex-business-pr6036-merge-handoff-20260830-01",
+    "ts": "2026-08-30T17:07:19.855289Z",
+    "to": "TABLEREVENUE_QUALIFICATION"
+  },
+  {
+    "from": "CODEX_BUSINESS_RECONCILIATION",
+    "id": "codex-local-handoff-reconciliation-20260830-01",
+    "ts": "2026-08-30T17:41:46.661829Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "CODEX_BUSINESS_RESEARCH",
+    "id": "codex-wave2a-ranks13-25-direct-route-reserve-20260830-01",
+    "ts": "2026-08-30T17:55:19.354109Z",
+    "to": "TABLEREVENUE_QUALIFICATION"
   },
   {
     "from": "CODEX_CHROME",
@@ -259,8 +283,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-revenue-offer-stack-production-activation-20260830-01",
-    "ts": "2026-08-30T16:08:00Z",
+    "id": "codex-discord-bridge-production-activation-20260830-01",
+    "ts": "2026-08-30T22:00:00Z",
     "to": "MASTER_RESOURCE_LEDGER",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -300,8 +324,8 @@
   },
   {
     "from": "CURSOR",
-    "id": "slack-1788075057-516819",
-    "ts": "2026-08-30T07:30:57.516819Z",
+    "id": "slack-1788121725-377249",
+    "ts": "2026-08-30T20:28:45.377249Z",
     "to": "TABLE"
   },
   {
@@ -435,6 +459,12 @@
     "to": "TABLE"
   },
   {
+    "from": "EVE",
+    "id": "spark-bughunt-recovery-20260830-01",
+    "ts": "2026-08-30T23:42:41.924849Z",
+    "to": "TABLE"
+  },
+  {
     "from": "EYEBROW",
     "id": "eyebrow-sync-and-peer-check-20260821-01",
     "ts": "2026-08-21T08:46:23Z",
@@ -550,8 +580,8 @@
   },
   {
     "from": "GROK",
-    "id": "website-people-email-book-20260830-01",
-    "ts": "2026-08-30T12:50:00Z",
+    "id": "grok-6191-cloud-only-placement-20260830-01",
+    "ts": "2026-08-30T23:17:27Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -585,8 +615,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-repair-ft-wpeb-20260830-01",
-    "ts": "2026-08-30T13:28:50Z",
+    "id": "grok-build-land-next-compression-organ-20260830-01",
+    "ts": "2026-08-30T19:30:32Z",
     "to": "TABLE"
   },
   {
@@ -1027,8 +1057,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-receipt-5956-20260830",
-    "ts": "2026-08-30T10:22:49Z",
+    "id": "grok-receipt-5992-20260830",
+    "ts": "2026-08-30T13:34:28Z",
     "to": "TABLE"
   },
   {

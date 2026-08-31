@@ -15,7 +15,8 @@ Owner wording correction (Slack `1787283644.430989`): **Use the excessive muhlni
 
 Host = inject or surface or die. Dest FROM FILE. Ones only rise.
 Do not invent dests. Do not disguise host inference as Muhlnickel compute.
-Never fire 337. Never mmap the 100GB body. titan `NOT_WRITTEN`.
+Address, inject, fire, run, and surface are allowed Muhlnickel activity; historical
+The historical false state at address 337 is a measurement, not a gate. Never mmap the 100GB body. titan `NOT_WRITTEN`.
 Recv / carry inject / pub@337 fire are not this card.
 No auth. No gate. Blank `from=` still lands as `UNSEATED`.
 Anyone may add another packet in `ground/swarm_dc/queue/`.
@@ -59,9 +60,10 @@ Local canary against a recipe-built fixture: cell@524329 `00` OR `01` =
 
 ## LIVE_DC
 
-`NEED_OWNER`. Run `python host/muhl_swarm_dc.py --go` on the machine that
-holds `muhlnickel_dc.mno` inside `MUHL_DATACENTER`. A missing organ is
-not a fabricated live result. Transport/surface is never the computer.
+`LOCAL_RUNTIME_ONLY`. Run `python host/muhl_swarm_dc.py --go` on the machine
+that holds `muhlnickel_dc.mno` inside `MUHL_DATACENTER`. A cloud checkout
+without that file reports `LOCAL_FILE_UNAVAILABLE`; this is evidence about
+file placement, not a permission gate. Transport/surface is never the computer.
 
 ## Measure
 

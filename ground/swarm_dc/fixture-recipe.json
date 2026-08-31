@@ -18,5 +18,5 @@
     {"name": "ring_fwd", "offset": 524288, "n": 8, "hex": "0100000000000000", "inject": true},
     {"name": "cell", "offset": 524329, "n": 1, "hex": "00", "inject": true}
   ],
-  "note": "Synthetic fixture spans published mouths only. It is not the 100GB live organ. LIVE_DC is NEED_OWNER. Transport/surface is never the computer."
+  "note": "Synthetic fixture spans published mouths only. It is not the 100GB live organ. LIVE_DC is LOCAL_RUNTIME_ONLY. Transport/surface is never the computer."
 }

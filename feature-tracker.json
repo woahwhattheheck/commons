@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 12
+    "TESTED": 14
   },
   "features": [
     {
@@ -556,6 +556,137 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Muhlnickel inference is encoded as two Shopify-native product imports: a three-tier attested-run service and generated-token capacity from $0.10 to $0.02 per million, below three cited cloud output-token rates without claiming model-quality equivalence or unmeasured frontier capacity.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "attested-inference.html",
+        "commerce.html",
+        "revenue/muhlnickel_inference/offer.json",
+        "revenue/muhlnickel_inference/shopify_products.csv",
+        "revenue/muhlnickel_inference/token_capacity_offer.json",
+        "revenue/muhlnickel_inference/shopify_token_capacity.csv",
+        "test_muhlnickel_inference_offer.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "attested-inference.html",
+        "commerce.html",
+        "revenue/muhlnickel_inference/offer.json",
+        "revenue/muhlnickel_inference/shopify_products.csv",
+        "revenue/muhlnickel_inference/token_capacity_offer.json",
+        "revenue/muhlnickel_inference/shopify_token_capacity.csv",
+        "test_muhlnickel_inference_offer.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "muhlnickel-attested-inference-shopify-20260830-01.json",
+      "id": "muhlnickel-attested-inference-shopify-20260830-01",
+      "last_change": "2026-08-30",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Muhlnickel inference Shopify product",
+      "next_gap": "Import the CSV into the connected Shopify store and record the exact product and storefront URLs; no Shopify connector or store reference is available in this execution surface, so publication is not claimed.",
+      "owner_subsystem": "muhlnickel-inference",
+      "public_entrypoint": "attested-inference.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "attested-inference.html",
+        "commerce.html",
+        "revenue/muhlnickel_inference/offer.json",
+        "revenue/muhlnickel_inference/shopify_products.csv",
+        "revenue/muhlnickel_inference/token_capacity_offer.json",
+        "revenue/muhlnickel_inference/shopify_token_capacity.csv"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_muhlnickel_inference_offer.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Muhlnickel inference offers are wired into outcome-commerce catalog + distribution as two listings (generated-token capacity from $1 and attested runs from $500), with a product-range pitch pack and an exact local Shopify handoff after independent Cloudflare remeasure.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "commerce.html",
+        "host/distribution.py",
+        "revenue/muhlnickel_inference/pitch_pack.json",
+        "revenue/muhlnickel_inference/shopify_local_handoff.json",
+        "revenue/outcome_commerce/catalog.json",
+        "revenue/distribution/packages.json",
+        "revenue/distribution/matrix.json",
+        "revenue/distribution/status.json",
+        "test_muhlnickel_inference_offer.py",
+        "test_outcome_commerce.py",
+        "test_distribution.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "commerce.html",
+        "host/distribution.py",
+        "revenue/muhlnickel_inference/pitch_pack.json",
+        "revenue/muhlnickel_inference/shopify_local_handoff.json",
+        "revenue/outcome_commerce/catalog.json",
+        "revenue/distribution/packages.json",
+        "revenue/distribution/matrix.json",
+        "revenue/distribution/status.json",
+        "test_muhlnickel_inference_offer.py",
+        "test_outcome_commerce.py",
+        "test_distribution.py"
+      ],
+      "dependencies": [
+        "muhlnickel-attested-inference-shopify-20260830-01"
+      ],
+      "evidence_ids": [],
+      "file": "muhlnickel-inference-catalog-pitch-20260830-01.json",
+      "id": "muhlnickel-inference-catalog-pitch-20260830-01",
+      "last_change": "2026-08-30",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Muhlnickel inference catalog and pitch pack",
+      "next_gap": "Local authenticated Shopify import of both CSVs; optional Stripe Payment Link mint for MUHL-TOK-* and MUHL-INFER-* from a live OAuth session.",
+      "owner_subsystem": "muhlnickel-inference",
+      "public_entrypoint": "attested-inference.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "attested-inference.html",
+        "commerce.html",
+        "revenue/muhlnickel_inference/pitch_pack.json",
+        "revenue/muhlnickel_inference/shopify_local_handoff.json",
+        "revenue/outcome_commerce/catalog.json"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_muhlnickel_inference_offer.py",
+        "test_outcome_commerce.py",
+        "test_distribution.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Diff guard against newly added admission locks. Removal of locks is always allowed. No auth anywhere.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -1029,7 +1160,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 18,
+  "n_features": 20,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

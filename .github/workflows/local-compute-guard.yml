@@ -1,0 +1,21 @@
+name: local-compute-guard
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  placement:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: keep automatic compute off the owner laptop
+        run: python3 local_compute_guard.py

@@ -63,7 +63,7 @@
       "id": "listing-registry",
       "path": "revenue/listing_registry/registry.json",
       "role": "MARKETPLACE_SURFACES_COMPOSE_NOT_REMINT",
-      "sha256": "91e6b0093484665bc71aec341d4d4d32a0ae91ad8aa2dfb708413c2aed7257f0"
+      "sha256": "f86e31e4a0d2b180cda0d965c5219f1e0ceeb92a188108ba695c6cc080f00664"
     }
   ],
   "capabilities": [
@@ -158,8 +158,8 @@
         },
         {
           "path": "host/distribution.py",
-          "sha256": "564df3bdd277459c0a02c48c97639650db4dff6097f03fb600af9b332092cae2",
-          "bytes": 29257
+          "sha256": "51c273d0d10b8bf8dd89219889eb1e5cbf388a1b8a95db371c591ecdf032b73b",
+          "bytes": 29377
         },
         {
           "path": "ground/DISTRIBUTION.md",
@@ -266,8 +266,8 @@
         },
         {
           "path": "resources.html",
-          "sha256": "e7b81f68e90b900f53f41df78c5cc44dcf3e38af28b5f2ae0468a80d319559ac",
-          "bytes": 10314
+          "sha256": "5b53c5df9e98114daef4ad9f7d43edd15fd5291b74da39490babcad57ce178d7",
+          "bytes": 10960
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",

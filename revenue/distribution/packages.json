@@ -1,6 +1,6 @@
 {
   "as_of":"2026-08-28T16:10:00Z",
-  "count":92,
+  "count":99,
   "kind":"CHANNEL_READY_PACKAGES",
   "packages":[
     {
@@ -6252,6 +6252,482 @@
       "submit_allowed":false,
       "submitted":false,
       "title":"Muhlnickel / Titan"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Muhlnickel Generated-Token Capacity — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel Generated-Token Capacity.\nPrice: USD 1.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-generated-token-capacity.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/muhlnickel_inference/token_capacity_offer.json (blob 02e632e2444ffa98404bd731b9854591d50f2416).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/attested-inference.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"attested-inference.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"02e632e2444ffa98404bd731b9854591d50f2416",
+          "kind":"canonical_source",
+          "path":"revenue/muhlnickel_inference/token_capacity_offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"attested-inference.html",
+          "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__sku-muhlnickel-generated-token-capacity",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"micro_sku",
+      "offer_id":"sku-muhlnickel-generated-token-capacity",
+      "offer_name":"Muhlnickel Generated-Token Capacity",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"1.00",
+        "basis":"10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Muhlnickel Generated-Token Capacity.",
+        "Price basis: 10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer.",
+        "Canonical terms stay on revenue/muhlnickel_inference/token_capacity_offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/muhlnickel_inference/token_capacity_offer.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Muhlnickel Generated-Token Capacity"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Muhlnickel Generated-Token Capacity — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel Generated-Token Capacity.\nPrice: USD 1.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-generated-token-capacity.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/muhlnickel_inference/token_capacity_offer.json (blob 02e632e2444ffa98404bd731b9854591d50f2416).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/attested-inference.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"attested-inference.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"02e632e2444ffa98404bd731b9854591d50f2416",
+          "kind":"canonical_source",
+          "path":"revenue/muhlnickel_inference/token_capacity_offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"attested-inference.html",
+          "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__sku-muhlnickel-generated-token-capacity",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"micro_sku",
+      "offer_id":"sku-muhlnickel-generated-token-capacity",
+      "offer_name":"Muhlnickel Generated-Token Capacity",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"1.00",
+        "basis":"10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Muhlnickel Generated-Token Capacity.",
+        "Price basis: 10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer.",
+        "Canonical terms stay on revenue/muhlnickel_inference/token_capacity_offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/muhlnickel_inference/token_capacity_offer.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Muhlnickel Generated-Token Capacity"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Muhlnickel Generated-Token Capacity — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel Generated-Token Capacity.\nPrice: USD 1.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-generated-token-capacity.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/muhlnickel_inference/token_capacity_offer.json (blob 02e632e2444ffa98404bd731b9854591d50f2416).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/attested-inference.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"attested-inference.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"02e632e2444ffa98404bd731b9854591d50f2416",
+          "kind":"canonical_source",
+          "path":"revenue/muhlnickel_inference/token_capacity_offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"attested-inference.html",
+          "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__sku-muhlnickel-generated-token-capacity",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"micro_sku",
+      "offer_id":"sku-muhlnickel-generated-token-capacity",
+      "offer_name":"Muhlnickel Generated-Token Capacity",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"1.00",
+        "basis":"10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Muhlnickel Generated-Token Capacity.",
+        "Price basis: 10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer.",
+        "Canonical terms stay on revenue/muhlnickel_inference/token_capacity_offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/muhlnickel_inference/token_capacity_offer.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Muhlnickel Generated-Token Capacity"
+    },
+    {
+      "blocked_reason":"Stripe rail is not proven chargeable and payout-capable on the catalog.",
+      "channel_copy":"Muhlnickel Generated-Token Capacity — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel Generated-Token Capacity.\nPrice: USD 1.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-generated-token-capacity.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/muhlnickel_inference/token_capacity_offer.json (blob 02e632e2444ffa98404bd731b9854591d50f2416).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: Stripe rail is not proven chargeable and payout-capable on the catalog.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/attested-inference.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"attested-inference.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"02e632e2444ffa98404bd731b9854591d50f2416",
+          "kind":"canonical_source",
+          "path":"revenue/muhlnickel_inference/token_capacity_offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"attested-inference.html",
+          "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
+      ],
+      "honesty":{
+        "blocked_reason":"Stripe rail is not proven chargeable and payout-capable on the catalog.",
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__sku-muhlnickel-generated-token-capacity",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"BLOCKED_CHARGES_DISABLED",
+      "offer_class":"micro_sku",
+      "offer_id":"sku-muhlnickel-generated-token-capacity",
+      "offer_name":"Muhlnickel Generated-Token Capacity",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"1.00",
+        "basis":"10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Muhlnickel Generated-Token Capacity.",
+        "Price basis: 10 million generated tokens at $0.10/M; ladder also has $5/100M and $20/1B in the source offer.",
+        "Canonical terms stay on revenue/muhlnickel_inference/token_capacity_offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/muhlnickel_inference/token_capacity_offer.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Muhlnickel Generated-Token Capacity"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Muhlnickel Attested Inference — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel Attested Inference.\nPrice: USD 500.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-attested-inference.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/muhlnickel_inference/offer.json (blob 960beb887a6af6e58740abc26a72934eb6efaa93).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/attested-inference.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"attested-inference.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"960beb887a6af6e58740abc26a72934eb6efaa93",
+          "kind":"canonical_source",
+          "path":"revenue/muhlnickel_inference/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"attested-inference.html",
+          "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__sku-muhlnickel-attested-inference",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"sku-muhlnickel-attested-inference",
+      "offer_name":"Muhlnickel Attested Inference",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"500.00",
+        "basis":"one attested run; ladder also has $1,500 evaluated batch and $2,500 bespoke job in the source offer",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Muhlnickel Attested Inference.",
+        "Price basis: one attested run; ladder also has $1,500 evaluated batch and $2,500 bespoke job in the source offer.",
+        "Canonical terms stay on revenue/muhlnickel_inference/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/muhlnickel_inference/offer.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Muhlnickel Attested Inference"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Muhlnickel Attested Inference — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel Attested Inference.\nPrice: USD 500.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-attested-inference.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/muhlnickel_inference/offer.json (blob 960beb887a6af6e58740abc26a72934eb6efaa93).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/attested-inference.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"attested-inference.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"960beb887a6af6e58740abc26a72934eb6efaa93",
+          "kind":"canonical_source",
+          "path":"revenue/muhlnickel_inference/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"attested-inference.html",
+          "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__sku-muhlnickel-attested-inference",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"sku-muhlnickel-attested-inference",
+      "offer_name":"Muhlnickel Attested Inference",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"500.00",
+        "basis":"one attested run; ladder also has $1,500 evaluated batch and $2,500 bespoke job in the source offer",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Muhlnickel Attested Inference.",
+        "Price basis: one attested run; ladder also has $1,500 evaluated batch and $2,500 bespoke job in the source offer.",
+        "Canonical terms stay on revenue/muhlnickel_inference/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/muhlnickel_inference/offer.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Muhlnickel Attested Inference"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Muhlnickel Attested Inference — Commons channel package (not a live listing)\n\nOutcome: Muhlnickel Attested Inference.\nPrice: USD 500.00. Source terms win; this package does not rewrite them.\nOffer id: sku-muhlnickel-attested-inference.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/muhlnickel_inference/offer.json (blob 960beb887a6af6e58740abc26a72934eb6efaa93).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/attested-inference.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"attested-inference.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"960beb887a6af6e58740abc26a72934eb6efaa93",
+          "kind":"canonical_source",
+          "path":"revenue/muhlnickel_inference/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"attested-inference.html",
+          "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__sku-muhlnickel-attested-inference",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"sku-muhlnickel-attested-inference",
+      "offer_name":"Muhlnickel Attested Inference",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"500.00",
+        "basis":"one attested run; ladder also has $1,500 evaluated batch and $2,500 bespoke job in the source offer",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Muhlnickel Attested Inference.",
+        "Price basis: one attested run; ladder also has $1,500 evaluated batch and $2,500 bespoke job in the source offer.",
+        "Canonical terms stay on revenue/muhlnickel_inference/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/muhlnickel_inference/offer.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Muhlnickel Attested Inference"
     }
   ],
   "schema_version":"distribution/v1"

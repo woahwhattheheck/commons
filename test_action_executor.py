@@ -1073,7 +1073,9 @@ new file mode 100644
         self.assertNotIn("action_executor.py --scope github", board)
         self.assertIn("device_action_state.py preflight", board)
         self.assertIn("has_pending_device", board)
-        self.assertIn("uses: ./.github/workflows/commons-device-executor.yml", board)
+        self.assertNotIn("uses: ./.github/workflows/commons-device-executor.yml", board)
+        self.assertIn("runs-on: ubuntu-latest", board)
+        self.assertIn("does not allocate the owner's self-hosted laptop runner", board)
         self.assertIn("needs.ingest.outputs.has_pending_device == 'true'", board)
 
 

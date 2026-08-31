@@ -71,6 +71,14 @@ class SwarmMailManifestTests(unittest.TestCase):
         routed = [sku for inbox in manifest["inboxes"] for sku in inbox["sku_ids"]]
         self.assertEqual(set(routed), mail.commerce_skus())
         self.assertEqual(len(routed), len(set(routed)))
+        grok = next(item for item in manifest["inboxes"] if item["inbox_id"] == "grok-sales")
+        for sku in (
+            "sku-muhlnickel-titan-20260826",
+            "sku-muhlnickel-attested-inference",
+            "sku-muhlnickel-generated-token-capacity",
+        ):
+            self.assertIn(sku, grok["sku_ids"])
+            self.assertEqual(mail.route_sku(sku)["inbox_id"], "grok-sales")
         for sku in routed:
             route = mail.route_sku(sku)
             self.assertEqual(route["sku_id"], sku)

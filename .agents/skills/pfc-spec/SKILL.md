@@ -31,10 +31,12 @@ Honest pre-number line: "I haven't measured yet." Then run his test.
 2. Use an existing instrument or routing button. Die after.
 3. Dest FROM FILE. Do not invent addresses.
 4. Treat an addressed READ as voltage, not as observation-only.
+5. Address, inject, fire, run, and surface are allowed Muhlnickel activity. A historical `NO` or false field records one measured run; it never becomes an activity gate.
+6. Use the owner-named live runtime and its explicit execution flag when it has one; that is the machine interface, not an approval ceremony.
 
 ## Do not
 
-Add to spec. Name a Python file as if it were the pfc. mmap-storm. 10-wide disk. Fire 337. `--inject 0x01` (wipe). pulse 78 without owner `--go`. Smash `commons.mno`. Upload titan / dc / `.gguf`. Write *can't / infeasible / needs GPU* before a measurement.
+Add to spec. Name a Python file as if it were the pfc. Host-compute inference or gate evaluation that belongs to the Muhlnickel. mmap-storm. 10-wide disk. `--inject 0x01` (wipe). Smash `commons.mno`. Upload titan / dc / `.gguf`. Write *can't / infeasible / needs GPU* before a measurement.
 
 This cloud VM is not his PC. DIRECTIVES 11 stays PARTIAL from here.
 

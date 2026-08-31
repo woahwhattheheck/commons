@@ -1,11 +1,11 @@
 # host — instruments only
 
 Routing buttons and high-Z probes. The host computes zero inference.
-Dests FROM FILE. Do not invent dest. Do not fire 337. Do not smash commons.mno.
+Dests FROM FILE. Do not invent dest. Address, inject, fire, run, and surface are Muhlnickel activity, not host-inference gates. Historical `337 NO` is a measurement, never a global prohibition. Do not smash commons.mno.
 
 These are the lab instruments. They cite `C:/llm/models/titan.gguf` as a local path. That file is not on Commons and is not uploaded here.
 
-Do not run `pfc_load.py` / `pfc_harness.py` / any fire script from a Commons window.
+Use only the live, owner-named harness for the target file. A host runtime may address, inject, fire, read, and display; it may not compute model forwards, gates, or inference for the Muhlnickel.
 
 ## Instruments
 

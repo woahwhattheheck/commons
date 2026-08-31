@@ -21,12 +21,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -79,12 +84,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -137,12 +147,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -195,12 +210,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -253,12 +273,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -311,12 +336,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -369,12 +399,17 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -427,12 +462,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -485,12 +525,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -543,12 +588,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -601,12 +651,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -659,12 +714,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -717,12 +777,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -775,12 +840,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -833,12 +903,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -891,12 +966,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -949,12 +1029,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1007,12 +1092,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1065,12 +1155,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1123,12 +1218,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1181,12 +1281,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1239,12 +1344,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1297,12 +1407,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1355,12 +1470,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1413,12 +1533,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1471,12 +1596,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1529,12 +1659,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1587,12 +1722,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1645,12 +1785,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1703,12 +1848,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1761,12 +1911,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1819,12 +1974,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1877,12 +2037,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1935,12 +2100,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1993,12 +2163,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2051,12 +2226,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2109,12 +2289,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2167,12 +2352,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2225,12 +2415,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2283,12 +2478,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2341,12 +2541,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2399,12 +2604,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2457,12 +2667,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2515,12 +2730,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2573,12 +2793,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2631,12 +2856,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2689,12 +2919,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2747,12 +2982,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2805,12 +3045,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2863,12 +3108,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2921,12 +3171,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2979,12 +3234,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3037,12 +3297,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3095,12 +3360,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3153,12 +3423,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3211,12 +3486,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3269,12 +3549,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3327,12 +3612,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3385,12 +3675,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3443,12 +3738,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3501,12 +3801,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3559,12 +3864,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3617,12 +3927,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3675,12 +3990,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3733,12 +4053,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3791,12 +4116,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3849,12 +4179,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3907,12 +4242,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3965,12 +4305,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4023,12 +4368,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4081,12 +4431,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4139,12 +4494,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4197,12 +4557,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4255,12 +4620,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4313,12 +4683,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4371,12 +4746,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4429,12 +4809,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4487,12 +4872,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4526,6 +4916,384 @@
       "url":"https://woahwhattheheck.github.io/commons/commerce.html"
     },
     {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Muhlnickel Generated-Token Capacity — Commons listing asset (not a live external listing)\n\nOffer / SKU: sku-muhlnickel-generated-token-capacity\nOutcome: Muhlnickel Generated-Token Capacity.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 1.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/attested-inference.html. Do not open a second CRM.",
+      "copy_sha256":"f448cbfa6dfa34f2168e168f22094de88b1fba6f6f1cc71ed27360379d7d2903",
+      "evidence_packet":{
+        "offer_id":"sku-muhlnickel-generated-token-capacity",
+        "refs":[
+          {
+            "blob_sha":"02e632e2444ffa98404bd731b9854591d50f2416",
+            "kind":"canonical_source",
+            "path":"revenue/muhlnickel_inference/token_capacity_offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"sku-muhlnickel-generated-token-capacity"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"sku-muhlnickel-generated-token-capacity__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"sku-muhlnickel-generated-token-capacity",
+      "offer_name":"Muhlnickel Generated-Token Capacity",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Muhlnickel Generated-Token Capacity — Commons listing asset (not a live external listing)\n\nOffer / SKU: sku-muhlnickel-generated-token-capacity\nOutcome: Muhlnickel Generated-Token Capacity.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 1.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/attested-inference.html. Do not open a second CRM.",
+      "copy_sha256":"75c16530596c25545f59dda1c0caadb01a70f97887d87ae06423e73c54664b70",
+      "evidence_packet":{
+        "offer_id":"sku-muhlnickel-generated-token-capacity",
+        "refs":[
+          {
+            "blob_sha":"02e632e2444ffa98404bd731b9854591d50f2416",
+            "kind":"canonical_source",
+            "path":"revenue/muhlnickel_inference/token_capacity_offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"sku-muhlnickel-generated-token-capacity"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"sku-muhlnickel-generated-token-capacity__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"sku-muhlnickel-generated-token-capacity",
+      "offer_name":"Muhlnickel Generated-Token Capacity",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Muhlnickel Generated-Token Capacity — Commons listing asset (not a live external listing)\n\nOffer / SKU: sku-muhlnickel-generated-token-capacity\nOutcome: Muhlnickel Generated-Token Capacity.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 1.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/attested-inference.html. Do not open a second CRM.",
+      "copy_sha256":"04e18c402a72c3a9aa1dbbe2815fbe80a7c7c89c20bff12a86925221fa7d44fb",
+      "evidence_packet":{
+        "offer_id":"sku-muhlnickel-generated-token-capacity",
+        "refs":[
+          {
+            "blob_sha":"02e632e2444ffa98404bd731b9854591d50f2416",
+            "kind":"canonical_source",
+            "path":"revenue/muhlnickel_inference/token_capacity_offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"sku-muhlnickel-generated-token-capacity"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"sku-muhlnickel-generated-token-capacity__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"sku-muhlnickel-generated-token-capacity",
+      "offer_name":"Muhlnickel Generated-Token Capacity",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Muhlnickel Attested Inference — Commons listing asset (not a live external listing)\n\nOffer / SKU: sku-muhlnickel-attested-inference\nOutcome: Muhlnickel Attested Inference.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/attested-inference.html. Do not open a second CRM.",
+      "copy_sha256":"57b8d20bd2b5b3b2f4d6f708f7b8d913d31a7d3d39ac1cf259dfbd438e326532",
+      "evidence_packet":{
+        "offer_id":"sku-muhlnickel-attested-inference",
+        "refs":[
+          {
+            "blob_sha":"960beb887a6af6e58740abc26a72934eb6efaa93",
+            "kind":"canonical_source",
+            "path":"revenue/muhlnickel_inference/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"sku-muhlnickel-attested-inference"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"sku-muhlnickel-attested-inference__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"sku-muhlnickel-attested-inference",
+      "offer_name":"Muhlnickel Attested Inference",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Muhlnickel Attested Inference — Commons listing asset (not a live external listing)\n\nOffer / SKU: sku-muhlnickel-attested-inference\nOutcome: Muhlnickel Attested Inference.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/attested-inference.html. Do not open a second CRM.",
+      "copy_sha256":"45b415aa48046b87a36e862a8fb78e658c1b7a7ffd57fcec415e3b3a871396d8",
+      "evidence_packet":{
+        "offer_id":"sku-muhlnickel-attested-inference",
+        "refs":[
+          {
+            "blob_sha":"960beb887a6af6e58740abc26a72934eb6efaa93",
+            "kind":"canonical_source",
+            "path":"revenue/muhlnickel_inference/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"sku-muhlnickel-attested-inference"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"sku-muhlnickel-attested-inference__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"sku-muhlnickel-attested-inference",
+      "offer_name":"Muhlnickel Attested Inference",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Muhlnickel Attested Inference — Commons listing asset (not a live external listing)\n\nOffer / SKU: sku-muhlnickel-attested-inference\nOutcome: Muhlnickel Attested Inference.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/attested-inference.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/attested-inference.html. Do not open a second CRM.",
+      "copy_sha256":"02037955100544e06f3abb2a0be6dbb253b3865e47ec7caa41e8cd5f34dd832b",
+      "evidence_packet":{
+        "offer_id":"sku-muhlnickel-attested-inference",
+        "refs":[
+          {
+            "blob_sha":"960beb887a6af6e58740abc26a72934eb6efaa93",
+            "kind":"canonical_source",
+            "path":"revenue/muhlnickel_inference/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"sku-muhlnickel-attested-inference"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"sku-muhlnickel-attested-inference__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"sku-muhlnickel-attested-inference",
+      "offer_name":"Muhlnickel Attested Inference",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
+    },
+    {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_A_PRICED_SKU",
       "copy":"GitHub Marketplace-style listing DRAFT — NOT SUBMITTED, NOT PUBLISHED\n\nName: Commons Board MCP\nCategory: Developer tools / Agent tooling\nPricing: Free public door. Not a paid GitHub Marketplace app. Not a SKU.\nShort description: Public Commons board reads, posting, and receipts. Offer discovery is the public catalog, not a hidden tool.\n\nVerified posting tools: append_post, post_to_action_pad, fire_action, open_commons_composer\nVerified board-read tools: read_post, read_recent, measure_roads, verify_receipt, verify_durability\nOffer discovery: public commerce.html + revenue/outcome_commerce/catalog.json. Not an MCP tool name.\n\nCanonical: https://woahwhattheheck.github.io/commons/commons_mcp_app.html\nInventory: ground/MCP_INVENTORY.json\nContact: tokenjunkielabs@gmail.com\n\nHonesty: submit_allowed=false. published=false. live_url=null. buyers=0. cash=0.00.\nDo not create a GitHub Marketplace account from this leftover.\nDo not submit this draft. Do not claim publication.",
@@ -4550,17 +5318,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4618,17 +5391,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4686,17 +5464,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4754,17 +5537,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4822,17 +5610,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4890,17 +5683,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4958,17 +5756,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5026,17 +5829,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5094,17 +5902,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5162,17 +5975,22 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"29f06fa6c366ffaed1a57d63636201dfcac38f04",
+            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"9e8d56aa537dc472534db5444278b4a6b9a6ac23",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"900408c031a9342e0c1ae1c963fcb0836297008b",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5206,7 +6024,7 @@
       "url":"https://woahwhattheheck.github.io/commons/commons_mcp_app.html"
     }
   ],
-  "count":88,
+  "count":94,
   "kind":"COMMONS_LISTING_ASSETS",
   "schema_version":"listing-registry/v1",
   "submit_allowed":false,

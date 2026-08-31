@@ -93,6 +93,11 @@ async function main() {
   const kiteParts = mem.badgeParts(kite);
   assert.strictEqual(kiteParts.entry_count, 3);
   assert.strictEqual(kiteParts.updated_ts, "2026-08-25T07:12:03Z");
+  assert.strictEqual(mem.visiblePadHref("KITE"), "./memory/KITE.html");
+  assert.strictEqual(mem.visiblePadHref("kite"), "./memory/KITE.html");
+  assert.strictEqual(mem.visiblePadHref(""), "./memory/index.html");
+  assert.strictEqual(mem.visiblePadHref("UNSEATED"), "./memory/index.html");
+  assert.strictEqual(mem.visiblePadDoorHref(), "./memory.html");
 
   assert(mem.containsEntry({ entries: [{ entry_id: "exact-id" }] }, "exact-id"));
   assert(!mem.containsEntry({ entries: [{ entry_id: "other" }] }, "exact-id"));
@@ -181,6 +186,9 @@ async function main() {
   assert(source.includes("MEMORY_READBACK_ATTEMPTS = 180"), "default readback must span a five-minute ingest plus Pages lag");
   assert(source.includes("CORRECTION requires the earlier entry id"), "composer must require correction linkage");
   assert(source.includes("memoryBadgeParts(record)"), "selected composer identity must render its type badge");
+  assert(source.includes('class="memory-html-pad"'), "open board must link the visible HTML pad");
+  assert(source.includes("visible pad for "), "composer must retarget the visible-pad link to the selected claim");
+  assert(source.includes('assetUrl("memory.html")'), "composer must keep the pad door reachable");
   assert(!source.includes("carrier.js?v=20260818j"));
   const generators = fs.readFileSync("hub_pages.py", "utf8") + fs.readFileSync("board_ingest.py", "utf8");
   assert(!generators.includes('src="./carrier.js?v=20260818j'), "generated pages must use canonical asset key");

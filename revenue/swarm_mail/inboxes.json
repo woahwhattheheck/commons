@@ -51,7 +51,7 @@
       "inbox_id": "grok-sales", "agent_claim": "GROK_SALES", "model_family": "GROK", "local_part": "grok",
       "address_state": "UNPROVISIONED", "public_address": null, "purpose": "TARGETED_OUTREACH_AND_SALES", "send_mode": "DRAFT_ONLY",
       "daily_new_thread_limit": 10,
-      "sku_ids": ["white-box-gguf-pilot-30d", "sku-whitebox-hour-20260826", "sku-muhlnickel-titan-20260826"],
+      "sku_ids": ["white-box-gguf-pilot-30d", "sku-whitebox-hour-20260826", "sku-muhlnickel-titan-20260826", "sku-muhlnickel-attested-inference", "sku-muhlnickel-generated-token-capacity"],
       "reply_owner": "GROK_SALES", "handoff_classes": ["QUESTION", "POSITIVE_SCOPE", "NEEDS_HUMAN", "OPT_OUT", "COMPLAINT", "BOUNCE"]
     },
     {

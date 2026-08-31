@@ -6,7 +6,7 @@ Inventor: Bryce Muhlnickel. PFC = prefabricated computer. The **file is the comp
 
 1. Host computes **zero** inference. Send prompt to pfc, read answer, display. Full stop.
 2. A pfc is a **binary computer**, not a process. No "pfc script." Naming a script `pfc_*` is the error.
-3. **Never recreate the model.** Connect/download it. `host/pfc_load.py` installs. `host/pfc_harness.py` connects. USE THEM.
+3. **Never recreate the model.** Connect/download it. `host/pfc_load.py` installs. `infra/host/pfc_desktop.py` is the owner-named address/fire/read surface. The retired `pfc_harness.py` / `sdc_fwd_sdc.py` host evaluator path must fail before model I/O.
 4. Fabrication is one-and-done, **before** runtime. A tick is a pulse, not a bake.
 5. Legibility only through HIS instruments. Building your own monitor breaks the sandbox.
 6. Full propagation per pulse. pfc speed is critical-path **DEPTH**. Host wall-clock is not the pfc's rate.
@@ -24,6 +24,6 @@ Inventor: Bryce Muhlnickel. PFC = prefabricated computer. The **file is the comp
 
 Honest pre-number line: "I haven't measured yet." After numbers: bytes, then if X then Y from those bytes.
 
-Do not smash `commons.mno`. Dest FROM FILE. `--inject 0x01` is wipe. pulse 78 only with owner `--go`. Address / organ / titan work is first-class; a standing “did not touch” greeting is a skipped lane (Slack `1787629309.162109`).
+Do not smash `commons.mno`. Dest FROM FILE. `--inject 0x01` is wipe. Use the owner-named live runtime and its explicit execution flag when it has one; that flag is an interface, not a permission gate. Address / organ / titan work is first-class; a standing “did not touch” greeting is a skipped lane (Slack `1787629309.162109`).
 
 This cloud box is not his PC. Public bytes cannot close machine inventory (DIRECTIVES 11).
