@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "ATS asphalt project-spec-to-result control: a 60-job synthetic binder/emulsion/mix/Hamburg fixture puts 48 jobs on class worklists once, holds 12 with MISSING_SPEC, WRONG_UNIT, INSUFFICIENT_QUANTITY, DUPLICATE_ID, METHOD_REVISION, and EXPIRED_CALIBRATION, preserves sample/project/method lineage, imports one Hamburg OOS and one binder invalid review hold, lets a named human release exactly 46, and reproduces audit_sha256 3c09bd0ca3c6f03194611a5d7aca63f2e80df7e596ef8f7137801a1cdd9bbae9. Adapters stay simulated/read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ats_asphalt_spec_result_lims.py",
+    "ats-asphalt-spec-result-lims.js",
+    "ats-asphalt-spec-result-lims.html",
+    "test_ats_asphalt_spec_result_lims.py",
+    "revenue/ats_asphalt_spec_result_lims/contract.json",
+    "revenue/ats_asphalt_spec_result_lims/receipt.json",
+    "revenue/ats_asphalt_spec_result_lims/receipt.md",
+    "p/cursor-ats-asphalt-spec-result-lims-20260831-01.md",
+    "features/registry/ats-asphalt-spec-result-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "ats-asphalt-spec-result-lims-01",
+  "name": "ATS asphalt project-spec-to-result control",
+  "next_gap": "Buyer-owned project-spec, COC, method-revision, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "ats-asphalt-spec-result-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ats-asphalt-spec-result-lims.html",
+    "revenue/ats_asphalt_spec_result_lims/contract.json",
+    "p/cursor-ats-asphalt-spec-result-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_ats_asphalt_spec_result_lims.py",
+    "ats_asphalt_spec_result_lims.py"
+  ]
+}

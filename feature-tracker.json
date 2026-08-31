@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 28
+    "TESTED": 29
   },
   "features": [
     {
@@ -131,6 +131,68 @@
       "test_paths": [
         "test_open_door.py",
         "open_door_guard.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "ATS asphalt project-spec-to-result control: a 60-job synthetic binder/emulsion/mix/Hamburg fixture puts 48 jobs on class worklists once, holds 12 with MISSING_SPEC, WRONG_UNIT, INSUFFICIENT_QUANTITY, DUPLICATE_ID, METHOD_REVISION, and EXPIRED_CALIBRATION, preserves sample/project/method lineage, imports one Hamburg OOS and one binder invalid review hold, lets a named human release exactly 46, and reproduces audit_sha256 3c09bd0ca3c6f03194611a5d7aca63f2e80df7e596ef8f7137801a1cdd9bbae9. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ats_asphalt_spec_result_lims.py",
+        "ats-asphalt-spec-result-lims.js",
+        "ats-asphalt-spec-result-lims.html",
+        "test_ats_asphalt_spec_result_lims.py",
+        "revenue/ats_asphalt_spec_result_lims/contract.json",
+        "revenue/ats_asphalt_spec_result_lims/receipt.json",
+        "revenue/ats_asphalt_spec_result_lims/receipt.md",
+        "p/cursor-ats-asphalt-spec-result-lims-20260831-01.md",
+        "features/registry/ats-asphalt-spec-result-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ats_asphalt_spec_result_lims.py",
+        "ats-asphalt-spec-result-lims.js",
+        "ats-asphalt-spec-result-lims.html",
+        "test_ats_asphalt_spec_result_lims.py",
+        "revenue/ats_asphalt_spec_result_lims/contract.json",
+        "revenue/ats_asphalt_spec_result_lims/receipt.json",
+        "revenue/ats_asphalt_spec_result_lims/receipt.md",
+        "p/cursor-ats-asphalt-spec-result-lims-20260831-01.md",
+        "features/registry/ats-asphalt-spec-result-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ats-asphalt-spec-result-lims-01.json",
+      "id": "ats-asphalt-spec-result-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "ATS asphalt project-spec-to-result control",
+      "next_gap": "Buyer-owned project-spec, COC, method-revision, and de-identified golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "ats-asphalt-spec-result-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ats-asphalt-spec-result-lims.html",
+        "revenue/ats_asphalt_spec_result_lims/contract.json",
+        "p/cursor-ats-asphalt-spec-result-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_ats_asphalt_spec_result_lims.py",
+        "ats_asphalt_spec_result_lims.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2001,7 +2063,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 34,
+  "n_features": 35,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
