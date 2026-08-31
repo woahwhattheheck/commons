@@ -107,7 +107,8 @@ def inspect_file(name: str) -> dict:
             rings=rings, factory_rings=factory,
             address_bits=u32(header, fold_off),
             winner_only=bool(u32(header, fold_off + 4)),
-            stored_per_lane=u32(header, fold_off + 12),
+            stored_per_lane=u32(header, fold_off + 8),
+            senses=u32(header, fold_off + 12),
             factory_stride_bytes=u64(header, fold_off + 24),
         )
     after = rss_bytes()
