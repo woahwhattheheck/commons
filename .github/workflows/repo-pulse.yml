@@ -32,6 +32,9 @@ on:
         default: false
   pull_request:
     paths:
+      - "slack_ingest.py"
+      - "test_slack_ingest.py"
+      - "exact_body_redact.py"
       - "repo_pulse.py"
       - "test_repo_pulse.py"
       - "host/sprint_integration.py"
@@ -41,6 +44,9 @@ on:
   push:
     branches: [main]
     paths:
+      - "slack_ingest.py"
+      - "test_slack_ingest.py"
+      - "exact_body_redact.py"
       - "repo_pulse.py"
       - "test_repo_pulse.py"
       - "host/sprint_integration.py"
@@ -48,13 +54,11 @@ on:
       - "ground/SPRINT_INTEGRATION.json"
       - ".github/workflows/repo-pulse.yml"
 
-concurrency:
-  group: repo-pulse
-  cancel-in-progress: false
-
 permissions:
   contents: read
-  issues: read
+  # slack_ingest creates ordinary label=board issues. The existing
+  # commons-board schedule consumes them; no second publisher is minted here.
+  issues: write
   pull-requests: read
   checks: read
   pages: read
@@ -64,6 +68,9 @@ jobs:
   pulse:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    concurrency:
+      group: repo-pulse
+      cancel-in-progress: false
     steps:
       - name: Restore cursor from the previous run
         if: github.event_name != 'pull_request'
@@ -132,3 +139,87 @@ jobs:
         with:
           path: .pulse-state.json
           key: repo-pulse-cursor-${{ github.run_id }}
+
+  slack_ingest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    concurrency:
+      group: repo-pulse-slack-ingest
+      cancel-in-progress: false
+    steps:
+      - name: Restore the last successful Slack event cursor
+        if: github.event_name != 'pull_request'
+        uses: actions/cache/restore@v4
+        with:
+          path: .slack-ingest-state.json
+          key: slack-ingest-cursor-${{ github.run_id }}
+          restore-keys: |
+            slack-ingest-cursor-
+
+      - name: Gate exhaustive scheduled scans to one per 25 minutes
+        id: cadence
+        shell: bash
+        run: |
+          run=true
+          if [ "${{ github.event_name }}" = "schedule" ] && \
+             [ -f .slack-ingest-state.json ] && \
+             find .slack-ingest-state.json -mmin -25 -print -quit | grep -q .; then
+            run=false
+          fi
+          echo "run=${run}" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch exact engine bytes, run fixtures, and sync Slack
+        id: sync
+        if: steps.cadence.outputs.run == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_SHA: ${{ github.sha }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          COMMONS_SLACK_CHANNEL: ${{ vars.SLACK_CHANNEL_ID || 'C0BRGMDQB6G' }}
+          SLACK_INGEST_STATE: .slack-ingest-state.json
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/slack-ingest
+          api="https://api.github.com/repos/${GITHUB_REPOSITORY}/contents"
+          fetch() {
+            curl -fsSL \
+              -H "Authorization: Bearer ${GITHUB_TOKEN}" \
+              -H "Accept: application/vnd.github.raw" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              -H "User-Agent: slack-ingest/1.0" \
+              "${api}/$1?ref=${GITHUB_SHA}" -o "/tmp/slack-ingest/$1"
+          }
+          fetch exact_body_redact.py
+          fetch slack_ingest.py
+          fetch test_slack_ingest.py
+          (
+            cd /tmp/slack-ingest
+            python3 -m unittest -v test_slack_ingest.py
+          )
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            echo "PR dry-run: Slack ingest fixtures passed; no live cursor or issue write."
+            echo "state_ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ -z "${SLACK_BOT_TOKEN}" ]; then
+            echo "Slack ingest idle: SLACK_BOT_TOKEN is not configured."
+            echo "state_ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if [ ! -f "${SLACK_INGEST_STATE}" ]; then
+            # Bootstrap once from the SHA-pinned durable projection. Future
+            # runs use the exact cached Slack event clock and avoid a repo clone.
+            fetch posts.json
+          fi
+          python3 /tmp/slack-ingest/slack_ingest.py sync \
+            --state "${SLACK_INGEST_STATE}" \
+            --posts-json /tmp/slack-ingest/posts.json
+          echo "state_ready=true" >> "$GITHUB_OUTPUT"
+
+      - name: Save the last fully processed Slack event cursor
+        if: success() && steps.sync.outputs.state_ready == 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: .slack-ingest-state.json
+          key: slack-ingest-cursor-${{ github.run_id }}
