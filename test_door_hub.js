@@ -133,4 +133,22 @@ assert(
     (rootHomeGaps.length ? ": " + rootHomeGaps.join(", ") : "")
 );
 
+const namedHomeReturnCanaries = [
+  "catering-deposit-rescue.html",
+  "open-model-release-receipt.html",
+  "permit-intake-receipt.html",
+  "repair-booking-preflight.html",
+  "salesforce-contact-preflight.html",
+];
+namedHomeReturnCanaries.forEach(function (name) {
+  assert(rootHtmlPages.indexOf(name) !== -1, "named home-return canary is a root page: " + name);
+  const page = fs.readFileSync(path.join(root, name), "utf8");
+  assert(
+    hasSessionScript(page) ||
+      page.indexOf('href="./index.html"') !== -1 ||
+      page.indexOf('href="./"') !== -1,
+    "named home-return canary returns home: " + name
+  );
+});
+
 console.log("DOOR_HUB_OK " + Object.keys(seen).length + " doors");
