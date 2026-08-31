@@ -31,6 +31,9 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: every tracked Python and JavaScript source must still parse
+        run: python3 source_parses.py
+
       - name: the publisher must still import
         run: |
           set -e
