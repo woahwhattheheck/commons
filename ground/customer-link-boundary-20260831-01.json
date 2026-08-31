@@ -1,0 +1,42 @@
+{
+  "id": "demon-customer-link-boundary-20260831-01",
+  "kind": "CUSTOMER_LINK_BOUNDARY_CONTRACT",
+  "schema_version": 1,
+  "source_base": "bceecdfb503c22f3867f5366f19554c5207eaaeb",
+  "owner_correction": "customers must not be sent to Commons or GitHub; use a clean standalone branded surface and direct transaction path",
+  "scope": "CUSTOMER_FACING_TEXT_ONLY",
+  "implementation": "host/customer_link_boundary.py",
+  "test": "test_customer_link_boundary.py",
+  "forbidden_host_families": [
+    "github.com and subdomains",
+    "github.io and subdomains",
+    "githubusercontent.com and subdomains",
+    "githubassets.com and subdomains",
+    "commons.mno and subdomains",
+    "tokenjunkielabs.slack.com"
+  ],
+  "input_forms": [
+    "plain URL",
+    "bare host/path",
+    "Markdown link",
+    "Slack angle/pipe link",
+    "scheme-relative URL"
+  ],
+  "result_contract": {
+    "safe_state": "CUSTOMER_LINK_SAFE",
+    "blocked_state": "BLOCKED_CUSTOMER_LINK",
+    "violation_fields": [
+      "start",
+      "end",
+      "raw",
+      "normalized_url",
+      "host",
+      "reason"
+    ]
+  },
+  "internal_commons_evidence_unchanged": true,
+  "commons_open_door_unchanged": true,
+  "outbound_sent": false,
+  "payment_action": false,
+  "grok_used": false
+}
