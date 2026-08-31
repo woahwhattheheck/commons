@@ -1,6 +1,8 @@
 # luvak-ssa-lab-analytics-cutover-lims-01 receipt
 
-State: TESTED
+State: SHIPPED
+Integrated main: `011717b5ba8c5ebfedad923a62d99b488e8ce30e`
+PR: https://github.com/woahwhattheheck/commons/pull/6740
 Binary: `python3 test_luvak_ssa_lab_analytics_cutover.py` → 10/10 OK
 CLI: `python3 luvak_ssa_lab_analytics_cutover.py` → ok true, failures []
 
