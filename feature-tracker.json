@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 19
+    "TESTED": 21
   },
   "features": [
     {
@@ -409,6 +409,67 @@
       "test_paths": [
         "test_listing_registry.py",
         "host/listing_registry.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Hot lane and occupancy overlay on the existing LLM-native GTM index. Actionable live JSONL, claim/release fail-closed occupancy, overlay pointers for Billings MATERIAL_REPLY, five MSP SENT Airtable recs, and bounded #leads verified posts. Not a second CRM.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/events.jsonl",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-hot-lane-20260831-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/events.jsonl",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-hot-lane-20260831-01.md"
+      ],
+      "dependencies": [
+        "lm-gtm-index-20260831-01"
+      ],
+      "evidence_ids": [],
+      "file": "lm-gtm-hot-lane-20260831-01.json",
+      "id": "lm-gtm-hot-lane-20260831-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "LLM-native GTM hot lane",
+      "next_gap": "Owner mailbox still required for live send. Do not mint a second CRM. Do not invent replies or cash. Occupancy is overlay, not admission.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "p/lm-gtm-hot-lane-20260831-01.md",
+        "p/lm-gtm-index-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_index.py",
+        "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -884,6 +945,68 @@
         "test_payment_capability_door_hub.py",
         "test_payment_capability_hub_pages.py",
         "test_payment_capability_compose.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Public no-login clinic-ops diagnostic: synthetic no-PHI referral packet becomes a required-field checklist, exactly one intake-queue ticket, and a timestamped receipt. Crash/replay does not duplicate the queue. Never a clinical decision.",
+      "carrier": "SETH",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "referral-intake-completeness.html",
+        "referral-intake-completeness.js",
+        "test_referral_intake_completeness.js",
+        "revenue/referral_intake_completeness/contract.json",
+        "revenue/referral_intake_completeness/receipt.json",
+        "revenue/referral_intake_completeness/receipt.md",
+        "p/referral-intake-completeness-20260831-01.md",
+        "features/registry/referral-intake-completeness.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "referral-intake-completeness.html",
+        "referral-intake-completeness.js",
+        "test_referral_intake_completeness.js",
+        "revenue/referral_intake_completeness/contract.json",
+        "revenue/referral_intake_completeness/receipt.json",
+        "revenue/referral_intake_completeness/receipt.md",
+        "p/referral-intake-completeness-20260831-01.md",
+        "features/registry/referral-intake-completeness.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "referral-intake-completeness.json",
+      "id": "referral-intake-completeness",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Referral intake completeness",
+      "next_gap": "Run the $199 diagnostic against one buyer-approved synthetic referral-intake shape; discuss the $2,500 pilot only after fit. No outreach and no cash claim.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "referral-intake-completeness.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "referral-intake-completeness.html",
+        "revenue/referral_intake_completeness/contract.json",
+        "p/referral-intake-completeness-20260831-01.md",
+        "diagnostic.html",
+        "commercial.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_referral_intake_completeness.js",
+        "referral-intake-completeness.js"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1444,7 +1567,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 25,
+  "n_features": 27,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
