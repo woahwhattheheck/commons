@@ -1,0 +1,152 @@
+[
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-151",
+    "reason": "INCOMPLETE_ORDER_ID"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-152",
+    "reason": "INCOMPLETE_ORDER_ID"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-153",
+    "reason": "INCOMPLETE_ORDER_ID"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-154",
+    "reason": "INCOMPLETE_ORDER_ID"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-155",
+    "reason": "INCOMPLETE_ORDER_ID"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-156",
+    "reason": "INCOMPLETE_CUSTODY"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-157",
+    "reason": "INCOMPLETE_CUSTODY"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-158",
+    "reason": "INCOMPLETE_CUSTODY"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-159",
+    "reason": "INCOMPLETE_CUSTODY"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-160",
+    "reason": "INCOMPLETE_CUSTODY"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-161",
+    "reason": "INCOMPLETE_DOCK_TIMESTAMP"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-162",
+    "reason": "INCOMPLETE_DOCK_TIMESTAMP"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-163",
+    "reason": "INCOMPLETE_DOCK_TIMESTAMP"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-164",
+    "reason": "INCOMPLETE_DOCK_TIMESTAMP"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-165",
+    "reason": "INCOMPLETE_DOCK_TIMESTAMP"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-166",
+    "reason": "SCOPE_PRODUCT_NOT_AT_MICHIGAN"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-167",
+    "reason": "SCOPE_PRODUCT_NOT_AT_MICHIGAN"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-168",
+    "reason": "SCOPE_PRODUCT_NOT_AT_MICHIGAN"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-169",
+    "reason": "SCOPE_PRODUCT_NOT_AT_MICHIGAN"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-170",
+    "reason": "SCOPE_PRODUCT_NOT_AT_MICHIGAN"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-171",
+    "reason": "SCOPE_AGING_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-172",
+    "reason": "SCOPE_AGING_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-173",
+    "reason": "SCOPE_AGING_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-174",
+    "reason": "SCOPE_AGING_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-175",
+    "reason": "SCOPE_AGING_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-176",
+    "reason": "SCOPE_ISTA_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-177",
+    "reason": "SCOPE_ISTA_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-178",
+    "reason": "SCOPE_ISTA_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-179",
+    "reason": "SCOPE_ISTA_NOT_AT_EAST"
+  },
+  {
+    "expected": true,
+    "intake_id": "SYN-PCL-INTAKE-180",
+    "reason": "SCOPE_ISTA_NOT_AT_EAST"
+  }
+]

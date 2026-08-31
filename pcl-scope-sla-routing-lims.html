@@ -19,13 +19,14 @@ code,pre{font:12px/1.4 ui-monospace,monospace}pre{white-space:pre-wrap;backgroun
 </style></head><body><main>
 <nav><a href="./index.html">← Commons</a> · <a href="./made-scientific-princeton-rapid-qc-lims.html">Made Scientific pattern</a> · <a href="./weck-coc-preaccession-validator-lims.html">Weck COC pattern</a></nav>
 <p class="kicker">Commons · pcl-scope-sla-routing-lims-01 · HOLD / BUILD-AND-VERIFY</p>
-<h1>Scope-controlled sterile-package routing. 180 orders. 24-hour dock-to-start. Named human before report release.</h1>
-<p class="lede">Packaging Compliance Labs / Ryan Ott. Post-acquisition Michigan + East facility/method-revision routing with exact SLA clocks. Not a core replacement.</p>
-<p class="bound"><strong>Truth boundary:</strong> 180 synthetic orders spanning integrity, aging, distribution, and product tests. 150 valid, 30 incomplete or outside site scope. No live LIMS, instruments, scheduling, billing, or delivery. No PHI. No automatic release. PRE-SALE TRANSPORT: NONE. cash_usd = 0. No login. No price. No outreach form.</p>
+<h1>Working program. Intake, route, 24-hour clocks, named-human release.</h1>
+<p class="lede">Packaging Compliance Labs / Ryan Ott. The runner is the product: intake → route → SLA clocks → HOLD/release. Exact 180/150/30 fixture. Not a markdown toy. Not a second SKU. Not a core replacement.</p>
+<p class="bound"><strong>Truth boundary:</strong> 180 synthetic orders spanning integrity, aging, distribution, and product tests. 150 valid, 30 incomplete or outside site scope. No live LIMS, instruments, scheduling, billing, or delivery. No PHI. No automatic release. PRE-SALE TRANSPORT: NONE. cash_usd = 0. No login. No price. No outreach form. HTML is not the proof.</p>
 <section class="card">
 <h2>Official binary</h2>
-<p class="small">Demand <code>pcl-scope-sla-routing-lims-01</code>. Login-free door. No price. No outreach form.</p>
+<p class="small">Demand <code>pcl-scope-sla-routing-lims-01</code>. Login-free door. No price. No outreach form. The command writes journal + receipts.</p>
 <pre>python3 revenue/pcl_scope_sla_routing/runner.py
+python3 revenue/pcl_scope_sla_routing/runner.py --replay
 python3 -m unittest test_pcl_scope_sla_routing.py</pre>
 <h2>Expected vs actual</h2>
 <table>
@@ -41,7 +42,7 @@ python3 -m unittest test_pcl_scope_sla_routing.py</pre>
 <tr><td>Released without named QA</td><td>0</td></tr>
 <tr><td>Released after named QA</td><td>150; 30 blocks stay BLOCKED</td></tr>
 <tr><td>Replay changed records</td><td>0</td></tr>
-<tr><td>audit_sha256</td><td><code>3715a8eb8fa2e15309467c94dc23ffc8977b5c8737d1aeb3daf7e1650cdcbd6e</code></td></tr>
+<tr><td>audit_sha256</td><td><code>c01bfafdb625bca1d84091c9f595dbbb0406b3031539ee3004dd7e5daa33ae9b</code></td></tr>
 </tbody>
 </table>
 </section>

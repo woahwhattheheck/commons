@@ -4,6 +4,9 @@
 from __future__ import annotations
 
 import importlib.util
+import json
+import subprocess
+import sys
 import unittest
 from pathlib import Path
 
@@ -175,6 +178,81 @@ class PclScopeSlaRoutingTests(unittest.TestCase):
             self.assertEqual(result["audit"]["adapters"][name], "SIMULATED_READONLY")
             self.assertEqual(len(result["adapters"][name]), 180)
             self.assertTrue(all(item["live"] is False and item["readonly"] is True for item in result["adapters"][name]))
+
+    def test_working_program_is_intake_then_route_then_clocks_then_hold_release(self) -> None:
+        journal = gate.empty_journal()
+        row = next(item for item in gate.build_acceptance_fixture() if not item["block"])
+        taken = gate.intake_order(journal, row)
+        self.assertEqual(taken["kind"], "INTAKEN")
+        self.assertEqual(journal["intakes"][row["intake_id"]]["state"], "INTAKEN")
+        too_soon = gate.release_order(journal, row["intake_id"], actor_role="NAMED_QA", actor="qa-named-pcl-1")
+        self.assertFalse(too_soon["ok"])
+        self.assertEqual(too_soon["code"], "RELEASE_BLOCKED_SEQUENCE_OPEN")
+        self.assertFalse(gate.route_order(journal, row["intake_id"]).get("ok") is False)
+        self.assertEqual(journal["intakes"][row["intake_id"]]["state"], "ROUTED")
+        clocks = gate.set_sla_clocks(journal, row["intake_id"])
+        self.assertTrue(clocks["ok"])
+        self.assertEqual(clocks["start_at"], row["expected_start_at"])
+        self.assertEqual(clocks["report_at"], row["expected_report_at"])
+        done = gate.run_sequence(journal, row["intake_id"])
+        self.assertEqual(done["kind"], "SEQUENCE_DONE")
+        self.assertEqual(journal["intakes"][row["intake_id"]]["state"], "READY_FOR_NAMED_QA")
+        self.assertEqual(journal["intakes"][row["intake_id"]]["sequence_log"], row["sequence"])
+        autonomous = gate.release_order(journal, row["intake_id"], actor_role="SYSTEM", actor="autonomous")
+        self.assertEqual(autonomous["code"], "RELEASE_BLOCKED_AUTONOMOUS")
+        named = gate.release_order(journal, row["intake_id"], actor_role="NAMED_QA", actor="qa-named-pcl-1")
+        self.assertTrue(named["ok"])
+        self.assertEqual(journal["intakes"][row["intake_id"]]["state"], "RELEASED")
+
+    def test_official_command_writes_working_state_and_receipts(self) -> None:
+        proc = subprocess.run(
+            [sys.executable, str(gate.PACK / "runner.py")],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(proc.returncode, 0, proc.stderr or proc.stdout)
+        payload = json.loads(proc.stdout)
+        self.assertTrue(payload["ok"])
+        self.assertEqual(payload["failures"], [])
+        self.assertEqual(payload["actual"]["orders"], 180)
+        self.assertEqual(payload["actual"]["valid"], 150)
+        self.assertEqual(payload["actual"]["blocked"], 30)
+        self.assertEqual(payload["working_program"], "intake → route → SLA clocks → HOLD/release")
+        for path in (
+            gate.STATE_PATH,
+            gate.RUN_RECEIPT_PATH,
+            gate.ORDER_RECEIPT_PATH,
+            gate.BLOCK_RECEIPT_PATH,
+            gate.CLOCK_RECEIPT_PATH,
+            gate.AUDIT_RECEIPT_PATH,
+            gate.REPLAY_RECEIPT_PATH,
+            gate.CONTRACT_PATH,
+        ):
+            self.assertTrue(path.is_file(), path)
+        journal = json.loads(gate.STATE_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(len(journal["intakes"]), 180)
+        self.assertEqual(len(journal["orders"]), 150)
+        self.assertEqual(len(journal["blocks"]), 30)
+        orders = json.loads(gate.ORDER_RECEIPT_PATH.read_text(encoding="utf-8"))
+        blocks = json.loads(gate.BLOCK_RECEIPT_PATH.read_text(encoding="utf-8"))
+        clocks = json.loads(gate.CLOCK_RECEIPT_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(len(orders), 150)
+        self.assertEqual(len(blocks), 30)
+        self.assertEqual(len(clocks), 150)
+        replay = subprocess.run(
+            [sys.executable, str(gate.PACK / "runner.py"), "--replay"],
+            cwd=ROOT,
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(replay.returncode, 0, replay.stderr or replay.stdout)
+        replay_body = json.loads(replay.stdout)
+        self.assertTrue(replay_body["ok"])
+        self.assertEqual(replay_body["replay"]["changed_records"], 0)
+        self.assertEqual(replay_body["replay"]["replay_noops"], 180)
 
 
 if __name__ == "__main__":
