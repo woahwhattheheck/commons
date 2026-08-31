@@ -338,7 +338,7 @@ class GitHubClient:
             raise IngestError("GITHUB_TOKEN is required for sync")
         self.token = token.strip()
         self.repository = repository
-        self._open_board_titles: set[str] | None = None
+        self._board_titles: set[str] | None = None
 
     def request(self, method: str, path: str, payload: dict[str, Any] | None = None) -> Any:
         data = None if payload is None else json.dumps(payload).encode("utf-8")
@@ -360,14 +360,14 @@ class GitHubClient:
             detail = exc.read().decode("utf-8", "replace")
             raise IngestError("GitHub HTTP %s: %s" % (exc.code, detail[:300])) from exc
 
-    def open_board_titles(self) -> set[str]:
-        """Load open ``label=board`` issue titles once via the Issues list API.
+    def board_titles(self) -> set[str]:
+        """Load all ``label=board`` issue titles once via the Issues list API.
 
         Per-record ``/search/issues`` is not used: Search has a 30/min cap and
         also burns the GitHub App installation quota that hosted inbound sync
         shares with every other Actions job.
         """
-        cached = getattr(self, "_open_board_titles", None)
+        cached = getattr(self, "_board_titles", None)
         if cached is not None:
             return cached
         titles: set[str] = set()
@@ -375,7 +375,7 @@ class GitHubClient:
         while True:
             query = urllib.parse.urlencode(
                 {
-                    "state": "open",
+                    "state": "all",
                     "labels": "board",
                     "per_page": "100",
                     "page": str(page),
@@ -393,15 +393,15 @@ class GitHubClient:
             if len(data) < 100:
                 break
             page += 1
-        self._open_board_titles = titles
+        self._board_titles = titles
         return titles
 
     def issue_exists(self, title: str) -> bool:
-        return title in self.open_board_titles()
+        return title in self.board_titles()
 
     def create_issue(self, record: IssueRecord) -> str:
         data = self.request("POST", "/repos/%s/issues" % self.repository, record.as_issue())
-        titles = getattr(self, "_open_board_titles", None)
+        titles = getattr(self, "_board_titles", None)
         if titles is not None:
             titles.add(record.title)
         return str(data.get("html_url") or "")
