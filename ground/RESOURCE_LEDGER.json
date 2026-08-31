@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-31T12:43:32Z",
-    "base_main_sha": "333eb7f2d3c51ea753c889880f3a7ecf15e65c36",
+    "observed_at": "2026-08-31T14:43:13Z",
+    "base_main_sha": "fca7ff32a94b57c1e90aa768aa2172cde9b1dd91",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788180414.734879",
-  "source_id": "codex-discord-bridge-cloud-dark-correction-20260831-01",
+  "slack_ts": "1788188081.524569",
+  "source_id": "codex-discord-inbound-production-readback-20260831-01",
   "supersedes_source_ids": [
+    "codex-discord-bridge-cloud-dark-correction-20260831-01",
     "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
     "codex-lexington-mrf-diversion-gate-activation-20260831-01",
     "codex-source-parse-integrity-guard-activation-20260831-01",
@@ -57,7 +58,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Discord bridge code remains reachable, but production delivery is blocked after the Windows runtime retired and the cloud workflow proved dark",
+  "subject": "MASTER RESOURCE LEDGER — authenticated Discord inbound cloud sync produced canonical Commons issues; outbound delivery remains unclaimed",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -88,7 +89,8 @@
     "inventory/resources/records/codex-source-parse-integrity-guard-activation-20260831-01.json",
     "inventory/resources/records/codex-lexington-mrf-diversion-gate-activation-20260831-01.json",
     "inventory/resources/records/codex-lm-gtm-agent-brief-floor-activation-20260831-01.json",
-    "inventory/resources/records/codex-discord-bridge-cloud-dark-correction-20260831-01.json"
+    "inventory/resources/records/codex-discord-bridge-cloud-dark-correction-20260831-01.json",
+    "inventory/resources/records/codex-discord-inbound-production-readback-20260831-01.json"
   ],
   "priority_queue": [
     {
@@ -1233,22 +1235,22 @@
       "name": "discord-bridge",
       "kind": "COMMUNICATION_BUILD",
       "capacity": "LIVE",
-      "stage": "EXERCISED",
-      "condition": "BLOCKED",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
       "holder": "Commons / GitHub Actions",
       "authority": "PUBLIC_OPEN_APPEND_AND_DISCORD_READ; OWNER_ONLY_WINDOWS_ACCOUNT_CREDENTIAL_AND_APP_ACTION",
-      "consumer": "No currently verified delivery consumer; the bridge source and cloud workflow remain available",
-      "value": "Append-only Commons-to-Discord and Discord-to-Commons bridge code with cloud placement and fail-dark readiness checks",
-      "next_action": "Through the existing private provider-account lane, configure the existing GitHub Actions Discord credential and channel, then require one authenticated sync/readback before restoring PRODUCING; never expose values or recreate a laptop watcher.",
-      "source": "PR #6191; local retirement receipt Slack 1788128957.320909; GitHub Actions run 33384940953",
-      "evidence_ts": "2026-08-31T12:43:32Z",
-      "auth_surface": "current-main cloud workflow and public Commons append roads remain open; provider credential state is measured only as absent from the workflow environment",
-      "exact_safe_probe": "Local readback recorded zero Commons Discord tasks and zero matching processes; cloud outbound job 99465359621 failed DARK because DISCORD_BOT_TOKEN, DISCORD_WEBHOOK_URL, and COMMONS_DISCORD_CHANNEL were empty.",
-      "rate_plan_boundary": "Source availability is not production delivery. Do not spend credits, expose credentials, contact Discord, or report delivery until an authenticated cloud sync/readback exists.",
-      "assigned_backlog": "existing private cloud credential transition and authenticated readback; no local runtime restoration",
-      "last_receipt": "codex-discord-bridge-cloud-dark-correction-20260831-01",
-      "last_used_at": "2026-08-31T11:01:02Z",
-      "stale_after": "probe-before-use",
+      "consumer": "Commons canonical open GitHub issue road receiving authenticated Discord records",
+      "value": "Scheduled cloud inbound sync reached READY, planned 91 Discord records, and created canonical board issues #6921 through #6980",
+      "next_action": "Let the existing schedule continue and monitor rate boundaries without reminting records; require a fresh job readback before any later lifecycle change.",
+      "source": "PR #6920; GitHub Actions run 33404135293 inbound job 99527465291; issues #6921 through #6980; Slack account receipt 1788186669.972949",
+      "evidence_ts": "2026-08-31T14:43:13Z",
+      "auth_surface": "existing GitHub Actions secret and channel variable were accepted by the scheduled cloud workflow; values remain private and are not reproduced",
+      "exact_safe_probe": "Scheduled run 33404135293 inbound job 99527465291 reached READY and succeeded: 91 planned records and 60 created canonical issues, #6921 through #6980. The outbound job was skipped.",
+      "rate_plan_boundary": "Inbound production is proven for this run. It does not prove outbound Discord delivery, complete historic catch-up, future-run success, revenue, or cash.",
+      "assigned_backlog": "existing scheduled inbound sync and exact-id reconciliation; no manual dispatch or local runtime restoration",
+      "last_receipt": "codex-discord-inbound-production-readback-20260831-01",
+      "last_used_at": "2026-08-31T14:43:13Z",
+      "stale_after": "PT6H",
       "priority": 78
     },
     {
