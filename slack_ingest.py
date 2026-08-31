@@ -54,6 +54,10 @@ DECLARED_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 OBSERVED_SLACK_RE = re.compile(
     r"^slack:(?:[A-Z0-9_-]+:)?[A-Z0-9_-]+:(\d+(?:\.\d+)?):[^:]+$"
 )
+OBSERVED_SLACK_SCOPED_RE = re.compile(
+    r"^slack:(?:[A-Z0-9_-]+:)?(?P<channel>[A-Z0-9_-]+):"
+    r"(?P<ts>\d+(?:\.\d+)?):[^:]+$"
+)
 CLAIM_RE = re.compile(r"[^A-Z0-9_]+")
 SENDER_DISCLOSURE_RE = re.compile(
     r"\n?\*Sent using\*\s+<@[^>\n]+\|[^>\n]+>\s*$"
@@ -441,7 +445,7 @@ def high_water(posts_dir: Path = POSTS_DIR) -> str:
     return format(newest, "f")
 
 
-def posts_json_high_water(path: Path | None) -> str:
+def posts_json_high_water(path: Path | None, channel_id: str | None = None) -> str:
     """Return the newest durable Slack event in a board projection.
 
     Scheduled runners intentionally avoid cloning the large Commons tree. A
@@ -462,10 +466,17 @@ def posts_json_high_water(path: Path | None) -> str:
     for row in rows:
         if not isinstance(row, dict):
             continue
+        observed_value = str(row.get("observed_event") or "")
+        scoped = OBSERVED_SLACK_SCOPED_RE.fullmatch(observed_value)
+        if channel_id and scoped and scoped.group("channel") != channel_id:
+            # A cursor for one selected channel must not be advanced by a
+            # newer durable event from another channel. Rows without scoped
+            # provenance remain eligible for legacy compatibility.
+            continue
         match = ID_RE.fullmatch(str(row.get("id") or ""))
         if match:
             newest = max(newest, Decimal("%s.%s" % match.groups()))
-        observed = OBSERVED_SLACK_RE.fullmatch(str(row.get("observed_event") or ""))
+        observed = OBSERVED_SLACK_RE.fullmatch(observed_value)
         if observed:
             newest = max(newest, _decimal_ts(observed.group(1)))
         if row.get("event_ts"):
@@ -783,7 +794,12 @@ def cmd_sync(
     state_path: Path | None = None,
     posts_json: Path | None = None,
 ) -> int:
-    baselines = [high_water(), read_state(state_path), posts_json_high_water(posts_json)]
+    selected_channel = os.environ.get("COMMONS_SLACK_CHANNEL", "").strip() or None
+    baselines = [
+        high_water(),
+        read_state(state_path),
+        posts_json_high_water(posts_json, selected_channel),
+    ]
     if after:
         baselines.append(format(_cursor_decimal(after), "f"))
     oldest = format(max(_cursor_decimal(value) for value in baselines), "f")

@@ -232,6 +232,32 @@ edited payload
             )
             self.assertEqual(si.posts_json_high_water(path), "12.5")
 
+    def test_posts_json_bootstrap_cannot_cross_selected_channel(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "posts.json"
+            path.write_text(
+                json.dumps(
+                    [
+                        {
+                            "id": "commons-caller-id",
+                            "observed_event": "slack:T0TEAM:C0BRGMDQB6G:12.5:1",
+                            "event_ts": "12.5",
+                        },
+                        {
+                            "id": "foreign-caller-id",
+                            "observed_event": "slack:T0TEAM:C0FOREIGN:99.75:1",
+                            "event_ts": "99.75",
+                        },
+                    ]
+                ),
+                encoding="utf-8",
+            )
+            self.assertEqual(si.posts_json_high_water(path), "99.75")
+            self.assertEqual(
+                si.posts_json_high_water(path, "C0BRGMDQB6G"),
+                "12.5",
+            )
+
     def test_state_round_trip_is_exact_and_zero_is_a_valid_cursor(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             path = Path(tmp) / "state.json"
