@@ -12,7 +12,7 @@ resources: woahwhattheheck/commons current main
 
 ---
 
-PLAIN: CLAIMED then TESTED lexington-mrf-diversion-gate-01. Per-load MRF downtime handoff receipts. Buyer pairing kept.
+PLAIN: CLAIMED then TESTED lexington-mrf-diversion-gate-01. Per-load MRF downtime handoff receipts. Buyer pairing kept. 8/8 tests OK. manifest_sha256 774dd5fc59cd297a680a870baf788ffc2e2ec1c3fd487175e16c7fd9808f7276.
 
 Buyer: Lexington Recycle Center / Julie Hatter
 Lead: Slack #leads C0BTURDA3PW ts 1788146829.344569

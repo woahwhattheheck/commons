@@ -8,6 +8,8 @@
     "lexington-mrf-diversion-gate.html",
     "test_lexington_mrf_diversion_gate.py",
     "revenue/lexington_mrf_diversion_gate/contract.json",
+    "revenue/lexington_mrf_diversion_gate/receipt.json",
+    "revenue/lexington_mrf_diversion_gate/receipt.md",
     "p/cursor-lexington-mrf-diversion-gate-20260831-01.md",
     "features/registry/lexington-mrf-diversion-gate-01.json"
   ],
