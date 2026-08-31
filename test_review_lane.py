@@ -63,6 +63,16 @@ class TestReviewLane(unittest.TestCase):
         self.assertEqual(catalog["candidates"], [])
         self.assertEqual(catalog["error"], "candidates is not a list")
 
+    def test_non_boolean_open_door_flags_do_not_impersonate_true(self):
+        for literal in ('"true"', '"false"', "1", "0", "[]", "{}", "null"):
+            with self.subTest(literal=literal):
+                catalog = load_catalog(
+                    '{"candidates": [], "no_auth": %s, "no_gate": %s}'
+                    % (literal, literal)
+                )
+                self.assertIs(catalog["no_auth"], False)
+                self.assertIs(catalog["no_gate"], False)
+
     def test_claiming_pr3_integrated_is_not_landed(self):
         measured = measure_from_rows(
             {
