@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 42
+    "TESTED": 45
   },
   "features": [
     {
@@ -83,6 +83,70 @@
       "test_paths": [
         "test_unbuilt_items.py",
         "host/unbuilt_items.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "ACE/QAT thermal-rheology capacity LIMS: a 120-order synthetic fixture accessions 90 valid DSC/TGA/DMA/TMA/SDT/AR-G2 jobs once, holds 30 with DUPLICATE_ID, CAPABILITY_MISMATCH, and QC_FAIL, matches instrument/method/source hashes, replays with zero new jobs, and denies release without named approval. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ace_qat_thermal_rheology_capacity.py",
+        "ace-qat-thermal-rheology-capacity-lims.js",
+        "ace-qat-thermal-rheology-capacity-lims.html",
+        "test_ace_qat_thermal_rheology_capacity.py",
+        "revenue/ace_qat_thermal_rheology_capacity/contract.json",
+        "revenue/ace_qat_thermal_rheology_capacity/receipt.json",
+        "revenue/ace_qat_thermal_rheology_capacity/receipt.md",
+        "revenue/ace_qat_thermal_rheology_capacity/fixture.json",
+        "p/cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01.md",
+        "features/registry/ace-qat-thermal-rheology-capacity-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ace_qat_thermal_rheology_capacity.py",
+        "ace-qat-thermal-rheology-capacity-lims.js",
+        "ace-qat-thermal-rheology-capacity-lims.html",
+        "test_ace_qat_thermal_rheology_capacity.py",
+        "revenue/ace_qat_thermal_rheology_capacity/contract.json",
+        "revenue/ace_qat_thermal_rheology_capacity/receipt.json",
+        "revenue/ace_qat_thermal_rheology_capacity/receipt.md",
+        "revenue/ace_qat_thermal_rheology_capacity/fixture.json",
+        "p/cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01.md",
+        "features/registry/ace-qat-thermal-rheology-capacity-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ace-qat-thermal-rheology-capacity-lims-01.json",
+      "id": "ace-qat-thermal-rheology-capacity-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "ACE/QAT thermal-rheology capacity LIMS",
+      "next_gap": "Buyer-owned order schema, method/version catalog, and de-identified instrument files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "ace-qat-thermal-rheology-capacity-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ace-qat-thermal-rheology-capacity-lims.html",
+        "revenue/ace_qat_thermal_rheology_capacity/contract.json",
+        "p/cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_ace_qat_thermal_rheology_capacity.py",
+        "ace_qat_thermal_rheology_capacity.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1520,6 +1584,70 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Oregon BrewLab sample/report reconciliation LIMS: a 120-row synthetic fixture makes 96 valid submissions READY once, holds 24 with FORM_CONTAINER_MISMATCH, DUPLICATE_ID, WARM_MICRO_VDK, and INSUFFICIENT_VOLUME, binds ASBC method/version/unit/source hashes to catalog 657d60b6f1e1b8ccfe4358950fa93cf21fd741fc714fd3444a6fe2d030f44613, notifies status on a simulated adapter, and keeps reports STAGED until a named human. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "oregon_brewlab_sample_report.py",
+        "oregon-brewlab-sample-report-reconciliation-lims.js",
+        "oregon-brewlab-sample-report-reconciliation-lims.html",
+        "test_oregon_brewlab_sample_report.py",
+        "revenue/oregon_brewlab_sample_report/contract.json",
+        "revenue/oregon_brewlab_sample_report/receipt.json",
+        "revenue/oregon_brewlab_sample_report/receipt.md",
+        "revenue/oregon_brewlab_sample_report/fixture.json",
+        "p/cursor-oregon-brewlab-sample-report-20260831-01.md",
+        "features/registry/oregon-brewlab-sample-report-reconciliation-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "oregon_brewlab_sample_report.py",
+        "oregon-brewlab-sample-report-reconciliation-lims.js",
+        "oregon-brewlab-sample-report-reconciliation-lims.html",
+        "test_oregon_brewlab_sample_report.py",
+        "revenue/oregon_brewlab_sample_report/contract.json",
+        "revenue/oregon_brewlab_sample_report/receipt.json",
+        "revenue/oregon_brewlab_sample_report/receipt.md",
+        "revenue/oregon_brewlab_sample_report/fixture.json",
+        "p/cursor-oregon-brewlab-sample-report-20260831-01.md",
+        "features/registry/oregon-brewlab-sample-report-reconciliation-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "oregon-brewlab-sample-report-reconciliation-lims-01.json",
+      "id": "oregon-brewlab-sample-report-reconciliation-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Oregon BrewLab sample/report reconciliation LIMS",
+      "next_gap": "Buyer-owned order schema, container photos, and de-identified golden round trip after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "oregon-brewlab-sample-report-reconciliation-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "oregon-brewlab-sample-report-reconciliation-lims.html",
+        "revenue/oregon_brewlab_sample_report/contract.json",
+        "p/cursor-oregon-brewlab-sample-report-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_oregon_brewlab_sample_report.py",
+        "oregon_brewlab_sample_report.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "OrganaBio multi-site donor-to-CoA federation: a synthetic five-site fixture seeds 240 valid collections producing 1,200 aliquots, blocks 24 consent/eligibility failures with exact reasons, recalls 40 donors for exactly 200 aliquots, keeps one immutable donor-to-vial lineage per vial, isolates OBA-SITE- namespaces including EXL- to SDG, reproduces CoA digest 3f3f9ab647c6d7e34cce48fc002c86150b3d83285b78de30e5ff25a0a845db01, replays with zero new records, and blocks material disposition until a named human. Adapters stay simulated.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2189,6 +2317,68 @@
       "test_paths": [
         "test_rmb_crosssite_courier_accession.py",
         "rmb_crosssite_courier_accession.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Read-only OLCC request-to-Metrc sampling ledger: a 100-request fixture emits exactly 75 DISPATCH_READY and 25 HOLD (8 missing Metrc transfer, 7 batch-count mismatches, 5 duplicate package IDs, 5 unconfirmed appointments). Holds produce zero dispatches. Each valid pickup has one immutable custody chain and one accession. Replay is idempotent. Email destination is linked; nothing is sent or released. Adapters stay read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "rosecity_olcc_metrc_sampling.py",
+        "rosecity-olcc-metrc-sampling-lims.js",
+        "rosecity-olcc-metrc-sampling-lims.html",
+        "test_rosecity_olcc_metrc_sampling.py",
+        "revenue/rosecity_olcc_metrc_sampling/contract.json",
+        "revenue/rosecity_olcc_metrc_sampling/receipt.json",
+        "revenue/rosecity_olcc_metrc_sampling/receipt.md",
+        "p/cursor-rosecity-olcc-metrc-sampling-lims-20260831-01.md",
+        "features/registry/rosecity-olcc-metrc-sampling-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "rosecity_olcc_metrc_sampling.py",
+        "rosecity-olcc-metrc-sampling-lims.js",
+        "rosecity-olcc-metrc-sampling-lims.html",
+        "test_rosecity_olcc_metrc_sampling.py",
+        "revenue/rosecity_olcc_metrc_sampling/contract.json",
+        "revenue/rosecity_olcc_metrc_sampling/receipt.json",
+        "revenue/rosecity_olcc_metrc_sampling/receipt.md",
+        "p/cursor-rosecity-olcc-metrc-sampling-lims-20260831-01.md",
+        "features/registry/rosecity-olcc-metrc-sampling-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "rosecity-olcc-metrc-sampling-lims-01.json",
+      "id": "rosecity-olcc-metrc-sampling-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Rose City OLCC request-to-Metrc sampling ledger",
+      "next_gap": "Buyer-owned request/Metrc field names and de-identified fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "rosecity-olcc-metrc-sampling-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "rosecity-olcc-metrc-sampling-lims.html",
+        "revenue/rosecity_olcc_metrc_sampling/contract.json",
+        "p/cursor-rosecity-olcc-metrc-sampling-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_rosecity_olcc_metrc_sampling.py",
+        "rosecity_olcc_metrc_sampling.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2890,7 +3080,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 48,
+  "n_features": 51,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
