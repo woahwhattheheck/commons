@@ -1,19 +1,19 @@
 {
   "seq": 1466,
-  "head": "480dc6b8e420e11367b1aafbcac665d924d074cc",
-  "ts": "2026-08-31T04:45:26Z",
+  "head": "97a7bad87804d62f1cb182fb37318400add367b1",
+  "ts": "2026-08-31T04:55:44Z",
   "post_count": 9895,
   "newest": [
-    "cursor-qlabs-qconnect-cutover-20260831-01",
-    "cursor-paragon-biodiesel-sample-coa-lims-20260831-01",
-    "made-scientific-princeton-rapid-qc-lims-01",
-    "infra-host-inventory-count-reconcile-20260831-01",
-    "cursor-eagletrax-split-sample-preflight-20260831-01",
-    "cursor-csplabs-express-capacity-assurance-lims-20260831-01",
-    "elevatebio-pittsburgh-replication-lims-01",
-    "organabio-multisite-donor-coa-lims-01",
-    "weck-coc-preaccession-validator-lims-01",
-    "kincell-rtp-qc-release-bridge-lims-01"
+    "cursor-ait-mn-metrc-capacity-gate-20260831-01",
+    "cursor-rosecity-olcc-metrc-sampling-lims-20260831-01",
+    "cursor-preinnewhof-pfas-fieldblank-gate-20260831-01",
+    "cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01",
+    "canyon-multisite-regulated-intake-lims-01",
+    "lm-gtm-floor-sync-20260831-01",
+    "pcl-scope-sla-routing-lims-01",
+    "cursor-oregon-brewlab-sample-report-20260831-01",
+    "cursor-rmb-crosssite-courier-accession-20260831-01",
+    "cursor-savant-fe8-order-report-lims-20260831-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

@@ -1,0 +1,11 @@
+{
+  "journal_sha256": "b84413e6c7674c52f4e4cb6e002a8b5988a68a82caf8a1a63f8d92427dd4c794",
+  "ok": true,
+  "replay": {
+    "block_count": 30,
+    "changed_records": 0,
+    "intake_count": 180,
+    "order_count": 150,
+    "replay_noops": 180
+  }
+}

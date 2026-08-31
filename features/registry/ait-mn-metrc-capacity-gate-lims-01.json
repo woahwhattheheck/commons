@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "Read-only QBench-order / Metrc-package / physical-accession reconciliation for AIT Minnesota: replay 120 synthetic fixtures, accession 80 licensed-compliance and 20 R&D onto visibly separate queues, hold 8 invalid/missing licenses plus 6 duplicate IDs plus 6 designation mismatches, keep immutable source pointers, and deny R&D entry into the compliance-release queue. Named human release only. Adapters stay read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "ait_mn_metrc_capacity_gate.py",
+    "ait-mn-metrc-capacity-gate.js",
+    "ait-mn-metrc-capacity-gate.html",
+    "test_ait_mn_metrc_capacity_gate.py",
+    "revenue/ait_mn_metrc_capacity_gate/contract.json",
+    "revenue/ait_mn_metrc_capacity_gate/receipt.json",
+    "revenue/ait_mn_metrc_capacity_gate/receipt.md",
+    "p/cursor-ait-mn-metrc-capacity-gate-20260831-01.md",
+    "features/registry/ait-mn-metrc-capacity-gate-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "ait-mn-metrc-capacity-gate-lims-01",
+  "name": "AIT Minnesota METRC capacity + R&D gate",
+  "next_gap": "Buyer-owned QBench/Metrc field map and de-identified live fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "ait-mn-metrc-capacity-gate.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ait-mn-metrc-capacity-gate.html",
+    "revenue/ait_mn_metrc_capacity_gate/contract.json",
+    "p/cursor-ait-mn-metrc-capacity-gate-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_ait_mn_metrc_capacity_gate.py",
+    "ait_mn_metrc_capacity_gate.py"
+  ]
+}

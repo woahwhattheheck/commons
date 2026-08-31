@@ -39,12 +39,17 @@ SUBJECT_RE = re.compile(r"^[A-Za-z0-9._-]{3,80}$")
 EVENT_ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 EMAIL_AT_RE = re.compile(r"[^@\s]+@[^@\s]+\.[^@\s]+")
 PHONE_RE = re.compile(r"(?:\+?1[\s.-])?(?:\(?\d{3}\)?[\s.-])\d{3}[\s.-]\d{4}")
-POINTER_TYPES = frozenset({"MATERIAL_REPLY", "SENT_AWAITING_REPLY", "VERIFIED_LEAD_UNSENT"})
+POINTER_TYPES = frozenset(
+    {"MATERIAL_REPLY", "SENT_AWAITING_REPLY", "VERIFIED_LEAD_UNSENT", "HOLD_BUILD_AND_VERIFY"}
+)
 OCCUPANCY_TYPES = frozenset({"CLAIM", "RELEASE", "STEAL"})
 NOTE_TYPE = "NOTE"
-ALLOWED_EVENT_TYPES = POINTER_TYPES | OCCUPANCY_TYPES | {NOTE_TYPE}
+STATUS_TYPE = "STATUS"
+ALLOWED_EVENT_TYPES = POINTER_TYPES | OCCUPANCY_TYPES | {NOTE_TYPE, STATUS_TYPE}
 LIVE_ROLES = frozenset({"external_prospect", "inbound_contact"})
 HOLD_DECISIONS = frozenset({"HOLD_DO_NOT_RESEND", "HOLD_DO_NOT_CONTACT"})
+HOLD_BUILD_DECISION = "HOLD_BUILD_AND_VERIFY"
+DUE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 HOT_RANK = {
     "material_reply": 0,
     "sent_awaiting_reply": 1,
@@ -96,7 +101,7 @@ COMPOSE = {
     "marketing_sales": "public research universe; Airtable remains canonical CRM",
     "outreach_receipts": "DNR / collision receipts; not a contact book",
     "swarm_mail": "public inbox manifest; private addresses stay off git",
-    "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; not a contact book",
+    "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; STATUS refresh; HOLD_BUILD_AND_VERIFY; not a contact book",
 }
 
 
@@ -257,6 +262,8 @@ def hot_class(row: dict[str, Any]) -> str | None:
     decision = row.get("decision")
     if decision == "MATERIAL_REPLY":
         return "material_reply"
+    if decision == HOLD_BUILD_DECISION:
+        return None
     if row.get("dnr") or decision in HOLD_DECISIONS:
         return None
     if decision == "SENT_AWAITING_REPLY":
@@ -281,6 +288,30 @@ def hot_next_actions(paths: dict[str, Path] | None = None) -> list[dict[str, Any
         ranked.append(item)
     ranked.sort(key=lambda row: (row["hot_rank"], row["id"]))
     return ranked
+
+
+def hold_build_next_actions(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
+    built = build_index(paths)
+    rows = [
+        row
+        for row in built["rows"]
+        if row.get("live") and row.get("decision") == HOLD_BUILD_DECISION
+    ]
+    rows.sort(key=lambda row: row["id"])
+    return rows
+
+
+def sent_awaiting_dnr_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
+    built = build_index(paths)
+    rows = [
+        row
+        for row in built["rows"]
+        if row.get("live")
+        and row.get("decision") == "SENT_AWAITING_REPLY"
+        and bool(row.get("dnr"))
+    ]
+    rows.sort(key=lambda row: row["id"])
+    return rows
 
 
 def load_receipts(paths: dict[str, Path]) -> list[dict[str, Any]]:
@@ -343,6 +374,14 @@ def load_events(paths: dict[str, Path]) -> list[dict[str, Any]]:
             paths_value = event.get("source_paths")
             if not isinstance(paths_value, list) or not paths_value or not all(isinstance(item, str) and item for item in paths_value):
                 raise IndexError_(f"overlay event {event_id} missing source_paths pointers")
+            if etype == HOLD_BUILD_DECISION:
+                person = event.get("person")
+                if not isinstance(person, str) or not person.strip():
+                    raise IndexError_(f"overlay event {event_id} missing person pointer")
+        if etype == STATUS_TYPE:
+            due = event.get("due")
+            if due is not None and (not isinstance(due, str) or not DUE_RE.fullmatch(due)):
+                raise IndexError_(f"overlay event {event_id} has illegal due {due!r}")
         if etype in OCCUPANCY_TYPES:
             owner = event.get("owner") or event.get("from")
             if not isinstance(owner, str) or not owner.strip():
@@ -391,6 +430,9 @@ def apply_overlay_events(subjects: dict[str, dict[str, Any]], events: list[dict[
                 row["decision"] = "VERIFIED_LEAD_UNSENT"
                 row["dnr"] = False
                 row["live"] = True
+            elif etype == HOLD_BUILD_DECISION:
+                row["decision"] = HOLD_BUILD_DECISION
+                row["live"] = True
             if event.get("next_action"):
                 row["next_action"] = event["next_action"]
         else:
@@ -402,7 +444,15 @@ def apply_overlay_events(subjects: dict[str, dict[str, Any]], events: list[dict[
             if row["role"] not in LIVE_ROLES:
                 raise IndexError_(f"overlay event cannot attach to {row['role']} {subject_id}")
             _touch(row, "lm_gtm_overlay", EVENTS_REL)
-            if etype == "CLAIM" or etype == "STEAL":
+            if etype == STATUS_TYPE:
+                for path in event.get("source_paths") or []:
+                    if path not in row["source_paths"]:
+                        row["source_paths"].append(path)
+                if event.get("next_action"):
+                    row["next_action"] = event["next_action"]
+                if event.get("due"):
+                    row["due"] = event["due"]
+            elif etype == "CLAIM" or etype == "STEAL":
                 row["owner"] = event.get("owner") or event.get("from") or "UNSEATED"
             elif etype == "RELEASE":
                 row["owner"] = "UNSEATED"
@@ -586,6 +636,12 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
     )
     live_rows = [row for row in rows if row["live"]]
     hot_rows = [row for row in rows if hot_class(row)]
+    hold_rows = [row for row in rows if row.get("live") and row.get("decision") == HOLD_BUILD_DECISION]
+    sent_dnr_rows = [
+        row
+        for row in rows
+        if row.get("live") and row.get("decision") == "SENT_AWAITING_REPLY" and bool(row.get("dnr"))
+    ]
     header = {
         "schema_version": SCHEMA_VERSION,
         "kind": KIND_HEADER,
@@ -598,6 +654,8 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
         "row_count": len(rows),
         "live_next_action_count": len(live_rows),
         "hot_next_action_count": len(hot_rows),
+        "hold_build_action_count": len(hold_rows),
+        "sent_awaiting_dnr_count": len(sent_dnr_rows),
         "cash_usd": 0,
     }
     truth = {
@@ -611,6 +669,8 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
         ),
         "overlay_events": len(events),
         "hot_next_actions": len(hot_rows),
+        "hold_build_actions": len(hold_rows),
+        "sent_awaiting_dnr_actions": len(sent_dnr_rows),
         "calls_booked": int((loop.get("truth") or {}).get("calls_booked") or 0),
         "transport_actions": 0,
         "cash_usd": 0,
@@ -635,18 +695,24 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
             "signoz": "external_prospect RESEARCH_REQUIRED from loop.json + candidates.json",
             "metaforms": "EXISTING_CRM_RECORD airtable:recWHbHxQoQfGhS0q; HOLD_DO_NOT_RESEND",
             "anythingllm-mintplex": "HOLD_DO_NOT_RESEND from receipts + loop.json",
-            "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 Attachment E reopen; no bid submitted",
+            "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 addenda 1-5 received; HOLD / NO SUBMISSION; no bid submitted; award target 2026-09-28",
             "msp-integris": "EXISTING_CRM_RECORD airtable:recyxAWjUjrUY1Xln SENT/NO_REPLY/HARD_DO_NOT_RESEND",
+            "fuse-jovie-tim-white": "EXISTING_CRM_RECORD airtable:recBHZw2VsWWmALcR SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+            "fuse-avantstay-andrei-patseev": "EXISTING_CRM_RECORD airtable:recQL3RMLwizE6kgZ SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+            "fuse-odderon-phi-charles": "EXISTING_CRM_RECORD airtable:recIo5cgbxL96aQSn SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+            "fuse-immense-de-waal-immelman": "EXISTING_CRM_RECORD airtable:rec6SOShVG2fgZQi0 SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+            "fuse-halo-ai-vito-strokov": "EXISTING_CRM_RECORD airtable:recIIo5M0lfUlYBXV SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
         },
         "contract": {
             "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
             "read_state": "revenue/lm_gtm_index/state.json",
             "list_next": "python3 host/lm_gtm_index.py next",
             "list_hot": "python3 host/lm_gtm_index.py hot",
+            "list_hold": "python3 host/lm_gtm_index.py hold",
             "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id>",
             "append_event": "python3 host/lm_gtm_index.py append-event --subject <existing-id> --id <new-event-id> --body <text>",
-            "claim": "python3 host/lm_gtm_index.py claim --subject <id> --owner <name>",
-            "release": "python3 host/lm_gtm_index.py release --subject <id> --owner <name>",
+            "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <name>",
+            "release": "python3 host/lm_gtm_index.py release <subject> --owner <name>",
             "send": "illegal; exits 3",
         },
     }
@@ -939,6 +1005,32 @@ def release_subject(
     return {"event": event, "index": written, "status": "released", "owner": "UNSEATED"}
 
 
+def occupancy_subject(args: argparse.Namespace) -> str:
+    positional = str(getattr(args, "subject_pos", "") or "").strip()
+    flagged = str(getattr(args, "subject_flag", "") or "").strip()
+    if positional and flagged and positional != flagged:
+        raise IndexError_("occupancy command got conflicting positional and --subject values")
+    subject = positional or flagged
+    if not subject:
+        raise IndexError_("occupancy command needs a subject (positional or --subject)")
+    return subject
+
+
+def _add_occupancy_args(parser: argparse.ArgumentParser, *, steal: bool) -> None:
+    parser.add_argument(
+        "subject_pos",
+        nargs="?",
+        default="",
+        metavar="subject",
+        help="live subject id; same as --subject",
+    )
+    parser.add_argument("--subject", dest="subject_flag", default="", help="live subject id")
+    parser.add_argument("--owner", required=True, help="named occupant; required for a real claim or release")
+    if steal:
+        parser.add_argument("--steal", action="store_true")
+    parser.add_argument("--ts")
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -947,6 +1039,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("snapshot")
     sub.add_parser("next")
     sub.add_parser("hot")
+    sub.add_parser("hold")
     show = sub.add_parser("show")
     show.add_argument("subject")
     append = sub.add_parser("append-event")
@@ -956,14 +1049,9 @@ def build_parser() -> argparse.ArgumentParser:
     append.add_argument("--from", dest="speaker", default="UNSEATED")
     append.add_argument("--ts")
     occupy = sub.add_parser("claim")
-    occupy.add_argument("--subject", default="")
-    occupy.add_argument("--owner", default="")
-    occupy.add_argument("--steal", action="store_true")
-    occupy.add_argument("--ts")
+    _add_occupancy_args(occupy, steal=True)
     release = sub.add_parser("release")
-    release.add_argument("--subject", required=True)
-    release.add_argument("--owner", required=True)
-    release.add_argument("--ts")
+    _add_occupancy_args(release, steal=False)
     return parser
 
 
@@ -1007,6 +1095,12 @@ def main(argv: list[str] | None = None) -> int:
                 "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
             )
             return 0
+        if args.command == "hold":
+            rows = hold_build_next_actions()
+            sys.stdout.write(
+                "".join(json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n" for row in rows)
+            )
+            return 0
         if args.command == "show":
             print(canonical_text(show_subject(args.subject)), end="")
             return 0
@@ -1021,10 +1115,8 @@ def main(argv: list[str] | None = None) -> int:
             print(canonical_text(result["event"]), end="")
             return 0
         if args.command == "claim":
-            if not str(args.subject or "").strip() or not str(args.owner or "").strip():
-                raise IndexError_("occupancy command needs --subject and --owner")
             result = claim_subject(
-                subject_id=args.subject,
+                subject_id=occupancy_subject(args),
                 owner=args.owner,
                 steal=args.steal,
                 ts=args.ts,
@@ -1033,7 +1125,7 @@ def main(argv: list[str] | None = None) -> int:
             return 0
         if args.command == "release":
             result = release_subject(
-                subject_id=args.subject,
+                subject_id=occupancy_subject(args),
                 owner=args.owner,
                 ts=args.ts,
             )
