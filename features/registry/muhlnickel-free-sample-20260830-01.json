@@ -1,0 +1,33 @@
+{
+  "added": "2026-08-31",
+  "capability": "Public no-login Muhlnickel FREE SAMPLE page: computer-in-a-file via already-landed SEED0.mno plus one existing public proof. Sales-pack JSON is paste-only. Not a live 70B run and not a cash claim.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "muhlnickel-free-sample.html",
+    "revenue/muhlnickel_free_sample/sales_pack.json",
+    "test_muhlnickel_free_sample.py"
+  ],
+  "dependencies": [],
+  "id": "muhlnickel-free-sample-20260830-01",
+  "name": "Muhlnickel free sample page",
+  "next_gap": "Do not invent buyers, cash, Stripe, Shopify, live 70B, or Titan walks. Seth’s GRBN + whitebox sample stays a separate leftover.",
+  "owner_subsystem": "muhlnickel-sales-sample",
+  "public_entrypoint": "muhlnickel-free-sample.html",
+  "related": {
+    "boards": false,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "muhlnickel-free-sample.html",
+    "revenue/muhlnickel_free_sample/sales_pack.json",
+    "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
+    "resources.html",
+    "commerce.html"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_muhlnickel_free_sample.py"
+  ]
+}
