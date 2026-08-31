@@ -145,10 +145,22 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788105886.420729")
+        self.assertEqual(catalog["slack_ts"], "1788148843.897339")
         self.assertEqual(
             catalog["source_id"],
+            "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+        )
+        self.assertIn(
+            "codex-source-parse-integrity-guard-activation-20260831-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-discord-bridge-production-activation-20260830-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
             "codex-revenue-offer-stack-production-activation-20260830-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-opportunity-capability-registry-activation-20260830-01",
@@ -183,14 +195,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-revenue-offer-stack-production-activation-20260830-01.json",
+            "codex-lexington-mrf-diversion-gate-activation-20260831-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
-        self.assertEqual(activation["event_type"], "RESOURCE_LIFECYCLE_ADVANCEMENT")
+        self.assertEqual(activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            activation["selected_resource"], "revenue-offer-stack"
+            activation["selected_resource"], "lexington-mrf-diversion-gate"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
@@ -226,6 +238,7 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1788105886.420729")
         self.assertNotEqual(catalog["slack_ts"], "1788083921.230169")
         self.assertNotEqual(catalog["slack_ts"], "1788062418.023819")
         self.assertNotEqual(catalog["slack_ts"], "1787997064.565089")
@@ -268,10 +281,28 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertEqual(rows["revenue-offer-stack"]["stage"], "PRODUCING")
         self.assertEqual(rows["revenue-offer-stack"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["discord-bridge"]["stage"], "PRODUCING")
+        self.assertEqual(rows["discord-bridge"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["source-parse-integrity-guard"]["stage"], "PRODUCING")
+        self.assertEqual(rows["source-parse-integrity-guard"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["lexington-mrf-diversion-gate"]["stage"], "PRODUCING")
+        self.assertEqual(rows["lexington-mrf-diversion-gate"]["condition"], "CONSTRAINED")
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
         self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
-        self.assertEqual(activation["projection"]["resources"], 63)
-        self.assertEqual(activation["projection"]["producing"], 30)
+        self.assertEqual(activation["projection"]["resources"], 65)
+        self.assertEqual(activation["projection"]["producing"], 33)
+        self.assertIn(
+            "inventory/resources/records/codex-lexington-mrf-diversion-gate-activation-20260831-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-source-parse-integrity-guard-activation-20260831-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-discord-bridge-production-activation-20260830-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertIn(
             "inventory/resources/records/codex-revenue-offer-stack-production-activation-20260830-01.json",
             raw.get("record_sources") or [],
@@ -516,8 +547,8 @@ class TestResourceLedger(unittest.TestCase):
         ]
         self.assertNotIn("revenue-offer-stack", live_queue)
         measured = measure_from_rows(catalog)
-        self.assertEqual(measured["producing_count"], 30)
-        self.assertEqual(measured["resource_count"], 63)
+        self.assertEqual(measured["producing_count"], 33)
+        self.assertEqual(measured["resource_count"], 65)
 
         activation_path = os.path.join(
             ROOT,
