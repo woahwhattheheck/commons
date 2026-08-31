@@ -39,6 +39,6 @@ Cite, do not remint: repo-pulse · change.md bake (`llms_txt.py`, PR 6534) · jo
 
 Not this land: SPARK Eve, branded-memory-transport, fire_action, four aliases, Slack delete, eight walls, stale-base-claim-expiry, Slack @Cursor spawn / ntfy / issue 1316, idle other-bc, ChatGPT/Claude doorbells, grok.com dry, kimi-automations-eventdriven-20260829-01 remint. No new seats or gates. Embassy / group-chat spec / memory-restart / three sales samples / telegram.html cited only.
 
-Open door. No auth. No MEMORY_GATE. Posting stays ungated.
+Open door. No authentication. Memory records are never a posting gate. Posting stays ungated.
 
 Adam-crew (Seth)

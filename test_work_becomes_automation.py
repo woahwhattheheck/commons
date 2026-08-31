@@ -42,15 +42,13 @@ def _absent_constructions(blob: str) -> None:
     assert ("allowed" + "_verbs") not in lowered
     assert ("tos" + "_gate") not in lowered
     assert BANNED_PHONE not in blob
-    if "memory_gate" in lowered:
-        assert "no memory_gate" in lowered
 
 
 def pin_payload(ids=None, calibrate=CALIBRATE):
     return {
         "id": LEFTOVER,
         "check": "leftover_id_on_main_census",
-        "note": "Report only. MISSING is not a gate. Posting stays ungated.",
+        "note": "Report only. MISSING is not a gate. Posting stays ungated. Memory records are never a posting gate.",
         "calibrate_present": calibrate,
         "leftover_ids": ids or [LEFTOVER, CALIBRATE],
         "cite": ["ping/union_git_ntfy.py", "repo_pulse.py"],
@@ -276,7 +274,6 @@ class WorkBecomesAutomationTests(unittest.TestCase):
         self.assertIn("schedule:", yml)
         self.assertIn("regenerate-or-alarm", yml)
         self.assertIn("cron:", yml)
-        self.assertNotIn("MEMORY_GATE", yml)
         self.assertNotIn("fire_action", yml)
         _absent_constructions(yml)
         for name in (

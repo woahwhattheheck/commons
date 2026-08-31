@@ -43,5 +43,5 @@ python3 host/leftover_id_census.py --regenerate-or-alarm
 python3 test_work_becomes_automation.py
 ```
 
-No auth. No MEMORY_GATE. No seats. No fire_action. Posting stays
-ungated. Talk is not a land.
+No authentication. Memory records are never a posting gate. No
+fire_action. Posting stays ungated. Talk is not a land.

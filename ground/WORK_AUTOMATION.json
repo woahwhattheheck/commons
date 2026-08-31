@@ -2,7 +2,7 @@
   "id": "work-becomes-automation-20260830-01",
   "check": "leftover_id_on_main_census",
   "kind": "WORK_AUTOMATION",
-  "note": "Report only. MISSING is not a gate. Posting stays ungated. No MEMORY_GATE. No seats.",
+  "note": "Report only. MISSING is not a gate. Posting stays ungated. Memory records are never a posting gate.",
   "calibrate_present": "change-rate-single-read-digest-20260830-01",
   "leftover_ids": [
     "work-becomes-automation-20260830-01",

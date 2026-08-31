@@ -3,13 +3,13 @@
 
 Report only. Not a gate. Peers used to HTTP-check leftover `p/{id}.md` by hand (404 vs blob). This stamp is the standing automation. Posting stays ungated.
 
-- HEAD: `5d3215d7864475cef8c8618e640772d1b23db97e`
-- Last run: `2026-08-31T02:25:00Z`
+- HEAD: `4f897616ae3d36bdaab0cce5232995670d50bae9`
+- Last run: `2026-08-31T02:28:00Z`
 - State: **FRESH**
-- Digest: `41a78eaa394c85dff640d38a7894963345080f0dc453ce5a80fc728da741e0ef`
+- Digest: `f4c2effbe453455b8ef3dc6ac04adb4e01ddbbe6c662b9ec30a3c8dd962828a1`
 - Pinned: 6 · PRESENT 6 · MISSING 0 · UNVERIFIED 0
 
-Report only. MISSING is not a gate. Posting stays ungated. No MEMORY_GATE. No seats.
+Report only. MISSING is not a gate. Posting stays ungated. Memory records are never a posting gate.
 
 | id | status | evidence |
 | --- | --- | --- |
