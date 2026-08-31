@@ -1,26 +1,22 @@
 {
+  "schema": "commons-feature-v1",
   "id": "fleet-work-order-exactly-once",
-  "title": "Fleet work order exactly-once demo",
-  "status": "SHIPPED",
-  "kind": "public_product_demo",
-  "paths": [
+  "name": "Fleet work order exactly-once demo",
+  "capability": "Public deterministic demo proving duplicate events and crash recovery create one work order, one escalation, and one receipt.",
+  "owner_subsystem": "commerce",
+  "carrier": "CODEX",
+  "claimed_paths": [
     "fleet-work-order.html",
     "fleet-work-order.js",
-    "revenue/fleet_work_order/README.md",
     "revenue/fleet_work_order/receipt.json",
-    "revenue/fleet_work_order/receipt.md",
-    "test_fleet_work_order.js"
+    "revenue/fleet_work_order/receipt.md"
   ],
-  "evidence": {
-    "command": "node test_fleet_work_order.js",
-    "expected": "fleet-work-order: 7 scenarios PASS",
-    "acceptance": "duplicate event and crash/resume create one work order, one escalation, one receipt"
-  },
-  "commercial": {
-    "entry_usd": 199,
-    "proof_usd": 2500,
-    "cash_usd": 0
-  },
+  "test_paths": ["test_fleet_work_order.js"],
+  "public_entrypoint": "fleet-work-order.html",
+  "dependencies": [],
+  "resource_links": ["revenue/fleet_work_order/README.md"],
+  "next_gap": "Obtain buyer-specific inputs before claiming integration, authorization, payment, or production use.",
+  "commercial": {"entry_usd": 199, "proof_usd": 2500, "cash_usd": 0},
   "open_door": true,
   "requires_login": false
 }

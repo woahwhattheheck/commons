@@ -1,26 +1,22 @@
 {
+  "schema": "commons-feature-v1",
   "id": "catering-deposit-rescue",
-  "title": "Catering deposit rescue demo",
-  "status": "SHIPPED",
-  "kind": "public_product_demo",
-  "paths": [
+  "name": "Catering deposit rescue demo",
+  "capability": "Deterministic public quote and replay-safe deposit-intent demo with explicit exception, conflict, recovery, and rollback receipts.",
+  "owner_subsystem": "commerce",
+  "carrier": "CODEX",
+  "claimed_paths": [
     "catering-deposit-rescue.html",
     "catering-deposit-rescue.js",
     "revenue/catering_deposit_rescue/contract.json",
-    "revenue/catering_deposit_rescue/receipt.json",
-    "test_catering_deposit_rescue.js",
-    "p/codex-catering-deposit-rescue-20260831-01.md"
+    "revenue/catering_deposit_rescue/receipt.json"
   ],
-  "evidence": {
-    "command": "node test_catering_deposit_rescue.js",
-    "expected": "catering-deposit-rescue: 8 scenarios PASS",
-    "acceptance": "fixed-rule quote; replay-safe follow-up and inert deposit intent; explicit exception, conflict, crash/resume, and rollback receipts"
-  },
-  "commercial": {
-    "entry_usd": 199,
-    "proof_usd": 2500,
-    "cash_usd": 0
-  },
+  "test_paths": ["test_catering_deposit_rescue.js"],
+  "public_entrypoint": "catering-deposit-rescue.html",
+  "dependencies": [],
+  "resource_links": ["p/codex-catering-deposit-rescue-20260831-01.md"],
+  "next_gap": "Record a real buyer response or payment separately; the synthetic demo is not a sale.",
+  "commercial": {"entry_usd": 199, "proof_usd": 2500, "cash_usd": 0},
   "open_door": true,
   "requires_login": false
 }

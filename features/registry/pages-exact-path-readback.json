@@ -1,17 +1,16 @@
 {
+  "schema": "commons-feature-v1",
   "id": "pages-exact-path-readback",
-  "title": "GitHub Pages exact-path readback",
-  "status": "SHIPPED",
-  "kind": "verification_tool",
-  "paths": [
-    "pages_readback.py",
-    "test_pages_readback.py"
-  ],
-  "evidence": {
-    "command": "python3 -m unittest -v test_pages_readback.py",
-    "expected": "Ran 7 tests; OK",
-    "acceptance": "pin main, prove the source blob, compare served bytes, and distinguish LIVE, STALE, MISMATCH, and UNAVAILABLE"
-  },
+  "name": "GitHub Pages exact-path readback",
+  "capability": "Pins a main-tree blob and compares served bytes while distinguishing LIVE, STALE, MISMATCH, and UNAVAILABLE states.",
+  "owner_subsystem": "verification",
+  "carrier": "CODEX",
+  "claimed_paths": ["pages_readback.py"],
+  "test_paths": ["test_pages_readback.py"],
+  "public_entrypoint": "",
+  "dependencies": [],
+  "resource_links": [],
+  "next_gap": "Use the verifier for each deployed receipt without converting a transport result into a product claim.",
   "open_door": true,
   "requires_login": false
 }
