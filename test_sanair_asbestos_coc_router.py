@@ -147,18 +147,18 @@ class SanairAsbestosCocRouterTests(unittest.TestCase):
         valid = next(row for row in gate.build_acceptance_fixture() if row["expected_state"] == "ROUTED")
         routed = gate.route_coc(ledger, valid)
         rte_id = routed["route_id"]
-        denied = gate.release_order(ledger, rte_id, actor="robot", actor_role="AUTOMATION")
-        self.assertFalse(denied["ok"])
-        self.assertEqual(denied["code"], "AUTONOMOUS_RELEASE_DENIED")
+        auto_result = gate.release_order(ledger, rte_id, "robot", "AUTOMATION")
+        self.assertFalse(auto_result["ok"])
+        self.assertEqual(auto_result["code"], "AUTONOMOUS_RELEASE_DENIED")
         self.assertFalse(ledger["routes"][rte_id]["released"])
-        unnamed = gate.release_order(ledger, rte_id, actor="someone", actor_role="INTAKE")
-        self.assertFalse(unnamed["ok"])
-        self.assertEqual(unnamed["code"], "HOLD_NAMED_HUMAN_REQUIRED")
+        other_result = gate.release_order(ledger, rte_id, "someone", "INTAKE")
+        self.assertFalse(other_result["ok"])
+        self.assertEqual(other_result["code"], "HOLD_NAMED_HUMAN_REQUIRED")
         human = gate.release_order(
             ledger,
             rte_id,
-            actor=gate.HUMAN_RELEASER,
-            actor_role=gate.HUMAN_ROLE,
+            gate.HUMAN_RELEASER,
+            gate.HUMAN_ROLE,
         )
         self.assertTrue(human["ok"])
         self.assertTrue(ledger["routes"][rte_id]["released"])
