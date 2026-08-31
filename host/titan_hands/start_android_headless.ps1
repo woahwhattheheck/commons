@@ -3,7 +3,7 @@ param(
     [string]$SdkRoot = $(if ($env:ANDROID_HOME) { $env:ANDROID_HOME } else { Join-Path $env:LOCALAPPDATA 'TitanHands\AndroidSdk' }),
     [string]$AndroidUserHome = $(if ($env:ANDROID_USER_HOME) { $env:ANDROID_USER_HOME } else { Join-Path $env:LOCALAPPDATA 'TitanHands\AndroidHome' }),
     [string]$AvdName = $(if ($env:TITAN_HANDS_ANDROID_AVD) { $env:TITAN_HANDS_ANDROID_AVD } else { 'TitanHands_AOSP_API34' }),
-    [int]$TimeoutSeconds = 240
+    [int]$TimeoutSeconds = 480
 )
 
 $ErrorActionPreference = 'Stop'
@@ -54,7 +54,10 @@ function Get-ExactAvdProcesses {
     $escapedAvdName = [regex]::Escape($AvdName)
     $avdArgumentPattern = '(?i)(?:^|\s)-avd\s+(?:"' + $escapedAvdName + '"|' + $escapedAvdName + ')(?=\s|$)'
     $headlessArgumentPattern = '(?i)(?:^|\s)-no-window(?=\s|$)'
-    return @(Get-CimInstance -ClassName Win32_Process -Filter "Name = 'emulator.exe'" `
+    # emulator.exe is only the launcher on current Windows SDK builds. The long-lived process is
+    # qemu-system-x86_64-headless.exe, so recovery must bind to either exact executable identity.
+    return @(Get-CimInstance -ClassName Win32_Process `
+        -Filter "Name = 'emulator.exe' OR Name = 'qemu-system-x86_64-headless.exe'" `
         -ErrorAction SilentlyContinue | Where-Object {
             $commandLine = "$($_.CommandLine)"
             $commandLine -match $avdArgumentPattern -and $commandLine -match $headlessArgumentPattern

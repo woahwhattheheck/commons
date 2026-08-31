@@ -43,6 +43,8 @@ class AssetTests(unittest.TestCase):
         )
         self.assertIn("function Get-AdbEmulators", script)
         self.assertIn("function Get-ExactAvdProcesses", script)
+        self.assertIn("Name = 'emulator.exe' OR Name = 'qemu-system-x86_64-headless.exe'", script)
+        self.assertIn("[int]$TimeoutSeconds = 480", script)
         self.assertIn("emu avd name", script)
         self.assertIn("$_.avd -eq $AvdName", script)
         self.assertIn("[regex]::Escape($AvdName)", script)
