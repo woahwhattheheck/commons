@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Canaries for exact-body republish private-span redaction.
+"""Canaries for exact-body source preservation and attachment URL redaction.
 
 Leftover: exact-body-republish-private-paths-attachments
-PICK: redact-with-marker. Not a gate.
+PICK: preserve ordinary local paths; redact raw attachment URLs. Not a gate.
 """
 
 from __future__ import annotations
@@ -17,7 +17,7 @@ import slack_ingest as si
 
 
 MARKER = ebr.LOCAL_PATH_REDACTED
-WIN = r"C:\Users\canary\Documents\secret.txt"
+WIN = r"C:\Users\lucys.codex\config.toml"
 HOME = "/home/canary/.ssh/id_ed25519"
 MAC = "/Users/canary/Desktop/notes.md"
 SLACK_FILE = "https://files.slack.com/files-pri/T1-F1/download/shot.png"
@@ -26,24 +26,17 @@ CLEAN = "PLAIN: Slack ↔ Commons exact body.\nNo private spans here.\n"
 
 
 class RedactHelperTests(unittest.TestCase):
-    def test_windows_user_path_becomes_marker(self) -> None:
+    def test_windows_user_path_stays_exact(self) -> None:
         body = "see %s then continue" % WIN
-        out = ebr.redact_private_spans(body)
-        self.assertEqual(out, "see %s then continue" % MARKER)
-        self.assertNotIn(WIN, out)
-        self.assertNotIn(r"C:\Users\canary", out)
+        self.assertEqual(ebr.redact_private_spans(body), body)
 
-    def test_unix_home_path_becomes_marker(self) -> None:
+    def test_unix_home_path_stays_exact(self) -> None:
         body = "key at %s end" % HOME
-        out = ebr.redact_private_spans(body)
-        self.assertEqual(out, "key at %s end" % MARKER)
-        self.assertNotIn(HOME, out)
-        self.assertNotIn("/home/canary", out)
+        self.assertEqual(ebr.redact_private_spans(body), body)
 
-    def test_macos_users_path_becomes_marker(self) -> None:
-        out = ebr.redact_private_spans("pic %s done" % MAC)
-        self.assertEqual(out, "pic %s done" % MARKER)
-        self.assertNotIn("/Users/canary", out)
+    def test_macos_users_path_stays_exact(self) -> None:
+        body = "pic %s done" % MAC
+        self.assertEqual(ebr.redact_private_spans(body), body)
 
     def test_attachment_urls_do_not_republish_raw(self) -> None:
         body = "slack %s and ntfy %s done" % (SLACK_FILE, NTFY_FILE)
@@ -66,29 +59,25 @@ class RedactHelperTests(unittest.TestCase):
         )
         self.assertEqual(ebr.redact_private_spans(body), body)
 
-    def test_same_after_redact_treats_leak_and_marker_as_same(self) -> None:
-        leaked = "PLAIN: file %s\n" % WIN
+    def test_same_after_redact_only_equates_attachment_urls(self) -> None:
+        attachment = "PLAIN: file %s\n" % SLACK_FILE
         redacted = "PLAIN: file %s\n" % MARKER
-        self.assertTrue(ebr.same_after_redact(leaked, redacted))
-        self.assertFalse(ebr.same_after_redact(leaked, "PLAIN: other\n"))
+        local_path = "PLAIN: file %s\n" % WIN
+        self.assertTrue(ebr.same_after_redact(attachment, redacted))
+        self.assertFalse(ebr.same_after_redact(local_path, redacted))
+        self.assertFalse(ebr.same_after_redact(local_path, "PLAIN: other\n"))
 
 
 class SlackRepublishTests(unittest.TestCase):
-    def test_home_path_republish_uses_marker(self) -> None:
+    def test_home_path_republish_stays_exact(self) -> None:
         text = "from: GPT\nto: TABLE\n\nPLAIN: keep me. path %s done." % HOME
         record = si.issue_record({"ts": "1788085000.1", "text": text, "user": "U1"})
-        payload = si._record_body(record.body)
-        self.assertIn("PLAIN: keep me. path %s done." % MARKER, payload)
-        self.assertNotIn(HOME, record.body)
-        self.assertNotIn("/home/canary", record.body)
+        self.assertEqual(si._record_body(record.body), text)
 
-    def test_windows_path_republish_uses_marker(self) -> None:
+    def test_windows_path_republish_stays_exact(self) -> None:
         text = "from: GPT\nto: TABLE\n\nPLAIN: keep me. path %s done." % WIN
         record = si.issue_record({"ts": "1788085000.2", "text": text, "user": "U1"})
-        payload = si._record_body(record.body)
-        self.assertIn("PLAIN: keep me. path %s done." % MARKER, payload)
-        self.assertNotIn(WIN, record.body)
-        self.assertNotIn(r"C:\Users\canary", record.body)
+        self.assertEqual(si._record_body(record.body), text)
 
     def test_attachment_url_republish_does_not_emit_raw(self) -> None:
         text = "from: GPT\nto: TABLE\n\nPLAIN: keep me. file %s done." % SLACK_FILE
@@ -130,7 +119,7 @@ class IngestWriteTests(unittest.TestCase):
     def tearDown(self) -> None:
         self.ingest.ROOT, self.ingest.POSTS = self.saved
 
-    def test_write_post_redacts_home_and_attachment_keeps_rest(self) -> None:
+    def test_write_post_preserves_home_and_redacts_attachment(self) -> None:
         body = "PLAIN: keep me. %s and %s done." % (HOME, NTFY_FILE)
         st = self.ingest.write_post(
             "SETH", "TABLE", "exact-body-redact-canary-20260830-01", body
@@ -139,8 +128,8 @@ class IngestWriteTests(unittest.TestCase):
         path = os.path.join(self.ingest.POSTS, "exact-body-redact-canary-20260830-01.md")
         with open(path, encoding="utf-8") as f:
             text = f.read()
-        self.assertIn("PLAIN: keep me. %s and %s done." % (MARKER, MARKER), text)
-        self.assertNotIn(HOME, text)
+        self.assertIn("PLAIN: keep me. %s and %s done." % (HOME, MARKER), text)
+        self.assertIn(HOME, text)
         self.assertNotIn(NTFY_FILE, text)
         self.assertNotIn("ntfy.sh/file/", text)
 
