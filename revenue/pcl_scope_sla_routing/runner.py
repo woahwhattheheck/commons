@@ -19,8 +19,10 @@ HOLD / BUILD-AND-VERIFY.
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
+import sys
 from copy import deepcopy
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -28,6 +30,15 @@ from typing import Any
 
 PACK = Path(__file__).resolve().parent
 FIXTURE_PATH = PACK / "fixture.json"
+STATE_PATH = PACK / "state" / "journal.json"
+RECEIPT_DIR = PACK / "receipts"
+RUN_RECEIPT_PATH = RECEIPT_DIR / "run.json"
+ORDER_RECEIPT_PATH = RECEIPT_DIR / "orders.json"
+BLOCK_RECEIPT_PATH = RECEIPT_DIR / "blocks.json"
+CLOCK_RECEIPT_PATH = RECEIPT_DIR / "clocks.json"
+AUDIT_RECEIPT_PATH = RECEIPT_DIR / "audit.json"
+REPLAY_RECEIPT_PATH = RECEIPT_DIR / "replay.json"
+CONTRACT_PATH = PACK / "contract.json"
 
 DEMAND_ID = "pcl-scope-sla-routing-lims-01"
 SCHEMA = "commons-pcl-scope-sla-routing-lims/v1"
@@ -314,6 +325,8 @@ def _adapter_payload(record: dict[str, Any], adapter: str) -> dict[str, Any]:
         "facility": record.get("facility"),
         "method_id": record.get("method_id"),
         "method_revision": record.get("method_revision"),
+        "start_at": record.get("start_at"),
+        "report_at": record.get("report_at"),
         "cash_usd": 0,
     }
     payload["payload_sha256"] = sha256_hex({k: v for k, v in payload.items() if k != "payload_sha256"})
@@ -325,116 +338,208 @@ def _write_adapters(journal: dict[str, Any], record: dict[str, Any]) -> None:
         journal["adapters"][name][record["intake_id"]] = _adapter_payload(record, name)
 
 
-def import_order(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
+def _blank_record(row: dict[str, Any], *, decision: dict[str, Any]) -> dict[str, Any]:
+    blocked = not decision["ok"]
+    return {
+        "intake_id": row["intake_id"],
+        "order_id": row.get("order_id"),
+        "order_no": row["order_no"],
+        "family": row["family"],
+        "method_id": row["method_id"],
+        "method_revision": None,
+        "sequence": None,
+        "sequence_cursor": 0,
+        "sequence_log": [],
+        "requested_facility": row["requested_facility"],
+        "facility": None,
+        "dock_at": row.get("dock_at"),
+        "start_at": None,
+        "report_at": None,
+        "custody": deepcopy(row.get("custody") or []),
+        "custody_complete": False,
+        "block": blocked,
+        "block_reason": decision["reason"] if blocked else None,
+        "state": "BLOCKED" if blocked else "INTAKEN",
+        "released": False,
+        "released_by": None,
+        "inbound": deepcopy(row),
+    }
+
+
+def intake_order(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
+    """Accept one job. Incomplete or out-of-scope jobs HOLD here."""
     intake_id = row["intake_id"]
     if intake_id in journal["intakes"]:
         existing = journal["intakes"][intake_id]
         if existing["order_id"] == row.get("order_id") and existing["block_reason"] == (
-            None if not row["block"] else row["block_reason"]
+            None if not row.get("block") else row.get("block_reason")
         ):
             _event(journal, "REPLAY_NOOP", {"intake_id": intake_id, "order_id": row.get("order_id")})
-            return {"kind": "REPLAY_NOOP", "intake_id": intake_id}
+            return {"kind": "REPLAY_NOOP", "intake_id": intake_id, "state": existing["state"]}
         raise RuntimeError("duplicate intake with different body: %s" % intake_id)
 
     decision = classify_row(row)
     expected_reason = row.get("block_reason")
-    if row["block"]:
+    if row.get("block"):
         if decision["ok"] or decision["reason"] != expected_reason:
             raise RuntimeError(
                 "block %s expected %s got ok=%s reason=%s"
                 % (intake_id, expected_reason, decision["ok"], decision["reason"])
             )
-        record = {
-            "intake_id": intake_id,
-            "order_id": row.get("order_id"),
-            "order_no": row["order_no"],
-            "family": row["family"],
-            "method_id": row["method_id"],
-            "method_revision": row["method_revision"],
-            "sequence": None,
-            "requested_facility": row["requested_facility"],
-            "facility": None,
-            "dock_at": row.get("dock_at"),
-            "start_at": None,
-            "report_at": None,
-            "custody": deepcopy(row["custody"]),
-            "custody_complete": False,
-            "block": True,
-            "block_reason": decision["reason"],
-            "state": "BLOCKED",
-            "released": False,
-            "released_by": None,
-        }
-        journal["intakes"][intake_id] = record
-        journal["blocks"][intake_id] = {
-            "intake_id": intake_id,
-            "reason": decision["reason"],
-            "expected": True,
-        }
-        _write_adapters(journal, record)
-        _event(journal, "BLOCKED", {"intake_id": intake_id, "reason": decision["reason"]})
-        return {"kind": "BLOCKED", "intake_id": intake_id, "reason": decision["reason"]}
-
-    if not decision["ok"]:
+    elif not decision["ok"]:
         raise RuntimeError("valid order %s classified as %s" % (intake_id, decision["reason"]))
 
-    start_at, report_at = sla_times(
-        row["dock_at"],
-        journal["dock_to_start_hours"],
-        journal["start_to_report_hours"],
-    )
-    if start_at != row["expected_start_at"] or report_at != row["expected_report_at"]:
-        raise RuntimeError("SLA fixture mismatch on %s" % intake_id)
-    method = _method(row["method_id"])
-    if list(row["sequence"]) != list(method["sequence"]):
-        raise RuntimeError("sequence mismatch on %s" % intake_id)
-    if row["method_revision"] != method["revision"]:
-        raise RuntimeError("revision mismatch on %s" % intake_id)
-
-    record = {
-        "intake_id": intake_id,
-        "order_id": row["order_id"],
-        "order_no": row["order_no"],
-        "family": row["family"],
-        "method_id": row["method_id"],
-        "method_revision": row["method_revision"],
-        "sequence": list(row["sequence"]),
-        "requested_facility": row["requested_facility"],
-        "facility": row["requested_facility"],
-        "dock_at": row["dock_at"],
-        "start_at": start_at,
-        "report_at": report_at,
-        "custody": deepcopy(row["custody"]),
-        "custody_complete": True,
-        "block": False,
-        "block_reason": None,
-        "state": "READY_FOR_NAMED_QA",
-        "released": False,
-        "released_by": None,
-    }
+    record = _blank_record(row, decision=decision)
     journal["intakes"][intake_id] = record
-    journal["orders"][row["order_id"]] = intake_id
+    if record["block"]:
+        journal["blocks"][intake_id] = {"intake_id": intake_id, "reason": record["block_reason"], "expected": True}
+        _write_adapters(journal, record)
+        _event(journal, "BLOCKED", {"intake_id": intake_id, "reason": record["block_reason"]})
+        return {"kind": "BLOCKED", "intake_id": intake_id, "reason": record["block_reason"], "state": "BLOCKED"}
+
+    _write_adapters(journal, record)
+    _event(journal, "INTAKEN", {"intake_id": intake_id, "order_id": record["order_id"]})
+    return {"kind": "INTAKEN", "intake_id": intake_id, "order_id": record["order_id"], "state": "INTAKEN"}
+
+
+def route_order(journal: dict[str, Any], intake_id: str) -> dict[str, Any]:
+    """Bind a valid intake to the exact facility / method revision / sequence."""
+    record = journal["intakes"].get(intake_id)
+    if record is None:
+        return {"ok": False, "code": "UNKNOWN_ORDER"}
+    if record["block"]:
+        return {"ok": False, "code": "ROUTE_BLOCKED", "reason": record["block_reason"], "state": "BLOCKED"}
+    if record["state"] not in {"INTAKEN"}:
+        return {"ok": True, "duplicate": True, "state": record["state"]}
+    inbound = record["inbound"]
+    method = _method(inbound["method_id"])
+    if list(inbound["sequence"]) != list(method["sequence"]):
+        raise RuntimeError("sequence mismatch on %s" % intake_id)
+    if inbound["method_revision"] != method["revision"]:
+        raise RuntimeError("revision mismatch on %s" % intake_id)
+    if not _route_ok(inbound["method_id"], inbound["requested_facility"]):
+        raise RuntimeError("route outside published scope: %s" % intake_id)
+    record["facility"] = inbound["requested_facility"]
+    record["method_revision"] = method["revision"]
+    record["sequence"] = list(method["sequence"])
+    record["custody_complete"] = tuple(link.get("role") for link in record["custody"]) == CUSTODY_ROLES
+    record["state"] = "ROUTED"
+    journal["orders"][record["order_id"]] = intake_id
     _write_adapters(journal, record)
     _event(
         journal,
         "ROUTED",
         {
             "intake_id": intake_id,
-            "order_id": row["order_id"],
+            "order_id": record["order_id"],
             "facility": record["facility"],
             "method_id": record["method_id"],
             "method_revision": record["method_revision"],
             "sequence": record["sequence"],
         },
     )
-    return {"kind": "ROUTED", "intake_id": intake_id, "order_id": row["order_id"]}
+    return {"ok": True, "kind": "ROUTED", "intake_id": intake_id, "state": "ROUTED"}
+
+
+def set_sla_clocks(journal: dict[str, Any], intake_id: str) -> dict[str, Any]:
+    """Start the 24-hour dock-to-start and 48-hour report clocks."""
+    record = journal["intakes"].get(intake_id)
+    if record is None:
+        return {"ok": False, "code": "UNKNOWN_ORDER"}
+    if record["block"]:
+        return {"ok": False, "code": "CLOCK_BLOCKED", "reason": record["block_reason"], "state": "BLOCKED"}
+    if record["state"] == "INTAKEN":
+        return {"ok": False, "code": "CLOCK_BLOCKED_NOT_ROUTED", "state": record["state"]}
+    if record["state"] not in {"ROUTED"}:
+        return {"ok": True, "duplicate": True, "state": record["state"]}
+    inbound = record["inbound"]
+    start_at, report_at = sla_times(
+        record["dock_at"],
+        journal["dock_to_start_hours"],
+        journal["start_to_report_hours"],
+    )
+    if start_at != inbound["expected_start_at"] or report_at != inbound["expected_report_at"]:
+        raise RuntimeError("SLA fixture mismatch on %s" % intake_id)
+    record["start_at"] = start_at
+    record["report_at"] = report_at
+    record["state"] = "CLOCKED"
+    _write_adapters(journal, record)
+    _event(
+        journal,
+        "CLOCKS_SET",
+        {
+            "intake_id": intake_id,
+            "dock_at": record["dock_at"],
+            "start_at": start_at,
+            "report_at": report_at,
+            "dock_to_start_hours": journal["dock_to_start_hours"],
+            "start_to_report_hours": journal["start_to_report_hours"],
+        },
+    )
+    return {"ok": True, "kind": "CLOCKS_SET", "intake_id": intake_id, "start_at": start_at, "report_at": report_at}
+
+
+def advance_sequence(journal: dict[str, Any], intake_id: str) -> dict[str, Any]:
+    """Advance one study-sequence step. Last step opens named-human release."""
+    record = journal["intakes"].get(intake_id)
+    if record is None:
+        return {"ok": False, "code": "UNKNOWN_ORDER"}
+    if record["block"]:
+        return {"ok": False, "code": "SEQUENCE_BLOCKED", "reason": record["block_reason"], "state": "BLOCKED"}
+    if record["state"] in {"INTAKEN", "ROUTED"}:
+        return {"ok": False, "code": "SEQUENCE_BLOCKED_CLOCKS_OPEN", "state": record["state"]}
+    if record["state"] in {"READY_FOR_NAMED_QA", "RELEASED"}:
+        return {"ok": True, "duplicate": True, "state": record["state"]}
+    sequence = list(record["sequence"] or [])
+    cursor = int(record["sequence_cursor"])
+    if cursor >= len(sequence):
+        record["state"] = "READY_FOR_NAMED_QA"
+        _write_adapters(journal, record)
+        return {"ok": True, "kind": "SEQUENCE_DONE", "intake_id": intake_id, "state": "READY_FOR_NAMED_QA"}
+    step = sequence[cursor]
+    record["sequence_cursor"] = cursor + 1
+    record["sequence_log"].append(step)
+    _event(journal, "SEQUENCE_STEP", {"intake_id": intake_id, "step": step, "cursor": record["sequence_cursor"]})
+    if record["sequence_cursor"] >= len(sequence):
+        record["state"] = "READY_FOR_NAMED_QA"
+        _write_adapters(journal, record)
+        _event(journal, "SEQUENCE_DONE", {"intake_id": intake_id, "sequence": sequence})
+        return {"ok": True, "kind": "SEQUENCE_DONE", "intake_id": intake_id, "step": step, "state": "READY_FOR_NAMED_QA"}
+    record["state"] = "CLOCKED"
+    _write_adapters(journal, record)
+    return {"ok": True, "kind": "SEQUENCE_STEP", "intake_id": intake_id, "step": step, "state": "CLOCKED"}
+
+
+def run_sequence(journal: dict[str, Any], intake_id: str) -> dict[str, Any]:
+    last: dict[str, Any] = {"ok": False, "code": "SEQUENCE_EMPTY"}
+    while True:
+        last = advance_sequence(journal, intake_id)
+        if not last.get("ok") or last.get("kind") == "SEQUENCE_DONE" or last.get("duplicate"):
+            return last
+
+
+def process_order(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
+    """Working program: intake → route → SLA clocks → sequence → HOLD/ready."""
+    taken = intake_order(journal, row)
+    if taken.get("kind") == "REPLAY_NOOP":
+        return taken
+    if taken.get("kind") == "BLOCKED":
+        return taken
+    routed = route_order(journal, row["intake_id"])
+    clocks = set_sla_clocks(journal, row["intake_id"])
+    sequence = run_sequence(journal, row["intake_id"])
+    return {"kind": "READY_FOR_NAMED_QA", "intake_id": row["intake_id"], "route": routed, "clocks": clocks, "sequence": sequence}
+
+
+def import_order(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
+    return process_order(journal, row)
 
 
 def import_rows(journal: dict[str, Any], rows: list[dict[str, Any]]) -> dict[str, Any]:
     before_intakes = set(journal["intakes"])
     before_orders = set(journal["orders"])
     before_blocks = set(journal["blocks"])
-    effects = [import_order(journal, row) for row in rows]
+    effects = [process_order(journal, row) for row in rows]
     changed = (
         (set(journal["intakes"]) - before_intakes)
         | (set(journal["orders"]) - before_orders)
@@ -468,6 +573,13 @@ def release_order(journal: dict[str, Any], intake_id: str, *, actor_role: str, a
             {"intake_id": intake_id, "code": "RELEASE_BLOCKED_OPEN_HOLD", "reason": record["block_reason"]},
         )
         return {"ok": False, "code": "RELEASE_BLOCKED_OPEN_HOLD", "state": "BLOCKED"}
+    if record["state"] != "READY_FOR_NAMED_QA":
+        _event(
+            journal,
+            "RELEASE_BLOCKED",
+            {"intake_id": intake_id, "code": "RELEASE_BLOCKED_SEQUENCE_OPEN", "state": record["state"]},
+        )
+        return {"ok": False, "code": "RELEASE_BLOCKED_SEQUENCE_OPEN", "state": record["state"]}
     record["released"] = True
     record["released_by"] = actor
     record["state"] = "RELEASED"
@@ -506,6 +618,8 @@ def _audit_payload(journal: dict[str, Any], counts: dict[str, Any]) -> dict[str,
                 "method_id": item["method_id"],
                 "method_revision": item["method_revision"],
                 "sequence": item["sequence"],
+                "sequence_cursor": item.get("sequence_cursor"),
+                "sequence_log": item.get("sequence_log"),
                 "facility": item["facility"],
                 "dock_at": item["dock_at"],
                 "start_at": item["start_at"],
@@ -608,6 +722,9 @@ def run_gate(rows: list[dict[str, Any]] | None = None, fixture: dict[str, Any] |
         "audit": audit,
         "audit_sha256": sha256_hex(audit),
         "golden_audit_sha256": spec.get("golden_audit_sha256"),
+        "journal": journal,
+        "official_binary": COMMAND,
+        "official_test": "python3 -m unittest test_pcl_scope_sla_routing.py",
     }
 
 
@@ -663,32 +780,177 @@ def expected_actual(result: dict[str, Any], fixture: dict[str, Any] | None = Non
     return {"expected": expected, "actual": actual, "match": expected == actual}
 
 
-def main() -> int:
-    fixture = load_fixture()
-    first = run_gate(fixture=fixture)
-    second = run_gate(fixture=fixture)
-    failures = pass_contract(first, fixture)
-    if first.get("audit_sha256") != second.get("audit_sha256"):
-        failures.append("audit_replay_mismatch")
-    counts = expected_actual(first, fixture)
-    report = {
-        "ok": not failures,
-        "failures": failures,
-        "command": COMMAND,
+def compact_orders(journal: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "intake_id": item["intake_id"],
+            "order_id": item["order_id"],
+            "facility": item["facility"],
+            "method_id": item["method_id"],
+            "method_revision": item["method_revision"],
+            "sequence": item["sequence"],
+            "sequence_log": item.get("sequence_log"),
+            "dock_at": item["dock_at"],
+            "start_at": item["start_at"],
+            "report_at": item["report_at"],
+            "state": item["state"],
+            "released": item["released"],
+        }
+        for item in (journal["intakes"][key] for key in sorted(journal["intakes"]))
+        if not item["block"]
+    ]
+
+
+def compact_blocks(journal: dict[str, Any]) -> list[dict[str, Any]]:
+    return [deepcopy(journal["blocks"][key]) for key in sorted(journal["blocks"])]
+
+
+def compact_clocks(journal: dict[str, Any]) -> list[dict[str, Any]]:
+    return [
+        {
+            "intake_id": item["intake_id"],
+            "dock_at": item["dock_at"],
+            "start_at": item["start_at"],
+            "report_at": item["report_at"],
+            "dock_to_start_hours": journal["dock_to_start_hours"],
+            "start_to_report_hours": journal["start_to_report_hours"],
+        }
+        for item in (journal["intakes"][key] for key in sorted(journal["intakes"]))
+        if not item["block"]
+    ]
+
+
+def persist_run(result: dict[str, Any]) -> dict[str, str]:
+    journal = deepcopy(result["journal"])
+    for record in journal["intakes"].values():
+        record.pop("inbound", None)
+    STATE_PATH.parent.mkdir(parents=True, exist_ok=True)
+    RECEIPT_DIR.mkdir(parents=True, exist_ok=True)
+    STATE_PATH.write_text(json.dumps(journal, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    payload = cli_payload(result)
+    RUN_RECEIPT_PATH.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    ORDER_RECEIPT_PATH.write_text(json.dumps(compact_orders(journal), indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    BLOCK_RECEIPT_PATH.write_text(json.dumps(compact_blocks(journal), indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    CLOCK_RECEIPT_PATH.write_text(json.dumps(compact_clocks(journal), indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    AUDIT_RECEIPT_PATH.write_text(
+        json.dumps(
+            {
+                "audit_sha256": result["audit_sha256"],
+                "counts": expected_actual(result),
+                "block_reasons": result["block_reasons"],
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    REPLAY_RECEIPT_PATH.write_text(json.dumps(result["replay"], indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    CONTRACT_PATH.write_text(
+        json.dumps(
+            {
+                "buyer": BUYER,
+                "cash_usd": 0,
+                "demand_id": DEMAND_ID,
+                "interfaces": "SIMULATED_READ_ONLY",
+                "live_lims": False,
+                "official_binary": COMMAND,
+                "official_test": "python3 -m unittest test_pcl_scope_sla_routing.py",
+                "page": "pcl-scope-sla-routing-lims.html",
+                "pre_sale_transport": "NONE",
+                "production_deployment": False,
+                "schema": SCHEMA,
+                "state": TRUTH_GATE,
+                "synthetic": True,
+            },
+            indent=2,
+            sort_keys=True,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    return {
+        "journal": str(STATE_PATH),
+        "run": str(RUN_RECEIPT_PATH),
+        "orders": str(ORDER_RECEIPT_PATH),
+        "blocks": str(BLOCK_RECEIPT_PATH),
+        "clocks": str(CLOCK_RECEIPT_PATH),
+        "audit": str(AUDIT_RECEIPT_PATH),
+        "replay": str(REPLAY_RECEIPT_PATH),
+        "contract": str(CONTRACT_PATH),
+    }
+
+
+def load_journal(path: Path = STATE_PATH) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def cli_payload(result: dict[str, Any]) -> dict[str, Any]:
+    counts = expected_actual(result)
+    return {
         "demand_id": DEMAND_ID,
         "buyer": BUYER,
+        "ok": not pass_contract(result),
+        "failures": pass_contract(result),
+        "command": COMMAND,
         "expected": counts["expected"],
         "actual": counts["actual"],
         "counts_match": counts["match"],
-        "audit_sha256": first.get("audit_sha256"),
-        "replay_changed_records": first.get("counts", {}).get("replay_changed_records"),
+        "block_reasons": result["block_reasons"],
+        "audit_sha256": result["audit_sha256"],
+        "replay_changed_records": result.get("counts", {}).get("replay_changed_records"),
+        "replay": result["replay"],
         "truth_gate": TRUTH_GATE,
         "interfaces": "SIMULATED",
         "pre_sale_transport": "NONE",
         "cash_usd": 0,
+        "working_program": "intake → route → SLA clocks → HOLD/release",
+        "official_binary": COMMAND,
+        "official_test": "python3 -m unittest test_pcl_scope_sla_routing.py",
     }
-    print(json.dumps(report, indent=2, sort_keys=True))
-    return 0 if not failures else 1
+
+
+def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="PCL scope-controlled sterile-package routing + SLA runner")
+    parser.add_argument("--replay", action="store_true", help="replay the fixture into the persisted journal")
+    parser.add_argument("--print-goldens", action="store_true", help="print the computed audit hash and exit")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_args(argv)
+    if args.print_goldens:
+        result = run_gate()
+        sys.stdout.write(_canonical({"audit_sha256": result["audit_sha256"], "expected": expected_actual(result)}) + "\n")
+        return 0
+    if args.replay:
+        if not STATE_PATH.is_file():
+            result = run_gate()
+            persist_run(result)
+        journal = load_journal()
+        replay = import_rows(journal, build_acceptance_fixture())
+        body = {
+            "ok": replay["changed_records"] == 0 and replay["replay_noops"] == 180,
+            "replay": {k: v for k, v in replay.items() if k != "effects"},
+            "journal_sha256": sha256_hex(journal),
+        }
+        STATE_PATH.write_text(json.dumps(journal, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        REPLAY_RECEIPT_PATH.write_text(json.dumps(body, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        sys.stdout.write(_canonical(body) + "\n")
+        return 0 if body["ok"] else 1
+
+    first = run_gate()
+    second = run_gate()
+    failures = pass_contract(first)
+    if first.get("audit_sha256") != second.get("audit_sha256"):
+        failures.append("audit_replay_mismatch")
+    written = persist_run(first)
+    payload = cli_payload(first)
+    payload["failures"] = failures
+    payload["ok"] = not failures
+    payload["written"] = written
+    sys.stdout.write(_canonical(payload) + "\n")
+    return 0 if payload["ok"] else 1
 
 
 if __name__ == "__main__":

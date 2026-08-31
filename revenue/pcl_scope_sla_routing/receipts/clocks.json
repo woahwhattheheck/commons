@@ -1,0 +1,1202 @@
+[
+  {
+    "dock_at": "2026-08-31T00:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-001",
+    "report_at": "2026-09-03T00:00:00Z",
+    "start_at": "2026-09-01T00:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T01:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-002",
+    "report_at": "2026-09-03T01:00:00Z",
+    "start_at": "2026-09-01T01:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T02:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-003",
+    "report_at": "2026-09-03T02:00:00Z",
+    "start_at": "2026-09-01T02:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T03:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-004",
+    "report_at": "2026-09-03T03:00:00Z",
+    "start_at": "2026-09-01T03:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T04:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-005",
+    "report_at": "2026-09-03T04:00:00Z",
+    "start_at": "2026-09-01T04:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T05:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-006",
+    "report_at": "2026-09-03T05:00:00Z",
+    "start_at": "2026-09-01T05:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T06:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-007",
+    "report_at": "2026-09-03T06:00:00Z",
+    "start_at": "2026-09-01T06:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T07:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-008",
+    "report_at": "2026-09-03T07:00:00Z",
+    "start_at": "2026-09-01T07:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T08:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-009",
+    "report_at": "2026-09-03T08:00:00Z",
+    "start_at": "2026-09-01T08:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T09:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-010",
+    "report_at": "2026-09-03T09:00:00Z",
+    "start_at": "2026-09-01T09:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T10:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-011",
+    "report_at": "2026-09-03T10:00:00Z",
+    "start_at": "2026-09-01T10:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T11:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-012",
+    "report_at": "2026-09-03T11:00:00Z",
+    "start_at": "2026-09-01T11:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T12:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-013",
+    "report_at": "2026-09-03T12:00:00Z",
+    "start_at": "2026-09-01T12:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T13:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-014",
+    "report_at": "2026-09-03T13:00:00Z",
+    "start_at": "2026-09-01T13:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T14:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-015",
+    "report_at": "2026-09-03T14:00:00Z",
+    "start_at": "2026-09-01T14:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T15:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-016",
+    "report_at": "2026-09-03T15:00:00Z",
+    "start_at": "2026-09-01T15:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T16:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-017",
+    "report_at": "2026-09-03T16:00:00Z",
+    "start_at": "2026-09-01T16:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T17:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-018",
+    "report_at": "2026-09-03T17:00:00Z",
+    "start_at": "2026-09-01T17:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T18:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-019",
+    "report_at": "2026-09-03T18:00:00Z",
+    "start_at": "2026-09-01T18:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T19:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-020",
+    "report_at": "2026-09-03T19:00:00Z",
+    "start_at": "2026-09-01T19:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T20:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-021",
+    "report_at": "2026-09-03T20:00:00Z",
+    "start_at": "2026-09-01T20:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T21:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-022",
+    "report_at": "2026-09-03T21:00:00Z",
+    "start_at": "2026-09-01T21:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T22:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-023",
+    "report_at": "2026-09-03T22:00:00Z",
+    "start_at": "2026-09-01T22:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-08-31T23:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-024",
+    "report_at": "2026-09-03T23:00:00Z",
+    "start_at": "2026-09-01T23:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T00:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-025",
+    "report_at": "2026-09-04T00:00:00Z",
+    "start_at": "2026-09-02T00:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T01:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-026",
+    "report_at": "2026-09-04T01:00:00Z",
+    "start_at": "2026-09-02T01:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T02:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-027",
+    "report_at": "2026-09-04T02:00:00Z",
+    "start_at": "2026-09-02T02:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T03:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-028",
+    "report_at": "2026-09-04T03:00:00Z",
+    "start_at": "2026-09-02T03:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T04:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-029",
+    "report_at": "2026-09-04T04:00:00Z",
+    "start_at": "2026-09-02T04:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T05:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-030",
+    "report_at": "2026-09-04T05:00:00Z",
+    "start_at": "2026-09-02T05:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T06:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-031",
+    "report_at": "2026-09-04T06:00:00Z",
+    "start_at": "2026-09-02T06:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T07:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-032",
+    "report_at": "2026-09-04T07:00:00Z",
+    "start_at": "2026-09-02T07:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T08:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-033",
+    "report_at": "2026-09-04T08:00:00Z",
+    "start_at": "2026-09-02T08:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T09:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-034",
+    "report_at": "2026-09-04T09:00:00Z",
+    "start_at": "2026-09-02T09:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T10:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-035",
+    "report_at": "2026-09-04T10:00:00Z",
+    "start_at": "2026-09-02T10:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T11:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-036",
+    "report_at": "2026-09-04T11:00:00Z",
+    "start_at": "2026-09-02T11:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T12:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-037",
+    "report_at": "2026-09-04T12:00:00Z",
+    "start_at": "2026-09-02T12:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T13:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-038",
+    "report_at": "2026-09-04T13:00:00Z",
+    "start_at": "2026-09-02T13:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T14:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-039",
+    "report_at": "2026-09-04T14:00:00Z",
+    "start_at": "2026-09-02T14:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T15:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-040",
+    "report_at": "2026-09-04T15:00:00Z",
+    "start_at": "2026-09-02T15:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T16:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-041",
+    "report_at": "2026-09-04T16:00:00Z",
+    "start_at": "2026-09-02T16:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T17:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-042",
+    "report_at": "2026-09-04T17:00:00Z",
+    "start_at": "2026-09-02T17:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T18:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-043",
+    "report_at": "2026-09-04T18:00:00Z",
+    "start_at": "2026-09-02T18:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T19:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-044",
+    "report_at": "2026-09-04T19:00:00Z",
+    "start_at": "2026-09-02T19:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T20:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-045",
+    "report_at": "2026-09-04T20:00:00Z",
+    "start_at": "2026-09-02T20:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T21:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-046",
+    "report_at": "2026-09-04T21:00:00Z",
+    "start_at": "2026-09-02T21:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T22:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-047",
+    "report_at": "2026-09-04T22:00:00Z",
+    "start_at": "2026-09-02T22:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-01T23:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-048",
+    "report_at": "2026-09-04T23:00:00Z",
+    "start_at": "2026-09-02T23:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T00:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-049",
+    "report_at": "2026-09-05T00:00:00Z",
+    "start_at": "2026-09-03T00:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T01:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-050",
+    "report_at": "2026-09-05T01:00:00Z",
+    "start_at": "2026-09-03T01:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T02:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-051",
+    "report_at": "2026-09-05T02:00:00Z",
+    "start_at": "2026-09-03T02:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T03:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-052",
+    "report_at": "2026-09-05T03:00:00Z",
+    "start_at": "2026-09-03T03:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T04:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-053",
+    "report_at": "2026-09-05T04:00:00Z",
+    "start_at": "2026-09-03T04:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T05:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-054",
+    "report_at": "2026-09-05T05:00:00Z",
+    "start_at": "2026-09-03T05:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T06:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-055",
+    "report_at": "2026-09-05T06:00:00Z",
+    "start_at": "2026-09-03T06:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T07:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-056",
+    "report_at": "2026-09-05T07:00:00Z",
+    "start_at": "2026-09-03T07:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T08:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-057",
+    "report_at": "2026-09-05T08:00:00Z",
+    "start_at": "2026-09-03T08:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T09:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-058",
+    "report_at": "2026-09-05T09:00:00Z",
+    "start_at": "2026-09-03T09:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T10:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-059",
+    "report_at": "2026-09-05T10:00:00Z",
+    "start_at": "2026-09-03T10:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T11:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-060",
+    "report_at": "2026-09-05T11:00:00Z",
+    "start_at": "2026-09-03T11:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T12:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-061",
+    "report_at": "2026-09-05T12:00:00Z",
+    "start_at": "2026-09-03T12:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T13:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-062",
+    "report_at": "2026-09-05T13:00:00Z",
+    "start_at": "2026-09-03T13:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T14:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-063",
+    "report_at": "2026-09-05T14:00:00Z",
+    "start_at": "2026-09-03T14:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T15:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-064",
+    "report_at": "2026-09-05T15:00:00Z",
+    "start_at": "2026-09-03T15:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T16:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-065",
+    "report_at": "2026-09-05T16:00:00Z",
+    "start_at": "2026-09-03T16:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T17:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-066",
+    "report_at": "2026-09-05T17:00:00Z",
+    "start_at": "2026-09-03T17:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T18:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-067",
+    "report_at": "2026-09-05T18:00:00Z",
+    "start_at": "2026-09-03T18:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T19:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-068",
+    "report_at": "2026-09-05T19:00:00Z",
+    "start_at": "2026-09-03T19:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T20:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-069",
+    "report_at": "2026-09-05T20:00:00Z",
+    "start_at": "2026-09-03T20:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T21:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-070",
+    "report_at": "2026-09-05T21:00:00Z",
+    "start_at": "2026-09-03T21:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T22:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-071",
+    "report_at": "2026-09-05T22:00:00Z",
+    "start_at": "2026-09-03T22:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-02T23:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-072",
+    "report_at": "2026-09-05T23:00:00Z",
+    "start_at": "2026-09-03T23:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T00:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-073",
+    "report_at": "2026-09-06T00:00:00Z",
+    "start_at": "2026-09-04T00:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T01:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-074",
+    "report_at": "2026-09-06T01:00:00Z",
+    "start_at": "2026-09-04T01:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T02:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-075",
+    "report_at": "2026-09-06T02:00:00Z",
+    "start_at": "2026-09-04T02:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T03:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-076",
+    "report_at": "2026-09-06T03:00:00Z",
+    "start_at": "2026-09-04T03:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T04:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-077",
+    "report_at": "2026-09-06T04:00:00Z",
+    "start_at": "2026-09-04T04:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T05:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-078",
+    "report_at": "2026-09-06T05:00:00Z",
+    "start_at": "2026-09-04T05:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T06:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-079",
+    "report_at": "2026-09-06T06:00:00Z",
+    "start_at": "2026-09-04T06:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T07:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-080",
+    "report_at": "2026-09-06T07:00:00Z",
+    "start_at": "2026-09-04T07:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T08:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-081",
+    "report_at": "2026-09-06T08:00:00Z",
+    "start_at": "2026-09-04T08:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T09:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-082",
+    "report_at": "2026-09-06T09:00:00Z",
+    "start_at": "2026-09-04T09:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T10:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-083",
+    "report_at": "2026-09-06T10:00:00Z",
+    "start_at": "2026-09-04T10:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T11:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-084",
+    "report_at": "2026-09-06T11:00:00Z",
+    "start_at": "2026-09-04T11:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T12:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-085",
+    "report_at": "2026-09-06T12:00:00Z",
+    "start_at": "2026-09-04T12:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T13:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-086",
+    "report_at": "2026-09-06T13:00:00Z",
+    "start_at": "2026-09-04T13:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T14:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-087",
+    "report_at": "2026-09-06T14:00:00Z",
+    "start_at": "2026-09-04T14:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T15:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-088",
+    "report_at": "2026-09-06T15:00:00Z",
+    "start_at": "2026-09-04T15:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T16:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-089",
+    "report_at": "2026-09-06T16:00:00Z",
+    "start_at": "2026-09-04T16:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T17:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-090",
+    "report_at": "2026-09-06T17:00:00Z",
+    "start_at": "2026-09-04T17:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T18:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-091",
+    "report_at": "2026-09-06T18:00:00Z",
+    "start_at": "2026-09-04T18:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T19:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-092",
+    "report_at": "2026-09-06T19:00:00Z",
+    "start_at": "2026-09-04T19:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T20:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-093",
+    "report_at": "2026-09-06T20:00:00Z",
+    "start_at": "2026-09-04T20:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T21:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-094",
+    "report_at": "2026-09-06T21:00:00Z",
+    "start_at": "2026-09-04T21:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T22:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-095",
+    "report_at": "2026-09-06T22:00:00Z",
+    "start_at": "2026-09-04T22:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-03T23:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-096",
+    "report_at": "2026-09-06T23:00:00Z",
+    "start_at": "2026-09-04T23:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T00:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-097",
+    "report_at": "2026-09-07T00:00:00Z",
+    "start_at": "2026-09-05T00:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T01:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-098",
+    "report_at": "2026-09-07T01:00:00Z",
+    "start_at": "2026-09-05T01:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T02:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-099",
+    "report_at": "2026-09-07T02:00:00Z",
+    "start_at": "2026-09-05T02:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T03:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-100",
+    "report_at": "2026-09-07T03:00:00Z",
+    "start_at": "2026-09-05T03:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T04:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-101",
+    "report_at": "2026-09-07T04:00:00Z",
+    "start_at": "2026-09-05T04:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T05:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-102",
+    "report_at": "2026-09-07T05:00:00Z",
+    "start_at": "2026-09-05T05:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T06:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-103",
+    "report_at": "2026-09-07T06:00:00Z",
+    "start_at": "2026-09-05T06:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T07:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-104",
+    "report_at": "2026-09-07T07:00:00Z",
+    "start_at": "2026-09-05T07:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T08:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-105",
+    "report_at": "2026-09-07T08:00:00Z",
+    "start_at": "2026-09-05T08:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T09:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-106",
+    "report_at": "2026-09-07T09:00:00Z",
+    "start_at": "2026-09-05T09:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T10:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-107",
+    "report_at": "2026-09-07T10:00:00Z",
+    "start_at": "2026-09-05T10:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T11:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-108",
+    "report_at": "2026-09-07T11:00:00Z",
+    "start_at": "2026-09-05T11:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T12:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-109",
+    "report_at": "2026-09-07T12:00:00Z",
+    "start_at": "2026-09-05T12:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T13:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-110",
+    "report_at": "2026-09-07T13:00:00Z",
+    "start_at": "2026-09-05T13:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T14:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-111",
+    "report_at": "2026-09-07T14:00:00Z",
+    "start_at": "2026-09-05T14:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T15:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-112",
+    "report_at": "2026-09-07T15:00:00Z",
+    "start_at": "2026-09-05T15:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T16:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-113",
+    "report_at": "2026-09-07T16:00:00Z",
+    "start_at": "2026-09-05T16:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T17:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-114",
+    "report_at": "2026-09-07T17:00:00Z",
+    "start_at": "2026-09-05T17:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T18:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-115",
+    "report_at": "2026-09-07T18:00:00Z",
+    "start_at": "2026-09-05T18:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T19:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-116",
+    "report_at": "2026-09-07T19:00:00Z",
+    "start_at": "2026-09-05T19:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T20:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-117",
+    "report_at": "2026-09-07T20:00:00Z",
+    "start_at": "2026-09-05T20:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T21:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-118",
+    "report_at": "2026-09-07T21:00:00Z",
+    "start_at": "2026-09-05T21:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T22:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-119",
+    "report_at": "2026-09-07T22:00:00Z",
+    "start_at": "2026-09-05T22:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-04T23:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-120",
+    "report_at": "2026-09-07T23:00:00Z",
+    "start_at": "2026-09-05T23:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T00:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-121",
+    "report_at": "2026-09-08T00:00:00Z",
+    "start_at": "2026-09-06T00:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T01:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-122",
+    "report_at": "2026-09-08T01:00:00Z",
+    "start_at": "2026-09-06T01:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T02:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-123",
+    "report_at": "2026-09-08T02:00:00Z",
+    "start_at": "2026-09-06T02:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T03:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-124",
+    "report_at": "2026-09-08T03:00:00Z",
+    "start_at": "2026-09-06T03:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T04:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-125",
+    "report_at": "2026-09-08T04:00:00Z",
+    "start_at": "2026-09-06T04:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T05:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-126",
+    "report_at": "2026-09-08T05:00:00Z",
+    "start_at": "2026-09-06T05:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T06:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-127",
+    "report_at": "2026-09-08T06:00:00Z",
+    "start_at": "2026-09-06T06:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T07:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-128",
+    "report_at": "2026-09-08T07:00:00Z",
+    "start_at": "2026-09-06T07:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T08:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-129",
+    "report_at": "2026-09-08T08:00:00Z",
+    "start_at": "2026-09-06T08:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T09:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-130",
+    "report_at": "2026-09-08T09:00:00Z",
+    "start_at": "2026-09-06T09:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T10:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-131",
+    "report_at": "2026-09-08T10:00:00Z",
+    "start_at": "2026-09-06T10:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T11:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-132",
+    "report_at": "2026-09-08T11:00:00Z",
+    "start_at": "2026-09-06T11:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T12:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-133",
+    "report_at": "2026-09-08T12:00:00Z",
+    "start_at": "2026-09-06T12:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T13:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-134",
+    "report_at": "2026-09-08T13:00:00Z",
+    "start_at": "2026-09-06T13:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T14:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-135",
+    "report_at": "2026-09-08T14:00:00Z",
+    "start_at": "2026-09-06T14:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T15:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-136",
+    "report_at": "2026-09-08T15:00:00Z",
+    "start_at": "2026-09-06T15:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T16:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-137",
+    "report_at": "2026-09-08T16:00:00Z",
+    "start_at": "2026-09-06T16:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T17:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-138",
+    "report_at": "2026-09-08T17:00:00Z",
+    "start_at": "2026-09-06T17:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T18:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-139",
+    "report_at": "2026-09-08T18:00:00Z",
+    "start_at": "2026-09-06T18:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T19:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-140",
+    "report_at": "2026-09-08T19:00:00Z",
+    "start_at": "2026-09-06T19:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T20:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-141",
+    "report_at": "2026-09-08T20:00:00Z",
+    "start_at": "2026-09-06T20:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T21:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-142",
+    "report_at": "2026-09-08T21:00:00Z",
+    "start_at": "2026-09-06T21:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T22:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-143",
+    "report_at": "2026-09-08T22:00:00Z",
+    "start_at": "2026-09-06T22:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-05T23:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-144",
+    "report_at": "2026-09-08T23:00:00Z",
+    "start_at": "2026-09-06T23:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-06T00:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-145",
+    "report_at": "2026-09-09T00:00:00Z",
+    "start_at": "2026-09-07T00:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-06T01:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-146",
+    "report_at": "2026-09-09T01:00:00Z",
+    "start_at": "2026-09-07T01:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-06T02:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-147",
+    "report_at": "2026-09-09T02:00:00Z",
+    "start_at": "2026-09-07T02:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-06T03:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-148",
+    "report_at": "2026-09-09T03:00:00Z",
+    "start_at": "2026-09-07T03:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-06T04:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-149",
+    "report_at": "2026-09-09T04:00:00Z",
+    "start_at": "2026-09-07T04:00:00Z",
+    "start_to_report_hours": 48
+  },
+  {
+    "dock_at": "2026-09-06T05:00:00Z",
+    "dock_to_start_hours": 24,
+    "intake_id": "SYN-PCL-INTAKE-150",
+    "report_at": "2026-09-09T05:00:00Z",
+    "start_at": "2026-09-07T05:00:00Z",
+    "start_to_report_hours": 48
+  }
+]
