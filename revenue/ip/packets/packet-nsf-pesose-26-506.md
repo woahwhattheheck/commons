@@ -51,7 +51,7 @@ ANALYSIS: Existing public Commons artifacts may map to open-source ecosystem wor
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `874f24573dd870da539f260016517b9db21e622d43c8258b6daa627268a05f00` (61156 bytes)
+- `carrier.js` sha256 `6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa` (62464 bytes)
 - `distribution.html` sha256 `fe19383fdc5a5488ce3ab47f4a387629bdc1bbb558a0ba7859c187379741b790` (7306 bytes)
 - `host/distribution.py` sha256 `51c273d0d10b8bf8dd89219889eb1e5cbf388a1b8a95db371c591ecdf032b73b` (29377 bytes)
 - `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)

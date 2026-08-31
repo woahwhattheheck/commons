@@ -148,8 +148,8 @@
       "receipts": [
         {
           "path": "carrier.js",
-          "sha256": "874f24573dd870da539f260016517b9db21e622d43c8258b6daa627268a05f00",
-          "bytes": 61156
+          "sha256": "6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa",
+          "bytes": 62464
         },
         {
           "path": "distribution.html",
@@ -256,8 +256,8 @@
         },
         {
           "path": "test_feature_tracker.py",
-          "sha256": "936d59b980fa66e0b1c4853cbd598341b91289b11cd2d70c23933e21b7996ba9",
-          "bytes": 18855
+          "sha256": "1f6a76dc2be52365bfe03c91b2726ab3ae7a06a7edce02bcec3afc1e4e38cd68",
+          "bytes": 22259
         },
         {
           "path": "features/registry/feature-tracker-20260828-01.json",
@@ -266,13 +266,13 @@
         },
         {
           "path": "resources.html",
-          "sha256": "5b53c5df9e98114daef4ad9f7d43edd15fd5291b74da39490babcad57ce178d7",
-          "bytes": 10960
+          "sha256": "78bac9ea20513cee8a35f08211f1c99f6a4a33e1c3c965993102f7861ef9e47f",
+          "bytes": 11401
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
-          "sha256": "0a93f62b750bd906dea160c02e2e5efb9754ac1872ec5068e645e1ab51864412",
-          "bytes": 85223
+          "sha256": "b03cd3d365804aa0502f9e4347d2032c2f128d87b93001078feb5424b3327142",
+          "bytes": 90890
         },
         {
           "path": "host/resource_ledger.py",
