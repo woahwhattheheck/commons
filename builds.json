@@ -350,37 +350,21 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 6206,
+   "number": 6812,
    "author": "woahwhattheheck",
-   "title": "Repair Commons cross-harness capability discovery",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6206",
+   "title": "Receipt: PR 6726 merged; 6206 closed superseded",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/6812",
    "base_freshness": {
-    "base_sha": "9b0a8bb0f6b3926fdc2d0647bf53c8bb71699217",
-    "main_sha": "6d5e7afcccff908a684b21485aca35a7989f5a22",
+    "base_sha": "156281fac17d26c416c7066f189be901fe66269f",
+    "main_sha": "418906665765ddccab0874b8f76ef120fc563ddb",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6707,
-   "author": "woahwhattheheck",
-   "title": "TESTED trace-sila-ml-iatf-lims-01 SILA-ML-01 gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6707",
-   "base_freshness": {
-    "base_sha": "b25ef46e88f0172dccd0c620ffff7e6346a50085",
-    "main_sha": "6d5e7afcccff908a684b21485aca35a7989f5a22",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
+   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
