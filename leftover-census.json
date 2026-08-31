@@ -1,0 +1,140 @@
+{
+  "calibrate_present": "change-rate-single-read-digest-20260830-01",
+  "calibrate_status": "PRESENT",
+  "check": "leftover_id_on_main_census",
+  "cite": [
+    "repo_pulse.py / .github/workflows/repo-pulse.yml",
+    "llms_txt.py / change.md / p/change-rate-single-read-digest-20260830-01.md",
+    "harness_wake/watchdog.py / .github/workflows/job-watchdog.yml",
+    "host/finder_zero.py / p/finder-zero-high-risk-adoption-20260830-01.md",
+    "ping/union_git_ntfy.py / p/harness-union-git-ls-remote-with-ntfy-20260830-01.md",
+    "resources-tab-never-stale / .github/workflows/resources-tab-freshness.yml"
+  ],
+  "counts": {
+    "missing": 0,
+    "pinned": 6,
+    "present": 6,
+    "unverified": 0
+  },
+  "digest": "41a78eaa394c85dff640d38a7894963345080f0dc453ce5a80fc728da741e0ef",
+  "do_not_remint": [
+    "repo-pulse",
+    "change-rate-single-read-digest-20260830-01",
+    "commons-harness-wake-loop-contract-20260830-01",
+    "grokbot-seth-live-adapter-20260830-01",
+    "finder-zero-high-risk-adoption-20260830-01",
+    "harness-union-git-ls-remote-with-ntfy-20260830-01",
+    "kimi-automations-eventdriven-20260829-01"
+  ],
+  "head_sha": "5d3215d7864475cef8c8618e640772d1b23db97e",
+  "kind": "leftover_id_on_main_census",
+  "last_run": "2026-08-31T02:25:00Z",
+  "note": "Report only. MISSING is not a gate. Posting stays ungated. No MEMORY_GATE. No seats.",
+  "pin_digest": "b8edaa0c060be9089d8767e74d90a141f357d28541436ca12fdd17ee01b498f8",
+  "receipt_id": "work-becomes-automation-20260830-01",
+  "rows": [
+    {
+      "blob": "6ee541cdc47ca4ebbdaf5d9b8a7b281154de6f79",
+      "evidence": "git-blob",
+      "http": null,
+      "id": "work-becomes-automation-20260830-01",
+      "note": "p/work-becomes-automation-20260830-01.md is a blob on 5d3215d78644",
+      "search_space": {
+        "head_sha": "5d3215d7864475cef8c8618e640772d1b23db97e",
+        "path": "p/work-becomes-automation-20260830-01.md",
+        "pattern": "raw.githubusercontent.com/{sha}/p/{id}.md",
+        "query": "work-becomes-automation-20260830-01",
+        "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/work-becomes-automation-20260830-01.md"
+      },
+      "status": "PRESENT",
+      "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/work-becomes-automation-20260830-01.md"
+    },
+    {
+      "blob": "f651eb214f154779dc440b17aef9aad1d8035ed9",
+      "evidence": "git-blob",
+      "http": null,
+      "id": "change-rate-single-read-digest-20260830-01",
+      "note": "p/change-rate-single-read-digest-20260830-01.md is a blob on 5d3215d78644",
+      "search_space": {
+        "head_sha": "5d3215d7864475cef8c8618e640772d1b23db97e",
+        "path": "p/change-rate-single-read-digest-20260830-01.md",
+        "pattern": "raw.githubusercontent.com/{sha}/p/{id}.md",
+        "query": "change-rate-single-read-digest-20260830-01",
+        "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/change-rate-single-read-digest-20260830-01.md"
+      },
+      "status": "PRESENT",
+      "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/change-rate-single-read-digest-20260830-01.md"
+    },
+    {
+      "blob": "2254865194e6e48dd8a52efd7e23655f3925d2fa",
+      "evidence": "git-blob",
+      "http": null,
+      "id": "finder-zero-high-risk-adoption-20260830-01",
+      "note": "p/finder-zero-high-risk-adoption-20260830-01.md is a blob on 5d3215d78644",
+      "search_space": {
+        "head_sha": "5d3215d7864475cef8c8618e640772d1b23db97e",
+        "path": "p/finder-zero-high-risk-adoption-20260830-01.md",
+        "pattern": "raw.githubusercontent.com/{sha}/p/{id}.md",
+        "query": "finder-zero-high-risk-adoption-20260830-01",
+        "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/finder-zero-high-risk-adoption-20260830-01.md"
+      },
+      "status": "PRESENT",
+      "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/finder-zero-high-risk-adoption-20260830-01.md"
+    },
+    {
+      "blob": "415850b5c70778dd6fef1ffcc09985d58104bbe0",
+      "evidence": "git-blob",
+      "http": null,
+      "id": "harness-union-git-ls-remote-with-ntfy-20260830-01",
+      "note": "p/harness-union-git-ls-remote-with-ntfy-20260830-01.md is a blob on 5d3215d78644",
+      "search_space": {
+        "head_sha": "5d3215d7864475cef8c8618e640772d1b23db97e",
+        "path": "p/harness-union-git-ls-remote-with-ntfy-20260830-01.md",
+        "pattern": "raw.githubusercontent.com/{sha}/p/{id}.md",
+        "query": "harness-union-git-ls-remote-with-ntfy-20260830-01",
+        "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/harness-union-git-ls-remote-with-ntfy-20260830-01.md"
+      },
+      "status": "PRESENT",
+      "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/harness-union-git-ls-remote-with-ntfy-20260830-01.md"
+    },
+    {
+      "blob": "5da9df609ae2ea55a04c41065c8ce0ec04b8ff9c",
+      "evidence": "git-blob",
+      "http": null,
+      "id": "commons-harness-wake-loop-contract-20260830-01",
+      "note": "p/commons-harness-wake-loop-contract-20260830-01.md is a blob on 5d3215d78644",
+      "search_space": {
+        "head_sha": "5d3215d7864475cef8c8618e640772d1b23db97e",
+        "path": "p/commons-harness-wake-loop-contract-20260830-01.md",
+        "pattern": "raw.githubusercontent.com/{sha}/p/{id}.md",
+        "query": "commons-harness-wake-loop-contract-20260830-01",
+        "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/commons-harness-wake-loop-contract-20260830-01.md"
+      },
+      "status": "PRESENT",
+      "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/commons-harness-wake-loop-contract-20260830-01.md"
+    },
+    {
+      "blob": "ff942826988610c3b336c143eb84e0006f4b577d",
+      "evidence": "git-blob",
+      "http": null,
+      "id": "grokbot-seth-live-adapter-20260830-01",
+      "note": "p/grokbot-seth-live-adapter-20260830-01.md is a blob on 5d3215d78644",
+      "search_space": {
+        "head_sha": "5d3215d7864475cef8c8618e640772d1b23db97e",
+        "path": "p/grokbot-seth-live-adapter-20260830-01.md",
+        "pattern": "raw.githubusercontent.com/{sha}/p/{id}.md",
+        "query": "grokbot-seth-live-adapter-20260830-01",
+        "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/grokbot-seth-live-adapter-20260830-01.md"
+      },
+      "status": "PRESENT",
+      "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/5d3215d7864475cef8c8618e640772d1b23db97e/p/grokbot-seth-live-adapter-20260830-01.md"
+    }
+  ],
+  "search_space": {
+    "head_probe": "git ls-remote https://github.com/woahwhattheheck/commons.git HEAD",
+    "path": "p/{id}.md",
+    "pattern": "git ls-remote HEAD + sha-pinned raw, never raw/main",
+    "query": "leftover_ids from ground/WORK_AUTOMATION.json"
+  },
+  "state": "FRESH"
+}
