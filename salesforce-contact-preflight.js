@@ -78,7 +78,7 @@
       if (seen.has(eventId)) {
         const prior = seen.get(eventId);
         receipts.push(prior.hash === eventHash
-          ? Object.assign({}, prior.receipt, { index, status: "REPLAYED" })
+          ? receipt(event, index, "REPLAYED", "EXACT_REPLAY", prior.receipt.contact_id, { original_receipt_hash: prior.receipt.receipt_hash })
           : receipt(event, index, "REJECTED", "EVENT_ID_CONFLICT", "", { prior_hash: prior.hash, supplied_hash: eventHash }));
         return;
       }
