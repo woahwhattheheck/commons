@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "SLO CliniSys cutover evidence: a 1,000-bundle synthetic fixture classifies 850 READY and 150 predetermined HOLD (50 duplicate IDs, 40 broken sample-to-test refs, 30 method/version conflicts, 30 result/report/source hash mismatches), maps every valid object once with zero orphans or duplicates, replays with no new mappings, rolls the simulated CLS store back to the exact baseline, and blocks result/report release without a named approver. Adapters stay read-only/simulated. No public-health interpretation.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "slo_cls_cutover_evidence.py",
+    "slo-cls-cutover-evidence-lims.js",
+    "slo-cls-cutover-evidence-lims.html",
+    "test_slo_cls_cutover_evidence.py",
+    "revenue/slo_cls_cutover_evidence/contract.json",
+    "revenue/slo_cls_cutover_evidence/receipt.json",
+    "revenue/slo_cls_cutover_evidence/receipt.md",
+    "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md",
+    "features/registry/slo-cls-cutover-evidence-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "slo-cls-cutover-evidence-lims-01",
+  "name": "SLO CliniSys cutover evidence LIMS",
+  "next_gap": "Buyer-owned de-identified incumbent bundles, Panther Fusion method/version map, and CLS object schema after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "slo-cls-cutover-evidence-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "slo-cls-cutover-evidence-lims.html",
+    "revenue/slo_cls_cutover_evidence/contract.json",
+    "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_slo_cls_cutover_evidence.py",
+    "slo_cls_cutover_evidence.py"
+  ]
+}
