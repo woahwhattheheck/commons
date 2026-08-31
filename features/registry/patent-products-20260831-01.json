@@ -1,0 +1,40 @@
+{
+  "added": "2026-08-31",
+  "capability": "Three practical applications of the Muhlnickel provisional patent family as runnable stdlib software: GERMLINE germ delivery (seed once, then injection-weight on the wire, byte-exact manufacture), MIRROR ORGAN twin-state sync proof (copy manufactures twins; same injection, same state; drift fails closed), and WINNER FOLD inverted return bandwidth (winner-only record; losers store zero; return bytes constant in lane count).",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/germline.py",
+    "host/mirror_organ.py",
+    "host/winner_fold.py",
+    "test_germline.py",
+    "test_mirror_organ.py",
+    "test_winner_fold.py",
+    "patent-products.html",
+    "patent-products/SALES-INSERT.md",
+    "p/patent-products-20260831-01.md"
+  ],
+  "dependencies": [],
+  "id": "patent-products-20260831-01",
+  "name": "Patent products: germline, mirror organ, winner fold",
+  "next_gap": "Sales motion: run a buyer's own file pairs through GERMLINE as the $199 one-day diagnostic and hand back the measured wire-ratio receipt; no Stripe link is invented for these products yet.",
+  "owner_subsystem": "patent-products",
+  "public_entrypoint": "patent-products.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "patent-products.html",
+    "patent-products/SALES-INSERT.md",
+    "muhl/docs/PROVISIONAL_SESSION.md",
+    "p/patent-products-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_germline.py",
+    "test_mirror_organ.py",
+    "test_winner_fold.py"
+  ]
+}

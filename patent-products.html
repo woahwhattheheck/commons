@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Patent Products — the Muhlnickel family as practical software</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:74rem}
+.hero{padding:1.4rem 0 .6rem}
+.hero h1{font-size:clamp(2rem,6vw,4.2rem);line-height:.98;max-width:20ch;margin:.2rem 0 .8rem}
+.lead{font-size:1.12rem;max-width:54rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
+.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}
+.card h2,.card h3,.panel h2{margin-top:0}
+.state{font:700 .78rem/1.4 ui-monospace,monospace;border:1px solid #55555f;border-radius:999px;padding:.15rem .5rem;display:inline-block}
+.tested{color:#62b879}
+.boundary{color:#d0a252}
+pre.cmd{overflow:auto;padding:.8rem;border:1px solid #33333a;background:#0b0b0d}
+.hash{overflow-wrap:anywhere;font:400 .86rem/1.4 ui-monospace,monospace}
+</style>
+</head>
+<body>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">Read “On Trust.”</a> This page is the public proof and catalog surface for three working software products built from the Muhlnickel provisional patent family. It is not a storefront and not a device actuation.</section>
+<p class="law">PUBLIC PROOF. No login. Possessing the link is authorization. Every claim below is re-runnable from current public main with the exact commands shown. 21/21 stdlib tests green at land time.</p>
+<p class="nav">
+  <a href="./index.html">Commons</a>
+  <a href="./patent-products.html">patent products</a>
+  <a href="./patent-products/SALES-INSERT.md">sales insert</a>
+  <a href="./muhl/docs/PROVISIONAL_SESSION.md">provisional patent (source)</a>
+  <a href="./commercial.html">commercial ladder</a>
+  <a href="./feature-tracker.html">feature tracker</a>
+  <a href="./boards.html">boards</a>
+</p>
+
+<header class="hero">
+  <p class="note">Patent family → products · work id <code>patent-products-20260831-01</code></p>
+  <h1>The patent, as three runnable products.</h1>
+  <p class="lead">Sole inventor: Bryce Muhlnickel. Source: <code>muhl/docs/PROVISIONAL_SESSION.pdf</code> — 51 claims, one paradigm, two verbs. These three tools are the claimed methods turned into practical, testable software any operator can run today. Copy the file, copy the computer. Host = inject ∨ surface ∨ copy ∨ die.</p>
+</header>
+
+<main>
+<section class="grid">
+  <div class="card">
+    <h2>GERMLINE</h2>
+    <p><span class="state tested">SOURCE-TESTED</span></p>
+    <p><strong>Germ delivery — Instant Download in practice.</strong> Pack a body into a seed once. After that, the wire carries only the injection stream — the sparse delta between versions — and the destination manufactures a byte-exact body, sha256-proven.</p>
+    <p>Patent claims: 6–10 (germ delivery), 14 (edge paste), 16 (resident-internet sync), 28 (expansion inside held bytes).</p>
+    <pre class="cmd">python3 host/germline.py pack v1.bin -o body.germ
+python3 host/germline.py diff v1.bin v2.bin -o edit.gi
+python3 host/germline.py surface body.germ edit.gi -o out.bin</pre>
+    <p>Measured on the test corpus: a 1-byte edit to a 1,000,000-byte body rides home as an injection under 1% of the body size.</p>
+  </div>
+  <div class="card">
+    <h2>MIRROR ORGAN</h2>
+    <p><span class="state tested">SOURCE-TESTED</span></p>
+    <p><strong>Twin-state sync proof.</strong> Manufacture N twins by bitwise copy — copying the file manufactures another instance. Inject the same stream into each. Every twin settles to the same byte-exact state; <code>verify</code> names any drifted twin and fails closed.</p>
+    <p>Patent claims: 11–13 (mirror of state), 15 (N-way local worlds), 31 (latency via twin).</p>
+    <pre class="cmd">python3 host/mirror_organ.py twin world.bin -n 4 -o twins/
+python3 host/mirror_organ.py inject twins/ edit.gi
+python3 host/mirror_organ.py verify twins/</pre>
+    <p>Edge caches, replicas, and config fleets: presence is manufactured at each twin, never transported.</p>
+  </div>
+  <div class="card">
+    <h2>WINNER FOLD</h2>
+    <p><span class="state tested">SOURCE-TESTED</span></p>
+    <p><strong>Inverted return bandwidth.</strong> Germs out; winner-only back. The nonce is the address. Losing lanes store zero. The fold holds one winner record whether 2 lanes report or 2,000 — return traffic scales with winners, not lanes.</p>
+    <p>Patent claims: 17–19 (winner-only invert, <code>stored_per_lane=0</code>), 32 (Earth twin from inject).</p>
+    <pre class="cmd">python3 host/winner_fold.py open fold.json --addr-bits 64
+python3 host/winner_fold.py lane fold.json --lane l7 --nonce af31 --score 9.2
+python3 host/winner_fold.py close fold.json</pre>
+    <p>Distributed search, auctions, telemetry folds: only the winner rides home.</p>
+  </div>
+</section>
+
+<section class="panel" aria-labelledby="proof-heading">
+  <h2 id="proof-heading">Run the proof</h2>
+  <pre class="cmd">python3 -m unittest test_germline.py test_mirror_organ.py test_winner_fold.py</pre>
+  <p>21 tests: byte-exact manufacture, injection-weight ratio, tamper fail-closed, twin drift detection, replay determinism, zero stored per losing lane, return-size independence from lane count, deterministic tie-breaks.</p>
+</section>
+
+<section class="panel" aria-labelledby="boundary-heading">
+  <h2 id="boundary-heading">Boundaries, stated plainly</h2>
+  <p><span class="state boundary">BOUNDARY</span> These are host-side software products implementing the patented methods for ordinary files. This page does not pulse a <code>.mno</code>, does not fire address 337, does not actuate a device, and does not claim a live Muhlnickel walk. The seed computers themselves (SEED0 8,192 B; DISTRO 136,450 B; datacenter 99,999,999,783 B) are the inventor's box embodiments cited in the provisional.</p>
+  <p>Not a filing receipt. Not legal advice. The provisional corpus is <code>muhl/docs/PROVISIONAL_SESSION.md</code> / <code>.pdf</code>; sibling family <code>PATENT_SUPPORT.md</code> (INV-151 addressed-read, INV-152 SDC umbrella, INV-153 White Box) is cited, not forked.</p>
+</section>
+</main>
+</body>
+</html>
