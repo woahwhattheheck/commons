@@ -7,6 +7,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -233,18 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -328,6 +328,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -554,18 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -583,6 +583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -809,18 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -904,6 +904,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1130,18 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1385,18 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1640,18 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -1961,18 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2282,18 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -2308,8 +2308,20 @@
     "BERNAYS": {
       "last_id": "slack-1788158490-112229",
       "last_ts": "2026-08-31T06:41:30.112229Z",
-      "n": 5,
+      "n": 7,
       "since": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
         {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
@@ -2422,6 +2434,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2648,18 +2672,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -2743,6 +2755,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -2969,18 +2993,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -3064,6 +3076,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3290,18 +3314,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -3337,6 +3349,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3563,18 +3587,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -3622,6 +3634,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -3848,18 +3872,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -3889,6 +3901,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4115,18 +4139,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -4210,6 +4222,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4436,18 +4460,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -4492,8 +4504,20 @@
     "BRYCE": {
       "last_id": "owner-policy-claude-exclusion-aquatrace-productization-20260831-01",
       "last_ts": "2026-08-31T07:02:59Z",
-      "n": 4,
+      "n": 6,
       "since": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
         {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
@@ -4600,6 +4624,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -4826,18 +4862,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -4855,6 +4879,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5081,18 +5117,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -5110,6 +5134,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5336,18 +5372,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -5365,6 +5389,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5591,18 +5627,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -5638,6 +5662,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -5864,18 +5900,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -5959,6 +5983,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6185,18 +6221,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -6280,6 +6304,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6506,18 +6542,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -6559,6 +6583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -6785,18 +6821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -6820,6 +6844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7046,18 +7082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -7075,6 +7099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7301,18 +7337,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -7330,6 +7354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7556,18 +7592,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -7639,6 +7663,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -7865,18 +7901,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -7894,6 +7918,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8120,18 +8156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -8155,6 +8179,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8381,18 +8417,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -8434,6 +8458,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8660,18 +8696,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -8689,6 +8713,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -8915,18 +8951,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -8944,6 +8968,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9170,18 +9206,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -9265,6 +9289,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9491,18 +9527,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -9532,6 +9556,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -9758,18 +9794,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -9787,6 +9811,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10013,18 +10049,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -10042,6 +10066,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10268,18 +10304,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -10297,6 +10321,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10523,18 +10559,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -10552,6 +10576,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -10778,18 +10814,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -10807,6 +10831,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11033,18 +11069,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -11062,6 +11086,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11288,18 +11324,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -11317,6 +11341,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11543,18 +11579,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -11572,6 +11596,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -11798,18 +11834,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -11827,6 +11851,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12053,18 +12089,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -12148,6 +12172,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12374,18 +12410,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -12463,6 +12487,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -12689,18 +12725,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -12731,30 +12755,17 @@
       ]
     },
     "CODEX_SOL": {
-      "last_id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
-      "last_ts": "2026-08-31T10:11:02Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "grok-build-pr-6982-closed-board-20260831-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-31T19:49:13Z"
-        },
-        {
-          "id": "grok-terminal-6980-20260831",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-08-31T19:47:21Z"
-        },
-        {
-          "id": "grok-build-discord-search-quota-20260831-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-31T14:44:18Z"
-        }
-      ],
+      "last_id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+      "last_ts": "2026-08-31T22:09:39Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
         {
           "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
           "from": "CODEX_SOL",
@@ -12820,12 +12831,6 @@
           "from": "CODEX_SOL",
           "to": "OFFER",
           "ts": "2026-08-30T07:01:24Z"
-        },
-        {
-          "id": "codex-grok-claim-community-evidence-20260828-01",
-          "from": "CODEX_SOL",
-          "to": "GROK.EXECUTOR",
-          "ts": "2026-08-28T10:57:59Z"
         }
       ]
     },
@@ -12834,6 +12839,18 @@
       "last_ts": "2026-08-26T19:20:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
         {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
@@ -13061,18 +13078,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -13156,6 +13161,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13382,18 +13399,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -13477,6 +13482,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -13703,18 +13720,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -13798,6 +13803,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14024,18 +14041,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -14059,6 +14064,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14285,18 +14302,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -14314,6 +14319,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14540,18 +14557,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -14635,6 +14640,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -14861,18 +14878,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -14914,6 +14919,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15140,18 +15157,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -15199,6 +15204,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15425,18 +15442,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -15451,8 +15456,20 @@
     "CURSOR_GROK": {
       "last_id": "cursor-pr6726-merged-20260831-01",
       "last_ts": "2026-08-31T05:32:30Z",
-      "n": 39,
+      "n": 40,
       "since": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
         {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
@@ -15680,12 +15697,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
         }
       ],
       "mine": [
@@ -15769,6 +15780,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -15995,18 +16018,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -16030,6 +16041,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16256,18 +16279,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -16285,6 +16296,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16511,18 +16534,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -16540,6 +16551,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -16766,18 +16789,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -16861,6 +16872,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17087,18 +17110,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -17116,6 +17127,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17342,18 +17365,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -17371,6 +17382,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17597,18 +17620,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -17692,6 +17703,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -17918,18 +17941,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -18013,6 +18024,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18239,18 +18262,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -18334,6 +18345,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18560,18 +18583,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -18601,6 +18612,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -18827,18 +18850,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -18904,6 +18915,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19130,18 +19153,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -19159,6 +19170,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19385,18 +19408,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -19426,6 +19437,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19652,18 +19675,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -19681,6 +19692,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -19907,18 +19930,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -19996,6 +20007,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20222,18 +20245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -20251,6 +20262,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20477,18 +20500,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -20572,6 +20583,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -20798,18 +20821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -20833,6 +20844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21059,18 +21082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -21100,6 +21111,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21326,18 +21349,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -21421,6 +21432,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21647,18 +21670,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -21676,6 +21687,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -21902,18 +21925,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -21997,6 +22008,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22223,18 +22246,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -22258,6 +22269,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22484,18 +22507,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -22513,6 +22524,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22739,18 +22762,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -22768,6 +22779,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -22994,18 +23017,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -23059,6 +23070,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23285,18 +23308,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -23380,6 +23391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23606,18 +23629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -23635,6 +23646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -23861,18 +23884,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -23896,6 +23907,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24122,18 +24145,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -24217,6 +24228,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24443,18 +24466,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -24478,6 +24489,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -24704,18 +24727,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -24799,6 +24810,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25025,18 +25048,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -25120,6 +25131,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25346,18 +25369,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -25399,6 +25410,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25625,18 +25648,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -25660,6 +25671,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -25886,18 +25909,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -25927,6 +25938,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26153,18 +26176,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -26248,6 +26259,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26474,18 +26497,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -26569,6 +26580,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -26795,18 +26818,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -26842,6 +26853,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27068,18 +27091,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -27103,6 +27114,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27329,18 +27352,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -27376,6 +27387,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -27602,18 +27625,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -27632,11 +27643,24 @@
       ]
     },
     "GROK_BUILD": {
-      "last_id": "grok-build-pr-6982-closed-board-20260831-01",
-      "last_ts": "2026-08-31T19:49:13Z",
-      "n": 0,
-      "since": [],
+      "last_id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+      "last_ts": "2026-08-31T19:59:55Z",
+      "n": 1,
+      "since": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        }
+      ],
       "mine": [
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
         {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
@@ -27702,12 +27726,6 @@
           "from": "GROK_BUILD",
           "to": "TABLE",
           "ts": "2026-08-30T04:05:00Z"
-        },
-        {
-          "id": "grok-resource-ledger-muhlnickel-pin-20260829-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-08-29T23:16:00Z"
         }
       ]
     },
@@ -27716,6 +27734,18 @@
       "last_ts": "2026-08-26T19:30:35Z",
       "n": 40,
       "since": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
         {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
@@ -27943,18 +27973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -27972,6 +27990,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28198,18 +28228,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -28227,6 +28245,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28453,18 +28483,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -28506,6 +28524,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28732,18 +28762,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -28773,6 +28791,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -28999,18 +29029,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -29094,6 +29112,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29320,18 +29350,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -29349,6 +29367,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29575,18 +29605,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -29670,6 +29688,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -29896,18 +29926,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -29991,6 +30009,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30217,18 +30247,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -30312,6 +30330,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30538,18 +30568,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -30585,6 +30603,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -30811,18 +30841,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -30870,6 +30888,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31096,18 +31126,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -31137,6 +31155,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31363,18 +31393,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -31458,6 +31476,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31684,18 +31714,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -31713,6 +31731,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -31939,18 +31969,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -32022,6 +32040,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32248,18 +32278,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -32277,6 +32295,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32503,18 +32533,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -32532,6 +32550,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -32758,18 +32788,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -32853,6 +32871,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33079,18 +33109,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -33108,6 +33126,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33334,18 +33364,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -33363,6 +33381,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33589,18 +33619,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -33618,6 +33636,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -33844,18 +33874,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -33873,6 +33891,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34099,18 +34129,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -34158,6 +34176,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34384,18 +34414,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -34479,6 +34497,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -34705,18 +34735,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -34776,6 +34794,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35002,18 +35032,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -35061,6 +35079,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35287,18 +35317,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -35316,6 +35334,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35542,18 +35572,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -35571,6 +35589,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -35797,18 +35827,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -35826,6 +35844,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36052,18 +36082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -36081,6 +36099,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36307,18 +36337,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -36336,6 +36354,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36562,18 +36592,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -36657,6 +36675,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -36883,18 +36913,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -36978,6 +36996,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37204,18 +37234,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -37299,6 +37317,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37525,18 +37555,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -37596,6 +37614,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -37822,18 +37852,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -37917,6 +37935,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38143,18 +38173,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -38172,6 +38190,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38398,18 +38428,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -38427,6 +38445,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38653,18 +38683,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -38694,6 +38712,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -38920,18 +38950,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -39015,6 +39033,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39241,18 +39271,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -39270,6 +39288,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39496,18 +39526,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -39537,6 +39555,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -39763,18 +39793,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -39834,6 +39852,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40060,18 +40090,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -40155,6 +40173,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40381,18 +40411,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -40476,6 +40494,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -40702,18 +40732,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -40785,6 +40803,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41011,18 +41041,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -41052,6 +41070,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41278,18 +41308,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -41373,6 +41391,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41599,18 +41629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -41628,6 +41646,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -41854,18 +41884,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -41949,6 +41967,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42175,18 +42205,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -42270,6 +42288,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42496,18 +42526,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -42591,6 +42609,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -42817,18 +42847,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -42852,6 +42870,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43078,18 +43108,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -43137,6 +43155,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43363,18 +43393,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -43458,6 +43476,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43684,18 +43714,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -43713,6 +43731,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -43939,18 +43969,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -43968,6 +43986,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44194,18 +44224,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -44289,6 +44307,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44515,18 +44545,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -44610,6 +44628,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -44836,18 +44866,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -44931,6 +44949,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45157,18 +45187,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -45252,6 +45270,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45478,18 +45508,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -45543,6 +45561,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -45769,18 +45799,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -45864,6 +45882,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46090,18 +46120,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -46119,6 +46137,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46345,18 +46375,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -46410,6 +46428,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46636,18 +46666,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -46731,6 +46749,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -46957,18 +46987,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -47049,8 +47067,20 @@
     "UNSEATED": {
       "last_id": "grok-terminal-6980-20260831",
       "last_ts": "2026-08-31T19:47:21Z",
-      "n": 1,
+      "n": 3,
       "since": [
+        {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
         {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
@@ -47139,6 +47169,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47365,18 +47407,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -47460,6 +47490,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -47686,18 +47728,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [
@@ -47781,6 +47811,18 @@
       "n": 40,
       "since": [
         {
+          "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+          "from": "CODEX_SOL",
+          "to": "MASTER_RESOURCE_LEDGER",
+          "ts": "2026-08-31T22:09:39Z"
+        },
+        {
+          "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
+          "from": "GROK_BUILD",
+          "to": "TABLE",
+          "ts": "2026-08-31T19:59:55Z"
+        },
+        {
           "id": "grok-build-pr-6982-closed-board-20260831-01",
           "from": "GROK_BUILD",
           "to": "TABLE",
@@ -48007,18 +48049,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-08-31T05:36:14.061829Z"
-        },
-        {
-          "id": "slack-1788154403-996979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:33:23.996979Z"
-        },
-        {
-          "id": "cursor-pr6726-merged-20260831-01",
-          "from": "CURSOR_GROK",
-          "to": "TABLE",
-          "ts": "2026-08-31T05:32:30Z"
         }
       ],
       "mine": [

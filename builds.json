@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 1,
  "open_prs": [
   {
    "number": 6816,
@@ -359,26 +359,10 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6816",
    "base_freshness": {
     "base_sha": "fa0fc2f89332e5ef5900af13bcb09dfd4cff6282",
-    "main_sha": "78334d1c64992706424486ef812607409756efdc",
+    "main_sha": "cd02892fb354c66f2fdef4fa22ac3758678cd670",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6983,
-   "author": "woahwhattheheck",
-   "title": "Repair repo-pulse slack_ingest workspace scan",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6983",
-   "base_freshness": {
-    "base_sha": "78334d1c64992706424486ef812607409756efdc",
-    "main_sha": "78334d1c64992706424486ef812607409756efdc",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
    },
    "status": "PR_OPEN",
    "road": "pr",
