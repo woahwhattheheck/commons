@@ -11,6 +11,10 @@ NOT_LANDED. A private LDA path without a supplied listing is
 UNMEASURED. Do not remint the grok46 ids. Do not take the revenue
 jobs. Do not remint fleet_ids / unused_invoke leftovers.
 
+BD084 / DETAIL 36 adoption wrap (cite, do not remint host/finder_zero.py):
+listing OSError / missing p/ is FINDER UNVERIFIED, never [] → 0/N.
+Exact X/Y search space + same-run known-present calibration.
+
   python3 host/taking_trace.py
   python3 host/taking_trace.py --catalog ground/TAKING_TRACE.json --posts-dir p
   python3 host/taking_trace.py --self-test
@@ -22,8 +26,27 @@ import json
 import os
 import sys
 
+if __package__:
+    from .finder_zero import (
+        FINDER_UNVERIFIED,
+        calibrate,
+        collision_clearance,
+        report_find,
+        search_space,
+    )
+else:
+    from finder_zero import (
+        FINDER_UNVERIFIED,
+        calibrate,
+        collision_clearance,
+        report_find,
+        search_space,
+    )
+
 
 DEFAULT_CATALOG = os.path.join("ground", "TAKING_TRACE.json")
+CALIBRATION_ID = "rivet-ship-taking-trace-20260825-01"
+LISTING_PATTERN = "p/{id}.md"
 
 
 def load_catalog(text):
@@ -98,6 +121,72 @@ def present_paths(paths, listing):
     return present
 
 
+def list_posts_dir(posts_dir):
+    """List p/ names. Missing dir or OSError is unverified, never []."""
+    root = os.path.abspath(posts_dir) if posts_dir else ""
+    if not root:
+        return {
+            "listing_ok": False,
+            "listing": None,
+            "error": "posts dir not named. FINDER UNVERIFIED, never [].",
+            "posts_dir": "",
+        }
+    if not os.path.isdir(root):
+        return {
+            "listing_ok": False,
+            "listing": None,
+            "error": (
+                "posts dir missing: %s. FINDER UNVERIFIED, never []." % root
+            ),
+            "posts_dir": root,
+        }
+    try:
+        listing = os.listdir(root)
+    except OSError as exc:
+        return {
+            "listing_ok": False,
+            "listing": None,
+            "error": (
+                "posts dir OSError: %s. FINDER UNVERIFIED, never []." % exc
+            ),
+            "posts_dir": root,
+        }
+    return {
+        "listing_ok": True,
+        "listing": listing,
+        "error": "",
+        "posts_dir": root,
+    }
+
+
+def host_pair_hits(posts_dir, ids):
+    """Pair listing search with host file existence. Search-only is not clearance."""
+    root = os.path.abspath(posts_dir) if posts_dir else ""
+    hits = []
+    if not root or not os.path.isdir(root):
+        return hits
+    seen = set()
+    for item in list(ids or []) + [CALIBRATION_ID]:
+        name = str(item or "").strip()
+        if not name or name in seen:
+            continue
+        seen.add(name)
+        if os.path.isfile(os.path.join(root, name + ".md")):
+            hits.append(name)
+    return hits
+
+
+def taking_search_space(ids, posts_dir="p"):
+    """Exact X/Y space for this finder. Incomplete space is void."""
+    named = [str(item or "").strip() for item in (ids or []) if str(item or "").strip()]
+    return search_space(
+        query="taking-trace commons_ids %s"
+        % (" ".join(named) if named else "(empty catalog)"),
+        path=str(posts_dir or "p"),
+        pattern=LISTING_PATTERN,
+    )
+
+
 def classify(row):
     """Turn a measured Commons + LDA census into a land-desk state."""
     row = row or {}
@@ -109,6 +198,21 @@ def classify(row):
                 "Absence was not measured."
             ),
         }
+    space = row.get("search_space") or {}
+    if row.get("listing_ok") is False:
+        return {
+            "state": FINDER_UNVERIFIED,
+            "note": (
+                "p/ listing failed. FINDER UNVERIFIED, never 0. "
+                "query=%r path=%r pattern=%r. %s"
+                % (
+                    space.get("query") or "",
+                    space.get("path") or "",
+                    space.get("pattern") or "",
+                    row.get("listing_error") or "listing_ok=false",
+                )
+            ),
+        }
     ids = list(row.get("commons_ids") or [])
     present = list(row.get("commons_present") or [])
     if not ids:
@@ -117,6 +221,21 @@ def classify(row):
             "note": (
                 "taking catalog has no Commons ids. A Slack utilization "
                 "report is CLAIMED until the ids are named on current main."
+            ),
+        }
+    if row.get("calibrated") is False:
+        return {
+            "state": FINDER_UNVERIFIED,
+            "note": (
+                "same-run known-present %s missed. Every zero in this run "
+                "is void. FINDER UNVERIFIED, never 0. query=%r path=%r "
+                "pattern=%r"
+                % (
+                    row.get("known_present") or CALIBRATION_ID,
+                    space.get("query") or "",
+                    space.get("path") or "",
+                    space.get("pattern") or "",
+                )
             ),
         }
     missing = [item for item in ids if item not in present]
@@ -172,20 +291,48 @@ def classify(row):
     return {
         "state": "NOT_LANDED",
         "note": (
-            "0/%s claimed Commons taking ids are p/{id}.md. Rolling "
+            "FINDER UNVERIFIED: none of the %s claimed Commons taking ids "
+            "are p/{id}.md. query=%r path=%r pattern=%r. Rolling "
             "utilization / grok-capacity-active talk is CLAIMED. Do not "
             "remint. Claim only the verification leftover."
         )
-        % len(ids)
+        % (
+            len(ids),
+            space.get("query") or "",
+            space.get("path") or "",
+            space.get("pattern") or "",
+        )
         + lda_note,
     }
 
 
-def measure_from_parts(catalog_text, commons_listing, lda_listing=None):
+def measure_from_parts(
+    catalog_text,
+    commons_listing,
+    lda_listing=None,
+    listing_ok=True,
+    listing_error="",
+    posts_dir="p",
+    pair_hits=None,
+    known_present=None,
+):
     """Pure measurer so tests do not need a private repo."""
     catalog = load_catalog(catalog_text)
     ids = list(catalog.get("commons_ids") or [])
-    present = present_ids(ids, commons_listing)
+    space = taking_search_space(ids, posts_dir)
+    present = present_ids(ids, commons_listing) if listing_ok else []
+    known = str(known_present or CALIBRATION_ID).strip() or CALIBRATION_ID
+    calibration_hits = (
+        present_ids([known], commons_listing) if listing_ok else []
+    )
+    calibration = calibrate(calibration_hits, [known])
+    find = report_find(
+        present, space, bool(calibration.get("calibrated")) and bool(listing_ok)
+    )
+    collision = collision_clearance(
+        present if listing_ok else [],
+        pair_hits=pair_hits,
+    )
     lda_paths = list(catalog.get("lda_claimed_paths") or [])
     lda_measured = lda_listing is not None
     lda_present = present_paths(lda_paths, lda_listing) if lda_measured else []
@@ -194,8 +341,14 @@ def measure_from_parts(catalog_text, commons_listing, lda_listing=None):
         "commons_ids": ids,
         "commons_present": present,
         "commons_missing": [item for item in ids if item not in present],
-        "commons_present_count": len(present),
-        "commons_missing_count": len(ids) - len(present),
+        "commons_present_count": (
+            len(present) if listing_ok and calibration.get("calibrated") else None
+        ),
+        "commons_missing_count": (
+            (len(ids) - len(present))
+            if listing_ok and calibration.get("calibrated")
+            else None
+        ),
         "source_id": catalog.get("source_id") or "",
         "slack_ts": catalog.get("slack_ts") or "",
         "hands_off": list(catalog.get("hands_off") or []),
@@ -210,6 +363,19 @@ def measure_from_parts(catalog_text, commons_listing, lda_listing=None):
             if lda_measured
             else list(lda_paths)
         ),
+        "listing_ok": bool(listing_ok),
+        "listing_error": str(listing_error or ""),
+        "search_space": space,
+        "known_present": known,
+        "calibrated": bool(calibration.get("calibrated")),
+        "calibration_state": calibration.get("state"),
+        "calibration_note": calibration.get("note"),
+        "find_state": find.get("state"),
+        "find_count": find.get("count"),
+        "find_note": find.get("note"),
+        "collision_state": collision.get("state"),
+        "clearance": bool(collision.get("clearance")),
+        "collision_note": collision.get("note"),
         "titan": "NOT_WRITTEN",
     }
 
@@ -224,13 +390,8 @@ def measure_paths(catalog_path, posts_dir=None, lda_listing_path=None):
         }
     with open(path, "r", encoding="utf-8") as handle:
         catalog_text = handle.read()
-    listing = []
-    root = os.path.abspath(posts_dir) if posts_dir else ""
-    if root and os.path.isdir(root):
-        try:
-            listing = os.listdir(root)
-        except OSError:
-            listing = []
+    listed = list_posts_dir(posts_dir)
+    listing = listed.get("listing") if listed.get("listing_ok") else []
     lda_listing = None
     if lda_listing_path:
         listing_path = os.path.abspath(lda_listing_path)
@@ -243,10 +404,22 @@ def measure_paths(catalog_path, posts_dir=None, lda_listing_path=None):
                 ]
         else:
             lda_listing = []
-    row = measure_from_parts(catalog_text, listing, lda_listing)
+    catalog = load_catalog(catalog_text)
+    pair = host_pair_hits(
+        listed.get("posts_dir"), catalog.get("commons_ids") or []
+    )
+    row = measure_from_parts(
+        catalog_text,
+        listing,
+        lda_listing,
+        listing_ok=listed.get("listing_ok"),
+        listing_error=listed.get("error") or "",
+        posts_dir=listed.get("posts_dir") or posts_dir or "p",
+        pair_hits=pair,
+    )
     row["catalog"] = path
-    if root:
-        row["posts_dir"] = root
+    if listed.get("posts_dir"):
+        row["posts_dir"] = listed["posts_dir"]
     return row
 
 
@@ -299,12 +472,27 @@ def _self_test():
             },
         }
     )
-    missing = measure_from_parts(catalog, ["unrelated.md"])
+    cal = CALIBRATION_ID + ".md"
+    missing = measure_from_parts(catalog, ["unrelated.md", cal])
     assert missing["commons_present_count"] == 0
     assert missing["lda_measured"] is False
-    assert classify(missing)["state"] == "NOT_LANDED"
+    assert missing["calibrated"] is True
+    assert missing["find_state"] == FINDER_UNVERIFIED
+    assert missing["find_count"] is None
+    miss_note = classify(missing)
+    assert miss_note["state"] == "NOT_LANDED"
+    assert "0/" not in miss_note["note"]
+    assert FINDER_UNVERIFIED in miss_note["note"]
+    failed = measure_from_parts(
+        catalog, [], listing_ok=False, listing_error="OSError"
+    )
+    assert failed["listing_ok"] is False
+    assert failed["calibrated"] is False
+    assert failed["find_count"] is None
+    assert classify(failed)["state"] == FINDER_UNVERIFIED
+    assert "0/" not in classify(failed)["note"]
     half = measure_from_parts(
-        catalog, ["grok46-revenue-discovery-20260825-01.md"]
+        catalog, ["grok46-revenue-discovery-20260825-01.md", cal]
     )
     assert half["commons_present"] == ["grok46-revenue-discovery-20260825-01"]
     assert classify(half)["state"] == "CANDIDATE"
@@ -313,11 +501,16 @@ def _self_test():
         [
             "grok46-revenue-discovery-20260825-01.md",
             "grok46-open-revenue-desk-20260825-01.md",
+            cal,
         ],
         ["host/muhl_revenue.py"],
     )
     assert classify(both)["state"] == "INTEGRATED"
     assert both["titan"] == "NOT_WRITTEN"
+    assert both["search_space"]["complete"] is True
+    listed = list_posts_dir(os.path.join("no-such-taking-posts", "missing"))
+    assert listed["listing_ok"] is False
+    assert listed["listing"] is None
     return True
 
 
