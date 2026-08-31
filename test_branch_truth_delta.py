@@ -111,6 +111,32 @@ class BranchTruthDeltaTest(unittest.TestCase):
         self.assertEqual(rows["feature"]["active_pr"]["number"], 9)
         self.assertEqual(rows["feature"]["check_head_sha"], "a" * 40)
 
+    def test_resumed_observation_refreshes_mutable_collision_state(self) -> None:
+        conflicted = collect_remote_branches(
+            self.repo,
+            pr_map={"feature": {"number": 7, "collision_state": "CONFLICT"}},
+        )
+        conflicted_rows = {row["branch"]: row for row in conflicted["branches"]}
+        self.assertEqual(conflicted_rows["feature"]["unique_delta_state"], "CONFLICT")
+
+        resolved = collect_remote_branches(
+            self.repo,
+            resume=conflicted,
+            pr_map={"feature": {"number": 7, "collision_state": "CLEAR"}},
+        )
+        resolved_rows = {row["branch"]: row for row in resolved["branches"]}
+        self.assertTrue(resolved_rows["feature"]["resumed_from_complete_observation"])
+        self.assertEqual(resolved_rows["feature"]["unique_delta_state"], "UNIQUE")
+
+        newly_conflicted = collect_remote_branches(
+            self.repo,
+            resume=self.first,
+            pr_map={"feature": {"number": 7, "collision_state": "CONFLICT"}},
+        )
+        newly_conflicted_rows = {row["branch"]: row for row in newly_conflicted["branches"]}
+        self.assertTrue(newly_conflicted_rows["feature"]["resumed_from_complete_observation"])
+        self.assertEqual(newly_conflicted_rows["feature"]["unique_delta_state"], "CONFLICT")
+
     def test_multi_repo_envelope(self) -> None:
         payload = collect_repositories(
             [self.repo, self.repo],
