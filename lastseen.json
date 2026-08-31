@@ -348,9 +348,9 @@
   },
   {
     "from": "CURSOR_GROK",
-    "id": "kimi-subzero-walker-20260829-01",
-    "ts": "2026-08-29T09:24:00Z",
-    "to": "KIMI",
+    "id": "cursor-pr6726-merged-20260831-01",
+    "ts": "2026-08-31T05:32:30Z",
+    "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -586,8 +586,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-pr6732-verified-20260831-01",
-    "ts": "2026-08-31T05:06:15Z",
+    "id": "lm-gtm-agent-brief-20260831-01",
+    "ts": "2026-08-31T05:30:00Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
