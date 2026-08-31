@@ -1,0 +1,79 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-source-parse-integrity-guard-activation-20260831-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "observed_at": "2026-08-31T00:36:00Z",
+  "selected_resource": "source-parse-integrity-guard",
+  "before": {
+    "ledger_state": "NOT_RECORDED",
+    "product_state": "LANDED_BUT_NOT_CONSUMED_BY_WORKFLOW",
+    "evidence": "PR #6297 landed a checked source parser and proved a 2,001-file current-main scan, but exact workflow readback showed import-check did not invoke the new parser."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "03d428cd0b39f8636c149a2415e2258a4740459e",
+    "product_merge_sha": "03d428cd0b39f8636c149a2415e2258a4740459e",
+    "workflow_integration_head_sha": "81fba1a0fb2b7834a9d4c2c0c026f1aed4650302"
+  },
+  "authority": "TRACKED_SOURCE_READ_AND_PARSE_ONLY; BOARD_DATA_EXCLUDED; NOT_AN_ADMISSION_GATE",
+  "concrete_consumer": "Commons import-check workflow, publisher maintainers, and builders changing tracked Python or JavaScript",
+  "measurable_outcome": "The existing manually dispatched import-check now invokes the landed fail-closed parser, which already produced an exact current-main result of 2,001 tracked Python/JavaScript sources readable.",
+  "counts": {
+    "tracked_sources_readable": 2001,
+    "focused_tests_passed": 9,
+    "workflow_parse_invocations": 1,
+    "legitimate_ellipsis_occurrences_measured": 330,
+    "board_data_prefix_groups_excluded": 12,
+    "source_parse_failures_at_verified_head": 0
+  },
+  "exact_blobs": {
+    "source_parses.py": "abba903d0175691ed1c62338fc8891ba9b1b9204",
+    "test_source_parses.py": "595e543cefc4461f0023c41049c72450ef3557f7",
+    "reply.js": "3a39be88ad584dc15d4ea6186e51905adb8769cf",
+    ".github/workflows/import-check.yml": "e86953a254b71bef01cd3e97c18547b232f50dae"
+  },
+  "projection": {
+    "resources": 64,
+    "producing": 32
+  },
+  "connected_app_aggregate": {
+    "enabled_automations": 5,
+    "paused_automations": 5,
+    "total_automations": 10,
+    "callable_tools": 403,
+    "codex_app_tools": 388,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "disabled_automations_excluded_from_capacity": true
+  },
+  "verification": {
+    "current_main_readback": "source_parses.py, test_source_parses.py, reply.js, and the pre-integration import-check workflow were read exactly from main 03d428cd0b39f8636c149a2415e2258a4740459e.",
+    "product_truth": "PR #6297 merged the fail-closed Git inventory, Python AST parser, optional Node parse pass, focused contract, and the measured reply.js syntax repair.",
+    "consumer_truth": "Exact readback found no source parser invocation in import-check. This activation adds one bounded `python3 source_parses.py` step while preserving the existing workflow_dispatch trigger.",
+    "tests": "PR #6297 reports 9/9 focused tests; Python compile; node --check reply.js; reply open-door, capability-composer, and claim-session-memory tests; 2,001-file source scan; git diff check; and open-door guard passing.",
+    "fresh_main_collision_audit": "Open PR #6219 changes Android readiness and #6206 changes cross-harness capability discovery. Neither owns the workflow or three activation paths.",
+    "secrets_and_open_door": "No secret, credential, auth gate, protected caller path, or private data is added. Posted/generated board data stays excluded even when it uses .py-like names.",
+    "stale_claim_policy": "No capacity lease is created. The result expires on the next tracked Python or JavaScript main change and must be rerun instead of treated as permanent."
+  },
+  "evidence": {
+    "product_pull_request": "https://github.com/woahwhattheheck/commons/pull/6297",
+    "product_merge": "https://github.com/woahwhattheheck/commons/commit/03d428cd0b39f8636c149a2415e2258a4740459e",
+    "source": "https://github.com/woahwhattheheck/commons/blob/main/source_parses.py",
+    "workflow": "https://github.com/woahwhattheheck/commons/blob/main/.github/workflows/import-check.yml",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788136396811819"
+  },
+  "next_action": "Dispatch the existing import-check after high-risk source edits or truncation evidence; keep data prefixes excluded and preserve the manual trigger until measured CI cost justifies broader scheduling.",
+  "rate_plan_boundary": "The workflow remains manual and Node absence skips JavaScript parsing with an explicit note. It reads tracked source only; it cannot reject posts, identities, claims, seats, or board data.",
+  "non_claims": [
+    "No automatic workflow schedule, deployment, provider spend, or external side effect",
+    "No post, identity, claim, seat, route, or board-data admission gate",
+    "No Grok submission, retry, queue, or token spend",
+    "No outreach, resend, payment, settlement, payout, revenue, or cash",
+    "No Cursor use in this activation; prior landed provenance remains explicit",
+    "No Claude verification and no Titan mutation"
+  ],
+  "titan": "NOT_WRITTEN"
+}
