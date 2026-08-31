@@ -10,15 +10,20 @@ Private routes stay off git. Public cash stays USD 0 unless a named payment
 evidence URL already exists in a source ledger.
 
 Hot lane (`python3 host/lm_gtm_index.py hot`) is the actionable subset: it
-excludes seller context, the research universe, mailbox manifests, and DNR /
-HOLD_DO_NOT_RESEND / HOLD_DO_NOT_CONTACT unless a MATERIAL_REPLY reopened
-them. Rank: material_reply > sent_awaiting_reply > ready_to_draft >
+excludes seller context, the research universe, mailbox manifests, DNR /
+HOLD_DO_NOT_RESEND / HOLD_DO_NOT_CONTACT, SENT/AWAITING_REPLY with
+HARD_DO_NOT_RESEND, and HOLD_BUILD_AND_VERIFY unless a MATERIAL_REPLY
+reopened them. Rank: material_reply > sent_awaiting_reply > ready_to_draft >
 verified_lead_unsent.
+
+`python3 host/lm_gtm_index.py hold` lists HOLD_BUILD_AND_VERIFY rows. Those
+are live and queryable, not hot, and PRE-SALE TRANSPORT NONE.
 
 Occupancy (`claim` / `release`) writes an overlay event onto the INDEX `owner`
 field. It does not rewrite `loop.json`. A second occupancy on a seated live
 one fails closed unless `--steal` is explicit. That is collision-avoidance
-for two harnesses hitting the same live one, not an admission gate.
+for two harnesses hitting the same live one, not an admission gate. Both
+positional subject and `--subject` work; `--owner` is required.
 
 ## Cross-harness contract
 
@@ -46,16 +51,20 @@ python3 host/lm_gtm_index.py append-event \
   --id yourname-gtm-note-YYYYMMDD-01 \
   --body "draft remains STAGED_NOT_SENT; no transport"
 
+python3 host/lm_gtm_index.py claim composio --owner YOURNAME
+python3 host/lm_gtm_index.py release composio --owner YOURNAME
+# equivalent flag form:
 python3 host/lm_gtm_index.py claim --subject composio --owner YOURNAME
-python3 host/lm_gtm_index.py release --subject composio --owner YOURNAME
 # second occupancy fails closed unless:
-python3 host/lm_gtm_index.py claim --subject composio --owner OTHER --steal
+python3 host/lm_gtm_index.py claim composio --owner OTHER --steal
 ```
 
 Pointer overlay events may introduce INDEX rows by reference (Slack ts, Gmail
-id, Airtable rec). Unknown NOTE ids are refused. Event-id remint is refused.
-Seller fixture contacts cannot receive overlay events. No `crm/`, `people/`,
-`contacts/`, or `sales/` tree is created.
+id, Airtable rec). HOLD_BUILD_AND_VERIFY pointers are org + person + Slack ts
+only. STATUS refreshes `next_action` / `source_paths` / `due` on an existing
+live subject and cannot mint a contact. Unknown NOTE/STATUS ids are refused.
+Event-id remint is refused. Seller fixture contacts cannot receive overlay
+events. No `crm/`, `people/`, `contacts/`, or `sales/` tree is created.
 
 `--send` exits 3. This composer never transports mail.
 
@@ -64,7 +73,9 @@ python3 host/lm_gtm_index.py validate
 python3 host/lm_gtm_index.py write-index
 python3 host/lm_gtm_index.py next
 python3 host/lm_gtm_index.py hot
+python3 host/lm_gtm_index.py hold
 python3 host/lm_gtm_index.py show city-of-billings-bid-1421
+python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 -m unittest -v test_lm_gtm_index.py
 ```
 
@@ -85,6 +96,8 @@ State: [`state.json`](./state.json).
 Seller contacts from the website loop stay `seller_context` and are never
 live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX`.
 
-Do not remint `lm-gtm-index-20260831-01`, `website-people-email-book-20260830-01`,
-or `website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
-schema v2.
+Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
+`website-people-email-book-20260830-01`, or
+`website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
+schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY
+pointer `lm-gtm-billings-material-reply-20260831-01`.

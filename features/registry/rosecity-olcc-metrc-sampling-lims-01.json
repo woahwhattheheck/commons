@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "Read-only OLCC request-to-Metrc sampling ledger: a 100-request fixture emits exactly 75 DISPATCH_READY and 25 HOLD (8 missing Metrc transfer, 7 batch-count mismatches, 5 duplicate package IDs, 5 unconfirmed appointments). Holds produce zero dispatches. Each valid pickup has one immutable custody chain and one accession. Replay is idempotent. Email destination is linked; nothing is sent or released. Adapters stay read-only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "rosecity_olcc_metrc_sampling.py",
+    "rosecity-olcc-metrc-sampling-lims.js",
+    "rosecity-olcc-metrc-sampling-lims.html",
+    "test_rosecity_olcc_metrc_sampling.py",
+    "revenue/rosecity_olcc_metrc_sampling/contract.json",
+    "revenue/rosecity_olcc_metrc_sampling/receipt.json",
+    "revenue/rosecity_olcc_metrc_sampling/receipt.md",
+    "p/cursor-rosecity-olcc-metrc-sampling-lims-20260831-01.md",
+    "features/registry/rosecity-olcc-metrc-sampling-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "rosecity-olcc-metrc-sampling-lims-01",
+  "name": "Rose City OLCC request-to-Metrc sampling ledger",
+  "next_gap": "Buyer-owned request/Metrc field names and de-identified fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "rosecity-olcc-metrc-sampling-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "rosecity-olcc-metrc-sampling-lims.html",
+    "revenue/rosecity_olcc_metrc_sampling/contract.json",
+    "p/cursor-rosecity-olcc-metrc-sampling-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_rosecity_olcc_metrc_sampling.py",
+    "rosecity_olcc_metrc_sampling.py"
+  ]
+}
