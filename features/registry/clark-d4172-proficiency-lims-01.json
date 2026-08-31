@@ -1,0 +1,40 @@
+{
+  "added": "2026-08-31",
+  "capability": "ASTM D4172 Four-Ball wear proficiency and customer-CoA evidence lane: replay 60 frozen synthetic sets, keep participant/sample identities blinded until human disposition, hold missing replicates and r/R QC breaches, preserve immutable custody and calculation provenance, and deny autonomous release. Interfaces stay simulated.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "clark_d4172_proficiency.py",
+    "clark-d4172-proficiency-lims.js",
+    "clark-d4172-proficiency-lims.html",
+    "test_clark_d4172_proficiency.py",
+    "revenue/clark_d4172_proficiency/contract.json",
+    "revenue/clark_d4172_proficiency/receipt.json",
+    "revenue/clark_d4172_proficiency/receipt.md",
+    "revenue/clark_d4172_proficiency/golden.json",
+    "revenue/clark_d4172_proficiency/public_fixture.json",
+    "p/cursor-clark-d4172-proficiency-lims-20260831-01.md",
+    "features/registry/clark-d4172-proficiency-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "clark-d4172-proficiency-lims-01",
+  "name": "Clark ASTM D4172 proficiency LIMS",
+  "next_gap": "Buyer-owned method revision, official r/R table, and de-identified live-cycle fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "clark-d4172-proficiency-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "clark-d4172-proficiency-lims.html",
+    "revenue/clark_d4172_proficiency/contract.json",
+    "p/cursor-clark-d4172-proficiency-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_clark_d4172_proficiency.py",
+    "clark_d4172_proficiency.py"
+  ]
+}
