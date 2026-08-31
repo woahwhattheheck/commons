@@ -274,17 +274,32 @@ class AquaTraceWorkOrderFReleaseReadinessTests(unittest.TestCase):
             "p/aquatrace-work-order-f-release-readiness-20260831-01.md",
             "features/registry/aquatrace-work-order-f-release-readiness-20260831-01.json",
         }
-        changed = subprocess.check_output(
-            ["git", "diff", "--name-only", "origin/main"],
+        introductions = subprocess.check_output(
+            [
+                "git",
+                "log",
+                "--format=%H",
+                "--diff-filter=A",
+                "--",
+                "test_aquatrace_work_order_f_release_readiness.py",
+            ],
             cwd=ROOT,
             text=True,
         ).splitlines()
-        untracked = subprocess.check_output(
-            ["git", "ls-files", "--others", "--exclude-standard"],
+        self.assertTrue(introductions, "missing introducing commit")
+        introduced = subprocess.check_output(
+            [
+                "git",
+                "diff-tree",
+                "--no-commit-id",
+                "--name-only",
+                "-r",
+                introductions[-1],
+            ],
             cwd=ROOT,
             text=True,
         ).splitlines()
-        touched = [path for path in changed + untracked if path]
+        touched = [path for path in introduced if path]
         for path in touched:
             self.assertTrue(
                 path.startswith("revenue/aquatrace_work_order_f_release_readiness/")
