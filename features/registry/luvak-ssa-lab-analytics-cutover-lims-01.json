@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "Luvak–SSA materials accession/report cutover LIMS: a 100-shipment synthetic fixture accessions 80 valid quote/form/package/CoC jobs once with frozen method revisions, holds 20 with MISSING_ACCEPTED_QUOTE, DUPLICATE_SAMPLE_ID, FORM_PACKAGE_MISMATCH, and METHOD_REVISION_MISMATCH, binds quote/form/CoC/method/result/report hashes 7b608c694273df9eea371a0f945250653f49dc40ff2f9075c3c2f4c178c03df5, never stages a held test or report, replays with zero extra records, and keeps reports staged pending named approval. Adapters stay simulated/read-only. No materials-qualification decision.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "luvak_ssa_lab_analytics_cutover.py",
+    "luvak-ssa-lab-analytics-cutover-lims.js",
+    "luvak-ssa-lab-analytics-cutover-lims.html",
+    "test_luvak_ssa_lab_analytics_cutover.py",
+    "revenue/luvak_ssa_lab_analytics/contract.json",
+    "revenue/luvak_ssa_lab_analytics/receipt.json",
+    "revenue/luvak_ssa_lab_analytics/receipt.md",
+    "revenue/luvak_ssa_lab_analytics/fixture.json",
+    "p/cursor-luvak-ssa-lab-analytics-cutover-20260831-01.md",
+    "features/registry/luvak-ssa-lab-analytics-cutover-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "luvak-ssa-lab-analytics-cutover-lims-01",
+  "name": "Luvak–SSA lab analytics cutover LIMS",
+  "next_gap": "Buyer-owned de-identified quote/form/package catalog after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "luvak-ssa-lab-analytics-cutover-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "luvak-ssa-lab-analytics-cutover-lims.html",
+    "revenue/luvak_ssa_lab_analytics/contract.json",
+    "p/cursor-luvak-ssa-lab-analytics-cutover-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_luvak_ssa_lab_analytics_cutover.py",
+    "luvak_ssa_lab_analytics_cutover.py"
+  ]
+}

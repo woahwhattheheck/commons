@@ -1,0 +1,39 @@
+{
+  "added": "2026-08-31",
+  "capability": "CS Analytical expansion cross-line evidence LIMS: a 120-submission synthetic fixture accessions 90 valid study/sample/lot jobs once onto CCIT, raw-material, gas, or micro routes, holds 30 with DUPLICATE_ID, WRONG_LINE_METHOD, MISSING_STUDY_PACKAGE, INSTRUMENT_QC_FAILURE, and SOURCE_HASH_MISMATCH, binds method/instrument/value/unit/audit/source hashes 539ec0898544c686cb7bb47c1851326d2cb0d870ef905b86c221b23dcc2b67e6, never schedules a held intake, replays with zero extra records, and keeps reports staged pending named approval. Adapters stay simulated/read-only. No compliance decision.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "csanalytical_expansion_crossline.py",
+    "csanalytical-expansion-crossline-evidence-lims.js",
+    "csanalytical-expansion-crossline-evidence-lims.html",
+    "test_csanalytical_expansion_crossline.py",
+    "revenue/csanalytical_expansion_crossline/contract.json",
+    "revenue/csanalytical_expansion_crossline/receipt.json",
+    "revenue/csanalytical_expansion_crossline/receipt.md",
+    "revenue/csanalytical_expansion_crossline/fixture.json",
+    "p/cursor-csanalytical-expansion-crossline-lims-20260831-01.md",
+    "features/registry/csanalytical-expansion-crossline-evidence-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "csanalytical-expansion-crossline-evidence-lims-01",
+  "name": "CS Analytical expansion cross-line evidence LIMS",
+  "next_gap": "Buyer-owned de-identified study/package catalog after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "csanalytical-expansion-crossline-evidence-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "csanalytical-expansion-crossline-evidence-lims.html",
+    "revenue/csanalytical_expansion_crossline/contract.json",
+    "p/cursor-csanalytical-expansion-crossline-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_csanalytical_expansion_crossline.py",
+    "csanalytical_expansion_crossline.py"
+  ]
+}

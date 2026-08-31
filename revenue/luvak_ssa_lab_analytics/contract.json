@@ -1,0 +1,51 @@
+{
+  "id": "luvak-ssa-lab-analytics-cutover-lims-01",
+  "version": 1,
+  "buyer": "Dean Gaskill / Luvak Laboratories",
+  "lead": {
+    "channel": "C0BTRNE6Y58",
+    "ts": "1788152175.153149",
+    "note": "BUILD DEMAND posted in #build-demand; builder Cursor"
+  },
+  "workflow": [
+    "accepted quote",
+    "submission form",
+    "physical package",
+    "optional CoC reconciliation",
+    "material/method revision freeze",
+    "interstitial-gas/metals result hashes",
+    "staged report across the SSA cutover"
+  ],
+  "acceptance": [
+    "100 synthetic shipments",
+    "exactly 80 READY",
+    "exactly 20 HOLD: 8 MISSING_ACCEPTED_QUOTE, 4 DUPLICATE_SAMPLE_ID, 4 FORM_PACKAGE_MISMATCH, 4 METHOD_REVISION_MISMATCH",
+    "holds create no test/report stage",
+    "quote/form/CoC/method/result/report hashes match",
+    "replay produces zero duplicates",
+    "named-human release by dean-gaskill"
+  ],
+  "hold_codes": [
+    "MISSING_ACCEPTED_QUOTE",
+    "DUPLICATE_SAMPLE_ID",
+    "FORM_PACKAGE_MISMATCH",
+    "METHOD_REVISION_MISMATCH"
+  ],
+  "golden": {
+    "fixture_sha256": "b1160d4d7b27f6f254c263b5d8e4d13204903444a97a98205612c059c456dda2",
+    "audit_sha256": "c69f62396eab88a5c31a994caf4bcb9c51dc6c86a5473e458eff1fad2744c46f",
+    "lineage_sha256": "7b608c694273df9eea371a0f945250653f49dc40ff2f9075c3c2f4c178c03df5",
+    "report_digest": "7db20de0c437719284a9d380c2e2c5b49c00b0bce091decf75bd442cc5db542b"
+  },
+  "exclusions": [
+    "no materials-qualification decision",
+    "no autonomous certification or release",
+    "no live SSA write"
+  ],
+  "truth_gate": "HOLD / BUILD-AND-VERIFY",
+  "decision_boundary": "quote/form/package/CoC lineage, method-revision freeze, and staged-report receipts only; never materials qualification or live LIMS writes",
+  "open_door": true,
+  "requires_login": false,
+  "pre_sale_transport": "NONE",
+  "cash_usd": 0
+}

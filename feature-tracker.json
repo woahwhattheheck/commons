@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 45
+    "TESTED": 51
   },
   "features": [
     {
@@ -195,6 +195,68 @@
       "test_paths": [
         "test_open_door.py",
         "open_door_guard.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Read-only QBench-order / Metrc-package / physical-accession reconciliation for AIT Minnesota: replay 120 synthetic fixtures, accession 80 licensed-compliance and 20 R&D onto visibly separate queues, hold 8 invalid/missing licenses plus 6 duplicate IDs plus 6 designation mismatches, keep immutable source pointers, and deny R&D entry into the compliance-release queue. Named human release only. Adapters stay read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ait_mn_metrc_capacity_gate.py",
+        "ait-mn-metrc-capacity-gate.js",
+        "ait-mn-metrc-capacity-gate.html",
+        "test_ait_mn_metrc_capacity_gate.py",
+        "revenue/ait_mn_metrc_capacity_gate/contract.json",
+        "revenue/ait_mn_metrc_capacity_gate/receipt.json",
+        "revenue/ait_mn_metrc_capacity_gate/receipt.md",
+        "p/cursor-ait-mn-metrc-capacity-gate-20260831-01.md",
+        "features/registry/ait-mn-metrc-capacity-gate-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ait_mn_metrc_capacity_gate.py",
+        "ait-mn-metrc-capacity-gate.js",
+        "ait-mn-metrc-capacity-gate.html",
+        "test_ait_mn_metrc_capacity_gate.py",
+        "revenue/ait_mn_metrc_capacity_gate/contract.json",
+        "revenue/ait_mn_metrc_capacity_gate/receipt.json",
+        "revenue/ait_mn_metrc_capacity_gate/receipt.md",
+        "p/cursor-ait-mn-metrc-capacity-gate-20260831-01.md",
+        "features/registry/ait-mn-metrc-capacity-gate-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ait-mn-metrc-capacity-gate-lims-01.json",
+      "id": "ait-mn-metrc-capacity-gate-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "AIT Minnesota METRC capacity + R&D gate",
+      "next_gap": "Buyer-owned QBench/Metrc field map and de-identified live fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "ait-mn-metrc-capacity-gate.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ait-mn-metrc-capacity-gate.html",
+        "revenue/ait_mn_metrc_capacity_gate/contract.json",
+        "p/cursor-ait-mn-metrc-capacity-gate-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_ait_mn_metrc_capacity_gate.py",
+        "ait_mn_metrc_capacity_gate.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -569,6 +631,70 @@
       "test_paths": [
         "test_cornell_craft_beverage_intake.py",
         "cornell_craft_beverage_intake.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "CS Analytical expansion cross-line evidence LIMS: a 120-submission synthetic fixture accessions 90 valid study/sample/lot jobs once onto CCIT, raw-material, gas, or micro routes, holds 30 with DUPLICATE_ID, WRONG_LINE_METHOD, MISSING_STUDY_PACKAGE, INSTRUMENT_QC_FAILURE, and SOURCE_HASH_MISMATCH, binds method/instrument/value/unit/audit/source hashes 539ec0898544c686cb7bb47c1851326d2cb0d870ef905b86c221b23dcc2b67e6, never schedules a held intake, replays with zero extra records, and keeps reports staged pending named approval. Adapters stay simulated/read-only. No compliance decision.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "csanalytical_expansion_crossline.py",
+        "csanalytical-expansion-crossline-evidence-lims.js",
+        "csanalytical-expansion-crossline-evidence-lims.html",
+        "test_csanalytical_expansion_crossline.py",
+        "revenue/csanalytical_expansion_crossline/contract.json",
+        "revenue/csanalytical_expansion_crossline/receipt.json",
+        "revenue/csanalytical_expansion_crossline/receipt.md",
+        "revenue/csanalytical_expansion_crossline/fixture.json",
+        "p/cursor-csanalytical-expansion-crossline-lims-20260831-01.md",
+        "features/registry/csanalytical-expansion-crossline-evidence-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "csanalytical_expansion_crossline.py",
+        "csanalytical-expansion-crossline-evidence-lims.js",
+        "csanalytical-expansion-crossline-evidence-lims.html",
+        "test_csanalytical_expansion_crossline.py",
+        "revenue/csanalytical_expansion_crossline/contract.json",
+        "revenue/csanalytical_expansion_crossline/receipt.json",
+        "revenue/csanalytical_expansion_crossline/receipt.md",
+        "revenue/csanalytical_expansion_crossline/fixture.json",
+        "p/cursor-csanalytical-expansion-crossline-lims-20260831-01.md",
+        "features/registry/csanalytical-expansion-crossline-evidence-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "csanalytical-expansion-crossline-evidence-lims-01.json",
+      "id": "csanalytical-expansion-crossline-evidence-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CS Analytical expansion cross-line evidence LIMS",
+      "next_gap": "Buyer-owned de-identified study/package catalog after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "csanalytical-expansion-crossline-evidence-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "csanalytical-expansion-crossline-evidence-lims.html",
+        "revenue/csanalytical_expansion_crossline/contract.json",
+        "p/cursor-csanalytical-expansion-crossline-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_csanalytical_expansion_crossline.py",
+        "csanalytical_expansion_crossline.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1355,6 +1481,70 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Luvak\u2013SSA materials accession/report cutover LIMS: a 100-shipment synthetic fixture accessions 80 valid quote/form/package/CoC jobs once with frozen method revisions, holds 20 with MISSING_ACCEPTED_QUOTE, DUPLICATE_SAMPLE_ID, FORM_PACKAGE_MISMATCH, and METHOD_REVISION_MISMATCH, binds quote/form/CoC/method/result/report hashes 7b608c694273df9eea371a0f945250653f49dc40ff2f9075c3c2f4c178c03df5, never stages a held test or report, replays with zero extra records, and keeps reports staged pending named approval. Adapters stay simulated/read-only. No materials-qualification decision.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "luvak_ssa_lab_analytics_cutover.py",
+        "luvak-ssa-lab-analytics-cutover-lims.js",
+        "luvak-ssa-lab-analytics-cutover-lims.html",
+        "test_luvak_ssa_lab_analytics_cutover.py",
+        "revenue/luvak_ssa_lab_analytics/contract.json",
+        "revenue/luvak_ssa_lab_analytics/receipt.json",
+        "revenue/luvak_ssa_lab_analytics/receipt.md",
+        "revenue/luvak_ssa_lab_analytics/fixture.json",
+        "p/cursor-luvak-ssa-lab-analytics-cutover-20260831-01.md",
+        "features/registry/luvak-ssa-lab-analytics-cutover-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "luvak_ssa_lab_analytics_cutover.py",
+        "luvak-ssa-lab-analytics-cutover-lims.js",
+        "luvak-ssa-lab-analytics-cutover-lims.html",
+        "test_luvak_ssa_lab_analytics_cutover.py",
+        "revenue/luvak_ssa_lab_analytics/contract.json",
+        "revenue/luvak_ssa_lab_analytics/receipt.json",
+        "revenue/luvak_ssa_lab_analytics/receipt.md",
+        "revenue/luvak_ssa_lab_analytics/fixture.json",
+        "p/cursor-luvak-ssa-lab-analytics-cutover-20260831-01.md",
+        "features/registry/luvak-ssa-lab-analytics-cutover-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "luvak-ssa-lab-analytics-cutover-lims-01.json",
+      "id": "luvak-ssa-lab-analytics-cutover-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Luvak\u2013SSA lab analytics cutover LIMS",
+      "next_gap": "Buyer-owned de-identified quote/form/package catalog after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "luvak-ssa-lab-analytics-cutover-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "luvak-ssa-lab-analytics-cutover-lims.html",
+        "revenue/luvak_ssa_lab_analytics/contract.json",
+        "p/cursor-luvak-ssa-lab-analytics-cutover-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_luvak_ssa_lab_analytics_cutover.py",
+        "luvak_ssa_lab_analytics_cutover.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Muhlnickel inference is encoded as two Shopify-native product imports: a three-tier attested-run service and generated-token capacity from $0.10 to $0.02 per million, below three cited cloud output-token rates without claiming model-quality equivalence or unmeasured frontier capacity.",
       "carrier": "CODEX",
       "chat_ignored": false,
@@ -2019,6 +2209,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "PFAS field-blank and custody gate: a 150-row frozen water fixture accessions 120 valid Grand Rapids/Holland/Muskegon submissions once with method and field-blank parentage, holds 30 rows with six exact truth-set codes, creates no worksheet or portal result on a hold, reconciles source/image/custody hashes, replays with zero new records, and keeps portal release human-only. Adapters stay simulated.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "preinnewhof_pfas_fieldblank_gate.py",
+        "preinnewhof-pfas-fieldblank-gate-lims.js",
+        "preinnewhof-pfas-fieldblank-gate-lims.html",
+        "test_preinnewhof_pfas_fieldblank_gate.py",
+        "revenue/preinnewhof_pfas_fieldblank_gate/contract.json",
+        "revenue/preinnewhof_pfas_fieldblank_gate/receipt.json",
+        "revenue/preinnewhof_pfas_fieldblank_gate/receipt.md",
+        "p/cursor-preinnewhof-pfas-fieldblank-gate-20260831-01.md",
+        "features/registry/preinnewhof-pfas-fieldblank-gate-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "preinnewhof_pfas_fieldblank_gate.py",
+        "preinnewhof-pfas-fieldblank-gate-lims.js",
+        "preinnewhof-pfas-fieldblank-gate-lims.html",
+        "test_preinnewhof_pfas_fieldblank_gate.py",
+        "revenue/preinnewhof_pfas_fieldblank_gate/contract.json",
+        "revenue/preinnewhof_pfas_fieldblank_gate/receipt.json",
+        "revenue/preinnewhof_pfas_fieldblank_gate/receipt.md",
+        "p/cursor-preinnewhof-pfas-fieldblank-gate-20260831-01.md",
+        "features/registry/preinnewhof-pfas-fieldblank-gate-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "preinnewhof-pfas-fieldblank-gate-lims-01.json",
+      "id": "preinnewhof-pfas-fieldblank-gate-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Prein&Newhof PFAS field-blank gate",
+      "next_gap": "Buyer-owned COC/bottle schema, drop-off hours, and de-identified fixtures after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "preinnewhof-pfas-fieldblank-gate-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "preinnewhof-pfas-fieldblank-gate-lims.html",
+        "revenue/preinnewhof_pfas_fieldblank_gate/contract.json",
+        "p/cursor-preinnewhof-pfas-fieldblank-gate-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_preinnewhof_pfas_fieldblank_gate.py",
+        "preinnewhof_pfas_fieldblank_gate.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Q Connect cutover verification: an immutable 240-case synthetic manifest accessions 200 valid personal-care/pharma submissions once with the catalog route, holds 40 obsolete-code, wrong-department, missing-field, invalid account/user, shared-credential, or timeout-retry failures with exact reasons, denies shared credentials, never lets obsolete codes enter testing, keeps field/catalog/user provenance, replays with zero duplicates, and requires named human QA. Adapters stay simulated and read-only.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2566,6 +2818,134 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "SGS PSI high-throughput thermal-rheology lineage LIMS: a 120-request synthetic fixture accessions 90 valid DSC-250/HR-20 jobs once onto reserved autosampler slots, holds 30 with MISSING_LINKAGE, DUPLICATE_CONTAINER, METHOD_INSTRUMENT_MISMATCH, SLOT_COLLISION, and QC_FAILURE, binds source/method/raw-value/unit/report hashes 87f0ed13ee7ab7cbbdb30ef9daec7505c61c22ceb57611efb1f0f6be5c2f9e26, replays with zero extra records, and keeps reports staged pending named approval. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "sgspsi_thermal_rheology_lineage.py",
+        "sgspsi-thermal-rheology-lineage-lims.js",
+        "sgspsi-thermal-rheology-lineage-lims.html",
+        "test_sgspsi_thermal_rheology_lineage.py",
+        "revenue/sgspsi_thermal_rheology_lineage/contract.json",
+        "revenue/sgspsi_thermal_rheology_lineage/receipt.json",
+        "revenue/sgspsi_thermal_rheology_lineage/receipt.md",
+        "revenue/sgspsi_thermal_rheology_lineage/fixture.json",
+        "p/cursor-sgspsi-thermal-rheology-lineage-lims-20260831-01.md",
+        "features/registry/sgspsi-high-throughput-thermal-rheology-lineage-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "sgspsi_thermal_rheology_lineage.py",
+        "sgspsi-thermal-rheology-lineage-lims.js",
+        "sgspsi-thermal-rheology-lineage-lims.html",
+        "test_sgspsi_thermal_rheology_lineage.py",
+        "revenue/sgspsi_thermal_rheology_lineage/contract.json",
+        "revenue/sgspsi_thermal_rheology_lineage/receipt.json",
+        "revenue/sgspsi_thermal_rheology_lineage/receipt.md",
+        "revenue/sgspsi_thermal_rheology_lineage/fixture.json",
+        "p/cursor-sgspsi-thermal-rheology-lineage-lims-20260831-01.md",
+        "features/registry/sgspsi-high-throughput-thermal-rheology-lineage-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "sgspsi-high-throughput-thermal-rheology-lineage-lims-01.json",
+      "id": "sgspsi-high-throughput-thermal-rheology-lineage-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "SGS PSI thermal-rheology lineage LIMS",
+      "next_gap": "Buyer-owned requirement/form/payment schema, DSC-250/HR-20 method revision, and de-identified golden instrument files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "sgspsi-thermal-rheology-lineage-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "sgspsi-thermal-rheology-lineage-lims.html",
+        "revenue/sgspsi_thermal_rheology_lineage/contract.json",
+        "p/cursor-sgspsi-thermal-rheology-lineage-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_sgspsi_thermal_rheology_lineage.py",
+        "sgspsi_thermal_rheology_lineage.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "SLO County PHL incumbent\u2192CliniSys cutover verifier: a 1000-bundle synthetic legacy manifest accessions 850 valid requisition/portal + Panther Fusion objects once into unique CLS mappings, holds 150 with DUPLICATE_ID, BROKEN_SAMPLE_TEST_REF, METHOD_VERSION_CONFLICT, and REPORT_RESULT_HASH_MISMATCH, binds source/method/result/report hashes e3ab31e345104a78eb97d2301923aed660b712837517ca2666ca8b427de97d68, replays with zero extra records, restores the exact baseline on rollback, and keeps reports staged pending named approval. Adapters stay simulated/read-only. No public-health interpretation.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "slo_cls_cutover_evidence.py",
+        "slo-cls-cutover-evidence-lims.js",
+        "slo-cls-cutover-evidence-lims.html",
+        "test_slo_cls_cutover_evidence.py",
+        "revenue/slo_cls_cutover/contract.json",
+        "revenue/slo_cls_cutover/receipt.json",
+        "revenue/slo_cls_cutover/receipt.md",
+        "revenue/slo_cls_cutover/fixture.json",
+        "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md",
+        "features/registry/slo-cls-cutover-evidence-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "slo_cls_cutover_evidence.py",
+        "slo-cls-cutover-evidence-lims.js",
+        "slo-cls-cutover-evidence-lims.html",
+        "test_slo_cls_cutover_evidence.py",
+        "revenue/slo_cls_cutover/contract.json",
+        "revenue/slo_cls_cutover/receipt.json",
+        "revenue/slo_cls_cutover/receipt.md",
+        "revenue/slo_cls_cutover/fixture.json",
+        "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md",
+        "features/registry/slo-cls-cutover-evidence-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "slo-cls-cutover-evidence-lims-01.json",
+      "id": "slo-cls-cutover-evidence-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "SLO CliniSys cutover evidence LIMS",
+      "next_gap": "Buyer-owned de-identified incumbent/CLS catalog after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "slo-cls-cutover-evidence-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "slo-cls-cutover-evidence-lims.html",
+        "revenue/slo_cls_cutover/contract.json",
+        "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slo_cls_cutover_evidence.py",
+        "slo_cls_cutover_evidence.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -3080,7 +3460,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 51,
+  "n_features": 57,
   "n_invalid": 6,
   "not_this": {
     "builds.html": "permit SOP.",
