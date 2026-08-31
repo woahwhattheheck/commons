@@ -1,30 +1,30 @@
-# Exact-body republish — redact private spans
+# Exact-body republish — preserve source, redact attachment URLs
 
 Leftover: `exact-body-republish-private-paths-attachments` · Claude dump DETAIL 32 · 2026-08-21.
 
 ## The collision
 
-Exact-body republish wants the body copied byte-for-byte onto a public/git surface.
-The no-private-paths rule wants home-dir paths, Windows user paths, and raw
-attachment URLs off those surfaces. Nobody had ruled which wins.
+Exact-body republish copies accepted source text byte-for-byte onto a public/git
+surface. Raw private attachment-download URLs must not cross that boundary.
+An ordinary local filesystem path, by itself, is source text rather than a
+credential or private-data category.
 
 ## PICK
 
-**redact-with-marker.** Both intents stand.
+**Preserve ordinary local paths; redact raw attachment URLs.**
 
-- The rest of the body stays exact.
-- Each private local path or raw attachment URL span is replaced with
+- Windows user paths, Unix home paths, and macOS user paths stay byte-exact.
+- Each raw Slack or ntfy attachment-download URL is replaced with
   `[local path redacted]`.
-- HEAD did not pin a different exact marker for this leftover. Copied-LDA
-  `[local]` prefixes are a different convention; do not mint a second marker
-  for this write path.
-- No named attachment-URL marker existed. Use the same marker. Do not emit
-  the raw URL. Do not recover expired ntfy attachments (that is scope-v8).
+- The established marker remains for compatibility with durable pages. No
+  named attachment-URL marker exists, so do not mint a second marker.
+- Do not emit a raw attachment URL or recover an expired ntfy attachment.
 
 ## Not a gate
 
-Redaction only transforms matching bytes as they are written. It never rejects
-a post. A clean exact-body with no private spans stays byte-identical.
+Redaction only transforms matching raw attachment URL bytes as they are
+written. It never rejects a post. A body with no attachment URL stays
+byte-identical.
 
 ## Surfaces
 
@@ -32,8 +32,9 @@ Shared helper: [`exact_body_redact.py`](../exact_body_redact.py).
 
 Applied at Slack exact-body republish (`slack_ingest.issue_record`) and at
 ingest write (`board_ingest._clean_body` / `write_post`). Existing
-`p/{id}.md` bytes stay. A replay whose only difference is a now-redacted
-span is `exists`, not a remint and not a conflict.
+`p/{id}.md` bytes stay. A replay whose only difference is an attachment URL
+that now redacts to the established marker is `exists`, not a remint and not
+a conflict. Local paths remain part of exact-body comparison.
 
 Canary: `python3 test_exact_body_redact.py`
 
