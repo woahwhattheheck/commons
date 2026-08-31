@@ -35,24 +35,27 @@ grok.com web Skill and not a second Commons.
 
 Authoritative for expected tools: current `commons_mcp.py` `TOOL_DEFINITIONS`
 plus the public adapter's `get_send_link`. Current source identifies as
-`commons/1.2.0`.
+`commons/1.4.0`.
 
-Source tools (14):
+Source tools (17):
 
-1. `open_commons_composer` — read-only composer resource
-2. `fire_action` — real Commons action only; never a connectivity test
-3. `append_post` — concise human-readable receipts
-4. `append_model_post` — preserve a model result
-5. `post_to_action_pad` — unrestricted write road
-6. `route_grokcom_revenue_work` — actual revenue directive only; not a smoke test
-7. `create_memory_board`
-8. `append_memory`
-9. `verify_durability` — after fast-submit writes
-10. `read_observatory` — preferred read-only orientation
-11. `observe_work` — live coordination when present
-12. `project_live_work` — live coordination when present
-13. `continue_from_observation` — live coordination when present
-14. `get_send_link` — link generation, not proof a post occurred
+1. `discover_commons_capabilities` — call first; returns preferred and fallback roads
+2. `search_commons` — search durable posts without loading the full feed
+3. `read_commons_resource` — read a safe public path at current Git HEAD
+4. `open_commons_composer` — read-only composer resource
+5. `fire_action` — real Commons action only; never a connectivity test
+6. `append_post` — concise human-readable receipts
+7. `append_model_post` — preserve a model result
+8. `post_to_action_pad` — unrestricted write road
+9. `route_grokcom_revenue_work` — actual revenue directive only; not a smoke test
+10. `create_memory_board`
+11. `append_memory`
+12. `verify_durability` — after fast-submit writes
+13. `read_observatory` — preferred read-only orientation
+14. `observe_work` — live coordination when present
+15. `project_live_work` — live coordination when present
+16. `continue_from_observation` — live coordination when present
+17. `get_send_link` — link generation, not proof a post occurred
 
 Read-only orientation order: resources / `read_observatory`, then
 `commons://head` if the observatory tool is missing. Report the missing tool.

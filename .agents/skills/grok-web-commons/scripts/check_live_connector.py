@@ -23,6 +23,9 @@ PROTOCOL_OFFER = "2025-03-26"
 TIMEOUT_S = 15
 
 SOURCE_CORE_TOOLS = (
+    "discover_commons_capabilities",
+    "search_commons",
+    "read_commons_resource",
     "open_commons_composer",
     "fire_action",
     "append_post",
@@ -41,6 +44,9 @@ ADAPTER_EXTRA_TOOLS = ("get_send_link",)
 EXPECTED_SOURCE_TOOLS = SOURCE_CORE_TOOLS + ADAPTER_EXTRA_TOOLS
 READONLY_TOOLS = frozenset(
     {
+        "discover_commons_capabilities",
+        "search_commons",
+        "read_commons_resource",
         "open_commons_composer",
         "verify_durability",
         "read_observatory",
