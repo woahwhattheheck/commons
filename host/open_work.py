@@ -82,8 +82,8 @@ def resolve_main_sha(root, explicit=""):
     if SHA_RE.match(text):
         return text
     for args in (
-        ["git", "rev-parse", "HEAD"],
         ["git", "rev-parse", "origin/main"],
+        ["git", "rev-parse", "HEAD"],
     ):
         try:
             out = subprocess.check_output(
@@ -103,7 +103,32 @@ def receipt_path(ident):
     return os.path.join("p", "%s.md" % ident)
 
 
-def receipt_exists(root, ident):
+def _git_object_exists(root, spec):
+    try:
+        result = subprocess.run(
+            ["git", "cat-file", "-e", spec],
+            cwd=root,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            check=False,
+        )
+    except OSError:
+        return False
+    return result.returncode == 0
+
+
+def commit_available(root, main_sha):
+    sha = str(main_sha or "").strip().lower()
+    return bool(SHA_RE.match(sha)) and _git_object_exists(root, "%s^{commit}" % sha)
+
+
+def receipt_exists(root, ident, main_sha="", commit_checked=False):
+    sha = str(main_sha or "").strip().lower()
+    if sha:
+        if not commit_checked and not commit_available(root, sha):
+            return False
+        rel = receipt_path(ident).replace(os.sep, "/")
+        return _git_object_exists(root, "%s:%s" % (sha, rel))
     return os.path.isfile(os.path.join(root, receipt_path(ident)))
 
 
@@ -182,6 +207,7 @@ def parse_structured_record(text):
     header_text = "\n".join(headers)
     structure = body[:BODY_STRUCTURE_LINES]
     structure_text = "\n".join(structure)
+    body_text = "\n".join(body)
     ident = ""
     src = ""
     language_model = ""
@@ -198,7 +224,7 @@ def parse_structured_record(text):
             language_model = mlm.group(1)
         if KIND_ACTION_RE.match(line.strip()):
             kind = "ACTION"
-    work_ids = extract_work_ids(header_text + "\n" + structure_text)
+    work_ids = extract_work_ids(header_text + "\n" + body_text)
     owner = src.upper() == "BRYCE" or language_model.upper() == "NO"
     action = kind == "ACTION"
     sent_using = bool(SENT_USING_RE.search(structure_text)) or bool(
@@ -251,15 +277,21 @@ def classify_record(record, exists, slack_claimed=False):
 def classify_id(ident, root, extra=None, record=None, main_sha=""):
     extra = extra if isinstance(extra, dict) else {}
     claimed = set(extra.get("slack_claimed") or [])
-    exists = receipt_exists(root, ident)
+    sha = resolve_main_sha(root, main_sha)
+    commit_ok = commit_available(root, sha)
+    exists = receipt_exists(root, ident, sha, commit_checked=True) if commit_ok else False
     row_record = dict(record or {})
     row_record.setdefault("work", True)
     klass = classify_record(row_record, exists, slack_claimed=ident in claimed)
+    errors = []
+    if not commit_ok:
+        errors.append({"code": "MAIN_SHA_UNMEASURED", "main_sha": sha})
     return {
         "id": ident,
         "class": klass,
         "receipt": receipt_path(ident) if exists else "404",
-        "last_sha": main_sha,
+        "last_sha": sha,
+        "errors": errors,
     }
 
 
@@ -416,6 +448,10 @@ def merge_candidates(rows, extra=None):
 
 def project(root, main_sha="", extra=None, include_salon=False):
     sha = resolve_main_sha(root, main_sha)
+    commit_ok = commit_available(root, sha)
+    errors = []
+    if not commit_ok:
+        errors.append({"code": "MAIN_SHA_UNMEASURED", "main_sha": sha})
     extra = extra if isinstance(extra, dict) else {}
     rows = collect_posts(root, include_salon=include_salon)
     rows.extend(collect_wake_jobs(root))
@@ -423,7 +459,7 @@ def project(root, main_sha="", extra=None, include_salon=False):
     items = []
     for ident in sorted(by_id):
         record = by_id[ident]
-        exists = receipt_exists(root, ident)
+        exists = receipt_exists(root, ident, sha, commit_checked=True) if commit_ok else False
         slack_claimed = bool(record.get("slack_claimed")) or ident in set(
             extra.get("slack_claimed") or []
         )
@@ -444,6 +480,7 @@ def project(root, main_sha="", extra=None, include_salon=False):
     return {
         "schema": SCHEMA,
         "main_sha": sha,
+        "errors": errors,
         "items": items,
         "counts": counts,
         "human": HUMAN_REL,

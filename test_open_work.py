@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import os
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -21,7 +22,34 @@ LANDED_IDS = (
     "kimi-subzero-walker-20260829-01",
     "kimi-distro-listing-20260829-01",
 )
-SHA = "a" * 40
+SHA = subprocess.check_output(
+    ["git", "rev-parse", "HEAD"],
+    cwd=ROOT,
+    text=True,
+).strip().lower()
+
+
+def _commit_tree(root):
+    subprocess.check_call(["git", "init", "-q"], cwd=root)
+    subprocess.check_call(["git", "add", "."], cwd=root)
+    subprocess.check_call(
+        [
+            "git",
+            "-c",
+            "user.name=Commons Test",
+            "-c",
+            "user.email=commons-test@example.invalid",
+            "commit",
+            "-qm",
+            "fixture",
+        ],
+        cwd=root,
+    )
+    return subprocess.check_output(
+        ["git", "rev-parse", "HEAD"],
+        cwd=root,
+        text=True,
+    ).strip().lower()
 
 
 def _write(path, text):
@@ -81,9 +109,10 @@ class OpenWorkContract(unittest.TestCase):
                     }
                 ),
             )
+            fixture_sha = _commit_tree(tmp)
             snapshot = ow.project(
                 tmp,
-                SHA,
+                fixture_sha,
                 extra={"slack_claimed": ["slack-claimed-no-file-20260829-01"]},
                 include_salon=True,
             )
@@ -138,7 +167,8 @@ class OpenWorkContract(unittest.TestCase):
                 os.path.join(tmp, "p", "kimi-pages-speed-20260829-01.md"),
                 "id: kimi-pages-speed-20260829-01\n\n---\n\nWORK ORDER kimi-pages-speed-20260829-01\n",
             )
-            snapshot = ow.project(tmp, SHA)
+            fixture_sha = _commit_tree(tmp)
+            snapshot = ow.project(tmp, fixture_sha)
             ow.write_snapshot(tmp, snapshot)
             with open(os.path.join(tmp, ow.HUMAN_REL), encoding="utf-8") as handle:
                 human = handle.read()
@@ -174,7 +204,8 @@ class OpenWorkContract(unittest.TestCase):
                 os.path.join(tmp, "p", "action-20260828163033-89fe29a5e062.md"),
                 "from: SOL\nid: action-20260828163033-89fe29a5e062\nkind: ACTION\n\n---\n\nkind: ACTION\n",
             )
-            snapshot = ow.project(tmp, SHA)
+            fixture_sha = _commit_tree(tmp)
+            snapshot = ow.project(tmp, fixture_sha)
             ow.write_snapshot(tmp, snapshot)
             listing = os.path.join(tmp, ow.LISTING_REL)
             names = sorted(os.listdir(listing))
@@ -192,6 +223,66 @@ class OpenWorkContract(unittest.TestCase):
             )
         finally:
             shutil.rmtree(tmp, ignore_errors=True)
+
+
+    def test_receipts_are_measured_at_supplied_main_sha(self):
+        tmp = tempfile.mkdtemp(prefix="open-work-main-sha-")
+        committed = "committed-only-receipt-20260831-01"
+        worktree = "worktree-only-receipt-20260831-01"
+        try:
+            _write(
+                os.path.join(tmp, "p", "%s.md" % committed),
+                "id: %s\n\n---\n\nWORK ORDER %s\n" % (committed, committed),
+            )
+            fixture_sha = _commit_tree(tmp)
+            os.remove(os.path.join(tmp, "p", "%s.md" % committed))
+            _write(
+                os.path.join(tmp, "p", "%s.md" % worktree),
+                "id: %s\n\n---\n\nWORK ORDER %s\n" % (worktree, worktree),
+            )
+            snapshot = ow.project(
+                tmp,
+                fixture_sha,
+                extra={"work_ids": [committed, worktree]},
+            )
+            by_id = {item["id"]: item for item in snapshot["items"]}
+            self.assertEqual(snapshot["errors"], [])
+            self.assertEqual(by_id[committed]["class"], "LANDED")
+            self.assertEqual(by_id[committed]["receipt"], "p/%s.md" % committed)
+            self.assertEqual(by_id[worktree]["class"], "OPEN")
+            self.assertEqual(by_id[worktree]["receipt"], "404")
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_unmeasured_main_sha_fails_closed_with_catalog_error(self):
+        tmp = tempfile.mkdtemp(prefix="open-work-bad-sha-")
+        ident = "unmeasured-main-receipt-20260831-01"
+        try:
+            _write(
+                os.path.join(tmp, "p", "%s.md" % ident),
+                "id: %s\n\n---\n\nWORK ORDER %s\n" % (ident, ident),
+            )
+            snapshot = ow.project(tmp, "f" * 40, extra={"work_ids": [ident]})
+            by_id = {item["id"]: item for item in snapshot["items"]}
+            self.assertEqual(by_id[ident]["class"], "OPEN")
+            self.assertEqual(by_id[ident]["receipt"], "404")
+            self.assertEqual(
+                snapshot["errors"],
+                [{"code": "MAIN_SHA_UNMEASURED", "main_sha": "f" * 40}],
+            )
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_work_order_marker_after_line_sixteen_is_structured(self):
+        ident = "deep-body-work-order-20260831-01"
+        body = ["filler line %d" % number for number in range(1, 20)]
+        body.append("WORK ORDER %s" % ident)
+        parsed = ow.parse_structured_record(
+            "from: PEER\nid: carrier-deep-marker-20260831-01\n\n---\n\n"
+            + "\n".join(body)
+            + "\n"
+        )
+        self.assertIn(ident, parsed["work_ids"])
 
 
 if __name__ == "__main__":
