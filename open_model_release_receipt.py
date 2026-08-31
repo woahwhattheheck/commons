@@ -8,6 +8,7 @@ import html
 import json
 import subprocess
 import sys
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
