@@ -1,26 +1,22 @@
 {
+  "schema": "commons-feature-v1",
   "id": "permit-intake-receipt",
-  "title": "Permit intake receipt demo",
-  "status": "SHIPPED",
-  "kind": "public_product_demo",
-  "paths": [
+  "name": "Permit intake receipt demo",
+  "capability": "Deterministic public intake checklist with exactly-once notice, review queue, and receipt; it makes no approval or denial.",
+  "owner_subsystem": "commerce",
+  "carrier": "CODEX",
+  "claimed_paths": [
     "permit-intake-receipt.html",
     "permit-intake-receipt.js",
     "revenue/permit_intake_receipt/contract.json",
-    "revenue/permit_intake_receipt/receipt.json",
-    "test_permit_intake_receipt.js",
-    "p/codex-permit-intake-receipt-20260831-01.md"
+    "revenue/permit_intake_receipt/receipt.json"
   ],
-  "evidence": {
-    "command": "node test_permit_intake_receipt.js",
-    "expected": "permit-intake-receipt: 8 scenarios PASS",
-    "acceptance": "deterministic checklist; exactly-once notice, review queue, and receipt; no approval or denial"
-  },
-  "commercial": {
-    "entry_usd": 199,
-    "proof_usd": 2500,
-    "cash_usd": 0
-  },
+  "test_paths": ["test_permit_intake_receipt.js"],
+  "public_entrypoint": "permit-intake-receipt.html",
+  "dependencies": [],
+  "resource_links": ["p/codex-permit-intake-receipt-20260831-01.md"],
+  "next_gap": "Keep authority, approval, denial, payment, and production use unclaimed until independently evidenced.",
+  "commercial": {"entry_usd": 199, "proof_usd": 2500, "cash_usd": 0},
   "open_door": true,
   "requires_login": false
 }

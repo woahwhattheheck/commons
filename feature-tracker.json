@@ -9,14 +9,90 @@
     "same_id_same_bytes": "idempotent"
   },
   "counts": {
-    "DEGRADED": 2,
-    "LIVE": 1,
+    "DEGRADED": 0,
+    "LIVE": 3,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 51
+    "TESTED": 65
   },
   "features": [
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
+        "28a40d31b6bec435b4906addc0241f22419fb339",
+        "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f"
+      ],
+      "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-arbitrage-opportunity-git-20260830-01",
+        "ev-arbitrage-opportunity-receipt-20260830-01",
+        "ev-arbitrage-opportunity-source-20260830-01",
+        "ev-arbitrage-opportunity-tests-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-01",
+        "ev-arbitrage-opportunity-live-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-02",
+        "ev-arbitrage-opportunity-live-20260830-02",
+        "ev-arbitrage-opportunity-receipt-20260830-02",
+        "ev-arbitrage-opportunity-blob-20260830-03",
+        "ev-arbitrage-opportunity-live-20260830-03",
+        "ev-arbitrage-opportunity-live-20260831-04"
+      ],
+      "file": "arbitrage-opportunity-road-20260830-01.json",
+      "id": "arbitrage-opportunity-road-20260830-01",
+      "last_change": "2026-08-31T07:43:21Z",
+      "live_status": "LIVE",
+      "main_sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+      "name": "Arbitrage opportunity road",
+      "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "arbitrage.html",
+      "receipts": [
+        "codex-arbitrage-opportunity-road-20260830-01",
+        "unseated-feature-tracker-commerce-doors-20260830-02"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "commerce.html",
+        "data-license.html",
+        "opportunity.html",
+        "p/codex-arbitrage-opportunity-road-20260830-01.md",
+        "agent-rescue.html"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_arbitrage.py",
+        "revenue/arbitrage/opportunity.schema.json"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
     {
       "author_claim_ignored": "",
       "blob_proof": [
@@ -83,6 +159,198 @@
       "test_paths": [
         "test_unbuilt_items.py",
         "host/unbuilt_items.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "data-license.html:f416d7031fa05134d3bb16b8bd3b01910ebd0835",
+        "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
+        "data-license.html:0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
+        "0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
+        "522711db594dfe5701da2177399bef17a6523635"
+      ],
+      "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "data-license.html",
+        "test_data_license.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "data-license.html",
+        "test_data_license.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-unique-data-license-git-20260830-01",
+        "ev-unique-data-license-receipt-20260830-01",
+        "ev-unique-data-license-source-20260830-01",
+        "ev-unique-data-license-tests-20260830-01",
+        "ev-unique-data-license-blob-20260830-01",
+        "ev-unique-data-license-live-20260830-01",
+        "ev-unique-data-license-blob-20260830-02",
+        "ev-unique-data-license-live-20260830-02",
+        "ev-unique-data-license-live-20260831-03"
+      ],
+      "file": "unique-data-license-door-20260830-01.json",
+      "id": "unique-data-license-door-20260830-01",
+      "last_change": "2026-08-31T07:43:21Z",
+      "live_status": "LIVE",
+      "main_sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+      "name": "Unique data license door",
+      "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "data-license.html",
+      "receipts": [
+        "codex-unique-data-license-door-20260830-01"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "commerce.html",
+        "commercial.html",
+        "revenue/ip/whitebox_archive_inventory.json",
+        "revenue/ip/whitebox_archive_license_probe.json",
+        "revenue/data/ci_receipt_corpus.json",
+        "p/codex-unique-data-license-door-20260830-01.md"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_data_license.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "AquaTrace CMDP official reporting-schema evidence runner: citation-backed Microbial / Chems-Rads / Cryptosporidium matrix from EPA/state primary sources, synthetic documented-field drafts, exact UNKNOWN / BUYER OR VENDOR SAMPLE REQUIRED ledger, fail-closed invented-field / missing-citation / submission / unknown-as-known probes, named-human draft disposition, idempotent replay, audit_sha256 1988e9677633be5c253f28155a8139eaf710845006086c944d5f236297914f94. Draft/export preparation only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "at_grok_cmdp_evidence.py",
+        "test_at_grok_cmdp_evidence.py",
+        "at-grok-cmdp-evidence.html",
+        "revenue/at_grok_cmdp_evidence/runner.py",
+        "revenue/at_grok_cmdp_evidence/schema_matrix.json",
+        "revenue/at_grok_cmdp_evidence/SCHEMA_MATRIX.md",
+        "p/AT-GROK-CMDP-EVIDENCE-01.md",
+        "features/registry/AT-GROK-CMDP-EVIDENCE-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "at_grok_cmdp_evidence.py",
+        "test_at_grok_cmdp_evidence.py",
+        "at-grok-cmdp-evidence.html",
+        "revenue/at_grok_cmdp_evidence/runner.py",
+        "revenue/at_grok_cmdp_evidence/schema_matrix.json",
+        "revenue/at_grok_cmdp_evidence/SCHEMA_MATRIX.md",
+        "p/AT-GROK-CMDP-EVIDENCE-01.md",
+        "features/registry/AT-GROK-CMDP-EVIDENCE-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "AT-GROK-CMDP-EVIDENCE-01.json",
+      "id": "AT-GROK-CMDP-EVIDENCE-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "AquaTrace CMDP official reporting schema evidence",
+      "next_gap": "Buyer or vendor CMDP XML sample plus the current Sample Data Dictionary / LIMS ICD bytes. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE. State remains NOT_READY / HOLD / BUILD-AND-VERIFY.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "at-grok-cmdp-evidence.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "at-grok-cmdp-evidence.html",
+        "revenue/at_grok_cmdp_evidence/SCHEMA_MATRIX.md",
+        "p/AT-GROK-CMDP-EVIDENCE-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_at_grok_cmdp_evidence.py",
+        "at_grok_cmdp_evidence.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "AquaTrace production-operations proof design: candidate-bound acceptance matrix for identity/MFA/session, tenant/lab RBAC, encryption/secrets, monitoring, backup/restore/DR, support/incident response, accessibility, training/UAT, and buyer sign-off. Fail-closed on missing hash or freshness. Never promotes NOT_READY to READY. Named-human release only. Replay idempotent. UNKNOWN where no public evidence exists.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "aquatrace_ops_acceptance.py",
+        "test_aquatrace_ops_acceptance.py",
+        "aquatrace-ops-acceptance.html",
+        "revenue/aquatrace_ops_acceptance/matrix.json",
+        "revenue/aquatrace_ops_acceptance/source.json",
+        "revenue/aquatrace_ops_acceptance/contract.json",
+        "revenue/aquatrace_ops_acceptance/unknown_ledger.json",
+        "revenue/aquatrace_ops_acceptance/public_sources.json",
+        "p/AT-GROK-OPS-ACCEPTANCE-01.md",
+        "features/registry/AT-GROK-OPS-ACCEPTANCE-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "aquatrace_ops_acceptance.py",
+        "test_aquatrace_ops_acceptance.py",
+        "aquatrace-ops-acceptance.html",
+        "revenue/aquatrace_ops_acceptance/matrix.json",
+        "revenue/aquatrace_ops_acceptance/source.json",
+        "revenue/aquatrace_ops_acceptance/contract.json",
+        "revenue/aquatrace_ops_acceptance/unknown_ledger.json",
+        "revenue/aquatrace_ops_acceptance/public_sources.json",
+        "p/AT-GROK-OPS-ACCEPTANCE-01.md",
+        "features/registry/AT-GROK-OPS-ACCEPTANCE-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "AT-GROK-OPS-ACCEPTANCE-01.json",
+      "id": "AT-GROK-OPS-ACCEPTANCE-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "AquaTrace ops acceptance matrix",
+      "next_gap": "Durable hashed artifacts plus freshness windows for each of the nine rows. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "aquatrace-ops-acceptance.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "aquatrace-ops-acceptance.html",
+        "revenue/aquatrace_ops_acceptance/matrix.json",
+        "p/AT-GROK-OPS-ACCEPTANCE-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_aquatrace_ops_acceptance.py",
+        "aquatrace_ops_acceptance.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -257,6 +525,140 @@
       "test_paths": [
         "test_ait_mn_metrc_capacity_gate.py",
         "ait_mn_metrc_capacity_gate.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "AquaTrace reporting and offline recovery runner: a working CLI loads 80 frozen synthetic offline events, recovers 60 into CMDP, netDMR, and Power BI destinations, blocks 20 conflicts with exact HOLD codes, locks three export-contract golden hashes, refuses autonomous export or release, and reproduces audit_sha256 5be4b7ebe6432e675fdb1360ad1125262a014de25eb740dae8ea7aa88c63e51b. Adapters stay synthetic and read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "aquatrace_work_order_c_reporting_offline.py",
+        "revenue/aquatrace_work_order_c_reporting_offline/runner.py",
+        "revenue/aquatrace_work_order_c_reporting_offline/fixture.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/source.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/README.md",
+        "revenue/aquatrace_work_order_c_reporting_offline/contract.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/run.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/audit.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/replay.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/exports.json",
+        "test_aquatrace_work_order_c_reporting_offline.py",
+        "aquatrace-work-order-c-reporting-offline.html",
+        "p/aquatrace-work-order-c-reporting-offline-20260831-01.md",
+        "features/registry/aquatrace-work-order-c-reporting-offline-20260831-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "aquatrace_work_order_c_reporting_offline.py",
+        "revenue/aquatrace_work_order_c_reporting_offline/runner.py",
+        "revenue/aquatrace_work_order_c_reporting_offline/fixture.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/source.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/README.md",
+        "revenue/aquatrace_work_order_c_reporting_offline/contract.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/run.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/audit.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/replay.json",
+        "revenue/aquatrace_work_order_c_reporting_offline/receipts/exports.json",
+        "test_aquatrace_work_order_c_reporting_offline.py",
+        "aquatrace-work-order-c-reporting-offline.html",
+        "p/aquatrace-work-order-c-reporting-offline-20260831-01.md",
+        "features/registry/aquatrace-work-order-c-reporting-offline-20260831-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "aquatrace-work-order-c-reporting-offline-20260831-01.json",
+      "id": "aquatrace-work-order-c-reporting-offline-20260831-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "AquaTrace reporting and offline recovery runner",
+      "next_gap": "Buyer-owned de-identified offline/export golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE. State remains NOT_READY / HOLD / BUILD-AND-VERIFY.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "aquatrace-work-order-c-reporting-offline.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "aquatrace-work-order-c-reporting-offline.html",
+        "revenue/aquatrace_work_order_c_reporting_offline/contract.json",
+        "p/aquatrace-work-order-c-reporting-offline-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_aquatrace_work_order_c_reporting_offline.py",
+        "aquatrace_work_order_c_reporting_offline.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "AquaTrace Lane F customer release-readiness runner: independently checks demo, training, deployment, support, security, disaster recovery, interfaces, and buyer-acceptance against durable evidence pointers; unresolved gates stay NOT_READY; named-human release only; SYSTEM/unnamed/HELD denied; synthetic/read-only fixtures; idempotent replay.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "aquatrace_work_order_f_release_readiness.py",
+        "test_aquatrace_work_order_f_release_readiness.py",
+        "aquatrace-work-order-f-release-readiness.html",
+        "revenue/aquatrace_work_order_f_release_readiness/contract.json",
+        "revenue/aquatrace_work_order_f_release_readiness/source.json",
+        "revenue/aquatrace_work_order_f_release_readiness/gates.json",
+        "revenue/aquatrace_work_order_f_release_readiness/default_pointers.json",
+        "p/aquatrace-work-order-f-release-readiness-20260831-01.md",
+        "features/registry/aquatrace-work-order-f-release-readiness-20260831-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "aquatrace_work_order_f_release_readiness.py",
+        "test_aquatrace_work_order_f_release_readiness.py",
+        "aquatrace-work-order-f-release-readiness.html",
+        "revenue/aquatrace_work_order_f_release_readiness/contract.json",
+        "revenue/aquatrace_work_order_f_release_readiness/source.json",
+        "revenue/aquatrace_work_order_f_release_readiness/gates.json",
+        "revenue/aquatrace_work_order_f_release_readiness/default_pointers.json",
+        "p/aquatrace-work-order-f-release-readiness-20260831-01.md",
+        "features/registry/aquatrace-work-order-f-release-readiness-20260831-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "aquatrace-work-order-f-release-readiness-20260831-01.json",
+      "id": "aquatrace-work-order-f-release-readiness-20260831-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "AquaTrace Lane F release readiness",
+      "next_gap": "Durable local evidence for each of the eight gates after the private AquaTrace customer-release-gates cite. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "aquatrace-work-order-f-release-readiness.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "aquatrace-work-order-f-release-readiness.html",
+        "revenue/aquatrace_work_order_f_release_readiness/contract.json",
+        "p/aquatrace-work-order-f-release-readiness-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_aquatrace_work_order_f_release_readiness.py",
+        "aquatrace_work_order_f_release_readiness.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -503,6 +905,110 @@
       "test_paths": [
         "test_canyon_multisite_regulated_intake.py",
         "canyon_multisite_regulated_intake.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Deterministic public quote and replay-safe deposit-intent demo with explicit exception, conflict, recovery, and rollback receipts.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "catering-deposit-rescue.html",
+        "catering-deposit-rescue.js",
+        "revenue/catering_deposit_rescue/contract.json",
+        "revenue/catering_deposit_rescue/receipt.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "catering-deposit-rescue.html",
+        "catering-deposit-rescue.js",
+        "revenue/catering_deposit_rescue/contract.json",
+        "revenue/catering_deposit_rescue/receipt.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "catering-deposit-rescue.json",
+      "id": "catering-deposit-rescue",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Catering deposit rescue demo",
+      "next_gap": "Record a real buyer response or payment separately; the synthetic demo is not a sale.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "catering-deposit-rescue.html",
+      "receipts": [],
+      "related": {},
+      "resource_links": [
+        "p/codex-catering-deposit-rescue-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_catering_deposit_rescue.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Chemtech-Ford short-hold sample intake clock: a working CLI loads 600 synthetic drinking-water and wastewater submissions, accessions 450 valids once with exact collected/received timestamps, rejects 150 truth-set temperature/container/preservation/signature/duplicate-ID/holding-time defects with the exact reason, evaluates the fixture 6h wastewater and 24h drinking-water clocks, reconciles portal and state-delivery records to the signed manifest, refuses autonomous release, and reproduces fixture_sha256 8417c082454e8e4efabaf84598e9a6252e17b88fcbdbdbd40f4d19069ed25787. Adapters stay simulated and read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "chemtechford_short_hold_intake_lims.py",
+        "test_chemtechford_short_hold_intake_lims.py",
+        "chemtechford-short-hold-intake-lims.html",
+        "revenue/chemtechford_short_hold_intake_lims/contract.json",
+        "revenue/chemtechford_short_hold_intake_lims/README.md",
+        "revenue/chemtechford_short_hold_intake_lims/runner.py",
+        "p/chemtechford-short-hold-intake-lims-01.md",
+        "features/registry/chemtechford-short-hold-intake-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "chemtechford_short_hold_intake_lims.py",
+        "test_chemtechford_short_hold_intake_lims.py",
+        "chemtechford-short-hold-intake-lims.html",
+        "revenue/chemtechford_short_hold_intake_lims/contract.json",
+        "revenue/chemtechford_short_hold_intake_lims/README.md",
+        "revenue/chemtechford_short_hold_intake_lims/runner.py",
+        "p/chemtechford-short-hold-intake-lims-01.md",
+        "features/registry/chemtechford-short-hold-intake-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "chemtechford-short-hold-intake-lims-01.json",
+      "id": "chemtechford-short-hold-intake-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Chemtech-Ford short-hold intake clock",
+      "next_gap": "Buyer-owned de-identified COC / portal / holding-time golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "chemtechford-short-hold-intake-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "chemtechford-short-hold-intake-lims.html",
+        "revenue/chemtechford_short_hold_intake_lims/contract.json",
+        "p/chemtechford-short-hold-intake-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_chemtechford_short_hold_intake_lims.py",
+        "chemtechford_short_hold_intake_lims.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1114,6 +1620,50 @@
       "superseded_by": "",
       "test_paths": [
         "test_features_board.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Public deterministic demo proving duplicate events and crash recovery create one work order, one escalation, and one receipt.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "fleet-work-order.html",
+        "fleet-work-order.js",
+        "revenue/fleet_work_order/receipt.json",
+        "revenue/fleet_work_order/receipt.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "fleet-work-order.html",
+        "fleet-work-order.js",
+        "revenue/fleet_work_order/receipt.json",
+        "revenue/fleet_work_order/receipt.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "fleet-work-order-exactly-once.json",
+      "id": "fleet-work-order-exactly-once",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Fleet work order exactly-once demo",
+      "next_gap": "Obtain buyer-specific inputs before claiming integration, authorization, payment, or production use.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "fleet-work-order.html",
+      "receipts": [],
+      "related": {},
+      "resource_links": [
+        "revenue/fleet_work_order/README.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_fleet_work_order.js"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1771,6 +2321,44 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Produces a bounded release receipt for local or HTTP model artifacts without claiming training quality or production deployment.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "open-model-release-receipt.html",
+        "open_model_release_receipt.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "open-model-release-receipt.html",
+        "open_model_release_receipt.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "open-model-release-receipt.json",
+      "id": "open-model-release-receipt",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Open Model Release Receipt",
+      "next_gap": "Keep buyer acceptance and production deployment unclaimed until separately measured.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "open-model-release-receipt.html",
+      "receipts": [],
+      "related": {},
+      "resource_links": [],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_open_model_release_receipt.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Oregon BrewLab sample/report reconciliation LIMS: a 120-row synthetic fixture makes 96 valid submissions READY once, holds 24 with FORM_CONTAINER_MISMATCH, DUPLICATE_ID, WARM_MICRO_VDK, and INSUFFICIENT_VOLUME, binds ASBC method/version/unit/source hashes to catalog 657d60b6f1e1b8ccfe4358950fa93cf21fd741fc714fd3444a6fe2d030f44613, notifies status on a simulated adapter, and keeps reports STAGED until a named human. Adapters stay simulated/read-only.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1888,6 +2476,42 @@
       "test_paths": [
         "test_organabio_multisite_donor_coa.py",
         "organabio_multisite_donor_coa.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Pins a main-tree blob and compares served bytes while distinguishing LIVE, STALE, MISMATCH, and UNAVAILABLE states.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "pages_readback.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "pages_readback.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "pages-exact-path-readback.json",
+      "id": "pages-exact-path-readback",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "GitHub Pages exact-path readback",
+      "next_gap": "Use the verifier for each deployed receipt without converting a transport result into a product claim.",
+      "owner_subsystem": "verification",
+      "public_entrypoint": "",
+      "receipts": [],
+      "related": {},
+      "resource_links": [],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_pages_readback.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2137,6 +2761,50 @@
         "test_payment_capability_door_hub.py",
         "test_payment_capability_hub_pages.py",
         "test_payment_capability_compose.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Deterministic public intake checklist with exactly-once notice, review queue, and receipt; it makes no approval or denial.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "permit-intake-receipt.html",
+        "permit-intake-receipt.js",
+        "revenue/permit_intake_receipt/contract.json",
+        "revenue/permit_intake_receipt/receipt.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "permit-intake-receipt.html",
+        "permit-intake-receipt.js",
+        "revenue/permit_intake_receipt/contract.json",
+        "revenue/permit_intake_receipt/receipt.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "permit-intake-receipt.json",
+      "id": "permit-intake-receipt",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Permit intake receipt demo",
+      "next_gap": "Keep authority, approval, denial, payment, and production use unclaimed until independently evidenced.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "permit-intake-receipt.html",
+      "receipts": [],
+      "related": {},
+      "resource_links": [
+        "p/codex-permit-intake-receipt-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_permit_intake_receipt.js"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2751,6 +3419,114 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Public synthetic-only preflight for deterministic Salesforce contact handling without authentication or production mutation.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "salesforce-contact-preflight.html",
+        "salesforce-contact-preflight.js"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "salesforce-contact-preflight.html",
+        "salesforce-contact-preflight.js"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "salesforce-contact-preflight.json",
+      "id": "salesforce-contact-preflight",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Salesforce Contact Exactly-Once Preflight",
+      "next_gap": "Require buyer authorization and a scoped sandbox before any authenticated Salesforce operation.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "salesforce-contact-preflight.html",
+      "receipts": [],
+      "related": {},
+      "resource_links": [],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_salesforce_contact_preflight.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "SanAir Rapid-TAT asbestos COC router: a working CLI loads 360 frozen synthetic COCs, routes 300 valid orders once into Richmond, Cincinnati, or Boston with field parity and receipt-based TAT clocks, blocks 60 exceptions with exact codes, keeps recipient permissions and amendment lineage, refuses autonomous release, and reproduces audit_sha256 7e90246b6ab1cfaf8b5fac41669f968fa3cd2c8ed8c27381835387ea407483cf. Adapters stay simulated and read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "sanair_asbestos_coc_router.py",
+        "revenue/sanair_asbestos_coc_router/runner.py",
+        "revenue/sanair_asbestos_coc_router/fixture.json",
+        "revenue/sanair_asbestos_coc_router/source.json",
+        "revenue/sanair_asbestos_coc_router/README.md",
+        "revenue/sanair_asbestos_coc_router/contract.json",
+        "revenue/sanair_asbestos_coc_router/receipts/run.json",
+        "revenue/sanair_asbestos_coc_router/receipts/audit.json",
+        "revenue/sanair_asbestos_coc_router/receipts/replay.json",
+        "test_sanair_asbestos_coc_router.py",
+        "sanair-asbestos-coc-router-lims.html",
+        "p/sanair-asbestos-coc-router-lims-01.md",
+        "features/registry/sanair-asbestos-coc-router-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "sanair_asbestos_coc_router.py",
+        "revenue/sanair_asbestos_coc_router/runner.py",
+        "revenue/sanair_asbestos_coc_router/fixture.json",
+        "revenue/sanair_asbestos_coc_router/source.json",
+        "revenue/sanair_asbestos_coc_router/README.md",
+        "revenue/sanair_asbestos_coc_router/contract.json",
+        "revenue/sanair_asbestos_coc_router/receipts/run.json",
+        "revenue/sanair_asbestos_coc_router/receipts/audit.json",
+        "revenue/sanair_asbestos_coc_router/receipts/replay.json",
+        "test_sanair_asbestos_coc_router.py",
+        "sanair-asbestos-coc-router-lims.html",
+        "p/sanair-asbestos-coc-router-lims-01.md",
+        "features/registry/sanair-asbestos-coc-router-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "sanair-asbestos-coc-router-lims-01.json",
+      "id": "sanair-asbestos-coc-router-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "SanAir Rapid-TAT asbestos COC router",
+      "next_gap": "Buyer-owned de-identified COC / TAT golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "sanair-asbestos-coc-router-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "sanair-asbestos-coc-router-lims.html",
+        "revenue/sanair_asbestos_coc_router/contract.json",
+        "p/sanair-asbestos-coc-router-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_sanair_asbestos_coc_router.py",
+        "sanair_asbestos_coc_router.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Savant FE8 order-to-report LIMS: a 100-row synthetic Test Authorization Form plus SDS fixture accessions 80 valid FE8 jobs once, holds 20 with MISSING_SDS, MISSING_METADATA, DUPLICATE_ID, and INVALID_METHOD, schedules only documented rows, binds instrument/QC values and report digest a5853f7e35e396bdd9843053f3f45c14d4a340945996977db0b478921c0941fa, and denies autonomous release. Adapters stay simulated/read-only.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2879,6 +3655,70 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Sharp Sterile RTU-vial isolator lineage LIMS: a 120-row synthetic fixture accessions 90 valid sponsor/lot/RTU-vial submissions once onto isolator-fill, lyophilizer, analytical, stability, or sterility, holds 30 with DUPLICATE_COMPONENT_BATCH, FORMAT_LINE_MISMATCH, MISSING_METHOD_VERSION, WEIGHT_SLOT_CONFLICT, and QC_STERILITY_FAIL, blocks intake holds from scheduling, never stages or releases a held evidence pack, matches cycle/weight/result/unit/source hashes, replays with zero new records, and denies release without named approval. Adapters stay synthetic/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "sharp_rtu_vial_isolator_lineage.py",
+        "sharp-rtu-vial-isolator-lineage-lims.js",
+        "sharp-rtu-vial-isolator-lineage-lims.html",
+        "test_sharp_rtu_vial_isolator_lineage.py",
+        "revenue/sharp_rtu_vial_isolator_lineage/contract.json",
+        "revenue/sharp_rtu_vial_isolator_lineage/receipt.json",
+        "revenue/sharp_rtu_vial_isolator_lineage/receipt.md",
+        "revenue/sharp_rtu_vial_isolator_lineage/fixture.json",
+        "p/sharp-rtu-vial-isolator-lineage-lims-01.md",
+        "features/registry/sharp-rtu-vial-isolator-lineage-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "sharp_rtu_vial_isolator_lineage.py",
+        "sharp-rtu-vial-isolator-lineage-lims.js",
+        "sharp-rtu-vial-isolator-lineage-lims.html",
+        "test_sharp_rtu_vial_isolator_lineage.py",
+        "revenue/sharp_rtu_vial_isolator_lineage/contract.json",
+        "revenue/sharp_rtu_vial_isolator_lineage/receipt.json",
+        "revenue/sharp_rtu_vial_isolator_lineage/receipt.md",
+        "revenue/sharp_rtu_vial_isolator_lineage/fixture.json",
+        "p/sharp-rtu-vial-isolator-lineage-lims-01.md",
+        "features/registry/sharp-rtu-vial-isolator-lineage-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "sharp-rtu-vial-isolator-lineage-lims-01.json",
+      "id": "sharp-rtu-vial-isolator-lineage-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Sharp Sterile RTU-vial isolator lineage LIMS",
+      "next_gap": "Buyer-owned tech-transfer schema, isolator nest map, and de-identified lyophilizer-cycle files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "sharp-rtu-vial-isolator-lineage-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "sharp-rtu-vial-isolator-lineage-lims.html",
+        "revenue/sharp_rtu_vial_isolator_lineage/contract.json",
+        "p/sharp-rtu-vial-isolator-lineage-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_sharp_rtu_vial_isolator_lineage.py",
+        "sharp_rtu_vial_isolator_lineage.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "SLO CliniSys cutover evidence: a 1,000-bundle synthetic fixture classifies 850 READY and 150 predetermined HOLD (50 duplicate IDs, 40 broken sample-to-test refs, 30 method/version conflicts, 30 result/report/source hash mismatches), maps every valid object once with zero orphans or duplicates, replays with no new mappings, rolls the simulated CLS store back to the exact baseline, and blocks result/report release without a named approver. Adapters stay read-only/simulated. No public-health interpretation.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2996,6 +3836,62 @@
       "test_paths": [
         "test_trace_sila_ml_iatf.py",
         "trace_sila_ml_iatf.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Wadsworth five-site consolidation namespace and migration-readiness LIMS: a 2,000-bundle synthetic fixture classifies 1,700 READY and 300 predetermined HOLD (100 duplicate namespace IDs, 80 method/version conflicts, 60 broken references, 60 facility/custody mismatches), maps every valid accession/sample/test/result/report/attachment/method/custody object once with originating-site and source hashes, keeps orphans and duplicates at zero, replays with no new mappings, rolls the simulated Harriman store back to the exact baseline, and blocks release without a named human. Adapters stay read-only/simulated. No public-health, GMP, regulatory, clinical, or diagnostic decision.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "wadsworth_five_site_consolidation_lims.py",
+        "test_wadsworth_five_site_consolidation_lims.py",
+        "wadsworth-five-site-consolidation-lims.html",
+        "revenue/wadsworth_five_site_consolidation_lims/contract.json",
+        "p/wadsworth-five-site-consolidation-lims-01.md",
+        "features/registry/wadsworth-five-site-consolidation-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "wadsworth_five_site_consolidation_lims.py",
+        "test_wadsworth_five_site_consolidation_lims.py",
+        "wadsworth-five-site-consolidation-lims.html",
+        "revenue/wadsworth_five_site_consolidation_lims/contract.json",
+        "p/wadsworth-five-site-consolidation-lims-01.md",
+        "features/registry/wadsworth-five-site-consolidation-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "wadsworth-five-site-consolidation-lims-01.json",
+      "id": "wadsworth-five-site-consolidation-lims-01",
+      "last_change": "2026-08-31",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Wadsworth five-site consolidation LIMS",
+      "next_gap": "Buyer-owned de-identified five-site master-data exports and Harriman namespace schema after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "wadsworth-five-site-consolidation-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "wadsworth-five-site-consolidation-lims.html",
+        "revenue/wadsworth_five_site_consolidation_lims/contract.json",
+        "p/wadsworth-five-site-consolidation-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_wadsworth_five_site_consolidation_lims.py",
+        "wadsworth_five_site_consolidation_lims.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -3312,151 +4208,11 @@
       "test_paths": [],
       "test_paths_missing": [],
       "test_status": "UNTESTED"
-    },
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
-        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
-        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
-        "0f6249cd06eadf2b2dbd75796320a743fb20f433",
-        "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
-        "28a40d31b6bec435b4906addc0241f22419fb339"
-      ],
-      "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
-      "carrier": "CODEX",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "arbitrage.html",
-        "revenue/arbitrage/opportunity.schema.json",
-        "test_arbitrage.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "arbitrage.html",
-        "revenue/arbitrage/opportunity.schema.json",
-        "test_arbitrage.py"
-      ],
-      "dependencies": [],
-      "evidence_ids": [
-        "ev-arbitrage-opportunity-git-20260830-01",
-        "ev-arbitrage-opportunity-receipt-20260830-01",
-        "ev-arbitrage-opportunity-source-20260830-01",
-        "ev-arbitrage-opportunity-tests-20260830-01",
-        "ev-arbitrage-opportunity-blob-20260830-01",
-        "ev-arbitrage-opportunity-live-20260830-01",
-        "ev-arbitrage-opportunity-blob-20260830-02",
-        "ev-arbitrage-opportunity-live-20260830-02",
-        "ev-arbitrage-opportunity-receipt-20260830-02",
-        "ev-arbitrage-opportunity-blob-20260830-03",
-        "ev-arbitrage-opportunity-live-20260830-03"
-      ],
-      "file": "arbitrage-opportunity-road-20260830-01.json",
-      "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-08-30T06:53:00Z",
-      "live_status": "DEGRADED",
-      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
-      "name": "Arbitrage opportunity road",
-      "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
-      "owner_subsystem": "commerce",
-      "public_entrypoint": "arbitrage.html",
-      "receipts": [
-        "codex-arbitrage-opportunity-road-20260830-01",
-        "unseated-feature-tracker-commerce-doors-20260830-02"
-      ],
-      "related": {
-        "boards": false,
-        "current_work": false,
-        "profitability": true,
-        "resources": true
-      },
-      "resource_links": [
-        "commerce.html",
-        "data-license.html",
-        "opportunity.html",
-        "p/codex-arbitrage-opportunity-road-20260830-01.md",
-        "agent-rescue.html"
-      ],
-      "rollup": "DEGRADED",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_arbitrage.py",
-        "revenue/arbitrage/opportunity.schema.json"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTED"
-    },
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "data-license.html:f416d7031fa05134d3bb16b8bd3b01910ebd0835",
-        "f416d7031fa05134d3bb16b8bd3b01910ebd0835",
-        "data-license.html:0e1bbbd9e51b30fa1e51142456bda02cf879aa82",
-        "0e1bbbd9e51b30fa1e51142456bda02cf879aa82"
-      ],
-      "capability": "Public evidence-first data licensing and research inquiry door. Inventory and blocked-transfer states are sourced from existing contracts. No archive payload is published and no rights are granted by the page.",
-      "carrier": "CODEX",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "data-license.html",
-        "test_data_license.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "data-license.html",
-        "test_data_license.py"
-      ],
-      "dependencies": [],
-      "evidence_ids": [
-        "ev-unique-data-license-git-20260830-01",
-        "ev-unique-data-license-receipt-20260830-01",
-        "ev-unique-data-license-source-20260830-01",
-        "ev-unique-data-license-tests-20260830-01",
-        "ev-unique-data-license-blob-20260830-01",
-        "ev-unique-data-license-live-20260830-01",
-        "ev-unique-data-license-blob-20260830-02",
-        "ev-unique-data-license-live-20260830-02"
-      ],
-      "file": "unique-data-license-door-20260830-01.json",
-      "id": "unique-data-license-door-20260830-01",
-      "last_change": "2026-08-30T06:53:00Z",
-      "live_status": "DEGRADED",
-      "main_sha": "7263334bd1536329034cc60a0ec6dc8abc206063",
-      "name": "Unique data license door",
-      "next_gap": "Do not transfer archive payloads, invent buyers, or mark license or price ready. CI corpus stays BLOCKED_LICENSE_REQUIRED until a recorded license exists.",
-      "owner_subsystem": "commerce",
-      "public_entrypoint": "data-license.html",
-      "receipts": [
-        "codex-unique-data-license-door-20260830-01"
-      ],
-      "related": {
-        "boards": false,
-        "current_work": false,
-        "profitability": true,
-        "resources": true
-      },
-      "resource_links": [
-        "commerce.html",
-        "commercial.html",
-        "revenue/ip/whitebox_archive_inventory.json",
-        "revenue/ip/whitebox_archive_license_probe.json",
-        "revenue/data/ci_receipt_corpus.json",
-        "p/codex-unique-data-license-door-20260830-01.md"
-      ],
-      "rollup": "DEGRADED",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_data_license.py"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTED"
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 57,
-  "n_invalid": 6,
+  "n_features": 71,
+  "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
     "current-work.html": "unfinished-now ledger. Not shipped-state.",
@@ -3466,109 +4222,6 @@
     "right-now.html": "buyer / revenue desk.",
     "todo.html": "DIRECTIVES.md view. Historical."
   },
-  "problems": [
-    "catering-deposit-rescue.json: schema must be commons-feature-v1",
-    "catering-deposit-rescue.json: missing field: schema",
-    "catering-deposit-rescue.json: missing field: name",
-    "catering-deposit-rescue.json: missing field: capability",
-    "catering-deposit-rescue.json: missing field: owner_subsystem",
-    "catering-deposit-rescue.json: missing field: carrier",
-    "catering-deposit-rescue.json: missing field: claimed_paths",
-    "catering-deposit-rescue.json: missing field: test_paths",
-    "catering-deposit-rescue.json: missing field: public_entrypoint",
-    "catering-deposit-rescue.json: missing field: dependencies",
-    "catering-deposit-rescue.json: missing field: resource_links",
-    "catering-deposit-rescue.json: missing field: next_gap",
-    "catering-deposit-rescue.json: name too short",
-    "catering-deposit-rescue.json: capability too short",
-    "catering-deposit-rescue.json: owner_subsystem too short",
-    "catering-deposit-rescue.json: carrier too short",
-    "catering-deposit-rescue.json: next_gap too short",
-    "fleet-work-order-exactly-once.json: schema must be commons-feature-v1",
-    "fleet-work-order-exactly-once.json: missing field: schema",
-    "fleet-work-order-exactly-once.json: missing field: name",
-    "fleet-work-order-exactly-once.json: missing field: capability",
-    "fleet-work-order-exactly-once.json: missing field: owner_subsystem",
-    "fleet-work-order-exactly-once.json: missing field: carrier",
-    "fleet-work-order-exactly-once.json: missing field: claimed_paths",
-    "fleet-work-order-exactly-once.json: missing field: test_paths",
-    "fleet-work-order-exactly-once.json: missing field: public_entrypoint",
-    "fleet-work-order-exactly-once.json: missing field: dependencies",
-    "fleet-work-order-exactly-once.json: missing field: resource_links",
-    "fleet-work-order-exactly-once.json: missing field: next_gap",
-    "fleet-work-order-exactly-once.json: name too short",
-    "fleet-work-order-exactly-once.json: capability too short",
-    "fleet-work-order-exactly-once.json: owner_subsystem too short",
-    "fleet-work-order-exactly-once.json: carrier too short",
-    "fleet-work-order-exactly-once.json: next_gap too short",
-    "open-model-release-receipt.json: schema must be commons-feature-v1",
-    "open-model-release-receipt.json: missing field: schema",
-    "open-model-release-receipt.json: missing field: id",
-    "open-model-release-receipt.json: missing field: capability",
-    "open-model-release-receipt.json: missing field: owner_subsystem",
-    "open-model-release-receipt.json: missing field: carrier",
-    "open-model-release-receipt.json: missing field: claimed_paths",
-    "open-model-release-receipt.json: missing field: test_paths",
-    "open-model-release-receipt.json: missing field: public_entrypoint",
-    "open-model-release-receipt.json: missing field: dependencies",
-    "open-model-release-receipt.json: missing field: resource_links",
-    "open-model-release-receipt.json: missing field: next_gap",
-    "open-model-release-receipt.json: id must match ^[A-Za-z0-9._-]{8,80}$",
-    "open-model-release-receipt.json: capability too short",
-    "open-model-release-receipt.json: owner_subsystem too short",
-    "open-model-release-receipt.json: carrier too short",
-    "open-model-release-receipt.json: next_gap too short",
-    "pages-exact-path-readback.json: schema must be commons-feature-v1",
-    "pages-exact-path-readback.json: missing field: schema",
-    "pages-exact-path-readback.json: missing field: name",
-    "pages-exact-path-readback.json: missing field: capability",
-    "pages-exact-path-readback.json: missing field: owner_subsystem",
-    "pages-exact-path-readback.json: missing field: carrier",
-    "pages-exact-path-readback.json: missing field: claimed_paths",
-    "pages-exact-path-readback.json: missing field: test_paths",
-    "pages-exact-path-readback.json: missing field: public_entrypoint",
-    "pages-exact-path-readback.json: missing field: dependencies",
-    "pages-exact-path-readback.json: missing field: resource_links",
-    "pages-exact-path-readback.json: missing field: next_gap",
-    "pages-exact-path-readback.json: name too short",
-    "pages-exact-path-readback.json: capability too short",
-    "pages-exact-path-readback.json: owner_subsystem too short",
-    "pages-exact-path-readback.json: carrier too short",
-    "pages-exact-path-readback.json: next_gap too short",
-    "permit-intake-receipt.json: schema must be commons-feature-v1",
-    "permit-intake-receipt.json: missing field: schema",
-    "permit-intake-receipt.json: missing field: name",
-    "permit-intake-receipt.json: missing field: capability",
-    "permit-intake-receipt.json: missing field: owner_subsystem",
-    "permit-intake-receipt.json: missing field: carrier",
-    "permit-intake-receipt.json: missing field: claimed_paths",
-    "permit-intake-receipt.json: missing field: test_paths",
-    "permit-intake-receipt.json: missing field: public_entrypoint",
-    "permit-intake-receipt.json: missing field: dependencies",
-    "permit-intake-receipt.json: missing field: resource_links",
-    "permit-intake-receipt.json: missing field: next_gap",
-    "permit-intake-receipt.json: name too short",
-    "permit-intake-receipt.json: capability too short",
-    "permit-intake-receipt.json: owner_subsystem too short",
-    "permit-intake-receipt.json: carrier too short",
-    "permit-intake-receipt.json: next_gap too short",
-    "salesforce-contact-preflight.json: schema must be commons-feature-v1",
-    "salesforce-contact-preflight.json: missing field: schema",
-    "salesforce-contact-preflight.json: missing field: name",
-    "salesforce-contact-preflight.json: missing field: capability",
-    "salesforce-contact-preflight.json: missing field: owner_subsystem",
-    "salesforce-contact-preflight.json: missing field: carrier",
-    "salesforce-contact-preflight.json: missing field: claimed_paths",
-    "salesforce-contact-preflight.json: missing field: test_paths",
-    "salesforce-contact-preflight.json: missing field: public_entrypoint",
-    "salesforce-contact-preflight.json: missing field: dependencies",
-    "salesforce-contact-preflight.json: missing field: resource_links",
-    "salesforce-contact-preflight.json: missing field: next_gap",
-    "salesforce-contact-preflight.json: name too short",
-    "salesforce-contact-preflight.json: capability too short",
-    "salesforce-contact-preflight.json: owner_subsystem too short",
-    "salesforce-contact-preflight.json: carrier too short",
-    "salesforce-contact-preflight.json: next_gap too short"
-  ],
+  "problems": [],
   "schema": "commons-feature-tracker-v1"
 }
