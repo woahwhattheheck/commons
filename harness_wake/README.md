@@ -24,8 +24,12 @@ are out of this land. Do not remint this adapter. Law: [ground/WAKE_LOOP.md](../
 - stop predicate: DONE / CANCELLED / deadline / budget / max attempts /
   NOT_DUE / LEASE_HELD / unchanged blocker / unchanged checkpoint backoff
 - held paths: Slack Cursor app spawn, this-run timer follow-up, issue 1316
-  desktop, and ntfy mail. The GH watchdog records `CURSOR_QUOTA_HOLD` without
-  delivery. Do not lift those roads here.
+  desktop, and ntfy mail. Generic Cursor Slack / wire / 1316 rows still
+  record `CURSOR_QUOTA_HOLD` before lease. `grokbot_seth` LIVE rows reach
+  `store.tick` and `--deliver` records a `LAUNCH` or `REPLY` adapter
+  receipt via `harness_wake/seth_adapter.py` (`launch_or_reply`). GH tick
+  does not execute Cursor cloud and never invokes a model. Do not lift
+  Slack spawn here.
 - can_test: YES for contract + leftover ingest + STOP-without-model. Named idle
   `bc-` resume of a *different* run is UNMEASURED.
   `harness_wake.idle_resume.probe_idle_resume` fail-closes (STOP, no model).

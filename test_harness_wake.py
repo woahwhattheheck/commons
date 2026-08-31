@@ -30,6 +30,11 @@ from harness_wake.cursor_adapter import (
 )
 from harness_wake.idle_resume import probe_idle_resume
 from harness_wake.inbound import ingest_cursor_leftovers
+from harness_wake.seth_adapter import (
+    SETH_THIS_BC,
+    is_grokbot_seth_live,
+    launch_or_reply,
+)
 from harness_wake.watchdog import pinned_head_oracle, run
 from independent_commons_mcp.jobs import JobError, JobStore, utc_now
 from independent_commons_mcp.server import MCPServer
@@ -1678,31 +1683,35 @@ id: cursor-leftover-tick-20260831-01
 kind: LEFTOVER
 harness: Cursor/Grok Bot
 job_id: cursor-leftover-tick-20260831-01
-subject: leftover becomes a hold-ticked job
+subject: leftover becomes a grokbot_seth LIVE tick
 
 ---
 
 named leftover
 """)
+        http = FakeDeliver()
         summary = run(
             self.jobs.name,
             deliver=True,
             worker_id="gh-watchdog",
             now=WATCHDOG,
             records_dirs=self.records,
-            http=FakeDeliver(),
+            http=http,
         )
         self.assertEqual(summary["process_model_invocations"], 0)
         self.assertFalse(summary["invoke_model"])
         self.assertEqual(summary["inbound"]["process_model_invocations"], 0)
         self.assertFalse(summary["inbound"]["invoke_model"])
         self.assertIn("cursor-leftover-tick-20260831-01", summary["inbound"]["upserted"])
-        self.assertEqual(summary["hold_count"], 1)
-        self.assertEqual(summary["wake_count"], 0)
-        self.assertEqual(summary["jobs"][0]["action"], "HOLD")
-        self.assertFalse(summary["jobs"][0]["invoke_model"])
-        self.assertEqual(summary["deliveries"][0]["state"], "CURSOR_QUOTA_HOLD")
+        self.assertEqual(summary["hold_count"], 0)
+        self.assertEqual(summary["wake_count"], 1)
+        self.assertEqual(summary["jobs"][0]["action"], "WAKE")
+        self.assertEqual(summary["deliveries"][0]["state"], "LAUNCH")
+        self.assertEqual(summary["deliveries"][0]["road"], "grokbot_seth")
+        self.assertFalse(summary["deliveries"][0]["ntfy_sent"])
+        self.assertFalse(summary["deliveries"][0]["issue_1316"])
         self.assertEqual(summary["delivered_count"], 0)
+        self.assertEqual(http.calls, [])
 
     def test_probe_idle_resume_still_fail_closes(self):
         row = probe_idle_resume("bc-c9544018-da63-5629-8586-67ca6393418d")
@@ -1720,6 +1729,148 @@ named leftover
             self.assertEqual(paths["claimed"][name]["state"], "CURSOR_QUOTA_HOLD")
         self.assertFalse(should_ring_issue_1316("cursor-desktop grok bot"))
         self.assertFalse(should_ring_issue_1316("cursor-slack"))
+
+
+class GrokbotSethLiveAdapterTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix="wake-seth-")
+        self.store = JobStore(self.tmp.name)
+        self.http = FakeDeliver()
+        self.pages = set()
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_live_check_is_narrower_than_cursor_hold(self):
+        self.assertTrue(is_grokbot_seth_live("grokbot_seth"))
+        self.assertTrue(is_grokbot_seth_live("cursor-grokbot"))
+        self.assertTrue(is_grokbot_seth_live("Cursor/Grok Bot"))
+        self.assertTrue(is_grokbot_seth_live("grokbot"))
+        self.assertFalse(is_grokbot_seth_live("cursor-slack"))
+        self.assertFalse(is_grokbot_seth_live("Grok Bot / wire"))
+        self.assertFalse(is_grokbot_seth_live("issue-1316"))
+        self.assertTrue(is_cursor_harness("grokbot_seth"))
+        self.assertTrue(is_cursor_harness("cursor-slack"))
+
+    def test_grokbot_seth_leftover_ticks_to_wake(self):
+        self.store.upsert(fields(
+            job_id="seth-leftover-wake-20260831-01",
+            owner_claim="SETH",
+            harness="grokbot_seth",
+            objective="named leftover for grokbot_seth LIVE",
+        ))
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+        )
+        self.assertEqual(summary["wake_count"], 1)
+        self.assertEqual(summary["hold_count"], 0)
+        self.assertIn(summary["jobs"][0]["action"], {"WAKE", "STOP", "BACKOFF"})
+        self.assertEqual(summary["jobs"][0]["action"], "WAKE")
+        self.assertNotEqual(summary["jobs"][0].get("reason"), "CURSOR_QUOTA_HOLD")
+        self.assertEqual(summary["process_model_invocations"], 0)
+        self.assertFalse(summary["invoke_model"])
+        self.assertEqual(summary["deliveries"][0]["state"], "LAUNCH")
+        self.assertEqual(summary["deliveries"][0]["road"], "grokbot_seth")
+        self.assertFalse(summary["deliveries"][0]["ntfy_sent"])
+        self.assertFalse(summary["deliveries"][0]["issue_1316"])
+        self.assertEqual(summary["delivered_count"], 0)
+        self.assertEqual(self.http.calls, [])
+        self.assertFalse(should_ring_issue_1316("grokbot_seth"))
+
+    def test_generic_cursor_slack_still_holds(self):
+        self.store.upsert(fields(harness="cursor-slack"))
+        summary = run(
+            self.tmp.name,
+            deliver=True,
+            worker_id="gh-watchdog",
+            now=WATCHDOG,
+            http=self.http,
+        )
+        self.assertEqual(summary["wake_count"], 0)
+        self.assertEqual(summary["hold_count"], 1)
+        self.assertEqual(summary["jobs"][0]["action"], "HOLD")
+        self.assertEqual(summary["jobs"][0]["reason"], "CURSOR_QUOTA_HOLD")
+        self.assertEqual(summary["deliveries"][0]["state"], "CURSOR_QUOTA_HOLD")
+        self.assertEqual(summary["process_model_invocations"], 0)
+        self.assertEqual(self.http.calls, [])
+
+    def test_launch_or_reply_named_this_bc_is_reply(self):
+        row = launch_or_reply(
+            {
+                "job_id": "seth-reply-named-bc-20260831-01",
+                "objective": "reply to this live session",
+                "checkpoint": {"bc_id": SETH_THIS_BC},
+            },
+            this_bc=SETH_THIS_BC,
+        )
+        self.assertEqual(row["action"], "REPLY")
+        self.assertEqual(row["state"], "REPLY")
+        self.assertEqual(row["bc_id"], SETH_THIS_BC)
+        self.assertTrue(row["ok"])
+        self.assertFalse(row["live_resume"])
+        self.assertFalse(row["invoke_model"])
+        self.assertFalse(row["ntfy_sent"])
+        self.assertFalse(row["issue_1316"])
+
+    def test_launch_or_reply_no_bc_is_launch(self):
+        row = launch_or_reply({
+            "job_id": "seth-launch-no-bc-20260831-01",
+            "objective": "spawn for leftover",
+        })
+        self.assertEqual(row["action"], "LAUNCH")
+        self.assertEqual(row["state"], "LAUNCH")
+        self.assertEqual(row["bc_id"], "")
+        self.assertIn("seth-launch-no-bc-20260831-01", row["prompt"])
+        self.assertIn("spawn for leftover", row["prompt"])
+        self.assertFalse(row["live_resume"])
+        self.assertFalse(row["invoke_model"])
+        self.assertFalse(row["ntfy_sent"])
+        self.assertFalse(row["issue_1316"])
+
+    def test_launch_or_reply_other_idle_bc_fail_closes(self):
+        other = "bc-c9544018-da63-5629-8586-67ca6393418d"
+        row = launch_or_reply(
+            {
+                "job_id": "seth-idle-other-bc-20260831-01",
+                "checkpoint": {"bc_id": other},
+            },
+            this_bc=SETH_THIS_BC,
+        )
+        self.assertFalse(row["ok"])
+        self.assertFalse(row["live_resume"])
+        self.assertFalse(row["invoke_model"])
+        self.assertEqual(row["action"], "STOP")
+        self.assertEqual(row["state"], "UNMEASURED")
+        self.assertEqual(row["bc_id"], other)
+        self.assertFalse(row["ntfy_sent"])
+        self.assertFalse(row["issue_1316"])
+
+    def test_grokbot_seth_consume_is_not_blanket_hold(self):
+        self.store.upsert(fields(harness="grokbot_seth"))
+        wake = self.store.tick(JOB_ID, now=WATCHDOG, worker_id="gh-watchdog")
+        self.assertEqual(wake["action"], "WAKE")
+        consumed = consume_delivery(
+            self.store,
+            {
+                "state": "MAIL",
+                "job_id": JOB_ID,
+                "attempt_id": wake["attempt_id"],
+            },
+            now=WATCHDOG,
+            pages=self.pages,
+        )
+        self.assertNotEqual(consumed["state"], "CURSOR_QUOTA_HOLD")
+        self.assertEqual(consumed["state"], "CLAIMED")
+        self.assertEqual(summary_model_zero(self.tmp.name), 0)
+
+
+def summary_model_zero(jobs_dir):
+    summary = run(jobs_dir, deliver=False, worker_id="gh-watchdog", now=WATCHDOG)
+    return summary["process_model_invocations"]
 
 
 if __name__ == "__main__":
