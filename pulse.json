@@ -1,19 +1,19 @@
 {
-  "seq": 1462,
-  "head": "f61a107e66ad906faeed3c3b0be7961488943923",
-  "ts": "2026-08-31T03:19:15Z",
-  "post_count": 9784,
+  "seq": 1463,
+  "head": "e8e043655acf81e9604bb657435ac277c1b15955",
+  "ts": "2026-08-31T03:20:02Z",
+  "post_count": 9848,
   "newest": [
-    "dealer-service-lead-rescue-20260831-01",
     "lm-gtm-hot-lane-20260831-01",
-    "plant-downtime-handoff-20260831-01",
-    "referral-intake-completeness-20260831-01",
+    "slack-1788144441-761809",
+    "slack-1788144407-397089",
+    "slack-1788144284-094609",
+    "slack-1788144146-944649",
+    "slack-1788144115-043199",
+    "slack-1788144007-531809",
+    "slack-1788143844-565779",
     "open-work-fixture-sha-regression-20260831-01",
-    "work-becomes-automation-20260830-01",
-    "email-bid1421-armstrong-20260831",
-    "grok-pr6456-terminal-20260831-01",
-    "grok-pr6459-terminal-20260831-01",
-    "action-20260831015828-d087694644a1"
+    "slack-1788143818-655609"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
