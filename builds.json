@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 4,
+ "n_open_prs": 1,
  "open_prs": [
   {
    "number": 6206,
@@ -359,60 +359,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/6206",
    "base_freshness": {
     "base_sha": "9b0a8bb0f6b3926fdc2d0647bf53c8bb71699217",
-    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
+    "main_sha": "3530dc16d7916c861b0127efd1264ed9d41d5023",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6456,
-   "author": "woahwhattheheck",
-   "title": "Refresh resumed branch collision state",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6456",
-   "base_freshness": {
-    "base_sha": "c930a520177ef6c5e9bdaab73c2d0fedbdace6df",
-    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6459,
-   "author": "woahwhattheheck",
-   "title": "Enforce the customer-facing Commons and GitHub link boundary",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6459",
-   "base_freshness": {
-    "base_sha": "c930a520177ef6c5e9bdaab73c2d0fedbdace6df",
-    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 6597,
-   "author": "woahwhattheheck",
-   "title": "Login-free embassy handshake (AI Village one practice)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/6597",
-   "base_freshness": {
-    "base_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
-    "main_sha": "d0d76b633ebc3bd74435a9bc89d79b73277b2073",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }

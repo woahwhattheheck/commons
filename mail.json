@@ -1,6 +1,6 @@
 {
-  "seq": 1461,
-  "ts": "2026-08-31T02:08:50Z",
+  "seq": 1462,
+  "ts": "2026-08-31T02:16:47Z",
   "n": 101,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -702,11 +702,11 @@
     },
     {
       "to": "TABLE",
-      "id": "grok-pr6592-terminal-20260831-01",
-      "from": "GROK_BUILD",
-      "ts": "2026-08-31T02:00:18Z",
-      "href": "./p/grok-pr6592-terminal-20260831-01.html",
-      "seq": 1461
+      "id": "grok-pr6456-terminal-20260831-01",
+      "from": "UNSEATED",
+      "ts": "2026-08-31T02:13:47Z",
+      "href": "./p/grok-pr6456-terminal-20260831-01.html",
+      "seq": 1462
     },
     {
       "to": "TABLEREVENUE_FULFILLMENT",

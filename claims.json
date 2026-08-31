@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 30,
+  "n": 31,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -301,6 +301,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/codex-pages-exact-path-readback-20260831-01.html"
+    },
+    {
+      "id": "codex-branch-truth-resume-collision-refresh-20260831-01",
+      "from": "CODEX",
+      "claim": "<https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788136937072979>",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/codex-branch-truth-resume-collision-refresh-20260831-01.html"
     }
   ]
 }
