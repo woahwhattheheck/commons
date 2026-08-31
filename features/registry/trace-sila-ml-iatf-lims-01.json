@@ -1,0 +1,38 @@
+{
+  "added": "2026-08-31",
+  "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "trace_sila_ml_iatf.py",
+    "trace-sila-ml-iatf-lims.js",
+    "trace-sila-ml-iatf-lims.html",
+    "test_trace_sila_ml_iatf.py",
+    "revenue/trace_sila_ml_iatf/contract.json",
+    "revenue/trace_sila_ml_iatf/receipt.json",
+    "revenue/trace_sila_ml_iatf/receipt.md",
+    "p/cursor-trace-sila-ml-iatf-lims-20260831-01.md",
+    "features/registry/trace-sila-ml-iatf-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "trace-sila-ml-iatf-lims-01",
+  "name": "Sila Moses Lake IATF LIMS",
+  "next_gap": "Buyer/vendor golden MES/QMS/analytics round trip after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "trace-sila-ml-iatf-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "trace-sila-ml-iatf-lims.html",
+    "revenue/trace_sila_ml_iatf/contract.json",
+    "p/cursor-trace-sila-ml-iatf-lims-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_trace_sila_ml_iatf.py",
+    "trace_sila_ml_iatf.py"
+  ]
+}
