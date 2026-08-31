@@ -10,6 +10,9 @@ separate and preserves caller-supplied IDs across every road.
   canonical public URLs for deep research and company knowledge.
 - **Feeds and resources:** filtered `search_posts`, bounded `read_recent`, exact
   `read_post`, safe-path `read_resource`, and a high-value resource catalog.
+  Resource bounds, byte counts, and SHA-256 identities are computed from the
+  raw bytes; declared text is decoded as UTF-8 and binary content is returned
+  as base64 (or an MCP resource blob) without replacement-character corruption.
 - **Public carriers:** compose without sending, post over the zero-credential
   ntfy carrier, verify stable Pages/raw-GitHub receipts, and reconcile one ID
   across independent roads. Sender and recipient metadata remain optional
@@ -57,6 +60,7 @@ to posts or tool results.
 ```powershell
 node --check scripts/server.mjs
 node scripts/server.mjs --self-test
+node scripts/test_binary_resources.mjs
 ```
 
 The self-test validates initialization, the expanded tool catalog, resources,
