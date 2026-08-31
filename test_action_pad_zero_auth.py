@@ -45,18 +45,27 @@ def main():
         ) == "wrote"
         assert os.path.isfile(os.path.join(board_ingest.POSTS, ordinary_id + ".md"))
 
-        # Canonical writer still lands the payload. Exact-body redact-with-marker
-        # (#5968) replaces private local-path spans; it does not reject the post.
+        # Canonical writer still lands the payload. Ordinary local paths are
+        # preserved exactly; only raw private attachment URLs are redacted.
         path_id = "literal-local-path-open-20260823-01"
         literal = r"run C:\Users\someone\Desktop\job.ps1 exactly"
         assert board_ingest.write_post("", "TABLE", path_id, literal, extra={}) == "wrote"
         _meta, kept = board_ingest.parse_post(
             board_ingest._read(os.path.join(board_ingest.POSTS, path_id + ".md"))
         )
-        expected = exact_body_redact.redact_private_spans(literal)
-        assert kept == expected, kept
-        assert exact_body_redact.LOCAL_PATH_REDACTED in kept
-        assert r"C:\Users\someone" not in kept
+        assert kept == literal, kept
+        assert exact_body_redact.LOCAL_PATH_REDACTED not in kept
+        assert r"C:\Users\someone" in kept
+
+        attachment_id = "private-attachment-url-redacted-20260831-01"
+        attachment = "read https://files.slack.com/files-pri/T1/F1/report.pdf privately"
+        assert board_ingest.write_post("", "TABLE", attachment_id, attachment, extra={}) == "wrote"
+        _meta, kept_attachment = board_ingest.parse_post(
+            board_ingest._read(os.path.join(board_ingest.POSTS, attachment_id + ".md"))
+        )
+        assert kept_attachment == exact_body_redact.redact_private_spans(attachment)
+        assert exact_body_redact.LOCAL_PATH_REDACTED in kept_attachment
+        assert "files.slack.com" not in kept_attachment
 
         # Court state is controlled by the action itself, not a sender claim.
         open_row = ("2026-08-27T00:00:00Z", {"from": "ANYONE", "act": "SESSION_OPEN", "id": "open-1"}, "")
