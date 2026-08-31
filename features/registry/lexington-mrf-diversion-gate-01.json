@@ -1,0 +1,36 @@
+{
+  "added": "2026-08-31",
+  "capability": "Read-only MRF downtime diversion handoff: a 50-row per-load fixture collapses 10 duplicates, ignores 8 stale notices, and emits exact 10 LANDFILL_CITY / 10 HOLD_HAULER / 15 ACCEPT / 5 HOLD_CAPACITY receipts with occupancy at or under 100t and identical replay. Never equipment control or an autonomous safety decision.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "lexington_mrf_diversion_gate.py",
+    "lexington-mrf-diversion-gate.js",
+    "lexington-mrf-diversion-gate.html",
+    "test_lexington_mrf_diversion_gate.py",
+    "revenue/lexington_mrf_diversion_gate/contract.json",
+    "p/cursor-lexington-mrf-diversion-gate-20260831-01.md",
+    "features/registry/lexington-mrf-diversion-gate-01.json"
+  ],
+  "dependencies": [],
+  "id": "lexington-mrf-diversion-gate-01",
+  "name": "Lexington MRF diversion gate",
+  "next_gap": "Buyer-approved live load-ticket shape after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "lexington-mrf-diversion-gate.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "lexington-mrf-diversion-gate.html",
+    "revenue/lexington_mrf_diversion_gate/contract.json",
+    "p/cursor-lexington-mrf-diversion-gate-20260831-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_lexington_mrf_diversion_gate.py",
+    "lexington_mrf_diversion_gate.py"
+  ]
+}
