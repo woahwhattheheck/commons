@@ -49,6 +49,8 @@ claimed_paths:
 - test_memory_restart_cross_harness.py
 - p/memory-restart-cross-harness-proof-20260830-01.md
 
+PR URL: https://github.com/woahwhattheheck/commons/pull/6592
+Candidate SHA: c48772032bda76d0d0469541ec50f2c4ff5e2b8c
 Base SHA: b9b6e2cd5253385aa63f1a3ebb39b2077f246190
 Branch: cursor/memory-restart-cross-harness-7d03
 Slack control: https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788140939650269
