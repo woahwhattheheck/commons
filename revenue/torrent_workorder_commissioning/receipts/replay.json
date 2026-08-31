@@ -1,0 +1,12 @@
+{
+  "journal_sha256": "db176b871981df49b6b151ee213985dac56b6c4743d853d206848d5dcff37540",
+  "ok": true,
+  "replay": {
+    "added_quarantines": 0,
+    "added_work_orders": 0,
+    "quarantine_count": 100,
+    "replay_noops": 500,
+    "state_changed": false,
+    "work_order_count": 400
+  }
+}
