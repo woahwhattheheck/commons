@@ -1,7 +1,7 @@
 {
   "canonical_crm": "JOJO Revenue Recovery CRM / Revenue Pipeline",
   "compose": {
-    "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; not a contact book",
+    "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; STATUS refresh; HOLD_BUILD_AND_VERIFY; not a contact book",
     "marketing_sales": "public research universe; Airtable remains canonical CRM",
     "outreach_receipts": "DNR / collision receipts; not a contact book",
     "reply_to_revenue": "inbound cash truth; never opens a second CRM",
@@ -9,16 +9,17 @@
     "swarm_mail": "public inbox manifest; private addresses stay off git",
     "website_people_email_book": "external prospects vs seller contacts; drafts only; --send exits 3"
   },
-  "composed_at": "2026-08-31T02:35:57Z",
+  "composed_at": "2026-08-31T04:40:00Z",
   "contract": {
     "append_event": "python3 host/lm_gtm_index.py append-event --subject <existing-id> --id <new-event-id> --body <text>",
-    "claim": "python3 host/lm_gtm_index.py claim --subject <id> --owner <name>",
+    "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <name>",
+    "list_hold": "python3 host/lm_gtm_index.py hold",
     "list_hot": "python3 host/lm_gtm_index.py hot",
     "list_next": "python3 host/lm_gtm_index.py next",
     "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id>",
     "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
     "read_state": "revenue/lm_gtm_index/state.json",
-    "release": "python3 host/lm_gtm_index.py release --subject <id> --owner <name>",
+    "release": "python3 host/lm_gtm_index.py release <subject> --owner <name>",
     "send": "illegal; exits 3"
   },
   "does_not_create": [
@@ -41,8 +42,13 @@
   "kind": "LM_GTM_INDEX_STATE",
   "named_subjects": {
     "anythingllm-mintplex": "HOLD_DO_NOT_RESEND from receipts + loop.json",
-    "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 Attachment E reopen; no bid submitted",
+    "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 addenda 1-5 received; HOLD / NO SUBMISSION; no bid submitted; award target 2026-09-28",
     "composio": "external_prospect READY_TO_DRAFT from loop.json + candidates.json",
+    "fuse-avantstay-andrei-patseev": "EXISTING_CRM_RECORD airtable:recQL3RMLwizE6kgZ SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+    "fuse-halo-ai-vito-strokov": "EXISTING_CRM_RECORD airtable:recIIo5M0lfUlYBXV SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+    "fuse-immense-de-waal-immelman": "EXISTING_CRM_RECORD airtable:rec6SOShVG2fgZQi0 SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+    "fuse-jovie-tim-white": "EXISTING_CRM_RECORD airtable:recBHZw2VsWWmALcR SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+    "fuse-odderon-phi-charles": "EXISTING_CRM_RECORD airtable:recIo5cgbxL96aQSn SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
     "metaforms": "EXISTING_CRM_RECORD airtable:recWHbHxQoQfGhS0q; HOLD_DO_NOT_RESEND",
     "msp-integris": "EXISTING_CRM_RECORD airtable:recyxAWjUjrUY1Xln SENT/NO_REPLY/HARD_DO_NOT_RESEND",
     "signoz": "external_prospect RESEARCH_REQUIRED from loop.json + candidates.json"
@@ -52,15 +58,17 @@
   "truth": {
     "calls_booked": 0,
     "cash_usd": 0,
-    "external_prospects": 19,
+    "external_prospects": 29,
+    "hold_build_actions": 5,
     "hot_next_actions": 12,
     "inbound_contacts": 11,
-    "index_rows": 36,
-    "live_next_actions": 30,
+    "index_rows": 46,
+    "live_next_actions": 40,
     "mailbox": "NEEDS_OWNER_MAILBOX",
-    "overlay_events": 16,
+    "overlay_events": 27,
     "research_entities_not_live": 1000,
     "seller_context_rows": 4,
+    "sent_awaiting_dnr_actions": 10,
     "transport_actions": 0
   }
 }

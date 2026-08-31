@@ -3,7 +3,8 @@
 
   var HOLD = {
     HOLD_DO_NOT_RESEND: true,
-    HOLD_DO_NOT_CONTACT: true
+    HOLD_DO_NOT_CONTACT: true,
+    HOLD_BUILD_AND_VERIFY: true
   };
 
   function text(tag, value, className) {
@@ -25,11 +26,20 @@
     if (role !== "external_prospect" && role !== "inbound_contact") return null;
     if (!row.live) return null;
     if (row.decision === "MATERIAL_REPLY") return "material_reply";
+    if (row.decision === "HOLD_BUILD_AND_VERIFY") return null;
     if (row.dnr || HOLD[row.decision]) return null;
     if (row.decision === "SENT_AWAITING_REPLY") return "sent_awaiting_reply";
     if (row.decision === "READY_TO_DRAFT") return "ready_to_draft";
     if (row.decision === "VERIFIED_LEAD_UNSENT") return "verified_lead_unsent";
     return null;
+  }
+
+  function laneOf(row) {
+    if (hotClass(row)) return "HOT";
+    if (row && row.decision === "SENT_AWAITING_REPLY" && row.dnr) return "SENT_DNR";
+    if (row && row.decision === "HOLD_BUILD_AND_VERIFY") return "HOLD_BUILD";
+    if (row && (row.dnr || HOLD[row.decision])) return "DNR";
+    return "LIVE";
   }
 
   var HOT_RANK = {
@@ -80,6 +90,8 @@
     if (truthRoot) {
       truthRoot.replaceChildren(
         cell(truth.hot_next_actions || 0, "hot"),
+        cell(truth.hold_build_actions || 0, "hold-build"),
+        cell(truth.sent_awaiting_dnr_actions || 0, "sent-dnr"),
         cell(truth.live_next_actions, "live next"),
         cell(truth.external_prospects, "prospects"),
         cell(truth.inbound_contacts, "inbound"),
@@ -90,10 +102,20 @@
     }
   }
 
-  function renderHot(parsed) {
-    var body = document.getElementById("hot-actions");
+  function renderTable(id, rows, cellsFor) {
+    var body = document.getElementById(id);
     if (!body) return;
     body.replaceChildren();
+    rows.forEach(function (row) {
+      var tr = document.createElement("tr");
+      cellsFor(row).forEach(function (value) {
+        tr.appendChild(text("td", value));
+      });
+      body.appendChild(tr);
+    });
+  }
+
+  function renderHot(parsed) {
     var ranked = [];
     (parsed.rows || []).forEach(function (row) {
       var klass = hotClass(row);
@@ -104,17 +126,34 @@
       if (a.rank !== b.rank) return a.rank - b.rank;
       return String(a.row.id).localeCompare(String(b.row.id));
     });
-    ranked.forEach(function (item) {
+    renderTable("hot-actions", ranked, function (item) {
       var row = item.row;
-      var tr = document.createElement("tr");
-      tr.appendChild(text("td", item.klass));
-      tr.appendChild(text("td", row.id));
-      tr.appendChild(text("td", row.organization || ""));
-      tr.appendChild(text("td", row.person || ""));
-      tr.appendChild(text("td", row.decision || ""));
-      tr.appendChild(text("td", row.next_action || ""));
-      tr.appendChild(text("td", row.owner || "UNSEATED"));
-      body.appendChild(tr);
+      return [item.klass, row.id, row.organization || "", row.person || "", row.decision || "", row.next_action || "", row.owner || "UNSEATED"];
+    });
+  }
+
+  function renderSentDnr(parsed) {
+    var rows = (parsed.rows || []).filter(function (row) {
+      return row.live && row.decision === "SENT_AWAITING_REPLY" && row.dnr;
+    });
+    rows.sort(function (a, b) {
+      return String(a.id).localeCompare(String(b.id));
+    });
+    renderTable("sent-dnr-actions", rows, function (row) {
+      return [row.id, row.organization || "", row.person || "", row.route_ref || row.route_kind || "", row.next_action || ""];
+    });
+  }
+
+  function renderHold(parsed) {
+    var rows = (parsed.rows || []).filter(function (row) {
+      return row.live && row.decision === "HOLD_BUILD_AND_VERIFY";
+    });
+    rows.sort(function (a, b) {
+      return String(a.id).localeCompare(String(b.id));
+    });
+    renderTable("hold-actions", rows, function (row) {
+      var source = (row.source_paths || []).join(" ");
+      return [row.id, row.organization || "", row.person || "", row.next_action || "", source];
     });
   }
 
@@ -125,6 +164,7 @@
     (parsed.rows || []).forEach(function (row) {
       if (!row.live) return;
       var tr = document.createElement("tr");
+      tr.appendChild(text("td", laneOf(row)));
       tr.appendChild(text("td", row.id));
       tr.appendChild(text("td", row.organization || ""));
       tr.appendChild(text("td", row.decision || ""));
@@ -149,6 +189,8 @@
       renderState(pair[0]);
       var parsed = parseIndex(pair[1]);
       renderHot(parsed);
+      renderSentDnr(parsed);
+      renderHold(parsed);
       renderIndex(parsed);
     })
     .catch(function (error) {
