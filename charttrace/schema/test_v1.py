@@ -3,19 +3,35 @@ import unittest
 
 from charttrace.schema.v1 import (
     COUNSEL_OR_CLINICIAN_REVIEW,
+    COUNTEREVIDENCE,
     EXTERNAL_AUTHORITY,
+    HYPOTHESIS,
     INVESTIGATIVE_LEAD,
+    MISSING_PROOF,
+    OBSERVATION,
     RECORD_FACT,
+    Authority,
+    AuthorityReviewStatus,
     Citation,
+    Counterevidence,
     DateCertainty,
+    DuplicateIdError,
     EvidenceGrade,
     EvidenceObjectType,
+    ExternalAuthority,
+    Fact,
     ForbiddenSemanticClaim,
+    Hypothesis,
     InvestigativeLead,
+    MissingProof,
+    Observation,
+    OrphanCitationError,
     RecordFact,
     RelevanceGrade,
     SchemaValidationError,
     TextSpan,
+    assert_citations_resolve,
+    assert_unique_ids,
     find_forbidden_semantic_claims,
 )
 
@@ -167,6 +183,137 @@ class SchemaV1Tests(unittest.TestCase):
                         domain="synthetic",
                         care_phase="synthetic",
                     )
+
+    def _citation(self, page: int = 1) -> Citation:
+        return Citation(
+            document="SYNTH-DOC-001",
+            page=page,
+            span_or_bbox=TextSpan(0, 8, "synthetic"),
+            source_hash=SOURCE_HASH,
+        )
+
+    def test_typed_work_order_objects_and_aliases(self) -> None:
+        observation = Observation(
+            observation_id="OBS-001",
+            statement="A synthetic observation is documented.",
+            citation=self._citation(),
+            domain="communication",
+            care_phase="follow-up",
+        )
+        fact = Fact(
+            fact_id="FACT-001",
+            statement="A synthetic fact is documented.",
+            citation=self._citation(),
+            domain="communication",
+            care_phase="follow-up",
+        )
+        hypothesis = Hypothesis(
+            hypothesis_id="HYP-001",
+            statement="The observation may warrant review.",
+            cited_observations=("OBS-001",),
+            citation=self._citation(),
+        )
+        authority = Authority(
+            authority_id="AUTH-001",
+            authority_type="regulation",
+            issuer="Synthetic Authority",
+            jurisdiction="SYNTHETIC",
+            effective_from="2025-01-01",
+            effective_to=None,
+            care_date_match=True,
+            primary_url="https://example.invalid/authority",
+            pinpoint="section-1",
+            retrieval_date="2026-09-01",
+            supported_proposition="Context for a synthetic review.",
+            supersession=None,
+            review_status=AuthorityReviewStatus.CONTEXT_ONLY,
+        )
+        counter = Counterevidence(
+            counterevidence_id="CTR-001",
+            statement="A callback is documented.",
+            counters="HYP-001",
+            citation=self._citation(2),
+        )
+        missing = MissingProof(
+            missing_proof_id="MISS-001",
+            statement="Scheduling ledger is absent.",
+            needed_for="HYP-001",
+            citation=self._citation(),
+        )
+        self.assertIs(observation.object_type, EvidenceObjectType.OBSERVATION)
+        self.assertIs(fact.object_type, EvidenceObjectType.RECORD_FACT)
+        self.assertIs(hypothesis.object_type, EvidenceObjectType.HYPOTHESIS)
+        self.assertIs(authority.object_type, EvidenceObjectType.EXTERNAL_AUTHORITY)
+        self.assertIs(counter.object_type, EvidenceObjectType.COUNTEREVIDENCE)
+        self.assertIs(missing.object_type, EvidenceObjectType.MISSING_PROOF)
+        self.assertIs(Fact, RecordFact)
+        self.assertIs(Authority, ExternalAuthority)
+        self.assertEqual(
+            [
+                OBSERVATION.value,
+                HYPOTHESIS.value,
+                COUNTEREVIDENCE.value,
+                MISSING_PROOF.value,
+            ],
+            ["OBSERVATION", "HYPOTHESIS", "COUNTEREVIDENCE", "MISSING_PROOF"],
+        )
+        graph = (observation, fact, hypothesis, authority, counter, missing)
+        assert_unique_ids(graph)
+        assert_citations_resolve(
+            graph,
+            known_source_hashes=(SOURCE_HASH,),
+            known_documents=("SYNTH-DOC-001",),
+        )
+
+    def test_duplicate_id_and_orphan_citation_fail_closed(self) -> None:
+        observation = Observation(
+            observation_id="OBS-001",
+            statement="A synthetic observation is documented.",
+            citation=self._citation(),
+            domain="communication",
+            care_phase="follow-up",
+        )
+        duplicate = Observation(
+            observation_id="OBS-001",
+            statement="A second synthetic observation.",
+            citation=self._citation(),
+            domain="communication",
+            care_phase="follow-up",
+        )
+        with self.assertRaises(DuplicateIdError):
+            assert_unique_ids((observation, duplicate))
+
+        hypothesis = Hypothesis(
+            hypothesis_id="HYP-001",
+            statement="The observation may warrant review.",
+            cited_observations=("OBS-MISSING",),
+            citation=self._citation(),
+        )
+        with self.assertRaises(OrphanCitationError):
+            assert_citations_resolve(
+                (observation, hypothesis),
+                known_source_hashes=(SOURCE_HASH,),
+                known_documents=("SYNTH-DOC-001",),
+            )
+
+        orphan_cite = Observation(
+            observation_id="OBS-002",
+            statement="A synthetic observation with a missing source.",
+            citation=Citation(
+                document="MISSING-DOC",
+                page=1,
+                span_or_bbox=TextSpan(0, 8, "synthetic"),
+                source_hash="b" * 64,
+            ),
+            domain="communication",
+            care_phase="follow-up",
+        )
+        with self.assertRaises(OrphanCitationError):
+            assert_citations_resolve(
+                (orphan_cite,),
+                known_source_hashes=(SOURCE_HASH,),
+                known_documents=("SYNTH-DOC-001",),
+            )
 
 
 if __name__ == "__main__":

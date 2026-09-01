@@ -10,7 +10,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, fields, is_dataclass
 from enum import Enum
-from typing import Any, Mapping, Optional, Sequence, Tuple, Union
+from typing import Any, Dict, Mapping, Optional, Sequence, Tuple, Union
 
 
 SCHEMA_VERSION = "charttrace.schema.v1.1"
@@ -29,14 +29,22 @@ class _StringEnum(str, Enum):
 
 
 class EvidenceObjectType(_StringEnum):
+    OBSERVATION = "OBSERVATION"
     RECORD_FACT = "RECORD_FACT"
+    HYPOTHESIS = "HYPOTHESIS"
     EXTERNAL_AUTHORITY = "EXTERNAL_AUTHORITY"
+    COUNTEREVIDENCE = "COUNTEREVIDENCE"
+    MISSING_PROOF = "MISSING_PROOF"
     INVESTIGATIVE_LEAD = "INVESTIGATIVE_LEAD"
     COUNSEL_OR_CLINICIAN_REVIEW = "COUNSEL_OR_CLINICIAN_REVIEW"
 
 
+OBSERVATION = EvidenceObjectType.OBSERVATION
 RECORD_FACT = EvidenceObjectType.RECORD_FACT
+HYPOTHESIS = EvidenceObjectType.HYPOTHESIS
 EXTERNAL_AUTHORITY = EvidenceObjectType.EXTERNAL_AUTHORITY
+COUNTEREVIDENCE = EvidenceObjectType.COUNTEREVIDENCE
+MISSING_PROOF = EvidenceObjectType.MISSING_PROOF
 INVESTIGATIVE_LEAD = EvidenceObjectType.INVESTIGATIVE_LEAD
 COUNSEL_OR_CLINICIAN_REVIEW = EvidenceObjectType.COUNSEL_OR_CLINICIAN_REVIEW
 
@@ -117,6 +125,14 @@ class SchemaValidationError(ValueError):
     """Raised when an evidence object violates the frozen v1 contract."""
 
 
+class DuplicateIdError(SchemaValidationError):
+    """Raised when two evidence objects share one stable identifier."""
+
+
+class OrphanCitationError(SchemaValidationError):
+    """Raised when a citation or object reference cannot be resolved."""
+
+
 def find_forbidden_semantic_claims(text: str) -> Tuple[ForbiddenSemanticClaim, ...]:
     """Return forbidden conclusion-like claims present in ``text``."""
 
@@ -189,6 +205,22 @@ class Citation:
 
 
 @dataclass(frozen=True, slots=True)
+class Observation:
+    observation_id: str
+    statement: str
+    citation: Citation
+    domain: str
+    care_phase: str
+    object_type: EvidenceObjectType = EvidenceObjectType.OBSERVATION
+
+    def __post_init__(self) -> None:
+        _validate_identifier(self.observation_id, "observation_id")
+        assert_permitted_semantics(self.statement, field_name="statement")
+        if self.object_type is not EvidenceObjectType.OBSERVATION:
+            raise SchemaValidationError("Observation object_type cannot be changed")
+
+
+@dataclass(frozen=True, slots=True)
 class RecordFact:
     fact_id: str
     statement: str
@@ -204,6 +236,29 @@ class RecordFact:
         assert_permitted_semantics(self.statement, field_name="statement")
         if self.object_type is not EvidenceObjectType.RECORD_FACT:
             raise SchemaValidationError("RecordFact object_type cannot be changed")
+
+
+Fact = RecordFact
+
+
+@dataclass(frozen=True, slots=True)
+class Hypothesis:
+    hypothesis_id: str
+    statement: str
+    cited_observations: Tuple[str, ...]
+    citation: Citation
+    object_type: EvidenceObjectType = EvidenceObjectType.HYPOTHESIS
+
+    def __post_init__(self) -> None:
+        _validate_identifier(self.hypothesis_id, "hypothesis_id")
+        object.__setattr__(self, "cited_observations", _as_tuple(self.cited_observations))
+        if not self.cited_observations:
+            raise SchemaValidationError("hypothesis must cite at least one observation")
+        for observation_id in self.cited_observations:
+            _validate_identifier(observation_id, "cited_observations item")
+        assert_permitted_semantics(self.statement, field_name="statement")
+        if self.object_type is not EvidenceObjectType.HYPOTHESIS:
+            raise SchemaValidationError("Hypothesis object_type cannot be changed")
 
 
 @dataclass(frozen=True, slots=True)
@@ -233,6 +288,43 @@ class ExternalAuthority:
             raise SchemaValidationError(
                 "ExternalAuthority object_type cannot be changed"
             )
+
+
+Authority = ExternalAuthority
+
+
+@dataclass(frozen=True, slots=True)
+class Counterevidence:
+    counterevidence_id: str
+    statement: str
+    counters: str
+    citation: Citation
+    object_type: EvidenceObjectType = EvidenceObjectType.COUNTEREVIDENCE
+
+    def __post_init__(self) -> None:
+        _validate_identifier(self.counterevidence_id, "counterevidence_id")
+        _validate_identifier(self.counters, "counters")
+        assert_permitted_semantics(self.statement, field_name="statement")
+        if self.object_type is not EvidenceObjectType.COUNTEREVIDENCE:
+            raise SchemaValidationError(
+                "Counterevidence object_type cannot be changed"
+            )
+
+
+@dataclass(frozen=True, slots=True)
+class MissingProof:
+    missing_proof_id: str
+    statement: str
+    needed_for: str
+    citation: Optional[Citation] = None
+    object_type: EvidenceObjectType = EvidenceObjectType.MISSING_PROOF
+
+    def __post_init__(self) -> None:
+        _validate_identifier(self.missing_proof_id, "missing_proof_id")
+        _validate_identifier(self.needed_for, "needed_for")
+        assert_permitted_semantics(self.statement, field_name="statement")
+        if self.object_type is not EvidenceObjectType.MISSING_PROOF:
+            raise SchemaValidationError("MissingProof object_type cannot be changed")
 
 
 @dataclass(frozen=True, slots=True)
@@ -348,8 +440,81 @@ class CounselOrClinicianReview:
 
 
 EvidenceObject = Union[
-    RecordFact, ExternalAuthority, InvestigativeLead, CounselOrClinicianReview
+    Observation,
+    RecordFact,
+    Hypothesis,
+    ExternalAuthority,
+    Counterevidence,
+    MissingProof,
+    InvestigativeLead,
+    CounselOrClinicianReview,
 ]
+
+
+_ID_FIELDS = (
+    "observation_id",
+    "fact_id",
+    "hypothesis_id",
+    "authority_id",
+    "counterevidence_id",
+    "missing_proof_id",
+    "lead_id",
+    "review_id",
+)
+
+
+def object_id(value: Any) -> str:
+    for field_name in _ID_FIELDS:
+        if hasattr(value, field_name):
+            return str(getattr(value, field_name))
+    raise SchemaValidationError("object has no stable identifier")
+
+
+def citations_of(value: Any) -> Tuple[Citation, ...]:
+    found = []
+    citation = getattr(value, "citation", None)
+    if isinstance(citation, Citation):
+        found.append(citation)
+    return tuple(found)
+
+
+def assert_unique_ids(objects: Sequence[Any]) -> Dict[str, Any]:
+    """Reject duplicate stable IDs across a typed object graph."""
+
+    seen: Dict[str, Any] = {}
+    for value in objects:
+        identifier = object_id(value)
+        if identifier in seen:
+            raise DuplicateIdError(f"duplicate object id: {identifier}")
+        seen[identifier] = value
+    return seen
+
+
+def assert_citations_resolve(
+    objects: Sequence[Any],
+    *,
+    known_source_hashes: Sequence[str],
+    known_documents: Sequence[str],
+) -> None:
+    """Reject orphan citations and dangling object references."""
+
+    hashes = set(known_source_hashes)
+    documents = set(known_documents)
+    ids = assert_unique_ids(objects)
+    for value in objects:
+        for citation in citations_of(value):
+            if citation.source_hash not in hashes or citation.document not in documents:
+                raise OrphanCitationError(
+                    f"orphan citation {citation.document} page {citation.page}"
+                )
+        for field_name in ("cited_observations", "supporting_facts"):
+            for reference in getattr(value, field_name, ()):
+                if reference not in ids:
+                    raise OrphanCitationError(f"orphan object reference: {reference}")
+        for field_name in ("counters", "needed_for"):
+            reference = getattr(value, field_name, None)
+            if reference and reference not in ids:
+                raise OrphanCitationError(f"orphan object reference: {reference}")
 
 
 def to_primitive(value: Any) -> Any:
