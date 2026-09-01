@@ -1,13 +1,32 @@
 """Local evidence sealing and synthetic peer-analysis helpers."""
 
 import hashlib
+import os
 from pathlib import Path
 from typing import Iterable, List, Tuple, Union
 
 from .cases import SourceSeal
+from .paths import validate_local_file
 
 
-SourceInput = Union[Path, Tuple[str, bytes]]
+SourceInput = Union[Path, str, Tuple[str, bytes]]
+
+
+def _hash_local_file(path: Path) -> Tuple[str, int]:
+    flags = os.O_RDONLY
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    descriptor = os.open(path, flags)
+    digest = hashlib.sha256()
+    size = 0
+    with os.fdopen(descriptor, "rb") as handle:
+        while True:
+            chunk = handle.read(1024 * 1024)
+            if not chunk:
+                break
+            digest.update(chunk)
+            size += len(chunk)
+    return digest.hexdigest(), size
 
 
 def seal_sources(sources: Iterable[SourceInput]) -> List[SourceSeal]:
@@ -18,17 +37,19 @@ def seal_sources(sources: Iterable[SourceInput]) -> List[SourceSeal]:
             display_name, content = source
             if not isinstance(content, bytes):
                 raise TypeError("In-memory source content must be bytes.")
+            source_hash = hashlib.sha256(content).hexdigest()
+            source_size = len(content)
         else:
-            path = Path(source)
+            path = validate_local_file(source)
             display_name = path.name
-            content = path.read_bytes()
+            source_hash, source_size = _hash_local_file(path)
         if not display_name.strip():
             raise ValueError("Each source requires a display name.")
         seals.append(
             SourceSeal(
                 display_name=display_name.strip(),
-                sha256=hashlib.sha256(content).hexdigest(),
-                size_bytes=len(content),
+                sha256=source_hash,
+                size_bytes=source_size,
             )
         )
     if not seals:

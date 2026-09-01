@@ -1,208 +1,126 @@
-"""Authenticated filesystem-mailbox JSON IPC. No pickle. No sockets.
+"""Process-local IPC transport.
 
-Frames are length-bounded typed JSON with a per-session HMAC key stored
-in a 0600 mailbox file. Replay and size checks are mandatory. This is
-not a network transport and not a production authenticator.
+Windows uses a named pipe and Unix test hosts use a filesystem-domain socket.
+Messages are bounded UTF-8 JSON bytes. There is no object deserialization,
+internet-family code path, or TCP listener.
 """
 
-from __future__ import annotations
-
-import hashlib
-import hmac
 import json
 import os
-import struct
 import tempfile
-import time
+from multiprocessing.connection import Listener
 from pathlib import Path
-from typing import Any, Dict, FrozenSet, Optional, Set
+from typing import Any, Dict, List, Optional, Tuple
 from uuid import uuid4
 
 
-MAGIC = b"CTJ1"
-MAX_FRAME = 65_536
-PROTOCOL_VERSION = 1
-ALLOWED_OPS: FrozenSet[str] = frozenset({"ping", "handoff", "status"})
-REQUIRED_FIELDS = ("v", "op", "nonce", "mac")
-TRANSPORT = "FILESYSTEM_MAILBOX"
+MAX_JSON_MESSAGE_BYTES = 1024 * 1024
 
 
-class IpcProtocolError(ValueError):
-    """Raised when a frame fails magic, size, schema, MAC, or replay checks."""
+class JsonIpcError(ValueError):
+    pass
 
 
-def mailbox_dir(instance_id: str) -> Path:
-    return Path(tempfile.gettempdir()) / f"charttrace-ipc-{instance_id}"
+def _reject_constant(value: str) -> None:
+    raise JsonIpcError(f"Non-finite JSON constant {value!r} is prohibited.")
 
 
-def local_ipc_address(instance_id: Optional[str] = None) -> str:
-    return str(mailbox_dir(instance_id or str(uuid4())))
+def _unique_object(pairs: List[Tuple[str, Any]]) -> Dict[str, Any]:
+    result: Dict[str, Any] = {}
+    for key, value in pairs:
+        if key in result:
+            raise JsonIpcError(f"Duplicate JSON key {key!r} is prohibited.")
+        result[key] = value
+    return result
 
 
-def local_ipc_family() -> str:
-    return TRANSPORT
-
-
-def local_ipc_transport() -> str:
-    return TRANSPORT
-
-
-def _session_key_path(mailbox: Path) -> Path:
-    return Path(mailbox) / "session.key"
-
-
-def _inbox_path(mailbox: Path) -> Path:
-    return Path(mailbox) / "inbox.ctj"
-
-
-def read_session_key(mailbox: Path) -> bytes:
-    key_path = _session_key_path(mailbox)
-    if not key_path.is_file() or key_path.is_symlink():
-        raise IpcProtocolError("IPC session key is missing.")
-    key = key_path.read_bytes()
-    if len(key) != 32:
-        raise IpcProtocolError("IPC session key is corrupt.")
-    return key
-
-
-def sign_message(session_key: bytes, payload: Dict[str, Any]) -> str:
-    body = json.dumps(
-        {key: payload[key] for key in ("v", "op", "nonce") if key in payload},
-        sort_keys=True,
-        separators=(",", ":"),
-    ).encode("utf-8")
-    return hmac.new(session_key, body, hashlib.sha256).hexdigest()
-
-
-def encode_frame(payload: Dict[str, Any]) -> bytes:
-    body = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
-    if len(body) > MAX_FRAME:
-        raise IpcProtocolError("IPC frame exceeds size bound.")
-    return MAGIC + struct.pack(">I", len(body)) + body
-
-
-def _looks_like_object_payload(data: bytes) -> bool:
-    if not data:
-        return False
-    if data[:1] in {b"\x80", b"\x81"}:
-        return True
-    if data.startswith(b"pickle") or b"__reduce__" in data:
-        return True
-    if data.startswith(b"(") and b"c__builtin__\n" in data:
-        return True
-    return False
-
-
-def decode_frame(data: bytes, session_key: bytes, seen_nonces: Set[str]) -> Dict[str, Any]:
-    if not data:
-        raise IpcProtocolError("Empty IPC frame.")
-    if _looks_like_object_payload(data):
-        raise IpcProtocolError("Object/pickle input is rejected.")
-    if data[:4] != MAGIC:
-        raise IpcProtocolError("IPC magic mismatch.")
-    if len(data) < 8:
-        raise IpcProtocolError("IPC frame is truncated.")
-    length = struct.unpack(">I", data[4:8])[0]
-    if length > MAX_FRAME or length < 2:
-        raise IpcProtocolError("IPC frame length is invalid.")
-    body = data[8 : 8 + length]
-    if len(body) != length:
-        raise IpcProtocolError("IPC frame is truncated.")
+def decode_json_message(payload: bytes) -> Dict[str, Any]:
+    if not payload or len(payload) > MAX_JSON_MESSAGE_BYTES:
+        raise JsonIpcError("JSON IPC message size is invalid.")
     try:
-        payload = json.loads(body.decode("utf-8"))
-    except (UnicodeDecodeError, json.JSONDecodeError) as error:
-        raise IpcProtocolError("IPC body is not typed JSON.") from error
-    if not isinstance(payload, dict):
-        raise IpcProtocolError("IPC body must be a JSON object.")
-    missing = [field for field in REQUIRED_FIELDS if field not in payload]
-    if missing:
-        raise IpcProtocolError(f"IPC schema missing: {', '.join(missing)}.")
-    extra = sorted(set(payload) - set(REQUIRED_FIELDS) - {"detail"})
-    if extra:
-        raise IpcProtocolError(f"IPC schema unknown fields: {', '.join(extra)}.")
-    if payload["v"] != PROTOCOL_VERSION:
-        raise IpcProtocolError("IPC protocol version mismatch.")
-    if payload["op"] not in ALLOWED_OPS:
-        raise IpcProtocolError("IPC operation is not allowed.")
-    nonce = str(payload["nonce"])
-    if not nonce or nonce in seen_nonces:
-        raise IpcProtocolError("IPC nonce replay or empty nonce.")
-    expected = sign_message(session_key, payload)
-    if not hmac.compare_digest(str(payload["mac"]), expected):
-        raise IpcProtocolError("IPC authenticator mismatch.")
-    seen_nonces.add(nonce)
+        decoded = payload.decode("utf-8")
+        value = json.loads(
+            decoded,
+            object_pairs_hook=_unique_object,
+            parse_constant=_reject_constant,
+        )
+    except (UnicodeError, json.JSONDecodeError) as error:
+        raise JsonIpcError("IPC message must be valid UTF-8 JSON.") from error
+    if not isinstance(value, dict):
+        raise JsonIpcError("IPC message must be a JSON object.")
+    return value
+
+
+def encode_json_message(value: Dict[str, Any]) -> bytes:
+    if not isinstance(value, dict):
+        raise JsonIpcError("IPC response must be a JSON object.")
+    try:
+        payload = json.dumps(
+            value,
+            allow_nan=False,
+            sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+    except (TypeError, ValueError) as error:
+        raise JsonIpcError("IPC response is not JSON serializable.") from error
+    if len(payload) > MAX_JSON_MESSAGE_BYTES:
+        raise JsonIpcError("JSON IPC response is too large.")
     return payload
 
 
+def local_ipc_address(instance_id: Optional[str] = None) -> str:
+    token = instance_id or str(uuid4())
+    if os.name == "nt":
+        return rf"\\.\pipe\charttrace-{token}"
+    return str(Path(tempfile.gettempdir()) / f"charttrace-{token}.sock")
+
+
+def local_ipc_family() -> str:
+    return "AF_PIPE" if os.name == "nt" else "AF_UNIX"
+
+
 class LocalIpcServer:
-    """Same-host mailbox listener. Never deserializes Python objects."""
+    """Small request listener for same-host launcher handoff."""
 
     def __init__(self, instance_id: Optional[str] = None):
-        self.instance_id = instance_id or str(uuid4())
-        self.address = local_ipc_address(self.instance_id)
-        self.family = TRANSPORT
-        self.transport = TRANSPORT
-        self._mailbox: Optional[Path] = None
-        self._session_key: Optional[bytes] = None
-        self._seen_nonces: Set[str] = set()
+        self.address = local_ipc_address(instance_id)
+        self.family = local_ipc_family()
+        self._listener: Optional[Listener] = None
 
     @property
     def is_running(self) -> bool:
-        return self._mailbox is not None and self._session_key is not None
+        return self._listener is not None
 
     def start(self) -> None:
-        if self._mailbox is not None:
+        if self._listener is not None:
             return
-        mailbox = Path(self.address)
-        mailbox.mkdir(parents=True, exist_ok=True)
-        try:
-            os.chmod(mailbox, 0o700)
-        except OSError:
-            pass
-        key = os.urandom(32)
-        key_path = _session_key_path(mailbox)
-        key_path.write_bytes(key)
-        try:
-            os.chmod(key_path, 0o600)
-        except OSError:
-            pass
-        inbox = _inbox_path(mailbox)
-        if inbox.exists():
-            inbox.unlink()
-        self._mailbox = mailbox
-        self._session_key = key
+        if self.family == "AF_UNIX":
+            socket_path = Path(self.address)
+            if socket_path.exists():
+                socket_path.unlink()
+        self._listener = Listener(address=self.address, family=self.family)
 
-    def receive_once(self, timeout: float = 5.0) -> Dict[str, Any]:
-        if self._mailbox is None or self._session_key is None:
+    def receive_once(self) -> Dict[str, Any]:
+        if self._listener is None:
             raise RuntimeError("Local IPC server is not running.")
-        inbox = _inbox_path(self._mailbox)
-        deadline = time.time() + timeout
-        while time.time() < deadline:
-            if inbox.exists() and inbox.stat().st_size > 0:
-                data = inbox.read_bytes()
-                try:
-                    inbox.unlink()
-                except OSError:
-                    pass
-                return decode_frame(data, self._session_key, self._seen_nonces)
-            time.sleep(0.01)
-        raise IpcProtocolError("IPC receive timeout.")
+        connection = self._listener.accept()
+        try:
+            try:
+                payload = connection.recv_bytes(MAX_JSON_MESSAGE_BYTES)
+            except OSError as error:
+                raise JsonIpcError("JSON IPC message exceeded the size limit.") from error
+            return decode_json_message(payload)
+        finally:
+            connection.close()
 
     def close(self) -> None:
-        mailbox = self._mailbox
-        self._mailbox = None
-        self._session_key = None
-        if mailbox is None or not mailbox.exists():
-            return
-        for child in mailbox.iterdir():
-            try:
-                child.unlink()
-            except OSError:
-                pass
-        try:
-            mailbox.rmdir()
-        except OSError:
-            pass
+        if self._listener is not None:
+            self._listener.close()
+            self._listener = None
+        if self.family == "AF_UNIX":
+            socket_path = Path(self.address)
+            if socket_path.exists():
+                socket_path.unlink()
 
     def __enter__(self) -> "LocalIpcServer":
         self.start()
@@ -210,22 +128,3 @@ class LocalIpcServer:
 
     def __exit__(self, *_: object) -> None:
         self.close()
-
-
-def send_raw(address: str, data: bytes) -> None:
-    mailbox = Path(address)
-    mailbox.mkdir(parents=True, exist_ok=True)
-    if _looks_like_object_payload(data):
-        # Still write so the server observes the malicious frame.
-        pass
-    temporary = mailbox / "inbox.tmp"
-    inbox = _inbox_path(mailbox)
-    temporary.write_bytes(data)
-    os.replace(temporary, inbox)
-
-
-def send_signed(address: str, op: str, nonce: str) -> None:
-    session_key = read_session_key(Path(address))
-    payload = {"v": PROTOCOL_VERSION, "op": op, "nonce": nonce}
-    payload["mac"] = sign_message(session_key, payload)
-    send_raw(address, encode_frame(payload))

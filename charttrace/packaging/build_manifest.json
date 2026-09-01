@@ -7,9 +7,11 @@
   "external_fonts": false,
   "external_scripts": false,
   "network_listener": "none",
+  "package_state": "source-config-only-not-built",
   "platform": "windows",
+  "production_crypto": false,
   "signing_state": "unsigned",
   "synthetic_released": false,
   "telemetry": false,
-  "transport": "filesystem_mailbox"
+  "transport": "local_ipc_only"
 }
