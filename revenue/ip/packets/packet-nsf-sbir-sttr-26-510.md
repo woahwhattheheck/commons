@@ -53,8 +53,8 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 
 - `ground/FEATURES.md` sha256 `df4c32be18ae22779eb6cee30f008e3f5b64a4e99925d0732697f9895b6f3464` (937 bytes)
 - `ground/FEATURE_TRACKER.md` sha256 `40ee75391965077e5479e1755ce8a200ddd38a610903d1aa6ab128cd87c8dd3c` (3290 bytes)
-- `host/feature_tracker.py` sha256 `cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346` (36840 bytes)
-- `test_feature_tracker.py` sha256 `aecf1ef4f7451221205f644c50530554909464256d267d1bf5dd8dc55a7a144b` (23121 bytes)
+- `host/feature_tracker.py` sha256 `b45dc4ab1f5d26d356763fe8daab43cacbaf40586a498b8af65972cfc639755b` (37442 bytes)
+- `test_feature_tracker.py` sha256 `b20ab4b50afb70838ce948073effe9ab9ae259bd5c91884b3d77b8c85d8b2630` (25370 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
 - `resources.html` sha256 `306020b23fbb6cc7ae97e1d513047f90926930b9b8e2b19d29a286fe3699e39e` (11401 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `787a941780741164eb6de8eb151a3e8c78f5eb9f48da48eb4f4d6504604c3994` (94302 bytes)
