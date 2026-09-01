@@ -350,72 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 9,
+ "n_open_prs": 11,
  "open_prs": [
-  {
-   "number": 7010,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane E: commercial isolation, workload pricing, live ops OFF",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7010",
-   "base_freshness": {
-    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7009,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane D: review line, .ctpkg, and counsel gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7009",
-   "base_freshness": {
-    "base_sha": "eb0257b2ad06b22da779d0606ea0076261ca83ad",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7006,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane F \u2014 evidence-derived assurance (HOLD / no merge)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
-   "base_freshness": {
-    "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7015,
-   "author": "woahwhattheheck",
-   "title": "BevSource lab pilot QA genealogy LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
-   "base_freshness": {
-    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 7012,
    "author": "woahwhattheheck",
@@ -423,7 +359,39 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7012",
    "base_freshness": {
     "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7296,
+   "author": "woahwhattheheck",
+   "title": "Campoly sample-to-report lineage LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7296",
+   "base_freshness": {
+    "base_sha": "2f89009900036c4a4ad1fd21c3953c1db008c313",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7011,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane C: native window, legal gates, unsigned packaging",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
+   "base_freshness": {
+    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,28 +407,76 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7020",
    "base_freshness": {
     "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7011,
+   "number": 7006,
    "author": "woahwhattheheck",
-   "title": "ChartTrace lane C: native window, legal gates, unsigned packaging",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
+   "title": "ChartTrace lane F \u2014 evidence-derived assurance (HOLD / no merge)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
    "base_freshness": {
-    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7009,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane D: review line, .ctpkg, and counsel gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7009",
+   "base_freshness": {
+    "base_sha": "eb0257b2ad06b22da779d0606ea0076261ca83ad",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7010,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane E: commercial isolation, workload pricing, live ops OFF",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7010",
+   "base_freshness": {
+    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7015,
+   "author": "woahwhattheheck",
+   "title": "BevSource lab pilot QA genealogy LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
+   "base_freshness": {
+    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -471,12 +487,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7021",
    "base_freshness": {
     "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -486,11 +502,27 @@
    "title": "caliper-slack-relay-adapter-01: Slack dest adapter for uncredentialed local bridges",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7295",
    "base_freshness": {
-    "base_sha": "9e6528e27ce037ac77aa14bd01fad1e113311fcc",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "base_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7299,
+   "author": "woahwhattheheck",
+   "title": "Add KC Water phased laboratory relocation LIMS fixture",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7299",
+   "base_freshness": {
+    "base_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
    },
    "status": "CANDIDATE",
    "road": "pr",
