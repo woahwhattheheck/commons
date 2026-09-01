@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 8,
+ "n_open_prs": 9,
  "open_prs": [
   {
    "number": 7010,
@@ -417,22 +417,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7021,
-   "author": "woahwhattheheck",
-   "title": "Denton bacteriology acceptance + reporting LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7021",
-   "base_freshness": {
-    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 7012,
    "author": "woahwhattheheck",
    "title": "ChartTrace v1.1 Lane A evidence and storage contracts",
@@ -471,6 +455,38 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
    "base_freshness": {
     "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
+    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7021,
+   "author": "woahwhattheheck",
+   "title": "Denton bacteriology acceptance + reporting LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7021",
+   "base_freshness": {
+    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7295,
+   "author": "woahwhattheheck",
+   "title": "caliper-slack-relay-adapter-01: Slack dest adapter for uncredentialed local bridges",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7295",
+   "base_freshness": {
+    "base_sha": "9e6528e27ce037ac77aa14bd01fad1e113311fcc",
     "main_sha": "a07c42957b29dcb81ba87cac97d475efb9bd0142",
     "ahead_by": null,
     "behind_by": null,
