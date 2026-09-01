@@ -1,55 +1,37 @@
 # ChartTrace Workbench
 
-Local-first, single-case medical-record evidence workbench. Synthetic
-build-and-verify only. Real-family records remain HOLD.
+Demand ID: `charttrace-medical-evidence-review-01`  
+State: **SYNTHETIC BUILD-AND-VERIFY**. Real records / family pilot: **HOLD**.  
+Signing: **unsigned** synthetic artifact. `release_authorized=false`.
 
-This is a Windows-first standalone application, not a GitHub Pages door,
-browser tab, public upload surface, or static HTML product. There is no
-`doors/charttrace-*.html`.
+ChartTrace is a Windows-first standalone evidence workbench. It is not a GitHub Pages door, browser tab, public upload surface, or phone-download HTML file. There is no `doors/charttrace-medical-evidence-review.html`.
 
-## What it does
+> ChartTrace is an investigative research aid. It separates record-supported observations, external authority, hypotheses, counterevidence, and professional review questions. Licensed counsel determines legal significance; qualified clinicians determine clinical significance.
 
-Turns already-digitized records into an immutable source inventory, cited
-chronology, ledgers, high-recall investigative leads, an internal review
-line, and a named-human-released recipient package.
+This tree is assembled from collision-safe lanes. Do not treat an individual lane PR as a production installer, HIPAA certification, counsel approval, or Stripe integration.
 
-It does not decide malpractice, negligence, causation, standard-of-care
-breach, actionability, damages, or representation.
+## Lanes
 
-## Hard boundaries
-
-- No PHI in git, Slack, fixtures, logs, or exports
-- No live model call in the synthetic build (`model=none`)
-- No public TCP listener, browser launch, Pages dependency, or egress
-- No Stripe mutation, Connect, charge, transfer, payout, tax, or spend
-- No price, firm, destination, compensation, recovery, or routing inputs
-  into peers or evidence generation
-- Encrypted-vault *contract* only until a caller proves production encryption
-
-## Lane ownership
-
-| Lane | Paths | Job |
+| Lane | Owner seat | Paths |
 | --- | --- | --- |
-| A | `charttrace/core/**`, `schema/**`, `storage/**` | Evidence objects, ledger, vault contract |
-| B | `charttrace/peers/**`, `prompts/**`, `grounding/**` | 12-role high-recall swarm |
-| C | `charttrace/app/**`, `ui/**`, `legal/**`, `packaging/**`, `launcher.py` | Native window + Legal/Data/Terms |
-| D | `charttrace/review/**`, `export/**`, `counsel/**` | Review line + `.ctpkg` |
-| E | `charttrace/commercial/**`, `pricing/**`, `affiliates/**` | Workload pricing + isolation |
-| F | `charttrace/fixtures/**`, `assurance/**`, `test_charttrace_*.py` | Synthetic oracle + thresholds |
-| Integrator | `__init__.py`, this README, `p/charttrace-medical-evidence-review-01.md` | Package + receipt. No door. |
+| A | CURSOR-GPT-A | `charttrace/core/**`, `charttrace/schema/**`, `charttrace/storage/**` |
+| B | CURSOR-GROK-B | `charttrace/peers/**`, `charttrace/prompts/**`, `charttrace/grounding/**` |
+| C | CURSOR-GPT-C | `charttrace/app/**`, `charttrace/ui/**`, `charttrace/legal/**`, `charttrace/packaging/**`, `charttrace/launcher.py` |
+| D | CURSOR-GROK-D | `charttrace/review/**`, `charttrace/export/**`, `charttrace/counsel/**` |
+| E | CURSOR-GEMINI-E | `charttrace/commercial/**`, `charttrace/pricing/**`, `charttrace/affiliates/**` |
+| F | CURSOR-LEAD | `charttrace/fixtures/**`, `charttrace/assurance/**`, `test_charttrace_*.py` |
+| Integrator | CURSOR-LEAD | `charttrace/__init__.py`, `charttrace/README.md`, `p/charttrace-medical-evidence-review-01.md` |
 
-Integrator does not steal lane paths. Interface mismatches are resolved in
-this package marker, not by rewriting another lane.
+## Run (synthetic)
 
-## Tests
+Lane tests are declared on each ACCEPT. After merge, from a checkout that contains F:
 
-After a lane lands, run that lane's declared command. The aggregate suite
-is `python -m unittest -v test_charttrace_assurance.py` plus each landed
-lane discover command, under network deny. Empty or prose-only branches
-are not merge candidates.
+```bash
+python3 -m unittest -v test_charttrace_assurance.py test_charttrace_language.py
+```
 
-## Status
+Launch (after lane C lands): `python3 charttrace/launcher.py` — native window, no public TCP, persistent Legal / Data / Terms.
 
-See `p/charttrace-medical-evidence-review-01.md` for the measured
-START/PROGRESS/SHIP audit. This README does not claim production,
-counsel approval, signed installer, customer delivery, or cash.
+## Hard holds
+
+No PHI in git, Slack, logs, fixtures, or exports. No external model calls. No outreach. No public deployment. No Stripe mutation, Connect, live routing, spend, or Cheri/Billings action. No force-push. Root merges.
