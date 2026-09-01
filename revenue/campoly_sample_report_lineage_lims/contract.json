@@ -1,0 +1,38 @@
+{
+  "acceptance": {
+    "hold_counts": {
+      "HOLD_BAG_FORM_MISMATCH": 4,
+      "HOLD_DUPLICATE_ID": 4,
+      "HOLD_MISSING_QUOTE_LINK": 8,
+      "HOLD_REQUIRED_SDS": 4
+    },
+    "holds": 20,
+    "input_rows": 100,
+    "named_human_release_only": true,
+    "ready": 80,
+    "replay_additions": 0
+  },
+  "buyer": "Norma Turner / Cambridge Polymer Group",
+  "cash_usd": 0,
+  "decision_boundary": "Synthetic lineage evidence only; never production readiness, analytical interpretation, compliance, or autonomous report release.",
+  "demand_id": "campoly-sample-report-lineage-lims-01",
+  "interfaces": "SYNTHETIC_READ_ONLY",
+  "live_lims": false,
+  "official_binary": "python campoly_sample_report_lineage_lims.py",
+  "official_test": "python test_campoly_sample_report_lineage_lims.py",
+  "page": "campoly-sample-report-lineage-lims.html",
+  "pre_sale_transport": "NONE",
+  "production_deployment": false,
+  "schema": "commons-campoly-sample-report-lineage-lims/v1",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "synthetic": true,
+  "workflow": [
+    "quote and purchase-order binding",
+    "request-form, SDS, bag-label, sample, and package reconciliation",
+    "synthetic accession",
+    "routine or non-routine method/version binding",
+    "raw value, unit, qualifier, source, and result provenance",
+    "staged analytical report",
+    "authorized named-human release"
+  ]
+}
