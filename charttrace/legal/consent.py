@@ -5,7 +5,12 @@ from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Dict, Mapping, Optional
 
-from .instruments import INSTRUMENTS, TRUST_CENTER_VERSION, instrument_versions
+from .instruments import (
+    INSTRUMENTS,
+    TRUST_CENTER_VERSION,
+    instrument_suite_hash,
+    instrument_versions,
+)
 
 
 def _now() -> str:
@@ -67,6 +72,7 @@ class TransferAuthorization:
 @dataclass
 class ConsentLedger:
     accepted_suite_version: Optional[str] = None
+    accepted_suite_hash: Optional[str] = None
     accepted_instruments: Dict[str, str] = field(default_factory=dict)
     accepted_by: Optional[str] = None
     accepted_at: Optional[str] = None
@@ -86,6 +92,7 @@ class ConsentLedger:
             return LegalState.NOT_ACCEPTED
         if (
             self.accepted_suite_version != TRUST_CENTER_VERSION
+            or self.accepted_suite_hash != instrument_suite_hash()
             or self.accepted_instruments != instrument_versions()
         ):
             return LegalState.REACCEPT_REQUIRED
@@ -127,6 +134,7 @@ class ConsentLedger:
             raise ConsentError("The attesting operator name is required.")
 
         self.accepted_suite_version = TRUST_CENTER_VERSION
+        self.accepted_suite_hash = instrument_suite_hash()
         self.accepted_instruments = instrument_versions()
         self.accepted_by = accepted_by.strip()
         self.accepted_at = _now()
@@ -183,6 +191,7 @@ class ConsentLedger:
     def to_dict(self) -> Dict[str, Any]:
         return {
             "accepted_suite_version": self.accepted_suite_version,
+            "accepted_suite_hash": self.accepted_suite_hash,
             "accepted_instruments": dict(self.accepted_instruments),
             "accepted_by": self.accepted_by,
             "accepted_at": self.accepted_at,
@@ -194,6 +203,7 @@ class ConsentLedger:
     def from_dict(cls, value: Mapping[str, Any]) -> "ConsentLedger":
         return cls(
             accepted_suite_version=value.get("accepted_suite_version"),
+            accepted_suite_hash=value.get("accepted_suite_hash"),
             accepted_instruments=dict(value.get("accepted_instruments", {})),
             accepted_by=value.get("accepted_by"),
             accepted_at=value.get("accepted_at"),

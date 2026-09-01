@@ -7,7 +7,13 @@ from charttrace.app import (
     CaseLifecycle,
     ChartTraceController,
 )
-from charttrace.legal import ConsentError, ConsentLedger, LegalState
+from charttrace.legal import (
+    ConsentError,
+    ConsentLedger,
+    LegalState,
+    TRUST_CENTER_VERSION,
+    instrument_suite_hash,
+)
 
 
 class LegalGateTests(unittest.TestCase):
@@ -46,6 +52,16 @@ class LegalGateTests(unittest.TestCase):
         case = self.controller.create_case("Synthetic test case")
         self.accept_current_suite()
         self.assertEqual(CaseLifecycle.READY_TO_INGEST, case.lifecycle)
+        self.assertEqual(
+            TRUST_CENTER_VERSION, self.controller.consent.accepted_suite_version
+        )
+        self.assertEqual(
+            instrument_suite_hash(), self.controller.consent.accepted_suite_hash
+        )
+        legal_ready = [r for r in case.receipts if r.event == "LEGAL_READY"]
+        self.assertEqual(1, len(legal_ready))
+        self.assertIn(TRUST_CENTER_VERSION, legal_ready[0].detail)
+        self.assertIn(instrument_suite_hash(), legal_ready[0].detail)
         self.controller.secure_ingest(
             case.case_id, [("source.txt", b"synthetic test bytes")]
         )
@@ -68,6 +84,12 @@ class LegalGateTests(unittest.TestCase):
         self.assertEqual(
             LegalState.REACCEPT_REQUIRED, self.controller.legal_state
         )
+
+    def test_suite_hash_mismatch_requires_reacceptance(self):
+        self.accept_current_suite()
+        self.assertEqual(LegalState.ACCEPTED_VN, self.controller.legal_state)
+        self.controller.consent.accepted_suite_hash = "0" * 64
+        self.assertEqual(LegalState.REACCEPT_REQUIRED, self.controller.legal_state)
 
 
 class RecipientAuthorizationTests(unittest.TestCase):

@@ -121,6 +121,37 @@ class LocalSecurityContractTests(unittest.TestCase):
         self.assertEqual("local_ipc_only", manifest["transport"])
         self.assertFalse(manifest["telemetry"])
 
+    def test_exclusive_sources_have_no_network_or_browser_path(self):
+        roots = [
+            Path(__file__).resolve().parents[1] / "app",
+            Path(__file__).resolve().parents[1] / "ui",
+            Path(__file__).resolve().parents[1] / "legal",
+            Path(__file__).resolve().parents[1] / "launcher.py",
+        ]
+        forbidden = (
+            "webbrowser",
+            "http.server",
+            "localhost",
+            "127.0.0.1",
+            "0.0.0.0",
+            "AF_INET",
+        )
+        scanned = 0
+        for root in roots:
+            paths = [root] if root.is_file() else sorted(root.glob("*.py"))
+            for path in paths:
+                if path.name.startswith("test_"):
+                    continue
+                scanned += 1
+                text = path.read_text(encoding="utf-8")
+                for token in forbidden:
+                    self.assertNotIn(
+                        token,
+                        text,
+                        f"{path} must not contain {token}",
+                    )
+        self.assertGreaterEqual(scanned, 15)
+
     def test_launcher_headless_startup_needs_no_display(self):
         with tempfile.TemporaryDirectory() as directory:
             output = StringIO()

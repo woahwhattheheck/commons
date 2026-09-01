@@ -8,6 +8,7 @@ from charttrace.legal import (
     ConsentLedger,
     LegalState,
     TRUST_CENTER_VERSION,
+    instrument_suite_hash,
 )
 
 from .audit import append_receipt
@@ -82,7 +83,20 @@ class ChartTraceController:
                 CaseLifecycle.HOLD_TERMS_OR_AUTHORITY,
             }:
                 case.transition(CaseLifecycle.READY_TO_INGEST)
-                append_receipt(case, "LEGAL_READY", "Current suite and authority accepted.")
+                append_receipt(
+                    case,
+                    "LEGAL_READY",
+                    json.dumps(
+                        {
+                            "accepted_suite_hash": instrument_suite_hash(),
+                            "accepted_suite_version": TRUST_CENTER_VERSION,
+                            "detail": "Current suite and authority accepted.",
+                            "signing_state": SIGNING_STATE,
+                        },
+                        sort_keys=True,
+                        separators=(",", ":"),
+                    ),
+                )
         self._save()
 
     def place_authority_hold(self, reason: str) -> None:

@@ -5,6 +5,8 @@ text so the Trust Center remains available before unlock and without network
 access.
 """
 
+import hashlib
+import json
 from dataclasses import dataclass
 from typing import Dict, Iterable, Tuple
 
@@ -114,3 +116,24 @@ def instrument_versions(
     return {
         instrument.instrument_id: instrument.version for instrument in instruments
     }
+
+
+def instrument_suite_hash(
+    instruments: Iterable[LegalInstrument] = INSTRUMENTS,
+) -> str:
+    """SHA-256 of the current local instrument suite. No production crypto claim."""
+    canonical = json.dumps(
+        [
+            {
+                "acknowledgement": instrument.acknowledgement,
+                "body": instrument.body,
+                "instrument_id": instrument.instrument_id,
+                "title": instrument.title,
+                "version": instrument.version,
+            }
+            for instrument in instruments
+        ],
+        sort_keys=True,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return hashlib.sha256(canonical).hexdigest()
