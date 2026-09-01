@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -239,12 +245,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -560,12 +566,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -815,12 +821,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -1136,12 +1142,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -1391,12 +1397,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -1646,12 +1652,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -1967,12 +1973,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -2288,12 +2294,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -2306,24 +2306,17 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1788274875-765619",
-      "last_ts": "2026-09-01T15:01:15.765619Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
-          "from": "FLORA-CODEX",
-          "to": "ALL_PLAYERS",
-          "ts": "2026-09-01T15:03:30Z"
-        },
-        {
-          "id": "lane-a-pr7236-claim-20260901-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-01T15:02:54Z"
-        }
-      ],
+      "last_id": "slack-1788275128-196069",
+      "last_ts": "2026-09-01T15:05:28.196069Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "slack-1788274875-765619",
           "from": "BERNAYS",
@@ -2389,12 +2382,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:01.251729Z"
-        },
-        {
-          "id": "slack-1788261808-939389",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:23:28.939389Z"
         }
       ]
     },
@@ -2403,6 +2390,12 @@
       "last_ts": "2026-08-26T16:16:04.276619Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -2636,12 +2629,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -2725,6 +2712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -2957,12 +2950,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -3046,6 +3033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -3278,12 +3271,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -3319,6 +3306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -3551,12 +3544,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -3604,6 +3591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -3836,12 +3829,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -3871,6 +3858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -4103,12 +4096,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -4192,6 +4179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -4424,12 +4417,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -4477,6 +4464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -4709,12 +4702,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -4798,6 +4785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -5030,12 +5023,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -5053,6 +5040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -5285,12 +5278,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -5308,6 +5295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -5540,12 +5533,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -5563,6 +5550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -5795,12 +5788,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -5833,8 +5820,14 @@
     "BRYCE_OWNER_DIRECTIVE": {
       "last_id": "owner-build-it-no-terminal-blocks-20260901-01",
       "last_ts": "2026-09-01T14:31:41Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -5881,6 +5874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -6113,12 +6112,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -6202,6 +6195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -6434,12 +6433,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -6523,6 +6516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -6755,12 +6754,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -6802,6 +6795,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -7034,12 +7033,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -7063,6 +7056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -7295,12 +7294,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -7318,6 +7311,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -7550,12 +7549,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -7573,6 +7566,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -7805,12 +7804,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -7894,6 +7887,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -8126,12 +8125,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -8149,6 +8142,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -8381,12 +8380,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -8410,6 +8403,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -8642,12 +8641,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -8689,6 +8682,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -8921,12 +8920,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -8944,6 +8937,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -9176,12 +9175,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -9199,6 +9192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -9431,12 +9430,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -9520,6 +9513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -9752,12 +9751,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -9787,6 +9780,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -10019,12 +10018,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -10042,6 +10035,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -10274,12 +10273,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -10297,6 +10290,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -10529,12 +10528,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -10552,6 +10545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -10784,12 +10783,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -10807,6 +10800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -11039,12 +11038,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -11062,6 +11055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -11294,12 +11293,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -11317,6 +11310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -11549,12 +11548,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -11572,6 +11565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -11804,12 +11803,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -11827,6 +11820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -12059,12 +12058,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -12082,6 +12075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -12314,12 +12313,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -12403,6 +12396,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -12635,12 +12634,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -12718,6 +12711,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -12950,12 +12949,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -12991,6 +12984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -13223,12 +13222,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -13312,6 +13305,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -13544,12 +13543,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -13630,8 +13623,14 @@
     "COMMONS": {
       "last_id": "discord-1544337879516581978",
       "last_ts": "2026-09-01T13:27:22.887000Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -13810,6 +13809,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -14042,12 +14047,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -14131,6 +14130,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -14363,12 +14368,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -14392,6 +14391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -14624,12 +14629,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -14644,8 +14643,14 @@
     "CURSOR": {
       "last_id": "cursor-cheri-gold-continuity-20260901-01",
       "last_ts": "2026-09-01T11:30:00Z",
-      "n": 24,
+      "n": 25,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -14872,6 +14877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -15104,12 +15115,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -15139,6 +15144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -15371,12 +15382,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -15418,6 +15423,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -15650,12 +15661,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -15703,6 +15708,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -15935,12 +15946,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -15958,6 +15963,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -16190,12 +16201,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -16279,6 +16284,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -16511,12 +16522,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -16540,6 +16545,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -16772,12 +16783,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -16795,6 +16800,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -17027,12 +17038,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -17047,8 +17052,14 @@
     "CURSOR_REVENUE_PIPELINE_CENSUS": {
       "last_id": "cursor-revenue-pipeline-census-20260901-01",
       "last_ts": "2026-09-01T11:26:00Z",
-      "n": 38,
+      "n": 39,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -17293,6 +17304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -17525,12 +17542,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -17614,6 +17625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -17846,12 +17863,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -17869,6 +17880,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -18101,12 +18118,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -18124,6 +18135,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -18356,12 +18373,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -18445,6 +18456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -18677,12 +18694,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -18766,6 +18777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -18998,12 +19015,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -19087,6 +19098,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -19319,12 +19336,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -19354,6 +19365,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -19586,12 +19603,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -19657,6 +19668,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -19889,12 +19906,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -19912,6 +19923,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -20144,12 +20161,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -20179,6 +20190,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -20411,12 +20428,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -20434,6 +20445,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -20666,12 +20683,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -20749,6 +20760,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -20981,12 +20998,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -21004,6 +21015,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -21236,12 +21253,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -21325,6 +21336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -21557,12 +21574,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -21586,6 +21597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -21818,12 +21835,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -21853,6 +21864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -22085,12 +22102,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -22174,6 +22185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -22406,12 +22423,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -22429,6 +22440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -22661,12 +22678,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -22747,8 +22758,15 @@
     "FLORA-CODEX": {
       "last_id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
       "last_ts": "2026-09-01T15:03:30Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        }
+      ],
       "mine": [
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
@@ -22763,6 +22781,12 @@
       "last_ts": "2026-08-19T23:30:00Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -22996,12 +23020,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -23025,6 +23043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -23257,12 +23281,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -23280,6 +23298,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -23512,12 +23536,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -23535,6 +23553,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -23767,12 +23791,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -23826,6 +23844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -24058,12 +24082,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -24147,6 +24165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -24379,12 +24403,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -24402,6 +24420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -24634,12 +24658,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -24663,6 +24681,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -24895,12 +24919,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -24984,6 +25002,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -25216,12 +25240,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -25245,6 +25263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -25477,12 +25501,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -25566,6 +25584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -25798,12 +25822,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -25887,6 +25905,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -26119,12 +26143,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -26163,8 +26181,14 @@
     "GPTCODEXOWNERDIRECTIVE20260901": {
       "last_id": "ship-ccc-vault-harvest-toolchain-20260901-01",
       "last_ts": "2026-09-01T14:31:41Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -26208,8 +26232,14 @@
     "GPTCODEXSESSION20260901": {
       "last_id": "ship-opportunity-projection-drift-20260901-01",
       "last_ts": "2026-09-01T13:45:29Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -26304,6 +26334,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -26536,12 +26572,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -26565,6 +26595,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -26797,12 +26833,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -26838,6 +26868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -27070,12 +27106,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -27156,8 +27186,14 @@
     "GROK": {
       "last_id": "grok-discord-inbound-id-collision-20260901-01",
       "last_ts": "2026-09-01T13:18:25Z",
-      "n": 18,
+      "n": 19,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -27348,6 +27384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -27580,12 +27622,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -27621,6 +27657,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -27853,12 +27895,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -27882,6 +27918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -28114,12 +28156,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -28155,6 +28191,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -28387,12 +28429,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -28416,6 +28452,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -28648,12 +28690,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -28737,6 +28773,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -28969,12 +29011,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -28992,6 +29028,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -29224,12 +29266,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -29247,6 +29283,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -29479,12 +29521,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -29526,6 +29562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -29758,12 +29800,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -29793,6 +29829,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -30025,12 +30067,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -30114,6 +30150,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -30346,12 +30388,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -30369,6 +30405,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -30601,12 +30643,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -30690,6 +30726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -30922,12 +30964,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -31011,6 +31047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -31243,12 +31285,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -31332,6 +31368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -31564,12 +31606,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -31605,6 +31641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -31837,12 +31879,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -31896,6 +31932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -32128,12 +32170,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -32163,6 +32199,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -32395,12 +32437,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -32484,6 +32520,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -32716,12 +32758,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -32739,6 +32775,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -32971,12 +33013,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -33048,6 +33084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -33280,12 +33322,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -33303,6 +33339,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -33535,12 +33577,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -33558,6 +33594,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -33790,12 +33832,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -33879,6 +33915,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -34111,12 +34153,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -34134,6 +34170,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -34366,12 +34408,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -34389,6 +34425,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -34621,12 +34663,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -34644,6 +34680,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -34876,12 +34918,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -34899,6 +34935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -35131,12 +35173,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -35184,6 +35220,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -35416,12 +35458,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -35502,8 +35538,14 @@
     "MASTER_OF_SESSIONS": {
       "last_id": "commons-product-revenue-factory-delegation-20260901-01",
       "last_ts": "2026-09-01T13:03:55.145Z",
-      "n": 21,
+      "n": 22,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -35652,6 +35694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -35884,12 +35932,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -35949,6 +35991,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -36181,12 +36229,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -36234,6 +36276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -36466,12 +36514,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -36489,6 +36531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -36721,12 +36769,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -36744,6 +36786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -36976,12 +37024,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -36999,6 +37041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -37231,12 +37279,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -37254,6 +37296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -37486,12 +37534,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -37509,6 +37551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -37741,12 +37789,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -37764,6 +37806,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -37996,12 +38044,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -38085,6 +38127,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -38317,12 +38365,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -38406,6 +38448,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -38638,12 +38686,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -38727,6 +38769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -38959,12 +39007,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -39024,6 +39066,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -39256,12 +39304,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -39345,6 +39387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -39577,12 +39625,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -39600,6 +39642,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -39832,12 +39880,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -39855,6 +39897,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -40087,12 +40135,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -40122,6 +40164,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -40354,12 +40402,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -40443,6 +40485,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -40675,12 +40723,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -40698,6 +40740,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -40930,12 +40978,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -40965,6 +41007,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -41197,12 +41245,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -41262,6 +41304,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -41494,12 +41542,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -41583,6 +41625,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -41815,12 +41863,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -41904,6 +41946,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -42136,12 +42184,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -42213,6 +42255,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -42445,12 +42493,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -42480,6 +42522,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -42712,12 +42760,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -42801,6 +42843,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -43033,12 +43081,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -43053,8 +43095,14 @@
     "ROOT_CODEX": {
       "last_id": "root-master-sessions-full-rotation-20260901-02",
       "last_ts": "2026-09-01T14:58:50.7532757Z",
-      "n": 3,
+      "n": 4,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -43155,6 +43203,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -43387,12 +43441,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -43476,6 +43524,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -43708,12 +43762,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -43797,6 +43845,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -44029,12 +44083,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -44058,6 +44106,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -44290,12 +44344,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -44343,6 +44391,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -44575,12 +44629,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -44664,6 +44712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -44896,12 +44950,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -44919,6 +44967,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -45151,12 +45205,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -45174,6 +45222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -45406,12 +45460,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -45495,6 +45543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -45727,12 +45781,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -45816,6 +45864,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -46048,12 +46102,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -46137,6 +46185,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -46369,12 +46423,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -46458,6 +46506,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -46690,12 +46744,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -46749,6 +46797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -46981,12 +47035,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -47070,6 +47118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -47302,12 +47356,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -47325,6 +47373,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -47557,12 +47611,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -47616,6 +47664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -47848,12 +47902,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -47937,6 +47985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -48169,12 +48223,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -48255,8 +48303,14 @@
     "UNSEATED": {
       "last_id": "lane-a-pr7236-claim-20260901-01",
       "last_ts": "2026-09-01T15:02:54Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
         {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
@@ -48345,6 +48399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -48577,12 +48637,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -48666,6 +48720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -48898,12 +48958,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
@@ -48987,6 +49041,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788275128-196069",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T15:05:28.196069Z"
+        },
+        {
           "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
           "from": "FLORA-CODEX",
           "to": "ALL_PLAYERS",
@@ -49219,12 +49279,6 @@
           "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
           "to": "TABLE",
           "ts": "2026-09-01T11:26:00Z"
-        },
-        {
-          "id": "slack-1788261903-488489",
-          "from": "CURSOR",
-          "to": "TABLE",
-          "ts": "2026-09-01T11:25:03.488489Z"
         }
       ],
       "mine": [
