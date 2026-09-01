@@ -1,15 +1,22 @@
-"""Treat record text as untrusted. Prompt-injection must never become commands."""
+"""Treat record text as untrusted data. Prompt-injection must never become commands."""
 
 from __future__ import annotations
 
 import re
 from dataclasses import dataclass
-from typing import List, Sequence, Tuple
+from typing import List, Mapping, Sequence, Tuple
 
 
 INJECTION_PATTERNS: Tuple[re.Pattern[str], ...] = (
-    re.compile(r"ignore\s+(all\s+)?(previous|prior|above)\s+instructions", re.I),
-    re.compile(r"disregard\s+(all\s+)?(previous|prior|system)\s+(instructions|prompts)", re.I),
+    re.compile(
+        r"ignore\s+(all\s+|every\s+)?(previous|prior|above|earlier)\s+(instructions?|directives?|prompts?)",
+        re.I,
+    ),
+    re.compile(
+        r"disregard\s+(all\s+|every\s+)?(previous|prior|earlier|system)\s+(instructions?|prompts?|directives?)",
+        re.I,
+    ),
+    re.compile(r"override\s+(the\s+)?(system\s+)?prompt", re.I),
     re.compile(r"you\s+are\s+now\s+(?:a|an)\s+\S+", re.I),
     re.compile(r"system\s*:\s*", re.I),
     re.compile(r"</?\s*(?:system|assistant|tool)\s*>", re.I),
@@ -20,6 +27,7 @@ INJECTION_PATTERNS: Tuple[re.Pattern[str], ...] = (
 )
 
 QUARANTINE_MARKER = "[QUARANTINED_INSTRUCTION]"
+UNTRUSTED_PREFIX = "[UNTRUSTED_RECORD_TEXT]\n"
 
 
 @dataclass(frozen=True)
@@ -64,14 +72,15 @@ def scan_untrusted_text(document_id: str, excerpt_index: int, text: str) -> List
 
 def neutralize_as_document_text(text: str) -> str:
     """Mark text as untrusted document content — never executable."""
-    return f"[UNTRUSTED_RECORD_TEXT]\n{text}"
+    if text.startswith(UNTRUSTED_PREFIX):
+        return text
+    return f"{UNTRUSTED_PREFIX}{text}"
 
 
-def quarantine_text(text: str) -> Tuple[str, List[Tuple[int, int]]]:
-    """Replace injection spans so they cannot become searchable evidence."""
+def _merged_injection_spans(text: str) -> List[Tuple[int, int]]:
     spans = [(m.start(), m.end()) for pat in INJECTION_PATTERNS for m in pat.finditer(text or "")]
     if not spans:
-        return text, []
+        return []
     spans.sort()
     merged: List[Tuple[int, int]] = []
     for start, end in spans:
@@ -79,6 +88,14 @@ def quarantine_text(text: str) -> Tuple[str, List[Tuple[int, int]]]:
             merged.append((start, end))
         else:
             merged[-1] = (merged[-1][0], max(merged[-1][1], end))
+    return merged
+
+
+def quarantine_text(text: str) -> Tuple[str, List[Tuple[int, int]]]:
+    """Replace injection spans so they cannot become searchable evidence."""
+    merged = _merged_injection_spans(text)
+    if not merged:
+        return text, []
     out: List[str] = []
     cursor = 0
     for start, end in merged:
@@ -89,19 +106,81 @@ def quarantine_text(text: str) -> Tuple[str, List[Tuple[int, int]]]:
     return "".join(out), merged
 
 
-def quarantine_excerpts(excerpts: Sequence[dict]) -> Tuple[List[dict], List[InjectionFinding]]:
+def prepare_untrusted_text(raw: str) -> Tuple[str, List[Tuple[int, int, int, int]], List[Tuple[int, int]]]:
+    """Build escaped worker text plus worker-to-raw span alignment.
+
+    Raw bytes stay immutable for citation binding. Worker payload is
+    neutralized data-only text with injection spans replaced.
+    """
+    inj = _merged_injection_spans(raw)
+    prefix_len = len(UNTRUSTED_PREFIX)
+    parts: List[str] = []
+    span_map: List[Tuple[int, int, int, int]] = []
+    q_cursor = 0
+    raw_cursor = 0
+    for start, end in inj:
+        if start > raw_cursor:
+            kept = raw[raw_cursor:start]
+            w0 = prefix_len + q_cursor
+            parts.append(kept)
+            q_cursor += len(kept)
+            span_map.append((w0, prefix_len + q_cursor, raw_cursor, start))
+        parts.append(QUARANTINE_MARKER)
+        q_cursor += len(QUARANTINE_MARKER)
+        raw_cursor = end
+    if raw_cursor < len(raw) or not raw:
+        kept = raw[raw_cursor:]
+        w0 = prefix_len + q_cursor
+        parts.append(kept)
+        q_cursor += len(kept)
+        span_map.append((w0, prefix_len + q_cursor, raw_cursor, len(raw)))
+    escaped = neutralize_as_document_text("".join(parts))
+    return escaped, span_map, inj
+
+
+def map_worker_span_to_raw(
+    span_map: Sequence[Tuple[int, int, int, int]],
+    worker_start: int,
+    worker_end: int,
+) -> Tuple[int, int]:
+    for ws, we, rs, re in span_map:
+        if worker_start >= ws and worker_end <= we:
+            offset = worker_start - ws
+            length = worker_end - worker_start
+            return rs + offset, rs + offset + length
+    raise ValueError("worker span is not inside a raw-aligned kept segment")
+
+
+def quote_from_worker_span(excerpt: Mapping[str, object], start: int, end: int) -> Tuple[int, int, str]:
+    """Return raw span coordinates and the quote sliced from worker-visible kept text."""
+    text = str(excerpt.get("text", ""))
+    span_map = excerpt.get("span_map")
+    quote = text[start:end]
+    if not span_map:
+        return start, end, quote
+    mapped = [tuple(item) for item in span_map]
+    raw_start, raw_end = map_worker_span_to_raw(mapped, start, end)
+    return raw_start, raw_end, quote
+
+
+def prepare_untrusted_excerpts(excerpts: Sequence[dict]) -> Tuple[List[dict], List[InjectionFinding]]:
     cleaned: List[dict] = []
     findings: List[InjectionFinding] = []
     for i, ex in enumerate(excerpts):
         row = dict(ex)
-        text = str(row.get("text", ""))
+        raw = str(row.get("text", ""))
         doc_id = str(row.get("document_id", f"doc-{i}"))
-        found = scan_untrusted_text(doc_id, i, text)
-        findings.extend(found)
-        quarantined, _spans = quarantine_text(text)
-        row["text"] = quarantined
+        findings.extend(scan_untrusted_text(doc_id, i, raw))
+        escaped, span_map, _inj = prepare_untrusted_text(raw)
+        row["text"] = escaped
+        row["span_map"] = span_map
+        row["text_kind"] = "untrusted_record_data"
         cleaned.append(row)
     return cleaned, findings
+
+
+def quarantine_excerpts(excerpts: Sequence[dict]) -> Tuple[List[dict], List[InjectionFinding]]:
+    return prepare_untrusted_excerpts(excerpts)
 
 
 def collect_injection_findings(excerpts: Sequence[dict]) -> List[InjectionFinding]:

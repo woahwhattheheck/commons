@@ -154,7 +154,9 @@ def run_peer_in_process(role_id: str, packet: PeerPacket) -> Dict[str, Any]:
     result["injection_findings"] = raw_findings
     result["injection_commands_followed"] = 0
     result["allows_cross_peer_input"] = contract.allows_cross_peer_input
-    assert_result_against_packet(role_id, result, data)
+    raw_view = dict(data)
+    raw_view["excerpts"] = [e.to_dict() for e in packet.excerpts]
+    assert_result_against_packet(role_id, result, raw_view)
     return result
 
 

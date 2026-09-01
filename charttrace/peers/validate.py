@@ -16,11 +16,20 @@ from charttrace.peers.contracts import (
 
 
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-SYNTHETIC_ID_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,127}$")
+NAMESPACED_ID_RE = re.compile(r"^[a-z][a-z0-9_]*[-:][a-z0-9][a-z0-9._:-]{0,120}$")
+NAME_LIKE_ID_RE = re.compile(r"[A-Z][a-z]+[._-][A-Z][a-z]+")
+SSN_LIKE_ID_RE = re.compile(r"\d{3}[-_.]\d{2}[-_.]\d{4}")
 PHI_TOKEN_RE = re.compile(
     r"(?i)(\b(mrn|ssn|dob|patient|phi)\b|\d{3}-\d{2}-\d{4}|[A-Z][a-z]+\s+[A-Z][a-z]+)"
 )
 LONG_DIGIT_RE = re.compile(r"\d{8,}")
+COMMERCIAL_VALUE_RE = re.compile(
+    r"(?i)\b("
+    r"destination[_-]?firm|affiliate[_-]?identity|packet[_-]?price|"
+    r"compensation|routing[_-]?score|review[_-]?fee|firm_id|"
+    r"price"
+    r")\b\s*[:=]\s*\S+"
+)
 
 ALLOWED_PACKET_KEYS = frozenset(
     {
@@ -78,12 +87,14 @@ def parse_iso_date(value: str, field_name: str) -> date:
 
 
 def assert_synthetic_id(value: Any, field_name: str, *, packet_id: bool = False) -> str:
-    if not isinstance(value, str) or not SYNTHETIC_ID_RE.fullmatch(value):
-        raise ValueError(f"{field_name} must be a stable synthetic identifier")
-    if " " in value or PHI_TOKEN_RE.search(value):
+    if not isinstance(value, str) or not value:
+        raise ValueError(f"{field_name} must be a namespaced synthetic identifier")
+    if " " in value or PHI_TOKEN_RE.search(value) or NAME_LIKE_ID_RE.search(value) or SSN_LIKE_ID_RE.search(value):
         raise ValueError(f"{field_name} rejects names, MRNs, and PHI-like tokens")
     if packet_id and LONG_DIGIT_RE.search(value):
         raise ValueError(f"{field_name} rejects names, MRNs, and PHI-like tokens")
+    if not NAMESPACED_ID_RE.fullmatch(value):
+        raise ValueError(f"{field_name} must be a namespaced synthetic identifier")
     return value
 
 
@@ -131,6 +142,23 @@ def detect_commercial_aliases(payload: Any, path: str = "") -> List[str]:
     return found
 
 
+def detect_commercial_values(payload: Any, path: str = "") -> List[str]:
+    """Reject commercial semantics in allowlisted string values (not excerpt text)."""
+    found: List[str] = []
+    if isinstance(payload, Mapping):
+        for k, v in payload.items():
+            here = f"{path}.{k}" if path else str(k)
+            if str(k) == "text" and (path == "excerpts" or path.startswith("excerpts[")):
+                continue
+            found.extend(detect_commercial_values(v, here))
+    elif isinstance(payload, (list, tuple)):
+        for i, v in enumerate(payload):
+            found.extend(detect_commercial_values(v, f"{path}[{i}]"))
+    elif isinstance(payload, str) and COMMERCIAL_VALUE_RE.search(payload):
+        found.append(path or "value")
+    return found
+
+
 def assert_packet_allowlist(payload: Mapping[str, Any]) -> None:
     unknown = sorted(set(payload.keys()) - ALLOWED_PACKET_KEYS)
     if unknown:
@@ -138,6 +166,9 @@ def assert_packet_allowlist(payload: Mapping[str, Any]) -> None:
     commercial = detect_commercial_aliases(payload)
     if commercial:
         raise ValueError(f"commercial/routing aliases rejected: {commercial}")
+    commercial_values = detect_commercial_values(payload)
+    if commercial_values:
+        raise ValueError(f"commercial/routing values rejected: {commercial_values}")
     for ex in payload.get("excerpts", []):
         if not isinstance(ex, Mapping):
             raise ValueError("excerpt must be a mapping")

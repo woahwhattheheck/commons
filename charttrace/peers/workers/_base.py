@@ -11,7 +11,7 @@ from charttrace.peers.contracts import (
     RelevanceGrade,
     assert_lead_complete,
 )
-from charttrace.peers.sanitize import QUARANTINE_MARKER
+from charttrace.peers.sanitize import QUARANTINE_MARKER, UNTRUSTED_PREFIX, quote_from_worker_span
 from charttrace.peers.versions import MODEL_VERSION, POLICY_VERSION, PROMPT_VERSION
 
 NEGATION_CUES = (
@@ -45,14 +45,13 @@ def citation_from_excerpt(
     start: int,
     end: int,
 ) -> Dict[str, Any]:
-    text = str(excerpt.get("text", ""))
-    quote = text[start:end]
+    raw_start, raw_end, quote = quote_from_worker_span(excerpt, start, end)
     return {
         "document_id": str(excerpt.get("document_id")),
         "page": int(excerpt.get("page")),
         "source_sha256": str(excerpt.get("source_sha256")),
-        "span_start": start,
-        "span_end": end,
+        "span_start": raw_start,
+        "span_end": raw_end,
         "quote": quote,
     }
 
@@ -83,7 +82,7 @@ def find_keyword_hits(
                 if pos < 0:
                     break
                 end = pos + len(needle)
-                if QUARANTINE_MARKER in text[pos:end]:
+                if pos < len(UNTRUSTED_PREFIX) or QUARANTINE_MARKER in text[pos:end]:
                     start_at = end
                     continue
                 hits.append((ex, kw, pos, end))
@@ -102,6 +101,8 @@ def same_excerpt_counterevidence(
         if pos < 0:
             continue
         end = pos + len(cue)
+        if pos < len(UNTRUSTED_PREFIX) or QUARANTINE_MARKER.lower() in text[pos:end]:
+            continue
         citation = citation_from_excerpt(excerpt, pos, end)
         if citation["document_id"] != supporting["document_id"]:
             continue
