@@ -1,8 +1,8 @@
 # pace-lebanon-microbial-volume-evidence-lims-01 receipt
 
-State: BUILT / TEST PENDING
-Binary: `python3 test_pace_lebanon_microbial_volume_evidence.py`
-CLI: `python3 pace_lebanon_microbial_volume_evidence.py`
+State: TESTED
+Binary: `python3 test_pace_lebanon_microbial_volume_evidence.py` → 10/10 OK
+CLI: `python3 pace_lebanon_microbial_volume_evidence.py` → ok true, failures []
 
 | check | target |
 |---|---|
@@ -18,5 +18,7 @@ CLI: `python3 pace_lebanon_microbial_volume_evidence.py`
 | held outputs | 0 jobs / 0 results / 0 reports / 0 releases |
 | release | named quality reviewer only |
 | replay additions | 0 submissions / 0 jobs / 0 holds / 0 reports |
+| manifest_sha256 | 60234353129cd09b9d240688b0002c5bdba175b32e1e3c2d3b7489c30b59cef8 |
+| audit_sha256 | 15e1267596ad42e8f116820332b8085a86abb2b4262c3e10a06d2a8d0348b825 |
 
 Synthetic and read-only. No GMP, regulatory, clinical, diagnostic, sterility, or product-quality decision. No live interface, production write, outreach, automatic report release, or cash claim. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE.
