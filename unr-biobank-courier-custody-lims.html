@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>UNR Med biobank courier-to-freezer custody LIMS — Commons</title>
+<style>
+:root{color-scheme:light;--paper:#f4efe6;--ink:#231c16;--mute:#6a5c4f;--line:#d2c4b0;--card:#fffaf2;--clay:#8a4b24;--ok:#1f7a4d}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#e4d3b8 0%,var(--paper) 32%);color:var(--ink);font:16px/1.5 Georgia,serif}
+main{max-width:860px;margin:auto;padding:28px 16px 72px}a{color:var(--clay)}
+.kicker{letter-spacing:.14em;text-transform:uppercase;font:12px/1.2 system-ui,sans-serif;color:var(--clay)}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:.95;margin:.2em 0 .35em}
+.lede{color:var(--mute);max-width:720px}
+.bound{border-left:5px solid var(--ok);padding:8px 0 8px 14px}
+.card{background:var(--card);border:1px solid var(--line);padding:16px;margin:16px 0}
+code,pre{font:13px/1.4 ui-monospace,monospace}pre{background:#231c16;color:#f4efe6;padding:12px;overflow:auto}
+.small{color:var(--mute);font:13px/1.4 system-ui,sans-serif}
+</style></head><body><main>
+<nav><a href="./index.html">← Commons</a></nav>
+<p class="kicker">Commons · unr-biobank-courier-custody-lims-01 · HOLD / BUILD-AND-VERIFY</p>
+<h1>The runner is the product. This page is a window.</h1>
+<p class="lede">Samantha Sipusic / UNR Med Translational Research Center Biobank. Approved study/IRB/MTA reference → courier and package custody → receipt/temperature gate → deidentification check → specimen/aliquot genealogy → freezer position → controlled research-use release. No PHI. No login. No outreach.</p>
+<p class="bound"><strong>Official command:</strong> <code>python3 unr_biobank_courier_custody.py</code><br>
+<strong>Official binary:</strong> <code>python3 test_unr_biobank_courier_custody.py</code></p>
+<section class="card">
+<h2>What the runner does</h2>
+<p>Loads 120 synthetic deidentified shipments. Accessions 90 valid shipments and maps them 1:1 to unique freezer coordinates in the TRC Biobank LN2 matrix. Parks 30 predefined omissions/discrepancies under the exact HOLD code (8 missing/expired IRB or MTA, 6 custody/temperature failures, 6 duplicate barcodes, 5 specimen/manifest mismatches, 5 unapproved routes). Holds assign zero positions and zero downstream activity. Replay adds zero records and changes no state. Named human <code>SYN-UNR-BIOBANK-OFFICER</code> is mandatory.</p>
+<pre>python3 unr_biobank_courier_custody.py
+python3 unr_biobank_courier_custody.py --replay
+python3 test_unr_biobank_courier_custody.py</pre>
+<p class="small">Written artifacts: <a href="./revenue/unr_biobank_courier_custody/fixture.json">fixture.json</a> · <a href="./revenue/unr_biobank_courier_custody/state/journal.json">state/journal.json</a> · <a href="./revenue/unr_biobank_courier_custody/receipts/run.json">receipts/run.json</a> · <a href="./revenue/unr_biobank_courier_custody/receipts/shipments.json">shipments.json</a> · <a href="./revenue/unr_biobank_courier_custody/receipts/holds.json">holds.json</a> · <a href="./revenue/unr_biobank_courier_custody/receipts/freezer_positions.json">freezer_positions.json</a> · <a href="./revenue/unr_biobank_courier_custody/receipts/audit.json">audit.json</a></p>
+</section>
+<section class="card">
+<h2>Contract</h2>
+<ul>
+<li>120 synthetic shipments / 90 valid / 30 HOLD</li>
+<li>Exact HOLD codes: HOLD_MISSING_EXPIRED_IRB_MTA (8), HOLD_CUSTODY_TEMPERATURE_FAILURE (6), HOLD_DUPLICATE_BARCODE (6), HOLD_SPECIMEN_MANIFEST_MISMATCH (5), HOLD_UNAPPROVED_TRANSPORT_ROUTE (5)</li>
+<li>Zero freezer positions assigned for held shipments; zero downstream execution while held</li>
+<li>Specimen type, route, temperature, courier, coordinate, and source hashes preserved</li>
+<li>Idempotent replay; deterministic audit hash</li>
+<li>Named human release; autonomous release denied</li>
+</ul>
+<p class="small">PRE-SALE TRANSPORT: NONE. cash_usd = 0. Boundary: No PHI, clinical interpretation or diagnostic release.</p>
+</section>
+</main></body></html>

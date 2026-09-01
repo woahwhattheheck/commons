@@ -1,0 +1,1802 @@
+[
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0001",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R1:B1:01",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0001",
+    "source_hash": "f1ac8c1fb4feb8fd18b1b8bb917100b2f2e6011e9dc5756be5a92ba85f842bc4",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0073",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R1:B3:73",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0073",
+    "source_hash": "bd490455bde16fca7d3cafe174bb7e0608c003df24cd92ebcc5b3813af3e89be",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0025",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R1:B5:25",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0025",
+    "source_hash": "de184ed0e625aee70f380a1b43adbeed991d4b52436d65d818df8f8eda75e874",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0049",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R1:B9:49",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0049",
+    "source_hash": "31ea452eae9af3364862af38db061e86e945a624d99a3478025df39534c98385",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0061",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R4:B1:61",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0061",
+    "source_hash": "e3b368e74b084da6b93493b3e0e863ea4134b38324820fb08d59bfc3b779951a",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0013",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R4:B3:13",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0013",
+    "source_hash": "e99546bc766c0264e36082c48c771440b33944de0f4cbbb4a5ae36501e338bd4",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0085",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R4:B5:04",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0085",
+    "source_hash": "1e2d86ad145235031fe05cba8111f7a50f33143edf5a954c05965ddca223caf0",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0037",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S1:R4:B7:37",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0037",
+    "source_hash": "77985379ca0feee17334313f7c16b6595cd34958aece3d5b57208c29357cee17",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0010",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S2:R3:B10:10",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0010",
+    "source_hash": "21faf5207aa51f0a6c0b106a38abd474e10b40e8622528c4663b31429ad7127b",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0082",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S2:R3:B2:01",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0082",
+    "source_hash": "6f5113a659f8db49d97094df030a2e1ed15e21ff6c23e8509adcb43c034facad",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0034",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S2:R3:B4:34",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0034",
+    "source_hash": "e74c00c4753016224cba9e386228870bc9194a00d8ce00fab3ab96370f2d21c0",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0058",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S2:R3:B8:58",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0058",
+    "source_hash": "0a1cb7bc5b07f96dc4c3fafd8c5d3ed359e196263d24076359887a345a809dd0",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0070",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S2:R6:B10:70",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0070",
+    "source_hash": "9448d2a9e86383183df3f07d9c0362f0e4e5ca574312e4eacc46bb09b29e93d6",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0022",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S2:R6:B2:22",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0022",
+    "source_hash": "d529708217e42c667da993dd73ba842034eff139cd2e63a9aef2a4d53f3c8aee",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0046",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S2:R6:B6:46",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0046",
+    "source_hash": "57ae4a338841f2afac507db472f80dec53d83d199c90ab3d87b79e78200a655f",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0031",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S3:R2:B1:31",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0031",
+    "source_hash": "1fe4510a8decd1af5bd467650572186aacfbe4b1819b7b40be0a2dee0d10e308",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0055",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S3:R2:B5:55",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0055",
+    "source_hash": "ab12a4911412c195cb3a3c6b5956223883f89fb0ff4e55462092ae3bd2a2db56",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0007",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S3:R2:B7:07",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0007",
+    "source_hash": "b3329686f444127241ded9c009f4645290ddbbda785d17ec19fe9df7bfc6dd27",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0079",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S3:R2:B9:79",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0079",
+    "source_hash": "d0b943ee623b586b1e7c6531068cd3d253c3f15c4f0244544ff234e7b83f8a92",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0043",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S3:R5:B3:43",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0043",
+    "source_hash": "3f6178f3a4a4a01a22aef64d01ef3277e8373fc53595c09842040f23e3e24588",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0067",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S3:R5:B7:67",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0067",
+    "source_hash": "2a77fd68d77ad07f09d85f4ba7a255f5d831a4f69e4dbd37f049b7c0006bf8f0",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0019",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S3:R5:B9:19",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0019",
+    "source_hash": "d5c110928104ed8eadbadb0c00e3f0bbc482c4b6dc01ad1cc0f296b1cbce14eb",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0052",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R1:B2:52",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0052",
+    "source_hash": "1b6c316bc660e0d7d2f728848d7d3c560ca1a403412dfc45e62f07f0df2a0d2b",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0004",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R1:B4:04",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0004",
+    "source_hash": "5022fade611679f98de6be8cc16f1000fa16e31fae56de581a16b67abeeda64a",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0076",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R1:B6:76",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0076",
+    "source_hash": "6b8df95b5ca883f8f828e3b44d3d202f76fc066985cf297a6796bbaf547a3053",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0028",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R1:B8:28",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0028",
+    "source_hash": "111864b4e89555f747b99af338dd4b7f13d8db36ce6ad3b26827d879e6251f3b",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0040",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R4:B10:40",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0040",
+    "source_hash": "98960a2c6dab874ec2e513a4fa0535aef34077ab1b5bbd13d7a2152058be95fa",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0064",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R4:B4:64",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0064",
+    "source_hash": "e8b6836a801f3918a1d665b148b6f0616a54d47c9b9c52c32756530ea736322e",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0016",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R4:B6:16",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0016",
+    "source_hash": "3c27b13c989fb6927808bd293f2cb6fe8891b99fe57ac05471d0a3f771f16037",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0088",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-01:S4:R4:B8:07",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0088",
+    "source_hash": "d1a9b39004f67a1611c4ad5995108bec8dca1a84abd81faad69550223558dd17",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_AIR_DIRECT_COLD"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0053",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R2:B3:53",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0053",
+    "source_hash": "93f9dcb650906a8aba1bffbea8ac0313b594a993b6cd93927dc95f342995a811",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0005",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R2:B5:05",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0005",
+    "source_hash": "980ab14e5f7fd78d09b23c0901cd54d14fd2cc2b492750298e2fc4b7c80f18cd",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0077",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R2:B7:77",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0077",
+    "source_hash": "d04dc22f29316a6f52607338911c9ff11e799431747ffd70b3d3f823af61173f",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0029",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R2:B9:29",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0029",
+    "source_hash": "c9a83ecddbcc90c5a33f4fac439baef6ed5c5aa7bd83fcfaf2fee4da7c35610e",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0041",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R5:B1:41",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0041",
+    "source_hash": "d517cfd94f6a5359556ecc2c9a4ed627b68d65c907aa6a7bfc552b204fe12e53",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0065",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R5:B5:65",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0065",
+    "source_hash": "341b0cdaa8236d078e39db039473064bb1d33eedeb7043a1ce27fce2d84bf3b0",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0017",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R5:B7:17",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0017",
+    "source_hash": "883d20e9e94c9cd96f93116b9dfd0a94b96949bfa15968914fbc394a7e7a6b7d",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0089",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S1:R5:B9:08",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0089",
+    "source_hash": "0289364ebef4ca1a3e9522d1b3fa239401aaa0eb0a133fad66e2d36bc0f6b434",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0050",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R1:B10:50",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0050",
+    "source_hash": "234d367db7bcf65260996f1cf8acfa0d45fa4c806839a44f51a20fc7b2ded27b",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0002",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R1:B2:02",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0002",
+    "source_hash": "aa8fef735076d8abd5550b824ad28d9a5f90f40bbc71b9357832ac8a39fbc206",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0074",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R1:B4:74",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0074",
+    "source_hash": "b789ec6f9ee49ada97f3b12465884442c956314ee2cb5cd4f9befd5b296d79ef",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0026",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R1:B6:26",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0026",
+    "source_hash": "010b3a3270e5e82855cb88ff362a11d5e6130831c0f09abb9b2112128b81d2b2",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0062",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R4:B2:62",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0062",
+    "source_hash": "d51690251f4cd67b3634f2953d6de389c06219c4a8acd18b58b3bb8e74ab01df",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0014",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R4:B4:14",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0014",
+    "source_hash": "7f846abeedbb9bcb9f7956839867505c3266a217f1e61aa42025ea35acc53ebd",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0086",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R4:B6:05",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0086",
+    "source_hash": "aef19bacab82bb24ea9a97ec4abea0901cdf5895d57e258e3b8e0348c984c7c3",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0038",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S2:R4:B8:38",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0038",
+    "source_hash": "c731fad88c649f7fc365f038475ea802933b6c15b4e165fb4b7188d1fa213c3e",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0011",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S3:R3:B1:11",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0011",
+    "source_hash": "0980e81af8bf166420794351a479055d29a05c422d36d6664ebd87f2fe50d443",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0083",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S3:R3:B3:02",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0083",
+    "source_hash": "4659c0c1545a672da757bd4b5a0e63494cc1a3eb1d01baeba8f1b8432fc4d6f5",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0035",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S3:R3:B5:35",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0035",
+    "source_hash": "a2e63dc0c962f06b24861de4606a90817e13a125a76211eb08253fb35486f052",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0059",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S3:R3:B9:59",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0059",
+    "source_hash": "995bfcfb5420b8f90746adf9f51982b5b4891c33182d6c29ba4bffb388e2b76d",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0071",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S3:R6:B1:71",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0071",
+    "source_hash": "8ee6675a1feacb078fa39bc3102280a41dc9837fcd2003dc9250bf4695c8c790",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0023",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S3:R6:B3:23",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0023",
+    "source_hash": "ddfdbc4f98522ee3bebea95e90e0a41e709294971711ea3f86c80e1e915f0738",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0047",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S3:R6:B7:47",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0047",
+    "source_hash": "aaa26a43ff604c94c112c57457833efe208ef289eef7597095aab08d774d97f5",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0080",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S4:R2:B10:80",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0080",
+    "source_hash": "985e4c93c231a4648209105908d426ab2a6192b42f314f765a4d301c1242225e",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0032",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S4:R2:B2:32",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0032",
+    "source_hash": "309b3489097e29db87990c051705c397adfdd9ea2f26cb5078dc52971a10ff8f",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0056",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S4:R2:B6:56",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0056",
+    "source_hash": "d72506db44cbf7c08702ea93dbc5a3bdd7b86e1d32788875023ee7f1107e9518",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0008",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S4:R2:B8:08",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0008",
+    "source_hash": "7cdaed7f13ce5694d02d60e86af1eac2438e333b8088dbe87b840ff232b97108",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0020",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S4:R5:B10:20",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0020",
+    "source_hash": "5a85cb3d8fcb3cccec80715a807bff96dad3561d41483a221c3a9f5aa33c6d2c",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0044",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S4:R5:B4:44",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0044",
+    "source_hash": "f2d847c526f40a7c865a997c9d3d82303ee3fef4a3dee3b85defefe5593c3c70",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0068",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-02:S4:R5:B8:68",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0068",
+    "source_hash": "d2f6355627a8d89affe9c0856a83ef0831f2b5197f4ee40ac42ebed0fb9a8ca9",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_GROUND_DEDICATED_LN2"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0081",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S1:R3:B1:81",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0081",
+    "source_hash": "22199e256b37c26b102a4d372f699114cbde1efa81252396fa31c5fcb48910a1",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0033",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S1:R3:B3:33",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0033",
+    "source_hash": "614a3e3e6b45815c4381c705752562fc2a7d1d5d462f1ed6f34a33c753a14209",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0057",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S1:R3:B7:57",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0057",
+    "source_hash": "519ed7ff2f115b6b4d6cad3a23a4555f0fe43e5ba90137bab9bbb1d2c3cea713",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0009",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S1:R3:B9:09",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0009",
+    "source_hash": "c1c84d9a845d8c29449f0628aa05cf8046dcc13cd05d44ea4e33c43a6227fe09",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0021",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S1:R6:B1:21",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0021",
+    "source_hash": "5278337a98c4725edad493ce7a05dc8ca94b32ca78467ffef26889aa1c16e841",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0045",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S1:R6:B5:45",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0045",
+    "source_hash": "269845e83f7181a121070dde7a0c61560f1ed2e487391671d8a5f2326d8188bd",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0069",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S1:R6:B9:69",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0069",
+    "source_hash": "539ca97bd5f393d4eac090429ab90872bde0a86ad5ef78460ea1966a87b86c84",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0030",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R2:B10:30",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0030",
+    "source_hash": "e63bbb0ec88535a78ffaad63cf2319bd561c5abf7af1a960e03052eb9e70f205",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0054",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R2:B4:54",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0054",
+    "source_hash": "d22068d2780470553e440070743b441fdd6ec95eb3349234f45d8098b135e999",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0006",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R2:B6:06",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0006",
+    "source_hash": "b27d4855579a2e116cab0a511c576a65133bf9d59bcbc7ad1b56f7018896f54a",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0078",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R2:B8:78",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0078",
+    "source_hash": "e9f888d8805d77cefa502f2b989520d210ead19c9aea89295c40c8b913104c9e",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0090",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R5:B10:09",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0090",
+    "source_hash": "660739e74a48c30cb7abf0d6ef3621c8eb0cbde7cc3955bac24b62d767e70cd8",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0042",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R5:B2:42",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0042",
+    "source_hash": "e26935ddff88794163b3a8ce29f9da263b8a0ed47e02f5a7854625e13c1aa609",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0066",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R5:B6:66",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0066",
+    "source_hash": "f7673052381372347e00ec2efc25e9a7bff10f3cbf8dc44856031dccbbf489e2",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0018",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S2:R5:B8:18",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0018",
+    "source_hash": "3bb19ffc0c340b7cb14fdaf96a2583bd70dbf4be49ce838b24b49d0336c52dd7",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0051",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R1:B1:51",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0051",
+    "source_hash": "1b65019a4721040e70db22b2963366c2db5b77fe3ab5216523b0cc9bd3f12219",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-100",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0003",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R1:B3:03",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0003",
+    "source_hash": "57250ba9e5f5ebccf319e622579ee5c29dfaf877f416d9029f017a77be8c67da",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0075",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R1:B5:75",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0075",
+    "source_hash": "d0208c7506233885d5560e66b96a082c4d95d1616b19d10d766455578d5c5b5e",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0027",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R1:B7:27",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0027",
+    "source_hash": "8e081d4963dadac67c5606022461dad445932281e3d0da2821908efc6ed14abc",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0063",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R4:B3:63",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0063",
+    "source_hash": "f9a9d1d4656b1c44ec785bef326b0d1172e9c71dea4cfb03d4e364c5450bacc2",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-102",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0015",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R4:B5:15",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0015",
+    "source_hash": "06a2c0193bf66287ab7568435efb040c82a7f6c3569be80fc8afeff0f21ad199",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-104",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0087",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R4:B7:06",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0087",
+    "source_hash": "2605dcc3ae3f4783658604e2c77c2cb7b752fbaf104842283fbcd62f51889347",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-106",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0039",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S3:R4:B9:39",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0039",
+    "source_hash": "06fa8295bf01aaf6814a716147f88424535e1bbafb2fb37a73e8793253f59931",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-108",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0060",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S4:R3:B10:60",
+    "mta_id": "MTA-TRC-204",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0060",
+    "source_hash": "5af3a57fa6a995dc47af91fd2e21d1e4b7efdcd418dd554f5a60236d89bb7d18",
+    "specimen_type": "TISSUE_CRYO",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-109",
+    "temp_celsius": -76.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0012",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S4:R3:B2:12",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0012",
+    "source_hash": "4d00aa7a79b17a934b4910b1885fadbe92d06ffd01eff66a29c6b9c901d5e48e",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0084",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S4:R3:B4:03",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0084",
+    "source_hash": "61fe1ace5799ced805561c424b439b5519336a94a006a16732c6ca439b99888e",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0036",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S4:R3:B6:36",
+    "mta_id": "MTA-TRC-200",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0036",
+    "source_hash": "1fff066a88efe6f26b387cfb5208ff0bb3db4b3b826b31ff53d56d46b1875add",
+    "specimen_type": "PLASMA",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-105",
+    "temp_celsius": -78.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0072",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S4:R6:B2:72",
+    "mta_id": "MTA-TRC-201",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0072",
+    "source_hash": "cedae7c2c8d96244d900a80e746b908205156a774fec1e6153e90857d26f322d",
+    "specimen_type": "SERUM",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-101",
+    "temp_celsius": -78.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0024",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S4:R6:B4:24",
+    "mta_id": "MTA-TRC-203",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0024",
+    "source_hash": "51bd50a1d91336824ad45f5a8793a75eb634adb991766367b3bcdde1dda9913f",
+    "specimen_type": "DNA_EXTRACT",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-103",
+    "temp_celsius": -77.0,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  },
+  {
+    "aliquots": 4,
+    "barcode": "UNR-BC-0048",
+    "downstream": {
+      "freezer_stored": true,
+      "research_release": true
+    },
+    "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+    "freezer_coordinate": "FRZ-LN2-03:S4:R6:B8:48",
+    "mta_id": "MTA-TRC-202",
+    "released": true,
+    "released_by": "SYN-UNR-BIOBANK-OFFICER",
+    "shipment_id": "UNR-SHIP-0048",
+    "source_hash": "734fa4a6b4891bc090108455164b71ad6e7026f5d5450aa300527f9cdb66dc6a",
+    "specimen_type": "PBMC",
+    "state": "HUMAN_RELEASED",
+    "study_irb": "IRB-2026-UNR-107",
+    "temp_celsius": -77.5,
+    "transport_route": "ROUTE_COURIER_EXPEDITE_DRYICE"
+  }
+]

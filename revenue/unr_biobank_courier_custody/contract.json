@@ -1,0 +1,16 @@
+{
+  "buyer": "Samantha Sipusic / UNR Med Translational Research Center Biobank",
+  "cash_usd": 0,
+  "demand_id": "unr-biobank-courier-custody-lims-01",
+  "facility": "SYN-UNR-MED-TRC-BIOBANK-RENO",
+  "interfaces": "SYNTHETIC_READ_ONLY",
+  "live_lims": false,
+  "official_binary": "python3 unr_biobank_courier_custody.py",
+  "official_test": "python3 test_unr_biobank_courier_custody.py",
+  "page": "unr-biobank-courier-custody-lims.html",
+  "pre_sale_transport": "NONE",
+  "production_deployment": false,
+  "schema": "commons-unr-biobank-courier-custody-lims/v1",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "synthetic": true
+}

@@ -1,0 +1,43 @@
+{
+  "audit_sha256": "42aa21a4b9a7b2a7ca18ea215ded7e8ede644850fa681480dd67e5f6b5ba6c61",
+  "counts": {
+    "actual": {
+      "autonomous_released": 0,
+      "duplicate_records": 0,
+      "freezer_positions_assigned": 90,
+      "held_downstream": 0,
+      "held_positions": 0,
+      "holds": 30,
+      "human_released": 90,
+      "input_shipments": 120,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "ready_for_storage": 90,
+      "valid": 90
+    },
+    "expected": {
+      "autonomous_released": 0,
+      "duplicate_records": 0,
+      "freezer_positions_assigned": 90,
+      "held_downstream": 0,
+      "held_positions": 0,
+      "holds": 30,
+      "human_released": 90,
+      "input_shipments": 120,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "ready_for_storage": 90,
+      "valid": 90
+    },
+    "match": true
+  },
+  "hold_code_counts": {
+    "HOLD_CUSTODY_TEMPERATURE_FAILURE": 6,
+    "HOLD_DUPLICATE_BARCODE": 6,
+    "HOLD_MISSING_EXPIRED_IRB_MTA": 8,
+    "HOLD_SPECIMEN_MANIFEST_MISMATCH": 5,
+    "HOLD_UNAPPROVED_TRANSPORT_ROUTE": 5
+  }
+}

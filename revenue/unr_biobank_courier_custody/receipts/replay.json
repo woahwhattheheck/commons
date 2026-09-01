@@ -1,0 +1,12 @@
+{
+  "journal_sha256": "422b18d6a1209cde6ecd6ed9df8d4d5354d0ab38ba2c1eaa8e03341112afa0e5",
+  "ok": true,
+  "replay": {
+    "added_holds": 0,
+    "added_shipment_count": 0,
+    "hold_count": 30,
+    "replay_noops": 120,
+    "shipment_count": 90,
+    "state_changed": false
+  }
+}
