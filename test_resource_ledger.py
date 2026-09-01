@@ -215,13 +215,15 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-commons-data-corpus-alias-index-activation-20260831-01.json",
+            "codex-github-repository-portfolio-activation-20260901-01.json",
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
         self.assertEqual(activation["event_id"], catalog["source_id"])
         self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
-        self.assertEqual(activation["selected_resource"], "commons-data-corpus")
+        self.assertEqual(
+            activation["selected_resource"], "github-repository-portfolio"
+        )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
         watchdog_production_path = os.path.join(
