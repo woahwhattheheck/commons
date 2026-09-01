@@ -1,0 +1,43 @@
+{
+  "audit_sha256": "02c432663057c578581fde1a4e9a9bfdc01960302040438fd886c5d5e85af936",
+  "counts": {
+    "actual": {
+      "autonomous_released": 0,
+      "duplicate_records": 0,
+      "held_downstream": 0,
+      "held_reports": 0,
+      "holds": 50,
+      "human_released": 150,
+      "input_requests": 200,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "ready": 150,
+      "reports_staged": 150,
+      "valid": 150
+    },
+    "expected": {
+      "autonomous_released": 0,
+      "duplicate_records": 0,
+      "held_downstream": 0,
+      "held_reports": 0,
+      "holds": 50,
+      "human_released": 150,
+      "input_requests": 200,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "ready": 150,
+      "reports_staged": 150,
+      "valid": 150
+    },
+    "match": true
+  },
+  "hold_code_counts": {
+    "HOLD_CALIBRATION_QC_FAILURE": 10,
+    "HOLD_DUPLICATE_CONTAINER": 10,
+    "HOLD_FACILITY_ID_COLLISION": 5,
+    "HOLD_METHOD_MATRIX_MISMATCH": 10,
+    "HOLD_MISSING_MATRIX_SDS_CUSTODY": 15
+  }
+}

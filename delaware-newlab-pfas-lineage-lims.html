@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Delaware new-lab PFAS and microbiology lineage LIMS — Commons</title>
+<style>
+:root{color-scheme:light;--paper:#f4efe6;--ink:#231c16;--mute:#6a5c4f;--line:#d2c4b0;--card:#fffaf2;--clay:#8a4b24;--ok:#1f7a4d}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#e4d3b8 0%,var(--paper) 32%);color:var(--ink);font:16px/1.5 Georgia,serif}
+main{max-width:860px;margin:auto;padding:28px 16px 72px}a{color:var(--clay)}
+.kicker{letter-spacing:.14em;text-transform:uppercase;font:12px/1.2 system-ui,sans-serif;color:var(--clay)}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:.95;margin:.2em 0 .35em}
+.lede{color:var(--mute);max-width:720px}
+.bound{border-left:5px solid var(--ok);padding:8px 0 8px 14px}
+.card{background:var(--card);border:1px solid var(--line);padding:16px;margin:16px 0}
+code,pre{font:13px/1.4 ui-monospace,monospace}pre{background:#231c16;color:#f4efe6;padding:12px;overflow:auto}
+.small{color:var(--mute);font:13px/1.4 system-ui,sans-serif}
+</style></head><body><main>
+<nav><a href="./index.html">← Commons</a></nav>
+<p class="kicker">Commons · delaware-newlab-pfas-lineage-lims-01 · HOLD / BUILD-AND-VERIFY</p>
+<h1>The runner is the product. This page is a window.</h1>
+<p class="lede">Ashley Kunder / Delaware DNREC Environmental Laboratory. Quote/request → accession → matrix/method/version → PFAS LC-MS/MS or molecular/microbiology → QC → staged evidence report, retaining old/new-facility provenance. No login. No outreach.</p>
+<p class="bound"><strong>Official command:</strong> <code>python3 delaware_newlab_pfas_lineage.py</code><br>
+<strong>Official binary:</strong> <code>python3 test_delaware_newlab_pfas_lineage.py</code></p>
+<section class="card">
+<h2>What the runner does</h2>
+<p>Loads 200 synthetic requests across Richardson & Robbins and New Dover Environmental Lab facilities. Accessions 150 valid requests and stages reports. Parks 50 predefined omissions/discrepancies under the exact HOLD code (15 missing matrix/SDS/custody, 10 duplicate containers, 10 method/matrix mismatches, 10 calibration/QC failures, 5 facility ID collisions). Holds stage zero reports and zero downstream activity. Replay adds zero records and changes no state. Named human <code>SYN-DNREC-RELEASE-OFFICER</code> is mandatory.</p>
+<pre>python3 delaware_newlab_pfas_lineage.py
+python3 delaware_newlab_pfas_lineage.py --replay
+python3 test_delaware_newlab_pfas_lineage.py</pre>
+<p class="small">Written artifacts: <a href="./revenue/delaware_newlab_pfas_lineage/fixture.json">fixture.json</a> · <a href="./revenue/delaware_newlab_pfas_lineage/state/journal.json">state/journal.json</a> · <a href="./revenue/delaware_newlab_pfas_lineage/receipts/run.json">receipts/run.json</a> · <a href="./revenue/delaware_newlab_pfas_lineage/receipts/samples.json">samples.json</a> · <a href="./revenue/delaware_newlab_pfas_lineage/receipts/holds.json">holds.json</a> · <a href="./revenue/delaware_newlab_pfas_lineage/receipts/reports.json">reports.json</a> · <a href="./revenue/delaware_newlab_pfas_lineage/receipts/audit.json">audit.json</a></p>
+</section>
+<section class="card">
+<h2>Contract</h2>
+<ul>
+<li>200 synthetic requests / 150 valid / 50 HOLD</li>
+<li>Exact HOLD codes: HOLD_MISSING_MATRIX_SDS_CUSTODY (15), HOLD_DUPLICATE_CONTAINER (10), HOLD_METHOD_MATRIX_MISMATCH (10), HOLD_CALIBRATION_QC_FAILURE (10), HOLD_FACILITY_ID_COLLISION (5)</li>
+<li>Zero reports staged for held requests; zero downstream execution while held</li>
+<li>Facility lineage (Richardson & Robbins / New Dover), matrix, method, value, unit, qualifier, and source hashes preserved</li>
+<li>Idempotent replay; deterministic audit hash</li>
+<li>Named human release; autonomous release denied</li>
+</ul>
+<p class="small">PRE-SALE TRANSPORT: NONE. cash_usd = 0. Boundary: No regulatory, public-health or compliance decision.</p>
+</section>
+</main></body></html>

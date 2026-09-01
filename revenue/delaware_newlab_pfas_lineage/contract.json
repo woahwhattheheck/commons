@@ -1,0 +1,19 @@
+{
+  "buyer": "Ashley Kunder / Delaware DNREC Environmental Laboratory",
+  "cash_usd": 0,
+  "demand_id": "delaware-newlab-pfas-lineage-lims-01",
+  "facilities": [
+    "SYN-DNREC-RICHARDSON-ROBBINS",
+    "SYN-DNREC-NEW-DOVER-ENV-LAB"
+  ],
+  "interfaces": "SYNTHETIC_READ_ONLY",
+  "live_lims": false,
+  "official_binary": "python3 delaware_newlab_pfas_lineage.py",
+  "official_test": "python3 test_delaware_newlab_pfas_lineage.py",
+  "page": "delaware-newlab-pfas-lineage-lims.html",
+  "pre_sale_transport": "NONE",
+  "production_deployment": false,
+  "schema": "commons-delaware-newlab-pfas-lineage-lims/v1",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "synthetic": true
+}

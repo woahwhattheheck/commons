@@ -1,0 +1,952 @@
+[
+  {
+    "code": "HOLD_FACILITY_ID_COLLISION",
+    "container_id": "DNREC-CONT-0196",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-COLLISION-LEGACY-01",
+    "source_hash": "57133e8363cf770138f6388f3330aaf538b84b97a30c814f642b18e9e15cfe17",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_FACILITY_ID_COLLISION",
+    "container_id": "DNREC-CONT-0197",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "GROUNDWATER",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-COLLISION-LEGACY-02",
+    "source_hash": "2d65179c4a13647eff0c5b38bc722977b0c9fd22d3a00a12c1f27ec299ff028f",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_FACILITY_ID_COLLISION",
+    "container_id": "DNREC-CONT-0198",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-COLLISION-LEGACY-03",
+    "source_hash": "cee89f8bd3c5903e793dca77f6df2b99731602056c9a5594d633f0ce73e1091c",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_FACILITY_ID_COLLISION",
+    "container_id": "DNREC-CONT-0199",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SURFACE_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-COLLISION-LEGACY-04",
+    "source_hash": "6ecb95b145556c1facda3c5aea6046ee03f5c1b475ca366e115da9cb07892201",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_FACILITY_ID_COLLISION",
+    "container_id": "DNREC-CONT-0200",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-COLLISION-LEGACY-05",
+    "source_hash": "c35f992bc82e81ca06046440ac99c90033a65f1d46d2bb42bf37102df47b25ab",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0151",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0151",
+    "source_hash": "4aa2eafc7eb96fcfcc0051c9d089180d21649f0e09acff839aeb328ca8df6b06",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0152",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0152",
+    "source_hash": "b5c660e3dfa57c2e09f1621cf69fc6c25fa6700b303e5678f2053bc7021c8aeb",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0153",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "TREATED_EFFLUENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0153",
+    "source_hash": "6b67402c17ba8d1bb533e897304c990a91c1341cb1db8048a5a7403437385b0e",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0154",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0154",
+    "source_hash": "498e23c85531df71955a28a7d9edee83e62643e7d260ce918ebe99aecae06aa5",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0155",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "DRINKING_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0155",
+    "source_hash": "82b4c0abd5a1513e80b64e7c50b902ca253b6a88dc23f5dce398d51aba7e5233",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0156",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0156",
+    "source_hash": "73cde886a229add7346ee2af1f6e03489fc959c100ee05c414f41ec0b268a214",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0157",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0157",
+    "source_hash": "ad34f625ba09b6aff0823269ca54e008ec3019513e1b7221e8f8e84b36ee8543",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0158",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "WASTEWATER",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0158",
+    "source_hash": "15682481956f26143e30955e1cf4bfd7920b0c2487736fd29258dc1f276abc11",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0159",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "RECREATIONAL_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0159",
+    "source_hash": "70cd836d604c5363972d9880ca71b0a2e4d9bd40d2e68b916abca45531da1ea4",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0160",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0160",
+    "source_hash": "bba3919e267e47c19afbb833ea6f4e0db9ed10da8f12de6ffcfc9b93a652b53b",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0161",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "GROUNDWATER",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0161",
+    "source_hash": "b6b582021da82fc352fba9400d0e1a56370c4675387e3f558e2834d3db2f1031",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0162",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0162",
+    "source_hash": "d3918c22aa064569306f950f65b95dacb837b3b6a8c9aa34946e4bc54808fef3",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0163",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0163",
+    "source_hash": "634dc7d424f6a9630c55628129e8f2f2982eaf1f31f57155da337231b26fb97d",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0164",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0164",
+    "source_hash": "3aba54efd50e949485cc7ffdc3c08bb70e0af3611562d4fa17694b30b493f160",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_MISSING_MATRIX_SDS_CUSTODY",
+    "container_id": "DNREC-CONT-0165",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "TREATED_EFFLUENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0165",
+    "source_hash": "671457819aff8ee11cf8bc7adb287880c6b103dd4043168ba2c9e6aafb17dcc1",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0001",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SURFACE_WATER",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0166",
+    "source_hash": "07333d27cee484a606142fd47971ccc132660e2f91bdb67ea19024179490d482",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0002",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "DRINKING_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0167",
+    "source_hash": "e9d4a8c71f9832258e2198be2407035f73095c3135095820c36fabbba6f3a5d7",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0003",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0168",
+    "source_hash": "43bc53524d467b30a9840eff268ac12f687bc5c93fdde0daa8914eb3626e2c0f",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0004",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "DRINKING_WATER",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0169",
+    "source_hash": "112657fb6e402230273f009b8c04f6b36d803682a8039f50557ec4d0df7cb630",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0005",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "WASTEWATER",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0170",
+    "source_hash": "a6007ffbfb551f618851880448e2f3509f9ec1c48eaab0e0b401d7b60b7a80b3",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0006",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "RECREATIONAL_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0171",
+    "source_hash": "0c3569b1836e1c6dcf94bee98d42a4569abaf4b23a5ce5f02bcf38be52cde0cd",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0007",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0172",
+    "source_hash": "43bfd00ee7d3524d08f5ae6833ebf88f40cde4a2d4a3d6b74f21b0a5214faa8a",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0008",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "GROUNDWATER",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0173",
+    "source_hash": "5ff1841cab63067886be207bc6e4add7e59028b3829d19d4e601f39381cdd81d",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0009",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0174",
+    "source_hash": "d3028832a16250a60fa9f76abdedf1849dbe3246cd61ca8e8122ab7909e1cd13",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "DNREC-CONT-0010",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SURFACE_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0175",
+    "source_hash": "b8af03d05e30a47351c38d7f176e7a2b13f117e07825f8af2b09d56f02641263",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0176",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0176",
+    "source_hash": "6d54d3401d29a2729ce433c92e4b531a4e905180b76c255309c2136d9b546c15",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0177",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0177",
+    "source_hash": "4cd06e0e6aa8b9be72cf390243ea21049a466ba91edbcf69b8df7bbde5375798",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0178",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0178",
+    "source_hash": "0873bb482128c398b5b22c60c2e08c09a87a677a31953adf6af8fd8674903daf",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0179",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0179",
+    "source_hash": "a7bab9e6cccc43b0289c85b6c1b96b889831f90aafac7fb5bddf241e80dff40c",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0180",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0180",
+    "source_hash": "64aca71678b45fbe5a3f77284fa6efc1cec0bc446481c09f65c2e457754c0eb2",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0181",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0181",
+    "source_hash": "8dd05ee62b0b5c5d26f150d5d75fcf2f85518a3c4fe5626d610df1c3c9584f8d",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0182",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0182",
+    "source_hash": "e51f50b48d74bc170fbbc71dca360f09f079aee2c33c7d9ca1bd8ac07c1e84c0",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0183",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0183",
+    "source_hash": "3f1b600835b7d1b9ded5e3ddec5fe9e86f727fd354c230529cc87b53d3a397b5",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0184",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0184",
+    "source_hash": "44a1a887b81dd990c01fcc76d652c0cc2d6997751f8952acd6648b7c95d659df",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_METHOD_MATRIX_MISMATCH",
+    "container_id": "DNREC-CONT-0185",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0185",
+    "source_hash": "70e9e3a21d2d0dc33ce6f57ce9dd8a25f4426f2829c5e06aa1c64aea69dddba2",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0186",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOIL_SEDIMENT",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0186",
+    "source_hash": "7eede968d9b2bfa37d4c3eae1d4c0059c419e77611e36bd3932842254b27d559",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0187",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "SURFACE_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0187",
+    "source_hash": "f216af2d63b420fb81d513a02454af985f57a55f5356a56b89f3d6bfe1cd8e3f",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0188",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0188",
+    "source_hash": "aa4e4752718648556d050d5f1a99d109d2671562f0e3129ec71afe0b8dfcf556",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0189",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "TREATED_EFFLUENT",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0189",
+    "source_hash": "66f7d40f2030635c3d44b6fe74a7ecbea7eeb721cc8bb1fa976419b9fae507d9",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0190",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SURFACE_WATER",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0190",
+    "source_hash": "f2c4bfc69e3ea9c16f9feb9a0087dccee60a1ff6b533de0beb8422e45d8d1a07",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0191",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "DRINKING_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0191",
+    "source_hash": "88d38214b41a3f1a43d0a7f19f1d5a57f95cfb020ff8aa46594513bbd39c3a9c",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0192",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "SOURCE_WATER",
+    "method_key": "EPA_1623_1_CRYPTO_GIARDIA",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0192",
+    "source_hash": "c78f96b1d4fcfb701137449afe217550c738521713370ce17f109b24f92b110b",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0193",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "DRINKING_WATER",
+    "method_key": "EPA_533_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0193",
+    "source_hash": "3d513d92fd4300e99580ee646aa9964a13beaa95ad0270f625b99d9281cd5ffa",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0194",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-RICHARDSON-ROBBINS",
+    "live_test": false,
+    "matrix": "WASTEWATER",
+    "method_key": "EPA_1633_PFAS",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0194",
+    "source_hash": "ee7cad427d373faea12087af2299360cac7913f96a42183133909e1c8ed024fd",
+    "state": "HOLD"
+  },
+  {
+    "code": "HOLD_CALIBRATION_QC_FAILURE",
+    "container_id": "DNREC-CONT-0195",
+    "downstream": {
+      "analysis_started": false,
+      "report_generated": false,
+      "report_released": false
+    },
+    "facility": "SYN-DNREC-NEW-DOVER-ENV-LAB",
+    "live_test": false,
+    "matrix": "RECREATIONAL_WATER",
+    "method_key": "EPA_1603_ECOLI",
+    "released": false,
+    "released_by": null,
+    "report_staged": false,
+    "request_id": "DNREC-REQ-0195",
+    "source_hash": "37e4d28bf13198bed48c3c034080b2482357f0325fb2a3fdd3307300d988a0cb",
+    "state": "HOLD"
+  }
+]
