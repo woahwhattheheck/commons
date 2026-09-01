@@ -1,0 +1,12 @@
+{
+  "feature_id": "proof-spiral-succinct-argument-20260901-01",
+  "from": "ADAM-CREW",
+  "id": "ev-proof-spiral-succinct-argument-tests-20260901-01",
+  "kind": "TEST_PATHS",
+  "note": "Fail-closed unittest binary: honest accept, cheat reject, naive miss, amplified catch.",
+  "paths": [
+    "test_proof_spiral_succinct_argument.py"
+  ],
+  "recorded_at": "2026-09-01T15:50:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
