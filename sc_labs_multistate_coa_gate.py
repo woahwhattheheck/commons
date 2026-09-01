@@ -509,12 +509,7 @@ def records_from_csv(text: str) -> list[dict[str, Any]]:
 
 
 def records_to_json(records: Iterable[dict[str, Any]]) -> str:
-    return json.dumps(
-        [normalize_record(row) for row in records],
-        indent=2,
-        sort_keys=True,
-        ensure_ascii=True,
-    ) + "\n"
+    return _canonical([normalize_record(row) for row in records]) + "\n"
 
 
 def records_from_json(text: str) -> list[dict[str, Any]]:
@@ -603,11 +598,8 @@ def write_artifacts(
         "fixture.csv": records_to_csv(records),
         "fixture.json": records_to_json(records),
         "decisions.csv": decisions_to_csv(result["decisions"]),
-        "decisions.json": json.dumps(result["decisions"], indent=2, sort_keys=True) + "\n",
-        "evidence-manifest.json": json.dumps(
-            result["evidence_manifest"], indent=2, sort_keys=True
-        )
-        + "\n",
+        "decisions.json": _canonical(result["decisions"]) + "\n",
+        "evidence-manifest.json": _canonical(result["evidence_manifest"]) + "\n",
         "exception-report.txt": result["exception_report"],
     }
     manifest_path = directory / "evidence-manifest.json"
