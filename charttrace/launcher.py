@@ -36,7 +36,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
                     "app_version": APP_VERSION,
                     "build_label": BUILD_LABEL,
                     "signing_state": SIGNING_STATE,
-                    "transport": "local_ipc_only",
+                    "transport": "filesystem_mailbox",
                     "startup_screen": window.screen_snapshot(ScreenId.UNLOCK),
                 },
                 sort_keys=True,

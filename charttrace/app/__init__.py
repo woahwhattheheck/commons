@@ -1,6 +1,7 @@
 """ChartTrace v1.1 native application domain."""
 
 from .cases import DEADLINE_BANNER, CaseLifecycle, CaseRecord
+from .vault import SYNTHETIC_RELEASED, VAULT_MODE
 from .controller import (
     APP_VERSION,
     BUILD_LABEL,
@@ -22,4 +23,6 @@ __all__ = [
     "ChartTraceController",
     "DEADLINE_BANNER",
     "ReleaseBlockedError",
+    "SYNTHETIC_RELEASED",
+    "VAULT_MODE",
 ]

@@ -1,6 +1,5 @@
 import ast
 import json
-import os
 import tempfile
 import unittest
 from contextlib import redirect_stdout
@@ -8,7 +7,12 @@ from io import StringIO
 from pathlib import Path
 
 from charttrace.app import ChartTraceController
-from charttrace.app.ipc import LocalIpcServer, local_ipc_address, local_ipc_family
+from charttrace.app.ipc import (
+    LocalIpcServer,
+    local_ipc_address,
+    local_ipc_family,
+    local_ipc_transport,
+)
 from charttrace.launcher import main
 from charttrace.ui import LEGAL_ACTION_ID, SCREEN_CATALOG, ChartTraceWindow, ScreenId
 
@@ -75,22 +79,20 @@ class LocalSecurityContractTests(unittest.TestCase):
         self.assertNotIn("AF_INET", source)
         self.assertNotIn("0.0.0.0", source)
         self.assertNotIn("AF_INET6", source)
-        self.assertIn("AF_UNIX", source)
-        self.assertIn(local_ipc_family(), {"AF_PIPE", "AF_UNIX"})
+        self.assertNotIn("import socket", source)
+        self.assertEqual("FILESYSTEM_MAILBOX", local_ipc_family())
+        self.assertEqual("FILESYSTEM_MAILBOX", local_ipc_transport())
         address = local_ipc_address("unit-test")
-        if os.name == "nt":
-            self.assertTrue(address.startswith("\\\\.\\pipe\\charttrace-"))
-        else:
-            self.assertTrue(address.endswith("charttrace-unit-test.sock"))
+        self.assertTrue(address.endswith("charttrace-ipc-unit-test"))
 
-    @unittest.skipIf(os.name == "nt", "Named-pipe creation is covered on Windows.")
-    def test_local_server_binds_only_filesystem_domain_socket(self):
+    def test_local_server_uses_filesystem_mailbox_only(self):
         server = LocalIpcServer("listener-proof")
         try:
             server.start()
             self.assertTrue(server.is_running)
-            self.assertEqual("AF_UNIX", server.family)
-            self.assertTrue(Path(server.address).exists())
+            self.assertEqual("FILESYSTEM_MAILBOX", server.family)
+            self.assertTrue(Path(server.address).is_dir())
+            self.assertTrue((Path(server.address) / "session.key").is_file())
         finally:
             server.close()
         self.assertFalse(Path(server.address).exists())
@@ -119,7 +121,8 @@ class LocalSecurityContractTests(unittest.TestCase):
         self.assertEqual("UNSIGNED_SYNTHETIC", manifest["artifact_label"])
         self.assertEqual("unsigned", manifest["signing_state"])
         self.assertEqual("none", manifest["network_listener"])
-        self.assertEqual("local_ipc_only", manifest["transport"])
+        self.assertEqual("filesystem_mailbox", manifest["transport"])
+        self.assertFalse(manifest.get("synthetic_released", False))
         self.assertFalse(manifest["telemetry"])
 
     def test_exclusive_sources_have_no_network_or_browser_path(self):
@@ -127,19 +130,28 @@ class LocalSecurityContractTests(unittest.TestCase):
             Path(__file__).resolve().parents[1] / "app",
             Path(__file__).resolve().parents[1] / "ui",
             Path(__file__).resolve().parents[1] / "legal",
+            Path(__file__).resolve().parents[1] / "packaging",
             Path(__file__).resolve().parents[1] / "launcher.py",
         ]
         forbidden = (
             "webbrowser",
             "http.server",
+            "http.client",
+            "urllib.request",
+            "import requests",
             "localhost",
             "127.0.0.1",
             "0.0.0.0",
             "AF_INET",
+            "import socket",
+            "multiprocessing",
         )
         scanned = 0
         for root in roots:
-            paths = [root] if root.is_file() else sorted(root.glob("*.py"))
+            if root.is_file():
+                paths = [root]
+            else:
+                paths = sorted(root.glob("*.py"))
             for path in paths:
                 if path.name.startswith("test_"):
                     continue
@@ -151,7 +163,7 @@ class LocalSecurityContractTests(unittest.TestCase):
                         text,
                         f"{path} must not contain {token}",
                     )
-        self.assertGreaterEqual(scanned, 15)
+        self.assertGreaterEqual(scanned, 18)
 
     def test_launcher_headless_startup_needs_no_display(self):
         with tempfile.TemporaryDirectory() as directory:

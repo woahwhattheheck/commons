@@ -14,6 +14,7 @@ from typing import Any, Dict, Mapping, Optional
 
 
 VAULT_MODE = "SYNTHETIC_STUB_NOT_ENCRYPTED"
+SYNTHETIC_RELEASED = False
 KDF_NAME = "pbkdf2-hmac-sha256"
 KDF_ITERATIONS = 210_000
 SCHEMA_VERSION = 2
@@ -69,6 +70,10 @@ def assert_synthetic_stub(envelope: Mapping[str, Any]) -> None:
         raise VaultError("Unknown vault mode; refusing to unlock.")
     if envelope.get("protected_data_present") is True:
         raise VaultError("Synthetic stub cannot unlock protected data.")
+    if envelope.get("synthetic_released") is True:
+        raise VaultError("Synthetic stub cannot claim SYNTHETIC_RELEASED.")
+    if envelope.get("can_unlock_protected_data") is True:
+        raise VaultError("Synthetic stub cannot unlock protected data.")
 
 
 def inspect_envelope(envelope: Mapping[str, Any]) -> Dict[str, Any]:
@@ -92,6 +97,7 @@ def inspect_envelope(envelope: Mapping[str, Any]) -> Dict[str, Any]:
         "secret_verifier": verifier,
         "vault_mode": VAULT_MODE,
         "encryption_claimed": False,
+        "synthetic_released": SYNTHETIC_RELEASED,
     }
 
 
@@ -134,6 +140,7 @@ def build_envelope(
         "schema_version": SCHEMA_VERSION,
         "vault_mode": VAULT_MODE,
         "encryption_claimed": False,
+        "synthetic_released": SYNTHETIC_RELEASED,
         "protected_data_present": False,
         "can_unlock_protected_data": False,
         "app_version": app_version,

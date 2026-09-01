@@ -9,6 +9,7 @@
   "network_listener": "none",
   "platform": "windows",
   "signing_state": "unsigned",
+  "synthetic_released": false,
   "telemetry": false,
-  "transport": "local_ipc_only"
+  "transport": "filesystem_mailbox"
 }

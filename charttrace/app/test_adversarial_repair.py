@@ -15,10 +15,12 @@ from charttrace.app import (
     CaseLifecycle,
     ChartTraceController,
     ReleaseBlockedError,
+    SYNTHETIC_RELEASED,
 )
 from charttrace.app.ipc import (
     IpcProtocolError,
     LocalIpcServer,
+    decode_frame,
     encode_frame,
     send_raw,
     send_signed,
@@ -28,10 +30,12 @@ from charttrace.app.paths import PathEgressError, assert_local_filesystem_path
 from charttrace.app.vault import VAULT_MODE, VaultError
 from charttrace.legal import LegalState
 from charttrace.packaging.unsigned_artifact import build_unsigned_artifact
+from charttrace.packaging.unsigned_pe import build_unsigned_pe_bytes
 
 
 class VaultFailClosedTests(unittest.TestCase):
     def test_wrong_secret_fails_and_plaintext_cannot_unlock(self):
+        self.assertFalse(SYNTHETIC_RELEASED)
         with tempfile.TemporaryDirectory() as directory:
             first = ChartTraceController(data_dir=Path(directory), persist=True)
             first.unlock("correct-secret", "Test operator")
@@ -41,6 +45,7 @@ class VaultFailClosedTests(unittest.TestCase):
             self.assertEqual(VAULT_MODE, payload["vault_mode"])
             self.assertFalse(payload["encryption_claimed"])
             self.assertFalse(payload["can_unlock_protected_data"])
+            self.assertFalse(payload["synthetic_released"])
             self.assertEqual("", payload["cases"][0]["name"])
             self.assertEqual([], payload["cases"][0]["sources"])
 
@@ -72,6 +77,27 @@ class VaultFailClosedTests(unittest.TestCase):
                 ),
                 encoding="utf-8",
             )
+            with self.assertRaises(VaultError):
+                ChartTraceController(data_dir=Path(directory), persist=True)
+
+    def test_claimed_encryption_and_protected_flags_fail_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            first = ChartTraceController(data_dir=Path(directory), persist=True)
+            first.unlock("correct-secret", "Test operator")
+            state_path = Path(directory) / "charttrace-state.json"
+            payload = json.loads(state_path.read_text(encoding="utf-8"))
+            payload["encryption_claimed"] = True
+            state_path.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaises(VaultError):
+                ChartTraceController(data_dir=Path(directory), persist=True)
+
+        with tempfile.TemporaryDirectory() as directory:
+            first = ChartTraceController(data_dir=Path(directory), persist=True)
+            first.unlock("correct-secret", "Test operator")
+            state_path = Path(directory) / "charttrace-state.json"
+            payload = json.loads(state_path.read_text(encoding="utf-8"))
+            payload["protected_data_present"] = True
+            state_path.write_text(json.dumps(payload), encoding="utf-8")
             with self.assertRaises(VaultError):
                 ChartTraceController(data_dir=Path(directory), persist=True)
 
@@ -110,6 +136,7 @@ class CounselNonAuthoritativeTests(unittest.TestCase):
                 controller.import_offline_counsel_review(case.case_id, forged)
         self.assertEqual(LegalState.AUTHORITY_HOLD, controller.legal_state)
         self.assertEqual(CaseLifecycle.HUMAN_RELEASE_REVIEW, case.lifecycle)
+        self.assertIsNone(case.human_reviewed_by)
 
     def test_unsigned_four_field_json_is_non_authoritative(self):
         controller = self._ready_controller()
@@ -134,15 +161,48 @@ class CounselNonAuthoritativeTests(unittest.TestCase):
         self.assertEqual("NON_AUTHORITATIVE_REVIEW_RECORD", record["kind"])
         self.assertFalse(record["authoritative"])
         self.assertFalse(record["clears_legal_hold"])
+        self.assertFalse(record["applies_human_approval"])
         self.assertEqual(CaseLifecycle.HUMAN_RELEASE_REVIEW, case.lifecycle)
+        self.assertIsNone(case.human_reviewed_by)
+
+    def test_nested_and_unknown_counsel_fields_are_rejected(self):
+        controller = self._ready_controller()
+        case = controller.create_case("Synthetic counsel case")
+        with tempfile.TemporaryDirectory() as directory:
+            nested = Path(directory) / "nested.json"
+            nested.write_text(
+                json.dumps(
+                    {
+                        "mode": "offline_counsel_review",
+                        "case_id": case.case_id,
+                        "reviewed_by": "Nested Forger",
+                        "decision": "approve",
+                        "notes": {"approved": True},
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaises(CounselImportError):
+                import_counsel_review(nested, case.case_id)
+            extra = Path(directory) / "extra.json"
+            extra.write_text(
+                json.dumps(
+                    {
+                        "mode": "offline_counsel_review",
+                        "case_id": case.case_id,
+                        "reviewed_by": "Licensed Counsel",
+                        "decision": "approve",
+                        "licensed_counsel": True,
+                    }
+                ),
+                encoding="utf-8",
+            )
+            with self.assertRaises(CounselImportError):
+                import_counsel_review(extra, case.case_id)
 
 
 class StaleTransferAuthTests(unittest.TestCase):
-    def test_authority_hold_invalidates_named_recipient_authorization(self):
-        controller = ChartTraceController(persist=False)
-        controller.unlock("test-only-secret", "Test operator")
-        acknowledgements = controller.consent.blank_acknowledgements()
-        controller.accept_legal({key: True for key in acknowledgements}, "Test operator")
+    def _ready_release_case(self, controller):
         case = controller.create_case("Synthetic release case")
         controller.secure_ingest(case.case_id, [("source.bin", b"synthetic")])
         controller.run_peer_analysis(case.case_id)
@@ -150,6 +210,14 @@ class StaleTransferAuthTests(unittest.TestCase):
         controller.complete_human_review(case.case_id, "Named reviewer", approved=True)
         controller.set_recipient(case.case_id, "Named recipient", "attorney")
         controller.authorize_recipient_transfer(case.case_id, True, "Test operator")
+        return case
+
+    def test_authority_hold_invalidates_named_recipient_authorization(self):
+        controller = ChartTraceController(persist=False)
+        controller.unlock("test-only-secret", "Test operator")
+        acknowledgements = controller.consent.blank_acknowledgements()
+        controller.accept_legal({key: True for key in acknowledgements}, "Test operator")
+        case = self._ready_release_case(controller)
         self.assertEqual(LegalState.TRANSFER_AUTHORIZED, case.transfer_state)
         controller.place_authority_hold("Authority requires confirmation")
         self.assertEqual(LegalState.TRANSFER_NOT_AUTHORIZED, case.transfer_state)
@@ -164,36 +232,47 @@ class StaleTransferAuthTests(unittest.TestCase):
             controller.build_release(case.case_id, destination)
             self.assertTrue(destination.is_file())
 
+    def test_terms_reaccept_invalidates_stale_transfer_authorization(self):
+        controller = ChartTraceController(persist=False)
+        controller.unlock("test-only-secret", "Test operator")
+        acknowledgements = controller.consent.blank_acknowledgements()
+        controller.accept_legal({key: True for key in acknowledgements}, "Test operator")
+        case = self._ready_release_case(controller)
+        prior_epoch = case.recipient.authorization_epoch
+        controller.accept_legal({key: True for key in acknowledgements}, "Test operator")
+        self.assertEqual(LegalState.TRANSFER_NOT_AUTHORIZED, case.transfer_state)
+        self.assertIsNone(case.recipient.authorized_at)
+        self.assertNotEqual(prior_epoch, controller.consent.authority_epoch)
+        with tempfile.TemporaryDirectory() as directory:
+            destination = Path(directory) / "release.json"
+            with self.assertRaises(ReleaseBlockedError):
+                controller.build_release(case.case_id, destination)
+
 
 class JsonIpcTests(unittest.TestCase):
-    @unittest.skipIf(os.name == "nt", "Filesystem-domain sockets are the Unix proof.")
     def test_pickle_and_object_input_are_rejected(self):
         server = LocalIpcServer("pickle-proof")
         server.start()
-        errors = []
-
-        def attack() -> None:
-            try:
-                send_raw(server.address, pickle.dumps({"op": "ping"}))
-            except OSError as error:
-                errors.append(error)
-
         try:
+            def attack() -> None:
+                send_raw(server.address, pickle.dumps({"op": "ping"}))
+
             worker = threading.Thread(target=attack)
             worker.start()
             with self.assertRaises(IpcProtocolError):
                 server.receive_once()
             worker.join(timeout=2)
+            with self.assertRaises(IpcProtocolError):
+                decode_frame(b"\x80\x04junk", b"\x00" * 32, set())
         finally:
             server.close()
 
-    @unittest.skipIf(os.name == "nt", "Filesystem-domain sockets are the Unix proof.")
     def test_signed_json_round_trip_and_replay_fail(self):
         server = LocalIpcServer("json-proof")
         server.start()
         try:
             def send() -> None:
-                send_signed("json-proof", server.address, "ping", "nonce-1")
+                send_signed(server.address, "ping", "nonce-1")
 
             worker = threading.Thread(target=send)
             worker.start()
@@ -202,7 +281,7 @@ class JsonIpcTests(unittest.TestCase):
             self.assertEqual("ping", payload["op"])
 
             def replay() -> None:
-                send_signed("json-proof", server.address, "ping", "nonce-1")
+                send_signed(server.address, "ping", "nonce-1")
 
             worker = threading.Thread(target=replay)
             worker.start()
@@ -212,24 +291,49 @@ class JsonIpcTests(unittest.TestCase):
         finally:
             server.close()
 
-    def test_ipc_source_has_no_listener_or_pickle(self):
+    def test_ipc_source_has_no_socket_listener_or_pickle(self):
         source = Path(__file__).with_name("ipc.py").read_text(encoding="utf-8")
         self.assertNotIn("multiprocessing", source)
         self.assertNotIn("from multiprocessing", source)
         self.assertNotIn("Listener", source)
         self.assertNotIn("import pickle", source)
+        self.assertNotIn("import socket", source)
+        self.assertNotIn("AF_INET", source)
+        self.assertIn("FILESYSTEM_MAILBOX", source)
+
+    def test_oversized_and_unsigned_frames_fail(self):
+        server = LocalIpcServer("size-proof")
+        server.start()
+        try:
+            send_raw(server.address, encode_frame({"v": 1, "op": "ping", "nonce": "x", "mac": "00"}))
+            with self.assertRaises(IpcProtocolError):
+                server.receive_once()
+            send_raw(server.address, b"CTJ1" + (70_000).to_bytes(4, "big") + b"x" * 16)
+            with self.assertRaises(IpcProtocolError):
+                server.receive_once(timeout=1.0)
+        finally:
+            server.close()
 
 
 class PathEgressTests(unittest.TestCase):
     def test_unc_device_symlink_and_traversal_are_rejected(self):
-        with self.assertRaises(PathEgressError):
-            assert_local_filesystem_path(r"\\fileserver\share\out.json")
-        with self.assertRaises(PathEgressError):
-            assert_local_filesystem_path("//fileserver/share/out.json")
-        with self.assertRaises(PathEgressError):
-            assert_local_filesystem_path("NUL")
-        with self.assertRaises(PathEgressError):
-            assert_local_filesystem_path("../escape/out.json")
+        rejected = (
+            r"\\fileserver\share\out.json",
+            "//fileserver/share/out.json",
+            r"\\?\UNC\fileserver\share\out.json",
+            r"\\.\pipe\charttrace",
+            "NUL",
+            "COM1",
+            "../escape/out.json",
+            "foo/../../etc/passwd",
+            "smb://fileserver/share/out.json",
+            "file:///tmp/out.json",
+            "C:relative",
+        )
+        for raw in rejected:
+            with self.subTest(path=raw):
+                with self.assertRaises(PathEgressError):
+                    assert_local_filesystem_path(raw)
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory) / "target"
             target.mkdir()
@@ -264,11 +368,20 @@ class WindowsPackagingReadbackTests(unittest.TestCase):
             self.assertEqual("UNSIGNED_SYNTHETIC", receipt["artifact_label"])
             self.assertEqual("unsigned", receipt["signing_state"])
             self.assertFalse(receipt["production"])
-            self.assertFalse(receipt["windows_pe_built"])
+            self.assertFalse(receipt["synthetic_released"])
+            self.assertTrue(receipt["windows_pe_built"])
+            self.assertEqual("unsigned_pe32_stub", receipt["windows_pe_kind"])
             self.assertEqual(0, receipt["smoke"]["returncode"])
             self.assertIn("UNSIGNED_SYNTHETIC", receipt["smoke"]["startup"]["build_label"])
             self.assertTrue(Path(receipt["bundle_path"]).is_file())
+            self.assertTrue(Path(receipt["windows_pe_path"]).is_file())
+            pe = Path(receipt["windows_pe_path"]).read_bytes()
+            self.assertEqual(b"MZ", pe[:2])
+            self.assertIn(b"UNSIGNED_SYNTHETIC", pe)
             self.assertEqual(64, len(receipt["bundle_sha256"]))
+            self.assertEqual(64, len(receipt["windows_pe_sha256"]))
+            self.assertEqual(build_unsigned_pe_bytes(), pe)
+            self.assertNotEqual("INVENTED_CLEAN_VM", receipt["windows_clean_vm"])
 
 
 if __name__ == "__main__":
