@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import unittest
+from unittest.mock import patch
 
 import denton_bacteriology_acceptance_reporting_lims as gate
 
@@ -103,15 +104,112 @@ class DentonBacteriologyAcceptanceTests(unittest.TestCase):
         )
         self.assertFalse(denied["ok"])
         self.assertEqual(denied["code"], "AUTONOMOUS_RELEASE_DENIED")
-        released = gate.release_report(
+        self_asserted = gate.release_report(
             journal,
             report_id,
             actor_role=gate.HUMAN_REVIEWER_ROLE,
             actor="named-reviewer",
         )
+        self.assertFalse(self_asserted["ok"])
+        self.assertEqual(self_asserted["code"], "AUTONOMOUS_RELEASE_DENIED")
+        self.assertEqual(
+            self_asserted["pre_state_hash"], self_asserted["post_state_hash"]
+        )
+        reviewer_id = "DENTON-QA-001"
+        released = gate.release_report(
+            journal,
+            report_id,
+            actor_role="SYSTEM",
+            actor=journal["authoritative_reviewers"][reviewer_id]["display_name"],
+            reviewer_id=reviewer_id,
+        )
         self.assertTrue(released["ok"])
         self.assertEqual(journal["reports"][report_id]["status"], "RELEASED")
-        self.assertEqual(journal["reports"][report_id]["released_by"], "named-reviewer")
+        self.assertEqual(
+            journal["reports"][report_id]["released_by"],
+            journal["authoritative_reviewers"][reviewer_id]["display_name"],
+        )
+        self.assertEqual(journal["reports"][report_id]["reviewer_id"], reviewer_id)
+
+    def test_changed_payload_for_processed_row_is_conflict_not_replay(self) -> None:
+        for field, replacement in (
+            ("method", "SM-9221-PA"),
+            ("bottle_expires", "2026-10-01"),
+        ):
+            with self.subTest(field=field):
+                journal = gate.empty_journal()
+                original = gate._base_row(1)
+                self.assertEqual(gate.ingest_row(journal, original)["kind"], "ACCESSIONED")
+                before = gate.journal_hash(journal)
+                changed = dict(original)
+                changed[field] = replacement
+                effect = gate.ingest_row(journal, changed)
+                self.assertEqual(effect["kind"], "PAYLOAD_DIGEST_CONFLICT")
+                self.assertEqual(effect["pre_state_hash"], before)
+                self.assertEqual(effect["post_state_hash"], before)
+                self.assertEqual(gate.journal_hash(journal), before)
+                self.assertEqual(len(journal["accessions"]), 1)
+
+    def test_reused_submission_id_cannot_overwrite_lineage(self) -> None:
+        journal = gate.empty_journal()
+        original = gate._base_row(1)
+        self.assertEqual(gate.ingest_row(journal, original)["kind"], "ACCESSIONED")
+        before = gate.journal_hash(journal)
+        replacement = gate._base_row(2)
+        replacement["row_id"] = "DEN-201"
+        replacement["submission_id"] = original["submission_id"]
+        replacement["sample_id"] = "SMP-201"
+        effect = gate.ingest_row(journal, replacement)
+        self.assertEqual(effect["kind"], "SUBMISSION_LINEAGE_CONFLICT")
+        self.assertEqual(effect["pre_state_hash"], before)
+        self.assertEqual(effect["post_state_hash"], before)
+        self.assertEqual(gate.journal_hash(journal), before)
+        self.assertEqual(journal["submissions"][original["submission_id"]]["sample_id"], "SMP-001")
+        self.assertEqual(len(journal["accessions"]), 1)
+        self.assertEqual(len(journal["worksheets"]), 1)
+        self.assertEqual(len(journal["reports"]), 1)
+
+    def test_untrusted_numeric_date_and_account_inputs_hold_without_outputs(self) -> None:
+        invalid_cases = (
+            ("nan_temperature", "temperature_c", float("nan")),
+            ("infinite_temperature", "temperature_c", float("inf")),
+            ("negative_temperature", "temperature_c", -0.01),
+            ("negative_hold_time", "hold_time_hours", -0.01),
+            ("malformed_calendar_date", "collected_on", "2026-02-30"),
+            ("noncanonical_calendar_date", "bottle_expires", "20260930"),
+            ("non_scalar_account", "account_id", ["ACCT-01"]),
+        )
+        for name, field, replacement in invalid_cases:
+            with self.subTest(name=name):
+                journal = gate.empty_journal()
+                row = gate._base_row(1)
+                row[field] = replacement
+                before = gate.journal_hash(journal)
+                effect = gate.ingest_row(journal, row)
+                self.assertEqual(effect["kind"], "HOLD")
+                self.assertEqual(effect["pre_state_hash"], before)
+                self.assertEqual(effect["post_state_hash"], gate.journal_hash(journal))
+                self.assertNotEqual(effect["pre_state_hash"], effect["post_state_hash"])
+                self.assertEqual(len(journal["accessions"]), 0)
+                self.assertEqual(len(journal["worksheets"]), 0)
+                self.assertEqual(len(journal["reports"]), 0)
+                self.assertEqual(journal["holds"][0]["worksheets_created"], 0)
+                self.assertEqual(journal["holds"][0]["reports_created"], 0)
+
+    def test_ingest_rolls_back_all_state_when_staging_fails(self) -> None:
+        journal = gate.empty_journal()
+        before = gate.journal_hash(journal)
+        with patch.object(gate, "_event", side_effect=RuntimeError("staging failure")):
+            effect = gate.ingest_row(journal, gate._base_row(1))
+        self.assertEqual(effect["kind"], "ROLLBACK")
+        self.assertEqual(effect["code"], "ATOMIC_INGEST_FAILED")
+        self.assertEqual(effect["pre_state_hash"], before)
+        self.assertEqual(effect["post_state_hash"], before)
+        self.assertEqual(gate.journal_hash(journal), before)
+        self.assertEqual(journal["accessions"], {})
+        self.assertEqual(journal["worksheets"], {})
+        self.assertEqual(journal["reports"], {})
+        self.assertEqual(journal["holds"], [])
 
     def test_replay_adds_zero_records(self) -> None:
         journal = gate.empty_journal()
