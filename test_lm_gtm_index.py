@@ -481,6 +481,10 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertEqual(first["status"], "occupied")
             shown = idx.show_subject("composio", paths, sources=True)
             self.assertEqual(shown["index"]["owner"], "GROK")
+            compact = idx.compact_row(shown["index"])
+            self.assertEqual(compact["owner"], "GROK")
+            self.assertNotIn("dnr", compact)
+            self.assertEqual(idx.brief_header(paths=paths)["occupied"], 1)
             with self.assertRaises(idx.IndexError_):
                 idx.claim_subject(
                     subject_id="composio",
@@ -507,6 +511,9 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertEqual(released["status"], "released")
             shown = idx.show_subject("composio", paths, sources=True)
             self.assertEqual(shown["index"]["owner"], "UNSEATED")
+            compact = idx.compact_row(shown["index"])
+            self.assertNotIn("owner", compact)
+            self.assertEqual(idx.brief_header(paths=paths)["occupied"], 0)
             with self.assertRaises(idx.IndexError_):
                 idx.claim_subject(
                     subject_id="ava-example-test",
@@ -720,23 +727,17 @@ class LmGtmIndexTests(unittest.TestCase):
         )
         lines = [line for line in proc.stdout.splitlines() if line.strip()]
         header = json.loads(lines[0])
-        extra_header = set(header) - {
-            "hot",
-            "hold",
-            "sent_dnr",
-            "cash_usd",
-            "canonical_crm",
-            "composed_at",
-            "stale_warning",
-        }
+        extra_header = set(header) - idx.BRIEF_HEADER_KEYS
         self.assertFalse(extra_header, extra_header)
         self.assertIn("composed_at", header)
         self.assertEqual(header["composed_at"], idx.build_index()["state"]["composed_at"])
         self.assertEqual(header["hot"], 11)
         self.assertEqual(header["hold"], 15)
         self.assertEqual(header["sent_dnr"], 10)
+        self.assertEqual(header["occupied"], 0)
         self.assertEqual(header["cash_usd"], 0)
         self.assertEqual(header["canonical_crm"], "JOJO Revenue Recovery CRM / Revenue Pipeline")
+        self.assertEqual(header["mailbox"], "NEEDS_OWNER_MAILBOX")
         rows = [json.loads(line) for line in lines[1:]]
         self.assertEqual(len(rows), 11)
         self.assertEqual(rows[0]["id"], "composio")
@@ -752,6 +753,8 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertNotIn("overlay_event_ids", row)
             self.assertNotIn("cash_usd", row)
             self.assertNotIn("source_ledgers", row)
+            self.assertNotIn("owner", row)
+            self.assertNotIn("dnr", row)
             self.assertTrue(all(value is not None for value in row.values()))
             blob = json.dumps(row)
             self.assertIsNone(EMAIL_RE.search(blob))
@@ -761,11 +764,26 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual([row["id"] for row in rows], hot_ids)
         for name in SENT_DNR + HOLD_BUILD:
             self.assertNotIn(name, [row["id"] for row in rows])
-        self.assertIn("list_brief", idx.build_index()["state"]["contract"])
-        self.assertIn("list_sent", idx.build_index()["state"]["contract"])
+        contract = idx.build_index()["state"]["contract"]
+        self.assertIn("list_brief", contract)
+        self.assertIn("list_sent", contract)
+        self.assertEqual(contract["list_brief"], "python3 host/lm_gtm_index.py brief")
         self.assertEqual(
-            idx.build_index()["state"]["contract"]["list_brief"],
-            "python3 host/lm_gtm_index.py brief",
+            contract["claim"],
+            "python3 host/lm_gtm_index.py claim <subject> --owner <you>",
+        )
+        self.assertEqual(
+            contract["release"],
+            "python3 host/lm_gtm_index.py release <subject> --owner <you>",
+        )
+        self.assertEqual(
+            contract["append_event"],
+            'python3 host/lm_gtm_index.py append-event --subject <id> --id <event> --body "<note>"',
+        )
+        self.assertIn("claim <subject>", contract["claim"])
+        self.assertNotEqual(
+            contract["claim"],
+            "python3 host/lm_gtm_index.py claim --owner ",
         )
         blob = proc.stdout
         self.assertIsNone(EMAIL_RE.search(blob))
@@ -791,6 +809,7 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertFalse(extra, extra)
             self.assertEqual(row["lane"] in {"sent_dnr", "bounced"}, True)
             self.assertTrue(row["dnr"])
+            self.assertNotIn("owner", row)
             self.assertNotIn(row["id"], hot_ids)
             self.assertTrue(str(row.get("route_ref") or "").startswith("airtable:rec"))
             blob = json.dumps(row)
@@ -859,6 +878,7 @@ class LmGtmIndexTests(unittest.TestCase):
             ("lm-gtm-hot-lane-20260831-01", "8cb3e49a"),
             ("lm-gtm-floor-sync-20260831-01", "ce1482ef"),
             ("lm-gtm-agent-brief-20260831-01", "5727847f"),
+            ("lm-gtm-truth-sync-20260831-02", "4edb7d70"),
         ):
             path = ROOT / "p" / f"{name}.md"
             self.assertTrue(path.is_file(), name)
@@ -876,6 +896,12 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertTrue(truth.is_file())
         self.assertIn("id: lm-gtm-truth-sync-20260831-02", truth.read_text(encoding="utf-8"))
         self.assertNotIn("id: lm-gtm-truth-sync-20260831-02", (ROOT / "p" / "lm-gtm-agent-brief-20260831-01.md").read_text(encoding="utf-8"))
+        contract_receipt = ROOT / "p" / "lm-gtm-contract-brief-20260901-01.md"
+        self.assertTrue(contract_receipt.is_file())
+        self.assertIn("id: lm-gtm-contract-brief-20260901-01", contract_receipt.read_text(encoding="utf-8"))
+        door = (ROOT / "lm-gtm-index.html").read_text(encoding="utf-8")
+        self.assertIn("Contract claim is positional", door)
+        self.assertIn("claim &lt;subject&gt; --owner &lt;you&gt;", door)
 
     def test_brief_stale_warning_after_twelve_hours(self) -> None:
         import datetime as dt
@@ -884,22 +910,35 @@ class LmGtmIndexTests(unittest.TestCase):
         fresh = idx.brief_header(built=built, now=idx.parse_time(built["state"]["composed_at"]))
         self.assertNotIn("stale_warning", fresh)
         self.assertEqual(fresh["composed_at"], built["state"]["composed_at"])
+        extra = set(fresh) - idx.BRIEF_HEADER_KEYS
+        self.assertFalse(extra, extra)
+        self.assertEqual(fresh["occupied"], 0)
+        self.assertEqual(fresh["mailbox"], "NEEDS_OWNER_MAILBOX")
         stale = idx.brief_header(
             built=built,
             now=idx.parse_time(built["state"]["composed_at"]) + dt.timedelta(hours=12, seconds=1),
         )
         self.assertEqual(stale["stale_warning"], idx.STALE_WARNING)
         self.assertIn("composed_at", stale)
-        extra = set(stale) - {
-            "hot",
-            "hold",
-            "sent_dnr",
-            "cash_usd",
-            "canonical_crm",
-            "composed_at",
-            "stale_warning",
-        }
+        extra = set(stale) - idx.BRIEF_HEADER_KEYS
         self.assertFalse(extra, extra)
+        self.assertEqual(stale["occupied"], 0)
+        self.assertEqual(stale["mailbox"], "NEEDS_OWNER_MAILBOX")
+
+    def test_compact_row_omits_unseated_owner_and_false_dnr(self) -> None:
+        built = idx.build_index()
+        by_id = {row["id"]: row for row in built["rows"]}
+        composio = idx.compact_row(by_id["composio"])
+        self.assertNotIn("owner", composio)
+        self.assertNotIn("dnr", composio)
+        self.assertEqual(composio["lane"], "ready_to_draft")
+        halo = idx.compact_row(by_id["fuse-halo-ai-vito-strokov"])
+        self.assertTrue(halo["dnr"])
+        self.assertNotIn("owner", halo)
+        self.assertEqual(halo["lane"], "bounced")
+        hold = idx.compact_row(by_id["pcl-ryan-ott"], lane="hold_build")
+        self.assertNotIn("dnr", hold)
+        self.assertNotIn("owner", hold)
 
 
 if __name__ == "__main__":

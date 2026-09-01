@@ -113,6 +113,20 @@ BRIEF_FIELDS = (
     "route_ref",
     "source",
 )
+BRIEF_HEADER_KEYS = frozenset(
+    {
+        "hot",
+        "hold",
+        "sent_dnr",
+        "occupied",
+        "cash_usd",
+        "canonical_crm",
+        "composed_at",
+        "stale_warning",
+        "mailbox",
+    }
+)
+NEEDS_OWNER_MAILBOX = "NEEDS_OWNER_MAILBOX"
 COMPOSE = {
     "website_people_email_book": "external prospects vs seller contacts; drafts only; --send exits 3",
     "smart_outreach": "evidence-bound candidates; does not open a second CRM",
@@ -367,7 +381,17 @@ def compact_lane(row: dict[str, Any]) -> str:
     return str(row.get("role") or "context")
 
 
+def occupied_live_count(rows: list[dict[str, Any]]) -> int:
+    return sum(
+        1
+        for row in rows
+        if row.get("live") and (row.get("owner") or "UNSEATED") != "UNSEATED"
+    )
+
+
 def compact_row(row: dict[str, Any], *, lane: str | None = None) -> dict[str, Any]:
+    owner = row.get("owner") or "UNSEATED"
+    dnr = bool(row.get("dnr"))
     item = {
         "id": row["id"],
         "lane": lane or compact_lane(row),
@@ -375,8 +399,8 @@ def compact_row(row: dict[str, Any], *, lane: str | None = None) -> dict[str, An
         "person": row.get("person"),
         "decision": row.get("decision"),
         "next_action": row.get("next_action"),
-        "dnr": bool(row.get("dnr")),
-        "owner": row.get("owner") or "UNSEATED",
+        "dnr": True if dnr else None,
+        "owner": None if owner == "UNSEATED" else owner,
         "due": row.get("due"),
         "route_ref": row.get("route_ref"),
         "source": compact_source(row),
@@ -402,13 +426,20 @@ def brief_header(
         "hot": int(truth["hot_next_actions"]),
         "hold": int(truth["hold_build_actions"]),
         "sent_dnr": int(truth["sent_awaiting_dnr_actions"]),
+        "occupied": occupied_live_count(built["rows"]),
         "cash_usd": 0,
         "canonical_crm": CANONICAL_CRM,
         "composed_at": composed,
     }
+    mailbox = truth.get("mailbox")
+    if mailbox == NEEDS_OWNER_MAILBOX:
+        header["mailbox"] = NEEDS_OWNER_MAILBOX
     instant = now or dt.datetime.now(dt.timezone.utc)
     if instant - parse_time(composed) > STALE_AFTER:
         header["stale_warning"] = STALE_WARNING
+    extra = set(header) - BRIEF_HEADER_KEYS
+    if extra:
+        raise IndexError_(f"brief header extra keys: {sorted(extra)}")
     _assert_no_pii_in_index_blob(json.dumps(header, sort_keys=True, ensure_ascii=False))
     return header
 
@@ -847,9 +878,9 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
             "list_hold": "python3 host/lm_gtm_index.py hold",
             "list_sent": "python3 host/lm_gtm_index.py sent",
             "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id> [--sources]",
-            "append_event": "python3 host/lm_gtm_index.py append-event --subject <existing-id> --id <new-event-id> --body <text>",
-            "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <name>",
-            "release": "python3 host/lm_gtm_index.py release <subject> --owner <name>",
+            "append_event": 'python3 host/lm_gtm_index.py append-event --subject <id> --id <event> --body "<note>"',
+            "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <you>",
+            "release": "python3 host/lm_gtm_index.py release <subject> --owner <you>",
             "send": "illegal; exits 3",
         },
     }

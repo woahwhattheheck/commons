@@ -11,8 +11,8 @@
   },
   "composed_at": "2026-09-01T02:45:15Z",
   "contract": {
-    "append_event": "python3 host/lm_gtm_index.py append-event --subject <existing-id> --id <new-event-id> --body <text>",
-    "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <name>",
+    "append_event": "python3 host/lm_gtm_index.py append-event --subject <id> --id <event> --body \"<note>\"",
+    "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <you>",
     "list_brief": "python3 host/lm_gtm_index.py brief",
     "list_hold": "python3 host/lm_gtm_index.py hold",
     "list_hot": "python3 host/lm_gtm_index.py hot",
@@ -21,7 +21,7 @@
     "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id> [--sources]",
     "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
     "read_state": "revenue/lm_gtm_index/state.json",
-    "release": "python3 host/lm_gtm_index.py release <subject> --owner <name>",
+    "release": "python3 host/lm_gtm_index.py release <subject> --owner <you>",
     "send": "illegal; exits 3"
   },
   "does_not_create": [

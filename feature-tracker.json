@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 68
+    "TESTED": 70
   },
   "features": [
     {
@@ -1957,6 +1957,65 @@
         "revenue/lm_gtm_index/README.md",
         "p/lm-gtm-agent-brief-20260831-01.md",
         "p/lm-gtm-floor-sync-20260831-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_index.py",
+        "host/lm_gtm_index.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Agent-usability leftover on the existing LLM-native GTM composer: positional claim/release/append-event contract strings, compact_row omits UNSEATED owner and false dnr, brief header occupied count plus optional NEEDS_OWNER_MAILBOX. Not a second CRM.",
+      "carrier": "GROK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-contract-brief-20260901-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "test_lm_gtm_index.py",
+        "revenue/lm_gtm_index/INDEX.jsonl",
+        "revenue/lm_gtm_index/state.json",
+        "lm-gtm-index.html",
+        "p/lm-gtm-contract-brief-20260901-01.md"
+      ],
+      "dependencies": [
+        "lm-gtm-truth-sync-20260831-02"
+      ],
+      "evidence_ids": [],
+      "file": "lm-gtm-contract-brief-20260901-01.json",
+      "id": "lm-gtm-contract-brief-20260901-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "LLM-native GTM contract and compact brief",
+      "next_gap": "Owner mailbox still required for live send. Agents do not contact Cheri or submit Bid 1421. Do not resend BOUNCED or SENT-DNR. Do not mint a second CRM.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "p/lm-gtm-contract-brief-20260901-01.md",
+        "p/lm-gtm-truth-sync-20260831-02.md"
       ],
       "rollup": "TESTED",
       "source_status": "SOURCE_BUILT",
@@ -4080,6 +4139,68 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Ward Laboratories feed/forage form to NIRS intake validator: 400 synthetic submissions accession 320 READY rows with exact NIRS/WET_CHEM routing (240/80), hold 80 with predetermined codes (missing ID/analysis, desc/calibration conflict, duplicate bag, insufficient prep, time window), open worksheets only for READY, persist source coordinates/hashes, deny autonomous release, and replay with zero new accessions or worksheets. Adapters stay simulated/read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ward_feed_nirs_intake_validator.py",
+        "test_ward_feed_nirs_intake_validator.py",
+        "ward-feed-nirs-intake-validator-lims.html",
+        "revenue/ward_feed_nirs_intake_validator/contract.json",
+        "revenue/ward_feed_nirs_intake_validator/fixture.json",
+        "revenue/ward_feed_nirs_intake_validator/receipt.json",
+        "revenue/ward_feed_nirs_intake_validator/receipt.md",
+        "p/ward-feed-nirs-intake-validator-lims-01.md",
+        "features/registry/ward-feed-nirs-intake-validator-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ward_feed_nirs_intake_validator.py",
+        "test_ward_feed_nirs_intake_validator.py",
+        "ward-feed-nirs-intake-validator-lims.html",
+        "revenue/ward_feed_nirs_intake_validator/contract.json",
+        "revenue/ward_feed_nirs_intake_validator/fixture.json",
+        "revenue/ward_feed_nirs_intake_validator/receipt.json",
+        "revenue/ward_feed_nirs_intake_validator/receipt.md",
+        "p/ward-feed-nirs-intake-validator-lims-01.md",
+        "features/registry/ward-feed-nirs-intake-validator-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ward-feed-nirs-intake-validator-lims-01.json",
+      "id": "ward-feed-nirs-intake-validator-lims-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Ward feed/forage NIRS intake validator LIMS",
+      "next_gap": "Buyer-owned form schema, live NIRS calibration library, and de-identified golden instrument files after synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "ward-feed-nirs-intake-validator-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ward-feed-nirs-intake-validator-lims.html",
+        "revenue/ward_feed_nirs_intake_validator/contract.json",
+        "p/ward-feed-nirs-intake-validator-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_ward_feed_nirs_intake_validator.py",
+        "ward_feed_nirs_intake_validator.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Explee-style website to people to email to booked-call loop. Website is the seed. Drafts only. Live send waits on owner mailbox. Calls booked stay zero without a live calendar write.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -4392,7 +4513,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 74,
+  "n_features": 76,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
