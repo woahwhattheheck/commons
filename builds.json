@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 13,
+ "n_open_prs": 9,
  "open_prs": [
   {
    "number": 7012,
@@ -359,22 +359,6 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7012",
    "base_freshness": {
     "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7296,
-   "author": "woahwhattheheck",
-   "title": "Campoly sample-to-report lineage LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7296",
-   "base_freshness": {
-    "base_sha": "2f89009900036c4a4ad1fd21c3953c1db008c313",
     "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
     "ahead_by": null,
     "behind_by": null,
@@ -449,38 +433,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7021,
-   "author": "woahwhattheheck",
-   "title": "Denton bacteriology acceptance + reporting LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7021",
-   "base_freshness": {
-    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7299,
-   "author": "woahwhattheheck",
-   "title": "Add KC Water phased laboratory relocation LIMS fixture",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7299",
-   "base_freshness": {
-    "base_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
-    "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 7312,
    "author": "woahwhattheheck",
    "title": "APL FDA polymer compliance dossier LIMS (apl-fda-polymer-compliance-dossier-lims-01)",
@@ -541,22 +493,6 @@
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7015,
-   "author": "woahwhattheheck",
-   "title": "BevSource lab pilot QA genealogy LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
-   "base_freshness": {
-    "base_sha": "3bb5154493efdbaf0670f217fe24fe1139eb1873",
-    "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
