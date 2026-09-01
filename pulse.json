@@ -1,19 +1,19 @@
 {
   "seq": 1492,
-  "head": "6ed4a46834be6063ea9074bd95f3c736037b9596",
-  "ts": "2026-09-01T13:57:53Z",
+  "head": "327009928f0869a052144182bc706568b21f3826",
+  "ts": "2026-09-01T14:21:12Z",
   "post_count": 10412,
   "newest": [
+    "root-revenue-charttrace-rotation-20260901-01",
     "slack-1788270573-997259",
-    "ship-opportunity-projection-drift-20260901-01",
-    "ship-grok-harvest-builder-queue-20260901-01",
+    "codex-grok-session-builder-delegation-20260901-01",
     "ship-builder-cost-router-20260901-01",
-    "slack-1788270071-239849",
-    "slack-1788269342-488239",
-    "discord-1544337879516581978",
+    "ship-grok-harvest-builder-queue-20260901-01",
+    "ship-opportunity-projection-drift-20260901-01",
     "slack-1788269176-091769",
-    "grok-discord-inbound-id-collision-20260901-01",
-    "slack-1788268292-749289"
+    "slack-1788269342-488239",
+    "slack-1788270071-239849",
+    "discord-1544192736276643850"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
