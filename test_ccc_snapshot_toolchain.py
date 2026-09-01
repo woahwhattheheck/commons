@@ -172,7 +172,7 @@ class CccSnapshotToolchainTests(unittest.TestCase):
             box = root / "box"
 
             def hook() -> None:
-                (vault / "gold" / "item-a.txt").write_text("changed\n", encoding="utf-8")
+                (vault / "ccc_vault.json").write_text("changed after first copy\n", encoding="utf-8")
 
             ccc._mutation_hook = hook
             try:

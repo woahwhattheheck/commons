@@ -25,6 +25,7 @@ Product:
 
 Named counts (this land):
 - synthetic vault gold files: 3
+- synthetic vault bytes: 233
 - happy plan+snapshot+verify: PASS, copied=3
 - adversarial fail-closed: 14/14 (manifest_mismatch, link_escape, isolation_drift, source_mutation, write_back, peer_read, egress, leakage_markers, cage_crosstalk, false_completion_token_burn, shared_claude, dest_reuse, source_dest_alias, unverified_isolation)
 - cash_usd=0, outreach=0

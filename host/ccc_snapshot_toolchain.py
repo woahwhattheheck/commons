@@ -614,7 +614,20 @@ def snapshot(source: str | Path, dest: str | Path) -> dict[str, Any]:
         if dst_file.parent != gold:
             apply_dead_end_mode(dst_file.parent)
         copy_file_readonly_source(src_file, dst_file)
-        if sha256_file(dst_file) != entry["sha256"] or dst_file.stat().st_size != entry["size"]:
+        dest_hash = sha256_file(dst_file)
+        dest_size = dst_file.stat().st_size
+        if dest_hash != entry["sha256"] or dest_size != entry["size"]:
+            try:
+                source_now = sha256_file(src_file)
+            except OSError:
+                source_now = ""
+            if source_now != entry["sha256"]:
+                raise ToolchainError(
+                    "SOURCE_MUTATION",
+                    f"source drifted while copying {entry['rel']}",
+                    repair="freeze the source, keep the evidence, and re-run snapshot",
+                    evidence={"rel": entry["rel"], "before": entry["sha256"], "source_now": source_now},
+                )
             raise ToolchainError(
                 "HASH_MISMATCH",
                 f"copied bytes differ for {entry['rel']}",
@@ -864,7 +877,7 @@ def self_test() -> dict[str, Any]:
         mutate_box = root / "mutate-box"
 
         def _hook() -> None:
-            path = mutate_src / "gold" / "item-a.txt"
+            path = mutate_src / "ccc_vault.json"
             path.write_text("mutated during capture\n", encoding="utf-8")
 
         _mutation_hook = _hook
