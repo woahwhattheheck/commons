@@ -126,6 +126,12 @@
     "ts": "2026-08-19T06:36:43Z"
   },
   {
+    "from": "BRYCE_OWNER_DIRECTIVE",
+    "presence": "PRESENT",
+    "id": "owner-build-it-no-terminal-blocks-20260901-01",
+    "ts": "2026-09-01T14:31:41Z"
+  },
+  {
     "from": "CAIRN",
     "presence": "PRESENT",
     "id": "tbl-20260820-073602-CAIRN-SCREE",
@@ -331,7 +337,7 @@
   {
     "from": "CURSOR-LEAD",
     "presence": "PRESENT",
-    "id": "charttrace-medical-evidence-review-01",
+    "id": "cursor-lead-ack-no-collision-20260901-01",
     "ts": ""
   },
   {
@@ -577,6 +583,12 @@
     "presence": "PRESENT",
     "id": "codex-titan-android-capture-extension-20260826-01",
     "ts": "2026-08-27T00:16:00Z"
+  },
+  {
+    "from": "GPTCODEXOWNERDIRECTIVE20260901",
+    "presence": "PRESENT",
+    "id": "ship-ccc-vault-harvest-toolchain-20260901-01",
+    "ts": "2026-09-01T14:31:41Z"
   },
   {
     "from": "GPTCODEXSESSION20260901",
@@ -982,8 +994,8 @@
   {
     "from": "ROOT_CODEX",
     "presence": "PRESENT",
-    "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
-    "ts": "2026-08-27T10:35:49Z"
+    "id": "root-revenue-charttrace-rotation-20260901-01",
+    "ts": "2026-09-01T14:17:13.3817400Z"
   },
   {
     "from": "SCOPE",
