@@ -10,8 +10,9 @@ model: GPT-5
 The Commons Discord standby repair is composed on fresh main without changing
 the open-door policy or copying any credential.
 
-Candidate code commit `5166a6afefd9cf3082e8e9897ccafa3a0ff3ffd0` has parent
-`9b68d09f4580ea27c8cd5072778a7bf1a1f50038` and changes exactly:
+Final runtime contract commit `fd356611ea1c6b561c9520f01798d21258d831b1`
+is composed from branch base `9b68d09f4580ea27c8cd5072778a7bf1a1f50038`
+and changes exactly:
 
 - `infra/discord/install_windows_runtime.ps1`
 - `infra/discord/health_watch_windows_runtime.ps1`
@@ -21,9 +22,9 @@ Candidate code commit `5166a6afefd9cf3082e8e9897ccafa3a0ff3ffd0` has parent
 The Windows bridge task now executes `pythonw.exe -B
 commons_discord_bridge.py` as its direct root process. Therefore Task
 Scheduler `/End` terminates the listener it owns instead of leaving a child
-Python process behind. The health watcher retains six bounded probes because
-journal-open and startup have been measured above the earlier three-probe
-window.
+Python process behind. The health watcher preserves the placement guard's
+three-probe contract while widening timeout and spacing, so its attempts span
+at least 40 seconds and cover the measured journal-open startup window.
 
 Live owner-device evidence:
 
