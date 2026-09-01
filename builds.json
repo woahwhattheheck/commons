@@ -497,10 +497,10 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7295,
+   "number": 7299,
    "author": "woahwhattheheck",
-   "title": "caliper-slack-relay-adapter-01: Slack dest adapter for uncredentialed local bridges",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7295",
+   "title": "Add KC Water phased laboratory relocation LIMS fixture",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7299",
    "base_freshness": {
     "base_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
     "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
@@ -513,16 +513,16 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7299,
+   "number": 7312,
    "author": "woahwhattheheck",
-   "title": "Add KC Water phased laboratory relocation LIMS fixture",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7299",
+   "title": "APL FDA polymer compliance dossier LIMS (apl-fda-polymer-compliance-dossier-lims-01)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7312",
    "base_freshness": {
-    "base_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
+    "base_sha": "6aa6bbe31d76ed51e00b194ebc4dec06ed03a469",
     "main_sha": "392e8f99d374ca1f03740daf7f29eeae092576a2",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
    "road": "pr",
