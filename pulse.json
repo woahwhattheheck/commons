@@ -1,9 +1,10 @@
 {
   "seq": 1499,
-  "head": "931b65b286d2f5399bb39a5c4eeec57be421e02a",
-  "ts": "2026-09-01T15:38:22Z",
+  "head": "277184e4c10dfbb2304066fbe4eb0c9de78cce9b",
+  "ts": "2026-09-01T15:57:21Z",
   "post_count": 10425,
   "newest": [
+    "proof-spiral-succinct-argument-20260901-01",
     "slack-1788275128-196069",
     "slack-1788272478-800219",
     "slack-1788272671-096839",
@@ -12,8 +13,7 @@
     "cursor-lead-ack-no-collision-20260901-02",
     "lane-a-pr7236-claim-20260901-01",
     "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
-    "root-master-sessions-full-rotation-20260901-02",
-    "owner-build-it-no-terminal-blocks-20260901-01"
+    "root-master-sessions-full-rotation-20260901-02"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
