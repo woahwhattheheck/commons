@@ -14,9 +14,11 @@ from __future__ import annotations
 
 import argparse
 import csv
+from datetime import datetime, timezone
 import hashlib
 import io
 import json
+import re
 from copy import deepcopy
 from pathlib import Path
 from typing import Any, Iterable
@@ -25,6 +27,10 @@ DEMAND_ID = "sc-labs-multistate-coa-rule-version-gate-01"
 SCHEMA = "commons-sc-labs-multistate-coa-rule-version-gate/v1"
 BUYER = "SC Labs / Ryan DeCurtis"
 TRUTH_GATE = "HOLD / BUILD-AND-VERIFY"
+EVALUATION_TIME = "2026-09-01T00:00:00Z"
+RULE_PACK_EXPIRES_AT = "2027-09-01T00:00:00Z"
+SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
+RESERVED_REVIEWERS = {"AUTONOMOUS", "MODEL", "SYSTEM"}
 
 REASON_CODES = (
     "RULE_VERSION_EXPIRED",
@@ -98,6 +104,7 @@ CSV_FIELDS = (
     "collection_at",
     "custody_events",
     "rule_pack_version",
+    "rule_pack_expires_at",
     "requested_panel",
     "method_version",
     "loq",
@@ -107,6 +114,10 @@ CSV_FIELDS = (
     "result_sha256",
     "synthetic",
 )
+
+
+class ManifestConflict(ValueError):
+    """An existing evidence manifest is not an immutable history prefix."""
 
 
 def _canonical(value: Any) -> str:
@@ -125,6 +136,18 @@ def sha256_hex(value: Any) -> str:
 
 def _text(value: Any) -> str:
     return str("" if value is None else value).strip()
+
+
+def parse_utc(value: Any) -> datetime | None:
+    if not isinstance(value, str) or not value.endswith("Z"):
+        return None
+    try:
+        parsed = datetime.fromisoformat(value[:-1] + "+00:00")
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        return None
+    return parsed.astimezone(timezone.utc)
 
 
 def _base_record(index: int) -> dict[str, Any]:
@@ -151,6 +174,7 @@ def _base_record(index: int) -> dict[str, Any]:
             "RECEIVED@2026-08-20T16:00:00Z",
         ],
         "rule_pack_version": rule["version"],
+        "rule_pack_expires_at": RULE_PACK_EXPIRES_AT,
         "requested_panel": rule["panel"],
         "method_version": rule["method"],
         "loq": rule["loq"],
@@ -167,6 +191,7 @@ def _exception_record(index: int) -> dict[str, Any]:
     row = _base_record(index)
     if index <= 125:
         row["rule_pack_version"] = f"{row['jurisdiction']}-2025.0"
+        row["rule_pack_expires_at"] = "2026-01-01T00:00:00Z"
         row["exception_type"] = "RULE_VERSION_EXPIRED"
     elif index <= 130:
         other = next(
@@ -227,6 +252,7 @@ def normalize_record(row: dict[str, Any]) -> dict[str, Any]:
         "collection_at": _text(row.get("collection_at")),
         "custody_events": [_text(item) for item in custody],
         "rule_pack_version": _text(row.get("rule_pack_version")),
+        "rule_pack_expires_at": _text(row.get("rule_pack_expires_at")),
         "requested_panel": _text(row.get("requested_panel")),
         "method_version": _text(row.get("method_version")),
         "loq": _text(row.get("loq")),
@@ -238,13 +264,40 @@ def normalize_record(row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def custody_is_complete(events: list[str]) -> bool:
+    names: list[str] = []
+    timestamps: list[datetime] = []
+    for event in events:
+        name, separator, timestamp = event.partition("@")
+        observed = parse_utc(timestamp)
+        if not separator or observed is None:
+            return False
+        names.append(name)
+        timestamps.append(observed)
+    try:
+        positions = [names.index(name) for name in ("COLLECTED", "TRANSFERRED", "RECEIVED")]
+    except ValueError:
+        return False
+    return positions == sorted(positions) and timestamps == sorted(timestamps)
+
+
 def classify_record(
-    row: dict[str, Any], *, seen_samples: set[str], seen_coas: set[str]
+    row: dict[str, Any],
+    *,
+    seen_samples: set[str],
+    seen_coas: set[str],
+    evaluated_at: datetime,
 ) -> str | None:
     if row["sample_id"] in seen_samples or row["coa_id"] in seen_coas:
         return "DUPLICATE_RELEASE_ID"
     rule = RULE_PACKS.get(row["jurisdiction"])
-    if rule is None or row["rule_pack_version"] != rule["version"]:
+    expires_at = parse_utc(row["rule_pack_expires_at"])
+    if (
+        rule is None
+        or row["rule_pack_version"] != rule["version"]
+        or expires_at is None
+        or expires_at < evaluated_at
+    ):
         return "RULE_VERSION_EXPIRED"
     if row["requested_panel"] != rule["panel"] or row["matrix"] != rule["matrix"]:
         return "PANEL_NOT_VALID_FOR_JURISDICTION"
@@ -254,24 +307,25 @@ def classify_record(
         or row["reporting_limit"] != rule["reporting_limit"]
     ):
         return "METHOD_LIMIT_MISMATCH"
-    required_custody = ("COLLECTED@", "TRANSFERRED@", "RECEIVED@")
-    if not all(
-        any(event.startswith(prefix) for event in row["custody_events"])
-        for prefix in required_custody
-    ):
+    if not custody_is_complete(row["custody_events"]):
         return "CUSTODY_GAP"
     if (
         row["accreditation_scope"] != rule["scope"]
         or row["final_coa_signer"] != rule["signer"]
     ):
         return "SCOPE_OR_SIGNER_MISMATCH"
-    if not row["synthetic"] or len(row["result_sha256"]) != 64:
+    if not row["synthetic"] or not SHA256_RE.fullmatch(row["result_sha256"]):
         return "METHOD_LIMIT_MISMATCH"
     return None
 
 
-def validate_records(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
+def validate_records(
+    records: Iterable[dict[str, Any]], *, evaluation_time: str = EVALUATION_TIME
+) -> dict[str, Any]:
     """Validate records in order and produce deterministic evidence outputs."""
+    evaluated_at = parse_utc(evaluation_time)
+    if evaluated_at is None:
+        raise ValueError("evaluation_time must be ISO-8601 UTC ending in Z")
     seen_samples: set[str] = set()
     seen_coas: set[str] = set()
     decisions: list[dict[str, Any]] = []
@@ -284,7 +338,10 @@ def validate_records(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
         # artifact writer for transport-level provenance.
         source_sha = normalized_sha
         reason = classify_record(
-            row, seen_samples=seen_samples, seen_coas=seen_coas
+            row,
+            seen_samples=seen_samples,
+            seen_coas=seen_coas,
+            evaluated_at=evaluated_at,
         )
         decision = {
             "record_id": row["record_id"],
@@ -331,6 +388,7 @@ def validate_records(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
         "demand_id": DEMAND_ID,
         "buyer": BUYER,
         "truth_gate": TRUTH_GATE,
+        "evaluated_at": evaluation_time,
         "input_records": len(decisions),
         "releaseable": releaseable,
         "held": held,
@@ -373,8 +431,10 @@ def append_override(
     reviewer = _text(reviewer)
     reason = _text(reason)
     timestamp = _text(timestamp)
-    if not reviewer or not reason or not timestamp:
-        raise ValueError("reviewer, reason, and timestamp are required")
+    if not reviewer or reviewer.upper() in RESERVED_REVIEWERS:
+        raise ValueError("named human reviewer metadata is missing")
+    if not reason or parse_utc(timestamp) is None:
+        raise ValueError("override reason and UTC timestamp are missing")
     previous_hash = sha256_hex(history[-1]) if history else ""
     entry = {
         "seq": len(history) + 1,
@@ -401,7 +461,11 @@ def record_human_release(
     """Record a human decision; validation output itself remains unchanged."""
     reviewer = _text(reviewer)
     timestamp = _text(timestamp)
-    if not reviewer or not timestamp:
+    if (
+        not reviewer
+        or reviewer.upper() in RESERVED_REVIEWERS
+        or parse_utc(timestamp) is None
+    ):
         return {"ok": False, "code": "NAMED_HUMAN_REQUIRED"}
     if decision.get("status") == "HOLD":
         matching = [
@@ -445,12 +509,7 @@ def records_from_csv(text: str) -> list[dict[str, Any]]:
 
 
 def records_to_json(records: Iterable[dict[str, Any]]) -> str:
-    return json.dumps(
-        [normalize_record(row) for row in records],
-        indent=2,
-        sort_keys=True,
-        ensure_ascii=True,
-    ) + "\n"
+    return _canonical([normalize_record(row) for row in records]) + "\n"
 
 
 def records_from_json(text: str) -> list[dict[str, Any]]:
@@ -527,20 +586,36 @@ def pass_contract(result: dict[str, Any]) -> list[str]:
     return failures
 
 
-def write_artifacts(directory: Path, records: list[dict[str, Any]]) -> dict[str, Any]:
-    result = validate_records(records)
+def write_artifacts(
+    directory: Path,
+    records: list[dict[str, Any]],
+    *,
+    evaluation_time: str = EVALUATION_TIME,
+) -> dict[str, Any]:
+    result = validate_records(records, evaluation_time=evaluation_time)
     directory.mkdir(parents=True, exist_ok=True)
     artifacts = {
         "fixture.csv": records_to_csv(records),
         "fixture.json": records_to_json(records),
         "decisions.csv": decisions_to_csv(result["decisions"]),
-        "decisions.json": json.dumps(result["decisions"], indent=2, sort_keys=True) + "\n",
-        "evidence-manifest.json": json.dumps(
-            result["evidence_manifest"], indent=2, sort_keys=True
-        )
-        + "\n",
+        "decisions.json": _canonical(result["decisions"]) + "\n",
+        "evidence-manifest.json": _canonical(result["evidence_manifest"]) + "\n",
         "exception-report.txt": result["exception_report"],
     }
+    manifest_path = directory / "evidence-manifest.json"
+    if manifest_path.exists():
+        try:
+            existing_manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            raise ManifestConflict("existing evidence manifest is unreadable") from exc
+        requested_manifest = result["evidence_manifest"]
+        if (
+            not isinstance(existing_manifest, list)
+            or existing_manifest != requested_manifest[: len(existing_manifest)]
+        ):
+            raise ManifestConflict(
+                "existing evidence manifest is not an immutable history prefix"
+            )
     for name, body in artifacts.items():
         (directory / name).write_text(body, encoding="utf-8", newline="")
     return {
@@ -566,12 +641,17 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, help="normalized/redacted CSV or JSON")
     parser.add_argument("--write-artifacts", type=Path, help="output directory")
+    parser.add_argument("--evaluation-time", default=EVALUATION_TIME)
     args = parser.parse_args(argv)
     records = _load_input(args.input) if args.input else build_acceptance_fixture()
-    result = validate_records(records)
+    result = validate_records(records, evaluation_time=args.evaluation_time)
     failures = pass_contract(result) if not args.input else []
     written = (
-        write_artifacts(args.write_artifacts, records)
+        write_artifacts(
+            args.write_artifacts,
+            records,
+            evaluation_time=args.evaluation_time,
+        )
         if args.write_artifacts
         else None
     )

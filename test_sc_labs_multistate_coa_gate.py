@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 import tempfile
 import unittest
 from copy import deepcopy
@@ -44,6 +46,39 @@ class ScLabsMultistateCoaGateTests(unittest.TestCase):
         self.assertTrue(all(row["reason_code"] in gate.REASON_CODES for row in held))
         self.assertTrue(all(row["reason_code"] == "" for row in releaseable))
         self.assertTrue(all(not row["autonomous_release"] for row in result["decisions"]))
+
+    def test_rule_pack_expiry_uses_an_explicit_evaluation_clock(self) -> None:
+        row = gate.build_acceptance_fixture()[0]
+        before = gate.validate_records(
+            [row], evaluation_time="2027-08-31T23:59:59Z"
+        )
+        after = gate.validate_records(
+            [row], evaluation_time="2027-09-01T00:00:01Z"
+        )
+        self.assertEqual(before["decisions"][0]["status"], "RELEASEABLE")
+        self.assertEqual(after["decisions"][0]["status"], "HOLD")
+        self.assertEqual(
+            after["decisions"][0]["reason_code"], "RULE_VERSION_EXPIRED"
+        )
+
+    def test_custody_events_must_be_timestamped_and_ordered(self) -> None:
+        row = deepcopy(gate.build_acceptance_fixture()[0])
+        row["custody_events"][1], row["custody_events"][2] = (
+            row["custody_events"][2],
+            row["custody_events"][1],
+        )
+        result = gate.validate_records([row])
+        self.assertEqual(result["decisions"][0]["status"], "HOLD")
+        self.assertEqual(result["decisions"][0]["reason_code"], "CUSTODY_GAP")
+
+    def test_result_hash_must_be_lowercase_hex_not_only_length_64(self) -> None:
+        row = deepcopy(gate.build_acceptance_fixture()[0])
+        row["result_sha256"] = "z" * 64
+        result = gate.validate_records([row])
+        self.assertEqual(result["decisions"][0]["status"], "HOLD")
+        self.assertEqual(
+            result["decisions"][0]["reason_code"], "METHOD_LIMIT_MISMATCH"
+        )
 
     def test_csv_and_json_round_trip_to_identical_decisions(self) -> None:
         source = gate.build_acceptance_fixture()
@@ -107,6 +142,22 @@ class ScLabsMultistateCoaGateTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             gate.append_override(
                 [], hold, reviewer="reviewer", reason="", timestamp="2026-09-01T00:00:00Z"
+            )
+        with self.assertRaises(ValueError):
+            gate.append_override(
+                [],
+                hold,
+                reviewer="AUTONOMOUS",
+                reason="documented",
+                timestamp="2026-09-01T00:00:00Z",
+            )
+        with self.assertRaises(ValueError):
+            gate.append_override(
+                [],
+                hold,
+                reviewer="named-reviewer",
+                reason="documented",
+                timestamp="yesterday",
             )
         original: list[dict[str, object]] = []
         updated = gate.append_override(
@@ -179,6 +230,43 @@ class ScLabsMultistateCoaGateTests(unittest.TestCase):
                     (Path(first_dir) / name).read_bytes(),
                     (Path(second_dir) / name).read_bytes(),
                 )
+
+    def test_artifact_writer_rejects_manifest_rewrite_before_other_outputs(self) -> None:
+        rows = gate.build_acceptance_fixture()
+        with tempfile.TemporaryDirectory() as output_dir:
+            output = Path(output_dir)
+            gate.write_artifacts(output, rows)
+            before = {
+                path.name: path.read_bytes()
+                for path in sorted(output.iterdir())
+                if path.is_file()
+            }
+            changed = deepcopy(rows)
+            changed[0]["coa_id"] = "SC-COA-REWRITTEN"
+            with self.assertRaises(gate.ManifestConflict):
+                gate.write_artifacts(output, changed)
+            after = {
+                path.name: path.read_bytes()
+                for path in sorted(output.iterdir())
+                if path.is_file()
+            }
+            self.assertEqual(before, after)
+
+    def test_versioned_hardening_receipt_hashes_match_artifacts(self) -> None:
+        pack = (
+            Path(__file__).resolve().parent
+            / "revenue"
+            / "sc_labs_multistate_coa_gate"
+            / "v2"
+        )
+        receipt = json.loads((pack / "receipt.json").read_text(encoding="utf-8"))
+        self.assertEqual(receipt["state"], "TESTED")
+        self.assertEqual(receipt["input_records"], 150)
+        self.assertEqual(receipt["releaseable"], 120)
+        self.assertEqual(receipt["held"], 30)
+        for name, expected in receipt["artifact_sha256"].items():
+            actual = hashlib.sha256((pack / name).read_bytes()).hexdigest()
+            self.assertEqual(actual, expected, name)
 
     def test_no_result_alteration_source_mutation_or_live_interface(self) -> None:
         result = gate.validate_records(gate.build_acceptance_fixture())
