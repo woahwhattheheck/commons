@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 73
+    "TESTED": 74
   },
   "features": [
     {
@@ -843,6 +843,66 @@
       "test_paths": [
         "test_baddl_eia_accession_release.py",
         "baddl_eia_accession_release.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "BevSource lab pilot QA genealogy LIMS: a frozen 60-run synthetic runner stages 45 formula-to-lot-to-batch-to-package RELEASE_REVIEW records; holds 15 exact wrong-version, missing-lot, liner, and microbiology defects without output; keeps zero orphan or duplicate links; reproduces identical replay hashes; and requires named-human release.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "bevsource_lab_pilot_qa_genealogy_lims.py",
+        "test_bevsource_lab_pilot_qa_genealogy_lims.py",
+        "bevsource-lab-pilot-qa-genealogy-lims.html",
+        "revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json",
+        "revenue/bevsource_lab_pilot_qa_genealogy_lims/README.md",
+        "revenue/bevsource_lab_pilot_qa_genealogy_lims/runner.py",
+        "p/bevsource-lab-pilot-qa-genealogy-lims-01.md",
+        "features/registry/bevsource-lab-pilot-qa-genealogy-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "bevsource_lab_pilot_qa_genealogy_lims.py",
+        "test_bevsource_lab_pilot_qa_genealogy_lims.py",
+        "bevsource-lab-pilot-qa-genealogy-lims.html",
+        "revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json",
+        "revenue/bevsource_lab_pilot_qa_genealogy_lims/README.md",
+        "revenue/bevsource_lab_pilot_qa_genealogy_lims/runner.py",
+        "p/bevsource-lab-pilot-qa-genealogy-lims-01.md",
+        "features/registry/bevsource-lab-pilot-qa-genealogy-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "bevsource-lab-pilot-qa-genealogy-lims-01.json",
+      "id": "bevsource-lab-pilot-qa-genealogy-lims-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "BevSource lab pilot QA genealogy",
+      "next_gap": "Next measurement: buyer-controlled formula, lot, batch, and package golden files after the synthetic PASS. Until measured, this remains synthetic with no live integration, production claim, or outreach. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "bevsource-lab-pilot-qa-genealogy-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "bevsource-lab-pilot-qa-genealogy-lims.html",
+        "revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json",
+        "p/bevsource-lab-pilot-qa-genealogy-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_bevsource_lab_pilot_qa_genealogy_lims.py",
+        "bevsource_lab_pilot_qa_genealogy_lims.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -4704,7 +4764,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 79,
+  "n_features": 80,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
