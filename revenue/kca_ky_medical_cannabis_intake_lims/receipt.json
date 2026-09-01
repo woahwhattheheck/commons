@@ -1,0 +1,24 @@
+{
+  "audit_sha256": "ce6a26b22419fc3e8bd442d921523a4a76b0f23bd089cd31915130027fb5ca6e",
+  "buyer": "KCA Laboratories / Richard Sams",
+  "demand_id": "kca-ky-medical-cannabis-intake-lims-01",
+  "fixture_sha256": "7234ab330731c40b8b72836c12557279c92b06948baeaf0db67d3cfea16e94e8",
+  "hold_counts": {
+    "HOLD_COC_PHYSICAL_MISMATCH": 5,
+    "HOLD_DUPLICATE_ID": 5,
+    "HOLD_INVALID_OR_MISSING_LICENSE": 10,
+    "HOLD_PARTNER_PROVENANCE_GAP": 5
+  },
+  "holds": 25,
+  "input_rows": 100,
+  "manifest_sha256": "2d7d84599f00d6a8366d2f294439a815d8f94464544f381ce5e8e47d12392951",
+  "matched_prospect": "Jonathan Thompson",
+  "pre_sale_transport": "NONE",
+  "ready": 75,
+  "replay_additions": 0,
+  "coas_released": 0,
+  "draft_coas_staged": 75,
+  "state": "TESTED",
+  "test_command": "python test_kca_ky_medical_cannabis_intake_lims.py",
+  "truth_gate": "HOLD / BUILD-AND-VERIFY"
+}
