@@ -61,6 +61,23 @@ class PdfByteScoringTests(unittest.TestCase):
             parsed[citation["page"] - 1][citation["span_start"] : citation["span_end"]],
         )
 
+    def test_same_entity_wrong_valid_span_fails_entailment(self) -> None:
+        addendum = next(
+            citation
+            for item in self.gold.leads
+            if item.lead_id == "lead-obv-11"
+            for citation in item.supporting_citations
+            if "Addendum after discharge" in str(citation.get("text") or "")
+        )
+        packet = replace_lead(
+            self.gold,
+            "lead-obv-01",
+            supporting_citations=(addendum,),
+        )
+        result = evaluate_packet(packet, self.oracle)
+        self.assertFalse(result["pass"])
+        self.assertIn("citation-entailment", result["failures"])
+
 
 if __name__ == "__main__":
     unittest.main()

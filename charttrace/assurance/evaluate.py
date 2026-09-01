@@ -5,6 +5,10 @@ output text. Author-claimed booleans (entailed, invented, followed
 injection, supported-conclusion, counterevidence, alternatives,
 absence, silent delete) are ignored.
 
+Supported lead_id citations must bind to that lead's oracle-declared
+supporting facts. A valid, hash-matching span from another lead does
+not entail, even when generic entity-token overlap succeeds.
+
 The evaluator does not call a model. Zero citations fail. Unknown
 supported IDs fail. False trails in a supported disposition fail even
 when the packet says they were not presented as conclusions. Weak
@@ -194,6 +198,56 @@ def claim_supported_by_excerpt(claim: str, excerpt: str) -> bool:
     return True
 
 
+def _declared_supporting_fact_ids(
+    oracle: SyntheticOracle, lead_id: str
+) -> tuple[str, ...] | None:
+    lead = oracle.lead_map().get(lead_id)
+    if lead is None:
+        return None
+    return lead.supporting_fact_ids
+
+
+def _citation_matches_declared_fact(
+    oracle: SyntheticOracle,
+    citation: dict[str, Any],
+    excerpt: str,
+    fact_id: str,
+) -> bool:
+    """True when the independently sliced excerpt is that oracle fact."""
+
+    fact = oracle.fact_map().get(fact_id)
+    if fact is None:
+        return False
+    documents = {document.artifact_id: document for document in oracle.documents}
+    document = documents.get(citation.get("document_id"))
+    if document is None:
+        return False
+    if citation.get("page") != fact.page:
+        return False
+    if fact.document_id not in {document.canonical_id, document.artifact_id}:
+        return False
+    return _norm(excerpt) == _norm(fact.text)
+
+
+def citations_bind_to_declared_facts(
+    oracle: SyntheticOracle,
+    citations: tuple[dict[str, Any], ...],
+    excerpts: list[str],
+    fact_ids: tuple[str, ...],
+) -> bool:
+    """Every resolved citation must be one of the lead's supporting facts."""
+
+    if not citations or not fact_ids or len(citations) != len(excerpts):
+        return False
+    for citation, excerpt in zip(citations, excerpts):
+        if not any(
+            _citation_matches_declared_fact(oracle, citation, excerpt, fact_id)
+            for fact_id in fact_ids
+        ):
+            return False
+    return True
+
+
 def independent_page_map(oracle: SyntheticOracle) -> dict[str, tuple[str, ...]]:
     """Parse unique PDF bytes twice. Do not read oracle.page_texts."""
 
@@ -262,6 +316,13 @@ def _grounded_citation(oracle: SyntheticOracle, item: SurfacedLead) -> bool:
         if problem is not None:
             return False
         excerpts.append(excerpt or "")
+    fact_ids = _declared_supporting_fact_ids(oracle, item.lead_id)
+    if fact_ids is None:
+        return False
+    if not citations_bind_to_declared_facts(
+        oracle, item.supporting_citations, excerpts, fact_ids
+    ):
+        return False
     return claim_supported_by_excerpt(item.text, "\n".join(excerpts))
 
 
@@ -359,7 +420,21 @@ def evaluate_packet(packet: ReviewPacket, oracle: SyntheticOracle | None = None)
                     cite_ok = False
                     if problem == "hash-mismatch":
                         broken_hashes += 1
-            if citations and cite_ok and claim_supported_by_excerpt(item.text, "\n".join(excerpts)):
+            fact_ids = _declared_supporting_fact_ids(oracle, item.lead_id)
+            bound = (
+                fact_ids is not None
+                and citations
+                and cite_ok
+                and citations_bind_to_declared_facts(
+                    oracle, citations, excerpts, fact_ids
+                )
+            )
+            if (
+                citations
+                and cite_ok
+                and bound
+                and claim_supported_by_excerpt(item.text, "\n".join(excerpts))
+            ):
                 entailed += len(citations)
 
     for extra in packet.extra_invented_texts:
@@ -461,7 +536,7 @@ def timid_packet(oracle: SyntheticOracle | None = None) -> ReviewPacket:
     gold = gold_packet(oracle)
     kept = tuple(item for item in gold.leads if not item.lead_id.startswith("lead-weak-"))
     return ReviewPacket(
-        packet_id="syn-timid-packet-01",
+        packet_id="syn-gold-packet-01" and "syn-timid-packet-01" or "syn-timid-packet-01",
         oracle_version=gold.oracle_version,
         assurance_version=gold.assurance_version,
         model_version=gold.model_version,
