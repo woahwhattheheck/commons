@@ -3,7 +3,9 @@
 
 Discord snowflake identity remains durable provenance. A valid caller-supplied
 Commons ``id`` is the canonical record identity; ordinary chat or an invalid
-or missing declaration falls back to ``discord-{snowflake}``. This program
+or missing declaration falls back to ``discord-{snowflake}``. A git-first
+record that already owns that id with different bytes is not reminted: the
+Discord event falls back to its snowflake so inbound can continue. This program
 never writes p/ directly: it formats or creates ordinary ``label=board``
 GitHub issues and lets the canonical Commons publisher create the record.
 
@@ -259,24 +261,73 @@ def load_events(path: Path) -> list[dict[str, Any]]:
     raise IngestError("event input must be an object or array")
 
 
+def _bodies_match(left: str, right: str) -> bool:
+    return _record_body(left).rstrip("\n") == _record_body(right).rstrip("\n")
+
+
+def with_identity(record: IssueRecord, ident: str) -> IssueRecord:
+    """Return a copy whose issue title and envelope id are ``ident``.
+
+    Discord source text after the envelope fence stays untouched. The original
+    declared id, if any, remains in that source text as provenance.
+    """
+    header, sep, rest = record.body.partition("\n---\n")
+    if not sep:
+        raise IngestError("record body missing envelope fence")
+    lines = []
+    replaced = False
+    for line in header.split("\n"):
+        if not replaced and line.lower().startswith("id:"):
+            lines.append("id: %s" % ident)
+            replaced = True
+        else:
+            lines.append(line)
+    if not replaced:
+        lines.append("id: %s" % ident)
+    return IssueRecord(
+        native_id=record.native_id,
+        title=ident,
+        body="\n".join(lines) + sep + rest,
+        kind=record.kind,
+        target=record.target,
+    )
+
+
+def _emit_or_fallback(
+    record: IssueRecord,
+    posts_dir: Path,
+    seen: dict[str, IssueRecord],
+    out: list[IssueRecord],
+) -> None:
+    previous = seen.get(record.title)
+    if previous is not None:
+        if _bodies_match(previous.body, record.body):
+            return
+        raise ImmutableMismatch(
+            "declared id %s is claimed by Discord events %s and %s"
+            % (record.title, previous.native_id, record.native_id)
+        )
+    path = posts_dir / (record.title + ".md")
+    try:
+        same = verify_existing(path, record)
+    except ImmutableMismatch:
+        snowflake = canonical_id(record.native_id)
+        if record.title == snowflake:
+            raise
+        _emit_or_fallback(with_identity(record, snowflake), posts_dir, seen, out)
+        return
+    seen[record.title] = record
+    if not same:
+        out.append(record)
+
+
 def plan(events: list[dict[str, Any]], posts_dir: Path = POSTS_DIR) -> list[IssueRecord]:
     out: list[IssueRecord] = []
     seen: dict[str, IssueRecord] = {}
     for event in events:
         if should_skip(event):
             continue
-        record = issue_record(event)
-        previous = seen.get(record.title)
-        if previous is not None:
-            if _record_body(previous.body).rstrip("\n") == _record_body(record.body).rstrip("\n"):
-                continue
-            raise ImmutableMismatch(
-                "declared id %s is claimed by Discord events %s and %s"
-                % (record.title, previous.native_id, record.native_id)
-            )
-        seen[record.title] = record
-        if not verify_existing(posts_dir / (record.title + ".md"), record):
-            out.append(record)
+        _emit_or_fallback(issue_record(event), posts_dir, seen, out)
     return out
 
 
@@ -428,7 +479,7 @@ def cmd_sync() -> int:
         return 0
     discord = DiscordClient(token)
     github = GitHubClient(os.environ.get("GITHUB_TOKEN") or "")
-    records = plan(discord.events())
+    records = plan(discord.events(), POSTS_DIR)
     created: list[dict[str, str]] = []
     for record in records:
         if github.issue_exists(record.title):
