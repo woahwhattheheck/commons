@@ -1,0 +1,27 @@
+{
+  "id": "sc-labs-multistate-coa-rule-version-gate-01",
+  "state": "BUILT_TEST_PENDING",
+  "binary": "python3 test_sc_labs_multistate_coa_gate.py",
+  "tests": "PENDING",
+  "input_records": 150,
+  "releaseable": 120,
+  "held": 30,
+  "hold_counts": {
+    "RULE_VERSION_EXPIRED": 5,
+    "PANEL_NOT_VALID_FOR_JURISDICTION": 5,
+    "METHOD_LIMIT_MISMATCH": 5,
+    "CUSTODY_GAP": 5,
+    "DUPLICATE_RELEASE_ID": 5,
+    "SCOPE_OR_SIGNER_MISMATCH": 5
+  },
+  "evidence_manifest_sha256": null,
+  "audit_sha256": null,
+  "artifact_sha256": {},
+  "autonomous_releases": 0,
+  "result_alterations": 0,
+  "source_mutations": 0,
+  "interface_live": false,
+  "truth_gate": "HOLD / BUILD-AND-VERIFY",
+  "pre_sale_transport": "NONE",
+  "cash_usd": 0
+}
