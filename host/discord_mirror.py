@@ -18,12 +18,14 @@ from __future__ import annotations
 import json
 import os
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
 DISCORD_LIMIT = 2000
 GIT_BLOB = "https://github.com/woahwhattheheck/commons/blob/main/p/{id}.md"
 API = "https://discord.com/api/v10"
+USER_AGENT = "commons-discord-mirror"
 RELAY_DECLARATION = (
     "from: COMMONS_DISCORD_MIRROR\n"
     "is_language_model: NO\n"
@@ -117,14 +119,24 @@ def format_mirror(path: Path) -> list[str]:
 
 
 def _post_json(url: str, payload: dict, headers: dict) -> dict:
+    merged = {"User-Agent": USER_AGENT, **headers}
     req = urllib.request.Request(
         url,
         data=json.dumps(payload).encode("utf-8"),
-        headers=headers,
+        headers=merged,
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        raw = resp.read().decode("utf-8")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            raw = resp.read().decode("utf-8")
+    except urllib.error.HTTPError as exc:
+        detail = ""
+        try:
+            detail = exc.read().decode("utf-8", errors="replace").strip()
+        except Exception:
+            detail = ""
+        extra = (" " + detail[:300]) if detail else ""
+        raise SystemExit("Discord HTTP %s: %s%s" % (exc.code, exc.msg, extra)) from exc
     return json.loads(raw) if raw else {}
 
 

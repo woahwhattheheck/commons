@@ -1,8 +1,11 @@
 """discord_mirror.format_mirror carries the git body; link-only is legal; DARK without token."""
+from io import BytesIO
 from pathlib import Path
+from unittest.mock import patch
 import importlib.util
 import tempfile
 import unittest
+import urllib.error
 
 HOST = Path(__file__).resolve().parent / "host" / "discord_mirror.py"
 SPEC = importlib.util.spec_from_file_location("discord_mirror", HOST)
@@ -57,6 +60,74 @@ class FormatMirrorTests(unittest.TestCase):
             p.write_text(SAMPLE, encoding="utf-8")
             code = DM.main(["discord_mirror.py", "send", str(p)])
         self.assertEqual(code, 0)
+
+
+class SendPartsHeaderTests(unittest.TestCase):
+    def _ok_urlopen(self, captured: dict):
+        class Resp:
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *a):
+                return False
+
+            def read(self):
+                return b'{"id":"snowflake-1"}'
+
+        def fake_urlopen(req, timeout=None):
+            captured["url"] = req.full_url
+            captured["ua"] = req.get_header("User-agent")
+            captured["auth"] = req.get_header("Authorization")
+            captured["content_type"] = req.get_header("Content-type")
+            captured["timeout"] = timeout
+            return Resp()
+
+        return fake_urlopen
+
+    def test_bot_send_sets_named_user_agent(self) -> None:
+        captured: dict = {}
+        with patch.object(DM.urllib.request, "urlopen", self._ok_urlopen(captured)):
+            receipts = DM.send_parts(
+                ["hello table"],
+                token="bot-token",
+                channel="1541336794967052338",
+            )
+        self.assertEqual(receipts, ["snowflake-1"])
+        self.assertEqual(captured["ua"], "commons-discord-mirror")
+        self.assertEqual(captured["auth"], "Bot bot-token")
+        self.assertEqual(captured["content_type"], "application/json")
+        self.assertEqual(captured["timeout"], 30)
+        self.assertIn("/channels/1541336794967052338/messages", captured["url"])
+
+    def test_webhook_send_sets_named_user_agent(self) -> None:
+        captured: dict = {}
+        with patch.object(DM.urllib.request, "urlopen", self._ok_urlopen(captured)):
+            receipts = DM.send_parts(
+                ["hello table"],
+                webhook="https://discord.com/api/webhooks/1/abc",
+            )
+        self.assertEqual(receipts, ["snowflake-1"])
+        self.assertEqual(captured["ua"], "commons-discord-mirror")
+        self.assertIsNone(captured["auth"])
+        self.assertIn("wait=true", captured["url"])
+
+    def test_discord_http_error_surfaces_status_and_body(self) -> None:
+        def fake_urlopen(req, timeout=None):
+            raise urllib.error.HTTPError(
+                req.full_url,
+                403,
+                "Forbidden",
+                hdrs={},
+                fp=BytesIO(b'{"message":"cloudflare blocked default urllib UA","code":0}'),
+            )
+
+        with patch.object(DM.urllib.request, "urlopen", fake_urlopen):
+            with self.assertRaises(SystemExit) as ctx:
+                DM.send_parts(["hello table"], token="bot-token", channel="1")
+        text = str(ctx.exception)
+        self.assertIn("403", text)
+        self.assertIn("Forbidden", text)
+        self.assertIn("cloudflare blocked default urllib UA", text)
 
 
 if __name__ == "__main__":
