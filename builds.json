@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 9,
+ "n_open_prs": 10,
  "open_prs": [
   {
    "number": 7010,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7010",
    "base_freshness": {
     "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,23 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7009",
    "base_freshness": {
     "base_sha": "eb0257b2ad06b22da779d0606ea0076261ca83ad",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7011,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane C: native window, legal gates, unsigned packaging",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
-   "base_freshness": {
-    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -407,7 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7019",
    "base_freshness": {
     "base_sha": "c2e7619dafaaa564f94092c79d4f0b86642d1744",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
    "base_freshness": {
     "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -439,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
    "base_freshness": {
     "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +439,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7021",
    "base_freshness": {
     "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -471,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7012",
    "base_freshness": {
     "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -487,12 +471,44 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7020",
    "base_freshness": {
     "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "bbed973285169f02d24154fea6c00559004a3b44",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7011,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane C: native window, legal gates, unsigned packaging",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
+   "base_freshness": {
+    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7023,
+   "author": "woahwhattheheck",
+   "title": "Repair Discord inbound declared-id collision",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7023",
+   "base_freshness": {
+    "base_sha": "7f0136edc480ffadcf7265469516fb77a83db937",
+    "main_sha": "d6bbf5956acb2ed3900799aa98b61dc09ef9353b",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
