@@ -3944,6 +3944,7 @@
         "p/sc-labs-multistate-coa-rule-version-gate-01.md"
       ],
       "rollup": "TESTED",
+      "separate_feature_capability_cells": true,
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [

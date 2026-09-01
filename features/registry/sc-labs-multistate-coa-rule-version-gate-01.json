@@ -32,6 +32,7 @@
     "p/sc-labs-multistate-coa-rule-version-gate-01.md"
   ],
   "schema": "commons-feature-v1",
+  "separate_feature_capability_cells": true,
   "test_paths": [
     "test_sc_labs_multistate_coa_rule_version_gate.py",
     "sc_labs_multistate_coa_rule_version_gate.py"

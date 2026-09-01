@@ -228,6 +228,9 @@ def validate_feature(rec, filename=""):
     related = rec.get("related")
     if related is not None and not isinstance(related, dict):
         problems.append("related must be an object")
+    boundary = rec.get("separate_feature_capability_cells")
+    if boundary is not None and not isinstance(boundary, bool):
+        problems.append("separate_feature_capability_cells must be boolean")
     return problems
 
 
@@ -463,7 +466,7 @@ def derive_feature(feature, evidence, root, snapshot=None):
         rollup = "PLANNED"
 
     author_claim = feature.get("claimed_status")
-    return {
+    derived = {
         "id": feat_id,
         "name": feature.get("name"),
         "capability": feature.get("capability"),
@@ -493,6 +496,9 @@ def derive_feature(feature, evidence, root, snapshot=None):
         "chat_ignored": _chat_noise(snapshot),
         "file": feature.get("_file"),
     }
+    if feature.get("separate_feature_capability_cells") is True:
+        derived["separate_feature_capability_cells"] = True
+    return derived
 
 
 def project(root, snapshot=None):
@@ -592,6 +598,11 @@ def render_html(projection):
         claim_note = ""
         if claim:
             claim_note = '<div class="note">author claim ignored: %s</div>' % html.escape(str(claim))
+        metadata_boundary = (
+            "<!-- feature-cell boundary padding: presentation metadata remains non-operative -->"
+            if row.get("separate_feature_capability_cells")
+            else ""
+        )
         rows_html.append(
             '<tr data-status="%s" data-source="%s" data-live="%s" data-sub="%s" data-carrier="%s" data-hay="%s">'
             "%s%s%s%s%s%s%s%s%s%s%s%s%s</tr>"
@@ -603,7 +614,7 @@ def render_html(projection):
                 html.escape(str(row.get("carrier") or ""), quote=True),
                 html.escape(hay, quote=True),
                 cell("feature", "<b>%s</b><div class=\"note\">%s</div>%s" % (html.escape(str(row.get("name") or "")), html.escape(str(row.get("id") or "")), claim_note))
-                + "<!-- feature-cell boundary padding: presentation metadata remains non-operative -->",
+                + metadata_boundary,
                 cell("capability", html.escape(str(row.get("capability") or ""))),
                 cell("owner / carrier", "%s / %s" % (html.escape(str(row.get("owner_subsystem") or "")), html.escape(str(row.get("carrier") or "")))),
                 cell("status", '<span class="s-%s">%s</span>' % (html.escape(str(row.get("rollup") or "").lower(), quote=True), html.escape(str(row.get("rollup") or "")))),
