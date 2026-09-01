@@ -20,6 +20,7 @@ from charttrace.schema.v1 import (
     ExternalAuthority,
     InvestigativeLead,
     RecordFact,
+    ReviewHistoryEntry,
     SchemaValidationError,
     TextSpan,
     parse_relevance_grade,
