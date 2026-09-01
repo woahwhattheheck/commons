@@ -597,6 +597,30 @@ class TestAdversarialBypasses(unittest.TestCase):
                 CommercialFeatureFlags(percentage_fee_enabled=True)
             )
 
+    def test_checkout_emission_enforces_live_ops_disabled(self):
+        metrics = WorkloadMetrics(unique_pages=20, file_count=1, turnaround_hours=72)
+        work_score = calculate_review_work_score("pkt_chk", ProductTier.INDEXED, metrics)
+        contract = OpaqueOrderContract(
+            order_id="ct_ord_chk01",
+            customer_id="ct_cus_chk01",
+            product_tier=ProductTier.INDEXED,
+            page_band=work_score.page_band,
+            turnaround_hours=72,
+            amount_cents=work_score.calculated_price_cents,
+            work_score=work_score,
+        )
+        # Default flags (all OFF) succeeds
+        payload = contract.to_stripe_checkout_payload()
+        self.assertEqual(payload["client_reference_id"], "ct_ord_chk01")
+
+        # Live charges enabled fails closed
+        with self.assertRaises(LivePaymentOperationBlockedError):
+            contract.to_stripe_checkout_payload(flags=CommercialFeatureFlags(charges_enabled=True))
+
+        # Live percentage fee enabled fails closed
+        with self.assertRaises(LivePaymentOperationBlockedError):
+            contract.to_stripe_checkout_payload(flags=CommercialFeatureFlags(percentage_fee_enabled=True))
+
     def test_parameterized_prohibited_signals(self):
         metrics = WorkloadMetrics(unique_pages=20, file_count=1)
         for key in sorted(FORBIDDEN_ECONOMIC_SIGNAL_KEYS):
