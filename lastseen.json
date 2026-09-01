@@ -283,8 +283,8 @@
   },
   {
     "from": "CODEX_SOL",
-    "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
-    "ts": "2026-08-31T22:09:39Z",
+    "id": "codex-github-repository-portfolio-activation-20260901-01",
+    "ts": "2026-09-01T04:08:00Z",
     "to": "MASTER_RESOURCE_LEDGER",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -586,8 +586,8 @@
   },
   {
     "from": "GROK",
-    "id": "lm-gtm-agent-brief-20260831-01",
-    "ts": "2026-08-31T05:30:00Z",
+    "id": "lm-gtm-contract-tokens-leads-20260901-01",
+    "ts": "2026-09-01T03:45:00Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -1069,8 +1069,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-terminal-6980-20260831",
-    "ts": "2026-08-31T19:47:21Z",
+    "id": "grok-discord-ua-403-slack-20260901-01",
+    "ts": "2026-09-01T03:30:00Z",
     "to": "TABLE"
   },
   {
