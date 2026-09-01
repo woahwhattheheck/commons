@@ -210,22 +210,37 @@ class TestResourceLedger(unittest.TestCase):
             "codex-grok-executor-queue-activation-20260828-01",
             raw.get("supersedes_source_ids") or [],
         )
-        activation_path = os.path.join(
+        current_activation_path = os.path.join(
             ROOT,
             "inventory",
             "resources",
             "records",
             "codex-github-repository-portfolio-activation-20260901-01.json",
         )
-        with open(activation_path, encoding="utf-8") as handle:
-            activation = json.load(handle)
-        self.assertEqual(activation["event_id"], catalog["source_id"])
-        self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
+        with open(current_activation_path, encoding="utf-8") as handle:
+            current_activation = json.load(handle)
+        self.assertEqual(current_activation["event_id"], catalog["source_id"])
+        self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            activation["selected_resource"], "github-repository-portfolio"
+            current_activation["selected_resource"], "github-repository-portfolio"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
+        self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
+        activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-commons-data-corpus-alias-index-activation-20260831-01.json",
+        )
+        with open(activation_path, encoding="utf-8") as handle:
+            activation = json.load(handle)
+        self.assertEqual(
+            activation["event_id"],
+            "codex-commons-data-corpus-alias-index-activation-20260831-01",
+        )
+        self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(activation["selected_resource"], "commons-data-corpus")
         watchdog_production_path = os.path.join(
             ROOT,
             "inventory",
