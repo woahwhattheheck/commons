@@ -9,6 +9,9 @@ window.COMMONS_HEAD = (function () {
   var JSD_MAIN = "https://cdn.jsdelivr.net/gh/" + REPO + "@main/";
   var SHA_TTL_MS = 60000;
   var SHA_KEY = "commons-lane-head-sha";
+  var HEAD_BAKE_PATH = "head.json";
+  var HEAD_SCHEMA = "commons-head-v1";
+  var HEAD_MAX_AGE_MS = 20 * 60 * 1000;
   var POSTS_KEY = "commons-head-posts";
   var FRESH_KEY = "commons-head-fresh";
   var POOL = 4;
@@ -95,14 +98,64 @@ window.COMMONS_HEAD = (function () {
     });
   }
 
-  function headSha() {
-    var hit = getCached(SHA_KEY, SHA_TTL_MS);
-    if (hit && hit.sha) return Promise.resolve(hit.sha);
+  function parseBakedHead(j, now) {
+    if (!j || j.schema !== HEAD_SCHEMA || !/^[0-9a-f]{40}$/.test(String(j.sha || ""))) return null;
+    var observed = Date.parse(String(j.observed_at || ""));
+    if (!isFinite(observed) || !String(j.source || "").trim()) return null;
+    var measuredNow = Number(now == null ? Date.now() : now);
+    if (observed - measuredNow > 5 * 60 * 1000) return null;
+    var age = Math.max(0, measuredNow - observed);
+    return {
+      sha: String(j.sha),
+      observed_at: String(j.observed_at),
+      source: String(j.source),
+      status: age <= HEAD_MAX_AGE_MS ? "BAKED_OBSERVED" : "BAKED_STALE",
+      is_current: false,
+      age_ms: age
+    };
+  }
+
+  function apiHeadState() {
     return api("commits/main").then(function (j) {
       var sha = j && j.sha;
-      if (!sha) throw new Error("no HEAD sha");
-      setCached(SHA_KEY, { sha: sha });
-      return sha;
+      // GitHub returns 40 hex characters. Keep abbreviated commit fixtures and
+      // legacy enterprise responses usable; baked head.json remains strict-40.
+      if (!/^[0-9a-f]{7,40}$/.test(String(sha || ""))) throw new Error("no HEAD sha");
+      return { sha: sha, observed_at: "", source: "github-api", status: "REMOTE_CURRENT", is_current: true };
+    });
+  }
+
+  function headState() {
+    var hit = getCached(SHA_KEY, SHA_TTL_MS);
+    if (hit && hit.sha && hit.status !== "BAKED_STALE") return Promise.resolve(hit);
+    var stale = null;
+    return fetchOk(pagesUrl(HEAD_BAKE_PATH), 8000).then(function (r) {
+      if (!r || !r.ok || typeof r.json !== "function") return null;
+      return r.json().then(function (j) { return parseBakedHead(j); });
+    }).catch(function () { return null; }).then(function (baked) {
+      if (baked && baked.status === "BAKED_OBSERVED") {
+        setCached(SHA_KEY, baked);
+        return baked;
+      }
+      stale = baked;
+      return apiHeadState().then(function (current) {
+        setCached(SHA_KEY, current);
+        return current;
+      }).catch(function (err) {
+        if (stale) return stale;
+        throw err;
+      });
+    });
+  }
+
+  function headSha() {
+    return headState().then(function (state) {
+      if (!state || state.status === "BAKED_STALE") {
+        var err = new Error("baked HEAD observation is stale");
+        err.stale = state || null;
+        throw err;
+      }
+      return state.sha;
     });
   }
 
@@ -463,8 +516,11 @@ window.COMMONS_HEAD = (function () {
     var host = document.getElementById("head-chip");
     if (!host) return;
     host.textContent = "measuring git HEAD…";
-    headSha().then(function (sha) {
-      host.innerHTML = 'HEAD <code>' + sha.slice(0, 12) + '</code> · sha-pinned raw · not the bake · <a href="' +
+    headState().then(function (state) {
+      if (state.status === "BAKED_STALE") throw new Error("stale bake");
+      var label = state.is_current ? "CURRENT HEAD" : "BAKED HEAD OBSERVATION";
+      host.innerHTML = label + ' <code>' + state.sha.slice(0, 12) + '</code> · sha-pinned raw · ' +
+        state.source + ' · <a href="' +
         base() + 'ground/HEAD.md">HEAD.md</a>';
     }).catch(function (err) {
       var st = err && err.status;
@@ -554,6 +610,8 @@ window.COMMONS_HEAD = (function () {
     rawUrl: rawUrl,
     jsdelivrMainUrl: jsdelivrMainUrl,
     pagesUrl: pagesUrl,
+    parseBakedHead: parseBakedHead,
+    headState: headState,
     headSha: headSha,
     fetchPath: fetchPath,
     parsePost: parsePost,
