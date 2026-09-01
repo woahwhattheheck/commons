@@ -1,0 +1,37 @@
+{
+  "added": "2026-09-01",
+  "capability": "Dependency-light controlled-sample order preflight for normalized/redacted PTL packets. Verifies LSO and order ID, PO or approved-payment status, conditional SDS and DEA Form 222 presence flags, conditional international fields, turnaround, and report-delivery route. Returns only READY_FOR_NAMED_HUMAN_ACCESSION or fail-closed HOLD with stable reason codes and deterministic SHA-256 evidence. Performs no accession, release, payment, judgment, or external transmission.",
+  "carrier": "CODEX",
+  "claimed_paths": [
+    "ptl_controlled_sample_order_preflight.py",
+    "test_ptl_controlled_sample_order_preflight.py",
+    "ptl-controlled-sample-order-preflight.html",
+    "revenue/ptl_controlled_sample_order_preflight/contract.json",
+    "revenue/ptl_controlled_sample_order_preflight/README.md",
+    "revenue/ptl_controlled_sample_order_preflight/runner.py",
+    "features/registry/ptl-controlled-sample-order-preflight-01.json",
+    "p/ptl-controlled-sample-order-preflight-01.md"
+  ],
+  "dependencies": [],
+  "id": "ptl-controlled-sample-order-preflight-01",
+  "name": "PTL controlled-sample order preflight",
+  "next_gap": "Buyer-owned normalized schema and redacted golden packets after synthetic PASS; no PTL contact or production claim.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "ptl-controlled-sample-order-preflight.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "ptl-controlled-sample-order-preflight.html",
+    "revenue/ptl_controlled_sample_order_preflight/contract.json",
+    "p/ptl-controlled-sample-order-preflight-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_ptl_controlled_sample_order_preflight.py",
+    "ptl_controlled_sample_order_preflight.py"
+  ]
+}

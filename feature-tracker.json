@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 72
+    "TESTED": 73
   },
   "features": [
     {
@@ -3237,6 +3237,66 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Dependency-light controlled-sample order preflight for normalized/redacted PTL packets. Verifies LSO and order ID, PO or approved-payment status, conditional SDS and DEA Form 222 presence flags, conditional international fields, turnaround, and report-delivery route. Returns only READY_FOR_NAMED_HUMAN_ACCESSION or fail-closed HOLD with stable reason codes and deterministic SHA-256 evidence. Performs no accession, release, payment, judgment, or external transmission.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ptl_controlled_sample_order_preflight.py",
+        "test_ptl_controlled_sample_order_preflight.py",
+        "ptl-controlled-sample-order-preflight.html",
+        "revenue/ptl_controlled_sample_order_preflight/contract.json",
+        "revenue/ptl_controlled_sample_order_preflight/README.md",
+        "revenue/ptl_controlled_sample_order_preflight/runner.py",
+        "features/registry/ptl-controlled-sample-order-preflight-01.json",
+        "p/ptl-controlled-sample-order-preflight-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ptl_controlled_sample_order_preflight.py",
+        "test_ptl_controlled_sample_order_preflight.py",
+        "ptl-controlled-sample-order-preflight.html",
+        "revenue/ptl_controlled_sample_order_preflight/contract.json",
+        "revenue/ptl_controlled_sample_order_preflight/README.md",
+        "revenue/ptl_controlled_sample_order_preflight/runner.py",
+        "features/registry/ptl-controlled-sample-order-preflight-01.json",
+        "p/ptl-controlled-sample-order-preflight-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ptl-controlled-sample-order-preflight-01.json",
+      "id": "ptl-controlled-sample-order-preflight-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "PTL controlled-sample order preflight",
+      "next_gap": "Buyer-owned normalized schema and redacted golden packets after synthetic PASS; no PTL contact or production claim.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "ptl-controlled-sample-order-preflight.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ptl-controlled-sample-order-preflight.html",
+        "revenue/ptl_controlled_sample_order_preflight/contract.json",
+        "p/ptl-controlled-sample-order-preflight-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_ptl_controlled_sample_order_preflight.py",
+        "ptl_controlled_sample_order_preflight.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Q Connect cutover verification: an immutable 240-case synthetic manifest accessions 200 valid personal-care/pharma submissions once with the catalog route, holds 40 obsolete-code, wrong-department, missing-field, invalid account/user, shared-credential, or timeout-retry failures with exact reasons, denies shared credentials, never lets obsolete codes enter testing, keeps field/catalog/user provenance, replays with zero duplicates, and requires named human QA. Adapters stay simulated and read-only.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -4644,7 +4704,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 78,
+  "n_features": 79,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
