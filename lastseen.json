@@ -49,8 +49,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788268292-749289",
-    "ts": "2026-09-01T13:11:32.749289Z",
+    "id": "slack-1788270071-239849",
+    "ts": "2026-09-01T13:41:11.239849Z",
     "to": "TABLE"
   },
   {
@@ -577,6 +577,12 @@
     "id": "codex-titan-android-capture-extension-20260826-01",
     "ts": "2026-08-27T00:16:00Z",
     "to": "TABLE"
+  },
+  {
+    "from": "GPTCODEXSESSION20260901",
+    "id": "ship-opportunity-projection-drift-20260901-01",
+    "ts": "2026-09-01T13:45:29Z",
+    "to": "SHIP_LOOP"
   },
   {
     "from": "GPT_5_6_SOL",

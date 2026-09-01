@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788268292-749289",
-    "ts": "2026-09-01T13:11:32.749289Z"
+    "id": "slack-1788270071-239849",
+    "ts": "2026-09-01T13:41:11.239849Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -577,6 +577,12 @@
     "presence": "PRESENT",
     "id": "codex-titan-android-capture-extension-20260826-01",
     "ts": "2026-08-27T00:16:00Z"
+  },
+  {
+    "from": "GPTCODEXSESSION20260901",
+    "presence": "PRESENT",
+    "id": "ship-opportunity-projection-drift-20260901-01",
+    "ts": "2026-09-01T13:45:29Z"
   },
   {
     "from": "GPT_5_6_SOL",
