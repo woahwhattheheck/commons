@@ -46,10 +46,14 @@ import re
 from typing import Any, Dict, List, Optional, Set
 
 from charttrace.pricing.ledgers import (
+    ALLOWED_TURNAROUND_HOURS,
+    FORBIDDEN_ID_TOKENS,
     PAGE_BANDS,
     ProductTier,
     ReviewWorkScore,
+    normalize_signal_key,
     reject_prohibited_payload,
+    require_opaque_packet_id,
 )
 
 
@@ -118,8 +122,9 @@ class CommercialFeatureFlags:
 
 DEFAULT_COMMERCIAL_FLAGS = CommercialFeatureFlags()
 ALLOWED_METADATA_KEYS = frozenset({"source_system", "work_score_id", "packet_id"})
-ALLOWED_TURNAROUND_HOURS = frozenset({12, 24, 48, 72, 168})
-OPAQUE_ID_RE = re.compile(r"^ct_(ord|cus)_[a-z0-9]{4,32}$")
+OPAQUE_ORDER_ID_RE = re.compile(r"^ct_ord_[a-f0-9]{4,32}$")
+OPAQUE_CUSTOMER_ID_RE = re.compile(r"^ct_cus_[a-f0-9]{4,32}$")
+OPAQUE_META_VALUE_RE = re.compile(r"^[a-z0-9_]{1,64}$")
 
 
 @dataclass(frozen=True)
@@ -136,12 +141,13 @@ class OpaqueOrderContract:
     work_score: Optional[ReviewWorkScore] = None
 
     def __post_init__(self) -> None:
-        if not OPAQUE_ID_RE.match(self.order_id) or not self.order_id.startswith("ct_ord_"):
-            raise ValueError("order_id must be an opaque ct_ord_ token with no payload data.")
-        if not OPAQUE_ID_RE.match(self.customer_id) or not self.customer_id.startswith("ct_cus_"):
-            raise ValueError("customer_id must be an opaque ct_cus_ token with no payload data.")
-        for token in ("patient", "hospital", "diagnosis", "medical", "recovery", "phi"):
-            if token in self.order_id or token in self.customer_id:
+        if not OPAQUE_ORDER_ID_RE.match(self.order_id):
+            raise ValueError("order_id must be an opaque hex ct_ord_ token with no payload data.")
+        if not OPAQUE_CUSTOMER_ID_RE.match(self.customer_id):
+            raise ValueError("customer_id must be an opaque hex ct_cus_ token with no payload data.")
+        combined = normalize_signal_key(self.order_id + self.customer_id)
+        for token in FORBIDDEN_ID_TOKENS:
+            if token and token in combined:
                 raise ValueError("Opaque identifiers may not carry payload tokens.")
         if self.page_band not in PAGE_BANDS:
             raise ValueError(f"page_band must be one of {PAGE_BANDS}.")
@@ -207,25 +213,16 @@ def validate_opaque_metadata(metadata: Dict[str, Any]) -> None:
             f"Unknown metadata keys are rejected: {sorted(extra)}."
         )
     for key, value in metadata.items():
-        if not isinstance(value, str) or not value or len(value) > 64:
-            raise SensitiveDataExposureError(f"Metadata {key!r} must be a short opaque string.")
-        val_str = value.lower()
-        for forbidden in (
-            "patient",
-            "hospital",
-            "malpractice",
-            "diagnosis",
-            "doctor",
-            "injury",
-            "settlement",
-            "contingency",
-            "medical",
-            "recovery",
-        ):
-            if forbidden in val_str:
+        if not isinstance(value, str) or not OPAQUE_META_VALUE_RE.match(value):
+            raise SensitiveDataExposureError(f"Metadata {key!r} must be a short opaque token.")
+        normalized = normalize_signal_key(value)
+        for token in FORBIDDEN_ID_TOKENS:
+            if token and token in normalized:
                 raise SensitiveDataExposureError(
                     f"Forbidden sensitive content in Stripe metadata value for key '{key}'."
                 )
+        if key in {"packet_id", "work_score_id"}:
+            require_opaque_packet_id(value, key)
 
 
 def assert_live_operations_disabled(flags: CommercialFeatureFlags = DEFAULT_COMMERCIAL_FLAGS) -> None:

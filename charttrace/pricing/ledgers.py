@@ -64,9 +64,36 @@ class EconomicIsolationViolation(ValueError):
 
 _KEY_NOISE = re.compile(r"[^a-z0-9]")
 PAGE_BANDS = ("1-50", "51-200", "201-500", "501-1000", "1000+")
+ALLOWED_TURNAROUND_HOURS = frozenset({12, 24, 48, 72, 168})
+ALLOWED_WORKLOAD_METADATA_KEYS = frozenset()
+OPAQUE_PACKET_ID_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]{1,63}$")
+FORBIDDEN_ID_TOKENS = frozenset(
+    {
+        "patient",
+        "hospital",
+        "diagnosis",
+        "medical",
+        "recovery",
+        "phi",
+        "mrn",
+        "doctor",
+        "injury",
+        "malpractice",
+        "ssn",
+        "dob",
+        "sepsis",
+        "condition",
+        "damages",
+        "juice",
+        "contingency",
+        "settlement",
+        "legalfee",
+        "legalfees",
+    }
+)
 MAX_WORKLOAD = {
-    "unique_pages": (0, 1_000_000),
-    "file_count": (0, 100_000),
+    "unique_pages": (1, 1_000_000),
+    "file_count": (1, 100_000),
     "ocr_repair_page_count": (0, 1_000_000),
     "source_provider_count": (1, 10_000),
     "date_span_days": (0, 365_000),
@@ -104,11 +131,31 @@ def reject_prohibited_payload(data: Any, forbidden: Sequence[str], error_cls=Eco
     walk(data)
 
 
+def require_opaque_packet_id(value: str, field_name: str = "packet_id") -> str:
+    """Require a synthetic opaque ID with no patient, medical, or merits tokens."""
+    if not isinstance(value, str) or not OPAQUE_PACKET_ID_RE.match(value):
+        raise EconomicIsolationViolation(
+            f"{field_name} must be a nonempty opaque synthetic identifier."
+        )
+    normalized = normalize_signal_key(value)
+    for token in FORBIDDEN_ID_TOKENS:
+        if token and token in normalized:
+            raise EconomicIsolationViolation(
+                f"{field_name} may not carry patient, medical, or merits tokens."
+            )
+    return value
+
+
 def assert_clean_workload_inputs(data: Dict[str, Any]) -> None:
-    """Validate that input payloads do not contain forbidden case-value/probability/steering fields."""
+    """Allowlisted workload metadata only. Nested/aliased/suffixed prohibited keys fail."""
     if not isinstance(data, dict):
         raise EconomicIsolationViolation("Workload metadata must be an object.")
     reject_prohibited_payload(data, FORBIDDEN_ECONOMIC_SIGNAL_KEYS)
+    extra = set(data) - ALLOWED_WORKLOAD_METADATA_KEYS
+    if extra:
+        raise EconomicIsolationViolation(
+            f"Unknown workload metadata keys are rejected: {sorted(extra)}."
+        )
 
 
 @dataclass(frozen=True)
@@ -176,6 +223,7 @@ def calculate_review_priority(
 
     Guarantees no economic or probability factors enter the computation.
     """
+    require_opaque_packet_id(item_id, "item_id")
     if extra_metadata:
         assert_clean_workload_inputs(extra_metadata)
 
@@ -239,6 +287,10 @@ class WorkloadMetrics:
                 raise ValueError(f"{name} must be an integer.")
             if value < low or value > high:
                 raise ValueError(f"{name}={value} is outside [{low}, {high}].")
+        if self.turnaround_hours not in ALLOWED_TURNAROUND_HOURS:
+            raise ValueError(
+                f"turnaround_hours must be one of {sorted(ALLOWED_TURNAROUND_HOURS)}."
+            )
 
 
 @dataclass(frozen=True)
@@ -336,6 +388,7 @@ def calculate_review_work_score(
     Prices service exclusively from disclosed workload metrics.
     Enforces that case merits, damages, or destinations NEVER affect price.
     """
+    require_opaque_packet_id(packet_id, "packet_id")
     if extra_metadata:
         assert_clean_workload_inputs(extra_metadata)
 

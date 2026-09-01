@@ -82,6 +82,16 @@ class ReviewerAuditProfile:
             raise ValueError("citation_precision must be between 0.0 and 1.0")
         if not (0.0 <= self.disposition_concordance <= 1.0):
             raise ValueError("disposition_concordance must be between 0.0 and 1.0")
+        derived = evaluate_rolling_qa_tier(
+            self.total_audited_reviews,
+            self.accuracy_rate,
+            self.citation_precision,
+            self.disposition_concordance,
+        )
+        if self.current_qa_tier is not derived:
+            raise ReviewerIncentiveViolation(
+                "Caller QA tier does not match immutable prior audited work."
+            )
 
 
 _ENTITY_ID_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]{1,63}$")
@@ -173,6 +183,7 @@ def calculate_affiliate_review_fee(
     - Reviewer firm != recipient firm
     - No variable payout on packet score, bad conduct, acceptance, retainers, or recovery.
     """
+    _require_legal_entity_id(matter_id, "matter_id")
     recipient = _require_legal_entity_id(recipient_firm_id, "recipient_firm_id")
     if reviewer_profile.reviewer_id.lower() == recipient.lower():
         raise AffiliateConflictError("Reviewer and recipient legal-entity IDs must differ.")

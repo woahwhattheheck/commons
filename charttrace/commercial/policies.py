@@ -21,7 +21,10 @@ from dataclasses import asdict, dataclass, field
 from enum import Enum
 from typing import Any, Dict, List, Optional, Sequence, Set
 
-from charttrace.pricing.ledgers import reject_prohibited_payload
+from charttrace.pricing.ledgers import (
+    normalize_signal_key,
+    reject_prohibited_payload,
+)
 
 
 class PolicyState(str, Enum):
@@ -124,6 +127,35 @@ class RoutingRequest:
             raise RoutingPolicyViolation(
                 f"Unknown routing metadata is rejected: {sorted(extra)}."
             )
+        for field_name in (
+            "jurisdiction",
+            "practice_category",
+            "language",
+            "user_selected_firm_id",
+            "geography_state",
+        ):
+            value = getattr(self, field_name)
+            if value is None:
+                continue
+            if not isinstance(value, str) or not value.strip() or value != value.strip():
+                raise RoutingPolicyViolation(f"{field_name} must be a nonempty canonical token.")
+            normalized = normalize_signal_key(value)
+            blocked = set(FORBIDDEN_ROUTING_KEYS) | {
+                "patient",
+                "mrn",
+                "phi",
+                "ssn",
+                "dob",
+                "hospital",
+                "diagnosis",
+                "medical",
+            }
+            for bad in blocked:
+                token = normalize_signal_key(bad)
+                if token and token in normalized:
+                    raise RoutingPolicyViolation(
+                        f"{field_name} may not carry prohibited or payload tokens."
+                    )
 
 
 @dataclass(frozen=True)
