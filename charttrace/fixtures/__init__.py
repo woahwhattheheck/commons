@@ -1,6 +1,17 @@
-"""Synthetic ChartTrace fixtures. No PHI. Generated at test time; not real records."""
+"""Synthetic ChartTrace fixtures. No real records. No live model calls."""
 
-from .oracle import ORACLE, SCHEMA_VERSION, TOOL_VERSION
-from .builder import build_fixture_case, FixtureCase
+from charttrace.fixtures.oracle import (
+    CASE_ID,
+    ORACLE_VERSION,
+    STRUCTURAL,
+    SyntheticOracle,
+    build_oracle,
+)
 
-__all__ = ["ORACLE", "SCHEMA_VERSION", "TOOL_VERSION", "build_fixture_case", "FixtureCase"]
+__all__ = (
+    "CASE_ID",
+    "ORACLE_VERSION",
+    "STRUCTURAL",
+    "SyntheticOracle",
+    "build_oracle",
+)
