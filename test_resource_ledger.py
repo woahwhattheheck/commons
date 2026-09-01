@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788213736.299499")
+        self.assertEqual(catalog["slack_ts"], "1788235608.554549")
         self.assertEqual(
             catalog["source_id"],
+            "codex-github-repository-portfolio-activation-20260901-01",
+        )
+        self.assertIn(
             "codex-commons-data-corpus-alias-index-activation-20260831-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-discord-inbound-production-readback-20260831-01",
@@ -206,6 +210,22 @@ class TestResourceLedger(unittest.TestCase):
             "codex-grok-executor-queue-activation-20260828-01",
             raw.get("supersedes_source_ids") or [],
         )
+        current_activation_path = os.path.join(
+            ROOT,
+            "inventory",
+            "resources",
+            "records",
+            "codex-github-repository-portfolio-activation-20260901-01.json",
+        )
+        with open(current_activation_path, encoding="utf-8") as handle:
+            current_activation = json.load(handle)
+        self.assertEqual(current_activation["event_id"], catalog["source_id"])
+        self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(
+            current_activation["selected_resource"], "github-repository-portfolio"
+        )
+        slack_cite = "p" + catalog["slack_ts"].replace(".", "")
+        self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
         activation_path = os.path.join(
             ROOT,
             "inventory",
@@ -215,11 +235,12 @@ class TestResourceLedger(unittest.TestCase):
         )
         with open(activation_path, encoding="utf-8") as handle:
             activation = json.load(handle)
-        self.assertEqual(activation["event_id"], catalog["source_id"])
+        self.assertEqual(
+            activation["event_id"],
+            "codex-commons-data-corpus-alias-index-activation-20260831-01",
+        )
         self.assertEqual(activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(activation["selected_resource"], "commons-data-corpus")
-        slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, activation["evidence"]["slack_claim"])
         watchdog_production_path = os.path.join(
             ROOT,
             "inventory",

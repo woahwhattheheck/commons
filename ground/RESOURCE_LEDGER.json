@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-08-31T22:09:39Z",
-    "base_main_sha": "941c12f45fa4195bb6de5f11b20d18180c3c5a1e",
+    "observed_at": "2026-09-01T04:08:00Z",
+    "base_main_sha": "46c64ee0845b522b5823a476d194967243aef609",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788213736.299499",
-  "source_id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
+  "slack_ts": "1788235608.554549",
+  "source_id": "codex-github-repository-portfolio-activation-20260901-01",
   "supersedes_source_ids": [
+    "codex-commons-data-corpus-alias-index-activation-20260831-01",
     "codex-discord-inbound-production-readback-20260831-01",
     "codex-discord-bridge-cloud-dark-correction-20260831-01",
     "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
@@ -59,7 +60,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — the Commons data corpus is producing a deterministic Git-blob alias projection; logical duplicate paths no longer count as new physical capacity",
+  "subject": "MASTER RESOURCE LEDGER — the GitHub repository portfolio is producing exact public-safe recovery routing; the Commons mirror is measured stale, not current",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -92,7 +93,8 @@
     "inventory/resources/records/codex-lm-gtm-agent-brief-floor-activation-20260831-01.json",
     "inventory/resources/records/codex-discord-bridge-cloud-dark-correction-20260831-01.json",
     "inventory/resources/records/codex-discord-inbound-production-readback-20260831-01.json",
-    "inventory/resources/records/codex-commons-data-corpus-alias-index-activation-20260831-01.json"
+    "inventory/resources/records/codex-commons-data-corpus-alias-index-activation-20260831-01.json",
+    "inventory/resources/records/codex-github-repository-portfolio-activation-20260901-01.json"
   ],
   "priority_queue": [],
   "hands_off": [
@@ -171,24 +173,23 @@
       "name": "github-repository-portfolio",
       "kind": "REPOSITORY_FLEET",
       "capacity": "LIVE",
-      "stage": "REACHABLE",
+      "stage": "PRODUCING",
       "condition": "CONSTRAINED",
-      "holder": "Bryce / Commons",
-      "authority": "VERIFY_BRANCH_AND_CONSUMER_BEFORE_WRITE",
-      "consumer": "Device work, backup, public help, and sprint work",
-      "value": "Five accessible repositories: Commons, LocalDeviceAgent, commons-backup, kite-mouth-help, and public-commons-sprint-2026",
-      "next_action": "Measure backup freshness; give idle repos a real consumer or archive state; preserve private repository detail.",
-      "source": "GitHub repository census 2026-08-26",
-      "evidence_ts": "2026-08-26T15:20:00Z",
-      "auth_surface": "GitHub connector",
-      "exact_safe_probe": "five repositories and their default branches read successfully",
-      "rate_plan_boundary": "existence is not freshness or utilization",
-      "assigned_backlog": "backup drill plus dormant-repo disposition",
-      "last_receipt": "codex-master-resource-office-20260826-01",
-      "last_used_at": "2026-08-26T15:20:00Z",
-      "stale_after": "P1D",
-      "quantity": 5,
-      "priority": 55
+      "holder": "Commons",
+      "authority": "AUTHENTICATED_GITHUB_READ; PUBLIC_DETAILS_ONLY; PRIVATE_CAPACITY_AGGREGATE_ONLY; NO_REPOSITORY_OR_REF_MUTATION",
+      "consumer": "Commons Resource Master and recovery/work-allocation agents choosing canonical, mirror, device, help, or sprint repository roads",
+      "value": "Deterministic public-safe routing over five accessible repositories: four exact public heads, one aggregate private capacity, one canonical repo, one 45-commit-stale mirror, and two references",
+      "next_action": "Use the portfolio before recovery or cross-repo assignment; refresh exact public heads and mirror ancestry after a material head change, and resolve private details only inside an authorized task.",
+      "source": "inventory/resources/repository_portfolio.json; authenticated GitHub repo/head/ref/compare probes",
+      "evidence_ts": "2026-09-01T04:08:00Z",
+      "auth_surface": "authenticated GitHub metadata read with public durable projection and private aggregate-only boundary",
+      "exact_safe_probe": "Commons main 46c64ee0845b522b5823a476d194967243aef609; five accessible repos; four public plus one private aggregate; commons-backup records source 306bb8b4d80b6ca5b81d96d03932dce1dfd0cf52 and is 45 Commons commits behind; 8/8 tests",
+      "rate_plan_boundary": "Access and exact heads do not prove backup completeness, restore readiness, private contents, deployment, device action, payment, revenue, or cash.",
+      "assigned_backlog": "canonical/mirror/reference routing and point-in-time freshness checks; no repository, ref, private-content, deployment, or device mutation",
+      "last_receipt": "codex-github-repository-portfolio-activation-20260901-01",
+      "last_used_at": "2026-09-01T04:08:00Z",
+      "stale_after": "next material repository head, visibility, archive, mirror-source, or accessibility change",
+      "priority": 90
     },
     {
       "name": "localdeviceagent",

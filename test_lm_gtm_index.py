@@ -71,6 +71,11 @@ HOLD_BUILD = (
     "luvak-dean-gaskill",
     "sharp-james-hamilton",
     "pace-amanda-yoakum",
+    "solstice-david-sewell",
+    "rush-machinery-ryan-robbins",
+    "accreditedlabs-joe-moser",
+    "packsize-eric-fisher",
+    "sanguine-gerald-lee",
 )
 HOLD_PRODUCT = {
     "rmb-robert-borash": "rmb-crosssite-courier-accession-lims-01",
@@ -93,6 +98,34 @@ HOLD_TRUTH_SYNC = (
     "lm-gtm-hold-sharp-20260831-02",
     "lm-gtm-hold-pace-20260831-02",
 )
+HOLD_COMMERCIAL = (
+    "solstice-david-sewell",
+    "rush-machinery-ryan-robbins",
+    "accreditedlabs-joe-moser",
+    "packsize-eric-fisher",
+    "sanguine-gerald-lee",
+)
+HOLD_COMMERCIAL_DEMAND = {
+    "solstice-david-sewell": "solstice-batch-coa-transition-ledger-01",
+    "rush-machinery-ryan-robbins": "rush-machinery-machine-service-evidence-ledger-01",
+    "accreditedlabs-joe-moser": "accreditedlabs-multibrand-certificate-integration-gate-01",
+    "packsize-eric-fisher": "packsize-iso9001-process-evidence-binder-01",
+    "sanguine-gerald-lee": "sanguine-multispecimen-collection-window-validator-01",
+}
+HOLD_COMMERCIAL_EVENTS = (
+    "lm-gtm-hold-solstice-20260901-01",
+    "lm-gtm-hold-rush-20260901-01",
+    "lm-gtm-hold-accreditedlabs-20260901-01",
+    "lm-gtm-hold-packsize-20260901-01",
+    "lm-gtm-hold-sanguine-20260901-01",
+)
+HOLD_COMMERCIAL_SLACK = {
+    "solstice-david-sewell": "slack:C0BTURDA3PW:1788233908.920909",
+    "rush-machinery-ryan-robbins": "slack:C0BTURDA3PW:1788233908.456719",
+    "accreditedlabs-joe-moser": "slack:C0BTURDA3PW:1788233908.098099",
+    "packsize-eric-fisher": "slack:C0BTURDA3PW:1788233907.611529",
+    "sanguine-gerald-lee": "slack:C0BTURDA3PW:1788233837.433259",
+}
 BRIEF_KEYS = {
     "id",
     "lane",
@@ -141,15 +174,15 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(truth["transport_actions"], 0)
         self.assertEqual(truth["calls_booked"], 0)
         self.assertEqual(truth["mailbox"], "NEEDS_OWNER_MAILBOX")
-        self.assertEqual(truth["live_next_actions"], 50)
+        self.assertEqual(truth["live_next_actions"], 55)
         self.assertEqual(truth["hot_next_actions"], 11)
-        self.assertEqual(truth["hold_build_actions"], 15)
+        self.assertEqual(truth["hold_build_actions"], 20)
         self.assertEqual(truth["sent_awaiting_dnr_actions"], 10)
-        self.assertEqual(truth["external_prospects"], 39)
+        self.assertEqual(truth["external_prospects"], 44)
         self.assertEqual(truth["inbound_contacts"], 11)
         self.assertEqual(truth["seller_context_rows"], 4)
-        self.assertEqual(truth["overlay_events"], 42)
-        self.assertEqual(truth["index_rows"], 56)
+        self.assertEqual(truth["overlay_events"], 47)
+        self.assertEqual(truth["index_rows"], 61)
         self.assertEqual(truth["research_entities_not_live"], 1000)
         self.assertTrue(built["state"]["public_projection_is_not_crm"])
         self.assertEqual(
@@ -363,6 +396,31 @@ class LmGtmIndexTests(unittest.TestCase):
         event_ids = {event["id"] for event in built["events"]}
         for event_id in HOLD_TRUTH_SYNC:
             self.assertIn(event_id, event_ids)
+        for event_id in HOLD_COMMERCIAL_EVENTS:
+            self.assertIn(event_id, event_ids)
+        self.assertEqual(by_id["solstice-david-sewell"]["organization"], "Solstice Advanced Materials")
+        self.assertEqual(by_id["solstice-david-sewell"]["person"], "David Sewell")
+        self.assertEqual(by_id["rush-machinery-ryan-robbins"]["organization"], "Rush Machinery")
+        self.assertEqual(by_id["rush-machinery-ryan-robbins"]["person"], "Ryan Robbins")
+        self.assertEqual(by_id["accreditedlabs-joe-moser"]["organization"], "Accredited Labs")
+        self.assertEqual(by_id["accreditedlabs-joe-moser"]["person"], "Joe Moser")
+        self.assertEqual(by_id["packsize-eric-fisher"]["organization"], "Packsize")
+        self.assertEqual(by_id["packsize-eric-fisher"]["person"], "Eric Fisher")
+        self.assertEqual(by_id["sanguine-gerald-lee"]["organization"], "Sanguine Biosciences")
+        self.assertEqual(by_id["sanguine-gerald-lee"]["person"], "Gerald Lee")
+        for name, demand in HOLD_COMMERCIAL_DEMAND.items():
+            row = by_id[name]
+            self.assertIn(demand, row["next_action"])
+            self.assertIn(HOLD_COMMERCIAL_SLACK[name], row["source_paths"])
+            self.assertEqual(row["decision"], "HOLD_BUILD_AND_VERIFY")
+            self.assertNotIn(name, hot_ids)
+            self.assertFalse(any(path.startswith("mailto:") for path in row["source_paths"]))
+        named = built["state"]["named_subjects"]
+        for name in HOLD_COMMERCIAL:
+            self.assertIn(name, named)
+            self.assertIn("HOLD_BUILD_AND_VERIFY", named[name])
+            self.assertIn(HOLD_COMMERCIAL_DEMAND[name], named[name])
+            self.assertIn("PRE-SALE TRANSPORT NONE", named[name])
 
     def test_leads_are_pointers_without_contact_book(self) -> None:
         built = idx.build_index()
@@ -394,6 +452,11 @@ class LmGtmIndexTests(unittest.TestCase):
             "support@",
             "tim@jov",
             "apatseev@",
+            "Ryan@",
+            "Rushmachinery.com",
+            "800-929-3070",
+            "929-3070",
+            "linkedin.com/in/",
         )
         for token in forbidden:
             self.assertNotIn(token, blob)
@@ -732,7 +795,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertIn("composed_at", header)
         self.assertEqual(header["composed_at"], idx.build_index()["state"]["composed_at"])
         self.assertEqual(header["hot"], 11)
-        self.assertEqual(header["hold"], 15)
+        self.assertEqual(header["hold"], 20)
         self.assertEqual(header["sent_dnr"], 10)
         self.assertEqual(header["occupied"], 0)
         self.assertEqual(header["cash_usd"], 0)
@@ -770,17 +833,21 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(contract["list_brief"], "python3 host/lm_gtm_index.py brief")
         self.assertEqual(
             contract["claim"],
-            "python3 host/lm_gtm_index.py claim <subject> --owner <you>",
+            "python3 host/lm_gtm_index.py claim SUBJECT --owner YOU",
         )
         self.assertEqual(
             contract["release"],
-            "python3 host/lm_gtm_index.py release <subject> --owner <you>",
+            "python3 host/lm_gtm_index.py release SUBJECT --owner YOU",
         )
         self.assertEqual(
             contract["append_event"],
-            'python3 host/lm_gtm_index.py append-event --subject <id> --id <event> --body "<note>"',
+            'python3 host/lm_gtm_index.py append-event --subject SUBJECT --id EVENT_ID --body "NOTE"',
         )
-        self.assertIn("claim <subject>", contract["claim"])
+        self.assertIn("claim SUBJECT --owner YOU", contract["claim"])
+        self.assertNotIn("<subject>", contract["claim"])
+        self.assertNotIn("<", contract["claim"])
+        self.assertNotIn(">", contract["claim"])
+        self.assertEqual(contract["claim"], idx.CONTRACT["claim"])
         self.assertNotEqual(
             contract["claim"],
             "python3 host/lm_gtm_index.py claim --owner ",
@@ -788,7 +855,7 @@ class LmGtmIndexTests(unittest.TestCase):
         blob = proc.stdout
         self.assertIsNone(EMAIL_RE.search(blob))
         self.assertIsNone(PHONE_RE.search(blob))
-        for token in ("execdir@", "jpereira@", "hbest@", "info@5ktech", "sales@integrisit", "halo.live", "support@", "tim@jov"):
+        for token in ("execdir@", "jpereira@", "hbest@", "info@5ktech", "sales@integrisit", "halo.live", "support@", "tim@jov", "Ryan@", "800-929-3070", "linkedin.com/in/"):
             self.assertNotIn(token, blob)
 
     def test_sent_lists_all_dnr_and_none_are_hot(self) -> None:
@@ -852,6 +919,10 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(sorted(hold_ids), sorted(HOLD_BUILD))
         self.assertIsNone(EMAIL_RE.search(hold_cli))
         self.assertIsNone(PHONE_RE.search(hold_cli))
+        for name in HOLD_COMMERCIAL:
+            self.assertIn(name, hold_ids)
+        for token in ("Ryan@", "800-929-3070", "linkedin.com/in/", "Boca Biolistics", "LabConnect", "Veloxity"):
+            self.assertNotIn(token, hold_cli)
 
     def test_show_default_is_compact_without_pii(self) -> None:
         shown = idx.show_subject("composio")
@@ -879,6 +950,7 @@ class LmGtmIndexTests(unittest.TestCase):
             ("lm-gtm-floor-sync-20260831-01", "ce1482ef"),
             ("lm-gtm-agent-brief-20260831-01", "5727847f"),
             ("lm-gtm-truth-sync-20260831-02", "4edb7d70"),
+            ("lm-gtm-contract-brief-20260901-01", "8a02a330"),
         ):
             path = ROOT / "p" / f"{name}.md"
             self.assertTrue(path.is_file(), name)
@@ -900,8 +972,21 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertTrue(contract_receipt.is_file())
         self.assertIn("id: lm-gtm-contract-brief-20260901-01", contract_receipt.read_text(encoding="utf-8"))
         door = (ROOT / "lm-gtm-index.html").read_text(encoding="utf-8")
-        self.assertIn("Contract claim is positional", door)
-        self.assertIn("claim &lt;subject&gt; --owner &lt;you&gt;", door)
+        self.assertIn("TOKEN form", door)
+        self.assertIn("claim SUBJECT --owner YOU", door)
+        self.assertNotIn("claim &lt;subject&gt;", door)
+        self.assertNotIn("<subject>", door)
+        tokens_receipt = ROOT / "p" / "lm-gtm-contract-tokens-leads-20260901-01.md"
+        self.assertTrue(tokens_receipt.is_file())
+        tokens_text = tokens_receipt.read_text(encoding="utf-8")
+        self.assertIn("id: lm-gtm-contract-tokens-leads-20260901-01", tokens_text)
+        self.assertNotIn("id: lm-gtm-contract-tokens-leads-20260901-01", contract_receipt.read_text(encoding="utf-8"))
+        raw_claim = json.loads((ROOT / "revenue" / "lm_gtm_index" / "state.json").read_text(encoding="utf-8"))["contract"]["claim"]
+        self.assertEqual(raw_claim, "python3 host/lm_gtm_index.py claim SUBJECT --owner YOU")
+        self.assertIn("claim SUBJECT --owner YOU", raw_claim)
+        self.assertNotIn("<subject>", raw_claim)
+        self.assertNotIn("<", raw_claim)
+        self.assertNotIn(">", raw_claim)
 
     def test_brief_stale_warning_after_twelve_hours(self) -> None:
         import datetime as dt
