@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-09-01T16:03:12Z",
-    "base_main_sha": "9181f47d38ab1800911d44a181a1048f1e7a411a",
+    "observed_at": "2026-09-01T21:58:58Z",
+    "base_main_sha": "31503d4fc00ae2be15c5bb4381c504eb3fbcb831",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788278726.341219",
-  "source_id": "codex-agent-address-memory-liveness-activation-20260901-01",
+  "slack_ts": "1788300060.035449",
+  "source_id": "codex-vercel-capacity-activation-20260901-01",
   "supersedes_source_ids": [
+    "codex-agent-address-memory-liveness-activation-20260901-01",
     "codex-commons-skill-toolset-consumption-activation-20260901-01",
     "codex-github-repository-portfolio-activation-20260901-01",
     "codex-commons-data-corpus-alias-index-activation-20260831-01",
@@ -62,7 +63,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — agent addressing now produces an exact receipt-freshness routing projection without inferring session reachability",
+  "subject": "MASTER RESOURCE LEDGER — Vercel now produces an authenticated aggregate deployment-routing decision without persisting account identifiers or deploying",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -98,7 +99,8 @@
     "inventory/resources/records/codex-commons-data-corpus-alias-index-activation-20260831-01.json",
     "inventory/resources/records/codex-github-repository-portfolio-activation-20260901-01.json",
     "inventory/resources/records/codex-commons-skill-toolset-consumption-activation-20260901-01.json",
-    "inventory/resources/records/codex-agent-address-memory-liveness-activation-20260901-01.json"
+    "inventory/resources/records/codex-agent-address-memory-liveness-activation-20260901-01.json",
+    "inventory/resources/records/codex-vercel-capacity-activation-20260901-01.json"
   ],
   "priority_queue": [],
   "hands_off": [
@@ -1107,22 +1109,22 @@
       "name": "vercel",
       "kind": "HOSTING_CONNECTOR",
       "capacity": "LIVE",
-      "stage": "REACHABLE",
+      "stage": "PRODUCING",
       "condition": "CONSTRAINED",
-      "holder": "Bryce",
-      "authority": "READ_CENSUS; DEPLOY_ONLY_FOR_EXACT_CONSUMER",
-      "consumer": "Spark endpoint exists but project visibility is incomplete",
-      "value": "Connected Hobby hosting road",
-      "next_action": "Reconcile visibility only for a concrete task; do not infer zero projects.",
-      "source": "Vercel census and independent Spark probe",
-      "evidence_ts": "2026-08-27T16:07:22Z",
-      "auth_surface": "Vercel connector read",
-      "exact_safe_probe": "one Hobby team answered; visible project list again returned exactly zero while the independently addressed Spark endpoint completed a live MCP evidence call",
-      "rate_plan_boundary": "zero visible projects is not permission to deploy; external Spark reach is separate evidence",
-      "assigned_backlog": "none until concrete consumer",
-      "last_receipt": "codex-spark-mcp-consumption-activation-20260827-01",
-      "last_used_at": "2026-08-27T16:07:22Z",
-      "stale_after": "P7D",
+      "holder": "Bryce / Commons",
+      "authority": "AUTHENTICATED_READ; AGGREGATE_ONLY; NO_DEPLOY_OR_CONFIG_MUTATION",
+      "consumer": "Commons Queue Manager and deployment routers deciding whether a current Vercel project road exists",
+      "value": "Authenticated aggregate: one Hobby-plan team, zero projects, zero ready deployment routes, and exact NO_PROJECT_READY routing",
+      "next_action": "Do not assign Vercel deployment work until a fresh aggregate contains a project; inspect that project separately and preserve identifiers privately.",
+      "source": "authenticated Vercel connector aggregate; inventory/resources/vercel_capacity.json",
+      "evidence_ts": "2026-09-01T21:58:58Z",
+      "auth_surface": "connected Vercel OAuth read; public projection is aggregate-only",
+      "exact_safe_probe": "list_teams succeeded with one Hobby-plan team; list_projects returned zero; deployment query skipped because no project ID exists",
+      "rate_plan_boundary": "A connected team is account capacity, not a deployable project. Zero projects does not mean zero account capacity, and no deployment was created.",
+      "assigned_backlog": "fail-closed deployment routing only; no project, deployment, domain, environment, or configuration mutation",
+      "last_receipt": "codex-vercel-capacity-activation-20260901-01",
+      "last_used_at": "2026-09-01T21:58:58Z",
+      "stale_after": "P7D or next Vercel team/project change",
       "priority": 25
     },
     {
