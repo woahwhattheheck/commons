@@ -1,10 +1,8 @@
 """Headless-capable application controller and policy enforcement point."""
 
-from __future__ import annotations
-
 import json
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Dict, Iterable, List, Optional
 
 from charttrace.legal import (
     ConsentLedger,
@@ -17,16 +15,8 @@ from .audit import append_receipt
 from .cases import CaseLifecycle, CaseRecord
 from .evidence import SourceInput, seal_sources, synthetic_peer_output
 from .offline_counsel import import_counsel_review
-from .paths import PathEgressError, assert_local_filesystem_path
-from .storage import LocalStateStore
-from .vault import (
-    VAULT_MODE,
-    VaultError,
-    build_envelope,
-    initialize_verifier,
-    inspect_envelope,
-    verify_secret,
-)
+from .paths import PathBoundaryError, validate_local_output_path
+from .storage import LocalStateStore, VaultError
 
 
 APP_VERSION = "1.1"
@@ -59,13 +49,9 @@ class ChartTraceController:
         self.persist = persist
         self.unlocked = False
         self.operator = ""
+        self._session_secret: Optional[str] = None
         self.consent = ConsentLedger()
         self.cases: Dict[str, CaseRecord] = {}
-        self.vault_mode = VAULT_MODE
-        self._verifier: Optional[Dict[str, Any]] = None
-        self._sealed_envelope: Dict[str, Any] = {}
-        if persist:
-            self._load_vault_header()
 
     @property
     def legal_state(self) -> LegalState:
@@ -77,36 +63,41 @@ class ChartTraceController:
 
     def unlock(self, local_secret: str, operator: str = "Local operator") -> None:
         if not local_secret:
-            raise ApplicationLockedError("Unlock requires a nonempty local secret.")
+            raise ApplicationLockedError("Unlock requires a non-empty local secret.")
         if not operator.strip():
             raise ApplicationLockedError("Operator name is required.")
-        try:
-            if self._verifier is not None:
-                verify_secret(local_secret, self._verifier)
-            elif self._sealed_envelope:
-                classification = inspect_envelope(self._sealed_envelope)
-                if classification.get("legacy_plaintext"):
-                    raise VaultError(
-                        "Plaintext or unverified state cannot be unlocked."
-                    )
-                raise VaultError("Vault verifier is missing.")
-            else:
-                self._verifier = initialize_verifier(local_secret)
-        except VaultError as error:
-            raise ApplicationLockedError(str(error)) from error
-        self.operator = operator.strip()
-        self.unlocked = True
+        self.unlocked = False
+        self.operator = ""
+        self._session_secret = None
+        self.consent = ConsentLedger()
+        self.cases = {}
         if self.persist:
-            self._materialize_consent_only()
+            try:
+                self._load(local_secret)
+            except VaultError as error:
+                raise ApplicationLockedError(
+                    "Vault unlock failed. The secret or local vault format is invalid."
+                ) from error
+        self.operator = operator.strip()
+        self._session_secret = local_secret
+        self.unlocked = True
+        if self.persist and not self.store.exists:
             self._save()
 
     def lock(self) -> None:
         self.unlocked = False
         self.operator = ""
+        self._session_secret = None
+        if self.persist:
+            self.consent = ConsentLedger()
+            self.cases = {}
 
     def accept_legal(self, acknowledgements: Dict[str, bool], accepted_by: str) -> None:
+        self._require_unlocked()
+        self._revoke_all_transfers(
+            "Terms or authority acceptance changed; new recipient authorization required."
+        )
         self.consent.accept(acknowledgements, accepted_by)
-        self._revoke_all_transfer_authorizations("terms/authority reacceptance")
         for case in self.cases.values():
             if case.lifecycle in {
                 CaseLifecycle.DRAFT,
@@ -130,21 +121,39 @@ class ChartTraceController:
         self._save()
 
     def place_authority_hold(self, reason: str) -> None:
+        self._require_unlocked()
         self.consent.place_authority_hold(reason)
-        self._revoke_all_transfer_authorizations("authority hold")
+        self._revoke_all_transfers(
+            "Authority hold invalidated prior recipient authorization."
+        )
         for case in self.cases.values():
             append_receipt(case, "AUTHORITY_HOLD", "Analysis and release gates closed.")
         self._save()
 
     def clear_authority_hold(self) -> None:
+        self._require_unlocked()
         self.consent.clear_authority_hold()
-        self._revoke_all_transfer_authorizations("authority hold cleared")
+        self._revoke_all_transfers(
+            "Authority status changed; fresh terms and recipient authorization required."
+        )
         for case in self.cases.values():
             append_receipt(
                 case,
                 "AUTHORITY_HOLD_CLEARED",
                 "Fresh legal acceptance is required.",
             )
+        self._save()
+
+    def require_terms_reacceptance(self, reason: str) -> None:
+        self._require_unlocked()
+        if not reason.strip():
+            raise ValueError("A terms-change reason is required.")
+        self.consent.require_reacceptance()
+        self._revoke_all_transfers(
+            "Terms changed; prior recipient authorization invalidated."
+        )
+        for case in self.cases.values():
+            append_receipt(case, "TERMS_REACCEPT_REQUIRED", reason.strip())
         self._save()
 
     def create_case(self, name: str) -> CaseRecord:
@@ -176,12 +185,7 @@ class ChartTraceController:
             raise AnalysisBlockedError(
                 "Case must be READY_TO_INGEST before secure ingest."
             )
-        checked: List[SourceInput] = []
-        for source in sources:
-            if not isinstance(source, tuple):
-                assert_local_filesystem_path(source)
-            checked.append(source)
-        case.sources = seal_sources(checked)
+        case.sources = seal_sources(sources)
         case.transition(CaseLifecycle.INGESTED_SEALED)
         append_receipt(
             case,
@@ -251,22 +255,15 @@ class ChartTraceController:
         self._require_unlocked()
         case = self.get_case(case_id)
         review = import_counsel_review(bundle_path, case_id)
-        prior_lifecycle = case.lifecycle
-        prior_hold = self.consent.authority_hold_reason
         append_receipt(
             case,
             "OFFLINE_COUNSEL_REVIEW_IMPORTED",
             (
-                "Non-authoritative review record imported; "
-                f"claimed_decision={review['claimed_decision']}; "
-                "does not approve release or clear a hold."
+                f"Non-authoritative reported decision imported: "
+                f"{review['reported_decision']}."
             ),
         )
         self._save()
-        if case.lifecycle is not prior_lifecycle:
-            raise RuntimeError("Counsel import must not change lifecycle.")
-        if self.consent.authority_hold_reason != prior_hold:
-            raise RuntimeError("Counsel import must not clear an authority hold.")
         return review
 
     def set_recipient(
@@ -302,7 +299,9 @@ class ChartTraceController:
             authorized_by,
             TRUST_CENTER_VERSION,
         )
-        case.recipient.authorization_epoch = self.consent.authority_epoch
+        if not self.consent.acceptance_id:
+            raise ReleaseBlockedError("A current legal acceptance receipt is required.")
+        case.recipient.legal_acceptance_id = self.consent.acceptance_id
         append_receipt(
             case,
             "TRANSFER_AUTHORIZED",
@@ -314,15 +313,11 @@ class ChartTraceController:
     def build_release(self, case_id: str, destination: Path) -> Path:
         self._require_release_gate(case_id)
         case = self.get_case(case_id)
-        destination = assert_local_filesystem_path(destination)
-        if destination.parent.exists() or destination.parent == destination:
-            pass
         try:
-            if destination.parent != destination:
-                assert_local_filesystem_path(destination.parent)
-                destination.parent.mkdir(parents=True, exist_ok=True)
-        except PathEgressError:
-            raise
+            destination = validate_local_output_path(destination)
+        except PathBoundaryError as error:
+            raise ReleaseBlockedError(str(error)) from error
+        destination.parent.mkdir(parents=True, exist_ok=True)
         payload = {
             "format": "charttrace-release-v1.1",
             "build_label": BUILD_LABEL,
@@ -409,16 +404,6 @@ class ChartTraceController:
         except KeyError as error:
             raise KeyError(f"Unknown case: {case_id}") from error
 
-    def _revoke_all_transfer_authorizations(self, reason: str) -> None:
-        for case in self.cases.values():
-            if case.recipient.authorized_at or case.recipient.authorization_epoch is not None:
-                case.recipient.revoke()
-                append_receipt(
-                    case,
-                    "TRANSFER_AUTH_REVOKED",
-                    f"Named-recipient authorization invalidated ({reason}).",
-                )
-
     def _require_unlocked(self) -> None:
         if not self.unlocked:
             raise ApplicationLockedError("Unlock ChartTrace before accessing cases.")
@@ -442,50 +427,45 @@ class ChartTraceController:
             )
         if case.recipient.authorization_version != TRUST_CENTER_VERSION:
             raise ReleaseBlockedError("Recipient transfer authorization is outdated.")
-        if case.recipient.authorization_epoch != self.consent.authority_epoch:
+        if case.recipient.legal_acceptance_id != self.consent.acceptance_id:
             raise ReleaseBlockedError(
-                "Recipient transfer authorization is stale after a terms "
-                "or authority change."
+                "Recipient authorization predates current legal acceptance."
             )
 
-    def _load_vault_header(self) -> None:
-        if not self.store.state_path.exists():
-            return
-        try:
-            value = self.store.load()
-        except VaultError:
-            raise
+    def _revoke_all_transfers(self, detail: str) -> None:
+        for case in self.cases.values():
+            if case.recipient.authorized_at:
+                case.recipient.revoke()
+                append_receipt(case, "TRANSFER_AUTHORIZATION_REVOKED", detail)
+
+    def _load(self, secret: str) -> None:
+        value = self.store.load(secret)
         if not value:
             return
-        classification = inspect_envelope(value)
-        if classification.get("legacy_plaintext"):
-            raise VaultError("Plaintext or unverified state cannot be unlocked.")
-        self._sealed_envelope = value
-        self._verifier = classification.get("secret_verifier")
-        consent_value = value.get("consent") or {}
-        if consent_value:
-            self.consent = ConsentLedger.from_dict(consent_value)
-
-    def _materialize_consent_only(self) -> None:
-        """Restore legal state only. Case names and sources stay out of the stub."""
-        if not self._sealed_envelope:
-            return
-        consent_value = self._sealed_envelope.get("consent") or {}
-        if consent_value:
-            self.consent = ConsentLedger.from_dict(consent_value)
+        self.consent = ConsentLedger.from_dict(value.get("consent", {}))
+        self.cases = {
+            item.case_id: item
+            for item in (
+                CaseRecord.from_dict(case_value)
+                for case_value in value.get("cases", [])
+            )
+        }
 
     def _save(self) -> None:
         if not self.persist:
             return
-        if self._verifier is None:
-            return
-        self.store.save(
-            build_envelope(
-                verifier=self._verifier,
-                consent=self.consent.to_dict(),
-                cases=[case.to_dict() for case in self.cases.values()],
-                app_version=APP_VERSION,
-                build_label=BUILD_LABEL,
-                signing_state=SIGNING_STATE,
+        if not self._session_secret or not self.unlocked:
+            raise ApplicationLockedError(
+                "Unlock the authenticated local vault before saving."
             )
+        self.store.save(
+            {
+                "schema_version": 1,
+                "app_version": APP_VERSION,
+                "build_label": BUILD_LABEL,
+                "signing_state": SIGNING_STATE,
+                "consent": self.consent.to_dict(),
+                "cases": [case.to_dict() for case in self.cases.values()],
+            },
+            self._session_secret,
         )
