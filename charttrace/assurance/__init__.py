@@ -1,21 +1,5 @@
-"""ChartTrace synthetic assurance. No live model. No PHI."""
+"""Assurance package for ChartTrace synthetic oracle."""
 
-from charttrace.assurance.evaluate import (
-    ASSURANCE_VERSION,
-    ReviewPacket,
-    SurfacedLead,
-    evaluate_packet,
-    gold_packet,
-    packet_to_canonical_bytes,
-)
-from charttrace.assurance.thresholds import RELEASE_THRESHOLDS
+from .tags import count_tags, iter_tags
 
-__all__ = (
-    "ASSURANCE_VERSION",
-    "RELEASE_THRESHOLDS",
-    "ReviewPacket",
-    "SurfacedLead",
-    "evaluate_packet",
-    "gold_packet",
-    "packet_to_canonical_bytes",
-)
+__all__ = ["count_tags", "iter_tags"]
