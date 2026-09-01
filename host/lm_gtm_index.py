@@ -11,7 +11,8 @@ It does not rewrite website-people-email-book loop.json schema v2.
 Live send is refused. Cash stays USD 0 without payment evidence.
 
 Agent floor: `python3 host/lm_gtm_index.py brief` lists compact HOT
-rows. `sent` lists HARD_DO_NOT_RESEND. Occupancy (`claim` / `release`)
+rows. `sent` lists HARD_DO_NOT_RESEND including bounced DNR.
+OWNER_HOLD is live and not hot. Occupancy (`claim` / `release`)
 is an overlay event on the owner field; it does not rewrite loop.json
 and is not an admission gate.
 """
@@ -49,7 +50,11 @@ STATUS_TYPE = "STATUS"
 ALLOWED_EVENT_TYPES = POINTER_TYPES | OCCUPANCY_TYPES | {NOTE_TYPE, STATUS_TYPE}
 LIVE_ROLES = frozenset({"external_prospect", "inbound_contact"})
 HOLD_DECISIONS = frozenset({"HOLD_DO_NOT_RESEND", "HOLD_DO_NOT_CONTACT"})
+OWNER_HOLD_DECISIONS = frozenset({"OWNER_HOLD", "DNR_OUTREACH", "NOT_HOT"})
+SENT_DNR_DECISIONS = frozenset({"SENT_AWAITING_REPLY", "BOUNCED"})
 HOLD_BUILD_DECISION = "HOLD_BUILD_AND_VERIFY"
+STALE_AFTER = dt.timedelta(hours=12)
+STALE_WARNING = "overlay composed_at older than 12h; re-verify Slack before acting"
 DUE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 HOT_RANK = {
     "material_reply": 0,
@@ -115,7 +120,7 @@ COMPOSE = {
     "marketing_sales": "public research universe; Airtable remains canonical CRM",
     "outreach_receipts": "DNR / collision receipts; not a contact book",
     "swarm_mail": "public inbox manifest; private addresses stay off git",
-    "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; STATUS refresh; HOLD_BUILD_AND_VERIFY; not a contact book",
+    "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; STATUS refresh of decision/dnr/due; OWNER_HOLD; BOUNCED DNR; HOLD_BUILD_AND_VERIFY; not a contact book",
 }
 
 
@@ -274,12 +279,12 @@ def hot_class(row: dict[str, Any]) -> str | None:
     if row.get("role") not in LIVE_ROLES or not row.get("live"):
         return None
     decision = row.get("decision")
-    if decision == "MATERIAL_REPLY":
-        return "material_reply"
-    if decision == HOLD_BUILD_DECISION:
+    if decision == HOLD_BUILD_DECISION or decision in OWNER_HOLD_DECISIONS or decision == "BOUNCED":
         return None
     if row.get("dnr") or decision in HOLD_DECISIONS:
         return None
+    if decision == "MATERIAL_REPLY":
+        return "material_reply"
     if decision == "SENT_AWAITING_REPLY":
         return "sent_awaiting_reply"
     if decision == "READY_TO_DRAFT":
@@ -315,15 +320,13 @@ def hold_build_next_actions(paths: dict[str, Path] | None = None) -> list[dict[s
     return rows
 
 
+def is_sent_dnr_row(row: dict[str, Any]) -> bool:
+    return bool(row.get("live") and row.get("dnr") and row.get("decision") in SENT_DNR_DECISIONS)
+
+
 def sent_awaiting_dnr_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
     built = build_index(paths)
-    rows = [
-        row
-        for row in built["rows"]
-        if row.get("live")
-        and row.get("decision") == "SENT_AWAITING_REPLY"
-        and bool(row.get("dnr"))
-    ]
+    rows = [row for row in built["rows"] if is_sent_dnr_row(row)]
     rows.sort(key=lambda row: row["id"])
     return rows
 
@@ -349,11 +352,15 @@ def compact_lane(row: dict[str, Any]) -> str:
     klass = hot_class(row)
     if klass:
         return klass
+    if row.get("decision") == "OWNER_HOLD":
+        return "owner_hold"
+    if row.get("decision") == "BOUNCED":
+        return "bounced"
     if row.get("decision") == "SENT_AWAITING_REPLY" and row.get("dnr"):
         return "sent_dnr"
     if row.get("decision") == HOLD_BUILD_DECISION:
         return "hold_build"
-    if row.get("dnr") or row.get("decision") in HOLD_DECISIONS:
+    if row.get("dnr") or row.get("decision") in HOLD_DECISIONS | OWNER_HOLD_DECISIONS:
         return "dnr"
     if row.get("live"):
         return "live"
@@ -383,16 +390,25 @@ def compact_row(row: dict[str, Any], *, lane: str | None = None) -> dict[str, An
     return compact
 
 
-def brief_header(paths: dict[str, Path] | None = None, built: dict[str, Any] | None = None) -> dict[str, Any]:
+def brief_header(
+    paths: dict[str, Path] | None = None,
+    built: dict[str, Any] | None = None,
+    now: dt.datetime | None = None,
+) -> dict[str, Any]:
     built = built or build_index(paths)
     truth = built["state"]["truth"]
+    composed = str(built["state"]["composed_at"])
     header = {
         "hot": int(truth["hot_next_actions"]),
         "hold": int(truth["hold_build_actions"]),
         "sent_dnr": int(truth["sent_awaiting_dnr_actions"]),
         "cash_usd": 0,
         "canonical_crm": CANONICAL_CRM,
+        "composed_at": composed,
     }
+    instant = now or dt.datetime.now(dt.timezone.utc)
+    if instant - parse_time(composed) > STALE_AFTER:
+        header["stale_warning"] = STALE_WARNING
     _assert_no_pii_in_index_blob(json.dumps(header, sort_keys=True, ensure_ascii=False))
     return header
 
@@ -402,7 +418,7 @@ def brief_hot_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]
 
 
 def compact_sent_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
-    return [compact_row(row, lane="sent_dnr") for row in sent_awaiting_dnr_rows(paths)]
+    return [compact_row(row) for row in sent_awaiting_dnr_rows(paths)]
 
 
 def compact_hold_rows(paths: dict[str, Path] | None = None) -> list[dict[str, Any]]:
@@ -551,6 +567,18 @@ def apply_overlay_events(subjects: dict[str, dict[str, Any]], events: list[dict[
                     row["next_action"] = event["next_action"]
                 if event.get("due"):
                     row["due"] = event["due"]
+                if event.get("decision"):
+                    row["decision"] = event["decision"]
+                if event.get("dnr") is True:
+                    row["dnr"] = True
+                elif event.get("dnr") is False:
+                    row["dnr"] = False
+                if event.get("route_kind"):
+                    row["route_kind"] = event["route_kind"]
+                if event.get("route_ref"):
+                    row["route_ref"] = event["route_ref"]
+                if event.get("organization") and not row["organization"]:
+                    row["organization"] = event["organization"]
             elif etype == "CLAIM" or etype == "STEAL":
                 row["owner"] = event.get("owner") or event.get("from") or "UNSEATED"
             elif etype == "RELEASE":
@@ -736,11 +764,7 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
     live_rows = [row for row in rows if row["live"]]
     hot_rows = [row for row in rows if hot_class(row)]
     hold_rows = [row for row in rows if row.get("live") and row.get("decision") == HOLD_BUILD_DECISION]
-    sent_dnr_rows = [
-        row
-        for row in rows
-        if row.get("live") and row.get("decision") == "SENT_AWAITING_REPLY" and bool(row.get("dnr"))
-    ]
+    sent_dnr_rows = [row for row in rows if is_sent_dnr_row(row)]
     header = {
         "schema_version": SCHEMA_VERSION,
         "kind": KIND_HEADER,
@@ -794,20 +818,25 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
             "signoz": "external_prospect RESEARCH_REQUIRED from loop.json + candidates.json",
             "metaforms": "EXISTING_CRM_RECORD airtable:recWHbHxQoQfGhS0q; HOLD_DO_NOT_RESEND",
             "anythingllm-mintplex": "HOLD_DO_NOT_RESEND from receipts + loop.json",
-            "city-of-billings-bid-1421": "MATERIAL_REPLY Bid 1421 addenda 1-5 received; HOLD / NO SUBMISSION; production runners in flight; no bid submitted; award target 2026-09-28",
+            "city-of-billings-bid-1421": "OWNER_HOLD / DNR_OUTREACH / NOT_HOT; live owner path in #billings-1421-compliance; EXISTING_CRM_RECORD airtable:rec2mCS4ETa8FOvqN; agents do not send or contact Cheri",
             "pcl-ryan-ott": "HOLD_BUILD_AND_VERIFY demand pcl-scope-sla-routing-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
             "canyon-wendy-mach": "HOLD_BUILD_AND_VERIFY demand canyon-multisite-regulated-intake-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
             "ace-qat-erick-sharp": "HOLD_BUILD_AND_VERIFY demand ace-qat-thermal-rheology-capacity-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
             "sgspsi-kyle-copeland": "HOLD_BUILD_AND_VERIFY demand sgspsi-high-throughput-thermal-rheology-lineage-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "sharp-james-hamilton": "HOLD_BUILD_AND_VERIFY demand sharp-rtu-vial-isolator-lineage-lims-01; PRE-SALE TRANSPORT NONE",
             "csanalytical-brandon-zurawlow": "HOLD_BUILD_AND_VERIFY demand csanalytical-expansion-crossline-evidence-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
             "rmb-robert-borash": "HOLD_BUILD_AND_VERIFY demand rmb-crosssite-courier-accession-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
             "preinnewhof-steve-bylsma": "HOLD_BUILD_AND_VERIFY demand preinnewhof-pfas-fieldblank-gate-lims-01; runner on main; PRE-SALE TRANSPORT NONE",
+            "luvak-dean-gaskill": "HOLD_BUILD_AND_VERIFY demand luvak-ssa-lab-analytics-cutover-lims-01; PRE-SALE TRANSPORT NONE",
+            "mga-marshall-houston": "HOLD_BUILD_AND_VERIFY demand mga-alabama-materials-program-lims-01; PRE-SALE TRANSPORT NONE",
             "msp-integris": "EXISTING_CRM_RECORD airtable:recyxAWjUjrUY1Xln SENT/NO_REPLY/HARD_DO_NOT_RESEND",
+            "mvmtc-craig-riviello": "HOLD_BUILD_AND_VERIFY demand mvmtc-aero-fastener-evidence-lims-01; PRE-SALE TRANSPORT NONE",
+            "pace-amanda-yoakum": "HOLD_BUILD_AND_VERIFY demand pace-lebanon-microbial-volume-evidence-lims-01; PRE-SALE TRANSPORT NONE",
             "fuse-jovie-tim-white": "EXISTING_CRM_RECORD airtable:recBHZw2VsWWmALcR SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-avantstay-andrei-patseev": "EXISTING_CRM_RECORD airtable:recQL3RMLwizE6kgZ SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-odderon-phi-charles": "EXISTING_CRM_RECORD airtable:recIo5cgbxL96aQSn SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-immense-de-waal-immelman": "EXISTING_CRM_RECORD airtable:rec6SOShVG2fgZQi0 SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
-            "fuse-halo-ai-vito-strokov": "EXISTING_CRM_RECORD airtable:recIIo5M0lfUlYBXV SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
+            "fuse-halo-ai-vito-strokov": "EXISTING_CRM_RECORD airtable:recIIo5M0lfUlYBXV BOUNCED/GROUP_ROUTE_REJECTED/HARD_DO_NOT_RESEND",
         },
         "contract": {
             "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
