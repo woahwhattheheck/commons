@@ -35,6 +35,9 @@ Binary: `python test_bevsource_lab_pilot_qa_genealogy_lims.py`
 Engine: `bevsource_lab_pilot_qa_genealogy_lims.py`
 Door: `bevsource-lab-pilot-qa-genealogy-lims.html`
 Contract: `revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json`
+Manifest: `7e7cf0c84e236e440d413478416d270ad57e44f6c5f12febc2a9adee24ef4eaf`
+Audit: `6d92af5fd4bc70261b530b23d7e2f741af14b1f052d3f16c805c2e94abf6f3fd`
+Journal: `4b63ee99c0e1a1ab9f68a753c56a1264d85ad17a905d1538c16631ea44fab7b3`
 
 Synthetic/read-only. No production LIMS, readiness, product-release, or cash claim. No live interface, outreach, automatic release, or contact. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
 
