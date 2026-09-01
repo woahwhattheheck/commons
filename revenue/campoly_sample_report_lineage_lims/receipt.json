@@ -1,8 +1,8 @@
 {
-  "audit_sha256": "pending",
+  "audit_sha256": "328960f609da90b8cbb3279572879ebe00fbac2d50d9f632dd8ea6da2cb9a3ac",
   "buyer": "Norma Turner / Cambridge Polymer Group",
   "demand_id": "campoly-sample-report-lineage-lims-01",
-  "fixture_sha256": "pending",
+  "fixture_sha256": "18be9ecf40063c043f220a2b2b0b901c6b300a09236aab2d56cb07dfc691e016",
   "hold_counts": {
     "HOLD_BAG_FORM_MISMATCH": 4,
     "HOLD_DUPLICATE_ID": 4,
@@ -11,13 +11,13 @@
   },
   "holds": 20,
   "input_rows": 100,
-  "manifest_sha256": "pending",
+  "manifest_sha256": "5ec080a38670d6b96b3a8acc119144214774c25dcfef4901322c7cccf933da2e",
   "pre_sale_transport": "NONE",
   "ready": 80,
   "replay_additions": 0,
   "reports_released": 0,
   "reports_staged": 80,
-  "state": "BUILDING",
+  "state": "TESTED",
   "test_command": "python test_campoly_sample_report_lineage_lims.py",
   "truth_gate": "HOLD / BUILD-AND-VERIFY"
 }

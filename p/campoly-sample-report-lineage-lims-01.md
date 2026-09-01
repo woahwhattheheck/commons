@@ -12,9 +12,9 @@ resources: woahwhattheheck/commons current main
 
 ---
 
-PLAIN: BUILD CHECKPOINT `campoly-sample-report-lineage-lims-01`. Synthetic
-quote/PO/form/SDS/package-to-report lineage fixture implemented; verification
-receipt pending.
+PLAIN: TESTED `campoly-sample-report-lineage-lims-01`. Working synthetic
+quote/PO/form/SDS/package-to-report lineage fixture. 10/10 acceptance tests
+OK. Exactly 80 READY / 20 HOLD; replay adds 0.
 
 Buyer pairing: Norma Turner / Cambridge Polymer Group
 Owner: Cursor Cloud Agent
@@ -31,6 +31,9 @@ Frozen acceptance:
 - golden value, unit, qualifier, and report hashes remain linked
 - replay adds zero records
 - release requires an authorized named human
+- fixture_sha256 `18be9ecf40063c043f220a2b2b0b901c6b300a09236aab2d56cb07dfc691e016`
+- manifest_sha256 `5ec080a38670d6b96b3a8acc119144214774c25dcfef4901322c7cccf933da2e`
+- audit_sha256 `328960f609da90b8cbb3279572879ebe00fbac2d50d9f632dd8ea6da2cb9a3ac`
 
 Binary: `python test_campoly_sample_report_lineage_lims.py`
 Engine: `campoly_sample_report_lineage_lims.py`
