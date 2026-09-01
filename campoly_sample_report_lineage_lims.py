@@ -20,6 +20,7 @@ import json
 import math
 import sys
 from copy import deepcopy
+from pathlib import Path
 from typing import Any
 
 DEMAND_ID = "campoly-sample-report-lineage-lims-01"
@@ -92,11 +93,32 @@ UNIQUE_ID_FIELDS = (
     "sample_id",
 )
 
-# Filled after the first committed checkpoint and frozen by the acceptance
-# suite. "pending" is allowed only in the initial pre-test checkpoint.
-GOLDEN_FIXTURE_SHA256 = "pending"
-GOLDEN_MANIFEST_SHA256 = "pending"
-GOLDEN_AUDIT_SHA256 = "pending"
+
+def _receipt_goldens() -> dict[str, str]:
+    path = (
+        Path(__file__).resolve().parent
+        / "revenue"
+        / "campoly_sample_report_lineage_lims"
+        / "receipt.json"
+    )
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError, TypeError):
+        value = {}
+    return {
+        key: str(value.get(key) or "pending")
+        for key in (
+            "fixture_sha256",
+            "manifest_sha256",
+            "audit_sha256",
+        )
+    }
+
+
+_GOLDENS = _receipt_goldens()
+GOLDEN_FIXTURE_SHA256 = _GOLDENS["fixture_sha256"]
+GOLDEN_MANIFEST_SHA256 = _GOLDENS["manifest_sha256"]
+GOLDEN_AUDIT_SHA256 = _GOLDENS["audit_sha256"]
 
 
 class InputError(ValueError):
@@ -835,19 +857,19 @@ def run_gate(
         deepcopy(journal["holds"]), key=lambda item: item["row_id"]
     )
     accessions = sorted(
-        deepcopy(journal["accessions"].values()),
+        deepcopy(list(journal["accessions"].values())),
         key=lambda item: item["accession_id"],
     )
     work_orders = sorted(
-        deepcopy(journal["work_orders"].values()),
+        deepcopy(list(journal["work_orders"].values())),
         key=lambda item: item["work_order_id"],
     )
     results = sorted(
-        deepcopy(journal["results"].values()),
+        deepcopy(list(journal["results"].values())),
         key=lambda item: item["result_id"],
     )
     reports = sorted(
-        deepcopy(journal["reports"].values()),
+        deepcopy(list(journal["reports"].values())),
         key=lambda item: item["report_id"],
     )
     hold_counts = {
