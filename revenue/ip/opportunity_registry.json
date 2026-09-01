@@ -1,1 +1,101 @@
-PLACEHOLDER_USE_SHELL
+{
+  "schema_version": "commons-opportunity-registry/v1",
+  "kind": "OPPORTUNITY_REGISTRY",
+  "generated_at": "2026-08-28T17:15:00Z",
+  "generated_from_main": "6a09762980a0597fafc47aff620a4ac633e93c1f",
+  "as_of": "2026-08-28T17:15:00Z",
+  "scope": "Non-dilutive commercialization research for verified public Commons technology. Compile grants, pilots, licensing, procurement, and research partnership rows from exact repository receipts. Do not submit, accept terms, or claim awards.",
+  "nonclaims": [
+    "This registry is research and packaging, not filing.",
+    "Applicant eligibility is UNKNOWN for every row.",
+    "Zero applications submitted, zero awards, zero partnerships, zero cash.",
+    "Expected value stays UNKNOWN; official funding text is not a forecast.",
+    "Live Commons offers are prices, not receipts of payment.",
+    "Do not submit, accept terms, or mint legal identity from this door."
+  ],
+  "legal_scope": {
+    "applicant_eligibility_adjudicated": false,
+    "submission_readiness_claimed": false,
+    "application_submitted": false,
+    "award_claimed": false,
+    "partnership_claimed": false,
+    "ip_rights_claimed": false,
+    "funding_success_claimed": false,
+    "cash_received_claimed": false
+  },
+  "omitted_private_fields": [
+    "application_draft",
+    "bank_details",
+    "collaboration_letter_files",
+    "contact_email",
+    "contact_phone",
+    "entity_identifier",
+    "payout_details",
+    "research_portal_identity",
+    "tax_identifier"
+  ],
+  "compose": [
+    {
+      "id": "grants-ledger",
+      "path": "revenue/ip/grants_ledger.json",
+      "role": "GRANT",
+      "sha256": "043c96e3e94227ce66714f72dfda06bf0c481d92f004c6be0d974029464e8b51"
+    },
+    {
+      "id": "collaboration-targets",
+      "path": "revenue/ip/collaboration_targets.json",
+      "role": "RESEARCH",
+      "sha256": "b05dc3130c9193656f0a5277ff41dfb75ca3e165bf85ca377f18e7701fcc22c5"
+    },
+    {
+      "id": "whitebox-offers",
+      "path": "revenue/ip/whitebox_collaboration_offers.json",
+      "role": "LICENSING_AND_PILOT",
+      "sha256": "d0f022a33f4b31f2ab523f2e47678ec6771749bbaece2ed859b70a92e5079475"
+    },
+    {
+      "id": "distribution-channels",
+      "path": "revenue/distribution/channels.json",
+      "role": "PROCUREMENT",
+      "sha256": "231f6461e38193928db6ecf3d16a675a2454114e8978f38a4d799b31f964a824"
+    },
+    {
+      "id": "listing-registry",
+      "path": "revenue/listing_registry/registry.json",
+      "role": "MARKETPLACE_SURFACES_COMPOSE_NOT_REMINT",
+      "sha256": "f86e31e4a0d2b180cda0d965c5219f1e0ceeb92a188108ba695c6cc080f00664"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "resource-feature-trackers",
+      "name": "Feature and resource trackers",
+      "status": "SHIPPED_ON_MAIN",
+      "receipts": [
+        {
+          "path": "resources.html",
+          "sha256": "7625dd979618e42009d0cfe989cbb3637ddd9684b6544827f2955f3626604cac",
+          "bytes": 11401
+        },
+        {
+          "path": "ground/RESOURCE_LEDGER.json",
+          "sha256": "ee9253b359ea949a7388f9b139ac5e72693e9b0cec5359c7e43771fe1afb0472",
+          "bytes": 97728
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "opportunities": 21,
+    "grants": 5,
+    "pilots": 4,
+    "licensing": 2,
+    "procurement": 3,
+    "research": 7,
+    "submitted": 0,
+    "awarded": 0,
+    "cash_received_usd": 0,
+    "none_ready": 11
+  },
+  "opportunities": []
+}
