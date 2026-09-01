@@ -1,9 +1,14 @@
 {
   "authority_type": "federal_regulation",
   "care_date_match_rule": "apply_only_if_care_date_within_effective_window; never project newer guidance backward",
-  "effective_from": "1986-06-17",
+  "publication_date": "1986-06-17",
+  "effective_from": "1986-09-15",
   "effective_to": null,
+  "version_id": "42-cfr-482-24-1986-09-15",
   "engineering_anchor_only": true,
+  "historical_amendments": [
+    "Original hospital CoP medical-records rule effective 1986-09-15 (51 FR 22010, published 1986-06-17)."
+  ],
   "issuer": "Centers for Medicare & Medicaid Services (CMS)",
   "jurisdiction": "US-federal",
   "notes": "ENGINEERING ANCHOR ONLY — not a liability conclusion, standard-of-care finding, or negligence determination.",

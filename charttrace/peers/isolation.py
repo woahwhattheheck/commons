@@ -13,7 +13,19 @@ from typing import Any, Dict, List, Mapping, Optional
 
 from charttrace.peers.contracts import detect_forbidden_inputs
 from charttrace.peers.packet import PeerPacket
-from charttrace.peers.versions import PEER_SWARM_VERSION, SCHEMA_VERSION
+from charttrace.peers.sanitize import collect_injection_findings
+from charttrace.peers.validate import (
+    assert_lead_against_packet,
+    assert_no_injection_evidence,
+    trusted_identity_conflicts,
+)
+from charttrace.peers.versions import (
+    MODEL_VERSION,
+    PEER_SWARM_VERSION,
+    POLICY_VERSION,
+    PROMPT_VERSION,
+    SCHEMA_VERSION,
+)
 
 
 @dataclass(frozen=True)
@@ -41,6 +53,7 @@ DISCOVERY_ROLE_IDS = (
 
 SYNTHESIS_ROLE_ID = "synthesis"
 ALL_ROLE_IDS = DISCOVERY_ROLE_IDS + (SYNTHESIS_ROLE_ID,)
+PLACEHOLDER_MARKERS = frozenset({"placeholder", "PLACEHOLDER", ""})
 
 
 def peer_contracts() -> List[PeerContract]:
@@ -77,23 +90,71 @@ def assert_discovery_isolation(packet: Mapping[str, Any], role_id: str) -> None:
             raise ValueError(f"discovery peer {role_id} must not receive {key}")
 
 
+def stamp_trusted_result(role_id: str, result: Mapping[str, Any]) -> Dict[str, Any]:
+    if not isinstance(result, Mapping):
+        raise TypeError("peer must return a dict result")
+    conflicts = trusted_identity_conflicts(role_id, result)
+    if conflicts:
+        raise ValueError(f"untrusted worker-authored identity: {conflicts}")
+    if role_id in PLACEHOLDER_MARKERS:
+        raise ValueError("placeholder roles are rejected")
+    from charttrace.peers import registry
+
+    contract = registry.get_contract(role_id)
+    out = dict(result)
+    out["role_id"] = role_id
+    out["schema_version"] = SCHEMA_VERSION
+    out["peer_swarm_version"] = PEER_SWARM_VERSION
+    out["policy_version"] = POLICY_VERSION
+    out["prompt_version"] = PROMPT_VERSION
+    out["model_version"] = MODEL_VERSION
+    out["allows_cross_peer_input"] = contract.allows_cross_peer_input
+    out["external_model_calls"] = 0
+    leads = out.get("leads")
+    if not isinstance(leads, list) or not leads:
+        raise ValueError(f"{role_id} must emit at least one lead")
+    trusted_leads = []
+    for lead in leads:
+        if not isinstance(lead, Mapping):
+            raise ValueError("lead must be a mapping")
+        row = dict(lead)
+        row["model_version"] = MODEL_VERSION
+        row["prompt_version"] = PROMPT_VERSION
+        row["policy_version"] = POLICY_VERSION
+        row["peer_version"] = f"{role_id}@1.2"
+        trusted_leads.append(row)
+    out["leads"] = trusted_leads
+    return out
+
+
+def assert_result_against_packet(role_id: str, result: Mapping[str, Any], packet: Mapping[str, Any]) -> None:
+    if result.get("role_id") != role_id:
+        raise ValueError("trusted role_id mismatch")
+    if result.get("external_model_calls") != 0:
+        raise ValueError("external model calls must remain zero")
+    for lead in result.get("leads") or []:
+        assert_lead_against_packet(lead, packet)
+        assert_no_injection_evidence(lead)
+
+
 def run_peer_in_process(role_id: str, packet: PeerPacket) -> Dict[str, Any]:
     from charttrace.peers import registry
 
+    if role_id in PLACEHOLDER_MARKERS:
+        raise ValueError("placeholder roles are rejected")
     contract = registry.get_contract(role_id)
     data = packet.to_sanitized_dict()
     assert_discovery_isolation(data, role_id)
     if detect_forbidden_inputs(data):
         raise ValueError("forbidden inputs in peer packet")
+    raw_findings = [f.to_dict() for f in collect_injection_findings([e.to_dict() for e in packet.excerpts])]
     worker = registry.load_worker(role_id)
-    result = worker(data)
-    if not isinstance(result, dict):
-        raise TypeError("peer must return a dict result")
-    result.setdefault("role_id", role_id)
-    result.setdefault("schema_version", SCHEMA_VERSION)
-    result.setdefault("peer_swarm_version", PEER_SWARM_VERSION)
-    result.setdefault("allows_cross_peer_input", contract.allows_cross_peer_input)
-    result.setdefault("external_model_calls", 0)
+    raw = worker(data)
+    result = stamp_trusted_result(role_id, raw)
+    result["injection_findings"] = raw_findings
+    result["injection_commands_followed"] = 0
+    result["allows_cross_peer_input"] = contract.allows_cross_peer_input
+    assert_result_against_packet(role_id, result, data)
     return result
 
 
@@ -115,7 +176,7 @@ def run_peer_child_process(
     timeout_s: float = 30.0,
 ) -> Dict[str, Any]:
     exe = python_executable or sys.executable
-    payload = {"role_id": role_id, "packet": packet.to_sanitized_dict()}
+    payload = {"role_id": role_id, "packet": packet.to_allowlisted_dict()}
     assert_discovery_isolation(payload["packet"], role_id)
     proc = subprocess.run(
         [exe, "-c", CHILD_PROCESS_DRIVER],
@@ -129,4 +190,7 @@ def run_peer_child_process(
             f"peer child process failed ({role_id}): "
             f"{proc.stderr.decode('utf-8', errors='replace')}"
         )
-    return json.loads(proc.stdout.decode("utf-8"))
+    result = json.loads(proc.stdout.decode("utf-8"))
+    if result.get("role_id") != role_id or result.get("external_model_calls") != 0:
+        raise ValueError("child-process result failed trusted identity check")
+    return result

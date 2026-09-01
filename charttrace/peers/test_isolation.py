@@ -11,6 +11,7 @@ from charttrace.peers.isolation import (
     assert_discovery_isolation,
     run_peer_child_process,
     run_peer_in_process,
+    stamp_trusted_result,
 )
 from charttrace.peers.packet import PeerPacket, RecordExcerpt
 from charttrace.peers.registry import list_role_ids
@@ -68,6 +69,18 @@ class IsolationTests(unittest.TestCase):
         result = run_peer_child_process("medication_allergy", packet)
         self.assertEqual(result["role_id"], "medication_allergy")
         self.assertEqual(result["external_model_calls"], 0)
+
+    def test_spoofed_role_and_model_calls_rejected(self):
+        with self.assertRaises(ValueError):
+            stamp_trusted_result(
+                "source_provenance",
+                {
+                    "role_id": "synthesis",
+                    "schema_version": "attacker.v9",
+                    "external_model_calls": 42,
+                    "leads": [{"lead_id": "x"}],
+                },
+            )
 
 
 if __name__ == "__main__":

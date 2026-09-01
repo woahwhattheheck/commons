@@ -6,7 +6,14 @@ from dataclasses import dataclass, field
 from typing import Any, Dict, List, Mapping, Optional
 
 from charttrace.peers.contracts import detect_forbidden_inputs, strip_forbidden_inputs
-from charttrace.peers.sanitize import InjectionFinding, collect_injection_findings
+from charttrace.peers.sanitize import InjectionFinding, collect_injection_findings, quarantine_excerpts
+from charttrace.peers.validate import (
+    ALLOWED_PACKET_KEYS,
+    assert_excerpt_contract,
+    assert_packet_allowlist,
+    assert_synthetic_id,
+    parse_iso_date,
+)
 
 
 @dataclass(frozen=True)
@@ -43,7 +50,7 @@ class PeerPacket:
     grounding_pack_ids: List[str] = field(default_factory=list)
     sealed_peer_results: Optional[List[Dict[str, Any]]] = None
 
-    def to_sanitized_dict(self) -> Dict[str, Any]:
+    def to_allowlisted_dict(self) -> Dict[str, Any]:
         raw = {
             "case_id": self.case_id,
             "jurisdiction": self.jurisdiction,
@@ -56,9 +63,24 @@ class PeerPacket:
             "sealed_peer_results": self.sealed_peer_results,
         }
         cleaned = strip_forbidden_inputs(raw)
+        extra = sorted(set(cleaned.keys()) - ALLOWED_PACKET_KEYS)
+        if extra:
+            raise ValueError(f"unknown packet metadata rejected: {extra}")
+        assert_packet_allowlist(cleaned)
+        assert_synthetic_id(cleaned["case_id"], "case_id", packet_id=True)
+        parse_iso_date(cleaned["care_date_start"], "care_date_start")
+        parse_iso_date(cleaned["care_date_end"], "care_date_end")
+        for ex in cleaned.get("excerpts", []):
+            assert_excerpt_contract(ex)
         forbidden = detect_forbidden_inputs(cleaned)
         if forbidden:
             raise ValueError(f"forbidden peer inputs remain: {forbidden}")
+        return cleaned
+
+    def to_sanitized_dict(self) -> Dict[str, Any]:
+        cleaned = self.to_allowlisted_dict()
+        quarantined, _findings = quarantine_excerpts(list(cleaned.get("excerpts") or []))
+        cleaned["excerpts"] = quarantined
         return cleaned
 
     def injection_findings(self) -> List[InjectionFinding]:
@@ -66,18 +88,28 @@ class PeerPacket:
 
 
 def packet_from_mapping(data: Mapping[str, Any]) -> PeerPacket:
-    cleaned = strip_forbidden_inputs(data)
-    excerpts = [
-        RecordExcerpt(
-            document_id=str(ex["document_id"]),
-            page=int(ex["page"]),
-            source_sha256=str(ex["source_sha256"]),
-            text=str(ex["text"]),
-            care_phase=str(ex.get("care_phase", "unspecified")),
-            source_category=str(ex.get("source_category", "clinical_note")),
+    incoming = dict(data)
+    extra = sorted(set(incoming.keys()) - ALLOWED_PACKET_KEYS)
+    if extra:
+        raise ValueError(f"unknown packet metadata rejected: {extra}")
+    cleaned = strip_forbidden_inputs(incoming)
+    assert_packet_allowlist(cleaned)
+    excerpts = []
+    for ex in cleaned.get("excerpts", []):
+        assert_excerpt_contract(ex)
+        excerpts.append(
+            RecordExcerpt(
+                document_id=str(ex["document_id"]),
+                page=int(ex["page"]),
+                source_sha256=str(ex["source_sha256"]),
+                text=str(ex["text"]),
+                care_phase=str(ex.get("care_phase", "unspecified")),
+                source_category=str(ex.get("source_category", "clinical_note")),
+            )
         )
-        for ex in cleaned.get("excerpts", [])
-    ]
+    assert_synthetic_id(cleaned["case_id"], "case_id", packet_id=True)
+    parse_iso_date(str(cleaned.get("care_date_start", "")), "care_date_start")
+    parse_iso_date(str(cleaned.get("care_date_end", "")), "care_date_end")
     return PeerPacket(
         case_id=str(cleaned["case_id"]),
         jurisdiction=str(cleaned.get("jurisdiction", "US-federal-context")),

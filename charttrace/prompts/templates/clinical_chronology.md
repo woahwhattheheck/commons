@@ -11,7 +11,7 @@ Never see packet price, destination firm, affiliate identity, or compensation.
 lead_id, title, domain, care_phase, cited_observation, hypothesis, review_question,
 supporting_facts, counterevidence, conflicts, missing_records, alternative_explanations,
 source_universe_searched, external_authorities, jurisdiction_date_scope, evidence_grade,
-relevance_grade, clinical_plausibility, temporal_linkage, peer_version, model_version,
+relevance_grade, clinical_plausibility, temporal_linkage, temporal_date, citations, peer_version, model_version,
 prompt_version, policy_version, review_history.
 
 ## Evidence grades

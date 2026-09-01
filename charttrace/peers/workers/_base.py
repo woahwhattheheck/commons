@@ -11,12 +11,19 @@ from charttrace.peers.contracts import (
     RelevanceGrade,
     assert_lead_complete,
 )
-from charttrace.peers.sanitize import collect_injection_findings, neutralize_as_document_text
-from charttrace.peers.versions import (
-    MODEL_VERSION,
-    PEER_SWARM_VERSION,
-    POLICY_VERSION,
-    PROMPT_VERSION,
+from charttrace.peers.sanitize import QUARANTINE_MARKER
+from charttrace.peers.versions import MODEL_VERSION, POLICY_VERSION, PROMPT_VERSION
+
+NEGATION_CUES = (
+    "resolved",
+    "documented discussion",
+    "patient notified",
+    "denied",
+    "no evidence",
+    "not indicated",
+    "unrelated",
+    "baseline",
+    "expected course",
 )
 
 
@@ -24,37 +31,93 @@ def _stable_id(*parts: str) -> str:
     return hashlib.sha256("|".join(parts).encode("utf-8")).hexdigest()[:12]
 
 
-def cite_excerpt(excerpt: Mapping[str, Any]) -> str:
-    return (
-        f"{excerpt.get('document_id', 'unknown')}:"
-        f"p{excerpt.get('page', '?')}:"
-        f"{str(excerpt.get('source_sha256', ''))[:12]}"
-    )
+def searched_universe(packet: Mapping[str, Any]) -> Tuple[str, ...]:
+    cats = []
+    for ex in packet.get("excerpts", []):
+        cat = str(ex.get("source_category") or "clinical_note")
+        if cat and cat not in cats:
+            cats.append(cat)
+    return tuple(cats) if cats else ("supplied_record_excerpts",)
 
 
-def fact_from_excerpt(excerpt: Mapping[str, Any], snippet: str) -> str:
-    clean = " ".join(snippet.split())
+def citation_from_excerpt(
+    excerpt: Mapping[str, Any],
+    start: int,
+    end: int,
+) -> Dict[str, Any]:
+    text = str(excerpt.get("text", ""))
+    quote = text[start:end]
+    return {
+        "document_id": str(excerpt.get("document_id")),
+        "page": int(excerpt.get("page")),
+        "source_sha256": str(excerpt.get("source_sha256")),
+        "span_start": start,
+        "span_end": end,
+        "quote": quote,
+    }
+
+
+def fact_from_citation(citation: Mapping[str, Any]) -> str:
+    clean = " ".join(str(citation.get("quote", "")).split())
     if len(clean) > 240:
         clean = clean[:237] + "..."
-    return f"{cite_excerpt(excerpt)} :: {clean}"
+    return (
+        f"{citation['document_id']}:p{citation['page']}:"
+        f"{str(citation['source_sha256'])[:12]} :: {clean}"
+    )
 
 
 def find_keyword_hits(
     excerpts: Sequence[Mapping[str, Any]],
     keywords: Sequence[str],
-) -> List[Tuple[Mapping[str, Any], str, str]]:
-    hits: List[Tuple[Mapping[str, Any], str, str]] = []
+) -> List[Tuple[Mapping[str, Any], str, int, int]]:
+    hits: List[Tuple[Mapping[str, Any], str, int, int]] = []
     for ex in excerpts:
         text = str(ex.get("text", ""))
-        neutralize_as_document_text(text)
         lower = text.lower()
         for kw in keywords:
-            if kw.lower() in lower:
-                idx = lower.find(kw.lower())
-                start = max(0, idx - 40)
-                end = min(len(text), idx + len(kw) + 80)
-                hits.append((ex, kw, text[start:end].strip()))
+            needle = kw.lower()
+            start_at = 0
+            while True:
+                pos = lower.find(needle, start_at)
+                if pos < 0:
+                    break
+                end = pos + len(needle)
+                if QUARANTINE_MARKER in text[pos:end]:
+                    start_at = end
+                    continue
+                hits.append((ex, kw, pos, end))
+                start_at = end
     return hits
+
+
+def same_excerpt_counterevidence(
+    excerpt: Mapping[str, Any],
+    supporting: Mapping[str, Any],
+) -> List[Dict[str, Any]]:
+    text = str(excerpt.get("text", "")).lower()
+    bound: List[Dict[str, Any]] = []
+    for cue in NEGATION_CUES:
+        pos = text.find(cue)
+        if pos < 0:
+            continue
+        end = pos + len(cue)
+        citation = citation_from_excerpt(excerpt, pos, end)
+        if citation["document_id"] != supporting["document_id"]:
+            continue
+        if citation["page"] != supporting["page"]:
+            continue
+        if citation["source_sha256"] != supporting["source_sha256"]:
+            continue
+        bound.append(
+            {
+                "kind": "citation",
+                "citation": citation,
+                "note": f"same-source negation/alternative cue: {cue}",
+            }
+        )
+        break
+    return bound
 
 
 def build_lead(
@@ -67,7 +130,7 @@ def build_lead(
     hypothesis: str,
     review_question: str,
     supporting_facts: Sequence[str],
-    counterevidence: Sequence[str],
+    counterevidence: Sequence[Any],
     conflicts: Sequence[str],
     missing_records: Sequence[str],
     alternative_explanations: Sequence[str],
@@ -78,6 +141,8 @@ def build_lead(
     relevance_grade: RelevanceGrade,
     clinical_plausibility: str,
     temporal_linkage: str,
+    temporal_date: str,
+    citations: Sequence[Mapping[str, Any]] = (),
     weak_label: Optional[str] = None,
     review_history: Sequence[str] = (),
 ) -> Dict[str, Any]:
@@ -102,7 +167,9 @@ def build_lead(
         relevance_grade=relevance_grade,
         clinical_plausibility=clinical_plausibility,
         temporal_linkage=temporal_linkage,
-        peer_version=f"{role_id}@1.1",
+        temporal_date=temporal_date,
+        peer_version=f"{role_id}@1.2",
+        citations=tuple(dict(c) for c in citations),
         model_version=MODEL_VERSION,
         prompt_version=PROMPT_VERSION,
         policy_version=POLICY_VERSION,
@@ -121,19 +188,13 @@ def base_result(
     *,
     notes: Optional[List[str]] = None,
 ) -> Dict[str, Any]:
-    injections = [
-        f.to_dict()
-        for f in collect_injection_findings(list(packet.get("excerpts", [])))
-    ]
     return {
         "role_id": role_id,
-        "peer_swarm_version": PEER_SWARM_VERSION,
         "leads": leads,
-        "injection_findings": injections,
         "injection_commands_followed": 0,
         "external_model_calls": 0,
         "notes": list(notes or []),
-        "source_universe_searched": list(packet.get("source_universe", [])),
+        "source_universe_searched": list(searched_universe(packet)),
         "jurisdiction": packet.get("jurisdiction"),
         "care_date_scope": {
             "start": packet.get("care_date_start"),
@@ -149,19 +210,138 @@ def bounded_absence(topic: str, corpus: str, start: str, end: str) -> str:
     )
 
 
-def default_universe(packet: Mapping[str, Any], extra: Sequence[str]) -> Tuple[str, ...]:
-    base = list(packet.get("source_universe") or [])
-    if not base:
-        cats = [
-            str(ex.get("source_category", "clinical_note"))
-            for ex in packet.get("excerpts", [])
-        ]
-        base = sorted(set(cats)) or ["supplied_record_excerpts"]
-    return tuple(dict.fromkeys(list(base) + list(extra)))
-
-
 def jurisdiction_scope(packet: Mapping[str, Any]) -> str:
     return (
         f"{packet.get('jurisdiction', 'US-federal-context')} | "
         f"{packet.get('care_date_start', '?')}–{packet.get('care_date_end', '?')}"
     )
+
+
+def run_keyword_peer(
+    *,
+    role_id: str,
+    domain: str,
+    keywords: Sequence[str],
+    default_phase: str,
+    packet: Mapping[str, Any],
+    weak_keywords: Optional[Sequence[str]] = None,
+) -> Dict[str, Any]:
+    excerpts = list(packet.get("excerpts", []))
+    universe = searched_universe(packet)
+    scope = jurisdiction_scope(packet)
+    temporal_date = str(packet.get("care_date_start") or "")
+    authorities = list(packet.get("grounding_pack_ids") or [])
+    weak_set = {w.lower() for w in (weak_keywords or ())}
+    leads: List[Dict[str, Any]] = []
+    notes: List[str] = []
+    hits = find_keyword_hits(excerpts, keywords)
+
+    for ex, kw, start, end in hits:
+        citation = citation_from_excerpt(ex, start, end)
+        fact = fact_from_citation(citation)
+        weak = None
+        grade = EvidenceGrade.SUPPORTED
+        relevance = RelevanceGrade.PLAUSIBLE
+        if kw.lower() in weak_set:
+            weak = "weak_or_longshot"
+            grade = EvidenceGrade.CLUE
+            relevance = RelevanceGrade.TENUOUS
+        counter = same_excerpt_counterevidence(ex, citation)
+        leads.append(
+            build_lead(
+                role_id=role_id,
+                title=f"{domain.replace('_', ' ').title()} signal: {kw}",
+                domain=domain,
+                care_phase=str(ex.get("care_phase") or default_phase),
+                cited_observation=fact,
+                hypothesis=(
+                    f"If confirmed across independent sources, the presence of '{kw}' "
+                    f"in {citation['document_id']}:p{citation['page']} may indicate a "
+                    f"{domain} issue warranting review."
+                ),
+                review_question=(
+                    f"What additional {domain} documentation would confirm or refute "
+                    f"the '{kw}' signal for counsel/clinician review?"
+                ),
+                supporting_facts=[fact],
+                citations=[citation],
+                counterevidence=counter,
+                conflicts=[],
+                missing_records=[
+                    "Complete source pages spanning the cited date range",
+                    "Independent corroborating note from a second author/source category",
+                ],
+                alternative_explanations=[
+                    "Documentation phrasing may reflect template/copy-forward rather than a new event.",
+                    "Clinically expected course without deviation remains possible.",
+                ],
+                source_universe_searched=universe,
+                external_authorities=authorities,
+                jurisdiction_date_scope=scope,
+                evidence_grade=grade,
+                relevance_grade=relevance,
+                clinical_plausibility=(
+                    "Plausible as a documentation/process signal; clinical significance "
+                    "requires qualified clinician judgment."
+                ),
+                temporal_linkage=(
+                    f"Linked to care window {packet.get('care_date_start')}–"
+                    f"{packet.get('care_date_end')} via cited excerpt date context."
+                ),
+                temporal_date=temporal_date,
+                weak_label=weak,
+                review_history=[f"emitted_by:{role_id}"],
+            )
+        )
+
+    if not hits:
+        notes.append(
+            bounded_absence(
+                topic=f"{domain} keyword signals",
+                corpus="supplied excerpts",
+                start=str(packet.get("care_date_start") or ""),
+                end=str(packet.get("care_date_end") or ""),
+            )
+        )
+        leads.append(
+            build_lead(
+                role_id=role_id,
+                title=f"Bounded absence: {domain}",
+                domain=domain,
+                care_phase=default_phase,
+                cited_observation="No matching keyword documentation in the searched source universe.",
+                hypothesis=(
+                    f"Absence of {domain} cues in the supplied corpus may reflect a "
+                    f"gap, a true negative, or incomplete source production."
+                ),
+                review_question=(
+                    f"Which additional source categories should be requested to test "
+                    f"the {domain} absence?"
+                ),
+                supporting_facts=[],
+                citations=[],
+                counterevidence=[],
+                conflicts=[],
+                missing_records=[
+                    f"No {domain} keyword documentation in searched source categories: {', '.join(universe)}"
+                ],
+                alternative_explanations=[
+                    "Signal may exist in unproduced records.",
+                    "Signal may be documented under alternate terminology.",
+                ],
+                source_universe_searched=universe,
+                external_authorities=authorities,
+                jurisdiction_date_scope=scope,
+                evidence_grade=EvidenceGrade.CLUE,
+                relevance_grade=RelevanceGrade.TENUOUS,
+                clinical_plausibility="Unknown without broader record production.",
+                temporal_linkage=(
+                    f"Bounded to {packet.get('care_date_start')}–{packet.get('care_date_end')}."
+                ),
+                temporal_date=temporal_date,
+                weak_label="weak_absence_signal",
+                review_history=[f"emitted_by:{role_id}"],
+            )
+        )
+
+    return base_result(role_id, packet, leads, notes=notes)

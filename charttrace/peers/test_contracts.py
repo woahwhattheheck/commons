@@ -14,6 +14,19 @@ from charttrace.peers.contracts import (
     strip_forbidden_inputs,
 )
 from charttrace.peers.scope import GLOBAL_SCOPE_STATEMENT
+from charttrace.peers.validate import key_is_commercial
+
+
+def _ok_citation():
+    quote = "unsigned addendum"
+    return {
+        "document_id": "doc-1",
+        "page": 1,
+        "source_sha256": "a" * 64,
+        "span_start": 0,
+        "span_end": len(quote),
+        "quote": quote,
+    }
 
 
 class ContractsTests(unittest.TestCase):
@@ -38,7 +51,17 @@ class ContractsTests(unittest.TestCase):
         self.assertNotIn("compensation", cleaned)
         self.assertNotIn("payment", cleaned["excerpts"][0])
         found = detect_forbidden_inputs(raw)
-        self.assertTrue(any(x.endswith("price") or x == "price" for x in found))
+        self.assertTrue(any("price" in x for x in found))
+
+    def test_commercial_aliases_and_suffixes_rejected(self):
+        self.assertTrue(key_is_commercial("packet_price_usd"))
+        self.assertTrue(key_is_commercial("destination_firm_name"))
+        self.assertTrue(key_is_commercial("affiliate-routing"))
+        self.assertTrue(key_is_commercial("recoveryScore"))
+        self.assertFalse(key_is_commercial("care_phase"))
+        self.assertFalse(key_is_commercial("source_category"))
+        nested = {"meta": {"review_fee_cents": 10}}
+        self.assertTrue(detect_forbidden_inputs(nested))
 
     def test_lead_requires_supporting_facts(self):
         with self.assertRaises(ValueError):
@@ -62,10 +85,20 @@ class ContractsTests(unittest.TestCase):
                 relevance_grade=RelevanceGrade.TENUOUS,
                 clinical_plausibility="unknown",
                 temporal_linkage="unknown",
+                temporal_date="2024-01-01",
                 peer_version="x@1",
             )
 
+    def test_all_none_lead_rejected(self):
+        with self.assertRaises(ValueError):
+            assert_lead_complete({key: None for key in REQUIRED_LEAD_FIELDS})
+
+    def test_one_field_lead_rejected(self):
+        with self.assertRaises(ValueError):
+            assert_lead_complete({"lead_id": "only-one"})
+
     def test_complete_lead_roundtrip(self):
+        citation = _ok_citation()
         lead = PeerLead(
             lead_id="lead-ok-1",
             title="Unsigned addendum",
@@ -86,7 +119,9 @@ class ContractsTests(unittest.TestCase):
             relevance_grade=RelevanceGrade.PLAUSIBLE,
             clinical_plausibility="documentation signal",
             temporal_linkage="same encounter",
-            peer_version="source_provenance@1.1",
+            temporal_date="2024-01-01",
+            peer_version="source_provenance@1.2",
+            citations=(citation,),
             weak_label="weak_or_longshot",
         )
         data = lead.to_dict()
@@ -94,6 +129,8 @@ class ContractsTests(unittest.TestCase):
         self.assertTrue(REQUIRED_LEAD_FIELDS.issubset(data.keys()))
         self.assertEqual(data["evidence_grade"], "SUPPORTED")
         self.assertEqual(data["weak_label"], "weak_or_longshot")
+        self.assertEqual(data["temporal_date"], "2024-01-01")
+        self.assertEqual(data["citations"][0]["page"], 1)
 
 
 if __name__ == "__main__":

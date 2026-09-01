@@ -1,9 +1,14 @@
 {
   "authority_type": "federal_regulation",
   "care_date_match_rule": "apply_only_if_care_date_within_effective_window; never project newer guidance backward",
-  "effective_from": "2003-01-24",
+  "publication_date": "2003-01-24",
+  "effective_from": "2003-04-24",
   "effective_to": null,
+  "version_id": "42-cfr-493-1291-2003-04-24",
   "engineering_anchor_only": true,
+  "historical_amendments": [
+    "CLIA quality-systems / critical-result rule published 2003-01-24 (68 FR 3640) and effective 2003-04-24."
+  ],
   "issuer": "Centers for Medicare & Medicaid Services (CMS)",
   "jurisdiction": "US-federal",
   "notes": "ENGINEERING ANCHOR ONLY — not a liability conclusion, standard-of-care finding, or negligence determination.",
