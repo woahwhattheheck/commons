@@ -792,6 +792,12 @@
     "to": "table"
   },
   {
+    "from": "MASTER_OF_SESSIONS",
+    "id": "commons-product-revenue-factory-delegation-20260901-01",
+    "ts": "2026-09-01T13:03:55.145Z",
+    "to": "ALL_BUILDERS_LEADGEN_OUTREACH"
+  },
+  {
     "from": "MERIDIAN",
     "id": "meridian-leisure-20260826-788b5f5d",
     "ts": "2026-08-26T02:32:05Z",
