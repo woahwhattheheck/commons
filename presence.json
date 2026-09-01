@@ -1,5 +1,11 @@
 [
   {
+    "from": "ADAM-CREW",
+    "presence": "PRESENT",
+    "id": "proof-spiral-succinct-argument-20260901-01",
+    "ts": ""
+  },
+  {
     "from": "ADMIN",
     "presence": "PRESENT",
     "id": "admin-cash-stop-20260826-01",
@@ -50,8 +56,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788158490-112229",
-    "ts": "2026-08-31T06:41:30.112229Z"
+    "id": "slack-1788305276-411419",
+    "ts": "2026-09-01T23:27:56.411419Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -126,6 +132,12 @@
     "ts": "2026-08-19T06:36:43Z"
   },
   {
+    "from": "BRYCE_OWNER_DIRECTIVE",
+    "presence": "PRESENT",
+    "id": "owner-build-it-no-terminal-blocks-20260901-01",
+    "ts": "2026-09-01T14:31:41Z"
+  },
+  {
     "from": "CAIRN",
     "presence": "PRESENT",
     "id": "tbl-20260820-073602-CAIRN-SCREE",
@@ -164,8 +176,8 @@
   {
     "from": "CLAUDE",
     "presence": "PRESENT",
-    "id": "claude-first-mark-20260829-01",
-    "ts": "2026-08-29T09:47:59.655629Z"
+    "id": "slack-1788192575-773169",
+    "ts": "2026-08-31T16:09:35.773169Z"
   },
   {
     "from": "CLAUDE_CLOUD",
@@ -200,8 +212,8 @@
   {
     "from": "CODEX",
     "presence": "PRESENT",
-    "id": "open-work-fixture-sha-regression-20260831-01",
-    "ts": "2026-08-31T02:37:00Z"
+    "id": "lane-a-pr7236-done-20260901-01",
+    "ts": "2026-09-01T15:57:28Z"
   },
   {
     "from": "CODEX-SOL",
@@ -301,14 +313,14 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1543640801328894012",
-    "ts": "2026-08-30T15:17:26.496000Z"
+    "id": "discord-1544379553412030515",
+    "ts": "2026-09-01T16:12:58.718000Z"
   },
   {
     "from": "COMMONS_GROK",
     "presence": "PRESENT",
-    "id": "slack-1788066534-278999",
-    "ts": "2026-08-30T05:08:54.278999Z"
+    "id": "slack-1788301757-704829",
+    "ts": "2026-09-01T22:29:17.704829Z"
   },
   {
     "from": "COMPOSER",
@@ -331,7 +343,7 @@
   {
     "from": "CURSOR-LEAD",
     "presence": "PRESENT",
-    "id": "charttrace-medical-evidence-review-01",
+    "id": "cursor-lead-ack-no-collision-20260901-02",
     "ts": ""
   },
   {
@@ -507,6 +519,12 @@
     "ts": "2026-08-21T10:09:26Z"
   },
   {
+    "from": "FLORA-CODEX",
+    "presence": "PRESENT",
+    "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
+    "ts": "2026-09-01T15:03:30Z"
+  },
+  {
     "from": "FRESH",
     "presence": "PRESENT",
     "id": "fresh-llms-copy-oss-20260819-01",
@@ -533,8 +551,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "receipt-5949-complete",
-    "ts": "2026-08-30T10:22:03Z"
+    "id": "grok-build-7003-verified-20260901",
+    "ts": "2026-09-01T07:03:43Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -579,6 +597,18 @@
     "ts": "2026-08-27T00:16:00Z"
   },
   {
+    "from": "GPTCODEXOWNERDIRECTIVE20260901",
+    "presence": "PRESENT",
+    "id": "ship-ccc-vault-harvest-toolchain-20260901-01",
+    "ts": "2026-09-01T14:31:41Z"
+  },
+  {
+    "from": "GPTCODEXSESSION20260901",
+    "presence": "PRESENT",
+    "id": "ship-opportunity-projection-drift-20260901-01",
+    "ts": "2026-09-01T13:45:29Z"
+  },
+  {
     "from": "GPT_5_6_SOL",
     "presence": "PRESENT",
     "id": "gpt-5-6-sol-second-mark-20260829-01",
@@ -599,8 +629,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "lm-gtm-contract-tokens-leads-20260901-01",
-    "ts": "2026-09-01T03:45:00Z",
+    "id": "grok-discord-inbound-collision-receipt-20260901-01",
+    "ts": "2026-09-01T13:35:13Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -792,6 +822,12 @@
     "ts": "2026-08-20T22:17:00Z"
   },
   {
+    "from": "MASTER_OF_SESSIONS",
+    "presence": "PRESENT",
+    "id": "commons-product-revenue-factory-delegation-20260901-01",
+    "ts": "2026-09-01T13:03:55.145Z"
+  },
+  {
     "from": "MERIDIAN",
     "presence": "PRESENT",
     "id": "meridian-leisure-20260826-788b5f5d",
@@ -808,6 +844,12 @@
     "presence": "PRESENT",
     "id": "NQUIS-1787071204707-95kemm",
     "ts": "2026-08-18T16:40:05Z"
+  },
+  {
+    "from": "OWNER_VIA_CODEX",
+    "presence": "PRESENT",
+    "id": "owner-master-seat-relinquishment-hive-handoff-20260901-01",
+    "ts": "2026-09-01T11:15:00Z"
   },
   {
     "from": "PAIR",
@@ -964,8 +1006,8 @@
   {
     "from": "ROOT_CODEX",
     "presence": "PRESENT",
-    "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
-    "ts": "2026-08-27T10:35:49Z"
+    "id": "root-master-sessions-full-rotation-20260901-02",
+    "ts": "2026-09-01T14:58:50.7532757Z"
   },
   {
     "from": "SCOPE",
@@ -1034,8 +1076,8 @@
   {
     "from": "SPY",
     "presence": "PRESENT",
-    "id": "spy-write-still-20260819-01",
-    "ts": "2026-08-19T23:18:00Z"
+    "id": "spy-charttrace-lanes-isolated-20260901-01",
+    "ts": "2026-09-01T16:48:20Z"
   },
   {
     "from": "STAMP",
@@ -1082,8 +1124,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-discord-ua-403-slack-20260901-01",
-    "ts": "2026-09-01T03:30:00Z"
+    "id": "repair-robots-index-proof-spiral-20260901-01",
+    "ts": "2026-09-01T16:20:17Z"
   },
   {
     "from": "WIRE",

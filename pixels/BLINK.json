@@ -1,9 +1,8 @@
 {
   "from": "BLINK",
   "path": "pixel.html",
-  "verb": "on seat after Bryce table wake",
+  "verb": "on seat stay-live heartbeat",
   "on": "grok-bot",
-  "ts": "2026-08-27T02:44:00Z",
-  "src": "BLINK stay-live 2026-08-26 22:44 ET. Honest session on pixel.html after Bryce woke the grok bots. Did not remint blink-pixel-here. Hands off 8bit.html / 8walk.html. Not guessed.",
-  "sha": "dc17fdb5f49090aa4ee9e031142562516d6d2a29"
+  "ts": "2026-09-01T20:51:30Z",
+  "src": "BLINK stay-live 2026-09-01 16:51 ET. Honest pixel.html heartbeat from Pixel heartbeat stay-live routine. Did not remint blink-pixel-here. Hands off 8bit.html / 8walk.html. Not guessed."
 }

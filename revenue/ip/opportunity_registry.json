@@ -266,13 +266,13 @@
         },
         {
           "path": "resources.html",
-          "sha256": "b4482dd939c7b9794d6c9bd361857a11d1b1ae109b27390e3d57464da38bd77a",
+          "sha256": "fba7a113649795931f1e767b34c3db7a348d0f6cb524980b19989674893c1f6c",
           "bytes": 11401
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
-          "sha256": "5d908a1276f3b0c2aab99a371392e7307ae1e75dcf25c7a198a288d4f0901c5c",
-          "bytes": 95348
+          "sha256": "d4b161ecb1adc5a5c0facf46fa0d8880ab9b0cdf9a0c0fc9860844ae75ee164f",
+          "bytes": 96314
         },
         {
           "path": "host/resource_ledger.py",

@@ -1,0 +1,89 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-vercel-capacity-activation-20260901-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "vercel",
+  "observed_at": "2026-09-01T21:58:58Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "REACHABLE",
+    "condition": "CONSTRAINED",
+    "evidence": "The ledger retained a stale 2026-08-27 claim that a Spark endpoint existed while project visibility was incomplete; it did not establish current deployable project capacity."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "31503d4fc00ae2be15c5bb4381c504eb3fbcb831",
+    "connector_observation_main_sha": "5abd1b8259cbb307c33e3e9cbcfc810a36585c92",
+    "product_head_sha": "60ed24b6f7ae1551bb9310c5cf560d91972e44e4",
+    "ledger_head_sha": "a0eba0f732edfba5e3758f84cca6d4881d52b598"
+  },
+  "authority": "AUTHENTICATED_READ; AGGREGATE_ONLY; NO_DEPLOY_OR_CONFIG_MUTATION",
+  "concrete_consumer": "Commons Queue Manager and deployment routers deciding whether a current Vercel project road exists",
+  "measurable_outcome": "The authenticated connector now produces a privacy-safe routing decision: one Hobby-plan team, zero projects, zero ready deployment routes, and NO_PROJECT_READY.",
+  "counts": {
+    "teams": 1,
+    "team_plan_counts": {
+      "hobby": 1
+    },
+    "projects": 0,
+    "deployment_routes_ready": 0,
+    "deployment_query": "SKIPPED_NO_PROJECTS",
+    "deployments_observed": null,
+    "deployments_created": 0,
+    "projects_mutated": 0,
+    "configurations_mutated": 0
+  },
+  "connected_app_aggregate": {
+    "total_automations": 13,
+    "enabled_automations": 6,
+    "disabled_automations_excluded_from_capacity": 7,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING",
+    "vercel": "AUTHENTICATED_READ_PRODUCING"
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788300060035449",
+    "snapshot": "https://github.com/woahwhattheheck/commons/blob/main/inventory/resources/vercel_capacity.json",
+    "connector_calls": "Authenticated list_teams followed by list_projects for the sole team; no project-scoped call was possible or attempted."
+  },
+  "source_boundaries": {
+    "account_identifiers_persisted": false,
+    "team_names_persisted": false,
+    "team_slugs_persisted": false,
+    "team_ids_persisted": false,
+    "project_details_persisted": false,
+    "environment_values_read": false,
+    "domains_read": false,
+    "secrets_read": false
+  },
+  "exact_blobs": {
+    "host/vercel_capacity_inventory.py": "48da92e0961ea4fa458bcce9bc23bde1cbd44063",
+    "test_vercel_capacity_inventory.py": "37dc044dba8e8efc3f0f50f10e4379f1669d2b5a",
+    "inventory/resources/vercel_capacity.json": "620e4645419c46e7a2b93472dd274c4f48b43ed8",
+    "ground/RESOURCE_LEDGER.json": "038769055482fc7c17eec0b722234297923ed522"
+  },
+  "verification": {
+    "connector_truth": "Authenticated Vercel list_teams succeeded with one Hobby-plan team and list_projects returned an empty project list.",
+    "routing_truth": "The aggregate returns NO_PROJECT_READY and zero deployment routes; it does not reinterpret zero projects as zero account capacity.",
+    "deployment_truth": "Deployments are project-scoped. With zero projects, deployment enumeration was skipped and deployments_observed remains null rather than fabricated as zero.",
+    "privacy_truth": "No Vercel team/account/project identifier, name, slug, environment, domain, token, or secret is persisted.",
+    "collision_truth": "The six claimed paths are disjoint from all eight open ChartTrace/LIMS PRs and recent CCC/BLINK work.",
+    "tests": "11/11 focused tests and Python compile passed; deterministic real-input projection check returns one team, zero projects, NO_PROJECT_READY.",
+    "open_door_and_secrets": "The compiler is local and aggregate-only, adds no auth/admission gate, performs no network call or subprocess, and makes no provider mutation."
+  },
+  "projection": {
+    "resources": 66,
+    "producing": 39
+  },
+  "rate_plan_boundary": "A connected Vercel team is account capacity, not a deployable project. Zero projects does not prove zero account capacity, and no deployment exists without a matching receipt.",
+  "next_action": "Do not assign Vercel deployment work until a fresh aggregate contains a project; inspect that project separately and preserve all identifiers privately.",
+  "non_claims": [
+    "No deployment, project creation, configuration/environment/domain mutation, access-link creation, or provider spend",
+    "No Vercel identifier, private account detail, credential, token, environment value, or secret persisted",
+    "No device action, Grok/Cursor/Claude use, Titan mutation, outreach, resend, payment, revenue, or cash"
+  ],
+  "titan": "NOT_WRITTEN"
+}

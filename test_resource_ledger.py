@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788235608.554549")
+        self.assertEqual(catalog["slack_ts"], "1788256871.664259")
         self.assertEqual(
             catalog["source_id"],
+            "codex-commons-skill-toolset-consumption-activation-20260901-01",
+        )
+        self.assertIn(
             "codex-github-repository-portfolio-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-commons-data-corpus-alias-index-activation-20260831-01",
@@ -215,14 +219,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-github-repository-portfolio-activation-20260901-01.json",
+            "codex-commons-skill-toolset-consumption-activation-20260901-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "github-repository-portfolio"
+            current_activation["selected_resource"], "commons-skill-and-tool-set"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -420,13 +424,17 @@ class TestResourceLedger(unittest.TestCase):
         self.assertNotIn("github-actions", queue_names)
         self.assertEqual(measured["activation_queue"][0]["name"], "outcome-commerce-bridge")
         self.assertEqual(measured["activation_queue"][0]["priority"], 72)
-        self.assertIn("commons-skill-and-tool-set", queue_names)
+        self.assertNotIn("commons-skill-and-tool-set", queue_names)
         skills = next(
             row
-            for row in measured["activation_queue"]
+            for row in catalog["surfaces"]
             if row["name"] == "commons-skill-and-tool-set"
         )
-        self.assertGreater(measured["activation_queue"][0]["priority"], skills["priority"])
+        self.assertEqual(skills["stage"], "PRODUCING")
+        self.assertEqual(
+            skills["last_receipt"],
+            "codex-commons-skill-toolset-consumption-activation-20260901-01",
+        )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),

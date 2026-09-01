@@ -1,0 +1,39 @@
+{
+  "aggregate": {
+    "deployment_query": "SKIPPED_NO_PROJECTS",
+    "deployment_routes_ready": 0,
+    "deployments_observed": null,
+    "projects": 0,
+    "team_plan_counts": {
+      "hobby": 1
+    },
+    "teams": 1
+  },
+  "consumer": {
+    "decision": "NO_PROJECT_READY",
+    "name": "Commons Queue Manager and deployment routers",
+    "routing_rule": "Assign no Vercel deployment work until a fresh aggregate contains at least one project; inspect that project separately."
+  },
+  "observed_at": "2026-09-01T21:58:58Z",
+  "schema": "commons-vercel-capacity/v1",
+  "source": {
+    "kind": "AUTHENTICATED_VERCEL_CONNECTOR_AGGREGATE",
+    "project_details_persisted": false,
+    "raw_identifiers_persisted": false,
+    "team_ids_persisted": false,
+    "team_names_persisted": false,
+    "team_slugs_persisted": false
+  },
+  "source_commit": "5abd1b8259cbb307c33e3e9cbcfc810a36585c92",
+  "stale_after": "P7D_OR_NEXT_TEAM_OR_PROJECT_CHANGE",
+  "truth": {
+    "configuration_mutated": false,
+    "connector_read_succeeded": true,
+    "deployment_created": false,
+    "domain_read": false,
+    "environment_read": false,
+    "project_mutated": false,
+    "secret_read": false,
+    "zero_projects_is_not_zero_account_capacity": true
+  }
+}
