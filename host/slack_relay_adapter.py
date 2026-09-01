@@ -298,7 +298,12 @@ def main(argv: list[str] | None = None) -> int:
     except (OSError, json.JSONDecodeError, RelayAdapterError, AssertionError) as exc:
         print(f"slack-relay-adapter: {exc}", file=sys.stderr)
         return 2
-    sys.stdout.buffer.write(canonical(result))
+    blob = canonical(result)
+    buffer = getattr(sys.stdout, "buffer", None)
+    if buffer is not None:
+        buffer.write(blob)
+    else:
+        sys.stdout.write(blob.decode("utf-8"))
     return 0
 
 

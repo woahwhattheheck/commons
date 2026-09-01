@@ -154,11 +154,12 @@ class SlackRelayAdapterTests(unittest.TestCase):
     def test_self_test_and_cli_pass(self) -> None:
         report = slack_relay_adapter.self_test()
         self.assertEqual(report["status"], "PASS")
-        stdout = io.BytesIO()
+        stdout = io.TextIOWrapper(io.BytesIO(), encoding="utf-8")
         with mock.patch.object(slack_relay_adapter.sys, "stdout", stdout):
             code = slack_relay_adapter.main(["--self-test"])
         self.assertEqual(code, 0)
-        self.assertEqual(json.loads(stdout.getvalue())["status"], "PASS")
+        stdout.buffer.seek(0)
+        self.assertEqual(json.loads(stdout.buffer.read())["status"], "PASS")
 
 
 if __name__ == "__main__":
