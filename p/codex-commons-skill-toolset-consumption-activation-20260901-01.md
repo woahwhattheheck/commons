@@ -1,6 +1,6 @@
 # Commons skill/tool consumption activation — 2026-09-01
 
-Status: **LANDED CANDIDATE — merge and exact-main readback required**
+Status: **ACTIVATION RECEIPT**
 
 Selected resource: `commons-skill-and-tool-set`
 
