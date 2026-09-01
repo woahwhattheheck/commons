@@ -21,7 +21,7 @@ from charttrace.app.ipc import (
 )
 from charttrace.app.offline_counsel import CounselImportError
 from charttrace.app.paths import validate_local_file, validate_local_output_path
-from charttrace.legal import LegalState
+from charttrace.legal import ConsentLedger, LegalState
 
 
 def accept_current_terms(controller: ChartTraceController) -> None:
@@ -176,6 +176,18 @@ class CounselAuthorityTests(unittest.TestCase):
         )
         self.assertEqual(
             LegalState.REACCEPT_REQUIRED, self.controller.legal_state
+        )
+
+    def test_consent_ledger_itself_revokes_transfer_on_legal_change(self):
+        ledger = ConsentLedger()
+        blank = ledger.blank_acknowledgements()
+        ledger.accept({key: True for key in blank}, "Synthetic operator")
+        ledger.set_recipient("Synthetic recipient", "attorney")
+        ledger.authorize_transfer(True, "Synthetic operator")
+        self.assertEqual(LegalState.TRANSFER_AUTHORIZED, ledger.transfer_state)
+        ledger.place_authority_hold("Authority changed")
+        self.assertEqual(
+            LegalState.TRANSFER_NOT_AUTHORIZED, ledger.transfer_state
         )
 
 

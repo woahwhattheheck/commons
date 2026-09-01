@@ -140,6 +140,7 @@ class ConsentLedger:
         if not accepted_by.strip():
             raise ConsentError("The attesting operator name is required.")
 
+        self.transfer.revoke()
         self.accepted_suite_version = TRUST_CENTER_VERSION
         self.accepted_suite_hash = instrument_suite_hash()
         self.accepted_instruments = instrument_versions()
@@ -150,12 +151,14 @@ class ConsentLedger:
 
     def require_reacceptance(self) -> None:
         """Invalidate the recorded suite version without fabricating a new one."""
+        self.transfer.revoke()
         if self.accepted_at:
             self.accepted_suite_version = f"superseded:{self.accepted_suite_version}"
 
     def place_authority_hold(self, reason: str) -> None:
         if not reason.strip():
             raise ConsentError("An authority-hold reason is required.")
+        self.transfer.revoke()
         self.authority_hold_reason = reason.strip()
 
     def clear_authority_hold(self) -> None:
