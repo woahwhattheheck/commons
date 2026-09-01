@@ -365,8 +365,12 @@ def append_override_event(
     reason: str,
     timestamp: str,
 ) -> dict[str, Any]:
+    sample_id = _text(sample_id)
+    coa_id = _text(coa_id)
     reviewer = _text(reviewer)
     reason = _text(reason)
+    if not sample_id or not coa_id:
+        raise ValueError("override sample_id and coa_id are required")
     if not reviewer or reviewer.upper() in {"SYSTEM", "AUTONOMOUS", "MODEL"}:
         raise ValueError("a named human compliance reviewer is required")
     if not reason:
@@ -377,8 +381,8 @@ def append_override_event(
     event = {
         "schema": f"{SCHEMA}/override-event",
         "sequence": len(history) + 1,
-        "sample_id": _text(sample_id),
-        "coa_id": _text(coa_id),
+        "sample_id": sample_id,
+        "coa_id": coa_id,
         "reviewer": reviewer,
         "reason": reason,
         "timestamp": timestamp,
@@ -491,17 +495,18 @@ def output_bundle(results: list[dict[str, Any]]) -> dict[str, bytes]:
 def write_outputs(output_dir: Path, bundle: dict[str, bytes]) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     manifest_name = "evidence_manifest.jsonl"
+    manifest_path = output_dir / manifest_name
+    existing_manifest = manifest_path.read_bytes() if manifest_path.exists() else b""
+    requested_manifest = bundle[manifest_name]
+    if existing_manifest and not requested_manifest.startswith(existing_manifest):
+        raise ManifestConflict("existing evidence manifest is not an immutable prefix")
+
     for name, data in bundle.items():
         path = output_dir / name
-        if name == manifest_name and path.exists():
-            existing = path.read_bytes()
-            if not data.startswith(existing):
-                raise ManifestConflict(
-                    "existing evidence manifest is not an immutable prefix"
-                )
-            if len(data) > len(existing):
+        if name == manifest_name and existing_manifest:
+            if len(data) > len(existing_manifest):
                 with path.open("ab") as handle:
-                    handle.write(data[len(existing) :])
+                    handle.write(data[len(existing_manifest) :])
             continue
         if not path.exists() or path.read_bytes() != data:
             path.write_bytes(data)
@@ -800,9 +805,9 @@ def write_pack(result: dict[str, Any], records: list[dict[str, Any]]) -> None:
     (PACK / "receipt.md").write_text("\n".join(lines), encoding="utf-8")
 
 
-def summary(result: dict[str, Any]) -> dict[str, Any]:
+def summary(result: dict[str, Any], failures: list[str]) -> dict[str, Any]:
     return {
-        "ok": pass_contract(result) == [],
+        "ok": not failures,
         "demand_id": DEMAND_ID,
         "status_counts": result["status_counts"],
         "reason_counts": result["reason_counts"],
@@ -841,8 +846,8 @@ def main(argv: list[str] | None = None) -> int:
         if args.output_dir:
             write_outputs(args.output_dir, result["bundle"])
 
-    failures = pass_contract(result) if len(records) == INPUT_COUNT else []
-    print(canonical_json({**summary(result), "failures": failures}))
+    failures = pass_contract(result) if args.input is None else []
+    print(canonical_json({**summary(result, failures), "failures": failures}))
     return 0 if not failures else 1
 
 

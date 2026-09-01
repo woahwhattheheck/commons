@@ -180,11 +180,22 @@ class ScLabsMultistateCoaRuleVersionGateTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "out"
             gate.write_outputs(output, self.result["bundle"])
+            before = {
+                path.name: path.read_bytes()
+                for path in sorted(output.iterdir())
+                if path.is_file()
+            }
             changed = deepcopy(self.fixture)
             changed[0]["coa_revision"] = "2"
             changed_result = gate.run_gate(changed)
             with self.assertRaises(gate.ManifestConflict):
                 gate.write_outputs(output, changed_result["bundle"])
+            after = {
+                path.name: path.read_bytes()
+                for path in sorted(output.iterdir())
+                if path.is_file()
+            }
+            self.assertEqual(before, after)
 
     def test_manifest_chain_verifies_and_tampering_is_visible(self) -> None:
         manifest = gate.build_manifest(self.result["records"])
@@ -275,6 +286,37 @@ class ScLabsMultistateCoaRuleVersionGateTests(unittest.TestCase):
             report = (output / "exceptions.md").read_text(encoding="utf-8")
             self.assertIn("- HOLD: 30", report)
             self.assertIn("named-human decision", report)
+
+    def test_external_cli_accepts_an_arbitrary_batch_size(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            input_path = root / "one.json"
+            output = root / "validated"
+            input_path.write_text(
+                gate.canonical_json({"records": [self.fixture[0]]}) + "\n",
+                encoding="utf-8",
+            )
+            completed = subprocess.run(
+                [
+                    sys.executable,
+                    str(Path(gate.__file__)),
+                    "--input",
+                    str(input_path),
+                    "--output-dir",
+                    str(output),
+                    "--evaluation-time",
+                    gate.EVALUATION_TIME,
+                ],
+                check=False,
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(0, completed.returncode, completed.stderr)
+            payload = json.loads(completed.stdout)
+            self.assertTrue(payload["ok"])
+            self.assertEqual({"RELEASEABLE": 1}, payload["status_counts"])
+            records = json.loads((output / "results.json").read_text(encoding="utf-8"))
+            self.assertEqual(1, len(records["records"]))
 
 
 if __name__ == "__main__":
