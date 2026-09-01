@@ -1,8 +1,8 @@
 [CmdletBinding()]
 param(
-    [int]$TimeoutSec = 5,
-    [int]$RetryCount = 6,
-    [int]$RetryDelaySec = 5
+    [int]$TimeoutSec = 10,
+    [int]$RetryCount = 3,
+    [int]$RetryDelaySec = 20
 )
 
 Set-StrictMode -Version Latest

@@ -83,8 +83,9 @@ The temporary bridge task executes `pythonw.exe -B commons_discord_bridge.py`
 directly. Python is therefore the scheduled-task root: `/End` terminates the
 exact listener before `/Run` starts its replacement instead of orphaning a
 child behind a terminated PowerShell wrapper. `run_bridge_windows.ps1` remains
-only a manual compatibility entry point. Six bounded health probes cover the
-measured journal-open startup grace before declaring that listener unhealthy.
+only a manual compatibility entry point. Three bounded health probes are
+spaced across at least 40 seconds so measured journal-open startup grace is
+covered before declaring that listener unhealthy.
 
 Runtime configuration is connector infrastructure, not a caller admission
 gate: set `DISCORD_BOT_TOKEN`, at least one `DISCORD_CHANNEL_*`, and

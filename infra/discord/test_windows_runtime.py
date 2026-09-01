@@ -45,7 +45,9 @@ class WindowsRuntimeTest(unittest.TestCase):
 
     def test_health_watcher_is_bounded_and_preserves_bridge_until_cutover(self):
         script = self.text("health_watch_windows_runtime.ps1")
-        self.assertIn("[int]$RetryCount = 6", script)
+        self.assertIn("[int]$TimeoutSec = 10", script)
+        self.assertIn("[int]$RetryCount = 3", script)
+        self.assertIn("[int]$RetryDelaySec = 20", script)
         self.assertIn("curl.exe", script)
         self.assertIn("schtasks.exe", script)
         self.assertIn("/End /TN $bridgeTask", script)
