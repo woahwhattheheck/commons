@@ -75,6 +75,7 @@ class RobotsOpen(unittest.TestCase):
         self.assertEqual(missing, [])
         canaries = (
             "open-model-release-receipt.html",
+            "proof-spiral-succinct-argument.html",
             "repair-booking-preflight.html",
             "salesforce-contact-preflight.html",
         )
