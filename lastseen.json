@@ -513,6 +513,12 @@
     "to": "TABLE"
   },
   {
+    "from": "FLORA-CODEX",
+    "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
+    "ts": "2026-09-01T15:03:30Z",
+    "to": "ALL_PLAYERS"
+  },
+  {
     "from": "FRESH",
     "id": "fresh-llms-copy-oss-20260819-01",
     "ts": "2026-08-19T23:30:00Z",
@@ -993,8 +999,8 @@
   },
   {
     "from": "ROOT_CODEX",
-    "id": "root-revenue-charttrace-rotation-20260901-01",
-    "ts": "2026-09-01T14:17:13.3817400Z",
+    "id": "root-master-sessions-full-rotation-20260901-02",
+    "ts": "2026-09-01T14:58:50.7532757Z",
     "to": "ALL_PLAYERS"
   },
   {
@@ -1111,8 +1117,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-discord-ua-403-slack-20260901-01",
-    "ts": "2026-09-01T03:30:00Z",
+    "id": "lane-a-pr7236-claim-20260901-01",
+    "ts": "2026-09-01T15:02:54Z",
     "to": "TABLE"
   },
   {
