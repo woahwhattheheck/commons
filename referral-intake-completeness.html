@@ -18,17 +18,18 @@ label{display:grid;gap:4px;font:13px/1.3 system-ui,sans-serif;color:var(--mute)}
 input,select,textarea,button{font:15px/1.3 system-ui,sans-serif}input,select,textarea{width:100%;padding:8px;border:1px solid var(--line);background:#fff;color:var(--ink)}
 .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}button{border:1px solid var(--teal);background:var(--teal);color:#fff;padding:8px 12px;cursor:pointer}
 button.ghost{background:transparent;color:var(--teal)}button.warn{background:transparent;border-color:var(--amber);color:var(--amber)}button.bad{background:transparent;border-color:var(--bad);color:var(--bad)}
+.price-actions{display:grid;justify-items:end;gap:8px;min-width:240px}.buy{display:inline-block;background:var(--teal);color:#fff;padding:11px 15px;border:1px solid var(--teal);font:700 14px/1.2 system-ui,sans-serif;text-decoration:none}.buy:hover{filter:brightness(1.08)}.buy:focus-visible{outline:3px solid var(--amber);outline-offset:3px}.foot-cta{margin-top:14px}
 pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px;background:#1b1a17;color:#e8d9b6;padding:12px;font:12px/1.4 ui-monospace,monospace}
 .stamp{display:inline-block;border:1px solid var(--ok);color:var(--ok);padding:2px 8px;font:11px/1.4 system-ui,sans-serif;letter-spacing:.08em}
 .small{color:var(--mute);font:13px/1.4 system-ui,sans-serif}
-@media(max-width:820px){.desk,.fields,.pricebar{grid-template-columns:1fr;display:grid}}
+@media(max-width:820px){.desk,.fields,.pricebar{grid-template-columns:1fr;display:grid}.price-actions{justify-items:start}}
 </style></head><body><main>
-<nav><a href="./index.html">← Commons</a></nav>
+<nav aria-label="Product navigation"><a href="./index.html">← Product home</a></nav>
 <p class="kicker">Commons · clinic operations diagnostic · synthetic / no-PHI</p>
 <h1>Referral packet in. Completeness, one queue, one receipt.</h1>
 <p class="lede">For a clinic operations director: turn a synthetic referral packet into a required-field checklist, exactly one intake-queue ticket, and a timestamped receipt. No clinical decision. No patient data. No care approval or denial.</p>
-<section class="pricebar"><div><strong>$199 · one business day</strong><p class="small">One actual referral-intake workflow, agreed synthetic fixtures, exact required-field map, replay proof, and receipt. Optional fixed $2,500 pilot only after the diagnostic finds a fit.</p></div><div class="price">$199</div></section>
-<p class="bound"><strong>Truth boundary:</strong> this tab is intake completeness only. It does not diagnose, approve or deny care, advise treatment, or leave the browser. Fixtures are fake clinic names and fake referral ids. cash_usd = 0.</p>
+<section class="pricebar"><div><strong>$199 · one business day</strong><p class="small">One actual referral-intake workflow, agreed synthetic fixtures, exact required-field map, replay proof, and receipt. Optional fixed $2,500 pilot only after the diagnostic finds a fit.</p></div><div class="price-actions"><div class="price">$199</div><a class="buy" href="https://buy.stripe.com/9B600i98N77b9uFeBk43S0c" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a><span class="small">Secure Stripe checkout opens in a new tab.</span></div></section>
+<p class="bound"><strong>Truth boundary:</strong> this interactive runner is intake completeness only. It does not diagnose, approve or deny care, advise treatment, submit data, or use PHI. Fixtures are fake clinic names and fake referral ids. <code>cash_usd = 0</code> describes only this local proof run. The runner never charges you; payment happens only if you complete Stripe Checkout in the separate tab.</p>
 <div class="desk">
 <section class="card"><h2>Synthetic referral packet</h2>
 <div class="fields">
@@ -64,7 +65,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px;background:#1b1
 <div class="row"><button id="copy" class="ghost">Copy JSON</button><button id="download" class="ghost">Download JSON</button></div>
 </section>
 <section class="card"><h2>Exact buyer intake</h2>
-<p class="small">Clinic operations director only. Local packet. Nothing is submitted, emailed, or charged.</p>
+<p class="small">Clinic operations director only. This local packet is not submitted, emailed, or charged. Checkout is a separate explicit action.</p>
 <div class="fields">
 <label>Clinic / group<input id="org" placeholder="Demo clinic group"></label>
 <label>Buyer / title<input id="buyer" placeholder="Clinic operations director"></label>
@@ -83,7 +84,8 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px;background:#1b1
 <li>Rollback of a crashed run clears the ticket and leaves a rollback receipt; retry is clean.</li>
 <li>PHI-shaped fields or clinical keys are refused. Diagnoses, care approvals, denials, and treatment advice stay 0.</li>
 </ul>
-<p class="small">Entry $199 / one business day. $2,500 pilot only after fit. Delivery: <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a></p>
+<p class="small">Entry $199 / one business day. $2,500 pilot only after fit. Questions: <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a></p>
+<p class="foot-cta"><a class="buy" href="https://buy.stripe.com/9B600i98N77b9uFeBk43S0c" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a></p>
 </section>
 </div>
 </main>
