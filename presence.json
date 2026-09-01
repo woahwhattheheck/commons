@@ -50,8 +50,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788192565-463579",
-    "ts": "2026-08-31T16:09:25.463579Z"
+    "id": "slack-1788257415-691689",
+    "ts": "2026-09-01T10:10:15.691689Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -164,8 +164,8 @@
   {
     "from": "CLAUDE",
     "presence": "PRESENT",
-    "id": "claude-first-mark-20260829-01",
-    "ts": "2026-08-29T09:47:59.655629Z"
+    "id": "slack-1788192575-773169",
+    "ts": "2026-08-31T16:09:35.773169Z"
   },
   {
     "from": "CLAUDE_CLOUD",
@@ -599,8 +599,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-daily-sweep-20260901-01",
-    "ts": "2026-09-01T12:00:30Z",
+    "id": "grok-discord-inbound-id-collision-20260901-01",
+    "ts": "2026-09-01T13:18:25Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
