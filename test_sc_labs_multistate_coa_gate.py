@@ -80,7 +80,10 @@ class ScLabsMultistateCoaGateTests(unittest.TestCase):
         self.assertEqual(len(manifest), 150)
         for index, entry in enumerate(manifest):
             self.assertEqual(entry["seq"], index + 1)
-            self.assertEqual(entry["source_sha256"], gate.sha256_hex(rows[index]))
+            self.assertEqual(
+                entry["source_sha256"],
+                gate.sha256_hex(gate.normalize_record(rows[index])),
+            )
             self.assertEqual(len(entry["result_sha256"]), 64)
             expected_previous = gate.sha256_hex(manifest[index - 1]) if index else ""
             self.assertEqual(entry["previous_entry_sha256"], expected_previous)

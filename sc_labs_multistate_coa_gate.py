@@ -278,8 +278,11 @@ def validate_records(records: Iterable[dict[str, Any]]) -> dict[str, Any]:
     evidence_manifest: list[dict[str, Any]] = []
     for seq, source in enumerate(records, start=1):
         row = normalize_record(source)
-        source_sha = sha256_hex(source)
         normalized_sha = sha256_hex(row)
+        # A row may arrive from CSV or JSON, so its stable source identity is the
+        # canonical normalized row. Whole-file byte hashes are recorded by the
+        # artifact writer for transport-level provenance.
+        source_sha = normalized_sha
         reason = classify_record(
             row, seen_samples=seen_samples, seen_coas=seen_coas
         )
