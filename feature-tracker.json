@@ -2636,7 +2636,7 @@
       "live_status": "UNMEASURED",
       "main_sha": "",
       "name": "Pace Lebanon microbial-volume evidence",
-      "next_gap": "Buyer-controlled schemas, method/specification versions, validated fixtures, and named acceptance authority remain required before any live integration or production claim. No outreach. PRE-SALE TRANSPORT: NONE.",
+      "next_gap": "Next measurement: buyer-controlled schemas, method/specification versions, validated fixtures, and buyer-designated reviewer information. Until measured, this remains synthetic with no live integration or production claim. No outreach. PRE-SALE TRANSPORT: NONE.",
       "owner_subsystem": "revenue",
       "public_entrypoint": "pace-lebanon-microbial-volume-evidence-lims.html",
       "receipts": [],
