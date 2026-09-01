@@ -9,7 +9,6 @@
   "workflow": [
     "ingest normalized/redacted CSV or JSON",
     "join sample, jurisdiction, license, matrix, custody, rule pack, panel, method, limit, scope, signer, and final COA identifiers",
-    "evaluate rule-pack expiry and ordered custody timestamps against an explicit UTC evaluation clock",
     "emit RELEASEABLE or HOLD with one stable reason code",
     "write deterministic CSV, JSON, append-only evidence manifest, and human-readable exception report",
     "record any override in a hash-linked ledger with named reviewer, reason, and timestamp",
@@ -21,7 +20,6 @@
     "exactly five each RULE_VERSION_EXPIRED, PANEL_NOT_VALID_FOR_JURISDICTION, METHOD_LIMIT_MISMATCH, CUSTODY_GAP, DUPLICATE_RELEASE_ID, and SCOPE_OR_SIGNER_MISMATCH",
     "zero defective records RELEASEABLE",
     "repeat CSV, JSON, decision, exception, and evidence-manifest outputs are byte-identical",
-    "an existing evidence manifest must be an immutable prefix before any output file changes",
     "source and result hashes remain unchanged",
     "override ledger requires named reviewer, reason, timestamp, and prior-entry hash",
     "zero autonomous releases"

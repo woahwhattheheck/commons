@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 import tempfile
 import unittest
 from copy import deepcopy
@@ -249,6 +251,22 @@ class ScLabsMultistateCoaGateTests(unittest.TestCase):
                 if path.is_file()
             }
             self.assertEqual(before, after)
+
+    def test_versioned_hardening_receipt_hashes_match_artifacts(self) -> None:
+        pack = (
+            Path(__file__).resolve().parent
+            / "revenue"
+            / "sc_labs_multistate_coa_gate"
+            / "v2"
+        )
+        receipt = json.loads((pack / "receipt.json").read_text(encoding="utf-8"))
+        self.assertEqual(receipt["state"], "TESTED")
+        self.assertEqual(receipt["input_records"], 150)
+        self.assertEqual(receipt["releaseable"], 120)
+        self.assertEqual(receipt["held"], 30)
+        for name, expected in receipt["artifact_sha256"].items():
+            actual = hashlib.sha256((pack / name).read_bytes()).hexdigest()
+            self.assertEqual(actual, expected, name)
 
     def test_no_result_alteration_source_mutation_or_live_interface(self) -> None:
         result = gate.validate_records(gate.build_acceptance_fixture())

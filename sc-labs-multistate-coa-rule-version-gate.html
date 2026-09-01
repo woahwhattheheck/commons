@@ -42,7 +42,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:180px;background:#050
 <tr><td>Scope/signer mismatch</td><td>5</td></tr>
 </tbody>
 </table>
-<p class="small"><code>python3 sc_labs_multistate_coa_gate.py --input records.csv --write-artifacts output</code></p>
+<p class="small"><code>python3 sc_labs_multistate_coa_gate.py --input records.csv --write-artifacts output --evaluation-time 2026-09-01T00:00:00Z</code></p>
 </section>
 
 <section class="card">
@@ -54,12 +54,12 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:180px;background:#050
 <section class="card wide">
 <h2>Frozen CSV / JSON / reports</h2>
 <p>
-<a class="button" href="./revenue/sc_labs_multistate_coa_gate/fixture.csv">input CSV</a>
-<a class="button" href="./revenue/sc_labs_multistate_coa_gate/fixture.json">input JSON</a>
-<a class="button" href="./revenue/sc_labs_multistate_coa_gate/decisions.csv">decision CSV</a>
-<a class="button" href="./revenue/sc_labs_multistate_coa_gate/decisions.json">decision JSON</a>
-<a class="button" href="./revenue/sc_labs_multistate_coa_gate/evidence-manifest.json">evidence manifest</a>
-<a class="button" href="./revenue/sc_labs_multistate_coa_gate/exception-report.txt">exception report</a>
+<a class="button" href="./revenue/sc_labs_multistate_coa_gate/v2/fixture.csv">input CSV</a>
+<a class="button" href="./revenue/sc_labs_multistate_coa_gate/v2/fixture.json">input JSON</a>
+<a class="button" href="./revenue/sc_labs_multistate_coa_gate/v2/decisions.csv">decision CSV</a>
+<a class="button" href="./revenue/sc_labs_multistate_coa_gate/v2/decisions.json">decision JSON</a>
+<a class="button" href="./revenue/sc_labs_multistate_coa_gate/v2/evidence-manifest.json">evidence manifest</a>
+<a class="button" href="./revenue/sc_labs_multistate_coa_gate/v2/exception-report.txt">exception report</a>
 </p>
 <p class="small">Any override is a separate append-only, hash-linked record containing the original HOLD reason, named reviewer, reason, timestamp, and previous-entry hash. Validation output remains immutable. Synthetic fixtures only. No outreach. PRE-SALE TRANSPORT: NONE. cash_usd=0.</p>
 </section>
@@ -80,7 +80,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:180px;background:#050
   document.getElementById("load").addEventListener("click", async () => {
     state.textContent = "READING";
     try {
-      const response = await fetch("./revenue/sc_labs_multistate_coa_gate/receipt.json", {cache:"no-store"});
+      const response = await fetch("./revenue/sc_labs_multistate_coa_gate/v2/receipt.json", {cache:"no-store"});
       if (!response.ok) throw new Error("receipt HTTP " + response.status);
       const receipt = await response.json();
       const failures = [];
