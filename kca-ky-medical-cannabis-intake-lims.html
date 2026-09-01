@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>KCA Laboratories Kentucky Medical Cannabis Intake LIMS — Commons</title>
+<style>
+:root{color-scheme:light;--paper:#f5f1e8;--ink:#172126;--muted:#56636a;--line:#bcc5c4;--card:#fffdfa;--blue:#285f78;--teal:#176b62;--amber:#9a621c}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#d9ebe8,var(--paper) 44%);color:var(--ink);font:16px/1.5 system-ui,sans-serif}
+main{max-width:1080px;margin:auto;padding:28px 16px 72px}a{color:var(--blue)}h1{font:800 clamp(2.2rem,6vw,4.4rem)/.96 system-ui,sans-serif;max-width:920px;margin:.2em 0}
+.kicker{letter-spacing:.14em;text-transform:uppercase;font-size:.76rem;color:var(--teal)}.lede{font-size:1.1rem;max-width:800px;color:var(--muted)}
+.truth{border-left:5px solid var(--amber);padding:10px 14px;background:#fff7e8}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}.wide{grid-column:1/-1}
+table{width:100%;border-collapse:collapse}th,td{border-top:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+button{border:0;border-radius:999px;padding:11px 16px;background:var(--teal);color:white;font-weight:700;cursor:pointer}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:190px;padding:14px;background:#142522;color:#dff5ee;border-radius:10px}
+.state{display:inline-block;border:1px solid var(--amber);color:var(--amber);border-radius:999px;padding:3px 9px;font-size:.75rem;font-weight:800}
+.small{color:var(--muted);font-size:.88rem}@media(max-width:760px){.grid{grid-template-columns:1fr}.wide{grid-column:auto}}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="./index.html">← Commons</a> · <a href="./offer.html">offers</a> · <a href="./feature-tracker.html">feature tracker</a></nav>
+<p class="kicker">KCA Laboratories · Kentucky Medical Cannabis Intake · HOLD / BUILD-AND-VERIFY</p>
+<h1>Synthetic intake & provenance reconciliation from license to draft CoA.</h1>
+<p class="lede">A frozen 100-order fixture reconciles KY registration/license, portal order, printed CoC, physical receiving receipt, panel/matrix (flower, concentrate, edible), and internal/partner result provenance. Exactly 75 orders are READY; 25 predetermined defects remain on HOLD.</p>
+<p class="truth"><strong>Truth boundary:</strong> synthetic intake evidence only. Read-only adapters. Zero state-system writes, zero Metrc writes, zero compliance decisions, zero outreach, zero automatic CoA releases.</p>
+
+<div class="grid">
+<section class="card">
+<h2>Frozen acceptance oracle</h2>
+<table>
+<thead><tr><th>Check</th><th>Required result</th></tr></thead>
+<tbody>
+<tr><td>Input</td><td>100 synthetic orders</td></tr>
+<tr><td>READY / HOLD</td><td>75 / 25</td></tr>
+<tr><td>Holds</td><td>10 invalid/missing license · 5 CoC/physical mismatch · 5 duplicate ID · 5 partner provenance gap</td></tr>
+<tr><td>Held output</td><td>0 accessions · 0 work orders · 0 results · 0 staged CoAs · 0 releases</td></tr>
+<tr><td>Matrices</td><td>Flower · Concentrate · Edible</td></tr>
+<tr><td>Partner provenance</td><td>100% lab/method/source SHA256 hashes bound</td></tr>
+<tr><td>Replay</td><td>0 additions · 100 no-ops</td></tr>
+<tr><td>Release</td><td>Authorized named-human reviewer directory only</td></tr>
+</tbody>
+</table>
+<p class="small">Official acceptance: <code>python test_kca_ky_medical_cannabis_intake_lims.py</code></p>
+</section>
+
+<section class="card">
+<h2>Evidence receipt <span id="state" class="state">NOT LOADED</span></h2>
+<p><button id="load" type="button">Load checked-in receipt</button></p>
+<pre id="output">Load the receipt to verify the exact frozen oracle and evidence hashes.</pre>
+</section>
+
+<section class="card wide">
+<h2>Reconciliation Lineage</h2>
+<p>Every READY order verifies the KY producer license, binds the portal order and printed Chain of Custody (CoC) to physical receiving tags, validates sample matrix minimum weights, and captures instrument and partner lab result provenance with immutable SHA256 hashes. Draft CoAs remain unreleased until explicit approval by an authorized named reviewer.</p>
+<p class="small">Buyer: KCA Laboratories / Richard Sams (matched prospect: Jonathan Thompson). Demand source: Slack #build-demand <code>1788151438.397489</code>. PRE-SALE TRANSPORT: NONE. cash_usd=0. Open door; no login.</p>
+</section>
+</div>
+</main>
+<script>
+(() => {
+  const state = document.getElementById("state");
+  const output = document.getElementById("output");
+  const expectedHolds = {
+    HOLD_COC_PHYSICAL_MISMATCH: 5,
+    HOLD_DUPLICATE_ID: 5,
+    HOLD_INVALID_OR_MISSING_LICENSE: 10,
+    HOLD_PARTNER_PROVENANCE_GAP: 5
+  };
+  document.getElementById("load").addEventListener("click", async () => {
+    state.textContent = "READING";
+    try {
+      const response = await fetch("./revenue/kca_ky_medical_cannabis_intake_lims/receipt.json", {cache:"no-store"});
+      if (!response.ok) throw new Error("receipt HTTP " + response.status);
+      const value = await response.json();
+      const failures = [];
+      if (value.state !== "TESTED") failures.push("state");
+      if (value.input_rows !== 100 || value.ready !== 75 || value.holds !== 25) failures.push("counts");
+      if (value.draft_coas_staged !== 75 || value.coas_released !== 0) failures.push("coas");
+      if (value.replay_additions !== 0) failures.push("replay");
+      if (JSON.stringify(value.hold_counts) !== JSON.stringify(expectedHolds)) failures.push("hold_counts");
+      for (const key of ["fixture_sha256", "manifest_sha256", "audit_sha256"]) {
+        if (!/^[a-f0-9]{64}$/.test(value[key] || "")) failures.push(key);
+      }
+      state.textContent = failures.length ? "FAIL" : "PASS";
+      output.textContent = JSON.stringify({ok: !failures.length, failures, receipt: value}, null, 2);
+    } catch (error) {
+      state.textContent = "UNKNOWN";
+      output.textContent = String(error);
+    }
+  });
+})();
+</script>
+</body>
+</html>
