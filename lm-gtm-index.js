@@ -4,7 +4,11 @@
   var HOLD = {
     HOLD_DO_NOT_RESEND: true,
     HOLD_DO_NOT_CONTACT: true,
-    HOLD_BUILD_AND_VERIFY: true
+    HOLD_BUILD_AND_VERIFY: true,
+    OWNER_HOLD: true,
+    DNR_OUTREACH: true,
+    NOT_HOT: true,
+    BOUNCED: true
   };
 
   function text(tag, value, className) {
@@ -25,9 +29,10 @@
     var role = row && row.role;
     if (role !== "external_prospect" && role !== "inbound_contact") return null;
     if (!row.live) return null;
-    if (row.decision === "MATERIAL_REPLY") return "material_reply";
     if (row.decision === "HOLD_BUILD_AND_VERIFY") return null;
+    if (row.decision === "OWNER_HOLD" || row.decision === "BOUNCED") return null;
     if (row.dnr || HOLD[row.decision]) return null;
+    if (row.decision === "MATERIAL_REPLY") return "material_reply";
     if (row.decision === "SENT_AWAITING_REPLY") return "sent_awaiting_reply";
     if (row.decision === "READY_TO_DRAFT") return "ready_to_draft";
     if (row.decision === "VERIFIED_LEAD_UNSENT") return "verified_lead_unsent";
@@ -36,6 +41,8 @@
 
   function laneOf(row) {
     if (hotClass(row)) return "HOT";
+    if (row && row.decision === "OWNER_HOLD") return "OWNER_HOLD";
+    if (row && row.decision === "BOUNCED") return "BOUNCED";
     if (row && row.decision === "SENT_AWAITING_REPLY" && row.dnr) return "SENT_DNR";
     if (row && row.decision === "HOLD_BUILD_AND_VERIFY") return "HOLD_BUILD";
     if (row && (row.dnr || HOLD[row.decision])) return "DNR";
@@ -134,7 +141,7 @@
 
   function renderSentDnr(parsed) {
     var rows = (parsed.rows || []).filter(function (row) {
-      return row.live && row.decision === "SENT_AWAITING_REPLY" && row.dnr;
+      return row.live && row.dnr && (row.decision === "SENT_AWAITING_REPLY" || row.decision === "BOUNCED");
     });
     rows.sort(function (a, b) {
       return String(a.id).localeCompare(String(b.id));

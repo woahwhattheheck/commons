@@ -23,11 +23,11 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
   <h2 id="truth-heading">Public projection truth</h2>
   <p id="index-status" class="note">Loading measured state.json…</p>
   <div id="truth" class="truth">
-    <span><b>12</b>hot</span>
-    <span><b>10</b>hold-build</span>
+    <span><b>11</b>hot</span>
+    <span><b>15</b>hold-build</span>
     <span><b>10</b>sent-dnr</span>
-    <span><b>45</b>live next</span>
-    <span><b>34</b>prospects</span>
+    <span><b>50</b>live next</span>
+    <span><b>39</b>prospects</span>
     <span><b>11</b>inbound</span>
     <span><b>4</b>seller context</span>
     <span><b>0</b>sent by this composer</span>
@@ -36,19 +36,19 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </section>
 <section class="panel warning" aria-labelledby="not-crm-heading">
   <h2 id="not-crm-heading">Not a second CRM</h2>
-  <p>Airtable <code>JOJO Revenue Recovery CRM / Revenue Pipeline</code> remains canonical. MSP and FUSE HANDS SENT rows cite <code>EXISTING_CRM_RECORD</code> / <code>airtable:rec…</code> and stay HARD_DO_NOT_RESEND — not hot, not draft-now. City of Billings Bid 1421 is a MATERIAL_REPLY pointer (addenda 1-5 received; HOLD / NO SUBMISSION; no bid submitted). #leads HOLD / BUILD-AND-VERIFY posts are org + person + Slack ts only and are not hot. Verified unsent leads stay in hot at rank 3. Emails and phones stay off the INDEX. The ~1000 marketing-sales GitHub entities stay research, not live sales. <code>--send</code> exits 3.</p>
+  <p>Airtable <code>JOJO Revenue Recovery CRM / Revenue Pipeline</code> remains canonical. MSP SENT rows and FUSE HANDS DNR rows cite <code>EXISTING_CRM_RECORD</code> / <code>airtable:rec…</code> and stay HARD_DO_NOT_RESEND — not hot, not draft-now. Halo AI is BOUNCED DNR (never resend). City of Billings Bid 1421 is OWNER_HOLD / DNR_OUTREACH / NOT_HOT: live owner path in <code>#billings-1421-compliance</code>, not hot, not a dead NO_BID, agents do not send or contact Cheri. #leads HOLD / BUILD-AND-VERIFY posts are org + person + Slack ts only and are not hot. Verified unsent leads stay in hot at rank 3. Emails and phones stay off the INDEX. The ~1000 marketing-sales GitHub entities stay research, not live sales. <code>--send</code> exits 3.</p>
 </section>
 <section class="panel" aria-labelledby="hot-heading">
   <h2 id="hot-heading">HOT — actionable live ones</h2>
-  <p class="note">Rank: material_reply &gt; sent_awaiting_reply &gt; ready_to_draft &gt; verified_lead_unsent. DNR / HOLD_DO_NOT_RESEND / HOLD_BUILD_AND_VERIFY excluded unless a MATERIAL_REPLY reopened them. Do not treat SENT-DNR or HOLD-build as draft-now.</p>
+  <p class="note">Rank: material_reply &gt; sent_awaiting_reply &gt; ready_to_draft &gt; verified_lead_unsent. DNR / HOLD_DO_NOT_RESEND / HOLD_BUILD_AND_VERIFY / OWNER_HOLD / BOUNCED excluded unless a MATERIAL_REPLY reopened them. Do not treat SENT-DNR, bounced DNR, owner-hold, or HOLD-build as draft-now.</p>
   <table>
     <thead><tr><th>rank</th><th>id</th><th>org</th><th>person</th><th>decision</th><th>next</th><th>owner</th></tr></thead>
     <tbody id="hot-actions"></tbody>
   </table>
 </section>
 <section class="panel warning" aria-labelledby="sent-dnr-heading">
-  <h2 id="sent-dnr-heading">SENT / AWAITING_REPLY — DNR, not hot</h2>
-  <p class="note">HARD_DO_NOT_RESEND. No reply is interest. Do not resend while awaiting reply. Not a draft-now lane.</p>
+  <h2 id="sent-dnr-heading">SENT / BOUNCED — DNR, not hot</h2>
+  <p class="note">HARD_DO_NOT_RESEND. Bounced stays in this list with decision BOUNCED. No reply is interest. Do not resend. Not a draft-now lane.</p>
   <table>
     <thead><tr><th>id</th><th>org</th><th>person</th><th>route</th><th>next</th></tr></thead>
     <tbody id="sent-dnr-actions"></tbody>
@@ -86,6 +86,6 @@ python3 host/lm_gtm_index.py append-event --subject composio --id yourname-gtm-n
 <noscript>
   <p class="panel">JavaScript is off. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> and <a href="./revenue/lm_gtm_index/state.json">state.json</a>. Run <code>brief</code> for compact HOT, <code>sent</code> for HARD_DO_NOT_RESEND, and <code>hold</code> for HOLD/BUILD-AND-VERIFY. Cash USD 0. Not a CRM.</p>
 </noscript>
-<script src="./lm-gtm-index.js?v=20260831d"></script>
+<script src="./lm-gtm-index.js?v=20260901a"></script>
 </body>
 </html>

@@ -66,6 +66,11 @@ HOLD_BUILD = (
     "ace-qat-erick-sharp",
     "sgspsi-kyle-copeland",
     "csanalytical-brandon-zurawlow",
+    "mga-marshall-houston",
+    "mvmtc-craig-riviello",
+    "luvak-dean-gaskill",
+    "sharp-james-hamilton",
+    "pace-amanda-yoakum",
 )
 HOLD_PRODUCT = {
     "rmb-robert-borash": "rmb-crosssite-courier-accession-lims-01",
@@ -79,6 +84,15 @@ HOLD_PRODUCT = {
 BILLINGS_POINTER = "lm-gtm-billings-material-reply-20260831-01"
 BILLINGS_FLOOR_STATUS = "lm-gtm-billings-floor-status-20260831-01"
 BILLINGS_RUNNER_STATUS = "lm-gtm-billings-runner-status-20260831-01"
+BILLINGS_OWNER_HOLD = "lm-gtm-billings-owner-hold-status-20260831-02"
+HALO_BOUNCE_STATUS = "lm-gtm-fuse-halo-bounce-status-20260831-02"
+HOLD_TRUTH_SYNC = (
+    "lm-gtm-hold-mga-20260831-02",
+    "lm-gtm-hold-mvmtc-20260831-02",
+    "lm-gtm-hold-luvak-20260831-02",
+    "lm-gtm-hold-sharp-20260831-02",
+    "lm-gtm-hold-pace-20260831-02",
+)
 BRIEF_KEYS = {
     "id",
     "lane",
@@ -127,15 +141,15 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(truth["transport_actions"], 0)
         self.assertEqual(truth["calls_booked"], 0)
         self.assertEqual(truth["mailbox"], "NEEDS_OWNER_MAILBOX")
-        self.assertEqual(truth["live_next_actions"], 45)
-        self.assertEqual(truth["hot_next_actions"], 12)
-        self.assertEqual(truth["hold_build_actions"], 10)
+        self.assertEqual(truth["live_next_actions"], 50)
+        self.assertEqual(truth["hot_next_actions"], 11)
+        self.assertEqual(truth["hold_build_actions"], 15)
         self.assertEqual(truth["sent_awaiting_dnr_actions"], 10)
-        self.assertEqual(truth["external_prospects"], 34)
+        self.assertEqual(truth["external_prospects"], 39)
         self.assertEqual(truth["inbound_contacts"], 11)
         self.assertEqual(truth["seller_context_rows"], 4)
-        self.assertEqual(truth["overlay_events"], 35)
-        self.assertEqual(truth["index_rows"], 51)
+        self.assertEqual(truth["overlay_events"], 42)
+        self.assertEqual(truth["index_rows"], 56)
         self.assertEqual(truth["research_entities_not_live"], 1000)
         self.assertTrue(built["state"]["public_projection_is_not_crm"])
         self.assertEqual(
@@ -191,11 +205,11 @@ class LmGtmIndexTests(unittest.TestCase):
         hot = idx.hot_next_actions()
         ids = [row["id"] for row in hot]
         classes = [row["hot_class"] for row in hot]
-        self.assertEqual(ids[0], "city-of-billings-bid-1421")
-        self.assertEqual(classes[0], "material_reply")
+        self.assertEqual(ids[0], "composio")
+        self.assertEqual(classes[0], "ready_to_draft")
+        self.assertNotIn("city-of-billings-bid-1421", ids)
         self.assertIn("composio", ids)
         self.assertEqual(hot[ids.index("composio")]["hot_class"], "ready_to_draft")
-        self.assertLess(ids.index("city-of-billings-bid-1421"), ids.index("composio"))
         self.assertLess(ids.index("composio"), ids.index("communitycare-katherine-reyes"))
         for lead in LEADS:
             self.assertIn(lead, ids)
@@ -217,34 +231,55 @@ class LmGtmIndexTests(unittest.TestCase):
         ranks = [row["hot_rank"] for row in hot]
         self.assertEqual(ranks, sorted(ranks))
 
-    def test_billings_material_reply_visible_in_hot(self) -> None:
+    def test_billings_owner_hold_not_hot_and_not_dead_nobid(self) -> None:
         built = idx.build_index()
         by_id = {row["id"]: row for row in built["rows"]}
         row = by_id["city-of-billings-bid-1421"]
-        self.assertEqual(row["decision"], "MATERIAL_REPLY")
+        self.assertEqual(row["decision"], "OWNER_HOLD")
         self.assertEqual(row["role"], "inbound_contact")
-        self.assertFalse(row["dnr"])
-        self.assertEqual(row["due"], "2026-09-28")
+        self.assertTrue(row["dnr"])
+        self.assertTrue(row["live"])
+        self.assertEqual(row["due"], "2026-09-04")
+        self.assertEqual(row["route_kind"], "EXISTING_CRM_RECORD")
+        self.assertEqual(row["route_ref"], "airtable:rec2mCS4ETa8FOvqN")
+        self.assertEqual(idx.compact_lane(row), "owner_hold")
         self.assertIn("slack:C0BRGMDQB6G:1788143612.591889", row["source_paths"])
         self.assertIn("gmail:1a055a9913e5f6ec", row["source_paths"])
         self.assertIn("slack:C0BRGMDQB6G:1788146673.583549", row["source_paths"])
         self.assertIn("slack:C0BRGMDQB6G:1788147874.618849", row["source_paths"])
         self.assertIn("p/billings-bid-1421-partner-recon-20260831-01.md", row["source_paths"])
+        self.assertIn("slack:C0BU4PSNWG4:1788230699.113579", row["source_paths"])
+        self.assertIn("slack:C0BRGMDQB6G:1788230715.431379", row["source_paths"])
+        self.assertIn("slack:C0BTURDA3PW:1788170925.499889", row["source_paths"])
         next_action = row["next_action"].casefold()
-        self.assertIn("no bid submitted", next_action)
-        self.assertIn("hold / no submission", next_action)
-        self.assertIn("addenda", next_action)
-        self.assertIn("production runners in flight", next_action)
-        self.assertIn("no city contact", next_action)
-        self.assertIn("award target 2026-09-28", next_action)
+        self.assertIn("owner_hold", next_action)
+        self.assertIn("dnr_outreach", next_action)
+        self.assertIn("not_hot", next_action)
+        self.assertIn("billings-1421-compliance", next_action)
+        self.assertIn("attachment e complete", next_action)
+        self.assertIn("no agent send", next_action)
+        self.assertIn("no bid submission by agents", next_action)
+        self.assertIn("do not contact cheri", next_action)
+        self.assertIn("live owner path remains", next_action)
+        self.assertIn("pointer only", next_action)
+        self.assertNotIn("dead no_bid", next_action)
+        self.assertNotEqual(row["decision"], "NO_BID")
+        self.assertNotEqual(row["decision"], "MATERIAL_REPLY")
         self.assertIn(BILLINGS_POINTER, row["overlay_event_ids"])
         self.assertIn(BILLINGS_FLOOR_STATUS, row["overlay_event_ids"])
         self.assertIn(BILLINGS_RUNNER_STATUS, row["overlay_event_ids"])
-        self.assertNotEqual(BILLINGS_POINTER, BILLINGS_FLOOR_STATUS)
-        self.assertNotEqual(BILLINGS_POINTER, BILLINGS_RUNNER_STATUS)
-        self.assertNotEqual(BILLINGS_FLOOR_STATUS, BILLINGS_RUNNER_STATUS)
+        self.assertIn(BILLINGS_OWNER_HOLD, row["overlay_event_ids"])
+        self.assertNotEqual(BILLINGS_POINTER, BILLINGS_OWNER_HOLD)
+        self.assertNotEqual(BILLINGS_FLOOR_STATUS, BILLINGS_OWNER_HOLD)
+        self.assertNotEqual(BILLINGS_RUNNER_STATUS, BILLINGS_OWNER_HOLD)
+        event_ids = {event["id"] for event in built["events"]}
+        self.assertIn(BILLINGS_POINTER, event_ids)
+        self.assertIn(BILLINGS_FLOOR_STATUS, event_ids)
+        self.assertIn(BILLINGS_RUNNER_STATUS, event_ids)
+        self.assertIn(BILLINGS_OWNER_HOLD, event_ids)
         hot_ids = [item["id"] for item in idx.hot_next_actions()]
-        self.assertEqual(hot_ids[0], "city-of-billings-bid-1421")
+        self.assertNotIn("city-of-billings-bid-1421", hot_ids)
+        self.assertEqual(hot_ids[0], "composio")
 
     def test_dnr_msp_sent_not_in_hot_and_cites_existing_crm(self) -> None:
         built = idx.build_index()
@@ -270,7 +305,6 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertIn(BILLINGS_POINTER, event_ids)
         for name, rec in FUSE_RECS.items():
             row = by_id[name]
-            self.assertEqual(row["decision"], "SENT_AWAITING_REPLY")
             self.assertTrue(row["dnr"])
             self.assertEqual(row["route_kind"], "EXISTING_CRM_RECORD")
             self.assertEqual(row["route_ref"], rec)
@@ -280,8 +314,21 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertTrue(any(path.startswith("gmail:") for path in row["source_paths"]))
             self.assertTrue(any(path.startswith("github:") for path in row["source_paths"]))
             self.assertIn("slack:C0BRGMDQB6G:1788150461.695739", row["source_paths"])
+            if name == "fuse-halo-ai-vito-strokov":
+                self.assertEqual(row["decision"], "BOUNCED")
+                self.assertEqual(idx.compact_lane(row), "bounced")
+                self.assertIn(HALO_BOUNCE_STATUS, row["overlay_event_ids"])
+                self.assertIn("slack:C0BTURDA3PW:1788159251.530269", row["source_paths"])
+                self.assertIn("gmail:1a056118151078d4", row["source_paths"])
+                bounce = row["next_action"].casefold()
+                self.assertIn("bounced", bounce)
+                self.assertIn("hard_do_not_resend", bounce)
+                self.assertNotIn("awaiting_reply", bounce)
+            else:
+                self.assertEqual(row["decision"], "SENT_AWAITING_REPLY")
         self.assertEqual(by_id["fuse-jovie-tim-white"]["person"], "Tim White")
         self.assertEqual(by_id["fuse-halo-ai-vito-strokov"]["organization"], "Halo AI")
+        self.assertIn(HALO_BOUNCE_STATUS, event_ids)
 
     def test_hold_build_not_in_hot(self) -> None:
         built = idx.build_index()
@@ -306,6 +353,16 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertTrue(any(path.startswith("p/") and path.endswith(".md") for path in row["source_paths"]))
         self.assertEqual(by_id["sara-shannon-tollison"]["person"], "Shannon Tollison")
         self.assertEqual(by_id["eagle-ross-caputo"]["person"], "Ross A. Caputo")
+        self.assertEqual(by_id["mga-marshall-houston"]["person"], "Marshall Houston")
+        self.assertEqual(by_id["mga-marshall-houston"]["organization"], "MGA Research")
+        self.assertIn("mga-alabama-materials-program-lims-01", by_id["mga-marshall-houston"]["next_action"])
+        self.assertEqual(by_id["mvmtc-craig-riviello"]["person"], "Craig A. Riviello")
+        self.assertEqual(by_id["luvak-dean-gaskill"]["person"], "Dean Gaskill")
+        self.assertEqual(by_id["sharp-james-hamilton"]["person"], "James Hamilton")
+        self.assertEqual(by_id["pace-amanda-yoakum"]["person"], "Amanda Yoakum")
+        event_ids = {event["id"] for event in built["events"]}
+        for event_id in HOLD_TRUTH_SYNC:
+            self.assertIn(event_id, event_ids)
 
     def test_leads_are_pointers_without_contact_book(self) -> None:
         built = idx.build_index()
@@ -364,7 +421,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertTrue(mintplex["index"]["dnr"])
         self.assertTrue(mintplex["sources"]["outreach_receipts"])
         billings = idx.show_subject("city-of-billings-bid-1421", sources=True)
-        self.assertEqual(billings["index"]["decision"], "MATERIAL_REPLY")
+        self.assertEqual(billings["index"]["decision"], "OWNER_HOLD")
         self.assertTrue(billings["overlay_events"])
         integris = idx.show_subject("msp-integris", sources=True)
         self.assertEqual(integris["index"]["route_ref"], "airtable:recyxAWjUjrUY1Xln")
@@ -541,7 +598,8 @@ class LmGtmIndexTests(unittest.TestCase):
             idx.write_jsonl(paths["events"], events)
             idx.write_index(paths)
             hot_ids = [row["id"] for row in idx.hot_next_actions(paths)]
-            self.assertEqual(hot_ids[0], "city-of-billings-bid-1421")
+            self.assertEqual(hot_ids[0], "metaforms")
+            self.assertNotIn("city-of-billings-bid-1421", hot_ids)
             self.assertIn("metaforms", hot_ids)
             self.assertLess(hot_ids.index("metaforms"), hot_ids.index("composio"))
             shown = idx.show_subject("metaforms", paths, sources=True)
@@ -590,7 +648,7 @@ class LmGtmIndexTests(unittest.TestCase):
         second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
         self.assertEqual(first, second)
         self.assertIn("USD 0 cash", first)
-        self.assertIn("12 hot", first)
+        self.assertIn("11 hot", first)
         nxt = subprocess.run(
             [sys.executable, str(HOST), "next"],
             cwd=ROOT,
@@ -611,7 +669,9 @@ class LmGtmIndexTests(unittest.TestCase):
             text=True,
         ).stdout
         hot_ids = [json.loads(line)["id"] for line in hot.splitlines() if line.strip()]
-        self.assertEqual(hot_ids[0], "city-of-billings-bid-1421")
+        self.assertEqual(hot_ids[0], "composio")
+        self.assertNotIn("city-of-billings-bid-1421", hot_ids)
+        self.assertNotIn("fuse-halo-ai-vito-strokov", hot_ids)
         self.assertNotIn("msp-integris", hot_ids)
         self.assertNotIn("fuse-jovie-tim-white", hot_ids)
         self.assertNotIn("sara-shannon-tollison", hot_ids)
@@ -660,22 +720,30 @@ class LmGtmIndexTests(unittest.TestCase):
         )
         lines = [line for line in proc.stdout.splitlines() if line.strip()]
         header = json.loads(lines[0])
-        self.assertEqual(
-            set(header),
-            {"hot", "hold", "sent_dnr", "cash_usd", "canonical_crm"},
-        )
-        self.assertEqual(header["hot"], 12)
-        self.assertEqual(header["hold"], 10)
+        extra_header = set(header) - {
+            "hot",
+            "hold",
+            "sent_dnr",
+            "cash_usd",
+            "canonical_crm",
+            "composed_at",
+            "stale_warning",
+        }
+        self.assertFalse(extra_header, extra_header)
+        self.assertIn("composed_at", header)
+        self.assertEqual(header["composed_at"], idx.build_index()["state"]["composed_at"])
+        self.assertEqual(header["hot"], 11)
+        self.assertEqual(header["hold"], 15)
         self.assertEqual(header["sent_dnr"], 10)
         self.assertEqual(header["cash_usd"], 0)
         self.assertEqual(header["canonical_crm"], "JOJO Revenue Recovery CRM / Revenue Pipeline")
         rows = [json.loads(line) for line in lines[1:]]
-        self.assertEqual(len(rows), 12)
-        self.assertEqual(rows[0]["id"], "city-of-billings-bid-1421")
-        self.assertEqual(rows[0]["lane"], "material_reply")
-        self.assertEqual(rows[0]["decision"], "MATERIAL_REPLY")
-        self.assertIn("hold / no submission", rows[0]["next_action"].casefold())
-        self.assertIn("production runners in flight", rows[0]["next_action"].casefold())
+        self.assertEqual(len(rows), 11)
+        self.assertEqual(rows[0]["id"], "composio")
+        self.assertEqual(rows[0]["lane"], "ready_to_draft")
+        self.assertEqual(rows[0]["decision"], "READY_TO_DRAFT")
+        self.assertNotIn("city-of-billings-bid-1421", [row["id"] for row in rows])
+        self.assertNotIn("fuse-halo-ai-vito-strokov", [row["id"] for row in rows])
         for row in rows:
             extra = set(row) - BRIEF_KEYS
             self.assertFalse(extra, extra)
@@ -721,14 +789,21 @@ class LmGtmIndexTests(unittest.TestCase):
         for row in rows:
             extra = set(row) - BRIEF_KEYS
             self.assertFalse(extra, extra)
-            self.assertEqual(row["lane"], "sent_dnr")
-            self.assertEqual(row["decision"], "SENT_AWAITING_REPLY")
+            self.assertEqual(row["lane"] in {"sent_dnr", "bounced"}, True)
             self.assertTrue(row["dnr"])
             self.assertNotIn(row["id"], hot_ids)
             self.assertTrue(str(row.get("route_ref") or "").startswith("airtable:rec"))
             blob = json.dumps(row)
             self.assertIsNone(EMAIL_RE.search(blob))
             self.assertIsNone(PHONE_RE.search(blob))
+            if row["id"] == "fuse-halo-ai-vito-strokov":
+                self.assertEqual(row["lane"], "bounced")
+                self.assertEqual(row["decision"], "BOUNCED")
+                self.assertIn("HARD_DO_NOT_RESEND", row["next_action"])
+                self.assertIn("BOUNCED", row["next_action"])
+            else:
+                self.assertEqual(row["lane"], "sent_dnr")
+                self.assertEqual(row["decision"], "SENT_AWAITING_REPLY")
         self.assertIsNone(EMAIL_RE.search(proc.stdout))
         self.assertIsNone(PHONE_RE.search(proc.stdout))
 
@@ -771,10 +846,11 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertIsNone(EMAIL_RE.search(blob))
         self.assertIsNone(PHONE_RE.search(blob))
         billings = idx.show_subject("city-of-billings-bid-1421")
-        self.assertEqual(billings["decision"], "MATERIAL_REPLY")
-        self.assertEqual(billings["lane"], "material_reply")
+        self.assertEqual(billings["decision"], "OWNER_HOLD")
+        self.assertEqual(billings["lane"], "owner_hold")
         self.assertIn(BILLINGS_POINTER, billings["overlay_event_ids"])
         self.assertIn(BILLINGS_RUNNER_STATUS, billings["overlay_event_ids"])
+        self.assertIn(BILLINGS_OWNER_HOLD, billings["overlay_event_ids"])
         self.assertNotIn("sources", billings)
 
     def test_prior_receipts_not_reminted(self) -> None:
@@ -782,6 +858,7 @@ class LmGtmIndexTests(unittest.TestCase):
             ("lm-gtm-index-20260831-01", "8845d65a"),
             ("lm-gtm-hot-lane-20260831-01", "8cb3e49a"),
             ("lm-gtm-floor-sync-20260831-01", "ce1482ef"),
+            ("lm-gtm-agent-brief-20260831-01", "5727847f"),
         ):
             path = ROOT / "p" / f"{name}.md"
             self.assertTrue(path.is_file(), name)
@@ -795,9 +872,34 @@ class LmGtmIndexTests(unittest.TestCase):
                 text=True,
             ).stdout.strip()
             self.assertTrue(digest.startswith(prefix), (name, digest))
-        agent = ROOT / "p" / "lm-gtm-agent-brief-20260831-01.md"
-        self.assertTrue(agent.is_file())
-        self.assertIn("id: lm-gtm-agent-brief-20260831-01", agent.read_text(encoding="utf-8"))
+        truth = ROOT / "p" / "lm-gtm-truth-sync-20260831-02.md"
+        self.assertTrue(truth.is_file())
+        self.assertIn("id: lm-gtm-truth-sync-20260831-02", truth.read_text(encoding="utf-8"))
+        self.assertNotIn("id: lm-gtm-truth-sync-20260831-02", (ROOT / "p" / "lm-gtm-agent-brief-20260831-01.md").read_text(encoding="utf-8"))
+
+    def test_brief_stale_warning_after_twelve_hours(self) -> None:
+        import datetime as dt
+
+        built = idx.build_index()
+        fresh = idx.brief_header(built=built, now=idx.parse_time(built["state"]["composed_at"]))
+        self.assertNotIn("stale_warning", fresh)
+        self.assertEqual(fresh["composed_at"], built["state"]["composed_at"])
+        stale = idx.brief_header(
+            built=built,
+            now=idx.parse_time(built["state"]["composed_at"]) + dt.timedelta(hours=12, seconds=1),
+        )
+        self.assertEqual(stale["stale_warning"], idx.STALE_WARNING)
+        self.assertIn("composed_at", stale)
+        extra = set(stale) - {
+            "hot",
+            "hold",
+            "sent_dnr",
+            "cash_usd",
+            "canonical_crm",
+            "composed_at",
+            "stale_warning",
+        }
+        self.assertFalse(extra, extra)
 
 
 if __name__ == "__main__":

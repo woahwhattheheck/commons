@@ -10,12 +10,16 @@ Private routes stay off git. Public cash stays USD 0 unless a named payment
 evidence URL already exists in a source ledger.
 
 Floor command is now `python3 host/lm_gtm_index.py brief` — compact JSONL
-(header + HOT rows). `sent` is HARD_DO_NOT_RESEND. `hot` remains the full-row
-actionable subset: it excludes seller context, the research universe, mailbox
-manifests, DNR / HOLD_DO_NOT_RESEND / HOLD_DO_NOT_CONTACT, SENT/AWAITING_REPLY
-with HARD_DO_NOT_RESEND, and HOLD_BUILD_AND_VERIFY unless a MATERIAL_REPLY
-reopened them. Rank: material_reply > sent_awaiting_reply > ready_to_draft >
-verified_lead_unsent.
+(header + HOT rows). Header includes `composed_at` and a one-line
+`stale_warning` when the overlay is older than 12h. `sent` is
+HARD_DO_NOT_RESEND, including bounced DNR with decision `BOUNCED`.
+`hot` remains the full-row actionable subset: it excludes seller context,
+the research universe, mailbox manifests, DNR / HOLD_DO_NOT_RESEND /
+HOLD_DO_NOT_CONTACT, OWNER_HOLD, SENT/AWAITING_REPLY with
+HARD_DO_NOT_RESEND, bounced DNR, and HOLD_BUILD_AND_VERIFY unless a
+MATERIAL_REPLY reopened them. Rank: material_reply > sent_awaiting_reply >
+ready_to_draft > verified_lead_unsent. City of Billings Bid 1421 is
+OWNER_HOLD, not hot.
 
 `python3 host/lm_gtm_index.py hold` lists HOLD_BUILD_AND_VERIFY rows. Those
 are live and queryable, not hot, and PRE-SALE TRANSPORT NONE.
@@ -66,10 +70,11 @@ python3 host/lm_gtm_index.py claim composio --owner OTHER --steal
 
 Pointer overlay events may introduce INDEX rows by reference (Slack ts, Gmail
 id, Airtable rec). HOLD_BUILD_AND_VERIFY pointers are org + person + Slack ts
-only. STATUS refreshes `next_action` / `source_paths` / `due` on an existing
-live subject and cannot mint a contact. Unknown NOTE/STATUS ids are refused.
-Event-id remint is refused. Seller fixture contacts cannot receive overlay
-events. No `crm/`, `people/`, `contacts/`, or `sales/` tree is created.
+only. STATUS refreshes `next_action` / `source_paths` / `due` / `decision` /
+`dnr` on an existing live subject and cannot mint a contact. Unknown
+NOTE/STATUS ids are refused. Event-id remint is refused. Seller fixture
+contacts cannot receive overlay events. No `crm/`, `people/`, `contacts/`, or
+`sales/` tree is created.
 
 `--send` exits 3. This composer never transports mail.
 
@@ -105,9 +110,10 @@ Seller contacts from the website loop stay `seller_context` and are never
 live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX`.
 
 Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
-`lm-gtm-floor-sync-20260831-01`,
+`lm-gtm-floor-sync-20260831-01`, `lm-gtm-agent-brief-20260831-01`,
 `website-people-email-book-20260830-01`, or
 `website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
 schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY
 pointer `lm-gtm-billings-material-reply-20260831-01`. Do not remint
-`lm-gtm-billings-floor-status-20260831-01`.
+`lm-gtm-billings-floor-status-20260831-01` or
+`lm-gtm-billings-runner-status-20260831-01`.
