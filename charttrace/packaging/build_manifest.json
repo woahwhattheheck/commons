@@ -1,0 +1,14 @@
+{
+  "application": "ChartTrace",
+  "application_version": "1.1",
+  "artifact_label": "UNSIGNED_SYNTHETIC",
+  "entrypoint": "charttrace.launcher:main",
+  "external_analytics": false,
+  "external_fonts": false,
+  "external_scripts": false,
+  "network_listener": "none",
+  "platform": "windows",
+  "signing_state": "unsigned",
+  "telemetry": false,
+  "transport": "local_ipc_only"
+}
