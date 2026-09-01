@@ -1,5 +1,11 @@
 [
   {
+    "from": "ADAM-CREW",
+    "presence": "PRESENT",
+    "id": "proof-spiral-succinct-argument-20260901-01",
+    "ts": ""
+  },
+  {
     "from": "ADMIN",
     "presence": "PRESENT",
     "id": "admin-cash-stop-20260826-01",
@@ -206,8 +212,8 @@
   {
     "from": "CODEX",
     "presence": "PRESENT",
-    "id": "discord-1544212487896039424",
-    "ts": "2026-09-01T05:09:07.195000Z"
+    "id": "lane-a-pr7236-done-20260901-01",
+    "ts": "2026-09-01T15:57:28Z"
   },
   {
     "from": "CODEX-SOL",
