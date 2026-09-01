@@ -1,0 +1,368 @@
+"""Comprehensive tests for ChartTrace Lane E (Pricing, Affiliates, Commercial Guards)."""
+
+import unittest
+from typing import Dict, Any
+
+from charttrace.pricing import (
+    ProductTier,
+    ReviewPriorityScore,
+    ReviewWorkScore,
+    WorkloadMetrics,
+    calculate_review_priority,
+    calculate_review_work_score,
+    assert_clean_workload_inputs,
+    EconomicIsolationViolation,
+    FORBIDDEN_ECONOMIC_SIGNAL_KEYS,
+)
+from charttrace.affiliates import (
+    ReviewerQATier,
+    ReviewerAuditProfile,
+    calculate_affiliate_review_fee,
+    evaluate_rolling_qa_tier,
+    AffiliateConflictError,
+    ReviewerIncentiveViolation,
+    PAGE_BAND_RATES_CENTS,
+    QA_TIER_MULTIPLIERS,
+)
+from charttrace.commercial import (
+    PolicyState,
+    RoutingEngine,
+    RoutingRequest,
+    FirmCandidate,
+    RoutingPolicyViolation,
+    OpaqueOrderContract,
+    SensitiveDataExposureError,
+    CommercialFeatureFlags,
+    assert_live_operations_disabled,
+    LivePaymentOperationBlockedError,
+)
+
+
+class TestSeparatedLedgers(unittest.TestCase):
+    """Tests for REVIEW_PRIORITY and REVIEW_WORK_SCORE separated ledgers."""
+
+    def test_review_priority_ordering_not_price_or_probability(self):
+        priority = calculate_review_priority(
+            "item_001",
+            evidence_support=0.9,
+            materiality_if_confirmed=0.85,
+            temporal_linkage=0.7,
+            novelty=0.6,
+            counterevidence=0.4,
+            completeness=0.8,
+            deadline_urgency=0.95,
+            notes="Statute of limitations approaching for missed diagnostic lead.",
+        )
+        self.assertIsInstance(priority, ReviewPriorityScore)
+        self.assertGreaterEqual(priority.composite_priority, 0.0)
+        self.assertLessEqual(priority.composite_priority, 100.0)
+        self.assertEqual(priority.priority_band, "URGENT")
+        data = priority.to_dict()
+        # Verify no price, probability, or case value fields exist
+        for forbidden in ("price", "case_value", "probability", "damages", "recovery"):
+            self.assertNotIn(forbidden, data)
+
+    def test_forbidden_economic_signals_in_priority_calc(self):
+        with self.assertRaises(EconomicIsolationViolation):
+            calculate_review_priority(
+                "item_002",
+                evidence_support=0.8,
+                materiality_if_confirmed=0.8,
+                temporal_linkage=0.5,
+                novelty=0.5,
+                counterevidence=0.2,
+                completeness=0.9,
+                deadline_urgency=0.5,
+                extra_metadata={"damages_amount": 5000000},
+            )
+
+    def test_review_work_score_priced_strictly_by_disclosed_workload(self):
+        metrics_small = WorkloadMetrics(
+            unique_pages=45,
+            file_count=3,
+            ocr_repair_page_count=2,
+            source_provider_count=1,
+            date_span_days=30,
+            specialties_count=1,
+            language_count=1,
+            duplicate_conflict_pairs=0,
+            jurisdiction_pack_count=1,
+            turnaround_hours=72,
+            estimated_human_qa_minutes=20,
+        )
+        work_score_indexed = calculate_review_work_score("pkt_001", ProductTier.INDEXED, metrics_small)
+        work_score_investigative = calculate_review_work_score("pkt_001", ProductTier.INVESTIGATIVE, metrics_small)
+        work_score_counsel = calculate_review_work_score("pkt_001", ProductTier.COUNSEL_READY, metrics_small)
+
+        self.assertEqual(work_score_indexed.page_band, "1-50")
+        self.assertGreater(work_score_counsel.calculated_price_cents, work_score_investigative.calculated_price_cents)
+        self.assertGreater(work_score_investigative.calculated_price_cents, work_score_indexed.calculated_price_cents)
+
+    def test_pricing_invariant_case_merits_do_not_alter_price(self):
+        """Case merits/damages/recovery/severity MUST NOT change price."""
+        metrics = WorkloadMetrics(
+            unique_pages=150,
+            file_count=5,
+            ocr_repair_page_count=10,
+            source_provider_count=2,
+            turnaround_hours=48,
+        )
+        score1 = calculate_review_work_score("pkt_002", ProductTier.INVESTIGATIVE, metrics)
+
+        # Attempting to pass forbidden inputs must fail
+        with self.assertRaises(EconomicIsolationViolation):
+            calculate_review_work_score(
+                "pkt_002",
+                ProductTier.INVESTIGATIVE,
+                metrics,
+                extra_metadata={"expected_recovery": 10000000, "win_probability": 0.95},
+            )
+
+        # A second identical workload with no illegal input generates identical price
+        score2 = calculate_review_work_score("pkt_003", ProductTier.INVESTIGATIVE, metrics)
+        self.assertEqual(score1.calculated_price_cents, score2.calculated_price_cents)
+        self.assertEqual(score1.page_band, score2.page_band)
+
+
+class TestAffiliateReviewers(unittest.TestCase):
+    """Tests for affiliate reviewer rolling QA tiers, fee formula, and conflict guards."""
+
+    def test_rolling_qa_tier_evaluation(self):
+        tier_prov = evaluate_rolling_qa_tier(5, 0.85, 0.85, 0.80)
+        self.assertEqual(tier_prov, ReviewerQATier.PROVISIONAL)
+
+        tier_est = evaluate_rolling_qa_tier(15, 0.92, 0.90, 0.85)
+        self.assertEqual(tier_est, ReviewerQATier.ESTABLISHED)
+
+        tier_sr = evaluate_rolling_qa_tier(50, 0.96, 0.96, 0.90)
+        self.assertEqual(tier_sr, ReviewerQATier.SENIOR_AUDITED)
+
+        tier_master = evaluate_rolling_qa_tier(120, 0.99, 0.99, 0.96)
+        self.assertEqual(tier_master, ReviewerQATier.MASTER_AUDITED)
+
+    def test_affiliate_review_fee_formula(self):
+        """review_fee = page_band_rate × established_QA_tier × approved_SLA_multiplier"""
+        profile = ReviewerAuditProfile(
+            reviewer_id="rev_101",
+            reviewer_firm_id="firm_alpha",
+            total_audited_reviews=60,
+            accuracy_rate=0.97,
+            citation_precision=0.96,
+            disposition_concordance=0.92,
+            current_qa_tier=ReviewerQATier.SENIOR_AUDITED,  # 1.30x
+        )
+
+        statement = calculate_affiliate_review_fee(
+            matter_id="mat_888",
+            reviewer_profile=profile,
+            recipient_firm_id="firm_beta",
+            page_band="51-200",  # $75.00 (7500 cents)
+            turnaround_hours=24,  # 1.25x SLA
+        )
+        # 7500 * 1.30 * 1.25 = 12187.5 -> 12188 cents
+        self.assertEqual(statement.page_band_rate_cents, 7500)
+        self.assertEqual(statement.qa_tier_multiplier, 1.30)
+        self.assertEqual(statement.approved_sla_multiplier, 1.25)
+        self.assertEqual(statement.review_fee_cents, 12188)
+
+    def test_reviewer_firm_conflict_separation(self):
+        """Reviewer firm != recipient firm on one matter."""
+        profile = ReviewerAuditProfile(
+            reviewer_id="rev_102",
+            reviewer_firm_id="firm_shared",
+            total_audited_reviews=20,
+            accuracy_rate=0.94,
+            citation_precision=0.94,
+            disposition_concordance=0.90,
+            current_qa_tier=ReviewerQATier.ESTABLISHED,
+        )
+
+        with self.assertRaises(AffiliateConflictError):
+            calculate_affiliate_review_fee(
+                matter_id="mat_889",
+                reviewer_profile=profile,
+                recipient_firm_id="firm_shared",  # Same firm!
+                page_band="1-50",
+                turnaround_hours=72,
+            )
+
+    def test_reviewer_never_earns_more_for_outcomes_or_severity(self):
+        """Reviewer fee must reject contingency, retainer, or severity bonuses."""
+        profile = ReviewerAuditProfile(
+            reviewer_id="rev_103",
+            reviewer_firm_id="firm_independent",
+            total_audited_reviews=30,
+            accuracy_rate=0.95,
+            citation_precision=0.95,
+            disposition_concordance=0.90,
+            current_qa_tier=ReviewerQATier.ESTABLISHED,
+        )
+
+        with self.assertRaises(ReviewerIncentiveViolation):
+            calculate_affiliate_review_fee(
+                matter_id="mat_890",
+                reviewer_profile=profile,
+                recipient_firm_id="firm_recipient",
+                page_band="201-500",
+                turnaround_hours=48,
+                forbidden_incentive_check={"case_acceptance_bonus": 500},
+            )
+
+        with self.assertRaises(ReviewerIncentiveViolation):
+            calculate_affiliate_review_fee(
+                matter_id="mat_891",
+                reviewer_profile=profile,
+                recipient_firm_id="firm_recipient",
+                page_band="201-500",
+                turnaround_hours=48,
+                forbidden_incentive_check={"bad_conduct_multiplier": 1.5},
+            )
+
+
+class TestCommercialAndRoutingPolicies(unittest.TestCase):
+    """Tests for routing policies, policy states, and Stripe order contracts."""
+
+    def setUp(self):
+        self.candidates = [
+            FirmCandidate(
+                firm_id="firm_01",
+                firm_name="Alpha Legal LLC",
+                jurisdictions=["CA", "WA"],
+                practice_categories=["medmal", "personal_injury"],
+                languages=["en", "es"],
+                declared_capacity=5,
+                is_conflict_cleared=True,
+            ),
+            FirmCandidate(
+                firm_id="firm_02",
+                firm_name="Beta Law Group",
+                jurisdictions=["CA", "NY"],
+                practice_categories=["medmal"],
+                languages=["en"],
+                declared_capacity=2,
+                is_conflict_cleared=True,
+            ),
+            FirmCandidate(
+                firm_id="firm_03",
+                firm_name="Gamma Partners",
+                jurisdictions=["CA"],
+                practice_categories=["medmal"],
+                languages=["en"],
+                declared_capacity=0,  # No capacity
+                is_conflict_cleared=True,
+            ),
+        ]
+
+    def test_routing_engine_policy_states(self):
+        # 1. Default OFF
+        engine_off = RoutingEngine(policy_state=PolicyState.OFF)
+        req = RoutingRequest(jurisdiction="CA", practice_category="medmal")
+        dec_off = engine_off.route_matter(req, self.candidates)
+        self.assertEqual(dec_off.policy_state, PolicyState.OFF)
+        self.assertIsNone(dec_off.routed_firm_id)
+        self.assertEqual(dec_off.routing_method, "NONE")
+
+        # 2. ADVERTISING_ONLY neutral rotation
+        engine_ad = RoutingEngine(policy_state=PolicyState.ADVERTISING_ONLY)
+        dec_ad = engine_ad.route_matter(req, self.candidates)
+        self.assertEqual(dec_ad.policy_state, PolicyState.ADVERTISING_ONLY)
+        self.assertIn(dec_ad.routed_firm_id, ["firm_01", "firm_02"])
+        self.assertEqual(dec_ad.routing_method, "NEUTRAL_ROTATION")
+
+    def test_routing_engine_user_selection(self):
+        engine = RoutingEngine(policy_state=PolicyState.QUALIFYING_PROVIDER_APPROVED)
+        req = RoutingRequest(
+            jurisdiction="CA",
+            practice_category="medmal",
+            user_selected_firm_id="firm_02",
+        )
+        dec = engine.route_matter(req, self.candidates)
+        self.assertEqual(dec.routed_firm_id, "firm_02")
+        self.assertEqual(dec.routing_method, "USER_SELECTED")
+
+    def test_forbidden_routing_inputs_raise(self):
+        with self.assertRaises(RoutingPolicyViolation):
+            RoutingRequest(
+                jurisdiction="CA",
+                practice_category="medmal",
+                metadata={"juice": "high", "damages_amount": 1000000},
+            )
+
+    def test_paid_lead_generation_jurisdiction_disabled_by_default(self):
+        # Default engine has no paid lead gen jurisdictions enabled
+        engine = RoutingEngine(policy_state=PolicyState.ADVERTISING_ONLY)
+        # If jurisdiction is not enabled for paid lead gen, standard routing proceeds
+        req = RoutingRequest(jurisdiction="CA", practice_category="medmal")
+        dec = engine.route_matter(req, self.candidates)
+        self.assertFalse(dec.is_paid_lead_generation)
+
+        # Attempting paid lead generation without qualified policy state raises
+        engine_paid_attempt = RoutingEngine(
+            policy_state=PolicyState.ADVERTISING_ONLY,
+            paid_lead_generation_enabled_jurisdictions={"CA"},
+        )
+        with self.assertRaises(RoutingPolicyViolation):
+            engine_paid_attempt.route_matter(req, self.candidates)
+
+    def test_opaque_stripe_order_contract_clean(self):
+        contract = OpaqueOrderContract(
+            order_id="ct_ord_9901",
+            customer_id="ct_cus_1102",
+            product_tier=ProductTier.INVESTIGATIVE,
+            page_band="51-200",
+            turnaround_hours=48,
+            amount_cents=18500,
+            currency="usd",
+            metadata={"source_system": "charttrace_local"},
+        )
+        payload = contract.to_stripe_checkout_payload()
+        self.assertEqual(payload["client_reference_id"], "ct_ord_9901")
+        self.assertEqual(payload["customer"], "ct_cus_1102")
+        self.assertEqual(payload["metadata"]["tier"], "INVESTIGATIVE")
+        self.assertEqual(payload["metadata"]["page_band"], "51-200")
+
+    def test_opaque_stripe_contract_forbids_phi_and_case_merits(self):
+        # Forbidden keys
+        with self.assertRaises(SensitiveDataExposureError):
+            OpaqueOrderContract(
+                order_id="ct_ord_9902",
+                customer_id="ct_cus_1102",
+                product_tier=ProductTier.COUNSEL_READY,
+                page_band="201-500",
+                turnaround_hours=24,
+                amount_cents=35000,
+                metadata={"patient_name": "John Doe"},
+            )
+
+        # Forbidden values
+        with self.assertRaises(SensitiveDataExposureError):
+            OpaqueOrderContract(
+                order_id="ct_ord_9903",
+                customer_id="ct_cus_1102",
+                product_tier=ProductTier.COUNSEL_READY,
+                page_band="201-500",
+                turnaround_hours=24,
+                amount_cents=35000,
+                metadata={"reference_note": "Case involving hospital malpractice and injury"},
+            )
+
+    def test_live_operations_disabled_invariants(self):
+        default_flags = CommercialFeatureFlags()
+        self.assertFalse(default_flags.live_routing_enabled)
+        self.assertEqual(default_flags.connect_status, "HOLD_LEGAL_AND_PAYMENT_DESIGN")
+        self.assertFalse(default_flags.charges_enabled)
+        self.assertFalse(default_flags.transfers_enabled)
+        self.assertFalse(default_flags.external_spend_enabled)
+        self.assertFalse(default_flags.stripe_account_mutation_allowed)
+
+        # Should pass with defaults
+        assert_live_operations_disabled(default_flags)
+
+        # Violation if live charges enabled
+        bad_flags = CommercialFeatureFlags(charges_enabled=True)
+        with self.assertRaises(LivePaymentOperationBlockedError):
+            assert_live_operations_disabled(bad_flags)
+
+
+if __name__ == "__main__":
+    unittest.main()
