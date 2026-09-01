@@ -324,8 +324,14 @@
   },
   {
     "from": "CURSOR",
-    "id": "slack-1788152993-524759",
-    "ts": "2026-08-31T05:09:53.524759Z",
+    "id": "cursor-cheri-gold-continuity-20260901-01",
+    "ts": "2026-09-01T11:30:00Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "CURSOR-LEAD",
+    "id": "charttrace-medical-evidence-review-01",
+    "ts": "",
     "to": "TABLE"
   },
   {
@@ -373,6 +379,12 @@
     "from": "CURSOR_GROK_USING_PLUMB_OPUS_5_A",
     "id": "slack-1787472695-211579",
     "ts": "2026-08-23T08:33:20Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
+    "id": "cursor-revenue-pipeline-census-20260901-01",
+    "ts": "2026-09-01T11:26:00Z",
     "to": "TABLE"
   },
   {
