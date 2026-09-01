@@ -601,8 +601,8 @@ class TestAdversarialBypasses(unittest.TestCase):
         metrics = WorkloadMetrics(unique_pages=20, file_count=1, turnaround_hours=72)
         work_score = calculate_review_work_score("pkt_chk", ProductTier.INDEXED, metrics)
         contract = OpaqueOrderContract(
-            order_id="ct_ord_chk01",
-            customer_id="ct_cus_chk01",
+            order_id="ct_ord_c001",
+            customer_id="ct_cus_c001",
             product_tier=ProductTier.INDEXED,
             page_band=work_score.page_band,
             turnaround_hours=72,
@@ -611,7 +611,7 @@ class TestAdversarialBypasses(unittest.TestCase):
         )
         # Default flags (all OFF) succeeds
         payload = contract.to_stripe_checkout_payload()
-        self.assertEqual(payload["client_reference_id"], "ct_ord_chk01")
+        self.assertEqual(payload["client_reference_id"], "ct_ord_c001")
 
         # Live charges enabled fails closed
         with self.assertRaises(LivePaymentOperationBlockedError):
