@@ -37,7 +37,8 @@ if (-not $TemporaryStandby) {
 $repoRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path
 $identity = [System.Security.Principal.WindowsIdentity]::GetCurrent().Name
 $powershell = (Get-Command powershell.exe -ErrorAction Stop).Source
-$bridgeRunner = Join-Path $PSScriptRoot "run_bridge_windows.ps1"
+$pythonw = (Get-Command pythonw.exe -ErrorAction Stop).Source
+$bridgeScript = Join-Path $PSScriptRoot "commons_discord_bridge.py"
 $mainRunner = Join-Path $PSScriptRoot "run_main_watcher_windows.ps1"
 $healthScript = Join-Path $PSScriptRoot "health_watch_windows_runtime.ps1"
 
@@ -64,9 +65,11 @@ function New-HiddenPowerShellAction([string]$ScriptPath) {
             $ScriptPath + '"') -WorkingDirectory $repoRoot
 }
 
-$bridgeTask = New-ScheduledTask -Action (New-HiddenPowerShellAction $bridgeRunner) `
+$bridgeAction = New-ScheduledTaskAction -Execute $pythonw `
+    -Argument ('-B "' + $bridgeScript + '"') -WorkingDirectory $repoRoot
+$bridgeTask = New-ScheduledTask -Action $bridgeAction `
     -Trigger $logonTrigger -Principal $principal -Settings $bridgeSettings `
-    -Description "Temporary hidden Commons Discord standby pending proven cloud cutover"
+    -Description "Direct-process Commons Discord standby pending proven cloud cutover"
 Register-ScheduledTask -TaskName $taskNames[0] -InputObject $bridgeTask -Force | Out-Null
 
 $watchTask = New-ScheduledTask -Action (New-HiddenPowerShellAction $mainRunner) `

@@ -57,9 +57,10 @@ away. The laptop tasks are not an established crash cause, but they are not the
 supported production road and must not be reactivated while the Windows storage
 path is unstable. If cloud is unavailable and storage health has separately
 been established, an explicit emergency standby preserves the bridge while
-changing every PowerShell action to hidden, reducing the main watcher to every
-15 minutes, reducing the health check to every 5 minutes, and bounding restarts
-and execution time:
+keeping PowerShell watcher actions hidden, running the bridge as a direct
+`pythonw.exe` task root, reducing the main watcher to every 15 minutes,
+reducing the health check to every 5 minutes, and bounding restarts and
+execution time:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File infra\discord\install_windows_runtime.ps1 -TemporaryStandby
@@ -77,6 +78,14 @@ Do not use the cutover switch merely because the workflow file exists. A real
 successful cloud run is the prerequisite. The temporary bridge and health
 scripts remain functional until that proof exists, and their scheduled task
 actions stay invisible to the interactive desktop.
+
+The temporary bridge task executes `pythonw.exe -B commons_discord_bridge.py`
+directly. Python is therefore the scheduled-task root: `/End` terminates the
+exact listener before `/Run` starts its replacement instead of orphaning a
+child behind a terminated PowerShell wrapper. `run_bridge_windows.ps1` remains
+only a manual compatibility entry point. Three bounded health probes are
+spaced across at least 40 seconds so measured journal-open startup grace is
+covered before declaring that listener unhealthy.
 
 Runtime configuration is connector infrastructure, not a caller admission
 gate: set `DISCORD_BOT_TOKEN`, at least one `DISCORD_CHANNEL_*`, and
