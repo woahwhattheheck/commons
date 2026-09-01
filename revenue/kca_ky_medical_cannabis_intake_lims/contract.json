@@ -1,0 +1,39 @@
+{
+  "acceptance": {
+    "hold_counts": {
+      "HOLD_COC_PHYSICAL_MISMATCH": 5,
+      "HOLD_DUPLICATE_ID": 5,
+      "HOLD_INVALID_OR_MISSING_LICENSE": 10,
+      "HOLD_PARTNER_PROVENANCE_GAP": 5
+    },
+    "holds": 25,
+    "input_rows": 100,
+    "named_human_release_only": true,
+    "ready": 75,
+    "replay_additions": 0
+  },
+  "buyer": "KCA Laboratories / Richard Sams",
+  "matched_prospect": "Jonathan Thompson",
+  "cash_usd": 0,
+  "decision_boundary": "Synthetic intake and reconciliation evidence only; never state-system or Metrc writes, compliance decisions, prospect outreach, or automatic CoA release.",
+  "demand_id": "kca-ky-medical-cannabis-intake-lims-01",
+  "interfaces": "SYNTHETIC_READ_ONLY",
+  "live_lims": false,
+  "official_binary": "python kca_ky_medical_cannabis_intake_lims.py",
+  "official_test": "python test_kca_ky_medical_cannabis_intake_lims.py",
+  "page": "kca-ky-medical-cannabis-intake-lims.html",
+  "pre_sale_transport": "NONE",
+  "production_deployment": false,
+  "schema": "commons-kca-ky-medical-cannabis-intake-lims/v1",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "synthetic": true,
+  "workflow": [
+    "registration and KY medical-cannabis license verification",
+    "portal order, printed CoC, and physical receipt reconciliation",
+    "matrix and panel binding (flower, concentrate, edible)",
+    "synthetic accession and work-order generation",
+    "internal and partner result provenance tracking with SHA256 hashes",
+    "staged draft Certificate of Analysis (CoA)",
+    "authorized named-human release"
+  ]
+}
