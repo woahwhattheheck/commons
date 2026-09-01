@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788213736.299499")
+        self.assertEqual(catalog["slack_ts"], "1788235608.554549")
         self.assertEqual(
             catalog["source_id"],
+            "codex-github-repository-portfolio-activation-20260901-01",
+        )
+        self.assertIn(
             "codex-commons-data-corpus-alias-index-activation-20260831-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-discord-inbound-production-readback-20260831-01",
