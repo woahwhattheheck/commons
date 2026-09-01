@@ -1,0 +1,94 @@
+{
+  "schema": "commons-repository-portfolio/v1",
+  "observed_at": "2026-09-01T04:08:00Z",
+  "source_main_sha": "46c64ee0845b522b5823a476d194967243aef609",
+  "authority": "AUTHENTICATED_GITHUB_READ; PUBLIC_DETAILS_ONLY; PRIVATE_CAPACITY_AGGREGATE_ONLY",
+  "consumer": "Commons Resource Master and recovery/work-allocation agents choosing the canonical, mirror, device, help, or sprint repository road",
+  "public_repositories": [
+    {
+      "full_name": "woahwhattheheck/commons",
+      "visibility": "public",
+      "default_branch": "main",
+      "head_sha": "46c64ee0845b522b5823a476d194967243aef609",
+      "head_observed_at": "2026-09-01T03:50:48Z",
+      "size_kib": 1521581,
+      "role": "CANONICAL",
+      "condition": "CANONICAL",
+      "next_action": "Use as canonical Git truth; re-read current main before integrating concurrent work."
+    },
+    {
+      "full_name": "woahwhattheheck/commons-backup",
+      "visibility": "public",
+      "default_branch": "ops",
+      "head_sha": "a263a2a63c9ee7b797c138a7674df7b55a1a42be",
+      "head_observed_at": "2026-09-01T01:06:52Z",
+      "size_kib": 1497167,
+      "role": "MIRROR",
+      "condition": "STALE_MIRROR",
+      "mirror_branch": "main",
+      "mirror_head_sha": "a263a2a63c9ee7b797c138a7674df7b55a1a42be",
+      "recorded_source_sha": "306bb8b4d80b6ca5b81d96d03932dce1dfd0cf52",
+      "recorded_source_observed_at": "2026-08-31T23:27:26Z",
+      "commits_behind": 45,
+      "workflow_files_preserved_from_destination": true,
+      "next_action": "Treat as a stale recovery mirror until a later exact read proves recorded_source_sha equals canonical main with commits_behind zero."
+    },
+    {
+      "full_name": "woahwhattheheck/kite-mouth-help",
+      "visibility": "public",
+      "default_branch": "main",
+      "head_sha": "eedbaf2cd53dc490de8af7d070b4261edae9ee9a",
+      "head_observed_at": "2026-08-18T01:31:26Z",
+      "size_kib": 23,
+      "role": "HELP_REFERENCE",
+      "condition": "REFERENCE",
+      "next_action": "Use only for its explicit help/reference consumer; do not mistake age for failure or current Commons truth."
+    },
+    {
+      "full_name": "woahwhattheheck/public-commons-sprint-2026",
+      "visibility": "public",
+      "default_branch": "main",
+      "head_sha": "d01f73814a2d90be6417bedee5fcdc73015abbd8",
+      "head_observed_at": "2026-08-30T18:42:36Z",
+      "size_kib": 50,
+      "role": "SPRINT_REFERENCE",
+      "condition": "REFERENCE",
+      "next_action": "Use for its public sprint artifact consumer; do not merge it into canonical Commons by name or age alone."
+    }
+  ],
+  "private_aggregate": {
+    "accessible_repository_count": 1,
+    "details_persisted": false,
+    "head_state": "VERIFIED_REDACTED",
+    "consumer_class": "DEVICE_WORK",
+    "condition": "CONSTRAINED",
+    "next_action": "Resolve private repository details only inside an authorized task; keep public projections aggregate-only."
+  },
+  "summary": {
+    "accessible_repositories": 5,
+    "public_repositories": 4,
+    "private_repositories": 1,
+    "canonical_repositories": 1,
+    "current_mirrors": 0,
+    "stale_mirrors": 1,
+    "unverified_mirrors": 0,
+    "reference_repositories": 2
+  },
+  "truth": {
+    "canonical_main_is_current_at_observation": true,
+    "backup_is_current": false,
+    "backup_gap_is_exact_commits": 45,
+    "private_repository_details_persisted": false,
+    "repositories_archived": 0,
+    "repositories_mutated": 0,
+    "branches_mutated": 0,
+    "deployments_performed": 0
+  },
+  "evidence": {
+    "commons_head": "https://github.com/woahwhattheheck/commons/commit/46c64ee0845b522b5823a476d194967243aef609",
+    "backup_mirror_head": "https://github.com/woahwhattheheck/commons-backup/commit/a263a2a63c9ee7b797c138a7674df7b55a1a42be",
+    "backup_recorded_source": "https://github.com/woahwhattheheck/commons/commit/306bb8b4d80b6ca5b81d96d03932dce1dfd0cf52",
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788235608554549"
+  },
+  "rate_plan_boundary": "Access and exact Git heads do not prove deployment, backup completeness, disaster recovery, private contents, device execution, buyer acceptance, payment, revenue, or cash."
+}
