@@ -7,16 +7,17 @@ from .controller import (
     SIGNING_STATE,
     AnalysisBlockedError,
     ApplicationLockedError,
-    ChartTraceController,
     ReleaseBlockedError,
 )
-from .paths import PathBoundaryError
+from .paths import PathBoundaryError, PathEgressError
+from .secure_controller import ChartTraceController, SYNTHETIC_RELEASED
 from .storage import VaultAuthenticationError, VaultError, VaultFormatError
 
 __all__ = [
     "APP_VERSION",
     "BUILD_LABEL",
     "SIGNING_STATE",
+    "SYNTHETIC_RELEASED",
     "AnalysisBlockedError",
     "ApplicationLockedError",
     "CaseLifecycle",
@@ -24,6 +25,7 @@ __all__ = [
     "ChartTraceController",
     "DEADLINE_BANNER",
     "PathBoundaryError",
+    "PathEgressError",
     "ReleaseBlockedError",
     "VaultAuthenticationError",
     "VaultError",

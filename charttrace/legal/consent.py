@@ -46,6 +46,10 @@ class TransferAuthorization:
             return LegalState.TRANSFER_AUTHORIZED
         return LegalState.TRANSFER_NOT_AUTHORIZED
 
+    @property
+    def authorization_epoch(self) -> Optional[str]:
+        return self.legal_acceptance_id
+
     def revoke(self) -> None:
         self.authorized_by = None
         self.authorized_at = None
@@ -108,6 +112,10 @@ class ConsentLedger:
     @property
     def transfer_state(self) -> LegalState:
         return self.transfer.state
+
+    @property
+    def authority_epoch(self) -> Optional[str]:
+        return self.acceptance_id
 
     @property
     def current_and_authorized(self) -> bool:
