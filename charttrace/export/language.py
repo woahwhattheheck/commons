@@ -6,17 +6,17 @@ import re
 from typing import Tuple
 
 _FORBIDDEN = (
-    (re.compile(r"\\bthe patient was not told\\b", re.I), "SCOPED_NONFINDING"),
-    (re.compile(r"\\bpatient was not told\\b", re.I), "SCOPED_NONFINDING"),
-    (re.compile(r"\\bwas never told\\b", re.I), "SCOPED_NONFINDING"),
-    (re.compile(r"\\bmalpractice\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
-    (re.compile(r"\\bnegligence\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
-    (re.compile(r"\\bnegligent\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
-    (re.compile(r"\\bstandard[- ]of[- ]care\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
-    (re.compile(r"\\bcausation\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
-    (re.compile(r"\\bactionability\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
-    (re.compile(r"\\bactionable\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
-    (re.compile(r"\\bcase value\\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bthe patient was not told\b", re.I), "SCOPED_NONFINDING"),
+    (re.compile(r"\bpatient was not told\b", re.I), "SCOPED_NONFINDING"),
+    (re.compile(r"\bwas never told\b", re.I), "SCOPED_NONFINDING"),
+    (re.compile(r"\bmalpractice\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bnegligence\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bnegligent\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bstandard[- ]of[- ]care\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bcausation\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bactionability\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bactionable\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
+    (re.compile(r"\bcase value\b", re.I), "REMOVED_LEGAL_CONCLUSION"),
 )
 
 
