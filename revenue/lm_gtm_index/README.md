@@ -66,8 +66,8 @@ python3 host/lm_gtm_index.py append-event \
 
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py release composio --owner YOURNAME
-# contract form is positional:
-# python3 host/lm_gtm_index.py claim <subject> --owner <you>
+# contract form is TOKEN placeholders (survive JSON/markdown/HTML):
+# python3 host/lm_gtm_index.py claim SUBJECT --owner YOU
 # equivalent flag form:
 python3 host/lm_gtm_index.py claim --subject composio --owner YOURNAME
 # second occupancy fails closed unless:
@@ -118,6 +118,7 @@ live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX`.
 Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
 `lm-gtm-floor-sync-20260831-01`, `lm-gtm-agent-brief-20260831-01`,
 `lm-gtm-truth-sync-20260831-02`, `lm-gtm-contract-brief-20260901-01`,
+`lm-gtm-contract-tokens-leads-20260901-01`,
 `website-people-email-book-20260830-01`, or
 `website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
 schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY
