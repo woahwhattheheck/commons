@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [int]$TimeoutSec = 5,
-    [int]$RetryCount = 3,
+    [int]$RetryCount = 6,
     [int]$RetryDelaySec = 5
 )
 
@@ -34,7 +34,7 @@ for ($attempt = 1; $attempt -le $RetryCount; $attempt++) {
             break
         }
     } catch {
-        # Bounded retry through startup grace.
+        # Bounded retry through journal-open and server startup grace.
     }
     if ($attempt -lt $RetryCount) {
         Start-Sleep -Seconds $RetryDelaySec

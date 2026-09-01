@@ -27,6 +27,10 @@ class WindowsRuntimeTest(unittest.TestCase):
         self.assertIn("New-ScheduledTask", script)
         self.assertIn("-WindowStyle Hidden", script)
         self.assertIn("New-ScheduledTaskSettingsSet -Hidden", script)
+        self.assertIn("Get-Command pythonw.exe", script)
+        self.assertIn("commons_discord_bridge.py", script)
+        self.assertIn("New-ScheduledTaskAction -Execute $pythonw", script)
+        self.assertNotIn("$bridgeRunner", script)
         self.assertIn("New-TimeSpan -Minutes 15", script)
         self.assertIn("New-TimeSpan -Minutes 5", script)
         self.assertIn("-RestartCount 3", script)
@@ -41,10 +45,19 @@ class WindowsRuntimeTest(unittest.TestCase):
 
     def test_health_watcher_is_bounded_and_preserves_bridge_until_cutover(self):
         script = self.text("health_watch_windows_runtime.ps1")
-        self.assertIn("[int]$RetryCount = 3", script)
+        self.assertIn("[int]$RetryCount = 6", script)
         self.assertIn("curl.exe", script)
         self.assertIn("schtasks.exe", script)
+        self.assertIn("/End /TN $bridgeTask", script)
+        self.assertIn("/Run /TN $bridgeTask", script)
+        self.assertIn("journal-open and server startup grace", script)
         self.assertNotIn("Start-Process", script)
+
+    def test_bridge_task_owns_the_listener_process_for_reliable_restart(self):
+        installer = self.text("install_windows_runtime.ps1")
+        self.assertIn("New-ScheduledTaskAction -Execute $pythonw", installer)
+        self.assertIn("-Argument ('-B \"' + $bridgeScript + '\"')", installer)
+        self.assertNotIn("run_bridge_windows.ps1", installer)
 
     def test_hidden_standby_bridge_and_watcher_preserve_functionality(self):
         bridge = self.text("run_bridge_windows.ps1")
