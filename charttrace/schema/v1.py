@@ -364,16 +364,12 @@ class ExternalAuthority:
             )
         if (
             not self.primary_url
-            and self.review_status
-            not in (
-                AuthorityReviewStatus.CONTEXT_ONLY,
-                AuthorityReviewStatus.INAPPLICABLE,
-            )
             and not self.offline_locator
+            and self.review_status is not AuthorityReviewStatus.INAPPLICABLE
         ):
             raise SchemaValidationError(
-                "non-context ExternalAuthority requires offline_locator "
-                "when primary_url is empty"
+                "ExternalAuthority requires primary_url or offline_locator "
+                "unless review_status is INAPPLICABLE"
             )
 
 

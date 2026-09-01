@@ -52,32 +52,62 @@ def _deny_network(*_: object, **__: object) -> None:
 
 
 class NetworkDeny(AbstractContextManager["NetworkDeny"]):
-    """Process-local guard that makes socket connection attempts fail closed."""
+    """Process-local guard that makes socket network operations fail closed."""
+
+    _SOCKET_METHODS = (
+        "connect",
+        "connect_ex",
+        "send",
+        "sendall",
+        "sendto",
+        "sendfile",
+        "sendmsg",
+    )
+    _MODULE_FUNCTIONS = (
+        "create_connection",
+        "getaddrinfo",
+        "gethostbyaddr",
+        "gethostbyname",
+        "gethostbyname_ex",
+        "getnameinfo",
+    )
 
     def __init__(self) -> None:
         self._originals: Dict[str, Any] = {}
 
     def __enter__(self) -> "NetworkDeny":
         _NETWORK_PATCH_LOCK.acquire()
-        self._originals = {
-            "connect": socket.socket.connect,
-            "connect_ex": socket.socket.connect_ex,
-            "create_connection": socket.create_connection,
-            "getaddrinfo": socket.getaddrinfo,
-        }
-        socket.socket.connect = _deny_network  # type: ignore[assignment]
-        socket.socket.connect_ex = _deny_network  # type: ignore[assignment]
-        socket.create_connection = _deny_network  # type: ignore[assignment]
-        socket.getaddrinfo = _deny_network  # type: ignore[assignment]
-        return self
+        try:
+            for name in self._SOCKET_METHODS:
+                if hasattr(socket.socket, name):
+                    key = f"socket.{name}"
+                    self._originals[key] = getattr(socket.socket, name)
+                    setattr(socket.socket, name, _deny_network)
+            for name in self._MODULE_FUNCTIONS:
+                if hasattr(socket, name):
+                    key = f"module.{name}"
+                    self._originals[key] = getattr(socket, name)
+                    setattr(socket, name, _deny_network)
+            return self
+        except BaseException:
+            try:
+                self._restore()
+            finally:
+                _NETWORK_PATCH_LOCK.release()
+            raise
+
+    def _restore(self) -> None:
+        for key, original in self._originals.items():
+            owner, name = key.split(".", 1)
+            target = socket.socket if owner == "socket" else socket
+            setattr(target, name, original)
+        self._originals = {}
 
     def __exit__(self, *_: object) -> None:
-        socket.socket.connect = self._originals["connect"]
-        socket.socket.connect_ex = self._originals["connect_ex"]
-        socket.create_connection = self._originals["create_connection"]
-        socket.getaddrinfo = self._originals["getaddrinfo"]
-        self._originals = {}
-        _NETWORK_PATCH_LOCK.release()
+        try:
+            self._restore()
+        finally:
+            _NETWORK_PATCH_LOCK.release()
 
 
 def network_denied() -> NetworkDeny:
@@ -470,20 +500,23 @@ def ingest_span_citations(
         ).strip()
         if not document_id:
             raise ExtractionError("span citation requires document_id")
-        resolved.append(
-            resolve_page_span(
-                source,
-                document_id=document_id,
-                page=int(item["page"]),
-                source_sha256=_source_sha256_of(item),
-                span_start=int(item["span_start"]),
-                span_end=int(item["span_end"]),
-                expected_source_sha256=str(
-                    item.get("expected_source_sha256") or ""
-                ).strip()
-                or None,
-            )
+        resolution = resolve_page_span(
+            source,
+            document_id=document_id,
+            page=int(item["page"]),
+            source_sha256=_source_sha256_of(item),
+            span_start=int(item["span_start"]),
+            span_end=int(item["span_end"]),
+            expected_source_sha256=str(
+                item.get("expected_source_sha256") or ""
+            ).strip()
+            or None,
         )
+        if "quote" in item and str(item["quote"]) != resolution.quote:
+            raise ExtractionError(
+                "span citation quote does not match independently resolved bytes"
+            )
+        resolved.append(resolution)
     return tuple(resolved)
 
 
@@ -509,10 +542,14 @@ def facts_from_span_citations(
             )
         except ValueError as exc:
             raise ExtractionError("span citation has invalid date_certainty") from exc
+        if "statement" in item and str(item["statement"]) != resolution.quote:
+            raise ExtractionError(
+                "span citation statement does not match independently resolved quote"
+            )
         facts.append(
             RecordFact(
                 fact_id=fact_id,
-                statement=str(item.get("statement") or resolution.quote).strip(),
+                statement=resolution.quote,
                 citation=resolution.citation,
                 domain=str(item.get("domain") or "untagged"),
                 care_phase=str(item.get("care_phase") or "unspecified"),

@@ -367,6 +367,25 @@ class SchemaV1Tests(unittest.TestCase):
             authority.offline_locator, "local-authority-pack:syn-auth-001"
         )
         self.assertIs(authority.review_status, AuthorityReviewStatus.CONTEXT_ONLY)
+        with self.assertRaisesRegex(
+            SchemaValidationError, "primary_url or offline_locator"
+        ):
+            ExternalAuthority(
+                authority_id="AUTH-EMPTY",
+                authority_type="regulation",
+                issuer="Synthetic Authority Pack",
+                jurisdiction="SYNTHETIC",
+                effective_from="2025-01-01",
+                effective_to=None,
+                care_date_match=False,
+                primary_url="",
+                pinpoint="pack:syn-auth-empty#section-1",
+                retrieval_date="2026-09-01",
+                supported_proposition="Context for a synthetic review.",
+                supersession=None,
+                review_status=AuthorityReviewStatus.CONTEXT_ONLY,
+                offline_locator="",
+            )
 
 
 if __name__ == "__main__":

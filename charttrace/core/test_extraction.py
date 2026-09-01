@@ -115,14 +115,25 @@ class EmbeddedExtractionTests(unittest.TestCase):
 
     def test_network_connections_are_denied(self) -> None:
         with network_denied():
-            client = socket.socket()
+            client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
             try:
                 with self.assertRaises(NetworkDeniedError):
                     client.connect(("127.0.0.1", 1))
                 with self.assertRaises(NetworkDeniedError):
                     socket.create_connection(("127.0.0.1", 1))
+                with self.assertRaises(NetworkDeniedError):
+                    client.send(b"synthetic")
+                with self.assertRaises(NetworkDeniedError):
+                    client.sendall(b"synthetic")
+                with self.assertRaises(NetworkDeniedError):
+                    udp.sendto(b"synthetic", ("127.0.0.1", 9))
+                if hasattr(udp, "sendmsg"):
+                    with self.assertRaises(NetworkDeniedError):
+                        udp.sendmsg([b"synthetic"], [], 0, ("127.0.0.1", 9))
             finally:
                 client.close()
+                udp.close()
 
     def test_hash_mismatch_and_encrypted_pdf_fail_closed(self) -> None:
         with self.assertRaisesRegex(ExtractionError, "HOLD_SOURCE_HASH_MISMATCH"):
@@ -206,6 +217,34 @@ class EmbeddedExtractionTests(unittest.TestCase):
         self.assertEqual(facts[0].fact_id, "evt-008")
         self.assertEqual(facts[0].statement, quote)
         self.assertEqual(facts[0].citation.source_sha256, digest)
+        with self.assertRaisesRegex(ExtractionError, "quote"):
+            facts_from_span_citations(
+                pdf,
+                [
+                    {
+                        "document_id": "syn-ed-001",
+                        "page": 1,
+                        "source_sha256": digest,
+                        "span_start": start,
+                        "span_end": start + len(quote),
+                        "quote": "Invented callback text not present in the span.",
+                    }
+                ],
+            )
+        with self.assertRaisesRegex(ExtractionError, "statement"):
+            facts_from_span_citations(
+                pdf,
+                [
+                    {
+                        "document_id": "syn-ed-001",
+                        "page": 1,
+                        "source_sha256": digest,
+                        "span_start": start,
+                        "span_end": start + len(quote),
+                        "statement": "No callback was documented.",
+                    }
+                ],
+            )
         result = analyze_pdf(
             pdf,
             document="syn-ed-001",

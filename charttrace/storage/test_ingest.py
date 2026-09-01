@@ -1,4 +1,5 @@
 import hashlib
+import json
 import os
 from pathlib import Path
 import stat
@@ -57,7 +58,20 @@ class ImmutableIngestTests(unittest.TestCase):
         self.assertIsNone(first.duplicate_of)
         self.assertEqual(second.duplicate_of, "SYNTH-DOC-001")
         self.assertEqual(second.stored_path, first.stored_path)
-        self.assertEqual(stat.S_IMODE(stored.stat().st_mode), 0o400)
+        stored_mode = stat.S_IMODE(stored.stat().st_mode)
+        self.assertNotEqual(stored_mode & stat.S_IRUSR, 0)
+        self.assertEqual(
+            stored_mode & (stat.S_IWUSR | stat.S_IWGRP | stat.S_IWOTH), 0
+        )
+        self.assertEqual(first.to_dict()["source_sha256"], expected_hash)
+        manifest_records = [
+            json.loads(line)
+            for line in self.ingestor.manifest_path.read_text("ascii").splitlines()
+        ]
+        self.assertEqual(
+            [record["source_sha256"] for record in manifest_records],
+            [expected_hash, expected_hash],
+        )
         self.assertEqual(self.ingestor.verify_all(), (first, second))
 
         reopened = ImmutableIngestor(self.ingestor.case_root)

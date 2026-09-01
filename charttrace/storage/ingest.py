@@ -68,7 +68,9 @@ class SourceManifestEntry:
         return self.source_hash
 
     def to_dict(self) -> Dict[str, Any]:
-        return asdict(self)
+        payload = asdict(self)
+        payload["source_sha256"] = self.source_hash
+        return payload
 
 
 def sha256_file(path: Union[str, os.PathLike[str]]) -> str:
@@ -142,10 +144,21 @@ class ImmutableIngestor:
         try:
             with self.manifest_path.open("r", encoding="utf-8", newline="") as stream:
                 for line_number, line in enumerate(stream, 1):
-                    raw = json.loads(line)
+                    serialized = json.loads(line)
+                    raw = dict(serialized)
+                    serialized_sha256 = raw.pop("source_sha256", None)
+                    if (
+                        serialized_sha256 is not None
+                        and serialized_sha256 != raw.get("source_hash")
+                    ):
+                        raise ValueError(
+                            f"source_sha256 alias mismatch at line {line_number}"
+                        )
                     entry = SourceManifestEntry(**raw)
+                    receipt_payload = dict(serialized)
+                    receipt_payload.pop("receipt_hash")
                     expected = hashlib.sha256(
-                        _canonical_json(_receipt_payload(entry))
+                        _canonical_json(receipt_payload)
                     ).hexdigest()
                     if (
                         entry.previous_receipt_hash != previous
@@ -317,7 +330,7 @@ class ImmutableIngestor:
                 ).hexdigest()
                 entry = SourceManifestEntry(
                     **{
-                        **unsigned.to_dict(),
+                        **asdict(unsigned),
                         "receipt_hash": receipt_hash,
                     }
                 )
