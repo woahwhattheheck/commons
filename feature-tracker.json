@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 73
+    "TESTED": 74
   },
   "features": [
     {
@@ -1444,6 +1444,66 @@
       "test_paths": [
         "test_dealer_service_lead_rescue.js",
         "dealer-service-lead-rescue.js"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Denton bacteriology acceptance + reporting LIMS: a frozen 200-submission synthetic runner accessions 160 account/PWS/custody-valid rows once onto TCEQ E. coli, AP, and HPC routes; holds 40 exact missing-account, absent-custody, expired-bottle, temperature/hold-time, duplicate-sample, and mismatched-form defects without worksheets or reports; preserves source hashes; replay adds zero; and requires named-human release.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "denton_bacteriology_acceptance_reporting_lims.py",
+        "test_denton_bacteriology_acceptance_reporting_lims.py",
+        "denton-bacteriology-acceptance-reporting-lims.html",
+        "revenue/denton_bacteriology_acceptance_reporting_lims/contract.json",
+        "revenue/denton_bacteriology_acceptance_reporting_lims/README.md",
+        "revenue/denton_bacteriology_acceptance_reporting_lims/runner.py",
+        "p/denton-bacteriology-acceptance-reporting-lims-01.md",
+        "features/registry/denton-bacteriology-acceptance-reporting-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "denton_bacteriology_acceptance_reporting_lims.py",
+        "test_denton_bacteriology_acceptance_reporting_lims.py",
+        "denton-bacteriology-acceptance-reporting-lims.html",
+        "revenue/denton_bacteriology_acceptance_reporting_lims/contract.json",
+        "revenue/denton_bacteriology_acceptance_reporting_lims/README.md",
+        "revenue/denton_bacteriology_acceptance_reporting_lims/runner.py",
+        "p/denton-bacteriology-acceptance-reporting-lims-01.md",
+        "features/registry/denton-bacteriology-acceptance-reporting-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "denton-bacteriology-acceptance-reporting-lims-01.json",
+      "id": "denton-bacteriology-acceptance-reporting-lims-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Denton bacteriology acceptance + reporting",
+      "next_gap": "Next measurement: city-controlled COC, PWS, method, and report-form golden files after the synthetic PASS. Until measured, this remains synthetic with no live integration, production claim, or outreach. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "denton-bacteriology-acceptance-reporting-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "denton-bacteriology-acceptance-reporting-lims.html",
+        "revenue/denton_bacteriology_acceptance_reporting_lims/contract.json",
+        "p/denton-bacteriology-acceptance-reporting-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_denton_bacteriology_acceptance_reporting_lims.py",
+        "denton_bacteriology_acceptance_reporting_lims.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -4704,7 +4764,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 79,
+  "n_features": 80,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

@@ -1,0 +1,37 @@
+{
+  "added": "2026-09-01",
+  "capability": "Denton bacteriology acceptance + reporting LIMS: a frozen 200-submission synthetic runner accessions 160 account/PWS/custody-valid rows once onto TCEQ E. coli, AP, and HPC routes; holds 40 exact missing-account, absent-custody, expired-bottle, temperature/hold-time, duplicate-sample, and mismatched-form defects without worksheets or reports; preserves source hashes; replay adds zero; and requires named-human release.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "denton_bacteriology_acceptance_reporting_lims.py",
+    "test_denton_bacteriology_acceptance_reporting_lims.py",
+    "denton-bacteriology-acceptance-reporting-lims.html",
+    "revenue/denton_bacteriology_acceptance_reporting_lims/contract.json",
+    "revenue/denton_bacteriology_acceptance_reporting_lims/README.md",
+    "revenue/denton_bacteriology_acceptance_reporting_lims/runner.py",
+    "p/denton-bacteriology-acceptance-reporting-lims-01.md",
+    "features/registry/denton-bacteriology-acceptance-reporting-lims-01.json"
+  ],
+  "dependencies": [],
+  "id": "denton-bacteriology-acceptance-reporting-lims-01",
+  "name": "Denton bacteriology acceptance + reporting",
+  "next_gap": "Next measurement: city-controlled COC, PWS, method, and report-form golden files after the synthetic PASS. Until measured, this remains synthetic with no live integration, production claim, or outreach. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "denton-bacteriology-acceptance-reporting-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "denton-bacteriology-acceptance-reporting-lims.html",
+    "revenue/denton_bacteriology_acceptance_reporting_lims/contract.json",
+    "p/denton-bacteriology-acceptance-reporting-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_denton_bacteriology_acceptance_reporting_lims.py",
+    "denton_bacteriology_acceptance_reporting_lims.py"
+  ]
+}
