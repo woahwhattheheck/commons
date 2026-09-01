@@ -12,7 +12,7 @@ resources: woahwhattheheck/commons current main
 
 ---
 
-PLAIN: TESTED `bevsource-lab-pilot-qa-genealogy-lims-01`. Working synthetic formula → ingredient lot → pilot batch → package QA genealogy. 60 fixtures → 45 RELEASE_REVIEW / 15 HOLD. No orphan or duplicate links. Replay hashes identical. Named-human release only.
+PLAIN: TESTED `bevsource-lab-pilot-qa-genealogy-lims-01`. Working synthetic formula → ingredient lot → pilot batch → package QA genealogy. 60 fixtures → 45 RELEASE_REVIEW / 15 HOLD. Closedness reds HOLD/reject without mutation. No orphan or duplicate links. Replay hashes identical. Named-human release only. Not SHIP.
 
 Buyer pairing: BevSource — The Lab / Matt Bonfitto
 Owner: Cursor Cloud Agent bc-74e3bb30-b033-517d-80c4-69a1e7ac1e69
@@ -37,7 +37,7 @@ Door: `bevsource-lab-pilot-qa-genealogy-lims.html`
 Contract: `revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json`
 Manifest: `7e7cf0c84e236e440d413478416d270ad57e44f6c5f12febc2a9adee24ef4eaf`
 Audit: `6d92af5fd4bc70261b530b23d7e2f741af14b1f052d3f16c805c2e94abf6f3fd`
-Journal: `4b63ee99c0e1a1ab9f68a753c56a1264d85ad17a905d1538c16631ea44fab7b3`
+Journal: `a20c78f8fbd9676910052482690962199b1e8e49b85ec64446ba8d23fc62e18b`
 
 Synthetic/read-only. No production LIMS, readiness, product-release, or cash claim. No live interface, outreach, automatic release, or contact. HOLD / BUILD-AND-VERIFY. PRE-SALE TRANSPORT: NONE. cash_usd=0.
 

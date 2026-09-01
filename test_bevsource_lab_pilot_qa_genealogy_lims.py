@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+from copy import deepcopy
 import unittest
 
 import bevsource_lab_pilot_qa_genealogy_lims as gate
@@ -154,6 +155,107 @@ class BevsourceLabPilotQaGenealogyTests(unittest.TestCase):
         self.assertEqual(result["pre_sale_transport"], "NONE")
         self.assertEqual(result["cash_usd"], 0)
         self.assertEqual(result["truth_gate"], "HOLD / BUILD-AND-VERIFY")
+
+
+class BevsourceClosednessReds(unittest.TestCase):
+    def _clean(self) -> dict:
+        return deepcopy(gate.build_acceptance_fixture()[0])
+
+    def _seed(self) -> dict:
+        journal = gate.empty_journal()
+        for row in gate.build_acceptance_fixture():
+            gate.ingest_row(journal, row)
+        return journal
+
+    def test_truth_flags_and_qa_and_empty_row_id_hold(self) -> None:
+        cases = (
+            ({"synthetic": False}, gate.HOLD_TRUTH_FLAG),
+            ({"deidentified": False}, gate.HOLD_TRUTH_FLAG),
+            ({"chemistry": "OUT_OF_SPEC"}, gate.HOLD_QA_OUT_OF_SPEC),
+            ({"shelf_life": "FAIL"}, gate.HOLD_QA_OUT_OF_SPEC),
+            ({"row_id": ""}, gate.HOLD_MISSING_REQUIRED_FIELD),
+        )
+        for patch, code in cases:
+            journal = gate.empty_journal()
+            row = self._clean()
+            row.update(patch)
+            before = deepcopy(journal)
+            effect = gate.ingest_row(journal, row)
+            self.assertEqual(effect["kind"], "HOLD", patch)
+            self.assertEqual(effect["code"], code, patch)
+            self.assertEqual(len(journal["reviews"]), 0, patch)
+            self.assertEqual(len(journal["packages"]), 0, patch)
+            self.assertEqual(len(journal["links"]), 0, patch)
+            self.assertEqual(journal["holds"][0]["code"], code, patch)
+            self.assertNotEqual(journal, before, patch)
+            self.assertEqual(gate.normalize_run(row)["synthetic"], row.get("synthetic"))
+            self.assertEqual(
+                gate.normalize_run(row)["deidentified"], row.get("deidentified")
+            )
+
+    def test_fourth_duplicate_ingredient_is_cardinality_hold(self) -> None:
+        journal = gate.empty_journal()
+        row = self._clean()
+        row["ingredient_lots"] = list(row["ingredient_lots"]) + [
+            {"ingredient": "ACIDULANT", "lot_id": "LOT-ACD-001"}
+        ]
+        effect = gate.ingest_row(journal, row)
+        self.assertEqual(effect["kind"], "HOLD")
+        self.assertEqual(effect["code"], gate.HOLD_INGREDIENT_CARDINALITY)
+        self.assertEqual(len(journal["packages"]), 0)
+        self.assertEqual(len(journal["lots"]), 0)
+        self.assertEqual(len(journal["reviews"]), 0)
+
+    def test_conflicting_replay_rejects_on_input_digest(self) -> None:
+        journal = self._seed()
+        before = deepcopy(journal)
+        before_hash = gate.journal_hash(journal)
+        row = self._clean()
+        row["microbiology"] = "POSITIVE"
+        effect = gate.ingest_row(journal, row)
+        self.assertEqual(effect["kind"], gate.REPLAY_CONFLICT)
+        self.assertEqual(effect["code"], gate.REPLAY_CONFLICT)
+        self.assertFalse(effect["ok"])
+        self.assertEqual(journal, before)
+        self.assertEqual(gate.journal_hash(journal), before_hash)
+        self.assertEqual(journal["packages"][row["package_unit_id"]]["microbiology"], "NEGATIVE")
+
+    def test_duplicate_identifiers_reject_without_mutation(self) -> None:
+        journal = self._seed()
+        before = deepcopy(journal)
+        before_hash = gate.journal_hash(journal)
+        probes = (
+            {"run_id": "RUN-001", "row_id": "BEV-DUP-RUN"},
+            {"package_unit_id": "PKG-001", "row_id": "BEV-DUP-PKG"},
+            {"pilot_batch_id": "BATCH-001", "row_id": "BEV-DUP-BATCH"},
+            {
+                "row_id": "BEV-DUP-LOT",
+                "ingredient_lots": [
+                    {"ingredient": "ACIDULANT", "lot_id": "LOT-ACD-001"},
+                    {"ingredient": "CONCENTRATE", "lot_id": "LOT-CON-DUP"},
+                    {"ingredient": "PROCESS_WATER", "lot_id": "LOT-WTR-DUP"},
+                ],
+            },
+        )
+        for patch in probes:
+            row = self._clean()
+            row["row_id"] = "BEV-DUP-BASE"
+            row["run_id"] = "RUN-DUP"
+            row["pilot_batch_id"] = "BATCH-DUP"
+            row["package_unit_id"] = "PKG-DUP"
+            row["ingredient_lots"] = [
+                {"ingredient": "ACIDULANT", "lot_id": "LOT-ACD-DUP"},
+                {"ingredient": "CONCENTRATE", "lot_id": "LOT-CON-DUP"},
+                {"ingredient": "PROCESS_WATER", "lot_id": "LOT-WTR-DUP"},
+            ]
+            row.update(patch)
+            effect = gate.ingest_row(journal, row)
+            self.assertEqual(effect["kind"], "REJECT", patch)
+            self.assertEqual(effect["code"], gate.REJECT_DUPLICATE_IDENTIFIER, patch)
+            self.assertFalse(effect["ok"], patch)
+            self.assertEqual(journal, before, patch)
+            self.assertEqual(gate.journal_hash(journal), before_hash, patch)
+            self.assertEqual(journal["run_index"]["RUN-001"], "BEV-001")
 
 
 if __name__ == "__main__":

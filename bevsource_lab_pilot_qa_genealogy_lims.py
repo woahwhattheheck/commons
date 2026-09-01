@@ -49,6 +49,12 @@ HOLD_CODES = (
     "HOLD_FAILED_LINER_CHECK",
     "HOLD_POSITIVE_MICROBIOLOGY",
 )
+HOLD_TRUTH_FLAG = "HOLD_TRUTH_FLAG"
+HOLD_QA_OUT_OF_SPEC = "HOLD_QA_OUT_OF_SPEC"
+HOLD_MISSING_REQUIRED_FIELD = "HOLD_MISSING_REQUIRED_FIELD"
+HOLD_INGREDIENT_CARDINALITY = "HOLD_INGREDIENT_CARDINALITY"
+REJECT_DUPLICATE_IDENTIFIER = "DUPLICATE_IDENTIFIER"
+REPLAY_CONFLICT = "REPLAY_CONFLICT"
 
 EXPECTED_HOLD_COUNTS = {
     "HOLD_WRONG_FORMULA_VERSION": WRONG_FORMULA_COUNT,
@@ -167,6 +173,7 @@ def empty_journal() -> dict[str, Any]:
         "run_index": {},
         "package_index": {},
         "batch_index": {},
+        "lot_index": {},
         "interface_live": False,
         "production_writes": 0,
         "automatic_releases": 0,
@@ -201,37 +208,103 @@ def normalize_run(row: dict[str, Any]) -> dict[str, Any]:
         "chemistry": _text(row.get("chemistry")).upper(),
         "shelf_life": _text(row.get("shelf_life")).upper(),
         "process_step": _text(row.get("process_step")).upper(),
-        "synthetic": True,
-        "deidentified": True,
+        "synthetic": row.get("synthetic"),
+        "deidentified": row.get("deidentified"),
     }
 
 
+def input_digest(norm: dict[str, Any]) -> str:
+    return sha256_hex(
+        {
+            "row_id": norm["row_id"],
+            "run_id": norm["run_id"],
+            "formula_id": norm["formula_id"],
+            "formula_version": norm["formula_version"],
+            "ingredient_lots": norm["ingredient_lots"],
+            "pilot_batch_id": norm["pilot_batch_id"],
+            "package_unit_id": norm["package_unit_id"],
+            "liner_check": norm["liner_check"],
+            "microbiology": norm["microbiology"],
+            "chemistry": norm["chemistry"],
+            "shelf_life": norm["shelf_life"],
+            "process_step": norm["process_step"],
+            "synthetic": norm["synthetic"],
+            "deidentified": norm["deidentified"],
+        }
+    )
+
+
 def classify_run(norm: dict[str, Any]) -> dict[str, Any]:
-    if (
-        norm["formula_id"] != CURRENT_FORMULA_ID
-        or norm["formula_version"] != CURRENT_FORMULA_VERSION
-    ):
-        return {"ok": False, "code": "HOLD_WRONG_FORMULA_VERSION"}
-    present = {lot["ingredient"] for lot in norm["ingredient_lots"] if lot["lot_id"]}
-    if present != set(REQUIRED_INGREDIENTS) or any(
-        not lot["lot_id"] or not lot["ingredient"] for lot in norm["ingredient_lots"]
-    ):
-        return {"ok": False, "code": "HOLD_MISSING_INGREDIENT_LOT"}
-    if norm["liner_check"] != "PASS":
-        return {"ok": False, "code": "HOLD_FAILED_LINER_CHECK"}
-    if norm["microbiology"] != "NEGATIVE":
-        return {"ok": False, "code": "HOLD_POSITIVE_MICROBIOLOGY"}
+    if not norm["row_id"]:
+        return {"ok": False, "code": HOLD_MISSING_REQUIRED_FIELD}
+    if norm["synthetic"] is not True or norm["deidentified"] is not True:
+        return {"ok": False, "code": HOLD_TRUTH_FLAG}
     if (
         not norm["run_id"]
         or not norm["pilot_batch_id"]
         or not norm["package_unit_id"]
         or norm["process_step"] != PROCESS_STEP
     ):
+        return {"ok": False, "code": HOLD_MISSING_REQUIRED_FIELD}
+    if (
+        norm["formula_id"] != CURRENT_FORMULA_ID
+        or norm["formula_version"] != CURRENT_FORMULA_VERSION
+    ):
+        return {"ok": False, "code": "HOLD_WRONG_FORMULA_VERSION"}
+    lots = norm["ingredient_lots"]
+    roles = [lot["ingredient"] for lot in lots]
+    lot_ids = [lot["lot_id"] for lot in lots]
+    if any(not role or not lot_id for role, lot_id in zip(roles, lot_ids)) or not set(
+        REQUIRED_INGREDIENTS
+    ).issubset(roles):
         return {"ok": False, "code": "HOLD_MISSING_INGREDIENT_LOT"}
+    if (
+        len(lots) != len(REQUIRED_INGREDIENTS)
+        or len(set(roles)) != len(REQUIRED_INGREDIENTS)
+        or len(set(lot_ids)) != len(REQUIRED_INGREDIENTS)
+        or set(roles) != set(REQUIRED_INGREDIENTS)
+    ):
+        return {"ok": False, "code": HOLD_INGREDIENT_CARDINALITY}
+    if norm["chemistry"] != "IN_SPEC" or norm["shelf_life"] != "IN_SPEC":
+        return {"ok": False, "code": HOLD_QA_OUT_OF_SPEC}
+    if norm["liner_check"] != "PASS":
+        return {"ok": False, "code": "HOLD_FAILED_LINER_CHECK"}
+    if norm["microbiology"] != "NEGATIVE":
+        return {"ok": False, "code": "HOLD_POSITIVE_MICROBIOLOGY"}
     return {"ok": True}
 
 
-def _hold(journal: dict[str, Any], norm: dict[str, Any], code: str) -> dict[str, Any]:
+def uniqueness_conflicts(norm: dict[str, Any], journal: dict[str, Any]) -> list[str]:
+    conflicts: list[str] = []
+    row_id = norm["row_id"]
+    if (
+        norm["run_id"]
+        and norm["run_id"] in journal["run_index"]
+        and journal["run_index"][norm["run_id"]] != row_id
+    ):
+        conflicts.append("run_id")
+    if (
+        norm["package_unit_id"]
+        and norm["package_unit_id"] in journal["package_index"]
+        and journal["package_index"][norm["package_unit_id"]] != row_id
+    ):
+        conflicts.append("package_unit_id")
+    if (
+        norm["pilot_batch_id"]
+        and norm["pilot_batch_id"] in journal["batch_index"]
+        and journal["batch_index"][norm["pilot_batch_id"]] != row_id
+    ):
+        conflicts.append("pilot_batch_id")
+    for lot_id in (lot["lot_id"] for lot in norm["ingredient_lots"] if lot["lot_id"]):
+        owner = journal.get("lot_index", {}).get(lot_id)
+        if owner and owner != row_id:
+            conflicts.append(f"lot_id:{lot_id}")
+    return conflicts
+
+
+def _hold(
+    journal: dict[str, Any], norm: dict[str, Any], code: str, digest: str
+) -> dict[str, Any]:
     hold = {
         "row_id": norm["row_id"],
         "run_id": norm["run_id"],
@@ -244,11 +317,13 @@ def _hold(journal: dict[str, Any], norm: dict[str, Any], code: str) -> dict[str,
         "released": False,
     }
     journal["holds"].append(hold)
-    journal["processed_rows"][norm["row_id"]] = {
-        "kind": "HOLD",
-        "run_id": norm["run_id"],
-        "code": code,
-    }
+    if norm["row_id"]:
+        journal["processed_rows"][norm["row_id"]] = {
+            "kind": "HOLD",
+            "run_id": norm["run_id"],
+            "code": code,
+            "input_digest": digest,
+        }
     _event(journal, "HOLD", hold)
     return {"kind": "HOLD", **deepcopy(hold)}
 
@@ -354,24 +429,9 @@ def trace_package(journal: dict[str, Any], package_unit_id: str) -> dict[str, An
     }
 
 
-def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
-    norm = normalize_run(row)
-    if norm["row_id"] in journal["processed_rows"]:
-        _event(
-            journal,
-            "REPLAY_NOOP",
-            {"row_id": norm["row_id"], "run_id": norm["run_id"]},
-        )
-        return {
-            "kind": "REPLAY_NOOP",
-            "row_id": norm["row_id"],
-            "run_id": norm["run_id"],
-        }
-
-    verdict = classify_run(norm)
-    if not verdict["ok"]:
-        return _hold(journal, norm, verdict["code"])
-
+def _commit_review(
+    journal: dict[str, Any], norm: dict[str, Any], digest: str
+) -> dict[str, Any]:
     formula_key = f"{norm['formula_id']}@{norm['formula_version']}"
     journal["formulas"].setdefault(
         formula_key,
@@ -390,6 +450,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
             "formula_id": norm["formula_id"],
             "run_id": norm["run_id"],
         }
+        journal["lot_index"][lot["lot_id"]] = norm["row_id"]
         _add_link(
             journal, "LOT", lot["lot_id"], "FORMULA", formula_key, "LOT_TO_FORMULA"
         )
@@ -431,7 +492,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "process_step": norm["process_step"],
     }
     lineage_hash = sha256_hex(lineage)
-    package = {
+    journal["packages"][norm["package_unit_id"]] = {
         **lineage,
         "lineage_hash": lineage_hash,
         "state": "RELEASE_REVIEW",
@@ -439,7 +500,6 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "released_by": None,
         "interface_state": "SIMULATED",
     }
-    journal["packages"][norm["package_unit_id"]] = package
     _add_link(
         journal,
         "PACKAGE",
@@ -465,7 +525,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
             lot_id,
             "PACKAGE_TO_LOT",
         )
-    review = {
+    journal["reviews"][norm["run_id"]] = {
         "run_id": norm["run_id"],
         "package_unit_id": norm["package_unit_id"],
         "formula_id": norm["formula_id"],
@@ -477,7 +537,6 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "released": False,
         "released_by": None,
     }
-    journal["reviews"][norm["run_id"]] = review
     journal["run_index"][norm["run_id"]] = norm["row_id"]
     journal["package_index"][norm["package_unit_id"]] = norm["row_id"]
     journal["batch_index"][norm["pilot_batch_id"]] = norm["row_id"]
@@ -485,6 +544,7 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "kind": "RELEASE_REVIEW",
         "run_id": norm["run_id"],
         "package_unit_id": norm["package_unit_id"],
+        "input_digest": digest,
     }
     _event(
         journal,
@@ -501,6 +561,64 @@ def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
         "package_unit_id": norm["package_unit_id"],
         "lineage_hash": lineage_hash,
     }
+
+
+def _ingest_unlocked(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
+    norm = normalize_run(row)
+    digest = input_digest(norm)
+    if not norm["row_id"]:
+        return _hold(journal, norm, HOLD_MISSING_REQUIRED_FIELD, digest)
+    prior = journal["processed_rows"].get(norm["row_id"])
+    if prior is not None:
+        if prior.get("input_digest") == digest:
+            _event(
+                journal,
+                "REPLAY_NOOP",
+                {"row_id": norm["row_id"], "run_id": norm["run_id"]},
+            )
+            return {
+                "kind": "REPLAY_NOOP",
+                "row_id": norm["row_id"],
+                "run_id": norm["run_id"],
+            }
+        return {
+            "kind": REPLAY_CONFLICT,
+            "ok": False,
+            "code": REPLAY_CONFLICT,
+            "row_id": norm["row_id"],
+            "run_id": norm["run_id"],
+        }
+    verdict = classify_run(norm)
+    if not verdict["ok"]:
+        return _hold(journal, norm, verdict["code"], digest)
+    conflicts = uniqueness_conflicts(norm, journal)
+    if conflicts:
+        return {
+            "kind": "REJECT",
+            "ok": False,
+            "code": REJECT_DUPLICATE_IDENTIFIER,
+            "conflicts": conflicts,
+            "row_id": norm["row_id"],
+            "run_id": norm["run_id"],
+        }
+    return _commit_review(journal, norm, digest)
+
+
+def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
+    working = deepcopy(journal)
+    try:
+        effect = _ingest_unlocked(working, row)
+    except Exception:
+        return {
+            "kind": "REJECT",
+            "ok": False,
+            "code": "ATOMIC_COMMIT_FAILED",
+            "row_id": _text((row or {}).get("row_id")),
+        }
+    if effect.get("kind") in {"RELEASE_REVIEW", "HOLD", "REPLAY_NOOP"}:
+        journal.clear()
+        journal.update(working)
+    return effect
 
 
 def release_package(
@@ -570,6 +688,10 @@ def journal_hash(journal: dict[str, Any]) -> str:
             "reviews": journal["reviews"],
             "holds": journal["holds"],
             "processed_rows": journal["processed_rows"],
+            "run_index": journal["run_index"],
+            "package_index": journal["package_index"],
+            "batch_index": journal["batch_index"],
+            "lot_index": journal.get("lot_index", {}),
         }
     )
 
