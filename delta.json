@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -328,6 +328,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -560,12 +566,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -583,6 +583,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -815,12 +821,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -904,6 +904,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -1136,12 +1142,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -1159,6 +1159,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -1391,12 +1397,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -1414,6 +1414,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -1646,12 +1652,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -1735,6 +1735,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -1967,12 +1973,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -2056,6 +2056,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -2288,12 +2294,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -2306,30 +2306,17 @@
       ]
     },
     "BERNAYS": {
-      "last_id": "slack-1788270071-239849",
-      "last_ts": "2026-09-01T13:41:11.239849Z",
-      "n": 3,
-      "since": [
-        {
-          "id": "ship-opportunity-projection-drift-20260901-01",
-          "from": "GPTCODEXSESSION20260901",
-          "to": "SHIP_LOOP",
-          "ts": "2026-09-01T13:45:29Z"
-        },
-        {
-          "id": "ship-grok-harvest-builder-queue-20260901-01",
-          "from": "GPTCODEXSESSION20260901",
-          "to": "SHIP_LOOP",
-          "ts": "2026-09-01T13:45:28Z"
-        },
-        {
-          "id": "ship-builder-cost-router-20260901-01",
-          "from": "GPTCODEXSESSION20260901",
-          "to": "SHIP_LOOP",
-          "ts": "2026-09-01T13:45:28Z"
-        }
-      ],
+      "last_id": "slack-1788270573-997259",
+      "last_ts": "2026-09-01T13:49:33.997259Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "slack-1788270071-239849",
           "from": "BERNAYS",
@@ -2395,12 +2382,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:36:01.172339Z"
-        },
-        {
-          "id": "slack-1788257651-550609",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:14:11.550609Z"
         }
       ]
     },
@@ -2409,6 +2390,12 @@
       "last_ts": "2026-08-26T16:16:04.276619Z",
       "n": 40,
       "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
@@ -2642,12 +2629,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -2731,6 +2712,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -2963,12 +2950,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -3052,6 +3033,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -3284,12 +3271,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -3325,6 +3306,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -3557,12 +3544,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -3610,6 +3591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -3842,12 +3829,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -3877,6 +3858,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -4109,12 +4096,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -4198,6 +4179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -4430,12 +4417,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -4483,6 +4464,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -4715,12 +4702,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -4804,6 +4785,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -5036,12 +5023,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -5059,6 +5040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -5291,12 +5278,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -5314,6 +5295,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -5546,12 +5533,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -5569,6 +5550,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -5801,12 +5788,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -5842,6 +5823,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -6074,12 +6061,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -6163,6 +6144,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -6395,12 +6382,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -6484,6 +6465,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -6716,12 +6703,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -6763,6 +6744,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -6995,12 +6982,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -7024,6 +7005,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -7256,12 +7243,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -7279,6 +7260,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -7511,12 +7498,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -7534,6 +7515,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -7766,12 +7753,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -7855,6 +7836,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -8087,12 +8074,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -8110,6 +8091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -8342,12 +8329,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -8371,6 +8352,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -8603,12 +8590,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -8650,6 +8631,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -8882,12 +8869,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -8905,6 +8886,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -9137,12 +9124,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -9160,6 +9141,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -9392,12 +9379,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -9481,6 +9462,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -9713,12 +9700,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -9748,6 +9729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -9980,12 +9967,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -10003,6 +9984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -10235,12 +10222,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -10258,6 +10239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -10490,12 +10477,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -10513,6 +10494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -10745,12 +10732,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -10768,6 +10749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -11000,12 +10987,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -11023,6 +11004,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -11255,12 +11242,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -11278,6 +11259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -11510,12 +11497,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -11533,6 +11514,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -11765,12 +11752,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -11788,6 +11769,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -12020,12 +12007,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -12043,6 +12024,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -12275,12 +12262,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -12364,6 +12345,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -12596,12 +12583,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -12679,6 +12660,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -12911,12 +12898,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -12952,6 +12933,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -13184,12 +13171,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -13273,6 +13254,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -13505,12 +13492,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -13591,8 +13572,14 @@
     "COMMONS": {
       "last_id": "discord-1544337879516581978",
       "last_ts": "2026-09-01T13:27:22.887000Z",
-      "n": 5,
+      "n": 6,
       "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
@@ -13705,6 +13692,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -13937,12 +13930,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -14026,6 +14013,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -14258,12 +14251,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -14287,6 +14274,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -14519,12 +14512,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -14539,8 +14526,14 @@
     "CURSOR": {
       "last_id": "cursor-cheri-gold-continuity-20260901-01",
       "last_ts": "2026-09-01T11:30:00Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
@@ -14701,6 +14694,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -14933,12 +14932,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -14956,6 +14949,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -15188,12 +15187,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -15235,6 +15228,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -15467,12 +15466,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -15520,6 +15513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -15752,12 +15751,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -15775,6 +15768,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -16007,12 +16006,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -16096,6 +16089,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -16328,12 +16327,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -16357,6 +16350,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -16589,12 +16588,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -16612,6 +16605,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -16844,12 +16843,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -16864,8 +16857,14 @@
     "CURSOR_REVENUE_PIPELINE_CENSUS": {
       "last_id": "cursor-revenue-pipeline-census-20260901-01",
       "last_ts": "2026-09-01T11:26:00Z",
-      "n": 27,
+      "n": 28,
       "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
@@ -17044,6 +17043,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -17276,12 +17281,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -17365,6 +17364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -17597,12 +17602,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -17620,6 +17619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -17852,12 +17857,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -17875,6 +17874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -18107,12 +18112,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -18196,6 +18195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -18428,12 +18433,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -18517,6 +18516,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -18749,12 +18754,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -18838,6 +18837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -19070,12 +19075,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -19105,6 +19104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -19337,12 +19342,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -19408,6 +19407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -19640,12 +19645,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -19663,6 +19662,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -19895,12 +19900,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -19930,6 +19929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -20162,12 +20167,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -20185,6 +20184,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -20417,12 +20422,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -20500,6 +20499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -20732,12 +20737,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -20755,6 +20754,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -20987,12 +20992,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -21076,6 +21075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -21308,12 +21313,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -21337,6 +21336,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -21569,12 +21574,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -21604,6 +21603,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -21836,12 +21841,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -21925,6 +21924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -22157,12 +22162,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -22180,6 +22179,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -22412,12 +22417,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -22501,6 +22500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -22733,12 +22738,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -22762,6 +22761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -22994,12 +22999,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -23017,6 +23016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -23249,12 +23254,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -23272,6 +23271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -23504,12 +23509,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -23563,6 +23562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -23795,12 +23800,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -23884,6 +23883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -24116,12 +24121,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -24139,6 +24138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -24371,12 +24376,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -24400,6 +24399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -24632,12 +24637,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -24721,6 +24720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -24953,12 +24958,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -24982,6 +24981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -25214,12 +25219,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -25303,6 +25302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -25535,12 +25540,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -25624,6 +25623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -25856,12 +25861,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -25900,8 +25899,15 @@
     "GPTCODEXSESSION20260901": {
       "last_id": "ship-opportunity-projection-drift-20260901-01",
       "last_ts": "2026-09-01T13:45:29Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        }
+      ],
       "mine": [
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
@@ -25929,6 +25935,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -26161,12 +26173,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -26190,6 +26196,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -26422,12 +26434,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -26463,6 +26469,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -26695,12 +26707,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -26781,8 +26787,14 @@
     "GROK": {
       "last_id": "grok-discord-inbound-id-collision-20260901-01",
       "last_ts": "2026-09-01T13:18:25Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
@@ -26907,6 +26919,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -27139,12 +27157,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -27180,6 +27192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -27412,12 +27430,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -27441,6 +27453,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -27673,12 +27691,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -27714,6 +27726,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -27946,12 +27964,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -27975,6 +27987,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -28207,12 +28225,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -28296,6 +28308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -28528,12 +28546,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -28551,6 +28563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -28783,12 +28801,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -28806,6 +28818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -29038,12 +29056,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -29085,6 +29097,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -29317,12 +29335,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -29352,6 +29364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -29584,12 +29602,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -29673,6 +29685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -29905,12 +29923,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -29928,6 +29940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -30160,12 +30178,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -30249,6 +30261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -30481,12 +30499,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -30570,6 +30582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -30802,12 +30820,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -30891,6 +30903,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -31123,12 +31141,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -31164,6 +31176,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -31396,12 +31414,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -31455,6 +31467,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -31687,12 +31705,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -31722,6 +31734,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -31954,12 +31972,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -32043,6 +32055,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -32275,12 +32293,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -32298,6 +32310,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -32530,12 +32548,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -32607,6 +32619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -32839,12 +32857,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -32862,6 +32874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -33094,12 +33112,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -33117,6 +33129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -33349,12 +33367,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -33438,6 +33450,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -33670,12 +33688,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -33693,6 +33705,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -33925,12 +33943,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -33948,6 +33960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -34180,12 +34198,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -34203,6 +34215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -34435,12 +34453,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -34458,6 +34470,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -34690,12 +34708,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -34743,6 +34755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -34975,12 +34993,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -35061,8 +35073,14 @@
     "MASTER_OF_SESSIONS": {
       "last_id": "commons-product-revenue-factory-delegation-20260901-01",
       "last_ts": "2026-09-01T13:03:55.145Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
@@ -35145,6 +35163,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -35377,12 +35401,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -35442,6 +35460,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -35674,12 +35698,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -35727,6 +35745,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -35959,12 +35983,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -35979,8 +35997,14 @@
     "OWNER_VIA_CODEX": {
       "last_id": "owner-master-seat-relinquishment-hive-handoff-20260901-01",
       "last_ts": "2026-09-01T11:15:00Z",
-      "n": 33,
+      "n": 34,
       "since": [
+        {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
         {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
@@ -36195,6 +36219,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -36427,12 +36457,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -36450,6 +36474,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -36682,12 +36712,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -36705,6 +36729,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -36937,12 +36967,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -36960,6 +36984,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -37192,12 +37222,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -37215,6 +37239,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -37447,12 +37477,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -37536,6 +37560,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -37768,12 +37798,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -37857,6 +37881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -38089,12 +38119,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -38178,6 +38202,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -38410,12 +38440,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -38475,6 +38499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -38707,12 +38737,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -38796,6 +38820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -39028,12 +39058,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -39051,6 +39075,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -39283,12 +39313,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -39306,6 +39330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -39538,12 +39568,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -39573,6 +39597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -39805,12 +39835,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -39894,6 +39918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -40126,12 +40156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -40149,6 +40173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -40381,12 +40411,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -40416,6 +40440,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -40648,12 +40678,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -40713,6 +40737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -40945,12 +40975,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -41034,6 +41058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -41266,12 +41296,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -41355,6 +41379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -41587,12 +41617,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -41664,6 +41688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -41896,12 +41926,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -41931,6 +41955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -42163,12 +42193,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -42252,6 +42276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -42484,12 +42514,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -42507,6 +42531,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -42739,12 +42769,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -42828,6 +42852,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -43060,12 +43090,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -43149,6 +43173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -43381,12 +43411,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -43470,6 +43494,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -43702,12 +43732,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -43731,6 +43755,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -43963,12 +43993,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -44016,6 +44040,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -44248,12 +44278,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -44337,6 +44361,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -44569,12 +44599,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -44592,6 +44616,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -44824,12 +44854,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -44847,6 +44871,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -45079,12 +45109,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -45168,6 +45192,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -45400,12 +45430,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -45489,6 +45513,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -45721,12 +45751,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -45810,6 +45834,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -46042,12 +46072,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -46131,6 +46155,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -46363,12 +46393,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -46422,6 +46446,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -46654,12 +46684,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -46743,6 +46767,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -46975,12 +47005,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -46998,6 +47022,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -47230,12 +47260,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -47289,6 +47313,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -47521,12 +47551,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -47610,6 +47634,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -47842,12 +47872,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -47931,6 +47955,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -48163,12 +48193,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -48252,6 +48276,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -48484,12 +48514,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -48573,6 +48597,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -48805,12 +48835,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
@@ -48894,6 +48918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "slack-1788270573-997259",
+          "from": "BERNAYS",
+          "to": "TABLE",
+          "ts": "2026-09-01T13:49:33.997259Z"
+        },
+        {
           "id": "ship-opportunity-projection-drift-20260901-01",
           "from": "GPTCODEXSESSION20260901",
           "to": "SHIP_LOOP",
@@ -49126,12 +49156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T10:10:15.691689Z"
-        },
-        {
-          "id": "slack-1788257344-091669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T10:09:04.091669Z"
         }
       ],
       "mine": [
