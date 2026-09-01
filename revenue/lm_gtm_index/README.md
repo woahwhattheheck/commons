@@ -10,9 +10,13 @@ Private routes stay off git. Public cash stays USD 0 unless a named payment
 evidence URL already exists in a source ledger.
 
 Floor command is now `python3 host/lm_gtm_index.py brief` — compact JSONL
-(header + HOT rows). Header includes `composed_at` and a one-line
-`stale_warning` when the overlay is older than 12h. `sent` is
-HARD_DO_NOT_RESEND, including bounced DNR with decision `BOUNCED`.
+(header + HOT rows). Header includes `occupied` (live rows whose owner
+is not UNSEATED), `composed_at`, `mailbox` only while still
+`NEEDS_OWNER_MAILBOX`, and a one-line `stale_warning` when the overlay
+is older than 12h. Compact rows omit `owner` when UNSEATED and omit
+`dnr` when false; keep `dnr: true` on sent/bounced and keep `owner`
+when actually claimed. `sent` is HARD_DO_NOT_RESEND, including bounced
+DNR with decision `BOUNCED`.
 `hot` remains the full-row actionable subset: it excludes seller context,
 the research universe, mailbox manifests, DNR / HOLD_DO_NOT_RESEND /
 HOLD_DO_NOT_CONTACT, OWNER_HOLD, SENT/AWAITING_REPLY with
@@ -62,6 +66,8 @@ python3 host/lm_gtm_index.py append-event \
 
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py release composio --owner YOURNAME
+# contract form is positional:
+# python3 host/lm_gtm_index.py claim <subject> --owner <you>
 # equivalent flag form:
 python3 host/lm_gtm_index.py claim --subject composio --owner YOURNAME
 # second occupancy fails closed unless:
@@ -111,6 +117,7 @@ live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX`.
 
 Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
 `lm-gtm-floor-sync-20260831-01`, `lm-gtm-agent-brief-20260831-01`,
+`lm-gtm-truth-sync-20260831-02`, `lm-gtm-contract-brief-20260901-01`,
 `website-people-email-book-20260830-01`, or
 `website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
 schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY

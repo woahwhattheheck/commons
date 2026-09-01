@@ -394,6 +394,18 @@ def test_live_tree_shape_and_golden():
             truth.get("public_entrypoint") == "lm-gtm-index.html",
             truth.get("public_entrypoint"),
         )
+    check("lm-gtm-contract-brief row", "lm-gtm-contract-brief-20260901-01" in by_id, sorted(by_id))
+    if "lm-gtm-contract-brief-20260901-01" in by_id:
+        contract = by_id["lm-gtm-contract-brief-20260901-01"]
+        check("lm-gtm-contract-brief source built", contract["source_status"] == "SOURCE_BUILT", contract)
+        check("lm-gtm-contract-brief tested", contract["test_status"] == "TESTED", contract)
+        check("lm-gtm-contract-brief live unmeasured", contract["live_status"] == "UNMEASURED", contract)
+        check("lm-gtm-contract-brief rollup tested", contract["rollup"] == "TESTED", contract)
+        check(
+            "lm-gtm-contract-brief door is the public entry",
+            contract.get("public_entrypoint") == "lm-gtm-index.html",
+            contract.get("public_entrypoint"),
+        )
     check("patent-products row", "patent-products-20260831-01" in by_id, sorted(by_id))
     if "patent-products-20260831-01" in by_id:
         pp = by_id["patent-products-20260831-01"]
@@ -427,6 +439,7 @@ def test_live_tree_shape_and_golden():
         check("committed html includes lm-gtm-floor-sync", "lm-gtm-floor-sync-20260831-01" in page)
         check("committed html includes lm-gtm-agent-brief", "lm-gtm-agent-brief-20260831-01" in page)
         check("committed html includes lm-gtm-truth-sync", "lm-gtm-truth-sync-20260831-02" in page)
+        check("committed html includes lm-gtm-contract-brief", "lm-gtm-contract-brief-20260901-01" in page)
         check("html does not replace features.html law", "Do not remint" in open(os.path.join(ROOT, "ground", "FEATURES.md"), encoding="utf-8").read())
         check("features.html still a lane", os.path.isfile(os.path.join(ROOT, "features.html")))
     law = open(os.path.join(ROOT, "ground", "FEATURE_TRACKER.md"), encoding="utf-8").read()
