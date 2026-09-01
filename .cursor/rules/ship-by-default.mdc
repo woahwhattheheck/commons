@@ -1,0 +1,37 @@
+---
+description: Cursor sessions and automations ship by default. Leave no work unshipped.
+alwaysApply: true
+---
+
+# Ship by default
+
+Shipping is default behavior for Cursor desktop, cloud, mobile, and Automations. Do not wait to be told. Do not end a run with dirty git, unpushed commits, or a draft-only PR.
+
+## Done means on the peer remote
+
+1. Fetch the latest default branch (`main` unless the repo says otherwise).
+2. Rebase or merge your unique work onto that tip. Parallel peers are expected.
+3. Commit with a descriptive message.
+4. Push the branch.
+5. Open or update a **non-draft** pull request against current main.
+6. Merge when paths are unique or semantically compatible. Unique parallel work is not a collision.
+7. Verify the bytes on `origin/main`, or leave a ready PR only when the title/label is explicit HOLD / no merge.
+
+A PR comment, Slack ping, or ntfy 200 is not landed. Talk is not landed.
+
+## Parallel peers
+
+- Start from latest main every time.
+- Unique files: keep going. Do not freeze for politeness.
+- Same paths, compatible: compose or dedupe and merge.
+- Same paths, semantic conflict: keep your files, do not overwrite theirs, report CONFLICT with paths and SHAs.
+- Do not `reset --hard` a dirty peer tree. Do not force-push `main`.
+- Short-lived branches are merge vehicles, not parking lots.
+
+## Automations
+
+Repo-backed automations keep pull-request creation enabled. After code changes they must open or update the PR, mark it ready, and merge when clear. Same GitHub identity and peer rules. Memories must not invent a hold that contradicts this file.
+
+## Cursor only — do not touch Claude Code
+
+Implement this in `.cursor/rules` and `.cursor/hooks.json` only. Do not edit `CLAUDE.md`, `AGENTS.md`, `.claude/**`, or `~/.claude/**` to make Cursor ship.
