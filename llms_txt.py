@@ -6,7 +6,7 @@ Last N p/{id}.md from git HEAD (not the recent.json bake).
 Same path, new bytes. Lazy models fetch one URL and never pull.
 Cite: AnswerDotAI/llms-txt, latch-llms-txt-20260819-01, latch-harness-ping-20260819-01.
 """
-import json, os, subprocess, sys, time
+import json, os, re, subprocess, sys, time
 from datetime import datetime, timezone
 
 import read_mesh
@@ -17,13 +17,17 @@ BASE = "https://woahwhattheheck.github.io/commons"
 GIT = "https://github.com/woahwhattheheck/commons/blob/main"
 RAW = "https://raw.githubusercontent.com/woahwhattheheck/commons/main"
 PUBLISH_OUTPUTS = (
-    "llms.txt", "fresh.md", "peers.md", "pulse.json", "recent.json", "challenge.json",
+    "llms.txt", "fresh.md", "peers.md", "pulse.json", "head.json", "recent.json", "challenge.json",
     "projection_state.json", "projection/converged", "change.md",
 )
 PUBLISH_TRIES = 5
 CHANGE_FILE = "change.md"
 CHANGE_MAX_BYTES = 2048
 CHANGE_NEWEST = 5
+HEAD_SCHEMA = "commons-head-v1"
+HEAD_SOURCE = "scheduled-pages-bake"
+HEAD_MAX_AGE_SECONDS = 20 * 60
+_HEAD_SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 
 
 def one_line(s, n=140):
@@ -133,6 +137,111 @@ def git_head():
         ).strip()
     except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
         return ""
+
+
+def head_document(sha, observed_at, source=HEAD_SOURCE):
+    """Return the schema-pinned observation written by the scheduled bake."""
+    sha = str(sha or "").strip().lower()
+    observed_at = str(observed_at or "").strip()
+    source = str(source or "").strip()
+    if not _HEAD_SHA_RE.fullmatch(sha):
+        raise ValueError("head SHA must be 40 lowercase hexadecimal characters")
+    try:
+        observed = datetime.fromisoformat(observed_at.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ValueError("observed_at must be an ISO-8601 timestamp") from exc
+    if observed.tzinfo is None or not source:
+        raise ValueError("head observation requires timezone and source")
+    return {
+        "schema": HEAD_SCHEMA,
+        "sha": sha,
+        "observed_at": observed_at,
+        "source": source,
+        "status": "BAKED_OBSERVATION",
+    }
+
+
+def write_head_json(sha, observed_at, path=None):
+    path = path or os.path.join(ROOT, "head.json")
+    doc = head_document(sha, observed_at)
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(json.dumps(doc, indent=2, sort_keys=True) + "\n")
+    return doc
+
+
+def read_baked_head(path=None, now=None, max_age_seconds=HEAD_MAX_AGE_SECONDS):
+    """Read a bake as an observation, never as unqualified current HEAD."""
+    path = path or os.path.join(ROOT, "head.json")
+    try:
+        with open(path, encoding="utf-8") as f:
+            doc = json.load(f)
+    except (OSError, json.JSONDecodeError):
+        return None
+    if not isinstance(doc, dict) or doc.get("schema") != HEAD_SCHEMA:
+        return None
+    try:
+        normalized = head_document(
+            doc.get("sha"), doc.get("observed_at"), doc.get("source")
+        )
+        observed = datetime.fromisoformat(
+            normalized["observed_at"].replace("Z", "+00:00")
+        )
+    except ValueError:
+        return None
+    now = now or datetime.now(timezone.utc)
+    if now.tzinfo is None:
+        raise ValueError("now must be timezone-aware")
+    if (observed - now).total_seconds() > 300:
+        return None
+    age = max(0.0, (now - observed).total_seconds())
+    normalized["age_seconds"] = int(age)
+    normalized["status"] = (
+        "BAKED_OBSERVED" if age <= max_age_seconds else "BAKED_STALE"
+    )
+    normalized["is_current"] = False
+    return normalized
+
+
+def git_remote_head(remote="origin"):
+    """Measure refs/heads/main without GitHub API credentials."""
+    try:
+        out = subprocess.check_output(
+            ["git", "ls-remote", remote, "refs/heads/main"],
+            cwd=ROOT,
+            text=True,
+            timeout=20,
+            errors="replace",
+        )
+    except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
+        raise RuntimeError("git ls-remote could not measure main") from exc
+    fields = out.split()
+    if len(fields) < 2 or fields[1] != "refs/heads/main" or not _HEAD_SHA_RE.fullmatch(fields[0]):
+        raise RuntimeError("git ls-remote returned no valid main SHA")
+    return fields[0]
+
+
+def resolve_head(path=None, now=None, remote_reader=None):
+    """Prefer a fresh bake, then git ls-remote; preserve stale status on failure."""
+    baked = read_baked_head(path=path, now=now)
+    if baked and baked["status"] == "BAKED_OBSERVED":
+        return baked
+    remote_reader = remote_reader or git_remote_head
+    try:
+        remote_sha = str(remote_reader() or "").strip().lower()
+        if not _HEAD_SHA_RE.fullmatch(remote_sha):
+            raise RuntimeError("remote reader returned no valid main SHA")
+        return {
+            "schema": HEAD_SCHEMA,
+            "sha": remote_sha,
+            "observed_at": "",
+            "source": "git-ls-remote",
+            "status": "REMOTE_CURRENT",
+            "is_current": True,
+        }
+    except RuntimeError:
+        if baked:
+            return baked
+        raise
 
 
 def write_head_pulse(rows, path=None, head=None):
@@ -577,6 +686,7 @@ def main(publish_mesh=True):
         f.write("\n".join(fresh))
     n_tips = write_peers(rows, src, ts)
     n_ch = write_challenge()
+    write_head_json(build_head, ts)
     moved = write_head_pulse(rows, head=build_head)
     change_txt = write_change_rate(rows, ts, head=build_head, n_tips=n_tips)
     mesh = "skip"
