@@ -77,6 +77,10 @@ FORBIDDEN_STRIPE_PAYLOAD_KEYS = frozenset(
         "record_text",
         "medical_record",
         "phi",
+        "legal_fees",
+        "legal_fee",
+        "success",
+        "destination",
     }
 )
 
@@ -198,10 +202,20 @@ def validate_opaque_metadata(metadata: Dict[str, Any]) -> None:
 
 def assert_live_operations_disabled(flags: CommercialFeatureFlags = DEFAULT_COMMERCIAL_FLAGS) -> None:
     """Assert all live payment and transfer operations are strictly blocked."""
+    if flags.live_routing_enabled:
+        raise LivePaymentOperationBlockedError("Live routing remains OFF.")
     if flags.charges_enabled:
         raise LivePaymentOperationBlockedError("Live charges are disabled.")
+    if flags.products_enabled:
+        raise LivePaymentOperationBlockedError("Live products remain OFF.")
+    if flags.subscriptions_enabled:
+        raise LivePaymentOperationBlockedError("Live subscriptions remain OFF.")
     if flags.transfers_enabled or flags.connect_status != "HOLD_LEGAL_AND_PAYMENT_DESIGN":
         raise LivePaymentOperationBlockedError(f"Stripe Connect transfers are blocked ({flags.connect_status}).")
+    if flags.payouts_enabled:
+        raise LivePaymentOperationBlockedError("Live payouts remain OFF.")
+    if flags.tax_automation_enabled:
+        raise LivePaymentOperationBlockedError("Live tax remains OFF.")
     if flags.external_spend_enabled:
         raise LivePaymentOperationBlockedError("External spend is blocked.")
     if flags.stripe_account_mutation_allowed:

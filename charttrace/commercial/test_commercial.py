@@ -123,6 +123,30 @@ class TestSeparatedLedgers(unittest.TestCase):
         self.assertEqual(score1.calculated_price_cents, score2.calculated_price_cents)
         self.assertEqual(score1.page_band, score2.page_band)
 
+    def test_legal_fees_and_named_signals_cannot_change_price_or_priority(self):
+        """Hard-block price/priority from legal fees, success, destination, recovery."""
+        metrics = WorkloadMetrics(unique_pages=80, file_count=2)
+        for key in ("legal_fees", "legal_fee", "success", "destination", "recovery"):
+            with self.assertRaises(EconomicIsolationViolation):
+                calculate_review_work_score(
+                    "pkt_legal_fee",
+                    ProductTier.INDEXED,
+                    metrics,
+                    extra_metadata={key: 1},
+                )
+            with self.assertRaises(EconomicIsolationViolation):
+                calculate_review_priority(
+                    "item_legal_fee",
+                    evidence_support=0.5,
+                    materiality_if_confirmed=0.5,
+                    temporal_linkage=0.5,
+                    novelty=0.5,
+                    counterevidence=0.5,
+                    completeness=0.5,
+                    deadline_urgency=0.5,
+                    extra_metadata={key: 1},
+                )
+
 
 class TestAffiliateReviewers(unittest.TestCase):
     """Tests for affiliate reviewer rolling QA tiers, fee formula, and conflict guards."""
@@ -218,6 +242,16 @@ class TestAffiliateReviewers(unittest.TestCase):
                 forbidden_incentive_check={"bad_conduct_multiplier": 1.5},
             )
 
+        with self.assertRaises(ReviewerIncentiveViolation):
+            calculate_affiliate_review_fee(
+                matter_id="mat_892",
+                reviewer_profile=profile,
+                recipient_firm_id="firm_recipient",
+                page_band="201-500",
+                turnaround_hours=48,
+                forbidden_incentive_check={"legal_fees": 40000},
+            )
+
 
 class TestCommercialAndRoutingPolicies(unittest.TestCase):
     """Tests for routing policies, policy states, and Stripe order contracts."""
@@ -287,6 +321,13 @@ class TestCommercialAndRoutingPolicies(unittest.TestCase):
                 practice_category="medmal",
                 metadata={"juice": "high", "damages_amount": 1000000},
             )
+        for key in ("legal_fees", "destination", "firm_interest", "success", "recovery"):
+            with self.assertRaises(RoutingPolicyViolation):
+                RoutingRequest(
+                    jurisdiction="CA",
+                    practice_category="medmal",
+                    metadata={key: 1},
+                )
 
     def test_paid_lead_generation_jurisdiction_disabled_by_default(self):
         # Default engine has no paid lead gen jurisdictions enabled
@@ -351,7 +392,11 @@ class TestCommercialAndRoutingPolicies(unittest.TestCase):
         self.assertFalse(default_flags.live_routing_enabled)
         self.assertEqual(default_flags.connect_status, "HOLD_LEGAL_AND_PAYMENT_DESIGN")
         self.assertFalse(default_flags.charges_enabled)
+        self.assertFalse(default_flags.products_enabled)
+        self.assertFalse(default_flags.subscriptions_enabled)
         self.assertFalse(default_flags.transfers_enabled)
+        self.assertFalse(default_flags.payouts_enabled)
+        self.assertFalse(default_flags.tax_automation_enabled)
         self.assertFalse(default_flags.external_spend_enabled)
         self.assertFalse(default_flags.stripe_account_mutation_allowed)
 
@@ -362,6 +407,16 @@ class TestCommercialAndRoutingPolicies(unittest.TestCase):
         bad_flags = CommercialFeatureFlags(charges_enabled=True)
         with self.assertRaises(LivePaymentOperationBlockedError):
             assert_live_operations_disabled(bad_flags)
+
+        for kwargs in (
+            {"live_routing_enabled": True},
+            {"products_enabled": True},
+            {"subscriptions_enabled": True},
+            {"payouts_enabled": True},
+            {"tax_automation_enabled": True},
+        ):
+            with self.assertRaises(LivePaymentOperationBlockedError):
+                assert_live_operations_disabled(CommercialFeatureFlags(**kwargs))
 
 
 if __name__ == "__main__":

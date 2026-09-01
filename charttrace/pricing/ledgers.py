@@ -47,6 +47,11 @@ FORBIDDEN_ECONOMIC_SIGNAL_KEYS = frozenset(
         "contingency",
         "contingency_percentage",
         "payment_level",
+        "success",
+        "destination",
+        "recovery",
+        "legal_fees",
+        "legal_fee",
     }
 )
 

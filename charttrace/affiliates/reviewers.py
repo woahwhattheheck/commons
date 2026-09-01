@@ -180,6 +180,12 @@ def calculate_affiliate_review_fee(
                     "juice",
                     "packet_score",
                     "case_value",
+                    "legal_fee",
+                    "legal_fees",
+                    "success",
+                    "destination",
+                    "severity",
+                    "firm_interest",
                 ]
             ):
                 raise ReviewerIncentiveViolation(

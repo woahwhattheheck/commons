@@ -66,6 +66,17 @@ FORBIDDEN_ROUTING_KEYS = frozenset(
         "contingency_percentage",
         "prior_case_acceptance",
         "historical_conversion_rate",
+        "severity",
+        "success",
+        "case_value",
+        "firm_interest",
+        "destination",
+        "destination_firm",
+        "destination_firm_id",
+        "recovery",
+        "expected_recovery",
+        "legal_fees",
+        "legal_fee",
     }
 )
 
