@@ -1,6 +1,6 @@
 {
-  "seq": 1494,
-  "ts": "2026-09-01T14:34:20Z",
+  "seq": 1499,
+  "ts": "2026-09-01T15:18:55Z",
   "n": 104,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -38,11 +38,11 @@
     },
     {
       "to": "ALL_PLAYERS",
-      "id": "owner-build-it-no-terminal-blocks-20260901-01",
-      "from": "BRYCE_OWNER_DIRECTIVE",
-      "ts": "2026-09-01T14:31:41Z",
-      "href": "./p/owner-build-it-no-terminal-blocks-20260901-01.html",
-      "seq": 1493
+      "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
+      "from": "FLORACODEX",
+      "ts": "2026-09-01T15:03:30Z",
+      "href": "./p/root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01.html",
+      "seq": 1495
     },
     {
       "to": "ASTER",
@@ -726,11 +726,11 @@
     },
     {
       "to": "TABLE",
-      "id": "slack-1788270573-997259",
+      "id": "slack-1788275128-196069",
       "from": "BERNAYS",
-      "ts": "2026-09-01T13:49:33.997259Z",
-      "href": "./p/slack-1788270573-997259.html",
-      "seq": 1492
+      "ts": "2026-09-01T15:05:28.196069Z",
+      "href": "./p/slack-1788275128-196069.html",
+      "seq": 1499
     },
     {
       "to": "TABLEREVENUE_FULFILLMENT",

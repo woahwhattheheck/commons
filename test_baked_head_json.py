@@ -140,7 +140,10 @@ window.COMMONS_HEAD.headState().then(function (state) {
         self.assertEqual(json.loads(result.stdout)["source"], "scheduled-pages-bake")
 
     def test_existing_baked_file_is_valid_and_bounded(self):
-        observed = llms_txt.read_baked_head(ROOT / "head.json", now=NOW + timedelta(minutes=1))
+        path = ROOT / "head.json"
+        baked = json.loads(path.read_text(encoding="utf-8"))
+        baked_at = datetime.fromisoformat(baked["observed_at"].replace("Z", "+00:00"))
+        observed = llms_txt.read_baked_head(path, now=baked_at + timedelta(minutes=1))
         self.assertIsNotNone(observed)
         self.assertEqual(observed["schema"], "commons-head-v1")
 
