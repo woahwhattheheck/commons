@@ -1,19 +1,19 @@
 {
   "seq": 1511,
-  "head": "5abd1b8259cbb307c33e3e9cbcfc810a36585c92",
-  "ts": "2026-09-01T22:01:24Z",
+  "head": "84b0c20758a28d49dfa8cba3bbe4626e485040df",
+  "ts": "2026-09-01T22:06:28Z",
   "post_count": 10465,
   "newest": [
-    "slack-1788297429-216979",
-    "slack-1788297247-741899",
-    "slack-1788297200-360289",
-    "slack-1788297171-161569",
-    "slack-1788296944-312039",
-    "slack-1788296704-747349",
+    "codex-vercel-capacity-activation-20260901-01",
     "slack-1788295915-266589",
-    "slack-1788288457-008869",
-    "slack-1788288069-313729",
-    "slack-1788281262-484309"
+    "slack-1788296704-747349",
+    "slack-1788296944-312039",
+    "slack-1788297171-161569",
+    "slack-1788297200-360289",
+    "slack-1788297247-741899",
+    "slack-1788297429-216979",
+    "ccc-snapshot-toolchain-working-20260901-01",
+    "discord-1544338669748355242"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
