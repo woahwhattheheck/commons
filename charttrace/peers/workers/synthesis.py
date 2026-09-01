@@ -9,6 +9,14 @@ from __future__ import annotations
 from typing import Any, Dict, List, Mapping, Set, Tuple
 
 from charttrace.peers.contracts import EvidenceGrade, RelevanceGrade, assert_lead_complete
+from charttrace.peers.isolation import DISCOVERY_ROLE_IDS, compute_envelope_hash
+from charttrace.peers.versions import (
+    MODEL_VERSION,
+    PEER_SWARM_VERSION,
+    POLICY_VERSION,
+    PROMPT_VERSION,
+    SCHEMA_VERSION,
+)
 from charttrace.peers.workers._base import (
     base_result,
     build_lead,
@@ -17,6 +25,32 @@ from charttrace.peers.workers._base import (
 )
 
 ROLE_ID = "synthesis"
+REQUIRED_DISCOVERY_ROLES = frozenset(DISCOVERY_ROLE_IDS)
+
+
+def _assert_authenticated_envelopes(sealed: List[Mapping[str, Any]], case_id: str) -> None:
+    if len(sealed) != 11:
+        raise ValueError("synthesis requires exactly 11 sealed discovery results")
+    roles = [str(row.get("role_id") or "") for row in sealed]
+    if len(set(roles)) != 11 or set(roles) != REQUIRED_DISCOVERY_ROLES:
+        raise ValueError("synthesis requires exactly one envelope per discovery role")
+    for row in sealed:
+        role = str(row.get("role_id") or "")
+        if row.get("envelope_bound_case_id") != case_id:
+            raise ValueError("synthesis envelope case binding mismatch")
+        if row.get("schema_version") != SCHEMA_VERSION:
+            raise ValueError("synthesis envelope schema binding mismatch")
+        if row.get("peer_swarm_version") != PEER_SWARM_VERSION:
+            raise ValueError("synthesis envelope version binding mismatch")
+        if row.get("policy_version") != POLICY_VERSION:
+            raise ValueError("synthesis envelope version binding mismatch")
+        if row.get("prompt_version") != PROMPT_VERSION:
+            raise ValueError("synthesis envelope version binding mismatch")
+        if row.get("model_version") != MODEL_VERSION:
+            raise ValueError("synthesis envelope version binding mismatch")
+        expected = compute_envelope_hash(role, row, case_id)
+        if row.get("envelope_hash") != expected:
+            raise ValueError("synthesis envelope hash mismatch")
 
 
 def _lead_key(lead: Mapping[str, Any]) -> Tuple[str, str]:
@@ -25,10 +59,7 @@ def _lead_key(lead: Mapping[str, Any]) -> Tuple[str, str]:
 
 def run_peer(packet: Mapping[str, Any]) -> Dict[str, Any]:
     sealed = list(packet.get("sealed_peer_results") or [])
-    if not sealed:
-        raise ValueError("synthesis requires sealed_peer_results from discovery peers")
-    if len(sealed) != 11:
-        raise ValueError("synthesis requires exactly 11 sealed discovery results")
+    _assert_authenticated_envelopes(sealed, str(packet.get("case_id") or ""))
 
     universe = searched_universe(packet)
     scope = jurisdiction_scope(packet)

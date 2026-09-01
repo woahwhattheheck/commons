@@ -12,7 +12,7 @@ from charttrace.peers.isolation import (
     run_peer_child_process,
     run_peer_in_process,
 )
-from charttrace.peers.packet import PeerPacket
+from charttrace.peers.packet import PeerPacket, attach_runner_sealed
 from charttrace.peers.scope import GLOBAL_SCOPE_STATEMENT, attach_global_scope
 from charttrace.peers.versions import (
     GROUNDING_VERSION,
@@ -122,10 +122,17 @@ def run_full_swarm(
     use_child_process: bool = False,
 ) -> Dict[str, Any]:
     discovery = run_discovery_swarm(packet, use_child_process=use_child_process)
-    sealed = discovery["discovery_results"]
+    sealed = []
+    for row in discovery["discovery_results"]:
+        item = dict(row)
+        findings = []
+        for finding in item.get("injection_findings") or []:
+            findings.append({k: v for k, v in finding.items() if k != "snippet"})
+        item["injection_findings"] = findings
+        sealed.append(item)
     if len(sealed) != 11:
         raise ValueError("full swarm fail-closed: discovery cardinality is not 11")
-    synth_packet = _isolated_packet(packet, sealed=sealed)
+    synth_packet = attach_runner_sealed(_isolated_packet(packet), sealed)
     if use_child_process:
         synthesis = run_peer_child_process(SYNTHESIS_ROLE_ID, synth_packet)
     else:

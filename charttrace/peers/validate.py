@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from datetime import date
 import re
+import unicodedata
 from typing import Any, Dict, Iterable, List, Mapping, Sequence, Tuple
 
 from charttrace.peers.contracts import (
@@ -16,13 +17,69 @@ from charttrace.peers.contracts import (
 
 
 SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
-NAMESPACED_ID_RE = re.compile(r"^[a-z][a-z0-9_]*[-:][a-z0-9][a-z0-9._:-]{0,120}$")
+NAMESPACED_ID_RE = re.compile(r"^[a-z][a-z0-9_]*[-:][a-z0-9][a-z0-9.:-]{0,120}$")
 NAME_LIKE_ID_RE = re.compile(r"[A-Z][a-z]+[._-][A-Z][a-z]+")
 SSN_LIKE_ID_RE = re.compile(r"\d{3}[-_.]\d{2}[-_.]\d{4}")
+MRN_SEGMENT_RE = re.compile(r"^mrn\d+$")
+DIGIT_SEGMENT_RE = re.compile(r"^\d+$")
 PHI_TOKEN_RE = re.compile(
     r"(?i)(\b(mrn|ssn|dob|patient|phi)\b|\d{3}-\d{2}-\d{4}|[A-Z][a-z]+\s+[A-Z][a-z]+)"
 )
 LONG_DIGIT_RE = re.compile(r"\d{8,}")
+ZERO_WIDTH_CHARS = (
+    "\u200b",
+    "\u200c",
+    "\u200d",
+    "\u2060",
+    "\ufeff",
+    "\u00ad",
+)
+NAME_DENYLIST = frozenset(
+    {
+        "jane",
+        "john",
+        "doe",
+        "smith",
+        "patient",
+        "mrn",
+        "ssn",
+        "dob",
+        "phi",
+        "mary",
+        "robert",
+    }
+)
+CARE_PHASES = frozenset(
+    {
+        "unspecified",
+        "acute_care",
+        "perioperative",
+        "documentation",
+        "review",
+        "continuity",
+        "medication",
+        "diagnostics",
+        "differential",
+        "authority",
+        "sequelae",
+        "communication",
+        "outpatient",
+        "inpatient",
+    }
+)
+SOURCE_CATEGORIES = frozenset(
+    {
+        "clinical_note",
+        "progress_note",
+        "progress_notes",
+        "operative_note",
+        "lab_report",
+        "imaging",
+        "other_record",
+        "supplied_record_excerpts",
+    }
+)
+KNOWN_FACT_RE = re.compile(r"^fact:[a-z0-9][a-z0-9:-]{0,80}$")
 COMMERCIAL_VALUE_RE = re.compile(
     r"(?i)\b("
     r"destination[_-]?firm|affiliate[_-]?identity|packet[_-]?price|"
@@ -41,7 +98,6 @@ ALLOWED_PACKET_KEYS = frozenset(
         "known_facts",
         "source_universe",
         "grounding_pack_ids",
-        "sealed_peer_results",
     }
 )
 ALLOWED_EXCERPT_KEYS = frozenset(
@@ -77,6 +133,51 @@ COMMERCIAL_STEMS = frozenset(
 )
 
 
+def canonicalize_identifier(value: str) -> str:
+    folded = unicodedata.normalize("NFKC", value)
+    for mark in ZERO_WIDTH_CHARS:
+        folded = folded.replace(mark, "")
+    folded = (
+        folded.replace("–", "-")
+        .replace("—", "-")
+        .replace("−", "-")
+        .replace("．", ".")
+        .replace("。", ".")
+        .replace("：", ":")
+        .replace("_", "_")
+    )
+    return folded
+
+
+def _id_segments(value: str) -> List[str]:
+    return [part for part in re.split(r"[-:._]+", value.lower()) if part]
+
+
+def _namespace_remainder(value: str) -> str:
+    matched = re.match(r"^[a-z][a-z0-9_]*[-:](.*)$", value)
+    return matched.group(1) if matched else value
+
+
+def _opaque_id_rejected(value: str, *, packet_id: bool) -> bool:
+    if " " in value or ".." in value:
+        return True
+    remainder = _namespace_remainder(value)
+    if "_" in remainder:
+        return True
+    if PHI_TOKEN_RE.search(value) or NAME_LIKE_ID_RE.search(value) or SSN_LIKE_ID_RE.search(value):
+        return True
+    if packet_id and LONG_DIGIT_RE.search(value):
+        return True
+    segments = _id_segments(value)
+    if any(seg in NAME_DENYLIST for seg in segments):
+        return True
+    if any(MRN_SEGMENT_RE.fullmatch(seg) for seg in segments):
+        return True
+    if sum(1 for seg in segments if DIGIT_SEGMENT_RE.fullmatch(seg) and len(seg) >= 2) >= 2:
+        return True
+    return False
+
+
 def parse_iso_date(value: str, field_name: str) -> date:
     if not isinstance(value, str) or not value.strip():
         raise ValueError(f"{field_name} must be an ISO date")
@@ -89,13 +190,88 @@ def parse_iso_date(value: str, field_name: str) -> date:
 def assert_synthetic_id(value: Any, field_name: str, *, packet_id: bool = False) -> str:
     if not isinstance(value, str) or not value:
         raise ValueError(f"{field_name} must be a namespaced synthetic identifier")
-    if " " in value or PHI_TOKEN_RE.search(value) or NAME_LIKE_ID_RE.search(value) or SSN_LIKE_ID_RE.search(value):
+    canon = canonicalize_identifier(value)
+    if canon != value or any(ord(ch) > 127 for ch in value):
         raise ValueError(f"{field_name} rejects names, MRNs, and PHI-like tokens")
-    if packet_id and LONG_DIGIT_RE.search(value):
+    if _opaque_id_rejected(value, packet_id=packet_id):
         raise ValueError(f"{field_name} rejects names, MRNs, and PHI-like tokens")
     if not NAMESPACED_ID_RE.fullmatch(value):
         raise ValueError(f"{field_name} must be a namespaced synthetic identifier")
     return value
+
+
+def assert_care_phase(value: Any, field_name: str = "care_phase") -> str:
+    if not isinstance(value, str) or value not in CARE_PHASES:
+        raise ValueError(f"{field_name} must be an enumerated care phase")
+    return value
+
+
+def assert_source_category(value: Any, field_name: str = "source_category") -> str:
+    if not isinstance(value, str) or value not in SOURCE_CATEGORIES:
+        raise ValueError(f"{field_name} must be an enumerated source category")
+    return value
+
+
+def assert_known_fact_token(value: Any) -> str:
+    if not isinstance(value, str) or not KNOWN_FACT_RE.fullmatch(value):
+        raise ValueError("known_facts must be opaque fact tokens")
+    if COMMERCIAL_VALUE_RE.search(value):
+        raise ValueError("known_facts rejects commercial/medical free text")
+    return value
+
+
+def assert_raw_packet_types(payload: Mapping[str, Any]) -> None:
+    if not isinstance(payload, Mapping):
+        raise ValueError("packet must be a mapping")
+    for key in ("case_id", "jurisdiction", "care_date_start", "care_date_end"):
+        if key in payload and not isinstance(payload[key], str):
+            raise ValueError(f"{key} must be a string before coercion")
+    excerpts = payload.get("excerpts", [])
+    if excerpts is None:
+        excerpts = []
+    if not isinstance(excerpts, list):
+        raise ValueError("excerpts must be a list")
+    for ex in excerpts:
+        if not isinstance(ex, Mapping):
+            raise ValueError("excerpt must be a mapping")
+        if "document_id" in ex and not isinstance(ex["document_id"], str):
+            raise ValueError("document_id must be a string before coercion")
+        if "page" in ex and (isinstance(ex["page"], bool) or not isinstance(ex["page"], int)):
+            raise ValueError("page must be an int before coercion")
+        if "text" in ex and not isinstance(ex["text"], str):
+            raise ValueError("excerpt text must be a string")
+        if any(isinstance(v, Mapping) for v in ex.values()):
+            raise ValueError("nested excerpt metadata rejected")
+        if "care_phase" in ex:
+            assert_care_phase(ex["care_phase"])
+        if "source_category" in ex:
+            assert_source_category(ex["source_category"])
+    facts = payload.get("known_facts", [])
+    if facts is None:
+        facts = []
+    if not isinstance(facts, list):
+        raise ValueError("known_facts must be a list")
+    for item in facts:
+        if isinstance(item, Mapping):
+            raise ValueError("nested known_facts rejected")
+        assert_known_fact_token(item)
+    universe = payload.get("source_universe", [])
+    if universe is None:
+        universe = []
+    if not isinstance(universe, list):
+        raise ValueError("source_universe must be a list")
+    for item in universe:
+        assert_source_category(item, "source_universe")
+    packs = payload.get("grounding_pack_ids", [])
+    if packs is None:
+        packs = []
+    if not isinstance(packs, list):
+        raise ValueError("grounding_pack_ids must be a list")
+    for item in packs:
+        if not isinstance(item, str) or not item:
+            raise ValueError("grounding_pack_ids must be strings")
+    if "sealed_peer_results" in payload:
+        raise ValueError("caller-supplied sealed_peer_results rejected")
 
 
 def assert_sha256(value: Any, field_name: str) -> str:
@@ -163,6 +339,7 @@ def assert_packet_allowlist(payload: Mapping[str, Any]) -> None:
     unknown = sorted(set(payload.keys()) - ALLOWED_PACKET_KEYS)
     if unknown:
         raise ValueError(f"unknown packet metadata rejected: {unknown}")
+    assert_raw_packet_types(payload)
     commercial = detect_commercial_aliases(payload)
     if commercial:
         raise ValueError(f"commercial/routing aliases rejected: {commercial}")
@@ -184,6 +361,10 @@ def assert_excerpt_contract(excerpt: Mapping[str, Any]) -> None:
     text = excerpt.get("text")
     if not isinstance(text, str) or not text.strip():
         raise ValueError("excerpt text is required")
+    if "care_phase" in excerpt:
+        assert_care_phase(excerpt["care_phase"])
+    if "source_category" in excerpt:
+        assert_source_category(excerpt["source_category"])
 
 
 def assert_citation_shape(citation: Mapping[str, Any]) -> None:
@@ -274,6 +455,7 @@ def assert_lead_complete(lead: Mapping[str, Any]) -> None:
         "policy_version",
     ):
         _nonempty_str(lead.get(name), name)
+    assert_care_phase(lead.get("care_phase"))
     assert_synthetic_id(lead["lead_id"], "lead_id")
     parse_iso_date(str(lead["temporal_date"]), "temporal_date")
     try:
@@ -355,6 +537,8 @@ def assert_lead_against_packet(lead: Mapping[str, Any], packet: Mapping[str, Any
 
 
 def assert_no_injection_evidence(lead: Mapping[str, Any]) -> None:
+    from charttrace.peers.sanitize import deobfuscate
+
     blob = " ".join(
         [
             str(lead.get("cited_observation") or ""),
@@ -363,6 +547,7 @@ def assert_no_injection_evidence(lead: Mapping[str, Any]) -> None:
             " ".join(str(c.get("quote") or "") for c in lead.get("citations") or []),
         ]
     ).lower()
+    blob = deobfuscate(blob)
     if "ignore previous" in blob or "ignore prior" in blob or "you are now" in blob:
         raise ValueError("injected instruction text cannot become evidence")
     if "quarantined_instruction" in blob:

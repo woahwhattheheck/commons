@@ -9,8 +9,11 @@ from charttrace.peers.contracts import detect_forbidden_inputs, strip_forbidden_
 from charttrace.peers.sanitize import InjectionFinding, collect_injection_findings, quarantine_excerpts
 from charttrace.peers.validate import (
     ALLOWED_PACKET_KEYS,
+    assert_care_phase,
     assert_excerpt_contract,
     assert_packet_allowlist,
+    assert_raw_packet_types,
+    assert_source_category,
     assert_synthetic_id,
     parse_iso_date,
 )
@@ -48,7 +51,9 @@ class PeerPacket:
     known_facts: List[str] = field(default_factory=list)
     source_universe: List[str] = field(default_factory=list)
     grounding_pack_ids: List[str] = field(default_factory=list)
-    sealed_peer_results: Optional[List[Dict[str, Any]]] = None
+    sealed_peer_results: Optional[List[Dict[str, Any]]] = field(
+        default=None, repr=False, compare=False
+    )
 
     def to_allowlisted_dict(self) -> Dict[str, Any]:
         raw = {
@@ -60,7 +65,6 @@ class PeerPacket:
             "known_facts": list(self.known_facts),
             "source_universe": list(self.source_universe),
             "grounding_pack_ids": list(self.grounding_pack_ids),
-            "sealed_peer_results": self.sealed_peer_results,
         }
         cleaned = strip_forbidden_inputs(raw)
         extra = sorted(set(cleaned.keys()) - ALLOWED_PACKET_KEYS)
@@ -81,10 +85,18 @@ class PeerPacket:
         cleaned = self.to_allowlisted_dict()
         quarantined, _findings = quarantine_excerpts(list(cleaned.get("excerpts") or []))
         cleaned["excerpts"] = quarantined
+        cleaned.pop("known_facts", None)
         return cleaned
 
     def injection_findings(self) -> List[InjectionFinding]:
         return collect_injection_findings([e.to_dict() for e in self.excerpts])
+
+
+def attach_runner_sealed(
+    packet: PeerPacket, sealed: Optional[List[Dict[str, Any]]]
+) -> PeerPacket:
+    packet.sealed_peer_results = list(sealed or [])
+    return packet
 
 
 def packet_from_mapping(data: Mapping[str, Any]) -> PeerPacket:
@@ -92,32 +104,37 @@ def packet_from_mapping(data: Mapping[str, Any]) -> PeerPacket:
     extra = sorted(set(incoming.keys()) - ALLOWED_PACKET_KEYS)
     if extra:
         raise ValueError(f"unknown packet metadata rejected: {extra}")
+    assert_raw_packet_types(incoming)
     cleaned = strip_forbidden_inputs(incoming)
     assert_packet_allowlist(cleaned)
     excerpts = []
     for ex in cleaned.get("excerpts", []):
         assert_excerpt_contract(ex)
+        care_phase = ex.get("care_phase", "unspecified")
+        source_category = ex.get("source_category", "clinical_note")
+        assert_care_phase(care_phase)
+        assert_source_category(source_category)
         excerpts.append(
             RecordExcerpt(
-                document_id=str(ex["document_id"]),
-                page=int(ex["page"]),
-                source_sha256=str(ex["source_sha256"]),
-                text=str(ex["text"]),
-                care_phase=str(ex.get("care_phase", "unspecified")),
-                source_category=str(ex.get("source_category", "clinical_note")),
+                document_id=ex["document_id"],
+                page=ex["page"],
+                source_sha256=ex["source_sha256"],
+                text=ex["text"],
+                care_phase=care_phase,
+                source_category=source_category,
             )
         )
     assert_synthetic_id(cleaned["case_id"], "case_id", packet_id=True)
-    parse_iso_date(str(cleaned.get("care_date_start", "")), "care_date_start")
-    parse_iso_date(str(cleaned.get("care_date_end", "")), "care_date_end")
+    parse_iso_date(cleaned["care_date_start"], "care_date_start")
+    parse_iso_date(cleaned["care_date_end"], "care_date_end")
     return PeerPacket(
-        case_id=str(cleaned["case_id"]),
-        jurisdiction=str(cleaned.get("jurisdiction", "US-federal-context")),
-        care_date_start=str(cleaned.get("care_date_start", "")),
-        care_date_end=str(cleaned.get("care_date_end", "")),
+        case_id=cleaned["case_id"],
+        jurisdiction=cleaned.get("jurisdiction", "US-federal-context"),
+        care_date_start=cleaned["care_date_start"],
+        care_date_end=cleaned["care_date_end"],
         excerpts=excerpts,
-        known_facts=[str(x) for x in cleaned.get("known_facts", [])],
-        source_universe=[str(x) for x in cleaned.get("source_universe", [])],
-        grounding_pack_ids=[str(x) for x in cleaned.get("grounding_pack_ids", [])],
-        sealed_peer_results=cleaned.get("sealed_peer_results"),
+        known_facts=list(cleaned.get("known_facts") or []),
+        source_universe=list(cleaned.get("source_universe") or []),
+        grounding_pack_ids=list(cleaned.get("grounding_pack_ids") or []),
+        sealed_peer_results=None,
     )

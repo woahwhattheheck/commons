@@ -236,9 +236,14 @@ def run_keyword_peer(
     leads: List[Dict[str, Any]] = []
     notes: List[str] = []
     hits = find_keyword_hits(excerpts, keywords)
+    cited = 0
 
     for ex, kw, start, end in hits:
-        citation = citation_from_excerpt(ex, start, end)
+        try:
+            citation = citation_from_excerpt(ex, start, end)
+        except ValueError:
+            continue
+        cited += 1
         fact = fact_from_citation(citation)
         weak = None
         grade = EvidenceGrade.SUPPORTED
@@ -295,7 +300,7 @@ def run_keyword_peer(
             )
         )
 
-    if not hits:
+    if not cited:
         notes.append(
             bounded_absence(
                 topic=f"{domain} keyword signals",

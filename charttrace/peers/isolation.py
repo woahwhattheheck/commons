@@ -5,6 +5,7 @@ Discovery peers never receive each other's leads.
 
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -90,7 +91,26 @@ def assert_discovery_isolation(packet: Mapping[str, Any], role_id: str) -> None:
             raise ValueError(f"discovery peer {role_id} must not receive {key}")
 
 
-def stamp_trusted_result(role_id: str, result: Mapping[str, Any]) -> Dict[str, Any]:
+def compute_envelope_hash(role_id: str, result: Mapping[str, Any], case_id: str) -> str:
+    body = {
+        "role_id": role_id,
+        "schema_version": result.get("schema_version"),
+        "peer_swarm_version": result.get("peer_swarm_version"),
+        "policy_version": result.get("policy_version"),
+        "prompt_version": result.get("prompt_version"),
+        "model_version": result.get("model_version"),
+        "case_id": case_id,
+        "lead_ids": [str(lead.get("lead_id")) for lead in result.get("leads") or []],
+    }
+    blob = json.dumps(body, sort_keys=True, separators=(",", ":"), ensure_ascii=True)
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()
+
+
+def stamp_trusted_result(
+    role_id: str,
+    result: Mapping[str, Any],
+    case_id: str = "",
+) -> Dict[str, Any]:
     if not isinstance(result, Mapping):
         raise TypeError("peer must return a dict result")
     conflicts = trusted_identity_conflicts(role_id, result)
@@ -124,6 +144,8 @@ def stamp_trusted_result(role_id: str, result: Mapping[str, Any]) -> Dict[str, A
         row["peer_version"] = f"{role_id}@1.2"
         trusted_leads.append(row)
     out["leads"] = trusted_leads
+    out["envelope_bound_case_id"] = case_id
+    out["envelope_hash"] = compute_envelope_hash(role_id, out, case_id)
     return out
 
 
@@ -144,13 +166,18 @@ def run_peer_in_process(role_id: str, packet: PeerPacket) -> Dict[str, Any]:
         raise ValueError("placeholder roles are rejected")
     contract = registry.get_contract(role_id)
     data = packet.to_sanitized_dict()
+    if role_id == SYNTHESIS_ROLE_ID:
+        if not packet.sealed_peer_results:
+            raise ValueError("synthesis requires runner-owned sealed envelopes")
+        data = dict(data)
+        data["sealed_peer_results"] = list(packet.sealed_peer_results)
     assert_discovery_isolation(data, role_id)
     if detect_forbidden_inputs(data):
         raise ValueError("forbidden inputs in peer packet")
     raw_findings = [f.to_dict() for f in collect_injection_findings([e.to_dict() for e in packet.excerpts])]
     worker = registry.load_worker(role_id)
     raw = worker(data)
-    result = stamp_trusted_result(role_id, raw)
+    result = stamp_trusted_result(role_id, raw, packet.case_id)
     result["injection_findings"] = raw_findings
     result["injection_commands_followed"] = 0
     result["allows_cross_peer_input"] = contract.allows_cross_peer_input
@@ -163,9 +190,10 @@ def run_peer_in_process(role_id: str, packet: PeerPacket) -> Dict[str, Any]:
 CHILD_PROCESS_DRIVER = (
     "import json,sys;"
     "from charttrace.peers.isolation import run_peer_in_process;"
-    "from charttrace.peers.packet import packet_from_mapping;"
+    "from charttrace.peers.packet import attach_runner_sealed, packet_from_mapping;"
     "payload=json.load(sys.stdin);"
-    "result=run_peer_in_process(payload['role_id'], packet_from_mapping(payload['packet']));"
+    "pkt=attach_runner_sealed(packet_from_mapping(payload['packet']), payload.get('runner_owned_sealed'));"
+    "result=run_peer_in_process(payload['role_id'], pkt);"
     "json.dump(result, sys.stdout, sort_keys=True)"
 )
 
@@ -178,7 +206,13 @@ def run_peer_child_process(
     timeout_s: float = 30.0,
 ) -> Dict[str, Any]:
     exe = python_executable or sys.executable
-    payload = {"role_id": role_id, "packet": packet.to_allowlisted_dict()}
+    if role_id != SYNTHESIS_ROLE_ID and packet.sealed_peer_results:
+        raise ValueError(f"discovery peer {role_id} must not receive sealed_peer_results")
+    payload = {
+        "role_id": role_id,
+        "packet": packet.to_allowlisted_dict(),
+        "runner_owned_sealed": packet.sealed_peer_results if role_id == SYNTHESIS_ROLE_ID else None,
+    }
     assert_discovery_isolation(payload["packet"], role_id)
     proc = subprocess.run(
         [exe, "-c", CHILD_PROCESS_DRIVER],

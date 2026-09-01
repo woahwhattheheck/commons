@@ -2,9 +2,13 @@
 
 from __future__ import annotations
 
+import hashlib
 import re
+import unicodedata
 from dataclasses import dataclass
 from typing import List, Mapping, Sequence, Tuple
+
+from charttrace.peers.validate import ZERO_WIDTH_CHARS
 
 
 INJECTION_PATTERNS: Tuple[re.Pattern[str], ...] = (
@@ -44,11 +48,19 @@ class InjectionFinding:
             "document_id": self.document_id,
             "excerpt_index": self.excerpt_index,
             "pattern": self.pattern,
-            "snippet": self.snippet,
             "span_start": self.span_start,
             "span_end": self.span_end,
+            "snippet_sha256": hashlib.sha256(self.snippet.encode("utf-8")).hexdigest(),
             "treated_as": "untrusted_document_text",
         }
+
+
+def deobfuscate(text: str) -> str:
+    """NFKC-fold, strip zero-width marks, and join letter-punctuation-letter runs."""
+    folded = unicodedata.normalize("NFKC", text or "")
+    for mark in ZERO_WIDTH_CHARS:
+        folded = folded.replace(mark, "")
+    return re.sub(r"(?<=[A-Za-z])[.\u00b7\u2022_\-](?=[A-Za-z])", "", folded)
 
 
 def scan_untrusted_text(document_id: str, excerpt_index: int, text: str) -> List[InjectionFinding]:
@@ -156,9 +168,11 @@ def quote_from_worker_span(excerpt: Mapping[str, object], start: int, end: int) 
     text = str(excerpt.get("text", ""))
     span_map = excerpt.get("span_map")
     quote = text[start:end]
-    if not span_map:
+    if span_map is None:
         return start, end, quote
     mapped = [tuple(item) for item in span_map]
+    if not mapped:
+        raise ValueError("unsafe span map")
     raw_start, raw_end = map_worker_span_to_raw(mapped, start, end)
     return raw_start, raw_end, quote
 
@@ -170,10 +184,18 @@ def prepare_untrusted_excerpts(excerpts: Sequence[dict]) -> Tuple[List[dict], Li
         row = dict(ex)
         raw = str(row.get("text", ""))
         doc_id = str(row.get("document_id", f"doc-{i}"))
+        deobf = deobfuscate(raw)
         findings.extend(scan_untrusted_text(doc_id, i, raw))
-        escaped, span_map, _inj = prepare_untrusted_text(raw)
-        row["text"] = escaped
-        row["span_map"] = span_map
+        if deobf != raw:
+            findings.extend(scan_untrusted_text(doc_id, i, deobf))
+        if deobf != raw and _merged_injection_spans(deobf):
+            quarantined, _inj = quarantine_text(deobf)
+            row["text"] = neutralize_as_document_text(quarantined)
+            row["span_map"] = []
+        else:
+            escaped, span_map, _inj = prepare_untrusted_text(raw)
+            row["text"] = escaped
+            row["span_map"] = span_map
         row["text_kind"] = "untrusted_record_data"
         cleaned.append(row)
     return cleaned, findings
@@ -188,5 +210,8 @@ def collect_injection_findings(excerpts: Sequence[dict]) -> List[InjectionFindin
     for i, ex in enumerate(excerpts):
         doc_id = str(ex.get("document_id", f"doc-{i}"))
         text = str(ex.get("text", ""))
+        deobf = deobfuscate(text)
         out.extend(scan_untrusted_text(doc_id, i, text))
+        if deobf != text:
+            out.extend(scan_untrusted_text(doc_id, i, deobf))
     return out
