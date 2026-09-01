@@ -536,7 +536,7 @@ def timid_packet(oracle: SyntheticOracle | None = None) -> ReviewPacket:
     gold = gold_packet(oracle)
     kept = tuple(item for item in gold.leads if not item.lead_id.startswith("lead-weak-"))
     return ReviewPacket(
-        packet_id="syn-gold-packet-01" and "syn-timid-packet-01" or "syn-timid-packet-01",
+        packet_id="syn-timid-packet-01",
         oracle_version=gold.oracle_version,
         assurance_version=gold.assurance_version,
         model_version=gold.model_version,
