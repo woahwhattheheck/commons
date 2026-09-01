@@ -136,6 +136,22 @@ COMPOSE = {
     "swarm_mail": "public inbox manifest; private addresses stay off git",
     "lm_gtm_overlay": "pointer events for live sales surfaces; occupancy overlay; STATUS refresh of decision/dnr/due; OWNER_HOLD; BOUNCED DNR; HOLD_BUILD_AND_VERIFY; not a contact book",
 }
+# TOKEN placeholders (SUBJECT, YOU, EVENT_ID, NOTE) survive JSON, markdown, and HTML.
+# Flag --subject still works; --owner is still required. list_* and open_by_ref stay as-is.
+CONTRACT = {
+    "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
+    "read_state": "revenue/lm_gtm_index/state.json",
+    "list_brief": "python3 host/lm_gtm_index.py brief",
+    "list_next": "python3 host/lm_gtm_index.py next",
+    "list_hot": "python3 host/lm_gtm_index.py hot",
+    "list_hold": "python3 host/lm_gtm_index.py hold",
+    "list_sent": "python3 host/lm_gtm_index.py sent",
+    "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id> [--sources]",
+    "append_event": 'python3 host/lm_gtm_index.py append-event --subject SUBJECT --id EVENT_ID --body "NOTE"',
+    "claim": "python3 host/lm_gtm_index.py claim SUBJECT --owner YOU",
+    "release": "python3 host/lm_gtm_index.py release SUBJECT --owner YOU",
+    "send": "illegal; exits 3",
+}
 
 
 class IndexError_(ValueError):
@@ -863,26 +879,18 @@ def build_index(paths: dict[str, Path] | None = None) -> dict[str, Any]:
             "msp-integris": "EXISTING_CRM_RECORD airtable:recyxAWjUjrUY1Xln SENT/NO_REPLY/HARD_DO_NOT_RESEND",
             "mvmtc-craig-riviello": "HOLD_BUILD_AND_VERIFY demand mvmtc-aero-fastener-evidence-lims-01; PRE-SALE TRANSPORT NONE",
             "pace-amanda-yoakum": "HOLD_BUILD_AND_VERIFY demand pace-lebanon-microbial-volume-evidence-lims-01; PRE-SALE TRANSPORT NONE",
+            "solstice-david-sewell": "HOLD_BUILD_AND_VERIFY demand solstice-batch-coa-transition-ledger-01; PRE-SALE TRANSPORT NONE",
+            "rush-machinery-ryan-robbins": "HOLD_BUILD_AND_VERIFY demand rush-machinery-machine-service-evidence-ledger-01; PRE-SALE TRANSPORT NONE",
+            "accreditedlabs-joe-moser": "HOLD_BUILD_AND_VERIFY demand accreditedlabs-multibrand-certificate-integration-gate-01; PRE-SALE TRANSPORT NONE",
+            "packsize-eric-fisher": "HOLD_BUILD_AND_VERIFY demand packsize-iso9001-process-evidence-binder-01; PRE-SALE TRANSPORT NONE",
+            "sanguine-gerald-lee": "HOLD_BUILD_AND_VERIFY demand sanguine-multispecimen-collection-window-validator-01; PRE-SALE TRANSPORT NONE",
             "fuse-jovie-tim-white": "EXISTING_CRM_RECORD airtable:recBHZw2VsWWmALcR SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-avantstay-andrei-patseev": "EXISTING_CRM_RECORD airtable:recQL3RMLwizE6kgZ SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-odderon-phi-charles": "EXISTING_CRM_RECORD airtable:recIo5cgbxL96aQSn SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-immense-de-waal-immelman": "EXISTING_CRM_RECORD airtable:rec6SOShVG2fgZQi0 SENT/AWAITING_REPLY/HARD_DO_NOT_RESEND",
             "fuse-halo-ai-vito-strokov": "EXISTING_CRM_RECORD airtable:recIIo5M0lfUlYBXV BOUNCED/GROUP_ROUTE_REJECTED/HARD_DO_NOT_RESEND",
         },
-        "contract": {
-            "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
-            "read_state": "revenue/lm_gtm_index/state.json",
-            "list_brief": "python3 host/lm_gtm_index.py brief",
-            "list_next": "python3 host/lm_gtm_index.py next",
-            "list_hot": "python3 host/lm_gtm_index.py hot",
-            "list_hold": "python3 host/lm_gtm_index.py hold",
-            "list_sent": "python3 host/lm_gtm_index.py sent",
-            "open_by_ref": "python3 host/lm_gtm_index.py show <existing-id> [--sources]",
-            "append_event": 'python3 host/lm_gtm_index.py append-event --subject <id> --id <event> --body "<note>"',
-            "claim": "python3 host/lm_gtm_index.py claim <subject> --owner <you>",
-            "release": "python3 host/lm_gtm_index.py release <subject> --owner <you>",
-            "send": "illegal; exits 3",
-        },
+        "contract": dict(CONTRACT),
     }
     blob = "".join(json.dumps(item, sort_keys=True, ensure_ascii=False) + "\n" for item in [header, *rows])
     _assert_no_pii_in_index_blob(blob)
