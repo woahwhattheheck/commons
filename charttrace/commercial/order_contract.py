@@ -169,8 +169,12 @@ class OpaqueOrderContract:
             raise ValueError("turnaround_hours must equal the bound work-score receipt.")
         validate_opaque_metadata(self.metadata)
 
-    def to_stripe_checkout_payload(self) -> Dict[str, Any]:
-        """Format strictly into standard opaque Stripe Checkout session schema."""
+    def to_stripe_checkout_payload(
+        self,
+        flags: CommercialFeatureFlags = DEFAULT_COMMERCIAL_FLAGS,
+    ) -> Dict[str, Any]:
+        """Format strictly into standard opaque Stripe Checkout session schema while asserting live-ops OFF."""
+        assert_live_operations_disabled(flags)
         return {
             "client_reference_id": self.order_id,
             "customer": self.customer_id,
