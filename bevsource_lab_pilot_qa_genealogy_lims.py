@@ -604,7 +604,14 @@ def _ingest_unlocked(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, 
     return _commit_review(journal, norm, digest)
 
 
-def ingest_row(journal: dict[str, Any], row: dict[str, Any]) -> dict[str, Any]:
+def ingest_row(journal: dict[str, Any], row: Any) -> dict[str, Any]:
+    if not isinstance(row, dict):
+        return {
+            "kind": "REJECT",
+            "ok": False,
+            "code": "ATOMIC_COMMIT_FAILED",
+            "row_id": "",
+        }
     working = deepcopy(journal)
     try:
         effect = _ingest_unlocked(working, row)
