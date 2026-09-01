@@ -1,15 +1,18 @@
-"""ChartTrace internal review line. Synthetic only. No live model."""
+"""ChartTrace Lane D — internal review line (v1.1).
 
-from charttrace.review.dispositions import DISPOSITIONS, Disposition
-from charttrace.review.engine import ReviewEngine, ReviewReport
-from charttrace.review.models import FactualClause, LeadCandidate, SourceUniverse
+Review does not punish imagination. It kills factual unreliability,
+unusable presentation, and unlawful release.
+"""
 
-__all__ = (
-    "DISPOSITIONS",
+from charttrace.review.dispositions import Disposition, DispositionRecord
+from charttrace.review.pipeline import ReviewPipeline, ReviewResult
+
+__all__ = [
     "Disposition",
-    "FactualClause",
-    "LeadCandidate",
-    "ReviewEngine",
-    "ReviewReport",
-    "SourceUniverse",
-)
+    "DispositionRecord",
+    "ReviewPipeline",
+    "ReviewResult",
+]
+
+SCHEMA_VERSION = "charttrace.review.v1"
+GROUNDING_VERSION = "charttrace.review.grounding.v1"
