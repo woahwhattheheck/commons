@@ -5,6 +5,7 @@ filesystems, URI-like paths, or symbolic-link traversal as local storage.
 """
 
 import os
+import re
 from pathlib import Path, PureWindowsPath
 from typing import Union
 
@@ -12,39 +13,48 @@ from typing import Union
 PathLike = Union[str, os.PathLike]
 
 _REMOTE_FILESYSTEMS = {
-    "9p",
-    "afs",
-    "ceph",
-    "cifs",
-    "davfs",
-    "fuse.sshfs",
-    "gcsfuse",
-    "glusterfs",
-    "lustre",
-    "nfs",
-    "nfs4",
-    "smb3",
-    "smbfs",
+    "9p", "afs", "ceph", "cifs", "davfs", "fuse.sshfs", "gcsfuse",
+    "glusterfs", "lustre", "nfs", "nfs4", "smb3", "smbfs",
 }
+_WINDOWS_DEVICES = {
+    "CON", "PRN", "AUX", "NUL",
+    *(f"COM{index}" for index in range(1, 10)),
+    *(f"LPT{index}" for index in range(1, 10)),
+}
+_SCHEME_RE = re.compile(r"^(https?|ftp|smb|nfs|file):", re.IGNORECASE)
+_DRIVE_RELATIVE_RE = re.compile(r"^[A-Za-z]:[^\\/]")
 
 
-class PathBoundaryError(ValueError):
+class PathEgressError(ValueError):
     """Raised when a path cannot be proven to be same-device local."""
+
+
+PathBoundaryError = PathEgressError
 
 
 def _reject_lexical_remote(path: PathLike) -> str:
     raw = os.fspath(path)
     if isinstance(raw, bytes):
         raw = os.fsdecode(raw)
-    if not raw or "\x00" in raw:
+    if not raw or raw.strip() != raw or "\x00" in raw:
         raise PathBoundaryError("A non-empty local path is required.")
     windows_path = PureWindowsPath(raw)
     if (
         raw.startswith(("\\\\", "//"))
         or windows_path.drive.startswith("\\\\")
-        or "://" in raw
+        or _SCHEME_RE.match(raw)
     ):
         raise PathBoundaryError("UNC, URI, and network-share paths are prohibited.")
+    if raw.startswith(("\\\\?\\", "\\\\.\\")):
+        raise PathBoundaryError("Windows device paths are prohibited.")
+    if _DRIVE_RELATIVE_RE.match(raw):
+        raise PathBoundaryError("Drive-relative paths are prohibited.")
+    candidate = Path(raw)
+    if ".." in candidate.parts or ".." in PureWindowsPath(raw).parts:
+        raise PathBoundaryError("Path traversal is prohibited.")
+    device_name = PureWindowsPath(raw).name.split(".")[0].upper()
+    if device_name in _WINDOWS_DEVICES:
+        raise PathBoundaryError("Windows device names are prohibited.")
     return raw
 
 
@@ -90,9 +100,7 @@ def _reject_posix_network_mount(path: Path) -> None:
             best_mount = mount_path
             best_filesystem = fields[separator + 1].lower()
     if best_filesystem in _REMOTE_FILESYSTEMS:
-        raise PathBoundaryError(
-            f"Network filesystem {best_filesystem!r} is prohibited."
-        )
+        raise PathBoundaryError(f"Network filesystem {best_filesystem!r} is prohibited.")
 
 
 def _reject_windows_remote_drive(path: Path) -> None:
@@ -105,7 +113,6 @@ def _reject_windows_remote_drive(path: Path) -> None:
     if not anchor:
         raise PathBoundaryError("Unable to determine the local drive.")
     drive_type = ctypes.windll.kernel32.GetDriveTypeW(str(anchor))  # type: ignore[attr-defined]
-    # DRIVE_REMOVABLE, DRIVE_FIXED, DRIVE_CDROM, and DRIVE_RAMDISK are local.
     if drive_type not in {2, 3, 5, 6}:
         raise PathBoundaryError("Mapped or unverifiable drives are prohibited.")
 
@@ -117,6 +124,11 @@ def _validate_boundary(path: PathLike) -> Path:
     _reject_windows_remote_drive(candidate)
     _reject_posix_network_mount(candidate)
     return candidate
+
+
+def assert_local_filesystem_path(path: PathLike) -> Path:
+    """Return a path only when it remains on a verifiable local filesystem."""
+    return _validate_boundary(path)
 
 
 def validate_local_file(path: PathLike) -> Path:
