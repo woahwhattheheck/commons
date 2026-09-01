@@ -63,6 +63,10 @@ class SourceManifestEntry:
     def is_duplicate(self) -> bool:
         return self.duplicate_of is not None
 
+    @property
+    def source_sha256(self) -> str:
+        return self.source_hash
+
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
 

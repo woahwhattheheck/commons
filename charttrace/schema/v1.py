@@ -57,10 +57,37 @@ class EvidenceGrade(_StringEnum):
 
 
 class RelevanceGrade(_StringEnum):
-    TENUOUS = "TENUOUS"
-    PLAUSIBLE = "PLAUSIBLE"
-    MATERIAL_IF_CONFIRMED = "MATERIAL_IF_CONFIRMED"
-    PRIORITY_REVIEW = "PRIORITY_REVIEW"
+    """Record-grounded attention bands. Not a legal-significance score."""
+
+    WEAK = "WEAK"
+    SUBTLE = "SUBTLE"
+    OBVIOUS = "OBVIOUS"
+
+
+_REJECTED_RELEVANCE_GRADES = {
+    "MATERIAL_IF_CONFIRMED": "legal-significance / merits score",
+    "TENUOUS": "replaced by WEAK attention band",
+    "PLAUSIBLE": "replaced by SUBTLE attention band",
+    "PRIORITY_REVIEW": "replaced by OBVIOUS attention band",
+}
+
+
+def parse_relevance_grade(value: str) -> RelevanceGrade:
+    """Accept only record-grounded attention bands WEAK / SUBTLE / OBVIOUS."""
+
+    raw = str(value or "").strip().upper()
+    reason = _REJECTED_RELEVANCE_GRADES.get(raw)
+    if reason is not None:
+        raise SchemaValidationError(
+            f"relevance_grade {raw} is rejected ({reason}); "
+            "use record-grounded attention bands WEAK|SUBTLE|OBVIOUS"
+        )
+    try:
+        return RelevanceGrade(raw)
+    except ValueError as exc:
+        raise SchemaValidationError(
+            f"relevance_grade must be WEAK, SUBTLE, or OBVIOUS, not {value!r}"
+        ) from exc
 
 
 class AuthorityReviewStatus(_StringEnum):
@@ -94,6 +121,11 @@ class ForbiddenSemanticClaim(_StringEnum):
     STANDARD_OF_CARE_BREACH = "STANDARD_OF_CARE_BREACH"
     NOT_DISCLOSED = "NOT_DISCLOSED"
     PATIENT_WAS_NOT_TOLD = "PATIENT_WAS_NOT_TOLD"
+    NEVER_TOLD = "NEVER_TOLD"
+    NO_FOLLOW_UP_OCCURRED = "NO_FOLLOW_UP_OCCURRED"
+    NOT_FOUND_ANYWHERE = "NOT_FOUND_ANYWHERE"
+    ACTIONABLE = "ACTIONABLE"
+    CASE_VALUE = "CASE_VALUE"
 
 
 FORBIDDEN_SEMANTIC_CLAIMS: Tuple[ForbiddenSemanticClaim, ...] = tuple(
@@ -107,7 +139,7 @@ _FORBIDDEN_PATTERNS = {
         r"\bcause[\s_-]+of[\s_-]+death\b", re.I
     ),
     ForbiddenSemanticClaim.STANDARD_OF_CARE_BREACH: re.compile(
-        r"\bstandard[\s_-]+of[\s_-]+care[\s_-]+breach\b", re.I
+        r"\bstandard[\s_-]+of[\s_-]+care(?:[\s_-]+breach)?\b", re.I
     ),
     ForbiddenSemanticClaim.NOT_DISCLOSED: re.compile(
         r"\b(?:was\s+)?not[\s_-]+disclosed\b", re.I
@@ -115,6 +147,15 @@ _FORBIDDEN_PATTERNS = {
     ForbiddenSemanticClaim.PATIENT_WAS_NOT_TOLD: re.compile(
         r"\bpatient[\s_-]+was[\s_-]+not[\s_-]+told\b", re.I
     ),
+    ForbiddenSemanticClaim.NEVER_TOLD: re.compile(r"\bnever[\s_-]+told\b", re.I),
+    ForbiddenSemanticClaim.NO_FOLLOW_UP_OCCURRED: re.compile(
+        r"\bno[\s_-]+follow[\s_-]*up[\s_-]+occurred\b", re.I
+    ),
+    ForbiddenSemanticClaim.NOT_FOUND_ANYWHERE: re.compile(
+        r"\bnot[\s_-]+found[\s_-]+anywhere\b", re.I
+    ),
+    ForbiddenSemanticClaim.ACTIONABLE: re.compile(r"\bactionable\b", re.I),
+    ForbiddenSemanticClaim.CASE_VALUE: re.compile(r"\bcase[\s_-]+value\b", re.I),
 }
 
 _SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
@@ -203,6 +244,34 @@ class Citation:
         if not _SHA256_RE.fullmatch(self.source_hash):
             raise SchemaValidationError("source_hash must be lowercase SHA-256")
 
+    @property
+    def source_sha256(self) -> str:
+        """F-lane citation field name; same lowercase SHA-256 as source_hash."""
+
+        return self.source_hash
+
+    @property
+    def document_id(self) -> str:
+        return self.document
+
+    @classmethod
+    def from_span(
+        cls,
+        *,
+        document_id: str,
+        page: int,
+        source_sha256: str,
+        span_start: int,
+        span_end: int,
+        quote: str = "",
+    ) -> "Citation":
+        return cls(
+            document=document_id,
+            page=page,
+            span_or_bbox=TextSpan(start=span_start, end=span_end, quote=quote),
+            source_hash=source_sha256,
+        )
+
 
 @dataclass(frozen=True, slots=True)
 class Observation:
@@ -277,16 +346,34 @@ class ExternalAuthority:
     supersession: Optional[str]
     review_status: AuthorityReviewStatus
     citation: Optional[Citation] = None
+    offline_locator: str = ""
     object_type: EvidenceObjectType = EvidenceObjectType.EXTERNAL_AUTHORITY
 
     def __post_init__(self) -> None:
         _validate_identifier(self.authority_id, "authority_id")
+        object.__setattr__(self, "primary_url", str(self.primary_url or "").strip())
+        object.__setattr__(
+            self, "offline_locator", str(self.offline_locator or "").strip()
+        )
         assert_permitted_semantics(
             self.supported_proposition, field_name="supported_proposition"
         )
         if self.object_type is not EvidenceObjectType.EXTERNAL_AUTHORITY:
             raise SchemaValidationError(
                 "ExternalAuthority object_type cannot be changed"
+            )
+        if (
+            not self.primary_url
+            and self.review_status
+            not in (
+                AuthorityReviewStatus.CONTEXT_ONLY,
+                AuthorityReviewStatus.INAPPLICABLE,
+            )
+            and not self.offline_locator
+        ):
+            raise SchemaValidationError(
+                "non-context ExternalAuthority requires offline_locator "
+                "when primary_url is empty"
             )
 
 
@@ -403,6 +490,14 @@ class InvestigativeLead:
             for value in getattr(self, field_name):
                 assert_permitted_semantics(value, field_name=field_name)
 
+        if not isinstance(self.relevance_grade, RelevanceGrade):
+            object.__setattr__(
+                self, "relevance_grade", parse_relevance_grade(str(self.relevance_grade))
+            )
+        if self.relevance_grade.value in _REJECTED_RELEVANCE_GRADES:
+            raise SchemaValidationError(
+                f"relevance_grade {self.relevance_grade.value} is rejected"
+            )
         if not self.supporting_facts:
             raise SchemaValidationError("lead must cite at least one supporting fact")
         for fact_id in self.supporting_facts:
@@ -523,10 +618,18 @@ def to_primitive(value: Any) -> Any:
     if isinstance(value, Enum):
         return value.value
     if is_dataclass(value):
-        return {
+        payload = {
             field.name: to_primitive(getattr(value, field.name))
             for field in fields(value)
         }
+        if isinstance(value, Citation):
+            payload["source_sha256"] = value.source_hash
+            payload["document_id"] = value.document
+            span = value.span_or_bbox
+            if isinstance(span, TextSpan):
+                payload["span_start"] = span.start
+                payload["span_end"] = span.end
+        return payload
     if isinstance(value, Mapping):
         return {
             str(key): to_primitive(item)

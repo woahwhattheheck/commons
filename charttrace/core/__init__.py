@@ -19,8 +19,12 @@ from .extraction import (
     ChronologyEvent,
     ExtractionError,
     NetworkDeniedError,
+    SpanResolution,
     analyze_pdf,
+    facts_from_span_citations,
+    ingest_span_citations,
     network_denied,
+    resolve_page_span,
 )
 from .ledger import (
     GENESIS_HASH,
@@ -58,8 +62,11 @@ __all__ = [
     "NetworkDeniedError",
     "PDFError",
     "PDFPage",
+    "SpanResolution",
     "analyze_pdf",
     "build_minimal_pdf",
+    "facts_from_span_citations",
+    "ingest_span_citations",
     "export_csv",
     "export_csv_bytes",
     "export_json",
@@ -69,5 +76,6 @@ __all__ = [
     "extract_embedded_pdf_text",
     "network_denied",
     "read_embedded_pdf_text",
+    "resolve_page_span",
     "write_minimal_pdf",
 ]

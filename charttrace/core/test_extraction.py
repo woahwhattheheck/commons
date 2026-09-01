@@ -9,7 +9,9 @@ from charttrace.core.extraction import (
     ExtractionError,
     NetworkDeniedError,
     analyze_pdf,
+    facts_from_span_citations,
     network_denied,
+    resolve_page_span,
 )
 from charttrace.core.pdf import (
     EncryptedPDFError,
@@ -69,7 +71,7 @@ class EmbeddedExtractionTests(unittest.TestCase):
                             "|external_authorities=AUTH-001"
                             "|jurisdiction_scope=SYNTHETIC|date_scope=2026-01 to 2026-02"
                             "|evidence_grade=CORROBORATED"
-                            "|relevance_grade=MATERIAL_IF_CONFIRMED"
+                            "|relevance_grade=OBVIOUS"
                             "|clinical_plausibility=Requires clinician review."
                             "|temporal_linkage=Sequence only; causal meaning is unresolved."
                             "|peer_version=peer-v1"
@@ -102,8 +104,9 @@ class EmbeddedExtractionTests(unittest.TestCase):
         self.assertIs(result.leads[0].evidence_grade, EvidenceGrade.CORROBORATED)
         self.assertIs(
             result.leads[0].relevance_grade,
-            RelevanceGrade.MATERIAL_IF_CONFIRMED,
+            RelevanceGrade.OBVIOUS,
         )
+        self.assertEqual(result.source_sha256, result.source_hash)
         self.assertTrue(result.authorities[0].care_date_match)
         self.assertEqual(len(result.ignored_document_instructions), 1)
         self.assertEqual(
@@ -146,6 +149,103 @@ class EmbeddedExtractionTests(unittest.TestCase):
         )
         with self.assertRaisesRegex(ExtractionError, "orphan supporting facts"):
             analyze_pdf(orphan, document="SYNTH-DOC-ORPHAN")
+
+    def test_material_if_confirmed_is_rejected(self) -> None:
+        tagged = build_minimal_pdf(
+            [
+                (
+                    "CT|FACT|FACT-001|2026-01-02|EXACT|chronology|visit"
+                    "|A synthetic event is documented."
+                ),
+                (
+                    "CT|LEAD|lead_id=LEAD-001"
+                    "|neutral_title=Synthetic interval"
+                    "|domain=chronology|care_phase=follow-up"
+                    "|cited_observation=One cited synthetic event exists."
+                    "|hypothesis=An interval may warrant professional review."
+                    "|review_question=Which additional record resolves the interval?"
+                    "|supporting_facts=FACT-001"
+                    "|relevance_grade=MATERIAL_IF_CONFIRMED"
+                ),
+            ]
+        )
+        with self.assertRaisesRegex(ExtractionError, "MATERIAL_IF_CONFIRMED"):
+            analyze_pdf(tagged, document="SYNTH-DOC-001")
+
+    def test_untagged_page_span_sha256_ingest(self) -> None:
+        quote = "ED callback to SYN-PT-ALPHA documented SYN-TOKEN"
+        page = f"SYNTHETIC_ONLY case=syn-001 page=1 {quote} trailing fill"
+        start = page.find(quote)
+        pdf = build_minimal_pdf([page])
+        digest = hashlib.sha256(pdf).hexdigest()
+        resolution = resolve_page_span(
+            pdf,
+            document_id="syn-ed-001",
+            page=1,
+            source_sha256=digest,
+            span_start=start,
+            span_end=start + len(quote),
+        )
+        self.assertEqual(resolution.quote, quote)
+        self.assertEqual(resolution.source_sha256, digest)
+        self.assertEqual(resolution.citation.source_sha256, digest)
+        facts = facts_from_span_citations(
+            pdf,
+            [
+                {
+                    "document_id": "syn-ed-001",
+                    "page": 1,
+                    "source_sha256": digest,
+                    "span_start": start,
+                    "span_end": start + len(quote),
+                    "fact_id": "evt-008",
+                    "statement": quote,
+                }
+            ],
+        )
+        self.assertEqual(facts[0].fact_id, "evt-008")
+        self.assertEqual(facts[0].statement, quote)
+        self.assertEqual(facts[0].citation.source_sha256, digest)
+        result = analyze_pdf(
+            pdf,
+            document="syn-ed-001",
+            expected_source_sha256=digest,
+            span_citations=[
+                {
+                    "document_id": "syn-ed-001",
+                    "page": 1,
+                    "source_sha256": digest,
+                    "span_start": start,
+                    "span_end": start + len(quote),
+                    "fact_id": "evt-008",
+                }
+            ],
+        )
+        self.assertEqual(result.facts[0].citation.page, 1)
+        self.assertFalse(any("CT|" in page.text for page in result.pages))
+
+    def test_context_only_authority_without_url(self) -> None:
+        pdf = build_minimal_pdf(
+            [
+                (
+                    "CT|AUTHORITY|authority_id=AUTH-OFFLINE"
+                    "|authority_type=regulation|issuer=Synthetic Authority"
+                    "|jurisdiction=SYNTHETIC|effective_from=2025-01-01"
+                    "|effective_to=|care_date_match=false"
+                    "|offline_locator=local-authority-pack:syn-auth-001"
+                    "|pinpoint=pack:syn-auth-001#section-1"
+                    "|retrieval_date=2026-09-01"
+                    "|supported_proposition=Context for a synthetic review."
+                    "|supersession=|review_status=context_only"
+                )
+            ]
+        )
+        result = analyze_pdf(pdf, document="SYNTH-DOC-AUTH")
+        self.assertEqual(result.authorities[0].primary_url, "")
+        self.assertEqual(
+            result.authorities[0].offline_locator,
+            "local-authority-pack:syn-auth-001",
+        )
 
 
 if __name__ == "__main__":

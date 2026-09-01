@@ -40,6 +40,7 @@ from .v1 import (
     assert_unique_ids,
     find_forbidden_semantic_claims,
     object_id,
+    parse_relevance_grade,
     to_primitive,
 )
 
@@ -83,5 +84,6 @@ __all__ = [
     "assert_unique_ids",
     "find_forbidden_semantic_claims",
     "object_id",
+    "parse_relevance_grade",
     "to_primitive",
 ]

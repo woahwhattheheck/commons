@@ -20,9 +20,9 @@ from charttrace.schema.v1 import (
     ExternalAuthority,
     InvestigativeLead,
     RecordFact,
-    RelevanceGrade,
-    ReviewHistoryEntry,
+    SchemaValidationError,
     TextSpan,
+    parse_relevance_grade,
 )
 
 from .pdf import PDFPage, read_embedded_pdf_text
@@ -31,7 +31,7 @@ from .pdf import PDFPage, read_embedded_pdf_text
 EXTRACTION_VERSION = "charttrace.extraction.v1.1"
 NETWORK_POLICY = "DENY"
 MODEL_VERSION = "LOCAL_RULES_ONLY_NO_EXTERNAL_MODEL"
-PROMPT_VERSION = "CT_TAGGED_SYNTHETIC_V1"
+PROMPT_VERSION = "CT_TAGGED_OR_SPAN_SYNTHETIC_V1"
 POLICY_VERSION = "CHARTTRACE_OWNER_AMENDMENT_V1.1"
 
 
@@ -104,6 +104,21 @@ class AnalysisResult:
     ignored_document_instructions: Tuple[str, ...]
     extraction_version: str = EXTRACTION_VERSION
     network_policy: str = NETWORK_POLICY
+
+    @property
+    def source_sha256(self) -> str:
+        return self.source_hash
+
+
+@dataclass(frozen=True, slots=True)
+class SpanResolution:
+    document_id: str
+    page: int
+    source_sha256: str
+    span_start: int
+    span_end: int
+    quote: str
+    citation: Citation
 
 
 def _split_escaped(value: str, delimiter: str = "|") -> List[str]:
@@ -282,7 +297,7 @@ def _authority_from_payload(
         effective_from=_required(payload, "effective_from", "AUTHORITY"),
         effective_to=str(payload.get("effective_to") or "").strip() or None,
         care_date_match=_bool_value(payload.get("care_date_match"), default=False),
-        primary_url=_required(payload, "primary_url", "AUTHORITY"),
+        primary_url=str(payload.get("primary_url") or "").strip(),
         pinpoint=_required(payload, "pinpoint", "AUTHORITY"),
         retrieval_date=_required(payload, "retrieval_date", "AUTHORITY"),
         supported_proposition=_required(
@@ -291,6 +306,7 @@ def _authority_from_payload(
         supersession=str(payload.get("supersession") or "").strip() or None,
         review_status=review_status,
         citation=citation,
+        offline_locator=str(payload.get("offline_locator") or "").strip(),
     )
 
 
@@ -299,11 +315,14 @@ def _lead_from_payload(payload: Mapping[str, Any]) -> InvestigativeLead:
         evidence_grade = EvidenceGrade(
             str(payload.get("evidence_grade") or "CLUE").upper()
         )
-        relevance_grade = RelevanceGrade(
-            str(payload.get("relevance_grade") or "TENUOUS").upper()
-        )
     except ValueError as exc:
-        raise ExtractionError("LEAD has invalid evidence or relevance grade") from exc
+        raise ExtractionError("LEAD has invalid evidence grade") from exc
+    try:
+        relevance_grade = parse_relevance_grade(
+            str(payload.get("relevance_grade") or "WEAK")
+        )
+    except SchemaValidationError as exc:
+        raise ExtractionError(str(exc)) from exc
     history_values = payload.get("review_history") or ()
     history: Tuple[ReviewHistoryEntry, ...]
     if history_values:
@@ -378,17 +397,145 @@ def _chronology_key(event: ChronologyEvent) -> Tuple[int, int, int, int, str]:
     )
 
 
+def _source_sha256_of(payload: Mapping[str, Any]) -> str:
+    value = payload.get("source_sha256") or payload.get("source_hash")
+    if value is None or str(value).strip() == "":
+        raise ExtractionError("span citation requires source_sha256")
+    return str(value).strip().lower()
+
+
+def resolve_page_span(
+    source: Union[str, Path, bytes, bytearray],
+    *,
+    document_id: str,
+    page: int,
+    source_sha256: str,
+    span_start: int,
+    span_end: int,
+    expected_source_sha256: Optional[str] = None,
+) -> SpanResolution:
+    """Resolve an F-style page+span+SHA-256 citation from untagged page text."""
+
+    data = (
+        bytes(source)
+        if isinstance(source, (bytes, bytearray))
+        else Path(source).read_bytes()
+    )
+    digest = hashlib.sha256(data).hexdigest()
+    expected = (expected_source_sha256 or source_sha256).strip().lower()
+    if digest != expected or digest != source_sha256.strip().lower():
+        raise ExtractionError("HOLD_SOURCE_HASH_MISMATCH")
+    if page < 1:
+        raise ExtractionError("citation page is one-based")
+    with network_denied():
+        pages = read_embedded_pdf_text(data)
+    if page > len(pages):
+        raise ExtractionError(f"page {page} missing from source")
+    text = pages[page - 1].text
+    if span_start < 0 or span_end <= span_start or span_end > len(text):
+        raise ExtractionError("span is outside the cited page text")
+    quote = text[span_start:span_end]
+    citation = Citation.from_span(
+        document_id=document_id,
+        page=page,
+        source_sha256=digest,
+        span_start=span_start,
+        span_end=span_end,
+        quote=quote,
+    )
+    return SpanResolution(
+        document_id=document_id,
+        page=page,
+        source_sha256=digest,
+        span_start=span_start,
+        span_end=span_end,
+        quote=quote,
+        citation=citation,
+    )
+
+
+def ingest_span_citations(
+    source: Union[str, Path, bytes, bytearray],
+    citations: Sequence[Mapping[str, Any]],
+    *,
+    document: Optional[str] = None,
+) -> Tuple[SpanResolution, ...]:
+    """Ingest F-lane ``{document_id, page, source_sha256, span_start, span_end}``."""
+
+    resolved: List[SpanResolution] = []
+    for item in citations:
+        document_id = str(
+            item.get("document_id") or item.get("document") or document or ""
+        ).strip()
+        if not document_id:
+            raise ExtractionError("span citation requires document_id")
+        resolved.append(
+            resolve_page_span(
+                source,
+                document_id=document_id,
+                page=int(item["page"]),
+                source_sha256=_source_sha256_of(item),
+                span_start=int(item["span_start"]),
+                span_end=int(item["span_end"]),
+                expected_source_sha256=str(
+                    item.get("expected_source_sha256") or ""
+                ).strip()
+                or None,
+            )
+        )
+    return tuple(resolved)
+
+
+def facts_from_span_citations(
+    source: Union[str, Path, bytes, bytearray],
+    citations: Sequence[Mapping[str, Any]],
+    *,
+    document: Optional[str] = None,
+) -> Tuple[RecordFact, ...]:
+    """Turn untagged page+span citations into typed record facts."""
+
+    facts: List[RecordFact] = []
+    for index, resolution in enumerate(
+        ingest_span_citations(source, citations, document=document), start=1
+    ):
+        item = citations[index - 1]
+        fact_id = str(item.get("fact_id") or f"SPAN-{index:03d}").strip()
+        event_date = str(item.get("event_date") or "").strip() or None
+        certainty_default = "EXACT" if event_date else "UNDATED"
+        try:
+            certainty = DateCertainty(
+                str(item.get("date_certainty") or certainty_default).upper()
+            )
+        except ValueError as exc:
+            raise ExtractionError("span citation has invalid date_certainty") from exc
+        facts.append(
+            RecordFact(
+                fact_id=fact_id,
+                statement=str(item.get("statement") or resolution.quote).strip(),
+                citation=resolution.citation,
+                domain=str(item.get("domain") or "untagged"),
+                care_phase=str(item.get("care_phase") or "unspecified"),
+                event_date=event_date,
+                date_certainty=certainty,
+            )
+        )
+    return tuple(facts)
+
+
 def analyze_pdf(
     source: Union[str, Path, bytes, bytearray],
     *,
     document: str,
     expected_source_hash: Optional[str] = None,
+    expected_source_sha256: Optional[str] = None,
+    span_citations: Sequence[Mapping[str, Any]] = (),
 ) -> AnalysisResult:
-    """Extract known synthetic ``CT|...`` tags under a socket network deny."""
+    """Extract ``CT|...`` tags and/or F-style page+span+SHA citations."""
 
     data = bytes(source) if isinstance(source, (bytes, bytearray)) else Path(source).read_bytes()
     source_hash = hashlib.sha256(data).hexdigest()
-    if expected_source_hash is not None and source_hash != expected_source_hash:
+    expected = expected_source_sha256 or expected_source_hash
+    if expected is not None and source_hash != expected:
         raise ExtractionError("HOLD_SOURCE_HASH_MISMATCH")
 
     facts: List[RecordFact] = []
@@ -420,6 +567,13 @@ def analyze_pdf(
                     ignored_instructions.append(line)
                 else:
                     raise ExtractionError(f"unknown synthetic tag: {tag}")
+
+    if span_citations:
+        facts.extend(
+            facts_from_span_citations(
+                data, span_citations, document=document
+            )
+        )
 
     fact_ids = {fact.fact_id for fact in facts}
     authority_ids = {authority.authority_id for authority in authorities}

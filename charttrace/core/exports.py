@@ -35,6 +35,7 @@ def _payload(result: AnalysisResult) -> Dict[str, Any]:
         "schema_version": SCHEMA_VERSION,
         "scope_statement": GLOBAL_SCOPE_STATEMENT,
         "source_hash": result.source_hash,
+        "source_sha256": result.source_hash,
     }
 
 
@@ -81,6 +82,7 @@ def export_csv(result: AnalysisResult) -> str:
         "page",
         "span_or_bbox",
         "source_hash",
+        "source_sha256",
         "payload_json",
     ]
     rows: List[Dict[str, str]] = []
@@ -99,6 +101,7 @@ def export_csv(result: AnalysisResult) -> str:
                 "page": str(fact.citation.page),
                 "span_or_bbox": _csv_cell(fact.citation.span_or_bbox),
                 "source_hash": fact.citation.source_hash,
+                "source_sha256": fact.citation.source_sha256,
                 "payload_json": _csv_cell(fact),
             }
         )
@@ -120,6 +123,7 @@ def export_csv(result: AnalysisResult) -> str:
                 "page": str(citation.page) if citation else "",
                 "span_or_bbox": _csv_cell(citation.span_or_bbox) if citation else "",
                 "source_hash": citation.source_hash if citation else "",
+                "source_sha256": citation.source_sha256 if citation else "",
                 "payload_json": _csv_cell(authority),
             }
         )
@@ -138,6 +142,7 @@ def export_csv(result: AnalysisResult) -> str:
                 "page": "",
                 "span_or_bbox": "",
                 "source_hash": "",
+                "source_sha256": "",
                 "payload_json": _csv_cell(lead),
             }
         )

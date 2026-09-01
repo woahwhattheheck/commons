@@ -33,6 +33,8 @@ from charttrace.schema.v1 import (
     assert_citations_resolve,
     assert_unique_ids,
     find_forbidden_semantic_claims,
+    parse_relevance_grade,
+    to_primitive,
 )
 
 
@@ -61,13 +63,11 @@ class SchemaV1Tests(unittest.TestCase):
         )
         self.assertEqual(
             [grade.value for grade in RelevanceGrade],
-            [
-                "TENUOUS",
-                "PLAUSIBLE",
-                "MATERIAL_IF_CONFIRMED",
-                "PRIORITY_REVIEW",
-            ],
+            ["WEAK", "SUBTLE", "OBVIOUS"],
         )
+        with self.assertRaises(SchemaValidationError):
+            parse_relevance_grade("MATERIAL_IF_CONFIRMED")
+        self.assertIs(parse_relevance_grade("obvious"), RelevanceGrade.OBVIOUS)
 
     def test_atomic_fact_is_frozen_and_page_cited(self) -> None:
         citation = Citation(
@@ -143,7 +143,7 @@ class SchemaV1Tests(unittest.TestCase):
             jurisdiction_scope="SYNTHETIC",
             date_scope="2026-01",
             evidence_grade=EvidenceGrade.CLUE,
-            relevance_grade=RelevanceGrade.PLAUSIBLE,
+            relevance_grade=RelevanceGrade.SUBTLE,
             clinical_plausibility="Requires clinician review.",
             temporal_linkage="Sequence only; no causal conclusion.",
             peer_version="peer-v1",
@@ -165,6 +165,18 @@ class SchemaV1Tests(unittest.TestCase):
             "The result was not disclosed.": ForbiddenSemanticClaim.NOT_DISCLOSED,
             "The patient-was-not-told.": (
                 ForbiddenSemanticClaim.PATIENT_WAS_NOT_TOLD
+            ),
+            "The patient was never told.": ForbiddenSemanticClaim.NEVER_TOLD,
+            "No follow-up occurred after the result.": (
+                ForbiddenSemanticClaim.NO_FOLLOW_UP_OCCURRED
+            ),
+            "The finding was not found anywhere.": (
+                ForbiddenSemanticClaim.NOT_FOUND_ANYWHERE
+            ),
+            "This is actionable.": ForbiddenSemanticClaim.ACTIONABLE,
+            "The case value is unknown.": ForbiddenSemanticClaim.CASE_VALUE,
+            "A standard of care discussion.": (
+                ForbiddenSemanticClaim.STANDARD_OF_CARE_BREACH
             ),
         }
         for text, expected in samples.items():
@@ -314,6 +326,47 @@ class SchemaV1Tests(unittest.TestCase):
                 known_source_hashes=(SOURCE_HASH,),
                 known_documents=("SYNTH-DOC-001",),
             )
+
+    def test_citation_exposes_source_sha256_and_span_fields(self) -> None:
+        citation = Citation.from_span(
+            document_id="SYNTH-DOC-001",
+            page=3,
+            source_sha256=SOURCE_HASH,
+            span_start=4,
+            span_end=12,
+            quote="callback",
+        )
+        self.assertEqual(citation.source_hash, SOURCE_HASH)
+        self.assertEqual(citation.source_sha256, SOURCE_HASH)
+        self.assertEqual(citation.document_id, "SYNTH-DOC-001")
+        primitive = to_primitive(citation)
+        self.assertEqual(primitive["source_sha256"], SOURCE_HASH)
+        self.assertEqual(primitive["document_id"], "SYNTH-DOC-001")
+        self.assertEqual(primitive["span_start"], 4)
+        self.assertEqual(primitive["span_end"], 12)
+
+    def test_context_only_authority_allows_offline_locator_without_url(self) -> None:
+        authority = ExternalAuthority(
+            authority_id="AUTH-OFFLINE",
+            authority_type="regulation",
+            issuer="Synthetic Authority Pack",
+            jurisdiction="SYNTHETIC",
+            effective_from="2025-01-01",
+            effective_to=None,
+            care_date_match=False,
+            primary_url="",
+            pinpoint="pack:syn-auth-001#section-1",
+            retrieval_date="2026-09-01",
+            supported_proposition="Context for a synthetic review.",
+            supersession=None,
+            review_status=AuthorityReviewStatus.CONTEXT_ONLY,
+            offline_locator="local-authority-pack:syn-auth-001",
+        )
+        self.assertEqual(authority.primary_url, "")
+        self.assertEqual(
+            authority.offline_locator, "local-authority-pack:syn-auth-001"
+        )
+        self.assertIs(authority.review_status, AuthorityReviewStatus.CONTEXT_ONLY)
 
 
 if __name__ == "__main__":
