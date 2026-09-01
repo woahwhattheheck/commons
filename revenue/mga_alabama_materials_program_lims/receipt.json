@@ -1,0 +1,23 @@
+{
+  "audit_sha256": "a43dd703facd1d81055df85feb73013ec7e946874ec85c0f1793cd1662d10432",
+  "buyer": "Marshall Houston / MGA Research",
+  "demand_id": "mga-alabama-materials-program-lims-01",
+  "fixture_sha256": "5b596324aac8a615b4cf98271c2603541e2ffc79d83946569bb5256da8951ede",
+  "hold_counts": {
+    "HOLD_CONDITIONING_WINDOW": 5,
+    "HOLD_DUPLICATE_SPECIMEN": 5,
+    "HOLD_METHOD_MATERIAL_MISMATCH": 5,
+    "HOLD_UTM_ENVIRONMENT_QC": 5
+  },
+  "holds": 20,
+  "input_rows": 100,
+  "manifest_sha256": "3f0424dbf9b33dc9cd9d03118876d42ca5df47b7cf4c18e3a4e973d5eb84faed",
+  "pre_sale_transport": "NONE",
+  "ready": 80,
+  "replay_additions": 0,
+  "packets_released": 0,
+  "packets_staged": 80,
+  "state": "TESTED",
+  "test_command": "python test_mga_alabama_materials_program_lims.py",
+  "truth_gate": "HOLD / BUILD-AND-VERIFY"
+}

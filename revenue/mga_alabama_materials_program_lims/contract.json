@@ -1,0 +1,38 @@
+{
+  "acceptance": {
+    "hold_counts": {
+      "HOLD_CONDITIONING_WINDOW": 5,
+      "HOLD_DUPLICATE_SPECIMEN": 5,
+      "HOLD_METHOD_MATERIAL_MISMATCH": 5,
+      "HOLD_UTM_ENVIRONMENT_QC": 5
+    },
+    "holds": 20,
+    "input_rows": 100,
+    "named_human_release_only": true,
+    "ready": 80,
+    "replay_additions": 0
+  },
+  "buyer": "Marshall Houston / MGA Research",
+  "cash_usd": 0,
+  "decision_boundary": "Materials coupons and qualification metadata only. Synthetic lineage evidence never production readiness, materials interpretation, compliance, or autonomous packet release. No vehicle, weapons, propulsion, mission, or controlled-design data.",
+  "demand_id": "mga-alabama-materials-program-lims-01",
+  "interfaces": "SYNTHETIC_READ_ONLY",
+  "live_lims": false,
+  "official_binary": "python mga_alabama_materials_program_lims.py",
+  "official_test": "python test_mga_alabama_materials_program_lims.py",
+  "page": "mga-alabama-materials-program-lims.html",
+  "pre_sale_transport": "NONE",
+  "production_deployment": false,
+  "schema": "commons-mga-alabama-materials-program-lims/v1",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "synthetic": true,
+  "workflow": [
+    "request and specimen/coupon binding",
+    "conditioning-window evidence",
+    "lab, method, version, fixture, and environment-setpoint binding",
+    "UTM and chamber QC",
+    "raw value, unit, and source-hash provenance",
+    "staged qualification packet",
+    "authorized named-human release"
+  ]
+}

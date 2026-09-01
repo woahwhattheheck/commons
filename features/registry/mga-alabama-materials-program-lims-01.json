@@ -1,0 +1,37 @@
+{
+  "added": "2026-09-01",
+  "capability": "MGA Alabama materials-program LIMS: a frozen 100-program synthetic fixture binds request, specimen/coupon, and conditioning-window evidence to lab/method/version/fixture and environment setpoint, then to a raw value/source hash and a staged qualification packet; creates exactly 80 READY jobs with specimen\u2192method\u2192instrument/fixture\u2192raw value/unit\u2192packet lineage; holds 20 predetermined defects without scheduling (5 duplicate specimens, 5 conditioning-window breaches, 5 method/material mismatches, 5 UTM/environment QC failures); replays with zero added jobs; and permits release only through an authoritative named-human reviewer directory. Materials coupons and qualification metadata only.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "mga_alabama_materials_program_lims.py",
+    "test_mga_alabama_materials_program_lims.py",
+    "mga-alabama-materials-program-lims.html",
+    "revenue/mga_alabama_materials_program_lims/contract.json",
+    "revenue/mga_alabama_materials_program_lims/README.md",
+    "revenue/mga_alabama_materials_program_lims/runner.py",
+    "revenue/mga_alabama_materials_program_lims/receipt.json",
+    "p/mga-alabama-materials-program-lims-01.md"
+  ],
+  "dependencies": [],
+  "id": "mga-alabama-materials-program-lims-01",
+  "name": "MGA Alabama materials-program LIMS",
+  "next_gap": "Buyer-owned de-identified coupon schemas, controlled method/version/fixture catalog, golden UTM exports, and authorized reviewer directory after synthetic verification. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "mga-alabama-materials-program-lims.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "mga-alabama-materials-program-lims.html",
+    "revenue/mga_alabama_materials_program_lims/contract.json",
+    "p/mga-alabama-materials-program-lims-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_mga_alabama_materials_program_lims.py",
+    "mga_alabama_materials_program_lims.py"
+  ]
+}
