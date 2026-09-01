@@ -1,10 +1,18 @@
 """Native Tk interface with a display-free headless mode for unit tests."""
 
+from __future__ import annotations
+
 from pathlib import Path
 from typing import Dict, Optional
 
-import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+try:
+    import tkinter as tk
+    from tkinter import filedialog, messagebox, ttk
+except ModuleNotFoundError:  # Headless hosts may omit Tcl/Tk.
+    tk = None
+    filedialog = None
+    messagebox = None
+    ttk = None
 
 from charttrace.app import BUILD_LABEL, CaseLifecycle, ChartTraceController
 from charttrace.legal import INSTRUMENTS
@@ -67,6 +75,8 @@ class ChartTraceWindow:
         self.root.mainloop()
 
     def _build_native_window(self) -> None:
+        if tk is None or ttk is None:
+            raise RuntimeError("Tkinter is required for the native ChartTrace window.")
         self.root = tk.Tk()
         self.root.title(f"ChartTrace 1.1 — {BUILD_LABEL}")
         self.root.geometry("1120x760")
