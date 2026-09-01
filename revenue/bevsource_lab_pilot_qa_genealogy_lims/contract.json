@@ -1,0 +1,15 @@
+{
+  "buyer": "BevSource — The Lab / Matt Bonfitto",
+  "cash_usd": 0,
+  "demand_id": "bevsource-lab-pilot-qa-genealogy-lims-01",
+  "interfaces": "SIMULATED_READ_ONLY",
+  "live_lims": false,
+  "official_binary": "python bevsource_lab_pilot_qa_genealogy_lims.py",
+  "official_test": "python test_bevsource_lab_pilot_qa_genealogy_lims.py",
+  "page": "bevsource-lab-pilot-qa-genealogy-lims.html",
+  "pre_sale_transport": "NONE",
+  "production_deployment": false,
+  "schema": "commons-bevsource-lab-pilot-qa-genealogy-lims/v1",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "synthetic": true
+}

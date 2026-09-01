@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>BevSource lab pilot QA genealogy — Commons</title>
+<style>
+:root{color-scheme:light;--paper:#f4efe6;--ink:#1d1a16;--muted:#5b5348;--line:#c9b89a;--card:#fffaf2;--green:#3c5a3a;--amber:#9a5b16;--citrus:#c46a1b}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#f3d7a6,var(--paper) 42%);color:var(--ink);font:16px/1.5 "Source Serif 4",Georgia,serif}
+main{max-width:980px;margin:auto;padding:28px 16px 72px}a{color:var(--citrus)}
+.kicker{letter-spacing:.14em;text-transform:uppercase;font:12px/1.2 ui-sans-serif,system-ui,sans-serif;color:var(--green)}
+h1{font:800 clamp(2.1rem,6vw,3.8rem)/.96 ui-sans-serif,system-ui,sans-serif;max-width:920px;margin:.2em 0}
+.lede{font-size:1.1rem;max-width:780px;color:var(--muted)}
+.truth{border-left:5px solid var(--amber);padding:10px 14px;background:#fff4de}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:16px 0}
+table{width:100%;border-collapse:collapse}th,td{border-top:1px solid var(--line);padding:8px 6px;text-align:left;vertical-align:top}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;padding:14px;background:#231c14;color:#f4e6c8;border-radius:10px}
+.state{display:inline-block;border:1px solid var(--amber);color:var(--amber);border-radius:999px;padding:3px 9px;font-size:.75rem;font-weight:800}
+.small{color:var(--muted);font-size:.88rem}
+button{border:0;border-radius:999px;padding:11px 16px;background:var(--green);color:white;font-weight:700;cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<nav><a href="./index.html">← Commons</a> · <a href="./offer.html">offers</a> · <a href="./feature-tracker.html">feature tracker</a> · <a href="./p/bevsource-lab-pilot-qa-genealogy-lims-01.md">Receipt</a></nav>
+<p class="kicker">BevSource · lab pilot QA genealogy · HOLD / BUILD-AND-VERIFY</p>
+<h1>Formula to lot to pilot batch to package, then a named reviewer.</h1>
+<p class="lede">A working synthetic runner binds high-acid RTD formula versions, contributing ingredient lots, pilot batches, liner checks, chemistry, microbiology, and shelf-life into package genealogy. Forty-five clean runs reach RELEASE_REVIEW. Fifteen predetermined defects stay on HOLD.</p>
+<p class="truth"><strong>Truth boundary:</strong> synthetic fixtures only. This is not a production LIMS, readiness claim, or product-release decision. Adapters are simulated/read-only. A named human reviewer is required to release a package. No outreach. PRE-SALE TRANSPORT: NONE. cash_usd=0. Open door; no login.</p>
+
+<section class="card">
+<h2>Frozen acceptance</h2>
+<table>
+<thead><tr><th>Check</th><th>Required result</th></tr></thead>
+<tbody>
+<tr><td>Input</td><td>60 synthetic high-acid RTD pilot runs</td></tr>
+<tr><td>RELEASE_REVIEW / HOLD</td><td>45 / 15</td></tr>
+<tr><td>Holds</td><td>5 wrong formula version · 4 missing ingredient lot · 3 failed liner · 3 positive microbiology</td></tr>
+<tr><td>Genealogy</td><td>every packaged unit traces to one formula and every contributing lot</td></tr>
+<tr><td>Integrity</td><td>0 orphan links · 0 duplicate links</td></tr>
+<tr><td>Held output</td><td>0 packages · 0 links · 0 reviews · 0 releases</td></tr>
+<tr><td>Replay</td><td>identical hashes · 0 additions</td></tr>
+<tr><td>Release</td><td>named human reviewer only</td></tr>
+</tbody>
+</table>
+<p class="small">Official command: <code>python test_bevsource_lab_pilot_qa_genealogy_lims.py</code><br>Engine: <code>python bevsource_lab_pilot_qa_genealogy_lims.py</code></p>
+</section>
+
+<section class="card">
+<h2>Contract window <span id="state" class="state">NOT LOADED</span></h2>
+<p><button id="load" type="button">Load checked-in contract</button></p>
+<pre id="output">Load the reserved contract.json and confirm this remains synthetic / HOLD / BUILD-AND-VERIFY.</pre>
+<p class="small">Buyer pairing: BevSource — The Lab / Matt Bonfitto. Demand source: Slack #build-demand <code>1788151374.697469</code>. No contact, no spend, no automatic release.</p>
+</section>
+</main>
+<script>
+(() => {
+  const state = document.getElementById("state");
+  const output = document.getElementById("output");
+  document.getElementById("load").addEventListener("click", async () => {
+    state.textContent = "READING";
+    try {
+      const response = await fetch("./revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json", {cache:"no-store"});
+      if (!response.ok) throw new Error("contract HTTP " + response.status);
+      const value = await response.json();
+      const failures = [];
+      if (value.demand_id !== "bevsource-lab-pilot-qa-genealogy-lims-01") failures.push("demand_id");
+      if (value.state !== "HOLD / BUILD-AND-VERIFY") failures.push("state");
+      if (value.synthetic !== true) failures.push("synthetic");
+      if (value.live_lims !== false) failures.push("live_lims");
+      if (value.production_deployment !== false) failures.push("production_deployment");
+      if (value.pre_sale_transport !== "NONE") failures.push("pre_sale_transport");
+      if (value.official_test !== "python test_bevsource_lab_pilot_qa_genealogy_lims.py") failures.push("official_test");
+      state.textContent = failures.length ? "FAIL" : "PASS";
+      output.textContent = JSON.stringify({ok: !failures.length, failures, contract: value}, null, 2);
+    } catch (error) {
+      state.textContent = "UNKNOWN";
+      output.textContent = String(error);
+    }
+  });
+})();
+</script>
+</body>
+</html>
