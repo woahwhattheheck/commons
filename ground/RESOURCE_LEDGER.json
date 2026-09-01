@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-09-01T04:08:00Z",
-    "base_main_sha": "46c64ee0845b522b5823a476d194967243aef609",
+    "observed_at": "2026-09-01T10:05:32Z",
+    "base_main_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Public pointers, aggregate quotas, and operating state only. No tokens, credentials, private file names, personal account identifiers, raw model weights, or legal identity data."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788235608.554549",
-  "source_id": "codex-github-repository-portfolio-activation-20260901-01",
+  "slack_ts": "1788256871.664259",
+  "source_id": "codex-commons-skill-toolset-consumption-activation-20260901-01",
   "supersedes_source_ids": [
+    "codex-github-repository-portfolio-activation-20260901-01",
     "codex-commons-data-corpus-alias-index-activation-20260831-01",
     "codex-discord-inbound-production-readback-20260831-01",
     "codex-discord-bridge-cloud-dark-correction-20260831-01",
@@ -60,7 +61,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — the GitHub repository portfolio is producing exact public-safe recovery routing; the Commons mirror is measured stale, not current",
+  "subject": "MASTER RESOURCE LEDGER — the Commons skill/tool set is producing a fail-closed consumption and allocation projection; unnamed jobs remain excluded",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -94,7 +95,8 @@
     "inventory/resources/records/codex-discord-bridge-cloud-dark-correction-20260831-01.json",
     "inventory/resources/records/codex-discord-inbound-production-readback-20260831-01.json",
     "inventory/resources/records/codex-commons-data-corpus-alias-index-activation-20260831-01.json",
-    "inventory/resources/records/codex-github-repository-portfolio-activation-20260901-01.json"
+    "inventory/resources/records/codex-github-repository-portfolio-activation-20260901-01.json",
+    "inventory/resources/records/codex-commons-skill-toolset-consumption-activation-20260901-01.json"
   ],
   "priority_queue": [],
   "hands_off": [
@@ -845,23 +847,23 @@
       "name": "commons-skill-and-tool-set",
       "kind": "TOOLSET",
       "capacity": "LIVE",
-      "stage": "EXERCISED",
+      "stage": "PRODUCING",
       "condition": "CONSTRAINED",
       "holder": "Commons",
-      "authority": "OPEN_REUSE; FOLLOW_CONTRACTS",
-      "consumer": "Commons agents and jobs",
-      "value": "19 repo skills, eight command recipes, 19 Muhlnickel tools, and 175 current top-level host scripts",
-      "next_action": "Record actual invocations and consumers; classify 60 open jobs with blank tool IDs and rerun the stale script-use census.",
-      "source": ".agents/skills/; skills.json; commands.json; tools.json; share.json; host/",
-      "evidence_ts": "2026-08-26T15:31:38Z",
-      "auth_surface": "repository and live-page census",
-      "exact_safe_probe": "catalog and job counts measured",
-      "rate_plan_boundary": "installed or named is not exercised",
-      "assigned_backlog": "usage receipts, tool IDs, and current invocation census",
-      "last_receipt": "codex-master-resource-office-20260826-01",
-      "last_used_at": "2026-08-26T15:41:28Z",
-      "stale_after": "P7D",
-      "quantity": 221,
+      "authority": "OPEN_REUSE; FOLLOW_CONTRACTS; READ_ONLY_INDEX; EXPLICIT_TOOL_ID_REQUIRED",
+      "consumer": "Commons Queue Manager and agents allocating current share.json jobs against the exact tools.json catalog",
+      "value": "Deterministic fail-closed routing over 28 skills, 8 commands, 19 tools, and 248 jobs: one open job is allocatable; two completed jobs have known-tool receipts; 234 blank-tool open jobs are excluded from capacity.",
+      "next_action": "Queue only the one explicitly bound open job; assign valid catalog tool IDs to blank jobs only when their requested operation is known, then regenerate after any source blob changes.",
+      "source": "inventory/resources/tool_consumption.json; host/tool_consumption_index.py; skills.json; commands.json; tools.json; share.json",
+      "evidence_ts": "2026-09-01T10:05:32Z",
+      "auth_surface": "current-main public catalogs and share job ledger; read-only deterministic compiler",
+      "exact_safe_probe": "source commit 7ae7902861620b74e8c0ec9c7efeb89de4d66532; exact source blobs; MATCH 235 open 1 allocatable 2 consumed; 10/10 focused tests",
+      "rate_plan_boundary": "Named catalog entries are capacity, not consumption. Blank or unknown tool IDs are not allocatable; consumption requires a current known tool ID plus a receipt.",
+      "assigned_backlog": "Classify 234 blank-tool open jobs without invoking them; regenerate after skills.json, commands.json, tools.json, or share.json changes.",
+      "last_receipt": "codex-commons-skill-toolset-consumption-activation-20260901-01",
+      "last_used_at": "2026-08-19T22:28:36Z",
+      "stale_after": "next skills.json, commands.json, tools.json, or share.json blob change",
+      "quantity": 55,
       "priority": 65
     },
     {

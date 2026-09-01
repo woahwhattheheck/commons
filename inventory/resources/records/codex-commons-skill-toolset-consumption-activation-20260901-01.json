@@ -1,0 +1,90 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-commons-skill-toolset-consumption-activation-20260901-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "commons-skill-and-tool-set",
+  "observed_at": "2026-09-01T10:05:32Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "EXERCISED",
+    "condition": "CONSTRAINED",
+    "evidence": "The ledger's 2026-08-26 census named 19 repo skills, eight commands, 19 tools, 175 host scripts, and 60 blank-tool jobs, but did not expose exact current bindings or receipted consumption."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "activation_base_main_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
+    "product_head_sha": "1cdde439b46fa86577beef6b14677642919abf76",
+    "ledger_head_sha": "f5815399098e95e743d2918956b01e1fc7f88b13"
+  },
+  "authority": "OPEN_REUSE; FOLLOW_CONTRACTS; READ_ONLY_INDEX; EXPLICIT_TOOL_ID_REQUIRED",
+  "concrete_consumer": "Commons Queue Manager and agents allocating current share.json jobs against the exact tools.json catalog",
+  "measurable_outcome": "The current catalogs and job ledger became one deterministic, fail-closed routing projection: 28 skills, eight commands, 19 tools, 248 jobs, one allocatable open job, two receipted known-tool consumptions, and 234 blank-tool open jobs excluded from capacity.",
+  "counts": {
+    "skills": 28,
+    "commands": 8,
+    "tools": 19,
+    "jobs_total": 248,
+    "open_jobs": 235,
+    "open_blank_tool": 234,
+    "open_unknown_tool": 0,
+    "open_allocatable": 1,
+    "done_jobs": 8,
+    "done_receipted_known_tool": 2,
+    "refused_jobs": 5,
+    "jobs_mutated": 0,
+    "tools_invoked": 0,
+    "deployments": 0
+  },
+  "connected_app_aggregate": {
+    "callable_tools": 405,
+    "codex_app_tools": 390,
+    "total_automations": 12,
+    "enabled_automations": 5,
+    "paused_automations": 7,
+    "disabled_automations_excluded_from_capacity": true,
+    "github": "READ_WRITE_PRODUCING",
+    "slack_commons": "READ_WRITE_PRODUCING"
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788256871664259",
+    "snapshot": "https://github.com/woahwhattheheck/commons/blob/main/inventory/resources/tool_consumption.json",
+    "current_catalog": "https://github.com/woahwhattheheck/commons/blob/7ae7902861620b74e8c0ec9c7efeb89de4d66532/tools.json",
+    "current_jobs": "https://github.com/woahwhattheheck/commons/blob/7ae7902861620b74e8c0ec9c7efeb89de4d66532/share.json"
+  },
+  "source_blobs": {
+    "skills.json": "7f1280ef735a59ecfa29b7a6e5bd7c1631246fb7",
+    "commands.json": "7a6dba1803e3a97b29355c0f08710533abaa7e45",
+    "tools.json": "4c3909acd166c8a4590ae34da3c6bc2eaa3ce7a9",
+    "share.json": "3b7029a80e1f4f0f3d0a414c6604898ba3a70da0"
+  },
+  "exact_blobs": {
+    "host/tool_consumption_index.py": "53cca608877f0eeea3b6c43e08216c057b1fdc30",
+    "test_tool_consumption_index.py": "cd5c374597eb455e5e49e19d8350c256ac66d08f",
+    "inventory/resources/tool_consumption.json": "ba4b3537b04ae6ec6e8ddb0d45c846f24769f626",
+    "ground/RESOURCE_LEDGER.json": "cec7fbd9708ae9d9ecc970673686979b3729d47b"
+  },
+  "verification": {
+    "source_truth": "All four inputs are pinned to exact Git blobs on base main 7ae7902861620b74e8c0ec9c7efeb89de4d66532.",
+    "job_truth": "Only codexsol-tools-world-card-drive-20260821-01 names a current catalog tool among 235 open jobs; 234 blank-tool jobs are excluded and there are zero unknown nonblank tools.",
+    "consumption_truth": "Only coil-tools-pfc-preflight-20260819-01 and grave-commons-header-witness-20260817-001 combine a current known tool ID with a receipt; no fresh tool invocation is claimed.",
+    "stale_claim_policy": "The 2026-08-26 count of 60 blank-tool jobs is superseded by the exact current share.json count of 234. The projection becomes stale on any source blob change.",
+    "collision_truth": "At branch creation, current main was 7ae7902861620b74e8c0ec9c7efeb89de4d66532. Three open PRs were confined to charttrace/** and did not touch any claimed path.",
+    "tests": "10/10 focused tests and Python compile passed; the exact four-file snapshot check returned MATCH 235 open 1 allocatable 2 consumed.",
+    "open_door_and_secrets": "The compiler reads public repository JSON, introduces no auth/admission gate, persists no credential, and performs no tool, job, device, deployment, payment, or outreach mutation."
+  },
+  "projection": {
+    "resources": 66,
+    "producing": 37
+  },
+  "rate_plan_boundary": "Catalog presence is capacity, not consumption. Blank or unknown tool IDs are not allocatable; consumption requires a current known tool ID plus a receipt.",
+  "next_action": "Queue only the one explicitly bound open job; assign valid catalog tool IDs to blank jobs only when their requested operation is known, then regenerate after any source blob change.",
+  "non_claims": [
+    "No fresh tool invocation, job mutation, device action, deployment, Grok/Cursor/Claude use, Titan mutation, outreach, resend, payment, revenue, or cash",
+    "No blank or unknown tool ID counted as allocatable capacity",
+    "No catalog entry counted as consumption without a matching job receipt"
+  ],
+  "titan": "NOT_WRITTEN"
+}
