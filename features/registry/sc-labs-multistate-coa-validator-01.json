@@ -1,6 +1,6 @@
 {
   "added": "2026-09-01",
-  "capability": "SC Labs multistate COA rule-version gate: dependency-light CSV/JSON validation joins sample, jurisdiction, license, matrix, custody, rule pack, panel, method, limits, accreditation scope, signer, and COA identity; emits deterministic RELEASEABLE/HOLD decisions, CSV/JSON outputs, exception report, and hash-linked evidence manifest; and records named-human overrides separately without altering results.",
+  "capability": "SC Labs multistate COA pre-release validator: dependency-light CSV/JSON processing joins release evidence fields, emits deterministic RELEASEABLE/HOLD decisions plus CSV/JSON outputs, exception report, and a hash-linked evidence manifest, and records bounded overrides in append-only history without altering results.",
   "carrier": "CURSOR",
   "claimed_paths": [
     "sc_labs_multistate_coa_gate.py",
@@ -15,12 +15,12 @@
     "revenue/sc_labs_multistate_coa_gate/evidence-manifest.json",
     "revenue/sc_labs_multistate_coa_gate/exception-report.txt",
     "p/sc-labs-multistate-coa-rule-version-gate-01.md",
-    "features/registry/sc-labs-multistate-coa-rule-version-gate-01.json"
+    "features/registry/sc-labs-multistate-coa-validator-01.json"
   ],
   "dependencies": [],
-  "id": "sc-labs-multistate-coa-rule-version-gate-01",
-  "name": "SC Labs multistate COA rule-version gate",
-  "next_gap": "Next measurement: buyer-controlled jurisdiction rules, license records, method/limit tables, accreditation references, signer roster, and deidentified round-trip fixtures. Until measured, this remains a synthetic validation overlay with no compliance or release claim.",
+  "id": "sc-labs-multistate-coa-validator-01",
+  "name": "SC Labs multistate COA validator",
+  "next_gap": "Next measurement: buyer-controlled jurisdiction rules, license records, method/limit tables, accreditation references, signer roster, and deidentified round-trip fixtures. Until measured, this remains a synthetic validation overlay with no compliance or release status.",
   "owner_subsystem": "revenue",
   "public_entrypoint": "sc-labs-multistate-coa-rule-version-gate.html",
   "related": {
