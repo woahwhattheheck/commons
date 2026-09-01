@@ -1,32 +1,42 @@
 # Windows packaging
 
-ChartTrace is a native, per-user Windows desktop application. It is not a web
-site, browser tab, phone download, or TCP service.
+ChartTrace is a native per-user Windows desktop application. It is not a web
+site, browser tab, TCP service, or background agent. The unused filesystem
+mailbox is retired, excluded from the frozen program, and reported as
+`transport=none`.
 
-Build prerequisites:
+## Pinned unsigned build
 
-- Windows with Python 3 and Tcl/Tk
-- Current PyInstaller (`py -m pip install --upgrade pyinstaller`)
-- Inno Setup 6 on `PATH` for the installer step
-
-From the repository root:
+The committed build contract requires CPython 3.12 with Tcl/Tk and
+PyInstaller 6.22.2. Keep the build dependency in an isolated environment:
 
 ```powershell
-.\charttrace\packaging\build_windows.ps1
+python -m venv .venv-charttrace-build
+.\.venv-charttrace-build\Scripts\python.exe -m pip install PyInstaller==6.22.2
+.\charttrace\packaging\build_windows.ps1 \
+  -PythonExe .\.venv-charttrace-build\Scripts\python.exe \
+  -OutputRoot .\dist\charttrace-unsigned \
+  -SkipInstaller
 ```
 
-On a Windows build host the outputs are `dist\ChartTrace.exe` and
-`dist\installer\ChartTrace-1.1-UNSIGNED_SYNTHETIC-Setup.exe`. Both are
-deliberately labeled `UNSIGNED_SYNTHETIC` with `signing_state=unsigned`.
-`unsigned_artifact.py` always writes a hash-receipt zip, a headless
-launcher smoke, and a deterministic unsigned PE32 stub. `windows_pe_built`
-is true for that stub; `windows_clean_vm` stays
-`NOT_AVAILABLE_ON_THIS_HOST` unless this host is Windows or a wine smoke
-actually ran. Code-signing must be a separate controlled release process;
-these scripts do not imply or fabricate a signature. `SYNTHETIC_RELEASED`
-remains false.
+The script refuses a nonempty output directory and never uses the old
+synthetic PE helper. It freezes `charttrace/launcher.py` from
+`ChartTrace.spec`, launches that exact `ChartTrace.exe` with
+`--headless --startup-receipt`, requires `frozen=true` and an executable
+path match, then emits:
 
-ChartTrace opens no public listener. Optional same-device launcher handoff
-uses an authenticated filesystem mailbox with typed JSON frames. The
-application includes no Commons login, telemetry, analytics, external
-scripts, or external fonts.
+- the actual unsigned frozen executable;
+- a portable ZIP containing that executable;
+- a frozen-startup receipt;
+- a CycloneDX-format SBOM;
+- the complete PyInstaller log;
+- SHA-256 hashes for the executable, ZIP, SBOM, startup receipt, build log,
+  and every product/build input.
+
+Inno Setup 6 is optional for a later installer exercise. The current build
+must remain `UNSIGNED_SYNTHETIC`, `production=false`, and
+`synthetic_released=false`. A same-host frozen smoke is not a clean-VM
+receipt. Clean non-development Windows install/relaunch/uninstall,
+keyboard/contrast/DPI usability evidence, external Authenticode signing,
+and owner authorization for production distribution remain release gates.
+

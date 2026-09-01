@@ -4,9 +4,8 @@ from __future__ import annotations
 
 import json
 import os
-import pickle
+import subprocess
 import tempfile
-import threading
 import unittest
 from pathlib import Path
 
@@ -18,12 +17,13 @@ from charttrace.app import (
     SYNTHETIC_RELEASED,
 )
 from charttrace.app.ipc import (
+    IpcDisabledError,
     IpcProtocolError,
     LocalIpcServer,
+    PRODUCT_IPC_ENABLED,
     decode_frame,
     encode_frame,
-    send_raw,
-    send_signed,
+    sign_message,
 )
 from charttrace.app.offline_counsel import CounselImportError, import_counsel_review
 from charttrace.app.paths import PathEgressError, assert_local_filesystem_path
@@ -251,45 +251,19 @@ class StaleTransferAuthTests(unittest.TestCase):
 
 class JsonIpcTests(unittest.TestCase):
     def test_pickle_and_object_input_are_rejected(self):
-        server = LocalIpcServer("pickle-proof")
-        server.start()
-        try:
-            def attack() -> None:
-                send_raw(server.address, pickle.dumps({"op": "ping"}))
-
-            worker = threading.Thread(target=attack)
-            worker.start()
-            with self.assertRaises(IpcProtocolError):
-                server.receive_once()
-            worker.join(timeout=2)
-            with self.assertRaises(IpcProtocolError):
-                decode_frame(b"\x80\x04junk", b"\x00" * 32, set())
-        finally:
-            server.close()
+        with self.assertRaises(IpcProtocolError):
+            decode_frame(b"\x80\x04junk", b"\x00" * 32, set())
 
     def test_signed_json_round_trip_and_replay_fail(self):
-        server = LocalIpcServer("json-proof")
-        server.start()
-        try:
-            def send() -> None:
-                send_signed(server.address, "ping", "nonce-1")
-
-            worker = threading.Thread(target=send)
-            worker.start()
-            payload = server.receive_once()
-            worker.join(timeout=2)
-            self.assertEqual("ping", payload["op"])
-
-            def replay() -> None:
-                send_signed(server.address, "ping", "nonce-1")
-
-            worker = threading.Thread(target=replay)
-            worker.start()
-            with self.assertRaises(IpcProtocolError):
-                server.receive_once()
-            worker.join(timeout=2)
-        finally:
-            server.close()
+        session_key = b"k" * 32
+        payload = {"v": 1, "op": "ping", "nonce": "nonce-1"}
+        payload["mac"] = sign_message(session_key, payload)
+        frame = encode_frame(payload)
+        seen = set()
+        decoded = decode_frame(frame, session_key, seen)
+        self.assertEqual("ping", decoded["op"])
+        with self.assertRaises(IpcProtocolError):
+            decode_frame(frame, session_key, seen)
 
     def test_ipc_source_has_no_socket_listener_or_pickle(self):
         source = Path(__file__).with_name("ipc.py").read_text(encoding="utf-8")
@@ -299,23 +273,39 @@ class JsonIpcTests(unittest.TestCase):
         self.assertNotIn("import pickle", source)
         self.assertNotIn("import socket", source)
         self.assertNotIn("AF_INET", source)
-        self.assertIn("FILESYSTEM_MAILBOX", source)
+        self.assertFalse(PRODUCT_IPC_ENABLED)
+        self.assertIn("DISABLED_NOT_PRODUCT", source)
+        with self.assertRaises(IpcDisabledError):
+            LocalIpcServer("disabled-proof")
 
     def test_oversized_and_unsigned_frames_fail(self):
-        server = LocalIpcServer("size-proof")
-        server.start()
-        try:
-            send_raw(server.address, encode_frame({"v": 1, "op": "ping", "nonce": "x", "mac": "00"}))
-            with self.assertRaises(IpcProtocolError):
-                server.receive_once()
-            send_raw(server.address, b"CTJ1" + (70_000).to_bytes(4, "big") + b"x" * 16)
-            with self.assertRaises(IpcProtocolError):
-                server.receive_once(timeout=1.0)
-        finally:
-            server.close()
+        unsigned = encode_frame(
+            {"v": 1, "op": "ping", "nonce": "x", "mac": "00"}
+        )
+        with self.assertRaises(IpcProtocolError):
+            decode_frame(unsigned, b"k" * 32, set())
+        oversized = b"CTJ1" + (70_000).to_bytes(4, "big") + b"x" * 16
+        with self.assertRaises(IpcProtocolError):
+            decode_frame(oversized, b"k" * 32, set())
 
 
 class PathEgressTests(unittest.TestCase):
+    def _link_directory(self, link: Path, target: Path) -> None:
+        try:
+            link.symlink_to(target, target_is_directory=True)
+            return
+        except OSError as error:
+            if os.name != "nt" or getattr(error, "winerror", None) != 1314:
+                raise
+        completed = subprocess.run(
+            ["cmd.exe", "/d", "/c", "mklink", "/J", str(link), str(target)],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if completed.returncode != 0:
+            self.skipTest(f"Windows reparse-point creation failed: {completed.stderr}")
+
     def test_unc_device_symlink_and_traversal_are_rejected(self):
         rejected = (
             r"\\fileserver\share\out.json",
@@ -338,10 +328,7 @@ class PathEgressTests(unittest.TestCase):
             target = Path(directory) / "target"
             target.mkdir()
             link = Path(directory) / "link"
-            try:
-                link.symlink_to(target, target_is_directory=True)
-            except OSError:
-                self.skipTest("symlink creation is unavailable")
+            self._link_directory(link, target)
             with self.assertRaises(PathEgressError):
                 assert_local_filesystem_path(link / "out.json")
 
@@ -362,27 +349,27 @@ class PathEgressTests(unittest.TestCase):
 
 
 class WindowsPackagingReadbackTests(unittest.TestCase):
-    def test_unsigned_artifact_receipt_is_truthful(self):
+    def test_stub_generation_is_retired(self):
+        with self.assertRaises(RuntimeError):
+            build_unsigned_pe_bytes()
+
+    def test_receipter_rejects_stub_sized_executable(self):
         with tempfile.TemporaryDirectory() as directory:
-            receipt = build_unsigned_artifact(Path(directory))
-            self.assertEqual("UNSIGNED_SYNTHETIC", receipt["artifact_label"])
-            self.assertEqual("unsigned", receipt["signing_state"])
-            self.assertFalse(receipt["production"])
-            self.assertFalse(receipt["synthetic_released"])
-            self.assertTrue(receipt["windows_pe_built"])
-            self.assertEqual("unsigned_pe32_stub", receipt["windows_pe_kind"])
-            self.assertEqual(0, receipt["smoke"]["returncode"])
-            self.assertIn("UNSIGNED_SYNTHETIC", receipt["smoke"]["startup"]["build_label"])
-            self.assertTrue(Path(receipt["bundle_path"]).is_file())
-            self.assertTrue(Path(receipt["windows_pe_path"]).is_file())
-            pe = Path(receipt["windows_pe_path"]).read_bytes()
-            self.assertEqual(b"MZ", pe[:2])
-            self.assertIn(b"UNSIGNED_SYNTHETIC", pe)
-            self.assertEqual(64, len(receipt["bundle_sha256"]))
-            self.assertEqual(64, len(receipt["windows_pe_sha256"]))
-            self.assertEqual(build_unsigned_pe_bytes(), pe)
-            self.assertNotEqual("INVENTED_CLEAN_VM", receipt["windows_clean_vm"])
+            root = Path(directory)
+            fake = root / "not-charttrace.exe"
+            fake.write_bytes(b"MZ" + b"x" * 1534)
+            with self.assertRaises(ValueError):
+                build_unsigned_artifact(fake, root / "receipt")
+
+    def test_receipter_never_substitutes_host_python_launcher(self):
+        source = (
+            Path(__file__).parents[1] / "packaging" / "unsigned_artifact.py"
+        ).read_text(encoding="utf-8")
+        self.assertNotIn("launcher_main", source)
+        self.assertNotIn("write_unsigned_pe", source)
+        self.assertIn("host_python_smoke_used", source)
 
 
 if __name__ == "__main__":
     unittest.main()
+

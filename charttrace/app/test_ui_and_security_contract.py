@@ -8,7 +8,9 @@ from pathlib import Path
 
 from charttrace.app import ChartTraceController
 from charttrace.app.ipc import (
+    IpcDisabledError,
     LocalIpcServer,
+    PRODUCT_IPC_ENABLED,
     local_ipc_address,
     local_ipc_family,
     local_ipc_transport,
@@ -74,28 +76,25 @@ class ScreenContractTests(unittest.TestCase):
 
 
 class LocalSecurityContractTests(unittest.TestCase):
-    def test_ipc_has_no_public_tcp_code_path(self):
+    def test_unused_ipc_is_disabled_and_has_no_public_tcp_code_path(self):
         source = Path(__file__).with_name("ipc.py").read_text(encoding="utf-8")
         self.assertNotIn("AF_INET", source)
         self.assertNotIn("0.0.0.0", source)
         self.assertNotIn("AF_INET6", source)
         self.assertNotIn("import socket", source)
-        self.assertEqual("FILESYSTEM_MAILBOX", local_ipc_family())
-        self.assertEqual("FILESYSTEM_MAILBOX", local_ipc_transport())
-        address = local_ipc_address("unit-test")
-        self.assertTrue(address.endswith("charttrace-ipc-unit-test"))
+        self.assertFalse(PRODUCT_IPC_ENABLED)
+        self.assertEqual("DISABLED_NOT_PRODUCT", local_ipc_family())
+        self.assertEqual("DISABLED_NOT_PRODUCT", local_ipc_transport())
+        with self.assertRaises(IpcDisabledError):
+            local_ipc_address("unit-test")
 
-    def test_local_server_uses_filesystem_mailbox_only(self):
-        server = LocalIpcServer("listener-proof")
-        try:
-            server.start()
-            self.assertTrue(server.is_running)
-            self.assertEqual("FILESYSTEM_MAILBOX", server.family)
-            self.assertTrue(Path(server.address).is_dir())
-            self.assertTrue((Path(server.address) / "session.key").is_file())
-        finally:
-            server.close()
-        self.assertFalse(Path(server.address).exists())
+    def test_frozen_product_excludes_retired_ipc_module(self):
+        with self.assertRaises(IpcDisabledError):
+            LocalIpcServer("listener-proof")
+        spec = (
+            Path(__file__).parents[1] / "packaging" / "ChartTrace.spec"
+        ).read_text(encoding="utf-8")
+        self.assertIn('"charttrace.app.ipc"', spec)
 
     def test_commercial_console_has_no_domain_service_imports(self):
         commercial_path = Path(__file__).with_name("commercial.py")
@@ -121,9 +120,15 @@ class LocalSecurityContractTests(unittest.TestCase):
         self.assertEqual("UNSIGNED_SYNTHETIC", manifest["artifact_label"])
         self.assertEqual("unsigned", manifest["signing_state"])
         self.assertEqual("none", manifest["network_listener"])
-        self.assertEqual("filesystem_mailbox", manifest["transport"])
+        self.assertEqual("none", manifest["transport"])
+        self.assertFalse(manifest["ipc_enabled"])
+        self.assertEqual("6.22.2", manifest["pyinstaller_version"])
         self.assertFalse(manifest.get("synthetic_released", False))
         self.assertFalse(manifest["telemetry"])
+        ui_source = (
+            Path(__file__).parents[1] / "ui" / "tk_app.py"
+        ).read_text(encoding="utf-8")
+        self.assertIn("NON-PRODUCTION VALIDATION BUILD", ui_source)
 
     def test_exclusive_sources_have_no_network_or_browser_path(self):
         roots = [
@@ -173,9 +178,13 @@ class LocalSecurityContractTests(unittest.TestCase):
         self.assertEqual(0, exit_code)
         startup = json.loads(output.getvalue())
         self.assertEqual("UNSIGNED_SYNTHETIC", startup["build_label"])
+        self.assertEqual("none", startup["transport"])
+        self.assertFalse(startup["ipc_enabled"])
+        self.assertFalse(startup["frozen"])
         self.assertEqual("unlock", startup["startup_screen"]["screen_id"])
         self.assertTrue(startup["startup_screen"]["has_legal_button"])
 
 
 if __name__ == "__main__":
     unittest.main()
+

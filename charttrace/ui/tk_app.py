@@ -94,7 +94,9 @@ class ChartTraceWindow:
         ).pack(side=tk.LEFT)
         ttk.Label(
             chrome,
-            text=f"  {BUILD_LABEL} · signing_state=unsigned",
+            text=(
+                f"  {BUILD_LABEL} · UNSIGNED · NON-PRODUCTION VALIDATION BUILD"
+            ),
             foreground="#8a4b00",
         ).pack(side=tk.LEFT)
         self.legal_button = ttk.Button(
@@ -702,3 +704,4 @@ class ChartTraceWindow:
         state = tk.NORMAL if self.controller.unlocked else tk.DISABLED
         for button in self._nav_buttons.values():
             button.configure(state=state)
+

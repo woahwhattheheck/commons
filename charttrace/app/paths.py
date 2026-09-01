@@ -6,6 +6,7 @@ filesystems, URI-like paths, or symbolic-link traversal as local storage.
 
 import os
 import re
+import stat
 from pathlib import Path, PureWindowsPath
 from typing import Union
 
@@ -60,8 +61,19 @@ def _reject_lexical_remote(path: PathLike) -> str:
 
 def _reject_symlink_traversal(path: Path) -> None:
     for candidate in (path, *path.parents):
-        if candidate.is_symlink():
-            raise PathBoundaryError("Symbolic-link traversal is prohibited.")
+        try:
+            attributes = getattr(os.lstat(candidate), "st_file_attributes", 0)
+        except (FileNotFoundError, NotADirectoryError):
+            attributes = 0
+        except OSError as error:
+            raise PathBoundaryError(
+                "Unable to inspect the local path boundary."
+            ) from error
+        reparse_flag = getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400)
+        if candidate.is_symlink() or attributes & reparse_flag:
+            raise PathBoundaryError(
+                "Symbolic-link or Windows reparse-point traversal is prohibited."
+            )
 
 
 def _unescape_mount_path(value: str) -> str:
@@ -152,3 +164,4 @@ def validate_local_output_path(path: PathLike) -> Path:
     if candidate.exists() and not candidate.is_file():
         raise PathBoundaryError("Output path must be a local file.")
     return candidate
+

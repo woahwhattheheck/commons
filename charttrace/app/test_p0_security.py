@@ -1,7 +1,7 @@
 import json
 import os
+import subprocess
 import tempfile
-import threading
 import unittest
 from pathlib import Path
 
@@ -13,11 +13,12 @@ from charttrace.app import (
 )
 from charttrace.app.evidence import seal_sources
 from charttrace.app.ipc import (
+    IpcDisabledError,
     JsonIpcError,
     LocalIpcServer,
+    PRODUCT_IPC_ENABLED,
     decode_json_message,
     encode_json_message,
-    send_signed,
 )
 from charttrace.app.offline_counsel import CounselImportError
 from charttrace.app.paths import validate_local_file, validate_local_output_path
@@ -150,55 +151,64 @@ class JsonIpcTests(unittest.TestCase):
                 with self.assertRaises(JsonIpcError):
                     decode_json_message(payload)
 
-    def test_product_ipc_has_no_object_receive_call(self):
+    def test_product_ipc_is_retired_and_excluded(self):
         source = Path(__file__).with_name("ipc.py").read_text(encoding="utf-8")
         self.assertNotIn("multiprocessing", source)
         self.assertNotIn("import pickle", source)
-        self.assertIn("FILESYSTEM_MAILBOX", source)
+        self.assertFalse(PRODUCT_IPC_ENABLED)
+        self.assertIn("DISABLED_NOT_PRODUCT", source)
+        with self.assertRaises(IpcDisabledError):
+            LocalIpcServer("json-ipc-test")
 
-    def test_local_listener_receives_json_bytes(self):
-        server = LocalIpcServer("json-ipc-test")
-        result = []
-        errors = []
-        try:
-            server.start()
-            def receive():
-                try:
-                    result.append(server.receive_once())
-                except Exception as error:
-                    errors.append(error)
-            receiver = threading.Thread(target=receive, daemon=True)
-            receiver.start()
-            send_signed(server.address, "ping", "p0-test-nonce")
-            receiver.join(timeout=3)
-            self.assertFalse(receiver.is_alive())
-            self.assertEqual([], errors)
-            self.assertEqual("ping", result[0]["op"])
-        finally:
-            server.close()
+    def test_retired_ipc_has_no_product_call_site(self):
+        roots = [
+            Path(__file__).with_name("controller.py"),
+            Path(__file__).with_name("secure_controller.py"),
+            Path(__file__).parents[1] / "launcher.py",
+            Path(__file__).parents[1] / "ui" / "tk_app.py",
+        ]
+        for path in roots:
+            self.assertNotIn("charttrace.app.ipc", path.read_text(encoding="utf-8"))
 
 
 class LocalPathBoundaryTests(unittest.TestCase):
+    def _link_directory(self, link: Path, target: Path) -> None:
+        try:
+            link.symlink_to(target, target_is_directory=True)
+            return
+        except OSError as error:
+            if os.name != "nt" or getattr(error, "winerror", None) != 1314:
+                raise
+        completed = subprocess.run(
+            ["cmd.exe", "/d", "/c", "mklink", "/J", str(link), str(target)],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+        if completed.returncode != 0:
+            self.skipTest(f"Windows reparse-point creation failed: {completed.stderr}")
+
     def test_unc_and_uri_paths_are_rejected(self):
         for path in (r"\\server\share\record.pdf", "//server/share/record.pdf", "file://server/share/record.pdf", "https://example.invalid/record.pdf"):
             with self.subTest(path=path):
                 with self.assertRaises(PathBoundaryError):
                     validate_local_file(path)
 
-    @unittest.skipUnless(hasattr(os, "symlink"), "Symlinks are unavailable.")
-    def test_symlink_source_and_output_parent_are_rejected(self):
+    def test_symlink_or_junction_source_and_output_parent_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            source = root / "source.txt"
+            source_dir = root / "real-source"
+            source_dir.mkdir()
+            source = source_dir / "source.txt"
             source.write_bytes(b"synthetic")
-            source_link = root / "source-link.txt"
-            source_link.symlink_to(source)
+            source_link = root / "source-link"
+            self._link_directory(source_link, source_dir)
             with self.assertRaises(PathBoundaryError):
-                seal_sources([source_link])
+                seal_sources([source_link / "source.txt"])
             real_output = root / "real-output"
             real_output.mkdir()
             output_link = root / "output-link"
-            output_link.symlink_to(real_output, target_is_directory=True)
+            self._link_directory(output_link, real_output)
             with self.assertRaises(PathBoundaryError):
                 validate_local_output_path(output_link / "release.json")
 
@@ -210,12 +220,21 @@ class PackagingTruthTests(unittest.TestCase):
         self.assertEqual("UNSIGNED_SYNTHETIC", manifest["artifact_label"])
         self.assertEqual("unsigned", manifest["signing_state"])
         self.assertEqual("source-config-only-not-built", manifest["package_state"])
+        self.assertFalse(manifest["clean_vm_verified"])
+        self.assertFalse(manifest["production_distribution_authorized"])
         self.assertFalse(manifest["production_crypto"])
         self.assertFalse(manifest["synthetic_released"])
         installer = (package_root / "ChartTrace.iss").read_text(encoding="utf-8")
         self.assertIn("SignedUninstaller=no", installer)
         self.assertNotIn("SignTool=", installer)
+        build_script = (package_root / "build_windows.ps1").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("pip install", build_script)
+        self.assertIn("Pinned PyInstaller", build_script)
+        self.assertIn("Get-AuthenticodeSignature", build_script)
 
 
 if __name__ == "__main__":
     unittest.main()
+

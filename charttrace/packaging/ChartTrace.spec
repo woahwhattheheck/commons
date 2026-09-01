@@ -18,6 +18,7 @@ a = Analysis(
     hooksconfig={},
     runtime_hooks=[],
     excludes=[
+        "charttrace.app.ipc",
         "http.server",
         "pydoc",
         "webbrowser",
@@ -45,3 +46,4 @@ exe = EXE(
     entitlements_file=None,
     manifest=str(ROOT / "charttrace" / "packaging" / "charttrace.manifest"),
 )
+

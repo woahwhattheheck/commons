@@ -9,9 +9,15 @@
   "network_listener": "none",
   "package_state": "source-config-only-not-built",
   "platform": "windows",
+  "portable_bundle": true,
   "production_crypto": false,
+  "pyinstaller_version": "6.22.2",
   "signing_state": "unsigned",
   "synthetic_released": false,
   "telemetry": false,
-  "transport": "filesystem_mailbox"
+  "transport": "none",
+  "ipc_enabled": false,
+  "clean_vm_verified": false,
+  "production_distribution_authorized": false
 }
+
