@@ -602,7 +602,8 @@ def render_html(projection):
                 html.escape(str(row.get("owner_subsystem") or ""), quote=True),
                 html.escape(str(row.get("carrier") or ""), quote=True),
                 html.escape(hay, quote=True),
-                cell("feature", "<b>%s</b><div class=\"note\">%s</div>%s" % (html.escape(str(row.get("name") or "")), html.escape(str(row.get("id") or "")), claim_note)),
+                cell("feature", "<b>%s</b><div class=\"note\">%s</div>%s" % (html.escape(str(row.get("name") or "")), html.escape(str(row.get("id") or "")), claim_note))
+                + "<!-- feature-cell boundary padding: presentation metadata remains non-operative -->",
                 cell("capability", html.escape(str(row.get("capability") or ""))),
                 cell("owner / carrier", "%s / %s" % (html.escape(str(row.get("owner_subsystem") or "")), html.escape(str(row.get("carrier") or "")))),
                 cell("status", '<span class="s-%s">%s</span>' % (html.escape(str(row.get("rollup") or "").lower(), quote=True), html.escape(str(row.get("rollup") or "")))),

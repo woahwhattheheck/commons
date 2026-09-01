@@ -215,6 +215,7 @@ def test_append_only_and_deterministic():
         check("html links boards", "boards.html" in page)
         check("html does not remint features lane as tracker", "FEATURES board lane" in page)
         check("html no login gate", "login" not in page.lower())
+        check("html separates feature metadata from capability label", "feature-cell boundary padding" in page)
         check("json schema", json.loads(machine)["schema"] == ft.SCHEMA_PROJECTION)
         dup = os.path.join(tmp, ft.REGISTRY_DIR, "copy-feature-20260828-01.json")
         clash = dict(rec, name="Different name for same id xx")
