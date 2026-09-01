@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 7,
+ "n_open_prs": 9,
  "open_prs": [
   {
    "number": 7010,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7010",
    "base_freshness": {
     "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
-    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,7 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7009",
    "base_freshness": {
     "base_sha": "eb0257b2ad06b22da779d0606ea0076261ca83ad",
-    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -391,10 +391,90 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
    "base_freshness": {
     "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
-    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7019,
+   "author": "woahwhattheheck",
+   "title": "Land ACCOUNT_STATE_REVALIDATION read-only receipt",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7019",
+   "base_freshness": {
+    "base_sha": "c2e7619dafaaa564f94092c79d4f0b86642d1744",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7006,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane F \u2014 evidence-derived assurance (HOLD / no merge)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
+   "base_freshness": {
+    "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7015,
+   "author": "woahwhattheheck",
+   "title": "BevSource lab pilot QA genealogy LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
+   "base_freshness": {
+    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7020,
+   "author": "woahwhattheheck",
+   "title": "Lane B: fail-closed swarm, quarantine, and authority dates",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7020",
+   "base_freshness": {
+    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7021,
+   "author": "woahwhattheheck",
+   "title": "Denton bacteriology acceptance + reporting LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7021",
+   "base_freshness": {
+    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
    },
    "status": "CANDIDATE",
    "road": "pr",
@@ -406,61 +486,13 @@
    "title": "ChartTrace v1.1 Lane A evidence and storage contracts",
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7012",
    "base_freshness": {
-    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
-    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
+    "main_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7014,
-   "author": "woahwhattheheck",
-   "title": "Add Grok automation output harvester",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7014",
-   "base_freshness": {
-    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
-    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7015,
-   "author": "woahwhattheheck",
-   "title": "BevSource lab pilot QA genealogy LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
-   "base_freshness": {
-    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
-    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7006,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane F \u2014 evidence-derived assurance (HOLD / no merge)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
-   "base_freshness": {
-    "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
-    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
