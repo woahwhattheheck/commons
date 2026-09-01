@@ -1,0 +1,17 @@
+{
+  "authority_type": "federal_regulation",
+  "care_date_match_rule": "apply_only_if_care_date_within_effective_window; never project newer guidance backward",
+  "effective_from": "1986-06-17",
+  "effective_to": null,
+  "engineering_anchor_only": true,
+  "issuer": "Centers for Medicare & Medicaid Services (CMS)",
+  "jurisdiction": "US-federal",
+  "notes": "ENGINEERING ANCHOR ONLY — not a liability conclusion, standard-of-care finding, or negligence determination.",
+  "pack_id": "42_cfr_482_24",
+  "pinpoint": "42 CFR 482.24",
+  "primary_url": "https://www.ecfr.gov/current/title-42/chapter-IV/subchapter-G/part-482/subpart-C/section-482.24",
+  "retrieval_date": "2026-09-01",
+  "status": "context_only",
+  "supersession": "Use current eCFR text; superseded amendments must be dated against care dates.",
+  "supported_proposition": "Hospital medical-record content and authentication requirements define useful extraction domains for record completeness and authorship signals."
+}
