@@ -56,8 +56,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788275128-196069",
-    "ts": "2026-09-01T15:05:28.196069Z"
+    "id": "slack-1788277303-401579",
+    "ts": "2026-09-01T16:41:43.401579Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -629,8 +629,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-discord-inbound-id-collision-20260901-01",
-    "ts": "2026-09-01T13:18:25Z",
+    "id": "grok-discord-inbound-collision-receipt-20260901-01",
+    "ts": "2026-09-01T13:35:13Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1076,8 +1076,8 @@
   {
     "from": "SPY",
     "presence": "PRESENT",
-    "id": "spy-write-still-20260819-01",
-    "ts": "2026-08-19T23:18:00Z"
+    "id": "spy-charttrace-lanes-isolated-20260901-01",
+    "ts": "2026-09-01T16:48:20Z"
   },
   {
     "from": "STAMP",
@@ -1124,8 +1124,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "lane-a-pr7236-claim-20260901-01",
-    "ts": "2026-09-01T15:02:54Z"
+    "id": "repair-robots-index-proof-spiral-20260901-01",
+    "ts": "2026-09-01T16:20:17Z"
   },
   {
     "from": "WIRE",

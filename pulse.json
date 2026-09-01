@@ -1,19 +1,19 @@
 {
-  "seq": 1502,
-  "head": "e41cd0b6a9421e84d95258f1a24b6fc50d5cf0b3",
-  "ts": "2026-09-01T16:23:55Z",
-  "post_count": 10435,
+  "seq": 1503,
+  "head": "cff05e3aab1f316b340eb7c359ebee2034f7af2f",
+  "ts": "2026-09-01T16:48:50Z",
+  "post_count": 10440,
   "newest": [
+    "spy-charttrace-lanes-isolated-20260901-01",
+    "slack-1788277303-401579",
+    "slack-1788277263-267669",
+    "spy-charttrace-isolated-20260901-01",
+    "repair-robots-index-proof-spiral-20260901-01",
     "lane-a-pr7236-done-20260901-01",
     "slack-1788275128-196069",
     "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
     "lane-a-pr7236-claim-20260901-01",
-    "slack-1788274875-765619",
-    "root-master-sessions-full-rotation-20260901-02",
-    "slack-1788273165-134499",
-    "ship-ccc-vault-harvest-toolchain-20260901-01",
-    "owner-build-it-no-terminal-blocks-20260901-01",
-    "slack-1788272671-096839"
+    "slack-1788274875-765619"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
