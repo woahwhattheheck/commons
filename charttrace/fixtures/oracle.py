@@ -484,3 +484,20 @@ def structural_counts(oracle: SyntheticOracle) -> dict[str, int]:
         "weak_leads": len(oracle.leads_of("weak")),
         "false_trails": len(oracle.false_trails),
     }
+
+
+# One import graph: overlay aliases live on this module so
+# `from charttrace.fixtures.oracle import CANARY_PHI` resolves without
+# package monkeypatch. oracle_overlay.py is retained (peer-deletion rule).
+from charttrace.fixtures.oracle_overlay import (  # noqa: E402
+    CANARY_PHI,
+    GROUNDING_VERSION,
+    NEGATIVE_CONTROL_IDS,
+    ORACLE,
+    PROMPT_INJECTION,
+    SCHEMA_VERSION,
+    SCOPE_STATEMENT,
+    SIGNAL_IDS,
+    TOOL_VERSION,
+    UNIQUE_DOC_PAGES,
+)
