@@ -1,0 +1,39 @@
+{
+  "added": "2026-09-01",
+  "capability": "SC Labs multistate COA rule-version pre-release validator: reads CSV or JSON; joins sample, jurisdiction, license, matrix, custody, rule pack, requested panel, method/LOQ, accreditation, signer, and final COA evidence; writes deterministic RELEASEABLE/HOLD CSV and JSON, a human exception report, and a hash-linked append-only manifest. The locked fixture has 150 records across five rule packs, exactly 120 RELEASEABLE and 30 HOLD in six five-record reason families. It alters no result and executes no override or COA release.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "sc_labs_multistate_coa_rule_version_gate.py",
+    "test_sc_labs_multistate_coa_rule_version_gate.py",
+    "sc-labs-multistate-coa-rule-version-gate.html",
+    "revenue/sc_labs_multistate_coa_rule_version_gate/contract.json",
+    "revenue/sc_labs_multistate_coa_rule_version_gate/fixture.csv",
+    "revenue/sc_labs_multistate_coa_rule_version_gate/fixture.json",
+    "revenue/sc_labs_multistate_coa_rule_version_gate/receipt.json",
+    "revenue/sc_labs_multistate_coa_rule_version_gate/receipt.md",
+    "p/sc-labs-multistate-coa-rule-version-gate-01.md",
+    "features/registry/sc-labs-multistate-coa-rule-version-gate-01.json"
+  ],
+  "dependencies": [],
+  "id": "sc-labs-multistate-coa-rule-version-gate-01",
+  "name": "SC Labs multistate COA rule-version gate",
+  "next_gap": "Buyer-owned export schemas and approved rule-pack files are required before any production mapping. This synthetic validator makes no regulatory or release claim.",
+  "owner_subsystem": "revenue",
+  "public_entrypoint": "sc-labs-multistate-coa-rule-version-gate.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "sc-labs-multistate-coa-rule-version-gate.html",
+    "revenue/sc_labs_multistate_coa_rule_version_gate/contract.json",
+    "p/sc-labs-multistate-coa-rule-version-gate-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_sc_labs_multistate_coa_rule_version_gate.py",
+    "sc_labs_multistate_coa_rule_version_gate.py"
+  ]
+}
