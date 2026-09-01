@@ -449,22 +449,6 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 7015,
-   "author": "woahwhattheheck",
-   "title": "BevSource lab pilot QA genealogy LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
-   "base_freshness": {
-    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
    "number": 7021,
    "author": "woahwhattheheck",
    "title": "Denton bacteriology acceptance + reporting LIMS",
@@ -557,6 +541,22 @@
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7015,
+   "author": "woahwhattheheck",
+   "title": "BevSource lab pilot QA genealogy LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
+   "base_freshness": {
+    "base_sha": "3bb5154493efdbaf0670f217fe24fe1139eb1873",
+    "main_sha": "c695243f0e3b25b7d48b9551f684434d35a5b5ad",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
