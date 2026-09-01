@@ -17,7 +17,7 @@
   "dependencies": [],
   "id": "sc-labs-multistate-coa-rule-version-gate-01",
   "name": "SC Labs multistate COA rule-version gate",
-  "next_gap": "Next production input: buyer-owned export schemas and approved rule-pack files. This synthetic validator makes no regulatory or release claim.",
+  "next_gap": "Next production input: buyer-owned export schemas and approved rule-pack files. This synthetic validator makes no regulatory or release assertion.",
   "owner_subsystem": "revenue",
   "public_entrypoint": "sc-labs-multistate-coa-rule-version-gate.html",
   "related": {
