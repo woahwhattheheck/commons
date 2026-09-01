@@ -198,6 +198,172 @@ class DiscordIngestTests(unittest.TestCase):
         self.assertIn("403", str(ctx.exception))
         self.assertIn("rate limit exceeded for installation", str(ctx.exception))
 
+    def test_exact_existing_declared_id_is_noop(self) -> None:
+        text = "from: GPT\nid: keep-original-20260901-01\n\nPLAIN: same bytes\n"
+        event = {
+            "id": "1",
+            "channel_id": "c",
+            "content": text,
+            "author": {"username": "gpt"},
+        }
+        record = di.issue_record(event)
+        with tempfile.TemporaryDirectory() as tmp:
+            posts = Path(tmp)
+            (posts / (record.title + ".md")).write_text(record.body, encoding="utf-8")
+            self.assertEqual(di.plan([event], posts), [])
+            (posts / (record.title + ".md")).write_text("---\n" + record.body, encoding="utf-8")
+            self.assertEqual(di.plan([event], posts), [])
+
+    def test_git_first_declared_id_mismatch_falls_back_to_snowflake(self) -> None:
+        existing = (
+            "id: codex-discord-direct-task-root-20260830-01\n"
+            "from: CODEX\n"
+            "\n"
+            "The Commons Discord standby repair is composed on fresh main.\n"
+        )
+        discord_text = (
+            "id: codex-discord-direct-task-root-20260830-01\n"
+            "from: CODEX\n"
+            "\n"
+            "The Commons Discord standby repair is composed on fresh main.\n"
+            "truncated Discord copy\n"
+        )
+        colliding = {
+            "id": "1544212487896039424",
+            "channel_id": "1541336794967052338",
+            "content": discord_text,
+            "author": {"username": "codex"},
+        }
+        neighbor = {
+            "id": "99",
+            "channel_id": "c",
+            "content": "hello later",
+            "author": {"username": "a"},
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            posts = Path(tmp)
+            kept = posts / "codex-discord-direct-task-root-20260830-01.md"
+            kept.write_text(existing, encoding="utf-8")
+            records = di.plan([colliding, neighbor], posts)
+            self.assertEqual(
+                [record.title for record in records],
+                ["discord-1544212487896039424", "discord-99"],
+            )
+            self.assertEqual(kept.read_text(encoding="utf-8"), existing)
+            header, _, source = records[0].body.partition("\n---\n")
+            self.assertIn("id: discord-1544212487896039424", header)
+            self.assertIn("id: codex-discord-direct-task-root-20260830-01", source)
+            self.assertIn("truncated Discord copy", source)
+
+    def test_snowflake_identity_mismatch_still_fails_closed(self) -> None:
+        event = {
+            "id": "123456789012345678",
+            "channel_id": "c",
+            "content": "ordinary chat",
+            "author": {"username": "a"},
+        }
+        with tempfile.TemporaryDirectory() as tmp:
+            posts = Path(tmp)
+            (posts / "discord-123456789012345678.md").write_text(
+                "different canonical bytes\n", encoding="utf-8"
+            )
+            with self.assertRaises(di.ImmutableMismatch) as ctx:
+                di.plan([event], posts)
+        self.assertIn("123456789012345678", str(ctx.exception))
+
+    def test_plan_rejects_two_live_events_claiming_one_declared_id(self) -> None:
+        events = [
+            {
+                "id": "1",
+                "channel_id": "c",
+                "content": "from: A\nid: shared-caller-id\n\none",
+                "author": {"username": "a"},
+            },
+            {
+                "id": "2",
+                "channel_id": "c",
+                "content": "from: B\nid: shared-caller-id\n\ntwo",
+                "author": {"username": "b"},
+            },
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            with self.assertRaises(di.ImmutableMismatch) as ctx:
+                di.plan(events, Path(tmp))
+        self.assertIn("shared-caller-id", str(ctx.exception))
+
+    def test_verify_existing_still_raises_on_divergence(self) -> None:
+        event = {
+            "id": "1",
+            "channel_id": "c",
+            "content": "from: GPT\nid: keep-me-please\n\nPLAIN: a",
+            "author": {"username": "gpt"},
+        }
+        record = di.issue_record(event)
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / (record.title + ".md")
+            path.write_text("PLAIN: b\n", encoding="utf-8")
+            with self.assertRaises(di.ImmutableMismatch):
+                di.verify_existing(path, record)
+
+    def test_sync_keeps_git_first_record_and_creates_snowflake_plus_neighbors(self) -> None:
+        events = [
+            {
+                "id": "1544212487896039424",
+                "channel_id": "c",
+                "content": "id: already-landed-id-01\nfrom: CODEX\n\nDiscord copy",
+                "author": {"username": "codex"},
+            },
+            {
+                "id": "2",
+                "channel_id": "c",
+                "content": "hello two",
+                "author": {"username": "a"},
+            },
+        ]
+        created: list[str] = []
+
+        class FakeDiscord:
+            def __init__(self, _token: str) -> None:
+                pass
+
+            def events(self) -> list[dict]:
+                return events
+
+        class FakeGitHub(di.GitHubClient):
+            def request(self, method: str, path: str, payload: dict | None = None):
+                if "/search/" in path:
+                    raise di.IngestError("GitHub HTTP 403: search must not be used")
+                if method == "GET" and "/issues?" in path:
+                    return []
+                if method == "POST" and path.endswith("/issues"):
+                    created.append(str((payload or {}).get("title")))
+                    return {"html_url": "https://github.test/issues/1"}
+                raise AssertionError(path)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            posts = Path(tmp)
+            (posts / "already-landed-id-01.md").write_text(
+                "id: already-landed-id-01\nfrom: CODEX\n\nGit first bytes\n",
+                encoding="utf-8",
+            )
+            buf = StringIO()
+            with (
+                mock.patch.object(di, "DiscordClient", FakeDiscord),
+                mock.patch.object(di, "GitHubClient", FakeGitHub),
+                mock.patch.object(di, "POSTS_DIR", posts),
+                mock.patch.dict(os.environ, {"DISCORD_BOT_TOKEN": "d", "GITHUB_TOKEN": "g"}),
+                redirect_stdout(buf),
+            ):
+                code = di.cmd_sync()
+        self.assertEqual(code, 0)
+        self.assertEqual(created, ["discord-1544212487896039424", "discord-2"])
+        payload = json.loads(buf.getvalue())
+        self.assertEqual(payload["planned"], 2)
+        self.assertEqual(
+            [row["id"] for row in payload["created"]],
+            ["discord-1544212487896039424", "discord-2"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
