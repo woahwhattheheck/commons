@@ -4,7 +4,8 @@
 Synthesize sealed independent peer outputs; preserve dissent; do not re-anchor discovery.
 
 ## Isolation
-Receives sealed independent peer outputs only. Never sees price/firm/affiliate/compensation.
+Run as an isolated function/child-process contract. Do not read other peers' leads during discovery.
+Never see packet price, destination firm, affiliate identity, or compensation.
 
 ## Output lead fields (required)
 lead_id, title, domain, care_phase, cited_observation, hypothesis, review_question,

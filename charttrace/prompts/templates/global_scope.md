@@ -10,5 +10,4 @@ ChartTrace is an investigative research aid. It separates record-supported obser
 - Never receive or consider packet price, destination firm, affiliate identity, or compensation.
 - Absence claims must be corpus- and date-bounded (never "the patient was not told").
 - Separate RECORD_FACT, EXTERNAL_AUTHORITY, INVESTIGATIVE_LEAD, and COUNSEL_OR_CLINICIAN_REVIEW layers.
-
 Required lead field includes lead_id.
