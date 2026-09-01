@@ -206,6 +206,32 @@ class BevsourceClosednessReds(unittest.TestCase):
         self.assertEqual(len(journal["lots"]), 0)
         self.assertEqual(len(journal["reviews"]), 0)
 
+    def test_non_mapping_top_level_rows_reject_without_mutation(self) -> None:
+        for row in ("garbage", [1], 1, True):
+            with self.subTest(row=row):
+                journal = self._seed()
+                before = deepcopy(journal)
+                before_bytes = gate._canonical(journal).encode("utf-8")
+                before_hash = gate.journal_hash(journal)
+                try:
+                    effect = gate.ingest_row(journal, row)
+                except Exception as exc:  # pragma: no cover - explicit API guarantee
+                    self.fail(f"{row!r} escaped ingest_row: {exc!r}")
+                self.assertEqual(
+                    effect,
+                    {
+                        "kind": "REJECT",
+                        "ok": False,
+                        "code": "ATOMIC_COMMIT_FAILED",
+                        "row_id": "",
+                    },
+                )
+                self.assertEqual(journal, before)
+                self.assertEqual(
+                    gate._canonical(journal).encode("utf-8"), before_bytes
+                )
+                self.assertEqual(gate.journal_hash(journal), before_hash)
+
     def test_conflicting_replay_rejects_on_input_digest(self) -> None:
         journal = self._seed()
         before = deepcopy(journal)
