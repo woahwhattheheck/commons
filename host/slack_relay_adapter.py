@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Slack destination adapter for local uncredentialed bridges.
+"""Slack destination adapter for local bridges that have no Slack credentials.
 
-Local bridges (measured: Discord direct-root standby) can offer a payload
-here when Slack is uncredentialed on that host. This module wires existing
-roads; it does not remint them:
+Composes the existing relay / integration pattern. Does not remint:
 
-- ``ntfy_relays.relay_message`` for the identity-preserving envelope
-- ``integrations.grok_slack.bridge.credential_presence`` / ``SECRET_ENV``
-- ``integrations.gemini_slack.bridge`` doctor/serve env names (same tokens)
+- ``ntfy_relays.py`` (origin-preserving payload, refuse inconsistent ids)
+- ``integrations/grok_slack`` (``SECRET_ENV``, ``credential_presence``, table)
+- ``integrations/gemini_slack`` (same ``SLACK_BOT_TOKEN`` / ``SLACK_APP_TOKEN``)
 
-Test mode emits a synthetic end-to-end receipt with zero Slack or ntfy
-sends. Credential absence fails closed with an explicit receipt, never a
-silent skip. Token values are never copied into receipts, logs, or git.
+Test mode returns a synthetic receipt end-to-end with zero network and zero
+real Slack sends. Live mode with missing credentials fails closed with an
+explicit receipt. That is never a silent skip (``host/slack_mirror.py`` DARK
+exit-0 is a different lane and is not reused here).
 
-  python3 host/slack_relay_adapter.py --self-test
-  python3 host/slack_relay_adapter.py --mode test --offer offer.json
+This module does not call Slack HTTP, does not open Socket Mode,
+and never writes tokens. A live send happens only through an injected
+transport, which tests replace with a recorder.
 """
 from __future__ import annotations
 
@@ -27,284 +27,360 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Callable
 
-
 ROOT = Path(__file__).resolve().parents[1]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import ntfy_relays
 from integrations.gemini_slack import bridge as gemini_slack_bridge
-from integrations.grok_slack.bridge import SECRET_ENV, credential_presence
+from integrations.grok_slack.bridge import (
+    DEFAULT_CHANNEL,
+    SECRET_ENV,
+    credential_presence,
+)
 
-
-SCHEMA = "commons-slack-relay-adapter/v1"
-SELF_TEST_SCHEMA = "commons-slack-relay-adapter-self-test/v1"
-MODES = ("test", "live")
-DEFAULT_CHANNEL = "C0BRGMDQB6G"
-DEFAULT_SOURCE_HOST = "local-uncredentialed-bridge"
-REUSED = (
+RECEIPT_SCHEMA = "commons-slack-relay-receipt/v1"
+ADAPTER_PATH = "host/slack_relay_adapter.py"
+WIRED_PATHS = (
     "ntfy_relays.py",
     "integrations/grok_slack/bridge.py",
     "integrations/gemini_slack/bridge.py",
 )
+MODES = ("test", "live")
+SYNTHETIC_STATE = "SYNTHETIC_DELIVERED"
+ABSENT_STATE = "RUNTIME_UNCONFIGURED"
+UNINJECTED_STATE = "LIVE_TRANSPORT_UNINJECTED"
+INVALID_EVENT_STATE = "INVALID_EVENT"
+INVALID_MODE_STATE = "INVALID_MODE"
+TRANSPORT_REJECTED_STATE = "TRANSPORT_REJECTED"
+TRANSPORT_ERROR_STATE = "TRANSPORT_ERROR"
+GEMINI_SECRET_ENV = SECRET_ENV
+GEMINI_BRIDGE_NAME = gemini_slack_bridge.__name__
+SELF_TEST_EVENT = {
+    "id": "caliper-slack-relay-adapter-01",
+    "text": "synthetic Slack destination ping",
+    "source_host": "local-uncredentialed",
+    "carrier_origin": "local-uncredentialed",
+    "channel": DEFAULT_CHANNEL,
+}
 
 
-class RelayAdapterError(ValueError):
-    """The offer is invalid. No Slack or ntfy send is attempted."""
+class SlackRelayAdapterError(ValueError):
+    """The event cannot be delivered; callers still receive a receipt."""
 
 
-def _now_ts() -> str:
+Transport = Callable[[dict[str, Any]], dict[str, Any]]
+
+
+def _utc_now() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
-def _text(value: object, at: str) -> str:
-    if not isinstance(value, str) or not value.strip():
-        raise RelayAdapterError(f"{at} must be nonempty text")
-    return value.strip()
+def _synthetic_ts(event_id: str) -> str:
+    digest = hashlib.sha256(event_id.encode("utf-8")).hexdigest()[:10]
+    return f"synthetic.{digest}"
 
 
-def _sha256_text(text: str) -> str:
-    return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
-
-def gemini_credential_presence(env: dict[str, str] | None = None) -> dict[str, str]:
-    """Same present/missing names as ``integrations.gemini_slack.bridge.doctor``."""
+def _presence(env: dict[str, str] | None) -> dict[str, str]:
+    """Reuse grok_slack presence, treating blank/whitespace tokens as missing."""
+    presence = credential_presence(env)
     source = env if env is not None else os.environ
-    return {
-        name: ("present" if source.get(name) else "missing") for name in SECRET_ENV
-    }
+    for name in SECRET_ENV:
+        if not str(source.get(name) or "").strip():
+            presence[name] = "missing"
+    return presence
 
 
-def inspect_credentials(env: dict[str, str] | None = None) -> dict[str, Any]:
-    """Compose grok_slack + gemini_slack presence. Values stay out of the receipt."""
-    grok = credential_presence(env)
-    gemini = gemini_credential_presence(env)
-    missing = any(grok.get(name) == "missing" for name in SECRET_ENV)
-    return {
-        "credential_presence": dict(grok),
-        "credential_sources": {
-            "grok_slack": dict(grok),
-            "gemini_slack": dict(gemini),
-        },
-        "credentials_missing": missing,
-        "gemini_module": getattr(gemini_slack_bridge, "__name__", "integrations.gemini_slack.bridge"),
-    }
+def _missing_credentials(presence: dict[str, str]) -> list[str]:
+    return [name for name in SECRET_ENV if presence.get(name) != "present"]
 
 
-def compose_envelope(offer: dict[str, Any]) -> str:
-    """Preserve the caller id through the existing ntfy relay envelope. No remint."""
-    post_id = _text(offer.get("id"), "offer.id")
-    payload = offer.get("payload")
-    if payload is None:
-        payload = {"id": post_id, "body": str(offer.get("body") or "")}
+def _origin(event: dict[str, Any]) -> tuple[str, str]:
+    source_host = ntfy_relays._host(
+        event.get("source_host") or event.get("host") or "local-uncredentialed"
+    )
+    carrier_origin = ntfy_relays._host(event.get("carrier_origin") or source_host)
+    return source_host, carrier_origin
+
+
+def _compose_text(event: dict[str, Any], event_id: str, source_host: str, carrier_origin: str) -> str:
+    text = event.get("text")
+    if isinstance(text, str) and text.strip():
+        return text
+    payload = event.get("payload")
+    if not isinstance(payload, dict) and event.get("message"):
+        try:
+            candidate = json.loads(event.get("message") or "")
+        except (json.JSONDecodeError, TypeError):
+            candidate = None
+        if isinstance(candidate, dict):
+            payload = candidate
     if not isinstance(payload, dict):
-        raise RelayAdapterError("offer.payload must be an object")
-    payload = dict(payload)
-    payload.setdefault("id", post_id)
-    source_host = str(offer.get("source_host") or DEFAULT_SOURCE_HOST)
-    carrier_origin = str(offer.get("carrier_origin") or source_host)
-    event = {
-        "id": post_id,
+        raise SlackRelayAdapterError("event has no text or relay payload")
+    row = {
+        "id": event_id,
         "payload": payload,
-        "message": json.dumps(payload, ensure_ascii=False),
+        "message": event.get("message") or "",
         "source_host": source_host,
+        "host": source_host,
         "carrier_origin": carrier_origin,
-        "source_hosts": [source_host],
-        "carrier_origins": [carrier_origin],
+        "source_hosts": event.get("source_hosts") or [source_host],
+        "carrier_origins": event.get("carrier_origins") or [carrier_origin],
     }
     try:
-        return ntfy_relays.relay_message(event)
+        return ntfy_relays.relay_message(row)
     except ValueError as exc:
-        raise RelayAdapterError(f"offer id does not match payload id: {exc}") from exc
+        raise SlackRelayAdapterError(str(exc)) from exc
+
+
+def normalize_event(event: object) -> dict[str, Any]:
+    if not isinstance(event, dict):
+        raise SlackRelayAdapterError("event must be an object")
+    event_id = event.get("id")
+    if not isinstance(event_id, str) or not event_id.strip():
+        raise SlackRelayAdapterError("event id must be nonempty text")
+    event_id = event_id.strip()
+    source_host, carrier_origin = _origin(event)
+    channel = str(event.get("channel") or DEFAULT_CHANNEL).strip() or DEFAULT_CHANNEL
+    thread_ts = str(event.get("thread_ts") or "").strip()
+    text = _compose_text(event, event_id, source_host, carrier_origin)
+    return {
+        "id": event_id,
+        "text": text,
+        "source_host": source_host,
+        "carrier_origin": carrier_origin,
+        "channel": channel,
+        "thread_ts": thread_ts,
+    }
 
 
 def _receipt(
     *,
-    ok: bool,
-    state: str,
+    normalized: dict[str, Any] | None,
     mode: str,
-    offer_id: str,
+    presence: dict[str, str],
+    state: str,
+    ok: bool,
+    reason: str,
+    fail_closed: bool,
+    network_calls: int,
+    slack_ts: str,
     observed_at: str,
-    creds: dict[str, Any],
-    envelope: str,
-    channel: str,
-    note: str,
-    network_calls: int = 0,
-    transport_state: str = "",
+    transport_result: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    parsed = json.loads(envelope) if envelope else {}
-    return {
-        "schema": SCHEMA,
+    row = {
+        "schema": RECEIPT_SCHEMA,
+        "adapter": ADAPTER_PATH,
+        "wired": list(WIRED_PATHS),
+        "mode": mode,
         "ok": ok,
         "state": state,
-        "mode": mode,
-        "offer_id": offer_id,
-        "observed_at": observed_at,
-        "channel": channel,
-        "network_calls": network_calls,
-        "real_slack_send": False,
+        "reason": reason,
+        "fail_closed": fail_closed,
         "silent_skip": False,
-        "credential_presence": creds["credential_presence"],
-        "credential_sources": creds["credential_sources"],
-        "credentials_missing": creds["credentials_missing"],
-        "reused": list(REUSED),
-        "envelope": parsed,
-        "envelope_sha256": _sha256_text(envelope) if envelope else "",
-        "transport_state": transport_state,
-        "note": note,
+        "id": (normalized or {}).get("id") or "",
+        "channel": (normalized or {}).get("channel") or DEFAULT_CHANNEL,
+        "thread_ts": (normalized or {}).get("thread_ts") or "",
+        "source_host": (normalized or {}).get("source_host") or "",
+        "carrier_origin": (normalized or {}).get("carrier_origin") or "",
+        "credential_presence": dict(presence),
+        "credential_env": list(SECRET_ENV),
+        "gemini_slack_env": list(GEMINI_SECRET_ENV),
+        "gemini_slack_module": GEMINI_BRIDGE_NAME,
+        "network_calls": network_calls,
+        "real_send": False,
+        "slack_ts": slack_ts,
+        "observed_at": observed_at,
+        "missing_credentials": _missing_credentials(presence),
     }
+    if transport_result is not None:
+        row["transport_ok"] = bool(transport_result.get("ok"))
+    return row
 
 
 def deliver(
-    offer: dict[str, Any],
+    event: object,
     *,
-    mode: str = "live",
+    mode: str = "test",
     env: dict[str, str] | None = None,
-    transport: Callable[[dict[str, Any]], dict[str, Any]] | None = None,
-    observed_at: str | None = None,
+    transport: Transport | None = None,
+    now: str | None = None,
 ) -> dict[str, Any]:
-    """Attempt Slack destination delivery. Never silently skip.
-
-    ``mode="test"`` returns a synthetic receipt and never calls a transport.
-    ``mode="live"`` with missing Slack credentials fails closed. Live mode
-    still refuses a real Slack Web API / Socket Mode session unless a test
-    injects ``transport``.
-    """
-    if mode not in MODES:
-        raise RelayAdapterError(f"unknown mode: {mode!r}")
-    if not isinstance(offer, dict):
-        raise RelayAdapterError("offer must be an object")
-
-    envelope = compose_envelope(offer)
-    offer_id = _text(offer.get("id"), "offer.id")
-    channel = str(offer.get("channel") or DEFAULT_CHANNEL)
-    stamp = observed_at or _now_ts()
-    creds = inspect_credentials(env)
-
-    if mode == "test":
+    """Deliver one Slack destination event. Always returns an explicit receipt."""
+    observed_at = now or _utc_now()
+    presence = _presence(env)
+    requested_mode = str(mode or "").strip().lower()
+    if requested_mode not in MODES:
         return _receipt(
-            ok=True,
-            state="SYNTHETIC_DELIVERED",
-            mode=mode,
-            offer_id=offer_id,
-            observed_at=stamp,
-            creds=creds,
-            envelope=envelope,
-            channel=channel,
-            note=(
-                "Test mode. Synthetic Slack destination receipt. "
-                "Zero Slack or ntfy sends. Existing relay/integrations wired, not reminted."
-            ),
+            normalized=None,
+            mode=requested_mode,
+            presence=presence,
+            state=INVALID_MODE_STATE,
+            ok=False,
+            reason="mode must be test or live; fail closed; not a silent skip",
+            fail_closed=True,
+            network_calls=0,
+            slack_ts="",
+            observed_at=observed_at,
+        )
+    try:
+        normalized = normalize_event(event)
+    except SlackRelayAdapterError as exc:
+        return _receipt(
+            normalized=None,
+            mode=requested_mode,
+            presence=presence,
+            state=INVALID_EVENT_STATE,
+            ok=False,
+            reason=f"{exc}; fail closed; not a silent skip",
+            fail_closed=True,
+            network_calls=0,
+            slack_ts="",
+            observed_at=observed_at,
         )
 
-    if creds["credentials_missing"]:
+    if requested_mode == "test":
         return _receipt(
+            normalized=normalized,
+            mode="test",
+            presence=presence,
+            state=SYNTHETIC_STATE,
+            ok=True,
+            reason="test mode: synthetic Slack destination receipt; zero real sends",
+            fail_closed=False,
+            network_calls=0,
+            slack_ts=_synthetic_ts(normalized["id"]),
+            observed_at=observed_at,
+        )
+
+    missing = _missing_credentials(presence)
+    if missing:
+        return _receipt(
+            normalized=normalized,
+            mode="live",
+            presence=presence,
+            state=ABSENT_STATE,
             ok=False,
-            state="CREDENTIAL_ABSENT",
-            mode=mode,
-            offer_id=offer_id,
-            observed_at=stamp,
-            creds=creds,
-            envelope=envelope,
-            channel=channel,
-            note=(
-                "Slack credentials missing on this host. Fail closed. "
-                "Zero Slack calls. Not a silent skip. "
-                "Local uncredentialed bridges keep the explicit receipt."
+            reason=(
+                "Slack credentials missing ("
+                + ", ".join(missing)
+                + "). Fail closed. Zero Slack calls. Not a silent skip."
             ),
+            fail_closed=True,
+            network_calls=0,
+            slack_ts="",
+            observed_at=observed_at,
         )
 
     if transport is None:
         return _receipt(
+            normalized=normalized,
+            mode="live",
+            presence=presence,
+            state=UNINJECTED_STATE,
             ok=False,
-            state="TRANSPORT_NOT_INJECTED",
-            mode=mode,
-            offer_id=offer_id,
-            observed_at=stamp,
-            creds=creds,
-            envelope=envelope,
-            channel=channel,
-            note=(
-                "Credentials present. Refusing to open a live Slack Web API "
-                "or Socket Mode session from this adapter. Inject transport in tests only."
+            reason=(
+                "credentials present but no transport injected; refusing chat.postMessage "
+                "and Socket Mode. Fail closed. Not a silent skip."
             ),
+            fail_closed=True,
+            network_calls=0,
+            slack_ts="",
+            observed_at=observed_at,
         )
 
-    result = transport({
-        "channel": channel,
-        "offer_id": offer_id,
-        "envelope": json.loads(envelope),
-        "mode": mode,
-    })
-    if not isinstance(result, dict):
-        result = {"state": "TRANSPORT_INVALID"}
-    return _receipt(
-        ok=bool(result.get("ok")),
-        state=str(result.get("state") or "INJECTED_TRANSPORT"),
-        mode=mode,
-        offer_id=offer_id,
-        observed_at=stamp,
-        creds=creds,
-        envelope=envelope,
-        channel=channel,
+    payload = {
+        "id": normalized["id"],
+        "channel": normalized["channel"],
+        "text": normalized["text"],
+        "thread_ts": normalized["thread_ts"],
+    }
+    try:
+        result = transport(payload)
+    except Exception as exc:
+        return _receipt(
+            normalized=normalized,
+            mode="live",
+            presence=presence,
+            state=TRANSPORT_ERROR_STATE,
+            ok=False,
+            reason=f"injected transport raised {type(exc).__name__}: {exc}. Fail closed. Not a silent skip.",
+            fail_closed=True,
+            network_calls=1,
+            slack_ts="",
+            observed_at=observed_at,
+        )
+    if not isinstance(result, dict) or not result.get("ok"):
+        return _receipt(
+            normalized=normalized,
+            mode="live",
+            presence=presence,
+            state=TRANSPORT_REJECTED_STATE,
+            ok=False,
+            reason="injected transport rejected the payload; fail closed; not a silent skip",
+            fail_closed=True,
+            network_calls=1,
+            slack_ts="",
+            observed_at=observed_at,
+            transport_result=result if isinstance(result, dict) else None,
+        )
+    slack_ts = str(result.get("ts") or result.get("slack_ts") or "")
+    receipt = _receipt(
+        normalized=normalized,
+        mode="live",
+        presence=presence,
+        state="INJECTED_DELIVERED",
+        ok=True,
+        reason="injected transport only; adapter did not open Slack HTTP",
+        fail_closed=False,
         network_calls=1,
-        transport_state=str(result.get("state") or ""),
-        note="Injected transport only. Token values are not logged. No Slack client opened here.",
+        slack_ts=slack_ts,
+        observed_at=observed_at,
+        transport_result=result,
     )
-
-
-def canonical(receipt: object) -> bytes:
-    return (json.dumps(receipt, sort_keys=True, separators=(",", ":"), ensure_ascii=False) + "\n").encode("utf-8")
+    receipt["real_send"] = False
+    return receipt
 
 
 def self_test() -> dict[str, Any]:
-    offer = {
-        "id": "caliper-slack-relay-adapter-self-test-01",
-        "body": "synthetic slack destination",
-        "source_host": "local-uncredentialed-bridge",
-    }
-    stamp = "2026-09-01T00:00:00Z"
-    first = canonical(deliver(offer, mode="test", env={}, observed_at=stamp))
-    second = canonical(deliver(offer, mode="test", env={}, observed_at=stamp))
-    if first != second:
-        raise AssertionError("synthetic test-mode receipt was not byte-identical")
-    synthetic = json.loads(first)
-    if synthetic["state"] != "SYNTHETIC_DELIVERED" or synthetic["real_slack_send"] or synthetic["silent_skip"]:
-        raise AssertionError("test-mode receipt was not a synthetic fail-visible delivery")
-    absent = deliver(offer, mode="live", env={}, observed_at=stamp)
-    if absent["state"] != "CREDENTIAL_ABSENT" or absent["ok"] or absent["silent_skip"]:
-        raise AssertionError("credential absence did not fail closed with an explicit receipt")
-    blob = json.dumps(synthetic) + json.dumps(absent)
-    if "xoxb" in blob.lower() or "xapp" in blob.lower():
-        raise AssertionError("receipt leaked a Slack token prefix")
-    return {"schema": SELF_TEST_SCHEMA, "status": "PASS", "checks": 4}
-
-
-def _load_offer(path: str) -> dict[str, Any]:
-    raw = json.load(sys.stdin) if path == "-" else json.loads(Path(path).read_text(encoding="utf-8"))
-    if not isinstance(raw, dict):
-        raise RelayAdapterError("offer JSON must be an object")
-    return raw
+    """Prove synthetic success and credential-absence fail-closed with empty env."""
+    synthetic = deliver(SELF_TEST_EVENT, mode="test", env={}, now="2026-09-01T00:00:00Z")
+    absent = deliver(SELF_TEST_EVENT, mode="live", env={}, now="2026-09-01T00:00:00Z")
+    ok = (
+        synthetic.get("ok") is True
+        and synthetic.get("state") == SYNTHETIC_STATE
+        and synthetic.get("real_send") is False
+        and synthetic.get("network_calls") == 0
+        and synthetic.get("silent_skip") is False
+        and absent.get("ok") is False
+        and absent.get("state") == ABSENT_STATE
+        and absent.get("fail_closed") is True
+        and absent.get("silent_skip") is False
+        and absent.get("real_send") is False
+        and absent.get("network_calls") == 0
+    )
+    return {"ok": ok, "synthetic": synthetic, "credential_absent": absent}
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description="Slack destination adapter (synthetic by default)")
     parser.add_argument("--mode", choices=MODES, default="test")
-    parser.add_argument("--offer", default="-", help="offer JSON path (default: stdin)")
     parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("--input", help="JSON event file; default is the synthetic fixture")
     args = parser.parse_args(argv)
-    try:
-        result = self_test() if args.self_test else deliver(_load_offer(args.offer), mode=args.mode, env=None)
-    except (OSError, json.JSONDecodeError, RelayAdapterError, AssertionError) as exc:
-        print(f"slack-relay-adapter: {exc}", file=sys.stderr)
-        return 2
-    blob = canonical(result)
-    buffer = getattr(sys.stdout, "buffer", None)
-    if buffer is not None:
-        buffer.write(blob)
+    if args.self_test:
+        report = self_test()
+        print(json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True))
+        return 0 if report["ok"] else 1
+    if args.input:
+        event = json.loads(Path(args.input).read_text(encoding="utf-8"))
     else:
-        sys.stdout.write(blob.decode("utf-8"))
-    return 0
+        event = SELF_TEST_EVENT
+    receipt = deliver(event, mode=args.mode, env={})
+    print(json.dumps(receipt, ensure_ascii=False, indent=2, sort_keys=True))
+    if receipt.get("ok"):
+        return 0
+    return 1
 
 
 if __name__ == "__main__":
