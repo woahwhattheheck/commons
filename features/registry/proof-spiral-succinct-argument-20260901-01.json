@@ -1,0 +1,33 @@
+{
+  "added": "2026-09-01",
+  "capability": "Working succinct-argument runner: Merkle-committed pi/mod execution trace, adjacent-step openings, naive-sampling miss of a million-step needle, and PCP 3-coloring amplification so a verifier neither redoes the work nor blindly trusts.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "proof_spiral_succinct_argument.py",
+    "test_proof_spiral_succinct_argument.py",
+    "proof-spiral-succinct-argument.html",
+    "p/proof-spiral-succinct-argument-20260901-01.md"
+  ],
+  "dependencies": [],
+  "id": "proof-spiral-succinct-argument-20260901-01",
+  "name": "Proof spiral succinct argument",
+  "next_gap": "Keep HOLD / BUILD-AND-VERIFY; do not invent buyers, cash, or outreach. Projector may pick this registry row on the next --write.",
+  "owner_subsystem": "proof",
+  "public_entrypoint": "proof-spiral-succinct-argument.html",
+  "related": {
+    "boards": false,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "proof-spiral-succinct-argument.html",
+    "p/proof-spiral-succinct-argument-20260901-01.md",
+    "https://youtu.be/jVHeHmufZhk"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_proof_spiral_succinct_argument.py",
+    "proof_spiral_succinct_argument.py"
+  ]
+}
