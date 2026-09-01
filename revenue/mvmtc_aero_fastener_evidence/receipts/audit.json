@@ -1,0 +1,43 @@
+{
+  "audit_sha256": "722ecae70d14f81049346418a001e2d26de6ab26a6f13f99e40cee2233621c64",
+  "counts": {
+    "actual": {
+      "autonomous_released": 0,
+      "duplicate_records": 0,
+      "held_downstream": 0,
+      "held_worksheets": 0,
+      "holds": 25,
+      "human_released": 75,
+      "input_lots": 100,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "ready": 75,
+      "valid": 75,
+      "worksheets_created": 75
+    },
+    "expected": {
+      "autonomous_released": 0,
+      "duplicate_records": 0,
+      "held_downstream": 0,
+      "held_worksheets": 0,
+      "holds": 25,
+      "human_released": 75,
+      "input_lots": 100,
+      "live_reports": 0,
+      "live_tests": 0,
+      "production_writes": 0,
+      "ready": 75,
+      "valid": 75,
+      "worksheets_created": 75
+    },
+    "match": true
+  },
+  "hold_code_counts": {
+    "HOLD_CHEMISTRY_MATERIAL_MISMATCH": 4,
+    "HOLD_DUPLICATE_CONTAINER": 5,
+    "HOLD_MISSING_PO_QUOTE": 8,
+    "HOLD_OUT_OF_SCOPE_METHOD": 4,
+    "HOLD_QC_FAILURE": 4
+  }
+}

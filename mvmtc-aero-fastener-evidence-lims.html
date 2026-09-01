@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>MVMTC aerospace fastener/additive-coupon evidence LIMS — Commons</title>
+<style>
+:root{color-scheme:light;--paper:#f4efe6;--ink:#231c16;--mute:#6a5c4f;--line:#d2c4b0;--card:#fffaf2;--clay:#8a4b24;--ok:#1f7a4d}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#e4d3b8 0%,var(--paper) 32%);color:var(--ink);font:16px/1.5 Georgia,serif}
+main{max-width:860px;margin:auto;padding:28px 16px 72px}a{color:var(--clay)}
+.kicker{letter-spacing:.14em;text-transform:uppercase;font:12px/1.2 system-ui,sans-serif;color:var(--clay)}
+h1{font-size:clamp(1.8rem,5vw,2.8rem);line-height:.95;margin:.2em 0 .35em}
+.lede{color:var(--mute);max-width:720px}
+.bound{border-left:5px solid var(--ok);padding:8px 0 8px 14px}
+.card{background:var(--card);border:1px solid var(--line);padding:16px;margin:16px 0}
+code,pre{font:13px/1.4 ui-monospace,monospace}pre{background:#231c16;color:#f4efe6;padding:12px;overflow:auto}
+.small{color:var(--mute);font:13px/1.4 system-ui,sans-serif}
+</style></head><body><main>
+<nav><a href="./index.html">← Commons</a></nav>
+<p class="kicker">Commons · mvmtc-aero-fastener-evidence-lims-01 · HOLD / BUILD-AND-VERIFY</p>
+<h1>The runner is the product. This page is a window.</h1>
+<p class="lede">Craig A. Riviello / Miami Valley Materials Testing Center. Quote/PO + sample/container accession → applicable A2LA scope/method revision → mechanical/chemical/metallography job → QC → staged evidence pack for fasteners and additive coupons. No controlled drawings or flight data. No login. No outreach.</p>
+<p class="bound"><strong>Official command:</strong> <code>python3 mvmtc_aero_fastener_evidence.py</code><br>
+<strong>Official binary:</strong> <code>python3 test_mvmtc_aero_fastener_evidence.py</code></p>
+<section class="card">
+<h2>What the runner does</h2>
+<p>Loads 100 synthetic lots. Accessions 75 valid lots and creates staged worksheets. Parks 25 predefined omissions/discrepancies under the exact HOLD code (8 missing PO/quote, 5 duplicate containers, 4 out-of-scope methods, 4 chemistry/material mismatches, 4 QC failures). Holds create zero worksheets and zero downstream activity. Replay adds zero records and changes no state. Named human <code>SYN-MVMTC-RELEASE-OFFICER</code> is mandatory.</p>
+<pre>python3 mvmtc_aero_fastener_evidence.py
+python3 mvmtc_aero_fastener_evidence.py --replay
+python3 test_mvmtc_aero_fastener_evidence.py</pre>
+<p class="small">Written artifacts: <a href="./revenue/mvmtc_aero_fastener_evidence/fixture.json">fixture.json</a> · <a href="./revenue/mvmtc_aero_fastener_evidence/state/journal.json">state/journal.json</a> · <a href="./revenue/mvmtc_aero_fastener_evidence/receipts/run.json">receipts/run.json</a> · <a href="./revenue/mvmtc_aero_fastener_evidence/receipts/lots.json">lots.json</a> · <a href="./revenue/mvmtc_aero_fastener_evidence/receipts/holds.json">holds.json</a> · <a href="./revenue/mvmtc_aero_fastener_evidence/receipts/worksheets.json">worksheets.json</a> · <a href="./revenue/mvmtc_aero_fastener_evidence/receipts/audit.json">audit.json</a></p>
+</section>
+<section class="card">
+<h2>Contract</h2>
+<ul>
+<li>100 synthetic lots / 75 valid / 25 HOLD</li>
+<li>Exact HOLD codes: HOLD_MISSING_PO_QUOTE (8), HOLD_DUPLICATE_CONTAINER (5), HOLD_OUT_OF_SCOPE_METHOD (4), HOLD_CHEMISTRY_MATERIAL_MISMATCH (4), HOLD_QC_FAILURE (4)</li>
+<li>Zero worksheets created for held lots; zero downstream execution while held</li>
+<li>Scope, method, specimen, raw value, unit, and source hashes preserved</li>
+<li>Idempotent replay; deterministic audit hash</li>
+<li>Named human release; autonomous release denied</li>
+</ul>
+<p class="small">PRE-SALE TRANSPORT: NONE. cash_usd = 0. Boundary: No controlled drawings, weapon, vehicle, propulsion or mission data.</p>
+</section>
+</main></body></html>

@@ -1,0 +1,17 @@
+{
+  "a2la_cert": "A2LA-CERT-2394.01",
+  "buyer": "Craig A. Riviello / Miami Valley Materials Testing Center",
+  "cash_usd": 0,
+  "demand_id": "mvmtc-aero-fastener-evidence-lims-01",
+  "facility": "SYN-MVMTC-VANDALIA-OH",
+  "interfaces": "SYNTHETIC_READ_ONLY",
+  "live_lims": false,
+  "official_binary": "python3 mvmtc_aero_fastener_evidence.py",
+  "official_test": "python3 test_mvmtc_aero_fastener_evidence.py",
+  "page": "mvmtc-aero-fastener-evidence-lims.html",
+  "pre_sale_transport": "NONE",
+  "production_deployment": false,
+  "schema": "commons-mvmtc-aero-fastener-evidence-lims/v1",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "synthetic": true
+}

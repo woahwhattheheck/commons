@@ -1,0 +1,502 @@
+[
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-076",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-076",
+    "method_key": "ASTM_E384_MICROINDENTATION",
+    "po_number": "",
+    "quote_number": "Q-2026-MVMTC-0076",
+    "released": false,
+    "released_by": null,
+    "source_hash": "91e5bb0a608001915ce6e61cde7f7125999ec813951b8e49b68bf04e09634c4a",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-077",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-077",
+    "method_key": "ASTM_E3_METALLOGRAPHY",
+    "po_number": "PO-AERO-00077",
+    "quote_number": "",
+    "released": false,
+    "released_by": null,
+    "source_hash": "4f4c4642ae5fd364b44c227d2938b9c1475e3546a5c1e89e7963157607a184ef",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-078",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-078",
+    "method_key": "ASTM_E1479_OES_ICP_CHEM",
+    "po_number": "",
+    "quote_number": "Q-2026-MVMTC-0078",
+    "released": false,
+    "released_by": null,
+    "source_hash": "1cce00bb1b2362fbb3445e8ba91c53e4fef21e18d42896fbdc8e84a275c4c30c",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-079",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-079",
+    "method_key": "ASTM_F606_TENSILE",
+    "po_number": "PO-AERO-00079",
+    "quote_number": "",
+    "released": false,
+    "released_by": null,
+    "source_hash": "5449ca0de9acc3fbcac02fd0468370d8e655eb727b4a62ba4edd0fb328646378",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-080",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-080",
+    "method_key": "ASTM_E8_COUPON_TENSILE",
+    "po_number": "",
+    "quote_number": "Q-2026-MVMTC-0080",
+    "released": false,
+    "released_by": null,
+    "source_hash": "71e7d991146377e02b00b73b2b4689924288462325525ec6ebe89a01296cc923",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-081",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-081",
+    "method_key": "ASTM_E18_ROCKWELL_HARDNESS",
+    "po_number": "PO-AERO-00081",
+    "quote_number": "",
+    "released": false,
+    "released_by": null,
+    "source_hash": "841c8135818d19e50e1ad508b19cea865c458df83a2aefea72199c589cbbc219",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-082",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-082",
+    "method_key": "ASTM_E384_MICROINDENTATION",
+    "po_number": "",
+    "quote_number": "Q-2026-MVMTC-0082",
+    "released": false,
+    "released_by": null,
+    "source_hash": "99688be5590c3a628485d9a169ee9eda821642c057699c15bd349a405c34116e",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_MISSING_PO_QUOTE",
+    "container_id": "MVMTC-CONT-083",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-083",
+    "method_key": "ASTM_E3_METALLOGRAPHY",
+    "po_number": "PO-AERO-00083",
+    "quote_number": "",
+    "released": false,
+    "released_by": null,
+    "source_hash": "4926005affc599954d2b8a8134e908379a4d44101c5d3d8416389defd857f93b",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "MVMTC-CONT-001",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-084",
+    "method_key": "ASTM_E1479_OES_ICP_CHEM",
+    "po_number": "PO-AERO-00084",
+    "quote_number": "Q-2026-MVMTC-0084",
+    "released": false,
+    "released_by": null,
+    "source_hash": "b1fa595d6f9aa67500ac576a6fc8038ba1793cc9b250ebd679b2d7e37faa598e",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "MVMTC-CONT-002",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-085",
+    "method_key": "ASTM_F606_TENSILE",
+    "po_number": "PO-AERO-00085",
+    "quote_number": "Q-2026-MVMTC-0085",
+    "released": false,
+    "released_by": null,
+    "source_hash": "4c4dda224d94853c2707dbd315f62ee6af2d55b61e99c1ca1f53d1c0a581648b",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "MVMTC-CONT-003",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-086",
+    "method_key": "ASTM_E8_COUPON_TENSILE",
+    "po_number": "PO-AERO-00086",
+    "quote_number": "Q-2026-MVMTC-0086",
+    "released": false,
+    "released_by": null,
+    "source_hash": "1609cd869e967004f820706ed4fd6f1bf1c0587a284b57e69ffa82c79f205487",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "MVMTC-CONT-004",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-087",
+    "method_key": "ASTM_E18_ROCKWELL_HARDNESS",
+    "po_number": "PO-AERO-00087",
+    "quote_number": "Q-2026-MVMTC-0087",
+    "released": false,
+    "released_by": null,
+    "source_hash": "9712938d9063ada3c82daef5b3b67305480ed69e75ff6cf565f318634ee6a0b8",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_DUPLICATE_CONTAINER",
+    "container_id": "MVMTC-CONT-005",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-088",
+    "method_key": "ASTM_E384_MICROINDENTATION",
+    "po_number": "PO-AERO-00088",
+    "quote_number": "Q-2026-MVMTC-0088",
+    "released": false,
+    "released_by": null,
+    "source_hash": "d462441cfa96ce3b7cc4bbb86bba281f57aec5837577ab344f55140bce358c0b",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_OUT_OF_SCOPE_METHOD",
+    "container_id": "MVMTC-CONT-089",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-089",
+    "method_key": "UNAPPROVED_CUSTOM_SONIC",
+    "po_number": "PO-AERO-00089",
+    "quote_number": "Q-2026-MVMTC-0089",
+    "released": false,
+    "released_by": null,
+    "source_hash": "327612bd05c673b1bef9efbe9de7564dde4d5d04fdab5a50adf79cbe6a386dc5",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_OUT_OF_SCOPE_METHOD",
+    "container_id": "MVMTC-CONT-090",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-090",
+    "method_key": "UNACCREDITED_PROPULSION_TORQUE",
+    "po_number": "PO-AERO-00090",
+    "quote_number": "Q-2026-MVMTC-0090",
+    "released": false,
+    "released_by": null,
+    "source_hash": "9cad22839a7b2ec43d4abdad9c4dd462a17100f624d62d8f69445770dbdda394",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_OUT_OF_SCOPE_METHOD",
+    "container_id": "MVMTC-CONT-091",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-091",
+    "method_key": "UNAPPROVED_CUSTOM_SONIC",
+    "po_number": "PO-AERO-00091",
+    "quote_number": "Q-2026-MVMTC-0091",
+    "released": false,
+    "released_by": null,
+    "source_hash": "3afed30093da94b62c86bae3ca8d5d1e16d3da9fc551b7f895256806bf557b13",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_OUT_OF_SCOPE_METHOD",
+    "container_id": "MVMTC-CONT-092",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-092",
+    "method_key": "UNACCREDITED_PROPULSION_TORQUE",
+    "po_number": "PO-AERO-00092",
+    "quote_number": "Q-2026-MVMTC-0092",
+    "released": false,
+    "released_by": null,
+    "source_hash": "2b7303b0d3072f8f472838453d9f8ddf3f461db89d61464a4f23bb148f276841",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_CHEMISTRY_MATERIAL_MISMATCH",
+    "container_id": "MVMTC-CONT-093",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-093",
+    "method_key": "ASTM_E18_ROCKWELL_HARDNESS",
+    "po_number": "PO-AERO-00093",
+    "quote_number": "Q-2026-MVMTC-0093",
+    "released": false,
+    "released_by": null,
+    "source_hash": "d6f9fd161d38c35a5f0943501c1fec89f6a58993b019843ff059a0ce9bf265f9",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_CHEMISTRY_MATERIAL_MISMATCH",
+    "container_id": "MVMTC-CONT-094",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-094",
+    "method_key": "ASTM_E384_MICROINDENTATION",
+    "po_number": "PO-AERO-00094",
+    "quote_number": "Q-2026-MVMTC-0094",
+    "released": false,
+    "released_by": null,
+    "source_hash": "5e9754378fd950f2bba5c1d6ba1fa2f7a559c84f863422d11f066c11dcf9e745",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_CHEMISTRY_MATERIAL_MISMATCH",
+    "container_id": "MVMTC-CONT-095",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-095",
+    "method_key": "ASTM_E3_METALLOGRAPHY",
+    "po_number": "PO-AERO-00095",
+    "quote_number": "Q-2026-MVMTC-0095",
+    "released": false,
+    "released_by": null,
+    "source_hash": "081d6ccbbde13701cf891855b2635c48b1b2308fa0ba650e916a1e2bcc75649d",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_CHEMISTRY_MATERIAL_MISMATCH",
+    "container_id": "MVMTC-CONT-096",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-096",
+    "method_key": "ASTM_E1479_OES_ICP_CHEM",
+    "po_number": "PO-AERO-00096",
+    "quote_number": "Q-2026-MVMTC-0096",
+    "released": false,
+    "released_by": null,
+    "source_hash": "2126b689e5b0dc143b27183eec64b613c034050228e4a78142687f92e610bfb7",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_QC_FAILURE",
+    "container_id": "MVMTC-CONT-097",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-097",
+    "method_key": "ASTM_F606_TENSILE",
+    "po_number": "PO-AERO-00097",
+    "quote_number": "Q-2026-MVMTC-0097",
+    "released": false,
+    "released_by": null,
+    "source_hash": "37d6e2ec99730f8efa2977eea92a209566bdf713b6d3d3f9495483edb4bd6c69",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_QC_FAILURE",
+    "container_id": "MVMTC-CONT-098",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-098",
+    "method_key": "ASTM_E8_COUPON_TENSILE",
+    "po_number": "PO-AERO-00098",
+    "quote_number": "Q-2026-MVMTC-0098",
+    "released": false,
+    "released_by": null,
+    "source_hash": "5784a1f39953eac77499f85e1a90940b6cfd22cfc951b4ed6a1c7c0207fc8653",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_QC_FAILURE",
+    "container_id": "MVMTC-CONT-099",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-099",
+    "method_key": "ASTM_E18_ROCKWELL_HARDNESS",
+    "po_number": "PO-AERO-00099",
+    "quote_number": "Q-2026-MVMTC-0099",
+    "released": false,
+    "released_by": null,
+    "source_hash": "bf03bdc2131845119356863f5e4cc7bdc9da5a21d64de5f3314e6c2ae99e0ede",
+    "state": "HOLD",
+    "worksheet_created": false
+  },
+  {
+    "code": "HOLD_QC_FAILURE",
+    "container_id": "MVMTC-CONT-100",
+    "downstream": {
+      "evidence_pack_staged": false,
+      "metallography_staged": false,
+      "report_released": false,
+      "testing_started": false
+    },
+    "live_test": false,
+    "lot_id": "MVMTC-LOT-100",
+    "method_key": "ASTM_E384_MICROINDENTATION",
+    "po_number": "PO-AERO-00100",
+    "quote_number": "Q-2026-MVMTC-0100",
+    "released": false,
+    "released_by": null,
+    "source_hash": "c316e3cd8be3115e53cc982429ef07610035832e4d0fe1017db9c16f3630036e",
+    "state": "HOLD",
+    "worksheet_created": false
+  }
+]
