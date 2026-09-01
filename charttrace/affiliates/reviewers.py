@@ -16,10 +16,13 @@ CRITICAL INVARIANTS:
 
 from __future__ import annotations
 
+import re
 from dataclasses import asdict, dataclass, field
 from decimal import Decimal, ROUND_HALF_UP
 from enum import Enum
 from typing import Any, Dict, List, Optional, Sequence
+
+from charttrace.pricing.ledgers import reject_prohibited_payload
 
 
 class ReviewerQATier(str, Enum):
@@ -69,12 +72,27 @@ class ReviewerAuditProfile:
     current_qa_tier: ReviewerQATier
 
     def __post_init__(self) -> None:
+        _require_legal_entity_id(self.reviewer_id, "reviewer_id")
+        _require_legal_entity_id(self.reviewer_firm_id, "reviewer_firm_id")
+        if self.total_audited_reviews < 0:
+            raise ValueError("total_audited_reviews cannot be negative.")
         if not (0.0 <= self.accuracy_rate <= 1.0):
             raise ValueError("accuracy_rate must be between 0.0 and 1.0")
         if not (0.0 <= self.citation_precision <= 1.0):
             raise ValueError("citation_precision must be between 0.0 and 1.0")
         if not (0.0 <= self.disposition_concordance <= 1.0):
             raise ValueError("disposition_concordance must be between 0.0 and 1.0")
+
+
+_ENTITY_ID_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]{1,63}$")
+
+
+def _require_legal_entity_id(value: str, field_name: str) -> str:
+    if not isinstance(value, str) or not value.strip() or value != value.strip():
+        raise AffiliateConflictError(f"{field_name} must be a nonempty canonical legal-entity ID.")
+    if not _ENTITY_ID_RE.match(value):
+        raise AffiliateConflictError(f"{field_name} is not a canonical legal-entity ID.")
+    return value
 
 
 def evaluate_rolling_qa_tier(
@@ -155,49 +173,55 @@ def calculate_affiliate_review_fee(
     - Reviewer firm != recipient firm
     - No variable payout on packet score, bad conduct, acceptance, retainers, or recovery.
     """
-    # 1. Strict firm separation: Reviewer firm != recipient firm
-    if reviewer_profile.reviewer_firm_id.strip() and recipient_firm_id.strip():
-        if reviewer_profile.reviewer_firm_id.strip().lower() == recipient_firm_id.strip().lower():
-            raise AffiliateConflictError(
-                f"Conflict of Interest: Reviewer firm '{reviewer_profile.reviewer_firm_id}' "
-                f"cannot be the same as recipient firm '{recipient_firm_id}' on matter '{matter_id}'."
-            )
+    recipient = _require_legal_entity_id(recipient_firm_id, "recipient_firm_id")
+    if reviewer_profile.reviewer_id.lower() == recipient.lower():
+        raise AffiliateConflictError("Reviewer and recipient legal-entity IDs must differ.")
+    if reviewer_profile.reviewer_firm_id.lower() == recipient.lower():
+        raise AffiliateConflictError(
+            f"Conflict of Interest: Reviewer firm '{reviewer_profile.reviewer_firm_id}' "
+            f"cannot be the same as recipient firm '{recipient}' on matter '{matter_id}'."
+        )
 
-    # 2. Check forbidden incentive payloads
+    derived_tier = evaluate_rolling_qa_tier(
+        reviewer_profile.total_audited_reviews,
+        reviewer_profile.accuracy_rate,
+        reviewer_profile.citation_precision,
+        reviewer_profile.disposition_concordance,
+    )
+    if reviewer_profile.current_qa_tier is not derived_tier:
+        raise ReviewerIncentiveViolation(
+            "Caller QA tier does not match immutable prior audited work."
+        )
+
     if forbidden_incentive_check:
-        for key in forbidden_incentive_check:
-            k = key.lower()
-            if any(
-                bad in k
-                for bad in [
-                    "recovery",
-                    "settlement",
-                    "damages",
-                    "contingency",
-                    "retainer",
-                    "acceptance",
-                    "bad_conduct",
-                    "juice",
-                    "packet_score",
-                    "case_value",
-                    "legal_fee",
-                    "legal_fees",
-                    "success",
-                    "destination",
-                    "severity",
-                    "firm_interest",
-                ]
-            ):
-                raise ReviewerIncentiveViolation(
-                    f"Forbidden reviewer incentive input: '{key}'. "
-                    "Reviewer compensation must never depend on outcome, score, acceptance, or recovery."
-                )
+        reject_prohibited_payload(
+            forbidden_incentive_check,
+            [
+                "recovery",
+                "settlement",
+                "damages",
+                "contingency",
+                "retainer",
+                "acceptance",
+                "bad_conduct",
+                "juice",
+                "packet_score",
+                "case_value",
+                "legal_fee",
+                "legal_fees",
+                "success",
+                "destination",
+                "severity",
+                "firm_interest",
+            ],
+            ReviewerIncentiveViolation,
+        )
 
     if page_band not in PAGE_BAND_RATES_CENTS:
         raise ValueError(f"Invalid page band: {page_band}. Must be one of {list(PAGE_BAND_RATES_CENTS.keys())}")
 
     page_band_rate = PAGE_BAND_RATES_CENTS[page_band]
-    qa_mult = QA_TIER_MULTIPLIERS[reviewer_profile.current_qa_tier]
+    qa_mult = QA_TIER_MULTIPLIERS[derived_tier]
     sla_mult = get_approved_sla_multiplier(turnaround_hours)
 
     raw_fee = Decimal(str(page_band_rate)) * Decimal(str(qa_mult)) * Decimal(str(sla_mult))
@@ -210,7 +234,7 @@ def calculate_affiliate_review_fee(
         recipient_firm_id=recipient_firm_id,
         page_band=page_band,
         page_band_rate_cents=page_band_rate,
-        established_qa_tier=reviewer_profile.current_qa_tier,
+        established_qa_tier=derived_tier,
         qa_tier_multiplier=qa_mult,
         approved_sla_multiplier=sla_mult,
         review_fee_cents=fee_cents,

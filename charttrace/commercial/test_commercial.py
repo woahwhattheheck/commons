@@ -14,6 +14,7 @@ from charttrace.pricing import (
     EconomicIsolationViolation,
     FORBIDDEN_ECONOMIC_SIGNAL_KEYS,
 )
+from charttrace.pricing.ledgers import PAGE_BANDS
 from charttrace.affiliates import (
     ReviewerQATier,
     ReviewerAuditProfile,
@@ -296,12 +297,11 @@ class TestCommercialAndRoutingPolicies(unittest.TestCase):
         self.assertIsNone(dec_off.routed_firm_id)
         self.assertEqual(dec_off.routing_method, "NONE")
 
-        # 2. ADVERTISING_ONLY neutral rotation
         engine_ad = RoutingEngine(policy_state=PolicyState.ADVERTISING_ONLY)
         dec_ad = engine_ad.route_matter(req, self.candidates)
         self.assertEqual(dec_ad.policy_state, PolicyState.ADVERTISING_ONLY)
-        self.assertIn(dec_ad.routed_firm_id, ["firm_01", "firm_02"])
-        self.assertEqual(dec_ad.routing_method, "NEUTRAL_ROTATION")
+        self.assertIsNone(dec_ad.routed_firm_id)
+        self.assertEqual(dec_ad.routing_method, "NONE")
 
     def test_routing_engine_user_selection(self):
         engine = RoutingEngine(policy_state=PolicyState.QUALIFYING_PROVIDER_APPROVED)
@@ -346,15 +346,18 @@ class TestCommercialAndRoutingPolicies(unittest.TestCase):
             engine_paid_attempt.route_matter(req, self.candidates)
 
     def test_opaque_stripe_order_contract_clean(self):
+        metrics = WorkloadMetrics(unique_pages=150, file_count=5, turnaround_hours=48)
+        work_score = calculate_review_work_score("pkt_ord", ProductTier.INVESTIGATIVE, metrics)
         contract = OpaqueOrderContract(
             order_id="ct_ord_9901",
             customer_id="ct_cus_1102",
             product_tier=ProductTier.INVESTIGATIVE,
-            page_band="51-200",
+            page_band=work_score.page_band,
             turnaround_hours=48,
-            amount_cents=18500,
+            amount_cents=work_score.calculated_price_cents,
             currency="usd",
             metadata={"source_system": "charttrace_local"},
+            work_score=work_score,
         )
         payload = contract.to_stripe_checkout_payload()
         self.assertEqual(payload["client_reference_id"], "ct_ord_9901")
@@ -364,27 +367,30 @@ class TestCommercialAndRoutingPolicies(unittest.TestCase):
 
     def test_opaque_stripe_contract_forbids_phi_and_case_merits(self):
         # Forbidden keys
+        metrics = WorkloadMetrics(unique_pages=250, file_count=4, turnaround_hours=24)
+        work_score = calculate_review_work_score("pkt_phi", ProductTier.COUNSEL_READY, metrics)
         with self.assertRaises(SensitiveDataExposureError):
             OpaqueOrderContract(
                 order_id="ct_ord_9902",
                 customer_id="ct_cus_1102",
                 product_tier=ProductTier.COUNSEL_READY,
-                page_band="201-500",
+                page_band=work_score.page_band,
                 turnaround_hours=24,
-                amount_cents=35000,
+                amount_cents=work_score.calculated_price_cents,
                 metadata={"patient_name": "John Doe"},
+                work_score=work_score,
             )
 
-        # Forbidden values
         with self.assertRaises(SensitiveDataExposureError):
             OpaqueOrderContract(
                 order_id="ct_ord_9903",
                 customer_id="ct_cus_1102",
                 product_tier=ProductTier.COUNSEL_READY,
-                page_band="201-500",
+                page_band=work_score.page_band,
                 turnaround_hours=24,
-                amount_cents=35000,
-                metadata={"reference_note": "Case involving hospital malpractice and injury"},
+                amount_cents=work_score.calculated_price_cents,
+                metadata={"source_system": "hospital malpractice injury"},
+                work_score=work_score,
             )
 
     def test_live_operations_disabled_invariants(self):
@@ -414,9 +420,201 @@ class TestCommercialAndRoutingPolicies(unittest.TestCase):
             {"subscriptions_enabled": True},
             {"payouts_enabled": True},
             {"tax_automation_enabled": True},
+            {"percentage_fee_enabled": True},
+            {"transfers_enabled": True},
+            {"external_spend_enabled": True},
+            {"stripe_account_mutation_allowed": True},
         ):
             with self.assertRaises(LivePaymentOperationBlockedError):
                 assert_live_operations_disabled(CommercialFeatureFlags(**kwargs))
+
+
+class TestAdversarialBypasses(unittest.TestCase):
+    def test_negative_qa_minutes_cannot_create_negative_price(self):
+        with self.assertRaises(ValueError):
+            WorkloadMetrics(
+                unique_pages=10,
+                file_count=1,
+                estimated_human_qa_minutes=-40,
+            )
+
+    def test_caller_master_audited_with_zero_history_is_rejected(self):
+        with self.assertRaises(Exception):
+            ReviewerAuditProfile(
+                reviewer_id="",
+                reviewer_firm_id="firm_alpha",
+                total_audited_reviews=0,
+                accuracy_rate=1.0,
+                citation_precision=1.0,
+                disposition_concordance=1.0,
+                current_qa_tier=ReviewerQATier.MASTER_AUDITED,
+            )
+        profile = ReviewerAuditProfile(
+            reviewer_id="rev_zero",
+            reviewer_firm_id="firm_alpha",
+            total_audited_reviews=0,
+            accuracy_rate=1.0,
+            citation_precision=1.0,
+            disposition_concordance=1.0,
+            current_qa_tier=ReviewerQATier.MASTER_AUDITED,
+        )
+        with self.assertRaises(ReviewerIncentiveViolation):
+            calculate_affiliate_review_fee(
+                matter_id="mat_zero",
+                reviewer_profile=profile,
+                recipient_firm_id="firm_beta",
+                page_band="1-50",
+                turnaround_hours=72,
+            )
+
+    def test_blank_reviewer_and_recipient_ids_fail_separation(self):
+        with self.assertRaises(AffiliateConflictError):
+            ReviewerAuditProfile(
+                reviewer_id="   ",
+                reviewer_firm_id="firm_alpha",
+                total_audited_reviews=12,
+                accuracy_rate=0.91,
+                citation_precision=0.91,
+                disposition_concordance=0.9,
+                current_qa_tier=ReviewerQATier.ESTABLISHED,
+            )
+        profile = ReviewerAuditProfile(
+            reviewer_id="rev_blank",
+            reviewer_firm_id="firm_alpha",
+            total_audited_reviews=12,
+            accuracy_rate=0.91,
+            citation_precision=0.91,
+            disposition_concordance=0.9,
+            current_qa_tier=ReviewerQATier.ESTABLISHED,
+        )
+        with self.assertRaises(AffiliateConflictError):
+            calculate_affiliate_review_fee(
+                matter_id="mat_blank",
+                reviewer_profile=profile,
+                recipient_firm_id="",
+                page_band="1-50",
+                turnaround_hours=72,
+            )
+
+    def test_advertising_only_and_caller_seed_cannot_choose_recipient(self):
+        candidates = [
+            FirmCandidate(
+                firm_id="firm_01",
+                firm_name="Alpha Legal LLC",
+                jurisdictions=["CA"],
+                practice_categories=["medmal"],
+                languages=["en"],
+                declared_capacity=5,
+            ),
+            FirmCandidate(
+                firm_id="firm_02",
+                firm_name="Beta Law Group",
+                jurisdictions=["CA"],
+                practice_categories=["medmal"],
+                languages=["en"],
+                declared_capacity=2,
+            ),
+        ]
+        ad = RoutingEngine(policy_state=PolicyState.ADVERTISING_ONLY)
+        dec = ad.route_matter(
+            RoutingRequest(
+                jurisdiction="CA",
+                practice_category="medmal",
+                neutral_rotation_seed=1,
+            ),
+            candidates,
+        )
+        self.assertIsNone(dec.routed_firm_id)
+        approved = RoutingEngine(policy_state=PolicyState.QUALIFYING_PROVIDER_APPROVED)
+        first = approved.route_matter(
+            RoutingRequest(
+                jurisdiction="CA",
+                practice_category="medmal",
+                neutral_rotation_seed=99,
+            ),
+            candidates,
+        )
+        second = approved.route_matter(
+            RoutingRequest(
+                jurisdiction="CA",
+                practice_category="medmal",
+                neutral_rotation_seed=99,
+            ),
+            candidates,
+        )
+        self.assertEqual(first.routed_firm_id, "firm_01")
+        self.assertEqual(second.routed_firm_id, "firm_02")
+        self.assertNotEqual(first.routed_firm_id, second.routed_firm_id)
+
+    def test_patient_data_cannot_enter_ids_page_band_or_metadata(self):
+        metrics = WorkloadMetrics(unique_pages=20, file_count=1)
+        work_score = calculate_review_work_score("pkt_id", ProductTier.INDEXED, metrics)
+        with self.assertRaises(ValueError):
+            OpaqueOrderContract(
+                order_id="ct_ord_patientjohn",
+                customer_id="ct_cus_1102",
+                product_tier=ProductTier.INDEXED,
+                page_band=work_score.page_band,
+                turnaround_hours=72,
+                amount_cents=work_score.calculated_price_cents,
+                work_score=work_score,
+            )
+        with self.assertRaises(ValueError):
+            OpaqueOrderContract(
+                order_id="ct_ord_9901",
+                customer_id="ct_cus_1102",
+                product_tier=ProductTier.INDEXED,
+                page_band="patient-20",
+                turnaround_hours=72,
+                amount_cents=work_score.calculated_price_cents,
+                work_score=work_score,
+            )
+        with self.assertRaises(SensitiveDataExposureError):
+            OpaqueOrderContract(
+                order_id="ct_ord_9901",
+                customer_id="ct_cus_1102",
+                product_tier=ProductTier.INDEXED,
+                page_band=work_score.page_band,
+                turnaround_hours=72,
+                amount_cents=work_score.calculated_price_cents,
+                metadata={"note": "patient record"},
+                work_score=work_score,
+            )
+
+    def test_nested_aliased_suffixed_prohibited_fields_are_rejected(self):
+        metrics = WorkloadMetrics(unique_pages=20, file_count=1)
+        for payload in (
+            {"legal_fee_cents": 1},
+            {"nested": {"damages": 9}},
+            {"expected_recovery_alias": 1},
+            {"destination_firm_id_x": "x"},
+        ):
+            with self.assertRaises(EconomicIsolationViolation):
+                calculate_review_work_score(
+                    "pkt_alias",
+                    ProductTier.INDEXED,
+                    metrics,
+                    extra_metadata=payload,
+                )
+
+    def test_percentage_fee_flag_fails_live_ops_assertion(self):
+        with self.assertRaises(LivePaymentOperationBlockedError):
+            assert_live_operations_disabled(
+                CommercialFeatureFlags(percentage_fee_enabled=True)
+            )
+
+    def test_parameterized_prohibited_signals(self):
+        metrics = WorkloadMetrics(unique_pages=20, file_count=1)
+        for key in sorted(FORBIDDEN_ECONOMIC_SIGNAL_KEYS):
+            with self.subTest(key=key):
+                with self.assertRaises(EconomicIsolationViolation):
+                    calculate_review_work_score(
+                        "pkt_sig",
+                        ProductTier.INDEXED,
+                        metrics,
+                        extra_metadata={key: 1},
+                    )
+        self.assertEqual(PAGE_BANDS, ("1-50", "51-200", "201-500", "501-1000", "1000+"))
 
 
 if __name__ == "__main__":

@@ -21,6 +21,8 @@ from dataclasses import asdict, dataclass, field
 from enum import Enum
 from typing import Any, Dict, List, Optional, Sequence, Set
 
+from charttrace.pricing.ledgers import reject_prohibited_payload
+
 
 class PolicyState(str, Enum):
     """Regulatory and compliance policy states for routing and commercial enablement."""
@@ -116,13 +118,12 @@ class RoutingRequest:
     metadata: Dict[str, Any] = field(default_factory=dict)
 
     def __post_init__(self) -> None:
-        # Verify no forbidden keys exist in metadata
-        for k in self.metadata:
-            if k.lower() in FORBIDDEN_ROUTING_KEYS:
-                raise RoutingPolicyViolation(
-                    f"Forbidden routing input: '{k}'. "
-                    "Routing may not consider review signals, juice, damages, probabilities, bids, or conversion history."
-                )
+        reject_prohibited_payload(self.metadata, FORBIDDEN_ROUTING_KEYS, RoutingPolicyViolation)
+        extra = set(self.metadata) - ALLOWED_ROUTING_KEYS
+        if extra:
+            raise RoutingPolicyViolation(
+                f"Unknown routing metadata is rejected: {sorted(extra)}."
+            )
 
 
 @dataclass(frozen=True)
@@ -135,6 +136,36 @@ class RoutingDecision:
     compliance_notes: str
 
 
+APPROVED_ROTATION_STATES = frozenset(
+    {
+        PolicyState.QUALIFYING_PROVIDER_APPROVED,
+        PolicyState.CERTIFIED_LRS,
+        PolicyState.LICENSED_LEGAL_ENTITY,
+    }
+)
+
+
+class RotationLedger:
+    """Internal auditable rotation cursor. Request seeds cannot choose a recipient."""
+
+    def __init__(self) -> None:
+        self.cursor = 0
+        self.history: List[Dict[str, Any]] = []
+
+    def next_firm(self, eligible: Sequence[FirmCandidate]) -> FirmCandidate:
+        ordered = sorted(eligible, key=lambda firm: firm.firm_id)
+        selected = ordered[self.cursor % len(ordered)]
+        self.history.append(
+            {
+                "cursor": self.cursor,
+                "firm_id": selected.firm_id,
+                "eligible": [firm.firm_id for firm in ordered],
+            }
+        )
+        self.cursor += 1
+        return selected
+
+
 class RoutingEngine:
     """Compliant routing engine enforcing policy states and neutral allocation."""
 
@@ -142,14 +173,15 @@ class RoutingEngine:
         self,
         policy_state: PolicyState = PolicyState.OFF,
         paid_lead_generation_enabled_jurisdictions: Optional[Set[str]] = None,
+        rotation_ledger: Optional[RotationLedger] = None,
     ):
         self.policy_state = policy_state
-        # Paid lead generation disabled by default in ALL jurisdictions
         self.paid_lead_generation_enabled_jurisdictions: Set[str] = (
             set(paid_lead_generation_enabled_jurisdictions)
             if paid_lead_generation_enabled_jurisdictions is not None
             else set()
         )
+        self.rotation_ledger = rotation_ledger or RotationLedger()
 
     def route_matter(
         self,
@@ -157,36 +189,43 @@ class RoutingEngine:
         candidates: Sequence[FirmCandidate],
     ) -> RoutingDecision:
         """Route a matter according to current policy state and neutral rules."""
-        # 1. Check policy state
-        if self.policy_state == PolicyState.OFF:
-            return RoutingDecision(
-                policy_state=PolicyState.OFF,
-                routed_firm_id=None,
-                routing_method="NONE",
-                is_paid_lead_generation=False,
-                compliance_notes="Routing is globally OFF. No matches provided.",
-            )
-
-        # 2. Check paid lead gen guard
         is_paid_lead_gen = request.jurisdiction in self.paid_lead_generation_enabled_jurisdictions
-        if is_paid_lead_gen and self.policy_state not in (
-            PolicyState.QUALIFYING_PROVIDER_APPROVED,
-            PolicyState.CERTIFIED_LRS,
-            PolicyState.LICENSED_LEGAL_ENTITY,
-        ):
+        if is_paid_lead_gen and self.policy_state not in APPROVED_ROTATION_STATES:
             raise RoutingPolicyViolation(
                 f"Paid lead generation is prohibited under policy state {self.policy_state.value} "
                 f"in jurisdiction {request.jurisdiction}."
             )
 
-        # 3. User explicit selection takes absolute priority if eligible and conflict cleared
+        if self.policy_state in {PolicyState.OFF, PolicyState.ADVERTISING_ONLY}:
+            return RoutingDecision(
+                policy_state=self.policy_state,
+                routed_firm_id=None,
+                routing_method="NONE",
+                is_paid_lead_generation=False,
+                compliance_notes=(
+                    "ADVERTISING_ONLY returns no automatic destination."
+                    if self.policy_state is PolicyState.ADVERTISING_ONLY
+                    else "Routing is globally OFF. No matches provided."
+                ),
+            )
+
+        if self.policy_state not in APPROVED_ROTATION_STATES:
+            return RoutingDecision(
+                policy_state=self.policy_state,
+                routed_firm_id=None,
+                routing_method="NONE",
+                is_paid_lead_generation=False,
+                compliance_notes="Rotation is available only in approved policy states.",
+            )
+
         if request.user_selected_firm_id:
             matching = [
-                f for f in candidates
-                if f.firm_id == request.user_selected_firm_id
-                and request.jurisdiction in f.jurisdictions
-                and request.practice_category in f.practice_categories
-                and f.is_conflict_cleared
+                firm
+                for firm in candidates
+                if firm.firm_id == request.user_selected_firm_id
+                and request.jurisdiction in firm.jurisdictions
+                and request.practice_category in firm.practice_categories
+                and firm.is_conflict_cleared
             ]
             if matching:
                 return RoutingDecision(
@@ -197,16 +236,15 @@ class RoutingEngine:
                     compliance_notes="Direct user selection honored.",
                 )
 
-        # 4. Filter eligible candidates strictly by permitted criteria:
-        # jurisdiction, practice, language, capacity > 0, conflict clear
         eligible = [
-            f for f in candidates
-            if request.jurisdiction in f.jurisdictions
-            and request.practice_category in f.practice_categories
-            and (request.language in f.languages or not f.languages)
-            and f.declared_capacity > 0
-            and f.is_conflict_cleared
-            and f.active_in_jurisdiction
+            firm
+            for firm in candidates
+            if request.jurisdiction in firm.jurisdictions
+            and request.practice_category in firm.practice_categories
+            and (request.language in firm.languages or not firm.languages)
+            and firm.declared_capacity > 0
+            and firm.is_conflict_cleared
+            and firm.active_in_jurisdiction
         ]
 
         if not eligible:
@@ -218,15 +256,14 @@ class RoutingEngine:
                 compliance_notes="No eligible, conflict-cleared firms with declared capacity.",
             )
 
-        # 5. Neutral rotation (deterministic modulo on sorted firm_ids)
-        sorted_eligible = sorted(eligible, key=lambda f: f.firm_id)
-        selected_idx = request.neutral_rotation_seed % len(sorted_eligible)
-        selected_firm = sorted_eligible[selected_idx]
-
+        selected_firm = self.rotation_ledger.next_firm(eligible)
         return RoutingDecision(
             policy_state=self.policy_state,
             routed_firm_id=selected_firm.firm_id,
             routing_method="NEUTRAL_ROTATION",
             is_paid_lead_generation=is_paid_lead_gen,
-            compliance_notes=f"Neutral rotation selected firm {selected_firm.firm_id} from {len(sorted_eligible)} eligible candidates.",
+            compliance_notes=(
+                f"Internal ledger selected firm {selected_firm.firm_id} "
+                f"from {len(eligible)} eligible candidates."
+            ),
         )

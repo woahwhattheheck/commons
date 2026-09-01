@@ -45,7 +45,12 @@ from enum import Enum
 import re
 from typing import Any, Dict, List, Optional, Set
 
-from charttrace.pricing.ledgers import ProductTier
+from charttrace.pricing.ledgers import (
+    PAGE_BANDS,
+    ProductTier,
+    ReviewWorkScore,
+    reject_prohibited_payload,
+)
 
 
 # Forbidden sensitive tokens/patterns in opaque order contracts
@@ -112,6 +117,9 @@ class CommercialFeatureFlags:
 
 
 DEFAULT_COMMERCIAL_FLAGS = CommercialFeatureFlags()
+ALLOWED_METADATA_KEYS = frozenset({"source_system", "work_score_id", "packet_id"})
+ALLOWED_TURNAROUND_HOURS = frozenset({12, 24, 48, 72, 168})
+OPAQUE_ID_RE = re.compile(r"^ct_(ord|cus)_[a-z0-9]{4,32}$")
 
 
 @dataclass(frozen=True)
@@ -125,19 +133,34 @@ class OpaqueOrderContract:
     amount_cents: int
     currency: str = "usd"
     metadata: Dict[str, str] = field(default_factory=dict)
+    work_score: Optional[ReviewWorkScore] = None
 
     def __post_init__(self) -> None:
-        # Validate order and customer ids conform to opaque identifiers
-        if not self.order_id or not self.order_id.startswith("ct_ord_"):
-            raise ValueError(f"order_id '{self.order_id}' must be an opaque identifier starting with 'ct_ord_'")
-        if not self.customer_id or not self.customer_id.startswith("ct_cus_"):
-            raise ValueError(f"customer_id '{self.customer_id}' must be an opaque identifier starting with 'ct_cus_'")
+        if not OPAQUE_ID_RE.match(self.order_id) or not self.order_id.startswith("ct_ord_"):
+            raise ValueError("order_id must be an opaque ct_ord_ token with no payload data.")
+        if not OPAQUE_ID_RE.match(self.customer_id) or not self.customer_id.startswith("ct_cus_"):
+            raise ValueError("customer_id must be an opaque ct_cus_ token with no payload data.")
+        for token in ("patient", "hospital", "diagnosis", "medical", "recovery", "phi"):
+            if token in self.order_id or token in self.customer_id:
+                raise ValueError("Opaque identifiers may not carry payload tokens.")
+        if self.page_band not in PAGE_BANDS:
+            raise ValueError(f"page_band must be one of {PAGE_BANDS}.")
+        if self.turnaround_hours not in ALLOWED_TURNAROUND_HOURS:
+            raise ValueError("turnaround_hours must be an enumerated SLA band.")
         if self.amount_cents <= 0:
             raise ValueError("amount_cents must be positive.")
         if self.currency.lower() != "usd":
             raise ValueError("Only 'usd' is currently supported.")
-
-        # Strict validation of metadata keys and values
+        if self.work_score is None:
+            raise ValueError("Order amount must bind to an immutable work-score receipt.")
+        if self.amount_cents != self.work_score.calculated_price_cents:
+            raise ValueError("amount_cents must equal the bound work-score receipt.")
+        if self.page_band != self.work_score.page_band:
+            raise ValueError("page_band must equal the bound work-score receipt.")
+        if self.product_tier != self.work_score.product_tier:
+            raise ValueError("product_tier must equal the bound work-score receipt.")
+        if self.turnaround_hours != self.work_score.metrics.turnaround_hours:
+            raise ValueError("turnaround_hours must equal the bound work-score receipt.")
         validate_opaque_metadata(self.metadata)
 
     def to_stripe_checkout_payload(self) -> Dict[str, Any]:
@@ -174,16 +197,19 @@ class OpaqueOrderContract:
 
 
 def validate_opaque_metadata(metadata: Dict[str, Any]) -> None:
-    """Verify that metadata contains zero sensitive medical, legal merit, or destination details."""
+    """Allowlisted metadata only. Nested/aliased/suffixed prohibited keys fail."""
+    if not isinstance(metadata, dict):
+        raise SensitiveDataExposureError("Metadata must be an object.")
+    reject_prohibited_payload(metadata, FORBIDDEN_STRIPE_PAYLOAD_KEYS, SensitiveDataExposureError)
+    extra = set(metadata) - ALLOWED_METADATA_KEYS
+    if extra:
+        raise SensitiveDataExposureError(
+            f"Unknown metadata keys are rejected: {sorted(extra)}."
+        )
     for key, value in metadata.items():
-        k = key.lower()
-        if k in FORBIDDEN_STRIPE_PAYLOAD_KEYS or any(f in k for f in FORBIDDEN_STRIPE_PAYLOAD_KEYS):
-            raise SensitiveDataExposureError(
-                f"Forbidden Stripe metadata key '{key}'. Payment payloads must never contain PHI, "
-                "medical details, case theories, case values, or destination firm identifiers."
-            )
-        # Check string values for sensitive keywords
-        val_str = str(value).lower()
+        if not isinstance(value, str) or not value or len(value) > 64:
+            raise SensitiveDataExposureError(f"Metadata {key!r} must be a short opaque string.")
+        val_str = value.lower()
         for forbidden in (
             "patient",
             "hospital",
@@ -193,10 +219,12 @@ def validate_opaque_metadata(metadata: Dict[str, Any]) -> None:
             "injury",
             "settlement",
             "contingency",
+            "medical",
+            "recovery",
         ):
             if forbidden in val_str:
                 raise SensitiveDataExposureError(
-                    f"Forbidden sensitive content in Stripe metadata value for key '{key}': contains '{forbidden}'."
+                    f"Forbidden sensitive content in Stripe metadata value for key '{key}'."
                 )
 
 
@@ -220,3 +248,5 @@ def assert_live_operations_disabled(flags: CommercialFeatureFlags = DEFAULT_COMM
         raise LivePaymentOperationBlockedError("External spend is blocked.")
     if flags.stripe_account_mutation_allowed:
         raise LivePaymentOperationBlockedError("Stripe account mutations are prohibited.")
+    if flags.percentage_fee_enabled:
+        raise LivePaymentOperationBlockedError("Percentage fees remain OFF.")

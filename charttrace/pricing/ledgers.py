@@ -13,6 +13,7 @@ CRITICAL INVARIANTS:
 
 from __future__ import annotations
 
+import re
 from dataclasses import asdict, dataclass, field
 from decimal import Decimal, ROUND_HALF_UP
 from enum import Enum
@@ -61,14 +62,53 @@ class EconomicIsolationViolation(ValueError):
     pass
 
 
+_KEY_NOISE = re.compile(r"[^a-z0-9]")
+PAGE_BANDS = ("1-50", "51-200", "201-500", "501-1000", "1000+")
+MAX_WORKLOAD = {
+    "unique_pages": (0, 1_000_000),
+    "file_count": (0, 100_000),
+    "ocr_repair_page_count": (0, 1_000_000),
+    "source_provider_count": (1, 10_000),
+    "date_span_days": (0, 365_000),
+    "specialties_count": (1, 1_000),
+    "language_count": (1, 100),
+    "duplicate_conflict_pairs": (0, 1_000_000),
+    "jurisdiction_pack_count": (1, 1_000),
+    "turnaround_hours": (1, 8_760),
+    "estimated_human_qa_minutes": (0, 100_000),
+}
+
+
+def normalize_signal_key(key: str) -> str:
+    return _KEY_NOISE.sub("", str(key).lower())
+
+
+def reject_prohibited_payload(data: Any, forbidden: Sequence[str], error_cls=EconomicIsolationViolation) -> None:
+    """Recursively reject nested, aliased, and suffixed prohibited fields."""
+    forbidden_norm = {normalize_signal_key(key) for key in forbidden}
+
+    def walk(obj: Any) -> None:
+        if isinstance(obj, dict):
+            for key, value in obj.items():
+                normalized = normalize_signal_key(key)
+                for bad in forbidden_norm:
+                    if bad and (normalized == bad or bad in normalized):
+                        raise error_cls(
+                            f"Prohibited signal {key!r} is rejected in nested/aliased/suffixed form."
+                        )
+                walk(value)
+        elif isinstance(obj, (list, tuple)):
+            for item in obj:
+                walk(item)
+
+    walk(data)
+
+
 def assert_clean_workload_inputs(data: Dict[str, Any]) -> None:
     """Validate that input payloads do not contain forbidden case-value/probability/steering fields."""
-    found_forbidden = [k for k in data.keys() if k.lower() in FORBIDDEN_ECONOMIC_SIGNAL_KEYS]
-    if found_forbidden:
-        raise EconomicIsolationViolation(
-            f"Economic isolation violation: Payload contains forbidden keys: {sorted(found_forbidden)}. "
-            "Case value, recovery, success probability, severity, and destination firm must never influence pricing or priority."
-        )
+    if not isinstance(data, dict):
+        raise EconomicIsolationViolation("Workload metadata must be an object.")
+    reject_prohibited_payload(data, FORBIDDEN_ECONOMIC_SIGNAL_KEYS)
 
 
 @dataclass(frozen=True)
@@ -193,10 +233,12 @@ class WorkloadMetrics:
     specialist_review_required: bool = False
 
     def __post_init__(self) -> None:
-        if self.unique_pages < 0 or self.file_count < 0:
-            raise ValueError("Pages and file counts cannot be negative.")
-        if self.turnaround_hours <= 0:
-            raise ValueError("Turnaround hours must be positive.")
+        for name, (low, high) in MAX_WORKLOAD.items():
+            value = getattr(self, name)
+            if isinstance(value, bool) or not isinstance(value, int):
+                raise ValueError(f"{name} must be an integer.")
+            if value < low or value > high:
+                raise ValueError(f"{name}={value} is outside [{low}, {high}].")
 
 
 @dataclass(frozen=True)
@@ -256,6 +298,8 @@ TIER_BASE_FEE_CENTS: Dict[ProductTier, int] = {
 
 def get_page_band(pages: int) -> str:
     """Categorize page volume into standardized non-sensitive workload bands."""
+    if not isinstance(pages, int) or isinstance(pages, bool) or pages < 0:
+        raise ValueError("unique_pages must be a nonnegative integer.")
     if pages <= 50:
         return "1-50"
     elif pages <= 200:
@@ -332,6 +376,8 @@ def calculate_review_work_score(
 
     raw_price = (base_fee + page_cost + ocr_cost + qa_cost) * complexity * turnaround_mult
     price_cents = int(Decimal(str(raw_price)).quantize(Decimal("1"), rounding=ROUND_HALF_UP))
+    if price_cents <= 0:
+        raise ValueError("Price receipt must be a positive deterministically bound amount.")
 
     return ReviewWorkScore(
         packet_id=packet_id,
