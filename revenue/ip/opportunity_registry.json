@@ -251,13 +251,13 @@
         },
         {
           "path": "host/feature_tracker.py",
-          "sha256": "b45dc4ab1f5d26d356763fe8daab43cacbaf40586a498b8af65972cfc639755b",
-          "bytes": 37442
+          "sha256": "cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346",
+          "bytes": 36840
         },
         {
           "path": "test_feature_tracker.py",
-          "sha256": "b20ab4b50afb70838ce948073effe9ab9ae259bd5c91884b3d77b8c85d8b2630",
-          "bytes": 25370
+          "sha256": "aecf1ef4f7451221205f644c50530554909464256d267d1bf5dd8dc55a7a144b",
+          "bytes": 23121
         },
         {
           "path": "features/registry/feature-tracker-20260828-01.json",

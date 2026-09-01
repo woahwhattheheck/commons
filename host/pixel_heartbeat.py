@@ -71,13 +71,16 @@ def claim_from_name(name):
 
 
 def load_index(text):
-    """Parse pixels/index.json. Invalid JSON is measured empty."""
+    """Parse pixels/index.json. Invalid input fails closed, never as empty."""
+    raw = str(text if text is not None else "")
+    if not raw.strip():
+        raise ValueError("pixels/index.json is blank")
     try:
-        data = json.loads(str(text or "") or "[]")
-    except ValueError:
-        return []
+        data = json.loads(raw)
+    except ValueError as exc:
+        raise ValueError("pixels/index.json is not JSON") from exc
     if not isinstance(data, list):
-        return []
+        raise ValueError("pixels/index.json is not a list")
     names = []
     seen = set()
     for item in data:
@@ -179,6 +182,34 @@ def reconcile_index(index_names, file_names):
     }
 
 
+def finder_failure(error, index_present=False, root="", pixels_dir=""):
+    """Return an explicit unmeasured finder result with nullable counts."""
+    row = {
+        "measured": False,
+        "index_present": bool(index_present),
+        "heartbeats": None,
+        "heartbeat_count": None,
+        "stale": None,
+        "hot": None,
+        "quiet": None,
+        "invalid": None,
+        "fabricated": None,
+        "listed": None,
+        "files": None,
+        "listed_missing": None,
+        "unlisted": None,
+        "fabricate": False,
+        "titan": "NOT_WRITTEN",
+        "error": str(error or "pixel heartbeat finder failed")
+        + ". FINDER-FAILED, never an empty heartbeat census.",
+    }
+    if root:
+        row["root"] = root
+    if pixels_dir:
+        row["pixels_dir"] = pixels_dir
+    return row
+
+
 def classify(row):
     """Turn a measured pixel census into a land-desk state."""
     row = row or {}
@@ -252,7 +283,13 @@ def classify(row):
 
 def measure_from_rows(index_text, files, now=None):
     """Pure measurer so tests do not need a live clock."""
-    listed = load_index(index_text)
+    if index_text is None:
+        listed = []
+    else:
+        try:
+            listed = load_index(index_text)
+        except (TypeError, ValueError) as exc:
+            return finder_failure(exc, index_present=True)
     names = []
     hearts = []
     for item in files or []:
@@ -310,22 +347,44 @@ def measure_root(root, now=None):
             "error": "pixels/ missing",
         }
     index_text = None
-    if os.path.isfile(index_path):
-        with open(index_path, "r", encoding="utf-8") as handle:
-            index_text = handle.read()
+    index_present = os.path.isfile(index_path)
+    if index_present:
+        try:
+            with open(index_path, "r", encoding="utf-8") as handle:
+                index_text = handle.read()
+        except OSError as exc:
+            return finder_failure(
+                "pixels/index.json read failed: %s" % exc,
+                index_present=True,
+                root=base,
+                pixels_dir=pixel_dir,
+            )
     files = []
     try:
         listing = sorted(os.listdir(pixel_dir))
-    except OSError:
-        listing = []
+    except OSError as exc:
+        return finder_failure(
+            "pixels/ listing failed: %s" % exc,
+            index_present=index_present,
+            root=base,
+            pixels_dir=pixel_dir,
+        )
     for name in listing:
         if name == "index.json" or not name.endswith(".json"):
             continue
         path = os.path.join(pixel_dir, name)
         if not os.path.isfile(path):
             continue
-        with open(path, "r", encoding="utf-8") as handle:
-            files.append({"name": name, "text": handle.read()})
+        try:
+            with open(path, "r", encoding="utf-8") as handle:
+                files.append({"name": name, "text": handle.read()})
+        except OSError as exc:
+            return finder_failure(
+                "heartbeat read failed for %s: %s" % (name, exc),
+                index_present=index_present,
+                root=base,
+                pixels_dir=pixel_dir,
+            )
     row = measure_from_rows(index_text, files, now)
     row["root"] = base
     row["pixels_dir"] = pixel_dir
@@ -422,6 +481,11 @@ def _self_test():
     vacant = measure_from_rows("[]", [])
     assert vacant["index_present"] is True
     assert classify(vacant)["state"] == "NOT_LANDED"
+    broken = measure_from_rows("{", [])
+    assert broken["measured"] is False
+    assert broken["heartbeat_count"] is None
+    assert "FINDER-FAILED" in broken["error"]
+    assert classify(broken)["state"] == "UNMEASURED"
     now = "2026-08-25T05:18:00Z"
     fresh = measure_from_rows(
         '["PLAYER2.json"]',

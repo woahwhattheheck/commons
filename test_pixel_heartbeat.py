@@ -7,6 +7,7 @@ import json
 import os
 import sys
 import unittest
+from unittest import mock
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
@@ -134,7 +135,70 @@ class TestPixelHeartbeat(unittest.TestCase):
         self.assertEqual(recon["listed_missing"], ["MISSING.json"])
         self.assertEqual(recon["unlisted"], ["EXTRA.json"])
         self.assertEqual(load_index('["PLAYER2"]'), ["PLAYER2.json"])
-        self.assertEqual(load_index("{"), [])
+        with self.assertRaises(ValueError):
+            load_index("{")
+        with self.assertRaises(ValueError):
+            load_index("{}")
+        with self.assertRaises(ValueError):
+            load_index("")
+
+    def test_invalid_index_is_unmeasured_not_empty(self):
+        measured = measure_from_rows("{", [])
+        self.assertFalse(measured["measured"])
+        self.assertTrue(measured["index_present"])
+        self.assertIsNone(measured["heartbeat_count"])
+        self.assertIn("FINDER-FAILED", measured["error"])
+        self.assertEqual(classify(measured)["state"], "UNMEASURED")
+
+    def test_listing_failure_is_unmeasured_not_empty(self):
+        with (
+            mock.patch("pixel_heartbeat.os.path.isdir", return_value=True),
+            mock.patch("pixel_heartbeat.os.path.isfile", return_value=True),
+            mock.patch(
+                "builtins.open",
+                mock.mock_open(read_data='["PLAYER2.json"]'),
+            ),
+            mock.patch(
+                "pixel_heartbeat.os.listdir",
+                side_effect=OSError("listing denied"),
+            ),
+        ):
+            measured = measure_root(
+                "C:/virtual",
+                "2026-08-25T05:18:00Z",
+            )
+        self.assertFalse(measured["measured"])
+        self.assertIsNone(measured["heartbeat_count"])
+        self.assertIn("listing failed", measured["error"])
+        self.assertIn("FINDER-FAILED", measured["error"])
+        self.assertEqual(classify(measured)["state"], "UNMEASURED")
+
+    def test_heartbeat_read_failure_is_unmeasured_not_empty(self):
+        index_open = mock.mock_open(read_data='["PLAYER2.json"]')
+
+        def guarded_open(path, *args, **kwargs):
+            if os.path.basename(path) == "PLAYER2.json":
+                raise OSError("heartbeat denied")
+            return index_open(path, *args, **kwargs)
+
+        with (
+            mock.patch("pixel_heartbeat.os.path.isdir", return_value=True),
+            mock.patch("pixel_heartbeat.os.path.isfile", return_value=True),
+            mock.patch(
+                "pixel_heartbeat.os.listdir",
+                return_value=["PLAYER2.json", "index.json"],
+            ),
+            mock.patch("builtins.open", side_effect=guarded_open),
+        ):
+            measured = measure_root(
+                "C:/virtual",
+                "2026-08-25T05:18:00Z",
+            )
+        self.assertFalse(measured["measured"])
+        self.assertIsNone(measured["heartbeat_count"])
+        self.assertIn("heartbeat read failed", measured["error"])
+        self.assertIn("FINDER-FAILED", measured["error"])
+        self.assertEqual(classify(measured)["state"], "UNMEASURED")
 
     def test_catalog_names_hands_off(self):
         catalog = catalog_from_row(

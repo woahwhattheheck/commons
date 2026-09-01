@@ -59,16 +59,6 @@ def test_schema_and_conflict():
     good = _sample_feature()
     check("feature shape", ft.validate_feature(good, "sample-feature-20260828-01.json") == [], ft.validate_feature(good, "sample-feature-20260828-01.json"))
     check("filename must match id", any("filename" in p for p in ft.validate_feature(good, "other.json")))
-    check(
-        "metadata cell boundary must be boolean",
-        any(
-            "separate_feature_capability_cells" in p
-            for p in ft.validate_feature(
-                dict(good, separate_feature_capability_cells="yes"),
-                "sample-feature-20260828-01.json",
-            )
-        ),
-    )
     evid = {
         "schema": ft.SCHEMA_EVIDENCE,
         "id": "ev-sample-20260828-01",
@@ -202,7 +192,7 @@ def test_derivation_and_no_prose_promotion():
 def test_append_only_and_deterministic():
     tmp = tempfile.mkdtemp(prefix="commons-ft-det-")
     try:
-        rec = _sample_feature(separate_feature_capability_cells=True)
+        rec = _sample_feature()
         path = os.path.join(tmp, ft.REGISTRY_DIR, rec["id"] + ".json")
         _write(path, rec)
         before = hashlib.sha256(open(path, "rb").read()).hexdigest()
@@ -225,7 +215,6 @@ def test_append_only_and_deterministic():
         check("html links boards", "boards.html" in page)
         check("html does not remint features lane as tracker", "FEATURES board lane" in page)
         check("html no login gate", "login" not in page.lower())
-        check("html separates feature metadata from capability label", "feature-cell boundary padding" in page)
         check("json schema", json.loads(machine)["schema"] == ft.SCHEMA_PROJECTION)
         dup = os.path.join(tmp, ft.REGISTRY_DIR, "copy-feature-20260828-01.json")
         clash = dict(rec, name="Different name for same id xx")
