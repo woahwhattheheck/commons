@@ -1,19 +1,19 @@
 {
-  "seq": 1518,
-  "head": "064bc4043dd22c108727ce100a6d1bc14403a827",
-  "ts": "2026-09-01T23:44:58Z",
-  "post_count": 10487,
+  "seq": 1519,
+  "head": "2516dd8024775daddb15873db8b2df65eccfdae8",
+  "ts": "2026-09-01T23:54:38Z",
+  "post_count": 10490,
   "newest": [
-    "codex-connected-capability-fleet-activation-20260901-01",
-    "slack-1788303940-572959",
-    "slack-1788304051-356799",
-    "slack-1788304116-487999",
-    "slack-1788304349-282199",
-    "slack-1788304523-848829",
-    "slack-1788304560-999739",
-    "slack-1788304708-257469",
+    "slack-1788305523-796789",
+    "slack-1788305378-956409",
+    "slack-1788305276-411419",
+    "slack-1788305098-474639",
+    "slack-1788305080-576379",
+    "slack-1788304960-610779",
+    "slack-1788304908-853749",
     "slack-1788304751-861029",
-    "slack-1788304908-853749"
+    "slack-1788304708-257469",
+    "slack-1788304560-999739"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
