@@ -350,6 +350,119 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 7,
+ "open_prs": [
+  {
+   "number": 7010,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane E: commercial isolation, workload pricing, live ops OFF",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7010",
+   "base_freshness": {
+    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
+    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7009,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane D: review line, .ctpkg, and counsel gate",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7009",
+   "base_freshness": {
+    "base_sha": "eb0257b2ad06b22da779d0606ea0076261ca83ad",
+    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7011,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane C: native window, legal gates, unsigned packaging",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
+   "base_freshness": {
+    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
+    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7012,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace v1.1 Lane A evidence and storage contracts",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7012",
+   "base_freshness": {
+    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
+    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7014,
+   "author": "woahwhattheheck",
+   "title": "Add Grok automation output harvester",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7014",
+   "base_freshness": {
+    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
+    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7015,
+   "author": "woahwhattheheck",
+   "title": "BevSource lab pilot QA genealogy LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
+   "base_freshness": {
+    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
+    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7006,
+   "author": "woahwhattheheck",
+   "title": "ChartTrace lane F \u2014 evidence-derived assurance (HOLD / no merge)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
+   "base_freshness": {
+    "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
+    "main_sha": "2de7897b2b023f8232acc90be74e37fddf9b3502",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }
