@@ -1,9 +1,18 @@
-"""Atomic local persistence for ChartTrace application state."""
+"""Atomic local persistence for the synthetic vault envelope."""
+
+from __future__ import annotations
 
 import json
 import os
 from pathlib import Path
 from typing import Any, Dict, Mapping
+
+from .vault import (
+    VAULT_MODE,
+    VaultError,
+    envelope_contains_protected_fields,
+    inspect_envelope,
+)
 
 
 class LocalStateStore:
@@ -18,9 +27,30 @@ class LocalStateStore:
             value = json.load(handle)
         if not isinstance(value, dict):
             raise ValueError("ChartTrace state root must be an object.")
+        classification = inspect_envelope(value)
+        if classification["kind"] == "legacy_plaintext":
+            raise VaultError(
+                "Plaintext or unverified state cannot be unlocked by the "
+                f"{VAULT_MODE} stub."
+            )
+        protected = envelope_contains_protected_fields(value)
+        if protected:
+            raise VaultError(
+                f"Synthetic stub refused protected field on disk: {protected}."
+            )
         return value
 
     def save(self, value: Mapping[str, Any]) -> None:
+        classification = inspect_envelope(value)
+        if classification["kind"] != "synthetic_stub":
+            raise VaultError("Refusing to write a non-stub vault envelope.")
+        if value.get("encryption_claimed") is True:
+            raise VaultError("Synthetic stub cannot claim encryption.")
+        protected = envelope_contains_protected_fields(value)
+        if protected:
+            raise VaultError(
+                f"Synthetic stub refused to persist protected field: {protected}."
+            )
         self.data_dir.mkdir(parents=True, exist_ok=True)
         temporary = self.state_path.with_suffix(".tmp")
         with temporary.open("w", encoding="utf-8", newline="\n") as handle:
@@ -31,6 +61,5 @@ class LocalStateStore:
         try:
             os.chmod(temporary, 0o600)
         except OSError:
-            # Windows ACLs are controlled by the containing user profile.
             pass
         os.replace(temporary, self.state_path)

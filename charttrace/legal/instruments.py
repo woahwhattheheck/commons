@@ -89,7 +89,8 @@ INSTRUMENTS: Tuple[LegalInstrument, ...] = (
         (
             "Acceptance does not authorize transfer. Transfer is off by default "
             "and must be affirmatively authorized for a named recipient. Changing "
-            "that recipient revokes prior authorization."
+            "that recipient, the authority hold, or the accepted terms suite "
+            "revokes every prior case, export, and recipient authorization."
         ),
     ),
     LegalInstrument(

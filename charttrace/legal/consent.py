@@ -37,10 +37,11 @@ class TransferAuthorization:
     authorized_by: Optional[str] = None
     authorized_at: Optional[str] = None
     authorization_version: Optional[str] = None
+    authorization_epoch: Optional[int] = None
 
     @property
     def state(self) -> LegalState:
-        if self.recipient and self.authorized_at:
+        if self.recipient and self.authorized_at and self.authorization_epoch is not None:
             return LegalState.TRANSFER_AUTHORIZED
         return LegalState.TRANSFER_NOT_AUTHORIZED
 
@@ -48,24 +49,28 @@ class TransferAuthorization:
         self.authorized_by = None
         self.authorized_at = None
         self.authorization_version = None
+        self.authorization_epoch = None
 
-    def to_dict(self) -> Dict[str, Optional[str]]:
+    def to_dict(self) -> Dict[str, Optional[object]]:
         return {
             "recipient": self.recipient,
             "recipient_role": self.recipient_role,
             "authorized_by": self.authorized_by,
             "authorized_at": self.authorized_at,
             "authorization_version": self.authorization_version,
+            "authorization_epoch": self.authorization_epoch,
         }
 
     @classmethod
     def from_dict(cls, value: Mapping[str, Any]) -> "TransferAuthorization":
+        epoch = value.get("authorization_epoch")
         return cls(
             recipient=value.get("recipient"),
             recipient_role=value.get("recipient_role"),
             authorized_by=value.get("authorized_by"),
             authorized_at=value.get("authorized_at"),
             authorization_version=value.get("authorization_version"),
+            authorization_epoch=int(epoch) if epoch is not None else None,
         )
 
 
@@ -77,6 +82,7 @@ class ConsentLedger:
     accepted_by: Optional[str] = None
     accepted_at: Optional[str] = None
     authority_hold_reason: Optional[str] = None
+    authority_epoch: int = 0
     transfer: TransferAuthorization = field(default_factory=TransferAuthorization)
 
     @staticmethod
@@ -139,6 +145,8 @@ class ConsentLedger:
         self.accepted_by = accepted_by.strip()
         self.accepted_at = _now()
         self.authority_hold_reason = None
+        self.authority_epoch += 1
+        self.transfer.revoke()
 
     def require_reacceptance(self) -> None:
         """Invalidate the recorded suite version without fabricating a new one."""
@@ -149,10 +157,14 @@ class ConsentLedger:
         if not reason.strip():
             raise ConsentError("An authority-hold reason is required.")
         self.authority_hold_reason = reason.strip()
+        self.authority_epoch += 1
+        self.transfer.revoke()
 
     def clear_authority_hold(self) -> None:
         """Require fresh acceptance after an authority dispute."""
         self.authority_hold_reason = None
+        self.authority_epoch += 1
+        self.transfer.revoke()
         self.require_reacceptance()
 
     def set_recipient(self, recipient: str, role: str = "recipient") -> None:
@@ -187,6 +199,7 @@ class ConsentLedger:
         self.transfer.authorized_by = authorized_by.strip()
         self.transfer.authorized_at = _now()
         self.transfer.authorization_version = TRUST_CENTER_VERSION
+        self.transfer.authorization_epoch = self.authority_epoch
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -196,6 +209,7 @@ class ConsentLedger:
             "accepted_by": self.accepted_by,
             "accepted_at": self.accepted_at,
             "authority_hold_reason": self.authority_hold_reason,
+            "authority_epoch": self.authority_epoch,
             "transfer": self.transfer.to_dict(),
         }
 
@@ -208,5 +222,6 @@ class ConsentLedger:
             accepted_by=value.get("accepted_by"),
             accepted_at=value.get("accepted_at"),
             authority_hold_reason=value.get("authority_hold_reason"),
+            authority_epoch=int(value.get("authority_epoch") or 0),
             transfer=TransferAuthorization.from_dict(value.get("transfer", {})),
         )

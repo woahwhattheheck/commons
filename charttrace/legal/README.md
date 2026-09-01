@@ -16,5 +16,6 @@ contains seven independently acknowledged v1.1 instruments:
 7. Counsel/Affiliate Role and Compensation Disclosures
 
 No acknowledgement is preselected. Suite acceptance does not authorize a
-transfer. Every named recipient requires a separate affirmative authorization,
-and changing the recipient revokes that authorization.
+transfer. Every named recipient requires a separate affirmative authorization.
+Changing the recipient, placing or clearing an authority hold, or reaccepting
+the terms suite revokes every prior case, export, and recipient authorization.

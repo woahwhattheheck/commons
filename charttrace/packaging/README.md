@@ -15,11 +15,14 @@ From the repository root:
 .\charttrace\packaging\build_windows.ps1
 ```
 
-The outputs are `dist\ChartTrace.exe` and
+On a Windows build host the outputs are `dist\ChartTrace.exe` and
 `dist\installer\ChartTrace-1.1-UNSIGNED_SYNTHETIC-Setup.exe`. Both are
 deliberately labeled `UNSIGNED_SYNTHETIC` with `signing_state=unsigned`.
-Code-signing must be a separate controlled release process; this script does
-not imply or fabricate a signature.
+This repository tree does not invent a Windows PE when the host is not
+Windows. `unsigned_artifact.py` writes a hash-receipt zip plus headless
+smoke; `windows_pe_built` stays false until `build_windows.ps1` actually
+runs. Code-signing must be a separate controlled release process; these
+scripts do not imply or fabricate a signature.
 
 ChartTrace opens no public listener. Optional same-device launcher handoff uses
 a Windows named pipe (and an `AF_UNIX` socket only on non-Windows test hosts).

@@ -74,7 +74,8 @@ class LocalSecurityContractTests(unittest.TestCase):
         source = Path(__file__).with_name("ipc.py").read_text(encoding="utf-8")
         self.assertNotIn("AF_INET", source)
         self.assertNotIn("0.0.0.0", source)
-        self.assertNotIn("SOCK_STREAM", source)
+        self.assertNotIn("AF_INET6", source)
+        self.assertIn("AF_UNIX", source)
         self.assertIn(local_ipc_family(), {"AF_PIPE", "AF_UNIX"})
         address = local_ipc_address("unit-test")
         if os.name == "nt":
