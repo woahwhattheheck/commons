@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 66
+    "TESTED": 68
   },
   "features": [
     {
@@ -463,6 +463,66 @@
       "test_paths": [
         "test_open_door.py",
         "open_door_guard.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Agri Seed Testing / Sharon Davidson rush-aware work allocator: a working CLI loads 300 frozen synthetic AOSA/Canadian/ISTA submissions, accessions 240 valids once with expected method revision and qualified-role assignment across AST_BOISE/AST_NAMPA, holds 60 truth-set missing-billing/duplicate-bag/invalid-rule-certificate/lot-size/unauthorized-ISTA-sampler defects with the exact reason, keeps rush from shortening regulated biological duration, requires named-human release, and reproduces fixture_sha256 f9f8c49394b5826f1979f80a67a1bc970774aeee91063f1cd76638ef5d729d30. Adapters stay simulated and read-only.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "agriseed_rush_work_allocator.py",
+        "test_agriseed_rush_work_allocator.py",
+        "agriseed-rush-work-allocator-lims.html",
+        "revenue/agriseed_rush_work_allocator/contract.json",
+        "revenue/agriseed_rush_work_allocator/README.md",
+        "revenue/agriseed_rush_work_allocator/runner.py",
+        "p/agriseed-rush-work-allocator-lims-01.md",
+        "features/registry/agriseed-rush-work-allocator-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "agriseed_rush_work_allocator.py",
+        "test_agriseed_rush_work_allocator.py",
+        "agriseed-rush-work-allocator-lims.html",
+        "revenue/agriseed_rush_work_allocator/contract.json",
+        "revenue/agriseed_rush_work_allocator/README.md",
+        "revenue/agriseed_rush_work_allocator/runner.py",
+        "p/agriseed-rush-work-allocator-lims-01.md",
+        "features/registry/agriseed-rush-work-allocator-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "agriseed-rush-work-allocator-lims-01.json",
+      "id": "agriseed-rush-work-allocator-lims-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Agri Seed rush-aware work allocator",
+      "next_gap": "Buyer-owned de-identified AOSA/Canadian/ISTA intake and sampler golden files after the synthetic PASS. No outreach. No cash claim. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "agriseed-rush-work-allocator-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "agriseed-rush-work-allocator-lims.html",
+        "revenue/agriseed_rush_work_allocator/contract.json",
+        "p/agriseed-rush-work-allocator-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_agriseed_rush_work_allocator.py",
+        "agriseed_rush_work_allocator.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -2544,6 +2604,66 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Pace Lebanon microbial-volume evidence LIMS: a frozen 120-submission runner stages 90 evidence-linked reports across microbial-limits, sterility, and CCIT routes; blocks 30 exact duplicate, missing-control-data, route, incubation, and QC/control defects without output; preserves count, unit, timepoint, method, result, and source hashes; creates zero replay additions; and requires named-human release.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "pace_lebanon_microbial_volume_evidence.py",
+        "test_pace_lebanon_microbial_volume_evidence.py",
+        "pace-lebanon-microbial-volume-evidence-lims.html",
+        "revenue/pace_lebanon_microbial_volume_evidence/contract.json",
+        "revenue/pace_lebanon_microbial_volume_evidence/receipt.json",
+        "revenue/pace_lebanon_microbial_volume_evidence/receipt.md",
+        "p/pace-lebanon-microbial-volume-evidence-lims-01.md",
+        "features/registry/pace-lebanon-microbial-volume-evidence-lims-01.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "pace_lebanon_microbial_volume_evidence.py",
+        "test_pace_lebanon_microbial_volume_evidence.py",
+        "pace-lebanon-microbial-volume-evidence-lims.html",
+        "revenue/pace_lebanon_microbial_volume_evidence/contract.json",
+        "revenue/pace_lebanon_microbial_volume_evidence/receipt.json",
+        "revenue/pace_lebanon_microbial_volume_evidence/receipt.md",
+        "p/pace-lebanon-microbial-volume-evidence-lims-01.md",
+        "features/registry/pace-lebanon-microbial-volume-evidence-lims-01.json"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "pace-lebanon-microbial-volume-evidence-lims-01.json",
+      "id": "pace-lebanon-microbial-volume-evidence-lims-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Pace Lebanon microbial-volume evidence",
+      "next_gap": "Buyer-controlled schemas, method/specification versions, validated fixtures, and named acceptance authority remain required before any live integration or production claim. No outreach. PRE-SALE TRANSPORT: NONE.",
+      "owner_subsystem": "revenue",
+      "public_entrypoint": "pace-lebanon-microbial-volume-evidence-lims.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "pace-lebanon-microbial-volume-evidence-lims.html",
+        "revenue/pace_lebanon_microbial_volume_evidence/contract.json",
+        "p/pace-lebanon-microbial-volume-evidence-lims-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_pace_lebanon_microbial_volume_evidence.py",
+        "pace_lebanon_microbial_volume_evidence.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Pins a main-tree blob and compares served bytes while distinguishing LIVE, STALE, MISMATCH, and UNAVAILABLE states.",
       "carrier": "CODEX",
       "chat_ignored": false,
@@ -4272,7 +4392,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 72,
+  "n_features": 74,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
