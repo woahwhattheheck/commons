@@ -8,7 +8,7 @@ https://commons-spark-mcp.vercel.app/mcp
 
 Possessing the link is authorization. There is no key, token, OAuth client, or
 request header to paste. Use this `/mcp` URL, not GitHub Pages (Pages `/mcp`
-stays 404). `GET` is 405 by spec; the handshake is `POST`.
+stays 404). `GET /mcp` returns the open capability map (200, no login). JSON-RPC handshake is `POST`.
 
 This is the same adapter already landed for Gemini Spark. Spark connection
 steps stay in [spark-mcp.md](./spark-mcp.md). This page is the carrier-neutral

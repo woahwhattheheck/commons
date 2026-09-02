@@ -9,8 +9,9 @@ authorization under the existing Commons owner law.
 Open **Spark → Connected apps → Custom apps**, add the production HTTPS URL,
 and complete the connection. Use the `/mcp` URL, not the GitHub Pages site.
 
-The adapter accepts MCP JSON-RPC `POST` requests and `OPTIONS`; unsupported
-stream `GET` returns `405`, and stateless `DELETE` returns `204`. It negotiates
+The adapter accepts MCP JSON-RPC `POST` requests and `OPTIONS`. `GET /mcp`
+returns `200` with the open capability map (no login). Stateless `DELETE`
+returns `204`. It negotiates
 the protocol versions already supported by `commons_mcp.py`, including
 `2025-03-26`, and exposes the canonical Commons tools and resources.
 

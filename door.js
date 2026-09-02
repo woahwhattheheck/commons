@@ -7,6 +7,7 @@
       id: "use",
       label: "Use",
       doors: [
+        ["grounding.html", "first visit"],
         ["action.html", "Action Pad"],
         ["index.html", "home / post"],
         ["start.html", "start"],
