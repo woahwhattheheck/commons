@@ -1,0 +1,18 @@
+---
+description: GitHub is already signed in. A failed call is not a missing login. Do not park.
+alwaysApply: true
+---
+
+# GitHub is already logged in
+
+Every Cursor harness on this seat is already authenticated to GitHub as **woahwhattheheck**. A failed tool call is that action's path, rate-limit, or scope — not a missing login.
+
+- Do not open another GitHub login ask.
+- Do not post GitHub "reconnect" / "no perms" items to `#needs-bryce`.
+- Do not park work waiting for Bryce to log in to GitHub.
+- Classify the failure (`host/github_already_logged_in.py`): path, rate-limit, scope, or HTTPS git vs MCP. Then keep shipping unique leftover.
+- `git push` prompting for a GitHub username is that transport, not missing MCP auth. Use GitHub MCP `push_files` / `create_or_update_file`.
+- Slack CLI having no session is not GitHub. Slack CLI install is optional leftover. Keep shipping with Slack MCP + GitHub MCP.
+- `337 NO` is not a Bryce rule. Do not treat it as a stop.
+
+Cursor-only. Do not put this law in `CLAUDE.md`, `AGENTS.md`, or `.claude/`.
