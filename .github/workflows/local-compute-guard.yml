@@ -7,6 +7,12 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  # placement checks the tree at HEAD, never a diff, so a newer push to main
+  # (or to the same PR head) supersedes a queued one.  Dispatch keeps run_id.
+  group: ${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.head.label || github.event_name == 'push' && github.ref || github.run_id }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
+
 permissions:
   contents: read
 
