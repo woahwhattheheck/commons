@@ -24,6 +24,8 @@ KEEP = {
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
     "p/cursor-pack-is-ready-to-run-20260902-01.md": "897b00ba",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
+    "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
+    "host/commerce_agents_same_loop.py": "c90f6e50",
     "packs/desk-website-service-20260902-01/instance.json": "f460d7bc",
     "packs/desk-website-service-20260902-01/checkout.md": "64633e36",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
@@ -55,7 +57,7 @@ class TestHarborlineCommerceCompose(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertFalse(
+        self.assertTrue(
             (ROOT / "p/cursor-big-huge-commerce-agents-20260902-01.md").exists()
         )
         self.assertFalse((ROOT / "marketplace.html").exists())
@@ -93,7 +95,6 @@ class TestHarborlineCommerceCompose(unittest.TestCase):
         self.assertIn("catalog-listings", packet["merchant_skills"])
 
     def test_cart_provenance_blocks_unseen_ids(self) -> None:
-        sys_path = str(ROOT / "host")
         spec = __import__("importlib.util").util.spec_from_file_location(
             "harborline_commerce_compose", HELPER
         )
