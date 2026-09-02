@@ -1,0 +1,45 @@
+{
+  "schema": "commons-merge-on-pr/v1",
+  "id": "cursor-merge-on-pr-20260902-01",
+  "kind": "MERGE_ON_PR",
+  "item": 6,
+  "gate": false,
+  "login": false,
+  "merge_default": true,
+  "stacked_worktrees": false,
+  "busy_main_is_stop": false,
+  "stale_base_is_stop": false,
+  "unrelated_checks_is_stop": false,
+  "parallel_branches_are_collisions": false,
+  "ride_sprint_integration": true,
+  "remint_sprint_integration": false,
+  "sprint_checker": "host/sprint_integration.py",
+  "sprint_policy": "ground/SPRINT_INTEGRATION.json",
+  "pr7915": {
+    "owner_said_merges": true,
+    "this_seat_reopen": false,
+    "this_seat_merge": false,
+    "leftover": "host/pr7915_closed_unmerged.py",
+    "leftover_receipt": "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md",
+    "expected_state": "closed",
+    "expected_merged": false,
+    "closed_at": "2026-09-02T19:44:19Z",
+    "head_sha": "fa046ce059009f0ddece9d91eaa5d60a1f281f39",
+    "head_ref": "cursor/harborline-map-pin-lift-pointer-ae54"
+  },
+  "do_not_steal": [
+    "host/harborline_qualify_live_probe.py",
+    "test_harborline_qualify_live_probe.py",
+    "p/cursor-harborline-qualify-live-probe-20260902-01.md",
+    "qualify.html"
+  ],
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788381748.979959",
+    "claim_ts": "1788385254.638229"
+  },
+  "invented_stripe_urls": false,
+  "sends": 0,
+  "cash_usd": 0,
+  "checkout": "FINDER-FAILED"
+}
