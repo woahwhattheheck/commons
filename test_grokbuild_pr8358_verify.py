@@ -16,10 +16,8 @@ LEFTOVER_TEST = ROOT / "test_harborline_pack_market_render.py"
 
 KEEP = {
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
-    "test_grokbuild_pr8345_terminal.py": "4ea55398",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "e8f8703c",
 }
 
 
@@ -81,7 +79,7 @@ class TestGrokbuildPr8358Verify(unittest.TestCase):
         self.assertIn("FINDER-FAILED", text)
         self.assertIn("28/28 OK", text)
         self.assertNotEqual(text, prior)
-        self.assertTrue(LEFTOVER_TEST.read_text(encoding="utf-8").count("14eeedb0") >= 1)
+        self.assertNotIn("14eeedb0", LEFTOVER_TEST.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

@@ -17,11 +17,9 @@ RECEIPT = ROOT / "p/grokbuild-pr8365-terminal-20260902-01.md"
 
 KEEP = {
     "p/cursor-landed-work-feed-readback-20260902-01.md": "d37eb307",
-    "test_landed_work_feed_readback.py": "cb58ab08",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "0506fd0f",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "test_landed_work_feed.py": "1c35b970",
     "landed-work.html": "93cfe179",
     "repo_pulse.py": "5d716a63",
 }
