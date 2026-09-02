@@ -675,6 +675,13 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["sold_once_badge_pointer"],
             "cursor-business-pack-sold-once-badge-pointer-20260902-01",
         )
+        self.assertEqual(
+            block["sold_once_badge_pin_lift"],
+            "cursor-business-pack-sold-once-badge-pin-lift-20260902-01",
+        )
+        self.assertIs(block["sold_once_badge_live_instance_blobs_not_pinned"], True)
+        self.assertIs(block["did_not_remint_sold_once_badge_pointer"], True)
+        self.assertIs(block["did_not_write_harborline_leftover_pin_helpers"], True)
         self.assertEqual(block["sold_once_claimed_by"], "TALLY")
         self.assertEqual(
             block["sold_once_scout_demand_id"],
@@ -777,6 +784,13 @@ class BusinessPackUniqueTest(unittest.TestCase):
             (
                 ROOT
                 / "p"
+                / "cursor-business-pack-sold-once-badge-pin-lift-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
                 / "cursor-business-pack-sold-once-not-landed-pointer-20260902-01.md"
             ).is_file()
         )
@@ -800,6 +814,11 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIn("KEEP MAIN on remint #7754", self.card)
         self.assertIn("sold-once", self.door.lower())
         self.assertIn("sold-once", self.card.lower())
+        self.assertIn("live_instance_blobs_not_pinned", json.dumps(self.law["instances"]))
+        self.assertIn("638e60b4", self.door)
+        self.assertIn("a550ae1b", self.door)
+        self.assertIn("host/business_pack_sold_once_badge_pointer.py", self.door)
+        self.assertIn("host/business_pack_sold_once_badge_pointer.py", self.card)
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
         block = self.law["rating_slot"]

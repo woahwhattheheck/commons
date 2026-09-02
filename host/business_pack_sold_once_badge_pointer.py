@@ -7,7 +7,10 @@ already landed LotRibbon door badge, instance creative_brief.md, and
 p/cursor-plant-sold-once-badge-20260902-01.md. This leftover LEADs the
 sidecar sold-once.md plus the unminted plant creative-brief receipt and
 CLEARs TALLY sold-once desk. GOAT template (f2953322) is cited and not
-overwritten. Checkout stays NOT_MINTED.
+overwritten.
+
+Live instance blobs are not pinned so TALLY can land sidewalk sold-once.
+Land-time observations stay in OBSERVED_AT_LAND. Checkout stays NOT_MINTED.
 """
 from __future__ import annotations
 
@@ -24,6 +27,7 @@ UNIQUE_PACK_ID = "cursor-business-packs-unique-20260902-01"
 CATALOG_ID = "cursor-business-pack-instance-catalog-20260902-01"
 POINTER_ID = "cursor-business-pack-sold-once-badge-pointer-20260902-01"
 HELPER_ID = "cursor-business-pack-sold-once-badge-pointer-helper-20260902-01"
+PIN_LIFT_ID = "cursor-business-pack-sold-once-badge-pin-lift-20260902-01"
 PLANT_SOLD_ONCE_ID = "cursor-plant-sold-once-badge-20260902-01"
 PLANT_CREATIVE_BRIEF_ID = "cursor-plant-creative-brief-20260902-01"
 SCOUT_SOLD_ONCE_ID = "scout-demand-door-sold-once-badge-20260902-01"
@@ -35,11 +39,15 @@ LOTRIBBON_SOLD_ONCE = "packs/lotribbon-greetings-20260902-01/sold-once.md"
 LOTRIBBON_BRIEF = "packs/lotribbon-greetings-20260902-01/creative_brief.md"
 LOTRIBBON_ASSETS_BRIEF = "packs/lotribbon-greetings-20260902-01/assets/creative_brief.md"
 PLANT_HELPER = "host/business_pack_plant_instance.py"
-EXPECTED_BLOBS = {
+# Land-time observations from leftover helper land e4f87e40 / PR #7770.
+# Not live pins: TALLY may change sidewalk door and the shared desk helper.
+OBSERVED_AT_LAND = {
     "host/business_pack_desk_instance.py": "a550ae1b",
     "packs/lotribbon-greetings-20260902-01/index.html": "7804ec33",
     "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
+}
+EXPECTED_BLOBS = {
     "p/cursor-business-pack-sold-once-badge-pointer-20260902-01.md": "1cc11a5f",
     "p/cursor-plant-sold-once-badge-20260902-01.md": "39d83580",
     "packs/_template/creative_brief.md": "f2953322",
@@ -96,12 +104,15 @@ def blob_prefix(rel: str) -> str:
 def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
     data = law if isinstance(law, dict) else load_law()
     catalog = instances_block(data)
-    blobs = {rel: blob_prefix(rel) for rel in EXPECTED_BLOBS}
+    blobs = {rel: blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *OBSERVED_AT_LAND)}
     blobs_match = all(
         blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items()
     )
     goat_untouched = blobs.get(GOAT_TEMPLATE, "").startswith(
         EXPECTED_BLOBS[GOAT_TEMPLATE]
+    )
+    did_not_overwrite_instance_doors = all(
+        rel in DO_NOT_WRITE for rel in OBSERVED_AT_LAND
     )
     pointer_ok = (
         str(data.get("id") or "") == UNIQUE_PACK_ID
@@ -118,6 +129,7 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         and data.get("commons_admission") is False
         and blobs_match
         and goat_untouched
+        and did_not_overwrite_instance_doors
         and (ROOT / LOTRIBBON_SOLD_ONCE).is_file()
         and (ROOT / LOTRIBBON_BRIEF).is_file()
         and (ROOT / LOTRIBBON_ASSETS_BRIEF).is_file()
@@ -135,6 +147,7 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "commons_admission": False,
         "id": HELPER_ID,
         "pointer_id": POINTER_ID,
+        "pin_lift_id": PIN_LIFT_ID,
         "lead_brand": LEAD_BRAND,
         "desk_sold_once_cleared_to": CLEAR_DESK,
         "plant_sold_once_claim": PLANT_SOLD_ONCE_ID,
@@ -151,15 +164,16 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "did_not_overwrite_peer_creative_brief": blobs.get(LOTRIBBON_BRIEF, "").startswith(
             EXPECTED_BLOBS[LOTRIBBON_BRIEF]
         ),
-        "did_not_overwrite_tally_helper": blobs.get(TALLY_HELPER, "").startswith(
-            EXPECTED_BLOBS[TALLY_HELPER]
-        ),
-        "did_not_overwrite_instance_doors": blobs_match,
+        "did_not_overwrite_tally_helper": catalog.get("did_not_overwrite_tally_helper")
+        is True,
+        "did_not_overwrite_instance_doors": did_not_overwrite_instance_doors,
         "lotribbon_sold_once_present": (ROOT / LOTRIBBON_SOLD_ONCE).is_file(),
         "lotribbon_creative_brief_present": (ROOT / LOTRIBBON_BRIEF).is_file(),
         "checkout": str(catalog.get("checkout") or ""),
         "this_seat_paths": list(THIS_SEAT_PATHS),
         "do_not_write": list(DO_NOT_WRITE),
+        "observed_at_land": dict(OBSERVED_AT_LAND),
+        "live_instance_blobs_not_pinned": True,
         "blobs": blobs,
         "blobs_match": blobs_match,
         "pointer_ok": pointer_ok,

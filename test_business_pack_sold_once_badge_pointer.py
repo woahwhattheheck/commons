@@ -53,6 +53,23 @@ class BusinessPackSoldOnceBadgePointerTest(unittest.TestCase):
         self.assertTrue(self.result["lotribbon_creative_brief_present"])
         self.assertEqual(self.result["checkout"], "NOT_MINTED")
         self.assertIs(self.law["gate"], False)
+        self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
+        self.assertEqual(self.result["pin_lift_id"], pointer.PIN_LIFT_ID)
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ],
+            "638e60b4",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"]["host/business_pack_desk_instance.py"],
+            "a550ae1b",
+        )
+        self.assertNotIn("host/business_pack_desk_instance.py", pointer.EXPECTED_BLOBS)
+        self.assertNotIn(
+            "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+            pointer.EXPECTED_BLOBS,
+        )
 
     def test_does_not_steal_or_remint(self) -> None:
         self.assertNotIn("host/business_pack_desk_instance.py", pointer.THIS_SEAT_PATHS)
@@ -106,6 +123,37 @@ class BusinessPackSoldOnceBadgePointerTest(unittest.TestCase):
         self.assertEqual(data["id"], pointer.HELPER_ID)
         self.assertEqual(data["pointer_id"], pointer.POINTER_ID)
         self.assertEqual(data["checkout"], "NOT_MINTED")
+        self.assertIs(data["live_instance_blobs_not_pinned"], True)
+
+    def test_live_sidewalk_and_helper_blobs_are_not_pins(self) -> None:
+        orig = pointer.blob_prefix
+
+        def fake(rel: str) -> str:
+            if rel == "packs/sidewalk-signal-web-desk-20260902-01/index.html":
+                return "4488cda7"
+            if rel == "host/business_pack_desk_instance.py":
+                return "1029faad"
+            return orig(rel)
+
+        pointer.blob_prefix = fake  # type: ignore[method-assign]
+        try:
+            result = pointer.classify_pointer(self.law)
+            self.assertTrue(result["pointer_ok"])
+            self.assertIs(result["live_instance_blobs_not_pinned"], True)
+            self.assertTrue(result["did_not_overwrite_instance_doors"])
+            self.assertTrue(result["did_not_overwrite_tally_helper"])
+            self.assertEqual(
+                result["observed_at_land"][
+                    "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+                ],
+                "638e60b4",
+            )
+            self.assertEqual(
+                result["observed_at_land"]["host/business_pack_desk_instance.py"],
+                "a550ae1b",
+            )
+        finally:
+            pointer.blob_prefix = orig  # type: ignore[method-assign]
 
 
 if __name__ == "__main__":
