@@ -140,6 +140,20 @@ Channel law says heavy advertising for this tier is later and owner-owned. This 
 
 ---
 
+## 3b. Owner directive 2026-09-02 01:27 EDT — a percentage and partial ownership in the terms of service: how each buyer hears it
+
+Recorded from the hub (Bryce, 01:27:49 EDT). Law side is in LAW_AND_POLICY_FLAGS.md §8. This is the buyer side, so door copy is not written before the owner picks the shape.
+
+| tier | how the buyer hears "tjlabs keeps a percentage and partial ownership" | conversion effect | what softens it |
+|---|---|---|---|
+| $20 / $50 | Does not read the ToS. If he notices, "they want a cut of my $200/month?" | negligible on purchase; corrosive on word of mouth if enforced | a fixed-term cap; or exempting tiers under the $735 franchise-rule floor entirely |
+| $100 Tyler | Cash business. A percentage of profit is unauditable and he knows it; "partial ownership" of his Saturday route reads as absurd | small at purchase; he assumes it is unenforceable | a flat renewal fee for the door and updates instead of a percentage |
+| $200 Lena/Dan | Understands rev-share from software and agencies; will ask "for how long, on what base, what do I get for it" | moderate; converts if the answer is a licence with a term and services attached | "X% of gross reported through the door for 12 months, capped, includes updates and the demo kit" |
+| $1,000 Renee/Kevin | Is paying $1,000 to *own* a business instead of a franchise. A seller equity stake is exactly what he is avoiding | **largest negative in the ladder**; equity language can kill this tier's paid funnel | a term-limited royalty framed as deferred purchase price; a third-party rating on the door; no equity |
+| $10,000 Owen | Compares to franchise royalties of 4–12% gross plus a 1–4% marketing fund and expects franchise-grade support in return; an equity stake in his unit is a no from an existing owner | strong negative for the SMB-owner half; the would-be franchisee half accepts a royalty if support is real | royalty on gross with named support obligations; never "ownership" |
+
+The factory law's best marketing claim ("yours; nobody else gets this instance") and "tjlabs owns part of it" cannot both be on the door. Research finding, not a recommendation: a **term-limited, capped royalty on gross reported through the seller-hosted door, disclosed in one line on the door and the ad**, is the shape that survives every card above; **equity/partial ownership is the shape that fails the two tiers paid X can actually carry at scale.** The owner decides.
+
 ## 4. The buyer for everything else already on the shelf
 
 "Anyone for any pricing tier" includes what is already live. Mapped in [PACK_BUYER_MAP.json](./PACK_BUYER_MAP.json):
