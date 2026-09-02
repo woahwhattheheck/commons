@@ -479,6 +479,12 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01",
         )
         self.assertIs(block["did_not_overwrite_waitlist_html"], True)
+        self.assertEqual(
+            block["sidewalk_lotribbon_waitlist_pointer"],
+            "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_overwrite_sidewalk_door"], True)
+        self.assertIs(block["did_not_overwrite_lotribbon_door"], True)
         self.assertEqual(block["checkout"], "NOT_MINTED")
         doors = [row["door"] for row in block["landed"]]
         self.assertEqual(
@@ -507,8 +513,13 @@ class BusinessPackUniqueTest(unittest.TestCase):
             ],
         )
         harborline = [row for row in block["landed"] if row["brand"] == "Harborline Local Sites"][0]
+        sidewalk = [row for row in block["landed"] if row["brand"] == "Sidewalk Signal"][0]
+        lotribbon = [row for row in block["landed"] if row["brand"] == "LotRibbon Greetings"][0]
         self.assertEqual(harborline["waitlist"], "packs/waitlist.html")
+        self.assertEqual(sidewalk["waitlist"], "packs/waitlist.html")
+        self.assertEqual(lotribbon["waitlist"], "packs/waitlist.html")
         self.assertIn("host/business_pack_desk_instance.py", self.door)
+        self.assertIn("Catalog rows for LotRibbon and Sidewalk cite", self.door)
         self.assertTrue(
             (ROOT / "p" / "cursor-business-pack-instance-catalog-20260902-01.md").is_file()
         )
@@ -520,6 +531,13 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 ROOT
                 / "p"
                 / "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01.md"
             ).is_file()
         )
 

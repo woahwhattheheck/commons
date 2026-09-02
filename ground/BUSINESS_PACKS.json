@@ -178,6 +178,9 @@
     "harborline_waitlist_slot_sha": "08aabf097",
     "harborline_waitlist_slot_pointer": "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01",
     "did_not_overwrite_waitlist_html": true,
+    "sidewalk_lotribbon_waitlist_pointer": "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",
+    "did_not_overwrite_sidewalk_door": true,
+    "did_not_overwrite_lotribbon_door": true,
     "checkout": "NOT_MINTED",
     "agents_spend_ads": false,
     "landed": [
@@ -187,7 +190,8 @@
         "price": 1000,
         "door": "packs/lotribbon-greetings-20260902-01/index.html",
         "receipt": "cursor-plant-yard-greeting-pack-20260902-01",
-        "owned_by": "bc-23891c63"
+        "owned_by": "bc-23891c63",
+        "waitlist": "packs/waitlist.html"
       },
       {
         "brand": "Sidewalk Signal",
@@ -196,7 +200,8 @@
         "door": "packs/sidewalk-signal-web-desk-20260902-01/index.html",
         "receipt": "tally-desk-website-service-pack-20260902-01",
         "owned_by": "TALLY",
-        "helper": "host/business_pack_desk_instance.py"
+        "helper": "host/business_pack_desk_instance.py",
+        "waitlist": "packs/waitlist.html"
       },
       {
         "brand": "Harborline Local Sites",
