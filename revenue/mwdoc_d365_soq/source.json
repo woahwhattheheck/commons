@@ -1,0 +1,552 @@
+{
+  "schema": "commons-mwdoc-d365-source/v1",
+  "id": "mwdoc-d365-partner-soq-packet-20260902-01",
+  "observed_at": "2026-09-02T01:35:00Z",
+  "public_safe": true,
+  "purpose": "Evidence-backed partner qualification and draft-only subcontract fit packet for MWDOC RFQ FIN. 2026-001.",
+  "official_sources": [
+    {
+      "id": "mwdoc_rfq_pdf",
+      "url": "https://www.mwdoc.com/wp-content/uploads/2026/08/RFQ_FIN_2026-08-01_D365_Post_Go-Live_Support.pdf",
+      "observed_on": "2026-09-02",
+      "claim": "Official RFQ FIN. 2026-001 requirements, scope, schedule, responsiveness gates and evaluation weights.",
+      "boundary": "Controlling only as supplemented by official addenda."
+    },
+    {
+      "id": "mwdoc_opportunities",
+      "url": "https://www.mwdoc.com/opportunities/rfps-rfqs/",
+      "observed_on": "2026-09-02",
+      "claim": "Official MWDOC procurement index.",
+      "boundary": "Must be rechecked for addenda before any owner-authorized response."
+    },
+    {
+      "id": "mwdoc_detail",
+      "url": "https://www.mwdoc.com/rfps-rfqs/rfq-for-post-implementation-support-services-for-microsoft-dynamics-365-finance-operations/",
+      "observed_on": "2026-09-02",
+      "claim": "Official opportunity detail page.",
+      "boundary": "No submission action is authorized."
+    },
+    {
+      "id": "mwdoc_incumbent_packet",
+      "url": "https://www.mwdoc.com/wp-content/uploads/2026/01/021126-AF-Packet-Final.pdf",
+      "observed_on": "2026-09-02",
+      "claim": "Official board packet identifies Consultadd Public Services as the implementation consultant.",
+      "boundary": "Incumbency is not proof of current RFQ eligibility, partner standing, GCC experience or references."
+    },
+    {
+      "id": "microsoft_partner_finder",
+      "url": "https://www.microsoft.com/en-us/dynamics-365/partners/find-a-partner",
+      "observed_on": "2026-09-02",
+      "claim": "Microsoft first-party partner discovery route.",
+      "boundary": "A search result alone is not proof of current good standing or RFQ eligibility."
+    },
+    {
+      "id": "microsoft_finance_specialization",
+      "url": "https://partner.microsoft.com/en-us/partnership/specialization/finance",
+      "observed_on": "2026-09-02",
+      "claim": "Microsoft first-party Finance specialization criteria.",
+      "boundary": "Target-company pages are not substitutes for owner-private Partner Center evidence."
+    },
+    {
+      "id": "microsoft_finance_docs",
+      "url": "https://learn.microsoft.com/en-us/dynamics365/finance/",
+      "observed_on": "2026-09-02",
+      "claim": "Microsoft first-party D365 Finance documentation.",
+      "boundary": "Documentation does not establish delivery experience."
+    }
+  ],
+  "schedule": {
+    "issued_on": "2026-08-18",
+    "soq_due": "2026-09-25T17:00:00-07:00",
+    "attachment_limit_mb": 25,
+    "required_content_start": "2026-10-26",
+    "evaluation_start": "2026-09-21",
+    "start_discrepancy_state": "ADDENDUM_REQUIRED",
+    "start_discrepancy_note": "The evaluation date precedes the SOQ deadline and conflicts with Required Content. Do not choose a date without an official addendum.",
+    "addendum_state": "OFFICIAL_RECHECK_REQUIRED"
+  },
+  "environment": {
+    "product": "Microsoft Dynamics 365 Finance & Operations 10.0.4x",
+    "tenant": "GCC Moderate U.S. Government",
+    "lifecycle_route": "PPAC unified environments",
+    "topology": "One production and two non-production environments",
+    "production_customization": "Out-of-box; no custom X++ or third-party ISVs stated",
+    "modules": [
+      "General ledger",
+      "Accounts payable",
+      "Accounts receivable",
+      "Cash and bank management",
+      "Fixed assets",
+      "Budgeting",
+      "Procurement and sourcing"
+    ],
+    "accounting": [
+      "One legal entity",
+      "Nine financial dimensions",
+      "Fund balancing dimension",
+      "Governmental fund accounting"
+    ],
+    "reporting": [
+      "Financial Reporting",
+      "Power BI",
+      "Excel and Power Query"
+    ],
+    "available_data_routes": [
+      "OData",
+      "DMF",
+      "BYOD to Azure Government SQL"
+    ],
+    "constrained_routes": [
+      "Fabric unavailable",
+      "Synapse Link unavailable",
+      "No usable LCS path"
+    ]
+  },
+  "score_weights": {
+    "microsoft_partner_good_standing": 20,
+    "d365_fo_practice": 15,
+    "gcc_moderate_ppac": 20,
+    "two_public_agency_support_references": 20,
+    "government_fund_accounting": 10,
+    "managed_support_and_knowledge_transfer": 10,
+    "pacific_coverage_and_start": 5
+  },
+  "mandatory_gate_keys": [
+    "microsoft_partner_good_standing",
+    "d365_fo_practice",
+    "gcc_moderate_ppac",
+    "two_public_agency_support_references",
+    "pacific_coverage_and_start"
+  ],
+  "evidence_state_factors": {
+    "VERIFIED_PUBLIC": 1,
+    "PARTIAL_PUBLIC": 0.5,
+    "NOT_VERIFIED": 0
+  },
+  "targets": [
+    {
+      "company": "HSO",
+      "target_persona": "U.S. Public Sector D365 Practice Lead or Managed Services Principal",
+      "proposed_role": "PROVISIONAL_PRIME_RESEARCH_TARGET",
+      "evidence": {
+        "microsoft_partner_good_standing": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "HSO reports current Microsoft Inner Circle membership and all six solution designations; owner-private first-party standing evidence is still required.",
+          "sources": [
+            {
+              "url": "https://www.hso.com/news/hso-achieves-2025-2026-microsoft-ai-business-solutions-inner-circle/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "d365_fo_practice": {
+          "state": "VERIFIED_PUBLIC",
+          "summary": "Multiple named government D365 Finance/F&O customer stories evidence an active practice.",
+          "sources": [
+            {
+              "url": "https://www.hso.com/customer-case/government-success-cass-county-nd-moves-from-legacy-erp-to-microsoft-dynamics-365-for-transparency-and-efficiency/",
+              "observed_on": "2026-09-02"
+            },
+            {
+              "url": "https://www.hso.com/customer-case/government-success-why-mchenry-county-illinois-chose-microsoft-dynamics-365-for-their-cloud-erp-and-hso-as-their-partner/",
+              "observed_on": "2026-09-02"
+            },
+            {
+              "url": "https://www.hso.com/customer-case/government-success-a-state-department-of-ecology-turned-to-hso-for-loan-management-functionality-paired-with-dynamics-365-for-finance/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "gcc_moderate_ppac": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "HSO describes Government Community Cloud and StateRAMP capabilities, but no public source proves D365 F&O in MWDOC-like GCC Moderate PPAC.",
+          "sources": [
+            {
+              "url": "https://www.hso.com/artificial-intelligence/compliance/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "two_public_agency_support_references": {
+          "state": "NOT_VERIFIED",
+          "summary": "Named public-sector case studies exist, but two authorized post-go-live support reference contacts are not evidenced.",
+          "sources": [
+            {
+              "url": "https://www.hso.com/customer-case/government-success-cass-county-nd-moves-from-legacy-erp-to-microsoft-dynamics-365-for-transparency-and-efficiency/",
+              "observed_on": "2026-09-02"
+            },
+            {
+              "url": "https://www.hso.com/customer-case/government-success-why-mchenry-county-illinois-chose-microsoft-dynamics-365-for-their-cloud-erp-and-hso-as-their-partner/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "government_fund_accounting": {
+          "state": "VERIFIED_PUBLIC",
+          "summary": "County and state-government D365 stories are relevant public-sector evidence; exact MWDOC fund-accounting similarity remains a fit-check item.",
+          "sources": [
+            {
+              "url": "https://www.hso.com/customer-case/government-success-a-state-department-of-ecology-turned-to-hso-for-loan-management-functionality-paired-with-dynamics-365-for-finance/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "managed_support_and_knowledge_transfer": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "Public government delivery evidence is strong, but the RFQ's exact ongoing support, training and update model is not fully evidenced.",
+          "sources": [
+            {
+              "url": "https://www.hso.com/customer-case/government-success-state-police-and-fire-pension-fund-takes-advantage-of-the-cloud-with-a-move-from-dynamics-ax-to-dynamics-365-finance/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "pacific_coverage_and_start": {
+          "state": "NOT_VERIFIED",
+          "summary": "Named bench, conflicts, Pacific coverage and official start-date availability require private confirmation.",
+          "sources": []
+        }
+      }
+    },
+    {
+      "company": "RSM US LLP",
+      "target_persona": "Public Sector Microsoft Business Applications Practice Leader",
+      "proposed_role": "PROVISIONAL_PRIME_RESEARCH_TARGET",
+      "evidence": {
+        "microsoft_partner_good_standing": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "RSM publicly markets Microsoft business applications; current owner-private standing evidence is still required.",
+          "sources": [
+            {
+              "url": "https://rsmus.com/technologies/microsoft/solutions/business-applications.html",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "d365_fo_practice": {
+          "state": "VERIFIED_PUBLIC",
+          "summary": "RSM's official business-applications page identifies D365 ERP services.",
+          "sources": [
+            {
+              "url": "https://rsmus.com/technologies/microsoft/solutions/business-applications.html",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "gcc_moderate_ppac": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "A state-agency story uses Azure Government, which is not proof of D365 F&O GCC Moderate PPAC.",
+          "sources": [
+            {
+              "url": "https://technologyblog.rsmus.com/industry/public-sector-hhs/modernizing-for-a-sustainable-future-how-a-state-environmental-agency-transformed-its-legacy-systems-with-microsoft-solutions/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "two_public_agency_support_references": {
+          "state": "NOT_VERIFIED",
+          "summary": "The public state-agency story is anonymous and does not provide two authorized support references.",
+          "sources": [
+            {
+              "url": "https://technologyblog.rsmus.com/industry/public-sector-hhs/modernizing-for-a-sustainable-future-how-a-state-environmental-agency-transformed-its-legacy-systems-with-microsoft-solutions/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "government_fund_accounting": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "Public-sector experience is visible, but governmental fund-accounting similarity is not directly proven.",
+          "sources": [
+            {
+              "url": "https://technologyblog.rsmus.com/industry/public-sector-hhs/modernizing-for-a-sustainable-future-how-a-state-environmental-agency-transformed-its-legacy-systems-with-microsoft-solutions/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "managed_support_and_knowledge_transfer": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "Transformation delivery is visible; exact post-go-live SLA, training and knowledge transfer require confirmation.",
+          "sources": [
+            {
+              "url": "https://rsmus.com/technologies/microsoft/solutions/business-applications.html",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "pacific_coverage_and_start": {
+          "state": "NOT_VERIFIED",
+          "summary": "Named bench, conflicts, Pacific coverage and official start-date availability require private confirmation.",
+          "sources": []
+        }
+      }
+    },
+    {
+      "company": "Hitachi Solutions America",
+      "target_persona": "Government Industry Lead or D365 Managed Services Principal",
+      "proposed_role": "PROVISIONAL_PRIME_RESEARCH_TARGET",
+      "evidence": {
+        "microsoft_partner_good_standing": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "Hitachi Solutions reports Microsoft awards and all six designations; current owner-private first-party standing evidence is still required.",
+          "sources": [
+            {
+              "url": "https://global.hitachi-solutions.com/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "d365_fo_practice": {
+          "state": "VERIFIED_PUBLIC",
+          "summary": "Hitachi Solutions identifies Dynamics 365 Finance capability and Microsoft recognition.",
+          "sources": [
+            {
+              "url": "https://global.hitachi-solutions.com/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "gcc_moderate_ppac": {
+          "state": "NOT_VERIFIED",
+          "summary": "No public evidence located for D365 F&O in GCC Moderate PPAC.",
+          "sources": []
+        },
+        "two_public_agency_support_references": {
+          "state": "NOT_VERIFIED",
+          "summary": "A UK government support case is not two U.S. public-agency references and contains no authorized reference packet.",
+          "sources": [
+            {
+              "url": "https://global.hitachi-solutions.com/customer-stories/department-of-health-and-social-care/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "government_fund_accounting": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "Government delivery is visible; U.S. governmental fund-accounting similarity is not directly proven.",
+          "sources": [
+            {
+              "url": "https://global.hitachi-solutions.com/customer-stories/department-of-health-and-social-care/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "managed_support_and_knowledge_transfer": {
+          "state": "VERIFIED_PUBLIC",
+          "summary": "The managed-services page and government support story evidence an ongoing support practice.",
+          "sources": [
+            {
+              "url": "https://global.hitachi-solutions.com/what-we-do/managed-services/",
+              "observed_on": "2026-09-02"
+            },
+            {
+              "url": "https://global.hitachi-solutions.com/customer-stories/department-of-health-and-social-care/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "pacific_coverage_and_start": {
+          "state": "NOT_VERIFIED",
+          "summary": "Named bench, conflicts, Pacific coverage and official start-date availability require private confirmation.",
+          "sources": []
+        }
+      }
+    },
+    {
+      "company": "Consultadd Public Services",
+      "target_persona": "Public Sector ERP Delivery Executive or D365 Program Principal",
+      "proposed_role": "INCUMBENT_CONTINUITY_RESEARCH_TARGET",
+      "evidence": {
+        "microsoft_partner_good_standing": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "The company self-describes as a Microsoft Partner; current first-party good-standing evidence is not public.",
+          "sources": [
+            {
+              "url": "https://consultaddpublicservices.com/",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "d365_fo_practice": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "MWDOC's board packet evidences incumbent implementation work, but public evidence does not establish the complete RFQ practice gate.",
+          "sources": [
+            {
+              "url": "https://www.mwdoc.com/wp-content/uploads/2026/01/021126-AF-Packet-Final.pdf",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "gcc_moderate_ppac": {
+          "state": "NOT_VERIFIED",
+          "summary": "No public evidence located for the incumbent's D365 F&O GCC Moderate PPAC delivery.",
+          "sources": []
+        },
+        "two_public_agency_support_references": {
+          "state": "NOT_VERIFIED",
+          "summary": "No public packet establishes two authorized D365 F&O support references.",
+          "sources": []
+        },
+        "government_fund_accounting": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "Public-sector positioning and MWDOC incumbency are relevant but not exact fund-accounting proof.",
+          "sources": [
+            {
+              "url": "https://consultaddpublicservices.com/",
+              "observed_on": "2026-09-02"
+            },
+            {
+              "url": "https://www.mwdoc.com/wp-content/uploads/2026/01/021126-AF-Packet-Final.pdf",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "managed_support_and_knowledge_transfer": {
+          "state": "PARTIAL_PUBLIC",
+          "summary": "Incumbent delivery suggests continuity value, but the exact support, training and update obligations require evidence.",
+          "sources": [
+            {
+              "url": "https://www.mwdoc.com/wp-content/uploads/2026/01/021126-AF-Packet-Final.pdf",
+              "observed_on": "2026-09-02"
+            }
+          ]
+        },
+        "pacific_coverage_and_start": {
+          "state": "NOT_VERIFIED",
+          "summary": "Named bench, conflicts, Pacific coverage and official start-date availability require private confirmation.",
+          "sources": []
+        }
+      }
+    }
+  ],
+  "reference_slots": [
+    {
+      "slot": 1,
+      "status": "OWNER_PRIVATE_EVIDENCE_REQUIRED",
+      "public_contact_data": false,
+      "requirements": {
+        "public_agency_legal_identity": false,
+        "exact_d365_finance_or_fo_product": false,
+        "post_go_live_support_scope": false,
+        "project_and_support_dates": false,
+        "relevant_modules_and_fund_accounting": false,
+        "gcc_ppac_or_commercial_only_disclosure": false,
+        "private_reference_contact_identity_title_phone_email": false,
+        "contact_authorized_to_serve_as_reference": false,
+        "permission_to_share_with_mwdoc": false,
+        "prime_sub_and_personnel_attribution": false,
+        "source_and_observed_date": false,
+        "owner_private_receipt_id": false
+      }
+    },
+    {
+      "slot": 2,
+      "status": "OWNER_PRIVATE_EVIDENCE_REQUIRED",
+      "public_contact_data": false,
+      "requirements": {
+        "public_agency_legal_identity": false,
+        "exact_d365_finance_or_fo_product": false,
+        "post_go_live_support_scope": false,
+        "project_and_support_dates": false,
+        "relevant_modules_and_fund_accounting": false,
+        "gcc_ppac_or_commercial_only_disclosure": false,
+        "private_reference_contact_identity_title_phone_email": false,
+        "contact_authorized_to_serve_as_reference": false,
+        "permission_to_share_with_mwdoc": false,
+        "prime_sub_and_personnel_attribution": false,
+        "source_and_observed_date": false,
+        "owner_private_receipt_id": false
+      }
+    }
+  ],
+  "proposed_subcontract_scope": {
+    "label": "NARROW_NON_PRODUCTION_AP_TO_REPORT_REGRESSION_RECONCILIATION",
+    "inclusions": [
+      "Document synthetic or owner-provided non-confidential test cases from vendor-invoice intake and approval through posting.",
+      "Exercise non-production workflows only under prime and MWDOC change control.",
+      "Reconcile ledger, Financial Reporting, Power BI and Excel outputs to approved expected totals.",
+      "Produce deterministic defect evidence, replay receipts, regression-library documentation and knowledge-transfer artifacts."
+    ],
+    "exclusions": [
+      "No production access, configuration change, deployment, release or independent submission.",
+      "No claim of D365, GCC, public-agency, customer or Microsoft partner experience from Commons synthetic artifacts.",
+      "No credentials, private agency data, regulated data, billing authority, tenant administration or SLA ownership.",
+      "Prime retains eligibility, tenant, staffing, reference, rate, insurance, agreement, submission and production accountability."
+    ]
+  },
+  "outreach_draft": {
+    "state": "DRAFT_ONLY",
+    "authorization": "NO_SEND_AUTHORIZATION",
+    "teaming_claim": "NO_TEAMING_CLAIM",
+    "target_company": "HSO",
+    "target_persona": "U.S. Public Sector D365 Practice Lead or Managed Services Principal",
+    "subject": "Potential bounded subcontract role for MWDOC D365 F&O post-go-live SOQ",
+    "body": [
+      "Hello [Public Sector D365 Practice Lead],",
+      "We are evaluating whether there is a fit to support a qualified prime responding to MWDOC RFQ FIN. 2026-001. We are not claiming prime eligibility, Microsoft partner status, GCC tenant experience, or public-agency references.",
+      "Our proposed bounded role is non-production AP-to-report regression and reconciliation support: documented test cases from vendor-invoice intake and approval through posting, financial, Power BI, and Excel output checks, defect evidence, and knowledge-transfer artifacts. We would work only under prime supervision and MWDOC onboarding; no production changes or independent submission.",
+      "If your firm is considering a response and can substantiate the RFQ's Microsoft partner, GCC Moderate PPAC, and two public-agency D365 F&O support-reference gates, would you be open to a short fit check? Before any teaming representation, both sides would need written scope, named personnel and availability, conflict checks, rates, data and security responsibilities, insurance, and agreement approval.",
+      "Regards,",
+      "[Owner-approved sender]"
+    ]
+  },
+  "rate_sheet": {
+    "status": "OWNER_RATE_REQUIRED",
+    "currency": "USD",
+    "rows": [
+      {
+        "classification": "Engagement lead",
+        "hourly_rate": null,
+        "prepaid_block_hours": null,
+        "prepaid_block_price": null
+      },
+      {
+        "classification": "D365 functional consultant",
+        "hourly_rate": null,
+        "prepaid_block_hours": null,
+        "prepaid_block_price": null
+      },
+      {
+        "classification": "Regression and reconciliation analyst",
+        "hourly_rate": null,
+        "prepaid_block_hours": null,
+        "prepaid_block_price": null
+      },
+      {
+        "classification": "Power BI and reporting specialist",
+        "hourly_rate": null,
+        "prepaid_block_hours": null,
+        "prepaid_block_price": null
+      }
+    ],
+    "assumptions": {
+      "annual_escalation": null,
+      "minimum_increment": null,
+      "after_hours": null,
+      "travel": null,
+      "effective_date": null
+    }
+  },
+  "agreement_checklist": {
+    "status": "OWNER_AND_COUNSEL_REVIEW_REQUIRED",
+    "disclaimer": "Checklist only; not legal advice and not agreement acceptance.",
+    "items": [
+      "Entity, signer authority and subcontractor approval",
+      "Scope boundaries, named personnel, availability and transition",
+      "Intellectual property and work product",
+      "Confidentiality, data handling, incident response and public records",
+      "Indemnity, professional liability, technology or cyber coverage and other applicable insurance",
+      "Termination, transition assistance and records retention",
+      "Invoicing, prepaid blocks, expenses, disputes and audit rights",
+      "Conflicts, ethics, representations and flow-down obligations"
+    ]
+  },
+  "truth_flags": {
+    "external_outreach": false,
+    "teaming_agreement": false,
+    "partner_eligibility_claim": false,
+    "reference_ready": false,
+    "bid_or_submission": false,
+    "award_or_acceptance": false,
+    "revenue_or_cash": false
+  }
+}
