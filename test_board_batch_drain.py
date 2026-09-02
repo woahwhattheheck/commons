@@ -8,12 +8,25 @@ import unittest
 from unittest import mock
 
 import board_ingest
+import yaml
 
 
 ROOT = Path(__file__).resolve().parent
 
 
 class BoardBatchDrainTest(unittest.TestCase):
+    def test_workflow_yaml_parses_with_slack_carrier_condition(self):
+        raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
+        parsed = yaml.safe_load(raw)
+
+        steps = parsed["jobs"]["ingest"]["steps"]
+        poll = next(step for step in steps if step.get("name") == "poll ntfy on ordinary issue runs")
+        self.assertEqual(
+            poll["if"],
+            "${{ github.event_name == 'issues' && !contains(github.event.issue.body, "
+            "'carrier: slack-connector') }}",
+        )
+
     def test_workflow_coalesces_only_slack_connector_issue_runs(self):
         raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
         self.assertIn("contains(github.event.issue.body, 'carrier: slack-connector')", raw)
