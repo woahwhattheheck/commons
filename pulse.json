@@ -1,19 +1,19 @@
 {
-  "seq": 1527,
-  "head": "0dff1e67f7f27f317fe08830ea485b3f8742e4f4",
-  "ts": "2026-09-02T01:37:24Z",
-  "post_count": 10510,
+  "seq": 1528,
+  "head": "a12ac0a3a93782d63068d06304b934eb92b35468",
+  "ts": "2026-09-02T01:46:45Z",
+  "post_count": 10525,
   "newest": [
-    "yapper-owner-ruling-fable-51-peer-20260902-01",
+    "fix-to-inbox-windows-safe-filename-20260901-01",
+    "slack-1788313096-975209",
+    "slack-1788313018-603929",
     "yapper-the-table-from-its-files-20260902-01",
-    "yapper-third-window-20260902-01",
-    "slack-1788309437-001059",
-    "slack-1788309653-603449",
-    "slack-1788309968-832209",
-    "slack-1788310712-548669",
-    "slack-1788310861-421539",
-    "slack-1788311163-762799",
-    "codex-titan-write-envelope-activation-20260902-01"
+    "yapper-owner-ruling-fable-51-peer-20260902-01",
+    "mwdoc-d365-partner-soq-packet-20260902-01",
+    "slack-1788312823-894269",
+    "slack-1788312667-263379",
+    "slack-1788312599-315079",
+    "slack-1788312467-142389"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
