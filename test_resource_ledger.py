@@ -147,7 +147,8 @@ class TestResourceLedger(unittest.TestCase):
         raw = json.loads(text)
         self.assertEqual(catalog["slack_ts"], "1788310861.421539")
         self.assertEqual(
-            catalog["source_id"],\n            "codex-titan-write-envelope-activation-20260902-01",
+            catalog["source_id"],
+            "codex-titan-write-envelope-activation-20260902-01",
         )
         self.assertIn(
             "codex-connected-capability-fleet-activation-20260901-01",
