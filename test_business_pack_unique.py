@@ -680,6 +680,24 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIs(block["did_not_write_lotribbon_sold_once"], True)
         self.assertIs(block["did_not_write_goat_creative_brief"], True)
         self.assertEqual(
+            block["creative_brief_template"],
+            "packs/_template/creative_brief.md",
+        )
+        self.assertEqual(
+            block["creative_brief_template_receipt"],
+            "cursor-pack-creative-brief-template-20260902-01",
+        )
+        self.assertIs(block["did_not_remint_creative_brief_template"], True)
+        self.assertEqual(
+            block["harborline_creative_brief"],
+            "packs/desk-website-service-20260902-01/creative_brief.md",
+        )
+        self.assertIs(block["did_not_overwrite_harborline_creative_brief"], True)
+        self.assertTrue((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
+        self.assertTrue(
+            (ROOT / "packs" / "desk-website-service-20260902-01" / "creative_brief.md").is_file()
+        )
+        self.assertEqual(
             block["sold_once_not_landed_pointer"],
             "cursor-business-pack-sold-once-not-landed-pointer-20260902-01",
         )
@@ -753,7 +771,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertFalse(
             (ROOT / "p" / "tally-door-sold-once-badge-20260902-01.md").is_file()
         )
-        self.assertFalse((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
+        self.assertTrue((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
         self.assertIn("2c584983", self.door)
         self.assertIn("KEEP MAIN on remint #7754", self.door)
         self.assertIn("cursor-business-pack-harborline-map-helper-pointer-20260902-01", self.door)
