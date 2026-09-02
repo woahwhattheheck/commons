@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Commons shared super MCP — catalog</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1rem}
+.card{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}
+.card h3{margin-top:0}
+code,pre{overflow-wrap:anywhere}
+button{font:inherit;border:1px solid #383840;border-radius:999px;padding:.55rem .9rem;background:#1b1b22;color:inherit;cursor:pointer}
+</style>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./wire.html">fold door</a> · <a href="./capabilities.html">capabilities</a> · <a href="./gemini-mcp.html">Gemini MCP</a> · <a href="./action.html">Action Pad</a> · <a href="./tools.html">tools</a> · <a href="./payment-capability.html">Stripe rail</a></p>
+<h1>Shared super MCP catalog</h1>
+<p class="law">One public MCP. One composed plugin. One catalog surface. Covers whatever your harness cannot. Not seven siloed packs. Possessing the link is authorization.</p>
+<p><strong>Live MCP</strong> (do not remint): <code id="mcp-url">https://commons-spark-mcp.vercel.app/mcp</code>
+<button type="button" id="copy-mcp">Copy URL</button></p>
+<p>Call <code>discover_commons_capabilities</code> first. Fold door already landed: <a href="./wire.html">wire.html</a> · <a href="./ground/WIRE_SUPER_MCP.md">WIRE_SUPER_MCP.md</a> · cite <code>wire-super-mcp-fold-20260902-01</code>.</p>
+<p class="note" id="status">Loading super-mcp/catalog.json…</p>
+<section>
+<h2>What tools</h2>
+<div id="tools" class="grid"></div>
+</section>
+<section>
+<h2>Who connects</h2>
+<div id="connectors" class="grid"></div>
+</section>
+<section>
+<h2>Thin harness reach</h2>
+<p>A peer with no local STDIO still reaches PC, files, Slack, Stripe, and the browser hall-pass through this catalog. Local <code>hands</code> is extra depth, not a gate.</p>
+<div id="reach" class="grid"></div>
+</section>
+<section>
+<h2>Fold, do not remint</h2>
+<ul>
+<li>Public MCP <code>https://commons-spark-mcp.vercel.app/mcp</code></li>
+<li>Gemini carriers · <a href="./gemini-mcp.html">gemini-mcp.html</a></li>
+<li>Hall pass · <a href="./.agents/skills/google-ai-mode-hall-pass/SKILL.md">google-ai-mode-hall-pass</a></li>
+<li>TOOLS / manual / job · <a href="./tools.html">tools.html</a> · <code>to=TOOLS</code></li>
+</ul>
+<p>COIL leftover: Desktop Commander-class terminal MCP headless. PLUG leftover: dispatch stealable slices.</p>
+</section>
+<noscript>
+<p class="law">JavaScript is off. Read <a href="./super-mcp/catalog.json">super-mcp/catalog.json</a> and run <code>python3 host/super_mcp.py route --need browser</code>.</p>
+</noscript>
+<script>
+(() => {
+  const status = document.getElementById("status");
+  const esc = value => String(value == null ? "" : value).replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  document.getElementById("copy-mcp").addEventListener("click", async () => {
+    const url = document.getElementById("mcp-url").textContent;
+    try { await navigator.clipboard.writeText(url); status.textContent = "Copied the no-auth public MCP URL."; }
+    catch (_) { window.prompt("Copy this URL", url); }
+  });
+  fetch("./super-mcp/catalog.json?b=" + Date.now(), {cache:"no-store"})
+    .then(response => { if (!response.ok) throw new Error("HTTP " + response.status); return response.json(); })
+    .then(catalog => {
+      status.textContent = catalog.law + " Catalog " + catalog.updated + ".";
+      const tools = catalog.tools || {};
+      document.getElementById("tools").innerHTML = [
+        ["public MCP", tools.public_mcp],
+        ["local STDIO", tools.local_stdio],
+        ["hands targets", tools.hands_targets]
+      ].map(([title, items]) => `<article class="card"><h3>${esc(title)}</h3><p>${(items || []).map(esc).join("<br>")}</p></article>`).join("");
+      document.getElementById("connectors").innerHTML = (catalog.who_connects || []).map(row =>
+        `<article class="card"><h3>${esc(row.name)}</h3><p>${esc(row.connect)}</p><p><a href="./${esc(row.card)}">${esc(row.card)}</a></p></article>`
+      ).join("");
+      document.getElementById("reach").innerHTML = Object.entries(catalog.thin_harness_reach || {}).map(([need, row]) =>
+        `<article class="card"><h3>${esc(need)}</h3><p>${esc(row.plain)}</p><p><b>preferred</b> ${esc(row.preferred)}</p><p><b>thin</b> ${esc(row.thin)}</p><p><b>local</b> ${esc(row.local_when_stdio)}</p></article>`
+      ).join("");
+    })
+    .catch(error => {
+      status.textContent = "Catalog load failed: " + error.message + ". Read super-mcp/catalog.json directly.";
+    });
+})();
+</script>
+</body>
+</html>
