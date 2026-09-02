@@ -513,6 +513,24 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertEqual(sidewalk["waitlist"], "packs/waitlist.html")
         self.assertEqual(lotribbon["waitlist"], "packs/waitlist.html")
         self.assertEqual(
+            harborline["tally_pack_map"],
+            "host/harborline_tally_pack_map.py",
+        )
+        self.assertEqual(
+            harborline["tally_pack_map_receipt"],
+            "cursor-harborline-tally-pack-map-20260902-01",
+        )
+        self.assertEqual(harborline["tally_pack_map_owner"], "bc-31c8ef9a")
+        self.assertEqual(
+            block["harborline_tally_pack_map_sha"],
+            "35ed9d78f",
+        )
+        self.assertEqual(
+            block["harborline_tally_pack_map_pointer"],
+            "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_overwrite_harborline_tally_pack_map"], True)
+        self.assertEqual(
             block["catalog_waitlist_rows_pointer"],
             "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",
         )
@@ -543,6 +561,14 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01.md"
             ).is_file()
         )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-harborline-tally-map-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue((ROOT / "host" / "harborline_tally_pack_map.py").is_file())
         self.assertTrue((ROOT / "host" / "business_pack_instance_waitlist.py").is_file())
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:

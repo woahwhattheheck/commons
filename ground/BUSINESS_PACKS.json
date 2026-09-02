@@ -179,6 +179,9 @@
     "harborline_waitlist_slot_pointer": "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01",
     "catalog_waitlist_rows_pointer": "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",
     "instance_waitlist_helper": "host/business_pack_instance_waitlist.py",
+    "harborline_tally_pack_map_sha": "35ed9d78f",
+    "harborline_tally_pack_map_pointer": "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
+    "did_not_overwrite_harborline_tally_pack_map": true,
     "did_not_overwrite_sidewalk_door": true,
     "did_not_overwrite_lotribbon_door": true,
     "did_not_overwrite_waitlist_html": true,
@@ -212,7 +215,10 @@
         "receipt": "cursor-desk-website-harborline-20260902-01",
         "owned_by": "bc-31c8ef9a",
         "helper": "host/business_pack_desk_instance.py",
-        "waitlist": "packs/waitlist.html"
+        "waitlist": "packs/waitlist.html",
+        "tally_pack_map": "host/harborline_tally_pack_map.py",
+        "tally_pack_map_receipt": "cursor-harborline-tally-pack-map-20260902-01",
+        "tally_pack_map_owner": "bc-31c8ef9a"
       }
     ]
   },
