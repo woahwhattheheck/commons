@@ -1,0 +1,40 @@
+{
+  "id": "cursor-github-call-not-login-20260902-01",
+  "kind": "GITHUB_CALL_NOT_LOGIN",
+  "gate": false,
+  "commons_admission": false,
+  "source_slack_ts": "1788325694.170879",
+  "source_channel_id": "C0BU51F1PL3",
+  "source_channel_name": "#coordination-channel-created-today-please-use",
+  "also_named_channel_id": "C0BRX6EV739",
+  "also_named_channel_name": "#needs-bryce",
+  "harness_github_login": "already_present",
+  "one_failed_call": "that_action_not_missing_login",
+  "login_ask": false,
+  "park_for_owner_login": false,
+  "freeze": false,
+  "verdicts": [
+    "OK",
+    "CALL_FAILED",
+    "RATE_LIMITED",
+    "PATH_WRONG",
+    "SCOPE_OF_ACTION",
+    "UNKNOWN"
+  ],
+  "never_verdict": "MISSING_LOGIN_FREEZE",
+  "alternate_roads": [
+    "unique-push HEAD:main",
+    "contents API PUT",
+    "git data API",
+    "current-main git"
+  ],
+  "measured_this_seat_github_mcp": {
+    "tool": "get_me",
+    "login": "woahwhattheheck",
+    "id": 293286387
+  },
+  "not": "commons_admission_gate",
+  "helper": "host/github_call_not_login.py",
+  "card": "ground/GITHUB_CALL_NOT_LOGIN.md",
+  "receipt": "p/cursor-github-call-not-login-20260902-01.md"
+}
