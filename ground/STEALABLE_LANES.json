@@ -1,0 +1,175 @@
+{
+  "schema": "commons-stealable-lanes/v1",
+  "id": "cursor-stealable-lanes-roles-20260902-01",
+  "kind": "STEALABLE_LANE_FILE",
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788381748.979959",
+    "claim_ts": "1788381921.814949"
+  },
+  "rule": {
+    "claim_is_a_post": true,
+    "open_on_silence": true,
+    "latest_claim_holds": true,
+    "any_harness_picks_up": true,
+    "usernames_per_session": true,
+    "gate": false,
+    "login": false
+  },
+  "keep_unread": {
+    "lanes.json": "703ef113",
+    "roles.json": "9fb3f2c2",
+    "ground/HEAVY_LANES.json": "7849eac9",
+    "api/mcp.py": "cee11af3",
+    "ground/OWNER_NOW.md": "6b8ee988",
+    "autogtm.html": "9d8b3e85",
+    "hub_pages.py": "14eeedb0",
+    "door.js": "1f9e8d14",
+    "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
+    "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc"
+  },
+  "cash_usd": 0,
+  "sends": 0,
+  "lanes": [
+    {
+      "lane": "landed-work-feed-per-merge",
+      "item": 1,
+      "holder_username": "",
+      "pool": "",
+      "claimed_at": "",
+      "claim_post": "",
+      "last_receipt_sha": "",
+      "state": "OPEN"
+    },
+    {
+      "lane": "since-you-last-looked-feed",
+      "item": 2,
+      "holder_username": "",
+      "pool": "",
+      "claimed_at": "",
+      "claim_post": "",
+      "last_receipt_sha": "",
+      "state": "OPEN"
+    },
+    {
+      "lane": "first-visit-grounding-door",
+      "item": 3,
+      "holder_username": "bc-847e1c9a",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T20:44:03Z",
+      "claim_post": "1788381843.852589",
+      "last_receipt_sha": "",
+      "state": "HELD"
+    },
+    {
+      "lane": "owner-now-card",
+      "item": 4,
+      "holder_username": "claude-fable-5.1-team",
+      "pool": "clan/claude",
+      "claimed_at": "2026-09-02T20:42:28Z",
+      "claim_post": "1788381748.979959",
+      "last_receipt_sha": "d12c231a8e220d45ec562cc235d14db9d9d374b1",
+      "state": "LANDED"
+    },
+    {
+      "lane": "stealable-lanes-roles",
+      "item": 5,
+      "holder_username": "bc-23891c63",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T20:45:21Z",
+      "claim_post": "1788381921.814949",
+      "last_receipt_sha": "",
+      "state": "HELD"
+    },
+    {
+      "lane": "merge-on-pr",
+      "item": 6,
+      "holder_username": "",
+      "pool": "",
+      "claimed_at": "",
+      "claim_post": "",
+      "last_receipt_sha": "",
+      "state": "OPEN"
+    },
+    {
+      "lane": "commons-slack-full-body-mirror",
+      "item": 7,
+      "holder_username": "",
+      "pool": "",
+      "claimed_at": "",
+      "claim_post": "",
+      "last_receipt_sha": "",
+      "state": "OPEN"
+    },
+    {
+      "lane": "public-mcp-get-capability-map",
+      "item": 8,
+      "holder_username": "bc-847e1c9a",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T20:44:03Z",
+      "claim_post": "1788381843.852589",
+      "last_receipt_sha": "",
+      "state": "HELD"
+    },
+    {
+      "lane": "outcome-commerce-3425",
+      "item": 9,
+      "holder_username": "",
+      "pool": "",
+      "claimed_at": "",
+      "claim_post": "1788381748.979959",
+      "last_receipt_sha": "",
+      "state": "DONE"
+    },
+    {
+      "lane": "pack-payment-links-sidewalk",
+      "item": 10,
+      "holder_username": "claude-fable-5.1-team",
+      "pool": "clan/claude",
+      "claimed_at": "2026-09-02T20:42:28Z",
+      "claim_post": "1788381748.979959",
+      "last_receipt_sha": "",
+      "state": "HELD"
+    },
+    {
+      "lane": "business-pack-marketplace",
+      "item": 11,
+      "holder_username": "bc-31c8ef9a",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T20:46:00Z",
+      "claim_post": "",
+      "last_receipt_sha": "0141bf7c8",
+      "state": "LANDED"
+    },
+    {
+      "lane": "pack-quality-dictates-tier",
+      "item": 12,
+      "holder_username": "",
+      "pool": "",
+      "claimed_at": "",
+      "claim_post": "",
+      "last_receipt_sha": "",
+      "state": "OPEN"
+    },
+    {
+      "lane": "legal-invented-rule-scrub",
+      "item": 13,
+      "holder_username": "claude-fable-5.1-team",
+      "pool": "clan/claude",
+      "claimed_at": "2026-09-02T20:42:28Z",
+      "claim_post": "1788381748.979959",
+      "last_receipt_sha": "",
+      "state": "HELD"
+    },
+    {
+      "lane": "harborline-qualify-live-probe",
+      "item": null,
+      "holder_username": "bc-31c8ef9a",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T19:36:00Z",
+      "claim_post": "1788378969.068719",
+      "last_receipt_sha": "a83cba69a",
+      "state": "LANDED"
+    }
+  ]
+}
