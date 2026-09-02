@@ -32,6 +32,8 @@ class PackHarborlineWaitlistSlotTest(unittest.TestCase):
     def test_does_not_claim_peer_or_factory_paths(self) -> None:
         self.assertIn("packs/_template/waitlist-slot.md", slot.DO_NOT_OVERWRITE)
         self.assertIn("packs/waitlist.html", slot.DO_NOT_OVERWRITE)
+        self.assertIn("packs/desk-website-service-20260902-01/waitlist-slot.md", slot.DO_NOT_OVERWRITE)
+        self.assertIn("p/cursor-pack-harborline-waitlist-slot-20260902-01.md", slot.DO_NOT_OVERWRITE)
         self.assertIn("host/pack_waitlist.py", slot.DO_NOT_OVERWRITE)
         self.assertIn(
             "p/cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md",
@@ -87,9 +89,15 @@ class PackHarborlineWaitlistSlotTest(unittest.TestCase):
         self.assertTrue(result["did_not_write_leftover_pin_helpers"])
         self.assertTrue(result["did_not_overwrite_pointer_receipt"])
         self.assertTrue(result["did_not_remint_slot_catalog_pointer"])
-        self.assertTrue(result["did_not_fill_sidewalk"])
-        self.assertTrue(result["did_not_fill_lotribbon"])
-        self.assertTrue(result["did_not_fill_yard"])
+        self.assertTrue(result["did_not_write_peer_waitlist_slots"])
+        self.assertTrue(result["live_peer_waitlist_slots_not_pinned"])
+        self.assertEqual(
+            result["observed_at_land"][
+                "packs/lotribbon-greetings-20260902-01/waitlist-slot.md"
+            ],
+            "absent",
+        )
+        self.assertTrue(result["did_not_overwrite_harborline_waitlist_slot"])
         self.assertTrue(result["did_not_invent_harborline_manifest"])
         self.assertTrue(result["did_not_merge_7915"])
         self.assertTrue(result["copy_ok"])
@@ -98,6 +106,14 @@ class PackHarborlineWaitlistSlotTest(unittest.TestCase):
         self.assertEqual(
             result["blobs"]["packs/desk-website-service-20260902-01/door.html"],
             "d3d6fcc7",
+        )
+        self.assertEqual(
+            result["blobs"]["packs/desk-website-service-20260902-01/waitlist-slot.md"],
+            "ea108145",
+        )
+        self.assertEqual(
+            result["blobs"]["p/cursor-pack-harborline-waitlist-slot-20260902-01.md"],
+            "4b648caf",
         )
         self.assertEqual(
             result["blobs"]["packs/desk-website-service-20260902-01/rating.md"],
