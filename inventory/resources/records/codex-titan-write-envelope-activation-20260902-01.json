@@ -1,0 +1,80 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-write-envelope-activation-20260902-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "titan-write-envelope",
+  "observed_at": "2026-09-02T01:03:48Z",
+  "before": {
+    "capacity": "NOT_PRESENT",
+    "stage": "DECLARED",
+    "condition": "BLOCKED",
+    "authority": "The ledger incorrectly preserved an owner-personal-approval prerequisite after Bryce explicitly corrected that rule. Existing Titan Hands code had no content-free, deterministic bounded-write envelope."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_OFFLINE_COMPILE; EXECUTION_REQUIRES_LIVE_PREIMAGE_AND_CRASH_SAFE_READBACK; NO_OWNER_APPROVAL_PREREQUISITE; NO_DEVICE_OR_MODEL_MUTATION_BY_THIS_RESOURCE",
+    "activation_base_main_sha": "1267075cc02aaec135c56e078475e60090aa3010"
+  },
+  "concrete_consumer": "Any Commons carrier preparing a bounded, reversible Titan write for a separate executor that can verify the live preimage and postimage.",
+  "measurable_outcome": "A deterministic compiler accepted one 4-byte synthetic reversible intent and emitted intent titan-write-c17f733083b6fc77ca5f583b4786da958979c183540fd10a03fba73489cae99d without exposing payload bytes or performing mutation; twelve focused tests covered strict types, traversal, hashes, bounds, overlap, rollback, canonical identity, and CLI failure.",
+  "delta": {
+    "previous_main_sha": "56a1343ebeaca5ade38d98477564edaee454f66f",
+    "measurement_main_sha": "1267075cc02aaec135c56e078475e60090aa3010",
+    "commits_ahead": 20,
+    "material_state_changes": [
+      "Bryce removed the invented owner-personal-approval prerequisite for Titan writes while retaining the do-not-break safety boundary.",
+      "Zapier trial capacity ended; no live Zapier capacity is inferred.",
+      "MWDOC issued a fresh delayed-addendum notice; a nonduplicate packet build order was routed.",
+      "CALIPER carrier pickup PR 7322 landed at 1267075cc02aaec135c56e078475e60090aa3010 and was preserved without reminting.",
+      "PRs 7334 and 7335 have active owners and were excluded from this lane."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [
+    {
+      "id": "mwdoc-d365-partner-soq-packet-20260902-01",
+      "state": "ROUTED",
+      "receipt": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788310861914509"
+    }
+  ],
+  "verification": {
+    "focused_tests": "12/12 passed under python -W error",
+    "compile": "host/titan_write_envelope.py and test_titan_write_envelope.py passed py_compile under -W error",
+    "determinism": "Two compiles of the same input produced byte-equivalent receipt objects and the same canonical intent ID.",
+    "privacy": "The receipt contains only paths, sizes, offsets, hashes, and executor requirements; payload and rollback bytes are excluded.",
+    "open_door": "The compiler is local, stdlib-only, and has no authentication, identity, seat, post, or capability admission gate.",
+    "zero_fabrication": "mutation_performed is hard-coded false; no deployment, model write, device act, buyer, payment, revenue, or cash is inferred."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-02T01:03:48Z",
+    "main_sha": "1267075cc02aaec135c56e078475e60090aa3010",
+    "commons_slack_ts": "1788310861.421539",
+    "delegations_slack_ts": "1788310861.914509",
+    "todo_slack_ts": "1788309979.267129",
+    "leads_slack_ts": "1788309831.051499",
+    "shipped_builds_checked_through": "2026-09-01T23:15:55Z",
+    "gmail_checked_through": "2026-09-02T00:31:01Z",
+    "automations": "13 total; 6 enabled; 7 disabled",
+    "plugins": "no material installed-route change; AgentMail remains absent"
+  },
+  "projection": {
+    "resources": 68,
+    "producing": 42
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788310861421539",
+    "delegation_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788310861914509",
+    "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788310861421539"
+  },
+  "non_claims": [
+    "No Titan bytes, model, owner workstation, physical device, or live file were read or changed.",
+    "No Zapier capacity remains after the trial-ended receipt.",
+    "No official or directly observed OpenAI global reset was found; quota state is unchanged.",
+    "No Grok, Cursor, Claude, Fable, or Titan model execution occurred.",
+    "No outreach, resend, bid submission, partner eligibility, deployment, buyer acceptance, payment, settlement, payout, revenue, or cash occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

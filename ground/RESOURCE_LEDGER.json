@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-09-01T23:58:33Z",
-    "base_main_sha": "a05ed953cf15c5d8795ca0d09b619a6f24000293",
+    "observed_at": "2026-09-02T01:03:48Z",
+    "base_main_sha": "1267075cc02aaec135c56e078475e60090aa3010",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788306849.192249",
-  "source_id": "codex-resource-master-delta-engine-activation-20260901-01",
+  "slack_ts": "1788310861.421539",
+  "source_id": "codex-titan-write-envelope-activation-20260902-01",
   "supersedes_source_ids": [
+    "codex-resource-master-delta-engine-activation-20260901-01",
     "codex-connected-capability-fleet-activation-20260901-01",
     "codex-vercel-capacity-activation-20260901-01",
     "codex-agent-address-memory-liveness-activation-20260901-01",
@@ -65,7 +66,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Resource Master now advances by exact cross-system deltas, discards projection churn, and routes deduplicated build orders",
+  "subject": "MASTER RESOURCE LEDGER — Titan writes now use a shared fail-closed safety envelope without an invented owner-approval prerequisite",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -104,15 +105,16 @@
     "inventory/resources/records/codex-agent-address-memory-liveness-activation-20260901-01.json",
     "inventory/resources/records/codex-vercel-capacity-activation-20260901-01.json",
     "inventory/resources/records/codex-connected-capability-fleet-activation-20260901-01.json",
-    "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json"
+    "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json",
+    "inventory/resources/records/codex-titan-write-envelope-activation-20260902-01.json"
   ],
   "priority_queue": [],
   "hands_off": [
     "Claude as tester, verifier, reviewer, or landing authority",
-    "Titan model mutation until canonical span and recovery packet are owner-approved",
     "duplicate outreach to already-delivered prospects",
     "financial, identity, account, or physical-device writes without exact owner scope",
-    "production deployment merely to consume quota"
+    "production deployment merely to consume quota",
+    "Unbounded, non-reversible, or unverified Titan writes; never invent an owner-approval prerequisite, and never execute without exact live preimage, crash-safe recovery, and postimage readback"
   ],
   "surfaces": [
     {
@@ -1564,6 +1566,28 @@
       "last_used_at": "2026-09-01T23:32:25Z",
       "stale_after": "next material connector, quota, reset, repository, plugin, automation, service, or owner-routing change",
       "priority": 99
+    },
+    {
+      "name": "titan-write-envelope",
+      "kind": "MODEL_WRITE_SAFETY_COMPILER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons",
+      "authority": "SHARED_OFFLINE_COMPILE; EXECUTION_REQUIRES_LIVE_PREIMAGE_AND_CRASH_SAFE_READBACK; NO_OWNER_APPROVAL_PREREQUISITE; NO_DEVICE_OR_MODEL_MUTATION_BY_THIS_RESOURCE",
+      "consumer": "Commons carriers preparing bounded reversible Titan write intents for a separately authorized executor",
+      "value": "Deterministic content-free receipt with strict target, types, bounds, non-overlap, pre/post digests, rollback proof, and canonical identity",
+      "next_action": "A separate executor may consume one envelope only after exact live preimage verification, crash-safe journaling, postimage readback, and terminal rollback retention; do not use this compiler as execution authority.",
+      "source": "host/titan_write_envelope.py; test_titan_write_envelope.py; direct Bryce policy correction 2026-09-02; codex-titan-write-envelope-activation-20260902-01",
+      "evidence_ts": "2026-09-02T01:03:48Z",
+      "auth_surface": "local stdlib-only compiler and durable Commons receipts",
+      "exact_safe_probe": "12/12 focused tests; one deterministic 4-byte synthetic intent compiled to titan-write-c17f733083b6fc77ca5f583b4786da958979c183540fd10a03fba73489cae99d; mutation_performed=false",
+      "rate_plan_boundary": "An accepted envelope is not a live preimage check, file/model/device write, crash-safe journal, postimage readback, owner-device action, deployment, or revenue.",
+      "assigned_backlog": "first separately authorized bounded consumer with exact live preimage and recovery proof; no canary mutation merely to prove capacity",
+      "last_receipt": "codex-titan-write-envelope-activation-20260902-01",
+      "last_used_at": "2026-09-02T01:03:48Z",
+      "stale_after": "next Titan policy, target, executor, or mutation receipt",
+      "priority": 96
     }
   ],
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED"

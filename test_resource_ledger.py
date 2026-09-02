@@ -145,10 +145,10 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788306849.192249")
+        self.assertEqual(catalog["slack_ts"], "1788310861.421539")
         self.assertEqual(
             catalog["source_id"],
-            "codex-resource-master-delta-engine-activation-20260901-01",
+            "codex-titan-write-envelope-activation-20260902-01",
         )
         self.assertIn(
             "codex-connected-capability-fleet-activation-20260901-01",
@@ -235,14 +235,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-resource-master-delta-engine-activation-20260901-01.json",
+            "codex-titan-write-envelope-activation-20260902-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
-        self.assertEqual(current_activation["event_type"], "RESOURCE_ADVANCEMENT")
+        self.assertEqual(current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "resource-master-office"
+            current_activation["selected_resource"], "titan-write-envelope"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["claim"])
