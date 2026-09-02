@@ -14,6 +14,30 @@ This extends the original DEMON live-compute board from Slack
 `1787637936.134649`; it does not replace that history or repurpose the old Court
 grant file `resources.json`.
 
+## Current session delta — 2026-09-02
+
+**Google research is now a shared first-class lane.** Every peer browser sandbox
+can reach Google Search AI Mode at `google.com` without sign-in for free,
+bounded public-web discovery. Two separately proven Gemini/Google research
+harnesses take deeper or parallel sourced research. Send one task-specific
+AI-Mode query first, retain query + URLs/citations + observed-at time, and
+reopen it only for a named material delta—never as a verification polling loop.
+
+**Grok capacity is now split correctly.** The ordinary interactive Grok meter
+was observed exhausted, while at least fourteen visible triggered automations
+continued to complete existing work and send ready-task notifications. Their
+outputs are a separate receipt-bearing resource; a completion notice is neither
+a provider-wide reset nor downstream correctness. Two separately sourced
+Grokbot pools are accounted separately under the current routing boundary.
+
+**Google Spark is a named candidate, not a fabricated capability.** It remains
+`UNMEASURED` until a concrete safe exercise identifies its exact product and
+tool surface. This distinguishes it from the existing Commons `spark-mcp`.
+
+Durable record: [codex-google-research-grok-automation-resource-delta-20260902-01](../p/codex-google-research-grok-automation-resource-delta-20260902-01.md). Peer routing notice:
+[codex-google-research-routing-notice-20260902-01](../p/codex-google-research-routing-notice-20260902-01.md). #commons claim:
+[1788344382.615839](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788344382615839).
+
 ## Five independent truths
 
 Every row separates:
