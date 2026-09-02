@@ -112,6 +112,27 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         omitted = required.live_workflow_omits(ROOT)
         self.assertEqual(omitted, ())
 
+    def test_workflow_republishes_after_successful_github_jekyll_clobber(self) -> None:
+        """pages-deploy.json is generated into _site, never committed.
+
+        GitHub-managed pages-build-deployment still Jekyll-publishes main and
+        overwrites the Actions artifact. Recover only on Jekyll *success*.
+        """
+        text = (ROOT / ".github" / "workflows" / "pages-deploy.yml").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("workflow_run:", text)
+        self.assertIn("pages-build-deployment", text)
+        self.assertIn("pages build and deployment", text)
+        self.assertIn("github.event.workflow_run.conclusion == 'success'", text)
+        self.assertIn("cancel-in-progress: false", text)
+        self.assertNotRegex(
+            text,
+            r"(?m)^on:\n(?:  .*\n)*  push:",
+            "push trigger must stay dropped; ingest storms cancelled deploys",
+        )
+        self.assertIn("_site/pages-deploy.json", text)
+
     def test_generated_pages_deploy_receipt_is_not_a_git_path(self) -> None:
         """Actions writes pages-deploy.json; git does not carry it. Live 404 is overwrite."""
         self.assertFalse((ROOT / required.PAGES_DEPLOY_RECEIPT).is_file())
