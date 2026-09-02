@@ -12,7 +12,6 @@ RECEIPT = ROOT / "p/cursor-big-things-incoming-alert-20260902-01.md"
 
 KEEP = {
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",

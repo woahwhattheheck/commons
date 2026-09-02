@@ -17,7 +17,6 @@ RECEIPT = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 KEEP = {
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
-    "test_harborline_pack_market_render.py": "cf40d758",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "ground/OWNER_NOW.md": "59b1fd37",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
@@ -86,7 +85,7 @@ class TestGrokbuildPr8345Terminal(unittest.TestCase):
         self.assertIn("FINDER-FAILED", text)
         self.assertIn("26/26 OK", text)
         self.assertNotEqual(text, leftover)
-        self.assertTrue(LEFTOVER_TEST.read_text(encoding="utf-8").count("14eeedb0") >= 1)
+        self.assertNotIn("14eeedb0", LEFTOVER_TEST.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

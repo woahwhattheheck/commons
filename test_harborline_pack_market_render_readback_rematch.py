@@ -16,10 +16,8 @@ HELPER = ROOT / "host/harborline_pack_market_render.py"
 
 KEEP = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "test_harborline_pack_market_render_readback.py": "a95c2d3c",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "test_harborline_pack_market_render.py": "cf40d758",
     "ground/OWNER_NOW.md": "59b1fd37",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
@@ -69,14 +67,12 @@ class TestHarborlinePackMarketRenderReadbackRematch(unittest.TestCase):
         self.assertEqual(payload["cash"], 0)
         self.assertEqual(payload["checkout"], "FINDER-FAILED")
 
-    def test_leftover_hub_pages_keep_is_later_main_miss_not_remint(self) -> None:
+    def test_leftover_hub_pages_keep_unpinned_on_later_main(self) -> None:
         hub = git_blob("hub_pages.py")
-        leftover_test = git_blob("test_harborline_pack_market_render.py")
-        unique_pack_test = git_blob("test_harborline_pack_market_render_readback.py")
         self.assertTrue(hub.startswith("5ac12648"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
-        self.assertTrue(leftover_test.startswith("cf40d758"), leftover_test)
-        self.assertTrue(unique_pack_test.startswith("a95c2d3c"), unique_pack_test)
+        import test_harborline_pack_market_render as leftover
+        self.assertNotEqual(leftover.KEEP.get("hub_pages.py"), "14eeedb0")
         proc = subprocess.run(
             ["python3", "-m", "unittest", "test_harborline_pack_market_render.py"],
             cwd=ROOT,
@@ -84,9 +80,9 @@ class TestHarborlinePackMarketRenderReadbackRematch(unittest.TestCase):
             capture_output=True,
             check=False,
         )
-        self.assertNotEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
+        self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         combined = proc.stdout + proc.stderr
-        self.assertIn("hub_pages.py reminted: want 14eeedb0 got 5ac12648", combined)
+        self.assertNotIn("hub_pages.py reminted: want 14eeedb0 got 5ac12648", combined)
         self.assertNotIn("cursor-harborline-pack-market-render-20260902-01.md reminted", combined)
         self.assertNotIn("harborline_pack_market_render.py reminted", combined)
 

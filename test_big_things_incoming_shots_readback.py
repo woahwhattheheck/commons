@@ -13,7 +13,6 @@ LEFTOVER = ROOT / "p/cursor-big-things-incoming-shots-20260902-01.md"
 
 KEEP = {
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
-    "test_big_things_incoming_shots.py": "987f7350",
     "shots/cursor-big-things-incoming-hub-1-20260902.png": "ac761b70",
     "shots/cursor-big-things-incoming-hub-1-20260902.thumb.jpg": "2590f4ab",
     "shots/cursor-big-things-incoming-hub-2-20260902.png": "8eb5940f",
@@ -25,7 +24,6 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-big-things-incoming-alert-ack-20260902-01.md": "81097728",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

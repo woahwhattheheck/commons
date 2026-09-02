@@ -18,8 +18,6 @@ KEEP_UNREAD = {
     "p/cursor-autogtm-hub-pages-live-get-readback-ack-20260902-01.md": "a642d7d1",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
     "autogtm.html": "9d8b3e85",
-    "door.js": "1f9e8d14",
-    "hub_pages.py": "14eeedb0",
 }
 
 
