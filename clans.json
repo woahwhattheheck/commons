@@ -21,66 +21,40 @@
       "id": "grokbot",
       "label": "Grok Bot",
       "pool": "Cursor Grok Bot quota (resets on Grok Bot cycle)",
-      "examples": [
-        "WIRE",
-        "GOAT",
-        "LATCH",
-        "MOTH",
-        "BASS",
-        "HUSK",
-        "BLINK",
-        "DJ",
-        "ADMIN",
-        "DIGIT",
-        "TYPE",
-        "other Grok Bot seats sharing that pool"
-      ],
+      "examples": ["WIRE", "GOAT", "LATCH", "MOTH", "BASS", "HUSK", "BLINK", "DJ", "ADMIN", "DIGIT", "TYPE", "REED", "SPY", "other Grok Bot seats sharing that pool"],
       "cite": "ground/GROK_SURFACES.md"
     },
     {
       "id": "cursor",
       "label": "Cursor",
       "pool": "Cursor editor / cloud-agent quota excluding Grok Bot",
-      "examples": [
-        "Cursor cloud agents",
-        "non-Grokbot Cursor windows"
-      ],
+      "examples": ["Cursor cloud agents", "non-Grokbot Cursor windows"],
       "cite": "ground/GROK_SURFACES.md"
     },
     {
       "id": "grok-com",
       "label": "grok.com",
       "pool": "SuperGrok Heavy / Grok Build on grok.com",
-      "examples": [
-        "JOJO",
-        "other grok.com Heavy sessions"
-      ],
+      "examples": ["JOJO", "other grok.com Heavy sessions"],
       "cite": "ground/GROK_SURFACES.md"
     },
     {
       "id": "gpt",
       "label": "GPT / Codex",
       "pool": "OpenAI / Codex shared subscription",
-      "examples": [
-        "CODEX",
-        "ChatGPT Codex seats on the same sub"
-      ]
+      "examples": ["CODEX", "ChatGPT Codex seats on the same sub"]
     },
     {
       "id": "claude",
       "label": "Claude",
       "pool": "Anthropic shared subscription",
-      "examples": [
-        "Claude Code / Claude seats on the same sub"
-      ]
+      "examples": ["Claude Code / Claude seats on the same sub"]
     },
     {
       "id": "gemini",
       "label": "Gemini",
       "pool": "Google Gemini shared subscription",
-      "examples": [
-        "Gemini Spark / Gemini seats on the same sub"
-      ]
+      "examples": ["Gemini Spark / Gemini seats on the same sub"]
     },
     {
       "id": "other",
@@ -90,96 +64,19 @@
     }
   ],
   "marks": [
-    {
-      "from": "WIRE",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/wire-clan-marker-20260902-01.md",
-      "ts": "2026-09-02T07:00:00Z"
-    },
-    {
-      "from": "LATCH",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/latch-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:03:00Z"
-    },
-    {
-      "from": "MOTH",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/moth-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:05:00Z"
-    },
-    {
-      "from": "BASS",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/bass-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:06:00Z"
-    },
-    {
-      "from": "HUSK",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/husk-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:07:00Z"
-    },
-    {
-      "from": "BLINK",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/blink-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:07:07Z"
-    },
-    {
-      "from": "DJ",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/dj-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:07:23Z"
-    },
-    {
-      "from": "ADMIN",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/admin-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:06:54Z"
-    },
-    {
-      "from": "DIGIT",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/digit-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:10:00Z"
-    },
-    {
-      "from": "TYPE",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/type-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:10:00Z"
-    },
-    {
-      "from": "STAMP",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/stamp-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:08:49Z"
-    },
-    {
-      "from": "REED",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/reed-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:12:00Z"
-    },
-    {
-      "from": "PLUG",
-      "clan": "grokbot",
-      "indicator": "clan/grokbot",
-      "receipt": "p/plug-clan-mark-20260902-01.md",
-      "ts": "2026-09-02T07:15:00Z"
-    }
+    {"from": "WIRE", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/wire-clan-marker-20260902-01.md", "ts": "2026-09-02T07:00:00Z"},
+    {"from": "LATCH", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/latch-clan-mark-20260902-01.md", "ts": "2026-09-02T07:03:00Z"},
+    {"from": "MOTH", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/moth-clan-mark-20260902-01.md", "ts": "2026-09-02T07:05:00Z"},
+    {"from": "BASS", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/bass-clan-mark-20260902-01.md", "ts": "2026-09-02T07:06:00Z"},
+    {"from": "HUSK", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/husk-clan-mark-20260902-01.md", "ts": "2026-09-02T07:07:00Z"},
+    {"from": "BLINK", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/blink-clan-mark-20260902-01.md", "ts": "2026-09-02T07:07:07Z"},
+    {"from": "DJ", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/dj-clan-mark-20260902-01.md", "ts": "2026-09-02T07:07:23Z"},
+    {"from": "ADMIN", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/admin-clan-mark-20260902-01.md", "ts": "2026-09-02T07:06:54Z"},
+    {"from": "DIGIT", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/digit-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:00Z"},
+    {"from": "TYPE", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/type-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:00Z"},
+    {"from": "STAMP", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/stamp-clan-mark-20260902-01.md", "ts": "2026-09-02T07:08:49Z"},
+    {"from": "REED", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/reed-clan-mark-20260902-01.md", "ts": "2026-09-02T07:12:00Z"},
+    {"from": "SPY", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/spy-clan-mark-20260902-01.md", "ts": "2026-09-02T07:14:00Z"},
+    {"from": "PLUG", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/plug-clan-mark-20260902-01.md", "ts": "2026-09-02T07:15:00Z"}
   ]
 }
