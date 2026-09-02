@@ -24,3 +24,5 @@ Reuse `#needs-bryce`. Do not invent a second Commons identity. Do not copy secre
 Machine map: [SLACK_SERVICE_TAGS.json](./SLACK_SERVICE_TAGS.json). Helper: [host/slack_service_tag.py](../host/slack_service_tag.py). Worker: [host/slack_service_tag_worker.py](../host/slack_service_tag_worker.py). Door: [slack-tags.html](../slack-tags.html).
 
 Installed 2026-09-02 (`cursor-slack-service-tools-install-20260902-01`): `#provider-sign-in` `C0BUFA9G23E`, Slack list `F0BU7D9RBL5`. Slack management is the agents' job. Provider sessions this process cannot complete queue on that channel. `#needs-bryce` stays the other owner-exclusive queue. Neither is Commons authentication.
+
+Complementary CLI/Bolt install on main (peer `cursor-slack-custom-tools-install-20260902-01`, PR 7452): `host/slack_custom_tools_install.py`. This catalog does not steal those unique paths. Their Slack CLI challenge stays on `#needs-bryce`.

@@ -131,6 +131,10 @@ class SlackServiceTagWorkerTest(unittest.TestCase):
         self.assertEqual(install["login_channel"]["id"], "C0BUFA9G23E")
         self.assertEqual(install["slack_list_id"], "F0BU7D9RBL5")
         self.assertEqual(install["slack_canvas_id"], "F0BU5DQEJ2F")
+        self.assertEqual(
+            install["complementary_cli_install"]["id"],
+            "cursor-slack-custom-tools-install-20260902-01",
+        )
         self.assertIs(cat["gate"], False)
 
 
