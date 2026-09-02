@@ -40,6 +40,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | canonical listing registry for marketplace/MCP/procurement packs | [listing-registry](../.agents/skills/listing-registry/SKILL.md) | [ground/LISTING_REGISTRY.md](../ground/LISTING_REGISTRY.md) |
 | compile verified outcomes into reusable skill patterns | [experience-compiler](../.agents/skills/experience-compiler/SKILL.md) | [experience/README.md](../experience/README.md) |
 | Explee AutoGTM / paste website / qualify while you sleep | [autogtm](../.agents/skills/autogtm/SKILL.md) | [tokens/autogtm](../ground/tokens/autogtm.md) |
+| crawler/fetch blocked / Google AI Mode hall pass | [google-ai-mode-hall-pass](../.agents/skills/google-ai-mode-hall-pass/SKILL.md) | [tokens/google-ai-mode-hall-pass](../ground/tokens/google-ai-mode-hall-pass.md) |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 

@@ -33,6 +33,7 @@
     {"id": "feature-tracker", "job": "evidence-derived shipped-state tracker", "token": ""},
     {"id": "listing-registry", "job": "canonical listing registry for marketplace/MCP/procurement packs", "token": ""},
     {"id": "experience-compiler", "job": "compile verified outcomes into reusable skill patterns", "token": ""},
-    {"id": "autogtm", "job": "Explee AutoGTM / paste website / qualify clients while you sleep", "token": "ground/tokens/autogtm.md"}
+    {"id": "autogtm", "job": "Explee AutoGTM / paste website / qualify clients while you sleep", "token": "ground/tokens/autogtm.md"},
+    {"id": "google-ai-mode-hall-pass", "job": "crawler/fetch blocked / Google AI Mode hall pass", "token": "ground/tokens/google-ai-mode-hall-pass.md"}
   ]
 }
