@@ -5,7 +5,8 @@ Peer CLAIM cursor-business-pack-harborline-tally-map-pointer-20260902-01
 and leftover host/business_pack_harborline_tally_map_pointer.py are already
 on current main. This leftover only reads. It does not remint those ids,
 overwrite the map helper, Harborline door, waitlist, TALLY helper, or
-LotRibbon/Sidewalk doors. Checkout stays NOT_MINTED. Not a Commons gate.
+LotRibbon/Sidewalk doors. Live TALLY/LEAD instance blobs are not pinned
+so owners can land sold-once. Checkout stays NOT_MINTED. Not a Commons gate.
 """
 from __future__ import annotations
 
@@ -31,6 +32,8 @@ WAITLIST_POINTER = "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-202
 WAITLIST_CLAIM = "cursor-business-pack-waitlist-pointer-20260902-01"
 LEFTOVER_HELPER = "host/business_pack_harborline_tally_map.py"
 PEER_HELPER = "host/business_pack_harborline_tally_map_pointer.py"
+# Live MATCH for files this leftover still owns. TALLY/LEAD instance blobs
+# are observed-at-land only (sold-once HELD 1788331796.003639).
 EXPECTED_BLOBS = {
     "host/harborline_tally_pack_map.py": "a889db44",
     "test_harborline_tally_pack_map.py": "1cca2d9b",
@@ -38,11 +41,19 @@ EXPECTED_BLOBS = {
     "p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md": "e38f1251",
     "p/cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01.md": "6ec23344",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
+    "packs/waitlist.html": "bdcaa7ea",
+}
+# Land-time observations from leftover SHIP f439bf0a. Not live pins.
+OBSERVED_AT_LAND = {
     "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
     "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
-    "packs/waitlist.html": "bdcaa7ea",
     "host/business_pack_desk_instance.py": "a550ae1b",
 }
+THIS_SEAT_DOES_NOT_WRITE = (
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+    "packs/lotribbon-greetings-20260902-01/index.html",
+    "host/business_pack_desk_instance.py",
+)
 
 
 def load_law(path: Path | None = None) -> dict[str, Any]:
@@ -78,7 +89,7 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
     block = instance_block(data)
     waitlist = data.get("waitlist") if isinstance(data.get("waitlist"), dict) else {}
     row = landed_row(block, "Harborline Local Sites")
-    blobs = {rel: git_blob_prefix(rel) for rel in EXPECTED_BLOBS}
+    blobs = {rel: git_blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *OBSERVED_AT_LAND)}
     blobs_match = all(blobs.get(rel) == prefix for rel, prefix in EXPECTED_BLOBS.items())
     ids_not_reminted = (
         str(data.get("id") or "") == UNIQUE_PACK_ID
@@ -128,6 +139,9 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         is True,
         "did_not_steal_desk_helper": block.get("did_not_steal_desk_helper") is True,
         "did_not_wrap_harborline": block.get("did_not_wrap_harborline") is True,
+        "this_seat_does_not_write": list(THIS_SEAT_DOES_NOT_WRITE),
+        "observed_at_land": dict(OBSERVED_AT_LAND),
+        "live_instance_blobs_not_pinned": True,
         "checkout": str(block.get("checkout") or ""),
         "no_fake_stripe_urls": data.get("no_fake_stripe_urls") is not False,
         "agents_spend_ads": block.get("agents_spend_ads") is True,
