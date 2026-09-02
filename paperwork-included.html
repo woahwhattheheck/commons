@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Paperwork included — filled checklist — Commons</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:46rem;margin:1.5rem auto;padding:0 1rem;line-height:1.45}
+code,pre{font-family:ui-monospace,monospace;font-size:.92em}
+pre{background:#f4f4f4;padding:.75rem;overflow:auto}
+.warn{border-left:4px solid #333;padding-left:.75rem}
+</style>
+</head>
+<body>
+<p><a href="./index.html">Commons</a> · <a href="./action.html">Action Pad</a> · <a href="./business-packs.html">business packs</a> · <a href="./keep-sell.html">KEEP vs SELL</a></p>
+<h1>Paperwork included means a filled checklist</h1>
+<p>Cite <code>cursor-business-pack-paperwork-included-20260902-01</code>. Do not remint it. The factory sheet stays <code>OWNER_UNSET</code>. This door loads two filled $200 DESK instance sheets. Same vertical. Distinct fingerprints. Similar is not a clone.</p>
+<p class="warn">Not legal advice. Not tjlabs doing the filing. Official IRS EIN is a how-to pointer. Formation partner stays empty until the owner pastes. Checkout is <code>NOT_MINTED</code>. Possessing the Commons link is authorization. Do not paste secrets.</p>
+<p>Law: <a href="./ground/BUSINESS_PACK_PAPERWORK_FILLED.json"><code>ground/BUSINESS_PACK_PAPERWORK_FILLED.json</code></a> · helper <code>host/business_pack_paperwork_filled.py</code> · sheets <a href="./packs/paperwork-included-20260902-01/README.md"><code>packs/paperwork-included-20260902-01/</code></a></p>
+<p>Say: the state’s paperwork checklist, in order, with the official links, is inside. Do not claim tjlabs files the forms, chooses the entity, or guarantees a legal result.</p>
+<pre id="out">loading filled sheets…</pre>
+<script>
+const REQUIRED = ["state","registration","ein","sales_tax","license","insurance","contract"];
+function unset(value){
+  const text = String(value || "").trim();
+  return !text || ["OWNER_UNSET","HOLD_COUNSEL","TODO","TBD"].includes(text.toUpperCase());
+}
+function classify(pack){
+  const missing = REQUIRED.filter(name => unset(pack[name]));
+  const copy = String(pack.copy || "");
+  const included = /paperwork included|paperwork done|with the paperwork done|all the (?:required )?paperwork/i.test(copy);
+  const filing = /we filed|we do the filing|doing the filing for you|filed (?:your|the) (?:llc|ein|dba)/i.test(copy);
+  let verdict = "PAPERWORK_OK";
+  if (filing) verdict = "PAPERWORK_FILING_CLAIM";
+  else if (included && missing.length) verdict = "PAPERWORK_CLAIM_UNSUBSTANTIATED";
+  else if (missing.length) verdict = "PAPERWORK_INCOMPLETE";
+  return {sale_id: pack.sale_id, brand: pack.brand, verdict, missing, paperwork_included: included && verdict === "PAPERWORK_OK"};
+}
+Promise.all([
+  fetch("./packs/paperwork-included-20260902-01/harborline-desk.json").then(r => r.json()),
+  fetch("./packs/paperwork-included-20260902-01/pierlight-desk.json").then(r => r.json()),
+  fetch("./ground/BUSINESS_PACK_PAPERWORK_FILLED.json").then(r => r.json())
+]).then(([harbor, pier, law]) => {
+  const rows = [classify(harbor), classify(pier)];
+  document.getElementById("out").textContent = JSON.stringify({
+    gate: false,
+    law_id: law.id,
+    included_claim_id: law.included_claim_id,
+    similar_is_not_clone: true,
+    shared_vertical: harbor.vertical === pier.vertical,
+    distinct_brand: harbor.brand !== pier.brand,
+    distinct_checkout: harbor.checkout !== pier.checkout,
+    both_included: rows.every(row => row.paperwork_included),
+    instances: rows
+  }, null, 2);
+}).catch(err => {
+  document.getElementById("out").textContent = JSON.stringify({error: String(err), gate: false}, null, 2);
+});
+</script>
+</body>
+</html>
