@@ -36,6 +36,7 @@ class GrokbuildOwnerNow337CloserStripTest(unittest.TestCase):
         import test_owner_now_revenue as revenue
         import test_owner_now_revenue_readback as revenue_rb
         import test_incoming_models_hub_payload_readback as incoming
+        import test_incoming_models_hub_payload_readback_rematch as incoming_rematch
         import test_big_things_incoming_shots as shots
         import test_big_things_incoming_shots_readback as shots_rb
         import test_harborline_pack_market_render as harborline
@@ -46,6 +47,7 @@ class GrokbuildOwnerNow337CloserStripTest(unittest.TestCase):
             revenue,
             revenue_rb,
             incoming,
+            incoming_rematch,
             shots,
             shots_rb,
             harborline,
@@ -56,6 +58,8 @@ class GrokbuildOwnerNow337CloserStripTest(unittest.TestCase):
         self.assertNotIn("host/owner_now_revenue.py", revenue_rb.KEEP)
         self.assertNotIn("test_owner_now_revenue.py", revenue_rb.KEEP)
         self.assertNotIn("test_harborline_pack_market_render.py", harborline_rb.KEEP)
+        self.assertNotIn("test_incoming_models_hub_payload_readback.py", incoming_rematch.KEEP)
+        self.assertNotIn("test_harborline_pack_market_render.py", incoming_rematch.KEEP)
 
     def test_owner_now_meaning_kept_without_invented_signature(self) -> None:
         text = CARD.read_text(encoding="utf-8")
