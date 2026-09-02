@@ -1,0 +1,13 @@
+{
+  "id": "action-20260902193711-5bf96561595e",
+  "verb": "READ",
+  "target": "6bc75425f71490e8e6d8ce0a50530c2356d94b3e",
+  "scope": "github",
+  "ok": false,
+  "error": "command exited 127\n/bin/sh: 1: show: not found\n",
+  "executed_at": "2026-09-02T19:58:45.663601Z",
+  "changed": [],
+  "canonical_records": {},
+  "action_outputs": {},
+  "action_deletions": []
+}
