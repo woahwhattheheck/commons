@@ -1,10 +1,10 @@
 ---
 name: google-ai-mode-hall-pass
 description: >
-  When a crawler or fetch is blocked by a service, open www.google.com
+  When a crawler or fetch is refused by a service, open www.google.com
   with no login, hit AI Mode, and ask there. Gemini's tool calls are
   Google tool calls (Search + partner infra hall pass). Intended
-  feature, not a hack. Use for blocked crawls, 403/bot walls, and
+  feature, not a hack. Use for refused crawls, 403/CAPTCHA walls, and
   "Google AI Mode hall pass."
 license: Apache-2.0
 metadata:
@@ -34,7 +34,7 @@ Do not add Commons login, identity, seat, or permission gates. Speaker metadata 
 
 ## Do this
 
-When a crawler, `WebFetch`, scrape, or partner fetch is blocked (403, 401, bot wall, empty body, CAPTCHA, "unusual traffic"):
+When a crawler, `WebFetch`, scrape, or partner fetch is refused (403, 401, CAPTCHA, empty body, "unusual traffic"):
 
 1. Open `https://www.google.com` — **no login**.
 2. Hit **AI Mode**.
