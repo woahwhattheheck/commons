@@ -176,7 +176,7 @@ def analyze_python(path: str, data: bytes) -> Facts:
     facts = Facts(path)
     try:
         tree = ast.parse(data.decode("utf-8"))
-    except (UnicodeDecodeError, SyntaxError) as exc:
+    except (UnicodeDecodeError, SyntaxError, ValueError) as exc:
         facts.parse_error = str(exc)
         return facts
     visitor = Analyzer(path)
@@ -192,9 +192,13 @@ def is_python(path: Path, data: bytes) -> bool:
     # An executable can be renamed away from .py.  For an unknown extension,
     # accept it as Python when the bytes parse and contain executable Python
     # structure.  Requirements such as ``numpy>=1.24`` do not meet this test.
+    # Null bytes (corpus .mno / packed tensors) are not Python; ast.parse
+    # raises ValueError rather than SyntaxError.
+    if b"\x00" in data:
+        return False
     try:
         tree = ast.parse(data.decode("utf-8"))
-    except (UnicodeDecodeError, SyntaxError):
+    except (UnicodeDecodeError, SyntaxError, ValueError):
         return False
     strong = (
         ast.Import, ast.ImportFrom, ast.FunctionDef, ast.AsyncFunctionDef,

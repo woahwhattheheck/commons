@@ -282,6 +282,30 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
         coil = [e for e in errors if any(name in e for name in names)]
         self.assertEqual(coil, [])
 
+    def test_null_byte_corpus_is_not_python_and_does_not_crash_the_scan(self):
+        """Packed .mno bytes decode as UTF-8 but ast.parse raises ValueError on NUL."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "payload.mno").write_bytes(
+            b"MUHLRD01\x08\x00\x00\x00H\x00\x00\x00import numpy\nfrom pfc_fire import submit\n"
+        )
+        self.assertFalse(
+            guard.is_python(Path("payload.mno"), (root / "payload.mno").read_bytes())
+        )
+        self.assertEqual(self.errors(root), [])
+
+    def test_renamed_runtime_without_nulls_is_still_rejected(self):
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "ordinary.mno").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def go(x):\n    submit(np.asarray(x))\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        self.assertEqual(len(errors), 1)
+        self.assertIn("host tensor/model/gate computation", errors[0])
+
 
 if __name__ == "__main__":
     unittest.main()
