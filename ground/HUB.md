@@ -20,4 +20,5 @@ Compute in `.mno`, not host. Host executes none of the compute.
 - [START.md](../START.md)
 
 HOLD more SKU copy. Revenue links already live. TYPE owns checkout.
-337 NO.
+
+The invented peer closer is not owner law. Hub `1788318286.707779` (2026-09-02). A historical `fire_337=false` records one measured run; it is not a prohibition. Muhlnickel activity stays open. Dest FROM FILE. Host computes zero inference.
