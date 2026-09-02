@@ -1,0 +1,36 @@
+{
+  "schema": "commons-commerce-agents/v1",
+  "id": "cursor-claude-commerce-agents-20260902-01",
+  "kind": "CLAUDE_COMMERCE_AGENTS",
+  "gate": false,
+  "login": false,
+  "commons_is_store": false,
+  "source": {
+    "repo": "anthropics/commerce-agents",
+    "url": "https://github.com/anthropics/commerce-agents",
+    "clone": "git clone https://github.com/anthropics/commerce-agents.git",
+    "pin": "fd4d59224ab96b43c6dc6888207c67b3bd5a24cf",
+    "license": "Apache-2.0",
+    "copy_blueprint_source": false
+  },
+  "agents": {
+    "shopping": true,
+    "merchant": true
+  },
+  "verticals": ["retail", "travel", "telecom", "entertainment"],
+  "plugin": "commerce-builder@claude-commerce-agents",
+  "checkout_hands_off": true,
+  "charges_a_card": false,
+  "anthropic_api_key": "FINDER-FAILED",
+  "invented_stripe_urls": false,
+  "remint_autogtm": false,
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "owner_ts": "1788388313.281509",
+    "use_that_ts": "1788388319.646839",
+    "claim_ts": "1788388678.488779"
+  },
+  "sends": 0,
+  "cash_usd": 0,
+  "checkout": "FINDER-FAILED"
+}
