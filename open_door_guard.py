@@ -149,7 +149,7 @@ LINE_RULES = (
     ),
     _rule(
         "admission-phrase",
-        r"\b(?:identity|claim|seat|memory|capability(?:\s+declaration)?|actor(?:_id)?|sender)\b.{0,48}\b(?:required|prerequisite|gate|deny|denied|reject|rejected|block|blocked|lock|locked)\b|\b(?:required|prerequisite|gate|deny|denied|reject|rejected|block|blocked|lock|locked)\b.{0,48}\b(?:identity|claim|seat|memory|capability(?:\s+declaration)?|actor(?:_id)?|sender)\b",
+        r"\b(?:identity|claim|seat|memory|capability(?:\s+declaration)?|actor(?:_id)?|sender)\b.{0,48}\b(?:required|prerequisite|gate|deny|denied|reject|rejected|(?<!owner )block|blocked|lock|locked)\b|\b(?:required|prerequisite|gate|deny|denied|reject|rejected|(?<!owner )block|blocked|lock|locked)\b.{0,48}\b(?:identity|claim|seat|memory|capability(?:\s+declaration)?|actor(?:_id)?|sender)\b",
         "speaker, identity, memory, or capability metadata may not gate admission",
     ),
     _rule(
@@ -300,6 +300,7 @@ def _directive_or_prohibition(text: str) -> bool:
         "not a permission tier",
         "not an authorization",
         "not a commons gate",
+        "not a door lock",
         "no seat required",
         "but no classifier",
         "are not allowed",
