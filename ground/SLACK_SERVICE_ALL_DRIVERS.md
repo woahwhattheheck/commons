@@ -12,6 +12,7 @@ Owner hub `1788319779.597119`: if this harness has Slack but not the named provi
 - Facebook Graph POST (peer organ, not stolen): [host/slack_service_drivers.py](../host/slack_service_drivers.py)
 - Slack CLI / Bolt install (peer organ, not stolen): PR 7452 / `cursor-slack-custom-tools-install-20260902-01`
 - MagicPath peer remainder (not reminted): `cursor-slack-magicpath-peer-connected-20260902-01`
+- Spark MCP Slack driver (unique complementary organ, not stolen): [host/slack_spark_mcp_driver.py](../host/slack_spark_mcp_driver.py) / `cursor-slack-spark-mcp-driver-20260902-01`
 
 ## Shape
 

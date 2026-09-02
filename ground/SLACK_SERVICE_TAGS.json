@@ -67,7 +67,9 @@
     "google-drive": "drive",
     "google_drive": "drive",
     "gcal": "calendar",
-    "google-calendar": "calendar"
+    "google-calendar": "calendar",
+    "gemini-spark": "spark",
+    "commons-spark": "spark"
   },
   "services": {
     "facebook": {
@@ -318,6 +320,15 @@
       "slack_tool": "@commons",
       "needs_owner_signin": false,
       "in_harness_when": ["commons"]
+    },
+    "spark": {
+      "tag": "spark",
+      "slack_tool": "@spark",
+      "needs_owner_signin": false,
+      "auth": "none",
+      "mcp_url": "https://commons-spark-mcp.vercel.app/mcp",
+      "in_harness_when": ["spark"],
+      "note": "Live no-auth Commons Spark MCP. Slack custom-tool drives initialize/tools from this seat. Complementary to the Notion peer remainder; do not reopen that NEED. Not OWNER ACTION DONE for Notion Custom MCP."
     },
     "slack": {
       "tag": "slack",
