@@ -1,0 +1,42 @@
+{
+  "id": "cursor-ack-github-logged-in-20260902-01",
+  "kind": "HARNESS_ALREADY_LOGGED_IN",
+  "gate": false,
+  "commons_admission": false,
+  "not": "commons_admission_gate",
+  "source_slack_ts": "1788325660.929309",
+  "source_channel_id": "C0BRX6EV739",
+  "source_channel": "#needs-bryce",
+  "github": {
+    "login": "woahwhattheheck",
+    "id": 293286387,
+    "state": "LOGGED_IN",
+    "ask_github_login": false,
+    "park": false
+  },
+  "github_tool_failure": {
+    "kind": "CALL_PATH_RATE_LIMIT_OR_SCOPE",
+    "not": "NO_PERMS",
+    "ask_github_login": false,
+    "park": false
+  },
+  "slack_cli_svctool": {
+    "status": "LEFTOVER_NOT_FREEZE",
+    "install": "optional",
+    "freeze": false,
+    "park": false,
+    "post_slackauthticket": false,
+    "unless": "owner_sends_challenge_unprompted",
+    "do_not_consume_tickets": [
+      "1788321773.338029",
+      "1788325362.867019"
+    ]
+  },
+  "keep_shipping_roads": [
+    "slack_mcp",
+    "github_mcp"
+  ],
+  "fire_337": false,
+  "helper": "host/harness_already_logged_in.py",
+  "card": "ground/HARNESS_ALREADY_LOGGED_IN.md"
+}
