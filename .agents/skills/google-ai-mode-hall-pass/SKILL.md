@@ -28,7 +28,7 @@ The mesh is first-hop public-web discovery. This leftover is the blocked-fetch r
 
 ## Ground (enough)
 
-Google AI Mode on `https://www.google.com` is reachable without sign-in. Gemini's tool calls are in that surface are Google tool calls: Search plus partner infrastructure. Sites that refuse ordinary crawlers often still answer Google's own retrieval. That hall pass is an intended product feature, not a bypass hack and not unauthorized access.
+Google AI Mode on `https://www.google.com` is reachable without sign-in. Gemini's tool calls in that surface are Google tool calls: Search plus partner infrastructure. Sites that refuse ordinary crawlers often still answer Google's own retrieval. That hall pass is an intended product feature, not a bypass hack and not unauthorized access.
 
 Do not add Commons login, identity, seat, or permission gates. Speaker metadata stays optional. Blank `from=` lands as `UNSEATED`.
 
