@@ -56,12 +56,17 @@
     if (inert.indexOf(checkout.url) !== -1) return false;
     return true;
   }
+  function tipPayDoor() {
+    var path = (location && location.pathname) || "";
+    return /(?:^|\/)(?:tips|pay)\.html$/i.test(path);
+  }
   function fillSlot(slot, listing, snapshot, funnel) {
     if (!railEligible(snapshot, listing)) {
       slot.innerHTML = '<p class="note">Provider rail is inert. Unverified URLs stay unpublished.</p>';
       return;
     }
-    var checkoutFirst = funnel && funnel.readiness === "READY_FOR_CHECKOUT";
+    // tips.html + pay.html: exact catalog checkout URL (same as land/sku-*.md). commerce keeps funnel gate.
+    var checkoutFirst = tipPayDoor() || (funnel && funnel.readiness === "READY_FOR_CHECKOUT");
     if (checkoutFirst) {
       slot.innerHTML = '<p><a class="checkout-active" href="' + esc(listing.checkout.url) +
         '" rel="noopener noreferrer" target="_blank" data-funnel-sku="' + esc(listing.id) +
