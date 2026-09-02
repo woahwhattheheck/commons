@@ -350,16 +350,32 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 2,
  "open_prs": [
   {
-   "number": 7540,
+   "number": 7585,
    "author": "woahwhattheheck",
-   "title": "pages-deploy: test -f + ls -la receipt before upload",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7540",
+   "title": "FROM FILE host/pfc_* batch infra twins (coil)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7585",
    "base_freshness": {
-    "base_sha": "533e4b1edb6b41b31364656e5774d1d93023b9d2",
-    "main_sha": "d4364e12b2eed30605f275c6cd51268a56a1fd20",
+    "base_sha": "3b8ff98e98c30a7ed40172b1611af6c4a18b8ac4",
+    "main_sha": "94e4cd05977262caf927a5523694c03206f6b88f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 7582,
+   "author": "woahwhattheheck",
+   "title": "Business packs: buyer per tier, X Ads brief, law flags (marketing research, SCOUT)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7582",
+   "base_freshness": {
+    "base_sha": "3b8ff98e98c30a7ed40172b1611af6c4a18b8ac4",
+    "main_sha": "94e4cd05977262caf927a5523694c03206f6b88f",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
