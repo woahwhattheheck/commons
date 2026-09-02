@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788304349.282199")
+        self.assertEqual(catalog["slack_ts"], "1788306849.192249")
         self.assertEqual(
             catalog["source_id"],
+            "codex-resource-master-delta-engine-activation-20260901-01",
+        )
+        self.assertIn(
             "codex-connected-capability-fleet-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-vercel-capacity-activation-20260901-01",
@@ -231,17 +235,17 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-connected-capability-fleet-activation-20260901-01.json",
+            "codex-resource-master-delta-engine-activation-20260901-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
-        self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(current_activation["event_type"], "RESOURCE_ADVANCEMENT")
         self.assertEqual(
-            current_activation["selected_resource"], "chatgpt-connected-capability-fleet"
+            current_activation["selected_resource"], "resource-master-office"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
+        self.assertIn(slack_cite, current_activation["evidence"]["claim"])
         activation_path = os.path.join(
             ROOT,
             "inventory",
@@ -289,6 +293,7 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1788304349.282199")
         self.assertNotEqual(catalog["slack_ts"], "1788300060.035449")
         self.assertNotEqual(catalog["slack_ts"], "1788256871.664259")
         self.assertNotEqual(catalog["slack_ts"], "1788105886.420729")
@@ -411,6 +416,10 @@ class TestResourceLedger(unittest.TestCase):
             "inventory/resources/records/codex-connected-capability-fleet-activation-20260901-01.json",
             raw.get("record_sources") or [],
         )
+        self.assertIn(
+            "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
         names = [row["name"] for row in catalog["surfaces"]]
@@ -453,6 +462,7 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(measured["activation_queue"][0]["priority"], 72)
         self.assertNotIn("commons-skill-and-tool-set", queue_names)
         self.assertNotIn("chatgpt-connected-capability-fleet", queue_names)
+        self.assertNotIn("resource-master-office", queue_names)
         skills = next(
             row
             for row in catalog["surfaces"]
@@ -472,6 +482,16 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             fleet["last_receipt"],
             "codex-connected-capability-fleet-activation-20260901-01",
+        )
+        office = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "resource-master-office"
+        )
+        self.assertEqual(office["stage"], "PRODUCING")
+        self.assertEqual(
+            office["last_receipt"],
+            "codex-resource-master-delta-engine-activation-20260901-01",
         )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
