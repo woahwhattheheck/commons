@@ -18,12 +18,12 @@ SPEC.loader.exec_module(agentmail)
 NOW = "2026-09-02T01:30:00Z"
 
 
-def blocked() -> dict:
+def unavailable() -> dict:
     return {
         "build_order_id": agentmail.ORDER,
         "observed_at": NOW,
-        "agentmail_connector_state": "AUTHENTICATION_REQUIRED",
-        "gmail_fallback_state": "AUTHENTICATION_REQUIRED",
+        "agentmail_connector_state": "UNAVAILABLE",
+        "gmail_fallback_state": "UNAVAILABLE",
         "inbox": {"state": "NOT_ATTEMPTED", "occurred_at": None, "provider_inbox_id": None},
         "outbound": {
             "state": "NOT_ATTEMPTED", "occurred_at": None,
@@ -37,22 +37,22 @@ def blocked() -> dict:
 
 
 class AgentMailAdapterTests(unittest.TestCase):
-    def test_checked_in_blocked_receipt_is_canonical_and_zero_send(self) -> None:
+    def test_checked_in_unavailable_receipt_is_canonical_and_zero_send(self) -> None:
         path = ROOT / "revenue" / "swarm_mail" / "agentmail_first_inbox_receipt.json"
         receipt = json.loads(path.read_text(encoding="utf-8"))
         agentmail.validate_public_receipt(receipt)
         self.assertEqual(receipt, agentmail.project_receipt({
-            **blocked(), "observed_at": receipt["observed_at"],
+            **unavailable(), "observed_at": receipt["observed_at"],
         }))
-        self.assertEqual(receipt["terminal_state"], "BLOCKED_AUTHENTICATION_REQUIRED")
+        self.assertEqual(receipt["terminal_state"], "ROAD_UNAVAILABLE")
         self.assertEqual(receipt["policy"]["send_attempts"], 0)
         self.assertFalse(receipt["policy"]["resend_permitted"])
         self.assertFalse(receipt["policy"]["external_prospect_contact"])
 
     def test_complete_provider_observation_proves_round_trip(self) -> None:
-        observation = blocked()
+        observation = unavailable()
         observation.update({
-            "agentmail_connector_state": "AUTHENTICATED",
+            "agentmail_connector_state": "AVAILABLE",
             "gmail_fallback_state": "NOT_NEEDED",
             "inbox": {
                 "state": "CREATED", "occurred_at": NOW,
@@ -76,26 +76,26 @@ class AgentMailAdapterTests(unittest.TestCase):
 
     def test_private_fields_and_reminted_order_are_rejected(self) -> None:
         for field in ("recipient", "subject", "body", "headers", "oauth_token"):
-            observation = blocked()
+            observation = unavailable()
             observation[field] = "private"
             with self.subTest(field=field), self.assertRaises(agentmail.AgentMailReceiptError):
                 agentmail.project_receipt(observation)
-        observation = blocked()
+        observation = unavailable()
         observation["build_order_id"] = "rival-order"
         with self.assertRaises(agentmail.AgentMailReceiptError):
             agentmail.project_receipt(observation)
 
-    def test_unauthenticated_connector_cannot_claim_operations(self) -> None:
-        observation = blocked()
+    def test_unavailable_connector_cannot_claim_operations(self) -> None:
+        observation = unavailable()
         observation["inbox"] = {
             "state": "CREATED", "occurred_at": NOW,
-            "provider_inbox_id": "inbox_without_auth",
+            "provider_inbox_id": "inbox_without_road",
         }
         with self.assertRaises(agentmail.AgentMailReceiptError):
             agentmail.project_receipt(observation)
 
     def test_validator_rejects_contradictory_proof_or_policy(self) -> None:
-        receipt = agentmail.project_receipt(blocked())
+        receipt = agentmail.project_receipt(unavailable())
         for path, value in (
             (("proof", "round_trip_proven"), True),
             (("policy", "resend_permitted"), True),
@@ -106,7 +106,7 @@ class AgentMailAdapterTests(unittest.TestCase):
                 agentmail.validate_public_receipt(changed)
 
     def test_cli_does_not_echo_rejected_private_content(self) -> None:
-        observation = blocked()
+        observation = unavailable()
         observation["body"] = "DO-NOT-ECHO-PRIVATE-CONTENT"
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / "observation.json"

@@ -27,6 +27,7 @@ Do **not** merge onto public commons main:
 
 - ChartTrace source (`charttrace/**`, `test_charttrace_*.py`)
 - Customer / revenue LIMS engines, tests, and `revenue/<sku>/` packs
+- Commercial bid / SOQ / partner-qualification packets (including MWDOC D365)
 - Motel, SMB showcase, AquaTrace, LDA product trees
 
 If a session accidentally opened a product PR against public commons: copy unique files to the private product repo, merge there, **close the public PR without merging**. Do not overwrite private `main` on semantic conflict.
