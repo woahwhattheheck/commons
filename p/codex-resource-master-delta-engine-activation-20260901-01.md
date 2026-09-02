@@ -28,7 +28,8 @@ The pre-existing AgentMail order was not reposted. Fable evaluation was excluded
 - Fresh activation base: `a05ed953cf15c5d8795ca0d09b619a6f24000293`
 - Product commit: `f74144b1aeb16e38cddb79ce78c3f30e78ceba50`
 - Branch: `codex/resource-master-delta-engine-20260901-01`
-- [PR #7318](https://github.com/woahwhattheheck/commons/pull/7318)
+- [PR #7319](https://github.com/woahwhattheheck/commons/pull/7319)
+- Closed draft carrier: [PR #7318](https://github.com/woahwhattheheck/commons/pull/7318). GitHub's ready-for-review connector failed on its `fullDatabaseId` schema field, so the identical branch/head moved to the normal successor PR without rebuilding or changing any product path.
 - [Claim](https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788306849192249)
 
 Exact product blobs:

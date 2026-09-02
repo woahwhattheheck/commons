@@ -41,7 +41,8 @@
   },
   "evidence": {
     "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788306849192249",
-    "pull_request": "https://github.com/woahwhattheheck/commons/pull/7318",
+    "closed_draft_carrier": "https://github.com/woahwhattheheck/commons/pull/7318",
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/7319",
     "previous_activation": "https://github.com/woahwhattheheck/commons/commit/064bc4043dd22c108727ce100a6d1bc14403a827",
     "product_commit": "https://github.com/woahwhattheheck/commons/commit/f74144b1aeb16e38cddb79ce78c3f30e78ceba50"
   },
@@ -54,6 +55,7 @@
   "verification": {
     "focused_tests": "16/16 passed",
     "determinism": "Checked-in report matches a fresh compile byte-for-byte; CLI self-test passes.",
+    "pull_request_carrier": "Draft PR #7318 was closed after GitHub's ready-for-review connector failed on its fullDatabaseId schema field. Non-draft PR #7319 carries the identical branch and reviewed head; no product path was rebuilt or changed.",
     "collision_audit": "Thirteen open PRs were fully filename-audited; none touches the seven claimed paths. Six commits reached main after the measurement snapshot and also have zero claimed-path overlap.",
     "privacy": "No private Gmail subject, sender, body, attachment, repository invitation, or message identifier is persisted.",
     "open_door": "The report is advisory metadata with admission_gate=false and authentication_gate=false; it cannot gate a person, post, path, verb, seat, or capability."
