@@ -1,8 +1,9 @@
 # Commons Service Tools — Slack CLI project
 
-Leftover after `cursor-slack-custom-tools-install-20260902-01`. The installer
-already wrote the Bolt manifest and located the public Slack CLI. This
-directory is the project `slack run` uses.
+Complementary integrations cwd after peer leftover
+`cursor-slack-custom-tools-cli-project-20260902-01` (`host/slack_custom_tools_cli/`).
+That receipt is not reminted. The installer already wrote the Bolt manifest.
+This directory sits next to `integrations/slack_service_tags/`.
 
 Login stays `#needs-bryce` (`C0BRX6EV739`). Not a Commons admission gate.
 Do not remint peer readback `0e6ad49f` / blob `8fcc3d36`.

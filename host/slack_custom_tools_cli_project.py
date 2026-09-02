@@ -1,260 +1,162 @@
 #!/usr/bin/env python3
-"""Slack CLI project leftover after the custom-tools install.
+"""Slack CLI project for Commons Service Tools (apps.manifest.create leftover).
 
-Peer install (host/slack_custom_tools_install.py) already writes the Bolt
-manifest and locates ~/.slack/bin/slack. Peer 0e6ad49f already installed
-the service-tag worker. This module writes the unique Slack CLI project
-directory so `slack run` has a cwd after Bryce completes login.
+Peer worker `host/slack_service_tag_worker.py` is the HTTP poller. This module
+is the complementary Slack CLI *project*: `.slack/hooks.json`, get-manifest,
+and start so `slack manifest validate` / `slack app install` / `slack run`
+work after Bryce completes the `#needs-bryce` CLI challenge.
 
-Login stays #needs-bryce. Not a Commons admission gate. Does not remint
-peer readback 0e6ad49f / blob 8fcc3d36.
+Does not remint cursor-slack-custom-tools-install-20260902-01.
+Does not steal the service-tag catalog, worker, or GHA workflow.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import shutil
 from pathlib import Path
 from typing import Any
 
-import slack_custom_tools_install as inst
-
-
 ROOT = Path(__file__).resolve().parent.parent
-PROJECT_REL = Path("integrations") / "slack_custom_tools"
-PROJECT_DIR = ROOT / PROJECT_REL
-SIGNIN_CHANNEL = "#needs-bryce"
+PROJECT_DIR = ROOT / "host" / "slack_custom_tools_cli"
+SOURCE_MANIFEST = ROOT / "host" / "slack_custom_tools_manifest.json"
 SIGNIN_CHANNEL_ID = "C0BRX6EV739"
-PEER_INSTALL_RECEIPT = "p/cursor-slack-service-tools-install-20260902-01.md"
-PEER_INSTALL_COMMIT = "0e6ad49f"
-PEER_INSTALL_BLOB = "8fcc3d36"
+ORG_GRANT = "--org-workspace-grant=all"
 
-HOOKS_JSON = {
+HOOKS = {
     "hooks": {
-        "get-hooks": "python3 hooks/get_hooks.py",
-        "get-manifest": "python3 hooks/get_manifest.py",
-        "start": "python3 app.py",
-    }
-}
-
-GET_HOOKS_PY = '''#!/usr/bin/env python3
-"""Local Slack CLI get-hooks. No npm. Login stays #needs-bryce."""
-from __future__ import annotations
-
-import json
-import sys
-
-payload = {
-    "hooks": {
-        "get-manifest": "python3 hooks/get_manifest.py",
-        "start": "python3 app.py",
+        "get-manifest": "python3 get_manifest.py",
+        "start": "python3 start.py",
     },
     "config": {
-        "protocol-version": ["default"],
-        "sdk-managed-connection-enabled": False,
         "watch": {
-            "app": {"filter-regex": "\\\\.py$", "paths": ["."]},
             "manifest": {"paths": ["manifest.json"]},
-        },
+            "app": {"filter-regex": "\\.py$", "paths": ["."]},
+        }
     },
-    "runtime": "python",
 }
 
-if __name__ == "__main__":
-    json.dump(payload, sys.stdout)
-    sys.stdout.write("\\n")
-'''
+GITIGNORE = "\n".join(
+    [
+        "apps.json",
+        "apps.dev.json",
+        "credentials.json",
+        "cache/",
+        "",
+    ]
+)
 
-GET_MANIFEST_PY = '''#!/usr/bin/env python3
-"""Print the local Slack CLI manifest.json (official get-manifest shape)."""
-from __future__ import annotations
-
-from pathlib import Path
-
-HERE = Path(__file__).resolve().parent.parent
-print((HERE / "manifest.json").read_text(encoding="utf-8"), end="")
-'''
-
-APP_PY = '''#!/usr/bin/env python3
-"""Slack CLI project entry for Commons Service Tools.
-
-Delegates to host/slack_custom_tools_app.register. Does not remint that
-driver. Login stays #needs-bryce. Not a Commons admission gate.
-"""
-from __future__ import annotations
-
-import os
-import sys
-from pathlib import Path
-
-HERE = Path(__file__).resolve().parent
-ROOT = HERE.parents[1]
-HOST = ROOT / "host"
-if str(HOST) not in sys.path:
-    sys.path.insert(0, str(HOST))
+CONFIG = {
+    "project-id": "commons-service-tools",
+    "manifest": {"source": "local"},
+}
 
 
-def build_app(app_factory):
-    from slack_custom_tools_app import register
-
-    app = app_factory(process_before_response=True)
-    return register(app)
+def project_dir(dest: Path | None = None) -> Path:
+    return dest if dest is not None else PROJECT_DIR
 
 
-def main() -> int:
-    try:
-        from slack_bolt import App
-        from slack_bolt.adapter.socket_mode import SocketModeHandler
-    except ImportError:
-        print("slack-bolt missing; pip install -r requirements.txt", file=sys.stderr)
-        return 2
-    app = build_app(App)
-    token = (
-        os.environ.get("SLACK_APP_TOKEN")
-        or os.environ.get("SLACK_APP_LEVEL_TOKEN")
-        or ""
-    )
-    if not token:
-        print(
-            "SLACK_APP_TOKEN unset; Slack CLI login stays #needs-bryce",
-            file=sys.stderr,
-        )
-        return 3
-    SocketModeHandler(app, token).start()
-    return 0
+def manifest_validate_argv(cli: str) -> list[str]:
+    return [cli, "manifest", "validate", "--source", "local"]
 
 
-if __name__ == "__main__":
-    raise SystemExit(main())
-'''
-
-REQUIREMENTS = """slack-bolt
-slack-sdk
-slack-cli-hooks
-"""
-
-README = """# Commons Service Tools — Slack CLI project
-
-Leftover after `cursor-slack-custom-tools-install-20260902-01`. The installer
-already wrote the Bolt manifest and located the public Slack CLI. This
-directory is the project `slack run` uses.
-
-Login stays `#needs-bryce` (`C0BRX6EV739`). Not a Commons admission gate.
-Do not remint peer readback `0e6ad49f` / blob `8fcc3d36`.
-
-## After Bryce returns the challenge
-
-```bash
-python3 host/slack_custom_tools_cli_project.py --status
-cd integrations/slack_custom_tools
-slack run --org-workspace-grant=all
-```
-
-`/svctool facebook post the drop tonight` and `@facebook` still drive
-`host/slack_custom_tools_app.py`. Missing provider sessions queue
-`#needs-bryce`. Do not paste a password into Slack.
-"""
-
-GITIGNORE = """.slack/apps.json
-.slack/apps.dev.json
-.slack/cache/
-.env
-__pycache__/
-*.pyc
-"""
-
-SLACKIGNORE = """.slack/apps.dev.json
-.slack/apps.json
-.env
-__pycache__
-"""
-
-
-def project_dir(root: Path | None = None) -> Path:
-    return (root or ROOT) / PROJECT_REL
+def app_install_argv(cli: str) -> list[str]:
+    """Slack CLI wraps apps.manifest.create during install after login."""
+    return [cli, "app", "install", ORG_GRANT]
 
 
 def run_argv(cli: str) -> list[str]:
-    return [cli, "run", "--org-workspace-grant=all"]
+    return [cli, "run", ORG_GRANT]
 
 
-def write_project(dest: Path | None = None, catalog_path: Path | None = None) -> Path:
-    """Write the Slack CLI project. Compose the manifest; do not remint host/."""
-    target = dest or PROJECT_DIR
-    target.mkdir(parents=True, exist_ok=True)
-    slack_dir = target / ".slack"
-    hooks_dir = target / "hooks"
-    slack_dir.mkdir(parents=True, exist_ok=True)
-    hooks_dir.mkdir(parents=True, exist_ok=True)
-    manifest = inst.build_manifest(catalog_path)
-    (target / "manifest.json").write_text(
-        json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
-    )
-    (slack_dir / "hooks.json").write_text(
-        json.dumps(HOOKS_JSON, indent=2) + "\n", encoding="utf-8"
-    )
-    (target / "slack.json").write_text(
-        json.dumps(HOOKS_JSON, indent=2) + "\n", encoding="utf-8"
-    )
-    (hooks_dir / "get_hooks.py").write_text(GET_HOOKS_PY, encoding="utf-8")
-    (hooks_dir / "get_manifest.py").write_text(GET_MANIFEST_PY, encoding="utf-8")
-    (target / "app.py").write_text(APP_PY, encoding="utf-8")
-    (target / "requirements.txt").write_text(REQUIREMENTS, encoding="utf-8")
-    (target / "README.md").write_text(README, encoding="utf-8")
-    (target / ".gitignore").write_text(GITIGNORE, encoding="utf-8")
-    (target / ".slackignore").write_text(SLACKIGNORE, encoding="utf-8")
+def after_login_argv(cli: str) -> list[list[str]]:
+    return [manifest_validate_argv(cli), app_install_argv(cli), run_argv(cli)]
+
+
+def _copy_manifest(dest_root: Path) -> Path:
+    target = dest_root / "manifest.json"
+    if SOURCE_MANIFEST.is_file():
+        shutil.copyfile(SOURCE_MANIFEST, target)
+        return target
+    try:
+        from slack_custom_tools_install import build_manifest
+    except ImportError:
+        import sys
+
+        sys.path.insert(0, str(ROOT / "host"))
+        from slack_custom_tools_install import build_manifest  # type: ignore
+    payload = build_manifest()
+    target.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
     return target
 
 
-def project_written(root: Path | None = None) -> bool:
-    dest = project_dir(root)
-    required = (
-        dest / "manifest.json",
-        dest / "app.py",
-        dest / "slack.json",
-        dest / ".slack" / "hooks.json",
-        dest / "hooks" / "get_manifest.py",
-        dest / "hooks" / "get_hooks.py",
+def write_project(dest: Path | None = None) -> Path:
+    """Materialize the Slack CLI project. Idempotent. Never writes tokens."""
+    root = project_dir(dest)
+    slack_dir = root / ".slack"
+    slack_dir.mkdir(parents=True, exist_ok=True)
+    (slack_dir / "hooks.json").write_text(
+        json.dumps(HOOKS, indent=2) + "\n", encoding="utf-8"
     )
-    return all(path.is_file() for path in required)
+    (slack_dir / "config.json").write_text(
+        json.dumps(CONFIG, indent=2) + "\n", encoding="utf-8"
+    )
+    (slack_dir / ".gitignore").write_text(GITIGNORE, encoding="utf-8")
+    src_get = PROJECT_DIR / "get_manifest.py"
+    src_start = PROJECT_DIR / "start.py"
+    if dest is not None:
+        if src_get.is_file():
+            shutil.copyfile(src_get, root / "get_manifest.py")
+        if src_start.is_file():
+            shutil.copyfile(src_start, root / "start.py")
+    _copy_manifest(root)
+    return root
 
 
-def status(
-    home: str | None = None,
-    run: Any = None,
-    path_env: str | None = None,
-    root: Path | None = None,
-) -> dict[str, Any]:
-    row = inst.status(home=home, run=run, path_env=path_env)
-    dest = project_dir(root)
-    written = project_written(root)
-    callback = ""
-    if written:
-        try:
-            manifest = json.loads((dest / "manifest.json").read_text(encoding="utf-8"))
-            callback = next(iter((manifest.get("functions") or {}).keys()), "")
-        except (OSError, json.JSONDecodeError, TypeError):
-            callback = ""
-    row.update(
-        {
-            "project": str(dest),
-            "project_rel": str(PROJECT_REL).replace("\\", "/"),
-            "project_written": written,
-            "manifest_callback_id": callback or inst.CALLBACK_ID,
-            "slash_command": inst.SLASH_COMMAND,
-            "signin_channel": SIGNIN_CHANNEL,
-            "signin_channel_id": SIGNIN_CHANNEL_ID,
-            "commons_admission": False,
-            "peer_not_reminted": [PEER_INSTALL_COMMIT, PEER_INSTALL_BLOB],
-            "peer_install_receipt": PEER_INSTALL_RECEIPT,
-            "slack_run_cwd": str(dest),
-            "slack_run_argv": run_argv(row["cli"] or "slack"),
-        }
-    )
-    if not row.get("logged_in"):
-        row["needs_owner_signin"] = True
-        row["signin_channel"] = SIGNIN_CHANNEL
-        row["signin_channel_id"] = SIGNIN_CHANNEL_ID
-    return row
+def project_ready(dest: Path | None = None) -> bool:
+    root = project_dir(dest)
+    needed = [
+        root / ".slack" / "hooks.json",
+        root / "get_manifest.py",
+        root / "start.py",
+        root / "manifest.json",
+    ]
+    return all(path.is_file() for path in needed)
+
+
+def status(dest: Path | None = None, home: str | None = None) -> dict[str, Any]:
+    import slack_custom_tools_install as inst
+
+    cli_status = inst.status(home=home)
+    ready = project_ready(dest)
+    logged_in = bool(cli_status.get("logged_in"))
+    out: dict[str, Any] = {
+        "id": "cursor-slack-custom-tools-cli-project-20260902-01",
+        "project_dir": str(project_dir(dest)),
+        "project_ready": ready,
+        "cli_installed": bool(cli_status.get("installed")),
+        "logged_in": logged_in,
+        "needs_owner_signin": not logged_in,
+        "signin_channel_id": SIGNIN_CHANNEL_ID,
+        "signin_channel": "#needs-bryce",
+        "commons_admission": False,
+        "wraps": "apps.manifest.create",
+        "after_login": [
+            "slack manifest validate --source local",
+            "slack app install --org-workspace-grant=all",
+            "slack run --org-workspace-grant=all",
+        ],
+        "not_stolen": [
+            "host/slack_service_tag_worker.py",
+            "host/slack_service_tag.py",
+            "ground/SLACK_SERVICE_TAGS.json",
+            ".github/workflows/slack-service-tags.yml",
+        ],
+    }
+    cli = cli_status.get("cli")
+    if cli:
+        out["after_login_argv"] = after_login_argv(str(cli))
+    return out
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -268,7 +170,7 @@ def main(argv: list[str] | None = None) -> int:
         return 0
     payload = status()
     print(json.dumps(payload, indent=2))
-    return 0 if payload.get("project_written") else 2
+    return 0 if payload.get("project_ready") else 2
 
 
 if __name__ == "__main__":

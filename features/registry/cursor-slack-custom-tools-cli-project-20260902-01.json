@@ -4,9 +4,9 @@
   "carrier": "CURSOR",
   "claimed_paths": [
     "host/slack_custom_tools_cli_project.py",
-    "integrations/slack_custom_tools/app.py",
-    "integrations/slack_custom_tools/manifest.json",
-    "integrations/slack_custom_tools/.slack/hooks.json"
+    "host/slack_custom_tools_cli/start.py",
+    "host/slack_custom_tools_cli/get_manifest.py",
+    "host/slack_custom_tools_cli/.slack/hooks.json"
   ],
   "dependencies": [
     "cursor-slack-custom-tools-install-20260902-01"
@@ -25,6 +25,7 @@
   "resource_links": [
     "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
     "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
+    "host/slack_custom_tools_cli/get_manifest.py",
     "integrations/slack_custom_tools/README.md"
   ],
   "schema": "commons-feature-v1",
