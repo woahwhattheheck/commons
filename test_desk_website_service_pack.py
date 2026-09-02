@@ -67,6 +67,20 @@ class DeskWebsiteServicePackTest(unittest.TestCase):
         self.assertTrue((PACK_DIR / "paperwork.md").is_file())
         self.assertIn("OWNER_UNSET", (PACK_DIR / "running-cost.md").read_text(encoding="utf-8"))
 
+    def test_never_say_list_is_not_an_earnings_claim(self) -> None:
+        brief = (PACK_DIR / "creative_brief.md").read_text(encoding="utf-8")
+        self.assertIn("make $200 this weekend", brief)
+        self.assertIn("franchise", brief.lower())
+        copy = pack.classify_copy(brief)
+        self.assertEqual(copy["verdict"], "COPY_OK")
+        self.assertFalse(copy["earnings_claim"])
+        self.assertFalse(copy["franchise_vocab"])
+
+    def test_earnings_claim_outside_never_say_fails(self) -> None:
+        copy = pack.classify_copy("Harborline Local Sites. make $200 this weekend.\n")
+        self.assertEqual(copy["verdict"], "EARNINGS_CLAIM")
+        self.assertTrue(copy["earnings_claim"])
+
     def test_clone_stamp_when_second_sale_reuses_fingerprint(self) -> None:
         clone = pack.classify(other_sales=[self.instance])
         self.assertTrue(clone["clone_stamp"])
