@@ -130,6 +130,7 @@
     "keep-vs-sell.md": "COPY_OK",
     "offer.md": "COPY_OK",
     "paperwork.md": "COPY_OK",
+    "rating.md": "COPY_OK",
     "README.md": "COPY_OK",
     "running-cost.md": "COPY_OK",
     "terms.md": "COPY_OK",
@@ -158,6 +159,14 @@
     "formation_partner_link": "OWNER_UNSET",
     "running_cost_amount": "OWNER_UNSET",
     "running_cost_owner_pasted": "no",
-    "support_subscription_price": "OWNER_UNSET"
-  }
+    "support_subscription_price": "OWNER_UNSET",
+    "rating_badge_url": "OWNER_UNSET",
+    "rating_report_url": "OWNER_UNSET",
+    "rating_partner_name": "OWNER_UNSET",
+    "rating_bulk_price": "OWNER_UNSET",
+    "rating_owner_pasted": "no"
+  },
+  "anchor_line": "OWNER_UNSET",
+  "sold_once": true,
+  "badge_line": "Instance 1 of 1. This brand, this domain, this door are sold once."
 }

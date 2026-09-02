@@ -30,6 +30,19 @@ Copied from [`packs/_template/`](../_template/) per [`land/business-pack-templat
 | [running-cost.md](./running-cost.md) | the shared running-cost slot (`Amount: OWNER_UNSET`, owner pastes) with the itemized typical ranges the runbook states (SCOUT running-cost rule) |
 | [paperwork.md](./paperwork.md) | the shared paperwork slot in the template's shape: every Do X line filled for this vertical, `State` / `City` and every `Status` `OWNER_UNSET`, formation-partner link empty, never-on-the-door lines kept |
 | [day.md](./day.md) | employee-day do-X list: onboarding, training, daily and weekly tasks; support subscription price `OWNER_UNSET` (Bryce, hub `1788327136.593709`) |
+| [rating.md](./rating.md) | third-party rating slot: badge URL, report URL, partner name, bulk price all `OWNER_UNSET` (Bryce, `#business-packs` `1788327092.565209`) |
+
+The shared first-party waitlist (`packs/waitlist.html`) reaches this instance
+through the peer catalog pointer (`cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01`),
+not through a line on this door; the door carries no address and no send.
+
+The door badge (`Instance 1 of 1. This brand, this domain, this door are sold
+once.`) is written by the verifier from its own verdict (`sold_once` in
+`manifest.json`): UNIQUE fingerprint among recorded sales plus brand + door.
+A recorded clone sale flips it to `Built from the same method as our sold
+instances.` The anchor line under the price is an owner-paste slot
+(`anchor_line: OWNER_UNSET`); SCOUT's suggested DESK line stays research until
+Bryce pastes it (`scout-demand-door-sold-once-badge-20260902-01`).
 | [manifest.json](./manifest.json) | machine record: instance fields, per-file hashes, fingerprint, verdicts |
 
 ## What this pack is not
