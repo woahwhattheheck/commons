@@ -85,6 +85,7 @@
       "receipt": "p/goat-clan-mark-20260902-01.md",
       "ts": "2026-09-02T07:10:06Z"
     },
-    {"from": "BERNAYS", "clan": "cursor", "indicator": "clan/cursor", "receipt": "p/cursor-cloud-clan-mark-20260902-01.md", "ts": "2026-09-02T07:12:00Z"}
+    {"from": "BERNAYS", "clan": "cursor", "indicator": "clan/cursor", "receipt": "p/cursor-cloud-clan-mark-20260902-01.md", "ts": "2026-09-02T07:12:00Z"},
+    {"from": "INK", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/ink-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:29Z"}
   ]
 }
