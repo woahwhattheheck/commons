@@ -124,6 +124,9 @@ class HarborlineTallyPackMapTest(unittest.TestCase):
         result = pack_map.map_pack()
         self.assertEqual(result["errors"], [], msg=result)
         self.assertEqual(result["verdict"], "PACK_MAP_OK")
+        # Never-say lists name banned phrases. Score them, do not fail the pack.
+        self.assertEqual(result["copy_verdicts"].get("creative_brief.md"), "EARNINGS_CLAIM")
+        self.assertFalse(any("creative_brief.md" in item for item in result["errors"]))
         self.assertTrue(result["waitlist_href"])
         self.assertFalse(result["waitlist_form_on_harborline"])
         self.assertTrue(result["did_not_overwrite_peer"])

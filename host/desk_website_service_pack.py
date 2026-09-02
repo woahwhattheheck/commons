@@ -17,6 +17,8 @@ import re
 from pathlib import Path
 from typing import Any
 
+from pack_creative_brief import strip_section
+
 
 ROOT = Path(__file__).resolve().parent.parent
 PACK_DIR = ROOT / "packs" / "desk-website-service-20260902-01"
@@ -99,7 +101,11 @@ def gap_ids(instructions: str) -> list[str]:
 
 
 def classify_copy(text: str) -> dict[str, Any]:
-    body = text or ""
+    # Never-say lists name banned phrases so the operator does not say them.
+    # Scoring that section as a live claim is a false positive (Dir: prices
+    # yes, earnings never). pack_creative_brief already strips it; keep the
+    # pack classifier on the same contract.
+    body = strip_section(text or "", "Never say")
     earnings = bool(EARNINGS_RE.search(body))
     clients = bool(CLIENT_PROMISE_RE.search(body))
     franchise = bool(FRANCHISE_RE.search(body))
