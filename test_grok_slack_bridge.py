@@ -448,7 +448,12 @@ class GrokSlackBridgeTests(unittest.TestCase):
             self.assertEqual(resumed["state"], "DELIVERED")
             self.assertEqual(store.get("Ev-no-capacity").phase, "DELIVERED")
             self.assertEqual(len([name for name, _ in mcp.calls if name == "fire_action"]), 1)
-            self.assertEqual(len([name for name, _ in mcp.calls if name == "route_grokcom_revenue_work"]), 3)
+            intake_calls = [
+                arguments
+                for name, arguments in mcp.calls
+                if name == "route_grokcom_revenue_work" and arguments.get("stage") == "INTAKE"
+            ]
+            self.assertEqual(len(intake_calls), 3)
             store.close()
 
     def test_stale_live_mcp_unverified_capacity_never_fires(self) -> None:
@@ -504,7 +509,12 @@ class GrokSlackBridgeTests(unittest.TestCase):
             )
             self.assertEqual(service2.recover_pending(), 1)
             self.assertEqual(store2.get("Ev-capacity-restart").phase, "DELIVERED")
-            self.assertEqual(len([name for name, _ in resumed_mcp.calls if name == "route_grokcom_revenue_work"]), 1)
+            intake_calls = [
+                arguments
+                for name, arguments in resumed_mcp.calls
+                if name == "route_grokcom_revenue_work" and arguments.get("stage") == "INTAKE"
+            ]
+            self.assertEqual(len(intake_calls), 1)
             self.assertEqual(len([name for name, _ in resumed_mcp.calls if name == "fire_action"]), 1)
             self.assertEqual(store2.get("Ev-capacity-restart").fire_action_calls, 1)
             store2.close()
