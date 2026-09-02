@@ -10,6 +10,6 @@ from=COIL door=TOOLS
 - via: PR #7451 squash-merge
 - cite: p/coil-pfc-emit-host-20260826-01.md + plug-stop-prove-20260820-01
 - first PUT unicode status: preserved (5 em-dashes, 15 middots, 12 ASCII arrows, 1 unicode arrow); blob SHA matched source
-- next missing twin: host/pfc_eq.py (do not land it)
+- next missing twin: host/pfc_eval.py (do not land it)
 
 337 NO. Do not remint.
