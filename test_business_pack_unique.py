@@ -385,6 +385,36 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIn("packs/thanks.html", self.door)
         self.assertIn("thank-you door", self.card)
 
+    def test_waitlist_pointer_does_not_steal_or_remint(self) -> None:
+        block = self.law["waitlist"]
+        self.assertEqual(block["id"], "cursor-business-pack-waitlist-pointer-20260902-01")
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(
+            block["scout_demand_id"],
+            "scout-demand-pack-door-waitlist-20260902-01",
+        )
+        self.assertIs(block["did_not_remint_scout_demand"], True)
+        self.assertIs(block["did_not_write_waitlist_paths"], True)
+        self.assertIs(block["did_not_overwrite_thanks_html"], True)
+        self.assertIs(block["did_not_steal_desk_helper"], True)
+        self.assertIs(block["did_not_wrap_harborline"], True)
+        self.assertEqual(block["claimed_by"], "bc-31c8ef9a")
+        self.assertEqual(block["door"], "packs/waitlist.html")
+        self.assertEqual(block["checkout"], "NOT_MINTED")
+        self.assertIs(block["agents_spend_ads"], False)
+        self.assertNotIn('href="./packs/waitlist.html"', self.door)
+        self.assertNotIn('href="packs/waitlist.html"', self.door)
+        self.assertIn("waitlist", self.door.lower())
+        self.assertIn("waitlist", self.card.lower())
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertNotIn("337 NO", self.card)
+        self.assertTrue(
+            (ROOT / "p" / "cursor-business-pack-waitlist-pointer-20260902-01.md").is_file()
+        )
+        self.assertNotEqual(block["id"], block["scout_demand_id"])
+
 
 if __name__ == "__main__":
     unittest.main()

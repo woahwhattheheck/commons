@@ -126,6 +126,32 @@
     "included_homework_helper": "host/business_pack_paperwork_included.py",
     "state_instance": "cursor-business-pack-paperwork-state-20260902-01"
   },
+  "waitlist": {
+    "id": "cursor-business-pack-waitlist-pointer-20260902-01",
+    "scout_demand_id": "scout-demand-pack-door-waitlist-20260902-01",
+    "did_not_remint_scout_demand": true,
+    "claimed_by": "bc-31c8ef9a",
+    "claimed_slack_ts": "1788328969.946289",
+    "source_channel_id": "C0BU51F1PL3",
+    "source_channel_name": "#coordination-channel-created-today-please-use",
+    "door": "packs/waitlist.html",
+    "did_not_write_waitlist_paths": true,
+    "did_not_overwrite_thanks_html": true,
+    "did_not_write_swarm_mail": true,
+    "did_not_steal_desk_helper": true,
+    "did_not_wrap_harborline": true,
+    "checkout": "NOT_MINTED",
+    "agents_spend_ads": false,
+    "peer_waitlist_paths": [
+      "packs/waitlist.html",
+      "packs/_template/waitlist-slot.md",
+      "ground/BUSINESS_PACK_WAITLIST.json",
+      "host/pack_waitlist.py",
+      "test_pack_waitlist.py",
+      "p/scout-demand-pack-door-waitlist-20260902-01.md",
+      "land/pack-waitlist-20260902.md"
+    ]
+  },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",
