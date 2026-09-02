@@ -1,1 +1,2 @@
-PLACEHOLDER_LOAD_FROM_/tmp/gh_test_body.txt
+#!/usr/bin/env python3
+"""Deterministic fakes for the Grok Slack connector."""
