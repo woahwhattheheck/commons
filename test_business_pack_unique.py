@@ -423,6 +423,36 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "host/pack_waitlist_pixel_gate.py",
         )
         self.assertEqual(
+            block["pixel_gate_helper_pointer"],
+            "cursor-business-pack-pixel-gate-helper-pointer-20260902-01",
+        )
+        self.assertEqual(
+            block["pixel_gate_pointer_helper"],
+            "host/pack_waitlist_pixel_gate_pointer.py",
+        )
+        self.assertEqual(
+            block["pixel_gate_pointer_helper_receipt"],
+            "cursor-business-pack-waitlist-pixel-gate-pointer-helper-20260902-01",
+        )
+        self.assertEqual(block["pixel_gate_pointer_helper_sha"], "08a23cde6")
+        self.assertIs(block["did_not_overwrite_pixel_gate_pointer_helper"], True)
+        self.assertIs(block["did_not_overwrite_pixel_gate_classifier"], True)
+        self.assertEqual(
+            block["pixel_gate_classifier_pointer"],
+            "cursor-business-pack-pixel-gate-classifier-pointer-20260902-01",
+        )
+        self.assertEqual(
+            block["pixel_gate_classifier_helper"],
+            "host/business_pack_waitlist_pixel_gate_pointer.py",
+        )
+        self.assertEqual(
+            block["pixel_gate_classifier_receipt"],
+            "cursor-business-pack-waitlist-pixel-gate-classifier-20260902-01",
+        )
+        self.assertIs(block["did_not_write_pixel_gate_classifier_helper"], True)
+        self.assertNotEqual(block["pixel_gate_helper_pointer"], block["pixel_gate_classifier_pointer"])
+        self.assertNotEqual(block["pixel_gate_pointer"], block["pixel_gate_helper_pointer"])
+        self.assertEqual(
             block["pixel_gate_receipt"],
             "cursor-pack-waitlist-pixel-gate-20260902-01",
         )
@@ -434,6 +464,10 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotEqual(block["id"], block["pixel_gate_pointer"])
         self.assertNotEqual(block["id"], block["pixel_gate_receipt"])
         self.assertTrue((ROOT / "host" / "pack_waitlist_pixel_gate.py").is_file())
+        self.assertTrue((ROOT / "host" / "pack_waitlist_pixel_gate_pointer.py").is_file())
+        self.assertTrue(
+            (ROOT / "host" / "business_pack_waitlist_pixel_gate_pointer.py").is_file()
+        )
         self.assertTrue(
             (ROOT / "p" / "cursor-pack-waitlist-pixel-gate-20260902-01.md").is_file()
         )
@@ -444,8 +478,24 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01.md"
             ).is_file()
         )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-pixel-gate-helper-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-pixel-gate-classifier-pointer-20260902-01.md"
+            ).is_file()
+        )
         self.assertIn("CCPA", self.door)
         self.assertIn("pack_waitlist_pixel_gate.py", self.door)
+        self.assertIn("pack_waitlist_pixel_gate_pointer.py", self.door)
+        self.assertIn("business_pack_waitlist_pixel_gate_pointer.py", self.door)
         self.assertTrue((ROOT / "packs" / "waitlist.html").is_file())
         self.assertIn('href="./packs/waitlist.html"', self.door)
         self.assertNotIn("<form", self.door)
@@ -570,6 +620,42 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["harborline_tally_pack_map_pointer"],
             "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
         )
+        self.assertEqual(
+            block["harborline_tally_pack_map_pointer_helper"],
+            "host/business_pack_harborline_tally_map_pointer.py",
+        )
+        self.assertEqual(
+            block["harborline_tally_pack_map_pointer_helper_receipt"],
+            "cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01",
+        )
+        self.assertEqual(block["harborline_tally_pack_map_pointer_helper_sha"], "636e2e2fd")
+        self.assertIs(block["did_not_write_harborline_tally_map_pointer_helper"], True)
+        self.assertEqual(
+            block["harborline_tally_map_leftover_helper"],
+            "host/business_pack_harborline_tally_map.py",
+        )
+        self.assertEqual(
+            block["sidewalk_lotribbon_waitlist_helper"],
+            "host/business_pack_sidewalk_lotribbon_waitlist.py",
+        )
+        self.assertEqual(
+            block["sidewalk_lotribbon_waitlist_helper_receipt"],
+            "cursor-business-pack-sidewalk-lotribbon-waitlist-helper-20260902-01",
+        )
+        self.assertIs(block["did_not_write_sidewalk_lotribbon_waitlist_helper"], True)
+        self.assertEqual(
+            block["harborline_map_helper_pointer"],
+            "cursor-business-pack-harborline-map-helper-pointer-20260902-01",
+        )
+        self.assertIs(block["keep_main_7754_remint"], True)
+        self.assertNotEqual(
+            block["id"],
+            block["harborline_map_helper_pointer"],
+        )
+        self.assertNotEqual(
+            block["harborline_tally_pack_map_pointer"],
+            block["harborline_map_helper_pointer"],
+        )
         self.assertIs(block["did_not_overwrite_harborline_tally_pack_map"], True)
         self.assertEqual(
             block["catalog_waitlist_rows_pointer"],
@@ -579,6 +665,61 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["instance_waitlist_helper"],
             "host/business_pack_instance_waitlist.py",
         )
+        self.assertEqual(
+            block["instance_waitlist_pin_lift"],
+            "cursor-business-pack-instance-waitlist-pin-lift-20260902-01",
+        )
+        self.assertIs(block["live_instance_blobs_not_pinned"], True)
+        self.assertEqual(
+            block["sold_once_badge_pointer"],
+            "cursor-business-pack-sold-once-badge-pointer-20260902-01",
+        )
+        self.assertEqual(block["sold_once_claimed_by"], "TALLY")
+        self.assertEqual(
+            block["sold_once_scout_demand_id"],
+            "scout-demand-door-sold-once-badge-20260902-01",
+        )
+        self.assertIs(block["did_not_remint_scout_sold_once"], True)
+        self.assertIs(block["did_not_overwrite_tally_helper"], True)
+        self.assertIs(block["did_not_write_tally_sold_once_paths"], True)
+        self.assertIs(block["did_not_write_lotribbon_sold_once"], True)
+        self.assertIs(block["did_not_write_goat_creative_brief"], True)
+        self.assertEqual(
+            block["creative_brief_template"],
+            "packs/_template/creative_brief.md",
+        )
+        self.assertEqual(
+            block["creative_brief_template_receipt"],
+            "cursor-pack-creative-brief-template-20260902-01",
+        )
+        self.assertIs(block["did_not_remint_creative_brief_template"], True)
+        self.assertEqual(
+            block["harborline_creative_brief"],
+            "packs/desk-website-service-20260902-01/creative_brief.md",
+        )
+        self.assertIs(block["did_not_overwrite_harborline_creative_brief"], True)
+        self.assertTrue((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
+        self.assertTrue(
+            (ROOT / "packs" / "desk-website-service-20260902-01" / "creative_brief.md").is_file()
+        )
+        self.assertEqual(
+            block["sold_once_not_landed_pointer"],
+            "cursor-business-pack-sold-once-not-landed-pointer-20260902-01",
+        )
+        self.assertIs(block["sold_once_landed"], False)
+        self.assertIs(block["sold_once_sidewalk_landed"], False)
+        self.assertIs(block["sold_once_lotribbon_landed"], True)
+        self.assertEqual(
+            block["sold_once_lotribbon_receipt"],
+            "cursor-plant-sold-once-badge-20260902-01",
+        )
+        self.assertEqual(block["sold_once_harborline"], "not_this_seat")
+        self.assertEqual(block["sold_once_anchor"], "OWNER_UNSET")
+        self.assertEqual(block["sold_once_lotribbon_claimed_by"], "bc-23891c63")
+        self.assertIs(block["did_not_write_sold_once_on_doors"], True)
+        self.assertNotEqual(block["sold_once_badge_pointer"], block["sold_once_not_landed_pointer"])
+        self.assertNotIn("Instance 1 of 1", self.door)
+        self.assertNotIn("No royalty", self.door)
         self.assertIs(block["did_not_overwrite_sidewalk_door"], True)
         self.assertIs(block["did_not_overwrite_lotribbon_door"], True)
         self.assertIn("host/business_pack_desk_instance.py", self.door)
@@ -611,6 +752,53 @@ class BusinessPackUniqueTest(unittest.TestCase):
         )
         self.assertTrue((ROOT / "host" / "harborline_tally_pack_map.py").is_file())
         self.assertTrue((ROOT / "host" / "business_pack_instance_waitlist.py").is_file())
+        self.assertTrue(
+            (ROOT / "host" / "business_pack_harborline_tally_map_pointer.py").is_file()
+        )
+        self.assertTrue(
+            (ROOT / "host" / "business_pack_sidewalk_lotribbon_waitlist.py").is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sold-once-badge-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sold-once-not-landed-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-instance-waitlist-pin-lift-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (ROOT / "p" / "cursor-plant-sold-once-badge-20260902-01.md").is_file()
+        )
+        self.assertFalse(
+            (ROOT / "p" / "tally-door-sold-once-badge-20260902-01.md").is_file()
+        )
+        self.assertTrue((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
+        self.assertIn("2c584983", self.door)
+        self.assertIn("KEEP MAIN on remint #7754", self.door)
+        self.assertIn("cursor-business-pack-harborline-map-helper-pointer-20260902-01", self.door)
+        self.assertIn("KEEP MAIN on remint #7754", self.card)
+        self.assertIn("sold-once", self.door.lower())
+        self.assertIn("sold-once", self.card.lower())
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
         block = self.law["rating_slot"]

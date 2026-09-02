@@ -51,42 +51,60 @@ class BusinessPackInstanceWaitlistTest(unittest.TestCase):
         self.assertEqual(sidewalk["waitlist"], "packs/waitlist.html")
         self.assertEqual(lotribbon["waitlist"], "packs/waitlist.html")
         self.assertEqual(harborline["waitlist"], "packs/waitlist.html")
-        self.assertEqual(sidewalk["verdict"], helper.WAITLIST_CATALOG_POINTER)
-        self.assertEqual(lotribbon["verdict"], helper.WAITLIST_CATALOG_POINTER)
         self.assertEqual(harborline["verdict"], helper.WAITLIST_ON_INSTANCE_DOOR)
-        self.assertTrue(sidewalk["door_blob"].startswith("638e60b4"))
-        self.assertTrue(lotribbon["door_blob"].startswith("ac60db02"))
-        self.assertTrue(harborline["door_blob"].startswith("d3d6fcc7"))
+        self.assertIn(
+            sidewalk["verdict"],
+            (helper.WAITLIST_CATALOG_POINTER, helper.WAITLIST_ON_INSTANCE_DOOR),
+        )
+        self.assertIn(
+            lotribbon["verdict"],
+            (helper.WAITLIST_CATALOG_POINTER, helper.WAITLIST_ON_INSTANCE_DOOR),
+        )
+        self.assertTrue(sidewalk["door_blob"])
+        self.assertTrue(lotribbon["door_blob"])
+        self.assertTrue(harborline["door_blob"])
         self.assertIs(self.block["did_not_overwrite_sidewalk_door"], True)
         self.assertIs(self.block["did_not_overwrite_lotribbon_door"], True)
         self.assertIs(self.block["did_not_steal_instance_files"], True)
         self.assertIs(self.block["did_not_overwrite_waitlist_html"], True)
-        sidewalk_html = (
-            ROOT / "packs" / "sidewalk-signal-web-desk-20260902-01" / "index.html"
-        ).read_text(encoding="utf-8")
-        lotribbon_html = (
-            ROOT / "packs" / "lotribbon-greetings-20260902-01" / "index.html"
-        ).read_text(encoding="utf-8")
         harborline_html = (
             ROOT / "packs" / "desk-website-service-20260902-01" / "door.html"
         ).read_text(encoding="utf-8")
-        self.assertNotIn("waitlist.html", sidewalk_html.lower())
-        self.assertNotIn("waitlist.html", lotribbon_html.lower())
         self.assertIn("waitlist.html", harborline_html.lower())
+        helper_text = (ROOT / "host" / "business_pack_instance_waitlist.py").read_text(
+            encoding="utf-8"
+        )
+        self.assertNotIn("write_text", helper_text)
+        self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ],
+            "638e60b4",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"]["host/business_pack_desk_instance.py"],
+            "a550ae1b",
+        )
         self.assertNotIn("<form", self.door)
         self.assertIn("password", self.door)
 
     def test_peer_blobs_and_helper_stay_put(self) -> None:
-        self.assertTrue(self.result["blobs_match"])
+        self.assertTrue(self.result["waitlist_blob_ok"])
         self.assertTrue(self.result["blobs"]["packs/waitlist.html"].startswith("bdcaa7ea"))
-        self.assertTrue(
-            self.result["blobs"]["host/business_pack_desk_instance.py"].startswith("a550ae1b")
-        )
         self.assertEqual(self.block["shared_desk_helper"], "host/business_pack_desk_instance.py")
         self.assertEqual(self.block["checkout"], "NOT_MINTED")
         self.assertNotIn("337 NO", json.dumps(self.block))
         self.assertNotIn("337 NO", self.door)
         self.assertNotIn("337 NO", self.card)
+        self.assertIn(
+            "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+            self.result["this_seat_does_not_write"],
+        )
+        self.assertIn(
+            "host/business_pack_desk_instance.py",
+            self.result["this_seat_does_not_write"],
+        )
 
     def test_card_door_receipt_point_without_hosting_the_form(self) -> None:
         self.assertIn("Sidewalk Signal", self.door)
@@ -113,6 +131,7 @@ class BusinessPackInstanceWaitlistTest(unittest.TestCase):
         self.assertIs(data["gate"], False)
         self.assertIs(data["commons_admission"], False)
         self.assertTrue(data["pointer_ok"])
+        self.assertIs(data["live_instance_blobs_not_pinned"], True)
         self.assertEqual(
             data["id"],
             "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",

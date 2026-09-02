@@ -36,6 +36,16 @@
     }
     ul { padding-left: 1.2rem; }
     .price { font-family: system-ui, sans-serif; }
+    .sold-once-badge {
+      font-family: system-ui, sans-serif;
+      font-size: 0.95rem;
+      margin: 0 0 0.85rem;
+    }
+    .anchor-slot {
+      font-family: system-ui, sans-serif;
+      font-size: 0.9rem;
+      color: #5c463d;
+    }
     .warn { border-left: 4px solid #3b2a24; padding-left: 0.75rem; }
     a { color: #7a3140; }
     footer { font-family: system-ui, sans-serif; font-size: 0.9rem; color: #5c463d; }
@@ -49,6 +59,7 @@
   </header>
   <main>
     <section class="card price">
+      <p class="sold-once-badge" data-sold-once="true">Instance 1 of 1. This brand, this domain, this door are sold once.</p>
       <h2>Greeting prices</h2>
       <ul>
         <li>Birthday lawn greeting, one night, 15-mile radius — $85 (install 45–90 min; pickup 20–40 min)</li>
@@ -56,6 +67,7 @@
         <li>Extra night — $20 · extra glyph — $15</li>
       </ul>
       <p>Pack SKU tier: $1,000. Checkout <code>NOT_MINTED</code> until the owner pastes a live Payment Link. Running cost the operator will incur: <code>OWNER_UNSET</code> until Bryce pastes it. Inventory planning quotes live in <code>inventory.json</code> and are not that slot.</p>
+      <p class="anchor-slot" data-owner-slot="plant-anchor">Owner copy slot (PLANT price-anchor): <code>OWNER_UNSET</code></p>
     </section>
     <section class="card">
       <h2>Book a greeting</h2>

@@ -1,0 +1,134 @@
+#!/usr/bin/env python3
+"""Unique helper for the landed Harborline-TALLY catalog pointer. Does not remint."""
+from __future__ import annotations
+
+import json
+import subprocess
+import sys
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent
+sys.path.insert(0, str(ROOT / "host"))
+
+import business_pack_harborline_tally_map_pointer as pointer  # noqa: E402
+
+
+class BusinessPackHarborlineTallyMapPointerTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.law = pointer.load_law()
+        self.block = pointer.instances_block(self.law)
+        self.waitlist = pointer.waitlist_block(self.law)
+        self.row = pointer.harborline_row(self.block)
+        self.result = pointer.classify_pointer(self.law)
+        self.receipt = (
+            ROOT
+            / "p"
+            / "cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01.md"
+        ).read_text(encoding="utf-8")
+        self.pointer_receipt = (
+            ROOT / "p" / "cursor-business-pack-harborline-tally-map-pointer-20260902-01.md"
+        ).read_text(encoding="utf-8")
+
+    def test_helper_cites_pointer_without_remint(self) -> None:
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(self.block["id"], "cursor-business-pack-instance-catalog-20260902-01")
+        self.assertEqual(
+            self.block["harborline_tally_pack_map_pointer"],
+            "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
+        )
+        self.assertEqual(
+            self.block["catalog_waitlist_rows_pointer"],
+            "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",
+        )
+        self.assertEqual(
+            self.waitlist["id"],
+            "cursor-business-pack-waitlist-pointer-20260902-01",
+        )
+        self.assertNotEqual(self.result["id"], self.block["harborline_tally_pack_map_pointer"])
+        self.assertNotEqual(self.result["id"], self.block["id"])
+        self.assertIs(self.law["gate"], False)
+        self.assertIs(self.law["commons_admission"], False)
+        self.assertTrue(self.result["pointer_ok"])
+        self.assertTrue(self.result["did_not_remint_pointer"])
+
+    def test_harborline_row_cites_map_without_overwrite(self) -> None:
+        self.assertEqual(self.row["tally_pack_map"], "host/harborline_tally_pack_map.py")
+        self.assertEqual(
+            self.row["tally_pack_map_receipt"],
+            "cursor-harborline-tally-pack-map-20260902-01",
+        )
+        self.assertEqual(self.row["tally_pack_map_owner"], "bc-31c8ef9a")
+        self.assertIs(self.block["did_not_overwrite_harborline_tally_pack_map"], True)
+        self.assertTrue(self.result["did_not_overwrite_map_helper"])
+        self.assertTrue(self.result["did_not_overwrite_harborline_door"])
+        self.assertTrue(self.result["did_not_overwrite_waitlist"])
+        self.assertTrue(self.result["did_not_overwrite_tally_helper"])
+        self.assertTrue(self.result["did_not_overwrite_sidewalk_door"])
+        self.assertTrue(self.result["did_not_overwrite_lotribbon_door"])
+        self.assertEqual(self.result["checkout"], "NOT_MINTED")
+        self.assertNotIn("337 NO", json.dumps(self.result))
+
+    def test_intact_blobs_stay_put(self) -> None:
+        self.assertTrue(self.result["blobs_match"])
+        self.assertTrue(
+            self.result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a889db44")
+        )
+        self.assertTrue(
+            self.result["blobs"]["host/business_pack_desk_instance.py"].startswith("a550ae1b")
+        )
+        self.assertTrue(
+            self.result["blobs"]["packs/desk-website-service-20260902-01/door.html"].startswith(
+                "d3d6fcc7"
+            )
+        )
+        self.assertTrue(self.result["blobs"]["packs/waitlist.html"].startswith("bdcaa7ea"))
+        self.assertTrue(
+            self.result["blobs"][
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ].startswith("638e60b4")
+        )
+        self.assertTrue(
+            self.result["blobs"]["packs/lotribbon-greetings-20260902-01/index.html"].startswith(
+                "ac60db02"
+            )
+        )
+
+    def test_receipt_does_not_remint_pointer(self) -> None:
+        self.assertIn("cursor-business-pack-harborline-tally-map-pointer-20260902-01", self.receipt)
+        self.assertIn("did not remint", self.receipt.lower())
+        self.assertIn("NOT_MINTED", self.receipt)
+        self.assertIn("a889db44", self.receipt)
+        self.assertIn("cursor-business-pack-instance-catalog-20260902-01", self.receipt)
+        self.assertIn("35ed9d78f", self.pointer_receipt)
+        self.assertNotEqual(
+            self.receipt.split("id:", 1)[1].splitlines()[0].strip(),
+            "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
+        )
+
+    def test_cli_json(self) -> None:
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "host" / "business_pack_harborline_tally_map_pointer.py")],
+            check=True,
+            capture_output=True,
+            text=True,
+        )
+        data = json.loads(proc.stdout)
+        self.assertIs(data["gate"], False)
+        self.assertIs(data["commons_admission"], False)
+        self.assertTrue(data["pointer_ok"])
+        self.assertEqual(
+            data["id"],
+            "cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01",
+        )
+        self.assertEqual(
+            data["pointer_id"],
+            "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
+        )
+        self.assertEqual(data["checkout"], "NOT_MINTED")
+        self.assertTrue(data["did_not_remint_pointer"])
+        self.assertTrue(data["blobs_match"])
+
+
+if __name__ == "__main__":
+    unittest.main()

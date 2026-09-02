@@ -20,5 +20,6 @@
   "tos_owner_pasted": false,
   "matched_demand_id": "scout-demand-plant-yard-greeting-pack-20260902-01",
   "did_not_remint_scout_demand": true,
-  "claim_id": "cursor-plant-yard-greeting-pack-20260902-01"
+  "claim_id": "cursor-plant-yard-greeting-pack-20260902-01",
+  "sold_once": true
 }

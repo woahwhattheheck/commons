@@ -124,6 +124,7 @@
     "assets/showcase-manifest.json": "COPY_OK",
     "assets.md": "COPY_OK",
     "checkout.md": "COPY_OK",
+    "creative_brief.md": "COPY_OK",
     "day.md": "COPY_OK",
     "index.html": "COPY_OK",
     "instructions.md": "COPY_OK",
