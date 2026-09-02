@@ -64,9 +64,22 @@ class BusinessPackSidewalkLotribbonWaitlistTest(unittest.TestCase):
         self.assertTrue((ROOT / "packs" / "waitlist.html").is_file())
 
     def test_instance_doors_stay_with_owners(self) -> None:
-        self.assertEqual(self.result["rows"]["LotRibbon Greetings"]["door_blob"], "ac60db02")
-        self.assertEqual(self.result["rows"]["Sidewalk Signal"]["door_blob"], "638e60b4")
-        self.assertTrue(self.result["doors_unmoved"])
+        self.assertTrue(self.result["rows"]["LotRibbon Greetings"]["door_blob"])
+        self.assertTrue(self.result["rows"]["Sidewalk Signal"]["door_blob"])
+        self.assertTrue(self.result["owner_doors_present"])
+        self.assertIs(self.result["live_owner_blobs_not_pinned"], True)
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/lotribbon-greetings-20260902-01/index.html"
+            ],
+            "ac60db02",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ],
+            "638e60b4",
+        )
         self.assertIs(self.block["did_not_overwrite_sidewalk_door"], True)
         self.assertIs(self.block["did_not_overwrite_lotribbon_door"], True)
         self.assertIs(self.block["did_not_overwrite_waitlist_html"], True)
@@ -132,7 +145,8 @@ class BusinessPackSidewalkLotribbonWaitlistTest(unittest.TestCase):
         self.assertTrue(data["pointer_ok"])
         self.assertTrue(data["catalog_only"])
         self.assertTrue(data["catalog_waitlist_ok"])
-        self.assertTrue(data["doors_unmoved"])
+        self.assertTrue(data["owner_doors_present"])
+        self.assertIs(data["live_owner_blobs_not_pinned"], True)
         self.assertEqual(data["checkout"], "NOT_MINTED")
         self.assertEqual(
             data["id"],

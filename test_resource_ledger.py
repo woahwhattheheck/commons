@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788321794.949889")
+        self.assertEqual(catalog["slack_ts"], "1788333045.374429")
         self.assertEqual(
             catalog["source_id"],
+            "codex-business-pack-factory-activation-20260902-01",
+        )
+        self.assertIn(
             "codex-coil-pfc-host-toolchain-activation-20260902-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-connected-capability-fleet-activation-20260901-01",
@@ -235,14 +239,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-coil-pfc-host-toolchain-activation-20260902-01.json",
+            "codex-business-pack-factory-activation-20260902-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "coil-pfc-host-toolchain"
+            current_activation["selected_resource"], "commons-business-pack-factory"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -349,6 +353,9 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(rows["lm-gtm-agent-brief-floor"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["coil-pfc-host-toolchain"]["stage"], "PRODUCING")
         self.assertEqual(rows["coil-pfc-host-toolchain"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["commons-business-pack-factory"]["stage"], "PRODUCING")
+        self.assertEqual(rows["commons-business-pack-factory"]["condition"], "CONSTRAINED")
+        self.assertIn("NOT_MINTED", rows["commons-business-pack-factory"]["rate_plan_boundary"])
         self.assertEqual(activation["after"]["stage"], "PRODUCING")
         self.assertEqual(activation["after"]["condition"], "CONSTRAINED")
         self.assertEqual(activation["projection"]["resources"], 66)
