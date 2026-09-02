@@ -133,6 +133,9 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
             "push trigger must stay dropped; ingest storms cancelled deploys",
         )
         self.assertIn("_site/pages-deploy.json", text)
+        self.assertIn("--exclude '_site/'", text)
+        self.assertIn("[ ! -f _site/pages-deploy.json ]", text)
+        self.assertIn("missing _site/pages-deploy.json after write", text)
 
     def test_generated_pages_deploy_receipt_is_in_git(self) -> None:
         """Actions still writes _site/; in-tree canary survives github-pages[bot] overwrite."""
