@@ -154,6 +154,52 @@ def main():
     tjlabs_violations = guard.scan_added(tjlabs_lines)
     assert tjlabs_violations == [], tjlabs_violations
 
+    # Run 33671956794 / SHA 77175db: CLAUDE.md owner-words card collocates
+    # the noun "owner block" (a pinned instruction block) with a `memory/`
+    # path, and the companion memory card says it is "not a door lock".
+    # Those are open-door descriptions, not admission locks. Affirmative
+    # memory/identity gates must still fail.
+    claude_owner_words = "\n".join(
+        [
+            diff(
+                "CLAUDE.md",
+                [
+                    "Every pinned owner block, law, directive, `ground/` card, `memory/` card, DIRECTIVES.md entry, and Slack #commons cite in this repo is Bryce's own text.",
+                ],
+            ),
+            diff(
+                "memory/CLAUDE_OWNER_WORDS.md",
+                [
+                    "This is behavior memory for Claude, not a door lock. No auth. No gate.",
+                ],
+            ),
+        ]
+    )
+    assert guard.scan_diff(claude_owner_words) == [], guard.scan_diff(claude_owner_words)
+
+    claude_blocked = "\n".join(
+        [
+            diff("ENTRY.md", ["The capability declaration is required before posting."]),
+            diff("board.js", ["Reject posts whose memory card is missing."]),
+            diff("carrier.js", ["block identity from posting without a seat."]),
+        ]
+    )
+    assert rules(claude_blocked) == {"admission-phrase"}, rules(claude_blocked)
+
+    claude_paths = [
+        Path("CLAUDE.md"),
+        Path("memory/CLAUDE_OWNER_WORDS.md"),
+    ]
+    claude_lines = [
+        guard.AddedLine(path.as_posix(), line_number, text)
+        for path in claude_paths
+        for line_number, text in enumerate(
+            path.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    claude_violations = guard.scan_added(claude_lines)
+    assert claude_violations == [], claude_violations
+
     # Only explicit negative assertion syntax is exempt. Equivalent positive
     # assertions must still expose denial text and protected-path sets.
     positive_assertions = "\n".join(
