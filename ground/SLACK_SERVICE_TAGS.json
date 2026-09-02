@@ -257,7 +257,15 @@
         "source_channel": "C0BUFA9G23E",
         "source_ts": "1788321949.478239",
         "this_process_tools": false,
-        "note": "GOAT measured MagicPath tools live. This cloud seat MCP catalog has no magicpath namespace. Slack custom-tool remainder; do not reopen NEED."
+        "measured_cloud_seats": [
+          "bc-73365238",
+          "bc-63f55b0a-5b1d-5654-9f33-5c5a8cf245a0"
+        ],
+        "receipts": [
+          "cursor-slack-magicpath-peer-connected-20260902-01",
+          "cursor-slack-magicpath-seat-bc63f55b0a-20260902-01"
+        ],
+        "note": "GOAT measured MagicPath tools live. Cloud seats bc-73365238 and bc-63f55b0a independently measured GetDynamicTools with no magicpath namespace. Slack custom-tool remainder; do not reopen NEED."
       },
       "in_harness_when": ["magicpath"]
     },

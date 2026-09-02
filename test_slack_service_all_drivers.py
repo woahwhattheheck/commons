@@ -75,6 +75,11 @@ class SlackServiceAllDriversTest(unittest.TestCase):
         self.assertEqual(out["peer_desk"], "GOAT")
         self.assertIs(out["this_process_tools"], False)
         self.assertIs(out["reopen_need"], False)
+        self.assertIn("bc-73365238", out["measured_cloud_seats"])
+        self.assertIn(
+            "bc-63f55b0a-5b1d-5654-9f33-5c5a8cf245a0",
+            out["measured_cloud_seats"],
+        )
         self.assertNotEqual(out["road"], "OWNER_SIGNIN")
         payload = all_drivers.drive_text("@magicpath list projects", connected=["slack"])
         posts = all_drivers.format_slack_posts(payload)

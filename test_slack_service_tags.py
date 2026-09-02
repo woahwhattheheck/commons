@@ -116,6 +116,19 @@ class SlackServiceTagsTest(unittest.TestCase):
         spec = self.cat["services"]["magicpath"]["peer_harness_connected"]
         self.assertEqual(spec["desk"], "GOAT")
         self.assertIs(spec["this_process_tools"], False)
+        self.assertIn("bc-73365238", spec["measured_cloud_seats"])
+        self.assertIn(
+            "bc-63f55b0a-5b1d-5654-9f33-5c5a8cf245a0",
+            spec["measured_cloud_seats"],
+        )
+        self.assertIn(
+            "cursor-slack-magicpath-peer-connected-20260902-01",
+            spec["receipts"],
+        )
+        self.assertIn(
+            "cursor-slack-magicpath-seat-bc63f55b0a-20260902-01",
+            spec["receipts"],
+        )
         result = sst.route("@magicpath list projects", connected=["slack"])
         self.assertEqual(result["tags"], ["magicpath"])
         roads = {job["road"] for job in result["jobs"] if job["tag"] == "magicpath"}
@@ -125,8 +138,20 @@ class SlackServiceTagsTest(unittest.TestCase):
         custom = next(j for j in result["slack_jobs"] if j["kind"] == "SLACK_CUSTOM_TOOL")
         self.assertEqual(custom["peer_desk"], "GOAT")
         self.assertIs(custom["this_process_tools"], False)
+        self.assertIn("bc-73365238", custom["measured_cloud_seats"])
+        self.assertIn(
+            "bc-63f55b0a-5b1d-5654-9f33-5c5a8cf245a0",
+            custom["measured_cloud_seats"],
+        )
         kinds = {row["kind"] for row in result["slack_jobs"]}
         self.assertNotIn("OWNER_BLOCKER", kinds)
+        first = ROOT / "p" / "cursor-slack-magicpath-peer-connected-20260902-01.md"
+        second = ROOT / "p" / "cursor-slack-magicpath-seat-bc63f55b0a-20260902-01.md"
+        self.assertTrue(first.is_file())
+        self.assertTrue(second.is_file())
+        self.assertIn("bc-73365238", first.read_text(encoding="utf-8"))
+        self.assertIn("bc-63f55b0a", second.read_text(encoding="utf-8"))
+        self.assertNotIn("bc-63f55b0a", first.read_text(encoding="utf-8"))
 
     def test_notion_peer_connected_does_not_reopen_need(self) -> None:
         spec = self.cat["services"]["notion"]["peer_harness_connected"]
