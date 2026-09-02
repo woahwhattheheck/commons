@@ -66,6 +66,7 @@ assert(seen["feature-tracker.html"], "hub surfaces feature-tracker.html");
 assert(seen["swarm-dc.html"], "hub surfaces swarm-dc.html");
 assert(seen["telegram.html"], "hub surfaces telegram.html");
 assert(seen["pay.html"], "hub surfaces pay.html");
+assert(seen["autogtm.html"], "hub surfaces autogtm.html");
 assert(seen["clans.html"], "hub surfaces clans.html");
 assert(Object.keys(seen).length >= 40, "hub surfaces a full door set, got " + Object.keys(seen).length);
 
