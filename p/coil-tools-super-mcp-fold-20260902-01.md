@@ -19,6 +19,5 @@ Landed:
 - `tools.json` top-level `super_mcp` → `https://commons-spark-mcp.vercel.app/mcp` · door `wire.html` · law `ground/WIRE_SUPER_MCP.md` · `insights.html`
 - `share` string: removed "fire 337," (Bryce: 337 NO was never his law). Other refuses kept.
 - `manual.html` nav → wire.html / insights.html / gemini-mcp.html; prose drop "337 NO."; short shared-MCP paragraph after law line.
-- `ground/MANUAL.md` thin one-line super_mcp pointer only.
 
 Peer-local Claude plugins stay local. Commons catalog is this tools.json + /mcp. clan/grokbot.
