@@ -79,6 +79,17 @@
       "EARNINGS_CLAIM"
     ]
   },
+  "thanks_pixel": {
+    "id": "cursor-business-pack-thanks-pixel-20260902-01",
+    "scout_demand_id": "scout-demand-pack-door-thanks-pixel-20260902-01",
+    "did_not_remint_scout_demand": true,
+    "door": "packs/thanks.html",
+    "pixel_slot": "owner_paste",
+    "pixel_id": "",
+    "agents_spend_ads": false,
+    "agents_mint_pixel_id": false,
+    "checkout": "NOT_MINTED"
+  },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",

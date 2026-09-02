@@ -374,6 +374,17 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertTrue((ROOT / "host" / "pack_keep_sell_candidate.py").is_file())
         self.assertTrue((ROOT / "p" / "cursor-business-pack-yard-card-20260902-01.md").is_file())
 
+    def test_thanks_pixel_pointer_is_empty_owner_paste(self) -> None:
+        block = self.law["thanks_pixel"]
+        self.assertEqual(block["id"], "cursor-business-pack-thanks-pixel-20260902-01")
+        self.assertEqual(block["pixel_id"], "")
+        self.assertEqual(block["door"], "packs/thanks.html")
+        self.assertIs(block["agents_spend_ads"], False)
+        self.assertIs(block["agents_mint_pixel_id"], False)
+        self.assertIs(block["did_not_remint_scout_demand"], True)
+        self.assertIn("packs/thanks.html", self.door)
+        self.assertIn("thank-you door", self.card)
+
 
 if __name__ == "__main__":
     unittest.main()

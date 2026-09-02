@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="index, follow"/>
+<title>Pack thanks — Commons</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:46rem;margin:1.5rem auto;padding:0 1rem;line-height:1.45}
+.warn{border-left:4px solid #333;padding-left:.75rem}
+code{font-family:ui-monospace,monospace}
+</style>
+</head>
+<body>
+<p><a href="../index.html">Commons</a> · <a href="../business-packs.html">Business packs</a> · <a href="../action.html">Action Pad</a></p>
+<h1>Thanks</h1>
+<p>Payment finished on the owner-pasted checkout. This page is the after-payment redirect so measurement can see a <code>Purchase</code> on a door we control. It does not charge anyone. Checkout stays <code>NOT_MINTED</code> until the owner pastes a live Payment Link.</p>
+<p class="warn">This door is not a Commons sign-in page. Possessing the Commons link is authorization. Do not paste a password, API key, session token, Stripe secret, or other secret here, in Slack, Git, or receipts. Do not invent Stripe Payment Links. Do not invent a pixel ID. Agents do not spend ads.</p>
+<p>The X Pixel ID is an owner-paste slot in <a href="../ground/BUSINESS_PACK_THANKS.json"><code>ground/BUSINESS_PACK_THANKS.json</code></a>. Empty slot loads zero third-party scripts. Owner fills it the same way they paste Payment Links. Query <code>?value=</code> is the tier price, not an earnings claim. Prices and time budgets only. Keep the nuts off ads.</p>
+<p id="slot">loading pixel slot…</p>
+<script>
+(function(){
+  const out = document.getElementById("slot");
+  const params = new URLSearchParams(location.search);
+  const raw = params.get("value");
+  fetch("../ground/BUSINESS_PACK_THANKS.json").then(r => r.json()).then(law => {
+    const id = String(law.pixel_id || "").trim();
+    const src = String(law.script_src_when_filled || "").trim();
+    if (!id || !src) {
+      out.textContent = "Pixel slot empty. No third-party script loaded. Owner pastes the pixel ID when ready. Agents do not spend ads.";
+      return;
+    }
+    const s = document.createElement("script");
+    s.async = true;
+    s.src = src;
+    document.head.appendChild(s);
+    const value = raw === null || raw === "" ? null : Number(raw);
+    function fire(){
+      if (typeof twq !== "function") return;
+      twq("config", id);
+      const payload = {};
+      if (value !== null && !Number.isNaN(value) && value >= 0) {
+        payload.value = value;
+        payload.currency = "USD";
+      }
+      twq("event", "Purchase", payload);
+    }
+    s.onload = fire;
+    out.textContent = "Pixel slot owner-filled. Purchase event queued. Agents did not mint this ID and did not spend ads.";
+  }).catch(() => {
+    out.textContent = "Pixel law JSON did not load. No third-party script injected.";
+  });
+})();
+</script>
+</body>
+</html>

@@ -72,6 +72,8 @@ TYPE owns minting. This template does not mint.
 A pasted link is still not authorization, settlement, payout, or cash.
 This instance's checkout is its own. Do not reuse another customer's Payment Link as identical inventory.
 
+After-payment redirect (owner sets this on the Payment Link): [packs/thanks.html](../packs/thanks.html). Pixel ID is an empty owner-paste slot in [ground/BUSINESS_PACK_THANKS.json](../ground/BUSINESS_PACK_THANKS.json). Empty slot loads zero third-party scripts. Agents do not mint a pixel or spend ads.
+
 ## 5b. Mystery box / the nuts
 
 Each price pool ($20 / $100 / $200 / $1000 / $10k) may mix in rare, extremely valuable ideas. Chance to draw **the nuts**.
