@@ -1,0 +1,158 @@
+{
+  "schema_version": "commons-business-pack-instance/v1",
+  "kind": "BUSINESS_PACK_INSTANCE",
+  "id": "tally-yard-help-route-instance-20260902-01",
+  "slug": "curbline-weekend-yard-help-20260902-01",
+  "demand_id": "scout-demand-yard-card-instance-20260902-01",
+  "did_not_remint_scout_demand": true,
+  "template_id": "packs/_template",
+  "vertical": "weekend yard-help route",
+  "family": "products",
+  "tier": "shop",
+  "tier_usd": 100,
+  "brand": "Curbline Weekend",
+  "tagline": "A weekend yard-help route. Fifty cards. Two hours. Three prices.",
+  "domain": {
+    "suggested": "curblineweekend.com",
+    "state": "UNMEASURED",
+    "owner_action": "buyer checks availability and registers under their own account"
+  },
+  "door": "packs/curbline-weekend-yard-help-20260902-01/index.html",
+  "checkout": {
+    "state": "OWNER_PASTE_REQUIRED",
+    "status": "NOT_MINTED",
+    "url": "",
+    "after_payment_redirect": "packs/thanks.html?value=100",
+    "note": "Bryce pastes a live Payment Link when one exists. This seat does not invent one."
+  },
+  "keep_or_sell": "UNDECIDED",
+  "sell_ready_instance": true,
+  "sale_id": null,
+  "sales": [],
+  "marketing": "bryce_only",
+  "ad_peer": false,
+  "marketing_spend_usd": 0,
+  "cash_usd": 0,
+  "buyers_invented": false,
+  "leads_included": false,
+  "customers_provided": false,
+  "ftc_437_posture": "method_not_customers",
+  "earnings_claims": false,
+  "nuts_on_door": false,
+  "scaffold_owned_by": "GOAT",
+  "slack_channel_id": "C0BU7JAPUH3",
+  "slack_channel": "#business-packs",
+  "open_door": true,
+  "requires_login": false,
+  "gate": false,
+  "owner_decisions_open": [
+    "KEEP or SELL",
+    "live Payment Link",
+    "refund policy on the door",
+    "terms.md slots: tjlabs profit-share percent and partial-ownership fraction (both OWNER_UNSET) plus counsel clearance (ground/TJLABS_PACK_TERMS.md)",
+    "nuts mix-in and value range"
+  ],
+  "seat": "bc-297a6147 (Cursor Grok 4.6; reclaim after Claude/Fable claim not accepted)",
+  "lead_ack": "1788335200.416589",
+  "unique_pack_did_not_take": "bc-73365238",
+  "measured_at": "2026-09-02",
+  "assets": [
+    {
+      "path": "assets/brand.md",
+      "bytes": 687,
+      "sha256": "1202553c73efbd36eb2f19aebaa43880491ff1221ab154451e981116ed7ea5a6"
+    },
+    {
+      "path": "assets/card-copy.md",
+      "bytes": 546,
+      "sha256": "b6b420f3671ff82000a90efc49f83c5da80454690b22e825a5f25b07001850d8"
+    },
+    {
+      "path": "assets/days-8-30.md",
+      "bytes": 988,
+      "sha256": "f8d45b5f95c7614d8bf6ae076a15f14fffd2eb9a72fa3ff6ca0de9f4fc311a2d"
+    },
+    {
+      "path": "assets/invoice-text.md",
+      "bytes": 302,
+      "sha256": "c54f42e8f8de86a32e16860ad6f2951700fcf3143b2a3ef3da16f4845696aa36"
+    },
+    {
+      "path": "assets/job-checklist.md",
+      "bytes": 811,
+      "sha256": "0606f874f3e9f2879c55d9cd5abf73cefac73a4b2bc00dbfe9aaebfac4b3b816"
+    },
+    {
+      "path": "assets/paperwork-checklist.md",
+      "bytes": 1532,
+      "sha256": "62c5332a745702062dc75f70431c4d157e58b5f55dfc1e2896f6d33a7f367f5d"
+    },
+    {
+      "path": "assets/phone-script.md",
+      "bytes": 840,
+      "sha256": "800b4683548787fae4c6e628a7d0eafbea8cb032f19173bea1670479eb55dbc8"
+    },
+    {
+      "path": "assets/price-sheet.md",
+      "bytes": 775,
+      "sha256": "0ff2ba5c8e7be30e5ada21dd3e5a7071efdd7148338c6a8fe1891b178daf64c0"
+    },
+    {
+      "path": "assets/route-log.md",
+      "bytes": 581,
+      "sha256": "d1fe63268c955547b446a605863c1c3bc1943c49ed8a91860a7e27bd2cfc3e7c"
+    }
+  ],
+  "instance_fields": {
+    "assets_sha256": "a808069c41224a86b55485667d1f77e5eab6f32d8ea13d3fd7829770645922da",
+    "brand": "Curbline Weekend",
+    "checkout": "OWNER_PASTE_REQUIRED:curbline-weekend-yard-help-20260902-01",
+    "instructions_sha256": "2e4289417068766731afbe1ca0bfb918ca5c818c0c63265a3cd6db764b805354",
+    "ops_sha256": "576a2644a7ddd849d221baf088073add468863ddaeddd946bb5f5e9ebd4d9a32"
+  },
+  "fingerprint": "4548fcd79fb70500192e9595bfcf70df67a46518aea826b87617dda93d4fdfd9",
+  "twin_sale_verdict": "CLONE_STAMP",
+  "sell_instance_verdict": "UNIQUE_INSTANCE_SELL_OK",
+  "copy_verdicts": {
+    "README.md": "COPY_OK",
+    "assets/brand.md": "COPY_OK",
+    "assets/card-copy.md": "COPY_OK",
+    "assets/days-8-30.md": "COPY_OK",
+    "assets/invoice-text.md": "COPY_OK",
+    "assets/job-checklist.md": "COPY_OK",
+    "assets/paperwork-checklist.md": "COPY_OK",
+    "assets/phone-script.md": "COPY_OK",
+    "assets/price-sheet.md": "COPY_OK",
+    "assets/route-log.md": "COPY_OK",
+    "assets.md": "COPY_OK",
+    "checkout.md": "COPY_OK",
+    "creative_brief.md": "COPY_OK",
+    "day.md": "COPY_OK",
+    "gems.md": "COPY_OK",
+    "index.html": "COPY_OK",
+    "instructions.md": "COPY_OK",
+    "keep-vs-sell.md": "COPY_OK",
+    "offer.md": "COPY_OK",
+    "paperwork.md": "COPY_OK",
+    "rating.md": "COPY_OK",
+    "running-cost.md": "COPY_OK",
+    "terms.md": "COPY_OK",
+    "week1.md": "COPY_OK"
+  },
+  "slots": {
+    "paperwork_state": "OWNER_UNSET",
+    "paperwork_city": "OWNER_UNSET",
+    "formation_partner_link": "OWNER_UNSET",
+    "running_cost_amount": "OWNER_UNSET",
+    "running_cost_owner_pasted": "no",
+    "support_subscription_price": "OWNER_UNSET"
+  },
+  "terms": {
+    "profit_share_percent": "OWNER_UNSET",
+    "partial_ownership_fraction": "OWNER_UNSET",
+    "owner_pasted": false,
+    "counsel_cleared": false
+  },
+  "terms_verdict": "TOS_INCOMPLETE",
+  "saleable": false
+}
