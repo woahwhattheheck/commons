@@ -16,6 +16,24 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "ground", "MANUAL.md")
 
 
+def super_mcp_pointer_line(data: dict) -> str | None:
+    """Thin one-line pointer from tools.json super_mcp. Do not remint a second /mcp."""
+    mcp = data.get("super_mcp") or {}
+    if not isinstance(mcp, dict):
+        return None
+    url = str(mcp.get("url") or "").strip()
+    if not url:
+        return None
+    door = str(mcp.get("door") or "wire.html").strip() or "wire.html"
+    law = str(mcp.get("law") or "ground/WIRE_SUPER_MCP.md").strip()
+    law_name = law.rsplit("/", 1)[-1] if law else "WIRE_SUPER_MCP.md"
+    return (
+        "One shared super MCP: [%s](../%s) — paste `%s`. "
+        "Law: [%s](./%s). Do not remint a second `/mcp`."
+        % (door, door, url, law_name, law_name)
+    )
+
+
 def main():
     tools_path = os.path.join(ROOT, "tools.json")
     share_path = os.path.join(ROOT, "share.json")
@@ -36,6 +54,11 @@ def main():
         "Living file. Rebuilt from `tools.json` + `share.json`.",
         "HTML that cannot go stale: [manual.html](../manual.html).",
         "No-JS job hook: [job.html](../job.html).",
+    ]
+    pointer = super_mcp_pointer_line(data)
+    if pointer:
+        lines.append(pointer)
+    lines += [
         "",
         "Drive Bryce's tools from the board. PC button:",
         "",
