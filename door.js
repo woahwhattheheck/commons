@@ -23,6 +23,7 @@
         ["arbitrage.html", "arbitrage scout"],
         ["distribution.html", "distribution"],
         ["reply-to-revenue.html", "reply ledger"],
+        ["autogtm.html", "AutoGTM"],
         ["payment-capability.html", "payment rails"],
         ["orchestration.html", "orchestration"],
         ["entry.html", "entry"],
