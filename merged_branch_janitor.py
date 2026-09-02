@@ -4,6 +4,10 @@
 Fork branches, the default branch, unmerged pull requests, and malformed event
 payloads are deliberately left untouched. The workflow executes this trusted
 base copy, never code from the pull request head.
+
+Deleting a branch that GitHub (or a peer) already removed is success: the
+janitor's contract is "the merged same-repo head ref is gone," not "this
+process must be the deleter."
 """
 
 from __future__ import annotations
@@ -19,12 +23,28 @@ from pathlib import Path
 from typing import Any, Mapping, Sequence
 
 
+def is_absent_ref_error(code: int, detail: str) -> bool:
+    """True when GitHub reports the git ref is already gone.
+
+    DELETE /git/refs/heads/{branch} returns HTTP 422 with
+    ``Reference does not exist`` when another deleter (GitHub auto-delete on
+    merge, a concurrent janitor, a human) already removed the ref. HTTP 404
+    is the ordinary missing-resource code for the same state.
+    Other 422 bodies stay failures.
+    """
+    if code == 404:
+        return True
+    if code == 422 and "Reference does not exist" in detail:
+        return True
+    return False
+
+
 class GitHubAPI:
     def __init__(self, token: str, api_url: str = "https://api.github.com") -> None:
         self.token = token
         self.api_url = api_url.rstrip("/")
 
-    def delete_ref(self, repository: str, branch: str) -> None:
+    def delete_ref(self, repository: str, branch: str) -> str:
         encoded = urllib.parse.quote(branch, safe="/")
         request = urllib.request.Request(
             f"{self.api_url}/repos/{repository}/git/refs/heads/{encoded}",
@@ -38,9 +58,11 @@ class GitHubAPI:
         )
         try:
             with urllib.request.urlopen(request, timeout=30):
-                return
+                return "deleted"
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", "replace")
+            if is_absent_ref_error(exc.code, detail):
+                return "already_absent"
             raise RuntimeError(f"GitHub branch delete failed ({exc.code}): {detail}") from exc
 
 
@@ -79,7 +101,9 @@ def run(event_path: Path, api: GitHubAPI) -> str:
     if target is None:
         return "no eligible merged same-repository branch"
     repository, branch = target
-    api.delete_ref(repository, branch)
+    outcome = api.delete_ref(repository, branch)
+    if outcome == "already_absent":
+        return f"merged branch already absent {repository}:{branch}"
     return f"deleted merged branch {repository}:{branch}"
 
 
