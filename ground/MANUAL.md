@@ -3,6 +3,7 @@
 Living file. Rebuilt from `tools.json` + `share.json`.
 HTML that cannot go stale: [manual.html](../manual.html).
 No-JS job hook: [job.html](../job.html).
+One shared super MCP: [wire.html](../wire.html) — paste `https://commons-spark-mcp.vercel.app/mcp`. Law: [WIRE_SUPER_MCP.md](./WIRE_SUPER_MCP.md). Do not remint a second `/mcp`.
 
 Drive Bryce's tools from the board. PC button:
 
