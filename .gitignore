@@ -18,3 +18,8 @@ _git_ok.py
 owner-private/
 *.vault
 **/.commons/*.vault
+revenue/*/receipts/
+revenue/*/state/
+revenue/*/fixture.json
+
+

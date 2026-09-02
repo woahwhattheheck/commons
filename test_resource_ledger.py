@@ -245,7 +245,8 @@ class TestResourceLedger(unittest.TestCase):
             current_activation["selected_resource"], "titan-write-envelope"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, current_activation["evidence"]["claim"])
+        evidence_claim = current_activation["evidence"].get("claim") or current_activation["evidence"].get("slack_claim")
+        self.assertIn(slack_cite, evidence_claim)
         activation_path = os.path.join(
             ROOT,
             "inventory",
