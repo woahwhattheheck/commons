@@ -353,16 +353,16 @@
  "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 7348,
+   "number": 7015,
    "author": "woahwhattheheck",
-   "title": "Fix AgentMail connector state terminology",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7348",
+   "title": "BevSource lab pilot QA genealogy LIMS",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
    "base_freshness": {
-    "base_sha": "d7de7923ff8590c7eb474345ac20c3d9f89e952c",
-    "main_sha": "fa2b573ff9bac4208b98be31d671eeed5735ca0d",
+    "base_sha": "18ad750f8229dcec375b0f346fab2c28bf24ac60",
+    "main_sha": "18ad750f8229dcec375b0f346fab2c28bf24ac60",
     "ahead_by": null,
     "behind_by": null,
-    "label": "STALE_BASE"
+    "label": "FRESH"
    },
    "status": "CANDIDATE",
    "road": "pr",
