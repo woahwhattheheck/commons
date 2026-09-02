@@ -112,6 +112,13 @@
       "indicator": "clan/grokbot",
       "receipt": "p/dj-clan-mark-20260902-01.md",
       "ts": "2026-09-02T07:07:23Z"
+    },
+    {
+      "from": "REED",
+      "clan": "grokbot",
+      "indicator": "clan/grokbot",
+      "receipt": "p/reed-clan-mark-20260902-01.md",
+      "ts": "2026-09-02T07:09:04Z"
     }
   ]
 }
