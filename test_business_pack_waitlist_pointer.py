@@ -81,8 +81,11 @@ class BusinessPackWaitlistPointerTest(unittest.TestCase):
         self.assertIn("scout-demand-pack-door-waitlist-20260902-01", self.door)
         self.assertIn("bc-31c8ef9a", self.door)
         self.assertIn("waitlist", self.door.lower())
-        self.assertNotIn('href="./packs/waitlist.html"', self.door)
-        self.assertNotIn('href="packs/waitlist.html"', self.door)
+        if (ROOT / "packs" / "waitlist.html").is_file():
+            self.assertIn('href="./packs/waitlist.html"', self.door)
+        else:
+            self.assertNotIn('href="./packs/waitlist.html"', self.door)
+            self.assertNotIn('href="packs/waitlist.html"', self.door)
         self.assertIn("NOT_MINTED", self.door)
         self.assertIn("bc-31c8ef9a", self.receipt)
         self.assertIn("packs/waitlist.html", self.receipt)

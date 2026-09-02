@@ -402,8 +402,12 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertEqual(block["door"], "packs/waitlist.html")
         self.assertEqual(block["checkout"], "NOT_MINTED")
         self.assertIs(block["agents_spend_ads"], False)
-        self.assertNotIn('href="./packs/waitlist.html"', self.door)
-        self.assertNotIn('href="packs/waitlist.html"', self.door)
+        self.assertIs(block["waitlist_door_landed"], True)
+        self.assertEqual(block["waitlist_href"], "packs/waitlist.html")
+        self.assertIs(block["did_not_overwrite_waitlist_html"], True)
+        self.assertTrue((ROOT / "packs" / "waitlist.html").is_file())
+        self.assertIn('href="./packs/waitlist.html"', self.door)
+        self.assertNotIn("<form", self.door)
         self.assertIn("waitlist", self.door.lower())
         self.assertIn("waitlist", self.card.lower())
         self.assertIn("password", self.door)
@@ -412,6 +416,9 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotIn("337 NO", self.card)
         self.assertTrue(
             (ROOT / "p" / "cursor-business-pack-waitlist-pointer-20260902-01.md").is_file()
+        )
+        self.assertTrue(
+            (ROOT / "p" / "cursor-business-pack-waitlist-href-20260902-01.md").is_file()
         )
         self.assertNotEqual(block["id"], block["scout_demand_id"])
         self.assertEqual(

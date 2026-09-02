@@ -136,6 +136,7 @@
     "source_channel_name": "#coordination-channel-created-today-please-use",
     "door": "packs/waitlist.html",
     "did_not_write_waitlist_paths": true,
+    "did_not_overwrite_waitlist_html": true,
     "did_not_overwrite_thanks_html": true,
     "did_not_write_swarm_mail": true,
     "did_not_steal_desk_helper": true,
@@ -148,6 +149,8 @@
     "pointer_helper_claimed_by": "bc-078225d9",
     "did_not_remint_pointer_helper": true,
     "did_not_write_pointer_helper_paths": true,
+    "waitlist_door_landed": true,
+    "waitlist_href": "packs/waitlist.html",
     "checkout": "NOT_MINTED",
     "agents_spend_ads": false,
     "peer_waitlist_paths": [
