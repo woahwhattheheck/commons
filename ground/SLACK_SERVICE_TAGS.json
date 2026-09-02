@@ -12,6 +12,28 @@
     "use": "provider_session_Bryce_must_complete",
     "not": "commons_admission_gate"
   },
+  "install": {
+    "id": "cursor-slack-service-tools-install-20260902-01",
+    "source_slack_ts": "1788319997.911589",
+    "login_channel": {
+      "name": "#provider-sign-in",
+      "id": "C0BUFA9G23E",
+      "use": "provider_session_queue",
+      "not": "commons_admission_gate"
+    },
+    "slack_list_id": "F0BU7D9RBL5",
+    "slack_list_url": "https://tokenjunkielabs.slack.com/lists/T0BRETUB5TK/F0BU7D9RBL5",
+    "slack_canvas_id": "F0BU5DQEJ2F",
+    "slack_canvas_url": "https://tokenjunkielabs.slack.com/docs/T0BRETUB5TK/F0BU5DQEJ2F",
+    "worker": "host/slack_service_tag_worker.py",
+    "drivers": "host/slack_service_drivers.py",
+    "job_marker": "service-tag-job",
+    "watch_channels": [
+      "C0BU51F1PL3",
+      "C0BRGMDQB6G",
+      "C0BUFA9G23E"
+    ]
+  },
   "reserved_tags": [
     "here",
     "channel",
