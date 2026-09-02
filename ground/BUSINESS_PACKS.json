@@ -88,6 +88,9 @@
     "pixel_id": "",
     "agents_spend_ads": false,
     "agents_mint_pixel_id": false,
+    "pixel_gate_pointer": "cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01",
+    "pixel_gate_helper": "host/pack_waitlist_pixel_gate.py",
+    "did_not_overwrite_thanks_html": true,
     "checkout": "NOT_MINTED"
   },
   "operator_day": {
@@ -151,6 +154,14 @@
     "did_not_write_pointer_helper_paths": true,
     "waitlist_door_landed": true,
     "waitlist_href": "packs/waitlist.html",
+    "pixel_gate_pointer": "cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01",
+    "pixel_gate_helper": "host/pack_waitlist_pixel_gate.py",
+    "pixel_gate_receipt": "cursor-pack-waitlist-pixel-gate-20260902-01",
+    "pixel_gate_claimed_by": "bc-31c8ef9a",
+    "pixel_gate_sha": "314cb051e",
+    "did_not_write_pixel_gate_paths": true,
+    "ccpa_opt_out_blocks_thanks_pixels": true,
+    "empty_slots_load_nothing": true,
     "checkout": "NOT_MINTED",
     "agents_spend_ads": false,
     "peer_waitlist_paths": [

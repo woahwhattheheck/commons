@@ -382,6 +382,15 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIs(block["agents_spend_ads"], False)
         self.assertIs(block["agents_mint_pixel_id"], False)
         self.assertIs(block["did_not_remint_scout_demand"], True)
+        self.assertEqual(
+            block["pixel_gate_pointer"],
+            "cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01",
+        )
+        self.assertEqual(
+            block["pixel_gate_helper"],
+            "host/pack_waitlist_pixel_gate.py",
+        )
+        self.assertIs(block["did_not_overwrite_thanks_html"], True)
         self.assertIn("packs/thanks.html", self.door)
         self.assertIn("thank-you door", self.card)
 
@@ -405,6 +414,38 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIs(block["waitlist_door_landed"], True)
         self.assertEqual(block["waitlist_href"], "packs/waitlist.html")
         self.assertIs(block["did_not_overwrite_waitlist_html"], True)
+        self.assertEqual(
+            block["pixel_gate_pointer"],
+            "cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01",
+        )
+        self.assertEqual(
+            block["pixel_gate_helper"],
+            "host/pack_waitlist_pixel_gate.py",
+        )
+        self.assertEqual(
+            block["pixel_gate_receipt"],
+            "cursor-pack-waitlist-pixel-gate-20260902-01",
+        )
+        self.assertEqual(block["pixel_gate_claimed_by"], "bc-31c8ef9a")
+        self.assertEqual(block["pixel_gate_sha"], "314cb051e")
+        self.assertIs(block["did_not_write_pixel_gate_paths"], True)
+        self.assertIs(block["ccpa_opt_out_blocks_thanks_pixels"], True)
+        self.assertIs(block["empty_slots_load_nothing"], True)
+        self.assertNotEqual(block["id"], block["pixel_gate_pointer"])
+        self.assertNotEqual(block["id"], block["pixel_gate_receipt"])
+        self.assertTrue((ROOT / "host" / "pack_waitlist_pixel_gate.py").is_file())
+        self.assertTrue(
+            (ROOT / "p" / "cursor-pack-waitlist-pixel-gate-20260902-01.md").is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertIn("CCPA", self.door)
+        self.assertIn("pack_waitlist_pixel_gate.py", self.door)
         self.assertTrue((ROOT / "packs" / "waitlist.html").is_file())
         self.assertIn('href="./packs/waitlist.html"', self.door)
         self.assertNotIn("<form", self.door)
