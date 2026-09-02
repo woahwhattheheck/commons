@@ -117,6 +117,25 @@ class TestAutogtmSameLoop(unittest.TestCase):
         with self.assertRaises(ValueError):
             loop.load_html("http://example.com", loop.DEFAULT_HTML)
 
+    def test_boards_lists_autogtm_door(self) -> None:
+        boards = (ROOT / "boards.html").read_text(encoding="utf-8")
+        self.assertIn('href="./autogtm.html"', boards)
+        self.assertIn("same loop as Explee", boards)
+
+    def test_peer_ack_does_not_remint_harborline_or_lead(self) -> None:
+        ack = (ROOT / "p/cursor-autogtm-ack-peers-20260902-01.md").read_text(
+            encoding="utf-8"
+        )
+        harbor = (ROOT / "p/cursor-explee-qualify-clone-20260902-01.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("aceb4aead", ack)
+        self.assertIn("cursor-explee-skills-adopt-20260902-01", ack)
+        self.assertIn("did **not** steal", ack)
+        self.assertIn("will **not** remint that id", ack)
+        self.assertIn("/qualify", harbor)
+        self.assertFalse((ROOT / "p/cursor-explee-skills-adopt-20260902-01.md").exists())
+
 
 if __name__ == "__main__":
     unittest.main()
