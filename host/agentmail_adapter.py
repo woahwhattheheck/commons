@@ -17,8 +17,8 @@ from typing import Any
 
 SCHEMA = "commons-agentmail-round-trip/v1"
 ORDER = "agentmail-first-inbox-road-20260901-01"
-CONNECTOR = {"AUTHENTICATED", "AUTHENTICATION_REQUIRED"}
-FALLBACK = {"NOT_NEEDED", "AUTHENTICATED", "AUTHENTICATION_REQUIRED"}
+CONNECTOR = {"AUTHENTICATED", "NEEDS_AUTH"}
+FALLBACK = {"NOT_NEEDED", "AUTHENTICATED", "NEEDS_AUTH"}
 STATES = {
     "inbox": {"NOT_ATTEMPTED", "CREATED", "CREATE_FAILED"},
     "outbound": {"NOT_ATTEMPTED", "PROVIDER_ACCEPTED", "SEND_FAILED"},
@@ -103,7 +103,7 @@ def project_receipt(observation: object) -> dict[str, Any]:
     if agentmail not in CONNECTOR or gmail not in FALLBACK:
         raise AgentMailReceiptError("invalid connector state")
     stages = {name: _stage(name, observation[name]) for name in STAGE_KEYS}
-    if agentmail == "AUTHENTICATION_REQUIRED":
+    if agentmail == "NEEDS_AUTH":
         if any(row["state"] != "NOT_ATTEMPTED" for row in stages.values()):
             raise AgentMailReceiptError("unauthenticated connector cannot claim operations")
         terminal = "BLOCKED_AUTHENTICATION_REQUIRED"

@@ -22,8 +22,8 @@ def blocked() -> dict:
     return {
         "build_order_id": agentmail.ORDER,
         "observed_at": NOW,
-        "agentmail_connector_state": "AUTHENTICATION_REQUIRED",
-        "gmail_fallback_state": "AUTHENTICATION_REQUIRED",
+        "agentmail_connector_state": "NEEDS_AUTH",
+        "gmail_fallback_state": "NEEDS_AUTH",
         "inbox": {"state": "NOT_ATTEMPTED", "occurred_at": None, "provider_inbox_id": None},
         "outbound": {
             "state": "NOT_ATTEMPTED", "occurred_at": None,

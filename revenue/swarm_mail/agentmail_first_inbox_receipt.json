@@ -5,8 +5,8 @@
   "consumer": "COMMONS_TRANSACTION_AND_AGENT_DELIVERY",
   "observed_at": "2026-09-02T01:33:55Z",
   "connectors": {
-    "agentmail": "AUTHENTICATION_REQUIRED",
-    "gmail_inbound_fallback": "AUTHENTICATION_REQUIRED"
+    "agentmail": "NEEDS_AUTH",
+    "gmail_inbound_fallback": "NEEDS_AUTH"
   },
   "inbox": {
     "state": "NOT_ATTEMPTED",
