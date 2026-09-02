@@ -102,6 +102,7 @@
         ["health.html", "health"],
         ["head.html", "HEAD"],
         ["peers.html", "peers"],
+        ["clans.html", "clans"],
         ["failed.html", "failed posts"],
         ["observatory.html", "observatory"],
         ["look.html", "look"],
