@@ -4,6 +4,12 @@
 Bryce / GOAT 1788323099.458239: each customer purchase is a fresh package.
 Do not sell the same assets+ops twice. Marketing uniqueness is only honest
 when the fingerprint is unique. Agents do not spend ads. No fake Stripe URLs.
+
+Bryce / GOAT 1788323180.640899: similar ≠ clone. Shared template_id/vertical
+is not a clone-stamp. Each sold unit is a distinct instance (assets, brand,
+checkout, instructions). Mystery-box pools mix rare valuable ideas; Bryce
+sets the potential value range. Not a lottery / not gambling. Do not invent
+odds tables or fake scarcity.
 """
 from __future__ import annotations
 
@@ -16,6 +22,17 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LAW = ROOT / "ground" / "BUSINESS_PACKS.json"
+
+# Sharing these keys across sales is allowed. They are not the instance.
+SHARED_NOT_CLONE = ("template_id", "vertical", "family", "pack_family")
+INSTANCE_FIELDS = ("assets", "brand", "checkout", "instructions")
+ODDS_KEYS = (
+    "odds",
+    "odds_table",
+    "win_probability",
+    "probability_table",
+    "implied_odds",
+)
 
 
 def load_law(path: Path | None = None) -> dict[str, Any]:
@@ -30,34 +47,47 @@ def _sha256_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
 
 
+def _field_token(pack: dict[str, Any], name: str) -> str:
+    sha = str(pack.get(f"{name}_sha256") or "").strip().lower()
+    if sha:
+        return sha
+    value = pack.get(name)
+    if value is None or value == "":
+        return ""
+    if isinstance(value, (dict, list)):
+        return json.dumps(value, sort_keys=True, separators=(",", ":"))
+    return str(value)
+
+
 def content_fingerprint(pack: dict[str, Any]) -> str:
-    """Hash of assets+ops that must differ between customer purchases."""
-    assets = str(pack.get("assets_sha256") or "").strip().lower()
-    ops = str(pack.get("ops_sha256") or "").strip().lower()
+    """Hash of the sold instance. template_id/vertical are ignored.
+
+    Prefer the distinct-instance fields (assets, brand, checkout, instructions).
+    Ops still counts when present. Legacy sales with only assets+ops keep that
+    fingerprint so the fresh-pack law still stamps identical copies.
+    """
+    tokens = {name: _field_token(pack, name) for name in INSTANCE_FIELDS}
+    ops = _field_token(pack, "ops")
+    if all(tokens.values()):
+        parts = [tokens[name] for name in INSTANCE_FIELDS]
+        if ops:
+            parts.append(ops)
+        return _sha256_text("\n".join(parts))
+    assets = tokens["assets"]
     if assets and ops:
         return _sha256_text(assets + "\n" + ops)
-    blob_parts: list[str] = []
-    for key in ("assets", "ops"):
-        value = pack.get(key)
-        if value is None or value == "":
-            continue
-        if isinstance(value, (dict, list)):
-            blob_parts.append(json.dumps(value, sort_keys=True, separators=(",", ":")))
-        else:
-            blob_parts.append(str(value))
-    if len(blob_parts) < 2:
-        return ""
-    return _sha256_text("\n".join(blob_parts))
+    return ""
 
 
 def classify_sales(sales: list[dict[str, Any]] | None) -> dict[str, Any]:
-    """Ledger of customer purchases. Same fingerprint on two sales is CLONE_STAMP."""
+    """Ledger of customer purchases. Same instance fingerprint on two sales is CLONE_STAMP."""
     rows = sales if isinstance(sales, list) else []
     by_sale: dict[str, str] = {}
     by_fp: dict[str, list[str]] = {}
     missing: list[str] = []
     conflicts: list[str] = []
     classified: list[dict[str, Any]] = []
+    raw_by_id: dict[str, dict[str, Any]] = {}
     for raw in rows:
         if not isinstance(raw, dict):
             continue
@@ -66,6 +96,7 @@ def classify_sales(sales: list[dict[str, Any]] | None) -> dict[str, Any]:
             missing.append("(blank sale_id)")
             continue
         fingerprint = content_fingerprint(raw)
+        raw_by_id[sale_id] = raw
         if not fingerprint:
             missing.append(sale_id)
             classified.append(
@@ -74,6 +105,8 @@ def classify_sales(sales: list[dict[str, Any]] | None) -> dict[str, Any]:
                     "verdict": "MISSING_FINGERPRINT",
                     "fingerprint": "",
                     "marketing_uniqueness_ok": False,
+                    "template_id": str(raw.get("template_id") or ""),
+                    "vertical": str(raw.get("vertical") or ""),
                 }
             )
             continue
@@ -96,6 +129,7 @@ def classify_sales(sales: list[dict[str, Any]] | None) -> dict[str, Any]:
             verdict = "CLONE_STAMP"
         else:
             verdict = "UNIQUE"
+        raw = raw_by_id.get(sale_id) or {}
         classified.append(
             {
                 "sale_id": sale_id,
@@ -103,6 +137,8 @@ def classify_sales(sales: list[dict[str, Any]] | None) -> dict[str, Any]:
                 "fingerprint": fingerprint,
                 "shared_with": [s for s in shared if s != sale_id],
                 "marketing_uniqueness_ok": verdict == "UNIQUE",
+                "template_id": str(raw.get("template_id") or ""),
+                "vertical": str(raw.get("vertical") or ""),
             }
         )
     clone_sales = {s for pair in clone_pairs for s in pair}
@@ -112,8 +148,14 @@ def classify_sales(sales: list[dict[str, Any]] | None) -> dict[str, Any]:
         "commons_admission": False,
         "clone_stamp": bool(clone_pairs),
         "each_purchase": "fresh_package",
+        "similar_is_not_clone": True,
+        "shared_not_clone": list(SHARED_NOT_CLONE),
+        "instance_fields": list(INSTANCE_FIELDS),
         "marketing": "bryce_only",
         "no_fake_stripe_urls": True,
+        "not_lottery": True,
+        "not_gambling": True,
+        "fake_scarcity": False,
         "sales": classified,
         "clone_pairs": clone_pairs,
         "conflicts": conflicts,
@@ -133,10 +175,74 @@ def marketing_uniqueness_ok(pack: dict[str, Any], sales: list[dict[str, Any]]) -
     return False
 
 
+def _nonempty(value: Any) -> bool:
+    if value is None or value is False:
+        return False
+    if value == "" or value == {} or value == []:
+        return False
+    return True
+
+
+def _lottery_framing(data: dict[str, Any]) -> bool:
+    if data.get("lottery") is True or data.get("is_lottery") is True:
+        return True
+    if data.get("gambling") is True or data.get("is_gambling") is True:
+        return True
+    if data.get("not_lottery") is True and data.get("not_gambling") is True:
+        return False
+    framing = str(data.get("framing") or "").lower()
+    return "lottery" in framing or "gambling" in framing
+
+
+def classify_mystery_pool(pool: dict[str, Any] | None) -> dict[str, Any]:
+    """Mystery-nuts pool. Bryce owns the value range. Not a Commons gate.
+
+    Invented odds tables, lottery/gambling framing, and fake scarcity are
+    flagged. They do not become admission locks. A missing dollar range is
+    not invented; a posted range without Bryce as owner is.
+    """
+    data = pool if isinstance(pool, dict) else {}
+    invented_odds = any(_nonempty(data.get(key)) for key in ODDS_KEYS)
+    owner = str(data.get("value_range_owner") or data.get("value_range_set_by") or "").strip().upper()
+    value_range = data.get("value_range")
+    range_claimed_without_bryce = _nonempty(value_range) and owner != "BRYCE"
+    value_range_owner_ok = owner == "BRYCE"
+    fake_scarcity = data.get("fake_scarcity") is True
+    lottery_framing = _lottery_framing(data)
+    if invented_odds:
+        verdict = "INVENTED_ODDS"
+    elif lottery_framing:
+        verdict = "LOTTERY_FRAMING"
+    elif fake_scarcity:
+        verdict = "FAKE_SCARCITY"
+    elif range_claimed_without_bryce:
+        verdict = "VALUE_RANGE_NOT_BRYCE"
+    else:
+        verdict = "MYSTERY_OK"
+    return {
+        "gate": False,
+        "commons_admission": False,
+        "verdict": verdict,
+        "invented_odds": invented_odds,
+        "lottery_framing": lottery_framing,
+        "fake_scarcity": fake_scarcity,
+        "not_lottery": True,
+        "not_gambling": True,
+        "value_range_owner": owner or "",
+        "value_range_owner_ok": value_range_owner_ok,
+        "value_range_set_by": "BRYCE",
+        "marketing": "bryce_only",
+        "agents_invent_odds_tables": False,
+        "nuts": "rare_extremely_valuable_ideas",
+        "framing": "fun_generous_gesture_tokenjunkielabs",
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sales-json", default="", help="JSON list of sale objects")
     parser.add_argument("--sales-file", default="", help="path to JSON list of sales")
+    parser.add_argument("--pool-json", default="", help="JSON mystery-pool object")
     parser.add_argument("--law", default="", help="override law path")
     args = parser.parse_args(argv)
     law = load_law(Path(args.law) if args.law else None)
@@ -151,7 +257,13 @@ def main(argv: list[str] | None = None) -> int:
             sales = loaded
     result = classify_sales(sales)
     result["law_id"] = law.get("id")
+    compose = law.get("compose") if isinstance(law.get("compose"), dict) else {}
+    result["composed_id"] = compose.get("id")
     result["source_channel_id"] = law.get("source_channel_id")
+    if args.pool_json:
+        result["mystery"] = classify_mystery_pool(json.loads(args.pool_json))
+    else:
+        result["mystery"] = classify_mystery_pool(law.get("mystery") if isinstance(law.get("mystery"), dict) else {})
     print(json.dumps(result, indent=2))
     print("", end="")
     return 0

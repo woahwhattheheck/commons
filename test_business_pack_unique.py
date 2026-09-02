@@ -34,6 +34,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertEqual(self.law["scaffold_owned_by"], "GOAT")
         self.assertNotIn("337 NO", json.dumps(self.law))
         self.assertNotIn("337 NO", self.card)
+        self.assertNotIn("337 NO", self.door)
 
     def test_two_sales_same_assets_and_ops_are_clone_stamp(self) -> None:
         sales = [
@@ -111,6 +112,139 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotIn("login form", self.door.lower())
         self.assertIn("password", self.door.lower())
         self.assertIn("BUSINESS_PACKS.json", self.door)
+        self.assertIn("similar", self.door.lower())
+        self.assertIn("mystery", self.door.lower())
+        self.assertIn("not a lottery", self.door.lower())
+        self.assertIn("odds", self.door.lower())
+        self.assertIn("similar is not a clone", self.card.lower())
+        self.assertIn("mystery", self.card.lower())
+        self.assertNotIn("stripe.com", self.door.lower())
+
+    def test_shared_template_and_vertical_are_not_clone_when_instance_differs(self) -> None:
+        sales = [
+            {
+                "sale_id": "sale-a",
+                "template_id": "yard-card",
+                "vertical": "print",
+                "assets_sha256": "aa" * 32,
+                "brand": "acme-lawn",
+                "checkout": "owner-ck-a",
+                "instructions": "acme-start",
+                "ops_sha256": "bb" * 32,
+            },
+            {
+                "sale_id": "sale-b",
+                "template_id": "yard-card",
+                "vertical": "print",
+                "assets_sha256": "aa" * 32,
+                "brand": "beta-cards",
+                "checkout": "owner-ck-b",
+                "instructions": "beta-start",
+                "ops_sha256": "bb" * 32,
+            },
+        ]
+        result = unique.classify_sales(sales)
+        self.assertIs(result["similar_is_not_clone"], True)
+        self.assertFalse(result["clone_stamp"])
+        self.assertEqual(result["unique_count"], 2)
+        self.assertTrue(unique.marketing_uniqueness_ok(sales[0], sales))
+        self.assertEqual(result["sales"][0]["template_id"], "yard-card")
+        self.assertIn("template_id", result["shared_not_clone"])
+        self.assertIn("vertical", result["shared_not_clone"])
+
+    def test_same_instance_fields_are_clone_even_with_different_template(self) -> None:
+        sales = [
+            {
+                "sale_id": "sale-a",
+                "template_id": "yard-card",
+                "vertical": "print",
+                "assets_sha256": "aa" * 32,
+                "brand": "acme-lawn",
+                "checkout": "owner-ck-a",
+                "instructions": "acme-start",
+                "ops_sha256": "bb" * 32,
+            },
+            {
+                "sale_id": "sale-b",
+                "template_id": "other-family",
+                "vertical": "print",
+                "assets_sha256": "aa" * 32,
+                "brand": "acme-lawn",
+                "checkout": "owner-ck-a",
+                "instructions": "acme-start",
+                "ops_sha256": "bb" * 32,
+            },
+        ]
+        result = unique.classify_sales(sales)
+        self.assertTrue(result["clone_stamp"])
+        verdicts = {row["sale_id"]: row["verdict"] for row in result["sales"]}
+        self.assertEqual(verdicts["sale-a"], "CLONE_STAMP")
+        self.assertEqual(verdicts["sale-b"], "CLONE_STAMP")
+        self.assertFalse(unique.marketing_uniqueness_ok(sales[0], sales))
+
+    def test_compose_similar_mystery_does_not_remint_unique_id(self) -> None:
+        compose = self.law["compose"]
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(compose["id"], "cursor-business-packs-similar-mystery-20260902-01")
+        self.assertEqual(compose["source_slack_ts"], "1788323180.640899")
+        self.assertEqual(self.law["uniqueness"]["instance_distinct"], ["assets", "brand", "checkout", "instructions"])
+        self.assertEqual(self.law["uniqueness"]["shared_not_clone"], ["template_id", "vertical"])
+        self.assertIs(self.law["similar_is_not_clone"], True)
+        self.assertIs(self.law["mystery"]["not_lottery"], True)
+        self.assertIs(self.law["mystery"]["not_gambling"], True)
+        self.assertIs(self.law["mystery"]["fake_scarcity"], False)
+        self.assertIs(self.law["mystery"]["invented_odds"], False)
+        self.assertIsNone(self.law["mystery"]["value_range"])
+        self.assertEqual(self.law["mystery"]["value_range_set_by"], "BRYCE")
+
+    def test_mystery_pool_ok_without_invented_odds(self) -> None:
+        pool = {
+            "not_lottery": True,
+            "not_gambling": True,
+            "fake_scarcity": False,
+            "value_range_owner": "BRYCE",
+            "value_range": "OWNER_PROVIDED_RANGE",
+            "framing": "fun generous gesture from TokenJunkieLabs",
+        }
+        result = unique.classify_mystery_pool(pool)
+        self.assertIs(result["gate"], False)
+        self.assertIs(result["commons_admission"], False)
+        self.assertEqual(result["verdict"], "MYSTERY_OK")
+        self.assertFalse(result["invented_odds"])
+        self.assertFalse(result["lottery_framing"])
+        law_pool = unique.classify_mystery_pool(self.law["mystery"])
+        self.assertEqual(law_pool["verdict"], "MYSTERY_OK")
+        self.assertFalse(law_pool["invented_odds"])
+
+    def test_invented_odds_and_lottery_framing_are_flagged_not_gates(self) -> None:
+        odds = unique.classify_mystery_pool(
+            {
+                "odds_table": {"nuts": "do-not-invent"},
+                "not_lottery": True,
+                "not_gambling": True,
+                "value_range_owner": "BRYCE",
+            }
+        )
+        self.assertEqual(odds["verdict"], "INVENTED_ODDS")
+        self.assertTrue(odds["invented_odds"])
+        self.assertIs(odds["gate"], False)
+        lottery = unique.classify_mystery_pool({"framing": "this is a lottery jackpot"})
+        self.assertEqual(lottery["verdict"], "LOTTERY_FRAMING")
+        self.assertTrue(lottery["lottery_framing"])
+        self.assertIs(lottery["commons_admission"], False)
+        scarcity = unique.classify_mystery_pool(
+            {
+                "fake_scarcity": True,
+                "not_lottery": True,
+                "not_gambling": True,
+                "value_range_owner": "BRYCE",
+            }
+        )
+        self.assertEqual(scarcity["verdict"], "FAKE_SCARCITY")
+        stolen_range = unique.classify_mystery_pool(
+            {"value_range": "OWNER_PROVIDED_RANGE", "value_range_owner": "AGENT"}
+        )
+        self.assertEqual(stolen_range["verdict"], "VALUE_RANGE_NOT_BRYCE")
 
     def test_cli_json(self) -> None:
         payload = json.dumps(
@@ -135,8 +269,12 @@ class BusinessPackUniqueTest(unittest.TestCase):
         )
         data = json.loads(proc.stdout)
         self.assertEqual(data["law_id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(data["composed_id"], "cursor-business-packs-similar-mystery-20260902-01")
         self.assertEqual(data["sales"][0]["verdict"], "UNIQUE")
         self.assertIs(data["commons_admission"], False)
+        self.assertIs(data["similar_is_not_clone"], True)
+        self.assertEqual(data["mystery"]["verdict"], "MYSTERY_OK")
+        self.assertIs(data["not_lottery"], True)
 
 
 if __name__ == "__main__":
