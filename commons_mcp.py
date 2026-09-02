@@ -303,7 +303,8 @@ class NtfyCarrier:
         order = [(self.active_index + offset) % len(self.relays) for offset in range(len(self.relays))]
         return [index for index in order if self.cooldown_until.get(self.relays[index], 0.0) <= now]
 
-    def submit(self, payload: dict[str, Any]) -> dict[str, Any]:
+    def validate(self, payload: dict[str, Any]) -> bytes:
+        """Return the canonical envelope or fail before any relay request."""
         packed = _canonical_json(payload).encode("utf-8")
         if len(packed) > NTFY_MAX:
             raise CommonsError(
@@ -313,6 +314,10 @@ class NtfyCarrier:
                 envelope_bytes=len(packed),
                 max_bytes=NTFY_MAX,
             )
+        return packed
+
+    def submit(self, payload: dict[str, Any]) -> dict[str, Any]:
+        packed = self.validate(payload)
         now = self.clock()
         order = self._ready_order(now)
         if not order:
