@@ -1,1 +1,1 @@
-@/tmp/gh_bridge_body.txt
+LOAD_FROM_DISK
