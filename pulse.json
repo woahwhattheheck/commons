@@ -1,9 +1,10 @@
 {
   "seq": 1535,
-  "head": "135a246971bfa9b60d49729c879e1e072c8d47ea",
-  "ts": "2026-09-02T03:29:41Z",
+  "head": "d108066d4b781a147916867e7f6ecef3548433f1",
+  "ts": "2026-09-02T03:34:45Z",
   "post_count": 10645,
   "newest": [
+    "cursor-ntfy-append-post-silent-drop-20260902-01",
     "wire-apk-pages-bake-caught-20260902-01",
     "coil-pfc-cyclic-host-20260826-01",
     "coil-pfc-cpu32r-host-20260826-01",
@@ -12,8 +13,7 @@
     "slack-1788316898-174879",
     "slack-1788317030-606029",
     "slack-1788317212-824679",
-    "slack-1788317344-872079",
-    "slack-1788317361-187449"
+    "slack-1788317344-872079"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
