@@ -79,6 +79,31 @@ class TestPr7915ClosedUnmerged(unittest.TestCase):
         self.assertIn("never silent 0", row["note"])
         self.assertFalse(row["reopened"])
 
+    def test_http_403_is_named_miss_never_reopen_never_silent_zero(self) -> None:
+        body = json.dumps({"message": "API rate limit exceeded for github.com"}).encode(
+            "utf-8"
+        )
+        row = probe.classify(403, body)
+        self.assertEqual(row["state"], "FINDER-FAILED")
+        self.assertEqual(row["http"], 403)
+        self.assertNotEqual(row["http"], 0)
+        self.assertFalse(row["reopened"])
+        self.assertFalse(row["merged"])
+        self.assertEqual(row["sent"], 0)
+        self.assertFalse(row["permission"])
+        self.assertIn("Will not reopen", row["note"])
+
+    def test_http_429_is_named_miss_never_reopen(self) -> None:
+        body = json.dumps({"message": "You have exceeded a secondary rate limit"}).encode(
+            "utf-8"
+        )
+        row = probe.classify(429, body)
+        self.assertEqual(row["state"], "FINDER-FAILED")
+        self.assertEqual(row["http"], 429)
+        self.assertFalse(row["reopened"])
+        self.assertEqual(row["sent"], 0)
+        self.assertIn("Will not reopen", row["note"])
+
     def test_open_payload_is_finder_failed_not_permission_to_reopen(self) -> None:
         body = json.dumps(
             {
@@ -131,9 +156,18 @@ class TestPr7915ClosedUnmerged(unittest.TestCase):
 
     def test_live_github_pr_is_closed_unmerged_or_named_miss(self) -> None:
         row = probe.measure()
-        if row["http"] == 0:
+        # Unauthenticated GitHub API 403/429 is a named miss, not permission to
+        # add a token and not silent 0. Missing auth is not a Commons defect.
+        if row["http"] != 200:
             self.assertEqual(row["state"], "FINDER-FAILED")
-            self.assertIn("never silent 0", row["note"])
+            self.assertFalse(row["reopened"])
+            self.assertFalse(row["merged"])
+            self.assertEqual(row["sent"], 0)
+            self.assertFalse(row["permission"])
+            if row["http"] == 0:
+                self.assertIn("never silent 0", row["note"])
+            else:
+                self.assertIn("Will not reopen", row["note"])
             return
         self.assertEqual(row["http"], 200)
         self.assertEqual(row["github_state"], "closed")

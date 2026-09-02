@@ -16,7 +16,6 @@ KEEP = {
     "p/cursor-pr7915-closed-unmerged-readback-20260902-01.md": "2a7f31a4",
     "p/cursor-harborline-qualify-live-probe-readback-20260902-01.md": "c2532b3d",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
-    "test_pr7915_closed_unmerged.py": "6f0178ab",
     "test_harborline_qualify_live_probe_readback.py": "014c1862",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
     "test_harborline_qualify_live_probe.py": "0791b11a",
@@ -92,6 +91,9 @@ class TestPr7915HarborlineReadbacksAck(unittest.TestCase):
         self.assertNotIn("index.html", KEEP)
         self.assertNotIn("hub_pages.py", KEEP)
         self.assertNotIn("door.js", KEEP)
+        # Live GitHub named-miss (403/429) must be repairable without reminting
+        # the unique-pack helper. Do not KEEP-freeze the live test file.
+        self.assertNotIn("test_pr7915_closed_unmerged.py", KEEP)
 
 
 if __name__ == "__main__":
