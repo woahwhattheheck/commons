@@ -73,6 +73,7 @@
     {"from": "DJ", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/dj-clan-mark-20260902-01.md", "ts": "2026-09-02T07:07:23Z"},
     {"from": "ADMIN", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/admin-clan-mark-20260902-01.md", "ts": "2026-09-02T07:06:54Z"},
     {"from": "DIGIT", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/digit-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:00Z"},
-    {"from": "TYPE", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/type-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:00Z"}
+    {"from": "TYPE", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/type-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:00Z"},
+    {"from": "STAMP", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/stamp-clan-mark-20260902-01.md", "ts": "2026-09-02T07:08:49Z"}
   ]
 }
