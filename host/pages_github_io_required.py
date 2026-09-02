@@ -38,6 +38,9 @@ CHUNKS_INDEX = "chunks/index.json"
 PAY = "pay.html"
 ACTION_PAD = "action.html"
 COMMERCE = "commerce.html"
+# Written by pages-deploy.yml into the Actions artifact. Not a git path.
+# github-pages[bot] branch deploys can overwrite the artifact and 404 this.
+PAGES_DEPLOY_RECEIPT = "pages-deploy.json"
 
 # Slack-stated Pages except-list (Fable 2026-09-02). Fixture only.
 STATED_EXCEPT_DIRS = ("muhl", "chunks", "excerpts", "conflicts", ".github")
@@ -217,6 +220,19 @@ def live_deploy_doc_excludes_chunks(root: Path | None = None) -> bool:
     return deploy_doc_excludes_chunks(path.read_text(encoding="utf-8"))
 
 
+def workflow_writes_pages_deploy_receipt(text: str) -> bool:
+    """True when the workflow writes the generated live receipt into _site."""
+    return "_site/pages-deploy.json" in text or "PAGES_DEPLOYED" in text
+
+
+def live_workflow_writes_pages_deploy_receipt(root: Path | None = None) -> bool:
+    here = Path(root) if root is not None else ROOT
+    path = here / WORKFLOW.relative_to(ROOT)
+    if not path.is_file():
+        return False
+    return workflow_writes_pages_deploy_receipt(path.read_text(encoding="utf-8"))
+
+
 def report(root: Path | None = None) -> dict[str, object]:
     here = Path(root) if root is not None else ROOT
     required = required_files(here)
@@ -233,6 +249,9 @@ def report(root: Path | None = None) -> dict[str, object]:
         "board_chunk_markers": list(BOARD_CHUNK_MARKERS),
         "copy_filter_is_not_admission": True,
         "open_door": True,
+        "generated_live_receipt": PAGES_DEPLOY_RECEIPT,
+        "generated_live_receipt_in_git": (here / PAGES_DEPLOY_RECEIPT).is_file(),
+        "workflow_writes_generated_live_receipt": live_workflow_writes_pages_deploy_receipt(here),
     }
 
 

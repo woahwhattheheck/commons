@@ -112,7 +112,14 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         omitted = required.live_workflow_omits(ROOT)
         self.assertEqual(omitted, ())
 
-    def test_cli_json_names_the_gaps_and_stays_an_open_door(self) -> None:
+    def test_generated_pages_deploy_receipt_is_not_a_git_path(self) -> None:
+        """Actions writes pages-deploy.json; git does not carry it. Live 404 is overwrite."""
+        self.assertFalse((ROOT / required.PAGES_DEPLOY_RECEIPT).is_file())
+        self.assertNotIn(required.PAGES_DEPLOY_RECEIPT, required.required_files(ROOT))
+        self.assertTrue(required.live_workflow_writes_pages_deploy_receipt(ROOT))
+        self.assertFalse(
+            required.workflow_writes_pages_deploy_receipt("rsync -a ./ _site/")
+        )
         payload = required.report(ROOT)
         self.assertTrue(payload["open_door"])
         self.assertTrue(payload["copy_filter_is_not_admission"])
@@ -121,6 +128,10 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertIn(required.SEED0, payload["stated_except_would_omit"])
         self.assertIn(required.CHUNKS_INDEX, payload["stated_except_would_omit"])
         self.assertNotIn(required.EXPANDING_SEED, payload["stated_except_would_omit"])
+        self.assertEqual(payload["generated_live_receipt"], required.PAGES_DEPLOY_RECEIPT)
+        self.assertIs(payload["generated_live_receipt_in_git"], False)
+        self.assertIs(payload["workflow_writes_generated_live_receipt"], True)
+        self.assertNotIn(required.PAGES_DEPLOY_RECEIPT, payload["required"])
 
     def test_peer_keep_map_covers_derived_required_files(self) -> None:
         keep_map = required.load_keep_map(ROOT)
