@@ -58,6 +58,8 @@
   }
   function tipPayDoor() {
     var path = (typeof window !== "undefined" && window.location && window.location.pathname) || "";
+    var root = typeof document !== "undefined" ? document.documentElement : null;
+    if (root && root.getAttribute("data-checkout-first") === "1") return true;
     return /(?:^|\/)(?:tips|pay)\.html$/i.test(path);
   }
   function fillSlot(slot, listing, snapshot, funnel) {
