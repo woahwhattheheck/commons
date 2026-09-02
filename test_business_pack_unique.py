@@ -466,6 +466,13 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIs(block["did_not_steal_desk_helper"], True)
         self.assertIs(block["did_not_wrap_harborline"], True)
         self.assertIs(block["did_not_write_plant_instance"], True)
+        self.assertEqual(block["shared_desk_helper"], "host/business_pack_desk_instance.py")
+        self.assertEqual(block["shared_desk_helper_owner"], "TALLY")
+        self.assertEqual(
+            block["shared_desk_helper_pointer"],
+            "cursor-business-pack-shared-desk-helper-pointer-20260902-01",
+        )
+        self.assertEqual(block["harborline_wrap_sha"], "58fef5dd3")
         self.assertEqual(block["checkout"], "NOT_MINTED")
         doors = [row["door"] for row in block["landed"]]
         self.assertEqual(
@@ -485,8 +492,20 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIn("password", self.door)
         self.assertNotIn("<form", self.door)
         self.assertNotIn("337 NO", json.dumps(block))
+        helpers = [row.get("helper") for row in block["landed"] if row["tier"] == "DESK"]
+        self.assertEqual(
+            helpers,
+            [
+                "host/business_pack_desk_instance.py",
+                "host/business_pack_desk_instance.py",
+            ],
+        )
+        self.assertIn("host/business_pack_desk_instance.py", self.door)
         self.assertTrue(
             (ROOT / "p" / "cursor-business-pack-instance-catalog-20260902-01.md").is_file()
+        )
+        self.assertTrue(
+            (ROOT / "p" / "cursor-business-pack-shared-desk-helper-pointer-20260902-01.md").is_file()
         )
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:

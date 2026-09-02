@@ -171,6 +171,10 @@
     "did_not_steal_desk_helper": true,
     "did_not_wrap_harborline": true,
     "did_not_write_plant_instance": true,
+    "shared_desk_helper": "host/business_pack_desk_instance.py",
+    "shared_desk_helper_owner": "TALLY",
+    "shared_desk_helper_pointer": "cursor-business-pack-shared-desk-helper-pointer-20260902-01",
+    "harborline_wrap_sha": "58fef5dd3",
     "checkout": "NOT_MINTED",
     "agents_spend_ads": false,
     "landed": [
@@ -197,7 +201,8 @@
         "price": 200,
         "door": "packs/desk-website-service-20260902-01/door.html",
         "receipt": "cursor-desk-website-harborline-20260902-01",
-        "owned_by": "bc-31c8ef9a"
+        "owned_by": "bc-31c8ef9a",
+        "helper": "host/business_pack_desk_instance.py"
       }
     ]
   },
