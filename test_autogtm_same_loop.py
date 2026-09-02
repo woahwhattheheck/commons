@@ -129,12 +129,19 @@ class TestAutogtmSameLoop(unittest.TestCase):
         harbor = (ROOT / "p/cursor-explee-qualify-clone-20260902-01.md").read_text(
             encoding="utf-8"
         )
+        lead = ROOT / "p/cursor-explee-skills-adopt-20260902-01.md"
         self.assertIn("aceb4aead", ack)
         self.assertIn("cursor-explee-skills-adopt-20260902-01", ack)
         self.assertIn("did **not** steal", ack)
         self.assertIn("will **not** remint that id", ack)
         self.assertIn("/qualify", harbor)
-        self.assertFalse((ROOT / "p/cursor-explee-skills-adopt-20260902-01.md").exists())
+        # LEAD unique leftover landed unread. "Will not remint that id" is not
+        # "LEAD receipt must stay absent." Absence pin went red at #8289.
+        self.assertTrue(lead.exists())
+        lead_text = lead.read_text(encoding="utf-8")
+        self.assertIn("Sheshiyer", lead_text)
+        self.assertIn("4908bce4", lead_text)
+        self.assertIn("bdfc9240e", lead_text)
 
     def test_composes_website_people_email_book_extract(self) -> None:
         row = loop.measure(
