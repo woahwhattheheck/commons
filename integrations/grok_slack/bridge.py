@@ -671,6 +671,21 @@ def grokcom_capacity_from_env(env: dict[str, str] | None = None) -> dict[str, st
     }
 
 
+def grokcom_capacity_allows_submit(capacity: dict[str, Any] | None) -> bool:
+    """True only with observed AVAILABLE evidence. Never infers capacity from credentials.
+
+    Applied by the Slack bridge before public MCP intake and before fire_action so a
+    stale deployed route_grokcom_revenue_work cannot enqueue grok.com work.
+    """
+    row = dict(capacity or {})
+    state = str(row.get("state") or "UNKNOWN").strip().upper()
+    if state not in {"AVAILABLE", "EXHAUSTED", "UNKNOWN"}:
+        state = "UNKNOWN"
+    evidence = str(row.get("evidence") or "").strip()
+    observed_at = str(row.get("observed_at") or "").strip()
+    return state == "AVAILABLE" and bool(evidence) and bool(observed_at)
+
+
 class BridgeStore:
     """Crash-recovery routing state. Content and secrets are never stored."""
 
@@ -1676,6 +1691,8 @@ class GrokSlackBridge:
                 return {"ok": True, "state": row.phase, "submit": False}
             if row.phase == "FAILED":
                 return self._resume_failed_rejection(row)
+            if row.phase == "WAITING_CAPACITY":
+                return {"ok": True, "state": "WAITING_CAPACITY", "submit": False}
             if row.phase in POST_SUBMIT_PHASES:
                 return self._resume_output_only(row)
             return self._run_claimed(event_id, contract)
@@ -1699,6 +1716,13 @@ class GrokSlackBridge:
 
     def _run_claimed(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
         self._active_event_id = event_id
+        if not grokcom_capacity_allows_submit(self.grokcom_capacity):
+            self.store.set_phase(event_id, "WAITING_CAPACITY")
+            return {
+                "ok": True,
+                "state": "WAITING_CAPACITY",
+                "submit": False,
+            }
         packet = self._intake(event_id, contract)
         if packet.get("state") == "WAITING_CAPACITY":
             self.store.set_phase(event_id, "WAITING_CAPACITY")
@@ -1786,6 +1810,15 @@ class GrokSlackBridge:
         return load_orchestrate()(arguments)
 
     def _fire_once(self, event_id: str, job_id: str, arguments: dict[str, Any]) -> dict[str, Any]:
+        if not grokcom_capacity_allows_submit(self.grokcom_capacity):
+            self.store.set_phase(event_id, "WAITING_CAPACITY")
+            return {
+                "ok": True,
+                "state": "WAITING_CAPACITY",
+                "job_id": job_id,
+                "submit": False,
+                "kind": "waiting_capacity",
+            }
         row = self.store.get(event_id)
         if row and row.phase in POST_SUBMIT_PHASES:
             return {"ok": True, "state": "SUBMITTED", "job_id": job_id, "submit": False}

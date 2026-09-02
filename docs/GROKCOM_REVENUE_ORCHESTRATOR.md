@@ -76,6 +76,11 @@ The production bridge reads the same descriptive state from
 cannot enqueue provider work. These values report capacity only; they contain
 no provider credential and create no admission control.
 
+The Slack bridge applies that gate locally before public MCP intake and before
+`fire_action`. A deployed `route_grokcom_revenue_work` that still returns
+`GROKCOM_WORK` without observed capacity cannot enqueue grok.com work or post a
+`DURABILITY_NEVER_APPEARED` rejection while capacity is unverified or exhausted.
+
 ## Build and review loop
 
 1. `INTAKE` returns `GROKCOM_WORK`, a `QUEUED` Slack acknowledgement, and an
