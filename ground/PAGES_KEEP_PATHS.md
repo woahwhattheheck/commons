@@ -26,6 +26,10 @@ Tracked main is near the 1 GB Pages cap. Reasonable excludes for an allowlisted
 **not** an exclude, plus `excerpts/`, `conflicts/`, `.github/`, `.git`. Exact
 exclude set is Fable's deploy claim.
 
+## Deploy-doc guard
+
+If `ground/PAGES_DEPLOY.md` exists, it must **not** list `chunks/` under an `except` / allowlist exclusion. The workflow may keep `chunks/` while the card still says exclude — that drift bricks `board.js` if someone aligns the workflow to the card. Helper: `host/pages_github_io_required.py` `deploy_doc_excludes_chunks` / `live_deploy_doc_excludes_chunks`.
+
 ## Receipt
 
 Machine map: [PAGES_KEEP_PATHS.json](./PAGES_KEEP_PATHS.json).

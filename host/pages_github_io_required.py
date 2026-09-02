@@ -19,6 +19,7 @@ from typing import Iterable
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOW = ROOT / ".github" / "workflows" / "pages-deploy.yml"
+DEPLOY_DOC = ROOT / "ground" / "PAGES_DEPLOY.md"
 BOARD_JS = ROOT / "board.js"
 FREE_SAMPLE = ROOT / "muhlnickel-free-sample.html"
 SALES_PACK = ROOT / "revenue" / "muhlnickel_free_sample" / "sales_pack.json"
@@ -151,6 +152,42 @@ def live_workflow_omits(root: Path | None = None) -> tuple[str, ...]:
     return tuple(rel for rel in required_files(here) if workflow_omits(text, rel))
 
 
+_EXCEPT_THEN_CHUNKS = re.compile(
+    r"""except[\s\S]{0,500}?`chunks/`""",
+    re.IGNORECASE,
+)
+_CHUNKS_MUST_KEEP = re.compile(
+    r"""`chunks/`[^\n]{0,80}\b(must|MUST)\b[^\n]{0,40}\b(stay|kept|keep)\b"""
+    r"""|chunks/\s+MUST\s+stay"""
+    r"""|chunks/\s+must\s+stay""",
+    re.IGNORECASE,
+)
+
+
+def deploy_doc_excludes_chunks(text: str) -> bool:
+    """True when deploy prose lists chunks/ under an allowlist exclusion.
+
+    Fable/GOAT PR #7391 workflow keeps chunks/; the companion PAGES_DEPLOY.md
+    draft still named chunks/ after **except**. That doc drift would brick
+    board.js after flip if someone "fixed" the workflow to match the card.
+    """
+    if "`chunks/`" not in text and "chunks/" not in text.lower():
+        return False
+    if not _EXCEPT_THEN_CHUNKS.search(text):
+        return False
+    if _CHUNKS_MUST_KEEP.search(text):
+        return False
+    return True
+
+
+def live_deploy_doc_excludes_chunks(root: Path | None = None) -> bool:
+    here = Path(root) if root is not None else ROOT
+    path = here / DEPLOY_DOC.relative_to(ROOT)
+    if not path.is_file():
+        return False
+    return deploy_doc_excludes_chunks(path.read_text(encoding="utf-8"))
+
+
 def report(root: Path | None = None) -> dict[str, object]:
     here = Path(root) if root is not None else ROOT
     required = required_files(here)
@@ -160,7 +197,9 @@ def report(root: Path | None = None) -> dict[str, object]:
         "stated_except_would_omit": list(stated_except_omits(here)),
         "live_workflow_would_omit": list(live_workflow_omits(here)),
         "uncovered_by_keep_map": list(uncovered_by_keep_map(here)),
+        "deploy_doc_excludes_chunks": live_deploy_doc_excludes_chunks(here),
         "workflow_present": (here / WORKFLOW.relative_to(ROOT)).is_file(),
+        "deploy_doc_present": (here / DEPLOY_DOC.relative_to(ROOT)).is_file(),
         "keep_map_present": (here / KEEP_MAP.relative_to(ROOT)).is_file(),
         "board_chunk_markers": list(BOARD_CHUNK_MARKERS),
         "copy_filter_is_not_admission": True,
