@@ -90,6 +90,18 @@
     "agents_mint_pixel_id": false,
     "checkout": "NOT_MINTED"
   },
+  "operator_day": {
+    "id": "cursor-business-pack-operator-day-20260902-01",
+    "source_slack_ts": "1788327136.593709",
+    "treat_customer_as": "employee",
+    "day_sheet": "packs/_template/day.md",
+    "support_paid_to": "tjlabs",
+    "support_price": "OWNER_UNSET",
+    "commons_admission": false,
+    "did_not_write_lead_tos_paths": true,
+    "did_not_invent_percent_or_equity": true,
+    "checkout": "NOT_MINTED"
+  },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",
