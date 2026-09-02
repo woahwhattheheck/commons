@@ -13,9 +13,13 @@ sys.path.insert(0, os.path.join(ROOT, "host"))
 
 from claude_peer_check import (
     CALIBRATION,
+    GIT_COMPANIONS,
     REQUIRED_PACKETS,
     SEARCH_SPACE,
+    STALE_OFF_GIT_PHRASE,
+    card_claims_companions_off_git,
     classify,
+    git_companions_probe,
     index_has_17c,
     laptop_probe,
     load_catalog,
@@ -35,6 +39,13 @@ def _complete_facts(**overrides):
         "packets_found": list(REQUIRED_PACKETS),
         "packets_missing": [],
         "indexed_17c": True,
+        "git_companions": {
+            "state": "FOUND",
+            "missing": [],
+            "hits": list(GIT_COMPANIONS),
+            "search_space": list(GIT_COMPANIONS),
+        },
+        "card_stale_off_git": False,
         "laptop": {"state": "FINDER-FAILED", "count": None, "hits": []},
         "title_phrases": {"state": "FINDER-FAILED", "count": None, "hits": []},
         "no_auth": True,
@@ -129,6 +140,47 @@ class TestClaudePeerCheck(unittest.TestCase):
         self.assertEqual(catalog["p40_packet"], "17c")
         self.assertIn("17c", catalog["packets"])
         self.assertIn("P40", catalog["priors"])
+        self.assertTrue(catalog["git_companions_on_git"])
+        self.assertGreaterEqual(len(catalog["git_companion_paths"]), 9)
+
+    def test_stale_off_git_claim_is_not_landed(self):
+        verdict = classify(_complete_facts(card_stale_off_git=True))
+        self.assertEqual(verdict["state"], "NOT_LANDED")
+        self.assertEqual(verdict["z"], "FINDER-FAILED")
+        self.assertIn("HIT-FM02", verdict["note"])
+        self.assertNotEqual(verdict.get("count"), 0)
+
+    def test_missing_git_companion_is_not_silent_zero(self):
+        verdict = classify(
+            _complete_facts(
+                git_companions={
+                    "state": "FINDER-FAILED",
+                    "missing": ["muhl/docs/BULLY_CLAUDE.txt"],
+                    "count": None,
+                }
+            )
+        )
+        self.assertEqual(verdict["state"], "NOT_LANDED")
+        self.assertEqual(verdict["z"], "FINDER-FAILED")
+        self.assertIn("BULLY_CLAUDE.txt", verdict["note"])
+        self.assertIsNone(
+            classify(
+                _complete_facts(
+                    git_companions={
+                        "state": "FINDER-FAILED",
+                        "missing": ["muhl/docs/BULLY_CLAUDE.txt"],
+                        "count": None,
+                    }
+                )
+            ).get("count")
+        )
+
+    def test_card_claims_companions_off_git_phrase(self):
+        self.assertTrue(
+            card_claims_companions_off_git("Owner-disk companions (not always on git)")
+        )
+        self.assertFalse(card_claims_companions_off_git("Git companions measured on main"))
+        self.assertEqual(STALE_OFF_GIT_PHRASE, "not always on git")
 
     def test_live_tree_indexes_17c(self):
         row = measure_root(ROOT)
@@ -143,6 +195,15 @@ class TestClaudePeerCheck(unittest.TestCase):
             card = handle.read()
         self.assertIn("P40", card)
         self.assertIn("17c", card)
+        self.assertNotIn(STALE_OFF_GIT_PHRASE, card.lower())
+        self.assertIn("muhl/docs/BULLY_CLAUDE.txt", card)
+        self.assertIn("muhl/docs/CLAUDE_PROOF_PACKET.md", card)
+        self.assertEqual(row["git_companions"]["state"], "FOUND")
+        self.assertEqual(row["git_companions"]["missing"], [])
+        self.assertFalse(row["card_stale_off_git"])
+        git_row = git_companions_probe(ROOT)
+        self.assertEqual(git_row["state"], "FOUND")
+        self.assertEqual(len(git_row["hits"]), 9)
         with open(
             os.path.join(ROOT, "muhl", "docs", "CLAUDE_FAILURE_MODES.md"),
             encoding="utf-8",

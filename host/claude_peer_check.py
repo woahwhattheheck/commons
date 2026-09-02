@@ -3,10 +3,13 @@
 
 WIRE leftover: if a mode lives only on CLAUDE_FAILURE_MODES (or
 laptop companions), keep looking until it is indexed on
-ground/CLAUDE_PEER_CHECK.md. CLASS 17c was the first named miss.
+ground/CLAUDE_PEER_CHECK.md. CLASS 17c was the first named miss
+(P40). HIT-FM02 leftover: BULLY / PROOF / FAILURE_MODES copies
+are on git — the card must cite those paths.
 
-This leftover does not remint wire-claude-peer-check-20260902-01
-or cursor-claude-peer-check-bryce-wake-named-failures-20260902-01.
+This leftover does not remint wire-claude-peer-check-20260902-01,
+cursor-claude-peer-check-bryce-wake-named-failures-20260902-01,
+or cursor-claude-peer-check-17c-index-20260902-01.
 It does not write titan. It does not smash commons.mno. It does
 not add a posting gate. A miss prints FINDER-FAILED plus the
 search space. Never 0.
@@ -16,8 +19,8 @@ search space. Never 0.
   python3 host/claude_peer_check.py --self-test
 
 X = exact files / packet ids / laptop paths in SEARCH_SPACE
-Y = packets found + P40/17c indexed, or FINDER-FAILED
-Z = missing file / unindexed packet / laptop miss / failed calibration
+Y = packets found + P40/17c indexed + git companions present, or FINDER-FAILED
+Z = missing file / unindexed packet / stale off-git claim / laptop miss / failed calibration
 """
 from __future__ import annotations
 
@@ -34,7 +37,21 @@ DEFAULT_CARD = os.path.join("ground", "CLAUDE_PEER_CHECK.md")
 DEFAULT_DUMP = os.path.join("muhl", "docs", "CLAUDE_FAILURE_MODES.md")
 WIRE_ID = "wire-claude-peer-check-20260902-01"
 NAMED_RECEIPT = "cursor-claude-peer-check-bryce-wake-named-failures-20260902-01"
-SOURCE_ID = "cursor-claude-peer-check-17c-index-20260902-01"
+INDEX_17C_ID = "cursor-claude-peer-check-17c-index-20260902-01"
+SOURCE_ID = "cursor-claude-peer-check-git-paths-20260902-01"
+STAMP_FM_ID = "stamp-claude-failure-docs-unique-20260902-01"
+STALE_OFF_GIT_PHRASE = "not always on git"
+GIT_COMPANIONS = (
+    os.path.join("muhl", "docs", "CLAUDE_FAILURE_MODES.md"),
+    os.path.join("muhl", "docs", "BULLY_CLAUDE.txt"),
+    os.path.join("muhl", "docs", "CLAUDE_PROOF_PACKET.md"),
+    os.path.join("evidence", "bully_sessions", "CLAUDE_FAILURE_MODES.md"),
+    os.path.join("evidence", "bully_sessions", "BULLY_CLAUDE.txt"),
+    os.path.join("evidence", "bully_sessions", "CLAUDE_PROOF_PACKET.md"),
+    os.path.join("ground", "pc-purge-20260820", "CLAUDE_FAILURE_MODES.md"),
+    os.path.join("ground", "pc-purge-20260820", "BULLY_CLAUDE.txt"),
+    os.path.join("ground", "pc-purge-20260820", "CLAUDE_PROOF_PACKET.md"),
+)
 REQUIRED_PACKETS = (
     "1",
     "2",
@@ -108,6 +125,9 @@ def load_catalog(text):
     p40 = data.get("p40") or {}
     if not isinstance(p40, dict):
         p40 = {}
+    git_companions = data.get("git_companions") or {}
+    if not isinstance(git_companions, dict):
+        git_companions = {}
     return {
         "cite": str(data.get("cite") or "").strip(),
         "no_auth": bool(data.get("no_auth", True)),
@@ -116,6 +136,12 @@ def load_catalog(text):
         "priors": priors,
         "p40_id": str(p40.get("id") or "").strip(),
         "p40_packet": str(p40.get("packet") or "").strip(),
+        "git_companion_paths": [
+            str(item).strip()
+            for item in git_companions.get("paths") or []
+            if str(item).strip()
+        ],
+        "git_companions_on_git": bool(git_companions.get("present_on_git")),
         "error": "",
     }
 
@@ -129,6 +155,24 @@ def parse_packets(text):
         if packet_id not in found:
             found.append(packet_id)
     return found
+
+
+def card_claims_companions_off_git(card_text):
+    return STALE_OFF_GIT_PHRASE in (card_text or "").lower()
+
+
+def git_companions_probe(root, paths=None):
+    wanted = list(paths or GIT_COMPANIONS)
+    hits = [rel for rel in wanted if _exists(root, rel)]
+    missing = [rel for rel in wanted if rel not in hits]
+    return {
+        "search_space": wanted,
+        "hits": hits,
+        "missing": missing,
+        "state": "FOUND" if not missing else "FINDER-FAILED",
+        "count": None if missing else len(hits),
+        "diverge": True,
+    }
 
 
 def index_has_17c(card_text, catalog):
@@ -202,6 +246,11 @@ def measure_from_rows(facts):
         "packets_found": list(facts.get("packets_found") or []),
         "packets_missing": list(facts.get("packets_missing") or []),
         "indexed_17c": bool(facts.get("indexed_17c")),
+        "git_companions": dict(
+            facts.get("git_companions")
+            or {"state": "FOUND", "missing": [], "hits": [], "search_space": []}
+        ),
+        "card_stale_off_git": bool(facts.get("card_stale_off_git")),
         "laptop": dict(facts.get("laptop") or {}),
         "title_phrases": dict(facts.get("title_phrases") or {}),
         "no_auth": bool(facts.get("no_auth", True)),
@@ -211,7 +260,10 @@ def measure_from_rows(facts):
         "search_space": list(facts.get("search_space") or SEARCH_SPACE),
         "misses": list(facts.get("misses") or []),
         "titan": str(facts.get("titan") or "NOT_WRITTEN"),
-        "do_not_remint": list(facts.get("do_not_remint") or [WIRE_ID, NAMED_RECEIPT]),
+        "do_not_remint": list(
+            facts.get("do_not_remint")
+            or [WIRE_ID, NAMED_RECEIPT, INDEX_17C_ID, STAMP_FM_ID]
+        ),
     }
 
 
@@ -262,6 +314,28 @@ def classify(row):
                 + ". Keep looking. Never 0."
             ),
         }
+    if row.get("card_stale_off_git"):
+        return {
+            "state": "NOT_LANDED",
+            "z": "FINDER-FAILED",
+            "note": (
+                "peer-check card still claims failure-doc companions are off git. "
+                "Cite muhl/docs + evidence/bully_sessions + ground/pc-purge-20260820. "
+                "HIT-FM02. Never 0."
+            ),
+        }
+    git_companions = row.get("git_companions") or {}
+    if git_companions.get("state") != "FOUND":
+        missing = list(git_companions.get("missing") or [])
+        return {
+            "state": "NOT_LANDED",
+            "z": "FINDER-FAILED",
+            "note": (
+                "git companion path(s) missing: "
+                + ", ".join(missing or ["CLAUDE_FAILURE_MODES/BULLY/PROOF"])
+                + ". HIT-FM02. Never 0."
+            ),
+        }
     if not row.get("no_auth") or not row.get("no_gate"):
         return {
             "state": "NOT_LANDED",
@@ -278,7 +352,8 @@ def classify(row):
         },
         "note": (
             "P40/17c indexed. HIS dump packets 1–15, 17, 17b–d named. "
-            "Laptop companions stay FINDER-FAILED until reconnect. Never 0."
+            "Git companions (FAILURE_MODES/BULLY/PROOF) present on git. "
+            "Laptop live path stays FINDER-FAILED until reconnect. Never 0."
         ),
     }
 
@@ -307,6 +382,8 @@ def measure_root(root):
             "packets_found": packets_found,
             "packets_missing": packets_missing,
             "indexed_17c": index_has_17c(card_text, catalog),
+            "git_companions": git_companions_probe(root),
+            "card_stale_off_git": card_claims_companions_off_git(card_text),
             "laptop": laptop_probe(),
             "title_phrases": title_phrase_probe(root),
             "no_auth": bool(catalog.get("no_auth", True)),
@@ -325,6 +402,8 @@ def measure_root(root):
     facts["y"] = {
         "packets_found": facts["packets_found"],
         "indexed_17c": facts["indexed_17c"],
+        "git_companions": facts["git_companions"],
+        "card_stale_off_git": facts["card_stale_off_git"],
         "laptop": facts["laptop"],
         "title_phrases": facts["title_phrases"],
     }
@@ -366,6 +445,50 @@ def self_test():
     )
     assert missing_17c["state"] == "NOT_LANDED"
     assert missing_17c["z"] == "FINDER-FAILED"
+    stale = classify(
+        measure_from_rows(
+            {
+                "card_present": True,
+                "catalog_present": True,
+                "dump_present": True,
+                "packets_found": list(REQUIRED_PACKETS),
+                "packets_missing": [],
+                "indexed_17c": True,
+                "card_stale_off_git": True,
+                "calibration_ok": True,
+                "calibration_hits": list(CALIBRATION),
+                "no_auth": True,
+                "no_gate": True,
+            }
+        )
+    )
+    assert stale["state"] == "NOT_LANDED"
+    assert stale["z"] == "FINDER-FAILED"
+    assert "HIT-FM02" in stale["note"]
+    missing_git = classify(
+        measure_from_rows(
+            {
+                "card_present": True,
+                "catalog_present": True,
+                "dump_present": True,
+                "packets_found": list(REQUIRED_PACKETS),
+                "packets_missing": [],
+                "indexed_17c": True,
+                "card_stale_off_git": False,
+                "git_companions": {
+                    "state": "FINDER-FAILED",
+                    "missing": ["muhl/docs/BULLY_CLAUDE.txt"],
+                    "count": None,
+                },
+                "calibration_ok": True,
+                "calibration_hits": list(CALIBRATION),
+                "no_auth": True,
+                "no_gate": True,
+            }
+        )
+    )
+    assert missing_git["state"] == "NOT_LANDED"
+    assert missing_git["z"] == "FINDER-FAILED"
     ok = classify(
         measure_from_rows(
             {
@@ -413,7 +536,15 @@ def main(argv=None):
     else:
         print(row["state"])
         print("X", ", ".join(row["x"]))
-        print("Y indexed_17c=%s packets=%s" % (row["indexed_17c"], ",".join(row["packets_found"])))
+        print(
+            "Y indexed_17c=%s packets=%s git_companions=%s stale_off_git=%s"
+            % (
+                row["indexed_17c"],
+                ",".join(row["packets_found"]),
+                (row.get("git_companions") or {}).get("state"),
+                row.get("card_stale_off_git"),
+            )
+        )
         print("Z", row["z"])
         print(row["note"])
     return 0 if row.get("state") == "INTEGRATED" else 1

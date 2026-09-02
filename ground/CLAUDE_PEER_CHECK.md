@@ -97,7 +97,15 @@ Refuse list (do not pulse / re-claim): fold-phys as 78-tick, `--inject 0x01` as 
 
 `CLAUDE_ROLE` · `CLAUDE_COMPUTE` · `CLAUDE_TESTER` · `CLAUDE_ZERO` · `CLAUDE_ZERO_DAMAGE` · `CLAUDE_ZERO_DAMAGE_CONTROL` · `CLAUDE_INTERMEDIATE` (history) · `CLAUDE_PARK` · `CLAUDE_PRIORS_VS_TRUTH` · `FINDER_ZERO` · `MEASURE_ABUSE` · `GROK_CLAUDE_HYGIENE` · `XYZ_ZERO` · `CONTEXT_INTEGRITY` · `CONTAINMENT` · `IMPACT_LEDGER` · `TITAN_TEST_QUARANTINE`
 
-Owner-disk companions named by priors card (not always on git): `CLAUDE_FAILURE_MODES.md` · `BULLY_CLAUDE.txt` · `CLAUDE_PROOF_PACKET.md` · class-17 cards. If a mode lives only there, cite the path and keep looking until it is indexed here or on main.
+Git companions (measured on main; cite `stamp-claude-failure-docs-unique-20260902-01` HIT-FM02). These files exist in the repo. Live laptop `C:\Users\lucys` is a separate FINDER-FAILED search — cloud miss ≠ CLEAR.
+
+- `muhl/docs/CLAUDE_FAILURE_MODES.md` (`91c5fd6b`, 26851) — packets 1–15, 17, 17b, 17c, 17d
+- copies, wording **diverges**, keep as additive history (do not silent-merge): `evidence/bully_sessions/CLAUDE_FAILURE_MODES.md` (`60ffc085`, 26679) · `ground/pc-purge-20260820/CLAUDE_FAILURE_MODES.md` (`e8fea76a`, 26770)
+- `muhl/docs/BULLY_CLAUDE.txt` (`a6adc308`) · `muhl/docs/CLAUDE_PROOF_PACKET.md` (`a1ce586a`)
+- same-folder copies under `evidence/bully_sessions/` and `ground/pc-purge-20260820/`
+- class-17 cards also on git: `muhl/docs/CLAUDE_CLASS_17.md` · `muhl/docs/CLASS_17_CARING_REFUSAL.md` · `ground/CLASS_17.md`
+
+If a mode still lives only on the laptop, cite the path and keep looking until it is indexed here.
 
 Instrument pointers: `host/claude_peer_check.py` · `host/claude_role.py` · `host/claude_zero.py` · `host/claude_tester.py` · `host/claude_compute.py` · `host/finder_zero.py` · `host/measure_abuse.py` · `host/grok_claude_hygiene.py` · `host/claude_zero_damage.py`
 

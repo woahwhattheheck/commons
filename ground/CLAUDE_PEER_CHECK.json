@@ -11,7 +11,9 @@
   "calibration_required": true,
   "do_not_remint": [
     "wire-claude-peer-check-20260902-01",
-    "cursor-claude-peer-check-bryce-wake-named-failures-20260902-01"
+    "cursor-claude-peer-check-bryce-wake-named-failures-20260902-01",
+    "cursor-claude-peer-check-17c-index-20260902-01",
+    "stamp-claude-failure-docs-unique-20260902-01"
   ],
   "named_ids": {
     "authority": ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10"],
@@ -25,6 +27,28 @@
     "packet": "17c",
     "lie": "broken model / hooks dark / markdown links as load",
     "source": "muhl/docs/CLAUDE_FAILURE_MODES.md"
+  },
+  "git_companions": {
+    "present_on_git": true,
+    "diverge": true,
+    "cite": "stamp-claude-failure-docs-unique-20260902-01",
+    "paths": [
+      "muhl/docs/CLAUDE_FAILURE_MODES.md",
+      "muhl/docs/BULLY_CLAUDE.txt",
+      "muhl/docs/CLAUDE_PROOF_PACKET.md",
+      "evidence/bully_sessions/CLAUDE_FAILURE_MODES.md",
+      "evidence/bully_sessions/BULLY_CLAUDE.txt",
+      "evidence/bully_sessions/CLAUDE_PROOF_PACKET.md",
+      "ground/pc-purge-20260820/CLAUDE_FAILURE_MODES.md",
+      "ground/pc-purge-20260820/BULLY_CLAUDE.txt",
+      "ground/pc-purge-20260820/CLAUDE_PROOF_PACKET.md"
+    ],
+    "blobs": {
+      "muhl/docs/CLAUDE_FAILURE_MODES.md": "91c5fd6bd003da0769f6ecfd71434c0b00232cb8",
+      "evidence/bully_sessions/CLAUDE_FAILURE_MODES.md": "60ffc0858c6daad59d13d519b1b66aea8cd959c7",
+      "ground/pc-purge-20260820/CLAUDE_FAILURE_MODES.md": "e8fea76a3b0370a24bec69d28e93cf4d732e44bd"
+    },
+    "laptop": "FINDER-FAILED"
   },
   "laptop_search": {
     "paths": [
