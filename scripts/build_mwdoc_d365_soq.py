@@ -303,6 +303,17 @@ def validate_packet(packet: dict[str, Any]) -> None:
         all(value is False for value in packet["truth_flags"].values()),
         "readiness packet must not claim external action or commercial completion",
     )
+    require(
+        all(
+            isinstance(source, dict)
+            and all(
+                key in source
+                for key in ("id", "url", "observed_on", "claim", "boundary")
+            )
+            for source in packet["official_sources"]
+        ),
+        "official sources must retain identifiers, URLs, observations, claims, and boundaries",
+    )
 
     for index, target in enumerate(packet["targets"]):
         for key in (

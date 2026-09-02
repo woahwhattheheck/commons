@@ -43,7 +43,6 @@
           "id",
           "url",
           "observed_on",
-          "claim",
           "boundary"
         ]
       }
