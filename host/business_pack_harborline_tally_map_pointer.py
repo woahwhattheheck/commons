@@ -31,7 +31,7 @@ MAP_HELPER = "host/harborline_tally_pack_map.py"
 MAP_RECEIPT = "cursor-harborline-tally-pack-map-20260902-01"
 MAP_OWNER = "bc-31c8ef9a"
 EXPECTED_BLOBS = {
-    "host/harborline_tally_pack_map.py": "a889db44",
+    "host/harborline_tally_pack_map.py": "a7a49b77",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "packs/waitlist.html": "bdcaa7ea",
 }

@@ -41,7 +41,7 @@ class PackHarborlineMapPinLiftTest(unittest.TestCase):
                 "ac60db02",
             )
             self.assertTrue(
-                result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a889db44")
+                result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a7a49b77")
             )
             self.assertTrue(
                 result["blobs"]["packs/desk-website-service-20260902-01/door.html"].startswith(
