@@ -1,1 +1,1 @@
-@/tmp/gh_test_body.txt
+$include:/tmp/gh_test_body.txt
