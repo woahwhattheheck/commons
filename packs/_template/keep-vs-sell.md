@@ -20,7 +20,7 @@ Decision: KEEP / SELL / UNDECIDED
 - [ ] week1.md is complete
 - [ ] support boundary is honest
 - [ ] marketing stays owner-owned (no ads setup bundled)
-- [ ] this sale is a fresh package (unique brand/domain/checkout/assets/instructions; not a clone of a prior sale)
+- [ ] this sale is a distinct instance / fresh package (similar vertical/pattern allowed; not a copy-paste clone of a prior sale)
 
 Lane: Slack `#business-packs` `C0BU7JAPUH3`.
 This decision is not a Commons admission condition.

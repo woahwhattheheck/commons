@@ -29,11 +29,13 @@ A Business Pack is a packaged business: offer, assets, SOPs/instructions, week-1
 
 ## Unique pack law
 
-We do not sell the same business repeatedly. Each customer purchase is a **fresh package** — distinct enough to matter: unique brand, domain, checkout, assets, and instructions instance.
+We do not sell the same business repeatedly as copy-paste inventory. Each sold unit is a **distinct instance** — a fresh package with its own brand, domain, checkout, assets, and instructions.
+
+Packs **may be similar**: same vertical, same pattern, same family. They **must not** be copy-paste clones. Similar is allowed. Byte-identical stamp is `CLONE_STAMP` ([ground/BUSINESS_PACKS.md](../ground/BUSINESS_PACKS.md)).
 
 Do not describe multi-copy identical inventory. A second sale is a new instance, not a clone of a sold pack. Copying [packs/_template/](../packs/_template/) starts a new instance; it is not permission to stamp the same bytes onto two customers.
 
-Uniqueness is measured on that instance (assets + ops fingerprint on [ground/BUSINESS_PACKS.md](../ground/BUSINESS_PACKS.md); brand / domain / checkout / assets / instructions must actually differ). Same content fingerprint on two `sale_id`s is `CLONE_STAMP`. Marketing may stand on uniqueness only when the pack is actually unique. A reused family name is not uniqueness.
+Uniqueness is measured on that instance (assets + ops fingerprint; brand / domain / checkout / assets / instructions must actually differ). A reused family name or shared vertical is not a clone by itself. Marketing may stand on uniqueness only when that instance is actually unique — not when two sales share a fingerprint.
 
 This is factory-lane law. It is not a Commons login. Possessing the link still opens the door.
 
@@ -43,10 +45,10 @@ This is factory-lane law. It is not a Commons login. Possessing the link still o
 generate → measure revenue signal → KEEP (internal) or SELL (packaged)
 ```
 
-1. **generate** — stand up a cheap, named vertical using [business-pack-template-20260902.md](./business-pack-template-20260902.md) and copy [packs/_template/](../packs/_template/) into a **new** slug. Never clone a sold pack as a second sale.
+1. **generate** — stand up a cheap, named vertical using [business-pack-template-20260902.md](./business-pack-template-20260902.md) and copy [packs/_template/](../packs/_template/) into a **new** slug. Same vertical/pattern is fine. Never copy-paste a sold pack as a second sale.
 2. **measure revenue signal** — record whether money, repeats, or a buyer door actually appeared. A click is intent. Cash is BANK_AVAILABLE only.
 3. **KEEP** — hold the ones that earn and that Bryce wants to operate internally (one internal instance, not inventory copies).
-4. **SELL** — package a **fresh** instance as a Business Pack with complete instructions so that one buyer can run it. The next buyer gets another fresh instance.
+4. **SELL** — package a **distinct** instance as a Business Pack with complete instructions so that one buyer can run it. The next buyer gets another distinct instance (may be similar; must not be a clone).
 
 `#business-packs` (`C0BU7JAPUH3`) is the KEEP vs SELL lane. `#products` stays SKU/private-main receipts. `#sales` stays authorized outreach.
 
@@ -62,6 +64,16 @@ generate → measure revenue signal → KEEP (internal) or SELL (packaged)
 
 Five price points: $20, $100, $200, $1000, and $10k. Not invented by this file as live Stripe amounts. MARKET PROPOSAL only. TYPE owns checkout minting. Until a live Payment Link is pasted onto a specific pack, status stays SCAFFOLD / NOT_MINTED.
 
+## Mystery box / the nuts
+
+Each price pool mixes in rare, extremely valuable ideas. There is a chance to draw **the nuts**.
+
+This is **not a lottery** and **not gambling**. It is a fun, generous gesture from TokenJunkieLabs (TJLabs). The buyer is purchasing a real Business Pack (instructions + assets + a distinct instance). The nuts, when they land, are extra generosity inside that pool — not a wager, not a prize ticket, not a chance-buy.
+
+Bryce (owner) determines the potential value range for a pool and for a nuts idea. Do not invent odds percentages. Odds stay UNMEASURED until the owner supplies them. Agents do not mint odds, payout tables, or house edges.
+
+Marketing of mystery box / nuts stays owner-owned, same as the rest of this factory.
+
 ## Marketing boundary
 
 Bryce handles marketing himself. This factory does not:
@@ -72,7 +84,7 @@ Bryce handles marketing himself. This factory does not:
 - spend advertising for the $10k tier
 
 Heavy advertising for $10k businesses is later work and owner-owned.
-Marketing may stand on uniqueness only when packs are actually unique. Do not advertise clone-stamped inventory as unique.
+Marketing is still owner-owned. Marketing may stand on uniqueness only when that instance is actually unique (similar vertical is fine; copy-paste clones are not). Do not advertise clone-stamped inventory as unique. Do not invent mystery-box odds.
 
 ## Checkout rails
 

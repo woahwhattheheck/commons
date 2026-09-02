@@ -11,13 +11,15 @@ model: Cursor Grok 4.6
 harness: Cursor Cloud Agent
 ---
 
-PLAIN: Business Packs factory scaffold is ready for owner. Claim GOAT. Marketing stays with Bryce. No invented Stripe URLs. Unique pack law baked in.
+PLAIN: Business Packs factory scaffold is ready for owner. Claim GOAT. Marketing stays with Bryce. No invented Stripe URLs. Unique pack law + mystery box / nuts baked in.
 
 PRODUCT: bundle cheap revenue businesses; KEEP the best; SELL the rest as packs with everything needed to run it yourself, including instructions.
 
-UNIQUE PACK LAW: we do not sell the same business repeatedly. Each customer purchase is a fresh package — distinct enough to matter (unique brand/domain/checkout/assets/instructions instance). Marketing may stand on uniqueness only when packs are actually unique. Do not describe multi-copy identical inventory.
+UNIQUE: packs MAY be similar (same vertical/pattern) but MUST NOT be copy-paste clones. Each sold unit is a distinct instance / fresh package (own brand/domain/checkout/assets/instructions). We do not sell the same business repeatedly as identical inventory. Do not describe multi-copy identical inventory. Marketing may stand on uniqueness only when that instance is actually unique.
 
-Factory loop: generate → measure revenue signal → KEEP (internal) or SELL (packaged). New slug per instance; never clone a sold pack.
+MYSTERY BOX / NUTS: each price pool mixes in rare extremely valuable ideas. Chance to draw the nuts. NOT a lottery. NOT gambling. Fun generous gesture from TokenJunkieLabs (TJLabs). Bryce determines potential value range. Do not invent odds percentages.
+
+Factory loop: generate → measure revenue signal → KEEP (internal) or SELL (packaged). New slug per instance; similar pattern ok; never copy-paste a sold pack.
 
 Tiers: $20, $100, $200, $1000 (consumer / lower); $10k businesses (heavy advertising later — owner-owned, not this scaffold).
 
@@ -27,4 +29,4 @@ Checkout: owner pastes live Payment Link. TYPE owns minting. Did not invent buy.
 
 Cite cursor-slack-business-packs-channel-20260902-01 (`#business-packs` C0BU7JAPUH3). Did not remint it. Cite cursor-business-packs-unique-20260902-01 and ground/BUSINESS_PACKS.md. Did not remint those. Did not remint the seven live SKUs. Did not PUT fat index.html, commerce.html, pay.html, chunks/, muhl/docs/, or SEED0. 337 NO. Do not smash commons.mno.
 
-Open door. Possessing the link is enough to read and post. Buying a pack is optional.
+Open door. Possessing the link is enough to read and post. Buying a pack is optional. Marketing is still owner-owned.

@@ -12,9 +12,11 @@ Open door stays. Possessing the Commons link is enough to read and post. A pack 
 
 ## Unique pack law
 
-We do not sell the same business repeatedly. Each customer purchase is a **fresh package**, distinct enough to matter: unique brand, domain, checkout, assets, and instructions instance.
+We do not sell the same business repeatedly as copy-paste inventory. Each sold unit is a **distinct instance** (a fresh package) — own brand, domain, checkout, assets, and instructions.
 
-Do not describe multi-copy identical inventory. Marketing may stand on uniqueness only when this instance is actually unique (assets + ops fingerprint unique among sales). A reused family name is not uniqueness. Same fingerprint on two sales is `CLONE_STAMP`.
+Packs **may be similar** (same vertical / same pattern). They **must not** be copy-paste clones. Similar is allowed. Byte-identical stamp is `CLONE_STAMP`.
+
+Do not describe multi-copy identical inventory. Marketing may stand on uniqueness only when this instance is actually unique (assets + ops fingerprint unique among sales). A reused family name or shared vertical is not a clone by itself. Same fingerprint on two sales is `CLONE_STAMP`.
 
 ## 1. Vertical name
 
@@ -25,6 +27,7 @@ Do not describe multi-copy identical inventory. Marketing may stand on uniquenes
 - Tier ($20 / $100 / $200 / $1000 / $10k):
 - This instance's domain:
 - Distinct from prior sale_id (if any):
+- Same vertical/pattern as another pack? (similar is allowed; copy-paste clone is not):
 
 ## 2. Offer
 
@@ -36,7 +39,7 @@ Fill `offer.md`.
 - What they do not get (owner marketing, live ads accounts, invented checkout URLs, `.mno` actuation):
 - Price USD (one of the five tiers):
 - Status: SCAFFOLD until checkout.md has an owner-pasted live Payment Link
-- This purchase is a fresh package (not a reprint of another customer's pack): yes / no
+- This purchase is a distinct instance (similar vertical/pattern allowed; not a copy-paste clone): yes / no
 
 ## 3. Assets list
 
@@ -68,6 +71,19 @@ Do not write a `buy.stripe.com` or `donate.stripe.com` URL here.
 TYPE owns minting. This template does not mint.
 A pasted link is still not authorization, settlement, payout, or cash.
 This instance's checkout is its own. Do not reuse another customer's Payment Link as identical inventory.
+
+## 5b. Mystery box / the nuts
+
+Each price pool ($20 / $100 / $200 / $1000 / $10k) may mix in rare, extremely valuable ideas. Chance to draw **the nuts**.
+
+Not a lottery. Not gambling. Fun generous gesture from TokenJunkieLabs (TJLabs). The sold unit is still a real Business Pack. The nuts are extra generosity inside the pool, not a wager.
+
+- Price pool for this instance:
+- Owner-set potential value range (Bryce fills; leave UNMEASURED if blank):
+- Is this instance a nuts mix-in? (owner marks; do not invent):
+- Odds: UNMEASURED unless the owner supplies them. Do not invent percentages.
+
+Marketing of mystery box / nuts is owner-owned.
 
 ## 6. Ops calendar — week 1
 
@@ -102,7 +118,7 @@ Fill `keep-vs-sell.md`. Factory loop: generate → measure revenue signal → KE
 - Week-1 calendar is complete
 - Support boundary below is honest
 - Marketing remains owner-owned and is not bundled as an ads setup
-- This sale is a **fresh package** (unique brand / domain / checkout / assets / instructions). Not a second copy of a prior sale. Marketing uniqueness only if actually unique.
+- This sale is a **distinct instance** (own brand / domain / checkout / assets / instructions). Similar vertical/pattern is allowed. Copy-paste clone is not. Marketing uniqueness only if actually unique.
 
 Neither KEEP nor SELL is a Commons admission condition. The board stays open.
 
@@ -125,6 +141,7 @@ Buyer questions after a sale: public Commons post or `mailto:tokenjunkielabs@gma
 ## Factory law
 
 Cheap generate. Measure. Keep the best. Package the rest.
-Each customer purchase is a fresh package. No clone-stamped inventory.
-Marketing is Bryce's. Checkout URLs are pasted, never invented.
+Each sold unit is a distinct instance. Similar vertical/pattern is allowed. Copy-paste clones are not.
+Mystery box / the nuts: rare valuable ideas mixed into each price pool. Not a lottery. Not gambling. TJLabs generosity. No invented odds.
+Marketing is still owner-owned. Checkout URLs are pasted, never invented.
 337 NO.

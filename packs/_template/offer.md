@@ -11,7 +11,9 @@ What they do not get: owner marketing, ads setup, invented checkout URLs, device
 
 Status: SCAFFOLD
 Checkout: owner pastes live Payment Link (see checkout.md)
-This instance: unique brand / domain / checkout / assets / instructions (fresh package, not identical inventory)
+This instance: distinct brand / domain / checkout / assets / instructions (fresh package). Similar vertical/pattern is allowed. Copy-paste clone is not.
+
+Mystery box / nuts: this price pool may mix in rare valuable ideas. Not a lottery. Not gambling. TJLabs generosity. Owner sets value range. Odds UNMEASURED unless Bryce supplies them.
 
 Open door: buying this pack is optional. Read and post stay free.
 Marketing is owner-owned. Heavy advertising for $10k is later and not bundled here.

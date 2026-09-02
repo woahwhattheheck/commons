@@ -171,6 +171,41 @@ class BusinessPacksScaffoldTests(unittest.TestCase):
         self.assertEqual(law["card"], "ground/BUSINESS_PACKS.md")
         self.assertIn("fresh package", _read(SLOT / "offer.md").lower())
         self.assertIn("fresh package", _read(SLOT / "keep-vs-sell.md").lower())
+        self.assertIn("may be similar", sku.lower())
+        self.assertIn("must not", sku.lower())
+        self.assertIn("copy-paste", sku.lower())
+        self.assertIn("may be similar", template.lower())
+        self.assertIn("copy-paste", template.lower())
+        self.assertIn("may be similar", post.lower())
+        self.assertIn("copy-paste", post.lower())
+
+    def test_mystery_box_nuts_not_lottery(self):
+        sku = _read(SKU)
+        template = _read(TEMPLATE)
+        post = _read(POST)
+        catalog = json.loads(_read(CATALOG))
+        for path, blob in ((SKU, sku), (TEMPLATE, template), (POST, post)):
+            with self.subTest(path=str(path.relative_to(ROOT))):
+                lower = blob.lower()
+                self.assertIn("mystery box", lower)
+                self.assertIn("the nuts", lower)
+                self.assertIn("not a lottery", lower)
+                self.assertIn("not gambling", lower)
+                self.assertIn("tokenjunkielabs", lower.replace(" ", ""))
+                self.assertIn("tjlabs", lower.replace(" ", ""))
+                self.assertIn("value range", lower)
+                self.assertNotRegex(lower, r"\b\d+(\.\d+)?\s*%\s*(odds|chance|probability)\b")
+                self.assertNotRegex(lower, r"\b(odds|chance)\s*(of|=|:)\s*\d")
+        box = catalog["mystery_box"]
+        self.assertTrue(box["not_a_lottery"])
+        self.assertTrue(box["not_gambling"])
+        self.assertEqual(box["odds"], "UNMEASURED")
+        self.assertEqual(box["marketing"], "owner-owned")
+        self.assertIn("do not invent odds percentages", box["odds_rule"])
+        self.assertIn("TokenJunkieLabs", box["frame"])
+        self.assertIn("still owner-owned", sku.lower())
+        self.assertIn("still owner-owned", template.lower())
+        self.assertIn("still owner-owned", post.lower())
 
 
 if __name__ == "__main__":
