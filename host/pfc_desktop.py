@@ -127,7 +127,7 @@ class Pfc:
         with open(self.TITAN, "r+b") as f:                       # ADDRESS the prompt in, one-way
             f.seek(self.in_off); f.write(struct.pack("<BHH", 2, seq[-1] & 0xffff, len(seq) & 0xffff))
         with open(self.TITAN, "r+b") as f:                       # ADDRESS the start signal: one bit at the receiver
-            f.seek(self.rc_off); f.write(b"\u0001")
+            f.seek(self.rc_off); f.write(b"")
         # CONTINUOUS POWER (PFC_HARD_WON §3, owner verbatim): "the power source is CONTINUOUSLY ADDRESSING the single
         # start bit that begins propagation... streaming that one bit is the power source; killing it / not letting it
         # run disables the Muhlnickel." The Muhlnickel is in series with itself, so with the prompt addressed in and power streaming
@@ -138,8 +138,8 @@ class Pfc:
         t0 = time.time()
         with open(self.TITAN, "r+b") as f:
             while time.time() - t0 < self.POWER_SECS:
-                f.seek(self.rc_off); f.write(b"\\x01")            # stream the start bit, one-way, leave it ON
-            f.seek(self.rc_off); f.write(b"\\x00")                # 3) TURN IT OFF. there is no watching step.
+                f.seek(self.rc_off); f.write(b"\x01")            # stream the start bit, one-way, leave it ON
+            f.seek(self.rc_off); f.write(b"\x00")                # 3) TURN IT OFF. there is no watching step.
         fh = open(self.TITAN, "rb")                              # 4) READ the answer register (bounded, read-only)
         m = mmap.mmap(fh.fileno(), 0, access=mmap.ACCESS_READ)
         ans = m[self.an_off:self.an_off + 2]                     # READ the answer register (bounded, read-only)
