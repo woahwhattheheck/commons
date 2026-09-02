@@ -570,6 +570,25 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["harborline_tally_pack_map_pointer"],
             "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
         )
+        self.assertEqual(
+            block["harborline_tally_pack_map_pointer_helper"],
+            "host/business_pack_harborline_tally_map_pointer.py",
+        )
+        self.assertEqual(
+            block["harborline_tally_pack_map_pointer_helper_receipt"],
+            "cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01",
+        )
+        self.assertEqual(block["harborline_tally_pack_map_pointer_helper_sha"], "636e2e2fd")
+        self.assertIs(block["did_not_write_harborline_tally_map_pointer_helper"], True)
+        self.assertEqual(
+            block["sidewalk_lotribbon_waitlist_helper"],
+            "host/business_pack_sidewalk_lotribbon_waitlist.py",
+        )
+        self.assertEqual(
+            block["sidewalk_lotribbon_waitlist_helper_receipt"],
+            "cursor-business-pack-sidewalk-lotribbon-waitlist-helper-20260902-01",
+        )
+        self.assertIs(block["did_not_write_sidewalk_lotribbon_waitlist_helper"], True)
         self.assertIs(block["did_not_overwrite_harborline_tally_pack_map"], True)
         self.assertEqual(
             block["catalog_waitlist_rows_pointer"],
@@ -611,6 +630,20 @@ class BusinessPackUniqueTest(unittest.TestCase):
         )
         self.assertTrue((ROOT / "host" / "harborline_tally_pack_map.py").is_file())
         self.assertTrue((ROOT / "host" / "business_pack_instance_waitlist.py").is_file())
+        self.assertTrue(
+            (ROOT / "host" / "business_pack_harborline_tally_map_pointer.py").is_file()
+        )
+        self.assertTrue(
+            (ROOT / "host" / "business_pack_sidewalk_lotribbon_waitlist.py").is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertIn("2c584983", self.door)
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
         block = self.law["rating_slot"]
