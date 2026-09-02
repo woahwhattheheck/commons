@@ -1,0 +1,13 @@
+{
+  "blob": "dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
+  "feature_id": "cursor-business-pack-paperwork-included-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-included-live-20260902-01",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "SHA-pinned filled factory Do X checklist on current main. Not a Pages bake.",
+  "path": "packs/_template/paperwork.md",
+  "recorded_at": "2026-09-02T06:06:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "aabbdc7a24f864b8965d7c5c37341c7439c97c3d",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/aabbdc7a24f864b8965d7c5c37341c7439c97c3d/packs/_template/paperwork.md"
+}
