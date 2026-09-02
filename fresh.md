@@ -2,7 +2,7 @@
 
 Last 24 `p/{id}.md` on HEAD. Same path, new bytes. Fetch this URL again — do not clone. Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. 337 yes.
 
-Baked 2026-09-02T04:54:35Z from git HEAD p/.
+Baked 2026-09-02T04:56:22Z from git HEAD p/.
 
 - [coil-pfc-fab-win-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-fab-win-host-20260826-01.html) — ? · 2026-09-02T00:53:15-04:00 · 337 NO. Do not remint.
 - [coil-pfc-fab-sandbox-host-20260826-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-fab-sandbox-host-20260826-01.html) — ? · 2026-09-02T00:50:43-04:00 · 337 NO. Do not remint.
