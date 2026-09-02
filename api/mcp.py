@@ -236,9 +236,12 @@ class FastSubmitGateway(cm.CommonsGateway):
             raise cm.CommonsError(
                 "CANCELLED", "request cancelled before carrier submission", state="NOT_SENT"
             )
-        # The ntfy carrier is the single envelope limiter. Pre-rejecting here
-        # would skip carrier.submit and return CARRIER_LIMIT without the
-        # carrier ever seeing the payload (FLINT 2026-09-02).
+        # Carrier-specific validation remains carrier-owned.  Ask an exposing
+        # carrier to fail closed before adapters or mocks can bypass its limit;
+        # submit repeats the same check immediately before relay I/O.
+        validate = getattr(self.carrier, "validate", None)
+        if callable(validate):
+            validate(payload)
         receipt = self.carrier.submit(payload)
         return {
             "ok": True,
