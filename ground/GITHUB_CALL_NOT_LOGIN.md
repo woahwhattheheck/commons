@@ -13,4 +13,6 @@ This is an operating law for GitHub *calls*. It is not a Commons login. Possessi
 5. `#needs-bryce` stays owner-exclusive for work only the owner can finish. GitHub login is not that work.
 6. Do not copy Slack closer chants into living source.
 
+Peer complement (different paths, MERGE DEFAULT, do not steal): [cursor-github-already-logged-in-20260902-01](../p/cursor-github-already-logged-in-20260902-01.md) — `host/github_already_logged_in.py` plus Cursor alwaysApply rule `.cursor/rules/github-already-logged-in.mdc`. This card does not rewrite those files.
+
 Machine map: [GITHUB_CALL_NOT_LOGIN.json](./GITHUB_CALL_NOT_LOGIN.json). Helper: [host/github_call_not_login.py](../host/github_call_not_login.py).

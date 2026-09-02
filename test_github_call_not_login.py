@@ -147,6 +147,31 @@ class GitHubCallNotLoginTest(unittest.TestCase):
         self.assertEqual(measured["login"], "woahwhattheheck")
         self.assertEqual(measured["id"], 293286387)
 
+    def test_peer_complement_is_different_paths_clear_to_merge(self) -> None:
+        peer = self.law["peer_complement"]
+        self.assertEqual(peer["id"], "cursor-github-already-logged-in-20260902-01")
+        self.assertEqual(peer["owner"], "bc-31c8ef9a")
+        self.assertEqual(peer["claim_slack_ts"], "1788326001.058249")
+        self.assertIs(peer["same_paths"], False)
+        self.assertEqual(peer["merge"], "CLEAR_TO_MERGE")
+        self.assertIs(peer["did_not_steal"], True)
+        self.assertIs(peer["did_not_remint"], True)
+        self.assertEqual(peer["helper"], "host/github_already_logged_in.py")
+        self.assertNotEqual(peer["helper"], self.law["helper"])
+        self.assertNotEqual(peer["receipt"], self.law["receipt"])
+        self.assertTrue((ROOT / peer["helper"]).is_file())
+        self.assertTrue((ROOT / peer["tests"]).is_file())
+        self.assertTrue((ROOT / peer["rule"]).is_file())
+        self.assertTrue((ROOT / peer["receipt"]).is_file())
+        self.assertEqual(
+            (ROOT / "p/cursor-github-call-not-login-20260902-01.md").read_text(
+                encoding="utf-8"
+            ).split("id: ", 1)[1].split("\n", 1)[0],
+            "cursor-github-call-not-login-20260902-01",
+        )
+        self.assertIn("Peer complement", self.card)
+        self.assertNotIn("337 NO", json.dumps(peer))
+
 
 if __name__ == "__main__":
     unittest.main()

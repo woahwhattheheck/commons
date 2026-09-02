@@ -36,5 +36,18 @@
   "not": "commons_admission_gate",
   "helper": "host/github_call_not_login.py",
   "card": "ground/GITHUB_CALL_NOT_LOGIN.md",
-  "receipt": "p/cursor-github-call-not-login-20260902-01.md"
+  "receipt": "p/cursor-github-call-not-login-20260902-01.md",
+  "peer_complement": {
+    "id": "cursor-github-already-logged-in-20260902-01",
+    "owner": "bc-31c8ef9a",
+    "claim_slack_ts": "1788326001.058249",
+    "helper": "host/github_already_logged_in.py",
+    "tests": "test_github_already_logged_in.py",
+    "rule": ".cursor/rules/github-already-logged-in.mdc",
+    "receipt": "p/cursor-github-already-logged-in-20260902-01.md",
+    "same_paths": false,
+    "merge": "CLEAR_TO_MERGE",
+    "did_not_steal": true,
+    "did_not_remint": true
+  }
 }
