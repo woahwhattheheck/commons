@@ -6,6 +6,7 @@ is already on current main. This leftover only reads. It does not remint
 that pointer, the instance catalog, the sidewalk-LotRibbon waitlist
 pointer, or waitlist ids. It does not overwrite the map helper,
 Harborline door, waitlist, TALLY helper, or LotRibbon/Sidewalk doors.
+Live TALLY/LEAD instance blobs are not pinned so owners can land sold-once.
 """
 from __future__ import annotations
 
@@ -31,12 +32,20 @@ MAP_RECEIPT = "cursor-harborline-tally-pack-map-20260902-01"
 MAP_OWNER = "bc-31c8ef9a"
 EXPECTED_BLOBS = {
     "host/harborline_tally_pack_map.py": "a889db44",
-    "host/business_pack_desk_instance.py": "a550ae1b",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "packs/waitlist.html": "bdcaa7ea",
+}
+# Land-time observations from leftover SHIP 4b1e74dd / a692e5ca. Not live pins.
+OBSERVED_AT_LAND = {
+    "host/business_pack_desk_instance.py": "a550ae1b",
     "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
     "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
 }
+THIS_SEAT_DOES_NOT_WRITE = (
+    "host/business_pack_desk_instance.py",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+    "packs/lotribbon-greetings-20260902-01/index.html",
+)
 
 
 def load_law(path: Path | None = None) -> dict[str, Any]:
@@ -80,7 +89,7 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
     block = instances_block(data)
     waitlist = waitlist_block(data)
     row = harborline_row(block)
-    blobs = {rel: blob_prefix(rel) for rel in EXPECTED_BLOBS}
+    blobs = {rel: blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *OBSERVED_AT_LAND)}
     blobs_match = all(
         blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items()
     )
@@ -134,6 +143,9 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         is True,
         "did_not_overwrite_sidewalk_door": block.get("did_not_overwrite_sidewalk_door")
         is True,
+        "this_seat_does_not_write": list(THIS_SEAT_DOES_NOT_WRITE),
+        "observed_at_land": dict(OBSERVED_AT_LAND),
+        "live_instance_blobs_not_pinned": True,
         "blobs": blobs,
         "blobs_match": blobs_match,
         "pointer_ok": pointer_ok,

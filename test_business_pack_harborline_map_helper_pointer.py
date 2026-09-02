@@ -69,16 +69,9 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
 
     def test_intact_blobs_stay_put(self) -> None:
         self.assertTrue(self.result["blobs_match"])
+        self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
         self.assertTrue(
             self.result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a889db44")
-        )
-        self.assertTrue(
-            self.result["blobs"][
-                "host/business_pack_harborline_tally_map_pointer.py"
-            ].startswith("5f3d59ba")
-        )
-        self.assertTrue(
-            self.result["blobs"]["host/business_pack_desk_instance.py"].startswith("a550ae1b")
         )
         self.assertTrue(
             self.result["blobs"]["packs/desk-website-service-20260902-01/door.html"].startswith(
@@ -90,6 +83,32 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
             self.result["blobs"][
                 "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"
             ].startswith("269e874a")
+        )
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "host/business_pack_harborline_tally_map_pointer.py"
+            ],
+            "5f3d59ba",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"]["host/business_pack_desk_instance.py"],
+            "a550ae1b",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ],
+            "638e60b4",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/lotribbon-greetings-20260902-01/index.html"
+            ],
+            "ac60db02",
+        )
+        self.assertIn(
+            "host/business_pack_desk_instance.py",
+            self.result["this_seat_does_not_write"],
         )
         self.assertTrue(self.result["did_not_overwrite_map_helper"])
         self.assertTrue(self.result["did_not_overwrite_map_pointer_helper"])
@@ -143,6 +162,7 @@ class BusinessPackHarborlineMapHelperPointerTest(unittest.TestCase):
         self.assertTrue(data["did_not_remint_pointer"])
         self.assertTrue(data["keep_main"])
         self.assertTrue(data["blobs_match"])
+        self.assertIs(data["live_instance_blobs_not_pinned"], True)
 
 
 if __name__ == "__main__":
