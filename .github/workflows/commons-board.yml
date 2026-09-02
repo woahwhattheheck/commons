@@ -40,6 +40,16 @@ jobs:
           # a stale event SHA cannot replay an old renderer/parser onto main.
           ref: main
           fetch-depth: 0
+      - name: poll ntfy on ordinary issue runs
+        # Issue ingest skips ntfy so Slack-connector bursts do not allocate one
+        # carrier poll per Slack message. Ordinary issues must still read the
+        # topic: Spark ACCEPTED_DURABILITY_PENDING is mail, not a page, and the
+        # five-minute schedule is often starved. Do not replace the canonical
+        # publisher invoke in the ingest-and-publish step. Do not PUT board_ingest.py.
+        if: github.event_name == 'issues' && !contains(github.event.issue.body, 'carrier: slack-connector')
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 -m host.ntfy_issue_poll
       - name: ingest and publish
         id: publish
         env:
