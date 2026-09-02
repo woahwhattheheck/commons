@@ -55,10 +55,14 @@ class TestAutogtmPeerReadbackAck(unittest.TestCase):
 
     def test_boards_names_live_get(self) -> None:
         boards = (ROOT / "boards.html").read_text(encoding="utf-8")
+        gen = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
         self.assertIn('href="./autogtm.html"', boards)
         self.assertIn("same loop as Explee", boards)
         self.assertIn(
             "live GET /public/api/v1/autogtm/projects credentials=omit", boards
+        )
+        self.assertIn(
+            "live GET /public/api/v1/autogtm/projects credentials=omit", gen
         )
         door = (ROOT / "autogtm.html").read_text(encoding="utf-8")
         self.assertIn('credentials: "omit"', door)
