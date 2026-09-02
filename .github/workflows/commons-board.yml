@@ -1,5 +1,12 @@
 name: commons-board
 on:
+  # A workflow syntax repair cannot rely on the disabled workflow's issue or
+  # schedule events to wake itself.  Restrict the push recovery road to main
+  # changes of this workflow file; publisher commits to p/ do not match it.
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/commons-board.yml"
   schedule:
     - cron: "*/5 * * * *"
   workflow_dispatch:
@@ -17,7 +24,7 @@ concurrency:
   # Coalesce only slack-connector issue runs.  The running and newest pending
   # run both sweep the complete labelled issue queue, so a cancelled pending
   # run owns no unique source bytes. Ordinary issue events keep their distinct
-  # groups, and schedule/dispatch retain their own recovery groups.
+  # groups, and push/schedule/dispatch retain their own recovery groups.
   group: "commons-board-ingest-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'slack-batch' || github.event_name }}-${{ github.event_name == 'issues' && contains(github.event.issue.body, 'carrier: slack-connector') && 'queue' || github.event.issue.number || 'poll' }}"
   cancel-in-progress: false
 jobs:

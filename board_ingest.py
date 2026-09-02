@@ -3808,11 +3808,12 @@ def sweep_collect():
     # The immediate issue event still handles its own payload first.  It also
     # sweeps the labelled queue so one surviving run can consume every event in
     # a coalesced Slack burst; cancelled pending runs therefore carry no unique
-    # state.  Schedule and dispatch remain redundant recovery roads.
+    # state.  A narrowly path-filtered main push wakes a repaired workflow;
+    # schedule and dispatch remain redundant recovery roads.
     if not SWEEP_ENABLED:
         return []
     if os.environ.get("GITHUB_EVENT_NAME") not in (
-        "issues", "schedule", "workflow_dispatch", "repository_dispatch"
+        "issues", "push", "schedule", "workflow_dispatch", "repository_dispatch"
     ):
         return []
     try:

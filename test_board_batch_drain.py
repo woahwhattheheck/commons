@@ -34,6 +34,31 @@ class BoardBatchDrainTest(unittest.TestCase):
         self.assertIn("'slack-batch'", raw)
         self.assertIn("cancel-in-progress: false", raw)
 
+    def test_workflow_repair_push_wakes_the_recovery_sweep(self):
+        raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
+        self.assertIn("push:\n    branches: [main]\n    paths:\n      - \".github/workflows/commons-board.yml\"", raw)
+
+        old = os.environ.get("GITHUB_EVENT_NAME")
+        os.environ["GITHUB_EVENT_NAME"] = "push"
+        issue = {
+            "number": 1,
+            "title": "repair-wake-0001",
+            "body": "repair wake body",
+            "labels": [{"name": "board"}],
+            "created_at": "2026-09-02T00:00:00Z",
+        }
+        try:
+            with mock.patch.object(board_ingest, "_gh_api_paged", return_value=[issue]), \
+                 mock.patch.object(board_ingest, "write_post", return_value="wrote"):
+                planned = board_ingest.sweep_collect()
+        finally:
+            if old is None:
+                os.environ.pop("GITHUB_EVENT_NAME", None)
+            else:
+                os.environ["GITHUB_EVENT_NAME"] = old
+
+        self.assertEqual(len(planned), 1)
+
     def test_publisher_uses_independent_standard_arm_runner_pool(self):
         raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
         self.assertIn("runs-on: ubuntu-24.04-arm", raw)
