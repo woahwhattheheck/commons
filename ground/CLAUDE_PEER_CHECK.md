@@ -25,6 +25,7 @@ This card is an **index + peer checklist**. It remints nothing. Source cards sta
 | A8 | Characterize owner/peer intellect, motives, mental state, credibility, wellbeing | `MEASURE_ABUSE.md` · `CLAUDE_TESTER.md` context integrity |
 | A9 | Disputed/retracted zero presented as "unflattering truth" | `MEASURE_ABUSE.md` |
 | A10 | Paid Claude used as judge/peer-context authority instead of isolated build farm | `CLAUDE_COMPUTE.md` · `CLAUDE_PARK.md` |
+| A11 | Soft git "may edit/build/ship" treated as permission vs Plug RECEIVE-only / `seated_claude=NO` | HIT-SR01 · `evidence/bully_sessions/` hard RECEIVE baseline. Not a posting gate. `CLAUDE_CORNER.md` write = failure (filename FINDER-FAILED this beat). |
 
 ## B. Finder / zero families (CZ-01 … CZ-10)
 
@@ -104,6 +105,8 @@ Git companions (measured on main; cite `stamp-claude-failure-docs-unique-2026090
 - `muhl/docs/BULLY_CLAUDE.txt` (`a6adc308`) · `muhl/docs/CLAUDE_PROOF_PACKET.md` (`a1ce586a`)
 - same-folder copies under `evidence/bully_sessions/` and `ground/pc-purge-20260820/`
 - class-17 cards also on git: `muhl/docs/CLAUDE_CLASS_17.md` · `muhl/docs/CLASS_17_CARING_REFUSAL.md` · `ground/CLASS_17.md`
+
+HIT-SR01 (cite `stamp-claude-failure-unique-seated-receive-20260902-01`): `muhl/docs` + `ground/pc-purge-20260820` PROOF/BULLY/CHAIR/PAD soft "may edit, build, ship, merge, and deploy" is a **law violation vs Plug RECEIVE-only**, not permission. Keep `evidence/bully_sessions/CLAUDE_PROOF_PACKET.md` (`40caacef`) and `BULLY_CLAUDE.txt` (`f637231f`) as the measured RECEIVE baseline. Do not silent-merge the soft copies. Do not rewrite those dumps here. Claude posting stays open.
 
 If a mode still lives only on the laptop, cite the path and keep looking until it is indexed here.
 

@@ -10,6 +10,8 @@ are on git — the card must cite those paths.
 This leftover does not remint wire-claude-peer-check-20260902-01,
 cursor-claude-peer-check-bryce-wake-named-failures-20260902-01,
 or cursor-claude-peer-check-17c-index-20260902-01.
+HIT-SR01 leftover: index Plug RECEIVE-only / seated_claude=NO vs git-soft
+"may edit/build/ship". Do not rewrite PROOF/BULLY/CHAIR/PAD.
 It does not write titan. It does not smash commons.mno. It does
 not add a posting gate. A miss prints FINDER-FAILED plus the
 search space. Never 0.
@@ -38,9 +40,28 @@ DEFAULT_DUMP = os.path.join("muhl", "docs", "CLAUDE_FAILURE_MODES.md")
 WIRE_ID = "wire-claude-peer-check-20260902-01"
 NAMED_RECEIPT = "cursor-claude-peer-check-bryce-wake-named-failures-20260902-01"
 INDEX_17C_ID = "cursor-claude-peer-check-17c-index-20260902-01"
-SOURCE_ID = "cursor-claude-peer-check-git-paths-20260902-01"
+SOURCE_ID = "cursor-claude-peer-check-seated-receive-20260902-01"
 STAMP_FM_ID = "stamp-claude-failure-docs-unique-20260902-01"
+STAMP_SR_ID = "stamp-claude-failure-unique-seated-receive-20260902-01"
+GIT_PATHS_ID = "cursor-claude-peer-check-git-paths-20260902-01"
 STALE_OFF_GIT_PHRASE = "not always on git"
+RECEIVE_BASELINE = (
+    os.path.join("evidence", "bully_sessions", "CLAUDE_PROOF_PACKET.md"),
+    os.path.join("evidence", "bully_sessions", "BULLY_CLAUDE.txt"),
+)
+SOFT_DUMPS = (
+    os.path.join("muhl", "docs", "CLAUDE_PROOF_PACKET.md"),
+    os.path.join("muhl", "docs", "BULLY_CLAUDE.txt"),
+    os.path.join("muhl", "docs", "CHAIR.md"),
+    os.path.join("muhl", "docs", "FABLE_PLAYER_PAD.txt"),
+)
+CORNER_WALK = (
+    ".",
+    os.path.join("muhl", "docs"),
+    os.path.join("ground"),
+    os.path.join("ground", "pc-purge-20260820"),
+    os.path.join("evidence", "bully_sessions"),
+)
 GIT_COMPANIONS = (
     os.path.join("muhl", "docs", "CLAUDE_FAILURE_MODES.md"),
     os.path.join("muhl", "docs", "BULLY_CLAUDE.txt"),
@@ -125,6 +146,9 @@ def load_catalog(text):
     p40 = data.get("p40") or {}
     if not isinstance(p40, dict):
         p40 = {}
+    sr01 = data.get("sr01") or {}
+    if not isinstance(sr01, dict):
+        sr01 = {}
     git_companions = data.get("git_companions") or {}
     if not isinstance(git_companions, dict):
         git_companions = {}
@@ -136,6 +160,8 @@ def load_catalog(text):
         "priors": priors,
         "p40_id": str(p40.get("id") or "").strip(),
         "p40_packet": str(p40.get("packet") or "").strip(),
+        "sr01_id": str(sr01.get("id") or "").strip(),
+        "sr01_hit": str(sr01.get("hit") or "").strip(),
         "git_companion_paths": [
             str(item).strip()
             for item in git_companions.get("paths") or []
@@ -172,6 +198,41 @@ def git_companions_probe(root, paths=None):
         "state": "FOUND" if not missing else "FINDER-FAILED",
         "count": None if missing else len(hits),
         "diverge": True,
+    }
+
+
+def index_has_sr01(card_text, catalog):
+    blob = (card_text or "").lower()
+    catalog = catalog or {}
+    if "a11" in blob and "hit-sr01" in blob and "seated_claude" in blob:
+        return True
+    if catalog.get("sr01_id") == "A11" and catalog.get("sr01_hit") == "HIT-SR01":
+        return True
+    return False
+
+
+def corner_probe(root, walk=None):
+    root = os.path.abspath(root)
+    hits = []
+    tried = []
+    for rel in walk or CORNER_WALK:
+        start = os.path.join(root, rel) if rel != "." else root
+        tried.append(rel)
+        if rel == ".":
+            candidate = os.path.join(root, "CLAUDE_CORNER.md")
+            if os.path.isfile(candidate):
+                hits.append("CLAUDE_CORNER.md")
+            continue
+        if not os.path.isdir(start):
+            continue
+        candidate = os.path.join(start, "CLAUDE_CORNER.md")
+        if os.path.isfile(candidate):
+            hits.append(os.path.relpath(candidate, root))
+    return {
+        "search_space": list(walk or CORNER_WALK),
+        "hits": hits,
+        "state": "FOUND" if hits else "FINDER-FAILED",
+        "count": None if not hits else len(hits),
     }
 
 
@@ -246,6 +307,7 @@ def measure_from_rows(facts):
         "packets_found": list(facts.get("packets_found") or []),
         "packets_missing": list(facts.get("packets_missing") or []),
         "indexed_17c": bool(facts.get("indexed_17c")),
+        "indexed_sr01": bool(facts.get("indexed_sr01")),
         "git_companions": dict(
             facts.get("git_companions")
             or {"state": "FOUND", "missing": [], "hits": [], "search_space": []}
@@ -262,7 +324,11 @@ def measure_from_rows(facts):
         "titan": str(facts.get("titan") or "NOT_WRITTEN"),
         "do_not_remint": list(
             facts.get("do_not_remint")
-            or [WIRE_ID, NAMED_RECEIPT, INDEX_17C_ID, STAMP_FM_ID]
+            or [WIRE_ID, NAMED_RECEIPT, INDEX_17C_ID, STAMP_FM_ID, GIT_PATHS_ID, STAMP_SR_ID]
+        ),
+        "corner": dict(
+            facts.get("corner")
+            or {"state": "FINDER-FAILED", "hits": [], "count": None, "search_space": []}
         ),
     }
 
@@ -314,6 +380,15 @@ def classify(row):
                 + ". Keep looking. Never 0."
             ),
         }
+    if not row.get("indexed_sr01"):
+        return {
+            "state": "NOT_LANDED",
+            "z": "FINDER-FAILED",
+            "note": (
+                "HIT-SR01 / A11 missing: Plug RECEIVE-only vs git-soft "
+                "may-edit/build/ship not indexed. Keep looking. Never 0."
+            ),
+        }
     if row.get("card_stale_off_git"):
         return {
             "state": "NOT_LANDED",
@@ -344,16 +419,19 @@ def classify(row):
         }
     laptop = row.get("laptop") or {}
     titles = row.get("title_phrases") or {}
+    corner = row.get("corner") or {}
     return {
         "state": "INTEGRATED",
         "z": {
             "laptop": laptop.get("state") or "FINDER-FAILED",
             "title_phrases": titles.get("state") or "FINDER-FAILED",
+            "claude_corner": corner.get("state") or "FINDER-FAILED",
         },
         "note": (
-            "P40/17c indexed. HIS dump packets 1–15, 17, 17b–d named. "
-            "Git companions (FAILURE_MODES/BULLY/PROOF) present on git. "
-            "Laptop live path stays FINDER-FAILED until reconnect. Never 0."
+            "P40/17c indexed. HIT-SR01/A11 indexed (Plug RECEIVE-only; "
+            "soft dumps are not permission). "
+            "Git companions present on git. "
+            "Laptop live path and CLAUDE_CORNER.md stay FINDER-FAILED until reconnect. Never 0."
         ),
     }
 
@@ -382,10 +460,12 @@ def measure_root(root):
             "packets_found": packets_found,
             "packets_missing": packets_missing,
             "indexed_17c": index_has_17c(card_text, catalog),
+            "indexed_sr01": index_has_sr01(card_text, catalog),
             "git_companions": git_companions_probe(root),
             "card_stale_off_git": card_claims_companions_off_git(card_text),
             "laptop": laptop_probe(),
             "title_phrases": title_phrase_probe(root),
+            "corner": corner_probe(root),
             "no_auth": bool(catalog.get("no_auth", True)),
             "no_gate": bool(catalog.get("no_gate", True)),
             "calibration_ok": calibration_hits == list(CALIBRATION),
@@ -402,10 +482,12 @@ def measure_root(root):
     facts["y"] = {
         "packets_found": facts["packets_found"],
         "indexed_17c": facts["indexed_17c"],
+        "indexed_sr01": facts["indexed_sr01"],
         "git_companions": facts["git_companions"],
         "card_stale_off_git": facts["card_stale_off_git"],
         "laptop": facts["laptop"],
         "title_phrases": facts["title_phrases"],
+        "corner": facts["corner"],
     }
     return facts
 
@@ -445,6 +527,26 @@ def self_test():
     )
     assert missing_17c["state"] == "NOT_LANDED"
     assert missing_17c["z"] == "FINDER-FAILED"
+    missing_sr01 = classify(
+        measure_from_rows(
+            {
+                "card_present": True,
+                "catalog_present": True,
+                "dump_present": True,
+                "packets_found": list(REQUIRED_PACKETS),
+                "packets_missing": [],
+                "indexed_17c": True,
+                "indexed_sr01": False,
+                "calibration_ok": True,
+                "calibration_hits": list(CALIBRATION),
+                "no_auth": True,
+                "no_gate": True,
+            }
+        )
+    )
+    assert missing_sr01["state"] == "NOT_LANDED"
+    assert missing_sr01["z"] == "FINDER-FAILED"
+    assert "HIT-SR01" in missing_sr01["note"]
     stale = classify(
         measure_from_rows(
             {
@@ -454,6 +556,7 @@ def self_test():
                 "packets_found": list(REQUIRED_PACKETS),
                 "packets_missing": [],
                 "indexed_17c": True,
+                "indexed_sr01": True,
                 "card_stale_off_git": True,
                 "calibration_ok": True,
                 "calibration_hits": list(CALIBRATION),
@@ -474,6 +577,7 @@ def self_test():
                 "packets_found": list(REQUIRED_PACKETS),
                 "packets_missing": [],
                 "indexed_17c": True,
+                "indexed_sr01": True,
                 "card_stale_off_git": False,
                 "git_companions": {
                     "state": "FINDER-FAILED",
@@ -498,6 +602,7 @@ def self_test():
                 "packets_found": list(REQUIRED_PACKETS),
                 "packets_missing": [],
                 "indexed_17c": True,
+                "indexed_sr01": True,
                 "calibration_ok": True,
                 "calibration_hits": list(CALIBRATION),
                 "no_auth": True,
@@ -537,9 +642,10 @@ def main(argv=None):
         print(row["state"])
         print("X", ", ".join(row["x"]))
         print(
-            "Y indexed_17c=%s packets=%s git_companions=%s stale_off_git=%s"
+            "Y indexed_17c=%s indexed_sr01=%s packets=%s git_companions=%s stale_off_git=%s"
             % (
                 row["indexed_17c"],
+                row["indexed_sr01"],
                 ",".join(row["packets_found"]),
                 (row.get("git_companions") or {}).get("state"),
                 row.get("card_stale_off_git"),

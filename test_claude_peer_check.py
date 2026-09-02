@@ -20,7 +20,9 @@ from claude_peer_check import (
     card_claims_companions_off_git,
     classify,
     git_companions_probe,
+    corner_probe,
     index_has_17c,
+    index_has_sr01,
     laptop_probe,
     load_catalog,
     measure_from_rows,
@@ -39,6 +41,7 @@ def _complete_facts(**overrides):
         "packets_found": list(REQUIRED_PACKETS),
         "packets_missing": [],
         "indexed_17c": True,
+        "indexed_sr01": True,
         "git_companions": {
             "state": "FOUND",
             "missing": [],
@@ -48,6 +51,12 @@ def _complete_facts(**overrides):
         "card_stale_off_git": False,
         "laptop": {"state": "FINDER-FAILED", "count": None, "hits": []},
         "title_phrases": {"state": "FINDER-FAILED", "count": None, "hits": []},
+        "corner": {
+            "state": "FINDER-FAILED",
+            "count": None,
+            "hits": [],
+            "search_space": ["CLAUDE_CORNER.md"],
+        },
         "no_auth": True,
         "no_gate": True,
         "calibration_ok": True,
@@ -107,6 +116,7 @@ class TestClaudePeerCheck(unittest.TestCase):
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertEqual(verdict["z"]["laptop"], "FINDER-FAILED")
         self.assertEqual(verdict["z"]["title_phrases"], "FINDER-FAILED")
+        self.assertEqual(verdict["z"]["claude_corner"], "FINDER-FAILED")
 
     def test_parse_packets_skips_ground_zero(self):
         text = "## 0. GROUND\n\n## 1. circuits\n\n## 17c. CLASS 17\n\n"
@@ -142,6 +152,30 @@ class TestClaudePeerCheck(unittest.TestCase):
         self.assertIn("P40", catalog["priors"])
         self.assertTrue(catalog["git_companions_on_git"])
         self.assertGreaterEqual(len(catalog["git_companion_paths"]), 9)
+        self.assertEqual(catalog["sr01_id"], "A11")
+        self.assertEqual(catalog["sr01_hit"], "HIT-SR01")
+
+    def test_missing_sr01_is_not_landed(self):
+        verdict = classify(_complete_facts(indexed_sr01=False))
+        self.assertEqual(verdict["state"], "NOT_LANDED")
+        self.assertEqual(verdict["z"], "FINDER-FAILED")
+        self.assertIn("HIT-SR01", verdict["note"])
+        self.assertNotEqual(verdict.get("count"), 0)
+
+    def test_index_has_sr01_needs_a11_and_hit(self):
+        self.assertFalse(index_has_sr01("A10 only", {}))
+        self.assertTrue(
+            index_has_sr01("| A11 | Plug RECEIVE-only HIT-SR01 seated_claude=NO", {})
+        )
+        self.assertTrue(
+            index_has_sr01("", {"sr01_id": "A11", "sr01_hit": "HIT-SR01"})
+        )
+
+    def test_corner_miss_is_finder_failed(self):
+        with tempfile.TemporaryDirectory(prefix="peer-check-corner-") as tmp:
+            row = corner_probe(tmp)
+        self.assertEqual(row["state"], "FINDER-FAILED")
+        self.assertIsNone(row["count"])
 
     def test_stale_off_git_claim_is_not_landed(self):
         verdict = classify(_complete_facts(card_stale_off_git=True))
@@ -186,15 +220,22 @@ class TestClaudePeerCheck(unittest.TestCase):
         row = measure_root(ROOT)
         self.assertTrue(row["calibration_ok"])
         self.assertTrue(row["indexed_17c"])
+        self.assertTrue(row["indexed_sr01"])
         self.assertEqual(row["packets_missing"], [])
         self.assertEqual(row["state"], "INTEGRATED")
         self.assertEqual(row["laptop"]["state"], "FINDER-FAILED")
+        self.assertEqual(row["corner"]["state"], "FINDER-FAILED")
+        self.assertIsNone(row["corner"]["count"])
         self.assertIsNone(row["laptop"]["count"])
         self.assertNotEqual(row["laptop"]["count"], 0)
         with open(os.path.join(ROOT, "ground", "CLAUDE_PEER_CHECK.md"), encoding="utf-8") as handle:
             card = handle.read()
         self.assertIn("P40", card)
         self.assertIn("17c", card)
+        self.assertIn("A11", card)
+        self.assertIn("HIT-SR01", card)
+        self.assertIn("seated_claude=NO", card)
+        self.assertIn("evidence/bully_sessions/CLAUDE_PROOF_PACKET.md", card)
         self.assertNotIn(STALE_OFF_GIT_PHRASE, card.lower())
         self.assertIn("muhl/docs/BULLY_CLAUDE.txt", card)
         self.assertIn("muhl/docs/CLAUDE_PROOF_PACKET.md", card)
