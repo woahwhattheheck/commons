@@ -10,11 +10,11 @@
   },
   "counts": {
     "DEGRADED": 0,
-    "LIVE": 3,
+    "LIVE": 4,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 78
+    "TESTED": 83
   },
   "features": [
     {
@@ -89,6 +89,78 @@
       "test_paths": [
         "test_arbitrage.py",
         "revenue/arbitrage/opportunity.schema.json"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/day.md:8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "8940fb578b074f057f4d3c6477d75543b6e5e560"
+      ],
+      "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "dependencies": [
+        "business-pack-keep-sell-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-operator-day-blob-20260902-01",
+        "ev-operator-day-git-20260902-01",
+        "ev-operator-day-live-20260902-01",
+        "ev-operator-day-receipt-20260902-01",
+        "ev-operator-day-source-20260902-01",
+        "ev-operator-day-tests-20260902-01"
+      ],
+      "file": "cursor-business-pack-operator-day-20260902-01.json",
+      "id": "cursor-business-pack-operator-day-20260902-01",
+      "last_change": "2026-09-02T05:45:00Z",
+      "live_status": "LIVE",
+      "main_sha": "0457636a9ffaa70104458f488e2db0fcb0c11312",
+      "name": "Business pack employee-day runbook",
+      "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "business-packs.html",
+      "receipts": [
+        "cursor-business-pack-operator-day-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "ground/BUSINESS_PACKS.md",
+        "ground/SLACK_CONTROL_PLANE.md"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_operator.py",
+        "host/business_pack_operator.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -900,6 +972,63 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "KEEP vs SELL factory ledger for #business-packs. Records KEEP/SELL/OPEN. No invented Stripe URLs, ads, buyers, or cash.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "ground/BUSINESS_PACK_KEEP_SELL.json",
+        "host/business_pack_keep_sell.py",
+        "keep-sell.html",
+        "test_business_pack_keep_sell.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "ground/BUSINESS_PACK_KEEP_SELL.json",
+        "host/business_pack_keep_sell.py",
+        "keep-sell.html",
+        "test_business_pack_keep_sell.py"
+      ],
+      "dependencies": [
+        "cursor-slack-business-packs-channel-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "business-pack-keep-sell-20260902-01.json",
+      "id": "business-pack-keep-sell-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Business pack KEEP vs SELL factory",
+      "next_gap": "Owner pastes live Payment Links. Pack scaffold landing stays GOAT. Do not invent checkout or ad spend.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "keep-sell.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "keep-sell.html",
+        "ground/SLACK_CONTROL_PLANE.md",
+        "payment-capability.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_keep_sell.py",
+        "host/business_pack_keep_sell.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Canyon Labs multi-site regulated sample-intake runner: a working CLI processes 300 synthetic submissions across Bluffdale, Rush, and Vista, accessions 240 complete forms once at the correct site, holds 60 missing/conflicting rows with exact reasons, preserves source hashes and field lineage, refuses testing on HOLD, denies autonomous release, and writes journal plus receipts. Replay changes no state. Adapters stay simulated.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1446,6 +1575,163 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Fresh Slack CLI /slackauthticket challenge on #needs-bryce for the already-landed Commons Service Tools CLI project. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_custom_tools_cli_ticket.py",
+        "host/slack_custom_tools_cli/slack.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_custom_tools_cli_ticket.py",
+        "host/slack_custom_tools_cli/slack.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.json"
+      ],
+      "dependencies": [
+        "cursor-slack-custom-tools-cli-project-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-custom-tools-cli-challenge-20260902-01.json",
+      "id": "cursor-slack-custom-tools-cli-challenge-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack custom tools CLI challenge",
+      "next_gap": "Bryce must send the slash command and reply with the challenge code. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_CUSTOM_TOOLS_CLI_CHALLENGE.md",
+        "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
+        "ground/NEEDS_BRYCE.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_custom_tools_cli_ticket.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Integrations cwd for the Slack CLI leftover, composed next to integrations/slack_service_tags. Does not remint host/slack_custom_tools_cli. Login stays #needs-bryce.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/slack_custom_tools/app.py",
+        "integrations/slack_custom_tools/manifest.json",
+        "integrations/slack_custom_tools/.slack/hooks.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/slack_custom_tools/app.py",
+        "integrations/slack_custom_tools/manifest.json",
+        "integrations/slack_custom_tools/.slack/hooks.json",
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md"
+      ],
+      "dependencies": [
+        "cursor-slack-custom-tools-cli-project-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-custom-tools-cli-integrations-20260902-01.json",
+      "id": "cursor-slack-custom-tools-cli-integrations-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack custom-tools CLI integrations cwd",
+      "next_gap": "Slack CLI login still needs Bryce in #needs-bryce. Do not remint the peer leftover id.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+        "integrations/slack_custom_tools/README.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_custom_tools_cli_integrations.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Slack CLI project leftover after custom-tools install so slack run has a cwd. Login stays #needs-bryce. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_custom_tools_cli_project.py",
+        "host/slack_custom_tools_cli/start.py",
+        "host/slack_custom_tools_cli/get_manifest.py",
+        "host/slack_custom_tools_cli/.slack/hooks.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_custom_tools_cli_project.py",
+        "host/slack_custom_tools_cli/start.py",
+        "host/slack_custom_tools_cli/get_manifest.py",
+        "host/slack_custom_tools_cli/.slack/hooks.json"
+      ],
+      "dependencies": [
+        "cursor-slack-custom-tools-install-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-custom-tools-cli-project-20260902-01.json",
+      "id": "cursor-slack-custom-tools-cli-project-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack custom-tools CLI project",
+      "next_gap": "Slack CLI login still needs Bryce to send /slackauthticket and return the challenge in #needs-bryce. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
+        "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
+        "host/slack_custom_tools_cli/get_manifest.py",
+        "integrations/slack_custom_tools/README.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_custom_tools_cli_project.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Every catalog Slack @tag has a real driver: in-harness when connected, Slack custom-tool remainder when a peer already has tools-live, official-console OWNER_SIGNIN otherwise. Facebook Graph POST and Slack CLI install stay peer organs. Not a Commons admission gate.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1592,6 +1878,58 @@
       "superseded_by": "",
       "test_paths": [
         "test_slack_service_tag_worker.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Slack @spark is a custom-tool job that drives the live no-auth Commons Spark MCP from the tagged remainder. Default dry-run. Not a Commons admission gate. Does not reopen the Notion NEED.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_spark_mcp_driver.py",
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SPARK_MCP_DRIVER.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_spark_mcp_driver.py",
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SPARK_MCP_DRIVER.json"
+      ],
+      "dependencies": [
+        "cursor-slack-service-tags-20260902-01",
+        "cursor-slack-service-all-drivers-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-spark-mcp-driver-20260902-01.json",
+      "id": "cursor-slack-spark-mcp-driver-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack Spark MCP driver",
+      "next_gap": "Notion Custom MCP field remains unseen from this seat. Stripe / HeyGen / Roboflow / Facebook still queue #provider-sign-in. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_SPARK_MCP_DRIVER.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "docs/spark-mcp.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_spark_mcp_driver.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -4969,7 +5307,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 84,
+  "n_features": 90,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

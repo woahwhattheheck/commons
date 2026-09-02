@@ -1,0 +1,17 @@
+{
+  "feature_id": "cursor-business-pack-operator-day-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-operator-day-source-20260902-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Employee-day law and do-X sheet landed at 0457636a9. This row does not remint them.",
+  "paths": [
+    "ground/BUSINESS_PACK_OPERATOR.md",
+    "ground/BUSINESS_PACK_OPERATOR.json",
+    "host/business_pack_operator.py",
+    "packs/_template/day.md",
+    "business-packs.html",
+    "test_business_pack_operator.py"
+  ],
+  "recorded_at": "2026-09-02T05:45:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

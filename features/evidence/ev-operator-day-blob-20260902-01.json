@@ -1,0 +1,11 @@
+{
+  "blob": "8940fb578b074f057f4d3c6477d75543b6e5e560",
+  "feature_id": "cursor-business-pack-operator-day-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-operator-day-blob-20260902-01",
+  "kind": "BLOB",
+  "note": "Exact day-sheet blob on current main. Do-X list. Support price OWNER_UNSET. Not a Commons seat.",
+  "path": "packs/_template/day.md",
+  "recorded_at": "2026-09-02T05:45:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
