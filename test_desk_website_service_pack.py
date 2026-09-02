@@ -80,6 +80,8 @@ class DeskWebsiteServicePackTest(unittest.TestCase):
         self.assertIn("index, follow", door)
         self.assertIn("OWNER_PASTE_REQUIRED", door)
         self.assertIn("does not ship customers", door.lower())
+        self.assertIn("packs/waitlist.html", door)
+        self.assertIn("../waitlist.html", door)
         self.assertNotIn("https://buy.stripe.com/", door)
         self.assertNotIn("https://donate.stripe.com/", checkout)
         self.assertNotIn("https://buy.stripe.com/", checkout)
