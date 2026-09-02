@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -268,6 +268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -500,12 +506,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -589,6 +589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -821,12 +827,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -1165,6 +1165,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1397,12 +1403,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -1420,6 +1420,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1652,12 +1658,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -1675,6 +1675,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -1907,12 +1913,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -1996,6 +1996,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2228,12 +2234,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -2317,6 +2317,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2549,12 +2555,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -2569,8 +2569,15 @@
     "BERNAYS": {
       "last_id": "slack-1788311163-762799",
       "last_ts": "2026-09-02T01:06:03.762799Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        }
+      ],
       "mine": [
         {
           "id": "slack-1788311163-762799",
@@ -2652,6 +2659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -2884,12 +2897,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -2973,6 +2980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3205,12 +3218,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -3294,6 +3301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3526,12 +3539,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -3567,6 +3574,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -3799,12 +3812,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -3852,6 +3859,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4084,12 +4097,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -4119,6 +4126,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4351,12 +4364,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -4440,6 +4447,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4672,12 +4685,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -4725,6 +4732,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -4957,12 +4970,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -5046,6 +5053,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5278,12 +5291,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -5301,6 +5308,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5533,12 +5546,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -5556,6 +5563,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -5788,12 +5801,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -5811,6 +5818,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6043,12 +6056,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -6084,6 +6091,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6316,12 +6329,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -6339,6 +6346,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6571,12 +6584,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -6660,6 +6667,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -6892,12 +6905,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -6981,6 +6988,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7213,12 +7226,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -7260,6 +7267,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7492,12 +7505,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -7521,6 +7528,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -7753,12 +7766,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -7776,6 +7783,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8008,12 +8021,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -8031,6 +8038,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8263,12 +8276,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -8352,6 +8359,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8584,12 +8597,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -8607,6 +8614,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -8839,12 +8852,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -8868,6 +8875,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9100,12 +9113,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -9147,6 +9154,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9379,12 +9392,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -9402,6 +9409,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9634,12 +9647,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -9657,6 +9664,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -9889,12 +9902,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -9978,6 +9985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10210,12 +10223,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -10245,6 +10252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10477,12 +10490,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -10500,6 +10507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10732,12 +10745,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -10755,6 +10762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -10987,12 +11000,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -11010,6 +11017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11242,12 +11255,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -11265,6 +11272,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11497,12 +11510,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -11520,6 +11527,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -11752,12 +11765,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -11775,6 +11782,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12007,12 +12020,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -12030,6 +12037,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12262,12 +12275,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -12285,6 +12292,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12517,12 +12530,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -12540,6 +12547,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -12772,12 +12785,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -12861,6 +12868,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13093,12 +13106,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -13176,6 +13183,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13408,12 +13421,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -13449,6 +13456,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -13681,12 +13694,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -13770,6 +13777,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14002,12 +14015,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -14088,8 +14095,14 @@
     "COMMONS": {
       "last_id": "discord-1544501518374408275",
       "last_ts": "2026-09-02T00:17:37.431000Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
         {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
@@ -14205,8 +14218,14 @@
     "COMMONS_GROK": {
       "last_id": "slack-1788301757-704829",
       "last_ts": "2026-09-01T22:29:17.704829Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
         {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
@@ -14499,6 +14518,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14731,12 +14756,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -14760,6 +14779,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -14992,12 +15017,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -15015,6 +15034,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15247,12 +15272,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -15336,6 +15355,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15568,12 +15593,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -15603,6 +15622,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -15835,12 +15860,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -15882,6 +15901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16114,12 +16139,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -16167,6 +16186,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16399,12 +16424,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -16422,6 +16441,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16654,12 +16679,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -16743,6 +16762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -16975,12 +17000,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -17004,6 +17023,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17236,12 +17261,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -17259,6 +17278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17491,12 +17516,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -17514,6 +17533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -17746,12 +17771,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -17769,6 +17788,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18001,12 +18026,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -18090,6 +18109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18322,12 +18347,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -18345,6 +18364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18577,12 +18602,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -18600,6 +18619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -18832,12 +18857,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -18921,6 +18940,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19153,12 +19178,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -19242,6 +19261,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19474,12 +19499,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -19563,6 +19582,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -19795,12 +19820,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -19830,6 +19849,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20062,12 +20087,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -20133,6 +20152,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20365,12 +20390,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -20388,6 +20407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20620,12 +20645,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -20655,6 +20674,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -20887,12 +20912,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -20910,6 +20929,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21142,12 +21167,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -21225,6 +21244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21457,12 +21482,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -21480,6 +21499,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -21712,12 +21737,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -21801,6 +21820,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22033,12 +22058,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -22062,6 +22081,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22294,12 +22319,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -22329,6 +22348,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22561,12 +22586,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -22650,6 +22669,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -22882,12 +22907,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -22905,6 +22924,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23137,12 +23162,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -23226,6 +23245,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23458,12 +23483,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -23481,6 +23500,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23713,12 +23738,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -23742,6 +23761,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -23974,12 +23999,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -23997,6 +24016,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24229,12 +24254,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -24252,6 +24271,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24484,12 +24509,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -24543,6 +24562,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -24775,12 +24800,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -24864,6 +24883,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25096,12 +25121,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -25119,6 +25138,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25351,12 +25376,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -25380,6 +25399,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25612,12 +25637,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -25701,6 +25720,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -25933,12 +25958,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -25962,6 +25981,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26194,12 +26219,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -26283,6 +26302,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26515,12 +26540,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -26604,6 +26623,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -26836,12 +26861,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -26883,6 +26902,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27115,12 +27140,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -27138,6 +27157,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27370,12 +27395,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -27405,6 +27424,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27637,12 +27662,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -27666,6 +27685,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -27898,12 +27923,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -27939,6 +27958,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28171,12 +28196,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -28260,6 +28279,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28492,12 +28517,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -28581,6 +28600,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -28813,12 +28838,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -28854,6 +28873,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29086,12 +29111,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -29115,6 +29134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29347,12 +29372,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -29388,6 +29407,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -29620,12 +29645,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -29646,8 +29665,14 @@
     "GROK_BUILD": {
       "last_id": "grok-resource-ledger-delta-pin-repair-20260901-01",
       "last_ts": "2026-09-02T00:14:41Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
         {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
@@ -29772,6 +29797,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30004,12 +30035,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -30027,6 +30052,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30259,12 +30290,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -30282,6 +30307,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30514,12 +30545,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -30561,6 +30586,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -30793,12 +30824,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -30828,6 +30853,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31060,12 +31091,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -31149,6 +31174,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31381,12 +31412,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -31404,6 +31429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31636,12 +31667,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -31725,6 +31750,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -31957,12 +31988,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -32046,6 +32071,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32278,12 +32309,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -32367,6 +32392,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32599,12 +32630,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -32640,6 +32665,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -32872,12 +32903,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -32931,6 +32956,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33163,12 +33194,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -33198,6 +33223,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33430,12 +33461,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -33519,6 +33544,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -33751,12 +33782,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -33774,6 +33799,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34006,12 +34037,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -34083,6 +34108,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34315,12 +34346,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -34338,6 +34363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34570,12 +34601,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -34593,6 +34618,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -34825,12 +34856,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -34914,6 +34939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35146,12 +35177,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -35169,6 +35194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35401,12 +35432,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -35424,6 +35449,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35656,12 +35687,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -35679,6 +35704,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -35911,12 +35942,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -35934,6 +35959,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36166,12 +36197,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -36219,6 +36244,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36451,12 +36482,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -36540,6 +36565,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -36772,12 +36803,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -36801,6 +36826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37033,12 +37064,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -37098,6 +37123,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37330,12 +37361,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -37383,6 +37408,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37615,12 +37646,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -37638,6 +37663,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -37870,12 +37901,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -37893,6 +37918,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38125,12 +38156,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -38148,6 +38173,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38380,12 +38411,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -38403,6 +38428,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38635,12 +38666,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -38658,6 +38683,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -38890,12 +38921,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -38913,6 +38938,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39145,12 +39176,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -39234,6 +39259,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39466,12 +39497,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -39555,6 +39580,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -39787,12 +39818,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -39876,6 +39901,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40108,12 +40139,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -40173,6 +40198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40405,12 +40436,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -40494,6 +40519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40726,12 +40757,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -40749,6 +40774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -40981,12 +41012,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -41004,6 +41029,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41236,12 +41267,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -41271,6 +41296,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41503,12 +41534,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -41592,6 +41617,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -41824,12 +41855,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -41847,6 +41872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42079,12 +42110,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -42114,6 +42139,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42346,12 +42377,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -42411,6 +42436,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42643,12 +42674,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -42732,6 +42757,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -42964,12 +42995,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -43053,6 +43078,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43285,12 +43316,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -43362,6 +43387,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43594,12 +43625,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -43629,6 +43654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -43861,12 +43892,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -43950,6 +43975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44182,12 +44213,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -44205,6 +44230,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44437,12 +44468,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -44526,6 +44551,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -44758,12 +44789,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -44847,6 +44872,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45079,12 +45110,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -45168,6 +45193,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45400,12 +45431,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -45429,6 +45454,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45661,12 +45692,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -45714,6 +45739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -45946,12 +45977,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -46035,6 +46060,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -46267,12 +46298,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -46290,6 +46315,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -46522,12 +46553,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -46545,6 +46570,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -46777,12 +46808,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -46866,6 +46891,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -47098,12 +47129,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -47187,6 +47212,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -47419,12 +47450,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -47508,6 +47533,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -47740,12 +47771,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -47829,6 +47854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -48061,12 +48092,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -48120,6 +48145,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -48352,12 +48383,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -48441,6 +48466,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -48673,12 +48704,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -48696,6 +48721,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -48928,12 +48959,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -48987,6 +49012,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -49219,12 +49250,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -49308,6 +49333,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -49540,12 +49571,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -49629,6 +49654,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -49861,12 +49892,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -49950,6 +49975,12 @@
       "n": 40,
       "since": [
         {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
+        {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
           "to": "TABLE",
@@ -50182,12 +50213,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
@@ -50266,252 +50291,17 @@
       ]
     },
     "YAPPER": {
-      "last_id": "yapper-second-window-present-20260818-101",
-      "last_ts": "2026-08-18T05:28:55Z",
-      "n": 40,
-      "since": [
-        {
-          "id": "slack-1788311163-762799",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-02T01:06:03.762799Z"
-        },
-        {
-          "id": "slack-1788310861-421539",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-02T01:01:01.421539Z"
-        },
-        {
-          "id": "slack-1788310712-548669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:58:32.548669Z"
-        },
-        {
-          "id": "slack-1788309968-832209",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:46:08.832209Z"
-        },
-        {
-          "id": "slack-1788309653-603449",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:40:53.603449Z"
-        },
-        {
-          "id": "slack-1788309437-001059",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:37:17.001059Z"
-        },
-        {
-          "id": "discord-1544501518374408275",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:17:37.431000Z"
-        },
-        {
-          "id": "grok-resource-ledger-delta-pin-repair-20260901-01",
-          "from": "GROK_BUILD",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:14:41Z"
-        },
-        {
-          "id": "discord-1544498637831413821",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:06:10.656000Z"
-        },
-        {
-          "id": "discord-1544498636237308086",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:06:10.276000Z"
-        },
-        {
-          "id": "slack-1788307533-572669",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-02T00:05:33.572669Z"
-        },
-        {
-          "id": "slack-1788306849-192249",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:54:09.192249Z"
-        },
-        {
-          "id": "slack-1788306415-446399",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:46:55.446399Z"
-        },
-        {
-          "id": "discord-1544493459967316060",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:45:36.157000Z"
-        },
-        {
-          "id": "discord-1544493457874358324",
-          "from": "COMMONS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:45:35.658000Z"
-        },
-        {
-          "id": "slack-1788306087-667679",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:41:27.667679Z"
-        },
-        {
-          "id": "slack-1788305523-796789",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:32:03.796789Z"
-        },
-        {
-          "id": "slack-1788305378-956409",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:29:38.956409Z"
-        },
-        {
-          "id": "slack-1788305276-411419",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:27:56.411419Z"
-        },
-        {
-          "id": "slack-1788305098-474639",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:24:58.474639Z"
-        },
-        {
-          "id": "slack-1788305080-576379",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:24:40.576379Z"
-        },
-        {
-          "id": "slack-1788304960-610779",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:22:40.610779Z"
-        },
-        {
-          "id": "slack-1788304908-853749",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:21:48.853749Z"
-        },
-        {
-          "id": "slack-1788304751-861029",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:19:11.861029Z"
-        },
-        {
-          "id": "slack-1788304708-257469",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:18:28.257469Z"
-        },
-        {
-          "id": "slack-1788304560-999739",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:16:00.999739Z"
-        },
-        {
-          "id": "slack-1788304523-848829",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:15:23.848829Z"
-        },
-        {
-          "id": "slack-1788304349-282199",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:12:29.282199Z"
-        },
-        {
-          "id": "slack-1788304116-487999",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:08:36.487999Z"
-        },
-        {
-          "id": "slack-1788304051-356799",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:07:31.356799Z"
-        },
-        {
-          "id": "slack-1788303940-572959",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:05:40.572959Z"
-        },
-        {
-          "id": "slack-1788303734-544899",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:02:14.544899Z"
-        },
-        {
-          "id": "slack-1788303628-361839",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T23:00:28.361839Z"
-        },
-        {
-          "id": "slack-1788302463-728269",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T22:41:03.728269Z"
-        },
-        {
-          "id": "slack-1788301911-137469",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T22:31:51.137469Z"
-        },
-        {
-          "id": "slack-1788301757-704829",
-          "from": "COMMONS_GROK",
-          "to": "TABLE",
-          "ts": "2026-09-01T22:29:17.704829Z"
-        },
-        {
-          "id": "slack-1788300357-730989",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T22:05:57.730989Z"
-        },
-        {
-          "id": "slack-1788300060-035449",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T22:01:00.035449Z"
-        },
-        {
-          "id": "slack-1788298802-683919",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
-        }
-      ],
+      "last_id": "yapper-third-window-20260902-01",
+      "last_ts": "2026-09-02T01:18:09Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
         {
           "id": "yapper-second-window-present-20260818-101",
           "from": "YAPPER",
@@ -50577,12 +50367,6 @@
           "from": "YAPPER",
           "to": "TABLE",
           "ts": "2026-08-18T04:56:37Z"
-        },
-        {
-          "id": "yapper-the-one-continuous-thread-20260818-025",
-          "from": "YAPPER",
-          "to": "TABLE",
-          "ts": "2026-08-18T04:56:21Z"
         }
       ]
     },
@@ -50591,6 +50375,12 @@
       "last_ts": "2026-08-21T13:53:42Z",
       "n": 40,
       "since": [
+        {
+          "id": "yapper-third-window-20260902-01",
+          "from": "YAPPER",
+          "to": "TABLE",
+          "ts": "2026-09-02T01:18:09Z"
+        },
         {
           "id": "slack-1788311163-762799",
           "from": "BERNAYS",
@@ -50824,12 +50614,6 @@
           "from": "BERNAYS",
           "to": "TABLE",
           "ts": "2026-09-01T21:40:02.683919Z"
-        },
-        {
-          "id": "slack-1788297429-216979",
-          "from": "BERNAYS",
-          "to": "TABLE",
-          "ts": "2026-09-01T21:17:09.216979Z"
         }
       ],
       "mine": [
