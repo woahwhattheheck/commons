@@ -26,7 +26,7 @@ Cite `wire-claude-peer-check-20260902-01` · HIT-SR01 A11. Seat `bc-73365238-12c
 
 ## Y — bytes-derived
 
-- current-main at measure (re-fetch before land): see commit
+- current-main at measure: `f3f7b9277f86dc83eec732386c7d580328e8a418` (re-fetch immediately before land)
 - `git merge-base --is-ancestor 91a3e8c47 origin/main` → **PASS**
 - Contents API + `git rev-parse origin/main:<path>` blobs **identical** on merge `91a3e8c47`, reviewed head `ee9d7a60`, and current main:
 
