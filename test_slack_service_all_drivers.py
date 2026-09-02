@@ -91,6 +91,29 @@ class SlackServiceAllDriversTest(unittest.TestCase):
         self.assertIn("peer_desk=GOAT", blob)
         self.assertNotIn("OWNER_BLOCKER", blob)
 
+    def test_notion_peer_remainder_does_not_reopen_need(self) -> None:
+        out = all_drivers.drive("notion", "list databases", connected=["slack"])
+        self.assertEqual(out["road"], "SLACK_CUSTOM_TOOL")
+        self.assertEqual(out["reason"], "peer_harness_remainder")
+        self.assertEqual(out["peer_desk"], "GOAT")
+        self.assertIs(out["this_process_tools"], False)
+        self.assertIs(out["reopen_need"], False)
+        self.assertIn("bc-73365238", out["measured_cloud_seats"])
+        self.assertIn(
+            "bc-f49eebc7-1125-5fd8-82e2-374889f4b17f",
+            out["measured_cloud_seats"],
+        )
+        self.assertNotEqual(out["road"], "OWNER_SIGNIN")
+        payload = all_drivers.drive_text("@notion list databases", connected=["slack"])
+        posts = all_drivers.format_slack_posts(payload)
+        kinds = {row["kind"] for row in posts}
+        self.assertIn("SLACK_CUSTOM_TOOL", kinds)
+        self.assertNotIn("OWNER_BLOCKER", kinds)
+        blob = "\n".join(row["text"] for row in posts)
+        self.assertIn("reopen_need=false", blob)
+        self.assertIn("peer_desk=GOAT", blob)
+        self.assertNotIn("OWNER_BLOCKER", blob)
+
     def test_heygen_and_roboflow_still_queue_provider_sign_in(self) -> None:
         empty = {key: "" for key in sum(all_drivers.ENV_KEYS.values(), ())}
         for name, url in (
