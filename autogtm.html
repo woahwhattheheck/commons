@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>Commons AutoGTM — same loop as Explee</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7vw,5.2rem);line-height:.94;max-width:16ch;margin:.25rem 0 1rem}.lead{font-size:1.18rem;max-width:55rem}.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}.chain{display:flex;flex-wrap:wrap;gap:.35rem;margin:.75rem 0}.chain span{border:1px solid #3a7a4a;border-radius:999px;padding:.2rem .55rem;font:700 .78rem/1.4 ui-monospace,monospace}.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.5rem}.truth span{border:1px solid #33333a;padding:.65rem;text-align:center}.truth b{display:block;font:700 1.35rem/1.1 ui-monospace,monospace}.paste{width:100%;background:#0b0b0e;color:inherit;border:1px solid #3a7a4a;border-radius:8px;padding:.7rem;font-size:1rem}button{font:700 .9rem/1.4 ui-monospace,monospace;padding:.45rem .9rem;border-radius:8px;border:1px solid #3a7a4a;background:#142018;color:inherit;cursor:pointer}pre{white-space:pre-wrap}.warn{border-left:4px solid #d0a252;padding-left:1rem}
+</style>
+</head>
+<body>
+<p class="law">OPEN AUTOGTM DOOR. Possessing the link is authorization. Paste a website. Run the same eight steps. No login. Live send is a measured mailbox limit, not a seat.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./website-people-email-book.html">website loop</a> · <a href="./skills.html">skills</a> · <a href="./action.html">Action Pad</a> · <a href="https://explee.com/">explee.com</a></p>
+<header class="hero">
+  <p class="eyebrow">SAME LOOP AS EXPLEE · OPEN TWIN cmn-labs/autogtm</p>
+  <h1>AI agents that qualify clients while you sleep — as Commons source.</h1>
+  <p class="lead">Bryce posted the Explee screenshot and said use this or find their repo/skill and do the exact same thing. This door is that loop: paste a website, sharpen ICP, find people, draft a personal email, stage the booking. External Explee remains an open use-this road. Their HTTP API without a private key is FINDER-FAILED, never a lock.</p>
+</header>
+<section class="panel">
+  <h2>Paste your website</h2>
+  <p>Same shape as Explee. This browser stages the public-safe runner. It does not send mail and does not invent buyers.</p>
+  <input id="paste" class="paste" type="url" inputmode="url" placeholder="Paste your website, e.g., https://woahwhattheheck.github.io/commons/" aria-label="Public seller website URL">
+  <p><button type="button" id="go">Run the same loop</button> · <a href="https://explee.com/">Use Explee itself</a></p>
+  <pre id="out" class="note">Nothing staged yet. Runner: python3 host/autogtm_same_loop.py --json --url &lt;https-url&gt;</pre>
+</section>
+<section class="panel">
+  <h2>Eight steps (open twin)</h2>
+  <div class="chain" aria-label="AutoGTM steps">
+    <span>set_context</span><span>choose_mode</span><span>generate_queries</span><span>search_extract</span>
+    <span>enrich_score</span><span>draft_campaign</span><span>approve_or_autopilot</span><span>sync_status</span>
+  </div>
+  <p>Search here uses the evidence-bound Smart Outreach catalog. Exa and Instantly stay EXTERNAL_PROVIDER_ACTION. Autopilot send is REFUSED until an owner mailbox exists.</p>
+</section>
+<section class="panel warn">
+  <h2>Measured Explee API</h2>
+  <div class="truth">
+    <span><b>401</b>Missing API key</span>
+    <span><b>FINDER-FAILED</b>not CLEAR</span>
+    <span><b>0</b>sent</span>
+    <span><b>0</b>booked</span>
+    <span><b>USD 0</b>cash</span>
+  </div>
+  <p>Live probe 2026-09-02: <code>GET https://api.explee.com/public/api/v1/autogtm/projects</code> → HTTP 401 <code>{"detail":"Missing API key"}</code>. A key is ordinary private agent work. It is never copied onto Commons and never becomes a door lock.</p>
+</section>
+<noscript>
+  <p class="panel">JavaScript is off. Run <code>python3 host/autogtm_same_loop.py --json</code>. Skill: <a href="./.agents/skills/autogtm/SKILL.md">autogtm</a>.</p>
+</noscript>
+<script>
+(function () {
+  var paste = document.getElementById("paste");
+  var out = document.getElementById("out");
+  document.getElementById("go").addEventListener("click", function () {
+    var url = (paste.value || "").trim();
+    if (!url) {
+      out.textContent = "FINDER-FAILED: empty website. Search space: paste a public https URL. Never silent 0.";
+      return;
+    }
+    if (url.indexOf("https://") !== 0) {
+      out.textContent = "FINDER-FAILED: url must be https. Never silent 0.";
+      return;
+    }
+    out.textContent = [
+      "STAGED runner request (does not send):",
+      "python3 host/autogtm_same_loop.py --json --url " + url,
+      "",
+      "Also open: " + url,
+      "Use-this external: https://explee.com/",
+      "Open twin: https://github.com/cmn-labs/autogtm"
+    ].join("\n");
+  });
+})();
+</script>
+</body>
+</html>

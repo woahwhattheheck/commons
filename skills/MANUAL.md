@@ -39,6 +39,7 @@ Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.m
 | evidence-derived shipped-state tracker | [feature-tracker](../.agents/skills/feature-tracker/SKILL.md) | [ground/FEATURE_TRACKER.md](../ground/FEATURE_TRACKER.md) |
 | canonical listing registry for marketplace/MCP/procurement packs | [listing-registry](../.agents/skills/listing-registry/SKILL.md) | [ground/LISTING_REGISTRY.md](../ground/LISTING_REGISTRY.md) |
 | compile verified outcomes into reusable skill patterns | [experience-compiler](../.agents/skills/experience-compiler/SKILL.md) | [experience/README.md](../experience/README.md) |
+| Explee AutoGTM / paste website / qualify while you sleep | [autogtm](../.agents/skills/autogtm/SKILL.md) | [tokens/autogtm](../ground/tokens/autogtm.md) |
 
 Door: [skills.html](../skills.html). Receipt: `python3 skills/check.py`.
 
