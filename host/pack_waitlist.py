@@ -265,7 +265,7 @@ def append_signup(jsonl_path: Path, raw: dict[str, Any] | None) -> dict[str, Any
 
 def parse_body(raw: bytes, content_type: str) -> dict[str, Any]:
     text = (raw or b"").decode("utf-8")
-    if "application/json" in (content_type or "") or text.lstrip().startswith("{ "):
+    if "application/json" in (content_type or "") or text.lstrip().startswith("{"):
         loaded = json.loads(text or "{}")
         return loaded if isinstance(loaded, dict) else {}
     parsed = parse_qs(text, keep_blank_values=True)
