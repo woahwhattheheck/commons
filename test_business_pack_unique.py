@@ -197,6 +197,29 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIsNone(self.law["mystery"]["value_range"])
         self.assertEqual(self.law["mystery"]["value_range_set_by"], "BRYCE")
 
+    def test_factory_pointer_cites_goat_scaffold_without_stealing(self) -> None:
+        pointer = self.law["factory_pointer"]
+        self.assertEqual(pointer["id"], "cursor-business-packs-factory-pointer-20260902-01")
+        self.assertEqual(pointer["scaffold_receipt"], "goat-business-packs-ready-20260902-01")
+        self.assertEqual(pointer["sku"], "land/sku-business-packs-20260902.md")
+        self.assertEqual(pointer["empty_slot"], "packs/_template/")
+        self.assertEqual(pointer["keep_sell_door"], "keep-sell.html")
+        self.assertEqual(pointer["checkout"], "NOT_MINTED")
+        self.assertIs(pointer["did_not_rewrite_scaffold"], True)
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(self.law["compose"]["id"], "cursor-business-packs-similar-mystery-20260902-01")
+        self.assertTrue((ROOT / "packs" / "_template" / "README.md").is_file())
+        self.assertTrue((ROOT / "land" / "sku-business-packs-20260902.md").is_file())
+        self.assertTrue((ROOT / "keep-sell.html").is_file())
+        self.assertTrue((ROOT / "p" / "goat-business-packs-ready-20260902-01.md").is_file())
+        lowered_door = self.door.lower()
+        self.assertIn("packs/_template/", lowered_door)
+        self.assertIn("keep-sell.html", lowered_door)
+        self.assertIn("not_minted", lowered_door)
+        self.assertIn("packs/_template/", self.card)
+        self.assertIn("keep-sell.html", self.card)
+        self.assertIn("NOT_MINTED", self.card)
+
     def test_mystery_pool_ok_without_invented_odds(self) -> None:
         pool = {
             "not_lottery": True,
