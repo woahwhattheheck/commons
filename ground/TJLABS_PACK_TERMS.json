@@ -1,0 +1,45 @@
+{
+  "id": "cursor-tjlabs-pack-tos-20260902-01",
+  "kind": "TJLABS_PACK_TOS",
+  "gate": false,
+  "commons_admission": false,
+  "source_slack_ts": "1788326869.732839",
+  "source_channel_id": "C0BU51F1PL3",
+  "source_channel_name": "#coordination-channel-created-today-please-use",
+  "business_packs_channel_id": "C0BU7JAPUH3",
+  "entity": "TokenJunkie Labs",
+  "entity_short": "tjlabs",
+  "intent": "tjlabs takes a percentage of profit and a partial ownership interest in each sold business pack, written into the terms of service",
+  "profit_share_percent": "OWNER_UNSET",
+  "partial_ownership_fraction": "OWNER_UNSET",
+  "owner_pasted": false,
+  "counsel_cleared": false,
+  "hold_counsel": true,
+  "saleable": false,
+  "checkout": "NOT_MINTED",
+  "marketing": "bryce_only",
+  "agents_spend_ads": false,
+  "no_fake_stripe_urls": true,
+  "no_earnings_copy": true,
+  "scaffold_owned_by": "GOAT",
+  "did_not_rewrite_goat_template": true,
+  "did_not_write_scout_research": true,
+  "research_seat": "SCOUT",
+  "counsel_questions": [
+    "FTC Franchise Rule three-element pattern (trademark, significant control/assistance, required payment)",
+    "whether a profit share is partnership evidence under UPA",
+    "whether partial ownership reads as a securities interest"
+  ],
+  "counsel_questions_are_not_rulings": true,
+  "verdicts": [
+    "TOS_INCOMPLETE",
+    "TOS_SLOTS_SET",
+    "TOS_COUNSEL_CLEARED",
+    "EARNINGS_CLAIM",
+    "FAKE_STRIPE_URL"
+  ],
+  "slots": {
+    "profit_share_percent": "OWNER_UNSET until Bryce pastes a number; agents do not invent one",
+    "partial_ownership_fraction": "OWNER_UNSET until Bryce pastes a fraction; agents do not invent one"
+  }
+}
