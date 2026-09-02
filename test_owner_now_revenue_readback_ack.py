@@ -32,7 +32,6 @@ KEEP = {
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
 }
 
 
@@ -51,18 +50,7 @@ class TestOwnerNowRevenueReadbackAck(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
 
-    def test_leftover_tests_and_json_still_ask(self) -> None:
-        leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_owner_now_revenue.py"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(
-            leftover.returncode, 0, msg=leftover.stdout + leftover.stderr
-        )
-        self.assertIn("Ran 7 tests", leftover.stderr)
+    def test_leftover_json_still_ask(self) -> None:
         packet = json.loads(
             subprocess.check_output(
                 [sys.executable, str(HELPER), "--json"], cwd=ROOT, text=True

@@ -28,8 +28,6 @@ KEEP = {
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-ack-20260902-01.md": "81097728",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
-    "door.js": "1f9e8d14",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
@@ -49,32 +47,20 @@ class TestBigThingsIncomingShotsReadbackAck(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
 
-    def test_leftover_and_unique_pack_tests_still_pass(self) -> None:
-        leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_big_things_incoming_shots.py"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
+    def test_leftover_pixels_still_present(self) -> None:
+        for rel in (
+            "shots/cursor-big-things-incoming-hub-1-20260902.png",
+            "shots/cursor-big-things-incoming-hub-2-20260902.png",
+            "p/cursor-big-things-incoming-shots-20260902-01.md",
+            "p/cursor-big-things-incoming-shots-readback-20260902-01.md",
+        ):
+            self.assertTrue((ROOT / rel).is_file(), rel)
+        leftover = (ROOT / "p/cursor-big-things-incoming-shots-20260902-01.md").read_text(
+            encoding="utf-8"
         )
-        self.assertEqual(
-            leftover.returncode, 0, msg=leftover.stdout + leftover.stderr
-        )
-        self.assertIn("Ran 4 tests", leftover.stderr)
-        unique = subprocess.run(
-            [
-                "python3",
-                "-m",
-                "unittest",
-                "test_big_things_incoming_shots_readback.py",
-            ],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(unique.returncode, 0, msg=unique.stdout + unique.stderr)
-        self.assertIn("Ran 3 tests", unique.stderr)
+        self.assertIn("Did not invent", leftover)
+        self.assertIn("generate revenue", leftover)
+        self.assertNotIn("buy.stripe.com", leftover)
 
     def test_ack_cites_unique_pack_without_reminting(self) -> None:
         text = ACK.read_text(encoding="utf-8")

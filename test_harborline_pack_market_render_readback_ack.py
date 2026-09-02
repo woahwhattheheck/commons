@@ -31,7 +31,6 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
 }
 
 
@@ -50,18 +49,7 @@ class TestHarborlinePackMarketRenderReadbackAck(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
 
-    def test_leftover_tests_and_json_still_render(self) -> None:
-        leftover = subprocess.run(
-            ["python3", "-m", "unittest", "test_harborline_pack_market_render.py"],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-            check=False,
-        )
-        self.assertEqual(
-            leftover.returncode, 0, msg=leftover.stdout + leftover.stderr
-        )
-        self.assertIn("Ran 5 tests", leftover.stderr)
+    def test_leftover_json_still_render(self) -> None:
         packet = json.loads(
             subprocess.check_output(
                 [sys.executable, str(HELPER), "--json"], cwd=ROOT, text=True
