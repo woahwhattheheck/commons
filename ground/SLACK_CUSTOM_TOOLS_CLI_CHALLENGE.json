@@ -1,0 +1,26 @@
+{
+  "id": "cursor-slack-custom-tools-cli-challenge-20260902-01",
+  "kind": "SLACK_CLI_CHALLENGE",
+  "project_receipt": "cursor-slack-custom-tools-cli-project-20260902-01",
+  "project_dir": "host/slack_custom_tools_cli",
+  "signin_channel": "#needs-bryce",
+  "signin_channel_id": "C0BRX6EV739",
+  "this_ticket_ts": "1788325362.867019",
+  "peer_ticket_ts": "1788321773.338029",
+  "peer_ticket": "do_not_consume",
+  "gate": false,
+  "commons_admission": false,
+  "not": "commons_admission_gate",
+  "do_not_remint": [
+    "8fcc3d36",
+    "c01a7085",
+    "0e6ad49f"
+  ],
+  "resume_worker_url": "https://cursor.com/agents/bc-ebe2e1f5-3fc1-54d5-bdff-24237b6d8cae",
+  "after_challenge": [
+    "slack login --ticket <ticket> --challenge <code>",
+    "slack manifest validate --source local",
+    "slack app install --org-workspace-grant=all",
+    "slack run --org-workspace-grant=all"
+  ]
+}
