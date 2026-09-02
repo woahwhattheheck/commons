@@ -482,6 +482,30 @@ class BusinessPackUniqueTest(unittest.TestCase):
             (ROOT / "p" / "cursor-business-pack-instance-catalog-20260902-01.md").is_file()
         )
 
+    def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
+        block = self.law["rating_slot"]
+        self.assertEqual(block["id"], "cursor-business-pack-rating-slot-20260902-01")
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(block["source_slack_ts"], "1788327092.565209")
+        self.assertEqual(block["badge_url"], "")
+        self.assertEqual(block["report_url"], "")
+        self.assertEqual(block["partner_name"], "OWNER_UNSET")
+        self.assertEqual(block["bulk_price"], "OWNER_UNSET")
+        self.assertEqual(block["forbidden"], "dollar_valuation")
+        self.assertIs(block["did_not_write_scout_advertising_general"], True)
+        self.assertIs(block["did_not_write_king_county_lims"], True)
+        self.assertEqual(block["checkout"], "NOT_MINTED")
+        self.assertIn("rating", self.door.lower())
+        self.assertIn("dollar valuation", self.card.lower())
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertTrue((ROOT / "host" / "business_pack_rating.py").is_file())
+        self.assertTrue((ROOT / "packs" / "_template" / "rating.md").is_file())
+        self.assertTrue(
+            (ROOT / "p" / "cursor-business-pack-rating-slot-20260902-01.md").is_file()
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
