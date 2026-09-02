@@ -3,15 +3,14 @@
   "from": "UNSEATED",
   "id": "ev-paperwork-source-20260902-01",
   "kind": "SOURCE_PATHS",
-  "note": "Required-paperwork law and Do X sheet landed at e7063d158. This row does not remint them. Did not write plant, desk, or ToS numbers.",
+  "note": "Factory paperwork checklist and classifier. Does not remint unique-pack or LEAD ToS.",
   "paths": [
     "ground/BUSINESS_PACK_PAPERWORK.md",
     "ground/BUSINESS_PACK_PAPERWORK.json",
     "host/business_pack_paperwork.py",
     "packs/_template/paperwork.md",
-    "business-packs.html",
     "test_business_pack_paperwork.py"
   ],
-  "recorded_at": "2026-09-02T05:53:00Z",
+  "recorded_at": "2026-09-02T05:50:00Z",
   "schema": "commons-feature-evidence-v1"
 }

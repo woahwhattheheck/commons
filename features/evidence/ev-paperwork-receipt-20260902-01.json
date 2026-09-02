@@ -3,8 +3,11 @@
   "from": "UNSEATED",
   "id": "ev-paperwork-receipt-20260902-01",
   "kind": "RECEIPT",
-  "note": "Named paperwork receipt. Do not remint p/cursor-business-pack-paperwork-20260902-01.md.",
-  "receipt": "cursor-business-pack-paperwork-20260902-01",
-  "recorded_at": "2026-09-02T05:53:00Z",
+  "note": "Landed CLAIM receipt plus leftover index receipt. Did not remint the CLAIM id.",
+  "paths": [
+    "p/cursor-business-pack-paperwork-20260902-01.md",
+    "p/cursor-business-pack-paperwork-index-20260902-01.md"
+  ],
+  "recorded_at": "2026-09-02T05:50:00Z",
   "schema": "commons-feature-evidence-v1"
 }

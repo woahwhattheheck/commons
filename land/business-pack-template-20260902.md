@@ -140,6 +140,10 @@ What the pack does not include:
 
 Buyer questions after a sale: public Commons post or `mailto:tokenjunkielabs@gmail.com`. Secrets stay off the board.
 
+## 9. Paperwork checklist
+
+Fill `paperwork.md`. Required do-X slots: registration, EIN, sales tax, license, insurance, contract. Empty slots stay `OWNER_UNSET`. Counsel stays `HOLD_COUNSEL`. This template does not invent tjlabs percent, ownership fraction, plant prices, or desk prices. Not legal advice.
+
 ## Factory law
 
 Cheap generate. Measure. Keep the best. Package the rest.

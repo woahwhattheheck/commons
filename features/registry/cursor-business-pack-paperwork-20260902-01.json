@@ -1,24 +1,22 @@
 {
   "added": "2026-09-02",
-  "capability": "Sold packs help the customer with required paperwork. Registration, EIN, sales tax, license, insurance, and contract slots live in packs/_template/paperwork.md. Slots stay OWNER_UNSET / HOLD_COUNSEL. Not legal advice. Not a Commons seat. Paperwork included is true only with a filled checklist.",
+  "capability": "Factory paperwork checklist for sold packs. Registration, EIN, sales tax, license, insurance, and contract slots stay OWNER_UNSET. Counsel stays HOLD_COUNSEL. This feature does not invent plant, desk, or ToS numbers.",
   "carrier": "CURSOR",
   "claimed_paths": [
     "ground/BUSINESS_PACK_PAPERWORK.md",
     "ground/BUSINESS_PACK_PAPERWORK.json",
     "host/business_pack_paperwork.py",
     "packs/_template/paperwork.md",
-    "business-packs.html",
     "test_business_pack_paperwork.py"
   ],
   "dependencies": [
-    "business-pack-keep-sell-20260902-01",
-    "cursor-business-pack-operator-day-20260902-01"
+    "cursor-tjlabs-pack-tos-20260902-01"
   ],
   "id": "cursor-business-pack-paperwork-20260902-01",
-  "name": "Business pack required-paperwork checklist",
-  "next_gap": "Owner or counsel pastes jurisdiction forms. Do not invent an EIN, a percent, or a filing. Empty slots stay PAPERWORK_INCOMPLETE.",
+  "name": "Business pack factory paperwork checklist",
+  "next_gap": "Owner pastes registration/EIN/sales-tax/license/insurance/contract facts and counsel clears. Do not invent ToS percent, plant, or desk numbers.",
   "owner_subsystem": "business-packs",
-  "public_entrypoint": "business-packs.html",
+  "public_entrypoint": "packs/_template/paperwork.md",
   "related": {
     "boards": true,
     "current_work": false,
@@ -28,9 +26,8 @@
   "resource_links": [
     "ground/BUSINESS_PACK_PAPERWORK.md",
     "packs/_template/paperwork.md",
-    "business-packs.html",
     "ground/BUSINESS_PACKS.md",
-    "ground/SLACK_CONTROL_PLANE.md"
+    "ground/TJLABS_PACK_TERMS.md"
   ],
   "schema": "commons-feature-v1",
   "test_paths": [

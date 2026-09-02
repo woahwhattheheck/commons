@@ -24,6 +24,9 @@ Unique pack law: each sold unit is a distinct instance / fresh package. Similar 
 | --- | --- |
 | [checkout.md](./checkout.md) | checkout rails placeholder — owner pastes live Payment Link |
 | [keep-vs-sell.md](./keep-vs-sell.md) | KEEP (internal) vs SELL (packaged) criteria |
-| [paperwork.md](./paperwork.md) | required paperwork Do X list — registration, EIN, sales tax, license, insurance, contract. `OWNER_UNSET` / `HOLD_COUNSEL`. Not legal advice. |
+| [day.md](./day.md) | employee-day do-X list |
+| [running-cost.md](./running-cost.md) | running cost that rides with “for this price” |
+| [terms.md](./terms.md) | tjlabs residual slots — LEAD owns the numbers |
+| [paperwork.md](./paperwork.md) | required paperwork do-X — OWNER_UNSET / HOLD_COUNSEL |
 
 A pack with empty required files is SCAFFOLD, not a live listing.

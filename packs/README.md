@@ -2,6 +2,7 @@
 
 Empty first slot: [_template/](./_template/).
 Checklist: [../land/business-pack-template-20260902.md](../land/business-pack-template-20260902.md).
+Paperwork: [_template/paperwork.md](./_template/paperwork.md) (`OWNER_UNSET` / `HOLD_COUNSEL`).
 SKU: [../land/sku-business-packs-20260902.md](../land/sku-business-packs-20260902.md).
 Fragment catalog: [../revenue/outcome_commerce/business_packs_catalog.json](../revenue/outcome_commerce/business_packs_catalog.json).
 

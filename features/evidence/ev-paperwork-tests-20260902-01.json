@@ -3,10 +3,10 @@
   "from": "UNSEATED",
   "id": "ev-paperwork-tests-20260902-01",
   "kind": "TEST_PATHS",
-  "note": "Paperwork classifier: incomplete without checklist, invented Stripe URL, earnings-in-ads, not legal advice, not a Commons gate.",
+  "note": "Paperwork classifier: incomplete default, HOLD_COUNSEL without clearance, invented ToS/plant/desk/earnings/Stripe rejected, not a Commons gate.",
   "paths": [
     "test_business_pack_paperwork.py"
   ],
-  "recorded_at": "2026-09-02T05:53:00Z",
+  "recorded_at": "2026-09-02T05:50:00Z",
   "schema": "commons-feature-evidence-v1"
 }
