@@ -22,6 +22,7 @@ WORKFLOW = ROOT / ".github" / "workflows" / "pages-deploy.yml"
 BOARD_JS = ROOT / "board.js"
 FREE_SAMPLE = ROOT / "muhlnickel-free-sample.html"
 SALES_PACK = ROOT / "revenue" / "muhlnickel_free_sample" / "sales_pack.json"
+KEEP_MAP = ROOT / "ground" / "PAGES_KEEP_PATHS.json"
 
 # Three board.js fetch sites YAPPER named. Day/part paths are built at runtime.
 BOARD_CHUNK_MARKERS = (
@@ -84,6 +85,33 @@ def workflow_omits(text: str, path: str) -> bool:
     return omitted_by_except_keep(path, except_dirs, parse_rsync_keep_prefixes(text))
 
 
+def covered_by_keep(path: str, keep_entries: Iterable[str]) -> bool:
+    """True when path is an exact keep row or sits under a keep directory row."""
+    rel = posix(path)
+    for keep in keep_entries:
+        keep_rel = posix(keep)
+        if keep_rel.endswith("/"):
+            prefix = keep_rel.rstrip("/")
+            if rel == prefix or rel.startswith(prefix + "/"):
+                return True
+            continue
+        if rel == keep_rel:
+            return True
+    return False
+
+
+def load_keep_map(root: Path | None = None) -> dict[str, object]:
+    here = Path(root) if root is not None else ROOT
+    path = here / KEEP_MAP.relative_to(ROOT)
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def uncovered_by_keep_map(root: Path | None = None) -> tuple[str, ...]:
+    here = Path(root) if root is not None else ROOT
+    keep = tuple(load_keep_map(here).get("required_keep_paths") or ())
+    return tuple(rel for rel in required_files(here) if not covered_by_keep(rel, keep))
+
+
 def required_files(root: Path | None = None) -> tuple[str, ...]:
     """Concrete files that must remain on github.io."""
     here = Path(root) if root is not None else ROOT
@@ -131,7 +159,9 @@ def report(root: Path | None = None) -> dict[str, object]:
         "missing_on_disk": list(missing_on_disk(here)),
         "stated_except_would_omit": list(stated_except_omits(here)),
         "live_workflow_would_omit": list(live_workflow_omits(here)),
+        "uncovered_by_keep_map": list(uncovered_by_keep_map(here)),
         "workflow_present": (here / WORKFLOW.relative_to(ROOT)).is_file(),
+        "keep_map_present": (here / KEEP_MAP.relative_to(ROOT)).is_file(),
         "board_chunk_markers": list(BOARD_CHUNK_MARKERS),
         "copy_filter_is_not_admission": True,
         "open_door": True,

@@ -102,9 +102,28 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertTrue(payload["open_door"])
         self.assertTrue(payload["copy_filter_is_not_admission"])
         self.assertEqual(payload["missing_on_disk"], [])
+        self.assertEqual(payload["uncovered_by_keep_map"], [])
         self.assertIn(required.SEED0, payload["stated_except_would_omit"])
         self.assertIn(required.CHUNKS_INDEX, payload["stated_except_would_omit"])
         self.assertNotIn(required.EXPANDING_SEED, payload["stated_except_would_omit"])
+
+    def test_peer_keep_map_covers_derived_required_files(self) -> None:
+        keep_map = required.load_keep_map(ROOT)
+        self.assertEqual(keep_map["id"], "cursor-pages-keep-paths-20260902-01")
+        self.assertIs(keep_map["owns_deploy_workflow"], False)
+        self.assertEqual(required.uncovered_by_keep_map(ROOT), ())
+        self.assertTrue(required.covered_by_keep(required.CHUNKS_INDEX, keep_map["required_keep_paths"]))
+        self.assertTrue(required.covered_by_keep(required.SEED0, keep_map["required_keep_paths"]))
+        self.assertTrue(required.covered_by_keep(required.EXPANDING_SEED, keep_map["required_keep_paths"]))
+        evidence = keep_map["evidence"]["board_js_chunk_fetches"]
+        self.assertEqual(len(evidence), 3)
+        self.assertIn("chunks/{day}/{pid}.json", evidence)
+
+    def test_covered_by_keep_is_prefix_or_exact(self) -> None:
+        self.assertTrue(required.covered_by_keep("chunks/index.json", ("chunks/",)))
+        self.assertTrue(required.covered_by_keep(required.SEED0, (required.SEED0,)))
+        self.assertFalse(required.covered_by_keep(required.SEED0, ("muhl/docs/",)))
+        self.assertFalse(required.covered_by_keep("excerpts/x.json", ("chunks/", "muhl/docs/")))
 
     def test_helper_source_does_not_add_admission_locks(self) -> None:
         text = (ROOT / "host" / "pages_github_io_required.py").read_text(encoding="utf-8")
