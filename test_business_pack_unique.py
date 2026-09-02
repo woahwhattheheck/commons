@@ -824,6 +824,58 @@ class BusinessPackUniqueTest(unittest.TestCase):
             (ROOT / "p" / "cursor-business-pack-rating-slot-20260902-01.md").is_file()
         )
 
+    def test_keep_gems_policy_does_not_write_ledger_or_sell_trash(self) -> None:
+        block = self.law["keep_gems"]
+        self.assertEqual(block["id"], "cursor-business-pack-keep-gems-20260902-01")
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(block["source_slack_ts"], "1788332899.203819")
+        self.assertEqual(block["source_channel_id"], "C0BU51F1PL3")
+        self.assertIs(block["gate"], False)
+        self.assertIs(block["keep_gems"], True)
+        self.assertIs(block["sell_trash"], False)
+        self.assertIs(block["respectable_product"], True)
+        self.assertEqual(
+            block["swarm_trivial_revenue"],
+            "saved_for_commons_and_we_sell_too",
+        )
+        self.assertEqual(block["biggest_potential"], "in_house")
+        self.assertEqual(block["keep_sell_ledger"], "not_this_seat")
+        self.assertEqual(block["keep_sell_door"], "keep-sell.html")
+        self.assertIs(block["did_not_write_keep_sell_ledger"], True)
+        self.assertIs(block["did_not_write_keep_sell_html"], True)
+        self.assertIs(block["did_not_invent_keep_sell_rows"], True)
+        self.assertIs(block["did_not_classify_instances_as_keep_sell"], True)
+        self.assertEqual(block["checkout"], "NOT_MINTED")
+        self.assertEqual(self.law["instances"]["keep_sell_ledger"], "not_this_seat")
+        ok = unique.classify_keep_gems(block)
+        self.assertEqual(ok["verdict"], "RESPECTABLE_PRODUCT_OK")
+        self.assertIs(ok["gate"], False)
+        trash = unique.classify_keep_gems({"sell_trash": True})
+        self.assertEqual(trash["verdict"], "TRASH_OFFER")
+        self.assertIs(trash["gate"], False)
+        invented = unique.classify_keep_gems({"invented_keep_sell_row": True})
+        self.assertEqual(invented["verdict"], "INVENTED_KEEP_SELL_ROW")
+        self.assertIn("keep the gems", self.card.lower())
+        self.assertIn("respectable product", self.card.lower())
+        self.assertIn("1788332899.203819", self.card)
+        self.assertIn("keep the gems", self.door.lower())
+        self.assertIn("respectable product", self.door.lower())
+        self.assertIn("1788332899.203819", self.door)
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("Instance 1 of 1", self.door)
+        self.assertNotIn("No royalty", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertNotIn("337 NO", self.card)
+        self.assertNotIn("337 NO", self.door)
+        self.assertTrue((ROOT / "keep-sell.html").is_file())
+        self.assertTrue(
+            (ROOT / "p" / "cursor-business-pack-keep-gems-20260902-01.md").is_file()
+        )
+        self.assertTrue(
+            (ROOT / "p" / "cursor-pack-waitlist-delete-law-20260902-01.md").is_file()
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

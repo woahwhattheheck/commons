@@ -15,6 +15,11 @@ SCOUT / Claude 1788326387.638969: a named unique-instance SELL needs a name
 and a door (brand + checkout/door). Missing those fields is a kit, not a
 unique-instance SELL. Copy uses prices and time budgets, never earnings.
 Agents do not spend ads. Do not steal GOAT yard-card candidate files.
+
+Bryce hub 1788332899.203819: swarm-trivial packs stay saved for Commons
+and we sell them too. Biggest potential stays in house. Keep the gems.
+Sell a respectable product. Do not sell trash. Not a KEEP/SELL ledger
+row and not a Commons gate.
 """
 from __future__ import annotations
 
@@ -316,6 +321,43 @@ def classify_mystery_pool(pool: dict[str, Any] | None) -> dict[str, Any]:
     }
 
 
+def classify_keep_gems(row: dict[str, Any] | None = None) -> dict[str, Any]:
+    """Keep gems / no trash. Factory policy, not a Commons gate.
+
+    Does not write KEEP/SELL ledger rows. Agents do not invent which named
+    pack is KEEP vs SELL. A trash offer is flagged, not turned into a lock.
+    """
+    data = row if isinstance(row, dict) else {}
+    sell_trash = data.get("sell_trash") is True
+    invented_row = data.get("invented_keep_sell_row") is True
+    respectable = data.get("respectable_product") is not False
+    if sell_trash:
+        verdict = "TRASH_OFFER"
+    elif invented_row:
+        verdict = "INVENTED_KEEP_SELL_ROW"
+    elif not respectable:
+        verdict = "NOT_RESPECTABLE"
+    else:
+        verdict = "RESPECTABLE_PRODUCT_OK"
+    return {
+        "gate": False,
+        "commons_admission": False,
+        "verdict": verdict,
+        "keep_gems": True,
+        "sell_trash": sell_trash,
+        "respectable_product": respectable and not sell_trash,
+        "swarm_trivial_revenue": "saved_for_commons_and_we_sell_too",
+        "biggest_potential": "in_house",
+        "keep_sell_ledger": "not_this_seat",
+        "did_not_write_keep_sell_ledger": True,
+        "did_not_invent_keep_sell_rows": not invented_row,
+        "checkout": "NOT_MINTED",
+        "marketing": "bryce_only",
+        "agents_spend_ads": False,
+        "no_fake_stripe_urls": True,
+    }
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--sales-json", default="", help="JSON list of sale objects")
@@ -323,6 +365,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--pool-json", default="", help="JSON mystery-pool object")
     parser.add_argument("--offer-json", default="", help="JSON unique-instance SELL offer")
     parser.add_argument("--copy", default="", help="offer copy to scan for earnings claims")
+    parser.add_argument("--keep-gems-json", default="", help="JSON keep-gems policy object")
     parser.add_argument("--law", default="", help="override law path")
     args = parser.parse_args(argv)
     law = load_law(Path(args.law) if args.law else None)
@@ -348,6 +391,12 @@ def main(argv: list[str] | None = None) -> int:
         result["sell_instance"] = classify_sell_offer(json.loads(args.offer_json))
     if args.copy:
         result["copy"] = classify_copy(args.copy)
+    if args.keep_gems_json:
+        result["keep_gems"] = classify_keep_gems(json.loads(args.keep_gems_json))
+    else:
+        result["keep_gems"] = classify_keep_gems(
+            law.get("keep_gems") if isinstance(law.get("keep_gems"), dict) else {}
+        )
     print(json.dumps(result, indent=2))
     print("", end="")
     return 0
