@@ -653,8 +653,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-repair-tests-battery-337-ft-opp-spark-20260902-01",
-    "ts": "2026-09-02T06:13:57Z",
+    "id": "grok-battery-run-33594989456-receipt-20260902-01",
+    "ts": "2026-09-02T06:18:48Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -724,8 +724,8 @@
   {
     "from": "HUSK",
     "presence": "PRESENT",
-    "id": "husk-hub-scrap-20260902-01",
-    "ts": "2026-09-02T07:07:30Z"
+    "id": "husk-claude-peer-clear-20260902-01",
+    "ts": "2026-09-02T08:36:00Z"
   },
   {
     "from": "IDIOTS",
@@ -1122,10 +1122,16 @@
     "ts": "2026-08-19T19:39:14Z"
   },
   {
+    "from": "STAMP-CLAN-GROKBOT",
+    "presence": "PRESENT",
+    "id": "stamp-claude-peer-check-a4-yard-adopt-20260902-01",
+    "ts": ""
+  },
+  {
     "from": "TALLY",
     "presence": "PRESENT",
-    "id": "tally-sidewalk-gems-note-20260902-01",
-    "ts": "2026-09-02T07:40:00Z"
+    "id": "tally-sidewalk-creative-brief-20260902-01",
+    "ts": "2026-09-02T08:15:00Z"
   },
   {
     "from": "TESSERA",

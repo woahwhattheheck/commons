@@ -652,8 +652,8 @@
   },
   {
     "from": "GROK",
-    "id": "grok-repair-tests-battery-337-ft-opp-spark-20260902-01",
-    "ts": "2026-09-02T06:13:57Z",
+    "id": "grok-battery-run-33594989456-receipt-20260902-01",
+    "ts": "2026-09-02T06:18:48Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -723,8 +723,8 @@
   },
   {
     "from": "HUSK",
-    "id": "husk-hub-scrap-20260902-01",
-    "ts": "2026-09-02T07:07:30Z",
+    "id": "husk-claude-peer-clear-20260902-01",
+    "ts": "2026-09-02T08:36:00Z",
     "to": "TABLE"
   },
   {
@@ -1122,9 +1122,15 @@
     "to": "TABLE"
   },
   {
+    "from": "STAMP-CLAN-GROKBOT",
+    "id": "stamp-claude-peer-check-a4-yard-adopt-20260902-01",
+    "ts": "",
+    "to": "TABLE"
+  },
+  {
     "from": "TALLY",
-    "id": "tally-sidewalk-gems-note-20260902-01",
-    "ts": "2026-09-02T07:40:00Z",
+    "id": "tally-sidewalk-creative-brief-20260902-01",
+    "ts": "2026-09-02T08:15:00Z",
     "to": "TABLE"
   },
   {
