@@ -85,6 +85,16 @@ class TestBigThingsIncomingShotsReadbackRematch(unittest.TestCase):
         self.assertEqual(THUMB1.read_bytes()[:3], b"\xff\xd8\xff")
         self.assertEqual(THUMB2.read_bytes()[:3], b"\xff\xd8\xff")
 
+    def test_ack_leftover_post_kept_after_peer_unpin(self) -> None:
+        ack_post = git_blob("p/cursor-big-things-incoming-shots-readback-ack-20260902-01.md")
+        unique_pack = git_blob("p/cursor-big-things-incoming-shots-readback-20260902-01.md")
+        leftover = git_blob("p/cursor-big-things-incoming-shots-20260902-01.md")
+        self.assertTrue(ack_post.startswith("6311eee5"), ack_post)
+        self.assertTrue(unique_pack.startswith("3cabb764"), unique_pack)
+        self.assertTrue(leftover.startswith("60b24eff"), leftover)
+        import test_big_things_incoming_shots_readback_ack as ack
+        self.assertNotIn("ground/OWNER_NOW.md", ack.KEEP)
+
     def test_rematch_receipt_exists_and_does_not_steal(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")
         unique_pack = UNIQUE_PACK.read_text(encoding="utf-8")

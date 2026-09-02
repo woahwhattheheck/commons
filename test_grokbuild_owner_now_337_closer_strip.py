@@ -46,7 +46,9 @@ KEEP_MODULES = (
     "test_harborline_pack_market_slack_render",
     "test_harborline_pack_market_render_ship",
     "test_landed_work_feed",
+    "test_landed_work_feed_readback",
     "test_grokbuild_pr8345_terminal",
+    "test_grokbuild_pr8357_terminal",
 )
 
 
