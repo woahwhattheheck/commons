@@ -1,0 +1,33 @@
+{
+  "id": "cursor-slack-custom-tools-install-20260902-01",
+  "kind": "OWNER_EXACT_ACTION_QUEUE",
+  "channel_id": "C0BRX6EV739",
+  "channel_name": "needs-bryce",
+  "gate": false,
+  "commons_admission": false,
+  "not": "commons_admission_gate",
+  "source_slack_ts": "1788319779.597119",
+  "source_channel_id": "C0BU51F1PL3",
+  "required_fields": [
+    "NEED",
+    "WHY ONLY BRYCE",
+    "SMALLEST ACTION",
+    "EVIDENCE",
+    "AFTER"
+  ],
+  "require_action_surface": [
+    "https_url",
+    "literal_slash_command",
+    "literal_shell_command"
+  ],
+  "forbid": [
+    "code words",
+    "vague owner gate",
+    "ordinary approvals",
+    "status reports",
+    "secrets in slack"
+  ],
+  "close_with": "OWNER ACTION DONE",
+  "resume_worker_url": "https://cursor.com/agents/bc-31c8ef9a-4c43-40ba-a1a5-da7341f6b5f9",
+  "peer_catalog": "ground/SLACK_SERVICE_TAGS.json"
+}
