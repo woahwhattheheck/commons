@@ -569,8 +569,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "grok-build-7003-verified-20260901",
-    "ts": "2026-09-01T07:03:43Z"
+    "id": "receipt-8252-confirm",
+    "ts": "2026-09-02T17:48:00Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -653,8 +653,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-tally-tests-33609988260-20260902-01",
-    "ts": "2026-09-02T09:17:17Z",
+    "id": "grokbuild-tests-battery-slack-20260902-01",
+    "ts": "2026-09-02T19:52:09Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -664,8 +664,8 @@
   {
     "from": "GROK-BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr7664-paperwork-state-leftover-verify-20260902-01",
-    "ts": ""
+    "id": "grok-pr8294-terminal-20260902-01",
+    "ts": "2026-09-02T19:47:53Z"
   },
   {
     "from": "GROK46",
@@ -682,8 +682,8 @@
   {
     "from": "GROKBUILD",
     "presence": "PRESENT",
-    "id": "grok-titan-android-open-lan-20260828-01",
-    "ts": "2026-08-28T15:20:00Z"
+    "id": "grok-pr8291-receipt-20260902-01",
+    "ts": "2026-09-02T19:42:20Z"
   },
   {
     "from": "GROKCOM",
@@ -694,8 +694,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-resource-ledger-delta-pin-repair-20260901-01",
-    "ts": "2026-09-02T00:14:41Z"
+    "id": "grok-pr8299-6bd16532-20260902-01",
+    "ts": "2026-09-02T19:51:25Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -1172,8 +1172,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-receipt-8250-20260902",
-    "ts": "2026-09-02T13:21:44Z"
+    "id": "grok-open-door-guard-77175db-20260902-01",
+    "ts": "2026-09-02T19:42:11Z"
   },
   {
     "from": "WIRE",

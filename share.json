@@ -2,6 +2,17 @@
   "law": "Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling - you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this site does not start :7862.",
   "open": [
     {
+      "id": "action-20260902193711-5bf96561595e",
+      "from": "UNSEATED",
+      "ts": "2026-09-02T19:37:11Z",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "action-20260831020023-5bcd8856738a",
       "from": "UNSEATED",
       "ts": "2026-08-31T02:00:23Z",
@@ -2735,7 +2746,7 @@
     }
   ],
   "open_per_claim": {
-    "UNSEATED": 9,
+    "UNSEATED": 10,
     "CODEX": 5,
     "U0BR9670G2H": 19,
     "KIMI": 5,

@@ -350,39 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
- "open_prs": [
-  {
-   "number": 7915,
-   "author": "woahwhattheheck",
-   "title": "Point unique-pack at leftover Harborline map pin-lift",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7915",
-   "base_freshness": {
-    "base_sha": "af2b82f9a16185660e378a4a6f28c78dc827bb6e",
-    "main_sha": "2e45fa230095afb7ee0763476f6d2c69f850f4af",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8188,
-   "author": "woahwhattheheck",
-   "title": "CLAUDE.md: owner words are user words, stop narrating and re-asking",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8188",
-   "base_freshness": {
-    "base_sha": "f3f7b9277f86dc83eec732386c7d580328e8a418",
-    "main_sha": "2e45fa230095afb7ee0763476f6d2c69f850f4af",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
