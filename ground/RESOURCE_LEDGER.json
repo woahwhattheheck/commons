@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-09-02T07:12:19Z",
-    "base_main_sha": "4f2da20862c737e56997a4546c26712f18efbd6f",
+    "observed_at": "2026-09-02T10:06:41Z",
+    "base_main_sha": "af3c223deb3c69c64a165bbad57ea5b9c431e475",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788333045.374429",
-  "source_id": "codex-business-pack-factory-activation-20260902-01",
+  "slack_ts": "1788343601.055979",
+  "source_id": "codex-upwork-marketplace-capacity-activation-20260902-01",
   "supersedes_source_ids": [
+    "codex-business-pack-factory-activation-20260902-01",
     "codex-coil-pfc-host-toolchain-activation-20260902-01",
     "codex-titan-write-envelope-activation-20260902-01",
     "codex-resource-master-delta-engine-activation-20260901-01",
@@ -68,7 +69,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — the byte-exact COIL PFC evaluator host twin is landed, compile-readable, and routed without Titan execution",
+  "subject": "MASTER RESOURCE LEDGER — verified Upwork business-account reachability is separated from profile, proposal, buyer, and cash state",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -109,7 +110,9 @@
     "inventory/resources/records/codex-connected-capability-fleet-activation-20260901-01.json",
     "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json",
     "inventory/resources/records/codex-titan-write-envelope-activation-20260902-01.json",
-    "inventory/resources/records/codex-coil-pfc-host-toolchain-activation-20260902-01.json"
+    "inventory/resources/records/codex-coil-pfc-host-toolchain-activation-20260902-01.json",
+    "inventory/resources/records/codex-business-pack-factory-activation-20260902-01.json",
+    "inventory/resources/records/codex-upwork-marketplace-capacity-activation-20260902-01.json"
   ],
   "priority_queue": [],
   "hands_off": [
@@ -1635,6 +1638,28 @@
       "last_used_at": "2026-09-02T07:12:19Z",
       "stale_after": "next factory law, template, instance, owner-door, checkout, terms, or buyer-state change",
       "priority": 94
+    },
+    {
+      "name": "upwork-marketplace-account",
+      "kind": "COMMERCIAL_MARKETPLACE_ACCOUNT",
+      "capacity": "LIVE",
+      "stage": "REACHABLE",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / marketplace-account lane",
+      "authority": "SHARED_PUBLIC_READ_PROPOSAL_PACKAGE_PREPARATION_AND_DEDUPE; OWNER_ONLY_IDENTITY_PROFILE_SIGNING_SUBMISSION_PAYMENT_AND_POLICY",
+      "consumer": "The existing Commons marketplace-account lane and two READY/UNSENT Upwork buyer-edge records",
+      "value": "A provider-verified business-account route for preparing bounded marketplace proposals without inventing profile completion, send authority, buyer acceptance, or cash.",
+      "next_action": "Re-read current profile state through an authenticated owner-authorized carrier; if complete, run exact listing/open-state/no-resend preflight and prepare the existing proposal packet for an owner-only submission action.",
+      "source": "fresh connected-business-Gmail provider receipt 2026-09-02T07:50:41Z; p/codex-upwork-mcp-buyer-crm-20260830-01.md; host/upwork_capacity.py",
+      "evidence_ts": "2026-09-02T07:50:41Z",
+      "auth_surface": "shared business Gmail verification receipt plus existing public Commons buyer-edge records",
+      "exact_safe_probe": "Deterministic compiler returned LIVE / REACHABLE / CONSTRAINED, OWNER_PROFILE_STATE_REQUIRED, two READY/UNSENT records, zero proposal receipts, send_authorized=false, and USD 0.",
+      "rate_plan_boundary": "Email verification is not current profile completion, marketplace eligibility, proposal transmission, buyer acceptance, payment, settlement, payout, revenue, or cash.",
+      "assigned_backlog": "public proposal-package preparation and exact no-resend preflight only; no identity/profile write, signing, submission, outreach, spend, or payment action",
+      "last_receipt": "codex-upwork-marketplace-capacity-activation-20260902-01",
+      "last_used_at": "2026-09-02T07:50:41Z",
+      "stale_after": "next authenticated profile-state, proposal, provider, or account-policy receipt",
+      "priority": 70
     }
   ],
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED"
