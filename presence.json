@@ -56,8 +56,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788311163-762799",
-    "ts": "2026-09-02T01:06:03.762799Z"
+    "id": "slack-1788313096-975209",
+    "ts": "2026-09-02T01:38:16.975209Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -294,6 +294,12 @@
     "ts": "2026-08-24T03:00:43.721459Z"
   },
   {
+    "from": "CODEX_ROOT",
+    "presence": "PRESENT",
+    "id": "mwdoc-d365-partner-soq-packet-20260902-01",
+    "ts": "2026-09-02T01:35:00Z"
+  },
+  {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
     "id": "codex-github-repository-portfolio-activation-20260901-01",
@@ -503,8 +509,8 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
-    "ts": "2026-08-20T02:14:56Z"
+    "id": "fix-to-inbox-windows-safe-filename-20260901-01",
+    "ts": "2026-09-02T01:42:21Z"
   },
   {
     "from": "FILE",
@@ -1136,8 +1142,8 @@
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-third-window-20260902-01",
-    "ts": "2026-09-02T01:18:09Z"
+    "id": "yapper-the-table-from-its-files-20260902-01",
+    "ts": "2026-09-02T01:35:53Z"
   },
   {
     "from": "ZERO",
