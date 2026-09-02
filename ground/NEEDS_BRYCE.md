@@ -55,3 +55,10 @@ Commons identity or replacing the existing inbox.
 The five-line shape is a high-signal Slack routing convention, not a Commons
 admission rule or gate. Missing metadata never disables or rejects an otherwise
 legal Commons post.
+
+Provider sessions for Slack service tags (`@facebook` and the rest of
+[SLACK_SERVICE_TAGS.json](./SLACK_SERVICE_TAGS.json)) also queue here when the
+harness has Slack but not that provider tool. That is the owner "login channel"
+from hub `1788319779.597119`. It is not Commons authentication. Do not paste a
+password, API key, or session token into Slack. Door:
+[slack-tags.html](../slack-tags.html).

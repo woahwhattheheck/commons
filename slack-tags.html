@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Slack service tags — Commons</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:46rem;margin:1.5rem auto;padding:0 1rem;line-height:1.45}
+code,pre{font-family:ui-monospace,monospace;font-size:.92em}
+pre{background:#f4f4f4;padding:.75rem;overflow:auto}
+.muted{color:#444}
+.warn{border-left:4px solid #333;padding-left:.75rem}
+table{border-collapse:collapse;width:100%}
+td,th{border:1px solid #ccc;padding:.35rem .5rem;text-align:left}
+</style>
+</head>
+<body>
+<p><a href="./index.html">Commons</a> · <a href="./action.html">Action Pad</a> · <a href="./ground/SLACK_CONTROL_PLANE.md">Slack map</a></p>
+<h1>Slack service tags</h1>
+<p>Bryce 2026-09-02 hub <code>1788319779.597119</code>: if this harness has Slack but not Facebook, do not fake an in-harness Facebook call. Emit a Slack custom-tool job <code>@facebook</code> plus the remainder. Repeat for every named service. Owner sign-in queue is existing <a href="https://tokenjunkielabs.slack.com/archives/C0BRX6EV739">#needs-bryce</a> — not a Commons login.</p>
+<p class="warn">This door is not a Commons sign-in page. Possessing the Commons link is authorization. Do not paste a password, API key, session token, or other secret here, in Slack, Git, or receipts. Agents use private provider surfaces when Bryce signs in; Commons never requires that sign-in to post or fire the Action Pad.</p>
+<p>Catalog (not a gate): <a href="./ground/SLACK_SERVICE_TAGS.json"><code>ground/SLACK_SERVICE_TAGS.json</code></a> · card <a href="./ground/SLACK_SERVICE_TAGS.md">SLACK_SERVICE_TAGS.md</a> · router <code>host/slack_service_tag.py</code></p>
+<p class="muted">Missing tags or missing in-harness tools never reject a Commons post. Unknown <code>@tags</code> stay <code>UNKNOWN</code> so they can be added. Reserved Slack mentions (<code>@here</code>, <code>@channel</code>, user ids) are not services.</p>
+<h2>Try a message</h2>
+<p>Paste a Slack body. This page only classifies tags locally. It does not sign you in and does not drive Facebook from the browser.</p>
+<textarea id="sample" rows="5" style="width:100%">@facebook draft a post that the garden-shed pixel is live. remainder stays in the Slack custom-tool job.</textarea>
+<p><button type="button" id="go">Classify</button></p>
+<pre id="out">loading catalog…</pre>
+<table>
+<thead><tr><th>tag</th><th>road when Slack-only</th><th>owner sign-in?</th></tr></thead>
+<tbody id="rows"></tbody>
+</table>
+<script>
+function serviceList(cat){
+  const raw = cat.services || {};
+  if (Array.isArray(raw)) return raw;
+  return Object.keys(raw).map(k => raw[k]);
+}
+function canonical(tag, cat){
+  const aliases = cat.aliases || {};
+  const lower = String(tag || "").toLowerCase();
+  return String(aliases[lower] || lower);
+}
+function tagsFrom(text, cat){
+  const reserved = new Set((cat.reserved_tags || []).map(x => String(x).toLowerCase()));
+  const found = [];
+  const re = /(?:^|[\s,;:(])@([A-Za-z][A-Za-z0-9_-]{0,62})\b/g;
+  let m;
+  while ((m = re.exec(text || ""))) {
+    const t = canonical(m[1], cat);
+    if (!reserved.has(t) && !found.includes(t)) found.push(t);
+  }
+  return found;
+}
+fetch("./ground/SLACK_SERVICE_TAGS.json").then(r => r.json()).then(cat => {
+  const tbody = document.getElementById("rows");
+  serviceList(cat).forEach(s => {
+    const tr = document.createElement("tr");
+    const tag = s.tag || s.id || "";
+    tr.innerHTML = "<td>@" + tag + "</td><td>" + (s.slack_tool || "") + "</td><td>" + (s.needs_owner_signin ? "yes → " + cat.owner_signin_channel.id : "no") + "</td>";
+    tbody.appendChild(tr);
+  });
+  function classify(){
+    const text = document.getElementById("sample").value;
+    const tags = tagsFrom(text, cat);
+    const connected = new Set(["slack"]);
+    const jobs = [];
+    const services = cat.services || {};
+    tags.forEach(tag => {
+      const svc = Array.isArray(services) ? services.find(s => (s.tag || s.id) === tag) : services[tag];
+      if (!svc) { jobs.push({tag, road:"UNKNOWN"}); return; }
+      const inHarness = (svc.in_harness_when || []).some(x => connected.has(x));
+      if (inHarness) jobs.push({tag, road:"IN_HARNESS"});
+      else {
+        jobs.push({tag, road:"SLACK_CUSTOM_TOOL", tool: svc.slack_tool});
+        if (svc.needs_owner_signin) jobs.push({tag, road:"OWNER_SIGNIN", channel: cat.owner_signin_channel.id});
+      }
+    });
+    document.getElementById("out").textContent = JSON.stringify({gate: cat.gate === true, tags, jobs}, null, 2);
+  }
+  document.getElementById("go").addEventListener("click", classify);
+  classify();
+}).catch(err => {
+  document.getElementById("out").textContent = "catalog fetch failed: " + err;
+});
+</script>
+</body>
+</html>

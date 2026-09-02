@@ -1,0 +1,242 @@
+{
+  "id": "cursor-slack-service-tags-20260902-01",
+  "kind": "SLACK_SERVICE_TAGS",
+  "gate": false,
+  "commons_admission": false,
+  "unknown_tags": "UNKNOWN",
+  "source_slack_ts": "1788319779.597119",
+  "source_channel_id": "C0BU51F1PL3",
+  "owner_signin_channel": {
+    "name": "#needs-bryce",
+    "id": "C0BRX6EV739",
+    "use": "provider_session_Bryce_must_complete",
+    "not": "commons_admission_gate"
+  },
+  "reserved_tags": [
+    "here",
+    "channel",
+    "everyone",
+    "group",
+    "reminders",
+    "slackbot"
+  ],
+  "aliases": {
+    "fb": "facebook",
+    "meta": "facebook",
+    "ig": "instagram",
+    "twitter": "x",
+    "tweet": "x",
+    "yt": "youtube",
+    "gdrive": "drive",
+    "google-drive": "drive",
+    "google_drive": "drive",
+    "gcal": "calendar",
+    "google-calendar": "calendar"
+  },
+  "services": {
+    "facebook": {
+      "tag": "facebook",
+      "slack_tool": "@facebook",
+      "needs_owner_signin": true,
+      "in_harness_when": ["facebook"]
+    },
+    "instagram": {
+      "tag": "instagram",
+      "slack_tool": "@instagram",
+      "needs_owner_signin": true,
+      "in_harness_when": ["instagram"]
+    },
+    "linkedin": {
+      "tag": "linkedin",
+      "slack_tool": "@linkedin",
+      "needs_owner_signin": true,
+      "in_harness_when": ["linkedin"]
+    },
+    "x": {
+      "tag": "x",
+      "slack_tool": "@x",
+      "needs_owner_signin": true,
+      "in_harness_when": ["x", "twitter"]
+    },
+    "threads": {
+      "tag": "threads",
+      "slack_tool": "@threads",
+      "needs_owner_signin": true,
+      "in_harness_when": ["threads"]
+    },
+    "tiktok": {
+      "tag": "tiktok",
+      "slack_tool": "@tiktok",
+      "needs_owner_signin": true,
+      "in_harness_when": ["tiktok"]
+    },
+    "youtube": {
+      "tag": "youtube",
+      "slack_tool": "@youtube",
+      "needs_owner_signin": true,
+      "in_harness_when": ["youtube"]
+    },
+    "reddit": {
+      "tag": "reddit",
+      "slack_tool": "@reddit",
+      "needs_owner_signin": true,
+      "in_harness_when": ["reddit"]
+    },
+    "bluesky": {
+      "tag": "bluesky",
+      "slack_tool": "@bluesky",
+      "needs_owner_signin": true,
+      "in_harness_when": ["bluesky"]
+    },
+    "discord": {
+      "tag": "discord",
+      "slack_tool": "@discord",
+      "needs_owner_signin": true,
+      "in_harness_when": ["discord"]
+    },
+    "whatsapp": {
+      "tag": "whatsapp",
+      "slack_tool": "@whatsapp",
+      "needs_owner_signin": true,
+      "in_harness_when": ["whatsapp"]
+    },
+    "telegram": {
+      "tag": "telegram",
+      "slack_tool": "@telegram",
+      "needs_owner_signin": true,
+      "in_harness_when": ["telegram"]
+    },
+    "github": {
+      "tag": "github",
+      "slack_tool": "@github",
+      "needs_owner_signin": false,
+      "in_harness_when": ["github"]
+    },
+    "gmail": {
+      "tag": "gmail",
+      "slack_tool": "@gmail",
+      "needs_owner_signin": false,
+      "in_harness_when": ["gmail"]
+    },
+    "google": {
+      "tag": "google",
+      "slack_tool": "@google",
+      "needs_owner_signin": true,
+      "in_harness_when": ["google"]
+    },
+    "calendar": {
+      "tag": "calendar",
+      "slack_tool": "@calendar",
+      "needs_owner_signin": true,
+      "in_harness_when": ["calendar", "google-calendar"]
+    },
+    "drive": {
+      "tag": "drive",
+      "slack_tool": "@drive",
+      "needs_owner_signin": true,
+      "in_harness_when": ["drive", "google-drive"]
+    },
+    "dropbox": {
+      "tag": "dropbox",
+      "slack_tool": "@dropbox",
+      "needs_owner_signin": true,
+      "in_harness_when": ["dropbox"]
+    },
+    "notion": {
+      "tag": "notion",
+      "slack_tool": "@notion",
+      "needs_owner_signin": true,
+      "in_harness_when": ["notion"]
+    },
+    "linear": {
+      "tag": "linear",
+      "slack_tool": "@linear",
+      "needs_owner_signin": true,
+      "in_harness_when": ["linear"]
+    },
+    "figma": {
+      "tag": "figma",
+      "slack_tool": "@figma",
+      "needs_owner_signin": true,
+      "in_harness_when": ["figma"]
+    },
+    "stripe": {
+      "tag": "stripe",
+      "slack_tool": "@stripe",
+      "needs_owner_signin": true,
+      "in_harness_when": ["stripe"]
+    },
+    "shopify": {
+      "tag": "shopify",
+      "slack_tool": "@shopify",
+      "needs_owner_signin": true,
+      "in_harness_when": ["shopify"]
+    },
+    "paypal": {
+      "tag": "paypal",
+      "slack_tool": "@paypal",
+      "needs_owner_signin": true,
+      "in_harness_when": ["paypal"]
+    },
+    "salesforce": {
+      "tag": "salesforce",
+      "slack_tool": "@salesforce",
+      "needs_owner_signin": true,
+      "in_harness_when": ["salesforce"]
+    },
+    "hubspot": {
+      "tag": "hubspot",
+      "slack_tool": "@hubspot",
+      "needs_owner_signin": true,
+      "in_harness_when": ["hubspot"]
+    },
+    "zoom": {
+      "tag": "zoom",
+      "slack_tool": "@zoom",
+      "needs_owner_signin": true,
+      "in_harness_when": ["zoom"]
+    },
+    "agentmail": {
+      "tag": "agentmail",
+      "slack_tool": "@agentmail",
+      "needs_owner_signin": false,
+      "in_harness_when": ["agentmail"]
+    },
+    "openai": {
+      "tag": "openai",
+      "slack_tool": "@openai",
+      "needs_owner_signin": true,
+      "in_harness_when": ["openai"]
+    },
+    "anthropic": {
+      "tag": "anthropic",
+      "slack_tool": "@anthropic",
+      "needs_owner_signin": true,
+      "in_harness_when": ["anthropic"]
+    },
+    "xai": {
+      "tag": "xai",
+      "slack_tool": "@xai",
+      "needs_owner_signin": true,
+      "in_harness_when": ["xai"]
+    },
+    "cursor": {
+      "tag": "cursor",
+      "slack_tool": "@cursor",
+      "needs_owner_signin": false,
+      "in_harness_when": ["cursor"]
+    },
+    "commons": {
+      "tag": "commons",
+      "slack_tool": "@commons",
+      "needs_owner_signin": false,
+      "in_harness_when": ["commons"]
+    },
+    "slack": {
+      "tag": "slack",
+      "slack_tool": "@slack",
+      "needs_owner_signin": false,
+      "in_harness_when": ["slack"]
+    }
+  }
+}
