@@ -200,6 +200,8 @@
     "harborline_tally_map_leftover_helper": "host/business_pack_harborline_tally_map.py",
     "sidewalk_lotribbon_waitlist_helper_receipt": "cursor-business-pack-sidewalk-lotribbon-waitlist-helper-20260902-01",
     "did_not_write_sidewalk_lotribbon_waitlist_helper": true,
+    "harborline_map_helper_pointer": "cursor-business-pack-harborline-map-helper-pointer-20260902-01",
+    "keep_main_7754_remint": true,
     "did_not_overwrite_harborline_tally_pack_map": true,
     "did_not_overwrite_sidewalk_door": true,
     "did_not_overwrite_lotribbon_door": true,

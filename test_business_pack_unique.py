@@ -581,6 +581,10 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertEqual(block["harborline_tally_pack_map_pointer_helper_sha"], "636e2e2fd")
         self.assertIs(block["did_not_write_harborline_tally_map_pointer_helper"], True)
         self.assertEqual(
+            block["harborline_tally_map_leftover_helper"],
+            "host/business_pack_harborline_tally_map.py",
+        )
+        self.assertEqual(
             block["sidewalk_lotribbon_waitlist_helper"],
             "host/business_pack_sidewalk_lotribbon_waitlist.py",
         )
@@ -589,6 +593,19 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "cursor-business-pack-sidewalk-lotribbon-waitlist-helper-20260902-01",
         )
         self.assertIs(block["did_not_write_sidewalk_lotribbon_waitlist_helper"], True)
+        self.assertEqual(
+            block["harborline_map_helper_pointer"],
+            "cursor-business-pack-harborline-map-helper-pointer-20260902-01",
+        )
+        self.assertIs(block["keep_main_7754_remint"], True)
+        self.assertNotEqual(
+            block["id"],
+            block["harborline_map_helper_pointer"],
+        )
+        self.assertNotEqual(
+            block["harborline_tally_pack_map_pointer"],
+            block["harborline_map_helper_pointer"],
+        )
         self.assertIs(block["did_not_overwrite_harborline_tally_pack_map"], True)
         self.assertEqual(
             block["catalog_waitlist_rows_pointer"],
@@ -644,6 +661,9 @@ class BusinessPackUniqueTest(unittest.TestCase):
             ).is_file()
         )
         self.assertIn("2c584983", self.door)
+        self.assertIn("KEEP MAIN on remint #7754", self.door)
+        self.assertIn("cursor-business-pack-harborline-map-helper-pointer-20260902-01", self.door)
+        self.assertIn("KEEP MAIN on remint #7754", self.card)
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
         block = self.law["rating_slot"]
