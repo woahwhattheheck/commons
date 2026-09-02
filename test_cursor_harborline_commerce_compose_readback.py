@@ -146,10 +146,10 @@ class TestCursorHarborlineCommerceComposeReadback(unittest.TestCase):
         self.assertTrue(
             (ROOT / "p/cursor-big-huge-commerce-agents-20260902-01.md").exists()
         )
-        self.assertFalse(
+        self.assertTrue(
             (ROOT / "p/cursor-big-huge-commerce-agents-readback-20260902-01.md").exists()
         )
-        self.assertFalse(
+        self.assertTrue(
             (
                 ROOT
                 / "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md"
