@@ -2473,11 +2473,17 @@ def rebuild_to(rows):
 </body></html>
 """ % (dest, CSS.replace("./", "../"), hub_pages.CARRIER_JS_TAG.replace("./", "../", 1),
        doors(True), dest, dest, hub_pages.say_form(default_to=dest), body_html)
-        _write(os.path.join(TO, dest + ".html"), page)
+        # to= is free text. A value containing "/" once baked to
+        # "to/COMMONS / NONDUPLICATING INTEGRATOR.html": a directory with a
+        # trailing space that Windows cannot check out. The owner removed it
+        # 2026-08-30 and the next ingest regenerated it. Reuse the by/ encoder
+        # so every inbox route is one reversible, Windows-safe filename.
+        filename = by_claim_filename(dest)
+        _write(os.path.join(TO, filename), page)
         latest = items[0][0] if items else ""
         index_rows.append(
-            (dest, '<li><a href="./%s.html">%s</a> \u2014 %s post(s)%s</li>' % (
-                dest, dest, len(items), (" \u00b7 last " + latest) if latest else ""
+            (dest, '<li><a href="./%s">%s</a> \u2014 %s post(s)%s</li>' % (
+                filename, html.escape(dest), len(items), (" \u00b7 last " + latest) if latest else ""
             ))
         )
     lanes = [row_html for dest, row_html in index_rows if dest in TO_LANES]
