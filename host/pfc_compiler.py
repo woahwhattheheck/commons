@@ -21,7 +21,7 @@ The four source shapes and the correct compilations (this is what the gates must
     a + b + c   ->  t = a + b ;  out = t + c
     a + b * c   ->  t = b * c ;  out = a + t      <- multiply scheduled FIRST, operands change
     a * b + c   ->  t = a * b ;  out = t + c
-    a * b * c   ->  t = a * b ;  out = t * n
+    a * b * c   ->  t = a * b ;  out = t * c
 
 Run:  python host/pfc_compiler.py
 """
