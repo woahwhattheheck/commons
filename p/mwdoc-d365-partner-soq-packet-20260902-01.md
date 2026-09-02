@@ -40,6 +40,6 @@ Upgrade paths:
 10. `revenue/mwdoc_d365_soq/rate-sheet-template.csv`
 11. `p/mwdoc-d365-partner-soq-packet-20260902-01.md`
 
-Verification is deterministic compile-twice/committed-byte equality, score reconciliation, schema/JSON/static HTML checks, official HTTPS/freshness checks, and rejection of invented eligibility, reference readiness, rates, contact coordinates, secrets, outreach, submission, award, revenue, or cash.
+Verification is deterministic compile-twice/committed-byte equality, score reconciliation, schema/JSON/static HTML checks, official HTTPS/freshness checks, and rejection of invented eligibility, reference readiness, rates, contact coordinates, secrets, outreach, submission, award, revenue, or cash. Exact-head GitHub checks are evaluated after this receipt-only commit.
 
 No external outreach, reply, teaming agreement, bid, submission, portal action, signing, spend, buyer acceptance, award, revenue, or cash claim.
