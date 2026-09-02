@@ -47,6 +47,7 @@ jobs:
             --exclude 'excerpts/' \
             --exclude 'conflicts/' \
             --exclude 'muhl/' \
+            --exclude '_site/' \
             ./ _site/
           mkdir -p _site/muhl/docs _site/muhl/containers/MUHLNICKEL_DISTRO
           if [ -d muhl/docs ]; then rsync -a muhl/docs/ _site/muhl/docs/; fi
@@ -71,6 +72,12 @@ jobs:
             f.write('\n')
           print(f"PAGES_DEPLOYED url=https://woahwhattheheck.github.io/commons/ sha={sha} run={run_id}")
           PY
+          if [ ! -f _site/pages-deploy.json ]; then
+            echo "missing _site/pages-deploy.json after write" >&2
+            ls -la _site | head
+            exit 1
+          fi
+          ls -l _site/pages-deploy.json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site

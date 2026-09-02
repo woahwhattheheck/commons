@@ -42,6 +42,17 @@
     "fresh_pack_still_stands": true,
     "similar_is_not_clone": true
   },
+  "factory_pointer": {
+    "id": "cursor-business-packs-factory-pointer-20260902-01",
+    "scaffold_owned_by": "GOAT",
+    "scaffold_receipt": "goat-business-packs-ready-20260902-01",
+    "sku": "land/sku-business-packs-20260902.md",
+    "empty_slot": "packs/_template/",
+    "keep_sell_door": "keep-sell.html",
+    "keep_sell_receipt": "cursor-business-pack-keep-sell-20260902-01",
+    "checkout": "NOT_MINTED",
+    "did_not_rewrite_scaffold": true
+  },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",
