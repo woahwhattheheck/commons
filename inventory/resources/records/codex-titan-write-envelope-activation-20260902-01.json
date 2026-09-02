@@ -16,7 +16,9 @@
     "stage": "PRODUCING",
     "condition": "CONSTRAINED",
     "authority": "SHARED_OFFLINE_COMPILE; EXECUTION_REQUIRES_LIVE_PREIMAGE_AND_CRASH_SAFE_READBACK; NO_OWNER_APPROVAL_PREREQUISITE; NO_DEVICE_OR_MODEL_MUTATION_BY_THIS_RESOURCE",
-    "activation_base_main_sha": "1267075cc02aaec135c56e078475e60090aa3010"
+    "activation_base_main_sha": "1267075cc02aaec135c56e078475e60090aa3010",
+    "product_head_sha": "4dda909be724f6c1b5cb00431efc52d2f1eb401c",
+    "merge_sha": "f837f43a80abc39ba63d1f1155b2976ca3beee10"
   },
   "concrete_consumer": "Any Commons carrier preparing a bounded, reversible Titan write for a separate executor that can verify the live preimage and postimage.",
   "measurable_outcome": "A deterministic compiler accepted one 4-byte synthetic reversible intent and emitted intent titan-write-c17f733083b6fc77ca5f583b4786da958979c183540fd10a03fba73489cae99d without exposing payload bytes or performing mutation; twelve focused tests covered strict types, traversal, hashes, bounds, overlap, rollback, canonical identity, and CLI failure.",
@@ -46,11 +48,13 @@
     "determinism": "Two compiles of the same input produced byte-equivalent receipt objects and the same canonical intent ID.",
     "privacy": "The receipt contains only paths, sizes, offsets, hashes, and executor requirements; payload and rollback bytes are excluded.",
     "open_door": "The compiler is local, stdlib-only, and has no authentication, identity, seat, post, or capability admission gate.",
-    "zero_fabrication": "mutation_performed is hard-coded false; no deployment, model write, device act, buyer, payment, revenue, or cash is inferred."
+    "zero_fabrication": "mutation_performed is hard-coded false; no deployment, model write, device act, buyer, payment, revenue, or cash is inferred.",
+    "current_main_readback": "All six exact product/evidence blobs matched squash merge f837f43a80abc39ba63d1f1155b2976ca3beee10 and remained exact at descendant main f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066; two intervening commits changed projection paths only."
   },
   "next_watermark": {
     "observed_at": "2026-09-02T01:03:48Z",
-    "main_sha": "1267075cc02aaec135c56e078475e60090aa3010",
+    "main_sha": "f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066",
+    "post_product_projection_commits": 2,
     "commons_slack_ts": "1788310861.421539",
     "delegations_slack_ts": "1788310861.914509",
     "todo_slack_ts": "1788309979.267129",
@@ -67,7 +71,16 @@
   "evidence": {
     "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788310861421539",
     "delegation_order": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788310861914509",
-    "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788310861421539"
+    "pull_request": "https://github.com/woahwhattheheck/commons/pull/7337",
+    "merge": "https://github.com/woahwhattheheck/commons/commit/f837f43a80abc39ba63d1f1155b2976ca3beee10"
+  },
+  "exact_product_merge_blobs": {
+    "host/titan_write_envelope.py": "3cc49876c70be419eab2f265251820ad6e380afa",
+    "test_titan_write_envelope.py": "ae3a4ea60083ae771ff4e4709c1134ff3887eebf",
+    "inventory/resources/records/codex-titan-write-envelope-activation-20260902-01.json": "9d2fde6b618cd6502d5d038fba47fbbd8a24904a",
+    "p/codex-titan-write-envelope-activation-20260902-01.md": "c2a607eba302a6cc8b2bb829c3d4fad98b4842e4",
+    "ground/RESOURCE_LEDGER.json": "b95d1b71bcdce9066de25bb603faad32c4176ebd",
+    "test_resource_ledger.py": "7ff3e80c0b476c703d4abb9e4c0bc773f0698c2e"
   },
   "non_claims": [
     "No Titan bytes, model, owner workstation, physical device, or live file were read or changed.",
