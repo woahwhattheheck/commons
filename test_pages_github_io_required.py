@@ -125,7 +125,40 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertFalse(required.covered_by_keep(required.SEED0, ("muhl/docs/",)))
         self.assertFalse(required.covered_by_keep("excerpts/x.json", ("chunks/", "muhl/docs/")))
 
+    def test_deploy_doc_absent_is_clean(self) -> None:
+        self.assertFalse(required.live_deploy_doc_excludes_chunks(ROOT))
+        payload = required.report(ROOT)
+        self.assertFalse(payload["deploy_doc_present"])
+        self.assertFalse(payload["deploy_doc_excludes_chunks"])
+
+    def test_deploy_doc_except_list_with_chunks_is_flagged(self) -> None:
+        bad = (
+            "Allowlist: the whole tree **except** `muhl/` (only `muhl/docs/` stays),\n"
+            "`chunks/`, `excerpts/`, `conflicts/`, `.github/`. Roughly 235 MB.\n"
+        )
+        good = (
+            "Allowlist: the whole tree **except** bulk `muhl/` outside keep rows.\n"
+            "`chunks/` MUST stay (board.js). Also exclude `excerpts/`, `conflicts/`.\n"
+        )
+        self.assertTrue(required.deploy_doc_excludes_chunks(bad))
+        self.assertFalse(required.deploy_doc_excludes_chunks(good))
+
+    def test_fable_pages_deploy_pr_doc_still_excludes_chunks(self) -> None:
+        """PR tip may move; this pins the measured bad prose if that blob is reachable."""
+        import subprocess
+
+        tip = "origin/claude/pages-workflow-deploy-20260902:ground/PAGES_DEPLOY.md"
+        try:
+            text = subprocess.check_output(["git", "show", tip], text=True)
+        except subprocess.CalledProcessError:
+            self.skipTest("Fable/GOAT Pages deploy branch tip not fetched")
+        self.assertTrue(
+            required.deploy_doc_excludes_chunks(text),
+            "PAGES_DEPLOY.md on Pages PR still lists chunks/ under except; fold keep-paths before flip",
+        )
+
     def test_helper_source_does_not_add_admission_locks(self) -> None:
+
         text = (ROOT / "host" / "pages_github_io_required.py").read_text(encoding="utf-8")
         lowered = text.lower()
         self.assertIn("possessing the link stays authorization", lowered)
