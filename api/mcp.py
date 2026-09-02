@@ -236,8 +236,9 @@ class FastSubmitGateway(cm.CommonsGateway):
             raise cm.CommonsError(
                 "CANCELLED", "request cancelled before carrier submission", state="NOT_SENT"
             )
-        # NtfyCarrier.submit is the canonical 3,900-byte limiter. Spark must
-        # invoke it so oversize cannot become ACCEPTED_DURABILITY_PENDING.
+        # The ntfy carrier is the single envelope limiter. Pre-rejecting here
+        # would skip carrier.submit and return CARRIER_LIMIT without the
+        # carrier ever seeing the payload (FLINT 2026-09-02).
         receipt = self.carrier.submit(payload)
         return {
             "ok": True,

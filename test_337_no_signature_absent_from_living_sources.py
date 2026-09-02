@@ -82,13 +82,13 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
                 hits.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(hits, [], f"invented signature still in living sources: {hits}")
 
-    def test_named_20260902_living_cards_do_not_carry_invented_signature(self) -> None:
-        """Regression for the 2026-09-02 battery: these three living cards reintroduced 337 NO."""
-        for rel in (
+    def test_named_living_canaries_stay_clear_of_invented_signature(self) -> None:
+        canaries = (
             ".cursor/rules/github-already-logged-in.mdc",
             "ground/BUSINESS_PACK_KEEP_SELL.md",
             "ground/HARNESS_ALREADY_LOGGED_IN.md",
-        ):
+        )
+        for rel in canaries:
             raw = (ROOT / rel).read_bytes()
             self.assertNotIn(SIGNATURE.encode("utf-8"), raw, rel)
 
