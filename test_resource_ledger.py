@@ -145,10 +145,26 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788256871.664259")
+        self.assertEqual(catalog["slack_ts"], "1788310861.421539")
         self.assertEqual(
             catalog["source_id"],
+            "codex-titan-write-envelope-activation-20260902-01",
+        )
+        self.assertIn(
+            "codex-connected-capability-fleet-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-vercel-capacity-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
+            "codex-agent-address-memory-liveness-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
             "codex-commons-skill-toolset-consumption-activation-20260901-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-github-repository-portfolio-activation-20260901-01",
@@ -219,17 +235,17 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-commons-skill-toolset-consumption-activation-20260901-01.json",
+            "codex-titan-write-envelope-activation-20260902-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
-        self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
+        self.assertEqual(current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "commons-skill-and-tool-set"
+            current_activation["selected_resource"], "titan-write-envelope"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
-        self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
+        self.assertIn(slack_cite, current_activation["evidence"]["claim"])
         activation_path = os.path.join(
             ROOT,
             "inventory",
@@ -277,6 +293,9 @@ class TestResourceLedger(unittest.TestCase):
             "codex-github-actions-watchdog-advancement-20260828-01",
         )
         self.assertIn("p1787933005065549", watchdog["evidence"]["slack"])
+        self.assertNotEqual(catalog["slack_ts"], "1788304349.282199")
+        self.assertNotEqual(catalog["slack_ts"], "1788300060.035449")
+        self.assertNotEqual(catalog["slack_ts"], "1788256871.664259")
         self.assertNotEqual(catalog["slack_ts"], "1788105886.420729")
         self.assertNotEqual(catalog["slack_ts"], "1788083921.230169")
         self.assertNotEqual(catalog["slack_ts"], "1788062418.023819")
@@ -385,12 +404,29 @@ class TestResourceLedger(unittest.TestCase):
             "inventory/resources/records/codex-github-actions-watchdog-production-activation-20260829-01.json",
             raw.get("record_sources") or [],
         )
+        self.assertIn(
+            "inventory/resources/records/codex-commons-skill-toolset-consumption-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-vercel-capacity-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-connected-capability-fleet-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
         self.assertFalse(catalog["cache_as_capacity"])
         self.assertFalse(catalog["secrets"])
         names = [row["name"] for row in catalog["surfaces"]]
         self.assertIn("github", names)
         self.assertIn("huggingface", names)
         self.assertIn("vercel", names)
+        self.assertIn("chatgpt-connected-capability-fleet", names)
         for row in catalog["surfaces"]:
             if row["capacity"] == "LIVE":
                 for field in REQUIRED_FIELDS:
@@ -425,6 +461,8 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(measured["activation_queue"][0]["name"], "outcome-commerce-bridge")
         self.assertEqual(measured["activation_queue"][0]["priority"], 72)
         self.assertNotIn("commons-skill-and-tool-set", queue_names)
+        self.assertNotIn("chatgpt-connected-capability-fleet", queue_names)
+        self.assertNotIn("resource-master-office", queue_names)
         skills = next(
             row
             for row in catalog["surfaces"]
@@ -434,6 +472,26 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             skills["last_receipt"],
             "codex-commons-skill-toolset-consumption-activation-20260901-01",
+        )
+        fleet = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "chatgpt-connected-capability-fleet"
+        )
+        self.assertEqual(fleet["stage"], "PRODUCING")
+        self.assertEqual(
+            fleet["last_receipt"],
+            "codex-connected-capability-fleet-activation-20260901-01",
+        )
+        office = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "resource-master-office"
+        )
+        self.assertEqual(office["stage"], "PRODUCING")
+        self.assertEqual(
+            office["last_receipt"],
+            "codex-resource-master-delta-engine-activation-20260901-01",
         )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
@@ -689,16 +747,17 @@ class TestResourceLedger(unittest.TestCase):
             rows = {row["name"]: row for row in load_catalog(handle.read())["surfaces"]}
         self.assertEqual(rows["bryce-owner-operator"]["kind"], "HUMAN")
         self.assertEqual(rows["bryce-owner-operator"]["stage"], "PRODUCING")
-        self.assertEqual(rows["cursor-ultra"]["capacity"], "CACHE")
-        self.assertEqual(rows["cursor-ultra"]["condition"], "HELD")
+        self.assertEqual(rows["cursor-ultra"]["capacity"], "LIVE")
+        self.assertEqual(rows["cursor-ultra"]["stage"], "PRODUCING")
+        self.assertEqual(rows["cursor-ultra"]["condition"], "CONSTRAINED")
         self.assertEqual(rows["claude"]["condition"], "HELD")
-        self.assertIn("not tester/verifier", rows["claude"]["assigned_backlog"].lower())
+        self.assertIn("owner-handled", rows["claude"]["assigned_backlog"].lower())
         self.assertEqual(rows["titan-hands-windows"]["stage"], "EXERCISED")
         self.assertEqual(rows["owner-workstation"]["capacity"], "NOT_VERIFIED")
         self.assertEqual(rows["owner-workstation"]["condition"], "BLOCKED")
         self.assertEqual(rows["public-commerce-road"]["stage"], "PRODUCING")
         self.assertEqual(rows["public-commerce-road"]["condition"], "CONSTRAINED")
-        self.assertEqual(rows["openai-automation-fleet"]["quantity"], 3)
+        self.assertEqual(rows["openai-automation-fleet"]["quantity"], 6)
         self.assertEqual(rows["kite-task-forge-r0"]["stage"], "PRODUCING")
         self.assertEqual(rows["kite-task-forge-r0"]["condition"], "LIVE")
         self.assertEqual(rows["commons-network-plugin"]["stage"], "PRODUCING")

@@ -1,0 +1,36 @@
+---
+description: Sellable products go in private repos. Non-product work goes on public main.
+alwaysApply: true
+---
+
+# Products private, other work on main
+
+Products we sell land on **private** repo `main`. Work that is not a sellable product lands on the matching public `main` (usually `woahwhattheheck/commons`).
+
+## Private product repos
+
+Merge sellable product bytes here, not onto public commons:
+
+- `woahwhattheheck/charttrace` — ChartTrace workbench
+- `woahwhattheheck/aquatrace-lims` — AquaTrace LIMS and customer LIMS fixtures
+- `woahwhattheheck/motel-ops-suite` — motel / RoomShield
+- `woahwhattheheck/smb-showcase-inventory` — SMB showcase inventory
+- `woahwhattheheck/LocalDeviceAgent` — LocalDeviceAgent
+
+Create a new **private** repo if a sellable SKU has no home. Default private. Do not make product source public.
+
+## Public commons
+
+`woahwhattheheck/commons` is the public board. Land board posts, doors that are not product engines, and non-product tooling (relays, carrier pickup, feature tracker hygiene) on public `main`.
+
+Do **not** merge onto public commons main:
+
+- ChartTrace source (`charttrace/**`, `test_charttrace_*.py`)
+- Customer / revenue LIMS engines, tests, and `revenue/<sku>/` packs
+- Motel, SMB showcase, AquaTrace, LDA product trees
+
+If a session accidentally opened a product PR against public commons: copy unique files to the private product repo, merge there, **close the public PR without merging**. Do not overwrite private `main` on semantic conflict.
+
+## Ship still means main — the correct main
+
+Ship-by-default still applies. Product work is not parked. It ships to **private** `main`. Non-product work ships to **public** `main`.
