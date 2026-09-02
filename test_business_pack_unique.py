@@ -423,6 +423,22 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "host/pack_waitlist_pixel_gate.py",
         )
         self.assertEqual(
+            block["pixel_gate_helper_pointer"],
+            "cursor-business-pack-pixel-gate-helper-pointer-20260902-01",
+        )
+        self.assertEqual(
+            block["pixel_gate_pointer_helper"],
+            "host/pack_waitlist_pixel_gate_pointer.py",
+        )
+        self.assertEqual(
+            block["pixel_gate_pointer_helper_receipt"],
+            "cursor-business-pack-waitlist-pixel-gate-pointer-helper-20260902-01",
+        )
+        self.assertEqual(block["pixel_gate_pointer_helper_sha"], "08a23cde6")
+        self.assertIs(block["did_not_overwrite_pixel_gate_pointer_helper"], True)
+        self.assertIs(block["did_not_overwrite_pixel_gate_classifier"], True)
+        self.assertNotEqual(block["pixel_gate_pointer"], block["pixel_gate_helper_pointer"])
+        self.assertEqual(
             block["pixel_gate_receipt"],
             "cursor-pack-waitlist-pixel-gate-20260902-01",
         )
@@ -434,6 +450,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotEqual(block["id"], block["pixel_gate_pointer"])
         self.assertNotEqual(block["id"], block["pixel_gate_receipt"])
         self.assertTrue((ROOT / "host" / "pack_waitlist_pixel_gate.py").is_file())
+        self.assertTrue((ROOT / "host" / "pack_waitlist_pixel_gate_pointer.py").is_file())
         self.assertTrue(
             (ROOT / "p" / "cursor-pack-waitlist-pixel-gate-20260902-01.md").is_file()
         )
@@ -444,8 +461,16 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-waitlist-pixel-gate-pointer-20260902-01.md"
             ).is_file()
         )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-pixel-gate-helper-pointer-20260902-01.md"
+            ).is_file()
+        )
         self.assertIn("CCPA", self.door)
         self.assertIn("pack_waitlist_pixel_gate.py", self.door)
+        self.assertIn("pack_waitlist_pixel_gate_pointer.py", self.door)
         self.assertTrue((ROOT / "packs" / "waitlist.html").is_file())
         self.assertIn('href="./packs/waitlist.html"', self.door)
         self.assertNotIn("<form", self.door)
@@ -615,6 +640,20 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["instance_waitlist_helper"],
             "host/business_pack_instance_waitlist.py",
         )
+        self.assertEqual(
+            block["sold_once_badge_pointer"],
+            "cursor-business-pack-sold-once-badge-pointer-20260902-01",
+        )
+        self.assertEqual(block["sold_once_claimed_by"], "TALLY")
+        self.assertEqual(
+            block["sold_once_scout_demand_id"],
+            "scout-demand-door-sold-once-badge-20260902-01",
+        )
+        self.assertIs(block["did_not_remint_scout_sold_once"], True)
+        self.assertIs(block["did_not_overwrite_tally_helper"], True)
+        self.assertIs(block["did_not_write_tally_sold_once_paths"], True)
+        self.assertIs(block["did_not_write_lotribbon_sold_once"], True)
+        self.assertIs(block["did_not_write_goat_creative_brief"], True)
         self.assertIs(block["did_not_overwrite_sidewalk_door"], True)
         self.assertIs(block["did_not_overwrite_lotribbon_door"], True)
         self.assertIn("host/business_pack_desk_instance.py", self.door)
@@ -660,10 +699,23 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-harborline-map-helper-pointer-20260902-01.md"
             ).is_file()
         )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sold-once-badge-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertFalse(
+            (ROOT / "p" / "tally-door-sold-once-badge-20260902-01.md").is_file()
+        )
+        self.assertFalse((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
         self.assertIn("2c584983", self.door)
         self.assertIn("KEEP MAIN on remint #7754", self.door)
         self.assertIn("cursor-business-pack-harborline-map-helper-pointer-20260902-01", self.door)
         self.assertIn("KEEP MAIN on remint #7754", self.card)
+        self.assertIn("sold-once", self.door.lower())
+        self.assertIn("sold-once", self.card.lower())
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
         block = self.law["rating_slot"]
