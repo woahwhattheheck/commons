@@ -687,12 +687,15 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "cursor-pack-harborline-map-pin-lift-20260902-01",
         )
         self.assertEqual(block["harborline_map_pin_lift_blob"], "8fe8a002")
+        self.assertEqual(block["harborline_map_pin_lift_squash"], "b9e6f54c")
+        self.assertEqual(block["harborline_map_pin_lift_claimed_by"], "bc-31c8ef9a")
         self.assertEqual(
             block["harborline_map_pin_lift_pointer"],
             "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01",
         )
         self.assertIs(block["did_not_write_harborline_map_pin_lift"], True)
         self.assertIs(block["did_not_remint_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_remint_sold_once_badge_pin_lift"], True)
         self.assertIs(block["harborline_leftover_live_instance_blobs_not_pinned"], True)
         self.assertEqual(block["sold_once_claimed_by"], "TALLY")
         self.assertEqual(
@@ -1034,12 +1037,15 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "cursor-pack-harborline-map-pin-lift-20260902-01",
         )
         self.assertEqual(block["harborline_map_pin_lift_blob"], "8fe8a002")
+        self.assertEqual(block["harborline_map_pin_lift_squash"], "b9e6f54c")
+        self.assertEqual(block["harborline_map_pin_lift_claimed_by"], "bc-31c8ef9a")
         self.assertEqual(
             block["harborline_map_pin_lift_pointer"],
             "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01",
         )
         self.assertIs(block["did_not_write_harborline_map_pin_lift"], True)
         self.assertIs(block["did_not_remint_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_remint_sold_once_badge_pin_lift"], True)
         self.assertIs(block["harborline_leftover_live_instance_blobs_not_pinned"], True)
         self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
         leftover = ROOT / "p" / "cursor-pack-harborline-map-pin-lift-20260902-01.md"
@@ -1048,13 +1054,27 @@ class BusinessPackUniqueTest(unittest.TestCase):
             b"blob " + str(len(data)).encode("ascii") + b"\0" + data
         ).hexdigest()[:8]
         self.assertEqual(blob, "8fe8a002")
+        pointer_receipt = (
+            ROOT
+            / "p"
+            / "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
+        )
+        pointer_data = pointer_receipt.read_bytes()
+        pointer_blob = hashlib.sha1(
+            b"blob " + str(len(pointer_data)).encode("ascii") + b"\0" + pointer_data
+        ).hexdigest()[:8]
+        self.assertEqual(pointer_blob, "7a8987b5")
+        self.assertTrue(
+            (ROOT / "land" / "pack-harborline-map-pin-lift-pointer-20260902.md").is_file()
+        )
         self.assertTrue(
             (
                 ROOT
                 / "p"
-                / "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
+                / "cursor-business-pack-harborline-map-pin-lift-compose-20260902-01.md"
             ).is_file()
         )
+        self.assertIn("b9e6f54c", self.door)
         self.assertIn("8fe8a002", self.door)
         self.assertIn("cursor-pack-harborline-map-pin-lift-20260902-01", self.card)
         self.assertIn("does not freeze TALLY sold-once receipt absence", self.door)
