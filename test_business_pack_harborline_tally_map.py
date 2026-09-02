@@ -82,6 +82,7 @@ class BusinessPackHarborlineTallyMapHelperTest(unittest.TestCase):
         self.assertEqual(row["helper"], "host/business_pack_desk_instance.py")
         self.assertIs(self.block["did_not_overwrite_harborline_tally_pack_map"], True)
         self.assertTrue(self.result["blobs_match"])
+        self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
         self.assertEqual(self.result["blobs"]["host/harborline_tally_pack_map.py"], "a889db44")
         self.assertEqual(
             self.result["blobs"]["p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md"],
@@ -97,8 +98,27 @@ class BusinessPackHarborlineTallyMapHelperTest(unittest.TestCase):
             self.result["blobs"]["packs/desk-website-service-20260902-01/door.html"],
             "d3d6fcc7",
         )
-        self.assertEqual(self.result["blobs"]["host/business_pack_desk_instance.py"], "a550ae1b")
         self.assertEqual(self.result["blobs"]["packs/waitlist.html"], "bdcaa7ea")
+        self.assertEqual(
+            self.result["observed_at_land"]["host/business_pack_desk_instance.py"],
+            "a550ae1b",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html"
+            ],
+            "638e60b4",
+        )
+        self.assertEqual(
+            self.result["observed_at_land"][
+                "packs/lotribbon-greetings-20260902-01/index.html"
+            ],
+            "ac60db02",
+        )
+        self.assertIn(
+            "host/business_pack_desk_instance.py",
+            self.result["this_seat_does_not_write"],
+        )
         self.assertEqual(self.result["checkout"], "NOT_MINTED")
         self.assertIs(self.result["agents_spend_ads"], False)
         self.assertIs(self.result["no_auth"], True)
@@ -142,6 +162,7 @@ class BusinessPackHarborlineTallyMapHelperTest(unittest.TestCase):
         )
         self.assertEqual(data["map_owner"], "bc-31c8ef9a")
         self.assertEqual(data["checkout"], "NOT_MINTED")
+        self.assertIs(data["live_instance_blobs_not_pinned"], True)
 
 
 if __name__ == "__main__":
