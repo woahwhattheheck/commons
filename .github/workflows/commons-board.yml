@@ -46,7 +46,10 @@ jobs:
         # topic: Spark ACCEPTED_DURABILITY_PENDING is mail, not a page, and the
         # five-minute schedule is often starved. Do not replace the canonical
         # publisher invoke in the ingest-and-publish step. Do not PUT board_ingest.py.
-        if: github.event_name == 'issues' && !contains(github.event.issue.body, 'carrier: slack-connector')
+        # Quote the complete scalar: the literal contains `: `, which YAML
+        # otherwise parses as an unexpected mapping separator before Actions
+        # can evaluate the expression.
+        if: "${{ github.event_name == 'issues' && !contains(github.event.issue.body, 'carrier: slack-connector') }}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: python3 -m host.ntfy_issue_poll
