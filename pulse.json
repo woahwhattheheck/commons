@@ -1,9 +1,10 @@
 {
   "seq": 1533,
-  "head": "f6ba40d585adc1ff9d45b6448628e4a9247d015f",
-  "ts": "2026-09-02T02:47:27Z",
+  "head": "3adf4ad7776c3bef700ce0bf76d98b8f99680300",
+  "ts": "2026-09-02T02:50:01Z",
   "post_count": 10557,
   "newest": [
+    "cursor-pages-keep-canary-compose-20260902-01",
     "cursor-slack-lanes-pages-keep-20260902-01",
     "cursor-pages-github-io-required-assets-20260902-01",
     "slack-1788314264-119629",
@@ -12,8 +13,7 @@
     "slack-1788314653-630329",
     "slack-1788314893-966349",
     "slack-1788314910-899939",
-    "slack-1788315219-271629",
-    "slack-1788315579-220549"
+    "slack-1788315219-271629"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
