@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Classify catalog waitlist rows without writing instance doors.
 
-Sidewalk Signal (TALLY) and LotRibbon Greetings (LEAD) do not host the
-shared waitlist form. Harborline Local Sites already cites
-packs/waitlist.html on its door. This helper only reads. It does not
-overwrite those instance doors, packs/waitlist.html, or TALLY's desk
-helper. Not a Commons gate.
+This helper only reads. It does not overwrite instance doors,
+packs/waitlist.html, or TALLY's desk helper. Live instance blobs are
+not pinned so owners can land sold-once and other door edits. Not a
+Commons gate.
 """
 from __future__ import annotations
 
@@ -22,13 +21,24 @@ UNIQUE_PACK_ID = "cursor-business-packs-unique-20260902-01"
 CATALOG_ID = "cursor-business-pack-instance-catalog-20260902-01"
 POINTER_ID = "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01"
 SHARED_WAITLIST = "packs/waitlist.html"
-EXPECTED_BLOBS = {
+# Land-time observations from catalog pointer SHIP e9c5e8aa / receipt 2c584983.
+# Not live pins: instance owners may change their doors and TALLY helper.
+OBSERVED_AT_LAND = {
     "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
     "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
-    "packs/waitlist.html": "bdcaa7ea",
     "host/business_pack_desk_instance.py": "a550ae1b",
 }
+EXPECTED_BLOBS = {
+    "packs/waitlist.html": "bdcaa7ea",
+}
+THIS_SEAT_DOES_NOT_WRITE = (
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+    "packs/lotribbon-greetings-20260902-01/index.html",
+    "packs/desk-website-service-20260902-01/door.html",
+    "host/business_pack_desk_instance.py",
+    "packs/waitlist.html",
+)
 WAITLIST_ON_INSTANCE_DOOR = "WAITLIST_ON_INSTANCE_DOOR"
 WAITLIST_CATALOG_POINTER = "WAITLIST_CATALOG_POINTER"
 WAITLIST_MISSING = "WAITLIST_MISSING"
@@ -94,9 +104,15 @@ def classify_catalog(law: dict[str, Any] | None = None) -> dict[str, Any]:
                     "door_blob": blob_prefix(rel) if rel else "",
                 }
             )
-    blobs = {rel: blob_prefix(rel) for rel in EXPECTED_BLOBS}
-    blobs_match = all(blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items())
+    blobs = {rel: blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *OBSERVED_AT_LAND)}
+    waitlist_blob_ok = all(
+        blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items()
+    )
     verdicts = {row["brand"]: row["verdict"] for row in rows_out}
+    catalog_waitlist_ok = {
+        WAITLIST_CATALOG_POINTER,
+        WAITLIST_ON_INSTANCE_DOOR,
+    }
     pointer_ok = (
         str(data.get("id") or "") == UNIQUE_PACK_ID
         and str(block.get("id") or "") == CATALOG_ID
@@ -108,10 +124,10 @@ def classify_catalog(law: dict[str, Any] | None = None) -> dict[str, Any]:
         and str(block.get("checkout") or "") == "NOT_MINTED"
         and data.get("gate") is False
         and data.get("commons_admission") is False
-        and verdicts.get("LotRibbon Greetings") == WAITLIST_CATALOG_POINTER
-        and verdicts.get("Sidewalk Signal") == WAITLIST_CATALOG_POINTER
+        and verdicts.get("LotRibbon Greetings") in catalog_waitlist_ok
+        and verdicts.get("Sidewalk Signal") in catalog_waitlist_ok
         and verdicts.get("Harborline Local Sites") == WAITLIST_ON_INSTANCE_DOOR
-        and blobs_match
+        and waitlist_blob_ok
     )
     return {
         "gate": False,
@@ -126,8 +142,11 @@ def classify_catalog(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "did_not_overwrite_waitlist_html": block.get("did_not_overwrite_waitlist_html") is True,
         "did_not_steal_instance_files": block.get("did_not_steal_instance_files") is True,
         "did_not_steal_desk_helper": block.get("did_not_steal_desk_helper") is True,
+        "this_seat_does_not_write": list(THIS_SEAT_DOES_NOT_WRITE),
+        "observed_at_land": dict(OBSERVED_AT_LAND),
+        "live_instance_blobs_not_pinned": True,
         "blobs": blobs,
-        "blobs_match": blobs_match,
+        "waitlist_blob_ok": waitlist_blob_ok,
         "rows": rows_out,
         "pointer_ok": pointer_ok,
     }
