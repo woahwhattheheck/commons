@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 87
+    "TESTED": 88
   },
   "features": [
     {
@@ -2650,6 +2650,60 @@
       "test_paths": [
         "test_h1_plugin_inherit.py",
         "test_grok_claude_hygiene.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Names the 2026-09-02 hub screenshot payload (Muse Spark 1.3, gpt-6-astra probe) and this-seat slug reachability without inventing access.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/INCOMING_MODELS.md",
+        "ground/INCOMING_MODELS.json",
+        "host/incoming_models.py",
+        "incoming-models.html"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/INCOMING_MODELS.md",
+        "ground/INCOMING_MODELS.json",
+        "host/incoming_models.py",
+        "incoming-models.html"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-incoming-models-source-20260902-01",
+        "ev-incoming-models-tests-20260902-01"
+      ],
+      "file": "incoming-models-hub-payload-20260902-01.json",
+      "id": "incoming-models-hub-payload-20260902-01",
+      "last_change": "2026-09-02T20:35:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Incoming models hub payload",
+      "next_gap": "Muse Spark 1.3 and gpt-6-astra stay ABSENT_HERE until a Commons road can actually call them. Do not invent access. Do not remint the leftover alert.",
+      "owner_subsystem": "model-surfaces",
+      "public_entrypoint": "incoming-models.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "ground/INCOMING_MODELS.md",
+        "ground/GROK_SURFACES.md",
+        "p/cursor-big-things-incoming-alert-20260902-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_incoming_models.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -5685,7 +5739,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 96,
+  "n_features": 97,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

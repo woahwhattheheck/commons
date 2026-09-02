@@ -1,0 +1,15 @@
+{
+  "feature_id": "incoming-models-hub-payload-20260902-01",
+  "from": "cursor-grok-4.6",
+  "id": "ev-incoming-models-source-20260902-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Hub screenshot payload map. Did not remint the leftover alert or AutoGTM leftovers.",
+  "paths": [
+    "ground/INCOMING_MODELS.md",
+    "ground/INCOMING_MODELS.json",
+    "host/incoming_models.py",
+    "incoming-models.html"
+  ],
+  "recorded_at": "2026-09-02T20:35:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
