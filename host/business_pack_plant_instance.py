@@ -73,8 +73,14 @@ PUBLIC_COPY_FILES = (
 FRANCHISE_RE = re.compile(r"(?i)\bfranchis")
 YARD_CARD_RE = re.compile(r"(?i)yard[\s-]?card")
 STRIPE_RE = re.compile(r"(?i)https?://(?:buy|donate)\.stripe\.com\b")
+ROYALTY_LIVE_RE = re.compile(r"(?i)no royalty")
 MIN_ITEMS = 12
 MAX_ITEMS = 20
+SOLD_ONCE_BADGE = (
+    "Instance 1 of 1. This brand, this domain, this door are sold once."
+)
+MATCH_METHOD_BADGE = "Built from the same method as our sold instances."
+PLANT_ANCHOR_ATTR = 'data-owner-slot="plant-anchor"'
 
 
 def load_law(path: Path | None = None) -> dict[str, Any]:
@@ -180,6 +186,39 @@ def inventory_report(data: dict[str, Any] | None = None) -> dict[str, Any]:
             if isinstance(item, dict) and str(item.get("name") or "").strip()
         ],
     }
+
+
+def sold_once_checks(
+    *,
+    unique: str,
+    manifest_sold_once: Any,
+    door_html: str,
+) -> dict[str, Any]:
+    """Verifier-written sold-once badge + empty PLANT price-anchor slot.
+
+    UNIQUE doors get the sold-once sentence. MATCH doors get the method
+    sentence. Manifest sold_once must match UNIQUE. Live 'No royalty' is
+    blocked while ToS is HOLD_COUNSEL / OWNER_UNSET.
+    """
+    sold_once = unique == "UNIQUE"
+    badge = SOLD_ONCE_BADGE if sold_once else MATCH_METHOD_BADGE
+    base: dict[str, Any] = {
+        "sold_once": sold_once,
+        "sold_once_badge": badge,
+        "plant_anchor_slot": "OWNER_UNSET",
+    }
+    if sold_once:
+        if manifest_sold_once is not True:
+            return {**base, "ok": False, "verdict": "SOLD_ONCE_MISMATCH"}
+        if SOLD_ONCE_BADGE not in door_html:
+            return {**base, "ok": False, "verdict": "SOLD_ONCE_BADGE_MISSING"}
+        if PLANT_ANCHOR_ATTR not in door_html:
+            return {**base, "ok": False, "verdict": "PLANT_ANCHOR_SLOT_MISSING"}
+        if ROYALTY_LIVE_RE.search(door_html):
+            return {**base, "ok": False, "verdict": "ROYALTY_CLAIM_BEFORE_TOS"}
+    elif manifest_sold_once is True:
+        return {**base, "ok": False, "verdict": "SOLD_ONCE_MISMATCH"}
+    return {**base, "ok": True, "verdict": None}
 
 
 def _offer_from_instance(root: Path | None = None) -> dict[str, Any]:
@@ -335,6 +374,19 @@ def classify_instance(root: Path | None = None) -> dict[str, Any]:
     result["unique"] = sales["sales"][0]["verdict"] if sales["sales"] else "MISSING_FINGERPRINT"
     if result["unique"] != "UNIQUE":
         result["verdict"] = result["unique"]
+        return result
+
+    door_html = _read(instance_dir(root), "index.html")
+    sold = sold_once_checks(
+        unique=str(result["unique"]),
+        manifest_sold_once=load_manifest(root).get("sold_once"),
+        door_html=door_html,
+    )
+    result["sold_once"] = sold["sold_once"]
+    result["sold_once_badge"] = sold["sold_once_badge"]
+    result["plant_anchor_slot"] = sold["plant_anchor_slot"]
+    if not sold["ok"]:
+        result["verdict"] = sold["verdict"]
         return result
 
     keep = _read(instance_dir(root), "keep-vs-sell.md")
