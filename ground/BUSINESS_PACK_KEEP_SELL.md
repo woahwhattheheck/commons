@@ -54,4 +54,4 @@ python3 -m unittest -v test_business_pack_keep_sell.py
 Human door: [keep-sell.html](../keep-sell.html)
 Machine: [BUSINESS_PACK_KEEP_SELL.json](./BUSINESS_PACK_KEEP_SELL.json)
 
-Open door. No auth. No secrets. 337 NO.
+Open door. No auth. No secrets.

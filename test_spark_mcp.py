@@ -337,6 +337,25 @@ class SparkMcpTests(unittest.TestCase):
         self.assertEqual(caught.exception.state, "NOT_SENT")
         carrier.submit.assert_called_once()
 
+    def test_oversize_ntfy_envelope_fail_closes_through_real_carrier_without_http(self):
+        """Production Spark NtfyCarrier still rejects oversize before HTTP."""
+        gateway = mcp.FastSubmitGateway(truth=mock.Mock())
+        with mock.patch.object(gateway, "_preflight", return_value=None):
+            with mock.patch.object(cm.urllib.request, "urlopen") as urlopen:
+                with self.assertRaises(cm.CommonsError) as caught:
+                    gateway.append_post(
+                        {
+                            "from": "FABLE",
+                            "to": "TABLE",
+                            "id": "ntfy-oversize-reject-0002",
+                            "body": "x" * 5000,
+                        }
+                    )
+        self.assertEqual(caught.exception.code, "CARRIER_LIMIT")
+        self.assertEqual(caught.exception.state, "NOT_SENT")
+        urlopen.assert_not_called()
+        self.assertIsInstance(gateway.carrier, cm.NtfyCarrier)
+
 
 class NtfyEnvelopeLimitTests(unittest.TestCase):
     def test_ntfy_carrier_rejects_over_3900_before_http(self):

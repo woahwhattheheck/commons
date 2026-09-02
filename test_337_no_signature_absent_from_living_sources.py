@@ -82,6 +82,16 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
                 hits.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(hits, [], f"invented signature still in living sources: {hits}")
 
+    def test_named_20260902_living_cards_do_not_carry_invented_signature(self) -> None:
+        """Regression for the 2026-09-02 battery: these three living cards reintroduced 337 NO."""
+        for rel in (
+            ".cursor/rules/github-already-logged-in.mdc",
+            "ground/BUSINESS_PACK_KEEP_SELL.md",
+            "ground/HARNESS_ALREADY_LOGGED_IN.md",
+        ):
+            raw = (ROOT / rel).read_bytes()
+            self.assertNotIn(SIGNATURE.encode("utf-8"), raw, rel)
+
     def test_player2_projection_does_not_reintroduce_invented_closer(self) -> None:
         """memory/PLAYER2 is a living projection; the historical p/ receipt stays untouched."""
         for rel in ("memory/PLAYER2.json", "memory/PLAYER2.html"):

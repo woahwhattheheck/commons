@@ -32,7 +32,7 @@ ANALYSIS: Existing public offer row whitebox-sponsored-benchmark. Buyer interest
 ### TITAN Hands computer-use substrate (`titan-hands`, `SHIPPED_ON_MAIN`)
 
 - `docs/TITAN_HANDS.md` sha256 `aceabd0996d0246f1dde538022f5c9d53abbaf7fe9e153d8b1a203a394ef7a0e` (3526 bytes)
-- `titan-hands.html` sha256 `29a73788ecba02d42130947e7921a85bf67a17e46af1b7b713c169f641cfdf93` (1664 bytes)
+- `titan-hands.html` sha256 `db8a3ed7e4d68b763c7b53354bcb0621d21e6c7627827b75e83035e77870156b` (1947 bytes)
 - `titan-hour.html` sha256 `1b8ce5db8790d8815372738aaadfe8593478031d17a26ff8057acc812a24cb91` (6253 bytes)
 - `host/titan_hands/one_tool.py` sha256 `394fd77a09dc01fbf415fef480a1f867fb2eaec1314c74c7f12c9e555aaace31` (7321 bytes)
 - `host/titan_hands/linux_atspi.py` sha256 `8a7552d1f0221e5a6f1adf01a7d87ff25c942de66c21d372998a0bc538009bb3` (39377 bytes)
