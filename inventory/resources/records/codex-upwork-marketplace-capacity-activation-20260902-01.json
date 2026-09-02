@@ -1,0 +1,87 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-upwork-marketplace-capacity-activation-20260902-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "upwork-marketplace-account",
+  "observed_at": "2026-09-02T10:06:41Z",
+  "before": {
+    "capacity": "DECLARED_FROM_HISTORICAL_BROWSER_AND_CRM_RECEIPTS",
+    "stage": "AVAILABLE",
+    "condition": "ACTIVE_UNKNOWN",
+    "authority": "Two public buyer-edge records existed, but current account verification and profile state were not separated in the canonical resource graph."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "REACHABLE",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_READ_AND_PROPOSAL_PACKAGE_PREPARATION; OWNER_ONLY_IDENTITY_PROFILE_SIGNING_SUBMISSION_PAYMENT_AND_POLICY",
+    "activation_base_main_sha": "af3c223deb3c69c64a165bbad57ea5b9c431e475"
+  },
+  "concrete_consumer": "The existing Commons marketplace-account lane and two READY/UNSENT Upwork buyer-edge records.",
+  "measurable_outcome": "A fresh provider email-verification receipt now compiles with the existing zero-send truth to LIVE / REACHABLE / CONSTRAINED. The deterministic route is OWNER_PROFILE_STATE_REQUIRED; it does not authorize a proposal.",
+  "account_truth": {
+    "email_verified": true,
+    "verification_evidence_ts": "2026-09-02T07:50:41Z",
+    "profile_state": "UNKNOWN_CURRENTLY",
+    "ready_unsent_records": 2,
+    "proposal_receipts": 0,
+    "proposal_send_authorized": false,
+    "buyer_acceptance": false,
+    "payment": false,
+    "revenue_usd": 0
+  },
+  "delta": {
+    "previous_terminal_main_sha": "0e23aa18dd467670c4955d90ca29d135dc080359",
+    "measurement_main_sha": "af3c223deb3c69c64a165bbad57ea5b9c431e475",
+    "material_state_changes": [
+      "The shared business Gmail received a successful Upwork email-verification receipt after the prior Resource Master watermark.",
+      "The current account profile-completion state remains unknown; an older browser observation is not promoted to current truth.",
+      "Claude peer-check, Business Packs slices, COIL host twins, board projections, and clan receipts landed or remained actively owned and were not reminted.",
+      "Astra was officially previewed as a cybersecurity-capable model, but no product availability or Codex quota reset was inferred from the announcement."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No new build order survived deduplication. The public Upwork proposal packet and two canonical buyer-edge records already exist; current profile completion, signing, and submission are owner-only actions, not independent build lanes.",
+  "verification": {
+    "focused_tests": "4/4 Upwork marketplace resource tests passed under warnings-as-errors.",
+    "self_test": "host/upwork_capacity.py --self-test emitted LIVE / REACHABLE / CONSTRAINED, OWNER_PROFILE_STATE_REQUIRED, two READY/UNSENT records, and zero proposal receipts.",
+    "privacy": "No email address, message identifier, account identifier, credential, recovery or verification link, profile body, customer data, or private file name was persisted.",
+    "open_door": "The compiler and resource row add no authentication, identity, seat, buyer, capability, or Commons admission gate.",
+    "zero_fabrication": "Email verification is not profile completion, proposal submission, buyer acceptance, payment, revenue, or cash.",
+    "collision": "The six claimed paths exclude existing buyer records, proposal packets, CRM state, business packs, Claude peer-check work, COIL paths, generated projections, and active peer lanes."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-02T10:06:41Z",
+    "main_sha_at_claim": "af3c223deb3c69c64a165bbad57ea5b9c431e475",
+    "commons_slack_ts": "1788343601.055979",
+    "gmail_checked_after_epoch": "1788333737",
+    "gmail_next_page": null,
+    "delegations_checked_after": "2026-09-02T07:12:19Z",
+    "todo_checked_after": "2026-09-02T07:12:19Z",
+    "shipped_builds_checked_after": "2026-09-02T07:12:19Z",
+    "products_checked_after": "2026-09-02T07:12:19Z",
+    "leads_checked_after": "2026-09-02T07:12:19Z",
+    "sales_checked_after": "2026-09-02T07:12:19Z",
+    "automations": "13 total; 6 enabled; 7 disabled; unchanged from the prior durable observation",
+    "connected_tools": "405 callable tools; unchanged from the prior durable observation",
+    "openai_reset": "No official September 2 hard/global reset announcement and no directly observed meter reset; prior quota state retained without speculation."
+  },
+  "projection": {
+    "resources": 71,
+    "producing": 44
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788343601055979",
+    "existing_buyer_packet": "p/codex-upwork-mcp-buyer-crm-20260830-01.md",
+    "official_astra_preview": "https://openai.com/index/path-to-astra/",
+    "official_release_notes_checked": "https://help.openai.com/en/articles/6825453-chatgpt-release-notes"
+  },
+  "non_claims": [
+    "No provider profile, proposal, application, email, DM, form, outreach, resend, signing, submission, payment, settlement, payout, revenue, or cash action occurred.",
+    "No credential, account identifier, private mail body, customer data, or private repository content was persisted.",
+    "No Grok, Cursor, Claude, Fable, Astra, or Titan model quota was spent; no deployment, device action, or model mutation occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

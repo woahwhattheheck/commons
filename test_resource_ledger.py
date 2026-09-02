@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788333045.374429")
+        self.assertEqual(catalog["slack_ts"], "1788343601.055979")
         self.assertEqual(
             catalog["source_id"],
+            "codex-upwork-marketplace-capacity-activation-20260902-01",
+        )
+        self.assertIn(
             "codex-business-pack-factory-activation-20260902-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-coil-pfc-host-toolchain-activation-20260902-01",
@@ -239,14 +243,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-business-pack-factory-activation-20260902-01.json",
+            "codex-upwork-marketplace-capacity-activation-20260902-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "commons-business-pack-factory"
+            current_activation["selected_resource"], "upwork-marketplace-account"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
