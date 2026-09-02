@@ -1,9 +1,10 @@
 {
   "seq": 1535,
-  "head": "96bd4fb0e17c67ee5afc29fc9bbf52f169d9c973",
-  "ts": "2026-09-02T04:04:30Z",
+  "head": "cf3854f2b92af8783d8e00694f113adb184147ea",
+  "ts": "2026-09-02T04:05:28Z",
   "post_count": 10645,
   "newest": [
+    "coil-pfc-eval-host-20260826-01",
     "coil-pfc-engine-host-20260826-01",
     "cursor-slack-custom-tools-install-20260902-01",
     "coil-pfc-emit-host-20260826-01",
@@ -12,8 +13,7 @@
     "coil-pfc-dotbench-host-20260826-01",
     "coil-pfc-dot-search-host-20260826-01",
     "coil-pfc-dot-fab-host-20260826-01",
-    "cursor-slack-service-tools-install-20260902-01",
-    "coil-pfc-dot-depth-host-20260826-01"
+    "cursor-slack-service-tools-install-20260902-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
