@@ -1,1 +1,1 @@
-PLACEHOLDER_WILL_LOAD_FROM_FILE
+@/tmp/gh_bridge_body.txt
