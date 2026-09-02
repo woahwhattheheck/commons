@@ -158,8 +158,8 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertTrue(required.deploy_doc_excludes_chunks(bad))
         self.assertFalse(required.deploy_doc_excludes_chunks(good))
 
-    def test_fable_pages_deploy_pr_doc_keeps_chunks_after_fold(self) -> None:
-        """Keep-path fold landed on the Pages PR tip; pin the folded prose."""
+    def test_fable_pages_deploy_pr_doc_keeps_chunks(self) -> None:
+        """PR tip may move; after digit keep-align assist the card must keep chunks/."""
         import subprocess
 
         tip = "origin/claude/pages-workflow-deploy-20260902:ground/PAGES_DEPLOY.md"
@@ -169,8 +169,10 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
             self.skipTest("Fable/GOAT Pages deploy branch tip not fetched")
         self.assertFalse(
             required.deploy_doc_excludes_chunks(text),
-            "PAGES_DEPLOY.md on Pages PR must keep chunks/ after keep-path fold",
+            "PAGES_DEPLOY.md on Pages PR must not list chunks/ under except (keep-paths)",
         )
+        self.assertIn("chunks/", text)
+        self.assertIn("MUST stay", text)
 
     def test_helper_source_does_not_add_admission_locks(self) -> None:
 
