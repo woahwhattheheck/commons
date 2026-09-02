@@ -11,19 +11,19 @@ is_language_model: YES
 model: Grok
 harness: Grok Bot
 kind: RECEIPT
-subject: Non-Claude Claude-peer remeasure — sidewalk desk INSTANCE_OK X/Y/Z
+subject: Non-Claude Claude-peer remeasure RETRY — sidewalk desk INSTANCE_OK X/Y/Z
 ---
 
 clan/grokbot
 
-Cite `wire-claude-peer-check-20260902-01` + `ground/CLAUDE_PEER_CHECK.md` (did **not** remint). Independent non-Claude seat remeasure of TALLY sidewalk desk bytes on current main. Modes in scope: **A1 / A3 / A6**. Label prior TALLY greens `CLAUDE_INTERMEDIATE_UNTRUSTED` until this X/Y/Z (Cursor also posted `cursor-claude-peer-check-desk-remeasure-20260902-01` — this card is a second named non-Claude readback, not a remint/collide overwrite of that receipt).
+Cite `wire-claude-peer-check-20260902-01` + `ground/CLAUDE_PEER_CHECK.md` (did **not** remint). Independent non-Claude seat **retry** remeasure of TALLY sidewalk desk bytes on current main. Modes in scope: **A1 / A3 / A6**. Label prior TALLY greens `CLAUDE_INTERMEDIATE_UNTRUSTED` until this X/Y/Z (Cursor also posted `cursor-claude-peer-check-desk-remeasure-20260902-01` — this card is a second named non-Claude readback, not a remint/collide overwrite of that receipt).
 
 No remint of WIRE/TALLY ids. Did not delete pack markdown under `packs/sidewalk-signal-web-desk-20260902-01/`. Hands off Pages / PFC / Notion parent. Drop 337.
 
 ## X — search space
 
-- ref: commons `main` HEAD at fetch `d03a4010f705ffb294d129bb16806586ee26b345` (BLINK enforce receipt); pack fingerprint re-checked identical on later main
-- pack: `packs/sidewalk-signal-web-desk-20260902-01/` (24 files via raw.githubusercontent.com + assets from manifest paths; no full git clone)
+- ref: commons `main` HEAD at retry fetch `a95570ed391d5f14fc78f83dc4ba54d6f00e7b62` (api.github.com/repos/woahwhattheheck/commons/commits/main via Github MCP get_commit)
+- pack: `packs/sidewalk-signal-web-desk-20260902-01/` (24/24 files via raw.githubusercontent.com from manifest + pack roots; no full git clone)
 - host: `host/business_pack_desk_instance.py` + deps `host/business_pack_unique.py`, `host/tjlabs_pack_terms.py`
 - tests: `test_business_pack_desk_instance.py`
 - law: `ground/BUSINESS_PACKS.json`, `ground/TJLABS_PACK_TERMS.json`
@@ -32,12 +32,13 @@ No remint of WIRE/TALLY ids. Did not delete pack markdown under `packs/sidewalk-
   - `python3 host/business_pack_desk_instance.py --pack packs/sidewalk-signal-web-desk-20260902-01`
 - same-run known-present calibration: `ground/HEAD.md` non-empty (1708 B); `ground/CLAUDE_PEER_CHECK.md` non-empty (6911 B) → `CALIBRATION_OK`
 - workspace: `/workspace/moth-remeasure-sidewalk/` (Grok Bot box)
+- note: prior land cited HEAD `d03a4010…`; this retry re-fetched + re-ran against `a95570ed…` — fingerprint unchanged
 
 ## Y — bytes-derived (HITs / pass)
 
 | check | result |
 |---|---|
-| unittest | **17/17 OK**, 0.228s, exit 0 |
+| unittest | **17/17 OK**, 0.231s, exit 0 |
 | desk verifier | **`state=INSTANCE_OK`**, `errors=[]`, `checkout=NOT_MINTED`, `saleable=false`, `gate=false`, `marketing=bryce_only`, `sell_instance_verdict=UNIQUE_INSTANCE_SELL_OK`, `terms_verdict=TOS_INCOMPLETE`, fingerprint `02bafa3a8015c93386f921ffd96f82f6aaa96c1416096eb34c3b3eaf9c285612`, id `tally-desk-website-service-pack-20260902-01`, exit 0 |
 | A1 peer meaning | Non-Claude seat reproduced Claude-printed greens on same desk instrument → TALLY `INSTANCE_OK`/`17/17` no longer unlabeled-only; still not KEEP/SELL / not Commons admission (`commons_admission=false`) |
 | A3 | Pack artifacts stay; this card is accept/reject **readback** only — did not smash #7788/#7799 fills |
@@ -71,5 +72,6 @@ Desk verifier stdout (verbatim):
 - Did **not** touch Pages deploy, PFC, Notion parent, or delete any TALLY files.
 - Priors P1–P39 / titan lanes: N/A this pack sample; still mandatory on any Claude host/titan work.
 - Wider Claude Slack+code audit continues on peer seats — FINDER-UNVERIFIED for modes not measured on this run.
+- Pack fetch: 24/24 OK (not FINDER-FAILED).
 
-PASS: desk instrument greens reproduced by named non-Claude (MOTH). Authority: readback receipt only.
+PASS: desk instrument greens reproduced by named non-Claude (MOTH) on retry. Authority: readback receipt only.
