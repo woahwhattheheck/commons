@@ -15,8 +15,6 @@ KEEP = {
     "door.js": "1f9e8d14",
     "autogtm.html": "9d8b3e85",
     "test_autogtm_door_hub.py": "fef0303e",
-    "boards.html": "6dd1554e",
-    "index.html": "f9db96f6",
     "hub_pages.py": "d0ec6161",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-autogtm-explee-same-loop-20260902-01.md": "c437f4d6",
@@ -62,10 +60,20 @@ class TestAutogtmDoorHubReadbackAck(unittest.TestCase):
         self.assertIn('["autogtm.html", "AutoGTM"]', door)
         index = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="./autogtm.html">AutoGTM</a>', index)
+        boards = (ROOT / "boards.html").read_text(encoding="utf-8")
+        self.assertIn('href="./autogtm.html">AutoGTM</a>', boards)
+        self.assertIn("same loop as Explee", boards)
+        hub = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        self.assertIn('href="./autogtm.html">AutoGTM</a>', hub)
+        self.assertIn("same loop as Explee", hub)
         page = (ROOT / "autogtm.html").read_text(encoding="utf-8")
         self.assertIn('credentials: "omit"', page)
         self.assertNotIn('type="password"', page)
         self.assertNotIn("qualify.html", page)
+
+    def test_keep_does_not_freeze_fat_ingest_blobs(self) -> None:
+        self.assertNotIn("boards.html", KEEP)
+        self.assertNotIn("index.html", KEEP)
 
 
 if __name__ == "__main__":
