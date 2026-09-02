@@ -14,6 +14,8 @@ MAP = ROOT / "ground" / "PAGES_KEEP_PATHS.json"
 BOARD_JS = ROOT / "board.js"
 FREE_SAMPLE = ROOT / "muhlnickel-free-sample.html"
 SALES_PACK = ROOT / "revenue" / "muhlnickel_free_sample" / "sales_pack.json"
+PAY = ROOT / "pay.html"
+COMMERCE = ROOT / "commerce.html"
 
 
 class PagesKeepPathsTest(unittest.TestCase):
@@ -44,6 +46,7 @@ class PagesKeepPathsTest(unittest.TestCase):
                 "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno",
                 "muhlnickel-free-sample.html",
                 "revenue/muhlnickel_free_sample/sales_pack.json",
+                "pay.html",
             ],
         )
         self.assertTrue((ROOT / "chunks").is_dir())
@@ -52,6 +55,8 @@ class PagesKeepPathsTest(unittest.TestCase):
         self.assertTrue(seed.is_file())
         self.assertTrue(FREE_SAMPLE.is_file())
         self.assertTrue(SALES_PACK.is_file())
+        self.assertTrue(PAY.is_file())
+        self.assertIn("pay.html", COMMERCE.read_text(encoding="utf-8"))
         for path in required:
             self.assertIn(path, self.card)
 

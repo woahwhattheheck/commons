@@ -17,6 +17,7 @@ allowlist intent keeps `muhl/docs/`).
 | `muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno` | Free-sample CTA downloads this exact file. |
 | `muhlnickel-free-sample.html` | Public free-sample door. |
 | `revenue/muhlnickel_free_sample/sales_pack.json` | Sales pack paths point at the seed + docs. |
+| `pay.html` | Live Stripe cash door (tip/seat/unlock/monthly/boost/whitebox/titan). Cite digit-cash-door-20260826-01. Do not remint. Dropping it 404s the public pay door after Pages flip. |
 
 ## Default exclude (size pressure)
 
