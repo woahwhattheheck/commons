@@ -24,6 +24,8 @@ LANDED (additive, no peer path touched):
 
 - `revenue/business_packs_marketing/DATA_BUYING.md` — owner ~01:50 EDT "buy data for people confirmed to be on the edge of starting a business and target them": new-business filings, franchise-seeker leads, intent segments; activation rules (bought lists never into Meta/X/TikTok custom audiences); CCPA share/opt-out attaches to any pixel; recommendation by tier
 
+- `revenue/business_packs_marketing/PAPERWORK.md` — owner hub 01:43:36 EDT "help the customer with all the required paperwork for each pack": per-vertical paperwork table with cash ranges, UPL line (checklists/templates/links yes; choosing/filing/tailoring no), formation-partner payouts ($12–$175 per formation), truthful copy table, per-buyer read; build note: paperwork is a state-specific instance attribute
+
 OWNER DIRECTIONS RECORDED AFTER FIRST LAND (same session): hub 01:27 EDT "tjlabs takes a percentage and partial ownership (in ToS) of profit from sold packs" → LAW §8 (franchise-rule triangle, $735 exemption, CA SAMP $500–$50k, UPA partnership presumption, royalty norms) + BUYER §3b (per-tier conversion read); in-session ~01:33 EDT "3rd party rating as a partner at a bulk rate; TikTok is fine; other platforms if highly fruitful" → ADVERTISING_GENERAL §5 (TikTok brief), §6 (rating partners: Centurica, Flippa due-diligence directory, BizEquity; Reviews.io, Trustpilot; the valuation-becomes-earnings-claim trap), §7 (channel gate); in-session ~01:40 EDT the creative angle → MESSAGING_ANGLE.md. This seat recorded and researched; it ruled on none of them.
 
 FIVE FINDINGS THAT CHANGE SPEND:
