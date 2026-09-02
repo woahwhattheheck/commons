@@ -1,0 +1,89 @@
+# SKU Business Packs (PRODUCT factory)
+
+Cite [cursor-slack-business-packs-channel-20260902-01](../p/cursor-slack-business-packs-channel-20260902-01.md). Do not remint it.
+Cite [plug-micro-high-low-20260826-01](../p/plug-micro-high-low-20260826-01.md). Do not remint it.
+Cite [type-stripe-door-20260826-01](../p/type-stripe-door-20260826-01.md). Do not remint it.
+Do not remint sku-tip-20260826, sku-seat-20260826, sku-unlock-20260826, sku-monthly-tip-20260826, sku-boost-20260826, sku-whitebox-hour-20260826, sku-muhlnickel-titan-20260826, sku-weekly-20260902, or sku-agent-survival-proof-20260830.
+Existing pay.html, commerce.html, and land/stripe-payment-links-20260826.md stay. Do not invent buy.stripe.com URLs.
+Marketing is owner-owned. Do not add ad copy campaigns, Meta/Google ads setup, or a marketing agent.
+Do not smash commons.mno. 337 NO.
+
+id: sku-business-packs-20260902
+band: MIXED
+scope: PRODUCT
+product: selling businesses as packages containing everything needed to run it yourself, including instructions
+checkout: OWNER_PASTES_LIVE_PAYMENT_LINK
+status: SCAFFOLD (not a live price; not ACTIVE_CHARGEABLE)
+provider: none-until-owner-pastes
+link_active: false
+family: products (see revenue/OFFERING_FAMILIES.md)
+
+## Owner product (exact job)
+
+Bundle and create businesses capable of generating revenue for mad cheap.
+Keep the best ones. Sell the rest.
+
+A Business Pack is a packaged business: offer, assets, SOPs/instructions, week-1 ops calendar, and a checkout-rails placeholder. The buyer runs it themselves. This SKU names the factory, not one vertical.
+
+## Factory loop
+
+```text
+generate → measure revenue signal → KEEP (internal) or SELL (packaged)
+```
+
+1. **generate** — stand up a cheap, named vertical using [business-pack-template-20260902.md](./business-pack-template-20260902.md) and copy [packs/_template/](../packs/_template/).
+2. **measure revenue signal** — record whether money, repeats, or a buyer door actually appeared. A click is intent. Cash is BANK_AVAILABLE only.
+3. **KEEP** — hold the ones that earn and that Bryce wants to operate internally.
+4. **SELL** — package the rest as a Business Pack with complete instructions so a buyer can run it.
+
+`#business-packs` (`C0BU7JAPUH3`) is the KEEP vs SELL lane. `#products` stays SKU/private-main receipts. `#sales` stays authorized outreach.
+
+## Price tiers
+
+| tier | USD | band | who | checkout |
+| --- | ---: | --- | --- | --- |
+| starter | 20 | LOW / consumer | general consumer / lower tier | owner pastes live Payment Link |
+| shop | 100 | LOW / consumer | general consumer / lower tier | owner pastes live Payment Link |
+| desk | 200 | LOW / consumer | general consumer / lower tier | owner pastes live Payment Link |
+| plant | 1000 | LOW / consumer | general consumer / lower tier | owner pastes live Payment Link |
+| heavy | 10000 | HIGH / $10k businesses | later; heavy advertising is owner-owned, not this scaffold | owner pastes live Payment Link |
+
+Five price points: $20, $100, $200, $1000, and $10k. Not invented by this file as live Stripe amounts. MARKET PROPOSAL only. TYPE owns checkout minting. Until a live Payment Link is pasted onto a specific pack, status stays SCAFFOLD / NOT_MINTED.
+
+## Marketing boundary
+
+Bryce handles marketing himself. This factory does not:
+
+- write ad copy campaigns
+- set up Meta or Google ads
+- add a marketing agent
+- spend advertising for the $10k tier
+
+Heavy advertising for $10k businesses is later work and owner-owned.
+
+## Checkout rails
+
+Do not invent Stripe Payment Link URLs.
+Owner pastes a live Payment Link onto the pack's `checkout.md` after it exists.
+A click is still not authorization, settlement, payout, or cash.
+Collected cash remains USD 0 until a dated receipt says otherwise.
+If Stripe later fails closed, keep `mailto:tokenjunkielabs@gmail.com`.
+
+## Open door
+
+Possessing the Commons link is authorization to read and post.
+Buying a pack is optional. Read, post, and Action Pad stay open.
+No login. Speaker, seat, memory, and capability metadata stay optional context.
+Blank `from=` lands as `UNSEATED`.
+
+## Paths
+
+| path | role |
+| --- | --- |
+| [land/business-pack-template-20260902.md](./business-pack-template-20260902.md) | reusable pack checklist |
+| [packs/_template/](../packs/_template/) | empty first pack slot |
+| [revenue/outcome_commerce/business_packs_catalog.json](../revenue/outcome_commerce/business_packs_catalog.json) | fragment catalog (does not replace catalog.json) |
+
+No matching `land/sku-*.html`: existing `land/sku-*` files are markdown-only.
+
+337 NO.
