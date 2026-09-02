@@ -1,8 +1,8 @@
 # MWDOC RFQ FIN. 2026-001 — compliance/readiness review
 
-**Commons ID:** `mwdoc-d365-partner-soq-packet-20260902-01`  
-**Observed:** 2026-09-02  
-**Decision:** **NO-GO AS PRIME / CONDITIONAL SUBCONTRACTOR ONLY**
+**Commons ID:** `mwdoc-d365-partner-soq-packet-20260902-01`
+**Observed:** 2026-09-02
+**Decision:** **NO-GO AS PRIME / PROVISIONAL PARTNER RESEARCH ONLY / CONDITIONAL SUBCONTRACTOR ONLY**
 
 This is an internal evidence review, not an SOQ, legal opinion, partner recommendation, customer reference, bid, submission, award, or qualification claim.
 
@@ -51,12 +51,16 @@ Never present Commons synthetic artifacts as D365 experience, customer work, GCC
 
 ## Partner screen
 
-| Candidate | Role | Verified mandatory gates | Score | Status |
-|---|---|---:|---:|---|
-| TokenJunkieLabs / Commons | Narrow subcontractor only | 0/3 | 0% | Not prime-eligible on current evidence |
-| Qualified D365 F&O GCC public-sector firm (not identified) | Prime template | 0/3 | 0% | Unverified |
+The packet projects four public-evidence research targets from `source.json`. They
+are not recommendations, RFQ qualification claims, or substitute references; none
+was contacted or represented as ready to respond.
 
-No external firm was researched, named, contacted, or recommended in this lane.
+| Candidate | Role | Evidence score | Status |
+|---|---|---:|---|
+| HSO | Provisional prime research target | 50/100 | Mandatory evidence incomplete |
+| RSM US LLP | Provisional prime research target | 45/100 | Mandatory evidence incomplete |
+| Hitachi Solutions America | Provisional prime research target | 40/100 | Mandatory evidence incomplete |
+| Consultadd Public Services | Incumbent-continuity research target | 27.5/100 | Mandatory evidence incomplete |
 
 ## Go/no-go actions
 
@@ -73,6 +77,8 @@ No external firm was researched, named, contacted, or recommended in this lane.
 
 ## Package
 
-- [Machine-readable readiness](./readiness.json)
+- [Generated machine-readable readiness](./readiness.json)
+- [Readiness schema](./readiness.schema.json)
+- [Public-evidence source ledger](./source.json)
 - [Fail-closed rate template](./rate-sheet-template.csv)
 - [No-login summary](./readiness.html)

@@ -6,7 +6,13 @@
   "required": [
     "schema",
     "id",
+    "observed_at",
+    "source_path",
+    "official_sources",
+    "schedule",
     "decision",
+    "score_weights",
+    "mandatory_gate_keys",
     "targets",
     "reference_slots",
     "proposed_subcontract_scope",
@@ -22,8 +28,54 @@
     "id": {
       "const": "mwdoc-d365-partner-soq-packet-20260902-01"
     },
+    "observed_at": {
+      "type": "string"
+    },
+    "source_path": {
+      "const": "source.json"
+    },
+    "official_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "url",
+          "observed_on",
+          "claim",
+          "boundary"
+        ]
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "required": [
+        "issued_on",
+        "soq_due",
+        "attachment_limit_mb",
+        "required_content_start",
+        "evaluation_start",
+        "start_discrepancy_state",
+        "addendum_state"
+      ]
+    },
     "decision": {
       "const": "NO_GO_AS_PRIME; PROVISIONAL_PARTNER_RESEARCH_ONLY; CONDITIONAL_SUBCONTRACTOR_ONLY"
+    },
+    "score_weights": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "number"
+      }
+    },
+    "mandatory_gate_keys": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
     },
     "targets": {
       "type": "array",
@@ -32,10 +84,67 @@
         "type": "object",
         "required": [
           "company",
+          "target_persona",
+          "proposed_role",
           "computed_score",
+          "max_score",
+          "score_percent",
           "mandatory_gates",
-          "status"
-        ]
+          "missing_mandatory_gates",
+          "status",
+          "evidence_source"
+        ],
+        "properties": {
+          "company": {
+            "type": "string"
+          },
+          "target_persona": {
+            "type": "string"
+          },
+          "proposed_role": {
+            "type": "string"
+          },
+          "computed_score": {
+            "type": "number",
+            "minimum": 0
+          },
+          "max_score": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "score_percent": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 100
+          },
+          "mandatory_gates": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "key",
+                "state",
+                "state_factor",
+                "evidenced",
+                "source_count"
+              ]
+            }
+          },
+          "missing_mandatory_gates": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string"
+          },
+          "evidence_source": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       }
     },
     "reference_slots": {
@@ -51,6 +160,14 @@
           "requirements"
         ]
       }
+    },
+    "proposed_subcontract_scope": {
+      "type": "object",
+      "required": [
+        "label",
+        "inclusions",
+        "exclusions"
+      ]
     },
     "outreach_draft": {
       "type": "object",
@@ -88,5 +205,5 @@
       }
     }
   },
-  "additionalProperties": true
+  "additionalProperties": false
 }
