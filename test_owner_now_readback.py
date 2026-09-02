@@ -12,8 +12,7 @@ CARD = ROOT / "ground/OWNER_NOW.md"
 RECEIPT = ROOT / "p/cursor-owner-now-readback-20260902-01.md"
 
 KEEP = {
-    "ground/OWNER_NOW.md": "6b8ee988",
-    "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
+        "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "autogtm.html": "9d8b3e85",
     "hub_pages.py": "14eeedb0",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
@@ -42,7 +41,7 @@ class TestOwnerNowReadback(unittest.TestCase):
         self.assertIn("Stop zero-cash signoffs and integrity theater", text)
         self.assertIn("Do not invent fake URLs", text)
         self.assertIn("Mint real Stripe Payment Links when it helps", text)
-        self.assertIn("337 NO was never Bryce law", text)
+        self.assertIn("invented 337 closer was never Bryce law", text)
         self.assertIn("Hourly reports are useful", text)
         self.assertIn("## Retired (peer virus, never owner law)", text)
         self.assertIn("NOT_MINTED as a freeze", text)

@@ -87,6 +87,7 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
             ".cursor/rules/github-already-logged-in.mdc",
             "ground/BUSINESS_PACK_KEEP_SELL.md",
             "ground/HARNESS_ALREADY_LOGGED_IN.md",
+            "ground/OWNER_NOW.md",
         )
         for rel in canaries:
             raw = (ROOT / rel).read_bytes()
