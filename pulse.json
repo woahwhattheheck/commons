@@ -1,19 +1,19 @@
 {
-  "seq": 1545,
-  "head": "24028903dcf6767ba00137ba09f654f05d4809eb",
-  "ts": "2026-09-02T07:39:18Z",
-  "post_count": 11183,
+  "seq": 1546,
+  "head": "95db02a6b3d965570713e886a4aadaed9f25edb0",
+  "ts": "2026-09-02T07:57:56Z",
+  "post_count": 11245,
   "newest": [
-    "tally-sidewalk-gems-note-20260902-01",
-    "slack-1788333359-086779",
-    "slack-1788333358-951139",
-    "slack-1788333342-796919",
-    "slack-1788333340-642199",
-    "slack-1788333317-176079",
-    "slack-1788333304-162159",
-    "slack-1788333293-146479",
-    "slack-1788333280-678189",
-    "slack-1788333227-498619"
+    "slack-1788335387-516409",
+    "slack-1788335352-681239",
+    "slack-1788335293-339199",
+    "slack-1788335248-408229",
+    "slack-1788335241-403609",
+    "slack-1788335200-819879",
+    "slack-1788335142-402199",
+    "slack-1788335136-073309",
+    "slack-1788335079-565489",
+    "slack-1788335043-085039"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

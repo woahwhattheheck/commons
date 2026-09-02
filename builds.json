@@ -350,64 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 4,
+ "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 7776,
+   "number": 7915,
    "author": "woahwhattheheck",
-   "title": "Index pack template README for creative_brief already on main",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7776",
+   "title": "Point unique-pack at leftover Harborline map pin-lift",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7915",
    "base_freshness": {
-    "base_sha": "8969f6ca2e710c2025257624c693182b4ed1f585",
-    "main_sha": "90d5b976e6eb97fba292dd0a47cae954c99468cd",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7780,
-   "author": "woahwhattheheck",
-   "title": "TYPE clan mark: clan/grokbot",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7780",
-   "base_freshness": {
-    "base_sha": "bef0629bf74b5456a8648f90c1de8ba7b5ce1f6c",
-    "main_sha": "90d5b976e6eb97fba292dd0a47cae954c99468cd",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7782,
-   "author": "woahwhattheheck",
-   "title": "SPY clan/grokbot mark + marks census scrap",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7782",
-   "base_freshness": {
-    "base_sha": "383e2ed3a2de050639c6401a106d1d12aa670682",
-    "main_sha": "90d5b976e6eb97fba292dd0a47cae954c99468cd",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7785,
-   "author": "woahwhattheheck",
-   "title": "SPY clan/grokbot mark (audit unmarked)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7785",
-   "base_freshness": {
-    "base_sha": "c60b8fff05e84bca38b7cc2fd83094a0235179df",
-    "main_sha": "90d5b976e6eb97fba292dd0a47cae954c99468cd",
+    "base_sha": "af2b82f9a16185660e378a4a6f28c78dc827bb6e",
+    "main_sha": "a51fd35a80c5013d1cf586f2540be42d6a594a38",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
