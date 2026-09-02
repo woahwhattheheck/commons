@@ -507,7 +507,21 @@ class BusinessPackUniqueTest(unittest.TestCase):
             ],
         )
         harborline = [row for row in block["landed"] if row["brand"] == "Harborline Local Sites"][0]
+        sidewalk = [row for row in block["landed"] if row["brand"] == "Sidewalk Signal"][0]
+        lotribbon = [row for row in block["landed"] if row["brand"] == "LotRibbon Greetings"][0]
         self.assertEqual(harborline["waitlist"], "packs/waitlist.html")
+        self.assertEqual(sidewalk["waitlist"], "packs/waitlist.html")
+        self.assertEqual(lotribbon["waitlist"], "packs/waitlist.html")
+        self.assertEqual(
+            block["catalog_waitlist_rows_pointer"],
+            "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",
+        )
+        self.assertEqual(
+            block["instance_waitlist_helper"],
+            "host/business_pack_instance_waitlist.py",
+        )
+        self.assertIs(block["did_not_overwrite_sidewalk_door"], True)
+        self.assertIs(block["did_not_overwrite_lotribbon_door"], True)
         self.assertIn("host/business_pack_desk_instance.py", self.door)
         self.assertTrue(
             (ROOT / "p" / "cursor-business-pack-instance-catalog-20260902-01.md").is_file()
@@ -522,6 +536,14 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md"
             ).is_file()
         )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue((ROOT / "host" / "business_pack_instance_waitlist.py").is_file())
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
         block = self.law["rating_slot"]
