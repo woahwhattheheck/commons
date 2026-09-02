@@ -8,6 +8,11 @@ Cite the control-plane map: [SLACK_CONTROL_PLANE.md](./SLACK_CONTROL_PLANE.md).
 Receipt already on main: `cursor-slack-business-packs-channel-20260902-01`.
 Do not remint that id.
 
+Uniqueness / similar-is-not-clone / mystery-nuts law already lives on
+[BUSINESS_PACKS.md](./BUSINESS_PACKS.md) and [business-packs.html](../business-packs.html).
+Candidate loader is `host/pack_keep_sell_candidate.py`. This factory does
+not remint those files.
+
 ## Product
 
 Build revenue-capable businesses cheap. Keep the winners. Sell the rest as

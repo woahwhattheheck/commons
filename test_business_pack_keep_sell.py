@@ -56,8 +56,10 @@ class BusinessPackKeepSellTests(unittest.TestCase):
         self.assertEqual(self.control["channels"]["business_packs"]["id"], "C0BU7JAPUH3")
         self.assertEqual(self.ledger["control_plane_receipt"], "cursor-slack-business-packs-channel-20260902-01")
         self.assertNotEqual(LEDGER.name, "SLACK_CONTROL_PLANE.json")
-        self.assertFalse((ROOT / "business-packs.html").exists())
+        self.assertNotEqual(LEDGER.name, "BUSINESS_PACKS.json")
+        self.assertNotEqual(DOOR.name, "business-packs.html")
         self.assertIn("does not steal", self.card.lower())
+        self.assertIn("BUSINESS_PACKS.md", self.card)
 
     def test_record_keep_and_sell(self):
         ledger = self.mod.empty_ledger()
