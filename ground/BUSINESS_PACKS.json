@@ -179,6 +179,7 @@
     "harborline_waitlist_slot_pointer": "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01",
     "catalog_waitlist_rows_pointer": "cursor-business-pack-sidewalk-lotribbon-waitlist-pointer-20260902-01",
     "instance_waitlist_helper": "host/business_pack_instance_waitlist.py",
+    "sidewalk_lotribbon_waitlist_helper": "host/business_pack_sidewalk_lotribbon_waitlist.py",
     "harborline_tally_pack_map_sha": "35ed9d78f",
     "harborline_tally_pack_map_pointer": "cursor-business-pack-harborline-tally-map-pointer-20260902-01",
     "did_not_overwrite_harborline_tally_pack_map": true,
