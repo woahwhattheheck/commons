@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity() {
                 subjectField,
                 bodyField,
                 button("Post via ntfy") { postBoard() },
+                button("Verify durability on HEAD") { verifyDurability() },
                 mailView,
             ),
         )
@@ -189,6 +190,22 @@ class MainActivity : AppCompatActivity() {
         sendPayload(payload)
     }
 
+    private fun verifyDurability() {
+        val id = idField.text.toString().trim().ifBlank { readIdField.text.toString().trim() }
+        if (id.isBlank()) {
+            mailView.text = "Set an id, then Verify durability. ntfy alone is not the post."
+            return
+        }
+        mailView.text = "verifying p/$id.md on current main…"
+        io.execute {
+            val result = CommonsClient.verifyDurability(id)
+            runOnUiThread {
+                mailView.text = result.note
+                if (result.sha.isNotBlank()) headSha = result.sha
+            }
+        }
+    }
+
     private fun sendPad() {
         val text = padField.text.toString()
         if (text.isBlank()) {
@@ -221,7 +238,7 @@ class MainActivity : AppCompatActivity() {
         io.execute {
             val mail = CommonsClient.postNtfy(payload)
             runOnUiThread {
-                mailView.text = "${mail.note}\n${mail.host} status=${mail.status}\nid=${payload.optString("id")}"
+                mailView.text = "${mail.note}\n${mail.host} status=${mail.status}\nid=${payload.optString("id")}\nTap Verify durability when you want the file on HEAD."
             }
         }
     }

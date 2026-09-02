@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 73
+    "TESTED": 78
   },
   "features": [
     {
@@ -1016,6 +1016,63 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Stdlib CCC vault harvest / snapshot toolchain: plan, snapshot, verify, and self-test a synthetic Class D dead-end box with gold-out-only copies and fail-closed isolation.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/ccc_snapshot_toolchain.py",
+        "test_ccc_snapshot_toolchain.py",
+        "ground/CCC_VAULT_HARVEST.md",
+        "inventory/ccc_snapshot_protocol.json",
+        "ccc-snapshot-toolchain.html",
+        "p/ccc-snapshot-toolchain-working-20260901-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/ccc_snapshot_toolchain.py",
+        "test_ccc_snapshot_toolchain.py",
+        "ground/CCC_VAULT_HARVEST.md",
+        "inventory/ccc_snapshot_protocol.json",
+        "ccc-snapshot-toolchain.html",
+        "p/ccc-snapshot-toolchain-working-20260901-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ccc-snapshot-toolchain-working-20260901-01.json",
+      "id": "ccc-snapshot-toolchain-working-20260901-01",
+      "last_change": "2026-09-01",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CCC snapshot toolchain",
+      "next_gap": "Keep HOLD / BUILD-AND-VERIFY; operator private CCC run stays local; do not remint the false-complete ship-loop card.",
+      "owner_subsystem": "harvest",
+      "public_entrypoint": "ccc-snapshot-toolchain.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ccc-snapshot-toolchain.html",
+        "ground/CCC_VAULT_HARVEST.md",
+        "p/ccc-snapshot-toolchain-working-20260901-01.md",
+        "https://github.com/woahwhattheheck/commons/issues/7238"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_ccc_snapshot_toolchain.py",
+        "host/ccc_snapshot_toolchain.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Chemtech-Ford short-hold sample intake clock: a working CLI loads 600 synthetic drinking-water and wastewater submissions, accessions 450 valids once with exact collected/received timestamps, rejects 150 truth-set temperature/container/preservation/signature/duplicate-ID/holding-time defects with the exact reason, evaluates the fixture 6h wastewater and 24h drinking-water clocks, reconciles portal and state-delivery records to the signed manifest, refuses autonomous release, and reproduces fixture_sha256 8417c082454e8e4efabaf84598e9a6252e17b88fcbdbdbd40f4d19069ed25787. Adapters stay simulated and read-only.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1382,6 +1439,159 @@
       "test_paths": [
         "test_current_work.py",
         "host/current_work.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Every catalog Slack @tag has a real driver: in-harness when connected, Slack custom-tool remainder when a peer already has tools-live, official-console OWNER_SIGNIN otherwise. Facebook Graph POST and Slack CLI install stay peer organs. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_service_all_drivers.py",
+        "ground/SLACK_SERVICE_ALL_DRIVERS.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_service_all_drivers.py",
+        "ground/SLACK_SERVICE_ALL_DRIVERS.md"
+      ],
+      "dependencies": [
+        "cursor-slack-service-tags-20260902-01",
+        "cursor-slack-service-tools-install-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-service-all-drivers-20260902-01.json",
+      "id": "cursor-slack-service-all-drivers-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack service all-drivers",
+      "next_gap": "Provider sessions Bryce must complete still queue #provider-sign-in. Slack CLI login stays the complementary install leftover. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_SERVICE_ALL_DRIVERS.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SERVICE_ALL_DRIVERS.md",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "slack-tags.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_service_all_drivers.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Slack @service tags emit Slack custom-tool jobs when the harness lacks that provider; owner sign-in queues on #needs-bryce. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/SLACK_SERVICE_TAGS.json",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "host/slack_service_tag.py",
+        "slack-tags.html"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/SLACK_SERVICE_TAGS.json",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "host/slack_service_tag.py",
+        "slack-tags.html"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "cursor-slack-service-tags-20260902-01.json",
+      "id": "cursor-slack-service-tags-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack service tags",
+      "next_gap": "Installing the actual Slack custom tools / provider apps is EXTERNAL_PROVIDER_ACTION. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "slack-tags.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SERVICE_TAGS.md",
+        "ground/NEEDS_BRYCE.md",
+        "slack-tags.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_service_tags.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Installed Slack @service custom tools, #provider-sign-in login channel, and poll worker. Not a Commons admission gate.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_service_tag_worker.py",
+        "host/slack_service_drivers.py",
+        "integrations/slack_service_tags/app_manifest.yaml",
+        ".github/workflows/slack-service-tags.yml"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_service_tag_worker.py",
+        "host/slack_service_drivers.py",
+        "integrations/slack_service_tags/app_manifest.yaml",
+        ".github/workflows/slack-service-tags.yml"
+      ],
+      "dependencies": [
+        "cursor-slack-service-tags-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-service-tools-install-20260902-01.json",
+      "id": "cursor-slack-service-tools-install-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack service tag install",
+      "next_gap": "apps.manifest.create / slack deploy still needs a Slack CLI session in the installing process. Worker + connector are the runtime. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "slack-tags.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SERVICE_TAGS.md",
+        "integrations/slack_service_tags/README.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_service_tag_worker.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -3237,6 +3447,61 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Working succinct-argument runner: Merkle-committed pi/mod execution trace, adjacent-step openings, naive-sampling miss of a million-step needle, and PCP 3-coloring amplification so a verifier neither redoes the work nor blindly trusts.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "proof_spiral_succinct_argument.py",
+        "test_proof_spiral_succinct_argument.py",
+        "proof-spiral-succinct-argument.html",
+        "p/proof-spiral-succinct-argument-20260901-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "proof_spiral_succinct_argument.py",
+        "test_proof_spiral_succinct_argument.py",
+        "proof-spiral-succinct-argument.html",
+        "p/proof-spiral-succinct-argument-20260901-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-proof-spiral-succinct-argument-source-20260901-01",
+        "ev-proof-spiral-succinct-argument-tests-20260901-01"
+      ],
+      "file": "proof-spiral-succinct-argument-20260901-01.json",
+      "id": "proof-spiral-succinct-argument-20260901-01",
+      "last_change": "2026-09-01T15:50:00Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Proof spiral succinct argument",
+      "next_gap": "Keep HOLD / BUILD-AND-VERIFY; do not invent buyers, cash, or outreach. Projector may pick this registry row on the next --write.",
+      "owner_subsystem": "proof",
+      "public_entrypoint": "proof-spiral-succinct-argument.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "proof-spiral-succinct-argument.html",
+        "p/proof-spiral-succinct-argument-20260901-01.md",
+        "https://youtu.be/jVHeHmufZhk"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_proof_spiral_succinct_argument.py",
+        "proof_spiral_succinct_argument.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Dependency-light controlled-sample order preflight for normalized/redacted PTL packets. Verifies LSO and order ID, PO or approved-payment status, conditional SDS and DEA Form 222 presence flags, conditional international fields, turnaround, and report-delivery route. Returns only READY_FOR_NAMED_HUMAN_ACCESSION or fail-closed HOLD with stable reason codes and deterministic SHA-256 evidence. Performs no accession, release, payment, judgment, or external transmission.",
       "carrier": "CODEX",
       "chat_ignored": false,
@@ -4704,7 +4969,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 79,
+  "n_features": 84,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

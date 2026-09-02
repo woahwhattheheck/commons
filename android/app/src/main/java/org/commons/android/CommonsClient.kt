@@ -11,6 +11,7 @@ import java.util.regex.Pattern
 data class HeadState(val sha: String, val message: String)
 data class PostRecord(val id: String, val body: String, val sha: String)
 data class MailResult(val ok: Boolean, val host: String, val status: Int, val note: String)
+data class DurabilityResult(val state: String, val id: String, val sha: String, val note: String)
 
 object CommonsClient {
     const val REPO = "woahwhattheheck/commons"
@@ -50,6 +51,30 @@ object CommonsClient {
         val url = "https://raw.githubusercontent.com/$REPO/$sha/p/$id.md"
         val body = http("GET", url, accept = "text/plain")
         return PostRecord(id = id, body = body, sha = sha)
+    }
+
+    /** ntfy 2xx is mail. Durability is only p/{id}.md on a freshly measured HEAD. */
+    fun verifyDurability(id: String): DurabilityResult {
+        if (!validId(id)) {
+            return DurabilityResult("INVALID_ID", id, "", "id must be 8-80 [A-Za-z0-9._-]")
+        }
+        val head = currentHead()
+        return try {
+            val post = readPost(id, head.sha)
+            DurabilityResult(
+                state = "DURABLE",
+                id = post.id,
+                sha = post.sha,
+                note = "DURABLE p/${post.id}.md at ${post.sha} (${post.body.length} bytes). ntfy was mail.",
+            )
+        } catch (exc: Exception) {
+            DurabilityResult(
+                state = "NOT_ON_CURRENT_MAIN",
+                id = id,
+                sha = head.sha,
+                note = "NOT_ON_CURRENT_MAIN p/$id.md at ${head.sha}. ${exc.message ?: "missing"}",
+            )
+        }
     }
 
     fun recentCommits(limit: Int = 12): JSONArray {

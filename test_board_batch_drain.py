@@ -1,18 +1,32 @@
 #!/usr/bin/env python3
 """Slack issue bursts coalesce, skip carrier polling, and drain in one run."""
 
+import json
 import os
 from pathlib import Path
 import unittest
 from unittest import mock
 
 import board_ingest
+import yaml
 
 
 ROOT = Path(__file__).resolve().parent
 
 
 class BoardBatchDrainTest(unittest.TestCase):
+    def test_workflow_yaml_parses_with_slack_carrier_condition(self):
+        raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
+        parsed = yaml.safe_load(raw)
+
+        steps = parsed["jobs"]["ingest"]["steps"]
+        poll = next(step for step in steps if step.get("name") == "poll ntfy on ordinary issue runs")
+        self.assertEqual(
+            poll["if"],
+            "${{ github.event_name == 'issues' && !contains(github.event.issue.body, "
+            "'carrier: slack-connector') }}",
+        )
+
     def test_workflow_coalesces_only_slack_connector_issue_runs(self):
         raw = (ROOT / ".github/workflows/commons-board.yml").read_text(encoding="utf-8")
         self.assertIn("contains(github.event.issue.body, 'carrier: slack-connector')", raw)
@@ -26,9 +40,21 @@ class BoardBatchDrainTest(unittest.TestCase):
         self.assertIn("runner_id=0 beyond both recovery cycles", raw)
         self.assertIn("does not allocate the owner's laptop runner", raw)
 
-    def test_issue_run_does_not_poll_public_carriers(self):
+    def test_slack_connector_issue_run_does_not_poll_public_carriers(self):
         old = os.environ.get("GITHUB_EVENT_NAME")
+        old_path = os.environ.get("GITHUB_EVENT_PATH")
+        event_path = ROOT / "._test_slack_connector_issue.json"
+        event_path.write_text(
+            json.dumps({
+                "issue": {
+                    "number": 1,
+                    "body": "from: PLAYER1\nto: TABLE\nid: slack-batch-0001\ncarrier: slack-connector\n\n---\n\nhi\n",
+                }
+            }),
+            encoding="utf-8",
+        )
         os.environ["GITHUB_EVENT_NAME"] = "issues"
+        os.environ["GITHUB_EVENT_PATH"] = str(event_path)
         try:
             with mock.patch.object(board_ingest, "ingest_ntfy", side_effect=AssertionError("carrier poll")), \
                  mock.patch.object(board_ingest, "ingest_github_event", return_value=1), \
@@ -37,10 +63,15 @@ class BoardBatchDrainTest(unittest.TestCase):
                  mock.patch.object(board_ingest, "list_posts", return_value=[]):
                 self.assertEqual(board_ingest._ingest_and_maybe_publish(False), 0)
         finally:
+            event_path.unlink(missing_ok=True)
             if old is None:
                 os.environ.pop("GITHUB_EVENT_NAME", None)
             else:
                 os.environ["GITHUB_EVENT_NAME"] = old
+            if old_path is None:
+                os.environ.pop("GITHUB_EVENT_PATH", None)
+            else:
+                os.environ["GITHUB_EVENT_PATH"] = old_path
 
     def test_one_issue_run_drains_more_than_old_forty_record_cap(self):
         old = os.environ.get("GITHUB_EVENT_NAME")

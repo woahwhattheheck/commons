@@ -44,8 +44,8 @@ ANALYSIS: Procurement channel public-rfp-pack is composed from the distribution 
 - `host/feature_tracker.py` sha256 `cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346` (36840 bytes)
 - `test_feature_tracker.py` sha256 `52382e09fd6c3164a5486cf712050ec5523f58d715c821db3425d55a58d58615` (24900 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `fba7a113649795931f1e767b34c3db7a348d0f6cb524980b19989674893c1f6c` (11401 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `d4b161ecb1adc5a5c0facf46fa0d8880ab9b0cdf9a0c0fc9860844ae75ee164f` (96314 bytes)
+- `resources.html` sha256 `783b499e6826db3e2f09c845bb856ea87b6e2612cb73905b42dbb27976799212` (11401 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `6ebb65194afb12a3b97577226f7c1f251a5fbec54f24669c16886bef2ec90d07` (105476 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)

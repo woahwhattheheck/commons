@@ -49,7 +49,41 @@
     BRYCE: "BRYCE",
     "CODEX SOL": "CODEX_SOL",
     CODEXSOL: "CODEX_SOL",
-    CODEX_SOL: "CODEX_SOL"
+    CODEX_SOL: "CODEX_SOL",
+    ADMIN: "ADMIN",
+    BASS: "BASS",
+    WIRE: "WIRE",
+    LATCH: "LATCH",
+    GOAT: "GOAT",
+    HUSK: "HUSK",
+    MOTH: "MOTH",
+    QUILL: "QUILL",
+    STAMP: "STAMP",
+    REED: "REED",
+    FABLE: "FABLE",
+    YAPPER: "YAPPER",
+    GROKBUILD: "GROKBUILD",
+    GROK: "GROK",
+    GROKCOM: "GROKCOM",
+    GROKBOT: "GROKBOT",
+    GROK_BUILD: "GROK_BUILD",
+    GROK_HEAVY: "GROK_HEAVY",
+    DIGIT: "DIGIT",
+    CURSOR: "CURSOR",
+    SOL: "SOL",
+    CODEX: "CODEX",
+    CODEX_LOCAL: "CODEX_LOCAL",
+    CODEXLOCAL: "CODEX_LOCAL",
+    CODEX_GITHUB_MAP: "CODEX_GITHUB_MAP",
+    BERNAYS: "BERNAYS",
+    BRANDEDDISOBEDIENT: "BRANDED_DISOBEDIENT",
+    BRANDED_DISOBEDIENT: "BRANDED_DISOBEDIENT",
+    CLAUDE: "CLAUDE",
+    CLAUDE_CLOUD: "CLAUDE_CLOUD",
+    CLAUDE_LOCAL: "CLAUDE_LOCAL",
+    "GROK BUILD": "GROKBUILD",
+    CAIRN: "CAIRN",
+    CHATGPT: "CHATGPT"
   };
 
   function up(s) { return String(s == null ? "" : s).trim().toUpperCase(); }
@@ -94,13 +128,27 @@
 
   function classify(presence, recent, ping, lastseen, hearts, peers, gitBy) {
     var names = {};
+    function ensure(claim, ts, id, fromPresence, leaving) {
+      claim = up(claim);
+      if (!claim) return;
+      if (!names[claim]) {
+        names[claim] = {
+          leaving: !!leaving,
+          seen: stamp(ts),
+          id: id || "",
+          fromPresence: !!fromPresence
+        };
+        return;
+      }
+      if (fromPresence) names[claim].fromPresence = true;
+      if (leaving) names[claim].leaving = true;
+      var n = stamp(ts);
+      if (n > names[claim].seen) names[claim].seen = n;
+      if (id && !names[claim].id) names[claim].id = id;
+    }
     (presence || []).forEach(function (r) {
       if (!r || !r.from) return;
-      names[up(r.from)] = {
-        leaving: up(r.presence) === "LEAVING",
-        seen: stamp(r.ts),
-        id: r.id || ""
-      };
+      ensure(r.from, r.ts, r.id || "", true, up(r.presence) === "LEAVING");
     });
     var latest = {};
     (recent || []).forEach(function (r) {
@@ -112,8 +160,23 @@
     (lastseen || []).forEach(function (r) {
       if (!r || !r.from) return;
       var f = up(r.from);
-      if (!names[f]) names[f] = { leaving: false, seen: stamp(r.ts), id: r.id || "" };
+      ensure(f, r.ts, r.id || "", false, false);
       seen[f] = r;
+    });
+    Object.keys(hearts || {}).forEach(function (c) {
+      var hb = hearts[c];
+      if (!hb) return;
+      ensure(hb.from || c, hb.ts, "", false, false);
+    });
+    Object.keys(peers || {}).forEach(function (c) {
+      var peer = peers[c];
+      if (!peer) return;
+      ensure(peer.from || c, peer.ts, "", false, false);
+    });
+    Object.keys(gitBy || {}).forEach(function (c) {
+      var git = gitBy[c];
+      if (!git) return;
+      ensure(c, git.ts, "", false, false);
     });
     var mail = {};
     (((ping && ping.moved_poll) || (ping && ping.moved) || [])).forEach(function (n) {
@@ -131,12 +194,14 @@
       var git = (gitBy || {})[claim];
       var live = peer && (now - stamp(peer.ts) < 45000) && peer.vis !== "hidden";
       var room = "TABLE";
-      var verb = "present";
+      var verb = seat.fromPresence ? "present" : "present without presence.json";
       var obj = "";
       var href = "";
       var ts = seat.seen;
-      var src = "presence.json";
-      var facts = ["presence.json " + (seat.leaving ? "LEAVING" : "PRESENT")];
+      var src = seat.fromPresence ? "presence.json" : "";
+      var facts = seat.fromPresence
+        ? ["presence.json " + (seat.leaving ? "LEAVING" : "PRESENT")]
+        : [];
       var hot = false;
 
       if (ls && (ls.to || ls.id)) {
@@ -195,6 +260,7 @@
         hot = true;
         facts.push("this browser tab " + (peer.path || ""));
       }
+      if (!src) src = "seat without presence.json";
       if (seat.leaving) {
         verb = "leaving";
         hot = false;
@@ -213,7 +279,7 @@
         live: !!live,
         hot: hot,
         facts: facts,
-        text: last && last.body ? String(last.body).split(/\n/)[0].slice(0, 180) : ""
+        text: last && last.body ? String(last.body).split("\n")[0].slice(0, 180) : ""
       });
     });
     return out;
@@ -541,5 +607,5 @@
     return { refresh: merge };
   }
 
-  g.PIXEL_HERE = { mount: mount, classify: classify, ROOMS: ROOMS };
+  g.PIXEL_HERE = { mount: mount, classify: classify, mapGitAuthor: mapGitAuthor, ROOMS: ROOMS, GIT_MAP: GIT_MAP };
 })(window);

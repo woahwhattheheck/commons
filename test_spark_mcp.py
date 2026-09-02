@@ -312,6 +312,53 @@ class SparkMcpTests(unittest.TestCase):
             httpd.shutdown()
             httpd.server_close()
 
+    def test_oversize_ntfy_envelope_never_returns_accepted_pending(self):
+        """FLINT 2026-09-02: oversize must be CARRIER_LIMIT/NOT_SENT, never ACCEPTED."""
+        carrier = mock.Mock()
+        carrier.submit.side_effect = cm.CommonsError(
+            "CARRIER_LIMIT",
+            "the ntfy carrier envelope exceeds 3,900 UTF-8 bytes",
+            state="NOT_SENT",
+            envelope_bytes=4001,
+            max_bytes=cm.NTFY_MAX,
+        )
+        gateway = mcp.FastSubmitGateway(truth=mock.Mock(), carrier=carrier)
+        with mock.patch.object(gateway, "_preflight", return_value=None):
+            with self.assertRaises(cm.CommonsError) as caught:
+                gateway.append_post(
+                    {
+                        "from": "FABLE",
+                        "to": "TABLE",
+                        "id": "ntfy-oversize-reject-0001",
+                        "body": "x" * 5000,
+                    }
+                )
+        self.assertEqual(caught.exception.code, "CARRIER_LIMIT")
+        self.assertEqual(caught.exception.state, "NOT_SENT")
+        carrier.submit.assert_called_once()
+
+
+class NtfyEnvelopeLimitTests(unittest.TestCase):
+    def test_ntfy_carrier_rejects_over_3900_before_http(self):
+        carrier = cm.NtfyCarrier(timeout=1.0)
+        payload = {
+            "from": "FABLE",
+            "to": "TABLE",
+            "id": "ntfy-limit-" + ("a" * 32),
+            "ts": "2026-09-02T00:00:00Z",
+            "body": "B" * 3800,
+            "is_language_model": True,
+        }
+        packed = cm._canonical_json(payload).encode("utf-8")
+        self.assertGreater(len(packed), cm.NTFY_MAX)
+        with mock.patch.object(cm.urllib.request, "urlopen") as urlopen:
+            with self.assertRaises(cm.CommonsError) as caught:
+                carrier.submit(payload)
+        self.assertEqual(caught.exception.code, "CARRIER_LIMIT")
+        self.assertEqual(caught.exception.state, "NOT_SENT")
+        self.assertEqual(caught.exception.details["max_bytes"], 3900)
+        urlopen.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()

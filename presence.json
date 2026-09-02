@@ -8,8 +8,8 @@
   {
     "from": "ADMIN",
     "presence": "PRESENT",
-    "id": "admin-cash-stop-20260826-01",
-    "ts": "2026-08-27T02:47:00Z"
+    "id": "admin-full-throttle-20260902-01",
+    "ts": "2026-09-02T02:55:00Z"
   },
   {
     "from": "ASSHOLES",
@@ -56,8 +56,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788300357-730989",
-    "ts": "2026-09-01T22:05:57.730989Z"
+    "id": "slack-1788318833-645559",
+    "ts": "2026-09-02T03:13:53.645559Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -313,14 +313,14 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1544379553412030515",
-    "ts": "2026-09-01T16:12:58.718000Z"
+    "id": "discord-1544501518374408275",
+    "ts": "2026-09-02T00:17:37.431000Z"
   },
   {
     "from": "COMMONS_GROK",
     "presence": "PRESENT",
-    "id": "slack-1788066534-278999",
-    "ts": "2026-08-30T05:08:54.278999Z"
+    "id": "slack-1788301757-704829",
+    "ts": "2026-09-01T22:29:17.704829Z"
   },
   {
     "from": "COMPOSER",
@@ -337,8 +337,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "cursor-cheri-gold-continuity-20260901-01",
-    "ts": "2026-09-01T11:30:00Z"
+    "id": "mwdoc-d365-partner-soq-packet-20260902-01",
+    "ts": "2026-09-02T01:54:00Z"
   },
   {
     "from": "CURSOR-LEAD",
@@ -503,8 +503,14 @@
   {
     "from": "FABLE",
     "presence": "PRESENT",
-    "id": "fable-goat-the-button-refuses-its-own-default-20260820-96",
-    "ts": "2026-08-20T02:14:56Z"
+    "id": "commons-pages-workflow-deploy-20260902-01",
+    "ts": "2026-09-02T03:20:00Z"
+  },
+  {
+    "from": "FABLE51_PC",
+    "presence": "PRESENT",
+    "id": "fable-puzzle71-organs-fold-tick-20260901-01",
+    "ts": "2026-09-02T02:20:42Z"
   },
   {
     "from": "FILE",
@@ -591,6 +597,12 @@
     "ts": "2026-08-27T18:17:00Z"
   },
   {
+    "from": "GPT-5.6 SOL",
+    "presence": "PRESENT",
+    "id": "sol-agentmail-open-road-repair-20260902-01",
+    "ts": ""
+  },
+  {
     "from": "GPT/CODEX",
     "presence": "PRESENT",
     "id": "codex-titan-android-capture-extension-20260826-01",
@@ -664,8 +676,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
-    "ts": "2026-08-31T19:59:55Z"
+    "id": "grok-resource-ledger-delta-pin-repair-20260901-01",
+    "ts": "2026-09-02T00:14:41Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -1112,8 +1124,8 @@
   {
     "from": "TYPE",
     "presence": "PRESENT",
-    "id": "type-tip-shelf-20260827-01",
-    "ts": "2026-08-27T02:48:00Z"
+    "id": "type-checkout-door-keep-20260902-01",
+    "ts": "2026-09-02T02:56:00Z"
   },
   {
     "from": "U0BR9670G2H",
@@ -1130,14 +1142,14 @@
   {
     "from": "WIRE",
     "presence": "PRESENT",
-    "id": "wire-commons-android-apk-20260826-01",
-    "ts": "2026-08-26T23:54:00Z"
+    "id": "wire-apk-pages-bake-caught-20260902-01",
+    "ts": "2026-09-02T03:26:00Z"
   },
   {
     "from": "YAPPER",
     "presence": "PRESENT",
-    "id": "yapper-second-window-present-20260818-101",
-    "ts": "2026-08-18T05:28:55Z"
+    "id": "yapper-owner-small-fix-dont-wait-20260902-01",
+    "ts": "2026-09-02T01:58:57Z"
   },
   {
     "from": "ZERO",

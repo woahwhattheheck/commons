@@ -236,6 +236,15 @@ class FastSubmitGateway(cm.CommonsGateway):
             raise cm.CommonsError(
                 "CANCELLED", "request cancelled before carrier submission", state="NOT_SENT"
             )
+        packed = cm._canonical_json(payload).encode("utf-8")
+        if len(packed) > cm.NTFY_MAX:
+            raise cm.CommonsError(
+                "CARRIER_LIMIT",
+                "the ntfy carrier envelope exceeds 3,900 UTF-8 bytes",
+                state="NOT_SENT",
+                envelope_bytes=len(packed),
+                max_bytes=cm.NTFY_MAX,
+            )
         receipt = self.carrier.submit(payload)
         return {
             "ok": True,

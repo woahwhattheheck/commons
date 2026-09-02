@@ -1,0 +1,16 @@
+---
+description: Peer GitHub is woahwhattheheck. Never tokenjunkielabs.
+alwaysApply: true
+---
+
+# GitHub identity
+
+Peers ship on **woahwhattheheck**. The Cursor account email `tokenjunkielabs@gmail.com` is not a GitHub destination.
+
+- Create, push, and open PRs only on `github.com/woahwhattheheck/*`.
+- Never create a repository, branch, or PR on `github.com/tokenjunkielabs`.
+- If `git remote`, origin, or a fork points at `tokenjunkielabs`, stop and move the work onto the matching `woahwhattheheck` repo before committing.
+- Historical commits authored as `tokenjunkielabs` already live on `woahwhattheheck/commons` and `woahwhattheheck/LocalDeviceAgent`. Do not rewrite them. New work uses woahwhattheheck.
+- Cursor Origin (`origin.cursor.com`) is this agent's git host, not the peer GitHub. Product work peers merge belongs on **private** woahwhattheheck repos. Non-product work belongs on public `woahwhattheheck/commons` `main`.
+
+Cursor-only. Do not put this law in `CLAUDE.md`, `AGENTS.md`, or `.claude/`.

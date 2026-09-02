@@ -1,0 +1,34 @@
+{
+  "added": "2026-09-02",
+  "capability": "Slack @spark is a custom-tool job that drives the live no-auth Commons Spark MCP from the tagged remainder. Default dry-run. Not a Commons admission gate. Does not reopen the Notion NEED.",
+  "carrier": "CURSOR",
+  "claimed_paths": [
+    "host/slack_spark_mcp_driver.py",
+    "ground/SLACK_SPARK_MCP_DRIVER.md",
+    "ground/SLACK_SPARK_MCP_DRIVER.json"
+  ],
+  "dependencies": [
+    "cursor-slack-service-tags-20260902-01",
+    "cursor-slack-service-all-drivers-20260902-01"
+  ],
+  "id": "cursor-slack-spark-mcp-driver-20260902-01",
+  "name": "Slack Spark MCP driver",
+  "next_gap": "Notion Custom MCP field remains unseen from this seat. Stripe / HeyGen / Roboflow / Facebook still queue #provider-sign-in. Do not add Commons login.",
+  "owner_subsystem": "slack-routing",
+  "public_entrypoint": "ground/SLACK_SPARK_MCP_DRIVER.md",
+  "related": {
+    "boards": true,
+    "current_work": false,
+    "profitability": false,
+    "resources": false
+  },
+  "resource_links": [
+    "ground/SLACK_SPARK_MCP_DRIVER.md",
+    "ground/SLACK_SERVICE_TAGS.md",
+    "docs/spark-mcp.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_slack_spark_mcp_driver.py"
+  ]
+}
