@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "host"))
 
 import pack_lotribbon_rating as rating  # noqa: E402
+import pack_harborline_rating as harborline  # noqa: E402
 
 
 INVENTED = """# Third-party rating slot — LotRibbon Greetings
@@ -32,6 +33,9 @@ class PackLotribbonRatingTest(unittest.TestCase):
         self.assertIn("packs/_template/rating.md", rating.DO_NOT_OVERWRITE)
         self.assertIn("host/business_pack_rating.py", rating.DO_NOT_OVERWRITE)
         self.assertIn("packs/lotribbon-greetings-20260902-01/index.html", rating.DO_NOT_OVERWRITE)
+        self.assertIn("packs/lotribbon-greetings-20260902-01/rating.md", rating.DO_NOT_OVERWRITE)
+        self.assertIn("packs/lotribbon-greetings-20260902-01/waitlist-slot.md", rating.DO_NOT_OVERWRITE)
+        self.assertIn("p/cursor-lead-lotribbon-rating-20260902-01.md", rating.DO_NOT_OVERWRITE)
         self.assertIn("packs/desk-website-service-20260902-01/rating.md", rating.DO_NOT_OVERWRITE)
         self.assertIn("host/pack_harborline_rating.py", rating.DO_NOT_OVERWRITE)
         self.assertIn(
@@ -44,6 +48,10 @@ class PackLotribbonRatingTest(unittest.TestCase):
         )
         self.assertIn(
             "p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md",
+            rating.DO_NOT_OVERWRITE,
+        )
+        self.assertIn(
+            "p/cursor-claude-peer-check-a4-desk-test-adopt-20260902-01.md",
             rating.DO_NOT_OVERWRITE,
         )
         self.assertIn("packs/sidewalk-signal-web-desk-20260902-01", rating.DO_NOT_OVERWRITE)
@@ -82,11 +90,14 @@ class PackLotribbonRatingTest(unittest.TestCase):
         self.assertTrue(result["did_not_rewrite_goat_template"])
         self.assertTrue(result["did_not_remint_factory_slot"])
         self.assertTrue(result["did_not_overwrite_lotribbon_door"])
+        self.assertTrue(result["did_not_overwrite_lotribbon_rating"])
+        self.assertTrue(result["did_not_remint_original_leftover"])
         self.assertTrue(result["did_not_overwrite_harborline_rating"])
         self.assertTrue(result["did_not_fill_harborline_unpin"])
         self.assertTrue(result["did_not_overwrite_pointer_receipt"])
         self.assertTrue(result["did_not_remint_a4_yard"])
         self.assertTrue(result["did_not_remint_desk_a4"])
+        self.assertTrue(result["live_a4_receipts_not_pinned"])
         self.assertTrue(result["did_not_live_pin_sidewalk_absent"])
         self.assertTrue(result["did_not_merge_7915"])
         self.assertEqual(result["harborline_unpin_stays"], "bc-31c8ef9a")
@@ -94,6 +105,14 @@ class PackLotribbonRatingTest(unittest.TestCase):
         self.assertEqual(
             result["blobs"]["packs/lotribbon-greetings-20260902-01/index.html"],
             "7804ec33",
+        )
+        self.assertEqual(
+            result["blobs"]["packs/lotribbon-greetings-20260902-01/rating.md"],
+            "7fade2a5",
+        )
+        self.assertEqual(
+            result["blobs"]["p/cursor-lead-lotribbon-rating-20260902-01.md"],
+            "5f06948a",
         )
         self.assertEqual(
             result["blobs"]["packs/desk-website-service-20260902-01/rating.md"],
@@ -106,18 +125,60 @@ class PackLotribbonRatingTest(unittest.TestCase):
             "7a8987b5",
         )
         self.assertEqual(
-            result["blobs"]["p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md"],
-            "0603616c",
+            result["observed_at_land"]["p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md"],
+            "KEEP MAIN 0603616c",
         )
         self.assertEqual(
-            result["blobs"]["p/cursor-claude-peer-check-a4-desk-test-adopt-20260902-01.md"],
-            "193cf232",
+            result["observed_at_land"][
+                "p/cursor-claude-peer-check-a4-desk-test-adopt-20260902-01.md"
+            ],
+            "KEEP MAIN 193cf232",
         )
         dumped = json.dumps(result)
         self.assertNotIn("337 NO", dumped)
         self.assertEqual(result["checkout"], "NOT_MINTED")
         self.assertEqual(result["receipt_id"], "cursor-lead-lotribbon-rating-20260902-01")
-        self.assertEqual(result["unpin_id"], "cursor-pack-harborline-rating-peer-unpin-20260902-01")
+        self.assertEqual(result["unpin_id"], "cursor-lead-lotribbon-rating-peer-unpin-20260902-01")
+        self.assertEqual(
+            result["harborline_unpin_id"],
+            "cursor-pack-harborline-rating-peer-unpin-20260902-01",
+        )
+
+    def test_a4_receipt_sha_change_does_not_fail_tree(self) -> None:
+        if not rating.TEMPLATE.is_file() or not rating.LOTRIBBON.is_file():
+            self.skipTest("rating files not in this tree")
+        original = rating.git_blob_prefix
+
+        def fake(rel: str, n: int = 8) -> str:
+            if rel in {
+                "p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md",
+                "p/cursor-claude-peer-check-a4-desk-test-adopt-20260902-01.md",
+            }:
+                return "deadbeef"
+            return original(rel, n)
+
+        rating.git_blob_prefix = fake  # type: ignore[method-assign]
+        try:
+            result = rating.classify_tree()
+            self.assertEqual(result["verdict"], "LOTRIBBON_RATING_OK", msg=result)
+            self.assertTrue(result["live_a4_receipts_not_pinned"])
+            self.assertEqual(
+                result["blobs"]["p/stamp-claude-peer-check-a4-yard-adopt-20260902-01.md"],
+                "deadbeef",
+            )
+        finally:
+            rating.git_blob_prefix = original  # type: ignore[method-assign]
+
+    def test_harborline_tree_stays_ok_with_lotribbon_present(self) -> None:
+        if not rating.LOTRIBBON.is_file() or not harborline.HARBORLINE.is_file():
+            self.skipTest("rating files not in this tree")
+        result = harborline.classify_tree()
+        self.assertEqual(result["verdict"], "HARBORLINE_RATING_OK", msg=result)
+        self.assertTrue(result["live_peer_rating_slots_not_pinned"])
+        self.assertEqual(
+            result["observed_at_land"]["packs/lotribbon-greetings-20260902-01/rating.md"],
+            "absent",
+        )
 
     def test_cli_json(self) -> None:
         if not rating.LOTRIBBON.is_file():
@@ -132,6 +193,7 @@ class PackLotribbonRatingTest(unittest.TestCase):
         self.assertEqual(data["verdict"], "LOTRIBBON_RATING_OK")
         self.assertIs(data["gate"], False)
         self.assertEqual(data["receipt_id"], "cursor-lead-lotribbon-rating-20260902-01")
+        self.assertEqual(data["unpin_id"], "cursor-lead-lotribbon-rating-peer-unpin-20260902-01")
 
 
 if __name__ == "__main__":
