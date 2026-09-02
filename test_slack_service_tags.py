@@ -75,6 +75,8 @@ class SlackServiceTagsTest(unittest.TestCase):
         self.assertNotIn('type="password"', self.door.lower())
         self.assertNotIn("login form", self.door.lower())
         self.assertIn("password", self.door.lower())  # prohibition text only
+        self.assertIn('name="robots"', self.door)
+        self.assertIn("index, follow", self.door)
         self.assertIn("SLACK_SERVICE_TAGS.json", self.door)
 
     def test_catalog_covers_named_services(self) -> None:

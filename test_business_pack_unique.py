@@ -111,6 +111,8 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotIn('type="password"', self.door.lower())
         self.assertNotIn("login form", self.door.lower())
         self.assertIn("password", self.door.lower())
+        self.assertIn('name="robots"', self.door)
+        self.assertIn("index, follow", self.door)
         self.assertIn("BUSINESS_PACKS.json", self.door)
         self.assertIn("similar", self.door.lower())
         self.assertIn("mystery", self.door.lower())
