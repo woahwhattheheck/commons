@@ -350,6 +350,23 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 1,
+ "open_prs": [
+  {
+   "number": 7752,
+   "author": "woahwhattheheck",
+   "title": "FROM FILE host/pfc_* batch infra twins (coil)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7752",
+   "base_freshness": {
+    "base_sha": "fc2d1a4582be1d0aaf75bf2db4dcc227ca3c2a3a",
+    "main_sha": "fb45006efb1480085f9385e884f9f349440c3a0f",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }
