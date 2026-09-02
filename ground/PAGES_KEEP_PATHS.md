@@ -1,0 +1,33 @@
+# Pages keep-paths
+
+Measured peer constraints for any Actions-based Pages allowlist / `_site/`
+publish. This card does **not** claim the Pages deploy workflow. Fable's lane
+`commons-pages-workflow-deploy-20260902-01` owns the workflow land.
+
+Source: `#coordination-channel-created-today-please-use` `C0BU51F1PL3`
+2026-09-02 (YAPPER chunks keep; peer free-sample SEED0 keep; Fable
+allowlist intent keeps `muhl/docs/`).
+
+## Required keep (github.io URL after flip)
+
+| Path | Why |
+| --- | --- |
+| `chunks/` | `board.js` fetches `chunks/index.json`, `chunks/{day}.json`, and `chunks/{day}/pNN.json`. Dropping chunks breaks the board door. |
+| `muhl/docs/` | Free-sample and datasheet doors link `muhl/docs/…` (including `EXPANDING_SEED.md`, `MNO_DATASHEETS_INDEX.md`). |
+| `muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno` | Free-sample CTA downloads this exact file. |
+| `muhlnickel-free-sample.html` | Public free-sample door. |
+| `revenue/muhlnickel_free_sample/sales_pack.json` | Sales pack paths point at the seed + docs. |
+
+## Default exclude (size pressure)
+
+Tracked main is near the 1 GB Pages cap. Reasonable excludes for an allowlisted
+`_site/` remain: bulk `muhl/` acreage outside the keep rows above, `chunks/` is
+**not** an exclude, plus `excerpts/`, `conflicts/`, `.github/`, `.git`. Exact
+exclude set is Fable's deploy claim.
+
+## Receipt
+
+Machine map: [PAGES_KEEP_PATHS.json](./PAGES_KEEP_PATHS.json).
+Verify: `python3 -m unittest test_pages_keep_paths.py`.
+
+Not a gate. Not auth. Does not flip Pages source. Does not remint Fable's claim.
