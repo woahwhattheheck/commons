@@ -17,6 +17,10 @@ THUMB2 = ROOT / "shots/cursor-big-things-incoming-hub-2-20260902.thumb.jpg"
 
 KEEP = {
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
+    "ground/OWNER_NOW.md": "6b8ee988",
+    "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
+    "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
+    "p/cursor-big-things-incoming-alert-ack-20260902-01.md": "81097728",
     "autogtm.html": "9d8b3e85",
     "hub_pages.py": "14eeedb0",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
@@ -45,10 +49,13 @@ class TestBigThingsIncomingShots(unittest.TestCase):
         self.assertIn("1788380844.707619", text)
         self.assertIn("Big things incoming alert the peers", text)
         self.assertIn("Did not invent", text)
+        self.assertIn("6b8ee988", text)
+        self.assertIn("generate revenue", text)
+        self.assertIn("Did not spawn", text)
         self.assertIn("image: shots/cursor-big-things-incoming-hub-1-20260902.png", text)
         self.assertIn("shots/cursor-big-things-incoming-hub-2-20260902.png", text)
         self.assertNotIn("qualify.html", text)
-        self.assertNotIn("payment-link", text)
+        self.assertNotIn("buy.stripe.com", text)
 
     def test_owner_shots_exist(self) -> None:
         for path in (SHOT1, SHOT2, THUMB1, THUMB2):
