@@ -15,6 +15,9 @@ __pycache__/
 .push_fail_receipt
 _git_ok.py
 # Defense in depth only: revenue evidence roots must still be outside Commons.
+revenue/*/receipts/
+revenue/*/state/
+revenue/*/fixture.json
 owner-private/
 *.vault
 **/.commons/*.vault

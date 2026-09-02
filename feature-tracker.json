@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 78
+    "TESTED": 80
   },
   "features": [
     {
@@ -900,6 +900,63 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "KEEP vs SELL factory ledger for #business-packs. Records KEEP/SELL/OPEN. No invented Stripe URLs, ads, buyers, or cash.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "ground/BUSINESS_PACK_KEEP_SELL.json",
+        "host/business_pack_keep_sell.py",
+        "keep-sell.html",
+        "test_business_pack_keep_sell.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "ground/BUSINESS_PACK_KEEP_SELL.json",
+        "host/business_pack_keep_sell.py",
+        "keep-sell.html",
+        "test_business_pack_keep_sell.py"
+      ],
+      "dependencies": [
+        "cursor-slack-business-packs-channel-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "business-pack-keep-sell-20260902-01.json",
+      "id": "business-pack-keep-sell-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Business pack KEEP vs SELL factory",
+      "next_gap": "Owner pastes live Payment Links. Pack scaffold landing stays GOAT. Do not invent checkout or ad spend.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "keep-sell.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_KEEP_SELL.md",
+        "keep-sell.html",
+        "ground/SLACK_CONTROL_PLANE.md",
+        "payment-capability.html"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_keep_sell.py",
+        "host/business_pack_keep_sell.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Canyon Labs multi-site regulated sample-intake runner: a working CLI processes 300 synthetic submissions across Bluffdale, Rush, and Vista, accessions 240 complete forms once at the correct site, holds 60 missing/conflicting rows with exact reasons, preserves source hashes and field lineage, refuses testing on HOLD, denies autonomous release, and writes journal plus receipts. Replay changes no state. Adapters stay simulated.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -1592,6 +1649,58 @@
       "superseded_by": "",
       "test_paths": [
         "test_slack_service_tag_worker.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Slack @spark is a custom-tool job that drives the live no-auth Commons Spark MCP from the tagged remainder. Default dry-run. Not a Commons admission gate. Does not reopen the Notion NEED.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/slack_spark_mcp_driver.py",
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SPARK_MCP_DRIVER.json"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/slack_spark_mcp_driver.py",
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SPARK_MCP_DRIVER.json"
+      ],
+      "dependencies": [
+        "cursor-slack-service-tags-20260902-01",
+        "cursor-slack-service-all-drivers-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-slack-spark-mcp-driver-20260902-01.json",
+      "id": "cursor-slack-spark-mcp-driver-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Slack Spark MCP driver",
+      "next_gap": "Notion Custom MCP field remains unseen from this seat. Stripe / HeyGen / Roboflow / Facebook still queue #provider-sign-in. Do not add Commons login.",
+      "owner_subsystem": "slack-routing",
+      "public_entrypoint": "ground/SLACK_SPARK_MCP_DRIVER.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/SLACK_SPARK_MCP_DRIVER.md",
+        "ground/SLACK_SERVICE_TAGS.md",
+        "docs/spark-mcp.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_slack_spark_mcp_driver.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -4969,7 +5078,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 84,
+  "n_features": 86,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

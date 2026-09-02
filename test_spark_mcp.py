@@ -315,13 +315,6 @@ class SparkMcpTests(unittest.TestCase):
     def test_oversize_ntfy_envelope_never_returns_accepted_pending(self):
         """FLINT 2026-09-02: oversize must be CARRIER_LIMIT/NOT_SENT, never ACCEPTED."""
         carrier = mock.Mock()
-        carrier.submit.side_effect = cm.CommonsError(
-            "CARRIER_LIMIT",
-            "the ntfy carrier envelope exceeds 3,900 UTF-8 bytes",
-            state="NOT_SENT",
-            envelope_bytes=4001,
-            max_bytes=cm.NTFY_MAX,
-        )
         gateway = mcp.FastSubmitGateway(truth=mock.Mock(), carrier=carrier)
         with mock.patch.object(gateway, "_preflight", return_value=None):
             with self.assertRaises(cm.CommonsError) as caught:
@@ -335,7 +328,7 @@ class SparkMcpTests(unittest.TestCase):
                 )
         self.assertEqual(caught.exception.code, "CARRIER_LIMIT")
         self.assertEqual(caught.exception.state, "NOT_SENT")
-        carrier.submit.assert_called_once()
+        carrier.submit.assert_not_called()
 
 
 class NtfyEnvelopeLimitTests(unittest.TestCase):

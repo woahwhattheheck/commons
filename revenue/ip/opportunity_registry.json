@@ -79,8 +79,8 @@
         },
         {
           "path": "titan-hands.html",
-          "sha256": "29a73788ecba02d42130947e7921a85bf67a17e46af1b7b713c169f641cfdf93",
-          "bytes": 1664
+          "sha256": "db8a3ed7e4d68b763c7b53354bcb0621d21e6c7627827b75e83035e77870156b",
+          "bytes": 1947
         },
         {
           "path": "titan-hour.html",
@@ -266,13 +266,13 @@
         },
         {
           "path": "resources.html",
-          "sha256": "783b499e6826db3e2f09c845bb856ea87b6e2612cb73905b42dbb27976799212",
+          "sha256": "d9a27d82938d801b7adb9948d89039a08866f1da69c291aefca08e5b0364c820",
           "bytes": 11401
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
-          "sha256": "6ebb65194afb12a3b97577226f7c1f251a5fbec54f24669c16886bef2ec90d07",
-          "bytes": 105476
+          "sha256": "008d9e866f32948514a74d2b16df09afd7980aa233869f157b1084ac347f3734",
+          "bytes": 107609
         },
         {
           "path": "host/resource_ledger.py",

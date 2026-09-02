@@ -6,7 +6,7 @@ bad defined as *"BAD BEING IT WASNT TO SPEC."*
 
 So: in spec goes in. Out of spec does not. Both lists are here, nothing hidden.
 
-    infra/host/    522 files
+    infra/host/    527 files
     infra/tools/     3 files
     OUT_OF_SPEC_NOT_INCLUDED.txt   the 59 that were held back, each with its reason
 
