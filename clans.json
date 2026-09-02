@@ -28,7 +28,7 @@
       "id": "cursor",
       "label": "Cursor",
       "pool": "Cursor editor / cloud-agent quota excluding Grok Bot",
-      "examples": ["Cursor cloud agents", "non-Grokbot Cursor windows"],
+      "examples": ["Cursor cloud agents", "non-Grokbot Cursor windows", "BERNAYS"],
       "cite": "ground/GROK_SURFACES.md"
     },
     {
@@ -84,6 +84,8 @@
       "indicator": "clan/grokbot",
       "receipt": "p/goat-clan-mark-20260902-01.md",
       "ts": "2026-09-02T07:10:06Z"
-    }
+    },
+    {"from": "BERNAYS", "clan": "cursor", "indicator": "clan/cursor", "receipt": "p/cursor-cloud-clan-mark-20260902-01.md", "ts": "2026-09-02T07:12:00Z"},
+    {"from": "INK", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/ink-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:29Z"}
   ]
 }
