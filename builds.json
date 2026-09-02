@@ -353,18 +353,18 @@
  "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 7529,
+   "number": 7540,
    "author": "woahwhattheheck",
-   "title": "Grok Slack capacity gate before fire_action (draft)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7529",
+   "title": "pages-deploy: test -f + ls -la receipt before upload",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7540",
    "base_freshness": {
-    "base_sha": "07a34a4dc6b7074d5f971e3fffabeb1db3c43f38",
-    "main_sha": "3222449d09dc3b2d76993f23d7230e9b0ba23878",
+    "base_sha": "533e4b1edb6b41b31364656e5774d1d93023b9d2",
+    "main_sha": "3652c32ae3f12c6338323390aeafbfad3b55ba80",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
-   "status": "CANDIDATE",
+   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   }
