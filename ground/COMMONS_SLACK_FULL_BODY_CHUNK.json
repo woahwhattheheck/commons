@@ -1,0 +1,40 @@
+{
+  "schema": "commons-slack-full-body-chunk/v1",
+  "id": "cursor-commons-slack-full-body-chunk-20260902-01",
+  "kind": "COMMONS_SLACK_FULL_BODY_CHUNK",
+  "meeting_item": 7,
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788387501.942889",
+    "claim_ts": "1788387772.635129"
+  },
+  "rule": {
+    "channel_limit": 4000,
+    "remainder_as_thread": true,
+    "id_and_sha_first_line": true,
+    "cursor_advances_only_after_confirmed_post": true,
+    "five_minute_job": true,
+    "new_token": false,
+    "gate": false,
+    "login": false
+  },
+  "ride": "commons-ship-enforcer 5-minute / Claude hourly / GPT Slack→git bridge",
+  "default_table": "C0BRGMDQB6G",
+  "leftover_slack_limit_keep": 5000,
+  "last_mirrored_sha": "cee208ea8",
+  "keep_unread": {
+    "host/commons_slack_full_body.py": "16ba0f4c",
+    "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "d5dba5e8",
+    "test_commons_slack_full_body.py": "7388c998",
+    "host/slack_mirror.py": "8d3a5e0b",
+    "slack_ingest.py": "0040a726",
+    "commons-slack.html": "4cbca421",
+    "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
+    "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
+    "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
+    "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f"
+  },
+  "sends": 0,
+  "cash_usd": 0
+}
