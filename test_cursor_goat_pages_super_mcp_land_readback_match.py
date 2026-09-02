@@ -18,7 +18,7 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "e7c28408",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "38146134",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "154b7b67",
     "boards.html": "3fa79f12",
@@ -128,10 +128,10 @@ class TestCursorGoatPagesSuperMcpLandReadbackMatch(unittest.TestCase):
         self.assertFalse((ROOT / "marketplace.html").exists())
         self.assertFalse((ROOT / "qualify.html").exists())
         self.assertFalse((ROOT / "CLAUDE_CORNER.md").exists())
-        self.assertFalse(
+        self.assertTrue(
             (ROOT / "p/cursor-big-huge-commerce-agents-readback-20260902-01.md").exists()
         )
-        self.assertFalse(
+        self.assertTrue(
             (
                 ROOT
                 / "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md"
