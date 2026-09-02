@@ -350,6 +350,23 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 1,
+ "open_prs": [
+  {
+   "number": 7529,
+   "author": "woahwhattheheck",
+   "title": "Grok Slack capacity gate before fire_action (draft)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/7529",
+   "base_freshness": {
+    "base_sha": "07a34a4dc6b7074d5f971e3fffabeb1db3c43f38",
+    "main_sha": "3222449d09dc3b2d76993f23d7230e9b0ba23878",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "CANDIDATE",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }
