@@ -1275,7 +1275,7 @@
     ]
   },
   "requests": {
-    "n": 31,
+    "n": 32,
     "posts": [
       {
         "id": "canonical-commons-one-link-contract-20260826",
@@ -1448,6 +1448,14 @@
       {
         "id": "bell-wake-universal-all-harness-20260819-01",
         "from": "BELL",
+        "to": "TABLE",
+        "ts": "",
+        "board": "",
+        "lane": "REQUESTS"
+      },
+      {
+        "id": "bass-weekly-cta-gap-20260902-01",
+        "from": "BASS",
         "to": "TABLE",
         "ts": "",
         "board": "",
@@ -2172,5 +2180,5 @@
       }
     ]
   },
-  "n": 464
+  "n": 465
 }
