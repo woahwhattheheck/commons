@@ -195,6 +195,93 @@ class MuhlnickelSpecGuardTests(unittest.TestCase):
         with mock.patch.object(guard, "ROOT", root):
             self.assertEqual(guard.executable_violations("offline.py", "HEAD"), [])
 
+    def test_host_pfc_import_of_activated_titan_circuit_is_rejected(self):
+        """Coil-batch regression: a host pfc_* twin that closes over titan_circuit compute fails."""
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_circuit.py").write_text(
+            "import numpy as np\n"
+            "from pfc_fire import submit\n"
+            "def ripple(cir, bits):\n"
+            "    return np.dot(bits, bits)\n"
+            "submit(ripple(None, [1]))\n",
+            encoding="utf-8",
+        )
+        (root / "host").mkdir()
+        (root / "host/pfc_miner.py").write_text(
+            "import titan_circuit as TC\n"
+            "print('pfc runtime')\n"
+            "TC.ripple({'n_in': 1}, [1])\n",
+            encoding="utf-8",
+        )
+        errors = self.errors(root)
+        coil = [e for e in errors if "host/pfc_miner.py" in e]
+        self.assertEqual(len(coil), 1)
+        self.assertIn("host tensor/model/gate computation", coil[0])
+
+    def test_host_pfc_routing_without_compute_closure_is_allowed(self):
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_circuit.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def ripple(cir, bits):\n    return np.dot(bits, bits)\n",
+            encoding="utf-8",
+        )
+        (root / "pfc_forward.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def forward(x):\n    return np.matmul(x, x)\n",
+            encoding="utf-8",
+        )
+        (root / "host").mkdir()
+        (root / "host/pfc_miner.py").write_text(
+            "import json, os\n"
+            "REG = 'titan_circuits.json'\n"
+            "def main():\n"
+            "    print('pfc runtime address-only')\n"
+            "    if os.path.exists(REG):\n"
+            "        print(json.load(open(REG)).get('pfc_mine'))\n"
+            "if __name__ == '__main__':\n"
+            "    main()\n",
+            encoding="utf-8",
+        )
+        self.assertEqual(self.errors(root), [])
+
+    def test_live_coil_host_files_do_not_close_over_activated_compute(self):
+        """The five coil host twins must stay routing-only even if poisoned compute modules sit nearby."""
+        here = Path(__file__).resolve().parent
+        names = [
+            "pfc_miner.py",
+            "pfc_miter.py",
+            "pfc_mmu.py",
+            "pfc_model.py",
+            "pfc_modelbuild.py",
+        ]
+        td, root = self.init_repo()
+        self.addCleanup(td.cleanup)
+        (root / "titan_circuit.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def ripple(c, b):\n    return np.dot(b, b)\n",
+            encoding="utf-8",
+        )
+        (root / "pfc_forward.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def forward(x):\n    return np.matmul(x, x)\n",
+            encoding="utf-8",
+        )
+        (root / "pfc_llama_harness.py").write_text(
+            "import numpy as np\nfrom pfc_fire import submit\n"
+            "def ripple(c, b):\n    return np.dot(b, b)\n",
+            encoding="utf-8",
+        )
+        (root / "host").mkdir()
+        for name in names:
+            src = here / "host" / name
+            self.assertTrue(src.is_file(), name)
+            (root / "host" / name).write_text(src.read_text(encoding="utf-8"), encoding="utf-8")
+        errors = self.errors(root)
+        coil = [e for e in errors if any(name in e for name in names)]
+        self.assertEqual(coil, [])
+
 
 if __name__ == "__main__":
     unittest.main()
