@@ -74,19 +74,42 @@ def stems_from_listing(names):
     return sorted(set(stems))
 
 
+_REFERENCE_PATTERNS = {}
+
+
+def _reference_patterns(stem):
+    """The four caller shapes for one stem, compiled once per stem.
+
+    re's own cache holds 512 patterns; a census of ~550 instruments x 4 shapes
+    thrashed it, so every references() call recompiled. Same patterns, same
+    matches, compiled once.
+    """
+    pats = _REFERENCE_PATTERNS.get(stem)
+    if pats is None:
+        escaped = re.escape(stem)
+        pats = tuple(
+            re.compile(pat)
+            for pat in (
+                r"host/" + escaped + r"\.py",
+                r"\bimport " + escaped + r"\b",
+                r"\bfrom " + escaped + r" import\b",
+                r"python3?\s+host/" + escaped + r"\.py",
+            )
+        )
+        _REFERENCE_PATTERNS[stem] = pats
+    return pats
+
+
 def references(stem, text):
     """True when a body names this host instrument as a caller."""
     body = str(text or "")
     if not stem or not body:
         return False
-    escaped = re.escape(stem)
-    pats = (
-        r"host/" + escaped + r"\.py",
-        r"\bimport " + escaped + r"\b",
-        r"\bfrom " + escaped + r" import\b",
-        r"python3?\s+host/" + escaped + r"\.py",
-    )
-    return any(re.search(pat, body) for pat in pats)
+    if stem not in body:
+        # every caller shape contains the stem verbatim; a body without it
+        # cannot match any of them. Identical result, one substring scan.
+        return False
+    return any(pat.search(body) for pat in _reference_patterns(stem))
 
 
 def is_self_or_test(path, stem):
