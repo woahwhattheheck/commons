@@ -682,6 +682,18 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIs(block["sold_once_badge_live_instance_blobs_not_pinned"], True)
         self.assertIs(block["did_not_remint_sold_once_badge_pointer"], True)
         self.assertIs(block["did_not_write_harborline_leftover_pin_helpers"], True)
+        self.assertEqual(
+            block["harborline_map_pin_lift"],
+            "cursor-pack-harborline-map-pin-lift-20260902-01",
+        )
+        self.assertEqual(block["harborline_map_pin_lift_blob"], "8fe8a002")
+        self.assertEqual(
+            block["harborline_map_pin_lift_pointer"],
+            "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_write_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_remint_harborline_map_pin_lift"], True)
+        self.assertIs(block["harborline_leftover_live_instance_blobs_not_pinned"], True)
         self.assertEqual(block["sold_once_claimed_by"], "TALLY")
         self.assertEqual(
             block["sold_once_scout_demand_id"],
@@ -714,8 +726,8 @@ class BusinessPackUniqueTest(unittest.TestCase):
             block["sold_once_not_landed_pointer"],
             "cursor-business-pack-sold-once-not-landed-pointer-20260902-01",
         )
-        self.assertIs(block["sold_once_landed"], False)
-        self.assertIs(block["sold_once_sidewalk_landed"], False)
+        self.assertIs(block["did_not_write_tally_sold_once_paths"], True)
+        self.assertIs(block["did_not_write_sold_once_on_doors"], True)
         self.assertIs(block["sold_once_lotribbon_landed"], True)
         self.assertEqual(
             block["sold_once_lotribbon_receipt"],
@@ -804,9 +816,7 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertTrue(
             (ROOT / "p" / "cursor-plant-sold-once-badge-20260902-01.md").is_file()
         )
-        self.assertFalse(
-            (ROOT / "p" / "tally-door-sold-once-badge-20260902-01.md").is_file()
-        )
+        self.assertIs(block["did_not_write_tally_sold_once_paths"], True)
         self.assertTrue((ROOT / "packs" / "_template" / "creative_brief.md").is_file())
         self.assertIn("2c584983", self.door)
         self.assertIn("KEEP MAIN on remint #7754", self.door)
@@ -1008,6 +1018,46 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIn("f21a6d44", self.door)
         self.assertIn("tally-sidewalk-gems-note-20260902-01", self.card)
         self.assertIn("UNDECIDED (Bryce)", self.door)
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("Instance 1 of 1", self.door)
+        self.assertNotIn("No royalty", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertNotIn("337 NO", self.card)
+        self.assertNotIn("337 NO", self.door)
+
+
+    def test_harborline_map_pin_lift_pointer_does_not_steal_leftover(self) -> None:
+        block = self.law["instances"]
+        self.assertEqual(
+            block["harborline_map_pin_lift"],
+            "cursor-pack-harborline-map-pin-lift-20260902-01",
+        )
+        self.assertEqual(block["harborline_map_pin_lift_blob"], "8fe8a002")
+        self.assertEqual(
+            block["harborline_map_pin_lift_pointer"],
+            "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_write_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_remint_harborline_map_pin_lift"], True)
+        self.assertIs(block["harborline_leftover_live_instance_blobs_not_pinned"], True)
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        leftover = ROOT / "p" / "cursor-pack-harborline-map-pin-lift-20260902-01.md"
+        data = leftover.read_bytes()
+        blob = hashlib.sha1(
+            b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+        ).hexdigest()[:8]
+        self.assertEqual(blob, "8fe8a002")
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertIn("8fe8a002", self.door)
+        self.assertIn("cursor-pack-harborline-map-pin-lift-20260902-01", self.card)
+        self.assertIn("does not freeze TALLY sold-once receipt absence", self.door)
         self.assertIn("password", self.door)
         self.assertNotIn("<form", self.door)
         self.assertNotIn("Instance 1 of 1", self.door)
