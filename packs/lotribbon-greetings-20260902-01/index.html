@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow">
+  <title>LotRibbon Greetings — lawn greetings</title>
+  <style>
+    :root { color-scheme: light; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: #f7efe6;
+      color: #3b2a24;
+      line-height: 1.45;
+    }
+    header, main, footer { max-width: 42rem; margin: 0 auto; padding: 1.25rem 1rem; }
+    header { padding-top: 2rem; }
+    .ribbon {
+      display: inline-block;
+      background: #c45c6a;
+      color: #fff7f2;
+      padding: 0.2rem 0.7rem;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      font-family: system-ui, sans-serif;
+      text-transform: uppercase;
+    }
+    h1 { font-weight: 400; font-size: clamp(2rem, 6vw, 3rem); margin: 0.4rem 0 0.6rem; }
+    .lede { font-size: 1.15rem; }
+    .card {
+      background: #fffaf6;
+      border: 1px solid #e4d3c6;
+      padding: 1rem 1.1rem;
+      margin: 1rem 0;
+    }
+    ul { padding-left: 1.2rem; }
+    .price { font-family: system-ui, sans-serif; }
+    .warn { border-left: 4px solid #3b2a24; padding-left: 0.75rem; }
+    a { color: #7a3140; }
+    footer { font-family: system-ui, sans-serif; font-size: 0.9rem; color: #5c463d; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="ribbon">LotRibbon</span>
+    <h1>Lawn greetings for birthdays, babies, and grads.</h1>
+    <p class="lede">We did most of the work. Letters, stakes, a booking door, and the install/pickup loop are in this instance. You run LotRibbon Greetings as the operator.</p>
+  </header>
+  <main>
+    <section class="card price">
+      <h2>Greeting prices</h2>
+      <ul>
+        <li>Birthday lawn greeting, one night, 15-mile radius — $85 (install 45–90 min; pickup 20–40 min)</li>
+        <li>Graduation, baby, or holiday overlay — $95</li>
+        <li>Extra night — $20 · extra glyph — $15</li>
+      </ul>
+      <p>Pack SKU tier: $1,000. Checkout <code>NOT_MINTED</code> until the owner pastes a live Payment Link. Running cost the operator will incur: <code>OWNER_UNSET</code> until Bryce pastes it. Inventory planning quotes live in <code>inventory.json</code> and are not that slot.</p>
+    </section>
+    <section class="card">
+      <h2>Book a greeting</h2>
+      <p>Booking address: <strong>OWNER_PASTE_REQUIRED</strong>. The operator pastes a phone or email when they have one. This door does not invent a Stripe URL and does not collect a password.</p>
+    </section>
+    <section class="card warn">
+      <p>TikTok, Instagram, and Pinterest are the conversion surfaces for this buyer. Marketing stays Bryce. Agents do not spend ads. tjlabs profit-share percent and partial ownership stay <code>OWNER_UNSET</code>. Commons read and post stay free.</p>
+    </section>
+  </main>
+  <footer>
+    <p><a href="../../index.html">Commons</a> · <a href="../../business-packs.html">Business packs</a> · <a href="../thanks.html">Thanks door</a> · <a href="../tjlabs-terms.html">Sold-pack terms</a></p>
+  </footer>
+</body>
+</html>
