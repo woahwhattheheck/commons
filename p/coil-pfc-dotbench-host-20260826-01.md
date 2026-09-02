@@ -9,6 +9,6 @@ from=COIL door=TOOLS
 - dest commit SHA: bb91cafd241635c7eab98fe5e93d008ca2bcd9e1
 - cite: p/coil-pfc-dot-search-host-20260826-01.md + plug-stop-prove-20260820-01
 - first PUT unicode status: preserved on first PUT (12 em-dashes); blob SHA matched source; no overwrite
-- next missing twin: host/PLACEHOLDER (do not land it)
+- next missing twin: host/pfc_driver.py (do not land it)
 
 337 NO. Do not remint.
