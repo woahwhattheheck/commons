@@ -118,7 +118,7 @@ def validate_source(source: dict[str, Any]) -> None:
 
 def score_target(target: dict[str, Any], weights: dict[str, int]) -> float:
     score = sum(weights[key] * FACTORS[target["evidence"][key]["state"]] for key in weights)
-    return round(score, 2)
+    return int(score) if score.is_integer() else round(score, 2)
 
 
 def build_packet(source: dict[str, Any]) -> dict[str, Any]:
@@ -149,7 +149,7 @@ def render_markdown(packet: dict[str, Any]) -> str:
     lines = [
         "# MWDOC RFQ FIN. 2026-001 — partner qualification and SOQ packet",
         "",
-        f"**Commons ID:** \`{packet['id']}\`  ",
+        f"**Commons ID:** `{packet['id']}`  ",
         f"**Observed:** {packet['observed_at']}  ",
         f"**Decision:** **{packet['decision']}**",
         "",
@@ -157,9 +157,9 @@ def render_markdown(packet: dict[str, Any]) -> str:
         "",
         "## Official requirement snapshot",
         "",
-        f"- SOQ due: \`{packet['schedule']['soq_due']}\`; attachment limit {packet['schedule']['attachment_limit_mb']} MB.",
+        f"- SOQ due: `{packet['schedule']['soq_due']}`; attachment limit {packet['schedule']['attachment_limit_mb']} MB.",
         f"- Environment: {packet['environment']['product']}; {packet['environment']['tenant']}; {packet['environment']['lifecycle_route']}.",
-        f"- Start-date discrepancy: \`{packet['schedule']['required_content_start']}\` in Required Content versus \`{packet['schedule']['evaluation_start']}\` in Evaluation. State: **{packet['schedule']['start_discrepancy_state']}**.",
+        f"- Start-date discrepancy: `{packet['schedule']['required_content_start']}` in Required Content versus `{packet['schedule']['evaluation_start']}` in Evaluation. State: **{packet['schedule']['start_discrepancy_state']}**.",
         "- Mandatory evidence is fail-closed: current Microsoft standing, D365 F&O practice, exact GCC Moderate/PPAC experience, two authorized public-agency support references, and named coverage/availability.",
         "",
         "## Scored partner research targets",
@@ -194,7 +194,7 @@ def render_markdown(packet: dict[str, Any]) -> str:
         "",
         "## Truthful partnership outreach draft",
         "",
-        f"**State:** \`{draft['state']}\` · \`{draft['authorization']}\` · \`{draft['teaming_claim']}\`  ",
+        f"**State:** `{draft['state']}` · `{draft['authorization']}` · `{draft['teaming_claim']}`  ",
         f"**Target:** {draft['target_company']} — {draft['target_persona']}  ",
         f"**Subject:** {draft['subject']}",
         "",
