@@ -666,6 +666,11 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "host/business_pack_instance_waitlist.py",
         )
         self.assertEqual(
+            block["instance_waitlist_pin_lift"],
+            "cursor-business-pack-instance-waitlist-pin-lift-20260902-01",
+        )
+        self.assertIs(block["live_instance_blobs_not_pinned"], True)
+        self.assertEqual(
             block["sold_once_badge_pointer"],
             "cursor-business-pack-sold-once-badge-pointer-20260902-01",
         )
@@ -702,6 +707,12 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "cursor-business-pack-sold-once-not-landed-pointer-20260902-01",
         )
         self.assertIs(block["sold_once_landed"], False)
+        self.assertIs(block["sold_once_sidewalk_landed"], False)
+        self.assertIs(block["sold_once_lotribbon_landed"], True)
+        self.assertEqual(
+            block["sold_once_lotribbon_receipt"],
+            "cursor-plant-sold-once-badge-20260902-01",
+        )
         self.assertEqual(block["sold_once_harborline"], "not_this_seat")
         self.assertEqual(block["sold_once_anchor"], "OWNER_UNSET")
         self.assertEqual(block["sold_once_lotribbon_claimed_by"], "bc-23891c63")
@@ -767,6 +778,16 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "p"
                 / "cursor-business-pack-sold-once-not-landed-pointer-20260902-01.md"
             ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-instance-waitlist-pin-lift-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (ROOT / "p" / "cursor-plant-sold-once-badge-20260902-01.md").is_file()
         )
         self.assertFalse(
             (ROOT / "p" / "tally-door-sold-once-badge-20260902-01.md").is_file()
