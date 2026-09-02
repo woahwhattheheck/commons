@@ -1,2 +1,5 @@
-staff_classification,named_person,fully_burdened_hourly_rate_usd,annual_escalation_percent,service_type_variance,minimum_billing_increment,after_hours_assumption,travel_expense_assumption,prepaid_block_hours,prepaid_block_price_usd,effective_hourly_rate_usd,evidence_owner
-TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD,TBD
+classification,hourly_rate_usd,prepaid_block_hours,prepaid_block_price_usd,status
+Engagement lead,,,,OWNER_RATE_REQUIRED
+D365 functional consultant,,,,OWNER_RATE_REQUIRED
+Regression and reconciliation analyst,,,,OWNER_RATE_REQUIRED
+Power BI and reporting specialist,,,,OWNER_RATE_REQUIRED
