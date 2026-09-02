@@ -1,0 +1,163 @@
+{
+  "schema_version": "commons-business-pack-instance/v1",
+  "kind": "BUSINESS_PACK_INSTANCE",
+  "id": "tally-desk-website-service-pack-20260902-01",
+  "slug": "sidewalk-signal-web-desk-20260902-01",
+  "demand_id": "scout-demand-desk-website-service-pack-20260902-01",
+  "did_not_remint_scout_demand": true,
+  "template_id": "packs/_template",
+  "vertical": "local-business website service",
+  "family": "products",
+  "tier": "desk",
+  "tier_usd": 200,
+  "brand": "Sidewalk Signal",
+  "tagline": "Local business websites, fixed from the sidewalk up.",
+  "domain": {
+    "suggested": "sidewalksignal.com",
+    "state": "UNMEASURED",
+    "owner_action": "buyer checks availability and registers under their own account"
+  },
+  "door": "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+  "checkout": {
+    "state": "OWNER_PASTE_REQUIRED",
+    "status": "NOT_MINTED",
+    "url": "",
+    "after_payment_redirect": "packs/thanks.html?value=200",
+    "note": "Bryce pastes a live Payment Link when one exists. This seat does not invent one."
+  },
+  "keep_or_sell": "UNDECIDED",
+  "sell_ready_instance": true,
+  "sale_id": null,
+  "sales": [],
+  "marketing": "bryce_only",
+  "ad_peer": false,
+  "marketing_spend_usd": 0,
+  "cash_usd": 0,
+  "buyers_invented": false,
+  "leads_included": false,
+  "customers_provided": false,
+  "ftc_437_posture": "method_not_customers",
+  "earnings_claims": false,
+  "nuts_on_door": false,
+  "scaffold_owned_by": "GOAT",
+  "slack_channel_id": "C0BU7JAPUH3",
+  "slack_channel": "#business-packs",
+  "open_door": true,
+  "requires_login": false,
+  "gate": false,
+  "showcase_manifest": "assets/showcase-manifest.json",
+  "owner_decisions_open": [
+    "KEEP or SELL",
+    "live Payment Link",
+    "refund policy on the door",
+    "terms.md slots: tjlabs profit-share percent and partial-ownership fraction (both OWNER_UNSET) plus counsel clearance (ground/TJLABS_PACK_TERMS.md)",
+    "nuts mix-in and value range"
+  ],
+  "seat": "TALLY (Fable 5.1, Claude Code, owner PC)",
+  "measured_at": "2026-09-02",
+  "assets": [
+    {
+      "path": "assets/brand.md",
+      "bytes": 2481,
+      "sha256": "0614225f8f0f80feff9acf33e03712eca46394a6c0747c9ea91132ef87305778"
+    },
+    {
+      "path": "assets/contract-placeholder.md",
+      "bytes": 3589,
+      "sha256": "5a6b234dcf346351b7f6d3b762393b15d12085ab366cd1c8f95c4dccc1fed8e6"
+    },
+    {
+      "path": "assets/days-8-30.md",
+      "bytes": 2654,
+      "sha256": "4db8bd20be65452988c1490b1bf1f08839078a139fb531ea4f15775cd5f87d68"
+    },
+    {
+      "path": "assets/delivery-checklist.md",
+      "bytes": 4364,
+      "sha256": "0183e8a2e373b8b27fa8771482e5fc34bac0de5e2aa71a7c7bd995792024053b"
+    },
+    {
+      "path": "assets/gap-finder-worksheet.md",
+      "bytes": 5484,
+      "sha256": "352110e102fb1a7f3f8364253a261a09968895f64abed5bf03d17f325613960e"
+    },
+    {
+      "path": "assets/outreach-script.md",
+      "bytes": 4014,
+      "sha256": "0c4b42da73da505854fbb1fade7ec9604401c17bd06cec35d4d6025a71ea6eb1"
+    },
+    {
+      "path": "assets/paperwork-checklist.md",
+      "bytes": 5596,
+      "sha256": "54f9c5ae240cf30598f899bf2deffac53c52e4a23e18d29df7261e517614897f"
+    },
+    {
+      "path": "assets/price-sheet.md",
+      "bytes": 3507,
+      "sha256": "7538ae989070f6fa478f2904c18b2ecb4ca83cfdc3d1b261ecc6b5cdfcd8ab9b"
+    },
+    {
+      "path": "assets/showcase-manifest.json",
+      "bytes": 1752,
+      "sha256": "7e43b415bb4e256224b6b7ccf258e8284fa838b14a470b6dbeae22ce74f76b5d"
+    }
+  ],
+  "instance_fields": {
+    "assets_sha256": "f5824206bf400c7025444d7eb08cb929a80a7198da1640c408cdfa0272ddd6e9",
+    "brand": "Sidewalk Signal",
+    "checkout": "OWNER_PASTE_REQUIRED:sidewalk-signal-web-desk-20260902-01",
+    "instructions_sha256": "3387bde79f758a3e15df366b841dfc22e069a44c9fe995fc2e5cfcb7800b9081",
+    "ops_sha256": "6a23e0716a8b1fe4d48203b6036f18d9ab13d199505eaa780582b031d8382388"
+  },
+  "fingerprint": "02bafa3a8015c93386f921ffd96f82f6aaa96c1416096eb34c3b3eaf9c285612",
+  "twin_sale_verdict": "CLONE_STAMP",
+  "sell_instance_verdict": "UNIQUE_INSTANCE_SELL_OK",
+  "copy_verdicts": {
+    "assets/brand.md": "COPY_OK",
+    "assets/contract-placeholder.md": "COPY_OK",
+    "assets/days-8-30.md": "COPY_OK",
+    "assets/delivery-checklist.md": "COPY_OK",
+    "assets/gap-finder-worksheet.md": "COPY_OK",
+    "assets/outreach-script.md": "COPY_OK",
+    "assets/paperwork-checklist.md": "COPY_OK",
+    "assets/price-sheet.md": "COPY_OK",
+    "assets/showcase-manifest.json": "COPY_OK",
+    "assets.md": "COPY_OK",
+    "checkout.md": "COPY_OK",
+    "day.md": "COPY_OK",
+    "index.html": "COPY_OK",
+    "instructions.md": "COPY_OK",
+    "keep-vs-sell.md": "COPY_OK",
+    "offer.md": "COPY_OK",
+    "paperwork.md": "COPY_OK",
+    "README.md": "COPY_OK",
+    "running-cost.md": "COPY_OK",
+    "terms.md": "COPY_OK",
+    "week1.md": "COPY_OK"
+  },
+  "terms_law": {
+    "card": "ground/TJLABS_PACK_TERMS.md",
+    "law": "ground/TJLABS_PACK_TERMS.json",
+    "id": "cursor-tjlabs-pack-tos-20260902-01",
+    "instance_file": "terms.md",
+    "shared_door": "packs/tjlabs-terms.html",
+    "classifier": "host/tjlabs_pack_terms.py",
+    "hold_counsel": true
+  },
+  "terms": {
+    "profit_share_percent": "OWNER_UNSET",
+    "partial_ownership_fraction": "OWNER_UNSET",
+    "owner_pasted": false,
+    "counsel_cleared": false
+  },
+  "terms_verdict": "TOS_INCOMPLETE",
+  "saleable": false,
+  "slots": {
+    "paperwork_state": "OWNER_UNSET",
+    "paperwork_city": "OWNER_UNSET",
+    "formation_partner_link": "OWNER_UNSET",
+    "running_cost_amount": "OWNER_UNSET",
+    "running_cost_owner_pasted": "no",
+    "support_subscription_price": "OWNER_UNSET"
+  }
+}
