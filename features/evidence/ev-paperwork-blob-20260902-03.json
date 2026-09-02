@@ -1,0 +1,11 @@
+{
+  "blob": "dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
+  "feature_id": "cursor-business-pack-paperwork-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-blob-20260902-03",
+  "kind": "BLOB",
+  "note": "Paperwork sheet after filled Do X homework compose. State slots and empty partner link kept. Append-only; does not overwrite prior blob pins.",
+  "path": "packs/_template/paperwork.md",
+  "recorded_at": "2026-09-02T06:04:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
