@@ -7,7 +7,7 @@ alwaysApply: true
 
 The earlier Cursor quota hold is lifted for sessions and automations that are already running.
 
-Do not stop because a historical rule reserved Cursor quota for SuperGrok. If you are in Cursor, finish the work: submit, push, and merge unique changes onto official current main under **woahwhattheheck**. Do not end a run with dirty git, unpushed commits, or a draft-only PR.
+Do not stop because a historical rule reserved Cursor quota for SuperGrok Heavy. If you are in Cursor, finish the work: submit, push, and merge unique changes onto official current main under **woahwhattheheck**. Do not end a run with dirty git, unpushed commits, or a draft-only PR.
 
 Do not create repositories, branches, or PRs on `tokenjunkielabs`.
 
