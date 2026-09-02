@@ -142,13 +142,17 @@ def map_pack(peer_path: Path | None = None, pack_dir: Path | None = None) -> dic
             rel = path.relative_to(folder).as_posix()
             text = _read(path)
             copy_verdicts[rel] = unique.classify_copy(text)["verdict"]
-            if copy_verdicts[rel] != "COPY_OK":
+            buyer = rel in BUYER_FACING
+            # Internal docs (creative_brief Never say) name banned phrases.
+            # Buyer-facing files stay fail-closed; the rest stay scored, not
+            # errors. Matches host/business_pack_harborline_desk_instance.py.
+            if buyer and copy_verdicts[rel] != "COPY_OK":
                 errors.append(f"{rel}: {copy_verdicts[rel]}")
             if hasattr(peer, "STRIPE_RE") and peer.STRIPE_RE.search(text):
                 errors.append(f"{rel}: invented Stripe URL")
             if hasattr(peer, "ODDS_RE") and peer.ODDS_RE.search(text):
                 errors.append(f"{rel}: lottery or odds language")
-            if hasattr(peer, "LEADS_RE") and peer.LEADS_RE.search(text):
+            if buyer and hasattr(peer, "LEADS_RE") and peer.LEADS_RE.search(text):
                 errors.append(f"{rel}: promises leads or customers")
             if rel in BUYER_FACING and hasattr(peer, "FRANCHISE_RE") and peer.FRANCHISE_RE.search(text):
                 errors.append(f"{rel}: franchise vocabulary in buyer-facing copy")
