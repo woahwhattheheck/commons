@@ -290,6 +290,8 @@ def registry_from_plan(dest, plan):
             "offs": plan["latch_offs"],
         },
         "or_tree": {"out": plan["tick_addr"], "tmps": plan["tmps"]},
+        "gate_base": plan["gate_base"],
+        "n_new_gates": plan["n_new_gates"],
         "rings": [
             {
                 "name": ring["name"],

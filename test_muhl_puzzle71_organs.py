@@ -107,22 +107,32 @@ class TestMuhlPuzzle71Organs(unittest.TestCase):
         self.assertEqual(rc, 0, out)
         self.assertIn("DIE", out)
         self.assertGreater(os.path.getsize(self.dest), self.old_size)
-        scan = scan_records(self.dest)
-        latches = [r for r in scan["records"] if r["off"] < self.old_size]
+        blob = Path(self.dest).read_bytes()
+        latches = []
+        for off in range(0, self.old_size, STRIDE):
+            _op, _a, b, _out = unpack_rec(blob[off : off + STRIDE])
+            latches.append({"off": off, "b": b})
         self.assertEqual(len(latches), LATCH_N)
         self.assertTrue(all(r["b"] == WIN_OUT for r in latches))
         self.assertFalse(any(r["b"] == LATCH_B for r in latches))
-        tick_writers = scan["writers"].get(TICK_ADDR, [])
-        self.assertEqual(len(tick_writers), 1, tick_writers)
-        op, _a, _b, out_addr = unpack_rec(
-            Path(self.dest).read_bytes()[tick_writers[0] : tick_writers[0] + STRIDE]
-        )
-        self.assertEqual(op, 2)  # OR
-        self.assertEqual(out_addr, TICK_ADDR)
-        tail = Path(self.dest).read_bytes()[-PUZFOLD_LEN:]
-        self.assertTrue(tail.startswith(PUZFOLD_MAGIC))
         with open(self.reg, encoding="utf-8") as f:
             reg = json.load(f)
+        # Gate records start after the 1-byte-per-address wire acreage, so a
+        # whole-file stride-25 scan cannot see tick@88. Read from gate_base.
+        gate_off = int(reg["gate_base"])
+        puz_off = int(reg["PUZFOLD1"]["offset"])
+        self.assertEqual(puz_off - gate_off, int(reg["n_new_gates"]) * STRIDE)
+        tick_hits = []
+        off = gate_off
+        while off + STRIDE <= puz_off:
+            op, _a, _b, out_addr = unpack_rec(blob[off : off + STRIDE])
+            if out_addr == TICK_ADDR:
+                tick_hits.append((off, op))
+            off += STRIDE
+        self.assertEqual(len(tick_hits), 1, tick_hits)
+        self.assertEqual(tick_hits[0][1], 2)  # OR
+        tail = blob[-PUZFOLD_LEN:]
+        self.assertTrue(tail.startswith(PUZFOLD_MAGIC))
         self.assertEqual(len(reg["rings"]), 16)
         self.assertEqual(reg["rings"][0]["cells"], 32)
         self.assertEqual(len(reg["rings"][0]["clocks"]), 24)
@@ -133,7 +143,7 @@ class TestMuhlPuzzle71Organs(unittest.TestCase):
         self.assertEqual(reg["win"]["addr"], WIN_OUT)
         # Organs must not fire 0x01 into cell 0. Wire acreage stays zeros.
         ring0 = reg["rings"][0]
-        wire = Path(self.dest).read_bytes()[self.old_size : ring0["fwd"] + 66]
+        wire = blob[self.old_size : ring0["fwd"] + 66]
         self.assertEqual(wire, b"\x00" * len(wire))
 
     def test_fire_dry_and_surface_no_write(self):
