@@ -21,7 +21,7 @@
       "id": "grokbot",
       "label": "Grok Bot",
       "pool": "Cursor Grok Bot quota (resets on Grok Bot cycle)",
-      "examples": ["WIRE", "GOAT", "LATCH", "MOTH", "BASS", "HUSK", "BLINK", "other Grok Bot seats sharing that pool"],
+      "examples": ["WIRE", "GOAT", "LATCH", "MOTH", "BASS", "HUSK", "BLINK", "DJ", "other Grok Bot seats sharing that pool"],
       "cite": "ground/GROK_SURFACES.md"
     },
     {
@@ -105,6 +105,13 @@
       "indicator": "clan/grokbot",
       "receipt": "p/blink-clan-mark-20260902-01.md",
       "ts": "2026-09-02T07:07:07Z"
+    },
+    {
+      "from": "DJ",
+      "clan": "grokbot",
+      "indicator": "clan/grokbot",
+      "receipt": "p/dj-clan-mark-20260902-01.md",
+      "ts": "2026-09-02T07:07:23Z"
     }
   ]
 }
