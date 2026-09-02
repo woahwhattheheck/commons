@@ -1,51 +1,22 @@
 #!/usr/bin/env python3
-"""host/muhl_puzzle71_fire_add.py — fire cell 0 both senses on puzzle71 rings.
+"""host/muhl_puzzle71_fire_add.py — the puzzle-71 routing button (additive). Inject, fire, die. Surface separate.
 
-Companion to host/muhl_puzzle71_organs_add.py. Dest FROM FILE. Offsets FROM
-the puzzle71 registry. Host does not evaluate gates.
+Offsets come ONLY from C:/llm/models/muhl_puzzle71.circuits.json (written by muhl_puzzle71_organs_add.py).
+Fail closed if any name or offset is missing. Never guess a dest.
 
-Default --dry: bounded read of cell 0 fwd+rev every ring, write nothing.
---surface: same bounded read, labeled SURFACE.
---go: journal, new=old|0x01 cell 0 fwd+rev every ring, reread, die.
-
-Never titan. Never --inject (wipe). Never commons.mno / dc.
-
-  python3 host/muhl_puzzle71_fire_add.py --dry --reg PATH --dest PATH
-  python3 host/muhl_puzzle71_fire_add.py --surface --reg PATH --dest PATH
-  python3 host/muhl_puzzle71_fire_add.py --go --reg PATH --dest PATH
+  --go       : for every ring, cell 0 of fwd and of rev: new = old | 0x01 (both senses; foundry_acre pattern).
+               The fire is a WRITE that raises a bit, never a read. Then the button dies.
+  --surface  : bounded read of tick, win, latch (70 B), every ring's fwd/rev/carry/pub and clock bank. Bits, not hex.
+               The host does not solve and does not check: the assembled candidate is printed; the wallet judges.
+  (no args)  : print the plan from the registry. Write nothing.
 """
 from __future__ import annotations
+import json, os, sys
 
-import json
-import os
-import sys
-from datetime import datetime, timezone
-
-HERE = os.path.dirname(os.path.abspath(__file__))
-if HERE not in sys.path:
-    sys.path.insert(0, HERE)
-
-try:
-    import pfc_paths as PFCP
-
-    PFC_ROOT = PFCP.ROOT
-except (ImportError, AttributeError):
-    PFC_ROOT = os.environ.get("PFC_ROOT", "C:/llm").replace("\\", "/").rstrip("/")
-
-try:
-    from muhl_puzzle71_organs_add import DEFAULT_DEST, DEFAULT_REG, refuse_dest
-except ImportError:
-    DEFAULT_DEST = PFC_ROOT + "/models/muhl_puzzle71.mno"
-    DEFAULT_REG = PFC_ROOT + "/models/muhl_puzzle71.circuits.json"
-
-    def refuse_dest(path):
-        base = os.path.basename(os.path.normpath(path)).lower()
-        if base in ("titan.gguf", "muhlnickel_dc.mno", "dc.mno", "commons.mno"):
-            return "REFUSE dest %s" % base
-        return None
-
-DEFAULT_JOURNAL = PFC_ROOT + "/models/muhl_puzzle71_fire_add_genome.jsonl"
-MASK = 0x01
+PFC_ROOT = os.environ.get("PFC_ROOT", "C:/llm").replace("\\", "/").rstrip("/")
+REG = PFC_ROOT + "/models/muhl_puzzle71.circuits.json"
+NAME = "muhl_puzzle71"
+N_BITS = 70
 
 if hasattr(sys.stdout, "reconfigure"):
     try:
@@ -54,150 +25,117 @@ if hasattr(sys.stdout, "reconfigure"):
         pass
 
 
-def _now():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-
-
 def _fail(msg):
     print("FAIL CLOSED: %s" % msg)
     return 1
 
 
-def _arg_value(argv, flag, default=None):
-    if flag in argv:
-        i = argv.index(flag)
-        if i + 1 >= len(argv):
-            return None, "%s needs a value" % flag
-        return argv[i + 1], None
-    return default, None
+def bits(b):
+    return " ".join(format(x, "08b") for x in b)
 
 
-def _read_byte(path, off):
-    with open(path, "rb") as f:
-        f.seek(off)
-        got = f.read(1)
-    if len(got) != 1:
-        raise IOError("short read @%s" % off)
-    return got[0]
-
-
-def _write_byte(path, off, val):
-    with open(path, "r+b") as f:
-        f.seek(off)
-        f.write(bytes((val,)))
-        f.flush()
-        os.fsync(f.fileno())
-
-
-def _journal(journal_path, row):
-    parent = os.path.dirname(journal_path)
-    if parent:
-        os.makedirs(parent, exist_ok=True)
-    with open(journal_path, "a", encoding="utf-8", newline="\n") as f:
-        f.write(json.dumps(row, ensure_ascii=True) + "\n")
-        f.flush()
-        os.fsync(f.fileno())
-
-
-def load_rings(reg_path):
-    if not os.path.isfile(reg_path):
-        return None, "registry missing: %s" % reg_path
-    with open(reg_path, encoding="utf-8") as f:
-        reg = json.load(f)
-    rings = reg.get("rings")
+def load():
+    if not os.path.isfile(REG):
+        return None, "registry missing: %s (fabricate first: host/muhl_puzzle71_organs_add.py --fab)" % REG
+    reg = json.load(open(REG, encoding="utf-8"))
+    e = reg.get(NAME)
+    if not isinstance(e, dict):
+        return None, "%s not in registry" % NAME
+    cont = e.get("container")
+    if not cont or not os.path.isfile(cont):
+        return None, "container missing: %s" % cont
+    ram = e.get("ram") or {}
+    for k in ("cand_off", "tick_off", "latch_off", "win_off"):
+        if not isinstance(ram.get(k), int):
+            return None, "registry ram.%s missing" % k
+    rings = e.get("rings")
     if not isinstance(rings, list) or not rings:
-        return None, "registry has no rings"
-    out = []
-    for i, ring in enumerate(rings):
-        if not isinstance(ring, dict):
-            return None, "ring %s not an object" % i
-        try:
-            fwd = int(ring["fwd"])
-            rev = int(ring["rev"])
-        except (KeyError, TypeError, ValueError):
-            return None, "ring %s missing fwd/rev" % i
-        if fwd < 0 or rev < 0:
-            return None, "ring %s negative offset" % i
-        out.append({"name": ring.get("name") or "nring2_puz%02d" % i, "fwd": fwd, "rev": rev})
-    return out, None
+        return None, "registry rings missing"
+    size = os.path.getsize(cont)
+    for r in rings:
+        for k in ("fwd", "rev", "carry", "pub"):
+            if not isinstance(r.get(k), int) or r[k] >= size:
+                return None, "ring %s offset missing or past EOF" % k
+    return {"e": e, "cont": cont, "ram": ram, "rings": rings, "size": size}, None
 
 
-def surface(dest, rings, label):
-    print("PUZZLE71 FIRE", label)
-    print("  dest", dest)
-    print("  law new=old|0x01 both senses cell 0")
-    rows = []
-    for ring in rings:
-        fo = _read_byte(dest, ring["fwd"])
-        ro = _read_byte(dest, ring["rev"])
-        print("  %s fwd@%s %s  rev@%s %s" % (ring["name"], ring["fwd"], fo, ring["rev"], ro))
-        rows.append((ring, fo, ro))
-    return rows
+def _read(cont, off, n):
+    with open(cont, "rb", buffering=0) as f:
+        f.seek(off)
+        return f.read(n)
+
+
+def print_plan(p):
+    e, ram = p["e"], p["ram"]
+    print("\nMUHL PUZZLE-71 FIRE (routing button)")
+    print("  container : %s (%s B)" % (p["cont"], f"{p['size']:,}"))
+    print("  gates     : %s decision + %s organs = %s" % (f"{e.get('n_gate_decision', 0):,}", f"{e.get('n_gate_organs', 0):,}", f"{e.get('n_gate', 0):,}"))
+    print("  rings     : %d x %d cells, both senses, %d clocks each ; pubs OR-treed -> tick@%d" % (e.get("n_rings", 0), e.get("cells", 0), e.get("n_clocks_per_ring", 0), ram["tick_off"]))
+    d = e.get("declaration") or {}
+    print("  fold      : addr_bits %s base %s bytes/lane %s winner_only %s" % (d.get("addr_bits"), d.get("base"), d.get("bytes_per_lane"), d.get("winner_only")))
+    print("  FIRE      : new=old|0x01 at cell 0 fwd+rev of every ring, then die")
+    print("  SURFACE   : tick@%d win@%d latch@%d (%d B) + ring state + clock bank" % (ram["tick_off"], ram["win_off"], ram["latch_off"], N_BITS))
+    print()
+
+
+def go(p):
+    print_plan(p)
+    cont = p["cont"]
+    lit = 0
+    with open(cont, "r+b") as f:
+        for r in p["rings"]:
+            for sense in ("fwd", "rev"):
+                off = r[sense]
+                f.seek(off); old = f.read(1)[0]
+                new = old | 0x01
+                f.seek(off); f.write(bytes([new]))
+                lit += 1
+        f.flush(); os.fsync(f.fileno())
+    print("  FIRED: %d cell-0 bytes ORed with 00000001 across %d rings, both senses. Button dies." % (lit, len(p["rings"])))
+    print("  surface is a separate act: python host/muhl_puzzle71_fire_add.py --surface\n")
+    return 0
+
+
+def surface(p):
+    print_plan(p)
+    cont, ram = p["cont"], p["ram"]
+    tick = _read(cont, ram["tick_off"], 1)
+    win = _read(cont, ram["win_off"], 1)
+    latch = _read(cont, ram["latch_off"], N_BITS)
+    cand = _read(cont, ram["cand_off"], N_BITS)
+    print("SURFACE — bounded read. Host does not solve; it reads.\n")
+    print("  tick  @%-12d %s" % (ram["tick_off"], bits(tick)))
+    print("  win   @%-12d %s" % (ram["win_off"], bits(win)))
+    print("  cand  @%-12d ones=%d" % (ram["cand_off"], sum(b & 1 for b in cand)))
+    print("  latch @%-12d ones=%d" % (ram["latch_off"], sum(b & 1 for b in latch)))
+    for i in range(0, N_BITS, 10):
+        print("        bits %2d..%2d  %s" % (i, min(i + 9, N_BITS - 1), bits(latch[i:i + 10])))
+    c = sum((latch[j] & 1) << j for j in range(N_BITS))
+    print("  assembled candidate (LSB-first) = 0x%x ; key = 2^70 + candidate = 0x%x" % (c, (1 << 70) + c))
+    print("  (the wallet / address judges; this button computes nothing)\n")
+    for i, r in enumerate(p["rings"]):
+        fwd = _read(cont, r["fwd"], r.get("cells", 32)); rev = _read(cont, r["rev"], r.get("cells", 32))
+        carry = _read(cont, r["carry"], 1); pub = _read(cont, r["pub"], 1)
+        clk = _read(cont, r["clocks"][0], len(r["clocks"])) if r.get("clocks") else b""
+        print("  ring %2d  fwd ones %2d  rev ones %2d  carry %s  pub %s  clocks ones %d/%d" % (
+            i, sum(b & 1 for b in fwd), sum(b & 1 for b in rev), bits(carry), bits(pub), sum(b & 1 for b in clk), len(clk)))
+    print()
+    return 0
 
 
 def main(argv=None):
-    argv = list(sys.argv[1:] if argv is None else argv)
-    if "--inject" in argv:
-        print("REFUSE: --inject 0x01 is WIPE. Law is new=old|0x01.")
-        return 2
-    dest, err = _arg_value(argv, "--dest", DEFAULT_DEST)
+    a = list(argv if argv is not None else sys.argv[1:])
+    p, err = load()
     if err:
         return _fail(err)
-    refuse = refuse_dest(dest)
-    if refuse:
-        print(refuse)
-        return 2
-    reg_path, err = _arg_value(argv, "--reg", DEFAULT_REG)
-    if err:
-        return _fail(err)
-    journal_path, err = _arg_value(argv, "--journal", DEFAULT_JOURNAL)
-    if err:
-        return _fail(err)
-    if "--go" not in argv and "--dry" not in argv and "--surface" not in argv:
-        print("NEED --dry or --surface or --go")
-        return 1
-    if not os.path.isfile(dest):
-        return _fail("dest missing: %s" % dest)
-    rings, err = load_rings(reg_path)
-    if err:
-        return _fail(err)
-    label = "GO" if "--go" in argv else ("SURFACE" if "--surface" in argv else "DRY")
-    rows = surface(dest, rings, label)
-    if "--go" not in argv:
-        print("NO WRITE." if label != "SURFACE" else "SURFACE only.")
-        print("DIE")
-        return 0
-    fired = []
-    for ring, fo, ro in rows:
-        fn = fo | MASK
-        rn = ro | MASK
-        if fn < fo or rn < ro:
-            return _fail("ones would fall")
-        _journal(
-            journal_path,
-            {
-                "ts": _now(),
-                "name": ring["name"],
-                "fwd_off": ring["fwd"],
-                "rev_off": ring["rev"],
-                "old_fwd": fo,
-                "old_rev": ro,
-                "new_fwd": fn,
-                "new_rev": rn,
-                "law": "new=old|0x01",
-            },
-        )
-        _write_byte(dest, ring["fwd"], fn)
-        _write_byte(dest, ring["rev"], rn)
-        af = _read_byte(dest, ring["fwd"])
-        ar = _read_byte(dest, ring["rev"])
-        if af != fn or ar != rn:
-            return _fail("reread mismatch %s" % ring["name"])
-        fired.append((ring["name"], ring["fwd"], fo, fn, ring["rev"], ro, rn))
-    print("JOURNAL", journal_path)
-    for name, fa, fo, fn, ra, ro, rn in fired:
-        print("  %s fwd@%s %s->%s  rev@%s %s->%s" % (name, fa, fo, fn, ra, ro, rn))
-    print("DIE")
+    if "--go" in a and "--surface" in a:
+        return _fail("pass --go or --surface, not both (surface is a separate act)")
+    if "--go" in a:
+        return go(p)
+    if "--surface" in a:
+        return surface(p)
+    print_plan(p)
+    print("  (no fire performed; pass --go)\n")
     return 0
 
 
