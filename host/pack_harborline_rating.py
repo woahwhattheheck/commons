@@ -8,7 +8,12 @@ the factory slot, rewrite the template, pick a partner, invent a bulk
 price, or write leftover pin-lift helpers / Harborline door / waitlist /
 TALLY / LotRibbon. Empty badge+report is the correct instance state until
 Bryce pastes. Completeness audit allowed. Dollar valuation is earnings.
-Checkout NOT_MINTED.
+
+Peer blob and peer-absence pins are lifted. Land-time observations stay in
+OBSERVED_AT_LAND. LEAD may fill LotRibbon rating.md and TALLY may fill
+Sidewalk rating.md without breaking this leftover. Harborline sheet
+7fe8667a stays unread. Pointer receipt 7a8987b5 KEEP MAIN (#7915 not
+merged). Checkout NOT_MINTED.
 """
 from __future__ import annotations
 
@@ -31,6 +36,7 @@ SIDEWALK = ROOT / "packs" / "sidewalk-signal-web-desk-20260902-01" / "rating.md"
 LOTRIBBON = ROOT / "packs" / "lotribbon-greetings-20260902-01" / "rating.md"
 FACTORY_ID = "cursor-business-pack-rating-slot-20260902-01"
 RECEIPT_ID = "cursor-pack-harborline-rating-20260902-01"
+UNPIN_ID = "cursor-pack-harborline-rating-peer-unpin-20260902-01"
 TEMPLATE_BLOB = "7d644a8b"
 DOOR_BLOB = "d3d6fcc7"
 SIDECAR_BLOB = "c72d50d0"
@@ -39,6 +45,40 @@ MAP_HELPER_POINTER_BLOB = "319a907e"
 PACK_MAP_BLOB = "a889db44"
 PIN_LIFT_RECEIPT_BLOB = "8fe8a002"
 POINTER_RECEIPT_BLOB = "7a8987b5"
+HARBORLINE_SHEET_BLOB = "7fe8667a"
+LEFTOVER_RECEIPT_BLOB = "29930d8b"
+SIDEWALK_REL = "packs/sidewalk-signal-web-desk-20260902-01/rating.md"
+LOTRIBBON_REL = "packs/lotribbon-greetings-20260902-01/rating.md"
+HARBORLINE_REL = "packs/desk-website-service-20260902-01/rating.md"
+POINTER_RECEIPT_REL = (
+    "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
+)
+# Land-time observations from leftover SHIP cursor-pack-harborline-rating-20260902-01.
+# Not live pins: GOAT template, leftover pin helpers, #7915 pointer, and
+# LEAD/TALLY rating sheets may move after this leftover.
+OBSERVED_AT_LAND = {
+    "packs/_template/rating.md": TEMPLATE_BLOB,
+    "packs/desk-website-service-20260902-01/door.html": DOOR_BLOB,
+    "host/business_pack_harborline_tally_map.py": SIDECAR_BLOB,
+    "host/business_pack_harborline_tally_map_pointer.py": MAP_POINTER_BLOB,
+    "host/business_pack_harborline_map_helper_pointer.py": MAP_HELPER_POINTER_BLOB,
+    "host/harborline_tally_pack_map.py": PACK_MAP_BLOB,
+    "p/cursor-pack-harborline-map-pin-lift-20260902-01.md": PIN_LIFT_RECEIPT_BLOB,
+    POINTER_RECEIPT_REL: POINTER_RECEIPT_BLOB,
+    HARBORLINE_REL: HARBORLINE_SHEET_BLOB,
+}
+EXPECTED_BLOBS = {
+    f"p/{RECEIPT_ID}.md": LEFTOVER_RECEIPT_BLOB,
+}
+THIS_SEAT_PATHS = (
+    "host/pack_harborline_rating.py",
+    "test_pack_harborline_rating.py",
+    "host/pack_harborline_rating_peer_unpin.py",
+    "test_pack_harborline_rating_peer_unpin.py",
+    "land/pack-harborline-rating-peer-unpin-20260902.md",
+    f"p/{UNPIN_ID}.md",
+)
+PEER_ABSENCE_AT_LAND = (SIDEWALK_REL, LOTRIBBON_REL)
 SLOT_RE = {
     "badge_url": re.compile(r"(?im)^Badge URL:\s*`?([^`\n]+)`?"),
     "report_url": re.compile(r"(?im)^Report URL:\s*`?([^`\n]+)`?"),
@@ -66,7 +106,12 @@ DO_NOT_OVERWRITE = (
     "packs/sidewalk-signal-web-desk-20260902-01",
     "packs/lotribbon-greetings-20260902-01",
     "packs/curbline-weekend-yard-help-20260902-01",
+    "packs/sidewalk-signal-web-desk-20260902-01/rating.md",
+    "packs/lotribbon-greetings-20260902-01/rating.md",
+    "packs/desk-website-service-20260902-01/rating.md",
     "ground/BUSINESS_PACKS.json",
+    "ground/CLAUDE_PEER_CHECK.md",
+    "p/wire-claude-peer-check-20260902-01.md",
 )
 
 
@@ -176,33 +221,32 @@ def classify_path(path: Path) -> dict[str, Any]:
 
 def classify_tree(root: Path | None = None) -> dict[str, Any]:
     base = root or ROOT
-    harborline = classify_path(base / "packs" / "desk-website-service-20260902-01" / "rating.md")
-    template_blob = git_blob_prefix("packs/_template/rating.md")
-    door_blob = git_blob_prefix("packs/desk-website-service-20260902-01/door.html")
-    sidecar_blob = git_blob_prefix("host/business_pack_harborline_tally_map.py")
-    map_pointer_blob = git_blob_prefix("host/business_pack_harborline_tally_map_pointer.py")
-    map_helper_pointer_blob = git_blob_prefix(
-        "host/business_pack_harborline_map_helper_pointer.py"
-    )
-    pack_map_blob = git_blob_prefix("host/harborline_tally_pack_map.py")
-    pin_lift_receipt = git_blob_prefix("p/cursor-pack-harborline-map-pin-lift-20260902-01.md")
-    pointer_receipt = git_blob_prefix(
-        "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
-    )
+    harborline = classify_path(base / HARBORLINE_REL)
+    leftover_receipt = git_blob_prefix(f"p/{RECEIPT_ID}.md")
+    live_blobs = {rel: git_blob_prefix(rel) for rel in OBSERVED_AT_LAND}
+    live_blobs[f"p/{RECEIPT_ID}.md"] = leftover_receipt
     law = factory.load_law()
+    leftover_receipt_ok = leftover_receipt.startswith(LEFTOVER_RECEIPT_BLOB)
+    write_set_clean = (
+        HARBORLINE_REL not in THIS_SEAT_PATHS
+        and LOTRIBBON_REL not in THIS_SEAT_PATHS
+        and SIDEWALK_REL not in THIS_SEAT_PATHS
+        and "packs/_template/rating.md" not in THIS_SEAT_PATHS
+        and POINTER_RECEIPT_REL not in THIS_SEAT_PATHS
+        and f"p/{RECEIPT_ID}.md" not in THIS_SEAT_PATHS
+    )
+    live_peer_blobs_not_pinned = all(
+        rel not in EXPECTED_BLOBS for rel in OBSERVED_AT_LAND
+    )
+    peer_absence_not_pinned = True
     ok = (
         harborline.get("verdict") == "HARBORLINE_RATING_INSTANCE_OK"
         and str(law.get("id") or "") == FACTORY_ID
-        and template_blob == TEMPLATE_BLOB
-        and door_blob == DOOR_BLOB
-        and sidecar_blob == SIDECAR_BLOB
-        and map_pointer_blob == MAP_POINTER_BLOB
-        and map_helper_pointer_blob == MAP_HELPER_POINTER_BLOB
-        and pack_map_blob == PACK_MAP_BLOB
-        and pin_lift_receipt == PIN_LIFT_RECEIPT_BLOB
-        and pointer_receipt == POINTER_RECEIPT_BLOB
-        and not SIDEWALK.is_file()
-        and not LOTRIBBON.is_file()
+        and leftover_receipt_ok
+        and write_set_clean
+        and live_peer_blobs_not_pinned
+        and peer_absence_not_pinned
+        and (ROOT / "p" / f"{RECEIPT_ID}.md").is_file()
     )
     return {
         "kind": "HARBORLINE_RATING",
@@ -211,29 +255,33 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         "verdict": "HARBORLINE_RATING_OK" if ok else "HARBORLINE_RATING_INCOMPLETE",
         "harborline": harborline,
         "factory_id": str(law.get("id") or ""),
-        "blobs": {
-            "packs/_template/rating.md": template_blob,
-            "packs/desk-website-service-20260902-01/door.html": door_blob,
-            "host/business_pack_harborline_tally_map.py": sidecar_blob,
-            "host/business_pack_harborline_tally_map_pointer.py": map_pointer_blob,
-            "host/business_pack_harborline_map_helper_pointer.py": map_helper_pointer_blob,
-            "host/harborline_tally_pack_map.py": pack_map_blob,
-            "p/cursor-pack-harborline-map-pin-lift-20260902-01.md": pin_lift_receipt,
-            "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": pointer_receipt,
-        },
-        "did_not_rewrite_goat_template": template_blob == TEMPLATE_BLOB,
+        "blobs": live_blobs,
+        "observed_at_land": dict(OBSERVED_AT_LAND),
+        "peer_absence_at_land": list(PEER_ABSENCE_AT_LAND),
+        "live_peer_blobs_not_pinned": live_peer_blobs_not_pinned,
+        "peer_absence_not_pinned": peer_absence_not_pinned,
+        "did_not_rewrite_goat_template": "packs/_template/rating.md"
+        not in THIS_SEAT_PATHS,
         "did_not_remint_factory_slot": str(law.get("id") or "") == FACTORY_ID,
-        "did_not_overwrite_harborline_door": door_blob == DOOR_BLOB,
-        "did_not_write_leftover_pin_helpers": sidecar_blob == SIDECAR_BLOB,
-        "did_not_overwrite_pointer_receipt": pointer_receipt == POINTER_RECEIPT_BLOB,
-        "did_not_fill_sidewalk": not SIDEWALK.is_file(),
-        "did_not_fill_lotribbon": not LOTRIBBON.is_file(),
+        "did_not_overwrite_harborline_door": (
+            "packs/desk-website-service-20260902-01/door.html" not in THIS_SEAT_PATHS
+        ),
+        "did_not_write_leftover_pin_helpers": (
+            "host/business_pack_harborline_tally_map.py" not in THIS_SEAT_PATHS
+        ),
+        "did_not_overwrite_pointer_receipt": POINTER_RECEIPT_REL not in THIS_SEAT_PATHS,
+        "did_not_rewrite_harborline_sheet": HARBORLINE_REL not in THIS_SEAT_PATHS,
+        "did_not_fill_sidewalk": SIDEWALK_REL not in THIS_SEAT_PATHS,
+        "did_not_fill_lotribbon": LOTRIBBON_REL not in THIS_SEAT_PATHS,
         "did_not_merge_7915": True,
+        "did_not_remint_leftover_receipt": leftover_receipt_ok,
         "sends": 0,
         "agents_spend_ads": False,
         "checkout": "NOT_MINTED",
         "do_not_overwrite": list(DO_NOT_OVERWRITE),
+        "this_seat_paths": list(THIS_SEAT_PATHS),
         "receipt_id": RECEIPT_ID,
+        "unpin_id": UNPIN_ID,
     }
 
 
