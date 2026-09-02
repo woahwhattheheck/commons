@@ -106,6 +106,7 @@ SEARCH_SPACE = (
     DEFAULT_DUMP,
     os.path.join("host", "claude_peer_check.py"),
     os.path.join("p", NAMED_RECEIPT + ".md"),
+    os.path.join("p", SOURCE_ID + ".md"),
 )
 CALIBRATION = (
     os.path.join("ground", "HEAD.md"),
@@ -162,6 +163,11 @@ def load_catalog(text):
         "p40_packet": str(p40.get("packet") or "").strip(),
         "sr01_id": str(sr01.get("id") or "").strip(),
         "sr01_hit": str(sr01.get("hit") or "").strip(),
+        "do_not_remint": [
+            str(item).strip()
+            for item in data.get("do_not_remint") or []
+            if str(item).strip()
+        ],
         "git_companion_paths": [
             str(item).strip()
             for item in git_companions.get("paths") or []
@@ -324,7 +330,7 @@ def measure_from_rows(facts):
         "titan": str(facts.get("titan") or "NOT_WRITTEN"),
         "do_not_remint": list(
             facts.get("do_not_remint")
-            or [WIRE_ID, NAMED_RECEIPT, INDEX_17C_ID, STAMP_FM_ID, GIT_PATHS_ID, STAMP_SR_ID]
+            or [WIRE_ID, NAMED_RECEIPT, INDEX_17C_ID, STAMP_FM_ID, GIT_PATHS_ID, STAMP_SR_ID, SOURCE_ID]
         ),
         "corner": dict(
             facts.get("corner")

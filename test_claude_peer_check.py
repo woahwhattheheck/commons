@@ -16,6 +16,7 @@ from claude_peer_check import (
     GIT_COMPANIONS,
     REQUIRED_PACKETS,
     SEARCH_SPACE,
+    SOURCE_ID,
     STALE_OFF_GIT_PHRASE,
     card_claims_companions_off_git,
     classify,
@@ -154,6 +155,8 @@ class TestClaudePeerCheck(unittest.TestCase):
         self.assertGreaterEqual(len(catalog["git_companion_paths"]), 9)
         self.assertEqual(catalog["sr01_id"], "A11")
         self.assertEqual(catalog["sr01_hit"], "HIT-SR01")
+        self.assertIn(SOURCE_ID, catalog["do_not_remint"])
+        self.assertIn(os.path.join("p", SOURCE_ID + ".md"), SEARCH_SPACE)
 
     def test_missing_sr01_is_not_landed(self):
         verdict = classify(_complete_facts(indexed_sr01=False))
