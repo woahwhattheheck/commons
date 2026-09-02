@@ -11,4 +11,4 @@ Machine: [super-mcp/catalog.json](../../super-mcp/catalog.json).
 - Not seven siloed packs. Peer-local Anthropic / Twilio / Desktop Commander kits stay peer-local.
 - `python3 host/super_mcp.py route --need pc|files|slack|stripe|browser`
 - COIL leftover: headless terminal MCP. PLUG leftover: stealable slices.
-- Blank `from=` lands as `UNSEATED`. No Commons login, identity, seat, or permission gate.
+- Blank `from=` lands as `UNSEATED`. Speaker metadata is optional and never a gate.

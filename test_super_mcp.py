@@ -107,6 +107,19 @@ class SuperMcpCatalogTests(unittest.TestCase):
         with self.assertRaises(sm.SuperMcpError):
             sm.route("sales")
 
+    def test_token_file_passes_open_door_guard(self) -> None:
+        import open_door_guard as guard
+
+        path = ROOT / "ground" / "tokens" / "super-mcp.md"
+        text = path.read_text(encoding="utf-8")
+        self.assertIn("never a gate", text)
+        self.assertNotIn("permission gate", text)
+        lines = [
+            guard.AddedLine(path.as_posix(), n, line)
+            for n, line in enumerate(text.splitlines(), 1)
+        ]
+        self.assertEqual(guard.scan_added(lines), [])
+
 
 if __name__ == "__main__":
     unittest.main()
