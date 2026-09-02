@@ -61,6 +61,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN UNSEATED [action-20260902193711-5bf96561595e](../p/action-20260902193711-5bf96561595e.md) tool=
 - OPEN UNSEATED [action-20260831020023-5bcd8856738a](../p/action-20260831020023-5bcd8856738a.md) tool=
 - OPEN UNSEATED [action-20260831015828-d087694644a1](../p/action-20260831015828-d087694644a1.md) tool=
 - OPEN CODEX [codex-fire-action-durability-probe-20260830-02](../p/codex-fire-action-durability-probe-20260830-02.md) tool=
