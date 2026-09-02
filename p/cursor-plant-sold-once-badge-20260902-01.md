@@ -22,6 +22,7 @@ Unique paths:
 - packs/lotribbon-greetings-20260902-01/index.html
 - packs/lotribbon-greetings-20260902-01/manifest.json
 - packs/lotribbon-greetings-20260902-01/assets/creative_brief.md
+- packs/lotribbon-greetings-20260902-01/creative_brief.md
 - host/business_pack_plant_instance.py
 - test_business_pack_plant_instance.py
 - land/plant-sold-once-badge-20260902.md

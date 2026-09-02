@@ -13,6 +13,6 @@ This land record is a compose on the already-shipped LotRibbon instance. It is n
 - Owner-paste plant-anchor slot under the $1,000 line: `OWNER_UNSET` (`data-owner-slot="plant-anchor"`).
 - Manifest `sold_once: true` written to match UNIQUE.
 - Helper rejects live “No royalty” on the door while ToS is HOLD_COUNSEL.
-- Instance creative brief at `packs/lotribbon-greetings-20260902-01/assets/creative_brief.md`. Not added to `REQUIRED_FILES`. GOAT still owns the shared template directory.
+- Instance creative brief at `packs/lotribbon-greetings-20260902-01/assets/creative_brief.md` (claimed leftover path) and the GOAT instance copy location `packs/lotribbon-greetings-20260902-01/creative_brief.md`. Same fill. Not added to `REQUIRED_FILES`. GOAT still owns the shared template file.
 
 Checkout stays `NOT_MINTED`. Running cost stays `OWNER_UNSET`. Factory saleable stays false.
