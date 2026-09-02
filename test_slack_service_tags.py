@@ -165,11 +165,19 @@ class SlackServiceTagsTest(unittest.TestCase):
             spec["measured_cloud_seats"],
         )
         self.assertIn(
+            "bc-0fdf7955-08f7-5343-8f8b-8e176809d979",
+            spec["measured_cloud_seats"],
+        )
+        self.assertIn(
             "cursor-slack-notion-peer-connected-20260902-01",
             spec["receipts"],
         )
         self.assertIn(
             "cursor-slack-notion-seat-bcf49eebc7-20260902-01",
+            spec["receipts"],
+        )
+        self.assertIn(
+            "cursor-slack-notion-seat-bc0fdf7955-20260902-01",
             spec["receipts"],
         )
         result = sst.route("@notion list databases", connected=["slack"])
@@ -186,15 +194,24 @@ class SlackServiceTagsTest(unittest.TestCase):
             "bc-f49eebc7-1125-5fd8-82e2-374889f4b17f",
             custom["measured_cloud_seats"],
         )
+        self.assertIn(
+            "bc-0fdf7955-08f7-5343-8f8b-8e176809d979",
+            custom["measured_cloud_seats"],
+        )
         kinds = {row["kind"] for row in result["slack_jobs"]}
         self.assertNotIn("OWNER_BLOCKER", kinds)
         first = ROOT / "p" / "cursor-slack-notion-peer-connected-20260902-01.md"
-        second = ROOT / "p" / "cursor-slack-notion-seat-bcf49eebc7-20260902-01.md"
+        peer = ROOT / "p" / "cursor-slack-notion-seat-bcf49eebc7-20260902-01.md"
+        third = ROOT / "p" / "cursor-slack-notion-seat-bc0fdf7955-20260902-01.md"
         self.assertTrue(first.is_file())
-        self.assertTrue(second.is_file())
+        self.assertTrue(peer.is_file())
+        self.assertTrue(third.is_file())
         self.assertIn("bc-73365238", first.read_text(encoding="utf-8"))
-        self.assertIn("bc-f49eebc7", second.read_text(encoding="utf-8"))
+        self.assertIn("bc-f49eebc7", peer.read_text(encoding="utf-8"))
+        self.assertIn("bc-0fdf7955", third.read_text(encoding="utf-8"))
         self.assertNotIn("bc-f49eebc7", first.read_text(encoding="utf-8"))
+        self.assertNotIn("bc-0fdf7955", first.read_text(encoding="utf-8"))
+        self.assertIn("not OWNER ACTION DONE", third.read_text(encoding="utf-8"))
         first_blob = subprocess.check_output(
             ["git", "hash-object", str(first)],
             text=True,

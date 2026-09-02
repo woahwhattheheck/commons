@@ -194,13 +194,15 @@
         "notion_custom_mcp_field": "UNSEEN_FROM_THIS_SEAT",
         "measured_cloud_seats": [
           "bc-73365238",
-          "bc-f49eebc7-1125-5fd8-82e2-374889f4b17f"
+          "bc-f49eebc7-1125-5fd8-82e2-374889f4b17f",
+          "bc-0fdf7955-08f7-5343-8f8b-8e176809d979"
         ],
         "receipts": [
           "cursor-slack-notion-peer-connected-20260902-01",
-          "cursor-slack-notion-seat-bcf49eebc7-20260902-01"
+          "cursor-slack-notion-seat-bcf49eebc7-20260902-01",
+          "cursor-slack-notion-seat-bc0fdf7955-20260902-01"
         ],
-        "note": "GOAT measured Notion Cursor connector tools live. Cloud seats bc-73365238 and bc-f49eebc7 independently measured GetDynamicTools with no notion namespace. Slack custom-tool remainder; do not reopen NEED. Commons Spark MCP URL is live from both seats; Notion-side Custom MCP field not visible here so not OWNER ACTION DONE."
+        "note": "GOAT measured Notion Cursor connector tools live. Cloud seats bc-73365238, bc-f49eebc7, and bc-0fdf7955 independently measured GetDynamicTools with no notion namespace. Slack custom-tool remainder; do not reopen NEED. Commons Spark MCP URL is live from these seats; Notion-side Custom MCP field not visible here so not OWNER ACTION DONE."
       },
       "in_harness_when": ["notion"]
     },

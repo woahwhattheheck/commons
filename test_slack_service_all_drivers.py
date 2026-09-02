@@ -103,6 +103,10 @@ class SlackServiceAllDriversTest(unittest.TestCase):
             "bc-f49eebc7-1125-5fd8-82e2-374889f4b17f",
             out["measured_cloud_seats"],
         )
+        self.assertIn(
+            "bc-0fdf7955-08f7-5343-8f8b-8e176809d979",
+            out["measured_cloud_seats"],
+        )
         self.assertNotEqual(out["road"], "OWNER_SIGNIN")
         payload = all_drivers.drive_text("@notion list databases", connected=["slack"])
         posts = all_drivers.format_slack_posts(payload)
