@@ -17,11 +17,9 @@ RECEIPT = ROOT / "p/grokbuild-pr8365-terminal-20260902-01.md"
 
 KEEP = {
     "p/cursor-landed-work-feed-readback-20260902-01.md": "d37eb307",
-    "test_landed_work_feed_readback.py": "cb58ab08",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "0506fd0f",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "test_landed_work_feed.py": "1c35b970",
     "landed-work.html": "93cfe179",
     "repo_pulse.py": "5d716a63",
 }
@@ -51,6 +49,33 @@ class TestGrokbuildPr8365Terminal(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
+
+    def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
+        self.assertNotEqual(KEEP.get("test_landed_work_feed.py"), "1c35b970")
+        self.assertNotEqual(KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08")
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("3f7919e0"))
+        self.assertTrue(
+            git_blob("test_landed_work_feed_readback.py").startswith("932ba427")
+        )
+        self.assertTrue(
+            git_blob("p/grokbuild-pr8365-terminal-20260902-01.md").startswith("212208a2")
+        )
+        leftover = subprocess.run(
+            ["python3", "-m", "unittest", "test_landed_work_feed.py"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
+        readback = subprocess.run(
+            ["python3", "-m", "unittest", "test_landed_work_feed_readback.py"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(readback.returncode, 0, msg=readback.stdout + readback.stderr)
 
     def test_leftover_helper_still_per_merge_and_refuses_send(self) -> None:
         proc = run_helper("--json", "--limit", "3")
