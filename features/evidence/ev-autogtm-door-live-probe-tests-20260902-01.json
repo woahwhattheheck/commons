@@ -1,0 +1,12 @@
+{
+  "feature_id": "autogtm-door-live-probe-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-autogtm-door-live-probe-tests-20260902-01",
+  "kind": "TEST_PATHS",
+  "note": "Door contract plus live 401 FINDER-FAILED.",
+  "paths": [
+    "test_autogtm_door_live_probe.py"
+  ],
+  "recorded_at": "2026-09-02T19:35:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

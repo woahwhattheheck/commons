@@ -9,6 +9,8 @@ Paste a website. In ~60s on autopilot: research the market, sharpen ICP, find hi
 External use-this road: https://explee.com/  
 HTTP API: `GET https://api.explee.com/public/api/v1/autogtm/projects` (X-API-Key). Unauthenticated measure 2026-09-02: HTTP 401 `{"detail":"Missing API key"}` = FINDER-FAILED, not a Commons door lock.
 
+Door `autogtm.html` live-probes that GET from the browser with `credentials=omit`. No API-key input. No login. CORS/network throw is FINDER-FAILED with search space, never silent 0.
+
 MCP wrapper (cited, not imported as Cursor law): https://github.com/digitaldrreamer/explee-mcp
 
 ## Open-source twin (do the same steps)
@@ -26,6 +28,6 @@ https://github.com/cmn-labs/autogtm (AGPL). Cite the steps. Do not copy the tree
 
 ## Commons compose
 
-Does not remint `website-people-email-book-20260830-01` or Smart Outreach. New files own the named eight-step skill + Explee probe.
+Does not remint `website-people-email-book-20260830-01` or Smart Outreach. New files own the named eight-step skill + Explee probe. Does not remint LEAD `.cursor/skills/explee-autogtm` / `host/explee_autogtm_local.py` or Harborline `/qualify`.
 
 Live send/book/cash stay 0 until mailbox/calendar exist. Never invent them.

@@ -13,7 +13,7 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </head>
 <body>
 <p class="law">OPEN AUTOGTM DOOR. Possessing the link is authorization. Paste a website. Run the same eight steps. No login. Live send is a measured mailbox limit, not a seat.</p>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./website-people-email-book.html">website loop</a> · <a href="./skills.html">skills</a> · <a href="./action.html">Action Pad</a> · <a href="https://explee.com/">explee.com</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./website-people-email-book.html">website loop</a> · <a href="./lm-gtm-index.html">gtm index</a> · <a href="./skills.html">skills</a> · <a href="./action.html">Action Pad</a> · <a href="https://explee.com/">explee.com</a></p>
 <header class="hero">
   <p class="eyebrow">SAME LOOP AS EXPLEE · OPEN TWIN cmn-labs/autogtm</p>
   <h1>AI agents that qualify clients while you sleep — as Commons source.</h1>
@@ -37,21 +37,51 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 <section class="panel warn">
   <h2>Measured Explee API</h2>
   <div class="truth">
-    <span><b>401</b>Missing API key</span>
-    <span><b>FINDER-FAILED</b>not CLEAR</span>
+    <span><b id="live-http">…</b>live HTTP</span>
+    <span><b id="live-state">PROBE</b>not CLEAR</span>
     <span><b>0</b>sent</span>
     <span><b>0</b>booked</span>
     <span><b>USD 0</b>cash</span>
   </div>
-  <p>Live probe 2026-09-02: <code>GET https://api.explee.com/public/api/v1/autogtm/projects</code> → HTTP 401 <code>{"detail":"Missing API key"}</code>. A key is ordinary private agent work. It is never copied onto Commons and never becomes a door lock.</p>
+  <p>This door live-probes <code>GET https://api.explee.com/public/api/v1/autogtm/projects</code> from the browser with <code>credentials=omit</code>. No API-key field. No login. A 401 Missing API key is FINDER-FAILED, never a Commons lock. CORS/network throw is FINDER-FAILED with search space, never silent 0. A key is ordinary private agent work and is never copied onto Commons.</p>
+  <pre id="explee-live" class="note">Probing live GET /public/api/v1/autogtm/projects … not a silent 0.</pre>
 </section>
 <noscript>
-  <p class="panel">JavaScript is off. Run <code>python3 host/autogtm_same_loop.py --json</code>. Skill: <a href="./.agents/skills/autogtm/SKILL.md">autogtm</a>.</p>
+  <p class="panel">JavaScript is off. Browser live-probe skipped (FINDER-FAILED: noscript). Run <code>python3 host/autogtm_same_loop.py --json</code>. Skill: <a href="./.agents/skills/autogtm/SKILL.md">autogtm</a>.</p>
 </noscript>
 <script>
 (function () {
+  var EXPLEE_PROJECTS = "https://api.explee.com/public/api/v1/autogtm/projects";
   var paste = document.getElementById("paste");
   var out = document.getElementById("out");
+  var live = document.getElementById("explee-live");
+  var liveHttp = document.getElementById("live-http");
+  var liveState = document.getElementById("live-state");
+  function probeExplee() {
+    fetch(EXPLEE_PROJECTS, {
+      method: "GET",
+      credentials: "omit",
+      cache: "no-store",
+      mode: "cors"
+    }).then(function (r) {
+      return r.text().then(function (t) {
+        var state = "FINDER-FAILED";
+        var note = "HTTP " + r.status + " " + t;
+        if (r.status === 401 && t.indexOf("Missing API key") !== -1) {
+          note = "HTTP 401 Missing API key FINDER-FAILED (not CLEAR, not a Commons lock, not silent 0)";
+        }
+        liveHttp.textContent = String(r.status);
+        liveState.textContent = state;
+        live.textContent = "Live this browser: " + note + " · sent=0 booked=0 cash=0 · credentials=omit · no login";
+        return note;
+      });
+    }).catch(function (err) {
+      liveHttp.textContent = "miss";
+      liveState.textContent = "FINDER-FAILED";
+      live.textContent = "FINDER-FAILED: browser GET " + EXPLEE_PROJECTS + " threw " + err + ". Search space: CORS/network from this origin. Never silent 0. python3 host/autogtm_same_loop.py still measures.";
+    });
+  }
+  probeExplee();
   document.getElementById("go").addEventListener("click", function () {
     var url = (paste.value || "").trim();
     if (!url) {
@@ -62,13 +92,15 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
       out.textContent = "FINDER-FAILED: url must be https. Never silent 0.";
       return;
     }
+    probeExplee();
     out.textContent = [
       "STAGED runner request (does not send):",
       "python3 host/autogtm_same_loop.py --json --url " + url,
       "",
       "Also open: " + url,
       "Use-this external: https://explee.com/",
-      "Open twin: https://github.com/cmn-labs/autogtm"
+      "Open twin: https://github.com/cmn-labs/autogtm",
+      "Live Explee probe: " + EXPLEE_PROJECTS + " credentials=omit"
     ].join("\n");
   });
 })();
