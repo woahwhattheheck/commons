@@ -8,10 +8,11 @@ LEAD owns ToS percent/ownership files and the LotRibbon plant instance. TALLY ow
 
 ## Rules
 
-1. Every sold instance carries the checklist in [packs/_template/paperwork.md](../packs/_template/paperwork.md): **registration, EIN, sales tax, license, insurance, contract**.
+1. Every sold instance carries the checklist in [packs/_template/paperwork.md](../packs/_template/paperwork.md): **state**, registration, EIN, sales tax, license, insurance, contract. Paperwork is a state-specific instance attribute, not a national list.
 2. Do not invent live checkout URLs or government filing numbers. Official public how-to links (for example IRS EIN) are pointers, not completed filings.
 3. Paperwork is not a Commons seat. Support contact remains the optional tjlabs subscription.
 4. Checkout stays `NOT_MINTED`. Earnings stay out of ads.
 5. SCOUT `1788328090.862799`: **paperwork included** on the door is true only when every checklist slot is filled (`PAPERWORK_CLAIM_UNSUBSTANTIATED` otherwise). This pack is checklists, links, and templates — not tjlabs doing the filing as their lawyer (`PAPERWORK_FILING_CLAIM` until counsel clears). This card does not write SCOUT `MESSAGING_ANGLE.md`.
+6. SCOUT `1788328246.344399`: fill **state** (and city when needed) per instance. Formation-partner link stays empty until the owner pastes it, with an FTC disclosure on the page. Never say we handle legal paperwork, set up the LLC, or guarantee compliance (`PAPERWORK_DOOR_OVERCLAIM`). This card does not write SCOUT `PAPERWORK.md` or the peer slot-law files.
 
 Machine map: [BUSINESS_PACK_PAPERWORK.json](./BUSINESS_PACK_PAPERWORK.json). Helper: [host/business_pack_paperwork.py](../host/business_pack_paperwork.py). Sheet: [packs/_template/paperwork.md](../packs/_template/paperwork.md). Unique-pack law: [BUSINESS_PACKS.json](./BUSINESS_PACKS.json). ToS (LEAD): [TJLABS_PACK_TERMS.json](./TJLABS_PACK_TERMS.json).

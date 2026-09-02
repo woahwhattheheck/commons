@@ -17,7 +17,15 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_LAW = ROOT / "ground" / "BUSINESS_PACK_PAPERWORK.json"
-REQUIRED = ("registration", "ein", "sales_tax", "license", "insurance", "contract")
+REQUIRED = (
+    "state",
+    "registration",
+    "ein",
+    "sales_tax",
+    "license",
+    "insurance",
+    "contract",
+)
 STRIPE_FAKE_RE = re.compile(r"(?i)https?://(?:buy|donate)\.stripe\.com/")
 EARNINGS_RE = re.compile(
     r"(?i)\bmake\s+\$\d|\bearn\s+\$\d|\bprofit\s+\$\d|"
@@ -31,6 +39,12 @@ FILING_RE = re.compile(
     r"(?i)we filed|we do the filing|doing the filing for you|"
     r"filed (?:your|the) (?:llc|ein|dba)"
 )
+OVERCLAIM_RE = re.compile(
+    r"(?i)we handle your legal paperwork|we set up your llc|"
+    r"compliance guaranteed|compliant in all 50 states|"
+    r"contracts drafted for you|fully insured business"
+)
+PARTNER_URL_RE = re.compile(r"(?i)https?://")
 
 
 def load_law(path: Path | None = None) -> dict[str, Any]:
@@ -62,6 +76,17 @@ def _filled(pack: dict[str, Any], name: str) -> bool:
     return bool(value)
 
 
+def _partner_link(pack: dict[str, Any]) -> str:
+    raw = pack.get("partner_link")
+    if raw in (None, ""):
+        partner = pack.get("partner")
+        if isinstance(partner, dict):
+            raw = partner.get("link")
+        elif isinstance(partner, str):
+            raw = partner
+    return str(raw or "").strip()
+
+
 def classify_paperwork(pack: dict[str, Any] | None) -> dict[str, Any]:
     """Checklist completeness. Invented Stripe URLs are flagged, not gated."""
     law = load_law()
@@ -78,12 +103,22 @@ def classify_paperwork(pack: dict[str, Any] | None) -> dict[str, Any]:
     counsel_cleared = bool(data.get("counsel_cleared"))
     claim_unsubstantiated = included_claim and bool(missing)
     filing_as_lawyer = filing_claim and not counsel_cleared
+    partner = _partner_link(data)
+    partner_empty = partner == "" or partner.upper() == "OWNER_UNSET"
+    invented_partner = bool(PARTNER_URL_RE.search(partner)) and not data.get(
+        "owner_pasted_partner"
+    )
+    overclaim = bool(OVERCLAIM_RE.search(ads))
     if invented_url:
         verdict = "PAPERWORK_INVENTED_URL"
+    elif invented_partner:
+        verdict = "PARTNER_LINK_INVENTED"
     elif earnings_in_ads:
         verdict = "EARNINGS_IN_ADS"
     elif filing_as_lawyer:
         verdict = "PAPERWORK_FILING_CLAIM"
+    elif overclaim:
+        verdict = "PAPERWORK_DOOR_OVERCLAIM"
     elif claim_unsubstantiated:
         verdict = "PAPERWORK_CLAIM_UNSUBSTANTIATED"
     elif missing:
@@ -103,8 +138,12 @@ def classify_paperwork(pack: dict[str, Any] | None) -> dict[str, Any]:
         "included_claim": included_claim,
         "claim_unsubstantiated": claim_unsubstantiated,
         "filing_as_lawyer": filing_as_lawyer,
+        "door_overclaim": overclaim,
+        "partner_empty": partner_empty,
+        "partner_link_invented": invented_partner,
         "upl_line": "checklists_links_templates_not_filing",
         "did_not_invent_percent_or_equity": True,
+        "did_not_write_scout_paperwork_memo": True,
         "did_not_write_scout_messaging_angle": True,
         "checkout": "NOT_MINTED",
         "agents_spend_ads": False,

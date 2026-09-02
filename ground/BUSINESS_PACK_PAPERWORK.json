@@ -7,7 +7,7 @@
   "source_channel_id": "C0BU51F1PL3",
   "source_channel_name": "#coordination-channel-created-today-please-use",
   "claim_slack_ts": "1788328010.445909",
-  "required": ["registration", "ein", "sales_tax", "license", "insurance", "contract"],
+  "required": ["state", "registration", "ein", "sales_tax", "license", "insurance", "contract"],
   "legal_advice": false,
   "hold_counsel": true,
   "not_legal_advice": true,
@@ -26,7 +26,9 @@
     "PAPERWORK_INVENTED_URL",
     "EARNINGS_IN_ADS",
     "PAPERWORK_CLAIM_UNSUBSTANTIATED",
-    "PAPERWORK_FILING_CLAIM"
+    "PAPERWORK_FILING_CLAIM",
+    "PAPERWORK_DOOR_OVERCLAIM",
+    "PARTNER_LINK_INVENTED"
   ],
   "included_claim": {
     "id": "cursor-business-pack-paperwork-included-20260902-01",
@@ -36,6 +38,18 @@
     "upl_line": "checklists_links_templates_not_filing",
     "did_not_write_scout_messaging_angle": true,
     "did_not_remint_paperwork_id": true
+  },
+  "state_instance": {
+    "id": "cursor-business-pack-paperwork-state-20260902-01",
+    "source_slack_ts": "1788328246.344399",
+    "research": "revenue/business_packs_marketing/PAPERWORK.md",
+    "did_not_write_scout_paperwork_memo": true,
+    "not_a_national_list": true,
+    "partner_slot": "owner_paste",
+    "partner_link": "",
+    "ftc_disclosure_when_filled": "if you use this link, they pay tjlabs; you pay the same",
+    "did_not_remint_slot_id": true,
+    "slot_law": "cursor-business-pack-paperwork-slot-20260902-01"
   },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_paperwork.py",

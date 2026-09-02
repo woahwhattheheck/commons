@@ -15,6 +15,7 @@ import business_pack_paperwork as paper  # noqa: E402
 
 
 COMPLETE = {
+    "state": "TX",
     "registration": "file DBA in the county named on the instance",
     "ein": "IRS EIN confirmation letter on file",
     "sales_tax": "state permit number pasted by owner",
@@ -48,7 +49,15 @@ class BusinessPackPaperworkTest(unittest.TestCase):
         self.assertEqual(self.law["source_slack_ts"], "1788327816.150299")
         self.assertEqual(
             self.law["required"],
-            ["registration", "ein", "sales_tax", "license", "insurance", "contract"],
+            [
+                "state",
+                "registration",
+                "ein",
+                "sales_tax",
+                "license",
+                "insurance",
+                "contract",
+            ],
         )
         self.assertIs(self.law["legal_advice"], False)
         self.assertIs(self.law["hold_counsel"], True)
@@ -65,6 +74,7 @@ class BusinessPackPaperworkTest(unittest.TestCase):
         result = paper.classify_paperwork({"registration": "DBA filed"})
         self.assertEqual(result["verdict"], "PAPERWORK_INCOMPLETE")
         self.assertIn("ein", result["missing"])
+        self.assertIn("state", result["missing"])
         self.assertIs(result["legal_advice"], False)
         self.assertIs(result["gate"], False)
         self.assertIs(result["commons_admission"], False)
@@ -111,6 +121,37 @@ class BusinessPackPaperworkTest(unittest.TestCase):
         self.assertEqual(cleared["verdict"], "PAPERWORK_OK")
         self.assertIs(cleared["hold_counsel"], False)
 
+    def test_missing_state_is_incomplete(self) -> None:
+        packed = dict(COMPLETE)
+        del packed["state"]
+        result = paper.classify_paperwork(packed)
+        self.assertEqual(result["verdict"], "PAPERWORK_INCOMPLETE")
+        self.assertIn("state", result["missing"])
+
+    def test_door_overclaim_is_flagged(self) -> None:
+        packed = dict(COMPLETE)
+        packed["copy"] = "we set up your LLC"
+        result = paper.classify_paperwork(packed)
+        self.assertEqual(result["verdict"], "PAPERWORK_DOOR_OVERCLAIM")
+        self.assertTrue(result["door_overclaim"])
+        self.assertIs(result["gate"], False)
+
+    def test_invented_partner_link_is_flagged_empty_ok(self) -> None:
+        packed = dict(COMPLETE)
+        packed["partner_link"] = "https://example.com/fake-formation"
+        result = paper.classify_paperwork(packed)
+        self.assertEqual(result["verdict"], "PARTNER_LINK_INVENTED")
+        self.assertTrue(result["partner_link_invented"])
+        empty = paper.classify_paperwork(COMPLETE)
+        self.assertTrue(empty["partner_empty"])
+        self.assertEqual(empty["verdict"], "PAPERWORK_OK")
+        pasted = dict(COMPLETE)
+        pasted["partner_link"] = "https://example.com/owner-pasted"
+        pasted["owner_pasted_partner"] = True
+        ok = paper.classify_paperwork(pasted)
+        self.assertEqual(ok["verdict"], "PAPERWORK_OK")
+        self.assertFalse(ok["partner_link_invented"])
+
     def test_earnings_in_ads_flagged(self) -> None:
         packed = dict(COMPLETE)
         packed["ads_copy"] = "Make $200 this weekend"
@@ -133,6 +174,16 @@ class BusinessPackPaperworkTest(unittest.TestCase):
         self.assertIn("paperwork", self.day.lower())
         self.assertIn("paperwork", self.offer.lower())
         self.assertNotIn("MESSAGING_ANGLE.md", json.dumps(self.law["included_claim"]))
+        self.assertIn("not a national list", self.sheet.lower())
+        self.assertIn("State:", self.sheet)
+        self.assertIn("OWNER_UNSET", self.sheet)
+        self.assertIn("we set up your LLC", self.sheet)
+        self.assertIn("FTC", self.sheet)
+        self.assertIs(self.law["state_instance"]["did_not_write_scout_paperwork_memo"], True)
+        self.assertEqual(
+            self.law["state_instance"]["partner_link"],
+            "",
+        )
 
     def test_unique_pack_pointer_does_not_remint(self) -> None:
         block = self.unique["paperwork"]
@@ -156,6 +207,17 @@ class BusinessPackPaperworkTest(unittest.TestCase):
         self.assertEqual(
             self.unique["paperwork"]["included_claim"],
             "cursor-business-pack-paperwork-included-20260902-01",
+        )
+        self.assertEqual(
+            self.law["state_instance"]["id"],
+            "cursor-business-pack-paperwork-state-20260902-01",
+        )
+        self.assertIs(self.law["state_instance"]["did_not_remint_slot_id"], True)
+        self.assertTrue(
+            (ROOT / "ground" / "BUSINESS_PACK_PAPERWORK_SLOT.json").is_file()
+        )
+        self.assertTrue(
+            (ROOT / "revenue" / "business_packs_marketing" / "PAPERWORK.md").is_file()
         )
 
     def test_cli(self) -> None:

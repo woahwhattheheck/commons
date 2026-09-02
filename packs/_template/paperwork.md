@@ -4,7 +4,10 @@ Bryce hub `1788327816.150299`: this pack helps the operator complete required pa
 
 Vertical:
 Operator name:
-Jurisdiction:
+State:
+City:
+
+This is a **state-specific instance** checklist, not a national list. Fill the buyer's state (and city when the licence or sign ordinance needs it).
 
 ## Registration / DBA
 
@@ -47,5 +50,12 @@ Possessing the Commons link is still authorization. That is not a Commons seat. 
 “Paperwork included” / “with the paperwork done” is true only when every slot above is filled. Empty slots make that line `PAPERWORK_CLAIM_UNSUBSTANTIATED`.
 
 This pack is checklists, links, and templates. It is not tjlabs doing the filing as their lawyer. “We filed your LLC” stays `HOLD_COUNSEL` (`PAPERWORK_FILING_CLAIM`) until counsel clears.
+
+Never on the door: “we handle your legal paperwork”, “we set up your LLC”, “compliance guaranteed”.
+
+## Formation partner (empty by default)
+
+Link: `OWNER_UNSET`
+Empty loads nothing. Owner pastes a licensed formation-service link. On-page FTC disclosure when filled: if you use this link, they pay tjlabs; you pay the same. Agents do not invent the URL.
 
 Keep earnings figures out of ads. Prices, time budgets, and pasted running costs only.
