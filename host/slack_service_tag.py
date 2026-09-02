@@ -108,6 +108,18 @@ def _signin_channel(catalog: dict[str, Any]) -> dict[str, Any]:
     return owner if isinstance(owner, dict) else {}
 
 
+def _peer_harness_connected(spec: dict[str, Any]) -> dict[str, Any] | None:
+    """Another desk already measured tools-live. Do not reopen NEED."""
+    raw = spec.get("peer_harness_connected")
+    if not isinstance(raw, dict):
+        return None
+    desk = str(raw.get("desk") or "").strip()
+    source_ts = str(raw.get("source_ts") or "").strip()
+    if not desk and not source_ts:
+        return None
+    return raw
+
+
 def route(
     text: str,
     connected: list[str] | tuple[str, ...] | None = None,
@@ -146,7 +158,11 @@ def route(
             job["road"] = "IN_HARNESS"
         else:
             job["road"] = "SLACK_CUSTOM_TOOL"
-            if job["needs_owner_signin"]:
+            peer = _peer_harness_connected(spec)
+            if peer:
+                job["peer_desk"] = str(peer.get("desk") or "")
+                job["this_process_tools"] = False
+            elif job["needs_owner_signin"]:
                 jobs.append(
                     {
                         "tag": tag,
@@ -203,16 +219,18 @@ def slack_jobs(result: dict[str, Any]) -> list[dict[str, Any]]:
                 }
             )
         elif road == "SLACK_CUSTOM_TOOL":
-            out.append(
-                {
-                    "channel_id": None,
-                    "kind": "SLACK_CUSTOM_TOOL",
-                    "tag": job.get("tag"),
-                    "tool": job.get("slack_tool"),
-                    "text": job.get("body"),
-                    "copy_secrets": False,
-                }
-            )
+            payload = {
+                "channel_id": None,
+                "kind": "SLACK_CUSTOM_TOOL",
+                "tag": job.get("tag"),
+                "tool": job.get("slack_tool"),
+                "text": job.get("body"),
+                "copy_secrets": False,
+            }
+            if job.get("peer_desk"):
+                payload["peer_desk"] = job.get("peer_desk")
+                payload["this_process_tools"] = False
+            out.append(payload)
         elif road == "IN_HARNESS":
             out.append(
                 {

@@ -137,6 +137,23 @@ class SlackServiceTagWorkerTest(unittest.TestCase):
         )
         self.assertIs(cat["gate"], False)
 
+    def test_magicpath_peer_connected_skips_new_need(self) -> None:
+        posts = worker.posts_for_message(
+            "@magicpath list projects",
+            channel="C0BU51F1PL3",
+            ts="1788321949.478239",
+            connected=["slack"],
+        )
+        channels = {row["channel"] for row in posts}
+        self.assertIn("C0BU51F1PL3", channels)
+        self.assertNotIn("C0BUFA9G23E", channels)
+        blob = "\n".join(row["text"] for row in posts)
+        self.assertIn("service-tag-job", blob)
+        self.assertIn("SLACK_CUSTOM_TOOL", blob)
+        self.assertIn("peer_desk=GOAT", blob)
+        self.assertNotIn("OWNER_BLOCKER", blob)
+        self.assertNotIn("authentication required", blob.lower())
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -114,18 +114,21 @@ def posts_for_message(
             )
         if kind == "SLACK_CUSTOM_TOOL":
             outcome = drive_fn(tag, body)
+            peer_desk = str(job.get("peer_desk") or "")
+            extra = (" peer_desk=%s this_process_tools=false" % peer_desk) if peer_desk else ""
             posts.append(
                 {
                     "channel": channel,
                     "thread_ts": ts,
                     "text": (
-                        "%s drive @%s ok=%s road=%s reason=%s"
+                        "%s drive @%s ok=%s road=%s reason=%s%s"
                         % (
                             marker,
                             tag,
                             outcome.get("ok"),
                             outcome.get("road"),
                             outcome.get("reason") or "ran",
+                            extra,
                         )
                     ),
                 }

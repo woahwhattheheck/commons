@@ -242,6 +242,13 @@
       "tag": "magicpath",
       "slack_tool": "@magicpath",
       "needs_owner_signin": true,
+      "peer_harness_connected": {
+        "desk": "GOAT",
+        "source_channel": "C0BUFA9G23E",
+        "source_ts": "1788321949.478239",
+        "this_process_tools": false,
+        "note": "GOAT measured MagicPath tools live. This cloud seat MCP catalog has no magicpath namespace. Slack custom-tool remainder; do not reopen NEED."
+      },
       "in_harness_when": ["magicpath"]
     },
     "roboflow": {

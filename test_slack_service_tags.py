@@ -112,6 +112,22 @@ class SlackServiceTagsTest(unittest.TestCase):
         signin = next(j for j in result["jobs"] if j["road"] == "OWNER_SIGNIN")
         self.assertEqual(signin["channel_id"], "C0BUFA9G23E")
 
+    def test_magicpath_peer_connected_does_not_reopen_need(self) -> None:
+        spec = self.cat["services"]["magicpath"]["peer_harness_connected"]
+        self.assertEqual(spec["desk"], "GOAT")
+        self.assertIs(spec["this_process_tools"], False)
+        result = sst.route("@magicpath list projects", connected=["slack"])
+        self.assertEqual(result["tags"], ["magicpath"])
+        roads = {job["road"] for job in result["jobs"] if job["tag"] == "magicpath"}
+        self.assertIn("SLACK_CUSTOM_TOOL", roads)
+        self.assertNotIn("OWNER_SIGNIN", roads)
+        self.assertNotIn("IN_HARNESS", roads)
+        custom = next(j for j in result["slack_jobs"] if j["kind"] == "SLACK_CUSTOM_TOOL")
+        self.assertEqual(custom["peer_desk"], "GOAT")
+        self.assertIs(custom["this_process_tools"], False)
+        kinds = {row["kind"] for row in result["slack_jobs"]}
+        self.assertNotIn("OWNER_BLOCKER", kinds)
+
     def test_cli_json(self) -> None:
         proc = subprocess.run(
             [
