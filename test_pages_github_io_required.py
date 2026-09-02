@@ -1,0 +1,120 @@
+#!/usr/bin/env python3
+"""github.io copy filters must keep live board chunks and the free-sample SEED0."""
+
+from __future__ import annotations
+
+import json
+import unittest
+from pathlib import Path
+
+from host import pages_github_io_required as required
+
+
+ROOT = Path(__file__).resolve().parent
+
+
+class PagesGithubIoRequiredTests(unittest.TestCase):
+    def test_board_js_still_fetches_chunks_at_three_sites(self) -> None:
+        text = (ROOT / "board.js").read_text(encoding="utf-8")
+        for marker in required.BOARD_CHUNK_MARKERS:
+            self.assertIn(marker, text)
+        self.assertEqual(len(required.BOARD_CHUNK_MARKERS), 3)
+
+    def test_required_files_exist_and_include_seed0_chunks_and_docs(self) -> None:
+        files = required.required_files(ROOT)
+        self.assertIn(required.CHUNKS_INDEX, files)
+        self.assertIn(required.SEED0, files)
+        self.assertIn(required.EXPANDING_SEED, files)
+        self.assertEqual(required.missing_on_disk(ROOT), ())
+        self.assertTrue((ROOT / required.SEED0).is_file())
+        self.assertEqual((ROOT / required.SEED0).stat().st_size, 8192)
+
+    def test_free_sample_page_and_sales_pack_name_the_same_seed(self) -> None:
+        page = (ROOT / "muhlnickel-free-sample.html").read_text(encoding="utf-8")
+        pack = json.loads(
+            (ROOT / "revenue" / "muhlnickel_free_sample" / "sales_pack.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        self.assertIn(required.SEED0, page)
+        self.assertIn(required.EXPANDING_SEED, page)
+        self.assertEqual(pack["proof"]["path"], required.SEED0)
+        self.assertEqual(pack["proof"]["existing_doc"], required.EXPANDING_SEED)
+        self.assertIn("github.io/commons/muhlnickel-free-sample.html", pack["canonical_page"])
+
+    def test_stated_except_list_would_drop_chunks_and_seed0_not_docs(self) -> None:
+        omitted = required.stated_except_omits(ROOT)
+        self.assertIn(required.CHUNKS_INDEX, omitted)
+        self.assertIn(required.SEED0, omitted)
+        self.assertNotIn(required.EXPANDING_SEED, omitted)
+        self.assertTrue(
+            required.omitted_by_except_keep(
+                required.SEED0,
+                required.STATED_EXCEPT_DIRS,
+                required.STATED_KEEP_PREFIXES,
+            )
+        )
+        self.assertFalse(
+            required.omitted_by_except_keep(
+                required.EXPANDING_SEED,
+                required.STATED_EXCEPT_DIRS,
+                required.STATED_KEEP_PREFIXES,
+            )
+        )
+        self.assertFalse(
+            required.omitted_by_except_keep(
+                "board.js",
+                required.STATED_EXCEPT_DIRS,
+                required.STATED_KEEP_PREFIXES,
+            )
+        )
+
+    def test_rsync_exclude_muhl_with_docs_keep_still_drops_seed0(self) -> None:
+        yml = """
+        rsync -a --exclude muhl --exclude chunks --exclude excerpts --exclude conflicts --exclude .github \\
+              --include muhl/docs --include muhl/docs/** ./ _site/
+        """
+        self.assertTrue(required.workflow_omits(yml, required.CHUNKS_INDEX))
+        self.assertTrue(required.workflow_omits(yml, required.SEED0))
+        self.assertFalse(required.workflow_omits(yml, required.EXPANDING_SEED))
+
+    def test_rsync_that_keeps_seed0_and_chunks_is_clean(self) -> None:
+        yml = """
+        rsync -a --exclude muhl --exclude excerpts --exclude conflicts --exclude .github \\
+              --include muhl/docs --include muhl/docs/** \\
+              --include muhl/containers --include muhl/containers/MUHLNICKEL_DISTRO \\
+              --include muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno ./ _site/
+        """
+        self.assertFalse(required.workflow_omits(yml, required.CHUNKS_INDEX))
+        self.assertFalse(required.workflow_omits(yml, required.SEED0))
+        self.assertFalse(required.workflow_omits(yml, required.EXPANDING_SEED))
+
+    def test_publish_all_workflow_omits_nothing(self) -> None:
+        self.assertFalse(required.workflow_omits("echo publish whole tree", required.SEED0))
+        self.assertFalse(required.workflow_omits("echo publish whole tree", required.CHUNKS_INDEX))
+
+    def test_live_workflow_absent_or_keeps_required_paths(self) -> None:
+        omitted = required.live_workflow_omits(ROOT)
+        self.assertEqual(omitted, ())
+
+    def test_cli_json_names_the_gaps_and_stays_an_open_door(self) -> None:
+        payload = required.report(ROOT)
+        self.assertTrue(payload["open_door"])
+        self.assertTrue(payload["copy_filter_is_not_admission"])
+        self.assertEqual(payload["missing_on_disk"], [])
+        self.assertIn(required.SEED0, payload["stated_except_would_omit"])
+        self.assertIn(required.CHUNKS_INDEX, payload["stated_except_would_omit"])
+        self.assertNotIn(required.EXPANDING_SEED, payload["stated_except_would_omit"])
+
+    def test_helper_source_does_not_add_admission_locks(self) -> None:
+        text = (ROOT / "host" / "pages_github_io_required.py").read_text(encoding="utf-8")
+        lowered = text.lower()
+        self.assertIn("possessing the link stays authorization", lowered)
+        self.assertNotIn("authentication required", lowered)
+        self.assertNotIn("permission denied", lowered)
+        self.assertNotIn("allowed_verbs", lowered)
+        self.assertNotIn("path_allowed", lowered)
+
+
+if __name__ == "__main__":
+    unittest.main()
