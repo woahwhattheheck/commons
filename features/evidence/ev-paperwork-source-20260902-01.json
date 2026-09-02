@@ -1,0 +1,16 @@
+{
+  "feature_id": "cursor-business-pack-paperwork-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-source-20260902-01",
+  "kind": "SOURCE_PATHS",
+  "note": "Factory paperwork checklist and classifier. Does not remint unique-pack or LEAD ToS.",
+  "paths": [
+    "ground/BUSINESS_PACK_PAPERWORK.md",
+    "ground/BUSINESS_PACK_PAPERWORK.json",
+    "host/business_pack_paperwork.py",
+    "packs/_template/paperwork.md",
+    "test_business_pack_paperwork.py"
+  ],
+  "recorded_at": "2026-09-02T05:50:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
