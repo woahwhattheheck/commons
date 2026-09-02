@@ -8,6 +8,9 @@ the factory slot, rewrite the template, pick a partner, invent a bulk
 price, or write leftover pin-lift helpers / Harborline door / waitlist /
 TALLY / LotRibbon. Empty badge+report is the correct instance state until
 Bryce pastes. Completeness audit allowed. Dollar valuation is earnings.
+
+Peer Sidewalk / LotRibbon rating.md fills were absent at leftover land
+and are not live-pinned (cursor-pack-harborline-rating-peer-unpin-20260902-01).
 Checkout NOT_MINTED.
 """
 from __future__ import annotations
@@ -29,9 +32,18 @@ TEMPLATE = ROOT / "packs" / "_template" / "rating.md"
 HARBORLINE = ROOT / "packs" / "desk-website-service-20260902-01" / "rating.md"
 SIDEWALK = ROOT / "packs" / "sidewalk-signal-web-desk-20260902-01" / "rating.md"
 LOTRIBBON = ROOT / "packs" / "lotribbon-greetings-20260902-01" / "rating.md"
+MANIFEST = ROOT / "packs" / "desk-website-service-20260902-01" / "manifest.json"
 FACTORY_ID = "cursor-business-pack-rating-slot-20260902-01"
 RECEIPT_ID = "cursor-pack-harborline-rating-20260902-01"
+UNPIN_ID = "cursor-pack-harborline-rating-peer-unpin-20260902-01"
 TEMPLATE_BLOB = "7d644a8b"
+SHEET_BLOB = "7fe8667a"
+LEFTOVER_RECEIPT_BLOB = "29930d8b"
+WAITLIST_SLOT_BLOB = "ea108145"
+OBSERVED_AT_LAND = {
+    "packs/sidewalk-signal-web-desk-20260902-01/rating.md": "absent",
+    "packs/lotribbon-greetings-20260902-01/rating.md": "absent",
+}
 DOOR_BLOB = "d3d6fcc7"
 SIDECAR_BLOB = "c72d50d0"
 MAP_POINTER_BLOB = "1470b378"
@@ -53,7 +65,14 @@ DO_NOT_OVERWRITE = (
     "host/business_pack_rating.py",
     "ground/BUSINESS_PACK_RATING.json",
     "p/cursor-business-pack-rating-slot-20260902-01.md",
+    "p/cursor-pack-harborline-rating-20260902-01.md",
+    "packs/desk-website-service-20260902-01/rating.md",
     "packs/desk-website-service-20260902-01/door.html",
+    "packs/desk-website-service-20260902-01/waitlist-slot.md",
+    "packs/desk-website-service-20260902-01/manifest.json",
+    "host/pack_harborline_waitlist_slot.py",
+    "p/cursor-pack-harborline-waitlist-slot-20260902-01.md",
+    "p/cursor-pack-harborline-waitlist-slot-peer-unpin-20260902-01.md",
     "host/harborline_tally_pack_map.py",
     "host/business_pack_harborline_tally_map.py",
     "host/business_pack_harborline_tally_map_pointer.py",
@@ -189,6 +208,11 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
     pointer_receipt = git_blob_prefix(
         "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
     )
+    sheet_blob = git_blob_prefix("packs/desk-website-service-20260902-01/rating.md")
+    leftover_receipt = git_blob_prefix("p/cursor-pack-harborline-rating-20260902-01.md")
+    waitlist_slot_blob = git_blob_prefix(
+        "packs/desk-website-service-20260902-01/waitlist-slot.md"
+    )
     law = factory.load_law()
     ok = (
         harborline.get("verdict") == "HARBORLINE_RATING_INSTANCE_OK"
@@ -201,8 +225,10 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         and pack_map_blob == PACK_MAP_BLOB
         and pin_lift_receipt == PIN_LIFT_RECEIPT_BLOB
         and pointer_receipt == POINTER_RECEIPT_BLOB
-        and not SIDEWALK.is_file()
-        and not LOTRIBBON.is_file()
+        and sheet_blob == SHEET_BLOB
+        and leftover_receipt == LEFTOVER_RECEIPT_BLOB
+        and waitlist_slot_blob == WAITLIST_SLOT_BLOB
+        and not MANIFEST.is_file()
     )
     return {
         "kind": "HARBORLINE_RATING",
@@ -214,6 +240,9 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         "blobs": {
             "packs/_template/rating.md": template_blob,
             "packs/desk-website-service-20260902-01/door.html": door_blob,
+            "packs/desk-website-service-20260902-01/rating.md": sheet_blob,
+            "packs/desk-website-service-20260902-01/waitlist-slot.md": waitlist_slot_blob,
+            "p/cursor-pack-harborline-rating-20260902-01.md": leftover_receipt,
             "host/business_pack_harborline_tally_map.py": sidecar_blob,
             "host/business_pack_harborline_tally_map_pointer.py": map_pointer_blob,
             "host/business_pack_harborline_map_helper_pointer.py": map_helper_pointer_blob,
@@ -221,19 +250,24 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
             "p/cursor-pack-harborline-map-pin-lift-20260902-01.md": pin_lift_receipt,
             "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": pointer_receipt,
         },
+        "observed_at_land": dict(OBSERVED_AT_LAND),
+        "live_peer_rating_slots_not_pinned": True,
         "did_not_rewrite_goat_template": template_blob == TEMPLATE_BLOB,
         "did_not_remint_factory_slot": str(law.get("id") or "") == FACTORY_ID,
         "did_not_overwrite_harborline_door": door_blob == DOOR_BLOB,
+        "did_not_overwrite_harborline_rating": sheet_blob == SHEET_BLOB,
+        "did_not_overwrite_harborline_waitlist_slot": waitlist_slot_blob == WAITLIST_SLOT_BLOB,
         "did_not_write_leftover_pin_helpers": sidecar_blob == SIDECAR_BLOB,
         "did_not_overwrite_pointer_receipt": pointer_receipt == POINTER_RECEIPT_BLOB,
-        "did_not_fill_sidewalk": not SIDEWALK.is_file(),
-        "did_not_fill_lotribbon": not LOTRIBBON.is_file(),
+        "did_not_write_peer_rating_slots": True,
+        "did_not_invent_harborline_manifest": not MANIFEST.is_file(),
         "did_not_merge_7915": True,
         "sends": 0,
         "agents_spend_ads": False,
         "checkout": "NOT_MINTED",
         "do_not_overwrite": list(DO_NOT_OVERWRITE),
         "receipt_id": RECEIPT_ID,
+        "unpin_id": UNPIN_ID,
     }
 
 
