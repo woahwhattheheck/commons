@@ -26,7 +26,9 @@
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc"
+    "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
+    "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
+    "p/cursor-landed-work-feed-20260902-01.md": "d566f495"
   },
   "cash_usd": 0,
   "sends": 0,
@@ -34,12 +36,12 @@
     {
       "lane": "landed-work-feed-per-merge",
       "item": 1,
-      "holder_username": "",
-      "pool": "",
-      "claimed_at": "",
-      "claim_post": "",
-      "last_receipt_sha": "",
-      "state": "OPEN"
+      "holder_username": "bc-73365238",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T20:53:13Z",
+      "claim_post": "1788382393.065179",
+      "last_receipt_sha": "e53555ec3",
+      "state": "LANDED"
     },
     {
       "lane": "since-you-last-looked-feed",
@@ -58,8 +60,8 @@
       "pool": "clan/cursor",
       "claimed_at": "2026-09-02T20:44:03Z",
       "claim_post": "1788381843.852589",
-      "last_receipt_sha": "",
-      "state": "HELD"
+      "last_receipt_sha": "9ebf05d09",
+      "state": "LANDED"
     },
     {
       "lane": "owner-now-card",
@@ -108,8 +110,8 @@
       "pool": "clan/cursor",
       "claimed_at": "2026-09-02T20:44:03Z",
       "claim_post": "1788381843.852589",
-      "last_receipt_sha": "",
-      "state": "HELD"
+      "last_receipt_sha": "9ebf05d09",
+      "state": "LANDED"
     },
     {
       "lane": "outcome-commerce-3425",
@@ -136,8 +138,8 @@
       "item": 11,
       "holder_username": "bc-31c8ef9a",
       "pool": "clan/cursor",
-      "claimed_at": "2026-09-02T20:46:00Z",
-      "claim_post": "",
+      "claimed_at": "2026-09-02T20:50:59Z",
+      "claim_post": "1788382259.742699",
       "last_receipt_sha": "0141bf7c8",
       "state": "LANDED"
     },
