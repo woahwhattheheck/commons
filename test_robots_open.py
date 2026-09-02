@@ -78,6 +78,7 @@ class RobotsOpen(unittest.TestCase):
             "proof-spiral-succinct-argument.html",
             "repair-booking-preflight.html",
             "salesforce-contact-preflight.html",
+            "paperwork-included.html",
         )
         for name in canaries:
             self.assertTrue(os.path.isfile(os.path.join(ROOT, name)), name)

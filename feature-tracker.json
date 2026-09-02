@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 83
+    "TESTED": 84
   },
   "features": [
     {
@@ -1720,6 +1720,68 @@
       "test_paths": [
         "test_current_work.py",
         "host/current_work.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Paperwork included is a filled instance checklist. Two $200 DESK sheets (Harborline sidecar + Pierlight) share a vertical and stay UNIQUE. Factory OWNER_UNSET sheet not reminted. Not legal advice. Not filing as counsel.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.json",
+        "host/business_pack_paperwork_filled.py",
+        "packs/paperwork-included-20260902-01/harborline-desk.md",
+        "packs/paperwork-included-20260902-01/pierlight-desk.md",
+        "paperwork-included.html",
+        "test_business_pack_paperwork_filled.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.json",
+        "host/business_pack_paperwork_filled.py",
+        "packs/paperwork-included-20260902-01/harborline-desk.md",
+        "packs/paperwork-included-20260902-01/pierlight-desk.md",
+        "paperwork-included.html",
+        "test_business_pack_paperwork_filled.py"
+      ],
+      "dependencies": [
+        "cursor-business-pack-paperwork-included-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "cursor-business-pack-paperwork-filled-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-filled-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Filled paperwork-included DESK checklists",
+      "next_gap": "Owner pastes buyer_state / buyer_city and a live Payment Link. Formation partner stays OWNER_UNSET. Do not invent filings or earnings ads.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "paperwork-included.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_PAPERWORK_FILLED.md",
+        "packs/paperwork-included-20260902-01/README.md",
+        "paperwork-included.html",
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "p/cursor-business-pack-paperwork-included-20260902-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_paperwork_filled.py",
+        "host/business_pack_paperwork_filled.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -5459,7 +5521,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 92,
+  "n_features": 93,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

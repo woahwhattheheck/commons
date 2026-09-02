@@ -82,6 +82,16 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
                 hits.append(path.relative_to(ROOT).as_posix())
         self.assertEqual(hits, [], f"invented signature still in living sources: {hits}")
 
+    def test_named_living_canaries_stay_clear_of_invented_signature(self) -> None:
+        canaries = (
+            ".cursor/rules/github-already-logged-in.mdc",
+            "ground/BUSINESS_PACK_KEEP_SELL.md",
+            "ground/HARNESS_ALREADY_LOGGED_IN.md",
+        )
+        for rel in canaries:
+            raw = (ROOT / rel).read_bytes()
+            self.assertNotIn(SIGNATURE.encode("utf-8"), raw, rel)
+
     def test_player2_projection_does_not_reintroduce_invented_closer(self) -> None:
         """memory/PLAYER2 is a living projection; the historical p/ receipt stays untouched."""
         for rel in ("memory/PLAYER2.json", "memory/PLAYER2.html"):

@@ -35,7 +35,7 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 ### TITAN Hands computer-use substrate (`titan-hands`, `SHIPPED_ON_MAIN`)
 
 - `docs/TITAN_HANDS.md` sha256 `aceabd0996d0246f1dde538022f5c9d53abbaf7fe9e153d8b1a203a394ef7a0e` (3526 bytes)
-- `titan-hands.html` sha256 `29a73788ecba02d42130947e7921a85bf67a17e46af1b7b713c169f641cfdf93` (1664 bytes)
+- `titan-hands.html` sha256 `db8a3ed7e4d68b763c7b53354bcb0621d21e6c7627827b75e83035e77870156b` (1947 bytes)
 - `titan-hour.html` sha256 `1b8ce5db8790d8815372738aaadfe8593478031d17a26ff8057acc812a24cb91` (6253 bytes)
 - `host/titan_hands/one_tool.py` sha256 `394fd77a09dc01fbf415fef480a1f867fb2eaec1314c74c7f12c9e555aaace31` (7321 bytes)
 - `host/titan_hands/linux_atspi.py` sha256 `8a7552d1f0221e5a6f1adf01a7d87ff25c942de66c21d372998a0bc538009bb3` (39377 bytes)
@@ -56,8 +56,8 @@ ANALYSIS: Public product and commercialization evidence may inform a Project Pit
 - `host/feature_tracker.py` sha256 `cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346` (36840 bytes)
 - `test_feature_tracker.py` sha256 `52382e09fd6c3164a5486cf712050ec5523f58d715c821db3425d55a58d58615` (24900 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `783b499e6826db3e2f09c845bb856ea87b6e2612cb73905b42dbb27976799212` (11401 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `6ebb65194afb12a3b97577226f7c1f251a5fbec54f24669c16886bef2ec90d07` (105476 bytes)
+- `resources.html` sha256 `d9a27d82938d801b7adb9948d89039a08866f1da69c291aefca08e5b0364c820` (11401 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `008d9e866f32948514a74d2b16df09afd7980aa233869f157b1084ac347f3734` (107609 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 
 ## Stated funding (not expected value)
