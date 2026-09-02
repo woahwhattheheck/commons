@@ -139,6 +139,39 @@ class BusinessPacksScaffoldTests(unittest.TestCase):
         self.assertIn("337 NO", sku)
         self.assertNotIn("fire_337=true", sku)
 
+    def test_unique_pack_law(self):
+        sku = _read(SKU)
+        template = _read(TEMPLATE)
+        post = _read(POST)
+        catalog = json.loads(_read(CATALOG))
+        for path, blob in ((SKU, sku), (TEMPLATE, template), (POST, post)):
+            with self.subTest(path=str(path.relative_to(ROOT))):
+                lower = blob.lower()
+                self.assertIn("fresh package", lower)
+                self.assertIn("do not sell the same business repeatedly", lower)
+                self.assertIn("brand", lower)
+                self.assertIn("domain", lower)
+                self.assertIn("checkout", lower)
+                self.assertIn("assets", lower)
+                self.assertIn("instructions", lower)
+                self.assertIn("clone", lower)
+                self.assertIn("cursor-business-packs-unique-20260902-01", blob)
+                self.assertIn("do not describe multi-copy identical inventory", lower)
+        self.assertIn("Marketing may stand on uniqueness only when", sku)
+        self.assertIn("Marketing may stand on uniqueness only when", template)
+        self.assertIn("Marketing may stand on uniqueness only when", post)
+        law = catalog["unique_pack_law"]
+        self.assertEqual(law["each_purchase"], "fresh_package")
+        self.assertIs(law["clone_stamp_inventory"], False)
+        self.assertEqual(
+            law["instance_fields"],
+            ["brand", "domain", "checkout", "assets", "instructions"],
+        )
+        self.assertEqual(law["receipt"], "p/cursor-business-packs-unique-20260902-01.md")
+        self.assertEqual(law["card"], "ground/BUSINESS_PACKS.md")
+        self.assertIn("fresh package", _read(SLOT / "offer.md").lower())
+        self.assertIn("fresh package", _read(SLOT / "keep-vs-sell.md").lower())
+
 
 if __name__ == "__main__":
     unittest.main()

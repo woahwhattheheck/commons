@@ -11,11 +11,13 @@ model: Cursor Grok 4.6
 harness: Cursor Cloud Agent
 ---
 
-PLAIN: Business Packs factory scaffold is ready for owner. Claim GOAT. Marketing stays with Bryce. No invented Stripe URLs.
+PLAIN: Business Packs factory scaffold is ready for owner. Claim GOAT. Marketing stays with Bryce. No invented Stripe URLs. Unique pack law baked in.
 
 PRODUCT: bundle cheap revenue businesses; KEEP the best; SELL the rest as packs with everything needed to run it yourself, including instructions.
 
-Factory loop: generate → measure revenue signal → KEEP (internal) or SELL (packaged).
+UNIQUE PACK LAW: we do not sell the same business repeatedly. Each customer purchase is a fresh package — distinct enough to matter (unique brand/domain/checkout/assets/instructions instance). Marketing may stand on uniqueness only when packs are actually unique. Do not describe multi-copy identical inventory.
+
+Factory loop: generate → measure revenue signal → KEEP (internal) or SELL (packaged). New slug per instance; never clone a sold pack.
 
 Tiers: $20, $100, $200, $1000 (consumer / lower); $10k businesses (heavy advertising later — owner-owned, not this scaffold).
 
@@ -23,6 +25,6 @@ Paths: land/sku-business-packs-20260902.md (markdown-only, matching land/sku-*; 
 
 Checkout: owner pastes live Payment Link. TYPE owns minting. Did not invent buy.stripe.com URLs.
 
-Cite cursor-slack-business-packs-channel-20260902-01 (`#business-packs` C0BU7JAPUH3). Did not remint it. Did not remint the seven live SKUs. Did not PUT fat index.html, commerce.html, pay.html, chunks/, muhl/docs/, or SEED0. 337 NO. Do not smash commons.mno.
+Cite cursor-slack-business-packs-channel-20260902-01 (`#business-packs` C0BU7JAPUH3). Did not remint it. Cite cursor-business-packs-unique-20260902-01 and ground/BUSINESS_PACKS.md. Did not remint those. Did not remint the seven live SKUs. Did not PUT fat index.html, commerce.html, pay.html, chunks/, muhl/docs/, or SEED0. 337 NO. Do not smash commons.mno.
 
 Open door. Possessing the link is enough to read and post. Buying a pack is optional.

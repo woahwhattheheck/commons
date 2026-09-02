@@ -2,19 +2,29 @@
 
 Cite [sku-business-packs-20260902](./sku-business-packs-20260902.md). Do not remint SKUs.
 Cite [cursor-slack-business-packs-channel-20260902-01](../p/cursor-slack-business-packs-channel-20260902-01.md). Do not remint it.
-Copy [packs/_template/](../packs/_template/) to `packs/<vertical-slug>/` for a real pack.
+Cite [cursor-business-packs-unique-20260902-01](../p/cursor-business-packs-unique-20260902-01.md). Do not remint it.
+Cite [ground/BUSINESS_PACKS.md](../ground/BUSINESS_PACKS.md).
+Copy [packs/_template/](../packs/_template/) to `packs/<vertical-slug>/` for a **new** instance. Do not clone a sold pack.
 Do not invent Stripe Payment Link URLs. Owner pastes a live Payment Link.
 Marketing is owner-owned. 337 NO. Do not smash commons.mno.
 
 Open door stays. Possessing the Commons link is enough to read and post. A pack sale is optional money, never a seat.
 
+## Unique pack law
+
+We do not sell the same business repeatedly. Each customer purchase is a **fresh package**, distinct enough to matter: unique brand, domain, checkout, assets, and instructions instance.
+
+Do not describe multi-copy identical inventory. Marketing may stand on uniqueness only when this instance is actually unique (assets + ops fingerprint unique among sales). A reused family name is not uniqueness. Same fingerprint on two sales is `CLONE_STAMP`.
+
 ## 1. Vertical name
 
-- Slug (`packs/<slug>/`):
-- Public name:
+- Slug (`packs/<slug>/`) — new directory per instance, not a copy of a sold pack:
+- Public name (this instance's brand):
 - One-line what it is:
 - Family: product (packaged business the buyer keeps and runs)
 - Tier ($20 / $100 / $200 / $1000 / $10k):
+- This instance's domain:
+- Distinct from prior sale_id (if any):
 
 ## 2. Offer
 
@@ -26,15 +36,17 @@ Fill `offer.md`.
 - What they do not get (owner marketing, live ads accounts, invented checkout URLs, `.mno` actuation):
 - Price USD (one of the five tiers):
 - Status: SCAFFOLD until checkout.md has an owner-pasted live Payment Link
+- This purchase is a fresh package (not a reprint of another customer's pack): yes / no
 
 ## 3. Assets list
 
 Fill `assets.md`. List every file the buyer needs to run it. Missing asset = pack is not SELL-ready.
 
-- Brand / name assets:
-- Templates / forms / scripts:
+- Brand / name assets (unique to this instance):
+- Templates / forms / scripts (this instance, not a clone stamp):
 - Public pages or doors (optional; Commons stays open either way):
 - Data the buyer may reuse (license + provenance, or UNMEASURED):
+- assets fingerprint / ops fingerprint (for [host/business_pack_unique.py](../host/business_pack_unique.py)):
 
 ## 4. SOPs / instructions
 
@@ -55,6 +67,7 @@ Fill `checkout.md`. Exact sentence to keep:
 Do not write a `buy.stripe.com` or `donate.stripe.com` URL here.
 TYPE owns minting. This template does not mint.
 A pasted link is still not authorization, settlement, payout, or cash.
+This instance's checkout is its own. Do not reuse another customer's Payment Link as identical inventory.
 
 ## 6. Ops calendar — week 1
 
@@ -62,7 +75,7 @@ Fill `week1.md`.
 
 | day | operator action | done when |
 | --- | --- | --- |
-| 0 | copy this template; name the vertical | slug directory exists |
+| 0 | copy this template into a **new** slug; name this instance | slug directory exists and is not a sold-pack clone |
 | 1 | fill offer + assets | both files nonempty |
 | 2 | write instructions | a stranger can start |
 | 3 | run the smallest real loop | one measured signal or a dated zero with search space |
@@ -89,6 +102,7 @@ Fill `keep-vs-sell.md`. Factory loop: generate → measure revenue signal → KE
 - Week-1 calendar is complete
 - Support boundary below is honest
 - Marketing remains owner-owned and is not bundled as an ads setup
+- This sale is a **fresh package** (unique brand / domain / checkout / assets / instructions). Not a second copy of a prior sale. Marketing uniqueness only if actually unique.
 
 Neither KEEP nor SELL is a Commons admission condition. The board stays open.
 
@@ -111,5 +125,6 @@ Buyer questions after a sale: public Commons post or `mailto:tokenjunkielabs@gma
 ## Factory law
 
 Cheap generate. Measure. Keep the best. Package the rest.
+Each customer purchase is a fresh package. No clone-stamped inventory.
 Marketing is Bryce's. Checkout URLs are pasted, never invented.
 337 NO.

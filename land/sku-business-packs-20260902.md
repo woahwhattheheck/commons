@@ -1,6 +1,8 @@
 # SKU Business Packs (PRODUCT factory)
 
 Cite [cursor-slack-business-packs-channel-20260902-01](../p/cursor-slack-business-packs-channel-20260902-01.md). Do not remint it.
+Cite [cursor-business-packs-unique-20260902-01](../p/cursor-business-packs-unique-20260902-01.md). Do not remint it.
+Cite [ground/BUSINESS_PACKS.md](../ground/BUSINESS_PACKS.md). Do not remint the unique-pack card.
 Cite [plug-micro-high-low-20260826-01](../p/plug-micro-high-low-20260826-01.md). Do not remint it.
 Cite [type-stripe-door-20260826-01](../p/type-stripe-door-20260826-01.md). Do not remint it.
 Do not remint sku-tip-20260826, sku-seat-20260826, sku-unlock-20260826, sku-monthly-tip-20260826, sku-boost-20260826, sku-whitebox-hour-20260826, sku-muhlnickel-titan-20260826, sku-weekly-20260902, or sku-agent-survival-proof-20260830.
@@ -25,16 +27,26 @@ Keep the best ones. Sell the rest.
 
 A Business Pack is a packaged business: offer, assets, SOPs/instructions, week-1 ops calendar, and a checkout-rails placeholder. The buyer runs it themselves. This SKU names the factory, not one vertical.
 
+## Unique pack law
+
+We do not sell the same business repeatedly. Each customer purchase is a **fresh package** — distinct enough to matter: unique brand, domain, checkout, assets, and instructions instance.
+
+Do not describe multi-copy identical inventory. A second sale is a new instance, not a clone of a sold pack. Copying [packs/_template/](../packs/_template/) starts a new instance; it is not permission to stamp the same bytes onto two customers.
+
+Uniqueness is measured on that instance (assets + ops fingerprint on [ground/BUSINESS_PACKS.md](../ground/BUSINESS_PACKS.md); brand / domain / checkout / assets / instructions must actually differ). Same content fingerprint on two `sale_id`s is `CLONE_STAMP`. Marketing may stand on uniqueness only when the pack is actually unique. A reused family name is not uniqueness.
+
+This is factory-lane law. It is not a Commons login. Possessing the link still opens the door.
+
 ## Factory loop
 
 ```text
 generate → measure revenue signal → KEEP (internal) or SELL (packaged)
 ```
 
-1. **generate** — stand up a cheap, named vertical using [business-pack-template-20260902.md](./business-pack-template-20260902.md) and copy [packs/_template/](../packs/_template/).
+1. **generate** — stand up a cheap, named vertical using [business-pack-template-20260902.md](./business-pack-template-20260902.md) and copy [packs/_template/](../packs/_template/) into a **new** slug. Never clone a sold pack as a second sale.
 2. **measure revenue signal** — record whether money, repeats, or a buyer door actually appeared. A click is intent. Cash is BANK_AVAILABLE only.
-3. **KEEP** — hold the ones that earn and that Bryce wants to operate internally.
-4. **SELL** — package the rest as a Business Pack with complete instructions so a buyer can run it.
+3. **KEEP** — hold the ones that earn and that Bryce wants to operate internally (one internal instance, not inventory copies).
+4. **SELL** — package a **fresh** instance as a Business Pack with complete instructions so that one buyer can run it. The next buyer gets another fresh instance.
 
 `#business-packs` (`C0BU7JAPUH3`) is the KEEP vs SELL lane. `#products` stays SKU/private-main receipts. `#sales` stays authorized outreach.
 
@@ -60,11 +72,13 @@ Bryce handles marketing himself. This factory does not:
 - spend advertising for the $10k tier
 
 Heavy advertising for $10k businesses is later work and owner-owned.
+Marketing may stand on uniqueness only when packs are actually unique. Do not advertise clone-stamped inventory as unique.
 
 ## Checkout rails
 
 Do not invent Stripe Payment Link URLs.
 Owner pastes a live Payment Link onto the pack's `checkout.md` after it exists.
+Each sold instance gets its own pasted checkout. Do not reuse one Payment Link as identical inventory across customers.
 A click is still not authorization, settlement, payout, or cash.
 Collected cash remains USD 0 until a dated receipt says otherwise.
 If Stripe later fails closed, keep `mailto:tokenjunkielabs@gmail.com`.

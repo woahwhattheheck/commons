@@ -7,6 +7,8 @@ SKU: [../land/sku-business-packs-20260902.md](../../land/sku-business-packs-2026
 
 Open door. No login. Marketing is owner-owned. Owner pastes live Payment Link. Do not invent Stripe URLs. 337 NO.
 
+Unique pack law: each customer purchase is a fresh package (unique brand/domain/checkout/assets/instructions). Do not clone a sold pack.
+
 ## Required files
 
 | file | fill with |

@@ -19,6 +19,20 @@
   "checkout": {
     "status": "NOT_MINTED"
   },
+  "unique_pack_law": {
+    "card": "ground/BUSINESS_PACKS.md",
+    "receipt": "p/cursor-business-packs-unique-20260902-01.md",
+    "each_purchase": "fresh_package",
+    "clone_stamp_inventory": false,
+    "instance_fields": [
+      "brand",
+      "domain",
+      "checkout",
+      "assets",
+      "instructions"
+    ],
+    "marketing_uniqueness": "only_when_actually_unique"
+  },
   "factory_loop": [
     "generate",
     "measure revenue signal",
