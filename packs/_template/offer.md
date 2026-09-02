@@ -19,3 +19,4 @@ Open door: buying this pack is optional. Read and post stay free.
 Marketing is owner-owned. Heavy advertising for $10k is later and not bundled here.
 
 Running cost the buyer will incur: `OWNER_UNSET` until the owner pastes it (see running-cost.md). Any “for this price” line must carry that figure. Do not invent the dollar amount. “Become a business owner” waits on LEAD ToS slots. “We did most of the work” only with a complete asset list.
+Required paperwork: see paperwork.md (registration, EIN, sales tax, license, insurance, contract). `OWNER_UNSET` / `HOLD_COUNSEL`. Not legal advice.

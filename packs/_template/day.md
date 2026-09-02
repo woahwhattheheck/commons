@@ -36,3 +36,7 @@ Keep earnings figures out of ads. Prices and time budgets only.
 ## Running cost (not ads)
 
 Amount the buyer will incur: `OWNER_UNSET` until the owner pastes it. See `running-cost.md`. Any “for this price” line must carry this figure. Do not invent the dollar amount.
+
+## Paperwork (not ads)
+
+Required paperwork checklist: `paperwork.md` (registration, EIN, sales tax, license, insurance, contract). Slots `OWNER_UNSET` / `HOLD_COUNSEL`. Not legal advice.

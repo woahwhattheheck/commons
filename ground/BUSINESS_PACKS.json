@@ -113,6 +113,16 @@
     "did_not_take_desk_or_thanks_channels": true,
     "checkout": "NOT_MINTED"
   },
+  "paperwork": {
+    "id": "cursor-business-pack-paperwork-20260902-01",
+    "source_slack_ts": "1788327816.150299",
+    "required": ["registration", "ein", "sales_tax", "license", "insurance", "contract"],
+    "legal_advice": false,
+    "hold_counsel": true,
+    "did_not_write_plant_instance": true,
+    "did_not_write_desk_instance": true,
+    "checkout": "NOT_MINTED"
+  },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",
