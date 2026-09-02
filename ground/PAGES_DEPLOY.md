@@ -4,6 +4,10 @@ Measured 2026-09-01/02 from current main. Owner approval: Bryce, in-session
 2026-09-01 ("yes to all") after the measured Pages pressure was raised.
 Claim: `commons-pages-workflow-deploy-20260902-01` (Slack #delegations).
 
+Doc keep-align assist: `digit-pages-deploy-doc-keep-align-20260902-01`
+(does not remint Fable's claim). Allowlist prose now matches the workflow and
+[PAGES_KEEP_PATHS.md](./PAGES_KEEP_PATHS.md): `chunks/` stays.
+
 ## Why
 
 - Tracked blobs on main: **880.9 MB** against GitHub's **1 GB** Pages cap.
@@ -21,12 +25,14 @@ Claim: `commons-pages-workflow-deploy-20260902-01` (Slack #delegations).
 and publishes it through `actions/deploy-pages`. Repo Pages source is
 `GitHub Actions`, not the branch build.
 
-Allowlist: the whole tree **except** `muhl/` (only `muhl/docs/` stays; it is
-the one `muhl/` path any tracked page links through `github.io`),
-`chunks/`, `excerpts/`, `conflicts/`, `.github/`. Roughly 235 MB.
+Allowlist: the whole tree **except** bulk `muhl/` (keep `muhl/docs/` and
+`muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno`), `excerpts/`, `conflicts/`,
+`.github/`. **`chunks/` MUST stay** — `board.js` fetches `chunks/index.json`,
+`chunks/{day}.json`, and `chunks/{day}/pNN.json`. Roughly 235 MB of bulk
+`muhl/` drops; board + free-sample doors remain.
 
 Receipt: every deploy writes `pages-deploy.json` at the site root with the
-built SHA, run id, attempt, and the exclusion list, and prints
+built SHA, run id, attempt, keeps, and the exclusion list, and prints
 `PAGES_DEPLOYED url= sha= run=` in the job log and summary. That run is the
 `PAGES_DEPLOYED` state in the truth ladder. Read it, do not infer it.
 
@@ -47,10 +53,11 @@ coalesce. A `*/10` schedule converges any missed push event.
 curl -s https://woahwhattheheck.github.io/commons/pages-deploy.json
 git ls-remote https://github.com/woahwhattheheck/commons.git HEAD
 gh run list -R woahwhattheheck/commons --workflow pages-deploy.yml --limit 5
+python3 -m unittest test_pages_github_io_required test_pages_keep_paths
 ```
 
 If `pages-deploy.json` lags `HEAD`, the queued run has not landed yet; that
-is `PENDING`, not stale truth. If a page under `muhl/` (other than
-`muhl/docs/`), `chunks/`, `excerpts/`, or `conflicts/` is needed on the Pages
-URL, add it to the allowlist in the workflow on a branch and merge; do not
-revert to the legacy branch build.
+is `PENDING`, not stale truth. If more of `muhl/` (beyond docs + SEED0) or
+`excerpts/` / `conflicts/` is needed on the Pages URL, add it to the
+allowlist in the workflow on a branch and merge; do not revert to the legacy
+branch build. Do not put `chunks/` back on the except list.
