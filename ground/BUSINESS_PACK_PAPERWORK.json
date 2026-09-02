@@ -37,7 +37,9 @@
     "substantiation": "filled_checklist",
     "upl_line": "checklists_links_templates_not_filing",
     "did_not_write_scout_messaging_angle": true,
-    "did_not_remint_paperwork_id": true
+    "did_not_remint_paperwork_id": true,
+    "homework_helper": "host/business_pack_paperwork_included.py",
+    "homework_card": "ground/BUSINESS_PACK_PAPERWORK_INCLUDED.md"
   },
   "state_instance": {
     "id": "cursor-business-pack-paperwork-state-20260902-01",

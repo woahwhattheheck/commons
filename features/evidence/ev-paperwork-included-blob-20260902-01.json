@@ -1,0 +1,11 @@
+{
+  "blob": "dc3344b1d7ae131cb51e58f9895dc1ea666d5155",
+  "feature_id": "cursor-business-pack-paperwork-included-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-included-blob-20260902-01",
+  "kind": "BLOB",
+  "note": "Filled factory Do X checklist on the shared paperwork sheet.",
+  "path": "packs/_template/paperwork.md",
+  "recorded_at": "2026-09-02T06:04:00Z",
+  "schema": "commons-feature-evidence-v1"
+}

@@ -1,0 +1,13 @@
+{
+  "blob": "249b16c93ab1303703087fe1ba211661f472b0f4",
+  "feature_id": "cursor-business-pack-paperwork-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-live-20260902-02",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "SHA-pinned raw paperwork sheet after state-slot compose. Original six slots intact. Not a Pages bake.",
+  "path": "packs/_template/paperwork.md",
+  "recorded_at": "2026-09-02T06:02:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "9ad53205d6282453f930c9742c8643330adadedd",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/9ad53205d6282453f930c9742c8643330adadedd/packs/_template/paperwork.md"
+}

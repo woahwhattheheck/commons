@@ -123,6 +123,7 @@
     "did_not_write_desk_instance": true,
     "checkout": "NOT_MINTED",
     "included_claim": "cursor-business-pack-paperwork-included-20260902-01",
+    "included_homework_helper": "host/business_pack_paperwork_included.py",
     "state_instance": "cursor-business-pack-paperwork-state-20260902-01"
   },
   "not": "commons_admission_gate",
