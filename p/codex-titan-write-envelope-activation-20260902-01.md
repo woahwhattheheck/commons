@@ -34,10 +34,12 @@ An executor must still recheck the exact live preimage, use a crash-safe journal
 - Open door: stdlib-only local compiler; no login, credential, identity, seat, post, or capability gate.
 - Privacy: receipt contains only target, offsets, lengths, hashes, and executor requirements; content and rollback bytes are absent.
 
+PR #7337 merged at `f837f43a80abc39ba63d1f1155b2976ca3beee10` from reviewed head `4dda909be724f6c1b5cb00431efc52d2f1eb401c`. All six product blobs remained exact at descendant main `f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066`; the two intervening commits changed projection paths only. Product-merge blobs: compiler `3cc49876c70be419eab2f265251820ad6e380afa`, focused tests `ae3a4ea60083ae771ff4e4709c1134ff3887eebf`, activation record `9d2fde6b618cd6502d5d038fba47fbbd8a24904a`, this receipt `c2a607eba302a6cc8b2bb829c3d4fad98b4842e4`, ledger `b95d1b71bcdce9066de25bb603faad32c4176ebd`, and ledger test `7ff3e80c0b476c703d4abb9e4c0bc773f0698c2e`.
+
 ## Next delta watermark
 
 - observed: `2026-09-02T01:03:48Z`
-- Git main: `1267075cc02aaec135c56e078475e60090aa3010`
+- Git main: `f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066`
 - #commons: `1788310861.421539`
 - #delegations: `1788310861.914509`
 - #todo: `1788309979.267129`
