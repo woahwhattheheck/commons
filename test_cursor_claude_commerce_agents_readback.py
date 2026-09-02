@@ -126,7 +126,7 @@ class TestCursorClaudeCommerceAgentsReadback(unittest.TestCase):
         self.assertIn("No login", door)
         self.assertFalse((ROOT / "marketplace.html").exists())
         self.assertFalse((ROOT / "CLAUDE_CORNER.md").exists())
-        self.assertFalse(
+        self.assertTrue(
             (ROOT / "p/cursor-big-huge-commerce-agents-readback-20260902-01.md").exists()
         )
 
