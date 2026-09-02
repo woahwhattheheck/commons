@@ -102,6 +102,17 @@
     "did_not_invent_percent_or_equity": true,
     "checkout": "NOT_MINTED"
   },
+  "running_cost": {
+    "id": "cursor-business-pack-running-cost-20260902-01",
+    "source_slack_ts": "1788327466.578309",
+    "for_this_price_requires_running_cost": true,
+    "running_cost": "OWNER_UNSET",
+    "ownership_copy_waits_on": "cursor-tjlabs-pack-tos-20260902-01",
+    "did_not_write_scout_messaging_angle": true,
+    "did_not_invent_percent_or_equity": true,
+    "did_not_take_desk_or_thanks_channels": true,
+    "checkout": "NOT_MINTED"
+  },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",

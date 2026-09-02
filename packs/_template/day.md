@@ -32,3 +32,7 @@ Paid support contact is a subscription **to tjlabs**. Price: `OWNER_UNSET` until
 Follow the list. If you fail to profit, you likely skipped a task.
 
 Keep earnings figures out of ads. Prices and time budgets only.
+
+## Running cost (not ads)
+
+Amount the buyer will incur: `OWNER_UNSET` until the owner pastes it. See `running-cost.md`. Any “for this price” line must carry this figure. Do not invent the dollar amount.
