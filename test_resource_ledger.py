@@ -145,10 +145,10 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788343601.055979")
+        self.assertEqual(catalog["slack_ts"], "1788344382.615839")
         self.assertEqual(
             catalog["source_id"],
-            "codex-upwork-marketplace-capacity-activation-20260902-01",
+            "codex-google-research-grok-automation-resource-delta-20260902-01",
         )
         self.assertIn(
             "codex-business-pack-factory-activation-20260902-01",
@@ -243,14 +243,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-upwork-marketplace-capacity-activation-20260902-01.json",
+            "codex-google-research-grok-automation-resource-delta-20260902-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_DISCOVERY_AND_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "upwork-marketplace-account"
+            current_activation["selected_resource"], "google-ai-mode-browser-mesh"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -331,6 +331,17 @@ class TestResourceLedger(unittest.TestCase):
         rows = {row["name"]: row for row in catalog["surfaces"]}
         self.assertEqual(rows["supergrok-heavy"]["stage"], "PRODUCING")
         self.assertEqual(rows["supergrok-heavy"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["google-ai-mode-browser-mesh"]["capacity"], "LIVE")
+        self.assertEqual(rows["google-ai-mode-browser-mesh"]["stage"], "PRODUCING")
+        self.assertEqual(rows["google-ai-mode-browser-mesh"]["condition"], "LIVE")
+        self.assertEqual(rows["gemini-google-research-fleet"]["quantity"], 2)
+        self.assertEqual(rows["gemini-google-research-fleet"]["stage"], "PRODUCING")
+        self.assertEqual(rows["grokcom-triggered-automation-fleet"]["quantity"], 14)
+        self.assertEqual(rows["grokcom-triggered-automation-fleet"]["condition"], "CONSTRAINED")
+        self.assertEqual(rows["google-spark-research-candidate"]["stage"], "DECLARED")
+        self.assertEqual(rows["google-spark-research-candidate"]["capacity"], "UNMEASURED")
+        self.assertEqual(rows["grokbot-pool-pair"]["quantity"], 2)
+        self.assertEqual(rows["grokbot-pool-pair"]["condition"], "HELD")
         self.assertEqual(rows["github-actions"]["stage"], "PRODUCING")
         self.assertEqual(rows["github-actions"]["condition"], "DEGRADED")
         self.assertEqual(rows["muhlnickel-distro-public-sales-door"]["stage"], "PRODUCING")
@@ -431,6 +442,10 @@ class TestResourceLedger(unittest.TestCase):
         )
         self.assertIn(
             "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json",
+            raw.get("record_sources") or [],
+        )
+        self.assertIn(
+            "inventory/resources/records/codex-google-research-grok-automation-resource-delta-20260902-01.json",
             raw.get("record_sources") or [],
         )
         self.assertFalse(catalog["cache_as_capacity"])
