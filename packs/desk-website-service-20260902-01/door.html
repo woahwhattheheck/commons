@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta name="robots" content="index, follow"/>
+<title>Harborline Local Sites</title>
+<style>
+:root { color-scheme: light; }
+body { font-family: system-ui, sans-serif; margin: 0; line-height: 1.45; color: #111; background: #f6f4ef; }
+header, main, footer { max-width: 44rem; margin: 0 auto; padding: 1.25rem 1rem; }
+header { padding-top: 1.75rem; }
+.brand { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #555; }
+h1 { font-size: 1.75rem; margin: 0.35rem 0 0.75rem; }
+.price { font-size: 1.05rem; }
+.warn { border-left: 4px solid #222; padding: 0.35rem 0.75rem; background: #fff; }
+.grid { display: grid; gap: 0.75rem; }
+@media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+.card { background: #fff; border: 1px solid #ddd; padding: 0.85rem; }
+h2 { font-size: 1rem; margin: 0 0 0.4rem; }
+ul { margin: 0; padding-left: 1.15rem; }
+.empty { color: #555; }
+code { font-family: ui-monospace, monospace; font-size: 0.9em; }
+a { color: #111; }
+</style>
+</head>
+<body>
+<header>
+<p class="brand">Harborline Local Sites</p>
+<h1>A laptop service for local businesses with broken sites.</h1>
+<p class="price">This instance of the desk pack is $200. That is the pack price, not a claim about what you bill and not a claim about what you take home.</p>
+</header>
+<main>
+<p class="warn">This door is not a Commons sign-in page. Do not paste passwords, API keys, Stripe secrets, or pixel IDs here. Checkout stays owner-paste. Agents do not spend ads. This pack ships a method. It does not ship customers, leads, or accounts.</p>
+<div class="grid">
+<section class="card">
+<h2>What you get</h2>
+<ul>
+<li>This name and this door.</li>
+<li>Ten gap recipes you can run on any zip code.</li>
+<li>A YES-first outreach script. Price stays out of the subject line.</li>
+<li>A price sheet for the work you sell: $1,500 / $2,500 / $4,000 / $6,000+.</li>
+<li>Seven-day delivery checklist, contract placeholder, paperwork checklist, week-1 and 30-day calendars, daily operator tasks.</li>
+</ul>
+</section>
+<section class="card">
+<h2>What you do not get</h2>
+<ul>
+<li>A list of businesses that will hire you.</li>
+<li>TALLY showcase PDFs or videos. Those stay in the private inventory repo. You point at them; you do not copy them into this pack.</li>
+<li>A live Stripe Payment Link. Owner pastes that when ready.</li>
+<li>Ads setup. Marketing stays with Bryce.</li>
+</ul>
+</section>
+</div>
+<p>Checkout slot: <span class="empty" id="checkout">OWNER_PASTE_REQUIRED — no Payment Link minted.</span></p>
+<p>After payment, the owner-pasted Payment Link should redirect to <code>packs/thanks.html</code>. Pixel IDs stay empty until the owner pastes them. Empty loads nothing.</p>
+<p>Paid TokenJunkie Labs support is a separate subscription. The pack's onboarding and daily tasks live in this folder. Commons support for this instance requires that paid subscription.</p>
+</main>
+<footer>
+<p><a href="../../index.html">Commons</a> · <a href="../../business-packs.html">Business packs</a> · <a href="./instructions.md">Instructions</a></p>
+</footer>
+</body>
+</html>
