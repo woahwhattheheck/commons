@@ -37,6 +37,19 @@ Seat: SCOUT (Fable 5.1). Companion to [X_ADS_BRIEF.md](./X_ADS_BRIEF.md). Resear
 - Every platform's automated review reads the landing page too. The door must state price and inclusions above the fold and must not contain earnings language anywhere, or the ad gets rejected for the page, not the copy.
 - Reuse across channels: the 15-second vertical "what's inside" video and the 4-card carousel (name / week-1 calendar / price sheet / door) are the same assets on X, TikTok, Reddit and Meta. Build once per pack.
 
+### 4b. Hook bank per buyer (first three seconds decide 71% of watch-through; top-CTR ads run 15–25 s with the click spike at 15–20 s, so the call to action lands at 75–80% of the runtime; UGC-style creator-led beats produced brand video — inBeat 2026 hook study, SociaVault TikTok ad-creative trends 2026, Stackmatix TikTok Creative Center guide 2026)
+
+| buyer | hook (spoken in the first 3 s) | visual in frame 1 | body (s 3–15) | CTA at 75–80% |
+|---|---|---|---|---|
+| Devon $20 | "You don't need an idea. You need a Saturday." | a printed week-1 calendar being pinned to a fridge | flip the kit's pages: name, price sheet, scripts | "Twenty dollars. Start Saturday." |
+| Sam $50 | "Second try. This time it has a name." | a stalled kit next to a fresh one with a brand on it | the 30-day calendar and the written stop rule | "Forty-nine dollars. Thirty days." |
+| Tyler $100 | "A route, a price sheet, and you're working by noon." | truck tailgate, bins, the price sheet taped to the door | flyer → door → bin-out, hands only, no faces needed | "One hundred dollars. Your route." |
+| Lena/Dan $200 | "Every business on this street has a broken website." | a phone scrolling a real "booking coming soon" page | the demo site, the price sheet, the outreach script | "Two hundred dollars. Your desk." |
+| Renee/Kevin $1,000 | "It has a name. It has a door. It's sold once." | the instance's door on a laptop, brand visible | inventory list, calendar, paperwork checklist, running cost | "A business, built and documented. Yours outright." |
+| Owen $10,000 | "A business unit, delivered." (text on screen; founder voice) | founder at a desk with the prospectus open | unit spec, first-hire paperwork, what tjlabs did and did not do | "Book fifteen minutes." |
+
+Rules for the bank: problem or curiosity hooks for cold TikTok and X, problem-solution for retargeting; one hook per cut, test three cuts per buyer; prices in the CTA, never earnings; the "we did most of the work" line is spoken over the asset list so the claim is shown while it is made.
+
 ## 5. TikTok, as a first-class channel (owner, 2026-09-02 ~01:33 EDT: "tik tok is fine too")
 
 **Who is there.** 25–44 is now TikTok's largest spending group and the age band most likely to act after an ad (54% research, 47% buy) ([emarketer](https://www.emarketer.com/content/millennial-tiktok-users-platform-s-most-active-shoppers), [emplicit](https://emplicit.co/tiktok-shops-demographic-shifts-growth/)); ~44% women. This is where the female-skewed pack buyer lives (yard-greeting rental, planners/templates, "faceless digital marketing"), and where the $50–$200 first-timer discovers products ("1 in 3 discover products on social").
@@ -87,6 +100,10 @@ Gate, so fruitful is measured: a tier earns a second channel only after its door
 **Tier fit and test.** $100 Tyler (video pre-roll: POV route, price sheet on screen), $1,000 and $10,000 Owen/Kevin (founder-led 15–30-second pre-roll in the classier register, MESSAGING_ANGLE §7: "a business, built and documented, yours outright"). Start at the platform minimum ($30/day) on one tier, with UTMs into the door and the thanks-door event as the only scoreboard; apply the §7 channel gate. Because the audience is news-heavy, run the ads on business/finance/creator channels where the platform allows placement choice, and expect political-adjacent adjacency; the classier register survives that adjacency better than the consumer one.
 
 **Unknowns to verify at signup (owner account):** state-level geo targeting granularity (needed for FERTILE_GROUND.md exclusions), actual CPM at bid, whether creator-channel placement targeting is available in RAC, and payment/verification requirements.
+
+**Rumble Advertising Center facts, read from the RAC FAQ (ads.rumble.com/docs/advertising/faqs, 2026-09-02):** minimum wallet deposit $100; minimum daily budget $30 per campaign; real-time CPM bidding against other campaigns ("Your campaign is bidding in real time against other campaigns"); no platform fee and no minimum required spend beyond the daily floor; keyword targeting "relies on an exact character match in either the title or the description of a video" (so bid the literal phrases creators put in titles: "pressure washing business", "lawn care business", "side hustle", "start a business", "buy a business"); creatives and landing pages must meet platform guidelines and can be revoked after approval; no parent-child accounts, so one shared wallet for everyone who logs in. Geo, device and placement controls are set in the campaign builder and were not enumerated in the FAQ; confirm state-level geo in the builder before assuming the launch map can be enforced there (fallback: creator-channel and keyword targeting, which already skews to the male operator buyer).
+
+**Buy list for the first $30/day test:** pre-roll on channels in the trades / trucks / outdoors / small-business lanes, keyword exact-matches above, 15-second 9:16-safe cut of the "your own employee and employer" video for Tyler, the classier founder pre-roll for Owen; UTM on every URL; success read on the thanks door, not in RAC.
 
 ## 8. What every channel forbids that our copy must never do
 

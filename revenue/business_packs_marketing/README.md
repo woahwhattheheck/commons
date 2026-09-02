@@ -17,3 +17,4 @@ Owner-assigned research lane (Bryce, 2026-09-02): find the exact buyer for each 
 Laws this research lives under: [ground/BUSINESS_PACKS.md](../../ground/BUSINESS_PACKS.md) (unique instance; similar is not clone; mystery nuts not lottery, no invented odds; marketing = Bryce; no invented Stripe URLs). Slack lane: `#marketing-research` `C0BUFLK7TNY`; factory lane `#business-packs` `C0BU7JAPUH3`.
 
 Update rule: when a pack lands or changes tier, add or edit its row in `PACK_BUYER_MAP.json` and its finding in `BUYER_TIERS.md`; post the delta in `#marketing-research` with the SHA.
+| `PRICE_ANCHORS.md` | what each buyer compares the pack to ($27 kit, $695 Starter Story, $997 coaching, $5,800 Accelerator, $9,500 done-for-you build, $10,350 franchise fee); how each tier sits on the ladder; one door line per tier |
