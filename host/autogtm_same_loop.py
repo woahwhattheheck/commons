@@ -20,13 +20,12 @@ Commons door lock and never silent 0.
 from __future__ import annotations
 
 import argparse
+import importlib.util
 import json
 import os
-import re
 import sys
 import urllib.error
 import urllib.request
-from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import urlparse
@@ -58,37 +57,16 @@ DO_NOT_REMINT = (
 
 
 Opener = Callable[[str], tuple[int, str]]
+WPEB_PATH = ROOT / "host" / "website_people_email_book.py"
 
 
-class _Text(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.title = ""
-        self._buf: list[str] = []
-        self._in_title = False
-        self.texts: list[str] = []
-
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        if tag == "title":
-            self._in_title = True
-            self._buf = []
-
-    def handle_endtag(self, tag: str) -> None:
-        if tag == "title" and self._in_title:
-            self.title = " ".join("".join(self._buf).split())
-            self._in_title = False
-
-    def handle_data(self, data: str) -> None:
-        if self._in_title:
-            self._buf.append(data)
-        else:
-            t = " ".join(data.split())
-            if t:
-                self.texts.append(t)
-
-
-def _squeeze(value: str) -> str:
-    return re.sub(r"\s+", " ", value).strip()
+def _load_wpeb() -> Any:
+    spec = importlib.util.spec_from_file_location("website_people_email_book", WPEB_PATH)
+    if spec is None or spec.loader is None:
+        raise ImportError("FINDER-FAILED: host/website_people_email_book.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 def live_opener(url: str) -> tuple[int, str]:
@@ -126,17 +104,21 @@ def probe_explee(opener: Opener = live_opener) -> dict[str, Any]:
 
 
 def set_context(html: str, source: str) -> dict[str, Any]:
-    parser = _Text()
-    parser.feed(html)
-    icp_m = re.search(r"data-icp[^>]*>([^<]+)", html, re.I)
-    icp = _squeeze(icp_m.group(1)) if icp_m else (parser.title or "unspecified ICP")
-    offer = parser.title or (parser.texts[0] if parser.texts else "unspecified offer")
+    website = _load_wpeb().extract_website(html, source)
+    offer = website.get("headline") or website.get("title") or "unspecified offer"
+    icp = website.get("icp") or "unspecified ICP"
     return {
         "source": source,
-        "offer": offer[:200],
-        "icp": icp[:200],
+        "offer": str(offer)[:200],
+        "icp": str(icp)[:200],
+        "book_url": website.get("book_url"),
+        "composed_from": "host/website_people_email_book.py#extract_website",
         "state": "INTEGRATED",
     }
+
+
+def choose_mode(asked_autopilot: bool) -> str:
+    return "autopilot" if asked_autopilot else "run_now"
 
 
 def generate_queries(context: dict[str, Any]) -> list[str]:
@@ -184,6 +166,44 @@ def draft_campaign(row: dict[str, Any], context: dict[str, Any]) -> dict[str, An
     }
 
 
+def search_extract(catalog: dict[str, Any]) -> list[dict[str, Any]]:
+    return list(catalog.get("prospects") or [])
+
+
+def approve_or_autopilot(asked_autopilot: bool) -> dict[str, Any]:
+    if asked_autopilot:
+        return {
+            "asked": True,
+            "state": "REFUSED",
+            "sent": False,
+            "booked": 0,
+            "note": "Autopilot send is refused until an owner mailbox exists. Refuse is not a send.",
+        }
+    return {
+        "asked": False,
+        "state": "UNASKED",
+        "sent": False,
+        "booked": 0,
+        "note": "Unasked Autopilot is not a send and not permission.",
+    }
+
+
+def sync_status(
+    drafts: list[dict[str, Any]],
+    autopilot: dict[str, Any],
+    explee: dict[str, Any],
+) -> dict[str, Any]:
+    return {
+        "sent": False,
+        "booked": 0,
+        "cash_usd": 0,
+        "drafts": len(drafts),
+        "autopilot": autopilot["state"],
+        "explee": explee["state"],
+        "state": "INTEGRATED",
+    }
+
+
 def measure(
     *,
     html: str,
@@ -193,27 +213,14 @@ def measure(
     opener: Opener = live_opener,
 ) -> dict[str, Any]:
     context = set_context(html, source)
+    mode = choose_mode(asked_autopilot)
     queries = generate_queries(context)
-    prospects = list(catalog.get("prospects") or [])
+    prospects = search_extract(catalog)
     scored = [enrich_score(p, context) for p in prospects]
     drafts = [draft_campaign(row, context) for row in scored if row["ready"] and row["fit"] >= 6]
-    if asked_autopilot:
-        autopilot = {
-            "asked": True,
-            "state": "REFUSED",
-            "sent": False,
-            "booked": 0,
-            "note": "Autopilot send is refused until an owner mailbox exists. Refuse is not a send.",
-        }
-    else:
-        autopilot = {
-            "asked": False,
-            "state": "UNASKED",
-            "sent": False,
-            "booked": 0,
-            "note": "Unasked Autopilot is not a send and not permission.",
-        }
+    autopilot = approve_or_autopilot(asked_autopilot)
     explee = probe_explee(opener)
+    status = sync_status(drafts, autopilot, explee)
     return {
         "kind": "AUTOGTM_SAME_LOOP",
         "schema": "commons-autogtm-same-loop/v1",
@@ -224,7 +231,7 @@ def measure(
         "steps": list(STEPS),
         "twin": {"autogtm": OPEN_TWIN, "explee_mcp": MCP_TWIN, "explee": EXPLEE_DOOR},
         "context": context,
-        "mode": "run_now",
+        "mode": mode,
         "queries": queries,
         "search": {
             "local_catalog": str(DEFAULT_PROSPECTS.relative_to(ROOT)),
@@ -236,11 +243,12 @@ def measure(
         "drafts": drafts,
         "autopilot": autopilot,
         "explee_api": explee,
-        "sent": False,
-        "booked": 0,
-        "cash_usd": 0,
+        "sent": status["sent"],
+        "booked": status["booked"],
+        "cash_usd": status["cash_usd"],
+        "status": status,
         "do_not_remint": list(DO_NOT_REMINT),
-        "state": "INTEGRATED",
+        "state": status["state"],
         "x": list(STEPS) + [EXPLEE_PROJECTS, OPEN_TWIN],
         "y": {
             "drafts": len(drafts),

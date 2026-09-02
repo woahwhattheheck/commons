@@ -136,6 +136,41 @@ class TestAutogtmSameLoop(unittest.TestCase):
         self.assertIn("/qualify", harbor)
         self.assertFalse((ROOT / "p/cursor-explee-skills-adopt-20260902-01.md").exists())
 
+    def test_composes_website_people_email_book_extract(self) -> None:
+        row = loop.measure(
+            html=HTML, source="fixture", catalog=CATALOG, opener=fake_401
+        )
+        self.assertEqual(
+            row["context"]["composed_from"],
+            "host/website_people_email_book.py#extract_website",
+        )
+        self.assertEqual(
+            row["context"]["book_url"],
+            "https://cal.com/tokenjunkielabs/intro",
+        )
+        self.assertIn("crash-resume", row["context"]["offer"].lower())
+
+    def test_named_eight_step_functions_run(self) -> None:
+        row = loop.measure(
+            html=HTML,
+            source="fixture",
+            catalog=CATALOG,
+            asked_autopilot=True,
+            opener=fake_401,
+        )
+        self.assertEqual(row["mode"], "autopilot")
+        self.assertEqual(row["status"]["sent"], False)
+        self.assertEqual(row["status"]["cash_usd"], 0)
+        self.assertEqual(row["status"]["explee"], "FINDER-FAILED")
+        self.assertEqual(loop.choose_mode(False), "run_now")
+        self.assertEqual(len(loop.search_extract(CATALOG)), len(CATALOG["prospects"]))
+
+    def test_sibling_gtm_doors_link_autogtm(self) -> None:
+        wpeb = (ROOT / "website-people-email-book.html").read_text(encoding="utf-8")
+        index = (ROOT / "lm-gtm-index.html").read_text(encoding="utf-8")
+        self.assertIn('href="./autogtm.html"', wpeb)
+        self.assertIn('href="./autogtm.html"', index)
+
 
 if __name__ == "__main__":
     unittest.main()
