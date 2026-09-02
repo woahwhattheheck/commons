@@ -1,1 +1,1 @@
-PLACEHOLDER
+@/tmp/gh_test_body.txt
