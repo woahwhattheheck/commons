@@ -9,7 +9,7 @@
     "same_id_same_bytes": "idempotent"
   },
   "counts": {
-    "DEGRADED": 0,
+    "DEGRADED": 1,
     "LIVE": 4,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
@@ -96,55 +96,52 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [
-        "packs/_template/day.md:8940fb578b074f057f4d3c6477d75543b6e5e560",
-        "8940fb578b074f057f4d3c6477d75543b6e5e560",
-        "packs/_template/day.md:917a7fe75c9b3472c11bcca07102d1cd4d34b372",
-        "917a7fe75c9b3472c11bcca07102d1cd4d34b372"
+        "packs/_template/paperwork.md:50804daf923551e36aed9368c371843d3a1fdc96",
+        "50804daf923551e36aed9368c371843d3a1fdc96"
       ],
-      "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
+      "capability": "Sold packs help the customer with required paperwork. Registration, EIN, sales tax, license, insurance, and contract slots live in packs/_template/paperwork.md. Slots stay OWNER_UNSET / HOLD_COUNSEL. Not legal advice. Not a Commons seat. Paperwork included is true only with a filled checklist.",
       "carrier": "CURSOR",
       "chat_ignored": false,
       "claimed_paths": [
-        "ground/BUSINESS_PACK_OPERATOR.md",
-        "ground/BUSINESS_PACK_OPERATOR.json",
-        "host/business_pack_operator.py",
-        "packs/_template/day.md",
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
         "business-packs.html",
-        "test_business_pack_operator.py"
+        "test_business_pack_paperwork.py"
       ],
       "claimed_paths_missing": [],
       "claimed_paths_present": [
-        "ground/BUSINESS_PACK_OPERATOR.md",
-        "ground/BUSINESS_PACK_OPERATOR.json",
-        "host/business_pack_operator.py",
-        "packs/_template/day.md",
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
         "business-packs.html",
-        "test_business_pack_operator.py"
+        "test_business_pack_paperwork.py"
       ],
       "dependencies": [
-        "business-pack-keep-sell-20260902-01"
+        "business-pack-keep-sell-20260902-01",
+        "cursor-business-pack-operator-day-20260902-01"
       ],
       "evidence_ids": [
-        "ev-operator-day-blob-20260902-01",
-        "ev-operator-day-git-20260902-01",
-        "ev-operator-day-live-20260902-01",
-        "ev-operator-day-receipt-20260902-01",
-        "ev-operator-day-source-20260902-01",
-        "ev-operator-day-tests-20260902-01",
-        "ev-operator-day-blob-20260902-02",
-        "ev-operator-day-live-20260902-02"
+        "ev-paperwork-blob-20260902-01",
+        "ev-paperwork-git-20260902-01",
+        "ev-paperwork-live-20260902-01",
+        "ev-paperwork-receipt-20260902-01",
+        "ev-paperwork-source-20260902-01",
+        "ev-paperwork-tests-20260902-01"
       ],
-      "file": "cursor-business-pack-operator-day-20260902-01.json",
-      "id": "cursor-business-pack-operator-day-20260902-01",
-      "last_change": "2026-09-02T05:48:00Z",
+      "file": "cursor-business-pack-paperwork-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-20260902-01",
+      "last_change": "2026-09-02T05:53:00Z",
       "live_status": "LIVE",
-      "main_sha": "7ccdc11a20fffe1d709e85d6dc7505077fe497b0",
-      "name": "Business pack employee-day runbook",
-      "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
+      "main_sha": "4ab36c1909163576f1d6e0c87c58d9049f932593",
+      "name": "Business pack required-paperwork checklist",
+      "next_gap": "Owner or counsel pastes jurisdiction forms. Do not invent an EIN, a percent, or a filing. Empty slots stay PAPERWORK_INCOMPLETE.",
       "owner_subsystem": "business-packs",
       "public_entrypoint": "business-packs.html",
       "receipts": [
-        "cursor-business-pack-operator-day-20260902-01"
+        "cursor-business-pack-paperwork-20260902-01"
       ],
       "related": {
         "boards": true,
@@ -153,8 +150,8 @@
         "resources": false
       },
       "resource_links": [
-        "ground/BUSINESS_PACK_OPERATOR.md",
-        "packs/_template/day.md",
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "packs/_template/paperwork.md",
         "business-packs.html",
         "ground/BUSINESS_PACKS.md",
         "ground/SLACK_CONTROL_PLANE.md"
@@ -163,8 +160,8 @@
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
-        "test_business_pack_operator.py",
-        "host/business_pack_operator.py"
+        "test_business_pack_paperwork.py",
+        "host/business_pack_paperwork.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -5308,10 +5305,86 @@
       "test_paths": [],
       "test_paths_missing": [],
       "test_status": "UNTESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/day.md:8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "packs/_template/day.md:917a7fe75c9b3472c11bcca07102d1cd4d34b372",
+        "917a7fe75c9b3472c11bcca07102d1cd4d34b372"
+      ],
+      "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "ground/BUSINESS_PACK_OPERATOR.json",
+        "host/business_pack_operator.py",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "test_business_pack_operator.py"
+      ],
+      "dependencies": [
+        "business-pack-keep-sell-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-operator-day-blob-20260902-01",
+        "ev-operator-day-git-20260902-01",
+        "ev-operator-day-live-20260902-01",
+        "ev-operator-day-receipt-20260902-01",
+        "ev-operator-day-source-20260902-01",
+        "ev-operator-day-tests-20260902-01",
+        "ev-operator-day-blob-20260902-02",
+        "ev-operator-day-live-20260902-02"
+      ],
+      "file": "cursor-business-pack-operator-day-20260902-01.json",
+      "id": "cursor-business-pack-operator-day-20260902-01",
+      "last_change": "2026-09-02T05:48:00Z",
+      "live_status": "DEGRADED",
+      "main_sha": "7ccdc11a20fffe1d709e85d6dc7505077fe497b0",
+      "name": "Business pack employee-day runbook",
+      "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "business-packs.html",
+      "receipts": [
+        "cursor-business-pack-operator-day-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_OPERATOR.md",
+        "packs/_template/day.md",
+        "business-packs.html",
+        "ground/BUSINESS_PACKS.md",
+        "ground/SLACK_CONTROL_PLANE.md"
+      ],
+      "rollup": "DEGRADED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_operator.py",
+        "host/business_pack_operator.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 90,
+  "n_features": 91,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

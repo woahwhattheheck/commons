@@ -1,0 +1,13 @@
+{
+  "blob": "50804daf923551e36aed9368c371843d3a1fdc96",
+  "feature_id": "cursor-business-pack-paperwork-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-live-20260902-01",
+  "kind": "LIVE_MEASUREMENT",
+  "note": "SHA-pinned raw paperwork sheet on current main. Not a Pages bake. Not legal advice. Not a Commons seat.",
+  "path": "packs/_template/paperwork.md",
+  "recorded_at": "2026-09-02T05:53:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "4ab36c1909163576f1d6e0c87c58d9049f932593",
+  "url": "https://raw.githubusercontent.com/woahwhattheheck/commons/4ab36c1909163576f1d6e0c87c58d9049f932593/packs/_template/paperwork.md"
+}

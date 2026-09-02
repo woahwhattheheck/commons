@@ -1,0 +1,10 @@
+{
+  "feature_id": "cursor-business-pack-paperwork-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-git-20260902-01",
+  "kind": "GIT_SHA",
+  "note": "Land commit that put the required-paperwork checklist on official main. OWNER_UNSET / HOLD_COUNSEL. Not legal advice.",
+  "recorded_at": "2026-09-02T05:53:00Z",
+  "schema": "commons-feature-evidence-v1",
+  "sha": "e7063d15838a7f9cb050500f094e3d42e64fee3c"
+}
