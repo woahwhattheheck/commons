@@ -128,6 +128,22 @@ class SlackServiceTagsTest(unittest.TestCase):
         kinds = {row["kind"] for row in result["slack_jobs"]}
         self.assertNotIn("OWNER_BLOCKER", kinds)
 
+    def test_notion_peer_connected_does_not_reopen_need(self) -> None:
+        spec = self.cat["services"]["notion"]["peer_harness_connected"]
+        self.assertEqual(spec["desk"], "GOAT")
+        self.assertIs(spec["this_process_tools"], False)
+        self.assertEqual(spec["notion_custom_mcp_field"], "UNSEEN_FROM_THIS_SEAT")
+        result = sst.route("@notion list databases", connected=["slack"])
+        self.assertEqual(result["tags"], ["notion"])
+        roads = {job["road"] for job in result["jobs"] if job["tag"] == "notion"}
+        self.assertIn("SLACK_CUSTOM_TOOL", roads)
+        self.assertNotIn("OWNER_SIGNIN", roads)
+        self.assertNotIn("IN_HARNESS", roads)
+        custom = next(j for j in result["slack_jobs"] if j["kind"] == "SLACK_CUSTOM_TOOL")
+        self.assertEqual(custom["peer_desk"], "GOAT")
+        kinds = {row["kind"] for row in result["slack_jobs"]}
+        self.assertNotIn("OWNER_BLOCKER", kinds)
+
     def test_cli_json(self) -> None:
         proc = subprocess.run(
             [

@@ -154,6 +154,21 @@ class SlackServiceTagWorkerTest(unittest.TestCase):
         self.assertNotIn("OWNER_BLOCKER", blob)
         self.assertNotIn("authentication required", blob.lower())
 
+    def test_notion_peer_connected_skips_new_need(self) -> None:
+        posts = worker.posts_for_message(
+            "@notion list databases",
+            channel="C0BU51F1PL3",
+            ts="1788322480.169879",
+            connected=["slack"],
+        )
+        channels = {row["channel"] for row in posts}
+        self.assertIn("C0BU51F1PL3", channels)
+        self.assertNotIn("C0BUFA9G23E", channels)
+        blob = "\n".join(row["text"] for row in posts)
+        self.assertIn("SLACK_CUSTOM_TOOL", blob)
+        self.assertIn("peer_desk=GOAT", blob)
+        self.assertNotIn("OWNER_BLOCKER", blob)
+
 
 if __name__ == "__main__":
     unittest.main()

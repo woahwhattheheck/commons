@@ -182,6 +182,16 @@
       "tag": "notion",
       "slack_tool": "@notion",
       "needs_owner_signin": true,
+      "peer_harness_connected": {
+        "desk": "GOAT",
+        "source_channel": "C0BUFA9G23E",
+        "source_ts": "1788322480.169879",
+        "this_process_tools": false,
+        "commons_spark_mcp": "https://commons-spark-mcp.vercel.app/mcp",
+        "commons_spark_mcp_measured": "initialize HTTP 200 serverInfo.name=commons version=1.4.0 no auth; tools/list includes discover_commons_capabilities",
+        "notion_custom_mcp_field": "UNSEEN_FROM_THIS_SEAT",
+        "note": "GOAT measured Notion Cursor connector tools live. This cloud seat MCP catalog has no notion namespace. Slack custom-tool remainder; do not reopen NEED. Commons Spark MCP URL is live; Notion-side Custom MCP field not visible here so not OWNER ACTION DONE."
+      },
       "in_harness_when": ["notion"]
     },
     "linear": {
