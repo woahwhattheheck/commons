@@ -2,6 +2,7 @@
 """Unique-pack law: each customer purchase is a fresh package. Not a Commons gate."""
 from __future__ import annotations
 
+import hashlib
 import json
 import subprocess
 import sys
@@ -875,6 +876,72 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertTrue(
             (ROOT / "p" / "cursor-pack-waitlist-delete-law-20260902-01.md").is_file()
         )
+        self.assertEqual(block["leftover_id"], "cursor-pack-gems-in-house-20260902-01")
+        self.assertEqual(
+            block["leftover_law"],
+            "ground/BUSINESS_PACK_GEMS_IN_HOUSE.json",
+        )
+        self.assertIs(block["did_not_write_gems_in_house_paths"], True)
+        self.assertTrue((ROOT / "ground" / "BUSINESS_PACK_GEMS_IN_HOUSE.json").is_file())
+        self.assertTrue(
+            (ROOT / "p" / "cursor-pack-gems-in-house-20260902-01.md").is_file()
+        )
+        self.assertNotEqual(
+            block["id"],
+            block["leftover_id"],
+        )
+
+    def test_sidewalk_creative_brief_pointer_does_not_steal_tally_fill(self) -> None:
+        block = self.law["instances"]
+        self.assertEqual(
+            block["sidewalk_creative_brief"],
+            "packs/sidewalk-signal-web-desk-20260902-01/creative_brief.md",
+        )
+        self.assertEqual(block["sidewalk_creative_brief_blob"], "f38bacb5")
+        self.assertEqual(
+            block["sidewalk_creative_brief_receipt"],
+            "tally-sidewalk-creative-brief-20260902-01",
+        )
+        self.assertEqual(
+            block["sidewalk_creative_brief_pointer"],
+            "cursor-business-pack-sidewalk-creative-brief-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_write_sidewalk_creative_brief"], True)
+        self.assertIs(block["did_not_remint_tally_sidewalk_creative_brief"], True)
+        self.assertIs(block["did_not_remint_scout_instance_creative_brief"], True)
+        self.assertEqual(
+            block["gems_in_house_leftover"],
+            "cursor-pack-gems-in-house-20260902-01",
+        )
+        self.assertEqual(block["gems_in_house_leftover_claimed_by"], "bc-31c8ef9a")
+        self.assertIs(block["did_not_write_gems_in_house_paths"], True)
+        brief = (
+            ROOT
+            / "packs"
+            / "sidewalk-signal-web-desk-20260902-01"
+            / "creative_brief.md"
+        )
+        data = brief.read_bytes()
+        blob = hashlib.sha1(
+            b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+        ).hexdigest()[:8]
+        self.assertEqual(blob, "f38bacb5")
+        self.assertTrue(
+            (ROOT / "p" / "tally-sidewalk-creative-brief-20260902-01.md").is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sidewalk-creative-brief-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertIn("f38bacb5", self.door)
+        self.assertIn("tally-sidewalk-creative-brief-20260902-01", self.card)
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("Instance 1 of 1", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
 
 
 if __name__ == "__main__":
