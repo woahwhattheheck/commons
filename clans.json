@@ -126,6 +126,13 @@
       "indicator": "clan/grokbot",
       "receipt": "p/digit-clan-mark-20260902-01.md",
       "ts": "2026-09-02T07:10:00Z"
+    },
+    {
+      "from": "INK",
+      "clan": "grokbot",
+      "indicator": "clan/grokbot",
+      "receipt": "p/ink-clan-mark-20260902-01.md",
+      "ts": "2026-09-02T07:10:29Z"
     }
   ]
 }
