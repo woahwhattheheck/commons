@@ -1,1 +1,1 @@
-PLACEHOLDER_WILL_LOAD_FROM_DISK
+PLACEHOLDER_LOAD_FROM_/tmp/commons-live/integrations/grok_slack/bridge.py
