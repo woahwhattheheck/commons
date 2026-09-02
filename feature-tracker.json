@@ -10,11 +10,11 @@
   },
   "counts": {
     "DEGRADED": 1,
-    "LIVE": 3,
+    "LIVE": 4,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 84
+    "TESTED": 83
   },
   "features": [
     {
@@ -89,6 +89,75 @@
       "test_paths": [
         "test_arbitrage.py",
         "revenue/arbitrage/opportunity.schema.json"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "packs/_template/paperwork.md:50804daf923551e36aed9368c371843d3a1fdc96",
+        "50804daf923551e36aed9368c371843d3a1fdc96"
+      ],
+      "capability": "Factory paperwork checklist for sold packs. Registration, EIN, sales tax, license, insurance, and contract slots stay OWNER_UNSET. Counsel stays HOLD_COUNSEL. This feature does not invent plant, desk, or ToS numbers.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "ground/BUSINESS_PACK_PAPERWORK.json",
+        "host/business_pack_paperwork.py",
+        "packs/_template/paperwork.md",
+        "test_business_pack_paperwork.py"
+      ],
+      "dependencies": [
+        "cursor-tjlabs-pack-tos-20260902-01"
+      ],
+      "evidence_ids": [
+        "ev-paperwork-receipt-20260902-01",
+        "ev-paperwork-source-20260902-01",
+        "ev-paperwork-tests-20260902-01",
+        "ev-paperwork-blob-20260902-01",
+        "ev-paperwork-git-20260902-01",
+        "ev-paperwork-live-20260902-01"
+      ],
+      "file": "cursor-business-pack-paperwork-20260902-01.json",
+      "id": "cursor-business-pack-paperwork-20260902-01",
+      "last_change": "2026-09-02T05:53:00Z",
+      "live_status": "LIVE",
+      "main_sha": "4ab36c1909163576f1d6e0c87c58d9049f932593",
+      "name": "Business pack factory paperwork checklist",
+      "next_gap": "Owner pastes registration/EIN/sales-tax/license/insurance/contract facts and counsel clears. Do not invent ToS percent, plant, or desk numbers.",
+      "owner_subsystem": "business-packs",
+      "public_entrypoint": "packs/_template/paperwork.md",
+      "receipts": [
+        "ev-paperwork-receipt-20260902-01"
+      ],
+      "related": {
+        "boards": true,
+        "current_work": false,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "ground/BUSINESS_PACK_PAPERWORK.md",
+        "packs/_template/paperwork.md",
+        "ground/BUSINESS_PACKS.md",
+        "ground/TJLABS_PACK_TERMS.md"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_business_pack_paperwork.py",
+        "host/business_pack_paperwork.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -1496,69 +1565,6 @@
       "test_paths": [
         "test_current_work.py",
         "host/current_work.py"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTED"
-    },
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [],
-      "capability": "Factory paperwork checklist for sold packs. Registration, EIN, sales tax, license, insurance, and contract slots stay OWNER_UNSET. Counsel stays HOLD_COUNSEL. This feature does not invent plant, desk, or ToS numbers.",
-      "carrier": "CURSOR",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "ground/BUSINESS_PACK_PAPERWORK.md",
-        "ground/BUSINESS_PACK_PAPERWORK.json",
-        "host/business_pack_paperwork.py",
-        "packs/_template/paperwork.md",
-        "test_business_pack_paperwork.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "ground/BUSINESS_PACK_PAPERWORK.md",
-        "ground/BUSINESS_PACK_PAPERWORK.json",
-        "host/business_pack_paperwork.py",
-        "packs/_template/paperwork.md",
-        "test_business_pack_paperwork.py"
-      ],
-      "dependencies": [
-        "cursor-tjlabs-pack-tos-20260902-01"
-      ],
-      "evidence_ids": [
-        "ev-paperwork-receipt-20260902-01",
-        "ev-paperwork-source-20260902-01",
-        "ev-paperwork-tests-20260902-01"
-      ],
-      "file": "cursor-business-pack-paperwork-20260902-01.json",
-      "id": "cursor-business-pack-paperwork-20260902-01",
-      "last_change": "2026-09-02T05:50:00Z",
-      "live_status": "UNMEASURED",
-      "main_sha": "",
-      "name": "Business pack factory paperwork checklist",
-      "next_gap": "Owner pastes registration/EIN/sales-tax/license/insurance/contract facts and counsel clears. Do not invent ToS percent, plant, or desk numbers.",
-      "owner_subsystem": "business-packs",
-      "public_entrypoint": "packs/_template/paperwork.md",
-      "receipts": [
-        "ev-paperwork-receipt-20260902-01"
-      ],
-      "related": {
-        "boards": true,
-        "current_work": false,
-        "profitability": true,
-        "resources": false
-      },
-      "resource_links": [
-        "ground/BUSINESS_PACK_PAPERWORK.md",
-        "packs/_template/paperwork.md",
-        "ground/BUSINESS_PACKS.md",
-        "ground/TJLABS_PACK_TERMS.md"
-      ],
-      "rollup": "TESTED",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_business_pack_paperwork.py",
-        "host/business_pack_paperwork.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"

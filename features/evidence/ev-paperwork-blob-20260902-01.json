@@ -1,0 +1,11 @@
+{
+  "blob": "50804daf923551e36aed9368c371843d3a1fdc96",
+  "feature_id": "cursor-business-pack-paperwork-20260902-01",
+  "from": "UNSEATED",
+  "id": "ev-paperwork-blob-20260902-01",
+  "kind": "BLOB",
+  "note": "Current paperwork sheet on main after the included-claim compose. OWNER_UNSET / HOLD_COUNSEL. Not legal advice.",
+  "path": "packs/_template/paperwork.md",
+  "recorded_at": "2026-09-02T05:53:00Z",
+  "schema": "commons-feature-evidence-v1"
+}
