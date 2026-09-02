@@ -72,6 +72,18 @@ TYPE owns minting. This template does not mint.
 A pasted link is still not authorization, settlement, payout, or cash.
 This instance's checkout is its own. Do not reuse another customer's Payment Link as identical inventory.
 
+## 5c. After-payment thanks door (pixel slot)
+
+Additive leftover `scout-demand-pack-door-thanks-pixel-20260902-01`. Do not remint that id.
+
+Stripe Payment Links complete on stripe.com, so X Pixel `Purchase` cannot fire unless after-payment redirect lands on a page we control.
+
+- Door: [`packs/thanks.html`](../packs/thanks.html)
+- Pages: `https://woahwhattheheck.github.io/commons/packs/thanks.html?value=TIER`
+- Pixel ID slot is owner-filled. Empty slot loads no third-party scripts.
+- Do not mint a pixel ID, ads account, or spend here.
+- Owner sets the Payment Link after-payment redirect to that URL with this instance's tier (`20` / `50` / `100` / `200` / `1000` / `10000`).
+
 ## 5b. Mystery box / the nuts
 
 Each price pool ($20 / $100 / $200 / $1000 / $10k) may mix in rare, extremely valuable ideas. Chance to draw **the nuts**.
