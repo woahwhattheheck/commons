@@ -258,6 +258,19 @@ class SparkMcpTests(unittest.TestCase):
                 head.getheader("MCP-Protocol-Version"), cm.PROTOCOL_VERSION
             )
 
+            connection.request("GET", "/mcp")
+            opened = connection.getresponse()
+            discovery = json.loads(opened.read().decode("utf-8"))
+            self.assertEqual(opened.status, 200)
+            self.assertEqual(discovery["name"], "commons")
+            self.assertEqual(discovery["version"], cm.SERVER_VERSION)
+            self.assertEqual(discovery["auth"], "none")
+            self.assertTrue(discovery["open_door"])
+            self.assertIn("discover_commons_capabilities", discovery["tools"])
+            self.assertIn("get_send_link", discovery["tools"])
+            self.assertFalse(discovery.get("login"))
+            self.assertFalse(discovery.get("oauth"))
+
             connection.request(
                 "GET", "/.well-known/oauth-protected-resource/mcp"
             )

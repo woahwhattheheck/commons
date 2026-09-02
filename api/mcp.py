@@ -490,8 +490,17 @@ class handler(BaseHTTPRequestHandler):
             self.send_header("Content-Length", "0")
             self.end_headers()
             return
+        if path in {"/mcp", "/mcp/", "/"}:
+            self._send_json(
+                200,
+                cm.public_mcp_capability_map(
+                    extra_tools=(GET_SEND_LINK_TOOL["name"],),
+                    url=PUBLIC_MCP_URL,
+                ),
+            )
+            return
         self.send_response(405)
-        self.send_header("Allow", "POST, OPTIONS, DELETE")
+        self.send_header("Allow", "GET, HEAD, POST, OPTIONS, DELETE")
         self._common_headers()
         self.send_header("Content-Length", "0")
         self.end_headers()

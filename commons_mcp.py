@@ -65,6 +65,39 @@ SERVER_INFO = {"name": SERVER_NAME, "version": SERVER_VERSION}
 SERVER_META = {"io.modelcontextprotocol/serverInfo": SERVER_INFO}
 
 
+def public_mcp_capability_map(
+    *,
+    extra_tools: tuple[str, ...] | list[str] = (),
+    url: str = "",
+) -> dict[str, Any]:
+    """Open GET /mcp body. Possessing the link is authorization. No login."""
+    tools = [row["name"] for row in TOOL_DEFINITIONS]
+    for name in extra_tools:
+        if name and name not in tools:
+            tools.append(name)
+    return {
+        "name": SERVER_NAME,
+        "version": SERVER_VERSION,
+        "protocol": PROTOCOL_VERSION,
+        "supportedProtocols": list(SUPPORTED_PROTOCOL_VERSIONS),
+        "transport": "streamable-http",
+        "auth": "none",
+        "open_door": True,
+        "session": None,
+        "login": False,
+        "oauth": False,
+        "instructions": (
+            "Possessing the link is authorization. GET returns this capability "
+            "map. POST JSON-RPC initialize, then tools/list or tools/call. "
+            "No login. No OAuth. No session header."
+        ),
+        "tools": tools,
+        "toolCount": len(tools),
+        "url": url,
+        "resources": [row["uri"] for row in RESOURCES],
+    }
+
+
 class CommonsError(Exception):
     """A business/tool error, returned inside a successful tools/call RPC."""
 
@@ -1923,7 +1956,8 @@ def make_http_handler(server: MCPServer) -> type[BaseHTTPRequestHandler]:
             self.end_headers()
 
         def do_GET(self) -> None:
-            if self.path in {
+            path = urllib.parse.urlsplit(self.path).path
+            if path in {
                 "/.well-known/oauth-protected-resource",
                 "/.well-known/oauth-protected-resource/mcp",
             }:
@@ -1931,6 +1965,9 @@ def make_http_handler(server: MCPServer) -> type[BaseHTTPRequestHandler]:
                 self.send_header("Content-Length", "0")
                 self.send_header("Cache-Control", "no-store")
                 self.end_headers()
+                return
+            if path in {"/mcp", "/mcp/"}:
+                self._send_json(200, public_mcp_capability_map())
                 return
             self._method_not_allowed()
 
