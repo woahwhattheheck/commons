@@ -151,6 +151,10 @@ class TestResourceLedger(unittest.TestCase):
             "codex-google-research-grok-automation-resource-delta-20260902-01",
         )
         self.assertIn(
+            "codex-upwork-marketplace-capacity-activation-20260902-01",
+            raw.get("supersedes_source_ids") or [],
+        )
+        self.assertIn(
             "codex-business-pack-factory-activation-20260902-01",
             raw.get("supersedes_source_ids") or [],
         )
@@ -520,6 +524,17 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             office["last_receipt"],
             "codex-resource-master-delta-engine-activation-20260901-01",
+        )
+        upwork = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "upwork-marketplace-account"
+        )
+        self.assertEqual(upwork["stage"], "REACHABLE")
+        self.assertEqual(upwork["condition"], "CONSTRAINED")
+        self.assertEqual(
+            upwork["last_receipt"],
+            "codex-upwork-marketplace-capacity-activation-20260902-01",
         )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
