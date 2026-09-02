@@ -104,6 +104,22 @@ class WaitlistDeleteTest(unittest.TestCase):
         self.assertNotIn("person@example.com", text)
         self.assertNotIn("@", json.dumps(result))
 
+    def test_delete_law_card_does_not_remint_waitlist(self) -> None:
+        path = ROOT / "ground" / "BUSINESS_PACK_WAITLIST_DELETE.json"
+        if not path.is_file():
+            self.skipTest("delete law card not in this tree")
+        law = json.loads(path.read_text(encoding="utf-8"))
+        dumped = json.dumps(law)
+        self.assertNotIn("@", dumped)
+        self.assertEqual(law["checkout"], "NOT_MINTED")
+        self.assertEqual(law["sends"], 0)
+        self.assertFalse(law["public_lookup"])
+        self.assertEqual(law["helper"], "host/pack_waitlist_delete.py")
+        self.assertTrue(law["did_not_overwrite_waitlist_door"])
+        self.assertTrue(law["did_not_overwrite_waitlist_law"])
+        self.assertEqual(law["clan"], "cursor")
+        self.assertEqual(law["scout_demand_id"], "scout-demand-pack-door-waitlist-20260902-01")
+
 
 if __name__ == "__main__":
     unittest.main()
