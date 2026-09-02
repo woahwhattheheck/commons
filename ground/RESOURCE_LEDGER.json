@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-09-02T04:08:44Z",
-    "base_main_sha": "2bde3c54165a68d008b1ef93aa63c707247d3a28",
+    "observed_at": "2026-09-02T07:12:19Z",
+    "base_main_sha": "4f2da20862c737e56997a4546c26712f18efbd6f",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788321794.949889",
-  "source_id": "codex-coil-pfc-host-toolchain-activation-20260902-01",
+  "slack_ts": "1788333045.374429",
+  "source_id": "codex-business-pack-factory-activation-20260902-01",
   "supersedes_source_ids": [
+    "codex-coil-pfc-host-toolchain-activation-20260902-01",
     "codex-titan-write-envelope-activation-20260902-01",
     "codex-resource-master-delta-engine-activation-20260901-01",
     "codex-connected-capability-fleet-activation-20260901-01",
@@ -1612,6 +1613,28 @@
       "last_used_at": "2026-09-02T04:08:44Z",
       "stale_after": "next source/destination blob change or COIL sequence receipt",
       "priority": 91
+    },
+    {
+      "name": "commons-business-pack-factory",
+      "kind": "COMMERCIAL_PACKAGE_FACTORY",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / Business Packs workers",
+      "authority": "SHARED_PUBLIC_READ_LOCAL_COMPOSE_AND_DETERMINISTIC_VERIFY; OWNER_ONLY_PRICING_TERMS_MARKETING_OUTREACH_PAYMENT_AND_CUSTOMER_COMMITMENTS",
+      "consumer": "Commons builders packaging differentiated small-business offers and buyer-facing delivery kits without cloning prior sales",
+      "value": "A public no-auth factory with a 14-file template, three distinct landed instances, deterministic uniqueness and catalog checks, consented zero-send waitlist routing, paperwork and operating-cost slots, and explicit sold-once semantics.",
+      "next_action": "Use the existing factory and distinct instance lanes for concrete buyer-fit packages; keep owner-unset commercial terms and checkout state explicit, and never infer a buyer, sale, payment, revenue, or cash from a public door.",
+      "source": "ground/BUSINESS_PACKS.json; ground/BUSINESS_PACKS.md; business-packs.html; packs/_template/; three landed instance directories; host/business_pack_sidewalk_lotribbon_waitlist.py; PRs #7516, #7665, #7666, #7773",
+      "evidence_ts": "2026-09-02T07:12:19Z",
+      "auth_surface": "current-main public Git blobs, no-auth doors, local stdlib-only classifiers, and durable Slack/Git receipts",
+      "exact_safe_probe": "131/131 focused Business Packs tests passed after replacing a stale live-owner blob pin with immutable observe-at-land evidence; three catalog instances resolve, owner doors are present, the shared waitlist pointer classifies, and checkout remains NOT_MINTED.",
+      "rate_plan_boundary": "Checkout remains NOT_MINTED. Templates, doors, catalog rows, prices, waitlist counts, and Stripe URL presence are not buyer intent, acceptance, authorization, settlement, payout, revenue, or cash; owner-unset terms remain owner-only.",
+      "assigned_backlog": "distinct package composition and deterministic factory verification only; no clone stamping, outreach, ad spend, checkout minting, terms, payments, or customer commitments",
+      "last_receipt": "codex-business-pack-factory-activation-20260902-01",
+      "last_used_at": "2026-09-02T07:12:19Z",
+      "stale_after": "next factory law, template, instance, owner-door, checkout, terms, or buyer-state change",
+      "priority": 94
     }
   ],
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED"

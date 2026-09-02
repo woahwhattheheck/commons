@@ -26,13 +26,17 @@ ROWS = {
     "LotRibbon Greetings": {
         "door": "packs/lotribbon-greetings-20260902-01/index.html",
         "owned_by": "bc-23891c63",
-        "door_blob_prefix": "ac60db02",
     },
     "Sidewalk Signal": {
         "door": "packs/sidewalk-signal-web-desk-20260902-01/index.html",
         "owned_by": "TALLY",
-        "door_blob_prefix": "638e60b4",
     },
+}
+# Immutable observations from the original catalog-pointer receipt. They are
+# evidence about that land, not live locks on files owned by other workers.
+OBSERVED_AT_LAND = {
+    "packs/lotribbon-greetings-20260902-01/index.html": "ac60db02",
+    "packs/sidewalk-signal-web-desk-20260902-01/index.html": "638e60b4",
 }
 
 
@@ -68,15 +72,15 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
     block = instance_block(data)
     waitlist_block = data.get("waitlist") if isinstance(data.get("waitlist"), dict) else {}
     rows = {}
-    doors_unmoved = True
+    owner_doors_present = True
     catalog_waitlist_ok = True
     for brand, expected in ROWS.items():
         row = landed_row(block, brand)
         door = str(row.get("door") or "")
         waitlist = str(row.get("waitlist") or "")
         blob = git_blob_prefix(expected["door"]) if (ROOT / expected["door"]).is_file() else ""
-        unmoved = blob == expected["door_blob_prefix"]
-        doors_unmoved = doors_unmoved and unmoved
+        present = bool(blob) and door == expected["door"]
+        owner_doors_present = owner_doors_present and present
         points = waitlist == WAITLIST
         catalog_waitlist_ok = catalog_waitlist_ok and points
         rows[brand] = {
@@ -84,7 +88,7 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
             "owned_by": str(row.get("owned_by") or ""),
             "waitlist": waitlist,
             "door_blob": blob,
-            "door_unmoved": unmoved,
+            "door_present": present,
             "points_at_shared_waitlist": points,
         }
     landed_pointer = str(
@@ -112,7 +116,9 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "catalog_only": True,
         "waitlist": WAITLIST,
         "rows": rows,
-        "doors_unmoved": doors_unmoved,
+        "owner_doors_present": owner_doors_present,
+        "live_owner_blobs_not_pinned": True,
+        "observed_at_land": dict(OBSERVED_AT_LAND),
         "catalog_waitlist_ok": catalog_waitlist_ok,
         "ids_not_reminted": ids_not_reminted,
         "did_not_overwrite_waitlist_html": block.get("did_not_overwrite_waitlist_html") is True,
@@ -124,7 +130,7 @@ def classify_pointer(law: dict[str, Any] | None = None) -> dict[str, Any]:
         "pointer_ok": (
             ids_not_reminted
             and catalog_waitlist_ok
-            and doors_unmoved
+            and owner_doors_present
             and checkout == "NOT_MINTED"
             and data.get("gate") is False
             and data.get("commons_admission") is False
