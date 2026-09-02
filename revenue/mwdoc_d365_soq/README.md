@@ -1,78 +1,89 @@
-# MWDOC RFQ FIN. 2026-001 — compliance/readiness review
+# MWDOC RFQ FIN. 2026-001 — partner qualification and SOQ packet
 
 **Commons ID:** `mwdoc-d365-partner-soq-packet-20260902-01`  
-**Observed:** 2026-09-02  
-**Decision:** **NO-GO AS PRIME / CONDITIONAL SUBCONTRACTOR ONLY**
+**Observed:** 2026-09-02T01:35:00Z  
+**Decision:** **NO_GO_AS_PRIME; PROVISIONAL_PARTNER_RESEARCH_ONLY; CONDITIONAL_SUBCONTRACTOR_ONLY**
 
-This is an internal evidence review, not an SOQ, legal opinion, partner recommendation, customer reference, bid, submission, award, or qualification claim.
+This public-safe packet is research and a draft-only partnership fit aid. It is not an SOQ, legal opinion, teaming agreement, partner-status claim, reference packet, bid, submission, award, acceptance, revenue, or cash claim.
 
-## Executive finding
+## Official requirement snapshot
 
-TokenJunkieLabs/Commons should **not submit as prime on current evidence**. The official RFQ says a response is nonresponsive unless the firm demonstrates: (1) Microsoft partner status in good standing with a D365 F&O practice, (2) ability to operate in MWDOC's GCC Moderate tenant, and (3) two public-agency D365 F&O support references. None is evidenced for TokenJunkieLabs.
+- SOQ due: `2026-09-25T17:00:00-07:00`; attachment limit 25 MB.
+- Environment: Microsoft Dynamics 365 Finance & Operations 10.0.4x; GCC Moderate U.S. Government; PPAC unified environments.
+- Start-date discrepancy: `2026-10-26` in Required Content versus `2026-09-21` in Evaluation. State: **ADDENDUM_REQUIRED**.
+- Mandatory evidence is fail-closed: current Microsoft standing, D365 F&O practice, exact GCC Moderate/PPAC experience, two authorized public-agency support references, and named coverage/availability.
 
-Commons does evidence deterministic synthetic regression, replay, reconciliation, explicit HOLD states, hash receipts, Power BI-shaped export-contract tests, and fail-closed connector behavior. Those are supportive engineering patterns only—not D365, GCC, governmental-accounting, public-agency, customer, or production evidence.
+## Scored partner research targets
 
-## Dates and source status
+| Company | Exact target persona | Score | Gate state | Primary unresolved evidence |
+|---|---|---:|---|---|
+| HSO | U.S. Public Sector D365 Practice Lead or Managed Services Principal | 50/100 | PRIME_GATE_FAIL_CLOSED | microsoft_partner_good_standing, gcc_moderate_ppac, two_public_agency_support_references, pacific_coverage_and_start |
+| RSM US LLP | Public Sector Microsoft Business Applications Practice Leader | 45/100 | PRIME_GATE_FAIL_CLOSED | microsoft_partner_good_standing, gcc_moderate_ppac, two_public_agency_support_references, pacific_coverage_and_start |
+| Hitachi Solutions America | Government Industry Lead or D365 Managed Services Principal | 40/100 | PRIME_GATE_FAIL_CLOSED | microsoft_partner_good_standing, gcc_moderate_ppac, two_public_agency_support_references, pacific_coverage_and_start |
+| Consultadd Public Services | Public Sector ERP Delivery Executive or D365 Program Principal | 27.5/100 | PRIME_GATE_FAIL_CLOSED | microsoft_partner_good_standing, d365_fo_practice, gcc_moderate_ppac, two_public_agency_support_references, pacific_coverage_and_start |
 
-- Official RFQ: [PDF](https://www.mwdoc.com/wp-content/uploads/2026/08/RFQ_FIN_2026-08-01_D365_Post_Go-Live_Support.pdf); [opportunity page](https://www.mwdoc.com/opportunities/rfps-rfqs/).
-- Base-RFQ questions closed August 31, 2026 at 5:00 p.m. Pacific.
-- MWDOC's mass notice says the Q&A addendum is delayed until/by September 4; [internal notice receipt](https://tokenjunkielabs.slack.com/archives/C0BTURDA3PW/p1788309831051499). It was not on the official opportunity page when observed.
-- SOQ: September 25, 2026 at 5:00 p.m. Pacific; electronic only, attachment under 25 MB.
-- Start target: October 26, 2026.
-- Addendum check: Required Content says ability to begin October 26, while Evaluation says September 21 (before SOQ submission). Do not silently choose one.
+Scores rank public research evidence only. They never override mandatory gates. Company pages are evidence sources, not endorsements or outreach authorization.
 
-## Requirement-to-evidence matrix
+## Two public-agency reference slots
 
-| RFQ requirement | Commons/TokenJunkieLabs evidence | Readiness |
-|---|---|---|
-| Microsoft partner in good standing; demonstrated D365 F&O practice | None located | **GAP — prime nonresponsive** |
-| GCC Moderate provisioning/operation; disclose commercial-only history | None located | **GAP — prime nonresponsive** |
-| Two public-agency D365 F&O support references | Both slots empty | **GAP — prime nonresponsive** |
-| D365 functional support across GL, AP, AR, cash/bank, fixed assets, budgeting, procurement | No D365 engagement evidence | **GAP** |
-| Financial Reporting, Power BI, Excel/Power Query within GCC constraints | [Synthetic Power BI contract](./readiness.json), explicitly non-D365/non-live | **SUPPORTING PATTERN ONLY** |
-| Administrator and end-user training; written guides; knowledge transfer | No D365 training delivery evidence | **GAP** |
-| Non-production update testing, regression library, MWDOC sign-off before production | Deterministic synthetic tests and HOLD patterns exist; no D365/tenant/update evidence | **SUPPORTING PATTERN ONLY** |
-| Roles, segregation of duties, licensing, provisioning/access reviews | None located | **GAP** |
-| Paylocity, ACH/NACHA, Positive Pay, DMF, OData/BYOD, Power Platform automation | None located | **GAP** |
-| Pacific-time support model and 2-business-hour Severity-1 response | No named bench or coverage commitment | **GAP** |
-| Named staff, October 26 availability, conflicts, resumes | Not assembled/authorized | **GAP** |
-| Fully burdened rates and prepaid blocks; no fixed fee/NTE | Template only; no authorized rates | **GAP** |
-| Standard agreement and insurance | No executed review or certificates located | **GAP** |
+Both slots remain **OWNER_PRIVATE_EVIDENCE_REQUIRED**. Each must prove the agency's legal identity; exact D365 Finance/F&O product; post-go-live support scope and dates; relevant modules and governmental fund-accounting similarity; GCC/PPAC or explicit commercial-only history; an authorized reference contact with name, title, phone, and email held only in the owner-private record; permission to share with MWDOC; prime/sub and personnel attribution; dated source evidence; and a non-secret private receipt ID. No contact coordinates appear here.
 
-## Non-deceptive prime/subcontractor structure
+## Narrow subcontract role
 
-**Prime:** a separately verified Microsoft partner that itself demonstrates D365 F&O, GCC Moderate/PPAC unified environments, public-sector fund accounting, two qualifying public-agency references, a named functional/technical/reporting/training bench, required response coverage, insurance, and agreement acceptance.
+**NARROW_NON_PRODUCTION_AP_TO_REPORT_REGRESSION_RECONCILIATION**
 
-**TokenJunkieLabs as optional narrow subcontractor:** non-production AP-to-report regression/reconciliation controls only—test-case design, deterministic replay, exception/HOLD logic, totals reconciliation, evidence receipts, and documentation—under the prime's architecture, GCC security/onboarding, change control, production authority, and MWDOC sign-off.
+- Document synthetic or owner-provided non-confidential test cases from vendor-invoice intake and approval through posting.
+- Exercise non-production workflows only under prime and MWDOC change control.
+- Reconcile ledger, Financial Reporting, Power BI and Excel outputs to approved expected totals.
+- Produce deterministic defect evidence, replay receipts, regression-library documentation and knowledge-transfer artifacts.
 
-The prime must retain all claims and accountability for RFQ responsiveness, Microsoft status, GCC tenant work, D365 configuration/reporting/security/licensing/integrations/update operations, staffing, references, SLA, rates/prepaid blocks, insurance, conflicts, contract, signatures, submission, and production validation.
+Exclusions:
+- No production access, configuration change, deployment, release or independent submission.
+- No claim of D365, GCC, public-agency, customer or Microsoft partner experience from Commons synthetic artifacts.
+- No credentials, private agency data, regulated data, billing authority, tenant administration or SLA ownership.
+- Prime retains eligibility, tenant, staffing, reference, rate, insurance, agreement, submission and production accountability.
 
-Never present Commons synthetic artifacts as D365 experience, customer work, GCC validation, production readiness, or a public-agency reference. No production access or autonomous deployment/release is proposed.
+## Truthful partnership outreach draft
 
-## Partner screen
+**State:** `DRAFT_ONLY` · `NO_SEND_AUTHORIZATION` · `NO_TEAMING_CLAIM`  
+**Target:** HSO — U.S. Public Sector D365 Practice Lead or Managed Services Principal  
+**Subject:** Potential bounded subcontract role for MWDOC D365 F&O post-go-live SOQ
 
-| Candidate | Role | Verified mandatory gates | Score | Status |
-|---|---|---:|---:|---|
-| TokenJunkieLabs / Commons | Narrow subcontractor only | 0/3 | 0% | Not prime-eligible on current evidence |
-| Qualified D365 F&O GCC public-sector firm (not identified) | Prime template | 0/3 | 0% | Unverified |
+> Hello [Public Sector D365 Practice Lead],
+> We are evaluating whether there is a fit to support a qualified prime responding to MWDOC RFQ FIN. 2026-001. We are not claiming prime eligibility, Microsoft partner status, GCC tenant experience, or public-agency references.
+> Our proposed bounded role is non-production AP-to-report regression and reconciliation support: documented test cases from vendor-invoice intake and approval through posting, financial, Power BI, and Excel output checks, defect evidence, and knowledge-transfer artifacts. We would work only under prime supervision and MWDOC onboarding; no production changes or independent submission.
+> If your firm is considering a response and can substantiate the RFQ's Microsoft partner, GCC Moderate PPAC, and two public-agency D365 F&O support-reference gates, would you be open to a short fit check? Before any teaming representation, both sides would need written scope, named personnel and availability, conflict checks, rates, data and security responsibilities, insurance, and agreement approval.
+> Regards,
+> [Owner-approved sender]
 
-No external firm was researched, named, contacted, or recommended in this lane.
+## Rate sheet and agreement gate
 
-## Go/no-go actions
+Every rate and prepaid-block value is blank and **OWNER_RATE_REQUIRED**. The generated CSV is a template, not pricing.
 
-- [ ] Read and acknowledge every official addendum after publication.
-- [ ] Require the prime to supply documentary proof for all three mandatory responsiveness gates.
-- [ ] Apply MWDOC's answer to the already-submitted subcontractor question; do not assume subcontractor credentials cure prime eligibility.
-- [ ] Name staff covering every D365 discipline and confirm October 26 availability/short-notice response.
-- [ ] Obtain consent and verify two qualifying references with the required contact details.
-- [ ] Authorize entity, signer, conflicts statement, rates, prepaid blocks, agreement revisions, and cover letter.
-- [ ] Have broker/counsel verify applicable CGL, auto, workers compensation, professional liability, technology/cyber liability, endorsements, indemnity, confidentiality, IP, public-record, transition, and seven-year record terms.
-- [ ] Keep SOQ at 10 pages excluding resumes/rates/agreement revisions; resumes at 2 pages each; PDF under 25 MB.
-- [ ] Use exact subject `SOQ — MWDOC RFQ FIN. 2026-001` and confirm receipt.
-- [ ] **NO-GO** if any mandatory gate, reference, authorized rate, signer, insurance/contract acceptance, or addendum acknowledgement remains unsupported.
+Agreement state: **OWNER_AND_COUNSEL_REVIEW_REQUIRED**. Checklist only; not legal advice and not agreement acceptance.
+
+- [ ] Entity, signer authority and subcontractor approval
+- [ ] Scope boundaries, named personnel, availability and transition
+- [ ] Intellectual property and work product
+- [ ] Confidentiality, data handling, incident response and public records
+- [ ] Indemnity, professional liability, technology or cyber coverage and other applicable insurance
+- [ ] Termination, transition assistance and records retention
+- [ ] Invoicing, prepaid blocks, expenses, disputes and audit rights
+- [ ] Conflicts, ethics, representations and flow-down obligations
+
+## Primary sources
+
+- [mwdoc_rfq_pdf](https://www.mwdoc.com/wp-content/uploads/2026/08/RFQ_FIN_2026-08-01_D365_Post_Go-Live_Support.pdf) — observed 2026-09-02; Controlling only as supplemented by official addenda.
+- [mwdoc_opportunities](https://www.mwdoc.com/opportunities/rfps-rfqs/) — observed 2026-09-02; Must be rechecked for addenda before any owner-authorized response.
+- [mwdoc_detail](https://www.mwdoc.com/rfps-rfqs/rfq-for-post-implementation-support-services-for-microsoft-dynamics-365-finance-operations/) — observed 2026-09-02; No submission action is authorized.
+- [mwdoc_incumbent_packet](https://www.mwdoc.com/wp-content/uploads/2026/01/021126-AF-Packet-Final.pdf) — observed 2026-09-02; Incumbency is not proof of current RFQ eligibility, partner standing, GCC experience or references.
+- [microsoft_partner_finder](https://www.microsoft.com/en-us/dynamics-365/partners/find-a-partner) — observed 2026-09-02; A search result alone is not proof of current good standing or RFQ eligibility.
+- [microsoft_finance_specialization](https://partner.microsoft.com/en-us/partnership/specialization/finance) — observed 2026-09-02; Target-company pages are not substitutes for owner-private Partner Center evidence.
+- [microsoft_finance_docs](https://learn.microsoft.com/en-us/dynamics365/finance/) — observed 2026-09-02; Documentation does not establish delivery experience.
 
 ## Package
 
-- [Machine-readable readiness](./readiness.json)
+- [Machine-readable packet](./readiness.json)
+- [JSON Schema](./readiness.schema.json)
+- [Static no-login handoff](./readiness.html)
 - [Fail-closed rate template](./rate-sheet-template.csv)
-- [No-login summary](./readiness.html)
