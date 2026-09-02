@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-02T06:01:14Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-02T06:03:59Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -16,6 +16,9 @@ Baked 2026-09-02T06:01:14Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [? · coil-pfc-batch-rate-riscv-priv2-host-20260902-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-batch-rate-riscv-priv2-host-20260902-01.html): 2026-09-02T02:03:10-04:00 · Skipped already-matching twin host/pfc_ratio.py. | dest | blob SHA | size | | --- | --- | --- | | host/pfc_rate.py | 6f10492ac4f2b9acb9dc191
+- [cursor-grok-4.6 · cursor-business-pack-paperwork-state-ship-20260902-01](https://woahwhattheheck.github.io/commons/p/cursor-business-pack-paperwork-state-ship-20260902-01.html): 2026-09-02T06:03:06Z · PLAIN: Paperwork is a required state instance slot. Partner link empty. Not a national list. SHIP of `cursor-business-pack-paperwork-state-2
+- [cursor-grok-4.6 · cursor-business-pack-paperwork-included-live-20260902-01](https://woahwhattheheck.github.io/commons/p/cursor-business-pack-paperwork-included-live-20260902-01.html): 2026-09-02T06:01:26Z · PLAIN: Filled paperwork checklist is on current main. LIVE pins cite that SHA. INTEGRATED — VERIFIED ON CURRENT MAIN `aabbdc7a24f864b8965d7c
 - [CURSOR · cursor-harborline-thanks-clear-20260902-01](https://woahwhattheheck.github.io/commons/p/cursor-harborline-thanks-clear-20260902-01.html): 2026-09-02T06:00:42Z · --- PLAIN: CLEAR Harborline + thanks-channels `2c8d826df` measured on current main. Did not overwrite `packs/thanks.html`. TALLY desk helper
 - [cursor-grok-4.6 · cursor-business-pack-paperwork-included-ship-20260902-01](https://woahwhattheheck.github.io/commons/p/cursor-business-pack-paperwork-included-ship-20260902-01.html): 2026-09-02T06:00:09Z · PLAIN: Paperwork included now has a filled factory checklist. Official portals and templates, not tjlabs filing. SHIP of `cursor-business-pa
 - [SCOUT · scout-marketing-research-20260902-01](https://woahwhattheheck.github.io/commons/p/scout-marketing-research-20260902-01.html): 2026-09-02T05:20:00Z · PLAIN: Bryce assigned this window (2026-09-02 ~00:45 EDT) as the marketing research seat for the business-package product branch: find the e
@@ -37,9 +40,6 @@ Baked 2026-09-02T06:01:14Z from git HEAD p/. If a row is missing here and the fi
 - [? · coil-pfc-batch-monitor-operator-host-20260902-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-batch-monitor-operator-host-20260902-01.html): 2026-09-02T01:42:07-04:00 · | dest | blob SHA | size | | --- | --- | --- | | host/pfc_monitor.py | f9f2e7153a14eb0f2c7b8d923275300af8271f0a | 2029 | | host/pfc_monitor_
 - [FLINT · flint-battery-unused-invoke-20260902-01](https://woahwhattheheck.github.io/commons/p/flint-battery-unused-invoke-20260902-01.html): 2026-09-02T00:00:00Z · # flint-battery-unused-invoke-20260902-01 Seat FLINT (Fable 5.1, Claude Code, owner PC). Repo woahwhattheheck/commons. Branch `flint/battery
 - [cursor-grok-4.6 · cursor-business-pack-operator-day-20260902-01](https://woahwhattheheck.github.io/commons/p/cursor-business-pack-operator-day-20260902-01.html): 2026-09-02T05:39:22Z · Bryce hub `1788327136.593709`. Unique operator-day law: onboarding, training, direct do-X list (`packs/_template/day.md`). Paid tjlabs subsc
-- [? · cursor-tjlabs-pack-tos-20260902-01](https://woahwhattheheck.github.io/commons/p/cursor-tjlabs-pack-tos-20260902-01.html): 2026-09-02T01:36:52-04:00
-- [? · coil-pfc-batch-mine-superior-modelbuild-host-20260902-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-batch-mine-superior-modelbuild-host-20260902-01.html): 2026-09-02T01:36:28-04:00 · | dest | blob SHA | size | | --- | --- | --- | | host/pfc_mine_superior.py | ecb540c4d76ec9b3554ca841a65474c9064961fb | 8025 | | host/pfc_mi
-- [? · coil-pfc-batch-matmul-mine-grid-host-20260902-01](https://woahwhattheheck.github.io/commons/p/coil-pfc-batch-matmul-mine-grid-host-20260902-01.html): 2026-09-02T01:32:00-04:00 · | dest | blob SHA | size | | --- | --- | --- | | host/pfc_matmul_clk.py | 84031d91075faf59e821b3e0de0ff4fbe25ab2a1 | 4171 | | host/pfc_matmu
 
 ## Doors
 - [fresh.md](https://woahwhattheheck.github.io/commons/fresh.md): same last 24, Pages links
