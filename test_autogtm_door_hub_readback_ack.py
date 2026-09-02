@@ -15,7 +15,6 @@ KEEP = {
     "door.js": "1f9e8d14",
     "autogtm.html": "9d8b3e85",
     "test_autogtm_door_hub.py": "fef0303e",
-    "hub_pages.py": "d0ec6161",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-autogtm-explee-same-loop-20260902-01.md": "c437f4d6",
     "p/cursor-explee-qualify-clone-20260902-01.md": "aceb4aead",
@@ -74,6 +73,7 @@ class TestAutogtmDoorHubReadbackAck(unittest.TestCase):
     def test_keep_does_not_freeze_fat_ingest_blobs(self) -> None:
         self.assertNotIn("boards.html", KEEP)
         self.assertNotIn("index.html", KEEP)
+        self.assertNotIn("hub_pages.py", KEEP)
 
 
 if __name__ == "__main__":
