@@ -79,10 +79,11 @@ class SlackServiceTagsTest(unittest.TestCase):
 
     def test_catalog_covers_named_services(self) -> None:
         services = self.cat["services"]
-        for name in ("facebook", "instagram", "github", "gmail", "stripe", "x", "heygen", "magicpath", "roboflow"):
+        for name in ("facebook", "instagram", "github", "gmail", "stripe", "x", "heygen", "magicpath", "roboflow", "spark"):
             self.assertIn(name, services)
         self.assertGreaterEqual(len(services), 20)
         self.assertEqual(self.cat["aliases"]["twitter"], "x")
+        self.assertEqual(self.cat["aliases"]["gemini-spark"], "spark")
 
     def test_twitter_alias_canonicalizes_to_x(self) -> None:
         result = sst.route("@twitter draft the drop", connected=["slack"])

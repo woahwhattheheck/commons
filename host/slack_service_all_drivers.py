@@ -25,6 +25,7 @@ sys.path.insert(0, str(ROOT / "host"))
 
 import slack_service_drivers as facebook_peer  # noqa: E402
 import slack_service_tag as sst  # noqa: E402
+import slack_spark_mcp_driver as spark_peer  # noqa: E402
 
 
 HttpFn = Callable[..., Any]
@@ -66,6 +67,7 @@ ENV_KEYS: dict[str, tuple[str, ...]] = {
     "xai": ("XAI_API_KEY",),
     "cursor": (),
     "commons": (),
+    "spark": (),
     "slack": ("SLACK_BOT_TOKEN",),
 }
 
@@ -170,6 +172,7 @@ INTENTS: dict[str, dict[str, str]] = {
         "method": "GET",
         "url": "https://woahwhattheheck.github.io/commons/",
     },
+    "spark": {"method": "POST", "url": spark_peer.SPARK_MCP_URL},
     "slack": {"method": "GET", "url": "https://slack.com/api/auth.test"},
 }
 
@@ -276,6 +279,19 @@ def drive(
     if name == "facebook":
         # Peer organ: real Graph POST when a token exists. Do not remint it.
         peer_out = facebook_peer.drive_facebook(str(body or ""))
+        out.update(peer_out)
+        out["gate"] = False
+        out["commons_admission"] = False
+        out["copy_secrets"] = False
+        return out
+
+    if name == "spark":
+        # Unique organ: live no-auth Commons Spark MCP. Do not steal it back.
+        peer_out = spark_peer.drive_spark(
+            str(body or ""),
+            execute=execute,
+            http_request=http_request,
+        )
         out.update(peer_out)
         out["gate"] = False
         out["commons_admission"] = False

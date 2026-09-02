@@ -183,6 +183,21 @@ class SlackServiceAllDriversTest(unittest.TestCase):
         blob = json.dumps(driven)
         self.assertNotIn("ghp_test_not_a_secret", blob)
 
+    def test_spark_is_custom_tool_not_need(self) -> None:
+        out = all_drivers.drive("spark", "discover", connected=["slack"])
+        self.assertEqual(out["tag"], "spark")
+        self.assertEqual(out["road"], "SLACK_CUSTOM_TOOL")
+        self.assertEqual(out["reason"], "ready_dry_run")
+        self.assertEqual(out["mcp_url"], "https://commons-spark-mcp.vercel.app/mcp")
+        self.assertEqual(out["auth"], "none")
+        self.assertIs(out["reopen_need"], False)
+        self.assertNotEqual(out["road"], "OWNER_SIGNIN")
+        payload = all_drivers.drive_text("@spark discover", connected=["slack"])
+        posts = all_drivers.format_slack_posts(payload)
+        kinds = {row["kind"] for row in posts}
+        self.assertIn("SLACK_CUSTOM_TOOL", kinds)
+        self.assertNotIn("OWNER_BLOCKER", kinds)
+
     def test_card_stays_open(self) -> None:
         lowered = self.card.lower()
         self.assertIn("every catalog", lowered)
