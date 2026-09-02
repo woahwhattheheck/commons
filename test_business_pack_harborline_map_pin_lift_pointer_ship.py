@@ -58,7 +58,7 @@ class HarborlineMapPinLiftPointerShipTest(unittest.TestCase):
         self.assertIn("Catalog-only", self.ship)
         self.assertIn(LEFTOVER_BLOB, self.ship)
         self.assertIn(POINTER_BLOB, self.ship)
-        self.assertIn("does not freeze TALLY sold-once receipt absence", self.ship)
+        self.assertIn("do not freeze TALLY sold-once receipt absence", self.ship)
         self.assertIn("8fe8a002", self.pointer)
         self.assertIn("NOT_MINTED", self.pointer)
         self.assertIn("NOT_MINTED", self.leftover)
@@ -85,7 +85,7 @@ class HarborlineMapPinLiftPointerShipTest(unittest.TestCase):
         self.assertNotIn("test_business_pack_unique.py", ship.THIS_SEAT_PATHS)
         self.assertNotIn(f"p/{POINTER_ID}.md", ship.THIS_SEAT_PATHS)
         self.assertNotIn(f"p/{LEFTOVER_ID}.md", ship.THIS_SEAT_PATHS)
-        self.assertIn("does not freeze TALLY sold-once receipt absence", self.pointer)
+        self.assertIn("no longer freeze TALLY sold-once receipt absence", self.pointer)
         self.assertIs(self.instances["did_not_write_tally_sold_once_paths"], True)
 
     def test_cli_json(self) -> None:
