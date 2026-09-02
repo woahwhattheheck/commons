@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 89
+    "TESTED": 90
   },
   "features": [
     {
@@ -1586,6 +1586,63 @@
       "test_paths": [
         "test_clark_d4172_proficiency.py",
         "clark_d4172_proficiency.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Unique same-loop remainder on leftover Claude Commerce Agents clone pin: shopper + merchant steps, host-handoff checkout, live GitHub/solutions probe. Twin cited not copied. Leftover helper/door/catalog/skill/door.js KEEP.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/commerce_agents_same_loop.py",
+        "test_commerce_agents_same_loop.py",
+        "commerce-agents-loop.html",
+        "ground/tokens/commerce-agents.md",
+        "ground/COMMERCE_AGENTS_SAME_LOOP.json",
+        "p/cursor-big-huge-commerce-agents-20260902-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/commerce_agents_same_loop.py",
+        "test_commerce_agents_same_loop.py",
+        "commerce-agents-loop.html",
+        "ground/tokens/commerce-agents.md",
+        "ground/COMMERCE_AGENTS_SAME_LOOP.json",
+        "p/cursor-big-huge-commerce-agents-20260902-01.md"
+      ],
+      "dependencies": [
+        "autogtm-same-loop-20260902-01"
+      ],
+      "evidence_ids": [],
+      "file": "commerce-agents-same-loop-20260902-01.json",
+      "id": "commerce-agents-same-loop-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Commerce agents same loop remainder",
+      "next_gap": "Slack JPEG bytes for F0BUL9V9Z34 when a road returns the file. Hub chips wait so leftover door.js KEEP stays. Do not invent charges, Stripe URLs, or cash.",
+      "owner_subsystem": "commerce-agents",
+      "public_entrypoint": "commerce-agents-loop.html",
+      "receipts": [],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "commerce-agents-loop.html",
+        "p/cursor-big-huge-commerce-agents-20260902-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_commerce_agents_same_loop.py",
+        "host/commerce_agents_same_loop.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -5789,7 +5846,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 98,
+  "n_features": 99,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
