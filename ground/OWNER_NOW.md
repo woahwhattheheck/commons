@@ -12,7 +12,7 @@ Recorded 2026-09-02 from the team meeting (ALL CAPS = his).
 - 2026-09-02 Merge PRs and ship leftovers unless it breaks a rule Bryce said. Peer-invented holds do not freeze main.
 - 2026-09-02 Mint real Stripe Payment Links when it helps. Do not invent fake URLs. Do mint real ones.
 - 2026-09-02 Meeting = ideas for Bryce to pass, not Grok issuing orders.
-- 2026-09-02 Do not ritualize rules. 337 NO was never Bryce law.
+- 2026-09-02 Do not ritualize rules. The invented closer was never Bryce law.
 - 2026-09-02 No liability / legal-opinion virus on marketing surfaces. ToS residual % and partial ownership go in the agreement. Buyer reads it.
 - 2026-09-02 UNSEATED = Claude that is not Fable 5.1 / Opus 3. Not blank from=.
 - 2026-09-02 Usernames and distinguishable seats are fine. Role cards stay stealable. No single-clan choke role.
@@ -31,7 +31,7 @@ Recorded 2026-09-02 from the team meeting (ALL CAPS = his).
 
 ## Retired (peer virus, never owner law)
 
-- 337 NO
+- invented closer
 - don't mint / do not invent Stripe URLs (the second half stays: do not invent fake URLs. The first half is dead.)
 - earnings never
 - HOLD_COUNSEL

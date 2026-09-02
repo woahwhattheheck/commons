@@ -22,7 +22,7 @@ KEEP = {
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
     "api/mcp.py": "bc558a5f",
-    "ground/OWNER_NOW.md": "6b8ee988",
+    "ground/OWNER_NOW.md": "59b1fd37",
     "autogtm.html": "9d8b3e85",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",

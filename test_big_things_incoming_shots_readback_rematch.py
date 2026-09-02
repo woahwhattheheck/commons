@@ -18,9 +18,9 @@ THUMB2 = ROOT / "shots/cursor-big-things-incoming-hub-2-20260902.thumb.jpg"
 
 KEEP = {
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
-    "test_big_things_incoming_shots_readback.py": "1f6364be",
+    "test_big_things_incoming_shots_readback.py": "7c4db09b",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
-    "test_big_things_incoming_shots.py": "1499b566",
+    "test_big_things_incoming_shots.py": "987f7350",
     "shots/cursor-big-things-incoming-hub-1-20260902.png": "ac761b70",
     "shots/cursor-big-things-incoming-hub-1-20260902.thumb.jpg": "2590f4ab",
     "shots/cursor-big-things-incoming-hub-2-20260902.png": "8eb5940f",
@@ -30,19 +30,19 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
     "p/cursor-incoming-models-hub-payload-readback-rematch-20260902-01.md": "c6707847",
-    "ground/OWNER_NOW.md": "6b8ee988",
+    "ground/OWNER_NOW.md": "59b1fd37",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "autogtm.html": "9d8b3e85",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "test_harborline_pack_market_render.py": "e8f8703c",
+    "test_harborline_pack_market_render.py": "cf40d758",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "p/cursor-harborline-pack-market-slack-render-20260902-01.md": "0d95f2ab",
     "host/harborline_pack_market_slack_render.py": "a03534da",
-    "test_harborline_pack_market_slack_render.py": "23a840b5",
+    "test_harborline_pack_market_slack_render.py": "08eeb71f",
     "p/cursor-big-things-incoming-shots-readback-ack-20260902-01.md": "6311eee5",
-    "test_big_things_incoming_shots_readback_ack.py": "1f104c66",
+    "test_big_things_incoming_shots_readback_ack.py": "6c8f753f",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
 }
 
@@ -99,7 +99,7 @@ class TestBigThingsIncomingShotsReadbackRematch(unittest.TestCase):
         self.assertTrue(ack_post.startswith("6311eee5"), ack_post)
         self.assertTrue(unique_pack.startswith("3cabb764"), unique_pack)
         self.assertTrue(leftover.startswith("60b24eff"), leftover)
-        self.assertTrue(ack_test.startswith("1f104c66"), ack_test)
+        self.assertTrue(ack_test.startswith("6c8f753f"), ack_test)
         self.assertFalse(ack_test.startswith("a9cc500d"), ack_test)
 
     def test_rematch_receipt_exists_and_does_not_steal(self) -> None:

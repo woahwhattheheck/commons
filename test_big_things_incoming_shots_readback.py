@@ -13,13 +13,13 @@ LEFTOVER = ROOT / "p/cursor-big-things-incoming-shots-20260902-01.md"
 
 KEEP = {
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
-    "test_big_things_incoming_shots.py": "1499b566",
+    "test_big_things_incoming_shots.py": "987f7350",
     "shots/cursor-big-things-incoming-hub-1-20260902.png": "ac761b70",
     "shots/cursor-big-things-incoming-hub-1-20260902.thumb.jpg": "2590f4ab",
     "shots/cursor-big-things-incoming-hub-2-20260902.png": "8eb5940f",
     "shots/cursor-big-things-incoming-hub-2-20260902.thumb.jpg": "214307de",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "ground/OWNER_NOW.md": "6b8ee988",
+    "ground/OWNER_NOW.md": "59b1fd37",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",

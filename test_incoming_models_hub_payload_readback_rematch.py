@@ -16,7 +16,7 @@ HELPER = ROOT / "host/incoming_models.py"
 
 KEEP = {
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
-    "test_incoming_models_hub_payload_readback.py": "77179d15",
+    "test_incoming_models_hub_payload_readback.py": "19c6b7dd",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "host/incoming_models.py": "7f4ae3bf",
     "test_incoming_models.py": "f33cbd6c",
@@ -27,13 +27,13 @@ KEEP = {
     "p/grokbuild-pr8340-incoming-models-20260902-01.md": "f2917ab4",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
-    "ground/OWNER_NOW.md": "6b8ee988",
+    "ground/OWNER_NOW.md": "59b1fd37",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "autogtm.html": "9d8b3e85",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "test_harborline_pack_market_render.py": "e8f8703c",
+    "test_harborline_pack_market_render.py": "cf40d758",
 }
 
 

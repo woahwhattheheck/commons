@@ -16,11 +16,11 @@ HELPER = ROOT / "host/harborline_pack_market_render.py"
 
 KEEP = {
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "test_harborline_pack_market_render_readback.py": "f4ee4f15",
+    "test_harborline_pack_market_render_readback.py": "a95c2d3c",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "test_harborline_pack_market_render.py": "e8f8703c",
-    "ground/OWNER_NOW.md": "6b8ee988",
+    "test_harborline_pack_market_render.py": "cf40d758",
+    "ground/OWNER_NOW.md": "59b1fd37",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
@@ -75,8 +75,8 @@ class TestHarborlinePackMarketRenderReadbackRematch(unittest.TestCase):
         unique_pack_test = git_blob("test_harborline_pack_market_render_readback.py")
         self.assertTrue(hub.startswith("5ac12648"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
-        self.assertTrue(leftover_test.startswith("e8f8703c"), leftover_test)
-        self.assertTrue(unique_pack_test.startswith("f4ee4f15"), unique_pack_test)
+        self.assertTrue(leftover_test.startswith("cf40d758"), leftover_test)
+        self.assertTrue(unique_pack_test.startswith("a95c2d3c"), unique_pack_test)
         proc = subprocess.run(
             ["python3", "-m", "unittest", "test_harborline_pack_market_render.py"],
             cwd=ROOT,
