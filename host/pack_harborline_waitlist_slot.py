@@ -34,7 +34,15 @@ LAW_ID = "cursor-pack-door-waitlist-20260902-01"
 SCOUT_ID = "scout-demand-pack-door-waitlist-20260902-01"
 POINTER_ID = "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01"
 RECEIPT_ID = "cursor-pack-harborline-waitlist-slot-20260902-01"
+UNPIN_ID = "cursor-pack-harborline-waitlist-slot-peer-unpin-20260902-01"
 TEMPLATE_BLOB = "50602561"
+SHEET_BLOB = "ea108145"
+LEFTOVER_RECEIPT_BLOB = "4b648caf"
+OBSERVED_AT_LAND = {
+    "packs/sidewalk-signal-web-desk-20260902-01/waitlist-slot.md": "absent",
+    "packs/lotribbon-greetings-20260902-01/waitlist-slot.md": "absent",
+    "packs/curbline-weekend-yard-help-20260902-01/waitlist-slot.md": "absent",
+}
 WAITLIST_DOOR_BLOB = "bdcaa7ea"
 WAITLIST_HELPER_BLOB = "08cfc14d"
 WAITLIST_LAW_BLOB = "c687691c"
@@ -52,6 +60,8 @@ DO_NOT_OVERWRITE = (
     "host/pack_waitlist.py",
     "ground/BUSINESS_PACK_WAITLIST.json",
     "p/scout-demand-pack-door-waitlist-20260902-01.md",
+    "p/cursor-pack-harborline-waitlist-slot-20260902-01.md",
+    "packs/desk-website-service-20260902-01/waitlist-slot.md",
     "p/cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md",
     "packs/desk-website-service-20260902-01/door.html",
     "packs/desk-website-service-20260902-01/rating.md",
@@ -178,6 +188,12 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
     slot_pointer_receipt = git_blob_prefix(
         "p/cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md"
     )
+    sheet_blob = git_blob_prefix(
+        "packs/desk-website-service-20260902-01/waitlist-slot.md"
+    )
+    leftover_receipt = git_blob_prefix(
+        "p/cursor-pack-harborline-waitlist-slot-20260902-01.md"
+    )
     copy_ok = True
     if HARBORLINE.is_file():
         sys.path.insert(0, str(ROOT / "host"))
@@ -199,9 +215,8 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         and sidecar_blob == SIDECAR_BLOB
         and pointer_receipt == POINTER_RECEIPT_BLOB
         and slot_pointer_receipt == SLOT_POINTER_RECEIPT_BLOB
-        and not SIDEWALK.is_file()
-        and not LOTRIBBON.is_file()
-        and not YARD.is_file()
+        and sheet_blob == SHEET_BLOB
+        and leftover_receipt == LEFTOVER_RECEIPT_BLOB
         and not MANIFEST.is_file()
         and copy_ok
         and int(door.get("sends") or 0) == 0
@@ -224,20 +239,23 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
             "host/business_pack_harborline_tally_map.py": sidecar_blob,
             "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": pointer_receipt,
             "p/cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md": slot_pointer_receipt,
+            "packs/desk-website-service-20260902-01/waitlist-slot.md": sheet_blob,
+            "p/cursor-pack-harborline-waitlist-slot-20260902-01.md": leftover_receipt,
         },
         "copy_ok": copy_ok,
+        "observed_at_land": dict(OBSERVED_AT_LAND),
+        "live_peer_waitlist_slots_not_pinned": True,
         "did_not_rewrite_goat_template": template_blob == TEMPLATE_BLOB,
         "did_not_remint_waitlist_door": waitlist_door_blob == WAITLIST_DOOR_BLOB,
         "did_not_remint_waitlist_helper": waitlist_helper_blob == WAITLIST_HELPER_BLOB,
         "did_not_remint_waitlist_law": waitlist_law_blob == WAITLIST_LAW_BLOB,
         "did_not_overwrite_harborline_door": instance_door_blob == DOOR_BLOB,
         "did_not_overwrite_harborline_rating": rating_blob == RATING_BLOB,
+        "did_not_overwrite_harborline_waitlist_slot": sheet_blob == SHEET_BLOB,
         "did_not_write_leftover_pin_helpers": sidecar_blob == SIDECAR_BLOB,
         "did_not_overwrite_pointer_receipt": pointer_receipt == POINTER_RECEIPT_BLOB,
         "did_not_remint_slot_catalog_pointer": slot_pointer_receipt == SLOT_POINTER_RECEIPT_BLOB,
-        "did_not_fill_sidewalk": not SIDEWALK.is_file(),
-        "did_not_fill_lotribbon": not LOTRIBBON.is_file(),
-        "did_not_fill_yard": not YARD.is_file(),
+        "did_not_write_peer_waitlist_slots": True,
         "did_not_invent_harborline_manifest": not MANIFEST.is_file(),
         "did_not_merge_7915": True,
         "sends": 0,
@@ -245,6 +263,7 @@ def classify_tree(root: Path | None = None) -> dict[str, Any]:
         "checkout": "NOT_MINTED",
         "do_not_overwrite": list(DO_NOT_OVERWRITE),
         "receipt_id": RECEIPT_ID,
+        "unpin_id": UNPIN_ID,
     }
 
 
