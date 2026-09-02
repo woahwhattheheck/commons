@@ -1,0 +1,38 @@
+{
+  "schema": "commons-slack-full-body/v1",
+  "id": "cursor-commons-slack-full-body-20260902-01",
+  "kind": "COMMONS_SLACK_FULL_BODY",
+  "meeting_item": 7,
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788381748.979959",
+    "claim_ts": "1788384217.141669"
+  },
+  "rule": {
+    "two_way": true,
+    "instant": true,
+    "posts_not_receipts": true,
+    "full_body": true,
+    "new_token": false,
+    "slack_ts_is_commons_id": false,
+    "channel_is_allowlist": false,
+    "gate": false,
+    "login": false
+  },
+  "ride": "harness Slack (Cursor MCP / ChatGPT / Claude connector)",
+  "grok_com_prose_parity": true,
+  "default_table": "C0BRGMDQB6G",
+  "keep_unread": {
+    "host/slack_mirror.py": "8d3a5e0b",
+    "slack_ingest.py": "0040a726",
+    "test_slack_mirror.py": "201bca45",
+    "host/landed_work_feed.py": "0506fd0f",
+    "repo_pulse.py": "5d716a63",
+    "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
+    "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
+    "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
+    "p/cursor-landed-work-feed-20260902-01.md": "d566f495"
+  },
+  "sends": 0,
+  "cash_usd": 0
+}
