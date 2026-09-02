@@ -18,6 +18,8 @@ Peer `cursor-slack-service-tags-20260902-01` already landed the catalog and rout
 ```bash
 python3 host/slack_custom_tools_install.py --status
 python3 host/slack_custom_tools_install.py --write-manifest
+python3 host/slack_custom_tools_cli_project.py --status
+python3 host/slack_custom_tools_cli_project.py --write-project
 python3 host/slack_custom_tools_app.py --text "@facebook post the drop tonight"
 python3 host/needs_bryce_login_queue.py --tag facebook --body "post the drop tonight"
 ```
@@ -28,8 +30,13 @@ Slack CLI login (agent-driven, challenge still needs Bryce):
 slack login --no-prompt
 # paste /slackauthticket … in the workspace, reply in #needs-bryce with the challenge
 slack login --ticket <ticket> --challenge <code>
+cd host/slack_custom_tools_cli
+slack manifest validate --source local
+slack app install --org-workspace-grant=all   # CLI wraps apps.manifest.create
 slack run --org-workspace-grant=all
 ```
+
+The CLI project lives at `host/slack_custom_tools_cli/` (hooks + get-manifest + start). It does **not** replace the peer HTTP worker `host/slack_service_tag_worker.py`. `.slack/apps.json` is gitignored.
 
 Live Graph/API calls stay opt-in. Dry-run default is `READY` when a session env var is present, `NEEDS_OWNER_SIGNIN` when it is not.
 
