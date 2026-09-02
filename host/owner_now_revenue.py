@@ -23,7 +23,8 @@ HOST = Path(__file__).resolve().parent
 OWNER_CARD = "ground/OWNER_NOW.md"
 LEFTOVER = "p/cursor-owner-now-readback-20260902-01.md"
 DOOR = "owner-now-revenue.html"
-OWNER_PREFIX = "6b8ee988"
+OWNER_PREFIX = "59b1fd37"
+OWNER_SHIP_PREFIX = "6b8ee988"
 LEFTOVER_PREFIX = "1b3cd631"
 LEFTOVER_LAND = "348ffcc2a"
 STRIPE_HOSTS = ("buy.stripe.com", "donate.stripe.com")
@@ -58,7 +59,7 @@ def leftover_match(root: Path | None = None) -> dict[str, Any]:
         and "Point is generate revenue" in card
         and "NOT_MINTED as a freeze" in card
         and "Did not invent Stripe URLs" in receipt
-        and OWNER_PREFIX in receipt
+        and OWNER_SHIP_PREFIX in receipt
         and "cursor-owner-now-readback-20260902-01" in receipt
     )
     return {
