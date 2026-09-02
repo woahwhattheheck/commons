@@ -97,7 +97,9 @@
       "author_claim_ignored": "",
       "blob_proof": [
         "packs/_template/day.md:8940fb578b074f057f4d3c6477d75543b6e5e560",
-        "8940fb578b074f057f4d3c6477d75543b6e5e560"
+        "8940fb578b074f057f4d3c6477d75543b6e5e560",
+        "packs/_template/day.md:917a7fe75c9b3472c11bcca07102d1cd4d34b372",
+        "917a7fe75c9b3472c11bcca07102d1cd4d34b372"
       ],
       "capability": "Sold packs treat the buyer like an employee. Onboarding, training, and a direct do-X list live in packs/_template/day.md. Paid tjlabs support is contact only, never a Commons seat. Support price stays OWNER_UNSET. Fail-to-profit stays in the runbook, not ads.",
       "carrier": "CURSOR",
@@ -128,13 +130,15 @@
         "ev-operator-day-live-20260902-01",
         "ev-operator-day-receipt-20260902-01",
         "ev-operator-day-source-20260902-01",
-        "ev-operator-day-tests-20260902-01"
+        "ev-operator-day-tests-20260902-01",
+        "ev-operator-day-blob-20260902-02",
+        "ev-operator-day-live-20260902-02"
       ],
       "file": "cursor-business-pack-operator-day-20260902-01.json",
       "id": "cursor-business-pack-operator-day-20260902-01",
-      "last_change": "2026-09-02T05:45:00Z",
+      "last_change": "2026-09-02T05:48:00Z",
       "live_status": "LIVE",
-      "main_sha": "0457636a9ffaa70104458f488e2db0fcb0c11312",
+      "main_sha": "7ccdc11a20fffe1d709e85d6dc7505077fe497b0",
       "name": "Business pack employee-day runbook",
       "next_gap": "Owner pastes the tjlabs support price and live Payment Link. Fill vertical-specific Do X lines. Do not invent a percent or earnings ads.",
       "owner_subsystem": "business-packs",
