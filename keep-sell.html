@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Cache-Control" content="no-store">
+<title>KEEP vs SELL factory — #business-packs</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+body{max-width:78rem}
+.hero{padding:2rem 0 1rem}
+.hero h1{font-size:clamp(2.2rem,7vw,5rem);line-height:.96;max-width:16ch;margin:.25rem 0 1rem}
+.lead{font-size:1.15rem;max-width:54rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1rem}
+.card,.panel{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}
+.card h3,.panel h2{margin-top:0}
+.truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.4rem}
+.truth span{border:1px solid #33333a;padding:.5rem;text-align:center}
+.truth b{display:block;font:700 1.2rem/1.1 ui-monospace,monospace}
+table.ledger{width:100%;border-collapse:collapse;font-size:.9rem}
+table.ledger th,table.ledger td{border-bottom:1px solid #2a2a30;padding:.45rem .35rem;text-align:left;vertical-align:top}
+.state-NEED_OWNER_LINK,.state-OWNER_PASTED_NOT_CHARGEABLE{color:#d0a252}
+.state-KEEP{color:#62b879}
+.state-SELL{color:#8aa0c8}
+.state-OPEN{color:#9a9aa3}
+</style>
+</head>
+<body>
+<section id="trust-through-proof" class="law trust-law" aria-label="Trust after proof — operating law"><strong>TRUST AFTER PROOF.</strong> <a href="./trust.html">Read “On Trust.”</a> Proof is cached. Build unless the bytes moved. Once evidence validates a path, stop re-litigating it: build through it at full speed and reopen doubt only when a named boundary check or new evidence invalidates the cache. <strong>Commerce is included:</strong> when the offer, delivery path, and payment road are verified, ask for the sale and fulfill it. Never invent buyers, replies, payments, or results.</section>
+<p class="law">OPEN KEEP / SELL FACTORY. Possessing the link is authorization. Marketing stays with Bryce. No invented Stripe URLs. Named tiers are not checkout. Cash is USD 0 without a receipt.</p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./commerce.html">commerce</a> · <a href="./payment-capability.html">payment rails</a> · <a href="./pay.html">pay</a> · <a href="./listing-registry.html">listing registry</a> · <a href="./action.html">Action Pad</a></p>
+<header class="hero">
+  <p class="note">#business-packs · C0BU7JAPUH3 · host/business_pack_keep_sell.py</p>
+  <h1>Keep winners. Sell the rest.</h1>
+  <p class="lead">Build cheap. Keep what works. Package the rest with assets plus instructions. This door is the KEEP / SELL ledger, not the pack-scaffold landing. Owner pastes live Payment Links. Agents do not invent checkout, ads, buyers, or cash.</p>
+</header>
+<section class="panel" aria-labelledby="honest-heading">
+  <h2 id="honest-heading">Honest counts</h2>
+  <div class="truth">
+    <span><b id="c-packs">0</b>named packs</span>
+    <span><b id="c-keep">0</b>KEEP</span>
+    <span><b id="c-sell">0</b>SELL</span>
+    <span><b id="c-open">0</b>OPEN</span>
+    <span><b>0</b>buyers</span>
+    <span><b>0.00</b>cash USD</span>
+  </div>
+  <p class="note" id="status-src">Static copy. Machine ledger: <a href="./ground/BUSINESS_PACK_KEEP_SELL.json">ground/BUSINESS_PACK_KEEP_SELL.json</a>.</p>
+</section>
+<section class="grid">
+  <article class="card">
+    <h3>Tiers</h3>
+    <p>$20 · $100 · $200 · $1,000 consumer / lower. $10,000 SMB. Every tier is <span class="state-NEED_OWNER_LINK">NEED_OWNER_LINK</span> until Bryce pastes a live Payment Link and checkout capability marks it CHARGEABLE.</p>
+  </article>
+  <article class="card">
+    <h3>Marketing</h3>
+    <p>Bryce only. No ad peer. No spend from this factory. Work posts and KEEP vs SELL decisions live in Slack <code>#business-packs</code>.</p>
+  </article>
+  <article class="card">
+    <h3>Not this door</h3>
+    <p>Pack scaffold landing stays GOAT. Product engines that we sell stay on the matching private product <code>main</code>. Control-plane map already landed as <code>cursor-slack-business-packs-channel-20260902-01</code>.</p>
+  </article>
+</section>
+<section class="panel">
+  <h2>Ledger</h2>
+  <p>Empty is honest. A named pack appears here only after <code>host/business_pack_keep_sell.py record</code>.</p>
+  <table class="ledger">
+    <thead>
+      <tr><th>id</th><th>title</th><th>decision</th><th>tier</th><th>checkout</th></tr>
+    </thead>
+    <tbody id="pack-rows">
+      <tr><td colspan="5">No packs yet. KEEP / SELL decisions have not been recorded.</td></tr>
+    </tbody>
+  </table>
+</section>
+<section class="panel">
+  <h2>Measure</h2>
+  <p><code>python3 host/business_pack_keep_sell.py validate</code> · <a href="./ground/BUSINESS_PACK_KEEP_SELL.md">card</a> · Slack archive <a href="https://tokenjunkielabs.slack.com/archives/C0BU7JAPUH3">C0BU7JAPUH3</a>. Contact <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a>. 337 NO.</p>
+</section>
+<noscript>
+  <p class="panel">JavaScript is off. Read <a href="./ground/BUSINESS_PACK_KEEP_SELL.json">BUSINESS_PACK_KEEP_SELL.json</a>. Packs start empty. Cash is USD 0. No checkout hrefs.</p>
+</noscript>
+<script>
+(function () {
+  fetch("./ground/BUSINESS_PACK_KEEP_SELL.json", { cache: "no-store" })
+    .then(function (res) { return res.ok ? res.json() : Promise.reject(res.status); })
+    .then(function (ledger) {
+      var packs = Array.isArray(ledger.packs) ? ledger.packs : [];
+      var keep = 0, sell = 0, open = 0;
+      packs.forEach(function (row) {
+        if (row.decision === "KEEP") keep += 1;
+        else if (row.decision === "SELL") sell += 1;
+        else open += 1;
+      });
+      document.getElementById("c-packs").textContent = String(packs.length);
+      document.getElementById("c-keep").textContent = String(keep);
+      document.getElementById("c-sell").textContent = String(sell);
+      document.getElementById("c-open").textContent = String(open);
+      document.getElementById("status-src").textContent = "Loaded ground/BUSINESS_PACK_KEEP_SELL.json. Cash USD 0. Buyers 0.";
+      var body = document.getElementById("pack-rows");
+      if (!packs.length) return;
+      body.textContent = "";
+      packs.forEach(function (row) {
+        var tr = document.createElement("tr");
+        function td(text, cls) {
+          var cell = document.createElement("td");
+          cell.textContent = text;
+          if (cls) cell.className = cls;
+          return cell;
+        }
+        tr.appendChild(td(row.id || ""));
+        tr.appendChild(td(row.title || ""));
+        tr.appendChild(td(row.decision || "OPEN", "state-" + (row.decision || "OPEN")));
+        tr.appendChild(td(row.tier_usd == null ? "—" : "$" + row.tier_usd));
+        var checkout = document.createElement("td");
+        checkout.className = "state-NEED_OWNER_LINK";
+        checkout.textContent = row.owner_pasted ? "OWNER_PASTED_NOT_CHARGEABLE" : "NEED_OWNER_LINK";
+        tr.appendChild(checkout);
+        body.appendChild(tr);
+      });
+    })
+    .catch(function () {
+      document.getElementById("status-src").textContent = "Ledger fetch failed. Static empty counts stay honest.";
+    });
+})();
+</script>
+</body>
+</html>
