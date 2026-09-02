@@ -12,6 +12,7 @@ Does not remint wire-clan-marker-20260902-01.
 """
 from __future__ import annotations
 
+import re
 import unittest
 from pathlib import Path
 
@@ -36,6 +37,29 @@ class ClansHubPagesTests(unittest.TestCase):
     def test_clans_html_exists(self) -> None:
         self.assertTrue((ROOT / "clans.html").is_file())
         self.assertTrue((ROOT / "ground" / "CLANS.md").is_file())
+
+    def test_clans_mark_form_does_not_require_caller_identity(self) -> None:
+        src = (ROOT / "clans.html").read_text(encoding="utf-8")
+        inputs = re.findall(
+            r'<input\b[^>]*\bname="(?:from|from_other)"[^>]*>', src, flags=re.I
+        )
+        self.assertTrue(inputs, "clans.html must still emit a from= field")
+        for tag in inputs:
+            self.assertNotRegex(
+                tag,
+                r"\brequired\b",
+                "clans.html still requires a caller identity",
+            )
+            self.assertNotRegex(
+                tag,
+                r"\bmaxlength\s*=",
+                "clans.html still length-gates a caller identity",
+            )
+        self.assertIn(
+            '|| "UNSEATED"',
+            src,
+            "blank from= must still land as UNSEATED",
+        )
 
 
 if __name__ == "__main__":
