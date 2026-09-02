@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/woahwhattheheck/commons/blob/main/revenue/mwdoc_d365_soq/readiness.schema.json",
+  "title": "MWDOC D365 partner qualification readiness packet",
+  "type": "object",
+  "required": [
+    "schema",
+    "id",
+    "decision",
+    "targets",
+    "reference_slots",
+    "proposed_subcontract_scope",
+    "outreach_draft",
+    "rate_sheet",
+    "agreement_checklist",
+    "truth_flags"
+  ],
+  "properties": {
+    "schema": {
+      "const": "commons-mwdoc-d365-readiness/v2"
+    },
+    "id": {
+      "const": "mwdoc-d365-partner-soq-packet-20260902-01"
+    },
+    "decision": {
+      "const": "NO_GO_AS_PRIME; PROVISIONAL_PARTNER_RESEARCH_ONLY; CONDITIONAL_SUBCONTRACTOR_ONLY"
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "company",
+          "computed_score",
+          "mandatory_gates",
+          "status"
+        ]
+      }
+    },
+    "reference_slots": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "slot",
+          "status",
+          "public_contact_data",
+          "requirements"
+        ]
+      }
+    },
+    "outreach_draft": {
+      "type": "object",
+      "required": [
+        "state",
+        "authorization",
+        "teaming_claim",
+        "target_company",
+        "target_persona",
+        "subject",
+        "body"
+      ]
+    },
+    "rate_sheet": {
+      "type": "object",
+      "required": [
+        "status",
+        "currency",
+        "rows",
+        "assumptions"
+      ]
+    },
+    "agreement_checklist": {
+      "type": "object",
+      "required": [
+        "status",
+        "disclaimer",
+        "items"
+      ]
+    },
+    "truth_flags": {
+      "type": "object",
+      "additionalProperties": {
+        "const": false
+      }
+    }
+  },
+  "additionalProperties": true
+}
