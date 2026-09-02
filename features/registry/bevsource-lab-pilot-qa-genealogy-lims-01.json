@@ -9,6 +9,7 @@
     "revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json",
     "revenue/bevsource_lab_pilot_qa_genealogy_lims/README.md",
     "revenue/bevsource_lab_pilot_qa_genealogy_lims/runner.py",
+    "revenue/bevsource_lab_pilot_qa_genealogy_lims/receipt.json",
     "p/bevsource-lab-pilot-qa-genealogy-lims-01.md",
     "features/registry/bevsource-lab-pilot-qa-genealogy-lims-01.json"
   ],
@@ -27,6 +28,7 @@
   "resource_links": [
     "bevsource-lab-pilot-qa-genealogy-lims.html",
     "revenue/bevsource_lab_pilot_qa_genealogy_lims/contract.json",
+    "revenue/bevsource_lab_pilot_qa_genealogy_lims/receipt.json",
     "p/bevsource-lab-pilot-qa-genealogy-lims-01.md"
   ],
   "schema": "commons-feature-v1",

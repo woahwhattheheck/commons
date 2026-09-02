@@ -1,0 +1,37 @@
+{
+  "id": "bevsource-lab-pilot-qa-genealogy-lims-01",
+  "state": "HOLD / BUILD-AND-VERIFY",
+  "binary": "python test_bevsource_lab_pilot_qa_genealogy_lims.py",
+  "tests": "13/13 OK",
+  "input_rows": 60,
+  "release_review": 45,
+  "holds": 15,
+  "hold_counts": {
+    "HOLD_WRONG_FORMULA_VERSION": 5,
+    "HOLD_MISSING_INGREDIENT_LOT": 4,
+    "HOLD_FAILED_LINER_CHECK": 3,
+    "HOLD_POSITIVE_MICROBIOLOGY": 3
+  },
+  "non_mapping_rejects": [
+    "string",
+    "list",
+    "int",
+    "bool"
+  ],
+  "non_mapping_code": "ATOMIC_COMMIT_FAILED",
+  "journal_identity": {
+    "canonical_bytes": true,
+    "sha256": true,
+    "deepcopy": true
+  },
+  "manifest_sha256": "7e7cf0c84e236e440d413478416d270ad57e44f6c5f12febc2a9adee24ef4eaf",
+  "audit_sha256": "6d92af5fd4bc70261b530b23d7e2f741af14b1f052d3f16c805c2e94abf6f3fd",
+  "journal_sha256": "a20c78f8fbd9676910052482690962199b1e8e49b85ec64446ba8d23fc62e18b",
+  "synthetic": true,
+  "interface_live": false,
+  "production_writes": 0,
+  "automatic_releases": 0,
+  "autonomous_release": false,
+  "pre_sale_transport": "NONE",
+  "cash_usd": 0
+}
