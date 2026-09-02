@@ -15,7 +15,8 @@
     "cursor-claude-peer-check-17c-index-20260902-01",
     "stamp-claude-failure-docs-unique-20260902-01",
     "cursor-claude-peer-check-git-paths-20260902-01",
-    "stamp-claude-failure-unique-seated-receive-20260902-01"
+    "stamp-claude-failure-unique-seated-receive-20260902-01",
+    "cursor-claude-peer-check-seated-receive-20260902-01"
   ],
   "named_ids": {
     "authority": ["A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "A10", "A11"],
