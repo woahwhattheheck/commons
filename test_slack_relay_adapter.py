@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Focused contract tests for the Slack destination adapter."""
+"""Focused contract tests for the synthetic/read-only Slack destination adapter."""
 from __future__ import annotations
 
 import io
@@ -50,7 +50,7 @@ class SlackRelayAdapterTests(unittest.TestCase):
         self.assertEqual(first, second)
 
     def test_test_mode_delivers_synthetic_receipt_end_to_end(self) -> None:
-        transport = mock.Mock(side_effect=AssertionError("transport must not run in test mode"))
+        transport = mock.Mock(side_effect=AssertionError("transport must not run"))
         with mock.patch("urllib.request.urlopen") as urlopen:
             receipt = adapter.deliver(
                 event(),
@@ -66,8 +66,13 @@ class SlackRelayAdapterTests(unittest.TestCase):
         self.assertEqual(receipt["schema"], adapter.RECEIPT_SCHEMA)
         self.assertEqual(receipt["adapter"], "host/slack_relay_adapter.py")
         self.assertEqual(receipt["mode"], "test")
+        self.assertTrue(receipt["read_only"])
+        self.assertTrue(receipt["synthetic"])
+        self.assertFalse(receipt["admission_gate"])
+        self.assertFalse(receipt["credential_gate"])
         self.assertFalse(receipt["real_send"])
         self.assertFalse(receipt["silent_skip"])
+        self.assertFalse(receipt["fail_closed"])
         self.assertEqual(receipt["network_calls"], 0)
         self.assertTrue(receipt["slack_ts"].startswith("synthetic."))
         self.assertEqual(receipt["id"], "caliper-slack-relay-adapter-01")
@@ -79,13 +84,16 @@ class SlackRelayAdapterTests(unittest.TestCase):
             {"SLACK_BOT_TOKEN": "missing", "SLACK_APP_TOKEN": "missing"},
         )
 
-    def test_test_mode_never_sends_even_when_credentials_look_present(self) -> None:
+    def test_credentials_present_are_overlay_only_and_never_send(self) -> None:
         transport = mock.Mock(return_value={"ok": True, "ts": "should-not-run"})
         with mock.patch("urllib.request.urlopen") as urlopen:
             receipt = adapter.deliver(event(), mode="test", env=PRESENT_ENV, transport=transport)
         urlopen.assert_not_called()
         transport.assert_not_called()
         self.assertEqual(receipt["state"], adapter.SYNTHETIC_STATE)
+        self.assertTrue(receipt["ok"])
+        self.assertTrue(receipt["read_only"])
+        self.assertFalse(receipt["admission_gate"])
         self.assertFalse(receipt["real_send"])
         self.assertEqual(receipt["network_calls"], 0)
         self.assertEqual(
@@ -98,66 +106,58 @@ class SlackRelayAdapterTests(unittest.TestCase):
         self.assertNotIn("xoxb-", blob)
         self.assertNotIn("xapp-", blob)
 
-    def test_live_mode_missing_credentials_fails_closed_with_explicit_receipt(self) -> None:
+    def test_live_mode_missing_credentials_is_synthetic_not_an_admission_gate(self) -> None:
         transport = mock.Mock(side_effect=AssertionError("must not send when uncredentialed"))
         with mock.patch("urllib.request.urlopen") as urlopen:
             receipt = adapter.deliver(event(), mode="live", env={}, transport=transport)
         urlopen.assert_not_called()
         transport.assert_not_called()
         self.assertIsInstance(receipt, dict)
-        self.assertFalse(receipt["ok"])
-        self.assertEqual(receipt["state"], adapter.ABSENT_STATE)
-        self.assertTrue(receipt["fail_closed"])
+        self.assertTrue(receipt["ok"])
+        self.assertEqual(receipt["state"], adapter.SYNTHETIC_STATE)
+        self.assertEqual(receipt["mode"], "live")
+        self.assertTrue(receipt["read_only"])
+        self.assertTrue(receipt["synthetic"])
+        self.assertFalse(receipt["admission_gate"])
+        self.assertFalse(receipt["credential_gate"])
+        self.assertFalse(receipt["fail_closed"])
         self.assertFalse(receipt["silent_skip"])
         self.assertFalse(receipt["real_send"])
         self.assertEqual(receipt["network_calls"], 0)
-        self.assertEqual(receipt["slack_ts"], "")
-        self.assertIn("Fail closed", receipt["reason"])
-        self.assertIn("Not a silent skip", receipt["reason"])
+        self.assertTrue(receipt["slack_ts"].startswith("synthetic."))
+        self.assertIn("not an admission gate", receipt["reason"])
         self.assertEqual(
             receipt["missing_credentials"],
             ["SLACK_BOT_TOKEN", "SLACK_APP_TOKEN"],
         )
 
-    def test_blank_tokens_count_as_missing(self) -> None:
+    def test_blank_tokens_are_overlay_missing_and_still_synthetic(self) -> None:
         env = {"SLACK_BOT_TOKEN": "  ", "SLACK_APP_TOKEN": ""}
         receipt = adapter.deliver(event(), mode="live", env=env)
-        self.assertFalse(receipt["ok"])
-        self.assertEqual(receipt["state"], adapter.ABSENT_STATE)
-        self.assertTrue(receipt["fail_closed"])
+        self.assertTrue(receipt["ok"])
+        self.assertEqual(receipt["state"], adapter.SYNTHETIC_STATE)
+        self.assertFalse(receipt["admission_gate"])
+        self.assertFalse(receipt["fail_closed"])
         self.assertFalse(receipt["silent_skip"])
+        self.assertEqual(
+            receipt["credential_presence"],
+            {"SLACK_BOT_TOKEN": "missing", "SLACK_APP_TOKEN": "missing"},
+        )
 
-    def test_live_mode_with_credentials_but_no_transport_fails_closed(self) -> None:
-        with mock.patch("urllib.request.urlopen") as urlopen:
-            receipt = adapter.deliver(event(), mode="live", env=PRESENT_ENV, transport=None)
-        urlopen.assert_not_called()
-        self.assertFalse(receipt["ok"])
-        self.assertEqual(receipt["state"], adapter.UNINJECTED_STATE)
-        self.assertTrue(receipt["fail_closed"])
-        self.assertFalse(receipt["silent_skip"])
-        self.assertFalse(receipt["real_send"])
-        self.assertIn("chat.postMessage", receipt["reason"])
-
-    def test_injected_transport_is_the_only_live_send_path(self) -> None:
-        calls = []
-
-        def transport(payload):
-            calls.append(payload)
-            return {"ok": True, "ts": "1788300000.000001"}
-
+    def test_live_mode_with_credentials_never_invokes_transport(self) -> None:
+        transport = mock.Mock(return_value={"ok": True, "ts": "1788300000.000001"})
         with mock.patch("urllib.request.urlopen") as urlopen:
             receipt = adapter.deliver(event(), mode="live", env=PRESENT_ENV, transport=transport)
         urlopen.assert_not_called()
+        transport.assert_not_called()
         self.assertTrue(receipt["ok"])
-        self.assertEqual(receipt["state"], "INJECTED_DELIVERED")
-        self.assertEqual(receipt["network_calls"], 1)
+        self.assertEqual(receipt["state"], adapter.SYNTHETIC_STATE)
+        self.assertTrue(receipt["read_only"])
+        self.assertFalse(receipt["admission_gate"])
         self.assertFalse(receipt["real_send"])
-        self.assertEqual(receipt["slack_ts"], "1788300000.000001")
-        self.assertEqual(len(calls), 1)
-        self.assertEqual(calls[0]["id"], "caliper-slack-relay-adapter-01")
-        self.assertEqual(calls[0]["channel"], "C0BRGMDQB6G")
-        self.assertEqual(calls[0]["text"], "synthetic Slack destination ping")
-        self.assertNotIn("token", json.dumps(calls[0]).lower())
+        self.assertEqual(receipt["network_calls"], 0)
+        self.assertTrue(receipt["slack_ts"].startswith("synthetic."))
+        self.assertNotEqual(receipt["slack_ts"], "1788300000.000001")
 
     def test_ntfy_shaped_event_preserves_origin_and_refuses_id_rewrite(self) -> None:
         ntfy_event = {
@@ -182,19 +182,22 @@ class SlackRelayAdapterTests(unittest.TestCase):
         self.assertFalse(closed["ok"])
         self.assertEqual(closed["state"], adapter.INVALID_EVENT_STATE)
         self.assertTrue(closed["fail_closed"])
+        self.assertFalse(closed["admission_gate"])
         self.assertFalse(closed["silent_skip"])
 
-    def test_unknown_mode_and_empty_event_fail_closed(self) -> None:
+    def test_unknown_mode_and_empty_event_are_malformed_not_admission(self) -> None:
         unknown = adapter.deliver(event(), mode="prod", env={})
         self.assertFalse(unknown["ok"])
         self.assertEqual(unknown["state"], adapter.INVALID_MODE_STATE)
         self.assertTrue(unknown["fail_closed"])
+        self.assertFalse(unknown["admission_gate"])
         self.assertFalse(unknown["silent_skip"])
 
         empty = adapter.deliver({}, mode="test", env={})
         self.assertFalse(empty["ok"])
         self.assertEqual(empty["state"], adapter.INVALID_EVENT_STATE)
         self.assertTrue(empty["fail_closed"])
+        self.assertFalse(empty["admission_gate"])
         self.assertFalse(empty["silent_skip"])
 
         missing_text = adapter.deliver({"id": "no-body"}, mode="test", env={})
@@ -221,15 +224,20 @@ class SlackRelayAdapterTests(unittest.TestCase):
         self.assertIn("from integrations.gemini_slack import bridge", source)
         self.assertIn("ntfy_relays.relay_message", source)
         self.assertEqual(adapter.GEMINI_BRIDGE_NAME, "integrations.gemini_slack.bridge")
+        self.assertNotIn("RUNTIME_UNCONFIGURED", source)
+        self.assertNotIn("LIVE_TRANSPORT_UNINJECTED", source)
+        self.assertNotIn("INJECTED_DELIVERED", source)
 
-    def test_self_test_covers_synthetic_and_fail_closed_paths(self) -> None:
+    def test_self_test_covers_synthetic_test_and_live_uncredentialed(self) -> None:
         with mock.patch("urllib.request.urlopen") as urlopen:
             report = adapter.self_test()
         urlopen.assert_not_called()
         self.assertTrue(report["ok"])
         self.assertEqual(report["synthetic"]["state"], adapter.SYNTHETIC_STATE)
-        self.assertEqual(report["credential_absent"]["state"], adapter.ABSENT_STATE)
-        self.assertTrue(report["credential_absent"]["fail_closed"])
+        self.assertEqual(report["live_uncredentialed"]["state"], adapter.SYNTHETIC_STATE)
+        self.assertTrue(report["live_uncredentialed"]["ok"])
+        self.assertFalse(report["live_uncredentialed"]["fail_closed"])
+        self.assertFalse(report["live_uncredentialed"]["admission_gate"])
 
     def test_cli_self_test_exits_zero(self) -> None:
         buf = io.StringIO()
@@ -238,6 +246,16 @@ class SlackRelayAdapterTests(unittest.TestCase):
         self.assertEqual(code, 0)
         report = json.loads(buf.getvalue())
         self.assertTrue(report["ok"])
+
+    def test_cli_live_with_empty_env_exits_zero(self) -> None:
+        buf = io.StringIO()
+        with mock.patch("sys.stdout", buf):
+            code = adapter.main(["--mode", "live"])
+        self.assertEqual(code, 0)
+        receipt = json.loads(buf.getvalue())
+        self.assertTrue(receipt["ok"])
+        self.assertEqual(receipt["state"], adapter.SYNTHETIC_STATE)
+        self.assertFalse(receipt["admission_gate"])
 
 
 if __name__ == "__main__":
