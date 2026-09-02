@@ -35,6 +35,9 @@ BOARD_CHUNK_MARKERS = (
 SEED0 = "muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno"
 EXPANDING_SEED = "muhl/docs/EXPANDING_SEED.md"
 CHUNKS_INDEX = "chunks/index.json"
+PAY = "pay.html"
+ACTION_PAD = "action.html"
+COMMERCE = "commerce.html"
 
 # Slack-stated Pages except-list (Fable 2026-09-02). Fixture only.
 STATED_EXCEPT_DIRS = ("muhl", "chunks", "excerpts", "conflicts", ".github")
@@ -121,7 +124,17 @@ def required_files(root: Path | None = None) -> tuple[str, ...]:
     page = (here / FREE_SAMPLE.relative_to(ROOT)).read_text(encoding="utf-8")
     hrefs = tuple(_HREF_MUHL.findall(page))
     ordered: list[str] = []
-    for item in (CHUNKS_INDEX, SEED0, EXPANDING_SEED, proof.get("path"), proof.get("existing_doc"), *hrefs):
+    for item in (
+        CHUNKS_INDEX,
+        SEED0,
+        EXPANDING_SEED,
+        proof.get("path"),
+        proof.get("existing_doc"),
+        PAY,
+        ACTION_PAD,
+        COMMERCE,
+        *hrefs,
+    ):
         if not item:
             continue
         rel = posix(item)
