@@ -42,7 +42,7 @@ KEEP = {
     "host/harborline_pack_market_slack_render.py": "a03534da",
     "test_harborline_pack_market_slack_render.py": "23a840b5",
     "p/cursor-big-things-incoming-shots-readback-ack-20260902-01.md": "6311eee5",
-    "test_big_things_incoming_shots_readback_ack.py": "a9cc500d",
+    "test_big_things_incoming_shots_readback_ack.py": "1f104c66",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
 }
 
@@ -90,6 +90,17 @@ class TestBigThingsIncomingShotsReadbackRematch(unittest.TestCase):
         self.assertEqual(SHOT2.read_bytes()[:8], b"\x89PNG\r\n\x1a\n")
         self.assertEqual(THUMB1.read_bytes()[:3], b"\xff\xd8\xff")
         self.assertEqual(THUMB2.read_bytes()[:3], b"\xff\xd8\xff")
+
+    def test_ack_leftover_post_kept_after_peer_unpin(self) -> None:
+        ack_post = git_blob("p/cursor-big-things-incoming-shots-readback-ack-20260902-01.md")
+        unique_pack = git_blob("p/cursor-big-things-incoming-shots-readback-20260902-01.md")
+        leftover = git_blob("p/cursor-big-things-incoming-shots-20260902-01.md")
+        ack_test = git_blob("test_big_things_incoming_shots_readback_ack.py")
+        self.assertTrue(ack_post.startswith("6311eee5"), ack_post)
+        self.assertTrue(unique_pack.startswith("3cabb764"), unique_pack)
+        self.assertTrue(leftover.startswith("60b24eff"), leftover)
+        self.assertTrue(ack_test.startswith("1f104c66"), ack_test)
+        self.assertFalse(ack_test.startswith("a9cc500d"), ack_test)
 
     def test_rematch_receipt_exists_and_does_not_steal(self) -> None:
         text = RECEIPT.read_text(encoding="utf-8")
