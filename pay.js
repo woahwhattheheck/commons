@@ -57,7 +57,7 @@
     return true;
   }
   function tipPayDoor() {
-    var path = (location && location.pathname) || "";
+    var path = (typeof window !== "undefined" && window.location && window.location.pathname) || "";
     return /(?:^|\/)(?:tips|pay)\.html$/i.test(path);
   }
   function fillSlot(slot, listing, snapshot, funnel) {
