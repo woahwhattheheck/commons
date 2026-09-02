@@ -437,6 +437,20 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertEqual(block["pixel_gate_pointer_helper_sha"], "08a23cde6")
         self.assertIs(block["did_not_overwrite_pixel_gate_pointer_helper"], True)
         self.assertIs(block["did_not_overwrite_pixel_gate_classifier"], True)
+        self.assertEqual(
+            block["pixel_gate_classifier_pointer"],
+            "cursor-business-pack-pixel-gate-classifier-pointer-20260902-01",
+        )
+        self.assertEqual(
+            block["pixel_gate_classifier_helper"],
+            "host/business_pack_waitlist_pixel_gate_pointer.py",
+        )
+        self.assertEqual(
+            block["pixel_gate_classifier_receipt"],
+            "cursor-business-pack-waitlist-pixel-gate-classifier-20260902-01",
+        )
+        self.assertIs(block["did_not_write_pixel_gate_classifier_helper"], True)
+        self.assertNotEqual(block["pixel_gate_helper_pointer"], block["pixel_gate_classifier_pointer"])
         self.assertNotEqual(block["pixel_gate_pointer"], block["pixel_gate_helper_pointer"])
         self.assertEqual(
             block["pixel_gate_receipt"],
@@ -451,6 +465,9 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotEqual(block["id"], block["pixel_gate_receipt"])
         self.assertTrue((ROOT / "host" / "pack_waitlist_pixel_gate.py").is_file())
         self.assertTrue((ROOT / "host" / "pack_waitlist_pixel_gate_pointer.py").is_file())
+        self.assertTrue(
+            (ROOT / "host" / "business_pack_waitlist_pixel_gate_pointer.py").is_file()
+        )
         self.assertTrue(
             (ROOT / "p" / "cursor-pack-waitlist-pixel-gate-20260902-01.md").is_file()
         )
@@ -468,9 +485,17 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 / "cursor-business-pack-pixel-gate-helper-pointer-20260902-01.md"
             ).is_file()
         )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-pixel-gate-classifier-pointer-20260902-01.md"
+            ).is_file()
+        )
         self.assertIn("CCPA", self.door)
         self.assertIn("pack_waitlist_pixel_gate.py", self.door)
         self.assertIn("pack_waitlist_pixel_gate_pointer.py", self.door)
+        self.assertIn("business_pack_waitlist_pixel_gate_pointer.py", self.door)
         self.assertTrue((ROOT / "packs" / "waitlist.html").is_file())
         self.assertIn('href="./packs/waitlist.html"', self.door)
         self.assertNotIn("<form", self.door)
@@ -654,6 +679,18 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIs(block["did_not_write_tally_sold_once_paths"], True)
         self.assertIs(block["did_not_write_lotribbon_sold_once"], True)
         self.assertIs(block["did_not_write_goat_creative_brief"], True)
+        self.assertEqual(
+            block["sold_once_not_landed_pointer"],
+            "cursor-business-pack-sold-once-not-landed-pointer-20260902-01",
+        )
+        self.assertIs(block["sold_once_landed"], False)
+        self.assertEqual(block["sold_once_harborline"], "not_this_seat")
+        self.assertEqual(block["sold_once_anchor"], "OWNER_UNSET")
+        self.assertEqual(block["sold_once_lotribbon_claimed_by"], "bc-23891c63")
+        self.assertIs(block["did_not_write_sold_once_on_doors"], True)
+        self.assertNotEqual(block["sold_once_badge_pointer"], block["sold_once_not_landed_pointer"])
+        self.assertNotIn("Instance 1 of 1", self.door)
+        self.assertNotIn("No royalty", self.door)
         self.assertIs(block["did_not_overwrite_sidewalk_door"], True)
         self.assertIs(block["did_not_overwrite_lotribbon_door"], True)
         self.assertIn("host/business_pack_desk_instance.py", self.door)
@@ -704,6 +741,13 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 ROOT
                 / "p"
                 / "cursor-business-pack-sold-once-badge-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sold-once-not-landed-pointer-20260902-01.md"
             ).is_file()
         )
         self.assertFalse(
