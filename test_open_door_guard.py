@@ -103,6 +103,57 @@ def main():
     )
     assert guard.scan_diff(allowed) == [], guard.scan_diff(allowed)
 
+    # PR 7648 / run 33595322662: sold-pack ToS leftover cards state they are
+    # not a Commons gate. That collocation is a prohibition, not TOS admission
+    # enforcement. Affirmative TOS gates must still fail.
+    tos_leftover = "\n".join(
+        [
+            diff(
+                "ground/TJLABS_PACK_TERMS.md",
+                [
+                    "This card is the machine-backed ToS leftover. It is not a Commons gate. It is not counsel clearance. It is not a minted checkout.",
+                ],
+            ),
+            diff(
+                "host/tjlabs_pack_terms.py",
+                ['"""Classify tjlabs sold-pack ToS slots. Not a Commons gate.'],
+            ),
+            diff(
+                "test_tjlabs_pack_terms.py",
+                [
+                    '"""tjlabs sold-pack ToS: owner slots, no invented share, not a Commons gate."""',
+                ],
+            ),
+        ]
+    )
+    assert guard.scan_diff(tos_leftover) == [], guard.scan_diff(tos_leftover)
+
+    tos_blocked = "\n".join(
+        [
+            diff("carrier.js", ["The TOS is required before a post may land."]),
+            diff(
+                "board.js",
+                ["Reject posts that have not accepted the terms of service."],
+            ),
+        ]
+    )
+    assert rules(tos_blocked) == {"tos-enforcement"}, rules(tos_blocked)
+
+    tjlabs_paths = [
+        Path("ground/TJLABS_PACK_TERMS.md"),
+        Path("host/tjlabs_pack_terms.py"),
+        Path("test_tjlabs_pack_terms.py"),
+    ]
+    tjlabs_lines = [
+        guard.AddedLine(path.as_posix(), line_number, text)
+        for path in tjlabs_paths
+        for line_number, text in enumerate(
+            path.read_text(encoding="utf-8").splitlines(), 1
+        )
+    ]
+    tjlabs_violations = guard.scan_added(tjlabs_lines)
+    assert tjlabs_violations == [], tjlabs_violations
+
     # Only explicit negative assertion syntax is exempt. Equivalent positive
     # assertions must still expose denial text and protected-path sets.
     positive_assertions = "\n".join(
