@@ -117,6 +117,60 @@ class TestAutogtmSameLoop(unittest.TestCase):
         with self.assertRaises(ValueError):
             loop.load_html("http://example.com", loop.DEFAULT_HTML)
 
+    def test_boards_lists_autogtm_door(self) -> None:
+        boards = (ROOT / "boards.html").read_text(encoding="utf-8")
+        self.assertIn('href="./autogtm.html"', boards)
+        self.assertIn("same loop as Explee", boards)
+
+    def test_peer_ack_does_not_remint_harborline_or_lead(self) -> None:
+        ack = (ROOT / "p/cursor-autogtm-ack-peers-20260902-01.md").read_text(
+            encoding="utf-8"
+        )
+        harbor = (ROOT / "p/cursor-explee-qualify-clone-20260902-01.md").read_text(
+            encoding="utf-8"
+        )
+        self.assertIn("aceb4aead", ack)
+        self.assertIn("cursor-explee-skills-adopt-20260902-01", ack)
+        self.assertIn("did **not** steal", ack)
+        self.assertIn("will **not** remint that id", ack)
+        self.assertIn("/qualify", harbor)
+        self.assertFalse((ROOT / "p/cursor-explee-skills-adopt-20260902-01.md").exists())
+
+    def test_composes_website_people_email_book_extract(self) -> None:
+        row = loop.measure(
+            html=HTML, source="fixture", catalog=CATALOG, opener=fake_401
+        )
+        self.assertEqual(
+            row["context"]["composed_from"],
+            "host/website_people_email_book.py#extract_website",
+        )
+        self.assertEqual(
+            row["context"]["book_url"],
+            "https://cal.com/tokenjunkielabs/intro",
+        )
+        self.assertIn("crash-resume", row["context"]["offer"].lower())
+
+    def test_named_eight_step_functions_run(self) -> None:
+        row = loop.measure(
+            html=HTML,
+            source="fixture",
+            catalog=CATALOG,
+            asked_autopilot=True,
+            opener=fake_401,
+        )
+        self.assertEqual(row["mode"], "autopilot")
+        self.assertEqual(row["status"]["sent"], False)
+        self.assertEqual(row["status"]["cash_usd"], 0)
+        self.assertEqual(row["status"]["explee"], "FINDER-FAILED")
+        self.assertEqual(loop.choose_mode(False), "run_now")
+        self.assertEqual(len(loop.search_extract(CATALOG)), len(CATALOG["prospects"]))
+
+    def test_sibling_gtm_doors_link_autogtm(self) -> None:
+        wpeb = (ROOT / "website-people-email-book.html").read_text(encoding="utf-8")
+        index = (ROOT / "lm-gtm-index.html").read_text(encoding="utf-8")
+        self.assertIn('href="./autogtm.html"', wpeb)
+        self.assertIn('href="./autogtm.html"', index)
+
 
 if __name__ == "__main__":
     unittest.main()
