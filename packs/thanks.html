@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="x-pixel-id" content="">
+<title>Thanks — business pack</title>
+<link rel="stylesheet" href="../commons.css?v=20260902thanks">
+<style>
+body{max-width:40rem;margin:0 auto;padding:1.5rem}
+.card{border:1px solid #383840;border-radius:12px;padding:1rem;background:#111114}
+.note{color:#9a9aa3;font-size:.95rem}
+code{font-size:.9em}
+</style>
+</head>
+<body>
+<p class="nav"><a href="../index.html">Commons</a> · <a href="../business-packs.html">business packs</a> · <a href="../keep-sell.html">KEEP / SELL</a></p>
+<header>
+  <h1>Thanks. The pack is yours.</h1>
+  <p class="lead">This page exists so an owner-pasted Stripe Payment Link can redirect here after payment. Marketing spend stays with Bryce. This door does not mint a pixel, an ads account, or a checkout URL.</p>
+</header>
+<section class="card">
+  <p>Prices describe the pack. This page does not promise income, timed results, or a refund period.</p>
+  <p class="note">X Pixel slot is owner-filled in <code>&lt;meta name="x-pixel-id" content=""&gt;</code>. Empty means this page loads no third-party scripts. After you paste a numeric pixel id, Stripe's after-payment redirect should land here with <code>?value=100</code> (or 20 / 50 / 200 / 1000 / 10000) so <code>Purchase</code> can carry the tier price.</p>
+  <p class="note">Owner paste in Stripe: after-payment redirect → <code>https://woahwhattheheck.github.io/commons/packs/thanks.html?value=TIER</code></p>
+</section>
+<script>
+(function () {
+  var meta = document.querySelector('meta[name="x-pixel-id"]');
+  var id = ((meta && meta.getAttribute("content")) || "").trim();
+  if (!id) return;
+  if (!/^[0-9]{5,20}$/.test(id)) return;
+  var raw = new URLSearchParams(window.location.search).get("value") || "";
+  var value = Number(raw);
+  var allowed = {20:1, 50:1, 100:1, 200:1, 1000:1, 10000:1};
+  var payload = {currency: "USD"};
+  if (allowed[value]) payload.value = value;
+  var s = document.createElement("script");
+  s.async = true;
+  s.src = "https://static.ads-twitter.com/uwt.js";
+  s.onload = function () {
+    if (typeof twq !== "function") return;
+    twq("config", id);
+    twq("event", "Purchase", payload);
+  };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
