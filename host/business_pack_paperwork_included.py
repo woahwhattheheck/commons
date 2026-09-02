@@ -88,7 +88,8 @@ def classify_homework(
         sheet_text = target.read_text(encoding="utf-8")
     steps = parse_sheet_homework(sheet_text)
     missing = [name for name in REQUIRED if not _filled_step(steps.get(name, ""))]
-    filing_claim = bool(FILING_RE.search(sheet_text))
+    step_blob = "\n".join(steps.get(name, "") for name in REQUIRED)
+    filing_claim = bool(FILING_RE.search(step_blob))
     if filing_claim:
         verdict = "PAPERWORK_FILING_CLAIM"
     elif missing:
