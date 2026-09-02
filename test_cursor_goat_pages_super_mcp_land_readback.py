@@ -118,10 +118,10 @@ class TestCursorGoatPagesSuperMcpLandReadback(unittest.TestCase):
         self.assertFalse((ROOT / "marketplace.html").exists())
         self.assertFalse((ROOT / "qualify.html").exists())
         self.assertFalse((ROOT / "CLAUDE_CORNER.md").exists())
-        self.assertFalse(
+        self.assertTrue(
             (ROOT / "p/cursor-big-huge-commerce-agents-readback-20260902-01.md").exists()
         )
-        self.assertFalse(
+        self.assertTrue(
             (
                 ROOT
                 / "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md"
