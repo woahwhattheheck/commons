@@ -126,6 +126,10 @@ class SlackControlPlaneTest(unittest.TestCase):
         self.assertIs(self.mp["channels"]["business_packs"]["no_fake_stripe_urls"], True)
         self.assertEqual(self.mp["channels"]["business_packs"]["marketing"], "bryce_only")
         self.assertEqual(self.mp["channels"]["business_packs"]["scaffold_owned_by"], "GOAT")
+        self.assertEqual(
+            self.mp["channels"]["business_packs"]["unique_pack_law"],
+            "ground/BUSINESS_PACKS.json",
+        )
         self.assertNotEqual(sales["id"], self.mp["channels"]["leads"]["id"])
         self.assertNotEqual(
             self.mp["channels"]["billings_1421_compliance"]["id"],

@@ -29,7 +29,7 @@ Channel names can change. Slack channel IDs are the stable identity. Core lanes 
 | Cursor master updates | `#cursor-master-updates` | `C0BTYUYNJJZ` | Cursor fleet queue corrections and master handoffs. Measured 2026-09-02. Does not replace `#commons` CLAIM/SHIP or the coordination hub. |
 | Claude containment | `#claude-containment-board` | `C0BUH19DW80` | Claude containment / isolation notes. Measured 2026-09-02. Live history at measurement was join-only. |
 | Billings Bid 1421 compliance | `#billings-1421-compliance` | `C0BU4PSNWG4` | Bid 1421 deadline/contract evidence and owner-only send/sign decisions. Measured 2026-09-02. Engineering claims stay in `#delegations`. No City/Cheri contact from this map. |
-| Business packs | `#business-packs` | `C0BU7JAPUH3` | KEEP vs SELL pack work. Measured 2026-09-02. Marketing stays with Bryce. No fake Stripe URLs. GOAT owns the scaffold PR. Product engines that we sell stay on the matching private product `main`. |
+| Business packs | `#business-packs` | `C0BU7JAPUH3` | KEEP vs SELL pack work. Measured 2026-09-02. Marketing stays with Bryce. No fake Stripe URLs. GOAT owns the scaffold PR. Unique-pack law: each customer purchase is a fresh package ([BUSINESS_PACKS.md](./BUSINESS_PACKS.md)). Product engines that we sell stay on the matching private product `main`. |
 
 Open archives:
 

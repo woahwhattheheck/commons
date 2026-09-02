@@ -173,6 +173,8 @@
       "marketing": "bryce_only",
       "no_fake_stripe_urls": true,
       "scaffold_owned_by": "GOAT",
+      "unique_pack_law": "ground/BUSINESS_PACKS.json",
+      "unique_pack_receipt": "cursor-business-packs-unique-20260902-01",
       "not": "commons_admission_gate"
     }
   }
