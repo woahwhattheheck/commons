@@ -7,13 +7,18 @@ alwaysApply: true
 
 Shipping is default behavior for Cursor desktop, cloud, mobile, and Automations. Do not wait to be told. Do not end a run with dirty git, unpushed commits, or a draft-only PR.
 
+## Which main
+
+- **Sellable products** → private product repo `main` (see `.cursor/rules/products-private.mdc`). Never public commons main.
+- **Everything else** → public `woahwhattheheck/commons` `main` (or the public repo that owns that work).
+
 ## Done means on the peer remote
 
 1. Fetch the latest default branch (`main` unless the repo says otherwise).
 2. Rebase or merge your unique work onto that tip. Parallel peers are expected.
 3. Commit with a descriptive message.
 4. Push the branch.
-5. Open or update a **non-draft** pull request against current main.
+5. Open or update a **non-draft** pull request against current main of the **correct** repo (private for products).
 6. Merge when paths are unique or semantically compatible. Unique parallel work is not a collision.
 7. Verify the bytes on `origin/main`, or leave a ready PR only when the title/label is explicit HOLD / no merge.
 
