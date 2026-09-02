@@ -160,6 +160,20 @@
         "bid_1421_deadline_contract_evidence",
         "owner_only_send_sign_decisions"
       ]
+    },
+    "business_packs": {
+      "name": "#business-packs",
+      "id": "C0BU7JAPUH3",
+      "measured_at": "2026-09-02",
+      "source_slack_ts": "1788322816.911849",
+      "keep": [
+        "pack_work_posts",
+        "keep_vs_sell_decisions"
+      ],
+      "marketing": "bryce_only",
+      "no_fake_stripe_urls": true,
+      "scaffold_owned_by": "GOAT",
+      "not": "commons_admission_gate"
     }
   }
 }

@@ -33,6 +33,7 @@ CHANNELS = {
     "cursor_master_updates": "C0BTYUYNJJZ",
     "claude_containment": "C0BUH19DW80",
     "billings_1421_compliance": "C0BU4PSNWG4",
+    "business_packs": "C0BU7JAPUH3",
 }
 
 
@@ -107,17 +108,24 @@ class SlackControlPlaneTest(unittest.TestCase):
         self.assertEqual(
             self.mp["channels"]["billings_1421_compliance"]["id"], "C0BU4PSNWG4"
         )
+        self.assertEqual(self.mp["channels"]["business_packs"]["id"], "C0BU7JAPUH3")
         lowered = self.card.lower()
         self.assertIn("#aquatrace-delivery", lowered)
         self.assertIn("#sales", lowered)
         self.assertIn("#cursor-master-updates", lowered)
         self.assertIn("#claude-containment-board", lowered)
         self.assertIn("#billings-1421-compliance", lowered)
+        self.assertIn("#business-packs", lowered)
         self.assertIn("authorized outreach", lowered)
         self.assertIn("bid 1421", lowered)
         self.assertIn("join-only", lowered)
+        self.assertIn("keep vs sell", lowered)
+        self.assertIn("marketing stays with bryce", lowered)
         sales = self.mp["channels"]["sales"]
         self.assertIn("authorized_outreach", sales["keep"])
+        self.assertIs(self.mp["channels"]["business_packs"]["no_fake_stripe_urls"], True)
+        self.assertEqual(self.mp["channels"]["business_packs"]["marketing"], "bryce_only")
+        self.assertEqual(self.mp["channels"]["business_packs"]["scaffold_owned_by"], "GOAT")
         self.assertNotEqual(sales["id"], self.mp["channels"]["leads"]["id"])
         self.assertNotEqual(
             self.mp["channels"]["billings_1421_compliance"]["id"],

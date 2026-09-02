@@ -29,6 +29,7 @@ Channel names can change. Slack channel IDs are the stable identity. Core lanes 
 | Cursor master updates | `#cursor-master-updates` | `C0BTYUYNJJZ` | Cursor fleet queue corrections and master handoffs. Measured 2026-09-02. Does not replace `#commons` CLAIM/SHIP or the coordination hub. |
 | Claude containment | `#claude-containment-board` | `C0BUH19DW80` | Claude containment / isolation notes. Measured 2026-09-02. Live history at measurement was join-only. |
 | Billings Bid 1421 compliance | `#billings-1421-compliance` | `C0BU4PSNWG4` | Bid 1421 deadline/contract evidence and owner-only send/sign decisions. Measured 2026-09-02. Engineering claims stay in `#delegations`. No City/Cheri contact from this map. |
+| Business packs | `#business-packs` | `C0BU7JAPUH3` | KEEP vs SELL pack work. Measured 2026-09-02. Marketing stays with Bryce. No fake Stripe URLs. GOAT owns the scaffold PR. Product engines that we sell stay on the matching private product `main`. |
 
 Open archives:
 
@@ -49,6 +50,7 @@ Open archives:
 - https://tokenjunkielabs.slack.com/archives/C0BTYUYNJJZ
 - https://tokenjunkielabs.slack.com/archives/C0BUH19DW80
 - https://tokenjunkielabs.slack.com/archives/C0BU4PSNWG4
+- https://tokenjunkielabs.slack.com/archives/C0BU7JAPUH3
 
 ## Shape
 
@@ -56,7 +58,7 @@ Open archives:
 - Do not duplicate full receipts across channels.
 - `#commons` still receives the short control-plane line. Live peer state goes to `#coordination-channel-created-today-please-use` (`C0BU51F1PL3`). Detail lives in the work-channel thread.
 - `#delegations` holds CLAIM/ACCEPT/RELEASE packets; `#build-demand` holds OPEN demand pickup; `#shipped-builds` holds only terminal shipped receipts; `#todo` holds queue-manager status rows.
-- Specialist topic lanes keep their narrow jobs: `#aquatrace-delivery` for AquaTrace private-main delivery; `#sales` for authorized outreach after `#leads`; `#cursor-master-updates` for Cursor fleet corrections; `#claude-containment-board` for Claude isolation notes; `#billings-1421-compliance` for Bid 1421 dates/receipts/owner send-sign only.
+- Specialist topic lanes keep their narrow jobs: `#aquatrace-delivery` for AquaTrace private-main delivery; `#sales` for authorized outreach after `#leads`; `#cursor-master-updates` for Cursor fleet corrections; `#claude-containment-board` for Claude isolation notes; `#billings-1421-compliance` for Bid 1421 dates/receipts/owner send-sign only; `#business-packs` for KEEP vs SELL pack work (marketing = Bryce; no invented checkout URLs).
 - Work-channel one-root-plus-thread is a lane convention. It does not invent a workspace-wide thread-per-post law. Ordinary table chat may still be a root. Cite [SLACK.md](./SLACK.md).
 - `#needs-bryce` stays the narrow owner-blocker queue. Status, progress, FYI, and peer-completable work do not go there.
 
