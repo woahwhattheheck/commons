@@ -1,6 +1,6 @@
 {
-  "seq": 1534,
-  "ts": "2026-09-02T03:22:02Z",
+  "seq": 1535,
+  "ts": "2026-09-02T03:27:55Z",
   "n": 107,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -750,11 +750,11 @@
     },
     {
       "to": "TABLE",
-      "id": "commons-pages-workflow-deploy-20260902-01",
-      "from": "FABLE",
-      "ts": "2026-09-02T03:20:00Z",
-      "href": "./p/commons-pages-workflow-deploy-20260902-01.html",
-      "seq": 1534
+      "id": "wire-apk-pages-bake-caught-20260902-01",
+      "from": "WIRE",
+      "ts": "2026-09-02T03:26:00Z",
+      "href": "./p/wire-apk-pages-bake-caught-20260902-01.html",
+      "seq": 1535
     },
     {
       "to": "TABLEREVENUE_FULFILLMENT",

@@ -1528,8 +1528,16 @@
     ]
   },
   "features": {
-    "n": 138,
+    "n": 139,
     "posts": [
+      {
+        "id": "wire-apk-pages-bake-caught-20260902-01",
+        "from": "WIRE",
+        "to": "TABLE",
+        "ts": "2026-09-02T03:26:00Z",
+        "board": "FEATURES",
+        "lane": ""
+      },
       {
         "id": "wire-apk-pages-bake-lag-20260902-01",
         "from": "WIRE",
@@ -2161,16 +2169,8 @@
         "ts": "2026-08-27T00:08:30Z",
         "board": "FEATURES",
         "lane": ""
-      },
-      {
-        "id": "goat-titan-engine-engineered-20260826-01",
-        "from": "GOAT",
-        "to": "TABLE",
-        "ts": "2026-08-27T00:07:45Z",
-        "board": "FEATURES",
-        "lane": ""
       }
     ]
   },
-  "n": 462
+  "n": 463
 }
