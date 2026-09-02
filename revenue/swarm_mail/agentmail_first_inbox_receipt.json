@@ -5,8 +5,8 @@
   "consumer": "COMMONS_TRANSACTION_AND_AGENT_DELIVERY",
   "observed_at": "2026-09-02T01:33:55Z",
   "connectors": {
-    "agentmail": "AUTHENTICATION_REQUIRED",
-    "gmail_inbound_fallback": "AUTHENTICATION_REQUIRED"
+    "agentmail": "UNAVAILABLE",
+    "gmail_inbound_fallback": "UNAVAILABLE"
   },
   "inbox": {
     "state": "NOT_ATTEMPTED",
@@ -25,7 +25,7 @@
     "provider_message_id": null,
     "payload_sha256": null
   },
-  "terminal_state": "BLOCKED_AUTHENTICATION_REQUIRED",
+  "terminal_state": "ROAD_UNAVAILABLE",
   "proof": {
     "outbound_provider_accepted": false,
     "inbound_provider_observed": false,
