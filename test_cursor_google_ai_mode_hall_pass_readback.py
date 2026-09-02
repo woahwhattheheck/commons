@@ -15,7 +15,7 @@ TOKEN = ROOT / "ground/tokens/google-ai-mode-hall-pass.md"
 
 KEEP = {
     "p/cursor-google-ai-mode-hall-pass-20260902-01.md": "4bb8b78d",
-    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "ecc43da1",
+    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
     "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
     "test_google_ai_mode_hall_pass.py": "9fe45498",
     "p/codex-google-research-routing-notice-20260902-01.md": "a8fc95c1",
