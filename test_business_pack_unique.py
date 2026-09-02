@@ -299,6 +299,79 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertEqual(data["mystery"]["verdict"], "MYSTERY_OK")
         self.assertIs(data["not_lottery"], True)
 
+    def test_sell_instance_sell_without_brand_or_door_is_missing(self) -> None:
+        result = unique.classify_sell_offer(
+            {
+                "keep_or_sell": "SELL",
+                "template_id": "yard-card",
+                "assets_sha256": "aa" * 32,
+            }
+        )
+        self.assertEqual(result["verdict"], "MISSING_INSTANCE_FOR_PRICE")
+        self.assertIs(result["gate"], False)
+        self.assertIs(result["commons_admission"], False)
+        self.assertIs(result["agents_spend_ads"], False)
+        self.assertIs(result["did_not_steal_goat_yard_card"], True)
+        self.assertEqual(result["checkout"], "NOT_MINTED")
+        self.assertIn("brand", result["missing_instance"])
+        self.assertIn("door", result["missing_instance"])
+
+    def test_sell_instance_with_brand_and_checkout_is_ok(self) -> None:
+        result = unique.classify_sell_offer(
+            {
+                "keep_or_sell": "SELL",
+                "brand": "weekend-tyler-route",
+                "checkout": "owner-pastes-later",
+            }
+        )
+        self.assertEqual(result["verdict"], "UNIQUE_INSTANCE_SELL_OK")
+        self.assertTrue(result["has_brand"])
+        self.assertTrue(result["has_door"])
+        self.assertEqual(result["missing_instance"], [])
+
+    def test_kit_without_instance_is_not_unique_sell(self) -> None:
+        result = unique.classify_sell_offer(
+            {
+                "kit_not_unique_instance": True,
+                "template_id": "yard-card",
+            }
+        )
+        self.assertEqual(result["verdict"], "KIT_NOT_UNIQUE_INSTANCE")
+        self.assertIs(result["gate"], False)
+
+    def test_copy_prices_and_time_ok_earnings_flagged(self) -> None:
+        ok = unique.classify_copy("$40 per bin-out, two hours Saturday")
+        self.assertEqual(ok["verdict"], "COPY_OK")
+        self.assertFalse(ok["earnings_claim"])
+        self.assertIs(ok["agents_spend_ads"], False)
+        bad = unique.classify_copy("Make $200 this weekend")
+        self.assertEqual(bad["verdict"], "EARNINGS_CLAIM")
+        self.assertTrue(bad["earnings_claim"])
+        self.assertIs(bad["gate"], False)
+
+    def test_sell_instance_law_does_not_steal_or_remint(self) -> None:
+        block = self.law["sell_instance"]
+        self.assertEqual(block["id"], "cursor-business-packs-sell-instance-20260902-01")
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(block["source_slack_ts"], "1788326387.638969")
+        self.assertEqual(block["source_channel_id"], "C0BU7JAPUH3")
+        self.assertEqual(block["scout_demand_id"], "scout-demand-yard-card-instance-20260902-01")
+        self.assertIs(block["did_not_remint_scout_demand"], True)
+        self.assertIs(block["did_not_steal_goat_yard_card"], True)
+        self.assertIs(block["did_not_write_buyer_tiers"], True)
+        self.assertIs(block["agents_spend_ads"], False)
+        self.assertEqual(block["checkout"], "NOT_MINTED")
+        self.assertEqual(block["named_unique_sell_requires"], ["brand", "door"])
+        self.assertEqual(block["copy"], "prices_and_time_budgets_never_earnings")
+        self.assertIn("named unique-instance SELL", self.card)
+        self.assertIn("never earnings", self.door)
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertNotIn("337 NO", self.card)
+        self.assertTrue((ROOT / "host" / "pack_keep_sell_candidate.py").is_file())
+        self.assertTrue((ROOT / "p" / "cursor-business-pack-yard-card-20260902-01.md").is_file())
+
 
 if __name__ == "__main__":
     unittest.main()

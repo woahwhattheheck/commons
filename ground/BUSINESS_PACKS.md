@@ -16,5 +16,6 @@ This is a factory-lane law. It is not a Commons login. Possessing a Commons link
 6. Do not invent Stripe Payment Links. Owner pastes live checkout URLs.
 7. GOAT owns the pack scaffold and the yard-card KEEP vs SELL candidate. This card does not steal those files. Sellable product engines still land on the matching private product `main`.
 8. Factory pointers (merged, do not remint): SKU [sku-business-packs-20260902.md](../land/sku-business-packs-20260902.md), empty slot [packs/_template/](../packs/_template/), KEEP vs SELL door [keep-sell.html](../keep-sell.html). Checkout stays `NOT_MINTED` until the owner pastes a live Payment Link.
+9. SCOUT `#business-packs` `1788326387.638969`: a named unique-instance SELL needs a **name and a door** (brand + checkout/door). Missing those fields is a kit, not that SELL. Offer copy uses prices and time budgets, never earnings. Agents do not spend ads. This card does not steal GOAT yard-card candidate files and does not remint SCOUT's demand id.
 
 Machine map: [BUSINESS_PACKS.json](./BUSINESS_PACKS.json). Helper: [host/business_pack_unique.py](../host/business_pack_unique.py). Door: [business-packs.html](../business-packs.html). Slack lane: [SLACK_CONTROL_PLANE.md](./SLACK_CONTROL_PLANE.md) `#business-packs`.

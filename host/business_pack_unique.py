@@ -10,12 +10,18 @@ is not a clone-stamp. Each sold unit is a distinct instance (assets, brand,
 checkout, instructions). Mystery-box pools mix rare valuable ideas; Bryce
 sets the potential value range. Not a lottery / not gambling. Do not invent
 odds tables or fake scarcity.
+
+SCOUT / Claude 1788326387.638969: a named unique-instance SELL needs a name
+and a door (brand + checkout/door). Missing those fields is a kit, not a
+unique-instance SELL. Copy uses prices and time budgets, never earnings.
+Agents do not spend ads. Do not steal GOAT yard-card candidate files.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
 import json
+import re
 from pathlib import Path
 from typing import Any
 
@@ -32,6 +38,11 @@ ODDS_KEYS = (
     "win_probability",
     "probability_table",
     "implied_odds",
+)
+DOOR_ALIASES = ("checkout", "door", "door_url", "door_path")
+EARNINGS_RE = re.compile(
+    r"(?i)\bmake\s+\$\d|\bearn\s+\$\d|\bprofit\s+\$\d|"
+    r"\bmake \$\d+ this weekend|\bunrealistic result"
 )
 
 
@@ -194,6 +205,73 @@ def _lottery_framing(data: dict[str, Any]) -> bool:
     return "lottery" in framing or "gambling" in framing
 
 
+def _has_instance_brand(offer: dict[str, Any]) -> bool:
+    return bool(_field_token(offer, "brand") or str(offer.get("brand") or "").strip())
+
+
+def _has_instance_door(offer: dict[str, Any]) -> bool:
+    for name in DOOR_ALIASES:
+        if _field_token(offer, name) or str(offer.get(name) or "").strip():
+            return True
+    return False
+
+
+def classify_sell_offer(offer: dict[str, Any] | None) -> dict[str, Any]:
+    """Named unique-instance SELL needs brand + door. Not a Commons gate.
+
+    SCOUT 1788326387.638969: at a named unique-instance price the buyer
+    expects a name and a door. Missing those is a kit, not that SELL.
+    Does not rewrite GOAT yard-card files. Does not invent Stripe URLs.
+    """
+    data = offer if isinstance(offer, dict) else {}
+    keep_or_sell = str(data.get("keep_or_sell") or "").strip().upper()
+    claiming = keep_or_sell == "SELL" or data.get("unique_instance_sell") is True
+    kit = data.get("kit_not_unique_instance") is True
+    missing: list[str] = []
+    if not _has_instance_brand(data):
+        missing.append("brand")
+    if not _has_instance_door(data):
+        missing.append("door")
+    if claiming and missing and not kit:
+        verdict = "MISSING_INSTANCE_FOR_PRICE"
+    elif kit:
+        verdict = "KIT_NOT_UNIQUE_INSTANCE"
+    elif claiming:
+        verdict = "UNIQUE_INSTANCE_SELL_OK"
+    else:
+        verdict = "SELL_INSTANCE_UNCLAIMED"
+    return {
+        "gate": False,
+        "commons_admission": False,
+        "verdict": verdict,
+        "claiming_unique_instance_sell": claiming,
+        "kit_not_unique_instance": kit,
+        "missing_instance": missing,
+        "has_brand": "brand" not in missing,
+        "has_door": "door" not in missing,
+        "marketing": "bryce_only",
+        "agents_spend_ads": False,
+        "no_fake_stripe_urls": True,
+        "checkout": "NOT_MINTED" if not _has_instance_door(data) else "present_on_offer",
+        "did_not_steal_goat_yard_card": True,
+    }
+
+
+def classify_copy(text: str) -> dict[str, Any]:
+    """Prices and time budgets are fine. Earnings claims are flagged, not gated."""
+    body = text or ""
+    earnings = bool(EARNINGS_RE.search(body))
+    return {
+        "gate": False,
+        "commons_admission": False,
+        "verdict": "EARNINGS_CLAIM" if earnings else "COPY_OK",
+        "earnings_claim": earnings,
+        "copy": "prices_and_time_budgets_never_earnings",
+        "marketing": "bryce_only",
+        "agents_spend_ads": False,
+    }
+
+
 def classify_mystery_pool(pool: dict[str, Any] | None) -> dict[str, Any]:
     """Mystery-nuts pool. Bryce owns the value range. Not a Commons gate.
 
@@ -243,6 +321,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--sales-json", default="", help="JSON list of sale objects")
     parser.add_argument("--sales-file", default="", help="path to JSON list of sales")
     parser.add_argument("--pool-json", default="", help="JSON mystery-pool object")
+    parser.add_argument("--offer-json", default="", help="JSON unique-instance SELL offer")
+    parser.add_argument("--copy", default="", help="offer copy to scan for earnings claims")
     parser.add_argument("--law", default="", help="override law path")
     args = parser.parse_args(argv)
     law = load_law(Path(args.law) if args.law else None)
@@ -264,6 +344,10 @@ def main(argv: list[str] | None = None) -> int:
         result["mystery"] = classify_mystery_pool(json.loads(args.pool_json))
     else:
         result["mystery"] = classify_mystery_pool(law.get("mystery") if isinstance(law.get("mystery"), dict) else {})
+    if args.offer_json:
+        result["sell_instance"] = classify_sell_offer(json.loads(args.offer_json))
+    if args.copy:
+        result["copy"] = classify_copy(args.copy)
     print(json.dumps(result, indent=2))
     print("", end="")
     return 0
