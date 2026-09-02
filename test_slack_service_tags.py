@@ -158,6 +158,19 @@ class SlackServiceTagsTest(unittest.TestCase):
         self.assertEqual(spec["desk"], "GOAT")
         self.assertIs(spec["this_process_tools"], False)
         self.assertEqual(spec["notion_custom_mcp_field"], "UNSEEN_FROM_THIS_SEAT")
+        self.assertIn("bc-73365238", spec["measured_cloud_seats"])
+        self.assertIn(
+            "bc-f49eebc7-1125-5fd8-82e2-374889f4b17f",
+            spec["measured_cloud_seats"],
+        )
+        self.assertIn(
+            "cursor-slack-notion-peer-connected-20260902-01",
+            spec["receipts"],
+        )
+        self.assertIn(
+            "cursor-slack-notion-seat-bcf49eebc7-20260902-01",
+            spec["receipts"],
+        )
         result = sst.route("@notion list databases", connected=["slack"])
         self.assertEqual(result["tags"], ["notion"])
         roads = {job["road"] for job in result["jobs"] if job["tag"] == "notion"}
@@ -166,8 +179,26 @@ class SlackServiceTagsTest(unittest.TestCase):
         self.assertNotIn("IN_HARNESS", roads)
         custom = next(j for j in result["slack_jobs"] if j["kind"] == "SLACK_CUSTOM_TOOL")
         self.assertEqual(custom["peer_desk"], "GOAT")
+        self.assertIs(custom["this_process_tools"], False)
+        self.assertIn("bc-73365238", custom["measured_cloud_seats"])
+        self.assertIn(
+            "bc-f49eebc7-1125-5fd8-82e2-374889f4b17f",
+            custom["measured_cloud_seats"],
+        )
         kinds = {row["kind"] for row in result["slack_jobs"]}
         self.assertNotIn("OWNER_BLOCKER", kinds)
+        first = ROOT / "p" / "cursor-slack-notion-peer-connected-20260902-01.md"
+        second = ROOT / "p" / "cursor-slack-notion-seat-bcf49eebc7-20260902-01.md"
+        self.assertTrue(first.is_file())
+        self.assertTrue(second.is_file())
+        self.assertIn("bc-73365238", first.read_text(encoding="utf-8"))
+        self.assertIn("bc-f49eebc7", second.read_text(encoding="utf-8"))
+        self.assertNotIn("bc-f49eebc7", first.read_text(encoding="utf-8"))
+        first_blob = subprocess.check_output(
+            ["git", "hash-object", str(first)],
+            text=True,
+        ).strip()
+        self.assertEqual(first_blob, "934361c73451862a4992fabe7582e95de4ab6477")
 
     def test_cli_json(self) -> None:
         proc = subprocess.run(
