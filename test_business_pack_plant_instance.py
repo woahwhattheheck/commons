@@ -70,6 +70,12 @@ class BusinessPackPlantInstanceTest(unittest.TestCase):
         self.assertEqual(result["operator"]["verdict"], "OPERATOR_DAY_OK")
         self.assertEqual(result["operator"]["support_price"], "OWNER_UNSET")
         self.assertEqual(result["running_cost_class"]["verdict"], "RUNNING_COST_OK")
+        self.assertIs(result["sold_once"], True)
+        self.assertEqual(
+            result["sold_once_badge"],
+            "Instance 1 of 1. This brand, this domain, this door are sold once.",
+        )
+        self.assertEqual(result["plant_anchor_slot"], "OWNER_UNSET")
 
     def test_door_is_named_lawn_greeting_not_yard_card(self) -> None:
         self.assertIn("LotRibbon", self.door)
@@ -89,6 +95,14 @@ class BusinessPackPlantInstanceTest(unittest.TestCase):
         self.assertIn("TikTok", self.door)
         self.assertIn("Instagram", self.door)
         self.assertIn("Pinterest", self.door)
+        self.assertIn(
+            "Instance 1 of 1. This brand, this domain, this door are sold once.",
+            self.door,
+        )
+        self.assertIn('data-sold-once="true"', self.door)
+        self.assertIn('data-owner-slot="plant-anchor"', self.door)
+        self.assertNotRegex(self.door, r"(?i)no royalty")
+        self.assertNotIn("become a business owner", self.door.lower())
 
     def test_public_copy_has_no_for_this_price_line(self) -> None:
         public = plant.public_copy()
@@ -144,6 +158,79 @@ class BusinessPackPlantInstanceTest(unittest.TestCase):
         payload = json.loads(proc.stdout)
         self.assertEqual(payload["verdict"], "PLANT_INSTANCE_OK")
         self.assertEqual(payload["id"], "cursor-plant-yard-greeting-pack-20260902-01")
+        self.assertIs(payload["sold_once"], True)
+
+    def test_sold_once_checks_reject_mismatch_badge_and_royalty(self) -> None:
+        html = (
+            "Instance 1 of 1. This brand, this domain, this door are sold once."
+            '<p data-owner-slot="plant-anchor"><code>OWNER_UNSET</code></p>'
+        )
+        ok = plant.sold_once_checks(
+            unique="UNIQUE",
+            manifest_sold_once=True,
+            door_html=html,
+        )
+        self.assertTrue(ok["ok"])
+        mismatch = plant.sold_once_checks(
+            unique="UNIQUE",
+            manifest_sold_once=False,
+            door_html=html,
+        )
+        self.assertEqual(mismatch["verdict"], "SOLD_ONCE_MISMATCH")
+        missing = plant.sold_once_checks(
+            unique="UNIQUE",
+            manifest_sold_once=True,
+            door_html='<p data-owner-slot="plant-anchor">OWNER_UNSET</p>',
+        )
+        self.assertEqual(missing["verdict"], "SOLD_ONCE_BADGE_MISSING")
+        slot = plant.sold_once_checks(
+            unique="UNIQUE",
+            manifest_sold_once=True,
+            door_html="Instance 1 of 1. This brand, this domain, this door are sold once.",
+        )
+        self.assertEqual(slot["verdict"], "PLANT_ANCHOR_SLOT_MISSING")
+        royalty = plant.sold_once_checks(
+            unique="UNIQUE",
+            manifest_sold_once=True,
+            door_html=html + " No royalty. Sold once.",
+        )
+        self.assertEqual(royalty["verdict"], "ROYALTY_CLAIM_BEFORE_TOS")
+        match_flag = plant.sold_once_checks(
+            unique="MATCH",
+            manifest_sold_once=True,
+            door_html="Built from the same method as our sold instances.",
+        )
+        self.assertEqual(match_flag["verdict"], "SOLD_ONCE_MISMATCH")
+        match_ok = plant.sold_once_checks(
+            unique="MATCH",
+            manifest_sold_once=False,
+            door_html="Built from the same method as our sold instances.",
+        )
+        self.assertTrue(match_ok["ok"])
+        self.assertEqual(
+            match_ok["sold_once_badge"],
+            "Built from the same method as our sold instances.",
+        )
+
+    def test_manifest_sold_once_matches_unique_and_copy_stays_ok(self) -> None:
+        self.assertIs(plant.load_manifest()["sold_once"], True)
+        copy = unique.classify_copy(self.door)
+        self.assertEqual(copy["verdict"], "COPY_OK")
+        self.assertNotIn("creative_brief.md", plant.REQUIRED_FILES)
+
+    def test_instance_creative_brief_is_research_not_live_royalty(self) -> None:
+        brief = (self.base / "assets" / "creative_brief.md").read_text(encoding="utf-8")
+        self.assertIn("OWNER_UNSET", brief)
+        self.assertIn("$1,000", brief)
+        self.assertIn("It has a name. It has a door. It's sold once.", brief)
+        self.assertIn("A business, built and documented. Yours outright.", brief)
+        self.assertIn("ad-research", brief.lower())
+        self.assertNotRegex(brief, r"(?i)make \$\d")
+        self.assertNotRegex(brief, r"(?i)earn \$\d")
+        self.assertNotIn("10,350", brief)
+        self.assertNotIn("packs/_template/creative_brief.md", brief)
+        template = ROOT / "packs" / "_template" / "creative_brief.md"
+        self.assertFalse(template.exists())
 
 
 if __name__ == "__main__":
