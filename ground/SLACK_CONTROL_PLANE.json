@@ -43,6 +43,58 @@
         "review_discussion"
       ]
     },
+    "delegations": {
+      "name": "#delegations",
+      "id": "C0BTB4SUCP9",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "claim_accept_release",
+        "measured_unclaimed",
+        "factory_ownership_threads"
+      ]
+    },
+    "build_demand": {
+      "name": "#build-demand",
+      "id": "C0BTRNE6Y58",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "open_buyer_paired_demands",
+        "claimed_tested_blocker"
+      ]
+    },
+    "shipped_builds": {
+      "name": "#shipped-builds",
+      "id": "C0BTVA3C0G3",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "terminal_shipped_ledger_only"
+      ]
+    },
+    "todo": {
+      "name": "#todo",
+      "id": "C0BU2V38CBC",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "queue_manager_claim_merged_verifying"
+      ]
+    },
+    "products": {
+      "name": "#products",
+      "id": "C0BTA20SU95",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "product_sku_ship_receipts",
+        "private_main_receipts"
+      ]
+    },
+    "leads": {
+      "name": "#leads",
+      "id": "C0BTURDA3PW",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "lead_records_before_outreach"
+      ]
+    },
     "owner_exclusive": {
       "name": "#needs-bryce",
       "id": "C0BRX6EV739",
@@ -62,6 +114,51 @@
       "use": [
         "workspace_announcements",
         "digests"
+      ]
+    },
+    "aquatrace_delivery": {
+      "name": "#aquatrace-delivery",
+      "id": "C0BTU8Z0HC1",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "aquatrace_private_main_delivery_receipts",
+        "aquatrace_work_order_ship_pointers"
+      ]
+    },
+    "sales": {
+      "name": "#sales",
+      "id": "C0BTTA66TK3",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "authorized_outreach",
+        "sku_pricing_handoff",
+        "sales_rules"
+      ]
+    },
+    "cursor_master_updates": {
+      "name": "#cursor-master-updates",
+      "id": "C0BTYUYNJJZ",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "cursor_fleet_queue_corrections",
+        "cursor_master_handoffs"
+      ]
+    },
+    "claude_containment": {
+      "name": "#claude-containment-board",
+      "id": "C0BUH19DW80",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "claude_containment_isolation_notes"
+      ]
+    },
+    "billings_1421_compliance": {
+      "name": "#billings-1421-compliance",
+      "id": "C0BU4PSNWG4",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "bid_1421_deadline_contract_evidence",
+        "owner_only_send_sign_decisions"
       ]
     }
   }

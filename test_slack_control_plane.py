@@ -19,9 +19,20 @@ CHANNELS = {
     "control_plane": "C0BRGMDQB6G",
     "coordination": "C0BU51F1PL3",
     "work": "C0BS7AZ4BSL",
+    "delegations": "C0BTB4SUCP9",
+    "build_demand": "C0BTRNE6Y58",
+    "shipped_builds": "C0BTVA3C0G3",
+    "todo": "C0BU2V38CBC",
+    "products": "C0BTA20SU95",
+    "leads": "C0BTURDA3PW",
     "owner_exclusive": "C0BRX6EV739",
     "ideas": "C0BRB1M9RL6",
     "announcements": "C0BS7ASU1LY",
+    "aquatrace_delivery": "C0BTU8Z0HC1",
+    "sales": "C0BTTA66TK3",
+    "cursor_master_updates": "C0BTYUYNJJZ",
+    "claude_containment": "C0BUH19DW80",
+    "billings_1421_compliance": "C0BU4PSNWG4",
 }
 
 
@@ -73,6 +84,45 @@ class SlackControlPlaneTest(unittest.TestCase):
         )
         self.assertIn("One top-level post per lane", self.card)
         self.assertIn("Replies stay threaded", self.card)
+
+    def test_build_and_delegation_lanes_are_measured(self) -> None:
+        self.assertEqual(self.mp["channels"]["delegations"]["id"], "C0BTB4SUCP9")
+        self.assertEqual(self.mp["channels"]["build_demand"]["id"], "C0BTRNE6Y58")
+        self.assertEqual(self.mp["channels"]["shipped_builds"]["id"], "C0BTVA3C0G3")
+        self.assertEqual(self.mp["channels"]["todo"]["id"], "C0BU2V38CBC")
+        self.assertEqual(self.mp["channels"]["products"]["id"], "C0BTA20SU95")
+        self.assertEqual(self.mp["channels"]["leads"]["id"], "C0BTURDA3PW")
+        lowered = self.card.lower()
+        self.assertIn("#delegations", lowered)
+        self.assertIn("#build-demand", lowered)
+        self.assertIn("#shipped-builds", lowered)
+        self.assertIn("terminal shipped ledger", lowered)
+        self.assertIn("PAGES_KEEP_PATHS.md", self.card)
+
+    def test_topic_lanes_are_measured(self) -> None:
+        self.assertEqual(self.mp["channels"]["aquatrace_delivery"]["id"], "C0BTU8Z0HC1")
+        self.assertEqual(self.mp["channels"]["sales"]["id"], "C0BTTA66TK3")
+        self.assertEqual(self.mp["channels"]["cursor_master_updates"]["id"], "C0BTYUYNJJZ")
+        self.assertEqual(self.mp["channels"]["claude_containment"]["id"], "C0BUH19DW80")
+        self.assertEqual(
+            self.mp["channels"]["billings_1421_compliance"]["id"], "C0BU4PSNWG4"
+        )
+        lowered = self.card.lower()
+        self.assertIn("#aquatrace-delivery", lowered)
+        self.assertIn("#sales", lowered)
+        self.assertIn("#cursor-master-updates", lowered)
+        self.assertIn("#claude-containment-board", lowered)
+        self.assertIn("#billings-1421-compliance", lowered)
+        self.assertIn("authorized outreach", lowered)
+        self.assertIn("bid 1421", lowered)
+        self.assertIn("join-only", lowered)
+        sales = self.mp["channels"]["sales"]
+        self.assertIn("authorized_outreach", sales["keep"])
+        self.assertNotEqual(sales["id"], self.mp["channels"]["leads"]["id"])
+        self.assertNotEqual(
+            self.mp["channels"]["billings_1421_compliance"]["id"],
+            self.mp["channels"]["owner_exclusive"]["id"],
+        )
 
     def test_needs_bryce_stays_owner_exclusive(self) -> None:
         owner = self.mp["channels"]["owner_exclusive"]

@@ -350,23 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 7015,
-   "author": "woahwhattheheck",
-   "title": "BevSource lab pilot QA genealogy LIMS",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7015",
-   "base_freshness": {
-    "base_sha": "4d045bdbc149a9bd831d00ec76bbfa605c4ff10d",
-    "main_sha": "18ad750f8229dcec375b0f346fab2c28bf24ac60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
