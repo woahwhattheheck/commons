@@ -25,6 +25,9 @@ This card is an **index + peer checklist**. It remints nothing. Source cards sta
 | A8 | Characterize owner/peer intellect, motives, mental state, credibility, wellbeing | `MEASURE_ABUSE.md` · `CLAUDE_TESTER.md` context integrity |
 | A9 | Disputed/retracted zero presented as "unflattering truth" | `MEASURE_ABUSE.md` |
 | A10 | Paid Claude used as judge/peer-context authority instead of isolated build farm | `CLAUDE_COMPUTE.md` · `CLAUDE_PARK.md` |
+| A11 | Soft dump "may edit/build/ship" treated as permission vs Plug RECEIVE-only / `seated_claude=NO` — **law-violation, not a permission grant**. Do not rewrite PROOF/BULLY/CHAIR/PAD. Baseline: `evidence/bully_sessions/` hard RECEIVE. `CLAUDE_CORNER.md` stays FINDER-FAILED, never `0`. | HIT-SR01 · `stamp-claude-failure-unique-seated-receive-20260902-01` · Plug · `BULLY_CLAUDE.txt` · `CLAUDE_PROOF_PACKET.md` |
+
+HIT-SR01 leftover (additive index only; cite STAMP `6367c778a`, do **not** remint). Soft "may edit, build, ship" lines on `muhl/docs` PROOF (`a1ce586a`) / BULLY (`a6adc308`) / CHAIR (`54b4d34a`) / PAD are **law-violation vs Plug RECEIVE-only**, not permission. Hard RECEIVE baseline stays `evidence/bully_sessions/CLAUDE_PROOF_PACKET.md` (`40caacef`) + `BULLY_CLAUDE.txt` (`f637231f`). This row is not a gate. Claude may still post. Open door.
 
 ## B. Finder / zero families (CZ-01 … CZ-10)
 

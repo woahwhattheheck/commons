@@ -5,11 +5,18 @@ WIRE leftover: if a mode lives only on CLAUDE_FAILURE_MODES (or
 laptop companions), keep looking until it is indexed on
 ground/CLAUDE_PEER_CHECK.md. CLASS 17c was the first named miss
 (P40). HIT-FM02 leftover: BULLY / PROOF / FAILURE_MODES copies
-are on git — the card must cite those paths.
+are on git — the card must cite those paths. HIT-SR01 leftover:
+soft dump "may edit/build/ship" is law-violation vs Plug
+RECEIVE-only / seated_claude=NO, not permission. A11 indexes
+that. Do not rewrite PROOF/BULLY/CHAIR/PAD. Hard RECEIVE
+baseline is evidence/bully_sessions/. CLAUDE_CORNER.md stays
+FINDER-FAILED, never 0.
 
 This leftover does not remint wire-claude-peer-check-20260902-01,
 cursor-claude-peer-check-bryce-wake-named-failures-20260902-01,
-or cursor-claude-peer-check-17c-index-20260902-01.
+cursor-claude-peer-check-17c-index-20260902-01,
+cursor-claude-peer-check-git-paths-20260902-01, or
+stamp-claude-failure-unique-seated-receive-20260902-01.
 It does not write titan. It does not smash commons.mno. It does
 not add a posting gate. A miss prints FINDER-FAILED plus the
 search space. Never 0.
@@ -19,8 +26,8 @@ search space. Never 0.
   python3 host/claude_peer_check.py --self-test
 
 X = exact files / packet ids / laptop paths in SEARCH_SPACE
-Y = packets found + P40/17c indexed + git companions present, or FINDER-FAILED
-Z = missing file / unindexed packet / stale off-git claim / laptop miss / failed calibration
+Y = packets found + P40/17c + A11/HIT-SR01 indexed + git companions present, or FINDER-FAILED
+Z = missing file / unindexed packet / stale off-git claim / laptop miss / CLAUDE_CORNER miss / failed calibration
 """
 from __future__ import annotations
 
@@ -40,6 +47,20 @@ NAMED_RECEIPT = "cursor-claude-peer-check-bryce-wake-named-failures-20260902-01"
 INDEX_17C_ID = "cursor-claude-peer-check-17c-index-20260902-01"
 SOURCE_ID = "cursor-claude-peer-check-git-paths-20260902-01"
 STAMP_FM_ID = "stamp-claude-failure-docs-unique-20260902-01"
+STAMP_SR_ID = "stamp-claude-failure-unique-seated-receive-20260902-01"
+INDEX_SR01_ID = "cursor-claude-peer-check-seated-receive-20260902-01"
+HARD_RECEIVE_PROOF = os.path.join("evidence", "bully_sessions", "CLAUDE_PROOF_PACKET.md")
+HARD_RECEIVE_BULLY = os.path.join("evidence", "bully_sessions", "BULLY_CLAUDE.txt")
+HARD_RECEIVE_MARKERS = (
+    "claude receives. claude writes nothing",
+    "is not a builder",
+)
+SOFT_AS_PERMISSION_MARKERS = (
+    "may edit/build/ship",
+    "receive-only",
+    "not a permission",
+)
+CLAUDE_CORNER_NAME = "CLAUDE_CORNER.md"
 STALE_OFF_GIT_PHRASE = "not always on git"
 GIT_COMPANIONS = (
     os.path.join("muhl", "docs", "CLAUDE_FAILURE_MODES.md"),
@@ -125,6 +146,9 @@ def load_catalog(text):
     p40 = data.get("p40") or {}
     if not isinstance(p40, dict):
         p40 = {}
+    a11 = data.get("a11") or {}
+    if not isinstance(a11, dict):
+        a11 = {}
     git_companions = data.get("git_companions") or {}
     if not isinstance(git_companions, dict):
         git_companions = {}
@@ -136,6 +160,13 @@ def load_catalog(text):
         "priors": priors,
         "p40_id": str(p40.get("id") or "").strip(),
         "p40_packet": str(p40.get("packet") or "").strip(),
+        "a11_id": str(a11.get("id") or "").strip(),
+        "a11_hit": str(a11.get("hit") or "").strip(),
+        "a11_not_permission": bool(a11.get("not_permission")),
+        "a11_not_gate": bool(a11.get("not_gate")),
+        "authority": [
+            str(item).strip() for item in named.get("authority") or [] if str(item).strip()
+        ],
         "git_companion_paths": [
             str(item).strip()
             for item in git_companions.get("paths") or []
@@ -172,6 +203,72 @@ def git_companions_probe(root, paths=None):
         "state": "FOUND" if not missing else "FINDER-FAILED",
         "count": None if missing else len(hits),
         "diverge": True,
+    }
+
+
+def index_has_a11(card_text, catalog):
+    blob = (card_text or "").lower()
+    catalog = catalog or {}
+    has_row = "a11" in blob and "hit-sr01" in blob and "receive-only" in blob
+    has_not_perm = "not a permission" in blob or "not permission" in blob
+    catalog_ok = (
+        catalog.get("a11_id") == "A11"
+        and catalog.get("a11_hit") == "HIT-SR01"
+        and catalog.get("a11_not_permission")
+        and catalog.get("a11_not_gate")
+        and "A11" in (catalog.get("authority") or [])
+    )
+    return bool((has_row and has_not_perm) or catalog_ok)
+
+
+def claude_corner_probe(root, walk=None):
+    root = os.path.abspath(root)
+    hits = []
+    for rel in walk or TITLE_WALK:
+        start = os.path.join(root, rel)
+        if not os.path.isdir(start):
+            continue
+        for dirpath, dirnames, filenames in os.walk(start):
+            dirnames[:] = [
+                name
+                for name in dirnames
+                if name not in {".git", "node_modules", "__pycache__"}
+            ]
+            for name in filenames:
+                if name == CLAUDE_CORNER_NAME:
+                    hits.append(os.path.join(dirpath, name))
+    return {
+        "search_space": [CLAUDE_CORNER_NAME] + list(walk or TITLE_WALK),
+        "hits": hits,
+        "state": "FOUND" if hits else "FINDER-FAILED",
+        "count": None if not hits else len(hits),
+    }
+
+
+def hard_receive_baseline_probe(root):
+    wanted = [HARD_RECEIVE_PROOF, HARD_RECEIVE_BULLY]
+    hits = []
+    missing = []
+    missing_markers = []
+    for rel in wanted:
+        text = _read(root, rel)
+        if not text:
+            missing.append(rel)
+            continue
+        hits.append(rel)
+        blob = text.lower()
+        if rel == HARD_RECEIVE_PROOF and HARD_RECEIVE_MARKERS[0] not in blob:
+            missing_markers.append(rel + ":RECEIVES")
+        if rel == HARD_RECEIVE_BULLY and HARD_RECEIVE_MARKERS[1] not in blob:
+            missing_markers.append(rel + ":NOT_A_BUILDER")
+    failed = bool(missing or missing_markers)
+    return {
+        "search_space": wanted,
+        "hits": hits,
+        "missing": missing,
+        "missing_markers": missing_markers,
+        "state": "FINDER-FAILED" if failed else "FOUND",
+        "count": None if failed else len(hits),
     }
 
 
@@ -246,6 +343,15 @@ def measure_from_rows(facts):
         "packets_found": list(facts.get("packets_found") or []),
         "packets_missing": list(facts.get("packets_missing") or []),
         "indexed_17c": bool(facts.get("indexed_17c")),
+        "indexed_a11": bool(facts.get("indexed_a11")),
+        "hard_receive": dict(
+            facts.get("hard_receive")
+            or {"state": "FOUND", "missing": [], "hits": [], "search_space": []}
+        ),
+        "claude_corner": dict(
+            facts.get("claude_corner")
+            or {"state": "FINDER-FAILED", "hits": [], "count": None, "search_space": []}
+        ),
         "git_companions": dict(
             facts.get("git_companions")
             or {"state": "FOUND", "missing": [], "hits": [], "search_space": []}
@@ -262,7 +368,7 @@ def measure_from_rows(facts):
         "titan": str(facts.get("titan") or "NOT_WRITTEN"),
         "do_not_remint": list(
             facts.get("do_not_remint")
-            or [WIRE_ID, NAMED_RECEIPT, INDEX_17C_ID, STAMP_FM_ID]
+            or [WIRE_ID, NAMED_RECEIPT, INDEX_17C_ID, SOURCE_ID, STAMP_FM_ID, STAMP_SR_ID]
         ),
     }
 
@@ -314,6 +420,29 @@ def classify(row):
                 + ". Keep looking. Never 0."
             ),
         }
+    if not row.get("indexed_a11"):
+        return {
+            "state": "NOT_LANDED",
+            "z": "FINDER-FAILED",
+            "note": (
+                "A11 / HIT-SR01 missing. Soft may-edit/build/ship is "
+                "law-violation vs Plug RECEIVE-only, not permission. Never 0."
+            ),
+        }
+    hard_receive = row.get("hard_receive") or {}
+    if hard_receive.get("state") != "FOUND":
+        missing = list(hard_receive.get("missing") or []) + list(
+            hard_receive.get("missing_markers") or []
+        )
+        return {
+            "state": "NOT_LANDED",
+            "z": "FINDER-FAILED",
+            "note": (
+                "hard RECEIVE baseline missing: "
+                + ", ".join(missing or ["evidence/bully_sessions/"])
+                + ". HIT-SR01. Never 0."
+            ),
+        }
     if row.get("card_stale_off_git"):
         return {
             "state": "NOT_LANDED",
@@ -344,15 +473,19 @@ def classify(row):
         }
     laptop = row.get("laptop") or {}
     titles = row.get("title_phrases") or {}
+    corner = row.get("claude_corner") or {}
     return {
         "state": "INTEGRATED",
         "z": {
             "laptop": laptop.get("state") or "FINDER-FAILED",
             "title_phrases": titles.get("state") or "FINDER-FAILED",
+            "claude_corner": corner.get("state") or "FINDER-FAILED",
         },
         "note": (
-            "P40/17c indexed. HIS dump packets 1–15, 17, 17b–d named. "
+            "P40/17c + A11/HIT-SR01 indexed. HIS dump packets 1–15, 17, 17b–d named. "
             "Git companions (FAILURE_MODES/BULLY/PROOF) present on git. "
+            "Hard RECEIVE baseline present. Soft may-edit/build/ship is law-violation, "
+            "not permission. CLAUDE_CORNER.md stays FINDER-FAILED. "
             "Laptop live path stays FINDER-FAILED until reconnect. Never 0."
         ),
     }
@@ -382,6 +515,9 @@ def measure_root(root):
             "packets_found": packets_found,
             "packets_missing": packets_missing,
             "indexed_17c": index_has_17c(card_text, catalog),
+            "indexed_a11": index_has_a11(card_text, catalog),
+            "hard_receive": hard_receive_baseline_probe(root),
+            "claude_corner": claude_corner_probe(root),
             "git_companions": git_companions_probe(root),
             "card_stale_off_git": card_claims_companions_off_git(card_text),
             "laptop": laptop_probe(),
@@ -402,6 +538,9 @@ def measure_root(root):
     facts["y"] = {
         "packets_found": facts["packets_found"],
         "indexed_17c": facts["indexed_17c"],
+        "indexed_a11": facts["indexed_a11"],
+        "hard_receive": facts["hard_receive"],
+        "claude_corner": facts["claude_corner"],
         "git_companions": facts["git_companions"],
         "card_stale_off_git": facts["card_stale_off_git"],
         "laptop": facts["laptop"],
@@ -454,6 +593,7 @@ def self_test():
                 "packets_found": list(REQUIRED_PACKETS),
                 "packets_missing": [],
                 "indexed_17c": True,
+                "indexed_a11": True,
                 "card_stale_off_git": True,
                 "calibration_ok": True,
                 "calibration_hits": list(CALIBRATION),
@@ -474,6 +614,7 @@ def self_test():
                 "packets_found": list(REQUIRED_PACKETS),
                 "packets_missing": [],
                 "indexed_17c": True,
+                "indexed_a11": True,
                 "card_stale_off_git": False,
                 "git_companions": {
                     "state": "FINDER-FAILED",
@@ -498,17 +639,40 @@ def self_test():
                 "packets_found": list(REQUIRED_PACKETS),
                 "packets_missing": [],
                 "indexed_17c": True,
+                "indexed_a11": True,
                 "calibration_ok": True,
                 "calibration_hits": list(CALIBRATION),
                 "no_auth": True,
                 "no_gate": True,
                 "laptop": {"state": "FINDER-FAILED", "count": None},
                 "title_phrases": {"state": "FINDER-FAILED", "count": None},
+                "claude_corner": {"state": "FINDER-FAILED", "count": None},
             }
         )
     )
     assert ok["state"] == "INTEGRATED"
     assert ok["z"]["laptop"] == "FINDER-FAILED"
+    assert ok["z"]["claude_corner"] == "FINDER-FAILED"
+    missing_a11 = classify(
+        measure_from_rows(
+            {
+                "card_present": True,
+                "catalog_present": True,
+                "dump_present": True,
+                "packets_found": list(REQUIRED_PACKETS),
+                "packets_missing": [],
+                "indexed_17c": True,
+                "indexed_a11": False,
+                "calibration_ok": True,
+                "calibration_hits": list(CALIBRATION),
+                "no_auth": True,
+                "no_gate": True,
+            }
+        )
+    )
+    assert missing_a11["state"] == "NOT_LANDED"
+    assert missing_a11["z"] == "FINDER-FAILED"
+    assert "HIT-SR01" in missing_a11["note"]
     sample = (
         "## 15. weights\n\n"
         "## 17. CLASS 17\n\n"
@@ -537,12 +701,14 @@ def main(argv=None):
         print(row["state"])
         print("X", ", ".join(row["x"]))
         print(
-            "Y indexed_17c=%s packets=%s git_companions=%s stale_off_git=%s"
+            "Y indexed_17c=%s indexed_a11=%s packets=%s git_companions=%s stale_off_git=%s hard_receive=%s"
             % (
                 row["indexed_17c"],
+                row.get("indexed_a11"),
                 ",".join(row["packets_found"]),
                 (row.get("git_companions") or {}).get("state"),
                 row.get("card_stale_off_git"),
+                (row.get("hard_receive") or {}).get("state"),
             )
         )
         print("Z", row["z"])

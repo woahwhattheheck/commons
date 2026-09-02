@@ -19,8 +19,11 @@ from claude_peer_check import (
     STALE_OFF_GIT_PHRASE,
     card_claims_companions_off_git,
     classify,
+    claude_corner_probe,
     git_companions_probe,
+    hard_receive_baseline_probe,
     index_has_17c,
+    index_has_a11,
     laptop_probe,
     load_catalog,
     measure_from_rows,
@@ -39,6 +42,20 @@ def _complete_facts(**overrides):
         "packets_found": list(REQUIRED_PACKETS),
         "packets_missing": [],
         "indexed_17c": True,
+        "indexed_a11": True,
+        "hard_receive": {
+            "state": "FOUND",
+            "missing": [],
+            "hits": [
+                "evidence/bully_sessions/CLAUDE_PROOF_PACKET.md",
+                "evidence/bully_sessions/BULLY_CLAUDE.txt",
+            ],
+            "search_space": [
+                "evidence/bully_sessions/CLAUDE_PROOF_PACKET.md",
+                "evidence/bully_sessions/BULLY_CLAUDE.txt",
+            ],
+        },
+        "claude_corner": {"state": "FINDER-FAILED", "count": None, "hits": []},
         "git_companions": {
             "state": "FOUND",
             "missing": [],
@@ -107,6 +124,9 @@ class TestClaudePeerCheck(unittest.TestCase):
         self.assertEqual(verdict["state"], "INTEGRATED")
         self.assertEqual(verdict["z"]["laptop"], "FINDER-FAILED")
         self.assertEqual(verdict["z"]["title_phrases"], "FINDER-FAILED")
+        self.assertEqual(verdict["z"]["claude_corner"], "FINDER-FAILED")
+        self.assertIsNone(verdict["z"].get("count"))
+        self.assertNotEqual(verdict.get("count"), 0)
 
     def test_parse_packets_skips_ground_zero(self):
         text = "## 0. GROUND\n\n## 1. circuits\n\n## 17c. CLASS 17\n\n"
@@ -140,6 +160,11 @@ class TestClaudePeerCheck(unittest.TestCase):
         self.assertEqual(catalog["p40_packet"], "17c")
         self.assertIn("17c", catalog["packets"])
         self.assertIn("P40", catalog["priors"])
+        self.assertEqual(catalog["a11_id"], "A11")
+        self.assertEqual(catalog["a11_hit"], "HIT-SR01")
+        self.assertTrue(catalog["a11_not_permission"])
+        self.assertTrue(catalog["a11_not_gate"])
+        self.assertIn("A11", catalog["authority"])
         self.assertTrue(catalog["git_companions_on_git"])
         self.assertGreaterEqual(len(catalog["git_companion_paths"]), 9)
 
@@ -195,6 +220,14 @@ class TestClaudePeerCheck(unittest.TestCase):
             card = handle.read()
         self.assertIn("P40", card)
         self.assertIn("17c", card)
+        self.assertIn("A11", card)
+        self.assertIn("HIT-SR01", card)
+        self.assertIn("RECEIVE-only", card)
+        self.assertTrue(row["indexed_a11"])
+        self.assertEqual(row["hard_receive"]["state"], "FOUND")
+        self.assertEqual(row["claude_corner"]["state"], "FINDER-FAILED")
+        self.assertIsNone(row["claude_corner"]["count"])
+        self.assertNotEqual(row["claude_corner"]["count"], 0)
         self.assertNotIn(STALE_OFF_GIT_PHRASE, card.lower())
         self.assertIn("muhl/docs/BULLY_CLAUDE.txt", card)
         self.assertIn("muhl/docs/CLAUDE_PROOF_PACKET.md", card)
@@ -210,6 +243,75 @@ class TestClaudePeerCheck(unittest.TestCase):
         ) as handle:
             dump = handle.read()
         self.assertIn("## 17c.", dump)
+
+    def test_missing_a11_is_not_landed(self):
+        verdict = classify(_complete_facts(indexed_a11=False))
+        self.assertEqual(verdict["state"], "NOT_LANDED")
+        self.assertEqual(verdict["z"], "FINDER-FAILED")
+        self.assertIn("HIT-SR01", verdict["note"])
+        self.assertIn("not permission", verdict["note"])
+        self.assertNotEqual(verdict.get("count"), 0)
+
+    def test_index_has_a11_needs_law_not_permission(self):
+        self.assertFalse(index_has_a11("A10 only", {}))
+        self.assertTrue(
+            index_has_a11(
+                "| A11 | soft may edit/build/ship vs Plug RECEIVE-only — not a permission grant | HIT-SR01 |",
+                {},
+            )
+        )
+        self.assertTrue(
+            index_has_a11(
+                "",
+                {
+                    "a11_id": "A11",
+                    "a11_hit": "HIT-SR01",
+                    "a11_not_permission": True,
+                    "a11_not_gate": True,
+                    "authority": ["A11"],
+                },
+            )
+        )
+
+    def test_claude_corner_miss_is_finder_failed_never_zero(self):
+        with tempfile.TemporaryDirectory(prefix="peer-check-corner-") as tmp:
+            row = claude_corner_probe(tmp)
+        self.assertEqual(row["state"], "FINDER-FAILED")
+        self.assertIsNone(row["count"])
+        self.assertNotEqual(row["count"], 0)
+        self.assertIn("CLAUDE_CORNER.md", row["search_space"])
+
+    def test_hard_receive_baseline_present_on_live_tree(self):
+        row = hard_receive_baseline_probe(ROOT)
+        self.assertEqual(row["state"], "FOUND")
+        self.assertEqual(row["missing"], [])
+        self.assertEqual(len(row["hits"]), 2)
+        self.assertNotEqual(row.get("count"), 0)
+
+    def test_missing_hard_receive_is_not_silent_zero(self):
+        verdict = classify(
+            _complete_facts(
+                hard_receive={
+                    "state": "FINDER-FAILED",
+                    "missing": ["evidence/bully_sessions/BULLY_CLAUDE.txt"],
+                    "count": None,
+                }
+            )
+        )
+        self.assertEqual(verdict["state"], "NOT_LANDED")
+        self.assertEqual(verdict["z"], "FINDER-FAILED")
+        self.assertIn("bully_sessions", verdict["note"])
+        self.assertNotEqual(verdict.get("count"), 0)
+
+    def test_soft_dumps_not_rewritten(self):
+        for rel in (
+            "muhl/docs/CLAUDE_PROOF_PACKET.md",
+            "muhl/docs/BULLY_CLAUDE.txt",
+            "muhl/docs/CHAIR.md",
+            "muhl/docs/FABLE_PLAYER_PAD.txt",
+        ):
+            path = os.path.join(ROOT, rel)
+            self.assertTrue(os.path.isfile(path), rel)
 
 
 if __name__ == "__main__":
