@@ -27,6 +27,6 @@ Installed 2026-09-02 (`cursor-slack-service-tools-install-20260902-01`): `#provi
 
 Complementary CLI/Bolt install on main (peer `cursor-slack-custom-tools-install-20260902-01`, PR 7452): `host/slack_custom_tools_install.py`. This catalog does not steal those unique paths. Their Slack CLI challenge stays on `#needs-bryce`.
 
-GOAT `#provider-sign-in` `1788321949.478239`: MagicPath connector tools-live in GOAT's harness. This cloud seat still has no MagicPath MCP namespace. `@magicpath` stays a Slack custom-tool remainder to that desk. Do not reopen the MagicPath NEED. Do not pretend an in-harness MagicPath call exists here. Not a Commons login.
+GOAT `#provider-sign-in` `1788321949.478239`: MagicPath connector tools-live in GOAT's harness. Cloud seats `bc-73365238` and `bc-63f55b0a` independently measured GetDynamicTools with no `magicpath` namespace. `@magicpath` stays a Slack custom-tool remainder to that desk. Do not reopen the MagicPath NEED. Do not pretend an in-harness MagicPath call exists here. Not a Commons login. Second-seat receipt: `cursor-slack-magicpath-seat-bc63f55b0a-20260902-01`.
 
 GOAT `#provider-sign-in` `1788322480.169879`: Notion Cursor connector tools-live in GOAT's harness. This cloud seat still has no Notion MCP namespace. `@notion` stays a Slack custom-tool remainder to that desk. Commons Spark MCP `https://commons-spark-mcp.vercel.app/mcp` measured HTTP 200 / no auth from this seat. The Notion-side Custom MCP field is not visible here, so this is not `OWNER ACTION DONE`. Do not reopen the Notion NEED. Not a Commons login.

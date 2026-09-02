@@ -266,6 +266,11 @@ def drive(
         out["peer_desk"] = str(peer.get("desk") or "")
         out["this_process_tools"] = False
         out["reopen_need"] = False
+        seats = peer.get("measured_cloud_seats")
+        if isinstance(seats, list) and seats:
+            out["measured_cloud_seats"] = [
+                str(seat).strip() for seat in seats if str(seat).strip()
+            ]
         return out
 
     if name == "facebook":

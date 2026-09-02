@@ -162,6 +162,11 @@ def route(
             if peer:
                 job["peer_desk"] = str(peer.get("desk") or "")
                 job["this_process_tools"] = False
+                seats = peer.get("measured_cloud_seats")
+                if isinstance(seats, list) and seats:
+                    job["measured_cloud_seats"] = [
+                        str(seat).strip() for seat in seats if str(seat).strip()
+                    ]
             elif job["needs_owner_signin"]:
                 jobs.append(
                     {
@@ -230,6 +235,8 @@ def slack_jobs(result: dict[str, Any]) -> list[dict[str, Any]]:
             if job.get("peer_desk"):
                 payload["peer_desk"] = job.get("peer_desk")
                 payload["this_process_tools"] = False
+            if job.get("measured_cloud_seats"):
+                payload["measured_cloud_seats"] = list(job.get("measured_cloud_seats") or [])
             out.append(payload)
         elif road == "IN_HARNESS":
             out.append(
