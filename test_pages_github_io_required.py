@@ -113,10 +113,11 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertEqual(omitted, ())
 
     def test_workflow_republishes_after_successful_github_jekyll_clobber(self) -> None:
-        """pages-deploy.json is generated into _site, never committed.
+        """Actions still writes _site/; workflow_run recovers after Jekyll success.
 
         GitHub-managed pages-build-deployment still Jekyll-publishes main and
         overwrites the Actions artifact. Recover only on Jekyll *success*.
+        In-tree pages-deploy.json is a complementary survive path.
         """
         text = (ROOT / ".github" / "workflows" / "pages-deploy.yml").read_text(
             encoding="utf-8"
@@ -133,9 +134,9 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         )
         self.assertIn("_site/pages-deploy.json", text)
 
-    def test_generated_pages_deploy_receipt_is_not_a_git_path(self) -> None:
-        """Actions writes pages-deploy.json; git does not carry it. Live 404 is overwrite."""
-        self.assertFalse((ROOT / required.PAGES_DEPLOY_RECEIPT).is_file())
+    def test_generated_pages_deploy_receipt_is_in_git(self) -> None:
+        """Actions still writes _site/; in-tree canary survives github-pages[bot] overwrite."""
+        self.assertTrue((ROOT / required.PAGES_DEPLOY_RECEIPT).is_file())
         self.assertNotIn(required.PAGES_DEPLOY_RECEIPT, required.required_files(ROOT))
         self.assertTrue(required.live_workflow_writes_pages_deploy_receipt(ROOT))
         self.assertFalse(
@@ -150,7 +151,7 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertIn(required.CHUNKS_INDEX, payload["stated_except_would_omit"])
         self.assertNotIn(required.EXPANDING_SEED, payload["stated_except_would_omit"])
         self.assertEqual(payload["generated_live_receipt"], required.PAGES_DEPLOY_RECEIPT)
-        self.assertIs(payload["generated_live_receipt_in_git"], False)
+        self.assertIs(payload["generated_live_receipt_in_git"], True)
         self.assertIs(payload["workflow_writes_generated_live_receipt"], True)
         self.assertNotIn(required.PAGES_DEPLOY_RECEIPT, payload["required"])
 
