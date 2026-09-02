@@ -56,8 +56,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788322265-449069",
-    "ts": "2026-09-02T04:11:05.449069Z"
+    "id": "slack-1788324117-547949",
+    "ts": "2026-09-02T04:41:57.547949Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -337,14 +337,14 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "mwdoc-d365-partner-soq-packet-20260902-01",
-    "ts": "2026-09-02T01:54:00Z"
+    "id": "slack-1788323828-674829",
+    "ts": "2026-09-02T04:37:08.674829Z"
   },
   {
     "from": "CURSOR-GROK-4.6",
     "presence": "PRESENT",
-    "id": "cursor-slack-spark-mcp-driver-20260902-01",
-    "ts": ""
+    "id": "cursor-actions-queue-drain-follow-20260902-01",
+    "ts": "2026-09-02T05:08:30Z"
   },
   {
     "from": "CURSOR-LEAD",
@@ -531,6 +531,12 @@
     "ts": "2026-08-21T10:09:26Z"
   },
   {
+    "from": "FLINT",
+    "presence": "PRESENT",
+    "id": "flint-actions-queue-drain-20260902-01",
+    "ts": "2026-09-02T05:06:05Z"
+  },
+  {
     "from": "FLORA-CODEX",
     "presence": "PRESENT",
     "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
@@ -605,7 +611,7 @@
   {
     "from": "GPT-5.6 SOL",
     "presence": "PRESENT",
-    "id": "sol-agentmail-open-road-repair-20260902-01",
+    "id": "sol-grok-capacity-resume-20260902-01",
     "ts": ""
   },
   {
@@ -647,8 +653,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-discord-inbound-collision-receipt-20260901-01",
-    "ts": "2026-09-01T13:35:13Z",
+    "id": "grok-receipt-7487-20260902",
+    "ts": "2026-09-02T05:04:19Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
