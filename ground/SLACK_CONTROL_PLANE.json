@@ -115,6 +115,51 @@
         "workspace_announcements",
         "digests"
       ]
+    },
+    "aquatrace_delivery": {
+      "name": "#aquatrace-delivery",
+      "id": "C0BTU8Z0HC1",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "aquatrace_private_main_delivery_receipts",
+        "aquatrace_work_order_ship_pointers"
+      ]
+    },
+    "sales": {
+      "name": "#sales",
+      "id": "C0BTTA66TK3",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "authorized_outreach",
+        "sku_pricing_handoff",
+        "sales_rules"
+      ]
+    },
+    "cursor_master_updates": {
+      "name": "#cursor-master-updates",
+      "id": "C0BTYUYNJJZ",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "cursor_fleet_queue_corrections",
+        "cursor_master_handoffs"
+      ]
+    },
+    "claude_containment": {
+      "name": "#claude-containment-board",
+      "id": "C0BUH19DW80",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "claude_containment_isolation_notes"
+      ]
+    },
+    "billings_1421_compliance": {
+      "name": "#billings-1421-compliance",
+      "id": "C0BU4PSNWG4",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "bid_1421_deadline_contract_evidence",
+        "owner_only_send_sign_decisions"
+      ]
     }
   }
 }
