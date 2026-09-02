@@ -38,8 +38,9 @@ CHUNKS_INDEX = "chunks/index.json"
 PAY = "pay.html"
 ACTION_PAD = "action.html"
 COMMERCE = "commerce.html"
-# Written by pages-deploy.yml into the Actions artifact. Not a git path.
-# github-pages[bot] branch deploys can overwrite the artifact and 404 this.
+# Written by pages-deploy.yml into the Actions artifact AND committed in-tree
+# so github-pages[bot] branch publishes cannot 404 it. Unique canary card:
+# ground/PAGES_DEPLOY_RECEIPT.md. This helper does not own the workflow.
 PAGES_DEPLOY_RECEIPT = "pages-deploy.json"
 
 # Slack-stated Pages except-list (Fable 2026-09-02). Fixture only.
