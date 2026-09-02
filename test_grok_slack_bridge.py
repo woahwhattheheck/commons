@@ -1,1 +1,1 @@
-PLACEHOLDER_WILL_BE_REPLACED_BY_SUBAGENT
+LOAD_FROM:/workspace/agent-tools/push_final.json
