@@ -21,7 +21,6 @@ KEEP = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-big-things-incoming-alert-ack-20260902-01.md": "81097728",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

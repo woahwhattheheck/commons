@@ -24,7 +24,6 @@ KEEP = {
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "owner-now-revenue.html": "1d3f1cdf",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }

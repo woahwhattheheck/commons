@@ -19,8 +19,6 @@ KEEP_UNREAD = {
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "autogtm.html": "9d8b3e85",
-    "door.js": "1f9e8d14",
-    "hub_pages.py": "14eeedb0",
 }
 
 
@@ -39,6 +37,12 @@ class GrokbuildOwnerNow337CloserStripTest(unittest.TestCase):
         import test_incoming_models_hub_payload_readback_rematch as incoming_rematch
         import test_big_things_incoming_shots as shots
         import test_big_things_incoming_shots_readback as shots_rb
+        import test_autogtm_door_hub_readback_ack as autogtm_ack
+        import test_autogtm_hub_pages_live_get_readback as live_get
+        import test_autogtm_hub_pages_live_get_readback_ack as live_get_ack
+        import test_big_things_incoming_alert as alert
+        import test_big_things_incoming_alert_ack as alert_ack
+        import test_grokbuild_autogtm_hub_pages_keep_unpin as unpin
         import test_harborline_pack_market_render as harborline
         import test_harborline_pack_market_render_readback as harborline_rb
 
@@ -52,8 +56,19 @@ class GrokbuildOwnerNow337CloserStripTest(unittest.TestCase):
             shots_rb,
             harborline,
             harborline_rb,
+            autogtm_ack,
+            live_get,
+            live_get_ack,
+            alert,
+            alert_ack,
+            unpin,
         ):
-            self.assertNotIn("ground/OWNER_NOW.md", mod.KEEP, mod.__name__)
+            self.assertNotIn("ground/OWNER_NOW.md", getattr(mod, "KEEP", {}), mod.__name__)
+            self.assertNotIn("hub_pages.py", getattr(mod, "KEEP", {}), mod.__name__)
+            self.assertNotIn("door.js", getattr(mod, "KEEP", {}), mod.__name__)
+            unread = getattr(mod, "KEEP_UNREAD", {})
+            self.assertNotIn("hub_pages.py", unread, mod.__name__)
+            self.assertNotIn("door.js", unread, mod.__name__)
         self.assertNotIn("test_big_things_incoming_shots.py", shots_rb.KEEP)
         self.assertNotIn("host/owner_now_revenue.py", revenue_rb.KEEP)
         self.assertNotIn("test_owner_now_revenue.py", revenue_rb.KEEP)

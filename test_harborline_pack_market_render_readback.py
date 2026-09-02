@@ -27,7 +27,6 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
 }
 
 

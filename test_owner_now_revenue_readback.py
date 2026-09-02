@@ -26,7 +26,6 @@ KEEP = {
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 
