@@ -121,6 +121,12 @@ class TestAutogtmSameLoop(unittest.TestCase):
         boards = (ROOT / "boards.html").read_text(encoding="utf-8")
         self.assertIn('href="./autogtm.html"', boards)
         self.assertIn("same loop as Explee", boards)
+        door = (ROOT / "door.js").read_text(encoding="utf-8")
+        index = (ROOT / "index.html").read_text(encoding="utf-8")
+        gen = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        self.assertIn('["autogtm.html", "AutoGTM"]', door)
+        self.assertIn('href="./autogtm.html">AutoGTM</a>', index)
+        self.assertIn('href="./autogtm.html">AutoGTM</a>', gen)
 
     def test_peer_ack_does_not_remint_harborline_or_lead(self) -> None:
         ack = (ROOT / "p/cursor-autogtm-ack-peers-20260902-01.md").read_text(

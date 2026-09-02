@@ -68,6 +68,7 @@ assert(seen["telegram.html"], "hub surfaces telegram.html");
 assert(seen["pay.html"], "hub surfaces pay.html");
 assert(seen["autogtm.html"], "hub surfaces autogtm.html");
 assert(seen["clans.html"], "hub surfaces clans.html");
+assert(seen["autogtm.html"], "hub surfaces autogtm.html");
 assert(Object.keys(seen).length >= 40, "hub surfaces a full door set, got " + Object.keys(seen).length);
 
 const hubHtml = index.match(/<nav id="door-hub"[\s\S]*?<\/nav>/);
