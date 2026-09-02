@@ -350,23 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 7645,
-   "author": "woahwhattheheck",
-   "title": "flint-battery-unused-invoke-20260902-01: unused_invoke census, compile once per stem (503 s of the 759 s battery)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7645",
-   "base_freshness": {
-    "base_sha": "9e1c3c007b1c462b0e6d1587d8cf54cb14ea3b4e",
-    "main_sha": "3b8ff98e98c30a7ed40172b1611af6c4a18b8ac4",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
