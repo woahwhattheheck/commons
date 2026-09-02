@@ -32,7 +32,21 @@
       "C0BU51F1PL3",
       "C0BRGMDQB6G",
       "C0BUFA9G23E"
-    ]
+    ],
+    "complementary_cli_install": {
+      "id": "cursor-slack-custom-tools-install-20260902-01",
+      "main_squash": "d646ba323",
+      "pr": 7452,
+      "install": "host/slack_custom_tools_install.py",
+      "app": "host/slack_custom_tools_app.py",
+      "manifest": "host/slack_custom_tools_manifest.json",
+      "login_queue": "host/needs_bryce_login_queue.py",
+      "queue_card": "ground/NEEDS_BRYCE_QUEUE.json",
+      "card": "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
+      "receipt": "p/cursor-slack-custom-tools-install-20260902-01.md",
+      "cli_challenge_channel": "C0BRX6EV739",
+      "not_stolen": true
+    }
   },
   "reserved_tags": [
     "here",
