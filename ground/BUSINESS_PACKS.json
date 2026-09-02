@@ -175,6 +175,9 @@
     "shared_desk_helper_owner": "TALLY",
     "shared_desk_helper_pointer": "cursor-business-pack-shared-desk-helper-pointer-20260902-01",
     "harborline_wrap_sha": "58fef5dd3",
+    "harborline_waitlist_slot_sha": "08aabf097",
+    "harborline_waitlist_slot_pointer": "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01",
+    "did_not_overwrite_waitlist_html": true,
     "checkout": "NOT_MINTED",
     "agents_spend_ads": false,
     "landed": [
@@ -202,7 +205,8 @@
         "door": "packs/desk-website-service-20260902-01/door.html",
         "receipt": "cursor-desk-website-harborline-20260902-01",
         "owned_by": "bc-31c8ef9a",
-        "helper": "host/business_pack_desk_instance.py"
+        "helper": "host/business_pack_desk_instance.py",
+        "waitlist": "packs/waitlist.html"
       }
     ]
   },

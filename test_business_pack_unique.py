@@ -473,6 +473,12 @@ class BusinessPackUniqueTest(unittest.TestCase):
             "cursor-business-pack-shared-desk-helper-pointer-20260902-01",
         )
         self.assertEqual(block["harborline_wrap_sha"], "58fef5dd3")
+        self.assertEqual(block["harborline_waitlist_slot_sha"], "08aabf097")
+        self.assertEqual(
+            block["harborline_waitlist_slot_pointer"],
+            "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_overwrite_waitlist_html"], True)
         self.assertEqual(block["checkout"], "NOT_MINTED")
         doors = [row["door"] for row in block["landed"]]
         self.assertEqual(
@@ -500,12 +506,21 @@ class BusinessPackUniqueTest(unittest.TestCase):
                 "host/business_pack_desk_instance.py",
             ],
         )
+        harborline = [row for row in block["landed"] if row["brand"] == "Harborline Local Sites"][0]
+        self.assertEqual(harborline["waitlist"], "packs/waitlist.html")
         self.assertIn("host/business_pack_desk_instance.py", self.door)
         self.assertTrue(
             (ROOT / "p" / "cursor-business-pack-instance-catalog-20260902-01.md").is_file()
         )
         self.assertTrue(
             (ROOT / "p" / "cursor-business-pack-shared-desk-helper-pointer-20260902-01.md").is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-harborline-waitlist-slot-pointer-20260902-01.md"
+            ).is_file()
         )
 
     def test_rating_slot_pointer_is_empty_owner_paste(self) -> None:
