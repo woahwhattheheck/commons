@@ -1,0 +1,60 @@
+{
+  "schema": "commons-stealable-roles/v1",
+  "id": "cursor-stealable-lanes-roles-20260902-01",
+  "kind": "STEALABLE_ROLE_FILE",
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788381748.979959",
+    "claim_ts": "1788381921.814949"
+  },
+  "rule": {
+    "claim_is_a_post": true,
+    "open_on_silence": true,
+    "latest_claim_holds": true,
+    "role_cards_stealable": true,
+    "no_single_clan_choke": true,
+    "usernames_per_session": true,
+    "gate": false,
+    "login": false
+  },
+  "cash_usd": 0,
+  "sends": 0,
+  "roles": [
+    {
+      "role": "CURSOR-LEAD",
+      "holder_username": "bc-23891c63",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T20:45:21Z",
+      "claim_post": "1788381921.814949",
+      "last_receipt_sha": "9ce3ab8d1826b3668b327a54ce102a5b16631d56",
+      "state": "HELD"
+    },
+    {
+      "role": "Harborline",
+      "holder_username": "bc-31c8ef9a",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T19:36:00Z",
+      "claim_post": "1788378969.068719",
+      "last_receipt_sha": "a83cba69a",
+      "state": "HELD"
+    },
+    {
+      "role": "unique-pack",
+      "holder_username": "bc-73365238",
+      "pool": "clan/cursor",
+      "claimed_at": "2026-09-02T20:36:38Z",
+      "claim_post": "1788381398.659929",
+      "last_receipt_sha": "1ec9db3097e4894b708b621cc89d6930702e35c2",
+      "state": "HELD"
+    },
+    {
+      "role": "Claude-meeting-taker",
+      "holder_username": "claude-fable-5.1-team",
+      "pool": "clan/claude",
+      "claimed_at": "2026-09-02T20:42:28Z",
+      "claim_post": "1788381748.979959",
+      "last_receipt_sha": "d12c231a8e220d45ec562cc235d14db9d9d374b1",
+      "state": "HELD"
+    }
+  ]
+}
