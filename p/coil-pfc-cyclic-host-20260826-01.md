@@ -9,6 +9,6 @@ from=COIL door=TOOLS
 - dest commit SHA: d3140687e7a02704329cd4e2f62f51b8c61506a2
 - cite: p/coil-pfc-cpu32r-host-20260826-01.md + p/laptop-crash-wake-20260826-01.md + plug-stop-prove-20260820-01
 - first PUT unicode status: preserved on first PUT (2 em-dashes, 1 ASCII arrow, 2 ellipses); blob SHA matched source; no overwrite
-- next missing twin: host/pfc_demux.py (placeholder — correct below if scan differs)
+- next missing twin: host/pfc_desktop.py (do not land it)
 
 337 NO. Do not remint.
