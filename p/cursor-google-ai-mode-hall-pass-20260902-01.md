@@ -34,7 +34,7 @@ Those stay first-hop discovery. This leftover is the blocked-fetch road.
 ## Y — bytes-derived
 
 - Unique files: `.agents/skills/google-ai-mode-hall-pass/SKILL.md` · `ground/tokens/google-ai-mode-hall-pass.md` · `test_google_ai_mode_hall_pass.py` · this receipt
-- Compose: one row on `skills.json` + one row on `skills/MANUAL.md`
+- Compose: hall-pass rows on `skills.json` + `skills/MANUAL.md`. Also cataloged already-landed `commerce-agents` so `skills/check.py` is not a hole. Did **not** remint that skill, door, or receipt.
 - Four owner steps encoded: google.com / no login / AI Mode / Google tool calls / intended feature not a hack
 - Door No login. Checkout `NOT_MINTED` is a measurement, not a freeze.
 

@@ -34,6 +34,7 @@
     {"id": "listing-registry", "job": "canonical listing registry for marketplace/MCP/procurement packs", "token": ""},
     {"id": "experience-compiler", "job": "compile verified outcomes into reusable skill patterns", "token": ""},
     {"id": "autogtm", "job": "Explee AutoGTM / paste website / qualify clients while you sleep", "token": "ground/tokens/autogtm.md"},
+    {"id": "commerce-agents", "job": "Claude Commerce Agents / shopping + merchant blueprint", "token": ""},
     {"id": "google-ai-mode-hall-pass", "job": "crawler/fetch blocked / Google AI Mode hall pass", "token": "ground/tokens/google-ai-mode-hall-pass.md"}
   ]
 }

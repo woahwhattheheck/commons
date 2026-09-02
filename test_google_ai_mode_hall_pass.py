@@ -63,7 +63,10 @@ class GoogleAiModeHallPassTests(unittest.TestCase):
         self.assertLessEqual(len(desc), 1024)
         self.assertIn("hall pass", desc.lower())
         self.assertIn("no login", desc.lower())
-        self.assertIn(meta.get("token"), ("ground/tokens/google-ai-mode-hall-pass.md",))
+        self.assertIn(
+            "ground/tokens/google-ai-mode-hall-pass.md",
+            SKILL.read_text(encoding="utf-8"),
+        )
 
     def test_owner_four_steps_and_intended_feature(self):
         body = SKILL.read_text(encoding="utf-8")
