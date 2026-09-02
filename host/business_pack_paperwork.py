@@ -23,6 +23,14 @@ EARNINGS_RE = re.compile(
     r"(?i)\bmake\s+\$\d|\bearn\s+\$\d|\bprofit\s+\$\d|"
     r"\bmake \$\d+ this weekend|\bunrealistic result"
 )
+INCLUDED_RE = re.compile(
+    r"(?i)paperwork included|paperwork done|with the paperwork done|"
+    r"all the (?:required )?paperwork"
+)
+FILING_RE = re.compile(
+    r"(?i)we filed|we do the filing|doing the filing for you|"
+    r"filed (?:your|the) (?:llc|ein|dba)"
+)
 
 
 def load_law(path: Path | None = None) -> dict[str, Any]:
@@ -65,10 +73,19 @@ def classify_paperwork(pack: dict[str, Any] | None) -> dict[str, Any]:
     )
     ads = str(data.get("ads_copy") or data.get("copy") or "")
     earnings_in_ads = bool(EARNINGS_RE.search(ads))
+    included_claim = bool(INCLUDED_RE.search(ads))
+    filing_claim = bool(FILING_RE.search(ads))
+    counsel_cleared = bool(data.get("counsel_cleared"))
+    claim_unsubstantiated = included_claim and bool(missing)
+    filing_as_lawyer = filing_claim and not counsel_cleared
     if invented_url:
         verdict = "PAPERWORK_INVENTED_URL"
     elif earnings_in_ads:
         verdict = "EARNINGS_IN_ADS"
+    elif filing_as_lawyer:
+        verdict = "PAPERWORK_FILING_CLAIM"
+    elif claim_unsubstantiated:
+        verdict = "PAPERWORK_CLAIM_UNSUBSTANTIATED"
     elif missing:
         verdict = "PAPERWORK_INCOMPLETE"
     else:
@@ -79,11 +96,16 @@ def classify_paperwork(pack: dict[str, Any] | None) -> dict[str, Any]:
         "verdict": verdict,
         "missing": missing,
         "legal_advice": False,
-        "hold_counsel": not bool(data.get("counsel_cleared")),
+        "hold_counsel": not counsel_cleared,
         "not_legal_advice": True,
         "invented_url": invented_url,
         "earnings_in_ads": earnings_in_ads,
+        "included_claim": included_claim,
+        "claim_unsubstantiated": claim_unsubstantiated,
+        "filing_as_lawyer": filing_as_lawyer,
+        "upl_line": "checklists_links_templates_not_filing",
         "did_not_invent_percent_or_equity": True,
+        "did_not_write_scout_messaging_angle": True,
         "checkout": "NOT_MINTED",
         "agents_spend_ads": False,
         "law_id": str(law.get("id") or ""),

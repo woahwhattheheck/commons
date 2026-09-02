@@ -42,4 +42,10 @@ Status: `OWNER_UNSET`
 
 Possessing the Commons link is still authorization. That is not a Commons seat. Paperwork is operator work, never a login. Paid tjlabs support is optional contact.
 
+## Paperwork included (door copy)
+
+“Paperwork included” / “with the paperwork done” is true only when every slot above is filled. Empty slots make that line `PAPERWORK_CLAIM_UNSUBSTANTIATED`.
+
+This pack is checklists, links, and templates. It is not tjlabs doing the filing as their lawyer. “We filed your LLC” stays `HOLD_COUNSEL` (`PAPERWORK_FILING_CLAIM`) until counsel clears.
+
 Keep earnings figures out of ads. Prices, time budgets, and pasted running costs only.

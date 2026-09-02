@@ -121,7 +121,8 @@
     "hold_counsel": true,
     "did_not_write_plant_instance": true,
     "did_not_write_desk_instance": true,
-    "checkout": "NOT_MINTED"
+    "checkout": "NOT_MINTED",
+    "included_claim": "cursor-business-pack-paperwork-included-20260902-01"
   },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",

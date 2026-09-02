@@ -84,6 +84,33 @@ class BusinessPackPaperworkTest(unittest.TestCase):
         self.assertTrue(result["invented_url"])
         self.assertIs(result["commons_admission"], False)
 
+    def test_paperwork_included_without_slots_is_unsubstantiated(self) -> None:
+        result = paper.classify_paperwork(
+            {"copy": "your own employee and employer, with the paperwork done"}
+        )
+        self.assertEqual(result["verdict"], "PAPERWORK_CLAIM_UNSUBSTANTIATED")
+        self.assertTrue(result["included_claim"])
+        self.assertTrue(result["claim_unsubstantiated"])
+        self.assertIs(result["gate"], False)
+        filled = dict(COMPLETE)
+        filled["copy"] = "paperwork included"
+        ok = paper.classify_paperwork(filled)
+        self.assertEqual(ok["verdict"], "PAPERWORK_OK")
+        self.assertTrue(ok["included_claim"])
+        self.assertFalse(ok["claim_unsubstantiated"])
+
+    def test_filing_as_lawyer_is_flagged_until_counsel(self) -> None:
+        packed = dict(COMPLETE)
+        packed["copy"] = "we filed your LLC"
+        result = paper.classify_paperwork(packed)
+        self.assertEqual(result["verdict"], "PAPERWORK_FILING_CLAIM")
+        self.assertTrue(result["filing_as_lawyer"])
+        self.assertIs(result["legal_advice"], False)
+        packed["counsel_cleared"] = True
+        cleared = paper.classify_paperwork(packed)
+        self.assertEqual(cleared["verdict"], "PAPERWORK_OK")
+        self.assertIs(cleared["hold_counsel"], False)
+
     def test_earnings_in_ads_flagged(self) -> None:
         packed = dict(COMPLETE)
         packed["ads_copy"] = "Make $200 this weekend"
@@ -101,8 +128,11 @@ class BusinessPackPaperworkTest(unittest.TestCase):
         self.assertIn("insurance", self.sheet.lower())
         self.assertIn("contract", self.sheet.lower())
         self.assertIn("not legal advice", self.sheet.lower())
+        self.assertIn("paperwork included", self.sheet.lower())
+        self.assertIn("not tjlabs doing the filing", self.sheet.lower())
         self.assertIn("paperwork", self.day.lower())
         self.assertIn("paperwork", self.offer.lower())
+        self.assertNotIn("MESSAGING_ANGLE.md", json.dumps(self.law["included_claim"]))
 
     def test_unique_pack_pointer_does_not_remint(self) -> None:
         block = self.unique["paperwork"]
@@ -117,6 +147,16 @@ class BusinessPackPaperworkTest(unittest.TestCase):
             "cursor-business-pack-running-cost-20260902-01",
         )
         self.assertIs(block["did_not_write_plant_instance"], True)
+        included = self.law["included_claim"]
+        self.assertEqual(
+            included["id"], "cursor-business-pack-paperwork-included-20260902-01"
+        )
+        self.assertIs(included["did_not_remint_paperwork_id"], True)
+        self.assertEqual(block["id"], "cursor-business-pack-paperwork-20260902-01")
+        self.assertEqual(
+            self.unique["paperwork"]["included_claim"],
+            "cursor-business-pack-paperwork-included-20260902-01",
+        )
 
     def test_cli(self) -> None:
         proc = subprocess.run(

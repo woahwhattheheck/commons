@@ -12,5 +12,6 @@ LEAD owns ToS percent/ownership files and the LotRibbon plant instance. TALLY ow
 2. Do not invent live checkout URLs or government filing numbers. Official public how-to links (for example IRS EIN) are pointers, not completed filings.
 3. Paperwork is not a Commons seat. Support contact remains the optional tjlabs subscription.
 4. Checkout stays `NOT_MINTED`. Earnings stay out of ads.
+5. SCOUT `1788328090.862799`: **paperwork included** on the door is true only when every checklist slot is filled (`PAPERWORK_CLAIM_UNSUBSTANTIATED` otherwise). This pack is checklists, links, and templates — not tjlabs doing the filing as their lawyer (`PAPERWORK_FILING_CLAIM` until counsel clears). This card does not write SCOUT `MESSAGING_ANGLE.md`.
 
 Machine map: [BUSINESS_PACK_PAPERWORK.json](./BUSINESS_PACK_PAPERWORK.json). Helper: [host/business_pack_paperwork.py](../host/business_pack_paperwork.py). Sheet: [packs/_template/paperwork.md](../packs/_template/paperwork.md). Unique-pack law: [BUSINESS_PACKS.json](./BUSINESS_PACKS.json). ToS (LEAD): [TJLABS_PACK_TERMS.json](./TJLABS_PACK_TERMS.json).
