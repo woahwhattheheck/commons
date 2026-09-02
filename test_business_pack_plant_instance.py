@@ -229,8 +229,17 @@ class BusinessPackPlantInstanceTest(unittest.TestCase):
         self.assertNotRegex(brief, r"(?i)earn \$\d")
         self.assertNotIn("10,350", brief)
         self.assertNotIn("packs/_template/creative_brief.md", brief)
-        template = ROOT / "packs" / "_template" / "creative_brief.md"
-        self.assertFalse(template.exists())
+        pack_root = self.base / "creative_brief.md"
+        self.assertTrue(pack_root.is_file())
+        self.assertEqual(brief, pack_root.read_text(encoding="utf-8"))
+        try:
+            import pack_creative_brief as shared  # noqa: WPS433
+        except ImportError:
+            return
+        classified = shared.classify(brief, kind="instance")
+        self.assertEqual(classified["verdict"], "CREATIVE_BRIEF_INSTANCE_OK")
+        self.assertFalse(classified["earnings_claim"])
+        self.assertEqual(classified["checkout"], "NOT_MINTED")
 
 
 if __name__ == "__main__":
