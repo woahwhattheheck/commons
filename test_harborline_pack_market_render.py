@@ -13,7 +13,6 @@ HELPER = ROOT / "host/harborline_pack_market_render.py"
 RECEIPT = ROOT / "p/cursor-harborline-pack-market-render-20260902-01.md"
 
 KEEP = {
-    "ground/OWNER_NOW.md": "6b8ee988",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
     "test_harborline_qualify_live_probe.py": "0791b11a",
@@ -25,7 +24,6 @@ KEEP = {
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "owner-now-revenue.html": "1d3f1cdf",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }

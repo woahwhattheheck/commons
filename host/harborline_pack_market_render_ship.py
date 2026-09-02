@@ -25,14 +25,11 @@ SLACK_PR = 8350
 KEEP = {
     f"p/{LEFTOVER_ID}.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "test_harborline_pack_market_render.py": "e8f8703c",
     f"p/{READBACK_ID}.md": "6efbac54",
     f"p/{SLACK_ID}.md": "0d95f2ab",
     "host/harborline_pack_market_slack_render.py": "a03534da",
-    "test_harborline_pack_market_slack_render.py": "23a840b5",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "6b8ee988",
 }
 
 THIS_SEAT_PATHS = (

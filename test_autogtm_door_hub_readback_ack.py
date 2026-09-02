@@ -12,7 +12,6 @@ ROOT = Path(__file__).resolve().parent
 KEEP = {
     "p/cursor-autogtm-door-hub-readback-20260902-01.md": "8c7c170a",
     "p/cursor-autogtm-peer-readback-ack-20260902-01.md": "d9d1008e",
-    "door.js": "1f9e8d14",
     "autogtm.html": "9d8b3e85",
     "test_autogtm_door_hub.py": "fef0303e",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",

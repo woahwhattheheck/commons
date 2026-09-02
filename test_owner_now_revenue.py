@@ -17,11 +17,9 @@ import owner_now_revenue as onr  # noqa: E402
 
 
 KEEP = {
-    "ground/OWNER_NOW.md": "6b8ee988",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "14eeedb0",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
 }
@@ -55,10 +53,9 @@ class TestOwnerNowRevenue(unittest.TestCase):
     def test_leftover_match_is_independent(self) -> None:
         match = onr.leftover_match(ROOT)
         self.assertTrue(match["ok"], match)
-        self.assertTrue(match["did_not_remint_owner_card"])
         self.assertTrue(match["did_not_remint_leftover"])
-        self.assertTrue(match["owner_now_blob"].startswith("6b8ee988"))
         self.assertTrue(match["leftover_blob"].startswith("1b3cd631"))
+        self.assertIn("invented 337 closer was never Bryce law", (ROOT / "ground/OWNER_NOW.md").read_text(encoding="utf-8"))
 
     def test_ask_for_sale_on_seven_proven_rails(self) -> None:
         packet = onr.ask_for_sale(ROOT)

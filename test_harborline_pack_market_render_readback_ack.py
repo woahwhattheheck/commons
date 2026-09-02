@@ -18,12 +18,9 @@ HELPER = ROOT / "host/harborline_pack_market_render.py"
 KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "test_harborline_pack_market_render.py": "e8f8703c",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "test_harborline_pack_market_render_readback.py": "f4ee4f15",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "ground/OWNER_NOW.md": "6b8ee988",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",

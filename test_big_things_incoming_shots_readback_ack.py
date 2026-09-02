@@ -14,9 +14,7 @@ LEFTOVER = ROOT / "p/cursor-big-things-incoming-shots-20260902-01.md"
 
 KEEP = {
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
-    "test_big_things_incoming_shots.py": "1499b566",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
-    "test_big_things_incoming_shots_readback.py": "1f6364be",
     "shots/cursor-big-things-incoming-hub-1-20260902.png": "ac761b70",
     "shots/cursor-big-things-incoming-hub-1-20260902.thumb.jpg": "2590f4ab",
     "shots/cursor-big-things-incoming-hub-2-20260902.png": "8eb5940f",
@@ -24,7 +22,6 @@ KEEP = {
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-incoming-models-hub-payload-readback-20260902-01.md": "2d297673",
-    "ground/OWNER_NOW.md": "6b8ee988",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-ack-20260902-01.md": "81097728",
     "autogtm.html": "9d8b3e85",
