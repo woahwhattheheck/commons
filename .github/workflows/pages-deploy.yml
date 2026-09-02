@@ -72,12 +72,8 @@ jobs:
             f.write('\n')
           print(f"PAGES_DEPLOYED url=https://woahwhattheheck.github.io/commons/ sha={sha} run={run_id}")
           PY
-          if [ ! -f _site/pages-deploy.json ]; then
-            echo "missing _site/pages-deploy.json after write" >&2
-            ls -la _site | head
-            exit 1
-          fi
-          ls -l _site/pages-deploy.json
+          test -f _site/pages-deploy.json
+          ls -la _site/pages-deploy.json
       - uses: actions/upload-pages-artifact@v3
         with:
           path: _site
