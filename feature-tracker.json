@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 88
+    "TESTED": 89
   },
   "features": [
     {
@@ -1895,6 +1895,56 @@
       "test_paths": [
         "test_business_pack_paperwork_filled.py",
         "host/business_pack_paperwork_filled.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Public MCP GET /mcp returns the open capability map (200, no login). First-visit grounding door is the fresh-peer first screen.",
+      "carrier": "CURSOR",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "commons_mcp.py",
+        "api/mcp.py",
+        "grounding.html"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "commons_mcp.py",
+        "api/mcp.py",
+        "grounding.html"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "cursor-mcp-get-grounding-20260902-01.json",
+      "id": "cursor-mcp-get-grounding-20260902-01",
+      "last_change": "2026-09-02",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Public MCP GET map + first-visit door",
+      "next_gap": "Vercel production GET /mcp is still 405 until this adapter deploys. Pages grounding.html is a bake until current main.",
+      "owner_subsystem": "mcp-public",
+      "public_entrypoint": "grounding.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "https://commons-spark-mcp.vercel.app/mcp",
+        "ground/OWNER_NOW.md",
+        "docs/spark-mcp.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_mcp_get_open.py",
+        "test_grounding_door.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -5739,7 +5789,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 97,
+  "n_features": 98,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

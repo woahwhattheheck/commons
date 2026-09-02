@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parent
 NEEDLE_JS = '["grounding.html", "first visit"]'
 NEEDLE_HUB = 'href="./grounding.html">first visit</a>'
 NEEDLE_BOARDS = 'href="./grounding.html">first visit</a>'
+FEATURE_ID = "cursor-mcp-get-grounding-20260902-01"
 
 
 class GroundingDoorTests(unittest.TestCase):
@@ -57,6 +58,18 @@ class GroundingDoorTests(unittest.TestCase):
         owner = (ROOT / "ground" / "OWNER_NOW.md").read_text(encoding="utf-8")
         self.assertIn("GET should serve a capability map", owner)
         self.assertIn("405 is the spec", owner)
+
+    def test_feature_tracker_projection_includes_door(self) -> None:
+        tracker = json.loads((ROOT / "feature-tracker.json").read_text(encoding="utf-8"))
+        rows = [row for row in tracker.get("features") or [] if row.get("id") == FEATURE_ID]
+        self.assertEqual(len(rows), 1, "feature-tracker.py --write must project the registry row")
+        row = rows[0]
+        self.assertEqual(row["source_status"], "SOURCE_BUILT")
+        self.assertEqual(row["test_status"], "TESTED")
+        self.assertIn("grounding.html", row.get("claimed_paths") or [])
+        html = (ROOT / "feature-tracker.html").read_text(encoding="utf-8")
+        self.assertIn(FEATURE_ID, html)
+        self.assertNotIn('type="password"', html.lower())
 
 
 if __name__ == "__main__":
