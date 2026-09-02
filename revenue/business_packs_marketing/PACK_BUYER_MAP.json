@@ -97,6 +97,25 @@
     "PLANT candidate: yard-greeting sign rental pack",
     "measurement: thank-you page with X Pixel slot that the owner-pasted Payment Link redirects to"
   ],
+  "packs_in_flight_20260902": [
+    {"instance": "yard-card-route-20260902-01", "tier": "shop", "usd": 100, "persona": "Truck-and-weekend Tyler", "owner_seat": "GOAT/Cursor", "state": "UNDECIDED; instance brand/door still needed", "launch_metros": ["Phoenix", "Nashville", "Atlanta", "Dallas-Fort Worth", "Houston", "Tampa", "Orlando", "Charlotte", "Raleigh", "Las Vegas", "Kansas City", "St. Louis", "Denver", "Indianapolis"], "channels": ["X", "Rumble", "TikTok"]},
+    {"instance": "Sidewalk Signal (packs/sidewalk-signal-web-desk-20260902-01)", "tier": "desk", "usd": 200, "persona": "Laptop Lena / Desk Dan", "owner_seat": "TALLY (Fable 5.1, owner PC)", "state": "CLAIMED 01:38 EDT; brand + door; method not customers", "launch_metros": ["Indianapolis", "Columbus", "Nashville", "Kansas City", "Phoenix", "Charlotte", "Tampa", "Milwaukee", "Pittsburgh"], "channels": ["X", "TikTok", "Reddit"], "price_note": "list at $199 (Connecticut $200 line)"},
+    {"instance": "Harborline Local Sites (packs/desk-website-service-20260902-01)", "tier": "desk", "usd": 200, "persona": "Laptop Lena / Desk Dan", "owner_seat": "bc-31c8ef9a (Cursor Cloud)", "state": "CLAIMED 01:39 EDT; second distinct DESK instance (similar, not clone)", "launch_metros": "same as Sidewalk Signal; sell to a different buyer", "channels": ["X", "TikTok", "Reddit"]},
+    {"instance": "LotRibbon Greetings (packs/lotribbon-greetings-20260902-01)", "tier": "plant", "usd": 1000, "persona": "Corporate-refugee Renee (female-skewed vertical)", "owner_seat": "bc-23891c63 (Cursor Cloud)", "state": "CLAIMED 01:43 EDT; yard-greeting sign rental; booking door, costed inventory", "launch_metros": ["Phoenix/Scottsdale", "Nashville", "Denver", "Kansas City", "Las Vegas", "St. Louis", "Minneapolis", "Milwaukee", "Philadelphia", "Pittsburgh"], "channels": ["TikTok", "Meta", "Google Search"], "note": "X is weak for this buyer; suburban birthday density decides the metro"}
+  ],
+  "launch_map": "FERTILE_GROUND.md section 0",
+  "compliance_light_first_states_for_1000_and_10000": ["AZ", "TN", "MO", "CO", "NV", "PA", "WI", "MN", "OR"],
+  "add_when_counsel_clears": ["TX", "FL", "GA", "NC", "UT"],
+  "docs": {
+    "buyer_tiers": "BUYER_TIERS.md",
+    "x_ads_brief": "X_ADS_BRIEF.md",
+    "advertising_general": "ADVERTISING_GENERAL.md",
+    "messaging_angle": "MESSAGING_ANGLE.md",
+    "data_buying": "DATA_BUYING.md",
+    "paperwork": "PAPERWORK.md",
+    "fertile_ground": "FERTILE_GROUND.md",
+    "law_flags_footnote": "LAW_AND_POLICY_FLAGS.md"
+  },
   "law_flags": "LAW_AND_POLICY_FLAGS.md",
   "x_ads_brief": "X_ADS_BRIEF.md",
   "buyer_tiers": "BUYER_TIERS.md"
