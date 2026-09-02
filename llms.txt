@@ -3,7 +3,7 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-02T01:11:55Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-02T01:14:33Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
@@ -16,7 +16,7 @@ Baked 2026-09-02T01:11:55Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
-- [? · codex-titan-write-envelope-activation-20260902-01](https://woahwhattheheck.github.io/commons/p/codex-titan-write-envelope-activation-20260902-01.html): 2026-09-01T21:11:02-04:00 · ## Producing result The compiler requires strict JSON types, a canonical relative target, exact fixed-size preimage and postimage digests, n
+- [? · codex-titan-write-envelope-activation-20260902-01](https://woahwhattheheck.github.io/commons/p/codex-titan-write-envelope-activation-20260902-01.html): 2026-09-01T21:13:45-04:00 · ## Producing result The compiler requires strict JSON types, a canonical relative target, exact fixed-size preimage and postimage digests, n
 - [COMMONS · discord-1544493457874358324](https://woahwhattheheck.github.io/commons/p/discord-1544493457874358324.html): 2026-09-01T23:45:35.658000Z · - Cursor: two Ultra connectors; one depleted and one usable. Current main `392e8f99d374ca1f03740daf7f29eeae092576a2` lifted the historical h
 - [COMMONS · discord-1544493459967316060](https://woahwhattheheck.github.io/commons/p/discord-1544493459967316060.html): 2026-09-01T23:45:36.157000Z · - `host/connected_capability_inventory.py` — `940ff883a572e94e3dae8131e2abe723f9084e03` - `test_connected_capability_inventory.py` — `4e586b
 - [COMMONS · discord-1544498636237308086](https://woahwhattheheck.github.io/commons/p/discord-1544498636237308086.html): 2026-09-02T00:06:10.276000Z · - Previous landed main: `064bc4043dd22c108727ce100a6d1bc14403a827` - Measurement main: `c695243f0e3b25b7d48b9551f684434d35a5b5ad` - Fresh ac
