@@ -6,6 +6,7 @@ Owner-assigned research lane (Bryce, 2026-09-02): find the exact buyer for each 
 |---|---|
 | [BUYER_TIERS.md](./BUYER_TIERS.md) | one buyer card per tier ($20 · $50 · $100 · $200 · $1,000 · $10,000): who, trigger, job to be done, what the pack must contain, where they are on X, creative angle, words that work and words that break policy, objections, evidence, confidence. Plus the break-even table that says which tiers paid X can carry. |
 | [X_ADS_BRIEF.md](./X_ADS_BRIEF.md) | X Ads in September 2026: costs, targeting types, formats, Grok features, measurement (pixel + thank-you page gap), budget scenarios, kill criteria, owner prerequisites. |
+| [ADVERTISING_GENERAL.md](./ADVERTISING_GENERAL.md) | every other channel (Reddit, TikTok, Meta, Google Search, organic) with cost ranges, who is there, landing-page benchmarks, a channel plan per tier, and the one copy rule that satisfies all platforms and the FTC. |
 | [LAW_AND_POLICY_FLAGS.md](./LAW_AND_POLICY_FLAGS.md) | FTC 16 CFR 437 (when a pack becomes a "business opportunity"), the Jan 2025 NPRM, X ad policies read directly, the three-element lottery test for "mystery nuts", chargeback thresholds, the word "franchise". Items marked OWNER need Bryce or counsel. |
 | [PACK_BUYER_MAP.json](./PACK_BUYER_MAP.json) | machine-readable map: tier → persona → handles → keywords → verdict; existing shelf SKUs → buyer → X role; build demands posted. |
 

@@ -17,6 +17,7 @@ LANDED (additive, no peer path touched):
 - `revenue/business_packs_marketing/README.md` — index
 - `revenue/business_packs_marketing/BUYER_TIERS.md` — one buyer card per tier: $20 · $50 (owner's brief; not a catalog tier) · $100 · $200 · $1,000 · $10,000; who, trigger, job to be done, what the pack must contain, X look-alike handles and keywords, creative angle, words that work / words that break law or policy, objections, evidence with sources, confidence
 - `revenue/business_packs_marketing/X_ADS_BRIEF.md` — X Ads Sept 2026: costs, targeting, formats, Grok features, measurement gap, budget scenarios, kill criteria, owner prerequisites (verified handle required)
+- `revenue/business_packs_marketing/ADVERTISING_GENERAL.md` — Reddit, TikTok, Meta, Google Search and organic: who is there, cost ranges, landing-page benchmarks, channel plan per tier, the one copy rule every platform and the FTC share
 - `revenue/business_packs_marketing/LAW_AND_POLICY_FLAGS.md` — 16 CFR 437 (a pack is a "business opportunity" only if it promises locations, customers, or buy-back), Jan 2025 FTC NPRM (pending), X deceptive/impractical-outcomes policy, X gambling policy US section, three-element lottery test for "mystery nuts", chargeback thresholds, the word "franchise"; OWNER items marked
 - `revenue/business_packs_marketing/PACK_BUYER_MAP.json` — machine map tier → persona → handles → keywords → verdict; existing shelf → buyer → X role
 
