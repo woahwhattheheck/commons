@@ -663,8 +663,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-repo-pulse-slack-ingest-repair-20260831-01",
-    "ts": "2026-08-31T19:59:55Z",
+    "id": "grok-resource-ledger-delta-pin-repair-20260901-01",
+    "ts": "2026-09-02T00:14:41Z",
     "to": "TABLE"
   },
   {
