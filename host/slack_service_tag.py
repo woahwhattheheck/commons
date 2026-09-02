@@ -98,6 +98,16 @@ def _connected_set(connected: list[str] | tuple[str, ...] | None) -> set[str]:
     return {str(x).lower() for x in (connected or []) if str(x).strip()}
 
 
+def _signin_channel(catalog: dict[str, Any]) -> dict[str, Any]:
+    """Provider-session queue. Prefers #provider-sign-in when installed."""
+    install = catalog.get("install") if isinstance(catalog.get("install"), dict) else {}
+    login = install.get("login_channel") if isinstance(install.get("login_channel"), dict) else {}
+    if str(login.get("id") or "").strip():
+        return login
+    owner = catalog.get("owner_signin_channel")
+    return owner if isinstance(owner, dict) else {}
+
+
 def route(
     text: str,
     connected: list[str] | tuple[str, ...] | None = None,
@@ -109,7 +119,7 @@ def route(
     body = remainder(text, tags, cat)
     connected_ids = _connected_set(connected)
     services = cat.get("services") or {}
-    signin = cat.get("owner_signin_channel") or {}
+    signin = _signin_channel(cat)
     jobs: list[dict[str, Any]] = []
     for tag in tags:
         spec = services.get(tag) if isinstance(services, dict) else None
@@ -143,8 +153,8 @@ def route(
                         "slack_tool": job["slack_tool"],
                         "road": "OWNER_SIGNIN",
                         "body": body,
-                        "channel_id": str(signin.get("id") or "C0BRX6EV739"),
-                        "channel_name": str(signin.get("name") or "#needs-bryce"),
+                        "channel_id": str(signin.get("id") or "C0BUFA9G23E"),
+                        "channel_name": str(signin.get("name") or "#provider-sign-in"),
                         "kind": "OWNER_BLOCKER",
                     }
                 )
@@ -155,7 +165,7 @@ def route(
         "tags": tags,
         "body": body,
         "jobs": jobs,
-        "owner_signin_channel_id": str(signin.get("id") or "C0BRX6EV739"),
+        "owner_signin_channel_id": str(signin.get("id") or "C0BUFA9G23E"),
     }
     result["slack_jobs"] = slack_jobs(result)
     return result
@@ -184,8 +194,8 @@ def slack_jobs(result: dict[str, Any]) -> list[dict[str, Any]]:
         if road == "OWNER_SIGNIN":
             out.append(
                 {
-                    "channel_id": str(job.get("channel_id") or "C0BRX6EV739"),
-                    "channel_name": str(job.get("channel_name") or "#needs-bryce"),
+                    "channel_id": str(job.get("channel_id") or "C0BUFA9G23E"),
+                    "channel_name": str(job.get("channel_name") or "#provider-sign-in"),
                     "kind": "OWNER_BLOCKER",
                     "tag": job.get("tag"),
                     "text": format_owner_blocker(job),

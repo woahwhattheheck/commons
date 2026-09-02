@@ -218,6 +218,24 @@
       "needs_owner_signin": true,
       "in_harness_when": ["zoom"]
     },
+    "heygen": {
+      "tag": "heygen",
+      "slack_tool": "@heygen",
+      "needs_owner_signin": true,
+      "in_harness_when": ["heygen"]
+    },
+    "magicpath": {
+      "tag": "magicpath",
+      "slack_tool": "@magicpath",
+      "needs_owner_signin": true,
+      "in_harness_when": ["magicpath"]
+    },
+    "roboflow": {
+      "tag": "roboflow",
+      "slack_tool": "@roboflow",
+      "needs_owner_signin": true,
+      "in_harness_when": ["roboflow"]
+    },
     "agentmail": {
       "tag": "agentmail",
       "slack_tool": "@agentmail",

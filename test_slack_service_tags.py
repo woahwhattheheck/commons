@@ -40,7 +40,7 @@ class SlackServiceTagsTest(unittest.TestCase):
         self.assertIn("OWNER_SIGNIN", roads)
         self.assertNotIn("IN_HARNESS", roads)
         signin = next(j for j in result["jobs"] if j["road"] == "OWNER_SIGNIN")
-        self.assertEqual(signin["channel_id"], "C0BRX6EV739")
+        self.assertEqual(signin["channel_id"], "C0BUFA9G23E")
         self.assertEqual(signin["kind"], "OWNER_BLOCKER")
 
     def test_connected_gmail_stays_in_harness(self) -> None:
@@ -79,7 +79,7 @@ class SlackServiceTagsTest(unittest.TestCase):
 
     def test_catalog_covers_named_services(self) -> None:
         services = self.cat["services"]
-        for name in ("facebook", "instagram", "github", "gmail", "stripe", "x"):
+        for name in ("facebook", "instagram", "github", "gmail", "stripe", "x", "heygen", "magicpath", "roboflow"):
             self.assertIn(name, services)
         self.assertGreaterEqual(len(services), 20)
         self.assertEqual(self.cat["aliases"]["twitter"], "x")
@@ -99,9 +99,18 @@ class SlackServiceTagsTest(unittest.TestCase):
         self.assertIn("SLACK_CUSTOM_TOOL", kinds)
         self.assertIn("OWNER_BLOCKER", kinds)
         blocker = next(row for row in result["slack_jobs"] if row["kind"] == "OWNER_BLOCKER")
-        self.assertEqual(blocker["channel_id"], "C0BRX6EV739")
+        self.assertEqual(blocker["channel_id"], "C0BUFA9G23E")
         self.assertFalse(blocker["copy_secrets"])
         self.assertIn("Do not paste a password", blocker["text"])
+
+    def test_heygen_without_connector_queues_provider_sign_in(self) -> None:
+        result = sst.route("@heygen render the sample", connected=["slack"])
+        self.assertEqual(result["tags"], ["heygen"])
+        roads = {job["road"] for job in result["jobs"] if job["tag"] == "heygen"}
+        self.assertIn("SLACK_CUSTOM_TOOL", roads)
+        self.assertIn("OWNER_SIGNIN", roads)
+        signin = next(j for j in result["jobs"] if j["road"] == "OWNER_SIGNIN")
+        self.assertEqual(signin["channel_id"], "C0BUFA9G23E")
 
     def test_cli_json(self) -> None:
         proc = subprocess.run(

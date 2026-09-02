@@ -9,7 +9,7 @@ This is a routing convention. `gate` is false. Missing tags, missing tools, or m
 1. Write the work in Slack. Prefix the service with `@tag` (`@facebook post the drop`).
 2. If this harness already has that provider tool, it may run in-harness.
 3. If it does not, emit a Slack custom-tool job for `@tag` with the remainder of the body. Do not pretend an in-harness Facebook call exists.
-4. If the provider still needs a Bryce browser session, post one `OWNER_BLOCKER` root in `#needs-bryce` (`C0BRX6EV739`). That is the sign-in queue. It is not Commons authentication.
+4. If the provider still needs a Bryce browser or Cursor connector session, post one `OWNER_BLOCKER` root in `#provider-sign-in` (`C0BUFA9G23E`). `#needs-bryce` stays the other owner-exclusive queue. Neither is Commons authentication.
 
 Reserved Slack broadcast tokens are not services: `here`, `channel`, `everyone`, `group`, `reminders`, `slackbot`. User mentions (`<@U…>`) are not service tags.
 
