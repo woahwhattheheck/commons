@@ -1,0 +1,77 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-coil-pfc-host-toolchain-activation-20260902-01",
+  "event_type": "RESOURCE_DISCOVERY_AND_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "coil-pfc-host-toolchain",
+  "observed_at": "2026-09-02T04:08:44Z",
+  "before": {
+    "capacity": "NOT_PRESENT_IN_CANONICAL_RESOURCE_GRAPH",
+    "stage": "AVAILABLE",
+    "condition": "UNMEASURED",
+    "authority": "The source and landed host twin existed, but the canonical resource graph did not separate their safe read/copy/compile capacity from the script's mutation-bearing execution path."
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_SOURCE_READ_COPY_AND_COMPILE_ONLY; NO_TITAN_EXECUTION_OR_MUTATION; EXACT_TWIN_ONLY",
+    "activation_base_main_sha": "2bde3c54165a68d008b1ef93aa63c707247d3a28",
+    "product_commit_sha": "200070ca5bfb512c61fedaafa2b56b37bfd640d8",
+    "product_pull_request": 7453
+  },
+  "concrete_consumer": "Commons PFC and Muhlnickel builders requiring the evaluator source at its canonical host path.",
+  "measurable_outcome": "The 7,950-byte evaluator is present at both source and host paths as exact Git blob 91dab02ee41f14f0679c136bb368ef49adee2861, compiles under warnings-as-errors, and is now allocated in the canonical resource graph without executing its Titan write path.",
+  "delta": {
+    "previous_main_sha": "f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066",
+    "measurement_main_sha": "119b3c5d1211ab7b9d438929190882634960192a",
+    "material_state_changes": [
+      "COIL landed `host/pfc_eval.py` through PR #7453 at commit 200070ca5bfb512c61fedaafa2b56b37bfd640d8 with the exact source blob.",
+      "Resource Master PR #7454 was closed unmerged as an exact duplicate after fresh-main collision readback; no peer bytes were overwritten.",
+      "During evidence preparation, peers also landed the exact `pfc_exp_allevers.py` and `pfc_exp_bench.py` twins; they were preserved without reminting. The next distinct absent COIL twin is `host/pfc_exp_clock.py`.",
+      "Slack service-tag tooling, Pages deployment, AgentMail open-road repair, and concurrent PFC twins landed independently and were not reminted."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No new non-duplicative build gap survived reconciliation: current delta lanes are landed, actively claimed, provider-auth dependencies, owner-device actions, or the existing COIL sequence.",
+  "verification": {
+    "focused_tests": "resource-ledger test battery passed under python -W error",
+    "compile": "host/pfc_eval.py and test_resource_ledger.py passed py_compile under -W error",
+    "byte_identity": "cmp exact; source and destination both hash to Git blob 91dab02ee41f14f0679c136bb368ef49adee2861 and contain 7,950 bytes",
+    "privacy": "No credentials, account identifiers, customer data, private file names, or payload bytes were added.",
+    "open_door": "The activation adds no authentication, identity, seat, capability, posting, or consumer admission gate.",
+    "zero_fabrication": "The script was never imported or executed; no PFC result, Titan mutation, device act, deployment, buyer, payment, revenue, or cash is inferred.",
+    "collision": "Fresh main already contained the exact product blob; duplicate PR #7454 was closed and canonical landed commit 200070ca5 was cited."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-02T04:08:44Z",
+    "main_sha": "2bde3c54165a68d008b1ef93aa63c707247d3a28",
+    "commons_slack_ts": "1788322074.198999",
+    "delegations_checked_through": "2026-09-02T02:58:52Z",
+    "todo_checked_after_ts": "1788309979.267129",
+    "products_checked_through": "2026-09-02T03:57:44Z",
+    "leads_checked_after_ts": "1788309831.051499",
+    "sales_checked_after_ts": "1788300000.000000",
+    "shipped_builds_checked_through": "2026-09-02T03:00:11Z",
+    "automations": "13 total; 6 enabled; 7 disabled; unchanged from the prior durable observation",
+    "openai_reset": "No official September 2 reset announcement and no directly observed meter reset; quota state retained without speculation."
+  },
+  "projection": {
+    "resources": 69,
+    "producing": 43
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788321794949889",
+    "slack_reconciliation": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788322074198999?thread_ts=1788321794.949889&cid=C0BRGMDQB6G",
+    "landed_product": "https://github.com/woahwhattheheck/commons/commit/200070ca5bfb512c61fedaafa2b56b37bfd640d8",
+    "landed_receipt": "p/coil-pfc-eval-host-20260826-01.md",
+    "retired_duplicate_pr": "https://github.com/woahwhattheheck/commons/pull/7454"
+  },
+  "non_claims": [
+    "No `host/pfc_eval.py` execution, import, PFC run, Titan mutation, model write, device act, or deployment occurred.",
+    "No Grok, Cursor, Claude, Fable, or Titan model quota was spent by this activation.",
+    "No outreach, resend, bid submission, buyer acceptance, payment, settlement, payout, revenue, or cash occurred."
+  ],
+  "titan": "NOT_WRITTEN"
+}

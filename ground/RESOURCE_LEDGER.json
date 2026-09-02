@@ -1,8 +1,8 @@
 {
   "schema": "commons-resource-ledger/v2",
   "snapshot": {
-    "observed_at": "2026-09-02T01:03:48Z",
-    "base_main_sha": "1267075cc02aaec135c56e078475e60090aa3010",
+    "observed_at": "2026-09-02T04:08:44Z",
+    "base_main_sha": "2bde3c54165a68d008b1ef93aa63c707247d3a28",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value.",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents."
@@ -34,9 +34,10 @@
   "production_write": false,
   "secrets": false,
   "titan": "NOT_WRITTEN",
-  "slack_ts": "1788310861.421539",
-  "source_id": "codex-titan-write-envelope-activation-20260902-01",
+  "slack_ts": "1788321794.949889",
+  "source_id": "codex-coil-pfc-host-toolchain-activation-20260902-01",
   "supersedes_source_ids": [
+    "codex-titan-write-envelope-activation-20260902-01",
     "codex-resource-master-delta-engine-activation-20260901-01",
     "codex-connected-capability-fleet-activation-20260901-01",
     "codex-vercel-capacity-activation-20260901-01",
@@ -66,7 +67,7 @@
     "codex-master-resource-office-20260826-01",
     "demon-live-compute-board-20260825-01"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Titan writes now use a shared fail-closed safety envelope without an invented owner-approval prerequisite",
+  "subject": "MASTER RESOURCE LEDGER — the byte-exact COIL PFC evaluator host twin is landed, compile-readable, and routed without Titan execution",
   "record_sources": [
     "inventory/resources/records/codex-master-resource-census-20260826-01.json",
     "inventory/resources/records/codex-resource-master-office-activation-20260826-01.json",
@@ -106,7 +107,8 @@
     "inventory/resources/records/codex-vercel-capacity-activation-20260901-01.json",
     "inventory/resources/records/codex-connected-capability-fleet-activation-20260901-01.json",
     "inventory/resources/records/codex-resource-master-delta-engine-activation-20260901-01.json",
-    "inventory/resources/records/codex-titan-write-envelope-activation-20260902-01.json"
+    "inventory/resources/records/codex-titan-write-envelope-activation-20260902-01.json",
+    "inventory/resources/records/codex-coil-pfc-host-toolchain-activation-20260902-01.json"
   ],
   "priority_queue": [],
   "hands_off": [
@@ -1588,6 +1590,28 @@
       "last_used_at": "2026-09-02T01:03:48Z",
       "stale_after": "next Titan policy, target, executor, or mutation receipt",
       "priority": 96
+    },
+    {
+      "name": "coil-pfc-host-toolchain",
+      "kind": "BYTE_EXACT_HOST_TOOLCHAIN",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / COIL",
+      "authority": "SHARED_SOURCE_READ_COPY_AND_COMPILE_ONLY; NO_TITAN_EXECUTION_OR_MUTATION; EXACT_TWIN_ONLY",
+      "consumer": "Commons PFC and Muhlnickel builders requiring the evaluator source at its canonical host path",
+      "value": "Byte-exact host twin of the existing PFC gate-evaluator source, preserving its 7,950-byte Git identity for deterministic downstream import, packaging, and review.",
+      "next_action": "Continue the existing COIL sequence with the next absent twin `host/pfc_exp_clock.py`; do not remint landed twins and do not execute mutation-bearing host scripts merely to prove availability.",
+      "source": "infra/host/pfc_eval.py; host/pfc_eval.py; p/coil-pfc-eval-host-20260826-01.md; PR #7453; commit 200070ca5bfb512c61fedaafa2b56b37bfd640d8",
+      "evidence_ts": "2026-09-02T04:08:44Z",
+      "auth_surface": "current-main exact Git blobs and local Python compilation",
+      "exact_safe_probe": "source and destination are both Git blob 91dab02ee41f14f0679c136bb368ef49adee2861 at 7,950 bytes; byte comparison and `python -W error -m py_compile host/pfc_eval.py` passed without importing or executing the script.",
+      "rate_plan_boundary": "Source presence, copying, hashing, and compilation are not a PFC run, baked evaluator result, Titan write, device act, deployment, buyer acceptance, payment, revenue, or cash.",
+      "assigned_backlog": "exact host-twin consumption and the next distinct absent COIL twin `host/pfc_exp_clock.py` only; no execution of mutation-bearing scripts",
+      "last_receipt": "codex-coil-pfc-host-toolchain-activation-20260902-01",
+      "last_used_at": "2026-09-02T04:08:44Z",
+      "stale_after": "next source/destination blob change or COIL sequence receipt",
+      "priority": 91
     }
   ],
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED"
