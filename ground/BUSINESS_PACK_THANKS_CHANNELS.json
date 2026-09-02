@@ -1,0 +1,45 @@
+{
+  "id": "cursor-pack-thanks-channels-20260902-01",
+  "kind": "BUSINESS_PACK_THANKS_CHANNELS",
+  "gate": false,
+  "commons_admission": false,
+  "source_channel_id": "C0BU51F1PL3",
+  "source_channel_name": "#coordination-channel-created-today-please-use",
+  "scout_demand_id": "scout-demand-pack-door-thanks-pixel-20260902-01",
+  "did_not_remint_scout_demand": true,
+  "peer_id": "cursor-business-pack-thanks-pixel-20260902-01",
+  "peer_door": "packs/thanks.html",
+  "peer_law": "ground/BUSINESS_PACK_THANKS.json",
+  "peer_helper": "host/business_pack_thanks.py",
+  "did_not_overwrite_peer_door": true,
+  "owner_tiktok_channel": "in-session ~01:33 EDT; SCOUT hub note to bc-31c8ef9a",
+  "pixel_slot": "owner_paste_independent_per_channel",
+  "channels": {
+    "x": {
+      "pixel_id": "",
+      "script_src_when_filled": "https://static.ads-twitter.com/uwt.js",
+      "event": "Purchase"
+    },
+    "tiktok": {
+      "pixel_id": "",
+      "script_src_when_filled": "https://analytics.tiktok.com/i18n/pixel/events.js",
+      "event": "Purchase"
+    },
+    "meta": {
+      "pixel_id": "",
+      "script_src_when_filled": "https://connect.facebook.net/en_US/fbevents.js",
+      "event": "Purchase"
+    }
+  },
+  "empty_independently_loads_nothing": true,
+  "one_purchase_per_platform_present": true,
+  "purchase_value_query": "value",
+  "agents_mint_pixel_id": false,
+  "agents_spend_ads": false,
+  "copy": "prices_and_time_budgets_never_earnings",
+  "nuts_in_ad_copy": false,
+  "checkout": "NOT_MINTED",
+  "no_fake_stripe_urls": true,
+  "helper": "host/pack_thanks_pixel.py",
+  "card": "ground/BUSINESS_PACKS.md"
+}
