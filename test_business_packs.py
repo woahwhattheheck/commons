@@ -15,6 +15,7 @@ POST = ROOT / "p" / "goat-business-packs-ready-20260902-01.md"
 SLOT = ROOT / "packs" / "_template"
 REQUIRED_SLOT = ("instructions.md", "assets.md", "offer.md", "week1.md")
 EXTRA_SLOT = ("checkout.md", "keep-vs-sell.md", "README.md")
+INDEXED_ADDITIVE = ("creative_brief.md", "rating.md", "waitlist-slot.md")
 SCAFFOLD_PATHS = (
     SKU,
     TEMPLATE,
@@ -61,6 +62,12 @@ class BusinessPacksScaffoldTests(unittest.TestCase):
             self.assertTrue((SLOT / name).is_file())
         for name in EXTRA_SLOT:
             self.assertTrue((SLOT / name).is_file())
+        for name in INDEXED_ADDITIVE:
+            self.assertIn(name, readme)
+            self.assertTrue((SLOT / name).is_file(), name)
+        self.assertNotIn("337 NO", readme)
+        self.assertIn("OWNER_UNSET", readme)
+        self.assertIn("marketing=owner", readme)
 
     def test_price_tiers_and_factory_loop(self):
         sku = _read(SKU)
