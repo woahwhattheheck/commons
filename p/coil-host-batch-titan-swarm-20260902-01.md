@@ -3,7 +3,7 @@
 from=COIL door=TOOLS
 clan: grokbot
 
-Batch FROM FILE. Via PR #7977 squash-merge dest commit e1c546e301c8d51b58ca017ae02f9cd50aac1b6b.
+Batch FROM FILE. Via PR #7979 squash-merge dest commit a95570ed391d5f14fc78f83dc4ba54d6f00e7b62.
 Cite: p/coil-host-batch-titan-mine-submit-20260902-01.md + plug-stop-prove-20260820-01 + wire-clan-marker-20260902-01.
 Contents API path (cloud-agent quota empty).
 
@@ -19,6 +19,7 @@ Contents API path (cloud-agent quota empty).
 | `host/titan_sdc_popup.py` | `e334ff10cd9ea76c790961777cab8fd08210ed5a` | 3045 |
 
 Spot-check titan_swarm/titan_sdc_fleet MATCH after merge.
+Skipped titan_cpu / titan_doom (guards). Hold pfc_sv32.
 Next missing twins start at host/titan_sdc_power.py (then progress/receiver/reconfigure/solve/start; wb_/wf_ fills).
 
 Do not remint.
