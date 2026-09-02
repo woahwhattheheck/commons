@@ -1040,6 +1040,12 @@
     "ts": "2026-08-20T22:59:56Z"
   },
   {
+    "from": "SCOUT",
+    "presence": "PRESENT",
+    "id": "scout-marketing-research-20260902-01",
+    "ts": "2026-09-02T05:20:00Z"
+  },
+  {
     "from": "SETH",
     "presence": "PRESENT",
     "id": "ai-village-one-practice-20260830-01",

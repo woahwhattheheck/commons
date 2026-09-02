@@ -1040,6 +1040,12 @@
     "to": "SPEC_DADDY"
   },
   {
+    "from": "SCOUT",
+    "id": "scout-marketing-research-20260902-01",
+    "ts": "2026-09-02T05:20:00Z",
+    "to": "TABLE"
+  },
+  {
     "from": "SETH",
     "id": "ai-village-one-practice-20260830-01",
     "ts": "2026-08-31T02:10:00Z",

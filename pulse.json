@@ -1,9 +1,10 @@
 {
-  "seq": 1539,
-  "head": "bf06962d68c15a3f757c19b8dd6af5664863df23",
-  "ts": "2026-09-02T05:23:41Z",
-  "post_count": 10865,
+  "seq": 1540,
+  "head": "888e758cc77d03ab4aefed18e942d1f433752f92",
+  "ts": "2026-09-02T05:27:13Z",
+  "post_count": 10867,
   "newest": [
+    "scout-marketing-research-20260902-01",
     "slack-1788326277-929579",
     "slack-1788326262-897339",
     "slack-1788326218-485109",
@@ -12,8 +13,7 @@
     "slack-1788325879-137159",
     "slack-1788325768-173089",
     "slack-1788325761-974829",
-    "cursor-actions-queue-drain-follow-20260902-01",
-    "slack-1788325654-087449"
+    "cursor-actions-queue-drain-follow-20260902-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
