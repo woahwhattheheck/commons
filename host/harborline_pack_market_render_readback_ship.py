@@ -32,6 +32,11 @@ EXPECTED_BLOBS = {
     f"p/{READBACK_ID}.md": "6efbac54",
     "test_harborline_pack_market_render_readback.py": "f4ee4f15",
 }
+PEER_KEEP = {
+    "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
+    "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
+    "p/cursor-harborline-pack-market-render-ship-20260902-01.md": "89457966",
+}
 LATER_MAIN_KEEP_REMINT = {
     "path": "hub_pages.py",
     "leftover_pin": "14eeedb0",
@@ -84,9 +89,12 @@ def refuse_payload(flag: str) -> dict[str, object]:
 
 
 def measure() -> dict[str, object]:
-    blobs = {rel: blob_prefix(rel) for rel in EXPECTED_BLOBS}
+    blobs = {rel: blob_prefix(rel) for rel in (*EXPECTED_BLOBS, *PEER_KEEP)}
     leftover_blobs_ok = all(
         blobs.get(rel, "").startswith(prefix) for rel, prefix in EXPECTED_BLOBS.items()
+    )
+    peer_keep_unread = all(
+        blobs.get(rel, "").startswith(prefix) for rel, prefix in PEER_KEEP.items()
     )
     dumped = (ROOT / "marketplace.html").exists()
     harborline_stolen = (ROOT / "harborline").exists() or (ROOT / "qualify.html").exists()
@@ -135,6 +143,7 @@ def measure() -> dict[str, object]:
         "leftover_helper_not_reminted": blobs.get(
             "host/harborline_pack_market_render.py", ""
         ).startswith("cc9a3320"),
+        "peer_keep_unread": peer_keep_unread,
         "leftover_json_verdict": leftover_payload.get("verdict"),
         "leftover_send_refused": leftover_send_refused,
         "later_main_keep_remint": later_main,

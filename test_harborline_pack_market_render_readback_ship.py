@@ -81,6 +81,10 @@ class HarborlinePackMarketRenderReadbackShipTest(unittest.TestCase):
         self.assertEqual(send_payload["sent"], 0)
         self.assertTrue(self.result["leftover_send_refused"])
         self.assertEqual(self.result["leftover_json_verdict"], "RENDER")
+        self.assertTrue(self.result["peer_keep_unread"])
+        self.assertTrue(ship.blob_prefix("p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md").startswith("f965e00f"))
+        self.assertTrue(ship.blob_prefix("p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md").startswith("9d221c75"))
+        self.assertTrue(ship.blob_prefix("p/cursor-harborline-pack-market-render-ship-20260902-01.md").startswith("89457966"))
 
     def test_later_main_keep_remint_unread_not_leftover_chase(self) -> None:
         remint = self.result["later_main_keep_remint"]
@@ -123,6 +127,10 @@ class HarborlinePackMarketRenderReadbackShipTest(unittest.TestCase):
         self.assertIn("14eeedb0", self.ship)
         self.assertIn("5ac12648", self.ship)
         self.assertIn("remint leftover to chase", self.ship)
+        self.assertIn("f965e00f", self.ship)
+        self.assertIn("9d221c75", self.ship)
+        self.assertIn("89457966", self.ship)
+        self.assertIn("KEEP unread", self.ship)
         self.assertIn("NOT_MINTED", self.ship)
         self.assertNotEqual(self.ship, self.readback)
         self.assertNotEqual(self.ship, self.leftover)

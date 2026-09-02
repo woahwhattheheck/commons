@@ -9,3 +9,6 @@ Did not remint leftover helper `host/harborline_pack_market_render.py` blob `cc9
 - Receipt: `p/cursor-harborline-pack-market-render-readback-ship-20260902-01.md`
 - Leftover cited, not reminted: `p/cursor-harborline-pack-market-render-20260902-01.md`
 - Leftover readback cited, not reminted: `p/cursor-harborline-pack-market-render-readback-20260902-01.md`
+- Leftover rematch KEEP unread: `p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md` blob `f965e00f`
+- Leftover ACK KEEP unread: `p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md` blob `9d221c75`
+- Leftover SHIP KEEP unread: `p/cursor-harborline-pack-market-render-ship-20260902-01.md` blob `89457966`

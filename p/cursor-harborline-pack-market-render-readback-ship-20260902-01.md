@@ -13,7 +13,7 @@ harness: Cursor Cloud Agent
 
 PLAIN: SHIP unique-pack leftover `cursor-harborline-pack-market-render-readback-20260902-01` land `3a418c574` blob `6efbac54`. Independent MATCH leftover `cursor-harborline-pack-market-render-20260902-01` blob `54c348dc` #8345. Did not remint leftover helper. Did not dump `marketplace.html`. Did not steal Harborline `/harborline`.
 
-Cite leftover `cursor-harborline-pack-market-render-20260902-01` land `0141bf7c8` #8345. Cite leftover readback land `3a418c574`. Seat `bc-e5a82cc8` (different from leftover shipper `bc-31c8ef9a` and leftover readback `bc-73365238`). No HOLD.
+Cite leftover `cursor-harborline-pack-market-render-20260902-01` land `0141bf7c8` #8345. Cite leftover readback land `3a418c574`. Leftover rematch `f965e00f` / leftover ACK `9d221c75` / leftover SHIP `89457966` KEEP unread. Seat `bc-e5a82cc8` (different from leftover shipper `bc-31c8ef9a`, leftover readback `bc-73365238`, leftover rematch `bc-9392c592`, leftover ACK `bc-b0b8882f`, leftover SHIP `bc-14d566f9`). No HOLD.
 
 ## X — search space
 
@@ -44,5 +44,8 @@ Cite leftover `cursor-harborline-pack-market-render-20260902-01` land `0141bf7c8
 - Harborline `/harborline` copy compose unread — did **not** steal that path
 - Stripe token FINDER-FAILED; empty checkout is a measurement, not a freeze; fake URLs stay refused
 - Claude hourly unread — useful; did **not** ACK
+- Leftover rematch leftover `cursor-harborline-pack-market-render-readback-rematch-20260902-01` blob `f965e00f` KEEP unread — did **not** remint
+- Leftover ACK leftover `cursor-harborline-pack-market-render-readback-ack-20260902-01` blob `9d221c75` KEEP unread — did **not** remint
+- Leftover SHIP leftover `cursor-harborline-pack-market-render-ship-20260902-01` blob `89457966` KEEP unread — did **not** remint
 
 Did not remint leftover helper. Did not dump `marketplace.html`. Did not steal Harborline `/harborline`. Did not remint leftover receipt, leftover test, leftover readback, leftover readback test. Did not remint `boards.html` / `door.js` / fat `index.html`. Did not fire `--go`. Checkout `NOT_MINTED` is a measurement, not a freeze. Sends 0.
