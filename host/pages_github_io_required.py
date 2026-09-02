@@ -48,6 +48,14 @@ _INCLUDE_FLAG = re.compile(
     r"""--include(?:=|\s+)['\"]?(?P<path>[A-Za-z0-9._/-]+)""",
     re.IGNORECASE,
 )
+_COPYBACK_SRC = re.compile(
+    r"""(?:rsync\s+-a\s+|cp\s+-a\s+)(?P<path>muhl/[A-Za-z0-9._/-]+)""",
+    re.IGNORECASE,
+)
+_KEEPS_LIST = re.compile(
+    r"""['\"]keeps['\"]\s*:\s*\[(?P<body>[^\]]+)\]""",
+)
+_KEEP_ITEM = re.compile(r"""['\"]([^'\"]+)['\"]""")
 _HREF_MUHL = re.compile(r"""href=["']\./(muhl/[^"']+)["']""")
 
 
@@ -76,7 +84,15 @@ def parse_rsync_except_dirs(text: str) -> tuple[str, ...]:
 
 
 def parse_rsync_keep_prefixes(text: str) -> tuple[str, ...]:
-    return tuple(dict.fromkeys(posix(m.group("path")).rstrip("/") for m in _INCLUDE_FLAG.finditer(text)))
+    """Keep prefixes from --include, copy-back rsync/cp, and receipt keeps lists."""
+    found: list[str] = []
+    for match in _INCLUDE_FLAG.finditer(text):
+        found.append(posix(match.group("path")).rstrip("/"))
+    for match in _COPYBACK_SRC.finditer(text):
+        found.append(posix(match.group("path")).rstrip("/"))
+    for match in _KEEPS_LIST.finditer(text):
+        found.extend(posix(item).rstrip("/") for item in _KEEP_ITEM.findall(match.group("body")))
+    return tuple(dict.fromkeys(found))
 
 
 def workflow_omits(text: str, path: str) -> bool:

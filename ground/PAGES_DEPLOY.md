@@ -28,8 +28,9 @@ and publishes it through `actions/deploy-pages`. Repo Pages source is
 Allowlist: the whole tree **except** bulk `muhl/` (keep `muhl/docs/` and
 `muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno`), `excerpts/`, `conflicts/`,
 `.github/`. **`chunks/` MUST stay** — `board.js` fetches `chunks/index.json`,
-`chunks/{day}.json`, and `chunks/{day}/pNN.json`. Roughly 235 MB of bulk
-`muhl/` drops; board + free-sample doors remain.
+`chunks/{day}.json`, and `chunks/{day}/pNN.json`. `pay.html` stays (cash
+door; not on the except list). Roughly 235 MB of bulk `muhl/` drops; board,
+free-sample, and pay doors remain.
 
 Receipt: every deploy writes `pages-deploy.json` at the site root with the
 built SHA, run id, attempt, keeps, and the exclusion list, and prints

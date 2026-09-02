@@ -89,6 +89,18 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertFalse(required.workflow_omits(yml, required.SEED0))
         self.assertFalse(required.workflow_omits(yml, required.EXPANDING_SEED))
 
+    def test_copyback_rsync_and_cp_count_as_keep_prefixes(self) -> None:
+        yml = """
+        rsync -a --exclude muhl --exclude excerpts --exclude conflicts --exclude .github ./ _site/
+        rsync -a muhl/docs/ _site/muhl/docs/
+        cp -a muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno \\
+          _site/muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno
+        'keeps': ['chunks/', 'muhl/docs/', 'muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno']
+        """
+        self.assertFalse(required.workflow_omits(yml, required.CHUNKS_INDEX))
+        self.assertFalse(required.workflow_omits(yml, required.SEED0))
+        self.assertFalse(required.workflow_omits(yml, required.EXPANDING_SEED))
+
     def test_publish_all_workflow_omits_nothing(self) -> None:
         self.assertFalse(required.workflow_omits("echo publish whole tree", required.SEED0))
         self.assertFalse(required.workflow_omits("echo publish whole tree", required.CHUNKS_INDEX))
@@ -125,11 +137,14 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertFalse(required.covered_by_keep(required.SEED0, ("muhl/docs/",)))
         self.assertFalse(required.covered_by_keep("excerpts/x.json", ("chunks/", "muhl/docs/")))
 
-    def test_deploy_doc_absent_is_clean(self) -> None:
+    def test_deploy_doc_absent_or_folded_keep_is_clean(self) -> None:
         self.assertFalse(required.live_deploy_doc_excludes_chunks(ROOT))
         payload = required.report(ROOT)
-        self.assertFalse(payload["deploy_doc_present"])
         self.assertFalse(payload["deploy_doc_excludes_chunks"])
+        if payload["deploy_doc_present"]:
+            text = (ROOT / "ground" / "PAGES_DEPLOY.md").read_text(encoding="utf-8")
+            self.assertFalse(required.deploy_doc_excludes_chunks(text))
+            self.assertRegex(text, r"`chunks/` MUST stay|chunks/ MUST stay")
 
     def test_deploy_doc_except_list_with_chunks_is_flagged(self) -> None:
         bad = (
@@ -143,8 +158,8 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         self.assertTrue(required.deploy_doc_excludes_chunks(bad))
         self.assertFalse(required.deploy_doc_excludes_chunks(good))
 
-    def test_fable_pages_deploy_pr_doc_still_excludes_chunks(self) -> None:
-        """PR tip may move; this pins the measured bad prose if that blob is reachable."""
+    def test_fable_pages_deploy_pr_doc_keeps_chunks_after_fold(self) -> None:
+        """Keep-path fold landed on the Pages PR tip; pin the folded prose."""
         import subprocess
 
         tip = "origin/claude/pages-workflow-deploy-20260902:ground/PAGES_DEPLOY.md"
@@ -152,9 +167,9 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
             text = subprocess.check_output(["git", "show", tip], text=True)
         except subprocess.CalledProcessError:
             self.skipTest("Fable/GOAT Pages deploy branch tip not fetched")
-        self.assertTrue(
+        self.assertFalse(
             required.deploy_doc_excludes_chunks(text),
-            "PAGES_DEPLOY.md on Pages PR still lists chunks/ under except; fold keep-paths before flip",
+            "PAGES_DEPLOY.md on Pages PR must keep chunks/ after keep-path fold",
         )
 
     def test_helper_source_does_not_add_admission_locks(self) -> None:

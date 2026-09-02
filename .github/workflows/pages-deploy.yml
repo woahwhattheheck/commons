@@ -50,7 +50,7 @@ jobs:
             'run_id': run_id,
             'attempt': attempt,
             'excludes': ['.git/', '.github/', 'excerpts/', 'conflicts/', 'muhl/ (except muhl/docs/ and SEED0.mno)'],
-            'keeps': ['chunks/', 'muhl/docs/', 'muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno'],
+            'keeps': ['chunks/', 'muhl/docs/', 'muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno', 'pay.html'],
           }
           with open('_site/pages-deploy.json', 'w', encoding='utf-8') as f:
             json.dump(receipt, f, indent=2)
