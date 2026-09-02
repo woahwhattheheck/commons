@@ -115,7 +115,7 @@ class PackHarborlineRatingTest(unittest.TestCase):
         )
         self.assertEqual(
             result["blobs"]["host/business_pack_harborline_tally_map.py"],
-            "c72d50d0",
+            "2fbc987b",
         )
         self.assertEqual(
             result["blobs"][

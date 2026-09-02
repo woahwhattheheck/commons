@@ -83,7 +83,7 @@ class BusinessPackHarborlineTallyMapHelperTest(unittest.TestCase):
         self.assertIs(self.block["did_not_overwrite_harborline_tally_pack_map"], True)
         self.assertTrue(self.result["blobs_match"])
         self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
-        self.assertEqual(self.result["blobs"]["host/harborline_tally_pack_map.py"], "a889db44")
+        self.assertEqual(self.result["blobs"]["host/harborline_tally_pack_map.py"], "a7a49b77")
         self.assertEqual(
             self.result["blobs"]["p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md"],
             "e38f1251",

@@ -35,8 +35,8 @@ PEER_HELPER = "host/business_pack_harborline_tally_map_pointer.py"
 # Live MATCH for files this leftover still owns. TALLY/LEAD instance blobs
 # are observed-at-land only (sold-once HELD 1788331796.003639).
 EXPECTED_BLOBS = {
-    "host/harborline_tally_pack_map.py": "a889db44",
-    "test_harborline_tally_pack_map.py": "1cca2d9b",
+    "host/harborline_tally_pack_map.py": "a7a49b77",
+    "test_harborline_tally_pack_map.py": "68b4fce1",
     "p/cursor-harborline-tally-pack-map-20260902-01.md": "d3e7312c",
     "p/cursor-business-pack-harborline-tally-map-pointer-20260902-01.md": "e38f1251",
     "p/cursor-business-pack-harborline-tally-map-pointer-helper-20260902-01.md": "6ec23344",

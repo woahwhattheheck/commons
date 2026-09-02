@@ -38,7 +38,7 @@ SIDECAR_LEFTOVER = "host/business_pack_harborline_tally_map.py"
 KEEP_MAIN_PR = 7754
 ORIGINAL_SIDEWALK_LOTRIBBON_RECEIPT = "2c584983"
 EXPECTED_BLOBS = {
-    "host/harborline_tally_pack_map.py": "a889db44",
+    "host/harborline_tally_pack_map.py": "a7a49b77",
     "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
     "packs/waitlist.html": "bdcaa7ea",
     "p/cursor-business-pack-harborline-map-helper-pointer-20260902-01.md": "269e874a",

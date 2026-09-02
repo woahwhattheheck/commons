@@ -73,7 +73,7 @@ class BusinessPackHarborlineTallyMapPointerTest(unittest.TestCase):
         self.assertTrue(self.result["blobs_match"])
         self.assertIs(self.result["live_instance_blobs_not_pinned"], True)
         self.assertTrue(
-            self.result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a889db44")
+            self.result["blobs"]["host/harborline_tally_pack_map.py"].startswith("a7a49b77")
         )
         self.assertTrue(
             self.result["blobs"]["packs/desk-website-service-20260902-01/door.html"].startswith(
