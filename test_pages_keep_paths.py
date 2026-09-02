@@ -15,6 +15,7 @@ BOARD_JS = ROOT / "board.js"
 FREE_SAMPLE = ROOT / "muhlnickel-free-sample.html"
 SALES_PACK = ROOT / "revenue" / "muhlnickel_free_sample" / "sales_pack.json"
 PAY = ROOT / "pay.html"
+ACTION = ROOT / "action.html"
 COMMERCE = ROOT / "commerce.html"
 
 
@@ -47,6 +48,8 @@ class PagesKeepPathsTest(unittest.TestCase):
                 "muhlnickel-free-sample.html",
                 "revenue/muhlnickel_free_sample/sales_pack.json",
                 "pay.html",
+                "action.html",
+                "commerce.html",
             ],
         )
         self.assertTrue((ROOT / "chunks").is_dir())
@@ -56,7 +59,15 @@ class PagesKeepPathsTest(unittest.TestCase):
         self.assertTrue(FREE_SAMPLE.is_file())
         self.assertTrue(SALES_PACK.is_file())
         self.assertTrue(PAY.is_file())
-        self.assertIn("pay.html", COMMERCE.read_text(encoding="utf-8"))
+        self.assertTrue(ACTION.is_file())
+        self.assertTrue(COMMERCE.is_file())
+        commerce = COMMERCE.read_text(encoding="utf-8")
+        action = ACTION.read_text(encoding="utf-8")
+        self.assertIn("pay.html", commerce)
+        self.assertIn("action.html", commerce)
+        self.assertIn("Action Pad", action)
+        self.assertIn("Possessing the link is sufficient authorization", action)
+        self.assertIn("action.html", self.mp["evidence"]["open_door"])
         for path in required:
             self.assertIn(path, self.card)
 

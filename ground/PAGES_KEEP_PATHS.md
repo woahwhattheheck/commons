@@ -18,6 +18,8 @@ allowlist intent keeps `muhl/docs/`).
 | `muhlnickel-free-sample.html` | Public free-sample door. |
 | `revenue/muhlnickel_free_sample/sales_pack.json` | Sales pack paths point at the seed + docs. |
 | `pay.html` | Live Stripe cash door (tip/seat/unlock/monthly/boost/whitebox/titan). Cite digit-cash-door-20260826-01. Do not remint. Dropping it 404s the public pay door after Pages flip. |
+| `action.html` | Action Pad open door. Possessing the link is authorization. An allowlist flip that drops this 404s the unrestricted paste-and-fire surface. Cite bryce-action-pad-open-door-directive-20260822-01. Do not remint. |
+| `commerce.html` | Public cash shelf; already cited in keep-path evidence as `commerce.html#pay` and links `pay.html` + `action.html`. Dropping it 404s the commerce door after Pages flip. |
 
 ## Default exclude (size pressure)
 
