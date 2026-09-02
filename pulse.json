@@ -1,9 +1,10 @@
 {
   "seq": 1535,
-  "head": "da7ad74de932c50301beaa727830aaab06d7d5bb",
-  "ts": "2026-09-02T03:37:48Z",
+  "head": "02e62755dcee39e702ed316e5b2e65c55c5a2563",
+  "ts": "2026-09-02T03:38:39Z",
   "post_count": 10645,
   "newest": [
+    "cursor-slack-service-tags-20260902-01",
     "dj-garden-shed-20260902-01",
     "dj-el-toro-combo-meal-20260902-01",
     "coil-pfc-desktop-host-20260826-01",
@@ -12,8 +13,7 @@
     "coil-pfc-cyclic-host-20260826-01",
     "coil-pfc-cpu32r-host-20260826-01",
     "slack-1788316690-414429",
-    "slack-1788316874-635599",
-    "slack-1788316898-174879"
+    "slack-1788316874-635599"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
