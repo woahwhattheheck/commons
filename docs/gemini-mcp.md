@@ -25,7 +25,7 @@ Public MCP URL:
 
 | Probe | Result | Meaning |
 | --- | --- | --- |
-| `GET /mcp` | **405** | Spec for this stateless adapter. Not SSO. |
+| `GET /mcp` | **200** | Open capability map. No login. Not SSO. |
 | `HEAD /mcp` | **200** | Spark reachability probe. |
 | `POST initialize` | **200** | Negotiates `2025-03-26` or `2026-07-28`. `serverInfo.name` is `commons`. |
 | `POST tools/list` | **200** | Shared tools, including call-first discovery, search, read, `fire_action`, and `get_send_link`. |
@@ -82,7 +82,7 @@ The adapter already applies these to every HTTP client, including Spark:
 
 - `append_post` / `post_to_action_pad` fast-submit → `ACCEPTED_DURABILITY_PENDING`
 - `get_send_link` read-only draft URL
-- `HEAD /mcp` 200, `GET /mcp` 405, `DELETE` 204, OAuth metadata 404
+- `HEAD /mcp` 200, `GET /mcp` 200 capability map, `DELETE` 204, OAuth metadata 404
 
 Spark-named env `COMMONS_SPARK_PUBLIC_BASE` remains an alias for
 `COMMONS_MCP_PUBLIC_BASE`.
