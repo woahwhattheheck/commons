@@ -682,6 +682,20 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertIs(block["sold_once_badge_live_instance_blobs_not_pinned"], True)
         self.assertIs(block["did_not_remint_sold_once_badge_pointer"], True)
         self.assertIs(block["did_not_write_harborline_leftover_pin_helpers"], True)
+        self.assertEqual(
+            block["harborline_map_pin_lift"],
+            "cursor-pack-harborline-map-pin-lift-20260902-01",
+        )
+        self.assertEqual(block["harborline_map_pin_lift_blob"], "8fe8a002")
+        self.assertEqual(block["harborline_map_pin_lift_squash"], "b9e6f54c")
+        self.assertEqual(block["harborline_map_pin_lift_claimed_by"], "bc-31c8ef9a")
+        self.assertEqual(
+            block["harborline_map_pin_lift_pointer"],
+            "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_write_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_remint_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_remint_sold_once_badge_pin_lift"], True)
         self.assertEqual(block["sold_once_claimed_by"], "TALLY")
         self.assertEqual(
             block["sold_once_scout_demand_id"],
@@ -1015,6 +1029,61 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotIn("337 NO", json.dumps(block))
         self.assertNotIn("337 NO", self.card)
         self.assertNotIn("337 NO", self.door)
+
+    def test_harborline_map_pin_lift_pointer_does_not_steal_leftover(self) -> None:
+        block = self.law["instances"]
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(
+            block["harborline_map_pin_lift"],
+            "cursor-pack-harborline-map-pin-lift-20260902-01",
+        )
+        self.assertEqual(block["harborline_map_pin_lift_blob"], "8fe8a002")
+        self.assertEqual(block["harborline_map_pin_lift_squash"], "b9e6f54c")
+        self.assertEqual(block["harborline_map_pin_lift_claimed_by"], "bc-31c8ef9a")
+        self.assertEqual(
+            block["harborline_map_pin_lift_pointer"],
+            "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01",
+        )
+        self.assertNotEqual(block["id"], block["harborline_map_pin_lift_pointer"])
+        self.assertNotEqual(
+            block["harborline_map_pin_lift"],
+            block["harborline_map_pin_lift_pointer"],
+        )
+        self.assertIs(block["did_not_write_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_remint_harborline_map_pin_lift"], True)
+        self.assertIs(block["did_not_write_harborline_leftover_pin_helpers"], True)
+        self.assertIs(block["did_not_remint_sold_once_badge_pin_lift"], True)
+        leftover = (
+            ROOT / "p" / "cursor-pack-harborline-map-pin-lift-20260902-01.md"
+        ).read_bytes()
+        leftover_blob = hashlib.sha1(
+            b"blob " + str(len(leftover)).encode("ascii") + b"\0" + leftover
+        ).hexdigest()[:8]
+        self.assertEqual(leftover_blob, "8fe8a002")
+        sold_once = (
+            ROOT / "p" / "cursor-business-pack-sold-once-badge-pin-lift-20260902-01.md"
+        ).read_bytes()
+        sold_once_blob = hashlib.sha1(
+            b"blob " + str(len(sold_once)).encode("ascii") + b"\0" + sold_once
+        ).hexdigest()[:8]
+        self.assertEqual(sold_once_blob, "da2d1ef5")
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertIn("8fe8a002", self.door)
+        self.assertIn("8fe8a002", self.card)
+        self.assertIn("b9e6f54c", self.door)
+        self.assertIn("cursor-pack-harborline-map-pin-lift-20260902-01", self.card)
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("Instance 1 of 1", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertEqual(block["checkout"], "NOT_MINTED")
+        self.assertEqual(block["sold_once_claimed_by"], "TALLY")
 
 
 if __name__ == "__main__":

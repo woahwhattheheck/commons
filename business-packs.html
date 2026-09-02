@@ -32,6 +32,7 @@ pre{background:#f4f4f4;padding:.75rem;overflow:auto}
 <p>TALLY filled Sidewalk Signal <a href="./packs/sidewalk-signal-web-desk-20260902-01/creative_brief.md">creative_brief.md</a> blob <code>f38bacb5</code> (receipt <code>tally-sidewalk-creative-brief-20260902-01</code>). This unique-pack door only points. It does not write that instance file or remint SCOUT <code>scout-demand-instance-creative-brief-20260902-01</code>. Checkout <code>NOT_MINTED</code>.</p>
 <p>TALLY filled Sidewalk Signal <a href="./packs/sidewalk-signal-web-desk-20260902-01/gems.md">gems.md</a> blob <code>f21a6d44</code> (receipt <code>tally-sidewalk-gems-note-20260902-01</code>). Keep-vs-sell stays UNDECIDED (Bryce). This unique-pack door only points. It does not write that instance file, leftover gems-in-house law, or KEEP/SELL rows. Checkout <code>NOT_MINTED</code>.</p>
 <p>Leftover sold-once badge pointer helper <code>host/business_pack_sold_once_badge_pointer.py</code> no longer pins live Sidewalk door / TALLY helper blobs. Land-time observations stay <code>638e60b4</code> / <code>a550ae1b</code>. Pointer id <code>cursor-business-pack-sold-once-badge-pointer-20260902-01</code> is not reminted. Harborline leftover map helpers stay <code>bc-31c8ef9a</code>. Checkout <code>NOT_MINTED</code>.</p>
+<p>Unique-pack pointer only at leftover Harborline pin-lift <code>cursor-pack-harborline-map-pin-lift-20260902-01</code> blob <code>8fe8a002</code> / squash <code>b9e6f54c</code> (seat <code>bc-31c8ef9a</code>). This door does not write Harborline leftover helpers or remint that leftover id. Sold-once badge pin-lift <code>f080fbbb2</code> is not reminted. TALLY sold-once stays TALLY. Checkout <code>NOT_MINTED</code>.</p>
 <p>Paste a JSON list of sales. Shared <code>template_id</code> / <code>vertical</code> is ignored for clone detection. Classification runs in this browser. It does not charge anyone and does not open a checkout.</p>
 <textarea id="sample" rows="12" style="width:100%">[
   {"sale_id":"sale-a","template_id":"yard-card","vertical":"print","assets_sha256":"aaa","brand":"acme-lawn","checkout":"owner-ck-a","instructions":"acme-start","ops_sha256":"ops-1"},
@@ -110,7 +111,9 @@ fetch("./ground/BUSINESS_PACKS.json").then(r => r.json()).then(law => {
     sidewalk_gems_note_pointer: (law.instances || {}).sidewalk_gems_note_pointer,
     sidewalk_gems_note_blob: (law.instances || {}).sidewalk_gems_note_blob,
     sold_once_badge_pin_lift: (law.instances || {}).sold_once_badge_pin_lift,
-    sold_once_badge_live_instance_blobs_not_pinned: (law.instances || {}).sold_once_badge_live_instance_blobs_not_pinned
+    sold_once_badge_live_instance_blobs_not_pinned: (law.instances || {}).sold_once_badge_live_instance_blobs_not_pinned,
+    harborline_map_pin_lift_pointer: (law.instances || {}).harborline_map_pin_lift_pointer,
+    harborline_map_pin_lift_blob: (law.instances || {}).harborline_map_pin_lift_blob
   }, null, 2);
   document.getElementById("go").onclick = async () => {
     let sales = [];
