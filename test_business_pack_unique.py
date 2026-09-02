@@ -414,6 +414,73 @@ class BusinessPackUniqueTest(unittest.TestCase):
             (ROOT / "p" / "cursor-business-pack-waitlist-pointer-20260902-01.md").is_file()
         )
         self.assertNotEqual(block["id"], block["scout_demand_id"])
+        self.assertEqual(
+            block["pointer_helper"],
+            "host/business_pack_waitlist_pointer.py",
+        )
+        self.assertEqual(
+            block["pointer_helper_receipt"],
+            "cursor-business-pack-waitlist-pointer-helper-20260902-01",
+        )
+        self.assertEqual(block["pointer_helper_claimed_by"], "bc-078225d9")
+        self.assertIs(block["did_not_remint_pointer_helper"], True)
+        self.assertIs(block["did_not_write_pointer_helper_paths"], True)
+        self.assertEqual(block["files_owner"], "bc-31c8ef9a")
+        self.assertEqual(block["excluded_state_shows"], "waitlist_not_checkout")
+        self.assertTrue(
+            (ROOT / "host" / "business_pack_waitlist_pointer.py").is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-waitlist-pointer-helper-20260902-01.md"
+            ).is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-waitlist-helper-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertNotEqual(
+            block["id"],
+            block["pointer_helper_receipt"],
+        )
+
+    def test_instance_catalog_points_without_stealing_files(self) -> None:
+        block = self.law["instances"]
+        self.assertEqual(block["id"], "cursor-business-pack-instance-catalog-20260902-01")
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(block["keep_sell_ledger"], "not_this_seat")
+        self.assertIs(block["did_not_write_keep_sell_ledger"], True)
+        self.assertIs(block["did_not_steal_instance_files"], True)
+        self.assertIs(block["did_not_steal_desk_helper"], True)
+        self.assertIs(block["did_not_wrap_harborline"], True)
+        self.assertIs(block["did_not_write_plant_instance"], True)
+        self.assertEqual(block["checkout"], "NOT_MINTED")
+        doors = [row["door"] for row in block["landed"]]
+        self.assertEqual(
+            doors,
+            [
+                "packs/lotribbon-greetings-20260902-01/index.html",
+                "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+                "packs/desk-website-service-20260902-01/door.html",
+            ],
+        )
+        for rel in doors:
+            self.assertTrue((ROOT / rel).is_file(), rel)
+            self.assertIn(rel.replace("packs/", "./packs/"), self.door)
+        self.assertIn("LotRibbon Greetings", self.door)
+        self.assertIn("Sidewalk Signal", self.door)
+        self.assertIn("Harborline Local Sites", self.door)
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertTrue(
+            (ROOT / "p" / "cursor-business-pack-instance-catalog-20260902-01.md").is_file()
+        )
 
 
 if __name__ == "__main__":
