@@ -1,0 +1,53 @@
+{
+  "schema": "commons-what-a-pack-is/v1",
+  "id": "cursor-what-a-pack-is-20260902-01",
+  "kind": "WHAT_A_PACK_IS",
+  "item": 12,
+  "remainder": "what-a-pack-is",
+  "gate": false,
+  "login": false,
+  "commons_is_store": false,
+  "pack_is_ready_to_run_business": true,
+  "pack_is_instructions": false,
+  "public_descriptions_and_methods": true,
+  "withheld": "build_pack_access",
+  "never_contains_go_buy_this": true,
+  "extra_buy": "tjlabs_supporting_product_or_service",
+  "quality_dictates_tier": true,
+  "ride_pack_quality": true,
+  "remint_pack_quality": false,
+  "tos": {
+    "shape": "OPEN_QUESTION",
+    "residual_pct": "FINDER-FAILED",
+    "buyout": "FINDER-FAILED",
+    "per_tier": "FINDER-FAILED",
+    "peer_opinions": false,
+    "note": "ToS residual and partial ownership are Bryce's and his lawyer's. This leftover does not write a legal memo."
+  },
+  "includes": [
+    "code",
+    "repo",
+    "accounts",
+    "paperwork_prepared_for_buyer_to_sign",
+    "everything_to_hit_the_ground_running"
+  ],
+  "example": {
+    "name": "Harborline Local Sites",
+    "price_usd": 200,
+    "sorted_by_quality": true,
+    "ready_to_run_business": true,
+    "method_pdf": false,
+    "accounts_prepared": "FINDER-FAILED",
+    "paperwork_prepared": "FINDER-FAILED"
+  },
+  "hub": {
+    "channel": "C0BU51F1PL3",
+    "approvals_ts": "1788381748.979959",
+    "owner_restatement_ts": "1788387501.942889",
+    "claim_ts": "1788387736.969339"
+  },
+  "invented_stripe_urls": false,
+  "sends": 0,
+  "cash_usd": 0,
+  "checkout": "FINDER-FAILED"
+}
