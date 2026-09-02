@@ -13,6 +13,6 @@ Every Cursor harness on this seat is already authenticated to GitHub as **woahwh
 - Classify the failure (`host/github_already_logged_in.py`): path, rate-limit, scope, or HTTPS git vs MCP. Then keep shipping unique leftover.
 - `git push` prompting for a GitHub username is that transport, not missing MCP auth. Use GitHub MCP `push_files` / `create_or_update_file`.
 - Slack CLI having no session is not GitHub. Slack CLI install is optional leftover. Keep shipping with Slack MCP + GitHub MCP.
-- `337 NO` is not a Bryce rule. Do not treat it as a stop.
+- The retired invented closer is not a Bryce rule. Do not treat it as a stop.
 
 Cursor-only. Do not put this law in `CLAUDE.md`, `AGENTS.md`, or `.claude/`.

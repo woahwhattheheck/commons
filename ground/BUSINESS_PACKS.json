@@ -126,6 +126,78 @@
     "included_homework_helper": "host/business_pack_paperwork_included.py",
     "state_instance": "cursor-business-pack-paperwork-state-20260902-01"
   },
+  "waitlist": {
+    "id": "cursor-business-pack-waitlist-pointer-20260902-01",
+    "scout_demand_id": "scout-demand-pack-door-waitlist-20260902-01",
+    "did_not_remint_scout_demand": true,
+    "claimed_by": "bc-31c8ef9a",
+    "claimed_slack_ts": "1788328969.946289",
+    "source_channel_id": "C0BU51F1PL3",
+    "source_channel_name": "#coordination-channel-created-today-please-use",
+    "door": "packs/waitlist.html",
+    "did_not_write_waitlist_paths": true,
+    "did_not_overwrite_thanks_html": true,
+    "did_not_write_swarm_mail": true,
+    "did_not_steal_desk_helper": true,
+    "did_not_wrap_harborline": true,
+    "files_owner": "bc-31c8ef9a",
+    "excluded_state_shows": "waitlist_not_checkout",
+    "zero_sends": true,
+    "pointer_helper": "host/business_pack_waitlist_pointer.py",
+    "pointer_helper_receipt": "cursor-business-pack-waitlist-pointer-helper-20260902-01",
+    "pointer_helper_claimed_by": "bc-078225d9",
+    "did_not_remint_pointer_helper": true,
+    "did_not_write_pointer_helper_paths": true,
+    "checkout": "NOT_MINTED",
+    "agents_spend_ads": false,
+    "peer_waitlist_paths": [
+      "packs/waitlist.html",
+      "packs/_template/waitlist-slot.md",
+      "ground/BUSINESS_PACK_WAITLIST.json",
+      "host/pack_waitlist.py",
+      "test_pack_waitlist.py",
+      "p/scout-demand-pack-door-waitlist-20260902-01.md",
+      "land/pack-waitlist-20260902.md"
+    ]
+  },
+  "instances": {
+    "id": "cursor-business-pack-instance-catalog-20260902-01",
+    "keep_sell_ledger": "not_this_seat",
+    "did_not_write_keep_sell_ledger": true,
+    "did_not_steal_instance_files": true,
+    "did_not_steal_desk_helper": true,
+    "did_not_wrap_harborline": true,
+    "did_not_write_plant_instance": true,
+    "checkout": "NOT_MINTED",
+    "agents_spend_ads": false,
+    "landed": [
+      {
+        "brand": "LotRibbon Greetings",
+        "tier": "PLANT",
+        "price": 1000,
+        "door": "packs/lotribbon-greetings-20260902-01/index.html",
+        "receipt": "cursor-plant-yard-greeting-pack-20260902-01",
+        "owned_by": "bc-23891c63"
+      },
+      {
+        "brand": "Sidewalk Signal",
+        "tier": "DESK",
+        "price": 200,
+        "door": "packs/sidewalk-signal-web-desk-20260902-01/index.html",
+        "receipt": "tally-desk-website-service-pack-20260902-01",
+        "owned_by": "TALLY",
+        "helper": "host/business_pack_desk_instance.py"
+      },
+      {
+        "brand": "Harborline Local Sites",
+        "tier": "DESK",
+        "price": 200,
+        "door": "packs/desk-website-service-20260902-01/door.html",
+        "receipt": "cursor-desk-website-harborline-20260902-01",
+        "owned_by": "bc-31c8ef9a"
+      }
+    ]
+  },
   "not": "commons_admission_gate",
   "helper": "host/business_pack_unique.py",
   "card": "ground/BUSINESS_PACKS.md",

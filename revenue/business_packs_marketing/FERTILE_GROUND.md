@@ -2,9 +2,22 @@
 
 Owner direction (Bryce, in-session to SCOUT, 2026-09-02 ~01:55 EDT), verbatim: *"there has to be some state with the most lax laws for marketing claims (being a small business compliance can kill) so lets side step it by finding fertile ground for each campaign."*
 
-Research, not a legal opinion. Every list below is a first cut from public sources as of this read and is marked `(secondary)` where it is not the statute or the regulator's page. **OWNER/counsel** classifies the final exclusion list before the first geo-targeted dollar.
+## 0. The launch map (read this; the rest is the footnote)
 
-## 1. The honest boundary first
+Where each tier's buyer is densest, cheapest to reach, and most likely to say yes — with the compliance-light states as a bonus filter, not the gate.
+
+| tier | buyer | launch metros / states (buyer density × channel fit) | why there |
+|---|---|---|---|
+| **$100 route (Tyler)** | 20–35, male, truck, weekends | **Phoenix, Nashville, Atlanta, Dallas–Fort Worth, Houston, Tampa, Orlando, Charlotte, Raleigh, Las Vegas, Kansas City, St. Louis, Denver, Indianapolis** | year-round or long yard seasons, single-family-lot density, young male suburban population; the hive already holds verified Indianapolis SMB leads; X and Rumble skew exactly this demographic; TikTok for the POV video |
+| **$200 desk (Lena/Dan)** | 28–45, laptop, employed | national on X/TikTok; concentrate on **mid-size metros with dense small-business bases and thin web presence**: Indianapolis, Columbus, Nashville, Kansas City, Phoenix, Charlotte, Tampa, Milwaukee, Pittsburgh | that is where the 9/1 #leads sweep found broken quote forms and "booking coming soon" pages, i.e. where this buyer's customers live; price the pack at $199 |
+| **$1,000 instance (Renee/Kevin)** | 32–52, corporate refugee, savings | **Phoenix/Scottsdale, Nashville, Denver, Las Vegas, St. Louis, Kansas City, Minneapolis, Milwaukee, Philadelphia, Pittsburgh** first; **Austin/DFW, Tampa/Orlando, Atlanta, Charlotte, Salt Lake** the moment counsel clears those states | formation-heavy, franchise-seeker-heavy metros; Codie Sanchez / BizBuySell audiences over-index here; the yard-greeting instance wants suburban birthday density (Phoenix, Nashville, Denver, KC) |
+| **$10,000 unit (Owen)** | 35–60, owner-operator | operator metros where home-service franchising is booming: **Phoenix, Nashville, Denver, Las Vegas, Kansas City, St. Louis, Minneapolis, Philadelphia**; then **Texas, Florida, Georgia, North Carolina** once cleared | franchise portals and home-service franchisors already fish these waters at $28–$100 a lead; X founder-led posts and Google Search "add a service line" reach him |
+
+Compliance-light filter in one line: **start the $1,000 and $10,000 campaigns in Arizona, Tennessee, Missouri, Colorado, Nevada, Pennsylvania, Wisconsin, Minnesota, Oregon**; add Texas, Florida, Georgia, North Carolina, Utah (a quarter of all US business formations) as soon as counsel sorts their business-opportunity statutes; consumer tiers ($20–$200) run in all fifty states. Everything below is the supporting detail and the footnote for counsel.
+
+Every list below is a first cut from public sources as of this read and is marked `(secondary)` where it is not the statute or the regulator's page.
+
+## 1. The three layers (footnote for counsel)
 
 Three layers apply to every campaign. Only the third varies by state.
 

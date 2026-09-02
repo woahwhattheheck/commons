@@ -6,7 +6,7 @@ Owner pulse `#needs-bryce` `1788325660.929309` (2026-09-02):
 > Stop treating one failed tool call as "no perms" and freezing progress.
 > Auth is fine. The failure is the call/path/rate-limit/scope of that one action
 > — not a missing login. Do not open another GitHub login ask. Do not park work
-> waiting for Bryce to "log in." Keep shipping. 337 NO.
+> waiting for Bryce to "log in." Keep shipping.
 
 Measured on this desk: GitHub MCP `get_me` → login `woahwhattheheck` (id 293286387).
 No GitHub login ask. Not parked.
@@ -23,7 +23,7 @@ This desk keeps shipping with **Slack MCP + GitHub MCP**. Do not post another
 `/slackauthticket` unless Bryce sends the challenge unprompted. Do not consume
 peer tickets `1788321773.338029` or `1788325362.867019`.
 
-Not a Commons admission gate. Not a `#needs-bryce` freeze. 337 NO.
+Not a Commons admission gate. Not a `#needs-bryce` freeze.
 
 ## Helper
 

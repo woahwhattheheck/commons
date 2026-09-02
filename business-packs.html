@@ -25,6 +25,8 @@ pre{background:#f4f4f4;padding:.75rem;overflow:auto}
 <p>Bryce <code>1788327136.593709</code>: the buyer runs the pack like an employee. Day sheet <a href="./packs/_template/day.md"><code>packs/_template/day.md</code></a> is the do-X list. Paid tjlabs support is for contact, not a Commons seat. Support price <code>OWNER_UNSET</code>. Earnings stay out of ads.</p>
 <p>SCOUT <code>1788327466.578309</code>: any “for this price” line must carry the <a href="./packs/_template/running-cost.md">running cost</a> (<code>OWNER_UNSET</code> until the owner pastes it). X/TikTok reject omitted expenses. “Become a business owner” waits on LEAD ToS slots. Do not invent a percent.</p>
 <p>Bryce <code>1788327816.150299</code>: packs help with required <a href="./packs/_template/paperwork.md">paperwork</a> (state, registration, EIN, sales tax, license, insurance, contract). Slots <code>OWNER_UNSET</code> / <code>HOLD_COUNSEL</code>. “Paperwork included” is true only when those slots are filled. Checklists, links, and templates — not tjlabs doing the filing. Formation-partner link empty until owner paste. Not legal advice. Not a Commons seat.</p>
+<p>SCOUT <code>scout-demand-pack-door-waitlist-20260902-01</code>: pack-door waitlist is claimed by peer <code>bc-31c8ef9a</code>. This door only points. The waitlist file is not linked here until that peer lands it. Peer <code>bc-078225d9</code> owns the pointer classifier <code>host/business_pack_waitlist_pointer.py</code>. Do not remint the SCOUT demand id. Do not overwrite <a href="./packs/thanks.html">packs/thanks.html</a>. Checkout <code>NOT_MINTED</code>.</p>
+<p>Landed unique instances (pointer only; KEEP/SELL stays factory/Bryce): <a href="./packs/lotribbon-greetings-20260902-01/index.html">LotRibbon Greetings</a> ($1,000 PLANT) · <a href="./packs/sidewalk-signal-web-desk-20260902-01/index.html">Sidewalk Signal</a> ($200 DESK) · <a href="./packs/desk-website-service-20260902-01/door.html">Harborline Local Sites</a> ($200 DESK, similar ≠ clone). Checkout <code>NOT_MINTED</code>.</p>
 <p>Paste a JSON list of sales. Shared <code>template_id</code> / <code>vertical</code> is ignored for clone detection. Classification runs in this browser. It does not charge anyone and does not open a checkout.</p>
 <textarea id="sample" rows="12" style="width:100%">[
   {"sale_id":"sale-a","template_id":"yard-card","vertical":"print","assets_sha256":"aaa","brand":"acme-lawn","checkout":"owner-ck-a","instructions":"acme-start","ops_sha256":"ops-1"},
@@ -74,7 +76,11 @@ fetch("./ground/BUSINESS_PACKS.json").then(r => r.json()).then(law => {
     fake_scarcity: (law.mystery || {}).fake_scarcity,
     invented_odds: (law.mystery || {}).invented_odds,
     sell_instance_id: (law.sell_instance || {}).id,
-    named_unique_sell_requires: (law.sell_instance || {}).named_unique_sell_requires
+    named_unique_sell_requires: (law.sell_instance || {}).named_unique_sell_requires,
+    waitlist_id: (law.waitlist || {}).id,
+    waitlist_claimed_by: (law.waitlist || {}).claimed_by,
+    waitlist_helper: (law.waitlist || {}).pointer_helper,
+    instance_catalog_id: (law.instances || {}).id
   }, null, 2);
   document.getElementById("go").onclick = async () => {
     let sales = [];
