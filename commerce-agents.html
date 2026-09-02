@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Claude Commerce Agents — public clone</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+<style>
+.pr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:.7rem}
+.pr-card{border:1px solid #30343b;border-radius:12px;background:#111114;padding:.85rem}
+.pr-open{border-color:#6a5428;background:#1a1208;color:#f2e6c8}
+pre.clone{background:#0b0b0e;border:1px solid #3a7a4a;border-radius:8px;padding:.8rem;overflow:auto}
+@media (max-width:640px){body{padding:1rem} h1{font-size:1.35rem}}
+</style>
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./autogtm.html">AutoGTM</a> · <a href="./pack-is-ready-to-run.html">ready-to-run pack</a> · <a href="./p/cursor-claude-commerce-agents-20260902-01.md">receipt</a></p>
+<h1>Fork the blueprint. Have an agent running in an hour.</h1>
+<p class="law">Owner 2026-09-02: BIG AND HUGE, then “We need to use that.” ClaudeDevs open-sourced Claude Commerce Agents. Public clone is the road. No login. Possessing the link is enough.</p>
+<p>This door does not copy the blueprint onto Commons. It names the public repo and keeps send at zero. Helper: <code>python3 host/commerce_agents.py --json</code>. <code>--send</code> and <code>--live</code> are refused. An Anthropic key is FINDER-FAILED, not a freeze.</p>
+<pre class="clone"><code>git clone https://github.com/anthropics/commerce-agents.git
+# pin fd4d59224 · Apache-2.0 · shopping agent + merchant agent</code></pre>
+<div class="pr-grid">
+  <section class="pr-card">
+    <h2>Shopping agent</h2>
+    <p>A business embeds it for customers: search, compare, fill the cart. Checkout hands off to the host.</p>
+  </section>
+  <section class="pr-card">
+    <h2>Merchant agent</h2>
+    <p>Staff back office: listings, inventory, pricing. Every write is staged until a person approves it.</p>
+  </section>
+  <section class="pr-card">
+    <h2>Four verticals</h2>
+    <p>Retail. Travel. Telecom. Entertainment. Same libraries. Plugin: commerce-builder.</p>
+  </section>
+  <section class="pr-card pr-open">
+    <h2>Not AutoGTM</h2>
+    <p>Explee leftover stays KEEP. This is not a marketplace dump. Commons is not the store. No invented Stripe URL.</p>
+  </section>
+</div>
+<p class="note">Did not remint AutoGTM, pack-is-ready-to-run, Harborline /market, or #7915. Empty checkout is a measurement, not a freeze. Sends 0.</p>
+</body>
+</html>
