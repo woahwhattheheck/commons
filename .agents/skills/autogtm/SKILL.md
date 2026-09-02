@@ -27,7 +27,7 @@ Bryce 2026-09-02 `1788376550.004339`: use this (Explee screenshot) or find their
 1. Name the public mechanism: paste website → ICP → people → personal email → replies/book.
 2. Name the open twin: [cmn-labs/autogtm](https://github.com/cmn-labs/autogtm) eight steps. Cite, do not copy AGPL source.
 3. Run `python3 host/autogtm_same_loop.py --json` (fixture) or `--url https://…`.
-4. Compose `host/website_people_email_book.py` and `host/smart_outreach.py`. Do not remint those ids.
+4. Compose `host/website_people_email_book.py#extract_website` for ICP/offer plus the Smart Outreach catalog. Do not remint those ids.
 5. Probe Explee `GET /public/api/v1/autogtm/projects`. 401 Missing API key is FINDER-FAILED, never a Commons lock, never silent 0. A private `EXPLEE_API_KEY` is agent-side credential work; never paste it onto Commons.
 6. Keep send/book/cash at staged zeros until an owner mailbox/calendar exists.
 
