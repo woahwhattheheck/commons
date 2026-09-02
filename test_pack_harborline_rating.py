@@ -29,7 +29,14 @@ class PackHarborlineRatingTest(unittest.TestCase):
     def test_does_not_claim_peer_or_factory_paths(self) -> None:
         self.assertIn("packs/_template/rating.md", rating.DO_NOT_OVERWRITE)
         self.assertIn("host/business_pack_rating.py", rating.DO_NOT_OVERWRITE)
+        self.assertIn("p/cursor-pack-harborline-rating-20260902-01.md", rating.DO_NOT_OVERWRITE)
+        self.assertIn("packs/desk-website-service-20260902-01/rating.md", rating.DO_NOT_OVERWRITE)
         self.assertIn("packs/desk-website-service-20260902-01/door.html", rating.DO_NOT_OVERWRITE)
+        self.assertIn(
+            "packs/desk-website-service-20260902-01/waitlist-slot.md",
+            rating.DO_NOT_OVERWRITE,
+        )
+        self.assertIn("host/pack_harborline_waitlist_slot.py", rating.DO_NOT_OVERWRITE)
         self.assertIn("host/business_pack_harborline_tally_map.py", rating.DO_NOT_OVERWRITE)
         self.assertIn(
             "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md",
@@ -39,6 +46,7 @@ class PackHarborlineRatingTest(unittest.TestCase):
         self.assertIn("packs/lotribbon-greetings-20260902-01", rating.DO_NOT_OVERWRITE)
         self.assertIn("packs/curbline-weekend-yard-help-20260902-01", rating.DO_NOT_OVERWRITE)
         self.assertIn("ground/BUSINESS_PACKS.json", rating.DO_NOT_OVERWRITE)
+        self.assertIn("packs/desk-website-service-20260902-01/manifest.json", rating.DO_NOT_OVERWRITE)
 
     def test_harborline_instance_stays_empty_owner_paste(self) -> None:
         if not rating.HARBORLINE.is_file():
@@ -70,15 +78,40 @@ class PackHarborlineRatingTest(unittest.TestCase):
         self.assertTrue(result["did_not_rewrite_goat_template"])
         self.assertTrue(result["did_not_remint_factory_slot"])
         self.assertTrue(result["did_not_overwrite_harborline_door"])
+        self.assertTrue(result["did_not_overwrite_harborline_rating"])
+        self.assertTrue(result["did_not_overwrite_harborline_waitlist_slot"])
         self.assertTrue(result["did_not_write_leftover_pin_helpers"])
         self.assertTrue(result["did_not_overwrite_pointer_receipt"])
-        self.assertTrue(result["did_not_fill_sidewalk"])
-        self.assertTrue(result["did_not_fill_lotribbon"])
+        self.assertTrue(result["did_not_write_peer_rating_slots"])
+        self.assertTrue(result["live_peer_rating_slots_not_pinned"])
+        self.assertEqual(
+            result["observed_at_land"]["packs/lotribbon-greetings-20260902-01/rating.md"],
+            "absent",
+        )
+        self.assertEqual(
+            result["observed_at_land"][
+                "packs/sidewalk-signal-web-desk-20260902-01/rating.md"
+            ],
+            "absent",
+        )
+        self.assertTrue(result["did_not_invent_harborline_manifest"])
         self.assertTrue(result["did_not_merge_7915"])
         self.assertEqual(result["blobs"]["packs/_template/rating.md"], "7d644a8b")
         self.assertEqual(
             result["blobs"]["packs/desk-website-service-20260902-01/door.html"],
             "d3d6fcc7",
+        )
+        self.assertEqual(
+            result["blobs"]["packs/desk-website-service-20260902-01/rating.md"],
+            "7fe8667a",
+        )
+        self.assertEqual(
+            result["blobs"]["p/cursor-pack-harborline-rating-20260902-01.md"],
+            "29930d8b",
+        )
+        self.assertEqual(
+            result["blobs"]["packs/desk-website-service-20260902-01/waitlist-slot.md"],
+            "ea108145",
         )
         self.assertEqual(
             result["blobs"]["host/business_pack_harborline_tally_map.py"],
@@ -93,6 +126,23 @@ class PackHarborlineRatingTest(unittest.TestCase):
         dumped = json.dumps(result)
         self.assertNotIn("337 NO", dumped)
         self.assertEqual(result["checkout"], "NOT_MINTED")
+        self.assertEqual(result["unpin_id"], "cursor-pack-harborline-rating-peer-unpin-20260902-01")
+
+    def test_peer_rating_present_does_not_fail_tree(self) -> None:
+        if not rating.TEMPLATE.is_file() or not rating.HARBORLINE.is_file():
+            self.skipTest("rating files not in this tree")
+        created = False
+        try:
+            if not rating.LOTRIBBON.is_file():
+                rating.LOTRIBBON.parent.mkdir(parents=True, exist_ok=True)
+                rating.LOTRIBBON.write_text("# peer rating probe\n", encoding="utf-8")
+                created = True
+            result = rating.classify_tree()
+            self.assertEqual(result["verdict"], "HARBORLINE_RATING_OK", msg=result)
+            self.assertTrue(result["live_peer_rating_slots_not_pinned"])
+        finally:
+            if created:
+                rating.LOTRIBBON.unlink(missing_ok=True)
 
     def test_cli_json(self) -> None:
         if not rating.HARBORLINE.is_file():
@@ -107,6 +157,9 @@ class PackHarborlineRatingTest(unittest.TestCase):
         self.assertEqual(data["verdict"], "HARBORLINE_RATING_OK")
         self.assertIs(data["gate"], False)
         self.assertEqual(data["receipt_id"], "cursor-pack-harborline-rating-20260902-01")
+        self.assertEqual(
+            data["unpin_id"], "cursor-pack-harborline-rating-peer-unpin-20260902-01"
+        )
 
 
 if __name__ == "__main__":
