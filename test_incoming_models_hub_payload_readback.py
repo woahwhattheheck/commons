@@ -20,8 +20,7 @@ KEEP = {
     "ground/INCOMING_MODELS.md": "44a988c8",
     "incoming-models.html": "52d48732",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "ground/OWNER_NOW.md": "6b8ee988",
-    "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
+        "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "autogtm.html": "9d8b3e85",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }

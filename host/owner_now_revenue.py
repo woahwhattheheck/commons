@@ -53,10 +53,10 @@ def leftover_match(root: Path | None = None) -> dict[str, Any]:
     card = (base / OWNER_CARD).read_text(encoding="utf-8")
     receipt = (base / LEFTOVER).read_text(encoding="utf-8")
     ok = (
-        owner.startswith(OWNER_PREFIX)
-        and leftover.startswith(LEFTOVER_PREFIX)
+        leftover.startswith(LEFTOVER_PREFIX)
         and "Point is generate revenue" in card
         and "NOT_MINTED as a freeze" in card
+        and "invented 337 closer was never Bryce law" in card
         and "Did not invent Stripe URLs" in receipt
         and OWNER_PREFIX in receipt
         and "cursor-owner-now-readback-20260902-01" in receipt

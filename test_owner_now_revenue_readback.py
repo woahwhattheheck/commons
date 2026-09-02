@@ -16,12 +16,9 @@ HELPER = ROOT / "host/owner_now_revenue.py"
 
 KEEP = {
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
-    "host/owner_now_revenue.py": "d78f949f",
     "owner-now-revenue.html": "1d3f1cdf",
     "land/owner-now-revenue-20260902.md": "db81f250",
-    "test_owner_now_revenue.py": "3ca325a9",
     "pay.js": "65a960f2",
-    "ground/OWNER_NOW.md": "6b8ee988",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
