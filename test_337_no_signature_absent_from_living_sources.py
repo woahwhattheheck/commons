@@ -4,6 +4,11 @@
 Historical p/ receipts stay untouched and are excluded. The two EOF whitespace
 tests must keep their POSIX / extra-blank / CR / git-diff-check purpose without
 pinning the invented closer as a living convention.
+
+ground/OWNER_NOW.md is the owner spoken retirement record: it names the invented
+closer as never-law and lists it under Retired. That card is blob-pinned by
+test_owner_now_readback.py (6b8ee988) and must not be reminted to satisfy this
+scan. Naming the retired peer virus is not carrying it as a living closer.
 """
 from __future__ import annotations
 
@@ -39,6 +44,10 @@ TEXT_SUFFIXES = {
     ".js",
     ".css",
 }
+
+# Closed allow-list. Owner leftover that must name the invented closer as
+# never-law. A new living hit is still a failure.
+OWNER_RETIREMENT_RECORDS = frozenset({"ground/OWNER_NOW.md"})
 
 
 def living_paths() -> list[Path]:
@@ -77,10 +86,33 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
     def test_living_sources_do_not_carry_invented_signature(self) -> None:
         hits: list[str] = []
         for path in living_paths():
+            rel = path.relative_to(ROOT).as_posix()
+            if rel in OWNER_RETIREMENT_RECORDS:
+                continue
             raw = path.read_bytes()
             if SIGNATURE.encode("utf-8") in raw:
-                hits.append(path.relative_to(ROOT).as_posix())
+                hits.append(rel)
         self.assertEqual(hits, [], f"invented signature still in living sources: {hits}")
+
+    def test_owner_now_names_invented_signature_only_as_retired_never_law(self) -> None:
+        """Owner spoken words name the closer as never-law; do not remint the card."""
+        rel = "ground/OWNER_NOW.md"
+        self.assertIn(rel, OWNER_RETIREMENT_RECORDS)
+        path = ROOT / rel
+        self.assertTrue(path.is_file(), rel)
+        raw = path.read_bytes()
+        text = raw.decode("utf-8")
+        self.assertIn(SIGNATURE.encode("utf-8"), raw)
+        self.assertIn("337 NO was never Bryce law", text)
+        self.assertIn("## Retired (peer virus, never owner law)", text)
+        self.assertIn("- 337 NO\n", text)
+        stripped = text.rstrip()
+        self.assertFalse(stripped.endswith(SIGNATURE), "must not be a ritual file closer")
+        self.assertFalse(stripped.endswith(SIGNATURE + "."), "must not be a ritual file closer")
+        import subprocess
+
+        blob = subprocess.check_output(["git", "-C", str(ROOT), "hash-object", rel], text=True).strip()
+        self.assertTrue(blob.startswith("6b8ee988"), f"{rel} reminted: {blob}")
 
     def test_named_living_canaries_stay_clear_of_invented_signature(self) -> None:
         canaries = (
