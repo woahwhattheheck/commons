@@ -1,0 +1,72 @@
+name: pages-deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '*/10 * * * *'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build allowlisted _site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          # Keep: whole tree minus bulk muhl/ (except docs + free-sample SEED0),
+          # excerpts/, conflicts/, .github/. chunks/ MUST stay (board.js).
+          rsync -a \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude 'excerpts/' \
+            --exclude 'conflicts/' \
+            --exclude 'muhl/' \
+            ./ _site/
+          mkdir -p _site/muhl/docs _site/muhl/containers/MUHLNICKEL_DISTRO
+          if [ -d muhl/docs ]; then rsync -a muhl/docs/ _site/muhl/docs/; fi
+          if [ -f muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno ]; then
+            cp -a muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno \
+              _site/muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno
+          fi
+          python3 - <<'PY'
+          import json, os
+          sha = os.environ.get('GITHUB_SHA', '')
+          run_id = os.environ.get('GITHUB_RUN_ID', '')
+          attempt = os.environ.get('GITHUB_RUN_ATTEMPT', '')
+          receipt = {
+            'sha': sha,
+            'run_id': run_id,
+            'attempt': attempt,
+            'excludes': ['.git/', '.github/', 'excerpts/', 'conflicts/', 'muhl/ (except muhl/docs/ and SEED0.mno)'],
+            'keeps': ['chunks/', 'muhl/docs/', 'muhl/containers/MUHLNICKEL_DISTRO/SEED0.mno'],
+          }
+          with open('_site/pages-deploy.json', 'w', encoding='utf-8') as f:
+            json.dump(receipt, f, indent=2)
+            f.write('\n')
+          print(f"PAGES_DEPLOYED url=https://woahwhattheheck.github.io/commons/ sha={sha} run={run_id}")
+          PY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
