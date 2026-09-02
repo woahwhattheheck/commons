@@ -18,6 +18,7 @@ HUB = ROOT / "hub_pages.py"
 KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "154b7b67",
+    "boards.html": "3fa79f12",
     "wire.html": "4ae38ce9",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
@@ -68,14 +69,15 @@ class TestCursorGoatPagesSuperMcpLandReadback(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", text)
         self.assertNotIn("buy.stripe.com", leftover)
 
-    def test_boards_row_claimed_by_leftover_is_finder_failed(self) -> None:
+    def test_boards_row_hit_generator_keep_unread(self) -> None:
         boards = BOARDS.read_text(encoding="utf-8")
         hub = HUB.read_text(encoding="utf-8")
         leftover = LEFTOVER.read_text(encoding="utf-8")
         self.assertIn('boards.html row "Shared super MCP"', leftover)
         self.assertIn('href="./grounding.html">first visit</a>', boards)
-        self.assertNotIn('href="./wire.html"', boards)
-        self.assertNotIn("Shared super MCP", boards)
+        self.assertIn('href="./wire.html">Shared super MCP</a>', boards)
+        self.assertIn("goat-pages-super-mcp-land-20260902-01", boards)
+        self.assertIn("Not a second MCP", boards)
         self.assertNotIn('href="./wire.html"', hub)
         self.assertNotIn("Shared super MCP", hub)
 
