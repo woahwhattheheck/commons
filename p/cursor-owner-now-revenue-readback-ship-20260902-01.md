@@ -48,6 +48,7 @@ Cite leftover unique-pack land `2d087a03e` + leftover merge `0674c9216` #8343. S
 - Live Stripe dashboard mint: EXTERNAL_PROVIDER_ACTION this seat; fake URLs stay refused
 - Collected cash / BANK_AVAILABLE still USD 0 / NOT_LANDED — leftover already asks; a click is intent
 - Harborline leftover `/harborline` copy compose unread — did **not** steal that path
+- Leftover KEEP of later-reminted `hub_pages.py` `14eeedb0`→`5ac12648` is leftover's pin, not this seat — did **not** remint leftover tests or `hub_pages.py`
 - Claude hourly unread — useful; did **not** ACK
 - Did not remint leftover unique-pack id `cursor-owner-now-revenue-readback-20260902-01`
 

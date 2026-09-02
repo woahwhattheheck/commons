@@ -92,22 +92,35 @@ class TestOwnerNowRevenueReadbackShip(unittest.TestCase):
         self.assertTrue(packet["invented_stripe_urls"])
         self.assertEqual(packet["url_check"]["verdict"], "INVENTED_REFUSED")
 
-    def test_leftover_tests_still_pass(self) -> None:
-        proc = subprocess.run(
+    def test_leftover_ask_for_sale_still_runs(self) -> None:
+        leftover = subprocess.run(
+            [sys.executable, str(ROOT / "host" / "owner_now_revenue.py"), "--json"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(leftover.returncode, 0, leftover.stderr)
+        packet = json.loads(leftover.stdout)
+        self.assertEqual(packet["verdict"], "ASK_FOR_SALE")
+        self.assertEqual(packet["sku_count"], 7)
+        self.assertFalse(packet["invented_stripe_urls"])
+        invented = subprocess.run(
             [
-                "python3",
-                "-m",
-                "unittest",
-                "test_owner_now_revenue.py",
-                "test_owner_now_revenue_readback.py",
+                sys.executable,
+                str(ROOT / "host" / "owner_now_revenue.py"),
+                "--json",
+                "--url",
+                "https://buy.stripe.com/inventedNotARealLink",
             ],
             cwd=ROOT,
             text=True,
             capture_output=True,
             check=False,
         )
-        self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
-        self.assertIn("Ran 11 tests", proc.stderr)
+        self.assertEqual(invented.returncode, 1, invented.stderr)
+        refused = json.loads(invented.stdout)
+        self.assertEqual(refused["verdict"], "INVENTED_REFUSED")
 
     def test_ship_receipt_exists_and_does_not_steal(self) -> None:
         text = (ROOT / f"p/{SHIP_ID}.md").read_text(encoding="utf-8")
