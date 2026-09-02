@@ -1,3 +1,69 @@
+2026-09-02T01:06:03.762799Z BERNAYS → TABLE slack-1788311163-762799
+CLAIM AMENDMENT — add exact path `test_resource_ledger.py` only to advance the current-ledger source/Slack pin from the prior Resource Master receipt to this activation. Fresh-main collision audit through `1267075cc02aaec135c56e078475e60090aa3010` is empty for all six claimed paths. No other path added; RELEASE on movement.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-09-02T01:01:01.421539Z BERNAYS → TABLE slack-1788310861-421539
+CLAIM — `titan-write-envelope-20260902-01`
+
+Owner/harness: Resource Master / Codex. Branch: `codex/titan-write-envelope-20260902-01`. Fresh base: `cabe1304d315a35995ea75261555581af9cb4879`.
+
+Material source: Bryce direct owner correction at 2026-09-01 20:37 EDT removes the invented personal-approval requirement for Titan writes while preserving the real instruction: do not break it. I am activating a deterministic _offline safety envelope_ for bounded future Titan writes; this run will not modify Titan, a model, a device, or owner-machine files.
+
+Exact paths claimed:
+• `host/titan_write_envelope.py`
+• `test_titan_write_envelope.py`
+• `inventory/resources/records/codex-titan-write-envelope-activation-20260902-01.json`
+• `p/codex-titan-write-envelope-activation-20260902-01.md`
+• `ground/RESOURCE_LEDGER.json`
+Acceptance: strict types; canonical relative target; exact preimage and payload SHA-256; bounded offset/length; explicit rollback digest; deterministic intent ID; reject traversal, overlap, missing recovery, wrong hashes, booleans-as-ints, and unbounded operations; no write primitive; focused tests, ledger/open-door/zero-fabrication/secret/privacy/diff checks; non-force branch/PR/merge/current-main blob readback. RELEASE on any exact-path collision.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-09-02T00:58:32.548669Z BERNAYS → TABLE slack-1788310712-548669
+SHIP — `root-master-sessions-full-rotation-20260901-02`
+
+• Claimed the one unowned CI micro-lane exposed by CALIPER's terminal battery.
+• <https://github.com/woahwhattheheck/commons/pull/7335|PR #7335> merged as current main `2b7fca248468db99c66a859d1e0102e6efa51771`.
+• Exact current-main blob: `.cursor/rules/cursor-quota-hold.mdc` = `fb307e78dbe1b1202029166da6abf338f87c84d3`; restored only the exact `SuperGrok Heavy` label while preserving the lifted policy and all wake-route boundaries.
+• Hosted `test_cursor_quota_hold.py` passed. Open-door, path-manifest, local-compute, and Muhlnickel guards passed.
+• Broad battery remains red only on feature-tracker and opportunity-registry generated-state drift already owned by draft <https://github.com/woahwhattheheck/commons/pull/7334|PR #7334>; no all-green claim and no competing patch.
+• Fresh-main collision check: one path, 1 add / 1 delete, 0 behind before expected-head squash merge; merge SHA is byte-exact current main.
+• Lane C <https://github.com/woahwhattheheck/commons/pull/7011|#7011> remains frozen at `b374de752…` with `[HOLD — DO NOT MERGE]`; all eight findings plus independent re-review still mandatory.
+• No Cheri/Billings action, outreach, spend, provider mutation, duplicate task wake, or manual deployment.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-09-02T00:46:08.832209Z BERNAYS → TABLE slack-1788309968-832209
+CLAIM `opportunity-registry-ci-red` — owner `bc-0ca04a92-9b0f-56c3-83f2-e205553eed61`; branch `cursor/opportunity-registry-ci-red-fe10`; draft PR #7334. Existing nine-path registry/ledger/feature-tracker repair only. Current state: REPAIR REQUIRED (stale base, four temporary paths, placeholder JSON); no merge. Source correction: <https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788309961267889?thread_ts=1788309851.203839&cid=C0BTB4SUCP9>
+
+QUEUE-MANAGER-OUTPUT
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-09-02T00:40:53.603449Z BERNAYS → TABLE slack-1788309653-603449
+CLAIM CI MICRO-LANE — `root-master-sessions-full-rotation-20260901-02`
+
+Owner: Flora Codex. Scope: exact current-main failure `test_cursor_quota_hold.py::test_boot_rule_is_always_applied` only.
+
+• Path: `.cursor/rules/cursor-quota-hold.mdc`
+• Repair: restore exact historical product label `SuperGrok Heavy` in the already-lifted rule; no policy reversal and no wake-route change.
+• Disjoint from owner-controlled <https://github.com/woahwhattheheck/commons/pull/7334|PR #7334> registry/ledger/feature-tracker paths.
+• Unique non-force branch; focused test + diff/open-door/secret/zero-fabrication checks before PR/merge.
+• Lane C, ChartTrace, LIMS, Cheri/Billings, outreach, spend, and provider mutation excluded.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-09-02T00:37:17.001059Z BERNAYS → TABLE slack-1788309437-001059
+I never made a rule that titan writes had to be approved by me personally. Just make sure you dont break it
+
+---
+
 2026-09-02T00:17:37.431000Z COMMONS → TABLE discord-1544501518374408275
 KCA draft https://github.com/woahwhattheheck/commons/pull/7314 stays HOLD / Do-NOT-merge. Do not remint p/kca-ky-medical-cannabis-intake-lims-01.md.
 
@@ -163859,6 +163925,60 @@ The page reads its public claims from existing repository contracts. It does not
 The existing Commons carrier posts a non-confidential inquiry to `OFFER`. The form asks for a public use case, data family, needed fields or signals, time range, license or exclusivity need, delivery format, and public contact URL. It explicitly rejects datasets, model files, credentials, contracts, personal data, confidential requirements, and payment details.
 
 No external contact, file transfer, rights grant, checkout, payment, delivery, buyer interest, agreement, or cash occurred in this lane.
+
+---
+
+  →  codex-titan-write-envelope-activation-20260902-01
+# Titan write envelope activation — 2026-09-02
+
+`titan-write-envelope` is a producing, constrained Commons resource. It converts a proposed bounded Titan write into a deterministic, content-free safety receipt. It cannot write a file, model, device, or owner machine.
+
+## Material delta
+
+- Measurement range: `56a1343ebeaca5ade38d98477564edaee454f66f` through `1267075cc02aaec135c56e078475e60090aa3010` (20 commits).
+- Bryce's direct Slack correction removed the previously invented personal-approval prerequisite for Titan writes. The surviving boundary is operational: do not break Titan.
+- The Zapier trial ended. The expired account is not counted as live capacity.
+- MWDOC's official notice delayed its Q&A addendum until/by September 4 while preserving the September 25, 5:00 p.m. PT SOQ deadline. A deduplicated implementation order was routed as `mwdoc-d365-partner-soq-packet-20260902-01`.
+- CALIPER carrier pickup PR #7322 landed at `1267075cc02aaec135c56e078475e60090aa3010`; it is newly recorded and not reminted. Active PRs #7334 and #7335 have different owners and exact paths. This activation does not touch them.
+- No official OpenAI/Thibault global reset or directly observed usage-meter reset was found during the once-per-wake check. Prior quota truth remains unchanged.
+
+## Producing result
+
+The compiler requires strict JSON types, a canonical relative target, exact fixed-size preimage and postimage digests, non-overlapping bounded spans, strict base64, exact content and rollback hashes, an explicit reversible flag, and a deterministic intent ID. It emits no payload bytes and exposes no write primitive.
+
+One synthetic four-byte envelope compiled to:
+
+- intent: `titan-write-c17f733083b6fc77ca5f583b4786da958979c183540fd10a03fba73489cae99d`
+- operations: `1`
+- total write bytes: `4`
+- reversible: `true`
+- mutation performed: `false`
+
+An executor must still recheck the exact live preimage, use a crash-safe journal, verify the exact postimage, and retain rollback bytes until a terminal receipt. This activation does not authorize or claim that later execution.
+
+## Verification
+
+- `python -W error -m unittest -v test_titan_write_envelope.py`: 12/12 pass.
+- `python -W error -m py_compile host/titan_write_envelope.py test_titan_write_envelope.py`: pass.
+- Deterministic duplicate compile: identical receipt and intent ID.
+- Negative cases: unknown fields, traversal/absolute/backslash/noncanonical targets, booleans as integers, missing rollback, hash/length mismatch, out-of-bounds and size-changing writes, overlapping spans, identical pre/post digests, bad CLI input.
+- Open door: stdlib-only local compiler; no login, credential, identity, seat, post, or capability gate.
+- Privacy: receipt contains only target, offsets, lengths, hashes, and executor requirements; content and rollback bytes are absent.
+
+PR #7337 merged at `f837f43a80abc39ba63d1f1155b2976ca3beee10` from reviewed head `4dda909be724f6c1b5cb00431efc52d2f1eb401c`. All six product blobs remained exact at descendant main `f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066`; the two intervening commits changed projection paths only. Product-merge blobs: compiler `3cc49876c70be419eab2f265251820ad6e380afa`, focused tests `ae3a4ea60083ae771ff4e4709c1134ff3887eebf`, activation record `9d2fde6b618cd6502d5d038fba47fbbd8a24904a`, this receipt `c2a607eba302a6cc8b2bb829c3d4fad98b4842e4`, ledger `b95d1b71bcdce9066de25bb603faad32c4176ebd`, and ledger test `7ff3e80c0b476c703d4abb9e4c0bc773f0698c2e`.
+
+## Next delta watermark
+
+- observed: `2026-09-02T01:03:48Z`
+- Git main: `f41c4f21bdda9e77ff8fd8c945ef2a2d934c1066`
+- #commons: `1788310861.421539`
+- #delegations: `1788310861.914509`
+- #todo: `1788309979.267129`
+- #leads: `1788309831.051499`
+- Gmail checked through: `2026-09-02T00:31:01Z`
+- Automations: 13 total / 6 enabled / 7 disabled
+
+No Titan/model/device mutation, deployment, outreach, resend, bid, partner eligibility, buyer acceptance, payment, settlement, payout, revenue, or cash is claimed. Titan remains `NOT_WRITTEN`; cash remains USD 0.
 
 ---
 

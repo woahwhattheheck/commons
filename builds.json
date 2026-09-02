@@ -350,88 +350,8 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 10,
+ "n_open_prs": 3,
  "open_prs": [
-  {
-   "number": 7012,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace v1.1 Lane A evidence and storage contracts",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7012",
-   "base_freshness": {
-    "base_sha": "1ad1522021de64ce44068c644114ccdabb588a27",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7020,
-   "author": "woahwhattheheck",
-   "title": "Lane B: fail-closed swarm, quarantine, and authority dates",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7020",
-   "base_freshness": {
-    "base_sha": "e4abef2c0be390f5165e2d50029d147f0ea0d882",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7006,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane F \u2014 evidence-derived assurance (HOLD / no merge)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7006",
-   "base_freshness": {
-    "base_sha": "4a7d3cd6a9959957b44981e544bdddf6701416fe",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7009,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane D: review line, .ctpkg, and counsel gate",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7009",
-   "base_freshness": {
-    "base_sha": "eb0257b2ad06b22da779d0606ea0076261ca83ad",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7010,
-   "author": "woahwhattheheck",
-   "title": "ChartTrace lane E: commercial isolation, workload pricing, live ops OFF",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7010",
-   "base_freshness": {
-    "base_sha": "638bafb8732309850132e25582b7e950e3cfd52e",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
   {
    "number": 7312,
    "author": "woahwhattheheck",
@@ -439,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7312",
    "base_freshness": {
     "base_sha": "6aa6bbe31d76ed51e00b194ebc4dec06ed03a469",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
+    "main_sha": "3cf690fc3db4dbf5fe5043783296173dcf6d7413",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,28 +375,12 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7313",
    "base_freshness": {
     "base_sha": "4bf6b2816956a8f44416dd541f8350e04f2ad450",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
+    "main_sha": "3cf690fc3db4dbf5fe5043783296173dcf6d7413",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
    },
    "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7011,
-   "author": "woahwhattheheck",
-   "title": "[HOLD \u2014 DO NOT MERGE] ChartTrace lane C: native window, legal gates, unsigned packaging",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7011",
-   "base_freshness": {
-    "base_sha": "7ae7902861620b74e8c0ec9c7efeb89de4d66532",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
@@ -487,23 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/7314",
    "base_freshness": {
     "base_sha": "4bf6b2816956a8f44416dd541f8350e04f2ad450",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 7322,
-   "author": "woahwhattheheck",
-   "title": "caliper-carrier-pickup-lane-01: formal CARRIER_ONLY to main verbatim landing lane",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/7322",
-   "base_freshness": {
-    "base_sha": "4319922112465b7385da7bb621d81aa48d30a3fa",
-    "main_sha": "755c85c9347999b17ab78d272d968b17ba1dc151",
+    "main_sha": "3cf690fc3db4dbf5fe5043783296173dcf6d7413",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
