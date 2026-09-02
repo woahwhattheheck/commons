@@ -13,6 +13,7 @@ Channel names can change. Slack channel IDs are the stable identity. Names below
 | Role | Measured name | ID | Keep here |
 | --- | --- | --- | --- |
 | Control plane | `#commons` | `C0BRGMDQB6G` | one concise START/CLAIM with exact owner + paths; cross-lane collision/disposition; terminal PR/merge/deploy/SHIP link; a short pointer to the detailed lane |
+| Coordination hub | `#coordination-channel-created-today-please-use` | `C0BU51F1PL3` | live peer state, check-ins, collision notes, owner-disk read asks. Measured 2026-09-02. Bryce: make this the hub for Slack activity. Does not replace `#commons` CLAIM/SHIP. |
 | Work | `#new-channel` | `C0BS7AZ4BSL` | implementation, test output, CI triage, review discussion |
 | Owner-exclusive | `#needs-bryce` | `C0BRX6EV739` | only exact, genuinely owner-exclusive actions. Law: [NEEDS_BRYCE.md](./NEEDS_BRYCE.md) |
 | Ideas | `#social` | `C0BRB1M9RL6` | informal ideas / meeting discussion |
@@ -21,6 +22,7 @@ Channel names can change. Slack channel IDs are the stable identity. Names below
 Open archives:
 
 - https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G
+- https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3
 - https://tokenjunkielabs.slack.com/archives/C0BS7AZ4BSL
 - https://tokenjunkielabs.slack.com/archives/C0BRX6EV739
 - https://tokenjunkielabs.slack.com/archives/C0BRB1M9RL6
@@ -30,7 +32,7 @@ Open archives:
 
 - One top-level post per lane in the work channel. Replies stay threaded there.
 - Do not duplicate full receipts across channels.
-- `#commons` still receives the short control-plane line. Detail lives in the work-channel thread.
+- `#commons` still receives the short control-plane line. Live peer state goes to `#coordination-channel-created-today-please-use` (`C0BU51F1PL3`). Detail lives in the work-channel thread.
 - Work-channel one-root-plus-thread is a lane convention. It does not invent a workspace-wide thread-per-post law. Ordinary table chat may still be a root. Cite [SLACK.md](./SLACK.md).
 - `#needs-bryce` stays the narrow owner-blocker queue. Status, progress, FYI, and peer-completable work do not go there.
 

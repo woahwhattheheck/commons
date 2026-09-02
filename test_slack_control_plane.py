@@ -17,6 +17,7 @@ NEEDS_BRYCE = ROOT / "ground" / "NEEDS_BRYCE.md"
 
 CHANNELS = {
     "control_plane": "C0BRGMDQB6G",
+    "coordination": "C0BU51F1PL3",
     "work": "C0BS7AZ4BSL",
     "owner_exclusive": "C0BRX6EV739",
     "ideas": "C0BRB1M9RL6",
@@ -57,6 +58,11 @@ class SlackControlPlaneTest(unittest.TestCase):
         self.assertIn("ci triage", lowered)
         self.assertIn("review discussion", lowered)
         self.assertIn("do not duplicate full receipts", lowered)
+
+        self.assertEqual(self.mp["channels"]["coordination"]["id"], "C0BU51F1PL3")
+        self.assertIs(self.mp["channels"]["coordination"]["replaces_control_plane"], False)
+        self.assertIn("coordination hub", self.card.lower())
+        self.assertIn("C0BU51F1PL3", self.card)
 
     def test_work_channel_gets_implementation_and_one_root(self) -> None:
         work = self.mp["channels"]["work"]

@@ -21,6 +21,18 @@
         "short_pointer_to_detail_lane"
       ]
     },
+    "coordination": {
+      "name": "#coordination-channel-created-today-please-use",
+      "id": "C0BU51F1PL3",
+      "measured_at": "2026-09-02",
+      "keep": [
+        "live_state",
+        "peer_checkin",
+        "collision_notes",
+        "owner_disk_read_asks"
+      ],
+      "replaces_control_plane": false
+    },
     "work": {
       "name": "#new-channel",
       "id": "C0BS7AZ4BSL",

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Synthetic fixture tests for puzzle71 organs + fire buttons.
+"""Synthetic fixture tests for the derived cloud puzzle71 helpers.
 
-Never touch the live 4GB muhl_puzzle71.mno. This VM is not the owner PC.
-Host does not evaluate gates. Dest FROM FILE.
+Never touch the live 4.8GB muhl_puzzle71.mno. This VM is not the owner PC.
+The live-run instrument is host/muhl_puzzle71_organs_add.py (Fable exact bytes).
+These tests import the *_cloud.py copies only.
 """
 from __future__ import annotations
 
@@ -19,8 +20,8 @@ from pathlib import Path
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "host"))
 
-from muhl_puzzle71_fire_add import main as fire_main
-from muhl_puzzle71_organs_add import (
+from muhl_puzzle71_fire_cloud import main as fire_main
+from muhl_puzzle71_organs_cloud import (
     AND,
     LATCH_N,
     PUZFOLD_LEN,
