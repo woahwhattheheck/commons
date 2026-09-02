@@ -134,8 +134,8 @@ class PagesGithubIoRequiredTests(unittest.TestCase):
         )
         self.assertIn("_site/pages-deploy.json", text)
         self.assertIn("--exclude '_site/'", text)
-        self.assertIn("[ ! -f _site/pages-deploy.json ]", text)
-        self.assertIn("missing _site/pages-deploy.json after write", text)
+        self.assertIn("test -f _site/pages-deploy.json", text)
+        self.assertIn("ls -la _site/pages-deploy.json", text)
 
     def test_generated_pages_deploy_receipt_is_in_git(self) -> None:
         """Actions still writes _site/; in-tree canary survives github-pages[bot] overwrite."""
