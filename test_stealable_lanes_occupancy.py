@@ -15,7 +15,6 @@ LEFTOVER = ROOT / "p/cursor-stealable-lanes-roles-20260902-01.md"
 KEEP = {
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "host/stealable_lanes.py": "c90284fb",
-    "test_stealable_lanes.py": "721adc44",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "hub_pages.py": "5ac12648",
@@ -38,6 +37,26 @@ class TestStealableLanesOccupancy(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
+
+    def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
+        blob = git_blob("test_stealable_lanes.py")
+        self.assertTrue(blob.startswith("a4d48d19"), blob)
+        self.assertNotEqual(KEEP.get("test_stealable_lanes.py"), "721adc44")
+        occupancy = RECEIPT.read_text(encoding="utf-8")
+        self.assertIn("721adc44", occupancy)
+        self.assertTrue(
+            git_blob("p/cursor-stealable-lanes-occupancy-20260902-01.md").startswith(
+                "9631e869"
+            )
+        )
+        proc = subprocess.run(
+            ["python3", "-m", "unittest", "test_stealable_lanes.py"],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
 
     def test_occupancy_does_not_steal(self) -> None:
         lanes = json.loads((ROOT / "ground/STEALABLE_LANES.json").read_text(encoding="utf-8"))
