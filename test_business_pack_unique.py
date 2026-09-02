@@ -943,6 +943,60 @@ class BusinessPackUniqueTest(unittest.TestCase):
         self.assertNotIn("Instance 1 of 1", self.door)
         self.assertNotIn("337 NO", json.dumps(block))
 
+    def test_sidewalk_gems_note_pointer_does_not_steal_tally_fill(self) -> None:
+        block = self.law["instances"]
+        self.assertEqual(
+            block["sidewalk_gems_note"],
+            "packs/sidewalk-signal-web-desk-20260902-01/gems.md",
+        )
+        self.assertEqual(block["sidewalk_gems_note_blob"], "f21a6d44")
+        self.assertEqual(
+            block["sidewalk_gems_note_receipt"],
+            "tally-sidewalk-gems-note-20260902-01",
+        )
+        self.assertEqual(
+            block["sidewalk_gems_note_pointer"],
+            "cursor-business-pack-sidewalk-gems-note-pointer-20260902-01",
+        )
+        self.assertIs(block["did_not_write_sidewalk_gems_note"], True)
+        self.assertIs(block["did_not_remint_tally_sidewalk_gems_note"], True)
+        self.assertEqual(self.law["id"], "cursor-business-packs-unique-20260902-01")
+        self.assertEqual(
+            self.law["keep_gems"]["id"],
+            "cursor-business-pack-keep-gems-20260902-01",
+        )
+        note = (
+            ROOT
+            / "packs"
+            / "sidewalk-signal-web-desk-20260902-01"
+            / "gems.md"
+        )
+        data = note.read_bytes()
+        blob = hashlib.sha1(
+            b"blob " + str(len(data)).encode("ascii") + b"\0" + data
+        ).hexdigest()[:8]
+        self.assertEqual(blob, "f21a6d44")
+        self.assertTrue(
+            (ROOT / "p" / "tally-sidewalk-gems-note-20260902-01.md").is_file()
+        )
+        self.assertTrue(
+            (
+                ROOT
+                / "p"
+                / "cursor-business-pack-sidewalk-gems-note-pointer-20260902-01.md"
+            ).is_file()
+        )
+        self.assertIn("f21a6d44", self.door)
+        self.assertIn("tally-sidewalk-gems-note-20260902-01", self.card)
+        self.assertIn("UNDECIDED (Bryce)", self.door)
+        self.assertIn("password", self.door)
+        self.assertNotIn("<form", self.door)
+        self.assertNotIn("Instance 1 of 1", self.door)
+        self.assertNotIn("No royalty", self.door)
+        self.assertNotIn("337 NO", json.dumps(block))
+        self.assertNotIn("337 NO", self.card)
+        self.assertNotIn("337 NO", self.door)
+
 
 if __name__ == "__main__":
     unittest.main()
