@@ -76,10 +76,15 @@ The production bridge reads the same descriptive state from
 cannot enqueue provider work. These values report capacity only; they contain
 no provider credential and create no admission control.
 
-The Slack bridge applies that gate locally before public MCP intake and before
-`fire_action`. A deployed `route_grokcom_revenue_work` that still returns
-`GROKCOM_WORK` without observed capacity cannot enqueue grok.com work or post a
-`DURABILITY_NEVER_APPEARED` rejection while capacity is unverified or exhausted.
+The Slack bridge always carries the body through public MCP intake. It applies
+the capacity boundary after intake, before any queued Slack status, and again
+immediately before `fire_action`. A deployed `route_grokcom_revenue_work` that
+still returns `GROKCOM_WORK` without observed capacity cannot enqueue grok.com
+work or post a `DURABILITY_NEVER_APPEARED` rejection while capacity is
+unverified or exhausted. A same-event retry rechecks fresh capacity. After a
+restart, the bridge refetches a waiting event from its Slack coordinates and
+verifies the original text hash before resuming it; message bodies are not
+stored in the bridge database.
 
 ## Build and review loop
 

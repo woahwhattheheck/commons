@@ -922,6 +922,18 @@ class BridgeStore:
             ).fetchall()
         return [self._row_to_work(row) for row in rows]
 
+    def waiting_capacity(self) -> list[PendingWork]:
+        """Return capacity-paused work without storing its Slack body."""
+        with self._lock:
+            rows = self._connection.execute(
+                """
+                SELECT * FROM slack_events
+                WHERE phase = 'WAITING_CAPACITY'
+                ORDER BY created_at
+                """
+            ).fetchall()
+        return [self._row_to_work(row) for row in rows]
+
     def has_sent_rejected_delivery(self, event_id: str) -> bool:
         with self._lock:
             row = self._connection.execute(
@@ -1691,15 +1703,61 @@ class GrokSlackBridge:
                 return {"ok": True, "state": row.phase, "submit": False}
             if row.phase == "FAILED":
                 return self._resume_failed_rejection(row)
-            if row.phase == "WAITING_CAPACITY":
-                return {"ok": True, "state": "WAITING_CAPACITY", "submit": False}
             if row.phase in POST_SUBMIT_PHASES:
                 return self._resume_output_only(row)
             return self._run_claimed(event_id, contract)
         return self._run_claimed(event_id, contract)
 
+    def _reload_waiting_contract(self, item: PendingWork) -> dict[str, Any] | None:
+        """Refetch one paused Slack event and verify its original text hash."""
+        web_client = getattr(self.sink, "web_client", None)
+        if web_client is None:
+            return None
+        history = web_client.conversations_replies(
+            channel=item.channel,
+            ts=item.thread_ts,
+        )
+        messages = (
+            history.get("messages")
+            if isinstance(history, dict)
+            else getattr(history, "messages", None)
+        )
+        if not isinstance(messages, list):
+            return None
+        for message in messages:
+            if not isinstance(message, dict):
+                continue
+            if str(message.get("ts") or "") != item.message_ts:
+                continue
+            text = str(message.get("text") or "")
+            author = str(message.get("user") or message.get("bot_id") or "")
+            if _sha256_text(text) != item.text_sha256 or author != item.author:
+                return None
+            files = message.get("files")
+            return {
+                "event_id": item.event_id,
+                "channel": item.channel,
+                "message_ts": item.message_ts,
+                "thread_ts": item.thread_ts,
+                "author": item.author,
+                "text": text,
+                "files": files if isinstance(files, list) else [],
+            }
+        return None
+
     def recover_pending(self) -> int:
         recovered = 0
+        if grokcom_capacity_allows_submit(self.grokcom_capacity):
+            for item in self.store.waiting_capacity():
+                try:
+                    contract = self._reload_waiting_contract(item)
+                    if contract is None:
+                        continue
+                    result = self._run_claimed(item.event_id, contract)
+                except Exception:
+                    continue
+                if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT"}:
+                    recovered += 1
         for item in self.store.pending():
             try:
                 if item.phase == "FAILED":
@@ -1716,16 +1774,16 @@ class GrokSlackBridge:
 
     def _run_claimed(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
         self._active_event_id = event_id
-        if not grokcom_capacity_allows_submit(self.grokcom_capacity):
-            self.store.set_phase(event_id, "WAITING_CAPACITY")
-            return {
-                "ok": True,
-                "state": "WAITING_CAPACITY",
-                "submit": False,
-            }
         packet = self._intake(event_id, contract)
-        if packet.get("state") == "WAITING_CAPACITY":
-            self.store.set_phase(event_id, "WAITING_CAPACITY")
+        if (
+            packet.get("state") == "WAITING_CAPACITY"
+            or not grokcom_capacity_allows_submit(self.grokcom_capacity)
+        ):
+            self.store.set_phase(
+                event_id,
+                "WAITING_CAPACITY",
+                task_id=str(packet.get("task_id") or ""),
+            )
             return {
                 "ok": True,
                 "state": "WAITING_CAPACITY",
@@ -1759,6 +1817,8 @@ class GrokSlackBridge:
         if submitted.get("kind") == "rejected":
             self.store.set_phase(event_id, "FAILED", result_id=str(submitted.get("code") or "REJECTED"))
             self._post_rejection(event_id, contract, submitted)
+            return submitted
+        if submitted["state"] == "WAITING_CAPACITY":
             return submitted
         if submitted["state"] in {"FIRE_ACTION_UNKNOWN", "FAILED"}:
             self.store.set_phase(event_id, submitted["state"])
