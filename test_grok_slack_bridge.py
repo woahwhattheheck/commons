@@ -1,1 +1,1 @@
-LOAD_FROM:/workspace/agent-tools/cou_invoke_args.json
+PLACEHOLDER_WILL_BE_REPLACED_BY_SUBAGENT
