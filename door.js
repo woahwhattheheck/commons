@@ -17,6 +17,7 @@
         ["resources.html", "resources"],
         ["feature-tracker.html", "feature tracker"],
         ["commerce.html", "commerce"],
+        ["pay.html", "pay"],
         ["data-license.html", "data licensing"],
         ["free-sample.html", "FREE SAMPLE"],
         ["arbitrage.html", "arbitrage scout"],
