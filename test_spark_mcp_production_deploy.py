@@ -223,6 +223,15 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("get_send_link", adapter.SHARED_HTTP_TOOL_NAMES)
         self.assertIn("ACTION_RESULT_PENDING", Path(cm.__file__).read_text(encoding="utf-8"))
 
+    def test_wait_step_requires_live_webmcp_html(self) -> None:
+        """A bake that starts cannot ship /mcp without the judge HTML URL."""
+        text = WORKFLOW.read_text(encoding="utf-8")
+        self.assertIn("https://commons-spark-mcp.vercel.app/webmcp", text)
+        self.assertIn("text/html", text)
+        self.assertIn("document.modelContext", text)
+        self.assertIn("LIVE_WEBMCP_HTML", text)
+        self.assertIn("LIVE_SOURCE_PARITY", text)
+
 
 if __name__ == "__main__":
     unittest.main()
