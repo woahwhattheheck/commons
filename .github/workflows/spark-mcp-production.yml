@@ -24,6 +24,7 @@ on:
       - "api/mcp.py"
       - "api/owner_context.py"
       - "commons_mcp.py"
+      - "webmcp.html"
       - "vercel.json"
       - ".vercelignore"
       - "stage_spark_mcp_bundle.py"
@@ -38,6 +39,7 @@ on:
       - ".github/workflows/spark-mcp-production.yml"
       - "test_spark_mcp.py"
       - "test_spark_mcp_production_deploy.py"
+      - "test_webmcp_door.py"
   pull_request:
     paths: *mcp_production_paths
   workflow_dispatch:
@@ -59,7 +61,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: adapter surface, discovery 1.4.0, deploy contract
-        run: python -B -W error -m unittest -q test_spark_mcp.py test_spark_mcp_production_deploy.py test_commons_mcp.py
+        run: python -B -W error -m unittest -q test_spark_mcp.py test_spark_mcp_production_deploy.py test_commons_mcp.py test_webmcp_door.py
 
   deploy:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'

@@ -23,6 +23,7 @@ REQUIRED_WATCH = (
     "api/mcp.py",
     "api/owner_context.py",
     "commons_mcp.py",
+    "webmcp.html",
     "vercel.json",
     ".vercelignore",
     "stage_spark_mcp_bundle.py",
@@ -162,6 +163,7 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("api/mcp.py", copied)
         self.assertIn("api/owner_context.py", copied)
         self.assertIn("commons_mcp.py", copied)
+        self.assertIn("webmcp.html", copied)
         self.assertIn("relay-manifest.json", copied)
         self.assertIn("relay_manifest.py", copied)
         self.assertIn("vercel.json", copied)
