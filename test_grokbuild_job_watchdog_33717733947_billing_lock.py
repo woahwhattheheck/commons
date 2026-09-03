@@ -14,7 +14,7 @@ import fix_first
 ROOT = Path(__file__).resolve().parent
 RECEIPT = ROOT / "p/grokbuild-job-watchdog-33717733947-billing-lock-20260903-01.md"
 PRIOR = ROOT / "p/grok-build-job-watchdog-33699986556-billing-lock-20260903-01.md"
-SIBLING = ROOT / "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md"
+SIBLING = ROOT / "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md"
 WORKFLOW = ROOT / ".github/workflows/job-watchdog.yml"
 
 KEEP = {
@@ -26,6 +26,12 @@ KEEP = {
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
     "open_door_guard.py": "4b053e43",
+    "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
+    "test_grokbuild_job_watchdog_33717741080_billing_lock.py": "7a1bc6f6",
+    "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
+    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "361b7c4b",
+    "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
+    "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "0269ac73",
     "p/grok-build-job-watchdog-33699986556-billing-lock-20260903-01.md": "4754031d",
     "test_grokbuild_job_watchdog_33699986556_billing_lock.py": "71915bd1",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",
@@ -72,13 +78,19 @@ class TestGrokbuildJobWatchdog33717733947BillingLock(unittest.TestCase):
         self.assertIn("100530342701", text)
         self.assertIn("100532377068", text)
         self.assertIn("2890fde44250063aa66ef60735a7cc90407760a6", text)
-        self.assertIn("fd44bb2d1aaef4175286c455f9574508109d0e8b", text)
+        self.assertIn("d1c70e6d86eb6eb3180b57e56c6c1620cfbdcb7d", text)
         self.assertIn(
             "The job was not started because your account is locked due to a billing issue.",
             text,
         )
         self.assertIn("EXTERNAL_BLOCKER", text)
-        self.assertIn("Did not remint leftover grok-build-job-watchdog-33699986556-billing-lock-20260903-01", text)
+        self.assertIn("Did not remint leftover grok-build-job-watchdog-33717741080-billing-lock-20260903-01", text)
+        self.assertIn("f3afb926", text)
+        self.assertIn("7a1bc6f6", text)
+        self.assertIn("b7a4ea0e", text)
+        self.assertIn("361b7c4b", text)
+        self.assertIn("a0af1282", text)
+        self.assertIn("0269ac73", text)
         self.assertIn("4754031d", text)
         self.assertIn("71915bd1", text)
         self.assertIn("f33a76ef", text)
