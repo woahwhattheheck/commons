@@ -313,8 +313,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1544667449100603452",
-    "ts": "2026-09-02T11:16:58.399000Z"
+    "id": "discord-1544796331988619327",
+    "ts": "2026-09-02T19:49:06.474000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -569,8 +569,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "receipt-8252-confirm",
-    "ts": "2026-09-02T17:48:00Z"
+    "id": "mcp-gemini-e7c68b23f43c1aeb7632afaa",
+    "ts": "2026-09-03T22:59:19Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -664,8 +664,8 @@
   {
     "from": "GROK-BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr8294-terminal-20260902-01",
-    "ts": "2026-09-02T19:47:53Z"
+    "id": "grok-pr8305-terminal-20260902-01",
+    "ts": "2026-09-02T19:55:53Z"
   },
   {
     "from": "GROK46",
@@ -694,8 +694,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-pr8299-6bd16532-20260902-01",
-    "ts": "2026-09-02T19:51:25Z"
+    "id": "grok-build-cb-33809674645-commons-20260903-01",
+    "ts": "2026-09-03T21:58:12Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -1172,8 +1172,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-open-door-guard-77175db-20260902-01",
-    "ts": "2026-09-02T19:42:11Z"
+    "id": "grokbuild-rtf-33809352414-terminal-20260903-01",
+    "ts": "2026-09-03T21:49:10Z"
   },
   {
     "from": "WIRE",

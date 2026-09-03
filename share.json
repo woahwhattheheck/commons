@@ -1234,6 +1234,17 @@
       "status": "OPEN"
     },
     {
+      "id": "coil-tools-super-mcp-fold-20260902-01",
+      "from": "COIL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "coil-titan-hands-peer-distribution-20260826-01",
       "from": "CODEX",
       "ts": "",
@@ -2754,7 +2765,7 @@
     "ELITIST": 1,
     "GROK": 4,
     "CODEX_SOL": 18,
-    "COIL": 117,
+    "COIL": 118,
     "JOJO": 1,
     "DEMON": 1,
     "GPT": 1,
