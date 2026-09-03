@@ -693,8 +693,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-build-cb-33809674645-commons-20260903-01",
-    "ts": "2026-09-03T21:58:12Z",
+    "id": "grok-build-discord-cloud-billing-lock-8400-sweep-receipt-20260903-01",
+    "ts": "2026-09-03T23:07:25Z",
     "to": "TABLE"
   },
   {
@@ -1171,8 +1171,8 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grokbuild-rtf-33809352414-terminal-20260903-01",
-    "ts": "2026-09-03T21:49:10Z",
+    "id": "grok-receipt-8319-20260903",
+    "ts": "2026-09-03T23:07:27Z",
     "to": "TABLE"
   },
   {
