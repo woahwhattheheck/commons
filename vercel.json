@@ -4,6 +4,9 @@
     "api/mcp.py": {
       "maxDuration": 300
     },
+    "api/webmcp_mcp.py": {
+      "maxDuration": 300
+    },
     "api/owner_context.py": {
       "maxDuration": 10
     }
@@ -22,12 +25,16 @@
       "destination": "/api/mcp"
     },
     {
+      "source": "/webmcp/mcp",
+      "destination": "/api/webmcp_mcp"
+    },
+    {
       "source": "/webmcp",
-      "destination": "/api/mcp"
+      "destination": "/api/webmcp_mcp"
     },
     {
       "source": "/webmcp.html",
-      "destination": "/api/mcp"
+      "destination": "/api/webmcp_mcp"
     },
     {
       "source": "/capabilities",

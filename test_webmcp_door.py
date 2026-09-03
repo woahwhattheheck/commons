@@ -47,8 +47,9 @@ class WebmcpDoorTests(unittest.TestCase):
         rewrites = json.loads(VERCEL.read_text(encoding="utf-8"))["rewrites"]
         by_source = {row["source"]: row["destination"] for row in rewrites}
         self.assertEqual(by_source["/mcp"], "/api/mcp")
-        self.assertEqual(by_source["/webmcp"], "/api/mcp")
-        self.assertEqual(by_source["/webmcp.html"], "/api/mcp")
+        self.assertEqual(by_source["/webmcp"], "/api/webmcp_mcp")
+        self.assertEqual(by_source["/webmcp.html"], "/api/webmcp_mcp")
+        self.assertEqual(by_source["/webmcp/mcp"], "/api/webmcp_mcp")
 
     def test_production_workflow_watches_the_door(self) -> None:
         text = WORKFLOW.read_text(encoding="utf-8")
