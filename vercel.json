@@ -22,6 +22,14 @@
       "destination": "/api/mcp"
     },
     {
+      "source": "/webmcp",
+      "destination": "/api/mcp"
+    },
+    {
+      "source": "/webmcp.html",
+      "destination": "/api/mcp"
+    },
+    {
       "source": "/capabilities",
       "destination": "/api/mcp"
     },
