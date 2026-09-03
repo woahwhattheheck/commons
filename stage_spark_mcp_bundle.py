@@ -17,7 +17,6 @@ HOBBY_UPLOAD_CAP = 5000
 
 RUNTIME_FILES = (
     "api/mcp.py",
-    "api/webmcp_mcp.py",
     "api/owner_context.py",
     "commons_mcp.py",
     "commons_mcp_app.html",
@@ -80,7 +79,6 @@ def main(argv: list[str] | None = None) -> int:
     copied = stage_bundle(Path(args.src), Path(args.dst))
     print("staged", len(copied), "files")
     print("includes_api_mcp", "api/mcp.py" in copied)
-    print("includes_webmcp_mcp", "api/webmcp_mcp.py" in copied)
     return 0
 
 
