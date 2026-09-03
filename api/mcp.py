@@ -472,6 +472,18 @@ class handler(BaseHTTPRequestHandler):
         if path == SEND_PATH:
             self._send_html(200, SEND_PAGE_HTML)
             return
+        if path in {"/webmcp", "/webmcp.html"}:
+            html_path = Path(__file__).resolve().parent.parent / "webmcp.html"
+            try:
+                body = html_path.read_bytes()
+            except OSError:
+                self.send_response(404)
+                self._common_headers()
+                self.send_header("Content-Length", "0")
+                self.end_headers()
+                return
+            self._send_html(200, body)
+            return
         if path == "/carriers" or path.startswith("/carriers/"):
             name = "" if path == "/carriers" else path[len("/carriers/"):]
             status, payload = load_carrier_card(name or None)
