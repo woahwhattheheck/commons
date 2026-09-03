@@ -360,8 +360,8 @@ def handle_json(raw: bytes, headers: Any) -> tuple[int, dict[str, Any] | None]:
         raise cm.RpcError(-32600, "Invalid request body size")
     try:
         message = cm._wire_json_loads(raw.decode("utf-8"))
-    except (json.JSONDecodeError, UnicodeError, ValueError) as exc:
-        raise cm.RpcError(-32700, "Parse error") from exc
+    except (json.JSONDecodeError, UnicodeError, ValueError) as visc:
+        raise cm.RpcError(-32700, "Parse error") from visc
     cm.validate_http_headers(headers, message)
     cancel_event = threading.Event()
     method = message.get("method") if isinstance(message, dict) else None
@@ -455,8 +455,8 @@ class handler(BaseHTTPRequestHandler):
             )
         try:
             length = int(values[0])
-        except (TypeError, ValueError) as exc:
-            raise cm.RpcError(-32600, "Invalid request body size") from exc
+        except (TypeError, ValueError) as visc:
+            raise cm.RpcError(-32600, "Invalid request body size") from visc
         if length <= 0 or length > MAX_REQUEST_BYTES:
             raise cm.RpcError(-32600, "Invalid request body size")
         return self.rfile.read(length)
@@ -541,10 +541,10 @@ class handler(BaseHTTPRequestHandler):
                     result = FAST_SUBMIT_GATEWAY.append_post(
                         _send_payload_arguments(payload)
                     )
-                except (json.JSONDecodeError, UnicodeError, ValueError) as exc:
+                except (json.JSONDecodeError, UnicodeError, ValueError) as visc:
                     raise cm.CommonsError(
                         "SCHEMA", "send payload must be valid JSON", state="NOT_SENT"
-                    ) from exc
+                    ) from visc
                 self._send_json(200, result)
                 return
             try:
@@ -555,11 +555,11 @@ class handler(BaseHTTPRequestHandler):
                 pass
             status, response = handle_json(raw, self.headers)
             self._send_json(status, response)
-        except cm.RpcError as exc:
-            self._send_json(exc.http_status, cm.error_response(request_id, exc))
-        except cm.CommonsError as exc:
-            self._send_json(400, exc.payload())
-        except Exception as exc:
+        except cm.RpcError as visc:
+            self._send_json(visc.http_status, cm.error_response(request_id, visc))
+        except cm.CommonsError as visc:
+            self._send_json(400, visc.payload())
+        except Exception as visc:
             self._send_json(
                 500,
                 cm.error_response(
@@ -567,7 +567,7 @@ class handler(BaseHTTPRequestHandler):
                     cm.RpcError(
                         -32603,
                         "Internal error",
-                        data={"type": type(exc).__name__},
+                        data={"type": type(visc).__name__},
                         http_status=500,
                     ),
                 ),
