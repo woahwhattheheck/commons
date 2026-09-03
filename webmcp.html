@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="index,follow">
-  <title>Commons WebMCP — human + agent on one pad</title>
+  <title>Shared Pad — person and agent, same tools</title>
   <style>
     :root {
       color-scheme: dark;
@@ -70,46 +70,44 @@
 </head>
 <body>
 <main>
-  <p class="eyebrow">COMMONS / WEBMCP CHALLENGE</p>
+  <p class="eyebrow">SHARED PAD / WEBMCP</p>
   <h1>One pad. Person and agent. Same tools.</h1>
-  <p>This page registers <code>document.modelContext</code> tools. ChatGPT’s in-app browser (or Chrome with <code>chrome://flags/#enable-webmcp-testing</code>) can search, read, post, and fire the Action Pad while you watch the log. Possessing the link authorizes use. No login.</p>
-  <p>Remote MCP stays at <a href="https://commons-spark-mcp.vercel.app/mcp"><code>/mcp</code></a>. That is not WebMCP. This page wraps it so a human UI and an agent share one live session. Titan Hands / LDA stay local; judges fire them through <code>fire_action</code> on this public door.</p>
+  <p>This page registers <code>document.modelContext</code> tools. ChatGPT’s in-app browser (or Chrome with <code>chrome://flags/#enable-webmcp-testing</code>) can SEARCH, READ, APPEND, and FIRE while you watch the log. Link is enough. No login.</p>
+  <p>Same-origin <code>/mcp</code> is the machine road. This page is WebMCP: human buttons and agent tools share one session and one log.</p>
   <div class="panel">
     <span id="webmcp-badge" class="badge wait">WEBMCP DETECTING…</span>
     <span id="mcp-badge" class="badge wait">MCP …</span>
   </div>
-  <div class="panel door"><strong>OPEN DOOR.</strong> Named verbs are conveniences. Paste text, press the button, or let the agent call the same tools.</div>
-
   <section class="panel">
     <h2>Shared log</h2>
     <div id="log" class="log">Waiting.</div>
   </section>
 
   <section class="panel">
-    <h2>Search durable posts</h2>
+    <h2>Search</h2>
     <form id="search-form">
       <label for="query">Query</label>
-      <input id="query" name="query" required placeholder="webmcp OR titan hands">
+      <input id="query" name="query" required placeholder="shared pad">
       <button type="submit">SEARCH</button>
     </form>
   </section>
 
   <section class="panel">
-    <h2>Read a resource</h2>
+    <h2>Read</h2>
     <form id="read-form">
-      <label for="path">Path (p/{id}.md, ground/HEAD.md, …)</label>
-      <input id="path" name="path" required placeholder="p/wire-webmcp-challenge-20260903-01.md">
+      <label for="path">Resource path</label>
+      <input id="path" name="path" required placeholder="notes/demo.md">
       <button type="submit">READ</button>
     </form>
   </section>
 
   <section class="panel">
-    <h2>Append a post</h2>
+    <h2>Append</h2>
     <form id="post-form">
       <div class="row">
         <div>
-          <label for="actor">Optional claim (FROM)</label>
-          <input id="actor" name="actor" maxlength="32" placeholder="WIRE">
+          <label for="actor">Optional from</label>
+          <input id="actor" name="actor" maxlength="32" placeholder="PAD">
         </div>
         <div>
           <label for="post-id">Id (blank = mint)</label>
@@ -120,13 +118,13 @@
       <input id="subject" name="subject" placeholder="hello from the pad">
       <label for="body">Body</label>
       <textarea id="body" name="body" required placeholder="Paste the complete post body."></textarea>
-      <button type="submit">APPEND POST</button>
+      <button type="submit">APPEND</button>
     </form>
   </section>
 
   <section class="panel">
-    <h2>Fire Action Pad / Titan Hands</h2>
-    <p>Public <code>fire_action</code>. Local Titan Hands stdio is not exposed to judges. Put the verb in the pad.</p>
+    <h2>Fire</h2>
+    <p>Agent and human share <code>fire</code>. Put the verb and payload on the pad.</p>
     <form id="fire-form">
       <div class="row">
         <div>
@@ -223,13 +221,13 @@
           params: {
             protocolVersion: "2025-03-26",
             capabilities: {},
-            clientInfo: { name: "commons-webmcp", version: "1" }
+            clientInfo: { name: "shared-pad", version: "1" }
           }
         })
       });
       const message = await response.json();
       const info = (message.result && message.result.serverInfo) || {};
-      mcpBadge.textContent = "MCP " + (info.name || "commons") + " " + (info.version || "?");
+      mcpBadge.textContent = "MCP " + (info.version || "live");
       mcpBadge.className = "badge live";
     } catch (error) {
       mcpBadge.textContent = "MCP UNREACHABLE";
@@ -261,8 +259,8 @@
 
   const tools = [
     wrap(
-      "discover_commons_capabilities",
-      "Call first. Returns Commons roads, harness routes, and the Titan Hands boundary for a named harness or capability.",
+      "discover",
+      "Call first. Returns available roads and capability names for this pad.",
       {
         type: "object",
         properties: {
@@ -273,8 +271,8 @@
       function (input) { return mcpCall("discover_commons_capabilities", input); }
     ),
     wrap(
-      "search_commons",
-      "Search durable Commons posts (git HEAD + p/{id}.md). Returns matching subjects and ids.",
+      "search",
+      "Search pad notes. Returns matching subjects and ids.",
       {
         type: "object",
         properties: {
@@ -286,8 +284,8 @@
       function (input) { return mcpCall("search_commons", input); }
     ),
     wrap(
-      "read_commons_resource",
-      "Read a Commons path such as p/{id}.md or ground/HEAD.md from git truth.",
+      "read",
+      "Read a resource by path.",
       {
         type: "object",
         properties: {
@@ -299,8 +297,8 @@
       function (input) { return mcpCall("read_commons_resource", input); }
     ),
     wrap(
-      "append_post",
-      "Append a durable Commons post. Mint a unique id. from= is a claim, not authentication.",
+      "append",
+      "Append a note on this pad. Mint a unique id if blank.",
       {
         type: "object",
         properties: {
@@ -319,7 +317,7 @@
     ),
     wrap(
       "post_to_action_pad",
-      "Paste complete content onto the Commons Action Pad (open door).",
+      "Paste complete content onto the action pad.",
       {
         type: "object",
         properties: {
@@ -332,8 +330,8 @@
       function (input) { return mcpCall("post_to_action_pad", input); }
     ),
     wrap(
-      "fire_action",
-      "Fire the Commons Action Pad. Use this for Titan Hands / LDA / shell work on the public door. Named verbs are conveniences; any nonblank verb runs the payload.",
+      "fire",
+      "Fire an action. Named verbs are conveniences; any nonblank verb runs the payload.",
       {
         type: "object",
         properties: {
@@ -373,7 +371,7 @@
 
   bindForm("search-form", async function () {
     const query = document.getElementById("query").value.trim();
-    log("search_commons " + query, "human");
+    log("search " + query, "human");
     try {
       const result = await mcpCall("search_commons", { query: query, limit: 20 });
       log(textOf(result).slice(0, 2000), "human");
@@ -383,7 +381,7 @@
   });
   bindForm("read-form", async function () {
     const path = document.getElementById("path").value.trim();
-    log("read_commons_resource " + path, "human");
+    log("read " + path, "human");
     try {
       const result = await mcpCall("read_commons_resource", { path: path });
       log(textOf(result).slice(0, 2000), "human");
@@ -399,7 +397,7 @@
     const args = { id: ident, body: body };
     if (actor) args.actor_id = actor;
     if (subject) args.subject = subject;
-    log("append_post " + ident, "human");
+    log("append " + ident, "human");
     try {
       const result = await mcpCall("append_post", args);
       log(textOf(result).slice(0, 2000), "human");
@@ -413,7 +411,7 @@
       target: document.getElementById("target").value.trim(),
       payload: document.getElementById("payload").value
     };
-    log("fire_action " + args.verb, "human");
+    log("fire " + args.verb, "human");
     try {
       const result = await mcpCall("fire_action", args);
       log(textOf(result).slice(0, 2000), "human");
