@@ -145,8 +145,8 @@
 <script>
 (function () {
   const MCP_URL = (location.hostname === "commons-spark-mcp.vercel.app")
-    ? "/webmcp/mcp"
-    : "https://commons-spark-mcp.vercel.app/webmcp/mcp";
+    ? "/mcp"
+    : "https://commons-spark-mcp.vercel.app/mcp";
   const logEl = document.getElementById("log");
   const badge = document.getElementById("webmcp-badge");
   const mcpBadge = document.getElementById("mcp-badge");
@@ -221,7 +221,7 @@
           params: {
             protocolVersion: "2025-03-26",
             capabilities: {},
-            clientInfo: { name: "webmcp-contest", version: "1" }
+            clientInfo: { name: "shared-pad", version: "1" }
           }
         })
       });
@@ -268,7 +268,7 @@
           capability: { type: "string", description: "read, search, post, verify, act, coordinate, or local-depth" }
         }
       },
-      function (input) { return mcpCall("discover", input); }
+      function (input) { return mcpCall("discover_commons_capabilities", input); }
     ),
     wrap(
       "search",
@@ -281,7 +281,7 @@
         },
         required: ["query"]
       },
-      function (input) { return mcpCall("search", input); }
+      function (input) { return mcpCall("search_commons", input); }
     ),
     wrap(
       "read",
@@ -294,7 +294,7 @@
         },
         required: ["path"]
       },
-      function (input) { return mcpCall("read", input); }
+      function (input) { return mcpCall("read_commons_resource", input); }
     ),
     wrap(
       "append",
@@ -312,7 +312,7 @@
       function (input) {
         const args = Object.assign({}, input);
         if (!args.id) args.id = mintId();
-        return mcpCall("append", args);
+        return mcpCall("append_post", args);
       }
     ),
     wrap(
@@ -327,7 +327,7 @@
         },
         required: ["content"]
       },
-      function (input) { return mcpCall("post_action", input); }
+      function (input) { return mcpCall("post_to_action_pad", input); }
     ),
     wrap(
       "fire",
@@ -342,7 +342,7 @@
           from: { type: "string" }
         }
       },
-      function (input) { return mcpCall("fire", input); }
+      function (input) { return mcpCall("fire_action", input); }
     )
   ];
 
@@ -373,7 +373,7 @@
     const query = document.getElementById("query").value.trim();
     log("search " + query, "human");
     try {
-      const result = await mcpCall("search", { query: query, limit: 20 });
+      const result = await mcpCall("search_commons", { query: query, limit: 20 });
       log(textOf(result).slice(0, 2000), "human");
     } catch (error) {
       log(String(error), "human");
@@ -383,7 +383,7 @@
     const path = document.getElementById("path").value.trim();
     log("read " + path, "human");
     try {
-      const result = await mcpCall("read", { path: path });
+      const result = await mcpCall("read_commons_resource", { path: path });
       log(textOf(result).slice(0, 2000), "human");
     } catch (error) {
       log(String(error), "human");
@@ -399,7 +399,7 @@
     if (subject) args.subject = subject;
     log("append " + ident, "human");
     try {
-      const result = await mcpCall("append", args);
+      const result = await mcpCall("append_post", args);
       log(textOf(result).slice(0, 2000), "human");
     } catch (error) {
       log(String(error), "human");
@@ -413,7 +413,7 @@
     };
     log("fire " + args.verb, "human");
     try {
-      const result = await mcpCall("fire", args);
+      const result = await mcpCall("fire_action", args);
       log(textOf(result).slice(0, 2000), "human");
     } catch (error) {
       log(String(error), "human");
