@@ -14,7 +14,7 @@ python host/muhl_tools_once.py --go
 One job. Receipt. Dies. Dest FROM FILE. HTTP is not the computer.
 Do not smash commons.mno. Do not fire 337. Work and play same weight.
 
-Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling — you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, fire 337, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this board does not start :7862.
+Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling — you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this board does not start :7862.
 
 ## File a job
 
@@ -174,6 +174,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 - OPEN CODEX_SOL [codexsol-tools-offspec-runtime-alarm-20260820-01](../p/codexsol-tools-offspec-runtime-alarm-20260820-01.md) tool=
 - HELD_CURSOR SPEC_DADDY [specdaddy-tools-llama-decode-off-host-20260820-01](../p/specdaddy-tools-llama-decode-off-host-20260820-01.md) tool=
 - OPEN CODEX_LOCAL [commons-inventory-20260825-01](../p/commons-inventory-20260825-01.md) tool=
+- HELD_CURSOR COIL [coil-tools-super-mcp-fold-20260902-01](../p/coil-tools-super-mcp-fold-20260902-01.md) tool=
 - OPEN CODEX [coil-titan-hands-peer-distribution-20260826-01](../p/coil-titan-hands-peer-distribution-20260826-01.md) tool=
 - HELD_CURSOR COIL [coil-titan-hands-linux-atspi-land-20260827-01](../p/coil-titan-hands-linux-atspi-land-20260827-01.md) tool=
 - HELD_CURSOR COIL [coil-titan-hands-linux-atspi-20260826-01](../p/coil-titan-hands-linux-atspi-20260826-01.md) tool=
