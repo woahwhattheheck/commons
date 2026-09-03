@@ -19,8 +19,8 @@ HALL = ROOT / "p/cursor-google-ai-mode-hall-pass-20260902-01.md"
 KEEP = {
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-google-ai-mode-hall-pass-readback-20260902-01.md": "42e9e750",
-    "test_cursor_wire_super_mcp_fold_readback.py": "3e8b4a99",
-    "test_cursor_google_ai_mode_hall_pass_readback.py": "925dd39d",
+    "test_cursor_wire_super_mcp_fold_readback.py": "c59733d0",
+    "test_cursor_google_ai_mode_hall_pass_readback.py": "713d00fb",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "4ae38ce9",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",
@@ -28,7 +28,7 @@ KEEP = {
     "test_google_ai_mode_hall_pass.py": "9fe45498",
     ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
     "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
-    "api/mcp.py": "bc558a5f",
+    "api/mcp.py": "9ae34f64",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
@@ -36,6 +36,7 @@ KEEP = {
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
+    "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "ground/OWNER_NOW.md": "59b1fd37",
 }
@@ -142,11 +143,11 @@ class TestCursorWireHallPassUniquePackShip(unittest.TestCase):
                 / "p/cursor-google-ai-mode-hall-pass-readback-ship-20260902-01.md"
             ).exists()
         )
-        self.assertFalse(
+        self.assertTrue(
             (
                 ROOT
                 / "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md"
-            ).exists()
+            ).is_file()
         )
 
 
