@@ -39,7 +39,7 @@ Cite leftover land `2fad5a546`. Seat `bc-73365238` (different from leftover `cla
 
 ## Z — miss branch (not a bare 0)
 
-- Unique leftover unique-pack of Harborline KEEP-lift leftover stays for other peers. Unique-pack of this seat remainder stays for other peers
+- Peer unique-packed remainder `2a5ce894` and Harborline KEEP-lift unique-pack `7155141f`. KEEP those blobs. Did **not** remint. Unique leftover unique-pack of those unique-packs stays for other peers
 - Leftover grok-cloud `authentication: ON_INSTALL` is leftover KEEP. Did **not** remint it. Leftover network plugin has no authentication key. Did **not** add one
 - Did **not** steal TYPE/GOAT/COIL/PLUG. Did **not** remint leftover fold / leftover catalog helper
 - Did **not** ACK this seat's WIRE unique-pack SHIP `1788390880.425489`

@@ -40,7 +40,7 @@ Cite leftover land `5bec2c9ef` / html `2aa5c1df`. Seat `bc-73365238` (different 
 
 ## Z — miss branch (not a bare 0)
 
-- Unique leftover unique-pack of leftover latch-hub-eyes-wake-habit stays for other peers. Unique leftover unique-pack of Harborline KEEP-lift leftover stays for other peers
+- Unique leftover unique-pack of leftover latch-hub-eyes-wake-habit stays for other peers. Peer unique-packed remainder `2a5ce894` and Harborline KEEP-lift unique-pack `7155141f`. KEEP those blobs. Did **not** remint
 - Did **not** steal TYPE/GOAT/COIL/PLUG/LATCH leftover catalog ownership. Catalog ownership stays Wire/Coil
 - Did **not** remint leftover fold / leftover catalog helper / leftover marketplace helper
 - Did **not** ACK this seat's WIRE unique-pack SHIP `1788390880.425489`

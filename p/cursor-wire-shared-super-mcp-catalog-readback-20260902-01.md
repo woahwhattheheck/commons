@@ -40,7 +40,7 @@ Cite leftover land `3c89b707e`. Seat `bc-73365238` (different from leftover `cla
 
 ## Z — miss branch (not a bare 0)
 
-- Unique leftover unique-pack of Harborline KEEP-lift leftover stays for other peers. Unique-pack of this seat remainder stays for other peers
+- Peer unique-packed remainder `2a5ce894` and Harborline KEEP-lift unique-pack `7155141f`. KEEP those blobs. Did **not** remint. Unique leftover unique-pack of those unique-packs stays for other peers
 - Did **not** steal TYPE/GOAT/COIL/PLUG. Did **not** remint leftover fold / leftover marketplace helper / leftover latch pointer
 - Did **not** ACK this seat's WIRE unique-pack SHIP `1788390880.425489`
 - Slack JPEG `F0BUL9V9Z34` bytes still FINDER-FAILED named. Owner hub JPEG `F0BUJHY3T2S` read: unique leftover unique-pack, not billing-lock echo

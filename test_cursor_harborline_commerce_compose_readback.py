@@ -26,6 +26,8 @@ KEEP = {
     ".agents/skills/commerce-agents/SKILL.md": "1f93c4a2",
     "test_commerce_agents.py": "78a158b3",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
+    "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
+    "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "host/commerce_agents_same_loop.py": "c90f6e50",
     "test_commerce_agents_same_loop.py": "623e99e8",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",

@@ -25,13 +25,15 @@ KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "154b7b67",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "7963a924",
-    "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "df779010",
-    "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "3208011a",
+    "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
+    "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
+    "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-google-ai-mode-hall-pass-20260902-01.md": "4bb8b78d",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
+    "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
+    "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "bc558a5f",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
@@ -104,15 +106,6 @@ class TestCursorWireSuperMcpFoldReadback(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", text)
         self.assertFalse((ROOT / "marketplace.html").exists())
         self.assertFalse((ROOT / "CLAUDE_CORNER.md").exists())
-        self.assertFalse(
-            (ROOT / "p/cursor-big-huge-commerce-agents-readback-20260902-01.md").exists()
-        )
-        self.assertFalse(
-            (
-                ROOT
-                / "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md"
-            ).exists()
-        )
         self.assertTrue(
             (
                 ROOT

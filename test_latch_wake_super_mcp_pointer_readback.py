@@ -27,6 +27,8 @@ KEEP = {
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
+    "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
+    "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "bc558a5f",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
@@ -94,15 +96,6 @@ class TestLatchWakeSuperMcpPointerReadback(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", text)
         self.assertFalse((ROOT / "marketplace.html").exists())
         self.assertFalse((ROOT / "CLAUDE_CORNER.md").exists())
-        self.assertFalse(
-            (ROOT / "p/cursor-big-huge-commerce-agents-readback-20260902-01.md").exists()
-        )
-        self.assertFalse(
-            (
-                ROOT
-                / "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md"
-            ).exists()
-        )
         self.assertFalse(
             (
                 ROOT
