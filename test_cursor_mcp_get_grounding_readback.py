@@ -21,7 +21,7 @@ KEEP = {
     "commons_mcp.py": "23996ca3",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
-    "api/mcp.py": "bc558a5f",
+    "api/mcp.py": "9ae34f64",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",

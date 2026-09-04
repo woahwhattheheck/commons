@@ -19,7 +19,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
-    "api/mcp.py": "bc558a5f",
+    "api/mcp.py": "9ae34f64",
 }
 
 
@@ -40,7 +40,7 @@ class TestStealableLanesOccupancy(unittest.TestCase):
 
     def test_leftover_tests_keep_lifted_after_337_remint(self) -> None:
         blob = git_blob("test_stealable_lanes.py")
-        self.assertTrue(blob.startswith("a4d48d19"), blob)
+        self.assertTrue(blob.startswith("0cfb8d14"), blob)
         self.assertNotEqual(KEEP.get("test_stealable_lanes.py"), "721adc44")
         occupancy = RECEIPT.read_text(encoding="utf-8")
         self.assertIn("721adc44", occupancy)

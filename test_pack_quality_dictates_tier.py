@@ -32,7 +32,7 @@ KEEP = {
     "ground/OWNER_NOW.md": "59b1fd37",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
-    "api/mcp.py": "bc558a5f",
+    "api/mcp.py": "9ae34f64",
 }
 
 

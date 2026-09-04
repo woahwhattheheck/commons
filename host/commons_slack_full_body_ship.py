@@ -20,7 +20,7 @@ THIS_SEAT = "bc-7e34a47c"
 KEEP = {
     f"p/{LEFTOVER_ID}.md": "86f4eddc",
     "host/commons_slack_full_body.py": "16ba0f4c",
-    "test_commons_slack_full_body.py": "7388c998",
+    "test_commons_slack_full_body.py": "d29e1ded",
     "ground/COMMONS_SLACK_FULL_BODY.json": "d5dba5e8",
     "ground/COMMONS_SLACK_FULL_BODY.md": "f23df2ec",
     "commons-slack.html": "4cbca421",

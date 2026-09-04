@@ -31,7 +31,7 @@ KEEP = {
     "autogtm.html": "9d8b3e85",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
-    "api/mcp.py": "bc558a5f",
+    "api/mcp.py": "9ae34f64",
     "grounding.html": "abb91caf",
     "repo_pulse.py": "5d716a63",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
