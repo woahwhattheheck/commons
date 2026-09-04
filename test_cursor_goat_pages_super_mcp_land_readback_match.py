@@ -18,10 +18,10 @@ COIL = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 
 KEEP = {
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "38146134",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "e7f70077",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "154b7b67",
-    "boards.html": "3fa79f12",
+    "boards.html": "c824dc4d",
     "wire.html": "4ae38ce9",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
@@ -96,9 +96,8 @@ class TestCursorGoatPagesSuperMcpLandReadbackMatch(unittest.TestCase):
         unique_pack = UNIQUE_PACK.read_text(encoding="utf-8")
         self.assertIn('boards.html row "Shared super MCP"', leftover)
         self.assertIn('href="./grounding.html">first visit</a>', boards)
-        self.assertIn('href="./wire.html">Shared super MCP</a>', boards)
-        self.assertIn("goat-pages-super-mcp-land-20260902-01", boards)
-        self.assertIn("Not a second MCP", boards)
+        self.assertNotIn('href="./wire.html">Shared super MCP</a>', boards)
+        self.assertNotIn("goat-pages-super-mcp-land-20260902-01", boards)
         self.assertNotIn('href="./wire.html"', hub)
         self.assertNotIn("Shared super MCP", hub)
         self.assertIn("FINDER-FAILED", unique_pack)
