@@ -1,9 +1,10 @@
 {
   "seq": 1565,
-  "head": "6a64ef8adc0a3b0df757c1f28a0f8afceaf17809",
-  "ts": "2026-09-04T01:06:38Z",
+  "head": "6f73b46f601851d5d4bde32b47c61a55534f9e8d",
+  "ts": "2026-09-04T01:21:49Z",
   "post_count": 12182,
   "newest": [
+    "cursor-webmcp-adapter-keep-lift-20260903-01",
     "action-20260903232441-86e432b85c23",
     "action-20260903232852-acadf57fbaf4",
     "action-20260903232951-86e432b85c23",
@@ -12,8 +13,7 @@
     "action-20260903235521-88635e57891c",
     "action-20260903235804-88635e57891c",
     "action-20260904000427-88635e57891c",
-    "discord-1544799986750070834",
-    "discord-1544802159521177801"
+    "discord-1544799986750070834"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
