@@ -22,13 +22,19 @@
 # (vercel deploy --prod --yes in an unlinked directory auto-creates a project
 # named after the directory) lands on the right project name if vercel link
 # fails.
+#
+# Abbreviated SHA refs (ec8961c, commons run 33849697120) must be expanded to a
+# 40-char SHA before actions/checkout@v4. That action's fetch-depth:1 treats
+# anything else as refs/heads/<ref>* / refs/tags/<ref>* and git fetch exits 1.
+# host/webmcp_pad_ref.py is the tested expander; this job fetches that one file
+# from GITHUB_SHA instead of cloning the Commons corpus.
 name: webmcp-pad-production
 
 on:
   workflow_dispatch:
     inputs:
       ref:
-        description: "woahwhattheheck/webmcp-pad ref to deploy (branch, tag, or full SHA)"
+        description: "woahwhattheheck/webmcp-pad ref to deploy (branch, tag, full SHA, or abbreviated SHA)"
         required: false
         default: "main"
       project:
@@ -115,12 +121,31 @@ jobs:
             } | tee -a "$GITHUB_STEP_SUMMARY"
           fi
 
+      - name: expand abbreviated pad SHA so checkout can fetch it
+        if: steps.creds.outputs.present == 'true'
+        id: padref
+        env:
+          GH_TOKEN: ${{ secrets.WEBMCP_PAD_TOKEN || github.token }}
+        run: |
+          set -euo pipefail
+          # One-file fetch of the tested expander at this workflow's SHA. Do
+          # not clone the Commons corpus (37k files) just to expand a short SHA.
+          curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github.raw" \
+            "https://api.github.com/repos/${GITHUB_REPOSITORY}/contents/host/webmcp_pad_ref.py?ref=${GITHUB_SHA}" \
+            -o /tmp/webmcp_pad_ref.py
+          python3 /tmp/webmcp_pad_ref.py \
+            --repo "${PAD_REPO}" \
+            --ref "${PAD_REF}" \
+            --github-output "${GITHUB_OUTPUT}"
+
       - name: checkout woahwhattheheck/webmcp-pad at the requested ref
         if: steps.creds.outputs.present == 'true'
         uses: actions/checkout@v4
         with:
           repository: woahwhattheheck/webmcp-pad
-          ref: ${{ inputs.ref }}
+          ref: ${{ steps.padref.outputs.ref }}
           path: webmcp-pad
           fetch-depth: 1
           persist-credentials: false
