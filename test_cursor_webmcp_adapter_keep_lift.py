@@ -17,10 +17,11 @@ ADAPTER = ROOT / "api" / "mcp.py"
 
 KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
-    "webmcp.html": "b18ec98e",
+    "webmcp.html": "f2757068",
     "api/mcp.py": "9ae34f64",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
-    "test_cursor_webmcp_contest.py": "dd92af29",
+    "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
+    "p/cursor-webmcp-ship-20260903-01.md": "15831799",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
@@ -160,8 +161,8 @@ class TestCursorWebmcpAdapterKeepLift(unittest.TestCase):
         self.assertFalse(
             (ROOT / "p/cursor-wire-webmcp-challenge-readback-20260903-01.md").exists()
         )
-        self.assertFalse(
-            (ROOT / "p/cursor-webmcp-judge-url-20260903-01.md").exists()
+        self.assertTrue(
+            (ROOT / "p/cursor-webmcp-judge-url-20260903-01.md").is_file()
         )
 
 

@@ -27,6 +27,7 @@ KEEP = {
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
+    "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
 }
