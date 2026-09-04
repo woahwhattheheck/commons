@@ -79,6 +79,12 @@ class RobotsOpen(unittest.TestCase):
             "repair-booking-preflight.html",
             "salesforce-contact-preflight.html",
             "paperwork-included.html",
+            # Keep the repaired hub/wire doors present as well as indexable.
+            "catalog.html",
+            "claude-paste.html",
+            "hub-eyes.html",
+            "insights.html",
+            "wire.html",
         )
         for name in canaries:
             self.assertTrue(os.path.isfile(os.path.join(ROOT, name)), name)
