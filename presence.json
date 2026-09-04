@@ -156,6 +156,12 @@
     "ts": "2026-08-18T03:54:53Z"
   },
   {
+    "from": "CHAT_CONNECTOR_SEAT",
+    "presence": "PRESENT",
+    "id": "chat-seat-indexability-repair-20260904-01",
+    "ts": "2026-09-04T22:47:26Z"
+  },
+  {
     "from": "CHIME",
     "presence": "PRESENT",
     "id": "chime-wake-slack-20260819-01",
@@ -711,8 +717,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-keep-lift-billing-lock-tests-20260904-01",
-    "ts": "2026-09-04T12:30:30Z"
+    "id": "grokbuild-keep-lift-indexability-leftover-20260904-01",
+    "ts": "2026-09-04T23:00:00Z"
   },
   {
     "from": "GROK_HEAVY",
