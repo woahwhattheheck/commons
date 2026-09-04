@@ -145,8 +145,8 @@ jobs:
           if ! grep -q 'registerTool' pad.html; then
             BAD="${BAD} pad.html-has-no-registerTool"
           fi
-          if ! grep -q 'webmcp-pad' api/mcp.py; then
-            BAD="${BAD} api/mcp.py-does-not-name-webmcp-pad"
+          if ! grep -Eq 'titanmcp|webmcp-pad' api/mcp.py; then
+            BAD="${BAD} api/mcp.py-does-not-name-titanmcp-or-webmcp-pad"
           fi
           if [ -d pad_blob ] || [ -d api/_blob ]; then
             BAD="${BAD} self-extracting-blob-directories-present"
@@ -158,7 +158,7 @@ jobs:
               echo "${PAD_REPO}@${PAD_REF} is not plain source:${BAD}"
               echo
               echo "The judge page must contain literal registerTool and the adapter must"
-              echo "name serverInfo webmcp-pad. A self-extracting base64 pad.html fails both"
+              echo "name serverInfo titanmcp (or webmcp-pad). A self-extracting base64 pad.html fails both"
               echo "and is not readable source for the OSS-repo requirement."
               echo
               echo "Fix: re-run this workflow with ref set to the branch that holds plain"
@@ -290,7 +290,7 @@ jobs:
                 NAME="$(jq -r '.result.serverInfo.name // empty' /tmp/init.json 2>/dev/null)" || NAME=""
                 VER="$(jq -r '.result.serverInfo.version // empty' /tmp/init.json 2>/dev/null)" || VER=""
               fi
-              if [ "${NAME}" = "webmcp-pad" ]; then OK_MCP=yes; fi
+              case "${NAME}" in titanmcp|webmcp-pad) OK_MCP=yes ;; esac
               echo "attempt ${ATTEMPT} ${U} http=${CODE} html=${OK_HTML} mcp=${OK_MCP} serverInfo=${NAME:-none}/${VER:-none}"
               if [ "${OK_HTML}" = "yes" ] && [ "${OK_MCP}" = "yes" ]; then
                 LIVE="${U}"
@@ -310,7 +310,7 @@ jobs:
               echo
               echo "Both are required, on the same origin:"
               echo "- GET <origin>/webmcp -> 200, text/html, body contains registerTool"
-              echo "- POST <origin>/mcp initialize -> result.serverInfo.name == webmcp-pad"
+              echo "- POST <origin>/mcp initialize -> result.serverInfo.name == titanmcp (or webmcp-pad)"
               echo
               echo "Last /webmcp status: ${CODE}. Last serverInfo.name: ${NAME:-none}."
             } | tee -a "$GITHUB_STEP_SUMMARY"
@@ -330,7 +330,7 @@ jobs:
           fi
           [ -n "${TOOL_COUNT}" ] || TOOL_COUNT=0
           MISSING=""
-          for want in create_room list_rooms post_message list_messages invite_agent set_role list_roles submit_task plan_task assign_piece list_assignments check_subscription create_play_token request_setup get_setup_status list_resource_power list_connectors get_connector attach_connector_to_room; do
+          for want in create_room list_rooms post_message list_messages invite_agent set_role list_roles list_operators get_operator submit_task plan_task assign_piece list_assignments check_subscription create_play_token request_setup get_setup_status list_research_power list_custom_tooling list_connectors get_connector attach_connector_to_room; do
             case " ${TOOL_NAMES} " in
               *" ${want} "*) : ;;
               *) MISSING="${MISSING} ${want}" ;;
@@ -354,7 +354,7 @@ jobs:
             echo "| deployment | ${DEPLOYMENT_URL} |"
             echo "| production alias | ${ALIAS_URL} |"
             echo "| judge page | ${LIVE}/webmcp -> 200 text/html, ${PAD_BYTES} bytes, registerTool present |"
-            echo "| MCP endpoint | ${LIVE}/mcp -> serverInfo webmcp-pad |"
+            echo "| MCP endpoint | ${LIVE}/mcp -> serverInfo ${NAME}/${VER} |"
             echo "| tools/list | ${TOOL_COUNT} tools |"
             echo "| /connectors/catalog.json | HTTP ${CAT_CODE} |"
             echo
