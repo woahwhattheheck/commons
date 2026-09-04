@@ -28,7 +28,7 @@ KEEP = {
     "p/grok-build-muhlnickel-spec-guard-33689243569-billing-lock-20260902-01.md": "7032fbcf",
     "test_grokbuild_muhlnickel_spec_guard_33689243569_billing_lock.py": "897ba184",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "b9dffb45",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "1b68a6b4",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
     "wire.html": "4ae38ce9",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",

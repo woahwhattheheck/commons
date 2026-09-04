@@ -15,7 +15,7 @@ TRACKER = ROOT / "p/grok-build-repair-tracker-mcp-get-20260902-01.md"
 
 KEEP = {
     "grounding.html": "abb91caf",
-    "api/mcp.py": "bc558a5f",
+    "api/mcp.py": "9ae34f64",
     "commons_mcp.py": "23996ca3",
     "test_mcp_get_open.py": "239564b9",
     "test_grounding_door.py": "ef9a7982",
