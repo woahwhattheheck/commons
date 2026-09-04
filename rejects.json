@@ -1,5 +1,15 @@
 [
   {
+    "id": "unparseable-grtqWQcU4wxV",
+    "from": "",
+    "to": "",
+    "reason": "unparseable-or-oversize bytes=206",
+    "ts": "2026-09-04T12:30:33Z",
+    "state": "INGEST_ERROR",
+    "event_id": "grtqWQcU4wxV",
+    "raw": "INTEGRATED 2b1ef464 PR 8744 leftover KEEP-lift grokbuild tests after goat leftover KEEP-lift. p/grok-keep-lift-billing-lock-tests-20260904-01.md on 36cd3096. Did not remint leftover receipts/adapter/boards."
+  },
+  {
     "id": "unparseable-Y7dCK4ET5l2N",
     "from": "",
     "to": "",
