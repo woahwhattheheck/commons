@@ -22,7 +22,7 @@ KEEP = {
     "p/codex-google-research-grok-automation-resource-delta-20260902-01.md": "0ba4c667",
     "p/codex-google-research-resource-delta-landed-20260902-01.md": "ee08c28d",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "4ae38ce9",
+    "wire.html": "5b8edbda",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",

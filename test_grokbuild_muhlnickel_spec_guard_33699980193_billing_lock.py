@@ -22,7 +22,7 @@ KEEP = {
     ".github/workflows/muhlnickel-spec-guard.yml": "7886bdf1",
     "open_door_guard.py": "4b053e43",
     "p/grokbuild-muhlnickel-spec-guard-33699600936-billing-lock-20260903-01.md": "e063cc7e",
-    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "d8144f2f",
+    "test_grokbuild_muhlnickel_spec_guard_33699600936_billing_lock.py": "fc182937",
     "p/grokbuild-muhlnickel-spec-guard-33689347386-billing-lock-20260902-01.md": "2c08e8ab",
     "test_grokbuild_muhlnickel_spec_guard_33689347386_billing_lock.py": "07e46f6f",
     "p/grokbuild-muhlnickel-spec-guard-33689088442-billing-lock-20260902-01.md": "61a98ddd",

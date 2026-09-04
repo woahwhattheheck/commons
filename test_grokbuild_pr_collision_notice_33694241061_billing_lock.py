@@ -28,7 +28,7 @@ KEEP = {
     "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "8498f5cb",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "2dc8a857",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "ca026c18",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",

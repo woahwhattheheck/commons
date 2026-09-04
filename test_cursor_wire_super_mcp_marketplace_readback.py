@@ -21,7 +21,7 @@ KEEP = {
     ".agents/plugins/marketplace.json": "97875086",
     "integrations/commons_network_plugin/.codex-plugin/plugin.json": "0bc6fd84",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "4ae38ce9",
+    "wire.html": "5b8edbda",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "36687c0c",
