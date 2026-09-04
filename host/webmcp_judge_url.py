@@ -150,7 +150,7 @@ def measure() -> dict[str, Any]:
         errors.append("adapter_size_reminted")
     if not adapter_blob.startswith("9ae34f64"):
         errors.append("adapter_reminted")
-    if not pad_blob.startswith("b18ec98e"):
+    if not pad_blob.startswith("f2757068"):
         errors.append("pad_reminted")
     if not wire_blob.startswith("0e815c6d"):
         errors.append("wire_receipt_reminted")

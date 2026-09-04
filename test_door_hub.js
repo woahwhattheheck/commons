@@ -142,6 +142,7 @@ const namedHomeReturnCanaries = [
   "permit-intake-receipt.html",
   "repair-booking-preflight.html",
   "salesforce-contact-preflight.html",
+  "webmcp.html",
 ];
 namedHomeReturnCanaries.forEach(function (name) {
   assert(rootHtmlPages.indexOf(name) !== -1, "named home-return canary is a root page: " + name);

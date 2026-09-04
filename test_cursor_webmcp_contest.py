@@ -18,7 +18,7 @@ WORKFLOW = ROOT / ".github" / "workflows" / "spark-mcp-production.yml"
 
 KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
-    "webmcp.html": "b18ec98e",
+    "webmcp.html": "f2757068",
     "api/mcp.py": "9ae34f64",
     "stage_spark_mcp_bundle.py": "8b2045c9",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",

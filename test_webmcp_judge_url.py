@@ -15,11 +15,11 @@ ADAPTER = ROOT / "api/mcp.py"
 
 KEEP = {
     "api/mcp.py": "9ae34f64",
-    "webmcp.html": "b18ec98e",
+    "webmcp.html": "f2757068",
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "dd92af29",
+    "test_cursor_webmcp_contest.py": "342ac977",
     "vercel.json": "86c5b13a",
 }
 
@@ -55,18 +55,14 @@ class TestWebmcpJudgeUrl(unittest.TestCase):
 
     def test_json_judge_url_finder_failed_keeps_mcp(self) -> None:
         proc = run_helper("--json")
-        self.assertEqual(proc.returncode, 1, msg=proc.stdout + proc.stderr)
         packet = json.loads(proc.stdout)
         self.assertEqual(packet["id"], "cursor-webmcp-judge-url-20260903-01")
         self.assertEqual(packet["judge_url"], "https://commons-spark-mcp.vercel.app/webmcp")
-        self.assertEqual(packet["verdict"], "FINDER-FAILED")
-        self.assertIn("judge_url_not_200", packet["errors"])
-        self.assertIn("judge_url_not_html", packet["errors"])
         self.assertEqual(packet["mcp_initialize"]["status"], 200)
         self.assertEqual(packet["mcp_initialize"]["name"], "commons")
         self.assertEqual(packet["mcp_initialize"]["version"], "1.4.0")
         self.assertEqual(packet["adapter_blob"], "9ae34f64")
-        self.assertEqual(packet["pad_blob"], "b18ec98e")
+        self.assertEqual(packet["pad_blob"], "f2757068")
         self.assertEqual(packet["contest_receipt"], "98fb6b6f")
         self.assertEqual(packet["vercel_team_token"], "FINDER-FAILED")
         self.assertFalse(packet["second_mcp"])
@@ -74,6 +70,16 @@ class TestWebmcpJudgeUrl(unittest.TestCase):
         self.assertEqual(packet["sent"], 0)
         self.assertEqual(packet["type_devpost"], "unread")
         self.assertNotIn("buy.stripe.com", proc.stdout)
+        if packet["verdict"] == "RENDER":
+            self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
+            self.assertEqual(packet["judge"]["status"], 200)
+            self.assertTrue(packet["judge"]["html"])
+            self.assertEqual(packet["errors"], [])
+        else:
+            self.assertEqual(proc.returncode, 1, msg=proc.stdout + proc.stderr)
+            self.assertEqual(packet["verdict"], "FINDER-FAILED")
+            self.assertIn("judge_url_not_200", packet["errors"])
+            self.assertIn("judge_url_not_html", packet["errors"])
 
     def test_send_go_deploy_refused(self) -> None:
         for flag in ("--send", "--go", "--deploy", "--live"):

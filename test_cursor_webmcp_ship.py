@@ -23,7 +23,7 @@ CANARY = ROOT / "host/webmcp_live.py"
 
 KEEP = {
     "api/mcp.py": "9ae34f64",
-    "webmcp.html": "b18ec98e",
+    "webmcp.html": "f2757068",
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
 }
