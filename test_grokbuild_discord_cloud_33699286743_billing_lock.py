@@ -23,11 +23,11 @@ WORKFLOW = ROOT / ".github/workflows/commons-discord-cloud.yml"
 KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
-    "test_grok_build_discord_cloud_billing_lock_readback.py": "8622a8ce",
+    "test_grok_build_discord_cloud_billing_lock_readback.py": "27463532",
     "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.md": "6e34f897",
     "p/grok-build-discord-cloud-33689281288-billing-lock-20260902-01.md": "89fdbcf0",
     "p/grok-build-discord-cloud-33694219370-billing-lock-20260902-01.md": "9dcc171b",
-    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "b09b44aa",
+    "test_grokbuild_discord_cloud_33694219370_billing_lock.py": "4ecfd16d",
     "p/grok-discord-cloud-dark-20260831-01.md": "cdbad10b",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "commons_discord.py": "f6f1a374",

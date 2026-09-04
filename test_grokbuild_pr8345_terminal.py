@@ -41,7 +41,7 @@ class TestGrokbuildPr8345Terminal(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
-        self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
+        self.assertFalse(git_blob("hub_pages.py").startswith("5ac12648"))
 
     def test_helper_still_renders_standalone_store(self) -> None:
         proc = subprocess.run(

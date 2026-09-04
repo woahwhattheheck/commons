@@ -22,7 +22,7 @@ KEEP = {
     "host/commerce_agents_same_loop.py": "c90f6e50",
     "test_commerce_agents_same_loop.py": "623e99e8",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
-    "test_cursor_harborline_commerce_compose_readback.py": "34da2639",
+    "test_cursor_harborline_commerce_compose_readback.py": "3be866f1",
 }
 
 

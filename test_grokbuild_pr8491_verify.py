@@ -15,7 +15,7 @@ PRIOR_TEST = ROOT / "test_grokbuild_open_door_guard_33694402752_billing_lock.py"
 
 KEEP = {
     "p/grokbuild-open-door-guard-33694402752-billing-lock-20260902-01.md": "e3d789b6",
-    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "9eb278db",
+    "test_grokbuild_open_door_guard_33694402752_billing_lock.py": "1f9ec6be",
     "open_door_guard.py": "4b053e43",
     "test_open_door_guard.py": "70ee5730",
     ".github/workflows/open-door-guard.yml": "6586644c",

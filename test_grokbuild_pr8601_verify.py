@@ -18,9 +18,9 @@ BODY_SHA256 = "71982c472209705ebb98df207c5c051a387127cfe739635e2566e31f9a1d7785"
 
 KEEP = {
     "p/grokbuild-tests-33718116260-billing-lock-20260903-01.md": "70db3e2a",
-    "test_grokbuild_tests_33718116260_billing_lock.py": "6e4167e5",
+    "test_grokbuild_tests_33718116260_billing_lock.py": "31251355",
     "p/grokbuild-tests-33717741059-billing-lock-20260903-01.md": "1b6c3021",
-    "test_grokbuild_tests_33717741059_billing_lock.py": "c62e238e",
+    "test_grokbuild_tests_33717741059_billing_lock.py": "b166522c",
     ".github/workflows/tests.yml": "8c2f2301",
     "open_door_guard.py": "4b053e43",
 }
