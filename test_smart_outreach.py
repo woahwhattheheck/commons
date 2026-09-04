@@ -104,15 +104,27 @@ class SmartOutreachTests(unittest.TestCase):
         with self.assertRaises(smart.OutreachError):
             smart.validate_input(invalid)
 
-    def test_cli_is_deterministic_and_reports_zero_transport(self) -> None:
-        command = [sys.executable, str(ROOT / "host" / "smart_outreach.py"), "plan"]
-        first = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
-        second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
-        self.assertEqual(first, second)
-        parsed = json.loads(first)
-        self.assertEqual(parsed["truth"]["transport_actions"], 0)
+    def test_cli_plan_refuses_unclaimed_sales_and_validate_stays(self) -> None:
+        host = ROOT / "host" / "smart_outreach.py"
+        refused = subprocess.run(
+            [sys.executable, str(host), "plan", "--owner", "GROK"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(refused.returncode, 4)
+        self.assertIn("unclaimed sales", refused.stderr.casefold())
+        self.assertEqual(refused.stdout.strip(), "")
+        send = subprocess.run(
+            [sys.executable, str(host), "plan", "--send"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(send.returncode, 3)
+        self.assertIn("never transports mail", send.stderr.casefold())
         validate = subprocess.run(
-            [sys.executable, str(ROOT / "host" / "smart_outreach.py"), "validate"],
+            [sys.executable, str(host), "validate"],
             cwd=ROOT,
             check=True,
             capture_output=True,

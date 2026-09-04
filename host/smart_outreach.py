@@ -11,8 +11,10 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import importlib.util
 import json
 import re
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -322,6 +324,16 @@ def build_plan(value: dict[str, Any], receipt_directory: Path = DEFAULT_RECEIPTS
     }
 
 
+def _load_gtm_index() -> Any:
+    path = ROOT / "host" / "lm_gtm_index.py"
+    spec = importlib.util.spec_from_file_location("commons_lm_gtm_index_from_outreach", path)
+    if spec is None or spec.loader is None:
+        raise OutreachError("cannot load LLM-native GTM index")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
@@ -331,10 +343,22 @@ def build_parser() -> argparse.ArgumentParser:
         child.add_argument("--receipts", type=Path, default=DEFAULT_RECEIPTS)
         if command == "plan":
             child.add_argument("--output", type=Path)
+            child.add_argument(
+                "--owner",
+                default="",
+                help="live occupant; staging a draft without a match exits 4",
+            )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if "--send" in argv or argv[:1] == ["send"]:
+        sys.stderr.write(
+            "REFUSED live send: this planner never transports mail. "
+            "Use Swarm Mail after measured provisioning; drafts stay staged.\n"
+        )
+        return 3
     args = build_parser().parse_args(argv)
     plan = build_plan(read_object(args.input), args.receipts)
     if args.command == "validate":
@@ -343,6 +367,22 @@ def main(argv: list[str] | None = None) -> int:
             f"{plan['truth']['drafts_created']} drafts 0 transport actions"
         )
         return 0
+    if any(item.get("draft") is not None for item in plan["items"]):
+        gtm = _load_gtm_index()
+        try:
+            for item in plan["items"]:
+                if item.get("draft") is None:
+                    continue
+                gtm.assert_sales_owner(
+                    subject_id=item["prospect_id"],
+                    owner=getattr(args, "owner", "") or "",
+                )
+        except gtm.UnclaimedSales as error:
+            print(str(error), file=sys.stderr)
+            return 4
+        except gtm.IndexError_ as error:
+            print(str(error), file=sys.stderr)
+            return 1
     rendered = canonical_text(plan)
     if args.output:
         args.output.write_text(rendered, encoding="utf-8")

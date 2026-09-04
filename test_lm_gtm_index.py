@@ -618,6 +618,10 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertIn("subject", missing_subject.stderr.casefold())
         release_pos = parser.parse_args(["release", "composio", "--owner", "GROK"])
         self.assertEqual(idx.occupancy_subject(release_pos), "composio")
+        need_pos = parser.parse_args(["require-claim", "composio", "--owner", "GROK"])
+        self.assertEqual(idx.occupancy_subject(need_pos), "composio")
+        need_flag = parser.parse_args(["require-claim", "--subject", "composio", "--owner", "GROK"])
+        self.assertEqual(idx.occupancy_subject(need_flag), "composio")
 
     def test_status_cannot_mint_a_contact(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -840,6 +844,11 @@ class LmGtmIndexTests(unittest.TestCase):
             "python3 host/lm_gtm_index.py release SUBJECT --owner YOU",
         )
         self.assertEqual(
+            contract["require-claim"],
+            "python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU",
+        )
+        self.assertEqual(contract["sales_without_claim"], "illegal; exits 4")
+        self.assertEqual(
             contract["append_event"],
             'python3 host/lm_gtm_index.py append-event --subject SUBJECT --id EVENT_ID --body "NOTE"',
         )
@@ -951,6 +960,7 @@ class LmGtmIndexTests(unittest.TestCase):
             ("lm-gtm-agent-brief-20260831-01", "5727847f"),
             ("lm-gtm-truth-sync-20260831-02", "4edb7d70"),
             ("lm-gtm-contract-brief-20260901-01", "8a02a330"),
+            ("lm-gtm-contract-tokens-leads-20260901-01", "df25a9da"),
         ):
             path = ROOT / "p" / f"{name}.md"
             self.assertTrue(path.is_file(), name)
@@ -974,6 +984,7 @@ class LmGtmIndexTests(unittest.TestCase):
         door = (ROOT / "lm-gtm-index.html").read_text(encoding="utf-8")
         self.assertIn("TOKEN form", door)
         self.assertIn("claim SUBJECT --owner YOU", door)
+        self.assertIn("Sales MUST brief + claim before draft/outreach; unclaimed sales illegal exit 4.", door)
         self.assertNotIn("claim &lt;subject&gt;", door)
         self.assertNotIn("<subject>", door)
         tokens_receipt = ROOT / "p" / "lm-gtm-contract-tokens-leads-20260901-01.md"
@@ -1024,6 +1035,104 @@ class LmGtmIndexTests(unittest.TestCase):
         hold = idx.compact_row(by_id["pcl-ryan-ott"], lane="hold_build")
         self.assertNotIn("dnr", hold)
         self.assertNotIn("owner", hold)
+
+    def test_sales_occupancy_matches_owner_and_refuses_unseated_or_wrong(self) -> None:
+        unseated = subprocess.run(
+            [sys.executable, str(HOST), "require-claim", "composio", "--owner", "GROK"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(unseated.returncode, 4)
+        self.assertIn("unclaimed sales", unseated.stderr.casefold())
+        self.assertIn("unseated", unseated.stderr.casefold())
+        with tempfile.TemporaryDirectory() as directory:
+            paths = _fork_index(directory)
+            idx.claim_subject(
+                subject_id="composio",
+                owner="GROK",
+                ts="2026-09-04T04:00:00Z",
+                paths=paths,
+            )
+            matched = idx.assert_sales_owner(
+                subject_id="composio",
+                owner="GROK",
+                paths=paths,
+            )
+            self.assertEqual(matched["status"], "occupied")
+            self.assertEqual(matched["owner"], "GROK")
+            with self.assertRaises(idx.UnclaimedSales):
+                idx.assert_sales_owner(
+                    subject_id="composio",
+                    owner="CLAUDE",
+                    paths=paths,
+                )
+            events = idx.load_jsonl(paths["events"])
+            self.assertTrue(any(item.get("type") == "CLAIM" for item in events))
+            self.assertEqual(LOOP.read_bytes(), (ROOT / "revenue" / "website_people_email_book" / "loop.json").read_bytes())
+        send = subprocess.run(
+            [sys.executable, str(HOST), "require-claim", "composio", "--owner", "GROK", "--send"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(send.returncode, 3)
+        self.assertIn("never transports mail", send.stderr.casefold())
+
+    def test_composers_refuse_draft_without_live_occupancy(self) -> None:
+        book = ROOT / "host" / "website_people_email_book.py"
+        outreach = ROOT / "host" / "smart_outreach.py"
+        book_run = subprocess.run(
+            [sys.executable, str(book), "run", "--html", str(ROOT / "revenue" / "website_people_email_book" / "fixture_seller.html")],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(book_run.returncode, 4)
+        self.assertIn("unclaimed sales", book_run.stderr.casefold())
+        self.assertEqual(book_run.stdout.strip(), "")
+        outreach_plan = subprocess.run(
+            [sys.executable, str(outreach), "plan"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(outreach_plan.returncode, 4)
+        self.assertIn("unclaimed sales", outreach_plan.stderr.casefold())
+        self.assertEqual(outreach_plan.stdout.strip(), "")
+        with tempfile.TemporaryDirectory() as directory:
+            paths = _fork_index(directory)
+            idx.claim_subject(
+                subject_id="composio",
+                owner="GROK",
+                ts="2026-09-04T04:10:00Z",
+                paths=paths,
+            )
+            spec = importlib.util.spec_from_file_location(
+                "website_people_email_book_sales",
+                ROOT / "host" / "website_people_email_book.py",
+            )
+            assert spec and spec.loader
+            book_mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(book_mod)
+            staged = book_mod.build_loop(
+                (ROOT / "revenue" / "website_people_email_book" / "fixture_seller.html").read_text(encoding="utf-8"),
+                "revenue/website_people_email_book/fixture_seller.html",
+                owner="GROK",
+                enforce_sales_occupancy=True,
+                index_paths=paths,
+            )
+            self.assertEqual(staged["truth"]["emails_drafted"], 1)
+            self.assertEqual(staged["emails"][0]["prospect_id"], "composio")
+            self.assertEqual(staged["emails"][0]["transport"], "STAGED_NOT_SENT")
+            with self.assertRaises(book_mod._load_gtm_index().UnclaimedSales):
+                book_mod.build_loop(
+                    (ROOT / "revenue" / "website_people_email_book" / "fixture_seller.html").read_text(encoding="utf-8"),
+                    "revenue/website_people_email_book/fixture_seller.html",
+                    owner="CLAUDE",
+                    enforce_sales_occupancy=True,
+                    index_paths=paths,
+                )
 
 
 if __name__ == "__main__":

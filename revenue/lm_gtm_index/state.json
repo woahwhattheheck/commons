@@ -22,6 +22,8 @@
     "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
     "read_state": "revenue/lm_gtm_index/state.json",
     "release": "python3 host/lm_gtm_index.py release SUBJECT --owner YOU",
+    "require-claim": "python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU",
+    "sales_without_claim": "illegal; exits 4",
     "send": "illegal; exits 3"
   },
   "does_not_create": [

@@ -30,9 +30,17 @@ are live and queryable, not hot, and PRE-SALE TRANSPORT NONE.
 
 Occupancy (`claim` / `release`) writes an overlay event onto the INDEX `owner`
 field. It does not rewrite `loop.json`. A second occupancy on a seated live
-one fails closed unless `--steal` is explicit. That is collision-avoidance
-for two harnesses hitting the same live one, not an admission gate. Both
-positional subject and `--subject` work; `--owner` is required.
+one fails closed unless `--steal` is explicit. Occupancy is admission for
+sales/draft/outreach only; `brief` remains the listing floor. Unclaimed
+sales are illegal and exit 4. Both positional subject and `--subject` work;
+`--owner` is still named on claim/release.
+
+## SALES_FLOOR
+
+Agents doing sales use `brief` then `claim`. No claim = no draft.
+`python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU` exits 0
+only when the live occupant matches YOU. UNSEATED or a different occupant
+exits 4. Listing stays open. Still not a second CRM. `--send` exits 3.
 
 ## Cross-harness contract
 
@@ -65,9 +73,11 @@ python3 host/lm_gtm_index.py append-event \
   --body "draft remains STAGED_NOT_SENT; no transport"
 
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
+python3 host/lm_gtm_index.py require-claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py release composio --owner YOURNAME
 # contract form is TOKEN placeholders (survive JSON/markdown/HTML):
 # python3 host/lm_gtm_index.py claim SUBJECT --owner YOU
+# python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU
 # equivalent flag form:
 python3 host/lm_gtm_index.py claim --subject composio --owner YOURNAME
 # second occupancy fails closed unless:
@@ -95,6 +105,7 @@ python3 host/lm_gtm_index.py hold
 python3 host/lm_gtm_index.py show city-of-billings-bid-1421
 python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
+python3 host/lm_gtm_index.py require-claim composio --owner YOURNAME
 python3 -m unittest -v test_lm_gtm_index.py
 ```
 
@@ -119,6 +130,7 @@ Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
 `lm-gtm-floor-sync-20260831-01`, `lm-gtm-agent-brief-20260831-01`,
 `lm-gtm-truth-sync-20260831-02`, `lm-gtm-contract-brief-20260901-01`,
 `lm-gtm-contract-tokens-leads-20260901-01`,
+`lm-gtm-require-claim-20260904-01`,
 `website-people-email-book-20260830-01`, or
 `website-prospect-boundary-repair-20260830-01`. Do not rewrite loop.json
 schema v2. Do not remint MSP overlay event ids or the Billings MATERIAL_REPLY

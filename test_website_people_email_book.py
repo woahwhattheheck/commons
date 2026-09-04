@@ -218,26 +218,32 @@ class WebsitePeopleEmailBookTests(unittest.TestCase):
         self.assertIn("swarm mail", proc.stderr.casefold())
         self.assertEqual(proc.stdout.strip(), "")
 
-    def test_cli_run_is_deterministic_and_validate_matches(self) -> None:
-        command = [sys.executable, str(HOST), "run", "--html", str(FIXTURE)]
-        first = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
-        second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
+    def test_cli_run_refuses_unclaimed_sales_and_validate_stays(self) -> None:
+        refused = subprocess.run(
+            [sys.executable, str(HOST), "run", "--html", str(FIXTURE), "--owner", "GROK"],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(refused.returncode, 4)
+        self.assertIn("unclaimed sales", refused.stderr.casefold())
+        self.assertEqual(refused.stdout.strip(), "")
+        first = subprocess.run(
+            [sys.executable, str(HOST), "validate", "--input", str(LOOP_JSON)],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout
+        second = subprocess.run(
+            [sys.executable, str(HOST), "validate", "--input", str(LOOP_JSON)],
+            cwd=ROOT,
+            check=True,
+            capture_output=True,
+            text=True,
+        ).stdout
         self.assertEqual(first, second)
-        parsed = json.loads(first)
-        loop.validate_loop(parsed)
-        self.assertEqual(parsed["truth"]["transport_actions"], 0)
-        self.assertEqual(parsed["truth"]["calls_booked"], 0)
-        with tempfile.TemporaryDirectory() as directory:
-            output = Path(directory) / "loop.json"
-            output.write_text(first, encoding="utf-8")
-            validate = subprocess.run(
-                [sys.executable, str(HOST), "validate", "--input", str(output)],
-                cwd=ROOT,
-                check=True,
-                capture_output=True,
-                text=True,
-            ).stdout
-        self.assertEqual(validate.strip(), "VALID 1 website 4 prospects 1 drafts 0 booked 0 sent")
+        self.assertEqual(first.strip(), "VALID 1 website 4 prospects 1 drafts 0 booked 0 sent")
 
     def test_checked_in_loop_matches_current_evidence_catalog(self) -> None:
         landed = json.loads(LOOP_JSON.read_text(encoding="utf-8"))
