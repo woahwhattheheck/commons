@@ -32,7 +32,7 @@ KEEP = {
     "p/grok-build-llms-txt-33699607384-billing-lock-20260903-01.md": "214368d9",
     "p/grok-build-llms-txt-33699940559-billing-lock-20260903-01.md": "44411b3e",
     "p/grokbuild-llms-txt-33718131457-billing-lock-20260903-01.md": "d87fe8da",
-    "test_grokbuild_llms_txt_33718131457_billing_lock.py": "1abc2149",
+    "test_grokbuild_llms_txt_33718131457_billing_lock.py": "8caa00af",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
@@ -41,9 +41,9 @@ KEEP = {
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
     "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "3f77dce1",
     "p/grok-build-discord-cloud-33723595201-billing-lock-20260903-01.md": "5f1426b3",
-    "test_grokbuild_discord_cloud_33723595201_billing_lock.py": "ca528620",
+    "test_grokbuild_discord_cloud_33723595201_billing_lock.py": "0b1334d1",
     "p/grok-build-job-watchdog-33723631044-billing-lock-20260903-01.md": "dc553557",
-    "test_grokbuild_job_watchdog_33723631044_billing_lock.py": "a4ce1271",
+    "test_grokbuild_job_watchdog_33723631044_billing_lock.py": "b14250f6",
     "p/grokbuild-local-compute-guard-33723631022-billing-lock-20260903-01.md": "0a6e7aee",
     "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "3183952f",
     "p/grokbuild-local-compute-guard-33723638532-billing-lock-20260903-01.md": "0e10dbc1",
@@ -58,7 +58,7 @@ KEEP = {
     "open_door_guard.py": "4b053e43",
     "test_grokbuild_llms_txt_billing_lock.py": "6d73d3f9",
     "test_grokbuild_llms_txt_33699940559_billing_lock.py": "4a110ed3",
-    "test_grokbuild_llms_txt_33699607384_billing_lock.py": "f3bd7cd0",
+    "test_grokbuild_llms_txt_33699607384_billing_lock.py": "78d452bc",
 }
 
 

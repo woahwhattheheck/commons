@@ -19,7 +19,7 @@ KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "d8ddd02d",
+    "test_cursor_webmcp_contest.py": "76b8dbae",
     "vercel.json": "86c5b13a",
 }
 

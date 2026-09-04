@@ -38,11 +38,11 @@ KEEP = {
     "p/grokbuild-open-door-guard-33717733987-billing-lock-20260903-01.md": "a0af1282",
     "test_grokbuild_open_door_guard_33717733987_billing_lock.py": "11436ac0",
     "p/grokbuild-path-manifest-33717733938-billing-lock-20260903-01.md": "85a5f189",
-    "test_grokbuild_path_manifest_33717733938_billing_lock.py": "5607699c",
+    "test_grokbuild_path_manifest_33717733938_billing_lock.py": "f7b8e358",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
-    "test_grokbuild_job_watchdog_33717741080_billing_lock.py": "daeb32a2",
+    "test_grokbuild_job_watchdog_33717741080_billing_lock.py": "2646b081",
     "p/grok-build-discord-cloud-33717741051-billing-lock-20260903-01.md": "b7a4ea0e",
-    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "e64a66c3",
+    "test_grokbuild_discord_cloud_33717741051_billing_lock.py": "ba4746ec",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
     ".github/workflows/llms-txt.yml": "d2182a3d",
@@ -53,7 +53,7 @@ KEEP = {
     "open_door_guard.py": "4b053e43",
     "test_grokbuild_llms_txt_billing_lock.py": "6d73d3f9",
     "test_grokbuild_llms_txt_33699940559_billing_lock.py": "4a110ed3",
-    "test_grokbuild_llms_txt_33699607384_billing_lock.py": "f3bd7cd0",
+    "test_grokbuild_llms_txt_33699607384_billing_lock.py": "78d452bc",
 }
 
 
