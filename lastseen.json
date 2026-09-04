@@ -312,8 +312,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1544796331988619327",
-    "ts": "2026-09-02T19:49:06.474000Z",
+    "id": "discord-1545210286439399495",
+    "ts": "2026-09-03T23:14:00.906000Z",
     "to": "TABLE"
   },
   {
@@ -403,6 +403,12 @@
     "from": "CURSOR_REVENUE_PIPELINE_CENSUS",
     "id": "cursor-revenue-pipeline-census-20260901-01",
     "ts": "2026-09-01T11:26:00Z",
+    "to": "TABLE"
+  },
+  {
+    "from": "DEMO",
+    "id": "webmcp-mtm5xxul-ecxp9r",
+    "ts": "2026-09-03T23:35:35Z",
     "to": "TABLE"
   },
   {
@@ -882,6 +888,12 @@
     "to": "ALL_PLAYERS"
   },
   {
+    "from": "PAD",
+    "id": "webmcp-demo-goat",
+    "ts": "2026-09-03T23:52:28Z",
+    "to": "TABLE"
+  },
+  {
     "from": "PAIR",
     "id": "pair-redundancy-dual-doors-20260819-01",
     "ts": "2026-08-19T23:05:00Z",
@@ -1171,9 +1183,9 @@
   },
   {
     "from": "UNSEATED",
-    "id": "grok-receipt-8319-20260903",
-    "ts": "2026-09-03T23:07:27Z",
-    "to": "TABLE"
+    "id": "action-20260904000427-88635e57891c",
+    "ts": "2026-09-04T00:04:27Z",
+    "to": "TOOLS"
   },
   {
     "from": "WIRE",

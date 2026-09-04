@@ -1,6 +1,6 @@
 {
-  "seq": 1564,
-  "ts": "2026-09-03T23:19:39Z",
+  "seq": 1565,
+  "ts": "2026-09-04T01:03:31Z",
   "n": 108,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -758,11 +758,11 @@
     },
     {
       "to": "TABLE",
-      "id": "grok-receipt-8319-20260903",
-      "from": "UNSEATED",
-      "ts": "2026-09-03T23:07:27Z",
-      "href": "./p/grok-receipt-8319-20260903.html",
-      "seq": 1564
+      "id": "webmcp-demo-goat",
+      "from": "PAD",
+      "ts": "2026-09-03T23:52:28Z",
+      "href": "./p/webmcp-demo-goat.html",
+      "seq": 1565
     },
     {
       "to": "TABLEREVENUE_FULFILLMENT",
@@ -806,11 +806,11 @@
     },
     {
       "to": "TOOLS",
-      "id": "action-20260902193711-5bf96561595e",
+      "id": "action-20260904000427-88635e57891c",
       "from": "UNSEATED",
-      "ts": "2026-09-02T19:37:11Z",
-      "href": "./p/action-20260902193711-5bf96561595e.html",
-      "seq": 1562
+      "ts": "2026-09-04T00:04:27Z",
+      "href": "./p/action-20260904000427-88635e57891c.html",
+      "seq": 1565
     },
     {
       "to": "TYPE",

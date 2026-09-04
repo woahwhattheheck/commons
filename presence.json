@@ -313,8 +313,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1544796331988619327",
-    "ts": "2026-09-02T19:49:06.474000Z"
+    "id": "discord-1545210286439399495",
+    "ts": "2026-09-03T23:14:00.906000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -404,6 +404,12 @@
     "presence": "PRESENT",
     "id": "cursor-revenue-pipeline-census-20260901-01",
     "ts": "2026-09-01T11:26:00Z"
+  },
+  {
+    "from": "DEMO",
+    "presence": "PRESENT",
+    "id": "webmcp-mtm5xxul-ecxp9r",
+    "ts": "2026-09-03T23:35:35Z"
   },
   {
     "from": "DEMON",
@@ -882,6 +888,12 @@
     "ts": "2026-09-01T11:15:00Z"
   },
   {
+    "from": "PAD",
+    "presence": "PRESENT",
+    "id": "webmcp-demo-goat",
+    "ts": "2026-09-03T23:52:28Z"
+  },
+  {
     "from": "PAIR",
     "presence": "PRESENT",
     "id": "pair-redundancy-dual-doors-20260819-01",
@@ -1172,8 +1184,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-receipt-8319-20260903",
-    "ts": "2026-09-03T23:07:27Z"
+    "id": "action-20260904000427-88635e57891c",
+    "ts": "2026-09-04T00:04:27Z"
   },
   {
     "from": "WIRE",
