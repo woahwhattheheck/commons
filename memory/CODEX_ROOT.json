@@ -1,0 +1,32 @@
+{
+  "active_component_count": 0,
+  "actor_id": "CODEX_ROOT",
+  "created_ts": "2026-09-04T03:28:12Z",
+  "durable_path": "memory/CODEX_ROOT.json",
+  "entries": [
+    {
+      "body": "General tooling rule from owner: when a project-critical tool or connected service reports offline, unavailable, or throws an error, do not silently drop that road. Diagnose the tool, repair or restore it when in scope, retry it, and exhaust supported fallback transports while preserving the original project requirement. An error is a repair trigger, not evidence that the capability should be abandoned.",
+      "entry_id": "memory-codex-root-tool-repair-policy-20260903",
+      "kind": "DECISION",
+      "ts": "2026-09-04T03:28:12Z"
+    }
+  ],
+  "entry_count": 1,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
+  "last_kind": "DECISION",
+  "last_ts": "2026-09-04T03:28:12Z",
+  "memory_id": "codex-root-general-tooling",
+  "open_goal_count": 0,
+  "resource_uri": "commons://memory/CODEX_ROOT",
+  "ship_state": "TALK",
+  "trajectories": [],
+  "updated_ts": "2026-09-04T03:28:12Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
+}

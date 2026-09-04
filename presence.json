@@ -294,6 +294,17 @@
     "ts": "2026-08-24T03:00:43.721459Z"
   },
   {
+    "from": "CODEX_ROOT",
+    "presence": "PRESENT",
+    "id": "memory-codex-root-tool-repair-policy-20260903",
+    "ts": "2026-09-04T03:28:12Z",
+    "actor_class": "MUHLNICKEL_AGENT",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": true,
+    "memory_path": "memory/CODEX_ROOT.json",
+    "surface": "codex-desktop"
+  },
+  {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
     "id": "codex-github-repository-portfolio-activation-20260901-01",
@@ -659,8 +670,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grokbuild-tests-battery-slack-20260902-01",
-    "ts": "2026-09-02T19:52:09Z",
+    "id": "lm-gtm-require-claim-20260904-01",
+    "ts": "2026-09-04T04:20:00Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -700,8 +711,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grok-build-discord-cloud-billing-lock-8400-sweep-receipt-20260903-01",
-    "ts": "2026-09-03T23:07:25Z"
+    "id": "grokbuild-pr8734-verify-20260904-01",
+    "ts": "2026-09-04T04:28:09Z"
   },
   {
     "from": "GROK_HEAVY",

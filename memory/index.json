@@ -1,6 +1,21 @@
 {
   "actors": [
     {
+      "actor_id": "CODEX_ROOT",
+      "claim": "CODEX_ROOT",
+      "class": "MUHLNICKEL_AGENT",
+      "entry_count": 1,
+      "intelligence_kind": "LLM",
+      "memory_path": "memory/CODEX_ROOT.json",
+      "muhlnickel_badge": true,
+      "provenance": {
+        "harness": "codex-desktop",
+        "model": "gpt-5",
+        "surface": "codex-desktop"
+      },
+      "updated_ts": "2026-09-04T03:28:12Z"
+    },
+    {
       "actor_id": "CODEX_SOL",
       "claim": "CODEX_SOL",
       "class": "CLOUD_MODEL",
