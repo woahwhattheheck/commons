@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """The board is for bots. robots.txt must not Disallow anyone."""
 import os
-import re
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -18,6 +18,27 @@ SOURCES = (
     "infra/host/muhl_pages_bridge.py",
     "infra/host/muhl_world_mouth.py",
 )
+
+
+class _RobotsMetaParser(HTMLParser):
+    """Collect real robots tags, not comments or script/style examples."""
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.directives = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag != "meta":
+            return
+        attributes = dict(attrs)
+        if (attributes.get("name") or "").lower() != "robots":
+            return
+        content = attributes.get("content") or ""
+        self.directives.append({
+            item.strip().lower().split(":", 1)[0]
+            for item in content.split(",")
+            if item.strip()
+        })
 
 
 def _robots_text():
@@ -43,10 +64,6 @@ class RobotsOpen(unittest.TestCase):
             )
 
     def test_live_door_heads_are_indexable(self):
-        robots_tag = re.compile(
-            r'<meta\b[^>]*\bname\s*=\s*(["\'])robots\1[^>]*>', re.I
-        )
-        content_attr = re.compile(r'\bcontent\s*=\s*(["\'])(.*?)\1', re.I)
         blocked = []
         missing = []
         for name in sorted(os.listdir(ROOT)):
@@ -57,19 +74,17 @@ class RobotsOpen(unittest.TestCase):
                 continue
             with open(path, encoding="utf-8") as fh:
                 head = fh.read()[:4000]
-            tag = robots_tag.search(head)
-            content = content_attr.search(tag.group(0)) if tag else None
-            if not content:
-                missing.append(name)
-                continue
-            directives = {
-                item.strip().lower().split(":", 1)[0]
-                for item in content.group(2).split(",")
-                if item.strip()
-            }
-            if directives.intersection({"noindex", "nofollow"}):
+            parser = _RobotsMetaParser()
+            parser.feed(head)
+            parser.close()
+            # Any real blocking tag wins, even after an index/follow tag.
+            if any(items.intersection({"noindex", "nofollow"})
+                   for items in parser.directives):
                 blocked.append(name)
-            if not {"index", "follow"}.issubset(directives):
+            # Retain the explicit pair requirement; do not synthesize it
+            # from separate incomplete tags or from text inside comments.
+            if not any({"index", "follow"}.issubset(items)
+                       for items in parser.directives):
                 missing.append(name)
         self.assertEqual(blocked, [])
         self.assertEqual(missing, [])
