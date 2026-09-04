@@ -289,6 +289,23 @@ def _booking(prospect: dict[str, Any], website: dict[str, Any]) -> dict[str, Any
     }
 
 
+_GTM_INDEX = None
+
+
+def _load_gtm_index() -> Any:
+    global _GTM_INDEX
+    if _GTM_INDEX is not None:
+        return _GTM_INDEX
+    path = ROOT / "host" / "lm_gtm_index.py"
+    spec = importlib.util.spec_from_file_location("commons_lm_gtm_index", path)
+    if spec is None or spec.loader is None:
+        raise LoopError("cannot load LLM-native GTM index")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    _GTM_INDEX = module
+    return module
+
+
 def _load_smart_outreach() -> Any:
     path = ROOT / "host" / "smart_outreach.py"
     spec = importlib.util.spec_from_file_location("commons_smart_outreach", path)
@@ -412,6 +429,9 @@ def build_loop(
     receipt_directory: Path = DEFAULT_RECEIPTS,
     generated_at: str = MEASURED_AT,
     mailbox_status: dict[str, Any] | None = None,
+    owner: str | None = None,
+    enforce_sales_occupancy: bool = False,
+    index_paths: dict[str, Path] | None = None,
 ) -> dict[str, Any]:
     if not isinstance(html, str) or not html.strip():
         raise LoopError("html must be non-empty")
@@ -423,9 +443,16 @@ def build_loop(
     mailbox_state = _mailbox_state(mailbox_status)
     emails: list[dict[str, Any]] = []
     bookings: list[dict[str, Any]] = []
+    gtm = _load_gtm_index() if enforce_sales_occupancy else None
     for prospect in prospects:
         if prospect["decision"] != "READY_TO_DRAFT":
             continue
+        if gtm is not None:
+            gtm.assert_sales_owner(
+                subject_id=prospect["prospect_id"],
+                owner=owner or "",
+                paths=index_paths,
+            )
         emails.append(
             {
                 "prospect_id": prospect["prospect_id"],
@@ -544,6 +571,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     run.add_argument("--output", type=Path)
     run.add_argument("--generated-at", default=MEASURED_AT)
+    run.add_argument("--owner", default="", help="live occupant; sales/draft/outreach without a match exits 4")
     subparsers.add_parser("validate").add_argument("--input", type=Path, default=DEFAULT_LOOP)
     return parser
 
@@ -577,14 +605,24 @@ def main(argv: list[str] | None = None) -> int:
         if args.mailbox_status
         else None
     )
-    loop = build_loop(
-        html,
-        source,
-        prospect_catalog=catalog,
-        receipt_directory=args.receipts,
-        generated_at=args.generated_at,
-        mailbox_status=mailbox_status,
-    )
+    gtm = _load_gtm_index()
+    try:
+        loop = build_loop(
+            html,
+            source,
+            prospect_catalog=catalog,
+            receipt_directory=args.receipts,
+            generated_at=args.generated_at,
+            mailbox_status=mailbox_status,
+            owner=args.owner,
+            enforce_sales_occupancy=True,
+        )
+    except gtm.UnclaimedSales as error:
+        sys.stderr.write(str(error) + "\n")
+        return 4
+    except gtm.IndexError_ as error:
+        sys.stderr.write(str(error) + "\n")
+        return 1
     validate_loop(loop)
     rendered = canonical_text(loop)
     if args.output:

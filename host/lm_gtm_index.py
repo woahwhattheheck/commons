@@ -13,8 +13,9 @@ Live send is refused. Cash stays USD 0 without payment evidence.
 Agent floor: `python3 host/lm_gtm_index.py brief` lists compact HOT
 rows. `sent` lists HARD_DO_NOT_RESEND including bounced DNR.
 OWNER_HOLD is live and not hot. Occupancy (`claim` / `release`)
-is an overlay event on the owner field; it does not rewrite loop.json
-and is not an admission gate.
+IS admission for sales/draft/outreach. Brief remains the floor for
+listing. Still not a second CRM. It does not rewrite loop.json.
+`--send` exits 3. Unclaimed sales exit 4.
 """
 
 from __future__ import annotations
@@ -150,7 +151,9 @@ CONTRACT = {
     "append_event": 'python3 host/lm_gtm_index.py append-event --subject SUBJECT --id EVENT_ID --body "NOTE"',
     "claim": "python3 host/lm_gtm_index.py claim SUBJECT --owner YOU",
     "release": "python3 host/lm_gtm_index.py release SUBJECT --owner YOU",
+    "require-claim": "python3 host/lm_gtm_index.py require-claim SUBJECT --owner YOU",
     "send": "illegal; exits 3",
+    "sales_without_claim": "illegal; exits 4",
 }
 
 
@@ -160,6 +163,10 @@ class IndexError_(ValueError):
 
 class SendError(IndexError_):
     """Live send was requested. This composer never transports mail."""
+
+
+class UnclaimedSales(Exception):
+    """Sales/draft/outreach without a live occupant matching --owner."""
 
 
 def canonical_text(value: Any) -> str:
@@ -1192,6 +1199,37 @@ def release_subject(
     return {"event": event, "index": written, "status": "released", "owner": "UNSEATED"}
 
 
+def assert_sales_owner(
+    *,
+    subject_id: str,
+    owner: str,
+    paths: dict[str, Path] | None = None,
+) -> dict[str, Any]:
+    """Exit-0 helper: live occupant after compose must equal YOU.
+
+    UNSEATED or a different occupant raises UnclaimedSales (CLI exit 4).
+    Unknown / non-live subjects stay IndexError_ (CLI exit 1).
+    """
+    paths = paths or default_paths()
+    name = (owner or "").strip() or "UNSEATED"
+    row = _live_row(subject_id, paths)
+    current = row.get("owner") or "UNSEATED"
+    if current == "UNSEATED" or current != name:
+        raise UnclaimedSales(
+            f"unclaimed sales {subject_id}: live owner is {current}, --owner is {name}; "
+            "sales/draft/outreach illegal without matching occupancy (exit 4)"
+        )
+    return {
+        "schema_version": SCHEMA_VERSION,
+        "kind": "LM_GTM_SALES_OCCUPANCY",
+        "status": "occupied",
+        "subject_id": subject_id,
+        "owner": name,
+        "cash_usd": 0,
+        "transport": "NONE",
+    }
+
+
 def occupancy_subject(args: argparse.Namespace) -> str:
     positional = str(getattr(args, "subject_pos", "") or "").strip()
     flagged = str(getattr(args, "subject_flag", "") or "").strip()
@@ -1244,6 +1282,8 @@ def build_parser() -> argparse.ArgumentParser:
     _add_occupancy_args(occupy, steal=True)
     release = sub.add_parser("release")
     _add_occupancy_args(release, steal=False)
+    need = sub.add_parser("require-claim")
+    _add_occupancy_args(need, steal=False)
     return parser
 
 
@@ -1336,10 +1376,20 @@ def main(argv: list[str] | None = None) -> int:
             )
             print(canonical_text(result.get("event") or result), end="")
             return 0
+        if args.command == "require-claim":
+            result = assert_sales_owner(
+                subject_id=occupancy_subject(args),
+                owner=args.owner,
+            )
+            print(canonical_text(result), end="")
+            return 0
         raise IndexError_(f"unknown command {args.command}")
     except SendError as error:
         print(str(error), file=sys.stderr)
         return 3
+    except UnclaimedSales as error:
+        print(str(error), file=sys.stderr)
+        return 4
     except IndexError_ as error:
         print(str(error), file=sys.stderr)
         return 1
