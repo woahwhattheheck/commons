@@ -15,7 +15,7 @@ ADAPTER = ROOT / "api/mcp.py"
 
 KEEP = {
     "api/mcp.py": "9ae34f64",
-    "webmcp.html": "b18ec98e",
+    "webmcp.html": "f2757068",
     "vercel.json": "86c5b13a",
     "stage_spark_mcp_bundle.py": "8b2045c9",
     ".github/workflows/spark-mcp-production.yml": "dc9fa8ae",
@@ -23,8 +23,8 @@ KEEP = {
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "dd92af29",
-    "host/webmcp_judge_url.py": "ed0fd0c3",
+    "test_cursor_webmcp_contest.py": "342ac977",
+    "host/webmcp_judge_url.py": "a677b1a5",
     "host/webmcp_live.py": "52253820",
 }
 
@@ -79,7 +79,7 @@ class TestWebmcpVercelCliBake(unittest.TestCase):
         self.assertIn("text/html", str(packet["judge"]["content_type"]).lower())
         self.assertTrue(packet["judge"]["html"])
         self.assertEqual(packet["adapter_blob"], "9ae34f64")
-        self.assertEqual(packet["pad_blob"], "b18ec98e")
+        self.assertEqual(packet["pad_blob"], "f2757068")
         self.assertEqual(packet["stager_blob"], "8b2045c9")
         self.assertEqual(packet["contest_receipt"], "98fb6b6f")
         self.assertEqual(packet["judge_receipt"], "eb52debf")
