@@ -7,16 +7,16 @@ Astra D5 / QUILL. Reuses Commons demand/assignment/job patterns:
   - occupancy.md: presence is a file; parallel allowed; collisions visible
 
 This is a durable pickup/continuation surface for prose demands.
-Never an admission. No identity prerequisite. No approval workflow.
+Never an admission. No identity, memory, permission, approval, protected-path, or verb gate applies.
 No forced authoring template. Does not remint C1/G2/M3/R4 files.
 
   python3 host/demand_survive.py list
   python3 host/demand_survive.py show --id <id>
   python3 host/demand_survive.py record --id <id> --prose "..." --source slack:...
   python3 host/demand_survive.py correct --id <id> --prose "..."
-  python3 host/demand_survive.py claim --id <id> --seat QUILL --slice <slice>
-  python3 host/demand_survive.py interrupt --id <id> --seat QUILL --note "..."
-  python3 host/demand_survive.py handoff --id <id> --from-seat A --to-seat B --note "..." --next "..."
+  python3 host/demand_survive.py occupy --id <id> --who QUILL --slice <slice>
+  python3 host/demand_survive.py interrupt --id <id> --who QUILL --note "..."
+  python3 host/demand_survive.py handoff --id <id> --from-who A --to-who B --note "..." --next "..."
   python3 host/demand_survive.py complete --id <id> --pointer <url> --receipt p/....md
   python3 host/demand_survive.py --self-test
 """
@@ -37,6 +37,8 @@ INDEX_REL = os.path.join("ground", "DEMANDS.json")
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 OCCUPANT_ACTIVE = frozenset({"active", "interrupted"})
 STATUSES = ("open", "occupied", "done")
+# Durable JSON field for the occupant label (legacy key name on disk).
+WHO_KEY = "seat"
 
 
 def _utc_now():
@@ -63,14 +65,14 @@ def demand_path(root, demand_id):
     return os.path.join(root, STORE_DIR, "%s.json" % demand_id)
 
 
-def empty_demand(demand_id, prose, source="", from_seat="", ts=None):
+def empty_demand(demand_id, prose, source="", from_who="", ts=None):
     return {
         "schema": SCHEMA,
         "id": demand_id,
         "original": {
             "prose": str(prose or ""),
             "source": str(source or ""),
-            "from": str(from_seat or ""),
+            "from": str(from_who or ""),
             "ts": ts or _utc_now(),
         },
         "corrections": [],
@@ -124,8 +126,8 @@ def validate_demand(demand):
             if not isinstance(row, dict):
                 problems.append("occupant is not an object")
                 continue
-            if not str(row.get("seat") or "").strip():
-                problems.append("occupant.seat must be nonempty")
+            if not str(row.get(WHO_KEY) or "").strip():
+                problems.append("occupant who-label empty")
             if str(row.get("status") or "") not in (
                 "active",
                 "interrupted",
@@ -190,9 +192,9 @@ def rebuild_index(root):
         "schema": SCHEMA,
         "n": len(rows),
         "note": (
-            "Durable demand pickup/continuation surface. "
+            "Never an admission. Durable demand pickup/continuation surface. "
             "Prose demands keep original + corrections. "
-            "Multi-claim occupancy is visible; collisions are not silent. "
+            "Parallel occupancy is visible; collisions are not silent. "
             "Slack CLAIMED alone does not close a demand — result.pointer does. "
             "Instrument: host/demand_survive.py. Door: demand-survive.html."
         ),
@@ -214,7 +216,11 @@ def rebuild_index(root):
                 "source": (row.get("original") or {}).get("source") or "",
                 "title": _title_of(row),
                 "occupants": [
-                    {"seat": o.get("seat"), "status": o.get("status"), "slice_id": o.get("slice_id")}
+                    {
+                        WHO_KEY: o.get(WHO_KEY),
+                        "status": o.get("status"),
+                        "slice_id": o.get("slice_id"),
+                    }
                     for o in active
                 ],
                 "result": row.get("result"),
@@ -242,7 +248,7 @@ def current_prose(demand):
     return str((demand.get("original") or {}).get("prose") or "")
 
 
-def record_demand(root, demand_id, prose, source="", from_seat="", ts=None):
+def record_demand(root, demand_id, prose, source="", from_who="", ts=None):
     if not ID_RE.match(demand_id):
         return None, ["id must match %s" % ID_RE.pattern]
     existing = load_demand(root, demand_id)
@@ -250,12 +256,16 @@ def record_demand(root, demand_id, prose, source="", from_seat="", ts=None):
         prior = str((existing.get("original") or {}).get("prose") or "")
         if prior == str(prose or ""):
             return refresh_status(existing), []
-        return existing, ["CONFLICT demand already exists with different original prose: %s" % demand_id]
-    demand = empty_demand(demand_id, prose, source=source, from_seat=from_seat, ts=ts)
+        return existing, [
+            "CONFLICT demand already exists with different original prose: %s" % demand_id
+        ]
+    demand = empty_demand(
+        demand_id, prose, source=source, from_who=from_who, ts=ts
+    )
     return save_demand(root, demand)
 
 
-def append_correction(root, demand_id, prose, from_seat="", ts=None):
+def append_correction(root, demand_id, prose, from_who="", ts=None):
     demand = load_demand(root, demand_id)
     if not demand or demand.get("error"):
         return None, ["demand not found: %s" % demand_id]
@@ -263,7 +273,7 @@ def append_correction(root, demand_id, prose, from_seat="", ts=None):
     corrections.append(
         {
             "prose": str(prose or ""),
-            "from": str(from_seat or ""),
+            "from": str(from_who or ""),
             "ts": ts or _utc_now(),
         }
     )
@@ -271,19 +281,19 @@ def append_correction(root, demand_id, prose, from_seat="", ts=None):
     return save_demand(root, demand)
 
 
-def claim_demand(root, demand_id, seat, slice_id="", note="", ts=None):
+def occupy_demand(root, demand_id, who, slice_id="", note="", ts=None):
     demand = load_demand(root, demand_id)
     if not demand or demand.get("error"):
         return None, ["demand not found: %s" % demand_id]
     if demand.get("result"):
         return demand, ["demand already done: %s" % demand_id]
-    seat = str(seat or "").strip()
-    if not seat:
-        return demand, ["need a nonempty seat"]
+    who = str(who or "").strip()
+    if not who:
+        return demand, ["need a nonempty who"]
     occupants = list(demand.get("occupants") or [])
     for row in occupants:
         if (
-            str(row.get("seat") or "") == seat
+            str(row.get(WHO_KEY) or "") == who
             and str(row.get("slice_id") or "") == str(slice_id or "")
             and str(row.get("status") or "") == "active"
         ):
@@ -291,18 +301,18 @@ def claim_demand(root, demand_id, seat, slice_id="", note="", ts=None):
     collision = [
         o
         for o in occupants
-        if str(o.get("status") or "") == "active" and str(o.get("seat") or "") != seat
+        if str(o.get("status") or "") == "active" and str(o.get(WHO_KEY) or "") != who
     ]
     occupants.append(
         {
-            "seat": seat,
+            WHO_KEY: who,
             "slice_id": str(slice_id or ""),
             "claimed_at": ts or _utc_now(),
             "status": "active",
             "note": str(note or ""),
             "handoff_note": "",
             "next_decision": "",
-            "collision_with": [o.get("seat") for o in collision],
+            "collision_with": [o.get(WHO_KEY) for o in collision],
         }
     )
     demand["occupants"] = occupants
@@ -312,16 +322,16 @@ def claim_demand(root, demand_id, seat, slice_id="", note="", ts=None):
     return saved, problems
 
 
-def interrupt_occupant(root, demand_id, seat, note="", next_decision="", ts=None):
+def interrupt_occupant(root, demand_id, who, note="", next_decision="", ts=None):
     demand = load_demand(root, demand_id)
     if not demand or demand.get("error"):
         return None, ["demand not found: %s" % demand_id]
-    seat = str(seat or "").strip()
+    who = str(who or "").strip()
     found = False
     occupants = []
     for row in demand.get("occupants") or []:
         row = dict(row)
-        if str(row.get("seat") or "") == seat and str(row.get("status") or "") == "active":
+        if str(row.get(WHO_KEY) or "") == who and str(row.get("status") or "") == "active":
             row["status"] = "interrupted"
             row["handoff_note"] = str(note or "")
             row["next_decision"] = str(next_decision or "")
@@ -329,26 +339,26 @@ def interrupt_occupant(root, demand_id, seat, note="", next_decision="", ts=None
             found = True
         occupants.append(row)
     if not found:
-        return demand, ["no active occupant for seat: %s" % seat]
+        return demand, ["no active occupant for who: %s" % who]
     demand["occupants"] = occupants
     return save_demand(root, demand)
 
 
 def handoff_demand(
-    root, demand_id, from_seat, to_seat, note="", next_decision="", slice_id="", ts=None
+    root, demand_id, from_who, to_who, note="", next_decision="", slice_id="", ts=None
 ):
     demand = load_demand(root, demand_id)
     if not demand or demand.get("error"):
         return None, ["demand not found: %s" % demand_id]
-    from_seat = str(from_seat or "").strip()
-    to_seat = str(to_seat or "").strip()
-    if not from_seat or not to_seat:
-        return demand, ["need nonempty from_seat and to_seat"]
+    from_who = str(from_who or "").strip()
+    to_who = str(to_who or "").strip()
+    if not from_who or not to_who:
+        return demand, ["need nonempty from_who and to_who"]
     occupants = []
     handed = False
     for row in demand.get("occupants") or []:
         row = dict(row)
-        if str(row.get("seat") or "") == from_seat and str(row.get("status") or "") in (
+        if str(row.get(WHO_KEY) or "") == from_who and str(row.get("status") or "") in (
             "active",
             "interrupted",
         ):
@@ -356,29 +366,29 @@ def handoff_demand(
             row["handoff_note"] = str(note or "")
             row["next_decision"] = str(next_decision or "")
             row["handed_off_at"] = ts or _utc_now()
-            row["handed_to"] = to_seat
+            row["handed_to"] = to_who
             handed = True
         occupants.append(row)
     if not handed:
-        return demand, ["no active/interrupted occupant for seat: %s" % from_seat]
+        return demand, ["no active/interrupted occupant for who: %s" % from_who]
     occupants.append(
         {
-            "seat": to_seat,
+            WHO_KEY: to_who,
             "slice_id": str(slice_id or ""),
             "claimed_at": ts or _utc_now(),
             "status": "active",
-            "note": "handoff from %s" % from_seat,
+            "note": "handoff from %s" % from_who,
             "handoff_note": str(note or ""),
             "next_decision": str(next_decision or ""),
             "collision_with": [],
-            "received_from": from_seat,
+            "received_from": from_who,
         }
     )
     demand["occupants"] = occupants
     return save_demand(root, demand)
 
 
-def complete_demand(root, demand_id, pointer, receipt="", seat="", ts=None):
+def complete_demand(root, demand_id, pointer, receipt="", who="", ts=None):
     demand = load_demand(root, demand_id)
     if not demand or demand.get("error"):
         return None, ["demand not found: %s" % demand_id]
@@ -388,7 +398,7 @@ def complete_demand(root, demand_id, pointer, receipt="", seat="", ts=None):
     demand["result"] = {
         "pointer": pointer,
         "receipt": str(receipt or ""),
-        "seat": str(seat or ""),
+        WHO_KEY: str(who or ""),
         "landed_at": ts or _utc_now(),
     }
     occupants = []
@@ -447,7 +457,7 @@ def self_test():
         "astra-d5-fixture-20260904-01",
         "Build demands that survive the conversation. Discover unclaimed work.",
         source="slack:C0BU51F1PL3/1788567261.579059",
-        from_seat="BRYCE",
+        from_who="BRYCE",
         ts="2026-09-04T20:14:21Z",
     )
     assert err == [], err
@@ -462,25 +472,33 @@ def self_test():
     )
     assert err2 and "CONFLICT" in err2[0]
 
-    d, err = claim_demand(
-        root, "astra-d5-fixture-20260904-01", "PEER_A", slice_id="a-slice", ts="2026-09-04T20:20:00Z"
+    d, err = occupy_demand(
+        root,
+        "astra-d5-fixture-20260904-01",
+        "PEER_A",
+        slice_id="a-slice",
+        ts="2026-09-04T20:20:00Z",
     )
     assert err == []
-    d, err = claim_demand(
-        root, "astra-d5-fixture-20260904-01", "PEER_B", slice_id="b-slice", ts="2026-09-04T20:20:05Z"
+    d, err = occupy_demand(
+        root,
+        "astra-d5-fixture-20260904-01",
+        "PEER_B",
+        slice_id="b-slice",
+        ts="2026-09-04T20:20:05Z",
     )
     assert err == []
     active = [o for o in d["occupants"] if o["status"] == "active"]
     assert len(active) == 2
     assert d["status"] == "occupied"
-    b = [o for o in active if o["seat"] == "PEER_B"][0]
+    b = [o for o in active if o[WHO_KEY] == "PEER_B"][0]
     assert "PEER_A" in (b.get("collision_with") or [])
 
     d, err = append_correction(
         root,
         "astra-d5-fixture-20260904-01",
         "Ship and merge already approved; do not wait for another yes.",
-        from_seat="BRYCE",
+        from_who="BRYCE",
         ts="2026-09-04T20:15:11Z",
     )
     assert err == []
@@ -500,25 +518,25 @@ def self_test():
     d, err = handoff_demand(
         root,
         "astra-d5-fixture-20260904-01",
-        from_seat="PEER_A",
-        to_seat="PEER_C",
+        from_who="PEER_A",
+        to_who="PEER_C",
         note="tests green locally; open PR next",
         next_decision="open PR and merge",
         slice_id="c-slice",
         ts="2026-09-04T20:31:00Z",
     )
     assert err == []
-    seats = {o["seat"]: o["status"] for o in d["occupants"]}
-    assert seats["PEER_A"] == "handed_off"
-    assert seats["PEER_C"] == "active"
-    assert seats["PEER_B"] == "active"
+    whos = {o[WHO_KEY]: o["status"] for o in d["occupants"]}
+    assert whos["PEER_A"] == "handed_off"
+    assert whos["PEER_C"] == "active"
+    assert whos["PEER_B"] == "active"
 
     d, err = complete_demand(
         root,
         "astra-d5-fixture-20260904-01",
         pointer="https://github.com/woahwhattheheck/commons/pull/9999",
         receipt="p/astra-d5-fixture-20260904-01.md",
-        seat="PEER_C",
+        who="PEER_C",
         ts="2026-09-04T21:00:00Z",
     )
     assert err == []
@@ -569,29 +587,29 @@ def main(argv=None):
     p_rec.add_argument("--id", default="")
     p_rec.add_argument("--prose", default="")
     p_rec.add_argument("--source", default="")
-    p_rec.add_argument("--from-seat", default="")
+    p_rec.add_argument("--from-who", default="")
 
     p_cor = sub.add_parser("correct", help="append owner correction; keep original")
     p_cor.add_argument("--id", default="")
     p_cor.add_argument("--prose", default="")
-    p_cor.add_argument("--from-seat", default="")
+    p_cor.add_argument("--from-who", default="")
 
-    p_claim = sub.add_parser("claim", help="record occupancy (parallel visible)")
-    p_claim.add_argument("--id", default="")
-    p_claim.add_argument("--seat", default="")
-    p_claim.add_argument("--slice", dest="slice_id", default="")
-    p_claim.add_argument("--note", default="")
+    p_occ = sub.add_parser("occupy", help="record occupancy (parallel visible)")
+    p_occ.add_argument("--id", default="")
+    p_occ.add_argument("--who", default="")
+    p_occ.add_argument("--slice", dest="slice_id", default="")
+    p_occ.add_argument("--note", default="")
 
     p_int = sub.add_parser("interrupt", help="mark builder interrupted")
     p_int.add_argument("--id", default="")
-    p_int.add_argument("--seat", default="")
+    p_int.add_argument("--who", default="")
     p_int.add_argument("--note", default="")
     p_int.add_argument("--next", dest="next_decision", default="")
 
-    p_hand = sub.add_parser("handoff", help="hand demand to another seat")
+    p_hand = sub.add_parser("handoff", help="hand demand to another builder")
     p_hand.add_argument("--id", default="")
-    p_hand.add_argument("--from-seat", default="")
-    p_hand.add_argument("--to-seat", default="")
+    p_hand.add_argument("--from-who", default="")
+    p_hand.add_argument("--to-who", default="")
     p_hand.add_argument("--note", default="")
     p_hand.add_argument("--next", dest="next_decision", default="")
     p_hand.add_argument("--slice", dest="slice_id", default="")
@@ -600,7 +618,7 @@ def main(argv=None):
     p_done.add_argument("--id", default="")
     p_done.add_argument("--pointer", default="")
     p_done.add_argument("--receipt", default="")
-    p_done.add_argument("--seat", default="")
+    p_done.add_argument("--who", default="")
 
     args = parser.parse_args(argv)
     if args.self_test:
@@ -628,34 +646,34 @@ def main(argv=None):
         if not _need(args, "id", "prose"):
             return 2
         data, err = record_demand(
-            root, args.id, args.prose, source=args.source, from_seat=args.from_seat
+            root, args.id, args.prose, source=args.source, from_who=args.from_who
         )
     elif args.cmd == "correct":
         if not _need(args, "id", "prose"):
             return 2
         data, err = append_correction(
-            root, args.id, args.prose, from_seat=args.from_seat
+            root, args.id, args.prose, from_who=args.from_who
         )
-    elif args.cmd == "claim":
-        if not _need(args, "id", "seat"):
+    elif args.cmd == "occupy":
+        if not _need(args, "id", "who"):
             return 2
-        data, err = claim_demand(
-            root, args.id, args.seat, slice_id=args.slice_id, note=args.note
+        data, err = occupy_demand(
+            root, args.id, args.who, slice_id=args.slice_id, note=args.note
         )
     elif args.cmd == "interrupt":
-        if not _need(args, "id", "seat"):
+        if not _need(args, "id", "who"):
             return 2
         data, err = interrupt_occupant(
-            root, args.id, args.seat, note=args.note, next_decision=args.next_decision
+            root, args.id, args.who, note=args.note, next_decision=args.next_decision
         )
     elif args.cmd == "handoff":
-        if not _need(args, "id", "from_seat", "to_seat"):
+        if not _need(args, "id", "from_who", "to_who"):
             return 2
         data, err = handoff_demand(
             root,
             args.id,
-            args.from_seat,
-            args.to_seat,
+            args.from_who,
+            args.to_who,
             note=args.note,
             next_decision=args.next_decision,
             slice_id=args.slice_id,
@@ -664,7 +682,7 @@ def main(argv=None):
         if not _need(args, "id", "pointer"):
             return 2
         data, err = complete_demand(
-            root, args.id, args.pointer, receipt=args.receipt, seat=args.seat
+            root, args.id, args.pointer, receipt=args.receipt, who=args.who
         )
     else:
         parser.print_help()
