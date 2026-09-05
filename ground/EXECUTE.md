@@ -17,3 +17,5 @@ Land unique work on current main in the same turn you build it. Do not leave uni
 Ask only when a materially new action falls outside the inferred intent, or a real credential / permission wall requires the operator.
 
 Cite: Slack `1787498561.042419`. Door: [START.md](../START.md). Land: [LAND.md](./LAND.md). Memory card: [memory/LAW.md](../memory/LAW.md). Harness rule: [.cursor/rules/execute-immediately.mdc](../.cursor/rules/execute-immediately.mdc).
+
+Holds without Bryce exact-word quotes are void. Law: [HOLD_QUOTE.md](./HOLD_QUOTE.md). Memory: [memory/HOLD_QUOTE.md](../memory/HOLD_QUOTE.md). Slack cite: `1788638814.373739`.
