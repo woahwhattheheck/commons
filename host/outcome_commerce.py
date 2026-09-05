@@ -9,7 +9,7 @@ Examples:
 
   python3 host/outcome_commerce.py validate
   python3 host/outcome_commerce.py catalog
-  python3 host/outcome_commerce.py quote --listing same-day-agent-survival-proof
+  python3 host/outcome_commerce.py quote --listing ho-issue-to-pr
   python3 host/outcome_commerce.py quote --catalog revenue/outcome_commerce/examples/hybrid_catalog.json \
       --listing synthetic-hybrid-agent --metric platform=1 --metric actions=1350 --metric outcomes=4
   python3 host/outcome_commerce.py statement --catalog revenue/outcome_commerce/examples/hybrid_catalog.json \

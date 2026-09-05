@@ -22,6 +22,14 @@ SPEC.loader.exec_module(capability)
 
 
 class PaymentCapability(unittest.TestCase):
+    @staticmethod
+    def _catalog():
+        return json.loads(
+            (ROOT / "revenue" / "outcome_commerce" / "catalog.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
     def test_self_test_failsover_without_pretending_a_url(self):
         self.assertEqual(capability.main(["--self-test"]), 0)
 
@@ -46,18 +54,8 @@ class PaymentCapability(unittest.TestCase):
             for rail in projected["public_rails"]
             for link in rail["public_links"]
         }
-        self.assertEqual(
-            public_skus,
-            {
-                "sku-tip-20260826",
-                "sku-seat-20260826",
-                "sku-unlock-20260826",
-                "sku-monthly-tip-20260826",
-                "sku-boost-20260826",
-                "sku-whitebox-hour-20260826",
-                "sku-muhlnickel-titan-20260826",
-            },
-        )
+        self.assertEqual(public_skus, set(capability.catalog_checkouts(self._catalog())))
+        self.assertIn("agent-failure-autopsy-29", public_skus)
 
     def test_stripe_fail_closed_does_not_activate_kyc_rails(self):
         registry = json.loads(
@@ -72,7 +70,7 @@ class PaymentCapability(unittest.TestCase):
                 rail["charges_enabled"] = False
                 rail["payouts_enabled"] = False
                 rail["public_presentation"] = "INERT"
-        projected = capability.project(dead)
+        projected = capability.project(dead, self._catalog())
         self.assertFalse(projected["has_public_storefront"])
         self.assertFalse(projected["has_lawfully_chargeable_path"])
         self.assertEqual(projected["active_storefront_rail_id"], "")

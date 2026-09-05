@@ -19,9 +19,9 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-tests-33717741059-billing-lock-20260903-01.md": "1b6c3021",
-    "test_grokbuild_tests_33717741059_billing_lock.py": "ad6f3320",
+    "test_grokbuild_tests_33717741059_billing_lock.py": "3135f16b",
     "p/grokbuild-tests-33717733992-billing-lock-20260903-01.md": "e91d0547",
-    "test_grokbuild_tests_33717733992_billing_lock.py": "7a0afbeb",
+    "test_grokbuild_tests_33717733992_billing_lock.py": "1afcd523",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "760a8169",
     "p/grokbuild-slack-service-tags-33717615004-billing-lock-20260903-01.md": "f33a76ef",

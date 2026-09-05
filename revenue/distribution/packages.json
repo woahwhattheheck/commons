@@ -1,548 +1,8 @@
 {
   "as_of":"2026-08-28T16:10:00Z",
-  "count":99,
+  "count":111,
   "kind":"CHANNEL_READY_PACKAGES",
   "packages":[
-    {
-      "blocked_reason":"No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: Upwork Project Catalog (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Upwork Project Catalog. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-project-catalog",
-      "channel_name":"Upwork Project Catalog",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "No seller identity or marketplace account is authorized in this session."
-      ],
-      "honesty":{
-        "blocked_reason":"No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"upwork-project-catalog__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
-    {
-      "blocked_reason":"No authorized Upwork job feed account in this session. Identity/KYC unmet. Do not submit.",
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: Upwork job feed (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Upwork job feed. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Upwork job feed account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"public_marketplace",
-      "channel_id":"upwork-job-feed",
-      "channel_name":"Upwork job feed",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "No seller identity or marketplace account is authorized in this session."
-      ],
-      "honesty":{
-        "blocked_reason":"No authorized Upwork job feed account in this session. Identity/KYC unmet. Do not submit.",
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"upwork-job-feed__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
-    {
-      "blocked_reason":"No authorized Contra Services account in this session. Identity/KYC unmet. Do not submit.",
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: Contra Services (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Contra Services. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Contra Services account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"public_marketplace",
-      "channel_id":"contra-services",
-      "channel_name":"Contra Services",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "No seller identity or marketplace account is authorized in this session."
-      ],
-      "honesty":{
-        "blocked_reason":"No authorized Contra Services account in this session. Identity/KYC unmet. Do not submit.",
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"contra-services__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
-    {
-      "blocked_reason":"No authorized Fiverr Gig account in this session. Identity/KYC unmet. Do not submit.",
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: Fiverr Gig (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Fiverr Gig. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Fiverr Gig account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"public_marketplace",
-      "channel_id":"fiverr-gig",
-      "channel_name":"Fiverr Gig",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "No seller identity or marketplace account is authorized in this session."
-      ],
-      "honesty":{
-        "blocked_reason":"No authorized Fiverr Gig account in this session. Identity/KYC unmet. Do not submit.",
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"fiverr-gig__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
-    {
-      "blocked_reason":null,
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"commons_surface",
-      "channel_id":"commons-pages",
-      "channel_name":"Commons public pages",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
-      ],
-      "honesty":{
-        "blocked_reason":null,
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"commons-pages__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
-    {
-      "blocked_reason":null,
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"partner",
-      "channel_id":"tokenjunkielabs-slack",
-      "channel_name":"TokenJunkieLabs Slack #commons",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
-      ],
-      "honesty":{
-        "blocked_reason":null,
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"tokenjunkielabs-slack__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
-    {
-      "blocked_reason":null,
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"partner",
-      "channel_id":"founder-email",
-      "channel_name":"Founder-sent email",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
-      ],
-      "honesty":{
-        "blocked_reason":null,
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"founder-email__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"SURFACE_LIVE",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
-    {
-      "blocked_reason":"No authorized Public RFP response pack account in this session. Do not submit.",
-      "channel_copy":"Same-Day Agent Survival Proof — Commons channel package (not a live listing)\n\nOutcome: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win; this package does not rewrite them.\nOffer id: same-day-agent-survival-proof.\nChannel: Public RFP response pack (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Public RFP response pack. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
-      "channel_family":"procurement",
-      "channel_id":"public-rfp-pack",
-      "channel_name":"Public RFP response pack",
-      "conversion":{
-        "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
-        "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-      },
-      "evidence":[
-        {
-          "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-          "kind":"canonical_source",
-          "path":"revenue/production_survival/offer.json"
-        },
-        {
-          "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-        },
-        {
-          "kind":"distribution_door",
-          "path":"distribution.html",
-          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
-        }
-      ],
-      "exclusions":[
-        "This package is not a live listing.",
-        "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
-      ],
-      "honesty":{
-        "blocked_reason":"No authorized Public RFP response pack account in this session. Do not submit.",
-        "customers":0,
-        "leads":0,
-        "listed":false,
-        "live_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"public-rfp-pack__same-day-agent-survival-proof",
-      "kind":"CHANNEL_READY_PACKAGE",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "offer_class":"bounded_service",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "package_state":"PACKAGE_READY",
-      "price":{
-        "amount":"2500.00",
-        "basis":"one accepted one-business-day proof contract",
-        "currency":"USD"
-      },
-      "scope":[
-        "Sellable outcome: Same-Day Agent Survival Proof.",
-        "Price basis: one accepted one-business-day proof contract.",
-        "Canonical terms stay on revenue/production_survival/offer.json.",
-        "Verified outcome evidence is required before any chargeable state.",
-        "Acceptance contract: revenue/production_survival/acceptance_contract.md."
-      ],
-      "submit_allowed":false,
-      "submitted":false,
-      "title":"Same-Day Agent Survival Proof"
-    },
     {
       "blocked_reason":"No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
       "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Upwork Project Catalog (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Upwork Project Catalog. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
@@ -6285,8 +5745,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6353,8 +5812,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6421,8 +5879,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6489,8 +5946,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":"Stripe rail is not proven chargeable and payout-capable on the catalog.",
@@ -6557,8 +6013,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6625,8 +6080,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6693,8 +6147,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6728,6 +6181,1366 @@
       "submit_allowed":false,
       "submitted":false,
       "title":"Muhlnickel Attested Inference"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Dealer Service Lead Rescue Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Dealer Service Lead Rescue Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: dealer-service-lead-rescue.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/dealer_service_lead_rescue/contract.json (blob 9a0177e405e6ecbda5d648915c882fa31b4d9f3f).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"dealer-service-lead-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+          "kind":"canonical_source",
+          "path":"revenue/dealer_service_lead_rescue/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"dealer-service-lead-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__dealer-service-lead-rescue",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic dealer service lead diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Dealer Service Lead Rescue Diagnostic.",
+        "Price basis: one synthetic dealer service lead diagnostic in one business day.",
+        "Canonical terms stay on revenue/dealer_service_lead_rescue/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/dealer_service_lead_rescue/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Dealer Service Lead Rescue Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Dealer Service Lead Rescue Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Dealer Service Lead Rescue Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: dealer-service-lead-rescue.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/dealer_service_lead_rescue/contract.json (blob 9a0177e405e6ecbda5d648915c882fa31b4d9f3f).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"dealer-service-lead-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+          "kind":"canonical_source",
+          "path":"revenue/dealer_service_lead_rescue/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"dealer-service-lead-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__dealer-service-lead-rescue",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic dealer service lead diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Dealer Service Lead Rescue Diagnostic.",
+        "Price basis: one synthetic dealer service lead diagnostic in one business day.",
+        "Canonical terms stay on revenue/dealer_service_lead_rescue/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/dealer_service_lead_rescue/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Dealer Service Lead Rescue Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Dealer Service Lead Rescue Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Dealer Service Lead Rescue Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: dealer-service-lead-rescue.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/dealer_service_lead_rescue/contract.json (blob 9a0177e405e6ecbda5d648915c882fa31b4d9f3f).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"dealer-service-lead-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+          "kind":"canonical_source",
+          "path":"revenue/dealer_service_lead_rescue/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"dealer-service-lead-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__dealer-service-lead-rescue",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic dealer service lead diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Dealer Service Lead Rescue Diagnostic.",
+        "Price basis: one synthetic dealer service lead diagnostic in one business day.",
+        "Canonical terms stay on revenue/dealer_service_lead_rescue/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/dealer_service_lead_rescue/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Dealer Service Lead Rescue Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Dealer Service Lead Rescue Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Dealer Service Lead Rescue Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: dealer-service-lead-rescue.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/dealer_service_lead_rescue/contract.json (blob 9a0177e405e6ecbda5d648915c882fa31b4d9f3f).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"dealer-service-lead-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+          "kind":"canonical_source",
+          "path":"revenue/dealer_service_lead_rescue/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"dealer-service-lead-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__dealer-service-lead-rescue",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic dealer service lead diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Dealer Service Lead Rescue Diagnostic.",
+        "Price basis: one synthetic dealer service lead diagnostic in one business day.",
+        "Canonical terms stay on revenue/dealer_service_lead_rescue/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/dealer_service_lead_rescue/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Dealer Service Lead Rescue Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Plant Downtime Handoff Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Plant Downtime Handoff Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: plant-downtime-handoff.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/plant_downtime_handoff/contract.json (blob 9d01dd83be165ca322f576ba05bce2dbe81e48e4).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"plant-downtime-handoff.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+          "kind":"canonical_source",
+          "path":"revenue/plant_downtime_handoff/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"plant-downtime-handoff.html",
+          "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__plant-downtime-handoff",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic plant downtime handoff diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Plant Downtime Handoff Diagnostic.",
+        "Price basis: one synthetic plant downtime handoff diagnostic in one business day.",
+        "Canonical terms stay on revenue/plant_downtime_handoff/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/plant_downtime_handoff/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Plant Downtime Handoff Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Plant Downtime Handoff Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Plant Downtime Handoff Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: plant-downtime-handoff.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/plant_downtime_handoff/contract.json (blob 9d01dd83be165ca322f576ba05bce2dbe81e48e4).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"plant-downtime-handoff.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+          "kind":"canonical_source",
+          "path":"revenue/plant_downtime_handoff/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"plant-downtime-handoff.html",
+          "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__plant-downtime-handoff",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic plant downtime handoff diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Plant Downtime Handoff Diagnostic.",
+        "Price basis: one synthetic plant downtime handoff diagnostic in one business day.",
+        "Canonical terms stay on revenue/plant_downtime_handoff/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/plant_downtime_handoff/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Plant Downtime Handoff Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Plant Downtime Handoff Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Plant Downtime Handoff Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: plant-downtime-handoff.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/plant_downtime_handoff/contract.json (blob 9d01dd83be165ca322f576ba05bce2dbe81e48e4).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"plant-downtime-handoff.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+          "kind":"canonical_source",
+          "path":"revenue/plant_downtime_handoff/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"plant-downtime-handoff.html",
+          "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__plant-downtime-handoff",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic plant downtime handoff diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Plant Downtime Handoff Diagnostic.",
+        "Price basis: one synthetic plant downtime handoff diagnostic in one business day.",
+        "Canonical terms stay on revenue/plant_downtime_handoff/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/plant_downtime_handoff/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Plant Downtime Handoff Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Plant Downtime Handoff Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Plant Downtime Handoff Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: plant-downtime-handoff.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/plant_downtime_handoff/contract.json (blob 9d01dd83be165ca322f576ba05bce2dbe81e48e4).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"plant-downtime-handoff.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+          "kind":"canonical_source",
+          "path":"revenue/plant_downtime_handoff/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"plant-downtime-handoff.html",
+          "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__plant-downtime-handoff",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic plant downtime handoff diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Plant Downtime Handoff Diagnostic.",
+        "Price basis: one synthetic plant downtime handoff diagnostic in one business day.",
+        "Canonical terms stay on revenue/plant_downtime_handoff/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/plant_downtime_handoff/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Plant Downtime Handoff Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Referral Intake Completeness Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Referral Intake Completeness Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: referral-intake-completeness.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/referral_intake_completeness/contract.json (blob 06bb53685f6aaca69ff08b436771fe115e0aa38b).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"referral-intake-completeness.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+          "kind":"canonical_source",
+          "path":"revenue/referral_intake_completeness/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"referral-intake-completeness.html",
+          "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__referral-intake-completeness",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic referral intake completeness diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Referral Intake Completeness Diagnostic.",
+        "Price basis: one synthetic referral intake completeness diagnostic in one business day.",
+        "Canonical terms stay on revenue/referral_intake_completeness/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/referral_intake_completeness/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Referral Intake Completeness Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Referral Intake Completeness Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Referral Intake Completeness Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: referral-intake-completeness.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/referral_intake_completeness/contract.json (blob 06bb53685f6aaca69ff08b436771fe115e0aa38b).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"referral-intake-completeness.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+          "kind":"canonical_source",
+          "path":"revenue/referral_intake_completeness/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"referral-intake-completeness.html",
+          "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__referral-intake-completeness",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic referral intake completeness diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Referral Intake Completeness Diagnostic.",
+        "Price basis: one synthetic referral intake completeness diagnostic in one business day.",
+        "Canonical terms stay on revenue/referral_intake_completeness/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/referral_intake_completeness/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Referral Intake Completeness Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Referral Intake Completeness Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Referral Intake Completeness Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: referral-intake-completeness.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/referral_intake_completeness/contract.json (blob 06bb53685f6aaca69ff08b436771fe115e0aa38b).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"referral-intake-completeness.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+          "kind":"canonical_source",
+          "path":"revenue/referral_intake_completeness/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"referral-intake-completeness.html",
+          "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__referral-intake-completeness",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic referral intake completeness diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Referral Intake Completeness Diagnostic.",
+        "Price basis: one synthetic referral intake completeness diagnostic in one business day.",
+        "Canonical terms stay on revenue/referral_intake_completeness/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/referral_intake_completeness/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Referral Intake Completeness Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Referral Intake Completeness Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Referral Intake Completeness Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: referral-intake-completeness.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/referral_intake_completeness/contract.json (blob 06bb53685f6aaca69ff08b436771fe115e0aa38b).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"referral-intake-completeness.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+          "kind":"canonical_source",
+          "path":"revenue/referral_intake_completeness/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"referral-intake-completeness.html",
+          "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__referral-intake-completeness",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic referral intake completeness diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Referral Intake Completeness Diagnostic.",
+        "Price basis: one synthetic referral intake completeness diagnostic in one business day.",
+        "Canonical terms stay on revenue/referral_intake_completeness/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/referral_intake_completeness/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Referral Intake Completeness Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Repair Booking Exactly-Once Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Repair Booking Exactly-Once Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: repair-booking-exactly-once-v1.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/repair_booking_preflight/contract.json (blob 85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"repair-booking-preflight.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+          "kind":"canonical_source",
+          "path":"revenue/repair_booking_preflight/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"repair-booking-preflight.html",
+          "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__repair-booking-exactly-once-v1",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one 20-fixture synthetic repair-booking diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Repair Booking Exactly-Once Diagnostic.",
+        "Price basis: one 20-fixture synthetic repair-booking diagnostic in one business day.",
+        "Canonical terms stay on revenue/repair_booking_preflight/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/repair_booking_preflight/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Repair Booking Exactly-Once Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Repair Booking Exactly-Once Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Repair Booking Exactly-Once Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: repair-booking-exactly-once-v1.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/repair_booking_preflight/contract.json (blob 85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"repair-booking-preflight.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+          "kind":"canonical_source",
+          "path":"revenue/repair_booking_preflight/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"repair-booking-preflight.html",
+          "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__repair-booking-exactly-once-v1",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one 20-fixture synthetic repair-booking diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Repair Booking Exactly-Once Diagnostic.",
+        "Price basis: one 20-fixture synthetic repair-booking diagnostic in one business day.",
+        "Canonical terms stay on revenue/repair_booking_preflight/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/repair_booking_preflight/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Repair Booking Exactly-Once Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Repair Booking Exactly-Once Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Repair Booking Exactly-Once Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: repair-booking-exactly-once-v1.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/repair_booking_preflight/contract.json (blob 85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"repair-booking-preflight.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+          "kind":"canonical_source",
+          "path":"revenue/repair_booking_preflight/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"repair-booking-preflight.html",
+          "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__repair-booking-exactly-once-v1",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one 20-fixture synthetic repair-booking diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Repair Booking Exactly-Once Diagnostic.",
+        "Price basis: one 20-fixture synthetic repair-booking diagnostic in one business day.",
+        "Canonical terms stay on revenue/repair_booking_preflight/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/repair_booking_preflight/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Repair Booking Exactly-Once Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Repair Booking Exactly-Once Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Repair Booking Exactly-Once Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: repair-booking-exactly-once-v1.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/repair_booking_preflight/contract.json (blob 85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"repair-booking-preflight.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+          "kind":"canonical_source",
+          "path":"revenue/repair_booking_preflight/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"repair-booking-preflight.html",
+          "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__repair-booking-exactly-once-v1",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one 20-fixture synthetic repair-booking diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Repair Booking Exactly-Once Diagnostic.",
+        "Price basis: one 20-fixture synthetic repair-booking diagnostic in one business day.",
+        "Canonical terms stay on revenue/repair_booking_preflight/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/repair_booking_preflight/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Repair Booking Exactly-Once Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
     }
   ],
   "schema_version":"distribution/v1"

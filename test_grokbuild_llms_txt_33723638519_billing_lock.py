@@ -32,7 +32,7 @@ KEEP = {
     "p/grok-build-llms-txt-33699607384-billing-lock-20260903-01.md": "214368d9",
     "p/grok-build-llms-txt-33699940559-billing-lock-20260903-01.md": "44411b3e",
     "p/grokbuild-llms-txt-33718131457-billing-lock-20260903-01.md": "d87fe8da",
-    "test_grokbuild_llms_txt_33718131457_billing_lock.py": "8caa00af",
+    "test_grokbuild_llms_txt_33718131457_billing_lock.py": "ffa0b193",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",

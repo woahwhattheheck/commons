@@ -19,7 +19,7 @@ BODY_SHA256 = "3853a92a3fab712750332c8cf362748a733a9839acc5fc529e2a5dd00ac2d35f"
 
 KEEP = {
     "p/grokbuild-llms-txt-33723861225-billing-lock-20260903-01.md": "09244cf3",
-    "test_grokbuild_llms_txt_33723861225_billing_lock.py": "551cf3f2",
+    "test_grokbuild_llms_txt_33723861225_billing_lock.py": "9cf83741",
     "llms_txt.py": "83fc5ea9",
     ".github/workflows/llms-txt.yml": "d2182a3d",
     "open_door_guard.py": "4b053e43",

@@ -59,7 +59,7 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertTrue(match["owner_now_blob"].startswith("59b1fd37"))
         self.assertTrue(match["leftover_blob"].startswith("1b3cd631"))
 
-    def test_ask_for_sale_on_seven_proven_rails(self) -> None:
+    def test_ask_for_sale_on_current_proven_rails(self) -> None:
         packet = onr.ask_for_sale(ROOT)
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE", packet)
         self.assertEqual(packet["point"], "generate revenue")
@@ -70,9 +70,11 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertEqual(packet["new_stripe_mint"], "EXTERNAL_PROVIDER_ACTION")
         self.assertEqual(packet["cash_usd"], 0)
         self.assertEqual(packet["sends"], 0)
-        self.assertEqual(packet["sku_count"], 7)
+        self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         skus = [row["sku"] for row in packet["ask_for_sale"]]
-        self.assertEqual(skus, list(CANONICAL))
+        self.assertEqual(skus[:len(CANONICAL)], list(CANONICAL))
+        self.assertEqual(len(skus), len(set(skus)))
         for row in packet["ask_for_sale"]:
             self.assertEqual(row["ask"], "ASK_FOR_SALE")
             self.assertTrue(onr.looks_like_stripe_checkout(row["url"]))

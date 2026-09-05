@@ -36,7 +36,7 @@ KEEP = {
     "test_cursor_webmcp_adapter_keep_lift.py": "cb0e5390",
     "test_webmcp_door.py": "21b6993f",
     "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "67ce7021",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "fcb822af",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "41e0507e",
 }
 
 THIS_SEAT_ADAPTER_TESTS = (

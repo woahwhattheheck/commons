@@ -162,6 +162,23 @@ SMB_LEADS = (
     "karma-yoga-soma-spa-katrina-gustafson-broyles",
     "barks-law-firm-stuart-barks",
 )
+POOL_LEADS = (
+    "greenway-ford-brian-grady",
+    "teton-auto-group-mario-hernandez",
+    "sames-auto-group-evelyn-sames",
+    "jlr-riverside-indigo-bryan-hildebrand",
+    "ciocca-automotive-gregg-ciocca",
+    "carter-myers-automotive-liza-borches",
+    "tyson-foods-mike-wheeler",
+    "rex-moore-electrical-jason-blum",
+    "cargill-jennifer-hartsock",
+    "ann-arbor-wwtp-adam-smith",
+    "trinity-health-michael-slubowski",
+    "sage-dental-thomas-marler",
+    "pepperpointe-partnerships-greg-white",
+    "greenway-health-pratap-sarker",
+    "clemens-food-group-craig-edsill",
+)
 LEADS = (
     "pitt-mark-henderson",
     "nutanix-thomas-cornely",
@@ -195,15 +212,15 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(truth["transport_actions"], 0)
         self.assertEqual(truth["calls_booked"], 0)
         self.assertEqual(truth["mailbox"], "NEEDS_OWNER_MAILBOX")
-        self.assertEqual(truth["live_next_actions"], 72)
-        self.assertEqual(truth["hot_next_actions"], 28)
+        self.assertEqual(truth["live_next_actions"], 87)
+        self.assertEqual(truth["hot_next_actions"], 43)
         self.assertEqual(truth["hold_build_actions"], 20)
         self.assertEqual(truth["sent_awaiting_dnr_actions"], 10)
-        self.assertEqual(truth["external_prospects"], 61)
+        self.assertEqual(truth["external_prospects"], 76)
         self.assertEqual(truth["inbound_contacts"], 11)
         self.assertEqual(truth["seller_context_rows"], 4)
-        self.assertEqual(truth["overlay_events"], 71)
-        self.assertEqual(truth["index_rows"], 78)
+        self.assertEqual(truth["overlay_events"], 86)
+        self.assertEqual(truth["index_rows"], 93)
         self.assertEqual(truth["research_entities_not_live"], 1000)
         self.assertTrue(built["state"]["public_projection_is_not_crm"])
         self.assertEqual(
@@ -268,7 +285,7 @@ class LmGtmIndexTests(unittest.TestCase):
             self.assertIn(sent, ids)
             self.assertEqual(hot[ids.index(sent)]["hot_class"], "sent_awaiting_reply")
             self.assertLess(ids.index(sent), ids.index("composio"))
-        for lead in LEADS + SMB_LEADS:
+        for lead in LEADS + SMB_LEADS + POOL_LEADS:
             self.assertIn(lead, ids)
             self.assertEqual(hot[ids.index(lead)]["hot_class"], "verified_lead_unsent")
             self.assertLess(ids.index("composio"), ids.index(lead))
@@ -456,7 +473,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(by_id["communitycare-katherine-reyes"]["person"], "Katherine T. Reyes")
         self.assertEqual(by_id["pitt-mark-henderson"]["person"], "Mark D. Henderson")
         self.assertEqual(by_id["ohio-university-rfp"]["person"], "Halie Best")
-        for name in LEADS + SMB_LEADS:
+        for name in LEADS + SMB_LEADS + POOL_LEADS:
             row = by_id[name]
             self.assertEqual(row["decision"], "VERIFIED_LEAD_UNSENT")
             self.assertEqual(row["role"], "external_prospect")
@@ -758,7 +775,7 @@ class LmGtmIndexTests(unittest.TestCase):
         second = subprocess.run(command, cwd=ROOT, check=True, capture_output=True, text=True).stdout
         self.assertEqual(first, second)
         self.assertIn("USD 0 cash", first)
-        self.assertIn("28 hot", first)
+        self.assertIn("43 hot", first)
         nxt = subprocess.run(
             [sys.executable, str(HOST), "next"],
             cwd=ROOT,
@@ -834,7 +851,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertFalse(extra_header, extra_header)
         self.assertIn("composed_at", header)
         self.assertEqual(header["composed_at"], idx.build_index()["state"]["composed_at"])
-        self.assertEqual(header["hot"], 28)
+        self.assertEqual(header["hot"], 43)
         self.assertEqual(header["hold"], 20)
         self.assertEqual(header["sent_dnr"], 10)
         self.assertEqual(header["occupied"], 0)
@@ -842,7 +859,7 @@ class LmGtmIndexTests(unittest.TestCase):
         self.assertEqual(header["canonical_crm"], "JOJO Revenue Recovery CRM / Revenue Pipeline")
         self.assertEqual(header["mailbox"], "NEEDS_OWNER_MAILBOX")
         rows = [json.loads(line) for line in lines[1:]]
-        self.assertEqual(len(rows), 28)
+        self.assertEqual(len(rows), 43)
         self.assertEqual(rows[0]["id"], "communitycare-katherine-reyes")
         self.assertEqual(rows[0]["lane"], "sent_awaiting_reply")
         self.assertEqual(rows[0]["decision"], "SENT_AWAITING_REPLY")

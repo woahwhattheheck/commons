@@ -350,7 +350,7 @@ def compile_registry(root: Path) -> dict:
     collab_src = _source(root, "revenue/ip/collaboration_targets.json")
     offer_src = _source(root, "revenue/ip/whitebox_collaboration_offers.json")
     channel_src = _source(root, "revenue/distribution/channels.json")
-    seed_src = _source(root, str(SEED_PATH))
+    seed_src = _source(root, SEED_PATH.as_posix())
     titan_hour_src = _source(root, "titan-hour.html")
 
     rows = []

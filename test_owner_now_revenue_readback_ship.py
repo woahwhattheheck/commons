@@ -49,7 +49,7 @@ class TestOwnerNowRevenueReadbackShip(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
 
-    def test_unique_ship_asks_for_sale_on_seven_proven_rails(self) -> None:
+    def test_unique_ship_asks_for_sale_on_current_proven_rails(self) -> None:
         packet = ship.ask_for_sale(ROOT)
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE", packet)
         self.assertEqual(packet["id"], SHIP_ID)
@@ -59,7 +59,8 @@ class TestOwnerNowRevenueReadbackShip(unittest.TestCase):
         self.assertEqual(packet["leftover_blob"], "3449da29")
         self.assertEqual(packet["leftover_receipt_blob"], "fe5ba035")
         self.assertEqual(packet["leftover_pr"], 8343)
-        self.assertEqual(packet["sku_count"], 7)
+        self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         self.assertTrue(packet["chargeable"])
         self.assertFalse(packet["invented_stripe_urls"])
         self.assertEqual(packet["cash_usd"], 0)
@@ -71,7 +72,8 @@ class TestOwnerNowRevenueReadbackShip(unittest.TestCase):
         self.assertTrue(packet["did_not_remint_pay_js"])
         self.assertTrue(packet["did_not_steal_harborline"])
         skus = [row["sku"] for row in packet["ask_for_sale"]]
-        self.assertEqual(skus, list(CANONICAL))
+        self.assertEqual(skus[:len(CANONICAL)], list(CANONICAL))
+        self.assertEqual(len(skus), len(set(skus)))
 
     def test_invented_stripe_url_is_refused(self) -> None:
         completed = subprocess.run(
@@ -103,7 +105,8 @@ class TestOwnerNowRevenueReadbackShip(unittest.TestCase):
         self.assertEqual(leftover.returncode, 0, leftover.stderr)
         packet = json.loads(leftover.stdout)
         self.assertEqual(packet["verdict"], "ASK_FOR_SALE")
-        self.assertEqual(packet["sku_count"], 7)
+        self.assertEqual(packet["sku_count"], len(packet["ask_for_sale"]))
+        self.assertIn("agent-failure-autopsy-29", {row["sku"] for row in packet["ask_for_sale"]})
         self.assertFalse(packet["invented_stripe_urls"])
         invented = subprocess.run(
             [

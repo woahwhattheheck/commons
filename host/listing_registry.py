@@ -12,7 +12,7 @@ Examples:
 
   python3 host/listing_registry.py validate
   python3 host/listing_registry.py registry
-  python3 host/listing_registry.py asset --id same-day-agent-survival-proof__upwork-project-catalog
+  python3 host/listing_registry.py asset --id ho-issue-to-pr__upwork-project-catalog
   python3 host/listing_registry.py export
   python3 host/listing_registry.py submit   # always SUBMIT_FORBIDDEN
   python3 host/listing_registry.py --self-test
@@ -336,8 +336,10 @@ def checkout_for(offer_id: str, listing: dict[str, Any], checkout: dict[str, Any
         and provider.get("charges_enabled") is True
         and provider.get("payouts_enabled") is True
         and (rail or {}).get("link_active") is True
+        and (rail or {}).get("livemode") is True
         and isinstance(url, str)
         and url.startswith("https://")
+        and (rail or {}).get("url") == url
         and payment_capability_public_stripe(root)
     )
     exposure = (rail or {}).get("exposure")
@@ -1012,13 +1014,13 @@ def self_test() -> dict[str, Any]:
     except ListingRegistryError as exc:
         if "SUBMIT_FORBIDDEN" not in str(exc):
             raise
-    survival = next(
+    bounded_service = next(
         r for r in registry["listings"]
-        if r["offer_id"] == "same-day-agent-survival-proof" and r["surface_id"] == "upwork-project-catalog"
+        if r["offer_id"] == "ho-issue-to-pr" and r["surface_id"] == "upwork-project-catalog"
     )
-    assert survival["fit"] == "FIT"
-    assert survival["submission_status"] == "NOT_SUBMITTED"
-    assert survival["url"] is None
+    assert bounded_service["fit"] == "FIT"
+    assert bounded_service["submission_status"] == "NOT_SUBMITTED"
+    assert bounded_service["url"] is None
     mcp_row = next(
         r for r in registry["listings"]
         if r["offer_id"] == MCP_PRODUCT_ID and r["surface_id"] == "mcp-so-directory"

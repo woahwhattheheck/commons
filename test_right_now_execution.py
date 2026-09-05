@@ -27,6 +27,22 @@ class RightNowExecutionTests(unittest.TestCase):
         )
         self.assertEqual(actual, expected)
 
+    def test_control_survival_start_route_is_not_autopsy_html(self) -> None:
+        expected = control.build_control()
+        committed = control.read_object(
+            ROOT / "revenue" / "right_now" / "control.json"
+        )
+        for snapshot in (expected, committed):
+            survival = next(
+                row
+                for row in snapshot["offers"]
+                if row["id"] == "same-day-agent-survival-proof"
+            )
+            self.assertEqual(
+                survival["start_route"], "revenue/production_survival/README.md"
+            )
+            self.assertNotEqual(survival["start_route"], "agent-rescue.html")
+
     def test_truth_never_promotes_internal_activity(self) -> None:
         value = control.build_control()
         self.assertEqual(value["truth"]["collected_cash_usd"], 0)
@@ -132,6 +148,22 @@ class RightNowExecutionTests(unittest.TestCase):
             )
         self.assertEqual(result.returncode, 2)
         self.assertIn("committed control snapshot differs", result.stderr)
+
+    def test_survival_start_route_is_not_autopsy_html(self) -> None:
+        value = control.build_control()
+        survival = next(
+            row for row in value["offers"] if row["id"] == "same-day-agent-survival-proof"
+        )
+        self.assertEqual(
+            survival["start_route"], "revenue/production_survival/README.md"
+        )
+        self.assertNotEqual(survival["start_route"], "agent-rescue.html")
+        page = (ROOT / "right-now.html").read_text(encoding="utf-8")
+        card = page.split('id="same-day-agent-survival-proof"', 1)[1].split(
+            "</article>", 1
+        )[0]
+        self.assertNotIn('href="./agent-rescue.html"', card)
+        self.assertIn(survival["start_route"], card)
 
     def test_browser_projection_is_data_driven_and_has_fallback(self) -> None:
         script = (ROOT / "right-now.js").read_text(encoding="utf-8")

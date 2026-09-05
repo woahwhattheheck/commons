@@ -1,20 +1,20 @@
 {
-  "agreement_id": "agr-synthetic-unaccepted-20260828-01",
+  "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
   "agreement_state": "WRITTEN_INTAKE",
   "catalog_funnel_truth": {
     "accepted_scopes": 0,
-    "as_of": "2026-08-27T03:10:57.416Z",
+    "as_of": "2026-08-28T17:21:46Z",
     "collected_cash_usd": "0.00",
-    "delivered_transports": 16,
-    "distinct_targets": 11,
+    "delivered_transports": 17,
+    "distinct_targets": 12,
     "next_edge": "QUALIFIED_BUYER",
     "paid_deliveries": 0,
-    "source": "revenue/payment_ready/current_receipt.json plus revenue/payment_ready/outreach_receipts/ through 20260827-nextdata-6a8faa92579ff9000cb874e2.json; unclassified response signal: p/slack-1787769698-642529.md",
+    "source": "revenue/payment_ready/current_receipt.json plus revenue/payment_ready/outreach_receipts/ through 20260828-langfuse-1a0496451e052b9d.json; unclassified response signal: p/slack-1787769698-642529.md",
     "unclassified_response_signals": 1,
     "verified_positive_replies": 0
   },
   "delivery_receipt": {
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
     "delivered": false,
     "delivery_state": "NOT_DELIVERED",
     "evidence_item_count": 0,
@@ -35,7 +35,7 @@
     "schema_version": "commons-scope-receipt/v1"
   },
   "evidence_bundle": {
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
     "complete": false,
     "honesty": [
       "Only observations with public_ref and sha256 enter the bundle.",
@@ -52,7 +52,7 @@
     ]
   },
   "execution_status": {
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
     "agreement_state": "WRITTEN_INTAKE",
     "blocked": false,
     "claimed_complete": false,
@@ -95,7 +95,7 @@
   },
   "funnel_readiness": "READY_FOR_QUALIFICATION",
   "handoff": {
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
     "artifacts": {
       "cash_claimed": false,
       "delivery_state": "NOT_DELIVERED",
@@ -116,14 +116,14 @@
       "Gaps stay listed until evidence closes them."
     ],
     "kind": "BUYER_HANDOFF",
-    "markdown": "# Scope-to-delivery handoff\n\n- SKU: Same-Day Agent Survival Proof (same-day-agent-survival-proof)\n- Agreement: `agr-synthetic-unaccepted-20260828-01` state **WRITTEN_INTAKE**\n- SOW: **DRAFT_SOW**\n- Work packet: **NOT_ISSUED**\n- Execution: **NOT_STARTED**\n- Delivery: **NOT_DELIVERED**\n- Invoice: **NOT_ISSUED**\n- Authorization: **ABSENT**\n- Settlement: **ABSENT**\n- Payout: **ABSENT**\n- Bank available: **ABSENT**\n- Cash claimed: **False**\n\n## Honest gaps\n- No written PRESENT acceptance; SOW remains DRAFT.\n- No work packet issued.\n- Delivery incomplete; missing rows: happy-path, failure-or-stop-path, rollback-or-reset, durable-receipt.\n- Invoice is NOT_ISSUED.\n- Cash is not BANK_AVAILABLE; cash_claimed is false.\n\nThis handoff is not a testimonial. Payment does not prove delivery.\nBuyer names, emails, and addresses are not on public main.",
+    "markdown": "# Scope-to-delivery handoff\n\n- SKU: Production Survival Sprint (production-survival-sprint)\n- Agreement: `agr-synthetic-production-survival-unaccepted-20260828-01` state **WRITTEN_INTAKE**\n- SOW: **DRAFT_SOW**\n- Work packet: **NOT_ISSUED**\n- Execution: **NOT_STARTED**\n- Delivery: **NOT_DELIVERED**\n- Invoice: **NOT_ISSUED**\n- Authorization: **ABSENT**\n- Settlement: **ABSENT**\n- Payout: **ABSENT**\n- Bank available: **ABSENT**\n- Cash claimed: **False**\n\n## Honest gaps\n- No written PRESENT acceptance; SOW remains DRAFT.\n- No work packet issued.\n- Delivery incomplete; missing rows: happy-path, failure-or-stop-path, rollback-or-reset, durable-receipt.\n- Invoice is NOT_ISSUED.\n- Cash is not BANK_AVAILABLE; cash_claimed is false.\n\nThis handoff is not a testimonial. Payment does not prove delivery.\nBuyer names, emails, and addresses are not on public main.",
     "schema_version": "commons-scope-handoff/v1",
-    "sku_id": "same-day-agent-survival-proof",
-    "sku_name": "Same-Day Agent Survival Proof"
+    "sku_id": "production-survival-sprint",
+    "sku_name": "Production Survival Sprint"
   },
   "invoice": {
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
-    "amount": "2500.00",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
+    "amount": "15000.00",
     "currency": "USD",
     "honesty": [
       "An invoice is not issued from a quote, SOW, or delivery claim.",
@@ -135,10 +135,10 @@
     "state": "NOT_ISSUED"
   },
   "kind": "SCOPE_TO_DELIVERY_PROJECT",
-  "markdown": "# Scope-to-delivery handoff\n\n- SKU: Same-Day Agent Survival Proof (same-day-agent-survival-proof)\n- Agreement: `agr-synthetic-unaccepted-20260828-01` state **WRITTEN_INTAKE**\n- SOW: **DRAFT_SOW**\n- Work packet: **NOT_ISSUED**\n- Execution: **NOT_STARTED**\n- Delivery: **NOT_DELIVERED**\n- Invoice: **NOT_ISSUED**\n- Authorization: **ABSENT**\n- Settlement: **ABSENT**\n- Payout: **ABSENT**\n- Bank available: **ABSENT**\n- Cash claimed: **False**\n\n## Honest gaps\n- No written PRESENT acceptance; SOW remains DRAFT.\n- No work packet issued.\n- Delivery incomplete; missing rows: happy-path, failure-or-stop-path, rollback-or-reset, durable-receipt.\n- Invoice is NOT_ISSUED.\n- Cash is not BANK_AVAILABLE; cash_claimed is false.\n\nThis handoff is not a testimonial. Payment does not prove delivery.\nBuyer names, emails, and addresses are not on public main.",
+  "markdown": "# Scope-to-delivery handoff\n\n- SKU: Production Survival Sprint (production-survival-sprint)\n- Agreement: `agr-synthetic-production-survival-unaccepted-20260828-01` state **WRITTEN_INTAKE**\n- SOW: **DRAFT_SOW**\n- Work packet: **NOT_ISSUED**\n- Execution: **NOT_STARTED**\n- Delivery: **NOT_DELIVERED**\n- Invoice: **NOT_ISSUED**\n- Authorization: **ABSENT**\n- Settlement: **ABSENT**\n- Payout: **ABSENT**\n- Bank available: **ABSENT**\n- Cash claimed: **False**\n\n## Honest gaps\n- No written PRESENT acceptance; SOW remains DRAFT.\n- No work packet issued.\n- Delivery incomplete; missing rows: happy-path, failure-or-stop-path, rollback-or-reset, durable-receipt.\n- Invoice is NOT_ISSUED.\n- Cash is not BANK_AVAILABLE; cash_claimed is false.\n\nThis handoff is not a testimonial. Payment does not prove delivery.\nBuyer names, emails, and addresses are not on public main.",
   "payment_state": {
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
-    "amount": "2500.00",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
+    "amount": "15000.00",
     "cash_claimed": false,
     "currency": "USD",
     "honesty": [
@@ -162,8 +162,8 @@
     "machine": "revenue/production_survival/offer.json"
   },
   "schema_version": "commons-scope-project/v1",
-  "sku_id": "same-day-agent-survival-proof",
-  "sku_name": "Same-Day Agent Survival Proof",
+  "sku_id": "production-survival-sprint",
+  "sku_name": "Production Survival Sprint",
   "sow": {
     "acceptance_rows": [
       {
@@ -207,7 +207,7 @@
         "when": "The receipt fixture is published"
       }
     ],
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
     "agreement_state": "WRITTEN_INTAKE",
     "honesty": [
       "DRAFT_SOW is not a locked contract.",
@@ -215,10 +215,9 @@
       "Party names, emails, and addresses are never filled on public main."
     ],
     "in_scope": [
-      "Open provider-hosted working proof",
-      "Visible happy path and forced failure or stop path",
-      "Rollback or reset path",
-      "Durable receipt and one-command handoff"
+      "Measured failure cycle on one buyer-owned workflow",
+      "Retry and rollback implementation",
+      "Durable receipt in the agreed sandbox"
     ],
     "intake_sentence": "My agent should finish one external effect after a crash, but in production it repeats the effect.",
     "kind": "STATEMENT_OF_WORK",
@@ -241,19 +240,19 @@
       "seller": "Commons founder (public terms only)"
     },
     "quote": {
-      "amount": "2500.00",
+      "amount": "15000.00",
       "currency": "USD"
     },
     "refund_choice": "REFUND_IF_MISS",
-    "refund_text": "If the accepted proof is not delivered inside the agreed business-day window, the authorized amount is refunded unless the buyer elects in writing one free next-business-day repair.",
+    "refund_text": "UNKNOWN",
     "schema_version": "commons-scope-sow/v1",
-    "sku_id": "same-day-agent-survival-proof",
-    "sku_name": "Same-Day Agent Survival Proof",
+    "sku_id": "production-survival-sprint",
+    "sku_name": "Production Survival Sprint",
     "source": {
       "blob_sha": "84b664c07d0677a92c8e79797f80ebde823da447",
-      "offer_id": "same-day-agent-survival-proof",
+      "offer_id": "production-survival-sprint",
       "path": "revenue/production_survival/offer.json",
-      "pointer": "/entry_offer",
+      "pointer": "/ladder/0",
       "terms_authority": "source"
     },
     "window": {
@@ -263,7 +262,7 @@
     }
   },
   "work_packet": {
-    "agreement_id": "agr-synthetic-unaccepted-20260828-01",
+    "agreement_id": "agr-synthetic-production-survival-unaccepted-20260828-01",
     "kind": "WORK_PACKET",
     "reason": "SOW is not LOCKED_SOW; no work packet is issued without written acceptance.",
     "schema_version": "commons-scope-packet/v1",

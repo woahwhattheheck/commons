@@ -55,15 +55,21 @@ class DistributionLayerTests(unittest.TestCase):
     def test_catalog_listings_all_appear(self):
         offer_ids = {p["offer_id"] for p in self.matrix["pairs"]}
         self.assertEqual(offer_ids, set(self.listings))
-        self.assertEqual(self.matrix["offer_count"], 17)
-        self.assertEqual(self.matrix["pair_count"], 17 * len(self.channels["channels"]))
+        self.assertEqual(self.matrix["offer_count"], len(self.listings))
+        self.assertEqual(
+            self.matrix["pair_count"],
+            len(self.listings) * len(self.channels["channels"]),
+        )
 
     def test_does_not_replace_canonical_commerce(self):
         for path in self.channels["does_not_replace"]:
             self.assertTrue((ROOT / path).exists(), path)
         catalog = json.loads((ROOT / "revenue/outcome_commerce/catalog.json").read_text(encoding="utf-8"))
         self.assertEqual(catalog["kind"], "OUTCOME_COMMERCE_CATALOG")
-        self.assertEqual(len(catalog["listings"]), 17)
+        self.assertEqual(
+            {row["id"] for row in catalog["listings"]},
+            set(self.listings),
+        )
 
     def test_micro_skus_unfit_marketplaces(self):
         for oid in (
@@ -85,16 +91,16 @@ class DistributionLayerTests(unittest.TestCase):
                 pair = self._pair(oid, cid)
                 self.assertEqual(pair["fit"], "UNFIT", (oid, cid, pair))
 
-    def test_survival_proof_fits_upwork_and_contra(self):
+    def test_bounded_service_fits_upwork_and_contra(self):
         for cid in ("upwork-project-catalog", "upwork-job-feed", "contra-services"):
-            pair = self._pair("same-day-agent-survival-proof", cid)
+            pair = self._pair("ho-issue-to-pr", cid)
             self.assertEqual(pair["fit"], "FIT", pair)
             self.assertEqual(pair["package_state"], "PACKAGE_READY")
             self.assertEqual(pair["listing_state"], "BLOCKED_PROVIDER_ACCOUNT")
             self.assertIs(pair["submit_allowed"], False)
 
-    def test_survival_proof_fits_fiverr_but_blocked(self):
-        pair = self._pair("same-day-agent-survival-proof", "fiverr-gig")
+    def test_bounded_service_fits_fiverr_but_blocked(self):
+        pair = self._pair("ho-issue-to-pr", "fiverr-gig")
         self.assertEqual(pair["fit"], "FIT")
         self.assertEqual(pair["listing_state"], "BLOCKED_PROVIDER_ACCOUNT")
 
@@ -119,8 +125,18 @@ class DistributionLayerTests(unittest.TestCase):
         self.assertEqual(pair["listing_state"], "NOT_LISTED")
         self.assertIs(pair["submit_allowed"], False)
         self.assertIsNone(pair["blocked_reason"])
-        pair2 = self._pair("same-day-agent-survival-proof", "stripe-payment-links")
+        pair2 = self._pair("ho-issue-to-pr", "stripe-payment-links")
         self.assertEqual(pair2["fit"], "UNFIT")
+
+        autopsy = self._pair("agent-failure-autopsy-29", "stripe-payment-links")
+        self.assertEqual(autopsy["fit"], "FIT")
+        self.assertEqual(autopsy["listing_state"], "NOT_LISTED")
+        self.assertIsNone(autopsy["blocked_reason"])
+        self.assertIn("exact active Stripe checkout", " ".join(autopsy["reasons"]))
+
+        marketplace = self._pair("agent-failure-autopsy-29", "upwork-project-catalog")
+        self.assertEqual(marketplace["fit"], "UNFIT")
+        self.assertIn("amount 29.00", " ".join(marketplace["reasons"]))
 
     def test_stripe_rail_fail_closed_without_payouts(self):
         listing = json.loads(json.dumps(self.listings["sku-tip-20260826"]))
@@ -131,7 +147,7 @@ class DistributionLayerTests(unittest.TestCase):
         self.assertIs(pair["submit_allowed"], False)
 
     def test_commons_pages_are_surface_live_not_marketplace_live(self):
-        pair = self._pair("same-day-agent-survival-proof", "commons-pages")
+        pair = self._pair("ho-issue-to-pr", "commons-pages")
         self.assertEqual(pair["fit"], "FIT")
         self.assertEqual(pair["listing_state"], "SURFACE_LIVE")
         self.assertEqual(pair["channel_family"], "commons_surface")
@@ -175,20 +191,20 @@ class DistributionLayerTests(unittest.TestCase):
             self.assertEqual(package["conversion"]["contact"], "tokenjunkielabs@gmail.com")
 
     def test_inbound_routes_to_canonical_conversion(self):
-        listing = self.listings["same-day-agent-survival-proof"]
+        listing = self.listings["ho-issue-to-pr"]
         channel = self.channel_rows["upwork-project-catalog"]
         inbound = self.mod.inbound_template(listing, channel)
-        self.assertEqual(inbound["canonical_conversion"], "agent-rescue.html")
+        self.assertEqual(inbound["canonical_conversion"], "humans.html")
         self.assertEqual(inbound["intake_board"], "OFFER")
         self.assertIs(inbound["not_a_lead"], True)
         self.assertIs(inbound["verified_lead"], False)
         self.assertIn("do not open a second crm", inbound["crm"].lower())
         self.assertIn("CHANNEL: upwork-project-catalog", inbound["body"])
-        self.assertIn("OFFER_ID: same-day-agent-survival-proof", inbound["body"])
+        self.assertIn("OFFER_ID: ho-issue-to-pr", inbound["body"])
 
     def test_submit_always_forbidden(self):
         with self.assertRaises(self.mod.DistributionError) as ctx:
-            self.mod.submit_listing("upwork-project-catalog", "same-day-agent-survival-proof")
+            self.mod.submit_listing("upwork-project-catalog", "ho-issue-to-pr")
         self.assertIn("SUBMIT_FORBIDDEN", str(ctx.exception))
 
     def test_status_counts_are_measured_zeros_for_money_and_leads(self):
@@ -203,12 +219,14 @@ class DistributionLayerTests(unittest.TestCase):
     def test_classify_offer_amounts(self):
         self.assertEqual(self.mod.classify_offer(self.listings["sku-tip-20260826"]), "micro_sku")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-generated-token-capacity"]), "micro_sku")
-        self.assertEqual(self.mod.classify_offer(self.listings["same-day-agent-survival-proof"]), "bounded_service")
+        self.assertEqual(self.mod.classify_offer(self.listings["ho-issue-to-pr"]), "bounded_service")
+        self.assertEqual(self.mod.classify_offer(self.listings["agent-failure-autopsy-29"]), "bounded_service")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-attested-inference"]), "bounded_service")
         self.assertEqual(self.mod.classify_offer(self.listings["gguf-diagnostic-10d-12k"]), "high_ticket_service")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-whitebox-hour-20260826"]), "expertise_hour")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-titan-20260826"]), "high_ticket_product")
-        self.assertEqual(self.mod.listing_amount(self.listings["same-day-agent-survival-proof"]), Decimal("2500.00"))
+        self.assertEqual(self.mod.listing_amount(self.listings["ho-issue-to-pr"]), Decimal("2500.00"))
+        self.assertEqual(self.mod.listing_amount(self.listings["agent-failure-autopsy-29"]), Decimal("29.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["gguf-diagnostic-10d-12k"]), Decimal("12000.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["sku-whitebox-hour-20260826"]), Decimal("250.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["sku-muhlnickel-generated-token-capacity"]), Decimal("1.00"))

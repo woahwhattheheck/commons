@@ -228,6 +228,18 @@ class ImpactTests(unittest.TestCase):
         self.assertEqual(by_key["sup-aqua/lot/LOT-WATER-01"]["hops"], 3)
         self.assertEqual(by_key["sup-h2o/lot/LOT-WATER-01"]["hops"], 4)
 
+    def test_same_bytes_in_two_workspaces_give_one_content_hash(self):
+        with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
+            ws_a, _ = workspace_with_fixture(a)
+            ws_b, _ = workspace_with_fixture(b)
+            ga, gb = ws_a.graph(), ws_b.graph()
+            ra = engine.build_report(ws_a, ga, ga.impact(CITRIC, "forward", []))
+            rb = engine.build_report(ws_b, gb, gb.impact(CITRIC, "forward", []))
+            self.assertNotEqual(ra["imports"][0]["imported_at"], rb["imports"][0]["imported_at"], "two imports, two clocks")
+            self.assertEqual(ra["content_sha256"], rb["content_sha256"], "the hash covers the answer and the bytes, not the clock")
+            other = engine.build_report(ws_b, gb, gb.impact(CITRIC, "backward", []))
+            self.assertNotEqual(ra["content_sha256"], other["content_sha256"])
+
     def test_start_outside_the_records_is_said_plainly(self):
         impact = self.graph.impact(("sup-acme", "lot", "LOT-NOPE"), "forward")
         self.assertFalse(impact["start_found"])
@@ -331,6 +343,30 @@ class RobustnessTests(unittest.TestCase):
             self.assertIn("duplicate_link_different_quantity", codes)
 
 
+class DisplayTests(unittest.TestCase):
+    def test_path_summary_prints_the_same_line_as_the_viewer(self):
+        path = [
+            {"from": "sup-acme/lot/LOT-CITRIC-01", "relation": "split", "to": "sup-acme/lot/LOT-CITRIC-01A", "status": "known",
+             "sources": [{"file": "splits.csv", "line": 2, "version": "93948a1e5f015bad"}]},
+            {"from": "pilot-plant/batch/BATCH-P2", "relation": "packed", "to": "pilot-plant/package/PKG-ORPHAN-1", "status": "potential",
+             "sources": []},
+        ]
+        self.assertEqual(engine.path_summary(path), [
+            "sup-acme/lot/LOT-CITRIC-01 -split-> sup-acme/lot/LOT-CITRIC-01A (splits.csv:2@93948a1e)",
+            "pilot-plant/batch/BATCH-P2 -packed*-> pilot-plant/package/PKG-ORPHAN-1 (no row)",
+        ])
+        self.assertEqual(engine.path_summary([]), [])
+
+    def test_node_detail_names_what_a_reader_wants_next_to_the_id(self):
+        self.assertEqual(engine.node_detail("lot", {"material": "citric acid", "supplier": "Acme Acids"}), "citric acid Acme Acids")
+        self.assertEqual(engine.node_detail("lot", {"material": "citric acid"}), "citric acid")
+        self.assertEqual(engine.node_detail("batch", {"product": "RTD-HA"}), "RTD-HA")
+        self.assertEqual(engine.node_detail("package", {"product": "RTD-HA", "customer": "ignored"}), "RTD-HA")
+        self.assertEqual(engine.node_detail("shipment", {"customer": "Market South"}), "Market South")
+        self.assertEqual(engine.node_detail("shipment", {}), "")
+        self.assertEqual(engine.node_detail("other", {"product": "x"}), "")
+
+
 class CliTests(unittest.TestCase):
     def run_cli(self, *args, cwd=None):
         proc = subprocess.run([sys.executable, str(CLI), *args], capture_output=True, text=True, cwd=cwd or ROOT, check=False)
@@ -356,6 +392,19 @@ class CliTests(unittest.TestCase):
             out_json, out_md = Path(tmp) / "r.json", Path(tmp) / "r.md"
             brief = self.run_cli("-w", ws, "impact", "sup-acme/lot/LOT-CITRIC-01", "--brief", "--out", str(out_json), "--md", str(out_md))
             self.assertEqual(brief["counts"]["KNOWN_AFFECTED"], len(FORWARD_KNOWN_FROM_CITRIC))
+            by_key = {a["key"]: a for a in brief["affected"]}
+            self.assertEqual(by_key["sup-acme/lot/LOT-CITRIC-01A"]["detail"], "citric acid Acme Acids")
+            self.assertEqual(by_key["pilot-plant/shipment/SHIP-3"]["detail"], "Market South")
+            p4 = by_key["pilot-plant/batch/BATCH-P4"]["path"]
+            self.assertEqual(len(p4), 4)
+            self.assertTrue(p4[-1].startswith("pilot-plant/batch/BATCH-P2 -rework-> pilot-plant/batch/BATCH-P4 (rework.csv:2@"), p4[-1])
+            summarised = self.run_cli("-w", ws, "impact", "pilot-plant/shipment/SHIP-3", "--backward", "--paths", "summary")
+            first = summarised["impact"]["affected"][0]
+            self.assertIsInstance(first["path"][0], str)
+            self.assertIn("what |", out_md.read_text(encoding="utf-8"))
+            self.assertIn("| citric acid Acme Acids |", out_md.read_text(encoding="utf-8"))
+            full_written = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertIsInstance(full_written["impact"]["affected"][0]["path"][0], dict, "files keep the full edge objects")
             report = json.loads(out_json.read_text(encoding="utf-8"))
             self.assertEqual(report["content_sha256"], brief["content_sha256"])
             self.assertIn("# LotLens impact report", out_md.read_text(encoding="utf-8"))
@@ -366,6 +415,30 @@ class CliTests(unittest.TestCase):
             assumptions = self.run_cli("assumptions")
             self.assertIn("unlinked_package_same_product_day", assumptions)
             proc = subprocess.run([sys.executable, str(CLI), "-w", ws, "impact", "bad-key"], capture_output=True, text=True, check=False)
+            self.assertEqual(proc.returncode, 1)
+            self.assertIn("namespace/kind/id", json.loads(proc.stdout)["message"])
+
+    def test_versions_flag_takes_one_value_and_can_precede_the_command(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ws = str(Path(tmp) / "ws")
+            v1 = self.run_cli("-w", ws, "import", str(FIXTURE), "--label", "pilot")["version"]
+            corrected = copy_fixture(tmp)
+            with (corrected / "shipments.csv").open("a", encoding="utf-8", newline="") as fh:
+                fh.write("pilot-plant,SHIP-10,PKG-P4-1,Deli East,300,L,2026-08-21\n")
+            v2 = self.run_cli("-w", ws, "import", str(corrected), "--label", "corrected")["version"]
+            self.assertNotEqual(v1, v2)
+            older = self.run_cli("-w", ws, "--versions", v1, "impact", "pilot-plant/package/PKG-P4-1", "--paths", "summary")
+            self.assertEqual(older["impact"]["counts"]["coverage_gaps"], 1, "the older import still shows the gap")
+            self.assertEqual([i["version"] for i in older["imports"]], [v1])
+            latest = self.run_cli("-w", ws, "impact", "pilot-plant/package/PKG-P4-1", "--brief")
+            self.assertEqual(latest["counts"]["coverage_gaps"], 0)
+            ship10 = [a for a in latest["affected"] if a["key"] == "pilot-plant/shipment/SHIP-10"]
+            self.assertEqual(ship10[0]["status"], "KNOWN_AFFECTED")
+            self.assertEqual(ship10[0]["detail"], "Deli East")
+            self.assertTrue(ship10[0]["path"][-1].startswith("pilot-plant/package/PKG-P4-1 -shipped-> pilot-plant/shipment/SHIP-10 (shipments.csv:11@"), ship10[0]["path"][-1])
+            both = self.run_cli("-w", ws, "--versions", f"{v1},{v2}", "summary")
+            self.assertEqual(sorted(both["versions"]), sorted([v1, v2]))
+            proc = subprocess.run([sys.executable, str(CLI), "-w", ws, "--versions", v1, "impact", "bad-key"], capture_output=True, text=True, check=False)
             self.assertEqual(proc.returncode, 1)
             self.assertIn("namespace/kind/id", json.loads(proc.stdout)["message"])
 
@@ -382,6 +455,9 @@ class PageTests(unittest.TestCase):
         self.assertIn('name="robots" content="index, follow"', page)
         self.assertIn("KNOWN_AFFECTED", page)
         self.assertIn("annotations.json", page)
+        self.assertIn('pathSummaryLines(a.path).map(esc).join("<br>")', page, "hop lines are escaped before they enter the table")
+        self.assertNotIn('pathSummaryLines(a.path).join(', page)
+        self.assertIn('if(typeof e==="string") return e;', page, "a report printed with --paths summary loads too")
 
 
 if __name__ == "__main__":

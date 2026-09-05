@@ -15,6 +15,17 @@ from roles import RoleError, RoleStore, SECRET_FIELD_NAMES
 import cli as roles_cli
 
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "synthetic_crm_followup_role.json"
+AUTOPSY_FIXTURE = (
+    Path(__file__).resolve().parent
+    / "fixtures"
+    / "synthetic_agent_failure_autopsy_role.json"
+)
+
+LIVE_CHECKOUT = "buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
+AUTOPSY_PAGE = "agent-rescue.html"
+SPINE_RUNBOOK = "revenue/agent_failure_autopsy/RUNBOOK.md"
+SPINE_OFFER = "revenue/agent_failure_autopsy/offer.json"
+AUTOPSY_FULFILL_ENTRY = "python3 revenue/agent_failure_autopsy/fulfillment.py"
 
 
 class TransferableRoleTests(unittest.TestCase):
@@ -258,6 +269,90 @@ class TransferableRoleTests(unittest.TestCase):
         )
         self.assertEqual(g2["session_id"], "sess-cli-9")
         self.assertEqual(g2["last_run_id"], "run-cli-9")
+
+    def test_unbind_access_route_clears_session_keeps_pool(self) -> None:
+        role = self.store.create(self.raw, role_id="role-unbind-g2")
+        purpose = role["purpose"]
+        self.store.bind_access_route(
+            role["role_id"],
+            route_name="grokbot_control_g2",
+            session_id="g2-sess-unbind-1",
+            last_run_id="g2-run-unbind-9",
+        )
+        unbound = self.store.unbind_access_route(
+            role["role_id"],
+            route_name="grokbot_control_g2",
+        )
+        self.assertEqual(unbound["purpose"], purpose)
+        g2 = next(
+            r for r in unbound["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertNotIn("session_id", g2)
+        self.assertNotIn("last_run_id", g2)
+        self.assertEqual(g2["pool_id"], "grokbot")
+        self.assertEqual(g2["kind"], "grokbot_control")
+        self.assertEqual(g2["base_url"], "http://127.0.0.1:8881")
+
+    def test_unbind_access_route_unknown_name_fails(self) -> None:
+        role = self.store.create(self.raw, role_id="role-unbind-miss")
+        with self.assertRaises(RoleError):
+            self.store.unbind_access_route(
+                role["role_id"],
+                route_name="no-such-route",
+            )
+
+    def test_cli_unbind_route(self) -> None:
+        store_dir = self._tmp.name
+        role_id = "role-cli-unbind"
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(FIXTURE),
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "bind-route",
+                    role_id,
+                    "--route",
+                    "grokbot_control_g2",
+                    "--session-id",
+                    "sess-cli-unbind",
+                    "--last-run-id",
+                    "run-cli-unbind",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "unbind-route",
+                    role_id,
+                    "--route",
+                    "grokbot_control_g2",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        g2 = next(
+            r for r in out["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertNotIn("session_id", g2)
+        self.assertNotIn("last_run_id", g2)
+        self.assertEqual(g2["pool_id"], "grokbot")
 
     def test_release_clears_occupant_keeps_bound_routes(self) -> None:
         role = self.store.create(self.raw, role_id="role-release")
@@ -550,6 +645,125 @@ class TransferableRoleTests(unittest.TestCase):
                 r for r in out["access_routes"] if r["name"] == "grokbot_control_g2"
             )
             self.assertEqual(g2["session_id"], "cli-import-sess")
+
+    def test_autopsy_fixture_create_four_open_obligations(self) -> None:
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        self.assertTrue(role.get("synthetic"))
+        self.assertEqual(
+            role["role_id"], "role-synthetic-agent-failure-autopsy-20260905"
+        )
+        self.assertEqual(role["credential_custodian"], "existing_secure_stores")
+        ids = [o["id"] for o in role["obligations"]]
+        self.assertEqual(ids, ["ob-intake", "ob-diagnose", "ob-review", "ob-settle"])
+        self.assertTrue(all(o["status"] == "open" for o in role["obligations"]))
+        names = {r["name"] for r in role["access_routes"]}
+        self.assertEqual(
+            names,
+            {"grokbot_control_g2", "gemini_peer_tool_gateway", "payment_capability"},
+        )
+        pay = next(
+            r for r in role["access_routes"] if r["name"] == "payment_capability"
+        )
+        self.assertEqual(pay["kind"], "public_html")
+        self.assertEqual(pay["store"], "payment-capability.html")
+        self.assertIn("pay.html", pay.get("note", ""))
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn("payment-capability.html", pointers)
+        self.assertIn("ground/PAYMENT_CAPABILITY.md", pointers)
+        self.assertIn("pay.html", pointers)
+        # #8811 spine pointers + autopsy_fulfillment tool (no remint).
+        self.assertIn(SPINE_RUNBOOK, pointers)
+        self.assertIn(SPINE_OFFER, pointers)
+        tools = {t["name"]: t for t in role.get("tools") or []}
+        self.assertIn("autopsy_fulfillment", tools)
+        self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILL_ENTRY)
+
+    def test_autopsy_fixture_wires_live_checkout_url(self) -> None:
+        """Create from fixture; live checkout must appear in knowledge/routes/ob-settle."""
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        knowledge_blob = json.dumps(role.get("knowledge") or [])
+        routes_blob = json.dumps(role.get("access_routes") or [])
+        settle = next(o for o in role["obligations"] if o["id"] == "ob-settle")
+        settle_blob = json.dumps(settle)
+        combined = knowledge_blob + routes_blob + settle_blob
+        self.assertIn(LIVE_CHECKOUT, combined)
+        self.assertIn(AUTOPSY_PAGE, combined)
+        # Also pin the public Payment Link on payment_capability (no secrets).
+        pay = next(
+            r for r in role["access_routes"] if r["name"] == "payment_capability"
+        )
+        self.assertIn(LIVE_CHECKOUT, pay.get("base_url", ""))
+        self.assertIn(AUTOPSY_PAGE, pay.get("note", ""))
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn(AUTOPSY_PAGE, pointers)
+
+    def test_autopsy_fixture_points_at_landed_spine(self) -> None:
+        """After #8811, knowledge/tools must point at landed spine paths (no remint)."""
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn(SPINE_RUNBOOK, pointers)
+        self.assertIn(SPINE_OFFER, pointers)
+        self.assertIn("revenue/agent_failure_autopsy/README.md", pointers)
+        self.assertIn("revenue/agent_failure_autopsy/report-template.md", pointers)
+        tools = {t["name"]: t for t in role.get("tools") or []}
+        self.assertIn("autopsy_fulfillment", tools)
+        self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILL_ENTRY)
+        # Stripe product/price/plink/account IDs stay in offer.json only.
+        fixture_blob = json.dumps(role)
+        for forbidden in ("prod_", "price_", "acct_", "plink_"):
+            self.assertNotIn(forbidden, fixture_blob)
+
+    def test_list_open_obligations_four_rows_then_advance_drops(self) -> None:
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        rows = self.store.list_open_obligations()
+        self.assertEqual(len(rows), 4)
+        self.assertEqual(
+            [r["obligation_id"] for r in rows],
+            ["ob-diagnose", "ob-intake", "ob-review", "ob-settle"],
+        )
+        for row in rows:
+            self.assertEqual(row["role_id"], role["role_id"])
+            self.assertEqual(row["purpose"], role["purpose"])
+            self.assertTrue(row.get("synthetic"))
+            self.assertIn("label", row)
+            self.assertIn("summary", row)
+            self.assertIn("next_action", row)
+        settle = next(r for r in rows if r["obligation_id"] == "ob-settle")
+        self.assertIn("evidence_pointer", settle)
+
+        self.store.advance_obligation(role["role_id"], "ob-intake", status="done")
+        after = self.store.list_open_obligations()
+        self.assertEqual(len(after), 3)
+        self.assertNotIn("ob-intake", [r["obligation_id"] for r in after])
+
+    def test_cli_open_obligations(self) -> None:
+        store_dir = self._tmp.name
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(AUTOPSY_FIXTURE),
+                ]
+            )
+        self.assertEqual(rc, 0)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(["--store", store_dir, "open-obligations"])
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        self.assertIn("open_obligations", out)
+        self.assertEqual(len(out["open_obligations"]), 4)
+        self.assertEqual(
+            out["open_obligations"][0]["role_id"],
+            "role-synthetic-agent-failure-autopsy-20260905",
+        )
 
 
 if __name__ == "__main__":

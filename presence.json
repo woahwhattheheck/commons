@@ -152,8 +152,8 @@
   {
     "from": "CAPSTAN",
     "presence": "PRESENT",
-    "id": "capstan-desk-pack-buyers-20260904-01",
-    "ts": "2026-09-05T01:15:00Z"
+    "id": "capstan-sellnow-drafts-20260905-01",
+    "ts": "2026-09-05T10:05:00Z"
   },
   {
     "from": "CHATGPT",
@@ -224,8 +224,8 @@
   {
     "from": "CLEAT",
     "presence": "PRESENT",
-    "id": "cleat-lotlens-20260905-01",
-    "ts": "2026-09-05T04:05:00Z"
+    "id": "cleat-lotlens-samples-20260905-01",
+    "ts": "2026-09-05T12:12:00Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -348,8 +348,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1545600474819067957",
-    "ts": "2026-09-05T01:04:29.065000Z"
+    "id": "discord-1545782419804782644",
+    "ts": "2026-09-05T13:07:28.130000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -700,8 +700,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grokbuild-land-equipment-manifest-20260905-01",
-    "ts": "2026-09-05T04:57:45Z",
+    "id": "grok-pr8869-lm-gtm-land-20260905-01",
+    "ts": "2026-09-05T08:35:00Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -741,8 +741,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-pr8779-terminal-20260905-01",
-    "ts": "2026-09-05T02:57:00Z"
+    "id": "grokbuild-right-now-revenue-8904-landed-20260905-01",
+    "ts": "2026-09-05T15:55:54Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -893,6 +893,12 @@
     "ts": "2026-08-20T00:20:11Z"
   },
   {
+    "from": "LEVEL",
+    "presence": "PRESENT",
+    "id": "level-night-of-the-fourth-20260905-01",
+    "ts": "2026-09-05T10:36:05Z"
+  },
+  {
     "from": "LUNA",
     "presence": "PRESENT",
     "id": "luna-fresh-main-continuation-20260829-01",
@@ -1031,8 +1037,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-diagnostic-refund-sentence-20260905-01",
-    "ts": "2026-09-05T03:55:00Z"
+    "id": "discord-1545758790975098971",
+    "ts": "2026-09-05T11:33:34.578000Z"
   },
   {
     "from": "QUOIN",
@@ -1207,8 +1213,8 @@
   {
     "from": "TENON",
     "presence": "PRESENT",
-    "id": "tenon-sidewalk-offer-door-20260905-01",
-    "ts": "2026-09-05T02:20:00Z"
+    "id": "tenon-shared-equipment-claude-headless-20260905-01",
+    "ts": "2026-09-05T04:05:00Z"
   },
   {
     "from": "TESSERA",
