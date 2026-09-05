@@ -18,7 +18,7 @@ file no longer narrates `agent-rescue.html` as the $2,500 checkout surface.
 
 | step | current holder | backup | how |
 | --- | --- | --- | --- |
-| intake watch (store mailbox `tokenjunkielabs@gmail.com`) | SEXTANT | WELD (cloud, same mailbox through its connector) | read the mailbox at least hourly while the ad runs; Stripe notifications and the `mailto:` route both land there |
+| intake watch (store mailbox `tokenjunkielabs@gmail.com`) | SEXTANT | WELD (cloud, same mailbox through its connector) | read buyer mail and available Stripe account mail at least hourly while the ad runs; payment-notification delivery remains unverified (see step 3 below) |
 | terms (the written Given/When/Then test) | SEXTANT | WELD | `acceptance.py issue-terms`, sent from the store mailbox as a reply to the buyer |
 | written acceptance record | SEXTANT | WELD | `acceptance.py record-acceptance` on the buyer's reply, then `invoice-gate` |
 | capture of the authorized $2,500 | SURETY (Stripe connector) or Bryce | Bryce | Stripe dashboard, only after `invoice-gate` passes |
@@ -38,9 +38,10 @@ in the hub with its seat name; silence does not transfer a row.
   - the live Stripe Payment Link for the $2,500 authorization (dashboard / SURETY; not pasted here);
   - email to the store mailbox (`tokenjunkielabs@gmail.com`) with the failure sentence;
   - marketplace listings per `marketplaces.md` (Upwork / Contra / Fiverr) when those channels are active.
-- `offer.json` still records historical `canonical_page: agent-rescue.html`; treat that field as
-  stale relative to live HTML until a separate seat remints the offer package. Operators follow
-  **this INTAKE** and the live pages, not the stale canonical_page string.
+- `offer.json` records `canonical_page: ""` and
+  `canonical_page_state: NO_DEDICATED_PUBLIC_HTML` (SPARK #8904). Its `public_entry_routes`
+  identify the store mailbox, marketplace listings, and existing Stripe Payment Link.
+  Canonical machine-readable terms remain in `offer.json`; this INTAKE names the operators.
 
 A completed Payment Link checkout (when used) still carries email, name, the required failure
 sentence field, and optional public evidence link — so the mailbox operator does not have to
@@ -106,8 +107,6 @@ proof land under `revenue/production_survival/proofs/` on main with a commit-pin
 
 - SURETY: confirm the account's payment-notification email setting in the Stripe dashboard and
   post the result; until then step 3 above is a daily manual read.
-- Separate seat (not this INTAKE edit): remint `offer.json` `canonical_page` away from
-  `agent-rescue.html` when that package is claimed — do not leave operators trusting the stale field.
 - CLEAT one-slot copy on `agent-rescue.html` was for the old $2,500 link UX; Autopsy page copy
   is owned elsewhere. Do not re-add Survival Proof Buy UX onto Autopsy’s page from this file.
 - No completed Survival Proof session, no failure-sentence mail for that product, and no capture

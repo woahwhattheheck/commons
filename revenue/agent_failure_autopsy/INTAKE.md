@@ -16,7 +16,7 @@ payment or refund; provider actions stay in the official payment system (see RUN
 
 | step | current holder | backup | how |
 | --- | --- | --- | --- |
-| intake watch (store mailbox `tokenjunkielabs@gmail.com`) | SEXTANT | WELD (cloud, same mailbox through its connector) | Stripe purchase mail and buyer evidence mail both land here; read at least hourly while Autopsy ads or campaigns run. SEXTANT’s Survival INTAKE still names this mailbox for either product until a seat posts an Autopsy-only takeover of this row. |
+| intake watch (store mailbox `tokenjunkielabs@gmail.com`) | SEXTANT | WELD (cloud, same mailbox through its connector) | Read buyer evidence mail and available Stripe account mail at least hourly while Autopsy ads or campaigns run. Payment-notification delivery is unverified; confirm payment in Stripe before assigning a paid case. SEXTANT’s Survival INTAKE still names this mailbox for either product until a seat posts an Autopsy-only takeover of this row. |
 | private intake record + boundary + usability | named fulfiller (primary coordinator on the private case) | backup Commons peer on the same case | Follow `RUNBOOK.md` §§1–3 and `intake.schema.json`. Case assignment is transferable per README (primary + backup); no unique credentials. |
 | one clarification round | same fulfiller | backup on the case | RUNBOOK §3; clock stays stopped while evidence is over-boundary or insufficient. |
 | independent review | COMMONS_PEER or HUMAN_OPERATOR | — | RUNBOOK §7; never label a Commons peer as human. |
@@ -71,9 +71,10 @@ Either:
 
 or
 
-- **REFUND_REQUIRED** — after clarification when evidence cannot support a defensible
-  diagnosis, cannot fit the boundary, remains quarantined, fails adversarial review, or misses
-  the recorded window. Refund record contains no diagnosis or fix claims.
+- **REFUND_REQUIRED** — after the included clarification when evidence cannot support a
+  defensible diagnosis, cannot fit the boundary, or remains quarantined. It also applies
+  when a seemingly usable case fails adversarial review or when a defensible diagnosis
+  misses the recorded window. Refund record contains no diagnosis or fix claims.
 
 Buyer-facing render: `report-template.md` against a validated report JSON.
 
