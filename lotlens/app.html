@@ -26,6 +26,7 @@ textarea{width:100%;min-height:4rem}
 .grid{display:grid;grid-template-columns:1fr;gap:1rem}
 @media(min-width:60rem){.grid{grid-template-columns:3fr 2fr}}
 button{padding:.3rem .7rem}
+.pathline{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.85em;margin:.2rem 0}
 </style>
 </head>
 <body>
@@ -44,7 +45,7 @@ button{padding:.3rem .7rem}
 <div id="summary" class="muted">no report loaded</div>
 <div class="grid">
 <div>
-<table id="items"><thead><tr><th>status</th><th>item</th><th>kind</th><th>hops</th><th>via</th></tr></thead><tbody></tbody></table>
+<table id="items"><thead><tr><th>status</th><th>item</th><th>kind</th><th>what</th><th>hops</th><th>via</th></tr></thead><tbody></tbody></table>
 <h3>Unresolved</h3><ul id="unresolved"></ul>
 <h3>Coverage gaps</h3><ul id="gaps"></ul>
 <h3>Contradictions</h3><ul id="contradictions"></ul>
@@ -68,6 +69,22 @@ button{padding:.3rem .7rem}
   var $=function(id){return document.getElementById(id);};
   function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
   function srcs(list){return (list||[]).map(function(s){return esc(s.file)+":"+esc(s.line)+"@"+esc(String(s.version).slice(0,8));}).join("; ");}
+  function nodeDetail(kind, attrs){
+    attrs=attrs||{};
+    if(kind==="lot"){
+      return [attrs.material, attrs.supplier].filter(function(v){return v;}).join(" ");
+    }
+    if(kind==="batch"||kind==="package"){return String(attrs.product||"");}
+    if(kind==="shipment"){return String(attrs.customer||"");}
+    return "";
+  }
+  function pathSummaryLines(path){
+    return (path||[]).map(function(e){
+      var rows=(e.sources||[]).map(function(s){return s.file+":"+s.line+"@"+String(s.version).slice(0,8);}).join(", ");
+      var flag=e.status==="potential"?"*":"";
+      return e.from+" -"+e.relation+flag+"-> "+e.to+" ("+(rows||"no row")+")";
+    });
+  }
   function factLine(f){return "<li><code>"+esc(f.code)+"</code> on "+(f.nodes||[]).map(function(n){return "<code>"+esc(n)+"</code>";}).join(", ")+" — "+esc(JSON.stringify(f.detail||{}))+" <span class=muted>"+srcs(f.sources)+"</span></li>";}
   function render(){
     if(!report){return;}
@@ -77,8 +94,10 @@ button{padding:.3rem .7rem}
     var body=$("items").querySelector("tbody"); body.innerHTML="";
     (imp.affected||[]).forEach(function(a,i){
       if(st&&a.status!==st)return; if(kd&&a.kind!==kd)return; if(se&&a.key.toLowerCase().indexOf(se)<0)return;
+      var what=nodeDetail(a.kind, a.attrs);
+      var via=pathSummaryLines(a.path).join("<br>") || (a.path||[]).map(function(e){return esc(e.relation)+(e.status==="potential"?"*":"");}).join(" → ");
       var tr=document.createElement("tr"); tr.className="item"; tr.dataset.index=i;
-      tr.innerHTML="<td><span class='chip "+esc(a.status)+"'>"+esc(a.status)+"</span></td><td><code>"+esc(a.key)+"</code></td><td>"+esc(a.kind)+"</td><td>"+a.hops+"</td><td>"+(a.path||[]).map(function(e){return esc(e.relation)+(e.status==="potential"?"*":"");}).join(" → ")+"</td>";
+      tr.innerHTML="<td><span class='chip "+esc(a.status)+"'>"+esc(a.status)+"</span></td><td><code>"+esc(a.key)+"</code></td><td>"+esc(a.kind)+"</td><td>"+esc(what)+"</td><td>"+a.hops+"</td><td>"+via+"</td>";
       tr.addEventListener("click",function(){select(a);});
       body.appendChild(tr);
     });
@@ -90,9 +109,12 @@ button{padding:.3rem .7rem}
   }
   function select(a){
     selected=a; $("addnote").disabled=false;
-    var html="<b><code>"+esc(a.key)+"</code></b> <span class='chip "+esc(a.status)+"'>"+esc(a.status)+"</span><br><span class=muted>"+esc(JSON.stringify(a.attrs||{}))+"</span><ol>";
-    (a.path||[]).forEach(function(e){html+="<li><code>"+esc(e.from)+"</code> → <code>"+esc(e.to)+"</code> <b>"+esc(e.relation)+"</b>"+(e.status==="potential"?" <span class='chip POTENTIALLY_AFFECTED'>assumed: "+esc(e.assumption)+"</span>":"")+(e.quantity!=null?" "+esc(e.quantity)+" "+esc(e.unit):"")+"<br><span class=muted>rows: "+srcs(e.sources)+"</span></li>";});
-    html+="</ol>"; if(a.assumptions_on_path&&a.assumptions_on_path.length){html+="<p>Only under: "+esc(a.assumptions_on_path.join(", "))+"</p>";}
+    var what=nodeDetail(a.kind, a.attrs);
+    var html="<b><code>"+esc(a.key)+"</code></b> <span class='chip "+esc(a.status)+"'>"+esc(a.status)+"</span>";
+    if(what){html+=" <span class=muted>"+esc(what)+"</span>";}
+    html+="<br><span class=muted>"+esc(JSON.stringify(a.attrs||{}))+"</span><div class=pathlines>";
+    pathSummaryLines(a.path).forEach(function(line){html+="<p class=pathline>"+esc(line)+"</p>";});
+    html+="</div>"; if(a.assumptions_on_path&&a.assumptions_on_path.length){html+="<p>Only under: "+esc(a.assumptions_on_path.join(", "))+"</p>";}
     $("detail").innerHTML=html;
   }
   function renderNotes(){$("notes").innerHTML=notes.map(function(n){return "<li><code>"+esc(n.target)+"</code>: "+esc(n.text)+"</li>";}).join("")||"<li class=muted>none yet</li>"; $("download").disabled=!notes.length;}
