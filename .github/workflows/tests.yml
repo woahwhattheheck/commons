@@ -59,7 +59,7 @@ jobs:
           echo "CURRENT_MAIN=$CURRENT_MAIN"
           STATUS="$(gh api "repos/woahwhattheheck/webmcp-pad/compare/$SOURCE_SHA...$CURRENT_MAIN" --jq .status)"
           case "$STATUS" in identical|ahead) ;; *) echo "::error::source is not on current main: $STATUS"; exit 1 ;; esac
-          for path in pad.html api/mcp.py vercel.json test_bake_contract.py probe_live.py; do
+          for path in pad.html api/mcp.py vercel.json test_bake_contract.py test_vercel_include_first_party.py probe_live.py; do
             LOCAL_BLOB="$(git rev-parse "HEAD:$path")"
             CURRENT_BLOB="$(gh api "repos/woahwhattheheck/webmcp-pad/contents/$path?ref=$CURRENT_MAIN" --jq .sha)"
             test "$LOCAL_BLOB" = "$CURRENT_BLOB"
