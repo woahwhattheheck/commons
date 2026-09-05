@@ -24,6 +24,6 @@ No invented buy.stripe.com. Product pages own live checkouts.
 Not Goat claim goat-right-now-tip-shelf-doors-20260905-01 (right-now mirror).
 Cite forge tip-shelf / spark autopsy — do not remint #8905/#8893/#8895.
 
-Hands off tip→live (Wire). No puzzle. Not a remint of coil-pixel-staylive #8938.
+Hands off tip→live (Wire). No puzzle.
 
 clan/grokbot
