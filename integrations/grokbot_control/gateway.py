@@ -4,9 +4,9 @@
 Endpoints (C1 / Gemini event-cursor compatible shape):
   GET  /health
   GET  /v1/pools
-  POST /v1/runs              submit {pool_id, prompt, seat?, async?}
+  POST /v1/runs              submit {pool_id, prompt, seat?, async?, case?}
   GET  /v1/runs/{run_id}     inspect (?wait_ms=)
-  POST /v1/runs/{run_id}/follow-up   {prompt, async?}
+  POST /v1/runs/{run_id}/follow-up {prompt, async?}
   POST /v1/runs/{run_id}/cancel
   GET  /v1/sessions/{session_id}
   GET  /v1/events?after=&limit=&wait_ms=&pool_id=
@@ -28,7 +28,7 @@ from typing import Any
 from .memory import free_physical_mb, resolve_min_free_mb
 from .pools import DEFAULT_POOL_ID, HARNESS, list_pools, require_pool
 from .runner import EchoSeatRunner, InProcessSeatRunner, SeatRunner
-from .store import TERMINAL, RunStore
+from .store import TERMINAL, RunStore, normalize_case
 
 DEFAULT_PORT = 8881
 DEFAULT_DB = Path.home() / ".grokbot_control" / "runs.sqlite3"
@@ -100,11 +100,13 @@ class Controller:
         session_id: str | None = None,
         parent_run_id: str | None = None,
         async_mode: bool = True,
+        case: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         pool = require_pool(pool_id)
         seat_name = (seat or DEFAULT_SEAT).strip() or DEFAULT_SEAT
         if not isinstance(prompt, str) or not prompt.strip():
             raise ValueError("prompt must be nonempty UTF-8 text")
+        normalized_case = normalize_case(case)
         self._guard_or_raise()
         created = self.store.create_run(
             pool_id=pool,
@@ -112,6 +114,7 @@ class Controller:
             prompt=prompt,
             session_id=session_id,
             parent_run_id=parent_run_id,
+            case=normalized_case,
         )
         cancel = threading.Event()
         with self._lock:
@@ -124,14 +127,16 @@ class Controller:
         )
         thread.start()
         if async_mode:
-            return {
+            out = {
                 "ok": True,
                 "run_id": created["run_id"],
                 "session_id": created["session_id"],
                 "status": "queued",
                 "pool_id": pool,
                 "seat": seat_name,
+                "case": created.get("case"),
             }
+            return out
         run = self.store.wait_run(created["run_id"], wait_ms=120_000)
         return {"ok": run["status"] == "completed", **run}
 
@@ -150,6 +155,7 @@ class Controller:
             session_id=parent["session_id"],
             parent_run_id=run_id,
             async_mode=async_mode,
+            case=parent.get("case"),
         )
 
     def cancel(self, run_id: str) -> dict[str, Any]:
@@ -343,6 +349,7 @@ class Handler(BaseHTTPRequestHandler):
                     prompt=str(payload.get("prompt") or ""),
                     seat=payload.get("seat"),
                     async_mode=bool(payload.get("async", True)),
+                    case=payload.get("case"),
                 )
                 code = 202 if result.get("status") == "queued" else 200
                 self._send(code, result)

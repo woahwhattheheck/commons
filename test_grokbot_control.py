@@ -10,6 +10,7 @@ import tempfile
 import threading
 import time
 import unittest
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -50,6 +51,7 @@ MODS = _load()
 gateway = MODS["gateway"]
 client_mod = MODS["client"]
 pools = MODS["pools"]
+store_mod = MODS["store"]
 
 
 class GatewayFixture:
@@ -135,12 +137,9 @@ class TestGrokBotControl(unittest.TestCase):
 
     def test_cancel_run(self):
         with GatewayFixture() as fx:
-            # Slow runner via blocking handler replaced: use echo + immediate cancel
-            # by submitting async then cancelling before wait completes.
             submitted = fx.client.submit("cancel-me", async_mode=True)
             cancelled = fx.client.cancel(submitted["run_id"])
             self.assertTrue(cancelled["ok"])
-            # May already be completed (echo is fast) or cancelled.
             self.assertIn(cancelled["status"], ("cancelled", "completed", "queued", "running"))
             final = fx.client.inspect(submitted["run_id"], wait_ms=2000)
             self.assertIn(final["status"], ("cancelled", "completed"))
@@ -185,6 +184,97 @@ class TestGrokBotControl(unittest.TestCase):
             os.environ.pop("GROKBOT_CONTROL_POOLS", None)
 
 
+class TestPaidCase(unittest.TestCase):
+    def test_normalize_case_keeps_known_keys(self):
+        self.assertEqual(
+            store_mod.normalize_case(
+                {
+                    "offer_id": " sku-a ",
+                    "case_ref": "c1",
+                    "client_reference_id": "cref",
+                    "sku": "sku-a",
+                    "noise": "drop-me",
+                }
+            ),
+            {
+                "offer_id": "sku-a",
+                "case_ref": "c1",
+                "client_reference_id": "cref",
+                "sku": "sku-a",
+            },
+        )
+        self.assertIsNone(store_mod.normalize_case(None))
+        self.assertIsNone(store_mod.normalize_case({}))
+        with self.assertRaises(ValueError):
+            store_mod.normalize_case("not-a-dict")
+        with self.assertRaises(ValueError):
+            store_mod.normalize_case({"offer_id": 12})
+
+    def test_submit_persists_case_from_queued(self):
+        with GatewayFixture() as fx:
+            case = {
+                "offer_id": "sku-autopsy-29",
+                "case_ref": "case-demo-1",
+                "client_reference_id": "cref-demo",
+                "sku": "sku-autopsy-29",
+            }
+            submitted = fx.client.submit(
+                "paid fulfillment",
+                seat="SPARK",
+                async_mode=True,
+                case=case,
+            )
+            self.assertEqual(submitted["case"]["offer_id"], "sku-autopsy-29")
+            inspected = fx.client.inspect(submitted["run_id"], wait_ms=0)
+            self.assertEqual(inspected["case"]["case_ref"], "case-demo-1")
+            done = fx.client.inspect(submitted["run_id"], wait_ms=5000)
+            self.assertEqual(done["status"], "completed")
+            self.assertEqual(done["case"]["client_reference_id"], "cref-demo")
+
+    def test_follow_up_inherits_case(self):
+        with GatewayFixture() as fx:
+            first = fx.client.submit(
+                "turn-one",
+                async_mode=False,
+                case={"offer_id": "sku-x", "case_ref": "keep-me"},
+            )
+            second = fx.client.follow_up(
+                first["run_id"], "turn-two", async_mode=False
+            )
+            self.assertEqual(second["case"]["offer_id"], "sku-x")
+            self.assertEqual(second["case"]["case_ref"], "keep-me")
+
+    def test_invalid_case_rejected(self):
+        with GatewayFixture() as fx:
+            raw = json.dumps(
+                {
+                    "pool_id": "grokbot",
+                    "prompt": "bad-case",
+                    "async": False,
+                    "case": "nope",
+                }
+            ).encode()
+            req = urllib.request.Request(
+                fx.base + "/v1/runs",
+                data=raw,
+                headers={"Content-Type": "application/json"},
+                method="POST",
+            )
+            try:
+                urllib.request.urlopen(req)
+                self.fail("expected HTTP error")
+            except urllib.error.HTTPError as exc:
+                self.assertEqual(exc.code, 400)
+                body = json.loads(exc.read().decode())
+                self.assertEqual(body["error"], "ValueError")
+
+    def test_omit_case_still_works(self):
+        with GatewayFixture() as fx:
+            done = fx.client.submit("no-case", async_mode=False)
+            self.assertEqual(done["status"], "completed")
+            self.assertIsNone(done.get("case"))
+
+
 class TestInProcessRoundTrip(unittest.TestCase):
     def test_inprocess_seat_attribution(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -223,7 +313,6 @@ class TestInProcessRoundTrip(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
                 server.controller.store.close()
-
 
 
 class TestMemoryGuard(unittest.TestCase):
@@ -273,7 +362,6 @@ class TestMemoryGuard(unittest.TestCase):
             thread = threading.Thread(target=server.serve_forever, daemon=True)
             thread.start()
             try:
-                import json, urllib.error, urllib.request
                 raw = json.dumps(
                     {"pool_id": "grokbot", "prompt": "should-not-run", "async": False}
                 ).encode()
@@ -292,9 +380,8 @@ class TestMemoryGuard(unittest.TestCase):
                     self.assertEqual(body["error"], "memory_guard")
                     self.assertEqual(body["free_physical_mb"], 64)
                     self.assertEqual(body["min_free_mb"], 1024)
-                # No run persisted
-                self.assertEqual(server.controller.store.cursor, 0)
-                self.assertEqual(server.controller.memory_guard()["held_refused"], 1)
+                    self.assertEqual(server.controller.store.cursor, 0)
+                    self.assertEqual(server.controller.memory_guard()["held_refused"], 1)
             finally:
                 server.shutdown()
                 server.server_close()
@@ -329,6 +416,7 @@ class TestMemoryGuard(unittest.TestCase):
                 server.shutdown()
                 server.server_close()
                 server.controller.store.close()
+
 
 if __name__ == "__main__":
     unittest.main()

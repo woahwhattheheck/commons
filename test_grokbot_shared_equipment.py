@@ -67,6 +67,10 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         catalog_names = {t["name"] for t in catalog.tools()}
         self.assertTrue(expected.issubset(catalog_names))
         self.assertIn("commons_noop", catalog_names)
+        submit = next(
+            t for t in GrokBotEquipment().tools() if t["name"] == "grokbot_submit"
+        )
+        self.assertIn("case", submit["inputSchema"]["properties"])
 
     def test_submit_inspect_follow_up_cancel_attribution(self):
         with GrokBotEquipmentFixture() as fx:
@@ -128,6 +132,32 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             )
             self.assertGreaterEqual(len(events.get("events") or []), 1)
 
+    def test_submit_case_round_trip(self):
+        with GrokBotEquipmentFixture() as fx:
+            submitted = fx.eq.call(
+                "grokbot_submit",
+                {
+                    "prompt": "paid case ping",
+                    "async": False,
+                    "case": {
+                        "offer_id": "sku-autopsy-29",
+                        "case_ref": "case-demo-1",
+                        "client_reference_id": "cref-demo",
+                        "sku": "sku-autopsy-29",
+                    },
+                },
+            )
+            self.assertEqual(submitted.get("status"), "completed")
+            self.assertEqual(submitted["case"]["offer_id"], "sku-autopsy-29")
+            followed = fx.eq.call(
+                "grokbot_follow_up",
+                {
+                    "run_id": submitted["run_id"],
+                    "prompt": "follow",
+                    "async": False,
+                },
+            )
+            self.assertEqual(followed["case"]["case_ref"], "case-demo-1")
 
     def test_health_reports_memory_guard(self):
         with GrokBotEquipmentFixture() as fx:

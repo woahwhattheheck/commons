@@ -59,6 +59,7 @@ class GrokBotControlClient:
         pool_id: str = "grokbot",
         seat: str | None = None,
         async_mode: bool = True,
+        case: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         body: dict[str, Any] = {
             "pool_id": pool_id,
@@ -67,6 +68,8 @@ class GrokBotControlClient:
         }
         if seat:
             body["seat"] = seat
+        if case is not None:
+            body["case"] = case
         return self._request("POST", "/v1/runs", payload=body)
 
     def inspect(self, run_id: str, *, wait_ms: int = 0) -> dict[str, Any]:

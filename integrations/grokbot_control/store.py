@@ -21,6 +21,40 @@ STATUSES = frozenset({
 })
 TERMINAL = frozenset({"completed", "error", "cancelled", "interrupted"})
 
+CASE_KEYS = ("offer_id", "case_ref", "client_reference_id", "sku")
+_CASE_KEY_SET = frozenset(CASE_KEYS)
+_MAX_CASE_LEN = 200
+
+
+def normalize_case(case: Any) -> dict[str, str] | None:
+    """Normalize optional paid-case metadata for durable run linkage.
+
+    Accepts a dict with optional string keys offer_id / case_ref /
+    client_reference_id / sku. Empty values and unknown keys are dropped.
+    Returns None when nothing remains. Raises ValueError on bad shapes.
+    """
+    if case is None:
+        return None
+    if not isinstance(case, dict):
+        raise ValueError("case must be an object")
+    out: dict[str, str] = {}
+    for key, raw in case.items():
+        if key not in _CASE_KEY_SET:
+            continue
+        if raw is None:
+            continue
+        if not isinstance(raw, str):
+            raise ValueError("case.%s must be a string" % key)
+        value = raw.strip()
+        if not value:
+            continue
+        if len(value) > _MAX_CASE_LEN:
+            raise ValueError(
+                "case.%s exceeds %d characters" % (key, _MAX_CASE_LEN)
+            )
+        out[key] = value
+    return out or None
+
 
 def _now() -> float:
     return time.time()
@@ -49,7 +83,8 @@ class RunStore:
                     attribution_json TEXT,
                     parent_run_id TEXT,
                     created_at REAL NOT NULL,
-                    updated_at REAL NOT NULL
+                    updated_at REAL NOT NULL,
+                    case_json TEXT
                 );
                 CREATE INDEX IF NOT EXISTS idx_runs_session ON runs(session_id);
                 CREATE TABLE IF NOT EXISTS events(
@@ -63,6 +98,12 @@ class RunStore:
                 );
                 """
             )
+            cols = {
+                row[1]
+                for row in self._db.execute("PRAGMA table_info(runs)").fetchall()
+            }
+            if "case_json" not in cols:
+                self._db.execute("ALTER TABLE runs ADD COLUMN case_json TEXT")
 
     def close(self) -> None:
         with self._lock:
@@ -76,14 +117,25 @@ class RunStore:
         prompt: str,
         session_id: str | None = None,
         parent_run_id: str | None = None,
+        case: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
         run_id = uuid.uuid4().hex
         sid = session_id or uuid.uuid4().hex
         now = _now()
+        normalized = normalize_case(case)
+        case_json = (
+            json.dumps(normalized, separators=(",", ":"), ensure_ascii=False)
+            if normalized is not None
+            else None
+        )
         with self._cond:
             with self._db:
                 self._db.execute(
-                    "INSERT INTO runs VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
+                    "INSERT INTO runs("
+                    "run_id, session_id, pool_id, seat, status, prompt, "
+                    "result_text, error, attribution_json, parent_run_id, "
+                    "created_at, updated_at, case_json) "
+                    "VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)",
                     (
                         run_id,
                         sid,
@@ -97,19 +149,25 @@ class RunStore:
                         parent_run_id,
                         now,
                         now,
+                        case_json,
                     ),
                 )
+            payload: dict[str, Any] = {
+                "prompt_bytes": len(prompt.encode("utf-8"))
+            }
+            if normalized is not None:
+                payload["case"] = normalized
             event = self._append_event_locked(
                 run_id=run_id,
                 session_id=sid,
                 pool_id=pool_id,
                 status="queued",
-                payload={"prompt_bytes": len(prompt.encode("utf-8"))},
+                payload=payload,
             )
             self._cond.notify_all()
-        out = self.get_run(run_id)
-        out["event"] = event
-        return out
+            out = self.get_run(run_id)
+            out["event"] = event
+            return out
 
     def set_status(
         self,
@@ -160,9 +218,9 @@ class RunStore:
                 payload=payload,
             )
             self._cond.notify_all()
-        out = self.get_run(run_id)
-        out["event"] = event
-        return out
+            out = self.get_run(run_id)
+            out["event"] = event
+            return out
 
     def get_run(self, run_id: str) -> dict[str, Any]:
         with self._lock:
@@ -296,6 +354,14 @@ class RunStore:
         attr = None
         if row["attribution_json"]:
             attr = json.loads(row["attribution_json"])
+        case = None
+        case_json = None
+        try:
+            case_json = row["case_json"]
+        except (IndexError, KeyError):
+            case_json = None
+        if case_json:
+            case = json.loads(case_json)
         return {
             "run_id": row["run_id"],
             "session_id": row["session_id"],
@@ -306,6 +372,7 @@ class RunStore:
             "result_text": row["result_text"],
             "error": row["error"],
             "attribution": attr,
+            "case": case,
             "parent_run_id": row["parent_run_id"],
             "created_at": row["created_at"],
             "updated_at": row["updated_at"],
