@@ -68,4 +68,4 @@ jobs:
           from pathlib import Path
           (Path(os.environ["RUNNER_TEMP"]) / "audit_git_terminal.py").write_bytes(base64.b64decode(os.environ["AUDIT_SCRIPT_B64"]))
           PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --repo . --target origin/main --expected-commit "$EXPECTED_COMMIT"
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --repo . --fetch --target-ref origin/main --expected-commit "$EXPECTED_COMMIT" --required-path host/listing_registry.py --required-path test_listing_registry.py --required-path revenue/listing_registry/registry.json --required-path revenue/listing_registry/assets.json --required-path revenue/listing_registry/schema.json
