@@ -368,9 +368,11 @@ def relationship_handoff(
     due = effective_row.get("due")
     due_evidence: list[str] = []
     for event in reversed(events_sorted):
-        if event.get("due") == due and due:
-            due_evidence = _event_paths(event) + [_event_ref(event)]
-            break
+        if event.get("due") != due or not due:
+            continue
+        for evidence_ref in _event_paths(event) + [_event_ref(event)]:
+            if evidence_ref not in due_evidence:
+                due_evidence.append(evidence_ref)
     if not due_evidence and due:
         due_evidence = unresolved_evidence[:]
     next_time = (
