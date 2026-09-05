@@ -158,7 +158,7 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             "case_id",
             "buyer_ref",
             "failure_sentence",
-            "harness_stack",
+            "coding_stack",
             "scope_boundary",
             "intake_caps",
             "submitted_at",
@@ -184,27 +184,9 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
     _text(intake["failure_sentence"], "intake.failure_sentence", minimum=10)
     submitted_at = _time(intake["submitted_at"], "intake.submitted_at")
 
-    stack = _exact_keys(
-        intake["harness_stack"],
-        {
-            "harness",
-            "harness_version",
-            "model",
-            "operating_system",
-            "runtime",
-            "tooling",
-        },
-        "intake.harness_stack",
+    _text(
+        intake["coding_stack"], "intake.coding_stack", maximum=2000
     )
-    if stack["harness"] not in {"codex", "claude-code", "other-coding-agent"}:
-        raise AutopsyValidationError("intake harness is outside the coding-agent offer")
-    for key in ("harness_version", "model", "operating_system", "runtime"):
-        _nullable_text(stack[key], f"intake.harness_stack.{key}", maximum=500)
-    tooling = _string_list(
-        stack["tooling"], "intake.harness_stack.tooling", allow_empty=True, maximum_items=20
-    )
-    if len(set(tooling)) != len(tooling):
-        raise AutopsyValidationError("intake tooling entries must be unique")
 
     scope = _exact_keys(
         intake["scope_boundary"],
@@ -800,7 +782,7 @@ def validate_report(
             "case_id",
             "intake_sha256",
             "failure_sentence",
-            "harness_summary",
+            "coding_stack_summary",
             "intake_scope",
             "disposition",
             "artifact_state",
@@ -834,7 +816,7 @@ def validate_report(
         raise AutopsyValidationError("report must reproduce the failure sentence exactly")
     if report["intake_sha256"] != canonical_sha256(intake):
         raise AutopsyValidationError("report intake_sha256 does not bind the supplied intake")
-    _text(report["harness_summary"], "report.harness_summary")
+    _text(report["coding_stack_summary"], "report.coding_stack_summary")
 
     intake_scope = _exact_keys(
         report["intake_scope"],
@@ -1082,7 +1064,7 @@ def validate_report(
         report["operator_time"],
         {
             "measurement_status",
-            "human_review_minutes",
+            "reviewer_minutes",
             "automated_draft_minutes",
             "measurement_purpose",
             "time_truncated_analysis",
@@ -1103,15 +1085,30 @@ def validate_report(
 
     review = _exact_keys(
         report["final_review"],
-        {"state", "reviewer_ref", "reviewed_at", "evidence_link_check"},
+        {
+            "state",
+            "reviewer_ref",
+            "reviewer_kind",
+            "reviewed_at",
+            "independent_of_drafter",
+            "evidence_link_check",
+            "adversarial_challenge_check",
+        },
         "report.final_review",
     )
-    if review["state"] not in {"PEER_DRAFT", "HUMAN_REVIEWED"}:
+    if review["state"] not in {"PEER_DRAFT", "INDEPENDENTLY_REVIEWED"}:
         raise AutopsyValidationError("final review state is invalid")
     reviewer_ref = review["reviewer_ref"]
+    reviewer_kind = review["reviewer_kind"]
+    if reviewer_kind not in {None, "COMMONS_PEER", "HUMAN_OPERATOR"}:
+        raise AutopsyValidationError("final review reviewer_kind is invalid")
     reviewed_at = _nullable_time(review["reviewed_at"], "report.final_review.reviewed_at")
+    if type(review["independent_of_drafter"]) is not bool:
+        raise AutopsyValidationError("final review independence flag must be boolean")
     if type(review["evidence_link_check"]) is not bool:
         raise AutopsyValidationError("final review evidence_link_check must be boolean")
+    if type(review["adversarial_challenge_check"]) is not bool:
+        raise AutopsyValidationError("final review challenge check must be boolean")
 
     refund = _exact_keys(
         report["refund"],
@@ -1143,36 +1140,42 @@ def validate_report(
             artifact_state != "PEER_DRAFT"
             or review["state"] != "PEER_DRAFT"
             or reviewer_ref is not None
+            or reviewer_kind is not None
             or reviewed_at is not None
+            or review["independent_of_drafter"]
             or review["evidence_link_check"]
+            or review["adversarial_challenge_check"]
         ):
             raise AutopsyValidationError(
                 "synthetic example must remain an unreviewed PEER_DRAFT"
             )
         if (
             operator["measurement_status"] != "NOT_MEASURED"
-            or operator["human_review_minutes"] is not None
+            or operator["reviewer_minutes"] is not None
         ):
             raise AutopsyValidationError(
-                "synthetic example cannot claim measured human-review performance"
+                "synthetic example cannot claim measured reviewer performance"
             )
     else:
         if (
-            review["state"] != "HUMAN_REVIEWED"
+            review["state"] != "INDEPENDENTLY_REVIEWED"
             or type(reviewer_ref) is not str
             or not REVIEWER_RE.fullmatch(reviewer_ref)
+            or reviewer_kind not in {"COMMONS_PEER", "HUMAN_OPERATOR"}
             or reviewed_at is None
+            or review["independent_of_drafter"] is not True
             or review["evidence_link_check"] is not True
+            or review["adversarial_challenge_check"] is not True
         ):
             raise AutopsyValidationError(
-                "buyer-ready or refund records require exact human evidence review"
+                "buyer-ready or refund records require independent evidence review"
             )
         if operator["measurement_status"] != "MEASURED":
             raise AutopsyValidationError(
-                "buyer records must measure active human-review minutes"
+                "buyer records must measure active reviewer minutes"
             )
         _number(
-            operator["human_review_minutes"], "operator_time.human_review_minutes"
+            operator["reviewer_minutes"], "operator_time.reviewer_minutes"
         )
         if reviewed_at > delivered:
             raise AutopsyValidationError("report cannot be delivered before final review")
@@ -1252,7 +1255,7 @@ def validate_report(
     warnings: list[str] = []
     if classification == "SYNTHETIC_EXAMPLE":
         warnings.append(
-            "synthetic peer draft: no buyer delivery, human-review time, sale, or revenue is established"
+            "synthetic peer draft: no buyer delivery, reviewer time, sale, or revenue is established"
         )
     return {
         "ok": True,
@@ -1262,7 +1265,7 @@ def validate_report(
         "intake_sha256": canonical_sha256(intake),
         "clock_started_at": delivery["clock_started_at"],
         "delivery_due_at": delivery["delivery_due_at"],
-        "human_review_minutes": operator["human_review_minutes"],
+        "reviewer_minutes": operator["reviewer_minutes"],
         "automated_draft_minutes": operator["automated_draft_minutes"],
         "time_measurement_purpose": operator["measurement_purpose"],
         "warnings": warnings,
