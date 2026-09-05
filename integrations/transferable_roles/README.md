@@ -31,10 +31,6 @@ python3 integrations/transferable_roles/cli.py create \
   --file integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json \
   --store /tmp/hinge-roles
 
-python3 integrations/transferable_roles/cli.py create \
-  --file integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json \
-  --store /tmp/hinge-roles
-
 python3 integrations/transferable_roles/cli.py equip role-synthetic-crm-followup-20260904 \
   --session session-A --harness cursor-hinge --seat HINGE \
   --store /tmp/hinge-roles
@@ -127,7 +123,6 @@ plant) for seat-to-seat handoff: open obligations `ob-intake` → `ob-diagnose` 
 `payment_capability` point at the four live product-page `buy.stripe.com` CTAs
 already on main — **do not invent plink**, do not remint pages. Miss remedy
 sentence lives on the product pages/contracts. Roles confer no Stripe access.
-
 ## Access route shapes
 
 ### G2 — `kind: grokbot_control` (SPARK #8761 / `5154aa8f`)
