@@ -16,46 +16,22 @@ jobs:
           fetch-depth: 100
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /*.html
-            /door.js
-            /session.js
-            /commons.css
-            /test_door_hub.js
-            /test_forge_door_autopsy_label.py
-            /integrations/transferable_roles/
-            /independent_commons_mcp/console.html
-            /to/index.html
-            /memory/index.html
-            /ping/poll.html
-            /discord/plugin.html
-            /slack/plugin.html
-            /players/CODEX_SOL.html
-            /players/CODEX_SOL-amber-hour.html
-      - name: Verify label and role integration
+            /integrations/
+            /revenue/agent_failure_autopsy/
+            /free-sample.html
+            /sales-sample/FREE-SAMPLE-SALES-INSERT.md
+            /agent-rescue.html
+            /test_quill_free_sample_autopsy_funnel.py
+            /test_grokbot_paid_case.py
+            /test_grokbot_paid_case_receipt.py
+            /test_grokbot_client_reference_roundtrip.py
+      - name: Verify receipt truth and latest funnel and role changes
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor fb8844504ae8254294b85a4f936abdbb378c49fa HEAD
-          python3 -m unittest -v test_forge_door_autopsy_label
+          git merge-base --is-ancestor 39b3152cd59e5b85d1874c9248c5f54692f97e71 HEAD
+          python3 -m unittest -v test_quill_free_sample_autopsy_funnel test_grokbot_paid_case test_grokbot_paid_case_receipt test_grokbot_client_reference_roundtrip
           python3 integrations/transferable_roles/test_roles.py
-          python3 integrations/transferable_roles/test_diagnostic_reply_cash_pointers.py
-          node test_door_hub.js
-      - name: Verify cached static label behavior
-        run: |
-          node - <<'JS'
-          const fs = require('fs'), vm = require('vm'), assert = require('assert');
-          const sandbox = {document:undefined,window:undefined};
-          sandbox.globalThis = sandbox;
-          vm.runInNewContext(fs.readFileSync('door.js','utf8'),sandbox);
-          const link = (href,text) => ({textContent:text,getAttribute(){return href;}});
-          const stale = link('./agent-rescue.html','agent survival');
-          const current = link('./agent-rescue.html','Agent Failure Autopsy · $29');
-          const other = link('./diagnostic.html','GGUF diagnostic');
-          sandbox.COMMONS_DOORS.relabelStaticAutopsyDoor({querySelectorAll(){return [stale,current,other];}});
-          assert.strictEqual(stale.textContent,'Agent Failure Autopsy · $29');
-          assert.strictEqual(current.textContent,'Agent Failure Autopsy · $29');
-          assert.strictEqual(other.textContent,'GGUF diagnostic');
-          console.log('CACHED_STATIC_AUTOPSY_LABEL_PASS');
-          JS
+          python3 integrations/transferable_roles/test_diagnostic_contract_spine_pointers.py
       - name: Read back current main and audit
         run: |
           set -euo pipefail
@@ -65,9 +41,9 @@ jobs:
           fixture = json.loads(pathlib.Path("integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json").read_text())
           for row in fixture["knowledge"]:
               path = row["pointer"]
-              if path.startswith("revenue/reply_to_revenue/") or path == "commerce.html":
+              if path.endswith(("/contract.json", "/receipt.md")):
                   subprocess.run(["git","cat-file","-e","origin/main:"+path],check=True)
-          paths = ["door.js","index.html","test_forge_door_autopsy_label.py","p/forge-door-autopsy-label-20260905-01.md","integrations/transferable_roles/README.md","integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json","integrations/transferable_roles/test_diagnostic_reply_cash_pointers.py","p/hinge-r4-diagnostic-reply-cash-pointers-20260905-01.md"]
+          paths = ["free-sample.html","sales-sample/FREE-SAMPLE-SALES-INSERT.md","test_quill_free_sample_autopsy_funnel.py","p/quill-free-sample-autopsy-funnel-20260905-01.md","integrations/transferable_roles/README.md","integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json","integrations/transferable_roles/test_diagnostic_contract_spine_pointers.py","p/hinge-r4-diagnostic-contract-spine-pointers-20260905-01.md","integrations/grokbot_control/paid_case.py","test_grokbot_paid_case_receipt.py","integrations/grokbot_control/README.md","revenue/agent_failure_autopsy/seats.json","revenue/agent_failure_autopsy/SEATS.md","integrations/grokbot_control/__init__.py","features/registry/spark-g2-paid-case-receipt-surface-20260905-01.json","p/spark-g2-paid-case-receipt-surface-20260905-01.md"]
           for path in paths:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
@@ -197,4 +173,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit fb8844504ae8254294b85a4f936abdbb378c49fa --required-path door.js --required-path integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 39b3152cd59e5b85d1874c9248c5f54692f97e71 --required-path integrations/grokbot_control/paid_case.py --required-path free-sample.html --required-path integrations/transferable_roles/test_diagnostic_contract_spine_pointers.py
