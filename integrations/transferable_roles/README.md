@@ -16,6 +16,7 @@ Intake/seats pointers: `hinge-r4-autopsy-intake-seats-pointers-20260905-01`
 Diagnostic reply→cash: `hinge-r4-diagnostic-reply-cash-pointers-20260905-01`
 Diagnostic contract spines: `hinge-r4-diagnostic-contract-spine-pointers-20260905-01`
 Autopsy tip-shelf: `hinge-r4-autopsy-tip-shelf-pointers-20260905-01`
+Autopsy paid_case: `hinge-r4-autopsy-paid-case-pointers-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -120,6 +121,9 @@ After **#8901** / **#8925**, knowledge also points at `INTAKE.md` + `SEATS.md`
 (+ `seats.json`) — **point only; do not remint** those operator boards.
 After tip-shelf land, knowledge also points at `commerce.html` (`#tip-shelf` /
 `#sku-agent-failure-autopsy`) — **point only; do not remint** tip-shelf.
+After SPARK **#8961**, knowledge + tools also point at
+`integrations/grokbot_control/paid_case.py` (`case_from_autopsy_offer` /
+`load_autopsy_offer`; RUNBOOK §10) — **point only; do not remint** paid_case.
 Live checkout URL stays on fixture + `agent-rescue.html` (#8889). Stripe
 product/price/plink/account IDs stay in `offer.json` only. No credential remint;
 no invented checkout; roles confer no Stripe access. Use `open-obligations` to
