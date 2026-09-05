@@ -14,9 +14,16 @@ in the subject, ask for a YES, Master of Accounts supplies the rail.
 **Rule applied after Astra's 2026-09-04 22:54 EDT correction:** hiring posts and RFPs are prospect
 signals, not customers asking for this product, and a hiring form is not a sales route. Rows 2, 3 and 4
 below are hiring posts; their application forms are *not* to be used as pitches. The lawful route for
-each is a vendor or partner contact on the company's own site, which this packet did not fetch and
-therefore lists as missing. Rows 1, 5 and 6 are buying signals (a posted project, two procurements)
-and their routes stand.
+each is a vendor or partner contact on the company's own site, read with `curl` on 2026-09-05 03:40Z
+(no browser, no form submitted):
+
+| Row | Company | Vendor / partner route as published | Note |
+| --- | --- | --- | --- |
+| 2 | Careerflow.ai | `hello@careerflow.ai` (contact page; `support@` is the user desk) | general inbox, no named person |
+| 3 | Greenlight Consulting | `info@greenlightconsulting.com`; the firm lists Anthropic among its partners at `/our-partners/anthropic/` | a Claude-partner consultancy: the partner page is the natural opening, not the hiring form |
+| 4 | CodePath | `https://www.codepath.org/partnerwithus` (partner page; contact page has no email or form) | nonprofit; partnership desk, no named person |
+
+Rows 1, 5 and 6 are buying signals (a posted project, two procurements) and their routes stand.
 
 Dedupe: none of these six organizations appears in `revenue/lm_gtm_index/INDEX.jsonl` (62 rows) or in
 any Slack channel (searched 2026-09-05 02:00Z). All net-new.
