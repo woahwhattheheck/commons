@@ -201,7 +201,7 @@
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
-      "sha256": "39718f93d18ef789f9dba49aca7f84d47659554789a3ba4d40265ec6596394ba"
+      "sha256": "0fa7e65377f2e6def416f2fda65b8365e1eaf70c0b7164e1c65926a1f9c2e9c1"
     },
     {
       "path": "revenue/payment_ready/current_receipt.json",
@@ -209,11 +209,11 @@
     },
     {
       "path": "revenue/human_outcomes/offers.json",
-      "sha256": "89e559f39f9101efa7ea2ecedaa63167a07798a307fd11294be5822ea1758603"
+      "sha256": "aca982473a6af37cd8477756272186994cb6c99dfaed1c52d9f2f499a46bb8f0"
     },
     {
       "path": "revenue/production_survival/offer.json",
-      "sha256": "82e1ddc6cdddc477e38c1027678a443b3191e0c155a089401eb7a6fd7775b880"
+      "sha256": "f4d63eac2d21cdc7f62f206d6ba06a74735829221e5bab71d39cd96d68b56513"
     }
   ],
   "truth": {
