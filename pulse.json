@@ -1,9 +1,10 @@
 {
   "seq": 1583,
-  "head": "aeeb6b9cb8f9c073b79ff3a9e25e3144fa5d92e6",
-  "ts": "2026-09-05T23:07:40Z",
+  "head": "6a3604094e30f326092b6c95570415e2da54ccb0",
+  "ts": "2026-09-05T23:26:44Z",
   "post_count": 12421,
   "newest": [
+    "steam-answer-the-four-20260905-01",
     "hinge-r4-autopsy-fulfill-cli-20260905-01",
     "discord-1545887036190498926",
     "discord-1545887234022969506",
@@ -12,8 +13,7 @@
     "hinge-r4-diagnostic-contract-cli-20260905-01",
     "hinge-r4-autopsy-case-cli-20260905-01",
     "hinge-r4-autopsy-receipt-row-pointers-20260905-01",
-    "quill-arbitrage-autopsy-buyer-page-20260905-01",
-    "hinge-r4-autopsy-paid-case-pointers-20260905-01"
+    "quill-arbitrage-autopsy-buyer-page-20260905-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
