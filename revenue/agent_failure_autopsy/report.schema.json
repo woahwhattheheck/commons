@@ -15,6 +15,7 @@
     "harness_summary",
     "disposition",
     "artifact_state",
+    "quality",
     "delivery",
     "timeline",
     "first_meaningful_divergence",
@@ -29,44 +30,112 @@
     "refund"
   ],
   "properties": {
-    "schema_version": {"const": "commons-agent-failure-autopsy-report/v1"},
-    "kind": {"const": "AGENT_FAILURE_AUTOPSY_REPORT"},
-    "record_classification": {"enum": ["BUYER_CASE", "SYNTHETIC_EXAMPLE"]},
-    "offer_id": {"const": "agent-failure-autopsy-29"},
-    "case_id": {"$ref": "#/$defs/id"},
-    "intake_sha256": {"$ref": "#/$defs/sha256"},
-    "failure_sentence": {"type": "string", "minLength": 10, "maxLength": 1000},
-    "harness_summary": {"type": "string", "minLength": 1, "maxLength": 1000},
-    "disposition": {"enum": ["DIAGNOSIS_DELIVERED", "REFUND_REQUIRED"]},
-    "artifact_state": {"enum": ["PEER_DRAFT", "READY_FOR_BUYER", "REFUND_REQUIRED"]},
+    "schema_version": {
+      "const": "commons-agent-failure-autopsy-report/v1"
+    },
+    "kind": {
+      "const": "AGENT_FAILURE_AUTOPSY_REPORT"
+    },
+    "record_classification": {
+      "enum": [
+        "BUYER_CASE",
+        "SYNTHETIC_EXAMPLE"
+      ]
+    },
+    "offer_id": {
+      "const": "agent-failure-autopsy-29"
+    },
+    "case_id": {
+      "$ref": "#/$defs/id"
+    },
+    "intake_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "failure_sentence": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 1000
+    },
+    "harness_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
+    },
+    "disposition": {
+      "enum": [
+        "DIAGNOSIS_DELIVERED",
+        "REFUND_REQUIRED"
+      ]
+    },
+    "artifact_state": {
+      "enum": [
+        "PEER_DRAFT",
+        "READY_FOR_BUYER",
+        "REFUND_REQUIRED"
+      ]
+    },
     "delivery": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["clock_started_at", "delivery_due_at", "delivered_at", "within_one_business_day"],
+      "required": [
+        "clock_started_at",
+        "delivery_due_at",
+        "delivered_at",
+        "within_one_business_day"
+      ],
       "properties": {
-        "clock_started_at": {"$ref": "#/$defs/nullable_timestamp"},
-        "delivery_due_at": {"$ref": "#/$defs/nullable_timestamp"},
-        "delivered_at": {"$ref": "#/$defs/timestamp"},
-        "within_one_business_day": {"type": "boolean"}
+        "clock_started_at": {
+          "$ref": "#/$defs/nullable_timestamp"
+        },
+        "delivery_due_at": {
+          "$ref": "#/$defs/nullable_timestamp"
+        },
+        "delivered_at": {
+          "$ref": "#/$defs/timestamp"
+        },
+        "within_one_business_day": {
+          "type": "boolean"
+        }
       }
     },
     "timeline": {
       "type": "array",
       "maxItems": 100,
-      "items": {"$ref": "#/$defs/observed_item"}
+      "items": {
+        "$ref": "#/$defs/observed_item"
+      }
     },
     "first_meaningful_divergence": {
       "oneOf": [
-        {"type": "null"},
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["timeline_sequence", "claim_type", "statement", "evidence_refs"],
+          "required": [
+            "timeline_sequence",
+            "claim_type",
+            "statement",
+            "evidence_refs"
+          ],
           "properties": {
-            "timeline_sequence": {"type": "integer", "minimum": 1, "maximum": 1000},
-            "claim_type": {"const": "OBSERVED"},
-            "statement": {"type": "string", "minLength": 1, "maxLength": 1000},
-            "evidence_refs": {"$ref": "#/$defs/evidence_refs"}
+            "timeline_sequence": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 1000
+            },
+            "claim_type": {
+              "const": "OBSERVED"
+            },
+            "statement": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "evidence_refs": {
+              "$ref": "#/$defs/evidence_refs"
+            }
           }
         }
       ]
@@ -74,22 +143,31 @@
     "failure_chain": {
       "type": "array",
       "maxItems": 50,
-      "items": {"$ref": "#/$defs/observed_item"}
+      "items": {
+        "$ref": "#/$defs/observed_item"
+      }
     },
     "causes": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["primary", "contributing"],
+      "required": [
+        "primary",
+        "contributing"
+      ],
       "properties": {
         "primary": {
           "type": "array",
           "maxItems": 10,
-          "items": {"$ref": "#/$defs/cause"}
+          "items": {
+            "$ref": "#/$defs/cause"
+          }
         },
         "contributing": {
           "type": "array",
           "maxItems": 20,
-          "items": {"$ref": "#/$defs/cause"}
+          "items": {
+            "$ref": "#/$defs/cause"
+          }
         }
       }
     },
@@ -99,49 +177,115 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["fix_id", "recommendation_type", "target", "addresses_cause_ids", "steps", "evidence_refs", "limits"],
+        "required": [
+          "fix_id",
+          "recommendation_type",
+          "target",
+          "addresses_cause_ids",
+          "steps",
+          "evidence_refs",
+          "limits"
+        ],
         "properties": {
-          "fix_id": {"$ref": "#/$defs/id"},
-          "recommendation_type": {"const": "EVIDENCE_SUPPORTED_RECOMMENDATION"},
-          "target": {"enum": ["PROMPT", "CONFIG", "CODE"]},
+          "fix_id": {
+            "$ref": "#/$defs/id"
+          },
+          "recommendation_type": {
+            "const": "EVIDENCE_SUPPORTED_RECOMMENDATION"
+          },
+          "target": {
+            "enum": [
+              "PROMPT",
+              "CONFIG",
+              "CODE"
+            ]
+          },
           "addresses_cause_ids": {
             "type": "array",
             "minItems": 1,
             "maxItems": 20,
             "uniqueItems": true,
-            "items": {"$ref": "#/$defs/id"}
+            "items": {
+              "$ref": "#/$defs/id"
+            }
           },
           "steps": {
             "type": "array",
             "minItems": 1,
             "maxItems": 20,
-            "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            }
           },
-          "evidence_refs": {"$ref": "#/$defs/evidence_refs"},
-          "limits": {"type": "string", "minLength": 1, "maxLength": 1000}
+          "evidence_refs": {
+            "$ref": "#/$defs/evidence_refs"
+          },
+          "limits": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
         }
       }
     },
     "prevention_check": {
       "oneOf": [
-        {"type": "null"},
+        {
+          "type": "null"
+        },
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["recommendation_type", "setup", "replay_steps", "expected_result", "failure_signal", "evidence_refs", "execution_state"],
+          "required": [
+            "recommendation_type",
+            "setup",
+            "replay_steps",
+            "expected_result",
+            "failure_signal",
+            "evidence_refs",
+            "execution_state"
+          ],
           "properties": {
-            "recommendation_type": {"const": "EVIDENCE_SUPPORTED_RECOMMENDATION"},
-            "setup": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "recommendation_type": {
+              "const": "EVIDENCE_SUPPORTED_RECOMMENDATION"
+            },
+            "setup": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
             "replay_steps": {
               "type": "array",
               "minItems": 1,
               "maxItems": 20,
-              "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              }
             },
-            "expected_result": {"type": "string", "minLength": 1, "maxLength": 1000},
-            "failure_signal": {"type": "string", "minLength": 1, "maxLength": 1000},
-            "evidence_refs": {"$ref": "#/$defs/evidence_refs"},
-            "execution_state": {"enum": ["PROPOSED_NOT_RUN", "BUYER_REPORTED_PASS", "BUYER_REPORTED_FAIL"]}
+            "expected_result": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "failure_signal": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1000
+            },
+            "evidence_refs": {
+              "$ref": "#/$defs/evidence_refs"
+            },
+            "execution_state": {
+              "enum": [
+                "PROPOSED_NOT_RUN",
+                "BUYER_REPORTED_PASS",
+                "BUYER_REPORTED_FAIL"
+              ]
+            }
           }
         }
       ]
@@ -149,15 +293,27 @@
     "clarification": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["rounds_used", "question", "response_evidence_refs"],
+      "required": [
+        "rounds_used",
+        "question",
+        "response_evidence_refs"
+      ],
       "properties": {
-        "rounds_used": {"type": "integer", "minimum": 0, "maximum": 1},
-        "question": {"$ref": "#/$defs/nullable_text"},
+        "rounds_used": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "question": {
+          "$ref": "#/$defs/nullable_text"
+        },
         "response_evidence_refs": {
           "type": "array",
           "maxItems": 20,
           "uniqueItems": true,
-          "items": {"$ref": "#/$defs/evidence_ref"}
+          "items": {
+            "$ref": "#/$defs/evidence_ref"
+          }
         }
       }
     },
@@ -165,7 +321,11 @@
       "type": "array",
       "minItems": 1,
       "maxItems": 20,
-      "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1000
+      }
     },
     "operator_time": {
       "type": "object",
@@ -174,105 +334,292 @@
         "measurement_status",
         "human_review_minutes",
         "automated_draft_minutes",
-        "review_ceiling_minutes",
-        "ceiling_result"
+        "measurement_purpose",
+        "time_truncated_analysis"
       ],
       "properties": {
-        "measurement_status": {"enum": ["MEASURED", "NOT_MEASURED"]},
+        "measurement_status": {
+          "enum": [
+            "MEASURED",
+            "NOT_MEASURED"
+          ]
+        },
         "human_review_minutes": {
           "oneOf": [
-            {"type": "null"},
-            {"type": "number", "minimum": 0, "maximum": 1440}
+            {
+              "type": "null"
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1440
+            }
           ]
         },
         "automated_draft_minutes": {
           "oneOf": [
-            {"type": "null"},
-            {"type": "number", "minimum": 0, "maximum": 1440}
+            {
+              "type": "null"
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1440
+            }
           ]
         },
-        "review_ceiling_minutes": {"const": 15},
-        "ceiling_result": {"enum": ["AT_OR_BELOW", "ABOVE", "NOT_ASSESSED"]}
+        "measurement_purpose": {
+          "const": "DESCRIPTIVE_ECONOMICS_ONLY"
+        },
+        "time_truncated_analysis": {
+          "const": false
+        }
       }
     },
     "final_review": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["state", "reviewer_ref", "reviewed_at", "evidence_link_check"],
+      "required": [
+        "state",
+        "reviewer_ref",
+        "reviewed_at",
+        "evidence_link_check"
+      ],
       "properties": {
-        "state": {"enum": ["PEER_DRAFT", "HUMAN_REVIEWED"]},
-        "reviewer_ref": {
-          "oneOf": [
-            {"type": "null"},
-            {"type": "string", "pattern": "^reviewer_[a-f0-9]{16,64}$"}
+        "state": {
+          "enum": [
+            "PEER_DRAFT",
+            "HUMAN_REVIEWED"
           ]
         },
-        "reviewed_at": {"$ref": "#/$defs/nullable_timestamp"},
-        "evidence_link_check": {"type": "boolean"}
+        "reviewer_ref": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^reviewer_[a-f0-9]{16,64}$"
+            }
+          ]
+        },
+        "reviewed_at": {
+          "$ref": "#/$defs/nullable_timestamp"
+        },
+        "evidence_link_check": {
+          "type": "boolean"
+        }
       }
     },
     "refund": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["required", "reason", "provider_state", "provider_reference_public"],
+      "required": [
+        "required",
+        "reason",
+        "provider_state",
+        "provider_reference_public"
+      ],
       "properties": {
-        "required": {"type": "boolean"},
-        "reason": {"$ref": "#/$defs/nullable_text"},
-        "provider_state": {"enum": ["NOT_APPLICABLE", "REQUIRED_PRIVATE_ACTION", "COMPLETED_PRIVATE"]},
-        "provider_reference_public": {"const": null}
+        "required": {
+          "type": "boolean"
+        },
+        "reason": {
+          "$ref": "#/$defs/nullable_text"
+        },
+        "provider_state": {
+          "enum": [
+            "NOT_APPLICABLE",
+            "REQUIRED_PRIVATE_ACTION",
+            "COMPLETED_PRIVATE"
+          ]
+        },
+        "provider_reference_public": {
+          "const": null
+        }
+      }
+    },
+    "quality": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounded_unit",
+        "analysis_level",
+        "evidence_vs_inference_separated",
+        "adversarial_challenge_completed",
+        "time_measurement_truncated_analysis"
+      ],
+      "properties": {
+        "bounded_unit": {
+          "const": "ONE_FAILED_RUN"
+        },
+        "analysis_level": {
+          "const": "FULL_STRENGTH"
+        },
+        "evidence_vs_inference_separated": {
+          "const": true
+        },
+        "adversarial_challenge_completed": {
+          "const": true
+        },
+        "time_measurement_truncated_analysis": {
+          "const": false
+        }
       }
     }
   },
   "$defs": {
-    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"},
-    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-    "timestamp": {"type": "string", "format": "date-time", "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"},
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
     "nullable_timestamp": {
       "oneOf": [
-        {"type": "null"},
-        {"$ref": "#/$defs/timestamp"}
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/timestamp"
+        }
       ]
     },
     "nullable_text": {
       "oneOf": [
-        {"type": "null"},
-        {"type": "string", "minLength": 1, "maxLength": 1000}
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
       ]
     },
-    "evidence_ref": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}#[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"},
+    "evidence_ref": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}#[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"
+    },
     "evidence_refs": {
       "type": "array",
       "minItems": 1,
       "maxItems": 40,
       "uniqueItems": true,
-      "items": {"$ref": "#/$defs/evidence_ref"}
+      "items": {
+        "$ref": "#/$defs/evidence_ref"
+      }
     },
     "observed_item": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sequence", "claim_type", "statement", "evidence_refs"],
+      "required": [
+        "sequence",
+        "claim_type",
+        "statement",
+        "evidence_refs"
+      ],
       "properties": {
-        "sequence": {"type": "integer", "minimum": 1, "maximum": 1000},
-        "claim_type": {"const": "OBSERVED"},
-        "statement": {"type": "string", "minLength": 1, "maxLength": 1000},
-        "evidence_refs": {"$ref": "#/$defs/evidence_refs"}
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000
+        },
+        "claim_type": {
+          "const": "OBSERVED"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        }
       }
     },
     "cause": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["cause_id", "claim_type", "statement", "confidence", "confidence_rationale", "evidence_refs", "alternatives"],
+      "required": [
+        "cause_id",
+        "claim_type",
+        "statement",
+        "confidence",
+        "confidence_rationale",
+        "evidence_refs",
+        "alternatives"
+      ],
       "properties": {
-        "cause_id": {"$ref": "#/$defs/id"},
-        "claim_type": {"const": "CAUSAL_INFERENCE"},
-        "statement": {"type": "string", "minLength": 1, "maxLength": 1000},
-        "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]},
-        "confidence_rationale": {"type": "string", "minLength": 1, "maxLength": 1000},
-        "evidence_refs": {"$ref": "#/$defs/evidence_refs"},
+        "cause_id": {
+          "$ref": "#/$defs/id"
+        },
+        "claim_type": {
+          "const": "CAUSAL_INFERENCE"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW"
+          ]
+        },
+        "confidence_rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "evidence_refs": {
+          "$ref": "#/$defs/evidence_refs"
+        },
         "alternatives": {
           "type": "array",
+          "minItems": 1,
           "maxItems": 20,
-          "items": {"type": "string", "minLength": 1, "maxLength": 1000}
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "explanation",
+              "status",
+              "assessment",
+              "evidence_refs"
+            ],
+            "properties": {
+              "explanation": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "status": {
+                "enum": [
+                  "WEAKENED_BY_EVIDENCE",
+                  "STILL_PLAUSIBLE",
+                  "NOT_TESTED"
+                ]
+              },
+              "assessment": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
+              },
+              "evidence_refs": {
+                "$ref": "#/$defs/evidence_refs"
+              }
+            }
+          }
         }
       }
     }
