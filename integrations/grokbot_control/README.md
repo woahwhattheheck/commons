@@ -41,6 +41,8 @@ Only those four string keys are kept (max 200 chars each). Unknown keys dropped.
 
 Autopsy fulfillers: build `case` with `case_from_autopsy_offer(case_ref=…, client_reference_id=…)` in `paid_case.py` (reads checked-in `revenue/agent_failure_autopsy/offer.json`). Pass the result to `GrokBotControlClient.submit(..., case=...)` or `grokbot_submit`. Does not remint Stripe.
 
+Opaque paid-case receipt: `receipt_row_from_case(case, g2_run_id=…, g2_session_id=…)` builds a public seats `case_row` from caller-supplied opaque identifiers. Its default state is `UNVERIFIED`; it does not observe payment or sanitize PII. Pass an observed `state` only when evidence supports it. Receipt values over 200 characters raise instead of truncating identifiers. Shape lives on `revenue/agent_failure_autopsy/seats.json` `case_row_shape`; `case_rows` stay empty until `REAL_STRIPE_PAYMENT_OBSERVED`. Hermetic pin: `python test_grokbot_paid_case_receipt.py`.
+
 X-campaign door: `agent-rescue.html` stamps `client_reference_id=afa29_x_a_v1` for exact `utm_source=x` / `utm_medium=paid_social` / `utm_campaign=agent_failure_autopsy_29`. Hermetic pin: `python test_grokbot_client_reference_roundtrip.py`.
 
 Attribution on completed runs:
@@ -67,5 +69,6 @@ Peer client: integrations/grokbot_control/client.py (GrokBotControlClient).
 python test_grokbot_control.py
 python test_grokbot_shared_equipment.py
 python test_grokbot_paid_case.py
+python test_grokbot_paid_case_receipt.py
 python test_grokbot_client_reference_roundtrip.py
 ```

@@ -1,0 +1,39 @@
+{
+  "added": "2026-09-05",
+  "capability": "Opaque Autopsy seats case_row shape + receipt_row_from_case binds paid job to optional G2 run/session ids without buyer PII. case_rows stay empty until REAL_STRIPE_PAYMENT_OBSERVED. No Stripe remint.",
+  "carrier": "SPARK",
+  "claimed_paths": [
+    "integrations/grokbot_control/paid_case.py",
+    "integrations/grokbot_control/__init__.py",
+    "integrations/grokbot_control/README.md",
+    "revenue/agent_failure_autopsy/seats.json",
+    "revenue/agent_failure_autopsy/SEATS.md",
+    "test_grokbot_paid_case_receipt.py",
+    "features/registry/spark-g2-paid-case-receipt-surface-20260905-01.json",
+    "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+  ],
+  "dependencies": [
+    "spark-g2-paid-case-attribution-20260905-01",
+    "spark-g2-autopsy-case-submit-helper-20260905-01"
+  ],
+  "id": "spark-g2-paid-case-receipt-surface-20260905-01",
+  "name": "G2 paid-case opaque receipt surface",
+  "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, coordinator appends one opaque case_row via receipt_row_from_case and submits G2 work with case_from_autopsy_offer. No Autopsy plink remint. Hands off #8802.",
+  "owner_subsystem": "grokbot-control",
+  "public_entrypoint": "revenue/agent_failure_autopsy/SEATS.md",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "integrations/grokbot_control/paid_case.py",
+    "revenue/agent_failure_autopsy/seats.json",
+    "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_grokbot_paid_case_receipt.py"
+  ]
+}
