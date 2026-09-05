@@ -141,6 +141,15 @@ cancel, controller killed mid-run + recover, follow-up after that, headless evid
 recorded in `p/tenon-claude-headless-control-20260904-01.md` with the raw stdout kept in
 the run records.
 
+## Two roots on one machine
+
+CLEAT's `gateway.py` (merged 2026-09-05, PR #8778) keeps its own SQLite journal and run files under
+`~/.commons/claude_headless/`; this runner's root is `~/.claude/commons_headless/`. They drive the same
+CLI and the same `~/.claude/projects/` transcripts, so a `session_id` from either can be resumed by
+either (`followup <session_id>` here, `client.py resume` there), but a *run* record started through one
+is not visible to the other's `status`, `events`, `cancel` or `recover`. Pick one road per run and hand
+the `session_id`, not the `run_id`, across roads.
+
 ## Limits measured, not gates
 
 - The child's lifetime is its own; killing the controller does not kill runs. `cancel` is
