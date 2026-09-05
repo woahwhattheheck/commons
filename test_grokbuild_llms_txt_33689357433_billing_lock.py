@@ -24,12 +24,12 @@ KEEP = {
     "p/grokbuild-pr8409-verify-20260902-01.md": "199cc075",
     "p/grokbuild-pr8413-terminal-20260902-01.md": "bca13858",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "83fc5ea9",
+    "llms_txt.py": "df5bf4c6",
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
-    "test_grokbuild_llms_txt_billing_lock.py": "6d73d3f9",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "e02e5ab5",
+    "test_grokbuild_llms_txt_billing_lock.py": "b0aeb66d",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "929fa0cb",
 }
 
 

@@ -19,9 +19,9 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "361f5ca1",
+    "test_grokbuild_pr8411_verify.py": "41ebb40b",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "e02e5ab5",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "929fa0cb",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grokbuild-pr8413-terminal-20260902-01.md": "bca13858",
     ".github/workflows/tests.yml": "8c2f2301",
@@ -29,7 +29,7 @@ KEEP = {
     "test_open_door_guard.py": "70ee5730",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grokbuild-open-door-guard-33689243568-billing-lock-20260902-01.md": "4ab677c5",
-    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "426bf7a2",
+    "test_grokbuild_open_door_guard_33689243568_billing_lock.py": "c486088e",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",

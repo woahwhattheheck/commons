@@ -337,3 +337,61 @@ custody access, configured sources, and populated/empty Claude entries. These
 tests prove code paths; fresh real retrieval and provider-use receipts establish
 which deployed harness roads work. Neither source presence nor a simulated
 provider proves cross-harness live service access.
+
+## Direct Claude and Grok Bot app driving
+
+`integrations.shared_equipment.headless` composes the same direct credential
+reader with Claude's child-process OAuth environment and the existing Grok Bot
+app coordinator. Every current or future peer uses the same references; there
+is no per-peer grant, holder session or new authentication system. The provider
+connection remains in existing custody under
+`vault/grokbot/local-exec/local-exec-daemon-connection`; actual values stay in
+caller memory. No credential file, listener, refresh flow or install is added.
+
+```python
+from integrations.shared_equipment.headless import GrokBotGateway, claude_child_env
+import subprocess
+
+gateway = GrokBotGateway()  # Existing retrieve_local, including box discovery.
+health_status, health = gateway.health()
+roster_status, agents = gateway.list_agents()
+status = subprocess.run(
+    ["claude", "auth", "status", "--json"], env=claude_child_env(),
+    capture_output=True, text=True, check=True,
+)
+```
+
+Use `credential_reader(source="http")` as an explicit optional reader when the
+existing sealed-delivery gateway is the available road. The direct reader does
+not require that gateway. Claude's token goes into the intended child process's
+`CLAUDE_CODE_OAUTH_TOKEN`, never command arguments or the parent environment.
+The same environment supports an authorized `claude -p` task; do not use
+`--bare` for account OAuth.
+
+The app methods are `send_prompt(agent_id, task, client_nonce=operation_id)`,
+`transcript_tail(agent_id)`, `read_attachment_text(path, agent_id=agent_id)`,
+`read_attachment_chunk(path, offset=0, length=1048576, agent_id=agent_id)` and
+`upload_attachment_chunk(file_bytes, upload_id=operation_id, filename=filename,
+offset=0, total_size=len(file_bytes), agent_id=agent_id)`. Keep a stable operation
+ID for a prompt or upload. The helper does not retry mutations automatically;
+inspect the actual transcript/provider result after an uncertain response.
+An accepted prompt is delivery evidence, not completion. Use attachment paths
+returned by the app; arbitrary workspace paths may return null. Chunk uploads
+preserve actual offsets and whole-file size; their final result includes
+`committedPath`. Methods return `(HTTP status, parsed JSON)` in memory and do
+not print response payloads. Redirects are rejected and errors omit provider
+bodies and credential values.
+
+`python -m integrations.shared_equipment.headless` only prints health status
+and agent count; it sends no prompt or upload. The existing
+`integrations.grokbot_control.client.GrokBotControlClient` remains the separate
+loopback `:8881` pool controller with `/v1/runs`; this module talks to the actual
+app's HTTPS `/api/listAgents`, `/api/sendPrompt` and attachment operations.
+
+The source is adapted from the owner's already-used headless coordinator
+transport: actual agent messages, attachment downloads, and a reviewed-video
+upload with exact byte/SHA-256 readback were observed separately from account
+profile reads. The focused CI checks exercise the request shapes, binary bytes,
+child environment, redacted errors and real redirect refusal using test-only
+inputs. They make no live provider calls or model requests and do not claim
+that every deployed peer has refreshed its installed module.

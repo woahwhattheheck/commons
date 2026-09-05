@@ -30,8 +30,8 @@ KEEP = {
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "host/slack_mirror.py": "8d3a5e0b",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "hub_pages.py": "5ac12648",
-    "door.js": "dc59355d",
+    "hub_pages.py": "c11979b8",
+    "door.js": "cfe5a219",
     "api/mcp.py": "9ae34f64",
     "ground/OWNER_NOW.md": "59b1fd37",
 }
