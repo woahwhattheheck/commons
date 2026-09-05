@@ -133,7 +133,23 @@ def pid_alive(pid: int | None) -> bool:
         return False
     except OSError:
         return True
-    return True
+    # A child that has exited but not been reaped is a zombie: os.kill still
+    # succeeds, yet the process is gone. Linux says so in /proc; elsewhere a
+    # non-blocking waitpid answers when the zombie is ours. Measured on the
+    # Ubuntu battery runner on 2026-09-05 (adopted runs never finalized).
+    try:
+        with open(f"/proc/{int(pid)}/stat", "r", encoding="ascii", errors="replace") as handle:
+            state = handle.read().rsplit(")", 1)[1].split()[0]
+        return state not in ("Z", "X")
+    except OSError:
+        pass
+    try:
+        reaped, _status = os.waitpid(int(pid), os.WNOHANG)
+        return reaped == 0
+    except ChildProcessError:
+        return True
+    except OSError:
+        return True
 
 
 def kill_tree(pid: int) -> dict[str, Any]:
