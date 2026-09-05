@@ -9,6 +9,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
 
 from __future__ import annotations
@@ -103,6 +104,12 @@ def build_parser() -> argparse.ArgumentParser:
     x = sub.add_parser("export", help="export portable package (no secrets)")
     x.add_argument("role_id")
 
+    imp = sub.add_parser(
+        "import",
+        help="import export_package JSON without reminting role_id",
+    )
+    imp.add_argument("--file", type=Path, required=True, help="JSON package path")
+
     sub.add_parser("list", help="list role ids in the store")
     return p
 
@@ -166,6 +173,8 @@ def main(argv: list[str] | None = None) -> int:
             _print(store.inspect(args.role_id))
         elif args.cmd == "export":
             _print(store.export_package(args.role_id))
+        elif args.cmd == "import":
+            _print(store.import_package(_load_json(args.file)))
         elif args.cmd == "list":
             _print({"roles": store.list_ids()})
         else:

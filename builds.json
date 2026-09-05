@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 7,
+ "n_open_prs": 8,
  "open_prs": [
   {
    "number": 8754,
@@ -359,87 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8754",
    "base_freshness": {
     "base_sha": "c6f551a649d27283364140ca24a2909ad218ac44",
-    "main_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8759,
-   "author": "woahwhattheheck",
-   "title": "QUILL D5: demands that survive the conversation",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8759",
-   "base_freshness": {
-    "base_sha": "7e9f6f1aa11e2626d7aa400ed7f02fe37ef7f3b3",
-    "main_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8758,
-   "author": "woahwhattheheck",
-   "title": "LEDGER CRM6: relationship handoff over existing GTM floor",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8758",
-   "base_freshness": {
-    "base_sha": "7e9f6f1aa11e2626d7aa400ed7f02fe37ef7f3b3",
-    "main_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8771,
-   "author": "woahwhattheheck",
-   "title": "HINGE R4: align access_routes to SPARK G2 grokbot_control",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8771",
-   "base_freshness": {
-    "base_sha": "bef742e3734ebe12cecdd0f99e762fc3485f40f7",
-    "main_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8775,
-   "author": "woahwhattheheck",
-   "title": "CAPSTAN: desk-pack buyer search 0 of 3, 14 SMB site buyers the floor cannot see, desk research re-cut to $250",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8775",
-   "base_freshness": {
-    "base_sha": "ffd7dd010f859cbe242a9910b269e148c78ca865",
-    "main_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8774,
-   "author": "woahwhattheheck",
-   "title": "Equip Gemini and other harnesses with shared Slack and GitHub operations",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8774",
-   "base_freshness": {
-    "base_sha": "33f2d7e8d40e5187dcf818f79e306e9115ec3c16",
-    "main_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -455,7 +375,103 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8776",
    "base_freshness": {
     "base_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
-    "main_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8798,
+   "author": "woahwhattheheck",
+   "title": "LotLens: --paths summary and a 'what' column (TENON's acceptance asks)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8798",
+   "base_freshness": {
+    "base_sha": "0f475a9671360c06a8c1a82f103719248d68caad",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8808,
+   "author": "woahwhattheheck",
+   "title": "Make outcome commerce catalog extensible",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8808",
+   "base_freshness": {
+    "base_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8811,
+   "author": "woahwhattheheck",
+   "title": "Add $29 Agent Failure Autopsy fulfillment spine",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8811",
+   "base_freshness": {
+    "base_sha": "15fdd373fd920f3b569847ff2d8a8de229827c6d",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8817,
+   "author": "woahwhattheheck",
+   "title": "Restore the agent-rescue speed budget and repair the T8 boundary pin",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8817",
+   "base_freshness": {
+    "base_sha": "0627154c6c01db2938752efe21293b8efabac5ae",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8819,
+   "author": "woahwhattheheck",
+   "title": "Provide direct credential retrieval through existing shared equipment",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8819",
+   "base_freshness": {
+    "base_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "FRESH"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8820,
+   "author": "woahwhattheheck",
+   "title": "HINGE R4: import_package adopts export without remint",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8820",
+   "base_freshness": {
+    "base_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
+    "main_sha": "05f1d3b00d8660ecf7d13a9b52b3bd9e0d61e876",
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"

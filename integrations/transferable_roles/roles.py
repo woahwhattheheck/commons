@@ -473,6 +473,25 @@ class RoleStore:
         self._write(role)
         return deepcopy(role)
 
+    def import_package(self, raw: dict[str, Any]) -> dict[str, Any]:
+        """Adopt an export_package into this store without reminting role_id.
+
+        Occupant must be None (importer equips). export_meta is dropped.
+        Fails if role_id already exists.
+        """
+        if not isinstance(raw, dict):
+            raise RoleError("package must be an object")
+        package = deepcopy(raw)
+        package.pop("export_meta", None)
+        package["occupant"] = None
+        rid = _require_str(package.get("role_id"), "role_id")
+        if self._path(rid).exists():
+            raise RoleError(f"role_id already exists: {rid}; refuse remint")
+        role = normalize_role(package, role_id=rid)
+        role["occupant"] = None
+        self._write(role)
+        return deepcopy(role)
+
     def inspect(self, role_id: str) -> dict[str, Any]:
         return self.get(role_id)
 
