@@ -13,6 +13,10 @@ from integrations.grokbot_control.paid_case import (
     receipt_from_g2_submit,
     receipt_row_from_case,
 )
+from .diagnostic_equipment_cards import (
+    call_diagnostic_card,
+    diagnostic_card_tool_schemas,
+)
 from .services import _schema
 
 DEFAULT_GROKBOT_CONTROL = "http://127.0.0.1:8881"
@@ -192,7 +196,7 @@ class GrokBotEquipment:
                     "submit_response": "object",
                 },
             ),
-        ]
+        ] + diagnostic_card_tool_schemas()
 
     def call(self, name: str, args: dict[str, Any]) -> dict[str, Any]:
         if name == "grokbot_submit":
@@ -276,6 +280,9 @@ class GrokBotEquipment:
             except (ValueError, TypeError, KeyError):
                 return {"ok": False, "error": "invalid_receipt"}
             return {"ok": True, "case_row": row}
+        handled = call_diagnostic_card(name, args)
+        if handled is not None:
+            return handled
         return {"error": "unknown_equipment_tool"}
 
     def _request(
