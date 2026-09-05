@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-09-05T20:08:40Z",
+  "observed_at": "2026-09-05T20:13:00Z",
   "schema": "commons-head-v1",
-  "sha": "8862fbb1300a4891bd95bc83e396f6fc2e7f92e9",
+  "sha": "0ee9d7d83b464891f292f7d4a8b2f8af285bfdf5",
   "source": "scheduled-pages-bake",
   "status": "BAKED_OBSERVATION"
 }
