@@ -4,6 +4,7 @@ Slice: `hinge-transferable-roles-20260904-01`
 Align: `hinge-r4-g2-access-routes-20260904-02` (SPARK G2 #8761)
 CLI seat: `hinge-r4-cli-seat-20260905-01`
 Bind route: `hinge-r4-bind-g2-session-20260905-01` (#8799 → `2ebc660`)
+Unbind route: `hinge-r4-unbind-route-20260905-01`
 Release: `hinge-r4-release-occupant-20260905-01`
 Advance: `hinge-r4-obligation-advance-20260905-01` (#8812 → `8a344d54`)
 Import: `hinge-r4-import-package-20260905-01`
@@ -29,6 +30,9 @@ python3 integrations/transferable_roles/cli.py equip role-synthetic-crm-followup
 python3 integrations/transferable_roles/cli.py bind-route role-synthetic-crm-followup-20260904 \
   --route grokbot_control_g2 --session-id g2-sess-1 --last-run-id run-9 \
   --store /tmp/hinge-roles
+
+python3 integrations/transferable_roles/cli.py unbind-route role-synthetic-crm-followup-20260904 \
+  --route grokbot_control_g2 --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py transfer role-synthetic-crm-followup-20260904 \
   --from-session session-A --to-session session-B --to-harness claude-tenon \
@@ -57,6 +61,11 @@ check, never blocks equip/transfer/release.
 
 `bind-route` stamps durable `session_id` / `last_run_id` / optional `pool_id`
 onto a named `access_route`. It does **not** copy occupant seat onto the route.
+
+`unbind-route` clears stamped recover fields on a named `access_route`. Default
+clears `session_id` and `last_run_id` only (keeps fixture `pool_id`). Pass
+`--fields session_id,last_run_id,pool_id` to also clear `pool_id`. Route shell
+(name/kind/urls) and purpose/obligations/occupant stay.
 
 `release` clears the occupant so a later session can `equip` again. Bound route
 fields and open obligations stay. Use `transfer` when handing to a known
