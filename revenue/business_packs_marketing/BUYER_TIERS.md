@@ -7,7 +7,7 @@ Grounding: factory scaffold on commons main `3a9e36b6` (PR #7516); laws in [grou
 
 This document is research. It names buyers, not businesses. Marketing execution and every dollar of spend stay with Bryce. Nothing here mints a checkout, an odds table, or an earnings claim. Where a number comes from a marketing blog rather than a primary source it is marked `(secondary)`.
 
-Tier note: the channel and catalog name five tiers ($20 · $100 · $200 · $1,000 · $10,000). The owner's brief to this seat also named **$50**. It is profiled below as a recommended rung; whether it becomes a catalog tier is Bryce's call.
+Tier note: the channel and catalog name five tiers ($20 · $100 · $200 · $1,000 · $10,000). The owner's brief to this seat also named **$50**. It is profiled below as a recommended rung; whether it becomes a catalog tier is Bryce's call. Owner floor, 2026-09-02 evening: the pack floor is about $250–399 and the old $20/$50/$100/$200 stickers are retired for new mints; the two desk instances list at $250 (`PK-DESK-0001`, `PK-DESK-0002` in pack-market). The desk rows below were re-cut to $250 on 2026-09-04 (receipt `p/capstan-desk-pack-buyers-20260904-01.md`).
 
 ---
 
@@ -40,11 +40,11 @@ Illustrative arithmetic only; Bryce sets prices. Stripe Payment Link fee assumed
 | $20 | ~$19.1 | $0.19 | $0.38 | **Do not buy this tier with ads.** Median X CPC is quoted at $0.18 by agency data but typical is $0.50–2.00 ([autotweet](https://www.autotweet.io/statistics/x-twitter-advertising-statistics), [improvado](https://improvado.io/blog/twitter-ads-guide)). $20 is the organic / upsell entry, not the ad product. |
 | $50 | ~$48.3 | $0.48 | $0.97 | Marginal. Works only with tight keyword intent and a strong door. |
 | $100 | ~$96.8 | $0.97 | $1.94 | Positive at typical CPC. First tier worth a test budget. |
-| $200 | ~$193.9 | $1.94 | $3.88 | Positive with room for creative testing. |
+| $250 (was $200) | ~$242.5 | $2.42 | $4.85 | Positive with room for creative testing. Re-cut 2026-09-04 to the owner's $250 desk floor; the $200 row it replaces read ~$193.9 / $1.94 / $3.88. |
 | $1,000 | ~$970.7 | $9.71 | $19.4 | Conversion, not CPC, is the constraint; needs 0.2–0.5% and a trust-heavy door showing the instance. |
 | $10,000 | lead-gen | CPL $21–40 quoted for optimized X funnels vs ~$110 LinkedIn `(secondary)` ([christopholivier](https://christopholivierconsulting.com/twitter-x-ads-2026/)) | | Ads buy conversations, not checkouts. At 4% lead→close, CAC ≈ $500–1,000. Matches the sales law: YES first, then owner pastes the Payment Link. |
 
-Spend allocation this implies: **test $100 and $200 first, then $1,000; run $10,000 as lead-gen; never buy $20 directly.**
+Spend allocation this implies: **test $100 and $250 first, then $1,000; run $10,000 as lead-gen; never buy $20 directly.**
 
 ---
 
@@ -95,7 +95,7 @@ This is where `yard-card-route-20260902-01` sits (RUNBOOK: print 50 cards, walk 
 - **Objections.** "I could print cards myself." → the route method, the phone script, the invoice, the name and the door are the product. "Is it legal to leave cards?" → the runbook's mailbox rule is already the answer; keep it on the door.
 - **Confidence.** High on who; high that the price/asset mismatch is a real conversion problem; naming finding is a judgment call for the factory.
 
-### $200 · DESK · "Laptop Lena / Desk Dan" — the evenings-and-weekends service business
+### $250 · DESK · "Laptop Lena / Desk Dan" — the evenings-and-weekends service business
 
 - **Who.** 28–45, employed, household income $70–100k+, some digital skill or comfortable with AI builders, wants a legitimate second income line that does not need a truck. Codie Sanchez's audience description fits: young professionals and aspiring entrepreneurs, 20s–40s, building wealth outside a job ([castmagic](https://www.castmagic.io/creators/codie-sanchez)). The X income skew (29% over $100k HHI) is on his side.
 - **Trigger.** A colleague's agency side-gig; the realization that local businesses have broken sites; a bonus he wants to turn into something.
@@ -148,7 +148,7 @@ Recorded from the hub (Bryce, 01:27:49 EDT). Law side is in LAW_AND_POLICY_FLAGS
 |---|---|---|---|
 | $20 / $50 | Does not read the ToS. If he notices, "they want a cut of my $200/month?" | negligible on purchase; corrosive on word of mouth if enforced | a fixed-term cap; or exempting tiers under the $735 franchise-rule floor entirely |
 | $100 Tyler | Cash business. A percentage of profit is unauditable and he knows it; "partial ownership" of his Saturday route reads as absurd | small at purchase; he assumes it is unenforceable | a flat renewal fee for the door and updates instead of a percentage |
-| $200 Lena/Dan | Understands rev-share from software and agencies; will ask "for how long, on what base, what do I get for it" | moderate; converts if the answer is a licence with a term and services attached | "X% of gross reported through the door for 12 months, capped, includes updates and the demo kit" |
+| $250 Lena/Dan | Understands rev-share from software and agencies; will ask "for how long, on what base, what do I get for it" | moderate; converts if the answer is a licence with a term and services attached | "X% of gross reported through the door for 12 months, capped, includes updates and the demo kit" |
 | $1,000 Renee/Kevin | Is paying $1,000 to *own* a business instead of a franchise. A seller equity stake is exactly what he is avoiding | **largest negative in the ladder**; equity language can kill this tier's paid funnel | a term-limited royalty framed as deferred purchase price; a third-party rating on the door; no equity |
 | $10,000 Owen | Compares to franchise royalties of 4–12% gross plus a 1–4% marketing fund and expects franchise-grade support in return; an equity stake in his unit is a no from an existing owner | strong negative for the SMB-owner half; the would-be franchisee half accepts a royalty if support is real | royalty on gross with named support obligations; never "ownership" |
 
