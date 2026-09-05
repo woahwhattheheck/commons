@@ -254,6 +254,89 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(g2["session_id"], "sess-cli-9")
         self.assertEqual(g2["last_run_id"], "run-cli-9")
 
+    def test_release_clears_occupant_keeps_bound_routes(self) -> None:
+        role = self.store.create(self.raw, role_id="role-release")
+        purpose = role["purpose"]
+        self.store.bind_access_route(
+            role["role_id"],
+            route_name="grokbot_control_g2",
+            session_id="g2-keep-me",
+            last_run_id="run-keep",
+        )
+        self.store.equip(
+            role["role_id"], session_id="session-A", harness="hinge", seat="HINGE"
+        )
+        released = self.store.release(role["role_id"], from_session_id="session-A")
+        self.assertIsNone(released.get("occupant"))
+        self.assertEqual(released["purpose"], purpose)
+        self.assertEqual(released["last_released"]["session_id"], "session-A")
+        self.assertEqual(released["last_released"]["seat"], "HINGE")
+        g2 = next(
+            r for r in released["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2["session_id"], "g2-keep-me")
+        self.assertEqual(g2["last_run_id"], "run-keep")
+
+        # Re-equip after release must succeed.
+        again = self.store.equip(
+            role["role_id"], session_id="session-C", harness="cursor", seat="QUILL"
+        )
+        self.assertEqual(again["occupant"]["session_id"], "session-C")
+
+    def test_release_wrong_session_fails(self) -> None:
+        role = self.store.create(self.raw, role_id="role-release-miss")
+        self.store.equip(role["role_id"], session_id="A", harness="h1")
+        with self.assertRaises(RoleError):
+            self.store.release(role["role_id"], from_session_id="wrong")
+
+    def test_cli_release(self) -> None:
+        store_dir = self._tmp.name
+        role_id = "role-cli-release"
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(FIXTURE),
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "equip",
+                    role_id,
+                    "--session",
+                    "session-A",
+                    "--harness",
+                    "hinge",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "release",
+                    role_id,
+                    "--from-session",
+                    "session-A",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        self.assertIsNone(out.get("occupant"))
+        self.assertEqual(out["last_released"]["session_id"], "session-A")
+
 
 if __name__ == "__main__":
     unittest.main()
