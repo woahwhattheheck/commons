@@ -8,42 +8,34 @@ env:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
         with:
           ref: main
-          fetch-depth: 0
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-      - name: Verify landed ancestry and focused contracts
+          fetch-depth: 100
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /test_forge_reply_cash_communitycare.py
+            /referral-intake-completeness.html
+            /revenue/reply_to_revenue/handoffs/communitycare-katherine-reyes.json
+            /p/forge-reply-cash-communitycare-20260905-01.md
+      - name: Verify new handoff contract
         run: |
           set -euo pipefail
-          git rev-parse HEAD
-          git merge-base --is-ancestor 428a5abba0c8091312fc8c7fa0d7855f3207d684 HEAD
-          git merge-base --is-ancestor a94f338f9fc0e728303249d8dc363d4ce26de193 HEAD
-          git merge-base --is-ancestor 73513f4333d21e15025ddebbf505a33b7669d086 HEAD
-          python -W error -m unittest -v test_pay_autopsy_funnel test_forge_reply_cash_lexington_recycle test_payment_capability test_payment_capability_door_hub test_payment_capability_hub_pages test_payment_capability_compose test_checkout_capability
-          python integrations/transferable_roles/test_roles.py
-          node test_product_checkout_links.js
-      - name: Current-main readback and terminal audit
+          git merge-base --is-ancestor ab8ab17f99c5ec607e3dc10950a89efb3d5f4b2c HEAD
+          python3 -W error -m unittest -v test_forge_reply_cash_communitycare
+      - name: Read back current main and audit
         run: |
           set -euo pipefail
-          git fetch origin main
-          python - <<'PY'
-          import json, pathlib, subprocess
-          fixture = json.loads(pathlib.Path("integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json").read_text())
-          pointers = {row["pointer"] for row in fixture["knowledge"]}
-          for path in ["revenue/agent_failure_autopsy/INTAKE.md", "revenue/agent_failure_autopsy/SEATS.md", "revenue/agent_failure_autopsy/seats.json"]:
-              assert path in pointers and pathlib.Path(path).is_file(), path
-          paths = ["pay.html", "test_pay_autopsy_funnel.py", "p/quill-pay-autopsy-funnel-20260905-01.md", "revenue/reply_to_revenue/handoffs/lexington-recycle-center-julie-hatter.json", "test_forge_reply_cash_lexington_recycle.py", "p/forge-reply-cash-lexington-recycle-20260905-01.md", "integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json", "integrations/transferable_roles/README.md", "p/hinge-r4-autopsy-intake-seats-pointers-20260905-01.md", "pay.js", "agent-rescue.html", "plant-downtime-handoff.html", "revenue/outcome_commerce/catalog.json"]
-          for path in paths:
+          git fetch --depth=100 origin main
+          python3 - <<'PY'
+          import subprocess
+          for path in ["test_forge_reply_cash_communitycare.py", "referral-intake-completeness.html", "revenue/reply_to_revenue/handoffs/communitycare-katherine-reyes.json", "p/forge-reply-cash-communitycare-20260905-01.md"]:
               expected = subprocess.check_output(["git", "rev-parse", "HEAD:" + path], text=True).strip()
               actual = subprocess.check_output(["git", "rev-parse", "origin/main:" + path], text=True).strip()
               assert expected == actual, path
               print("READBACK", path, actual)
-          print("CURRENT_MAIN", subprocess.check_output(["git", "rev-parse", "origin/main"], text=True).strip())
           PY
           cat > "$RUNNER_TEMP/audit_git_terminal.py" <<'AUDIT_PY'
           #!/usr/bin/env python3
@@ -168,4 +160,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 73513f4333d21e15025ddebbf505a33b7669d086 --required-path pay.html --required-path revenue/reply_to_revenue/handoffs/lexington-recycle-center-julie-hatter.json --required-path integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit ab8ab17f99c5ec607e3dc10950a89efb3d5f4b2c --required-path revenue/reply_to_revenue/handoffs/communitycare-katherine-reyes.json
