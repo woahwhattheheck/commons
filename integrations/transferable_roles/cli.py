@@ -17,6 +17,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-receipt ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-fulfill-deadline ROLE --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py prove-handoff ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -33,6 +34,7 @@ from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
 from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
 from diagnostic_receipt import load_receipt_from_role
+from handoff_execute import prove_successor_executes
 from roles import RoleError, RoleStore
 
 
@@ -201,6 +203,21 @@ def build_parser() -> argparse.ArgumentParser:
     )
     dfd.add_argument("--usable-evidence-at", required=True)
 
+    ph = sub.add_parser(
+        "prove-handoff",
+        help="prove role-gated executes still run after transfer/export handoff",
+    )
+    ph.add_argument("role_id")
+    ph.add_argument("--case-ref", default="handoff_case")
+    ph.add_argument(
+        "--usable-evidence-at", default="2026-09-04T15:00:00-04:00"
+    )
+    ph.add_argument(
+        "--slug",
+        default="dealer",
+        choices=("dealer", "referral", "repair", "plant"),
+    )
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -346,6 +363,16 @@ def main(argv: list[str] | None = None) -> int:
                     role,
                     slug=args.slug,
                     usable_evidence_at=args.usable_evidence_at,
+                )
+            )
+        elif args.cmd == "prove-handoff":
+            _print(
+                prove_successor_executes(
+                    store,
+                    args.role_id,
+                    case_ref=args.case_ref,
+                    usable_evidence_at=args.usable_evidence_at,
+                    diagnostic_slug=args.slug,
                 )
             )
         elif args.cmd == "inspect":
