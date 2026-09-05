@@ -4,7 +4,7 @@
   "record_classification": "SYNTHETIC_EXAMPLE",
   "offer_id": "agent-failure-autopsy-29",
   "case_id": "synthetic-generated-settings-001",
-  "intake_sha256": "41dece8f6fa10d0595f769abccdaa3d1038c0f54b61a610d6f3a8a698c5ffb6b",
+  "intake_sha256": "313de1cb75c92a4eb01bc2f0350ff9d89e6a6fe2a9db95a14f2c2a5f60e90226",
   "failure_sentence": "Codex kept editing the same generated setting, but every retry ended with the same failing timeout test.",
   "harness_summary": "Codex using apply_patch and a Python settings generator before a focused pytest check on Windows.",
   "disposition": "DIAGNOSIS_DELIVERED",
@@ -277,14 +277,17 @@
     "required": false,
     "reason": null,
     "provider_state": "NOT_APPLICABLE",
-    "provider_reference_public": null
+    "provider_reference_public": null,
+    "reason_code": null
   },
   "quality": {
     "bounded_unit": "ONE_FAILED_RUN",
     "analysis_level": "FULL_STRENGTH",
     "evidence_vs_inference_separated": true,
     "adversarial_challenge_completed": true,
-    "time_measurement_truncated_analysis": false
+    "time_measurement_truncated_analysis": false,
+    "final_autopsies": 1,
+    "iterative_consulting_included": false
   },
   "intake_scope": {
     "agent_workflows": 1,
@@ -298,6 +301,7 @@
     "approximate_text_token_limit": 500000,
     "boundary_hit": "NONE",
     "selection_state": "WITHIN_CAP",
-    "embedded_instructions_trusted": false
+    "embedded_instructions_trusted": false,
+    "quarantined_file_count": 0
   }
 }
