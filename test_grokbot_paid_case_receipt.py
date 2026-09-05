@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic pin: opaque Autopsy seats receipt row binds G2 case without PII."""
+"""Hermetic pin: opaque Autopsy seats receipt row preserves opaque G2 case identifiers."""
 
 from __future__ import annotations
 
@@ -34,6 +34,7 @@ class TestPaidCaseReceiptSurface(unittest.TestCase):
         self.assertEqual(tuple(shape["optional_keys"]), OPTIONAL_SHAPE)
         self.assertIn("receipt_row_from_case", shape["builder"])
         self.assertTrue(shape["do_not_commit_buyer_artifacts"])
+        self.assertEqual(shape["default_state"], "UNVERIFIED")
 
     def test_receipt_row_from_case_round_trip(self):
         case = case_from_autopsy_offer(
@@ -45,6 +46,7 @@ class TestPaidCaseReceiptSurface(unittest.TestCase):
             g2_run_id="run_abc",
             g2_session_id="sess_xyz",
             payment_observed_at="2026-09-05T22:00:00Z",
+            state="PAYMENT_OBSERVED_STANDBY_INTAKE",
         )
         self.assertEqual(row["offer_id"], "agent-failure-autopsy-29")
         self.assertEqual(row["case_ref"], "opaque-case-7")
@@ -56,6 +58,22 @@ class TestPaidCaseReceiptSurface(unittest.TestCase):
         self.assertEqual(row["state"], "PAYMENT_OBSERVED_STANDBY_INTAKE")
         for forbidden in ("email", "buyer_email", "artifact", "name", "phone"):
             self.assertNotIn(forbidden, row)
+
+    def test_receipt_does_not_invent_payment_evidence(self):
+        case = case_from_autopsy_offer(case_ref="opaque-unverified")
+        row = receipt_row_from_case(case, g2_run_id="run_unverified")
+        self.assertEqual(row["state"], "UNVERIFIED")
+        self.assertNotIn("payment_observed_at", row)
+        self.assertNotIn("g2_run_id", case)
+
+    def test_receipt_preserves_full_identifiers_or_rejects_overlength(self):
+        case = case_from_autopsy_offer(case_ref="opaque-length")
+        for key in ("g2_run_id", "g2_session_id", "payment_observed_at", "state"):
+            with self.subTest(key=key):
+                exact = "x" * 200
+                self.assertEqual(receipt_row_from_case(case, **{key: exact})[key], exact)
+                with self.assertRaisesRegex(ValueError, "200 characters"):
+                    receipt_row_from_case(case, **{key: exact + "y"})
 
     def test_receipt_rejects_pii_keys_and_empty_state(self):
         case = case_from_autopsy_offer(case_ref="opaque-case-8")
