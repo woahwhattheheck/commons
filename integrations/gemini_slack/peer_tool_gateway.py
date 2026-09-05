@@ -252,7 +252,9 @@ def _tool_prompt(message: str, tools: list[dict[str, Any]]) -> str:
         f"{CALL_OPEN}{{\"call_id\":\"a unique id\",\"name\":\"tool name\",\"arguments\":{{}}}}{CALL_CLOSE}\n"
         "After a result arrives, continue normally or issue another exact envelope. If no tool is needed, "
         "reply normally. Do not invent tool names. Private equipment uses existing service account access; "
-        "credentials are never supplied to you. Service responses may have pagination; follow it when needed.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
+        "direct credential retrieval returns ciphertext for an ephemeral key retained by your requesting runtime; "
+        "decrypt and use values there, keeping plaintext and private keys out of this captured conversation. "
+        "Service responses may have pagination; follow it when needed.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
         + catalog
         + "\n\nMESSAGE:\n"
         + message
@@ -729,8 +731,9 @@ def main(argv: list[str] | None = None) -> int:
         max_protocol_retries=args.max_protocol_retries,
     )
     server = ToolGateway(("127.0.0.1", args.port), loop, events, upstream, catalog)
-    from integrations.shared_equipment.peers import GeminiEquipment
+    from integrations.shared_equipment.peers import GeminiEquipment, GrokBotEquipment
     catalog.extensions.append(GeminiEquipment(server))
+    catalog.extensions.append(GrokBotEquipment())
     carrier = None
     if args.equipment_config.is_file():
         from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier
