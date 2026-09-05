@@ -13,10 +13,9 @@
 # only one is defined, so neither is exported into the deploy shell. Team
 # targeting is done with --scope woahwhatthehecks-projects instead.
 #
-# workflow_dispatch ONLY. It never runs on push and never runs on pull_request,
-# so nothing in the commons corpus (p/**, board.md, posts.json, llms.txt) can
-# roll it, and no PR can deploy. It never touches commons-spark-mcp: no path in
-# this file references that project, its id, its domain, or spark-mcp-production.
+# Runs on workflow_dispatch or pushes that change .wire/trigger-tip-live.
+# There is no pull_request trigger, and corpus-only pushes do not deploy.
+# The project checks below keep the pad deployment on its own Vercel project.
 #
 # The checkout path is literally "webmcp-pad" so that the documented fallback
 # (vercel deploy --prod --yes in an unlinked directory auto-creates a project
@@ -206,6 +205,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
+
+      - name: verify WebMCP contract and pad focus behavior
+        if: steps.creds.outputs.present == 'true'
+        working-directory: webmcp-pad
+        run: |
+          set -euo pipefail
+          node test_webmcp_contract.js
+          node test_pad_focus.js
 
       - name: link and deploy to production
         id: deploy
