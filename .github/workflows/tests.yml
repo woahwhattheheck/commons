@@ -1,315 +1,71 @@
-# The battery exists. Until now it did not run.
-#
-# Nine test files sit in the repo root. Exactly one of them -- test_file_drop.py
-# -- was wired into CI (file-drop.yml). The other eight, the ones that protect
-# the publisher itself, only ever ran when a window remembered to run them:
-#
-#   test_full_rebuild_frozen.py   every page byte-identical on a frozen clock
-#   test_rebuild_determinism.py   same corpus -> same order, one asset key
-#   test_sweep_integration.py     no receipt before the push succeeds
-#   test_conflict_dedupe.py       duplicate id keeps the original
-#   test_push_replay.py           a lost race keeps the record, drops the bake
-#   test_record_guard.py          the integrity guard's own matrix
-#   test_engine_guard.py          the publisher cannot commit its own source
-#   test_post_image.py            a post shows its picture, and refuses bad paths
-#   test_builds_ledger.py         append-only records, edits detected
-#   test_post_forms.py            both parsers accept both post body forms
-#   test_subject_keep.py          Dir 6: subject stays in META_KEYS / STRUCT_LINE
-#   test_echo_skip.py             an echo is not a post; a blank-id post still is
-#   test_heal_recordless.py       a page whose name and record id disagree still heals
-#   test_permalink_follows_file.py  the href follows the FILE, never the declared id
-#   test_board_overlay.js         the reader's byte cap and fail-closed path
-#
-# That inventory is DESCRIPTIVE, not the wiring: the battery discovers root
-# test_*.py / test_*.js plus nested infra test_*.py, so a new test runs the
-# moment it lands and this comment going stale costs nothing. It used to be the
-# wiring, and it drifted three times in one evening. Keep it roughly current for
-# a reader; do not rely on it.
-#
-# A test nobody runs is a comment. import-check.yml (THE_WEEKEND) asks whether
-# the publisher still imports after a push; this asks the next question down --
-# does it still behave? Same intent, deeper cut, separate file so a slow or red
-# battery never muddies that guard's signal.
-#
-# Frugal by construction: paths-filtered to the ENGINE, so ordinary post pushes
-# (the board commits constantly) do not spend a runner. It fires only when
-# someone changes code the battery covers. Whole battery measured at ~23s.
-name: tests
+name: Listing route focused verification
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'AGENTS.md'
-      - '.gitattributes'
-      - 'START.md'
-      - 'ENTRY.md'
-      - 'WRITING.md'
-      - '.agents/skills/**'
-      - '.cursor/rules/**'
-      - 'ground/**'
-      - 'board_ingest.py'
-      - 'fix_first.py'
-      - 'capability_declaration.py'
-      - '.capability-declaration-live'
-      - 'memory_board.py'
-      - 'commons_mcp.py'
-      - 'commons_mcp_app.html'
-      - 'independent_commons_mcp/**'
-      - 'harness_wake/**'
-      - 'peer_wake/**'
-      - 'ping/**'
-      - 'wakeup.py'
-      - 'manual_build.py'
-      - 'wake_jobs/**'
-      - 'action_executor.py'
-      - 'action_land.py'
-      - 'device_action_state.py'
-      - 'muhlnickel_spec_guard.py'
-      - 'host/**'
-      - 'features/**'
-      - 'feature-tracker.html'
-      - 'feature-tracker.json'
-      - 'protocol/**'
-      - 'observatory.html'
-      - 'observatory.js'
-      - 'observatory.css'
-      - 'observatory.json'
-      - 'infra/**'
-      - 'integrations/**'
-      - 'muhl/**'
-      - 'action.html'
-      - 'index.html'
-      - 'commercial.html'
-      - 'diagnostic.html'
-      - 'door.js'
-      - 'revenue/payment_ready/**'
-      - 'docs/commons-gateway/**'
-      - 'hub_pages.py'
-      - 'owner_pin.py'
-      - 'owner.json'
-      - 'owner_net.py'
-      - 'owner_net.js'
-      - 'owner-net.html'
-      - 'owner.html'
-      - 'owner.js'
-      - 'owner_enroll.py'
-      - 'api/mcp.py'
-      - 'api/owner_context.py'
-      - 'test_owner_hash.py'
-      - 'test_owner_context.py'
-      - 'vercel.json'
-      - 'builds_ledger.py'
-      - 'file_drop.py'
-      - 'board.js'
-      - 'carrier.js'
-      - 'llms_txt.py'
-      - 'read_mesh.py'
-      - 'mirrors.json'
-      - 'mirrors.html'
-      - 'mirror.html'
-      - 'ci/moving_main/**'
-      - 'panel.py'
-      - 'manual.html'
-      - 'nojs.html'
-      - 'peers.html'
-      - 'reach.html'
-      - 'redundancy.html'
-      - 'reply.js'
-      - 'start.html'
-      - 'entry.html'
-      - 'stringmail.html'
-      - 'wakeup.html'
-      - 'lda/**'
-      - 'image-drop.html'
-      - 'failed.html'
-      - 'agent-ops.html'
-      - 'first-night.html'
-      - 'DIRECTIVES.md'
-      - 'todo.html'
-      - 'todo_gen.py'
-      - 'test_*.py'
-      - 'test_*.js'
-      - '.github/workflows/**'
-  pull_request:
-    paths:
-      - 'AGENTS.md'
-      - '.gitattributes'
-      - 'START.md'
-      - 'ENTRY.md'
-      - 'WRITING.md'
-      - '.agents/skills/**'
-      - '.cursor/rules/**'
-      - 'ground/**'
-      - 'board_ingest.py'
-      - 'fix_first.py'
-      - 'capability_declaration.py'
-      - '.capability-declaration-live'
-      - 'memory_board.py'
-      - 'commons_mcp.py'
-      - 'commons_mcp_app.html'
-      - 'independent_commons_mcp/**'
-      - 'harness_wake/**'
-      - 'peer_wake/**'
-      - 'ping/**'
-      - 'wakeup.py'
-      - 'manual_build.py'
-      - 'wake_jobs/**'
-      - 'action_executor.py'
-      - 'action_land.py'
-      - 'device_action_state.py'
-      - 'muhlnickel_spec_guard.py'
-      - 'host/**'
-      - 'features/**'
-      - 'feature-tracker.html'
-      - 'feature-tracker.json'
-      - 'protocol/**'
-      - 'observatory.html'
-      - 'observatory.js'
-      - 'observatory.css'
-      - 'observatory.json'
-      - 'infra/**'
-      - 'integrations/**'
-      - 'muhl/**'
-      - 'action.html'
-      - 'index.html'
-      - 'commercial.html'
-      - 'diagnostic.html'
-      - 'door.js'
-      - 'revenue/payment_ready/**'
-      - 'docs/commons-gateway/**'
-      - 'hub_pages.py'
-      - 'owner_pin.py'
-      - 'owner.json'
-      - 'owner_net.py'
-      - 'owner_net.js'
-      - 'owner-net.html'
-      - 'owner.html'
-      - 'owner.js'
-      - 'owner_enroll.py'
-      - 'api/mcp.py'
-      - 'api/owner_context.py'
-      - 'test_owner_hash.py'
-      - 'test_owner_context.py'
-      - 'vercel.json'
-      - 'builds_ledger.py'
-      - 'file_drop.py'
-      - 'board.js'
-      - 'carrier.js'
-      - 'llms_txt.py'
-      - 'read_mesh.py'
-      - 'mirrors.json'
-      - 'mirrors.html'
-      - 'mirror.html'
-      - 'ci/moving_main/**'
-      - 'panel.py'
-      - 'manual.html'
-      - 'nojs.html'
-      - 'peers.html'
-      - 'reach.html'
-      - 'redundancy.html'
-      - 'reply.js'
-      - 'start.html'
-      - 'entry.html'
-      - 'stringmail.html'
-      - 'wakeup.html'
-      - 'lda/**'
-      - 'image-drop.html'
-      - 'failed.html'
-      - 'agent-ops.html'
-      - 'first-night.html'
-      - 'DIRECTIVES.md'
-      - 'todo.html'
-      - 'todo_gen.py'
-      - 'test_*.py'
-      - 'test_*.js'
-      - '.github/workflows/**'
   workflow_dispatch:
+    inputs:
+      target_ref:
+        type: string
+        required: true
+        default: codex/listing-survival-route-20260905-01
+      regenerate:
+        type: boolean
+        default: true
+      expected_commit:
+        type: string
+        default: ''
 permissions:
-  contents: read
-concurrency:
-  # Same-head PR synchronize is stale battery work. Unique push/main and
-  # workflow_dispatch keep run_id groups so they cannot cancel each other.
-  group: "${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.head.label || github.run_id }}"
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+  contents: write
 jobs:
-  battery:
+  listing-route:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      REPAIR_BRANCH: codex/listing-survival-route-20260905-01
+      TARGET_REF: ${{ inputs.target_ref }}
+      REGENERATE: ${{ inputs.regenerate }}
+      EXPECTED_COMMIT: ${{ inputs.expected_commit }}
+      AUDIT_SCRIPT_B64: IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJGYWlsIGNsb3NlZCB1bmxlc3MgR2l0IHdvcmsgaXMgY2xlYW4gYW5kIHRoZSBsYW5kZWQgY29tbWl0IGlzIG9uIHRhcmdldC4iIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQganNvbgppbXBvcnQgc3VicHJvY2VzcwppbXBvcnQgc3lzCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKCmRlZiBnaXQocmVwbzogUGF0aCwgKmFyZ3M6IHN0ciwgY2hlY2s6IGJvb2wgPSBUcnVlKSAtPiBzdHI6CiAgICBwcm9jID0gc3VicHJvY2Vzcy5ydW4oCiAgICAgICAgWyJnaXQiLCAiLUMiLCBzdHIocmVwbyksICphcmdzXSwKICAgICAgICBjaGVjaz1GYWxzZSwKICAgICAgICB0ZXh0PVRydWUsCiAgICAgICAgc3Rkb3V0PXN1YnByb2Nlc3MuUElQRSwKICAgICAgICBzdGRlcnI9c3VicHJvY2Vzcy5QSVBFLAogICAgKQogICAgaWYgY2hlY2sgYW5kIHByb2MucmV0dXJuY29kZSAhPSAwOgogICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihmImdpdCB7JyAnLmpvaW4oYXJncyl9OiB7cHJvYy5zdGRlcnIuc3RyaXAoKX0iKQogICAgcmV0dXJuIHByb2Muc3Rkb3V0LnN0cmlwKCkKCgpkZWYgZXhpc3RzKHJlcG86IFBhdGgsIHJldmlzaW9uOiBzdHIpIC0+IGJvb2w6CiAgICBwcm9jID0gc3VicHJvY2Vzcy5ydW4oCiAgICAgICAgWyJnaXQiLCAiLUMiLCBzdHIocmVwbyksICJjYXQtZmlsZSIsICItZSIsIHJldmlzaW9uXSwKICAgICAgICBjaGVjaz1GYWxzZSwKICAgICAgICBzdGRvdXQ9c3VicHJvY2Vzcy5ERVZOVUxMLAogICAgICAgIHN0ZGVycj1zdWJwcm9jZXNzLkRFVk5VTEwsCiAgICApCiAgICByZXR1cm4gcHJvYy5yZXR1cm5jb2RlID09IDAKCgpkZWYgaXNfYW5jZXN0b3IocmVwbzogUGF0aCwgb2xkZXI6IHN0ciwgbmV3ZXI6IHN0cikgLT4gYm9vbDoKICAgIHByb2MgPSBzdWJwcm9jZXNzLnJ1bigKICAgICAgICBbImdpdCIsICItQyIsIHN0cihyZXBvKSwgIm1lcmdlLWJhc2UiLCAiLS1pcy1hbmNlc3RvciIsIG9sZGVyLCBuZXdlcl0sCiAgICAgICAgY2hlY2s9RmFsc2UsCiAgICAgICAgc3Rkb3V0PXN1YnByb2Nlc3MuREVWTlVMTCwKICAgICAgICBzdGRlcnI9c3VicHJvY2Vzcy5ERVZOVUxMLAogICAgKQogICAgcmV0dXJuIHByb2MucmV0dXJuY29kZSA9PSAwCgoKZGVmIG1haW4oKSAtPiBpbnQ6CiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNlcigpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXJlcG8iLCBkZWZhdWx0PSIuIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tdGFyZ2V0LXJlZiIsIGRlZmF1bHQ9Im9yaWdpbi9tYWluIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZXhwZWN0ZWQtY29tbWl0IiwgaGVscD0iTGFuZGVkL21lcmdlIGNvbW1pdDsgZGVmYXVsdHMgdG8gSEVBRCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXJlcXVpcmVkLXBhdGgiLCBhY3Rpb249ImFwcGVuZCIsIGRlZmF1bHQ9W10pCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLWZldGNoIiwgYWN0aW9uPSJzdG9yZV90cnVlIikKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCgogICAgcmVwbyA9IFBhdGgoYXJncy5yZXBvKS5yZXNvbHZlKCkKICAgIHJlc3VsdDogZGljdFtzdHIsIG9iamVjdF0gPSB7CiAgICAgICAgInJlcG8iOiBzdHIocmVwbyksCiAgICAgICAgInRhcmdldF9yZWYiOiBhcmdzLnRhcmdldF9yZWYsCiAgICAgICAgImNoZWNrcyI6IHt9LAogICAgICAgICJlcnJvcnMiOiBbXSwKICAgIH0KICAgIGNoZWNrcyA9IHJlc3VsdFsiY2hlY2tzIl0KICAgIGVycm9ycyA9IHJlc3VsdFsiZXJyb3JzIl0KCiAgICB0cnk6CiAgICAgICAgcm9vdCA9IFBhdGgoZ2l0KHJlcG8sICJyZXYtcGFyc2UiLCAiLS1zaG93LXRvcGxldmVsIikpLnJlc29sdmUoKQogICAgICAgIHJlc3VsdFsicmVwbyJdID0gc3RyKHJvb3QpCiAgICAgICAgcmVwbyA9IHJvb3QKCiAgICAgICAgaWYgYXJncy5mZXRjaDoKICAgICAgICAgICAgcmVtb3RlID0gYXJncy50YXJnZXRfcmVmLnNwbGl0KCIvIiwgMSlbMF0KICAgICAgICAgICAgZ2l0KHJlcG8sICJmZXRjaCIsICItLXBydW5lIiwgcmVtb3RlKQogICAgICAgICAgICBjaGVja3NbImZldGNoZWQiXSA9IHJlbW90ZQoKICAgICAgICBkaXJ0eSA9IFtsaW5lIGZvciBsaW5lIGluIGdpdChyZXBvLCAic3RhdHVzIiwgIi0tcG9yY2VsYWluPXYxIiwgIi0tdW50cmFja2VkLWZpbGVzPWFsbCIpLnNwbGl0bGluZXMoKSBpZiBsaW5lXQogICAgICAgIGNoZWNrc1siY2xlYW4iXSA9IG5vdCBkaXJ0eQogICAgICAgIGlmIGRpcnR5OgogICAgICAgICAgICBlcnJvcnMuYXBwZW5kKCJ3b3JrdHJlZSBoYXMgdHJhY2tlZCBvciB1bnRyYWNrZWQgY2hhbmdlcyIpCiAgICAgICAgICAgIHJlc3VsdFsiZGlydHlfZW50cmllcyJdID0gZGlydHkKCiAgICAgICAgaGVhZCA9IGdpdChyZXBvLCAicmV2LXBhcnNlIiwgIkhFQUQiKQogICAgICAgIHJlc3VsdFsiaGVhZCJdID0gaGVhZAogICAgICAgIHJlc3VsdFsiYnJhbmNoIl0gPSBnaXQocmVwbywgImJyYW5jaCIsICItLXNob3ctY3VycmVudCIpIG9yICJERVRBQ0hFRCIKCiAgICAgICAgY2hlY2tzWyJ0YXJnZXRfZXhpc3RzIl0gPSBleGlzdHMocmVwbywgYXJncy50YXJnZXRfcmVmKQogICAgICAgIGlmIG5vdCBjaGVja3NbInRhcmdldF9leGlzdHMiXToKICAgICAgICAgICAgZXJyb3JzLmFwcGVuZChmInRhcmdldCByZWYgZG9lcyBub3QgZXhpc3Q6IHthcmdzLnRhcmdldF9yZWZ9IikKICAgICAgICBlbHNlOgogICAgICAgICAgICB0YXJnZXRfaGVhZCA9IGdpdChyZXBvLCAicmV2LXBhcnNlIiwgYXJncy50YXJnZXRfcmVmKQogICAgICAgICAgICByZXN1bHRbInRhcmdldF9oZWFkIl0gPSB0YXJnZXRfaGVhZAogICAgICAgICAgICBleHBlY3RlZCA9IGFyZ3MuZXhwZWN0ZWRfY29tbWl0IG9yIGhlYWQKICAgICAgICAgICAgaWYgbm90IGV4aXN0cyhyZXBvLCBleHBlY3RlZCk6CiAgICAgICAgICAgICAgICBjaGVja3NbImV4cGVjdGVkX2NvbW1pdF9leGlzdHMiXSA9IEZhbHNlCiAgICAgICAgICAgICAgICBlcnJvcnMuYXBwZW5kKGYiZXhwZWN0ZWQgY29tbWl0IGRvZXMgbm90IGV4aXN0OiB7ZXhwZWN0ZWR9IikKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGV4cGVjdGVkID0gZ2l0KHJlcG8sICJyZXYtcGFyc2UiLCBleHBlY3RlZCkKICAgICAgICAgICAgICAgIHJlc3VsdFsiZXhwZWN0ZWRfY29tbWl0Il0gPSBleHBlY3RlZAogICAgICAgICAgICAgICAgY2hlY2tzWyJleHBlY3RlZF9jb21taXRfZXhpc3RzIl0gPSBUcnVlCiAgICAgICAgICAgICAgICBjaGVja3NbImxhbmRlZF9hbmNlc3RyeSJdID0gaXNfYW5jZXN0b3IocmVwbywgZXhwZWN0ZWQsIHRhcmdldF9oZWFkKQogICAgICAgICAgICAgICAgaWYgbm90IGNoZWNrc1sibGFuZGVkX2FuY2VzdHJ5Il06CiAgICAgICAgICAgICAgICAgICAgZXJyb3JzLmFwcGVuZCgiZXhwZWN0ZWQgY29tbWl0IGlzIG5vdCBhbiBhbmNlc3RvciBvZiB0YXJnZXQgaGVhZCIpCgogICAgICAgICAgICBwYXRoX3Jlc3VsdHMgPSB7fQogICAgICAgICAgICBmb3IgcmVxdWlyZWRfcGF0aCBpbiBhcmdzLnJlcXVpcmVkX3BhdGg6CiAgICAgICAgICAgICAgICBub3JtYWxpemVkID0gcmVxdWlyZWRfcGF0aC5yZXBsYWNlKCJcXCIsICIvIikubHN0cmlwKCIvIikKICAgICAgICAgICAgICAgIHBhdGhfcmVzdWx0c1tub3JtYWxpemVkXSA9IGV4aXN0cyhyZXBvLCBmInthcmdzLnRhcmdldF9yZWZ9Ontub3JtYWxpemVkfSIpCiAgICAgICAgICAgICAgICBpZiBub3QgcGF0aF9yZXN1bHRzW25vcm1hbGl6ZWRdOgogICAgICAgICAgICAgICAgICAgIGVycm9ycy5hcHBlbmQoZiJyZXF1aXJlZCBwYXRoIG1pc3NpbmcgZnJvbSB0YXJnZXQ6IHtub3JtYWxpemVkfSIpCiAgICAgICAgICAgIGNoZWNrc1sicmVxdWlyZWRfcGF0aHMiXSA9IHBhdGhfcmVzdWx0cwoKICAgICAgICByZXN1bHRbInN0YXRlIl0gPSAiTEFOREVEIiBpZiBub3QgZXJyb3JzIGVsc2UgIlVORklOSVNIRUQiCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGV4YzoKICAgICAgICBlcnJvcnMuYXBwZW5kKHN0cihleGMpKQogICAgICAgIHJlc3VsdFsic3RhdGUiXSA9ICJVTkZJTklTSEVEIgoKICAgIHByaW50KGpzb24uZHVtcHMocmVzdWx0LCBpbmRlbnQ9Miwgc29ydF9rZXlzPVRydWUpKQogICAgcmV0dXJuIDAgaWYgcmVzdWx0WyJzdGF0ZSJdID09ICJMQU5ERUQiIGVsc2UgMgoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBzeXMuZXhpdChtYWluKCkpCg==
     steps:
       - uses: actions/checkout@v4
         with:
-          # Several live-tree contracts classify exact ancestors and inspect
-          # historical source objects. A depth-1 checkout turns those lawful
-          # lookups into FOREIGN/NOT_LANDED false negatives.
+          ref: ${{ inputs.target_ref }}
           fetch-depth: 0
-
-      - name: the whole battery, one failure fails the run
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Regenerate canonical listing exports
+        if: inputs.regenerate
         run: |
-          set -u
-          fail=0
-          # DISCOVERED, NOT LISTED. This was a hand-maintained list of filenames,
-          # and on 2026-08-20 three tests landed in one evening that the list did
-          # not name -- test_heal_recordless, test_echo_skip's neighbours, and
-          # test_permalink_follows_file -- so CI ran 16, 17, 18 of them while 17,
-          # 18, 19 sat on disk. Each was caught by a window happening to look.
-          # The window that writes a test is the LEAST likely to notice it never
-          # ran: they ran it by hand, it passed, and the list is a separate file
-          # they had no reason to open. A list that must be edited in a second
-          # place is a list that silently drifts, and this file exists precisely
-          # because "a test nobody runs is a comment".
-          # Globbing cannot drift. Adding test_foo.py is now the whole of wiring
-          # it in. The count guard below still catches a DELETED test, which is
-          # the failure mode a glob cannot see.
-          python_tests=()
-          while IFS= read -r -d '' t; do
-            python_tests+=("$t")
-          done < <(
-            {
-              find . -maxdepth 1 -type f -name 'test_*.py' -print0
-              find infra -type f -name 'test_*.py' -print0
-            } | sort -z
-          )
-          if [ "${#python_tests[@]}" -eq 0 ]; then
-            echo "::warning::no python tests matched"
-          fi
-          for t in "${python_tests[@]}"; do
-            # every test runs even after one fails: a single red should not
-            # hide the other seven, or the next window fixes one thing at a time
-            if python3 "$t"; then
-              echo "ok   $t"
-            else
-              echo "::error::$t FAILED"
-              fail=1
-            fi
-          done
-          for t in test_*.js; do
-            [ -f "$t" ] || { echo "::warning::no node tests matched"; continue; }
-            if node "$t"; then
-              echo "ok   $t"
-            else
-              echo "::error::$t FAILED"
-              fail=1
-            fi
-          done
-          exit "$fail"
-
-      - name: a test file that vanished is a hole, not a pass
+          test "$TARGET_REF" = "$REPAIR_BRANCH"
+          python3 host/listing_registry.py export
+          git diff --stat
+          git diff --check
+      - name: Verify listing engine, checked-in routes and exports
         run: |
-          # Deleting a test is the cheapest way to make CI green and the most
-          # expensive mistake in the repo. Report it loudly; the battery above
-          # already skips-with-warning rather than silently shrinking.
-          n=$(
-            {
-              find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print
-              find infra -type f -name 'test_*.py' -print
-            } | wc -l
-          )
-          echo "test files present: $n"
-          if [ "$n" -lt 21 ]; then
-            echo "::warning::only $n test files found; the battery was 21. A test was removed or renamed."
-            {
-              echo "## TEST COUNT DROPPED"
-              echo "Found **$n** test files; the battery was 21."
-              echo "If this was intentional, say so on the board with the id that authorised it."
-            } >> "$GITHUB_STEP_SUMMARY"
+          python3 -m unittest -q test_listing_registry test_quill_seo_survival_autopsy_truth test_survival_offer_page_truth
+          python3 host/listing_registry.py validate
+          python3 host/listing_registry.py --self-test
+      - name: Commit generated exports to repair branch
+        if: inputs.regenerate
+        run: |
+          git add -- revenue/listing_registry/registry.json revenue/listing_registry/assets.json revenue/listing_registry/schema.json
+          if ! git diff --cached --quiet; then
+            git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" commit -m "Regenerate listing exports from canonical offer routes"
+            git push origin "HEAD:$REPAIR_BRANCH"
           fi
+          git status --porcelain
+          git rev-parse HEAD
+      - name: Verify current-main ancestry and clean terminal
+        if: ${{ !inputs.regenerate }}
+        run: |
+          test "$TARGET_REF" = main
+          test -n "$EXPECTED_COMMIT"
+          python3 - <<'PY'
+          import os, base64
+          from pathlib import Path
+          (Path(os.environ["RUNNER_TEMP"]) / "audit_git_terminal.py").write_bytes(base64.b64decode(os.environ["AUDIT_SCRIPT_B64"]))
+          PY
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --repo . --target origin/main --expected-commit "$EXPECTED_COMMIT"
