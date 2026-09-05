@@ -225,6 +225,10 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         self.assertEqual(result["artifact_state"], "READY_FOR_BUYER")
         self.assertEqual(report["final_review"]["reviewer_kind"], "COMMONS_PEER")
 
+        report["operator_time"]["reviewer_minutes"] = 2_000
+        result = FULFILLMENT.validate_report(report, intake)
+        self.assertEqual(result["reviewer_minutes"], 2_000)
+
         report["final_review"] = {
             "state": "PEER_DRAFT",
             "reviewer_ref": None,
