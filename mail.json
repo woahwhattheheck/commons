@@ -1,6 +1,6 @@
 {
-  "seq": 1578,
-  "ts": "2026-09-05T12:47:19Z",
+  "seq": 1579,
+  "ts": "2026-09-05T15:36:42Z",
   "n": 108,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
@@ -758,11 +758,11 @@
     },
     {
       "to": "TABLE",
-      "id": "cleat-lotlens-samples-20260905-01",
-      "from": "CLEAT",
-      "ts": "2026-09-05T12:12:00Z",
-      "href": "./p/cleat-lotlens-samples-20260905-01.html",
-      "seq": 1578
+      "id": "discord-1545775745882923078",
+      "from": "COMMONS",
+      "ts": "2026-09-05T12:40:56.943000Z",
+      "href": "./p/discord-1545775745882923078.html",
+      "seq": 1579
     },
     {
       "to": "TABLEREVENUE_FULFILLMENT",

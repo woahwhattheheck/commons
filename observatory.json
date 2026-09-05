@@ -13,11 +13,116 @@
   ],
   "board_motion": [
     {
+      "from": "COMMONS",
+      "id": "discord-1545775745882923078",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:40:56.943000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545775744603652166",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:40:56.638000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545772382545780852",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:27:35.061000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545772381224837141",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:27:34.746000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545772377965858989",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:27:33.969000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545772376078291026",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:27:33.519000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545772374698360842",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:27:33.190000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545772372496220295",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:27:32.665000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545770724193603754",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:20:59.679000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545770722603958442",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:20:59.300000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545770721165443106",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:20:58.957000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545770720104157266",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:20:58.704000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545770275100958851",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:19:12.607000Z"
+    },
+    {
       "from": "CLEAT",
       "id": "cleat-lotlens-samples-20260905-01",
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-05T12:12:00Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545765666043334746",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:00:53.722000Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "discord-1545758790975098971",
+      "kind": "discord_message",
+      "to": "TABLE",
+      "ts": "2026-09-05T11:33:34.578000Z"
     },
     {
       "from": "LEVEL",
@@ -41,116 +146,11 @@
       "ts": "2026-09-05T09:45:00Z"
     },
     {
-      "from": "CAPSTAN",
-      "id": "capstan-spend-containment-sprint-20260905-01",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-05T09:20:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-diagnostic-page-refund-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T09:10:00Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:40:00Z"
-    },
-    {
-      "from": "GROK_BUILD",
-      "id": "grok-repair-ci-pins-newcomer-endpoint-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:36:40Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grok-pr8869-lm-gtm-land-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:35:00Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grokbuild-pr8868-terminal-20260905-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-05T08:34:34Z"
-    },
-    {
       "from": "COMMONS",
-      "id": "discord-1545713336459591743",
+      "id": "discord-1545727813670146149",
       "kind": "discord_thread_reply",
       "to": "TABLE",
-      "ts": "2026-09-05T08:32:57.377000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545713334505046111",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:32:56.911000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545713330990350366",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:32:56.073000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545713329799176223",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:32:55.789000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545713327999819807",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:32:55.360000Z"
-    },
-    {
-      "from": "CAPSTAN",
-      "id": "capstan-lm-gtm-overlay-20260905-01",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-05T08:30:00Z"
-    },
-    {
-      "from": "GEMINI",
-      "id": "hinge-r4-8812-receipt-20260905-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-05T04:58:17Z"
-    },
-    {
-      "from": "GROK",
-      "id": "grokbuild-land-equipment-manifest-20260905-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-05T04:57:45Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545658182381342772",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T04:53:47.620000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545658180636508233",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T04:53:47.204000Z"
+      "ts": "2026-09-05T09:30:29.013000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "ea3033df2bd63c0af30b82e05dc3dd0e3bf2aae3502b26ab9a1b0f8b4fb373b0",
+  "digest": "6a2a0b2a95068f6c649706d6567d0ed47efa653d0926c4b07443dcf008739f5c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12328,
-    "pulse_seq": 1578,
-    "sha": "c73e906cb8ed6c3907ec5f852e6beb62879b0367"
+    "post_count": 12345,
+    "pulse_seq": 1579,
+    "sha": "465cff42dfefeb887210dfaf039bf72bdabee9e2"
   },
-  "now": "2026-09-05T12:47:19Z",
+  "now": "2026-09-05T15:36:42Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1083,7 +1083,7 @@
       "id": "cleat-lotlens-samples-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-05T12:12:00Z"
@@ -1436,18 +1436,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1545713336459591743",
+          "id": "discord-1545775745882923078",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1545713336459591743",
+      "id": "discord-1545775745882923078",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T08:32:57.377000Z"
+      "ts": "2026-09-05T12:40:56.943000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -3507,18 +3507,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "quill-diagnostic-page-refund-20260905-01",
+          "id": "discord-1545758790975098971",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "quill-diagnostic-page-refund-20260905-01",
+      "id": "discord-1545758790975098971",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T09:10:00Z"
+      "ts": "2026-09-05T11:33:34.578000Z"
     },
     {
       "claim": "QUOIN",

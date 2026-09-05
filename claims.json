@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 45,
+  "n": 46,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "discord-1545758790975098971",
+      "from": "QUILL",
+      "claim": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788601163400599 (ts 1788601163.400599)",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-05T11:33:34.578000Z",
+      "href": "./p/discord-1545758790975098971.html"
     },
     {
       "id": "quill-diagnostic-page-refund-20260905-01",
