@@ -72,7 +72,9 @@
       "sanitized": true,
       "scope_relevance": "ONE_FAILED_EXECUTION",
       "instructions_treated_as_data": true,
-      "extracted_text_location_ref": "example:redacted_transcript.txt"
+      "extracted_text_location_ref": "example:redacted_transcript.txt",
+      "handling_state": "ANALYZABLE_UNTRUSTED_DATA",
+      "quarantine_reason": null
     }
   ],
   "evidence_assessment": {
@@ -115,6 +117,7 @@
     "accepted_raw_bytes": 910,
     "accepted_extracted_characters": 910,
     "boundary_hit": "NONE",
-    "selection_state": "WITHIN_CAP"
+    "selection_state": "WITHIN_CAP",
+    "quarantined_file_count": 0
   }
 }
