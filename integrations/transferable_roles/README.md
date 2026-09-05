@@ -21,6 +21,9 @@ Autopsy paid_case: `hinge-r4-autopsy-paid-case-pointers-20260905-01`
 Autopsy receipt_row: `hinge-r4-autopsy-receipt-row-pointers-20260905-01`
 Autopsy case CLI: `hinge-r4-autopsy-case-cli-20260905-01`
 Diagnostic contract CLI: `hinge-r4-diagnostic-contract-cli-20260905-01`
+Autopsy fulfill CLI: `hinge-r4-autopsy-fulfill-cli-20260905-01`
+Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
+Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -79,6 +82,13 @@ python3 integrations/transferable_roles/cli.py autopsy-receipt-row role-syntheti
 python3 integrations/transferable_roles/cli.py diagnostic-contract role-synthetic-diagnostic-fulfillment-20260905 \
   --slug dealer --store /tmp/hinge-roles
 
+python3 integrations/transferable_roles/cli.py diagnostic-receipt role-synthetic-diagnostic-fulfillment-20260905 \
+  --slug dealer --store /tmp/hinge-roles
+
+python3 integrations/transferable_roles/cli.py diagnostic-fulfill-deadline role-synthetic-diagnostic-fulfillment-20260905 \
+  --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 \
+  --store /tmp/hinge-roles
+
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
 
@@ -88,6 +98,8 @@ python3 integrations/transferable_roles/cli.py import \
 python3 integrations/transferable_roles/test_roles.py
 python3 integrations/transferable_roles/test_autopsy_case_cli.py
 python3 integrations/transferable_roles/test_diagnostic_contract_cli.py
+python3 integrations/transferable_roles/test_diagnostic_receipt_cli.py
+python3 integrations/transferable_roles/test_diagnostic_fulfill_cli.py
 ```
 
 `--seat` names the occupant (not `role_id`). Optional metadata for G2
@@ -125,6 +137,16 @@ refuse. Roles still confer no credentials.
 `revenue/*/contract.json` by slug (`dealer|referral|repair|plant`). Returns a
 compact operator card (commercial / boundaries) — does **not** remint contracts
 or invent Stripe. CRM / Autopsy roles refuse.
+
+`diagnostic-receipt` gates on tool `diagnostic_receipt` and loads a landed
+`revenue/*/receipt.json` by slug (`dealer|referral|plant`). Repair has no
+receipt twin — refuse invent. Compact cash/status card only. CRM refuse.
+
+`diagnostic-fulfill-deadline` gates on tool `diagnostic_contract`, loads the
+landed contract window (must include `one business day`), then computes
+`delivery_due_at` via landed `fulfillment.next_business_day` — import-only wrap
+in `diagnostic_fulfill.py`; not a remint of autopsy-fulfill. CRM / Autopsy roles
+refuse.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
@@ -170,7 +192,7 @@ SYNTHETIC fixture
 `fixtures/synthetic_diagnostic_fulfillment_role.json` packages one paid
 **$199 one-business-day diagnostic** fulfillment (dealer / referral / repair /
 plant) for seat-to-seat handoff: open obligations `ob-intake` → `ob-diagnose` →
-`ob-settle` (deliver **or** refund per miss-remedy). Knowledge and
+`ob-deadline` → `ob-settle` (deliver **or** refund per miss-remedy). Knowledge and
 `payment_capability` point at the four live product-page `buy.stripe.com` CTAs
 already on main — **do not invent plink**, do not remint pages. After reply→cash
 + tip-shelf land, knowledge also points at `revenue/reply_to_revenue/{README.md,
@@ -181,8 +203,14 @@ repair_booking_preflight,plant_downtime_handoff}/contract.json` (+ receipts
 where present) — **point only; do not remint** those operator contracts. After
 `hinge-r4-diagnostic-contract-cli-20260905-01`, tool `diagnostic_contract` +
 CLI `diagnostic-contract --slug …` **loads** the landed contract (mechanism,
-not remint). Miss remedy sentence lives on the product pages/contracts. Roles
-confer no Stripe access.
+not remint). After `tenon-r4-diagnostic-receipt-cli-20260905-01`, tool
+`diagnostic_receipt` + CLI `diagnostic-receipt --slug …` **loads** landed
+`receipt.json` for dealer|referral|plant (repair has no twin). After
+`wedge-diag-fulfill-deadline-cli-20260905-01`, tool `diagnostic_fulfill` +
+CLI `diagnostic-fulfill-deadline --slug … --usable-evidence-at …` **computes**
+`delivery_due_at` via landed `fulfillment.next_business_day` (import-only; not a
+remint of autopsy-fulfill). Miss remedy sentence lives on the product
+pages/contracts. Roles confer no Stripe access.
 
 ## Access route shapes
 

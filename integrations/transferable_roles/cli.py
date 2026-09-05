@@ -15,6 +15,8 @@ Examples:
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-deadline ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-validate ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py diagnostic-receipt ROLE --slug dealer --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py diagnostic-fulfill-deadline ROLE --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -29,6 +31,8 @@ from pathlib import Path
 from autopsy_fulfill import run_deadline, run_validate
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
+from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
+from diagnostic_receipt import load_receipt_from_role
 from roles import RoleError, RoleStore
 
 
@@ -172,6 +176,31 @@ def build_parser() -> argparse.ArgumentParser:
         choices=("dealer", "referral", "repair", "plant"),
     )
 
+    dr = sub.add_parser(
+        "diagnostic-receipt",
+        help="load landed $199 diagnostic receipt.json by slug "
+        "(dealer|referral|plant)",
+    )
+    dr.add_argument("role_id")
+    dr.add_argument(
+        "--slug",
+        required=True,
+        choices=("dealer", "referral", "plant"),
+    )
+
+    dfd = sub.add_parser(
+        "diagnostic-fulfill-deadline",
+        help="compute $199 delivery_due_at via landed fulfillment.next_business_day "
+        "after loading contract window",
+    )
+    dfd.add_argument("role_id")
+    dfd.add_argument(
+        "--slug",
+        required=True,
+        choices=("dealer", "referral", "repair", "plant"),
+    )
+    dfd.add_argument("--usable-evidence-at", required=True)
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -189,9 +218,6 @@ def build_parser() -> argparse.ArgumentParser:
         "open-obligations",
         help="list open obligations across all roles as flat dicts",
     )
-    # Preserve the documented --store-after-command form and the global form.
-    # Suppression prevents an absent subcommand option from replacing a value
-    # already parsed before the command.
     for command_parser in sub.choices.values():
         command_parser.add_argument(
             "--store", type=Path, default=argparse.SUPPRESS,
@@ -310,6 +336,18 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "diagnostic-contract":
             role = store.get(args.role_id)
             _print(load_contract_from_role(role, slug=args.slug))
+        elif args.cmd == "diagnostic-receipt":
+            role = store.get(args.role_id)
+            _print(load_receipt_from_role(role, slug=args.slug))
+        elif args.cmd == "diagnostic-fulfill-deadline":
+            role = store.get(args.role_id)
+            _print(
+                run_diagnostic_deadline(
+                    role,
+                    slug=args.slug,
+                    usable_evidence_at=args.usable_evidence_at,
+                )
+            )
         elif args.cmd == "inspect":
             _print(store.inspect(args.role_id))
         elif args.cmd == "export":

@@ -9,14 +9,94 @@
     "same_id_same_bytes": "idempotent"
   },
   "counts": {
-    "DEGRADED": 1,
-    "LIVE": 5,
+    "DEGRADED": 0,
+    "LIVE": 6,
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 100
+    "TESTED": 101
   },
   "features": [
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [
+        "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
+        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "0f6249cd06eadf2b2dbd75796320a743fb20f433",
+        "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
+        "28a40d31b6bec435b4906addc0241f22419fb339",
+        "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f",
+        "arbitrage.html:1cd7268ec6ac692511e869dfefa0a3e2f0566259",
+        "1cd7268ec6ac692511e869dfefa0a3e2f0566259"
+      ],
+      "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "arbitrage.html",
+        "revenue/arbitrage/opportunity.schema.json",
+        "test_arbitrage.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-arbitrage-opportunity-git-20260830-01",
+        "ev-arbitrage-opportunity-receipt-20260830-01",
+        "ev-arbitrage-opportunity-source-20260830-01",
+        "ev-arbitrage-opportunity-tests-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-01",
+        "ev-arbitrage-opportunity-live-20260830-01",
+        "ev-arbitrage-opportunity-blob-20260830-02",
+        "ev-arbitrage-opportunity-live-20260830-02",
+        "ev-arbitrage-opportunity-receipt-20260830-02",
+        "ev-arbitrage-opportunity-blob-20260830-03",
+        "ev-arbitrage-opportunity-live-20260830-03",
+        "ev-arbitrage-opportunity-live-20260831-04",
+        "ev-arbitrage-opportunity-blob-20260905-01",
+        "ev-arbitrage-opportunity-live-20260905-01"
+      ],
+      "file": "arbitrage-opportunity-road-20260830-01.json",
+      "id": "arbitrage-opportunity-road-20260830-01",
+      "last_change": "2026-09-05T23:20:11Z",
+      "live_status": "LIVE",
+      "main_sha": "c2c5addeee3c6cba2c9454be8e766e6f2aeb5b6f",
+      "name": "Arbitrage opportunity road",
+      "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
+      "owner_subsystem": "commerce",
+      "public_entrypoint": "arbitrage.html",
+      "receipts": [
+        "codex-arbitrage-opportunity-road-20260830-01",
+        "unseated-feature-tracker-commerce-doors-20260830-02"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": false,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "commerce.html",
+        "data-license.html",
+        "opportunity.html",
+        "p/codex-arbitrage-opportunity-road-20260830-01.md",
+        "agent-rescue.html"
+      ],
+      "rollup": "LIVE",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_arbitrage.py",
+        "revenue/arbitrage/opportunity.schema.json"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
     {
       "author_claim_ignored": "",
       "blob_proof": [
@@ -5698,6 +5778,71 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Equipment tools grokbot_case_from_autopsy_offer + grokbot_receipt_row_from_case (local, no :8881) expose paid_case builders; receipt_from_g2_submit binds submit/inspect run_id+session_id onto opaque case_row. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-equipment-paid-case-tools-20260905-01.json",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-equipment-paid-case-tools-20260905-01.json",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-receipt-surface-20260905-01",
+        "spark-g2-autopsy-case-submit-helper-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-equipment-paid-case-tools-20260905-01.json",
+      "id": "spark-g2-equipment-paid-case-tools-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 equipment paid-case builder tools",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, coordinator builds case via grokbot_case_from_autopsy_offer, submits with grokbot_submit, then binds receipt via grokbot_receipt_row_from_case(submit_response=...). No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/shared_equipment/peers.py",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/peers.py",
+        "integrations/grokbot_control/paid_case.py",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "GrokBot control persists optional paid-case metadata (offer_id/case_ref/client_reference_id/sku) on submit so inspect/session recover ties runs to a paid job before completion. Follow-up inherits parent case. No Stripe remint.",
       "carrier": "SPARK",
       "chat_ignored": false,
@@ -6368,86 +6513,10 @@
       "test_paths": [],
       "test_paths_missing": [],
       "test_status": "UNTESTED"
-    },
-    {
-      "author_claim_ignored": "",
-      "blob_proof": [
-        "arbitrage.html:9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
-        "9ecfe6ebd0de4b21a5e0bc48b72eff6fa30c6b48",
-        "arbitrage.html:0f6249cd06eadf2b2dbd75796320a743fb20f433",
-        "0f6249cd06eadf2b2dbd75796320a743fb20f433",
-        "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
-        "28a40d31b6bec435b4906addc0241f22419fb339",
-        "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f"
-      ],
-      "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
-      "carrier": "CODEX",
-      "chat_ignored": false,
-      "claimed_paths": [
-        "arbitrage.html",
-        "revenue/arbitrage/opportunity.schema.json",
-        "test_arbitrage.py"
-      ],
-      "claimed_paths_missing": [],
-      "claimed_paths_present": [
-        "arbitrage.html",
-        "revenue/arbitrage/opportunity.schema.json",
-        "test_arbitrage.py"
-      ],
-      "dependencies": [],
-      "evidence_ids": [
-        "ev-arbitrage-opportunity-git-20260830-01",
-        "ev-arbitrage-opportunity-receipt-20260830-01",
-        "ev-arbitrage-opportunity-source-20260830-01",
-        "ev-arbitrage-opportunity-tests-20260830-01",
-        "ev-arbitrage-opportunity-blob-20260830-01",
-        "ev-arbitrage-opportunity-live-20260830-01",
-        "ev-arbitrage-opportunity-blob-20260830-02",
-        "ev-arbitrage-opportunity-live-20260830-02",
-        "ev-arbitrage-opportunity-receipt-20260830-02",
-        "ev-arbitrage-opportunity-blob-20260830-03",
-        "ev-arbitrage-opportunity-live-20260830-03",
-        "ev-arbitrage-opportunity-live-20260831-04"
-      ],
-      "file": "arbitrage-opportunity-road-20260830-01.json",
-      "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-08-31T07:43:21Z",
-      "live_status": "DEGRADED",
-      "main_sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
-      "name": "Arbitrage opportunity road",
-      "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
-      "owner_subsystem": "commerce",
-      "public_entrypoint": "arbitrage.html",
-      "receipts": [
-        "codex-arbitrage-opportunity-road-20260830-01",
-        "unseated-feature-tracker-commerce-doors-20260830-02"
-      ],
-      "related": {
-        "boards": false,
-        "current_work": false,
-        "profitability": true,
-        "resources": true
-      },
-      "resource_links": [
-        "commerce.html",
-        "data-license.html",
-        "opportunity.html",
-        "p/codex-arbitrage-opportunity-road-20260830-01.md",
-        "agent-rescue.html"
-      ],
-      "rollup": "DEGRADED",
-      "source_status": "SOURCE_BUILT",
-      "superseded_by": "",
-      "test_paths": [
-        "test_arbitrage.py",
-        "revenue/arbitrage/opportunity.schema.json"
-      ],
-      "test_paths_missing": [],
-      "test_status": "TESTED"
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 109,
+  "n_features": 110,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

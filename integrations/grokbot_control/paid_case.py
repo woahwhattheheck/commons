@@ -157,3 +157,35 @@ def receipt_row_from_case(
         if key in _FORBIDDEN_RECEIPT_KEYS:
             raise ValueError(f"forbidden receipt key: {key}")
     return row
+
+
+def receipt_from_g2_submit(
+    case: Mapping[str, Any],
+    submit_response: Mapping[str, Any],
+    *,
+    payment_observed_at: str | None = None,
+    state: str = "UNVERIFIED",
+) -> dict[str, str]:
+    """Bind a grokbot_submit/inspect response onto an opaque seats case_row.
+
+    Requires nonempty submit_response.run_id. session_id is optional when present
+    and nonempty. Does not invent payment evidence (default state UNVERIFIED).
+    """
+    if not isinstance(submit_response, Mapping):
+        raise ValueError("submit_response must be a mapping")
+    run_id = submit_response.get("run_id")
+    if not isinstance(run_id, str) or not run_id.strip():
+        raise ValueError("submit_response.run_id must be a nonempty string")
+    session_raw = submit_response.get("session_id")
+    session_id = (
+        session_raw
+        if isinstance(session_raw, str) and session_raw.strip()
+        else None
+    )
+    return receipt_row_from_case(
+        case,
+        g2_run_id=run_id,
+        g2_session_id=session_id,
+        payment_observed_at=payment_observed_at,
+        state=state,
+    )

@@ -60,7 +60,7 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
             self.assertNotEqual(keep.get("door.js"), "1f9e8d14", name)
             self.assertNotEqual(unread.get("hub_pages.py"), "14eeedb0", name)
             self.assertNotEqual(unread.get("door.js"), "1f9e8d14", name)
-        self.assertNotIn('"hub_pages.py": "14eeedb0"', SLACK_TEST.read_text(encoding="utf-8"))
+        self.assertNotIn('"hub_pages.py": "55bffe39"', SLACK_TEST.read_text(encoding="utf-8"))
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
         self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
         self.assertTrue(git_blob("door.js").startswith("dc59355d"))

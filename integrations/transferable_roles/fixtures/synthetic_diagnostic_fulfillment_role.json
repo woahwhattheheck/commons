@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-diagnostic-fulfillment-20260905",
   "label": "$199 diagnostic fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC fixture for R4 paid $199 diagnostic fulfillment handoff — pointers to live checkouts, reply→cash, tip-shelf, and landed revenue/*/contract spines; tool diagnostic_contract loads landed contract.json by slug (do not remint contracts/pages/Stripe)",
+  "synthetic_note": "SYNTHETIC fixture for R4 paid $199 diagnostic fulfillment handoff — tools diagnostic_contract + diagnostic_receipt load landed contract/receipt; diagnostic_fulfill computes delivery_due_at (do not remint)",
   "purpose": "Hand off one paid $199 one-business-day diagnostic fulfillment (dealer / referral / repair / plant) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -71,12 +71,20 @@
       "label": "dealer diagnostic receipt template — point only"
     },
     {
+      "pointer": "revenue/dealer_service_lead_rescue/receipt.json",
+      "label": "dealer diagnostic receipt machine twin — point only; do not remint"
+    },
+    {
       "pointer": "revenue/referral_intake_completeness/contract.json",
       "label": "referral diagnostic operator contract — point only; do not remint"
     },
     {
       "pointer": "revenue/referral_intake_completeness/receipt.md",
       "label": "referral diagnostic receipt template — point only"
+    },
+    {
+      "pointer": "revenue/referral_intake_completeness/receipt.json",
+      "label": "referral diagnostic receipt machine twin — point only; do not remint"
     },
     {
       "pointer": "revenue/repair_booking_preflight/contract.json",
@@ -91,8 +99,20 @@
       "label": "plant diagnostic receipt template — point only"
     },
     {
+      "pointer": "revenue/plant_downtime_handoff/receipt.json",
+      "label": "plant diagnostic receipt machine twin — point only; do not remint"
+    },
+    {
       "pointer": "integrations/transferable_roles/diagnostic_contract.py",
       "label": "R4 execute — load landed contract.json by slug (dealer|referral|repair|plant); do not remint contracts"
+    },
+    {
+      "pointer": "integrations/transferable_roles/diagnostic_receipt.py",
+      "label": "R4 execute — load landed receipt.json by slug (dealer|referral|plant); repair has no twin"
+    },
+    {
+      "pointer": "integrations/transferable_roles/diagnostic_fulfill.py",
+      "label": "R4 execute — delivery_due_at via landed fulfillment.next_business_day after contract window; do not remint autopsy-fulfill"
     }
   ],
   "obligations": [
@@ -109,6 +129,12 @@
       "status": "open"
     },
     {
+      "id": "ob-deadline",
+      "summary": "After usable evidence arrives, compute delivery_due_at for the $199 SKU via diagnostic-fulfill-deadline",
+      "next_action": "Run diagnostic-fulfill-deadline --slug <dealer|referral|repair|plant> --usable-evidence-at <iso>",
+      "status": "open"
+    },
+    {
       "id": "ob-settle",
       "summary": "Deliver receipt/report OR route refund per miss-remedy when not delivered in one-business-day window — use live public page checkouts only (do not invent plink)",
       "next_action": "Deliver buyer-ready receipt or route refund per miss-remedy; checkout URLs are the four live buy.stripe.com CTAs on the product pages",
@@ -120,7 +146,7 @@
     {
       "name": "transferable_roles_cli",
       "entry": "python3 integrations/transferable_roles/cli.py",
-      "notes": "create/equip/transfer/advance/export/import/open-obligations/diagnostic-contract"
+      "notes": "create/equip/transfer/advance/export/import/open-obligations/diagnostic-contract/diagnostic-receipt/diagnostic-fulfill-deadline"
     },
     {
       "name": "role_export",
@@ -136,6 +162,16 @@
       "name": "diagnostic_contract",
       "entry": "integrations/transferable_roles/diagnostic_contract.py",
       "notes": "load landed revenue/*/contract.json by slug dealer|referral|repair|plant; do not remint contracts"
+    },
+    {
+      "name": "diagnostic_receipt",
+      "entry": "integrations/transferable_roles/diagnostic_receipt.py",
+      "notes": "load landed revenue/*/receipt.json by slug dealer|referral|plant; repair has no twin — do not invent"
+    },
+    {
+      "name": "diagnostic_fulfill",
+      "entry": "integrations/transferable_roles/diagnostic_fulfill.py",
+      "notes": "run_deadline: gate diagnostic_contract, load window, wrap fulfillment.next_business_day; CLI diagnostic-fulfill-deadline"
     }
   ],
   "access_routes": [

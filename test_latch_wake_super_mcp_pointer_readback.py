@@ -30,8 +30,8 @@ KEEP = {
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "api/mcp.py": "9ae34f64",
-    "hub_pages.py": "5ac12648",
-    "door.js": "dc59355d",
+    "hub_pages.py": "c11979b8",
+    "door.js": "cfe5a219",
     "ground/OWNER_NOW.md": "59b1fd37",
 }
 
