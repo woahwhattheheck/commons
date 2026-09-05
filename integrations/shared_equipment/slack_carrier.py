@@ -11,7 +11,7 @@ import threading
 import time
 from pathlib import Path
 
-from .services import redacted
+from .services import build_capability_manifest, redacted
 
 OPEN = "<commons_equipment_request>"
 CLOSE = "</commons_equipment_request>"
@@ -98,6 +98,10 @@ class SlackEquipmentCarrier:
         rid, cid = request["request_id"], request["call_id"]
         if request["name"] == "equipment_catalog":
             runner = lambda _name, _args: {"tools": self.catalog.tools()}
+        elif request["name"] == "equipment_capability_manifest":
+            runner = lambda _name, args: build_capability_manifest(
+                catalog=self.catalog, peer=(args or {}).get("peer")
+            )
         else:
             runner = self.catalog.call
         result = self.calls.execute_journaled("equipment:" + rid, cid,

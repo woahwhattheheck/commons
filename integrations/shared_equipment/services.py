@@ -272,9 +272,94 @@ def build_cli_catalog(*, grokbot_base_url: str | None = None):
     return catalog
 
 
+# Non-secret harness inventory. Same for every peer; not an allowlist.
+HARNESS_ROADS = [
+    {
+        "road_id": "owner_pc_shared_equipment",
+        "kind": "loopback_http",
+        "base_url": "http://127.0.0.1:8878",
+        "discover": "GET /v1/tools",
+        "call": "POST /v1/tools/call",
+        "note": "Stable request_id + call_id. Service custody stays in existing host stores.",
+    },
+    {
+        "road_id": "owner_pc_grokbot_control",
+        "kind": "grokbot_control",
+        "base_url": "http://127.0.0.1:8881",
+        "discover": "python -m integrations.shared_equipment.services manifest",
+        "call": "grokbot_* tools via catalog/call",
+        "note": "GrokBot pools only. Occupant field is optional metadata on the pool run, not role_id.",
+    },
+    {
+        "road_id": "workspace_shared_equipment",
+        "kind": "slack_request_return",
+        "channel_id": "C0BU51F1PL3",
+        "thread_ts": "1788567066.179399",
+        "discover": "equipment_capability_manifest envelope",
+        "call": "commons_equipment_request / commons_equipment_result",
+        "note": "Same operation schemas over the workspace connector. No secret material in envelopes.",
+    },
+]
+
+CREDENTIAL_CUSTODY = [
+    {
+        "service": "slack",
+        "custody": "existing_encrypted_vault",
+        "loader": "integrations.grok_slack.handoff.read_vault",
+        "bytes_in_model_context": False,
+    },
+    {
+        "service": "github",
+        "custody": "existing_gh_os_keyring",
+        "transport": "gh api --hostname github.com",
+        "bytes_in_model_context": False,
+    },
+    {
+        "service": "grokbot",
+        "custody": "loopback_control",
+        "base_url_default": "http://127.0.0.1:8881",
+        "bytes_in_model_context": False,
+    },
+]
+
+
+def build_capability_manifest(*, catalog=None, peer: str | None = None) -> dict:
+    """Inventory callable operations + roads without secret bytes.
+
+    ``peer`` is accepted and ignored so newcomers and legacy peers share one
+    discovery surface. Transferable roles describe responsibility only; they
+    never gate this manifest.
+    """
+    del peer  # parity: label never changes the inventory
+    equipment = catalog or build_cli_catalog()
+    operations = []
+    for tool in equipment.tools():
+        name = tool["name"]
+        operations.append(
+            {
+                "operation_id": name,
+                "name": name,
+                "description": tool.get("description", ""),
+                "inputSchema": tool.get("inputSchema", {"type": "object"}),
+            }
+        )
+    operations.sort(key=lambda row: row["operation_id"])
+    return {
+        "schema": "commons.shared_equipment.capability_manifest.v1",
+        "same_operations_for_every_peer": True,
+        "peer_label_does_not_change_inventory": True,
+        "credential_bytes_in_manifest": False,
+        "peer_argument_ignored": True,
+        "credential_custody": list(CREDENTIAL_CUSTODY),
+        "roads": [dict(road) for road in HARNESS_ROADS],
+        "operations": operations,
+        "operation_count": len(operations),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("operation", choices=("catalog", "call"))
+    parser.add_argument("operation", choices=("catalog", "call", "manifest"))
     parser.add_argument(
         "--grokbot-control",
         default=None,
@@ -282,7 +367,9 @@ def main() -> int:
     )
     args = parser.parse_args()
     equipment = build_cli_catalog(grokbot_base_url=args.grokbot_control)
-    if args.operation == "catalog":
+    if args.operation == "manifest":
+        result = build_capability_manifest(catalog=equipment)
+    elif args.operation == "catalog":
         result = {"tools": equipment.tools()}
     else:
         request = json.load(sys.stdin)

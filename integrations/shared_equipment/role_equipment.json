@@ -1,10 +1,17 @@
 {
   "tools": [
-    {"name":"shared_service_equipment","entry":"GET /v1/tools; POST /v1/tools/call","notes":"Current running catalog includes Slack, GitHub, Gemini lifecycle, and GrokBot lifecycle operations; service custody stays in the existing host stores."}
+    {"name":"shared_service_equipment","entry":"GET /v1/tools; POST /v1/tools/call","notes":"Current running catalog includes Slack, GitHub, Gemini lifecycle, and GrokBot lifecycle operations; service custody stays in the existing host stores."},
+    {"name":"equipment_capability_manifest","entry":"CLI: python -m integrations.shared_equipment.services manifest; Slack envelope name equipment_capability_manifest","notes":"Dynamic non-secret capability inventory. Same operations for every peer. Peer labels never gate discovery. No credential bytes."}
   ],
+  "parity": {
+    "same_operations_for_every_peer": true,
+    "peer_label_does_not_change_inventory": true,
+    "newcomer_same_operations": true,
+    "credential_bytes_in_manifest": false
+  },
   "access_routes": [
     {"name":"owner_pc_shared_equipment","kind":"loopback_http","base_url":"http://127.0.0.1:8878","submit":"POST /v1/tools/call","status":"GET /v1/requests/{request_id}","events":"GET /v1/events?after={cursor}","follow_up":"gemini_follow_up tool","cancel":"gemini_cancel tool","recover":"gemini_recover tool","note":"Equipment envelopes use stable request_id and call_id. A Gemini tool result contains the separate model request_id."},
-    {"name":"owner_pc_grokbot_control","kind":"grokbot_control","base_url":"http://127.0.0.1:8881","pool_id":"grokbot","submit":"POST /v1/runs","inspect":"GET /v1/runs/{run_id}","follow_up":"POST /v1/runs/{run_id}/follow-up","cancel":"POST /v1/runs/{run_id}/cancel","events":"GET /v1/events?after={cursor}","client":"integrations/grokbot_control/client.py","equipment_tools":["grokbot_submit","grokbot_inspect","grokbot_follow_up","grokbot_cancel","grokbot_session","grokbot_events","grokbot_pools"],"note":"GrokBot pools only. Seat belongs to occupant, not role_id. Do not relaunch on owner PC until RAM incident cleared."},
-    {"name":"workspace_shared_equipment","kind":"slack_request_return","service_tag":"commons_equipment_request","submit":"Post envelope to channel C0BU51F1PL3 thread 1788567066.179399","status":"Read commons_equipment_result replies with matching request_id and call_id","note":"Use the same operation schemas over the existing workspace connector. No secret material belongs in the envelope."}
+    {"name":"owner_pc_grokbot_control","kind":"grokbot_control","base_url":"http://127.0.0.1:8881","pool_id":"grokbot","submit":"POST /v1/runs","inspect":"GET /v1/runs/{run_id}","follow_up":"POST /v1/runs/{run_id}/follow-up","cancel":"POST /v1/runs/{run_id}/cancel","events":"GET /v1/events?after={cursor}","client":"integrations/grokbot_control/client.py","equipment_tools":["grokbot_submit","grokbot_inspect","grokbot_follow_up","grokbot_cancel","grokbot_session","grokbot_events","grokbot_pools"],"note":"GrokBot pools only. Occupant field is optional metadata on the pool run, not role_id. Do not relaunch on owner PC until RAM incident cleared."},
+    {"name":"workspace_shared_equipment","kind":"slack_request_return","service_tag":"commons_equipment_request","submit":"Post envelope to channel C0BU51F1PL3 thread 1788567066.179399","status":"Read commons_equipment_result replies with matching request_id and call_id","note":"Use the same operation schemas over the existing workspace connector. No secret material belongs in the envelope. Discover via equipment_capability_manifest."}
   ]
 }
