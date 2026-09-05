@@ -60,6 +60,8 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             "grokbot_events",
             "grokbot_pools",
             "grokbot_health",
+            "grokbot_case_from_autopsy_offer",
+            "grokbot_receipt_row_from_case",
         }
         self.assertEqual(names, expected)
         catalog = CombinedCatalog(_FakeCommons())
@@ -173,6 +175,38 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         self.assertEqual(out.get("error"), "grokbot_control_unreachable")
         self.assertIn("note", out)
 
+    def test_paid_case_equipment_helpers(self):
+        eq = GrokBotEquipment("http://127.0.0.1:9")
+        built = eq.call(
+            "grokbot_case_from_autopsy_offer",
+            {
+                "case_ref": "opaque-equip-1",
+                "client_reference_id": "afa29_x_a_v1",
+            },
+        )
+        self.assertTrue(built.get("ok"))
+        case = built["case"]
+        self.assertEqual(case["case_ref"], "opaque-equip-1")
+        self.assertEqual(case["offer_id"], "agent-failure-autopsy-29")
+        receipt = eq.call(
+            "grokbot_receipt_row_from_case",
+            {
+                "case": case,
+                "submit_response": {
+                    "run_id": "run_equip_1",
+                    "session_id": "sess_equip_1",
+                },
+            },
+        )
+        self.assertTrue(receipt.get("ok"))
+        row = receipt["case_row"]
+        self.assertEqual(row["g2_run_id"], "run_equip_1")
+        self.assertEqual(row["g2_session_id"], "sess_equip_1")
+        self.assertEqual(row["state"], "UNVERIFIED")
+        bad = eq.call("grokbot_case_from_autopsy_offer", {"case_ref": ""})
+        self.assertFalse(bad.get("ok"))
+        self.assertEqual(bad.get("error"), "invalid_case")
+
     def test_role_equipment_route_present(self):
         import json
 
@@ -190,6 +224,8 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         self.assertEqual(g2["pool_id"], "grokbot")
         self.assertIn("grokbot_submit", g2["equipment_tools"])
         self.assertIn("grokbot_health", g2["equipment_tools"])
+        self.assertIn("grokbot_case_from_autopsy_offer", g2["equipment_tools"])
+        self.assertIn("grokbot_receipt_row_from_case", g2["equipment_tools"])
 
 
 if __name__ == "__main__":
