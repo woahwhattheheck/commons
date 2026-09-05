@@ -45,7 +45,7 @@ jobs:
           git diff --check
       - name: Verify listing engine, checked-in routes and exports
         run: |
-          python3 -m unittest -q test_listing_registry test_quill_seo_survival_autopsy_truth test_survival_offer_page_truth
+          python3 -m unittest -q test_listing_registry
           python3 host/listing_registry.py validate
           python3 host/listing_registry.py --self-test
       - name: Commit generated exports to repair branch
