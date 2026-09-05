@@ -41,12 +41,14 @@ class NewcomerRoadProofTests(unittest.TestCase):
             return io.BytesIO(body)
 
         def gh_runner(command, **kwargs):
-            endpoint = command[-1]
+            method_index = command.index("--method")
+            method = command[method_index + 1]
+            endpoint = command[method_index + 2]
             if endpoint.endswith("/git/ref/heads/newcomer-proof"):
                 return subprocess.CompletedProcess(
                     command, 1, '{"message":"Not Found"}', ""
                 )
-            if command[4] == "POST" and endpoint.endswith("/git/refs"):
+            if method == "POST" and endpoint.endswith("/git/refs"):
                 payload = json.loads(kwargs["input"])
                 return subprocess.CompletedProcess(
                     command,
