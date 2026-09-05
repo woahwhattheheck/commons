@@ -28,7 +28,7 @@ class ForgeT8ReceiptBatteryPin(unittest.TestCase):
         for needle in REQUIRED:
             self.assertIn(needle, text, f"receipt missing {needle!r}")
         self.assertIn("Commons `/mcp` KEEP", text)
-        self.assertNotIn("Devpost", text)
+        self.assertIn("No contest/Devpost restore.", text)
 
 
 if __name__ == "__main__":
