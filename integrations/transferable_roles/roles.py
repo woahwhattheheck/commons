@@ -254,17 +254,12 @@ class RoleStore:
         return sorted(p.stem for p in self.root.glob("*.json"))
 
     def list_open_obligations(self) -> list[dict[str, Any]]:
-        """Scan all roles; return open obligations as flat dicts.
-
-        Each row: role_id, purpose, obligation_id, summary, next_action;
-        optional label, evidence_pointer, synthetic. Sorted by role_id,
-        then obligation_id.
-        """
+        """Open obligations across all roles — cash-work / fulfillment queue."""
         rows: list[dict[str, Any]] = []
-        for role_id in self.list_ids():
-            role = self.get(role_id)
+        for rid in self.list_ids():
+            role = self.get(rid)
             for ob in role.get("obligations") or []:
-                if str(ob.get("status") or "open").strip() != "open":
+                if str(ob.get("status") or "").strip() != "open":
                     continue
                 row: dict[str, Any] = {
                     "role_id": role["role_id"],
