@@ -24,6 +24,7 @@ from host import smart_outreach  # noqa: E402
 
 CATALOG_PATH = ROOT / "revenue" / "right_now" / "catalog.json"
 DIAGNOSTIC_PATH = ROOT / "revenue" / "right_now" / "diagnostic_offer.json"
+AUTOPSY_PATH = ROOT / "revenue" / "right_now" / "autopsy_offer.json"
 OUTREACH_PATH = ROOT / "revenue" / "smart_outreach" / "candidates.json"
 PAYMENT_PATH = ROOT / "revenue" / "payment_ready" / "current_receipt.json"
 HUMAN_PATH = ROOT / "revenue" / "human_outcomes" / "offers.json"
@@ -88,16 +89,23 @@ def validate_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
     human = read_object(HUMAN_PATH)
     survival = read_object(SURVIVAL_PATH)
     diagnostic = read_object(DIAGNOSTIC_PATH)
+    autopsy = read_object(AUTOPSY_PATH)
     canonical = {row["id"]: row for row in human["offers"]}
     entry = survival["entry_offer"]
     canonical[entry["id"]] = entry
     canonical[diagnostic["id"]] = diagnostic
+    canonical[autopsy["id"]] = autopsy
+    allowed_payment_states = {
+        "BUYER_SPECIFIC_HANDOFF_REQUIRED",
+        "LIVE_PUBLIC_CHECKOUT_PAGE",
+    }
     offers = catalog["offers"]
     if not isinstance(offers, list) or not offers:
         raise ControlError("catalog.offers must be non-empty")
     if [row.get("rank") for row in offers] != list(range(1, len(offers) + 1)):
         raise ControlError("offer rank must be unique and contiguous")
     seen: set[str] = set()
+    live_checkout_ids: set[str] = set()
     for row in offers:
         offer_id = row.get("id")
         if not isinstance(offer_id, str) or offer_id in seen:
@@ -108,14 +116,37 @@ def validate_catalog(catalog: dict[str, Any]) -> dict[str, Any]:
         price = _positive_integer(row.get("price_usd"), f"offers.{offer_id}.price_usd")
         if price != canonical[offer_id]["fixed_amount"]:
             raise ControlError(f"offer price drift: {offer_id}")
-        if row.get("payment_state") != "BUYER_SPECIFIC_HANDOFF_REQUIRED":
+        payment_state = row.get("payment_state")
+        if payment_state not in allowed_payment_states:
             raise ControlError(f"unexpected payment state: {offer_id}")
+        if payment_state == "LIVE_PUBLIC_CHECKOUT_PAGE":
+            live_checkout_ids.add(offer_id)
+            if row.get("start_route") != "agent-rescue.html":
+                raise ControlError(
+                    f"live checkout offer must start on agent-rescue.html: {offer_id}"
+                )
+            if canonical[offer_id].get("payment_collection") != "LIVE_PUBLIC_CHECKOUT_PAGE":
+                raise ControlError(
+                    f"live checkout canonical payment_collection mismatch: {offer_id}"
+                )
         for field in (
             "delivery_window", "buyer_input", "deliverable", "start_route",
             "source", "next_external_event", "founder_bottleneck", "commons_bottleneck",
         ):
             if not isinstance(row.get(field), str) or not row[field].strip():
                 raise ControlError(f"offers.{offer_id}.{field} must be non-empty")
+    if catalog["truth"]["active_chargeable_checkout"] != bool(live_checkout_ids):
+        raise ControlError(
+            "truth.active_chargeable_checkout must match LIVE_PUBLIC_CHECKOUT_PAGE offers"
+        )
+    if "agent-failure-autopsy-29" in seen:
+        survival_row = next(
+            r for r in offers if r["id"] == "same-day-agent-survival-proof"
+        )
+        if survival_row.get("start_route") == "agent-rescue.html":
+            raise ControlError(
+                "same-day-agent-survival-proof must not use agent-rescue.html while Autopsy owns that page"
+            )
     return catalog
 
 
@@ -220,6 +251,7 @@ def build_control() -> dict[str, Any]:
     source_paths = [
         CATALOG_PATH,
         DIAGNOSTIC_PATH,
+        AUTOPSY_PATH,
         OUTREACH_PATH,
         PAYMENT_PATH,
         HUMAN_PATH,
