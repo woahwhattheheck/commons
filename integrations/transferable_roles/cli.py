@@ -5,6 +5,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_crm_followup_role.json --store /tmp/roles
   python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --seat HINGE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py bind-route ROLE --route grokbot_control_g2 --session-id sess-1 --last-run-id run-9 --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py unbind-route ROLE --route grokbot_control_g2 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
@@ -78,6 +79,18 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--last-run-id", help="last G2 run_id")
     b.add_argument("--pool-id", help="pool name only; never invent a second pool")
 
+    u = sub.add_parser(
+        "unbind-route",
+        help="clear stamped session_id/last_run_id (optional pool_id) on a route",
+    )
+    u.add_argument("role_id")
+    u.add_argument("--route", required=True, help="access_route.name")
+    u.add_argument(
+        "--fields",
+        help="comma-separated subset of session_id,last_run_id,pool_id "
+        "(default: session_id,last_run_id)",
+    )
+
     r = sub.add_parser(
         "release",
         help="clear occupant so a later session can equip (keeps bound routes)",
@@ -150,6 +163,17 @@ def main(argv: list[str] | None = None) -> int:
                     session_id=args.session_id,
                     last_run_id=args.last_run_id,
                     pool_id=args.pool_id,
+                )
+            )
+        elif args.cmd == "unbind-route":
+            fields = None
+            if args.fields:
+                fields = [f.strip() for f in args.fields.split(",") if f.strip()]
+            _print(
+                store.unbind_access_route(
+                    args.role_id,
+                    route_name=args.route,
+                    fields=fields,
                 )
             )
         elif args.cmd == "release":
