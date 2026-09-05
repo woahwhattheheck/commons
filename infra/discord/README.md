@@ -79,6 +79,14 @@ successful cloud run is the prerequisite. The temporary bridge and health
 scripts remain functional until that proof exists, and their scheduled task
 actions stay invisible to the interactive desktop.
 
+Both scheduled PowerShell watchers now start through
+`pythonw.exe -B run_powershell_no_console.py <watcher.ps1>`. The wrapper uses
+Windows `CREATE_NO_WINDOW` at process creation. `-WindowStyle Hidden` alone can
+still flash a terminal before PowerShell handles its arguments. The wrapper
+waits for the existing watcher, returns its exit code, and appends stdout/stderr
+to the existing `%LOCALAPPDATA%\Commons\discord-runtime.log`; schedules and
+bridge recovery behavior are unchanged. Owner-opened terminals are unaffected.
+
 The temporary bridge task executes `pythonw.exe -B commons_discord_bridge.py`
 directly. Python is therefore the scheduled-task root: `/End` terminates the
 exact listener before `/Run` starts its replacement instead of orphaning a
