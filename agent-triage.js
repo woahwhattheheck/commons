@@ -40,9 +40,9 @@
   function nextOffer(hits) {
     if (hits.indexOf("RETRY_LOOP") !== -1 || hits.indexOf("NO_STOP") !== -1 || hits.indexOf("NO_ROLLBACK") !== -1) {
       return {
-        id: "same-day-agent-survival-proof",
-        name: "Same-Day Agent Survival Proof",
-        price: "$2,500",
+        id: "agent-failure-autopsy-29",
+        name: "Agent Failure Autopsy",
+        price: "$29",
         href: "./agent-rescue.html"
       };
     }
@@ -121,7 +121,7 @@
       "",
       "## Sentence",
       "",
-      "My agent should **" + (known.expected_outcome || "[outcome]") + "**, but in production it **" + (known.observed_failure || "[failure]") + "**.",
+      "My agent should **" + (known.expected_outcome || "[outcome]") + "**, but in production it **" + (known.observed_failure || "[failure]") + ".",
       "",
       "## Preliminary classification",
       "",
