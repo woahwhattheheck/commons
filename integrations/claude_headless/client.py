@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 import time
 import urllib.error
@@ -57,6 +58,8 @@ class HeadlessClient:
         return self._call("GET", "/health")
 
     def submit(self, prompt: str, **options: Any) -> dict[str, Any]:
+        # a new conversation runs where the caller is, unless told otherwise
+        options.setdefault("cwd", os.getcwd())
         return self._call("POST", "/v1/runs", {"prompt": prompt, **options})
 
     def followup(self, run_id: str, prompt: str, **options: Any) -> dict[str, Any]:

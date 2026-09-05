@@ -197,6 +197,23 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual([r["kind"] for r in view["runs"]], ["new", "followup", "followup"])
         self.assertIn("transcript_path", view)
 
+    def test_session_followup_without_cwd_inherits_the_conversation_cwd(self):
+        work = self.fx.root / "work"
+        work.mkdir()
+        first = self.fx.submit("REMEMBER here", cwd=str(work))
+        self.fx.wait(first["run_id"])
+        status, ack = http("POST", self.fx.base + f"/v1/sessions/{first['session_id']}/runs", {"prompt": "RECALL"})
+        run = self.fx.wait(ack["run_id"])
+        self.assertEqual(run["cwd"], str(work))
+        self.assertEqual(run["result_text"], "here")
+        init = next(e for e in http("GET", self.fx.base + f"/v1/runs/{ack['run_id']}/events")[1]["events"] if e["kind"] == "system")
+        self.assertEqual(Path(init["payload"]["cwd"]).resolve(), work.resolve())
+        # an explicit cwd still wins
+        elsewhere = self.fx.root / "elsewhere"
+        elsewhere.mkdir()
+        status, ack2 = http("POST", self.fx.base + f"/v1/sessions/{first['session_id']}/runs", {"prompt": "RECALL", "cwd": str(elsewhere)})
+        self.assertEqual(self.fx.wait(ack2["run_id"])["cwd"], str(elsewhere))
+
     def test_cancel_stops_that_run_only_and_session_stays_resumable(self):
         first = self.fx.submit("REMEMBER anchor")
         self.fx.wait(first["run_id"])

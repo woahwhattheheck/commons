@@ -546,6 +546,10 @@ class Gateway(ThreadingHTTPServer):
             if not self._is_uuid(session_id):
                 raise ValueError("session_id must be a UUID")
             kind = "followup"
+            prior = self.store.list_runs(session_id=session_id, limit=1)
+            if prior and not payload.get("cwd"):
+                # continue where that conversation actually lives, not where this gateway sits
+                cwd = prior[0]["cwd"]
         else:
             session_id = str(uuid.uuid4())
         if not os.path.isdir(cwd):
