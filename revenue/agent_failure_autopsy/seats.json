@@ -73,6 +73,8 @@
     "builder": "integrations.grokbot_control.paid_case.receipt_row_from_case",
     "runbook": "revenue/agent_failure_autopsy/RUNBOOK.md §10",
     "max_chars_per_string": 200,
+    "default_state": "UNVERIFIED",
+    "payment_verification": "Caller-supplied state; builder does not observe payment",
     "do_not_commit_buyer_artifacts": true,
     "append_gate": "REAL_STRIPE_PAYMENT_OBSERVED + owner-authorized opaque receipt"
   },
