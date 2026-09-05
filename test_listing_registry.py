@@ -248,6 +248,35 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(exported["counts"], self.registry["counts"])
         self.assertEqual(len(exported["listings"]), len(self.registry["listings"]))
 
+    def test_survival_and_autopsy_routes_match_canonical_offers(self):
+        expected = {
+            "production-survival-sprint": "revenue/production_survival/README.md",
+            "agent-failure-autopsy-29": "agent-rescue.html",
+        }
+        exported_registry = json.loads((REG / "registry.json").read_text(encoding="utf-8"))
+        exported_assets = json.loads((REG / "assets.json").read_text(encoding="utf-8"))
+        for label, registry, assets in (
+            ("generated", self.registry, self.assets),
+            ("checked-in", exported_registry, exported_assets),
+        ):
+            for offer_id, route in expected.items():
+                with self.subTest(source=label, offer=offer_id):
+                    rows = [r for r in registry["listings"] if r["offer_id"] == offer_id]
+                    self.assertTrue(rows)
+                    self.assertEqual({r["human_route"] for r in rows}, {route})
+                    public_rows = [r for r in rows if r["published_status"] == "SURFACE_PUBLISHED"]
+                    self.assertTrue(public_rows)
+                    self.assertEqual(
+                        {r["url"] for r in public_rows},
+                        {self.mod.PAGES + "/" + route},
+                    )
+                    asset = next(
+                        a for a in assets["assets"]
+                        if a["id"] == offer_id + "__commons-service-catalog"
+                    )
+                    self.assertEqual(asset["url"], self.mod.PAGES + "/" + route)
+                    self.assertIn("Conversion: " + asset["url"], asset["copy"])
+
     def test_cli_self_test(self):
         proc = subprocess.run(
             [sys.executable, str(ROOT / "host" / "listing_registry.py"), "--self-test"],
