@@ -15,6 +15,7 @@
     "payment_url": null,
     "payment_url_state": "NOT_MINTED_OR_VERIFIED"
   },
+  "bounded_unit": "one failed coding-agent run",
   "buyer_supplies": [
     "one failure sentence",
     "the coding harness and relevant stack name",
@@ -26,13 +27,20 @@
     "business_day_rule": "same local wall-clock time on the next Monday through Friday; any holiday adjustment must be stated before the clock starts"
   },
   "delivery": [
-    "an evidence-linked timeline and failure chain",
+    "an evidence-linked timeline and failure chain with the first meaningful divergence marked",
     "primary and contributing causes with calibrated confidence",
+    "an adversarial challenge of each causal explanation against plausible alternatives",
     "concrete prompt, configuration, or code fix steps only where the supplied evidence supports them",
     "one replay or regression-prevention check"
   ],
   "clarification_rounds_included": 1,
   "refund": "If the submitted artifacts still cannot support a defensible diagnosis after the included clarification round, refund USD 29.",
+  "quality": {
+    "analysis_level": "FULL_STRENGTH",
+    "evidence_vs_inference_separated": true,
+    "adversarial_challenge_required": true,
+    "time_budget_may_truncate_analysis": false
+  },
   "boundaries": {
     "code_implementation_included": false,
     "guaranteed_certainty": false,
@@ -40,10 +48,9 @@
     "production_access_required": false,
     "secrets_or_unredacted_credentials_requested": false
   },
-  "operator_time_hypothesis": {
-    "human_review_ceiling_minutes": 15,
-    "status": "UNMEASURED_TARGET",
-    "measurement_rule": "Record active human-review minutes on every buyer delivery. Automated drafting time is separate. Do not claim the ceiling is achieved from a synthetic example."
+  "operator_time_measurement": {
+    "purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
+    "measurement_rule": "Record actual automated-draft and human-review minutes for each buyer delivery. Never use elapsed time to truncate the analysis or reduce evidence fidelity."
   },
   "privacy": "Buyer evidence and buyer reports remain in an owner-private delivery system unless the buyer explicitly authorizes a public excerpt. The checked-in example is synthetic."
 }
