@@ -270,15 +270,16 @@ class _EmptyCommonsCatalog:
         raise EquipmentError("unknown equipment tool: " + str(name))
 
 
-def build_cli_catalog(*, grokbot_base_url: str | None = None):
-    """Slack/GitHub services + GrokBot lifecycle (G2), no public MCP tools."""
-    from integrations.shared_equipment.peers import GrokBotEquipment
+def build_cli_catalog(*, grokbot_base_url: str | None = None, claude_headless_root: str | None = None):
+    """Slack/GitHub services + GrokBot lifecycle (G2) + headless Claude (C1), no public MCP tools."""
+    from integrations.shared_equipment.peers import ClaudeHeadlessEquipment, GrokBotEquipment
 
     catalog = CombinedCatalog(_EmptyCommonsCatalog())
     if grokbot_base_url:
         catalog.extensions.append(GrokBotEquipment(grokbot_base_url))
     else:
         catalog.extensions.append(GrokBotEquipment())
+    catalog.extensions.append(ClaudeHeadlessEquipment(claude_headless_root))
     return catalog
 
 
@@ -375,8 +376,16 @@ def main() -> int:
         default=None,
         help="Override GrokBot control base URL (default http://127.0.0.1:8881)",
     )
+    parser.add_argument(
+        "--claude-headless-root",
+        default=None,
+        help="Runs root for headless Claude (default ~/.claude/commons_headless or CLAUDE_HEADLESS_ROOT)",
+    )
     args = parser.parse_args()
-    equipment = build_cli_catalog(grokbot_base_url=args.grokbot_control)
+    equipment = build_cli_catalog(
+        grokbot_base_url=args.grokbot_control,
+        claude_headless_root=args.claude_headless_root,
+    )
     if args.operation == "manifest":
         result = build_capability_manifest(catalog=equipment)
     elif args.operation == "catalog":

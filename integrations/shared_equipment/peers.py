@@ -260,3 +260,170 @@ class GrokBotEquipment:
                 "base_url": self.base_url,
                 "note": "Control gateway not running; do not relaunch residents on owner PC until cleared.",
             }
+
+
+def _load_claude_headless():
+    """Import integrations/claude_headless/claude_headless.py (a script directory, not a package)."""
+    import importlib
+    import sys
+    from pathlib import Path
+
+    package_dir = Path(__file__).resolve().parents[1] / "claude_headless"
+    if str(package_dir) not in sys.path:
+        sys.path.insert(0, str(package_dir))
+    return importlib.import_module("claude_headless")
+
+
+_CLAUDE_SUMMARY_KEYS = (
+    "run_id", "session_id", "status", "resume", "label", "peer", "cwd", "model",
+    "started_at", "ended_at", "exit_code", "result_text", "result_subtype", "is_error",
+    "num_turns", "cost_usd", "duration_ms", "child_model", "child_version", "event_count", "error",
+)
+
+
+class ClaudeHeadlessEquipment:
+    """Drive the installed Claude Code CLI headlessly through integrations/claude_headless (C1).
+
+    In-process over ``claude_headless.Runner``: every run is an on-disk record under the runs
+    root, so a replacement occupant recovers it from disk. The runner's memory floor applies;
+    on a starved machine ``claude_headless_start`` returns the refusal as the tool result and
+    spawns nothing. No credential is touched: the CLI uses the auth already on the machine.
+    """
+
+    def __init__(
+        self,
+        root: str | None = None,
+        *,
+        claude: list[str] | None = None,
+        min_free_mb: int | None = None,
+        runner=None,
+    ) -> None:
+        self._runner = runner
+        self._root = root
+        self._claude = claude
+        self._min_free_mb = min_free_mb
+
+    @property
+    def runner(self):
+        if self._runner is None:
+            module = _load_claude_headless()
+            self._runner = module.Runner(self._root, claude=self._claude, min_free_mb=self._min_free_mb)
+        return self._runner
+
+    def tools(self):
+        run_options = {
+            "cwd": "string",
+            "model": "string",
+            "tools": "string",
+            "allowed_tools": "string",
+            "strict_mcp": "boolean",
+            "permission_mode": "string",
+            "label": "string",
+            "peer": "string",
+            "wait_s": "integer",
+        }
+        return [
+            _schema(
+                "claude_headless_start",
+                "Start a headless Claude Code run on the equipped machine (C1). Returns run_id + durable session_id; wait_s blocks up to 300 s for the result. allowed_tools pre-approves tools (print mode cannot prompt); strict_mcp drops inherited MCP servers. Refuses under the memory floor.",
+                {"prompt": "string"},
+                run_options,
+            ),
+            _schema(
+                "claude_headless_status",
+                "Inspect one run by run_id; wait_s blocks up to 300 s for a terminal status. Finalizes from the on-disk record if the child is gone.",
+                {"run_id": "string"},
+                {"wait_s": "integer"},
+            ),
+            _schema(
+                "claude_headless_followup",
+                "Continue the exact same conversation (claude -p --resume) as a new run. target is a run_id or session_id.",
+                {"target": "string", "prompt": "string"},
+                run_options,
+            ),
+            _schema(
+                "claude_headless_cancel",
+                "Kill one run's process tree. The session stays resumable.",
+                {"run_id": "string"},
+            ),
+            _schema(
+                "claude_headless_events",
+                "Raw stream-json lines of a run after a cursor (1-based line index), with next_cursor.",
+                {"run_id": "string"},
+                {"after": "integer", "limit": "integer", "wait_ms": "integer"},
+            ),
+            _schema(
+                "claude_headless_recover",
+                "Finalize runs whose controller died, list still-running ones, and read the memory floor. A replacement occupant calls this first.",
+                {},
+            ),
+        ]
+
+    @staticmethod
+    def _summary(record: dict[str, Any]) -> dict[str, Any]:
+        out = {key: record.get(key) for key in _CLAUDE_SUMMARY_KEYS}
+        headless = record.get("headless") or {}
+        out["free_physical_mb_at_spawn"] = headless.get("free_physical_mb_at_spawn")
+        out["min_free_mb"] = headless.get("min_free_mb")
+        text = out.get("result_text")
+        if isinstance(text, str) and len(text) > 20000:
+            out["result_text"] = text[:20000]
+            out["result_text_truncated"] = True
+        out["ok"] = True
+        return out
+
+    @staticmethod
+    def _run_kwargs(args: dict[str, Any]) -> dict[str, Any]:
+        kwargs: dict[str, Any] = {}
+        for key in ("cwd", "model", "tools", "allowed_tools", "permission_mode", "label", "peer"):
+            if args.get(key) is not None:
+                kwargs[key] = args[key]
+        if args.get("strict_mcp"):
+            kwargs["strict_mcp"] = True
+        return kwargs
+
+    @staticmethod
+    def _wait_s(args: dict[str, Any]) -> float:
+        return float(min(300, max(0, int(args.get("wait_s", 0) or 0))))
+
+    def call(self, name: str, args: dict[str, Any]) -> dict[str, Any]:
+        module = _load_claude_headless()
+        try:
+            if name == "claude_headless_start":
+                record = self.runner.start(str(args["prompt"]), **self._run_kwargs(args))
+                wait = self._wait_s(args)
+                if wait:
+                    record = self.runner.wait(record["run_id"], timeout=wait)
+                return self._summary(record)
+            if name == "claude_headless_status":
+                wait = self._wait_s(args)
+                record = self.runner.wait(args["run_id"], timeout=wait) if wait else self.runner.status(args["run_id"])
+                return self._summary(record)
+            if name == "claude_headless_followup":
+                record = self.runner.followup(str(args["target"]), str(args["prompt"]), **self._run_kwargs(args))
+                wait = self._wait_s(args)
+                if wait:
+                    record = self.runner.wait(record["run_id"], timeout=wait)
+                return self._summary(record)
+            if name == "claude_headless_cancel":
+                return self.runner.cancel(args["run_id"])
+            if name == "claude_headless_events":
+                events, cursor = self.runner.events(
+                    args["run_id"],
+                    after=int(args.get("after", 0) or 0),
+                    limit=min(500, max(1, int(args.get("limit", 200) or 200))),
+                    wait_ms=min(45000, max(0, int(args.get("wait_ms", 0) or 0))),
+                )
+                return {"ok": True, "run_id": args["run_id"], "events": events, "next_cursor": cursor}
+            if name == "claude_headless_recover":
+                return {
+                    "ok": True,
+                    "recovered": self.runner.recover(),
+                    "still_running": self.runner.active(),
+                    "memory_floor": self.runner.memory_floor(),
+                }
+        except module.HeadlessError as exc:
+            return {"ok": False, "error": "claude_headless_refused", "message": str(exc)}
+        except KeyError as exc:
+            return {"ok": False, "error": "missing_argument", "message": "missing %s" % exc}
+        return {"error": "unknown_equipment_tool"}
