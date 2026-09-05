@@ -94,3 +94,5 @@ import contract without translation.
 
 Real customer validation is separate from this synthetic correctness; no
 customer data is in this directory.
+
+Sample answers on the fixture, regenerated and pinned by `test_lotlens_samples.py`: `lotlens/samples/README.md`.

@@ -424,8 +424,7 @@ class CliTests(unittest.TestCase):
             v1 = self.run_cli("-w", ws, "import", str(FIXTURE), "--label", "pilot")["version"]
             corrected = copy_fixture(tmp)
             with (corrected / "shipments.csv").open("a", encoding="utf-8", newline="") as fh:
-                fh.write("pilot-plant,SHIP-10,PKG-P4-1,Deli East,300,L,2026-08-21
-")
+                fh.write("pilot-plant,SHIP-10,PKG-P4-1,Deli East,300,L,2026-08-21\n")
             v2 = self.run_cli("-w", ws, "import", str(corrected), "--label", "corrected")["version"]
             self.assertNotEqual(v1, v2)
             older = self.run_cli("-w", ws, "--versions", v1, "impact", "pilot-plant/package/PKG-P4-1", "--paths", "summary")
