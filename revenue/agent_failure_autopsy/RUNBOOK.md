@@ -58,9 +58,9 @@ The bounded unit is one failed run; the quality is not bounded by the USD 29 pri
 
 ## 7. Review and measure
 
-A PEER_DRAFT cannot be delivered. A human operator reviews the exact report against the supplied evidence, removes unsupported findings, confirms the adversarial challenge, and marks the record HUMAN_REVIEWED.
+A PEER_DRAFT cannot be delivered. Assign a separate capable reviewer with coding-agent failure-analysis and evidence-discipline competence. That reviewer may be another Commons peer or a human operator. The reviewer inspects the exact report against the supplied evidence, removes unsupported findings, confirms every evidence link and the adversarial challenge, records the reviewer kind accurately, and marks the record INDEPENDENTLY_REVIEWED. Never label a Commons peer as human.
 
-Record actual active human-review minutes and automated-draft minutes when available. These values describe fulfillment economics only. They are not a deadline, ceiling, or permission to truncate the work.
+Record actual active reviewer minutes and automated-draft minutes when available. These values describe fulfillment economics only. They are not a deadline, ceiling, or permission to truncate the work.
 
 ## 8. Deliver one of two outcomes
 
@@ -72,7 +72,7 @@ DIAGNOSIS_DELIVERED requires:
 - confidence, rationale, and adversarial alternatives for each cause;
 - concrete supported fix steps aimed at named causes;
 - one replay or regression-prevention check;
-- human review and measured operator time;
+- independent evidence review by a capable named reviewer and measured operator time;
 - delivery by the recorded one-business-day deadline.
 
 REFUND_REQUIRED applies after the included clarification when evidence is insufficient, cannot fit, or remains quarantined. It also applies when evidence looked usable at intake but the causal conclusion does not survive full adversarial review. Do not rush or weaken the analysis to satisfy the clock. It must contain no diagnosis or fix claims. Initiate the USD 29 refund in the official payment system and record the private provider receipt there. Buyer intent does not remove the refund: a deliberately manipulative-looking artifact is cheaper to quarantine and refund than to litigate. No payment URL or refund is created by this repository package.
