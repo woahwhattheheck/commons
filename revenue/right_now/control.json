@@ -1,5 +1,5 @@
 {
-  "as_of": "2026-08-30T18:24:00Z",
+  "as_of": "2026-09-05T09:50:00Z",
   "blockers": [
     {
       "condition": "A chargeable buyer path and processor receipt are independently evidenced.",
@@ -99,6 +99,18 @@
   "kind": "RIGHT_NOW_REVENUE_CONTROL",
   "offers": [
     {
+      "commons_bottleneck": "Deliver the full-strength autopsy (or refund) against the live offer contract without reminting Stripe.",
+      "delivery_window": "one business day",
+      "founder_bottleneck": "Confirm usable redacted evidence arrived after payment, start the one-business-day clock, and assign fulfillment.",
+      "id": "agent-failure-autopsy-29",
+      "name": "Agent Failure Autopsy",
+      "next_external_event": "A real buyer pays the live $29 checkout on agent-rescue.html and sends redacted one-run evidence inside the intake boundary.",
+      "payment_state": "LIVE_PUBLIC_CHECKOUT_PAGE",
+      "price_usd": 29,
+      "rank": 1,
+      "start_route": "agent-rescue.html"
+    },
+    {
       "commons_bottleneck": "Deliver the Markdown and JSON receipt against all five acceptance checks after funding.",
       "delivery_window": "one business day",
       "founder_bottleneck": "Confirm the exact diagnostic scope and window, then issue the buyer-specific $199 payment handoff.",
@@ -107,20 +119,8 @@
       "next_external_event": "A real buyer sends one client-safe failure sentence and accepts the exact diagnostic scope.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 199,
-      "rank": 1,
-      "start_route": "agent-triage.html"
-    },
-    {
-      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding.",
-      "delivery_window": "one agreed business day",
-      "founder_bottleneck": "Accept the exact sentence and window, then issue the buyer-specific payment handoff.",
-      "id": "same-day-agent-survival-proof",
-      "name": "Same-Day Agent Survival Proof",
-      "next_external_event": "A real buyer sends the one-sentence failure and agrees to a start window.",
-      "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
-      "price_usd": 2500,
       "rank": 2,
-      "start_route": "revenue/production_survival/README.md"
+      "start_route": "agent-triage.html"
     },
     {
       "commons_bottleneck": "Confirm the art direction and land the four acceptance items.",
@@ -157,6 +157,18 @@
       "price_usd": 2500,
       "rank": 5,
       "start_route": "humans.html#interest"
+    },
+    {
+      "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; keep agent-rescue.html reserved for Autopsy.",
+      "delivery_window": "one agreed business day",
+      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from commercial.html, then issue a buyer-specific payment handoff.",
+      "id": "same-day-agent-survival-proof",
+      "name": "Same-Day Agent Survival Proof",
+      "next_external_event": "A real buyer starts from commercial.html with the one-sentence failure and agrees to a start window.",
+      "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
+      "price_usd": 2500,
+      "rank": 6,
+      "start_route": "commercial.html"
     }
   ],
   "payment": {
@@ -177,11 +189,15 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "f1984ea4e437e00229ddce651f8813f76434c5454c25e6c5631d284685cdf3f8"
+      "sha256": "4d86ee98287764fc9a46c676d8f896388eeb7632876a2882f50332d7de67a4b5"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",
       "sha256": "ea5cfa1ba7be0972f188f35149e18dab1733a79b000a0268eff64433df8d7cda"
+    },
+    {
+      "path": "revenue/right_now/autopsy_offer.json",
+      "sha256": "96cd8dba9551c930dde209651d68905b57970af2e3cf78754e0de2284e743991"
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
@@ -197,12 +213,12 @@
     },
     {
       "path": "revenue/production_survival/offer.json",
-      "sha256": "4a9af0433bad940797703921b6faf7476d0421a9687f947bda76011a17958569"
+      "sha256": "82e1ddc6cdddc477e38c1027678a443b3191e0c155a089401eb7a6fd7775b880"
     }
   ],
   "truth": {
     "accepted_scopes": 0,
-    "active_chargeable_checkout": false,
+    "active_chargeable_checkout": true,
     "collected_cash_usd": 0,
     "prospects_evaluated": 4,
     "ready_to_draft": 1,
