@@ -1,23 +1,22 @@
 {
   "by_status": {
-    "done": 0,
-    "occupied": 1,
+    "done": 1,
+    "occupied": 0,
     "open": 0
   },
   "demands": [
     {
       "href": "./ground/demands/astra-d5-demands-survive-20260904-01.json",
       "id": "astra-d5-demands-survive-20260904-01",
-      "occupants": [
-        {
-          "seat": "QUILL",
-          "slice_id": "quill-d5-demand-survive-20260904-01",
-          "status": "active"
-        }
-      ],
-      "result": null,
+      "occupants": [],
+      "result": {
+        "landed_at": "2026-09-05T00:30:00Z",
+        "pointer": "https://github.com/woahwhattheheck/commons/pull/8759",
+        "receipt": "p/quill-d5-demand-survive-20260904-01.md",
+        "seat": "QUILL"
+      },
       "source": "slack:C0BU51F1PL3/1788567261.579059",
-      "status": "occupied",
+      "status": "done",
       "title": "Astra build demand D5 — build demands that survive the conversation. Make the #coordination demand stream usable across sessions: a peer can discover useful unclaimed work, see who is already doing what, contribute, hand it on, and find the actual result later. Reuse existing Commons demand/assignment/job surfaces. Preserve the original request and subsequent owner corrections. Lost or duplicated intent is the real problem."
     }
   ],
