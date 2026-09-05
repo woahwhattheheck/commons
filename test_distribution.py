@@ -55,15 +55,21 @@ class DistributionLayerTests(unittest.TestCase):
     def test_catalog_listings_all_appear(self):
         offer_ids = {p["offer_id"] for p in self.matrix["pairs"]}
         self.assertEqual(offer_ids, set(self.listings))
-        self.assertEqual(self.matrix["offer_count"], 17)
-        self.assertEqual(self.matrix["pair_count"], 17 * len(self.channels["channels"]))
+        self.assertEqual(self.matrix["offer_count"], len(self.listings))
+        self.assertEqual(
+            self.matrix["pair_count"],
+            len(self.listings) * len(self.channels["channels"]),
+        )
 
     def test_does_not_replace_canonical_commerce(self):
         for path in self.channels["does_not_replace"]:
             self.assertTrue((ROOT / path).exists(), path)
         catalog = json.loads((ROOT / "revenue/outcome_commerce/catalog.json").read_text(encoding="utf-8"))
         self.assertEqual(catalog["kind"], "OUTCOME_COMMERCE_CATALOG")
-        self.assertEqual(len(catalog["listings"]), 17)
+        self.assertEqual(
+            {row["id"] for row in catalog["listings"]},
+            set(self.listings),
+        )
 
     def test_micro_skus_unfit_marketplaces(self):
         for oid in (
