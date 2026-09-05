@@ -42,6 +42,50 @@ Agents doing sales use `brief` then `claim`. No claim = no draft.
 only when the live occupant matches YOU. UNSEATED or a different occupant
 exits 4. Listing stays open. Still not a second CRM. `--send` exits 3.
 
+## RELATIONSHIP_HANDOFF (CRM6)
+
+When a peer's context window is gone, the successor continues from evidence:
+
+```sh
+python3 host/lm_gtm_relationship_handoff.py SUBJECT
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
+```
+
+Returns kind `LM_GTM_RELATIONSHIP_HANDOFF` with SOURCED or ABSENT fields for
+wants, learned, promised, sent_communication, unresolved,
+next_time_sensitive, and successor_next_action. A typed
+`SENT_AWAITING_REPLY` record is communication evidence only and is surfaced as
+`sent_communication`; it does not establish what anyone promised. `promised`
+remains ABSENT until a source-reading mechanism supplies separately verified
+commitment content. Pointer prose stays `SUMMARY_POINTER` even when it cites a
+Gmail or Slack message: the pointer is retained, but this composer does not
+claim it fetched or quoted the linked source. Event chronology is
+ timezone-aware.
+
+`relationship_handoff_evidence.jsonl` is a narrow, validated,
+source-pointer-only supplement for facts that must reach the successor without
+rewriting the canonical INDEX overlay or copying private mail into Git. The
+packet labels those records `RELATIONSHIP_EVIDENCE`, labels canonical overlay
+records `INDEX_OVERLAY`, lists the relationship event ids, and reports
+`canonical_index_mutated: false`. The supplement is not a second CRM.
+
+The Billings example now distinguishes these facts:
+
+- main proposal and separate confidential-pricing package: `SUBMISSION_SENT`;
+- recipient acknowledgement, acceptance, award, and payment: not established;
+- effective state: OWNER_HOLD / DNR_OUTREACH / NOT_HOT;
+- next action: do not resend or contact Cheri; wait for acknowledgement or a
+  buyer reply;
+- next time-sensitive source target: 2026-09-28, not the expired submission
+  deadline.
+
+Canaries:
+
+```sh
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py
+python3 -m unittest -v test_lm_gtm_handoff_provenance.py
+```
+
 ## Cross-harness contract
 
 Read (any harness with git):
@@ -63,8 +107,10 @@ Read (any harness with git):
    `metaforms` and the MSP SENT rows hydrate `route.kind: EXISTING_CRM_RECORD`
    / `airtable:rec…`. Emails and phones stay in source ledgers; the INDEX
    does not copy them.
+7. Relationship handoff for a successor peer:
+   `python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421`
 
-Write (overlay only):
+Write (canonical overlay only):
 
 ```sh
 python3 host/lm_gtm_index.py append-event \
@@ -106,7 +152,10 @@ python3 host/lm_gtm_index.py show city-of-billings-bid-1421
 python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py require-claim composio --owner YOURNAME
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
 python3 -m unittest -v test_lm_gtm_index.py
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py
+python3 -m unittest -v test_lm_gtm_handoff_provenance.py
 ```
 
 Door: [`lm-gtm-index.html`](../../lm-gtm-index.html).
@@ -121,10 +170,15 @@ State: [`state.json`](./state.json).
 - `revenue/marketing_sales/pipeline.json` (research-universe summary only; the
   ~1000 `RESEARCH_REQUIRED` GitHub entities are not live sales next-actions)
 - `revenue/swarm_mail/inboxes.json`
-- `revenue/lm_gtm_index/events.jsonl` (overlay pointers + occupancy)
+- `revenue/lm_gtm_index/events.jsonl` (canonical overlay pointers + occupancy)
+- `revenue/lm_gtm_index/relationship_handoff_evidence.jsonl` (validated
+  source-pointer supplement used only by CRM6 handoff; not canonical CRM and
+  not an INDEX mutation)
 
 Seller contacts from the website loop stay `seller_context` and are never
-live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX`.
+live buyers. Outbound mailbox truth remains `NEEDS_OWNER_MAILBOX` for the
+canonical public projection; CRM6 handoff can cite specific verified message
+ids without copying addresses or message bodies.
 
 Do not remint `lm-gtm-index-20260831-01`, `lm-gtm-hot-lane-20260831-01`,
 `lm-gtm-floor-sync-20260831-01`, `lm-gtm-agent-brief-20260831-01`,
