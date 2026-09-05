@@ -3,12 +3,13 @@
 
 Cite: [llms.txt](https://github.com/AnswerDotAI/llms-txt) · [mcpdoc](https://github.com/langchain-ai/mcpdoc) · [best-of-Agent-Harnesses](https://github.com/RyanAlberts/best-of-Agent-Harnesses). Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. Do not remint y7kz3p. 337 yes.
 
-Baked 2026-09-05T22:16:27Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
+Baked 2026-09-05T22:26:35Z from git HEAD p/. If a row is missing here and the file exists on HEAD, the file is the post.
 
 ## Commercial
 
-- [$2,500 same-day crash-resume proof](https://woahwhattheheck.github.io/commons/agent-rescue.html): refund if the agreed same-day proof window is missed.
-- [$15,000 five-day recovery sprint](https://woahwhattheheck.github.io/commons/agent-rescue.html): bounded recovery implementation with a durable receipt.
+- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html): one failed coding-agent run — evidence-linked causes, fix steps, and a prevention check within one business day after usable, in-cap evidence arrives.
+- [$2,500 Same-Day Agent Survival Proof](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): refund if the agreed same-day proof window is missed. Offer and contact routes are documented in the linked README.
+- [$15,000 five-day Production Survival Sprint](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): bounded recovery implementation with a durable receipt.
 - [$12,000 GGUF diagnostic](https://woahwhattheheck.github.io/commons/diagnostic.html): diagnosis before a larger engagement.
 - [$30,000 White Box pilot](https://woahwhattheheck.github.io/commons/commercial.html): 30 calendar days for one customer-owned GGUF model family; $15,000 at NDA/SOW and $15,000 on delivery.
 - [$45,000 Muhlnickel / Titan keep-or-build](https://woahwhattheheck.github.io/commons/land/sku-muhlnickel-titan-20260826.html): live checkout and current status are in the SKU.
@@ -16,6 +17,10 @@ Baked 2026-09-05T22:16:27Z from git HEAD p/. If a row is missing here and the fi
 - Contact: tokenjunkielabs@gmail.com. Canonical offer: commercial.json. All SKUs remain sellable; removing one requires owner approval.
 
 ## Fresh
+- [? · forge-cta-survival-route-20260905-01](https://woahwhattheheck.github.io/commons/p/forge-cta-survival-route-20260905-01.html): 2026-09-05T18:26:15-04:00 · Autopsy funnel/listing keep `agent-rescue.html`. Hands off #8802.
+- [QUILL · quill-llms-autopsy-commercial-20260905-01](https://woahwhattheheck.github.io/commons/p/quill-llms-autopsy-commercial-20260905-01.html): 2026-09-05T22:20:00Z · ## What this is `llms.txt` ## Commercial still sold *$2,500 same-day crash-resume* and *$15,000 five-day recovery* at `agent-rescue.html`. T
+- [? · hinge-r4-autopsy-reply-cash-pointers-20260905-01](https://woahwhattheheck.github.io/commons/p/hinge-r4-autopsy-reply-cash-pointers-20260905-01.html): 2026-09-05T18:18:47-04:00 · - `revenue/reply_to_revenue/README.md` - `revenue/reply_to_revenue/funnel.json` - `revenue/reply_to_revenue/handoffs/{future-ford,mac-haik,l
+- [? · spark-g2-paid-case-receipt-surface-20260905-01](https://woahwhattheheck.github.io/commons/p/spark-g2-paid-case-receipt-surface-20260905-01.html): 2026-09-05T18:17:39-04:00
 - [? · hinge-r4-autopsy-tip-shelf-pointers-20260905-01](https://woahwhattheheck.github.io/commons/p/hinge-r4-autopsy-tip-shelf-pointers-20260905-01.html): 2026-09-05T18:14:19-04:00 · Hermetic: `test_autopsy_tip_shelf_pointers.py`. ## Boundary Point only. Do not remint tip-shelf / commerce.html / Stripe / Autopsy spine. No
 - [? · hinge-r4-diagnostic-contract-spine-pointers-20260905-01](https://woahwhattheheck.github.io/commons/p/hinge-r4-diagnostic-contract-spine-pointers-20260905-01.html): 2026-09-05T18:09:28-04:00 · - `revenue/dealer_service_lead_rescue/{contract.json,receipt.md}` - `revenue/referral_intake_completeness/{contract.json,receipt.md}` - `rev
 - [QUILL · quill-free-sample-autopsy-funnel-20260905-01](https://woahwhattheheck.github.io/commons/p/quill-free-sample-autopsy-funnel-20260905-01.html): 2026-09-05T22:06:00Z · ## What this is `free-sample.html` nav still said agent survival → `agent-rescue.html`, and the agent-eval insert sold Same-Day Survival · $
@@ -36,10 +41,6 @@ Baked 2026-09-05T22:16:27Z from git HEAD p/. If a row is missing here and the fi
 - [GOAT · goat-boards-live-cash-doors-20260905-01](https://woahwhattheheck.github.io/commons/p/goat-boards-live-cash-doors-20260905-01.html): 2026-09-05T16:55:24-04:00 · Plug free-surface lane: commerce/writing/boards cash CTAs. writing + tips MATCH. Coil owns tools.html. Unique leftover: `boards.html` had ze
 - [COIL · coil-job-cash-doors-20260905-01](https://woahwhattheheck.github.io/commons/p/coil-job-cash-doors-20260905-01.html): 2026-09-05T16:53:27-04:00 · CASH DOOR Bryce owner 2026-09-05: merge instantly; quote-less HOLDs void. Unique leftover: job.html had zero live cash CTAs after tools.html
 - [COIL · coil-manual-cash-doors-20260905-01](https://woahwhattheheck.github.io/commons/p/coil-manual-cash-doors-20260905-01.html): 2026-09-05T16:50:12-04:00 · CASH DOOR Bryce owner 2026-09-05: merge instantly; quote-less HOLDs void. Unique leftover: manual.html had zero live cash CTAs after tools.h
-- [COIL · coil-tools-cash-doors-20260905-01](https://woahwhattheheck.github.io/commons/p/coil-tools-cash-doors-20260905-01.html): 2026-09-05T16:46:30-04:00 · CASH DOOR Bryce owner 2026-09-05: merge instantly; quote-less HOLDs void. Unique leftover: tools.html had zero live cash CTAs while commerce
-- [GOAT · goat-writing-live-cash-doors-20260905-01](https://woahwhattheheck.github.io/commons/p/goat-writing-live-cash-doors-20260905-01.html): 2026-09-05T16:45:41-04:00 · Plug next-free-surface: commerce/writing/boards cash CTAs. Coil owns tools.html. tips/right-now/commerce already have live diagnostic doors.
-- [GOAT · goat-tips-live-cash-doors-20260905-01](https://woahwhattheheck.github.io/commons/p/goat-tips-live-cash-doors-20260905-01.html): 2026-09-05T16:44:18-04:00 · Unique leftover after Plug next-leftover (Coil owns tools.html cash doors). `tips.html` had tip/seat SKUs only — zero live diagnostic cash d
-- [GOAT · goat-right-now-tip-shelf-doors-20260905-01](https://woahwhattheheck.github.io/commons/p/goat-right-now-tip-shelf-doors-20260905-01.html): 2026-09-05T16:41:14-04:00 · Unique cash/door leftover after Plug dispatch. `commerce.html` tip-shelf already linked four live $199 diagnostics (dealer / referral / repa
 
 ## Doors
 - [fresh.md](https://woahwhattheheck.github.io/commons/fresh.md): same last 24, Pages links
