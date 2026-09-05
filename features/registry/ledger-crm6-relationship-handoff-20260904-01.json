@@ -1,11 +1,12 @@
 {
   "added": "2026-09-04",
-  "capability": "CRM6 relationship handoff: successor peer continues an existing GTM/JOJO relationship from evidence-bound wants/learned/promised/unresolved/due fields. Not a second CRM. Billings OWNER_HOLD preserved; no Cheri contact.",
+  "capability": "CRM6 relationship handoff: a successor peer continues an existing GTM/JOJO relationship from source-linked wants, learned state, sent communication, unresolved state, due target, and next action. Promise content stays ABSENT until separately verified. Not a second CRM. Billings OWNER_HOLD and no-new-contact are preserved after submission.",
   "carrier": "LEDGER",
   "claimed_paths": [
     "host/lm_gtm_relationship_handoff.py",
     "test_lm_gtm_relationship_handoff.py",
     "test_lm_gtm_handoff_provenance.py",
+    "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
     "revenue/lm_gtm_index/README.md",
     "lm-gtm-index.html",
     "features/registry/ledger-crm6-relationship-handoff-20260904-01.json",
@@ -16,7 +17,7 @@
   ],
   "id": "ledger-crm6-relationship-handoff-20260904-01",
   "name": "CRM6 relationship survives context window",
-  "next_gap": "Owner mailbox still required for live send. Agents do not contact Cheri or submit Bid 1421. Do not resend BOUNCED or SENT-DNR. Do not mint a second CRM. Overlay composed_at may be stale vs Slack — re-verify before commercial action.",
+  "next_gap": "Billings submission is source-linked as SENT, but recipient acknowledgement, acceptance, award, and payment remain unestablished. Do not resend or contact Cheri. Use the business mailbox only to verify a future buyer reply. Do not mint a second CRM. Canonical INDEX composed_at may still be stale; the handoff-only evidence file is explicitly not the canonical CRM or an INDEX mutation.",
   "owner_subsystem": "lm-gtm-index",
   "public_entrypoint": "lm-gtm-index.html",
   "related": {
@@ -28,6 +29,7 @@
   "resource_links": [
     "lm-gtm-index.html",
     "revenue/lm_gtm_index/README.md",
+    "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
     "p/ledger-crm6-relationship-handoff-20260904-01.md",
     "host/lm_gtm_relationship_handoff.py"
   ],
