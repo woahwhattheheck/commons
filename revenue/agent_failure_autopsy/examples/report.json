@@ -6,7 +6,6 @@
   "case_id": "synthetic-generated-settings-001",
   "intake_sha256": "313de1cb75c92a4eb01bc2f0350ff9d89e6a6fe2a9db95a14f2c2a5f60e90226",
   "failure_sentence": "Codex kept editing the same generated setting, but every retry ended with the same failing timeout test.",
-  "harness_summary": "Codex using apply_patch and a Python settings generator before a focused pytest check on Windows.",
   "disposition": "DIAGNOSIS_DELIVERED",
   "artifact_state": "PEER_DRAFT",
   "delivery": {
@@ -262,16 +261,19 @@
   ],
   "operator_time": {
     "measurement_status": "NOT_MEASURED",
-    "human_review_minutes": null,
     "automated_draft_minutes": null,
     "measurement_purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
-    "time_truncated_analysis": false
+    "time_truncated_analysis": false,
+    "reviewer_minutes": null
   },
   "final_review": {
     "state": "PEER_DRAFT",
     "reviewer_ref": null,
     "reviewed_at": null,
-    "evidence_link_check": false
+    "evidence_link_check": false,
+    "reviewer_kind": null,
+    "independent_of_drafter": false,
+    "adversarial_challenge_check": false
   },
   "refund": {
     "required": false,
@@ -303,5 +305,6 @@
     "selection_state": "WITHIN_CAP",
     "embedded_instructions_trusted": false,
     "quarantined_file_count": 0
-  }
+  },
+  "coding_stack_summary": "Codex using apply_patch and a Python settings generator before a focused pytest check on Windows."
 }
