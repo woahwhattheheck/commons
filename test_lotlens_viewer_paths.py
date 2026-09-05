@@ -15,11 +15,11 @@ class LotLensViewerPathsTests(unittest.TestCase):
         self.assertIn("<th>what</th>", html)
         self.assertIn("function nodeDetail", html)
         self.assertIn("function pathSummaryLines", html)
-        self.assertIn('attrs.material', html)
-        self.assertIn('attrs.supplier', html)
-        self.assertIn('attrs.product', html)
-        self.assertIn('attrs.customer', html)
-        self.assertIn(" -\"+e.relation", html)  # from -relation-> to form
+        self.assertIn("attrs.material", html)
+        self.assertIn("attrs.supplier", html)
+        self.assertIn("attrs.product", html)
+        self.assertIn("attrs.customer", html)
+        self.assertIn('e.from+" -"+e.relation', html)
         self.assertIn("pathline", html)
         # Still a closed page: no remote script / fetch / storage.
         self.assertNotIn("<script src", html)
