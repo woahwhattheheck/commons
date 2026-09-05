@@ -17,9 +17,9 @@ class AgentFailureDiagnosticPageTests(unittest.TestCase):
         cls.lower = cls.page.lower()
 
     def test_offer_is_the_29_diagnostic_not_a_proof_product(self):
-        self.assertIn("One failed agent run. Find out what broke.", self.page)
+        self.assertIn("Your coding agent failed. Find out why for $29.", self.page)
         self.assertIn("$29 · one business day", self.page)
-        self.assertIn("for indie developers, automation builders, and small AI teams", self.page)
+        self.assertIn("for indie developers, automation builders, and small AI teams paying to run coding agents", self.page)
         self.assertNotIn("Same-Day Agent Survival Proof", self.page)
         self.assertNotIn("working recovery proof", self.lower)
         self.assertNotIn("Authorize one proof", self.page)
