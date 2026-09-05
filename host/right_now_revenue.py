@@ -60,7 +60,9 @@ def read_object(path: Path) -> dict[str, Any]:
 
 
 def sha256_file(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    # Hash LF-normalized bytes so Windows working copies and Linux CI agree.
+    data = path.read_bytes().replace(b"\n", b"\n").replace(b"\r", b"\n")
+    return hashlib.sha256(data).hexdigest()
 
 
 def _positive_integer(value: Any, where: str) -> int:

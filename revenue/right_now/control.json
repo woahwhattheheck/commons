@@ -189,19 +189,19 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "337b29a05de7cf96f32c47dde3940d2b3eb2ffeccd8b89fbf7524f49e28e90aa"
+      "sha256": "4d86ee98287764fc9a46c676d8f896388eeb7632876a2882f50332d7de67a4b5"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",
-      "sha256": "066b71faaa00668ff2262b05d69bffbd9ede43181a4a5ec06a0a4846ff374b82"
+      "sha256": "ea5cfa1ba7be0972f188f35149e18dab1733a79b000a0268eff64433df8d7cda"
     },
     {
       "path": "revenue/right_now/autopsy_offer.json",
-      "sha256": "bba06239897b691a27b3ffb67a2c400f8fb8c6efcc3f405cf9c7e5525d0dacde"
+      "sha256": "96cd8dba9551c930dde209651d68905b57970af2e3cf78754e0de2284e743991"
     },
     {
       "path": "revenue/smart_outreach/candidates.json",
-      "sha256": "a99406d66b3a3e5c3d224def6525f870c18c8e156a9078c0b073516b688d7de2"
+      "sha256": "39718f93d18ef789f9dba49aca7f84d47659554789a3ba4d40265ec6596394ba"
     },
     {
       "path": "revenue/payment_ready/current_receipt.json",
@@ -209,11 +209,11 @@
     },
     {
       "path": "revenue/human_outcomes/offers.json",
-      "sha256": "45010911c2c4d01c8a01f8234e3c40f6e7e259d15c2d53b845b0ab4c9c094379"
+      "sha256": "89e559f39f9101efa7ea2ecedaa63167a07798a307fd11294be5822ea1758603"
     },
     {
       "path": "revenue/production_survival/offer.json",
-      "sha256": "cfd0dae6d4af3bcf354b51a9b9a63496fd90b81e3aa7af435e97ac1627adca6d"
+      "sha256": "82e1ddc6cdddc477e38c1027678a443b3191e0c155a089401eb7a6fd7775b880"
     }
   ],
   "truth": {
