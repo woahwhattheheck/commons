@@ -123,6 +123,24 @@ The gateway also supplies `gemini_submit`, `gemini_get_request`, `gemini_follow_
 
 Cancellation is cooperative: `gemini_cancel` or `POST /v1/requests/{id}/cancel` first returns `cancel_requested`. A model response already in flight may still finish and consume provider capacity; the tool loop then stops before another service effect and reports `cancelled`. It does not kill the provider process or unrelated work. On restart, unfinished queued/running requests become `interrupted`; `gemini_recover` lists them without replaying work. Inspect the tool journal and remote state, then explicitly follow up as needed.
 
+### 6. Shared headless Claude equipment (C1)
+
+`ClaudeHeadlessEquipment` (in `peers.py`) drives the installed, already-authenticated Claude Code CLI
+through `integrations/claude_headless/claude_headless.py`, in process, with every run an on-disk
+record: `claude_headless_start` (prompt; optional `cwd`, `model`, `tools`, `allowed_tools`,
+`strict_mcp`, `permission_mode`, `label`, `peer`, `wait_s` up to 300), `claude_headless_status`
+(`run_id`, optional `wait_s`), `claude_headless_followup` (`target` = run_id or session_id, `prompt`;
+`claude -p --resume`), `claude_headless_cancel` (`run_id`; the session stays resumable),
+`claude_headless_events` (`run_id`, `after`, `limit`, `wait_ms`; raw stream-json with a cursor) and
+`claude_headless_recover` (finalize orphaned runs, list still-running ones, read the memory floor).
+The CLI catalog and the capability manifest compose it (`python -m integrations.shared_equipment.services
+catalog|manifest`; `--claude-headless-root` moves the runs root), so a newcomer sees the same six
+operations as every other peer. For unattended research pass `allowed_tools="WebSearch,WebFetch,Write,Read"`
+and `strict_mcp=true`: print mode cannot prompt, so `tools` alone denies every call. On a starved machine the
+runner's memory floor (`CLAUDE_HEADLESS_MIN_FREE_MB`; the C1 gateway uses 1024) makes
+`claude_headless_start` return `{"ok": false, "error": "claude_headless_refused", ...}` with the measured
+free RAM instead of spawning. No credential is read or copied; the CLI uses the auth already on the machine.
+
 ---
 
 ## Idempotency, Crash Ambiguity & Replay Guidance
