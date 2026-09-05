@@ -86,6 +86,8 @@ still flash a terminal before PowerShell handles its arguments. The wrapper
 waits for the existing watcher, returns its exit code, and appends stdout/stderr
 to the existing `%LOCALAPPDATA%\Commons\discord-runtime.log`; schedules and
 bridge recovery behavior are unchanged. Owner-opened terminals are unaffected.
+The bridge's periodic `git rev-parse` and `git diff` children also use
+`CREATE_NO_WINDOW`, preventing a separate Git-titled terminal on each poll.
 
 The temporary bridge task executes `pythonw.exe -B commons_discord_bridge.py`
 directly. Python is therefore the scheduled-task root: `/End` terminates the
