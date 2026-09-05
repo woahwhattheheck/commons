@@ -6,6 +6,22 @@ Harness and stack: [harness; model if supplied; OS/runtime/tooling if relevant]
 
 Disposition: [DIAGNOSIS_DELIVERED or REFUND_REQUIRED]
 
+## Intake scope
+
+One failed execution of one agent workflow.
+
+Accepted files: [count] of 10
+
+Accepted raw bytes: [count] of 25,000,000
+
+Extracted Unicode characters: [count] of 2,000,000 (roughly 500,000 text tokens)
+
+Boundary encountered: [NONE, FILE_COUNT, RAW_BYTES, EXTRACTED_CHARACTERS, or MULTIPLE]
+
+Selection state: [WITHIN_CAP, SLICE_REQUESTED, RELEVANT_SLICE_SELECTED, or CANNOT_FIT_LEGITIMATE_CASE]
+
+Embedded instructions were treated as untrusted evidence data.
+
 ## Reconstructed run
 
 List the ordered observed events. End every event with one or more source anchors such as [transcript-1#T1-L03].
