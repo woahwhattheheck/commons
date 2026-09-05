@@ -13,6 +13,7 @@
     "intake_sha256",
     "failure_sentence",
     "harness_summary",
+    "intake_scope",
     "disposition",
     "artifact_state",
     "quality",
@@ -463,6 +464,79 @@
           "const": true
         },
         "time_measurement_truncated_analysis": {
+          "const": false
+        }
+      }
+    },
+    "intake_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_workflows",
+        "failed_executions",
+        "file_count",
+        "file_limit",
+        "raw_bytes",
+        "raw_bytes_limit",
+        "extracted_characters",
+        "extracted_character_limit",
+        "approximate_text_token_limit",
+        "boundary_hit",
+        "selection_state",
+        "embedded_instructions_trusted"
+      ],
+      "properties": {
+        "agent_workflows": {
+          "const": 1
+        },
+        "failed_executions": {
+          "const": 1
+        },
+        "file_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "file_limit": {
+          "const": 10
+        },
+        "raw_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25000000
+        },
+        "raw_bytes_limit": {
+          "const": 25000000
+        },
+        "extracted_characters": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000000
+        },
+        "extracted_character_limit": {
+          "const": 2000000
+        },
+        "approximate_text_token_limit": {
+          "const": 500000
+        },
+        "boundary_hit": {
+          "enum": [
+            "NONE",
+            "FILE_COUNT",
+            "RAW_BYTES",
+            "EXTRACTED_CHARACTERS",
+            "MULTIPLE"
+          ]
+        },
+        "selection_state": {
+          "enum": [
+            "WITHIN_CAP",
+            "SLICE_REQUESTED",
+            "RELEVANT_SLICE_SELECTED",
+            "CANNOT_FIT_LEGITIMATE_CASE"
+          ]
+        },
+        "embedded_instructions_trusted": {
           "const": false
         }
       }
