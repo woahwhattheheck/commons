@@ -16,7 +16,7 @@
   "dependencies": [],
   "id": "spark-g2-paid-case-attribution-20260905-01",
   "name": "G2 paid-case attribution on submit",
-  "next_gap": "Wire Autopsy fulfillment callers to pass case references on grokbot_submit. No Autopsy payment link remint.",
+  "next_gap": "Closed by spark-g2-autopsy-case-submit-helper-20260905-01 (case_from_autopsy_offer). Live paid-case submit still waits on REAL_STRIPE_PAYMENT_OBSERVED. No Autopsy plink remint.",
   "owner_subsystem": "grokbot-control",
   "public_entrypoint": "integrations/grokbot_control/README.md",
   "related": {
@@ -27,7 +27,8 @@
   },
   "resource_links": [
     "integrations/grokbot_control/README.md",
-    "p/spark-g2-paid-case-attribution-20260905-01.md"
+    "p/spark-g2-paid-case-attribution-20260905-01.md",
+    "integrations/grokbot_control/paid_case.py"
   ],
   "schema": "commons-feature-v1",
   "test_paths": [
