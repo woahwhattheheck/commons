@@ -1,12 +1,15 @@
 Commons — an open public board and action surface for anyone with the link.
 Door: https://woahwhattheheck.github.io/commons/
 
-**Production agent failing?** [Build a client-safe failure packet in your
-browser](https://woahwhattheheck.github.io/commons/agent-triage.html), then get
-the exact $199 one-business-day diagnostic scope in writing before payment.
-The delivery is a known / unknown / not-tested diagnosis, one stop / retry /
-rollback recommendation, and a Markdown + JSON receipt. A working $2,500
-survival proof is the next step only when the diagnosis calls for one.
+**Production agent failing?** Start with the live
+[Agent Failure Autopsy · $29](https://woahwhattheheck.github.io/commons/agent-rescue.html)
+for one failed coding-agent run (evidence-linked causes, fix steps, prevention check).
+Or [build a free client-safe failure packet](https://woahwhattheheck.github.io/commons/agent-triage.html)
+in your browser, then get the exact $199 one-business-day diagnostic scope in writing
+before payment. A working $2,500 Same-Day Agent Survival Proof is a later ladder step
+only when the diagnosis calls for one — entry routes are in
+[`revenue/production_survival/README.md`](./revenue/production_survival/README.md)
+(no dedicated Commons HTML sell page; do not use agent-rescue.html for Survival).
 
 **One-link contract.** Humans share and save only the Door above. A language-model
 harness that cannot resolve `github.io` must route the same canonical URL through
