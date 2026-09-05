@@ -332,11 +332,13 @@ from integrations.shared_equipment import credential_transfer as ct
 from integrations.shared_equipment.credential_client import retrieve_local
 with patch.object(Path, "home", return_value=Path(sys.argv[1])), patch.object(ct, "BOX_SECRET_PATHS", (sys.argv[2],)):
     discovered = {row["credential_ref"] for row in ct.credential_references()["references"]}
-    assert {f"sample/additional-{i}" for i in range(61)}.issubset(discovered)
+    expected = {"sample/text", "sample/object", "sample/json-text", "sample/binary", "github/token"}
+    expected.update(f"sample/additional-{i}" for i in range(61))
+    assert expected.issubset(discovered)
     assert retrieve_local("github/token") == "synthetic-box"
     assert retrieve_local("sample/object") == {"nested": [True, None, 0]}
     assert not (Path.home() / ".commons/credential_sources.json").exists()
-    print(json.dumps({"discovered_bundle_sources": 66, "direct_read": True}))
+    print(json.dumps({"discovered_bundle_sources": len(expected & discovered), "direct_read": True}))
 """
         completed = subprocess.run([__import__("sys").executable, "-c", code, str(self.root), str(self.primary)],
                                    capture_output=True, text=True, timeout=30)
@@ -409,6 +411,15 @@ with patch.object(Path, "home", return_value=Path(sys.argv[1])), patch.object(ct
                        {"encoding": "native_json", "value": float("nan")}):
             self.write_bundle({"sample/invalid": record})
             self.assertIn("credential_box_bundle_unavailable", self.sources.describe()["errors"])
+
+        mapping = self.write_bundle({"sample/overflow": {"encoding": "native_json", "value": "OVERFLOW"}})
+        names = json.loads(mapping[ct.BOX_MANIFEST_KEY])["parts"]
+        payload = "".join(mapping[name] for name in names).replace('"OVERFLOW"', "1e999")
+        mapping[names[0]] = payload
+        for name in names[1:]:
+            mapping[name] = ""
+        self.primary.write_text(json.dumps({"secrets": mapping}), encoding="utf-8")
+        self.assertIn("credential_box_bundle_unavailable", self.sources.describe()["errors"])
 
     def test_snapshot_updates_are_visible_and_empty_values_keep_existing_contract(self):
         self.write_bundle({"sample/value": {"encoding": "native_json", "value": "first"}})

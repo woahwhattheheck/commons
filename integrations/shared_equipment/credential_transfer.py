@@ -10,6 +10,7 @@ from __future__ import annotations
 import base64
 import importlib.util
 import json
+import math
 import os
 import subprocess
 import sys
@@ -211,7 +212,12 @@ class CredentialSources:
         def strict_json(text):
             def invalid_constant(_value):
                 raise ValueError()
-            return json.loads(text, parse_constant=invalid_constant)
+            def finite_float(value):
+                number = float(value)
+                if not math.isfinite(number):
+                    raise ValueError()
+                return number
+            return json.loads(text, parse_constant=invalid_constant, parse_float=finite_float)
 
         for path in self.box_paths:
             try:
