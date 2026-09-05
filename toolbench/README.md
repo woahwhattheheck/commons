@@ -89,7 +89,7 @@ request associates one source; it is not an instruction to use a particular rout
 ```
 
 The revision above is illustrative: inspect your current workspace before using
-an optimistic revision check. Neither actor nor request ID is required. Empty
+an optimistic revision check. Actor labels and request IDs are optional. Empty
 actor labels become `anonymous`; labels are not authenticated identities.
 
 Available mutations are independent:
