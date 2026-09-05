@@ -359,6 +359,15 @@ class TransferableRoleTests(unittest.TestCase):
             ob["evidence_pointer"], "p/hinge-r4-obligation-advance-20260905-01.md"
         )
 
+    def test_equip_seat_survives_get_round_trip(self) -> None:
+        role = self.store.create(self.raw, role_id="role-seat-roundtrip")
+        self.store.equip(
+            role["role_id"], session_id="session-A", harness="hinge", seat="HINGE"
+        )
+        loaded = self.store.get(role["role_id"])
+        self.assertEqual(loaded["occupant"]["seat"], "HINGE")
+        self.assertEqual(loaded["occupant"]["session_id"], "session-A")
+
     def test_advance_obligation_unknown_id_fails(self) -> None:
         role = self.store.create(self.raw, role_id="role-adv-miss")
         with self.assertRaises(RoleError):

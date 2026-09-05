@@ -174,19 +174,20 @@ def normalize_role(raw: dict[str, Any], *, role_id: str | None = None) -> dict[s
     if occupant is not None and not isinstance(occupant, dict):
         raise RoleError("occupant must be an object or null")
     if isinstance(occupant, dict):
+        src = occupant
         occupant = {
             "session_id": _require_str(
-                occupant.get("session_id"), "occupant.session_id"
+                src.get("session_id"), "occupant.session_id"
             ),
-            "harness": str(occupant.get("harness") or "").strip() or "unknown",
-            "equipped_at": str(occupant.get("equipped_at") or _utc_now()),
+            "harness": str(src.get("harness") or "").strip() or "unknown",
+            "equipped_at": str(src.get("equipped_at") or _utc_now()),
         }
-        if occupant.get("account_pool"):
+        if src.get("account_pool"):
             # pool name only — never tokens
-            occupant["account_pool"] = str(occupant["account_pool"]).strip()
-        if occupant.get("seat"):
+            occupant["account_pool"] = str(src["account_pool"]).strip()
+        if src.get("seat"):
             # G2 seat name for the occupying coordinator — not the role_id
-            occupant["seat"] = str(occupant["seat"]).strip()
+            occupant["seat"] = str(src["seat"]).strip()
 
     role = {
         "schema": ROLE_SCHEMA,
@@ -480,7 +481,6 @@ class RoleStore:
         package["occupant"] = None
         package["export_meta"] = {
             "exported_at": _utc_now(),
-            "includes_secrets": False,
             "role_id_stable": True,
             "next_useful_actions": [
                 o.get("next_action")
@@ -488,7 +488,10 @@ class RoleStore:
                 if o.get("status") == "open"
             ],
         }
-        return _scrub_secrets(package)
+        package = _scrub_secrets(package)
+        # Stamp after scrub: the key name matches _SECRET_KEY_RE ("secret").
+        package.setdefault("export_meta", {})["includes_secrets"] = False
+        return package
 
     def _write(self, role: dict[str, Any]) -> None:
         path = self._path(role["role_id"])
