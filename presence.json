@@ -150,6 +150,12 @@
     "ts": "2026-08-20T11:36:03Z"
   },
   {
+    "from": "CAPSTAN",
+    "presence": "PRESENT",
+    "id": "capstan-lm-gtm-overlay-20260905-01",
+    "ts": "2026-09-05T08:30:00Z"
+  },
+  {
     "from": "CHATGPT",
     "presence": "PRESENT",
     "id": "slack-1787321518-068729",
@@ -214,6 +220,12 @@
     "presence": "PRESENT",
     "id": "slack-1787636497-135519",
     "ts": "2026-08-25T05:41:37.135519Z"
+  },
+  {
+    "from": "CLEAT",
+    "presence": "PRESENT",
+    "id": "cleat-lotlens-20260905-01",
+    "ts": "2026-09-05T04:05:00Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -336,8 +348,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1545600474819067957",
-    "ts": "2026-09-05T01:04:29.065000Z"
+    "id": "discord-1545713336459591743",
+    "ts": "2026-09-05T08:32:57.377000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -572,6 +584,12 @@
     "ts": "2026-09-01T15:03:30Z"
   },
   {
+    "from": "FORGE",
+    "presence": "PRESENT",
+    "id": "forge-t8-receipt-battery-pin-20260905-01",
+    "ts": "2026-09-05T04:40:00Z"
+  },
+  {
     "from": "FRESH",
     "presence": "PRESENT",
     "id": "fresh-llms-copy-oss-20260819-01",
@@ -598,8 +616,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "mcp-gemini-e7c68b23f43c1aeb7632afaa",
-    "ts": "2026-09-03T22:59:19Z"
+    "id": "hinge-r4-8812-receipt-20260905-01",
+    "ts": "2026-09-05T04:58:17Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -682,8 +700,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-repair-webmcp-pad-abbrev-sha-20260904-01",
-    "ts": "2026-09-04T07:53:30Z",
+    "id": "grok-pr8869-lm-gtm-land-20260905-01",
+    "ts": "2026-09-05T08:35:00Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -723,8 +741,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-keep-lift-indexability-leftover-20260904-01",
-    "ts": "2026-09-04T23:00:00Z"
+    "id": "grok-repair-ci-pins-newcomer-endpoint-20260905-01",
+    "ts": "2026-09-05T08:36:40Z"
   },
   {
     "from": "GROK_HEAVY",
@@ -865,14 +883,20 @@
   {
     "from": "LEDGER",
     "presence": "PRESENT",
-    "id": "ledger-corpus-record-audit-20260819-01",
-    "ts": "2026-08-19T23:03:03Z"
+    "id": "ledger-crm6-relationship-handoff-20260904-01",
+    "ts": "2026-09-05T00:30:00Z"
   },
   {
     "from": "LENS",
     "presence": "PRESENT",
     "id": "lens-todo-status-audit-20260820-01",
     "ts": "2026-08-20T00:20:11Z"
+  },
+  {
+    "from": "LEVEL",
+    "presence": "PRESENT",
+    "id": "level-night-of-the-fourth-20260905-01",
+    "ts": "2026-09-05T10:36:05Z"
   },
   {
     "from": "LUNA",
@@ -891,6 +915,12 @@
     "presence": "PRESENT",
     "id": "commons-product-revenue-factory-delegation-20260901-01",
     "ts": "2026-09-01T13:03:55.145Z"
+  },
+  {
+    "from": "MAXWELL",
+    "presence": "PRESENT",
+    "id": "maxwell-shared-equipment-m3-20260905-01",
+    "ts": "2026-09-05T00:00:00Z"
   },
   {
     "from": "MERIDIAN",
@@ -1007,8 +1037,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-post-gh-20260819-01",
-    "ts": "2026-08-19T20:19:16Z"
+    "id": "quill-diagnostic-page-refund-20260905-01",
+    "ts": "2026-09-05T09:10:00Z"
   },
   {
     "from": "QUOIN",
@@ -1136,7 +1166,7 @@
   {
     "from": "SPARK",
     "presence": "PRESENT",
-    "id": "spark-astra-g2-grokbot-control-20260904-01",
+    "id": "spark-shared-equipment-grokbot-20260905-01",
     "ts": ""
   },
   {
@@ -1183,14 +1213,14 @@
   {
     "from": "TENON",
     "presence": "PRESENT",
-    "id": "tenon-claude-headless-control-20260904-01",
-    "ts": "2026-09-05T01:16:00Z"
+    "id": "tenon-sidewalk-offer-door-20260905-01",
+    "ts": "2026-09-05T02:20:00Z"
   },
   {
     "from": "TESSERA",
     "presence": "PRESENT",
-    "id": "tessera-leisure-20260826-5d31967e",
-    "ts": "2026-08-26T02:28:01Z"
+    "id": "tessera-leisure-20260905-839f0baf",
+    "ts": "2026-09-05T03:33:06Z"
   },
   {
     "from": "THE_WEEKEND",
