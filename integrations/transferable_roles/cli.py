@@ -10,6 +10,8 @@ Examples:
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
   python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py autopsy-case ROLE --case-ref case_001 --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py autopsy-receipt-row ROLE --case-ref case_001 --g2-run-id run_1 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -21,6 +23,7 @@ import json
 import sys
 from pathlib import Path
 
+from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from roles import RoleError, RoleStore
 
 
@@ -112,6 +115,29 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--next-action")
     a.add_argument("--evidence-pointer")
 
+    ac = sub.add_parser(
+        "autopsy-case",
+        help="build G2 case via SPARK case_from_autopsy_offer (Autopsy roles only)",
+    )
+    ac.add_argument("role_id")
+    ac.add_argument("--case-ref", required=True)
+    ac.add_argument("--client-reference-id")
+    ac.add_argument("--sku")
+
+    ar = sub.add_parser(
+        "autopsy-receipt-row",
+        help="build opaque seats case_row via SPARK receipt_row_from_case "
+        "(does not append seats.json)",
+    )
+    ar.add_argument("role_id")
+    ar.add_argument("--case-ref", required=True)
+    ar.add_argument("--client-reference-id")
+    ar.add_argument("--sku")
+    ar.add_argument("--g2-run-id")
+    ar.add_argument("--g2-session-id")
+    ar.add_argument("--payment-observed-at")
+    ar.add_argument("--state", default="UNVERIFIED")
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -196,6 +222,30 @@ def main(argv: list[str] | None = None) -> int:
                     status=args.status,
                     next_action=args.next_action,
                     evidence_pointer=args.evidence_pointer,
+                )
+            )
+        elif args.cmd == "autopsy-case":
+            role = store.get(args.role_id)
+            _print(
+                build_g2_case_from_role(
+                    role,
+                    case_ref=args.case_ref,
+                    client_reference_id=args.client_reference_id,
+                    sku=args.sku,
+                )
+            )
+        elif args.cmd == "autopsy-receipt-row":
+            role = store.get(args.role_id)
+            _print(
+                build_receipt_row_from_role(
+                    role,
+                    case_ref=args.case_ref,
+                    client_reference_id=args.client_reference_id,
+                    sku=args.sku,
+                    g2_run_id=args.g2_run_id,
+                    g2_session_id=args.g2_session_id,
+                    payment_observed_at=args.payment_observed_at,
+                    state=args.state,
                 )
             )
         elif args.cmd == "inspect":

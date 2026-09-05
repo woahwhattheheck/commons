@@ -19,6 +19,7 @@ Autopsy tip-shelf: `hinge-r4-autopsy-tip-shelf-pointers-20260905-01`
 Autopsy reply→cash: `hinge-r4-autopsy-reply-cash-pointers-20260905-01`
 Autopsy paid_case: `hinge-r4-autopsy-paid-case-pointers-20260905-01`
 Autopsy receipt_row: `hinge-r4-autopsy-receipt-row-pointers-20260905-01`
+Autopsy case CLI: `hinge-r4-autopsy-case-cli-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -67,6 +68,13 @@ python3 integrations/transferable_roles/cli.py advance-obligation role-synthetic
 
 python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/hinge-roles
 
+python3 integrations/transferable_roles/cli.py autopsy-case role-synthetic-agent-failure-autopsy-20260905 \
+  --case-ref case_001 --store /tmp/hinge-roles
+
+python3 integrations/transferable_roles/cli.py autopsy-receipt-row role-synthetic-agent-failure-autopsy-20260905 \
+  --case-ref case_001 --g2-run-id run_1 --g2-session-id sess_1 \
+  --store /tmp/hinge-roles
+
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
 
@@ -74,6 +82,7 @@ python3 integrations/transferable_roles/cli.py import \
   --file /tmp/role-export.json --store /tmp/hinge-roles-successor
 
 python3 integrations/transferable_roles/test_roles.py
+python3 integrations/transferable_roles/test_autopsy_case_cli.py
 ```
 
 `--seat` names the occupant (not `role_id`). Optional metadata for G2
@@ -100,6 +109,12 @@ obligation. Purpose and sibling obligations stay. Allowed statuses:
 `{"open_obligations": [...]}` with `role_id`, optional `label`, `purpose`,
 `obligation_id`, `summary`, `next_action`, optional `evidence_pointer` /
 `synthetic`, sorted by `(role_id, obligation_id)`.
+
+`autopsy-case` / `autopsy-receipt-row` gate on tool `autopsy_paid_case` and call
+SPARK `case_from_autopsy_offer` / `receipt_row_from_case` (import-only wrap in
+`autopsy_paid.py`). Builds a G2 `case` or opaque seats `case_row` JSON — does
+**not** append `seats.json`, remint `paid_case.py`, or invent Stripe. CRM roles
+refuse. Roles still confer no credentials.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
@@ -131,6 +146,9 @@ After SPARK **#8961**, knowledge + tools also point at
 After SPARK **#8967**, the same tool also cites `receipt_row_from_case` for
 opaque seats `case_row` after `REAL_STRIPE_PAYMENT_OBSERVED` — **point only;
 do not invent paid rows**.
+After `hinge-r4-autopsy-case-cli-20260905-01`, successors run `autopsy-case` /
+`autopsy-receipt-row` instead of hand-importing SPARK helpers — **mechanism,
+not remint**.
 Live checkout URL stays on fixture + `agent-rescue.html` (#8889). Stripe
 product/price/plink/account IDs stay in `offer.json` only. No credential remint;
 no invented checkout; roles confer no Stripe access. Use `open-obligations` to
