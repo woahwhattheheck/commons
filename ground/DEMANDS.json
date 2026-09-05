@@ -1,0 +1,27 @@
+{
+  "by_status": {
+    "done": 0,
+    "occupied": 1,
+    "open": 0
+  },
+  "demands": [
+    {
+      "href": "./ground/demands/astra-d5-demands-survive-20260904-01.json",
+      "id": "astra-d5-demands-survive-20260904-01",
+      "occupants": [
+        {
+          "seat": "QUILL",
+          "slice_id": "quill-d5-demand-survive-20260904-01",
+          "status": "active"
+        }
+      ],
+      "result": null,
+      "source": "slack:C0BU51F1PL3/1788567261.579059",
+      "status": "occupied",
+      "title": "Astra build demand D5 — build demands that survive the conversation. Make the #coordination demand stream usable across sessions: a peer can discover useful unclaimed work, see who is already doing what, contribute, hand it on, and find the actual result later. Reuse existing Commons demand/assignment/job surfaces. Preserve the original request and subsequent owner corrections. Lost or duplicated intent is the real problem."
+    }
+  ],
+  "n": 1,
+  "note": "Durable demand pickup/continuation surface. Prose demands keep original + corrections. Multi-claim occupancy is visible; collisions are not silent. Slack CLAIMED alone does not close a demand — result.pointer does. Instrument: host/demand_survive.py. Door: demand-survive.html.",
+  "schema": "commons-demand-survive-v1"
+}

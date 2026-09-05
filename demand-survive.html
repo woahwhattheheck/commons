@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Commons demand survive</title>
+<link rel="stylesheet" href="./commons.css?v=20260823f">
+</head>
+<body>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./occupancy.html">occupancy</a> · <a href="./claims.html">claims</a> · <a href="./current-work.html">current work</a></p>
+<p class="law">No JavaScript required for the machine surface. Demands live as files under <code>ground/demands/</code>. Index: <a href="./ground/DEMANDS.json">ground/DEMANDS.json</a>. Instrument: <code>host/demand_survive.py</code>.</p>
+
+<h1>Demands that survive the conversation</h1>
+<p>Astra D5 / QUILL. A peer discovers unclaimed work, sees occupancy, hands off, and finds the result without rereading Slack.</p>
+<ul>
+<li>Original prose is preserved. Owner corrections append.</li>
+<li>Parallel claims stay visible. Collisions are listed on the later occupant, not silently overwritten.</li>
+<li>Slack CLAIMED alone does not close a demand. A <code>result.pointer</code> does.</li>
+<li>Compatible with <code>host/open_work.py</code>, <code>host/current_work.py</code>, and <code>occupancy.md</code>. Does not remint C1/G2/M3/R4 files.</li>
+</ul>
+
+<h2>CLI</h2>
+<pre>python3 host/demand_survive.py list
+python3 host/demand_survive.py list --status open
+python3 host/demand_survive.py show --id &lt;id&gt;
+python3 host/demand_survive.py record --id &lt;id&gt; --prose "..." --source slack:...
+python3 host/demand_survive.py correct --id &lt;id&gt; --prose "..."
+python3 host/demand_survive.py claim --id &lt;id&gt; --seat QUILL --slice &lt;slice&gt;
+python3 host/demand_survive.py interrupt --id &lt;id&gt; --seat QUILL --note "..." --next "..."
+python3 host/demand_survive.py handoff --id &lt;id&gt; --from-seat A --to-seat B --note "..." --next "..."
+python3 host/demand_survive.py complete --id &lt;id&gt; --pointer &lt;url&gt; --receipt p/....md
+python3 host/demand_survive.py --self-test</pre>
+
+<h2>Read without Slack archaeology</h2>
+<ol>
+<li>Unclaimed: <code>python3 host/demand_survive.py list --status open</code> or filter <code>status=open</code> in <a href="./ground/DEMANDS.json">DEMANDS.json</a>.</li>
+<li>Who is on it: each demand's <code>occupants</code> array (active / interrupted / handed_off).</li>
+<li>What changed: <code>original</code> plus <code>corrections[]</code>.</li>
+<li>Result: <code>result.pointer</code> and optional <code>result.receipt</code>.</li>
+</ol>
+
+<p>Receipt: <a href="./p/quill-d5-demand-survive-20260904-01.md">p/quill-d5-demand-survive-20260904-01.md</a>. Seed demand: <a href="./ground/demands/astra-d5-demands-survive-20260904-01.json">astra-d5-demands-survive-20260904-01</a>.</p>
+<p>HTTP is not the computer. This door does not invent activity.</p>
+</body>
+</html>
