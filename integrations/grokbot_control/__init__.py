@@ -8,7 +8,11 @@ conventions used by C1 (claude_headless @ 8879).
 """
 
 from .gateway import DEFAULT_PORT, build_server, main
-from .paid_case import case_from_autopsy_offer, load_autopsy_offer
+from .paid_case import (
+    case_from_autopsy_offer,
+    load_autopsy_offer,
+    receipt_row_from_case,
+)
 from .pools import DEFAULT_POOL_ID, HARNESS, list_pools
 from .store import RunStore, normalize_case
 
@@ -23,4 +27,5 @@ __all__ = [
     "load_autopsy_offer",
     "main",
     "normalize_case",
+    "receipt_row_from_case",
 ]
