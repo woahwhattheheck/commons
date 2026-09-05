@@ -58,6 +58,11 @@ class OfferDoor(unittest.TestCase):
             url == "" or url.startswith("https://buy.stripe.com/") or url.startswith("https://checkout.stripe.com/"),
             url,
         )
+        self.assertEqual(
+            manifest.get("copy_verdicts", {}).get("offer.html"),
+            "COPY_OK",
+            "offer.html is a pack text file; TENON 9ae6e4885 added it without refreshing copy_verdicts",
+        )
         law = json.loads((ROOT / "ground" / "BUSINESS_PACK_THANKS.json").read_text(encoding="utf-8"))
         self.assertIn("pixel_id", law)
         self.assertEqual(law.get("pixel_slot"), "owner_paste")
