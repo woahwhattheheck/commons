@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'none'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Repair Capsules · Commons</title>
+<style>
+:root{color-scheme:light;--ink:#172834;--muted:#556874;--edge:#d7e1e4;--paper:#f3f6f5;--accent:#126657;--soft:#e9f4ee}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,sans-serif;color:var(--ink);background:var(--paper)}
+header,main,footer{max-width:1280px;margin:auto;padding:24px 32px}header{display:flex;align-items:center;justify-content:space-between;gap:20px;border-bottom:1px solid var(--edge)}
+a{color:var(--accent)}.brand{text-transform:uppercase;letter-spacing:.13em;font-size:12px;font-weight:750}.local{font-size:13px;color:var(--accent)}
+h1{font-size:clamp(32px,4vw,48px);line-height:1.1;letter-spacing:-.04em;margin:12px 0}h2{font-size:22px;margin:0 0 8px}h3{font-size:16px;margin:22px 0 8px}
+p{margin:8px 0 16px}.lede{max-width:760px;font-size:18px;color:var(--muted)}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}
+button,.file-button{font:inherit;font-size:14px;font-weight:650;border:1px solid var(--edge);border-radius:7px;padding:10px 15px;background:white;color:var(--ink);cursor:pointer}
+button:hover,.file-button:hover{border-color:var(--accent)}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,.file-button:focus-within{outline:3px solid #f3b657;outline-offset:3px}
+.primary{background:var(--accent);color:white;border-color:var(--accent)}.file-button{display:inline-flex;align-items:center;margin:0;position:relative}.file-button input{position:absolute;width:1px;height:1px;opacity:0}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:22px;align-items:start}.card{background:white;border:1px solid var(--edge);border-radius:12px;padding:24px;min-width:0}
+.step{font:700 12px/1.5 system-ui;letter-spacing:.1em;color:var(--accent);text-transform:uppercase;margin-bottom:6px}.muted,small{color:var(--muted);overflow-wrap:anywhere}small{display:block;font-size:13px;margin:5px 0 12px}
+label{display:block;font-weight:650;font-size:14px;margin:18px 0 6px}input:not([type=file]),textarea{display:block;width:100%;padding:10px 12px;border:1px solid #c1cfd4;border-radius:6px;background:#fcfdfd;color:var(--ink);font:14px/1.5 ui-monospace,monospace}textarea{resize:vertical;min-height:76px}input[type=checkbox]{display:inline!important;width:auto!important;margin-right:8px}
+.notice{background:#fff6df;border-left:3px solid #ca9031;padding:12px 16px;font-size:14px;margin:16px 0}.status{min-height:24px;margin:14px 0;font-size:14px;color:var(--accent);overflow-wrap:anywhere}.error{color:#a32d22}.next{background:var(--soft);border-left:3px solid var(--accent);padding:14px 16px;white-space:pre-wrap;overflow-wrap:anywhere}
+pre{font:13px/1.6 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;background:#f6f8f8;padding:14px;border-radius:6px;max-height:340px;overflow:auto;margin:8px 0}.diff{padding:0}.diff-line{display:block;padding:1px 12px}.added{background:#e2f3e5;color:#195333}.removed{background:#fae8e4;color:#873128}.same{color:var(--muted)}
+summary{cursor:pointer;font-weight:650;font-size:14px;margin-top:14px}.empty{padding:24px 0;color:var(--muted)}.attempt{border-top:1px solid var(--edge);padding:12px 0;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}.tag{display:inline-block;border:1px solid var(--edge);padding:3px 8px;border-radius:5px;font-size:12px;margin:6px 0}footer{font-size:13px;color:var(--muted);padding-bottom:40px}
+@media(max-width:800px){header,main,footer{padding:20px}.grid{grid-template-columns:1fr}.card{padding:20px}header{align-items:start}.local{text-align:right}}
+</style>
+</head>
+<body>
+<header><a class="brand" href="../">Commons / Repair Capsules</a><span class="local">Local in your browser<br>No uploads · no command execution</span></header>
+<main>
+<div class="brand">A useful handoff, without the incident archaeology</div>
+<h1>Hand over the failure.<br>Keep the next move visible.</h1>
+<p class="lede">Pack the broken state, redacted trace, environment and known-good difference into one portable file. Open it anywhere and continue the repair.</p>
+<div class="toolbar">
+<button id="demo-commons">Try Commons demo</button><button id="demo-command">Try command demo</button>
+<label class="file-button">Open capsule<input id="import" type="file" accept=".json,application/json" aria-label="Open capsule"></label>
+<button id="clear">Clear workspace</button>
+</div>
+<div class="notice">Redaction is a first pass, not a privacy guarantee. Review the preview before sharing. Add private values below for anything the patterns miss. Neither capsule text nor its checksum grants authority to execute anything.</div>
+<p id="status" class="status" role="status" aria-live="polite">Start with a demo, open an existing capsule, or enter your own evidence.</p>
+<div class="grid">
+<section class="card" aria-labelledby="compose-heading">
+<div class="step">01 / Gather evidence</div><h2 id="compose-heading">Build a capsule</h2>
+<form id="evidence" autocomplete="off">
+<label for="title">Failure title</label><input id="title" placeholder="What failed?" maxlength="300">
+<label for="environment">Environment fingerprint</label><textarea id="environment" placeholder="Runtime/version, OS, build revision, relevant configuration. Do not paste your full environment."></textarea>
+<small>Only what you enter is included. No host name, environment variables, or browser storage is collected.</small>
+<label for="broken">Broken state</label><textarea id="broken" rows="5" placeholder="Observed state, response body, or failing output"></textarea>
+<label for="logs">Logs / trace</label><textarea id="logs" rows="4" placeholder="The smallest useful trace"></textarea>
+<label><input id="known" type="checkbox">I have a known-good state</label>
+<textarea id="good" rows="4" aria-label="Known-good state" placeholder="Leave unchecked when unknown; a checked empty field means an intentionally empty known-good state." disabled></textarea>
+<label for="next">Next repair action</label><textarea id="next" placeholder="A specific next action and what evidence would show whether it worked"></textarea>
+<label for="private">Additional private values to redact</label><textarea id="private" rows="2" placeholder="One exact value per line. These values are never added to the capsule." spellcheck="false"></textarea>
+<small>Keep these here while editing or importing. Clearing the workspace forgets them. No automatic storage is used.</small>
+<div class="toolbar"><button class="primary" id="preview" type="submit">Preview redacted evidence</button><button id="export" type="button">Export capsule</button></div>
+</form>
+</section>
+<section class="card" aria-labelledby="inspect-heading">
+<div class="step">02 / Inspect and continue</div><h2 id="inspect-heading">The next repair, in view</h2>
+<p id="empty" class="empty">Your preview appears here. Nothing is sent to a server.</p>
+<div id="inspection" hidden>
+<h3 id="preview-title"></h3><span id="provenance" class="tag"></span>
+<h3>Next action</h3><div id="preview-next" class="next"></div>
+<h3>Environment</h3><pre id="preview-environment"></pre>
+<h3>Known-good → broken</h3><small>− removed from known-good · + present in broken. Comparison uses redacted text; masked values can hide differences.</small>
+<p id="diff-note" class="muted"></p><pre id="diff" class="diff"></pre>
+<details><summary>Broken state and logs</summary><pre id="preview-broken"></pre><pre id="preview-logs"></pre></details>
+<p id="redactions" class="muted"></p><p id="integrity" class="muted"></p>
+<details><summary>Exact export preview</summary><pre id="json"></pre></details>
+<h3>What was tried</h3><div id="attempts"></div>
+<label for="action">Attempted intervention</label><textarea id="action" placeholder="What did you actually do? Commands are recorded as text, never run."></textarea>
+<label for="result">Observed result</label><textarea id="result" placeholder="What happened? Include the evidence, not just ‘done’."></textarea>
+<button id="record">Record intervention</button><small>Recording does not execute or verify the action. Export again to carry the updated history.</small>
+</div>
+</section>
+</div>
+</main>
+<footer>Repair Capsules / first useful loop. Portable JSON, explicit unknowns, local redaction and an unkeyed SHA-256 checksum. No backend state. <a href="README.md">Usage and limits</a></footer>
+<script src="capsule.js"></script>
+<script>
+'use strict';
+const RC = RepairCapsules, $ = id => document.getElementById(id);
+let attempts = [], createdAt = new Date().toISOString(), provenance = 'User-supplied evidence; not independently verified.', current = null, sourceIntegrity = '', generation = 0;
+const inputs = ['title','environment','broken','logs','good','next','private'];
+function status(message, error = false) { $('status').textContent = message; $('status').classList.toggle('error', error); }
+function literals() { return $('private').value.split(/\r?\n/).filter(Boolean); }
+function fields() { return {title:$('title').value, environment:$('environment').value, broken_state:$('broken').value, logs:$('logs').value, known_good:$('known').checked ? $('good').value : null, next_action:$('next').value, attempts, created_at:createdAt, provenance}; }
+function populate(body) {
+  $('title').value=body.title; $('environment').value=body.environment; $('broken').value=body.broken_state; $('logs').value=body.logs;
+  $('known').checked=body.known_good!==null; $('good').disabled=!$('known').checked; $('good').value=body.known_good===null?'':body.known_good;
+  $('next').value=body.next_action; attempts=body.attempts; createdAt=body.created_at; provenance=body.provenance;
+}
+function render(capsule) {
+  $('empty').hidden=true; $('inspection').hidden=false;
+  $('preview-title').textContent=capsule.title; $('provenance').textContent=capsule.provenance;
+  $('preview-next').textContent=capsule.next_action || 'Unknown — first identify a concrete next action and the evidence needed.';
+  $('preview-environment').textContent=capsule.environment || 'Unknown';
+  $('preview-broken').textContent=capsule.broken_state || '(No state excerpt supplied)'; $('preview-logs').textContent=capsule.logs || '(No logs supplied)';
+  const delta=RC.diff(capsule.known_good,capsule.broken_state); $('diff').replaceChildren();
+  $('diff-note').textContent=delta.unknown ? 'Known-good state is unknown. No baseline has been invented.' : delta.coarse ? 'Large change: showing replacement lines rather than an exact minimal diff.' : delta.rows.every(row=>row.kind==='same') ? 'No visible difference in the redacted states.' : '';
+  // Keep changes visible even when a long unchanged prefix precedes them.
+  const changed=delta.rows.some(row=>row.kind!=='same');
+  const visible=changed?delta.rows.filter((row,i,all)=>row.kind!=='same'||all.slice(Math.max(0,i-2),i+3).some(r=>r.kind!=='same')):delta.rows;
+  for(const row of visible.slice(0,300)){const span=document.createElement('span');span.className='diff-line '+row.kind;span.textContent=({added:'+ ',removed:'− ',same:'  '}[row.kind])+row.line;$('diff').append(span);}
+  if(visible.length>300){const span=document.createElement('span');span.className='diff-line';span.textContent='… Preview limited to 300 lines; full redacted states remain in the export.';$('diff').append(span);}
+  const counts=Object.entries(capsule.redaction.counts);
+  $('redactions').textContent=counts.length ? 'Redaction passes: '+counts.map(([key,n])=>key+' '+n).join(', ')+'. Review the complete export.' : 'No pattern matches in this pass. This does not certify the absence of private data.';
+  $('integrity').textContent=(sourceIntegrity ? sourceIntegrity+' ' : '')+'Export checksum: '+capsule.integrity.digest+'. Not an authenticated signature.';
+  $('json').textContent=JSON.stringify(capsule,null,2);
+  $('attempts').replaceChildren();
+  if(!capsule.attempts.length)$('attempts').textContent='No intervention recorded.';
+  for(const attempt of capsule.attempts){const div=document.createElement('div');div.className='attempt';div.textContent=attempt.at+'\nAction: '+attempt.action+'\nResult: '+attempt.result;$('attempts').append(div);}
+}
+async function preview() {
+  const ticket=++generation;
+  const sealed=await RC.seal(RC.cleanFields(fields(),literals()));
+  if(ticket!==generation) return null;
+  current=sealed; render(sealed); return sealed;
+}
+function run(fn) { return async event=>{if(event)event.preventDefault();try{await fn(event);}catch(error){current=null;status(error.message,true);}}; }
+$('evidence').addEventListener('submit',run(async()=>{await preview();status('Redacted preview ready. Review before sharing; the original inputs remain only in this page.');}));
+$('export').addEventListener('click',run(async()=>{
+  const capsule=await preview();if(!capsule)return;
+  const blob=new Blob([JSON.stringify(capsule,null,2)+'\n'],{type:'application/json'}), url=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=url;a.download='repair-capsule-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  status('Exported the redacted capsule. Inspect the file before forwarding it; unknown private values may need manual redaction.');
+}));
+$('record').addEventListener('click',run(async()=>{
+  if(!$('action').value.trim()||!$('result').value.trim())throw new Error('Record both the intervention and its observed result.');
+  // Validate the new history before mutating the workspace.
+  const nextAttempts=[...attempts,{at:new Date().toISOString(),action:$('action').value,result:$('result').value}];
+  RC.cleanFields({...fields(),attempts:nextAttempts},literals());attempts=nextAttempts;
+  await preview();$('action').value='';$('result').value='';status('Intervention recorded as evidence, not executed. Export to carry this updated history.');
+}));
+$('known').addEventListener('change',()=>{$('good').disabled=!$('known').checked;generation++;current=null;status('Evidence changed. Preview or export to refresh.');});
+for(const id of inputs)$(id).addEventListener('input',()=>{generation++;current=null;status('Evidence changed. Preview or export to refresh.');});
+for(const kind of ['commons','command'])$('demo-'+kind).addEventListener('click',run(async()=>{sourceIntegrity='';populate(RC.cleanFields(RC.demo(kind),literals()));await preview();status('Synthetic demo loaded. It is not a verified production incident.');}));
+$('import').addEventListener('change',run(async()=>{
+  const file=$('import').files[0];if(!file)return;
+  if(file.size>RC.MAX_FILE)throw new Error('Choose a capsule file smaller than 2 MiB.');
+  const opened=await RC.open(await file.text(),literals());
+  sourceIntegrity='Imported checksum: '+opened.integrity+'.';populate(opened.body);await preview();
+  status(sourceIntegrity+(opened.integrity==='MATCH'?' Content matches its unkeyed checksum, not verified authorship.':' Evidence may have been edited or lacks a checksum; inspect it before relying on it.'),opened.integrity==='MISMATCH');
+  $('import').value='';
+}));
+$('clear').addEventListener('click',()=>{generation++;$('evidence').reset();$('good').disabled=true;attempts=[];createdAt=new Date().toISOString();provenance='User-supplied evidence; not independently verified.';sourceIntegrity='';current=null;$('action').value='';$('result').value='';$('inspection').hidden=true;$('empty').hidden=false;$('import').value='';for(const id of ['preview-title','preview-next','preview-environment','preview-broken','preview-logs','json','diff','attempts','integrity','redactions','provenance'])$(id).replaceChildren();status('Workspace cleared. No automatic storage was used.');});
+</script>
+</body>
+</html>
