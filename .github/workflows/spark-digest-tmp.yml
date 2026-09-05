@@ -2,12 +2,14 @@ name: spark-digest-tmp
 on:
   push:
     branches: [spark-digest-tmp-20260905]
+  workflow_dispatch:
 jobs:
   digest:
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@v4
       - name: Compute digests
         run: |
           python3 <<'PY'
@@ -34,5 +36,5 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add digests.txt
-          git commit -m "chore: temporary digest output"
+          git commit -m "chore: temporary digest output" || exit 0
           git push
