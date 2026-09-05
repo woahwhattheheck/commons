@@ -149,7 +149,7 @@ RECORDED_STRIPE_SKUS = (
         ),
     },
 )
-UNVERIFIED_DIAGNOSTIC_SKUS = (
+DIAGNOSTIC_SKUS = (
     {
         "id": "dealer-service-lead-rescue",
         "path": "revenue/dealer_service_lead_rescue/contract.json",
@@ -998,9 +998,9 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertEqual(
             [
                 path for path in self.catalog["integration_sources"]
-                if path in {spec["path"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS}
+                if path in {spec["path"] for spec in DIAGNOSTIC_SKUS}
             ],
-            [spec["path"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS],
+            [spec["path"] for spec in DIAGNOSTIC_SKUS],
         )
         self.assertIn(
             VERIFIED_AGENT_FAILURE_AUTOPSY["path"],
@@ -1078,21 +1078,33 @@ class OutcomeCommerceTests(unittest.TestCase):
                 self.assertEqual(funnel["measurement"]["dom_action"], "qualification-open")
                 self.assertEqual(funnel["acquisition"]["cta"], "Start public intake")
 
-    def test_four_recorded_diagnostics_preserve_source_terms_without_checkout_claims(self) -> None:
+    def test_four_verified_diagnostics_preserve_source_terms_and_provider_evidence(self) -> None:
         by_id = {row["id"]: row for row in self.catalog["listings"]}
         recorded = [
             row for row in self.catalog["listings"]
-            if row.get("checkout", {}).get("status") == "LIVEMODE_URL_RECORDED"
+            if row.get("checkout", {}).get("status") == "ACTIVE_CHARGEABLE"
         ]
         self.assertEqual(
             [
                 row["id"] for row in recorded
-                if row["id"] in {spec["id"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS}
+                if row["id"] in {spec["id"] for spec in DIAGNOSTIC_SKUS}
             ],
-            [spec["id"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS],
+            [spec["id"] for spec in DIAGNOSTIC_SKUS],
         )
-        for spec in UNVERIFIED_DIAGNOSTIC_SKUS:
+        receipt = read_json(ROOT / "revenue/checkout_capability/diagnostic-links-20260905.json")
+        receipt_bytes = (ROOT / "revenue/checkout_capability/diagnostic-links-20260905.json").read_text(encoding="utf-8").encode("utf-8")
+        self.assertEqual(hashlib.sha256(receipt_bytes).hexdigest(), "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01")
+        evidence = {
+            "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+            "observed_at": "2026-09-05T11:29:50.741356+00:00",
+        }
+        for spec in DIAGNOSTIC_SKUS:
             with self.subTest(listing_id=spec["id"]):
+                link = next(item for item in receipt["links"].values() if item["url"] == spec["url"])
+                self.assertTrue(link["active"] and link["livemode"] and link["one_time"])
+                self.assertEqual((link["currency"], link["unit_amount"], link["quantity"]), ("usd", 19900, 1))
+                self.assertEqual(link["tax_behavior"], "unspecified")
+                self.assertIsNone(link["adjustable_quantity"])
                 row = by_id[spec["id"]]
                 self.assertNotIn("source", row)
                 self.assertEqual(row["state"], "PUBLIC_OFFER")
@@ -1120,20 +1132,22 @@ class OutcomeCommerceTests(unittest.TestCase):
                     "machine": spec["path"],
                 })
                 self.assertEqual(row["checkout"], {
-                    "status": "LIVEMODE_URL_RECORDED",
+                    "status": "ACTIVE_CHARGEABLE",
                     "provider": "stripe",
                     "url": spec["url"],
-                    "link_active": "UNVERIFIED",
-                    "account_charges_enabled": False,
+                    "link_active": True,
+                    "account_charges_enabled": True,
+                    "account_payouts_enabled": True,
+                    "capability_evidence": evidence,
                 })
                 page = (ROOT / spec["page"]).read_text(encoding="utf-8")
                 self.assertEqual(page.count(spec["url"]), 2)
                 funnel = self.catalog["funnels"][spec["id"]]
-                self.assertEqual(funnel["readiness"], "BLOCKED_PROVIDER_CAPABILITY")
-                self.assertEqual(funnel["conversion"]["mode"], "RECORDED_STRIPE_LINK")
-                self.assertEqual(funnel["conversion"]["status"], "CAPABILITY_UNVERIFIED")
-                self.assertEqual(funnel["measurement"]["dom_action"], "provider-capability-unverified")
-                self.assertEqual(funnel["measurement"]["click_truth"], "NO_CLICK_SURFACE")
+                self.assertEqual(funnel["readiness"], "READY_FOR_CHECKOUT")
+                self.assertEqual(funnel["conversion"]["mode"], "ACTIVE_STRIPE_LINK")
+                self.assertEqual(funnel["conversion"]["status"], "ACTIVE_CHARGEABLE")
+                self.assertEqual(funnel["measurement"]["dom_action"], "checkout-open")
+                self.assertEqual(funnel["measurement"]["click_truth"], "INTENT_ONLY")
                 self.assertEqual(funnel["fulfillment"]["refund"], commercial["refund"])
 
     def test_recorded_subscription_quotes_default_to_one_cycle(self) -> None:

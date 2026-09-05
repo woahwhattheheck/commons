@@ -137,7 +137,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -211,7 +211,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -285,7 +285,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -359,7 +359,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -433,7 +433,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -507,7 +507,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -581,7 +581,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -653,7 +653,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -725,7 +725,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -797,7 +797,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -869,7 +869,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -941,7 +941,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1015,7 +1015,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1089,7 +1089,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1161,7 +1161,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1235,7 +1235,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1309,7 +1309,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1381,7 +1381,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1455,7 +1455,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1529,7 +1529,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1603,7 +1603,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1677,7 +1677,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1751,7 +1751,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1825,7 +1825,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1897,7 +1897,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1969,7 +1969,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2041,7 +2041,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2113,7 +2113,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2185,7 +2185,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2259,7 +2259,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2333,7 +2333,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2405,7 +2405,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2479,7 +2479,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2553,7 +2553,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2625,7 +2625,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2699,7 +2699,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2773,7 +2773,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2847,7 +2847,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2921,7 +2921,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2995,7 +2995,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3069,7 +3069,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3141,7 +3141,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3213,7 +3213,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3285,7 +3285,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3357,7 +3357,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3431,7 +3431,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3505,7 +3505,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3579,7 +3579,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3651,7 +3651,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3725,7 +3725,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3799,7 +3799,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3871,7 +3871,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3945,7 +3945,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4019,7 +4019,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4093,7 +4093,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4167,7 +4167,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4241,7 +4241,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4315,7 +4315,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4387,7 +4387,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4461,7 +4461,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4535,7 +4535,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4607,7 +4607,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4679,7 +4679,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4751,7 +4751,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4823,7 +4823,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4895,7 +4895,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4969,7 +4969,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5043,7 +5043,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5115,7 +5115,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5189,7 +5189,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5263,7 +5263,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5337,7 +5337,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5411,7 +5411,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5485,7 +5485,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5559,7 +5559,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5631,7 +5631,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5705,7 +5705,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5779,7 +5779,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5853,7 +5853,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5925,7 +5925,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5997,7 +5997,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6069,7 +6069,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6141,7 +6141,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6215,7 +6215,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6289,7 +6289,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6361,7 +6361,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6435,7 +6435,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6509,7 +6509,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6583,7 +6583,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6657,7 +6657,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6731,7 +6731,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6805,7 +6805,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6877,7 +6877,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6951,7 +6951,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7025,7 +7025,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7097,7 +7097,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7169,7 +7169,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7241,7 +7241,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7313,7 +7313,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7385,7 +7385,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7459,7 +7459,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7533,7 +7533,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7605,7 +7605,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7679,7 +7679,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7753,7 +7753,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7827,7 +7827,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7901,7 +7901,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -7975,7 +7975,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8049,7 +8049,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8121,7 +8121,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8195,7 +8195,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8269,7 +8269,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8343,7 +8343,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8415,7 +8415,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8487,7 +8487,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8559,7 +8559,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8631,7 +8631,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8705,7 +8705,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8779,7 +8779,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8851,7 +8851,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8925,7 +8925,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -8999,7 +8999,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9073,7 +9073,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9147,7 +9147,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9221,7 +9221,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9295,7 +9295,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9367,7 +9367,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9441,7 +9441,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9515,7 +9515,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9589,7 +9589,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9663,7 +9663,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9737,7 +9737,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9811,7 +9811,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9883,7 +9883,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -9957,7 +9957,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10031,7 +10031,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10103,7 +10103,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10177,7 +10177,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10251,7 +10251,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10325,7 +10325,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10399,7 +10399,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10473,7 +10473,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10547,7 +10547,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10619,7 +10619,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10693,7 +10693,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10767,7 +10767,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10841,7 +10841,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10915,7 +10915,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -10989,7 +10989,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11063,7 +11063,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11135,7 +11135,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11209,7 +11209,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11283,7 +11283,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11355,7 +11355,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11429,7 +11429,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11503,7 +11503,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11577,7 +11577,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11651,7 +11651,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11725,7 +11725,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11799,7 +11799,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11871,7 +11871,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -11945,7 +11945,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12019,7 +12019,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12093,7 +12093,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12167,7 +12167,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12241,7 +12241,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12315,7 +12315,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12387,7 +12387,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12461,7 +12461,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12535,7 +12535,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12607,7 +12607,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12681,7 +12681,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12755,7 +12755,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12829,7 +12829,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12903,7 +12903,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -12977,7 +12977,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13051,7 +13051,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13123,7 +13123,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13197,7 +13197,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13271,7 +13271,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13345,7 +13345,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13419,7 +13419,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13493,7 +13493,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13567,7 +13567,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13639,7 +13639,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13713,7 +13713,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13787,7 +13787,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13859,7 +13859,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -13933,7 +13933,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14007,7 +14007,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14081,7 +14081,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14155,7 +14155,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14229,7 +14229,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14303,7 +14303,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14375,7 +14375,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14449,7 +14449,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14523,7 +14523,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14597,7 +14597,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14671,7 +14671,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14745,7 +14745,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14819,7 +14819,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14891,7 +14891,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -14965,7 +14965,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15039,7 +15039,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15111,7 +15111,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15185,7 +15185,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15259,7 +15259,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15333,7 +15333,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15407,7 +15407,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15481,7 +15481,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15555,7 +15555,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15627,7 +15627,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15701,7 +15701,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15775,7 +15775,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15849,7 +15849,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15923,7 +15923,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -15997,7 +15997,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16071,7 +16071,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16143,7 +16143,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16217,7 +16217,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16291,7 +16291,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16363,7 +16363,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16437,7 +16437,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16511,7 +16511,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16585,7 +16585,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16659,7 +16659,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16733,7 +16733,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16807,7 +16807,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16879,7 +16879,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -16951,7 +16951,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17023,7 +17023,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17095,7 +17095,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17169,7 +17169,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17243,7 +17243,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17317,7 +17317,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17389,7 +17389,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17463,7 +17463,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17537,7 +17537,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17609,7 +17609,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17683,7 +17683,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17757,7 +17757,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17831,7 +17831,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17905,7 +17905,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -17979,7 +17979,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18053,7 +18053,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18125,7 +18125,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18199,7 +18199,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18273,7 +18273,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18347,7 +18347,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18421,7 +18421,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18495,7 +18495,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18569,7 +18569,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18641,7 +18641,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18715,7 +18715,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18789,7 +18789,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18861,7 +18861,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -18935,7 +18935,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19009,7 +19009,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19083,7 +19083,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19157,7 +19157,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19231,7 +19231,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19305,7 +19305,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19377,7 +19377,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19451,7 +19451,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19525,7 +19525,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19599,7 +19599,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19673,7 +19673,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19747,7 +19747,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19821,7 +19821,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19893,7 +19893,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -19967,7 +19967,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20041,7 +20041,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20086,14 +20086,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20113,7 +20113,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20160,14 +20160,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20187,7 +20187,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20234,14 +20234,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20261,7 +20261,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20308,14 +20308,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20335,7 +20335,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20382,14 +20382,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20409,7 +20409,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20456,14 +20456,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20483,7 +20483,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20530,14 +20530,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20557,7 +20557,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20602,14 +20602,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20629,7 +20629,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20676,14 +20676,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20703,7 +20703,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20750,14 +20750,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20777,7 +20777,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20824,14 +20824,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20851,7 +20851,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20898,14 +20898,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20925,7 +20925,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -20972,14 +20972,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -20999,7 +20999,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21046,16 +21046,16 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
       "currency":"USD",
       "duplicate":false,
       "evidence_packet":{
@@ -21073,7 +21073,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21118,14 +21118,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21145,7 +21145,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21192,14 +21192,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21219,7 +21219,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21266,14 +21266,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21293,7 +21293,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21338,14 +21338,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21365,7 +21365,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21412,14 +21412,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21439,7 +21439,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21486,14 +21486,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21513,7 +21513,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21560,14 +21560,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21587,7 +21587,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21634,14 +21634,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21661,7 +21661,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21708,14 +21708,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21735,7 +21735,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21782,14 +21782,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21809,7 +21809,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21854,14 +21854,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21881,7 +21881,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -21928,14 +21928,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -21955,7 +21955,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22002,14 +22002,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22029,7 +22029,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22076,14 +22076,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22103,7 +22103,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22150,14 +22150,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22177,7 +22177,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22224,14 +22224,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22251,7 +22251,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22298,16 +22298,16 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
       "currency":"USD",
       "duplicate":false,
       "evidence_packet":{
@@ -22325,7 +22325,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22370,14 +22370,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22397,7 +22397,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22444,14 +22444,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22471,7 +22471,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22518,14 +22518,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22545,7 +22545,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22590,14 +22590,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22617,7 +22617,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22664,14 +22664,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22691,7 +22691,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22738,14 +22738,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22765,7 +22765,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22812,14 +22812,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22839,7 +22839,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22886,14 +22886,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22913,7 +22913,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -22960,14 +22960,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -22987,7 +22987,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23034,14 +23034,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23061,7 +23061,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23106,14 +23106,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23133,7 +23133,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23180,14 +23180,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23207,7 +23207,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23254,14 +23254,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23281,7 +23281,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23328,14 +23328,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23355,7 +23355,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23402,14 +23402,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23429,7 +23429,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23476,14 +23476,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23503,7 +23503,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23550,16 +23550,16 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
       "currency":"USD",
       "duplicate":false,
       "evidence_packet":{
@@ -23577,7 +23577,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23622,14 +23622,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23649,7 +23649,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23696,14 +23696,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23723,7 +23723,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23770,14 +23770,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B600i98N77b9uFeBk43S0c"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23797,7 +23797,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23842,14 +23842,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23869,7 +23869,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23916,14 +23916,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -23943,7 +23943,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -23990,14 +23990,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24017,7 +24017,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24064,14 +24064,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24091,7 +24091,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24138,14 +24138,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24165,7 +24165,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24212,14 +24212,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24239,7 +24239,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24286,14 +24286,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24313,7 +24313,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24358,14 +24358,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24385,7 +24385,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24432,14 +24432,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24459,7 +24459,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24506,14 +24506,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24533,7 +24533,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24580,14 +24580,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24607,7 +24607,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24654,14 +24654,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24681,7 +24681,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24728,14 +24728,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24755,7 +24755,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24802,16 +24802,16 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
       "currency":"USD",
       "duplicate":false,
       "evidence_packet":{
@@ -24829,7 +24829,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24874,14 +24874,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24901,7 +24901,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -24948,14 +24948,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -24975,7 +24975,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25022,14 +25022,14 @@
       "amount":"199.00",
       "blocked_reason":null,
       "chargeability":{
-        "account_charges_enabled":null,
-        "account_payouts_enabled":null,
-        "commons_rail":false,
-        "exposure":null,
-        "link_active":null,
-        "note":"No proven chargeable rail for this offer on this surface.",
-        "state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-        "url":null
+        "account_charges_enabled":true,
+        "account_payouts_enabled":true,
+        "commons_rail":true,
+        "exposure":"CHECKOUT_FIRST",
+        "link_active":true,
+        "note":"Stripe livemode rail proven on Commons checkout only. A click is intent. Cash stays 0. Not chargeable on an external marketplace listing.",
+        "state":"ACTIVE_CHARGEABLE",
+        "url":"https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d"
       },
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "currency":"USD",
@@ -25049,7 +25049,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25121,7 +25121,7 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25195,7 +25195,7 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25269,7 +25269,7 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25343,7 +25343,7 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25417,7 +25417,7 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25491,7 +25491,7 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25565,7 +25565,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25637,7 +25637,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25711,7 +25711,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25785,7 +25785,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25859,7 +25859,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -25933,7 +25933,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26007,7 +26007,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26081,7 +26081,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26153,7 +26153,7 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26227,7 +26227,7 @@
             "surface_id":"show-hn-post"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26299,7 +26299,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26380,7 +26380,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26461,7 +26461,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26542,7 +26542,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26623,7 +26623,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26704,7 +26704,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26785,7 +26785,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26866,7 +26866,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -26947,7 +26947,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27030,7 +27030,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27113,7 +27113,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27196,7 +27196,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27279,7 +27279,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27362,7 +27362,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27445,7 +27445,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27526,7 +27526,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27607,7 +27607,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -27690,7 +27690,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },

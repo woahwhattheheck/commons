@@ -194,7 +194,7 @@
     {
       "account_status":"LIVEMODE_CHARGES_PAYOUTS_ENABLED",
       "family":"recorded_rail",
-      "fit_count":9,
+      "fit_count":13,
       "honest_live":false,
       "id":"stripe-payment-links",
       "listing_states":[
@@ -203,7 +203,7 @@
       ],
       "name":"Stripe Payment Links",
       "submit_allowed":false,
-      "unfit_count":12
+      "unfit_count":8
     }
   ],
   "conversion_rule":"Buyer interest from any channel is an OFFER-board public signal plus the listing's routes.human page. Do not open a second CRM. Existing pipeline map: revenue/production_survival/crm.md.",
@@ -211,13 +211,13 @@
     "blocked_pairs":36,
     "channels":15,
     "collected_cash_usd":"0.00",
-    "fit_pairs":107,
+    "fit_pairs":111,
     "live_commons_surfaces":63,
     "live_marketplace_listings":0,
     "offers":21,
-    "packages_ready":107,
+    "packages_ready":111,
     "pairs":315,
-    "unfit_pairs":208,
+    "unfit_pairs":204,
     "verified_customers":0,
     "verified_leads":0,
     "verified_positive_replies":0

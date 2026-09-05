@@ -5682,7 +5682,7 @@
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
       "currency":"USD",
-      "fit":"UNFIT",
+      "fit":"FIT",
       "human_route":"dealer-service-lead-rescue.html",
       "id":"stripe-payment-links__dealer-service-lead-rescue",
       "listing_state":"NOT_LISTED",
@@ -5690,9 +5690,9 @@
       "offer_id":"dealer-service-lead-rescue",
       "offer_name":"Dealer Service Lead Rescue Diagnostic",
       "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
+      "package_state":"PACKAGE_READY",
       "reasons":[
-        "class bounded_service is outside micro_sku,expertise_hour,high_ticket_product"
+        "exact active Stripe checkout is proven on the catalog"
       ],
       "source_blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
       "source_path":"revenue/dealer_service_lead_rescue/contract.json",
@@ -6021,7 +6021,7 @@
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
       "currency":"USD",
-      "fit":"UNFIT",
+      "fit":"FIT",
       "human_route":"plant-downtime-handoff.html",
       "id":"stripe-payment-links__plant-downtime-handoff",
       "listing_state":"NOT_LISTED",
@@ -6029,9 +6029,9 @@
       "offer_id":"plant-downtime-handoff",
       "offer_name":"Plant Downtime Handoff Diagnostic",
       "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
+      "package_state":"PACKAGE_READY",
       "reasons":[
-        "class bounded_service is outside micro_sku,expertise_hour,high_ticket_product"
+        "exact active Stripe checkout is proven on the catalog"
       ],
       "source_blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
       "source_path":"revenue/plant_downtime_handoff/contract.json",
@@ -6360,7 +6360,7 @@
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
       "currency":"USD",
-      "fit":"UNFIT",
+      "fit":"FIT",
       "human_route":"referral-intake-completeness.html",
       "id":"stripe-payment-links__referral-intake-completeness",
       "listing_state":"NOT_LISTED",
@@ -6368,9 +6368,9 @@
       "offer_id":"referral-intake-completeness",
       "offer_name":"Referral Intake Completeness Diagnostic",
       "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
+      "package_state":"PACKAGE_READY",
       "reasons":[
-        "class bounded_service is outside micro_sku,expertise_hour,high_ticket_product"
+        "exact active Stripe checkout is proven on the catalog"
       ],
       "source_blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
       "source_path":"revenue/referral_intake_completeness/contract.json",
@@ -6699,7 +6699,7 @@
       "channel_id":"stripe-payment-links",
       "channel_name":"Stripe Payment Links",
       "currency":"USD",
-      "fit":"UNFIT",
+      "fit":"FIT",
       "human_route":"repair-booking-preflight.html",
       "id":"stripe-payment-links__repair-booking-exactly-once-v1",
       "listing_state":"NOT_LISTED",
@@ -6707,9 +6707,9 @@
       "offer_id":"repair-booking-exactly-once-v1",
       "offer_name":"Repair Booking Exactly-Once Diagnostic",
       "offer_state":"PUBLIC_OFFER",
-      "package_state":"UNFIT",
+      "package_state":"PACKAGE_READY",
       "reasons":[
-        "class bounded_service is outside micro_sku,expertise_hour,high_ticket_product"
+        "exact active Stripe checkout is proven on the catalog"
       ],
       "source_blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
       "source_path":"revenue/repair_booking_preflight/contract.json",

@@ -969,7 +969,7 @@
     },
     "dealer-service-lead-rescue": {
       "priority": 18,
-      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "readiness": "READY_FOR_CHECKOUT",
       "buyer": "A dealer service manager or BDC lead whose inbound service leads must produce one follow-up and one appointment.",
       "trigger": "A duplicate submit or worker restart causes a service lead to be followed up twice or not at all.",
       "acquisition": {
@@ -980,7 +980,7 @@
         ],
         "message": "$199 for a one-business-day synthetic diagnostic of duplicate, crash, restart, rollback, and conflict behavior, with receipts.",
         "route": "commerce.html#dealer-service-lead-rescue",
-        "cta": "Review the recorded $199 diagnostic"
+        "cta": "Open verified checkout"
       },
       "qualification": {
         "route": "dealer-service-lead-rescue.html",
@@ -991,11 +991,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "RECORDED_STRIPE_LINK",
-        "status": "CAPABILITY_UNVERIFIED",
-        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
         "state_after": "FUNDED",
-        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
       },
       "fulfillment": {
         "deliverables": [
@@ -1011,20 +1011,20 @@
         "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
       },
       "measurement": {
-        "dom_action": "provider-capability-unverified",
-        "click_truth": "NO_CLICK_SURFACE",
-        "first_evidence_state": "DISCOVERED",
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
       "gaps": [
-        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
-        "No paid delivery or collected cash is recorded in funnel_truth"
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
       ]
     },
     "plant-downtime-handoff": {
       "priority": 19,
-      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "readiness": "READY_FOR_CHECKOUT",
       "buyer": "A plant maintenance leader whose downtime events must reach one technician and parts handoff.",
       "trigger": "A duplicate fault report or worker restart causes a handoff to dispatch twice or disappear.",
       "acquisition": {
@@ -1035,7 +1035,7 @@
         ],
         "message": "$199 for a one-business-day synthetic diagnostic of duplicate, crash, restart, rollback, and conflict behavior, with receipts.",
         "route": "commerce.html#plant-downtime-handoff",
-        "cta": "Review the recorded $199 diagnostic"
+        "cta": "Open verified checkout"
       },
       "qualification": {
         "route": "plant-downtime-handoff.html",
@@ -1046,11 +1046,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "RECORDED_STRIPE_LINK",
-        "status": "CAPABILITY_UNVERIFIED",
-        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
         "state_after": "FUNDED",
-        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
       },
       "fulfillment": {
         "deliverables": [
@@ -1066,20 +1066,20 @@
         "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
       },
       "measurement": {
-        "dom_action": "provider-capability-unverified",
-        "click_truth": "NO_CLICK_SURFACE",
-        "first_evidence_state": "DISCOVERED",
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
       "gaps": [
-        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
-        "No paid delivery or collected cash is recorded in funnel_truth"
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
       ]
     },
     "referral-intake-completeness": {
       "priority": 20,
-      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "readiness": "READY_FOR_CHECKOUT",
       "buyer": "A clinic operations director whose complete referrals must create one intake ticket while incomplete packets remain held.",
       "trigger": "A retry advances an incomplete referral or creates a second queue ticket for a complete packet.",
       "acquisition": {
@@ -1090,7 +1090,7 @@
         ],
         "message": "$199 for a one-business-day synthetic no-PHI diagnostic of completeness, replay, crash, restart, rollback, and conflict behavior, with receipts.",
         "route": "commerce.html#referral-intake-completeness",
-        "cta": "Review the recorded $199 diagnostic"
+        "cta": "Open verified checkout"
       },
       "qualification": {
         "route": "referral-intake-completeness.html",
@@ -1101,11 +1101,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "RECORDED_STRIPE_LINK",
-        "status": "CAPABILITY_UNVERIFIED",
-        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
         "state_after": "FUNDED",
-        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
       },
       "fulfillment": {
         "deliverables": [
@@ -1121,20 +1121,20 @@
         "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
       },
       "measurement": {
-        "dom_action": "provider-capability-unverified",
-        "click_truth": "NO_CLICK_SURFACE",
-        "first_evidence_state": "DISCOVERED",
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
       "gaps": [
-        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
-        "No paid delivery or collected cash is recorded in funnel_truth"
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
       ]
     },
     "repair-booking-exactly-once-v1": {
       "priority": 21,
-      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "readiness": "READY_FOR_CHECKOUT",
       "buyer": "A repair-scheduling owner whose request must create exactly one appointment or an explicit stopped or rolled-back result.",
       "trigger": "A retry, timeout, crash, or webhook replay creates duplicate appointments or leaves an ambiguous result.",
       "acquisition": {
@@ -1145,7 +1145,7 @@
         ],
         "message": "$199 for a one-business-day diagnostic across 20 synthetic retry, timeout, crash, replay, and rollback fixtures, with a durable receipt.",
         "route": "commerce.html#repair-booking-exactly-once-v1",
-        "cta": "Review the recorded $199 diagnostic"
+        "cta": "Open verified checkout"
       },
       "qualification": {
         "route": "repair-booking-preflight.html",
@@ -1156,11 +1156,11 @@
         "state_after": "QUALIFIED"
       },
       "conversion": {
-        "mode": "RECORDED_STRIPE_LINK",
-        "status": "CAPABILITY_UNVERIFIED",
-        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
         "state_after": "FUNDED",
-        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
       },
       "fulfillment": {
         "deliverables": [
@@ -1176,15 +1176,15 @@
         "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
       },
       "measurement": {
-        "dom_action": "provider-capability-unverified",
-        "click_truth": "NO_CLICK_SURFACE",
-        "first_evidence_state": "DISCOVERED",
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [],
       "gaps": [
-        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
-        "No paid delivery or collected cash is recorded in funnel_truth"
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
       ]
     },
     "agent-failure-autopsy-29": {
@@ -1881,11 +1881,16 @@
         "machine": "revenue/dealer_service_lead_rescue/contract.json"
       },
       "checkout": {
-        "status": "LIVEMODE_URL_RECORDED",
+        "status": "ACTIVE_CHARGEABLE",
         "provider": "stripe",
         "url": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
-        "link_active": "UNVERIFIED",
-        "account_charges_enabled": false
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
       }
     },
     {
@@ -1918,11 +1923,16 @@
         "machine": "revenue/plant_downtime_handoff/contract.json"
       },
       "checkout": {
-        "status": "LIVEMODE_URL_RECORDED",
+        "status": "ACTIVE_CHARGEABLE",
         "provider": "stripe",
         "url": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
-        "link_active": "UNVERIFIED",
-        "account_charges_enabled": false
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
       }
     },
     {
@@ -1955,11 +1965,16 @@
         "machine": "revenue/referral_intake_completeness/contract.json"
       },
       "checkout": {
-        "status": "LIVEMODE_URL_RECORDED",
+        "status": "ACTIVE_CHARGEABLE",
         "provider": "stripe",
         "url": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
-        "link_active": "UNVERIFIED",
-        "account_charges_enabled": false
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
       }
     },
     {
@@ -1992,11 +2007,16 @@
         "machine": "revenue/repair_booking_preflight/contract.json"
       },
       "checkout": {
-        "status": "LIVEMODE_URL_RECORDED",
+        "status": "ACTIVE_CHARGEABLE",
         "provider": "stripe",
         "url": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
-        "link_active": "UNVERIFIED",
-        "account_charges_enabled": false
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
       }
     },
     {

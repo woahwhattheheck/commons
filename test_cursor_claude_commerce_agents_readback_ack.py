@@ -29,7 +29,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "623e99e8",
+    "test_commerce_agents_same_loop.py": "e6ee6d10",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     ".agents/skills/autogtm/SKILL.md": "1c5b3e0c",
     "autogtm.html": "9d8b3e85",

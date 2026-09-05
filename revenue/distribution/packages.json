@@ -1,6 +1,6 @@
 {
   "as_of":"2026-08-28T16:10:00Z",
-  "count":107,
+  "count":111,
   "kind":"CHANNEL_READY_PACKAGES",
   "packages":[
     {
@@ -6215,7 +6215,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6283,7 +6283,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6351,7 +6351,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6366,6 +6366,74 @@
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
       "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic dealer service lead diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Dealer Service Lead Rescue Diagnostic.",
+        "Price basis: one synthetic dealer service lead diagnostic in one business day.",
+        "Canonical terms stay on revenue/dealer_service_lead_rescue/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/dealer_service_lead_rescue/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Dealer Service Lead Rescue Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Dealer Service Lead Rescue Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Dealer Service Lead Rescue Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: dealer-service-lead-rescue.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/dealer_service_lead_rescue/contract.json (blob 9a0177e405e6ecbda5d648915c882fa31b4d9f3f).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"dealer-service-lead-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+          "kind":"canonical_source",
+          "path":"revenue/dealer_service_lead_rescue/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"dealer-service-lead-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__dealer-service-lead-rescue",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
       "offer_id":"dealer-service-lead-rescue",
       "offer_name":"Dealer Service Lead Rescue Diagnostic",
@@ -6419,7 +6487,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6487,7 +6555,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6555,7 +6623,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6570,6 +6638,74 @@
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
       "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic plant downtime handoff diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Plant Downtime Handoff Diagnostic.",
+        "Price basis: one synthetic plant downtime handoff diagnostic in one business day.",
+        "Canonical terms stay on revenue/plant_downtime_handoff/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/plant_downtime_handoff/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Plant Downtime Handoff Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Plant Downtime Handoff Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Plant Downtime Handoff Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: plant-downtime-handoff.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/plant_downtime_handoff/contract.json (blob 9d01dd83be165ca322f576ba05bce2dbe81e48e4).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"plant-downtime-handoff.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+          "kind":"canonical_source",
+          "path":"revenue/plant_downtime_handoff/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"plant-downtime-handoff.html",
+          "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__plant-downtime-handoff",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
       "offer_id":"plant-downtime-handoff",
       "offer_name":"Plant Downtime Handoff Diagnostic",
@@ -6623,7 +6759,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6691,7 +6827,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6759,7 +6895,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6774,6 +6910,74 @@
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
       "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one synthetic referral intake completeness diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Referral Intake Completeness Diagnostic.",
+        "Price basis: one synthetic referral intake completeness diagnostic in one business day.",
+        "Canonical terms stay on revenue/referral_intake_completeness/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/referral_intake_completeness/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Referral Intake Completeness Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Referral Intake Completeness Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Referral Intake Completeness Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: referral-intake-completeness.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/referral_intake_completeness/contract.json (blob 06bb53685f6aaca69ff08b436771fe115e0aa38b).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"referral-intake-completeness.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+          "kind":"canonical_source",
+          "path":"revenue/referral_intake_completeness/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"referral-intake-completeness.html",
+          "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__referral-intake-completeness",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
       "offer_id":"referral-intake-completeness",
       "offer_name":"Referral Intake Completeness Diagnostic",
@@ -6827,7 +7031,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6895,7 +7099,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6963,7 +7167,7 @@
         "This package is not a live listing.",
         "This layer does not submit through any account.",
         "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6978,6 +7182,74 @@
       "kind":"CHANNEL_READY_PACKAGE",
       "listed":false,
       "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"199.00",
+        "basis":"one 20-fixture synthetic repair-booking diagnostic in one business day",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Repair Booking Exactly-Once Diagnostic.",
+        "Price basis: one 20-fixture synthetic repair-booking diagnostic in one business day.",
+        "Canonical terms stay on revenue/repair_booking_preflight/contract.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/repair_booking_preflight/contract.json."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Repair Booking Exactly-Once Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Repair Booking Exactly-Once Diagnostic — Commons channel package (not a live listing)\n\nOutcome: Repair Booking Exactly-Once Diagnostic.\nPrice: USD 199.00. Source terms win; this package does not rewrite them.\nOffer id: repair-booking-exactly-once-v1.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/repair_booking_preflight/contract.json (blob 85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"repair-booking-preflight.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+          "kind":"canonical_source",
+          "path":"revenue/repair_booking_preflight/contract.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"repair-booking-preflight.html",
+          "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__repair-booking-exactly-once-v1",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
       "offer_class":"bounded_service",
       "offer_id":"repair-booking-exactly-once-v1",
       "offer_name":"Repair Booking Exactly-Once Diagnostic",

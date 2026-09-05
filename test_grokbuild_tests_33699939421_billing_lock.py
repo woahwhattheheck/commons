@@ -24,7 +24,7 @@ KEEP = {
     "test_open_door_guard.py": "70ee5730",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
-    "test_grokbuild_tests_33694253421_billing_lock.py": "f8f3f347",
+    "test_grokbuild_tests_33694253421_billing_lock.py": "46a273ea",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
     "test_grokbuild_tests_33694246830_billing_lock.py": "fb6fc00d",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",

@@ -63,7 +63,7 @@
       "id": "listing-registry",
       "path": "revenue/listing_registry/registry.json",
       "role": "MARKETPLACE_SURFACES_COMPOSE_NOT_REMINT",
-      "sha256": "77e3702b678d9215d16d15ed396ccb398a78ba92c55d943f4bb39deff963f39d"
+      "sha256": "624aae1cab2777e5b8cc1bf32c56660202b4a88b539f334bd6efb344b3b54a95"
     }
   ],
   "capabilities": [
@@ -266,7 +266,7 @@
         },
         {
           "path": "resources.html",
-          "sha256": "dd0005285d799958eaabe82440f34662dae3b00da02288dd6f69b468a0bb4071",
+          "sha256": "e197ed5b124487329116931946a403d11c1cd42f847b5daae6d60e13aa550382",
           "bytes": 11401
         },
         {
@@ -537,7 +537,7 @@
       ],
       "composed_from": [
         {
-          "path": "revenue\\ip\\opportunity_seed.json",
+          "path": "revenue/ip/opportunity_seed.json",
           "sha256": "8f9af8f961876b4e33deb7f11d154a5a728423a1ef81ade3299007392436e4c2"
         }
       ],
@@ -605,7 +605,7 @@
       ],
       "composed_from": [
         {
-          "path": "revenue\\ip\\opportunity_seed.json",
+          "path": "revenue/ip/opportunity_seed.json",
           "sha256": "8f9af8f961876b4e33deb7f11d154a5a728423a1ef81ade3299007392436e4c2"
         }
       ],
@@ -672,7 +672,7 @@
       ],
       "composed_from": [
         {
-          "path": "revenue\\ip\\opportunity_seed.json",
+          "path": "revenue/ip/opportunity_seed.json",
           "sha256": "8f9af8f961876b4e33deb7f11d154a5a728423a1ef81ade3299007392436e4c2"
         }
       ],
