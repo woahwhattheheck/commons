@@ -356,6 +356,19 @@ class CliTests(unittest.TestCase):
             out_json, out_md = Path(tmp) / "r.json", Path(tmp) / "r.md"
             brief = self.run_cli("-w", ws, "impact", "sup-acme/lot/LOT-CITRIC-01", "--brief", "--out", str(out_json), "--md", str(out_md))
             self.assertEqual(brief["counts"]["KNOWN_AFFECTED"], len(FORWARD_KNOWN_FROM_CITRIC))
+            by_key = {a["key"]: a for a in brief["affected"]}
+            self.assertEqual(by_key["sup-acme/lot/LOT-CITRIC-01A"]["detail"], "citric acid Acme Acids")
+            self.assertEqual(by_key["pilot-plant/shipment/SHIP-3"]["detail"], "Market South")
+            p4 = by_key["pilot-plant/batch/BATCH-P4"]["path"]
+            self.assertEqual(len(p4), 4)
+            self.assertTrue(p4[-1].startswith("pilot-plant/batch/BATCH-P2 -rework-> pilot-plant/batch/BATCH-P4 (rework.csv:2@"), p4[-1])
+            summarised = self.run_cli("-w", ws, "impact", "pilot-plant/shipment/SHIP-3", "--backward", "--paths", "summary")
+            first = summarised["impact"]["affected"][0]
+            self.assertIsInstance(first["path"][0], str)
+            self.assertIn("what |", out_md.read_text(encoding="utf-8"))
+            self.assertIn("| citric acid Acme Acids |", out_md.read_text(encoding="utf-8"))
+            full_written = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertIsInstance(full_written["impact"]["affected"][0]["path"][0], dict, "files keep the full edge objects")
             report = json.loads(out_json.read_text(encoding="utf-8"))
             self.assertEqual(report["content_sha256"], brief["content_sha256"])
             self.assertIn("# LotLens impact report", out_md.read_text(encoding="utf-8"))

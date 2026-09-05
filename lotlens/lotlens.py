@@ -87,10 +87,25 @@ def cmd_impact(ws: engine.Workspace, args) -> dict:
         return {
             "query": impact["query"],
             "counts": impact.get("counts"),
-            "affected": [{"key": a["key"], "status": a["status"], "hops": a["hops"]} for a in impact.get("affected", [])],
+            "affected": [
+                {
+                    "key": a["key"],
+                    "status": a["status"],
+                    "hops": a["hops"],
+                    "detail": engine.node_detail(a["kind"], a["attrs"]),
+                    "path": engine.path_summary(a["path"]),
+                }
+                for a in impact.get("affected", [])
+            ],
             "content_sha256": report["content_sha256"],
             "written": {"json": args.out, "markdown": args.md},
         }
+    if args.paths == "summary":
+        shown = json.loads(json.dumps(report))
+        for a in shown["impact"].get("affected", []):
+            a["path"] = engine.path_summary(a["path"])
+            a["detail"] = engine.node_detail(a["kind"], a["attrs"])
+        return shown
     return report
 
 
@@ -129,6 +144,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("inspect"); p.add_argument("key")
     p = sub.add_parser("impact"); p.add_argument("key"); p.add_argument("--backward", action="store_true")
     p.add_argument("--assume", nargs="*", default=[]); p.add_argument("--out"); p.add_argument("--md"); p.add_argument("--brief", action="store_true")
+    p.add_argument("--paths", default="full", help="full (edge objects) or summary (one 'from -> to (file:line)' line per hop) in the printed report; files written with --out keep the full form")
     p = sub.add_parser("facts"); p.add_argument("--kind")
     p = sub.add_parser("annotate"); p.add_argument("target"); p.add_argument("text"); p.add_argument("--by"); p.add_argument("--supersedes")
     p = sub.add_parser("annotations"); p.add_argument("target", nargs="?")
