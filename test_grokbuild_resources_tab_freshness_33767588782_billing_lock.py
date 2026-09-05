@@ -19,8 +19,8 @@ WORKFLOW = ROOT / ".github/workflows/resources-tab-freshness.yml"
 
 KEEP = {
     ".github/workflows/resources-tab-freshness.yml": "658eec6f",
-    "host/resources_tab.py": "8505d03d",
-    "test_resources_tab.py": "ec8a5aef",
+    "host/resources_tab.py": "18ae6933",
+    "test_resources_tab.py": "8aa4fdd9",
     "open_door_guard.py": "4b053e43",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/grok-resources-tab-freshness-billing-lock-20260903-01.md": "2eb99153",
@@ -99,7 +99,7 @@ class TestGrokbuildResourcesTabFreshness33767588782BillingLock(unittest.TestCase
         self.assertTrue(row["present"])
         self.assertEqual(
             row["digest"],
-            "1634f0678ecb64b4f8924c055bde8d70b200c409ddea637b5e0f1c2d1f83bca2",
+            "367259f26537ea9340e97cdd0af647f9150b77d1b724c6844eb0ebd1eb672a7a",
         )
         self.assertEqual(row["page_digest"], row["digest"])
         again = resources_tab.regenerate_or_alarm(

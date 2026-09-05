@@ -89,6 +89,81 @@
       "link_active": true,
       "livemode": true,
       "exposure": "INTAKE_FIRST"
+    },
+    {
+      "sku": "agent-failure-autopsy-29",
+      "product": "prod_VCevsvv7skWk3e",
+      "price": "price_1UCFbHATH4EDE7XD4NNrjfUe",
+      "plink": "plink_1UCFbLATH4EDE7XDlTunr6iO",
+      "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-05T09:13:12.9504913+00:00",
+        "receipt_sha256": "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42"
+      }
+    },
+    {
+      "sku": "dealer-service-lead-rescue",
+      "product": "prod_VBEOgKb8rvlt0i",
+      "price": "price_1UArw8ATH4EDE7XDenkhMfO5",
+      "plink": "plink_1UArwVATH4EDE7XDQJprRcM2",
+      "url": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-05T11:29:50.741356+00:00",
+        "receipt_sha256": "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01"
+      }
+    },
+    {
+      "sku": "plant-downtime-handoff",
+      "product": "prod_VBEPKBbm82VRup",
+      "price": "price_1UArwuATH4EDE7XD2F2xPvIn",
+      "plink": "plink_1UArxFATH4EDE7XD0Fwah6Ib",
+      "url": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-05T11:29:50.741356+00:00",
+        "receipt_sha256": "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01"
+      }
+    },
+    {
+      "sku": "referral-intake-completeness",
+      "product": "prod_VBEPsfvtmzL1vk",
+      "price": "price_1UArwrATH4EDE7XD2COCVmJ5",
+      "plink": "plink_1UArxCATH4EDE7XDM9RJRXCv",
+      "url": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-05T11:29:50.741356+00:00",
+        "receipt_sha256": "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01"
+      }
+    },
+    {
+      "sku": "repair-booking-exactly-once-v1",
+      "product": "prod_VBEPWEKQSZtg9X",
+      "price": "price_1UArwsATH4EDE7XD7VajGLjJ",
+      "plink": "plink_1UArxDATH4EDE7XDFJmHaUtl",
+      "url": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-05T11:29:50.741356+00:00",
+        "receipt_sha256": "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01"
+      }
     }
   ],
   "inert_duplicate_urls": [

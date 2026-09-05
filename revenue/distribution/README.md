@@ -10,8 +10,8 @@ status.
 python3 host/distribution.py validate
 python3 host/distribution.py matrix
 python3 host/distribution.py status
-python3 host/distribution.py package --offer same-day-agent-survival-proof --channel upwork-project-catalog
-python3 host/distribution.py inbound --offer same-day-agent-survival-proof --channel contra-services
+python3 host/distribution.py package --offer ho-issue-to-pr --channel upwork-project-catalog
+python3 host/distribution.py inbound --offer ho-issue-to-pr --channel contra-services
 python3 host/distribution.py export
 ```
 

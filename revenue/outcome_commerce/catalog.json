@@ -36,7 +36,12 @@
     "revenue/subzero_buyers/pack.json",
     "revenue/subzero_gtm/architecture.json",
     "revenue/expert_networks/",
-    "land/stripe-payment-links-20260826.md"
+    "land/stripe-payment-links-20260826.md",
+    "revenue/dealer_service_lead_rescue/contract.json",
+    "revenue/plant_downtime_handoff/contract.json",
+    "revenue/referral_intake_completeness/contract.json",
+    "revenue/repair_booking_preflight/contract.json",
+    "revenue/agent_failure_autopsy/offer.json"
   ],
   "funnel_stage_order": [
     "DISCOVERED",
@@ -62,73 +67,13 @@
     "next_edge": "QUALIFIED_BUYER"
   },
   "funnels": {
-    "same-day-agent-survival-proof": {
-      "priority": 2,
-      "readiness": "READY_FOR_QUALIFICATION",
-      "buyer": "An agent operator with one named production failure that public or synthetic input can reproduce.",
-      "trigger": "A workflow loses progress, repeats an effect, or fails after restart.",
-      "acquisition": {
-        "primary_channel": "Named-human follow-up to the existing delivered prospect list",
-        "alternate_channels": [
-          "Public failure diagnosis attached to a relevant issue or post",
-          "agent-rescue.html direct share"
-        ],
-        "message": "Send one sentence: My agent should [outcome], but in production it [failure].",
-        "route": "commerce.html#same-day-agent-survival-proof",
-        "cta": "Send the one-sentence failure"
-      },
-      "qualification": {
-        "route": "agent-rescue.html",
-        "required": [
-          "One non-confidential outcome-and-failure sentence",
-          "Public or synthetic reproduction input",
-          "Written Given/When/Then binary test",
-          "Exact delivery window and timezone"
-        ],
-        "state_after": "QUALIFIED"
-      },
-      "conversion": {
-        "mode": "CUSTOMER_SPECIFIC_INVOICE",
-        "status": "NOT_ISSUED",
-        "next_step": "Accept the binary test and receive a buyer-specific hosted invoice.",
-        "state_after": "FUNDED",
-        "evidence_required": "Cleared provider authorization at the agreed window start; a reply or draft invoice is not funding."
-      },
-      "fulfillment": {
-        "deliverables": [
-          "Open provider-hosted working proof",
-          "Visible happy path and forced failure or stop path",
-          "Rollback or reset path",
-          "Durable receipt and one-command handoff"
-        ],
-        "acceptance": [
-          "Agreed sentence and binary test match the delivery",
-          "Happy and failure paths run inside the window",
-          "Receipt links the proof and states limits"
-        ],
-        "refund": "If the accepted proof is not delivered inside the agreed business-day window, the authorized amount is refunded. Buyer-requested scope changes restart the clock only after written agreement. The acceptance contract additionally lets the buyer elect in writing to receive one free next-business-day repair attempt instead of the refund."
-      },
-      "measurement": {
-        "dom_action": "qualification-open",
-        "click_truth": "INTENT_ONLY",
-        "first_evidence_state": "DISCOVERED",
-        "success_state": "BANK_AVAILABLE"
-      },
-      "next_offer": [
-        "production-survival-sprint"
-      ],
-      "gaps": [
-        "No verified-positive buyer reply yet",
-        "A delivery-capacity window must be named before close"
-      ]
-    },
     "production-survival-sprint": {
       "priority": 4,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A team with one buyer-owned agent workflow that needs production-failure recovery.",
-      "trigger": "A smaller proof shows the failure spans the buyer's workflow and needs a bounded implementation sprint.",
+      "trigger": "A diagnosis shows the failure spans the buyer's workflow and needs a bounded implementation sprint.",
       "acquisition": {
-        "primary_channel": "Accepted Same-Day Agent Survival Proof follow-on",
+        "primary_channel": "Qualified buyer handoff for one named buyer-owned workflow",
         "alternate_channels": [
           "Named-human outreach tied to a public production incident",
           "agent-rescue.html ladder"
@@ -906,12 +851,12 @@
       "buyer": "A team paying cloud output-token rates who needs dirty-cheap generated capacity on an already-connected model.",
       "trigger": "Published cloud output rates make a high-volume generation job too expensive relative to the outcome.",
       "acquisition": {
-        "primary_channel": "Founder email and Slack product-range pitches that are not only the $2,500 survival proof",
+        "primary_channel": "Founder email and Slack product-range pitches alongside bounded diagnostics and implementation work",
         "alternate_channels": [
           "attested-inference.html direct share",
           "Upwork LLM cost-optimization briefs as buyer-side fit only"
         ],
-        "message": "10 million generated tokens for $1 on Muhlnickel \u2014 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
+        "message": "10 million generated tokens for $1 on Muhlnickel — 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
         "route": "commerce.html#sku-muhlnickel-generated-token-capacity",
         "cta": "Send the capacity ask"
       },
@@ -967,7 +912,7 @@
       "buyer": "A team with one public or non-confidential model task and an exact evaluation rule.",
       "trigger": "The buyer needs a checkable model run or bounded compute job without buying a five-figure engagement first.",
       "acquisition": {
-        "primary_channel": "Product-range founder email that offers attested runs alongside token capacity and survival proof",
+        "primary_channel": "Product-range founder email that offers attested runs alongside token capacity and production recovery work",
         "alternate_channels": [
           "attested-inference.html",
           "commerce.html#sku-muhlnickel-attested-inference"
@@ -1014,7 +959,6 @@
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [
-        "same-day-agent-survival-proof",
         "sku-muhlnickel-titan-20260826"
       ],
       "gaps": [
@@ -1022,42 +966,290 @@
         "Stripe Payment Links for MUHL-INFER-* are NOT_MINTED from this cloud surface.",
         "Collected cash remains USD 0; no customer run is claimed."
       ]
+    },
+    "dealer-service-lead-rescue": {
+      "priority": 18,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A dealer service manager or BDC lead whose inbound service leads must produce one follow-up and one appointment.",
+      "trigger": "A duplicate submit or worker restart causes a service lead to be followed up twice or not at all.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public dealer service diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate or restart failure"
+        ],
+        "message": "$199 for a one-business-day synthetic diagnostic of duplicate, crash, restart, rollback, and conflict behavior, with receipts.",
+        "route": "commerce.html#dealer-service-lead-rescue",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "dealer-service-lead-rescue.html",
+        "required": [
+          "One approved synthetic service-lead payload shape",
+          "Browser-local synthetic fixtures only; no dealership or customer data, PII, credentials, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for the contract's synthetic duplicate, crash, restart, rollback, and conflict fixtures",
+          "Timestamped progress and terminal status receipts",
+          "A durable result tied to the contract revision"
+        ],
+        "acceptance": [
+          "Lead identity is the idempotency key",
+          "Complete leads produce exactly one follow-up and appointment while incomplete leads produce none",
+          "Restart resumes once, rollback cleans a crashed run, and conflicting bytes preserve the original rescue"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "plant-downtime-handoff": {
+      "priority": 19,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A plant maintenance leader whose downtime events must reach one technician and parts handoff.",
+      "trigger": "A duplicate fault report or worker restart causes a handoff to dispatch twice or disappear.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public plant downtime diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate or restart failure"
+        ],
+        "message": "$199 for a one-business-day synthetic diagnostic of duplicate, crash, restart, rollback, and conflict behavior, with receipts.",
+        "route": "commerce.html#plant-downtime-handoff",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "plant-downtime-handoff.html",
+        "required": [
+          "One approved synthetic plant-fault payload shape",
+          "Browser-local synthetic fixtures only; no plant data, PII, credentials, live control, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for the contract's synthetic duplicate, crash, restart, rollback, and conflict fixtures",
+          "Timestamped progress and terminal status receipts",
+          "A durable result tied to the contract revision"
+        ],
+        "acceptance": [
+          "Fault identity is the idempotency key",
+          "Complete faults dispatch exactly once while incomplete faults dispatch zero times",
+          "Restart resumes once, rollback cleans a crashed run, and conflicting bytes preserve the original dispatch"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "referral-intake-completeness": {
+      "priority": 20,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A clinic operations director whose complete referrals must create one intake ticket while incomplete packets remain held.",
+      "trigger": "A retry advances an incomplete referral or creates a second queue ticket for a complete packet.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public referral intake diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching completeness or replay failure"
+        ],
+        "message": "$199 for a one-business-day synthetic no-PHI diagnostic of completeness, replay, crash, restart, rollback, and conflict behavior, with receipts.",
+        "route": "commerce.html#referral-intake-completeness",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "referral-intake-completeness.html",
+        "required": [
+          "One approved synthetic referral payload shape and referral-class field matrix",
+          "Browser-local synthetic fixtures only; no PHI, clinical data, credentials, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for the contract's synthetic completeness, replay, crash, restart, rollback, and conflict fixtures",
+          "Timestamped progress and intake receipts",
+          "A durable result tied to the contract revision"
+        ],
+        "acceptance": [
+          "Every checklist item comes from the referral-class matrix",
+          "Complete packets route once while incomplete packets route once to INCOMPLETE_INTAKE",
+          "Replay creates no second ticket, rollback clears a crashed ticket, and PHI-shaped keys are refused"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "repair-booking-exactly-once-v1": {
+      "priority": 21,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A repair-scheduling owner whose request must create exactly one appointment or an explicit stopped or rolled-back result.",
+      "trigger": "A retry, timeout, crash, or webhook replay creates duplicate appointments or leaves an ambiguous result.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public repair-booking diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching retry or ambiguous-effect failure"
+        ],
+        "message": "$199 for a one-business-day diagnostic across 20 synthetic retry, timeout, crash, replay, and rollback fixtures, with a durable receipt.",
+        "route": "commerce.html#repair-booking-exactly-once-v1",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "repair-booking-preflight.html",
+        "required": [
+          "One approved synthetic repair-booking payload shape and tool sequence",
+          "Synthetic fixtures only; no customer data, credentials, real appointment creation, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the existing verified one-time USD 199 checkout, then follow the offer intake and delivery terms. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active/live link and one-time USD 199 line item readback on 2026-09-05; account capability remains separately dated 2026-08-28. Buyer-adjustable quantity and future tax treatment remain unverified."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for all 20 synthetic contract fixtures",
+          "The first unsafe edge for any failed fixture",
+          "A durable JSON receipt tied to the contract revision"
+        ],
+        "acceptance": [
+          "Each fixture ends BOOKED with exactly one BOOKING_CREATED event or ends explicitly STOPPED or ROLLED_BACK",
+          "Duplicate appointments and silent or ambiguous terminal states are zero",
+          "A failed fixture identifies the first unsafe edge and every run emits a durable JSON receipt"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "No paid delivery or collected cash is recorded in funnel_truth",
+        "Future tax treatment and buyer-adjustable quantity were not established by the provider readback"
+      ]
+    },
+    "agent-failure-autopsy-29": {
+      "priority": 2,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A coding-agent user with one failed run and sanitized evidence who needs a defensible diagnosis before deciding what to change.",
+      "trigger": "One coding-agent workflow produced the wrong result, stopped, repeated work, lost state, or spent unexpectedly.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Agent Failure Autopsy page",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "A named response to a matching public coding-agent failure"
+        ],
+        "message": "$29 for one full-strength, evidence-linked diagnosis of one failed coding-agent run within one business day after usable, in-cap evidence arrives.",
+        "route": "commerce.html#agent-failure-autopsy-29",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "agent-rescue.html",
+        "required": [
+          "one failure sentence",
+          "the coding harness and relevant stack name",
+          "one or more redacted transcript, log, or screenshot artifacts",
+          "Sanitized evidence within 10 files, 25 MB raw, and 2,000,000 extracted Unicode characters"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the verified one-time Stripe checkout, then follow the hosted confirmation to send sanitized, in-cap evidence. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active live Stripe product, one-time USD 29 price, fixed-quantity payment link, and the separately dated same-account charges/payout capability snapshot. The restricted commerce key account readback returned HTTP 403; account binding is from the official Stripe key-creation UI. A click is not authorization, settlement, payout, or bank cash."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "an evidence-linked timeline and failure chain with the first meaningful divergence marked",
+          "primary and contributing causes with calibrated confidence",
+          "an adversarial challenge of each causal explanation against plausible alternatives",
+          "concrete prompt, configuration, or code fix steps only where the supplied evidence supports them",
+          "one replay or regression-prevention check"
+        ],
+        "acceptance": [
+          "Evidence and inference are separated, and the first meaningful divergence is marked",
+          "Primary and contributing causes carry calibrated confidence and are challenged against plausible alternatives",
+          "Supported fix steps and the replay or prevention check are evidence-linked, and independent review is recorded before buyer delivery"
+        ],
+        "refund": "Refund USD 29 when the accepted artifacts cannot support a defensible diagnosis after the included clarification, when a legitimate one-run case cannot fit the intake boundary, when quarantined evidence remains unusable after the slice opportunity, when a seemingly usable case does not survive adversarial review, or when a defensible diagnosis cannot be delivered within the recorded one-business-day window. Never rush an unsupported diagnosis to meet the clock."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [
+        "production-survival-sprint"
+      ],
+      "gaps": [
+        "A checkout click is not authorization, settlement, payout, or BANK_AVAILABLE cash",
+        "No paid delivery or collected cash is recorded in funnel_truth"
+      ]
     }
   },
   "listings": [
-    {
-      "id": "same-day-agent-survival-proof",
-      "name": "Same-Day Agent Survival Proof",
-      "state": "PUBLIC_OFFER",
-      "source": {
-        "path": "revenue/production_survival/offer.json",
-        "pointer": "/entry_offer",
-        "offer_id": "same-day-agent-survival-proof",
-        "blob_sha": "84b664c07d0677a92c8e79797f80ebde823da447",
-        "terms_authority": "source"
-      },
-      "pricing": {
-        "currency": "USD",
-        "mode": "fixed_outcome",
-        "components": [
-          {
-            "id": "entry_fee",
-            "kind": "fixed",
-            "amount": "2500.00",
-            "basis": "one accepted one-business-day proof contract"
-          }
-        ]
-      },
-      "outcome": {
-        "acceptance_source": "revenue/production_survival/acceptance_contract.md",
-        "receipt_schema": "revenue/production_survival/receipt.schema.json",
-        "evidence_required": true
-      },
-      "routes": {
-        "human": "agent-rescue.html",
-        "machine": "revenue/production_survival/offer.json"
-      }
-    },
     {
       "id": "production-survival-sprint",
       "name": "Production Survival Sprint",
@@ -1657,6 +1849,218 @@
         "path": "revenue/muhlnickel_inference/offer.json",
         "blob_sha": "960beb887a6af6e58740abc26a72934eb6efaa93",
         "terms_authority": "source"
+      }
+    },
+    {
+      "id": "dealer-service-lead-rescue",
+      "name": "Dealer Service Lead Rescue Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/dealer_service_lead_rescue/contract.json",
+        "blob_sha": "9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic dealer service lead diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/dealer_service_lead_rescue/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "dealer-service-lead-rescue.html",
+        "machine": "revenue/dealer_service_lead_rescue/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
+      }
+    },
+    {
+      "id": "plant-downtime-handoff",
+      "name": "Plant Downtime Handoff Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/plant_downtime_handoff/contract.json",
+        "blob_sha": "9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic plant downtime handoff diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/plant_downtime_handoff/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "plant-downtime-handoff.html",
+        "machine": "revenue/plant_downtime_handoff/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
+      }
+    },
+    {
+      "id": "referral-intake-completeness",
+      "name": "Referral Intake Completeness Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/referral_intake_completeness/contract.json",
+        "blob_sha": "06bb53685f6aaca69ff08b436771fe115e0aa38b",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic referral intake completeness diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/referral_intake_completeness/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "referral-intake-completeness.html",
+        "machine": "revenue/referral_intake_completeness/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
+      }
+    },
+    {
+      "id": "repair-booking-exactly-once-v1",
+      "name": "Repair Booking Exactly-Once Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/repair_booking_preflight/contract.json",
+        "blob_sha": "85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one 20-fixture synthetic repair-booking diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/repair_booking_preflight/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "repair-booking-preflight.html",
+        "machine": "revenue/repair_booking_preflight/contract.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T11:29:50.741356+00:00"
+        }
+      }
+    },
+    {
+      "id": "agent-failure-autopsy-29",
+      "name": "Agent Failure Autopsy",
+      "state": "PUBLIC_OFFER",
+      "source": {
+        "path": "revenue/agent_failure_autopsy/offer.json",
+        "pointer": "",
+        "offer_id": "agent-failure-autopsy-29",
+        "blob_sha": "f61bb20aa54bec123ec37c8022b1517bde6294aa",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "29.00",
+            "basis": "one failed execution of one agent workflow"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/agent_failure_autopsy/offer.json#/delivery",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "agent-rescue.html",
+        "machine": "revenue/agent_failure_autopsy/offer.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T09:13:12.9504913+00:00"
+        }
       }
     }
   ]

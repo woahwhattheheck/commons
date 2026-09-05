@@ -36,7 +36,7 @@ KEEP = {
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "ca026c18",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a4daf448",
 }
 
 

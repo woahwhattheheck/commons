@@ -34,7 +34,7 @@ ANALYSIS: Public carrier, evidence, and RINGDELTA receipts may relate to softwar
 
 - `carrier.js` sha256 `6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa` (62464 bytes)
 - `distribution.html` sha256 `fe19383fdc5a5488ce3ab47f4a387629bdc1bbb558a0ba7859c187379741b790` (7306 bytes)
-- `host/distribution.py` sha256 `51c273d0d10b8bf8dd89219889eb1e5cbf388a1b8a95db371c591ecdf032b73b` (29377 bytes)
+- `host/distribution.py` sha256 `1d969c89bfae17912ae8fbb5313873d597aa9e233da1cd31dc980061563121ee` (29601 bytes)
 - `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)
 - `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
 

@@ -27,10 +27,10 @@ KEEP = {
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
     "test_grokbuild_pr8415_path_manifest_33689243555.py": "5494bffe",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "ca026c18",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a4daf448",
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/grokbuild-open-door-guard-33694243180-billing-lock-20260902-01.md": "4d7812f8",
-    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "ea76f46b",
+    "test_grokbuild_open_door_guard_33694243180_billing_lock.py": "663eb9fa",
 }
 
 

@@ -29,18 +29,6 @@ FORBIDDEN = (
     r"\bcvv\b\s*\d{3,4}\b",
     r"\bssn\b\s*\d{3}-\d{2}-\d{4}\b",
 )
-CHECKOUT_FIRST = ("sku-tip-20260826", "sku-monthly-tip-20260826")
-CANONICAL_SKUS = (
-    "sku-tip-20260826",
-    "sku-seat-20260826",
-    "sku-unlock-20260826",
-    "sku-monthly-tip-20260826",
-    "sku-boost-20260826",
-    "sku-whitebox-hour-20260826",
-    "sku-muhlnickel-titan-20260826",
-)
-
-
 class CapabilityError(ValueError):
     pass
 
@@ -89,19 +77,54 @@ def account_ready(provider: dict[str, Any]) -> bool:
     )
 
 
-def project_rail(provider: dict[str, Any], rail: dict[str, Any], inert: set[str]) -> dict[str, Any]:
+def catalog_checkouts(catalog: dict[str, Any]) -> dict[str, str]:
+    """Return only catalog entries that carry a fully proven Stripe checkout."""
+    out: dict[str, str] = {}
+    for listing in catalog.get("listings") or []:
+        if not isinstance(listing, dict) or not isinstance(listing.get("id"), str):
+            continue
+        checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
+        url = checkout.get("url")
+        if (
+            checkout.get("status") == "ACTIVE_CHARGEABLE"
+            and checkout.get("provider") == "stripe"
+            and checkout.get("link_active") is True
+            and checkout.get("account_charges_enabled") is True
+            and checkout.get("account_payouts_enabled") is True
+            and isinstance(url, str)
+            and STRIPE_URL_RE.fullmatch(url)
+        ):
+            out[listing["id"]] = url
+    return out
+
+
+def project_rail(
+    provider: dict[str, Any],
+    rail: dict[str, Any],
+    inert: set[str],
+    checkouts: dict[str, str],
+    default_evidence: dict[str, Any],
+) -> dict[str, Any]:
     url = str(rail.get("url") or "")
     sku = str(rail.get("sku") or "")
+    evidence = rail.get("evidence") if isinstance(rail.get("evidence"), dict) else default_evidence
+    evidence_ready = bool(evidence.get("reference") and evidence.get("observed_at"))
+    if evidence_ready:
+        try:
+            _timestamp(evidence["observed_at"], "%s.evidence.observed_at" % sku)
+        except CapabilityError:
+            evidence_ready = False
     ready = (
         account_ready(provider)
         and rail.get("link_active") is True
         and rail.get("livemode") is True
         and bool(STRIPE_URL_RE.fullmatch(url))
         and url not in inert
-        and sku in CANONICAL_SKUS
+        and checkouts.get(sku) == url
+        and evidence_ready
     )
     exposure = str(rail.get("exposure") or "")
-    if ready and exposure == "CHECKOUT_FIRST" and sku in CHECKOUT_FIRST:
+    if ready and exposure == "CHECKOUT_FIRST":
         public = "EXPOSE_CHECKOUT"
     elif ready and exposure == "INTAKE_FIRST":
         public = "EXPOSE_INTAKE_THEN_CHECKOUT"
@@ -115,10 +138,12 @@ def project_rail(provider: dict[str, Any], rail: dict[str, Any], inert: set[str]
         "public": public,
         "chargeable": ready,
         "payout_capable": bool(provider.get("payouts_enabled") is True),
+        "evidence_reference": str(evidence.get("reference") or ""),
+        "evidence_observed_at": str(evidence.get("observed_at") or ""),
     }
 
 
-def project(snapshot: dict[str, Any]) -> dict[str, Any]:
+def project(snapshot: dict[str, Any], catalog: dict[str, Any]) -> dict[str, Any]:
     if snapshot.get("kind") != "CHECKOUT_CAPABILITY_SNAPSHOT":
         raise CapabilityError("snapshot kind is invalid")
     if snapshot.get("schema_version") != "commons-checkout-capability/v1":
@@ -130,7 +155,17 @@ def project(snapshot: dict[str, Any]) -> dict[str, Any]:
     inert = set(snapshot.get("inert_duplicate_urls") or [])
     owner = snapshot.get("owner_action") if isinstance(snapshot.get("owner_action"), dict) else {}
     fallback = snapshot.get("fallback") if isinstance(snapshot.get("fallback"), dict) else {}
-    projected = [project_rail(provider, rail, inert) for rail in rails if isinstance(rail, dict)]
+    snapshot_evidence = snapshot.get("evidence") if isinstance(snapshot.get("evidence"), dict) else {}
+    default_evidence = {
+        "reference": snapshot_evidence.get("reference"),
+        "observed_at": snapshot.get("observed_at"),
+    }
+    checkouts = catalog_checkouts(catalog)
+    projected = [
+        project_rail(provider, rail, inert, checkouts, default_evidence)
+        for rail in rails
+        if isinstance(rail, dict)
+    ]
     public = [row for row in projected if row["public"] != "INERT"]
     checkout_first = [row for row in public if row["public"] == "EXPOSE_CHECKOUT"]
     cash = money.get("collected_cash_usd")
@@ -152,17 +187,14 @@ def project(snapshot: dict[str, Any]) -> dict[str, Any]:
 
 def catalog_checkout_errors(catalog: dict[str, Any], snapshot: dict[str, Any], projected: dict[str, Any]) -> list[str]:
     errors: list[str] = []
-    evidence = snapshot.get("evidence") if isinstance(snapshot.get("evidence"), dict) else {}
     expected = {row["sku"]: row for row in projected["public_rails"]}
     by_id = {}
     for listing in catalog.get("listings") or []:
         if isinstance(listing, dict) and listing.get("id"):
             by_id[listing["id"]] = listing
-    for sku in CANONICAL_SKUS:
-        listing = by_id.get(sku)
-        if not listing:
-            errors.append("catalog missing listing %s" % sku)
-            continue
+    active = catalog_checkouts(catalog)
+    for sku in active:
+        listing = by_id[sku]
         checkout = listing.get("checkout") if isinstance(listing.get("checkout"), dict) else {}
         funnel = (catalog.get("funnels") or {}).get(sku) if isinstance(catalog.get("funnels"), dict) else {}
         row = expected.get(sku)
@@ -182,10 +214,10 @@ def catalog_checkout_errors(catalog: dict[str, Any], snapshot: dict[str, Any], p
         if checkout.get("account_payouts_enabled") is not True:
             errors.append("%s account_payouts_enabled must be true" % sku)
         cap = checkout.get("capability_evidence") if isinstance(checkout.get("capability_evidence"), dict) else {}
-        if cap.get("reference") != evidence.get("reference"):
-            errors.append("%s capability_evidence.reference must match the snapshot" % sku)
-        if cap.get("observed_at") != snapshot.get("observed_at"):
-            errors.append("%s capability_evidence.observed_at must match the snapshot" % sku)
+        if cap.get("reference") != row.get("evidence_reference"):
+            errors.append("%s capability_evidence.reference must match its rail evidence" % sku)
+        if cap.get("observed_at") != row.get("evidence_observed_at"):
+            errors.append("%s capability_evidence.observed_at must match its rail evidence" % sku)
         if not isinstance(funnel, dict):
             errors.append("%s funnel missing" % sku)
             continue
@@ -193,7 +225,7 @@ def catalog_checkout_errors(catalog: dict[str, Any], snapshot: dict[str, Any], p
             errors.append("%s conversion.mode must be ACTIVE_STRIPE_LINK" % sku)
         if funnel.get("conversion", {}).get("status") != "ACTIVE_CHARGEABLE":
             errors.append("%s conversion.status must be ACTIVE_CHARGEABLE" % sku)
-        if sku in CHECKOUT_FIRST:
+        if row.get("public") == "EXPOSE_CHECKOUT":
             if funnel.get("readiness") != "READY_FOR_CHECKOUT":
                 errors.append("%s must be READY_FOR_CHECKOUT" % sku)
             if funnel.get("measurement", {}).get("dom_action") != "checkout-open":
@@ -230,7 +262,7 @@ def measure_root(root: str) -> dict[str, Any]:
             _read(root, os.path.join("host", "checkout_capability.py")),
         ]
     )
-    projected = project(snapshot)
+    projected = project(snapshot, catalog)
     errors = []
     hits = forbidden_hits(blob)
     if hits:
@@ -245,12 +277,24 @@ def measure_root(root: str) -> dict[str, Any]:
         errors.append("fallback must be provider-neutral intake")
     if projected["fallback_url"] != "mailto:tokenjunkielabs@gmail.com":
         errors.append("fallback contact must stay the public email")
-    if set(projected["checkout_first_skus"]) != set(CHECKOUT_FIRST):
-        errors.append("checkout-first SKUs must be tip and monthly-tip")
+    expected_checkout_first = {
+        sku
+        for sku in catalog_checkouts(catalog)
+        if (catalog.get("funnels") or {}).get(sku, {}).get("readiness") == "READY_FOR_CHECKOUT"
+    }
+    if set(projected["checkout_first_skus"]) != expected_checkout_first:
+        errors.append("checkout-first SKUs must match READY_FOR_CHECKOUT catalog entries")
     errors.extend(catalog_checkout_errors(catalog, snapshot, projected))
     errors.extend(html_surface_errors(root))
-    for sku in CANONICAL_SKUS:
-        path = os.path.join("land", "%s.md" % sku)
+    for listing in catalog.get("listings") or []:
+        sku = listing.get("id")
+        if sku not in catalog_checkouts(catalog):
+            continue
+        source = listing.get("source_artifact") if isinstance(listing.get("source_artifact"), dict) else {}
+        path = str(source.get("path") or "")
+        if not (path.startswith("land/") and path.endswith(".md")):
+            continue
+        path = path.replace("/", os.sep)
         text = _read(root, path)
         if "status: ACTIVE_CHARGEABLE" not in text:
             errors.append("%s must record ACTIVE_CHARGEABLE" % path)
@@ -295,7 +339,22 @@ def _self_test() -> bool:
         ],
         "inert_duplicate_urls": [],
     }
-    projected = project(dead)
+    catalog = {
+        "listings": [
+            {
+                "id": "sku-tip-20260826",
+                "checkout": {
+                    "status": "ACTIVE_CHARGEABLE",
+                    "provider": "stripe",
+                    "url": "https://donate.stripe.com/fZucN40Ch9fj7mxgJs43S08",
+                    "link_active": True,
+                    "account_charges_enabled": True,
+                    "account_payouts_enabled": True,
+                },
+            }
+        ]
+    }
+    projected = project(dead, catalog)
     if projected["account_ready"] or projected["public_rails"]:
         return False
     return True

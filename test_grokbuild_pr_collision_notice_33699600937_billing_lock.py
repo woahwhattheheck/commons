@@ -29,7 +29,7 @@ KEEP = {
     "p/grokbuild-pr-collision-notice-33689347426-billing-lock-20260902-01.md": "e92d45af",
     "test_grokbuild_pr_collision_notice_33689347426_billing_lock.py": "8498f5cb",
     "p/grokbuild-pr-collision-notice-33694241061-billing-lock-20260902-01.md": "71afa5e6",
-    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "42f01cd3",
+    "test_grokbuild_pr_collision_notice_33694241061_billing_lock.py": "7f8b90cf",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
     "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "b80c0133",
