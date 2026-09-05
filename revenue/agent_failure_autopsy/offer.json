@@ -64,7 +64,12 @@
     "analysis_level": "FULL_STRENGTH",
     "evidence_vs_inference_separated": true,
     "adversarial_challenge_required": true,
-    "time_budget_may_truncate_analysis": false
+    "time_budget_may_truncate_analysis": false,
+    "independent_review_required": true,
+    "allowed_independent_reviewer_kinds": [
+      "COMMONS_PEER",
+      "HUMAN_OPERATOR"
+    ]
   },
   "boundaries": {
     "code_implementation_included": false,
@@ -75,7 +80,7 @@
   },
   "operator_time_measurement": {
     "purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
-    "measurement_rule": "Record actual automated-draft and human-review minutes for each buyer delivery. Never use elapsed time to truncate the analysis or reduce evidence fidelity."
+    "measurement_rule": "Record actual automated-draft and independent-reviewer minutes for each buyer delivery. Never use elapsed time to truncate the analysis or reduce evidence fidelity."
   },
   "privacy": "Buyer evidence and buyer reports remain in an owner-private delivery system unless the buyer explicitly authorizes a public excerpt. The checked-in example is synthetic.",
   "delivery_quantity": {
