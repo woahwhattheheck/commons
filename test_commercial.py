@@ -116,8 +116,8 @@ class CommercialOfferTests(unittest.TestCase):
             "$15,000 on NDA and SOW signing",
             "$15,000 on delivery of the agreed pilot package",
             "$100,000 to $175,000",
-            "$2,500 same-day proof",
-            "$15,000 five-day recovery",
+            "Agent Failure Autopsy is $29 for one failed coding-agent run",
+            "fix steps, and a prevention check within one business day after usable evidence arrives",
             "tokenjunkielabs@gmail.com",
         ):
             self.assertIn(exact, self.html)
