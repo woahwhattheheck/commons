@@ -51,6 +51,8 @@ GROKBOT_CONTROL_ROUTE_FIELDS = (
 # Fields stampable onto an existing access_route (no secrets; seat stays on occupant).
 BINDABLE_ROUTE_FIELDS = ("session_id", "last_run_id", "pool_id")
 
+OBLIGATION_STATUSES = frozenset({"open", "done", "blocked", "deferred"})
+
 
 class RoleError(ValueError):
     """Invalid role operation or record."""
@@ -409,6 +411,59 @@ class RoleStore:
             raise RoleError("obligations mutated during release")
         if role.get("access_routes") != preserved_routes:
             raise RoleError("access_routes mutated during release")
+        self._write(role)
+        return deepcopy(role)
+
+    def advance_obligation(
+        self,
+        role_id: str,
+        obligation_id: str,
+        *,
+        status: str | None = None,
+        next_action: str | None = None,
+        evidence_pointer: str | None = None,
+    ) -> dict[str, Any]:
+        """Update one obligation in place; other obligations and purpose stay.
+
+        Roles describe responsibility — this never grants credentials.
+        """
+        role = self.get(role_id)
+        oid = _require_str(obligation_id, "obligation_id")
+        if not any([status, next_action, evidence_pointer]):
+            raise RoleError(
+                "advance_obligation needs at least one of "
+                "status, next_action, evidence_pointer"
+            )
+        if status is not None:
+            status_s = _require_str(status, "status").lower()
+            if status_s not in OBLIGATION_STATUSES:
+                raise RoleError(
+                    f"status must be one of {sorted(OBLIGATION_STATUSES)}"
+                )
+            status = status_s
+        preserved_purpose = role["purpose"]
+        found = False
+        new_obligations: list[dict[str, Any]] = []
+        for item in role.get("obligations") or []:
+            row = deepcopy(item)
+            if row.get("id") == oid:
+                found = True
+                if status is not None:
+                    row["status"] = status
+                if next_action is not None:
+                    row["next_action"] = _require_str(next_action, "next_action")
+                if evidence_pointer is not None:
+                    row["evidence_pointer"] = _require_str(
+                        evidence_pointer, "evidence_pointer"
+                    )
+                row = _normalize_obligation(row)
+            new_obligations.append(row)
+        if not found:
+            raise RoleError(f"obligation not found: {oid}")
+        role["obligations"] = new_obligations
+        role["updated_at"] = _utc_now()
+        if role["purpose"] != preserved_purpose:
+            raise RoleError("purpose mutated during advance_obligation")
         self._write(role)
         return deepcopy(role)
 
