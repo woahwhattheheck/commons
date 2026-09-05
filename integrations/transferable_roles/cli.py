@@ -3,7 +3,6 @@
 
 Examples:
   python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_crm_followup_role.json --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_agent_failure_autopsy_role.json --store /tmp/roles
   python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --seat HINGE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py bind-route ROLE --route grokbot_control_g2 --session-id sess-1 --last-run-id run-9 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py unbind-route ROLE --route grokbot_control_g2 --store /tmp/roles
@@ -113,11 +112,6 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--next-action")
     a.add_argument("--evidence-pointer")
 
-    sub.add_parser(
-        "open-obligations",
-        help="list open obligations across all roles in the store",
-    )
-
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -131,6 +125,10 @@ def build_parser() -> argparse.ArgumentParser:
     imp.add_argument("--file", type=Path, required=True, help="JSON package path")
 
     sub.add_parser("list", help="list role ids in the store")
+    sub.add_parser(
+        "open-obligations",
+        help="list open obligations across all roles as flat dicts",
+    )
     return p
 
 
@@ -200,8 +198,6 @@ def main(argv: list[str] | None = None) -> int:
                     evidence_pointer=args.evidence_pointer,
                 )
             )
-        elif args.cmd == "open-obligations":
-            _print({"open_obligations": store.list_open_obligations()})
         elif args.cmd == "inspect":
             _print(store.inspect(args.role_id))
         elif args.cmd == "export":
@@ -210,6 +206,8 @@ def main(argv: list[str] | None = None) -> int:
             _print(store.import_package(_load_json(args.file)))
         elif args.cmd == "list":
             _print({"roles": store.list_ids()})
+        elif args.cmd == "open-obligations":
+            _print({"open_obligations": store.list_open_obligations()})
         else:
             raise RoleError(f"unknown command: {args.cmd}")
     except RoleError as exc:
