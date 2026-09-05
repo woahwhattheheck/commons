@@ -8,6 +8,7 @@ Unbind route: `hinge-r4-unbind-route-20260905-01`
 Release: `hinge-r4-release-occupant-20260905-01`
 Advance: `hinge-r4-obligation-advance-20260905-01` (#8812 → `8a344d54`)
 Import: `hinge-r4-import-package-20260905-01`
+Paid fulfillment: `hinge-r4-paid-fulfillment-role-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -21,6 +22,10 @@ secure stores; this package only names routes.
 ```bash
 python3 integrations/transferable_roles/cli.py create \
   --file integrations/transferable_roles/fixtures/synthetic_crm_followup_role.json \
+  --store /tmp/hinge-roles
+
+python3 integrations/transferable_roles/cli.py create \
+  --file integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json \
   --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py equip role-synthetic-crm-followup-20260904 \
@@ -45,6 +50,8 @@ python3 integrations/transferable_roles/cli.py advance-obligation role-synthetic
   --id ob-1 --status done --next-action "Recorded next CRM action from stored evidence" \
   --evidence-pointer p/hinge-r4-obligation-advance-20260905-01.md \
   --store /tmp/hinge-roles
+
+python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
@@ -75,9 +82,32 @@ successor; use `release` when the session ends without one yet.
 obligation. Purpose and sibling obligations stay. Allowed statuses:
 `open|done|blocked|deferred`. Roles still confer no credentials.
 
+`open-obligations` lists every open obligation across the store as
+`{"open_obligations": [...]}` sorted by `(role_id, obligation_id)`.
+
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
 Bound route session fields survive.
+
+## Paid fulfillment handoff
+
+Synthetic fixture:
+`integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json`
+(`role-synthetic-agent-failure-autopsy-20260905`). Four open obligations
+(`ob-intake` / `ob-diagnose` / `ob-review` / `ob-settle`) hand one paid Agent
+Failure Autopsy fulfillment ($29 one-time) between seats without reminting
+credentials or inventing checkout.
+
+```bash
+python3 integrations/transferable_roles/cli.py create \
+  --file integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json \
+  --store /tmp/hinge-roles
+python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/hinge-roles
+```
+
+**Roles confer no Stripe access.** Astra **#8811** owns the fulfillment spine
+and Payment URL — do not invent plink. Public pointers only:
+`payment-capability.html`, `ground/PAYMENT_CAPABILITY.md`, `pay.html`.
 
 ## Access route shapes
 
