@@ -61,15 +61,7 @@ def read_object(path: Path) -> dict[str, Any]:
 
 def sha256_file(path: Path) -> str:
     # Hash LF-normalized bytes so Windows working copies and Linux CI agree.
-    data = path.read_bytes().replace(b"
-", b"
-").replace(b"", b"
-")
-
-", b"
-").replace(b"
-", b"
-")
+    data = path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
     return hashlib.sha256(data).hexdigest()
 
 
