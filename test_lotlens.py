@@ -431,6 +431,9 @@ class PageTests(unittest.TestCase):
         self.assertIn('name="robots" content="index, follow"', page)
         self.assertIn("KNOWN_AFFECTED", page)
         self.assertIn("annotations.json", page)
+        self.assertIn('pathSummaryLines(a.path).map(esc).join("<br>")', page, "hop lines are escaped before they enter the table")
+        self.assertNotIn('pathSummaryLines(a.path).join(', page)
+        self.assertIn('if(typeof e==="string") return e;', page, "a report printed with --paths summary loads too")
 
 
 if __name__ == "__main__":

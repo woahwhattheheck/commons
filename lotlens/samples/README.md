@@ -3,7 +3,8 @@
 Three answers the CLI gives on the synthetic pilot fixture, kept here so a reader can see
 what an impact report looks like before importing anything. Each pair is one query:
 `.json` is the full report the `--out` flag writes (every hop as an edge object with its
-source rows), `.md` is the `--md` rendering of the same report.
+source rows), `.md` is the `--md` rendering of the same report. Open `lotlens/app.html` and
+choose a `.json` to read the same answer as a page.
 
 | sample | question | command (after the import below) |
 | --- | --- | --- |
