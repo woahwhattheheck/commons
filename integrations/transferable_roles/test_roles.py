@@ -337,6 +337,74 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIsNone(out.get("occupant"))
         self.assertEqual(out["last_released"]["session_id"], "session-A")
 
+    def test_advance_obligation_updates_one_row(self) -> None:
+        role = self.store.create(self.raw, role_id="role-adv")
+        purpose = role["purpose"]
+        advanced = self.store.advance_obligation(
+            role["role_id"],
+            "ob-1",
+            status="done",
+            next_action="Recorded next CRM action from private evidence",
+            evidence_pointer="p/hinge-r4-obligation-advance-20260905-01.md",
+        )
+        self.assertEqual(advanced["purpose"], purpose)
+        self.assertEqual(len(advanced["obligations"]), 1)
+        ob = advanced["obligations"][0]
+        self.assertEqual(ob["id"], "ob-1")
+        self.assertEqual(ob["status"], "done")
+        self.assertEqual(
+            ob["next_action"], "Recorded next CRM action from private evidence"
+        )
+        self.assertEqual(
+            ob["evidence_pointer"], "p/hinge-r4-obligation-advance-20260905-01.md"
+        )
+
+    def test_advance_obligation_unknown_id_fails(self) -> None:
+        role = self.store.create(self.raw, role_id="role-adv-miss")
+        with self.assertRaises(RoleError):
+            self.store.advance_obligation(
+                role["role_id"], "no-such", status="done"
+            )
+
+    def test_cli_advance_obligation(self) -> None:
+        store_dir = self._tmp.name
+        role_id = "role-cli-adv"
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(FIXTURE),
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "advance-obligation",
+                    role_id,
+                    "--id",
+                    "ob-1",
+                    "--status",
+                    "blocked",
+                    "--next-action",
+                    "Wait on LEDGER CRM pointer",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        self.assertEqual(out["obligations"][0]["status"], "blocked")
+        self.assertEqual(
+            out["obligations"][0]["next_action"], "Wait on LEDGER CRM pointer"
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

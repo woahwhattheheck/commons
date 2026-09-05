@@ -7,6 +7,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py bind-route ROLE --route grokbot_control_g2 --session-id sess-1 --last-run-id run-9 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
 """
 
@@ -86,6 +87,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="optional guard: must match current occupant.session_id",
     )
 
+    a = sub.add_parser(
+        "advance-obligation",
+        help="update one obligation status/next_action/evidence (not credentials)",
+    )
+    a.add_argument("role_id")
+    a.add_argument("--id", required=True, dest="obligation_id", help="obligation.id")
+    a.add_argument("--status", help="open|done|blocked|deferred")
+    a.add_argument("--next-action")
+    a.add_argument("--evidence-pointer")
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -139,6 +150,16 @@ def main(argv: list[str] | None = None) -> int:
                 store.release(
                     args.role_id,
                     from_session_id=args.from_session,
+                )
+            )
+        elif args.cmd == "advance-obligation":
+            _print(
+                store.advance_obligation(
+                    args.role_id,
+                    args.obligation_id,
+                    status=args.status,
+                    next_action=args.next_action,
+                    evidence_pointer=args.evidence_pointer,
                 )
             )
         elif args.cmd == "inspect":
