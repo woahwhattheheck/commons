@@ -29,9 +29,10 @@ class TransferableRoleTests(unittest.TestCase):
         next_actions = [o["next_action"] for o in role["obligations"]]
 
         equipped = self.store.equip(
-            role_id, session_id="session-A", harness="cursor-hinge"
+            role_id, session_id="session-A", harness="cursor-hinge", seat="HINGE"
         )
         self.assertEqual(equipped["occupant"]["session_id"], "session-A")
+        self.assertEqual(equipped["occupant"]["seat"], "HINGE")
         self.assertEqual(equipped["role_id"], role_id)
 
         handed = self.store.transfer(
@@ -39,6 +40,7 @@ class TransferableRoleTests(unittest.TestCase):
             from_session_id="session-A",
             to_session_id="session-B",
             to_harness="claude-tenon",
+            seat="TENON",
         )
         self.assertEqual(handed["role_id"], role_id)
         self.assertEqual(handed["purpose"], purpose)
@@ -47,6 +49,7 @@ class TransferableRoleTests(unittest.TestCase):
         )
         self.assertEqual(handed["occupant"]["session_id"], "session-B")
         self.assertEqual(handed["occupant"]["prior_session_id"], "session-A")
+        self.assertEqual(handed["occupant"]["seat"], "TENON")
         self.assertEqual(handed["transfer_count"], 1)
 
     def test_export_strips_secrets_and_clears_occupant(self) -> None:
@@ -91,6 +94,20 @@ class TransferableRoleTests(unittest.TestCase):
         )
         for field in ("submit", "status", "events", "recover"):
             self.assertIn(field, gateway)
+
+    def test_access_routes_include_grokbot_control_g2_shape(self) -> None:
+        role = self.store.create(self.raw)
+        g2 = next(
+            r for r in role["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2["kind"], "grokbot_control")
+        self.assertEqual(g2["base_url"], "http://127.0.0.1:8881")
+        self.assertEqual(g2["pool_id"], "grokbot")
+        self.assertEqual(g2["client"], "integrations/grokbot_control/client.py")
+        for field in ("submit", "status", "follow_up", "cancel", "recover", "events"):
+            self.assertIn(field, g2)
+        # Role must not invent a second pool or bind a live chat window.
+        self.assertNotIn("session_id", g2)
 
 
 if __name__ == "__main__":

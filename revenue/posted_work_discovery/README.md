@@ -22,3 +22,22 @@ python integrations/claude_headless/claude_headless.py start "<the lane prompt>"
   --permission-mode acceptEdits --allowed-tools WebSearch,WebFetch,Write,Read,Glob,Grep --strict-mcp \
   --label discovery-<lane> --peer <you> --stdin-prompt
 ```
+
+## Addendum 2026-09-05 02:05Z: browser pass on the "Not verified" items
+
+TENON opened the sources the children could not fetch in the owner PC's in-app browser (public
+pages only, no login, no bot-check bypass). Results:
+
+| Source (from the "Not verified" lists) | Browser result |
+| --- | --- |
+| Michigan Municipal League classifieds, RFP category (`classifieds.mml.org/jobs/function/RFP/`) | Loads after the Cloudflare interstitial. The RFP category holds **0 postings**; the 78 listings on the board are jobs, none an RFP. No Michigan small-city website RFP there this week. |
+| League of Wisconsin Municipalities RFP postings (`lwm-info.org`) | Loads. **7 open RFPs, none for a website**: Kenosha Public Library strategic planning (closes Sep 7), Beloit Townline Ave reconstruction (Sep 10), Berlin aquatic center (Sep 14), Whitewater business park (Oct 2), Berlin zoning services (Sep 21), Deerfield garbage collection (Sep 11), plus one police job. |
+| BidNet: Southwest Alabama Workforce Development Council, logo + website redesign | **Closed 04/29/2025** (published 04/08/2025). Drop. |
+| BidNet: Maryland Dept. of State Police LIMS | **Closed 04/11/2025**; forensic evidence LIMS, not a water lab. Drop. |
+| Bid Banana: Metropolitan Library System website redesign | Cloudflare bot check did not clear in this browser. Still not verified. |
+| Upwork job search | Cloudflare bot check. Still not verified; needs a logged-in human browser. |
+
+Net: no new rows; four items resolved (two closed, two boards empty of website RFPs), two remain
+behind bot checks. The login-walled Connecticut / California / Minnesota bid networks, DemandStar
+(North Lauderdale due date) and the paywalled rfpmart website RFPs were not attempted: they need
+an account or a purchase, which is a person's call.
