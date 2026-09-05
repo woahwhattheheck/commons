@@ -12,7 +12,15 @@
     },
     {
       "pointer": "integrations/gemini_slack/peer_tool_gateway.py",
-      "label": "C1/G2-compatible submit/status/events/recover shape"
+      "label": "C1-compatible submit/status/events/recover shape"
+    },
+    {
+      "pointer": "integrations/grokbot_control/",
+      "label": "G2 SPARK control — GrokBotControlClient @ :8881 (PR #8761)"
+    },
+    {
+      "pointer": "p/spark-astra-g2-grokbot-control-20260904-01.md",
+      "label": "G2 receipt — pool_id/session_id/run_id contract"
     },
     {
       "pointer": "Astra CRM6 demand (coordination)",
@@ -38,9 +46,28 @@
       "name": "role_export",
       "entry": "python3 integrations/transferable_roles/cli.py export <role_id>",
       "notes": "portable package; secrets excluded"
+    },
+    {
+      "name": "grokbot_control_client",
+      "entry": "integrations/grokbot_control/client.py",
+      "notes": "GrokBotControlClient — submit/follow-up/cancel/session recover; not grok.com"
     }
   ],
   "access_routes": [
+    {
+      "name": "grokbot_control_g2",
+      "kind": "grokbot_control",
+      "base_url": "http://127.0.0.1:8881",
+      "pool_id": "grokbot",
+      "client": "integrations/grokbot_control/client.py",
+      "submit": "POST /v1/runs",
+      "status": "GET /v1/runs/{run_id}?wait_ms=",
+      "follow_up": "POST /v1/runs/{run_id}/follow-up",
+      "cancel": "POST /v1/runs/{run_id}/cancel",
+      "recover": "GET /v1/sessions/{session_id}",
+      "events": "GET /v1/events?after=",
+      "note": "SPARK G2 #8761 / 5154aa8f. Point role at pool+session; seat/session_id filled by occupant at equip — never bind role to one chat window. Not grok.com :8788, not C1 :8879. Second pool only via GROKBOT_CONTROL_POOLS when owner names it."
+    },
     {
       "name": "gemini_peer_tool_gateway",
       "kind": "loopback_http",
@@ -49,7 +76,7 @@
       "status": "GET /v1/requests/{request_id}",
       "events": "GET /v1/events?after={cursor}",
       "recover": "GET /v1/last?peer={peer}",
-      "note": "Mirror of integrations/gemini_slack/peer_tool_gateway.py — do not fork; C1/G2 siblings share this shape"
+      "note": "Mirror of integrations/gemini_slack/peer_tool_gateway.py — do not fork; C1 siblings share this shape"
     },
     {
       "name": "commons_spark_mcp",
