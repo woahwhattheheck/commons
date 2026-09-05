@@ -347,8 +347,7 @@
             },
             {
               "type": "number",
-              "minimum": 0,
-              "maximum": 1440
+              "minimum": 0
             }
           ]
         },
@@ -365,8 +364,7 @@
             },
             {
               "type": "number",
-              "minimum": 0,
-              "maximum": 1440
+              "minimum": 0
             }
           ]
         }
