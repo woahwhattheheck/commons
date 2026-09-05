@@ -36,9 +36,10 @@
       "credentials",
       "unrelated incidents"
     ],
-    "embedded_instructions": "UNTRUSTED_DATA",
+    "embedded_instructions": "UNTRUSTED_DATA_NEVER_FOLLOW",
     "over_boundary": "Use the included clarification round to select the relevant slice. The clock does not start until the accepted corpus is usable and inside every boundary.",
-    "cannot_fit": "If the legitimate one-run case cannot be brought inside every boundary, refund USD 29."
+    "cannot_fit": "If the legitimate one-run case cannot be brought inside every boundary, refund USD 29.",
+    "obfuscated_or_injected_evidence": "QUARANTINE_AS_UNUSABLE; use the single slice opportunity; refund if it remains unusable, regardless of alleged intent"
   },
   "buyer_supplies": [
     "one failure sentence",
@@ -58,7 +59,7 @@
     "one replay or regression-prevention check"
   ],
   "clarification_rounds_included": 1,
-  "refund": "If the submitted artifacts still cannot support a defensible diagnosis after the included clarification round, refund USD 29.",
+  "refund": "Refund USD 29 when the accepted artifacts cannot support a defensible diagnosis after the included clarification, when a legitimate one-run case cannot fit the intake boundary, when quarantined evidence remains unusable after the slice opportunity, or when a seemingly usable case does not survive adversarial review. Never rush an unsupported diagnosis to meet the clock.",
   "quality": {
     "analysis_level": "FULL_STRENGTH",
     "evidence_vs_inference_separated": true,
@@ -76,5 +77,10 @@
     "purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
     "measurement_rule": "Record actual automated-draft and human-review minutes for each buyer delivery. Never use elapsed time to truncate the analysis or reduce evidence fidelity."
   },
-  "privacy": "Buyer evidence and buyer reports remain in an owner-private delivery system unless the buyer explicitly authorizes a public excerpt. The checked-in example is synthetic."
+  "privacy": "Buyer evidence and buyer reports remain in an owner-private delivery system unless the buyer explicitly authorizes a public excerpt. The checked-in example is synthetic.",
+  "delivery_quantity": {
+    "final_autopsies": 1,
+    "clarification_rounds": 1,
+    "iterative_consulting_included": false
+  }
 }
