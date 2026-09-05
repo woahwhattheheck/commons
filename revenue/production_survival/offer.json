@@ -2,11 +2,18 @@
   "schema_version": 1,
   "kind": "PRODUCTION_SURVIVAL_OFFER",
   "status": "PUBLIC_OFFER",
-  "canonical_page": "agent-rescue.html",
+  "canonical_page": "",
+  "canonical_page_state": "NO_DEDICATED_PUBLIC_HTML",
+  "canonical_page_note": "agent-rescue.html sells Agent Failure Autopsy ($29) as of ASTRA #8889 / spine #8811. Same-Day Agent Survival Proof has no dedicated public HTML sell page on Commons. Entry routes: store mailbox, marketplaces.md, live Stripe Payment Link (SURETY / dashboard). Operators: INTAKE.md.",
+  "public_entry_routes": [
+    "mailto:tokenjunkielabs@gmail.com",
+    "revenue/production_survival/marketplaces.md",
+    "stripe_payment_link_via_surety_dashboard"
+  ],
   "sender_identity": "tokenjunkielabs@gmail.com",
   "no_auth": true,
   "no_login": true,
-  "payment_collection": "NOT_PROVIDED_ON_THIS_PAGE",
+  "payment_collection": "NOT_PROVIDED_ON_PUBLIC_HTML",
   "collected_cash_usd": 0,
   "positioning": "Sell an agent outcome that survives production, not an implementation noun.",
   "entry_offer": {

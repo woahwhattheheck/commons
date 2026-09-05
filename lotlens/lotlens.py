@@ -11,6 +11,7 @@
     python lotlens/lotlens.py --workspace WS annotate pilot-plant/batch/BATCH-P3 "text" [--by NAME] [--supersedes ID]
     python lotlens/lotlens.py --workspace WS annotations [TARGET]
     python lotlens/lotlens.py --workspace WS compare V1 V2
+    python lotlens/lotlens.py --workspace WS --versions V1 impact pilot-plant/package/PKG-P4-1   (ask the older import)
     python lotlens/lotlens.py assumptions
 
 There is no command that runs an investigation for you. Each command performs its
@@ -87,10 +88,25 @@ def cmd_impact(ws: engine.Workspace, args) -> dict:
         return {
             "query": impact["query"],
             "counts": impact.get("counts"),
-            "affected": [{"key": a["key"], "status": a["status"], "hops": a["hops"]} for a in impact.get("affected", [])],
+            "affected": [
+                {
+                    "key": a["key"],
+                    "status": a["status"],
+                    "hops": a["hops"],
+                    "detail": engine.node_detail(a["kind"], a["attrs"]),
+                    "path": engine.path_summary(a["path"]),
+                }
+                for a in impact.get("affected", [])
+            ],
             "content_sha256": report["content_sha256"],
             "written": {"json": args.out, "markdown": args.md},
         }
+    if args.paths == "summary":
+        shown = json.loads(json.dumps(report))
+        for a in shown["impact"].get("affected", []):
+            a["path"] = engine.path_summary(a["path"])
+            a["detail"] = engine.node_detail(a["kind"], a["attrs"])
+        return shown
     return report
 
 
@@ -120,7 +136,9 @@ def cmd_assumptions(ws, args) -> dict:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--workspace", "-w", default=".lotlens", help="workspace directory (created on first import)")
-    parser.add_argument("--versions", nargs="*", default=None, help="import versions to load (default: the latest)")
+    parser.add_argument("--versions", action="append", default=None, metavar="VERSION",
+                        help="import version to load; repeat the flag or comma-separate for several (default: the latest). "
+                             "Takes one value, so it can sit before the command: --versions V1 impact ...")
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("import"); p.add_argument("source"); p.add_argument("--label", default="")
     sub.add_parser("imports")
@@ -129,6 +147,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("inspect"); p.add_argument("key")
     p = sub.add_parser("impact"); p.add_argument("key"); p.add_argument("--backward", action="store_true")
     p.add_argument("--assume", nargs="*", default=[]); p.add_argument("--out"); p.add_argument("--md"); p.add_argument("--brief", action="store_true")
+    p.add_argument("--paths", default="full", help="full (edge objects) or summary (one 'from -> to (file:line)' line per hop) in the printed report; files written with --out keep the full form")
     p = sub.add_parser("facts"); p.add_argument("--kind")
     p = sub.add_parser("annotate"); p.add_argument("target"); p.add_argument("text"); p.add_argument("--by"); p.add_argument("--supersedes")
     p = sub.add_parser("annotations"); p.add_argument("target", nargs="?")
@@ -146,6 +165,8 @@ COMMANDS = {
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.versions is not None:
+        args.versions = [v.strip() for chunk in args.versions for v in chunk.split(",") if v.strip()] or None
     ws = engine.Workspace(args.workspace) if args.command != "assumptions" else None
     try:
         _out(COMMANDS[args.command](ws, args))

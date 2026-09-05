@@ -8,12 +8,14 @@ Cite [ground/CHECKOUT_CAPABILITY.md](./CHECKOUT_CAPABILITY.md). Cite
 [ground/PAY.md](./PAY.md). Cite [ground/STRIPE.md](./STRIPE.md). Cite
 [ground/COMMERCE.md](./COMMERCE.md). Do not remint those cards.
 
-## Current measured truth (2026-08-28T16:43:00Z)
+## Current measured truth (account 2026-08-28; links through 2026-09-05)
 
 - Token Junkie Labs Stripe `acct_1U6HI9ATH4EDE7XD` is **CHARGEABLE**:
   livemode, `charges_enabled=true`, `payouts_enabled=true`,
   `currently_due=[]`, verified external account last4 `7243`.
-- Seven canonical Payment Links remain the public storefront.
+- Twelve canonical Payment Links are on the public storefront: the retained seven
+  observed on 2026-08-28 plus the USD 29 Agent Failure Autopsy link and four USD 199 diagnostic links observed on
+  2026-09-05. Each link keeps its own dated evidence.
 - PayPal, GitHub Sponsors, and Square are **INERT**. Activating any of
   them requires owner KYC / bank / OTP / provider onboarding inside the
   official UI. Agents do not enter those values.

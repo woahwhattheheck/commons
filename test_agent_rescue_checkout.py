@@ -108,16 +108,11 @@ class AgentFailureDiagnosticPageTests(unittest.TestCase):
         self.assertNotIn("checkout button will appear only after", self.lower)
         self.assertIn("secure one-time stripe checkout", self.lower)
 
-    def test_runtime_attribution_is_allowlisted_and_ignores_failure_text(self):
+    def _runtime_checkout_hrefs(self, incoming):
         script_match = re.search(r"<script>([\s\S]*?)</script>", self.page)
         self.assertIsNotNone(script_match)
         script = script_match.group(1)
         hrefs = self._checkout_hrefs()
-        incoming = (
-            "?utm_source=x&utm_medium=paid_social&utm_campaign=agent_failure"
-            "&utm_term=retry-bomb&utm_content=creative_1"
-            "&failure_sentence=SHOULD_NOT_LEAK"
-        )
         harness = (
             "const vm=require('vm');"
             f"const code={json.dumps(script)};"
@@ -139,7 +134,14 @@ class AgentFailureDiagnosticPageTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        runtime_hrefs = json.loads(completed.stdout)
+        return json.loads(completed.stdout)
+
+    def test_runtime_attribution_is_allowlisted_and_ignores_failure_text(self):
+        runtime_hrefs = self._runtime_checkout_hrefs(
+            "?utm_source=x&utm_medium=paid_social&utm_campaign=agent_failure"
+            "&utm_term=retry-bomb&utm_content=creative_1"
+            "&failure_sentence=SHOULD_NOT_LEAK"
+        )
         self.assertEqual(len(runtime_hrefs), 2)
         for href in runtime_hrefs:
             self.assertNotIn("SHOULD_NOT_LEAK", href)
@@ -151,6 +153,46 @@ class AgentFailureDiagnosticPageTests(unittest.TestCase):
             self.assertEqual(params["utm_term"], ["retry-bomb"])
             self.assertEqual(params["utm_content"], ["creative_1"])
         self.assertIn('replace(/[^A-Za-z0-9_-]/g,"").slice(0,60)', self.page)
+
+    def test_exact_x_campaign_gets_fixed_checkout_reference(self):
+        hrefs = self._runtime_checkout_hrefs(
+            "?utm_source=x&utm_medium=paid_social&utm_campaign=agent_failure_autopsy_29"
+            "&utm_term=retry-bomb&utm_content=creative_1"
+            "&client_reference_id=SHOULD_NOT_LEAK&email=SHOULD_NOT_LEAK"
+            "&evidence_url=SHOULD_NOT_LEAK&failure_sentence=SHOULD_NOT_LEAK"
+        )
+        self.assertEqual(len(hrefs), 2)
+        for href in hrefs:
+            self.assertNotIn("SHOULD_NOT_LEAK", href)
+            parsed = urlsplit(href)
+            self.assertEqual(f"{parsed.scheme}://{parsed.netloc}{parsed.path}", CHECKOUT_URL)
+            params = parse_qs(parsed.query, strict_parsing=True)
+            self.assertEqual(set(params), ALLOWED_UTM | {"client_reference_id"})
+            self.assertEqual(params["client_reference_id"], ["afa29_x_a_v1"])
+            self.assertEqual(params["utm_source"], ["x"])
+            self.assertEqual(params["utm_medium"], ["paid_social"])
+            self.assertEqual(params["utm_campaign"], ["agent_failure_autopsy_29"])
+            self.assertEqual(params["utm_term"], ["retry-bomb"])
+            self.assertEqual(params["utm_content"], ["creative_1"])
+
+    def test_other_and_ambiguous_traffic_never_inherits_x_reference(self):
+        exact = "utm_source=x&utm_medium=paid_social&utm_campaign=agent_failure_autopsy_29"
+        for incoming in (
+            "",
+            "?client_reference_id=afa29_x_a_v1",
+            "?" + exact.replace("utm_source=x", "utm_source=commons"),
+            "?" + exact.replace("paid_social", "referral"),
+            "?" + exact.replace("agent_failure_autopsy_29", "another_campaign"),
+            "?utm_source=x&utm_medium=paid_social",
+            "?" + exact.replace("utm_source=x", "utm_source=x%21"),
+            "?" + exact + "&utm_source=another_source",
+        ):
+            with self.subTest(incoming=incoming):
+                for href in self._runtime_checkout_hrefs(incoming + "&client_reference_id=UNTRUSTED"):
+                    params = parse_qs(urlsplit(href).query, strict_parsing=True)
+                    self.assertLessEqual(set(params), ALLOWED_UTM)
+                    self.assertNotIn("client_reference_id", params)
+                    self.assertNotIn("UNTRUSTED", href)
 
     def test_page_does_not_solicit_or_expose_secret_material(self):
         for marker in ("API keys", "tokens", "passwords", "customer records", "production secrets"):

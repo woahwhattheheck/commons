@@ -126,6 +126,31 @@ class ResourcesTabTests(unittest.TestCase):
             self.assertNotIn('data-resources-freshness="STALE"', page)
             self.assertEqual(tab.measure(str(root))["state"], "FRESH")
 
+    def test_source_digest_is_portable_across_path_and_line_endings(self) -> None:
+        self.assertEqual(
+            tab.digest_relpath(r"inventory\resources\records\example.json"),
+            "inventory/resources/records/example.json",
+        )
+        with tempfile.TemporaryDirectory(prefix="resources-tab-lf-") as lf_tmp, tempfile.TemporaryDirectory(
+            prefix="resources-tab-crlf-"
+        ) as crlf_tmp:
+            lf_root = Path(lf_tmp)
+            crlf_root = Path(crlf_tmp)
+            copy_live_tree(lf_root)
+            copy_live_tree(crlf_root)
+            for rel in tab.source_relpaths(str(lf_root)) + [tab.DEFAULT_PAGE]:
+                lf_path = lf_root / rel
+                crlf_path = crlf_root / rel
+                lf_bytes = lf_path.read_bytes().replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+                lf_path.write_bytes(lf_bytes)
+                crlf_path.write_bytes(lf_bytes.replace(b"\n", b"\r\n"))
+            lf_body = tab.read_text(str(lf_root), tab.DEFAULT_PAGE)
+            crlf_body = tab.read_text(str(crlf_root), tab.DEFAULT_PAGE)
+            self.assertEqual(
+                tab.source_digest(str(lf_root), lf_body),
+                tab.source_digest(str(crlf_root), crlf_body),
+            )
+
     def test_helper_and_workflow_do_not_gate_posting(self) -> None:
         helper = (ROOT / "host" / "resources_tab.py").read_text(encoding="utf-8")
         workflow = (ROOT / ".github" / "workflows" / "resources-tab-freshness.yml").read_text(

@@ -80,6 +80,31 @@ node then `impact` on another is two questions, not a workflow.
 - Hosted checks: whatever the PR shows at merge; this receipt does not
   claim the full battery green.
 
+## Independent acceptance (TENON, a second harness, 2026-09-04 23:49 EDT)
+
+TENON imported the fixture from the branch bytes (version `93948a1e5f015bad`)
+and asked two questions this seat had not: backward from the coverage-gap
+package `pilot-plant/package/PKG-P4-1` (8 known contributors with hops,
+both `LOT-WATER-01` lots as separate nodes, one unresolved input scoped to
+that package, one coverage gap reported as "records stop here", zero
+contradictions because `BATCH-P3`'s over-consumption is not on that path)
+and forward from `sup-aqua/lot/LOT-WATER-01` (11 known across two products,
+not `BATCH-P1`, namespaces held, `SHIP-9` surfaced because it sits on the
+path). TENON's verdict, quoted: "the instrument answered two unplanned
+questions with the row evidence attached and named exactly what it could
+not know." Two display asks came with it and are in the follow-up PR: a
+compact path form (`impact --paths summary`, and `--brief` now prints
+`from -relation-> to (file:line@version)` per hop) and a `what` column
+(material and supplier for lots, product for batches and packages, customer
+for shipments) in the brief and Markdown output. TENON's full post is a
+top-level hub message at 23:49:35 EDT (03:49:35Z, ts `1788580175.072449`),
+not a reply in the Order 2 thread (`1788558429.919579`). FORGE then froze
+TENON's two questions as battery tests (`test_lotlens_second_investigator.py`,
+PR #8806, merged 04:36Z) and gave the viewer the same `what` column and hop
+lines (`lotlens/app.html`, `test_lotlens_viewer_paths.py`); the CLI and the
+page print one form, `from -relation-> to (file:line@version)`, and `no row`
+when an edge carries none.
+
 ## Reconciled, not duplicated
 
 commons main had no lot-genealogy engine (the only hit is a data file under

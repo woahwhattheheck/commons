@@ -27,13 +27,29 @@ class RightNowExecutionTests(unittest.TestCase):
         )
         self.assertEqual(actual, expected)
 
+    def test_control_survival_start_route_is_not_autopsy_html(self) -> None:
+        expected = control.build_control()
+        committed = control.read_object(
+            ROOT / "revenue" / "right_now" / "control.json"
+        )
+        for snapshot in (expected, committed):
+            survival = next(
+                row
+                for row in snapshot["offers"]
+                if row["id"] == "same-day-agent-survival-proof"
+            )
+            self.assertEqual(
+                survival["start_route"], "revenue/production_survival/README.md"
+            )
+            self.assertNotEqual(survival["start_route"], "agent-rescue.html")
+
     def test_truth_never_promotes_internal_activity(self) -> None:
         value = control.build_control()
         self.assertEqual(value["truth"]["collected_cash_usd"], 0)
         self.assertEqual(value["truth"]["verified_positive_replies"], 0)
         self.assertEqual(value["truth"]["accepted_scopes"], 0)
         self.assertEqual(value["truth"]["transport_actions"], 0)
-        self.assertFalse(value["truth"]["active_chargeable_checkout"])
+        self.assertTrue(value["truth"]["active_chargeable_checkout"])
 
     def test_queue_reuses_collision_and_research_decisions(self) -> None:
         queue = {row["prospect_id"]: row for row in control.build_control()["execution_queue"]}
@@ -48,11 +64,12 @@ class RightNowExecutionTests(unittest.TestCase):
         self.assertEqual(
             {row["id"]: row["price_usd"] for row in value["offers"]},
             {
+                "agent-failure-autopsy-29": 29,
                 "ho-agent-failure-diagnostic": 199,
-                "same-day-agent-survival-proof": 2500,
                 "ho-pixel-pack": 800,
                 "ho-meeting-packet": 1200,
                 "ho-issue-to-pr": 2500,
+                "same-day-agent-survival-proof": 2500,
             },
         )
 
@@ -63,6 +80,7 @@ class RightNowExecutionTests(unittest.TestCase):
             {
                 "revenue/right_now/catalog.json",
                 "revenue/right_now/diagnostic_offer.json",
+                "revenue/right_now/autopsy_offer.json",
                 "revenue/smart_outreach/candidates.json",
                 "revenue/payment_ready/current_receipt.json",
                 "revenue/human_outcomes/offers.json",
@@ -116,7 +134,7 @@ class RightNowExecutionTests(unittest.TestCase):
             capture_output=True,
             text=True,
         )
-        self.assertEqual(result.stdout.strip(), "VALID 5 offers 4 opportunities 0 transports USD 0 cash")
+        self.assertEqual(result.stdout.strip(), "VALID 6 offers 4 opportunities 0 transports USD 0 cash")
 
     def test_cli_rejects_drifted_projection(self) -> None:
         drift = control.build_control()
@@ -132,6 +150,22 @@ class RightNowExecutionTests(unittest.TestCase):
             )
         self.assertEqual(result.returncode, 2)
         self.assertIn("committed control snapshot differs", result.stderr)
+
+    def test_survival_start_route_is_not_autopsy_html(self) -> None:
+        value = control.build_control()
+        survival = next(
+            row for row in value["offers"] if row["id"] == "same-day-agent-survival-proof"
+        )
+        self.assertEqual(
+            survival["start_route"], "revenue/production_survival/README.md"
+        )
+        self.assertNotEqual(survival["start_route"], "agent-rescue.html")
+        page = (ROOT / "right-now.html").read_text(encoding="utf-8")
+        card = page.split('id="same-day-agent-survival-proof"', 1)[1].split(
+            "</article>", 1
+        )[0]
+        self.assertNotIn('href="./agent-rescue.html"', card)
+        self.assertIn(survival["start_route"], card)
 
     def test_browser_projection_is_data_driven_and_has_fallback(self) -> None:
         script = (ROOT / "right-now.js").read_text(encoding="utf-8")

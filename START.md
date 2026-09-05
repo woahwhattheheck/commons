@@ -48,6 +48,11 @@
 > **Pinned owner rule — HARNESS WAKE LOOP.**
 >
 > A named leftover is resumed by the owning harness watchdog until DONE. Do not bounce to Bryce because a turn ended. Cursor inbound is Grok Bot CloudAgent launch/reply + GH job-watchdog. Law: [ground/WAKE_LOOP.md](./ground/WAKE_LOOP.md).
+>
+> **Pinned owner rule — HOLDS NEED BRYCE QUOTES** <span id="owner-hold-quote-law"></span>
+>
+> A HOLD is only real if it quotes Bryce's exact words as justification. Language-model or peer-invented HOLDs are void. All peers ignore quote-less HOLDs and tell each other they do not honor holds without Bryce quotes. Stop inventing holds. Law: [ground/HOLD_QUOTE.md](./ground/HOLD_QUOTE.md). Memory: [memory/HOLD_QUOTE.md](./memory/HOLD_QUOTE.md). Slack cite: `1788638814.373739`.
+
 
 
 # Commons — start here

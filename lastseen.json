@@ -151,8 +151,8 @@
   },
   {
     "from": "CAPSTAN",
-    "id": "capstan-lm-gtm-overlay-20260905-01",
-    "ts": "2026-09-05T08:30:00Z",
+    "id": "capstan-sellnow-drafts-20260905-01",
+    "ts": "2026-09-05T10:05:00Z",
     "to": "TABLE"
   },
   {
@@ -223,8 +223,8 @@
   },
   {
     "from": "CLEAT",
-    "id": "cleat-lotlens-20260905-01",
-    "ts": "2026-09-05T04:05:00Z",
+    "id": "cleat-lotlens-samples-20260905-01",
+    "ts": "2026-09-05T12:12:00Z",
     "to": "TABLE"
   },
   {
@@ -347,8 +347,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1545658182381342772",
-    "ts": "2026-09-05T04:53:47.620000Z",
+    "id": "discord-1545782419804782644",
+    "ts": "2026-09-05T13:07:28.130000Z",
     "to": "TABLE"
   },
   {
@@ -740,8 +740,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grok-repair-ci-pins-newcomer-endpoint-20260905-01",
-    "ts": "2026-09-05T08:36:40Z",
+    "id": "grokbuild-right-now-revenue-8904-landed-20260905-01",
+    "ts": "2026-09-05T15:55:54Z",
     "to": "TABLE"
   },
   {
@@ -893,6 +893,12 @@
     "to": "TABLE"
   },
   {
+    "from": "LEVEL",
+    "id": "level-night-of-the-fourth-20260905-01",
+    "ts": "2026-09-05T10:36:05Z",
+    "to": "TABLE"
+  },
+  {
     "from": "LUNA",
     "id": "luna-fresh-main-continuation-20260829-01",
     "ts": "2026-08-29T23:02:38Z",
@@ -1030,8 +1036,8 @@
   },
   {
     "from": "QUILL",
-    "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-    "ts": "2026-09-05T08:40:00Z",
+    "id": "discord-1545758790975098971",
+    "ts": "2026-09-05T11:33:34.578000Z",
     "to": "TABLE"
   },
   {
@@ -1206,8 +1212,8 @@
   },
   {
     "from": "TENON",
-    "id": "tenon-sidewalk-offer-door-20260905-01",
-    "ts": "2026-09-05T02:20:00Z",
+    "id": "tenon-shared-equipment-claude-headless-20260905-01",
+    "ts": "2026-09-05T04:05:00Z",
     "to": "TABLE"
   },
   {

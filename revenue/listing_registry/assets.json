@@ -4,510 +4,6 @@
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"bd6fa65a62893ded4641cc75b16d57e932da400a768081eede847b6198d3afac",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"partner-vendor-directory"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__partner-vendor-directory",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"NOT_LISTED",
-      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":"woahwhattheheck/commons",
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"partner_vendor_directory",
-      "surface_id":"partner-vendor-directory",
-      "surface_name":"Partner / vendor directory",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Public RFP response pack (procurement_portal).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.",
-      "copy_sha256":"c7fb4078027436bc34708d2e464bb540f207baf01400f71c6fc858150af4591e",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/distribution.html",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"public-rfp-pack"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__public-rfp-pack",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Generate a truthful response pack for a named public RFP. Do not submit it to any portal.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"procurement_portal",
-      "surface_id":"public-rfp-pack",
-      "surface_name":"Public RFP response pack",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Upwork Project Catalog (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
-      "copy_sha256":"5aabe6d185564cec39ffe7b14f5661ea79d1e108a4d0b7fe2eeeeec78bc6ad5a",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://support.upwork.com/hc/en-us/articles/360057397533-How-to-create-a-project-in-Project-Catalog",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"upwork-project-catalog"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__upwork-project-catalog",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Package-ready for bounded outcome offers. Do not create an Upwork account. Do not submit.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"upwork-project-catalog",
-      "surface_name":"Upwork Project Catalog",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Contra Services (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Contra Services account in this session. Identity/KYC unmet. Do not submit.",
-      "copy_sha256":"5055ac20ec826fc373c47e622167e2bf450b6226bac127b88f2a2a00c68478b4",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://contra.com/features/get-discovered",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"contra-services"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__contra-services",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Package-ready for bounded services. Do not create a Contra account. Do not submit.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"contra-services",
-      "surface_name":"Contra Services",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Fiverr Gig (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Fiverr Gig account in this session. Identity/KYC unmet. Do not submit.",
-      "copy_sha256":"79402f091c1df9feb4728e079fc1ea83c6ff7b87a6d4bd29b1e61d00b22f4d67",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://help.fiverr.com/hc/en-us/articles/360010451397-Creating-a-Gig",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"fiverr-gig"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__fiverr-gig",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Lower-ticket outcome Gig only if FIT. Identity, tax, and platform requirements unmet. Do not submit.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"fiverr-gig",
-      "surface_name":"Fiverr Gig",
-      "url":null
-    },
-    {
-      "account_status":"PUBLIC_SURFACE_EXISTS",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"5afd6e90893798bcd16a87b192a24194c79d64db3d40474d6bbc719181f5018d",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"commons-service-catalog"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__commons-service-catalog",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"SURFACE_LIVE",
-      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":"woahwhattheheck/commons",
-      "package_state":"PACKAGE_READY",
-      "published_status":"SURFACE_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"commons-service-catalog",
-      "surface_name":"Commons service catalog",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Show HN DRAFT — NOT POSTED\n\nPremise: zero visitors. Failure-first. Link the static ladder and exact receipts.\nOffer: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win.\nCanonical: https://woahwhattheheck.github.io/commons/agent-rescue.html\nDo not invent traffic, comments, or buyers.\nDo not post this draft from this leftover.\n\nHonesty: posted=false. buyers=0. cash=0.00.",
-      "copy_sha256":"89fc6cd42f69117788e26065314a8a64a2a4f8bed98fb2c664f3f8182f1c7935",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://news.ycombinator.com/showhn.html",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"show-hn-post"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__show-hn-post",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Draft a failure-first Show HN from measured receipts. Zero visitors is the premise. Do not post from this leftover. Do not invent traffic.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"community_channel",
-      "surface_id":"show-hn-post",
-      "surface_name":"Show HN",
-      "url":null
-    },
-    {
-      "account_status":"PUBLIC_SURFACE_EXISTS",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"8249b05ed416597e2a6e6e5d99b8bf958d3e797f961857625254c887668b6c3f",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"slack-commons"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__slack-commons",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"SURFACE_LIVE",
-      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
-      "package_state":"PACKAGE_READY",
-      "published_status":"SURFACE_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"community_channel",
-      "surface_id":"slack-commons",
-      "surface_name":"TokenJunkieLabs Slack #commons",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-    },
-    {
-      "account_status":"PUBLIC_SURFACE_EXISTS",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
       "copy_sha256":"8d6e40b71069cc8855a9e2777806ef66142ce233a5a9cb56aa13ac9576a0ec0e",
       "evidence_packet":{
@@ -525,7 +21,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -588,7 +84,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -651,7 +147,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -714,7 +210,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -777,7 +273,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -840,7 +336,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -903,7 +399,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -966,7 +462,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1029,7 +525,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1092,7 +588,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1155,7 +651,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1218,7 +714,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1281,7 +777,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1344,7 +840,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1407,7 +903,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1470,7 +966,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1533,7 +1029,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1596,7 +1092,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1659,7 +1155,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1722,7 +1218,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1785,7 +1281,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1848,7 +1344,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1911,7 +1407,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1974,7 +1470,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2037,7 +1533,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2100,7 +1596,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2163,7 +1659,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2226,7 +1722,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2289,7 +1785,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2352,7 +1848,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2415,7 +1911,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2478,7 +1974,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2541,7 +2037,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2604,7 +2100,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2667,7 +2163,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2730,7 +2226,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2793,7 +2289,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2856,7 +2352,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2919,7 +2415,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2982,7 +2478,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3045,7 +2541,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3108,7 +2604,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3171,7 +2667,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3234,7 +2730,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3297,7 +2793,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3360,7 +2856,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3423,7 +2919,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3486,7 +2982,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3549,7 +3045,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3612,7 +3108,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3675,7 +3171,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3738,7 +3234,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3801,7 +3297,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3864,7 +3360,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3927,7 +3423,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3990,7 +3486,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4053,7 +3549,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4116,7 +3612,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4179,7 +3675,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4242,7 +3738,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4305,7 +3801,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4368,7 +3864,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4431,7 +3927,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4494,7 +3990,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4557,7 +4053,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4620,7 +4116,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4683,7 +4179,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4746,7 +4242,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4809,7 +4305,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4872,7 +4368,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4935,7 +4431,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4998,7 +4494,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5061,7 +4557,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5124,7 +4620,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5187,7 +4683,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5250,7 +4746,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5294,6 +4790,1014 @@
       "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
     },
     {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Dealer Service Lead Rescue Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: dealer-service-lead-rescue\nOutcome: Dealer Service Lead Rescue Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"3723c16414274d4f3c035292b893027c964447c5f772a52988d5598c96b8971e",
+      "evidence_packet":{
+        "offer_id":"dealer-service-lead-rescue",
+        "refs":[
+          {
+            "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+            "kind":"canonical_source",
+            "path":"revenue/dealer_service_lead_rescue/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"dealer-service-lead-rescue"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"dealer-service-lead-rescue__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
+      "copy":"Dealer Service Lead Rescue Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: dealer-service-lead-rescue\nOutcome: Dealer Service Lead Rescue Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: ACTIVE_CHARGEABLE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"9959560aeceb4b7a723a68ab01d5e02e713c75d1ec318fb081f4777749bf346d",
+      "evidence_packet":{
+        "offer_id":"dealer-service-lead-rescue",
+        "refs":[
+          {
+            "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+            "kind":"canonical_source",
+            "path":"revenue/dealer_service_lead_rescue/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"dealer-service-lead-rescue"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"dealer-service-lead-rescue__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Dealer Service Lead Rescue Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: dealer-service-lead-rescue\nOutcome: Dealer Service Lead Rescue Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"c72b4950b5dbd9ad64365a323f723de8b9c8da5aba81a9cfa5b88eb8e788d66c",
+      "evidence_packet":{
+        "offer_id":"dealer-service-lead-rescue",
+        "refs":[
+          {
+            "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+            "kind":"canonical_source",
+            "path":"revenue/dealer_service_lead_rescue/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"dealer-service-lead-rescue"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"dealer-service-lead-rescue__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Plant Downtime Handoff Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: plant-downtime-handoff\nOutcome: Plant Downtime Handoff Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html. Do not open a second CRM.",
+      "copy_sha256":"b10000b98296f93e92788ff4bcc1213d24099f319fce6feaaa9668ca7b3c3426",
+      "evidence_packet":{
+        "offer_id":"plant-downtime-handoff",
+        "refs":[
+          {
+            "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+            "kind":"canonical_source",
+            "path":"revenue/plant_downtime_handoff/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"plant-downtime-handoff"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"plant-downtime-handoff__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
+      "copy":"Plant Downtime Handoff Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: plant-downtime-handoff\nOutcome: Plant Downtime Handoff Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: ACTIVE_CHARGEABLE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html. Do not open a second CRM.",
+      "copy_sha256":"15c07dae30e849318ead7aae3a77d15c948b41428e64a26fc0fbce6000db7304",
+      "evidence_packet":{
+        "offer_id":"plant-downtime-handoff",
+        "refs":[
+          {
+            "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+            "kind":"canonical_source",
+            "path":"revenue/plant_downtime_handoff/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"plant-downtime-handoff"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"plant-downtime-handoff__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Plant Downtime Handoff Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: plant-downtime-handoff\nOutcome: Plant Downtime Handoff Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html. Do not open a second CRM.",
+      "copy_sha256":"3be1dafecb0e17a5f23704bcb0de47ed4446b27e1f01e5aecbc68d9e46053b5f",
+      "evidence_packet":{
+        "offer_id":"plant-downtime-handoff",
+        "refs":[
+          {
+            "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+            "kind":"canonical_source",
+            "path":"revenue/plant_downtime_handoff/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"plant-downtime-handoff"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"plant-downtime-handoff__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Referral Intake Completeness Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: referral-intake-completeness\nOutcome: Referral Intake Completeness Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html. Do not open a second CRM.",
+      "copy_sha256":"00a872483b511983f92bc1181cafbc842b22034df776cbee5b0285ea7ff990be",
+      "evidence_packet":{
+        "offer_id":"referral-intake-completeness",
+        "refs":[
+          {
+            "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+            "kind":"canonical_source",
+            "path":"revenue/referral_intake_completeness/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"referral-intake-completeness"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"referral-intake-completeness__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
+      "copy":"Referral Intake Completeness Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: referral-intake-completeness\nOutcome: Referral Intake Completeness Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: ACTIVE_CHARGEABLE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html. Do not open a second CRM.",
+      "copy_sha256":"ff6931880b7e530576cfdf874bd5b88f2ce8858331345dfa3178ace0bf85a5d9",
+      "evidence_packet":{
+        "offer_id":"referral-intake-completeness",
+        "refs":[
+          {
+            "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+            "kind":"canonical_source",
+            "path":"revenue/referral_intake_completeness/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"referral-intake-completeness"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"referral-intake-completeness__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Referral Intake Completeness Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: referral-intake-completeness\nOutcome: Referral Intake Completeness Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html. Do not open a second CRM.",
+      "copy_sha256":"331ff2f89f3e7cd8eb18340c24469c12f64ee75472da9ee1096f01cab173cf6a",
+      "evidence_packet":{
+        "offer_id":"referral-intake-completeness",
+        "refs":[
+          {
+            "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+            "kind":"canonical_source",
+            "path":"revenue/referral_intake_completeness/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"referral-intake-completeness"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"referral-intake-completeness__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Repair Booking Exactly-Once Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: repair-booking-exactly-once-v1\nOutcome: Repair Booking Exactly-Once Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html. Do not open a second CRM.",
+      "copy_sha256":"bb37a738a5f4241bac3539f364db5afaa52db67522552f1db3eaa114d74156d3",
+      "evidence_packet":{
+        "offer_id":"repair-booking-exactly-once-v1",
+        "refs":[
+          {
+            "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+            "kind":"canonical_source",
+            "path":"revenue/repair_booking_preflight/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"repair-booking-exactly-once-v1"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"repair-booking-exactly-once-v1__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
+      "copy":"Repair Booking Exactly-Once Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: repair-booking-exactly-once-v1\nOutcome: Repair Booking Exactly-Once Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: ACTIVE_CHARGEABLE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html. Do not open a second CRM.",
+      "copy_sha256":"797e334f5e465f815a358fd02966660c3e1dab07ba87908a9312e63619d8d15b",
+      "evidence_packet":{
+        "offer_id":"repair-booking-exactly-once-v1",
+        "refs":[
+          {
+            "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+            "kind":"canonical_source",
+            "path":"revenue/repair_booking_preflight/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"repair-booking-exactly-once-v1"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"repair-booking-exactly-once-v1__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Repair Booking Exactly-Once Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: repair-booking-exactly-once-v1\nOutcome: Repair Booking Exactly-Once Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html. Do not open a second CRM.",
+      "copy_sha256":"870109a64ed2fdbb59366c20f0ae0ccfb46a3e5a4de5dcbb2ac8f22db988e1ff",
+      "evidence_packet":{
+        "offer_id":"repair-booking-exactly-once-v1",
+        "refs":[
+          {
+            "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+            "kind":"canonical_source",
+            "path":"revenue/repair_booking_preflight/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"repair-booking-exactly-once-v1"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"repair-booking-exactly-once-v1__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Agent Failure Autopsy — Commons listing asset (not a live external listing)\n\nOffer / SKU: agent-failure-autopsy-29\nOutcome: Agent Failure Autopsy.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 29.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"de97034ba63b83e6de17441b91a8d118b31510654be9951bfba9c47fe53d798c",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
+      "copy":"Agent Failure Autopsy — Commons listing asset (not a live external listing)\n\nOffer / SKU: agent-failure-autopsy-29\nOutcome: Agent Failure Autopsy.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 29.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: ACTIVE_CHARGEABLE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"8b11cec1c961adf73f70e3ccfe4ba04b1a279bbc5139db804252c9d7ba3bc73b",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+    },
+    {
+      "account_status":"NONE_IN_THIS_SESSION",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Show HN DRAFT — NOT POSTED\n\nPremise: zero visitors. Failure-first. Link the static ladder and exact receipts.\nOffer: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win.\nCanonical: https://woahwhattheheck.github.io/commons/agent-rescue.html\nDo not invent traffic, comments, or buyers.\nDo not post this draft from this leftover.\n\nHonesty: posted=false. buyers=0. cash=0.00.",
+      "copy_sha256":"e7f3ad4690c16fcdca3714a5afc1464fc5bfb5776f1b77505b1475a29eb86f89",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://news.ycombinator.com/showhn.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"show-hn-post"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__show-hn-post",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
+      "next_action":"Draft a failure-first Show HN from measured receipts. Zero visitors is the premise. Do not post from this leftover. Do not invent traffic.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":null,
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"show-hn-post",
+      "surface_name":"Show HN",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Agent Failure Autopsy — Commons listing asset (not a live external listing)\n\nOffer / SKU: agent-failure-autopsy-29\nOutcome: Agent Failure Autopsy.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 29.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"708ff141e67aa4f50410f19062444743990a61d58533ca4dfbf4fe2a39d2ceb4",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+    },
+    {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_A_PRICED_SKU",
       "copy":"GitHub Marketplace-style listing DRAFT — NOT SUBMITTED, NOT PUBLISHED\n\nName: Commons Board MCP\nCategory: Developer tools / Agent tooling\nPricing: Free public door. Not a paid GitHub Marketplace app. Not a SKU.\nShort description: Public Commons board reads, posting, and receipts. Offer discovery is the public catalog, not a hidden tool.\n\nVerified posting tools: append_post, post_to_action_pad, fire_action, open_commons_composer\nVerified board-read tools: read_post, read_recent, measure_roads, verify_receipt, verify_durability\nOffer discovery: public commerce.html + revenue/outcome_commerce/catalog.json. Not an MCP tool name.\n\nCanonical: https://woahwhattheheck.github.io/commons/commons_mcp_app.html\nInventory: ground/MCP_INVENTORY.json\nContact: tokenjunkielabs@gmail.com\n\nHonesty: submit_allowed=false. published=false. live_url=null. buyers=0. cash=0.00.\nDo not create a GitHub Marketplace account from this leftover.\nDo not submit this draft. Do not claim publication.",
@@ -5318,12 +5822,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5391,12 +5895,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5464,12 +5968,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5537,12 +6041,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5610,12 +6114,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5683,12 +6187,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5756,12 +6260,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5829,12 +6333,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5902,12 +6406,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5975,12 +6479,12 @@
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"186fb5b653ad5a256f4ba8c352071ca0dbbba92d",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6024,7 +6528,7 @@
       "url":"https://woahwhattheheck.github.io/commons/commons_mcp_app.html"
     }
   ],
-  "count":94,
+  "count":102,
   "kind":"COMMONS_LISTING_ASSETS",
   "schema_version":"listing-registry/v1",
   "submit_allowed":false,

@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "kind": "AUTOPSY_POST_PAY_SEAT_BOARD",
+  "offer_id": "agent-failure-autopsy-29",
+  "purpose": "Private case handoff seats after a real Stripe $29 Autopsy payment — not a storefront remint.",
+  "payment_gate": "REAL_STRIPE_PAYMENT_OBSERVED",
+  "checkout_truth": {
+    "source": "revenue/agent_failure_autopsy/offer.json",
+    "payment_url_state": "LIVE_VERIFIED",
+    "do_not_remint": true,
+    "do_not_edit_agent_rescue_html": true
+  },
+  "live_payment_state": {
+    "as_of_et": "2026-09-05",
+    "evidence_source": "ASTRA closeout via #coordination hourly digest (~08:31 ET): 0 paid and 4 open/unpaid Autopsy sessions",
+    "paid_cases_observed": 0,
+    "open_unpaid_sessions": 4,
+    "board_mode": "STANDBY_UNTIL_PAID",
+    "sale_claim": "NONE — package does not claim a sale until a real payment is observed"
+  },
+  "seats": [
+    {
+      "seat_id": "autopsy-coordinator-primary",
+      "role": "FULFILLMENT_COORDINATOR",
+      "state": "VACANT_STANDBY",
+      "assigns_after": "REAL_PAYMENT_PLUS_PRIVATE_INTAKE",
+      "duties": [
+        "intake completeness",
+        "clock and clarification state",
+        "reviewer routing",
+        "refund routing",
+        "delivery state",
+        "durable receipts"
+      ],
+      "runbook": "revenue/agent_failure_autopsy/RUNBOOK.md"
+    },
+    {
+      "seat_id": "autopsy-coordinator-backup",
+      "role": "FULFILLMENT_BACKUP",
+      "state": "VACANT_STANDBY",
+      "assigns_after": "REAL_PAYMENT_PLUS_PRIVATE_INTAKE",
+      "duties": [
+        "takeover via explicit private case record handoff",
+        "same duties as primary when covering"
+      ],
+      "runbook": "revenue/agent_failure_autopsy/RUNBOOK.md"
+    },
+    {
+      "seat_id": "autopsy-independent-reviewer",
+      "role": "INDEPENDENT_REVIEWER",
+      "state": "VACANT_STANDBY",
+      "assigns_after": "PEER_DRAFT_READY",
+      "allowed_kinds": ["COMMONS_PEER", "HUMAN_OPERATOR"],
+      "duties": [
+        "inspect exact report against supplied evidence",
+        "remove unsupported findings",
+        "confirm evidence links and adversarial challenge",
+        "mark INDEPENDENTLY_REVIEWED with accurate reviewer kind"
+      ],
+      "runbook": "revenue/agent_failure_autopsy/RUNBOOK.md"
+    }
+  ],
+  "handoff_rule": "Primary and backup are transferable case responsibilities, not special-access roles. Handoff requires an explicit transfer of the private case record and evidence references. Assignment grants no unique credentials.",
+  "case_rows": [],
+  "case_rows_note": "Append one private case row only after REAL_STRIPE_PAYMENT_OBSERVED + private intake exists. Never commit buyer artifacts here.",
+  "does_not_replace": [
+    "revenue/agent_failure_autopsy/offer.json",
+    "revenue/agent_failure_autopsy/fulfillment.py",
+    "agent-rescue.html",
+    "SPARK #8901 INTAKE.md"
+  ]
+}

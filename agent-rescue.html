@@ -72,12 +72,15 @@
 (function(){
   var p=new URLSearchParams(location.search),clean=function(v){return String(v||"").replace(/[^A-Za-z0-9_-]/g,"").slice(0,60)};
   var keys=["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+  var xCampaign={utm_source:"x",utm_medium:"paid_social",utm_campaign:"agent_failure_autopsy_29"};
+  var isXCampaign=Object.keys(xCampaign).every(function(key){return p.getAll(key).length===1&&p.get(key)===xCampaign[key]});
   document.querySelectorAll("a[data-checkout]").forEach(function(link){
     var url=new URL(link.getAttribute("href"));
     keys.forEach(function(key){
       var value=clean(p.get(key));
       if(value)url.searchParams.set(key,value);
     });
+    if(isXCampaign)url.searchParams.set("client_reference_id","afa29_x_a_v1");
     link.setAttribute("href",url.toString());
   });
 })();

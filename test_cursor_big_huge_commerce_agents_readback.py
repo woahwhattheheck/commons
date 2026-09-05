@@ -16,7 +16,7 @@ HELPER = ROOT / "host/commerce_agents_same_loop.py"
 KEEP = {
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "623e99e8",
+    "test_commerce_agents_same_loop.py": "e6ee6d10",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",

@@ -3,63 +3,6 @@
   "kind": "SCOPE_TO_DELIVERY_BINDINGS",
   "note": "Bindings compose catalog listings and funnels into bounded packets. Source terms still win. This file does not invent buyers, acceptances, or cash.",
   "skus": {
-    "same-day-agent-survival-proof": {
-      "family": "service",
-      "in_scope": [
-        "Open provider-hosted working proof",
-        "Visible happy path and forced failure or stop path",
-        "Rollback or reset path",
-        "Durable receipt and one-command handoff"
-      ],
-      "out_of_scope": [
-        "credentials",
-        "private-data",
-        "pii-phi",
-        "authentication",
-        "billing",
-        "production-migration",
-        "ongoing-hosting-or-sla",
-        "white-box-or-model-files"
-      ],
-      "deliverables": [
-        "working-proof",
-        "happy-path",
-        "failure-or-stop-path",
-        "rollback-or-reset",
-        "durable-receipt"
-      ],
-      "refund_text": "If the accepted proof is not delivered inside the agreed business-day window, the authorized amount is refunded unless the buyer elects in writing one free next-business-day repair.",
-      "default_acceptance_rows": [
-        {
-          "id": "happy-path",
-          "given": "Public or synthetic input named in the written terms",
-          "when": "The happy path is run inside the agreed window",
-          "then": "The agreed recovery outcome is observed and hashed",
-          "evidence_required": ["public_ref", "sha256"]
-        },
-        {
-          "id": "failure-or-stop-path",
-          "given": "The same named input",
-          "when": "The named failure is forced",
-          "then": "The stop or failure path is visible and hashed",
-          "evidence_required": ["public_ref", "sha256"]
-        },
-        {
-          "id": "rollback-or-reset",
-          "given": "State after the forced failure",
-          "when": "Rollback or reset is invoked",
-          "then": "The named reset outcome is observed and hashed",
-          "evidence_required": ["public_ref", "sha256"]
-        },
-        {
-          "id": "durable-receipt",
-          "given": "The completed run",
-          "when": "The receipt is published",
-          "then": "The receipt links the proof, states limits, and carries content hashes",
-          "evidence_required": ["public_ref", "sha256"]
-        }
-      ]
-    },
     "production-survival-sprint": {
       "family": "service",
       "in_scope": [
@@ -89,7 +32,10 @@
           "given": "The named buyer-owned workflow and agreed sandbox",
           "when": "The agreed failure, retry, and rollback cycle is forced",
           "then": "The workflow survives and a durable receipt is hashed",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
@@ -123,7 +69,10 @@
           "given": "Buyer-controlled GGUF and runnable harness",
           "when": "AT1 through AT6 are run",
           "then": "Rollback evidence passes; metric lift is not the rule",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
@@ -158,7 +107,10 @@
           "given": "Legally controlled GGUF family and customer harness",
           "when": "The agreed pilot package is delivered",
           "then": "Ablation and edit are reversible and customer-harness evaluations run",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
@@ -185,7 +137,10 @@
           "given": "One named public repository issue",
           "when": "The pull request is integrated",
           "then": "PR merged to the default branch, CI green on the integrated SHA, named issue closed by that PR",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
@@ -219,7 +174,10 @@
           "given": "Named meeting and public source artifact",
           "when": "The packet is published",
           "then": "Meeting name and date are written, packet is openly reachable, claims cite public sources or say UNMEASURED",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
@@ -245,7 +203,10 @@
           "given": "Named questionnaire and complete inputs",
           "when": "The filled copy is returned",
           "then": "Every required cell is filled or UNMEASURED, no certification is invented, public receipt contains no private answers",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
@@ -275,15 +236,26 @@
           "given": "Named public page and sprite job",
           "when": "The pack is published",
           "then": "Sprite is visible, walk loop runs, speak line cites p/{id}.md, static frame remains readable without script",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
     "sku-tip-20260826": {
       "family": "sponsorship",
-      "in_scope": ["Optional support only; Commons remains open"],
-      "out_of_scope": ["membership", "gated-entitlement", "private-buyer-data-on-main"],
-      "deliverables": ["public-safe-support-receipt"],
+      "in_scope": [
+        "Optional support only; Commons remains open"
+      ],
+      "out_of_scope": [
+        "membership",
+        "gated-entitlement",
+        "private-buyer-data-on-main"
+      ],
+      "deliverables": [
+        "public-safe-support-receipt"
+      ],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
         {
@@ -291,15 +263,26 @@
           "given": "A voluntary tip",
           "when": "A public-safe support receipt is published",
           "then": "The receipt reconciles without private buyer data",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
     "sku-seat-20260826": {
       "family": "sponsorship",
-      "in_scope": ["One calendar month of named presence"],
-      "out_of_scope": ["claim-purchase", "gated-entitlement", "from-equals-payment"],
-      "deliverables": ["named-presence-month"],
+      "in_scope": [
+        "One calendar month of named presence"
+      ],
+      "out_of_scope": [
+        "claim-purchase",
+        "gated-entitlement",
+        "from-equals-payment"
+      ],
+      "deliverables": [
+        "named-presence-month"
+      ],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
         {
@@ -307,15 +290,25 @@
           "given": "Chosen public display name and presence target",
           "when": "The month elapses",
           "then": "UNKNOWN — binding records the gap; this composer will not invent an acceptance test",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
     "sku-unlock-20260826": {
       "family": "product",
-      "in_scope": ["One selected public pack, build bump, or session note"],
-      "out_of_scope": ["private-deliverable", "unbounded-scope"],
-      "deliverables": ["selected-public-artifact"],
+      "in_scope": [
+        "One selected public pack, build bump, or session note"
+      ],
+      "out_of_scope": [
+        "private-deliverable",
+        "unbounded-scope"
+      ],
+      "deliverables": [
+        "selected-public-artifact"
+      ],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
         {
@@ -323,15 +316,26 @@
           "given": "Exactly one selected public door",
           "when": "The artifact is published",
           "then": "Selected public artifact is reachable on current main",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
     "sku-monthly-tip-20260826": {
       "family": "sponsorship",
-      "in_scope": ["Recurring support with no gated entitlement"],
-      "out_of_scope": ["seat", "claim", "gated-entitlement"],
-      "deliverables": ["public-safe-support-receipt"],
+      "in_scope": [
+        "Recurring support with no gated entitlement"
+      ],
+      "out_of_scope": [
+        "seat",
+        "claim",
+        "gated-entitlement"
+      ],
+      "deliverables": [
+        "public-safe-support-receipt"
+      ],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
         {
@@ -339,15 +343,25 @@
           "given": "A recurring tip",
           "when": "A public-safe support receipt is published",
           "then": "The receipt reconciles without private buyer data",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
     "sku-boost-20260826": {
       "family": "sponsorship",
-      "in_scope": ["Recurring support for table upgrades"],
-      "out_of_scope": ["claim-purchase", "unspecified-upgrade"],
-      "deliverables": ["table-upgrade-support"],
+      "in_scope": [
+        "Recurring support for table upgrades"
+      ],
+      "out_of_scope": [
+        "claim-purchase",
+        "unspecified-upgrade"
+      ],
+      "deliverables": [
+        "table-upgrade-support"
+      ],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
         {
@@ -355,15 +369,25 @@
           "given": "Named public upgrade or published allocation rule",
           "when": "The month elapses",
           "then": "UNKNOWN — specific upgrade, cadence, and visible result remain unspecified",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
     "sku-whitebox-hour-20260826": {
       "family": "expertise",
-      "in_scope": ["land/session-YYYYMMDD.md with dests, receipts, and what ran"],
-      "out_of_scope": ["private-session-notes-on-main", "unbounded-follow-on"],
-      "deliverables": ["dated-public-session-file"],
+      "in_scope": [
+        "land/session-YYYYMMDD.md with dests, receipts, and what ran"
+      ],
+      "out_of_scope": [
+        "private-session-notes-on-main",
+        "unbounded-follow-on"
+      ],
+      "deliverables": [
+        "dated-public-session-file"
+      ],
       "refund_text": "UNKNOWN",
       "default_acceptance_rows": [
         {
@@ -371,7 +395,10 @@
           "given": "Objective, requested date, timezone, and dests",
           "when": "The session file is published",
           "then": "The dated public session file contains the promised fields",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     },
@@ -398,7 +425,51 @@
           "given": "Written keep-or-build definition and acceptance test",
           "when": "The engagement completes",
           "then": "UNKNOWN until buyer class, exact scope, and acceptance are written — this composer will not invent them",
-          "evidence_required": ["public_ref", "sha256"]
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
+        }
+      ]
+    },
+    "agent-failure-autopsy-29": {
+      "family": "service",
+      "in_scope": [
+        "an evidence-linked timeline and failure chain with the first meaningful divergence marked",
+        "primary and contributing causes with calibrated confidence",
+        "an adversarial challenge of each causal explanation against plausible alternatives",
+        "concrete prompt, configuration, or code fix steps only where the supplied evidence supports them",
+        "one replay or regression-prevention check"
+      ],
+      "out_of_scope": [
+        "repository-access",
+        "production-access",
+        "code-implementation",
+        "live-deployment",
+        "ongoing-monitoring",
+        "incident-response",
+        "credentials",
+        "unredacted-secrets"
+      ],
+      "deliverables": [
+        "evidence-linked-timeline-and-failure-chain",
+        "causes-with-calibrated-confidence",
+        "adversarial-causal-challenge",
+        "supported-fix-steps",
+        "replay-or-prevention-check",
+        "independent-review-record"
+      ],
+      "refund_text": "Refund USD 29 when the accepted artifacts cannot support a defensible diagnosis after the included clarification, when a legitimate one-run case cannot fit the intake boundary, when quarantined evidence remains unusable after the slice opportunity, when a seemingly usable case does not survive adversarial review, or when a defensible diagnosis cannot be delivered within the recorded one-business-day window. Never rush an unsupported diagnosis to meet the clock.",
+      "default_acceptance_rows": [
+        {
+          "id": "evidence-linked-autopsy",
+          "given": "One accepted, sanitized failed-run corpus within the canonical intake boundary",
+          "when": "The one-business-day delivery window ends",
+          "then": "A public-safe receipt hashes one independently reviewed private autopsy containing the canonical evidence-linked diagnosis and prevention check",
+          "evidence_required": [
+            "public_ref",
+            "sha256"
+          ]
         }
       ]
     }

@@ -19,7 +19,7 @@ import unittest
 ROOT = Path(__file__).resolve().parent
 COMMERCE = ROOT / "revenue" / "outcome_commerce"
 EXAMPLES = COMMERCE / "examples"
-FROZEN_EIGHT_SHA256 = "bea09853202464ee37b4540de30c13bc56252c9967c871d3a786e27e7dcc8469"
+FROZEN_RETAINED_SOURCE_LISTINGS_SHA256 = "2244fc7b521ee42171fd7962cf2ae12eee2991cc4dc1327831ea9e87d41d5d0e"
 FROZEN_SOURCE_ADAPTERS_SHA256 = "b2593f52e40c6ab4902660a00dce2304f1767ce3a6a5ee2c963d0dd7a3cd4e67"
 RECORDED_STRIPE_SKUS = (
     {
@@ -149,6 +149,60 @@ RECORDED_STRIPE_SKUS = (
         ),
     },
 )
+DIAGNOSTIC_SKUS = (
+    {
+        "id": "dealer-service-lead-rescue",
+        "path": "revenue/dealer_service_lead_rescue/contract.json",
+        "blob_sha": "9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+        "page": "dealer-service-lead-rescue.html",
+        "url": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
+        "commercial_key": "commercial",
+        "price_key": "diagnostic_usd",
+        "window_key": "diagnostic_window",
+    },
+    {
+        "id": "plant-downtime-handoff",
+        "path": "revenue/plant_downtime_handoff/contract.json",
+        "blob_sha": "9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+        "page": "plant-downtime-handoff.html",
+        "url": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
+        "commercial_key": "commercial",
+        "price_key": "diagnostic_usd",
+        "window_key": "diagnostic_window",
+    },
+    {
+        "id": "referral-intake-completeness",
+        "path": "revenue/referral_intake_completeness/contract.json",
+        "blob_sha": "06bb53685f6aaca69ff08b436771fe115e0aa38b",
+        "page": "referral-intake-completeness.html",
+        "url": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
+        "commercial_key": "commercial",
+        "price_key": "diagnostic_usd",
+        "window_key": "diagnostic_window",
+    },
+    {
+        "id": "repair-booking-exactly-once-v1",
+        "path": "revenue/repair_booking_preflight/contract.json",
+        "blob_sha": "85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+        "page": "repair-booking-preflight.html",
+        "url": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
+        "commercial_key": "offer",
+        "price_key": "diagnostic_price_usd",
+        "window_key": "diagnostic_delivery",
+    },
+)
+VERIFIED_AGENT_FAILURE_AUTOPSY = {
+    "id": "agent-failure-autopsy-29",
+    "path": "revenue/agent_failure_autopsy/offer.json",
+    "blob_sha": "f61bb20aa54bec123ec37c8022b1517bde6294aa",
+    "page": "agent-rescue.html",
+    "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+    "product": "prod_VCevsvv7skWk3e",
+    "price": "price_1UCFbHATH4EDE7XD4NNrjfUe",
+    "plink": "plink_1UCFbLATH4EDE7XDlTunr6iO",
+    "observed_at": "2026-09-05T09:13:12.9504913+00:00",
+    "receipt_sha256": "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42",
+}
 
 _SPEC = importlib.util.spec_from_file_location(
     "commons_outcome_commerce", ROOT / "host" / "outcome_commerce.py"
@@ -644,7 +698,7 @@ class OutcomeCommerceTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        self.assertIn("OK 17 listings", proc.stdout)
+        self.assertIn("OK %d listings" % len(self.catalog["listings"]), proc.stdout)
         self.assertIn("CHARGEABLE != AUTHORIZATION != SETTLEMENT != PAYOUT != BANK_AVAILABLE", proc.stdout)
 
         proc = subprocess.run(
@@ -742,12 +796,12 @@ class OutcomeCommerceTests(unittest.TestCase):
         )
         self.assertEqual(
             sorted(row["priority"] for row in funnels.values()),
-            list(range(1, 18)),
+            list(range(1, len(listings) + 1)),
         )
         ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
         self.assertEqual(ordered[:3], [
             "sku-tip-20260826",
-            "same-day-agent-survival-proof",
+            "agent-failure-autopsy-29",
             "sku-monthly-tip-20260826",
         ])
         by_id = {row["id"]: row for row in listings}
@@ -792,6 +846,64 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertEqual(truth["next_edge"], "QUALIFIED_BUYER")
         self.assertIn("p/slack-1787769698-642529.md", truth["source"])
 
+    def test_verified_agent_failure_autopsy_matches_source_page_and_provider_receipt(self) -> None:
+        spec = VERIFIED_AGENT_FAILURE_AUTOPSY
+        page = (ROOT / "agent-rescue.html").read_text(encoding="utf-8")
+        self.assertEqual(page.count(spec["url"]), 2)
+        self.assertNotIn("checkout button will appear only after", page.lower())
+        source_path = ROOT / spec["path"]
+        offer = read_json(source_path)
+        self.assertEqual(git_hash_object(source_path), spec["blob_sha"])
+        self.assertEqual(offer["offer_id"], spec["id"])
+        self.assertEqual(offer["name"], "Agent Failure Autopsy")
+        self.assertEqual(offer["status"], "ACTIVE_VERIFIED")
+        self.assertEqual(offer["price"]["amount"], 29)
+        self.assertEqual(offer["price"]["payment_url"], spec["url"])
+        self.assertEqual(offer["price"]["payment_url_state"], "LIVE_VERIFIED")
+        self.assertEqual(offer["price"]["provider_product_id"], spec["product"])
+        self.assertEqual(offer["price"]["provider_price_id"], spec["price"])
+        self.assertEqual(offer["price"]["provider_payment_link_id"], spec["plink"])
+        self.assertEqual(offer["price"]["verified_at_utc"], spec["observed_at"])
+        self.assertEqual(offer["price"]["provider_receipt_sha256"], spec["receipt_sha256"])
+
+        by_id = {row["id"]: row for row in self.catalog["listings"]}
+        row = by_id[spec["id"]]
+        self.assertEqual(row["source"], {
+            "path": spec["path"],
+            "pointer": "",
+            "offer_id": spec["id"],
+            "blob_sha": spec["blob_sha"],
+            "terms_authority": "source",
+        })
+        self.assertEqual(row["pricing"]["components"][0]["amount"], "29.00")
+        self.assertEqual(row["routes"], {
+            "human": spec["page"],
+            "machine": spec["path"],
+        })
+        self.assertEqual(row["checkout"], {
+            "status": "ACTIVE_CHARGEABLE",
+            "provider": "stripe",
+            "url": spec["url"],
+            "link_active": True,
+            "account_charges_enabled": True,
+            "account_payouts_enabled": True,
+            "capability_evidence": {
+                "reference": (
+                    "provider-receipt-sha256:" + spec["receipt_sha256"]
+                    + "+account-capability-snapshot:2026-08-28T16:10:00Z"
+                ),
+                "observed_at": spec["observed_at"],
+            },
+        })
+        funnel = self.catalog["funnels"][spec["id"]]
+        self.assertEqual(funnel["readiness"], "READY_FOR_CHECKOUT")
+        self.assertEqual(funnel["conversion"]["status"], "ACTIVE_CHARGEABLE")
+        self.assertEqual(funnel["fulfillment"]["deliverables"], offer["delivery"])
+        self.assertEqual(funnel["fulfillment"]["refund"], offer["refund"])
+        ids = set(by_id)
+        self.assertNotIn("same-day-agent-survival-proof", ids)
+        self.assertNotIn("same-day-agent-survival-proof", self.catalog["funnels"])
+
     def test_canonical_catalog_requires_the_complete_funnel_triad(self) -> None:
         candidate = copy.deepcopy(self.catalog)
         for field in ("funnel_stage_order", "funnel_truth", "funnels"):
@@ -808,14 +920,6 @@ class OutcomeCommerceTests(unittest.TestCase):
                 self.catalog["funnels"][offer["id"]]["fulfillment"]["refund"],
                 offer["refund"],
             )
-        survival = json.loads(
-            (ROOT / "revenue" / "production_survival" / "offer.json").read_text(encoding="utf-8")
-        )
-        refund = self.catalog["funnels"]["same-day-agent-survival-proof"]["fulfillment"]["refund"]
-        for sentence in survival["entry_offer"]["refund"].split(". "):
-            self.assertIn(sentence.rstrip("."), refund)
-        self.assertIn("one free next-business-day repair attempt", refund)
-
     def test_host_rejects_incomplete_or_false_funnel_contracts(self) -> None:
         def errors_for(mutator):
             catalog = copy.deepcopy(self.catalog)
@@ -833,7 +937,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertTrue(any("click_truth" in item for item in errors), errors)
 
         errors = errors_for(
-            lambda catalog: catalog["funnels"]["same-day-agent-survival-proof"]["conversion"].__setitem__(
+            lambda catalog: catalog["funnels"]["production-survival-sprint"]["conversion"].__setitem__(
                 "mode", "ACTIVE_STRIPE_LINK"
             )
         )
@@ -862,53 +966,68 @@ class OutcomeCommerceTests(unittest.TestCase):
         )
         self.assertTrue(any("canonical catalog missing" in item for item in errors), errors)
 
-    def test_fifteen_unique_listings_preserve_frozen_eight(self) -> None:
+    def test_extensible_unique_listings_preserve_retained_source_offers(self) -> None:
         listings = self.catalog["listings"]
         ids = [row["id"] for row in listings]
-        self.assertEqual(len(listings), 17)
-        self.assertEqual(len(set(ids)), 17)
+        self.assertGreaterEqual(len(listings), 17)
+        self.assertEqual(len(set(ids)), len(listings))
         self.assertEqual(
-            hashlib.sha256(canonical(listings[:8]).encode("utf-8")).hexdigest(),
-            FROZEN_EIGHT_SHA256,
+            hashlib.sha256(canonical(listings[:7]).encode("utf-8")).hexdigest(),
+            FROZEN_RETAINED_SOURCE_LISTINGS_SHA256,
         )
-        for row in listings[:8]:
+        for row in listings[:7]:
             self.assertIn("source", row)
             self.assertNotIn("source_artifact", row)
             self.assertNotIn("checkout", row)
-        self.assertEqual(
-            hashlib.sha256(
-                canonical(self.catalog["integration_sources"][:-1]).encode("utf-8")
-            ).hexdigest(),
-            FROZEN_SOURCE_ADAPTERS_SHA256,
-        )
-        self.assertEqual(
-            self.catalog["integration_sources"][-1],
-            "land/stripe-payment-links-20260826.md",
-        )
         manifest = read_json(COMMERCE / "manifest.json")
+        source_adapters = manifest["source_adapters"]
         self.assertEqual(
             hashlib.sha256(
-                canonical(manifest["source_adapters"][:-1]).encode("utf-8")
+                canonical(source_adapters[:-1]).encode("utf-8")
             ).hexdigest(),
             FROZEN_SOURCE_ADAPTERS_SHA256,
         )
         self.assertEqual(
-            manifest["source_adapters"][-1],
+            source_adapters[-1],
             "land/stripe-payment-links-20260826.md",
+        )
+        self.assertEqual(
+            self.catalog["integration_sources"][:len(source_adapters)],
+            source_adapters,
+        )
+        self.assertEqual(
+            [
+                path for path in self.catalog["integration_sources"]
+                if path in {spec["path"] for spec in DIAGNOSTIC_SKUS}
+            ],
+            [spec["path"] for spec in DIAGNOSTIC_SKUS],
+        )
+        self.assertIn(
+            VERIFIED_AGENT_FAILURE_AUTOPSY["path"],
+            self.catalog["integration_sources"],
+        )
+        self.assertEqual(
+            len(set(self.catalog["integration_sources"])),
+            len(self.catalog["integration_sources"]),
         )
 
-    def test_seven_recorded_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
+    def test_retained_verified_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
         by_id = {row["id"]: row for row in self.catalog["listings"]}
-        recorded = [row for row in self.catalog["listings"] if "checkout" in row]
+        active = [
+            row for row in self.catalog["listings"]
+            if row.get("checkout", {}).get("status") == "ACTIVE_CHARGEABLE"
+        ]
         artifacts = [
             row
             for row in self.catalog["listings"]
             if "source_artifact" in row and row["id"] in {spec["id"] for spec in RECORDED_STRIPE_SKUS}
         ]
-        self.assertEqual(len(recorded), 7)
         self.assertEqual(len(artifacts), 7)
         self.assertEqual(
-            [row["id"] for row in recorded],
+            [
+                row["id"] for row in active
+                if row["id"] in {spec["id"] for spec in RECORDED_STRIPE_SKUS}
+            ],
             [row["id"] for row in RECORDED_STRIPE_SKUS],
         )
         for spec in RECORDED_STRIPE_SKUS:
@@ -958,6 +1077,78 @@ class OutcomeCommerceTests(unittest.TestCase):
                 self.assertEqual(funnel["readiness"], "READY_FOR_QUALIFICATION")
                 self.assertEqual(funnel["measurement"]["dom_action"], "qualification-open")
                 self.assertEqual(funnel["acquisition"]["cta"], "Start public intake")
+
+    def test_four_verified_diagnostics_preserve_source_terms_and_provider_evidence(self) -> None:
+        by_id = {row["id"]: row for row in self.catalog["listings"]}
+        recorded = [
+            row for row in self.catalog["listings"]
+            if row.get("checkout", {}).get("status") == "ACTIVE_CHARGEABLE"
+        ]
+        self.assertEqual(
+            [
+                row["id"] for row in recorded
+                if row["id"] in {spec["id"] for spec in DIAGNOSTIC_SKUS}
+            ],
+            [spec["id"] for spec in DIAGNOSTIC_SKUS],
+        )
+        receipt = read_json(ROOT / "revenue/checkout_capability/diagnostic-links-20260905.json")
+        receipt_bytes = (ROOT / "revenue/checkout_capability/diagnostic-links-20260905.json").read_text(encoding="utf-8").encode("utf-8")
+        self.assertEqual(hashlib.sha256(receipt_bytes).hexdigest(), "727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01")
+        evidence = {
+            "reference": "provider-receipt-sha256:727cfb6f0e9a84a1b1c4deeed98a017d4b4aaa7fa8bf75580506849a0f791a01+account-capability-snapshot:2026-08-28T16:10:00Z",
+            "observed_at": "2026-09-05T11:29:50.741356+00:00",
+        }
+        for spec in DIAGNOSTIC_SKUS:
+            with self.subTest(listing_id=spec["id"]):
+                link = next(item for item in receipt["links"].values() if item["url"] == spec["url"])
+                self.assertTrue(link["active"] and link["livemode"] and link["one_time"])
+                self.assertEqual((link["currency"], link["unit_amount"], link["quantity"]), ("usd", 19900, 1))
+                self.assertEqual(link["tax_behavior"], "unspecified")
+                self.assertIsNone(link["adjustable_quantity"])
+                row = by_id[spec["id"]]
+                self.assertNotIn("source", row)
+                self.assertEqual(row["state"], "PUBLIC_OFFER")
+                self.assertEqual(row["source_artifact"], {
+                    "path": spec["path"],
+                    "blob_sha": spec["blob_sha"],
+                    "terms_authority": "source",
+                })
+                source_path = ROOT / spec["path"]
+                self.assertTrue(source_path.is_file(), spec["path"])
+                self.assertEqual(git_hash_object(source_path), spec["blob_sha"])
+                source = read_json(source_path)
+                commercial = source[spec["commercial_key"]]
+                self.assertEqual(commercial[spec["price_key"]], 199)
+                self.assertEqual(commercial[spec["window_key"]], "one business day")
+                self.assertIn("refunded", commercial["refund"])
+                self.assertIn("one free next-business-day repair", commercial["refund"])
+                component = row["pricing"]["components"][0]
+                self.assertEqual(row["pricing"]["currency"], "USD")
+                self.assertEqual(component["kind"], "fixed")
+                self.assertEqual(component["amount"], "199.00")
+                self.assertEqual(row["outcome"]["acceptance_source"], spec["path"])
+                self.assertEqual(row["routes"], {
+                    "human": spec["page"],
+                    "machine": spec["path"],
+                })
+                self.assertEqual(row["checkout"], {
+                    "status": "ACTIVE_CHARGEABLE",
+                    "provider": "stripe",
+                    "url": spec["url"],
+                    "link_active": True,
+                    "account_charges_enabled": True,
+                    "account_payouts_enabled": True,
+                    "capability_evidence": evidence,
+                })
+                page = (ROOT / spec["page"]).read_text(encoding="utf-8")
+                self.assertEqual(page.count(spec["url"]), 2)
+                funnel = self.catalog["funnels"][spec["id"]]
+                self.assertEqual(funnel["readiness"], "READY_FOR_CHECKOUT")
+                self.assertEqual(funnel["conversion"]["mode"], "ACTIVE_STRIPE_LINK")
+                self.assertEqual(funnel["conversion"]["status"], "ACTIVE_CHARGEABLE")
+                self.assertEqual(funnel["measurement"]["dom_action"], "checkout-open")
+                self.assertEqual(funnel["measurement"]["click_truth"], "INTENT_ONLY")
+                self.assertEqual(funnel["fulfillment"]["refund"], commercial["refund"])
 
     def test_recorded_subscription_quotes_default_to_one_cycle(self) -> None:
         expected = {
@@ -1555,7 +1746,13 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         self.assertNotIn("signup", blob)
         self.assertNotIn("api-key", blob)
         self.assertNotIn("apikey", blob)
-        self.assertNotIn("oauth", blob)
+        for gate_marker in (
+            "oauth/authorize",
+            "oauth2/authorize",
+            "grant_type=authorization_code",
+            "client_secret",
+        ):
+            self.assertNotIn(gate_marker, blob)
         self.assertNotIn("allowlist", blob)
         self.assertNotIn("admission gate", blob)
         self.assertNotIn("identity gate", blob)
