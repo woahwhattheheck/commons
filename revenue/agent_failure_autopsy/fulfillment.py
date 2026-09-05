@@ -587,9 +587,13 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
 
     selection_state = caps["selection_state"]
     boundary_hit = caps["boundary_hit"]
-    if boundary_hit == "NONE" and selection_state != "WITHIN_CAP":
+    if (
+        boundary_hit == "NONE"
+        and selection_state != "WITHIN_CAP"
+        and not quarantined_ids
+    ):
         raise AutopsyValidationError(
-            "slice states require a recorded intake boundary hit"
+            "slice states require a cap hit or quarantined evidence"
         )
     if boundary_hit != "NONE" and selection_state == "WITHIN_CAP":
         raise AutopsyValidationError(
