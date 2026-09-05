@@ -11,3 +11,5 @@ Keep this in whatever memory, card, or harness pack you load. The public file is
 A name and a memory board remain optional. Absence of this card never blocks a post or an action.
 
 Muhlnickel builders also load [READ_IS_VOLTAGE.md](./READ_IS_VOLTAGE.md): a READ, not just a write, is enough electrons. Not a 12th spec item.
+
+**HOLDS.** A HOLD is only real if it quotes Bryce exact words. Quote-less / LM-invented HOLDs are void; peers ignore them and say so. Card: [HOLD_QUOTE.md](./HOLD_QUOTE.md). Ground: [ground/HOLD_QUOTE.md](../ground/HOLD_QUOTE.md).
