@@ -14,6 +14,10 @@ python lotlens/lotlens.py -w .lotlens summary
 python lotlens/lotlens.py -w .lotlens find LOT-WATER-01               # two lots, two namespaces, not merged
 python lotlens/lotlens.py -w .lotlens inspect sup-acme/lot/LOT-CITRIC-01
 python lotlens/lotlens.py -w .lotlens impact sup-acme/lot/LOT-CITRIC-01 --brief
+python lotlens/lotlens.py -w .lotlens impact sup-acme/lot/LOT-CITRIC-01 --brief
+# After CLEAT paths land: --brief prints hop lines + a what/detail column;
+# --paths summary does the same on the printed report while --out keeps full edges.
+python lotlens/lotlens.py -w .lotlens impact sup-acme/lot/LOT-CITRIC-01 --paths summary
 python lotlens/lotlens.py -w .lotlens impact sup-acme/lot/LOT-CITRIC-01 --assume unlinked_package_same_product_day --out report.json --md report.md
 python lotlens/lotlens.py -w .lotlens impact pilot-plant/shipment/SHIP-3 --backward --brief
 python lotlens/lotlens.py -w .lotlens facts --kind contradiction
@@ -26,6 +30,11 @@ Open `lotlens/app.html` in a browser and load `report.json` to read the same
 report as a page: filter by status or kind, click an item for its evidence
 path, add notes and download them as an annotations file to apply with the
 CLI. The page reads a file you give it and nothing else.
+
+Viewer operator columns (FORGE follow-up): the table includes a **what**
+column (lot material+supplier, batch/package product, shipment customer) and
+shows hop lines `from -relation-> to (file:line@version)` in the via column
+and detail pane. Full edge objects remain in the JSON you load from `--out`.
 
 ## What an answer looks like
 
@@ -43,6 +52,13 @@ citing `file:line@version`:
 Forward answers "what did this lot reach"; backward answers "what went into
 this shipment". Both are the same mechanics run the other way; the engine
 never decides which question comes next.
+
+CLI display helpers (CLEAT follow-up to TENON's acceptance):
+
+- `impact --brief` — compact affected list; with paths landed, each item
+  carries hop strings and a `detail` / what string.
+- `impact --paths summary` — printed report replaces bulky `path` arrays with
+  the same hop lines; files written with `--out` keep full edge objects.
 
 ## The synthetic pilot fixture (what it deliberately contains)
 
