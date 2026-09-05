@@ -31,15 +31,15 @@ ANALYSIS: Produce a bounded comparison showing how Commons evidence receipts com
 
 ### Trust-cache and production-survival reliability (`reliability-trust`, `SHIPPED_ON_MAIN`)
 
-- `ground/TRUST.md` sha256 `e1c084dcd575f809bc6efee5c63c6d252cef02440bca095e20c09036c6819ed6` (2449 bytes)
-- `trust.html` sha256 `d0b8a098a9c59ed3232d6f573a20d37e56854122135af4a9f0165e43e93becb6` (6510 bytes)
-- `host/trust_cache.py` sha256 `b93cfd39eda6b683ea8d1357d124670e418d319d9f8df9b0e7d6faae0b653e62` (8279 bytes)
-- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `a5c463a406ac00c297a6859164c8f98cdb86d40d4fb6da6561dad57019100657` (1632 bytes)
+- `ground/TRUST.md` sha256 `3a7ccd61ab3ea88a48a8db2287674683a2061e5e915598013fb9db24a0f95751` (2406 bytes)
+- `trust.html` sha256 `ad053f9985972958933d64773344add0c3a2dada6c6d59231933a186a89e391b` (6454 bytes)
+- `host/trust_cache.py` sha256 `586b9f4146a8c4f7445fe904e9080eeeef527e4548dee5585140530c10608363` (8035 bytes)
+- `p/bernays-production-survival-operating-system-20260826-01.md` sha256 `f66c06297b7400c68e2e95d17233e1f8a315999f37d6a95c8f75d9ab984eb34f` (1611 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
-- `evidence/README.md` sha256 `67c2e9d3a728b93635129d3bd4478b089a44bc78e0d89495101459f59dfe8381` (2046 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `442261049f26a2f903f19f913fa7b94419e7cdc7d07334e3adda7fc3e3f050d5` (3705 bytes)
+- `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `f63fc39de2ad57455ff3cee9fa99260b4e4e433a9e88b15d8fb29bde4537ab3a` (3641 bytes)
 
 ## Stated funding (not expected value)
 

@@ -21,17 +21,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -84,17 +84,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -147,17 +147,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -210,17 +210,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -273,17 +273,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -336,17 +336,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -399,17 +399,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -462,17 +462,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -525,17 +525,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -588,17 +588,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -651,17 +651,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -714,17 +714,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -777,17 +777,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -840,17 +840,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -903,17 +903,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -966,17 +966,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1029,17 +1029,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1092,17 +1092,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1155,17 +1155,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1218,17 +1218,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1281,17 +1281,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1344,17 +1344,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1407,17 +1407,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1470,17 +1470,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1533,17 +1533,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1596,17 +1596,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1659,17 +1659,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1722,17 +1722,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1785,17 +1785,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1848,17 +1848,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1911,17 +1911,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1974,17 +1974,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2037,17 +2037,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2100,17 +2100,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2163,17 +2163,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2226,17 +2226,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2289,17 +2289,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2352,17 +2352,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2415,17 +2415,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2478,17 +2478,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2541,17 +2541,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2604,17 +2604,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2667,17 +2667,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2730,17 +2730,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2793,17 +2793,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2856,17 +2856,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2919,17 +2919,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2982,17 +2982,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3045,17 +3045,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3108,17 +3108,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3171,17 +3171,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3234,17 +3234,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3297,17 +3297,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3360,17 +3360,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3423,17 +3423,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3486,17 +3486,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3549,17 +3549,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3612,17 +3612,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3675,17 +3675,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3738,17 +3738,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3801,17 +3801,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3864,17 +3864,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3927,17 +3927,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3990,17 +3990,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4053,17 +4053,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4116,17 +4116,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4179,17 +4179,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4242,17 +4242,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4305,17 +4305,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4368,17 +4368,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4431,17 +4431,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4494,17 +4494,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4557,17 +4557,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4620,17 +4620,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4683,17 +4683,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4746,17 +4746,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4809,17 +4809,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4872,17 +4872,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4935,17 +4935,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4998,17 +4998,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5061,17 +5061,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5124,17 +5124,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5187,17 +5187,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5250,17 +5250,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5313,17 +5313,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5376,17 +5376,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5439,17 +5439,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5502,17 +5502,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5554,7 +5554,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5565,27 +5565,27 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5627,7 +5627,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5638,27 +5638,27 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5700,7 +5700,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5711,27 +5711,27 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5773,7 +5773,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5784,27 +5784,27 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5846,7 +5846,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5857,27 +5857,27 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5919,7 +5919,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5930,27 +5930,27 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5992,7 +5992,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -6003,27 +6003,27 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -6065,7 +6065,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -6076,27 +6076,27 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -6138,7 +6138,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -6149,27 +6149,27 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -6211,7 +6211,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -6222,27 +6222,27 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
+            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
+            "blob_sha":"afc5024e1c596361b0ddebb8e972437db2e2a593",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }

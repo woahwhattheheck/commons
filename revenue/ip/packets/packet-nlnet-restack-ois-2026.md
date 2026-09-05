@@ -35,29 +35,29 @@ ANALYSIS: Public Commons artifacts may relate to listed open-stack activities, b
 
 ### RINGDELTA Muhlnickel-native lossless organ (`ringdelta-muhlnickel`, `SHIPPED_ON_MAIN`)
 
-- `ground/RINGDELTA.md` sha256 `36d4d7b3b3f78600b665ce928adc02041a0994e5f197955850da0f3386ae91f2` (2528 bytes)
-- `ground/RINGDELTA.json` sha256 `dd4b64d49f2461aea37aa6698c60a62693047dab0cdc75f90c0ffb89ce45fad6` (1611 bytes)
-- `ringdelta.html` sha256 `5aed5a20e7c1a451e25c2a472c7e718fac306872f20568905c3f61e2a4b5be5e` (3218 bytes)
-- `host/ringdelta.py` sha256 `c6cb0f8d319fe85c5637b631bf283f17694b78b05f5af145dce4a90a73edf543` (8796 bytes)
+- `ground/RINGDELTA.md` sha256 `7ee5fdfda7157294ac1b09ebf44780839d39bb8d6764f3252a766a9d3ede2afe` (2460 bytes)
+- `ground/RINGDELTA.json` sha256 `276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910` (1560 bytes)
+- `ringdelta.html` sha256 `f4037662d185da861bfdd5c5607b7dc3520a649da827865fa4f29fa0b554ac8a` (3179 bytes)
+- `host/ringdelta.py` sha256 `4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600` (8543 bytes)
 - `excerpts/20260828/ringdelta_xor8.mno` sha256 `46fb0cf0c46df7d2afa4957ebb01e66af7604cde3583753ab0f5dc1095f606fa` (300 bytes)
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `97ec93829159181b70d53144b277021127124300bdaa1e2eafc859cf67e28535` (63909 bytes)
-- `distribution.html` sha256 `72f87b6ec40b1577a68d0dc6c9c4a966abd8a3474df82080f7a221ac9e26245c` (7419 bytes)
-- `host/distribution.py` sha256 `677905f558c84922a4f794d0f92b6a5a602f1abba85b494b323f9a136d475c74` (30108 bytes)
-- `ground/DISTRIBUTION.md` sha256 `3fa79d4f9e1d87d259457557553dc2afb15e069bc6b96f2d02b8caba4d90c4c7` (2707 bytes)
-- `p/grok-distribution-layer-20260828-01.md` sha256 `fe6028dcb971e4efa0164ff869ec72081c22b2f5b9f147465704556cfda327af` (2017 bytes)
+- `carrier.js` sha256 `6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa` (62464 bytes)
+- `distribution.html` sha256 `fe19383fdc5a5488ce3ab47f4a387629bdc1bbb558a0ba7859c187379741b790` (7306 bytes)
+- `host/distribution.py` sha256 `51c273d0d10b8bf8dd89219889eb1e5cbf388a1b8a95db371c591ecdf032b73b` (29377 bytes)
+- `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)
+- `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
-- `evidence/README.md` sha256 `67c2e9d3a728b93635129d3bd4478b089a44bc78e0d89495101459f59dfe8381` (2046 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `442261049f26a2f903f19f913fa7b94419e7cdc7d07334e3adda7fc3e3f050d5` (3705 bytes)
+- `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `f63fc39de2ad57455ff3cee9fa99260b4e4e433a9e88b15d8fb29bde4537ab3a` (3641 bytes)
 
 ### Agent swarm datacenter prep and swarm-mail (`agent-swarm`, `SHIPPED_ON_MAIN`)
 
-- `ground/SWARM.md` sha256 `c11e5e01b6274a251f6400701e91875249e2a072308a484811b91042719fd238` (1182 bytes)
-- `swarm-mail.html` sha256 `eb829bb2b0a2ef407bc148ddbab7307b79008f72bd3ee9a5965588b1cb6837ae` (5164 bytes)
+- `ground/SWARM.md` sha256 `2aa30acbb26761a7be2f06b2a14ae83c924dd1d180231eec06d24a55a85e7a66` (1158 bytes)
+- `swarm-mail.html` sha256 `a0fb49e1a4cf2612688955e5ba0f10a611a2dfa171f9fd214a65d3d7fa788afa` (5118 bytes)
 
 ## Stated funding (not expected value)
 
