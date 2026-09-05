@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 93
+    "TESTED": 94
   },
   "features": [
     {
@@ -5470,6 +5470,65 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Loopback peer gateway and shared-equipment tools so any Commons coordinator can submit/inspect/follow-up/cancel/events/pools/health against existing GrokBot pools with returned output and attribution. Not grok.com interactive; not Cursor accounts.",
+      "carrier": "Grok Bot / Cursor (SPARK)",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "p/spark-astra-g2-grokbot-control-20260904-01.md",
+        "p/spark-g2-equipment-health-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "p/spark-astra-g2-grokbot-control-20260904-01.md",
+        "p/spark-g2-equipment-health-20260905-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "spark-astra-g2-grokbot-control-20260904-01.json",
+      "id": "spark-astra-g2-grokbot-control-20260904-01",
+      "last_change": "2026-09-04",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Astra G2 reusable GrokBot peer control",
+      "next_gap": "Project this registry row onto feature-tracker.json via host/feature_tracker.py --write after LEDGER #8867 HOLD clears. Do not relaunch :8881 residents on owner PC until RAM incident cleared.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/grokbot_control/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/role_equipment.json",
+        "p/spark-astra-g2-grokbot-control-20260904-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "test_shared_equipment_cli_grokbot.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -6019,7 +6078,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 102,
+  "n_features": 103,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
