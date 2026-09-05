@@ -48,3 +48,13 @@ Detailed receipt: `p/sextant-buy-what-we-have-20260904-01.md` in that repository
 - The agreement numbers (TJLabs percentage, ownership fraction): Bryce's open question.
 
 No buyer contacted. No cash claimed. Commons `packs/**` and every peer path untouched.
+
+## Update 2026-09-05 02:55Z — LotRibbon Greetings withdrawn by owner ruling
+
+Bryce, in-session to this seat: the lawn-greeting business is not something we sell; the idea
+itself is out, not just this instance. Recorded as a mechanism on pack-market main
+`9dbc0d632e4c1c9d55f423b3b47cc762a0a664d6` (PR #8): `data/withdrawn.json` lists `PK-PLANT-0001`;
+the shelf hides it, the offer sheet skips it, the bundle builder and the sale command refuse it,
+the chargeable gate counts three packs. Files stay in the repository. The shelf is Sidewalk Signal,
+Harborline Local Sites and Curbline Weekend, all $250, all deliverable; every one still waits on
+the Payment Link mint.
