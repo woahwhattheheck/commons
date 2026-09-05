@@ -15,9 +15,8 @@ class ForgeDoorAutopsyLabelTests(unittest.TestCase):
         self.assertIn("relabelStaticAutopsyDoor", text)
 
     def test_index_static_hub_still_has_rescue_href(self):
-        # Static HTML may lag until a later bytes patch; door.js relabels when JS runs.
         text = INDEX.read_text(encoding="utf-8")
-        self.assertIn("agent-rescue.html", text)
+        self.assertIn('<a class="door-btn" href="./agent-rescue.html">Agent Failure Autopsy · $29</a>', text)
         self.assertIn('id="door-hub"', text)
 
 
