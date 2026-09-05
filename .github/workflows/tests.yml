@@ -48,6 +48,8 @@ jobs:
           python3 test_digit_pixel_presence.py
           python3 integrations/transferable_roles/test_roles.py
           node test_door_hub.js
+          python3 -m unittest -q test_right_now test_right_now_execution test_survival_offer_page_truth
+          python3 host/right_now_revenue.py validate
       - name: Audit landed commit and required paths
         if: inputs.expected_landed != ''
         env:
