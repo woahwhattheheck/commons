@@ -75,7 +75,7 @@ DIAGNOSIS_DELIVERED requires:
 - independent evidence review by a capable named reviewer and measured operator time;
 - delivery by the recorded one-business-day deadline.
 
-REFUND_REQUIRED applies after the included clarification when evidence is insufficient, cannot fit, or remains quarantined. It also applies when evidence looked usable at intake but the causal conclusion does not survive full adversarial review. Do not rush or weaken the analysis to satisfy the clock. It must contain no diagnosis or fix claims. Initiate the USD 29 refund in the official payment system and record the private provider receipt there. Buyer intent does not remove the refund: a deliberately manipulative-looking artifact is cheaper to quarantine and refund than to litigate. No payment URL or refund is created by this repository package.
+REFUND_REQUIRED applies after the included clarification when evidence is insufficient, cannot fit, or remains quarantined. It also applies when evidence looked usable at intake but the causal conclusion does not survive full adversarial review, and when a defensible diagnosis is not delivered by the recorded one-business-day deadline. Do not rush or weaken the analysis to satisfy the clock. A refund record must contain no diagnosis or fix claims. Initiate the USD 29 refund in the official payment system and record the private provider receipt there. Buyer intent does not remove the refund: a deliberately manipulative-looking artifact is cheaper to quarantine and refund than to litigate. The verified checkout URL is recorded in offer.json; this repository package does not itself execute a payment or refund.
 
 ## 9. Buyer-facing format
 
