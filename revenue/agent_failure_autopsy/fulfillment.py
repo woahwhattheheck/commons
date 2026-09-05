@@ -477,12 +477,38 @@ def _cause_list(
             raise AutopsyValidationError(f"{cause_id}: confidence is invalid")
         _text(cause["confidence_rationale"], f"{cause_id}.confidence_rationale")
         _validate_refs(cause["evidence_refs"], allowed, f"{cause_id}.evidence_refs")
-        _string_list(
-            cause["alternatives"],
-            f"{cause_id}.alternatives",
-            allow_empty=True,
-            maximum_items=20,
-        )
+        alternatives = cause["alternatives"]
+        if type(alternatives) is not list or not 1 <= len(alternatives) <= 20:
+            raise AutopsyValidationError(
+                f"{cause_id}: adversarial challenge requires at least one alternative"
+            )
+        for alternative_index, alternative in enumerate(alternatives):
+            alternative = _exact_keys(
+                alternative,
+                {"explanation", "status", "assessment", "evidence_refs"},
+                f"{cause_id}.alternatives[{alternative_index}]",
+            )
+            _text(
+                alternative["explanation"],
+                f"{cause_id}.alternatives[{alternative_index}].explanation",
+            )
+            if alternative["status"] not in {
+                "WEAKENED_BY_EVIDENCE",
+                "STILL_PLAUSIBLE",
+                "NOT_TESTED",
+            }:
+                raise AutopsyValidationError(
+                    f"{cause_id}: adversarial alternative status is invalid"
+                )
+            _text(
+                alternative["assessment"],
+                f"{cause_id}.alternatives[{alternative_index}].assessment",
+            )
+            _validate_refs(
+                alternative["evidence_refs"],
+                allowed,
+                f"{cause_id}.alternatives[{alternative_index}].evidence_refs",
+            )
     return value
 
 
@@ -505,6 +531,7 @@ def validate_report(
             "harness_summary",
             "disposition",
             "artifact_state",
+            "quality",
             "delivery",
             "timeline",
             "first_meaningful_divergence",
@@ -542,6 +569,29 @@ def validate_report(
     artifact_state = report["artifact_state"]
     if artifact_state not in {"PEER_DRAFT", "READY_FOR_BUYER", "REFUND_REQUIRED"}:
         raise AutopsyValidationError("report artifact_state is invalid")
+
+    quality = _exact_keys(
+        report["quality"],
+        {
+            "bounded_unit",
+            "analysis_level",
+            "evidence_vs_inference_separated",
+            "adversarial_challenge_completed",
+            "time_measurement_truncated_analysis",
+        },
+        "report.quality",
+    )
+    expected_quality = {
+        "bounded_unit": "ONE_FAILED_RUN",
+        "analysis_level": "FULL_STRENGTH",
+        "evidence_vs_inference_separated": True,
+        "adversarial_challenge_completed": True,
+        "time_measurement_truncated_analysis": False,
+    }
+    if quality != expected_quality:
+        raise AutopsyValidationError(
+            "report quality must be full-strength, adversarial, and never time-truncated"
+        )
 
     delivery = _exact_keys(
         report["delivery"],
@@ -719,13 +769,19 @@ def validate_report(
             "measurement_status",
             "human_review_minutes",
             "automated_draft_minutes",
-            "review_ceiling_minutes",
-            "ceiling_result",
+            "measurement_purpose",
+            "time_truncated_analysis",
         },
         "report.operator_time",
     )
-    if operator["review_ceiling_minutes"] != 15:
-        raise AutopsyValidationError("review ceiling must remain the 15-minute hypothesis")
+    if operator["measurement_purpose"] != "DESCRIPTIVE_ECONOMICS_ONLY":
+        raise AutopsyValidationError(
+            "operator time may be recorded only as descriptive economics"
+        )
+    if operator["time_truncated_analysis"] is not False:
+        raise AutopsyValidationError(
+            "elapsed time must never truncate Agent Failure Autopsy quality"
+        )
     automated_minutes = operator["automated_draft_minutes"]
     if automated_minutes is not None:
         _number(automated_minutes, "operator_time.automated_draft_minutes")
@@ -772,7 +828,6 @@ def validate_report(
         if (
             operator["measurement_status"] != "NOT_MEASURED"
             or operator["human_review_minutes"] is not None
-            or operator["ceiling_result"] != "NOT_ASSESSED"
         ):
             raise AutopsyValidationError(
                 "synthetic example cannot claim measured human-review performance"
@@ -792,14 +847,9 @@ def validate_report(
             raise AutopsyValidationError(
                 "buyer records must measure active human-review minutes"
             )
-        review_minutes = _number(
+        _number(
             operator["human_review_minutes"], "operator_time.human_review_minutes"
         )
-        expected_result = "AT_OR_BELOW" if review_minutes <= 15 else "ABOVE"
-        if operator["ceiling_result"] != expected_result:
-            raise AutopsyValidationError(
-                "operator-time ceiling result does not match measured minutes"
-            )
         if reviewed_at > delivered:
             raise AutopsyValidationError("report cannot be delivered before final review")
 
@@ -851,10 +901,6 @@ def validate_report(
         warnings.append(
             "synthetic peer draft: no buyer delivery, human-review time, sale, or revenue is established"
         )
-    elif operator["ceiling_result"] == "ABOVE":
-        warnings.append(
-            "this delivery exceeded the 15-minute human-review operating target"
-        )
     return {
         "ok": True,
         "case_id": context["case_id"],
@@ -864,7 +910,8 @@ def validate_report(
         "clock_started_at": delivery["clock_started_at"],
         "delivery_due_at": delivery["delivery_due_at"],
         "human_review_minutes": operator["human_review_minutes"],
-        "review_ceiling_result": operator["ceiling_result"],
+        "automated_draft_minutes": operator["automated_draft_minutes"],
+        "time_measurement_purpose": operator["measurement_purpose"],
         "warnings": warnings,
     }
 
