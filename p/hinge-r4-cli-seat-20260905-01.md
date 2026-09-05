@@ -12,9 +12,14 @@ from the CLI without reminting RoleStore.
 
 ## Change
 
-- `cli.py`: `--seat` on equip + transfer
+- `cli.py`: `--seat` on equip + transfer (optional; never a gate)
 - `test_roles.py`: CLI round-trip asserts seat on occupant
 - README examples updated
+
+## CI fix (same branch)
+
+`reject-added-locks` failed on README collocating `seat` + `Required`
+(admission-phrase). Reworded to open-door prohibition language.
 
 ## Not touched
 

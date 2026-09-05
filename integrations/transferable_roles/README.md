@@ -30,9 +30,9 @@ python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followu
 python3 integrations/transferable_roles/test_roles.py
 ```
 
-`--seat` is the **occupant** seat name (not `role_id`). Required for G2
-attribution when the successor recovers via `session_id` on
-`kind: grokbot_control`.
+`--seat` names the occupant (not `role_id`). Optional metadata for G2
+attribution on session recover — never a Commons gate, never an admission
+check, never blocks equip/transfer.
 
 ## Access route shapes
 

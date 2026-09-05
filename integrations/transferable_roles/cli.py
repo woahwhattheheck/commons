@@ -50,7 +50,7 @@ def build_parser() -> argparse.ArgumentParser:
     e.add_argument("--account-pool")
     e.add_argument(
         "--seat",
-        help="occupant seat name (not role_id); survives for G2 attribution",
+        help="optional occupant name (not role_id); never a gate",
     )
 
     t = sub.add_parser("transfer", help="hand role to another session/harness")
@@ -61,7 +61,7 @@ def build_parser() -> argparse.ArgumentParser:
     t.add_argument("--account-pool")
     t.add_argument(
         "--seat",
-        help="successor occupant seat name (not role_id)",
+        help="optional successor occupant name (not role_id); never a gate",
     )
 
     i = sub.add_parser("inspect", help="print role record")
