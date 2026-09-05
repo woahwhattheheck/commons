@@ -18,15 +18,24 @@ Machine-readable twin: [`seats.json`](./seats.json).
 
 | Seat | Role | Assigns after | Duties |
 | --- | --- | --- | --- |
-| `autopsy-coordinator-primary` | Fulfillment coordinator | Real payment + private intake | Intake completeness, clock/clarification, reviewer routing, refund routing, delivery, receipts |
+| `autopsy-coordinator-primary` | Fulfillment coordinator | Real payment + private intake | Intake completeness, clock/clarification, reviewer routing, refund routing, delivery, durable receipts (opaque `case_row` + optional G2 submit per RUNBOOK §10) |
 | `autopsy-coordinator-backup` | Fulfillment backup | Real payment + private intake | Explicit private-case handoff takeover; same duties when covering |
 | `autopsy-independent-reviewer` | Independent reviewer | `PEER_DRAFT` ready | Evidence inspection, strip unsupported findings, confirm adversarial challenge; label `COMMONS_PEER` or `HUMAN_OPERATOR` accurately |
 
 All seats follow [`RUNBOOK.md`](./RUNBOOK.md). Transferable responsibilities — no unique credentials.
 
-## Case rows
+## Case rows (opaque receipt surface)
 
-Do **not** commit buyer artifacts. Append opaque case pointers only in the private delivery system after payment is observed. Public `case_rows` in `seats.json` stays empty until an owner-authorized opaque receipt exists.
+Do **not** commit buyer artifacts. Public `case_rows` in `seats.json` stays **empty** until an owner-authorized opaque receipt exists after `REAL_STRIPE_PAYMENT_OBSERVED`.
+
+Checked-in shape (`case_row_shape` in `seats.json`):
+
+- **Required:** `offer_id`, `case_ref`, `sku`, `state`
+- **Optional:** `client_reference_id`, `g2_run_id`, `g2_session_id`, `payment_observed_at`
+- **Builder:** `receipt_row_from_case(...)` in `integrations/grokbot_control/paid_case.py` (from a normalized G2 `case` + optional run/session ids)
+- **Gate:** real Stripe payment observed + owner authorization — never invent a paid row to close a board
+
+When a coordinator also opens Autopsy work on an existing GrokBot pool, attach `case` via `case_from_autopsy_offer` / `grokbot_submit` (RUNBOOK §10), then record the returned `run_id` / `session_id` on the opaque row.
 
 ## Not this board
 

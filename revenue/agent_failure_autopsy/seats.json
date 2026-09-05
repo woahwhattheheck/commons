@@ -30,7 +30,7 @@
         "reviewer routing",
         "refund routing",
         "delivery state",
-        "durable receipts"
+        "durable receipts via receipt_row_from_case + RUNBOOK §10 G2 case submit when a pool run is opened"
       ],
       "runbook": "revenue/agent_failure_autopsy/RUNBOOK.md"
     },
@@ -61,8 +61,23 @@
     }
   ],
   "handoff_rule": "Primary and backup are transferable case responsibilities, not special-access roles. Handoff requires an explicit transfer of the private case record and evidence references. Assignment grants no unique credentials.",
+  "case_row_shape": {
+    "purpose": "Opaque public receipt binding a paid Autopsy job to optional G2 run/session ids — never buyer PII or artifacts.",
+    "required_keys": ["offer_id", "case_ref", "sku", "state"],
+    "optional_keys": [
+      "client_reference_id",
+      "g2_run_id",
+      "g2_session_id",
+      "payment_observed_at"
+    ],
+    "builder": "integrations.grokbot_control.paid_case.receipt_row_from_case",
+    "runbook": "revenue/agent_failure_autopsy/RUNBOOK.md §10",
+    "max_chars_per_string": 200,
+    "do_not_commit_buyer_artifacts": true,
+    "append_gate": "REAL_STRIPE_PAYMENT_OBSERVED + owner-authorized opaque receipt"
+  },
   "case_rows": [],
-  "case_rows_note": "Append one private case row only after REAL_STRIPE_PAYMENT_OBSERVED + private intake exists. Never commit buyer artifacts here.",
+  "case_rows_note": "Append one opaque case_row (case_row_shape) only after REAL_STRIPE_PAYMENT_OBSERVED + private intake exists. Build with receipt_row_from_case. Never commit buyer artifacts here.",
   "does_not_replace": [
     "revenue/agent_failure_autopsy/offer.json",
     "revenue/agent_failure_autopsy/fulfillment.py",
