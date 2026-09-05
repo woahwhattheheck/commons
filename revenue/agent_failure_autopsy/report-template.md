@@ -75,7 +75,11 @@ Delivered: [timestamp]
 
 Clarification rounds used: [0 or 1]
 
-Reviewer kind: [COMMONS_PEER or HUMAN_OPERATOR]\n\nIndependent of draft author: [yes]\n\nReviewer minutes: [measured value for a buyer delivery]
+Reviewer kind: [COMMONS_PEER or HUMAN_OPERATOR]
+
+Independent of draft author: [yes]
+
+Reviewer minutes: [measured value for a buyer delivery]
 
 Automated draft minutes: [measured value when available]
 
