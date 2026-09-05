@@ -90,9 +90,21 @@ syntax also passed. Browser execution was attempted, **not passed**:
 `agent-browser` was absent; Playwright's bundled Chromium was absent; the
 available `/usr/bin/chromium` returned `net::ERR_BLOCKED_BY_ADMINISTRATOR` for
 both loopback HTTP and `file://` navigation. No browser policies were changed.
-The browser smoke is provided for execution in a normal browser environment;
-no screenshot, visual acceptance, or under-two-minute independent-user result
+The full browser smoke is provided for execution in a normal browser environment;
+no end-to-end browser acceptance or under-two-minute independent-user result
 is claimed from this environment.
+
+A separate **in-memory DOM/render check passed** using actual page code with a
+Node-sealed synthetic capsule. It found and fixed a checksum wrapping defect:
+390px viewport width originally produced a 601px document; after the CSS repair,
+document width is 390px. Desktop render, visible diff/next action, inert HTML,
+and workspace clearing also passed with no script errors. This allowed-mode
+check does not navigate URLs, modify browser policies, or prove browser Web
+Crypto, downloads, imports, or hosted behavior. Reproduce it with:
+
+```sh
+python repair-capsules/render_smoke.py
+```
 
 Scope: only `repair-capsules/`; no shared runtime, policy, authentication, OneTake,
 or C1 transport modifications. RIVET claim is in the Repair Capsules kickoff
