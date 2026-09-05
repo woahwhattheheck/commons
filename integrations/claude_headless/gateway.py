@@ -17,16 +17,24 @@ Reused roads, nothing reminted:
   * State directory convention from ``integrations/grok_slack``
     (``~/.commons/...``).
 
+Runs outlive the gateway. The child's stdin/stdout/stderr are files under
+``runs/<run_id>/`` (prompt.txt, events.jsonl, stderr.txt), not pipes, so a
+gateway death mid-run loses nothing: on the next start the gateway adopts a
+child that is still alive and finalizes a finished one from the bytes on
+disk. Measured by TENON on 2026-09-04 (child finished after its spawner
+exited); the ``allow_reuse_address`` fix below is TENON's as well.
+
 Loopback only. Stdlib only. The child process is created with no console
-window and the parent's ``CLAUDECODE`` markers removed so the CLI does not
-treat the run as nested. Prompts travel over stdin, never the command line.
-Existing Max OAuth on this PC is used as-is; no secret is minted or stored.
-Any caller on loopback may submit; the ``from`` field is optional attribution.
+window and the parent's ``CLAUDECODE`` / ``CLAUDE_CODE_*`` session markers
+removed so the CLI does not treat the run as nested. Existing Max OAuth on
+this PC is used as-is; no secret is minted or stored. Any caller on loopback
+may submit; ``peer`` / ``from`` and ``label`` are optional attribution only.
 """
 
 from __future__ import annotations
 
 import argparse
+import atexit
 import base64
 import datetime as dt
 import hashlib
@@ -47,13 +55,17 @@ from pathlib import Path
 from typing import Any, Callable
 
 SERVICE = "commons-claude-headless-gateway"
+CONTRACT = "tenon-c1-as-built-20260904-2043 + gemini-shaped aliases"
 DEFAULT_PORT = 8879
 DEFAULT_STATE_DIR = Path.home() / ".commons" / "claude_headless"
 DEFAULT_MAX_CONCURRENT = 3
-TERMINAL = frozenset({"completed", "failed", "cancelled", "interrupted"})
+TERMINAL = frozenset({"completed", "error", "cancelled", "interrupted"})
 ACTIVE = frozenset({"starting", "running"})
 IS_WINDOWS = os.name == "nt"
-NESTING_ENV = ("CLAUDECODE", "CLAUDE_CODE_ENTRYPOINT")
+SCRUB_EXACT = ("CLAUDECODE", "CLAUDE_PID", "CLAUDE_EFFORT", "CLAUDE_AGENT_SDK_VERSION", "CLAUDE_PREVIEW_CLASSIFIER_FLOOR")
+SCRUB_PREFIX = ("CLAUDE_CODE_",)
+KEEP_ENV_VAR = "CLAUDE_HEADLESS_KEEP_ENV"
+TASKKILL_PID = re.compile(r"process with PID (\d+)")
 CLI_OPTIONS = (
     # request field, CLI flag, kind
     ("model", "--model", "str"),
@@ -68,8 +80,12 @@ CLI_OPTIONS = (
     ("mcp_config", "--mcp-config", "list"),
     ("strict_mcp_config", "--strict-mcp-config", "flag"),
     ("fork_session", "--fork-session", "flag"),
+    ("partial", "--include-partial-messages", "flag"),
     ("bare", "--bare", "flag"),
 )
+FIELD_ALIASES = {"tools": "allowed_tools"}
+ORPHANED_CHILDREN: list[Any] = []
+atexit.register(lambda: [proc.poll() for proc in ORPHANED_CHILDREN])
 
 
 class GatewayError(RuntimeError):
@@ -131,11 +147,14 @@ def kill_tree(pid: int) -> dict[str, Any]:
             creationflags=flags,
             check=False,
         )
+        killed = [int(m) for m in TASKKILL_PID.findall(proc.stdout or "")]
         return {
             "method": "taskkill /T /F",
             "exit_code": proc.returncode,
-            "stdout": proc.stdout[-400:],
-            "stderr": proc.stderr[-400:],
+            "killed_pids": killed,
+            "tree": killed,
+            "stdout": (proc.stdout or "")[-600:],
+            "stderr": (proc.stderr or "")[-400:],
         }
     import signal
 
@@ -147,27 +166,33 @@ def kill_tree(pid: int) -> dict[str, Any]:
             os.kill(pid, signal.SIGTERM)
             method = "kill SIGTERM"
         except OSError as exc:
-            return {"method": "kill", "error": str(exc)}
-    return {"method": method}
+            return {"method": "kill", "error": str(exc), "killed_pids": [], "tree": []}
+    return {"method": method, "killed_pids": [pid], "tree": [pid]}
+
+
+def scrub_names(env: dict[str, str], keep: set[str] | None = None) -> list[str]:
+    keep = keep or set()
+    out = []
+    for name in env:
+        if name in keep:
+            continue
+        if name in SCRUB_EXACT or name.startswith(SCRUB_PREFIX):
+            out.append(name)
+    return sorted(out)
 
 
 def headless_env(base: dict[str, str] | None = None, run_id: str = "") -> dict[str, str]:
     env = dict(os.environ if base is None else base)
-    for name in NESTING_ENV:
+    keep = {item.strip() for item in env.get(KEEP_ENV_VAR, "").split(",") if item.strip()}
+    for name in scrub_names(env, keep):
         env.pop(name, None)
     if run_id:
         env["CLAUDE_HEADLESS_RUN_ID"] = run_id
     return env
 
 
-def build_popen_kwargs(cwd: str, env: dict[str, str]) -> dict[str, Any]:
-    kwargs: dict[str, Any] = {
-        "cwd": cwd,
-        "env": env,
-        "stdin": subprocess.PIPE,
-        "stdout": subprocess.PIPE,
-        "stderr": subprocess.PIPE,
-    }
+def build_popen_kwargs(cwd: str, env: dict[str, str], stdin: Any, stdout: Any, stderr: Any) -> dict[str, Any]:
+    kwargs: dict[str, Any] = {"cwd": cwd, "env": env, "stdin": stdin, "stdout": stdout, "stderr": stderr}
     if IS_WINDOWS:
         kwargs["creationflags"] = getattr(subprocess, "CREATE_NO_WINDOW", 0x08000000) | getattr(
             subprocess, "CREATE_NEW_PROCESS_GROUP", 0x00000200
@@ -200,8 +225,38 @@ def build_command(claude_cmd: list[str], run: dict[str, Any]) -> list[str]:
     return cmd
 
 
+def parse_events_file(path: Path) -> tuple[list[dict[str, Any]], dict[str, Any] | None]:
+    """Every complete JSON line of a run's stdout file, and its result line if any."""
+    events: list[dict[str, Any]] = []
+    result = None
+    try:
+        raw = path.read_bytes()
+    except OSError:
+        return events, None
+    for line in raw.splitlines():
+        text = line.decode("utf-8", errors="replace").strip()
+        if not text:
+            continue
+        try:
+            obj = json.loads(text)
+        except ValueError:
+            continue
+        if isinstance(obj, dict):
+            events.append(obj)
+            if obj.get("type") == "result":
+                result = obj
+    return events, result
+
+
 class RunStore:
     """SQLite journal of runs and their events. One global event cursor."""
+
+    COLUMNS = (
+        "run_id", "session_id", "parent_run_id", "kind", "label", "submitted_by", "cwd", "prompt",
+        "prompt_sha256", "prompt_bytes", "options_json", "status", "pid", "exit_code", "created_at",
+        "started_at", "ended_at", "result_text", "result_json", "error", "note", "stderr_tail",
+        "command_json", "event_count", "cancel_requested", "seq",
+    )
 
     def __init__(self, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -234,6 +289,7 @@ class RunStore:
                     result_text TEXT,
                     result_json TEXT,
                     error TEXT,
+                    note TEXT,
                     stderr_tail TEXT,
                     command_json TEXT,
                     event_count INTEGER NOT NULL DEFAULT 0,
@@ -257,6 +313,10 @@ class RunStore:
             )
             self._db.execute("CREATE INDEX IF NOT EXISTS events_run ON events(run_id, event_id)")
             self._db.execute("CREATE INDEX IF NOT EXISTS runs_session ON runs(session_id, seq)")
+            have = {row[1] for row in self._db.execute("PRAGMA table_info(runs)").fetchall()}
+            for column in ("note", "child_model"):  # journals written before these columns existed
+                if column not in have:
+                    self._db.execute(f"ALTER TABLE runs ADD COLUMN {column} TEXT")
 
     def close(self) -> None:
         with self._cond:
@@ -280,8 +340,8 @@ class RunStore:
             self._db.execute(
                 """
                 INSERT INTO runs(run_id, session_id, parent_run_id, kind, label, submitted_by, cwd,
-                    prompt, prompt_sha256, prompt_bytes, options_json, status, created_at, seq)
-                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    prompt, prompt_sha256, prompt_bytes, options_json, status, pid, created_at, seq)
+                VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """,
                 (
                     run["run_id"],
@@ -296,6 +356,7 @@ class RunStore:
                     run["prompt_bytes"],
                     json.dumps(run.get("options") or {}, ensure_ascii=False, sort_keys=True),
                     run["status"],
+                    run.get("pid"),
                     run["created_at"],
                     seq,
                 ),
@@ -386,11 +447,13 @@ class RunStore:
             self._cond.notify_all()
         return {
             "event_id": event_id,
+            "seq": event_id,
             "run_id": run_id,
             "session_id": session_id,
             "kind": kind,
             "status": status,
             "payload": payload,
+            "event": payload,
         }
 
     @property
@@ -433,12 +496,17 @@ class RunStore:
             item = dict(row)
             raw = item.pop("payload")
             item["payload"] = json.loads(raw) if raw else None
+            item["event"] = item["payload"]
+            item["seq"] = item["event_id"]
             out.append(item)
         return out
 
 
 class Gateway(ThreadingHTTPServer):
     daemon_threads = True
+    # On Windows the http.server default (1) lets a second process bind a port that is
+    # already listening; TENON measured that on 2026-09-04. Keep reuse for POSIX only.
+    allow_reuse_address = os.name != "nt"
 
     def __init__(
         self,
@@ -461,17 +529,34 @@ class Gateway(ThreadingHTTPServer):
         self._env_base = env_base
         self._mutex = threading.RLock()
         self._procs: dict[str, Any] = {}
+        self._adopted: dict[str, int] = {}
         self._active_sessions: set[str] = set()
         self._pending_prompts: dict[str, str] = {}
         self._dispatch_wake = threading.Event()
         self._closing = False
         self.started_at = utc_now()
+        base_env = dict(os.environ if env_base is None else env_base)
+        keep = {item.strip() for item in base_env.get(KEEP_ENV_VAR, "").split(",") if item.strip()}
+        self.env_scrub = scrub_names(base_env, keep)
         self.cli = self.probe_cli()
-        self.recovery = self.recover_on_start()
+        self.recovery = self.reconcile()
         self._dispatch_thread = threading.Thread(
             target=self._dispatcher, name="claude-headless-dispatch", daemon=True
         )
         self._dispatch_thread.start()
+
+    # ---- paths ---------------------------------------------------------
+    def run_dir(self, run_id: str) -> Path:
+        return self.runs_dir / run_id
+
+    def run_files(self, run_id: str) -> dict[str, Path]:
+        base = self.run_dir(run_id)
+        return {
+            "dir": base,
+            "prompt": base / "prompt.txt",
+            "events": base / "events.jsonl",
+            "stderr": base / "stderr.txt",
+        }
 
     # ---- CLI -----------------------------------------------------------
     @staticmethod
@@ -495,30 +580,80 @@ class Gateway(ThreadingHTTPServer):
         return info
 
     # ---- recovery ------------------------------------------------------
-    def recover_on_start(self) -> dict[str, Any]:
-        """Reconcile journal rows left by a previous gateway process."""
-        report: dict[str, list[str]] = {"interrupted": [], "still_alive": [], "requeued": []}
+    def reconcile(self) -> dict[str, Any]:
+        """Reconcile journal rows this process does not own: adopt live children,
+        finalize finished ones from their stdout file, mark the rest interrupted."""
+        report: dict[str, list[str]] = {
+            "finalized_from_disk": [],
+            "still_alive": [],
+            "interrupted": [],
+            "requeued": [],
+        }
         for run in self.store.list_runs(limit=10_000):
+            run_id, session_id = run["run_id"], run["session_id"]
+            with self._mutex:
+                owned = run_id in self._procs or run_id in self._adopted
+            if owned:
+                continue
             if run["status"] in ACTIVE:
-                alive = pid_alive(run.get("pid"))
-                note = (
-                    "previous gateway process ended while this run was active; its stdout pipe is gone. "
-                    "The conversation transcript stays on disk under the session id; follow up to continue."
-                )
-                if alive:
-                    note += " Child pid still alive; cancel to stop it."
-                self.store.update_run(run["run_id"], status="interrupted", ended_at=utc_now(), error=note)
-                self.store.append_event(
-                    run["run_id"],
-                    run["session_id"],
-                    "gateway",
-                    status="interrupted",
-                    payload={"pid": run.get("pid"), "pid_alive": alive},
-                )
-                (report["still_alive"] if alive else report["interrupted"]).append(run["run_id"])
+                files = self.run_files(run_id)
+                if pid_alive(run.get("pid")):
+                    self._adopt(run)
+                    report["still_alive"].append(run_id)
+                    continue
+                events, result = parse_events_file(files["events"])
+                if result is not None:
+                    self._replay_events(run, events)
+                    self._finalize_from_result(
+                        run_id,
+                        session_id,
+                        result,
+                        exit_code=None,
+                        stderr_tail=self._stderr_tail(files["stderr"]),
+                        note="finalized from events.jsonl on disk after a gateway restart; exit code unknown",
+                    )
+                    report["finalized_from_disk"].append(run_id)
+                else:
+                    self.store.update_run(
+                        run_id,
+                        status="interrupted",
+                        ended_at=utc_now(),
+                        error=(
+                            "child process is gone and its events.jsonl has no result line. "
+                            "The conversation transcript stays on disk under the session id; follow up to continue."
+                        ),
+                    )
+                    self.store.append_event(
+                        run_id, session_id, "gateway", status="interrupted",
+                        payload={"pid": run.get("pid"), "events_on_disk": len(events)},
+                    )
+                    report["interrupted"].append(run_id)
             elif run["status"] == "queued":
-                report["requeued"].append(run["run_id"])
+                report["requeued"].append(run_id)
+        self._dispatch_wake.set()
         return report
+
+    def _adopt(self, run: dict[str, Any]) -> None:
+        run_id, session_id, pid = run["run_id"], run["session_id"], int(run["pid"])
+        with self._mutex:
+            self._adopted[run_id] = pid
+            self._active_sessions.add(session_id)
+        self.store.update_run(run_id, note=f"adopted by gateway started {self.started_at}; child pid {pid} was still alive")
+        self.store.append_event(run_id, session_id, "gateway", status="adopted", payload={"pid": pid})
+        files = self.run_files(run_id)
+        threading.Thread(
+            target=self._tail,
+            args=(run_id, session_id, files, None, pid, True),
+            name=f"claude-adopt-{run_id[:8]}",
+            daemon=True,
+        ).start()
+
+    def _replay_events(self, run: dict[str, Any], events: list[dict[str, Any]]) -> None:
+        """Journal the CLI lines a dead gateway never read (idempotent by count)."""
+        already = self.store.events_after(0, run_id=run["run_id"], limit=100_000)
+        seen = sum(1 for item in already if item["kind"] not in ("gateway", "cli-text"))
+        for obj in events[seen:]:
+            self.store.append_event(run["run_id"], run["session_id"], str(obj.get("type") or "cli"), payload=obj)
 
     # ---- submission ----------------------------------------------------
     def submit(self, payload: dict[str, Any], *, parent_run_id: str | None = None) -> dict[str, Any]:
@@ -531,7 +666,13 @@ class Gateway(ThreadingHTTPServer):
             prompt = payload.get("message")
         if not isinstance(prompt, str) or not prompt.strip():
             raise ValueError("prompt must be nonempty UTF-8 text")
-        options = {field: payload.get(field) for field, _flag, _kind in CLI_OPTIONS if field in payload}
+        options: dict[str, Any] = {}
+        for field, _flag, _kind in CLI_OPTIONS:
+            if field in payload:
+                options[field] = payload[field]
+        for alias, field in FIELD_ALIASES.items():
+            if alias in payload and field not in options:
+                options[field] = payload[alias]
         cwd = str(payload.get("cwd") or os.getcwd())
         session_id = payload.get("session_id")
         kind = "new"
@@ -556,7 +697,7 @@ class Gateway(ThreadingHTTPServer):
             raise ValueError(f"cwd does not exist: {cwd}")
         run_id = uuid.uuid4().hex
         retain = payload.get("retain_prompt", True)
-        submitted_by = str(payload.get("from") or payload.get("peer") or "")[:64] or None
+        submitted_by = str(payload.get("peer") or payload.get("from") or "")[:64] or None
         run = {
             "run_id": run_id,
             "session_id": session_id,
@@ -572,8 +713,9 @@ class Gateway(ThreadingHTTPServer):
             "status": "queued",
             "created_at": utc_now(),
         }
-        with self._mutex:
-            self._pending_prompts[run_id] = prompt
+        files = self.run_files(run_id)
+        files["dir"].mkdir(parents=True, exist_ok=True)
+        files["prompt"].write_text(prompt, encoding="utf-8")
         stored = self.store.insert_run(run)
         self.store.append_event(run_id, session_id, "gateway", status="queued", payload={"kind": kind})
         self._dispatch_wake.set()
@@ -603,7 +745,7 @@ class Gateway(ThreadingHTTPServer):
         queued = sorted(self.store.list_runs(status="queued", limit=10_000), key=lambda r: r["seq"])
         for run in queued:
             with self._mutex:
-                if len(self._procs) >= self.max_concurrent:
+                if len(self._procs) + len(self._adopted) >= self.max_concurrent:
                     return
                 if run["session_id"] in self._active_sessions:
                     continue
@@ -614,127 +756,173 @@ class Gateway(ThreadingHTTPServer):
 
     def _start(self, run: dict[str, Any]) -> None:
         run_id, session_id = run["run_id"], run["session_id"]
-        with self._mutex:
-            prompt = self._pending_prompts.pop(run_id, run.get("prompt"))
-        if prompt is None:
-            self._finish(
-                run_id,
-                session_id,
-                "failed",
-                error="prompt text was not retained and this gateway process never held it; resubmit",
-            )
-            return
+        files = self.run_files(run_id)
+        files["dir"].mkdir(parents=True, exist_ok=True)
+        if not files["prompt"].is_file():
+            if run.get("prompt") is None:
+                self._finish(run_id, session_id, "error", error="prompt.txt is missing and the prompt text was not retained; resubmit")
+                return
+            files["prompt"].write_text(run["prompt"], encoding="utf-8")
         command = build_command(self.claude_cmd, run)
         env = headless_env(self._env_base, run_id)
-        kwargs = build_popen_kwargs(run["cwd"], env)
         self.store.update_run(run_id, status="starting", started_at=utc_now(), command=command)
         self.store.append_event(run_id, session_id, "gateway", status="starting", payload={"command": command})
         try:
+            stdin = files["prompt"].open("rb")
+            stdout = files["events"].open("ab")
+            stderr = files["stderr"].open("ab")
+        except OSError as exc:
+            self._finish(run_id, session_id, "error", error=f"could not open run files: {exc}")
+            return
+        kwargs = build_popen_kwargs(run["cwd"], env, stdin, stdout, stderr)
+        try:
             proc = self._popen(command, **kwargs)
         except OSError as exc:
-            self._finish(run_id, session_id, "failed", error=f"could not start CLI: {exc}")
+            self._finish(run_id, session_id, "error", error=f"could not start CLI: {exc}")
             return
+        finally:
+            for handle in (stdin, stdout, stderr):  # the child holds its own copies
+                try:
+                    handle.close()
+                except OSError:
+                    pass
         with self._mutex:
             self._procs[run_id] = proc
         self.store.update_run(run_id, pid=proc.pid)
         threading.Thread(
-            target=self._feed_stdin, args=(proc, prompt), name=f"claude-stdin-{run_id[:8]}", daemon=True
-        ).start()
-        threading.Thread(
-            target=self._reader,
-            args=(run_id, session_id, proc),
-            name=f"claude-read-{run_id[:8]}",
+            target=self._tail,
+            args=(run_id, session_id, files, proc, proc.pid, False),
+            name=f"claude-tail-{run_id[:8]}",
             daemon=True,
         ).start()
 
     @staticmethod
-    def _feed_stdin(proc: Any, prompt: str) -> None:
+    def _stderr_tail(path: Path) -> str:
         try:
-            proc.stdin.write(prompt.encode("utf-8"))
-            proc.stdin.flush()
-        except (OSError, ValueError):
-            pass
-        finally:
-            try:
-                proc.stdin.close()
-            except (OSError, ValueError):
-                pass
+            data = path.read_bytes()
+        except OSError:
+            return ""
+        return data[-4000:].decode("utf-8", errors="replace")
 
-    def _reader(self, run_id: str, session_id: str, proc: Any) -> None:
-        raw_path = self.runs_dir / f"{run_id}.stdout.jsonl"
+    def _tail(
+        self,
+        run_id: str,
+        session_id: str,
+        files: dict[str, Path],
+        proc: Any,
+        pid: int,
+        adopted: bool,
+    ) -> None:
+        """Follow events.jsonl until the child is gone and the file is drained."""
         result: dict[str, Any] | None = None
         saw_init = False
-        stderr_chunks: list[bytes] = []
+        events_path = files["events"]
+        deadline_open = time.monotonic() + 30
+        while not events_path.exists() and time.monotonic() < deadline_open:
+            time.sleep(0.05)
 
-        def drain_stderr() -> None:
-            try:
-                for chunk in iter(lambda: proc.stderr.read(4096), b""):
-                    stderr_chunks.append(chunk)
-                    while sum(len(c) for c in stderr_chunks) > 64_000 and len(stderr_chunks) > 1:
-                        del stderr_chunks[0]
-            except (OSError, ValueError):
-                pass
+        def alive() -> bool:
+            if proc is not None:
+                return proc.poll() is None
+            return pid_alive(pid)
 
-        err_thread = threading.Thread(target=drain_stderr, daemon=True)
-        err_thread.start()
-        with raw_path.open("ab") as raw:
-            for line in iter(proc.stdout.readline, b""):
-                raw.write(line)
-                raw.flush()
-                text = line.decode("utf-8", errors="replace").strip()
-                if not text:
-                    continue
-                try:
-                    obj = json.loads(text)
-                except ValueError:
-                    self.store.append_event(run_id, session_id, "cli-text", payload={"text": text[:4000]})
-                    continue
-                kind = str(obj.get("type") or "cli")
-                if kind == "system" and obj.get("subtype") == "init" and not saw_init:
-                    saw_init = True
-                    self.store.update_run(run_id, status="running")
-                    self.store.append_event(
-                        run_id,
-                        session_id,
-                        "gateway",
-                        status="running",
-                        payload={
-                            "model": obj.get("model"),
-                            "cwd": obj.get("cwd"),
-                            "session_id": obj.get("session_id"),
-                        },
-                    )
-                if kind == "result":
-                    result = obj
-                self.store.append_event(run_id, session_id, kind, payload=obj)
-        exit_code = proc.wait()
-        err_thread.join(timeout=2)
-        for stream in (proc.stdout, proc.stderr, proc.stdin):
+        def handle(line: bytes) -> None:
+            nonlocal result, saw_init
+            text = line.decode("utf-8", errors="replace").strip()
+            if not text:
+                return
             try:
-                if stream is not None:
-                    stream.close()
-            except (OSError, ValueError):
-                pass
-        stderr_tail = b"".join(stderr_chunks).decode("utf-8", errors="replace")[-4000:]
+                obj = json.loads(text)
+            except ValueError:
+                self.store.append_event(run_id, session_id, "cli-text", payload={"text": text[:4000]})
+                return
+            kind = str(obj.get("type") or "cli")
+            if kind == "system" and obj.get("subtype") == "init" and not saw_init:
+                saw_init = True
+                self.store.update_run(run_id, status="running", child_model=obj.get("model"))
+                self.store.append_event(
+                    run_id,
+                    session_id,
+                    "gateway",
+                    status="running",
+                    payload={"model": obj.get("model"), "cwd": obj.get("cwd"), "session_id": obj.get("session_id")},
+                )
+            if kind == "result":
+                result = obj
+            self.store.append_event(run_id, session_id, kind, payload=obj)
+
+        already = 0
+        if adopted:
+            already = sum(
+                1 for item in self.store.events_after(0, run_id=run_id, limit=100_000)
+                if item["kind"] not in ("gateway", "cli-text")
+            )
+        try:
+            fh = events_path.open("rb")
+        except OSError:
+            fh = None
+        if fh is not None:
+            with fh:
+                skipped = 0
+                while True:
+                    if self._closing:
+                        return  # this gateway is going away; the next one adopts the child from disk
+                    line = fh.readline()
+                    if line:
+                        if not line.endswith(b"\n"):
+                            if alive():
+                                fh.seek(-len(line), 1)  # writer is mid-line; wait for the rest
+                                time.sleep(0.05)
+                                continue
+                        if skipped < already:
+                            skipped += 1
+                            continue
+                        handle(line)
+                        continue
+                    if not alive():
+                        rest = fh.read()
+                        for tail_line in rest.splitlines():
+                            handle(tail_line)
+                        break
+                    time.sleep(0.05)
+        if self._closing:
+            return
+        exit_code = proc.wait() if proc is not None else None
+        stderr_tail = self._stderr_tail(files["stderr"])
         current = self.store.get_run(run_id) or {}
+        if current.get("status") in TERMINAL:
+            with self._mutex:
+                self._procs.pop(run_id, None)
+                self._adopted.pop(run_id, None)
+                self._active_sessions.discard(session_id)
+            self._dispatch_wake.set()
+            return
         if current.get("cancel_requested"):
             self._finish(run_id, session_id, "cancelled", exit_code=exit_code, stderr_tail=stderr_tail, result=result)
-        elif result is not None and not result.get("is_error") and exit_code == 0:
-            self._finish(run_id, session_id, "completed", exit_code=exit_code, stderr_tail=stderr_tail, result=result)
         else:
-            if result is not None:
-                error = f"CLI result subtype={result.get('subtype')} is_error={result.get('is_error')}"
-            else:
-                error = f"CLI exited {exit_code} without a result event"
-            self._finish(
-                run_id,
-                session_id,
-                "failed",
-                exit_code=exit_code,
-                stderr_tail=stderr_tail,
-                result=result,
-                error=error,
-            )
+            self._finalize_from_result(run_id, session_id, result, exit_code=exit_code, stderr_tail=stderr_tail)
+
+    def _finalize_from_result(
+        self,
+        run_id: str,
+        session_id: str,
+        result: dict[str, Any] | None,
+        *,
+        exit_code: int | None,
+        stderr_tail: str,
+        note: str | None = None,
+    ) -> None:
+        fields: dict[str, Any] = {"exit_code": exit_code, "stderr_tail": stderr_tail, "result": result}
+        if note:
+            fields["note"] = note
+        if result is not None and not result.get("is_error") and exit_code in (0, None):
+            self._finish(run_id, session_id, "completed", **fields)
+        elif result is not None:
+            fields["error"] = f"CLI result subtype={result.get('subtype')} is_error={result.get('is_error')} exit={exit_code}"
+            self._finish(run_id, session_id, "error", **fields)
+        else:
+            fields["error"] = f"CLI exited {exit_code} without a result event"
+            self._finish(run_id, session_id, "error", **fields)
 
     def _finish(self, run_id: str, session_id: str, status: str, **fields: Any) -> None:
         result = fields.get("result")
@@ -747,10 +935,11 @@ class Gateway(ThreadingHTTPServer):
             session_id,
             "gateway",
             status=status,
-            payload={"exit_code": fields.get("exit_code"), "error": fields.get("error")},
+            payload={"exit_code": fields.get("exit_code"), "error": fields.get("error"), "note": fields.get("note")},
         )
         with self._mutex:
             self._procs.pop(run_id, None)
+            self._adopted.pop(run_id, None)
             self._active_sessions.discard(session_id)
             self._pending_prompts.pop(run_id, None)
         self._dispatch_wake.set()
@@ -760,20 +949,17 @@ class Gateway(ThreadingHTTPServer):
         run = self.store.get_run(run_id)
         if run is None:
             raise KeyError(run_id)
-        if run["status"] in TERMINAL and run["status"] != "interrupted":
-            return {"run_id": run_id, "status": run["status"], "note": "already terminal"}
+        if run["status"] in TERMINAL:
+            return {"run_id": run_id, "status": run["status"], "already_terminal": True}
         self.store.update_run(run_id, cancel_requested=1)
         with self._mutex:
             proc = self._procs.get(run_id)
-        if run["status"] == "queued" and proc is None:
+            adopted_pid = self._adopted.get(run_id)
+        if run["status"] == "queued" and proc is None and adopted_pid is None:
             self._finish(run_id, run["session_id"], "cancelled", error="cancelled before start")
-            return {"run_id": run_id, "status": "cancelled", "killed": None}
-        pid = run.get("pid") or (proc.pid if proc is not None else None)
-        killed = kill_tree(int(pid)) if pid else {"method": None, "note": "no pid recorded"}
-        if proc is None:
-            self.store.update_run(run_id, status="cancelled", ended_at=utc_now())
-            self.store.append_event(run_id, run["session_id"], "gateway", status="cancelled", payload=killed)
-            return {"run_id": run_id, "status": "cancelled", "killed": killed, "pid": pid}
+            return {"run_id": run_id, "status": "cancelled", "killed_pids": [], "tree": [], "pid": None}
+        pid = run.get("pid") or adopted_pid or (proc.pid if proc is not None else None)
+        killed = kill_tree(int(pid)) if pid else {"method": None, "killed_pids": [], "tree": [], "note": "no pid recorded"}
         deadline = time.monotonic() + 10
         while time.monotonic() < deadline:
             current = self.store.get_run(run_id) or {}
@@ -781,31 +967,55 @@ class Gateway(ThreadingHTTPServer):
                 break
             time.sleep(0.05)
         current = self.store.get_run(run_id) or {}
-        return {"run_id": run_id, "status": current.get("status"), "killed": killed, "pid": pid}
+        if current.get("status") not in TERMINAL:
+            # no tail thread owns it (should not happen); close it from here
+            self.store.update_run(run_id, status="cancelled", ended_at=utc_now())
+            self.store.append_event(run_id, run["session_id"], "gateway", status="cancelled", payload=killed)
+            current = self.store.get_run(run_id) or {}
+        return {"run_id": run_id, "status": current.get("status"), "pid": pid, **{k: v for k, v in killed.items() if k != "stdout"}, "taskkill_stdout": killed.get("stdout")}
 
     # ---- views ---------------------------------------------------------
     def run_view(self, run: dict[str, Any]) -> dict[str, Any]:
         view = dict(run)
+        files = self.run_files(run["run_id"])
         view["transcript_path"] = str(transcript_path(run["cwd"], run["session_id"]))
         view["transcript_exists"] = os.path.isfile(view["transcript_path"])
         view["pid_alive"] = pid_alive(run.get("pid")) if run["status"] in ACTIVE | {"interrupted"} else False
+        view["events_file"] = str(files["events"])
+        view["stderr_file"] = str(files["stderr"])
         view["events_url"] = f"/v1/runs/{run['run_id']}/events"
         view["session_url"] = f"/v1/sessions/{run['session_id']}"
         view["reply"] = run.get("result_text")
+        result = run.get("result") or {}
+        if isinstance(result, dict):
+            view["num_turns"] = result.get("num_turns")
+            view["cost_usd"] = result.get("total_cost_usd")
+            view["duration_ms"] = result.get("duration_ms")
+            view["models_used"] = sorted((result.get("modelUsage") or {}).keys())
+        if not view.get("child_model") and isinstance(result, dict):
+            view["child_model"] = next(iter((result.get("modelUsage") or {}).keys()), None)
+        with self._mutex:
+            view["adopted"] = run["run_id"] in self._adopted
         if isinstance(run.get("result_text"), str):
             view["reply_utf8_base64"] = base64.b64encode(run["result_text"].encode("utf-8")).decode("ascii")
         return view
 
     def health(self) -> dict[str, Any]:
         with self._mutex:
-            active = sorted(self._procs)
+            active = sorted(set(self._procs) | set(self._adopted))
         return {
             "ok": True,
             "service": SERVICE,
+            "contract": CONTRACT,
             "mode": "print-mode-cli-wrapper",
             "started_at": self.started_at,
             "cli": self.cli,
+            "claude": self.claude_cmd[0] if self.claude_cmd else None,
+            "claude_version": self.cli.get("version"),
+            "root": str(self.state_dir),
             "state_dir": str(self.state_dir),
+            "runs_dir": str(self.runs_dir),
+            "env_scrub": self.env_scrub,
             "max_concurrent": self.max_concurrent,
             "active_runs": active,
             "counts": self.store.counts(),
@@ -821,12 +1031,14 @@ class Gateway(ThreadingHTTPServer):
                 "POST /v1/runs",
                 "GET /v1/runs",
                 "GET /v1/runs/{run_id}?wait_ms=",
-                "GET /v1/runs/{run_id}/events?after=&wait_ms=",
+                "GET /v1/runs/{run_id}/events?after=&limit=&wait_ms=",
                 "POST /v1/runs/{run_id}/followup",
                 "POST /v1/runs/{run_id}/cancel",
                 "GET /v1/sessions/{session_id}",
+                "POST /v1/sessions/{session_id}/followup",
                 "POST /v1/sessions/{session_id}/runs",
-                "GET /v1/events?after=&wait_ms=",
+                "POST /v1/recover",
+                "GET /v1/events?after=&wait_ms=&run_id=&session_id=",
                 "POST /v1/message (gemini-shaped alias)",
                 "GET /v1/requests/{run_id} (gemini-shaped alias)",
             ],
@@ -843,17 +1055,36 @@ class Gateway(ThreadingHTTPServer):
             "cwd": latest["cwd"],
             "run_count": len(runs),
             "runs": [self.run_view(run) for run in runs],
+            "resumable": True,
             "transcript_path": str(path),
+            "transcript_paths": [str(path)],
             "transcript_exists": path.is_file(),
             "transcript_bytes": path.stat().st_size if path.is_file() else 0,
-            "followup_url": f"/v1/sessions/{session_id}/runs",
+            "followup_url": f"/v1/sessions/{session_id}/followup",
+        }
+
+    def recover_view(self) -> dict[str, Any]:
+        report = self.reconcile()
+        with self._mutex:
+            still = sorted(set(self._procs) | set(self._adopted))
+        return {
+            "recovered": report["finalized_from_disk"] + report["interrupted"],
+            "still_running": still,
+            **report,
         }
 
     def shutdown_gateway(self) -> None:
+        """Stop serving. Children keep running; the journal and run files stay."""
         self._closing = True
         self._dispatch_wake.set()
+        with self._mutex:
+            # keep the handles referenced so the interpreter does not complain about a
+            # deliberately orphaned child; the next gateway adopts it from disk
+            ORPHANED_CHILDREN.extend(self._procs.values())
+            self._procs.clear()
         self.shutdown()
         self.server_close()
+        time.sleep(0.1)  # let tail threads observe _closing before the journal closes
         self.store.close()
 
 
@@ -932,7 +1163,18 @@ class Handler(BaseHTTPRequestHandler):
                     self._send(404, {"ok": False, "error": "run_not_found"})
                     return
                 view = self.server.run_view(run)
-                self._send(200, {"ok": True, "request_id": run["run_id"], "run": view, "event": view})
+                self._send(
+                    200,
+                    {
+                        "ok": True,
+                        "request_id": run["run_id"],
+                        "run_id": run["run_id"],
+                        "session_id": run["session_id"],
+                        "status": view["status"],
+                        "run": view,
+                        "event": view,
+                    },
+                )
                 return
             if len(parts) == 4 and parts[:2] == ["v1", "runs"] and parts[3] == "events":
                 run = self.server.store.get_run(parts[2])
@@ -981,7 +1223,7 @@ class Handler(BaseHTTPRequestHandler):
                 run = self.server.submit(payload, parent_run_id=parts[2])
                 self._respond_submitted(run, payload, query)
                 return
-            if len(parts) == 4 and parts[:2] == ["v1", "sessions"] and parts[3] == "runs":
+            if len(parts) == 4 and parts[:2] == ["v1", "sessions"] and parts[3] in ("runs", "followup"):
                 payload = {**payload, "session_id": parts[2]}
                 run = self.server.submit(payload)
                 self._respond_submitted(run, payload, query)
@@ -992,7 +1234,13 @@ class Handler(BaseHTTPRequestHandler):
                 except KeyError:
                     self._send(404, {"ok": False, "error": "run_not_found"})
                     return
+                if outcome.get("already_terminal"):
+                    self._send(409, {"ok": False, "error": "already_terminal", **outcome})
+                    return
                 self._send(200, {"ok": True, **outcome})
+                return
+            if parts == ["v1", "recover"]:
+                self._send(200, {"ok": True, **self.server.recover_view()})
                 return
             self._send(404, {"ok": False, "error": "not_found"})
         except ValueError as exc:
@@ -1010,6 +1258,7 @@ class Handler(BaseHTTPRequestHandler):
             "run_id": run["run_id"],
             "session_id": run["session_id"],
             "status": run["status"],
+            "run": self.server.run_view(run),
         }
         if payload.get("async") or wait_ms == 0:
             self._send(202, base)
@@ -1067,6 +1316,7 @@ def detach(args: argparse.Namespace) -> int:
                     "already_running": True,
                     "listen": f"http://127.0.0.1:{args.port}",
                     "pid": _read_pid(pid_path),
+                    "started_at": existing.get("started_at"),
                 }
             )
         )
@@ -1094,7 +1344,7 @@ def detach(args: argparse.Namespace) -> int:
         "stdin": subprocess.DEVNULL,
         "stdout": log_handle,
         "stderr": subprocess.STDOUT,
-        "cwd": str(state_dir),
+        "cwd": str(Path.home()),
     }
     if IS_WINDOWS:
         kwargs["creationflags"] = (
@@ -1116,6 +1366,7 @@ def detach(args: argparse.Namespace) -> int:
                 "pid": proc.pid,
                 "log": str(log_path),
                 "cli": (health or {}).get("cli"),
+                "recovery": (health or {}).get("recovery"),
             }
         )
     )
@@ -1123,12 +1374,22 @@ def detach(args: argparse.Namespace) -> int:
 
 
 def stop(args: argparse.Namespace) -> int:
+    """Stop only the gateway process. Children in flight keep running and are
+    adopted or finalized from disk by the next gateway start."""
     pid_path = Path(args.state_dir) / "gateway.pid"
     pid = _read_pid(pid_path)
     if not pid or not pid_alive(pid):
         print(json.dumps({"stopped": False, "note": "no live gateway pid recorded", "pid": pid}))
         return 0
-    outcome = kill_tree(pid)
+    if IS_WINDOWS:
+        flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+        proc = subprocess.run(["taskkill", "/PID", str(pid), "/F"], capture_output=True, text=True, creationflags=flags, check=False)
+        outcome = {"method": "taskkill /F (gateway only)", "exit_code": proc.returncode, "stdout": (proc.stdout or "")[-300:]}
+    else:
+        import signal
+
+        os.kill(pid, signal.SIGTERM)
+        outcome = {"method": "SIGTERM (gateway only)"}
     time.sleep(0.3)
     print(json.dumps({"stopped": not pid_alive(pid), "pid": pid, **outcome}))
     return 0
@@ -1153,7 +1414,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="start a console-free background gateway and return",
     )
     parser.add_argument(
-        "--stop", dest="mode", action="store_const", const="stop", help="stop the background gateway"
+        "--stop", dest="mode", action="store_const", const="stop", help="stop the background gateway (children keep running)"
     )
     parser.set_defaults(mode="serve")
     return parser
@@ -1178,6 +1439,7 @@ def main(argv: list[str] | None = None) -> int:
                 "listen": f"http://127.0.0.1:{args.port}",
                 "cli": server.cli,
                 "recovery": server.recovery,
+                "env_scrub": server.env_scrub,
             }
         ),
         flush=True,
