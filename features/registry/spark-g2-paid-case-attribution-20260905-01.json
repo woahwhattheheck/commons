@@ -16,7 +16,7 @@
   "dependencies": [],
   "id": "spark-g2-paid-case-attribution-20260905-01",
   "name": "G2 paid-case attribution on submit",
-  "next_gap": "feature_tracker --write deferred (LEDGER HOLD). Wire Autopsy fulfillment callers to pass case on grokbot_submit. No Autopsy plink remint. Hands off #8802.",
+  "next_gap": "Wire Autopsy fulfillment callers to pass case references on grokbot_submit. No Autopsy payment link remint.",
   "owner_subsystem": "grokbot-control",
   "public_entrypoint": "integrations/grokbot_control/README.md",
   "related": {
