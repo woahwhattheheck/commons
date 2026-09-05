@@ -159,6 +159,8 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             "buyer_ref",
             "failure_sentence",
             "harness_stack",
+            "scope_boundary",
+            "intake_caps",
             "submitted_at",
             "evidence",
             "evidence_assessment",
@@ -204,12 +206,83 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
     if len(set(tooling)) != len(tooling):
         raise AutopsyValidationError("intake tooling entries must be unique")
 
+    scope = _exact_keys(
+        intake["scope_boundary"],
+        {
+            "agent_workflows",
+            "failed_executions",
+            "unrelated_incidents_included",
+            "archives_included",
+            "executables_included",
+            "repository_dumps_included",
+            "embedded_instructions_trusted",
+        },
+        "intake.scope_boundary",
+    )
+    expected_scope = {
+        "agent_workflows": 1,
+        "failed_executions": 1,
+        "unrelated_incidents_included": False,
+        "archives_included": False,
+        "executables_included": False,
+        "repository_dumps_included": False,
+        "embedded_instructions_trusted": False,
+    }
+    if scope != expected_scope:
+        raise AutopsyValidationError(
+            "one purchase covers one failed execution of one workflow; "
+            "archives, executables, repo dumps, unrelated incidents, and trusted artifact instructions are excluded"
+        )
+
+    caps = _exact_keys(
+        intake["intake_caps"],
+        {
+            "max_files",
+            "max_raw_bytes",
+            "max_extracted_characters",
+            "approximate_text_token_limit",
+            "accepted_file_count",
+            "accepted_raw_bytes",
+            "accepted_extracted_characters",
+            "boundary_hit",
+            "selection_state",
+        },
+        "intake.intake_caps",
+    )
+    if (
+        caps["max_files"] != 10
+        or caps["max_raw_bytes"] != 25_000_000
+        or caps["max_extracted_characters"] != 2_000_000
+        or caps["approximate_text_token_limit"] != 500_000
+    ):
+        raise AutopsyValidationError("intake boundary constants are invalid")
+    if caps["boundary_hit"] not in {
+        "NONE",
+        "FILE_COUNT",
+        "RAW_BYTES",
+        "EXTRACTED_CHARACTERS",
+        "MULTIPLE",
+    }:
+        raise AutopsyValidationError("intake boundary_hit is invalid")
+    if caps["selection_state"] not in {
+        "WITHIN_CAP",
+        "SLICE_REQUESTED",
+        "RELEVANT_SLICE_SELECTED",
+        "CANNOT_FIT_LEGITIMATE_CASE",
+    }:
+        raise AutopsyValidationError("intake selection_state is invalid")
+
     evidence = intake["evidence"]
-    if type(evidence) is not list or not 1 <= len(evidence) <= 20:
-        raise AutopsyValidationError("intake.evidence must contain 1..20 artifacts")
+    if type(evidence) is not list or not 1 <= len(evidence) <= 10:
+        raise AutopsyValidationError("accepted evidence must contain 1..10 artifacts")
     received_by_id: dict[str, datetime] = {}
     locations_by_id: dict[str, str] = {}
     hashes_by_id: dict[str, str] = {}
+    raw_bytes_by_id: dict[str, int] = {}
+    extracted_locations_by_id: dict[str, str | None] = {}
+    extracted_hashes_by_id: dict[str, str | None] = {}
+    extracted_characters_by_id: dict[str, int] = {}
+    extraction_methods_by_id: dict[str, str] = {}
     anchor_refs: set[str] = set()
     for index, item in enumerate(evidence):
         item = _exact_keys(
@@ -217,9 +290,18 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             {
                 "evidence_id",
                 "kind",
+                "evidence_role",
                 "location_ref",
                 "sha256",
+                "raw_bytes",
+                "extracted_text_location_ref",
+                "extracted_text_sha256",
+                "extracted_characters",
+                "extraction_method",
                 "redacted",
+                "sanitized",
+                "scope_relevance",
+                "instructions_treated_as_data",
                 "received_at",
                 "anchors",
             },
@@ -228,8 +310,17 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
         evidence_id = _id(item["evidence_id"], f"intake.evidence[{index}].evidence_id")
         if evidence_id in received_by_id:
             raise AutopsyValidationError(f"duplicate evidence id: {evidence_id}")
-        if item["kind"] not in {"transcript", "log", "screenshot"}:
-            raise AutopsyValidationError(f"{evidence_id}: unsupported evidence kind")
+        if item["kind"] not in {"text", "json", "markdown", "pdf", "image"}:
+            raise AutopsyValidationError(f"{evidence_id}: unsupported evidence format")
+        if item["evidence_role"] not in {
+            "transcript",
+            "log",
+            "screenshot",
+            "configuration",
+            "error-output",
+            "other-relevant",
+        }:
+            raise AutopsyValidationError(f"{evidence_id}: unsupported evidence role")
         location = _text(
             item["location_ref"], f"{evidence_id}.location_ref", maximum=240
         )
@@ -246,9 +337,86 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             or "\\" in relative
         ):
             raise AutopsyValidationError(f"{evidence_id}: unsafe evidence location")
-        if item["redacted"] is not True:
-            raise AutopsyValidationError(f"{evidence_id}: evidence must be redacted")
+        raw_bytes = item["raw_bytes"]
+        extracted_characters = item["extracted_characters"]
+        if type(raw_bytes) is not int or isinstance(raw_bytes, bool) or not 1 <= raw_bytes <= 25_000_000:
+            raise AutopsyValidationError(f"{evidence_id}: raw_bytes is outside the accepted boundary")
+        if (
+            type(extracted_characters) is not int
+            or isinstance(extracted_characters, bool)
+            or not 0 <= extracted_characters <= 2_000_000
+        ):
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted_characters is outside the accepted boundary"
+            )
+        extraction_method = item["extraction_method"]
+        extracted_location = item["extracted_text_location_ref"]
+        if extracted_location is not None:
+            extracted_location = _text(
+                extracted_location,
+                f"{evidence_id}.extracted_text_location_ref",
+                maximum=240,
+            )
+            if not extracted_location.startswith(expected_prefix):
+                raise AutopsyValidationError(
+                    f"{evidence_id}: extracted text must use {expected_prefix}"
+                )
+            extracted_relative = extracted_location.split(":", 1)[1]
+            if (
+                not extracted_relative
+                or Path(extracted_relative).is_absolute()
+                or ".." in Path(extracted_relative).parts
+                or "\" in extracted_relative
+            ):
+                raise AutopsyValidationError(
+                    f"{evidence_id}: unsafe extracted-text location"
+                )
+        extracted_hash = item["extracted_text_sha256"]
+        if extracted_hash is not None:
+            extracted_hash = _sha(
+                extracted_hash, f"{evidence_id}.extracted_text_sha256"
+            )
+        if item["kind"] in {"text", "json", "markdown"}:
+            if extraction_method != "DIRECT_UTF8":
+                raise AutopsyValidationError(
+                    f"{evidence_id}: text-like evidence requires DIRECT_UTF8 extraction"
+                )
+        elif item["kind"] == "pdf":
+            if extraction_method not in {"PDF_TEXT", "NONE"}:
+                raise AutopsyValidationError(
+                    f"{evidence_id}: PDF evidence requires PDF_TEXT or NONE"
+                )
+        elif extraction_method not in {"OCR", "NONE"}:
+            raise AutopsyValidationError(
+                f"{evidence_id}: image evidence requires OCR or NONE"
+            )
+        if extraction_method == "NONE":
+            if extracted_characters != 0 or extracted_location is not None or extracted_hash is not None:
+                raise AutopsyValidationError(
+                    f"{evidence_id}: NONE extraction cannot claim extracted text"
+                )
+        elif extracted_location is None or extracted_hash is None:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted text location and hash are required"
+            )
+        if item["redacted"] is not True or item["sanitized"] is not True:
+            raise AutopsyValidationError(
+                f"{evidence_id}: evidence must be sanitized and redacted"
+            )
+        if item["scope_relevance"] != "ONE_FAILED_EXECUTION":
+            raise AutopsyValidationError(
+                f"{evidence_id}: evidence is outside the purchased failed execution"
+            )
+        if item["instructions_treated_as_data"] is not True:
+            raise AutopsyValidationError(
+                f"{evidence_id}: embedded instructions must be treated as untrusted data"
+            )
         hashes_by_id[evidence_id] = _sha(item["sha256"], f"{evidence_id}.sha256")
+        raw_bytes_by_id[evidence_id] = raw_bytes
+        extracted_locations_by_id[evidence_id] = extracted_location
+        extracted_hashes_by_id[evidence_id] = extracted_hash
+        extracted_characters_by_id[evidence_id] = extracted_characters
+        extraction_methods_by_id[evidence_id] = extraction_method
         received = _time(item["received_at"], f"{evidence_id}.received_at")
         if received < submitted_at:
             raise AutopsyValidationError(
@@ -275,6 +443,24 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             local_ids.add(anchor_id)
             _text(anchor["description"], f"{evidence_id}#{anchor_id}.description")
             anchor_refs.add(f"{evidence_id}#{anchor_id}")
+
+    actual_file_count = len(evidence)
+    actual_raw_bytes = sum(raw_bytes_by_id.values())
+    actual_extracted_characters = sum(extracted_characters_by_id.values())
+    if (
+        caps["accepted_file_count"] != actual_file_count
+        or caps["accepted_raw_bytes"] != actual_raw_bytes
+        or caps["accepted_extracted_characters"] != actual_extracted_characters
+    ):
+        raise AutopsyValidationError(
+            "recorded intake totals do not match the accepted evidence"
+        )
+    if (
+        actual_file_count > 10
+        or actual_raw_bytes > 25_000_000
+        or actual_extracted_characters > 2_000_000
+    ):
+        raise AutopsyValidationError("accepted evidence exceeds a cumulative boundary")
 
     assessment = _exact_keys(
         intake["evidence_assessment"],
@@ -368,6 +554,35 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             "this offer never requests secrets, unredacted credentials, production, or repo access"
         )
 
+    selection_state = caps["selection_state"]
+    boundary_hit = caps["boundary_hit"]
+    if boundary_hit == "NONE" and selection_state != "WITHIN_CAP":
+        raise AutopsyValidationError(
+            "slice states require a recorded intake boundary hit"
+        )
+    if boundary_hit != "NONE" and selection_state == "WITHIN_CAP":
+        raise AutopsyValidationError(
+            "a recorded boundary hit requires slice or refund handling"
+        )
+    if selection_state == "SLICE_REQUESTED" and (
+        state != "CLARIFICATION_REQUESTED" or rounds != 1
+    ):
+        raise AutopsyValidationError(
+            "slice selection uses the one clarification round without starting the clock"
+        )
+    if selection_state == "RELEVANT_SLICE_SELECTED" and (
+        state != "USABLE" or rounds != 1
+    ):
+        raise AutopsyValidationError(
+            "a selected relevant slice must be usable after the one clarification round"
+        )
+    if selection_state == "CANNOT_FIT_LEGITIMATE_CASE" and (
+        state != "INSUFFICIENT_AFTER_CLARIFICATION" or rounds != 1
+    ):
+        raise AutopsyValidationError(
+            "a legitimate case that cannot fit must route to refund after clarification"
+        )
+
     if state == "USABLE":
         if not basis or usable_at is None or due_at is None:
             raise AutopsyValidationError("usable evidence must start and bound the delivery clock")
@@ -405,6 +620,16 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
         "evidence_ids": set(received_by_id),
         "locations_by_id": locations_by_id,
         "hashes_by_id": hashes_by_id,
+        "raw_bytes_by_id": raw_bytes_by_id,
+        "extracted_locations_by_id": extracted_locations_by_id,
+        "extracted_hashes_by_id": extracted_hashes_by_id,
+        "extracted_characters_by_id": extracted_characters_by_id,
+        "extraction_methods_by_id": extraction_methods_by_id,
+        "file_count": actual_file_count,
+        "raw_bytes": actual_raw_bytes,
+        "extracted_characters": actual_extracted_characters,
+        "boundary_hit": boundary_hit,
+        "selection_state": selection_state,
         "usable_at": usable_at,
         "due_at": due_at,
         "reasons": reasons,
@@ -529,6 +754,7 @@ def validate_report(
             "intake_sha256",
             "failure_sentence",
             "harness_summary",
+            "intake_scope",
             "disposition",
             "artifact_state",
             "quality",
@@ -562,6 +788,43 @@ def validate_report(
     if report["intake_sha256"] != canonical_sha256(intake):
         raise AutopsyValidationError("report intake_sha256 does not bind the supplied intake")
     _text(report["harness_summary"], "report.harness_summary")
+
+    intake_scope = _exact_keys(
+        report["intake_scope"],
+        {
+            "agent_workflows",
+            "failed_executions",
+            "file_count",
+            "file_limit",
+            "raw_bytes",
+            "raw_bytes_limit",
+            "extracted_characters",
+            "extracted_character_limit",
+            "approximate_text_token_limit",
+            "boundary_hit",
+            "selection_state",
+            "embedded_instructions_trusted",
+        },
+        "report.intake_scope",
+    )
+    expected_intake_scope = {
+        "agent_workflows": 1,
+        "failed_executions": 1,
+        "file_count": context["file_count"],
+        "file_limit": 10,
+        "raw_bytes": context["raw_bytes"],
+        "raw_bytes_limit": 25_000_000,
+        "extracted_characters": context["extracted_characters"],
+        "extracted_character_limit": 2_000_000,
+        "approximate_text_token_limit": 500_000,
+        "boundary_hit": context["boundary_hit"],
+        "selection_state": context["selection_state"],
+        "embedded_instructions_trusted": False,
+    }
+    if intake_scope != expected_intake_scope:
+        raise AutopsyValidationError(
+            "report intake_scope does not match the deterministic accepted corpus"
+        )
 
     disposition = report["disposition"]
     if disposition not in {"DIAGNOSIS_DELIVERED", "REFUND_REQUIRED"}:
@@ -916,35 +1179,70 @@ def validate_report(
     }
 
 
-def verify_example_evidence(
+def verify_evidence_files(
     context: dict[str, Any], evidence_root: str | Path | None
 ) -> None:
-    if context["classification"] != "SYNTHETIC_EXAMPLE":
-        return
     if evidence_root is None:
-        raise AutopsyValidationError(
-            "synthetic example validation requires --evidence-root"
-        )
+        raise AutopsyValidationError("bundle validation requires --evidence-root")
     root = Path(evidence_root).resolve(strict=True)
     if not root.is_dir():
         raise AutopsyValidationError("evidence root must be a directory")
-    for evidence_id, location in context["locations_by_id"].items():
+
+    def resolve_location(evidence_id: str, location: str, label: str) -> Path:
         relative = location.split(":", 1)[1]
         target = (root / relative).resolve(strict=True)
         try:
             target.relative_to(root)
         except ValueError as exc:
             raise AutopsyValidationError(
-                f"{evidence_id}: evidence escapes the example root"
+                f"{evidence_id}: {label} escapes the evidence root"
             ) from exc
         if not target.is_file() or target.is_symlink():
             raise AutopsyValidationError(
-                f"{evidence_id}: example evidence is not a regular file"
+                f"{evidence_id}: {label} is not a regular file"
             )
-        actual = hashlib.sha256(target.read_bytes()).hexdigest()
+        return target
+
+    for evidence_id, location in context["locations_by_id"].items():
+        target = resolve_location(evidence_id, location, "raw evidence")
+        raw = target.read_bytes()
+        if len(raw) != context["raw_bytes_by_id"][evidence_id]:
+            raise AutopsyValidationError(
+                f"{evidence_id}: raw byte count does not match"
+            )
+        actual = hashlib.sha256(raw).hexdigest()
         if actual != context["hashes_by_id"][evidence_id]:
             raise AutopsyValidationError(
-                f"{evidence_id}: example evidence SHA-256 does not match"
+                f"{evidence_id}: raw evidence SHA-256 does not match"
+            )
+
+        method = context["extraction_methods_by_id"][evidence_id]
+        if method == "NONE":
+            continue
+        extracted_location = context["extracted_locations_by_id"][evidence_id]
+        assert extracted_location is not None
+        extracted_target = resolve_location(
+            evidence_id, extracted_location, "extracted text"
+        )
+        extracted_raw = extracted_target.read_bytes()
+        try:
+            extracted_text = extracted_raw.decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted text must be UTF-8"
+            ) from exc
+        extracted_sha = hashlib.sha256(extracted_raw).hexdigest()
+        if extracted_sha != context["extracted_hashes_by_id"][evidence_id]:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted text SHA-256 does not match"
+            )
+        if len(extracted_text) != context["extracted_characters_by_id"][evidence_id]:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted Unicode character count does not match"
+            )
+        if method == "DIRECT_UTF8" and target != extracted_target:
+            raise AutopsyValidationError(
+                f"{evidence_id}: DIRECT_UTF8 must count the raw text artifact"
             )
 
 
@@ -954,7 +1252,7 @@ def validate_bundle(
     evidence_root: str | Path | None = None,
 ) -> dict[str, Any]:
     context = validate_intake(intake)
-    verify_example_evidence(context, evidence_root)
+    verify_evidence_files(context, evidence_root)
     return validate_report(report, intake, context)
 
 
