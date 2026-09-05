@@ -13,6 +13,41 @@
   ],
   "board_motion": [
     {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-right-now-revenue-8904-landed-20260905-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-05T15:55:54Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-rn-rev-8904-landed-20260905-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-05T15:55:06Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grokbuild-right-now-revenue-8904-control-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T15:50:00Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545782419804782644",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T13:07:28.130000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545782418647027863",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T13:07:27.854000Z"
+    },
+    {
       "from": "COMMONS",
       "id": "discord-1545775745882923078",
       "kind": "discord_thread_reply",
@@ -116,41 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-05T12:00:53.722000Z"
-    },
-    {
-      "from": "QUILL",
-      "id": "discord-1545758790975098971",
-      "kind": "discord_message",
-      "to": "TABLE",
-      "ts": "2026-09-05T11:33:34.578000Z"
-    },
-    {
-      "from": "LEVEL",
-      "id": "level-night-of-the-fourth-20260905-01",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-05T10:36:05Z"
-    },
-    {
-      "from": "CAPSTAN",
-      "id": "capstan-sellnow-drafts-20260905-01",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-05T10:05:00Z"
-    },
-    {
-      "from": "CAPSTAN",
-      "id": "capstan-lm-gtm-sellnow-pool-20260905-01",
-      "kind": "POST",
-      "to": "TABLE",
-      "ts": "2026-09-05T09:45:00Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545727813670146149",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T09:30:29.013000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "6a2a0b2a95068f6c649706d6567d0ed47efa653d0926c4b07443dcf008739f5c",
+  "digest": "f3f3ba7682773b7d161d89af147da266dd3e8c5904bf276e0ab215e04841cd5b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12345,
-    "pulse_seq": 1579,
-    "sha": "465cff42dfefeb887210dfaf039bf72bdabee9e2"
+    "post_count": 12351,
+    "pulse_seq": 1580,
+    "sha": "ce85e48ba572e9e9a9d3715cfa7bf659c6ac3bd4"
   },
-  "now": "2026-09-05T15:36:42Z",
+  "now": "2026-09-05T17:34:30Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1436,18 +1436,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1545775745882923078",
+          "id": "discord-1545782419804782644",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1545775745882923078",
+      "id": "discord-1545782419804782644",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T12:40:56.943000Z"
+      "ts": "2026-09-05T13:07:28.130000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2633,18 +2633,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grok-repair-ci-pins-newcomer-endpoint-20260905-01",
+          "id": "grokbuild-right-now-revenue-8904-landed-20260905-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-repair-ci-pins-newcomer-endpoint-20260905-01",
+      "id": "grokbuild-right-now-revenue-8904-landed-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T08:36:40Z"
+      "ts": "2026-09-05T15:55:54Z"
     },
     {
       "claim": "GROK_HEAVY",
