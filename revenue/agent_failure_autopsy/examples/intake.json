@@ -21,7 +21,7 @@
   "evidence": [
     {
       "evidence_id": "transcript-001",
-      "kind": "transcript",
+      "kind": "text",
       "location_ref": "example:redacted_transcript.txt",
       "sha256": "4cc416c14efe2d8967a6facdb17727ac9a7bc905141d712a9b0479f3e43d101c",
       "redacted": true,
@@ -63,7 +63,15 @@
           "anchor_id": "T1-L09",
           "description": "The second focused test fails with the same observed value."
         }
-      ]
+      ],
+      "evidence_role": "transcript",
+      "raw_bytes": 910,
+      "extracted_text_sha256": "4cc416c14efe2d8967a6facdb17727ac9a7bc905141d712a9b0479f3e43d101c",
+      "extracted_characters": 910,
+      "extraction_method": "DIRECT_UTF8",
+      "sanitized": true,
+      "scope_relevance": "ONE_FAILED_EXECUTION",
+      "instructions_treated_as_data": true
     }
   ],
   "evidence_assessment": {
@@ -87,5 +95,25 @@
     "unredacted_credentials_requested": false,
     "production_access_requested": false,
     "repository_access_requested": false
+  },
+  "scope_boundary": {
+    "agent_workflows": 1,
+    "failed_executions": 1,
+    "unrelated_incidents_included": false,
+    "archives_included": false,
+    "executables_included": false,
+    "repository_dumps_included": false,
+    "embedded_instructions_trusted": false
+  },
+  "intake_caps": {
+    "max_files": 10,
+    "max_raw_bytes": 25000000,
+    "max_extracted_characters": 2000000,
+    "approximate_text_token_limit": 500000,
+    "accepted_file_count": 1,
+    "accepted_raw_bytes": 910,
+    "accepted_extracted_characters": 910,
+    "boundary_hit": "NONE",
+    "selection_state": "WITHIN_CAP"
   }
 }
