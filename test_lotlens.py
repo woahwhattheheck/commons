@@ -228,6 +228,18 @@ class ImpactTests(unittest.TestCase):
         self.assertEqual(by_key["sup-aqua/lot/LOT-WATER-01"]["hops"], 3)
         self.assertEqual(by_key["sup-h2o/lot/LOT-WATER-01"]["hops"], 4)
 
+    def test_same_bytes_in_two_workspaces_give_one_content_hash(self):
+        with tempfile.TemporaryDirectory() as a, tempfile.TemporaryDirectory() as b:
+            ws_a, _ = workspace_with_fixture(a)
+            ws_b, _ = workspace_with_fixture(b)
+            ga, gb = ws_a.graph(), ws_b.graph()
+            ra = engine.build_report(ws_a, ga, ga.impact(CITRIC, "forward", []))
+            rb = engine.build_report(ws_b, gb, gb.impact(CITRIC, "forward", []))
+            self.assertNotEqual(ra["imports"][0]["imported_at"], rb["imports"][0]["imported_at"], "two imports, two clocks")
+            self.assertEqual(ra["content_sha256"], rb["content_sha256"], "the hash covers the answer and the bytes, not the clock")
+            other = engine.build_report(ws_b, gb, gb.impact(CITRIC, "backward", []))
+            self.assertNotEqual(ra["content_sha256"], other["content_sha256"])
+
     def test_start_outside_the_records_is_said_plainly(self):
         impact = self.graph.impact(("sup-acme", "lot", "LOT-NOPE"), "forward")
         self.assertFalse(impact["start_found"])
