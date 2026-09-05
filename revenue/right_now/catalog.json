@@ -9,7 +9,7 @@
     "verified_positive_replies": 0,
     "accepted_scopes": 0,
     "active_chargeable_checkout": true,
-    "payment_note": "Live $29 Agent Failure Autopsy checkout is active on agent-rescue.html (Payment Link recorded in revenue/agent_failure_autopsy/offer.json; #8889). Cash collected remains USD 0 until independently evidenced. Other right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof is not the agent-rescue page."
+    "payment_note": "Live $29 Agent Failure Autopsy checkout is active on agent-rescue.html (Payment Link recorded in revenue/agent_failure_autopsy/offer.json; #8889). Cash collected remains USD 0 until independently evidenced. Other right-now routes stay scope-first with buyer-specific payment handoff. The $2,500 same-day survival proof stays on revenue/production_survival/README.md and is not the agent-rescue page."
   },
   "ranking_rule": [
     "buyer can state the job now using public or synthetic inputs",
@@ -111,7 +111,7 @@
       "start_route": "revenue/production_survival/README.md",
       "source": "revenue/production_survival/offer.json#/entry_offer",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
-      "next_external_event": "A real buyer sends the one-sentence failure and agrees to a start window.",
+      "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",
       "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
       "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; keep agent-rescue.html reserved for Autopsy."
     }

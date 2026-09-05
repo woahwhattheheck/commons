@@ -109,6 +109,7 @@ class RightNowRevenueTest(unittest.TestCase):
         self.assertEqual(self.autopsy["public_checkout_page"], "agent-rescue.html")
         self.assertIn("agent-rescue.html", self.autopsy["source_paths"])
         self.assertIn("Open the $29 Autopsy page", self.page)
+        self.assertIn("Send the one sentence", self.page)
         self.assertIn("revenue/production_survival/README.md", self.page)
 
     def test_long_horizon_catalog_is_preserved(self):
