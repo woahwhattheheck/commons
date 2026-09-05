@@ -41,16 +41,19 @@ def make_buyer_case():
     report["artifact_state"] = "READY_FOR_BUYER"
     report["operator_time"] = {
         "measurement_status": "MEASURED",
-        "human_review_minutes": 37.5,
+        "reviewer_minutes": 37.5,
         "automated_draft_minutes": 8.25,
         "measurement_purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
         "time_truncated_analysis": False,
     }
     report["final_review"] = {
-        "state": "HUMAN_REVIEWED",
+        "state": "INDEPENDENTLY_REVIEWED",
         "reviewer_ref": "reviewer_1234567890abcdef",
+        "reviewer_kind": "COMMONS_PEER",
         "reviewed_at": "2026-09-03T09:18:00-04:00",
+        "independent_of_drafter": True,
         "evidence_link_check": True,
+        "adversarial_challenge_check": True,
     }
     report["intake_sha256"] = FULFILLMENT.canonical_sha256(intake)
     return intake, report
@@ -85,6 +88,11 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         self.assertEqual(offer["bounded_unit"], "one failed coding-agent run")
         self.assertEqual(offer["quality"]["analysis_level"], "FULL_STRENGTH")
         self.assertFalse(offer["quality"]["time_budget_may_truncate_analysis"])
+        self.assertTrue(offer["quality"]["independent_review_required"])
+        self.assertIn(
+            "COMMONS_PEER",
+            offer["quality"]["allowed_independent_reviewer_kinds"],
+        )
         self.assertEqual(
             offer["operator_time_measurement"]["purpose"],
             "DESCRIPTIVE_ECONOMICS_ONLY",
@@ -124,7 +132,7 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         result = FULFILLMENT.validate_bundle(intake, report, EXAMPLES)
         self.assertTrue(result["ok"])
         self.assertEqual(result["artifact_state"], "PEER_DRAFT")
-        self.assertIsNone(result["human_review_minutes"])
+        self.assertIsNone(result["reviewer_minutes"])
         self.assertEqual(
             result["time_measurement_purpose"], "DESCRIPTIVE_ECONOMICS_ONLY"
         )
@@ -179,20 +187,24 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         ):
             FULFILLMENT.validate_intake(intake)
 
-    def test_buyer_report_requires_human_review_but_has_no_time_cap(self):
+    def test_buyer_report_accepts_independent_peer_review_with_no_time_cap(self):
         intake, report = make_buyer_case()
         result = FULFILLMENT.validate_report(report, intake)
-        self.assertEqual(result["human_review_minutes"], 37.5)
+        self.assertEqual(result["reviewer_minutes"], 37.5)
         self.assertEqual(result["artifact_state"], "READY_FOR_BUYER")
+        self.assertEqual(report["final_review"]["reviewer_kind"], "COMMONS_PEER")
 
         report["final_review"] = {
             "state": "PEER_DRAFT",
             "reviewer_ref": None,
+            "reviewer_kind": None,
             "reviewed_at": None,
+            "independent_of_drafter": False,
             "evidence_link_check": False,
+            "adversarial_challenge_check": False,
         }
         with self.assertRaisesRegex(
-            FULFILLMENT.AutopsyValidationError, "human evidence review"
+            FULFILLMENT.AutopsyValidationError, "independent evidence review"
         ):
             FULFILLMENT.validate_report(report, intake)
 
