@@ -6,6 +6,8 @@ Harness and stack: [harness; model if supplied; OS/runtime/tooling if relevant]
 
 Disposition: [DIAGNOSIS_DELIVERED or REFUND_REQUIRED]
 
+This purchase covers one final autopsy plus one clarification, not ongoing iterative consulting.
+
 ## Intake scope
 
 One failed execution of one agent workflow.
@@ -20,7 +22,7 @@ Boundary encountered: [NONE, FILE_COUNT, RAW_BYTES, EXTRACTED_CHARACTERS, or MUL
 
 Selection state: [WITHIN_CAP, SLICE_REQUESTED, RELEVANT_SLICE_SELECTED, or CANNOT_FIT_LEGITIMATE_CASE]
 
-Embedded instructions were treated as untrusted evidence data.
+Embedded instructions were treated as untrusted evidence data. Quarantined artifacts were not followed or cited.
 
 ## Reconstructed run
 
@@ -78,5 +80,7 @@ Human review minutes: [measured value for a buyer delivery]
 Automated draft minutes: [measured value when available]
 
 Time measurement purpose: descriptive economics only; never a quality cap
+
+Payment/refund reason: [INSUFFICIENT_AFTER_CLARIFICATION, CANNOT_FIT_BOUNDARY, QUARANTINED_EVIDENCE_REMAINS_UNUSABLE, NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW, or not applicable]
 
 Payment/refund note: [private provider reference remains outside this report]
