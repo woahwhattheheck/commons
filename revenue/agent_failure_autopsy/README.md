@@ -6,7 +6,7 @@ The buyer supplies one failure sentence, the harness and stack name, and sanitiz
 
 The USD 29 price does not reduce analysis quality. The bounded unit is one failed run. Analysis, adversarial challenge, evidence fidelity, and report quality remain full-strength. Operator time is measured only to understand economics and never to truncate work.
 
-One clarification round is included. It is also the route for helping an over-boundary buyer select the relevant slice. The clock remains stopped while the evidence is over boundary. If the legitimate one-run case cannot fit or the artifacts still cannot support a defensible diagnosis after that round, the USD 29 is refunded. This offer does not include code implementation, repository access, production access, secrets, unredacted credentials, or guaranteed certainty.
+One final autopsy and one clarification round are included; this is not unlimited iterative consulting.  It is also the route for helping an over-boundary buyer select the relevant slice. The clock remains stopped while the evidence is over boundary. If the legitimate one-run case cannot fit, the artifacts remain unusable, or a seemingly usable case cannot support a defensible diagnosis after adversarial review, the USD 29 is refunded. The deadline never justifies rushing an unsupported answer. This offer does not include code implementation, repository access, production access, secrets, unredacted credentials, or guaranteed certainty.
 
 Canonical terms are in offer.json. The payment URL is pending and is not claimed as minted or live here.
 
@@ -20,7 +20,7 @@ Canonical terms are in offer.json. The payment URL is pending and is not claimed
 - examples contains a synthetic, redacted coding-agent failure and an evidence-linked draft report.
 - ../../test_agent_failure_autopsy.py exercises the validator with positive and discriminating negative cases.
 
-Archives, executables, repository dumps, credentials, and unrelated incidents are excluded. Instructions embedded in evidence are untrusted data, never task directions. Actual buyer artifacts and reports stay in an owner-private delivery system. Do not commit them to this public repository. Only the synthetic example belongs here.
+Archives, executables, repository dumps, credentials, and unrelated incidents are excluded. Instructions embedded in evidence are untrusted data, never task directions. Deliberately obfuscated or prompt-injected evidence is quarantined as unusable, receives the same single slice opportunity, and is refunded if it remains unusable regardless of alleged intent. Actual buyer artifacts and reports stay in an owner-private delivery system. Do not commit them to this public repository. Only the synthetic example belongs here.
 
 ## Validate the example
 
