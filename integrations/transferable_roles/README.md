@@ -13,6 +13,7 @@ Checkout wire: `hinge-r4-autopsy-checkout-wire-20260905-01`
 Spine pointers: `hinge-r4-autopsy-spine-pointers-20260905-01`
 Diagnostic fulfillment: `hinge-r4-diagnostic-fulfillment-role-20260905-01`
 Intake/seats pointers: `hinge-r4-autopsy-intake-seats-pointers-20260905-01`
+Diagnostic reply→cash: `hinge-r4-diagnostic-reply-cash-pointers-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -128,8 +129,11 @@ SYNTHETIC fixture
 plant) for seat-to-seat handoff: open obligations `ob-intake` → `ob-diagnose` →
 `ob-settle` (deliver **or** refund per miss-remedy). Knowledge and
 `payment_capability` point at the four live product-page `buy.stripe.com` CTAs
-already on main — **do not invent plink**, do not remint pages. Miss remedy
-sentence lives on the product pages/contracts. Roles confer no Stripe access.
+already on main — **do not invent plink**, do not remint pages. After reply→cash
++ tip-shelf land, knowledge also points at `revenue/reply_to_revenue/{README.md,
+funnel.json,handoffs/*}` and `commerce.html` — **point only; do not remint**
+handoffs or tip-shelf. Miss remedy sentence lives on the product pages/contracts.
+Roles confer no Stripe access.
 
 ## Access route shapes
 

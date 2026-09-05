@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-diagnostic-fulfillment-20260905",
   "label": "$199 diagnostic fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC fixture for R4 paid $199 diagnostic fulfillment handoff — pointers to existing live public checkouts only; not a remint of pages, Stripe products, or Autopsy",
+  "synthetic_note": "SYNTHETIC fixture for R4 paid $199 diagnostic fulfillment handoff — pointers to existing live public checkouts + reply→cash / tip-shelf surfaces only; not a remint of pages, Stripe products, handoffs, or Autopsy",
   "purpose": "Hand off one paid $199 one-business-day diagnostic fulfillment (dealer / referral / repair / plant) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -33,6 +33,34 @@
     {
       "pointer": "commercial.html",
       "label": "commercial ladder + miss-remedy / refund terms already on contracts"
+    },
+    {
+      "pointer": "commerce.html",
+      "label": "tip-shelf $199 diagnostic doors (#8905) — point only; live checkout stays on product pages"
+    },
+    {
+      "pointer": "revenue/reply_to_revenue/README.md",
+      "label": "reply→cash operator README — point only; do not remint handoffs"
+    },
+    {
+      "pointer": "revenue/reply_to_revenue/funnel.json",
+      "label": "reply→cash funnel machine — point only"
+    },
+    {
+      "pointer": "revenue/reply_to_revenue/handoffs/future-ford-concord-devin-parker.json",
+      "label": "SENT handoff Future Ford — point only; do not remint"
+    },
+    {
+      "pointer": "revenue/reply_to_revenue/handoffs/mac-haik-chevrolet-mike-sutton.json",
+      "label": "SENT handoff Mac Haik — point only; do not remint"
+    },
+    {
+      "pointer": "revenue/reply_to_revenue/handoffs/lexington-recycle-center-julie-hatter.json",
+      "label": "SENT handoff Lexington — point only; do not remint"
+    },
+    {
+      "pointer": "revenue/reply_to_revenue/handoffs/communitycare-katherine-reyes.json",
+      "label": "SENT handoff CommUnityCare — point only; do not remint"
     }
   ],
   "obligations": [
@@ -102,7 +130,7 @@
       "name": "payment_capability",
       "kind": "public_html",
       "store": "payment-capability.html",
-      "note": "Also pay.html. Public HTML + live page CTAs only — no secrets, no Stripe tokens, no invented Payment Links. Live $199 CTAs: https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b (dealer), https://buy.stripe.com/9B600i98N77b9uFeBk43S0c (referral), https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d (repair), https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e (plant)."
+      "note": "Also pay.html + commerce.html tip-shelf. Public HTML + live page CTAs only — no secrets, no Stripe tokens, no invented Payment Links. Live $199 CTAs: https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b (dealer), https://buy.stripe.com/9B600i98N77b9uFeBk43S0c (referral), https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d (repair), https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e (plant)."
     }
   ],
   "credential_custodian": "existing_secure_stores",
