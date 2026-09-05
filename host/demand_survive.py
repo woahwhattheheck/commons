@@ -7,8 +7,8 @@ Astra D5 / QUILL. Reuses Commons demand/assignment/job patterns:
   - occupancy.md: presence is a file; parallel allowed; collisions visible
 
 This is a durable pickup/continuation surface for prose demands.
-Not an approval queue, identity gate, or forced authoring template.
-Does not remint C1/G2/M3/R4 implementation files.
+Never an admission. No identity prerequisite. No approval workflow.
+No forced authoring template. Does not remint C1/G2/M3/R4 files.
 
   python3 host/demand_survive.py list
   python3 host/demand_survive.py show --id <id>
@@ -27,7 +27,6 @@ import json
 import os
 import re
 import sys
-from copy import deepcopy
 from datetime import datetime, timezone
 
 
@@ -126,7 +125,7 @@ def validate_demand(demand):
                 problems.append("occupant is not an object")
                 continue
             if not str(row.get("seat") or "").strip():
-                problems.append("occupant.seat required")
+                problems.append("occupant.seat must be nonempty")
             if str(row.get("status") or "") not in (
                 "active",
                 "interrupted",
@@ -248,7 +247,7 @@ def record_demand(root, demand_id, prose, source="", from_seat="", ts=None):
         return None, ["id must match %s" % ID_RE.pattern]
     existing = load_demand(root, demand_id)
     if existing and not existing.get("error"):
-        # Idempotent if same original prose; otherwise refuse silent overwrite.
+        # Idempotent if same original prose; otherwise keep both bytes distinct.
         prior = str((existing.get("original") or {}).get("prose") or "")
         if prior == str(prose or ""):
             return refresh_status(existing), []
@@ -282,7 +281,7 @@ def claim_demand(root, demand_id, seat, slice_id="", note="", ts=None):
         return demand, ["demand already done: %s" % demand_id]
     seat = str(seat or "").strip()
     if not seat:
-        return demand, ["seat required"]
+        return demand, ["need a nonempty seat"]
     occupants = list(demand.get("occupants") or [])
     # Same seat + same slice re-claim is idempotent.
     for row in occupants:
@@ -349,7 +348,7 @@ def handoff_demand(
     from_seat = str(from_seat or "").strip()
     to_seat = str(to_seat or "").strip()
     if not from_seat or not to_seat:
-        return demand, ["from_seat and to_seat required"]
+        return demand, ["need nonempty from_seat and to_seat"]
     occupants = []
     handed = False
     for row in demand.get("occupants") or []:
@@ -390,7 +389,7 @@ def complete_demand(root, demand_id, pointer, receipt="", seat="", ts=None):
         return None, ["demand not found: %s" % demand_id]
     pointer = str(pointer or "").strip()
     if len(pointer) < 4:
-        return demand, ["result.pointer required"]
+        return demand, ["need a nonempty result.pointer"]
     demand["result"] = {
         "pointer": pointer,
         "receipt": str(receipt or ""),
@@ -581,7 +580,7 @@ def main(argv=None):
     p_cor.add_argument("--prose", required=True)
     p_cor.add_argument("--from-seat", default="")
 
-    p_claim = sub.add_parser("claim", help="claim occupancy (parallel visible)")
+    p_claim = sub.add_parser("claim", help="record occupancy (parallel visible)")
     p_claim.add_argument("--id", required=True)
     p_claim.add_argument("--seat", required=True)
     p_claim.add_argument("--slice", dest="slice_id", default="")
