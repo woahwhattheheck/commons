@@ -51,6 +51,9 @@ GROKBOT_CONTROL_ROUTE_FIELDS = (
 # Fields stampable onto an existing access_route (no secrets; seat stays on occupant).
 BINDABLE_ROUTE_FIELDS = ("session_id", "last_run_id", "pool_id")
 
+# Default unbind clears recover stamps only; fixture pool_id stays unless asked.
+DEFAULT_UNBIND_FIELDS = ("session_id", "last_run_id")
+
 OBLIGATION_STATUSES = frozenset({"open", "done", "blocked", "deferred"})
 
 
@@ -376,6 +379,52 @@ class RoleStore:
             raise RoleError("purpose mutated during bind_access_route")
         if role["obligations"] != preserved_obligations:
             raise RoleError("obligations mutated during bind_access_route")
+        self._write(role)
+        return deepcopy(role)
+
+    def unbind_access_route(
+        self,
+        role_id: str,
+        *,
+        route_name: str,
+        fields: tuple[str, ...] | list[str] | None = None,
+    ) -> dict[str, Any]:
+        """Clear stamped BINDABLE_ROUTE_FIELDS on a named access_route.
+
+        Keeps the route shell (name/kind/urls). Does not touch occupant,
+        purpose, or obligations. Default clears DEFAULT_UNBIND_FIELDS
+        (session_id, last_run_id — the recover stamps), NOT pool_id.
+        Optional fields= subset must be within BINDABLE_ROUTE_FIELDS
+        (may include pool_id).
+        """
+        role = self.get(role_id)
+        name = _require_str(route_name, "route_name")
+        clear = list(fields) if fields else list(DEFAULT_UNBIND_FIELDS)
+        for f in clear:
+            if f not in BINDABLE_ROUTE_FIELDS:
+                raise RoleError(f"unbind field not bindable: {f}")
+        if not clear:
+            raise RoleError("unbind_access_route needs at least one field")
+        preserved_purpose = role["purpose"]
+        preserved_obligations = deepcopy(role["obligations"])
+        found = False
+        new_routes: list[dict[str, Any]] = []
+        for route in role.get("access_routes") or []:
+            item = deepcopy(route)
+            if item.get("name") == name:
+                found = True
+                for field in clear:
+                    item.pop(field, None)
+                item = _normalize_access_route(item)
+            new_routes.append(item)
+        if not found:
+            raise RoleError(f"access_route not found: {name}")
+        role["access_routes"] = new_routes
+        role["updated_at"] = _utc_now()
+        if role["purpose"] != preserved_purpose:
+            raise RoleError("purpose mutated during unbind_access_route")
+        if role["obligations"] != preserved_obligations:
+            raise RoleError("obligations mutated during unbind_access_route")
         self._write(role)
         return deepcopy(role)
 
