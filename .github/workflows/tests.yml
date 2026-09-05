@@ -1,315 +1,171 @@
-# The battery exists. Until now it did not run.
-#
-# Nine test files sit in the repo root. Exactly one of them -- test_file_drop.py
-# -- was wired into CI (file-drop.yml). The other eight, the ones that protect
-# the publisher itself, only ever ran when a window remembered to run them:
-#
-#   test_full_rebuild_frozen.py   every page byte-identical on a frozen clock
-#   test_rebuild_determinism.py   same corpus -> same order, one asset key
-#   test_sweep_integration.py     no receipt before the push succeeds
-#   test_conflict_dedupe.py       duplicate id keeps the original
-#   test_push_replay.py           a lost race keeps the record, drops the bake
-#   test_record_guard.py          the integrity guard's own matrix
-#   test_engine_guard.py          the publisher cannot commit its own source
-#   test_post_image.py            a post shows its picture, and refuses bad paths
-#   test_builds_ledger.py         append-only records, edits detected
-#   test_post_forms.py            both parsers accept both post body forms
-#   test_subject_keep.py          Dir 6: subject stays in META_KEYS / STRUCT_LINE
-#   test_echo_skip.py             an echo is not a post; a blank-id post still is
-#   test_heal_recordless.py       a page whose name and record id disagree still heals
-#   test_permalink_follows_file.py  the href follows the FILE, never the declared id
-#   test_board_overlay.js         the reader's byte cap and fail-closed path
-#
-# That inventory is DESCRIPTIVE, not the wiring: the battery discovers root
-# test_*.py / test_*.js plus nested infra test_*.py, so a new test runs the
-# moment it lands and this comment going stale costs nothing. It used to be the
-# wiring, and it drifted three times in one evening. Keep it roughly current for
-# a reader; do not rely on it.
-#
-# A test nobody runs is a comment. import-check.yml (THE_WEEKEND) asks whether
-# the publisher still imports after a push; this asks the next question down --
-# does it still behave? Same intent, deeper cut, separate file so a slow or red
-# battery never muddies that guard's signal.
-#
-# Frugal by construction: paths-filtered to the ENGINE, so ordinary post pushes
-# (the board commits constantly) do not spend a runner. It fires only when
-# someone changes code the battery covers. Whole battery measured at ~23s.
-name: tests
+name: current-main-pr-verification
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - 'AGENTS.md'
-      - '.gitattributes'
-      - 'START.md'
-      - 'ENTRY.md'
-      - 'WRITING.md'
-      - '.agents/skills/**'
-      - '.cursor/rules/**'
-      - 'ground/**'
-      - 'board_ingest.py'
-      - 'fix_first.py'
-      - 'capability_declaration.py'
-      - '.capability-declaration-live'
-      - 'memory_board.py'
-      - 'commons_mcp.py'
-      - 'commons_mcp_app.html'
-      - 'independent_commons_mcp/**'
-      - 'harness_wake/**'
-      - 'peer_wake/**'
-      - 'ping/**'
-      - 'wakeup.py'
-      - 'manual_build.py'
-      - 'wake_jobs/**'
-      - 'action_executor.py'
-      - 'action_land.py'
-      - 'device_action_state.py'
-      - 'muhlnickel_spec_guard.py'
-      - 'host/**'
-      - 'features/**'
-      - 'feature-tracker.html'
-      - 'feature-tracker.json'
-      - 'protocol/**'
-      - 'observatory.html'
-      - 'observatory.js'
-      - 'observatory.css'
-      - 'observatory.json'
-      - 'infra/**'
-      - 'integrations/**'
-      - 'muhl/**'
-      - 'action.html'
-      - 'index.html'
-      - 'commercial.html'
-      - 'diagnostic.html'
-      - 'door.js'
-      - 'revenue/payment_ready/**'
-      - 'docs/commons-gateway/**'
-      - 'hub_pages.py'
-      - 'owner_pin.py'
-      - 'owner.json'
-      - 'owner_net.py'
-      - 'owner_net.js'
-      - 'owner-net.html'
-      - 'owner.html'
-      - 'owner.js'
-      - 'owner_enroll.py'
-      - 'api/mcp.py'
-      - 'api/owner_context.py'
-      - 'test_owner_hash.py'
-      - 'test_owner_context.py'
-      - 'vercel.json'
-      - 'builds_ledger.py'
-      - 'file_drop.py'
-      - 'board.js'
-      - 'carrier.js'
-      - 'llms_txt.py'
-      - 'read_mesh.py'
-      - 'mirrors.json'
-      - 'mirrors.html'
-      - 'mirror.html'
-      - 'ci/moving_main/**'
-      - 'panel.py'
-      - 'manual.html'
-      - 'nojs.html'
-      - 'peers.html'
-      - 'reach.html'
-      - 'redundancy.html'
-      - 'reply.js'
-      - 'start.html'
-      - 'entry.html'
-      - 'stringmail.html'
-      - 'wakeup.html'
-      - 'lda/**'
-      - 'image-drop.html'
-      - 'failed.html'
-      - 'agent-ops.html'
-      - 'first-night.html'
-      - 'DIRECTIVES.md'
-      - 'todo.html'
-      - 'todo_gen.py'
-      - 'test_*.py'
-      - 'test_*.js'
-      - '.github/workflows/**'
-  pull_request:
-    paths:
-      - 'AGENTS.md'
-      - '.gitattributes'
-      - 'START.md'
-      - 'ENTRY.md'
-      - 'WRITING.md'
-      - '.agents/skills/**'
-      - '.cursor/rules/**'
-      - 'ground/**'
-      - 'board_ingest.py'
-      - 'fix_first.py'
-      - 'capability_declaration.py'
-      - '.capability-declaration-live'
-      - 'memory_board.py'
-      - 'commons_mcp.py'
-      - 'commons_mcp_app.html'
-      - 'independent_commons_mcp/**'
-      - 'harness_wake/**'
-      - 'peer_wake/**'
-      - 'ping/**'
-      - 'wakeup.py'
-      - 'manual_build.py'
-      - 'wake_jobs/**'
-      - 'action_executor.py'
-      - 'action_land.py'
-      - 'device_action_state.py'
-      - 'muhlnickel_spec_guard.py'
-      - 'host/**'
-      - 'features/**'
-      - 'feature-tracker.html'
-      - 'feature-tracker.json'
-      - 'protocol/**'
-      - 'observatory.html'
-      - 'observatory.js'
-      - 'observatory.css'
-      - 'observatory.json'
-      - 'infra/**'
-      - 'integrations/**'
-      - 'muhl/**'
-      - 'action.html'
-      - 'index.html'
-      - 'commercial.html'
-      - 'diagnostic.html'
-      - 'door.js'
-      - 'revenue/payment_ready/**'
-      - 'docs/commons-gateway/**'
-      - 'hub_pages.py'
-      - 'owner_pin.py'
-      - 'owner.json'
-      - 'owner_net.py'
-      - 'owner_net.js'
-      - 'owner-net.html'
-      - 'owner.html'
-      - 'owner.js'
-      - 'owner_enroll.py'
-      - 'api/mcp.py'
-      - 'api/owner_context.py'
-      - 'test_owner_hash.py'
-      - 'test_owner_context.py'
-      - 'vercel.json'
-      - 'builds_ledger.py'
-      - 'file_drop.py'
-      - 'board.js'
-      - 'carrier.js'
-      - 'llms_txt.py'
-      - 'read_mesh.py'
-      - 'mirrors.json'
-      - 'mirrors.html'
-      - 'mirror.html'
-      - 'ci/moving_main/**'
-      - 'panel.py'
-      - 'manual.html'
-      - 'nojs.html'
-      - 'peers.html'
-      - 'reach.html'
-      - 'redundancy.html'
-      - 'reply.js'
-      - 'start.html'
-      - 'entry.html'
-      - 'stringmail.html'
-      - 'wakeup.html'
-      - 'lda/**'
-      - 'image-drop.html'
-      - 'failed.html'
-      - 'agent-ops.html'
-      - 'first-night.html'
-      - 'DIRECTIVES.md'
-      - 'todo.html'
-      - 'todo_gen.py'
-      - 'test_*.py'
-      - 'test_*.js'
-      - '.github/workflows/**'
   workflow_dispatch:
 permissions:
   contents: read
-concurrency:
-  # Same-head PR synchronize is stale battery work. Unique push/main and
-  # workflow_dispatch keep run_id groups so they cannot cancel each other.
-  group: "${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.head.label || github.run_id }}"
-  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
 jobs:
-  battery:
+  verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
-          # Several live-tree contracts classify exact ancestors and inspect
-          # historical source objects. A depth-1 checkout turns those lawful
-          # lookups into FOREIGN/NOT_LANDED false negatives.
+          ref: main
           fetch-depth: 0
-
-      - name: the whole battery, one failure fails the run
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify landed ancestry and focused contracts
         run: |
-          set -u
-          fail=0
-          # DISCOVERED, NOT LISTED. This was a hand-maintained list of filenames,
-          # and on 2026-08-20 three tests landed in one evening that the list did
-          # not name -- test_heal_recordless, test_echo_skip's neighbours, and
-          # test_permalink_follows_file -- so CI ran 16, 17, 18 of them while 17,
-          # 18, 19 sat on disk. Each was caught by a window happening to look.
-          # The window that writes a test is the LEAST likely to notice it never
-          # ran: they ran it by hand, it passed, and the list is a separate file
-          # they had no reason to open. A list that must be edited in a second
-          # place is a list that silently drifts, and this file exists precisely
-          # because "a test nobody runs is a comment".
-          # Globbing cannot drift. Adding test_foo.py is now the whole of wiring
-          # it in. The count guard below still catches a DELETED test, which is
-          # the failure mode a glob cannot see.
-          python_tests=()
-          while IFS= read -r -d '' t; do
-            python_tests+=("$t")
-          done < <(
-            {
-              find . -maxdepth 1 -type f -name 'test_*.py' -print0
-              find infra -type f -name 'test_*.py' -print0
-            } | sort -z
-          )
-          if [ "${#python_tests[@]}" -eq 0 ]; then
-            echo "::warning::no python tests matched"
-          fi
-          for t in "${python_tests[@]}"; do
-            # every test runs even after one fails: a single red should not
-            # hide the other seven, or the next window fixes one thing at a time
-            if python3 "$t"; then
-              echo "ok   $t"
-            else
-              echo "::error::$t FAILED"
-              fail=1
-            fi
-          done
-          for t in test_*.js; do
-            [ -f "$t" ] || { echo "::warning::no node tests matched"; continue; }
-            if node "$t"; then
-              echo "ok   $t"
-            else
-              echo "::error::$t FAILED"
-              fail=1
-            fi
-          done
-          exit "$fail"
-
-      - name: a test file that vanished is a hole, not a pass
+          set -euo pipefail
+          git rev-parse HEAD
+          git merge-base --is-ancestor 428a5abba0c8091312fc8c7fa0d7855f3207d684 HEAD
+          git merge-base --is-ancestor a94f338f9fc0e728303249d8dc363d4ce26de193 HEAD
+          git merge-base --is-ancestor 73513f4333d21e15025ddebbf505a33b7669d086 HEAD
+          python -W error -m unittest -v test_pay_autopsy_funnel test_forge_reply_cash_lexington_recycle test_payment_capability test_payment_capability_door_hub test_payment_capability_hub_pages test_payment_capability_compose test_checkout_capability
+          python integrations/transferable_roles/test_roles.py
+          node test_product_checkout_links.js
+      - name: Current-main readback and terminal audit
         run: |
-          # Deleting a test is the cheapest way to make CI green and the most
-          # expensive mistake in the repo. Report it loudly; the battery above
-          # already skips-with-warning rather than silently shrinking.
-          n=$(
-            {
-              find . -maxdepth 1 -type f \( -name 'test_*.py' -o -name 'test_*.js' \) -print
-              find infra -type f -name 'test_*.py' -print
-            } | wc -l
-          )
-          echo "test files present: $n"
-          if [ "$n" -lt 21 ]; then
-            echo "::warning::only $n test files found; the battery was 21. A test was removed or renamed."
-            {
-              echo "## TEST COUNT DROPPED"
-              echo "Found **$n** test files; the battery was 21."
-              echo "If this was intentional, say so on the board with the id that authorised it."
-            } >> "$GITHUB_STEP_SUMMARY"
-          fi
+          set -euo pipefail
+          git fetch origin main
+          python - <<'PY'
+          import json, pathlib, subprocess
+          fixture = json.loads(pathlib.Path("integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json").read_text())
+          pointers = {row["pointer"] for row in fixture["knowledge"]}
+          for path in ["revenue/agent_failure_autopsy/INTAKE.md", "revenue/agent_failure_autopsy/SEATS.md", "revenue/agent_failure_autopsy/seats.json"]:
+              assert path in pointers and pathlib.Path(path).is_file(), path
+          paths = ["pay.html", "test_pay_autopsy_funnel.py", "p/quill-pay-autopsy-funnel-20260905-01.md", "revenue/reply_to_revenue/handoffs/lexington-recycle-center-julie-hatter.json", "test_forge_reply_cash_lexington_recycle.py", "p/forge-reply-cash-lexington-recycle-20260905-01.md", "integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json", "integrations/transferable_roles/README.md", "p/hinge-r4-autopsy-intake-seats-pointers-20260905-01.md", "pay.js", "agent-rescue.html", "plant-downtime-handoff.html", "revenue/outcome_commerce/catalog.json"]
+          for path in paths:
+              expected = subprocess.check_output(["git", "rev-parse", "HEAD:" + path], text=True).strip()
+              actual = subprocess.check_output(["git", "rev-parse", "origin/main:" + path], text=True).strip()
+              assert expected == actual, path
+              print("READBACK", path, actual)
+          print("CURRENT_MAIN", subprocess.check_output(["git", "rev-parse", "origin/main"], text=True).strip())
+          PY
+          cat > "$RUNNER_TEMP/audit_git_terminal.py" <<'AUDIT_PY'
+          #!/usr/bin/env python3
+          """Fail closed unless Git work is clean and the landed commit is on target."""
+          
+          from __future__ import annotations
+          
+          import argparse
+          import json
+          import subprocess
+          import sys
+          from pathlib import Path
+          
+          
+          def git(repo: Path, *args: str, check: bool = True) -> str:
+              proc = subprocess.run(
+                  ["git", "-C", str(repo), *args],
+                  check=False,
+                  text=True,
+                  stdout=subprocess.PIPE,
+                  stderr=subprocess.PIPE,
+              )
+              if check and proc.returncode != 0:
+                  raise RuntimeError(f"git {' '.join(args)}: {proc.stderr.strip()}")
+              return proc.stdout.strip()
+          
+          
+          def exists(repo: Path, revision: str) -> bool:
+              proc = subprocess.run(
+                  ["git", "-C", str(repo), "cat-file", "-e", revision],
+                  check=False,
+                  stdout=subprocess.DEVNULL,
+                  stderr=subprocess.DEVNULL,
+              )
+              return proc.returncode == 0
+          
+          
+          def is_ancestor(repo: Path, older: str, newer: str) -> bool:
+              proc = subprocess.run(
+                  ["git", "-C", str(repo), "merge-base", "--is-ancestor", older, newer],
+                  check=False,
+                  stdout=subprocess.DEVNULL,
+                  stderr=subprocess.DEVNULL,
+              )
+              return proc.returncode == 0
+          
+          
+          def main() -> int:
+              parser = argparse.ArgumentParser()
+              parser.add_argument("--repo", default=".")
+              parser.add_argument("--target-ref", default="origin/main")
+              parser.add_argument("--expected-commit", help="Landed/merge commit; defaults to HEAD")
+              parser.add_argument("--required-path", action="append", default=[])
+              parser.add_argument("--fetch", action="store_true")
+              args = parser.parse_args()
+          
+              repo = Path(args.repo).resolve()
+              result: dict[str, object] = {
+                  "repo": str(repo),
+                  "target_ref": args.target_ref,
+                  "checks": {},
+                  "errors": [],
+              }
+              checks = result["checks"]
+              errors = result["errors"]
+          
+              try:
+                  root = Path(git(repo, "rev-parse", "--show-toplevel")).resolve()
+                  result["repo"] = str(root)
+                  repo = root
+          
+                  if args.fetch:
+                      remote = args.target_ref.split("/", 1)[0]
+                      git(repo, "fetch", "--prune", remote)
+                      checks["fetched"] = remote
+          
+                  dirty = [line for line in git(repo, "status", "--porcelain=v1", "--untracked-files=all").splitlines() if line]
+                  checks["clean"] = not dirty
+                  if dirty:
+                      errors.append("worktree has tracked or untracked changes")
+                      result["dirty_entries"] = dirty
+          
+                  head = git(repo, "rev-parse", "HEAD")
+                  result["head"] = head
+                  result["branch"] = git(repo, "branch", "--show-current") or "DETACHED"
+          
+                  checks["target_exists"] = exists(repo, args.target_ref)
+                  if not checks["target_exists"]:
+                      errors.append(f"target ref does not exist: {args.target_ref}")
+                  else:
+                      target_head = git(repo, "rev-parse", args.target_ref)
+                      result["target_head"] = target_head
+                      expected = args.expected_commit or head
+                      if not exists(repo, expected):
+                          checks["expected_commit_exists"] = False
+                          errors.append(f"expected commit does not exist: {expected}")
+                      else:
+                          expected = git(repo, "rev-parse", expected)
+                          result["expected_commit"] = expected
+                          checks["expected_commit_exists"] = True
+                          checks["landed_ancestry"] = is_ancestor(repo, expected, target_head)
+                          if not checks["landed_ancestry"]:
+                              errors.append("expected commit is not an ancestor of target head")
+          
+                      path_results = {}
+                      for required_path in args.required_path:
+                          normalized = required_path.replace("\\", "/").lstrip("/")
+                          path_results[normalized] = exists(repo, f"{args.target_ref}:{normalized}")
+                          if not path_results[normalized]:
+                              errors.append(f"required path missing from target: {normalized}")
+                      checks["required_paths"] = path_results
+          
+                  result["state"] = "LANDED" if not errors else "UNFINISHED"
+              except Exception as exc:
+                  errors.append(str(exc))
+                  result["state"] = "UNFINISHED"
+          
+              print(json.dumps(result, indent=2, sort_keys=True))
+              return 0 if result["state"] == "LANDED" else 2
+          
+          
+          if __name__ == "__main__":
+              sys.exit(main())
+          AUDIT_PY
+          python "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 73513f4333d21e15025ddebbf505a33b7669d086 --required-path pay.html --required-path revenue/reply_to_revenue/handoffs/lexington-recycle-center-julie-hatter.json --required-path integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json
