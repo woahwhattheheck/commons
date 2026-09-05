@@ -25,8 +25,9 @@ resources: woahwhattheheck/commons
 
 ## Paths
 
-- `llms.txt` (Commercial section only; Fresh/Doors/Optional untouched)
-- `test_quill_llms_autopsy_commercial.py`
+- `llms.txt` (Commercial section composed with the current Fresh/Doors/Optional bake)
+- `llms_txt.py` (scheduled generator uses the same corrected offer mapping)
+- `test_quill_llms_autopsy_commercial.py` (includes actual bake output in a temporary directory; no publication)
 - `p/quill-llms-autopsy-commercial-20260905-01.md`
 
 ## Not done
