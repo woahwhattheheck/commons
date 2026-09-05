@@ -80,3 +80,20 @@ REFUND_REQUIRED applies after the included clarification when evidence is insuff
 ## 9. Buyer-facing format
 
 Use report-template.md to render the validated JSON record into plain language. Keep source anchors beside each observation, inference, alternative assessment, and recommendation. State limitations and untested alternatives. Do not promise implementation or certainty.
+
+## 10. G2 run attribution (optional equipment)
+
+When a coordinator submits Autopsy analysis work to an existing GrokBot pool via `grokbot_control` / `grokbot_submit`, attach a durable `case` so inspect/session recover ties the run to the paid job:
+
+```python
+from integrations.grokbot_control import case_from_autopsy_offer
+from integrations.grokbot_control.client import GrokBotControlClient
+
+case = case_from_autopsy_offer(
+    case_ref="opaque-private-case-id",
+    client_reference_id="stripe-client-reference-if-known",  # optional
+)
+GrokBotControlClient().submit(prompt, seat="SPARK", case=case)
+```
+
+`case_from_autopsy_offer` reads checked-in `offer.json` (`offer_id` / default `sku`). It does **not** remint Stripe objects, edit `fulfillment.py`, or paste checkout URLs. Follow-up on the same session inherits `case`.

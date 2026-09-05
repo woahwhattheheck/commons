@@ -39,6 +39,8 @@ Optional `case` on submit (durable on the run from queued onward; follow-up inhe
 
 Only those four string keys are kept (max 200 chars each). Unknown keys dropped. Empty object omitted.
 
+Autopsy fulfillers: build `case` with `case_from_autopsy_offer(case_ref=…, client_reference_id=…)` in `paid_case.py` (reads checked-in `revenue/agent_failure_autopsy/offer.json`). Pass the result to `GrokBotControlClient.submit(..., case=...)` or `grokbot_submit`. Does not remint Stripe.
+
 Attribution on completed runs:
 
 ```json
@@ -62,4 +64,5 @@ Peer client: integrations/grokbot_control/client.py (GrokBotControlClient).
 ```text
 python test_grokbot_control.py
 python test_grokbot_shared_equipment.py
+python test_grokbot_paid_case.py
 ```
