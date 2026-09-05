@@ -17,6 +17,7 @@
     "artifact_state",
     "delivery",
     "timeline",
+    "first_meaningful_divergence",
     "failure_chain",
     "causes",
     "fixes",
@@ -54,6 +55,22 @@
       "maxItems": 100,
       "items": {"$ref": "#/$defs/observed_item"}
     },
+    "first_meaningful_divergence": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["timeline_sequence", "claim_type", "statement", "evidence_refs"],
+          "properties": {
+            "timeline_sequence": {"type": "integer", "minimum": 1, "maximum": 1000},
+            "claim_type": {"const": "OBSERVED"},
+            "statement": {"type": "string", "minLength": 1, "maxLength": 1000},
+            "evidence_refs": {"$ref": "#/$defs/evidence_refs"}
+          }
+        }
+      ]
+    },
     "failure_chain": {
       "type": "array",
       "maxItems": 50,
@@ -82,9 +99,10 @@
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["fix_id", "target", "addresses_cause_ids", "steps", "evidence_refs", "limits"],
+        "required": ["fix_id", "recommendation_type", "target", "addresses_cause_ids", "steps", "evidence_refs", "limits"],
         "properties": {
           "fix_id": {"$ref": "#/$defs/id"},
+          "recommendation_type": {"const": "EVIDENCE_SUPPORTED_RECOMMENDATION"},
           "target": {"enum": ["PROMPT", "CONFIG", "CODE"]},
           "addresses_cause_ids": {
             "type": "array",
@@ -110,8 +128,9 @@
         {
           "type": "object",
           "additionalProperties": false,
-          "required": ["setup", "replay_steps", "expected_result", "failure_signal", "evidence_refs", "execution_state"],
+          "required": ["recommendation_type", "setup", "replay_steps", "expected_result", "failure_signal", "evidence_refs", "execution_state"],
           "properties": {
+            "recommendation_type": {"const": "EVIDENCE_SUPPORTED_RECOMMENDATION"},
             "setup": {"type": "string", "minLength": 1, "maxLength": 1000},
             "replay_steps": {
               "type": "array",
@@ -231,9 +250,10 @@
     "observed_item": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["sequence", "statement", "evidence_refs"],
+      "required": ["sequence", "claim_type", "statement", "evidence_refs"],
       "properties": {
         "sequence": {"type": "integer", "minimum": 1, "maximum": 1000},
+        "claim_type": {"const": "OBSERVED"},
         "statement": {"type": "string", "minLength": 1, "maxLength": 1000},
         "evidence_refs": {"$ref": "#/$defs/evidence_refs"}
       }
@@ -241,9 +261,10 @@
     "cause": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["cause_id", "statement", "confidence", "confidence_rationale", "evidence_refs", "alternatives"],
+      "required": ["cause_id", "claim_type", "statement", "confidence", "confidence_rationale", "evidence_refs", "alternatives"],
       "properties": {
         "cause_id": {"$ref": "#/$defs/id"},
+        "claim_type": {"const": "CAUSAL_INFERENCE"},
         "statement": {"type": "string", "minLength": 1, "maxLength": 1000},
         "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]},
         "confidence_rationale": {"type": "string", "minLength": 1, "maxLength": 1000},
