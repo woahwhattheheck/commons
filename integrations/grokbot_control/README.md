@@ -24,12 +24,20 @@ Env override: GROKBOT_CONTROL_MIN_FREE_MB. Under the floor, POST /v1/runs return
 |---|---|
 | health | GET /health (also /) — includes memory_guard |
 | pools | GET /v1/pools |
-| submit | POST /v1/runs {pool_id, prompt, seat?, async?} |
+| submit | POST /v1/runs {pool_id, prompt, seat?, async?, case?} |
 | inspect | GET /v1/runs/{run_id}?wait_ms= |
 | follow-up | POST /v1/runs/{run_id}/follow-up {prompt, async?} |
 | cancel | POST /v1/runs/{run_id}/cancel |
 | session | GET /v1/sessions/{session_id} |
 | events | GET /v1/events?after=&limit=&wait_ms=&pool_id= |
+
+Optional `case` on submit (durable on the run from queued onward; follow-up inherits):
+
+```json
+{"offer_id":"sku-…","case_ref":"…","client_reference_id":"…","sku":"…"}
+```
+
+Only those four string keys are kept (max 200 chars each). Unknown keys dropped. Empty object omitted.
 
 Attribution on completed runs:
 
@@ -45,7 +53,7 @@ integrations.shared_equipment.peers.GrokBotEquipment exposes:
 
 grokbot_submit, grokbot_inspect, grokbot_follow_up, grokbot_cancel, grokbot_session, grokbot_events, grokbot_pools, grokbot_health
 
-grokbot_health is GET /health so peers can read memory_guard before submit. Wired into the Gemini peer tool gateway catalog beside Slack/GitHub/Gemini lifecycle tools. CLI: python -m integrations.shared_equipment.services catalog|call|manifest.
+grokbot_submit accepts optional `case`. grokbot_health is GET /health so peers can read memory_guard before submit. Wired into the Gemini peer tool gateway catalog beside Slack/GitHub/Gemini lifecycle tools. CLI: python -m integrations.shared_equipment.services catalog|call|manifest.
 
 Peer client: integrations/grokbot_control/client.py (GrokBotControlClient).
 
