@@ -1,0 +1,47 @@
+name: forge-crm6-write-oneshot
+on:
+  push:
+    branches:
+      - forge-ledger-crm6-feature-tracker-write-20260905-02
+    paths:
+      - .github/workflows/forge-crm6-write-oneshot.yml
+permissions:
+  contents: write
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: forge-ledger-crm6-feature-tracker-write-20260905-02
+          fetch-depth: 0
+
+      - name: regenerate feature-tracker projection
+        run: python3 host/feature_tracker.py --write
+
+      - name: prove CRM6 row landed
+        run: |
+          python3 - <<'PY'
+          import json
+          data = json.load(open("feature-tracker.json", encoding="utf-8"))
+          ids = {row.get("id") for row in data.get("features") or []}
+          want = "ledger-crm6-relationship-handoff-20260904-01"
+          assert want in ids, sorted(x for x in ids if x and "crm6" in x) or sorted(ids)[-30:]
+          row = next(r for r in data["features"] if r.get("id") == want)
+          print("CRM6 ok", row.get("rollup"), row.get("source_status"), row.get("test_status"))
+          PY
+
+      - name: commit projection and self-delete oneshot
+        run: |
+          set -e
+          git config user.name "commons-llms"
+          git config user.email "commons-board@users.noreply.github.com"
+          rm -f .github/workflows/forge-crm6-write-oneshot.yml
+          git add feature-tracker.json feature-tracker.html
+          git add -u .github/workflows/forge-crm6-write-oneshot.yml
+          git status --short
+          git diff --cached --quiet && { echo "nothing to commit"; exit 1; }
+          git commit -m "FORGE+LEDGER: feature_tracker --write CRM6 relationship handoff" \
+            -m "CLAIM ledger-crm6-feature-tracker-write-20260905-02" \
+            -m "Oneshoot workflow self-deletes. Hands off #8802. No remint registry."
+          git push origin HEAD:forge-ledger-crm6-feature-tracker-write-20260905-02
