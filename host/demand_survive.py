@@ -247,7 +247,6 @@ def record_demand(root, demand_id, prose, source="", from_seat="", ts=None):
         return None, ["id must match %s" % ID_RE.pattern]
     existing = load_demand(root, demand_id)
     if existing and not existing.get("error"):
-        # Idempotent if same original prose; otherwise keep both bytes distinct.
         prior = str((existing.get("original") or {}).get("prose") or "")
         if prior == str(prose or ""):
             return refresh_status(existing), []
@@ -269,7 +268,6 @@ def append_correction(root, demand_id, prose, from_seat="", ts=None):
         }
     )
     demand["corrections"] = corrections
-    # Original is never mutated.
     return save_demand(root, demand)
 
 
@@ -283,7 +281,6 @@ def claim_demand(root, demand_id, seat, slice_id="", note="", ts=None):
     if not seat:
         return demand, ["need a nonempty seat"]
     occupants = list(demand.get("occupants") or [])
-    # Same seat + same slice re-claim is idempotent.
     for row in occupants:
         if (
             str(row.get("seat") or "") == seat
@@ -291,7 +288,6 @@ def claim_demand(root, demand_id, seat, slice_id="", note="", ts=None):
             and str(row.get("status") or "") == "active"
         ):
             return refresh_status(demand), []
-    # Parallel claims stay visible — never overwrite another seat.
     collision = [
         o
         for o in occupants
@@ -312,7 +308,6 @@ def claim_demand(root, demand_id, seat, slice_id="", note="", ts=None):
     demand["occupants"] = occupants
     saved, problems = save_demand(root, demand)
     if collision and not problems:
-        # Surface collision without blocking — parallel is allowed.
         return saved, []
     return saved, problems
 
@@ -447,7 +442,6 @@ def self_test():
     import tempfile
 
     root = tempfile.mkdtemp(prefix="demand-survive-")
-    # 1) Prose demand recorded without template.
     d, err = record_demand(
         root,
         "astra-d5-fixture-20260904-01",
@@ -460,7 +454,6 @@ def self_test():
     assert d["status"] == "open"
     assert d["original"]["prose"].startswith("Build demands")
 
-    # Duplicate different prose → conflict (no silent overwrite).
     _, err2 = record_demand(
         root,
         "astra-d5-fixture-20260904-01",
@@ -469,7 +462,6 @@ def self_test():
     )
     assert err2 and "CONFLICT" in err2[0]
 
-    # 2) Two peers notice at once → both occupants visible.
     d, err = claim_demand(
         root, "astra-d5-fixture-20260904-01", "PEER_A", slice_id="a-slice", ts="2026-09-04T20:20:00Z"
     )
@@ -484,7 +476,6 @@ def self_test():
     b = [o for o in active if o["seat"] == "PEER_B"][0]
     assert "PEER_A" in (b.get("collision_with") or [])
 
-    # 3) Changed requirement — original preserved, correction appended.
     d, err = append_correction(
         root,
         "astra-d5-fixture-20260904-01",
@@ -497,7 +488,6 @@ def self_test():
     assert len(d["corrections"]) == 1
     assert "Ship and merge" in current_prose(d)
 
-    # 4) Interrupted builder + handoff.
     d, err = interrupt_occupant(
         root,
         "astra-d5-fixture-20260904-01",
@@ -521,9 +511,8 @@ def self_test():
     seats = {o["seat"]: o["status"] for o in d["occupants"]}
     assert seats["PEER_A"] == "handed_off"
     assert seats["PEER_C"] == "active"
-    assert seats["PEER_B"] == "active"  # parallel preserved
+    assert seats["PEER_B"] == "active"
 
-    # 5) Completed result with pointer.
     d, err = complete_demand(
         root,
         "astra-d5-fixture-20260904-01",
@@ -542,7 +531,6 @@ def self_test():
     index = rebuild_index(root)
     assert index["by_status"]["done"] == 1
 
-    # Fresh open demand for unclaimed listing.
     record_demand(
         root,
         "open-fixture-work-20260904-01",
@@ -557,6 +545,14 @@ def self_test():
     return 0
 
 
+def _need(args, *names):
+    missing = [n for n in names if not str(getattr(args, n, "") or "").strip()]
+    if missing:
+        sys.stderr.write("missing args: %s\n" % ", ".join(missing))
+        return False
+    return True
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Demands that survive the conversation")
     parser.add_argument("--root", default=DEFAULT_ROOT)
@@ -567,42 +563,42 @@ def main(argv=None):
     p_list.add_argument("--status", choices=STATUSES, default="")
 
     p_show = sub.add_parser("show", help="show one demand")
-    p_show.add_argument("--id", required=True)
+    p_show.add_argument("--id", default="")
 
     p_rec = sub.add_parser("record", help="record a prose demand")
-    p_rec.add_argument("--id", required=True)
-    p_rec.add_argument("--prose", required=True)
+    p_rec.add_argument("--id", default="")
+    p_rec.add_argument("--prose", default="")
     p_rec.add_argument("--source", default="")
     p_rec.add_argument("--from-seat", default="")
 
     p_cor = sub.add_parser("correct", help="append owner correction; keep original")
-    p_cor.add_argument("--id", required=True)
-    p_cor.add_argument("--prose", required=True)
+    p_cor.add_argument("--id", default="")
+    p_cor.add_argument("--prose", default="")
     p_cor.add_argument("--from-seat", default="")
 
     p_claim = sub.add_parser("claim", help="record occupancy (parallel visible)")
-    p_claim.add_argument("--id", required=True)
-    p_claim.add_argument("--seat", required=True)
+    p_claim.add_argument("--id", default="")
+    p_claim.add_argument("--seat", default="")
     p_claim.add_argument("--slice", dest="slice_id", default="")
     p_claim.add_argument("--note", default="")
 
     p_int = sub.add_parser("interrupt", help="mark builder interrupted")
-    p_int.add_argument("--id", required=True)
-    p_int.add_argument("--seat", required=True)
+    p_int.add_argument("--id", default="")
+    p_int.add_argument("--seat", default="")
     p_int.add_argument("--note", default="")
     p_int.add_argument("--next", dest="next_decision", default="")
 
     p_hand = sub.add_parser("handoff", help="hand demand to another seat")
-    p_hand.add_argument("--id", required=True)
-    p_hand.add_argument("--from-seat", required=True)
-    p_hand.add_argument("--to-seat", required=True)
+    p_hand.add_argument("--id", default="")
+    p_hand.add_argument("--from-seat", default="")
+    p_hand.add_argument("--to-seat", default="")
     p_hand.add_argument("--note", default="")
     p_hand.add_argument("--next", dest="next_decision", default="")
     p_hand.add_argument("--slice", dest="slice_id", default="")
 
     p_done = sub.add_parser("complete", help="attach result pointer")
-    p_done.add_argument("--id", required=True)
-    p_done.add_argument("--pointer", required=True)
+    p_done.add_argument("--id", default="")
+    p_done.add_argument("--pointer", default="")
     p_done.add_argument("--receipt", default="")
     p_done.add_argument("--seat", default="")
 
@@ -619,6 +615,8 @@ def main(argv=None):
         sys.stdout.write("\n")
         return 0
     if args.cmd == "show":
+        if not _need(args, "id"):
+            return 2
         data = load_demand(root, args.id)
         if not data:
             sys.stderr.write("not found\n")
@@ -627,22 +625,32 @@ def main(argv=None):
         sys.stdout.write("\n")
         return 0
     if args.cmd == "record":
+        if not _need(args, "id", "prose"):
+            return 2
         data, err = record_demand(
             root, args.id, args.prose, source=args.source, from_seat=args.from_seat
         )
     elif args.cmd == "correct":
+        if not _need(args, "id", "prose"):
+            return 2
         data, err = append_correction(
             root, args.id, args.prose, from_seat=args.from_seat
         )
     elif args.cmd == "claim":
+        if not _need(args, "id", "seat"):
+            return 2
         data, err = claim_demand(
             root, args.id, args.seat, slice_id=args.slice_id, note=args.note
         )
     elif args.cmd == "interrupt":
+        if not _need(args, "id", "seat"):
+            return 2
         data, err = interrupt_occupant(
             root, args.id, args.seat, note=args.note, next_decision=args.next_decision
         )
     elif args.cmd == "handoff":
+        if not _need(args, "id", "from_seat", "to_seat"):
+            return 2
         data, err = handoff_demand(
             root,
             args.id,
@@ -653,6 +661,8 @@ def main(argv=None):
             slice_id=args.slice_id,
         )
     elif args.cmd == "complete":
+        if not _need(args, "id", "pointer"):
+            return 2
         data, err = complete_demand(
             root, args.id, args.pointer, receipt=args.receipt, seat=args.seat
         )
