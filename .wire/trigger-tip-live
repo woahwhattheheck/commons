@@ -1,6 +1,7 @@
-wire-titanmcp-live-redeploy-20260905-01
+wire-titanmcp-live-redeploy-20260905-02
 ref=main
 project=webmcp-pad
-triggered=2026-09-05T20:56:39Z
+triggered=2026-09-05T20:57:18Z
 permanent=1
+pad=24bf9c27d0e065eff1c880612bc4b531dfae4754
 pad_commit=a1f202b28c48d2a7d08798d6bf5cd928de3d2d87
