@@ -159,6 +159,11 @@ class GrokBotEquipment:
                 "List known GrokBot pool_ids (corpus ids only; second account kebab not invented).",
                 {},
             ),
+            _schema(
+                "grokbot_health",
+                "Report grokbot_control GET /health including memory_guard without submitting a run.",
+                {},
+            ),
         ]
 
     def call(self, name: str, args: dict[str, Any]) -> dict[str, Any]:
@@ -209,6 +214,8 @@ class GrokBotEquipment:
             )
         if name == "grokbot_pools":
             return self._request("GET", "/v1/pools")
+        if name == "grokbot_health":
+            return self._request("GET", "/health")
         return {"error": "unknown_equipment_tool"}
 
     def _request(

@@ -9,6 +9,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -124,6 +125,10 @@ def build_parser() -> argparse.ArgumentParser:
     imp.add_argument("--file", type=Path, required=True, help="JSON package path")
 
     sub.add_parser("list", help="list role ids in the store")
+    sub.add_parser(
+        "open-obligations",
+        help="list open obligations across all roles as flat dicts",
+    )
     return p
 
 
@@ -201,6 +206,8 @@ def main(argv: list[str] | None = None) -> int:
             _print(store.import_package(_load_json(args.file)))
         elif args.cmd == "list":
             _print({"roles": store.list_ids()})
+        elif args.cmd == "open-obligations":
+            _print({"open_obligations": store.list_open_obligations()})
         else:
             raise RoleError(f"unknown command: {args.cmd}")
     except RoleError as exc:
