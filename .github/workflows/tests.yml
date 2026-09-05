@@ -26,7 +26,8 @@ jobs:
         with:
           python-version: '3.12'
       - name: Install existing declared binary crypto dependency
-        run: python -m pip install --disable-pip-version-check --no-cache-dir --only-binary=:all: -r integrations/shared_equipment/requirements-credential-transfer.txt
+        run: |
+          python -m pip install --disable-pip-version-check --no-cache-dir --only-binary=:all: -r integrations/shared_equipment/requirements-credential-transfer.txt
       - name: Verify direct retrieval and existing equipment roads on current main
         run: python -m unittest -q integrations.shared_equipment.test_credential_transfer integrations.shared_equipment.test_equipment test_shared_equipment_capability_manifest test_shared_equipment_newcomer_road test_gemini_peer_tool_gateway
       - name: Audit landed commit and required paths
