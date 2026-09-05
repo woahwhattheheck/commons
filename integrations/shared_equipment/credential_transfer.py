@@ -159,6 +159,13 @@ def open_credential(envelope: dict, private_key, expected: dict):
         raise CredentialTransferError("credential_delivery_invalid") from None
 
 
+BOX_SECRET_PATHS = (
+    "/home/box/agent-data/box-secrets.json",
+    "/home/box/sand-data/box-secrets.json",
+)
+BOX_MANIFEST_KEY = "COMMONS_SHARED_VAULT_MANIFEST"
+
+
 REFERENCES = (
     {"credential_ref": "slack/bot", "service": "slack", "source": "existing_grok_slack_vault.bot_token", "value_type": "string"},
     {"credential_ref": "slack/app", "service": "slack", "source": "existing_grok_slack_vault.app_token", "value_type": "string"},
@@ -177,7 +184,7 @@ def credential_references(sources=None) -> dict:
 class CredentialSources:
     """Existing custody readers; use read() locally for direct in-memory access."""
     def __init__(self, *, gh="gh", gh_runner=None, slack_reader=None, gemini_reader=None,
-                 config_path=None, claude_path=None, readers=None):
+                 config_path=None, claude_path=None, readers=None, box_paths=None):
         self.gh = gh
         self.gh_runner = gh_runner or subprocess.run
         self.slack_reader = slack_reader
@@ -185,6 +192,7 @@ class CredentialSources:
         self.config_path = Path(config_path or Path.home() / ".commons/credential_sources.json")
         self.claude_path = Path(claude_path or Path.home() / ".claude/.credentials.json")
         self.readers = dict(readers or {})
+        self.box_paths = tuple(Path(path) for path in (BOX_SECRET_PATHS if box_paths is None else box_paths))
 
     def register(self, reference: str, reader) -> None:
         """Extend an existing runtime with another in-memory custody reader."""
@@ -198,6 +206,57 @@ class CredentialSources:
             raise ValueError()
         return value["sources"]
 
+    def _box_sources(self) -> dict:
+        """Read the existing provider snapshot; no config, environment injection, or writes."""
+        def strict_json(text):
+            def invalid_constant(_value):
+                raise ValueError()
+            return json.loads(text, parse_constant=invalid_constant)
+
+        for path in self.box_paths:
+            try:
+                text = path.read_text(encoding="utf-8")
+            except FileNotFoundError:
+                continue
+            stored = strict_json(text)
+            if not isinstance(stored, dict) or not isinstance(stored.get("secrets"), dict):
+                raise ValueError()
+            secrets = stored["secrets"]
+            if BOX_MANIFEST_KEY not in secrets:
+                return {}
+            manifest = strict_json(secrets[BOX_MANIFEST_KEY])
+            if not isinstance(manifest, dict) or type(manifest.get("schema_version")) is not int or manifest["schema_version"] != 1:
+                raise ValueError()
+            if manifest.get("format") != "concatenated-json":
+                raise ValueError()
+            parts, count = manifest.get("parts"), manifest.get("source_count")
+            if not isinstance(parts, list) or not parts or any(not isinstance(part, str) or not part for part in parts):
+                raise ValueError()
+            if len(set(parts)) != len(parts) or type(count) is not int or count < 0:
+                raise ValueError()
+            operation = manifest.get("operation_id")
+            if not isinstance(operation, str) or not operation:
+                raise ValueError()
+            payload = strict_json("".join(secrets[part] for part in parts))
+            if not isinstance(payload, dict) or type(payload.get("schema_version")) is not int or payload["schema_version"] != 1:
+                raise ValueError()
+            if payload.get("operation_id") != operation:
+                raise ValueError()
+            sources = payload.get("sources")
+            if not isinstance(sources, dict) or len(sources) != count:
+                raise ValueError()
+            for ref, record in sources.items():
+                if not isinstance(ref, str) or not ref or not isinstance(record, dict) or "value" not in record:
+                    raise ValueError()
+                if record.get("encoding") not in ("base64", "native_json"):
+                    raise ValueError()
+                if record["encoding"] == "base64":
+                    if not isinstance(record["value"], str):
+                        raise ValueError()
+                    base64.b64decode(record["value"], validate=True)
+            return sources
+        return {}
+
     def _claude_entries(self) -> dict:
         if not self.claude_path.exists():
             return {}
@@ -210,8 +269,10 @@ class CredentialSources:
     def describe(self) -> dict:
         rows = [{**row, "availability": "not_probed"} for row in REFERENCES]
         errors = []
+        configured = {}
         try:
-            for ref, descriptor in self._configured().items():
+            configured = self._configured()
+            for ref, descriptor in configured.items():
                 rows.append({"credential_ref": ref, "source_type": descriptor["type"], "availability": "not_probed"})
         except Exception:
             errors.append("credential_source_config_unavailable")
@@ -226,6 +287,17 @@ class CredentialSources:
                                  "source_type": "existing_claude_mcp_oauth", "availability": "present" if entry.get(field) else "empty"})
         except Exception:
             errors.append("claude_credential_index_unavailable")
+        try:
+            for ref, record in self._box_sources().items():
+                if ref not in configured and ref not in self.readers:
+                    # Reflect the effective source when the box replaces a legacy reader.
+                    rows = [row for row in rows if row["credential_ref"] != ref]
+                    value = record["value"]
+                    rows.append({"credential_ref": ref, "source_type": "existing_grokbot_box_bundle",
+                                 "encoding": record["encoding"],
+                                 "availability": "empty" if value is None or value == "" or value == {} else "present"})
+        except Exception:
+            errors.append("credential_box_bundle_unavailable")
         return {"schema": "commons.credential-references.v1", "same_references_for_every_peer": True,
                 "references": rows, "errors": errors, "delivery_tool": "credential_retrieve_sealed",
                 "envelope_version": VERSION, "config": "~/.commons/credential_sources.json"}
@@ -302,6 +374,14 @@ class CredentialSources:
                 configured = {}
             if reference in configured:
                 return self._descriptor_read(configured[reference])
+            try:
+                box = self._box_sources()
+            except Exception:
+                # An optional unreadable bundle must not strand other existing roads.
+                # Discovery reports a constant error without the file contents.
+                box = {}
+            if reference in box:
+                return box[reference]["value"]
             if reference.startswith("claude/mcp/"):
                 encoded_key, suffix = reference[len("claude/mcp/"):].rsplit("/", 1)
                 field = {"access": "accessToken", "refresh": "refreshToken"}[suffix]
