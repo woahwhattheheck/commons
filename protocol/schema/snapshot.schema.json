@@ -30,7 +30,7 @@
     "economy": {
       "type": "object",
       "properties": {
-        "collected_cash_usd": { "type": "number" },
+        "collected_cash_usd": { "type": ["number", "null"] },
         "cash_state": { "type": "string" },
         "never_counted_as_revenue": { "type": "array", "items": { "type": "string" } }
       }

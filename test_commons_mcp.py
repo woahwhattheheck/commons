@@ -82,6 +82,31 @@ def memory_index(actor="QUAY", actor_class="CLOUD_MODEL", intelligence="LLM", su
     }]})
 
 
+class ObservatoryGitTruthTests(unittest.TestCase):
+    def test_deployed_reader_uses_same_pinned_bake_as_resource(self):
+        from protocol.projector import project
+        snap = project([], now="2026-08-28T00:00:00Z", legacy={"presence": [{"from": "SAGAN"}]})
+        truth = FakeTruth([(SHA1, {"observatory.json": json.dumps(snap)})])
+        gateway = cm.CommonsGateway(truth=truth, now=lambda: "2026-09-04T00:00:00Z")
+        # Local files must not mask missing deployment inputs or Git updates.
+        with mock.patch("host.observatory.snapshot", side_effect=AssertionError("local data read")):
+            row = gateway.read_observatory({"view": "census"})
+            observed = gateway.observe_work({})
+        self.assertEqual(row["cockpit"]["counts"]["presence_claims"], 1)
+        self.assertEqual(row["freshness"]["state"], "STALE")
+        self.assertEqual(row["git_sha"], SHA1)
+        self.assertEqual(observed["digest"], snap["digest"])
+        resource = gateway.read_resource("commons://observatory")
+        self.assertEqual(json.loads(resource["text"])["digest"], row["provenance"]["digest"])
+        self.assertTrue(all(path == "observatory.json" and sha == SHA1 for path, sha in truth.reads))
+
+    def test_missing_or_invalid_bake_is_unavailable_not_empty_census(self):
+        for data in (None, "[]", "{}", "bad JSON"):
+            truth = FakeTruth([(SHA1, {} if data is None else {"observatory.json": data})])
+            with self.subTest(data=data), self.assertRaises(cm.CommonsError):
+                cm.CommonsGateway(truth=truth).read_observatory({})
+
+
 class FakeTruth:
     def __init__(self, states):
         self.states = states

@@ -84,7 +84,29 @@
     });
     const status = el("snapshot-status");
     const sha = snap.head && snap.head.sha ? String(snap.head.sha).slice(0, 12) : "UNKNOWN";
-    status.textContent = "Bake " + text(snap.schema) + " · head " + sha + " · stale_after=" + text(snap.stale_after_seconds) + "s. Not a live websocket.";
+    const age = (Date.now() - Date.parse(snap.now)) / 1000;
+    const threshold = snap.stale_after_seconds;
+    const known = Number.isFinite(age) && age >= 0 && Number.isFinite(threshold) && threshold >= 0;
+    const freshness = !known ? "FRESHNESS UNKNOWN" : age > threshold ? "STALE SNAPSHOT" : "CURRENT SNAPSHOT";
+    status.className = "note" + (freshness === "CURRENT SNAPSHOT" ? "" : " error");
+    status.textContent = freshness + " · baked " + text(snap.now) +
+      (known ? " · age " + Math.floor(age / 60) + " minutes" : "") +
+      " · head " + sha + " · stale_after=" + text(threshold) + "s. Counts are observations at bake time, not live fleet totals.";
+    el("coverage-note").textContent = snap.coverage_note || "Source coverage was not recorded by this bake.";
+    fillList(el("source-coverage"), snap.source_coverage || [], function (row) {
+      const li = document.createElement("li");
+      li.textContent = text(row.source) + " · " + text(row.state);
+      return li;
+    });
+    fillList(el("board-motion"), snap.board_motion || [], function (row) {
+      const li = document.createElement("li");
+      li.textContent = text(row.ts) + " · " + text(row.from) + " → " + text(row.to) + " · ";
+      const link = document.createElement("a");
+      link.textContent = text(row.id);
+      link.href = "https://github.com/woahwhattheheck/commons/blob/main/p/" + encodeURIComponent(text(row.id)) + ".md";
+      li.appendChild(link);
+      return li;
+    });
   }
 
   function sessions(snap) {
@@ -92,7 +114,7 @@
     body.textContent = "";
     const rows = snap.sessions || [];
     if (!rows.length) {
-      body.innerHTML = '<tr><td colspan="11">Zero sessions confirmed. Quiet presence is listed below.</td></tr>';
+      body.innerHTML = '<tr><td colspan="11">No declared sessions in the observed inputs. This does not establish that the fleet is idle. Presence and board motion are listed separately.</td></tr>';
       return;
     }
     rows.forEach(function (row) {
