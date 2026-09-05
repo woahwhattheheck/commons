@@ -15,7 +15,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -34,14 +33,6 @@ KIND_HANDOFF = "LM_GTM_RELATIONSHIP_HANDOFF"
 ACTUAL_MESSAGE = "ACTUAL_MESSAGE"
 LEDGER_STATUS = "LEDGER_STATUS"
 SUMMARY_POINTER = "SUMMARY_POINTER"
-EXPLICIT_SENT_RE = re.compile(
-    r"(\bSENT\b|accepted SENT|Attachment E sent|Attachment E SENT)",
-    re.IGNORECASE,
-)
-WANTISH_RE = re.compile(
-    r"\b(wants?|request|ask|deadline|due|accepts?|delivered|reopen)\b",
-    re.IGNORECASE,
-)
 
 
 def _absent() -> dict[str, Any]:
@@ -122,7 +113,9 @@ def relationship_handoff(
         for event in built["events"]
         if event.get("subject_id") == subject_id
     ]
-    events_sorted = sorted(events, key=lambda item: str(item.get("ts") or ""))
+    events_sorted = sorted(
+        events, key=lambda item: idx.parse_time(str(item.get("ts") or ""))
+    )
 
     evidence_chain = [
         {
@@ -142,7 +135,9 @@ def relationship_handoff(
             continue
         body = str(event.get("body") or "")
         paths_e = _event_paths(event)
-        provenance = ACTUAL_MESSAGE if _message_paths(paths_e) else SUMMARY_POINTER
+        # Overlay prose remains a summary even when it links a real message.
+        # This composer does not fetch the linked source or verify a quote.
+        provenance = SUMMARY_POINTER
         wants = _sourced(body, paths_e + [f"overlay:{event.get('id')}"], provenance)
         break
 
@@ -165,18 +160,24 @@ def relationship_handoff(
         else _absent()
     )
 
-    # promised: ONLY explicit SENT language or SENT_AWAITING_REPLY; never invent
-    promised = _absent()
+    # A typed sent event records communication, not the contents of a promise.
+    # Retain its evidence separately; never interpret "NOT SENT", a future
+    # send, a question, or a bare transport receipt as a verified commitment.
+    sent_communication = _absent()
     for event in reversed(events_sorted):
-        body = str(event.get("body") or "")
+        if event.get("type") != "SENT_AWAITING_REPLY":
+            continue
         paths_e = _event_paths(event)
-        etype = event.get("type")
-        if etype == "SENT_AWAITING_REPLY" or EXPLICIT_SENT_RE.search(body):
-            msg_paths = _message_paths(paths_e)
-            provenance = ACTUAL_MESSAGE if msg_paths else SUMMARY_POINTER
-            evidence = (msg_paths or paths_e) + [f"overlay:{event.get('id')}"]
-            promised = _sourced(body, evidence, provenance)
-            break
+        sent_communication = _sourced(
+            str(event.get("body") or ""),
+            paths_e + [f"overlay:{event.get('id')}"],
+            SUMMARY_POINTER,
+        )
+        break
+    # Existing overlay events do not carry separately verified commitment
+    # contents. Original messages remain reachable via evidence_chain. A
+    # reader must inspect those sources before attributing a promise.
+    promised = _absent()
 
     # unresolved + successor next action from composed row (ledger truth)
     next_action = row.get("next_action")
@@ -240,6 +241,7 @@ def relationship_handoff(
             "wants": wants,
             "learned": learned,
             "promised": promised,
+            "sent_communication": sent_communication,
             "unresolved": unresolved,
             "next_time_sensitive": next_time,
             "successor_next_action": successor,
