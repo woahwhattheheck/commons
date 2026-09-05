@@ -416,7 +416,10 @@ def repo_event(repo: Path, head: str, status: str, path: str) -> tuple[str, str,
 def poll_git() -> None:
     repo = Path(env("COMMONS_REPO", str(ROOT)))
     try:
-        head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=repo, text=True).strip()
+        head = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=repo, text=True,
+            creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+        ).strip()
     except Exception:
         return
     previous = JOURNAL.cursor("git-head")
@@ -424,7 +427,7 @@ def poll_git() -> None:
         return
     names = subprocess.check_output(
         ["git", "diff", "--name-status", previous or f"{head}^", head], cwd=repo, text=True,
-        errors="replace",
+        errors="replace", creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
     ).splitlines()
     for line in names:
         status, _, path = line.partition("\t")
