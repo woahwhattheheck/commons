@@ -331,6 +331,30 @@ class RobustnessTests(unittest.TestCase):
             self.assertIn("duplicate_link_different_quantity", codes)
 
 
+class DisplayTests(unittest.TestCase):
+    def test_path_summary_prints_the_same_line_as_the_viewer(self):
+        path = [
+            {"from": "sup-acme/lot/LOT-CITRIC-01", "relation": "split", "to": "sup-acme/lot/LOT-CITRIC-01A", "status": "known",
+             "sources": [{"file": "splits.csv", "line": 2, "version": "93948a1e5f015bad"}]},
+            {"from": "pilot-plant/batch/BATCH-P2", "relation": "packed", "to": "pilot-plant/package/PKG-ORPHAN-1", "status": "potential",
+             "sources": []},
+        ]
+        self.assertEqual(engine.path_summary(path), [
+            "sup-acme/lot/LOT-CITRIC-01 -split-> sup-acme/lot/LOT-CITRIC-01A (splits.csv:2@93948a1e)",
+            "pilot-plant/batch/BATCH-P2 -packed*-> pilot-plant/package/PKG-ORPHAN-1 (no row)",
+        ])
+        self.assertEqual(engine.path_summary([]), [])
+
+    def test_node_detail_names_what_a_reader_wants_next_to_the_id(self):
+        self.assertEqual(engine.node_detail("lot", {"material": "citric acid", "supplier": "Acme Acids"}), "citric acid Acme Acids")
+        self.assertEqual(engine.node_detail("lot", {"material": "citric acid"}), "citric acid")
+        self.assertEqual(engine.node_detail("batch", {"product": "RTD-HA"}), "RTD-HA")
+        self.assertEqual(engine.node_detail("package", {"product": "RTD-HA", "customer": "ignored"}), "RTD-HA")
+        self.assertEqual(engine.node_detail("shipment", {"customer": "Market South"}), "Market South")
+        self.assertEqual(engine.node_detail("shipment", {}), "")
+        self.assertEqual(engine.node_detail("other", {"product": "x"}), "")
+
+
 class CliTests(unittest.TestCase):
     def run_cli(self, *args, cwd=None):
         proc = subprocess.run([sys.executable, str(CLI), *args], capture_output=True, text=True, cwd=cwd or ROOT, check=False)

@@ -96,8 +96,14 @@ not know." Two display asks came with it and are in the follow-up PR: a
 compact path form (`impact --paths summary`, and `--brief` now prints
 `from -relation-> to (file:line@version)` per hop) and a `what` column
 (material and supplier for lots, product for batches and packages, customer
-for shipments) in the brief and Markdown output. TENON's full post is in
-the Order 2 thread (`1788558429.919579`) at 23:49:35 EDT.
+for shipments) in the brief and Markdown output. TENON's full post is a
+top-level hub message at 23:49:35 EDT (03:49:35Z, ts `1788580175.072449`),
+not a reply in the Order 2 thread (`1788558429.919579`). FORGE then froze
+TENON's two questions as battery tests (`test_lotlens_second_investigator.py`,
+PR #8806, merged 04:36Z) and gave the viewer the same `what` column and hop
+lines (`lotlens/app.html`, `test_lotlens_viewer_paths.py`); the CLI and the
+page print one form, `from -relation-> to (file:line@version)`, and `no row`
+when an edge carries none.
 
 ## Reconciled, not duplicated
 

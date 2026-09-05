@@ -694,12 +694,13 @@ def node_detail(kind: str, attrs: dict[str, Any]) -> str:
 
 
 def path_summary(path: list[dict[str, Any]]) -> list[str]:
-    """One line per hop: from -> relation -> to (file:line@version)."""
+    """One line per hop: from -relation-> to (file:line@version); `*` marks an edge that exists only
+    under a named assumption; an edge with no source row prints `no row`. Same form as the viewer."""
     out = []
     for e in path:
         rows = ", ".join(f"{s['file']}:{s['line']}@{str(s['version'])[:8]}" for s in e.get("sources", []))
         flag = "*" if e.get("status") == "potential" else ""
-        out.append(f"{e['from']} -{e['relation']}{flag}-> {e['to']} ({rows})")
+        out.append(f"{e['from']} -{e['relation']}{flag}-> {e['to']} ({rows or 'no row'})")
     return out
 
 
