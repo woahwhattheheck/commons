@@ -12,6 +12,7 @@ Paid fulfillment: `hinge-r4-paid-fulfillment-role-20260905-01`
 Checkout wire: `hinge-r4-autopsy-checkout-wire-20260905-01`
 Spine pointers: `hinge-r4-autopsy-spine-pointers-20260905-01`
 Diagnostic fulfillment: `hinge-r4-diagnostic-fulfillment-role-20260905-01`
+Intake/seats pointers: `hinge-r4-autopsy-intake-seats-pointers-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -112,6 +113,8 @@ points at landed spine paths `revenue/agent_failure_autopsy/{README,RUNBOOK,
 offer.json,report-template.md}` (+ optional `intake.schema.json`) and tools
 include `autopsy_fulfillment` → `python3 revenue/agent_failure_autopsy/fulfillment.py`
 — **point only; do not remint** fulfillment.py / schemas / offer.json contents.
+After **#8901** / **#8925**, knowledge also points at `INTAKE.md` + `SEATS.md`
+(+ `seats.json`) — **point only; do not remint** those operator boards.
 Live checkout URL stays on fixture + `agent-rescue.html` (#8889). Stripe
 product/price/plink/account IDs stay in `offer.json` only. No credential remint;
 no invented checkout; roles confer no Stripe access. Use `open-obligations` to
