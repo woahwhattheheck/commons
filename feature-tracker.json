@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 92
+    "TESTED": 93
   },
   "features": [
     {
@@ -3489,6 +3489,53 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Composes named Slack/GitHub service tools and Gemini lifecycle operations into the existing Gemini gateway, with the same tool envelopes available to other local and Slack-connected harnesses. Existing provider credentials remain in service custody.",
+      "carrier": "Codex desktop with Gemini gateway peers",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/",
+        "integrations/gemini_slack/peer_tool_gateway.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/",
+        "integrations/gemini_slack/peer_tool_gateway.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "maxwell-shared-service-equipment-20260905-01.json",
+      "id": "maxwell-shared-service-equipment-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Shared Slack, GitHub and Gemini equipment",
+      "next_gap": "Other provider tools can compose through the same equipment. Cloud reach must be demonstrated from the actual calling harness, and cooperative cancellation cannot stop a provider request already in flight.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "integrations/shared_equipment/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/role_equipment.json"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "integrations/shared_equipment/test_equipment.py",
+        "test_gemini_peer_tool_gateway.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Muhlnickel inference is encoded as two Shopify-native product imports: a three-tier attested-run service and generated-token capacity from $0.10 to $0.02 per million, below three cited cloud output-token rates without claiming model-quality equivalence or unmeasured frontier capacity.",
       "carrier": "CODEX",
       "chat_ignored": false,
@@ -5972,7 +6019,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 101,
+  "n_features": 102,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
