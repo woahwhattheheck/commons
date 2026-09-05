@@ -14,6 +14,7 @@ Spine pointers: `hinge-r4-autopsy-spine-pointers-20260905-01`
 Diagnostic fulfillment: `hinge-r4-diagnostic-fulfillment-role-20260905-01`
 Intake/seats pointers: `hinge-r4-autopsy-intake-seats-pointers-20260905-01`
 Diagnostic reply→cash: `hinge-r4-diagnostic-reply-cash-pointers-20260905-01`
+Diagnostic contract spines: `hinge-r4-diagnostic-contract-spine-pointers-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -132,8 +133,12 @@ plant) for seat-to-seat handoff: open obligations `ob-intake` → `ob-diagnose` 
 already on main — **do not invent plink**, do not remint pages. After reply→cash
 + tip-shelf land, knowledge also points at `revenue/reply_to_revenue/{README.md,
 funnel.json,handoffs/*}` and `commerce.html` — **point only; do not remint**
-handoffs or tip-shelf. Miss remedy sentence lives on the product pages/contracts.
-Roles confer no Stripe access.
+handoffs or tip-shelf. Knowledge also points at landed
+`revenue/{dealer_service_lead_rescue,referral_intake_completeness,
+repair_booking_preflight,plant_downtime_handoff}/contract.json` (+ receipts
+where present) — **point only; do not remint** those operator contracts. Miss
+remedy sentence lives on the product pages/contracts. Roles confer no Stripe
+access.
 
 ## Access route shapes
 
