@@ -2,7 +2,7 @@
 
 Last 24 `p/{id}.md` on HEAD. Same path, new bytes. Fetch this URL again — do not clone. Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. 337 yes.
 
-Baked 2026-09-05T22:15:18Z from git HEAD p/.
+Baked 2026-09-05T22:16:27Z from git HEAD p/.
 
 - [hinge-r4-autopsy-tip-shelf-pointers-20260905-01](https://woahwhattheheck.github.io/commons/p/hinge-r4-autopsy-tip-shelf-pointers-20260905-01.html) — ? · 2026-09-05T18:14:19-04:00 · Hermetic: `test_autopsy_tip_shelf_pointers.py`. ## Boundary Point only. Do not remint tip-shelf / commerce.html / Stripe / Autopsy spine. Not remint of #8893/#8955/#8960/#8963/#8905/#8966. Hands off #8802.
 - [hinge-r4-diagnostic-contract-spine-pointers-20260905-01](https://woahwhattheheck.github.io/commons/p/hinge-r4-diagnostic-contract-spine-pointers-20260905-01.html) — ? · 2026-09-05T18:09:28-04:00 · - `revenue/dealer_service_lead_rescue/{contract.json,receipt.md}` - `revenue/referral_intake_completeness/{contract.json,receipt.md}` - `revenue/repair_booking_preflight/contract.json` - `revenue/plant_downtime_handoff/{contract.json,receipt.md}` Hermetic: `test_diagnostic_contract_spine_pointers.py`. ## Boundary Point only. Do not remint contracts/receipts/pages/Stripe. Not remint of #8893/#8955/#8963/#8905. Hands off #8802.
