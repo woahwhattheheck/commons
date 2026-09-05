@@ -99,8 +99,10 @@ run records) refuses on the same conditions.
   with scripts disabled sees the "ask for the link" block, which is still correct.
 - The page's copy is only as current as the pack-market catalog it was rendered from; re-run the
   builder when the catalog row or policies change.
-- Rendering in a real browser is verified only after the Pages bake; see the Slack thread for that
-  readback.
+- Live readback 2026-09-05 02:12Z: Pages run 33938222854 baked; the URL answers 200 with 9,864 B (blob
+  `302fc1f4…`). Opened with `?utm_source=x&utm_campaign=test`: $250, sold once, full offer, the pre-link
+  state text, no Buy button; `manifest.json` and `ground/BUSINESS_PACK_THANKS.json` fetched 200; no
+  third-party script loaded. One console 403 was not among the page's own requests.
 
 ## Seat boundary
 
