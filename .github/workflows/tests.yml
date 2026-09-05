@@ -16,27 +16,33 @@ jobs:
           fetch-depth: 100
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /integrations/transferable_roles/
-            /arbitrage.html
-            /commerce.html
-            /hub_pages.py
-            /revenue/arbitrage/
-            /test_arbitrage.py
-            /test_quill_arbitrage_autopsy_buyer_page.py
-      - name: Verify newly landed receipt role references
+            /integrations/
+            /revenue/agent_failure_autopsy/
+            /revenue/dealer_service_lead_rescue/
+            /revenue/referral_intake_completeness/
+            /revenue/repair_booking_preflight/
+            /revenue/plant_downtime_handoff/
+            /dealer-service-lead-rescue.html
+            /dealer-service-lead-rescue.js
+            /referral-intake-completeness.html
+            /referral-intake-completeness.js
+            /plant-downtime-handoff.html
+            /plant-downtime-handoff.js
+            /repair-booking-preflight.html
+            /tests/test_forge_diag_postpay_receipt_handoff.py
+      - name: Verify landed wrappers and buyer packet behavior
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor 3ae13c5db79e2c44d254428db298869714b944c0 HEAD
-          git merge-base --is-ancestor b2a37606a3a3415175fc455ebc9c2468e582c01e HEAD
-          git merge-base --is-ancestor d04c429f50066cc0998f37c1d18cdf502561b891 HEAD
+          git merge-base --is-ancestor 1ad9bdaf567bd891586c5c52eceb3bde80f3abf5 HEAD
           python3 -m unittest discover -v -s integrations/transferable_roles -p 'test_*.py'
+          python3 -m unittest discover -v -s tests -p test_forge_diag_postpay_receipt_handoff.py
       - name: Read back current main and audit
         run: |
           set -euo pipefail
           git fetch --depth=100 origin main
           python3 - <<'PY'
           import subprocess
-          paths = ["integrations/transferable_roles/README.md","integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json","integrations/transferable_roles/test_autopsy_receipt_row_pointers.py","p/hinge-r4-autopsy-receipt-row-pointers-20260905-01.md","arbitrage.html","test_arbitrage.py","test_quill_arbitrage_autopsy_buyer_page.py","revenue/arbitrage/kimi-agent-survival-proof-20260830-01.json","p/quill-arbitrage-autopsy-buyer-page-20260905-01.md","p/hinge-r4-autopsy-paid-case-pointers-20260905-01.md"]
+          paths = ["integrations/transferable_roles/diagnostic_contract.py","integrations/transferable_roles/cli.py","integrations/transferable_roles/test_diagnostic_contract_cli.py","integrations/transferable_roles/test_autopsy_case_cli.py","dealer-service-lead-rescue.html","referral-intake-completeness.html","plant-downtime-handoff.html","tests/test_forge_diag_postpay_receipt_handoff.py","integrations/transferable_roles/test_autopsy_fulfill_cli.py","integrations/transferable_roles/autopsy_paid.py","integrations/transferable_roles/autopsy_fulfill.py","integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json","integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json","revenue/dealer_service_lead_rescue/contract.json","revenue/referral_intake_completeness/contract.json","revenue/repair_booking_preflight/contract.json","revenue/plant_downtime_handoff/contract.json","revenue/agent_failure_autopsy/fulfillment.py"]
           for path in paths:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
@@ -166,4 +172,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 3ae13c5db79e2c44d254428db298869714b944c0 --required-path arbitrage.html --required-path p/hinge-r4-autopsy-paid-case-pointers-20260905-01.md
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 1ad9bdaf567bd891586c5c52eceb3bde80f3abf5 --required-path integrations/transferable_roles/cli.py --required-path tests/test_forge_diag_postpay_receipt_handoff.py
