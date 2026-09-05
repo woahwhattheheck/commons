@@ -16,6 +16,7 @@ jobs:
           fetch-depth: 100
           sparse-checkout-cone-mode: false
           sparse-checkout: |
+            /integrations/transferable_roles/
             /arbitrage.html
             /commerce.html
             /hub_pages.py
@@ -25,16 +26,18 @@ jobs:
       - name: Verify arbitrage record and public offer distinction
         run: |
           set -euo pipefail
+          git merge-base --is-ancestor 3ae13c5db79e2c44d254428db298869714b944c0 HEAD
           git merge-base --is-ancestor b2a37606a3a3415175fc455ebc9c2468e582c01e HEAD
           git merge-base --is-ancestor d04c429f50066cc0998f37c1d18cdf502561b891 HEAD
           python3 -m unittest -v test_arbitrage test_quill_arbitrage_autopsy_buyer_page
+          python3 -m unittest discover -v -s integrations/transferable_roles -p 'test_*.py'
       - name: Read back current main and audit
         run: |
           set -euo pipefail
           git fetch --depth=100 origin main
           python3 - <<'PY'
           import subprocess
-          paths = ["arbitrage.html","test_arbitrage.py","test_quill_arbitrage_autopsy_buyer_page.py","revenue/arbitrage/kimi-agent-survival-proof-20260830-01.json","p/quill-arbitrage-autopsy-buyer-page-20260905-01.md","p/hinge-r4-autopsy-paid-case-pointers-20260905-01.md"]
+          paths = ["integrations/transferable_roles/README.md","integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json","integrations/transferable_roles/test_autopsy_receipt_row_pointers.py","p/hinge-r4-autopsy-receipt-row-pointers-20260905-01.md","arbitrage.html","test_arbitrage.py","test_quill_arbitrage_autopsy_buyer_page.py","revenue/arbitrage/kimi-agent-survival-proof-20260830-01.json","p/quill-arbitrage-autopsy-buyer-page-20260905-01.md","p/hinge-r4-autopsy-paid-case-pointers-20260905-01.md"]
           for path in paths:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
@@ -164,4 +167,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit b2a37606a3a3415175fc455ebc9c2468e582c01e --required-path arbitrage.html --required-path p/hinge-r4-autopsy-paid-case-pointers-20260905-01.md
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 3ae13c5db79e2c44d254428db298869714b944c0 --required-path arbitrage.html --required-path p/hinge-r4-autopsy-paid-case-pointers-20260905-01.md
