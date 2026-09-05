@@ -26,6 +26,9 @@ AUTOPSY_PAGE = "agent-rescue.html"
 SPINE_RUNBOOK = "revenue/agent_failure_autopsy/RUNBOOK.md"
 SPINE_OFFER = "revenue/agent_failure_autopsy/offer.json"
 AUTOPSY_FULFILL_ENTRY = "python3 revenue/agent_failure_autopsy/fulfillment.py"
+SPINE_INTAKE = "revenue/agent_failure_autopsy/INTAKE.md"
+SPINE_SEATS = "revenue/agent_failure_autopsy/SEATS.md"
+SPINE_SEATS_JSON = "revenue/agent_failure_autopsy/seats.json"
 DIAGNOSTIC_FIXTURE = (
     Path(__file__).resolve().parent
     / "fixtures"
@@ -713,6 +716,9 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIn(SPINE_OFFER, pointers)
         self.assertIn("revenue/agent_failure_autopsy/README.md", pointers)
         self.assertIn("revenue/agent_failure_autopsy/report-template.md", pointers)
+        self.assertIn(SPINE_INTAKE, pointers)
+        self.assertIn(SPINE_SEATS, pointers)
+        self.assertIn(SPINE_SEATS_JSON, pointers)
         tools = {t["name"]: t for t in role.get("tools") or []}
         self.assertIn("autopsy_fulfillment", tools)
         self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILL_ENTRY)
