@@ -31,6 +31,11 @@
 name: webmcp-pad-production
 
 on:
+  # Permanent no-click tip→live (Bryce 2026-09-05): push this marker, Actions deploys.
+  # Never ask Bryce to Authorize or Run workflow.
+  push:
+    paths:
+      - ".wire/trigger-tip-live"
   workflow_dispatch:
     inputs:
       ref:
@@ -60,8 +65,8 @@ jobs:
     env:
       VERCEL_SCOPE: woahwhatthehecks-projects
       PAD_REPO: woahwhattheheck/webmcp-pad
-      PAD_REF: ${{ inputs.ref }}
-      PAD_PROJECT: ${{ inputs.project }}
+      PAD_REF: ${{ github.event.inputs.ref || 'main' }}
+      PAD_PROJECT: ${{ github.event.inputs.project || 'webmcp-pad' }}
     steps:
       - name: refuse any project name that could overwrite the Commons MCP
         run: |
@@ -173,7 +178,9 @@ jobs:
           if ! grep -Eq 'titanmcp|webmcp-pad' api/mcp.py; then
             BAD="${BAD} api/mcp.py-does-not-name-titanmcp-or-webmcp-pad"
           fi
-          if [ -d pad_blob ] || [ -d api/_blob ]; then
+          # Permanent tip-live (Bryce 2026-09-05): leftover pad_blob dirs are OK
+          # when plain pad.html already has registerTool (Wire tip on main).
+          if { [ -d pad_blob ] || [ -d api/_blob ]; } && ! grep -q 'registerTool' pad.html; then
             BAD="${BAD} self-extracting-blob-directories-present"
           fi
           if [ -n "${BAD}" ]; then
