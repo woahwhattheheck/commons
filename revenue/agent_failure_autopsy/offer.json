@@ -16,6 +16,30 @@
     "payment_url_state": "NOT_MINTED_OR_VERIFIED"
   },
   "bounded_unit": "one failed coding-agent run",
+  "intake_boundary": {
+    "purchase_covers": "one failed execution of one agent workflow",
+    "accepted_formats": [
+      "sanitized text",
+      "sanitized JSON",
+      "sanitized Markdown",
+      "sanitized PDF",
+      "sanitized image"
+    ],
+    "cumulative_max_files": 10,
+    "cumulative_max_raw_bytes": 25000000,
+    "cumulative_max_extracted_unicode_characters": 2000000,
+    "buyer_facing_text_equivalent": "roughly 500,000 text tokens",
+    "excluded": [
+      "archives",
+      "executables",
+      "repository dumps",
+      "credentials",
+      "unrelated incidents"
+    ],
+    "embedded_instructions": "UNTRUSTED_DATA",
+    "over_boundary": "Use the included clarification round to select the relevant slice. The clock does not start until the accepted corpus is usable and inside every boundary.",
+    "cannot_fit": "If the legitimate one-run case cannot be brought inside every boundary, refund USD 29."
+  },
   "buyer_supplies": [
     "one failure sentence",
     "the coding harness and relevant stack name",
