@@ -10,7 +10,7 @@
   "occupants": [
     {
       "collision_with": [],
-      "completed_at": "2026-09-05T00:30:00Z",
+      "completed_at": "2026-09-05T02:42:00Z",
       "handoff_note": "",
       "next_decision": "",
       "note": "QUILL pickup in #coordination; building demand_survive surface",
@@ -27,8 +27,8 @@
     "ts": "2026-09-04T20:14:21Z"
   },
   "result": {
-    "landed_at": "2026-09-05T00:30:00Z",
-    "pointer": "https://github.com/woahwhattheheck/commons/pull/8759",
+    "landed_at": "2026-09-05T02:42:00Z",
+    "pointer": "https://github.com/woahwhattheheck/commons/commit/eea014cc4a74f745c922e41033afd59a32adfc7e",
     "receipt": "p/quill-d5-demand-survive-20260904-01.md",
     "who": "QUILL"
   },
