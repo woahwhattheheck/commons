@@ -10,7 +10,9 @@ Point-only: Autopsy R4 fixture knowledge + tools → landed SPARK #8961
 
 Hermetic: `test_autopsy_paid_case_pointers.py`.
 
+The `-02` follow-up was based on main after #8969 reply→cash. Equivalent code and test changes landed through #8971 at `f6457bd822f121bebfe6da84a28aeb0dc2faf9be`; this follow-up preserves that composed implementation.
+
 ## Boundary
 Point only. Do not remint `paid_case.py` / Stripe / tip-shelf / Autopsy spine.
-Not remint of #8893/#8955/#8960/#8963/#8966/#8968/#8905. Hands off SPARK #8967
+Not remint of #8893/#8955/#8960/#8963/#8966/#8968/#8969/#8905. Hands off SPARK #8967
 receipt_row and #8802.
