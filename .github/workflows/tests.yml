@@ -21,7 +21,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Install binary encryption dependency before loading secrets
-        run: python3 -m pip install --no-cache-dir --only-binary=:all: --target "${RUNNER_TEMP}/commons-credential-crypto" 'cryptography>=46.0.0'
+        run: |
+          python3 -m pip install --no-cache-dir --only-binary=:all: --target "${RUNNER_TEMP}/commons-credential-crypto" 'cryptography>=46.0.0'
 
       - name: Fetch and verify the existing credential transfer implementation
         shell: bash
