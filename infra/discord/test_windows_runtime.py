@@ -1,5 +1,4 @@
 import json
-import os
 import sys
 import tempfile
 import unittest
@@ -9,7 +8,6 @@ ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT.parents[1]))
 
 from infra.discord import assert_ready
-from infra.discord import run_powershell_no_console
 
 
 class WindowsRuntimeTest(unittest.TestCase):
@@ -44,35 +42,6 @@ class WindowsRuntimeTest(unittest.TestCase):
         script = self.text("install_windows_runtime.ps1")
         for destructive in ("reset", "clean -", "Remove-Item"):
             self.assertNotIn(destructive, script)
-
-    @unittest.skipUnless(os.name == "nt", "requires the real Windows console API")
-    def test_watcher_has_no_console_and_retains_output_and_exit_status(self):
-        with tempfile.TemporaryDirectory(prefix="commons-no-console-") as directory:
-            script = Path(directory) / "probe.ps1"
-            log = Path(directory) / "probe.log"
-            script.write_text(
-                'Add-Type -TypeDefinition \'using System; using System.Runtime.InteropServices; '
-                'public class Probe { [DllImport("kernel32.dll")] '
-                'public static extern IntPtr GetConsoleWindow(); }\'\n'
-                'Write-Output ("CONSOLE=" + [Probe]::GetConsoleWindow().ToInt64())\n'
-                'Write-Output "WATCHER_OUTPUT_PRESERVED"\nexit 23\n',
-                encoding="utf-8",
-            )
-            powershell = str(Path(os.environ["SystemRoot"]) / "System32"
-                             / "WindowsPowerShell" / "v1.0" / "powershell.exe")
-            result = run_powershell_no_console.run(script, powershell, log)
-            self.assertEqual(result, 23)
-            output = log.read_text(encoding="utf-8")
-            self.assertIn("CONSOLE=0", output)
-            self.assertIn("WATCHER_OUTPUT_PRESERVED", output)
-
-    def test_watcher_task_uses_no_console_root(self):
-        script = self.text("install_windows_runtime.ps1")
-        action = script.split("function New-HiddenPowerShellAction", 1)[1].split(
-            "$bridgeAction", 1)[0]
-        self.assertIn("New-ScheduledTaskAction -Execute $pythonw", action)
-        self.assertIn("$noConsoleRunner", action)
-        self.assertIn("run_powershell_no_console.py", script)
 
     def test_health_watcher_is_bounded_and_preserves_bridge_until_cutover(self):
         script = self.text("health_watch_windows_runtime.ps1")

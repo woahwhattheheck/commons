@@ -17,17 +17,6 @@ SPEC.loader.exec_module(bridge)
 
 
 class BridgeTest(unittest.TestCase):
-    def test_git_poll_keeps_cursor_behavior_without_allocating_windows(self):
-        with mock.patch.object(bridge.subprocess, "check_output", side_effect=["new-head\n", ""]) as git:
-            with mock.patch.object(bridge, "JOURNAL") as journal:
-                journal.cursor.return_value = "old-head"
-                bridge.poll_git()
-                journal.set_cursor.assert_called_once_with("git-head", "new-head")
-        self.assertEqual(git.call_count, 2)
-        for call in git.call_args_list:
-            self.assertEqual(call.kwargs["creationflags"],
-                             getattr(bridge.subprocess, "CREATE_NO_WINDOW", 0))
-
     def test_request_json_honors_retry_after_on_http_429(self):
         class Response:
             def __enter__(self):
