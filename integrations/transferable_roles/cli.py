@@ -15,6 +15,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-deadline ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-validate ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py diagnostic-receipt ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -29,6 +30,7 @@ from pathlib import Path
 from autopsy_fulfill import run_deadline, run_validate
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
+from diagnostic_receipt import load_receipt_from_role
 from roles import RoleError, RoleStore
 
 
@@ -172,6 +174,18 @@ def build_parser() -> argparse.ArgumentParser:
         choices=("dealer", "referral", "repair", "plant"),
     )
 
+    dr = sub.add_parser(
+        "diagnostic-receipt",
+        help="load landed $199 diagnostic receipt.json by slug "
+        "(dealer|referral|plant; repair has no twin)",
+    )
+    dr.add_argument("role_id")
+    dr.add_argument(
+        "--slug",
+        required=True,
+        choices=("dealer", "referral", "repair", "plant"),
+    )
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -310,6 +324,9 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "diagnostic-contract":
             role = store.get(args.role_id)
             _print(load_contract_from_role(role, slug=args.slug))
+        elif args.cmd == "diagnostic-receipt":
+            role = store.get(args.role_id)
+            _print(load_receipt_from_role(role, slug=args.slug))
         elif args.cmd == "inspect":
             _print(store.inspect(args.role_id))
         elif args.cmd == "export":
