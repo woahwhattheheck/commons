@@ -15,6 +15,11 @@ from roles import RoleError, RoleStore, SECRET_FIELD_NAMES
 import cli as roles_cli
 
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "synthetic_crm_followup_role.json"
+AUTOPSY_FIXTURE = (
+    Path(__file__).resolve().parent
+    / "fixtures"
+    / "synthetic_agent_failure_autopsy_role.json"
+)
 
 
 class TransferableRoleTests(unittest.TestCase):
@@ -634,6 +639,69 @@ class TransferableRoleTests(unittest.TestCase):
                 r for r in out["access_routes"] if r["name"] == "grokbot_control_g2"
             )
             self.assertEqual(g2["session_id"], "cli-import-sess")
+
+    def test_list_open_obligations_autopsy_fixture(self) -> None:
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        rows = [
+            r
+            for r in self.store.list_open_obligations()
+            if r["role_id"] == role["role_id"]
+        ]
+        self.assertEqual(len(rows), 4)
+        ids = [r["obligation_id"] for r in rows]
+        self.assertEqual(ids, ["ob-diagnose", "ob-intake", "ob-review", "ob-settle"])
+        for row in rows:
+            self.assertTrue(row.get("synthetic"))
+            self.assertEqual(row["purpose"], role["purpose"])
+            self.assertEqual(row.get("label"), role.get("label"))
+            self.assertIn("summary", row)
+            self.assertIn("next_action", row)
+        pay = next(
+            r for r in role["access_routes"] if r["name"] == "payment_capability"
+        )
+        self.assertEqual(pay["kind"], "public_html")
+        self.assertEqual(pay["base"], "pay.html / payment-capability.html")
+        settle = next(r for r in rows if r["obligation_id"] == "ob-settle")
+        self.assertIn("evidence_pointer", settle)
+
+    def test_list_open_obligations_drops_done(self) -> None:
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw, role_id="role-autopsy-adv-open")
+        self.store.advance_obligation(role["role_id"], "ob-intake", status="done")
+        rows = [
+            r
+            for r in self.store.list_open_obligations()
+            if r["role_id"] == role["role_id"]
+        ]
+        self.assertEqual(len(rows), 3)
+        self.assertNotIn("ob-intake", [r["obligation_id"] for r in rows])
+
+    def test_cli_open_obligations(self) -> None:
+        store_dir = self._tmp.name
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(AUTOPSY_FIXTURE),
+                ]
+            )
+        self.assertEqual(rc, 0)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(["--store", store_dir, "open-obligations"])
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        self.assertIn("open_obligations", out)
+        autopsy = [
+            r
+            for r in out["open_obligations"]
+            if r["role_id"] == "role-synthetic-agent-failure-autopsy-20260905"
+        ]
+        self.assertEqual(len(autopsy), 4)
 
 
 if __name__ == "__main__":
