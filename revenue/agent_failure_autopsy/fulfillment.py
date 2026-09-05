@@ -1127,6 +1127,7 @@ def validate_report(
         "CANNOT_FIT_BOUNDARY",
         "QUARANTINED_EVIDENCE_REMAINS_UNUSABLE",
         "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW",
+        "MISSED_DELIVERY_WINDOW",
     }:
         raise AutopsyValidationError("refund reason_code is invalid")
     refund_reason = _nullable_text(refund["reason"], "report.refund.reason")
@@ -1226,9 +1227,14 @@ def validate_report(
             and refund_reason_code == "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW"
             and quality["adversarial_challenge_completed"] is True
         )
-        if not (refundable_state or failed_after_review):
+        missed_delivery_window = (
+            context["state"] == "USABLE"
+            and refund_reason_code == "MISSED_DELIVERY_WINDOW"
+            and delivery["within_one_business_day"] is False
+        )
+        if not (refundable_state or failed_after_review or missed_delivery_window):
             raise AutopsyValidationError(
-                "refund requires the single clarification and either unusable evidence or a failed adversarial diagnosis"
+                "refund requires unusable evidence after clarification, a failed adversarial diagnosis, or a missed delivery window"
             )
         if timeline or divergence is not None or failure_chain or primary or contributing or fixes or prevention is not None:
             raise AutopsyValidationError(
@@ -1253,6 +1259,10 @@ def validate_report(
         if refund_reason_code == "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW" and not failed_after_review:
             raise AutopsyValidationError(
                 "failed-diagnosis refund requires usable evidence and completed adversarial review"
+            )
+        if refund_reason_code == "MISSED_DELIVERY_WINDOW" and not missed_delivery_window:
+            raise AutopsyValidationError(
+                "missed-window refund requires usable evidence and delivery after the recorded deadline"
             )
 
     warnings: list[str] = []
