@@ -110,6 +110,57 @@ class HandoffProvenanceRegression(unittest.TestCase):
         with self.assertRaises(handoff.idx.IndexError_):
             self.packet([self.event('Do not copy person@example.invalid', 'MATERIAL_REPLY')])
 
+    def test_newer_overlay_due_retains_relationship_provenance(self):
+        due = '2026-09-28'
+        overlay = self.event(
+            'Newer canonical status with the same due.',
+            suffix='overlay',
+            ts='2026-09-05T04:05:24Z',
+            sources=['slack:synthetic-later'],
+        )
+        overlay['due'] = due
+        relationship = self.event(
+            'Earlier source-rich relationship status.',
+            suffix='relationship',
+            ts='2026-09-05T00:35:00Z',
+            sources=['gmail:synthetic-earlier'],
+        )
+        relationship.update({
+            'due': due,
+            handoff._INTERNAL_SOURCE: handoff.SOURCE_RELATIONSHIP_EVIDENCE,
+        })
+        row = {
+            'id': SUBJECT, 'role': 'external_prospect', 'live': True,
+            'organization': 'Synthetic customer', 'person': None,
+            'decision': 'OWNER_HOLD', 'dnr': True,
+            'next_action': 'Retain no-new-contact instruction; inspect source.',
+            'owner': 'UNSEATED', 'due': due,
+            'source_paths': ['synthetic:existing-ledger'],
+            'overlay_event_ids': [overlay['id']],
+            'route_kind': 'EXISTING_CRM_RECORD',
+            'route_ref': 'airtable:synthetic-existing-record',
+        }
+        with patch.object(
+            handoff.idx,
+            'build_index',
+            return_value={'rows': [row], 'events': [overlay]},
+        ), patch.object(
+            handoff,
+            '_load_relationship_evidence',
+            return_value=[relationship],
+        ):
+            packet = handoff.relationship_handoff(SUBJECT, paths={'root': ROOT})
+
+        self.assertEqual(
+            packet['fields']['next_time_sensitive']['evidence'],
+            [
+                'slack:synthetic-later',
+                'overlay:synthetic-event-overlay',
+                'gmail:synthetic-earlier',
+                'relationship:synthetic-event-relationship',
+            ],
+        )
+
     def test_successor_can_read_packet_without_index_io(self):
         p = self.packet([])
         with patch.object(handoff.idx, 'build_index', side_effect=AssertionError('unexpected IO')):
