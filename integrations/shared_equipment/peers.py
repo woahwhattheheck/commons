@@ -122,9 +122,14 @@ class GrokBotEquipment:
         return [
             _schema(
                 "grokbot_submit",
-                "Submit work to an existing GrokBot pool via grokbot_control. Returns run_id + session_id. Not grok.com. Not Cursor cloud.",
+                "Submit work to an existing GrokBot pool via grokbot_control. Optional case ties the run to a paid offer (offer_id/case_ref/client_reference_id/sku). Returns run_id + session_id. Not grok.com. Not Cursor cloud.",
                 {"prompt": "string"},
-                {"pool_id": "string", "seat": "string", "async": "boolean"},
+                {
+                    "pool_id": "string",
+                    "seat": "string",
+                    "async": "boolean",
+                    "case": "object",
+                },
             ),
             _schema(
                 "grokbot_inspect",
@@ -175,6 +180,8 @@ class GrokBotEquipment:
             }
             if args.get("seat"):
                 body["seat"] = args["seat"]
+            if args.get("case") is not None:
+                body["case"] = args["case"]
             return self._request("POST", "/v1/runs", payload=body)
         if name == "grokbot_inspect":
             wait_ms = min(45000, max(0, int(args.get("wait_ms", 0))))
