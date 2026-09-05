@@ -26,11 +26,25 @@ class AgentFailureDiagnosticPageTests(unittest.TestCase):
 
     def test_intake_and_one_clarification_round_are_explicit(self):
         for marker in (
+            "One failed execution of one agent workflow.",
             "One sentence: what the agent should do, and what failed.",
             "The stack, framework, or harness name.",
             "One redacted log, transcript, or screenshot",
             "One clarification round is included",
-            "delivery clock starts when usable redacted evidence arrives",
+            "delivery clock starts once usable redacted evidence is within the intake cap",
+        ):
+            self.assertIn(marker, self.page)
+
+    def test_intake_cap_is_deterministic_and_quality_neutral(self):
+        for marker in (
+            "2,000,000 extracted Unicode characters (roughly 500,000 text tokens)",
+            "10 files",
+            "25,000,000 raw bytes total",
+            "whichever limit is reached first",
+            "No archives, executables, repository dumps, or unrelated incidents.",
+            "we help you select the relevant slice",
+            "This limits intake, not the quality of the diagnosis.",
+            "legitimate case cannot be brought within the cap",
         ):
             self.assertIn(marker, self.page)
 
