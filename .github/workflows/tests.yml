@@ -16,26 +16,86 @@ jobs:
           fetch-depth: 100
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /test_forge_reply_cash_communitycare.py
-            /referral-intake-completeness.html
-            /revenue/reply_to_revenue/handoffs/communitycare-katherine-reyes.json
-            /p/forge-reply-cash-communitycare-20260905-01.md
-      - name: Verify new handoff contract
+            /integrations/
+            /test_grokbot_control.py
+            /test_grokbot_shared_equipment.py
+            /test_agent_triage_autopsy_next_step.py
+            /agent-triage.js
+            /agent-triage.html
+            /features/registry/spark-g2-paid-case-attribution-20260905-01.json
+            /p/spark-g2-paid-case-attribution-20260905-01.md
+            /p/quill-triage-autopsy-next-step-20260905-01.md
+            /p/hinge-r4-autopsy-intake-seats-test-pins-20260905-01.md
+      - name: Verify new batch on main
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor ab8ab17f99c5ec607e3dc10950a89efb3d5f4b2c HEAD
-          python3 -W error -m unittest -v test_forge_reply_cash_communitycare
-      - name: Read back current main and audit
+          git merge-base --is-ancestor b6b0e2b1b130c042e54b6b9ff1b086eba0d5e06b HEAD
+          git rev-parse HEAD
+          python3 test_grokbot_control.py
+          python3 test_grokbot_shared_equipment.py
+          python3 -m unittest -v test_agent_triage_autopsy_next_step
+          python3 integrations/transferable_roles/test_roles.py
+          python3 integrations/transferable_roles/test_autopsy_intake_seats_pointers.py
+      - name: Verify legacy SQLite migration and durable case restart
+        run: |
+          python3 - <<'PY'
+          import pathlib, sqlite3, tempfile
+          from integrations.grokbot_control.store import RunStore
+          with tempfile.TemporaryDirectory() as directory:
+              path = pathlib.Path(directory) / "legacy.sqlite3"
+              with sqlite3.connect(path) as db:
+                  db.execute("CREATE TABLE runs(run_id TEXT PRIMARY KEY, session_id TEXT NOT NULL, pool_id TEXT NOT NULL, seat TEXT NOT NULL, status TEXT NOT NULL, prompt TEXT NOT NULL, result_text TEXT, error TEXT, attribution_json TEXT, parent_run_id TEXT, created_at REAL NOT NULL, updated_at REAL NOT NULL)")
+                  db.execute("INSERT INTO runs VALUES(?,?,?,?,?,?,?,?,?,?,?,?)", ("legacy","session","grokbot","TEST","completed","existing prompt","existing result",None,None,None,1.0,2.0))
+              store = RunStore(path)
+              legacy = store.get_run("legacy")
+              assert legacy["prompt"] == "existing prompt" and legacy["result_text"] == "existing result" and legacy["case"] is None
+              created = store.create_run(pool_id="grokbot", seat="TEST", prompt="new", case={"offer_id":"offer-test","case_ref":"opaque-test"})
+              run_id = created["run_id"]
+              store.close()
+              reopened = RunStore(path)
+              assert reopened.get_run(run_id)["case"] == {"offer_id":"offer-test","case_ref":"opaque-test"}
+              assert reopened.get_run("legacy")["result_text"] == "existing result"
+              reopened.close()
+          print("LEGACY_MIGRATION_AND_CASE_RESTART_PASS")
+          PY
+      - name: Exercise actual triage browser script
+        run: |
+          node - <<'JS'
+          const fs = require('fs'), vm = require('vm'), assert = require('assert');
+          const nodes = new Map();
+          const node = id => {
+            if (!nodes.has(id)) nodes.set(id,{value:'', hidden:true, addEventListener(type,fn){ this[type] = fn; }});
+            return nodes.get(id);
+          };
+          vm.runInNewContext(fs.readFileSync('agent-triage.js','utf8'), {document:{getElementById:node},navigator:{}});
+          node('expected-outcome').value = 'finish once';
+          node('observed-failure').value = 'retry loop';
+          node('triage-form').submit({preventDefault(){}});
+          let packet = JSON.parse(node('triage-json').value);
+          assert.strictEqual(packet.paid_next_step.id,'agent-failure-autopsy-29');
+          assert.strictEqual(packet.paid_next_step.price,'$29');
+          assert.strictEqual(packet.paid_next_step.href,'./agent-rescue.html');
+          assert.ok(node('triage-markdown').value.includes('**retry loop**.'));
+          assert.strictEqual(packet.telemetry,false);
+          node('observed-failure').value = 'lost state after restart';
+          node('triage-form').submit({preventDefault(){}});
+          packet = JSON.parse(node('triage-json').value);
+          assert.strictEqual(packet.paid_next_step.id,'ho-agent-failure-diagnostic');
+          assert.strictEqual(packet.paid_next_step.price,'$199');
+          console.log('TRIAGE_REAL_SCRIPT_OFFER_AND_MARKDOWN_PASS');
+          JS
+      - name: Current-main readback and clean terminal audit
         run: |
           set -euo pipefail
           git fetch --depth=100 origin main
           python3 - <<'PY'
           import subprocess
-          for path in ["test_forge_reply_cash_communitycare.py", "referral-intake-completeness.html", "revenue/reply_to_revenue/handoffs/communitycare-katherine-reyes.json", "p/forge-reply-cash-communitycare-20260905-01.md"]:
-              expected = subprocess.check_output(["git", "rev-parse", "HEAD:" + path], text=True).strip()
-              actual = subprocess.check_output(["git", "rev-parse", "origin/main:" + path], text=True).strip()
-              assert expected == actual, path
-              print("READBACK", path, actual)
+          paths = ["integrations/grokbot_control/store.py","integrations/grokbot_control/gateway.py","integrations/grokbot_control/client.py","integrations/grokbot_control/README.md","integrations/shared_equipment/peers.py","test_grokbot_control.py","test_grokbot_shared_equipment.py","features/registry/spark-g2-paid-case-attribution-20260905-01.json","p/spark-g2-paid-case-attribution-20260905-01.md","agent-triage.js","agent-triage.html","test_agent_triage_autopsy_next_step.py","p/quill-triage-autopsy-next-step-20260905-01.md","integrations/transferable_roles/test_roles.py","integrations/transferable_roles/test_autopsy_intake_seats_pointers.py","p/hinge-r4-autopsy-intake-seats-test-pins-20260905-01.md"]
+          for path in paths:
+              expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
+              actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
+              assert actual == expected,path
+              print("READBACK",path,actual)
           PY
           cat > "$RUNNER_TEMP/audit_git_terminal.py" <<'AUDIT_PY'
           #!/usr/bin/env python3
@@ -160,4 +220,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit ab8ab17f99c5ec607e3dc10950a89efb3d5f4b2c --required-path revenue/reply_to_revenue/handoffs/communitycare-katherine-reyes.json
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit b6b0e2b1b130c042e54b6b9ff1b086eba0d5e06b --required-path integrations/grokbot_control/store.py --required-path agent-triage.js --required-path integrations/transferable_roles/test_roles.py
