@@ -109,6 +109,8 @@
           "extracted_text_sha256",
           "extracted_characters",
           "extraction_method",
+          "handling_state",
+          "quarantine_reason",
           "redacted",
           "sanitized",
           "scope_relevance",
@@ -145,7 +147,7 @@
           },
           "anchors": {
             "type": "array",
-            "minItems": 1,
+            "minItems": 0,
             "maxItems": 100,
             "items": {
               "type": "object",
@@ -222,6 +224,24 @@
                 "type": "string",
                 "pattern": "^(private|example):[A-Za-z0-9._/-]+$",
                 "maxLength": 240
+              }
+            ]
+          },
+          "handling_state": {
+            "enum": [
+              "ANALYZABLE_UNTRUSTED_DATA",
+              "QUARANTINED_UNUSABLE"
+            ]
+          },
+          "quarantine_reason": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 1000
               }
             ]
           }
@@ -377,6 +397,7 @@
         "accepted_file_count",
         "accepted_raw_bytes",
         "accepted_extracted_characters",
+        "quarantined_file_count",
         "boundary_hit",
         "selection_state"
       ],
@@ -424,6 +445,11 @@
             "RELEVANT_SLICE_SELECTED",
             "CANNOT_FIT_LEGITIMATE_CASE"
           ]
+        },
+        "quarantined_file_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
         }
       }
     }
