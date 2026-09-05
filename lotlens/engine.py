@@ -714,12 +714,7 @@ def build_report(workspace: Workspace, graph: Graph, impact: dict[str, Any]) -> 
         "impact": impact,
         "annotations": notes,
     }
-    # The hash covers the answer and the bytes it came from (schema, import version/label/files/rows,
-    # impact, annotations), not the clocks: two workspaces that import the same export at different
-    # times and ask the same question get the same content_sha256.
-    hashed = {k: v for k, v in report.items() if k != "generated_at"}
-    hashed["imports"] = [{k: v for k, v in i.items() if k != "imported_at"} for i in report["imports"]]
-    canonical = json.dumps(hashed, sort_keys=True, ensure_ascii=False)
+    canonical = json.dumps({k: v for k, v in report.items() if k != "generated_at"}, sort_keys=True, ensure_ascii=False)
     report["content_sha256"] = sha256_bytes(canonical.encode("utf-8"))
     return report
 

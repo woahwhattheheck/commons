@@ -418,6 +418,31 @@ class CliTests(unittest.TestCase):
             self.assertEqual(proc.returncode, 1)
             self.assertIn("namespace/kind/id", json.loads(proc.stdout)["message"])
 
+    def test_versions_flag_takes_one_value_and_can_precede_the_command(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            ws = str(Path(tmp) / "ws")
+            v1 = self.run_cli("-w", ws, "import", str(FIXTURE), "--label", "pilot")["version"]
+            corrected = copy_fixture(tmp)
+            with (corrected / "shipments.csv").open("a", encoding="utf-8", newline="") as fh:
+                fh.write("pilot-plant,SHIP-10,PKG-P4-1,Deli East,300,L,2026-08-21
+")
+            v2 = self.run_cli("-w", ws, "import", str(corrected), "--label", "corrected")["version"]
+            self.assertNotEqual(v1, v2)
+            older = self.run_cli("-w", ws, "--versions", v1, "impact", "pilot-plant/package/PKG-P4-1", "--paths", "summary")
+            self.assertEqual(older["impact"]["counts"]["coverage_gaps"], 1, "the older import still shows the gap")
+            self.assertEqual([i["version"] for i in older["imports"]], [v1])
+            latest = self.run_cli("-w", ws, "impact", "pilot-plant/package/PKG-P4-1", "--brief")
+            self.assertEqual(latest["counts"]["coverage_gaps"], 0)
+            ship10 = [a for a in latest["affected"] if a["key"] == "pilot-plant/shipment/SHIP-10"]
+            self.assertEqual(ship10[0]["status"], "KNOWN_AFFECTED")
+            self.assertEqual(ship10[0]["detail"], "Deli East")
+            self.assertTrue(ship10[0]["path"][-1].startswith("pilot-plant/package/PKG-P4-1 -shipped-> pilot-plant/shipment/SHIP-10 (shipments.csv:11@"), ship10[0]["path"][-1])
+            both = self.run_cli("-w", ws, "--versions", f"{v1},{v2}", "summary")
+            self.assertEqual(sorted(both["versions"]), sorted([v1, v2]))
+            proc = subprocess.run([sys.executable, str(CLI), "-w", ws, "--versions", v1, "impact", "bad-key"], capture_output=True, text=True, check=False)
+            self.assertEqual(proc.returncode, 1)
+            self.assertIn("namespace/kind/id", json.loads(proc.stdout)["message"])
+
 
 class PageTests(unittest.TestCase):
     def test_viewer_page_loads_nothing_but_the_file_it_is_given(self):

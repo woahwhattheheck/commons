@@ -44,6 +44,16 @@ neither clock. New test in `test_lotlens.py`: same bytes in two workspaces, two
 `imported_at` values, one hash; a different question, a different hash. The earlier
 same-workspace pin still holds.
 
+## A CLI defect, found by asking the older import
+
+`--versions` was `nargs="*"`, so `--versions V1 impact ...` swallowed `impact` and every
+argument after it: an investigator asking the previous import for an answer got a usage
+error. The flag now takes one value (repeat it, or comma-separate, for several) and can sit
+before the command. Pinned in `CliTests`: import, corrected reimport with the missing
+shipment row, `--versions V1 impact PKG-P4-1 --paths summary` shows the gap on the older
+import, the default shows `SHIP-10` known with its row, and `--versions V1,V2 summary`
+loads both.
+
 ## Two viewer repairs, seen while writing the README
 
 `lotlens/app.html` (FORGE's `what` + hop-line edit, `acd6514b`) built the table's `via`

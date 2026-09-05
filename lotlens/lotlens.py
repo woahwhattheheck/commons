@@ -11,6 +11,7 @@
     python lotlens/lotlens.py --workspace WS annotate pilot-plant/batch/BATCH-P3 "text" [--by NAME] [--supersedes ID]
     python lotlens/lotlens.py --workspace WS annotations [TARGET]
     python lotlens/lotlens.py --workspace WS compare V1 V2
+    python lotlens/lotlens.py --workspace WS --versions V1 impact pilot-plant/package/PKG-P4-1   (ask the older import)
     python lotlens/lotlens.py assumptions
 
 There is no command that runs an investigation for you. Each command performs its
@@ -135,7 +136,9 @@ def cmd_assumptions(ws, args) -> dict:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--workspace", "-w", default=".lotlens", help="workspace directory (created on first import)")
-    parser.add_argument("--versions", nargs="*", default=None, help="import versions to load (default: the latest)")
+    parser.add_argument("--versions", action="append", default=None, metavar="VERSION",
+                        help="import version to load; repeat the flag or comma-separate for several (default: the latest). "
+                             "Takes one value, so it can sit before the command: --versions V1 impact ...")
     sub = parser.add_subparsers(dest="command", required=True)
     p = sub.add_parser("import"); p.add_argument("source"); p.add_argument("--label", default="")
     sub.add_parser("imports")
@@ -162,6 +165,8 @@ COMMANDS = {
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
+    if args.versions is not None:
+        args.versions = [v.strip() for chunk in args.versions for v in chunk.split(",") if v.strip()] or None
     ws = engine.Workspace(args.workspace) if args.command != "assumptions" else None
     try:
         _out(COMMANDS[args.command](ws, args))
