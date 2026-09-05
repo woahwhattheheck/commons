@@ -82,11 +82,34 @@ def make_refund_report(intake, report, reason_code):
 
 
 class AgentFailureAutopsyContractTests(unittest.TestCase):
-    def test_offer_is_full_strength_and_payment_is_pending(self):
+    def test_offer_is_full_strength_and_checkout_is_verified(self):
         offer = json.loads((AREA / "offer.json").read_text(encoding="utf-8"))
+        self.assertEqual(offer["status"], "ACTIVE_VERIFIED")
         self.assertEqual(offer["price"]["amount"], 29)
-        self.assertIsNone(offer["price"]["payment_url"])
-        self.assertEqual(offer["price"]["payment_url_state"], "NOT_MINTED_OR_VERIFIED")
+        self.assertEqual(
+            offer["price"]["payment_url"],
+            "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        )
+        self.assertEqual(offer["price"]["payment_url_state"], "LIVE_VERIFIED")
+        self.assertEqual(offer["price"]["provider"], "STRIPE")
+        self.assertEqual(
+            offer["price"]["provider_account_id"], "acct_1U6HI9ATH4EDE7XD"
+        )
+        self.assertEqual(
+            offer["price"]["provider_account_binding"]["source"],
+            "STRIPE_OFFICIAL_KEY_CREATION_UI",
+        )
+        self.assertEqual(
+            offer["price"]["provider_product_id"], "prod_VCevsvv7skWk3e"
+        )
+        self.assertEqual(
+            offer["price"]["provider_price_id"],
+            "price_1UCFbHATH4EDE7XD4NNrjfUe",
+        )
+        self.assertEqual(
+            offer["price"]["provider_payment_link_id"],
+            "plink_1UCFbLATH4EDE7XDlTunr6iO",
+        )
         self.assertEqual(offer["bounded_unit"], "one failed coding-agent run")
         self.assertEqual(offer["quality"]["analysis_level"], "FULL_STRENGTH")
         self.assertFalse(offer["quality"]["time_budget_may_truncate_analysis"])
@@ -127,6 +150,11 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         self.assertEqual(caps["max_extracted_characters"]["const"], 2_000_000)
         self.assertIn("intake_scope", report_schema["required"])
         self.assertIn("first_meaningful_divergence", report_schema["required"])
+        refund_variants = report_schema["properties"]["refund"]["properties"][
+            "reason_code"
+        ]["oneOf"]
+        refund_codes = next(item["enum"] for item in refund_variants if "enum" in item)
+        self.assertIn("MISSED_DELIVERY_WINDOW", refund_codes)
         for field in ("reviewer_minutes", "automated_draft_minutes"):
             variants = report_schema["properties"]["operator_time"]["properties"][
                 field
@@ -262,6 +290,27 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         report["quality"]["adversarial_challenge_completed"] = True
         result = FULFILLMENT.validate_report(report, intake)
         self.assertEqual(result["disposition"], "REFUND_REQUIRED")
+
+    def test_missed_delivery_window_requires_refund(self):
+        intake, report = make_buyer_case()
+        report["delivery"]["delivered_at"] = "2026-09-04T09:03:00-04:00"
+        report["delivery"]["within_one_business_day"] = False
+        report = make_refund_report(intake, report, "MISSED_DELIVERY_WINDOW")
+        report["refund"]["reason"] = (
+            "A defensible diagnosis was not delivered by the recorded deadline."
+        )
+        result = FULFILLMENT.validate_report(report, intake)
+        self.assertEqual(result["disposition"], "REFUND_REQUIRED")
+        self.assertFalse(result["within_one_business_day"])
+
+        on_time_intake, on_time_report = make_buyer_case()
+        on_time_report = make_refund_report(
+            on_time_intake, on_time_report, "MISSED_DELIVERY_WINDOW"
+        )
+        with self.assertRaisesRegex(
+            FULFILLMENT.AutopsyValidationError, "refund requires"
+        ):
+            FULFILLMENT.validate_report(on_time_report, on_time_intake)
 
     def test_quarantined_evidence_gets_one_slice_then_refund(self):
         intake, report = make_buyer_case()
