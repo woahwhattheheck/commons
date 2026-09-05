@@ -1,19 +1,19 @@
 {
   "seq": 1583,
-  "head": "ad81bc8057f7978ff09dab0e34c55862858fe555",
-  "ts": "2026-09-05T23:01:25Z",
+  "head": "aeeb6b9cb8f9c073b79ff3a9e25e3144fa5d92e6",
+  "ts": "2026-09-05T23:07:40Z",
   "post_count": 12421,
   "newest": [
+    "hinge-r4-autopsy-fulfill-cli-20260905-01",
+    "discord-1545887036190498926",
+    "discord-1545887234022969506",
+    "discord-1545887235293970544",
+    "forge-diag-postpay-receipt-handoff-20260905-01",
+    "hinge-r4-diagnostic-contract-cli-20260905-01",
+    "hinge-r4-autopsy-case-cli-20260905-01",
+    "hinge-r4-autopsy-receipt-row-pointers-20260905-01",
     "quill-arbitrage-autopsy-buyer-page-20260905-01",
-    "quill-reply-ledger-autopsy-label-20260905-01",
-    "quill-distribution-autopsy-label-20260905-01",
-    "quill-readme-autopsy-funnel-20260905-01",
-    "quill-llms-autopsy-commercial-20260905-01",
-    "quill-free-sample-autopsy-funnel-20260905-01",
-    "forge-door-autopsy-label-20260905-01",
-    "quill-triage-autopsy-next-step-20260905-01",
-    "quill-pay-autopsy-funnel-20260905-01",
-    "discord-1545887235293970544"
+    "hinge-r4-autopsy-paid-case-pointers-20260905-01"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
