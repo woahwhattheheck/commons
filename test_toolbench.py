@@ -266,6 +266,46 @@ class BenchTests(unittest.TestCase):
         self.assertEqual(self.bench.source('camera-b')['name'],'J-101-photo.png')
         self.assertTrue(base64.b64decode(self.bench.source('camera-b')['data_base64']).startswith(b'\x89PNG'))
 
+    def test_checkpoint_zip_opens_and_second_bench_matches_snapshot(self):
+        self.linked()
+        self.op('select', job_id='job', source_ids=['a'])
+        before = self.bench.snapshot()
+        data = self.bench.checkpoint()
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            self.assertEqual(set(archive.namelist()), {'workspace.sqlite3', 'manifest.json'})
+            manifest = json.loads(archive.read('manifest.json'))
+            self.assertEqual(manifest['format'], 'commons-toolbench-checkpoint-v1')
+            self.assertEqual(manifest['kind'], 'FULL_WORKSPACE_BACKUP')
+            self.assertEqual(manifest['revision'], before['revision'])
+            self.assertIn('no next-action', manifest['coverage'].lower().replace(' ', '-') + ' ' + manifest['coverage'].lower() or '')
+            self.assertIn('next action', manifest['coverage'].lower() or manifest['coverage'])
+            workspace = archive.read('workspace.sqlite3')
+            self.assertEqual(manifest['sha256'], hashlib.sha256(workspace).hexdigest())
+            extracted = Path(self.temp.name) / 'workspace.sqlite3'
+            extracted.write_bytes(workspace)
+        second = Bench(extracted)
+        self.assertEqual(second.snapshot(), before)
+
+    def test_checkpoint_includes_mutations_and_does_not_change_state(self):
+        self.job()
+        self.source()
+        first = self.bench.checkpoint()
+        with zipfile.ZipFile(io.BytesIO(first)) as archive:
+            first_manifest = json.loads(archive.read('manifest.json'))
+        self.op('annotate', note_id='n', job_id='job', text='After first checkpoint')
+        before = self.bench.snapshot()
+        second = self.bench.checkpoint()
+        after = self.bench.snapshot()
+        self.assertEqual(before, after)
+        with zipfile.ZipFile(io.BytesIO(second)) as archive:
+            second_manifest = json.loads(archive.read('manifest.json'))
+            extracted = Path(self.temp.name) / 'after.sqlite3'
+            extracted.write_bytes(archive.read('workspace.sqlite3'))
+        self.assertGreater(second_manifest['revision'], first_manifest['revision'])
+        restored = Bench(extracted)
+        self.assertEqual(restored.snapshot()['notes'][0]['text'], 'After first checkpoint')
+        self.assertEqual(restored.snapshot(), before)
+
 
 class HTTPTests(unittest.TestCase):
     def setUp(self):
@@ -298,6 +338,7 @@ class HTTPTests(unittest.TestCase):
         _,body=self.get('/api/operations')
         contract=json.loads(body)
         self.assertIn('add_source',contract['operations'])
+        self.assertIn('/api/checkpoint', contract['read'])
         self.post({'op':'add_job','args':{'job_id':'j','title':'From HTTP client 1'}})
         _,body=self.get('/api/state')
         state=json.loads(body)
@@ -309,6 +350,23 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(headers['Content-Type'],'application/zip')
         with zipfile.ZipFile(io.BytesIO(data)) as archive:
             self.assertEqual(json.loads(archive.read('manifest.json'))['notes'][0]['text'],'HTTP client 2 continues')
+
+    def test_http_checkpoint_returns_zip_without_changing_state(self):
+        self.post({'op':'add_job','args':{'job_id':'j','title':'Checkpoint job'}})
+        revision = self.bench.snapshot()['revision']
+        state_before = self.bench.snapshot()
+        headers, data = self.get('/api/checkpoint')
+        self.assertEqual(headers['Content-Type'], 'application/zip')
+        self.assertIn('toolbench-checkpoint.zip', headers.get('Content-Disposition', ''))
+        with zipfile.ZipFile(io.BytesIO(data)) as archive:
+            manifest = json.loads(archive.read('manifest.json'))
+            self.assertEqual(manifest['format'], 'commons-toolbench-checkpoint-v1')
+            self.assertEqual(manifest['kind'], 'FULL_WORKSPACE_BACKUP')
+            extracted = Path(self.temp.name) / 'http-checkpoint.sqlite3'
+            extracted.write_bytes(archive.read('workspace.sqlite3'))
+        self.assertEqual(self.bench.snapshot(), state_before)
+        self.assertEqual(self.bench.snapshot()['revision'], revision)
+        self.assertEqual(Bench(extracted).snapshot()['jobs'][0]['title'], 'Checkpoint job')
 
     def test_invalid_json_and_unknown_route_report_errors(self):
         for raw in [b'not json',b'{"op":"add_job","args":{"job_id":"j","title":"J","description":NaN}}']:
