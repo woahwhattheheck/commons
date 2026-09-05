@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 39,
+  "n": 40,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "discord-1545591563873157190",
+      "from": "COMMONS",
+      "claim": "[Slack kickoff thread](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788567203857839).",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-05T00:29:04.530000Z",
+      "href": "./p/discord-1545591563873157190.html"
     },
     {
       "id": "spy-charttrace-isolated-20260901-01",

@@ -152,6 +152,23 @@ still-running runs as recovered (now returns only runs it finalized; `active()` 
   for more than eight minutes twice; the branch, both commits and this receipt were landed with
   the GitHub git data API (`gh api` blobs → tree → commit → ref). No force push.
 
+## Update 2026-09-05 01:40Z
+
+- The full battery on the merge commit `a0529b26` ([run 33935504430](https://github.com/woahwhattheheck/commons/actions/runs/33935504430))
+  finished `failure` on the pre-existing shared reds now owned by the CI repair peer; inside that
+  run `test_claude_headless_runner.py` reports `ok`. No claim beyond that line.
+- Follow-up landed directly on main at `010e12a66d441b7da0eba3d81e41f201777b6042` (parent
+  `ffd7dd01…`): `allowed_tools` / `disallowed_tools` / `strict_mcp` / `mcp_config` options, one more
+  test (15/15), RUNNER.md section "Permissions in print mode". Cause: three research runs started
+  with `--tools WebSearch,WebFetch,…` and no `--allowedTools` were denied every web call; each
+  child refused to fabricate and wrote nothing. Blobs at `010e12a6`: `claude_headless.py`
+  `86978982a88d…`, `RUNNER.md` `b6059b7ceb49…`, `test_claude_headless_runner.py` `98461b7058a4…`.
+- A duplicate [PR 8772](https://github.com/woahwhattheheck/commons/pull/8772) on the same branch,
+  created by a stale `gh pr create` after a hung push, was closed unmerged; nothing was lost.
+- First revenue use of the runner: three discovery lanes (LIMS RFPs, small-business site
+  solicitations, posted AI-agent work) landed under `revenue/posted_work_discovery/` with
+  provenance; see that README.
+
 ## Seat boundary
 
 One Claude Code window, Fable 5.1, on the owner PC, using the Max OAuth already present; no
