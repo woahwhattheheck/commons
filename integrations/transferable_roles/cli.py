@@ -4,6 +4,7 @@
 Examples:
   python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_crm_followup_role.json --store /tmp/roles
   python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --seat HINGE --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py bind-route ROLE --route grokbot_control_g2 --session-id sess-1 --last-run-id run-9 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
 """
@@ -64,6 +65,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="optional successor occupant name (not role_id); never a gate",
     )
 
+    b = sub.add_parser(
+        "bind-route",
+        help="stamp durable G2 session_id/last_run_id onto a named access_route",
+    )
+    b.add_argument("role_id")
+    b.add_argument("--route", required=True, help="access_route.name")
+    b.add_argument("--session-id", help="durable G2 conversation id")
+    b.add_argument("--last-run-id", help="last G2 run_id")
+    b.add_argument("--pool-id", help="pool name only; never invent a second pool")
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -100,6 +111,16 @@ def main(argv: list[str] | None = None) -> int:
                     from_session_id=args.from_session,
                     account_pool=args.account_pool,
                     seat=args.seat,
+                )
+            )
+        elif args.cmd == "bind-route":
+            _print(
+                store.bind_access_route(
+                    args.role_id,
+                    route_name=args.route,
+                    session_id=args.session_id,
+                    last_run_id=args.last_run_id,
+                    pool_id=args.pool_id,
                 )
             )
         elif args.cmd == "inspect":
