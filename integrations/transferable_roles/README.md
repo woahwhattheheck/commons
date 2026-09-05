@@ -20,6 +20,7 @@ Autopsy reply→cash: `hinge-r4-autopsy-reply-cash-pointers-20260905-01`
 Autopsy paid_case: `hinge-r4-autopsy-paid-case-pointers-20260905-01`
 Autopsy receipt_row: `hinge-r4-autopsy-receipt-row-pointers-20260905-01`
 Autopsy case CLI: `hinge-r4-autopsy-case-cli-20260905-01`
+Diagnostic contract CLI: `hinge-r4-diagnostic-contract-cli-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -75,6 +76,9 @@ python3 integrations/transferable_roles/cli.py autopsy-receipt-row role-syntheti
   --case-ref case_001 --g2-run-id run_1 --g2-session-id sess_1 \
   --store /tmp/hinge-roles
 
+python3 integrations/transferable_roles/cli.py diagnostic-contract role-synthetic-diagnostic-fulfillment-20260905 \
+  --slug dealer --store /tmp/hinge-roles
+
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
 
@@ -83,6 +87,7 @@ python3 integrations/transferable_roles/cli.py import \
 
 python3 integrations/transferable_roles/test_roles.py
 python3 integrations/transferable_roles/test_autopsy_case_cli.py
+python3 integrations/transferable_roles/test_diagnostic_contract_cli.py
 ```
 
 `--seat` names the occupant (not `role_id`). Optional metadata for G2
@@ -115,6 +120,11 @@ SPARK `case_from_autopsy_offer` / `receipt_row_from_case` (import-only wrap in
 `autopsy_paid.py`). Builds a G2 `case` or opaque seats `case_row` JSON — does
 **not** append `seats.json`, remint `paid_case.py`, or invent Stripe. CRM roles
 refuse. Roles still confer no credentials.
+
+`diagnostic-contract` gates on tool `diagnostic_contract` and loads a landed
+`revenue/*/contract.json` by slug (`dealer|referral|repair|plant`). Returns a
+compact operator card (commercial / boundaries) — does **not** remint contracts
+or invent Stripe. CRM / Autopsy roles refuse.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
@@ -168,9 +178,11 @@ funnel.json,handoffs/*}` and `commerce.html` — **point only; do not remint**
 handoffs or tip-shelf. Knowledge also points at landed
 `revenue/{dealer_service_lead_rescue,referral_intake_completeness,
 repair_booking_preflight,plant_downtime_handoff}/contract.json` (+ receipts
-where present) — **point only; do not remint** those operator contracts. Miss
-remedy sentence lives on the product pages/contracts. Roles confer no Stripe
-access.
+where present) — **point only; do not remint** those operator contracts. After
+`hinge-r4-diagnostic-contract-cli-20260905-01`, tool `diagnostic_contract` +
+CLI `diagnostic-contract --slug …` **loads** the landed contract (mechanism,
+not remint). Miss remedy sentence lives on the product pages/contracts. Roles
+confer no Stripe access.
 
 ## Access route shapes
 
