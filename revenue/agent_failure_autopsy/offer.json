@@ -25,7 +25,7 @@
     "provider_product_id": "prod_VCevsvv7skWk3e",
     "provider_price_id": "price_1UCFbHATH4EDE7XD4NNrjfUe",
     "provider_payment_link_id": "plink_1UCFbLATH4EDE7XDlTunr6iO",
-    "verified_at_utc": "2026-09-05T09:13:12.9504913Z",
+    "verified_at_utc": "2026-09-05T09:13:12.9504913+00:00",
     "provider_receipt_sha256": "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42"
   },
   "bounded_unit": "one failed coding-agent run",

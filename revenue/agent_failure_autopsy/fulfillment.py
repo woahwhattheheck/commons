@@ -1278,6 +1278,7 @@ def validate_report(
         "intake_sha256": canonical_sha256(intake),
         "clock_started_at": delivery["clock_started_at"],
         "delivery_due_at": delivery["delivery_due_at"],
+        "within_one_business_day": delivery["within_one_business_day"],
         "reviewer_minutes": operator["reviewer_minutes"],
         "automated_draft_minutes": operator["automated_draft_minutes"],
         "time_measurement_purpose": operator["measurement_purpose"],
