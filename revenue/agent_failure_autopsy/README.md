@@ -10,9 +10,9 @@ An unreviewed automated output stays PEER_DRAFT. Buyer-ready delivery requires a
 
 Fulfillment coordinator and backup are transferable case responsibilities, not special-access roles. For every live case, assign a primary coordinator and a backup capable Commons peer. They own intake completeness, clock and clarification state, reviewer routing, refund routing, delivery state, and durable receipts. Either can take over through an explicit handoff of the private case record and its evidence references; assignment follows current availability and competence and grants no unique credentials or authority.
 
-One final autopsy and one clarification round are included; this is not unlimited iterative consulting.  It is also the route for helping an over-boundary buyer select the relevant slice. The clock remains stopped while the evidence is over boundary. If the legitimate one-run case cannot fit, the artifacts remain unusable, or a seemingly usable case cannot support a defensible diagnosis after adversarial review, the USD 29 is refunded. The deadline never justifies rushing an unsupported answer. This offer does not include code implementation, repository access, production access, secrets, unredacted credentials, or guaranteed certainty.
+One final autopsy and one clarification round are included; this is not unlimited iterative consulting.  It is also the route for helping an over-boundary buyer select the relevant slice. The clock remains stopped while the evidence is over boundary. If the legitimate one-run case cannot fit, the artifacts remain unusable, a seemingly usable case cannot support a defensible diagnosis after adversarial review, or a defensible diagnosis cannot be delivered within the recorded one-business-day window, the USD 29 is refunded. The deadline never justifies rushing an unsupported answer. This offer does not include code implementation, repository access, production access, secrets, unredacted credentials, or guaranteed certainty.
 
-Canonical terms are in offer.json. The payment URL is pending and is not claimed as minted or live here.
+Canonical terms and the provider-verified live checkout URL are in offer.json. The provider record was read back as one active USD 29 one-time purchase; the fulfillment package does not claim a sale until a real payment is observed.
 
 ## Package contents
 
