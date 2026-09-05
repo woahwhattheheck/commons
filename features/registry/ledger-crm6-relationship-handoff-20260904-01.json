@@ -5,6 +5,7 @@
   "claimed_paths": [
     "host/lm_gtm_relationship_handoff.py",
     "test_lm_gtm_relationship_handoff.py",
+    "test_lm_gtm_handoff_provenance.py",
     "revenue/lm_gtm_index/README.md",
     "lm-gtm-index.html",
     "features/registry/ledger-crm6-relationship-handoff-20260904-01.json",
@@ -33,6 +34,7 @@
   "schema": "commons-feature-v1",
   "test_paths": [
     "test_lm_gtm_relationship_handoff.py",
+    "test_lm_gtm_handoff_provenance.py",
     "host/lm_gtm_relationship_handoff.py"
   ]
 }
