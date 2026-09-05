@@ -245,6 +245,33 @@ TRUST_DOCTRINE_HTML = (
 )
 
 
+CASH_DOORS_POINTER = (
+    '<p class="note cash-doors-link" id="cash-doors">'
+    '<a href="./tools-cash.html"><strong>Live cash</strong></a>'
+    " — $29 Autopsy + four $199 tip-shelf diagnostics (product pages only).</p>\n"
+)
+CASH_DOORS_NEEDLE = "</section>\n<section>\n<h2>Catalog</h2>"
+CASH_DOORS_REPLACEMENT = "</section>\n" + CASH_DOORS_POINTER + "<section>\n<h2>Catalog</h2>"
+
+
+def splice_tools_cash_doors(root=None):
+    """Keep the COIL cash-doors pointer on tools.html across hub rebuilds.
+
+    hub_pages.rebuild_tools remints tools.html from the catalog and drops the
+    unique live-cash pointer. Compose it back after each rebuild. Do not remint
+    hub_pages.py leftover bytes.
+    """
+    path = os.path.join(root or ROOT, "tools.html")
+    with open(path, encoding="utf-8") as handle:
+        text = handle.read()
+    if 'id="cash-doors"' in text and "./tools-cash.html" in text:
+        return False
+    if CASH_DOORS_NEEDLE not in text:
+        raise RuntimeError("tools.html lost the Catalog splice point for cash-doors")
+    _write(path, text.replace(CASH_DOORS_NEEDLE, CASH_DOORS_REPLACEMENT, 1))
+    return True
+
+
 def inject_trust_doctrine(text):
     """Pin the trust law on every root HTML surface naming Muhlnickel.
 
@@ -3158,6 +3185,7 @@ def rebuild():
     rebuild_live(rows)
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
+    splice_tools_cash_doors()
     write_mail(rows, write_pulse(rows))
     # Observatory consumes these freshly emitted bakes, including pulse. Keep
     # its publication on the canonical board road rather than a manual command.

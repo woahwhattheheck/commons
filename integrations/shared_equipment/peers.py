@@ -8,6 +8,11 @@ import urllib.parse
 import urllib.request
 from typing import Any
 
+from integrations.grokbot_control.paid_case import (
+    case_from_autopsy_offer,
+    receipt_from_g2_submit,
+    receipt_row_from_case,
+)
 from .services import _schema
 
 DEFAULT_GROKBOT_CONTROL = "http://127.0.0.1:8881"
@@ -169,6 +174,24 @@ class GrokBotEquipment:
                 "Report grokbot_control GET /health including memory_guard without submitting a run.",
                 {},
             ),
+            _schema(
+                "grokbot_case_from_autopsy_offer",
+                "Build a G2 case dict from Autopsy offer.json + opaque case_ref. Local helper; does not call :8881.",
+                {"case_ref": "string"},
+                {"client_reference_id": "string", "sku": "string"},
+            ),
+            _schema(
+                "grokbot_receipt_row_from_case",
+                "Build an opaque seats case_row from a G2 case. Pass submit_response to bind run_id/session_id via receipt_from_g2_submit; otherwise optional g2_run_id/g2_session_id. Local helper; does not call :8881.",
+                {"case": "object"},
+                {
+                    "g2_run_id": "string",
+                    "g2_session_id": "string",
+                    "payment_observed_at": "string",
+                    "state": "string",
+                    "submit_response": "object",
+                },
+            ),
         ]
 
     def call(self, name: str, args: dict[str, Any]) -> dict[str, Any]:
@@ -223,6 +246,36 @@ class GrokBotEquipment:
             return self._request("GET", "/v1/pools")
         if name == "grokbot_health":
             return self._request("GET", "/health")
+        if name == "grokbot_case_from_autopsy_offer":
+            try:
+                case = case_from_autopsy_offer(
+                    case_ref=args["case_ref"],
+                    client_reference_id=args.get("client_reference_id"),
+                    sku=args.get("sku"),
+                )
+            except (ValueError, TypeError, KeyError):
+                return {"ok": False, "error": "invalid_case"}
+            return {"ok": True, "case": case}
+        if name == "grokbot_receipt_row_from_case":
+            try:
+                if args.get("submit_response") is not None:
+                    row = receipt_from_g2_submit(
+                        args["case"],
+                        args["submit_response"],
+                        payment_observed_at=args.get("payment_observed_at"),
+                        state=args.get("state") or "UNVERIFIED",
+                    )
+                else:
+                    row = receipt_row_from_case(
+                        args["case"],
+                        g2_run_id=args.get("g2_run_id"),
+                        g2_session_id=args.get("g2_session_id"),
+                        payment_observed_at=args.get("payment_observed_at"),
+                        state=args.get("state") or "UNVERIFIED",
+                    )
+            except (ValueError, TypeError, KeyError):
+                return {"ok": False, "error": "invalid_receipt"}
+            return {"ok": True, "case_row": row}
         return {"error": "unknown_equipment_tool"}
 
     def _request(
