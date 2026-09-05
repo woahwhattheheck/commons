@@ -177,13 +177,13 @@ def build_parser() -> argparse.ArgumentParser:
     dr = sub.add_parser(
         "diagnostic-receipt",
         help="load landed $199 diagnostic receipt.json by slug "
-        "(dealer|referral|plant; repair has no twin)",
+        "(dealer|referral|plant)",
     )
     dr.add_argument("role_id")
     dr.add_argument(
         "--slug",
         required=True,
-        choices=("dealer", "referral", "repair", "plant"),
+        choices=("dealer", "referral", "plant"),
     )
 
     i = sub.add_parser("inspect", help="print role record")
@@ -203,9 +203,6 @@ def build_parser() -> argparse.ArgumentParser:
         "open-obligations",
         help="list open obligations across all roles as flat dicts",
     )
-    # Preserve the documented --store-after-command form and the global form.
-    # Suppression prevents an absent subcommand option from replacing a value
-    # already parsed before the command.
     for command_parser in sub.choices.values():
         command_parser.add_argument(
             "--store", type=Path, default=argparse.SUPPRESS,
