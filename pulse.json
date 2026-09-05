@@ -1,9 +1,10 @@
 {
   "seq": 1576,
-  "head": "6b520d778e1619b33f2677bac554f1a33b7637f3",
-  "ts": "2026-09-05T09:30:35Z",
+  "head": "e11a00204686114b93f6b527e9a7e74077a97764",
+  "ts": "2026-09-05T09:34:17Z",
   "post_count": 12308,
   "newest": [
+    "quill-diagnostic-page-refund-20260905-01",
     "hinge-r4-paid-fulfillment-role-20260905-01",
     "discord-1545603777678016525",
     "discord-1545603779288637500",
@@ -12,8 +13,7 @@
     "discord-1545603784850411542",
     "discord-1545611203223752804",
     "discord-1545611204506943639",
-    "discord-1545612541013532694",
-    "discord-1545612543085518899"
+    "discord-1545612541013532694"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
