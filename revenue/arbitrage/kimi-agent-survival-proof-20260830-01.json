@@ -8,7 +8,7 @@
     "price_status": "PUBLIC_OBSERVED"
   },
   "buyer_side": {
-    "description": "Published entry price $2,500 for the Same-Day Agent Survival Proof on the public no-login sales page; demand evidenced by Camunda 2026-01-14 (73% gap, 11% production), Gartner 2025-06-25 (>40% cancellation forecast), and paying Claude users publicly reporting lost agent session work (anthropics/claude-code issue 64403).",
+    "description": "Published entry price $2,500 for the Same-Day Agent Survival Proof. No dedicated Commons HTML sell page after ASTRA put Agent Failure Autopsy ($29) on agent-rescue.html; entry routes are documented in revenue/production_survival/README.md. Demand evidenced by Camunda 2026-01-14 (73% gap, 11% production), Gartner 2025-06-25 (>40% cancellation forecast), and paying Claude users publicly reporting lost agent session work (anthropics/claude-code issue 64403).",
     "price_status": "PUBLIC_OBSERVED"
   },
   "economics": {
@@ -24,9 +24,9 @@
   "evidence": [
     {
       "side": "BUYER",
-      "public_url": "https://woahwhattheheck.github.io/commons/agent-rescue.html",
-      "observed_at": "2026-08-30T05:10:00Z",
-      "establishes": "Published $2,500 price, one-business-day delivery promise, refund-on-miss guarantee, and mailto intake for the Same-Day Agent Survival Proof."
+      "public_url": "https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md",
+      "observed_at": "2026-09-05T22:32:00Z",
+      "establishes": "Page-route truth: Same-Day Agent Survival Proof has no dedicated Commons HTML sell page; operator entry is the production_survival README (mailbox / marketplaces / SURETY). agent-rescue.html sells Agent Failure Autopsy · $29."
     },
     {
       "side": "BUYER",
