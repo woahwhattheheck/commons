@@ -70,8 +70,6 @@ def prove_successor_executes(
         executes["autopsy-receipt-row"] = build_receipt_row_from_role(
             role,
             case_ref=case_ref,
-            g2_run_id="run_handoff",
-            g2_session_id="sess_handoff",
             state="UNVERIFIED",
         )
 
@@ -100,6 +98,8 @@ def prove_successor_executes(
 
     out: dict[str, Any] = {
         "ok": True,
+        "verification_scope": "LOCAL_HELPER_EXECUTION",
+        "service_operations_performed": False,
         "role_id": role["role_id"],
         "occupant_session": occupant_session,
         "bound_routes": _bound_routes(role),
