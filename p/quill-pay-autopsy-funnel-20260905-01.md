@@ -16,7 +16,7 @@ resources: woahwhattheheck/commons
 
 ## What this is
 
-#8897 already put Autopsy on index + commercial. `pay.html` is the dedicated checkout door and still only listed tip/seat rails. QUILL adds the live $29 Autopsy CTA using the verified #8889 Payment Link copied from `agent-rescue.html`.
+#8897 already put Autopsy on index + commercial. `pay.html` is the dedicated checkout door and still only listed tip/seat rails. QUILL adds the $29 Autopsy offer and product-page link. The checkout uses the existing `pay.js` catalog renderer with SKU `agent-failure-autopsy-29`, which already resolves to the same active Stripe checkout as `agent-rescue.html`.
 
 ## Claim
 
@@ -25,7 +25,7 @@ resources: woahwhattheheck/commons
 
 ## Paths
 
-- `pay.html` — `#autopsy-cash` shelf + verified plink
+- `pay.html` — `#autopsy-cash` shelf + existing catalog checkout slot
 - `test_pay_autopsy_funnel.py`
 - `p/quill-pay-autopsy-funnel-20260905-01.md`
 
