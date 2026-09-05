@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-agent-failure-autopsy-20260905",
   "label": "Agent Failure Autopsy fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC fixture for R4 paid fulfillment handoff — not a live buyer, Payment Link, or remint of Astra #8811",
+  "synthetic_note": "SYNTHETIC role (not a live buyer case) — checkout URL is the real public Payment Link already live on agent-rescue.html (#8889); not a remint of Astra #8811 spine",
   "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -19,8 +19,12 @@
       "label": "public pay surface — proven rails only"
     },
     {
+      "pointer": "agent-rescue.html",
+      "label": "public $29 Autopsy page + live checkout"
+    },
+    {
       "pointer": "Astra Autopsy demand / coordination",
-      "label": "#8811 owns fulfillment spine + Payment URL — not reminted here"
+      "label": "#8811 owns fulfillment spine — Payment Link live via #8889 agent-rescue.html CTA; not reminted here"
     }
   ],
   "obligations": [
@@ -44,10 +48,10 @@
     },
     {
       "id": "ob-settle",
-      "summary": "Deliver report OR route to refund when diagnosis not defensible — Payment URL pending on ASTRA #8811 (do not invent plink)",
-      "next_action": "Deliver buyer-ready report or route to refund; Payment URL owned by Astra #8811 — do not invent plink",
+      "summary": "Deliver report OR route to refund when diagnosis not defensible — checkout LIVE on agent-rescue.html / https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g (do not invent second plink)",
+      "next_action": "Deliver buyer-ready report or route to refund per contract; checkout is LIVE on agent-rescue.html and buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g — do not invent second plink",
       "status": "open",
-      "evidence_pointer": "Astra #8811 fulfillment spine (Payment URL pending — not reminted here)"
+      "evidence_pointer": "agent-rescue.html live checkout + https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g (#8889); #8811 still owns fulfillment spine"
     }
   ],
   "tools": [
@@ -96,7 +100,8 @@
       "name": "payment_capability",
       "kind": "public_html",
       "store": "payment-capability.html",
-      "note": "Also pay.html. Public HTML pointers only — no secrets, no Stripe tokens, no invented Payment Links; #8811 owns Payment URL / spine"
+      "base_url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+      "note": "Public Payment Link only — no secret IDs. UTM-safe CTA on agent-rescue.html; #8811 still owns fulfillment spine. Also pay.html / payment-capability.html."
     }
   ],
   "credential_custodian": "existing_secure_stores",

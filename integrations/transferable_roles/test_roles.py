@@ -21,6 +21,9 @@ AUTOPSY_FIXTURE = (
     / "synthetic_agent_failure_autopsy_role.json"
 )
 
+LIVE_CHECKOUT = "buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
+AUTOPSY_PAGE = "agent-rescue.html"
+
 
 class TransferableRoleTests(unittest.TestCase):
     def setUp(self) -> None:
@@ -666,6 +669,26 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIn("payment-capability.html", pointers)
         self.assertIn("ground/PAYMENT_CAPABILITY.md", pointers)
         self.assertIn("pay.html", pointers)
+
+    def test_autopsy_fixture_wires_live_checkout_url(self) -> None:
+        """Create from fixture; live checkout must appear in knowledge/routes/ob-settle."""
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        knowledge_blob = json.dumps(role.get("knowledge") or [])
+        routes_blob = json.dumps(role.get("access_routes") or [])
+        settle = next(o for o in role["obligations"] if o["id"] == "ob-settle")
+        settle_blob = json.dumps(settle)
+        combined = knowledge_blob + routes_blob + settle_blob
+        self.assertIn(LIVE_CHECKOUT, combined)
+        self.assertIn(AUTOPSY_PAGE, combined)
+        # Also pin the public Payment Link on payment_capability (no secrets).
+        pay = next(
+            r for r in role["access_routes"] if r["name"] == "payment_capability"
+        )
+        self.assertIn(LIVE_CHECKOUT, pay.get("base_url", ""))
+        self.assertIn(AUTOPSY_PAGE, pay.get("note", ""))
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn(AUTOPSY_PAGE, pointers)
 
     def test_list_open_obligations_four_rows_then_advance_drops(self) -> None:
         raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
