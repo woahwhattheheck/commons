@@ -110,12 +110,21 @@ result line is `interrupted`. Rows still `queued` are dispatched. Because the
 CLI wrote the transcript itself, a follow-up on the same session id continues
 the conversation in every one of those cases.
 
-## Concurrency
+## Concurrency and the memory floor
 
 Runs in different sessions execute concurrently up to `--max-concurrent`
-(default 3, sized for the owner laptop; adopted children count). Runs in the
-same session are FIFO, which is what `--resume` needs. Long-polls (`wait_ms`)
-are capped at 55 s; loop on the cursor for longer waits.
+(default 1; adopted children count). Runs in the same session are FIFO, which
+is what `--resume` needs. Long-polls (`wait_ms`) are capped at 55 s; loop on
+the cursor for longer waits.
+
+The owner PC is a 7.24 GB laptop with a DRAM-less NVMe, and on 2026-09-04 at
+22:59 EDT it bugchecked `0x154` under memory pressure with seventeen Claude
+windows resident. So the dispatcher reads free physical RAM before every
+start (`GlobalMemoryStatusEx` on Windows, `MemAvailable` elsewhere) and, while
+it is below `--min-free-mb` (default 1024), leaves queued runs queued: one
+`held` event per run, `memory_guard` in `/health` (`free_mb`, `min_free_mb`,
+`holding`), a `released` event when the run finally starts. `--min-free-mb 0`
+disables the floor; an unreadable value never holds.
 
 ## Tests and evidence
 
