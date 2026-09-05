@@ -40,10 +40,11 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </section>
 <section class="panel" aria-labelledby="handoff-heading">
   <h2 id="handoff-heading">Relationship handoff (CRM6)</h2>
-  <p class="note">Successor peers continue a relationship from evidence, not from an invented summary. Fields are SOURCED with pointers or ABSENT. <code>promised</code> requires explicit SENT language. Not a compulsory script. Billings stays OWNER_HOLD — agents do not contact Cheri.</p>
+  <p class="note">Successor peers continue a relationship from evidence, not from an invented summary. Fields are SOURCED with pointers or ABSENT. A typed <code>SENT_AWAITING_REPLY</code> event is surfaced as <code>sent_communication</code>, not as commitment content. <code>promised</code> remains ABSENT until separately verified commitment content exists. Overlay prose stays <code>SUMMARY_POINTER</code> even when it cites Gmail or Slack; source pointers remain inspectable without pretending the linked message was fetched or quoted. Event ordering is timezone-aware. Not a compulsory script. Billings stays OWNER_HOLD — agents do not contact Cheri.</p>
   <pre>python3 host/lm_gtm_relationship_handoff.py SUBJECT
 python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
-python3 -m unittest -v test_lm_gtm_relationship_handoff.py</pre>
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py
+python3 -m unittest -v test_lm_gtm_handoff_provenance.py</pre>
 </section>
 <section class="panel" aria-labelledby="hot-heading">
   <h2 id="hot-heading">HOT — actionable live ones</h2>
