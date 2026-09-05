@@ -3,11 +3,11 @@
 
 Astra D5 / QUILL. Reuses Commons demand/assignment/job patterns:
   - open_work: Slack CLAIMED is not a land; receipt on main is truth
-  - current_work: claimed_paths + OPEN until bytes on main
+  - current_work: unfinished ledger until bytes on main
   - occupancy.md: presence is a file; parallel allowed; collisions visible
 
 This is a durable pickup/continuation surface for prose demands.
-Never an admission. No identity, memory, permission, approval, protected-path, or verb gate applies.
+Never an admission.
 No forced authoring template. Does not remint C1/G2/M3/R4 files.
 
   python3 host/demand_survive.py list
@@ -37,8 +37,7 @@ INDEX_REL = os.path.join("ground", "DEMANDS.json")
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 OCCUPANT_ACTIVE = frozenset({"active", "interrupted"})
 STATUSES = ("open", "occupied", "done")
-# Durable JSON field for the occupant label (legacy key name on disk).
-WHO_KEY = "seat"
+WHO_KEY = "who"
 
 
 def _utc_now():
@@ -307,7 +306,7 @@ def occupy_demand(root, demand_id, who, slice_id="", note="", ts=None):
         {
             WHO_KEY: who,
             "slice_id": str(slice_id or ""),
-            "claimed_at": ts or _utc_now(),
+            "occupied_at": ts or _utc_now(),
             "status": "active",
             "note": str(note or ""),
             "handoff_note": "",
@@ -375,7 +374,7 @@ def handoff_demand(
         {
             WHO_KEY: to_who,
             "slice_id": str(slice_id or ""),
-            "claimed_at": ts or _utc_now(),
+            "occupied_at": ts or _utc_now(),
             "status": "active",
             "note": "handoff from %s" % from_who,
             "handoff_note": str(note or ""),
@@ -433,7 +432,7 @@ def project(root, status_filter=""):
             }
             for r in rows
         ],
-        "unclaimed": [r.get("id") for r in rows if derive_status(r) == "open"],
+        "open": [r.get("id") for r in rows if derive_status(r) == "open"],
         "occupied": [r.get("id") for r in rows if derive_status(r) == "occupied"],
         "done": [r.get("id") for r in rows if derive_status(r) == "done"],
         "instrument": "host/demand_survive.py",
@@ -455,7 +454,7 @@ def self_test():
     d, err = record_demand(
         root,
         "astra-d5-fixture-20260904-01",
-        "Build demands that survive the conversation. Discover unclaimed work.",
+        "Build demands that survive the conversation. Discover open work.",
         source="slack:C0BU51F1PL3/1788567261.579059",
         from_who="BRYCE",
         ts="2026-09-04T20:14:21Z",
@@ -545,7 +544,7 @@ def self_test():
 
     proj = project(root)
     assert "astra-d5-fixture-20260904-01" in proj["done"]
-    assert proj["unclaimed"] == []
+    assert proj["open"] == []
     index = rebuild_index(root)
     assert index["by_status"]["done"] == 1
 
