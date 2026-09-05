@@ -640,42 +640,56 @@ class TransferableRoleTests(unittest.TestCase):
             )
             self.assertEqual(g2["session_id"], "cli-import-sess")
 
-    def test_list_open_obligations_autopsy_fixture(self) -> None:
+    def test_autopsy_fixture_create_four_open_obligations(self) -> None:
         raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
         role = self.store.create(raw)
-        rows = [
-            r
-            for r in self.store.list_open_obligations()
-            if r["role_id"] == role["role_id"]
-        ]
-        self.assertEqual(len(rows), 4)
-        ids = [r["obligation_id"] for r in rows]
-        self.assertEqual(ids, ["ob-diagnose", "ob-intake", "ob-review", "ob-settle"])
-        for row in rows:
-            self.assertTrue(row.get("synthetic"))
-            self.assertEqual(row["purpose"], role["purpose"])
-            self.assertEqual(row.get("label"), role.get("label"))
-            self.assertIn("summary", row)
-            self.assertIn("next_action", row)
+        self.assertTrue(role.get("synthetic"))
+        self.assertEqual(
+            role["role_id"], "role-synthetic-agent-failure-autopsy-20260905"
+        )
+        self.assertEqual(role["credential_custodian"], "existing_secure_stores")
+        ids = [o["id"] for o in role["obligations"]]
+        self.assertEqual(ids, ["ob-intake", "ob-diagnose", "ob-review", "ob-settle"])
+        self.assertTrue(all(o["status"] == "open" for o in role["obligations"]))
+        names = {r["name"] for r in role["access_routes"]}
+        self.assertEqual(
+            names,
+            {"grokbot_control_g2", "gemini_peer_tool_gateway", "payment_capability"},
+        )
         pay = next(
             r for r in role["access_routes"] if r["name"] == "payment_capability"
         )
         self.assertEqual(pay["kind"], "public_html")
-        self.assertEqual(pay["base"], "pay.html / payment-capability.html")
+        self.assertEqual(pay["store"], "payment-capability.html")
+        self.assertIn("pay.html", pay.get("note", ""))
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn("payment-capability.html", pointers)
+        self.assertIn("ground/PAYMENT_CAPABILITY.md", pointers)
+        self.assertIn("pay.html", pointers)
+
+    def test_list_open_obligations_four_rows_then_advance_drops(self) -> None:
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        rows = self.store.list_open_obligations()
+        self.assertEqual(len(rows), 4)
+        self.assertEqual(
+            [r["obligation_id"] for r in rows],
+            ["ob-diagnose", "ob-intake", "ob-review", "ob-settle"],
+        )
+        for row in rows:
+            self.assertEqual(row["role_id"], role["role_id"])
+            self.assertEqual(row["purpose"], role["purpose"])
+            self.assertTrue(row.get("synthetic"))
+            self.assertIn("label", row)
+            self.assertIn("summary", row)
+            self.assertIn("next_action", row)
         settle = next(r for r in rows if r["obligation_id"] == "ob-settle")
         self.assertIn("evidence_pointer", settle)
 
-    def test_list_open_obligations_drops_done(self) -> None:
-        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
-        role = self.store.create(raw, role_id="role-autopsy-adv-open")
         self.store.advance_obligation(role["role_id"], "ob-intake", status="done")
-        rows = [
-            r
-            for r in self.store.list_open_obligations()
-            if r["role_id"] == role["role_id"]
-        ]
-        self.assertEqual(len(rows), 3)
-        self.assertNotIn("ob-intake", [r["obligation_id"] for r in rows])
+        after = self.store.list_open_obligations()
+        self.assertEqual(len(after), 3)
+        self.assertNotIn("ob-intake", [r["obligation_id"] for r in after])
 
     def test_cli_open_obligations(self) -> None:
         store_dir = self._tmp.name
@@ -696,12 +710,11 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(rc, 0)
         out = json.loads(buf.getvalue())
         self.assertIn("open_obligations", out)
-        autopsy = [
-            r
-            for r in out["open_obligations"]
-            if r["role_id"] == "role-synthetic-agent-failure-autopsy-20260905"
-        ]
-        self.assertEqual(len(autopsy), 4)
+        self.assertEqual(len(out["open_obligations"]), 4)
+        self.assertEqual(
+            out["open_obligations"][0]["role_id"],
+            "role-synthetic-agent-failure-autopsy-20260905",
+        )
 
 
 if __name__ == "__main__":
