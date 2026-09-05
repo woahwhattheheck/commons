@@ -12,7 +12,7 @@
     "case_id",
     "intake_sha256",
     "failure_sentence",
-    "harness_summary",
+    "coding_stack_summary",
     "intake_scope",
     "disposition",
     "artifact_state",
@@ -55,11 +55,6 @@
     "failure_sentence": {
       "type": "string",
       "minLength": 10,
-      "maxLength": 1000
-    },
-    "harness_summary": {
-      "type": "string",
-      "minLength": 1,
       "maxLength": 1000
     },
     "disposition": {
@@ -333,7 +328,7 @@
       "additionalProperties": false,
       "required": [
         "measurement_status",
-        "human_review_minutes",
+        "reviewer_minutes",
         "automated_draft_minutes",
         "measurement_purpose",
         "time_truncated_analysis"
@@ -343,18 +338,6 @@
           "enum": [
             "MEASURED",
             "NOT_MEASURED"
-          ]
-        },
-        "human_review_minutes": {
-          "oneOf": [
-            {
-              "type": "null"
-            },
-            {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 1440
-            }
           ]
         },
         "automated_draft_minutes": {
@@ -374,6 +357,18 @@
         },
         "time_truncated_analysis": {
           "const": false
+        },
+        "reviewer_minutes": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1440
+            }
+          ]
         }
       }
     },
@@ -383,14 +378,17 @@
       "required": [
         "state",
         "reviewer_ref",
+        "reviewer_kind",
         "reviewed_at",
-        "evidence_link_check"
+        "independent_of_drafter",
+        "evidence_link_check",
+        "adversarial_challenge_check"
       ],
       "properties": {
         "state": {
           "enum": [
             "PEER_DRAFT",
-            "HUMAN_REVIEWED"
+            "INDEPENDENTLY_REVIEWED"
           ]
         },
         "reviewer_ref": {
@@ -408,6 +406,25 @@
           "$ref": "#/$defs/nullable_timestamp"
         },
         "evidence_link_check": {
+          "type": "boolean"
+        },
+        "reviewer_kind": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "COMMONS_PEER",
+                "HUMAN_OPERATOR"
+              ]
+            }
+          ]
+        },
+        "independent_of_drafter": {
+          "type": "boolean"
+        },
+        "adversarial_challenge_check": {
           "type": "boolean"
         }
       }
@@ -570,6 +587,11 @@
           "maximum": 10
         }
       }
+    },
+    "coding_stack_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000
     }
   },
   "$defs": {
