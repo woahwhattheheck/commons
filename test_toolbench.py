@@ -277,6 +277,7 @@ class BenchTests(unittest.TestCase):
             manifest = json.loads(archive.read('manifest.json'))
             db_bytes = archive.read('workspace.sqlite3')
         self.assertEqual(manifest['format'], 'commons-toolbench-checkpoint-v1')
+        self.assertEqual(manifest['kind'], 'FULL_WORKSPACE_BACKUP')
         self.assertEqual(manifest['revision'], before['revision'])
         self.assertEqual(manifest['sha256'], hashlib.sha256(db_bytes).hexdigest())
         self.assertIn('Committed workspace only', manifest['coverage'])
@@ -289,13 +290,27 @@ class BenchTests(unittest.TestCase):
         self.assertEqual(reopened.source('a')['text'], 'Original evidence')
         self.assertEqual([s['source_id'] for s in reopened.snapshot()['selections']], ['b', 'a'])
 
-    def test_checkpoint_does_not_bump_revision(self):
+    def test_checkpoint_includes_mutations_and_does_not_bump_revision(self):
         self.job()
         self.source()
-        revision = self.bench.snapshot()['revision']
-        self.bench.checkpoint()
+        first = self.bench.checkpoint()
+        with zipfile.ZipFile(io.BytesIO(first)) as archive:
+            first_manifest = json.loads(archive.read('manifest.json'))
+        self.op('annotate', note_id='n', job_id='job', text='After first checkpoint')
+        before = self.bench.snapshot()
+        revision = before['revision']
+        second = self.bench.checkpoint()
         self.assertEqual(self.bench.snapshot()['revision'], revision)
         self.assertEqual(len(self.bench.history()), revision)
+        with zipfile.ZipFile(io.BytesIO(second)) as archive:
+            second_manifest = json.loads(archive.read('manifest.json'))
+            self.assertEqual(second_manifest['kind'], 'FULL_WORKSPACE_BACKUP')
+            extracted = Path(self.temp.name) / 'after.sqlite3'
+            extracted.write_bytes(archive.read('workspace.sqlite3'))
+        self.assertGreater(second_manifest['revision'], first_manifest['revision'])
+        restored = Bench(extracted)
+        self.assertEqual(restored.snapshot()['notes'][0]['text'], 'After first checkpoint')
+        self.assertEqual(restored.snapshot(), before)
 
 
 class HTTPTests(unittest.TestCase):
@@ -356,6 +371,7 @@ class HTTPTests(unittest.TestCase):
             manifest = json.loads(archive.read('manifest.json'))
             db_bytes = archive.read('workspace.sqlite3')
         self.assertEqual(manifest['format'], 'commons-toolbench-checkpoint-v1')
+        self.assertEqual(manifest['kind'], 'FULL_WORKSPACE_BACKUP')
         self.assertEqual(manifest['revision'], revision)
         self.assertEqual(manifest['sha256'], hashlib.sha256(db_bytes).hexdigest())
         self.assertEqual(self.bench.snapshot()['revision'], revision)
