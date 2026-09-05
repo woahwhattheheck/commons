@@ -14,7 +14,6 @@ python lotlens/lotlens.py -w .lotlens summary
 python lotlens/lotlens.py -w .lotlens find LOT-WATER-01               # two lots, two namespaces, not merged
 python lotlens/lotlens.py -w .lotlens inspect sup-acme/lot/LOT-CITRIC-01
 python lotlens/lotlens.py -w .lotlens impact sup-acme/lot/LOT-CITRIC-01 --brief
-python lotlens/lotlens.py -w .lotlens impact sup-acme/lot/LOT-CITRIC-01 --brief
 # After CLEAT paths land: --brief prints hop lines + a what/detail column;
 # --paths summary does the same on the printed report while --out keeps full edges.
 python lotlens/lotlens.py -w .lotlens impact sup-acme/lot/LOT-CITRIC-01 --paths summary
