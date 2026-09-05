@@ -155,7 +155,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__github-marketplace",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"marketplace_app_or_action",
@@ -229,7 +229,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__mcp-so-directory",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"mcp_server_listing",
@@ -303,7 +303,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__smithery",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"mcp_server_listing",
@@ -377,7 +377,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__glama-mcp",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"mcp_server_listing",
@@ -451,7 +451,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__pulsemcp",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"mcp_server_listing",
@@ -525,7 +525,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__awesome-mcp-servers",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"community_readme_pr",
@@ -599,7 +599,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"FIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__partner-vendor-directory",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"vendor_table_row",
@@ -671,7 +671,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"FIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__sam-gov-procurement",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"federal_registration",
@@ -743,7 +743,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"FIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__gsa-schedule",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"schedule_contract",
@@ -815,7 +815,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"FIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__public-rfp-pack",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"response_package",
@@ -887,7 +887,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"FIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__upwork-project-catalog",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"project_catalog_package",
@@ -959,7 +959,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__contra-services",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"service",
@@ -1033,7 +1033,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__fiverr-gig",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"gig",
@@ -1107,7 +1107,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"FIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__commons-service-catalog",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"canonical_conversion_surface",
@@ -1127,7 +1127,7 @@
       "surface_family":"service_catalog",
       "surface_id":"commons-service-catalog",
       "surface_name":"Commons service catalog",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
     },
     {
       "account_status":"OWNER_PLATFORM",
@@ -1179,7 +1179,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__github-about-topics",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"repository_about",
@@ -1253,7 +1253,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"UNFIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__show-hn-post",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"show_hn_post",
@@ -1327,7 +1327,7 @@
         "sku":"production-survival-sprint"
       },
       "fit":"FIT",
-      "human_route":"agent-rescue.html",
+      "human_route":"revenue/production_survival/README.md",
       "id":"production-survival-sprint__slack-commons",
       "last_verified":"2026-08-28T16:45:00Z",
       "listing_kind":"partner_table",
@@ -1347,7 +1347,7 @@
       "surface_family":"community_channel",
       "surface_id":"slack-commons",
       "surface_name":"TokenJunkieLabs Slack #commons",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
     },
     {
       "account_status":"NONE_IN_THIS_SESSION",

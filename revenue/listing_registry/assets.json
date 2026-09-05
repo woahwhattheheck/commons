@@ -4,8 +4,8 @@
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"8d6e40b71069cc8855a9e2777806ef66142ce233a5a9cb56aa13ac9576a0ec0e",
+      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md. Do not open a second CRM.",
+      "copy_sha256":"47390fbf1a3c790c605e314e4ec6c5807f56cd8a6a003484f5635f869651d9f1",
       "evidence_packet":{
         "offer_id":"production-survival-sprint",
         "refs":[
@@ -67,8 +67,8 @@
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: SAM.gov (procurement_portal).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.",
-      "copy_sha256":"7162fe1b03f31c3fbfa903a8697a4559a388f88a068171ec3a03b1d424695e73",
+      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: SAM.gov (procurement_portal).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md. Do not open a second CRM.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.",
+      "copy_sha256":"17f74b6741936280a7c68fb71e0c78f682e5a4794f2ad460748f3bde71c0042f",
       "evidence_packet":{
         "offer_id":"production-survival-sprint",
         "refs":[
@@ -130,8 +130,8 @@
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: GSA Schedule (procurement_portal).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.",
-      "copy_sha256":"97808b27eec1dcfe4e46e0c7ffc424491d54f84ad6c4f0939fe0e5955716a359",
+      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: GSA Schedule (procurement_portal).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md. Do not open a second CRM.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.",
+      "copy_sha256":"d263f5c53c143be10615f9f9a58c7bc7b1f818b3676545690503980c6aeafa3d",
       "evidence_packet":{
         "offer_id":"production-survival-sprint",
         "refs":[
@@ -193,8 +193,8 @@
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Public RFP response pack (procurement_portal).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.",
-      "copy_sha256":"c8dd64ca242cac46b85642d506a9360256c9b09a2940c7262f31bc899dddf829",
+      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Public RFP response pack (procurement_portal).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md. Do not open a second CRM.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.",
+      "copy_sha256":"eafe0bf9b00b46d5e6dc530517794aeb393cbc4e051f9d3e23dd1b191f8ed36b",
       "evidence_packet":{
         "offer_id":"production-survival-sprint",
         "refs":[
@@ -256,8 +256,8 @@
     {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Upwork Project Catalog (service_catalog).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
-      "copy_sha256":"837bcc11ff13f0ddf1396217e186a42c2d2751ad5a4a672f28360aac7aaf8b97",
+      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Upwork Project Catalog (service_catalog).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md. Do not open a second CRM.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
+      "copy_sha256":"a56a7508d353e7e333aaf8c62bfcd3464085e37e08d16277611ffd27f3ac61ba",
       "evidence_packet":{
         "offer_id":"production-survival-sprint",
         "refs":[
@@ -319,8 +319,8 @@
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"c48decb7abdd42ed7f454f320e825505e3436dd7b463d831854d4e21105d5011",
+      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md. Do not open a second CRM.",
+      "copy_sha256":"96190dcd46dc1c5c60ea25acb1bb4ec35d9c1edeac445f466f47a8e7d56c3d64",
       "evidence_packet":{
         "offer_id":"production-survival-sprint",
         "refs":[
@@ -377,13 +377,13 @@
       "surface_family":"service_catalog",
       "surface_id":"commons-service-catalog",
       "surface_name":"Commons service catalog",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
     },
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"84e2c0c44e3577b2e990b73ee58ca96ef9267b5e3116e34c3ded4be018503f29",
+      "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md. Do not open a second CRM.",
+      "copy_sha256":"a9faadc4ba16d902d0552e8dad7c2d4a5ccb1248482d63828ab342b9a2656719",
       "evidence_packet":{
         "offer_id":"production-survival-sprint",
         "refs":[
@@ -440,7 +440,7 @@
       "surface_family":"community_channel",
       "surface_id":"slack-commons",
       "surface_name":"TokenJunkieLabs Slack #commons",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
     },
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
