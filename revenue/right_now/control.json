@@ -161,14 +161,14 @@
     {
       "commons_bottleneck": "Reserve one delivery window and build the accepted proof after funding; keep agent-rescue.html reserved for Autopsy.",
       "delivery_window": "one agreed business day",
-      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from commercial.html, then issue a buyer-specific payment handoff.",
+      "founder_bottleneck": "Do not route Survival Proof buyers to agent-rescue.html (that page is the live $29 Autopsy). Accept the exact sentence and window from revenue/production_survival/README.md, then issue a buyer-specific payment handoff.",
       "id": "same-day-agent-survival-proof",
       "name": "Same-Day Agent Survival Proof",
-      "next_external_event": "A real buyer starts from commercial.html with the one-sentence failure and agrees to a start window.",
+      "next_external_event": "A real buyer starts from revenue/production_survival/README.md with the one-sentence failure and agrees to a start window.",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "price_usd": 2500,
       "rank": 6,
-      "start_route": "commercial.html"
+      "start_route": "revenue/production_survival/README.md"
     }
   ],
   "payment": {
@@ -189,7 +189,7 @@
   "source_receipts": [
     {
       "path": "revenue/right_now/catalog.json",
-      "sha256": "4d86ee98287764fc9a46c676d8f896388eeb7632876a2882f50332d7de67a4b5"
+      "sha256": "14a71031b7dd502f7daa466e3b8d0a10bed448b7fcfc85a65b6ee9362a208abe"
     },
     {
       "path": "revenue/right_now/diagnostic_offer.json",
@@ -213,7 +213,7 @@
     },
     {
       "path": "revenue/production_survival/offer.json",
-      "sha256": "82e1ddc6cdddc477e38c1027678a443b3191e0c155a089401eb7a6fd7775b880"
+      "sha256": "4a9af0433bad940797703921b6faf7476d0421a9687f947bda76011a17958569"
     }
   ],
   "truth": {
