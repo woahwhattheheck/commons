@@ -7,6 +7,7 @@ envelopes or constant errors before reaching the ordinary result journal.
 """
 from __future__ import annotations
 
+import base64
 import importlib.util
 import json
 import os
@@ -266,7 +267,11 @@ class CredentialSources:
                 raise OSError()
             try:
                 credential = ctypes.cast(pointer, ctypes.POINTER(module.CREDENTIAL)).contents
-                value = ctypes.string_at(credential.CredentialBlob, credential.CredentialBlobSize).decode("utf-8").rstrip("\x00")
+                raw = ctypes.string_at(credential.CredentialBlob, credential.CredentialBlobSize)
+                if descriptor.get("encoding") == "base64":
+                    value = base64.b64encode(raw).decode("ascii")
+                else:
+                    value = raw.decode("utf-8").rstrip("\x00")
             finally:
                 module.advapi32.CredFree(pointer)
             if descriptor.get("format") == "json":

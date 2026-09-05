@@ -238,6 +238,13 @@ For example, a future credential already stored in Windows Credential Manager:
 {"sources":{"future/service":{"type":"windows_credential","target":"commons:service:example","format":"json","pointer":"/token"}}}
 ```
 
+For an arbitrary binary Windows entry, add `"encoding": "base64"` to the
+`windows_credential` descriptor. Retrieval returns a Base64 string preserving
+exactly `CredentialBlobSize` bytes, including embedded and trailing NULs and
+non-UTF-8 bytes. Decode only in the requesting runtime. Omit `format` and
+`pointer` for whole binary entries; the existing UTF-8 text and optional JSON
+selection behavior remains the default.
+
 Supported descriptor types are `windows_credential` (`target`, optional JSON
 `format`), `json_file` (`path`), and `grok_slack_vault` (`path`). Optional `pointer`
 uses JSON Pointer selection, including `~0`/`~1` escapes. Paths and targets resolve

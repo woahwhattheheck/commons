@@ -1,4 +1,6 @@
 """Real encryption/transport contracts; dedicated CI installs the optional crypto dependency."""
+import base64
+import ctypes
 import io
 import json
 import subprocess
@@ -7,6 +9,7 @@ import threading
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
+from types import SimpleNamespace
 from unittest.mock import patch
 
 from integrations.shared_equipment import credential_transfer as ct
@@ -155,6 +158,39 @@ class CredentialTransferTests(unittest.TestCase):
         for ref in ("future/provider", "runtime/remote"):
             pending = CredentialRequest(ref)
             self.assertEqual(pending.open(self.sources.retrieve_sealed(pending.arguments())), SENTINEL)
+
+    def test_windows_binary_roundtrip_and_legacy_text_reader(self):
+        class Credential(ctypes.Structure):
+            _fields_ = [("CredentialBlobSize", ctypes.c_uint32),
+                        ("CredentialBlob", ctypes.POINTER(ctypes.c_ubyte))]
+        payloads = {
+            "binary": b"\x00\xff\x80A\x00B\x00",
+            "text": b'{"token":"synthetic-text"}\x00\x00',
+        }
+        retained, freed = [], []
+        def read(target, kind, flags, out):
+            raw = payloads[target]
+            buffer = (ctypes.c_ubyte * len(raw)).from_buffer_copy(raw)
+            record = Credential(len(raw), buffer)
+            retained.append((buffer, record))
+            ctypes.cast(out, ctypes.POINTER(ctypes.c_void_p))[0] = ctypes.cast(
+                ctypes.pointer(record), ctypes.c_void_p)
+            return True
+        module = SimpleNamespace(CREDENTIAL=Credential, advapi32=SimpleNamespace(
+            CredReadW=read, CredFree=lambda pointer: freed.append(pointer.value)))
+        self.sources.config_path.write_text(json.dumps({"sources": {
+            "windows/binary": {"type": "windows_credential", "target": "binary", "encoding": "base64"},
+            "windows/text": {"type": "windows_credential", "target": "text", "format": "json", "pointer": "/token"},
+        }}), encoding="utf-8")
+        with patch.object(ct.CredentialSources, "_gemini_module", return_value=module):
+            encoded = self.sources.read("windows/binary")
+            self.assertEqual(base64.b64decode(encoded, validate=True), payloads["binary"])
+            pending = CredentialRequest("windows/binary")
+            sealed = self.sources.retrieve_sealed(pending.arguments())
+            self.assertEqual(base64.b64decode(pending.open(sealed), validate=True), payloads["binary"])
+            self.assertNotIn(encoded, json.dumps(sealed))
+            self.assertEqual(self.sources.read("windows/text"), "synthetic-text")
+        self.assertEqual(len(freed), 3)
 
     def test_claude_index_reports_empty_without_inventing_stripe_and_reads_populated(self):
         self.sources.claude_path.write_text(json.dumps({"mcpOAuth": {
