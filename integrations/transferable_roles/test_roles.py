@@ -23,6 +23,13 @@ AUTOPSY_FIXTURE = (
 
 LIVE_CHECKOUT = "buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
 AUTOPSY_PAGE = "agent-rescue.html"
+SPINE_KNOWLEDGE = (
+    "revenue/agent_failure_autopsy/README.md",
+    "revenue/agent_failure_autopsy/RUNBOOK.md",
+    "revenue/agent_failure_autopsy/offer.json",
+    "revenue/agent_failure_autopsy/report-template.md",
+)
+AUTOPSY_FULFILLMENT_ENTRY = "python3 revenue/agent_failure_autopsy/fulfillment.py"
 
 
 class TransferableRoleTests(unittest.TestCase):
@@ -669,6 +676,16 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIn("payment-capability.html", pointers)
         self.assertIn("ground/PAYMENT_CAPABILITY.md", pointers)
         self.assertIn("pay.html", pointers)
+        # #8811 spine LANDED — pointer-only knowledge + fulfillment tool entry.
+        for path in SPINE_KNOWLEDGE:
+            self.assertIn(path, pointers)
+        tools = {t["name"]: t for t in role.get("tools") or []}
+        self.assertIn("autopsy_fulfillment", tools)
+        self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILLMENT_ENTRY)
+        # Do not embed Stripe product/price/plink/account IDs in the fixture.
+        fixture_blob = json.dumps(role)
+        for banned in ("prod_", "price_", "plink_", "acct_"):
+            self.assertNotIn(banned, fixture_blob)
 
     def test_autopsy_fixture_wires_live_checkout_url(self) -> None:
         """Create from fixture; live checkout must appear in knowledge/routes/ob-settle."""
