@@ -9,13 +9,17 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "d4556b9f8ec1f55b5b4a95d39ff5c68451588412"
 VERIFY = ROOT / "p/grokbuild-pr8604-intake-verify-20260903-01.md"
 LEFTOVER = ROOT / "p/grokbuild-path-manifest-33718116313-billing-lock-20260903-01.md"
 BODY_SHA256 = "f0f3968afff1e6c4e81bc282f43376efa4a28302e878a85db88b0585f2d092e3"
 
 
 def git_blob(rel: str) -> str:
-    return subprocess.check_output(["git", "hash-object", str(ROOT / rel)], text=True).strip()
+    return subprocess.check_output(
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
+    ).strip()
 
 
 class TestGrokbuildPr8604IntakeVerify(unittest.TestCase):
@@ -26,7 +30,7 @@ class TestGrokbuildPr8604IntakeVerify(unittest.TestCase):
             )
         )
         self.assertTrue(
-            git_blob("test_grokbuild_path_manifest_33718116313_billing_lock.py").startswith("329f731e")
+            git_blob("test_grokbuild_path_manifest_33718116313_billing_lock.py").startswith("9ed291a5")
         )
 
     def test_verify_receipt_is_unique(self) -> None:

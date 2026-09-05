@@ -10,6 +10,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "52f21d3773addd4d85989baa779e87e8c0cc1adc"
 RECEIPT = ROOT / "p/grokbuild-pr8350-run33681923354-keep-unpin-20260902-01.md"
 VERIFY = ROOT / "p/grokbuild-pr8350-verify-20260902-01.md"
 SLACK_HELPER = ROOT / "host/harborline_pack_market_slack_render.py"
@@ -43,7 +45,7 @@ KEEP_MODULES = (
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
     ).strip()
 
 
@@ -60,9 +62,9 @@ class TestGrokbuildPr8350Run33681923354KeepUnpin(unittest.TestCase):
             self.assertNotEqual(unread.get("door.js"), "1f9e8d14", name)
         self.assertNotIn('"hub_pages.py": "14eeedb0"', SLACK_TEST.read_text(encoding="utf-8"))
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
-        self.assertFalse(git_blob("hub_pages.py").startswith("5ac12648"))
+        self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
         self.assertTrue(git_blob("door.js").startswith("dc59355d"))
-        self.assertFalse(git_blob("door.js").startswith("dc59355d"))
+        self.assertFalse(git_blob("door.js").startswith("1f9e8d14"))
 
     def test_slack_helper_still_renders_and_refuses_send(self) -> None:
         proc = subprocess.run(

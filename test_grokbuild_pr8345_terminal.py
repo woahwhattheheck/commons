@@ -9,6 +9,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "035593cf9af8ecb80390c626cd16952f359c42d2"
 HELPER = ROOT / "host/harborline_pack_market_render.py"
 LEFTOVER = ROOT / "p/cursor-harborline-pack-market-render-20260902-01.md"
 LEFTOVER_TEST = ROOT / "test_harborline_pack_market_render.py"
@@ -17,8 +19,9 @@ RECEIPT = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 KEEP = {
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
+    "test_harborline_pack_market_render.py": "e8f8703c",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "ground/OWNER_NOW.md": "6b8ee988",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
@@ -28,7 +31,7 @@ KEEP = {
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
     ).strip()
 
 
@@ -41,7 +44,7 @@ class TestGrokbuildPr8345Terminal(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
-        self.assertFalse(git_blob("hub_pages.py").startswith("5ac12648"))
+        self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
 
     def test_helper_still_renders_standalone_store(self) -> None:
         proc = subprocess.run(

@@ -5,9 +5,15 @@ Measured: commons run 33849697120 dispatched ref=ec8961c (current pad main).
 actions/checkout@v4 fetch-depth:1 fetched refs/heads/ec8961c* three times,
 git fetch exited 1, and the deploy never started. The same commit as a
 40-char SHA depth-1 fetch succeeds. Branch `main` already worked.
+
+Deterministic ref and workflow contract tests run in the default Commons
+battery. Historical probes against the separate private pad repository require
+an explicit opt-in plus that repository's token; ordinary pull requests must
+not depend on cross-repository visibility or credentials.
 """
 from __future__ import annotations
 
+import base64
 import io
 import json
 import os
@@ -15,6 +21,7 @@ import subprocess
 import tempfile
 import unittest
 import urllib.error
+from collections.abc import Mapping
 from pathlib import Path
 from unittest import mock
 from urllib.request import Request
@@ -35,6 +42,28 @@ WORKFLOW = ROOT / ".github" / "workflows" / "webmcp-pad-production.yml"
 HELPER = ROOT / "host" / "webmcp_pad_ref.py"
 MEASURED_FULL = "ec8961cf84d54bac5fb2755d40177f59aeebc252"
 PAD_REPO = "woahwhattheheck/webmcp-pad"
+LIVE_PROBE_ENV = "COMMONS_WEBMCP_PAD_LIVE"
+LIVE_TOKEN_ENV = "WEBMCP_PAD_TOKEN"
+
+
+def live_probes_enabled(environ: Mapping[str, str] | None = None) -> bool:
+    """Require both deliberate opt-in and credentials for the private pad repo."""
+    values = os.environ if environ is None else environ
+    return values.get(LIVE_PROBE_ENV, "") == "1" and bool(values.get(LIVE_TOKEN_ENV, ""))
+
+
+def live_git_environment(token: str) -> dict[str, str]:
+    """Authenticate git without putting the token in the remote URL or output."""
+    encoded = base64.b64encode(("x-access-token:" + token).encode("utf-8")).decode("ascii")
+    environ = dict(os.environ)
+    environ.update(
+        {
+            "GIT_CONFIG_COUNT": "1",
+            "GIT_CONFIG_KEY_0": "http.https://github.com/.extraheader",
+            "GIT_CONFIG_VALUE_0": "AUTHORIZATION: basic " + encoded,
+        }
+    )
+    return environ
 
 
 class FakeResponse:
@@ -184,10 +213,16 @@ class WebmcpPadProductionWorkflowTests(unittest.TestCase):
         self.assertIn("abbrev_sha", helper)
 
 
+@unittest.skipUnless(
+    live_probes_enabled(),
+    "set %s=1 and provide %s to run cross-repository live probes"
+    % (LIVE_PROBE_ENV, LIVE_TOKEN_ENV),
+)
 class MeasuredGitFetchRegressionTests(unittest.TestCase):
     """Reproduce the exact fetch from run 33849697120 against the live pad repo."""
 
     def test_branch_wildcard_fetch_of_short_sha_exits_1(self) -> None:
+        token = os.environ[LIVE_TOKEN_ENV]
         with tempfile.TemporaryDirectory() as tmp:
             subprocess.run(["git", "init", "-q"], cwd=tmp, check=True)
             subprocess.run(
@@ -212,6 +247,7 @@ class MeasuredGitFetchRegressionTests(unittest.TestCase):
                 cwd=tmp,
                 capture_output=True,
                 text=True,
+                env=live_git_environment(token),
             )
         self.assertNotEqual(
             proc.returncode,
@@ -221,6 +257,7 @@ class MeasuredGitFetchRegressionTests(unittest.TestCase):
         )
 
     def test_full_sha_depth1_fetch_succeeds(self) -> None:
+        token = os.environ[LIVE_TOKEN_ENV]
         with tempfile.TemporaryDirectory() as tmp:
             subprocess.run(["git", "init", "-q"], cwd=tmp, check=True)
             subprocess.run(
@@ -244,18 +281,42 @@ class MeasuredGitFetchRegressionTests(unittest.TestCase):
                 cwd=tmp,
                 capture_output=True,
                 text=True,
+                env=live_git_environment(token),
             )
         self.assertEqual(proc.returncode, 0, proc.stderr)
         self.assertIn(MEASURED_FULL, proc.stdout + proc.stderr)
 
     def test_live_commits_api_expands_the_measured_short_sha(self) -> None:
-        token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
+        token = os.environ[LIVE_TOKEN_ENV]
         sha = fetch_commit_sha(PAD_REPO, MEASURED_SHORT, token=token)
         self.assertTrue(sha.startswith(MEASURED_SHORT))
         self.assertEqual(len(sha), 40)
         kind, value = checkout_ref(PAD_REPO, MEASURED_SHORT, token=token)
         self.assertEqual(kind, "abbrev_sha")
         self.assertEqual(value, sha)
+
+
+class LiveProbeGateTests(unittest.TestCase):
+    def test_live_probes_require_exact_opt_in_and_pad_token(self) -> None:
+        self.assertFalse(live_probes_enabled({}))
+        self.assertFalse(live_probes_enabled({LIVE_PROBE_ENV: "1"}))
+        self.assertFalse(live_probes_enabled({LIVE_TOKEN_ENV: "secret"}))
+        self.assertFalse(
+            live_probes_enabled({LIVE_PROBE_ENV: "true", LIVE_TOKEN_ENV: "secret"})
+        )
+        self.assertTrue(
+            live_probes_enabled({LIVE_PROBE_ENV: "1", LIVE_TOKEN_ENV: "secret"})
+        )
+
+    def test_default_battery_skips_entire_live_probe_class(self) -> None:
+        if live_probes_enabled():
+            self.skipTest("cross-repository probes were explicitly enabled")
+        self.assertTrue(
+            getattr(MeasuredGitFetchRegressionTests, "__unittest_skip__", False)
+        )
+        reason = getattr(MeasuredGitFetchRegressionTests, "__unittest_skip_why__", "")
+        self.assertIn(LIVE_PROBE_ENV, reason)
+        self.assertIn(LIVE_TOKEN_ENV, reason)
 
 
 if __name__ == "__main__":

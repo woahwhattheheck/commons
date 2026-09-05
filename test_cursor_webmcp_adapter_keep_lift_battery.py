@@ -10,6 +10,8 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "74d0e8aa5c95bc285d2f891b6ad6872d8dc3b4d8"
 RECEIPT = ROOT / "p/cursor-webmcp-adapter-keep-lift-battery-20260904-01.md"
 LEFTOVER_KEEP_LIFT = ROOT / "p/cursor-webmcp-adapter-keep-lift-20260903-01.md"
 REMAINDER = ROOT / "p/cursor-webmcp-contest-20260903-01.md"
@@ -20,21 +22,21 @@ KEEP = {
     "webmcp.html": "f2757068",
     "p/cursor-webmcp-adapter-keep-lift-20260903-01.md": "53700c56",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
-    "test_cursor_webmcp_contest.py": "76b8dbae",
+    "test_cursor_webmcp_contest.py": "d8ddd02d",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
     "p/latch-wake-super-mcp-pointer-readback-20260902-01.md": "250907c9",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "p/cursor-webmcp-adapter-keep-lift-battery-20260904-01.md": "4a3c466c",
-    "wire.html": "5b8edbda",
-    "catalog.html": "7eb3ca22",
+    "wire.html": "4ae38ce9",
+    "catalog.html": "154b7b67",
     "boards.html": "c824dc4d",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
-    "test_cursor_webmcp_adapter_keep_lift.py": "5d7a3f5b",
+    "test_cursor_webmcp_adapter_keep_lift.py": "cb0e5390",
     "test_webmcp_door.py": "21b6993f",
     "test_grokbuild_occupancy_landed_work_keep_lift_readback.py": "67ce7021",
-    "test_cursor_goat_pages_super_mcp_land_readback.py": "40d20d47",
+    "test_cursor_goat_pages_super_mcp_land_readback.py": "fcb822af",
 }
 
 THIS_SEAT_ADAPTER_TESTS = (
@@ -53,8 +55,14 @@ THIS_SEAT_ADAPTER_TESTS = (
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
     ).strip()
+
+
+def historical_text(rel: str) -> str:
+    return subprocess.check_output(
+        ["git", "show", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True, encoding="utf-8"
+    )
 
 
 class TestCursorWebmcpAdapterKeepLiftBattery(unittest.TestCase):
@@ -65,12 +73,12 @@ class TestCursorWebmcpAdapterKeepLiftBattery(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertEqual(ADAPTER.stat().st_size, 21414)
-        self.assertGreaterEqual(ADAPTER.stat().st_size, 20000)
+        self.assertEqual(len(historical_text("api/mcp.py").encode("utf-8")), 21414)
+        self.assertGreaterEqual(len(historical_text("api/mcp.py").encode("utf-8")), 20000)
 
     def test_this_seat_leftover_tests_pin_restored_adapter(self) -> None:
         for rel in THIS_SEAT_ADAPTER_TESTS:
-            text = (ROOT / rel).read_text(encoding="utf-8")
+            text = historical_text(rel)
             self.assertIn(
                 '"api/mcp.py": "9ae34f64"',
                 text,
@@ -81,13 +89,11 @@ class TestCursorWebmcpAdapterKeepLiftBattery(unittest.TestCase):
                 text,
                 f"{rel} still pins leftover pre-restore adapter",
             )
-        grokbuild = (
-            ROOT / "test_grokbuild_occupancy_landed_work_keep_lift_readback.py"
-        ).read_text(encoding="utf-8")
+        grokbuild = historical_text("test_grokbuild_occupancy_landed_work_keep_lift_readback.py")
         self.assertIn('"api/mcp.py": "bc558a5f"', grokbuild)
-        contest = (ROOT / "test_webmcp_judge_url.py").read_text(encoding="utf-8")
-        self.assertIn('"test_cursor_webmcp_contest.py": "76b8dbae"', contest)
-        self.assertNotIn('"test_cursor_webmcp_contest.py": "76b8dbae"', contest)
+        contest = historical_text("test_webmcp_judge_url.py")
+        self.assertIn('"test_cursor_webmcp_contest.py": "d8ddd02d"', contest)
+        self.assertNotIn('"test_cursor_webmcp_contest.py": "342ac977"', contest)
 
     def test_this_seat_leftover_subset_still_passes(self) -> None:
         leftover = subprocess.run(

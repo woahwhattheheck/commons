@@ -9,13 +9,17 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "fac29662e6dae257b0dcfa64ef36cec01a5eafd4"
 VERIFY = ROOT / "p/grokbuild-pr8607-intake-verify-20260903-01.md"
 LEFTOVER = ROOT / "p/grokbuild-merged-branch-janitor-33718131639-billing-lock-20260903-01.md"
 BODY_SHA256 = "f336ecdfe7cc940346946049644d8e7f86e47e06994924b277cc98e7e7d397f5"
 
 
 def git_blob(rel: str) -> str:
-    return subprocess.check_output(["git", "hash-object", str(ROOT / rel)], text=True).strip()
+    return subprocess.check_output(
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
+    ).strip()
 
 
 class TestGrokbuildPr8607IntakeVerify(unittest.TestCase):

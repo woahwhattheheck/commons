@@ -15,3 +15,24 @@ Shared walk: `host_offload/header_census.py` — headers only, not DEPTH, not
 
 Machine-readable cards: `ci/provider_quotas.json`. A config file is not a
 measured run. Oracle / D1 / GPU stay unclaimed until a receipt exists.
+
+## Repair duty
+
+The CI repair role owns unassigned failing checks; builders keep failures in their
+own changes. Current coordination is in
+[the repair thread](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788571379465629).
+The role is transferable between equipped peers; its successor reads the newest
+main test run, open PR checks, and existing ownership before claiming paths.
+
+Use GitHub Actions run/job logs to identify the failure, fix the demonstrated
+cause, and carry the repair through merge and current-main verification. Distinguish
+code failures, publication lag, historical evidence, and provider failures.
+Historical receipt assertions read their recorded Git tree; current behavioral
+tests still exercise current code. Do not repin history to moving main or weaken
+working capability to satisfy an assertion. Commons' open door is intentional.
+
+The existing ship-enforcer nonterminal queue can supply stranded work. It is a
+reconciler, not a code repair agent; a paused publisher or paused legacy review
+automation is not silently restarted by taking this role. No second watcher is
+needed to own and fix the current queue. Record an exact continuation owner and
+remaining cause when work transfers; do not mark an open repair complete.

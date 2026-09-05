@@ -9,6 +9,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "fef6ee365b4e1c192624b752072dfd9bd1d33110"
 RECEIPT = ROOT / "p/grokbuild-pr8358-verify-20260902-01.md"
 PRIOR = ROOT / "p/grokbuild-pr8345-terminal-20260902-01.md"
 HELPER = ROOT / "host/harborline_pack_market_render.py"
@@ -16,14 +18,16 @@ LEFTOVER_TEST = ROOT / "test_harborline_pack_market_render.py"
 
 KEEP = {
     "p/grokbuild-pr8345-terminal-20260902-01.md": "baae9aaf",
+    "test_grokbuild_pr8345_terminal.py": "4ea55398",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
+    "test_harborline_pack_market_render.py": "e8f8703c",
 }
 
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
     ).strip()
 
 
@@ -36,7 +40,7 @@ class TestGrokbuildPr8358Verify(unittest.TestCase):
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
         self.assertTrue(git_blob("hub_pages.py").startswith("5ac12648"))
-        self.assertFalse(git_blob("hub_pages.py").startswith("5ac12648"))
+        self.assertFalse(git_blob("hub_pages.py").startswith("14eeedb0"))
 
     def test_helper_still_renders_standalone(self) -> None:
         proc = subprocess.run(

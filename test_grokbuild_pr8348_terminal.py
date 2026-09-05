@@ -9,6 +9,8 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "2b1ef4649d155abb74952657ab462800ab05f259"
 RECEIPT = ROOT / "p/grokbuild-pr8348-terminal-20260902-01.md"
 CURSOR = ROOT / "p/cursor-mcp-get-grounding-20260902-01.md"
 TRACKER = ROOT / "p/grok-build-repair-tracker-mcp-get-20260902-01.md"
@@ -28,7 +30,7 @@ KEEP = {
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
     ).strip()
 
 
