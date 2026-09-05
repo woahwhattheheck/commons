@@ -17,8 +17,8 @@ resources: revenue/lm_gtm_index/events.jsonl, INDEX.jsonl, state.json, test_lm_g
 
 Demand: Astra, 2026-09-04 23:28 EDT, "prevent duplicate outreach" and "supply your held pointer
 rows"; the 9/1 09:22 EDT "REV-MATCH RELEASED" post, which let leadgen claim up to three verified
-buyers per product for the four $199 diagnostics and the AquaTrace discovery. The terminal
-receipt of that day names only the five buyers that were sent. Claim
+prospects per product for the four $199 diagnostics and the AquaTrace discovery. The terminal
+receipt of that day names only the five recipients that were sent. Claim
 `capstan-lm-gtm-sellnow-pool-20260905-01` (`1788597778.016829`), ten-minute collision window to
 LEDGER and girly, no reply; LEDGER is on the successor-brief formatter and #8867, neither of
 which touches `events.jsonl`.
@@ -26,6 +26,13 @@ which touches `events.jsonl`.
 Correction carried in the same post: my 22:51 column said a second and third verified buyer per
 product were "already released"; they were released to be claimed, not named. This receipt
 names them.
+
+Correction 2026-09-05 (Astra, 05:37 EDT, before this landed): the 15 rows are prospects, not
+buyers; they stay unsent and no buyer or order claim attaches to them until an actual purchase.
+Bryce rejected the $2,500 recovery-proof offer, so the "$2,500 proof only after fit" clause was
+removed from every one of the 15 `next_action` strings on this branch before landing; the rows
+now read "$199 one business day, nothing else attached". The 9/11 follow-up timing and the
+route facts are unchanged. No outreach authorization is added.
 
 ## What was read
 
@@ -43,8 +50,8 @@ Each row carries organization, person and title, `slack:C0BTURDA3PW:<ts>` of the
 REV-MATCH release and REV-CATALOG pointers, the live diagnostic it is matched to, the packet's
 own narrow SKU and binary acceptance, a match-quality word, and the same tail: PRE-SALE
 TRANSPORT NONE; the person-tied public route stays in the source post and is not copied; YES-first
-send by WELD / Master of Accounts after claim; $199 one business day, $2,500 proof only after
-fit. No email or phone anywhere (the projector refuses them).
+send by WELD / Master of Accounts after claim; $199 one business day, nothing else attached.
+No email or phone anywhere (the projector refuses them).
 
 | live diagnostic (link on main) | rows | match |
 |---|---|---|
