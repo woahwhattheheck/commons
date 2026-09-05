@@ -417,6 +417,7 @@
       "additionalProperties": false,
       "required": [
         "required",
+        "reason_code",
         "reason",
         "provider_state",
         "provider_reference_public"
@@ -437,6 +438,21 @@
         },
         "provider_reference_public": {
           "const": null
+        },
+        "reason_code": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "enum": [
+                "INSUFFICIENT_AFTER_CLARIFICATION",
+                "CANNOT_FIT_BOUNDARY",
+                "QUARANTINED_EVIDENCE_REMAINS_UNUSABLE",
+                "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW"
+              ]
+            }
+          ]
         }
       }
     },
@@ -448,7 +464,9 @@
         "analysis_level",
         "evidence_vs_inference_separated",
         "adversarial_challenge_completed",
-        "time_measurement_truncated_analysis"
+        "time_measurement_truncated_analysis",
+        "final_autopsies",
+        "iterative_consulting_included"
       ],
       "properties": {
         "bounded_unit": {
@@ -464,6 +482,12 @@
           "const": true
         },
         "time_measurement_truncated_analysis": {
+          "const": false
+        },
+        "final_autopsies": {
+          "const": 1
+        },
+        "iterative_consulting_included": {
           "const": false
         }
       }
@@ -481,6 +505,7 @@
         "extracted_characters",
         "extracted_character_limit",
         "approximate_text_token_limit",
+        "quarantined_file_count",
         "boundary_hit",
         "selection_state",
         "embedded_instructions_trusted"
@@ -538,6 +563,11 @@
         },
         "embedded_instructions_trusted": {
           "const": false
+        },
+        "quarantined_file_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 10
         }
       }
     }
