@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-agent-failure-autopsy-20260905",
   "label": "Agent Failure Autopsy fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC role (not a live buyer case) — checkout URL is the real public Payment Link already live on agent-rescue.html (#8889); not a remint of Astra #8811 spine",
+  "synthetic_note": "SYNTHETIC role — live #8889 checkout on agent-rescue.html; #8811 spine landed on main — knowledge/tools point at revenue/agent_failure_autopsy paths only (no spine remint, no Stripe IDs here)",
   "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -23,8 +23,24 @@
       "label": "public $29 Autopsy page + live checkout"
     },
     {
+      "pointer": "revenue/agent_failure_autopsy/README.md",
+      "label": "#8811 landed Autopsy product card / entry"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/RUNBOOK.md",
+      "label": "#8811 landed fulfillment runbook"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/offer.json",
+      "label": "ACTIVE_VERIFIED offer — payment_url LIVE_VERIFIED (IDs stay in offer.json; not reminted here)"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/report-template.md",
+      "label": "#8811 landed buyer report template"
+    },
+    {
       "pointer": "Astra Autopsy demand / coordination",
-      "label": "#8811 owns fulfillment spine — Payment Link live via #8889 agent-rescue.html CTA; not reminted here"
+      "label": "#8811 spine LANDED on main — point at revenue/agent_failure_autopsy; do not remint"
     }
   ],
   "obligations": [
@@ -51,7 +67,7 @@
       "summary": "Deliver report OR route to refund when diagnosis not defensible — checkout LIVE on agent-rescue.html / https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g (do not invent second plink)",
       "next_action": "Deliver buyer-ready report or route to refund per contract; checkout is LIVE on agent-rescue.html and buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g — do not invent second plink",
       "status": "open",
-      "evidence_pointer": "agent-rescue.html live checkout + https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g (#8889); #8811 still owns fulfillment spine"
+      "evidence_pointer": "agent-rescue.html live checkout + #8889 CTA; spine runbook revenue/agent_failure_autopsy/RUNBOOK.md (#8811 landed)"
     }
   ],
   "tools": [
@@ -69,6 +85,11 @@
       "name": "grokbot_control_client",
       "entry": "integrations/grokbot_control/client.py",
       "notes": "GrokBotControlClient — submit/follow-up/cancel/session recover; not grok.com"
+    },
+    {
+      "name": "autopsy_fulfillment",
+      "entry": "python3 revenue/agent_failure_autopsy/fulfillment.py",
+      "notes": "#8811 landed spine — evidence-bounded fulfill; no credential remint"
     }
   ],
   "access_routes": [
@@ -101,7 +122,7 @@
       "kind": "public_html",
       "store": "payment-capability.html",
       "base_url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
-      "note": "Public Payment Link only — no secret IDs. UTM-safe CTA on agent-rescue.html; #8811 still owns fulfillment spine. Also pay.html / payment-capability.html."
+      "note": "Public Payment Link only — no secret IDs. UTM-safe CTA on agent-rescue.html; #8811 spine landed (point at RUNBOOK). Also pay.html / payment-capability.html."
     }
   ],
   "credential_custodian": "existing_secure_stores",
