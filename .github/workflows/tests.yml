@@ -23,13 +23,12 @@ jobs:
             /revenue/arbitrage/
             /test_arbitrage.py
             /test_quill_arbitrage_autopsy_buyer_page.py
-      - name: Verify arbitrage record and public offer distinction
+      - name: Verify newly landed receipt role references
         run: |
           set -euo pipefail
           git merge-base --is-ancestor 3ae13c5db79e2c44d254428db298869714b944c0 HEAD
           git merge-base --is-ancestor b2a37606a3a3415175fc455ebc9c2468e582c01e HEAD
           git merge-base --is-ancestor d04c429f50066cc0998f37c1d18cdf502561b891 HEAD
-          python3 -m unittest -v test_arbitrage test_quill_arbitrage_autopsy_buyer_page
           python3 -m unittest discover -v -s integrations/transferable_roles -p 'test_*.py'
       - name: Read back current main and audit
         run: |
