@@ -1,0 +1,38 @@
+{
+  "added": "2026-09-04",
+  "capability": "CRM6 relationship handoff: successor peer continues an existing GTM/JOJO relationship from evidence-bound wants/learned/promised/unresolved/due fields. Not a second CRM. Billings OWNER_HOLD preserved; no Cheri contact.",
+  "carrier": "LEDGER",
+  "claimed_paths": [
+    "host/lm_gtm_relationship_handoff.py",
+    "test_lm_gtm_relationship_handoff.py",
+    "revenue/lm_gtm_index/README.md",
+    "lm-gtm-index.html",
+    "features/registry/ledger-crm6-relationship-handoff-20260904-01.json",
+    "p/ledger-crm6-relationship-handoff-20260904-01.md"
+  ],
+  "dependencies": [
+    "lm-gtm-require-claim-20260904-01"
+  ],
+  "id": "ledger-crm6-relationship-handoff-20260904-01",
+  "name": "CRM6 relationship survives context window",
+  "next_gap": "Owner mailbox still required for live send. Agents do not contact Cheri or submit Bid 1421. Do not resend BOUNCED or SENT-DNR. Do not mint a second CRM. Overlay composed_at may be stale vs Slack — re-verify before commercial action.",
+  "owner_subsystem": "lm-gtm-index",
+  "public_entrypoint": "lm-gtm-index.html",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": false
+  },
+  "resource_links": [
+    "lm-gtm-index.html",
+    "revenue/lm_gtm_index/README.md",
+    "p/ledger-crm6-relationship-handoff-20260904-01.md",
+    "host/lm_gtm_relationship_handoff.py"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_lm_gtm_relationship_handoff.py",
+    "host/lm_gtm_relationship_handoff.py"
+  ]
+}

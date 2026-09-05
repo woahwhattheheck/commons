@@ -34,8 +34,8 @@ KIND_HANDOFF = "LM_GTM_RELATIONSHIP_HANDOFF"
 ACTUAL_MESSAGE = "ACTUAL_MESSAGE"
 LEDGER_STATUS = "LEDGER_STATUS"
 SUMMARY_POINTER = "SUMMARY_POINTER"
-SENTISH_RE = re.compile(
-    r"\b(sent|accepted|attachment e|human reply|material reply|reopened)\b",
+EXPLICIT_SENT_RE = re.compile(
+    r"(\bSENT\b|accepted SENT|Attachment E sent|Attachment E SENT)",
     re.IGNORECASE,
 )
 WANTISH_RE = re.compile(
@@ -135,25 +135,18 @@ def relationship_handoff(
         for event in events_sorted
     ]
 
-    # wants: MATERIAL_REPLY / human-reply bodies only; else ABSENT
+    # wants: MATERIAL_REPLY bodies first; else ABSENT (never invent)
     wants = _absent()
     for event in reversed(events_sorted):
-        etype = event.get("type")
+        if event.get("type") != "MATERIAL_REPLY":
+            continue
         body = str(event.get("body") or "")
-        if etype == "MATERIAL_REPLY" or (
-            etype == "STATUS" and WANTISH_RE.search(body) and "OWNER_HOLD" not in body
-        ):
-            if etype == "MATERIAL_REPLY" or SENTISH_RE.search(body):
-                paths_e = _event_paths(event)
-                provenance = (
-                    ACTUAL_MESSAGE
-                    if _message_paths(paths_e)
-                    else SUMMARY_POINTER
-                )
-                wants = _sourced(body, paths_e + [f"overlay:{event.get('id')}"], provenance)
-                break
+        paths_e = _event_paths(event)
+        provenance = ACTUAL_MESSAGE if _message_paths(paths_e) else SUMMARY_POINTER
+        wants = _sourced(body, paths_e + [f"overlay:{event.get('id')}"], provenance)
+        break
 
-    # learned: chronological factual STATUS / MATERIAL_REPLY bodies
+    # learned: chronological factual STATUS / MATERIAL_REPLY / SENT bodies
     learned_bits: list[str] = []
     learned_evidence: list[str] = []
     for event in events_sorted:
@@ -172,20 +165,18 @@ def relationship_handoff(
         else _absent()
     )
 
-    # promised: ONLY explicit sent/accepted language with message evidence; never invent
+    # promised: ONLY explicit SENT language or SENT_AWAITING_REPLY; never invent
     promised = _absent()
     for event in reversed(events_sorted):
         body = str(event.get("body") or "")
         paths_e = _event_paths(event)
-        if not SENTISH_RE.search(body):
-            continue
-        msg_paths = _message_paths(paths_e)
-        if not msg_paths and event.get("type") not in {"SENT_AWAITING_REPLY", "MATERIAL_REPLY"}:
-            continue
-        provenance = ACTUAL_MESSAGE if msg_paths else SUMMARY_POINTER
-        evidence = (msg_paths or paths_e) + [f"overlay:{event.get('id')}"]
-        promised = _sourced(body, evidence, provenance)
-        break
+        etype = event.get("type")
+        if etype == "SENT_AWAITING_REPLY" or EXPLICIT_SENT_RE.search(body):
+            msg_paths = _message_paths(paths_e)
+            provenance = ACTUAL_MESSAGE if msg_paths else SUMMARY_POINTER
+            evidence = (msg_paths or paths_e) + [f"overlay:{event.get('id')}"]
+            promised = _sourced(body, evidence, provenance)
+            break
 
     # unresolved + successor next action from composed row (ledger truth)
     next_action = row.get("next_action")
@@ -197,8 +188,9 @@ def relationship_handoff(
         unresolved_parts.append("dnr=true")
     if isinstance(next_action, str) and next_action.strip():
         unresolved_parts.append(next_action.strip())
-    unresolved_evidence = list(row.get("overlay_event_ids") or [])
-    unresolved_evidence = [f"overlay:{item}" for item in unresolved_evidence]
+    unresolved_evidence = [
+        f"overlay:{item}" for item in (row.get("overlay_event_ids") or [])
+    ]
     unresolved_evidence.extend(
         [path for path in (row.get("source_paths") or []) if isinstance(path, str)]
     )
@@ -214,7 +206,6 @@ def relationship_handoff(
         else _absent()
     )
 
-    # next time-sensitive: due field only
     due = row.get("due")
     due_evidence: list[str] = []
     for event in reversed(events_sorted):
@@ -239,7 +230,6 @@ def relationship_handoff(
         "lane": idx.compact_lane(row),
         "decision": row.get("decision"),
         "dnr": bool(row.get("dnr")),
-        "owner": None if owner == "UNSEATED" else owner,
         "due": row.get("due"),
         "route_kind": row.get("route_kind"),
         "route_ref": row.get("route_ref"),
@@ -262,9 +252,8 @@ def relationship_handoff(
             "no_customer_contact": True,
         },
     }
-    # Drop null owner for compactness (match brief style)
-    if packet["owner"] is None:
-        del packet["owner"]
+    if owner != "UNSEATED":
+        packet["owner"] = owner
     blob = json.dumps(packet, sort_keys=True, ensure_ascii=False)
     idx._assert_no_pii_in_index_blob(blob)
     return packet
