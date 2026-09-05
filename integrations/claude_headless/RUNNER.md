@@ -81,6 +81,15 @@ for the lesson). For unattended research use `allowed_tools="WebSearch,WebFetch,
 configuration (Slack, Gmail, Commons, Titan Hands on the owner PC); pass `strict_mcp=True`
 (`--strict-mcp`) unless the run should have them.
 
+**Memory floor (added after the 2026-09-04 22:59 EDT `0x154` crash).** `--min-free-mb N`
+(`Runner(min_free_mb=N)`, or `CLAUDE_HEADLESS_MIN_FREE_MB`) makes `start` and `followup` refuse
+to spawn a child while free physical RAM is under N MB, with the measured number in the error;
+no record, journal entry or child is created. `doctor` reports `memory_floor`
+(`free_physical_mb`, `min_free_mb`, `holds`), and every record keeps
+`headless.free_physical_mb_at_spawn`. Default 0 = off; the gateway (`gateway.py --min-free-mb`)
+uses 1024, so use the same number here to keep the two guards in agreement. An unreadable
+reader never holds. Each child is roughly 500 MB of commit on this box.
+
 Statuses: `queued` → `running` → one of `completed`, `error`, `cancelled`, `interrupted`.
 
 ## The record
