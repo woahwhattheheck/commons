@@ -6,7 +6,9 @@ from __future__ import annotations
 import copy
 import importlib.util
 import json
+import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 
@@ -160,6 +162,29 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
             FULFILLMENT.AutopsyValidationError, "raw_bytes"
         ):
             FULFILLMENT.validate_intake(intake)
+
+    def test_oversized_actual_file_is_rejected_before_any_content_read(self):
+        intake = load("intake.json")
+        context = FULFILLMENT.validate_intake(intake)
+        with tempfile.TemporaryDirectory() as tmp:
+            evidence = Path(tmp) / "redacted_transcript.txt"
+            with evidence.open("wb") as stream:
+                stream.seek(25_000_000)
+                stream.write(b"\\0")
+            with mock.patch.object(
+                Path,
+                "read_bytes",
+                side_effect=AssertionError("unbounded read_bytes must not run"),
+            ), mock.patch.object(
+                Path,
+                "open",
+                side_effect=AssertionError("content read must follow size check"),
+            ):
+                with self.assertRaisesRegex(
+                    FULFILLMENT.AutopsyValidationError,
+                    "raw evidence byte count does not match",
+                ):
+                    FULFILLMENT.verify_evidence_files(context, tmp)
 
     def test_unknown_anchor_and_missing_adversarial_challenge_fail(self):
         intake = load("intake.json")
