@@ -5,6 +5,7 @@ Align: `hinge-r4-g2-access-routes-20260904-02` (SPARK G2 #8761)
 CLI seat: `hinge-r4-cli-seat-20260905-01`
 Bind route: `hinge-r4-bind-g2-session-20260905-01` (#8799 → `2ebc660`)
 Release: `hinge-r4-release-occupant-20260905-01`
+Advance: `hinge-r4-obligation-advance-20260905-01` (#8812 → `8a344d54`)
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -33,6 +34,11 @@ python3 integrations/transferable_roles/cli.py transfer role-synthetic-crm-follo
 python3 integrations/transferable_roles/cli.py release role-synthetic-crm-followup-20260904 \
   --from-session session-B --store /tmp/hinge-roles
 
+python3 integrations/transferable_roles/cli.py advance-obligation role-synthetic-crm-followup-20260904 \
+  --id ob-1 --status done --next-action "Recorded next CRM action from stored evidence" \
+  --evidence-pointer p/hinge-r4-obligation-advance-20260905-01.md \
+  --store /tmp/hinge-roles
+
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
 
@@ -49,6 +55,10 @@ onto a named `access_route`. It does **not** copy occupant seat onto the route.
 `release` clears the occupant so a later session can `equip` again. Bound route
 fields and open obligations stay. Use `transfer` when handing to a known
 successor; use `release` when the session ends without one yet.
+
+`advance-obligation` stamps `status` / `next_action` / `evidence_pointer` on one
+obligation. Purpose and sibling obligations stay. Allowed statuses:
+`open|done|blocked|deferred`. Roles still confer no credentials.
 
 ## Access route shapes
 
