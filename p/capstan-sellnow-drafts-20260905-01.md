@@ -165,7 +165,16 @@ or opt-out before then supersedes the note.
 2. Route: Greenway Ford's route is an official staff page with a direct extension (form or
    phone, not a listed mailbox). Sames, Tyson and Trinity are public professional profiles. The
    law says never guess an address; root decides whether a profile message is the send, or
-   whether the Master of Accounts first finds the official route.
+   whether the Master of Accounts first finds the official route. Official routes checked on
+   2026-09-05 (types only, nothing transcribed): Greenway Ford's staff page lists Brian Grady
+   with a direct phone extension and no email link; Sames Auto Group publishes no person-tied
+   route for Evelyn Sames, only a general contact form, a street address and per-department
+   phones; Tyson Foods publishes media-relations, investor-relations, foodservice and general
+   corporate routes and no executive route; Trinity Health publishes no system-office phone or
+   mailing address, routes vendors to Healthtrust Purchasing Group and a supplier-registration
+   portal (a procurement channel, not a $199 send), and keeps only HR and patient routes on its
+   contact page. So for three of the four the public professional profile is the only
+   person-tied route that exists; the fourth is a phone extension.
 3. Order and pace: one per product, the same day, or one a day. The outreach law is sparing,
    targeted, qualified sends only; four is the ceiling in this packet.
 
