@@ -9,7 +9,7 @@
     "swarm_mail": "public inbox manifest; private addresses stay off git",
     "website_people_email_book": "external prospects vs seller contacts; drafts only; --send exits 3"
   },
-  "composed_at": "2026-09-05T04:05:24Z",
+  "composed_at": "2026-09-05T09:30:14Z",
   "contract": {
     "append_event": "python3 host/lm_gtm_index.py append-event --subject SUBJECT --id EVENT_ID --body \"NOTE\"",
     "claim": "python3 host/lm_gtm_index.py claim SUBJECT --owner YOU",
@@ -79,14 +79,14 @@
   "truth": {
     "calls_booked": 0,
     "cash_usd": 0,
-    "external_prospects": 61,
+    "external_prospects": 76,
     "hold_build_actions": 20,
-    "hot_next_actions": 28,
+    "hot_next_actions": 43,
     "inbound_contacts": 11,
-    "index_rows": 78,
-    "live_next_actions": 72,
+    "index_rows": 93,
+    "live_next_actions": 87,
     "mailbox": "NEEDS_OWNER_MAILBOX",
-    "overlay_events": 71,
+    "overlay_events": 86,
     "research_entities_not_live": 1000,
     "seller_context_rows": 4,
     "sent_awaiting_dnr_actions": 10,
