@@ -7,9 +7,9 @@ Baked 2026-09-05T22:19:22Z from git HEAD p/. If a row is missing here and the fi
 
 ## Commercial
 
-- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html): one failed coding-agent run — evidence-linked causes, fix steps, and a prevention check within one business day after usable evidence arrives.
-- [$2,500 Same-Day Agent Survival Proof](https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md): refund if the agreed same-day proof window is missed. No dedicated Commons HTML sell page (do not use agent-rescue.html for this SKU).
-- [$15,000 five-day Production Survival Sprint](https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md): bounded recovery implementation with a durable receipt (ladder in offer.json; no dedicated sell HTML).
+- [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html): one failed coding-agent run — evidence-linked causes, fix steps, and a prevention check within one business day after usable, in-cap evidence arrives.
+- [$2,500 Same-Day Agent Survival Proof](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): refund if the agreed same-day proof window is missed. Offer and contact routes are documented in the linked README.
+- [$15,000 five-day Production Survival Sprint](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): bounded recovery implementation with a durable receipt.
 - [$12,000 GGUF diagnostic](https://woahwhattheheck.github.io/commons/diagnostic.html): diagnosis before a larger engagement.
 - [$30,000 White Box pilot](https://woahwhattheheck.github.io/commons/commercial.html): 30 calendar days for one customer-owned GGUF model family; $15,000 at NDA/SOW and $15,000 on delivery.
 - [$45,000 Muhlnickel / Titan keep-or-build](https://woahwhattheheck.github.io/commons/land/sku-muhlnickel-titan-20260826.html): live checkout and current status are in the SKU.
