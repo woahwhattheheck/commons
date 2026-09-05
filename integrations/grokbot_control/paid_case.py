@@ -94,10 +94,10 @@ def case_from_autopsy_offer(
     return normalized
 
 
-def _clip(value: str) -> str:
+def _receipt_text(value: str) -> str:
     text = value.strip()
     if len(text) > _RECEIPT_MAX:
-        return text[:_RECEIPT_MAX]
+        raise ValueError(f"receipt values must not exceed {_RECEIPT_MAX} characters")
     return text
 
 
@@ -107,14 +107,17 @@ def receipt_row_from_case(
     g2_run_id: str | None = None,
     g2_session_id: str | None = None,
     payment_observed_at: str | None = None,
-    state: str = "PAYMENT_OBSERVED_STANDBY_INTAKE",
+    state: str = "UNVERIFIED",
 ) -> dict[str, str]:
     """Build an opaque public seats `case_row` from a G2 case + optional run ids.
 
     Required on the row: offer_id, case_ref, sku, state.
     Optional: client_reference_id, g2_run_id, g2_session_id, payment_observed_at.
-    Never includes buyer PII. Does not append to seats.json — callers only
-    append after REAL_STRIPE_PAYMENT_OBSERVED + owner authorization.
+    Callers supply opaque identifiers; this helper is not a PII sanitizer or
+    payment verifier. State defaults to UNVERIFIED; callers pass an observed
+    state only when supported by evidence. Values over 200 characters raise
+    instead of silently changing identifiers. Does not append to seats.json;
+    callers append after REAL_STRIPE_PAYMENT_OBSERVED + owner authorization.
     """
     if any(k in case for k in _FORBIDDEN_RECEIPT_KEYS):
         raise ValueError("case must not carry buyer PII / artifact keys")
@@ -133,7 +136,7 @@ def receipt_row_from_case(
         "offer_id": normalized["offer_id"],
         "case_ref": normalized["case_ref"],
         "sku": normalized["sku"],
-        "state": _clip(state),
+        "state": _receipt_text(state),
     }
     if "client_reference_id" in normalized:
         row["client_reference_id"] = normalized["client_reference_id"]
@@ -148,7 +151,7 @@ def receipt_row_from_case(
             continue
         if not isinstance(value, str) or not value.strip():
             raise ValueError(f"{key} must be a nonempty string when provided")
-        row[key] = _clip(value)
+        row[key] = _receipt_text(value)
 
     for key in row:
         if key in _FORBIDDEN_RECEIPT_KEYS:
