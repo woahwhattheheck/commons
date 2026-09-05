@@ -58,7 +58,11 @@ SERVICE = "commons-claude-headless-gateway"
 CONTRACT = "tenon-c1-as-built-20260904-2043 + gemini-shaped aliases"
 DEFAULT_PORT = 8879
 DEFAULT_STATE_DIR = Path.home() / ".commons" / "claude_headless"
-DEFAULT_MAX_CONCURRENT = 3
+# The owner PC is a 7.24 GB laptop with a DRAM-less NVMe; every CLI child is a few hundred MB.
+# 2026-09-04 22:59 EDT it bugchecked 0x154 (memory-compression store paging) with 17 Claude
+# windows and 9 ChatGPT processes resident. One child at a time, and none while RAM is short.
+DEFAULT_MAX_CONCURRENT = 1
+DEFAULT_MIN_FREE_MB = 1024
 TERMINAL = frozenset({"completed", "error", "cancelled", "interrupted"})
 ACTIVE = frozenset({"starting", "running"})
 IS_WINDOWS = os.name == "nt"
@@ -205,6 +209,39 @@ def headless_env(base: dict[str, str] | None = None, run_id: str = "") -> dict[s
     if run_id:
         env["CLAUDE_HEADLESS_RUN_ID"] = run_id
     return env
+
+
+def free_physical_mb() -> int | None:
+    """Free physical RAM in MB, or None when the platform does not say."""
+    if IS_WINDOWS:
+        import ctypes
+
+        class MemoryStatus(ctypes.Structure):
+            _fields_ = [
+                ("dwLength", ctypes.c_ulong),
+                ("dwMemoryLoad", ctypes.c_ulong),
+                ("ullTotalPhys", ctypes.c_ulonglong),
+                ("ullAvailPhys", ctypes.c_ulonglong),
+                ("ullTotalPageFile", ctypes.c_ulonglong),
+                ("ullAvailPageFile", ctypes.c_ulonglong),
+                ("ullTotalVirtual", ctypes.c_ulonglong),
+                ("ullAvailVirtual", ctypes.c_ulonglong),
+                ("ullAvailExtendedVirtual", ctypes.c_ulonglong),
+            ]
+
+        status = MemoryStatus()
+        status.dwLength = ctypes.sizeof(MemoryStatus)
+        if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status)):  # type: ignore[attr-defined]
+            return None
+        return int(status.ullAvailPhys // (1024 * 1024))
+    try:
+        with open("/proc/meminfo", "r", encoding="ascii", errors="replace") as handle:
+            for line in handle:
+                if line.startswith("MemAvailable:"):
+                    return int(line.split()[1]) // 1024
+    except OSError:
+        return None
+    return None
 
 
 def build_popen_kwargs(cwd: str, env: dict[str, str], stdin: Any, stdout: Any, stderr: Any) -> dict[str, Any]:
@@ -533,8 +570,13 @@ class Gateway(ThreadingHTTPServer):
         max_concurrent: int = DEFAULT_MAX_CONCURRENT,
         popen: Callable[..., Any] = subprocess.Popen,
         env_base: dict[str, str] | None = None,
+        min_free_mb: int = DEFAULT_MIN_FREE_MB,
+        free_mb_fn: Callable[[], int | None] | None = None,
     ) -> None:
         super().__init__(address, Handler)
+        self.min_free_mb = max(0, int(min_free_mb))
+        self._free_mb_fn = free_mb_fn or free_physical_mb
+        self._held: set[str] = set()
         self.state_dir = Path(state_dir)
         self.runs_dir = self.state_dir / "runs"
         self.runs_dir.mkdir(parents=True, exist_ok=True)
@@ -759,6 +801,20 @@ class Gateway(ThreadingHTTPServer):
 
     def _dispatch_once(self) -> None:
         queued = sorted(self.store.list_runs(status="queued", limit=10_000), key=lambda r: r["seq"])
+        if not queued:
+            return
+        free = self._free_mb_fn()
+        if free is not None and free < self.min_free_mb:
+            # the host is the clearance laptop; a child under this floor is the next bugcheck
+            for run in queued:
+                if run["run_id"] not in self._held:
+                    self._held.add(run["run_id"])
+                    self.store.append_event(
+                        run["run_id"], run["session_id"], "gateway", status="held",
+                        payload={"free_mb": free, "min_free_mb": self.min_free_mb,
+                                 "note": "queued until free physical RAM is back above the floor"},
+                    )
+            return
         for run in queued:
             with self._mutex:
                 if len(self._procs) + len(self._adopted) >= self.max_concurrent:
@@ -772,6 +828,10 @@ class Gateway(ThreadingHTTPServer):
 
     def _start(self, run: dict[str, Any]) -> None:
         run_id, session_id = run["run_id"], run["session_id"]
+        if run_id in self._held:
+            self._held.discard(run_id)
+            self.store.append_event(run_id, session_id, "gateway", status="released",
+                                    payload={"free_mb": self._free_mb_fn(), "min_free_mb": self.min_free_mb})
         files = self.run_files(run_id)
         files["dir"].mkdir(parents=True, exist_ok=True)
         if not files["prompt"].is_file():
@@ -1033,6 +1093,11 @@ class Gateway(ThreadingHTTPServer):
             "runs_dir": str(self.runs_dir),
             "env_scrub": self.env_scrub,
             "max_concurrent": self.max_concurrent,
+            "memory_guard": {
+                "free_mb": self._free_mb_fn(),
+                "min_free_mb": self.min_free_mb,
+                "holding": sorted(self._held),
+            },
             "active_runs": active,
             "counts": self.store.counts(),
             "event_cursor": self.store.cursor,
@@ -1352,6 +1417,8 @@ def detach(args: argparse.Namespace) -> int:
         str(state_dir),
         "--max-concurrent",
         str(args.max_concurrent),
+        "--min-free-mb",
+        str(args.min_free_mb),
     ]
     if args.claude_cmd:
         cmd += ["--claude-cmd", *args.claude_cmd]
@@ -1419,6 +1486,12 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--state-dir", type=Path, default=DEFAULT_STATE_DIR)
     parser.add_argument("--max-concurrent", type=int, default=DEFAULT_MAX_CONCURRENT)
     parser.add_argument(
+        "--min-free-mb",
+        type=int,
+        default=DEFAULT_MIN_FREE_MB,
+        help="hold queued runs while free physical RAM is below this (MB); 0 disables",
+    )
+    parser.add_argument(
         "--claude-cmd", nargs="+", default=None, help="command tokens for the CLI (default: claude on PATH)"
     )
     parser.add_argument("--serve", dest="mode", action="store_const", const="serve", help="serve in this process")
@@ -1447,6 +1520,7 @@ def main(argv: list[str] | None = None) -> int:
         state_dir=args.state_dir,
         claude_cmd=args.claude_cmd,
         max_concurrent=args.max_concurrent,
+        min_free_mb=args.min_free_mb,
     )
     print(
         json.dumps(
@@ -1456,6 +1530,8 @@ def main(argv: list[str] | None = None) -> int:
                 "cli": server.cli,
                 "recovery": server.recovery,
                 "env_scrub": server.env_scrub,
+                "max_concurrent": server.max_concurrent,
+                "min_free_mb": server.min_free_mb,
             }
         ),
         flush=True,

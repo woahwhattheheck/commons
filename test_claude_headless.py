@@ -91,7 +91,7 @@ def http(method, url, body=None, timeout=30):
 
 
 class Fixture:
-    def __init__(self, state_dir=None, max_concurrent=3, mem_dir=None, root=None):
+    def __init__(self, state_dir=None, max_concurrent=3, mem_dir=None, root=None, min_free_mb=0, free_mb_fn=None):
         self.tmp = None if root else tempfile.TemporaryDirectory()
         self.root = Path(root) if root else Path(self.tmp.name)
         self.state_dir = Path(state_dir) if state_dir else self.root / "state"
@@ -114,6 +114,8 @@ class Fixture:
             claude_cmd=[sys.executable, str(self.stub)],
             max_concurrent=max_concurrent,
             env_base=env,
+            min_free_mb=min_free_mb,
+            free_mb_fn=free_mb_fn,
         )
         self.port = self.server.server_address[1]
         self.base = f"http://127.0.0.1:{self.port}"
@@ -416,6 +418,56 @@ class GatewayTests(unittest.TestCase):
         self.assertEqual(c.cancel(sleeper["run_id"])["status"], "cancelled")
         again = c.cancel(sleeper["run_id"])
         self.assertEqual(again["http_status"], 409)
+
+
+class MemoryGuardTests(unittest.TestCase):
+    def test_queued_runs_hold_under_the_floor_and_release_above_it(self):
+        free = {"mb": 200}
+        fx = Fixture(min_free_mb=1024, free_mb_fn=lambda: free["mb"])
+        try:
+            ack = fx.submit("held until ram returns")
+            time.sleep(1.6)  # two dispatcher ticks
+            run = http("GET", fx.base + f"/v1/runs/{ack['run_id']}")[1]["run"]
+            self.assertEqual(run["status"], "queued")
+            self.assertIsNone(run["pid"])
+            events = http("GET", fx.base + f"/v1/runs/{ack['run_id']}/events")[1]["events"]
+            held = [e for e in events if e["kind"] == "gateway" and e["status"] == "held"]
+            self.assertEqual(len(held), 1, "held is journaled once per run, not once per tick")
+            self.assertEqual(held[0]["payload"]["free_mb"], 200)
+            self.assertEqual(held[0]["payload"]["min_free_mb"], 1024)
+            health = http("GET", fx.base + "/health")[1]
+            self.assertEqual(health["memory_guard"], {"free_mb": 200, "min_free_mb": 1024, "holding": [ack["run_id"]]})
+            free["mb"] = 4096
+            final = fx.wait(ack["run_id"], 15)
+            self.assertEqual(final["status"], "completed")
+            self.assertEqual(final["result_text"], "echo:held until ram returns")
+            statuses = [e["status"] for e in http("GET", fx.base + f"/v1/runs/{ack['run_id']}/events")[1]["events"] if e["kind"] == "gateway"]
+            self.assertEqual(statuses, ["queued", "held", "released", "starting", "running", "completed"])
+            self.assertEqual(http("GET", fx.base + "/health")[1]["memory_guard"]["holding"], [])
+        finally:
+            fx.close()
+            fx.cleanup()
+
+    def test_floor_of_zero_disables_the_guard_and_unknown_memory_never_holds(self):
+        fx = Fixture(min_free_mb=0, free_mb_fn=lambda: 1)
+        try:
+            self.assertEqual(fx.wait(fx.submit("no floor")["run_id"])["status"], "completed")
+        finally:
+            fx.close()
+            fx.cleanup()
+        fx = Fixture(min_free_mb=1024, free_mb_fn=lambda: None)
+        try:
+            self.assertEqual(fx.wait(fx.submit("unknown ram")["run_id"])["status"], "completed")
+            self.assertEqual(http("GET", fx.base + "/health")[1]["memory_guard"]["free_mb"], None)
+        finally:
+            fx.close()
+            fx.cleanup()
+
+    def test_default_floor_and_concurrency_are_laptop_sized(self):
+        self.assertEqual(gateway.DEFAULT_MAX_CONCURRENT, 1)
+        self.assertEqual(gateway.DEFAULT_MIN_FREE_MB, 1024)
+        value = gateway.free_physical_mb()
+        self.assertTrue(value is None or (isinstance(value, int) and value >= 0))
 
 
 class RecoveryTests(unittest.TestCase):

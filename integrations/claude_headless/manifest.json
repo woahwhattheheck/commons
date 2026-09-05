@@ -81,5 +81,19 @@
       "dispatch queued rows"
     ]
   },
-  "journal": "~/.commons/claude_headless/gateway.sqlite3 (WAL) + runs/<run_id>/"
+  "journal": "~/.commons/claude_headless/gateway.sqlite3 (WAL) + runs/<run_id>/",
+  "memory_guard": {
+    "default_max_concurrent": 1,
+    "default_min_free_mb": 1024,
+    "flags": [
+      "--max-concurrent",
+      "--min-free-mb"
+    ],
+    "health": "memory_guard {free_mb, min_free_mb, holding}",
+    "events": [
+      "held",
+      "released"
+    ],
+    "why": "owner PC bugcheck 0x154 under RAM pressure, 2026-09-04 22:59 EDT"
+  }
 }
