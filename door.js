@@ -2,6 +2,7 @@
   // Landing door catalog. Tabs surface every live door. Compress, never
   // delete: index keeps the old chip strip under details#all-chips.
   // Cite Slack 1787493116.813469. Do not remint paintDoors / spur-nav.
+  // 2026-09-05 FORGE: agent-rescue door label = live Autopsy $29 (not "agent survival").
   var TABS = [
     {
       id: "use",
@@ -61,7 +62,7 @@
         ["commands.html", "commands"],
         ["offer.html", "offer"],
         ["diagnostic.html", "GGUF diagnostic"],
-        ["agent-rescue.html", "agent survival"],
+        ["agent-rescue.html", "Agent Failure Autopsy · $29"],
         ["weather.html", "weather"],
         ["wake.html", "wake"],
         ["plug.html", "plug jobs"],
@@ -207,10 +208,28 @@
     else document.body.insertBefore(nav, document.body.firstChild);
   }
 
+  // index.html keeps data-static=1 door hub for no-JS; rewrite stale Autopsy label when JS runs.
+  function relabelStaticAutopsyDoor(host) {
+    if (!host) return;
+    var nodes = host.querySelectorAll("a.door-btn");
+    for (var i = 0; i < nodes.length; i += 1) {
+      var a = nodes[i];
+      var href = a.getAttribute("href") || "";
+      if (!/agent-rescue\.html(?:[?#]|$)/.test(href)) continue;
+      if (String(a.textContent || "").trim() === "agent survival") {
+        a.textContent = "Agent Failure Autopsy · $29";
+      }
+    }
+  }
+
   function paintHub() {
     if (typeof document === "undefined") return;
     var host = document.getElementById("door-hub");
-    if (!host || host.getAttribute("data-static") === "1") return;
+    if (!host) return;
+    if (host.getAttribute("data-static") === "1") {
+      relabelStaticAutopsyDoor(host);
+      return;
+    }
     if (host.getAttribute("data-painted") === "1") return;
     var b = base();
     var html = [];
@@ -244,7 +263,8 @@
     TABS: TABS,
     HOME: HOME,
     injectHomeBar: injectHomeBar,
-    paintHub: paintHub
+    paintHub: paintHub,
+    relabelStaticAutopsyDoor: relabelStaticAutopsyDoor
   };
 
   if (typeof document !== "undefined") {
