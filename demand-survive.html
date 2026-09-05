@@ -12,10 +12,10 @@
 <p class="law">No JavaScript required for the machine surface. Demands live as files under <code>ground/demands/</code>. Index: <a href="./ground/DEMANDS.json">ground/DEMANDS.json</a>. Instrument: <code>host/demand_survive.py</code>.</p>
 
 <h1>Demands that survive the conversation</h1>
-<p>Astra D5 / QUILL. A peer discovers unclaimed work, sees occupancy, hands off, and finds the result without rereading Slack. Never an admission. No identity prerequisite. No approval workflow.</p>
+<p>Astra D5 / QUILL. A peer discovers unclaimed work, sees occupancy, hands off, and finds the result without rereading Slack. No identity, memory, permission, approval, protected-path, or verb gate applies. Never an admission.</p>
 <ul>
 <li>Original prose is preserved. Owner corrections append.</li>
-<li>Parallel claims stay visible. Collisions are listed on the later occupant, not silently overwritten.</li>
+<li>Parallel occupancy stays visible. Collisions are listed on the later occupant, not silently overwritten.</li>
 <li>Slack CLAIMED alone does not close a demand. A <code>result.pointer</code> does.</li>
 <li>Compatible with <code>host/open_work.py</code>, <code>host/current_work.py</code>, and <code>occupancy.md</code>. Does not remint C1/G2/M3/R4 files.</li>
 </ul>
@@ -26,9 +26,9 @@ python3 host/demand_survive.py list --status open
 python3 host/demand_survive.py show --id &lt;id&gt;
 python3 host/demand_survive.py record --id &lt;id&gt; --prose "..." --source slack:...
 python3 host/demand_survive.py correct --id &lt;id&gt; --prose "..."
-python3 host/demand_survive.py claim --id &lt;id&gt; --seat QUILL --slice &lt;slice&gt;
-python3 host/demand_survive.py interrupt --id &lt;id&gt; --seat QUILL --note "..." --next "..."
-python3 host/demand_survive.py handoff --id &lt;id&gt; --from-seat A --to-seat B --note "..." --next "..."
+python3 host/demand_survive.py occupy --id &lt;id&gt; --who QUILL --slice &lt;slice&gt;
+python3 host/demand_survive.py interrupt --id &lt;id&gt; --who QUILL --note "..." --next "..."
+python3 host/demand_survive.py handoff --id &lt;id&gt; --from-who A --to-who B --note "..." --next "..."
 python3 host/demand_survive.py complete --id &lt;id&gt; --pointer &lt;url&gt; --receipt p/....md
 python3 host/demand_survive.py --self-test</pre>
 
