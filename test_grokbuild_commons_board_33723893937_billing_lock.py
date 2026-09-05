@@ -11,6 +11,8 @@ import fix_first
 import open_door_guard as guard
 
 ROOT = Path(__file__).resolve().parent
+# This receipt records this immutable tree; it does not freeze evolving main.
+SOURCE_REV = "b80c62d7aa9bca8d71d023c2d078bbfd830d7311"
 RECEIPT = ROOT / "p/grok-build-commons-board-33723893937-billing-lock-20260903-01.md"
 PRIOR_BOARD = ROOT / "p/grok-build-commons-board-billing-lock-20260903-01.md"
 PRIOR_MIRROR = ROOT / "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md"
@@ -31,7 +33,7 @@ KEEP = {
 
 def git_blob(rel: str) -> str:
     return subprocess.check_output(
-        ["git", "hash-object", str(ROOT / rel)], text=True
+        ["git", "rev-parse", f"{SOURCE_REV}:{rel}"], cwd=ROOT, text=True
     ).strip()
 
 
