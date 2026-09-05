@@ -11,7 +11,7 @@
     "case_id",
     "buyer_ref",
     "failure_sentence",
-    "harness_stack",
+    "coding_stack",
     "scope_boundary",
     "intake_caps",
     "submitted_at",
@@ -44,49 +44,6 @@
       "type": "string",
       "minLength": 10,
       "maxLength": 1000
-    },
-    "harness_stack": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "harness",
-        "harness_version",
-        "model",
-        "operating_system",
-        "runtime",
-        "tooling"
-      ],
-      "properties": {
-        "harness": {
-          "enum": [
-            "codex",
-            "claude-code",
-            "other-coding-agent"
-          ]
-        },
-        "harness_version": {
-          "$ref": "#/$defs/nullable_text"
-        },
-        "model": {
-          "$ref": "#/$defs/nullable_text"
-        },
-        "operating_system": {
-          "$ref": "#/$defs/nullable_text"
-        },
-        "runtime": {
-          "$ref": "#/$defs/nullable_text"
-        },
-        "tooling": {
-          "type": "array",
-          "maxItems": 20,
-          "uniqueItems": true,
-          "items": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 120
-          }
-        }
-      }
     },
     "submitted_at": {
       "$ref": "#/$defs/timestamp"
@@ -452,6 +409,12 @@
           "maximum": 10
         }
       }
+    },
+    "coding_stack": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "description": "Buyer-supplied coding harness or stack name plus the components relevant to this failed run."
     }
   },
   "$defs": {
