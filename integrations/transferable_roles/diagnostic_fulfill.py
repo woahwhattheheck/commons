@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
-"""Role-gated SLA deadline for $199 diagnostic fulfillment roles.
+"""Role-gated SLA deadline + status for $199 diagnostic fulfillment roles.
 
 Gates on tool `diagnostic_contract`, loads landed contract commercial window
 via `diagnostic_contract.load_contract_from_role`, then calls landed
 `revenue/agent_failure_autopsy/fulfillment.py` `next_business_day` — import-only;
 do not remint fulfillment.py / contracts / Stripe.
+
+`run_deadline` returns delivery_due_at.
+`run_sla_status` compares as_of vs due → OPEN|MISSED + refund miss-remedy card.
 """
 
 from __future__ import annotations
 
 import importlib.util
 import json
+import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -44,6 +49,27 @@ def _require_one_business_day_window(window: Any) -> str:
     return text
 
 
+def _parse_aware(stamp: str, label: str) -> datetime:
+    text = str(stamp or "").strip()
+    if not text:
+        raise RoleError(f"{label} must be a nonempty string")
+    if not re.search(r"(?:Z|[+-]\d{2}:\d{2})$", text):
+        raise RoleError(f"{label} must be an offset-aware ISO timestamp")
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise RoleError(f"{label} is not a valid timestamp") from exc
+    if parsed.tzinfo is None:
+        raise RoleError(f"{label} must carry a UTC offset")
+    return parsed
+
+
+def _forbid_secrets(blob: str) -> None:
+    for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
+        if forbidden in blob:
+            raise RoleError(f"card leaked forbidden token prefix {forbidden}")
+
+
 def run_deadline(
     role: Mapping[str, Any],
     *,
@@ -75,8 +101,34 @@ def run_deadline(
         "diagnostic_usd": card.get("diagnostic_usd"),
         "refund": card.get("refund"),
     }
-    blob = json.dumps(out)
-    for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
-        if forbidden in blob:
-            raise RoleError(f"deadline card leaked forbidden token prefix {forbidden}")
+    _forbid_secrets(json.dumps(out))
+    return out
+
+
+def run_sla_status(
+    role: Mapping[str, Any],
+    *,
+    slug: str,
+    usable_evidence_at: str,
+    as_of: str,
+) -> dict[str, Any]:
+    """OPEN|MISSED SLA card vs as_of, with landed miss-remedy refund text.
+
+    Reuses run_deadline calendar path; does not remint autopsy-fulfill.
+    within_one_business_day matches Autopsy report rule: as_of <= delivery_due_at.
+    """
+    base = run_deadline(
+        role, slug=slug, usable_evidence_at=usable_evidence_at
+    )
+    as_of_stamp = str(as_of or "").strip()
+    as_of_dt = _parse_aware(as_of_stamp, "as_of")
+    due_dt = _parse_aware(str(base["delivery_due_at"]), "delivery_due_at")
+    within = as_of_dt <= due_dt
+    out: dict[str, Any] = {
+        **base,
+        "as_of": as_of_stamp,
+        "within_one_business_day": within,
+        "sla_status": "OPEN" if within else "MISSED",
+    }
+    _forbid_secrets(json.dumps(out))
     return out

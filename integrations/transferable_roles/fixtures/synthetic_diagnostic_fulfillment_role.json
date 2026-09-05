@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-diagnostic-fulfillment-20260905",
   "label": "$199 diagnostic fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC fixture for R4 paid $199 diagnostic fulfillment handoff — tools diagnostic_contract + diagnostic_receipt load landed contract/receipt; diagnostic_fulfill computes delivery_due_at (do not remint)",
+  "synthetic_note": "SYNTHETIC fixture for R4 paid $199 diagnostic fulfillment handoff — tools diagnostic_contract + diagnostic_receipt load landed contract/receipt; diagnostic_fulfill computes delivery_due_at + OPEN|MISSED SLA (do not remint)",
   "purpose": "Hand off one paid $199 one-business-day diagnostic fulfillment (dealer / referral / repair / plant) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -112,7 +112,7 @@
     },
     {
       "pointer": "integrations/transferable_roles/diagnostic_fulfill.py",
-      "label": "R4 execute — delivery_due_at via landed fulfillment.next_business_day after contract window; do not remint autopsy-fulfill"
+      "label": "R4 execute — delivery_due_at + OPEN|MISSED SLA vs as_of + landed refund miss-remedy; do not remint autopsy-fulfill"
     }
   ],
   "obligations": [
@@ -135,6 +135,12 @@
       "status": "open"
     },
     {
+      "id": "ob-sla",
+      "summary": "Check whether the $199 one-business-day window is OPEN or MISSED vs as_of; surface landed refund miss-remedy",
+      "next_action": "Run diagnostic-fulfill-sla --slug <...> --usable-evidence-at <iso> --as-of <iso>",
+      "status": "open"
+    },
+    {
       "id": "ob-settle",
       "summary": "Deliver receipt/report OR route refund per miss-remedy when not delivered in one-business-day window — use live public page checkouts only (do not invent plink)",
       "next_action": "Deliver buyer-ready receipt or route refund per miss-remedy; checkout URLs are the four live buy.stripe.com CTAs on the product pages",
@@ -146,7 +152,7 @@
     {
       "name": "transferable_roles_cli",
       "entry": "python3 integrations/transferable_roles/cli.py",
-      "notes": "create/equip/transfer/advance/export/import/open-obligations/diagnostic-contract/diagnostic-receipt/diagnostic-fulfill-deadline"
+      "notes": "create/equip/transfer/advance/export/import/open-obligations/diagnostic-contract/diagnostic-receipt/diagnostic-fulfill-deadline/diagnostic-fulfill-sla"
     },
     {
       "name": "role_export",
@@ -171,7 +177,7 @@
     {
       "name": "diagnostic_fulfill",
       "entry": "integrations/transferable_roles/diagnostic_fulfill.py",
-      "notes": "run_deadline: gate diagnostic_contract, load window, wrap fulfillment.next_business_day; CLI diagnostic-fulfill-deadline"
+      "notes": "run_deadline + run_sla_status: gate diagnostic_contract; wrap fulfillment.next_business_day; CLI diagnostic-fulfill-deadline / diagnostic-fulfill-sla"
     }
   ],
   "access_routes": [
