@@ -7,7 +7,7 @@
   - `revenue/right_now/catalog.json` — Autopsy rank 1; Survival Proof demoted + routed to `commercial.html`; truth `active_chargeable_checkout: true`
   - `right-now.html` — Autopsy card #01; Survival Proof no longer pretends agent-rescue is $2,500; page still omits Stripe URLs
   - `host/right_now_revenue.py` — allow live payment state + autopsy canonical; refuse Survival Proof on agent-rescue while Autopsy owns it
-  - `revenue/right_now/control.json` — recompiled snapshot
+  - `revenue/right_now/control.json` — recompiled snapshot (Linux LF source hashes @ `90e713d`)
   - hermetic: `test_right_now.py`, `test_right_now_execution.py`
 - **Not touched:** QUILL funnel pages, FORGE offer.json, HINGE R4, #8808 outcome catalog, `agent-rescue.html`, Stripe remint, #8802
 - **Hands off #8802.** Cloud/GitHub only.
