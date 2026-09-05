@@ -142,6 +142,16 @@ def _normalize_access_route(item: Any) -> dict[str, Any]:
     return _scrub_secrets(out)
 
 
+def _role_has_payment_capability(role: dict[str, Any]) -> bool:
+    """True when the role routes a named public payment_capability door."""
+    for route in role.get("access_routes") or []:
+        if not isinstance(route, dict):
+            continue
+        if str(route.get("name") or "").strip() == "payment_capability":
+            return True
+    return False
+
+
 def normalize_role(raw: dict[str, Any], *, role_id: str | None = None) -> dict[str, Any]:
     if not isinstance(raw, dict):
         raise RoleError("role must be an object")
@@ -254,10 +264,15 @@ class RoleStore:
         return sorted(p.stem for p in self.root.glob("*.json"))
 
     def list_open_obligations(self) -> list[dict[str, Any]]:
-        """Open obligations across all roles — cash-work / fulfillment queue."""
+        """Open obligations across all roles — cash-work / fulfillment queue.
+
+        Rows for roles that route `payment_capability` stamp
+        `payment_capability: true` so mixed CRM + paid stores separate cash work.
+        """
         rows: list[dict[str, Any]] = []
         for rid in self.list_ids():
             role = self.get(rid)
+            cash = _role_has_payment_capability(role)
             for ob in role.get("obligations") or []:
                 if str(ob.get("status") or "").strip() != "open":
                     continue
@@ -274,6 +289,8 @@ class RoleStore:
                     row["evidence_pointer"] = ob["evidence_pointer"]
                 if role.get("synthetic") is True:
                     row["synthetic"] = True
+                if cash:
+                    row["payment_capability"] = True
                 rows.append(row)
         rows.sort(key=lambda r: (r["role_id"], r["obligation_id"]))
         return rows
