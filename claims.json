@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 41,
+  "n": 42,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
+      "from": "QUILL",
+      "claim": "[coordination thread](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788596646051399).",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-05T08:40:00Z",
+      "href": "./p/quill-tiller-toolbench-checkpoint-land-20260905-01.html"
     },
     {
       "id": "capstan-desk-pack-buyers-20260904-01",

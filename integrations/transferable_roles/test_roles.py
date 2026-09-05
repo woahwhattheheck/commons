@@ -259,6 +259,90 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(g2["session_id"], "sess-cli-9")
         self.assertEqual(g2["last_run_id"], "run-cli-9")
 
+    def test_unbind_access_route_clears_session_keeps_pool(self) -> None:
+        role = self.store.create(self.raw, role_id="role-unbind-g2")
+        purpose = role["purpose"]
+        self.store.bind_access_route(
+            role["role_id"],
+            route_name="grokbot_control_g2",
+            session_id="g2-sess-unbind-1",
+            last_run_id="g2-run-unbind-9",
+        )
+        unbound = self.store.unbind_access_route(
+            role["role_id"],
+            route_name="grokbot_control_g2",
+        )
+        self.assertEqual(unbound["purpose"], purpose)
+        g2 = next(
+            r for r in unbound["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertNotIn("session_id", g2)
+        self.assertNotIn("last_run_id", g2)
+        self.assertEqual(g2["pool_id"], "grokbot")
+        self.assertEqual(g2["kind"], "grokbot_control")
+        self.assertEqual(g2["base_url"], "http://127.0.0.1:8881")
+
+    def test_unbind_access_route_unknown_name_fails(self) -> None:
+        role = self.store.create(self.raw, role_id="role-unbind-miss")
+        with self.assertRaises(RoleError):
+            self.store.unbind_access_route(
+                role["role_id"],
+                route_name="no-such-route",
+            )
+
+    def test_cli_unbind_route(self) -> None:
+        store_dir = self._tmp.name
+        role_id = "role-cli-unbind"
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(FIXTURE),
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+        with redirect_stdout(io.StringIO()):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "bind-route",
+                    role_id,
+                    "--route",
+                    "grokbot_control_g2",
+                    "--session-id",
+                    "sess-cli-unbind",
+                    "--last-run-id",
+                    "run-cli-unbind",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "unbind-route",
+                    role_id,
+                    "--route",
+                    "grokbot_control_g2",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        g2 = next(
+            r for r in out["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertNotIn("session_id", g2)
+        self.assertNotIn("last_run_id", g2)
+        self.assertEqual(g2["pool_id"], "grokbot")
+
     def test_release_clears_occupant_keeps_bound_routes(self) -> None:
         role = self.store.create(self.raw, role_id="role-release")
         purpose = role["purpose"]
