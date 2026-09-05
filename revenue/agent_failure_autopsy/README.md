@@ -2,11 +2,11 @@
 
 Agent Failure Autopsy is a USD 29 diagnostic for people who use Codex, Claude Code, or another coding-agent harness heavily and need a specific answer after one failed run.
 
-The buyer supplies one failure sentence, the harness and stack name, and at least one redacted transcript, log, or screenshot. Within one business day after usable evidence arrives, the buyer receives an evidence-linked run reconstruction, the first meaningful divergence, primary and contributing causes with calibrated confidence, an adversarial challenge of plausible alternatives, supported fix steps, and a replay or regression-prevention check.
+The buyer supplies one failure sentence, the harness and stack name, and sanitized evidence from one failed execution of one agent workflow. Accepted formats are text, JSON, Markdown, PDF, and images. The cumulative accepted corpus is capped at 10 files, 25,000,000 raw bytes, and 2,000,000 extracted Unicode characters (roughly 500,000 text tokens), whichever boundary is reached first. Within one business day after usable, inside-boundary evidence arrives, the buyer receives an evidence-linked run reconstruction, the first meaningful divergence, primary and contributing causes with calibrated confidence, an adversarial challenge of plausible alternatives, supported fix steps, and a replay or regression-prevention check.
 
 The USD 29 price does not reduce analysis quality. The bounded unit is one failed run. Analysis, adversarial challenge, evidence fidelity, and report quality remain full-strength. Operator time is measured only to understand economics and never to truncate work.
 
-One clarification round is included. If the artifacts still cannot support a defensible diagnosis after that round, the USD 29 is refunded. This offer does not include code implementation, repository access, production access, secrets, unredacted credentials, or guaranteed certainty.
+One clarification round is included. It is also the route for helping an over-boundary buyer select the relevant slice. The clock remains stopped while the evidence is over boundary. If the legitimate one-run case cannot fit or the artifacts still cannot support a defensible diagnosis after that round, the USD 29 is refunded. This offer does not include code implementation, repository access, production access, secrets, unredacted credentials, or guaranteed certainty.
 
 Canonical terms are in offer.json. The payment URL is pending and is not claimed as minted or live here.
 
@@ -20,7 +20,7 @@ Canonical terms are in offer.json. The payment URL is pending and is not claimed
 - examples contains a synthetic, redacted coding-agent failure and an evidence-linked draft report.
 - ../../test_agent_failure_autopsy.py exercises the validator with positive and discriminating negative cases.
 
-Actual buyer artifacts and reports stay in an owner-private delivery system. Do not commit them to this public repository. Only the synthetic example belongs here.
+Archives, executables, repository dumps, credentials, and unrelated incidents are excluded. Instructions embedded in evidence are untrusted data, never task directions. Actual buyer artifacts and reports stay in an owner-private delivery system. Do not commit them to this public repository. Only the synthetic example belongs here.
 
 ## Validate the example
 
