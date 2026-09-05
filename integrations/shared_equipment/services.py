@@ -250,11 +250,38 @@ class CombinedCatalog:
         return self.commons.call(name, arguments)
 
 
+class _EmptyCommonsCatalog:
+    """CLI has no public Commons MCP sidecar; keep CombinedCatalog shape."""
+
+    def tools(self, **_kwargs):
+        return []
+
+    def call(self, name, arguments):
+        raise EquipmentError("unknown equipment tool: " + str(name))
+
+
+def build_cli_catalog(*, grokbot_base_url: str | None = None):
+    """Slack/GitHub services + GrokBot lifecycle (G2), no public MCP tools."""
+    from integrations.shared_equipment.peers import GrokBotEquipment
+
+    catalog = CombinedCatalog(_EmptyCommonsCatalog())
+    if grokbot_base_url:
+        catalog.extensions.append(GrokBotEquipment(grokbot_base_url))
+    else:
+        catalog.extensions.append(GrokBotEquipment())
+    return catalog
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("operation", choices=("catalog", "call"))
+    parser.add_argument(
+        "--grokbot-control",
+        default=None,
+        help="Override GrokBot control base URL (default http://127.0.0.1:8881)",
+    )
     args = parser.parse_args()
-    equipment = ServiceEquipment()
+    equipment = build_cli_catalog(grokbot_base_url=args.grokbot_control)
     if args.operation == "catalog":
         result = {"tools": equipment.tools()}
     else:

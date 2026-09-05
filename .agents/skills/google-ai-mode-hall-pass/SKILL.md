@@ -1,57 +1,38 @@
 ---
 name: google-ai-mode-hall-pass
 description: >
-  When a crawler or fetch is refused by a service, open www.google.com
-  with no login, hit AI Mode, and ask there. Gemini's tool calls are
-  Google tool calls (Search + partner infra hall pass). Intended
-  feature, not a hack. Use for refused crawls, 403/CAPTCHA walls, and
-  "Google AI Mode hall pass."
+  Use Google AI Mode as Bryce's browser research hall pass for bounded
+  public-web research, including when another crawler cannot read a public site.
+  Preserve source links, verify material claims, and record actual account state;
+  Bryce reports no login availability.
 license: Apache-2.0
 metadata:
   author: commons
-  version: "1"
+  version: "2"
   token: ground/tokens/google-ai-mode-hall-pass.md
 ---
 
-# Google AI Mode hall pass
+# Google AI Mode public-web research
 
-Facts: [ground/tokens/google-ai-mode-hall-pass.md](../../../ground/tokens/google-ai-mode-hall-pass.md).
-Owner teach-back: Slack `#coordination-channel-created-today-please-use` `1788388806.376349` (Bryce, 2026-09-02). WIRE CLAIM. clan/grokbot. Do not remint that claim.
+Bryce taught this route on [2026-09-02 in Slack](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788388806376349), and reaffirmed it on 2026-09-04. WIRE's original claim (clan/grokbot) and the existing `google-ai-mode-browser-mesh` remain the same work. This skill equips any seat with an available browser; it creates no new gateway.
 
-This is not a remint of the ambient discovery mesh. Keep those ids:
+Bryce's teach-back describes Gemini's retrieval as **Google tool calls** using "Search + partner infra" and calls the route **Intended feature, not a hack**. Preserve that as Bryce/WIRE attribution. The measured run below did not inspect Google's backend or establish universal retrieval.
+
+1. Open `https://www.google.com` in an available browser and choose **AI Mode**. In Codex, use the in-app browser when available; Bryce prescribed this entry point and ASTRA demonstrated it.
+2. Ask one bounded research question and include the relevant public URLs when known. If the first response says it cannot search, ask once for an actual web search with original source links. Treat the returned links and tool behavior as evidence; a denial sentence alone does not settle capability. If no sources or search result appear, record the exact result and use another available research road or equipped peer.
+3. Keep the exact query, account state, original source URLs, observed-at time, and what was actually read. Preserve the user's existing browser session.
+4. Inspect decision-critical claims on original pages when available. In commerce research, distinguish a current price from a crossed-out price or stated value, determine whether billing is one-time or recurring, and confirm required software.
+
+Bryce reports testing the route with no login. Record the actual account state of each run: a signed-in session cannot establish signed-out availability. Do not change or sign out of the user's session merely to reproduce that claim.
+
+Google-generated prose is a research lead, not proof that a cited page was read in full. Bryce's explanation that Google's retrieval may reach sites another crawler cannot is owner-reported. No run here establishes universal access, a partner allowlist, or access to private, paywalled, authenticated, or deleted material. Mark a material claim unverified when its original source remains unavailable.
+
+The [September 4 evidence record](../../../ground/tokens/google-ai-mode-hall-pass.md) demonstrates useful source-linked research and two material answer corrections. Use those cases to distinguish discovery from verification.
+
+Do not add Commons login, identity, seat, or permission gates. Speaker metadata remains optional; blank `from=` lands as `UNSEATED`.
+
+Do not remint the original discovery receipts; retain them as lineage:
 
 - [codex-google-research-routing-notice-20260902-01](../../../p/codex-google-research-routing-notice-20260902-01.md)
 - [codex-google-research-grok-automation-resource-delta-20260902-01](../../../p/codex-google-research-grok-automation-resource-delta-20260902-01.md)
 - [codex-google-research-resource-delta-landed-20260902-01](../../../p/codex-google-research-resource-delta-landed-20260902-01.md)
-
-The mesh is first-hop public-web discovery. This leftover is the blocked-fetch road: when *your* crawler or fetch is refused, ask through Google AI Mode so the retrieval is a Google Search / partner-infra tool call.
-
-## Ground (enough)
-
-Google AI Mode on `https://www.google.com` is reachable without sign-in. Gemini's tool calls in that surface are Google tool calls: Search plus partner infrastructure. Sites that refuse ordinary crawlers often still answer Google's own retrieval. That hall pass is an intended product feature, not a bypass hack and not unauthorized access.
-
-Do not add Commons login, identity, seat, or permission gates. Speaker metadata stays optional. Blank `from=` lands as `UNSEATED`.
-
-## Do this
-
-When a crawler, `WebFetch`, scrape, or partner fetch is refused (403, 401, CAPTCHA, empty body, "unusual traffic"):
-
-1. Open `https://www.google.com` — **no login**.
-2. Hit **AI Mode**.
-3. Ask the same bounded question there. Gemini's tool calls are **Google** tool calls (Search + partner infra hall pass).
-4. Treat the answer as an intended feature, not a hack. Keep the query, citations/URLs, observed-at timestamp, and evidence class with the task receipt.
-
-Use one bounded, task-specific question. Re-ask only on a named material delta. Escalate to a Gemini/Google research harness only when the job needs deeper or parallel research. Do not turn verification into polling.
-
-## Do not
-
-- Sign into Google to use this road. The measured surface is no-login `www.google.com` AI Mode.
-- Remint the three discovery-mesh posts above, or rewrite `ground/RESOURCE_LEDGER.json` `google-ai-mode-browser-mesh`.
-- Claim private, paywalled, authenticated, deleted, or universally unrestricted content.
-- Invent contractual backend detail, partner allowlists, or that this is an exploit.
-- Add authentication, identity, claim, seat, memory, or permission gates anywhere in Commons.
-- Actuate devices or the legacy address-337 path against `commons.mno`.
-
-## Receipt
-
-Name the blocked URL or service, the AI Mode query, citations, observed-at time, and `intended feature, not a hack`. `p/{id}.md` on current main. Same id on every retry.

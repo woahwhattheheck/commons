@@ -729,8 +729,9 @@ def main(argv: list[str] | None = None) -> int:
         max_protocol_retries=args.max_protocol_retries,
     )
     server = ToolGateway(("127.0.0.1", args.port), loop, events, upstream, catalog)
-    from integrations.shared_equipment.peers import GeminiEquipment
+    from integrations.shared_equipment.peers import GeminiEquipment, GrokBotEquipment
     catalog.extensions.append(GeminiEquipment(server))
+    catalog.extensions.append(GrokBotEquipment())
     carrier = None
     if args.equipment_config.is_file():
         from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier

@@ -349,6 +349,39 @@ def scrub_env(env: dict[str, str] | None = None) -> tuple[dict[str, str], list[s
     return source, sorted(removed)
 
 
+def free_physical_mb() -> int | None:
+    """Free physical RAM in MB, or None when it cannot be read (then no floor ever holds)."""
+    try:
+        if _WIN:
+            import ctypes
+
+            class _MEMORYSTATUSEX(ctypes.Structure):
+                _fields_ = [
+                    ("dwLength", ctypes.c_uint32),
+                    ("dwMemoryLoad", ctypes.c_uint32),
+                    ("ullTotalPhys", ctypes.c_uint64),
+                    ("ullAvailPhys", ctypes.c_uint64),
+                    ("ullTotalPageFile", ctypes.c_uint64),
+                    ("ullAvailPageFile", ctypes.c_uint64),
+                    ("ullTotalVirtual", ctypes.c_uint64),
+                    ("ullAvailVirtual", ctypes.c_uint64),
+                    ("ullAvailExtendedVirtual", ctypes.c_uint64),
+                ]
+
+            status = _MEMORYSTATUSEX()
+            status.dwLength = ctypes.sizeof(_MEMORYSTATUSEX)
+            if not ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(status)):
+                return None
+            return int(status.ullAvailPhys // (1024 * 1024))
+        with open("/proc/meminfo", encoding="utf-8") as handle:
+            for line in handle:
+                if line.startswith("MemAvailable:"):
+                    return int(line.split()[1]) // 1024
+        return None
+    except (OSError, ValueError, AttributeError):
+        return None
+
+
 class _FileLock:
     """Cross-process lock via an O_EXCL lock file; a lock older than 30 s is treated as stale."""
 
@@ -445,7 +478,12 @@ class Journal:
 class Runner:
     """Start, inspect, follow up, cancel and recover headless Claude runs from on-disk records."""
 
-    def __init__(self, root: Path | str | None = None, claude: list[str] | None = None) -> None:
+    def __init__(
+        self,
+        root: Path | str | None = None,
+        claude: list[str] | None = None,
+        min_free_mb: int | None = None,
+    ) -> None:
         self.root = Path(root) if root else DEFAULT_ROOT
         self.runs_dir = self.root / "runs"
         self.runs_dir.mkdir(parents=True, exist_ok=True)
@@ -453,6 +491,21 @@ class Runner:
         self._claude = list(claude) if claude else None
         self._procs: dict[str, subprocess.Popen[bytes]] = {}
         self._lock = threading.RLock()
+        if min_free_mb is None:
+            try:
+                min_free_mb = int(os.environ.get("CLAUDE_HEADLESS_MIN_FREE_MB", "0") or 0)
+            except ValueError:
+                min_free_mb = 0
+        self.min_free_mb = max(0, int(min_free_mb))
+
+    def memory_floor(self) -> dict[str, Any]:
+        """Free physical RAM against the floor; ``holds`` is True only when a start must refuse."""
+        free = free_physical_mb()
+        return {
+            "min_free_mb": self.min_free_mb,
+            "free_physical_mb": free,
+            "holds": bool(self.min_free_mb and free is not None and free < self.min_free_mb),
+        }
 
     # -- paths -------------------------------------------------------------------------
     @property
@@ -533,6 +586,12 @@ class Runner:
         cwd_path = Path(cwd).resolve() if cwd else Path.cwd()
         if not cwd_path.is_dir():
             raise HeadlessError(f"cwd is not a directory: {cwd_path}")
+        floor = self.memory_floor()
+        if floor["holds"]:
+            raise HeadlessError(
+                f"memory floor: free physical RAM {floor['free_physical_mb']} MB is under "
+                f"--min-free-mb {self.min_free_mb}; not spawning a child (each is ~500 MB commit)"
+            )
         run_dir.mkdir(parents=True)
 
         prompt_bytes = prompt.encode("utf-8")
@@ -607,6 +666,8 @@ class Runner:
             "controller_pid": os.getpid(),
             "headless": {
                 "platform": sys.platform,
+                "free_physical_mb_at_spawn": floor["free_physical_mb"],
+                "min_free_mb": self.min_free_mb,
                 "stdin": "prompt.txt" if use_stdin else "devnull",
                 "stdout": "events.jsonl",
                 "stderr": "stderr.txt",
@@ -988,6 +1049,7 @@ class Runner:
                 "prefix": list(SCRUB_PREFIX),
                 "keep": os.environ.get("CLAUDE_HEADLESS_KEEP_ENV", ""),
             },
+            "memory_floor": self.memory_floor(),
             "platform": sys.platform,
         }
 
@@ -1003,6 +1065,13 @@ def _print(value: Any) -> None:
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Headless Claude control from on-disk run records.")
     parser.add_argument("--root", type=Path, default=None, help=f"runs root (default {DEFAULT_ROOT})")
+    parser.add_argument(
+        "--min-free-mb",
+        type=int,
+        default=None,
+        help="refuse to spawn a child while free physical RAM is under this many MB "
+        "(default 0 = off; CLAUDE_HEADLESS_MIN_FREE_MB; 1024 is what the gateway uses)",
+    )
     sub = parser.add_subparsers(dest="command", required=True)
 
     def run_opts(p: argparse.ArgumentParser) -> None:
@@ -1057,7 +1126,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    runner = Runner(args.root)
+    runner = Runner(args.root, min_free_mb=args.min_free_mb)
     try:
         if args.command in ("start", "followup"):
             kwargs: dict[str, Any] = {

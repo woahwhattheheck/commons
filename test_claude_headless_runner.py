@@ -230,6 +230,40 @@ class RunnerRecords(_Base):
         with self.assertRaises(ch.HeadlessError):
             self.runner.status("missing")
 
+    def test_memory_floor_refuses_below_threshold_and_never_holds_when_unreadable(self) -> None:
+        original = ch.free_physical_mb
+        try:
+            ch.free_physical_mb = lambda: 100
+            guarded = ch.Runner(self.root, claude=STUB_ARGV, min_free_mb=1024)
+            floor = guarded.memory_floor()
+            self.assertEqual(floor, {"min_free_mb": 1024, "free_physical_mb": 100, "holds": True})
+            with self.assertRaises(ch.HeadlessError) as held:
+                guarded.start("should not spawn")
+            self.assertIn("free physical RAM 100 MB", str(held.exception))
+            self.assertEqual(guarded.list_runs(), [])  # no record, no journal entry, no child
+            self.assertEqual(guarded.journal.cursor, 0)
+            self.assertTrue(guarded.doctor()["memory_floor"]["holds"])
+            ch.free_physical_mb = lambda: 4096
+            record = guarded.wait(guarded.start("room to spawn")["run_id"], timeout=20)
+            self.assertEqual(record["status"], "completed")
+            self.assertEqual(record["headless"]["free_physical_mb_at_spawn"], 4096)
+            self.assertEqual(record["headless"]["min_free_mb"], 1024)
+            ch.free_physical_mb = lambda: None
+            self.assertFalse(guarded.memory_floor()["holds"])  # unreadable never holds
+            self.assertEqual(guarded.wait(guarded.start("unreadable reader")["run_id"], timeout=20)["status"], "completed")
+            ch.free_physical_mb = lambda: 100
+            off = ch.Runner(self.root, claude=STUB_ARGV, min_free_mb=0)
+            self.assertFalse(off.memory_floor()["holds"])  # 0 disables the floor
+            self.assertEqual(off.wait(off.start("floor off")["run_id"], timeout=20)["status"], "completed")
+            os.environ["CLAUDE_HEADLESS_MIN_FREE_MB"] = "512"
+            try:
+                self.assertEqual(ch.Runner(self.root, claude=STUB_ARGV).min_free_mb, 512)
+            finally:
+                os.environ.pop("CLAUDE_HEADLESS_MIN_FREE_MB", None)
+        finally:
+            ch.free_physical_mb = original
+        self.assertIsInstance(ch.free_physical_mb(), (int, type(None)))
+
 
 class CancelAndRecover(_Base):
     def test_cancel_kills_the_tree_and_the_session_stays_resumable(self) -> None:

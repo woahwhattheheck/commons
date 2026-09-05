@@ -2,6 +2,7 @@
 
 Slice: `hinge-transferable-roles-20260904-01`
 Align: `hinge-r4-g2-access-routes-20260904-02` (SPARK G2 #8761)
+CLI seat: `hinge-r4-cli-seat-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -16,17 +17,22 @@ python3 integrations/transferable_roles/cli.py create \
   --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py equip role-synthetic-crm-followup-20260904 \
-  --session session-A --harness cursor-hinge --store /tmp/hinge-roles
+  --session session-A --harness cursor-hinge --seat HINGE \
+  --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py transfer role-synthetic-crm-followup-20260904 \
   --from-session session-A --to-session session-B --to-harness claude-tenon \
-  --store /tmp/hinge-roles
+  --seat TENON --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/test_roles.py
 ```
+
+`--seat` names the occupant (not `role_id`). Optional metadata for G2
+attribution on session recover — never a Commons gate, never an admission
+check, never blocks equip/transfer.
 
 ## Access route shapes
 

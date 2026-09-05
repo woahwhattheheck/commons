@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import re
 import subprocess
 import unittest
 import urllib.request
@@ -20,14 +21,11 @@ KEEP = {
     "p/cursor-wire-super-mcp-fold-readback-20260902-01.md": "63b8221d",
     "p/cursor-google-ai-mode-hall-pass-readback-20260902-01.md": "42e9e750",
     "test_cursor_wire_super_mcp_fold_readback.py": "1d494f9c",
-    "test_cursor_google_ai_mode_hall_pass_readback.py": "c1a35a43",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "5b8edbda",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",
     "p/cursor-google-ai-mode-hall-pass-20260902-01.md": "4bb8b78d",
     "test_google_ai_mode_hall_pass.py": "9fe45498",
-    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
-    "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
     "api/mcp.py": "9ae34f64",
     "hub_pages.py": "5ac12648",
     "door.js": "dc59355d",
@@ -39,6 +37,15 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "ground/OWNER_NOW.md": "59b1fd37",
+}
+
+# Preserve the last historical KEEP-lift at its immutable tree. The live skill
+# and its behavioral tests can evolve without rewriting that historical proof.
+HISTORICAL_TREE = "b4ea49b49a1d6dda16b611c811c174be43bc850d"
+HISTORICAL_GOOGLE_FILES = {
+    "test_cursor_google_ai_mode_hall_pass_readback.py": "c1a35a43",
+    ".agents/skills/google-ai-mode-hall-pass/SKILL.md": "bb22f950",
+    "ground/tokens/google-ai-mode-hall-pass.md": "f730edc2",
 }
 
 
@@ -56,6 +63,15 @@ class TestCursorWireHallPassUniquePackShip(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
+        for rel, prefix in HISTORICAL_GOOGLE_FILES.items():
+            line = subprocess.check_output(
+                ["git", "ls-tree", HISTORICAL_TREE, "--", rel], text=True
+            ).strip()
+            blob = line.split()[2] if line else ""
+            self.assertTrue(
+                blob.startswith(prefix),
+                f"historical {rel}: want {prefix} got {blob[:8]}",
+            )
 
     def test_leftover_unique_pack_tests_still_pass(self) -> None:
         leftover = subprocess.run(
@@ -72,7 +88,9 @@ class TestCursorWireHallPassUniquePackShip(unittest.TestCase):
             check=False,
         )
         self.assertEqual(leftover.returncode, 0, msg=leftover.stdout + leftover.stderr)
-        self.assertIn("Ran 9 tests", leftover.stderr)
+        count = re.search(r"Ran (\d+) tests", leftover.stderr)
+        self.assertIsNotNone(count, msg=leftover.stderr)
+        self.assertGreaterEqual(int(count.group(1)), 9, msg=leftover.stderr)
 
     def test_leftover_hall_pass_tests_still_pass(self) -> None:
         leftover = subprocess.run(

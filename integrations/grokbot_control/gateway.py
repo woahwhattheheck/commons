@@ -25,6 +25,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
 
+from .memory import free_physical_mb, resolve_min_free_mb
 from .pools import DEFAULT_POOL_ID, HARNESS, list_pools, require_pool
 from .runner import EchoSeatRunner, InProcessSeatRunner, SeatRunner
 from .store import TERMINAL, RunStore
@@ -32,14 +33,63 @@ from .store import TERMINAL, RunStore
 DEFAULT_PORT = 8881
 DEFAULT_DB = Path.home() / ".grokbot_control" / "runs.sqlite3"
 DEFAULT_SEAT = os.environ.get("GROKBOT_CONTROL_SEAT", "SPARK")
+DEFAULT_MIN_FREE_MB = 0
+
+
+class MemoryGuardError(RuntimeError):
+    """Refuse to start a seat run while free physical RAM is under the floor."""
+
+    def __init__(self, *, free_mb: int, min_free_mb: int) -> None:
+        self.free_mb = int(free_mb)
+        self.min_free_mb = int(min_free_mb)
+        super().__init__(
+            "memory_guard: free_physical_mb=%d under min_free_mb=%d"
+            % (self.free_mb, self.min_free_mb)
+        )
 
 
 class Controller:
-    def __init__(self, store: RunStore, runner: SeatRunner) -> None:
+    def __init__(
+        self,
+        store: RunStore,
+        runner: SeatRunner,
+        *,
+        min_free_mb: int = DEFAULT_MIN_FREE_MB,
+        free_mb_fn=None,
+    ) -> None:
         self.store = store
         self.runner = runner
+        self.min_free_mb = max(0, int(min_free_mb))
+        self._free_mb_fn = free_mb_fn or free_physical_mb
         self._cancel: dict[str, threading.Event] = {}
         self._lock = threading.RLock()
+        self._held_refused = 0
+
+    def memory_guard(self) -> dict:
+        free = self._free_mb_fn()
+        holding = (
+            self.min_free_mb > 0
+            and free is not None
+            and int(free) < self.min_free_mb
+        )
+        return {
+            "min_free_mb": self.min_free_mb,
+            "free_physical_mb": free,
+            "holding": bool(holding),
+            "held_refused": self._held_refused,
+            "note": "0 disables; unreadable free never holds",
+        }
+
+    def _guard_or_raise(self) -> None:
+        if self.min_free_mb <= 0:
+            return
+        free = self._free_mb_fn()
+        if free is None:
+            return
+        if int(free) < self.min_free_mb:
+            with self._lock:
+                self._held_refused += 1
+            raise MemoryGuardError(free_mb=int(free), min_free_mb=self.min_free_mb)
 
     def submit(
         self,
@@ -55,6 +105,7 @@ class Controller:
         seat_name = (seat or DEFAULT_SEAT).strip() or DEFAULT_SEAT
         if not isinstance(prompt, str) or not prompt.strip():
             raise ValueError("prompt must be nonempty UTF-8 text")
+        self._guard_or_raise()
         created = self.store.create_run(
             pool_id=pool,
             seat=seat_name,
@@ -219,6 +270,7 @@ class Handler(BaseHTTPRequestHandler):
                         "default_pool_id": DEFAULT_POOL_ID,
                         "default_seat": DEFAULT_SEAT,
                         "event_cursor": ctrl.store.cursor,
+                        "memory_guard": ctrl.memory_guard(),
                         "listen_note": "GrokBot pools only; not grok.com; not Cursor cloud",
                     },
                 )
@@ -318,6 +370,18 @@ class Handler(BaseHTTPRequestHandler):
             self._send(404, {"ok": False, "error": "not_found"})
         except KeyError:
             self._send(404, {"ok": False, "error": "run_not_found"})
+        except MemoryGuardError as exc:
+            self._send(
+                503,
+                {
+                    "ok": False,
+                    "error": "memory_guard",
+                    "message": str(exc),
+                    "free_physical_mb": exc.free_mb,
+                    "min_free_mb": exc.min_free_mb,
+                    "memory_guard": self.server.controller.memory_guard(),
+                },
+            )
         except Exception as exc:
             self._send(
                 400,
@@ -332,6 +396,8 @@ def build_server(
     db_path: Path | None = None,
     runner: SeatRunner | None = None,
     mode: str = "inprocess",
+    min_free_mb: int | None = None,
+    free_mb_fn=None,
 ) -> Gateway:
     store = RunStore(db_path or DEFAULT_DB)
     if runner is None:
@@ -339,7 +405,12 @@ def build_server(
             runner = EchoSeatRunner()
         else:
             runner = InProcessSeatRunner()
-    controller = Controller(store, runner)
+    controller = Controller(
+        store,
+        runner,
+        min_free_mb=resolve_min_free_mb(min_free_mb),
+        free_mb_fn=free_mb_fn,
+    )
     return Gateway((host, port), controller)
 
 
@@ -354,13 +425,23 @@ def build_parser() -> argparse.ArgumentParser:
         default="inprocess",
         help="inprocess=live GrokBot seat in this process; echo=hermetic",
     )
+    parser.add_argument(
+        "--min-free-mb",
+        type=int,
+        default=1024,
+        help="Refuse new runs while free physical RAM is under this MB (0=off; default 1024)",
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     server = build_server(
-        host=args.host, port=args.port, db_path=args.db, mode=args.mode
+        host=args.host,
+        port=args.port,
+        db_path=args.db,
+        mode=args.mode,
+        min_free_mb=args.min_free_mb,
     )
     print(
         json.dumps(

@@ -3,12 +3,15 @@
 
 from __future__ import annotations
 
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 
 from roles import RoleError, RoleStore, SECRET_FIELD_NAMES
+import cli as roles_cli
 
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "synthetic_crm_followup_role.json"
 
@@ -108,6 +111,148 @@ class TransferableRoleTests(unittest.TestCase):
             self.assertIn(field, g2)
         # Role must not invent a second pool or bind a live chat window.
         self.assertNotIn("session_id", g2)
+
+    def test_cli_equip_and_transfer_pass_seat(self) -> None:
+        """CLI --seat must reach RoleStore (G2 occupant seat ≠ role_id)."""
+        store_dir = self._tmp.name
+        fixture = str(FIXTURE)
+        role_id = "role-cli-seat-test"
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    fixture,
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "equip",
+                    role_id,
+                    "--session",
+                    "session-A",
+                    "--harness",
+                    "cursor-hinge",
+                    "--seat",
+                    "HINGE",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        equipped = json.loads(buf.getvalue())
+        self.assertEqual(equipped["occupant"]["seat"], "HINGE")
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "transfer",
+                    role_id,
+                    "--from-session",
+                    "session-A",
+                    "--to-session",
+                    "session-B",
+                    "--to-harness",
+                    "claude-tenon",
+                    "--seat",
+                    "TENON",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        handed = json.loads(buf.getvalue())
+        self.assertEqual(handed["occupant"]["seat"], "TENON")
+        self.assertEqual(handed["occupant"]["session_id"], "session-B")
+        self.assertEqual(handed["role_id"], role_id)
+
+    def test_bind_access_route_stamps_g2_session_and_survives_export(self) -> None:
+        role = self.store.create(self.raw, role_id="role-bind-g2")
+        purpose = role["purpose"]
+        bound = self.store.bind_access_route(
+            role["role_id"],
+            route_name="grokbot_control_g2",
+            session_id="g2-sess-durable-1",
+            last_run_id="g2-run-42",
+        )
+        self.assertEqual(bound["purpose"], purpose)
+        g2 = next(
+            r for r in bound["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2["session_id"], "g2-sess-durable-1")
+        self.assertEqual(g2["last_run_id"], "g2-run-42")
+        self.assertEqual(g2["pool_id"], "grokbot")
+
+        self.store.equip(role["role_id"], session_id="occ-A", harness="hinge")
+        package = self.store.export_package(role["role_id"])
+        self.assertIsNone(package.get("occupant"))
+        g2_ex = next(
+            r for r in package["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2_ex["session_id"], "g2-sess-durable-1")
+        self.assertEqual(g2_ex["last_run_id"], "g2-run-42")
+
+    def test_bind_access_route_unknown_name_fails(self) -> None:
+        role = self.store.create(self.raw, role_id="role-bind-miss")
+        with self.assertRaises(RoleError):
+            self.store.bind_access_route(
+                role["role_id"],
+                route_name="no-such-route",
+                session_id="x",
+            )
+
+    def test_cli_bind_route(self) -> None:
+        store_dir = self._tmp.name
+        role_id = "role-cli-bind"
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(FIXTURE),
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "bind-route",
+                    role_id,
+                    "--route",
+                    "grokbot_control_g2",
+                    "--session-id",
+                    "sess-cli-9",
+                    "--last-run-id",
+                    "run-cli-9",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        g2 = next(
+            r for r in out["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2["session_id"], "sess-cli-9")
+        self.assertEqual(g2["last_run_id"], "run-cli-9")
 
 
 if __name__ == "__main__":
