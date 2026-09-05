@@ -3,12 +3,14 @@
 
 Examples:
   python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_crm_followup_role.json --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_agent_failure_autopsy_role.json --store /tmp/roles
   python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --seat HINGE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py bind-route ROLE --route grokbot_control_g2 --session-id sess-1 --last-run-id run-9 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py unbind-route ROLE --route grokbot_control_g2 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -111,6 +113,11 @@ def build_parser() -> argparse.ArgumentParser:
     a.add_argument("--next-action")
     a.add_argument("--evidence-pointer")
 
+    sub.add_parser(
+        "open-obligations",
+        help="list open obligations across all roles in the store",
+    )
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -193,6 +200,8 @@ def main(argv: list[str] | None = None) -> int:
                     evidence_pointer=args.evidence_pointer,
                 )
             )
+        elif args.cmd == "open-obligations":
+            _print({"open_obligations": store.list_open_obligations()})
         elif args.cmd == "inspect":
             _print(store.inspect(args.role_id))
         elif args.cmd == "export":
