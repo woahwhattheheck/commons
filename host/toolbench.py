@@ -298,6 +298,7 @@ class Bench:
         sha = hashlib.sha256(data).hexdigest()
         manifest = {
             "format": "commons-toolbench-checkpoint-v1",
+            "kind": "FULL_WORKSPACE_BACKUP",
             "revision": revision,
             "sha256": sha,
             "coverage": (
