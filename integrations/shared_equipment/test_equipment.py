@@ -8,7 +8,7 @@ from pathlib import Path
 
 from integrations.gemini_slack.peer_tool_gateway import EventStore, ToolCallStore, ToolGateway, ToolLoop
 from integrations.shared_equipment.services import CombinedCatalog, ServiceEquipment, redacted
-from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier, parse_request
+from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier, parse_request, slack_timestamp
 
 
 class EquipmentTests(unittest.TestCase):
@@ -131,6 +131,22 @@ class EquipmentTests(unittest.TestCase):
             first = SlackEquipmentCarrier(None, None, {"channel_id": "C123"}, path)
             second = SlackEquipmentCarrier(None, None, {"channel_id": "C123"}, path)
             self.assertEqual(first.cursor, second.cursor)
+
+    def test_slack_cursor_precision_replays_observed_missing_reply_case(self):
+        # Actual provider observation: oldest .4635916 silently omitted reply
+        # 1788571985.555399; .463591 returned it. Do not reintroduce clock precision.
+        self.assertEqual(slack_timestamp("1788571951.4635916"), "1788571951.463591")
+        class Services:
+            def slack(self, method, args):
+                return {"ok": True, "messages": [] if args["oldest"].endswith("5916") else [{"ts":"1788571985.555399", "text":"ordinary coordination"}]}
+        class Catalog:
+            services = Services()
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"cursor.json"
+            path.write_text(json.dumps({"cursor":"1788571951.4635916"}), encoding="utf-8")
+            carrier = SlackEquipmentCarrier(Catalog(), None, {"channel_id":"C0BU51F1PL3", "thread_ts":"1788567066.179399"}, path)
+            carrier.once()
+            self.assertEqual(carrier.cursor, "1788571985.555399")
 
     def test_carrier_replay_shares_http_call_key_and_returns_exact_result(self):
         class Services:

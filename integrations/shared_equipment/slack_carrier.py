@@ -17,6 +17,16 @@ OPEN = "<commons_equipment_request>"
 CLOSE = "</commons_equipment_request>"
 
 
+def slack_timestamp(value) -> str:
+    """Slack accepts microsecond precision; extra digits silently miss replies.
+
+    Preserve received timestamps exactly and truncate any higher precision
+    startup clock value instead of floating-point rounding a stored cursor up.
+    """
+    whole, _, fraction = str(value).partition(".")
+    return whole + "." + fraction[:6].ljust(6, "0")
+
+
 def parse_request(text: str) -> dict | None:
     text = text.strip()
     if not text.startswith(OPEN):
@@ -43,9 +53,10 @@ class SlackEquipmentCarrier:
         self.thread_ts = route.get("thread_ts")
         self.interval = max(5, float(route.get("poll_seconds", 15)))
         self.path = cursor_path
-        self.cursor = str(time.time())
+        self.cursor = slack_timestamp(time.time())
         if self.path.is_file():
             self.cursor = json.loads(self.path.read_text(encoding="utf-8")).get("cursor", self.cursor)
+        self.cursor = slack_timestamp(self.cursor)
         self._stop = threading.Event()
         self._thread = threading.Thread(target=self.run, daemon=True, name="shared-equipment-slack-carrier")
         self.status = {"ok": True, "phase": "configured", "channel_id": self.channel,
@@ -61,6 +72,7 @@ class SlackEquipmentCarrier:
         self._thread.join(timeout=35)
 
     def _save(self, cursor):
+        cursor = slack_timestamp(cursor)
         self.path.parent.mkdir(parents=True, exist_ok=True)
         temp = self.path.with_suffix(".tmp")
         temp.write_text(json.dumps({"cursor": cursor, "channel_id": self.channel, "thread_ts": self.thread_ts}), encoding="utf-8")
@@ -101,7 +113,7 @@ class SlackEquipmentCarrier:
                 raise RuntimeError("equipment result delivery failed; inspect journal before retry")
 
     def once(self):
-        args = {"channel": self.channel, "oldest": self.cursor, "limit": 100}
+        args = {"channel": self.channel, "oldest": slack_timestamp(self.cursor), "limit": 100}
         method = "conversations.history"
         if self.thread_ts:
             method = "conversations.replies"
