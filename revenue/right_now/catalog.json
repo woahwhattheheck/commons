@@ -48,7 +48,7 @@
       "delivery_window": "one agreed business day",
       "buyer_input": "One non-confidential sentence: My agent should [outcome], but in production it [failure].",
       "deliverable": "A no-login working proof with a visible failure or stop path, rollback or reset path, durable receipt, and written keep/change/stop handoff.",
-      "start_route": "agent-rescue.html",
+      "start_route": "revenue/production_survival/README.md",
       "source": "revenue/production_survival/offer.json#/entry_offer",
       "payment_state": "BUYER_SPECIFIC_HANDOFF_REQUIRED",
       "next_external_event": "A real buyer sends the one-sentence failure and agrees to a start window.",
