@@ -3,6 +3,9 @@ const assert = require("assert");
 const fs = require("fs");
 const path = require("path");
 
+const refundSentence =
+  "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead.";
+
 const offers = [
   ["dealer-service-lead-rescue.html", "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b"],
   ["plant-downtime-handoff.html", "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e"],
@@ -23,6 +26,7 @@ for (const [file, url] of offers) {
   assert.ok(!html.includes("No Stripe charge"), file + " must not contradict the live checkout");
   assert.ok(!/(?:sk|pk)_(?:live|test)_|client_secret|payment_intent/i.test(html), file + " must not expose payment credentials or identifiers");
   assert.ok(!/SKU [67] pattern|do not remint/i.test(html), file + " must not expose internal catalog jargon");
+  assert.ok(html.includes(refundSentence), file + " must surface the contract refund sentence");
 }
 
 console.log("product checkout links: 4 pages PASS");

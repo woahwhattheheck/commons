@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="index,follow">
 <meta http-equiv="Cache-Control" content="no-store">
-<title>AI Agent Failure Diagnostic — $29, one business day</title>
+<title>Agent Failure Autopsy — $29, one business day</title>
 <link rel="preload" href="./commons.css?v=20260823f" as="style" onload="this.onload=null;this.rel='stylesheet'">
 <noscript><link rel="stylesheet" href="./commons.css?v=20260823f"></noscript>
 <style>
@@ -16,7 +16,7 @@
 <p class="law">PUBLIC OPEN DOOR. No login. Never send credentials, tokens, private production logs, customer data, PII, or PHI.</p>
 <nav class="nav" aria-label="Commons">
   <a href="./index.html">Commons</a>
-  <a href="./agent-rescue.html">agent failure diagnostic</a>
+  <a href="./agent-rescue.html">Agent Failure Autopsy</a>
   <a href="./diagnostic.html">GGUF diagnostic</a>
   <a href="./commercial.html">White Box</a>
   <a href="https://github.com/woahwhattheheck/commons">source</a>
@@ -29,8 +29,8 @@
   <p class="lead">Send one failure sentence, the stack or harness name, and a redacted log, transcript, or screenshot. In one business day you get an evidence-linked failure chain, the primary and contributing causes, concrete remediation steps, and a replay, regression, or prevention check. One clarification round is included when the evidence needs it.</p>
   <p class="price">$29 · one business day</p>
   <p>Good fits include duplicate sends or orders, runaway retries or API spend, lost state, and workflows that cannot resume.</p>
-  <p><a class="cta" href="mailto:tokenjunkielabs@gmail.com?subject=AI%20Agent%20Failure%20Diagnostic&amp;body=Failure%20sentence%3A%20%0AStack%20or%20harness%3A%20%0ARedacted%20log%2C%20transcript%2C%20or%20screenshot%20link%3A%20">Send one failed run for diagnosis</a></p>
-  <p class="fine">The price is $29. A checkout button will appear only after a live $29 payment link is created and verified. Until then, this page requests no payment.</p>
+  <p><a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g?utm_source=commons&amp;utm_medium=website&amp;utm_campaign=agent_failure_autopsy_29&amp;utm_content=hero">Buy Agent Failure Autopsy — $29</a></p>
+  <p class="fine">Secure one-time Stripe checkout. After purchase, follow the confirmation instructions to email only sanitized, in-cap evidence and include the email used for your Stripe receipt. The one-business-day clock starts when usable, in-cap evidence arrives.</p>
 </header>
 
 <section class="grid" aria-label="Diagnostic contract">
@@ -56,7 +56,7 @@
   </article>
   <article class="panel">
     <h2>Clock and fit</h2>
-    <p>The delivery clock starts once usable redacted evidence is within the intake cap. If one clarification is needed, it is included. If the supplied artifact still cannot support a defensible diagnosis after that clarification, the $29 is refunded. If a legitimate case cannot be brought within the cap after we help select a relevant slice, the $29 is also refunded.</p>
+    <p>The delivery clock starts once usable redacted evidence is within the intake cap. If one clarification is needed, it is included. If we cannot deliver a defensible diagnosis within one business day after the clock starts, the $29 is refunded. If the supplied artifact still cannot support a defensible diagnosis after that clarification, the $29 is refunded. If a legitimate case cannot be brought within the cap after we help select a relevant slice, the $29 is also refunded.</p>
     <p class="fine">No diagnosis is presented as certain beyond the supplied evidence.</p>
   </article>
 </section>
@@ -65,19 +65,20 @@
   <h2 id="boundary-heading">What this does not include</h2>
   <p>This is a diagnosis and action plan for one failed run. It does not include repository access, production access, code implementation, live deployment, ongoing monitoring, or incident response. Any later implementation is a separate scope.</p>
   <p class="sentence">My agent should <strong>[outcome]</strong>, but the failed run <strong>[did this instead]</strong>.</p>
-  <p><a class="cta" href="mailto:tokenjunkielabs@gmail.com?subject=AI%20Agent%20Failure%20Diagnostic&amp;body=Failure%20sentence%3A%20%0AStack%20or%20harness%3A%20%0ARedacted%20log%2C%20transcript%2C%20or%20screenshot%20link%3A%20">Send the redacted evidence</a> <a class="cta secondary" href="https://github.com/woahwhattheheck/commons">Inspect the Commons source</a></p>
+  <p><a class="cta" data-checkout href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g?utm_source=commons&amp;utm_medium=website&amp;utm_campaign=agent_failure_autopsy_29&amp;utm_content=boundary">Buy Agent Failure Autopsy — $29</a> <a class="cta secondary" href="https://github.com/woahwhattheheck/commons">Inspect the Commons source</a></p>
 </section>
 </main>
 <script>
 (function(){
   var p=new URLSearchParams(location.search),clean=function(v){return String(v||"").replace(/[^A-Za-z0-9_-]/g,"").slice(0,60)};
-  var s=clean(p.get("utm_source")),c=clean(p.get("utm_campaign")),x=clean(p.get("utm_content"));
-  if(!s&&!c)return;
-  var label=[s||"web",c,x].filter(Boolean).join("/"),links=document.querySelectorAll('a[href^="mailto:tokenjunkielabs@gmail.com"]');
-  links.forEach(function(link){
-    var href=link.getAttribute("href");
-    href=href.replace("subject=AI%20Agent%20Failure%20Diagnostic","subject=AI%20Agent%20Failure%20Diagnostic%20%5Bvia%20"+encodeURIComponent(label)+"%5D");
-    link.setAttribute("href",href+"%0A%0Avia%3A%20"+encodeURIComponent(label));
+  var keys=["utm_source","utm_medium","utm_campaign","utm_term","utm_content"];
+  document.querySelectorAll("a[data-checkout]").forEach(function(link){
+    var url=new URL(link.getAttribute("href"));
+    keys.forEach(function(key){
+      var value=clean(p.get(key));
+      if(value)url.searchParams.set(key,value);
+    });
+    link.setAttribute("href",url.toString());
   });
 })();
 </script>

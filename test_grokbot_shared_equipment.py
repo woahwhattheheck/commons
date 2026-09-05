@@ -59,6 +59,7 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             "grokbot_session",
             "grokbot_events",
             "grokbot_pools",
+            "grokbot_health",
         }
         self.assertEqual(names, expected)
         catalog = CombinedCatalog(_FakeCommons())
@@ -127,6 +128,15 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             )
             self.assertGreaterEqual(len(events.get("events") or []), 1)
 
+
+    def test_health_reports_memory_guard(self):
+        with GrokBotEquipmentFixture() as fx:
+            health = fx.eq.call("grokbot_health", {})
+            self.assertTrue(health.get("ok"))
+            self.assertEqual(health.get("service"), "commons-grokbot-control")
+            self.assertIn("memory_guard", health)
+            self.assertIn("holding", health["memory_guard"])
+
     def test_unreachable_control_is_honest(self):
         eq = GrokBotEquipment("http://127.0.0.1:9")
         out = eq.call("grokbot_pools", {})
@@ -149,6 +159,7 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         self.assertEqual(g2["base_url"], "http://127.0.0.1:8881")
         self.assertEqual(g2["pool_id"], "grokbot")
         self.assertIn("grokbot_submit", g2["equipment_tools"])
+        self.assertIn("grokbot_health", g2["equipment_tools"])
 
 
 if __name__ == "__main__":

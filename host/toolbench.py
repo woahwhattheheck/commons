@@ -13,6 +13,7 @@ import hashlib
 import io
 import json
 import sqlite3
+import tempfile
 import uuid
 import zipfile
 from contextlib import contextmanager
@@ -275,6 +276,46 @@ class Bench:
                 archive.writestr(info, data)
         return output.getvalue()
 
+    def checkpoint(self) -> bytes:
+        """Committed workspace ZIP for another Toolbench. Does not execute history or choose successor action."""
+        with tempfile.NamedTemporaryFile(suffix=".sqlite3", delete=False) as tmp:
+            tmp_path = tmp.name
+        try:
+            with self.connect() as db:
+                try:
+                    db.execute("PRAGMA wal_checkpoint(PASSIVE)")
+                except sqlite3.Error:
+                    pass
+                revision = self.revision(db)
+                dest = sqlite3.connect(tmp_path)
+                try:
+                    db.backup(dest)
+                finally:
+                    dest.close()
+            data = Path(tmp_path).read_bytes()
+        finally:
+            Path(tmp_path).unlink(missing_ok=True)
+        sha = hashlib.sha256(data).hexdigest()
+        manifest = {
+            "format": "commons-toolbench-checkpoint-v1",
+            "kind": "FULL_WORKSPACE_BACKUP",
+            "revision": revision,
+            "sha256": sha,
+            "coverage": (
+                "Committed workspace only; no drafts; does not execute history "
+                "or choose successor action."
+            ),
+        }
+        output = io.BytesIO()
+        with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_STORED) as archive:
+            for name, payload in (
+                ("workspace.sqlite3", data),
+                ("manifest.json", (canonical(manifest) + "\n").encode()),
+            ):
+                info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
+                archive.writestr(info, payload)
+        return output.getvalue()
+
 
 def load_example(bench: Bench, path: Path):
     """Load inert sample objects, not associations, selections, or model decisions."""
@@ -290,7 +331,7 @@ def server(bench: Bench, host: str = "127.0.0.1", port: int = 18450):
         def log_message(self, *_):
             pass
 
-        def reply(self, status, data, media="application/json; charset=utf-8"):
+        def reply(self, status, data, media="application/json; charset=utf-8", *, zip_filename=None):
             if not isinstance(data, bytes):
                 data = (canonical(data) + "\n").encode()
             self.send_response(status)
@@ -299,7 +340,8 @@ def server(bench: Bench, host: str = "127.0.0.1", port: int = 18450):
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
             if media == "application/zip":
-                self.send_header("Content-Disposition", 'attachment; filename="toolbench-handover.zip"')
+                name = zip_filename or "toolbench-handover.zip"
+                self.send_header("Content-Disposition", f'attachment; filename="{name}"')
             self.end_headers()
             self.wfile.write(data)
 
@@ -330,11 +372,14 @@ def server(bench: Bench, host: str = "127.0.0.1", port: int = 18450):
                     self.reply(200, bench.compare(param("left"), param("right")))
                 elif url.path == "/api/export":
                     self.reply(200, bench.export(param("job")), "application/zip")
+                elif url.path == "/api/checkpoint":
+                    self.reply(200, bench.checkpoint(), "application/zip",
+                               zip_filename="toolbench-checkpoint.zip")
                 elif url.path == "/api/operations":
                     self.reply(200, {"operations": OPERATIONS, "request": {"op": "operation name", "args": {},
                                "request_id": "optional stable retry ID", "actor": "optional attribution label",
                                "expected_revision": "optional nonnegative integer for concurrent-edit detection"},
-                               "read": ["/api/state", "/api/source?id=...", "/api/compare?left=...&right=...", "/api/history", "/api/export?job=..."],
+                               "read": ["/api/state", "/api/source?id=...", "/api/compare?left=...&right=...", "/api/history", "/api/export?job=...", "/api/checkpoint"],
                                "write": "POST /api/op; one caller-chosen operation per request; no next-step policy"})
                 else:
                     self.reply(404, {"error": "NOT_FOUND"})

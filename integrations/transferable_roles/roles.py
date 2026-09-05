@@ -51,6 +51,9 @@ GROKBOT_CONTROL_ROUTE_FIELDS = (
 # Fields stampable onto an existing access_route (no secrets; seat stays on occupant).
 BINDABLE_ROUTE_FIELDS = ("session_id", "last_run_id", "pool_id")
 
+# Default unbind clears recover stamps only; fixture pool_id stays unless asked.
+DEFAULT_UNBIND_FIELDS = ("session_id", "last_run_id")
+
 OBLIGATION_STATUSES = frozenset({"open", "done", "blocked", "deferred"})
 
 
@@ -250,6 +253,31 @@ class RoleStore:
     def list_ids(self) -> list[str]:
         return sorted(p.stem for p in self.root.glob("*.json"))
 
+    def list_open_obligations(self) -> list[dict[str, Any]]:
+        """Open obligations across all roles — cash-work / fulfillment queue."""
+        rows: list[dict[str, Any]] = []
+        for rid in self.list_ids():
+            role = self.get(rid)
+            for ob in role.get("obligations") or []:
+                if str(ob.get("status") or "").strip() != "open":
+                    continue
+                row: dict[str, Any] = {
+                    "role_id": role["role_id"],
+                    "purpose": role["purpose"],
+                    "obligation_id": ob["id"],
+                    "summary": ob["summary"],
+                    "next_action": ob["next_action"],
+                }
+                if role.get("label"):
+                    row["label"] = role["label"]
+                if ob.get("evidence_pointer"):
+                    row["evidence_pointer"] = ob["evidence_pointer"]
+                if role.get("synthetic") is True:
+                    row["synthetic"] = True
+                rows.append(row)
+        rows.sort(key=lambda r: (r["role_id"], r["obligation_id"]))
+        return rows
+
     def equip(
         self,
         role_id: str,
@@ -379,6 +407,52 @@ class RoleStore:
         self._write(role)
         return deepcopy(role)
 
+    def unbind_access_route(
+        self,
+        role_id: str,
+        *,
+        route_name: str,
+        fields: tuple[str, ...] | list[str] | None = None,
+    ) -> dict[str, Any]:
+        """Clear stamped BINDABLE_ROUTE_FIELDS on a named access_route.
+
+        Keeps the route shell (name/kind/urls). Does not touch occupant,
+        purpose, or obligations. Default clears DEFAULT_UNBIND_FIELDS
+        (session_id, last_run_id — the recover stamps), NOT pool_id.
+        Optional fields= subset must be within BINDABLE_ROUTE_FIELDS
+        (may include pool_id).
+        """
+        role = self.get(role_id)
+        name = _require_str(route_name, "route_name")
+        clear = list(fields) if fields else list(DEFAULT_UNBIND_FIELDS)
+        for f in clear:
+            if f not in BINDABLE_ROUTE_FIELDS:
+                raise RoleError(f"unbind field not bindable: {f}")
+        if not clear:
+            raise RoleError("unbind_access_route needs at least one field")
+        preserved_purpose = role["purpose"]
+        preserved_obligations = deepcopy(role["obligations"])
+        found = False
+        new_routes: list[dict[str, Any]] = []
+        for route in role.get("access_routes") or []:
+            item = deepcopy(route)
+            if item.get("name") == name:
+                found = True
+                for field in clear:
+                    item.pop(field, None)
+                item = _normalize_access_route(item)
+            new_routes.append(item)
+        if not found:
+            raise RoleError(f"access_route not found: {name}")
+        role["access_routes"] = new_routes
+        role["updated_at"] = _utc_now()
+        if role["purpose"] != preserved_purpose:
+            raise RoleError("purpose mutated during unbind_access_route")
+        if role["obligations"] != preserved_obligations:
+            raise RoleError("obligations mutated during unbind_access_route")
+        self._write(role)
+        return deepcopy(role)
+
     def release(
         self,
         role_id: str,
@@ -470,6 +544,25 @@ class RoleStore:
         role["updated_at"] = _utc_now()
         if role["purpose"] != preserved_purpose:
             raise RoleError("purpose mutated during advance_obligation")
+        self._write(role)
+        return deepcopy(role)
+
+    def import_package(self, raw: dict[str, Any]) -> dict[str, Any]:
+        """Adopt an export_package into this store without reminting role_id.
+
+        Occupant must be None (importer equips). export_meta is dropped.
+        Fails if role_id already exists.
+        """
+        if not isinstance(raw, dict):
+            raise RoleError("package must be an object")
+        package = deepcopy(raw)
+        package.pop("export_meta", None)
+        package["occupant"] = None
+        rid = _require_str(package.get("role_id"), "role_id")
+        if self._path(rid).exists():
+            raise RoleError(f"role_id already exists: {rid}; refuse remint")
+        role = normalize_role(package, role_id=rid)
+        role["occupant"] = None
         self._write(role)
         return deepcopy(role)
 
