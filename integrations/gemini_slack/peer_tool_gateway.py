@@ -12,6 +12,7 @@ import os
 import queue
 import re
 import sqlite3
+import sys
 import threading
 import time
 import urllib.error
@@ -22,13 +23,16 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from integrations.shared_equipment.services import CombinedCatalog, redacted
+
 
 DEFAULT_UPSTREAM = "http://127.0.0.1:8777"
 DEFAULT_MCP = "https://commons-spark-mcp.vercel.app/mcp"
 DEFAULT_EVENT_LOG = Path.home() / ".gemini" / "commons_peer_tool_gateway_events.jsonl"
 DEFAULT_CALL_DB = Path.home() / ".gemini" / "commons_peer_tool_calls.sqlite3"
 MCP_PROTOCOL = "2025-03-26"
-TERMINAL = frozenset({"completed", "error"})
+TERMINAL = frozenset({"completed", "error", "cancelled", "interrupted"})
 CALL_OPEN = "<commons_tool_call>"
 CALL_CLOSE = "</commons_tool_call>"
 CALL_RE = re.compile(r"^\s*<commons_tool_call>(.*?)</commons_tool_call>\s*$", re.DOTALL)
@@ -242,12 +246,13 @@ class ToolCallStore:
 def _tool_prompt(message: str, tools: list[dict[str, Any]]) -> str:
     catalog = json.dumps(tools, ensure_ascii=False, separators=(",", ":"))
     return (
-        "You are connected to the full live public Commons MCP through a history-preserving outer tool loop. "
+        "You are connected to the full live public Commons MCP and private shared Slack/GitHub equipment through a history-preserving outer tool loop. "
         "You may use any listed tool. When a tool is needed, reply with exactly one envelope and no "
         "surrounding text:\n"
         f"{CALL_OPEN}{{\"call_id\":\"a unique id\",\"name\":\"tool name\",\"arguments\":{{}}}}{CALL_CLOSE}\n"
         "After a result arrives, continue normally or issue another exact envelope. If no tool is needed, "
-        "reply normally. Do not invent tool names.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
+        "reply normally. Do not invent tool names. Private equipment uses existing service account access; "
+        "credentials are never supplied to you. Service responses may have pagination; follow it when needed.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
         + catalog
         + "\n\nMESSAGE:\n"
         + message
@@ -290,14 +295,18 @@ class ToolLoop:
         self.max_steps = max_steps
         self.max_protocol_retries = max_protocol_retries
 
-    def run(self, request_id: str, peer: str, message: str) -> str:
+    def run(self, request_id: str, peer: str, message: str, cancelled=None) -> str:
         tools = self.catalog.tools()
         names = {item["name"] for item in tools}
         prompt = _tool_prompt(message, tools)
         tool_calls = 0
         protocol_retries = 0
         while True:
+            if cancelled is not None and cancelled.is_set():
+                raise InterruptedError("request cancelled before next model/tool operation")
             reply = self.upstream.turn(peer, prompt)
+            if cancelled is not None and cancelled.is_set():
+                raise InterruptedError("request cancelled after in-flight model turn returned")
             call, had_marker = _parse_call(reply)
             if call is None and not had_marker:
                 return reply
@@ -330,7 +339,7 @@ class ToolLoop:
                     self.catalog.call,
                 )
             prompt = (
-                "Commons MCP returned this exact result. Continue the same response. Use another exact "
+                "The selected tool returned this result. Continue the same response. Use another exact "
                 "tool envelope if useful; otherwise answer normally.\n<commons_tool_result>"
                 + json.dumps(
                     {"call_id": call["call_id"], "name": call["name"], "result": result},
@@ -450,6 +459,13 @@ class ToolGateway(ThreadingHTTPServer):
         self.catalog = catalog
         self._peer_state_lock = threading.RLock()
         self._peer_queues: dict[str, queue.Queue[QueuedTurn]] = {}
+        self._cancellations: dict[str, threading.Event] = {}
+        # Report interrupted execution honestly; never replay a possibly applied
+        # service write or restart an old conversation automatically.
+        for event in list(events._latest.values()):
+            if event.get("status") not in TERMINAL:
+                events.append(request_id=event["request_id"], peer=event.get("peer"),
+                    status="interrupted", message="gateway restarted; inspect tool journal before follow-up")
 
     @staticmethod
     def normalize_peer(value: Any) -> str:
@@ -483,6 +499,8 @@ class ToolGateway(ThreadingHTTPServer):
                 work.task_done()
 
     def submit(self, peer: str, message: str) -> QueuedTurn:
+        if not isinstance(message, str) or not message.strip():
+            raise ValueError("message must be nonempty UTF-8 text")
         with self._peer_state_lock:
             request_id = uuid.uuid4().hex
             raw = message.encode("utf-8")
@@ -494,6 +512,7 @@ class ToolGateway(ThreadingHTTPServer):
                 message_sha256=hashlib.sha256(raw).hexdigest(),
             )
             item = QueuedTurn(request_id, peer, message)
+            self._cancellations[request_id] = threading.Event()
             self._queue_for(peer).put(item)
             return item
 
@@ -501,9 +520,9 @@ class ToolGateway(ThreadingHTTPServer):
         started = time.monotonic()
         try:
             self.events.append(request_id=request_id, peer=peer, status="running")
-            reply = self.loop.run(request_id, peer, message)
+            reply = self.loop.run(request_id, peer, message, self._cancellations.get(request_id))
             raw = reply.encode("utf-8")
-            return self.events.append(
+            return self._terminal_event(
                 request_id=request_id,
                 peer=peer,
                 status="completed",
@@ -512,8 +531,11 @@ class ToolGateway(ThreadingHTTPServer):
                 reply_utf8_base64=base64.b64encode(raw).decode("ascii"),
                 reply_bytes=len(raw),
             )
+        except InterruptedError as exc:
+            return self._terminal_event(request_id=request_id, peer=peer, status="cancelled",
+                elapsed_ms=round((time.monotonic() - started) * 1000), message=str(exc))
         except Exception as exc:
-            return self.events.append(
+            return self._terminal_event(
                 request_id=request_id,
                 peer=peer,
                 status="error",
@@ -521,6 +543,22 @@ class ToolGateway(ThreadingHTTPServer):
                 error=type(exc).__name__,
                 message=str(exc),
             )
+
+    def _terminal_event(self, **fields) -> dict:
+        with self._peer_state_lock:
+            return self.events.append(**fields)
+
+    def cancel(self, request_id: str) -> dict:
+        with self._peer_state_lock:
+            event = self.events.request(request_id, 0)
+            if event is None:
+                return {"ok": False, "error": "request_not_found"}
+            if event["status"] in TERMINAL:
+                return {"ok": True, "event": event, "already_terminal": True}
+            self._cancellations[request_id].set()
+            event = self.events.append(request_id=request_id, peer=event.get("peer"),
+                status="cancel_requested", message="cooperative cancellation; in-flight provider turn may finish, then no further tool effects")
+            return {"ok": True, "event": event}
 
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
@@ -550,6 +588,9 @@ class Handler(BaseHTTPRequestHandler):
         parsed = urllib.parse.urlsplit(self.path)
         query = urllib.parse.parse_qs(parsed.query)
         try:
+            if parsed.path == "/v1/tools":
+                self._send(200, {"ok": True, "tools": self.server.catalog.tools()})
+                return
             if parsed.path in ("/", "/health", "/v1/peers"):
                 upstream = self.server.upstream.health()
                 tools = self.server.catalog.tools()
@@ -565,6 +606,7 @@ class Handler(BaseHTTPRequestHandler):
                         "tool_count": len(tools),
                         "tools": [item["name"] for item in tools],
                         "event_cursor": self.server.events.cursor,
+                        "slack_carrier": getattr(getattr(self.server, "carrier", None), "status", {"phase": "not_configured"}),
                     },
                 )
                 return
@@ -602,6 +644,29 @@ class Handler(BaseHTTPRequestHandler):
             self._send(502, {"ok": False, "error": type(exc).__name__, "message": str(exc)})
 
     def do_POST(self) -> None:
+        route = urllib.parse.urlsplit(self.path).path
+        if route.startswith("/v1/requests/") and route.endswith("/cancel"):
+            request_id = route[len("/v1/requests/"):-len("/cancel")]
+            self._send(200, self.server.cancel(request_id))
+            return
+        if urllib.parse.urlsplit(self.path).path == "/v1/tools/call":
+            try:
+                size = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(size).decode("utf-8"))
+                for field in ("request_id", "call_id", "name"):
+                    if not isinstance(payload.get(field), str) or not payload[field].strip():
+                        raise ValueError(field + " must be a nonempty string")
+                arguments = payload.get("arguments", {})
+                if not isinstance(arguments, dict):
+                    raise ValueError("arguments must be an object")
+                result = self.server.loop.calls.execute_journaled(
+                    "equipment:" + payload["request_id"], payload["call_id"],
+                    payload["name"], arguments, self.server.catalog.call)
+                self._send(200, {"ok": True, "request_id": payload["request_id"],
+                    "call_id": payload["call_id"], "result": redacted(result)})
+            except Exception as exc:
+                self._send(400, {"ok": False, "error": type(exc).__name__, "message": redacted(str(exc))})
+            return
         if urllib.parse.urlsplit(self.path).path != "/v1/message":
             self._send(404, {"ok": False, "error": "not_found"})
             return
@@ -646,13 +711,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--cache-ttl", type=float, default=300.0)
     parser.add_argument("--max-tool-steps", type=int, default=16)
     parser.add_argument("--max-protocol-retries", type=int, default=4)
+    parser.add_argument("--equipment-config", type=Path, default=Path.home() / ".commons" / "equipment.json")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     upstream = UpstreamClient(args.upstream)
-    catalog = McpCatalog(args.mcp_url, ttl_seconds=args.cache_ttl)
+    catalog = CombinedCatalog(McpCatalog(args.mcp_url, ttl_seconds=args.cache_ttl))
     calls = ToolCallStore(args.call_db)
     events = EventStore(args.event_log)
     loop = ToolLoop(
@@ -663,6 +729,18 @@ def main(argv: list[str] | None = None) -> int:
         max_protocol_retries=args.max_protocol_retries,
     )
     server = ToolGateway(("127.0.0.1", args.port), loop, events, upstream, catalog)
+    from integrations.shared_equipment.peers import GeminiEquipment
+    catalog.extensions.append(GeminiEquipment(server))
+    carrier = None
+    if args.equipment_config.is_file():
+        from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier
+        config = json.loads(args.equipment_config.read_text(encoding="utf-8"))
+        route = config.get("slack_carrier")
+        if route:
+            carrier = SlackEquipmentCarrier(catalog, calls, route,
+                args.equipment_config.with_name("equipment_slack_cursor.json"))
+            carrier.start()
+    server.carrier = carrier
     print(
         json.dumps(
             {
@@ -677,6 +755,8 @@ def main(argv: list[str] | None = None) -> int:
     except KeyboardInterrupt:
         return 0
     finally:
+        if carrier is not None:
+            carrier.stop()
         server.server_close()
         calls.close()
     return 0
