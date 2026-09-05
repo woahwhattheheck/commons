@@ -331,6 +331,30 @@ class RobustnessTests(unittest.TestCase):
             self.assertIn("duplicate_link_different_quantity", codes)
 
 
+class DisplayTests(unittest.TestCase):
+    def test_path_summary_prints_the_same_line_as_the_viewer(self):
+        path = [
+            {"from": "sup-acme/lot/LOT-CITRIC-01", "relation": "split", "to": "sup-acme/lot/LOT-CITRIC-01A", "status": "known",
+             "sources": [{"file": "splits.csv", "line": 2, "version": "93948a1e5f015bad"}]},
+            {"from": "pilot-plant/batch/BATCH-P2", "relation": "packed", "to": "pilot-plant/package/PKG-ORPHAN-1", "status": "potential",
+             "sources": []},
+        ]
+        self.assertEqual(engine.path_summary(path), [
+            "sup-acme/lot/LOT-CITRIC-01 -split-> sup-acme/lot/LOT-CITRIC-01A (splits.csv:2@93948a1e)",
+            "pilot-plant/batch/BATCH-P2 -packed*-> pilot-plant/package/PKG-ORPHAN-1 (no row)",
+        ])
+        self.assertEqual(engine.path_summary([]), [])
+
+    def test_node_detail_names_what_a_reader_wants_next_to_the_id(self):
+        self.assertEqual(engine.node_detail("lot", {"material": "citric acid", "supplier": "Acme Acids"}), "citric acid Acme Acids")
+        self.assertEqual(engine.node_detail("lot", {"material": "citric acid"}), "citric acid")
+        self.assertEqual(engine.node_detail("batch", {"product": "RTD-HA"}), "RTD-HA")
+        self.assertEqual(engine.node_detail("package", {"product": "RTD-HA", "customer": "ignored"}), "RTD-HA")
+        self.assertEqual(engine.node_detail("shipment", {"customer": "Market South"}), "Market South")
+        self.assertEqual(engine.node_detail("shipment", {}), "")
+        self.assertEqual(engine.node_detail("other", {"product": "x"}), "")
+
+
 class CliTests(unittest.TestCase):
     def run_cli(self, *args, cwd=None):
         proc = subprocess.run([sys.executable, str(CLI), *args], capture_output=True, text=True, cwd=cwd or ROOT, check=False)
@@ -356,6 +380,19 @@ class CliTests(unittest.TestCase):
             out_json, out_md = Path(tmp) / "r.json", Path(tmp) / "r.md"
             brief = self.run_cli("-w", ws, "impact", "sup-acme/lot/LOT-CITRIC-01", "--brief", "--out", str(out_json), "--md", str(out_md))
             self.assertEqual(brief["counts"]["KNOWN_AFFECTED"], len(FORWARD_KNOWN_FROM_CITRIC))
+            by_key = {a["key"]: a for a in brief["affected"]}
+            self.assertEqual(by_key["sup-acme/lot/LOT-CITRIC-01A"]["detail"], "citric acid Acme Acids")
+            self.assertEqual(by_key["pilot-plant/shipment/SHIP-3"]["detail"], "Market South")
+            p4 = by_key["pilot-plant/batch/BATCH-P4"]["path"]
+            self.assertEqual(len(p4), 4)
+            self.assertTrue(p4[-1].startswith("pilot-plant/batch/BATCH-P2 -rework-> pilot-plant/batch/BATCH-P4 (rework.csv:2@"), p4[-1])
+            summarised = self.run_cli("-w", ws, "impact", "pilot-plant/shipment/SHIP-3", "--backward", "--paths", "summary")
+            first = summarised["impact"]["affected"][0]
+            self.assertIsInstance(first["path"][0], str)
+            self.assertIn("what |", out_md.read_text(encoding="utf-8"))
+            self.assertIn("| citric acid Acme Acids |", out_md.read_text(encoding="utf-8"))
+            full_written = json.loads(out_json.read_text(encoding="utf-8"))
+            self.assertIsInstance(full_written["impact"]["affected"][0]["path"][0], dict, "files keep the full edge objects")
             report = json.loads(out_json.read_text(encoding="utf-8"))
             self.assertEqual(report["content_sha256"], brief["content_sha256"])
             self.assertIn("# LotLens impact report", out_md.read_text(encoding="utf-8"))

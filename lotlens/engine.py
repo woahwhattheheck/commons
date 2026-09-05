@@ -681,6 +681,29 @@ class Workspace:
 # ---------------------------------------------------------------------------
 
 
+def node_detail(kind: str, attrs: dict[str, Any]) -> str:
+    """The one attribute a reader wants next to the id: what a lot is, what a batch or
+    package holds, who a shipment went to. Display only; the attrs stay in the report."""
+    if kind == "lot":
+        return " ".join(str(v) for v in (attrs.get("material"), attrs.get("supplier")) if v)
+    if kind in ("batch", "package"):
+        return str(attrs.get("product") or "")
+    if kind == "shipment":
+        return str(attrs.get("customer") or "")
+    return ""
+
+
+def path_summary(path: list[dict[str, Any]]) -> list[str]:
+    """One line per hop: from -relation-> to (file:line@version); `*` marks an edge that exists only
+    under a named assumption; an edge with no source row prints `no row`. Same form as the viewer."""
+    out = []
+    for e in path:
+        rows = ", ".join(f"{s['file']}:{s['line']}@{str(s['version'])[:8]}" for s in e.get("sources", []))
+        flag = "*" if e.get("status") == "potential" else ""
+        out.append(f"{e['from']} -{e['relation']}{flag}-> {e['to']} ({rows or 'no row'})")
+    return out
+
+
 def build_report(workspace: Workspace, graph: Graph, impact: dict[str, Any]) -> dict[str, Any]:
     keys = [impact["query"]["start"]] + [a["key"] for a in impact.get("affected", [])]
     notes = [a for a in workspace.annotations() if a["target"] in set(keys)]
@@ -715,11 +738,11 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"{counts[STATUS_KNOWN]} known affected · {counts[STATUS_POTENTIAL]} potentially affected · "
         f"{counts['unresolved']} unresolved · {counts['coverage_gaps']} coverage gaps · {counts['contradictions']} contradictions"
     )
-    lines += ["", "| status | item | kind | hops | via | evidence |", "| --- | --- | --- | --- | --- | --- |"]
+    lines += ["", "| status | item | kind | what | hops | via | evidence |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for a in imp["affected"]:
         via = " → ".join(f"{e['relation']}{'*' if e['status'] == 'potential' else ''}" for e in a["path"])
         ev = "; ".join(f"{s['file']}:{s['line']}" for e in a["path"] for s in e["sources"])
-        lines.append(f"| {a['status']} | `{a['key']}` | {a['kind']} | {a['hops']} | {via} | {ev} |")
+        lines.append(f"| {a['status']} | `{a['key']}` | {a['kind']} | {node_detail(a['kind'], a.get('attrs', {}))} | {a['hops']} | {via} | {ev} |")
     lines.append("")
     lines.append("`*` marks an edge that exists only under a named assumption.")
     for title, items in (("Unresolved", imp["unresolved"]), ("Coverage gaps", imp["coverage_gaps"]), ("Contradictions", imp["contradictions"]), ("Cycles", imp["cycles"])):
