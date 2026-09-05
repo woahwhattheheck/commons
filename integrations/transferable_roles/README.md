@@ -10,6 +10,7 @@ Advance: `hinge-r4-obligation-advance-20260905-01` (#8812 → `8a344d54`)
 Import: `hinge-r4-import-package-20260905-01`
 Paid fulfillment: `hinge-r4-paid-fulfillment-role-20260905-01`
 Checkout wire: `hinge-r4-autopsy-checkout-wire-20260905-01`
+Spine pointers: `hinge-r4-autopsy-spine-pointers-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -98,13 +99,18 @@ SYNTHETIC fixture
 `fixtures/synthetic_agent_failure_autopsy_role.json` packages one paid
 **Agent Failure Autopsy** ($29 one-time) fulfillment for seat-to-seat handoff:
 open obligations `ob-intake` → `ob-diagnose` → `ob-review` → `ob-settle`
-(deliver **or** refund). Reuses CRM-shaped `grokbot_control_g2` + 
+(deliver **or** refund). Reuses CRM-shaped `grokbot_control_g2` +
 `gemini_peer_tool_gateway`, plus `payment_capability` (`kind: public_html`
 pointing at `payment-capability.html` / `pay.html`). Knowledge cites
-`ground/PAYMENT_CAPABILITY.md` and notes **Astra #8811** owns the fulfillment
-spine — **do not invent plink**. Live checkout URL now on fixture + `agent-rescue.html` (#8889).
-No credential remint; no invented checkout; roles confer no Stripe access. Use
-`open-obligations` to see remaining open work across roles after a transfer.
+`ground/PAYMENT_CAPABILITY.md`. After **#8811** land (`c8e40bc`), knowledge also
+points at landed spine paths `revenue/agent_failure_autopsy/{README,RUNBOOK,
+offer.json,report-template.md}` (+ optional `intake.schema.json`) and tools
+include `autopsy_fulfillment` → `python3 revenue/agent_failure_autopsy/fulfillment.py`
+— **point only; do not remint** fulfillment.py / schemas / offer.json contents.
+Live checkout URL stays on fixture + `agent-rescue.html` (#8889). Stripe
+product/price/plink/account IDs stay in `offer.json` only. No credential remint;
+no invented checkout; roles confer no Stripe access. Use `open-obligations` to
+see remaining open work across roles after a transfer.
 
 ## Access route shapes
 

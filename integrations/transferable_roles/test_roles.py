@@ -23,6 +23,9 @@ AUTOPSY_FIXTURE = (
 
 LIVE_CHECKOUT = "buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
 AUTOPSY_PAGE = "agent-rescue.html"
+SPINE_RUNBOOK = "revenue/agent_failure_autopsy/RUNBOOK.md"
+SPINE_OFFER = "revenue/agent_failure_autopsy/offer.json"
+AUTOPSY_FULFILL_ENTRY = "python3 revenue/agent_failure_autopsy/fulfillment.py"
 
 
 class TransferableRoleTests(unittest.TestCase):
@@ -669,6 +672,12 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIn("payment-capability.html", pointers)
         self.assertIn("ground/PAYMENT_CAPABILITY.md", pointers)
         self.assertIn("pay.html", pointers)
+        # #8811 spine pointers + autopsy_fulfillment tool (no remint).
+        self.assertIn(SPINE_RUNBOOK, pointers)
+        self.assertIn(SPINE_OFFER, pointers)
+        tools = {t["name"]: t for t in role.get("tools") or []}
+        self.assertIn("autopsy_fulfillment", tools)
+        self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILL_ENTRY)
 
     def test_autopsy_fixture_wires_live_checkout_url(self) -> None:
         """Create from fixture; live checkout must appear in knowledge/routes/ob-settle."""
@@ -689,6 +698,23 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIn(AUTOPSY_PAGE, pay.get("note", ""))
         pointers = {k["pointer"] for k in role["knowledge"]}
         self.assertIn(AUTOPSY_PAGE, pointers)
+
+    def test_autopsy_fixture_points_at_landed_spine(self) -> None:
+        """After #8811, knowledge/tools must point at landed spine paths (no remint)."""
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn(SPINE_RUNBOOK, pointers)
+        self.assertIn(SPINE_OFFER, pointers)
+        self.assertIn("revenue/agent_failure_autopsy/README.md", pointers)
+        self.assertIn("revenue/agent_failure_autopsy/report-template.md", pointers)
+        tools = {t["name"]: t for t in role.get("tools") or []}
+        self.assertIn("autopsy_fulfillment", tools)
+        self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILL_ENTRY)
+        # Stripe product/price/plink/account IDs stay in offer.json only.
+        fixture_blob = json.dumps(role)
+        for forbidden in ("prod_", "price_", "acct_", "plink_"):
+            self.assertNotIn(forbidden, fixture_blob)
 
     def test_list_open_obligations_four_rows_then_advance_drops(self) -> None:
         raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
