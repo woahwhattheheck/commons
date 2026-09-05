@@ -1,0 +1,55 @@
+name: tmp-quill-autopsy-index-patch
+on:
+  workflow_dispatch:
+  push:
+    branches: [quill/autopsy-funnel-surface-20260905-01]
+    paths: [".github/workflows/tmp-quill-autopsy-index-patch.yml"]
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: quill/autopsy-funnel-surface-20260905-01
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Patch index.html offer banner
+        run: |
+          python3 <<'PY'
+          from pathlib import Path
+          p = Path("index.html")
+          text = p.read_text(encoding="utf-8")
+          old = (
+              '<section id="agent-failure-diagnostic-offer" class="law" aria-label="One-day agent failure diagnostic offer">\n'
+              '<strong>Production agent failing?</strong> Build a client-safe failure packet in your browser, then get the exact $199 one-business-day diagnostic scope in writing before payment. The delivery is a known / unknown / not-tested diagnosis, one stop / retry / rollback recommendation, and a Markdown + JSON receipt. A working $2,500 survival proof is the next step only when the diagnosis calls for one. <a href="./agent-triage.html">Build the failure packet</a>.\n'
+              '</section>'
+          )
+          new = (
+              '<section id="agent-failure-diagnostic-offer" class="law" aria-label="Agent Failure Autopsy and diagnostic offer">\n'
+              '<strong>Production agent failing?</strong> Start with the live <a href="./agent-rescue.html">Agent Failure Autopsy</a> — $29, one business day. '
+              '<a href="https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g?utm_source=commons&amp;utm_medium=website&amp;utm_campaign=agent_failure_autopsy_29&amp;utm_content=index_banner">Buy Agent Failure Autopsy — $29</a>. '
+              'Prefer a free packet / $199 diagnostic scope first? <a href="./agent-triage.html">Build the failure packet on agent-triage.html</a>.\n'
+              '</section>'
+          )
+          offer = text.split('id="agent-failure-diagnostic-offer"', 1)[1].split("</section>", 1)[0]
+          if "$29" in offer and "Agent Failure Autopsy" in offer:
+              print("already patched")
+          elif old not in text:
+              raise SystemExit("OLD SECTION NOT FOUND")
+          else:
+              p.write_text(text.replace(old, new, 1), encoding="utf-8")
+              print("patched")
+          PY
+      - name: Commit index + remove helper workflow
+        run: |
+          rm -f .github/workflows/tmp-quill-autopsy-index-patch.yml
+          git config user.name "woahwhattheheck"
+          git config user.email "brycembusiness2@gmail.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "no changes"
+            exit 0
+          fi
+          git commit -m "QUILL: surface live $29 Autopsy on index funnel banner"
+          git push
