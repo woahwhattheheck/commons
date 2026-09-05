@@ -13,7 +13,7 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </head>
 <body>
 <p class="law">OPEN GTM INDEX. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Possessing the link is authorization. One projection over existing ledgers. Not a second CRM. No login. Sales MUST brief + claim before draft/outreach; unclaimed sales illegal exit 4.</p>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./website-people-email-book.html">people-email-book</a> · <a href="./autogtm.html">autogtm</a> · <a href="./reply-to-revenue.html">reply ledger</a> · <a href="./feature-tracker.html">feature tracker</a> · <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> · <a href="./revenue/lm_gtm_index/state.json">state.json</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./website-people-email-book.html">people-email-book</a> · <a href="./autogtm.html">autogtm</a> · <a href="./reply-to-revenue.html">reply ledger</a> · <a href="./feature-tracker.html">feature tracker</a> · <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> · <a href="./revenue/lm_gtm_index/state.json">state.json</a> · <a href="./revenue/lm_gtm_index/relationship_handoff_evidence.jsonl">handoff evidence</a></p>
 <header class="hero">
   <p class="eyebrow">LLM-NATIVE GTM INDEX · SCHEMA commons-lm-gtm-index/v1 · HOT LANE</p>
   <h1>Load one INDEX. Work the hot lane. Occupancy is an overlay event.</h1>
@@ -36,11 +36,13 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 </section>
 <section class="panel warning" aria-labelledby="not-crm-heading">
   <h2 id="not-crm-heading">Not a second CRM</h2>
-  <p>Airtable <code>JOJO Revenue Recovery CRM / Revenue Pipeline</code> remains canonical. MSP SENT rows and FUSE HANDS DNR rows cite <code>EXISTING_CRM_RECORD</code> / <code>airtable:rec…</code> and stay HARD_DO_NOT_RESEND — not hot, not draft-now. Halo AI is BOUNCED DNR (never resend). City of Billings Bid 1421 is OWNER_HOLD / DNR_OUTREACH / NOT_HOT: live owner path in <code>#billings-1421-compliance</code>, not hot, not a dead NO_BID, agents do not send or contact Cheri. #leads HOLD / BUILD-AND-VERIFY posts are org + person + Slack ts only and are not hot. Verified unsent leads stay in hot at rank 3. Emails and phones stay off the INDEX. The ~1000 marketing-sales GitHub entities stay research, not live sales. <code>--send</code> exits 3.</p>
+  <p>Airtable <code>JOJO Revenue Recovery CRM / Revenue Pipeline</code> remains canonical. MSP SENT rows and FUSE HANDS DNR rows cite <code>EXISTING_CRM_RECORD</code> / <code>airtable:rec…</code> and stay HARD_DO_NOT_RESEND — not hot, not draft-now. Halo AI is BOUNCED DNR (never resend). City of Billings Bid 1421 is OWNER_HOLD / DNR_OUTREACH / NOT_HOT: live owner path in <code>#billings-1421-compliance</code>, not hot, not a dead NO_BID, agents do not resend or contact Cheri. #leads HOLD / BUILD-AND-VERIFY posts are org + person + Slack ts only and are not hot. Verified unsent leads stay in hot at rank 3. Emails and phones stay off the INDEX. The ~1000 marketing-sales GitHub entities stay research, not live sales. <code>--send</code> exits 3.</p>
 </section>
 <section class="panel" aria-labelledby="handoff-heading">
   <h2 id="handoff-heading">Relationship handoff (CRM6)</h2>
-  <p class="note">Successor peers continue a relationship from evidence, not from an invented summary. Fields are SOURCED with pointers or ABSENT. A typed <code>SENT_AWAITING_REPLY</code> event is surfaced as <code>sent_communication</code>, not as commitment content. <code>promised</code> remains ABSENT until separately verified commitment content exists. Overlay prose stays <code>SUMMARY_POINTER</code> even when it cites Gmail or Slack; source pointers remain inspectable without pretending the linked message was fetched or quoted. Event ordering is timezone-aware. Not a compulsory script. Billings stays OWNER_HOLD — agents do not contact Cheri.</p>
+  <p class="note">Successor peers continue a relationship from source-linked evidence, not from an invented summary. Fields are SOURCED with pointers or ABSENT. A typed <code>SENT_AWAITING_REPLY</code> record is surfaced as <code>sent_communication</code>, not commitment content. <code>promised</code> remains ABSENT until separately verified commitment content exists. Pointer prose stays <code>SUMMARY_POINTER</code> even when it cites Gmail or Slack. Event ordering is timezone-aware.</p>
+  <p class="note"><code>relationship_handoff_evidence.jsonl</code> is a validated, source-pointer-only handoff supplement. It does not rewrite the canonical INDEX overlay, does not copy private message bodies or addresses, and is explicitly reported as <code>canonical_index_mutated: false</code>.</p>
+  <p><strong>Billings current handoff:</strong> the main proposal and separate confidential-pricing package are <code>SUBMISSION_SENT</code>. Recipient acknowledgement, acceptance, award, and payment are not established. The lane remains OWNER_HOLD / DNR_OUTREACH / NOT_HOT; do not resend or contact Cheri. Wait for acknowledgement or a buyer reply. The next source-linked target is 2026-09-28, not the expired submission deadline.</p>
   <pre>python3 host/lm_gtm_relationship_handoff.py SUBJECT
 python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
 python3 -m unittest -v test_lm_gtm_relationship_handoff.py
@@ -94,7 +96,7 @@ python3 host/lm_gtm_index.py append-event --subject composio --id yourname-gtm-n
 python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421</pre>
 </section>
 <noscript>
-  <p class="panel">JavaScript is off. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> and <a href="./revenue/lm_gtm_index/state.json">state.json</a>. Run <code>brief</code> for compact HOT, <code>sent</code> for HARD_DO_NOT_RESEND, and <code>hold</code> for HOLD/BUILD-AND-VERIFY. Cash USD 0. Not a CRM.</p>
+  <p class="panel">JavaScript is off. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a>, <a href="./revenue/lm_gtm_index/state.json">state.json</a>, and the separate <a href="./revenue/lm_gtm_index/relationship_handoff_evidence.jsonl">CRM6 handoff evidence</a>. Run <code>brief</code> for compact HOT, <code>sent</code> for HARD_DO_NOT_RESEND, and <code>hold</code> for HOLD/BUILD-AND-VERIFY. Cash USD 0. Not a CRM.</p>
 </noscript>
 <script src="./lm-gtm-index.js?v=20260901a"></script>
 </body>
