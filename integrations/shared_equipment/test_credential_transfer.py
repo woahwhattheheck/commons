@@ -1,4 +1,4 @@
-"""Real encryption/transport contracts; all credential fixtures are synthetic."""
+"""Real encryption/transport contracts; dedicated CI installs the optional crypto dependency."""
 import io
 import json
 import subprocess

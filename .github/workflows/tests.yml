@@ -243,10 +243,6 @@ jobs:
           # lookups into FOREIGN/NOT_LANDED false negatives.
           fetch-depth: 0
 
-      - name: install credential transfer cryptography
-        run: |
-          python3 -m pip install --disable-pip-version-check --no-cache-dir --only-binary=:all: -r integrations/shared_equipment/requirements-credential-transfer.txt
-
       - name: the whole battery, one failure fails the run
         run: |
           set -u

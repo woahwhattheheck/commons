@@ -255,9 +255,11 @@ an already equipped Python runtime or `COMMONS_CREDENTIAL_CRYPTO_PATH` pointing
 to its existing site-packages. On the owner PC the adapter discovers the existing
 Codex bundled package directory only if the normal runtime lacks cryptography.
 No installation occurs on the owner PC. Cloud installation uses
-`requirements-credential-transfer.txt`; hosted CI installs it before the battery.
+`requirements-credential-transfer.txt`; the dedicated credential-transfer CI job
+installs it before running the transfer, equipment, manifest, newcomer, and
+gateway suites. The existing general battery remains unchanged.
 
-`test_shared_credential_transfer.py` exercises actual cryptography and the real
+`integrations/shared_equipment/test_credential_transfer.py` exercises actual cryptography and the real
 HTTP handler, Slack carrier, tool loop, SQLite journal, and event writer with
 synthetic sources: unpatterned-secret nonleak, wrong-key/tamper/context failures,
 repeat/conflicting IDs, rotation, loader/timeout errors, missing crypto before
