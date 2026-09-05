@@ -134,7 +134,6 @@ def _normalize_access_route(item: Any) -> dict[str, Any]:
         "store",
         "service_tag",
         "note",
-        "base",
         *GROKBOT_CONTROL_ROUTE_FIELDS,
     ):
         if item.get(field):
@@ -255,16 +254,17 @@ class RoleStore:
         return sorted(p.stem for p in self.root.glob("*.json"))
 
     def list_open_obligations(self) -> list[dict[str, Any]]:
-        """Open obligations across all roles, sorted by (role_id, obligation_id).
+        """Scan all roles; return open obligations as flat dicts.
 
-        Each row includes role_id, purpose, obligation_id, summary, next_action;
-        optional label, evidence_pointer, and synthetic when present.
+        Each row: role_id, purpose, obligation_id, summary, next_action;
+        optional label, evidence_pointer, synthetic. Sorted by role_id,
+        then obligation_id.
         """
         rows: list[dict[str, Any]] = []
         for role_id in self.list_ids():
             role = self.get(role_id)
             for ob in role.get("obligations") or []:
-                if ob.get("status") != "open":
+                if str(ob.get("status") or "open").strip() != "open":
                     continue
                 row: dict[str, Any] = {
                     "role_id": role["role_id"],
