@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-agent-failure-autopsy-20260905",
   "label": "Agent Failure Autopsy fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889). After #8901/#8925 also point at INTAKE.md + SEATS.md (point only).",
+  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889). After #8901/#8925 also point at INTAKE.md + SEATS.md (point only). After tip-shelf land also point at commerce.html (point only; do not remint tip-shelf).",
   "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -21,6 +21,10 @@
     {
       "pointer": "agent-rescue.html",
       "label": "public $29 Autopsy page + live checkout"
+    },
+    {
+      "pointer": "commerce.html",
+      "label": "tip-shelf $29 Autopsy door (#tip-shelf / #sku-agent-failure-autopsy) — point only; live checkout stays on agent-rescue.html; do not remint tip-shelf"
     },
     {
       "pointer": "revenue/agent_failure_autopsy/README.md",
@@ -138,7 +142,7 @@
       "kind": "public_html",
       "store": "payment-capability.html",
       "base_url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
-      "note": "Public Payment Link only — no secret IDs. UTM-safe CTA on agent-rescue.html; #8811 spine LANDED (c8e40bc). Also pay.html / payment-capability.html."
+      "note": "Public Payment Link only — no secret IDs. UTM-safe CTA on agent-rescue.html; tip-shelf door on commerce.html (#tip-shelf / #sku-agent-failure-autopsy) — point only, do not remint tip-shelf. #8811 spine LANDED (c8e40bc). Also pay.html / payment-capability.html."
     }
   ],
   "credential_custodian": "existing_secure_stores",
