@@ -21,7 +21,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -84,7 +84,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -147,7 +147,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -210,7 +210,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -273,7 +273,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -336,7 +336,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -399,7 +399,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -462,7 +462,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -525,7 +525,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -588,7 +588,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -651,7 +651,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -714,7 +714,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -777,7 +777,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -840,7 +840,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -903,7 +903,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -966,7 +966,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1029,7 +1029,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1092,7 +1092,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1155,7 +1155,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1218,7 +1218,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1281,7 +1281,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1344,7 +1344,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1407,7 +1407,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1470,7 +1470,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1533,7 +1533,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1596,7 +1596,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1659,7 +1659,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1722,7 +1722,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1785,7 +1785,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1848,7 +1848,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1911,7 +1911,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -1974,7 +1974,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2037,7 +2037,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2100,7 +2100,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2163,7 +2163,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2226,7 +2226,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2289,7 +2289,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2352,7 +2352,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2415,7 +2415,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2478,7 +2478,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2541,7 +2541,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2604,7 +2604,7 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2667,7 +2667,7 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2730,7 +2730,7 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2793,7 +2793,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2856,7 +2856,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2919,7 +2919,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -2982,7 +2982,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3045,7 +3045,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3108,7 +3108,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3171,7 +3171,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3234,7 +3234,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3297,7 +3297,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3360,7 +3360,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3423,7 +3423,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3486,7 +3486,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3549,7 +3549,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3612,7 +3612,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3675,7 +3675,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3738,7 +3738,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3801,7 +3801,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3864,7 +3864,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3927,7 +3927,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -3990,7 +3990,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4053,7 +4053,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4116,7 +4116,7 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4179,7 +4179,7 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4242,7 +4242,7 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4305,7 +4305,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4368,7 +4368,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4431,7 +4431,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4494,7 +4494,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4557,7 +4557,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4620,7 +4620,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4683,7 +4683,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4746,7 +4746,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4809,7 +4809,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4872,7 +4872,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4935,7 +4935,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -4998,7 +4998,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5061,7 +5061,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5124,7 +5124,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5187,7 +5187,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5250,7 +5250,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5313,7 +5313,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5376,7 +5376,7 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5439,7 +5439,7 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5502,7 +5502,7 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5546,6 +5546,258 @@
       "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
     },
     {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Agent Failure Autopsy — Commons listing asset (not a live external listing)\n\nOffer / SKU: agent-failure-autopsy-29\nOutcome: Agent Failure Autopsy.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 29.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"de97034ba63b83e6de17441b91a8d118b31510654be9951bfba9c47fe53d798c",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"ACTIVE_CHARGEABLE",
+      "copy":"Agent Failure Autopsy — Commons listing asset (not a live external listing)\n\nOffer / SKU: agent-failure-autopsy-29\nOutcome: Agent Failure Autopsy.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 29.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: ACTIVE_CHARGEABLE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"8b11cec1c961adf73f70e3ccfe4ba04b1a279bbc5139db804252c9d7ba3bc73b",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+    },
+    {
+      "account_status":"NONE_IN_THIS_SESSION",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Show HN DRAFT — NOT POSTED\n\nPremise: zero visitors. Failure-first. Link the static ladder and exact receipts.\nOffer: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win.\nCanonical: https://woahwhattheheck.github.io/commons/agent-rescue.html\nDo not invent traffic, comments, or buyers.\nDo not post this draft from this leftover.\n\nHonesty: posted=false. buyers=0. cash=0.00.",
+      "copy_sha256":"e7f3ad4690c16fcdca3714a5afc1464fc5bfb5776f1b77505b1475a29eb86f89",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://news.ycombinator.com/showhn.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"show-hn-post"
+          },
+          {
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__show-hn-post",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
+      "next_action":"Draft a failure-first Show HN from measured receipts. Zero visitors is the premise. Do not post from this leftover. Do not invent traffic.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":null,
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"show-hn-post",
+      "surface_name":"Show HN",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Agent Failure Autopsy — Commons listing asset (not a live external listing)\n\nOffer / SKU: agent-failure-autopsy-29\nOutcome: Agent Failure Autopsy.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 29.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"708ff141e67aa4f50410f19062444743990a61d58533ca4dfbf4fe2a39d2ceb4",
+      "evidence_packet":{
+        "offer_id":"agent-failure-autopsy-29",
+        "refs":[
+          {
+            "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+            "kind":"canonical_source",
+            "path":"revenue/agent_failure_autopsy/offer.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"agent-failure-autopsy-29"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"agent-failure-autopsy-29__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+    },
+    {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_A_PRICED_SKU",
       "copy":"GitHub Marketplace-style listing DRAFT — NOT SUBMITTED, NOT PUBLISHED\n\nName: Commons Board MCP\nCategory: Developer tools / Agent tooling\nPricing: Free public door. Not a paid GitHub Marketplace app. Not a SKU.\nShort description: Public Commons board reads, posting, and receipts. Offer discovery is the public catalog, not a hidden tool.\n\nVerified posting tools: append_post, post_to_action_pad, fire_action, open_commons_composer\nVerified board-read tools: read_post, read_recent, measure_roads, verify_receipt, verify_durability\nOffer discovery: public commerce.html + revenue/outcome_commerce/catalog.json. Not an MCP tool name.\n\nCanonical: https://woahwhattheheck.github.io/commons/commons_mcp_app.html\nInventory: ground/MCP_INVENTORY.json\nContact: tokenjunkielabs@gmail.com\n\nHonesty: submit_allowed=false. published=false. live_url=null. buyers=0. cash=0.00.\nDo not create a GitHub Marketplace account from this leftover.\nDo not submit this draft. Do not claim publication.",
@@ -5575,7 +5827,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5648,7 +5900,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5721,7 +5973,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5794,7 +6046,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5867,7 +6119,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -5940,7 +6192,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6013,7 +6265,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6086,7 +6338,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6159,7 +6411,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6232,7 +6484,7 @@
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"5fe8c40716c898cc2a71f65f6c927fd1a0359e75",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
@@ -6276,7 +6528,7 @@
       "url":"https://woahwhattheheck.github.io/commons/commons_mcp_app.html"
     }
   ],
-  "count":98,
+  "count":102,
   "kind":"COMMONS_LISTING_ASSETS",
   "schema_version":"listing-registry/v1",
   "submit_allowed":false,

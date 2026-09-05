@@ -1,6 +1,6 @@
 {
   "as_of":"2026-08-28T16:10:00Z",
-  "count":103,
+  "count":107,
   "kind":"CHANNEL_READY_PACKAGES",
   "packages":[
     {
@@ -5745,8 +5745,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5813,8 +5812,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5881,8 +5879,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -5949,8 +5946,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":"Stripe rail is not proven chargeable and payout-capable on the catalog.",
@@ -6017,8 +6013,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6085,8 +6080,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6153,8 +6147,7 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package.",
-        "Stripe checkout is unverified; recorded URLs are provenance only."
+        "Do not invent customers, interest, approvals, or cash from this package."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6221,7 +6214,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6288,7 +6282,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6355,7 +6350,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6422,7 +6418,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6489,7 +6486,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6556,7 +6554,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6623,7 +6622,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6690,7 +6690,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6757,7 +6758,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6824,7 +6826,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6891,7 +6894,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6958,7 +6962,8 @@
       "exclusions":[
         "This package is not a live listing.",
         "This layer does not submit through any account.",
-        "Do not invent customers, interest, approvals, or cash from this package."
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Stripe checkout is unverified; recorded URLs are provenance only."
       ],
       "honesty":{
         "blocked_reason":null,
@@ -6992,6 +6997,278 @@
       "submit_allowed":false,
       "submitted":false,
       "title":"Repair Booking Exactly-Once Diagnostic"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"commons-pages__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"tokenjunkielabs-slack__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"founder-email__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
+    },
+    {
+      "blocked_reason":null,
+      "channel_copy":"Agent Failure Autopsy — Commons channel package (not a live listing)\n\nOutcome: Agent Failure Autopsy.\nPrice: USD 29.00. Source terms win; this package does not rewrite them.\nOffer id: agent-failure-autopsy-29.\nChannel: Stripe Payment Links (recorded_rail).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/agent_failure_autopsy/offer.json (blob f61bb20aa54bec123ec37c8022b1517bde6294aa).\n\nHonesty: not a live listing. Channel=Stripe Payment Links. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "conversion":{
+        "contact":"tokenjunkielabs@gmail.com",
+        "human":"agent-rescue.html",
+        "intake":"OFFER",
+        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+      },
+      "evidence":[
+        {
+          "blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+          "kind":"canonical_source",
+          "path":"revenue/agent_failure_autopsy/offer.json"
+        },
+        {
+          "kind":"conversion_surface",
+          "path":"agent-rescue.html",
+          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        },
+        {
+          "kind":"distribution_door",
+          "path":"distribution.html",
+          "url":"https://woahwhattheheck.github.io/commons/distribution.html"
+        }
+      ],
+      "exclusions":[
+        "This package is not a live listing.",
+        "This layer does not submit through any account.",
+        "Do not invent customers, interest, approvals, or cash from this package.",
+        "Public Commons pages expose this rail only after catalog evidence. A click is intent, not cash. This layer still does not list it on a marketplace."
+      ],
+      "honesty":{
+        "blocked_reason":null,
+        "customers":0,
+        "leads":0,
+        "listed":false,
+        "live_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"stripe-payment-links__agent-failure-autopsy-29",
+      "kind":"CHANNEL_READY_PACKAGE",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "package_state":"PACKAGE_READY",
+      "price":{
+        "amount":"29.00",
+        "basis":"one failed execution of one agent workflow",
+        "currency":"USD"
+      },
+      "scope":[
+        "Sellable outcome: Agent Failure Autopsy.",
+        "Price basis: one failed execution of one agent workflow.",
+        "Canonical terms stay on revenue/agent_failure_autopsy/offer.json.",
+        "Verified outcome evidence is required before any chargeable state.",
+        "Acceptance contract: revenue/agent_failure_autopsy/offer.json#/delivery."
+      ],
+      "submit_allowed":false,
+      "submitted":false,
+      "title":"Agent Failure Autopsy"
     }
   ],
   "schema_version":"distribution/v1"

@@ -4,8 +4,8 @@
   "channel_count":15,
   "channels":"revenue/distribution/channels.json",
   "kind":"DISTRIBUTION_MATRIX",
-  "offer_count":20,
-  "pair_count":300,
+  "offer_count":21,
+  "pair_count":315,
   "pairs":[
     {
       "amount":"15000.00",
@@ -2648,7 +2648,9 @@
       "offer_name":"Tip",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
-      "reasons":[],
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
       "source_blob_sha":"7e94f42e9a92e166f614916d63712403f6fc77f7",
       "source_path":"land/sku-tip-20260826.md",
       "submit_allowed":false
@@ -2985,7 +2987,9 @@
       "offer_name":"Seat",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
-      "reasons":[],
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
       "source_blob_sha":"235c94284c14c179388b5e53b4b9d0f6a8a0dd7d",
       "source_path":"land/sku-seat-20260826.md",
       "submit_allowed":false
@@ -3322,7 +3326,9 @@
       "offer_name":"Unlock",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
-      "reasons":[],
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
       "source_blob_sha":"258734957efc727f46f6315804b6034487e98896",
       "source_path":"land/sku-unlock-20260826.md",
       "submit_allowed":false
@@ -3659,7 +3665,9 @@
       "offer_name":"Monthly tip",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
-      "reasons":[],
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
       "source_blob_sha":"b2c54753a82683a70831588366e35114ad644a65",
       "source_path":"land/sku-monthly-tip-20260826.md",
       "submit_allowed":false
@@ -3996,7 +4004,9 @@
       "offer_name":"Boost",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
-      "reasons":[],
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
       "source_blob_sha":"4fd23e7a10e90a5c988f3581d77e83b86e212884",
       "source_path":"land/sku-boost-20260826.md",
       "submit_allowed":false
@@ -4333,7 +4343,9 @@
       "offer_name":"White Box hour",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
-      "reasons":[],
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
       "source_blob_sha":"62625136a9e5abfe77d9e7afa59e8ee67571b33e",
       "source_path":"land/sku-whitebox-hour-20260826.md",
       "submit_allowed":false
@@ -4664,7 +4676,9 @@
       "offer_name":"Muhlnickel / Titan",
       "offer_state":"PUBLIC_OFFER",
       "package_state":"PACKAGE_READY",
-      "reasons":[],
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
       "source_blob_sha":"fa4ef433b0b233bb3ddc633c1828957e5d75e453",
       "source_path":"land/sku-muhlnickel-titan-20260826.md",
       "submit_allowed":false
@@ -6699,6 +6713,345 @@
       ],
       "source_blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
       "source_path":"revenue/repair_booking_preflight/contract.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"public_marketplace",
+      "channel_id":"upwork-project-catalog",
+      "channel_name":"Upwork Project Catalog",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"upwork-project-catalog__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "amount 29.00 is outside channel window"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"public_marketplace",
+      "channel_id":"upwork-job-feed",
+      "channel_name":"Upwork job feed",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"upwork-job-feed__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "amount 29.00 is outside channel window"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"public_marketplace",
+      "channel_id":"contra-services",
+      "channel_name":"Contra Services",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"contra-services__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "amount 29.00 is outside channel window"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"public_marketplace",
+      "channel_id":"fiverr-gig",
+      "channel_name":"Fiverr Gig",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"fiverr-gig__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "amount 29.00 is outside channel window"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"commons_surface",
+      "channel_id":"commons-pages",
+      "channel_name":"Commons public pages",
+      "currency":"USD",
+      "fit":"FIT",
+      "human_route":"agent-rescue.html",
+      "id":"commons-pages__agent-failure-autopsy-29",
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"PACKAGE_READY",
+      "reasons":[],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"partner",
+      "channel_id":"tokenjunkielabs-slack",
+      "channel_name":"TokenJunkieLabs Slack #commons",
+      "currency":"USD",
+      "fit":"FIT",
+      "human_route":"agent-rescue.html",
+      "id":"tokenjunkielabs-slack__agent-failure-autopsy-29",
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"PACKAGE_READY",
+      "reasons":[],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"partner",
+      "channel_id":"founder-email",
+      "channel_name":"Founder-sent email",
+      "currency":"USD",
+      "fit":"FIT",
+      "human_route":"agent-rescue.html",
+      "id":"founder-email__agent-failure-autopsy-29",
+      "listing_state":"SURFACE_LIVE",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"PACKAGE_READY",
+      "reasons":[],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"procurement",
+      "channel_id":"sam-gov-procurement",
+      "channel_name":"SAM.gov",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"sam-gov-procurement__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "class bounded_service is outside high_ticket_service,high_ticket_product,expertise_hour"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"procurement",
+      "channel_id":"gsa-schedule",
+      "channel_name":"GSA Schedule",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"gsa-schedule__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "class bounded_service is outside high_ticket_service,high_ticket_product"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"procurement",
+      "channel_id":"public-rfp-pack",
+      "channel_name":"Public RFP response pack",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"public-rfp-pack__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "amount 29.00 is outside channel window"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"developer_ecosystem",
+      "channel_id":"github-marketplace",
+      "channel_name":"GitHub Marketplace",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"github-marketplace__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "class bounded_service is outside developer_product"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"developer_ecosystem",
+      "channel_id":"mcp-public-registry",
+      "channel_name":"Public MCP registry",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"mcp-public-registry__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "class bounded_service is outside developer_product"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"developer_ecosystem",
+      "channel_id":"npm-public-registry",
+      "channel_name":"npm public registry",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"npm-public-registry__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "class bounded_service is outside developer_product"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"developer_ecosystem",
+      "channel_id":"huggingface-hub",
+      "channel_name":"Hugging Face Hub",
+      "currency":"USD",
+      "fit":"UNFIT",
+      "human_route":"agent-rescue.html",
+      "id":"huggingface-hub__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"UNFIT",
+      "reasons":[
+        "class bounded_service is outside data_pack,developer_product"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
+      "submit_allowed":false
+    },
+    {
+      "amount":"29.00",
+      "blocked_reason":null,
+      "channel_family":"recorded_rail",
+      "channel_id":"stripe-payment-links",
+      "channel_name":"Stripe Payment Links",
+      "currency":"USD",
+      "fit":"FIT",
+      "human_route":"agent-rescue.html",
+      "id":"stripe-payment-links__agent-failure-autopsy-29",
+      "listing_state":"NOT_LISTED",
+      "offer_class":"bounded_service",
+      "offer_id":"agent-failure-autopsy-29",
+      "offer_name":"Agent Failure Autopsy",
+      "offer_state":"PUBLIC_OFFER",
+      "package_state":"PACKAGE_READY",
+      "reasons":[
+        "exact active Stripe checkout is proven on the catalog"
+      ],
+      "source_blob_sha":"f61bb20aa54bec123ec37c8022b1517bde6294aa",
+      "source_path":"revenue/agent_failure_autopsy/offer.json",
       "submit_allowed":false
     }
   ],
