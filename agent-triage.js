@@ -121,7 +121,7 @@
       "",
       "## Sentence",
       "",
-      "My agent should **" + (known.expected_outcome || "[outcome]") + "**, but in production it **" + (known.observed_failure || "[failure]") + ".",
+      "My agent should **" + (known.expected_outcome || "[outcome]") + "**, but in production it **" + (known.observed_failure || "[failure]") + "**.",
       "",
       "## Preliminary classification",
       "",
