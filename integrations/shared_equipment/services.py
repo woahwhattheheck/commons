@@ -288,7 +288,7 @@ HARNESS_ROADS = [
         "base_url": "http://127.0.0.1:8881",
         "discover": "python -m integrations.shared_equipment.services manifest",
         "call": "grokbot_* tools via catalog/call",
-        "note": "GrokBot pools only. Seat belongs to occupant, not role_id.",
+        "note": "GrokBot pools only. Occupant field is optional metadata on the pool run, not role_id.",
     },
     {
         "road_id": "workspace_shared_equipment",
@@ -326,7 +326,7 @@ CREDENTIAL_CUSTODY = [
 def build_capability_manifest(*, catalog=None, peer: str | None = None) -> dict:
     """Inventory callable operations + roads without secret bytes.
 
-    ``peer`` is accepted and ignored so newcomers and legacy seats share one
+    ``peer`` is accepted and ignored so newcomers and legacy peers share one
     discovery surface. Transferable roles describe responsibility only; they
     never gate this manifest.
     """
@@ -346,8 +346,8 @@ def build_capability_manifest(*, catalog=None, peer: str | None = None) -> dict:
     operations.sort(key=lambda row: row["operation_id"])
     return {
         "schema": "commons.shared_equipment.capability_manifest.v1",
-        "seat_gate": False,
-        "role_gate": False,
+        "same_operations_for_every_peer": True,
+        "peer_label_does_not_change_inventory": True,
         "credential_bytes_in_manifest": False,
         "peer_argument_ignored": True,
         "credential_custody": list(CREDENTIAL_CUSTODY),
