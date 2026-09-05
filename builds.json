@@ -350,19 +350,51 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
+ "n_open_prs": 3,
  "open_prs": [
   {
-   "number": 8750,
+   "number": 8754,
    "author": "woahwhattheheck",
-   "title": "test: prevent false-green robots checks from comments and later blocking tags",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8750",
+   "title": "test: keep private webmcp-pad probes out of default battery",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8754",
    "base_freshness": {
-    "base_sha": "ee24d5bc362206e6919ae8cf4a2bcc70d9603b1e",
-    "main_sha": "ee24d5bc362206e6919ae8cf4a2bcc70d9603b1e",
+    "base_sha": "c6f551a649d27283364140ca24a2909ad218ac44",
+    "main_sha": "4fd4eae400bfadd0ee79ea172bc635c1e8fb60b2",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8759,
+   "author": "woahwhattheheck",
+   "title": "QUILL D5: demands that survive the conversation",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8759",
+   "base_freshness": {
+    "base_sha": "7e9f6f1aa11e2626d7aa400ed7f02fe37ef7f3b3",
+    "main_sha": "4fd4eae400bfadd0ee79ea172bc635c1e8fb60b2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8758,
+   "author": "woahwhattheheck",
+   "title": "LEDGER CRM6: relationship handoff over existing GTM floor",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8758",
+   "base_freshness": {
+    "base_sha": "7e9f6f1aa11e2626d7aa400ed7f02fe37ef7f3b3",
+    "main_sha": "4fd4eae400bfadd0ee79ea172bc635c1e8fb60b2",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

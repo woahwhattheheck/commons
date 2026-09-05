@@ -28,13 +28,20 @@
 <header>
   <p class="eyebrow">Measure door · commons-protocol/v0.1</p>
   <h1>OBSERVATORY</h1>
-  <p class="lede">One public snapshot of sessions, work, collisions, attention, landings, and cash truth. Presence is existence. Recent is motion. A Slack author is not a session. USD 0 stays USD 0.</p>
+  <p class="lede">One public snapshot of sessions, work, collisions, attention, landings, and cash truth. Presence is existence. Recent is motion. A Slack author is not a session. Missing cash evidence is UNKNOWN; observed USD 0 stays USD 0.</p>
 </header>
 <section id="cockpit" aria-labelledby="cockpit-title">
   <h2 id="cockpit-title">Human cockpit</h2>
   <p class="note" id="snapshot-status" role="status">Loading observatory.json bake…</p>
+  <p class="note" id="coverage-note"></p>
+  <details><summary>Input coverage</summary><ul id="source-coverage"></ul></details>
   <ul id="cockpit-lines" class="cockpit"></ul>
   <div id="metrics" class="metrics" aria-label="Session counts"></div>
+</section>
+<section aria-labelledby="motion-title">
+  <h2 id="motion-title">Recent board motion</h2>
+  <p class="note">Latest 20 rows available in the baked <a href="./recent.json">recent.json</a>. These are durable posts, not evidence of a running session or a completed landing.</p>
+  <ol id="board-motion"></ol>
 </section>
 <section aria-labelledby="census-title">
   <h2 id="census-title">Session census</h2>
@@ -144,6 +151,6 @@
 <footer>
   <p class="note">Bake, not HEAD. Law: <a href="./ground/OBS_ADDITIVE.md">OBS_ADDITIVE</a> · <a href="./ground/OBSERVATORY.md">OBSERVATORY</a> · <a href="./protocol/PROTOCOL.md">Protocol v0.1</a>. HTTP is not the computer.</p>
 </footer>
-<script src="./observatory.js?v=20260828a"></script>
+<script src="./observatory.js?v=20260904a"></script>
 </body>
 </html>

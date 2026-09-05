@@ -21,6 +21,24 @@ from protocol.projector import project
 SNAPSHOT_REL = "observatory.json"
 
 
+def freshness(snap: dict[str, Any], now: str | None = None) -> dict[str, Any]:
+    """Read-time age is separate from the immutable bake and its digest."""
+    checked = now or _now()
+    age = None
+    try:
+        observed = datetime.fromisoformat(str(snap.get("now")).replace("Z", "+00:00"))
+        current = datetime.fromisoformat(checked.replace("Z", "+00:00"))
+        age = (current - observed).total_seconds()
+    except (TypeError, ValueError):
+        pass
+    threshold = snap.get("stale_after_seconds")
+    valid = isinstance(threshold, (int, float)) and not isinstance(threshold, bool) and threshold >= 0
+    state = "UNKNOWN" if age is None or age < 0 or not valid else ("STALE" if age > threshold else "FRESH")
+    return {"state": state, "snapshot_at": snap.get("now"), "checked_at": checked,
+            "age_seconds": age, "stale_after_seconds": threshold,
+            "scope": "snapshot age, not proof that all fleet activity was ingested"}
+
+
 def _paginate(items: list, arguments: dict[str, Any], *, field: str) -> tuple[list, dict[str, Any]]:
     """Deterministic offset/limit pagination. Unknown values become 0."""
     if not isinstance(items, list):
@@ -113,6 +131,17 @@ def load_legacy(root: str | None = None) -> dict[str, Any]:
     if isinstance(events, list):
         incoming.extend(events)
     incoming.extend(jsonl_events)
+    coverage = []
+    for rel, expected in (("presence.json", list), ("lastseen.json", list),
+                          ("pulse.json", dict), ("recent.json", list),
+                          ("claims.json", dict), ("revenue/payment_ready/recovery.json", dict),
+                          ("protocol/fixtures/live_events.json", list)):
+        path = os.path.join(root, rel)
+        value = _read_json(path, None)
+        state = "MISSING" if not os.path.isfile(path) else ("OBSERVED" if isinstance(value, expected) else "MALFORMED")
+        coverage.append({"source": rel, "state": state})
+    for rel in ("wake_jobs", "artifacts/grok-captures", "protocol/events.jsonl"):
+        coverage.append({"source": rel, "state": "OBSERVED" if os.path.exists(os.path.join(root, rel)) else "MISSING"})
     return {
         "presence": _read_json(os.path.join(root, "presence.json"), []),
         "lastseen": _read_json(os.path.join(root, "lastseen.json"), []),
@@ -123,6 +152,7 @@ def load_legacy(root: str | None = None) -> dict[str, Any]:
         "jobs": jobs,
         "grok_captures": captures,
         "protocol_events": incoming,
+        "source_coverage": coverage,
     }
 
 
@@ -160,6 +190,13 @@ def read_observatory(root: str | None = None, arguments: dict[str, Any] | None =
             snap = snapshot(root)
     else:
         snap = snapshot(root)
+    return select_snapshot(snap, arguments, source=SNAPSHOT_REL if os.path.isfile(path) else "host.observatory.snapshot")
+
+
+def select_snapshot(snap: dict[str, Any], arguments: dict[str, Any] | None = None, *,
+                    source: str = SNAPSHOT_REL, now: str | None = None) -> dict[str, Any]:
+    """Select the same canonical bake for filesystem and SHA-pinned MCP readers."""
+    arguments = arguments if isinstance(arguments, dict) else {}
     view = str(arguments.get("view") or "snapshot").strip().lower()
     views = {
         "snapshot": snap,
@@ -194,8 +231,11 @@ def read_observatory(root: str | None = None, arguments: dict[str, Any] | None =
     body["view"] = view if view in views else "snapshot"
     body["open_door"] = snap.get("open_door")
     body["pagination"] = pagination
+    body["freshness"] = freshness(snap, now)
+    body["source_coverage"] = snap.get("source_coverage") or []
+    body["coverage_note"] = snap.get("coverage_note") or "Source coverage was not recorded by this bake."
     body["provenance"] = {
-        "source": SNAPSHOT_REL if os.path.isfile(path) else "host.observatory.snapshot",
+        "source": source,
         "grade": "OBSERVED",
         "digest": snap.get("digest"),
     }
