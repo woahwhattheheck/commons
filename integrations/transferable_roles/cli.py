@@ -104,11 +104,11 @@ def build_parser() -> argparse.ArgumentParser:
     x = sub.add_parser("export", help="export portable package (no secrets)")
     x.add_argument("role_id")
 
-    m = sub.add_parser(
+    imp = sub.add_parser(
         "import",
         help="import export_package JSON without reminting role_id",
     )
-    m.add_argument("--file", type=Path, required=True, help="JSON package path")
+    imp.add_argument("--file", type=Path, required=True, help="JSON package path")
 
     sub.add_parser("list", help="list role ids in the store")
     return p
