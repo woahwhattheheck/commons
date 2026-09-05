@@ -131,14 +131,14 @@ class TestClientReferenceRoundTrip(unittest.TestCase):
 
     def test_duplicate_campaign_parameter_does_not_stamp_cref(self):
         html = AGENT_RESCUE.read_text(encoding="utf-8")
-        href = re.search(r'href="(https://buy\\.stripe\\.com/[^"]+)"', html).group(1)
+        href = re.search(r'href="(https://buy\.stripe\.com/[^"]+)"', html).group(1)
         query = list(X_UTM.items()) + [("utm_source", "x")]
         attributed = _apply_checkout_attribution(href, query)
         self.assertNotIn("client_reference_id", parse_qs(urlparse(attributed).query))
 
     def test_g2_case_round_trip_preserves_cref(self):
         html = AGENT_RESCUE.read_text(encoding="utf-8")
-        href = re.search(r'href="(https://buy\\.stripe\\.com/[^"]+)"', html).group(1)
+        href = re.search(r'href="(https://buy\.stripe\.com/[^"]+)"', html).group(1)
         attributed = _apply_checkout_attribution(href, X_UTM)
         source_reference = parse_qs(urlparse(attributed).query)["client_reference_id"][0]
         case = normalize_case(
