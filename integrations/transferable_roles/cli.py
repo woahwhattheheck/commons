@@ -12,6 +12,8 @@ Examples:
   python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-case ROLE --case-ref case_001 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-receipt-row ROLE --case-ref case_001 --g2-run-id run_1 --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py autopsy-fulfill-deadline ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py autopsy-fulfill-validate ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
@@ -24,6 +26,7 @@ import json
 import sys
 from pathlib import Path
 
+from autopsy_fulfill import run_deadline, run_validate
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
 from roles import RoleError, RoleStore
@@ -139,6 +142,23 @@ def build_parser() -> argparse.ArgumentParser:
     ar.add_argument("--g2-session-id")
     ar.add_argument("--payment-observed-at")
     ar.add_argument("--state", default="UNVERIFIED")
+
+    afd = sub.add_parser(
+        "autopsy-fulfill-deadline",
+        help="compute delivery_due_at via landed fulfillment.next_business_day",
+    )
+    afd.add_argument("role_id")
+    afd.add_argument("--usable-evidence-at", required=True)
+
+    afv = sub.add_parser(
+        "autopsy-fulfill-validate",
+        help="validate intake+report via landed fulfillment.validate_bundle "
+        "(defaults to examples/)",
+    )
+    afv.add_argument("role_id")
+    afv.add_argument("--intake", type=Path)
+    afv.add_argument("--report", type=Path)
+    afv.add_argument("--evidence-root", type=Path)
 
     dc = sub.add_parser(
         "diagnostic-contract",
@@ -260,6 +280,23 @@ def main(argv: list[str] | None = None) -> int:
                     g2_session_id=args.g2_session_id,
                     payment_observed_at=args.payment_observed_at,
                     state=args.state,
+                )
+            )
+        elif args.cmd == "autopsy-fulfill-deadline":
+            role = store.get(args.role_id)
+            _print(
+                run_deadline(
+                    role, usable_evidence_at=args.usable_evidence_at
+                )
+            )
+        elif args.cmd == "autopsy-fulfill-validate":
+            role = store.get(args.role_id)
+            _print(
+                run_validate(
+                    role,
+                    intake=args.intake,
+                    report=args.report,
+                    evidence_root=args.evidence_root,
                 )
             )
         elif args.cmd == "diagnostic-contract":
