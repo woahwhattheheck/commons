@@ -5,11 +5,15 @@ Align: `hinge-r4-g2-access-routes-20260904-02` (SPARK G2 #8761)
 CLI seat: `hinge-r4-cli-seat-20260905-01`
 Bind route: `hinge-r4-bind-g2-session-20260905-01` (#8799 → `2ebc660`)
 Release: `hinge-r4-release-occupant-20260905-01`
+Advance: `hinge-r4-obligation-advance-20260905-01`
+Import: `hinge-r4-import-package-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
 occupant; `role_id`, purpose, and open `next_action` values stay put. Secrets
 are never stored in the role — only named routes into existing stores/gateways.
+**Roles confer no credential access** — owner policy keeps tokens in existing
+secure stores; this package only names routes.
 
 ## Entry points
 
@@ -33,8 +37,15 @@ python3 integrations/transferable_roles/cli.py transfer role-synthetic-crm-follo
 python3 integrations/transferable_roles/cli.py release role-synthetic-crm-followup-20260904 \
   --from-session session-B --store /tmp/hinge-roles
 
+python3 integrations/transferable_roles/cli.py advance-obligation role-synthetic-crm-followup-20260904 \
+  --id ob-1 --status done --evidence-pointer p/example.md \
+  --store /tmp/hinge-roles
+
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
+
+python3 integrations/transferable_roles/cli.py import \
+  --file /tmp/role-export.json --store /tmp/hinge-roles-successor
 
 python3 integrations/transferable_roles/test_roles.py
 ```
@@ -49,6 +60,13 @@ onto a named `access_route`. It does **not** copy occupant seat onto the route.
 `release` clears the occupant so a later session can `equip` again. Bound route
 fields and open obligations stay. Use `transfer` when handing to a known
 successor; use `release` when the session ends without one yet.
+
+`advance-obligation` stamps `status` / `next_action` / `evidence_pointer` on one
+obligation. Purpose and siblings stay. Never grants credentials.
+
+`import` adopts an `export` package into an empty store with the same `role_id`
+(no remint, no overwrite). Occupant is cleared so the importer must `equip`.
+Bound route session fields survive.
 
 ## Access route shapes
 
