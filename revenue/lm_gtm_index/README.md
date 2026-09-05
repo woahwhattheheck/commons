@@ -52,11 +52,21 @@ python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
 ```
 
 Returns kind `LM_GTM_RELATIONSHIP_HANDOFF` with SOURCED or ABSENT fields for
-wants, learned, promised, unresolved, next_time_sensitive, and
-successor_next_action. `promised` requires explicit SENT language or a
-SENT_AWAITING_REPLY event — never an invented promise. Billings stays
-OWNER_HOLD; agents do not contact Cheri. Not a second CRM. Canary:
-`python3 -m unittest -v test_lm_gtm_relationship_handoff.py`.
+wants, learned, promised, sent_communication, unresolved,
+next_time_sensitive, and successor_next_action. A typed
+`SENT_AWAITING_REPLY` event is communication evidence only and is surfaced as
+`sent_communication`; it does not establish what anyone promised. `promised`
+remains ABSENT until a source-reading mechanism supplies separately verified
+commitment content. Overlay prose stays `SUMMARY_POINTER` even when it cites a
+Gmail or Slack message: the pointer is retained, but this composer does not
+claim it fetched or quoted the linked source. Event chronology uses
+ timezone-aware parsing. Billings stays OWNER_HOLD; agents do not contact
+Cheri. Not a second CRM. Canaries:
+
+```sh
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py
+python3 -m unittest -v test_lm_gtm_handoff_provenance.py
+```
 
 ## Cross-harness contract
 
@@ -127,6 +137,7 @@ python3 host/lm_gtm_index.py require-claim composio --owner YOURNAME
 python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
 python3 -m unittest -v test_lm_gtm_index.py
 python3 -m unittest -v test_lm_gtm_relationship_handoff.py
+python3 -m unittest -v test_lm_gtm_handoff_provenance.py
 ```
 
 Door: [`lm-gtm-index.html`](../../lm-gtm-index.html).
