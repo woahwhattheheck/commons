@@ -39,6 +39,15 @@ _SECRET_KEY_RE = re.compile(
     re.IGNORECASE,
 )
 
+# G2 grokbot_control route fields (SPARK #8761). Seat is occupant name, not role_id.
+GROKBOT_CONTROL_ROUTE_FIELDS = (
+    "pool_id",
+    "session_id",
+    "last_run_id",
+    "seat",
+    "client",
+)
+
 
 class RoleError(ValueError):
     """Invalid role operation or record."""
@@ -117,6 +126,7 @@ def _normalize_access_route(item: Any) -> dict[str, Any]:
         "store",
         "service_tag",
         "note",
+        *GROKBOT_CONTROL_ROUTE_FIELDS,
     ):
         if item.get(field):
             out[field] = str(item[field]).strip()
@@ -169,6 +179,9 @@ def normalize_role(raw: dict[str, Any], *, role_id: str | None = None) -> dict[s
         if occupant.get("account_pool"):
             # pool name only — never tokens
             occupant["account_pool"] = str(occupant["account_pool"]).strip()
+        if occupant.get("seat"):
+            # G2 seat name for the occupying coordinator — not the role_id
+            occupant["seat"] = str(occupant["seat"]).strip()
 
     role = {
         "schema": ROLE_SCHEMA,
@@ -233,6 +246,7 @@ class RoleStore:
         session_id: str,
         harness: str,
         account_pool: str | None = None,
+        seat: str | None = None,
     ) -> dict[str, Any]:
         role = self.get(role_id)
         if role.get("occupant"):
@@ -247,6 +261,8 @@ class RoleStore:
         }
         if account_pool:
             occupant["account_pool"] = account_pool.strip()
+        if seat:
+            occupant["seat"] = seat.strip()
         role["occupant"] = occupant
         role["updated_at"] = _utc_now()
         self._write(role)
@@ -260,6 +276,7 @@ class RoleStore:
         to_harness: str,
         from_session_id: str | None = None,
         account_pool: str | None = None,
+        seat: str | None = None,
     ) -> dict[str, Any]:
         role = self.get(role_id)
         current = role.get("occupant")
@@ -285,6 +302,11 @@ class RoleStore:
             role["occupant"]["account_pool"] = account_pool.strip()
         elif current.get("account_pool"):
             role["occupant"]["account_pool"] = current["account_pool"]
+        if seat:
+            role["occupant"]["seat"] = seat.strip()
+        elif current.get("seat"):
+            # Seat is occupant identity; successor may keep or replace explicitly.
+            role["occupant"]["prior_seat"] = current["seat"]
         role["transfer_count"] = int(role.get("transfer_count") or 0) + 1
         role["updated_at"] = _utc_now()
         # Invariants: role_id, purpose, obligations/next_action survive.
