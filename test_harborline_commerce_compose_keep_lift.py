@@ -19,7 +19,7 @@ KEEP = {
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "e6ee6d10",
+    "test_commerce_agents_same_loop.py": "f27ee805",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",

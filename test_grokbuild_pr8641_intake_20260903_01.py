@@ -18,7 +18,7 @@ PRIOR = ROOT / "p/grokbuild-local-compute-guard-33718131429-billing-lock-2026090
 
 KEEP = {
     "p/grokbuild-local-compute-guard-33723631022-billing-lock-20260903-01.md": "0a6e7aee",
-    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "3183952f",
+    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "9b890dcc",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grokbuild-local-compute-guard-33718131429-billing-lock-20260903-01.md": "ceb14fe0",
     "local_compute_guard.py": "6be242af",

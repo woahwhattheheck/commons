@@ -19,7 +19,7 @@ import unittest
 ROOT = Path(__file__).resolve().parent
 COMMERCE = ROOT / "revenue" / "outcome_commerce"
 EXAMPLES = COMMERCE / "examples"
-FROZEN_RETAINED_SOURCE_LISTINGS_SHA256 = "2244fc7b521ee42171fd7962cf2ae12eee2991cc4dc1327831ea9e87d41d5d0e"
+FROZEN_RETAINED_SOURCE_LISTINGS_SHA256 = "1530c4ecaf045a16d068df513145f600c724a1f47df70cb764ebfedf7c829072"
 FROZEN_SOURCE_ADAPTERS_SHA256 = "b2593f52e40c6ab4902660a00dce2304f1767ce3a6a5ee2c963d0dd7a3cd4e67"
 RECORDED_STRIPE_SKUS = (
     {
@@ -216,6 +216,26 @@ class SchemaError(AssertionError):
     """A value does not satisfy the local JSON Schema subset."""
 
 
+def _rfc3339_for_isoformat(value: str) -> str:
+    """Python 3.10 fromisoformat accepts at most 6 fractional digits."""
+    text = str(value).replace("Z", "+00:00")
+    if "." not in text:
+        return text
+    head, rest = text.split(".", 1)
+    digits = []
+    tz = rest
+    for i, ch in enumerate(rest):
+        if ch.isdigit():
+            digits.append(ch)
+            continue
+        tz = rest[i:]
+        break
+    else:
+        tz = ""
+    frac = "".join(digits)[:6].ljust(6, "0")
+    return "%s.%s%s" % (head, frac, tz)
+
+
 class MiniSchemaValidator:
     """Validate the draft-2020-12 keywords used by this commerce packet."""
 
@@ -326,7 +346,7 @@ class MiniSchemaValidator:
                 raise SchemaError("%s does not match %s" % (at, schema["pattern"]))
             if schema.get("format") == "date-time":
                 try:
-                    parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+                    parsed = datetime.fromisoformat(_rfc3339_for_isoformat(value))
                 except ValueError as exc:
                     raise SchemaError("%s is not date-time" % at) from exc
                 if parsed.tzinfo is None or parsed.utcoffset() is None:
@@ -1447,7 +1467,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertIn(".provider-inert{", tips)
         self.assertNotIn("LIVE PAYMENT LINKS", tips)
         self.assertNotIn("TYPE owns checkout", tips)
-        self.assertNotIn("live checkout", tips.lower())
+        self.assertNotRegex(tips, stripe_url_pattern)
         self.assertNotIn(">Pay ", tips)
 
         pay = (ROOT / "pay.html").read_text(encoding="utf-8")

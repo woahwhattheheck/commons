@@ -5,15 +5,15 @@
   "packages":[
     {
       "blocked_reason":"No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Upwork Project Catalog (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Upwork Project Catalog. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Upwork Project Catalog (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Upwork Project Catalog. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"public_marketplace",
       "channel_id":"upwork-project-catalog",
       "channel_name":"Upwork Project Catalog",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -23,8 +23,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",
@@ -74,15 +74,15 @@
     },
     {
       "blocked_reason":"No authorized Upwork job feed account in this session. Identity/KYC unmet. Do not submit.",
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Upwork job feed (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Upwork job feed. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Upwork job feed account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Upwork job feed (public_marketplace).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Upwork job feed. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Upwork job feed account in this session. Identity/KYC unmet. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"public_marketplace",
       "channel_id":"upwork-job-feed",
       "channel_name":"Upwork job feed",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -92,8 +92,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",
@@ -143,15 +143,15 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Commons public pages (commons_surface).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Commons public pages. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"commons_surface",
       "channel_id":"commons-pages",
       "channel_name":"Commons public pages",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -161,8 +161,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",
@@ -211,15 +211,15 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: TokenJunkieLabs Slack #commons (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=TokenJunkieLabs Slack #commons. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"tokenjunkielabs-slack",
       "channel_name":"TokenJunkieLabs Slack #commons",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -229,8 +229,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",
@@ -279,15 +279,15 @@
     },
     {
       "blocked_reason":null,
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Founder-sent email (partner).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Founder-sent email. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"partner",
       "channel_id":"founder-email",
       "channel_name":"Founder-sent email",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -297,8 +297,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",
@@ -347,15 +347,15 @@
     },
     {
       "blocked_reason":"No CAGE/UEI/SAM/GSA evidence on current main.",
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: SAM.gov (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=SAM.gov. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: SAM.gov (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=SAM.gov. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"procurement",
       "channel_id":"sam-gov-procurement",
       "channel_name":"SAM.gov",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -365,8 +365,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",
@@ -415,15 +415,15 @@
     },
     {
       "blocked_reason":"No CAGE/UEI/SAM/GSA evidence on current main.",
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: GSA Schedule (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=GSA Schedule. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: GSA Schedule (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=GSA Schedule. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No CAGE/UEI/SAM/GSA evidence on current main.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"procurement",
       "channel_id":"gsa-schedule",
       "channel_name":"GSA Schedule",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -433,8 +433,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",
@@ -483,15 +483,15 @@
     },
     {
       "blocked_reason":"No authorized Public RFP response pack account in this session. Do not submit.",
-      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Public RFP response pack (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Public RFP response pack. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/agent-rescue.html — do not open a second CRM.",
+      "channel_copy":"Production Survival Sprint — Commons channel package (not a live listing)\n\nOutcome: Production Survival Sprint.\nPrice: USD 15000.00. Source terms win; this package does not rewrite them.\nOffer id: production-survival-sprint.\nChannel: Public RFP response pack (procurement).\n\nWhat the buyer receives is the named outcome on the canonical Commons page, not a marketplace-only deliverable.\nConversion: https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md\nPublic intake: post a non-confidential signal to the OFFER board from distribution.html or commerce.html.\nContact: tokenjunkielabs@gmail.com\nSource: revenue/production_survival/offer.json (blob 84b664c07d0677a92c8e79797f80ebde823da447).\n\nHonesty: not a live listing. Channel=Public RFP response pack. submit_allowed=false. verified leads=0. verified customers=0. collected cash=0.00.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.\n\nDo not paste this into a marketplace as if Commons already listed it.\nRoute any real buyer interest back to https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md — do not open a second CRM.",
       "channel_family":"procurement",
       "channel_id":"public-rfp-pack",
       "channel_name":"Public RFP response pack",
       "conversion":{
         "contact":"tokenjunkielabs@gmail.com",
-        "human":"agent-rescue.html",
+        "human":"revenue/production_survival/README.md",
         "intake":"OFFER",
-        "pages":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+        "pages":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
       },
       "evidence":[
         {
@@ -501,8 +501,8 @@
         },
         {
           "kind":"conversion_surface",
-          "path":"agent-rescue.html",
-          "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
+          "path":"revenue/production_survival/README.md",
+          "url":"https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md"
         },
         {
           "kind":"distribution_door",

@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 94
+    "TESTED": 101
   },
   "features": [
     {
@@ -26,7 +26,9 @@
         "0f6249cd06eadf2b2dbd75796320a743fb20f433",
         "arbitrage.html:28a40d31b6bec435b4906addc0241f22419fb339",
         "28a40d31b6bec435b4906addc0241f22419fb339",
-        "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f"
+        "c0aa1ad5846cbc03a1070873548275f4d4d8ce4f",
+        "arbitrage.html:1cd7268ec6ac692511e869dfefa0a3e2f0566259",
+        "1cd7268ec6ac692511e869dfefa0a3e2f0566259"
       ],
       "capability": "Evidence-first public scout for sourced Commons-deliverable edges. Local before-tax calculator and non-confidential OFFER intake. Places no trade, purchases nothing, and does not claim cash.",
       "carrier": "CODEX",
@@ -55,13 +57,15 @@
         "ev-arbitrage-opportunity-receipt-20260830-02",
         "ev-arbitrage-opportunity-blob-20260830-03",
         "ev-arbitrage-opportunity-live-20260830-03",
-        "ev-arbitrage-opportunity-live-20260831-04"
+        "ev-arbitrage-opportunity-live-20260831-04",
+        "ev-arbitrage-opportunity-blob-20260905-01",
+        "ev-arbitrage-opportunity-live-20260905-01"
       ],
       "file": "arbitrage-opportunity-road-20260830-01.json",
       "id": "arbitrage-opportunity-road-20260830-01",
-      "last_change": "2026-08-31T07:43:21Z",
+      "last_change": "2026-09-05T23:20:11Z",
       "live_status": "LIVE",
-      "main_sha": "d9e9bbab11d6149455cac8b3e3b77c691e52a5b7",
+      "main_sha": "c2c5addeee3c6cba2c9454be8e766e6f2aeb5b6f",
       "name": "Arbitrage opportunity road",
       "next_gap": "A QUOTABLE candidate is not a buyer or cash. Do not invent outreach, trades, or payouts. Keep automatic_purchase and automatic_trade false. Distribution remains the binding constraint.",
       "owner_subsystem": "commerce",
@@ -2713,6 +2717,73 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Shared equipment exposes the same non-secret operation inventory to every peer label via CLI manifest and Slack equipment_capability_manifest, with a hermetic newcomer read+reversible-mutation road and receipt battery pins. No secret remint.",
+      "carrier": "FORGE",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/services.py",
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_shared_equipment_capability_manifest.py",
+        "test_shared_equipment_newcomer_road.py",
+        "test_forge_equipment_manifest_receipt.py",
+        "features/registry/forge-equipment-capability-parity-20260905-01.json",
+        "p/forge-equipment-capability-manifest-20260905-01.md",
+        "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+        "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/services.py",
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_shared_equipment_capability_manifest.py",
+        "test_shared_equipment_newcomer_road.py",
+        "test_forge_equipment_manifest_receipt.py",
+        "features/registry/forge-equipment-capability-parity-20260905-01.json",
+        "p/forge-equipment-capability-manifest-20260905-01.md",
+        "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+        "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "forge-equipment-capability-parity-20260905-01.json",
+      "id": "forge-equipment-capability-parity-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Shared equipment capability parity",
+      "next_gap": "feature_tracker --write deferred until LEDGER #8867 HOLD clears. Direct vault retrieval remains Equipment-governor / ASTRA #8819. Do not remint secrets. Hands off #8802.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "integrations/shared_equipment/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/README.md",
+        "p/forge-equipment-capability-manifest-20260905-01.md",
+        "p/forge-equipment-newcomer-road-proof-20260905-01.md",
+        "p/forge-equipment-manifest-docs-battery-20260905-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_shared_equipment_capability_manifest.py",
+        "test_shared_equipment_newcomer_road.py",
+        "test_forge_equipment_manifest_receipt.py",
+        "test_forge_equipment_feature_registry.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Live H1 inherit-source probe. Reads user-level ~/.claude enabledPlugins and classifies SEAT_CLEAR / INHERIT_SOURCE_PRESENT / H1_HIT / FINDER-FAILED. Composes grok inspect evaluation. Never writes Claude settings. Does not remint GROK_CLAUDE_HYGIENE.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2871,6 +2942,71 @@
       "test_paths": [
         "test_kincell_rtp_qc_release_bridge.py",
         "revenue/kincell_rtp_qc_release_bridge/runner.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "CRM6 relationship handoff: a successor peer continues an existing GTM/JOJO relationship from source-linked wants, learned state, sent communication, unresolved state, due target, and next action. Promise content stays ABSENT until separately verified. Not a second CRM. Billings OWNER_HOLD and no-new-contact are preserved after submission.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_handoff_provenance.py",
+        "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
+        "revenue/lm_gtm_index/README.md",
+        "lm-gtm-index.html",
+        "features/registry/ledger-crm6-relationship-handoff-20260904-01.json",
+        "p/ledger-crm6-relationship-handoff-20260904-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_handoff_provenance.py",
+        "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
+        "revenue/lm_gtm_index/README.md",
+        "lm-gtm-index.html",
+        "features/registry/ledger-crm6-relationship-handoff-20260904-01.json",
+        "p/ledger-crm6-relationship-handoff-20260904-01.md"
+      ],
+      "dependencies": [
+        "lm-gtm-require-claim-20260904-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-relationship-handoff-20260904-01.json",
+      "id": "ledger-crm6-relationship-handoff-20260904-01",
+      "last_change": "2026-09-04",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 relationship survives context window",
+      "next_gap": "Billings submission is source-linked as SENT, but recipient acknowledgement, acceptance, award, and payment remain unestablished. Do not resend or contact Cheri. Use the business mailbox only to verify a future buyer reply. Do not mint a second CRM. Canonical INDEX composed_at may still be stale; the handoff-only evidence file is explicitly not the canonical CRM or an INDEX mutation.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "revenue/lm_gtm_index/README.md",
+        "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
+        "p/ledger-crm6-relationship-handoff-20260904-01.md",
+        "host/lm_gtm_relationship_handoff.py"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_lm_gtm_relationship_handoff.py",
+        "test_lm_gtm_handoff_provenance.py",
+        "host/lm_gtm_relationship_handoff.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTED"
@@ -5529,6 +5665,308 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Hermetic builder maps Autopsy offer.json + opaque case_ref/client_reference_id into grokbot_control case for grokbot_submit. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_paid_case.py",
+        "features/registry/spark-g2-autopsy-case-submit-helper-20260905-01.json",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-autopsy-case-submit-helper-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_paid_case.py",
+        "features/registry/spark-g2-autopsy-case-submit-helper-20260905-01.json",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-autopsy-case-submit-helper-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-attribution-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-autopsy-case-submit-helper-20260905-01.json",
+      "id": "spark-g2-autopsy-case-submit-helper-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Autopsy \u2192 G2 case submit helper",
+      "next_gap": "When a real paid Autopsy case is assigned, coordinator calls grokbot_submit with case_from_autopsy_offer. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/grokbot_control/paid_case.py",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/paid_case.py",
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "p/spark-g2-autopsy-case-submit-helper-20260905-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_paid_case.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Hermetic pin: Autopsy agent-rescue X-campaign client_reference_id=afa29_x_a_v1 survives onto a G2 run case via submit/inspect. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "test_grokbot_client_reference_roundtrip.py",
+        "features/registry/spark-g2-client-reference-roundtrip-20260905-01.json",
+        "p/spark-g2-client-reference-roundtrip-20260905-01.md",
+        "integrations/grokbot_control/README.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "test_grokbot_client_reference_roundtrip.py",
+        "features/registry/spark-g2-client-reference-roundtrip-20260905-01.json",
+        "p/spark-g2-client-reference-roundtrip-20260905-01.md",
+        "integrations/grokbot_control/README.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-attribution-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-client-reference-roundtrip-20260905-01.json",
+      "id": "spark-g2-client-reference-roundtrip-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 client_reference_id round-trip verify",
+      "next_gap": "When a real X-campaign Stripe payment arrives, coordinator copies client_reference_id into case_from_autopsy_offer / grokbot_submit. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "test_grokbot_client_reference_roundtrip.py",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "agent-rescue.html",
+        "p/spark-g2-client-reference-roundtrip-20260905-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_client_reference_roundtrip.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Equipment tools grokbot_case_from_autopsy_offer + grokbot_receipt_row_from_case (local, no :8881) expose paid_case builders; receipt_from_g2_submit binds submit/inspect run_id+session_id onto opaque case_row. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-equipment-paid-case-tools-20260905-01.json",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "integrations/shared_equipment/role_equipment.json",
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-equipment-paid-case-tools-20260905-01.json",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-receipt-surface-20260905-01",
+        "spark-g2-autopsy-case-submit-helper-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-equipment-paid-case-tools-20260905-01.json",
+      "id": "spark-g2-equipment-paid-case-tools-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 equipment paid-case builder tools",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, coordinator builds case via grokbot_case_from_autopsy_offer, submits with grokbot_submit, then binds receipt via grokbot_receipt_row_from_case(submit_response=...). No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/shared_equipment/peers.py",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/peers.py",
+        "integrations/grokbot_control/paid_case.py",
+        "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_shared_equipment.py",
+        "test_grokbot_paid_case_receipt.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "GrokBot control persists optional paid-case metadata (offer_id/case_ref/client_reference_id/sku) on submit so inspect/session recover ties runs to a paid job before completion. Follow-up inherits parent case. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/store.py",
+        "integrations/grokbot_control/gateway.py",
+        "integrations/grokbot_control/client.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-paid-case-attribution-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/store.py",
+        "integrations/grokbot_control/gateway.py",
+        "integrations/grokbot_control/client.py",
+        "integrations/grokbot_control/README.md",
+        "integrations/shared_equipment/peers.py",
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py",
+        "features/registry/spark-g2-paid-case-attribution-20260905-01.json",
+        "p/spark-g2-paid-case-attribution-20260905-01.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "spark-g2-paid-case-attribution-20260905-01.json",
+      "id": "spark-g2-paid-case-attribution-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 paid-case attribution on submit",
+      "next_gap": "Closed by spark-g2-autopsy-case-submit-helper-20260905-01 (case_from_autopsy_offer). Live paid-case submit still waits on REAL_STRIPE_PAYMENT_OBSERVED. No Autopsy plink remint.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "integrations/grokbot_control/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/README.md",
+        "p/spark-g2-paid-case-attribution-20260905-01.md",
+        "integrations/grokbot_control/paid_case.py"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_control.py",
+        "test_grokbot_shared_equipment.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Opaque Autopsy seats case_row shape + receipt_row_from_case binds paid job to optional G2 run/session ids without buyer PII. case_rows stay empty until REAL_STRIPE_PAYMENT_OBSERVED. No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/seats.json",
+        "revenue/agent_failure_autopsy/SEATS.md",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-paid-case-receipt-surface-20260905-01.json",
+        "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/grokbot_control/paid_case.py",
+        "integrations/grokbot_control/__init__.py",
+        "integrations/grokbot_control/README.md",
+        "revenue/agent_failure_autopsy/seats.json",
+        "revenue/agent_failure_autopsy/SEATS.md",
+        "test_grokbot_paid_case_receipt.py",
+        "features/registry/spark-g2-paid-case-receipt-surface-20260905-01.json",
+        "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-paid-case-attribution-20260905-01",
+        "spark-g2-autopsy-case-submit-helper-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-paid-case-receipt-surface-20260905-01.json",
+      "id": "spark-g2-paid-case-receipt-surface-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 paid-case opaque receipt surface",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, coordinator appends one opaque case_row via receipt_row_from_case and submits G2 work with case_from_autopsy_offer. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "revenue/agent_failure_autopsy/SEATS.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/grokbot_control/paid_case.py",
+        "revenue/agent_failure_autopsy/seats.json",
+        "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
+      ],
+      "rollup": "TESTED",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_paid_case_receipt.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTED"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -6078,7 +6516,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 103,
+  "n_features": 110,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

@@ -244,7 +244,11 @@ def classify_offer(listing: dict[str, Any]) -> str:
 def human_route(listing: dict[str, Any]) -> str:
     routes = listing.get("routes") or {}
     human = routes.get("human")
-    if not isinstance(human, str) or not human.endswith(".html"):
+    if not isinstance(human, str) or not human:
+        raise DistributionError("%s missing routes.human" % listing.get("id"))
+    # QUILL moved Survival off Autopsy HTML onto the landed README.
+    # A public .md offer doc is a human door; do not force a false .html.
+    if not (human.endswith(".html") or human.endswith(".md")):
         raise DistributionError("%s missing routes.human" % listing.get("id"))
     return human
 

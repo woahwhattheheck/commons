@@ -15,11 +15,11 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-20260902-01.md"
 
 KEEP = {
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "f159a7b8",
+    "test_cursor_merge_on_pr_readback.py": "d6130fc1",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
     "ground/MERGE_ON_PR.json": "4e7967dc",
-    "test_merge_on_pr.py": "37ca09dc",
+    "test_merge_on_pr.py": "4bef6e6c",
     "merge-on-pr.html": "86fe5e4f",
     "host/sprint_integration.py": "b7bec0b9",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
