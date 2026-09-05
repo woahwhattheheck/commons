@@ -36,7 +36,7 @@ class ScopeToDeliveryTests(unittest.TestCase):
     def test_catalog_lists_every_canonical_sku_and_does_not_mint_cash(self):
         view = MODULE.compose_catalog(self.catalog, self.bindings)
         ids = [item["id"] for item in view["listings"]]
-        self.assertEqual(len(ids), 17)
+        self.assertEqual(ids, [item["id"] for item in self.catalog["listings"]])
         self.assertIn("same-day-agent-survival-proof", ids)
         self.assertIn("sku-muhlnickel-titan-20260826", ids)
         self.assertIn("sku-muhlnickel-attested-inference", ids)
