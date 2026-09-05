@@ -12,6 +12,8 @@
     "buyer_ref",
     "failure_sentence",
     "harness_stack",
+    "scope_boundary",
+    "intake_caps",
     "submitted_at",
     "evidence",
     "evidence_assessment",
@@ -19,46 +21,127 @@
     "access_boundary"
   ],
   "properties": {
-    "schema_version": {"const": "commons-agent-failure-autopsy-intake/v1"},
-    "kind": {"const": "AGENT_FAILURE_AUTOPSY_INTAKE"},
-    "record_classification": {"enum": ["BUYER_CASE", "SYNTHETIC_EXAMPLE"]},
-    "case_id": {"$ref": "#/$defs/id"},
-    "buyer_ref": {"type": "string", "pattern": "^buyer_[a-f0-9]{16,64}$"},
-    "failure_sentence": {"type": "string", "minLength": 10, "maxLength": 1000},
+    "schema_version": {
+      "const": "commons-agent-failure-autopsy-intake/v1"
+    },
+    "kind": {
+      "const": "AGENT_FAILURE_AUTOPSY_INTAKE"
+    },
+    "record_classification": {
+      "enum": [
+        "BUYER_CASE",
+        "SYNTHETIC_EXAMPLE"
+      ]
+    },
+    "case_id": {
+      "$ref": "#/$defs/id"
+    },
+    "buyer_ref": {
+      "type": "string",
+      "pattern": "^buyer_[a-f0-9]{16,64}$"
+    },
+    "failure_sentence": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 1000
+    },
     "harness_stack": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["harness", "harness_version", "model", "operating_system", "runtime", "tooling"],
+      "required": [
+        "harness",
+        "harness_version",
+        "model",
+        "operating_system",
+        "runtime",
+        "tooling"
+      ],
       "properties": {
-        "harness": {"enum": ["codex", "claude-code", "other-coding-agent"]},
-        "harness_version": {"$ref": "#/$defs/nullable_text"},
-        "model": {"$ref": "#/$defs/nullable_text"},
-        "operating_system": {"$ref": "#/$defs/nullable_text"},
-        "runtime": {"$ref": "#/$defs/nullable_text"},
+        "harness": {
+          "enum": [
+            "codex",
+            "claude-code",
+            "other-coding-agent"
+          ]
+        },
+        "harness_version": {
+          "$ref": "#/$defs/nullable_text"
+        },
+        "model": {
+          "$ref": "#/$defs/nullable_text"
+        },
+        "operating_system": {
+          "$ref": "#/$defs/nullable_text"
+        },
+        "runtime": {
+          "$ref": "#/$defs/nullable_text"
+        },
         "tooling": {
           "type": "array",
           "maxItems": 20,
           "uniqueItems": true,
-          "items": {"type": "string", "minLength": 1, "maxLength": 120}
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          }
         }
       }
     },
-    "submitted_at": {"$ref": "#/$defs/timestamp"},
+    "submitted_at": {
+      "$ref": "#/$defs/timestamp"
+    },
     "evidence": {
       "type": "array",
       "minItems": 1,
-      "maxItems": 20,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "additionalProperties": false,
-        "required": ["evidence_id", "kind", "location_ref", "sha256", "redacted", "received_at", "anchors"],
+        "required": [
+          "evidence_id",
+          "kind",
+          "evidence_role",
+          "location_ref",
+          "sha256",
+          "raw_bytes",
+          "extracted_text_sha256",
+          "extracted_characters",
+          "extraction_method",
+          "redacted",
+          "sanitized",
+          "scope_relevance",
+          "instructions_treated_as_data",
+          "received_at",
+          "anchors"
+        ],
         "properties": {
-          "evidence_id": {"$ref": "#/$defs/id"},
-          "kind": {"enum": ["transcript", "log", "screenshot"]},
-          "location_ref": {"type": "string", "pattern": "^(private|example):[A-Za-z0-9._/-]+$", "maxLength": 240},
-          "sha256": {"$ref": "#/$defs/sha256"},
-          "redacted": {"const": true},
-          "received_at": {"$ref": "#/$defs/timestamp"},
+          "evidence_id": {
+            "$ref": "#/$defs/id"
+          },
+          "kind": {
+            "enum": [
+              "text",
+              "json",
+              "markdown",
+              "pdf",
+              "image"
+            ]
+          },
+          "location_ref": {
+            "type": "string",
+            "pattern": "^(private|example):[A-Za-z0-9._/-]+$",
+            "maxLength": 240
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "redacted": {
+            "const": true
+          },
+          "received_at": {
+            "$ref": "#/$defs/timestamp"
+          },
           "anchors": {
             "type": "array",
             "minItems": 1,
@@ -66,12 +149,68 @@
             "items": {
               "type": "object",
               "additionalProperties": false,
-              "required": ["anchor_id", "description"],
+              "required": [
+                "anchor_id",
+                "description"
+              ],
               "properties": {
-                "anchor_id": {"$ref": "#/$defs/id"},
-                "description": {"type": "string", "minLength": 1, "maxLength": 500}
+                "anchor_id": {
+                  "$ref": "#/$defs/id"
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 500
+                }
               }
             }
+          },
+          "evidence_role": {
+            "enum": [
+              "transcript",
+              "log",
+              "screenshot",
+              "configuration",
+              "error-output",
+              "other-relevant"
+            ]
+          },
+          "raw_bytes": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 25000000
+          },
+          "extracted_text_sha256": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "$ref": "#/$defs/sha256"
+              }
+            ]
+          },
+          "extracted_characters": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2000000
+          },
+          "extraction_method": {
+            "enum": [
+              "DIRECT_UTF8",
+              "PDF_TEXT",
+              "OCR",
+              "NONE"
+            ]
+          },
+          "sanitized": {
+            "const": true
+          },
+          "scope_relevance": {
+            "const": "ONE_FAILED_EXECUTION"
+          },
+          "instructions_treated_as_data": {
+            "const": true
           }
         }
       }
@@ -79,38 +218,78 @@
     "evidence_assessment": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["state", "assessed_at", "clock_basis_evidence_ids", "usable_evidence_at", "delivery_due_at", "reasons"],
+      "required": [
+        "state",
+        "assessed_at",
+        "clock_basis_evidence_ids",
+        "usable_evidence_at",
+        "delivery_due_at",
+        "reasons"
+      ],
       "properties": {
-        "state": {"enum": ["USABLE", "CLARIFICATION_REQUESTED", "INSUFFICIENT_AFTER_CLARIFICATION"]},
-        "assessed_at": {"$ref": "#/$defs/timestamp"},
+        "state": {
+          "enum": [
+            "USABLE",
+            "CLARIFICATION_REQUESTED",
+            "INSUFFICIENT_AFTER_CLARIFICATION"
+          ]
+        },
+        "assessed_at": {
+          "$ref": "#/$defs/timestamp"
+        },
         "clock_basis_evidence_ids": {
           "type": "array",
           "maxItems": 20,
           "uniqueItems": true,
-          "items": {"$ref": "#/$defs/id"}
+          "items": {
+            "$ref": "#/$defs/id"
+          }
         },
-        "usable_evidence_at": {"$ref": "#/$defs/nullable_timestamp"},
-        "delivery_due_at": {"$ref": "#/$defs/nullable_timestamp"},
+        "usable_evidence_at": {
+          "$ref": "#/$defs/nullable_timestamp"
+        },
+        "delivery_due_at": {
+          "$ref": "#/$defs/nullable_timestamp"
+        },
         "reasons": {
           "type": "array",
           "maxItems": 20,
-          "items": {"type": "string", "minLength": 1, "maxLength": 500}
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 500
+          }
         }
       }
     },
     "clarification": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["rounds_used", "question", "response_received_at", "response_evidence_ids"],
+      "required": [
+        "rounds_used",
+        "question",
+        "response_received_at",
+        "response_evidence_ids"
+      ],
       "properties": {
-        "rounds_used": {"type": "integer", "minimum": 0, "maximum": 1},
-        "question": {"$ref": "#/$defs/nullable_text"},
-        "response_received_at": {"$ref": "#/$defs/nullable_timestamp"},
+        "rounds_used": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "question": {
+          "$ref": "#/$defs/nullable_text"
+        },
+        "response_received_at": {
+          "$ref": "#/$defs/nullable_timestamp"
+        },
         "response_evidence_ids": {
           "type": "array",
           "maxItems": 20,
           "uniqueItems": true,
-          "items": {"$ref": "#/$defs/id"}
+          "items": {
+            "$ref": "#/$defs/id"
+          }
         }
       }
     },
@@ -124,27 +303,152 @@
         "repository_access_requested"
       ],
       "properties": {
-        "secrets_requested": {"const": false},
-        "unredacted_credentials_requested": {"const": false},
-        "production_access_requested": {"const": false},
-        "repository_access_requested": {"const": false}
+        "secrets_requested": {
+          "const": false
+        },
+        "unredacted_credentials_requested": {
+          "const": false
+        },
+        "production_access_requested": {
+          "const": false
+        },
+        "repository_access_requested": {
+          "const": false
+        }
+      }
+    },
+    "scope_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_workflows",
+        "failed_executions",
+        "unrelated_incidents_included",
+        "archives_included",
+        "executables_included",
+        "repository_dumps_included",
+        "embedded_instructions_trusted"
+      ],
+      "properties": {
+        "agent_workflows": {
+          "const": 1
+        },
+        "failed_executions": {
+          "const": 1
+        },
+        "unrelated_incidents_included": {
+          "const": false
+        },
+        "archives_included": {
+          "const": false
+        },
+        "executables_included": {
+          "const": false
+        },
+        "repository_dumps_included": {
+          "const": false
+        },
+        "embedded_instructions_trusted": {
+          "const": false
+        }
+      }
+    },
+    "intake_caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_files",
+        "max_raw_bytes",
+        "max_extracted_characters",
+        "approximate_text_token_limit",
+        "accepted_file_count",
+        "accepted_raw_bytes",
+        "accepted_extracted_characters",
+        "boundary_hit",
+        "selection_state"
+      ],
+      "properties": {
+        "max_files": {
+          "const": 10
+        },
+        "max_raw_bytes": {
+          "const": 25000000
+        },
+        "max_extracted_characters": {
+          "const": 2000000
+        },
+        "approximate_text_token_limit": {
+          "const": 500000
+        },
+        "accepted_file_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "accepted_raw_bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 25000000
+        },
+        "accepted_extracted_characters": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000000
+        },
+        "boundary_hit": {
+          "enum": [
+            "NONE",
+            "FILE_COUNT",
+            "RAW_BYTES",
+            "EXTRACTED_CHARACTERS",
+            "MULTIPLE"
+          ]
+        },
+        "selection_state": {
+          "enum": [
+            "WITHIN_CAP",
+            "SLICE_REQUESTED",
+            "RELEVANT_SLICE_SELECTED",
+            "CANNOT_FIT_LEGITIMATE_CASE"
+          ]
+        }
       }
     }
   },
   "$defs": {
-    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"},
-    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
-    "timestamp": {"type": "string", "format": "date-time", "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"},
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,79}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "(?:Z|[+-][0-9]{2}:[0-9]{2})$"
+    },
     "nullable_timestamp": {
       "oneOf": [
-        {"type": "null"},
-        {"$ref": "#/$defs/timestamp"}
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/timestamp"
+        }
       ]
     },
     "nullable_text": {
       "oneOf": [
-        {"type": "null"},
-        {"type": "string", "minLength": 1, "maxLength": 500}
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        }
       ]
     }
   }
