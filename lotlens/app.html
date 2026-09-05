@@ -80,6 +80,7 @@ button{padding:.3rem .7rem}
   }
   function pathSummaryLines(path){
     return (path||[]).map(function(e){
+      if(typeof e==="string") return e; /* a report printed with --paths summary already carries the line */
       var rows=(e.sources||[]).map(function(s){return s.file+":"+s.line+"@"+String(s.version).slice(0,8);}).join(", ");
       var flag=e.status==="potential"?"*":"";
       return e.from+" -"+e.relation+flag+"-> "+e.to+" ("+(rows||"no row")+")";
@@ -95,7 +96,7 @@ button{padding:.3rem .7rem}
     (imp.affected||[]).forEach(function(a,i){
       if(st&&a.status!==st)return; if(kd&&a.kind!==kd)return; if(se&&a.key.toLowerCase().indexOf(se)<0)return;
       var what=nodeDetail(a.kind, a.attrs);
-      var via=pathSummaryLines(a.path).join("<br>") || (a.path||[]).map(function(e){return esc(e.relation)+(e.status==="potential"?"*":"");}).join(" → ");
+      var via=pathSummaryLines(a.path).map(esc).join("<br>") || (a.path||[]).map(function(e){return esc(e.relation)+(e.status==="potential"?"*":"");}).join(" → ");
       var tr=document.createElement("tr"); tr.className="item"; tr.dataset.index=i;
       tr.innerHTML="<td><span class='chip "+esc(a.status)+"'>"+esc(a.status)+"</span></td><td><code>"+esc(a.key)+"</code></td><td>"+esc(a.kind)+"</td><td>"+esc(what)+"</td><td>"+a.hops+"</td><td>"+via+"</td>";
       tr.addEventListener("click",function(){select(a);});

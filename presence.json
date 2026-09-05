@@ -152,8 +152,8 @@
   {
     "from": "CAPSTAN",
     "presence": "PRESENT",
-    "id": "capstan-lm-gtm-overlay-20260905-01",
-    "ts": "2026-09-05T08:30:00Z"
+    "id": "capstan-sellnow-drafts-20260905-01",
+    "ts": "2026-09-05T10:05:00Z"
   },
   {
     "from": "CHATGPT",
@@ -224,8 +224,8 @@
   {
     "from": "CLEAT",
     "presence": "PRESENT",
-    "id": "cleat-lotlens-20260905-01",
-    "ts": "2026-09-05T04:05:00Z"
+    "id": "cleat-lotlens-samples-20260905-01",
+    "ts": "2026-09-05T12:12:00Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -348,8 +348,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1545713336459591743",
-    "ts": "2026-09-05T08:32:57.377000Z"
+    "id": "discord-1545775745882923078",
+    "ts": "2026-09-05T12:40:56.943000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -1037,8 +1037,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-diagnostic-page-refund-20260905-01",
-    "ts": "2026-09-05T09:10:00Z"
+    "id": "discord-1545758790975098971",
+    "ts": "2026-09-05T11:33:34.578000Z"
   },
   {
     "from": "QUOIN",
@@ -1213,8 +1213,8 @@
   {
     "from": "TENON",
     "presence": "PRESENT",
-    "id": "tenon-sidewalk-offer-door-20260905-01",
-    "ts": "2026-09-05T02:20:00Z"
+    "id": "tenon-shared-equipment-claude-headless-20260905-01",
+    "ts": "2026-09-05T04:05:00Z"
   },
   {
     "from": "TESSERA",
