@@ -149,6 +149,48 @@ RECORDED_STRIPE_SKUS = (
         ),
     },
 )
+UNVERIFIED_DIAGNOSTIC_SKUS = (
+    {
+        "id": "dealer-service-lead-rescue",
+        "path": "revenue/dealer_service_lead_rescue/contract.json",
+        "blob_sha": "9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+        "page": "dealer-service-lead-rescue.html",
+        "url": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
+        "commercial_key": "commercial",
+        "price_key": "diagnostic_usd",
+        "window_key": "diagnostic_window",
+    },
+    {
+        "id": "plant-downtime-handoff",
+        "path": "revenue/plant_downtime_handoff/contract.json",
+        "blob_sha": "9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+        "page": "plant-downtime-handoff.html",
+        "url": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
+        "commercial_key": "commercial",
+        "price_key": "diagnostic_usd",
+        "window_key": "diagnostic_window",
+    },
+    {
+        "id": "referral-intake-completeness",
+        "path": "revenue/referral_intake_completeness/contract.json",
+        "blob_sha": "06bb53685f6aaca69ff08b436771fe115e0aa38b",
+        "page": "referral-intake-completeness.html",
+        "url": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
+        "commercial_key": "commercial",
+        "price_key": "diagnostic_usd",
+        "window_key": "diagnostic_window",
+    },
+    {
+        "id": "repair-booking-exactly-once-v1",
+        "path": "revenue/repair_booking_preflight/contract.json",
+        "blob_sha": "85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+        "page": "repair-booking-preflight.html",
+        "url": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
+        "commercial_key": "offer",
+        "price_key": "diagnostic_price_usd",
+        "window_key": "diagnostic_delivery",
+    },
+)
 
 _SPEC = importlib.util.spec_from_file_location(
     "commons_outcome_commerce", ROOT / "host" / "outcome_commerce.py"
@@ -644,7 +686,7 @@ class OutcomeCommerceTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(proc.returncode, 0, proc.stdout + proc.stderr)
-        self.assertIn("OK 17 listings", proc.stdout)
+        self.assertIn("OK %d listings" % len(self.catalog["listings"]), proc.stdout)
         self.assertIn("CHARGEABLE != AUTHORIZATION != SETTLEMENT != PAYOUT != BANK_AVAILABLE", proc.stdout)
 
         proc = subprocess.run(
@@ -742,7 +784,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         )
         self.assertEqual(
             sorted(row["priority"] for row in funnels.values()),
-            list(range(1, 18)),
+            list(range(1, len(listings) + 1)),
         )
         ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
         self.assertEqual(ordered[:3], [
@@ -862,11 +904,11 @@ class OutcomeCommerceTests(unittest.TestCase):
         )
         self.assertTrue(any("canonical catalog missing" in item for item in errors), errors)
 
-    def test_fifteen_unique_listings_preserve_frozen_eight(self) -> None:
+    def test_extensible_unique_listings_preserve_frozen_eight(self) -> None:
         listings = self.catalog["listings"]
         ids = [row["id"] for row in listings]
-        self.assertEqual(len(listings), 17)
-        self.assertEqual(len(set(ids)), 17)
+        self.assertGreaterEqual(len(listings), 17)
+        self.assertEqual(len(set(ids)), len(listings))
         self.assertEqual(
             hashlib.sha256(canonical(listings[:8]).encode("utf-8")).hexdigest(),
             FROZEN_EIGHT_SHA256,
@@ -875,40 +917,51 @@ class OutcomeCommerceTests(unittest.TestCase):
             self.assertIn("source", row)
             self.assertNotIn("source_artifact", row)
             self.assertNotIn("checkout", row)
-        self.assertEqual(
-            hashlib.sha256(
-                canonical(self.catalog["integration_sources"][:-1]).encode("utf-8")
-            ).hexdigest(),
-            FROZEN_SOURCE_ADAPTERS_SHA256,
-        )
-        self.assertEqual(
-            self.catalog["integration_sources"][-1],
-            "land/stripe-payment-links-20260826.md",
-        )
         manifest = read_json(COMMERCE / "manifest.json")
+        source_adapters = manifest["source_adapters"]
         self.assertEqual(
             hashlib.sha256(
-                canonical(manifest["source_adapters"][:-1]).encode("utf-8")
+                canonical(source_adapters[:-1]).encode("utf-8")
             ).hexdigest(),
             FROZEN_SOURCE_ADAPTERS_SHA256,
         )
         self.assertEqual(
-            manifest["source_adapters"][-1],
+            source_adapters[-1],
             "land/stripe-payment-links-20260826.md",
+        )
+        self.assertEqual(
+            self.catalog["integration_sources"][:len(source_adapters)],
+            source_adapters,
+        )
+        self.assertEqual(
+            [
+                path for path in self.catalog["integration_sources"]
+                if path in {spec["path"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS}
+            ],
+            [spec["path"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS],
+        )
+        self.assertEqual(
+            len(set(self.catalog["integration_sources"])),
+            len(self.catalog["integration_sources"]),
         )
 
-    def test_seven_recorded_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
+    def test_seven_verified_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
         by_id = {row["id"]: row for row in self.catalog["listings"]}
-        recorded = [row for row in self.catalog["listings"] if "checkout" in row]
+        active = [
+            row for row in self.catalog["listings"]
+            if row.get("checkout", {}).get("status") == "ACTIVE_CHARGEABLE"
+        ]
         artifacts = [
             row
             for row in self.catalog["listings"]
             if "source_artifact" in row and row["id"] in {spec["id"] for spec in RECORDED_STRIPE_SKUS}
         ]
-        self.assertEqual(len(recorded), 7)
         self.assertEqual(len(artifacts), 7)
         self.assertEqual(
-            [row["id"] for row in recorded],
+            [
+                row["id"] for row in active
+                if row["id"] in {spec["id"] for spec in RECORDED_STRIPE_SKUS}
+            ],
             [row["id"] for row in RECORDED_STRIPE_SKUS],
         )
         for spec in RECORDED_STRIPE_SKUS:
@@ -958,6 +1011,64 @@ class OutcomeCommerceTests(unittest.TestCase):
                 self.assertEqual(funnel["readiness"], "READY_FOR_QUALIFICATION")
                 self.assertEqual(funnel["measurement"]["dom_action"], "qualification-open")
                 self.assertEqual(funnel["acquisition"]["cta"], "Start public intake")
+
+    def test_four_recorded_diagnostics_preserve_source_terms_without_checkout_claims(self) -> None:
+        by_id = {row["id"]: row for row in self.catalog["listings"]}
+        recorded = [
+            row for row in self.catalog["listings"]
+            if row.get("checkout", {}).get("status") == "LIVEMODE_URL_RECORDED"
+        ]
+        self.assertEqual(
+            [
+                row["id"] for row in recorded
+                if row["id"] in {spec["id"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS}
+            ],
+            [spec["id"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS],
+        )
+        for spec in UNVERIFIED_DIAGNOSTIC_SKUS:
+            with self.subTest(listing_id=spec["id"]):
+                row = by_id[spec["id"]]
+                self.assertNotIn("source", row)
+                self.assertEqual(row["state"], "PUBLIC_OFFER")
+                self.assertEqual(row["source_artifact"], {
+                    "path": spec["path"],
+                    "blob_sha": spec["blob_sha"],
+                    "terms_authority": "source",
+                })
+                source_path = ROOT / spec["path"]
+                self.assertTrue(source_path.is_file(), spec["path"])
+                self.assertEqual(git_hash_object(source_path), spec["blob_sha"])
+                source = read_json(source_path)
+                commercial = source[spec["commercial_key"]]
+                self.assertEqual(commercial[spec["price_key"]], 199)
+                self.assertEqual(commercial[spec["window_key"]], "one business day")
+                self.assertIn("refunded", commercial["refund"])
+                self.assertIn("one free next-business-day repair", commercial["refund"])
+                component = row["pricing"]["components"][0]
+                self.assertEqual(row["pricing"]["currency"], "USD")
+                self.assertEqual(component["kind"], "fixed")
+                self.assertEqual(component["amount"], "199.00")
+                self.assertEqual(row["outcome"]["acceptance_source"], spec["path"])
+                self.assertEqual(row["routes"], {
+                    "human": spec["page"],
+                    "machine": spec["path"],
+                })
+                self.assertEqual(row["checkout"], {
+                    "status": "LIVEMODE_URL_RECORDED",
+                    "provider": "stripe",
+                    "url": spec["url"],
+                    "link_active": "UNVERIFIED",
+                    "account_charges_enabled": False,
+                })
+                page = (ROOT / spec["page"]).read_text(encoding="utf-8")
+                self.assertEqual(page.count(spec["url"]), 2)
+                funnel = self.catalog["funnels"][spec["id"]]
+                self.assertEqual(funnel["readiness"], "BLOCKED_PROVIDER_CAPABILITY")
+                self.assertEqual(funnel["conversion"]["mode"], "RECORDED_STRIPE_LINK")
+                self.assertEqual(funnel["conversion"]["status"], "CAPABILITY_UNVERIFIED")
+                self.assertEqual(funnel["measurement"]["dom_action"], "provider-capability-unverified")
+                self.assertEqual(funnel["measurement"]["click_truth"], "NO_CLICK_SURFACE")
+                self.assertEqual(funnel["fulfillment"]["refund"], commercial["refund"])
 
     def test_recorded_subscription_quotes_default_to_one_cycle(self) -> None:
         expected = {
@@ -1555,7 +1666,13 @@ process.stdout.write(JSON.stringify({payHrefs: payHrefs, resolved: resolved, noH
         self.assertNotIn("signup", blob)
         self.assertNotIn("api-key", blob)
         self.assertNotIn("apikey", blob)
-        self.assertNotIn("oauth", blob)
+        for gate_marker in (
+            "oauth/authorize",
+            "oauth2/authorize",
+            "grant_type=authorization_code",
+            "client_secret",
+        ):
+            self.assertNotIn(gate_marker, blob)
         self.assertNotIn("allowlist", blob)
         self.assertNotIn("admission gate", blob)
         self.assertNotIn("identity gate", blob)

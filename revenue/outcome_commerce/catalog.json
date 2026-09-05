@@ -36,7 +36,11 @@
     "revenue/subzero_buyers/pack.json",
     "revenue/subzero_gtm/architecture.json",
     "revenue/expert_networks/",
-    "land/stripe-payment-links-20260826.md"
+    "land/stripe-payment-links-20260826.md",
+    "revenue/dealer_service_lead_rescue/contract.json",
+    "revenue/plant_downtime_handoff/contract.json",
+    "revenue/referral_intake_completeness/contract.json",
+    "revenue/repair_booking_preflight/contract.json"
   ],
   "funnel_stage_order": [
     "DISCOVERED",
@@ -1022,6 +1026,226 @@
         "Stripe Payment Links for MUHL-INFER-* are NOT_MINTED from this cloud surface.",
         "Collected cash remains USD 0; no customer run is claimed."
       ]
+    },
+    "dealer-service-lead-rescue": {
+      "priority": 18,
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "buyer": "A dealer service manager or BDC lead whose inbound service leads must produce one follow-up and one appointment.",
+      "trigger": "A duplicate submit or worker restart causes a service lead to be followed up twice or not at all.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public dealer service diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate or restart failure"
+        ],
+        "message": "$199 for a one-business-day synthetic diagnostic of duplicate, crash, restart, rollback, and conflict behavior, with receipts.",
+        "route": "commerce.html#dealer-service-lead-rescue",
+        "cta": "Review the recorded $199 diagnostic"
+      },
+      "qualification": {
+        "route": "dealer-service-lead-rescue.html",
+        "required": [
+          "One approved synthetic service-lead payload shape",
+          "Browser-local synthetic fixtures only; no dealership or customer data, PII, credentials, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "state_after": "FUNDED",
+        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for the contract's synthetic duplicate, crash, restart, rollback, and conflict fixtures",
+          "Timestamped progress and terminal status receipts",
+          "A durable result tied to the contract revision"
+        ],
+        "acceptance": [
+          "Lead identity is the idempotency key",
+          "Complete leads produce exactly one follow-up and appointment while incomplete leads produce none",
+          "Restart resumes once, rollback cleans a crashed run, and conflicting bytes preserve the original rescue"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
+        "first_evidence_state": "DISCOVERED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
+        "No paid delivery or collected cash is recorded in funnel_truth"
+      ]
+    },
+    "plant-downtime-handoff": {
+      "priority": 19,
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "buyer": "A plant maintenance leader whose downtime events must reach one technician and parts handoff.",
+      "trigger": "A duplicate fault report or worker restart causes a handoff to dispatch twice or disappear.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public plant downtime diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching duplicate or restart failure"
+        ],
+        "message": "$199 for a one-business-day synthetic diagnostic of duplicate, crash, restart, rollback, and conflict behavior, with receipts.",
+        "route": "commerce.html#plant-downtime-handoff",
+        "cta": "Review the recorded $199 diagnostic"
+      },
+      "qualification": {
+        "route": "plant-downtime-handoff.html",
+        "required": [
+          "One approved synthetic plant-fault payload shape",
+          "Browser-local synthetic fixtures only; no plant data, PII, credentials, live control, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "state_after": "FUNDED",
+        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for the contract's synthetic duplicate, crash, restart, rollback, and conflict fixtures",
+          "Timestamped progress and terminal status receipts",
+          "A durable result tied to the contract revision"
+        ],
+        "acceptance": [
+          "Fault identity is the idempotency key",
+          "Complete faults dispatch exactly once while incomplete faults dispatch zero times",
+          "Restart resumes once, rollback cleans a crashed run, and conflicting bytes preserve the original dispatch"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
+        "first_evidence_state": "DISCOVERED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
+        "No paid delivery or collected cash is recorded in funnel_truth"
+      ]
+    },
+    "referral-intake-completeness": {
+      "priority": 20,
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "buyer": "A clinic operations director whose complete referrals must create one intake ticket while incomplete packets remain held.",
+      "trigger": "A retry advances an incomplete referral or creates a second queue ticket for a complete packet.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public referral intake diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching completeness or replay failure"
+        ],
+        "message": "$199 for a one-business-day synthetic no-PHI diagnostic of completeness, replay, crash, restart, rollback, and conflict behavior, with receipts.",
+        "route": "commerce.html#referral-intake-completeness",
+        "cta": "Review the recorded $199 diagnostic"
+      },
+      "qualification": {
+        "route": "referral-intake-completeness.html",
+        "required": [
+          "One approved synthetic referral payload shape and referral-class field matrix",
+          "Browser-local synthetic fixtures only; no PHI, clinical data, credentials, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "state_after": "FUNDED",
+        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for the contract's synthetic completeness, replay, crash, restart, rollback, and conflict fixtures",
+          "Timestamped progress and intake receipts",
+          "A durable result tied to the contract revision"
+        ],
+        "acceptance": [
+          "Every checklist item comes from the referral-class matrix",
+          "Complete packets route once while incomplete packets route once to INCOMPLETE_INTAKE",
+          "Replay creates no second ticket, rollback clears a crashed ticket, and PHI-shaped keys are refused"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
+        "first_evidence_state": "DISCOVERED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
+        "No paid delivery or collected cash is recorded in funnel_truth"
+      ]
+    },
+    "repair-booking-exactly-once-v1": {
+      "priority": 21,
+      "readiness": "BLOCKED_PROVIDER_CAPABILITY",
+      "buyer": "A repair-scheduling owner whose request must create exactly one appointment or an explicit stopped or rolled-back result.",
+      "trigger": "A retry, timeout, crash, or webhook replay creates duplicate appointments or leaves an ambiguous result.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public repair-booking diagnostic",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "Named-human follow-up about a matching retry or ambiguous-effect failure"
+        ],
+        "message": "$199 for a one-business-day diagnostic across 20 synthetic retry, timeout, crash, replay, and rollback fixtures, with a durable receipt.",
+        "route": "commerce.html#repair-booking-exactly-once-v1",
+        "cta": "Review the recorded $199 diagnostic"
+      },
+      "qualification": {
+        "route": "repair-booking-preflight.html",
+        "required": [
+          "One approved synthetic repair-booking payload shape and tool sequence",
+          "Synthetic fixtures only; no customer data, credentials, real appointment creation, or production access"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "RECORDED_STRIPE_LINK",
+        "status": "CAPABILITY_UNVERIFIED",
+        "next_step": "Obtain a dated provider readback for this exact URL and the receiving account. Until then the recorded URL remains non-clickable in the catalog.",
+        "state_after": "FUNDED",
+        "evidence_required": "Offset-aware provider readback that the exact link is active and priced at USD 199, plus account charges and payouts enabled. A page link alone is not this evidence."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "Results for all 20 synthetic contract fixtures",
+          "The first unsafe edge for any failed fixture",
+          "A durable JSON receipt tied to the contract revision"
+        ],
+        "acceptance": [
+          "Each fixture ends BOOKED with exactly one BOOKING_CREATED event or ends explicitly STOPPED or ROLLED_BACK",
+          "Duplicate appointments and silent or ambiguous terminal states are zero",
+          "A failed fixture identifies the first unsafe edge and every run emits a durable JSON receipt"
+        ],
+        "refund": "If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead."
+      },
+      "measurement": {
+        "dom_action": "provider-capability-unverified",
+        "click_truth": "NO_CLICK_SURFACE",
+        "first_evidence_state": "DISCOVERED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [],
+      "gaps": [
+        "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
+        "No paid delivery or collected cash is recorded in funnel_truth"
+      ]
     }
   },
   "listings": [
@@ -1657,6 +1881,154 @@
         "path": "revenue/muhlnickel_inference/offer.json",
         "blob_sha": "960beb887a6af6e58740abc26a72934eb6efaa93",
         "terms_authority": "source"
+      }
+    },
+    {
+      "id": "dealer-service-lead-rescue",
+      "name": "Dealer Service Lead Rescue Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/dealer_service_lead_rescue/contract.json",
+        "blob_sha": "9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic dealer service lead diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/dealer_service_lead_rescue/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "dealer-service-lead-rescue.html",
+        "machine": "revenue/dealer_service_lead_rescue/contract.json"
+      },
+      "checkout": {
+        "status": "LIVEMODE_URL_RECORDED",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
+      }
+    },
+    {
+      "id": "plant-downtime-handoff",
+      "name": "Plant Downtime Handoff Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/plant_downtime_handoff/contract.json",
+        "blob_sha": "9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic plant downtime handoff diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/plant_downtime_handoff/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "plant-downtime-handoff.html",
+        "machine": "revenue/plant_downtime_handoff/contract.json"
+      },
+      "checkout": {
+        "status": "LIVEMODE_URL_RECORDED",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/14AfZgckZ0IN0Y99h043S0e",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
+      }
+    },
+    {
+      "id": "referral-intake-completeness",
+      "name": "Referral Intake Completeness Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/referral_intake_completeness/contract.json",
+        "blob_sha": "06bb53685f6aaca69ff08b436771fe115e0aa38b",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one synthetic referral intake completeness diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/referral_intake_completeness/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "referral-intake-completeness.html",
+        "machine": "revenue/referral_intake_completeness/contract.json"
+      },
+      "checkout": {
+        "status": "LIVEMODE_URL_RECORDED",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/9B600i98N77b9uFeBk43S0c",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
+      }
+    },
+    {
+      "id": "repair-booking-exactly-once-v1",
+      "name": "Repair Booking Exactly-Once Diagnostic",
+      "state": "PUBLIC_OFFER",
+      "source_artifact": {
+        "path": "revenue/repair_booking_preflight/contract.json",
+        "blob_sha": "85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "199.00",
+            "basis": "one 20-fixture synthetic repair-booking diagnostic in one business day"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/repair_booking_preflight/contract.json",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "repair-booking-preflight.html",
+        "machine": "revenue/repair_booking_preflight/contract.json"
+      },
+      "checkout": {
+        "status": "LIVEMODE_URL_RECORDED",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
+        "link_active": "UNVERIFIED",
+        "account_charges_enabled": false
       }
     }
   ]
