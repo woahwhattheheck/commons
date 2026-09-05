@@ -76,14 +76,14 @@
         "primary_channel": "Qualified buyer handoff for one named buyer-owned workflow",
         "alternate_channels": [
           "Named-human outreach tied to a public production incident",
-          "agent-rescue.html ladder"
+          "revenue/production_survival/README.md ladder"
         ],
         "message": "$15,000 over five calendar days for one measured failure, retry, rollback, and receipt cycle.",
         "route": "commerce.html#production-survival-sprint",
         "cta": "Qualify one workflow"
       },
       "qualification": {
-        "route": "agent-rescue.html",
+        "route": "revenue/production_survival/README.md",
         "required": [
           "One buyer-owned workflow",
           "One measured failure",
@@ -1278,7 +1278,7 @@
         "evidence_required": true
       },
       "routes": {
-        "human": "agent-rescue.html",
+        "human": "revenue/production_survival/README.md",
         "machine": "revenue/production_survival/offer.json"
       }
     },
