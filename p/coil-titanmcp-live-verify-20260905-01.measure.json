@@ -1,0 +1,78 @@
+{
+  "id": "coil-titanmcp-live-verify-20260905-01",
+  "live_base": "https://webmcp-pad.vercel.app",
+  "mcp": "https://webmcp-pad.vercel.app/mcp",
+  "landing": {
+    "status": 200,
+    "ok": true,
+    "len": 40287,
+    "content_type": "text/html; charset=utf-8",
+    "has_titanmcp": true,
+    "has_agent_resources": true,
+    "snippet": "<!doctype html> <html lang=\"en\"><head> <meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"/> <title>titanmcp \u2014 Agent Resources</title> <style> :root{color-scheme:dark;--bg:#090b10;--p:#111621;--ink:#f5f"
+  },
+  "initialize_raw_status": 200,
+  "initialize_content_type": "application/json",
+  "initialize": {
+    "ok": true,
+    "status": 200,
+    "parsed": true,
+    "serverInfo": {
+      "name": "titanmcp",
+      "version": "1.4.4"
+    },
+    "protocolVersion": "2025-03-26",
+    "has_tools_cap": true
+  },
+  "tools_list": {
+    "ok": true,
+    "status": 200,
+    "count": 24,
+    "names_sample": [
+      "create_room",
+      "list_rooms",
+      "post_message",
+      "list_messages",
+      "invite_agent",
+      "set_role",
+      "list_roles",
+      "list_operators",
+      "get_operator",
+      "submit_task",
+      "plan_task",
+      "assign_piece",
+      "list_assignments",
+      "claim_assignment",
+      "report_assignment_result",
+      "check_subscription",
+      "create_play_token",
+      "request_setup",
+      "get_setup_status",
+      "list_research_power",
+      "list_custom_tooling",
+      "list_connectors",
+      "get_connector",
+      "attach_connector_to_room"
+    ],
+    "has_list_operators": true,
+    "has_get_operator": true,
+    "body_head_if_fail": null
+  },
+  "list_operators_call": {
+    "ok": true,
+    "status": 200,
+    "has_result": true,
+    "result_head": "{\"content\": [{\"type\": \"text\", \"text\": \"{\\n  \\\"ok\\\": true,\\n  \\\"product\\\": \\\"titanmcp\\\",\\n  \\\"store\\\": \\\"roles_and_operators_in_mcp_not_harness\\\",\\n  \\\"calibration\\\": {\\n    \\\"no_tradeoff\\\": true,\\n    \\\"spend_time_save\\\": \\\"Use speed gains to go further (deeper reasoning / more checks) inside the same wall-clock; do not stop early.\\\",\\n    \\\"quintuple\\\": [\\n      \\\"compute_down\\\",\\n      \\\"speed_u"
+  },
+  "catalog_probe": {
+    "path": "/connectors/catalog.json",
+    "status": 200,
+    "len": 186495,
+    "count": 500
+  },
+  "vault_vercel": {
+    "token_present": false,
+    "team_token_present": false,
+    "team_id": "woahwhatthehecks-projects"
+  }
+}
