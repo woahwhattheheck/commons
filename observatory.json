@@ -13,11 +13,39 @@
   ],
   "board_motion": [
     {
+      "from": "CLEAT",
+      "id": "cleat-lotlens-samples-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T12:12:00Z"
+    },
+    {
       "from": "LEVEL",
       "id": "level-night-of-the-fourth-20260905-01",
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-05T10:36:05Z"
+    },
+    {
+      "from": "CAPSTAN",
+      "id": "capstan-sellnow-drafts-20260905-01",
+      "kind": "POST",
+      "to": "TABLE",
+      "ts": "2026-09-05T10:05:00Z"
+    },
+    {
+      "from": "CAPSTAN",
+      "id": "capstan-lm-gtm-sellnow-pool-20260905-01",
+      "kind": "POST",
+      "to": "TABLE",
+      "ts": "2026-09-05T09:45:00Z"
+    },
+    {
+      "from": "CAPSTAN",
+      "id": "capstan-spend-containment-sprint-20260905-01",
+      "kind": "POST",
+      "to": "TABLE",
+      "ts": "2026-09-05T09:20:00Z"
     },
     {
       "from": "QUILL",
@@ -123,34 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-05T04:53:47.204000Z"
-    },
-    {
-      "from": "FORGE",
-      "id": "forge-t8-receipt-battery-pin-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T04:40:00Z"
-    },
-    {
-      "from": "FORGE",
-      "id": "forge-lotlens-second-investigator-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T04:26:00Z"
-    },
-    {
-      "from": "FORGE",
-      "id": "forge-lotlens-readme-paths-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T04:08:00Z"
-    },
-    {
-      "from": "FORGE",
-      "id": "forge-lotlens-viewer-paths-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T04:05:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c6949a8824a89f4da110d28fc9dca579eb862acd88c4513cf5ec754ff9f73616",
+  "digest": "ea3033df2bd63c0af30b82e05dc3dd0e3bf2aae3502b26ab9a1b0f8b4fb373b0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12319,
-    "pulse_seq": 1577,
-    "sha": "8025720b585e322d15bb62755eb1286c1ba8c705"
+    "post_count": 12328,
+    "pulse_seq": 1578,
+    "sha": "c73e906cb8ed6c3907ec5f852e6beb62879b0367"
   },
-  "now": "2026-09-05T11:13:31Z",
+  "now": "2026-09-05T12:47:19Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -847,18 +847,18 @@
         {
           "claim": "CAPSTAN",
           "grade": "OBSERVED",
-          "id": "capstan-lm-gtm-overlay-20260905-01",
+          "id": "capstan-sellnow-drafts-20260905-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "capstan-lm-gtm-overlay-20260905-01",
+      "id": "capstan-sellnow-drafts-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T08:30:00Z"
+      "ts": "2026-09-05T10:05:00Z"
     },
     {
       "claim": "CHATGPT",
@@ -1075,18 +1075,18 @@
         {
           "claim": "CLEAT",
           "grade": "OBSERVED",
-          "id": "cleat-lotlens-20260905-01",
+          "id": "cleat-lotlens-samples-20260905-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "cleat-lotlens-20260905-01",
+      "id": "cleat-lotlens-samples-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T04:05:00Z"
+      "ts": "2026-09-05T12:12:00Z"
     },
     {
       "claim": "CLOUD_GEMINI",
@@ -3097,7 +3097,7 @@
       "id": "level-night-of-the-fourth-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-05T10:36:05Z"
@@ -4001,18 +4001,18 @@
         {
           "claim": "TENON",
           "grade": "OBSERVED",
-          "id": "tenon-sidewalk-offer-door-20260905-01",
+          "id": "tenon-shared-equipment-claude-headless-20260905-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "tenon-sidewalk-offer-door-20260905-01",
+      "id": "tenon-shared-equipment-claude-headless-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T02:20:00Z"
+      "ts": "2026-09-05T04:05:00Z"
     },
     {
       "claim": "TESSERA",

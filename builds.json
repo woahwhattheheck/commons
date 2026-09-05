@@ -350,7 +350,7 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 15,
+ "n_open_prs": 11,
  "open_prs": [
   {
    "number": 8754,
@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8754",
    "base_freshness": {
     "base_sha": "c6f551a649d27283364140ca24a2909ad218ac44",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,39 +375,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8776",
    "base_freshness": {
     "base_sha": "792530ae4bf47d5b995187f27961f051d1c7aaaa",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8798,
-   "author": "woahwhattheheck",
-   "title": "LotLens: --paths summary and a 'what' column (TENON's acceptance asks)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8798",
-   "base_freshness": {
-    "base_sha": "0f475a9671360c06a8c1a82f103719248d68caad",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8874,
-   "author": "woahwhattheheck",
-   "title": "CAPSTAN: Agent Spend Containment Sprint, one recommendation (R&D return, CANDIDATE, no page, no checkout)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8874",
-   "base_freshness": {
-    "base_sha": "6fcc0326ef2b24668d47c5a66e593cc2d9b25c46",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -423,55 +391,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8876",
    "base_freshness": {
     "base_sha": "9b1d636b87e593e2c00ef6ae60e24508d9522c40",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8880,
-   "author": "woahwhattheheck",
-   "title": "CAPSTAN: lm_gtm overlay, 8/30 sell-now pool seated: 15 verified buyers matched to the four live $199 diagnostics",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8880",
-   "base_freshness": {
-    "base_sha": "da1a4deef8889074a5c4cb9295445de1f659a17a",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8881,
-   "author": "woahwhattheheck",
-   "title": "CAPSTAN receipt: send-ready packet for the second buyer per live $199 diagnostic (four YES-first drafts, routes as published, root decisions listed; nothing sent)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8881",
-   "base_freshness": {
-    "base_sha": "da1a4deef8889074a5c4cb9295445de1f659a17a",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 8871,
-   "author": "woahwhattheheck",
-   "title": "LEDGER: CRM6 successor --brief paste from handoff packet",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8871",
-   "base_freshness": {
-    "base_sha": "95e36f19e43b80592ff40d0182bfa359510fb6ef",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -487,7 +407,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8867",
    "base_freshness": {
     "base_sha": "120f4b9e1ee0177769c0d27e6c6c51c6cc0c0bc4",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -503,7 +423,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8893",
    "base_freshness": {
     "base_sha": "120f4b9e1ee0177769c0d27e6c6c51c6cc0c0bc4",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -513,13 +433,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 8894,
+   "number": 8808,
    "author": "woahwhattheheck",
-   "title": "FORGE: surface Autopsy $29 on commerce tip shelf",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8894",
+   "title": "Sell verified $29 Autopsy through the extensible commerce catalog",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8808",
    "base_freshness": {
-    "base_sha": "120f4b9e1ee0177769c0d27e6c6c51c6cc0c0bc4",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "base_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -535,7 +455,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/8895",
    "base_freshness": {
     "base_sha": "120f4b9e1ee0177769c0d27e6c6c51c6cc0c0bc4",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -545,13 +465,13 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 8896,
+   "number": 8901,
    "author": "woahwhattheheck",
-   "title": "R4: point Autopsy fulfillment role at landed #8811 spine",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8896",
+   "title": "spark-autopsy-intake-runbook-20260905-01",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8901",
    "base_freshness": {
-    "base_sha": "120f4b9e1ee0177769c0d27e6c6c51c6cc0c0bc4",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "base_sha": "95a22acf52368a4a3624c80ad4a53a9961f6ab17",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -561,29 +481,45 @@
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 8897,
+   "number": 8904,
    "author": "woahwhattheheck",
-   "title": "QUILL: surface live $29 Autopsy CTA on index + commercial",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8897",
+   "title": "spark-survival-offer-page-truth-20260905-01",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8904",
    "base_freshness": {
-    "base_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "base_sha": "5d2b1c4509aa78c6a599e4f3191e9138b3a7be08",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
    "note": "PR-road work. A PR is not main. Not a merge gate."
   },
   {
-   "number": 8808,
+   "number": 8905,
    "author": "woahwhattheheck",
-   "title": "Sell verified $29 Autopsy through the extensible commerce catalog",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/8808",
+   "title": "FORGE: tip-shelf $199 diagnostic doors on commerce.html",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8905",
    "base_freshness": {
-    "base_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
-    "main_sha": "98d4b920b4a702bca00a264ee002cb33253edb60",
+    "base_sha": "5d2b1c4509aa78c6a599e4f3191e9138b3a7be08",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 8906,
+   "author": "woahwhattheheck",
+   "title": "survival: remint canonical_page off agent-rescue.html (page-route only)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/8906",
+   "base_freshness": {
+    "base_sha": "d5e571544be4575313c482239092fcef48bb9f26",
+    "main_sha": "d5e571544be4575313c482239092fcef48bb9f26",
     "ahead_by": null,
     "behind_by": null,
     "label": "FRESH"
