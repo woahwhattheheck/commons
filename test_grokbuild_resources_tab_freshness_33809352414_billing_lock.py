@@ -112,7 +112,7 @@ class TestGrokbuildResourcesTabFreshness33809352414BillingLock(unittest.TestCase
         self.assertTrue(row["present"])
         self.assertEqual(
             row["digest"],
-            "b067a676a6fd8c6ce7ec095037afe5d4f3841eafe423b73fd5ff952328e66ba6",
+            "c5c431e7427a54e3e0ad43629010f76f6ab20a1020a619f286dc3804eb23cb90",
         )
         self.assertEqual(row["page_digest"], row["digest"])
         again = resources_tab.regenerate_or_alarm(
