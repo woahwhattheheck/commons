@@ -105,6 +105,7 @@
           "location_ref",
           "sha256",
           "raw_bytes",
+          "extracted_text_location_ref",
           "extracted_text_sha256",
           "extracted_characters",
           "extraction_method",
@@ -211,6 +212,18 @@
           },
           "instructions_treated_as_data": {
             "const": true
+          },
+          "extracted_text_location_ref": {
+            "oneOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "pattern": "^(private|example):[A-Za-z0-9._/-]+$",
+                "maxLength": 240
+              }
+            ]
           }
         }
       }
