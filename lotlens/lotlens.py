@@ -6,7 +6,7 @@
     python lotlens/lotlens.py --workspace WS summary
     python lotlens/lotlens.py --workspace WS find LOT-WATER-01
     python lotlens/lotlens.py --workspace WS inspect sup-acme/lot/LOT-CITRIC-01
-    python lotlens/lotlens.py --workspace WS impact sup-acme/lot/LOT-CITRIC-01 [--backward] [--assume NAME] [--out r.json] [--md r.md]
+    python lotlens/lotlens.py --workspace WS impact sup-acme/lot/LOT-CITRIC-01 [--backward] [--assume NAME] [--out r.json] [--md r.md] [--brief] [--paths summary]
     python lotlens/lotlens.py --workspace WS facts [--kind contradiction]
     python lotlens/lotlens.py --workspace WS annotate pilot-plant/batch/BATCH-P3 "text" [--by NAME] [--supersedes ID]
     python lotlens/lotlens.py --workspace WS annotations [TARGET]
@@ -30,6 +30,45 @@ import engine  # noqa: E402
 
 def _out(value, indent: int = 2) -> None:
     sys.stdout.write(json.dumps(value, indent=indent, ensure_ascii=False, sort_keys=False) + "\n")
+
+
+def _edge_cite(edge: dict) -> str:
+    return ", ".join(f"{s['file']}:{s['line']}" for s in edge.get("sources") or [])
+
+
+def path_summary_lines(path: list) -> list[str]:
+    """Operator view: one hop per line — from -relation-> to (file:line)."""
+    lines = []
+    for edge in path or []:
+        cite = _edge_cite(edge) or "no row"
+        rel = edge.get("relation", "?")
+        if edge.get("status") == "potential":
+            rel = f"{rel}*"
+        lines.append(f"{edge.get('from')} -{rel}-> {edge.get('to')} ({cite})")
+    return lines
+
+
+def with_path_summary(report_or_impact: dict) -> dict:
+    """Replace bulky path arrays with path_summary lines; keep full paths off the wire."""
+    impact = report_or_impact.get("impact", report_or_impact)
+    if "affected" not in impact:
+        return report_or_impact
+    slim = []
+    for item in impact["affected"]:
+        row = {k: v for k, v in item.items() if k != "path"}
+        row["path_summary"] = path_summary_lines(item.get("path") or [])
+        material = (item.get("attrs") or {}).get("material")
+        if material:
+            row["material"] = material
+        slim.append(row)
+    impact = dict(impact)
+    impact["affected"] = slim
+    impact["paths"] = "summary"
+    if "impact" in report_or_impact:
+        out = dict(report_or_impact)
+        out["impact"] = impact
+        return out
+    return impact
 
 
 def cmd_import(ws: engine.Workspace, args) -> dict:
@@ -84,13 +123,30 @@ def cmd_impact(ws: engine.Workspace, args) -> dict:
     if args.md:
         Path(args.md).write_text(engine.render_markdown(report), encoding="utf-8", newline="\n")
     if args.brief:
-        return {
+        payload = {
             "query": impact["query"],
             "counts": impact.get("counts"),
-            "affected": [{"key": a["key"], "status": a["status"], "hops": a["hops"]} for a in impact.get("affected", [])],
+            "affected": [
+                {
+                    "key": a["key"],
+                    "status": a["status"],
+                    "hops": a["hops"],
+                    "path": a.get("path"),
+                    "attrs": a.get("attrs"),
+                }
+                for a in impact.get("affected", [])
+            ],
             "content_sha256": report["content_sha256"],
             "written": {"json": args.out, "markdown": args.md},
         }
+        if args.paths == "summary":
+            return with_path_summary(payload)
+        payload["affected"] = [
+            {"key": a["key"], "status": a["status"], "hops": a["hops"]} for a in impact.get("affected", [])
+        ]
+        return payload
+    if args.paths == "summary":
+        return with_path_summary(report)
     return report
 
 
@@ -129,6 +185,12 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("inspect"); p.add_argument("key")
     p = sub.add_parser("impact"); p.add_argument("key"); p.add_argument("--backward", action="store_true")
     p.add_argument("--assume", nargs="*", default=[]); p.add_argument("--out"); p.add_argument("--md"); p.add_argument("--brief", action="store_true")
+    p.add_argument(
+        "--paths",
+        choices=("full", "summary"),
+        default="full",
+        help="full = keep path arrays; summary = one hop line per edge (file:line)",
+    )
     p = sub.add_parser("facts"); p.add_argument("--kind")
     p = sub.add_parser("annotate"); p.add_argument("target"); p.add_argument("text"); p.add_argument("--by"); p.add_argument("--supersedes")
     p = sub.add_parser("annotations"); p.add_argument("target", nargs="?")
