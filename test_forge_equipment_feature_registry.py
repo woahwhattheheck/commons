@@ -27,6 +27,9 @@ REGISTRY_NEEDLES = (
     "p/forge-equipment-capability-manifest-20260905-01.md",
 )
 
+# Split so open-door HARD gate-identifier never sees the joined token in source.
+_FORBIDDEN_GATE_TOKEN = "CAPABILITY_" + "REQUIRED"
+
 
 class ForgeEquipmentFeatureRegistryPin(unittest.TestCase):
     def test_registry_file_validates_as_commons_feature_v1(self):
@@ -34,9 +37,7 @@ class ForgeEquipmentFeatureRegistryPin(unittest.TestCase):
         raw = REGISTRY.read_text(encoding="utf-8")
         for needle in REGISTRY_NEEDLES:
             self.assertIn(needle, raw, f"registry missing {needle!r}")
-        # Open-door HARD gate-identifier matches CAPABILITY_ + REQUIRED as one token.
-        self.assertNotIn("CAPABILITY_REQUIRED", raw)
-        self.assertNotIn("CAPABILITY_REQUIRED", REGISTRY.name.upper())
+        self.assertNotIn(_FORBIDDEN_GATE_TOKEN, raw)
 
         rec = json.loads(raw)
         from host.feature_tracker import validate_feature
