@@ -12,6 +12,7 @@ import os
 import queue
 import re
 import sqlite3
+import sys
 import threading
 import time
 import urllib.error
@@ -21,6 +22,9 @@ import uuid
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Callable
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from integrations.shared_equipment.services import CombinedCatalog, redacted
 
 
 DEFAULT_UPSTREAM = "http://127.0.0.1:8777"
@@ -242,12 +246,13 @@ class ToolCallStore:
 def _tool_prompt(message: str, tools: list[dict[str, Any]]) -> str:
     catalog = json.dumps(tools, ensure_ascii=False, separators=(",", ":"))
     return (
-        "You are connected to the full live public Commons MCP through a history-preserving outer tool loop. "
+        "You are connected to the full live public Commons MCP and private shared Slack/GitHub equipment through a history-preserving outer tool loop. "
         "You may use any listed tool. When a tool is needed, reply with exactly one envelope and no "
         "surrounding text:\n"
         f"{CALL_OPEN}{{\"call_id\":\"a unique id\",\"name\":\"tool name\",\"arguments\":{{}}}}{CALL_CLOSE}\n"
         "After a result arrives, continue normally or issue another exact envelope. If no tool is needed, "
-        "reply normally. Do not invent tool names.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
+        "reply normally. Do not invent tool names. Private equipment uses existing service account access; "
+        "credentials are never supplied to you. Service responses may have pagination; follow it when needed.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
         + catalog
         + "\n\nMESSAGE:\n"
         + message
@@ -330,7 +335,7 @@ class ToolLoop:
                     self.catalog.call,
                 )
             prompt = (
-                "Commons MCP returned this exact result. Continue the same response. Use another exact "
+                "The selected tool returned this result. Continue the same response. Use another exact "
                 "tool envelope if useful; otherwise answer normally.\n<commons_tool_result>"
                 + json.dumps(
                     {"call_id": call["call_id"], "name": call["name"], "result": result},
@@ -550,6 +555,9 @@ class Handler(BaseHTTPRequestHandler):
         parsed = urllib.parse.urlsplit(self.path)
         query = urllib.parse.parse_qs(parsed.query)
         try:
+            if parsed.path == "/v1/tools":
+                self._send(200, {"ok": True, "tools": self.server.catalog.tools()})
+                return
             if parsed.path in ("/", "/health", "/v1/peers"):
                 upstream = self.server.upstream.health()
                 tools = self.server.catalog.tools()
@@ -602,6 +610,24 @@ class Handler(BaseHTTPRequestHandler):
             self._send(502, {"ok": False, "error": type(exc).__name__, "message": str(exc)})
 
     def do_POST(self) -> None:
+        if urllib.parse.urlsplit(self.path).path == "/v1/tools/call":
+            try:
+                size = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(size).decode("utf-8"))
+                for field in ("request_id", "call_id", "name"):
+                    if not isinstance(payload.get(field), str) or not payload[field].strip():
+                        raise ValueError(field + " must be a nonempty string")
+                arguments = payload.get("arguments", {})
+                if not isinstance(arguments, dict):
+                    raise ValueError("arguments must be an object")
+                result = self.server.loop.calls.execute_journaled(
+                    "equipment:" + payload["request_id"], payload["call_id"],
+                    payload["name"], arguments, self.server.catalog.call)
+                self._send(200, {"ok": True, "request_id": payload["request_id"],
+                    "call_id": payload["call_id"], "result": redacted(result)})
+            except Exception as exc:
+                self._send(400, {"ok": False, "error": type(exc).__name__, "message": redacted(str(exc))})
+            return
         if urllib.parse.urlsplit(self.path).path != "/v1/message":
             self._send(404, {"ok": False, "error": "not_found"})
             return
@@ -646,13 +672,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--cache-ttl", type=float, default=300.0)
     parser.add_argument("--max-tool-steps", type=int, default=16)
     parser.add_argument("--max-protocol-retries", type=int, default=4)
+    parser.add_argument("--equipment-config", type=Path, default=Path.home() / ".commons" / "equipment.json")
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     upstream = UpstreamClient(args.upstream)
-    catalog = McpCatalog(args.mcp_url, ttl_seconds=args.cache_ttl)
+    catalog = CombinedCatalog(McpCatalog(args.mcp_url, ttl_seconds=args.cache_ttl))
     calls = ToolCallStore(args.call_db)
     events = EventStore(args.event_log)
     loop = ToolLoop(
@@ -663,6 +690,15 @@ def main(argv: list[str] | None = None) -> int:
         max_protocol_retries=args.max_protocol_retries,
     )
     server = ToolGateway(("127.0.0.1", args.port), loop, events, upstream, catalog)
+    carrier = None
+    if args.equipment_config.is_file():
+        from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier
+        config = json.loads(args.equipment_config.read_text(encoding="utf-8"))
+        route = config.get("slack_carrier")
+        if route:
+            carrier = SlackEquipmentCarrier(catalog, calls, route,
+                args.equipment_config.with_name("equipment_slack_cursor.json"))
+            carrier.start()
     print(
         json.dumps(
             {
@@ -677,6 +713,8 @@ def main(argv: list[str] | None = None) -> int:
     except KeyboardInterrupt:
         return 0
     finally:
+        if carrier is not None:
+            carrier.stop()
         server.server_close()
         calls.close()
     return 0
