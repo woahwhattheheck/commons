@@ -255,7 +255,7 @@ class RoleStore:
         if role.get("occupant"):
             raise RoleError(
                 f"role {role_id} already occupied by session "
-                f"{role['occupant'].get('session_id')}; transfer first"
+                f"{role['occupant'].get('session_id')}; transfer or release first"
             )
         occupant: dict[str, Any] = {
             "session_id": _require_str(session_id, "session_id"),
@@ -368,6 +368,47 @@ class RoleStore:
             raise RoleError("purpose mutated during bind_access_route")
         if role["obligations"] != preserved_obligations:
             raise RoleError("obligations mutated during bind_access_route")
+        self._write(role)
+        return deepcopy(role)
+
+    def release(
+        self,
+        role_id: str,
+        *,
+        from_session_id: str | None = None,
+    ) -> dict[str, Any]:
+        """Clear occupant so a later session can equip again.
+
+        Preserves purpose, obligations, tools, and bound access_route fields.
+        Does not delete the role. Optional from_session_id guards against a
+        stale release from the wrong session.
+        """
+        role = self.get(role_id)
+        current = role.get("occupant")
+        if not current:
+            raise RoleError(f"role {role_id} has no occupant to release")
+        if from_session_id and current.get("session_id") != from_session_id:
+            raise RoleError(
+                f"occupant mismatch: expected {from_session_id}, "
+                f"have {current.get('session_id')}"
+            )
+        preserved_purpose = role["purpose"]
+        preserved_obligations = deepcopy(role["obligations"])
+        preserved_routes = deepcopy(role.get("access_routes") or [])
+        role["last_released"] = {
+            "session_id": current.get("session_id"),
+            "harness": current.get("harness"),
+            "seat": current.get("seat"),
+            "released_at": _utc_now(),
+        }
+        role["occupant"] = None
+        role["updated_at"] = _utc_now()
+        if role["purpose"] != preserved_purpose:
+            raise RoleError("purpose mutated during release")
+        if role["obligations"] != preserved_obligations:
+            raise RoleError("obligations mutated during release")
+        if role.get("access_routes") != preserved_routes:
+            raise RoleError("access_routes mutated during release")
         self._write(role)
         return deepcopy(role)
 

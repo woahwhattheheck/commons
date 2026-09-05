@@ -6,6 +6,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --seat HINGE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py bind-route ROLE --route grokbot_control_g2 --session-id sess-1 --last-run-id run-9 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
 """
 
@@ -75,6 +76,16 @@ def build_parser() -> argparse.ArgumentParser:
     b.add_argument("--last-run-id", help="last G2 run_id")
     b.add_argument("--pool-id", help="pool name only; never invent a second pool")
 
+    r = sub.add_parser(
+        "release",
+        help="clear occupant so a later session can equip (keeps bound routes)",
+    )
+    r.add_argument("role_id")
+    r.add_argument(
+        "--from-session",
+        help="optional guard: must match current occupant.session_id",
+    )
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -121,6 +132,13 @@ def main(argv: list[str] | None = None) -> int:
                     session_id=args.session_id,
                     last_run_id=args.last_run_id,
                     pool_id=args.pool_id,
+                )
+            )
+        elif args.cmd == "release":
+            _print(
+                store.release(
+                    args.role_id,
+                    from_session_id=args.from_session,
                 )
             )
         elif args.cmd == "inspect":
