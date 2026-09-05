@@ -1366,15 +1366,24 @@ class CommonsGateway:
 
     def read_observatory(self, arguments: Any) -> dict[str, Any]:
         """Return the Observatory bake. Optional view filter. Never a gate."""
-        from host.observatory import read_observatory
+        from host.observatory import select_snapshot
         args = arguments if isinstance(arguments, dict) else {}
-        return read_observatory(str(Path(__file__).resolve().parent), args)
+        sha = self.truth.head_sha()
+        snap = self._read_json("observatory.json", sha)
+        if not isinstance(snap, dict) or snap.get("schema") != "commons-observatory/v0.1":
+            raise CommonsError("OBSERVATORY_UNAVAILABLE", "the canonical Observatory bake is missing or invalid",
+                               state="UNVERIFIED", git_sha=sha, path="observatory.json")
+        result = select_snapshot(snap, args, now=self.now())
+        result["git_sha"] = sha
+        result["provenance"]["git_sha"] = sha
+        return result
 
     def observe_work(self, arguments: Any) -> dict[str, Any]:
         """Project current sessions, work, collisions, and attention."""
-        from host.observatory import observe_work
         args = arguments if isinstance(arguments, dict) else {}
-        return observe_work(str(Path(__file__).resolve().parent), args)
+        result = self.read_observatory({**args, "view": "snapshot"})
+        result["filter"] = args.get("filter") or {}
+        return result
 
     def project_live_work(self, arguments: Any) -> dict[str, Any]:
         """Rebuild the Observatory snapshot from current bakes and optional events."""

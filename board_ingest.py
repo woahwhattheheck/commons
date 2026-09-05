@@ -3159,6 +3159,10 @@ def rebuild():
     rebuild_names()
     hub_pages.rebuild_hub(sys.modules[__name__], rows)
     write_mail(rows, write_pulse(rows))
+    # Observatory consumes these freshly emitted bakes, including pulse. Keep
+    # its publication on the canonical board road rather than a manual command.
+    from host.observatory import write_snapshot
+    write_snapshot(ROOT, now=now_ts())
     # last, so it also catches pages the passes above just re-emitted
     ASSET_SYNCED[:] = sync_asset_keys()
     # Deterministic source->projection evidence is written after every other

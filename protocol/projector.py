@@ -355,10 +355,8 @@ def project_economy(legacy: dict[str, Any]) -> dict[str, Any]:
     offer = recovery.get("offer") if isinstance(recovery.get("offer"), dict) else {}
     truth = recovery.get("truth") if isinstance(recovery.get("truth"), dict) else {}
     cash = truth.get("collected_cash_usd")
-    if cash is None:
-        cash = offer.get("collected_cash_usd")
     if not isinstance(cash, (int, float)) or isinstance(cash, bool):
-        cash = 0
+        cash = None
     replies = truth.get("replies_observed")
     if not isinstance(replies, int) or isinstance(replies, bool):
         replies = 0
@@ -368,8 +366,8 @@ def project_economy(legacy: dict[str, Any]) -> dict[str, Any]:
     return {
         "loop": "observed need → independently verified buyer → bounded offer → authorized contact → delivered transport → human reply → accepted scope → delivery → acceptance → payment → cash",
         "collected_cash_usd": cash,
-        "cash_state": offer.get("cash_state") or truth.get("bank_available") or "NOT_LANDED",
-        "bank_available": truth.get("bank_available") or "NOT_LANDED",
+        "cash_state": (offer.get("cash_state") or truth.get("bank_available") or UNKNOWN) if cash is not None else UNKNOWN,
+        "bank_available": truth.get("bank_available") or UNKNOWN,
         "buyer": truth.get("buyer") or UNKNOWN,
         "replies_observed": replies,
         "distinct_contacts_sent": contacts,
@@ -378,9 +376,9 @@ def project_economy(legacy: dict[str, Any]) -> dict[str, Any]:
             "draft", "intent", "invoice", "checkout_page", "sandbox_stripe",
             "wallet_capability", "token_balance", "unverified_buyer_interest",
         ],
-        "next_economic_action": "Keep USD 0 visible. Do not send outreach or spend from this projector.",
+        "next_economic_action": "Report only sourced cash; missing evidence is UNKNOWN. Do not send outreach or spend from this projector.",
         "evidence": [
-            _evidence("revenue/payment_ready/recovery.json", "VERIFIED" if recovery else "UNKNOWN", field="truth.collected_cash_usd"),
+            _evidence("revenue/payment_ready/recovery.json", "OBSERVED" if cash is not None else "UNKNOWN", field="truth.collected_cash_usd"),
         ],
     }
 
@@ -448,7 +446,7 @@ def briefing_from(snapshot_parts: dict[str, Any]) -> dict[str, Any]:
         statements.append({"text": line, "evidence": snapshot_parts["cockpit"].get("evidence") or []})
     economy = snapshot_parts["economy"]
     statements.append({
-        "text": "Commons revenue remains USD %s." % economy["collected_cash_usd"],
+        "text": cash_statement(economy),
         "evidence": economy["evidence"],
     })
     landings = [row for row in snapshot_parts["timeline"] if row.get("kind") == "LANDING"]
@@ -462,7 +460,7 @@ def briefing_from(snapshot_parts: dict[str, Any]) -> dict[str, Any]:
         "unfinished_work": [row["task_id"] for row in snapshot_parts["work_map"] if row["state"] not in {"TERMINAL", "RELEASED", "SUPERSEDED"}],
         "blocked_work": [row["session_id"] for row in blocked],
         "recent_landings": [row.get("event_id") for row in landings[-8:]],
-        "economic_truth": "USD %s collected_cash; bank_available=%s" % (economy["collected_cash_usd"], economy["bank_available"]),
+        "economic_truth": "%s bank_available=%s" % (cash_statement(economy), economy["bank_available"]),
         "highest_leverage_next": snapshot_parts.get("routes")[:3] if snapshot_parts.get("routes") else [],
         "statements": statements,
         "handoff": {
@@ -471,6 +469,11 @@ def briefing_from(snapshot_parts: dict[str, Any]) -> dict[str, Any]:
             "continue_tool": "continue_from_observation",
         },
     }
+
+
+def cash_statement(economy: dict[str, Any]) -> str:
+    cash = economy.get("collected_cash_usd")
+    return "Collected cash is UNKNOWN (no numeric cash truth observed)." if cash is None else "Commons revenue remains USD %s." % cash
 
 
 def _presence_rows(legacy: dict[str, Any], now: str, stale_after: int) -> list[dict[str, Any]]:
@@ -769,7 +772,7 @@ def project(
         ),
         "%s claims present (existence, not sessions)." % len(presence),
         "No verified positive replies." if economy["replies_observed"] == 0 else "%s human replies observed." % economy["replies_observed"],
-        "Commons revenue remains USD %s." % economy["collected_cash_usd"],
+        cash_statement(economy),
     ]
     if counts["STALE"]:
         lines.insert(2, "%s stale." % counts["STALE"])
@@ -781,6 +784,12 @@ def project(
         "protocol_version": PROTOCOL_VERSION,
         "state": "BAKE",
         "now": now,
+        "source_coverage": legacy.get("source_coverage") or [],
+        "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
+        "board_motion": [
+            {key: row.get(key) for key in ("id", "from", "to", "ts", "kind")}
+            for row in (legacy.get("recent") or []) if isinstance(row, dict)
+        ][:20],
         "stale_after_seconds": stale_after_seconds,
         "head": {
             "sha": head_sha or pulse.get("head") or UNKNOWN,
