@@ -16,23 +16,58 @@ jobs:
           fetch-depth: 100
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /integrations/
-            /test_grokbot_client_reference_roundtrip.py
-            /agent-rescue.html
-            /features/registry/spark-g2-client-reference-roundtrip-20260905-01.json
-            /p/spark-g2-client-reference-roundtrip-20260905-01.md
-      - name: Verify actual checkout script through case submission
+            /*.html
+            /door.js
+            /session.js
+            /commons.css
+            /test_door_hub.js
+            /test_forge_door_autopsy_label.py
+            /integrations/transferable_roles/
+            /independent_commons_mcp/console.html
+            /to/index.html
+            /memory/index.html
+            /ping/poll.html
+            /discord/plugin.html
+            /slack/plugin.html
+            /players/CODEX_SOL.html
+            /players/CODEX_SOL-amber-hour.html
+      - name: Verify label and role integration
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor 1999266d7b8cea6e8ba6c0dd558dda109d507650 HEAD
-          python3 -m unittest -v test_grokbot_client_reference_roundtrip
+          git merge-base --is-ancestor fb8844504ae8254294b85a4f936abdbb378c49fa HEAD
+          python3 -m unittest -v test_forge_door_autopsy_label
+          python3 integrations/transferable_roles/test_roles.py
+          python3 integrations/transferable_roles/test_diagnostic_reply_cash_pointers.py
+          node test_door_hub.js
+      - name: Verify cached static label behavior
+        run: |
+          node - <<'JS'
+          const fs = require('fs'), vm = require('vm'), assert = require('assert');
+          const sandbox = {document:undefined,window:undefined};
+          sandbox.globalThis = sandbox;
+          vm.runInNewContext(fs.readFileSync('door.js','utf8'),sandbox);
+          const link = (href,text) => ({textContent:text,getAttribute(){return href;}});
+          const stale = link('./agent-rescue.html','agent survival');
+          const current = link('./agent-rescue.html','Agent Failure Autopsy · $29');
+          const other = link('./diagnostic.html','GGUF diagnostic');
+          sandbox.COMMONS_DOORS.relabelStaticAutopsyDoor({querySelectorAll(){return [stale,current,other];}});
+          assert.strictEqual(stale.textContent,'Agent Failure Autopsy · $29');
+          assert.strictEqual(current.textContent,'Agent Failure Autopsy · $29');
+          assert.strictEqual(other.textContent,'GGUF diagnostic');
+          console.log('CACHED_STATIC_AUTOPSY_LABEL_PASS');
+          JS
       - name: Read back current main and audit
         run: |
           set -euo pipefail
           git fetch --depth=100 origin main
           python3 - <<'PY'
-          import subprocess
-          paths = ["test_grokbot_client_reference_roundtrip.py","agent-rescue.html","features/registry/spark-g2-client-reference-roundtrip-20260905-01.json","p/spark-g2-client-reference-roundtrip-20260905-01.md","integrations/grokbot_control/README.md","integrations/grokbot_control/store.py","integrations/grokbot_control/gateway.py","integrations/grokbot_control/client.py"]
+          import json, pathlib, subprocess
+          fixture = json.loads(pathlib.Path("integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json").read_text())
+          for row in fixture["knowledge"]:
+              path = row["pointer"]
+              if path.startswith("revenue/reply_to_revenue/") or path == "commerce.html":
+                  subprocess.run(["git","cat-file","-e","origin/main:"+path],check=True)
+          paths = ["door.js","index.html","test_forge_door_autopsy_label.py","p/forge-door-autopsy-label-20260905-01.md","integrations/transferable_roles/README.md","integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json","integrations/transferable_roles/test_diagnostic_reply_cash_pointers.py","p/hinge-r4-diagnostic-reply-cash-pointers-20260905-01.md"]
           for path in paths:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
@@ -162,4 +197,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 1999266d7b8cea6e8ba6c0dd558dda109d507650 --required-path test_grokbot_client_reference_roundtrip.py
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit fb8844504ae8254294b85a4f936abdbb378c49fa --required-path door.js --required-path integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json
