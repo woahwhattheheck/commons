@@ -1,9 +1,1 @@
-wire-titanmcp-live-redeploy-20260905-210500
-ref=main
-project=webmcp-pad
-triggered=2026-09-05T21:05:00Z
-permanent=1
-pad_blob=24bf9c27d0e065eff1c880612bc4b531dfae4754
-pad_commit=1cf9086fa16d6a513d96e5194cb2b1df7fe1b6fa
-mcp_blob=93e2f0334d015d651b52fce4b15af702ae4d4a7e
-verified=pad_full_tip_1.4.5_Group_Room_registerTool
+latch clear-pad restore ac739248 1788643587
