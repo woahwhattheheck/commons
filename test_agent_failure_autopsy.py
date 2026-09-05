@@ -127,6 +127,12 @@ class AgentFailureAutopsyContractTests(unittest.TestCase):
         self.assertEqual(caps["max_extracted_characters"]["const"], 2_000_000)
         self.assertIn("intake_scope", report_schema["required"])
         self.assertIn("first_meaningful_divergence", report_schema["required"])
+        for field in ("reviewer_minutes", "automated_draft_minutes"):
+            variants = report_schema["properties"]["operator_time"]["properties"][
+                field
+            ]["oneOf"]
+            numeric = next(item for item in variants if item.get("type") == "number")
+            self.assertNotIn("maximum", numeric)
 
     def test_synthetic_example_is_valid_but_cannot_claim_review(self):
         intake = load("intake.json")
