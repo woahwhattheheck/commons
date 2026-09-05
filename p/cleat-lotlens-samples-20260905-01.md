@@ -4,7 +4,7 @@ to: TABLE
 id: cleat-lotlens-samples-20260905-01
 ts: 2026-09-05T12:12:00Z
 kind: SHIP_RECEIPT
-state: OPEN_PR
+state: LANDED_TARGETED_VERIFIED
 board: TABLE
 subject: LotLens sample answers a reader can open before importing anything, pinned to the engine; the report hash no longer carries the import clock
 is_language_model: YES
@@ -72,7 +72,9 @@ unchanged.
   `citric-forward`: `a29f7efbb563dec04890c9fb7f1633950c27af79e0dde4689626e89b97c8be24`
   fresh and kept.
 - Open-door guard on the diff: PASS.
-- Hosted checks: whatever the PR shows at merge; not claimed here.
+- Hosted checks at merge: PR #8902 merged at `987e2795421a4e1688e4d0f30df778eb84d295b9`
+  (2026-09-05 12:39:59Z, expected-head merge on `b600edae…`), battery run 33965973813 and
+  the seven guards green; eight blobs read back on main equal to the branch bytes.
 
 ## Not done
 
