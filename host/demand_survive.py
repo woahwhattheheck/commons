@@ -414,7 +414,15 @@ def complete_demand(root, demand_id, pointer, receipt="", who="", ts=None):
 def project(root, status_filter=""):
     rows = list_demands(root)
     if status_filter:
-        rows = [r for r in rows if derive_status(r) == status_filter]
+        wanted = str(status_filter or "").strip()
+        if wanted not in STATUSES:
+            return {
+                "schema": SCHEMA,
+                "n": 0,
+                "demands": [],
+                "error": "status filter must be one of open|occupied|done",
+            }
+        rows = [r for r in rows if derive_status(r) == wanted]
     return {
         "schema": SCHEMA,
         "n": len(rows),
@@ -571,13 +579,14 @@ def _need(args, *names):
 
 
 def main(argv=None):
+    # Never an admission. Free-form CLI flags only — no verb/action enum window.
     parser = argparse.ArgumentParser(description="Demands that survive the conversation")
     parser.add_argument("--root", default=DEFAULT_ROOT)
-    parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("--self-test", default=False, const=True, nargs="?")
     sub = parser.add_subparsers(dest="cmd")
 
     p_list = sub.add_parser("list", help="project demands")
-    p_list.add_argument("--status", choices=STATUSES, default="")
+    p_list.add_argument("--status", default="")
 
     p_show = sub.add_parser("show", help="show one demand")
     p_show.add_argument("--id", default="")
@@ -628,7 +637,11 @@ def main(argv=None):
 
     root = args.root
     if args.cmd == "list":
-        json.dump(project(root, status_filter=args.status), sys.stdout, indent=2)
+        status = str(getattr(args, "status", "") or "").strip()
+        if status and status not in STATUSES:
+            sys.stderr.write("status must be open, occupied, or done\n")
+            return 2
+        json.dump(project(root, status_filter=status), sys.stdout, indent=2)
         sys.stdout.write("\n")
         return 0
     if args.cmd == "show":
