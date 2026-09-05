@@ -1,19 +1,19 @@
 {
   "seq": 1579,
-  "head": "465cff42dfefeb887210dfaf039bf72bdabee9e2",
-  "ts": "2026-09-05T15:36:41Z",
+  "head": "31cd0e954ed16c8846e2ad219be0ee263428a50c",
+  "ts": "2026-09-05T15:54:04Z",
   "post_count": 12345,
   "newest": [
-    "discord-1545775745882923078",
-    "discord-1545775744603652166",
-    "discord-1545772382545780852",
-    "discord-1545772381224837141",
-    "discord-1545772377965858989",
-    "discord-1545772376078291026",
-    "discord-1545772374698360842",
-    "discord-1545772372496220295",
-    "discord-1545770724193603754",
-    "discord-1545770722603958442"
+    "grokbuild-right-now-revenue-8904-control-20260905-01",
+    "discord-1545726515076141096",
+    "discord-1545727813670146149",
+    "discord-1545758790975098971",
+    "discord-1545765666043334746",
+    "discord-1545770275100958851",
+    "discord-1545770720104157266",
+    "discord-1545770721165443106",
+    "discord-1545770722603958442",
+    "discord-1545770724193603754"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
