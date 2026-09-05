@@ -37,16 +37,16 @@ class ScopeToDeliveryTests(unittest.TestCase):
         view = MODULE.compose_catalog(self.catalog, self.bindings)
         ids = [item["id"] for item in view["listings"]]
         self.assertEqual(ids, [item["id"] for item in self.catalog["listings"]])
-        self.assertIn("same-day-agent-survival-proof", ids)
+        self.assertNotIn("same-day-agent-survival-proof", ids)
         self.assertIn("sku-muhlnickel-titan-20260826", ids)
         self.assertIn("sku-muhlnickel-attested-inference", ids)
         self.assertIn("sku-muhlnickel-generated-token-capacity", ids)
         self.assertEqual(view["funnel_truth"]["accepted_scopes"], 0)
         self.assertEqual(view["funnel_truth"]["paid_deliveries"], 0)
         self.assertEqual(view["funnel_truth"]["collected_cash_usd"], "0.00")
-        survival = next(item for item in view["listings"] if item["id"] == "same-day-agent-survival-proof")
-        self.assertEqual(survival["amount"], "2500.00")
-        self.assertEqual(survival["acceptance_row_count"], 4)
+        sprint = next(item for item in view["listings"] if item["id"] == "production-survival-sprint")
+        self.assertEqual(sprint["amount"], "15000.00")
+        self.assertEqual(sprint["acceptance_row_count"], 1)
 
     def test_json_fixtures_reject_floating_point(self):
         for path in (ROOT / "revenue" / "scope_to_delivery").rglob("*.json"):
@@ -130,7 +130,7 @@ class ScopeToDeliveryTests(unittest.TestCase):
         path = ROOT / "revenue" / "scope_to_delivery" / "fixtures" / "accepted_agreement.json"
         original = path.read_text(encoding="utf-8")
         try:
-            path.write_text(original.replace('"2500.00"', "2500.00"), encoding="utf-8")
+            path.write_text(original.replace('"15000.00"', "15000.00"), encoding="utf-8")
             with self.assertRaisesRegex(MODULE.PipelineError, "floating point"):
                 MODULE.load_json(path)
         finally:
@@ -189,7 +189,6 @@ class ScopeToDeliveryTests(unittest.TestCase):
 
     def test_strongest_sku_bindings_exist(self):
         required = {
-            "same-day-agent-survival-proof",
             "production-survival-sprint",
             "gguf-diagnostic-10d-12k",
             "white-box-gguf-pilot-30d",

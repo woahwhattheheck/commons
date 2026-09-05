@@ -1,7 +1,7 @@
 {
   "schema_version": "commons-scope-observations/v1",
   "kind": "EXECUTION_OBSERVATIONS",
-  "agreement_id": "agr-synthetic-survival-20260828-01",
+  "agreement_id": "agr-synthetic-production-survival-20260828-01",
   "observations": [
     {
       "observation_id": "obs-work-started-20260828-01",
@@ -9,7 +9,7 @@
       "row_id": null,
       "result": "UNMEASURED",
       "public_ref": "revenue/scope_to_delivery/fixtures/synthetic-happy-path.txt",
-      "sha256": "2a4b23c6241786c7977432973e371038f8e2c1b2e2b52d59e4afa320e9a9dd76",
+      "sha256": "7d82130263dc884893160594a8f0fc7f12d55b07e03376e7c2f6731de7a84b69",
       "observed_at": "2026-08-28T13:05:00-04:00",
       "note": "Synthetic work started inside the window."
     },
@@ -19,7 +19,7 @@
       "row_id": "happy-path",
       "result": "PASS",
       "public_ref": "revenue/scope_to_delivery/fixtures/synthetic-happy-path.txt",
-      "sha256": "2a4b23c6241786c7977432973e371038f8e2c1b2e2b52d59e4afa320e9a9dd76",
+      "sha256": "7d82130263dc884893160594a8f0fc7f12d55b07e03376e7c2f6731de7a84b69",
       "observed_at": "2026-08-28T14:00:00-04:00",
       "note": "Happy path recovered with one external effect."
     },

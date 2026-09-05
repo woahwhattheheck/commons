@@ -152,8 +152,8 @@ class ListingRegistryTests(unittest.TestCase):
             self.assertIn("append_post", lowered)
             self.assertIn("commerce.html", lowered)
 
-    def test_survival_proof_upwork_blocked_account(self):
-        row = self.rows["same-day-agent-survival-proof__upwork-project-catalog"]
+    def test_bounded_service_upwork_blocked_account(self):
+        row = self.rows["ho-issue-to-pr__upwork-project-catalog"]
         self.assertEqual(row["fit"], "FIT")
         self.assertEqual(row["package_state"], "PACKAGE_READY")
         self.assertEqual(row["listing_state"], "BLOCKED_PROVIDER_ACCOUNT")
@@ -196,13 +196,15 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(row["account_status"], "OWNER_PLATFORM")
         self.assertIn("owner", row["next_action"].lower())
 
-    def test_show_hn_draft_only(self):
-        row = self.rows["same-day-agent-survival-proof__show-hn-post"]
-        self.assertEqual(row["fit"], "FIT")
-        self.assertEqual(row["published_status"], "NOT_PUBLISHED")
-        self.assertIsNone(row["url"])
-        tip = self.rows["sku-tip-20260826__show-hn-post"]
-        self.assertEqual(tip["fit"], "UNFIT")
+    def test_show_hn_has_no_offer_draft_without_a_fit(self):
+        rows = [
+            row for row in self.registry["listings"]
+            if row["surface_id"] == "show-hn-post"
+        ]
+        self.assertTrue(rows)
+        self.assertTrue(all(row["fit"] == "UNFIT" for row in rows))
+        asset_ids = {row["id"] for row in self.assets["assets"]}
+        self.assertTrue(all(row["id"] not in asset_ids for row in rows))
 
     def test_assets_ready_match_fit_and_forbid_live_claims(self):
         fit_ids = {r["id"] for r in self.registry["listings"] if r["fit"] == "FIT"}

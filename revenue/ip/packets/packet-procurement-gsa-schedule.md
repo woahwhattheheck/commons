@@ -31,27 +31,27 @@ ANALYSIS: Procurement channel gsa-schedule is composed from the distribution lay
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa` (62464 bytes)
-- `distribution.html` sha256 `fe19383fdc5a5488ce3ab47f4a387629bdc1bbb558a0ba7859c187379741b790` (7306 bytes)
-- `host/distribution.py` sha256 `51c273d0d10b8bf8dd89219889eb1e5cbf388a1b8a95db371c591ecdf032b73b` (29377 bytes)
-- `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)
-- `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
+- `carrier.js` sha256 `97ec93829159181b70d53144b277021127124300bdaa1e2eafc859cf67e28535` (63909 bytes)
+- `distribution.html` sha256 `72f87b6ec40b1577a68d0dc6c9c4a966abd8a3474df82080f7a221ac9e26245c` (7419 bytes)
+- `host/distribution.py` sha256 `677905f558c84922a4f794d0f92b6a5a602f1abba85b494b323f9a136d475c74` (30108 bytes)
+- `ground/DISTRIBUTION.md` sha256 `3fa79d4f9e1d87d259457557553dc2afb15e069bc6b96f2d02b8caba4d90c4c7` (2707 bytes)
+- `p/grok-distribution-layer-20260828-01.md` sha256 `fe6028dcb971e4efa0164ff869ec72081c22b2f5b9f147465704556cfda327af` (2017 bytes)
 
 ### Feature and resource trackers (`resource-feature-trackers`, `SHIPPED_ON_MAIN`)
 
-- `ground/FEATURES.md` sha256 `df4c32be18ae22779eb6cee30f008e3f5b64a4e99925d0732697f9895b6f3464` (937 bytes)
-- `ground/FEATURE_TRACKER.md` sha256 `40ee75391965077e5479e1755ce8a200ddd38a610903d1aa6ab128cd87c8dd3c` (3290 bytes)
-- `host/feature_tracker.py` sha256 `cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346` (36840 bytes)
-- `test_feature_tracker.py` sha256 `52382e09fd6c3164a5486cf712050ec5523f58d715c821db3425d55a58d58615` (24900 bytes)
-- `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `839bfe6a567447a31963a9bbb7d0100230be0615129df7ea0957c51229381f52` (11401 bytes)
-- `ground/RESOURCE_LEDGER.json` sha256 `845937936841f56d957dfc4ade14b3709eb6140523e2fa6540e916ff7f507334` (123097 bytes)
-- `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
+- `ground/FEATURES.md` sha256 `4ba396bdd5f44a1eecabb0e5ce761757cb16eae6093cdc26ccd406bbbecf7ef4` (961 bytes)
+- `ground/FEATURE_TRACKER.md` sha256 `0aa8b3e521ac21fd143994a7b18eaba0843fc3aa905eda46198acbe747663e6c` (3345 bytes)
+- `host/feature_tracker.py` sha256 `a35b5687240042c2eaf0ac67d30eeb52231bfacbc823984ac42540c6dd04eba3` (37708 bytes)
+- `test_feature_tracker.py` sha256 `a7e7b784f797fcb3cacde2fc6e066635d11945c7c34d00ebb9f626ac98bc3e56` (25364 bytes)
+- `features/registry/feature-tracker-20260828-01.json` sha256 `733bc99a1af05c4f99596a30bfece1ca133ac9106bc2db6b616f520f28c95f07` (1161 bytes)
+- `resources.html` sha256 `c34c08c3dbd24876625f8bab5bff6213b8562706ce847c2f579c583125804ec7` (11404 bytes)
+- `ground/RESOURCE_LEDGER.json` sha256 `17439efe4b11976ec7f597c87ce9547726b17e942d8b56893419b898a2574b89` (124877 bytes)
+- `host/resource_ledger.py` sha256 `8ae983e3b285c310f05150a948cb5a055077e0c9ed44d78a27e3d93e62fca620` (22370 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
 
-- `evidence/README.md` sha256 `c23d0b482e84507e8212fac65320f6f529b7fd383d5cec3d17ed9fa12849503c` (2012 bytes)
-- `ground/03_EVIDENCE_ANNEX.md` sha256 `f63fc39de2ad57455ff3cee9fa99260b4e4e433a9e88b15d8fb29bde4537ab3a` (3641 bytes)
+- `evidence/README.md` sha256 `67c2e9d3a728b93635129d3bd4478b089a44bc78e0d89495101459f59dfe8381` (2046 bytes)
+- `ground/03_EVIDENCE_ANNEX.md` sha256 `442261049f26a2f903f19f913fa7b94419e7cdc7d07334e3adda7fc3e3f050d5` (3705 bytes)
 
 ## Stated funding (not expected value)
 

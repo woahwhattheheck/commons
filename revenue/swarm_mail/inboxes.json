@@ -44,7 +44,7 @@
       "inbox_id": "codex-sales", "agent_claim": "CODEX_SOL", "model_family": "CODEX", "local_part": "codex",
       "address_state": "UNPROVISIONED", "public_address": null, "purpose": "TARGETED_OUTREACH_AND_SALES", "send_mode": "DRAFT_ONLY",
       "daily_new_thread_limit": 10,
-      "sku_ids": ["same-day-agent-survival-proof", "production-survival-sprint", "gguf-diagnostic-10d-12k", "ho-issue-to-pr"],
+      "sku_ids": ["production-survival-sprint", "gguf-diagnostic-10d-12k", "ho-issue-to-pr"],
       "reply_owner": "CODEX_SOL", "handoff_classes": ["QUESTION", "POSITIVE_SCOPE", "NEEDS_HUMAN", "OPT_OUT", "COMPLAINT", "BOUNCE"]
     },
     {

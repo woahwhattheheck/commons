@@ -4,510 +4,6 @@
     {
       "account_status":"PUBLIC_SURFACE_EXISTS",
       "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"bd6fa65a62893ded4641cc75b16d57e932da400a768081eede847b6198d3afac",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"partner-vendor-directory"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__partner-vendor-directory",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"NOT_LISTED",
-      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":"woahwhattheheck/commons",
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"partner_vendor_directory",
-      "surface_id":"partner-vendor-directory",
-      "surface_name":"Partner / vendor directory",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Public RFP response pack (procurement_portal).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Public RFP response pack account in this session. Do not submit.",
-      "copy_sha256":"c7fb4078027436bc34708d2e464bb540f207baf01400f71c6fc858150af4591e",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/distribution.html",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"public-rfp-pack"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__public-rfp-pack",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Generate a truthful response pack for a named public RFP. Do not submit it to any portal.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"procurement_portal",
-      "surface_id":"public-rfp-pack",
-      "surface_name":"Public RFP response pack",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Upwork Project Catalog (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Upwork Project Catalog account in this session. Identity/KYC unmet. Do not submit.",
-      "copy_sha256":"5aabe6d185564cec39ffe7b14f5661ea79d1e108a4d0b7fe2eeeeec78bc6ad5a",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://support.upwork.com/hc/en-us/articles/360057397533-How-to-create-a-project-in-Project-Catalog",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"upwork-project-catalog"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__upwork-project-catalog",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Package-ready for bounded outcome offers. Do not create an Upwork account. Do not submit.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"upwork-project-catalog",
-      "surface_name":"Upwork Project Catalog",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Contra Services (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Contra Services account in this session. Identity/KYC unmet. Do not submit.",
-      "copy_sha256":"5055ac20ec826fc373c47e622167e2bf450b6226bac127b88f2a2a00c68478b4",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://contra.com/features/get-discovered",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"contra-services"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__contra-services",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Package-ready for bounded services. Do not create a Contra account. Do not submit.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"contra-services",
-      "surface_name":"Contra Services",
-      "url":null
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Fiverr Gig (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: NONE_IN_THIS_SESSION. Owner: NONE_IN_THIS_SESSION.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.\n\nBlocker: No authorized Fiverr Gig account in this session. Identity/KYC unmet. Do not submit.",
-      "copy_sha256":"79402f091c1df9feb4728e079fc1ea83c6ff7b87a6d4bd29b1e61d00b22f4d67",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://help.fiverr.com/hc/en-us/articles/360010451397-Creating-a-Gig",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"fiverr-gig"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__fiverr-gig",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Lower-ticket outcome Gig only if FIT. Identity, tax, and platform requirements unmet. Do not submit.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"fiverr-gig",
-      "surface_name":"Fiverr Gig",
-      "url":null
-    },
-    {
-      "account_status":"PUBLIC_SURFACE_EXISTS",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"5afd6e90893798bcd16a87b192a24194c79d64db3d40474d6bbc719181f5018d",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"commons-service-catalog"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__commons-service-catalog",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"SURFACE_LIVE",
-      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":"woahwhattheheck/commons",
-      "package_state":"PACKAGE_READY",
-      "published_status":"SURFACE_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"service_catalog",
-      "surface_id":"commons-service-catalog",
-      "surface_name":"Commons service catalog",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-    },
-    {
-      "account_status":"NONE_IN_THIS_SESSION",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Show HN DRAFT — NOT POSTED\n\nPremise: zero visitors. Failure-first. Link the static ladder and exact receipts.\nOffer: Same-Day Agent Survival Proof.\nPrice: USD 2500.00. Source terms win.\nCanonical: https://woahwhattheheck.github.io/commons/agent-rescue.html\nDo not invent traffic, comments, or buyers.\nDo not post this draft from this leftover.\n\nHonesty: posted=false. buyers=0. cash=0.00.",
-      "copy_sha256":"89fc6cd42f69117788e26065314a8a64a2a4f8bed98fb2c664f3f8182f1c7935",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://news.ycombinator.com/showhn.html",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"show-hn-post"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__show-hn-post",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"BLOCKED_PROVIDER_ACCOUNT",
-      "next_action":"Draft a failure-first Show HN from measured receipts. Zero visitors is the premise. Do not post from this leftover. Do not invent traffic.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":null,
-      "package_state":"PACKAGE_READY",
-      "published_status":"NOT_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"community_channel",
-      "surface_id":"show-hn-post",
-      "surface_name":"Show HN",
-      "url":null
-    },
-    {
-      "account_status":"PUBLIC_SURFACE_EXISTS",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
-      "copy":"Same-Day Agent Survival Proof — Commons listing asset (not a live external listing)\n\nOffer / SKU: same-day-agent-survival-proof\nOutcome: Same-Day Agent Survival Proof.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 2500.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
-      "copy_sha256":"8249b05ed416597e2a6e6e5d99b8bf958d3e797f961857625254c887668b6c3f",
-      "evidence_packet":{
-        "offer_id":"same-day-agent-survival-proof",
-        "refs":[
-          {
-            "blob_sha":"84b664c07d0677a92c8e79797f80ebde823da447",
-            "kind":"canonical_source",
-            "path":"revenue/production_survival/offer.json"
-          },
-          {
-            "kind":"listing_surface",
-            "official_url":"https://woahwhattheheck.github.io/commons/",
-            "path":"revenue/listing_registry/surfaces.json",
-            "surface_id":"slack-commons"
-          },
-          {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
-            "kind":"payment_capability",
-            "path":"revenue/payment_capability/registry.json"
-          },
-          {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
-            "kind":"profitability_bind",
-            "path":"ground/PROFITABILITY_BUILD_MAP.md"
-          },
-          {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
-            "kind":"current_work_bind",
-            "path":"ground/CURRENT_WORK.json"
-          }
-        ],
-        "sku":"same-day-agent-survival-proof"
-      },
-      "honesty":{
-        "buyers":0,
-        "listed":false,
-        "live_external_url":null,
-        "revenue_usd":"0.00",
-        "submitted":false
-      },
-      "id":"same-day-agent-survival-proof__slack-commons",
-      "kind":"READY_TO_SUBMIT_ASSET",
-      "last_verified":"2026-08-28T16:45:00Z",
-      "listed":false,
-      "listing_state":"SURFACE_LIVE",
-      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
-      "offer_id":"same-day-agent-survival-proof",
-      "offer_name":"Same-Day Agent Survival Proof",
-      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
-      "package_state":"PACKAGE_READY",
-      "published_status":"SURFACE_PUBLISHED",
-      "submission_status":"NOT_SUBMITTED",
-      "submit_allowed":false,
-      "submitted":false,
-      "surface_family":"community_channel",
-      "surface_id":"slack-commons",
-      "surface_name":"TokenJunkieLabs Slack #commons",
-      "url":"https://woahwhattheheck.github.io/commons/agent-rescue.html"
-    },
-    {
-      "account_status":"PUBLIC_SURFACE_EXISTS",
-      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
       "copy":"Production Survival Sprint — Commons listing asset (not a live external listing)\n\nOffer / SKU: production-survival-sprint\nOutcome: Production Survival Sprint.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 15000.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/agent-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/agent-rescue.html. Do not open a second CRM.",
       "copy_sha256":"8d6e40b71069cc8855a9e2777806ef66142ce233a5a9cb56aa13ac9576a0ec0e",
       "evidence_packet":{
@@ -525,17 +21,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -588,17 +84,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -651,17 +147,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -714,17 +210,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -777,17 +273,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -840,17 +336,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -903,17 +399,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -966,17 +462,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1029,17 +525,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1092,17 +588,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1155,17 +651,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1218,17 +714,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1281,17 +777,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1344,17 +840,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1407,17 +903,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1470,17 +966,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1533,17 +1029,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1596,17 +1092,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1659,17 +1155,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1722,17 +1218,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1785,17 +1281,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1848,17 +1344,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1911,17 +1407,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -1974,17 +1470,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2037,17 +1533,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2100,17 +1596,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2163,17 +1659,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2226,17 +1722,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2289,17 +1785,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2352,17 +1848,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2415,17 +1911,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2478,17 +1974,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2541,17 +2037,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2604,17 +2100,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2667,17 +2163,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2730,17 +2226,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2793,17 +2289,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2856,17 +2352,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2919,17 +2415,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -2982,17 +2478,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3045,17 +2541,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3108,17 +2604,17 @@
             "surface_id":"upwork-project-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3171,17 +2667,17 @@
             "surface_id":"contra-services"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3234,17 +2730,17 @@
             "surface_id":"fiverr-gig"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3297,17 +2793,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3360,17 +2856,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3423,17 +2919,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3486,17 +2982,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3549,17 +3045,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3612,17 +3108,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3675,17 +3171,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3738,17 +3234,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3801,17 +3297,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3864,17 +3360,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3927,17 +3423,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -3990,17 +3486,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4053,17 +3549,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4116,17 +3612,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4179,17 +3675,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4242,17 +3738,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4305,17 +3801,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4368,17 +3864,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4431,17 +3927,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4494,17 +3990,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4557,17 +4053,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4620,17 +4116,17 @@
             "surface_id":"sam-gov-procurement"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4683,17 +4179,17 @@
             "surface_id":"gsa-schedule"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4746,17 +4242,17 @@
             "surface_id":"public-rfp-pack"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4809,17 +4305,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4872,17 +4368,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4935,17 +4431,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -4998,17 +4494,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5061,17 +4557,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5124,17 +4620,17 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5187,17 +4683,17 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5250,17 +4746,17 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5294,6 +4790,762 @@
       "url":"https://woahwhattheheck.github.io/commons/attested-inference.html"
     },
     {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Dealer Service Lead Rescue Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: dealer-service-lead-rescue\nOutcome: Dealer Service Lead Rescue Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"3723c16414274d4f3c035292b893027c964447c5f772a52988d5598c96b8971e",
+      "evidence_packet":{
+        "offer_id":"dealer-service-lead-rescue",
+        "refs":[
+          {
+            "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+            "kind":"canonical_source",
+            "path":"revenue/dealer_service_lead_rescue/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"dealer-service-lead-rescue"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"dealer-service-lead-rescue__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Dealer Service Lead Rescue Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: dealer-service-lead-rescue\nOutcome: Dealer Service Lead Rescue Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"09a8330f93df1f90a6682aa8aeff16787d8c441903c904556ef2a185b8b6b412",
+      "evidence_packet":{
+        "offer_id":"dealer-service-lead-rescue",
+        "refs":[
+          {
+            "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+            "kind":"canonical_source",
+            "path":"revenue/dealer_service_lead_rescue/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"dealer-service-lead-rescue"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"dealer-service-lead-rescue__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Dealer Service Lead Rescue Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: dealer-service-lead-rescue\nOutcome: Dealer Service Lead Rescue Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html. Do not open a second CRM.",
+      "copy_sha256":"c72b4950b5dbd9ad64365a323f723de8b9c8da5aba81a9cfa5b88eb8e788d66c",
+      "evidence_packet":{
+        "offer_id":"dealer-service-lead-rescue",
+        "refs":[
+          {
+            "blob_sha":"9a0177e405e6ecbda5d648915c882fa31b4d9f3f",
+            "kind":"canonical_source",
+            "path":"revenue/dealer_service_lead_rescue/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"dealer-service-lead-rescue"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"dealer-service-lead-rescue__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"dealer-service-lead-rescue",
+      "offer_name":"Dealer Service Lead Rescue Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Plant Downtime Handoff Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: plant-downtime-handoff\nOutcome: Plant Downtime Handoff Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html. Do not open a second CRM.",
+      "copy_sha256":"b10000b98296f93e92788ff4bcc1213d24099f319fce6feaaa9668ca7b3c3426",
+      "evidence_packet":{
+        "offer_id":"plant-downtime-handoff",
+        "refs":[
+          {
+            "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+            "kind":"canonical_source",
+            "path":"revenue/plant_downtime_handoff/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"plant-downtime-handoff"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"plant-downtime-handoff__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Plant Downtime Handoff Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: plant-downtime-handoff\nOutcome: Plant Downtime Handoff Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html. Do not open a second CRM.",
+      "copy_sha256":"9a6f5533b6fef2ed893f83cf1906ca5d35aefa0626bfe678246a76f3a6e23fcf",
+      "evidence_packet":{
+        "offer_id":"plant-downtime-handoff",
+        "refs":[
+          {
+            "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+            "kind":"canonical_source",
+            "path":"revenue/plant_downtime_handoff/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"plant-downtime-handoff"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"plant-downtime-handoff__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Plant Downtime Handoff Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: plant-downtime-handoff\nOutcome: Plant Downtime Handoff Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html. Do not open a second CRM.",
+      "copy_sha256":"3be1dafecb0e17a5f23704bcb0de47ed4446b27e1f01e5aecbc68d9e46053b5f",
+      "evidence_packet":{
+        "offer_id":"plant-downtime-handoff",
+        "refs":[
+          {
+            "blob_sha":"9d01dd83be165ca322f576ba05bce2dbe81e48e4",
+            "kind":"canonical_source",
+            "path":"revenue/plant_downtime_handoff/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"plant-downtime-handoff"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"plant-downtime-handoff__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"plant-downtime-handoff",
+      "offer_name":"Plant Downtime Handoff Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Referral Intake Completeness Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: referral-intake-completeness\nOutcome: Referral Intake Completeness Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html. Do not open a second CRM.",
+      "copy_sha256":"00a872483b511983f92bc1181cafbc842b22034df776cbee5b0285ea7ff990be",
+      "evidence_packet":{
+        "offer_id":"referral-intake-completeness",
+        "refs":[
+          {
+            "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+            "kind":"canonical_source",
+            "path":"revenue/referral_intake_completeness/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"referral-intake-completeness"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"referral-intake-completeness__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Referral Intake Completeness Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: referral-intake-completeness\nOutcome: Referral Intake Completeness Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html. Do not open a second CRM.",
+      "copy_sha256":"cac62a937ff57067e287fe4b89055ad24225814f9fbc9276851d0ed6bf62c378",
+      "evidence_packet":{
+        "offer_id":"referral-intake-completeness",
+        "refs":[
+          {
+            "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+            "kind":"canonical_source",
+            "path":"revenue/referral_intake_completeness/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"referral-intake-completeness"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"referral-intake-completeness__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Referral Intake Completeness Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: referral-intake-completeness\nOutcome: Referral Intake Completeness Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/referral-intake-completeness.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/referral-intake-completeness.html. Do not open a second CRM.",
+      "copy_sha256":"331ff2f89f3e7cd8eb18340c24469c12f64ee75472da9ee1096f01cab173cf6a",
+      "evidence_packet":{
+        "offer_id":"referral-intake-completeness",
+        "refs":[
+          {
+            "blob_sha":"06bb53685f6aaca69ff08b436771fe115e0aa38b",
+            "kind":"canonical_source",
+            "path":"revenue/referral_intake_completeness/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"referral-intake-completeness"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"referral-intake-completeness__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"referral-intake-completeness",
+      "offer_name":"Referral Intake Completeness Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/referral-intake-completeness.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Repair Booking Exactly-Once Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: repair-booking-exactly-once-v1\nOutcome: Repair Booking Exactly-Once Diagnostic.\nSurface: Partner / vendor directory (partner_vendor_directory).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: NOT_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html. Do not open a second CRM.",
+      "copy_sha256":"bb37a738a5f4241bac3539f364db5afaa52db67522552f1db3eaa114d74156d3",
+      "evidence_packet":{
+        "offer_id":"repair-booking-exactly-once-v1",
+        "refs":[
+          {
+            "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+            "kind":"canonical_source",
+            "path":"revenue/repair_booking_preflight/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/ground/interconnect-vendors.md",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"partner-vendor-directory"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"repair-booking-exactly-once-v1"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"repair-booking-exactly-once-v1__partner-vendor-directory",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"NOT_LISTED",
+      "next_action":"Keep the interconnect vendor table as source. Do not mint a second vendor directory or invent partner logos.",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"NOT_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"partner_vendor_directory",
+      "surface_id":"partner-vendor-directory",
+      "surface_name":"Partner / vendor directory",
+      "url":null
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Repair Booking Exactly-Once Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: repair-booking-exactly-once-v1\nOutcome: Repair Booking Exactly-Once Diagnostic.\nSurface: Commons service catalog (service_catalog).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: woahwhattheheck/commons.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html. Do not open a second CRM.",
+      "copy_sha256":"355d0b1c69e98281d589d165fe0e0f53bb873c23fe71c8033c696f01b924021a",
+      "evidence_packet":{
+        "offer_id":"repair-booking-exactly-once-v1",
+        "refs":[
+          {
+            "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+            "kind":"canonical_source",
+            "path":"revenue/repair_booking_preflight/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/commerce.html",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"commons-service-catalog"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"repair-booking-exactly-once-v1"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"repair-booking-exactly-once-v1__commons-service-catalog",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "owner":"woahwhattheheck/commons",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"service_catalog",
+      "surface_id":"commons-service-catalog",
+      "surface_name":"Commons service catalog",
+      "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+    },
+    {
+      "account_status":"PUBLIC_SURFACE_EXISTS",
+      "chargeability_state":"NOT_CHARGEABLE_ON_THIS_SURFACE",
+      "copy":"Repair Booking Exactly-Once Diagnostic — Commons listing asset (not a live external listing)\n\nOffer / SKU: repair-booking-exactly-once-v1\nOutcome: Repair Booking Exactly-Once Diagnostic.\nSurface: TokenJunkieLabs Slack #commons (community_channel).\nPrice: USD 199.00. Source terms win; this asset does not rewrite them.\nConversion: https://woahwhattheheck.github.io/commons/repair-booking-preflight.html\nContact: tokenjunkielabs@gmail.com\n\nSubmission: NOT_SUBMITTED. submit_allowed=false.\nPublished: SURFACE_PUBLISHED. live external URL: none.\nAccount: PUBLIC_SURFACE_EXISTS. Owner: TokenJunkieLabs Slack C0BRGMDQB6G.\nChargeability: NOT_CHARGEABLE_ON_THIS_SURFACE.\n\nDo not paste this into a marketplace as if Commons already listed it.\nDo not duplicate-post this SKU onto this surface.\nRoute real buyer interest to https://woahwhattheheck.github.io/commons/repair-booking-preflight.html. Do not open a second CRM.",
+      "copy_sha256":"870109a64ed2fdbb59366c20f0ae0ccfb46a3e5a4de5dcbb2ac8f22db988e1ff",
+      "evidence_packet":{
+        "offer_id":"repair-booking-exactly-once-v1",
+        "refs":[
+          {
+            "blob_sha":"85b1aa55056105ce8f2f45fbd05ab3aa1d9fb060",
+            "kind":"canonical_source",
+            "path":"revenue/repair_booking_preflight/contract.json"
+          },
+          {
+            "kind":"listing_surface",
+            "official_url":"https://woahwhattheheck.github.io/commons/",
+            "path":"revenue/listing_registry/surfaces.json",
+            "surface_id":"slack-commons"
+          },
+          {
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
+            "kind":"payment_capability",
+            "path":"revenue/payment_capability/registry.json"
+          },
+          {
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
+            "kind":"profitability_bind",
+            "path":"ground/PROFITABILITY_BUILD_MAP.md"
+          },
+          {
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
+            "kind":"current_work_bind",
+            "path":"ground/CURRENT_WORK.json"
+          }
+        ],
+        "sku":"repair-booking-exactly-once-v1"
+      },
+      "honesty":{
+        "buyers":0,
+        "listed":false,
+        "live_external_url":null,
+        "revenue_usd":"0.00",
+        "submitted":false
+      },
+      "id":"repair-booking-exactly-once-v1__slack-commons",
+      "kind":"READY_TO_SUBMIT_ASSET",
+      "last_verified":"2026-08-28T16:45:00Z",
+      "listed":false,
+      "listing_state":"SURFACE_LIVE",
+      "next_action":"Surface already public. Do not remint. Do not duplicate-post this SKU onto this surface as a new listing.",
+      "offer_id":"repair-booking-exactly-once-v1",
+      "offer_name":"Repair Booking Exactly-Once Diagnostic",
+      "owner":"TokenJunkieLabs Slack C0BRGMDQB6G",
+      "package_state":"PACKAGE_READY",
+      "published_status":"SURFACE_PUBLISHED",
+      "submission_status":"NOT_SUBMITTED",
+      "submit_allowed":false,
+      "submitted":false,
+      "surface_family":"community_channel",
+      "surface_id":"slack-commons",
+      "surface_name":"TokenJunkieLabs Slack #commons",
+      "url":"https://woahwhattheheck.github.io/commons/repair-booking-preflight.html"
+    },
+    {
       "account_status":"NONE_IN_THIS_SESSION",
       "chargeability_state":"NOT_A_PRICED_SKU",
       "copy":"GitHub Marketplace-style listing DRAFT — NOT SUBMITTED, NOT PUBLISHED\n\nName: Commons Board MCP\nCategory: Developer tools / Agent tooling\nPricing: Free public door. Not a paid GitHub Marketplace app. Not a SKU.\nShort description: Public Commons board reads, posting, and receipts. Offer discovery is the public catalog, not a hidden tool.\n\nVerified posting tools: append_post, post_to_action_pad, fire_action, open_commons_composer\nVerified board-read tools: read_post, read_recent, measure_roads, verify_receipt, verify_durability\nOffer discovery: public commerce.html + revenue/outcome_commerce/catalog.json. Not an MCP tool name.\n\nCanonical: https://woahwhattheheck.github.io/commons/commons_mcp_app.html\nInventory: ground/MCP_INVENTORY.json\nContact: tokenjunkielabs@gmail.com\n\nHonesty: submit_allowed=false. published=false. live_url=null. buyers=0. cash=0.00.\nDo not create a GitHub Marketplace account from this leftover.\nDo not submit this draft. Do not claim publication.",
@@ -5302,7 +5554,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5313,27 +5565,27 @@
             "surface_id":"github-marketplace"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5375,7 +5627,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5386,27 +5638,27 @@
             "surface_id":"mcp-so-directory"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5448,7 +5700,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5459,27 +5711,27 @@
             "surface_id":"smithery"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5521,7 +5773,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5532,27 +5784,27 @@
             "surface_id":"glama-mcp"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5594,7 +5846,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5605,27 +5857,27 @@
             "surface_id":"pulsemcp"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5667,7 +5919,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5678,27 +5930,27 @@
             "surface_id":"awesome-mcp-servers"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5740,7 +5992,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5751,27 +6003,27 @@
             "surface_id":"partner-vendor-directory"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5813,7 +6065,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5824,27 +6076,27 @@
             "surface_id":"commons-service-catalog"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5886,7 +6138,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5897,27 +6149,27 @@
             "surface_id":"github-about-topics"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -5959,7 +6211,7 @@
         "offer_id":"commons-mcp",
         "refs":[
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"canonical_source",
             "path":"ground/MCP_INVENTORY.json"
           },
@@ -5970,27 +6222,27 @@
             "surface_id":"slack-commons"
           },
           {
-            "blob_sha":"24a7f578f352b0d9dae8fa2a24ecd24a14e74b95",
+            "blob_sha":"a4faa2f76a4c3be4af3d43007ec4634294315cd7",
             "kind":"mcp_inventory",
             "path":"ground/MCP_INVENTORY.json"
           },
           {
-            "blob_sha":"287e0856b63a4194fef4ecabbc2d947280bb8fd0",
+            "blob_sha":"26f156427e02d510ed4af8161fef0c187ea9477c",
             "kind":"mcp_source",
             "path":"commons_mcp.py"
           },
           {
-            "blob_sha":"0234adfa0ddc2eb38aa0e25cf25ae325343614a5",
+            "blob_sha":"ac7ec0d474292917ec9b11a2abd9341b11fd12c9",
             "kind":"payment_capability",
             "path":"revenue/payment_capability/registry.json"
           },
           {
-            "blob_sha":"c8546120d8b7545bd65b0125ef1c005019cbfa8b",
+            "blob_sha":"934991c30db314cefdc0888331a408c827f48b2d",
             "kind":"profitability_bind",
             "path":"ground/PROFITABILITY_BUILD_MAP.md"
           },
           {
-            "blob_sha":"0af61c68acd90eebd6d077de65d66101dbef7b72",
+            "blob_sha":"7970d8ee0fc2829dce2b0f71cde99675c592e1ad",
             "kind":"current_work_bind",
             "path":"ground/CURRENT_WORK.json"
           }
@@ -6024,7 +6276,7 @@
       "url":"https://woahwhattheheck.github.io/commons/commons_mcp_app.html"
     }
   ],
-  "count":94,
+  "count":98,
   "kind":"COMMONS_LISTING_ASSETS",
   "schema_version":"listing-registry/v1",
   "submit_allowed":false,

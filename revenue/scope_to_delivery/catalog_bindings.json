@@ -3,63 +3,6 @@
   "kind": "SCOPE_TO_DELIVERY_BINDINGS",
   "note": "Bindings compose catalog listings and funnels into bounded packets. Source terms still win. This file does not invent buyers, acceptances, or cash.",
   "skus": {
-    "same-day-agent-survival-proof": {
-      "family": "service",
-      "in_scope": [
-        "Open provider-hosted working proof",
-        "Visible happy path and forced failure or stop path",
-        "Rollback or reset path",
-        "Durable receipt and one-command handoff"
-      ],
-      "out_of_scope": [
-        "credentials",
-        "private-data",
-        "pii-phi",
-        "authentication",
-        "billing",
-        "production-migration",
-        "ongoing-hosting-or-sla",
-        "white-box-or-model-files"
-      ],
-      "deliverables": [
-        "working-proof",
-        "happy-path",
-        "failure-or-stop-path",
-        "rollback-or-reset",
-        "durable-receipt"
-      ],
-      "refund_text": "If the accepted proof is not delivered inside the agreed business-day window, the authorized amount is refunded unless the buyer elects in writing one free next-business-day repair.",
-      "default_acceptance_rows": [
-        {
-          "id": "happy-path",
-          "given": "Public or synthetic input named in the written terms",
-          "when": "The happy path is run inside the agreed window",
-          "then": "The agreed recovery outcome is observed and hashed",
-          "evidence_required": ["public_ref", "sha256"]
-        },
-        {
-          "id": "failure-or-stop-path",
-          "given": "The same named input",
-          "when": "The named failure is forced",
-          "then": "The stop or failure path is visible and hashed",
-          "evidence_required": ["public_ref", "sha256"]
-        },
-        {
-          "id": "rollback-or-reset",
-          "given": "State after the forced failure",
-          "when": "Rollback or reset is invoked",
-          "then": "The named reset outcome is observed and hashed",
-          "evidence_required": ["public_ref", "sha256"]
-        },
-        {
-          "id": "durable-receipt",
-          "given": "The completed run",
-          "when": "The receipt is published",
-          "then": "The receipt links the proof, states limits, and carries content hashes",
-          "evidence_required": ["public_ref", "sha256"]
-        }
-      ]
-    },
     "production-survival-sprint": {
       "family": "service",
       "in_scope": [

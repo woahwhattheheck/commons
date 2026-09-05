@@ -66,73 +66,13 @@
     "next_edge": "QUALIFIED_BUYER"
   },
   "funnels": {
-    "same-day-agent-survival-proof": {
-      "priority": 2,
-      "readiness": "READY_FOR_QUALIFICATION",
-      "buyer": "An agent operator with one named production failure that public or synthetic input can reproduce.",
-      "trigger": "A workflow loses progress, repeats an effect, or fails after restart.",
-      "acquisition": {
-        "primary_channel": "Named-human follow-up to the existing delivered prospect list",
-        "alternate_channels": [
-          "Public failure diagnosis attached to a relevant issue or post",
-          "agent-rescue.html direct share"
-        ],
-        "message": "Send one sentence: My agent should [outcome], but in production it [failure].",
-        "route": "commerce.html#same-day-agent-survival-proof",
-        "cta": "Send the one-sentence failure"
-      },
-      "qualification": {
-        "route": "agent-rescue.html",
-        "required": [
-          "One non-confidential outcome-and-failure sentence",
-          "Public or synthetic reproduction input",
-          "Written Given/When/Then binary test",
-          "Exact delivery window and timezone"
-        ],
-        "state_after": "QUALIFIED"
-      },
-      "conversion": {
-        "mode": "CUSTOMER_SPECIFIC_INVOICE",
-        "status": "NOT_ISSUED",
-        "next_step": "Accept the binary test and receive a buyer-specific hosted invoice.",
-        "state_after": "FUNDED",
-        "evidence_required": "Cleared provider authorization at the agreed window start; a reply or draft invoice is not funding."
-      },
-      "fulfillment": {
-        "deliverables": [
-          "Open provider-hosted working proof",
-          "Visible happy path and forced failure or stop path",
-          "Rollback or reset path",
-          "Durable receipt and one-command handoff"
-        ],
-        "acceptance": [
-          "Agreed sentence and binary test match the delivery",
-          "Happy and failure paths run inside the window",
-          "Receipt links the proof and states limits"
-        ],
-        "refund": "If the accepted proof is not delivered inside the agreed business-day window, the authorized amount is refunded. Buyer-requested scope changes restart the clock only after written agreement. The acceptance contract additionally lets the buyer elect in writing to receive one free next-business-day repair attempt instead of the refund."
-      },
-      "measurement": {
-        "dom_action": "qualification-open",
-        "click_truth": "INTENT_ONLY",
-        "first_evidence_state": "DISCOVERED",
-        "success_state": "BANK_AVAILABLE"
-      },
-      "next_offer": [
-        "production-survival-sprint"
-      ],
-      "gaps": [
-        "No verified-positive buyer reply yet",
-        "A delivery-capacity window must be named before close"
-      ]
-    },
     "production-survival-sprint": {
-      "priority": 4,
+      "priority": 3,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A team with one buyer-owned agent workflow that needs production-failure recovery.",
       "trigger": "A smaller proof shows the failure spans the buyer's workflow and needs a bounded implementation sprint.",
       "acquisition": {
-        "primary_channel": "Accepted Same-Day Agent Survival Proof follow-on",
+        "primary_channel": "Qualified buyer handoff for one named buyer-owned workflow",
         "alternate_channels": [
           "Named-human outreach tied to a public production incident",
           "agent-rescue.html ladder"
@@ -185,7 +125,7 @@
       ]
     },
     "gguf-diagnostic-10d-12k": {
-      "priority": 10,
+      "priority": 9,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An open-weight or local-GGUF lab controlling the file and a runnable evaluation harness.",
       "trigger": "A model behavior question needs reversible evidence before a larger engagement.",
@@ -245,7 +185,7 @@
       ]
     },
     "white-box-gguf-pilot-30d": {
-      "priority": 11,
+      "priority": 10,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An organization controlling a GGUF family, evaluation harness, success measures, and a technical owner.",
       "trigger": "A paid diagnostic or equivalent evidence justifies a thirty-day model-family pilot.",
@@ -304,7 +244,7 @@
       ]
     },
     "ho-issue-to-pr": {
-      "priority": 5,
+      "priority": 4,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "The owner of one named public repository issue who needs one merged CI-green pull request.",
       "trigger": "A valuable issue is open and has a binary merged-SHA acceptance test.",
@@ -360,7 +300,7 @@
       ]
     },
     "ho-meeting-packet": {
-      "priority": 6,
+      "priority": 5,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An organization with one upcoming public meeting that needs an accessible, sourced packet.",
       "trigger": "A named meeting date exists and the source material needs a readable decision packet.",
@@ -420,7 +360,7 @@
       ]
     },
     "ho-security-questionnaire": {
-      "priority": 8,
+      "priority": 7,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A vendor whose sale or partnership is blocked by one named security questionnaire.",
       "trigger": "Required cells are stalling a commercial review and the buyer can provide complete inputs privately.",
@@ -477,7 +417,7 @@
       ]
     },
     "ho-pixel-pack": {
-      "priority": 7,
+      "priority": 6,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A buyer who wants one visible sprite, walk loop, and public-post-linked speak line.",
       "trigger": "A named public page needs a small original agent character with a binary visual deliverable.",
@@ -586,7 +526,7 @@
       ]
     },
     "sku-seat-20260826": {
-      "priority": 13,
+      "priority": 12,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A Commons window that wants one month of named presence without buying a claim or access.",
       "trigger": "The buyer wants a visible recurring presence while the public roads remain unchanged.",
@@ -640,7 +580,7 @@
       ]
     },
     "sku-unlock-20260826": {
-      "priority": 12,
+      "priority": 11,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A buyer wanting one small public print pack, build bump, or session note.",
       "trigger": "The buyer needs one small artifact or scheduling bump and accepts that the result stays public.",
@@ -694,7 +634,7 @@
       ]
     },
     "sku-monthly-tip-20260826": {
-      "priority": 3,
+      "priority": 2,
       "readiness": "READY_FOR_CHECKOUT",
       "buyer": "A recurring Commons supporter who wants no membership entitlement.",
       "trigger": "The buyer wants a small recurring support loop without changing public access.",
@@ -742,7 +682,7 @@
       ]
     },
     "sku-boost-20260826": {
-      "priority": 14,
+      "priority": 13,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A recurring supporter who wants to keep the Commons table upgraded.",
       "trigger": "The buyer wants recurring support tied to a visible improvement rather than a seat.",
@@ -793,7 +733,7 @@
       ]
     },
     "sku-whitebox-hour-20260826": {
-      "priority": 9,
+      "priority": 8,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A technical buyer wanting one dated White Box or dests work session.",
       "trigger": "The buyer needs a bounded expert hour before committing to a diagnostic or pilot.",
@@ -849,7 +789,7 @@
       ]
     },
     "sku-muhlnickel-titan-20260826": {
-      "priority": 15,
+      "priority": 14,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An organization seeking one narrow actual-machine Muhlnickel or Titan keep-or-build engagement.",
       "trigger": "A scoped machine outcome cannot be met by a proof, sprint, hour, diagnostic, or White Box pilot.",
@@ -905,7 +845,7 @@
       ]
     },
     "sku-muhlnickel-generated-token-capacity": {
-      "priority": 16,
+      "priority": 15,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A team paying cloud output-token rates who needs dirty-cheap generated capacity on an already-connected model.",
       "trigger": "Published cloud output rates make a high-volume generation job too expensive relative to the outcome.",
@@ -915,7 +855,7 @@
           "attested-inference.html direct share",
           "Upwork LLM cost-optimization briefs as buyer-side fit only"
         ],
-        "message": "10 million generated tokens for $1 on Muhlnickel \u2014 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
+        "message": "10 million generated tokens for $1 on Muhlnickel — 50% below the lowest cited cloud output rate. Model, window, and receipt written before checkout.",
         "route": "commerce.html#sku-muhlnickel-generated-token-capacity",
         "cta": "Send the capacity ask"
       },
@@ -966,7 +906,7 @@
       ]
     },
     "sku-muhlnickel-attested-inference": {
-      "priority": 17,
+      "priority": 16,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A team with one public or non-confidential model task and an exact evaluation rule.",
       "trigger": "The buyer needs a checkable model run or bounded compute job without buying a five-figure engagement first.",
@@ -1018,7 +958,6 @@
         "success_state": "BANK_AVAILABLE"
       },
       "next_offer": [
-        "same-day-agent-survival-proof",
         "sku-muhlnickel-titan-20260826"
       ],
       "gaps": [
@@ -1028,7 +967,7 @@
       ]
     },
     "dealer-service-lead-rescue": {
-      "priority": 18,
+      "priority": 17,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A dealer service manager or BDC lead whose inbound service leads must produce one follow-up and one appointment.",
       "trigger": "A duplicate submit or worker restart causes a service lead to be followed up twice or not at all.",
@@ -1083,7 +1022,7 @@
       ]
     },
     "plant-downtime-handoff": {
-      "priority": 19,
+      "priority": 18,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A plant maintenance leader whose downtime events must reach one technician and parts handoff.",
       "trigger": "A duplicate fault report or worker restart causes a handoff to dispatch twice or disappear.",
@@ -1138,7 +1077,7 @@
       ]
     },
     "referral-intake-completeness": {
-      "priority": 20,
+      "priority": 19,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A clinic operations director whose complete referrals must create one intake ticket while incomplete packets remain held.",
       "trigger": "A retry advances an incomplete referral or creates a second queue ticket for a complete packet.",
@@ -1193,7 +1132,7 @@
       ]
     },
     "repair-booking-exactly-once-v1": {
-      "priority": 21,
+      "priority": 20,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A repair-scheduling owner whose request must create exactly one appointment or an explicit stopped or rolled-back result.",
       "trigger": "A retry, timeout, crash, or webhook replay creates duplicate appointments or leaves an ambiguous result.",
@@ -1249,39 +1188,6 @@
     }
   },
   "listings": [
-    {
-      "id": "same-day-agent-survival-proof",
-      "name": "Same-Day Agent Survival Proof",
-      "state": "PUBLIC_OFFER",
-      "source": {
-        "path": "revenue/production_survival/offer.json",
-        "pointer": "/entry_offer",
-        "offer_id": "same-day-agent-survival-proof",
-        "blob_sha": "84b664c07d0677a92c8e79797f80ebde823da447",
-        "terms_authority": "source"
-      },
-      "pricing": {
-        "currency": "USD",
-        "mode": "fixed_outcome",
-        "components": [
-          {
-            "id": "entry_fee",
-            "kind": "fixed",
-            "amount": "2500.00",
-            "basis": "one accepted one-business-day proof contract"
-          }
-        ]
-      },
-      "outcome": {
-        "acceptance_source": "revenue/production_survival/acceptance_contract.md",
-        "receipt_schema": "revenue/production_survival/receipt.schema.json",
-        "evidence_required": true
-      },
-      "routes": {
-        "human": "agent-rescue.html",
-        "machine": "revenue/production_survival/offer.json"
-      }
-    },
     {
       "id": "production-survival-sprint",
       "name": "Production Survival Sprint",

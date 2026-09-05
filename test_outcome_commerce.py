@@ -19,7 +19,7 @@ import unittest
 ROOT = Path(__file__).resolve().parent
 COMMERCE = ROOT / "revenue" / "outcome_commerce"
 EXAMPLES = COMMERCE / "examples"
-FROZEN_EIGHT_SHA256 = "bea09853202464ee37b4540de30c13bc56252c9967c871d3a786e27e7dcc8469"
+FROZEN_RETAINED_SOURCE_LISTINGS_SHA256 = "2244fc7b521ee42171fd7962cf2ae12eee2991cc4dc1327831ea9e87d41d5d0e"
 FROZEN_SOURCE_ADAPTERS_SHA256 = "b2593f52e40c6ab4902660a00dce2304f1767ce3a6a5ee2c963d0dd7a3cd4e67"
 RECORDED_STRIPE_SKUS = (
     {
@@ -789,8 +789,8 @@ class OutcomeCommerceTests(unittest.TestCase):
         ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
         self.assertEqual(ordered[:3], [
             "sku-tip-20260826",
-            "same-day-agent-survival-proof",
             "sku-monthly-tip-20260826",
+            "production-survival-sprint",
         ])
         by_id = {row["id"]: row for row in listings}
         for listing_id, funnel in funnels.items():
@@ -834,6 +834,16 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertEqual(truth["next_edge"], "QUALIFIED_BUYER")
         self.assertIn("p/slack-1787769698-642529.md", truth["source"])
 
+    def test_unverified_agent_failure_autopsy_is_not_in_catalog_surfaces(self) -> None:
+        page = (ROOT / "agent-rescue.html").read_text(encoding="utf-8")
+        self.assertIn(
+            "A checkout button will appear only after a live $29 payment link is created and verified.",
+            page,
+        )
+        ids = {row["id"] for row in self.catalog["listings"]}
+        self.assertNotIn("same-day-agent-survival-proof", ids)
+        self.assertNotIn("same-day-agent-survival-proof", self.catalog["funnels"])
+
     def test_canonical_catalog_requires_the_complete_funnel_triad(self) -> None:
         candidate = copy.deepcopy(self.catalog)
         for field in ("funnel_stage_order", "funnel_truth", "funnels"):
@@ -850,14 +860,6 @@ class OutcomeCommerceTests(unittest.TestCase):
                 self.catalog["funnels"][offer["id"]]["fulfillment"]["refund"],
                 offer["refund"],
             )
-        survival = json.loads(
-            (ROOT / "revenue" / "production_survival" / "offer.json").read_text(encoding="utf-8")
-        )
-        refund = self.catalog["funnels"]["same-day-agent-survival-proof"]["fulfillment"]["refund"]
-        for sentence in survival["entry_offer"]["refund"].split(". "):
-            self.assertIn(sentence.rstrip("."), refund)
-        self.assertIn("one free next-business-day repair attempt", refund)
-
     def test_host_rejects_incomplete_or_false_funnel_contracts(self) -> None:
         def errors_for(mutator):
             catalog = copy.deepcopy(self.catalog)
@@ -875,7 +877,7 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertTrue(any("click_truth" in item for item in errors), errors)
 
         errors = errors_for(
-            lambda catalog: catalog["funnels"]["same-day-agent-survival-proof"]["conversion"].__setitem__(
+            lambda catalog: catalog["funnels"]["production-survival-sprint"]["conversion"].__setitem__(
                 "mode", "ACTIVE_STRIPE_LINK"
             )
         )
@@ -904,16 +906,16 @@ class OutcomeCommerceTests(unittest.TestCase):
         )
         self.assertTrue(any("canonical catalog missing" in item for item in errors), errors)
 
-    def test_extensible_unique_listings_preserve_frozen_eight(self) -> None:
+    def test_extensible_unique_listings_preserve_retained_source_offers(self) -> None:
         listings = self.catalog["listings"]
         ids = [row["id"] for row in listings]
         self.assertGreaterEqual(len(listings), 17)
         self.assertEqual(len(set(ids)), len(listings))
         self.assertEqual(
-            hashlib.sha256(canonical(listings[:8]).encode("utf-8")).hexdigest(),
-            FROZEN_EIGHT_SHA256,
+            hashlib.sha256(canonical(listings[:7]).encode("utf-8")).hexdigest(),
+            FROZEN_RETAINED_SOURCE_LISTINGS_SHA256,
         )
-        for row in listings[:8]:
+        for row in listings[:7]:
             self.assertIn("source", row)
             self.assertNotIn("source_artifact", row)
             self.assertNotIn("checkout", row)
