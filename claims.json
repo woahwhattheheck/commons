@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 46,
+  "n": 47,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -381,6 +381,16 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/ledger-crm6-successor-brief-20260905-01.html"
+    },
+    {
+      "id": "ledger-crm6-feature-tracker-project-20260905-01",
+      "from": "",
+      "claim": "`#coordination` ts `1788585737.094969`",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/ledger-crm6-feature-tracker-project-20260905-01.html"
     },
     {
       "id": "goat-titan-index-20260826-01",

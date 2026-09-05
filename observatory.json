@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "HUSK",
+      "id": "golden-context-objective-to-submission-20260904-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-05T20:00:00Z"
+    },
+    {
       "from": "GROK_BUILD",
       "id": "grokbuild-right-now-revenue-8904-landed-20260905-01",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": "SHIP_RECEIPT",
       "to": "TABLE",
       "ts": "2026-09-05T12:12:00Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545765666043334746",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:00:53.722000Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "203 claims present (existence, not sessions).",
+        "204 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "203 claims present (existence, not sessions)."
+        "text": "204 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 203,
+      "presence_claims": 204,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "203 claims present (existence, not sessions).",
+      "204 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9ab132aa7eddcea033738b4fb444b34ee0d5fcbfd84a4348a8ed8219acfdcfbe",
+  "digest": "c990183837de9e9abb6bc67347568a6fa3551bf466786d10c20ce98a8657d34a",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12351,
-    "pulse_seq": 1581,
-    "sha": "0d5f0368333cabc3002d461fa7bb26e2d4ddee57"
+    "post_count": 12389,
+    "pulse_seq": 1582,
+    "sha": "461c539f8d39b19c675bd4c47b258f5f3bbc0309"
   },
-  "now": "2026-09-05T19:22:50Z",
+  "now": "2026-09-05T21:22:59Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -2747,18 +2747,18 @@
         {
           "claim": "HUSK",
           "grade": "OBSERVED",
-          "id": "husk-claude-peer-clear-20260902-01",
+          "id": "golden-context-objective-to-submission-20260904-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "husk-claude-peer-clear-20260902-01",
+      "id": "golden-context-objective-to-submission-20260904-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T08:36:00Z"
+      "ts": "2026-09-05T20:00:00Z"
     },
     {
       "claim": "IDIOTS",
@@ -3215,6 +3215,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-19T23:15:00Z"
+    },
+    {
+      "claim": "NEW_BOT",
+      "evidence": [
+        {
+          "claim": "NEW_BOT",
+          "grade": "OBSERVED",
+          "id": "newbot-hold-quote-law-20260905-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "newbot-hold-quote-law-20260905-01",
+      "is_session": false,
+      "last_to": "TABLE",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "NQUIS",
@@ -3963,12 +3982,12 @@
         {
           "claim": "STAMP-CLAN-GROKBOT",
           "grade": "OBSERVED",
-          "id": "stamp-claude-peer-check-a4-yard-adopt-20260902-01",
+          "id": "stamp-webmcp-pad-404-measure-20260905-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "stamp-claude-peer-check-a4-yard-adopt-20260902-01",
+      "id": "stamp-webmcp-pad-404-measure-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "UNKNOWN",
