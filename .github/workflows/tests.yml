@@ -16,39 +16,46 @@ jobs:
           fetch-depth: 100
           sparse-checkout-cone-mode: false
           sparse-checkout: |
-            /integrations/
-            /revenue/agent_failure_autopsy/
-            /free-sample.html
-            /sales-sample/FREE-SAMPLE-SALES-INSERT.md
-            /agent-rescue.html
-            /test_quill_free_sample_autopsy_funnel.py
-            /test_grokbot_paid_case.py
-            /test_grokbot_paid_case_receipt.py
-            /test_grokbot_client_reference_roundtrip.py
-      - name: Verify receipt truth and latest funnel and role changes
+            /integrations/transferable_roles/
+            /revenue/outcome_commerce/catalog.json
+            /llms.txt
+            /llms_txt.py
+            /read_mesh.py
+            /test_llms_pulse.py
+            /test_quill_llms_autopsy_commercial.py
+            /tests/test_forge_survival_catalog_route.py
+            /.github/workflows/llms-txt.yml
+      - name: Verify generated offers and composed role references
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor 39b3152cd59e5b85d1874c9248c5f54692f97e71 HEAD
-          python3 -m unittest -v test_quill_free_sample_autopsy_funnel test_grokbot_paid_case test_grokbot_paid_case_receipt test_grokbot_client_reference_roundtrip
-          python3 integrations/transferable_roles/test_roles.py
-          python3 integrations/transferable_roles/test_diagnostic_contract_spine_pointers.py
+          git merge-base --is-ancestor f6457bd822f121bebfe6da84a28aeb0dc2faf9be HEAD
+          git merge-base --is-ancestor 056659742f0c31466036771f826d1d5534504eeb HEAD
+          git merge-base --is-ancestor 6b9e4b19865d272d4c325c943a77b00709012f52 HEAD
+          python3 -m unittest -v test_quill_llms_autopsy_commercial test_llms_pulse
+          python3 -m unittest discover -v -s integrations/transferable_roles -p 'test_*.py'
+          python3 tests/test_forge_survival_catalog_route.py
       - name: Read back current main and audit
         run: |
           set -euo pipefail
           git fetch --depth=100 origin main
           python3 - <<'PY'
           import json, pathlib, subprocess
-          fixture = json.loads(pathlib.Path("integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json").read_text())
+          fixture = json.loads(pathlib.Path("integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json").read_text())
           for row in fixture["knowledge"]:
               path = row["pointer"]
-              if path.endswith(("/contract.json", "/receipt.md")):
+              if path.startswith(("revenue/", "integrations/")) or path == "commerce.html":
                   subprocess.run(["git","cat-file","-e","origin/main:"+path],check=True)
-          paths = ["free-sample.html","sales-sample/FREE-SAMPLE-SALES-INSERT.md","test_quill_free_sample_autopsy_funnel.py","p/quill-free-sample-autopsy-funnel-20260905-01.md","integrations/transferable_roles/README.md","integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json","integrations/transferable_roles/test_diagnostic_contract_spine_pointers.py","p/hinge-r4-diagnostic-contract-spine-pointers-20260905-01.md","integrations/grokbot_control/paid_case.py","test_grokbot_paid_case_receipt.py","integrations/grokbot_control/README.md","revenue/agent_failure_autopsy/seats.json","revenue/agent_failure_autopsy/SEATS.md","integrations/grokbot_control/__init__.py","features/registry/spark-g2-paid-case-receipt-surface-20260905-01.json","p/spark-g2-paid-case-receipt-surface-20260905-01.md"]
+          paths = ["llms_txt.py","test_quill_llms_autopsy_commercial.py","p/quill-llms-autopsy-commercial-20260905-01.md","revenue/outcome_commerce/catalog.json","tests/test_forge_survival_catalog_route.py","p/forge-cta-survival-route-20260905-01.md","integrations/transferable_roles/README.md","integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json","integrations/transferable_roles/test_autopsy_paid_case_pointers.py","integrations/transferable_roles/test_autopsy_reply_cash_pointers.py","integrations/transferable_roles/test_autopsy_tip_shelf_pointers.py","p/hinge-r4-autopsy-paid-case-pointers-20260905-01.md","p/hinge-r4-autopsy-reply-cash-pointers-20260905-01.md","p/hinge-r4-autopsy-tip-shelf-pointers-20260905-01.md"]
           for path in paths:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
               assert actual == expected,path
               print("READBACK",path,actual)
+          section = lambda text: text.split("## Commercial",1)[1].split("## Fresh",1)[0]
+          tested = section(pathlib.Path("llms.txt").read_text())
+          current = section(subprocess.check_output(["git","show","origin/main:llms.txt"],text=True))
+          assert tested == current, "current-main commercial section moved"
+          print("READBACK llms.txt Commercial section PASS")
           PY
           cat > "$RUNNER_TEMP/audit_git_terminal.py" <<'AUDIT_PY'
           #!/usr/bin/env python3
@@ -173,4 +180,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 39b3152cd59e5b85d1874c9248c5f54692f97e71 --required-path integrations/grokbot_control/paid_case.py --required-path free-sample.html --required-path integrations/transferable_roles/test_diagnostic_contract_spine_pointers.py
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit f6457bd822f121bebfe6da84a28aeb0dc2faf9be --required-path llms_txt.py --required-path tests/test_forge_survival_catalog_route.py --required-path integrations/transferable_roles/test_autopsy_paid_case_pointers.py
