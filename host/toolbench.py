@@ -277,41 +277,38 @@ class Bench:
         return output.getvalue()
 
     def checkpoint(self) -> bytes:
-        """Consistent SQLite backup of the committed workspace. Never applies events."""
-        with tempfile.NamedTemporaryFile(suffix=".sqlite3", delete=False) as handle:
-            temp_path = handle.name
+        """Committed workspace ZIP for another Toolbench. Does not execute history or choose successor action."""
+        with tempfile.NamedTemporaryFile(suffix=".sqlite3", delete=False) as tmp:
+            tmp_path = tmp.name
         try:
             with self.connect() as db:
-                db.execute("BEGIN")
                 try:
                     db.execute("PRAGMA wal_checkpoint(PASSIVE)")
                 except sqlite3.Error:
                     pass
                 revision = self.revision(db)
-                destination = sqlite3.connect(temp_path)
+                dest = sqlite3.connect(tmp_path)
                 try:
-                    db.backup(destination)
+                    db.backup(dest)
                 finally:
-                    destination.close()
-            workspace = Path(temp_path).read_bytes()
+                    dest.close()
+            data = Path(tmp_path).read_bytes()
         finally:
-            Path(temp_path).unlink(missing_ok=True)
-        digest = hashlib.sha256(workspace).hexdigest()
+            Path(tmp_path).unlink(missing_ok=True)
+        sha = hashlib.sha256(data).hexdigest()
         manifest = {
             "format": "commons-toolbench-checkpoint-v1",
-            "kind": "FULL_WORKSPACE_BACKUP",
             "revision": revision,
-            "sha256": digest,
+            "sha256": sha,
             "coverage": (
-                "Committed workspace SQLite only via consistent backup (including committed WAL). "
-                "Does not execute history, choose a successor next action, or include unsaved "
-                "browser drafts or pending requests."
+                "Committed workspace only; no drafts; does not execute history "
+                "or choose successor action."
             ),
         }
         output = io.BytesIO()
         with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_STORED) as archive:
             for name, payload in (
-                ("workspace.sqlite3", workspace),
+                ("workspace.sqlite3", data),
                 ("manifest.json", (canonical(manifest) + "\n").encode()),
             ):
                 info = zipfile.ZipInfo(name, date_time=(1980, 1, 1, 0, 0, 0))
@@ -333,7 +330,7 @@ def server(bench: Bench, host: str = "127.0.0.1", port: int = 18450):
         def log_message(self, *_):
             pass
 
-        def reply(self, status, data, media="application/json; charset=utf-8", filename=None):
+        def reply(self, status, data, media="application/json; charset=utf-8", *, zip_filename=None):
             if not isinstance(data, bytes):
                 data = (canonical(data) + "\n").encode()
             self.send_response(status)
@@ -341,8 +338,9 @@ def server(bench: Bench, host: str = "127.0.0.1", port: int = 18450):
             self.send_header("Content-Length", str(len(data)))
             self.send_header("Cache-Control", "no-store")
             self.send_header("X-Content-Type-Options", "nosniff")
-            if filename:
-                self.send_header("Content-Disposition", f'attachment; filename="{filename}"')
+            if media == "application/zip":
+                name = zip_filename or "toolbench-handover.zip"
+                self.send_header("Content-Disposition", f'attachment; filename="{name}"')
             self.end_headers()
             self.wfile.write(data)
 
@@ -372,9 +370,10 @@ def server(bench: Bench, host: str = "127.0.0.1", port: int = 18450):
                 elif url.path == "/api/compare":
                     self.reply(200, bench.compare(param("left"), param("right")))
                 elif url.path == "/api/export":
-                    self.reply(200, bench.export(param("job")), "application/zip", filename="toolbench-handover.zip")
+                    self.reply(200, bench.export(param("job")), "application/zip")
                 elif url.path == "/api/checkpoint":
-                    self.reply(200, bench.checkpoint(), "application/zip", filename="toolbench-checkpoint.zip")
+                    self.reply(200, bench.checkpoint(), "application/zip",
+                               zip_filename="toolbench-checkpoint.zip")
                 elif url.path == "/api/operations":
                     self.reply(200, {"operations": OPERATIONS, "request": {"op": "operation name", "args": {},
                                "request_id": "optional stable retry ID", "actor": "optional attribution label",
