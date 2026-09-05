@@ -25,10 +25,11 @@ Drive-tab door `agent-rescue.html` was still labeled `agent survival` while the 
 
 ## Paths
 
-- `door.js` — catalog label + `relabelStaticAutopsyDoor` for `data-static=1` hubs (index)
+- `door.js` — catalog label + `relabelStaticAutopsyDoor` for previously cached static hubs
+- `index.html` — matching static label for no-JS readers
 - `test_forge_door_autopsy_label.py`
 - `p/forge-door-autopsy-label-20260905-01.md`
 
 ## Not done
 
-No remint of tip-shelf / Autopsy Stripe / Survival offer / `agent-rescue.html` body. Static `index.html` bytes may still say `agent survival` for no-JS; JS rewrites on boot. Hands off #8802. #8957/#8958 already MERGED (nothing to squash).
+No remint of tip-shelf / Autopsy Stripe / Survival offer / `agent-rescue.html` body. Static and JavaScript door labels both name Agent Failure Autopsy · $29. Hands off #8802. #8957/#8958 already MERGED (nothing to squash).
