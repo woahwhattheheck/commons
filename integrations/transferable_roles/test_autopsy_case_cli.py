@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -54,6 +56,33 @@ class AutopsyCaseCliTests(unittest.TestCase):
         self.assertEqual(row["state"], "UNVERIFIED")
         self.assertEqual(row["g2_run_id"], "run_abc")
         self.assertEqual(row["g2_session_id"], "sess_xyz")
+
+    def test_cli_accepts_store_before_and_after_command_without_equipping(self) -> None:
+        role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        self.assertIsNone(role["occupant"])
+        cli = FIXTURES.parent / "cli.py"
+        before = self.store.get(role["role_id"])
+        commands = [
+            ["--store", self._tmp.name, "autopsy-case", role["role_id"],
+             "--case-ref", "opaque-cli-case"],
+            ["autopsy-receipt-row", role["role_id"], "--case-ref", "opaque-cli-case",
+             "--g2-run-id", "run_cli", "--g2-session-id", "session_cli",
+             "--store", self._tmp.name],
+        ]
+        rows = []
+        for args in commands:
+            result = subprocess.run(
+                [sys.executable, str(cli), *args],
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            rows.append(json.loads(result.stdout))
+        self.assertEqual(rows[0]["case_ref"], "opaque-cli-case")
+        self.assertEqual(rows[1]["case_ref"], rows[0]["case_ref"])
+        self.assertEqual(rows[1]["state"], "UNVERIFIED")
+        self.assertNotIn("payment_observed_at", rows[1])
+        self.assertEqual(rows[1]["g2_run_id"], "run_cli")
+        self.assertEqual(self.store.get(role["role_id"]), before)
 
     def test_crm_role_refuses_autopsy_case(self) -> None:
         role = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))

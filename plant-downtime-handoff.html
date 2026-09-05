@@ -161,7 +161,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px;background:#161
       generatedAt: new Date().toISOString(),
       buyer: { plant: v("org"), nameAndTitle: v("buyer"), publicRoute: v("route"), monthlyVolume: Number(v("volume") || 0) },
       workflow: { ruleSource: v("ruleSource"), observedFailure: v("failure") },
-      offer: { diagnosticUsd: 199, clock: "one business day", optionalPilotUsd: 2500, proofOnlyAfterFit: true },
+      offer: { diagnosticUsd: 199, window: "one business day", clock: "one business day", optionalPilotUsd: 2500, proofOnlyAfterFit: true },
       latestSyntheticReceipt: last,
       workerGeneration: worker.generation,
       submission: "LOCAL_COPY_ONLY",

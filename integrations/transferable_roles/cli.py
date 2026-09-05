@@ -189,6 +189,14 @@ def build_parser() -> argparse.ArgumentParser:
         "open-obligations",
         help="list open obligations across all roles as flat dicts",
     )
+    # Preserve the documented --store-after-command form and the global form.
+    # Suppression prevents an absent subcommand option from replacing a value
+    # already parsed before the command.
+    for command_parser in sub.choices.values():
+        command_parser.add_argument(
+            "--store", type=Path, default=argparse.SUPPRESS,
+            help="directory for role JSON records",
+        )
     return p
 
 

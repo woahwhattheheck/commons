@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -55,6 +57,29 @@ class AutopsyFulfillCliTests(unittest.TestCase):
             require_autopsy_fulfillment_tool(crm)
         with self.assertRaises(RoleError):
             run_deadline(diag, usable_evidence_at="2026-09-04T15:00:00-04:00")
+
+
+    def test_documented_commands_run_without_equipping(self) -> None:
+        role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        self.assertIsNone(role["occupant"])
+        before = self.store.get(role["role_id"])
+        results = []
+        for command, options in [
+            ("autopsy-fulfill-deadline",
+             ["--usable-evidence-at", "2026-09-04T15:00:00-04:00"]),
+            ("autopsy-fulfill-validate", []),
+        ]:
+            result = subprocess.run(
+                [sys.executable, str(FIXTURES.parent / "cli.py"), command,
+                 role["role_id"], *options, "--store", self._tmp.name],
+                capture_output=True, text=True, check=False,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            results.append(json.loads(result.stdout))
+        self.assertEqual(results[0]["delivery_due_at"], "2026-09-07T15:00:00-04:00")
+        self.assertTrue(results[1]["ok"])
+        self.assertEqual(results[1]["artifact_state"], "PEER_DRAFT")
+        self.assertEqual(self.store.get(role["role_id"]), before)
 
 
 if __name__ == "__main__":

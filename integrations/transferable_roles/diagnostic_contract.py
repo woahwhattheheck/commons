@@ -94,8 +94,17 @@ def load_contract_from_role(
     commercial = raw.get("commercial")
     if not isinstance(commercial, dict):
         commercial = {}
+    if raw.get("schema") == "commons-repair-booking-contract-v1":
+        offer = raw.get("offer")
+        if not isinstance(offer, dict):
+            raise RoleError(f"{pointer} offer must be a JSON object")
+        commercial = {
+            "diagnostic_usd": offer.get("diagnostic_price_usd"),
+            "diagnostic_window": offer.get("diagnostic_delivery"),
+            "refund": offer.get("refund"),
+        }
     acceptance = raw.get("acceptance")
-    acceptance_n = len(acceptance) if isinstance(acceptance, list) else 0
+    acceptance_n = len(acceptance) if isinstance(acceptance, (list, dict)) else 0
 
     out: dict[str, Any] = {
         "slug": key,
@@ -106,6 +115,9 @@ def load_contract_from_role(
         "diagnostic_window": commercial.get("diagnostic_window"),
         "refund": commercial.get("refund"),
         "acceptance_count": acceptance_n,
+        "acceptance": acceptance,
+        "scope": raw.get("scope"),
+        "accepted_terminal_states": raw.get("accepted_terminal_states"),
         "data_boundary": raw.get("data_boundary"),
         "decision_boundary": raw.get("decision_boundary"),
         "open_door": raw.get("open_door"),

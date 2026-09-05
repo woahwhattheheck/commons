@@ -4,6 +4,8 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -40,6 +42,38 @@ class DiagnosticContractCliTests(unittest.TestCase):
             self.assertTrue(card["id"])
             self.assertEqual(card["diagnostic_usd"], 199)
             self.assertIn("one business day", str(card.get("diagnostic_window") or ""))
+
+    def test_repair_card_preserves_its_distinct_source_schema(self) -> None:
+        role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+        card = load_contract_from_role(role, slug="repair")
+        source = json.loads(
+            (FIXTURES.parents[2] / SLUG_TO_CONTRACT["repair"]).read_text(encoding="utf-8")
+        )
+        self.assertEqual(card["refund"], source["offer"]["refund"])
+        self.assertEqual(card["acceptance"], source["acceptance"])
+        self.assertEqual(card["acceptance_count"], len(source["acceptance"]))
+        self.assertEqual(card["scope"], source["scope"])
+        self.assertEqual(card["accepted_terminal_states"], source["accepted_terminal_states"])
+
+    def test_documented_cli_loads_all_contracts_without_equipping(self) -> None:
+        role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+        self.assertIsNone(role["occupant"])
+        cli = FIXTURES.parent / "cli.py"
+        before = self.store.get(role["role_id"])
+        for slug in SLUG_TO_CONTRACT:
+            with self.subTest(slug=slug):
+                result = subprocess.run(
+                    [sys.executable, str(cli), "diagnostic-contract", role["role_id"],
+                     "--slug", slug, "--store", self._tmp.name],
+                    capture_output=True, text=True, check=False,
+                )
+                self.assertEqual(result.returncode, 0, result.stderr)
+                card = json.loads(result.stdout)
+                self.assertEqual(card["diagnostic_usd"], 199)
+                self.assertIn("one business day", card["diagnostic_window"])
+                self.assertTrue(card["refund"])
+                self.assertGreater(card["acceptance_count"], 0)
+        self.assertEqual(self.store.get(role["role_id"]), before)
 
     def test_crm_and_autopsy_refuse(self) -> None:
         crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
