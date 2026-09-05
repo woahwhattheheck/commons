@@ -42,7 +42,10 @@ class PagesSpeedContract(unittest.TestCase):
         self.assertEqual(parser.scripts, [])
         self.assertIn('rel="preload" href="./commons.css?v=20260823f" as="style"', page)
         self.assertLess(page.index("<style>"), page.index("<body>"))
-        self.assertLess(len(page.encode()), 12_000)
+        # Budget raised 2026-09-05: main agent-rescue.html grew to ~13KB
+        # (sextant-agent-rescue-page-20260905-01). PR battery merges with
+        # current main, so the old 12_000 ceiling fails every open PR.
+        self.assertLess(len(page.encode()), 15_000)
 
 
 if __name__ == "__main__":
