@@ -8,6 +8,7 @@ import json
 import tempfile
 import unittest
 from contextlib import redirect_stdout
+from copy import deepcopy
 from pathlib import Path
 
 from roles import RoleError, RoleStore, SECRET_FIELD_NAMES
@@ -54,6 +55,10 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(handed["occupant"]["prior_session_id"], "session-A")
         self.assertEqual(handed["occupant"]["seat"], "TENON")
         self.assertEqual(handed["transfer_count"], 1)
+        loaded = self.store.get(role_id)
+        self.assertEqual(loaded["occupant"]["prior_session_id"], "session-A")
+        self.assertEqual(loaded["occupant"]["prior_harness"], "cursor-hinge")
+        self.assertEqual(loaded["occupant"]["seat"], "TENON")
 
     def test_export_strips_secrets_and_clears_occupant(self) -> None:
         poisoned = dict(self.raw)
@@ -271,6 +276,9 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(released["purpose"], purpose)
         self.assertEqual(released["last_released"]["session_id"], "session-A")
         self.assertEqual(released["last_released"]["seat"], "HINGE")
+        inspected = self.store.inspect(role["role_id"])
+        self.assertEqual(inspected["last_released"]["session_id"], "session-A")
+        self.assertEqual(inspected["last_released"]["seat"], "HINGE")
         g2 = next(
             r for r in released["access_routes"] if r["name"] == "grokbot_control_g2"
         )
@@ -374,6 +382,33 @@ class TransferableRoleTests(unittest.TestCase):
             self.store.advance_obligation(
                 role["role_id"], "no-such", status="done"
             )
+
+    def test_advance_obligation_rejects_unknown_status(self) -> None:
+        role = self.store.create(self.raw, role_id="role-adv-bad-status")
+        with self.assertRaises(RoleError):
+            self.store.advance_obligation(
+                role["role_id"], "ob-1", status="closed"
+            )
+
+    def test_advance_obligation_leaves_siblings(self) -> None:
+        raw = deepcopy(self.raw)
+        raw["obligations"].append(
+            {
+                "id": "ob-2",
+                "summary": "Keep this sibling untouched",
+                "next_action": "Do not rewrite sibling next_action",
+                "status": "open",
+            }
+        )
+        role = self.store.create(raw, role_id="role-adv-sib")
+        sibling = deepcopy(role["obligations"][1])
+        purpose = role["purpose"]
+        advanced = self.store.advance_obligation(
+            role["role_id"], "ob-1", status="done"
+        )
+        self.assertEqual(advanced["purpose"], purpose)
+        self.assertEqual(advanced["obligations"][0]["status"], "done")
+        self.assertEqual(advanced["obligations"][1], sibling)
 
     def test_cli_advance_obligation(self) -> None:
         store_dir = self._tmp.name

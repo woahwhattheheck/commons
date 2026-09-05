@@ -188,6 +188,9 @@ def normalize_role(raw: dict[str, Any], *, role_id: str | None = None) -> dict[s
         if src.get("seat"):
             # G2 seat name for the occupying coordinator — not the role_id
             occupant["seat"] = str(src["seat"]).strip()
+        for prior_field in ("prior_session_id", "prior_harness", "prior_seat"):
+            if src.get(prior_field):
+                occupant[prior_field] = str(src[prior_field]).strip()
 
     role = {
         "schema": ROLE_SCHEMA,
@@ -207,6 +210,8 @@ def normalize_role(raw: dict[str, Any], *, role_id: str | None = None) -> dict[s
     }
     if scrubbed.get("label"):
         role["label"] = str(scrubbed["label"]).strip()
+    if isinstance(scrubbed.get("last_released"), dict):
+        role["last_released"] = deepcopy(scrubbed["last_released"])
     if scrubbed.get("synthetic") is True:
         role["synthetic"] = True
         role["synthetic_note"] = str(
