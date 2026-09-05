@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="./commons.css?v=20260823f">
 </head>
 <body>
-<p class="nav"><a href="./index.html">Commons</a> · <a href="./occupancy.html">occupancy</a> · <a href="./claims.html">claims</a> · <a href="./current-work.html">current work</a></p>
+<p class="nav"><a href="./index.html">Commons</a> · <a href="./occupancy.html">occupancy</a> · <a href="./current-work.html">current work</a></p>
 <p class="law">No JavaScript needed for the machine surface. Demands live as files under <code>ground/demands/</code>. Index: <a href="./ground/DEMANDS.json">ground/DEMANDS.json</a>. Instrument: <code>host/demand_survive.py</code>.</p>
 
 <h1>Demands that survive the conversation</h1>
-<p>Astra D5 / QUILL. A peer discovers unclaimed work, sees occupancy, hands off, and finds the result without rereading Slack. No identity, memory, permission, approval, protected-path, or verb gate applies. Never an admission.</p>
+<p>Astra D5 / QUILL. A peer discovers open work, sees occupancy, hands off, and finds the result without rereading Slack. Never an admission.</p>
 <ul>
 <li>Original prose is preserved. Owner corrections append.</li>
 <li>Parallel occupancy stays visible. Collisions are listed on the later occupant, not silently overwritten.</li>
@@ -34,7 +34,7 @@ python3 host/demand_survive.py --self-test</pre>
 
 <h2>Read without Slack archaeology</h2>
 <ol>
-<li>Unclaimed: <code>python3 host/demand_survive.py list --status open</code> or filter <code>status=open</code> in <a href="./ground/DEMANDS.json">DEMANDS.json</a>.</li>
+<li>Open work: <code>python3 host/demand_survive.py list --status open</code> or filter <code>status=open</code> in <a href="./ground/DEMANDS.json">DEMANDS.json</a>.</li>
 <li>Who is on it: each demand's <code>occupants</code> array (active / interrupted / handed_off).</li>
 <li>What changed: <code>original</code> plus <code>corrections[]</code>.</li>
 <li>Result: <code>result.pointer</code> and optional <code>result.receipt</code>.</li>

@@ -2,27 +2,27 @@
   "corrections": [
     {
       "from": "BRYCE",
-      "prose": "make sure theyre shipping and merging not waiting on a yes from me that was already given and thus will never come. Carry claimed lanes through integration and verify the usable result from current main.",
+      "prose": "make sure theyre shipping and merging not waiting on a yes from me that was already given and thus will never come. Carry occupied lanes through integration and verify the usable result from current main.",
       "ts": "2026-09-04T20:15:11Z"
     }
   ],
   "id": "astra-d5-demands-survive-20260904-01",
   "occupants": [
     {
-      "claimed_at": "2026-09-04T20:24:35Z",
       "collision_with": [],
       "completed_at": "2026-09-05T00:30:00Z",
       "handoff_note": "",
       "next_decision": "",
       "note": "QUILL pickup in #coordination; building demand_survive surface",
-      "seat": "QUILL",
+      "occupied_at": "2026-09-04T20:24:35Z",
       "slice_id": "quill-d5-demand-survive-20260904-01",
-      "status": "complete"
+      "status": "complete",
+      "who": "QUILL"
     }
   ],
   "original": {
     "from": "BRYCE",
-    "prose": "Astra build demand D5 — build demands that survive the conversation. Make the #coordination demand stream usable across sessions: a peer can discover useful unclaimed work, see who is already doing what, contribute, hand it on, and find the actual result later. Reuse existing Commons demand/assignment/job surfaces. Preserve the original request and subsequent owner corrections. Lost or duplicated intent is the real problem.",
+    "prose": "Astra build demand D5 — build demands that survive the conversation. Make the #coordination demand stream usable across sessions: a peer can discover useful open work, see who is already doing what, contribute, hand it on, and find the actual result later. Reuse existing Commons demand/assignment/job surfaces. Preserve the original request and subsequent owner corrections. Lost or duplicated intent is the real problem.",
     "source": "slack:C0BU51F1PL3/1788567261.579059",
     "ts": "2026-09-04T20:14:21Z"
   },
@@ -30,7 +30,7 @@
     "landed_at": "2026-09-05T00:30:00Z",
     "pointer": "https://github.com/woahwhattheheck/commons/pull/8759",
     "receipt": "p/quill-d5-demand-survive-20260904-01.md",
-    "seat": "QUILL"
+    "who": "QUILL"
   },
   "schema": "commons-demand-survive-v1",
   "status": "done"
