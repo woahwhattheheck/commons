@@ -12,6 +12,7 @@ import argparse
 import hashlib
 import json
 import re
+import stat
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -1283,26 +1284,77 @@ def verify_evidence_files(
 
     def resolve_location(evidence_id: str, location: str, label: str) -> Path:
         relative = location.split(":", 1)[1]
-        target = (root / relative).resolve(strict=True)
+        candidate = root / relative
+        current = root
+        for part in Path(relative).parts:
+            current = current / part
+            if current.is_symlink():
+                raise AutopsyValidationError(
+                    f"{evidence_id}: {label} must not use a symbolic link"
+                )
+        target = candidate.resolve(strict=True)
         try:
             target.relative_to(root)
         except ValueError as exc:
             raise AutopsyValidationError(
                 f"{evidence_id}: {label} escapes the evidence root"
             ) from exc
-        if not target.is_file() or target.is_symlink():
+        details = target.stat()
+        if not stat.S_ISREG(details.st_mode):
             raise AutopsyValidationError(
                 f"{evidence_id}: {label} is not a regular file"
             )
         return target
 
+    def read_exact_bytes(
+        evidence_id: str, target: Path, expected_size: int, label: str
+    ) -> bytes:
+        actual_size = target.stat().st_size
+        if actual_size != expected_size:
+            raise AutopsyValidationError(
+                f"{evidence_id}: {label} byte count does not match"
+            )
+        with target.open("rb") as stream:
+            data = stream.read(expected_size + 1)
+        if len(data) != expected_size:
+            raise AutopsyValidationError(
+                f"{evidence_id}: {label} changed during bounded read"
+            )
+        return data
+
+    def read_extracted_utf8(
+        evidence_id: str, target: Path, expected_characters: int
+    ) -> tuple[bytes, str]:
+        maximum_bytes = expected_characters * 4
+        actual_size = target.stat().st_size
+        if actual_size > maximum_bytes:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted text exceeds the bounded UTF-8 size"
+            )
+        with target.open("rb") as stream:
+            data = stream.read(maximum_bytes + 1)
+        if len(data) > maximum_bytes:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted text changed during bounded read"
+            )
+        try:
+            text = data.decode("utf-8")
+        except UnicodeDecodeError as exc:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted text must be UTF-8"
+            ) from exc
+        if len(text) != expected_characters:
+            raise AutopsyValidationError(
+                f"{evidence_id}: extracted Unicode character count does not match"
+            )
+        return data, text
+
     for evidence_id, location in context["locations_by_id"].items():
         target = resolve_location(evidence_id, location, "raw evidence")
-        raw = target.read_bytes()
-        if len(raw) != context["raw_bytes_by_id"][evidence_id]:
-            raise AutopsyValidationError(
-                f"{evidence_id}: raw byte count does not match"
-            )
+        expected_raw_bytes = context["raw_bytes_by_id"][evidence_id]
+        raw = read_exact_bytes(
+            evidence_id, target, expected_raw_bytes, "raw evidence"
+        )
         actual = hashlib.sha256(raw).hexdigest()
         if actual != context["hashes_by_id"][evidence_id]:
             raise AutopsyValidationError(
@@ -1317,21 +1369,14 @@ def verify_evidence_files(
         extracted_target = resolve_location(
             evidence_id, extracted_location, "extracted text"
         )
-        extracted_raw = extracted_target.read_bytes()
-        try:
-            extracted_text = extracted_raw.decode("utf-8")
-        except UnicodeDecodeError as exc:
-            raise AutopsyValidationError(
-                f"{evidence_id}: extracted text must be UTF-8"
-            ) from exc
+        expected_characters = context["extracted_characters_by_id"][evidence_id]
+        extracted_raw, _ = read_extracted_utf8(
+            evidence_id, extracted_target, expected_characters
+        )
         extracted_sha = hashlib.sha256(extracted_raw).hexdigest()
         if extracted_sha != context["extracted_hashes_by_id"][evidence_id]:
             raise AutopsyValidationError(
                 f"{evidence_id}: extracted text SHA-256 does not match"
-            )
-        if len(extracted_text) != context["extracted_characters_by_id"][evidence_id]:
-            raise AutopsyValidationError(
-                f"{evidence_id}: extracted Unicode character count does not match"
             )
         if method == "DIRECT_UTF8" and target != extracted_target:
             raise AutopsyValidationError(
