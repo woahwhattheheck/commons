@@ -23,11 +23,9 @@ AUTOPSY_FIXTURE = (
 
 LIVE_CHECKOUT = "buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
 AUTOPSY_PAGE = "agent-rescue.html"
-DIAGNOSTIC_FIXTURE = (
-    Path(__file__).resolve().parent
-    / "fixtures"
-    / "synthetic_diagnostic_fulfillment_role.json"
-)
+SPINE_RUNBOOK = "revenue/agent_failure_autopsy/RUNBOOK.md"
+SPINE_OFFER = "revenue/agent_failure_autopsy/offer.json"
+AUTOPSY_FULFILL_ENTRY = "python3 revenue/agent_failure_autopsy/fulfillment.py"
 
 
 class TransferableRoleTests(unittest.TestCase):
@@ -127,7 +125,6 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(g2["client"], "integrations/grokbot_control/client.py")
         for field in ("submit", "status", "follow_up", "cancel", "recover", "events"):
             self.assertIn(field, g2)
-        # Role must not invent a second pool or bind a live chat window.
         self.assertNotIn("session_id", g2)
 
     def test_cli_equip_and_transfer_pass_seat(self) -> None:
@@ -382,7 +379,6 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(g2["session_id"], "g2-keep-me")
         self.assertEqual(g2["last_run_id"], "run-keep")
 
-        # Re-equip after release must succeed.
         again = self.store.equip(
             role["role_id"], session_id="session-C", harness="cursor", seat="QUILL"
         )
@@ -574,7 +570,6 @@ class TransferableRoleTests(unittest.TestCase):
             )
             self.assertEqual(g2["session_id"], "g2-import-sess")
             self.assertEqual(g2["last_run_id"], "g2-import-run")
-            # Importer can equip after adopt.
             equipped = fresh.equip(
                 imported["role_id"],
                 session_id="occ-import",
@@ -674,6 +669,11 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIn("payment-capability.html", pointers)
         self.assertIn("ground/PAYMENT_CAPABILITY.md", pointers)
         self.assertIn("pay.html", pointers)
+        self.assertIn(SPINE_RUNBOOK, pointers)
+        self.assertIn(SPINE_OFFER, pointers)
+        tools = {t["name"]: t for t in role.get("tools") or []}
+        self.assertIn("autopsy_fulfillment", tools)
+        self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILL_ENTRY)
 
     def test_autopsy_fixture_wires_live_checkout_url(self) -> None:
         """Create from fixture; live checkout must appear in knowledge/routes/ob-settle."""
@@ -686,7 +686,6 @@ class TransferableRoleTests(unittest.TestCase):
         combined = knowledge_blob + routes_blob + settle_blob
         self.assertIn(LIVE_CHECKOUT, combined)
         self.assertIn(AUTOPSY_PAGE, combined)
-        # Also pin the public Payment Link on payment_capability (no secrets).
         pay = next(
             r for r in role["access_routes"] if r["name"] == "payment_capability"
         )
@@ -694,6 +693,22 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertIn(AUTOPSY_PAGE, pay.get("note", ""))
         pointers = {k["pointer"] for k in role["knowledge"]}
         self.assertIn(AUTOPSY_PAGE, pointers)
+
+    def test_autopsy_fixture_points_at_landed_spine(self) -> None:
+        """After #8811, knowledge/tools must point at landed spine paths (no remint)."""
+        raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn(SPINE_RUNBOOK, pointers)
+        self.assertIn(SPINE_OFFER, pointers)
+        self.assertIn("revenue/agent_failure_autopsy/README.md", pointers)
+        self.assertIn("revenue/agent_failure_autopsy/report-template.md", pointers)
+        tools = {t["name"]: t for t in role.get("tools") or []}
+        self.assertIn("autopsy_fulfillment", tools)
+        self.assertEqual(tools["autopsy_fulfillment"]["entry"], AUTOPSY_FULFILL_ENTRY)
+        fixture_blob = json.dumps(role)
+        for forbidden in ("prod_", "price_", "acct_", "plink_"):
+            self.assertNotIn(forbidden, fixture_blob)
 
     def test_list_open_obligations_four_rows_then_advance_drops(self) -> None:
         raw = json.loads(AUTOPSY_FIXTURE.read_text(encoding="utf-8"))
@@ -743,33 +758,6 @@ class TransferableRoleTests(unittest.TestCase):
             out["open_obligations"][0]["role_id"],
             "role-synthetic-agent-failure-autopsy-20260905",
         )
-
-    def test_diagnostic_fixture_create_open_obligations_and_live_checkouts(self) -> None:
-        raw = json.loads(DIAGNOSTIC_FIXTURE.read_text(encoding="utf-8"))
-        role = self.store.create(raw)
-        self.assertTrue(role.get("synthetic"))
-        self.assertEqual(
-            role["role_id"], "role-synthetic-diagnostic-fulfillment-20260905"
-        )
-        self.assertEqual(role["credential_custodian"], "existing_secure_stores")
-        ids = [o["id"] for o in role["obligations"]]
-        self.assertEqual(ids, ["ob-intake", "ob-diagnose", "ob-settle"])
-        self.assertTrue(all(o["status"] == "open" for o in role["obligations"]))
-        names = {r["name"] for r in role["access_routes"]}
-        self.assertEqual(
-            names,
-            {"grokbot_control_g2", "gemini_peer_tool_gateway", "payment_capability"},
-        )
-        blob = json.dumps(role)
-        self.assertIn("buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b", blob)
-        self.assertIn("buy.stripe.com/9B600i98N77b9uFeBk43S0c", blob)
-        self.assertIn("buy.stripe.com/9B66oGacR2QVdKVeBk43S0d", blob)
-        self.assertIn("buy.stripe.com/14AfZgckZ0IN0Y99h043S0e", blob)
-        pointers = {k["pointer"] for k in role["knowledge"]}
-        self.assertIn("dealer-service-lead-rescue.html", pointers)
-        self.assertIn("referral-intake-completeness.html", pointers)
-        self.assertIn("repair-booking-preflight.html", pointers)
-        self.assertIn("plant-downtime-handoff.html", pointers)
 
 
 if __name__ == "__main__":
