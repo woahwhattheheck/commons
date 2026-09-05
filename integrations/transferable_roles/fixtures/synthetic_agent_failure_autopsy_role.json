@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-agent-failure-autopsy-20260905",
   "label": "Agent Failure Autopsy fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889).",
+  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889). After #8901/#8925 also point at INTAKE.md + SEATS.md (point only).",
   "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -41,6 +41,18 @@
     {
       "pointer": "revenue/agent_failure_autopsy/intake.schema.json",
       "label": "#8811 spine — intake schema (optional); point only, do not remint"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/INTAKE.md",
+      "label": "#8901 — operator intake table + clocks; point only, do not remint"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/SEATS.md",
+      "label": "#8925 — post-pay seat board (STANDBY_UNTIL_PAID); point only, do not remint"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/seats.json",
+      "label": "#8925 — machine-readable seat board twin; point only, do not remint"
     },
     {
       "pointer": "Astra Autopsy demand / coordination",
