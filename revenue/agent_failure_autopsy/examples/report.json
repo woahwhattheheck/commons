@@ -4,7 +4,7 @@
   "record_classification": "SYNTHETIC_EXAMPLE",
   "offer_id": "agent-failure-autopsy-29",
   "case_id": "synthetic-generated-settings-001",
-  "intake_sha256": "313de1cb75c92a4eb01bc2f0350ff9d89e6a6fe2a9db95a14f2c2a5f60e90226",
+  "intake_sha256": "c242aad2dc08cec520e7d85937a9ca0ab218c49f7150ebeb676e6c26cf82a395",
   "failure_sentence": "Codex kept editing the same generated setting, but every retry ended with the same failing timeout test.",
   "disposition": "DIAGNOSIS_DELIVERED",
   "artifact_state": "PEER_DRAFT",
