@@ -1,60 +1,81 @@
 #!/usr/bin/env python3
-"""Keep the public survival checkout aligned with its manual-capture boundary."""
+"""Keep the public $29 agent-failure diagnostic focused, bounded, and unchargeable until checkout exists."""
 import re
 import unittest
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent
-CHECKOUT_URL = "https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a"
-PRODUCT_ID = "prod_VANEgGPRVMVZLJ"
-PRICE_ID = "price_1UA2UMATH4EDE7XDGuL1POjW"
-PAYMENT_LINK_ID = "plink_1UA2ZuATH4EDE7XDZUJ9wx1k"
+PAGE = ROOT / "agent-rescue.html"
+OLD_CHECKOUT_URL = "https://buy.stripe.com/8x25kC3Ot9fj5ep1Oy43S0a"
 
 
-class AgentRescueCheckoutTests(unittest.TestCase):
+class AgentFailureDiagnosticPageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.page = (ROOT / "agent-rescue.html").read_text(encoding="utf-8")
-        cls.sku = (ROOT / "land" / "sku-agent-survival-proof-20260830.md").read_text(encoding="utf-8")
-        cls.acceptance = (ROOT / "revenue" / "production_survival" / "acceptance_contract.md").read_text(encoding="utf-8")
-        cls.handoff = (ROOT / "revenue" / "payment_ready" / "processor_handoff.md").read_text(encoding="utf-8")
+        cls.page = PAGE.read_text(encoding="utf-8")
+        cls.lower = cls.page.lower()
 
-    def test_exact_live_checkout_is_public_once(self):
-        self.assertEqual(self.page.count('href="' + CHECKOUT_URL + '"'), 1)
-        self.assertIn("Authorize one proof — $2,500", self.page)
+    def test_offer_is_the_29_diagnostic_not_a_proof_product(self):
+        self.assertIn("Your coding agent failed. Find out why for $29.", self.page)
+        self.assertIn("$29 · one business day", self.page)
+        self.assertIn("for indie developers, automation builders, and small AI teams paying to run coding agents", self.page)
+        self.assertNotIn("Same-Day Agent Survival Proof", self.page)
+        self.assertNotIn("working recovery proof", self.lower)
+        self.assertNotIn("Authorize one proof", self.page)
+
+    def test_intake_and_one_clarification_round_are_explicit(self):
         for marker in (
-            "status: ACTIVE_CHARGEABLE",
-            "checkout: `" + CHECKOUT_URL + "`",
-            "checkout_url: `" + CHECKOUT_URL + "`",
-            "product_id: `" + PRODUCT_ID + "`",
-            "price_id: `" + PRICE_ID + "`",
-            "payment_link_id: `" + PAYMENT_LINK_ID + "`",
-            "capture_method: manual",
-            "payment_methods: dynamic",
-            "completed_sessions_count: 0",
-            "completed_sessions_limit: 1",
+            "One failed execution of one agent workflow.",
+            "One sentence: what the agent should do, and what failed.",
+            "The stack, framework, or harness name.",
+            "One redacted log, transcript, or screenshot",
+            "One clarification round is included",
+            "delivery clock starts once usable redacted evidence is within the intake cap",
         ):
-            self.assertIn(marker, self.sku)
+            self.assertIn(marker, self.page)
 
-    def test_buyer_copy_preserves_authorization_and_capacity_boundary(self):
-        combined = "\n".join((self.page, self.acceptance, self.handoff, self.sku)).lower()
+    def test_intake_cap_is_deterministic_and_quality_neutral(self):
         for marker in (
-            "before capture",
-            "bad-fit",
-            "one buyer at a time",
-            "authorization is not capture",
-            "authorization != capture != settlement != payout != bank_available",
-            "collected cash remains usd 0",
+            "2,000,000 extracted Unicode characters (roughly 500,000 text tokens)",
+            "10 files",
+            "25,000,000 raw bytes total",
+            "whichever limit is reached first",
+            "No archives, executables, repository dumps, or unrelated incidents.",
+            "we help you select the relevant slice",
+            "This limits intake, not the quality of the diagnosis.",
+            "legitimate case cannot be brought within the cap",
         ):
-            self.assertIn(marker, combined)
-        self.assertIn("required non-confidential failure sentence", combined)
-        self.assertIn("optional public", combined)
+            self.assertIn(marker, self.page)
 
-    def test_public_files_contain_no_secret_key_shape(self):
-        combined = "\n".join((self.page, self.acceptance, self.handoff, self.sku))
-        self.assertIsNone(re.search(r"(?:sk|rk)_(?:live|test)_[A-Za-z0-9]{12,}", combined))
-        self.assertNotRegex(CHECKOUT_URL, r"[?#]")
+    def test_delivery_is_evidence_bounded_and_diagnostic_only(self):
+        for marker in (
+            "failure chain tied to the evidence",
+            "Primary and contributing causes, with uncertainty stated.",
+            "Concrete fix steps for prompt, configuration, or code only where the evidence supports them.",
+            "A replay, regression, or prevention check with the expected result.",
+            "cannot support a defensible diagnosis after that clarification, the $29 is refunded",
+            "does not include repository access, production access, code implementation",
+            "No diagnosis is presented as certain beyond the supplied evidence.",
+        ):
+            self.assertIn(marker, self.page)
+
+    def test_unverified_checkout_is_not_exposed(self):
+        self.assertNotIn(OLD_CHECKOUT_URL, self.page)
+        self.assertIsNone(re.search(r"https://(?:buy|donate)\.stripe\.com/[A-Za-z0-9]+", self.page))
+        self.assertIn("checkout button will appear only after a live $29 payment link is created and verified", self.lower)
+        self.assertIn("this page requests no payment", self.lower)
+
+    def test_email_intake_keeps_campaign_attribution(self):
+        subject = "subject=AI%20Agent%20Failure%20Diagnostic"
+        self.assertEqual(self.page.count('href="mailto:tokenjunkielabs@gmail.com?' + subject), 2)
+        for marker in ('p.get("utm_source")', 'p.get("utm_campaign")', 'p.get("utm_content")', "%5Bvia%20"):
+            self.assertIn(marker, self.page)
+
+    def test_page_does_not_solicit_or_expose_secret_material(self):
+        for marker in ("API keys", "tokens", "passwords", "customer records", "production secrets"):
+            self.assertIn(marker, self.page)
+        self.assertIsNone(re.search(r"(?:sk|rk)_(?:live|test)_[A-Za-z0-9]{12,}", self.page))
 
 
 if __name__ == "__main__":

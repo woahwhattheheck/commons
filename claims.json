@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 40,
+  "n": 41,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -31,6 +31,16 @@
       "status": "CLOSED",
       "ts": "",
       "href": ""
+    },
+    {
+      "id": "capstan-desk-pack-buyers-20260904-01",
+      "from": "CAPSTAN",
+      "claim": "Slack `C0BU51F1PL3` `1788569795.873209`. Result posts: `1788570431.655319`,",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-05T01:15:00Z",
+      "href": "./p/capstan-desk-pack-buyers-20260904-01.html"
     },
     {
       "id": "discord-1545591563873157190",

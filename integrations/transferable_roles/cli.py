@@ -4,8 +4,12 @@
 Examples:
   python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_crm_followup_role.json --store /tmp/roles
   python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --seat HINGE --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py bind-route ROLE --route grokbot_control_g2 --session-id sess-1 --last-run-id run-9 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
 
 from __future__ import annotations
@@ -64,11 +68,47 @@ def build_parser() -> argparse.ArgumentParser:
         help="optional successor occupant name (not role_id); never a gate",
     )
 
+    b = sub.add_parser(
+        "bind-route",
+        help="stamp durable G2 session_id/last_run_id onto a named access_route",
+    )
+    b.add_argument("role_id")
+    b.add_argument("--route", required=True, help="access_route.name")
+    b.add_argument("--session-id", help="durable G2 conversation id")
+    b.add_argument("--last-run-id", help="last G2 run_id")
+    b.add_argument("--pool-id", help="pool name only; never invent a second pool")
+
+    r = sub.add_parser(
+        "release",
+        help="clear occupant so a later session can equip (keeps bound routes)",
+    )
+    r.add_argument("role_id")
+    r.add_argument(
+        "--from-session",
+        help="optional guard: must match current occupant.session_id",
+    )
+
+    a = sub.add_parser(
+        "advance-obligation",
+        help="update one obligation status/next_action/evidence (not credentials)",
+    )
+    a.add_argument("role_id")
+    a.add_argument("--id", required=True, dest="obligation_id", help="obligation.id")
+    a.add_argument("--status", help="open|done|blocked|deferred")
+    a.add_argument("--next-action")
+    a.add_argument("--evidence-pointer")
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
     x = sub.add_parser("export", help="export portable package (no secrets)")
     x.add_argument("role_id")
+
+    imp = sub.add_parser(
+        "import",
+        help="import export_package JSON without reminting role_id",
+    )
+    imp.add_argument("--file", type=Path, required=True, help="JSON package path")
 
     sub.add_parser("list", help="list role ids in the store")
     return p
@@ -102,10 +142,39 @@ def main(argv: list[str] | None = None) -> int:
                     seat=args.seat,
                 )
             )
+        elif args.cmd == "bind-route":
+            _print(
+                store.bind_access_route(
+                    args.role_id,
+                    route_name=args.route,
+                    session_id=args.session_id,
+                    last_run_id=args.last_run_id,
+                    pool_id=args.pool_id,
+                )
+            )
+        elif args.cmd == "release":
+            _print(
+                store.release(
+                    args.role_id,
+                    from_session_id=args.from_session,
+                )
+            )
+        elif args.cmd == "advance-obligation":
+            _print(
+                store.advance_obligation(
+                    args.role_id,
+                    args.obligation_id,
+                    status=args.status,
+                    next_action=args.next_action,
+                    evidence_pointer=args.evidence_pointer,
+                )
+            )
         elif args.cmd == "inspect":
             _print(store.inspect(args.role_id))
         elif args.cmd == "export":
             _print(store.export_package(args.role_id))
+        elif args.cmd == "import":
+            _print(store.import_package(_load_json(args.file)))
         elif args.cmd == "list":
             _print({"roles": store.list_ids()})
         else:
