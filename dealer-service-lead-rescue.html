@@ -30,6 +30,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px;background:#1c1
 <p class="lede">For a dealer service manager or BDC lead: turn a synthetic missed web form, after-hours inquiry, or duplicate submit into exactly one customer follow-up and one booked-service / CRM record. The same inbound lead must not create a second appointment.</p>
 <section class="pricebar"><div><strong>$199 · one business day</strong><p class="small">One actual service-lead workflow, agreed synthetic fixtures, exact lead-identity map, replay/restart proof, and receipt. Optional fixed $2,500 pilot only after the diagnostic finds a fit.</p></div><div class="price-actions"><div class="price">$199</div><a class="buy" href="https://buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b" target="_blank" rel="noopener noreferrer">Start the $199 diagnostic</a><span class="small">Secure Stripe checkout opens in a new tab.</span></div></section>
 <p class="small"><strong>Miss remedy:</strong> If the accepted diagnostic is not delivered inside the one-business-day window, the paid diagnostic amount is refunded unless the buyer elects in writing to receive one free next-business-day repair instead.</p>
+<p class="small" data-postpay-handoff="1"><strong>After purchase:</strong> email the buyer packet (or a public work route) plus the email used for your Stripe receipt to <a href="mailto:tokenjunkielabs@gmail.com?subject=Dealer%20service%20lead%20rescue%20%24199">tokenjunkielabs@gmail.com</a>. The one-business-day clock starts when usable evidence arrives.</p>
 <p class="bound"><strong>Truth boundary:</strong> this tab is a synthetic rescue proof only. It does not talk to a real dealership, live DMS/CRM, or a customer phone. Fixtures are fake dealer/vehicle ids. <code>cash_usd = 0</code> describes only this local proof run. The interactive proof never charges you; payment happens only if you complete Stripe Checkout in the separate tab. No outreach.</p>
 <div class="desk">
 <section class="card"><h2>Synthetic service lead</h2>
@@ -156,7 +157,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;min-height:220px;background:#1c1
       generatedAt: new Date().toISOString(),
       buyer: { dealerGroup: v("org"), nameAndTitle: v("buyer"), publicRoute: v("route"), monthlyVolume: Number(v("volume") || 0) },
       workflow: { ruleSource: v("ruleSource"), observedFailure: v("failure") },
-      offer: { diagnosticUsd: 199, window: "one business day", optionalPilotUsd: 2500, proofOnlyAfterFit: true },
+      offer: { diagnosticUsd: 199, clock: "one business day", optionalPilotUsd: 2500, proofOnlyAfterFit: true },
       latestSyntheticReceipt: last,
       workerGeneration: worker.generation,
       submission: "LOCAL_COPY_ONLY",
