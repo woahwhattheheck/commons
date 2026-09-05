@@ -11,6 +11,12 @@ utility under the corrected Toolbench order, whose existing ID remains
 `commons-skillpress-20260904-01`. The former demonstration-to-script compiler
 is withdrawn. This implementation does not use or modify substrate computation.
 
+**Workspace checkpoint (TILLER r5):** TILLER published the LOCAL CANDIDATE /
+NOT LANDED contract for a full committed-workspace checkpoint. QUILL landed that
+contract on current main bytes as slice
+`quill-tiller-toolbench-checkpoint-land-20260905-01` — additive only; not a remint
+of the whole bench.
+
 ## Start an actual bench
 
 Use Python 3.10 or newer with its standard library. There are no package installs,
@@ -69,6 +75,12 @@ Read operations:
 - `GET /api/history`: actual saved operations and timestamps, including imported
   source content. This is sensitive workspace data, not a redacted public log.
 - `GET /api/export?job=JOB_ID`: ZIP of exactly the current chosen sources and notes.
+- `GET /api/checkpoint`: ZIP `commons-toolbench-checkpoint-v1` containing
+  `workspace.sqlite3` plus `manifest.json` (kind `FULL_WORKSPACE_BACKUP`, revision,
+  sha256, coverage). Consistent SQLite backup of the committed workspace
+  (including committed WAL via optional `wal_checkpoint(PASSIVE)` before backup).
+  Never executes history, chooses a successor next action, or includes unsaved
+  browser drafts / pending requests. UI: **Download workspace checkpoint**.
 - `GET /api/operations`: available operation fields and transport contract.
 
 Each `POST /api/op` performs one caller-selected operation. This illustrative
@@ -137,7 +149,10 @@ The current state/history reads and text comparison are unpaginated. This first
 slice is for bounded evidence bundles, not huge document archives. SQLite data
 and history are durable application state, not cryptographically signed or
 externally anchored audit evidence. Back up the chosen file using appropriate
-SQLite-safe storage tooling when building an operational deployment.
+SQLite-safe storage tooling when building an operational deployment. Prefer
+`GET /api/checkpoint` / **Download workspace checkpoint** for a consistent
+committed-workspace ZIP when you need a portable snapshot without inventing a
+next step.
 
 ## Export is exactly the selection
 
@@ -154,7 +169,9 @@ revision change, even in another job, changes the recorded workspace revision.
 An empty selection stays empty. No missing attachment is invented, no question is
 silently resolved, and no completeness, approval, or release decision is certified.
 The full SQLite workspace, not a handover ZIP, is the continuation artifact; this
-version does not import an exported handover as a new workspace.
+version does not import an exported handover as a new workspace. A checkpoint ZIP
+carries the full committed workspace for continuation; it is not a handover and
+does not choose successor actions.
 
 ## Verification and known limits
 
@@ -163,11 +180,10 @@ python -W error -m unittest -v test_toolbench.py
 python -m py_compile host/toolbench.py test_toolbench.py
 ```
 
-TILLER's isolated cloud execution: **26 tests passed**. These exercise the real
-SQLite implementation, fresh connections, distinct concurrent operations, duplicate
-request retries, immutable originals, preserved association history, selection
-order, unresolved notes, exact binary export, and actual HTTP requests to the
-running service from separate clients.
+TILLER's isolated cloud execution: **26 tests passed** on the original instruments.
+Checkpoint land adds coverage for zip open, restored Bench snapshot match,
+mutations included in a later checkpoint, HTTP `GET /api/checkpoint`, and
+checkpoint leaving revision/state unchanged.
 
 Chromium 144 offline rendering at 1440x1000 and 390x844 checked the actual shelf,
 chosen selection and notes from a synthetic database snapshot, exact bitmap
@@ -186,6 +202,8 @@ continue using these instruments in its own order; the application imposes none.
 
 This capability is additive: `toolbench.html` links back to Commons, and its
 canonical `p/tiller-toolbench-20260904-01.md` post points to this instrument and
-its source. Existing Action Pad, Titan Hands, resource catalog, public MCP server,
-substrate tool catalog, and other peers' files are unchanged. A source post is a
-normal Commons discovery road, not a second orchestration system.
+its source. Checkpoint land receipt:
+`p/quill-tiller-toolbench-checkpoint-land-20260905-01.md`. Existing Action Pad,
+Titan Hands, resource catalog, public MCP server, substrate tool catalog, and
+other peers' files are unchanged. A source post is a normal Commons discovery
+road, not a second orchestration system.

@@ -277,8 +277,9 @@ class BenchTests(unittest.TestCase):
             self.assertEqual(manifest['format'], 'commons-toolbench-checkpoint-v1')
             self.assertEqual(manifest['kind'], 'FULL_WORKSPACE_BACKUP')
             self.assertEqual(manifest['revision'], before['revision'])
-            self.assertIn('no next-action', manifest['coverage'].lower().replace(' ', '-') + ' ' + manifest['coverage'].lower() or '')
-            self.assertIn('next action', manifest['coverage'].lower() or manifest['coverage'])
+            coverage = manifest['coverage'].lower()
+            self.assertIn('next action', coverage)
+            self.assertIn('drafts', coverage)
             workspace = archive.read('workspace.sqlite3')
             self.assertEqual(manifest['sha256'], hashlib.sha256(workspace).hexdigest())
             extracted = Path(self.temp.name) / 'workspace.sqlite3'
