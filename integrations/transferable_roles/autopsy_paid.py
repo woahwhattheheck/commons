@@ -57,11 +57,14 @@ def build_g2_case_from_role(
 ) -> dict[str, str]:
     """Build a G2 case via SPARK case_from_autopsy_offer for an Autopsy role."""
     require_autopsy_paid_tool(role)
-    return case_from_autopsy_offer(
-        case_ref=case_ref,
-        client_reference_id=client_reference_id,
-        sku=sku,
-    )
+    try:
+        return case_from_autopsy_offer(
+            case_ref=case_ref,
+            client_reference_id=client_reference_id,
+            sku=sku,
+        )
+    except ValueError as exc:
+        raise RoleError(str(exc)) from exc
 
 
 def build_receipt_row_from_role(
@@ -86,10 +89,13 @@ def build_receipt_row_from_role(
         client_reference_id=client_reference_id,
         sku=sku,
     )
-    return receipt_row_from_case(
-        case,
-        g2_run_id=g2_run_id,
-        g2_session_id=g2_session_id,
-        payment_observed_at=payment_observed_at,
-        state=state,
-    )
+    try:
+        return receipt_row_from_case(
+            case,
+            g2_run_id=g2_run_id,
+            g2_session_id=g2_session_id,
+            payment_observed_at=payment_observed_at,
+            state=state,
+        )
+    except ValueError as exc:
+        raise RoleError(str(exc)) from exc
