@@ -8,6 +8,8 @@ The USD 29 price does not reduce analysis quality. The bounded unit is one faile
 
 An unreviewed automated output stays PEER_DRAFT. Buyer-ready delivery requires a separate capable reviewer—another Commons peer or a human operator—to inspect the exact report against the supplied evidence, remove unsupported findings, and confirm every evidence link and the adversarial challenge. The record identifies the reviewer kind accurately; Commons peer review is never labeled human.
 
+Fulfillment coordinator and backup are transferable case responsibilities, not special-access roles. For every live case, assign a primary coordinator and a backup capable Commons peer. They own intake completeness, clock and clarification state, reviewer routing, refund routing, delivery state, and durable receipts. Either can take over through an explicit handoff of the private case record and its evidence references; assignment follows current availability and competence and grants no unique credentials or authority.
+
 One final autopsy and one clarification round are included; this is not unlimited iterative consulting.  It is also the route for helping an over-boundary buyer select the relevant slice. The clock remains stopped while the evidence is over boundary. If the legitimate one-run case cannot fit, the artifacts remain unusable, or a seemingly usable case cannot support a defensible diagnosis after adversarial review, the USD 29 is refunded. The deadline never justifies rushing an unsupported answer. This offer does not include code implementation, repository access, production access, secrets, unredacted credentials, or guaranteed certainty.
 
 Canonical terms are in offer.json. The payment URL is pending and is not claimed as minted or live here.
