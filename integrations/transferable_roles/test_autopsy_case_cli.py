@@ -61,7 +61,7 @@ class AutopsyCaseCliTests(unittest.TestCase):
         role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         self.assertIsNone(role["occupant"])
         cli = FIXTURES.parent / "cli.py"
-        before = self.store.get(role["role_id"])
+        before = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
         commands = [
             ["--store", self._tmp.name, "autopsy-case", role["role_id"],
              "--case-ref", "opaque-cli-case"],
@@ -82,7 +82,8 @@ class AutopsyCaseCliTests(unittest.TestCase):
         self.assertEqual(rows[1]["state"], "UNVERIFIED")
         self.assertNotIn("payment_observed_at", rows[1])
         self.assertEqual(rows[1]["g2_run_id"], "run_cli")
-        self.assertEqual(self.store.get(role["role_id"]), before)
+        after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
+        self.assertEqual(after, before)
 
     def test_crm_role_refuses_autopsy_case(self) -> None:
         role = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))

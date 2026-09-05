@@ -62,7 +62,7 @@ class AutopsyFulfillCliTests(unittest.TestCase):
     def test_documented_commands_run_without_equipping(self) -> None:
         role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         self.assertIsNone(role["occupant"])
-        before = self.store.get(role["role_id"])
+        before = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
         results = []
         for command, options in [
             ("autopsy-fulfill-deadline",
@@ -79,7 +79,8 @@ class AutopsyFulfillCliTests(unittest.TestCase):
         self.assertEqual(results[0]["delivery_due_at"], "2026-09-07T15:00:00-04:00")
         self.assertTrue(results[1]["ok"])
         self.assertEqual(results[1]["artifact_state"], "PEER_DRAFT")
-        self.assertEqual(self.store.get(role["role_id"]), before)
+        after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
+        self.assertEqual(after, before)
 
 
 if __name__ == "__main__":

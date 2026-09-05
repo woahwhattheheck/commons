@@ -59,7 +59,7 @@ class DiagnosticContractCliTests(unittest.TestCase):
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
         self.assertIsNone(role["occupant"])
         cli = FIXTURES.parent / "cli.py"
-        before = self.store.get(role["role_id"])
+        before = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
         for slug in SLUG_TO_CONTRACT:
             with self.subTest(slug=slug):
                 result = subprocess.run(
@@ -73,7 +73,8 @@ class DiagnosticContractCliTests(unittest.TestCase):
                 self.assertIn("one business day", card["diagnostic_window"])
                 self.assertTrue(card["refund"])
                 self.assertGreater(card["acceptance_count"], 0)
-        self.assertEqual(self.store.get(role["role_id"]), before)
+        after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
+        self.assertEqual(after, before)
 
     def test_crm_and_autopsy_refuse(self) -> None:
         crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
