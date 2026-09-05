@@ -11,6 +11,7 @@ Hermetic `test_shared_equipment_newcomer_road.py`:
 - Newcomer-labeled peer: `slack_read_channel` (read) + `github_create_branch` (reversible mutation).
 - `build_capability_manifest(peer=...)` identical across peer labels.
 - `redacted()` still strips `bot_token` fields.
+- Landed: PR #8816 @ `6d5e882`.
 
 ## Not in this slice
 Credential remint, owner-PC residents, HINGE R4, LotLens, #8802, Stripe.
