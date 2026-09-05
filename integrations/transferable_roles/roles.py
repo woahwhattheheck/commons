@@ -48,6 +48,9 @@ GROKBOT_CONTROL_ROUTE_FIELDS = (
     "client",
 )
 
+# Fields stampable onto an existing access_route (no secrets; seat stays on occupant).
+BINDABLE_ROUTE_FIELDS = ("session_id", "last_run_id", "pool_id")
+
 
 class RoleError(ValueError):
     """Invalid role operation or record."""
@@ -317,6 +320,57 @@ class RoleStore:
         self._write(role)
         return deepcopy(role)
 
+    def bind_access_route(
+        self,
+        role_id: str,
+        *,
+        route_name: str,
+        session_id: str | None = None,
+        last_run_id: str | None = None,
+        pool_id: str | None = None,
+    ) -> dict[str, Any]:
+        """Stamp durable G2 recover fields onto a named access_route.
+
+        Occupant seat stays on occupant — never copied onto the route here.
+        Secrets are scrubbed. purpose / obligations / role_id are unchanged.
+        """
+        role = self.get(role_id)
+        name = _require_str(route_name, "route_name")
+        updates = {
+            "session_id": session_id,
+            "last_run_id": last_run_id,
+            "pool_id": pool_id,
+        }
+        if not any(updates[f] for f in BINDABLE_ROUTE_FIELDS):
+            raise RoleError(
+                "bind_access_route needs at least one of "
+                "session_id, last_run_id, pool_id"
+            )
+        preserved_purpose = role["purpose"]
+        preserved_obligations = deepcopy(role["obligations"])
+        found = False
+        new_routes: list[dict[str, Any]] = []
+        for route in role.get("access_routes") or []:
+            item = deepcopy(route)
+            if item.get("name") == name:
+                found = True
+                for field in BINDABLE_ROUTE_FIELDS:
+                    value = updates[field]
+                    if value:
+                        item[field] = _require_str(value, field)
+                item = _normalize_access_route(item)
+            new_routes.append(item)
+        if not found:
+            raise RoleError(f"access_route not found: {name}")
+        role["access_routes"] = new_routes
+        role["updated_at"] = _utc_now()
+        if role["purpose"] != preserved_purpose:
+            raise RoleError("purpose mutated during bind_access_route")
+        if role["obligations"] != preserved_obligations:
+            raise RoleError("obligations mutated during bind_access_route")
+        self._write(role)
+        return deepcopy(role)
+
     def inspect(self, role_id: str) -> dict[str, Any]:
         return self.get(role_id)
 
@@ -326,6 +380,7 @@ class RoleStore:
         package = deepcopy(role)
         # Occupant is runtime binding; export keeps last known next action but
         # clears the live session so the successor must equip/transfer explicitly.
+        # Durable access_route session_id / last_run_id stay for G2 recover.
         package["occupant"] = None
         package["export_meta"] = {
             "exported_at": _utc_now(),
