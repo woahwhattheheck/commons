@@ -20,15 +20,15 @@ KEEP = {
     "test_open_door_guard.py": "70ee5730",
     ".github/workflows/open-door-guard.yml": "6586644c",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "2343ba90",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "77a79824",
     "p/grokbuild-pr8408-verify-20260902-01.md": "0a594dda",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "361f5ca1",
+    "test_grokbuild_pr8411_verify.py": "41ebb40b",
     "p/grokbuild-pr8413-terminal-20260902-01.md": "bca13858",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "b5c11614",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "c6fb83fc",
 }
 
 

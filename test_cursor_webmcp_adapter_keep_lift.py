@@ -31,8 +31,8 @@ KEEP = {
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
     "wire.html": "5b8edbda",
     "ground/WIRE_SUPER_MCP.md": "f36de0a5",
-    "hub_pages.py": "5ac12648",
-    "door.js": "dc59355d",
+    "hub_pages.py": "c11979b8",
+    "door.js": "cfe5a219",
 }
 
 

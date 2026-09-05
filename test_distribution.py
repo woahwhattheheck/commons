@@ -186,7 +186,7 @@ class DistributionLayerTests(unittest.TestCase):
             for needle in forbidden:
                 self.assertNotIn(needle, blob, package["id"])
             self.assertIn("not a live listing", package["channel_copy"].lower())
-            self.assertTrue(package["conversion"]["human"].endswith(".html"))
+            self.assertTrue(package["conversion"]["human"].endswith((".html", ".md")), package["conversion"]["human"])
             self.assertEqual(package["conversion"]["intake"], "OFFER")
             self.assertEqual(package["conversion"]["contact"], "tokenjunkielabs@gmail.com")
 
@@ -311,6 +311,16 @@ class DistributionLayerTests(unittest.TestCase):
                 return pair
         self.fail("missing pair %s x %s" % (offer_id, channel_id))
         raise AssertionError
+
+    def test_survival_human_route_is_not_autopsy_html(self):
+        listing = self.listings["production-survival-sprint"]
+        self.assertEqual(
+            listing["routes"]["human"],
+            "revenue/production_survival/README.md",
+        )
+        self.assertNotEqual(listing["routes"]["human"], "agent-rescue.html")
+        self.assertTrue((ROOT / listing["routes"]["human"]).is_file())
+
 
 
 if __name__ == "__main__":

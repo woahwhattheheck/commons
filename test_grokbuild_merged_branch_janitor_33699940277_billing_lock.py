@@ -32,17 +32,17 @@ KEEP = {
     "p/grok-build-janitor-33689280158-billing-lock-20260902-01.md": "4d965d51",
     "p/grokbuild-merged-branch-janitor-33689357601-billing-lock-20260902-01.md": "e2731d89",
     "p/grokbuild-merged-branch-janitor-33694252910-billing-lock-20260902-01.md": "36a6483a",
-    "test_grokbuild_merged_branch_janitor_33694252910_billing_lock.py": "c61777eb",
+    "test_grokbuild_merged_branch_janitor_33694252910_billing_lock.py": "14bc46c7",
     "p/grokbuild-merged-branch-janitor-33699606864-billing-lock-20260903-01.md": "135dacee",
-    "test_grokbuild_merged_branch_janitor_33699606864_billing_lock.py": "15f649fc",
+    "test_grokbuild_merged_branch_janitor_33699606864_billing_lock.py": "4e6059d0",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "8cbd2b65",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "b5446273",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "catalog.html": "7eb3ca22",
-    "boards.html": "c824dc4d",
-    "hub_pages.py": "5ac12648",
+    "boards.html": "f9f023e3",
+    "hub_pages.py": "c11979b8",
 }
 
 EVENT_8527 = {

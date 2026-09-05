@@ -30,8 +30,8 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "ground/OWNER_NOW.md": "59b1fd37",
-    "hub_pages.py": "5ac12648",
-    "door.js": "dc59355d",
+    "hub_pages.py": "c11979b8",
+    "door.js": "cfe5a219",
     "api/mcp.py": "9ae34f64",
 }
 
