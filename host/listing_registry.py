@@ -463,7 +463,7 @@ def listing_url(surface: dict[str, Any], product: dict[str, Any], published: str
         return None
     routes = product.get("routes") or {}
     human = routes.get("human")
-    if isinstance(human, str) and human.endswith(".html"):
+    if isinstance(human, str) and human.endswith((".html", ".md")):
         return "%s/%s" % (PAGES, human)
     official = surface.get("official_url")
     if isinstance(official, str) and official.startswith("https://woahwhattheheck.github.io/commons"):
