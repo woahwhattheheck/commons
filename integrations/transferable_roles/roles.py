@@ -490,6 +490,30 @@ class RoleStore:
         }
         return _scrub_secrets(package)
 
+    def import_package(self, raw: dict[str, Any]) -> dict[str, Any]:
+        """Load an export_package JSON into an empty store without reminting role_id.
+
+        Scrubs secrets via normalize, drops export_meta, forces occupant None so
+        the importer must equip. Keeps purpose, obligations, tools, and bound
+        access_route session_id/last_run_id. Refuses overwrite of an existing
+        role_id (no remint).
+        """
+        if not isinstance(raw, dict):
+            raise RoleError("package must be an object")
+        package = deepcopy(raw)
+        package.pop("export_meta", None)
+        package["occupant"] = None
+        rid_raw = package.get("role_id")
+        if not isinstance(rid_raw, str) or not rid_raw.strip():
+            raise RoleError("import_package requires role_id in package (no remint)")
+        rid = rid_raw.strip()
+        if self._path(rid).exists():
+            raise RoleError(f"role_id already exists: {rid}")
+        role = normalize_role(package, role_id=rid)
+        role["occupant"] = None
+        self._write(role)
+        return deepcopy(role)
+
     def _write(self, role: dict[str, Any]) -> None:
         path = self._path(role["role_id"])
         clean = _scrub_secrets(role)
