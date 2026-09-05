@@ -3,8 +3,8 @@
 
 TENON claim tenon-r4-diagnostic-receipt-cli-20260905-01 (HINGE peer-assist).
 Gates on tool `diagnostic_receipt`; reads checked-in receipt.json for
-dealer|referral|plant (repair has no receipt twin — refuse). Does not remint
-receipts, invent Stripe, or write CRM.
+dealer|referral|plant (repair has no receipt twin — refuse invent). Does not
+remint receipts, invent Stripe, or write CRM.
 """
 
 from __future__ import annotations
@@ -20,16 +20,10 @@ _TOOL_ENTRY = "integrations/transferable_roles/diagnostic_receipt.py"
 
 _ROOT = Path(__file__).resolve().parents[2]
 
-SLUG_TO_RECEIPT_JSON = {
+SLUG_TO_RECEIPT = {
     "dealer": "revenue/dealer_service_lead_rescue/receipt.json",
     "referral": "revenue/referral_intake_completeness/receipt.json",
     "plant": "revenue/plant_downtime_handoff/receipt.json",
-}
-
-SLUG_TO_RECEIPT_MD = {
-    "dealer": "revenue/dealer_service_lead_rescue/receipt.md",
-    "referral": "revenue/referral_intake_completeness/receipt.md",
-    "plant": "revenue/plant_downtime_handoff/receipt.md",
 }
 
 
@@ -54,14 +48,23 @@ def require_diagnostic_receipt_tool(role: Mapping[str, Any]) -> dict[str, Any]:
     )
 
 
-def _role_knows(role: Mapping[str, Any], *pointers: str) -> bool:
-    known: set[str] = set()
+def _slug_pointer(slug: str) -> str:
+    try:
+        return SLUG_TO_RECEIPT[slug]
+    except KeyError as exc:
+        raise RoleError(
+            f"unknown diagnostic receipt slug {slug!r}; "
+            f"expected one of {sorted(SLUG_TO_RECEIPT)}"
+        ) from exc
+
+
+def _role_knows_receipt(role: Mapping[str, Any], pointer: str) -> bool:
     for item in role.get("knowledge") or []:
-        if isinstance(item, str):
-            known.add(item.strip())
-        elif isinstance(item, Mapping):
-            known.add(str(item.get("pointer") or "").strip())
-    return any(p in known for p in pointers if p)
+        if isinstance(item, str) and item.strip() == pointer:
+            return True
+        if isinstance(item, Mapping) and str(item.get("pointer") or "").strip() == pointer:
+            return True
+    return False
 
 
 def load_receipt_from_role(
@@ -76,18 +79,11 @@ def load_receipt_from_role(
         raise RoleError(
             "repair slug has contract only — no receipt.json twin; refusing invent"
         )
-    try:
-        pointer = SLUG_TO_RECEIPT_JSON[key]
-        md_pointer = SLUG_TO_RECEIPT_MD[key]
-    except KeyError as exc:
+    pointer = _slug_pointer(key)
+    if not _role_knows_receipt(role, pointer):
         raise RoleError(
-            f"unknown diagnostic receipt slug {key!r}; "
-            f"expected one of {sorted(SLUG_TO_RECEIPT_JSON)}"
-        ) from exc
-    if not _role_knows(role, pointer, md_pointer):
-        raise RoleError(
-            f"role knowledge missing pointer {md_pointer} or {pointer}; "
-            "refusing load"
+            f"role knowledge missing pointer {pointer}; "
+            "refusing load (role must cite the landed receipt.json)"
         )
     path = _ROOT / pointer
     if not path.is_file():
@@ -107,14 +103,13 @@ def load_receipt_from_role(
         "cash_usd": raw.get("cash_usd"),
         "payment_verified": raw.get("payment_verified"),
         "buyer_delivery": raw.get("buyer_delivery"),
-        "live_crm_writes": raw.get("live_crm_writes"),
-        "real_dealerships": raw.get("real_dealerships"),
-        "pii_emitted": raw.get("pii_emitted"),
-        "external_messages_sent": raw.get("external_messages_sent"),
         "outreach": raw.get("outreach"),
-        "test_command": raw.get("test_command"),
-        "expected": raw.get("expected"),
+        "external_messages_sent": raw.get("external_messages_sent"),
     }
+    run = raw.get("run")
+    if isinstance(run, Mapping) and "status" in run:
+        out["run_status"] = run.get("status")
+
     blob = json.dumps(out)
     for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
         if forbidden in blob:
