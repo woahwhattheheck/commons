@@ -3,8 +3,8 @@
 
 Examples:
   python3 integrations/transferable_roles/cli.py create --file fixtures/synthetic_crm_followup_role.json --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --store /tmp/roles
-  python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py equip ROLE --session A --harness cursor --seat HINGE --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py transfer ROLE --from-session A --to-session B --to-harness claude --seat TENON --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
 """
 
@@ -48,6 +48,10 @@ def build_parser() -> argparse.ArgumentParser:
     e.add_argument("--session", required=True)
     e.add_argument("--harness", required=True)
     e.add_argument("--account-pool")
+    e.add_argument(
+        "--seat",
+        help="optional occupant name (not role_id); never a gate",
+    )
 
     t = sub.add_parser("transfer", help="hand role to another session/harness")
     t.add_argument("role_id")
@@ -55,6 +59,10 @@ def build_parser() -> argparse.ArgumentParser:
     t.add_argument("--to-session", required=True)
     t.add_argument("--to-harness", required=True)
     t.add_argument("--account-pool")
+    t.add_argument(
+        "--seat",
+        help="optional successor occupant name (not role_id); never a gate",
+    )
 
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
@@ -80,6 +88,7 @@ def main(argv: list[str] | None = None) -> int:
                     session_id=args.session,
                     harness=args.harness,
                     account_pool=args.account_pool,
+                    seat=args.seat,
                 )
             )
         elif args.cmd == "transfer":
@@ -90,6 +99,7 @@ def main(argv: list[str] | None = None) -> int:
                     to_harness=args.to_harness,
                     from_session_id=args.from_session,
                     account_pool=args.account_pool,
+                    seat=args.seat,
                 )
             )
         elif args.cmd == "inspect":

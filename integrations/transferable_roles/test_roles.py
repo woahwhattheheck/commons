@@ -3,12 +3,15 @@
 
 from __future__ import annotations
 
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 
 from roles import RoleError, RoleStore, SECRET_FIELD_NAMES
+import cli as roles_cli
 
 FIXTURE = Path(__file__).resolve().parent / "fixtures" / "synthetic_crm_followup_role.json"
 
@@ -108,6 +111,71 @@ class TransferableRoleTests(unittest.TestCase):
             self.assertIn(field, g2)
         # Role must not invent a second pool or bind a live chat window.
         self.assertNotIn("session_id", g2)
+
+    def test_cli_equip_and_transfer_pass_seat(self) -> None:
+        """CLI --seat must reach RoleStore (G2 occupant seat ≠ role_id)."""
+        store_dir = self._tmp.name
+        fixture = str(FIXTURE)
+        role_id = "role-cli-seat-test"
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    fixture,
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "equip",
+                    role_id,
+                    "--session",
+                    "session-A",
+                    "--harness",
+                    "cursor-hinge",
+                    "--seat",
+                    "HINGE",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        equipped = json.loads(buf.getvalue())
+        self.assertEqual(equipped["occupant"]["seat"], "HINGE")
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "transfer",
+                    role_id,
+                    "--from-session",
+                    "session-A",
+                    "--to-session",
+                    "session-B",
+                    "--to-harness",
+                    "claude-tenon",
+                    "--seat",
+                    "TENON",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        handed = json.loads(buf.getvalue())
+        self.assertEqual(handed["occupant"]["seat"], "TENON")
+        self.assertEqual(handed["occupant"]["session_id"], "session-B")
+        self.assertEqual(handed["role_id"], role_id)
 
 
 if __name__ == "__main__":
