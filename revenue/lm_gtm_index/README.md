@@ -42,6 +42,22 @@ Agents doing sales use `brief` then `claim`. No claim = no draft.
 only when the live occupant matches YOU. UNSEATED or a different occupant
 exits 4. Listing stays open. Still not a second CRM. `--send` exits 3.
 
+## RELATIONSHIP_HANDOFF (CRM6)
+
+When a peer's context window is gone, the successor continues from evidence:
+
+```sh
+python3 host/lm_gtm_relationship_handoff.py SUBJECT
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
+```
+
+Returns kind `LM_GTM_RELATIONSHIP_HANDOFF` with SOURCED or ABSENT fields for
+wants, learned, promised, unresolved, next_time_sensitive, and
+successor_next_action. `promised` requires explicit SENT language or a
+SENT_AWAITING_REPLY event — never an invented promise. Billings stays
+OWNER_HOLD; agents do not contact Cheri. Not a second CRM. Canary:
+`python3 -m unittest -v test_lm_gtm_relationship_handoff.py`.
+
 ## Cross-harness contract
 
 Read (any harness with git):
@@ -63,6 +79,8 @@ Read (any harness with git):
    `metaforms` and the MSP SENT rows hydrate `route.kind: EXISTING_CRM_RECORD`
    / `airtable:rec…`. Emails and phones stay in source ledgers; the INDEX
    does not copy them.
+7. Relationship handoff for a successor peer:
+   `python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421`
 
 Write (overlay only):
 
@@ -106,7 +124,9 @@ python3 host/lm_gtm_index.py show city-of-billings-bid-1421
 python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py require-claim composio --owner YOURNAME
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
 python3 -m unittest -v test_lm_gtm_index.py
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py
 ```
 
 Door: [`lm-gtm-index.html`](../../lm-gtm-index.html).

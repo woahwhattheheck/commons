@@ -38,6 +38,13 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
   <h2 id="not-crm-heading">Not a second CRM</h2>
   <p>Airtable <code>JOJO Revenue Recovery CRM / Revenue Pipeline</code> remains canonical. MSP SENT rows and FUSE HANDS DNR rows cite <code>EXISTING_CRM_RECORD</code> / <code>airtable:rec…</code> and stay HARD_DO_NOT_RESEND — not hot, not draft-now. Halo AI is BOUNCED DNR (never resend). City of Billings Bid 1421 is OWNER_HOLD / DNR_OUTREACH / NOT_HOT: live owner path in <code>#billings-1421-compliance</code>, not hot, not a dead NO_BID, agents do not send or contact Cheri. #leads HOLD / BUILD-AND-VERIFY posts are org + person + Slack ts only and are not hot. Verified unsent leads stay in hot at rank 3. Emails and phones stay off the INDEX. The ~1000 marketing-sales GitHub entities stay research, not live sales. <code>--send</code> exits 3.</p>
 </section>
+<section class="panel" aria-labelledby="handoff-heading">
+  <h2 id="handoff-heading">Relationship handoff (CRM6)</h2>
+  <p class="note">Successor peers continue a relationship from evidence, not from an invented summary. Fields are SOURCED with pointers or ABSENT. <code>promised</code> requires explicit SENT language. Not a compulsory script. Billings stays OWNER_HOLD — agents do not contact Cheri.</p>
+  <pre>python3 host/lm_gtm_relationship_handoff.py SUBJECT
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
+python3 -m unittest -v test_lm_gtm_relationship_handoff.py</pre>
+</section>
 <section class="panel" aria-labelledby="hot-heading">
   <h2 id="hot-heading">HOT — actionable live ones</h2>
   <p class="note">Rank: material_reply &gt; sent_awaiting_reply &gt; ready_to_draft &gt; verified_lead_unsent. DNR / HOLD_DO_NOT_RESEND / HOLD_BUILD_AND_VERIFY / OWNER_HOLD / BOUNCED excluded unless a MATERIAL_REPLY reopened them. Do not treat SENT-DNR, bounced DNR, owner-hold, or HOLD-build as draft-now.</p>
@@ -82,7 +89,8 @@ python3 host/lm_gtm_index.py show city-of-billings-bid-1421
 python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py release composio --owner YOURNAME
-python3 host/lm_gtm_index.py append-event --subject composio --id yourname-gtm-note-YYYYMMDD-01 --body "note"</pre>
+python3 host/lm_gtm_index.py append-event --subject composio --id yourname-gtm-note-YYYYMMDD-01 --body "note"
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421</pre>
 </section>
 <noscript>
   <p class="panel">JavaScript is off. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a> and <a href="./revenue/lm_gtm_index/state.json">state.json</a>. Run <code>brief</code> for compact HOT, <code>sent</code> for HARD_DO_NOT_RESEND, and <code>hold</code> for HOLD/BUILD-AND-VERIFY. Cash USD 0. Not a CRM.</p>
