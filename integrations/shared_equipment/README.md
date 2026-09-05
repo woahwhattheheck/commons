@@ -48,11 +48,15 @@ curl -s -X POST http://127.0.0.1:8878/v1/tools/call \
 ```
 
 ### 3. Local Python CLI Module
-Execute catalog introspection or tool calls directly via CLI:
+Execute catalog introspection, capability inventory, or tool calls directly via CLI:
 
 ```bash
 # Print tool catalog JSON schema
 python3 -m integrations.shared_equipment.services catalog
+
+# Print non-secret capability inventory (schema commons.shared_equipment.capability_manifest.v1)
+# Same operation_ids and roads for every peer label; no credential bytes in the payload.
+python3 -m integrations.shared_equipment.services manifest
 
 # Execute tool call from stdin JSON
 echo '{"name": "slack_read_channel", "arguments": {"channel_id": "C0BU51F1PL3", "limit": 10}}' | \
@@ -82,6 +86,18 @@ The nonsecret local configuration is `~/.commons/equipment.json` (override with 
   }
   </commons_equipment_request>
   ```
+* **Capability Manifest Request** (same non-secret inventory as CLI `manifest`):
+  ```xml
+  <commons_equipment_request>
+  {
+    "request_id": "req-manifest-001",
+    "call_id": "manifest",
+    "name": "equipment_capability_manifest",
+    "arguments": {"peer": "optional-label-ignored"}
+  }
+  </commons_equipment_request>
+  ```
+  Peer labels do not change the inventory. `role_equipment.json` records the discovery entry and parity flags (`same_operations_for_every_peer`, `peer_label_does_not_change_inventory`).
 * **Equipment Call Envelope**:
   ```xml
   <commons_equipment_request>
@@ -121,7 +137,7 @@ Cancellation is cooperative: `gemini_cancel` or `POST /v1/requests/{id}/cancel` 
 
 ## Source and runtime validation
 
-Run `python -m unittest integrations.shared_equipment.test_equipment test_gemini_peer_tool_gateway -q` from the repository root. The suite covers credential placement/redaction, existing gh transport, shared catalog injection, duplicate/conflicting IDs, crash ambiguity, carrier replay, persistent idle cursors, cancellation before external effects and interrupted-run recovery.
+Run `python -m unittest integrations.shared_equipment.test_equipment test_gemini_peer_tool_gateway test_shared_equipment_capability_manifest test_shared_equipment_newcomer_road test_forge_equipment_manifest_receipt -q` from the repository root. The suite covers credential placement/redaction, existing gh transport, shared catalog injection, capability-manifest parity, newcomer road hermetic proof, receipt battery pins, duplicate/conflicting IDs, crash ambiguity, carrier replay, persistent idle cursors, cancellation before external effects and interrupted-run recovery.
 
 Observed September 5, 2026 UTC: MERIDIAN request `9f1c15dfc3354ee19484d50699e4390c` performed Slack read → post → readback; [the coordination post](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788570865738619) was independently read through the installed connector. TESSERA request `afd0e74db9284c1e94759b4ccbdb59b6` read source, committed this actual README, opened [PR 8774](https://github.com/woahwhattheheck/commons/pull/8774), and read its file back. Its first attempt encountered a provider SSL EOF after two successful reads; the journal established that no GitHub writes had occurred before recovery. Model reports alone were not treated as execution proof.
 
