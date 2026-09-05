@@ -1,0 +1,49 @@
+{
+  "schema_version": "commons-agent-failure-autopsy-offer/v1",
+  "kind": "AGENT_FAILURE_AUTOPSY_OFFER",
+  "offer_id": "agent-failure-autopsy-29",
+  "name": "Agent Failure Autopsy",
+  "status": "PAYMENT_URL_PENDING",
+  "audience": [
+    "Codex power users",
+    "Claude Code power users",
+    "other coding-agent power users"
+  ],
+  "price": {
+    "currency": "USD",
+    "amount": 29,
+    "payment_url": null,
+    "payment_url_state": "NOT_MINTED_OR_VERIFIED"
+  },
+  "buyer_supplies": [
+    "one failure sentence",
+    "the coding harness and relevant stack name",
+    "one or more redacted transcript, log, or screenshot artifacts"
+  ],
+  "clock": {
+    "starts": "when the last artifact needed to make the submitted evidence usable arrives",
+    "delivery_term": "within one business day",
+    "business_day_rule": "same local wall-clock time on the next Monday through Friday; any holiday adjustment must be stated before the clock starts"
+  },
+  "delivery": [
+    "an evidence-linked timeline and failure chain",
+    "primary and contributing causes with calibrated confidence",
+    "concrete prompt, configuration, or code fix steps only where the supplied evidence supports them",
+    "one replay or regression-prevention check"
+  ],
+  "clarification_rounds_included": 1,
+  "refund": "If the submitted artifacts still cannot support a defensible diagnosis after the included clarification round, refund USD 29.",
+  "boundaries": {
+    "code_implementation_included": false,
+    "guaranteed_certainty": false,
+    "repository_access_required": false,
+    "production_access_required": false,
+    "secrets_or_unredacted_credentials_requested": false
+  },
+  "operator_time_hypothesis": {
+    "human_review_ceiling_minutes": 15,
+    "status": "UNMEASURED_TARGET",
+    "measurement_rule": "Record active human-review minutes on every buyer delivery. Automated drafting time is separate. Do not claim the ceiling is achieved from a synthetic example."
+  },
+  "privacy": "Buyer evidence and buyer reports remain in an owner-private delivery system unless the buyer explicitly authorizes a public excerpt. The checked-in example is synthetic."
+}
