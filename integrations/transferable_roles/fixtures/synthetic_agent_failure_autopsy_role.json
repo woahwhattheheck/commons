@@ -1,0 +1,134 @@
+{
+  "schema": "commons.transferable_role/v1",
+  "role_id": "role-synthetic-agent-failure-autopsy-20260905",
+  "label": "Agent Failure Autopsy fulfillment (SYNTHETIC)",
+  "synthetic": true,
+  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889).",
+  "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
+  "knowledge": [
+    {
+      "pointer": "payment-capability.html",
+      "label": "public payment rails door — CHARGEABLE only; no invented checkout"
+    },
+    {
+      "pointer": "ground/PAYMENT_CAPABILITY.md",
+      "label": "provider-neutral payment capability card"
+    },
+    {
+      "pointer": "pay.html",
+      "label": "public pay surface — proven rails only"
+    },
+    {
+      "pointer": "agent-rescue.html",
+      "label": "public $29 Autopsy page + live checkout"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/README.md",
+      "label": "#8811 spine LANDED (c8e40bc) — Autopsy fulfillment README; point only, do not remint"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/RUNBOOK.md",
+      "label": "#8811 spine — operator runbook; point only, do not remint"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/offer.json",
+      "label": "ACTIVE_VERIFIED offer card — payment_url LIVE_VERIFIED; do not remint IDs here"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/report-template.md",
+      "label": "#8811 spine — buyer report template; point only, do not remint"
+    },
+    {
+      "pointer": "revenue/agent_failure_autopsy/intake.schema.json",
+      "label": "#8811 spine — intake schema (optional); point only, do not remint"
+    },
+    {
+      "pointer": "Astra Autopsy demand / coordination",
+      "label": "#8811 spine LANDED on main (c8e40bc) — Payment Link live via #8889 agent-rescue.html CTA; knowledge/tools point at landed paths; not reminted here"
+    }
+  ],
+  "obligations": [
+    {
+      "id": "ob-intake",
+      "summary": "Collect buyer failure sentence + harness/stack + redacted evidence within corpus caps; never ask for secrets",
+      "next_action": "Gather failure sentence, harness/stack, and redacted evidence under corpus caps — refuse secrets",
+      "status": "open"
+    },
+    {
+      "id": "ob-diagnose",
+      "summary": "Reconstruct run / first divergence; observations vs inference; evidence-supported steps only",
+      "next_action": "Reconstruct run to first divergence; separate observations from inference; evidence-supported steps only",
+      "status": "open"
+    },
+    {
+      "id": "ob-review",
+      "summary": "Independent capable reviewer before buyer-ready (PEER_DRAFT until reviewed)",
+      "next_action": "Route PEER_DRAFT to an independent capable reviewer; hold buyer-ready until review lands",
+      "status": "open"
+    },
+    {
+      "id": "ob-settle",
+      "summary": "Deliver report OR route to refund when diagnosis not defensible — checkout LIVE on agent-rescue.html / https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g (do not invent second plink)",
+      "next_action": "Deliver buyer-ready report or route to refund per contract; checkout is LIVE on agent-rescue.html and buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g — do not invent second plink",
+      "status": "open",
+      "evidence_pointer": "agent-rescue.html live checkout + https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g (#8889); #8811 spine LANDED (c8e40bc) — point at revenue/agent_failure_autopsy/*"
+    }
+  ],
+  "tools": [
+    {
+      "name": "transferable_roles_cli",
+      "entry": "python3 integrations/transferable_roles/cli.py",
+      "notes": "create/equip/transfer/advance/export/import/open-obligations"
+    },
+    {
+      "name": "role_export",
+      "entry": "python3 integrations/transferable_roles/cli.py export <role_id>",
+      "notes": "portable package; secrets excluded"
+    },
+    {
+      "name": "grokbot_control_client",
+      "entry": "integrations/grokbot_control/client.py",
+      "notes": "GrokBotControlClient — submit/follow-up/cancel/session recover; not grok.com"
+    },
+    {
+      "name": "autopsy_fulfillment",
+      "entry": "python3 revenue/agent_failure_autopsy/fulfillment.py",
+      "notes": "#8811 spine — evidence-bounded fulfill; no credential remint"
+    }
+  ],
+  "access_routes": [
+    {
+      "name": "grokbot_control_g2",
+      "kind": "grokbot_control",
+      "base_url": "http://127.0.0.1:8881",
+      "pool_id": "grokbot",
+      "client": "integrations/grokbot_control/client.py",
+      "submit": "POST /v1/runs",
+      "status": "GET /v1/runs/{run_id}?wait_ms=",
+      "follow_up": "POST /v1/runs/{run_id}/follow-up",
+      "cancel": "POST /v1/runs/{run_id}/cancel",
+      "recover": "GET /v1/sessions/{session_id}",
+      "events": "GET /v1/events?after=",
+      "note": "SPARK G2 #8761 / 5154aa8f. Point role at pool+session; seat/session_id filled by occupant at equip — never bind role to one chat window. Not grok.com :8788, not C1 :8879. Second pool only via GROKBOT_CONTROL_POOLS when owner names it."
+    },
+    {
+      "name": "gemini_peer_tool_gateway",
+      "kind": "loopback_http",
+      "base_url": "http://127.0.0.1:8778",
+      "submit": "POST /v1/message",
+      "status": "GET /v1/requests/{request_id}",
+      "events": "GET /v1/events?after={cursor}",
+      "recover": "GET /v1/last?peer={peer}",
+      "note": "Mirror of integrations/gemini_slack/peer_tool_gateway.py — do not fork; C1 siblings share this shape"
+    },
+    {
+      "name": "payment_capability",
+      "kind": "public_html",
+      "store": "payment-capability.html",
+      "base_url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+      "note": "Public Payment Link only — no secret IDs. UTM-safe CTA on agent-rescue.html; #8811 spine LANDED (c8e40bc). Also pay.html / payment-capability.html."
+    }
+  ],
+  "credential_custodian": "existing_secure_stores",
+  "occupant": null
+}

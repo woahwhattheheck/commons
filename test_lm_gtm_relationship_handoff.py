@@ -129,6 +129,121 @@ class RelationshipHandoffTests(unittest.TestCase):
         }
         self.assertEqual(handoff_mod.successor_reads_next_action(slim), value)
 
+    def test_successor_brief_from_frozen_packet_only(self) -> None:
+        """Hermetic: brief reads packet fields only; no ledger IO."""
+        frozen = {
+            "kind": "LM_GTM_RELATIONSHIP_HANDOFF",
+            "subject_id": "synthetic-proof-customer",
+            "organization": "Synthetic customer",
+            "lane": "owner_hold",
+            "decision": "OWNER_HOLD",
+            "dnr": True,
+            "due": "2026-09-28",
+            "route_kind": "EXISTING_CRM_RECORD",
+            "route_ref": "airtable:synthetic-existing-record",
+            "canonical_crm": "JOJO Revenue Recovery CRM / Revenue Pipeline",
+            "cash_usd": 0,
+            "transport": "NONE",
+            "relationship_evidence": {
+                "path": "revenue/lm_gtm_index/relationship_handoff_evidence.jsonl",
+                "event_ids": ["synthetic-event-one"],
+                "canonical_index_mutated": False,
+            },
+            "fields": {
+                "wants": {
+                    "status": "ABSENT",
+                    "value": None,
+                    "evidence": [],
+                    "provenance": None,
+                },
+                "learned": {
+                    "status": "SOURCED",
+                    "value": "hold from source",
+                    "evidence": ["relationship:synthetic-event-one"],
+                    "provenance": "SUMMARY_POINTER",
+                },
+                "promised": {
+                    "status": "ABSENT",
+                    "value": None,
+                    "evidence": [],
+                    "provenance": None,
+                },
+                "sent_communication": {
+                    "status": "ABSENT",
+                    "value": None,
+                    "evidence": [],
+                    "provenance": None,
+                },
+                "unresolved": {
+                    "status": "SOURCED",
+                    "value": "decision=OWNER_HOLD; dnr=true",
+                    "evidence": ["relationship:synthetic-event-one"],
+                    "provenance": "LEDGER_STATUS",
+                },
+                "next_time_sensitive": {
+                    "status": "SOURCED",
+                    "value": "2026-09-28",
+                    "evidence": ["relationship:synthetic-event-one"],
+                    "provenance": "LEDGER_STATUS",
+                },
+                "successor_next_action": {
+                    "status": "SOURCED",
+                    "value": "Retain no-new-contact; inspect source.",
+                    "evidence": ["relationship:synthetic-event-one"],
+                    "provenance": "LEDGER_STATUS",
+                },
+            },
+            "evidence_chain": [
+                {
+                    "id": "synthetic-event-one",
+                    "type": "STATUS",
+                    "ts": "2026-09-04T21:00:00Z",
+                    "body": "hold",
+                    "source_kind": "RELATIONSHIP_EVIDENCE",
+                    "source_paths": ["synthetic:note"],
+                }
+            ],
+            "invent_guard": {
+                "emails_forbidden": True,
+                "phones_forbidden": True,
+                "no_second_crm": True,
+                "no_customer_contact": True,
+                "pointer_is_not_message": True,
+                "relationship_evidence_is_not_crm": True,
+            },
+        }
+        brief = handoff_mod.successor_brief(frozen)
+        self.assertIn(
+            "LM_GTM_RELATIONSHIP_HANDOFF subject=synthetic-proof-customer", brief
+        )
+        self.assertIn("decision=OWNER_HOLD", brief)
+        self.assertIn("promised: ABSENT", brief)
+        self.assertIn("wants: ABSENT", brief)
+        self.assertIn("successor_next_action: SOURCED", brief)
+        self.assertIn("Retain no-new-contact; inspect source.", brief)
+        self.assertIn("canonical_index_mutated=False", brief)
+        self.assertIn("no_second_crm=True", brief)
+        self.assertIsNone(EMAIL_RE.search(brief))
+        self.assertIsNone(PHONE_RE.search(brief))
+        with self.assertRaises(idx.IndexError_):
+            handoff_mod.successor_brief({"kind": "NOT_HANDOFF", "subject_id": "x"})
+
+    def test_cli_brief_flag_wires_without_ledger_mint(self) -> None:
+        """CLI --brief fails closed on unknown subject (compose before paste)."""
+        brief_unknown = subprocess.run(
+            [
+                sys.executable,
+                str(HOST_HANDOFF),
+                "brand-new-buyer-mint-refuse",
+                "--brief",
+            ],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(brief_unknown.returncode, 1)
+        self.assertIn("unknown subject", brief_unknown.stderr.casefold())
+
     def test_unknown_subject_fails_closed(self) -> None:
         with self.assertRaises(idx.IndexError_):
             handoff_mod.relationship_handoff("brand-new-buyer-mint-refuse")

@@ -11,6 +11,7 @@ messages into Git.
 Entry point:
   python3 host/lm_gtm_relationship_handoff.py SUBJECT
   python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
+  python3 host/lm_gtm_relationship_handoff.py SUBJECT --brief
 """
 
 from __future__ import annotations
@@ -42,6 +43,15 @@ SOURCE_RELATIONSHIP_EVIDENCE = "RELATIONSHIP_EVIDENCE"
 LEDGER_STATUS = "LEDGER_STATUS"
 SUMMARY_POINTER = "SUMMARY_POINTER"
 _INTERNAL_SOURCE = "_handoff_source"
+FIELD_ORDER = (
+    "wants",
+    "learned",
+    "promised",
+    "sent_communication",
+    "unresolved",
+    "next_time_sensitive",
+    "successor_next_action",
+)
 
 
 def _absent() -> dict[str, Any]:
@@ -230,6 +240,87 @@ def successor_reads_next_action(packet: dict[str, Any]) -> str | None:
     return value if isinstance(value, str) and value.strip() else None
 
 
+def _format_field(name: str, field: Any) -> str:
+    """Paste line for one field. Omits raw evidence path lists (ids stay on packet)."""
+    if not isinstance(field, dict):
+        return f"{name}: ABSENT"
+    status = field.get("status") or "ABSENT"
+    if status != "SOURCED":
+        return f"{name}: ABSENT"
+    value = field.get("value")
+    text = value.strip() if isinstance(value, str) else ""
+    if not text:
+        return f"{name}: ABSENT"
+    provenance = field.get("provenance") or ""
+    bits = [f"{name}: SOURCED"]
+    if provenance:
+        bits.append(f"provenance={provenance}")
+    bits.append(f"value={text}")
+    return " ".join(bits)
+
+
+def successor_brief(packet: dict[str, Any]) -> str:
+    """Render a PII-free peer paste from an existing handoff packet only.
+
+    Does not open ledgers, invent fields, contact anyone, or mint a CRM.
+    Evidence path lists stay off the paste; peers inspect the packet/source.
+    """
+    if not isinstance(packet, dict):
+        raise idx.IndexError_("successor brief requires a handoff packet object")
+    if packet.get("kind") != KIND_HANDOFF:
+        raise idx.IndexError_(
+            f"successor brief requires kind {KIND_HANDOFF}; got {packet.get('kind')!r}"
+        )
+    subject_id = packet.get("subject_id")
+    if not isinstance(subject_id, str) or not subject_id.strip():
+        raise idx.IndexError_("successor brief requires subject_id")
+
+    fields = packet.get("fields") if isinstance(packet.get("fields"), dict) else {}
+    relationship = (
+        packet.get("relationship_evidence")
+        if isinstance(packet.get("relationship_evidence"), dict)
+        else {}
+    )
+    invent = packet.get("invent_guard") if isinstance(packet.get("invent_guard"), dict) else {}
+    chain = packet.get("evidence_chain") if isinstance(packet.get("evidence_chain"), list) else []
+    chain_ids = [
+        str(item.get("id"))
+        for item in chain
+        if isinstance(item, dict) and item.get("id")
+    ]
+
+    lines = [
+        f"{KIND_HANDOFF} subject={subject_id.strip()}",
+        (
+            f"org={packet.get('organization')!s} lane={packet.get('lane')!s} "
+            f"decision={packet.get('decision')!s} dnr={bool(packet.get('dnr'))} "
+            f"due={packet.get('due')!s}"
+        ),
+        f"route={packet.get('route_kind')!s}:{packet.get('route_ref')!s}",
+        f"canonical_crm={packet.get('canonical_crm')!s}",
+        f"cash_usd={packet.get('cash_usd')} transport={packet.get('transport')!s}",
+        (
+            "relationship_evidence "
+            f"path={relationship.get('path')!s} "
+            f"canonical_index_mutated={bool(relationship.get('canonical_index_mutated'))} "
+            f"event_ids={','.join(str(item) for item in (relationship.get('event_ids') or []) if item)}"
+        ),
+    ]
+    for name in FIELD_ORDER:
+        lines.append(_format_field(name, fields.get(name)))
+    lines.append(f"evidence_chain_count={len(chain_ids)} ids={','.join(chain_ids)}")
+    lines.append(
+        "invent_guard "
+        f"no_second_crm={bool(invent.get('no_second_crm'))} "
+        f"no_customer_contact={bool(invent.get('no_customer_contact'))} "
+        f"pointer_is_not_message={bool(invent.get('pointer_is_not_message'))} "
+        f"relationship_evidence_is_not_crm={bool(invent.get('relationship_evidence_is_not_crm'))}"
+    )
+    text = "\n".join(lines) + "\n"
+    idx._assert_no_pii_in_index_blob(text)
+    return text
+
+
 def relationship_handoff(
     subject_id: str,
     paths: dict[str, Path] | None = None,
@@ -368,9 +459,11 @@ def relationship_handoff(
     due = effective_row.get("due")
     due_evidence: list[str] = []
     for event in reversed(events_sorted):
-        if event.get("due") == due and due:
-            due_evidence = _event_paths(event) + [_event_ref(event)]
-            break
+        if event.get("due") != due or not due:
+            continue
+        for evidence_ref in _event_paths(event) + [_event_ref(event)]:
+            if evidence_ref not in due_evidence:
+                due_evidence.append(evidence_ref)
     if not due_evidence and due:
         due_evidence = unresolved_evidence[:]
     next_time = (
@@ -437,6 +530,11 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="emit one JSON line instead of pretty JSON",
     )
+    parser.add_argument(
+        "--brief",
+        action="store_true",
+        help="emit a PII-free successor paste from the packet (no ledger re-read after compose)",
+    )
     return parser
 
 
@@ -450,6 +548,9 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
         packet = relationship_handoff(args.subject)
+        if args.brief:
+            sys.stdout.write(successor_brief(packet))
+            return 0
         if args.jsonl:
             sys.stdout.write(json.dumps(packet, sort_keys=True, ensure_ascii=False) + "\n")
         else:

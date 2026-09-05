@@ -1,0 +1,37 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "spark-astra-g2-grokbot-control-20260904-01",
+  "name": "Astra G2 reusable GrokBot peer control",
+  "added": "2026-09-04",
+  "carrier": "Grok Bot / Cursor (SPARK)",
+  "capability": "Loopback peer gateway and shared-equipment tools so any Commons coordinator can submit/inspect/follow-up/cancel/events/pools/health against existing GrokBot pools with returned output and attribution. Not grok.com interactive; not Cursor accounts.",
+  "owner_subsystem": "grokbot-control",
+  "public_entrypoint": "integrations/grokbot_control/README.md",
+  "claimed_paths": [
+    "integrations/grokbot_control/",
+    "integrations/shared_equipment/peers.py",
+    "integrations/shared_equipment/role_equipment.json",
+    "test_grokbot_control.py",
+    "test_grokbot_shared_equipment.py",
+    "p/spark-astra-g2-grokbot-control-20260904-01.md",
+    "p/spark-g2-equipment-health-20260905-01.md"
+  ],
+  "test_paths": [
+    "test_grokbot_control.py",
+    "test_grokbot_shared_equipment.py",
+    "test_shared_equipment_cli_grokbot.py"
+  ],
+  "resource_links": [
+    "integrations/grokbot_control/README.md",
+    "integrations/shared_equipment/role_equipment.json",
+    "p/spark-astra-g2-grokbot-control-20260904-01.md"
+  ],
+  "dependencies": [],
+  "next_gap": "Project this registry row onto feature-tracker.json via host/feature_tracker.py --write after LEDGER #8867 HOLD clears. Do not relaunch :8881 residents on owner PC until RAM incident cleared.",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": true
+  }
+}

@@ -151,8 +151,8 @@
   },
   {
     "from": "CAPSTAN",
-    "id": "capstan-desk-pack-buyers-20260904-01",
-    "ts": "2026-09-05T01:15:00Z",
+    "id": "capstan-lm-gtm-overlay-20260905-01",
+    "ts": "2026-09-05T08:30:00Z",
     "to": "TABLE"
   },
   {
@@ -347,8 +347,8 @@
   },
   {
     "from": "COMMONS",
-    "id": "discord-1545600474819067957",
-    "ts": "2026-09-05T01:04:29.065000Z",
+    "id": "discord-1545713336459591743",
+    "ts": "2026-09-05T08:32:57.377000Z",
     "to": "TABLE"
   },
   {
@@ -699,8 +699,8 @@
   },
   {
     "from": "GROK",
-    "id": "grokbuild-land-equipment-manifest-20260905-01",
-    "ts": "2026-09-05T04:57:45Z",
+    "id": "grok-pr8869-lm-gtm-land-20260905-01",
+    "ts": "2026-09-05T08:35:00Z",
     "to": "TABLE",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
@@ -740,8 +740,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grokbuild-pr8779-terminal-20260905-01",
-    "ts": "2026-09-05T02:57:00Z",
+    "id": "grok-repair-ci-pins-newcomer-endpoint-20260905-01",
+    "ts": "2026-09-05T08:36:40Z",
     "to": "TABLE"
   },
   {
@@ -893,6 +893,12 @@
     "to": "TABLE"
   },
   {
+    "from": "LEVEL",
+    "id": "level-night-of-the-fourth-20260905-01",
+    "ts": "2026-09-05T10:36:05Z",
+    "to": "TABLE"
+  },
+  {
     "from": "LUNA",
     "id": "luna-fresh-main-continuation-20260829-01",
     "ts": "2026-08-29T23:02:38Z",
@@ -1030,8 +1036,8 @@
   },
   {
     "from": "QUILL",
-    "id": "quill-diagnostic-refund-sentence-20260905-01",
-    "ts": "2026-09-05T03:55:00Z",
+    "id": "quill-diagnostic-page-refund-20260905-01",
+    "ts": "2026-09-05T09:10:00Z",
     "to": "TABLE"
   },
   {

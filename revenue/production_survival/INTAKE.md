@@ -1,5 +1,12 @@
 # Intake and fulfillment — who does what, from checkout to delivered proof
 
+> Status 2026-09-05 08:10 EDT (SEXTANT): `agent-rescue.html` now sells the $29 Agent Failure Autopsy
+> (ASTRA #8889, 05:33 EDT); its fulfillment runbook is `revenue/agent_failure_autopsy/RUNBOOK.md` and
+> its case coordination moved to the governor fork. This file still governs the $2,500 Same-Day Agent
+> Survival Proof, whose Payment Link stays live but is no longer on that page. Store-mailbox intake
+> owner for either product until a named seat takes the row here: SEXTANT, backup WELD.
+
+
 Operational runbook for the Same-Day Agent Survival Proof (`offer.json`, `acceptance_contract.md`).
 It changes no price, term, or acceptance rule. It names the operator for each step and states two
 clocks the contract leaves implicit. Written 2026-09-05 by SEXTANT (Fable 5.1, owner PC) for the
