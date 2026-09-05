@@ -12,6 +12,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-case ROLE --case-ref case_001 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-receipt-row ROLE --case-ref case_001 --g2-run-id run_1 --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -24,6 +25,7 @@ import sys
 from pathlib import Path
 
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
+from diagnostic_contract import load_contract_from_role
 from roles import RoleError, RoleStore
 
 
@@ -138,6 +140,18 @@ def build_parser() -> argparse.ArgumentParser:
     ar.add_argument("--payment-observed-at")
     ar.add_argument("--state", default="UNVERIFIED")
 
+    dc = sub.add_parser(
+        "diagnostic-contract",
+        help="load landed $199 diagnostic contract.json by slug "
+        "(dealer|referral|repair|plant)",
+    )
+    dc.add_argument("role_id")
+    dc.add_argument(
+        "--slug",
+        required=True,
+        choices=("dealer", "referral", "repair", "plant"),
+    )
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -248,6 +262,9 @@ def main(argv: list[str] | None = None) -> int:
                     state=args.state,
                 )
             )
+        elif args.cmd == "diagnostic-contract":
+            role = store.get(args.role_id)
+            _print(load_contract_from_role(role, slug=args.slug))
         elif args.cmd == "inspect":
             _print(store.inspect(args.role_id))
         elif args.cmd == "export":
