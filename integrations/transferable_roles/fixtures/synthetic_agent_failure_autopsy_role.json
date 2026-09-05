@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-agent-failure-autopsy-20260905",
   "label": "Agent Failure Autopsy fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889). After #8901/#8925 also point at INTAKE.md + SEATS.md (point only). After tip-shelf land also point at commerce.html (point only). After reply→cash land also point at revenue/reply_to_revenue/* (point only; do not remint handoffs).",
+  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889). After #8901/#8925 also point at INTAKE.md + SEATS.md (point only). After tip-shelf land also point at commerce.html (point only). After reply→cash land also point at revenue/reply_to_revenue/* (point only; do not remint handoffs). After SPARK #8961 also point at paid_case.py case_from_autopsy_offer (point only; do not remint).",
   "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -25,6 +25,10 @@
     {
       "pointer": "commerce.html",
       "label": "tip-shelf $29 Autopsy door (#tip-shelf / #sku-agent-failure-autopsy) — point only; live checkout stays on agent-rescue.html; do not remint tip-shelf"
+    },
+    {
+      "pointer": "integrations/grokbot_control/paid_case.py",
+      "label": "SPARK #8961 — case_from_autopsy_offer / load_autopsy_offer (offer.json + opaque case_ref → G2 case); point only, do not remint"
     },
     {
       "pointer": "revenue/reply_to_revenue/README.md",
@@ -56,7 +60,7 @@
     },
     {
       "pointer": "revenue/agent_failure_autopsy/RUNBOOK.md",
-      "label": "#8811 spine — operator runbook; point only, do not remint"
+      "label": "#8811 spine — operator runbook (§10 G2 case attribution); point only, do not remint"
     },
     {
       "pointer": "revenue/agent_failure_autopsy/offer.json",
@@ -131,6 +135,11 @@
       "notes": "GrokBotControlClient — submit/follow-up/cancel/session recover; not grok.com"
     },
     {
+      "name": "autopsy_paid_case",
+      "entry": "integrations/grokbot_control/paid_case.py",
+      "notes": "SPARK #8961 — case_from_autopsy_offer / load_autopsy_offer; build G2 case for submit; point only, do not remint"
+    },
+    {
       "name": "autopsy_fulfillment",
       "entry": "python3 revenue/agent_failure_autopsy/fulfillment.py",
       "notes": "#8811 spine — evidence-bounded fulfill; no credential remint"
@@ -149,7 +158,7 @@
       "cancel": "POST /v1/runs/{run_id}/cancel",
       "recover": "GET /v1/sessions/{session_id}",
       "events": "GET /v1/events?after=",
-      "note": "SPARK G2 #8761 / 5154aa8f. Point role at pool+session; seat/session_id filled by occupant at equip — never bind role to one chat window. Not grok.com :8788, not C1 :8879. Second pool only via GROKBOT_CONTROL_POOLS when owner names it."
+      "note": "SPARK G2 #8761 / 5154aa8f. Point role at pool+session; seat/session_id filled by occupant at equip — never bind role to one chat window. Not grok.com :8788, not C1 :8879. Second pool only via GROKBOT_CONTROL_POOLS when owner names it. Paid Autopsy runs: build case via paid_case.case_from_autopsy_offer before submit (RUNBOOK §10)."
     },
     {
       "name": "gemini_peer_tool_gateway",
