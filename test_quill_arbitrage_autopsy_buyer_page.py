@@ -13,16 +13,19 @@ class QuillArbitrageAutopsyBuyerPageTests(unittest.TestCase):
         text = HTML.read_text(encoding="utf-8")
         # Survival card must not use agent-rescue as buyer page.
         survival = text.split('data-opportunity-id="kimi-agent-survival-proof-20260830-01"', 1)[1]
-        survival = survival.split("<article", 1)[0]
+        survival = survival.split("</article>", 1)[0]
         self.assertIn("revenue/production_survival/README.md", survival)
         self.assertNotIn('href="./agent-rescue.html"', survival)
 
     def test_autopsy_card_uses_agent_rescue(self):
         text = HTML.read_text(encoding="utf-8")
-        self.assertIn('data-opportunity-id="agent-failure-autopsy-29"', text)
-        autopsy = text.split('data-opportunity-id="agent-failure-autopsy-29"', 1)[1]
-        autopsy = autopsy.split("<article", 1)[0]
+        self.assertIn('data-offer-id="agent-failure-autopsy-29"', text)
+        autopsy = text.split('data-offer-id="agent-failure-autopsy-29"', 1)[1]
+        autopsy = autopsy.split("</article>", 1)[0]
         self.assertIn('href="./agent-rescue.html"', autopsy)
+        self.assertNotIn("QUOTABLE", autopsy)
+        self.assertIn("No measured arbitrage edge is claimed", autopsy)
+        self.assertNotIn('data-opportunity-id="agent-failure-autopsy-29"', text)
 
     def test_machine_record_buyer_evidence_off_agent_rescue(self):
         data = json.loads(RECORD.read_text(encoding="utf-8"))
