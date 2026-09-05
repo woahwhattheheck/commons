@@ -496,6 +496,10 @@ class Runner:
         model: str | None = None,
         tools: str | list[str] | None = None,
         permission_mode: str | None = "acceptEdits",
+        allowed_tools: str | list[str] | None = None,
+        disallowed_tools: str | list[str] | None = None,
+        strict_mcp: bool = False,
+        mcp_config: str | list[str] | None = None,
         label: str | None = None,
         peer: str | None = None,
         partial: bool = False,
@@ -503,6 +507,16 @@ class Runner:
         run_id: str | None = None,
         via_stdin: bool | None = None,
     ) -> dict[str, Any]:
+        """Start a run.
+
+        ``tools`` restricts the built-in tool set; it grants nothing. In print mode no
+        permission prompt can be shown, so a tool that would need one is denied and the
+        child reports it in the result's ``permission_denials`` (measured 2026-09-05: three
+        research runs with ``tools="WebSearch,WebFetch,..."`` and no ``allowed_tools`` were
+        denied every web call). ``allowed_tools`` is the pre-approval (``--allowedTools``).
+        ``strict_mcp`` drops every MCP server the child would otherwise inherit from the user
+        configuration (``--strict-mcp-config``); ``mcp_config`` adds explicit ones.
+        """
         if not isinstance(prompt, str) or not prompt.strip():
             raise HeadlessError("prompt must be nonempty text")
         if resume and not session_id:
@@ -538,6 +552,17 @@ class Runner:
             argv += ["--tools", ",".join(tools) if isinstance(tools, list) else tools]
         if permission_mode:
             argv += ["--permission-mode", permission_mode]
+        if allowed_tools:
+            argv += ["--allowedTools", ",".join(allowed_tools) if isinstance(allowed_tools, list) else allowed_tools]
+        if disallowed_tools:
+            argv += [
+                "--disallowedTools",
+                ",".join(disallowed_tools) if isinstance(disallowed_tools, list) else disallowed_tools,
+            ]
+        for item in [mcp_config] if isinstance(mcp_config, str) else (mcp_config or []):
+            argv += ["--mcp-config", item]
+        if strict_mcp:
+            argv.append("--strict-mcp-config")
         argv += list(extra_args)
 
         env, removed = scrub_env()
@@ -552,6 +577,10 @@ class Runner:
             "model": model,
             "tools": tools,
             "permission_mode": permission_mode,
+            "allowed_tools": allowed_tools,
+            "disallowed_tools": disallowed_tools,
+            "strict_mcp": strict_mcp,
+            "mcp_config": mcp_config,
             "partial": partial,
             "prompt_bytes": len(prompt_bytes),
             "prompt_sha256": _sha256(prompt_bytes),
@@ -649,7 +678,17 @@ class Runner:
             for candidate in self.list_runs(session_id=session_id, limit=1):
                 parent = candidate
         if parent is not None:
-            for key in ("cwd", "model", "tools", "permission_mode", "peer"):
+            for key in (
+                "cwd",
+                "model",
+                "tools",
+                "permission_mode",
+                "allowed_tools",
+                "disallowed_tools",
+                "strict_mcp",
+                "mcp_config",
+                "peer",
+            ):
                 if kwargs.get(key) is None:
                     kwargs[key] = parent.get(key)
         return self.start(prompt, session_id=session_id, resume=True, **kwargs)
@@ -971,6 +1010,13 @@ def build_parser() -> argparse.ArgumentParser:
         p.add_argument("--model")
         p.add_argument("--tools", help='comma list; "" disables all tools')
         p.add_argument("--permission-mode", default=None, help="claude permission mode (default acceptEdits)")
+        p.add_argument(
+            "--allowed-tools",
+            help="comma list pre-approved without a prompt (--allowedTools); print mode cannot prompt",
+        )
+        p.add_argument("--disallowed-tools", help="comma list denied outright (--disallowedTools)")
+        p.add_argument("--strict-mcp", action="store_true", help="child gets no inherited MCP servers")
+        p.add_argument("--mcp-config", action="append", help="MCP config file/JSON for the child (repeatable)")
         p.add_argument("--label")
         p.add_argument("--peer")
         p.add_argument("--partial", action="store_true", help="include partial message deltas in events")
@@ -1025,6 +1071,14 @@ def main(argv: list[str] | None = None) -> int:
             }
             if args.permission_mode is not None:
                 kwargs["permission_mode"] = args.permission_mode
+            if args.allowed_tools:
+                kwargs["allowed_tools"] = args.allowed_tools
+            if args.disallowed_tools:
+                kwargs["disallowed_tools"] = args.disallowed_tools
+            if args.strict_mcp:
+                kwargs["strict_mcp"] = True
+            if args.mcp_config:
+                kwargs["mcp_config"] = list(args.mcp_config)
             if args.command == "start":
                 record = runner.start(args.prompt, session_id=args.session_id, **kwargs)
             else:

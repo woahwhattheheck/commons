@@ -64,10 +64,22 @@ As a library: `Runner(root).start(prompt, cwd=..., permission_mode=...)`, `.foll
 
 Options map to CLI flags: `model` → `--model`, `tools` → `--tools` (`""` disables all
 tools), `permission_mode` → `--permission-mode` (default `acceptEdits`; pass
-`bypassPermissions` when the run must execute commands unattended), `partial` →
+`bypassPermissions` when the run must execute commands unattended), `allowed_tools` →
+`--allowedTools`, `disallowed_tools` → `--disallowedTools`, `strict_mcp` →
+`--strict-mcp-config`, `mcp_config` → `--mcp-config` (repeatable), `partial` →
 `--include-partial-messages`, `extra_args` → appended verbatim. Prompts longer than 8,000
 bytes (or `--stdin-prompt` / `via_stdin=True`) are fed through stdin from `prompt.txt`
 instead of the command line.
+
+**Permissions in print mode, measured 2026-09-05.** `tools` only restricts the tool set;
+it grants nothing. Nothing can prompt in print mode, so a tool that would need approval is
+denied and the child reports it under `permission_denials` in the `result` event. Three
+research runs started with `--tools WebSearch,WebFetch,Read,Write` and no `allowed_tools`
+were denied every web call, refused to fabricate, and wrote nothing ($3.77 of the shared lane
+for the lesson). For unattended research use `allowed_tools="WebSearch,WebFetch,Write,Read"`
+(or `--allowed-tools …` on the CLI). The child also inherits every MCP server from the user's
+configuration (Slack, Gmail, Commons, Titan Hands on the owner PC); pass `strict_mcp=True`
+(`--strict-mcp`) unless the run should have them.
 
 Statuses: `queued` → `running` → one of `completed`, `error`, `cancelled`, `interrupted`.
 

@@ -100,6 +100,34 @@ class RunnerRecords(_Base):
         self.assertEqual(cursor3, cursor2)
         self.assertEqual(self.runner.status(record["run_id"])["event_count"], cursor2)
 
+    def test_tool_grants_reach_argv_and_follow_the_session(self) -> None:
+        record = self.runner.start(
+            "grant me",
+            tools="WebSearch,WebFetch,Write",
+            allowed_tools=["WebSearch", "WebFetch", "Write"],
+            disallowed_tools="Bash",
+            strict_mcp=True,
+            mcp_config=["extra.json"],
+        )
+        argv = record["argv"]
+        self.assertEqual(argv[argv.index("--tools") + 1], "WebSearch,WebFetch,Write")
+        self.assertEqual(argv[argv.index("--allowedTools") + 1], "WebSearch,WebFetch,Write")
+        self.assertEqual(argv[argv.index("--disallowedTools") + 1], "Bash")
+        self.assertEqual(argv[argv.index("--mcp-config") + 1], "extra.json")
+        self.assertIn("--strict-mcp-config", argv)
+        self.assertEqual(record["allowed_tools"], ["WebSearch", "WebFetch", "Write"])
+        self.assertTrue(record["strict_mcp"])
+        self.runner.wait(record["run_id"], timeout=20)
+        follow = self.runner.followup(record["run_id"], "and again")
+        self.assertIn("--allowedTools", follow["argv"])
+        self.assertIn("--strict-mcp-config", follow["argv"])
+        self.assertEqual(follow["disallowed_tools"], "Bash")
+        self.runner.wait(follow["run_id"], timeout=20)
+        plain = self.runner.start("no grants")
+        self.assertNotIn("--allowedTools", plain["argv"])
+        self.assertNotIn("--strict-mcp-config", plain["argv"])
+        self.runner.wait(plain["run_id"], timeout=20)
+
     def test_followup_resumes_the_same_conversation(self) -> None:
         first = self.runner.wait(self.runner.start("first question", model="stub-a", peer="P1")["run_id"], timeout=20)
         second = self.runner.followup(first["run_id"], "second question")
