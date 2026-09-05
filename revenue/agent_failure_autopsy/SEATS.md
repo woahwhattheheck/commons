@@ -33,6 +33,7 @@ Checked-in shape (`case_row_shape` in `seats.json`):
 - **Required:** `offer_id`, `case_ref`, `sku`, `state`
 - **Optional:** `client_reference_id`, `g2_run_id`, `g2_session_id`, `payment_observed_at`
 - **Builder:** `receipt_row_from_case(...)` in `integrations/grokbot_control/paid_case.py` (from a normalized G2 `case` + optional run/session ids)
+- **Default state:** `UNVERIFIED`; the builder does not observe payment or sanitize values. Supply opaque identifiers and an evidence-supported state. Values over 200 characters raise instead of truncating.
 - **Gate:** real Stripe payment observed + owner authorization — never invent a paid row to close a board
 
 When a coordinator also opens Autopsy work on an existing GrokBot pool, attach `case` via `case_from_autopsy_offer` / `grokbot_submit` (RUNBOOK §10), then record the returned `run_id` / `session_id` on the opaque row.
