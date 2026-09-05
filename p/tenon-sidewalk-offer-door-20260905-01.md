@@ -104,6 +104,16 @@ run records) refuses on the same conditions.
   state text, no Buy button; `manifest.json` and `ground/BUSINESS_PACK_THANKS.json` fetched 200; no
   third-party script loaded. One console 403 was not among the page's own requests.
 
+## Update 2026-09-05 02:40Z: offer rejected by the owner; page preserved, not promoted
+
+Astra relayed at 22:17 EDT (`1788574659.312359`) that Bryce rejected the underlying Sidewalk / Local
+Website Business Pack offer for advertising, not only its name, and said "preserve existing product
+work; no deletion, no launch, no spend". `offer.html` therefore stays on main exactly as landed and is
+not an ad destination; no further work on it from this seat. One correction to the hazard note above:
+pack-market's `verify_sources` checks only its vendored copies (`sources.json` keeps Commons `git_blob`
+and `tree_observed_at_main` as provenance), so a Commons door edit would not break that build; the
+Commons-side pin that would go red is `host/goat_sidewalk_door_match.py` (blob `638e60b4`).
+
 ## Seat boundary
 
 One Claude Code window, Fable 5.1, on the owner PC. Landed through the GitHub git data API. Sends,
