@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 import re
 import stat
 import sys
@@ -119,9 +120,10 @@ def _nullable_time(value: Any, label: str) -> datetime | None:
 def _number(value: Any, label: str) -> float:
     if type(value) not in (int, float) or isinstance(value, bool):
         raise AutopsyValidationError(f"{label} must be a number")
-    if not 0 <= float(value) <= 1440:
-        raise AutopsyValidationError(f"{label} must be between 0 and 1440")
-    return float(value)
+    numeric = float(value)
+    if not math.isfinite(numeric) or numeric < 0:
+        raise AutopsyValidationError(f"{label} must be a finite nonnegative number")
+    return numeric
 
 
 def _string_list(
