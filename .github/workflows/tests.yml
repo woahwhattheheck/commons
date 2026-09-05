@@ -1,11 +1,11 @@
-name: autopsy-intake-source-verification
+name: coordination-merge-verification
 on:
   workflow_dispatch:
     inputs:
       verify_ref:
         description: Exact candidate or main ref to verify
         required: true
-        default: 'df62f014c1e26b9912754e5a59c376142c36e6f1'
+        default: 'main'
       expected_landed:
         description: Landed commit for the terminal audit; blank for preflight
         required: false
@@ -43,8 +43,11 @@ jobs:
           print(json.dumps(result, indent=2))
           assert result["verdict"] != "CONFLICT"
           PY
-      - name: Autopsy fulfillment and intake checks
-        run: python3 -m unittest test_autopsy_intake_runbook test_agent_failure_autopsy test_autopsy_funnel_surface
+      - name: Landed presence, diagnostic role, and navigation checks
+        run: |
+          python3 test_digit_pixel_presence.py
+          python3 integrations/transferable_roles/test_roles.py
+          node test_door_hub.js
       - name: Audit landed commit and required paths
         if: inputs.expected_landed != ''
         env:
@@ -173,4 +176,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --repo . --target-ref origin/main --expected-commit "$EXPECTED_LANDED" --required-path revenue/agent_failure_autopsy/INTAKE.md --required-path revenue/production_survival/INTAKE.md
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --repo . --target-ref origin/main --expected-commit "$EXPECTED_LANDED" --required-path revenue/agent_failure_autopsy/INTAKE.md --required-path revenue/production_survival/INTAKE.md --required-path pixels/DIGIT.json --required-path integrations/transferable_roles/fixtures/synthetic_diagnostic_fulfillment_role.json --required-path test_door_hub.js
