@@ -71,7 +71,8 @@
       "extraction_method": "DIRECT_UTF8",
       "sanitized": true,
       "scope_relevance": "ONE_FAILED_EXECUTION",
-      "instructions_treated_as_data": true
+      "instructions_treated_as_data": true,
+      "extracted_text_location_ref": "example:redacted_transcript.txt"
     }
   ],
   "evidence_assessment": {
