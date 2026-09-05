@@ -134,6 +134,7 @@ def _normalize_access_route(item: Any) -> dict[str, Any]:
         "store",
         "service_tag",
         "note",
+        "base",
         *GROKBOT_CONTROL_ROUTE_FIELDS,
     ):
         if item.get(field):
@@ -252,6 +253,35 @@ class RoleStore:
 
     def list_ids(self) -> list[str]:
         return sorted(p.stem for p in self.root.glob("*.json"))
+
+    def list_open_obligations(self) -> list[dict[str, Any]]:
+        """Open obligations across all roles, sorted by (role_id, obligation_id).
+
+        Each row includes role_id, purpose, obligation_id, summary, next_action;
+        optional label, evidence_pointer, and synthetic when present.
+        """
+        rows: list[dict[str, Any]] = []
+        for role_id in self.list_ids():
+            role = self.get(role_id)
+            for ob in role.get("obligations") or []:
+                if ob.get("status") != "open":
+                    continue
+                row: dict[str, Any] = {
+                    "role_id": role["role_id"],
+                    "purpose": role["purpose"],
+                    "obligation_id": ob["id"],
+                    "summary": ob["summary"],
+                    "next_action": ob["next_action"],
+                }
+                if role.get("label"):
+                    row["label"] = role["label"]
+                if ob.get("evidence_pointer"):
+                    row["evidence_pointer"] = ob["evidence_pointer"]
+                if role.get("synthetic") is True:
+                    row["synthetic"] = True
+                rows.append(row)
+        rows.sort(key=lambda r: (r["role_id"], r["obligation_id"]))
+        return rows
 
     def equip(
         self,
