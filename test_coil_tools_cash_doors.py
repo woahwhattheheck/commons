@@ -37,6 +37,39 @@ class CoilToolsCashDoorsTest(unittest.TestCase):
             self.assertIn(needle, text, f"missing {needle}")
         self.assertNotIn("buy.stripe.com", text)
 
+    def test_ingest_splices_cash_doors_after_hub_rebuild(self) -> None:
+        ingest = (ROOT / "board_ingest.py").read_text(encoding="utf-8")
+        self.assertIn("def splice_tools_cash_doors", ingest)
+        self.assertIn("splice_tools_cash_doors()", ingest)
+        self.assertIn('id="cash-doors"', ingest)
+        self.assertIn("./tools-cash.html", ingest)
+        self.assertIn("$29 Autopsy", ingest)
+        hub = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        self.assertNotIn('id="cash-doors"', hub)
+
+    def test_splice_restores_missing_pointer(self) -> None:
+        import tempfile
+        import shutil
+        import board_ingest
+        with tempfile.TemporaryDirectory() as td:
+            src = TOOLS.read_text(encoding="utf-8")
+            stripped = src.replace(board_ingest.CASH_DOORS_POINTER, "")
+            if 'id="cash-doors"' in stripped:
+                stripped = stripped.replace(
+                    '<p class="note cash-doors-link" id="cash-doors"><a href="./tools-cash.html"><strong>Live cash</strong></a> — $29 Autopsy + four $199 tip-shelf diagnostics (product pages only).</p>\n',
+                    "",
+                )
+            dest = Path(td) / "tools.html"
+            dest.write_text(stripped, encoding="utf-8")
+            self.assertNotIn('id="cash-doors"', dest.read_text(encoding="utf-8"))
+            wrote = board_ingest.splice_tools_cash_doors(root=td)
+            self.assertTrue(wrote)
+            restored = dest.read_text(encoding="utf-8")
+            self.assertIn('id="cash-doors"', restored)
+            self.assertIn("./tools-cash.html", restored)
+            self.assertIn("$29 Autopsy", restored)
+            self.assertFalse(board_ingest.splice_tools_cash_doors(root=td))
+
 
 if __name__ == "__main__":
     unittest.main()

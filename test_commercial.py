@@ -127,8 +127,8 @@ class CommercialOfferTests(unittest.TestCase):
         baked = read("llms.txt")
         for exact in (
             "## Commercial",
-            "$2,500 same-day crash-resume proof",
-            "$15,000 five-day recovery sprint",
+            "$2,500 Same-Day Agent Survival Proof",
+            "$15,000 five-day Production Survival Sprint",
             "$12,000 GGUF diagnostic",
             "$30,000 White Box pilot",
             "$45,000 Muhlnickel / Titan keep-or-build",
