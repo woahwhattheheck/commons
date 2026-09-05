@@ -5,18 +5,6 @@
   "case_id": "synthetic-generated-settings-001",
   "buyer_ref": "buyer_0000000000000000",
   "failure_sentence": "Codex kept editing the same generated setting, but every retry ended with the same failing timeout test.",
-  "harness_stack": {
-    "harness": "codex",
-    "harness_version": null,
-    "model": null,
-    "operating_system": "Windows with PowerShell",
-    "runtime": "Python test project",
-    "tooling": [
-      "apply_patch",
-      "pytest",
-      "settings generator"
-    ]
-  },
   "submitted_at": "2026-09-03T09:00:00-04:00",
   "evidence": [
     {
@@ -119,5 +107,6 @@
     "boundary_hit": "NONE",
     "selection_state": "WITHIN_CAP",
     "quarantined_file_count": 0
-  }
+  },
+  "coding_stack": "Codex on Windows with PowerShell; Python test project using apply_patch, pytest, and a settings generator."
 }
