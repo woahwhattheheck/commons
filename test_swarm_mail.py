@@ -79,6 +79,16 @@ class SwarmMailManifestTests(unittest.TestCase):
         ):
             self.assertIn(sku, grok["sku_ids"])
             self.assertEqual(mail.route_sku(sku)["inbox_id"], "grok-sales")
+        swarm = next(item for item in manifest["inboxes"] if item["inbox_id"] == "swarm-sales")
+        diagnostics = {
+            "dealer-service-lead-rescue",
+            "plant-downtime-handoff",
+            "referral-intake-completeness",
+            "repair-booking-exactly-once-v1",
+        }
+        self.assertTrue(diagnostics.issubset(set(swarm["sku_ids"])))
+        for sku in diagnostics:
+            self.assertEqual(mail.route_sku(sku)["inbox_id"], "swarm-sales")
         for sku in routed:
             route = mail.route_sku(sku)
             self.assertEqual(route["sku_id"], sku)
