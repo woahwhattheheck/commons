@@ -102,12 +102,15 @@ open obligations `ob-intake` → `ob-diagnose` → `ob-review` → `ob-settle`
 (deliver **or** refund). Reuses CRM-shaped `grokbot_control_g2` +
 `gemini_peer_tool_gateway`, plus `payment_capability` (`kind: public_html`
 pointing at `payment-capability.html` / `pay.html`). Knowledge cites
-`ground/PAYMENT_CAPABILITY.md`, live checkout on `agent-rescue.html` (#8889),
-and **pointer-only** into landed #8811 spine under `revenue/agent_failure_autopsy/`
-(README / RUNBOOK / offer.json / report-template + `fulfillment.py` tool entry) —
-**do not invent plink**, do not remint spine. No credential remint; roles confer
-no Stripe access. Use `open-obligations` to see remaining open work across roles
-after a transfer.
+`ground/PAYMENT_CAPABILITY.md`. After **#8811** land (`c8e40bc`), knowledge also
+points at landed spine paths `revenue/agent_failure_autopsy/{README,RUNBOOK,
+offer.json,report-template.md}` (+ optional `intake.schema.json`) and tools
+include `autopsy_fulfillment` → `python3 revenue/agent_failure_autopsy/fulfillment.py`
+— **point only; do not remint** fulfillment.py / schemas / offer.json contents.
+Live checkout URL stays on fixture + `agent-rescue.html` (#8889). Stripe
+product/price/plink/account IDs stay in `offer.json` only. No credential remint;
+no invented checkout; roles confer no Stripe access. Use `open-obligations` to
+see remaining open work across roles after a transfer.
 
 ## Access route shapes
 
