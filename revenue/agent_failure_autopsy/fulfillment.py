@@ -380,20 +380,21 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             extracted_hash = _sha(
                 extracted_hash, f"{evidence_id}.extracted_text_sha256"
             )
-        if item["kind"] in {"text", "json", "markdown"}:
-            if extraction_method != "DIRECT_UTF8":
+        if item["handling_state"] != "QUARANTINED_UNUSABLE":
+            if item["kind"] in {"text", "json", "markdown"}:
+                if extraction_method != "DIRECT_UTF8":
+                    raise AutopsyValidationError(
+                        f"{evidence_id}: text-like evidence requires DIRECT_UTF8 extraction"
+                    )
+            elif item["kind"] == "pdf":
+                if extraction_method not in {"PDF_TEXT", "NONE"}:
+                    raise AutopsyValidationError(
+                        f"{evidence_id}: PDF evidence requires PDF_TEXT or NONE"
+                    )
+            elif extraction_method not in {"OCR", "NONE"}:
                 raise AutopsyValidationError(
-                    f"{evidence_id}: text-like evidence requires DIRECT_UTF8 extraction"
+                    f"{evidence_id}: image evidence requires OCR or NONE"
                 )
-        elif item["kind"] == "pdf":
-            if extraction_method not in {"PDF_TEXT", "NONE"}:
-                raise AutopsyValidationError(
-                    f"{evidence_id}: PDF evidence requires PDF_TEXT or NONE"
-                )
-        elif extraction_method not in {"OCR", "NONE"}:
-            raise AutopsyValidationError(
-                f"{evidence_id}: image evidence requires OCR or NONE"
-            )
         if extraction_method == "NONE":
             if extracted_characters != 0 or extracted_location is not None or extracted_hash is not None:
                 raise AutopsyValidationError(
