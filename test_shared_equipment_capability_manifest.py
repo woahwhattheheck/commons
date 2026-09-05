@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Hermetic parity: every peer seat gets the same non-secret capability manifest."""
+"""Hermetic parity: every peer gets the same non-secret capability manifest."""
 
 from __future__ import annotations
 
@@ -26,8 +26,8 @@ class CapabilityManifestTests(unittest.TestCase):
         b = build_capability_manifest(peer="NEWCOMER_B")
         self.assertEqual(a["operations"], b["operations"])
         self.assertEqual(a["roads"], b["roads"])
-        self.assertFalse(a["seat_gate"])
-        self.assertFalse(a["role_gate"])
+        self.assertTrue(a["same_operations_for_every_peer"])
+        self.assertTrue(a["peer_label_does_not_change_inventory"])
         self.assertFalse(a["credential_bytes_in_manifest"])
         self.assertTrue(a["peer_argument_ignored"])
         ids = [op["operation_id"] for op in a["operations"]]
@@ -84,7 +84,7 @@ class CapabilityManifestTests(unittest.TestCase):
         text = (
             "<commons_equipment_request>"
             '{"request_id":"r","call_id":"m","name":"equipment_capability_manifest",'
-            '"arguments":{"peer":"brand-new-seat"}}'
+            '"arguments":{"peer":"brand-new-peer"}}'
             "</commons_equipment_request>"
         )
         request = parse_request(text)
