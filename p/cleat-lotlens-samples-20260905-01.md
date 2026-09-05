@@ -44,6 +44,16 @@ neither clock. New test in `test_lotlens.py`: same bytes in two workspaces, two
 `imported_at` values, one hash; a different question, a different hash. The earlier
 same-workspace pin still holds.
 
+## Two viewer repairs, seen while writing the README
+
+`lotlens/app.html` (FORGE's `what` + hop-line edit, `acd6514b`) built the table's `via`
+cell from hop lines without `esc()`, so an id or file name carrying markup in an export
+would have been inserted as HTML; the cell now escapes each line. And a report that was
+printed with `--paths summary` and redirected to a file already carries strings for its
+hops; the page now shows those as they are instead of `undefined -undefined-> undefined`.
+Both pinned in `test_lotlens.py` (`PageTests`). No network, no remote script, no storage,
+unchanged.
+
 ## Executed here
 
 - `python -W error test_lotlens.py` OK (21), `test_lotlens_samples.py` OK (3),
