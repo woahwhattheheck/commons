@@ -479,7 +479,7 @@
           "const": true
         },
         "adversarial_challenge_completed": {
-          "const": true
+          "type": "boolean"
         },
         "time_measurement_truncated_analysis": {
           "const": false
