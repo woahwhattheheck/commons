@@ -61,6 +61,23 @@ class RightNowRevenueTest(unittest.TestCase):
             self.assertIn(row["start_route"].split("#", 1)[0], self.page)
             self.assertIn(row["id"], self.page)
 
+    def test_survival_start_route_is_not_autopsy_html(self):
+        survival = next(
+            row
+            for row in self.catalog["offers"]
+            if row["id"] == "same-day-agent-survival-proof"
+        )
+        self.assertEqual(
+            survival["start_route"], "revenue/production_survival/README.md"
+        )
+        self.assertNotEqual(survival["start_route"], "agent-rescue.html")
+        start = self.page.index('id="same-day-agent-survival-proof"')
+        end = self.page.index("</article>", start)
+        card = self.page[start:end]
+        self.assertIn("revenue/production_survival/README.md", card)
+        self.assertNotIn('href="./agent-rescue.html"', card)
+        self.assertNotIn(">agent survival</a>", self.page)
+
     def test_diagnostic_has_a_bounded_scope_first_contract(self):
         self.assertEqual(self.diagnostic["fixed_amount"], 199)
         self.assertEqual(self.diagnostic["payment_collection"], "BUYER_SPECIFIC_HANDOFF_REQUIRED")

@@ -41,13 +41,40 @@ class SurvivalOfferPageTruthTests(unittest.TestCase):
 
     def test_readme_does_not_name_agent_rescue_as_buyer_page(self) -> None:
         text = README.read_text(encoding="utf-8")
-        self.assertIn("no dedicated Commons HTML sell page", text.lower())
+        self.assertIn("no dedicated commons html sell page", text.lower())
         banned = [
             "The public buyer page is [`agent-rescue.html`]",
             "The public buyer page is agent-rescue.html",
         ]
         for phrase in banned:
             self.assertNotIn(phrase, text)
+
+    def test_catalog_and_control_do_not_route_survival_to_autopsy(self) -> None:
+        catalog = json.loads(
+            (ROOT / "revenue" / "right_now" / "catalog.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        control_snap = json.loads(
+            (ROOT / "revenue" / "right_now" / "control.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        catalog_row = next(
+            row
+            for row in catalog["offers"]
+            if row["id"] == "same-day-agent-survival-proof"
+        )
+        control_row = next(
+            row
+            for row in control_snap["offers"]
+            if row["id"] == "same-day-agent-survival-proof"
+        )
+        self.assertEqual(
+            catalog_row["start_route"], "revenue/production_survival/README.md"
+        )
+        self.assertEqual(control_row["start_route"], catalog_row["start_route"])
+        self.assertNotEqual(control_row["start_route"], "agent-rescue.html")
 
 
 if __name__ == "__main__":
