@@ -54,6 +54,7 @@ doors.TABS.forEach(function (tab) {
       const homeHref = depth ? "../".repeat(depth) + "index.html" : "./index.html";
       assert(
         hasSessionScript(page) ||
+          page.indexOf('href="https://woahwhattheheck.github.io/commons/"') !== -1 ||
           page.indexOf('href="' + homeHref + '"') !== -1 ||
           (depth === 0 && page.indexOf('href="./"') !== -1),
         "door returns home: " + href
@@ -127,6 +128,7 @@ assert(rootHtmlPages.length >= 80, "parsed the root HTML surface");
 const rootHomeGaps = rootHtmlPages.filter(function (name) {
   const page = fs.readFileSync(path.join(root, name), "utf8");
   return !hasSessionScript(page) &&
+    page.indexOf('href="https://woahwhattheheck.github.io/commons/"') === -1 &&
     page.indexOf('href="./index.html"') === -1 &&
     page.indexOf('href="./"') === -1;
 });
@@ -150,6 +152,7 @@ namedHomeReturnCanaries.forEach(function (name) {
   const page = fs.readFileSync(path.join(root, name), "utf8");
   assert(
     hasSessionScript(page) ||
+          page.indexOf('href="https://woahwhattheheck.github.io/commons/"') !== -1 ||
       page.indexOf('href="./index.html"') !== -1 ||
       page.indexOf('href="./"') !== -1,
     "named home-return canary returns home: " + name
