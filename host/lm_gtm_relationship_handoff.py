@@ -241,6 +241,7 @@ def successor_reads_next_action(packet: dict[str, Any]) -> str | None:
 
 
 def _format_field(name: str, field: Any) -> str:
+    """Paste line for one field. Omits raw evidence path lists (ids stay on packet)."""
     if not isinstance(field, dict):
         return f"{name}: ABSENT"
     status = field.get("status") or "ABSENT"
@@ -251,14 +252,10 @@ def _format_field(name: str, field: Any) -> str:
     if not text:
         return f"{name}: ABSENT"
     provenance = field.get("provenance") or ""
-    evidence = field.get("evidence") or []
-    ev = ",".join(item for item in evidence if isinstance(item, str) and item)
     bits = [f"{name}: SOURCED"]
     if provenance:
         bits.append(f"provenance={provenance}")
     bits.append(f"value={text}")
-    if ev:
-        bits.append(f"evidence={ev}")
     return " ".join(bits)
 
 
@@ -266,6 +263,7 @@ def successor_brief(packet: dict[str, Any]) -> str:
     """Render a PII-free peer paste from an existing handoff packet only.
 
     Does not open ledgers, invent fields, contact anyone, or mint a CRM.
+    Evidence path lists stay off the paste; peers inspect the packet/source.
     """
     if not isinstance(packet, dict):
         raise idx.IndexError_("successor brief requires a handoff packet object")

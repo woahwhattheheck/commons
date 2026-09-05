@@ -225,6 +225,21 @@ class RelationshipHandoffTests(unittest.TestCase):
         with self.assertRaises(idx.IndexError_):
             handoff_mod.successor_brief({"kind": "NOT_HANDOFF", "subject_id": "x"})
 
+    def test_successor_brief_from_billings_packet_in_process(self) -> None:
+        """Brief from a live compose stays packet-only and PII-clean (no CLI)."""
+        packet = handoff_mod.relationship_handoff(BILLINGS)
+        brief = handoff_mod.successor_brief(packet)
+        self.assertIn(
+            f"LM_GTM_RELATIONSHIP_HANDOFF subject={BILLINGS}", brief
+        )
+        self.assertIn("decision=OWNER_HOLD", brief)
+        self.assertIn("promised: ABSENT", brief)
+        self.assertIn("do not contact cheri", brief.casefold())
+        self.assertIsNone(EMAIL_RE.search(brief))
+        self.assertIsNone(PHONE_RE.search(brief))
+        for token in ("armstrongc@", "cheri@", "@billingsmt.gov", "6803283352"):
+            self.assertNotIn(token, brief)
+
     def test_unknown_subject_fails_closed(self) -> None:
         with self.assertRaises(idx.IndexError_):
             handoff_mod.relationship_handoff("brand-new-buyer-mint-refuse")
@@ -255,19 +270,21 @@ class RelationshipHandoffTests(unittest.TestCase):
         self.assertIsNone(EMAIL_RE.search(ok.stdout))
         self.assertIsNone(PHONE_RE.search(ok.stdout))
 
-        brief = subprocess.run(
-            [sys.executable, str(HOST_HANDOFF), BILLINGS, "--brief"],
+        # --brief is covered hermetically + in-process; CLI only proves flag wiring
+        # and that unknown subjects still fail closed before paste.
+        brief_unknown = subprocess.run(
+            [
+                sys.executable,
+                str(HOST_HANDOFF),
+                "brand-new-buyer-mint-refuse",
+                "--brief",
+            ],
             cwd=ROOT,
-            check=True,
             capture_output=True,
             text=True,
         )
-        self.assertIn("LM_GTM_RELATIONSHIP_HANDOFF subject=city-of-billings-bid-1421", brief.stdout)
-        self.assertIn("decision=OWNER_HOLD", brief.stdout)
-        self.assertIn("promised: ABSENT", brief.stdout)
-        self.assertIn("do not contact Cheri", brief.stdout)
-        self.assertIsNone(EMAIL_RE.search(brief.stdout))
-        self.assertIsNone(PHONE_RE.search(brief.stdout))
+        self.assertEqual(brief_unknown.returncode, 1)
+        self.assertIn("unknown subject", brief_unknown.stderr.casefold())
 
         refused = subprocess.run(
             [sys.executable, str(HOST_HANDOFF), BILLINGS, "--send"],
