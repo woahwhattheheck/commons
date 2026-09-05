@@ -10,7 +10,7 @@ Point-only: Autopsy R4 fixture knowledge + tools → landed SPARK #8961
 
 Hermetic: `test_autopsy_paid_case_pointers.py`.
 
-Branch `-02` rebased clean onto main after #8969 reply→cash (supersedes dirty #8971).
+The `-02` follow-up was based on main after #8969 reply→cash. Equivalent code and test changes landed through #8971 at `f6457bd822f121bebfe6da84a28aeb0dc2faf9be`; this follow-up preserves that composed implementation.
 
 ## Boundary
 Point only. Do not remint `paid_case.py` / Stripe / tip-shelf / Autopsy spine.
