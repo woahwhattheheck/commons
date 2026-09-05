@@ -253,6 +253,31 @@ class RoleStore:
     def list_ids(self) -> list[str]:
         return sorted(p.stem for p in self.root.glob("*.json"))
 
+    def list_open_obligations(self) -> list[dict[str, Any]]:
+        """Open obligations across all roles — cash-work / fulfillment queue."""
+        rows: list[dict[str, Any]] = []
+        for rid in self.list_ids():
+            role = self.get(rid)
+            for ob in role.get("obligations") or []:
+                if str(ob.get("status") or "").strip() != "open":
+                    continue
+                row: dict[str, Any] = {
+                    "role_id": role["role_id"],
+                    "purpose": role["purpose"],
+                    "obligation_id": ob["id"],
+                    "summary": ob["summary"],
+                    "next_action": ob["next_action"],
+                }
+                if role.get("label"):
+                    row["label"] = role["label"]
+                if ob.get("evidence_pointer"):
+                    row["evidence_pointer"] = ob["evidence_pointer"]
+                if role.get("synthetic") is True:
+                    row["synthetic"] = True
+                rows.append(row)
+        rows.sort(key=lambda r: (r["role_id"], r["obligation_id"]))
+        return rows
+
     def equip(
         self,
         role_id: str,
