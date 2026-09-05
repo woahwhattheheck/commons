@@ -225,5 +225,110 @@ class TestInProcessRoundTrip(unittest.TestCase):
                 server.controller.store.close()
 
 
+
+class TestMemoryGuard(unittest.TestCase):
+    def test_health_reports_memory_guard(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "runs.sqlite3"
+            server = gateway.build_server(
+                host="127.0.0.1",
+                port=0,
+                db_path=db,
+                mode="echo",
+                min_free_mb=1024,
+                free_mb_fn=lambda: 200,
+            )
+            port = server.server_address[1]
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                cli = client_mod.GrokBotControlClient("http://127.0.0.1:%d" % port)
+                for _ in range(50):
+                    try:
+                        health = cli.health()
+                        break
+                    except Exception:
+                        time.sleep(0.05)
+                guard = health["memory_guard"]
+                self.assertEqual(guard["min_free_mb"], 1024)
+                self.assertEqual(guard["free_physical_mb"], 200)
+                self.assertTrue(guard["holding"])
+            finally:
+                server.shutdown()
+                server.server_close()
+                server.controller.store.close()
+
+    def test_submit_refused_under_floor_no_run(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "runs.sqlite3"
+            server = gateway.build_server(
+                host="127.0.0.1",
+                port=0,
+                db_path=db,
+                mode="echo",
+                min_free_mb=1024,
+                free_mb_fn=lambda: 64,
+            )
+            port = server.server_address[1]
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                import json, urllib.error, urllib.request
+                raw = json.dumps(
+                    {"pool_id": "grokbot", "prompt": "should-not-run", "async": False}
+                ).encode()
+                req = urllib.request.Request(
+                    "http://127.0.0.1:%d/v1/runs" % port,
+                    data=raw,
+                    headers={"Content-Type": "application/json"},
+                    method="POST",
+                )
+                try:
+                    urllib.request.urlopen(req)
+                    self.fail("expected 503")
+                except urllib.error.HTTPError as exc:
+                    self.assertEqual(exc.code, 503)
+                    body = json.loads(exc.read().decode())
+                    self.assertEqual(body["error"], "memory_guard")
+                    self.assertEqual(body["free_physical_mb"], 64)
+                    self.assertEqual(body["min_free_mb"], 1024)
+                # No run persisted
+                self.assertEqual(server.controller.store.cursor, 0)
+                self.assertEqual(server.controller.memory_guard()["held_refused"], 1)
+            finally:
+                server.shutdown()
+                server.server_close()
+                server.controller.store.close()
+
+    def test_unreadable_free_never_holds(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            db = Path(tmp) / "runs.sqlite3"
+            server = gateway.build_server(
+                host="127.0.0.1",
+                port=0,
+                db_path=db,
+                mode="echo",
+                min_free_mb=1024,
+                free_mb_fn=lambda: None,
+            )
+            port = server.server_address[1]
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                cli = client_mod.GrokBotControlClient("http://127.0.0.1:%d" % port)
+                for _ in range(50):
+                    try:
+                        cli.health()
+                        break
+                    except Exception:
+                        time.sleep(0.05)
+                result = cli.submit("ok-when-unreadable", async_mode=False)
+                self.assertEqual(result["status"], "completed")
+                self.assertFalse(cli.health()["memory_guard"]["holding"])
+            finally:
+                server.shutdown()
+                server.server_close()
+                server.controller.store.close()
+
 if __name__ == "__main__":
     unittest.main()
