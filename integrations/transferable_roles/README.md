@@ -82,8 +82,10 @@ successor; use `release` when the session ends without one yet.
 obligation. Purpose and sibling obligations stay. Allowed statuses:
 `open|done|blocked|deferred`. Roles still confer no credentials.
 
-`open-obligations` lists every open obligation across the store as
-`{"open_obligations": [...]}` sorted by `(role_id, obligation_id)`.
+`open-obligations` scans every role in the store and returns open rows as
+`{"open_obligations": [...]}` with `role_id`, optional `label`, `purpose`,
+`obligation_id`, `summary`, `next_action`, optional `evidence_pointer` /
+`synthetic`, sorted by `(role_id, obligation_id)`.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
@@ -91,23 +93,17 @@ Bound route session fields survive.
 
 ## Paid fulfillment handoff
 
-Synthetic fixture:
-`integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json`
-(`role-synthetic-agent-failure-autopsy-20260905`). Four open obligations
-(`ob-intake` / `ob-diagnose` / `ob-review` / `ob-settle`) hand one paid Agent
-Failure Autopsy fulfillment ($29 one-time) between seats without reminting
-credentials or inventing checkout.
-
-```bash
-python3 integrations/transferable_roles/cli.py create \
-  --file integrations/transferable_roles/fixtures/synthetic_agent_failure_autopsy_role.json \
-  --store /tmp/hinge-roles
-python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/hinge-roles
-```
-
-**Roles confer no Stripe access.** Astra **#8811** owns the fulfillment spine
-and Payment URL — do not invent plink. Public pointers only:
-`payment-capability.html`, `ground/PAYMENT_CAPABILITY.md`, `pay.html`.
+SYNTHETIC fixture
+`fixtures/synthetic_agent_failure_autopsy_role.json` packages one paid
+**Agent Failure Autopsy** ($29 one-time) fulfillment for seat-to-seat handoff:
+open obligations `ob-intake` → `ob-diagnose` → `ob-review` → `ob-settle`
+(deliver **or** refund). Reuses CRM-shaped `grokbot_control_g2` +
+`gemini_peer_tool_gateway`, plus `payment_capability` (`kind: public_html`
+pointing at `payment-capability.html` / `pay.html`). Knowledge cites
+`ground/PAYMENT_CAPABILITY.md` and notes **Astra #8811** owns the fulfillment
+spine and Payment URL — **do not invent plink**. No credential remint; no
+invented checkout; roles confer no Stripe access. Use `open-obligations` to
+see remaining open work across roles after a transfer.
 
 ## Access route shapes
 
