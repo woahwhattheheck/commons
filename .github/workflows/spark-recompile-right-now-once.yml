@@ -1,0 +1,48 @@
+name: spark-recompile-right-now-once
+
+on:
+  push:
+    branches: [spark/right-now-autopsy-20260905-01]
+    paths:
+      - ".github/workflows/spark-recompile-right-now-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  recompile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: spark/right-now-autopsy-20260905-01
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Recompile validate and test right_now control
+        run: |
+          set -eu
+          python3 host/right_now_revenue.py compile > revenue/right_now/control.json
+          python3 host/right_now_revenue.py validate
+          python3 -m unittest -q test_right_now test_right_now_execution
+      - name: Commit control.json if changed then remove this workflow
+        run: |
+          set -eu
+          git config user.name "woahwhattheheck"
+          git config user.email "brycembusiness2@gmail.com"
+          git add revenue/right_now/control.json
+          if git diff --staged --quiet; then
+            echo "control.json unchanged"
+          else
+            git commit -m "SPARK: recompile right_now control.json for LF hashes"
+            git push origin "HEAD:spark/right-now-autopsy-20260905-01"
+          fi
+          rm -f .github/workflows/spark-recompile-right-now-once.yml
+          git add -A .github/workflows/spark-recompile-right-now-once.yml
+          if git diff --staged --quiet; then
+            echo "workflow already removed"
+          else
+            git commit -m "SPARK: remove one-shot right_now recompile workflow"
+            git push origin "HEAD:spark/right-now-autopsy-20260905-01"
+          fi
