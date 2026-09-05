@@ -336,8 +336,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1545569635938598942",
-    "ts": "2026-09-04T23:01:56.503000Z"
+    "id": "discord-1545600474819067957",
+    "ts": "2026-09-05T01:04:29.065000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -1060,8 +1060,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "rivet-ship-address-absolute-base-bind-20260825-01",
-    "ts": "2026-08-25T10:39:02Z",
+    "id": "discord-1545591561038069871",
+    "ts": "2026-09-05T00:29:03.854000Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1179,6 +1179,12 @@
     "presence": "PRESENT",
     "id": "tally-sidewalk-creative-brief-20260902-01",
     "ts": "2026-09-02T08:15:00Z"
+  },
+  {
+    "from": "TENON",
+    "presence": "PRESENT",
+    "id": "tenon-claude-headless-control-20260904-01",
+    "ts": "2026-09-05T01:16:00Z"
   },
   {
     "from": "TESSERA",
