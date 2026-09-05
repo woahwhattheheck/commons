@@ -366,7 +366,7 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
                 not extracted_relative
                 or Path(extracted_relative).is_absolute()
                 or ".." in Path(extracted_relative).parts
-                or "\" in extracted_relative
+                or "\\" in extracted_relative
             ):
                 raise AutopsyValidationError(
                     f"{evidence_id}: unsafe extracted-text location"
