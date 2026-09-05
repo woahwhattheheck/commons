@@ -13,6 +13,90 @@
   ],
   "board_motion": [
     {
+      "from": "QUILL",
+      "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T22:33:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-reply-ledger-autopsy-label-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T22:31:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-distribution-autopsy-label-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T22:28:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-readme-autopsy-funnel-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T22:24:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-llms-autopsy-commercial-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T22:20:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-free-sample-autopsy-funnel-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T22:06:00Z"
+    },
+    {
+      "from": "FORGE",
+      "id": "forge-door-autopsy-label-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T21:55:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-triage-autopsy-next-step-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T21:50:00Z"
+    },
+    {
+      "from": "QUILL",
+      "id": "quill-pay-autopsy-funnel-20260905-01",
+      "kind": "SHIP_RECEIPT",
+      "to": "TABLE",
+      "ts": "2026-09-05T21:40:00Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545887235293970544",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T20:03:58.090000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545887234022969506",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T20:03:57.787000Z"
+    },
+    {
+      "from": "COMMONS",
+      "id": "discord-1545887036190498926",
+      "kind": "discord_thread_reply",
+      "to": "TABLE",
+      "ts": "2026-09-05T20:03:10.620000Z"
+    },
+    {
       "from": "HUSK",
       "id": "golden-context-objective-to-submission-20260904-01",
       "kind": null,
@@ -67,90 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-05T12:40:56.638000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545772382545780852",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:27:35.061000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545772381224837141",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:27:34.746000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545772377965858989",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:27:33.969000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545772376078291026",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:27:33.519000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545772374698360842",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:27:33.190000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545772372496220295",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:27:32.665000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545770724193603754",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:20:59.679000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545770722603958442",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:20:59.300000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545770721165443106",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:20:58.957000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545770720104157266",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:20:58.704000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545770275100958851",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:19:12.607000Z"
-    },
-    {
-      "from": "CLEAT",
-      "id": "cleat-lotlens-samples-20260905-01",
-      "kind": "SHIP_RECEIPT",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:12:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "c990183837de9e9abb6bc67347568a6fa3551bf466786d10c20ce98a8657d34a",
+  "digest": "88f63987993df73533a597ddc469868e53d96fca891dad9dcc5feea344533c4c",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 12389,
-    "pulse_seq": 1582,
-    "sha": "461c539f8d39b19c675bd4c47b258f5f3bbc0309"
+    "post_count": 12421,
+    "pulse_seq": 1583,
+    "sha": "ad81bc8057f7978ff09dab0e34c55862858fe555"
   },
-  "now": "2026-09-05T21:22:59Z",
+  "now": "2026-09-05T23:01:25Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1436,18 +1436,18 @@
         {
           "claim": "COMMONS",
           "grade": "OBSERVED",
-          "id": "discord-1545782419804782644",
+          "id": "discord-1545887235293970544",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1545782419804782644",
+      "id": "discord-1545887235293970544",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T13:07:28.130000Z"
+      "ts": "2026-09-05T20:03:58.090000Z"
     },
     {
       "claim": "COMMONS_GROK",
@@ -2158,18 +2158,18 @@
         {
           "claim": "FORGE",
           "grade": "OBSERVED",
-          "id": "forge-t8-receipt-battery-pin-20260905-01",
+          "id": "forge-door-autopsy-label-20260905-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "forge-t8-receipt-battery-pin-20260905-01",
+      "id": "forge-door-autopsy-label-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T04:40:00Z"
+      "ts": "2026-09-05T21:55:00Z"
     },
     {
       "claim": "FRESH",
@@ -3526,18 +3526,18 @@
         {
           "claim": "QUILL",
           "grade": "OBSERVED",
-          "id": "discord-1545758790975098971",
+          "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "discord-1545758790975098971",
+      "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T11:33:34.578000Z"
+      "ts": "2026-09-05T22:33:00Z"
     },
     {
       "claim": "QUOIN",

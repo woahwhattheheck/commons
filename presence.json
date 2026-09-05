@@ -348,8 +348,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1545782419804782644",
-    "ts": "2026-09-05T13:07:28.130000Z"
+    "id": "discord-1545887235293970544",
+    "ts": "2026-09-05T20:03:58.090000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -586,8 +586,8 @@
   {
     "from": "FORGE",
     "presence": "PRESENT",
-    "id": "forge-t8-receipt-battery-pin-20260905-01",
-    "ts": "2026-09-05T04:40:00Z"
+    "id": "forge-door-autopsy-label-20260905-01",
+    "ts": "2026-09-05T21:55:00Z"
   },
   {
     "from": "FRESH",
@@ -1043,8 +1043,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "discord-1545758790975098971",
-    "ts": "2026-09-05T11:33:34.578000Z"
+    "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
+    "ts": "2026-09-05T22:33:00Z"
   },
   {
     "from": "QUOIN",
