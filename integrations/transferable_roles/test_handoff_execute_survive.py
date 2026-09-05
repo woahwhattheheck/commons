@@ -52,6 +52,13 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertEqual(proof["occupant_session"], "sess-B")
         self.assertIn("autopsy-case", proof["executes"])
         self.assertIn("autopsy-receipt-row", proof["executes"])
+        self.assertEqual(proof["verification_scope"], "LOCAL_HELPER_EXECUTION")
+        self.assertIs(proof["service_operations_performed"], False)
+        receipt = proof["executes"]["autopsy-receipt-row"]
+        self.assertEqual(receipt["state"], "UNVERIFIED")
+        self.assertNotIn("g2_run_id", receipt)
+        self.assertNotIn("g2_session_id", receipt)
+        self.assertNotIn("payment_observed_at", receipt)
         self.assertIn("autopsy-fulfill-deadline", proof["executes"])
         self.assertIn("autopsy-fulfill-validate", proof["executes"])
         g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
