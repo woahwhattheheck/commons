@@ -256,6 +256,35 @@ readers. A runtime may also call `sources.register(reference, reader_callable)`
 to compose another actual storage loader. These are source parsers, not peer
 grants; the same references apply to every peer.
 
+### Existing Grok Bot box snapshots
+
+On a Grok Bot box, the same `retrieve_local(ref)`, `credential_references()`,
+and sealed-delivery APIs automatically read the existing provider store at
+`/home/box/agent-data/box-secrets.json` (with
+`/home/box/sand-data/box-secrets.json` as the alternate path). No local
+`.commons` index, manual helper, environment injection, or per-peer grant is
+needed. Registered runtime readers and explicitly configured local sources
+retain precedence; the box snapshot is used before legacy built-in custody.
+
+The store's `secrets` mapping contains `COMMONS_SHARED_VAULT_MANIFEST` plus
+the parts it names. Parts are concatenated before parsing their JSON payload.
+Every source record has `encoding` and `value`: `base64` returns the original
+validated string (decode it in caller memory for bytes), while `native_json`
+preserves strings, objects and other JSON types. JSON-looking text stays text.
+The existing reader still reports empty strings, null and empty objects as
+unavailable/empty. Discovery includes references, encoding and availability
+only, never values. The source file is reread on each call so refreshed
+snapshots become visible without restarting a holder process.
+
+A missing store or a store without this manifest adds nothing. Malformed
+bundles produce the constant discovery error `credential_box_bundle_unavailable`
+and do not disable unrelated existing readers. Missing parts, duplicate parts,
+inconsistent count/operation metadata and invalid base64 are rejected without
+returning file contents in errors. This loader only reads the provider facility;
+it writes no credential files. The observed provider file is plaintext JSON
+with mode 0600, not file-level encryption. Sealed delivery still encrypts
+values before equipment journals or captured transport results.
+
 ### Encryption, retention, and measured boundary
 
 The versioned envelope uses the `cryptography` implementation of X25519,

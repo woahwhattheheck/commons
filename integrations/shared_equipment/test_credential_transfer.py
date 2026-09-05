@@ -33,7 +33,7 @@ class CredentialTransferTests(unittest.TestCase):
         self.root = Path(self.directory.name)
         self.sources = ct.CredentialSources(
             config_path=self.root / "sources.json", claude_path=self.root / "claude.json",
-            slack_reader=lambda: {"bot_token": SENTINEL, "app_token": "synthetic-app"})
+            slack_reader=lambda: {"bot_token": SENTINEL, "app_token": "synthetic-app"}, box_paths=())
         self.equipment = ServiceEquipment(credential_sources=self.sources)
 
     def test_roundtrip_generic_sender_newcomer_and_no_cleartext_outputs(self):
@@ -269,6 +269,173 @@ class CredentialTransferTests(unittest.TestCase):
         for path in (self.root / "carrier.db", self.root / "events.jsonl"):
             self.assertNotIn(SENTINEL.encode(), path.read_bytes())
         self.assertNotIn(SENTINEL, "".join(prompts))
+
+
+class BoxCredentialSourceTests(unittest.TestCase):
+    def setUp(self):
+        self.directory = tempfile.TemporaryDirectory()
+        self.addCleanup(self.directory.cleanup)
+        self.root = Path(self.directory.name)
+        self.primary = self.root / "box-secrets.json"
+        self.alias = self.root / "alias-secrets.json"
+        self.sources = ct.CredentialSources(
+            config_path=self.root / "sources.json", claude_path=self.root / "claude.json",
+            box_paths=(self.primary, self.alias),
+            gh_runner=lambda *a, **k: subprocess.CompletedProcess([], 0, "synthetic-legacy", ""))
+        self.records = {
+            "sample/text": {"encoding": "native_json", "value": SENTINEL},
+            "sample/object": {"encoding": "native_json", "value": {"nested": [True, None, 0]}},
+            "sample/json-text": {"encoding": "native_json", "value": '{"still":"text"}'},
+            "sample/binary": {"encoding": "base64", "value": base64.b64encode(b"\x00\xff\x80binary\x00").decode()},
+            "github/token": {"encoding": "native_json", "value": "synthetic-box"},
+        }
+        self.records.update({"sample/additional-" + str(i): {"encoding": "native_json", "value": "synthetic-" + str(i)}
+                             for i in range(61)})
+
+    def write_bundle(self, records=None, path=None):
+        records = self.records if records is None else records
+        payload = json.dumps({"schema_version": 1, "operation_id": "synthetic-transfer", "sources": records})
+        parts = [payload[i:i + 31] for i in range(0, len(payload), 31)]
+        names = ["COMMONS_SHARED_VAULT_PART_" + str(i).zfill(3) for i in range(len(parts))]
+        mapping = dict(zip(names, parts))
+        mapping[ct.BOX_MANIFEST_KEY] = json.dumps({
+            "schema_version": 1, "operation_id": "synthetic-transfer",
+            "format": "concatenated-json", "parts": names, "source_count": len(records)})
+        (path or self.primary).write_text(json.dumps({"version": 1, "secrets": mapping}), encoding="utf-8")
+        return mapping
+
+    def test_newcomer_discovers_all_sources_and_actual_sealed_types(self):
+        self.write_bundle()
+        rows = ct.credential_references(self.sources)
+        self.assertFalse(rows["errors"])
+        self.assertNotIn(SENTINEL, json.dumps(rows))
+        discovered = {row["credential_ref"]: row for row in rows["references"]}
+        self.assertTrue(set(self.records).issubset(discovered))
+        self.assertEqual(discovered["github/token"]["source_type"], "existing_grokbot_box_bundle")
+        for ref, record in self.records.items():
+            self.assertEqual(self.sources.read(ref), record["value"])
+        for ref in ("sample/text", "sample/object", "sample/json-text", "sample/binary"):
+            pending = CredentialRequest(ref)
+            sealed = self.sources.retrieve_sealed(pending.arguments())
+            actual = pending.open(sealed)
+            self.assertEqual(actual, self.records[ref]["value"])
+            self.assertIs(type(actual), type(self.records[ref]["value"]))
+            self.assertNotIn(SENTINEL, json.dumps(sealed))
+
+    def test_fresh_process_existing_client_discovers_default_store_without_config(self):
+        self.write_bundle()
+        code = """
+import json, sys
+from pathlib import Path
+from unittest.mock import patch
+from integrations.shared_equipment import credential_transfer as ct
+from integrations.shared_equipment.credential_client import retrieve_local
+with patch.object(Path, "home", return_value=Path(sys.argv[1])), patch.object(ct, "BOX_SECRET_PATHS", (sys.argv[2],)):
+    discovered = {row["credential_ref"] for row in ct.credential_references()["references"]}
+    expected = {"sample/text", "sample/object", "sample/json-text", "sample/binary", "github/token"}
+    expected.update(f"sample/additional-{i}" for i in range(61))
+    assert expected.issubset(discovered)
+    assert retrieve_local("github/token") == "synthetic-box"
+    assert retrieve_local("sample/object") == {"nested": [True, None, 0]}
+    assert not (Path.home() / ".commons/credential_sources.json").exists()
+    print(json.dumps({"discovered_bundle_sources": len(expected & discovered), "direct_read": True}))
+"""
+        completed = subprocess.run([__import__("sys").executable, "-c", code, str(self.root), str(self.primary)],
+                                   capture_output=True, text=True, timeout=30)
+        self.assertEqual(completed.returncode, 0, completed.stderr)
+        self.assertEqual(json.loads(completed.stdout), {"discovered_bundle_sources": 66, "direct_read": True})
+        self.assertNotIn(SENTINEL, completed.stdout + completed.stderr)
+
+    def test_registered_and_configured_sources_keep_precedence(self):
+        self.write_bundle()
+        local = self.root / "local.json"
+        local.write_text(json.dumps({"value": "synthetic-configured"}), encoding="utf-8")
+        self.sources.config_path.write_text(json.dumps({"sources": {"github/token": {
+            "type": "json_file", "path": str(local), "pointer": "/value"}}}), encoding="utf-8")
+        self.assertEqual(self.sources.read("github/token"), "synthetic-configured")
+        self.sources.register("github/token", lambda: "synthetic-registered")
+        self.assertEqual(self.sources.read("github/token"), "synthetic-registered")
+        rows = {row["credential_ref"]: row for row in self.sources.describe()["references"]}
+        self.assertEqual(rows["github/token"]["source_type"], "registered_runtime_reader")
+
+    def test_absence_unrelated_store_and_alias_preserve_existing_roads(self):
+        self.assertEqual(self.sources.read("github/token"), "synthetic-legacy")
+        self.assertFalse(self.sources.describe()["errors"])
+        self.primary.write_text(json.dumps({"version": 1, "secrets": {"UNRELATED": SENTINEL}}), encoding="utf-8")
+        self.assertEqual(self.sources.read("github/token"), "synthetic-legacy")
+        self.assertFalse(self.sources.describe()["errors"])
+        self.primary.unlink()
+        self.write_bundle(path=self.alias)
+        self.assertEqual(self.sources.read("github/token"), "synthetic-box")
+
+    def test_missing_part_corrupt_json_and_bad_types_are_redacted(self):
+        variants = []
+        mapping = self.write_bundle()
+        manifest = json.loads(mapping[ct.BOX_MANIFEST_KEY])
+        missing = dict(mapping)
+        del missing[manifest["parts"][1]]
+        variants.append({"secrets": missing})
+        duplicate = dict(mapping)
+        manifest["parts"].append(manifest["parts"][0])
+        duplicate[ct.BOX_MANIFEST_KEY] = json.dumps(manifest)
+        variants.append({"secrets": duplicate})
+        nonstring = dict(mapping)
+        nonstring[json.loads(mapping[ct.BOX_MANIFEST_KEY])["parts"][0]] = {"secret": SENTINEL}
+        variants.append({"secrets": nonstring})
+        variants.append({"secrets": {ct.BOX_MANIFEST_KEY: SENTINEL}})
+        for stored in variants:
+            self.primary.write_text(json.dumps(stored), encoding="utf-8")
+            described = self.sources.describe()
+            self.assertIn("credential_box_bundle_unavailable", described["errors"])
+            self.assertNotIn(SENTINEL, json.dumps(described))
+            with self.assertRaises(ct.CredentialTransferError) as caught:
+                self.sources.read("sample/text")
+            self.assertNotIn(SENTINEL, str(caught.exception))
+            self.assertEqual(self.sources.read("github/token"), "synthetic-legacy")
+        self.primary.write_text(SENTINEL, encoding="utf-8")
+        self.assertIn("credential_box_bundle_unavailable", self.sources.describe()["errors"])
+        self.sources.register("sample/text", lambda: "synthetic-local")
+        self.assertEqual(self.sources.read("sample/text"), "synthetic-local")
+
+    def test_manifest_count_identity_encoding_and_nonfinite_values_are_checked(self):
+        for field, value in (("source_count", 1), ("source_count", True), ("operation_id", "other"),
+                             ("schema_version", True), ("parts", ["missing"])):
+            mapping = self.write_bundle()
+            manifest = json.loads(mapping[ct.BOX_MANIFEST_KEY])
+            manifest[field] = value
+            mapping[ct.BOX_MANIFEST_KEY] = json.dumps(manifest)
+            self.primary.write_text(json.dumps({"secrets": mapping}), encoding="utf-8")
+            self.assertIn("credential_box_bundle_unavailable", self.sources.describe()["errors"])
+        for record in ({"encoding": "base64", "value": "AP8"},
+                       {"encoding": "unknown", "value": SENTINEL},
+                       {"encoding": "native_json", "value": float("nan")}):
+            self.write_bundle({"sample/invalid": record})
+            self.assertIn("credential_box_bundle_unavailable", self.sources.describe()["errors"])
+
+        mapping = self.write_bundle({"sample/overflow": {"encoding": "native_json", "value": "OVERFLOW"}})
+        names = json.loads(mapping[ct.BOX_MANIFEST_KEY])["parts"]
+        payload = "".join(mapping[name] for name in names).replace('"OVERFLOW"', "1e999")
+        mapping[names[0]] = payload
+        for name in names[1:]:
+            mapping[name] = ""
+        self.primary.write_text(json.dumps({"secrets": mapping}), encoding="utf-8")
+        self.assertIn("credential_box_bundle_unavailable", self.sources.describe()["errors"])
+
+    def test_snapshot_updates_are_visible_and_empty_values_keep_existing_contract(self):
+        self.write_bundle({"sample/value": {"encoding": "native_json", "value": "first"}})
+        self.assertEqual(self.sources.read("sample/value"), "first")
+        self.write_bundle({"sample/value": {"encoding": "native_json", "value": "second"}})
+        self.assertEqual(self.sources.read("sample/value"), "second")
+        for value in ("", None, {}):
+            self.write_bundle({"sample/empty": {"encoding": "native_json", "value": value}})
+            row = next(row for row in self.sources.describe()["references"] if row["credential_ref"] == "sample/empty")
+            self.assertEqual(row["availability"], "empty")
+            with self.assertRaises(ct.CredentialTransferError):
+                self.sources.read("sample/empty")
+        for value in (False, 0, [], "false"):
+            self.write_bundle({"sample/value": {"encoding": "native_json", "value": value}})
+            self.assertEqual(self.sources.read("sample/value"), value)
+            self.assertIs(type(self.sources.read("sample/value")), type(value))
 
 
 if __name__ == "__main__":
