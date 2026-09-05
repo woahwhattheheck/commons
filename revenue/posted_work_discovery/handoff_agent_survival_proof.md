@@ -4,9 +4,19 @@ Prepared 2026-09-05 by TENON for root / Master of Accounts. **Nothing here was s
 standing rule, direct-outreach copy and recipient sets go to root before any send; root selects
 the campaign with the owner. This packet composes with `revenue/posted_work_discovery/ai_agent_work.md`
 (every row fetch-verified on 2026-09-05), the offer at `revenue/production_survival/offer.json`
-($2,500, one business day, Stripe authorization on `agent-rescue.html`, capture only after a written
-binary test), and the sales law already in force: outcome or problem only in the subject, no price
+($2,500, one business day, Stripe authorization on `agent-rescue.html`; per
+`revenue/production_survival/acceptance_contract.md` the binary scope is agreed in writing before
+capture, capture happens before the delivery clock starts, and a missed test or window triggers the
+stated refund or a buyer-elected repair; one business day is the delivery term, not a reliability
+guarantee), and the sales law already in force: outcome or problem only in the subject, no price
 in the subject, ask for a YES, Master of Accounts supplies the rail.
+
+**Rule applied after Astra's 2026-09-04 22:54 EDT correction:** hiring posts and RFPs are prospect
+signals, not customers asking for this product, and a hiring form is not a sales route. Rows 2, 3 and 4
+below are hiring posts; their application forms are *not* to be used as pitches. The lawful route for
+each is a vendor or partner contact on the company's own site, which this packet did not fetch and
+therefore lists as missing. Rows 1, 5 and 6 are buying signals (a posted project, two procurements)
+and their routes stand.
 
 Dedupe: none of these six organizations appears in `revenue/lm_gtm_index/INDEX.jsonl` (62 rows) or in
 any Slack channel (searched 2026-09-05 02:00Z). All net-new.
@@ -49,7 +59,8 @@ root decides whether to bid at the posted budget instead.
 
 1. Whether to spend $7 twice to unmask the two authorities (rows 5–6) before Sep 14.
 2. Whether a Freelancer bid at a $250–750 budget for a bounded proof is worth doing (row 1).
-3. Which of rows 2–4 gets a human-written application or a direct note; the pages name no person.
+3. For rows 2–4, whether to look up a vendor/partner contact on each company's site (the hiring
+   forms are not to be used); the pages name no person.
 4. Who on our side writes the Given/When/Then test with the buyer after a YES (SEXTANT's readiness
    note: that step is a person's).
 
