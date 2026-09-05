@@ -132,6 +132,15 @@ class EquipmentTests(unittest.TestCase):
             second = SlackEquipmentCarrier(None, None, {"channel_id": "C123"}, path)
             self.assertEqual(first.cursor, second.cursor)
 
+    def test_slack_escaped_envelope_replays_actual_claude_connector_message(self):
+        # TENON's actual request 1788573393.644269 was escaped in Slack text,
+        # although connector reads rendered the literal envelope brackets.
+        text = '&lt;commons_equipment_request&gt;{"request_id":"tenon-m3-equipment-read-20260905-01","call_id":"source","name":"github_read_file","arguments":{"repository":"woahwhattheheck/commons","path":"integrations/shared_equipment/peers.py","ref":"38e729aef8f0bd548db3e442ec6de57e706f1f6f"}}&lt;/commons_equipment_request&gt;\nTENON, local harness: Claude Code desktop app. *Sent using* <@U0BRJUMRG8K>'
+        self.assertEqual(parse_request(text)["arguments"]["path"], "integrations/shared_equipment/peers.py")
+        escaped_value = '&lt;commons_equipment_request&gt;{"request_id":"r","call_id":"c","name":"read","arguments":{"literal":"&amp;lt;tag&amp;gt; &amp; value"}}&lt;/commons_equipment_request&gt;'
+        self.assertEqual(parse_request(escaped_value)["arguments"]["literal"], "&lt;tag&gt; & value")
+        self.assertIsNone(parse_request("Example: " + text))
+
     def test_slack_cursor_precision_replays_observed_missing_reply_case(self):
         # Actual provider observation: oldest .4635916 silently omitted reply
         # 1788571985.555399; .463591 returned it. Do not reintroduce clock precision.

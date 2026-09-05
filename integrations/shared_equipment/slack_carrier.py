@@ -29,6 +29,11 @@ def slack_timestamp(value) -> str:
 
 def parse_request(text: str) -> dict | None:
     text = text.strip()
+    if text.startswith("&lt;commons_equipment_request&gt;"):
+        # Slack's Claude connector escapes its text fallback while rendering
+        # literal brackets in rich_text. Decode exactly one transport layer;
+        # ampersand last preserves an original literal '&lt;' in an argument.
+        text = text.replace("&lt;", "<").replace("&gt;", ">").replace("&amp;", "&")
     if not text.startswith(OPEN):
         return None
     body, found, _footer = text[len(OPEN):].partition(CLOSE)
