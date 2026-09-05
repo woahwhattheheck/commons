@@ -464,7 +464,8 @@
                 "INSUFFICIENT_AFTER_CLARIFICATION",
                 "CANNOT_FIT_BOUNDARY",
                 "QUARANTINED_EVIDENCE_REMAINS_UNUSABLE",
-                "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW"
+                "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW",
+                "MISSED_DELIVERY_WINDOW"
               ]
             }
           ]
