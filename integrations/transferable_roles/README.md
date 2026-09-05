@@ -23,6 +23,7 @@ Autopsy case CLI: `hinge-r4-autopsy-case-cli-20260905-01`
 Diagnostic contract CLI: `hinge-r4-diagnostic-contract-cli-20260905-01`
 Autopsy fulfill CLI: `hinge-r4-autopsy-fulfill-cli-20260905-01`
 Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
+Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -193,12 +194,15 @@ where present) — **point only; do not remint** those operator contracts. After
 CLI `diagnostic-contract --slug …` **loads** the landed contract (mechanism,
 not remint). After `tenon-r4-diagnostic-receipt-cli-20260905-01`, tool
 `diagnostic_receipt` + CLI `diagnostic-receipt --slug …` **loads** landed
-`receipt.json` for dealer|referral|plant (repair has no twin). Miss remedy
-sentence lives on the product pages/contracts. Roles confer no Stripe access.
+`receipt.json` for dealer|referral|plant (repair has no twin). After
+`tenon-r4-equipment-diagnostic-cards-20260905-01`, peer equipment tools
+`diagnostic_contract_card` / `diagnostic_receipt_card` load the same cards
+without hand-importing transferable_roles. Miss remedy sentence lives on the
+product pages/contracts. Roles confer no Stripe access.
 
 ## Access route shapes
 
-### G2 — `kind: grokbot_control` (SPARK #8761 / `5154aa8f`)
+### G2 — `kind: grokbot_control` (SPARK G2 #8761 / `5154aa8f`)
 
 Listen: `http://127.0.0.1:8881` (not grok.com `:8788`, not C1 `:8879`).
 Client: `integrations/grokbot_control/client.py` (`GrokBotControlClient`).
