@@ -149,7 +149,17 @@
           "transcript-001#T1-L09"
         ],
         "alternatives": [
-          "An unshown environment or runtime override could also force the value to 5."
+          {
+            "explanation": "An unshown environment or runtime override could also force the value to 5.",
+            "status": "STILL_PLAUSIBLE",
+            "assessment": "The transcript does not test environment or runtime overrides. That alternative remains plausible, although it does not account for the two explicit rewrites from config/settings.toml as directly as the primary explanation.",
+            "evidence_refs": [
+              "transcript-001#T1-L04",
+              "transcript-001#T1-L05",
+              "transcript-001#T1-L08",
+              "transcript-001#T1-L09"
+            ]
+          }
         ]
       }
     ],
@@ -167,7 +177,16 @@
           "transcript-001#T1-L08"
         ],
         "alternatives": [
-          "The redacted transcript may omit a separate inspection of config/settings.toml."
+          {
+            "explanation": "The redacted transcript may omit a separate inspection of config/settings.toml.",
+            "status": "NOT_TESTED",
+            "assessment": "The supplied excerpt records no such inspection, but redaction prevents treating its absence as conclusive.",
+            "evidence_refs": [
+              "transcript-001#T1-L04",
+              "transcript-001#T1-L06",
+              "transcript-001#T1-L08"
+            ]
+          }
         ]
       }
     ]
@@ -245,8 +264,8 @@
     "measurement_status": "NOT_MEASURED",
     "human_review_minutes": null,
     "automated_draft_minutes": null,
-    "review_ceiling_minutes": 15,
-    "ceiling_result": "NOT_ASSESSED"
+    "measurement_purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
+    "time_truncated_analysis": false
   },
   "final_review": {
     "state": "PEER_DRAFT",
@@ -259,5 +278,12 @@
     "reason": null,
     "provider_state": "NOT_APPLICABLE",
     "provider_reference_public": null
+  },
+  "quality": {
+    "bounded_unit": "ONE_FAILED_RUN",
+    "analysis_level": "FULL_STRENGTH",
+    "evidence_vs_inference_separated": true,
+    "adversarial_challenge_completed": true,
+    "time_measurement_truncated_analysis": false
   }
 }
