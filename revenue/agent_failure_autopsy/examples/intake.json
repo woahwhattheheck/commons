@@ -1,0 +1,91 @@
+{
+  "schema_version": "commons-agent-failure-autopsy-intake/v1",
+  "kind": "AGENT_FAILURE_AUTOPSY_INTAKE",
+  "record_classification": "SYNTHETIC_EXAMPLE",
+  "case_id": "synthetic-generated-settings-001",
+  "buyer_ref": "buyer_0000000000000000",
+  "failure_sentence": "Codex kept editing the same generated setting, but every retry ended with the same failing timeout test.",
+  "harness_stack": {
+    "harness": "codex",
+    "harness_version": null,
+    "model": null,
+    "operating_system": "Windows with PowerShell",
+    "runtime": "Python test project",
+    "tooling": [
+      "apply_patch",
+      "pytest",
+      "settings generator"
+    ]
+  },
+  "submitted_at": "2026-09-03T09:00:00-04:00",
+  "evidence": [
+    {
+      "evidence_id": "transcript-001",
+      "kind": "transcript",
+      "location_ref": "example:redacted_transcript.txt",
+      "sha256": "4cc416c14efe2d8967a6facdb17727ac9a7bc905141d712a9b0479f3e43d101c",
+      "redacted": true,
+      "received_at": "2026-09-03T09:02:00-04:00",
+      "anchors": [
+        {
+          "anchor_id": "T1-L01",
+          "description": "The user states the desired timeout and the observed test mismatch."
+        },
+        {
+          "anchor_id": "T1-L02",
+          "description": "The agent chooses the generated JSON file as the edit target."
+        },
+        {
+          "anchor_id": "T1-L03",
+          "description": "The first patch changes the generated JSON value."
+        },
+        {
+          "anchor_id": "T1-L04",
+          "description": "The generator states that it rewrites the generated file from config/settings.toml."
+        },
+        {
+          "anchor_id": "T1-L05",
+          "description": "The focused test still observes the old value after generation."
+        },
+        {
+          "anchor_id": "T1-L06",
+          "description": "The agent attributes the result to a patch that did not stick and repeats the same target."
+        },
+        {
+          "anchor_id": "T1-L07",
+          "description": "The second patch again changes only the generated JSON file."
+        },
+        {
+          "anchor_id": "T1-L08",
+          "description": "The generator again rewrites the file from config/settings.toml."
+        },
+        {
+          "anchor_id": "T1-L09",
+          "description": "The second focused test fails with the same observed value."
+        }
+      ]
+    }
+  ],
+  "evidence_assessment": {
+    "state": "USABLE",
+    "assessed_at": "2026-09-03T09:05:00-04:00",
+    "clock_basis_evidence_ids": [
+      "transcript-001"
+    ],
+    "usable_evidence_at": "2026-09-03T09:02:00-04:00",
+    "delivery_due_at": "2026-09-04T09:02:00-04:00",
+    "reasons": []
+  },
+  "clarification": {
+    "rounds_used": 0,
+    "question": null,
+    "response_received_at": null,
+    "response_evidence_ids": []
+  },
+  "access_boundary": {
+    "secrets_requested": false,
+    "unredacted_credentials_requested": false,
+    "production_access_requested": false,
+    "repository_access_requested": false
+  }
+}
