@@ -4,7 +4,7 @@
   "record_classification": "SYNTHETIC_EXAMPLE",
   "offer_id": "agent-failure-autopsy-29",
   "case_id": "synthetic-generated-settings-001",
-  "intake_sha256": "294375aaca34f08bacec48d3d9c938640fff2da689eb9656eb92be3c96131bc6",
+  "intake_sha256": "41dece8f6fa10d0595f769abccdaa3d1038c0f54b61a610d6f3a8a698c5ffb6b",
   "failure_sentence": "Codex kept editing the same generated setting, but every retry ended with the same failing timeout test.",
   "harness_summary": "Codex using apply_patch and a Python settings generator before a focused pytest check on Windows.",
   "disposition": "DIAGNOSIS_DELIVERED",
@@ -285,5 +285,19 @@
     "evidence_vs_inference_separated": true,
     "adversarial_challenge_completed": true,
     "time_measurement_truncated_analysis": false
+  },
+  "intake_scope": {
+    "agent_workflows": 1,
+    "failed_executions": 1,
+    "file_count": 1,
+    "file_limit": 10,
+    "raw_bytes": 910,
+    "raw_bytes_limit": 25000000,
+    "extracted_characters": 910,
+    "extracted_character_limit": 2000000,
+    "approximate_text_token_limit": 500000,
+    "boundary_hit": "NONE",
+    "selection_state": "WITHIN_CAP",
+    "embedded_instructions_trusted": false
   }
 }
