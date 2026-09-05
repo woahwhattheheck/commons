@@ -25,6 +25,8 @@ def parse_request(text: str) -> dict | None:
     if not found:
         raise ValueError("equipment request envelope is incomplete")
     value = json.loads(body)
+    if not isinstance(value, dict):
+        raise ValueError("equipment request must be an object")
     for key in ("request_id", "call_id", "name"):
         if not isinstance(value.get(key), str) or not value[key].strip():
             raise ValueError(key + " must be a nonempty string")
@@ -46,6 +48,10 @@ class SlackEquipmentCarrier:
             self.cursor = json.loads(self.path.read_text(encoding="utf-8")).get("cursor", self.cursor)
         self._stop = threading.Event()
         self._thread = threading.Thread(target=self.run, daemon=True, name="shared-equipment-slack-carrier")
+        self.status = {"ok": True, "phase": "configured", "channel_id": self.channel,
+            "thread_ts": self.thread_ts, "cursor": self.cursor}
+        if not self.path.is_file():
+            self._save(self.cursor)
 
     def start(self):
         self._thread.start()
@@ -62,7 +68,14 @@ class SlackEquipmentCarrier:
         self.cursor = cursor
 
     def process(self, message):
-        request = parse_request(message.get("text", ""))
+        try:
+            request = parse_request(message.get("text", ""))
+        except (ValueError, TypeError) as exc:
+            # Malformed transport input must not strand later valid requests.
+            self.catalog.services.call("slack_post_message", {"channel_id": self.channel,
+                "thread_ts": message.get("thread_ts") or message["ts"],
+                "text": "Equipment request parse error: " + str(exc)})
+            return
         if request is None:
             return
         rid, cid = request["request_id"], request["call_id"]
@@ -111,8 +124,12 @@ class SlackEquipmentCarrier:
         while not self._stop.is_set():
             try:
                 self.once()
+                self.status = {"ok": True, "phase": "polling", "channel_id": self.channel,
+                    "thread_ts": self.thread_ts, "cursor": self.cursor, "time": time.time()}
             except Exception as exc:
-                # One redacted diagnostic snapshot; no source message/secret log.
-                diagnostic = self.path.with_name("equipment_slack_status.json")
-                diagnostic.write_text(json.dumps({"ok": False, "error": type(exc).__name__, "message": redacted(str(exc)), "time": time.time()}), encoding="utf-8")
+                self.status = {"ok": False, "phase": "error", "error": type(exc).__name__,
+                    "message": redacted(str(exc)), "cursor": self.cursor, "time": time.time()}
+            # One redacted diagnostic snapshot; no source message/secret log.
+            diagnostic = self.path.with_name("equipment_slack_status.json")
+            diagnostic.write_text(json.dumps(self.status), encoding="utf-8")
             self._stop.wait(self.interval)

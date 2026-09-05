@@ -32,7 +32,7 @@ DEFAULT_MCP = "https://commons-spark-mcp.vercel.app/mcp"
 DEFAULT_EVENT_LOG = Path.home() / ".gemini" / "commons_peer_tool_gateway_events.jsonl"
 DEFAULT_CALL_DB = Path.home() / ".gemini" / "commons_peer_tool_calls.sqlite3"
 MCP_PROTOCOL = "2025-03-26"
-TERMINAL = frozenset({"completed", "error"})
+TERMINAL = frozenset({"completed", "error", "cancelled", "interrupted"})
 CALL_OPEN = "<commons_tool_call>"
 CALL_CLOSE = "</commons_tool_call>"
 CALL_RE = re.compile(r"^\s*<commons_tool_call>(.*?)</commons_tool_call>\s*$", re.DOTALL)
@@ -295,14 +295,18 @@ class ToolLoop:
         self.max_steps = max_steps
         self.max_protocol_retries = max_protocol_retries
 
-    def run(self, request_id: str, peer: str, message: str) -> str:
+    def run(self, request_id: str, peer: str, message: str, cancelled=None) -> str:
         tools = self.catalog.tools()
         names = {item["name"] for item in tools}
         prompt = _tool_prompt(message, tools)
         tool_calls = 0
         protocol_retries = 0
         while True:
+            if cancelled is not None and cancelled.is_set():
+                raise InterruptedError("request cancelled before next model/tool operation")
             reply = self.upstream.turn(peer, prompt)
+            if cancelled is not None and cancelled.is_set():
+                raise InterruptedError("request cancelled after in-flight model turn returned")
             call, had_marker = _parse_call(reply)
             if call is None and not had_marker:
                 return reply
@@ -455,6 +459,13 @@ class ToolGateway(ThreadingHTTPServer):
         self.catalog = catalog
         self._peer_state_lock = threading.RLock()
         self._peer_queues: dict[str, queue.Queue[QueuedTurn]] = {}
+        self._cancellations: dict[str, threading.Event] = {}
+        # Report interrupted execution honestly; never replay a possibly applied
+        # service write or restart an old conversation automatically.
+        for event in list(events._latest.values()):
+            if event.get("status") not in TERMINAL:
+                events.append(request_id=event["request_id"], peer=event.get("peer"),
+                    status="interrupted", message="gateway restarted; inspect tool journal before follow-up")
 
     @staticmethod
     def normalize_peer(value: Any) -> str:
@@ -488,6 +499,8 @@ class ToolGateway(ThreadingHTTPServer):
                 work.task_done()
 
     def submit(self, peer: str, message: str) -> QueuedTurn:
+        if not isinstance(message, str) or not message.strip():
+            raise ValueError("message must be nonempty UTF-8 text")
         with self._peer_state_lock:
             request_id = uuid.uuid4().hex
             raw = message.encode("utf-8")
@@ -499,6 +512,7 @@ class ToolGateway(ThreadingHTTPServer):
                 message_sha256=hashlib.sha256(raw).hexdigest(),
             )
             item = QueuedTurn(request_id, peer, message)
+            self._cancellations[request_id] = threading.Event()
             self._queue_for(peer).put(item)
             return item
 
@@ -506,9 +520,9 @@ class ToolGateway(ThreadingHTTPServer):
         started = time.monotonic()
         try:
             self.events.append(request_id=request_id, peer=peer, status="running")
-            reply = self.loop.run(request_id, peer, message)
+            reply = self.loop.run(request_id, peer, message, self._cancellations.get(request_id))
             raw = reply.encode("utf-8")
-            return self.events.append(
+            return self._terminal_event(
                 request_id=request_id,
                 peer=peer,
                 status="completed",
@@ -517,8 +531,11 @@ class ToolGateway(ThreadingHTTPServer):
                 reply_utf8_base64=base64.b64encode(raw).decode("ascii"),
                 reply_bytes=len(raw),
             )
+        except InterruptedError as exc:
+            return self._terminal_event(request_id=request_id, peer=peer, status="cancelled",
+                elapsed_ms=round((time.monotonic() - started) * 1000), message=str(exc))
         except Exception as exc:
-            return self.events.append(
+            return self._terminal_event(
                 request_id=request_id,
                 peer=peer,
                 status="error",
@@ -526,6 +543,22 @@ class ToolGateway(ThreadingHTTPServer):
                 error=type(exc).__name__,
                 message=str(exc),
             )
+
+    def _terminal_event(self, **fields) -> dict:
+        with self._peer_state_lock:
+            return self.events.append(**fields)
+
+    def cancel(self, request_id: str) -> dict:
+        with self._peer_state_lock:
+            event = self.events.request(request_id, 0)
+            if event is None:
+                return {"ok": False, "error": "request_not_found"}
+            if event["status"] in TERMINAL:
+                return {"ok": True, "event": event, "already_terminal": True}
+            self._cancellations[request_id].set()
+            event = self.events.append(request_id=request_id, peer=event.get("peer"),
+                status="cancel_requested", message="cooperative cancellation; in-flight provider turn may finish, then no further tool effects")
+            return {"ok": True, "event": event}
 
 class Handler(BaseHTTPRequestHandler):
     protocol_version = "HTTP/1.1"
@@ -573,6 +606,7 @@ class Handler(BaseHTTPRequestHandler):
                         "tool_count": len(tools),
                         "tools": [item["name"] for item in tools],
                         "event_cursor": self.server.events.cursor,
+                        "slack_carrier": getattr(getattr(self.server, "carrier", None), "status", {"phase": "not_configured"}),
                     },
                 )
                 return
@@ -610,6 +644,11 @@ class Handler(BaseHTTPRequestHandler):
             self._send(502, {"ok": False, "error": type(exc).__name__, "message": str(exc)})
 
     def do_POST(self) -> None:
+        route = urllib.parse.urlsplit(self.path).path
+        if route.startswith("/v1/requests/") and route.endswith("/cancel"):
+            request_id = route[len("/v1/requests/"):-len("/cancel")]
+            self._send(200, self.server.cancel(request_id))
+            return
         if urllib.parse.urlsplit(self.path).path == "/v1/tools/call":
             try:
                 size = int(self.headers.get("Content-Length", "0"))
@@ -690,6 +729,8 @@ def main(argv: list[str] | None = None) -> int:
         max_protocol_retries=args.max_protocol_retries,
     )
     server = ToolGateway(("127.0.0.1", args.port), loop, events, upstream, catalog)
+    from integrations.shared_equipment.peers import GeminiEquipment
+    catalog.extensions.append(GeminiEquipment(server))
     carrier = None
     if args.equipment_config.is_file():
         from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier
@@ -699,6 +740,7 @@ def main(argv: list[str] | None = None) -> int:
             carrier = SlackEquipmentCarrier(catalog, calls, route,
                 args.equipment_config.with_name("equipment_slack_cursor.json"))
             carrier.start()
+    server.carrier = carrier
     print(
         json.dumps(
             {

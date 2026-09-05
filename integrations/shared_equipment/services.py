@@ -143,7 +143,7 @@ class ServiceEquipment:
     def call(self, name: str, arguments: dict) -> dict:
         try:
             result = self._call(name, arguments)
-            return {"isError": False, "result": redacted(result)}
+            return {"isError": isinstance(result, dict) and result.get("ok") is False, "result": redacted(result)}
         except Exception as exc:
             return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc))}
 
@@ -158,7 +158,7 @@ class ServiceEquipment:
                 p["cursor"] = a["cursor"]
             return self.slack("conversations.replies", p)
         if name == "slack_post_message":
-            p = {"channel": _string(a, "channel_id"), "text": _string(a, "text"), "unfurl_links": False, "unfurl_media": False}
+            p = {"channel": _string(a, "channel_id"), "text": _string(a, "text"), "unfurl_links": False, "unfurl_media": False, "parse": "none"}
             if a.get("thread_ts"):
                 p["thread_ts"] = a["thread_ts"]
             result = self.slack("chat.postMessage", p)
@@ -236,11 +236,15 @@ class CombinedCatalog:
     def __init__(self, commons, services=None):
         self.commons = commons
         self.services = services or ServiceEquipment()
+        self.extensions = []
 
     def tools(self, **kwargs):
-        return self.commons.tools(**kwargs) + self.services.tools()
+        return self.commons.tools(**kwargs) + self.services.tools() + [tool for extension in self.extensions for tool in extension.tools()]
 
     def call(self, name, arguments):
+        for extension in self.extensions:
+            if name in {tool["name"] for tool in extension.tools()}:
+                return extension.call(name, arguments)
         if name in {tool["name"] for tool in self.services.tools()}:
             return self.services.call(name, arguments)
         return self.commons.call(name, arguments)

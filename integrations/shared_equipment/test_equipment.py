@@ -2,10 +2,11 @@ import io
 import json
 import subprocess
 import tempfile
+import threading
 import unittest
 from pathlib import Path
 
-from integrations.gemini_slack.peer_tool_gateway import ToolCallStore, ToolLoop
+from integrations.gemini_slack.peer_tool_gateway import EventStore, ToolCallStore, ToolGateway, ToolLoop
 from integrations.shared_equipment.services import CombinedCatalog, ServiceEquipment, redacted
 from integrations.shared_equipment.slack_carrier import SlackEquipmentCarrier, parse_request
 
@@ -91,10 +92,45 @@ class EquipmentTests(unittest.TestCase):
             self.assertEqual(len(Public().tools()), 1)
             calls.close()
 
+    def test_cancel_after_model_return_prevents_external_tool_effect(self):
+        cancelled = threading.Event()
+        class Model:
+            def turn(self, peer, prompt):
+                cancelled.set()
+                return '<commons_tool_call>{"call_id":"write","name":"slack_post_message","arguments":{}}</commons_tool_call>'
+        class Catalog:
+            def tools(self): return [{"name": "slack_post_message"}]
+            def call(self, name, args): raise AssertionError("cancelled request must not post")
+        with tempfile.TemporaryDirectory() as directory:
+            calls = ToolCallStore(Path(directory) / "calls.db")
+            with self.assertRaises(InterruptedError):
+                ToolLoop(Model(), Catalog(), calls).run("r", "role", "work", cancelled)
+            self.assertEqual(calls._db.execute("select count(*) from tool_calls").fetchone()[0], 0)
+            calls.close()
+
+    def test_restart_marks_running_request_interrupted_without_replay(self):
+        with tempfile.TemporaryDirectory() as directory:
+            events = EventStore(Path(directory)/"events.jsonl")
+            events.append(request_id="unfinished", peer="TESSERA", status="running")
+            gateway = ToolGateway(("127.0.0.1", 0), None, events, None, None)
+            self.assertEqual(events.request("unfinished", 0)["status"], "interrupted")
+            self.assertEqual(gateway.cancel("unfinished")["event"]["status"], "interrupted")
+            self.assertEqual(gateway._peer_queues, {})
+            gateway.server_close()
+
     def test_slack_envelope_accepts_connector_footer_not_quoted_prose(self):
         envelope = '<commons_equipment_request>{"request_id":"r","call_id":"c","name":"equipment_catalog"}</commons_equipment_request>'
         self.assertEqual(parse_request(envelope + '\nSent using connector')["name"], "equipment_catalog")
         self.assertIsNone(parse_request("Example: " + envelope))
+        with self.assertRaises(ValueError):
+            parse_request('<commons_equipment_request>null</commons_equipment_request>')
+
+    def test_idle_carrier_cursor_survives_restart(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory)/"cursor.json"
+            first = SlackEquipmentCarrier(None, None, {"channel_id": "C123"}, path)
+            second = SlackEquipmentCarrier(None, None, {"channel_id": "C123"}, path)
+            self.assertEqual(first.cursor, second.cursor)
 
     def test_carrier_replay_shares_http_call_key_and_returns_exact_result(self):
         class Services:
