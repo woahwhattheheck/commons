@@ -64,6 +64,8 @@ def _schema(name: str, description: str, required: dict[str, str], optional: dic
 
 
 TOOLS = [
+    _schema("credential_references", "Discover credential references, configured sources, and populated/empty Claude MCP entries. Returns metadata only, equally for newcomers.", {}),
+    _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
     _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
     _schema("slack_read_thread", "Read a Slack thread. Follow next_cursor for remaining replies.", {"channel_id": "string", "thread_ts": "string"}, {"cursor": "string", "limit": "integer"}),
     _schema("slack_post_message", "Post a message through the existing workspace app. Return its timestamp and permalink. Preserve explicit model/role attribution in text.", {"channel_id": "string", "text": "string"}, {"thread_ts": "string"}),
@@ -78,11 +80,12 @@ TOOLS = [
 
 
 class ServiceEquipment:
-    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None):
+    def __init__(self, *, gh: str = "gh", slack_token_loader=None, gh_runner=None, opener=None, credential_sources=None):
         self.gh = gh
         self.slack_token_loader = slack_token_loader or self._load_slack_token
         self.gh_runner = gh_runner or subprocess.run
         self.opener = opener or urllib.request.urlopen
+        self.credential_sources = credential_sources
 
     @staticmethod
     def _load_slack_token() -> str:
@@ -148,6 +151,13 @@ class ServiceEquipment:
             return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc))}
 
     def _call(self, name: str, a: dict) -> dict:
+        if name == "credential_references":
+            from .credential_transfer import credential_references
+            return credential_references(self.credential_sources)
+        if name == "credential_retrieve_sealed":
+            from .credential_transfer import CredentialSources
+            sources = self.credential_sources or CredentialSources(gh=self.gh, gh_runner=self.gh_runner)
+            return sources.retrieve_sealed(a)
         if name == "slack_read_channel":
             p = {"channel": _string(a, "channel_id"), "limit": min(100, max(1, int(a.get("limit", 50))))}
             p.update({k: a[k] for k in ("oldest", "latest", "cursor") if a.get(k)})
