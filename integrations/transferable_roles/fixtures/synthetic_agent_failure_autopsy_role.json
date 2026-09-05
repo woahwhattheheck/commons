@@ -6,21 +6,66 @@
   "synthetic_note": "SYNTHETIC fixture for R4 paid fulfillment handoff — not a live buyer, Payment Link, or remint of Astra #8811",
   "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
-    {"pointer": "payment-capability.html", "label": "public payment rails door — CHARGEABLE only; no invented checkout"},
-    {"pointer": "ground/PAYMENT_CAPABILITY.md", "label": "provider-neutral payment capability card"},
-    {"pointer": "pay.html", "label": "public pay surface — proven rails only"},
-    {"pointer": "Astra Autopsy demand / coordination", "label": "#8811 owns fulfillment spine + Payment URL — not reminted here"}
+    {
+      "pointer": "payment-capability.html",
+      "label": "public payment rails door — CHARGEABLE only; no invented checkout"
+    },
+    {
+      "pointer": "ground/PAYMENT_CAPABILITY.md",
+      "label": "provider-neutral payment capability card"
+    },
+    {
+      "pointer": "pay.html",
+      "label": "public pay surface — proven rails only"
+    },
+    {
+      "pointer": "Astra Autopsy demand / coordination",
+      "label": "#8811 owns fulfillment spine + Payment URL — not reminted here"
+    }
   ],
   "obligations": [
-    {"id": "ob-intake", "summary": "Collect buyer failure sentence + harness/stack + redacted evidence within corpus caps; never ask for secrets", "next_action": "Gather failure sentence, harness/stack, and redacted evidence under corpus caps — refuse secrets", "status": "open"},
-    {"id": "ob-diagnose", "summary": "Reconstruct run / first divergence; observations vs inference; evidence-supported steps only", "next_action": "Reconstruct run to first divergence; separate observations from inference; evidence-supported steps only", "status": "open"},
-    {"id": "ob-review", "summary": "Independent capable reviewer before buyer-ready (PEER_DRAFT until reviewed)", "next_action": "Route PEER_DRAFT to an independent capable reviewer; hold buyer-ready until review lands", "status": "open"},
-    {"id": "ob-settle", "summary": "Deliver report OR route to refund when diagnosis not defensible — Payment URL pending on ASTRA #8811 (do not invent plink)", "next_action": "Deliver buyer-ready report or route to refund; Payment URL owned by Astra #8811 — do not invent plink", "status": "open", "evidence_pointer": "Astra #8811 fulfillment spine (Payment URL pending — not reminted here)"}
+    {
+      "id": "ob-intake",
+      "summary": "Collect buyer failure sentence + harness/stack + redacted evidence within corpus caps; never ask for secrets",
+      "next_action": "Gather failure sentence, harness/stack, and redacted evidence under corpus caps — refuse secrets",
+      "status": "open"
+    },
+    {
+      "id": "ob-diagnose",
+      "summary": "Reconstruct run / first divergence; observations vs inference; evidence-supported steps only",
+      "next_action": "Reconstruct run to first divergence; separate observations from inference; evidence-supported steps only",
+      "status": "open"
+    },
+    {
+      "id": "ob-review",
+      "summary": "Independent capable reviewer before buyer-ready (PEER_DRAFT until reviewed)",
+      "next_action": "Route PEER_DRAFT to an independent capable reviewer; hold buyer-ready until review lands",
+      "status": "open"
+    },
+    {
+      "id": "ob-settle",
+      "summary": "Deliver report OR route to refund when diagnosis not defensible — Payment URL pending on ASTRA #8811 (do not invent plink)",
+      "next_action": "Deliver buyer-ready report or route to refund; Payment URL owned by Astra #8811 — do not invent plink",
+      "status": "open",
+      "evidence_pointer": "Astra #8811 fulfillment spine (Payment URL pending — not reminted here)"
+    }
   ],
   "tools": [
-    {"name": "transferable_roles_cli", "entry": "python3 integrations/transferable_roles/cli.py", "notes": "create/equip/transfer/advance/export/import/open-obligations"},
-    {"name": "role_export", "entry": "python3 integrations/transferable_roles/cli.py export <role_id>", "notes": "portable package; secrets excluded"},
-    {"name": "grokbot_control_client", "entry": "integrations/grokbot_control/client.py", "notes": "GrokBotControlClient — submit/follow-up/cancel/session recover; not grok.com"}
+    {
+      "name": "transferable_roles_cli",
+      "entry": "python3 integrations/transferable_roles/cli.py",
+      "notes": "create/equip/transfer/advance/export/import/open-obligations"
+    },
+    {
+      "name": "role_export",
+      "entry": "python3 integrations/transferable_roles/cli.py export <role_id>",
+      "notes": "portable package; secrets excluded"
+    },
+    {
+      "name": "grokbot_control_client",
+      "entry": "integrations/grokbot_control/client.py",
+      "notes": "GrokBotControlClient — submit/follow-up/cancel/session recover; not grok.com"
+    }
   ],
   "access_routes": [
     {
@@ -35,7 +80,7 @@
       "cancel": "POST /v1/runs/{run_id}/cancel",
       "recover": "GET /v1/sessions/{session_id}",
       "events": "GET /v1/events?after=",
-      "note": "SPARK G2 #8761. Point role at pool+session; never bind to one chat window."
+      "note": "SPARK G2 #8761 / 5154aa8f. Point role at pool+session; seat/session_id filled by occupant at equip — never bind role to one chat window. Not grok.com :8788, not C1 :8879. Second pool only via GROKBOT_CONTROL_POOLS when owner names it."
     },
     {
       "name": "gemini_peer_tool_gateway",
@@ -45,13 +90,13 @@
       "status": "GET /v1/requests/{request_id}",
       "events": "GET /v1/events?after={cursor}",
       "recover": "GET /v1/last?peer={peer}",
-      "note": "Mirror of peer_tool_gateway.py — do not fork"
+      "note": "Mirror of integrations/gemini_slack/peer_tool_gateway.py — do not fork; C1 siblings share this shape"
     },
     {
       "name": "payment_capability",
       "kind": "public_html",
-      "base_url": "https://woahwhattheheck.github.io/commons/payment-capability.html",
-      "note": "Public HTML pointers only — no secrets, no invented Payment Links; #8811 owns Payment URL. Also see pay.html."
+      "store": "payment-capability.html",
+      "note": "Also pay.html. Public HTML pointers only — no secrets, no Stripe tokens, no invented Payment Links; #8811 owns Payment URL / spine"
     }
   ],
   "credential_custodian": "existing_secure_stores",
