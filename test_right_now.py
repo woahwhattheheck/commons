@@ -2,6 +2,7 @@ import json
 import pathlib
 import unittest
 
+# Hermetic pins for right-now Autopsy rank-1 + Linux LF control hashes.
 
 ROOT = pathlib.Path(__file__).resolve().parent
 CATALOG_PATH = ROOT / "revenue" / "right_now" / "catalog.json"
