@@ -570,6 +570,29 @@ class PureFunctionTests(unittest.TestCase):
     def test_allow_reuse_address_is_off_on_windows(self):
         self.assertEqual(gateway.Gateway.allow_reuse_address, os.name != "nt")
 
+    @unittest.skipIf(os.name == "nt", "zombies are a POSIX state; Windows reports the exit code directly")
+    def test_pid_alive_treats_an_unreaped_zombie_as_dead(self):
+        import subprocess
+
+        proc = subprocess.Popen([sys.executable, "-c", "pass"])
+        try:
+            deadline = time.monotonic() + 10
+            state = ""
+            while time.monotonic() < deadline:
+                try:
+                    with open(f"/proc/{proc.pid}/stat", encoding="ascii", errors="replace") as fh:
+                        state = fh.read().rsplit(")", 1)[1].split()[0]
+                except OSError:
+                    state = "?"
+                if state in ("Z", "X", "?"):
+                    break
+                time.sleep(0.02)
+            # the child has exited but nobody has called wait(): a zombie, not a live run
+            self.assertFalse(gateway.pid_alive(proc.pid), f"/proc state {state!r} must read as dead")
+        finally:
+            proc.wait(timeout=10)
+        self.assertFalse(gateway.pid_alive(proc.pid))
+
     def test_taskkill_parser_takes_only_terminated_pids(self):
         text = ("SUCCESS: The process with PID 3520 (child process of PID 20496) has been terminated.\n"
                 "SUCCESS: The process with PID 20496 (child process of PID 6700) has been terminated.\n")
