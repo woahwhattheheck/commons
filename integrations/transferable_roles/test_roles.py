@@ -23,6 +23,11 @@ AUTOPSY_FIXTURE = (
 
 LIVE_CHECKOUT = "buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g"
 AUTOPSY_PAGE = "agent-rescue.html"
+DIAGNOSTIC_FIXTURE = (
+    Path(__file__).resolve().parent
+    / "fixtures"
+    / "synthetic_diagnostic_fulfillment_role.json"
+)
 
 
 class TransferableRoleTests(unittest.TestCase):
@@ -738,6 +743,33 @@ class TransferableRoleTests(unittest.TestCase):
             out["open_obligations"][0]["role_id"],
             "role-synthetic-agent-failure-autopsy-20260905",
         )
+
+    def test_diagnostic_fixture_create_open_obligations_and_live_checkouts(self) -> None:
+        raw = json.loads(DIAGNOSTIC_FIXTURE.read_text(encoding="utf-8"))
+        role = self.store.create(raw)
+        self.assertTrue(role.get("synthetic"))
+        self.assertEqual(
+            role["role_id"], "role-synthetic-diagnostic-fulfillment-20260905"
+        )
+        self.assertEqual(role["credential_custodian"], "existing_secure_stores")
+        ids = [o["id"] for o in role["obligations"]]
+        self.assertEqual(ids, ["ob-intake", "ob-diagnose", "ob-settle"])
+        self.assertTrue(all(o["status"] == "open" for o in role["obligations"]))
+        names = {r["name"] for r in role["access_routes"]}
+        self.assertEqual(
+            names,
+            {"grokbot_control_g2", "gemini_peer_tool_gateway", "payment_capability"},
+        )
+        blob = json.dumps(role)
+        self.assertIn("buy.stripe.com/3cIdR8gBf6379uF1Oy43S0b", blob)
+        self.assertIn("buy.stripe.com/9B600i98N77b9uFeBk43S0c", blob)
+        self.assertIn("buy.stripe.com/9B66oGacR2QVdKVeBk43S0d", blob)
+        self.assertIn("buy.stripe.com/14AfZgckZ0IN0Y99h043S0e", blob)
+        pointers = {k["pointer"] for k in role["knowledge"]}
+        self.assertIn("dealer-service-lead-rescue.html", pointers)
+        self.assertIn("referral-intake-completeness.html", pointers)
+        self.assertIn("repair-booking-preflight.html", pointers)
+        self.assertIn("plant-downtime-handoff.html", pointers)
 
 
 if __name__ == "__main__":
