@@ -785,7 +785,8 @@ class TransferableRoleTests(unittest.TestCase):
         )
         self.assertEqual(role["credential_custodian"], "existing_secure_stores")
         ids = [o["id"] for o in role["obligations"]]
-        self.assertEqual(ids, ["ob-intake", "ob-diagnose", "ob-settle"])
+        self.assertEqual(ids, [o["id"] for o in raw["obligations"]])
+        self.assertTrue({"ob-intake", "ob-diagnose", "ob-settle"}.issubset(ids))
         self.assertTrue(all(o["status"] == "open" for o in role["obligations"]))
         names = {r["name"] for r in role["access_routes"]}
         self.assertEqual(

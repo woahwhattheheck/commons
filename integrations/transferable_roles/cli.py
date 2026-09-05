@@ -18,6 +18,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py diagnostic-receipt ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-fulfill-deadline ROLE --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-fulfill-sla ROLE --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 --as-of 2026-09-08T10:00:00-04:00 --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py prove-handoff ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py export ROLE --store /tmp/roles
   python3 integrations/transferable_roles/cli.py import --file /tmp/role-export.json --store /tmp/roles-successor
 """
@@ -35,6 +36,7 @@ from diagnostic_contract import load_contract_from_role
 from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
 from diagnostic_fulfill import run_sla_status as run_diagnostic_sla
 from diagnostic_receipt import load_receipt_from_role
+from handoff_execute import prove_successor_executes
 from roles import RoleError, RoleStore
 
 
@@ -216,6 +218,21 @@ def build_parser() -> argparse.ArgumentParser:
     dfs.add_argument("--usable-evidence-at", required=True)
     dfs.add_argument("--as-of", required=True)
 
+    ph = sub.add_parser(
+        "prove-handoff",
+        help="prove role-gated executes still run after transfer/export handoff",
+    )
+    ph.add_argument("role_id")
+    ph.add_argument("--case-ref", default="handoff_case")
+    ph.add_argument(
+        "--usable-evidence-at", default="2026-09-04T15:00:00-04:00"
+    )
+    ph.add_argument(
+        "--slug",
+        default="dealer",
+        choices=("dealer", "referral", "repair", "plant"),
+    )
+
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
 
@@ -371,6 +388,16 @@ def main(argv: list[str] | None = None) -> int:
                     slug=args.slug,
                     usable_evidence_at=args.usable_evidence_at,
                     as_of=args.as_of,
+                )
+            )
+        elif args.cmd == "prove-handoff":
+            _print(
+                prove_successor_executes(
+                    store,
+                    args.role_id,
+                    case_ref=args.case_ref,
+                    usable_evidence_at=args.usable_evidence_at,
+                    diagnostic_slug=args.slug,
                 )
             )
         elif args.cmd == "inspect":
