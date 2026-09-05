@@ -11,6 +11,7 @@ from .gateway import DEFAULT_PORT, build_server, main
 from .paid_case import (
     case_from_autopsy_offer,
     load_autopsy_offer,
+    receipt_from_g2_submit,
     receipt_row_from_case,
 )
 from .pools import DEFAULT_POOL_ID, HARNESS, list_pools
@@ -27,5 +28,6 @@ __all__ = [
     "load_autopsy_offer",
     "main",
     "normalize_case",
+    "receipt_from_g2_submit",
     "receipt_row_from_case",
 ]
