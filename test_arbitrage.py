@@ -84,7 +84,7 @@ class ArbitrageScoutTests(unittest.TestCase):
         expected = (
             (
                 self.kimi,
-                "./agent-rescue.html",
+                "./revenue/production_survival/README.md",
                 "./revenue/arbitrage/kimi-agent-survival-proof-20260830-01.json",
             ),
             (
