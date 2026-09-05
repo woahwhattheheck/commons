@@ -9,6 +9,7 @@ from pathlib import Path
 
 from integrations.grokbot_control.paid_case import (
     case_from_autopsy_offer,
+    receipt_from_g2_submit,
     receipt_row_from_case,
 )
 
@@ -83,6 +84,24 @@ class TestPaidCaseReceiptSurface(unittest.TestCase):
             receipt_row_from_case(case, state="")
         with self.assertRaises(ValueError):
             receipt_row_from_case(case, g2_run_id="")
+
+    def test_receipt_from_g2_submit(self):
+        case = case_from_autopsy_offer(
+            case_ref="opaque-from-submit",
+            client_reference_id="afa29_x_a_v1",
+        )
+        row = receipt_from_g2_submit(
+            case,
+            {"run_id": "run_from_submit", "session_id": "sess_from_submit"},
+        )
+        self.assertEqual(row["g2_run_id"], "run_from_submit")
+        self.assertEqual(row["g2_session_id"], "sess_from_submit")
+        self.assertEqual(row["case_ref"], "opaque-from-submit")
+        self.assertEqual(row["state"], "UNVERIFIED")
+        with self.assertRaisesRegex(ValueError, "run_id"):
+            receipt_from_g2_submit(case, {"run_id": "", "session_id": "sess"})
+        with self.assertRaisesRegex(ValueError, "run_id"):
+            receipt_from_g2_submit(case, {"session_id": "sess_only"})
 
 
 if __name__ == "__main__":
