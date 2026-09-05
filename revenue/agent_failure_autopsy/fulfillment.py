@@ -244,6 +244,7 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             "accepted_file_count",
             "accepted_raw_bytes",
             "accepted_extracted_characters",
+            "quarantined_file_count",
             "boundary_hit",
             "selection_state",
         },
@@ -283,6 +284,7 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
     extracted_hashes_by_id: dict[str, str | None] = {}
     extracted_characters_by_id: dict[str, int] = {}
     extraction_methods_by_id: dict[str, str] = {}
+    quarantined_ids: set[str] = set()
     anchor_refs: set[str] = set()
     for index, item in enumerate(evidence):
         item = _exact_keys(
@@ -298,6 +300,8 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
                 "extracted_text_sha256",
                 "extracted_characters",
                 "extraction_method",
+                "handling_state",
+                "quarantine_reason",
                 "redacted",
                 "sanitized",
                 "scope_relevance",
@@ -399,6 +403,22 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
             raise AutopsyValidationError(
                 f"{evidence_id}: extracted text location and hash are required"
             )
+        handling_state = item["handling_state"]
+        quarantine_reason = item["quarantine_reason"]
+        if handling_state == "QUARANTINED_UNUSABLE":
+            _text(quarantine_reason, f"{evidence_id}.quarantine_reason")
+            if extraction_method != "NONE":
+                raise AutopsyValidationError(
+                    f"{evidence_id}: quarantined evidence must not be extracted"
+                )
+            quarantined_ids.add(evidence_id)
+        elif handling_state == "ANALYZABLE_UNTRUSTED_DATA":
+            if quarantine_reason is not None:
+                raise AutopsyValidationError(
+                    f"{evidence_id}: analyzable evidence cannot carry a quarantine reason"
+                )
+        else:
+            raise AutopsyValidationError(f"{evidence_id}: handling_state is invalid")
         if item["redacted"] is not True or item["sanitized"] is not True:
             raise AutopsyValidationError(
                 f"{evidence_id}: evidence must be sanitized and redacted"
@@ -426,8 +446,18 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
         locations_by_id[evidence_id] = location
 
         anchors = item["anchors"]
-        if type(anchors) is not list or not 1 <= len(anchors) <= 100:
-            raise AutopsyValidationError(f"{evidence_id}: anchors must contain 1..100 items")
+        minimum_anchors = 0 if evidence_id in quarantined_ids else 1
+        if (
+            type(anchors) is not list
+            or not minimum_anchors <= len(anchors) <= 100
+        ):
+            raise AutopsyValidationError(
+                f"{evidence_id}: analyzable evidence needs anchors; quarantined evidence has none"
+            )
+        if evidence_id in quarantined_ids and anchors:
+            raise AutopsyValidationError(
+                f"{evidence_id}: quarantined evidence cannot supply report anchors"
+            )
         local_ids: set[str] = set()
         for anchor_index, anchor in enumerate(anchors):
             anchor = _exact_keys(
@@ -451,6 +481,7 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
         caps["accepted_file_count"] != actual_file_count
         or caps["accepted_raw_bytes"] != actual_raw_bytes
         or caps["accepted_extracted_characters"] != actual_extracted_characters
+        or caps["quarantined_file_count"] != len(quarantined_ids)
     ):
         raise AutopsyValidationError(
             "recorded intake totals do not match the accepted evidence"
@@ -564,6 +595,16 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
         raise AutopsyValidationError(
             "a recorded boundary hit requires slice or refund handling"
         )
+    if any(item in quarantined_ids for item in basis):
+        raise AutopsyValidationError(
+            "quarantined evidence cannot start the delivery clock"
+        )
+    if quarantined_ids and state == "USABLE" and (
+        rounds != 1 or selection_state != "RELEVANT_SLICE_SELECTED"
+    ):
+        raise AutopsyValidationError(
+            "usable cases with quarantined input require the single clean-slice clarification"
+        )
     if selection_state == "SLICE_REQUESTED" and (
         state != "CLARIFICATION_REQUESTED" or rounds != 1
     ):
@@ -625,6 +666,7 @@ def validate_intake(intake: dict[str, Any]) -> dict[str, Any]:
         "extracted_hashes_by_id": extracted_hashes_by_id,
         "extracted_characters_by_id": extracted_characters_by_id,
         "extraction_methods_by_id": extraction_methods_by_id,
+        "quarantined_ids": quarantined_ids,
         "file_count": actual_file_count,
         "raw_bytes": actual_raw_bytes,
         "extracted_characters": actual_extracted_characters,
@@ -800,6 +842,7 @@ def validate_report(
             "raw_bytes_limit",
             "extracted_characters",
             "extracted_character_limit",
+            "quarantined_file_count",
             "approximate_text_token_limit",
             "boundary_hit",
             "selection_state",
@@ -816,6 +859,7 @@ def validate_report(
         "raw_bytes_limit": 25_000_000,
         "extracted_characters": context["extracted_characters"],
         "extracted_character_limit": 2_000_000,
+        "quarantined_file_count": len(context["quarantined_ids"]),
         "approximate_text_token_limit": 500_000,
         "boundary_hit": context["boundary_hit"],
         "selection_state": context["selection_state"],
@@ -841,19 +885,22 @@ def validate_report(
             "evidence_vs_inference_separated",
             "adversarial_challenge_completed",
             "time_measurement_truncated_analysis",
+            "final_autopsies",
+            "iterative_consulting_included",
         },
         "report.quality",
     )
-    expected_quality = {
-        "bounded_unit": "ONE_FAILED_RUN",
-        "analysis_level": "FULL_STRENGTH",
-        "evidence_vs_inference_separated": True,
-        "adversarial_challenge_completed": True,
-        "time_measurement_truncated_analysis": False,
-    }
-    if quality != expected_quality:
+    if (
+        quality["bounded_unit"] != "ONE_FAILED_RUN"
+        or quality["analysis_level"] != "FULL_STRENGTH"
+        or quality["evidence_vs_inference_separated"] is not True
+        or type(quality["adversarial_challenge_completed"]) is not bool
+        or quality["time_measurement_truncated_analysis"] is not False
+        or quality["final_autopsies"] != 1
+        or quality["iterative_consulting_included"] is not False
+    ):
         raise AutopsyValidationError(
-            "report quality must be full-strength, adversarial, and never time-truncated"
+            "report quality must be full-strength, single-report, and never time-truncated"
         )
 
     delivery = _exact_keys(
@@ -1063,11 +1110,20 @@ def validate_report(
 
     refund = _exact_keys(
         report["refund"],
-        {"required", "reason", "provider_state", "provider_reference_public"},
+        {"required", "reason_code", "reason", "provider_state", "provider_reference_public"},
         "report.refund",
     )
     if type(refund["required"]) is not bool or refund["provider_reference_public"] is not None:
         raise AutopsyValidationError("refund truth fields are invalid")
+    refund_reason_code = refund["reason_code"]
+    if refund_reason_code not in {
+        None,
+        "INSUFFICIENT_AFTER_CLARIFICATION",
+        "CANNOT_FIT_BOUNDARY",
+        "QUARANTINED_EVIDENCE_REMAINS_UNUSABLE",
+        "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW",
+    }:
+        raise AutopsyValidationError("refund reason_code is invalid")
     refund_reason = _nullable_text(refund["reason"], "report.refund.reason")
     if refund["provider_state"] not in {
         "NOT_APPLICABLE",
@@ -1135,17 +1191,33 @@ def validate_report(
             raise AutopsyValidationError(
                 "diagnosis delivery missed the one-business-day contract"
             )
-        if refund["required"] or refund_reason is not None or refund["provider_state"] != "NOT_APPLICABLE":
+        if (
+            refund["required"]
+            or refund_reason_code is not None
+            or refund_reason is not None
+            or refund["provider_state"] != "NOT_APPLICABLE"
+        ):
             raise AutopsyValidationError("delivered diagnosis cannot claim a refund")
+        if quality["adversarial_challenge_completed"] is not True:
+            raise AutopsyValidationError(
+                "delivered diagnosis requires completed adversarial challenge"
+            )
         expected_artifact = (
             "PEER_DRAFT" if classification == "SYNTHETIC_EXAMPLE" else "READY_FOR_BUYER"
         )
         if artifact_state != expected_artifact:
             raise AutopsyValidationError("diagnosis artifact state is inconsistent")
     else:
-        if context["state"] != "INSUFFICIENT_AFTER_CLARIFICATION":
+        refundable_state = context["state"] == "INSUFFICIENT_AFTER_CLARIFICATION"
+        failed_after_review = (
+            context["state"] == "USABLE"
+            and context["rounds"] == 1
+            and refund_reason_code == "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW"
+            and quality["adversarial_challenge_completed"] is True
+        )
+        if not (refundable_state or failed_after_review):
             raise AutopsyValidationError(
-                "refund is available only after evidence remains insufficient after clarification"
+                "refund requires the single clarification and either unusable evidence or a failed adversarial diagnosis"
             )
         if timeline or divergence is not None or failure_chain or primary or contributing or fixes or prevention is not None:
             raise AutopsyValidationError(
@@ -1154,10 +1226,23 @@ def validate_report(
         if (
             artifact_state != "REFUND_REQUIRED"
             or refund["required"] is not True
+            or refund_reason_code is None
             or refund_reason is None
             or refund["provider_state"] not in {"REQUIRED_PRIVATE_ACTION", "COMPLETED_PRIVATE"}
         ):
             raise AutopsyValidationError("refund disposition is incomplete")
+        if refund_reason_code == "CANNOT_FIT_BOUNDARY" and context["selection_state"] != "CANNOT_FIT_LEGITIMATE_CASE":
+            raise AutopsyValidationError(
+                "CANNOT_FIT_BOUNDARY refund requires the matching intake state"
+            )
+        if refund_reason_code == "QUARANTINED_EVIDENCE_REMAINS_UNUSABLE" and not context["quarantined_ids"]:
+            raise AutopsyValidationError(
+                "quarantine refund requires quarantined evidence"
+            )
+        if refund_reason_code == "NO_DEFENSIBLE_DIAGNOSIS_AFTER_REVIEW" and not failed_after_review:
+            raise AutopsyValidationError(
+                "failed-diagnosis refund requires usable evidence and completed adversarial review"
+            )
 
     warnings: list[str] = []
     if classification == "SYNTHETIC_EXAMPLE":
