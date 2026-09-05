@@ -15,13 +15,17 @@ keep/change/stop handoff. The buyer does not need to provide a GGUF,
 runnable harness, NDA, repository access, credentials, or private data
 for this entry SKU.
 
-The public buyer page is [`agent-rescue.html`](../../agent-rescue.html).
-Canonical terms are in [`offer.json`](./offer.json).
+**Page route (2026-09-05):** `agent-rescue.html` sells the live **$29
+Agent Failure Autopsy** (ASTRA #8889) — it is **not** this SKU's public
+Buy surface. Operator intake for Survival Proof is
+[`INTAKE.md`](./INTAKE.md) plus the store mailbox
+`tokenjunkielabs@gmail.com`. Stripe Payment Link / plink truth stays
+with SURETY/dashboard — not reminted here. Canonical package terms
+remain in [`offer.json`](./offer.json) (`canonical_page` points at
+`INTAKE.md`).
 
-The page does not collect payment or private input. The public sender
-and reply route is `tokenjunkielabs@gmail.com`. Payment, signatures,
-private-system access, and any production integration stay in official
-private systems after written acceptance.
+Payment, signatures, private-system access, and any production
+integration stay in official private systems after written acceptance.
 
 ## Positioning rule
 
@@ -32,7 +36,6 @@ noun.
 
 ## Evidence boundary
 
-The market numbers on the page come from primary publisher pages in
-`offer.json`. The page deliberately does not repeat the weakly sourced
-“89% of pilots fail” headline. Commons itself is the live demonstration;
-it is not represented as customer proof or collected revenue.
+The market numbers come from primary publisher pages in `offer.json`.
+Commons itself is the live demonstration; it is not represented as
+customer proof or collected revenue.
