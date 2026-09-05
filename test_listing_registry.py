@@ -175,6 +175,15 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(row["listing_state"], "SURFACE_LIVE")
         self.assertIs(row["submitted"], False)
 
+        autopsy = self.rows["agent-failure-autopsy-29__commons-service-catalog"]
+        self.assertEqual(autopsy["fit"], "FIT")
+        self.assertEqual(autopsy["published_status"], "SURFACE_PUBLISHED")
+        self.assertEqual(autopsy["chargeability_state"], "ACTIVE_CHARGEABLE")
+        self.assertEqual(
+            autopsy["chargeability"]["url"],
+            "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        )
+
     def test_external_surface_not_chargeable_even_with_stripe(self):
         row = self.rows["sku-tip-20260826__upwork-project-catalog"]
         self.assertEqual(row["chargeability_state"], "NOT_CHARGEABLE_ON_THIS_SURFACE")
@@ -196,15 +205,18 @@ class ListingRegistryTests(unittest.TestCase):
         self.assertEqual(row["account_status"], "OWNER_PLATFORM")
         self.assertIn("owner", row["next_action"].lower())
 
-    def test_show_hn_has_no_offer_draft_without_a_fit(self):
+    def test_show_hn_draft_tracks_the_current_autopsy_offer_without_submitting(self):
         rows = [
             row for row in self.registry["listings"]
             if row["surface_id"] == "show-hn-post"
         ]
         self.assertTrue(rows)
-        self.assertTrue(all(row["fit"] == "UNFIT" for row in rows))
+        fit = [row for row in rows if row["fit"] == "FIT"]
+        self.assertEqual([row["offer_id"] for row in fit], ["agent-failure-autopsy-29"])
+        self.assertEqual(fit[0]["listing_state"], "BLOCKED_PROVIDER_ACCOUNT")
+        self.assertFalse(fit[0]["submitted"])
         asset_ids = {row["id"] for row in self.assets["assets"]}
-        self.assertTrue(all(row["id"] not in asset_ids for row in rows))
+        self.assertIn(fit[0]["id"], asset_ids)
 
     def test_assets_ready_match_fit_and_forbid_live_claims(self):
         fit_ids = {r["id"] for r in self.registry["listings"] if r["fit"] == "FIT"}

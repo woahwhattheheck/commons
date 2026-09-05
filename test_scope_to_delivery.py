@@ -41,12 +41,17 @@ class ScopeToDeliveryTests(unittest.TestCase):
         self.assertIn("sku-muhlnickel-titan-20260826", ids)
         self.assertIn("sku-muhlnickel-attested-inference", ids)
         self.assertIn("sku-muhlnickel-generated-token-capacity", ids)
+        self.assertIn("agent-failure-autopsy-29", ids)
         self.assertEqual(view["funnel_truth"]["accepted_scopes"], 0)
         self.assertEqual(view["funnel_truth"]["paid_deliveries"], 0)
         self.assertEqual(view["funnel_truth"]["collected_cash_usd"], "0.00")
         sprint = next(item for item in view["listings"] if item["id"] == "production-survival-sprint")
         self.assertEqual(sprint["amount"], "15000.00")
         self.assertEqual(sprint["acceptance_row_count"], 1)
+        autopsy = next(item for item in view["listings"] if item["id"] == "agent-failure-autopsy-29")
+        self.assertEqual(autopsy["amount"], "29.00")
+        self.assertEqual(autopsy["family"], "service")
+        self.assertEqual(autopsy["acceptance_row_count"], 1)
 
     def test_json_fixtures_reject_floating_point(self):
         for path in (ROOT / "revenue" / "scope_to_delivery").rglob("*.json"):
@@ -190,6 +195,7 @@ class ScopeToDeliveryTests(unittest.TestCase):
     def test_strongest_sku_bindings_exist(self):
         required = {
             "production-survival-sprint",
+            "agent-failure-autopsy-29",
             "gguf-diagnostic-10d-12k",
             "white-box-gguf-pilot-30d",
             "ho-issue-to-pr",

@@ -128,6 +128,16 @@ class DistributionLayerTests(unittest.TestCase):
         pair2 = self._pair("ho-issue-to-pr", "stripe-payment-links")
         self.assertEqual(pair2["fit"], "UNFIT")
 
+        autopsy = self._pair("agent-failure-autopsy-29", "stripe-payment-links")
+        self.assertEqual(autopsy["fit"], "FIT")
+        self.assertEqual(autopsy["listing_state"], "NOT_LISTED")
+        self.assertIsNone(autopsy["blocked_reason"])
+        self.assertIn("exact active Stripe checkout", " ".join(autopsy["reasons"]))
+
+        marketplace = self._pair("agent-failure-autopsy-29", "upwork-project-catalog")
+        self.assertEqual(marketplace["fit"], "UNFIT")
+        self.assertIn("amount 29.00", " ".join(marketplace["reasons"]))
+
     def test_stripe_rail_fail_closed_without_payouts(self):
         listing = json.loads(json.dumps(self.listings["sku-tip-20260826"]))
         listing["checkout"]["account_payouts_enabled"] = False
@@ -210,11 +220,13 @@ class DistributionLayerTests(unittest.TestCase):
         self.assertEqual(self.mod.classify_offer(self.listings["sku-tip-20260826"]), "micro_sku")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-generated-token-capacity"]), "micro_sku")
         self.assertEqual(self.mod.classify_offer(self.listings["ho-issue-to-pr"]), "bounded_service")
+        self.assertEqual(self.mod.classify_offer(self.listings["agent-failure-autopsy-29"]), "bounded_service")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-attested-inference"]), "bounded_service")
         self.assertEqual(self.mod.classify_offer(self.listings["gguf-diagnostic-10d-12k"]), "high_ticket_service")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-whitebox-hour-20260826"]), "expertise_hour")
         self.assertEqual(self.mod.classify_offer(self.listings["sku-muhlnickel-titan-20260826"]), "high_ticket_product")
         self.assertEqual(self.mod.listing_amount(self.listings["ho-issue-to-pr"]), Decimal("2500.00"))
+        self.assertEqual(self.mod.listing_amount(self.listings["agent-failure-autopsy-29"]), Decimal("29.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["gguf-diagnostic-10d-12k"]), Decimal("12000.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["sku-whitebox-hour-20260826"]), Decimal("250.00"))
         self.assertEqual(self.mod.listing_amount(self.listings["sku-muhlnickel-generated-token-capacity"]), Decimal("1.00"))

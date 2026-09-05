@@ -89,6 +89,21 @@
       "link_active": true,
       "livemode": true,
       "exposure": "INTAKE_FIRST"
+    },
+    {
+      "sku": "agent-failure-autopsy-29",
+      "product": "prod_VCevsvv7skWk3e",
+      "price": "price_1UCFbHATH4EDE7XD4NNrjfUe",
+      "plink": "plink_1UCFbLATH4EDE7XDlTunr6iO",
+      "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+      "link_active": true,
+      "livemode": true,
+      "exposure": "CHECKOUT_FIRST",
+      "evidence": {
+        "reference": "provider-receipt-sha256:39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42+account-capability-snapshot:2026-08-28T16:10:00Z",
+        "observed_at": "2026-09-05T09:13:12.9504913+00:00",
+        "receipt_sha256": "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42"
+      }
     }
   ],
   "inert_duplicate_urls": [

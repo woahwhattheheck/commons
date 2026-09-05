@@ -40,7 +40,8 @@
     "revenue/dealer_service_lead_rescue/contract.json",
     "revenue/plant_downtime_handoff/contract.json",
     "revenue/referral_intake_completeness/contract.json",
-    "revenue/repair_booking_preflight/contract.json"
+    "revenue/repair_booking_preflight/contract.json",
+    "revenue/agent_failure_autopsy/offer.json"
   ],
   "funnel_stage_order": [
     "DISCOVERED",
@@ -67,10 +68,10 @@
   },
   "funnels": {
     "production-survival-sprint": {
-      "priority": 3,
+      "priority": 4,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A team with one buyer-owned agent workflow that needs production-failure recovery.",
-      "trigger": "A smaller proof shows the failure spans the buyer's workflow and needs a bounded implementation sprint.",
+      "trigger": "A diagnosis shows the failure spans the buyer's workflow and needs a bounded implementation sprint.",
       "acquisition": {
         "primary_channel": "Qualified buyer handoff for one named buyer-owned workflow",
         "alternate_channels": [
@@ -125,7 +126,7 @@
       ]
     },
     "gguf-diagnostic-10d-12k": {
-      "priority": 9,
+      "priority": 10,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An open-weight or local-GGUF lab controlling the file and a runnable evaluation harness.",
       "trigger": "A model behavior question needs reversible evidence before a larger engagement.",
@@ -185,7 +186,7 @@
       ]
     },
     "white-box-gguf-pilot-30d": {
-      "priority": 10,
+      "priority": 11,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An organization controlling a GGUF family, evaluation harness, success measures, and a technical owner.",
       "trigger": "A paid diagnostic or equivalent evidence justifies a thirty-day model-family pilot.",
@@ -244,7 +245,7 @@
       ]
     },
     "ho-issue-to-pr": {
-      "priority": 4,
+      "priority": 5,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "The owner of one named public repository issue who needs one merged CI-green pull request.",
       "trigger": "A valuable issue is open and has a binary merged-SHA acceptance test.",
@@ -300,7 +301,7 @@
       ]
     },
     "ho-meeting-packet": {
-      "priority": 5,
+      "priority": 6,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An organization with one upcoming public meeting that needs an accessible, sourced packet.",
       "trigger": "A named meeting date exists and the source material needs a readable decision packet.",
@@ -360,7 +361,7 @@
       ]
     },
     "ho-security-questionnaire": {
-      "priority": 7,
+      "priority": 8,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A vendor whose sale or partnership is blocked by one named security questionnaire.",
       "trigger": "Required cells are stalling a commercial review and the buyer can provide complete inputs privately.",
@@ -417,7 +418,7 @@
       ]
     },
     "ho-pixel-pack": {
-      "priority": 6,
+      "priority": 7,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A buyer who wants one visible sprite, walk loop, and public-post-linked speak line.",
       "trigger": "A named public page needs a small original agent character with a binary visual deliverable.",
@@ -526,7 +527,7 @@
       ]
     },
     "sku-seat-20260826": {
-      "priority": 12,
+      "priority": 13,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A Commons window that wants one month of named presence without buying a claim or access.",
       "trigger": "The buyer wants a visible recurring presence while the public roads remain unchanged.",
@@ -580,7 +581,7 @@
       ]
     },
     "sku-unlock-20260826": {
-      "priority": 11,
+      "priority": 12,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A buyer wanting one small public print pack, build bump, or session note.",
       "trigger": "The buyer needs one small artifact or scheduling bump and accepts that the result stays public.",
@@ -634,7 +635,7 @@
       ]
     },
     "sku-monthly-tip-20260826": {
-      "priority": 2,
+      "priority": 3,
       "readiness": "READY_FOR_CHECKOUT",
       "buyer": "A recurring Commons supporter who wants no membership entitlement.",
       "trigger": "The buyer wants a small recurring support loop without changing public access.",
@@ -682,7 +683,7 @@
       ]
     },
     "sku-boost-20260826": {
-      "priority": 13,
+      "priority": 14,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A recurring supporter who wants to keep the Commons table upgraded.",
       "trigger": "The buyer wants recurring support tied to a visible improvement rather than a seat.",
@@ -733,7 +734,7 @@
       ]
     },
     "sku-whitebox-hour-20260826": {
-      "priority": 8,
+      "priority": 9,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A technical buyer wanting one dated White Box or dests work session.",
       "trigger": "The buyer needs a bounded expert hour before committing to a diagnostic or pilot.",
@@ -789,7 +790,7 @@
       ]
     },
     "sku-muhlnickel-titan-20260826": {
-      "priority": 14,
+      "priority": 15,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "An organization seeking one narrow actual-machine Muhlnickel or Titan keep-or-build engagement.",
       "trigger": "A scoped machine outcome cannot be met by a proof, sprint, hour, diagnostic, or White Box pilot.",
@@ -845,12 +846,12 @@
       ]
     },
     "sku-muhlnickel-generated-token-capacity": {
-      "priority": 15,
+      "priority": 16,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A team paying cloud output-token rates who needs dirty-cheap generated capacity on an already-connected model.",
       "trigger": "Published cloud output rates make a high-volume generation job too expensive relative to the outcome.",
       "acquisition": {
-        "primary_channel": "Founder email and Slack product-range pitches that are not only the $2,500 survival proof",
+        "primary_channel": "Founder email and Slack product-range pitches alongside bounded diagnostics and implementation work",
         "alternate_channels": [
           "attested-inference.html direct share",
           "Upwork LLM cost-optimization briefs as buyer-side fit only"
@@ -906,12 +907,12 @@
       ]
     },
     "sku-muhlnickel-attested-inference": {
-      "priority": 16,
+      "priority": 17,
       "readiness": "READY_FOR_QUALIFICATION",
       "buyer": "A team with one public or non-confidential model task and an exact evaluation rule.",
       "trigger": "The buyer needs a checkable model run or bounded compute job without buying a five-figure engagement first.",
       "acquisition": {
-        "primary_channel": "Product-range founder email that offers attested runs alongside token capacity and survival proof",
+        "primary_channel": "Product-range founder email that offers attested runs alongside token capacity and production recovery work",
         "alternate_channels": [
           "attested-inference.html",
           "commerce.html#sku-muhlnickel-attested-inference"
@@ -967,7 +968,7 @@
       ]
     },
     "dealer-service-lead-rescue": {
-      "priority": 17,
+      "priority": 18,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A dealer service manager or BDC lead whose inbound service leads must produce one follow-up and one appointment.",
       "trigger": "A duplicate submit or worker restart causes a service lead to be followed up twice or not at all.",
@@ -1022,7 +1023,7 @@
       ]
     },
     "plant-downtime-handoff": {
-      "priority": 18,
+      "priority": 19,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A plant maintenance leader whose downtime events must reach one technician and parts handoff.",
       "trigger": "A duplicate fault report or worker restart causes a handoff to dispatch twice or disappear.",
@@ -1077,7 +1078,7 @@
       ]
     },
     "referral-intake-completeness": {
-      "priority": 19,
+      "priority": 20,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A clinic operations director whose complete referrals must create one intake ticket while incomplete packets remain held.",
       "trigger": "A retry advances an incomplete referral or creates a second queue ticket for a complete packet.",
@@ -1132,7 +1133,7 @@
       ]
     },
     "repair-booking-exactly-once-v1": {
-      "priority": 20,
+      "priority": 21,
       "readiness": "BLOCKED_PROVIDER_CAPABILITY",
       "buyer": "A repair-scheduling owner whose request must create exactly one appointment or an explicit stopped or rolled-back result.",
       "trigger": "A retry, timeout, crash, or webhook replay creates duplicate appointments or leaves an ambiguous result.",
@@ -1183,6 +1184,67 @@
       "next_offer": [],
       "gaps": [
         "The exact Stripe URL is recorded, but current link and account capability are unverified in this catalog",
+        "No paid delivery or collected cash is recorded in funnel_truth"
+      ]
+    },
+    "agent-failure-autopsy-29": {
+      "priority": 2,
+      "readiness": "READY_FOR_CHECKOUT",
+      "buyer": "A coding-agent user with one failed run and sanitized evidence who needs a defensible diagnosis before deciding what to change.",
+      "trigger": "One coding-agent workflow produced the wrong result, stopped, repeated work, lost state, or spent unexpectedly.",
+      "acquisition": {
+        "primary_channel": "Direct share of the public Agent Failure Autopsy page",
+        "alternate_channels": [
+          "commerce.html anchored catalog entry",
+          "A named response to a matching public coding-agent failure"
+        ],
+        "message": "$29 for one full-strength, evidence-linked diagnosis of one failed coding-agent run within one business day after usable, in-cap evidence arrives.",
+        "route": "commerce.html#agent-failure-autopsy-29",
+        "cta": "Open verified checkout"
+      },
+      "qualification": {
+        "route": "agent-rescue.html",
+        "required": [
+          "one failure sentence",
+          "the coding harness and relevant stack name",
+          "one or more redacted transcript, log, or screenshot artifacts",
+          "Sanitized evidence within 10 files, 25 MB raw, and 2,000,000 extracted Unicode characters"
+        ],
+        "state_after": "QUALIFIED"
+      },
+      "conversion": {
+        "mode": "ACTIVE_STRIPE_LINK",
+        "status": "ACTIVE_CHARGEABLE",
+        "next_step": "Open the verified one-time Stripe checkout, then follow the hosted confirmation to send sanitized, in-cap evidence. A click is intent, not cash.",
+        "state_after": "FUNDED",
+        "evidence_required": "Exact active live Stripe product, one-time USD 29 price, fixed-quantity payment link, and the separately dated same-account charges/payout capability snapshot. The restricted commerce key account readback returned HTTP 403; account binding is from the official Stripe key-creation UI. A click is not authorization, settlement, payout, or bank cash."
+      },
+      "fulfillment": {
+        "deliverables": [
+          "an evidence-linked timeline and failure chain with the first meaningful divergence marked",
+          "primary and contributing causes with calibrated confidence",
+          "an adversarial challenge of each causal explanation against plausible alternatives",
+          "concrete prompt, configuration, or code fix steps only where the supplied evidence supports them",
+          "one replay or regression-prevention check"
+        ],
+        "acceptance": [
+          "Evidence and inference are separated, and the first meaningful divergence is marked",
+          "Primary and contributing causes carry calibrated confidence and are challenged against plausible alternatives",
+          "Supported fix steps and the replay or prevention check are evidence-linked, and independent review is recorded before buyer delivery"
+        ],
+        "refund": "Refund USD 29 when the accepted artifacts cannot support a defensible diagnosis after the included clarification, when a legitimate one-run case cannot fit the intake boundary, when quarantined evidence remains unusable after the slice opportunity, when a seemingly usable case does not survive adversarial review, or when a defensible diagnosis cannot be delivered within the recorded one-business-day window. Never rush an unsupported diagnosis to meet the clock."
+      },
+      "measurement": {
+        "dom_action": "checkout-open",
+        "click_truth": "INTENT_ONLY",
+        "first_evidence_state": "FUNDED",
+        "success_state": "BANK_AVAILABLE"
+      },
+      "next_offer": [
+        "production-survival-sprint"
+      ],
+      "gaps": [
+        "A checkout click is not authorization, settlement, payout, or BANK_AVAILABLE cash",
         "No paid delivery or collected cash is recorded in funnel_truth"
       ]
     }
@@ -1935,6 +1997,50 @@
         "url": "https://buy.stripe.com/9B66oGacR2QVdKVeBk43S0d",
         "link_active": "UNVERIFIED",
         "account_charges_enabled": false
+      }
+    },
+    {
+      "id": "agent-failure-autopsy-29",
+      "name": "Agent Failure Autopsy",
+      "state": "PUBLIC_OFFER",
+      "source": {
+        "path": "revenue/agent_failure_autopsy/offer.json",
+        "pointer": "",
+        "offer_id": "agent-failure-autopsy-29",
+        "blob_sha": "f61bb20aa54bec123ec37c8022b1517bde6294aa",
+        "terms_authority": "source"
+      },
+      "pricing": {
+        "currency": "USD",
+        "mode": "fixed",
+        "components": [
+          {
+            "id": "diagnostic_fee",
+            "kind": "fixed",
+            "amount": "29.00",
+            "basis": "one failed execution of one agent workflow"
+          }
+        ]
+      },
+      "outcome": {
+        "acceptance_source": "revenue/agent_failure_autopsy/offer.json#/delivery",
+        "evidence_required": true
+      },
+      "routes": {
+        "human": "agent-rescue.html",
+        "machine": "revenue/agent_failure_autopsy/offer.json"
+      },
+      "checkout": {
+        "status": "ACTIVE_CHARGEABLE",
+        "provider": "stripe",
+        "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+        "link_active": true,
+        "account_charges_enabled": true,
+        "account_payouts_enabled": true,
+        "capability_evidence": {
+          "reference": "provider-receipt-sha256:39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42+account-capability-snapshot:2026-08-28T16:10:00Z",
+          "observed_at": "2026-09-05T09:13:12.9504913+00:00"
+        }
       }
     }
   ]

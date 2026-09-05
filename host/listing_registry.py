@@ -336,8 +336,10 @@ def checkout_for(offer_id: str, listing: dict[str, Any], checkout: dict[str, Any
         and provider.get("charges_enabled") is True
         and provider.get("payouts_enabled") is True
         and (rail or {}).get("link_active") is True
+        and (rail or {}).get("livemode") is True
         and isinstance(url, str)
         and url.startswith("https://")
+        and (rail or {}).get("url") == url
         and payment_capability_public_stripe(root)
     )
     exposure = (rail or {}).get("exposure")

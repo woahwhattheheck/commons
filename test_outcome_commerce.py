@@ -191,6 +191,18 @@ UNVERIFIED_DIAGNOSTIC_SKUS = (
         "window_key": "diagnostic_delivery",
     },
 )
+VERIFIED_AGENT_FAILURE_AUTOPSY = {
+    "id": "agent-failure-autopsy-29",
+    "path": "revenue/agent_failure_autopsy/offer.json",
+    "blob_sha": "f61bb20aa54bec123ec37c8022b1517bde6294aa",
+    "page": "agent-rescue.html",
+    "url": "https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g",
+    "product": "prod_VCevsvv7skWk3e",
+    "price": "price_1UCFbHATH4EDE7XD4NNrjfUe",
+    "plink": "plink_1UCFbLATH4EDE7XDlTunr6iO",
+    "observed_at": "2026-09-05T09:13:12.9504913+00:00",
+    "receipt_sha256": "39ce997a58fe256b11c82963559452ec167bb8c2c7f42c67ad7ce790052e7b42",
+}
 
 _SPEC = importlib.util.spec_from_file_location(
     "commons_outcome_commerce", ROOT / "host" / "outcome_commerce.py"
@@ -789,8 +801,8 @@ class OutcomeCommerceTests(unittest.TestCase):
         ordered = sorted(funnels, key=lambda ident: funnels[ident]["priority"])
         self.assertEqual(ordered[:3], [
             "sku-tip-20260826",
+            "agent-failure-autopsy-29",
             "sku-monthly-tip-20260826",
-            "production-survival-sprint",
         ])
         by_id = {row["id"]: row for row in listings}
         for listing_id, funnel in funnels.items():
@@ -834,13 +846,61 @@ class OutcomeCommerceTests(unittest.TestCase):
         self.assertEqual(truth["next_edge"], "QUALIFIED_BUYER")
         self.assertIn("p/slack-1787769698-642529.md", truth["source"])
 
-    def test_unverified_agent_failure_autopsy_is_not_in_catalog_surfaces(self) -> None:
+    def test_verified_agent_failure_autopsy_matches_source_page_and_provider_receipt(self) -> None:
+        spec = VERIFIED_AGENT_FAILURE_AUTOPSY
         page = (ROOT / "agent-rescue.html").read_text(encoding="utf-8")
-        self.assertIn(
-            "A checkout button will appear only after a live $29 payment link is created and verified.",
-            page,
-        )
-        ids = {row["id"] for row in self.catalog["listings"]}
+        self.assertEqual(page.count(spec["url"]), 2)
+        self.assertNotIn("checkout button will appear only after", page.lower())
+        source_path = ROOT / spec["path"]
+        offer = read_json(source_path)
+        self.assertEqual(git_hash_object(source_path), spec["blob_sha"])
+        self.assertEqual(offer["offer_id"], spec["id"])
+        self.assertEqual(offer["name"], "Agent Failure Autopsy")
+        self.assertEqual(offer["status"], "ACTIVE_VERIFIED")
+        self.assertEqual(offer["price"]["amount"], 29)
+        self.assertEqual(offer["price"]["payment_url"], spec["url"])
+        self.assertEqual(offer["price"]["payment_url_state"], "LIVE_VERIFIED")
+        self.assertEqual(offer["price"]["provider_product_id"], spec["product"])
+        self.assertEqual(offer["price"]["provider_price_id"], spec["price"])
+        self.assertEqual(offer["price"]["provider_payment_link_id"], spec["plink"])
+        self.assertEqual(offer["price"]["verified_at_utc"], spec["observed_at"])
+        self.assertEqual(offer["price"]["provider_receipt_sha256"], spec["receipt_sha256"])
+
+        by_id = {row["id"]: row for row in self.catalog["listings"]}
+        row = by_id[spec["id"]]
+        self.assertEqual(row["source"], {
+            "path": spec["path"],
+            "pointer": "",
+            "offer_id": spec["id"],
+            "blob_sha": spec["blob_sha"],
+            "terms_authority": "source",
+        })
+        self.assertEqual(row["pricing"]["components"][0]["amount"], "29.00")
+        self.assertEqual(row["routes"], {
+            "human": spec["page"],
+            "machine": spec["path"],
+        })
+        self.assertEqual(row["checkout"], {
+            "status": "ACTIVE_CHARGEABLE",
+            "provider": "stripe",
+            "url": spec["url"],
+            "link_active": True,
+            "account_charges_enabled": True,
+            "account_payouts_enabled": True,
+            "capability_evidence": {
+                "reference": (
+                    "provider-receipt-sha256:" + spec["receipt_sha256"]
+                    + "+account-capability-snapshot:2026-08-28T16:10:00Z"
+                ),
+                "observed_at": spec["observed_at"],
+            },
+        })
+        funnel = self.catalog["funnels"][spec["id"]]
+        self.assertEqual(funnel["readiness"], "READY_FOR_CHECKOUT")
+        self.assertEqual(funnel["conversion"]["status"], "ACTIVE_CHARGEABLE")
+        self.assertEqual(funnel["fulfillment"]["deliverables"], offer["delivery"])
+        self.assertEqual(funnel["fulfillment"]["refund"], offer["refund"])
+        ids = set(by_id)
         self.assertNotIn("same-day-agent-survival-proof", ids)
         self.assertNotIn("same-day-agent-survival-proof", self.catalog["funnels"])
 
@@ -942,12 +1002,16 @@ class OutcomeCommerceTests(unittest.TestCase):
             ],
             [spec["path"] for spec in UNVERIFIED_DIAGNOSTIC_SKUS],
         )
+        self.assertIn(
+            VERIFIED_AGENT_FAILURE_AUTOPSY["path"],
+            self.catalog["integration_sources"],
+        )
         self.assertEqual(
             len(set(self.catalog["integration_sources"])),
             len(self.catalog["integration_sources"]),
         )
 
-    def test_seven_verified_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
+    def test_retained_verified_markdown_skus_match_source_artifacts_and_checkout(self) -> None:
         by_id = {row["id"]: row for row in self.catalog["listings"]}
         active = [
             row for row in self.catalog["listings"]
