@@ -177,6 +177,83 @@ class TransferableRoleTests(unittest.TestCase):
         self.assertEqual(handed["occupant"]["session_id"], "session-B")
         self.assertEqual(handed["role_id"], role_id)
 
+    def test_bind_access_route_stamps_g2_session_and_survives_export(self) -> None:
+        role = self.store.create(self.raw, role_id="role-bind-g2")
+        purpose = role["purpose"]
+        bound = self.store.bind_access_route(
+            role["role_id"],
+            route_name="grokbot_control_g2",
+            session_id="g2-sess-durable-1",
+            last_run_id="g2-run-42",
+        )
+        self.assertEqual(bound["purpose"], purpose)
+        g2 = next(
+            r for r in bound["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2["session_id"], "g2-sess-durable-1")
+        self.assertEqual(g2["last_run_id"], "g2-run-42")
+        self.assertEqual(g2["pool_id"], "grokbot")
+
+        self.store.equip(role["role_id"], session_id="occ-A", harness="hinge")
+        package = self.store.export_package(role["role_id"])
+        self.assertIsNone(package.get("occupant"))
+        g2_ex = next(
+            r for r in package["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2_ex["session_id"], "g2-sess-durable-1")
+        self.assertEqual(g2_ex["last_run_id"], "g2-run-42")
+
+    def test_bind_access_route_unknown_name_fails(self) -> None:
+        role = self.store.create(self.raw, role_id="role-bind-miss")
+        with self.assertRaises(RoleError):
+            self.store.bind_access_route(
+                role["role_id"],
+                route_name="no-such-route",
+                session_id="x",
+            )
+
+    def test_cli_bind_route(self) -> None:
+        store_dir = self._tmp.name
+        role_id = "role-cli-bind"
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "create",
+                    "--file",
+                    str(FIXTURE),
+                    "--role-id",
+                    role_id,
+                ]
+            )
+        self.assertEqual(rc, 0)
+
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                [
+                    "--store",
+                    store_dir,
+                    "bind-route",
+                    role_id,
+                    "--route",
+                    "grokbot_control_g2",
+                    "--session-id",
+                    "sess-cli-9",
+                    "--last-run-id",
+                    "run-cli-9",
+                ]
+            )
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        g2 = next(
+            r for r in out["access_routes"] if r["name"] == "grokbot_control_g2"
+        )
+        self.assertEqual(g2["session_id"], "sess-cli-9")
+        self.assertEqual(g2["last_run_id"], "run-cli-9")
+
 
 if __name__ == "__main__":
     unittest.main()
