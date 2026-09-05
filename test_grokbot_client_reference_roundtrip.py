@@ -3,13 +3,16 @@
 
 from __future__ import annotations
 
+import html as html_lib
+import json
 import re
+import subprocess
 import tempfile
 import threading
 import time
 import unittest
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urlencode, urlparse
 
 from integrations.grokbot_control.client import GrokBotControlClient
 from integrations.grokbot_control.gateway import build_server
@@ -25,21 +28,39 @@ X_UTM = {
 }
 
 
-def _apply_checkout_attribution(href: str, page_query: dict[str, str]) -> str:
-    """Mirror agent-rescue.html checkout script (no browser)."""
-    clean = lambda v: re.sub(r"[^A-Za-z0-9_-]", "", str(v or ""))[:60]
-    parsed = urlparse(href)
-    params = parse_qs(parsed.query, keep_blank_values=True)
-    flat = {k: (v[0] if v else "") for k, v in params.items()}
-    for key in ("utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"):
-        value = clean(page_query.get(key, ""))
-        if value:
-            flat[key] = value
-    is_x = all(page_query.get(k) == X_UTM[k] for k in X_UTM)
-    if is_x:
-        flat["client_reference_id"] = X_CREF
-    query = "&".join("%s=%s" % (k, flat[k]) for k in sorted(flat))
-    return "%s://%s%s?%s" % (parsed.scheme, parsed.netloc, parsed.path, query)
+def _apply_checkout_attribution(href: str, page_query) -> str:
+    """Execute the actual checked-in checkout script with a small browser fixture."""
+    html = AGENT_RESCUE.read_text(encoding="utf-8")
+    scripts = re.findall(r"<script\b[^>]*>(.*?)</script>", html, re.S | re.I)
+    runner = r"""
+const fs = require("fs"), vm = require("vm");
+const input = JSON.parse(fs.readFileSync(0, "utf8"));
+const link = {
+  href: input.href,
+  getAttribute(name) { return name === "href" ? this.href : null; },
+  setAttribute(name, value) { if (name === "href") this.href = value; }
+};
+const context = {
+  URL, URLSearchParams,
+  location: {search: input.query},
+  document: {querySelectorAll(selector) {
+    if (selector !== "a[data-checkout]") throw new Error("Unexpected selector: " + selector);
+    return [link];
+  }}
+};
+for (const script of input.scripts) vm.runInNewContext(script, context);
+process.stdout.write(link.href);
+"""
+    result = subprocess.run(
+        ["node", "-e", runner],
+        input=json.dumps({
+            "href": html_lib.unescape(href),
+            "query": "?" + urlencode(page_query, doseq=True),
+            "scripts": scripts,
+        }),
+        capture_output=True, text=True, check=True,
+    )
+    return result.stdout
 
 
 class GatewayFixture:
@@ -108,12 +129,23 @@ class TestClientReferenceRoundTrip(unittest.TestCase):
         qs = parse_qs(urlparse(attributed).query)
         self.assertNotIn("client_reference_id", qs)
 
+    def test_duplicate_campaign_parameter_does_not_stamp_cref(self):
+        html = AGENT_RESCUE.read_text(encoding="utf-8")
+        href = re.search(r'href="(https://buy\\.stripe\\.com/[^"]+)"', html).group(1)
+        query = list(X_UTM.items()) + [("utm_source", "x")]
+        attributed = _apply_checkout_attribution(href, query)
+        self.assertNotIn("client_reference_id", parse_qs(urlparse(attributed).query))
+
     def test_g2_case_round_trip_preserves_cref(self):
+        html = AGENT_RESCUE.read_text(encoding="utf-8")
+        href = re.search(r'href="(https://buy\\.stripe\\.com/[^"]+)"', html).group(1)
+        attributed = _apply_checkout_attribution(href, X_UTM)
+        source_reference = parse_qs(urlparse(attributed).query)["client_reference_id"][0]
         case = normalize_case(
             {
                 "offer_id": "agent-failure-autopsy-29",
                 "case_ref": "opaque-x-campaign-case",
-                "client_reference_id": X_CREF,
+                "client_reference_id": source_reference,
                 "sku": "agent-failure-autopsy-29",
             }
         )
