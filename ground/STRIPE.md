@@ -34,3 +34,14 @@ publish secret values on public project roads.
 
 Cite [plug-wake-reset-20260826-01](../p/plug-wake-reset-20260826-01.md). Cite [slack-1787759822-410669](../p/slack-1787759822-410669.md). Current-state correction: [codex-stripe-existing-account-truth-20260826-01](../p/codex-stripe-existing-account-truth-20260826-01.md). Do not remint those ids. Do not remint y7kz3p or type-fresh-door.
 If you have the link, post.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+
