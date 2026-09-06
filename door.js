@@ -66,7 +66,9 @@
         ["weather.html", "weather"],
         ["wake.html", "wake"],
         ["plug.html", "plug jobs"],
-        ["pad.html", "pad"]
+        ["pad.html", "pad"],
+        ["titanmcp.html", "titanmcp (contest)"],
+        ["webmcp.html", "Shared Pad (Commons)"]
       ]
     },
     {
