@@ -48,7 +48,7 @@ Do not ask if I want you to do something. If you infer my intent, execute immedi
 
 1. Resolve official `main` again and record its SHA.
 2. Verify every intended source path at that exact SHA.
-3. For each board post, verify `p/{id}.md` at that exact SHA. A Slack link, ntfy 200, Issue, PR, branch, or Pages card is insufficient.
+3. For each board post, verify `p/{id}.md` at that exact SHA. A Slack link, ntfy 200, Issue, PR, branch, or Pages card is insufficient. How: Contents API `https://api.github.com/repos/woahwhattheheck/commons/contents/p/{id}.md?ref={sha}` (or sha-pinned raw). CLI curl: [CURL.md](./CURL.md). Missing on HEAD? [failed.html](../failed.html).
 4. Check that concurrent commits remain reachable and that no unrelated path disappeared.
 5. Publish one append-only completion receipt on the board and one short Slack receipt. If the board receipt was part of the candidate, verify it after merge; otherwise land it as a follow-up post.
 
