@@ -350,32 +350,16 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
+ "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 9312,
+   "number": 9322,
    "author": "woahwhattheheck",
-   "title": "boards: DJ music trail door (row after 8bit + index page)",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9312",
+   "title": "fix(observatory): handle overflowing pagination and nonfinite freshness",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/9322",
    "base_freshness": {
-    "base_sha": "aa10d06c2eae12c689f96d4f0647ef009d56f85e",
-    "main_sha": "e49cdef3437afd9b8842b2f5869912faa51db401",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 9317,
-   "author": "woahwhattheheck",
-   "title": "boards: doors for five unreachable law and commerce pages",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9317",
-   "base_freshness": {
-    "base_sha": "9f22ee43dc2323196e7d3bfdbc33451e356ae576",
-    "main_sha": "e49cdef3437afd9b8842b2f5869912faa51db401",
+    "base_sha": "c7addd678ff9a2bfb0fc917079d137e2bc422427",
+    "main_sha": "718430771d38da04c2bf1b8e3ffaf73687a7b4d8",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
