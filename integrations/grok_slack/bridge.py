@@ -1188,6 +1188,17 @@ def classify_fire_action(
     }
 
 
+def require_mcp_publication(payload: dict[str, Any]) -> None:
+    """Keep a remote publication rejection out of public error fallback paths."""
+    if payload.get("code") == "commons_publication_terms":
+        raise PublicationPolicyViolation({
+            "allowed": False,
+            "code": "commons_publication_terms",
+            "rule": "remote_publication_terms",
+            "message": "Publication not delivered.",
+        })
+
+
 class CommonsMcpClient:
     """Public Streamable HTTP client. Does not import Commons private logic."""
 
@@ -1212,8 +1223,13 @@ class CommonsMcpClient:
 
     def call_tool(self, name: str, arguments: dict[str, Any]) -> dict[str, Any]:
         self.calls.append((name, arguments))
-        result = self._rpc("tools/call", {"name": name, "arguments": arguments})
+        try:
+            result = self._rpc("tools/call", {"name": name, "arguments": arguments})
+        except McpToolError as exc:
+            require_mcp_publication(exc.payload)
+            raise
         payload = unwrap_mcp_tool_payload(result)
+        require_mcp_publication(payload)
         if payload.get("isError") and _fire_action_kind(payload, None) == "rejected":
             raise McpToolError(payload)
         return payload if payload else result
@@ -1668,8 +1684,8 @@ class GrokSlackBridge:
     def handle_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
         try:
             return self._handle_publication_checked_event(event_id, event)
-        except PublicationPolicyViolation as exc:
-            return self._publication_rejected(event_id, exc)
+        except PublicationPolicyViolation:
+            return self._publication_rejected(event_id)
 
     def _handle_publication_checked_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
         self.work_log.append("handle_event")
@@ -1713,7 +1729,9 @@ class GrokSlackBridge:
             row = self.store.get(event_id)
             if row is None:
                 return {"ok": True, "state": "RETRY_DUPLICATE", "submit": False}
-            if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "EVENT_ID_COLLISION", "PUBLICATION_REJECTED"}:
+            if row.phase == "PUBLICATION_REJECTED":
+                return {**self._publication_rejected(event_id), "submit": False}
+            if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "EVENT_ID_COLLISION"}:
                 return {"ok": True, "state": row.phase, "submit": False}
             if row.phase == "FAILED":
                 return self._resume_failed_rejection(row)
@@ -1768,8 +1786,8 @@ class GrokSlackBridge:
                     if contract is None:
                         continue
                     result = self._run_claimed(item.event_id, contract)
-                except PublicationPolicyViolation as exc:
-                    result = self._publication_rejected(item.event_id, exc)
+                except PublicationPolicyViolation:
+                    result = self._publication_rejected(item.event_id)
                 except Exception:
                     continue
                 if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT", "PUBLICATION_REJECTED"}:
@@ -1782,24 +1800,29 @@ class GrokSlackBridge:
                     result = self._resume_output_only(item)
                 else:
                     result = self._resume_pre_submit(item)
-            except PublicationPolicyViolation as exc:
-                result = self._publication_rejected(item.event_id, exc)
+            except PublicationPolicyViolation:
+                result = self._publication_rejected(item.event_id)
             except Exception:
                 continue
             if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT", "PUBLICATION_REJECTED"}:
                 recovered += 1
         return recovered
 
-    def _publication_rejected(self, event_id: str, exc: PublicationPolicyViolation) -> dict[str, Any]:
-        # Retain operation identity, never retry unchanged rejected prose forever.
+    def _publication_rejected(self, event_id: str) -> dict[str, Any]:
+        # Retain operation identity without publishing or returning rejected prose.
         self.store.set_phase(event_id, "PUBLICATION_REJECTED")
-        return {"ok": False, "state": "PUBLICATION_REJECTED", **exc.decision}
+        return {
+            "ok": False,
+            "state": "PUBLICATION_REJECTED",
+            "code": "commons_publication_terms",
+            "delivered": False,
+        }
 
     def _run_claimed(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
         try:
             return self._run_publication_checked(event_id, contract)
-        except PublicationPolicyViolation as exc:
-            return self._publication_rejected(event_id, exc)
+        except PublicationPolicyViolation:
+            return self._publication_rejected(event_id)
 
     def _run_publication_checked(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
         self._active_event_id = event_id
@@ -1922,6 +1945,9 @@ class GrokSlackBridge:
             self.work_log.append("mcp:fire_action")
             self.store.increment_fire_action(event_id)
             result = self.mcp.call_tool("fire_action", arguments)
+            require_mcp_publication(unwrap_mcp_tool_payload(result))
+        except PublicationPolicyViolation:
+            raise
         except Exception as exc:
             return self._classify_fire_exception(event_id, job_id, exc)
         classified = classify_fire_action(unwrap_mcp_tool_payload(result), None)
@@ -1952,6 +1978,7 @@ class GrokSlackBridge:
 
     def _classify_fire_exception(self, event_id: str, job_id: str, exc: Exception) -> dict[str, Any]:
         payload = dict(getattr(exc, "payload", {}) or {}) if isinstance(exc, McpToolError) else {}
+        require_mcp_publication(payload)
         classified = classify_fire_action(payload, exc)
         if classified["kind"] in {"accepted_pending", "pending_unverified"} or self._accepted_wake(job_id):
             self.store.set_phase(event_id, "SUBMITTED")
@@ -2603,6 +2630,7 @@ class GrokSlackBridge:
         return last
 
     def _post_rejection(self, event_id: str, contract: dict[str, Any], submitted: dict[str, Any]) -> SlackSendResult:
+        require_mcp_publication(submitted)
         code = str(submitted.get("code") or "REJECTED")
         row = self.store.get(event_id)
         calls = 0 if row is None else row.fire_action_calls
