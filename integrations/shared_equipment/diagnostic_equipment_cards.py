@@ -5,6 +5,7 @@ TENON claims:
 - tenon-r4-equipment-fulfill-sla-cards-20260905-01 (fulfill deadline/SLA)
 - tenon-r4-equipment-advance-obligation-card-20260906-01 (advance obligation)
 - tenon-r4-equipment-open-obligations-card-20260906-01 (full open queue)
+- tenon-r4-equipment-release-equip-cards-20260906-01 (release/equip)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
@@ -128,6 +129,18 @@ def diagnostic_card_tool_schemas() -> list[dict]:
                 "evidence_pointer": "string",
             },
         ),
+        _schema(
+            "equip_role_card",
+            "Equip a transferable role with a session occupant. Pass role + session_id + harness; optional seat / account_pool. Import-only RoleStore.equip wrap; returns updated role. Does not remint roles.py.",
+            {"role": "object", "session_id": "string", "harness": "string"},
+            {"seat": "string", "account_pool": "string"},
+        ),
+        _schema(
+            "release_occupant_card",
+            "Release the current occupant from a transferable role. Pass role; optional from_session_id guard. Import-only RoleStore.release wrap; returns updated role. Does not remint roles.py.",
+            {"role": "object"},
+            {"from_session_id": "string"},
+        ),
     ]
 
 
@@ -238,7 +251,6 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "card": card}
     if name == "autopsy_fulfill_validate_card":
-        # hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01
         roles_mod = _load_transferable_roles_mod("roles")
         autopsy_mod = _load_transferable_roles_mod("autopsy_fulfill")
         try:
@@ -266,8 +278,8 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             card = paid_mod.build_g2_case_from_role(
                 args["role"],
                 case_ref=str(args["case_ref"]),
-                sku=args.get("sku"),
                 client_reference_id=args.get("client_reference_id"),
+                sku=args.get("sku"),
             )
         except KeyError as exc:
             return {
@@ -302,7 +314,6 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "card": card}
     if name == "open_obligations_cash_card":
-        # wedge-r4-equipment-open-obligations-cash-card-20260905-01
         roles_mod = _load_transferable_roles_mod("roles")
         try:
             roles = args["roles"]
@@ -330,7 +341,6 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "open_obligations": rows}
     if name == "open_obligations_card":
-        # tenon-r4-equipment-open-obligations-card-20260906-01
         roles_mod = _load_transferable_roles_mod("roles")
         try:
             roles = args["roles"]
@@ -359,7 +369,6 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "open_obligations": rows, "cash_only": cash_only}
     if name == "advance_obligation_card":
-        # tenon-r4-equipment-advance-obligation-card-20260906-01
         roles_mod = _load_transferable_roles_mod("roles")
         try:
             role = args["role"]
@@ -391,6 +400,67 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
                     created["role_id"],
                     obligation_id,
                     **kwargs,
+                )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": updated}
+    if name == "equip_role_card":
+        # tenon-r4-equipment-release-equip-cards-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+            session_id = str(args["session_id"])
+            harness = str(args["harness"])
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                updated = store.equip(
+                    created["role_id"],
+                    session_id=session_id,
+                    harness=harness,
+                    seat=args.get("seat"),
+                    account_pool=args.get("account_pool"),
+                )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": updated}
+    if name == "release_occupant_card":
+        # tenon-r4-equipment-release-equip-cards-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                updated = store.release(
+                    created["role_id"],
+                    from_session_id=args.get("from_session_id"),
                 )
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
