@@ -13,6 +13,12 @@ Entry point:
   python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
   python3 host/lm_gtm_relationship_handoff.py SUBJECT --brief
   python3 host/lm_gtm_relationship_handoff.py SUBJECT --mailbox-verify
+  python3 host/lm_gtm_relationship_handoff.py SUBJECT --mailbox-observations -
+
+--mailbox-observations consumes a JSON file or stdin containing existing
+Gmail connector message objects and buyer_message_ids identified by the caller.
+Include the subject's existing SENT messages in the input. Raw mail stays out
+of the packet; the read-only handoff carries provider IDs and reply times.
 """
 
 from __future__ import annotations
@@ -27,6 +33,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 HOST = ROOT / "host" / "lm_gtm_index.py"
 MAILBOX_HOST = ROOT / "host" / "lm_gtm_mailbox_buyer_reply_verify.py"
+OBSERVATIONS_HOST = ROOT / "host" / "lm_gtm_mailbox_observations.py"
 
 import importlib.util
 
@@ -41,6 +48,13 @@ _MAILBOX_SPEC = importlib.util.spec_from_file_location(
 assert _MAILBOX_SPEC and _MAILBOX_SPEC.loader
 mailbox_verify = importlib.util.module_from_spec(_MAILBOX_SPEC)
 _MAILBOX_SPEC.loader.exec_module(mailbox_verify)
+
+_OBSERVATIONS_SPEC = importlib.util.spec_from_file_location(
+    "lm_gtm_mailbox_observations", OBSERVATIONS_HOST
+)
+assert _OBSERVATIONS_SPEC and _OBSERVATIONS_SPEC.loader
+mailbox_observations = importlib.util.module_from_spec(_OBSERVATIONS_SPEC)
+_OBSERVATIONS_SPEC.loader.exec_module(mailbox_observations)
 
 KIND_HANDOFF = "LM_GTM_RELATIONSHIP_HANDOFF"
 KIND_RELATIONSHIP_EVIDENCE = "LM_GTM_RELATIONSHIP_EVIDENCE"
@@ -322,6 +336,9 @@ def successor_brief(packet: dict[str, Any]) -> str:
     mailbox = packet.get("mailbox_verify")
     if isinstance(mailbox, dict):
         lines.append("mailbox_verify " + json.dumps(mailbox, sort_keys=True))
+    observed = packet.get("mailbox_observations")
+    if isinstance(observed, dict):
+        lines.append("mailbox_observations " + json.dumps(observed, sort_keys=True))
     for name in FIELD_ORDER:
         lines.append(_format_field(name, fields.get(name)))
     lines.append(f"evidence_chain_count={len(chain_ids)} ids={','.join(chain_ids)}")
@@ -343,6 +360,7 @@ def relationship_handoff(
     *,
     include_index_freshness: bool = False,
     include_mailbox_verify: bool = False,
+    observed_mailbox: dict[str, Any] | None = None,
     as_of: dt.datetime | None = None,
 ) -> dict[str, Any]:
     """Compose an evidence-bound relationship handoff for one existing subject."""
@@ -534,6 +552,38 @@ def relationship_handoff(
     }
     if owner != "UNSEATED":
         packet["owner"] = owner
+    if observed_mailbox is not None:
+        try:
+            observed = mailbox_observations.observe_buyer_replies(
+                subject_id, observed_mailbox, events_sorted
+            )
+        except ValueError as error:
+            raise idx.IndexError_(str(error)) from error
+        packet["mailbox_observations"] = observed
+        replies = observed["replies"]
+        if replies:
+            refs = [reply["source_ref"] for reply in replies]
+            prior = packet["fields"]["learned"]
+            prior_text = prior.get("value") or ""
+            note = f"{len(replies)} buyer reply message(s) observed in the supplied Gmail records."
+            packet["fields"]["learned"] = _sourced(
+                " | ".join(item for item in (prior_text, note) if item),
+                list(dict.fromkeys(list(prior.get("evidence") or []) + refs)),
+                SUMMARY_POINTER,
+            )
+            # Mail arrival never removes an owner hold, creates a promise,
+            # changes a CRM decision, or authorizes contact with the buyer.
+            prior_next = packet["fields"]["successor_next_action"]
+            current_action = prior_next.get("value") or ""
+            reply_action = (
+                "Continue from the observed buyer replies in the existing Gmail conversation "
+                "under the current relationship decision and contact rules."
+            )
+            packet["fields"]["successor_next_action"] = _sourced(
+                " | ".join(item for item in (current_action, reply_action) if item),
+                list(dict.fromkeys(list(prior_next.get("evidence") or []) + refs)),
+                SUMMARY_POINTER,
+            )
     if include_index_freshness:
         try:
             packet["index_freshness"] = idx.composed_at_freshness(paths, now=as_of)
@@ -586,6 +636,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="include hermetic mailbox buyer-reply verify (never invents VERIFIED_HUMAN_YES)",
     )
     parser.add_argument("--as-of", help="timezone-aware time for optional INDEX freshness")
+    parser.add_argument(
+        "--mailbox-observations",
+        metavar="JSON_OR_STDIN",
+        help="consume existing Gmail message records and caller buyer IDs; use - for stdin",
+    )
     return parser
 
 
@@ -598,10 +653,23 @@ def main(argv: list[str] | None = None) -> int:
         return 3
     args = build_parser().parse_args(argv)
     try:
+        observations = None
+        if args.mailbox_observations:
+            try:
+                if args.mailbox_observations == "-":
+                    observations = json.load(sys.stdin)
+                else:
+                    with Path(args.mailbox_observations).open(encoding="utf-8") as source:
+                        observations = json.load(source)
+            except (OSError, UnicodeError, json.JSONDecodeError) as error:
+                raise idx.IndexError_("Could not read mailbox observation JSON.") from error
+            if not isinstance(observations, dict):
+                raise idx.IndexError_("Mailbox observations must be a JSON object.")
         packet = relationship_handoff(
             args.subject,
             include_index_freshness=args.index_freshness,
             include_mailbox_verify=args.mailbox_verify,
+            observed_mailbox=observations,
             as_of=idx.parse_time(args.as_of) if args.as_of else None,
         )
         if args.brief:
