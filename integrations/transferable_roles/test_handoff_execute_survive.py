@@ -185,6 +185,34 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertIn("diagnostic-fulfill-deadline", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-sla", repair_proof["executes"])
 
+    def test_diagnostic_export_import_then_prove(self) -> None:
+        # rivet-r4-handoff-prove-diag-export-import-20260905-01
+        role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+        rid = role["role_id"]
+        self.store.equip(rid, session_id="d-exp-A", harness="hinge")
+        package = self.store.export_package(rid)
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            imported = fresh.import_package(package)
+            fresh.equip(
+                imported["role_id"],
+                session_id="d-exp-B",
+                harness="rivet",
+                seat="RIVET",
+            )
+            proof = prove_successor_executes(
+                fresh, imported["role_id"], diagnostic_slug="dealer"
+            )
+            self.assertTrue(proof["ok"])
+            self.assertEqual(proof["occupant_session"], "d-exp-B")
+            self.assertIn("diagnostic-contract", proof["executes"])
+            self.assertIn("diagnostic-receipt", proof["executes"])
+            self.assertIn("diagnostic-fulfill-deadline", proof["executes"])
+            self.assertIn("diagnostic-fulfill-sla", proof["executes"])
+            self.assertEqual(
+                proof["executes"]["diagnostic-fulfill-sla"]["sla_status"], "OPEN"
+            )
+
     def test_diagnostic_release_then_equip_prove(self) -> None:
         # rivet-r4-handoff-prove-release-equip-20260905-01
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
