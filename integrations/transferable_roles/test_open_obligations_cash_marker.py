@@ -87,6 +87,33 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         for row in autopsy_rows:
             self.assertIs(row.get("payment_capability"), True)
 
+    def test_cash_only_filters_to_paid_roles(self) -> None:
+        self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
+        self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+
+        all_rows = self.store.list_open_obligations()
+        cash_rows = self.store.list_open_obligations(cash_only=True)
+        self.assertTrue(all_rows)
+        self.assertTrue(cash_rows)
+        self.assertLess(len(cash_rows), len(all_rows))
+        for row in cash_rows:
+            self.assertIs(row.get("payment_capability"), True)
+            self.assertFalse(row["role_id"].startswith("role-synthetic-crm"))
+
+        store_dir = self._tmp.name
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(
+                ["--store", store_dir, "open-obligations", "--cash-only"]
+            )
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        cli_rows = out["open_obligations"]
+        self.assertEqual(len(cli_rows), len(cash_rows))
+        for row in cli_rows:
+            self.assertIs(row.get("payment_capability"), True)
+
 
 if __name__ == "__main__":
     unittest.main()
