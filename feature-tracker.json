@@ -2283,12 +2283,14 @@
         "p/digit-hermetic-parents-fix-20260905-02.md"
       ],
       "dependencies": [],
-      "evidence_ids": [],
+      "evidence_ids": [
+        "ev-digit-hermetic-parents-git-20260905-01"
+      ],
       "file": "digit-hermetic-parents-fix-20260905-01.json",
       "id": "digit-hermetic-parents-fix-20260905-01",
-      "last_change": "2026-09-05",
+      "last_change": "2026-09-06T01:42:00Z",
       "live_status": "UNMEASURED",
-      "main_sha": "",
+      "main_sha": "7542b716faba3f551636e99715317eb26f4d012d",
       "name": "DIGIT root hermetic Path.parent fix",
       "next_gap": "Peer root hermetics with parents[1] remain out of DIGIT slice. Hands off #8802.",
       "owner_subsystem": "hermetics",
@@ -6661,7 +6663,7 @@
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
   "n_features": 113,
-  "n_invalid": 1,
+  "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
     "current-work.html": "unfinished-now ledger. Not shipped-state.",
@@ -6671,9 +6673,6 @@
     "right-now.html": "buyer / revenue desk.",
     "todo.html": "DIRECTIVES.md view. Historical."
   },
-  "problems": [
-    "digit-hermetic-parents-fix-20260905-01-git.json: schema must be commons-feature-evidence-v1",
-    "digit-hermetic-parents-fix-20260905-01-git.json: id must match ^[A-Za-z0-9._-]{8,80}$"
-  ],
+  "problems": [],
   "schema": "commons-feature-tracker-v1"
 }
