@@ -5,6 +5,7 @@ permissions:
   contents: read
 env:
   PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONPATH: '.:integrations/transferable_roles'
 jobs:
   verify:
     runs-on: ubuntu-latest
