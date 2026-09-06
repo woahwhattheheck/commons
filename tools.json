@@ -206,7 +206,7 @@
       {
         "href": "./agent-rescue.html",
         "label": "$29 Autopsy checkout",
-        "sku": "agent-rescue"
+        "sku": "agent-failure-autopsy-29"
       },
       {
         "href": "./dealer-service-lead-rescue.html",
