@@ -15,3 +15,4 @@
 - Equipment contract diagnostic_usd all-slugs base card: `rivet-r4-equipment-contract-diagnostic-usd-all-slugs-20260905-01`
 - Equipment advance obligation card: `tenon-r4-equipment-advance-obligation-card-20260906-01`
 - Equipment open-obligations card (full queue): `tenon-r4-equipment-open-obligations-card-20260906-01`
+- Equipment prove-handoff card: `hinge-r4-equipment-prove-handoff-card-20260906-01`
