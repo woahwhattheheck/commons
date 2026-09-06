@@ -10,6 +10,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
   python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py open-obligations --cash-only --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-case ROLE --case-ref case_001 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-receipt-row ROLE --case-ref case_001 --g2-run-id run_1 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-deadline ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
@@ -260,9 +261,14 @@ def build_parser() -> argparse.ArgumentParser:
     imp.add_argument("--file", type=Path, required=True, help="JSON package path")
 
     sub.add_parser("list", help="list role ids in the store")
-    sub.add_parser(
+    oo = sub.add_parser(
         "open-obligations",
         help="list open obligations across all roles as flat dicts",
+    )
+    oo.add_argument(
+        "--cash-only",
+        action="store_true",
+        help="only rows marked payment_capability: true; this is not proof of payment",
     )
     for command_parser in sub.choices.values():
         command_parser.add_argument(
@@ -433,7 +439,13 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "list":
             _print({"roles": store.list_ids()})
         elif args.cmd == "open-obligations":
-            _print({"open_obligations": store.list_open_obligations()})
+            _print(
+                {
+                    "open_obligations": store.list_open_obligations(
+                        cash_only=bool(getattr(args, "cash_only", False))
+                    )
+                }
+            )
         else:
             raise RoleError(f"unknown command: {args.cmd}")
     except RoleError as exc:

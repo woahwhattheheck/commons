@@ -34,6 +34,7 @@ Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill
 Handoff prove diag SLA: `hinge-r4-handoff-prove-diag-sla-20260905-01`
 Handoff prove autopsy SLA: `wedge-r4-handoff-prove-autopsy-sla-20260905-01`
 Handoff prove release→equip: `rivet-r4-handoff-prove-release-equip-20260905-01`
+Open obligations cash-only: `wedge-r4-open-obligations-cash-only-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -81,6 +82,8 @@ python3 integrations/transferable_roles/cli.py advance-obligation role-synthetic
   --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/hinge-roles
+
+python3 integrations/transferable_roles/cli.py open-obligations --cash-only --store /tmp/hinge-roles
 
 python3 integrations/transferable_roles/cli.py autopsy-case role-synthetic-agent-failure-autopsy-20260905 \
   --case-ref case_001 --store /tmp/hinge-roles
@@ -146,7 +149,10 @@ obligation. Purpose and sibling obligations stay. Allowed statuses:
 `open-obligations` scans every role in the store and returns open rows as
 `{"open_obligations": [...]}` with `role_id`, optional `label`, `purpose`,
 `obligation_id`, `summary`, `next_action`, optional `evidence_pointer` /
-`synthetic`, sorted by `(role_id, obligation_id)`.
+`synthetic`, sorted by `(role_id, obligation_id)`. Roles routing the named
+`payment_capability` door stamp `payment_capability: true` on those rows.
+`--cash-only` keeps only these marked rows; the default still includes all roles.
+The marker identifies a payment-capability route and does not confirm payment.
 
 `autopsy-case` / `autopsy-receipt-row` gate on tool `autopsy_paid_case` and call
 SPARK `case_from_autopsy_offer` / `receipt_row_from_case` (import-only wrap in
