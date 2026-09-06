@@ -1,44 +1,78 @@
-name: main-range-verify
-
-# Busy main is sampled as a range. One run replaces six per-push observers,
-# including source parsing when Python or JavaScript changed in the range.
+name: Bitcoin pool-answer check
+run-name: Bitcoin pool-answer candidate 44ea4b81
 on:
-  schedule:
-    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
-    inputs:
-      lookback_minutes:
-        description: Minutes of main history to coalesce
-        required: false
-        default: '30'
-
 permissions:
   contents: read
-
-concurrency:
-  group: commons-main-range-verify
-  cancel-in-progress: false
-
 jobs:
-  verify-range:
-    runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-slim
+    timeout-minutes: 8
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: 44ea4b8162303ec83b7e5f7b191592c1456eb02a
+          fetch-depth: 100
           persist-credentials: false
-      - name: verify one frozen main range
-        env:
-          DISPATCH_LOOKBACK: ${{ inputs.lookback_minutes }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /fix_first.py
+            /host/pfc_bitcoin_autopilot.py
+            /host/pfc_monitor_ui.py
+            /infra/host/pfc_bitcoin_autopilot.py
+            /infra/host/pfc_monitor_ui.py
+            /open_door_guard.py
+            /tests/test_pfc_bitcoin_*.py
+            /tests/test_pfc_bitcoin_answer.py
+            /tests/test_pfc_bitcoin_monitor.py
+      - name: Check pool behavior and exact shipped bytes
         run: |
-          lookback="${DISPATCH_LOOKBACK:-30}"
-          python3 host/main_range.py \
-            --head HEAD \
-            --lookback-minutes "$lookback" \
-            --receipt "$RUNNER_TEMP/main-range.json" \
-            | tee -a "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: main-range-${{ github.run_id }}
-          path: ${{ runner.temp }}/main-range.json
-          if-no-files-found: error
+          python3 - <<'PY'
+          import json, pathlib, subprocess, sys
+          for path, expected in {'host/pfc_bitcoin_autopilot.py': 'b8fc8921ad4a5fb83bcbc794cdd19912e71f41a4', 'infra/host/pfc_bitcoin_autopilot.py': 'b8fc8921ad4a5fb83bcbc794cdd19912e71f41a4', 'host/pfc_monitor_ui.py': '423fd4b9c787cefb9f3e0bf8202f2a3ad42d66ce', 'infra/host/pfc_monitor_ui.py': '423fd4b9c787cefb9f3e0bf8202f2a3ad42d66ce', 'tests/test_pfc_bitcoin_answer.py': 'b063b8d44c335596ddae42983ccb2dcd87e39072', 'tests/test_pfc_bitcoin_monitor.py': '30637891bc4c26a1d30bdea7dfb19edbe3cffb2c'}.items():
+              assert subprocess.check_output(['git','hash-object',path],text=True).strip() == expected, path
+          assert pathlib.Path('host/pfc_bitcoin_autopilot.py').read_bytes() == pathlib.Path('infra/host/pfc_bitcoin_autopilot.py').read_bytes()
+          subprocess.run([sys.executable,'-m','unittest','discover','-s','tests','-p','test_pfc_bitcoin_*.py','-v'],check=True)
+          subprocess.run([sys.executable,'open_door_guard.py','--diff','9fee0a5a0af9be4f8de90a276708dd5441cd6d67','44ea4b8162303ec83b7e5f7b191592c1456eb02a'],check=True)
+          print('CHECKED_HEAD=' + subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
+          # Demonstrate both pre-repair defects without any real worker or machine files.
+          import contextlib
+          import importlib.util
+          import io
+          import tempfile
+          import types
+          spec = importlib.util.spec_from_file_location('answer_regression_fixture','tests/test_pfc_bitcoin_answer.py')
+          fixtures = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(fixtures)
+          baseline_text = subprocess.check_output(['git','show','3f546a6b903f1fca387cebd2c9b033ac6012a72b:host/pfc_bitcoin_autopilot.py'],text=True)
+          baseline = types.ModuleType('baseline_answer')
+          exec(compile(baseline_text,'baseline-pool-answer','exec'),baseline.__dict__)
+          case = fixtures.HostAnswerTests('test_cycle_unavailable_answers_write_receipt_without_submission')
+          case.subject = baseline
+          receipt, connection, _ = case.cycle_fixture()
+          assert receipt['answer'] == {'status':0,'en2':0,'nonce':0}
+          assert receipt['submission_attempted'] and len(connection.sent) == 1
+          print('BASELINE_MISSING_ANSWER_SUBMITTED=1; FIXED_READER_RETURNS_EXPLICIT_FAILURE')
+          monitor_text = subprocess.check_output(['git','show','3f546a6b903f1fca387cebd2c9b033ac6012a72b:host/pfc_monitor_ui.py'],text=True)
+          monitor = types.ModuleType('baseline_monitor')
+          class CapturedStream(io.StringIO):
+              def reconfigure(self, **kwargs): pass
+          with contextlib.redirect_stdout(CapturedStream()):
+              exec(compile(monitor_text,'baseline-monitor','exec'),monitor.__dict__)
+          with tempfile.TemporaryDirectory() as directory:
+              safezone = pathlib.Path(directory)/'safezone.bin'
+              job = pathlib.Path(directory)/'job.json'
+              safezone.write_bytes(bytes(9))
+              job.write_text(json.dumps({'job_id':'fixture','answer':None,'submission_attempted':False,'answer_error':'fixture missing answer','pool':'answer-unavailable'}))
+              monitor.SAFEZONE = str(safezone)
+              monitor.JOBFILE = str(job)
+              try:
+                  monitor.snapshot()
+              except AttributeError:
+                  print('BASELINE_MONITOR_NULL_ANSWER_CRASH=1; FIXED_MONITOR_RENDERS_UNAVAILABLE_ANSWER')
+              else:
+                  raise AssertionError('Baseline monitor null-answer defect did not reproduce')
+          
+          PY
