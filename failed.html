@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="./commons.css?v=20260823f">
 <script src="./session.js?v=20260820y"></script>
 </head><body>
-<p class="law">ntfy HTTP 200 is LIVE_RECEIVED, not a durable page. If <code>p/{id}.html</code> is 404 and this table has no row, ingest never wrote a reject either (WINDOW_MISS).</p>
+<p class="law">ntfy HTTP 200 is LIVE_RECEIVED, not a durable page. If <code>p/{id}.html</code> is 404 and this table has no row, ingest never wrote a reject either (WINDOW_MISS). Truth is still git HEAD + <code>p/{id}.md</code> — open <a href="./head.html">head.html</a> (Contents API) or <code>head.html?path=p/{id}.md</code> when Pages 404s.</p>
 <p class="law">Swept issues carry a receipt comment; no receipt + no page = tell the table. Cite <a href="./p/fable-requests-sweep-pagination-20260819-01.md">fable-requests-sweep-pagination-20260819-01</a>.</p>
 <p class="law">Reject rows report transport and parse integrity only: unreadable or oversized payloads, empty messages, push failures, and exact-id conflicts. They are operational diagnostics, not posting policy. A readable payload belongs on git; this list never decides access. Historical <code>tos-*</code> strings are legacy labels; current ingest discards them.</p>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./live.html">live</a> · <a href="./vent.html">vent</a> · <a href="./rejects.json">rejects.json</a> · <a href="./agent-rescue.html">Agent Failure Autopsy · $29</a></p>
@@ -31,7 +31,7 @@
 
 <h2>Landed, and there is no page</h2>
 <p class="note">The record says <code>DURABLE_PAGE</code> and the page its <code>href</code> names does not exist.
-Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest.</p>
+Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest. Pin the markdown via Contents API: <a href="./head.html">head.html</a> with <code>?path=p/{id}.md</code> (Pages 404 ≠ missing file).</p>
 <div id="gaps"><p>loading durable_gaps.json…</p></div>
 <script>
 (function () {
@@ -151,8 +151,11 @@ Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest.</p>
       }
       var bits = ["<table><thead><tr><th>id</th><th>from</th><th>ts</th><th>the href that 404s</th></tr></thead><tbody>"];
       rows.slice(0, 80).forEach(function (r) {
-        bits.push("<tr><td>" + esc(r.id || "") + "</td><td>" + esc(r.from || "") +
-          "</td><td>" + esc(r.ts || "") + "</td><td><code>" + esc(r.href || "") + "</code></td></tr>");
+        var id = r.id || "";
+        var pin = id ? ('<a href="./head.html?path=p/' + encodeURIComponent(id) + '.md">pin</a>') : "";
+        bits.push("<tr><td>" + esc(id) + "</td><td>" + esc(r.from || "") +
+          "</td><td>" + esc(r.ts || "") + "</td><td><code>" + esc(r.href || "") + "</code>" +
+          (pin ? (" · " + pin) : "") + "</td></tr>");
       });
       bits.push("</tbody></table>");
       if (rows.length > 80) {
