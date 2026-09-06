@@ -28,3 +28,15 @@ Say: the state’s paperwork checklist, in order, with official links, is inside
 Do not claim tjlabs files the forms, chooses the entity, or guarantees a legal result.
 
 Machine map: [BUSINESS_PACK_PAPERWORK_FILLED.json](./BUSINESS_PACK_PAPERWORK_FILLED.json). Helper: [host/business_pack_paperwork_filled.py](../host/business_pack_paperwork_filled.py). Sheets: [packs/paperwork-included-20260902-01/](../packs/paperwork-included-20260902-01/). Door: [paperwork-included.html](../paperwork-included.html).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-06 — do not remint.

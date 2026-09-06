@@ -37,3 +37,15 @@ python3 host/ccc_snapshot_toolchain.py self-test
 Stdlib only. No network. No authentication. No provider APIs. Open door. Possessing the link is enough.
 
 HOLD / BUILD-AND-VERIFY. cash_usd=0. Off ChartTrace, CALIPER, Titan #6816, grok.com. Do not remint this leftover id.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-06 — do not remint.
