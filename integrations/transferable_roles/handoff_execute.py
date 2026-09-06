@@ -4,6 +4,8 @@
 RIVET claim rivet-r4-handoff-execute-survive-20260905-01 (HINGE peer-assist).
 Extend: rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01 — also prove
 diagnostic_receipt + diagnostic_fulfill after handoff.
+Extend: hinge-r4-handoff-prove-diag-sla-20260905-01 — also prove
+diagnostic_fulfill.run_sla_status (OPEN|MISSED).
 Import-only wraps of landed autopsy_paid / autopsy_fulfill / diagnostic_*.
 Does not remint paid_case, fulfillment, diagnostic_fulfill body, or peers.py.
 """
@@ -17,6 +19,7 @@ from autopsy_fulfill import run_deadline, run_validate
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
 from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
+from diagnostic_fulfill import run_sla_status as run_diagnostic_sla
 from diagnostic_receipt import load_receipt_from_role
 from roles import RoleError, RoleStore
 
@@ -61,11 +64,13 @@ def prove_successor_executes(
     case_ref: str = "handoff_case",
     usable_evidence_at: str = "2026-09-04T15:00:00-04:00",
     diagnostic_slug: str = "dealer",
+    as_of: str | None = None,
 ) -> dict[str, Any]:
     """Run whichever role-gated executes the role tools after a handoff."""
     role = store.get(role_id)
     names = _tool_names(role)
     executes: dict[str, Any] = {}
+    sla_as_of = str(as_of or usable_evidence_at).strip()
 
     if "autopsy_paid_case" in names:
         executes["autopsy-case"] = build_g2_case_from_role(
@@ -100,6 +105,12 @@ def prove_successor_executes(
             role,
             slug=diagnostic_slug,
             usable_evidence_at=usable_evidence_at,
+        )
+        executes["diagnostic-fulfill-sla"] = run_diagnostic_sla(
+            role,
+            slug=diagnostic_slug,
+            usable_evidence_at=usable_evidence_at,
+            as_of=sla_as_of,
         )
 
     if not executes:

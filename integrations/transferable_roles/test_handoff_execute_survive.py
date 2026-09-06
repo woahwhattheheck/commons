@@ -116,6 +116,21 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         fulfill = proof["executes"]["diagnostic-fulfill-deadline"]
         self.assertEqual(fulfill["slug"], "dealer")
         self.assertTrue(fulfill.get("delivery_due_at"))
+        # hinge-r4-handoff-prove-diag-sla-20260905-01
+        self.assertIn("diagnostic-fulfill-sla", proof["executes"])
+        sla = proof["executes"]["diagnostic-fulfill-sla"]
+        self.assertEqual(sla["slug"], "dealer")
+        self.assertEqual(sla["sla_status"], "OPEN")
+
+        missed = prove_successor_executes(
+            self.store,
+            rid,
+            diagnostic_slug="dealer",
+            as_of="2026-09-10T10:00:00-04:00",
+        )
+        self.assertEqual(
+            missed["executes"]["diagnostic-fulfill-sla"]["sla_status"], "MISSED"
+        )
 
         repair_proof = prove_successor_executes(
             self.store, rid, diagnostic_slug="repair"
@@ -124,6 +139,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertIn("diagnostic-contract", repair_proof["executes"])
         self.assertNotIn("diagnostic-receipt", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-deadline", repair_proof["executes"])
+        self.assertIn("diagnostic-fulfill-sla", repair_proof["executes"])
 
     def test_crm_refuses(self) -> None:
         role = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))

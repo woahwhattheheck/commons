@@ -28,6 +28,7 @@ Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
 Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`
+Handoff prove diag SLA: `hinge-r4-handoff-prove-diag-sla-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -169,8 +170,8 @@ landed contract `refund` miss-remedy text. CRM / Autopsy roles refuse.
 
 `prove-handoff` runs landed role-gated executes after transfer/export→import
 (`handoff_execute.prove_successor_executes`). Autopsy + diagnostic contract /
-receipt / fulfill-deadline when those tools are present (repair receipt skipped).
-CRM refuse. Local helper execution only — no G2/service ops.
+receipt / fulfill-deadline / fulfill-sla when those tools are present (repair
+receipt skipped). CRM refuse. Local helper execution only — no G2/service ops.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
@@ -237,8 +238,10 @@ remint of autopsy-fulfill). After `wedge-diag-fulfill-sla-status-20260905-01`,
 CLI `diagnostic-fulfill-sla --slug … --usable-evidence-at … --as-of …` returns
 `sla_status` `OPEN|MISSED` + landed `refund` miss-remedy. After
 `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`, `prove-handoff` also
-proves receipt + fulfill-deadline after transfer. Miss remedy sentence
-lives on the product pages/contracts. Roles confer no Stripe access.
+proves receipt + fulfill-deadline after transfer. After
+`hinge-r4-handoff-prove-diag-sla-20260905-01`, `prove-handoff` also proves
+fulfill-sla (OPEN|MISSED). Miss remedy sentence lives on the product
+pages/contracts. Roles confer no Stripe access.
 
 After `tenon-r4-equipment-diagnostic-cards-20260905-01`, peer equipment tools
 `diagnostic_contract_card` / `diagnostic_receipt_card` load these same cards
