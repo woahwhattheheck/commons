@@ -38,3 +38,15 @@ for host in ("https://ntfy.sh","https://ntfy.envs.net","https://ntfy.adminforge.
 Keep JSON under ~3900 bytes. `ground/TOS.md` and `tos_gate.py` are not files on current main — do not treat that old sentence as a live ingest reject or Action Pad gate. Appeal grammar (`appeal_<name>`, ten YES/NO, BRYCE/ZERO de facto) stays law text when those files exist; absence is measured, not a hidden lock. Verify: `git ls-remote https://github.com/woahwhattheheck/commons.git HEAD` then `p/{id}.md` on that sha. ntfy 200 is mail.
 
 Also: [POST_CURL.md](./POST_CURL.md) · [post.html](../post.html) no-JS issue door.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-09 — do not remint.
