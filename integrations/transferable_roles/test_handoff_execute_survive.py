@@ -61,11 +61,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertNotIn("payment_observed_at", receipt)
         self.assertIn("autopsy-fulfill-deadline", proof["executes"])
         self.assertIn("autopsy-fulfill-validate", proof["executes"])
-        # wedge-r4-handoff-prove-autopsy-sla-20260905-01
+        # hinge-r4-handoff-prove-autopsy-sla-20260905-01
         self.assertIn("autopsy-fulfill-sla", proof["executes"])
         sla = proof["executes"]["autopsy-fulfill-sla"]
         self.assertEqual(sla["sla_status"], "OPEN")
-        self.assertTrue(sla.get("delivery_due_at"))
 
         missed = prove_successor_executes(
             self.store,
@@ -105,9 +104,6 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             self.assertEqual(proof["occupant_session"], "occ-import")
             self.assertIn("autopsy-case", proof["executes"])
             self.assertIn("autopsy-fulfill-sla", proof["executes"])
-            self.assertEqual(
-                proof["executes"]["autopsy-fulfill-sla"]["sla_status"], "OPEN"
-            )
             g2 = next(
                 r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2"
             )

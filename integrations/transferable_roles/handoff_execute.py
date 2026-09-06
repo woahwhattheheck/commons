@@ -6,8 +6,8 @@ Extend: rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01 — also prove
 diagnostic_receipt + diagnostic_fulfill after handoff.
 Extend: hinge-r4-handoff-prove-diag-sla-20260905-01 — also prove
 diagnostic_fulfill.run_sla_status (OPEN|MISSED).
-Extend: wedge-r4-handoff-prove-autopsy-sla-20260905-01 — also prove
-autopsy_fulfill.run_sla_status (OPEN|MISSED) after handoff.
+Extend: hinge-r4-handoff-prove-autopsy-sla-20260905-01 — also prove
+autopsy_fulfill.run_sla_status (OPEN|MISSED).
 Import-only wraps of landed autopsy_paid / autopsy_fulfill / diagnostic_*.
 Does not remint paid_case, fulfillment, diagnostic_fulfill body, or peers.py.
 """

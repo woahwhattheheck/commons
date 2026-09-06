@@ -25,13 +25,11 @@ Autopsy fulfill CLI: `hinge-r4-autopsy-fulfill-cli-20260905-01`
 Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
 Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
-Autopsy fulfill SLA status: `wedge-autopsy-fulfill-sla-status-20260905-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
-Equipment fulfill SLA cards: `tenon-r4-equipment-fulfill-sla-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
 Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`
 Handoff prove diag SLA: `hinge-r4-handoff-prove-diag-sla-20260905-01`
-Handoff prove autopsy SLA: `wedge-r4-handoff-prove-autopsy-sla-20260905-01`
+Handoff prove autopsy SLA: `hinge-r4-handoff-prove-autopsy-sla-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -172,12 +170,11 @@ refuse.
 landed contract `refund` miss-remedy text. CRM / Autopsy roles refuse.
 
 `prove-handoff` runs landed role-gated executes after transfer/export→import
-(`handoff_execute.prove_successor_executes`). Autopsy (case / receipt-row /
-fulfill-deadline / fulfill-validate / fulfill-sla) + diagnostic contract /
+(`handoff_execute.prove_successor_executes`). Autopsy + diagnostic contract /
 receipt / fulfill-deadline / fulfill-sla when those tools are present (repair
-receipt skipped). CRM refuse. Local helper execution only — no G2/service ops.
-After `wedge-r4-handoff-prove-autopsy-sla-20260905-01`, Autopsy successors also
-prove `autopsy-fulfill-sla` OPEN|MISSED vs `--as-of`.
+receipt skipped); Autopsy also proves fulfill-sla after
+`hinge-r4-handoff-prove-autopsy-sla-20260905-01`. CRM refuse. Local helper
+execution only — no G2/service ops.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
@@ -246,16 +243,14 @@ CLI `diagnostic-fulfill-sla --slug … --usable-evidence-at … --as-of …` ret
 `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`, `prove-handoff` also
 proves receipt + fulfill-deadline after transfer. After
 `hinge-r4-handoff-prove-diag-sla-20260905-01`, `prove-handoff` also proves
-fulfill-sla (OPEN|MISSED). Miss remedy sentence lives on the product
-pages/contracts. Roles confer no Stripe access.
+fulfill-sla (OPEN|MISSED). After `hinge-r4-handoff-prove-autopsy-sla-20260905-01`,
+`prove-handoff` also proves Autopsy fulfill-sla (OPEN|MISSED). Miss remedy
+sentence lives on the product pages/contracts. Roles confer no Stripe access.
 
 After `tenon-r4-equipment-diagnostic-cards-20260905-01`, peer equipment tools
 `diagnostic_contract_card` / `diagnostic_receipt_card` load these same cards
-without hand-importing transferable_roles. After
-`tenon-r4-equipment-fulfill-sla-cards-20260905-01`, also
-`diagnostic_fulfill_deadline_card` / `diagnostic_fulfill_sla_card` and
-`autopsy_fulfill_deadline_card` / `autopsy_fulfill_sla_card`. These local data
-helpers do not change credential retrieval or service access.
+without hand-importing transferable_roles. These local data helpers do not
+change credential retrieval or service access.
 
 ## Access route shapes
 
