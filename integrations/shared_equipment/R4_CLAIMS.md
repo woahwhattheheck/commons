@@ -17,3 +17,4 @@
 - Equipment open-obligations card (full queue): `tenon-r4-equipment-open-obligations-card-20260906-01`
 - Equipment release/equip cards: `tenon-r4-equipment-release-equip-cards-20260906-01`
 - Equipment transfer role card: `tenon-r4-equipment-transfer-role-card-20260906-01`
+- Equipment bind/unbind access_route cards: `tenon-r4-equipment-bind-unbind-route-cards-20260906-01`
