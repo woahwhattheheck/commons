@@ -9,3 +9,4 @@
 - Equipment open-obligations cash survive handoff: `wedge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01`
 - Equipment autopsy fulfill validate card: `hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01`
 - Equipment autopsy validate survive handoff: `rivet-r4-equipment-autopsy-validate-survive-handoff-20260905-01`
+- Equipment autopsy SLA amount_usd survive handoff: `hinge-r4-equipment-autopsy-sla-amount-usd-survive-handoff-20260905-01`
