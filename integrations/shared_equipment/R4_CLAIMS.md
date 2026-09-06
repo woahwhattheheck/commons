@@ -13,3 +13,4 @@
 - Equipment diag SLA diagnostic_usd survive handoff: `rivet-r4-equipment-diag-sla-diagnostic-usd-survive-handoff-20260905-01`
 - Equipment contract diagnostic_usd survive handoff: `rivet-r4-equipment-contract-diagnostic-usd-survive-handoff-20260905-01`
 - Equipment contract diagnostic_usd all-slugs base card: `rivet-r4-equipment-contract-diagnostic-usd-all-slugs-20260905-01`
+- Equipment advance obligation card: `tenon-r4-equipment-advance-obligation-card-20260906-01`
