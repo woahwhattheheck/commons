@@ -5,6 +5,7 @@ TENON claims:
 - tenon-r4-equipment-fulfill-sla-cards-20260905-01 (fulfill deadline/SLA)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
+- hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
 WEDGE claim:
 - wedge-r4-equipment-open-obligations-cash-card-20260905-01 (cash queue)
 Does not remint contracts, receipts, fulfill CLIs, SPARK paid_case, Stripe, or peers remint.
@@ -73,6 +74,16 @@ def diagnostic_card_tool_schemas() -> list[dict]:
                 "role": "object",
                 "usable_evidence_at": "string",
                 "as_of": "string",
+            },
+        ),
+        _schema(
+            "autopsy_fulfill_validate_card",
+            "Validate Autopsy intake+report bundle for a transferable role (defaults to examples/). Pass role; optional intake, report, evidence_root paths. Import-only wrap of autopsy_fulfill.run_validate; does not remint fulfillment.py.",
+            {"role": "object"},
+            {
+                "intake": "string",
+                "report": "string",
+                "evidence_root": "string",
             },
         ),
         _schema(
@@ -199,6 +210,28 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
                 usable_evidence_at=str(args["usable_evidence_at"]),
                 as_of=str(args["as_of"]),
             )
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "card": card}
+    if name == "autopsy_fulfill_validate_card":
+        # hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        autopsy_mod = _load_transferable_roles_mod("autopsy_fulfill")
+        try:
+            kwargs: dict[str, Any] = {}
+            if args.get("intake") is not None:
+                kwargs["intake"] = str(args["intake"])
+            if args.get("report") is not None:
+                kwargs["report"] = str(args["report"])
+            if args.get("evidence_root") is not None:
+                kwargs["evidence_root"] = str(args["evidence_root"])
+            card = autopsy_mod.run_validate(args["role"], **kwargs)
         except KeyError as exc:
             return {
                 "ok": False,
