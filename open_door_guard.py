@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import argparse
 from dataclasses import dataclass
+from html import unescape
+from html.parser import HTMLParser
 import os
 import re
 import subprocess
@@ -350,6 +352,66 @@ def added_lines(diff_text: str) -> list[AddedLine]:
     return out
 
 
+class _HTMLAdmissionContexts(HTMLParser):
+    """Keep tag attributes separate from prose without hiding either one."""
+
+    BLOCK_TAGS = {
+        "address", "article", "aside", "blockquote", "br", "dd", "div", "dl",
+        "dt", "fieldset", "figcaption", "figure", "footer", "form", "h1",
+        "h2", "h3", "h4", "h5", "h6", "header", "hr", "li", "main", "nav",
+        "ol", "p", "pre", "section", "table", "tbody", "td", "tfoot", "th",
+        "thead", "tr", "ul",
+    }
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.fragments: list[str] = []
+        self.prose: list[str] = []
+
+    def handle_starttag(self, tag, attrs):
+        self.fragments.append(unescape(self.get_starttag_text()))
+        if tag in self.BLOCK_TAGS:
+            self.prose.append("\n")
+
+    def handle_endtag(self, tag):
+        if tag in self.BLOCK_TAGS:
+            self.prose.append("\n")
+
+    def handle_data(self, data):
+        self.prose.append(data)
+
+    def handle_comment(self, data):
+        self.fragments.append(data)
+
+    def handle_decl(self, decl):
+        self.fragments.append(decl)
+
+    def handle_pi(self, data):
+        self.fragments.append(data)
+
+    def unknown_decl(self, data):
+        self.fragments.append(data)
+
+
+def _admission_contexts(path: str, text: str) -> list[str]:
+    if not path.lower().endswith(".html"):
+        return [text]
+    parser = _HTMLAdmissionContexts()
+    try:
+        parser.feed(text)
+        # Some HTMLParser versions discard unfinished tags at EOF. Retain
+        # the original source before close() can consume that evidence.
+        if parser.rawdata:
+            return [text]
+        parser.close()
+        if parser.rawdata:
+            return [text]
+    except Exception:
+        # A malformed fragment must not prevent the original source scan.
+        return [text]
+    return [*parser.fragments, "".join(parser.prose)]
+
+
 def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
     by_path: dict[str, list[AddedLine]] = {}
     for line in lines:
@@ -370,7 +432,13 @@ def scan_added(lines: Iterable[AddedLine]) -> list[Violation]:
             for rule in LINE_RULES:
                 if rule.name in HARD_LINE_RULES:
                     continue
-                if rule.pattern.search(line.text):
+                # In HTML, a table's data-label="capability" is not part of
+                # the adjacent business prose. Scan attributes and visible
+                # text independently, retaining formatted admission phrases.
+                # Hard identifiers and structural window rules stay raw.
+                contexts = (_admission_contexts(path, line.text)
+                            if rule.name == "admission-phrase" else [line.text])
+                if any(rule.pattern.search(context) for context in contexts):
                     item = Violation(path, line.line_number, rule.name, rule.explanation, line.text.strip())
                     found[(path, line.line_number, rule.name)] = item
 
