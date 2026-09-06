@@ -79,7 +79,7 @@ class EquipmentTests(unittest.TestCase):
             def tools(self, **kwargs): return [{"name": "read_observatory", "inputSchema": {}}]
             def call(self, name, args): return {"public": True}
         class Model:
-            def turn(self, peer, prompt):
+            def turn(self, peer, prompt, *, cancelled=None, on_submitted=None):
                 self.prompt = prompt
                 return "done"
         model = Model()
@@ -93,10 +93,10 @@ class EquipmentTests(unittest.TestCase):
             calls.close()
 
     def test_cancel_after_model_return_prevents_external_tool_effect(self):
-        cancelled = threading.Event()
+        cancel_event = threading.Event()
         class Model:
-            def turn(self, peer, prompt):
-                cancelled.set()
+            def turn(self, peer, prompt, *, cancelled=None, on_submitted=None):
+                cancel_event.set()
                 return '<commons_tool_call>{"call_id":"write","name":"slack_post_message","arguments":{}}</commons_tool_call>'
         class Catalog:
             def tools(self): return [{"name": "slack_post_message"}]
@@ -104,7 +104,7 @@ class EquipmentTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             calls = ToolCallStore(Path(directory) / "calls.db")
             with self.assertRaises(InterruptedError):
-                ToolLoop(Model(), Catalog(), calls).run("r", "role", "work", cancelled)
+                ToolLoop(Model(), Catalog(), calls).run("r", "role", "work", cancel_event)
             self.assertEqual(calls._db.execute("select count(*) from tool_calls").fetchone()[0], 0)
             calls.close()
 

@@ -258,7 +258,7 @@ class CredentialTransferTests(unittest.TestCase):
         self.assertNotIn(SENTINEL, sent[0])
         prompts = []
         class Model:
-            def turn(self, peer, prompt):
+            def turn(self, peer, prompt, *, cancelled=None, on_submitted=None):
                 prompts.append(prompt)
                 if len(prompts) == 1:
                     return '<commons_tool_call>' + json.dumps({"call_id": "loop", "name": "credential_retrieve_sealed", "arguments": pending.arguments()}) + '</commons_tool_call>'
