@@ -55,6 +55,7 @@ class ProveHandoffEquipmentCardTests(unittest.TestCase):
         sla = proof["executes"]["diagnostic-fulfill-sla"]
         self.assertEqual(sla.get("sla_status"), "OPEN")
         self.assertEqual(sla.get("diagnostic_usd"), 199)
+        self.assertEqual(sla.get("slug"), "dealer")
 
         missed = self.eq.call(
             "prove_handoff_card",

@@ -71,6 +71,18 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             "autopsy_case_card",
             "autopsy_receipt_card",
             "open_obligations_cash_card",
+            "autopsy_fulfill_validate_card",
+            "open_obligations_card",
+            "advance_obligation_card",
+            "equip_role_card",
+            "release_occupant_card",
+            "transfer_role_card",
+            "bind_access_route_card",
+            "unbind_access_route_card",
+            "export_role_package_card",
+            "import_role_package_card",
+            "inspect_role_card",
+            "prove_handoff_card",
         }
         self.assertEqual(names, expected)
         catalog = CombinedCatalog(_FakeCommons())
