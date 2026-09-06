@@ -1,0 +1,80 @@
+name: Deathstar feature projection repair
+on:
+  push:
+    branches: [codex/deathstar-feature-projection-20260906]
+permissions:
+  contents: read
+jobs:
+  projection:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUTF8: "1"
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: a312bb51c56b1a43567b78a9c0228ac0328fb4eb
+          path: landed
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: 72062e16d9466e80e2e787bd7519ea481765b886
+          path: baseline
+          persist-credentials: false
+      - name: Compare baseline, regenerate, and export exact projection bytes
+        shell: python
+        run: |
+          import base64
+          import hashlib
+          import json
+          import pathlib
+          import re
+          import subprocess
+          import sys
+          
+          def observe(label, directory):
+              outcome = subprocess.run([sys.executable, "test_feature_tracker.py"],
+                  cwd=directory, capture_output=True, text=True, encoding="utf-8")
+              summary = next((line for line in outcome.stdout.splitlines()
+                              if line.startswith("FEATURE TRACKER TEST:")), "")
+              names = summary.split(":", 2)[-1].strip().split(", ") if "TEST: FAIL" in summary else []
+              row = {"label": label, "returncode": outcome.returncode, "summary": summary,
+                     "failures": names,
+                     "source_sha": subprocess.check_output(["git", "-C", str(directory), "rev-parse", "HEAD"], text=True).strip()}
+              print("FT_TEST_OUTCOME " + json.dumps(row, sort_keys=True), flush=True)
+              if outcome.returncode and not summary:
+                  print("FT_UNEXPECTED_STDOUT " + outcome.stdout, flush=True)
+                  print("FT_UNEXPECTED_STDERR " + outcome.stderr, flush=True)
+                  raise RuntimeError("test did not produce its expected summary")
+              return row
+          
+          baseline = observe("baseline-before", pathlib.Path("baseline"))
+          before = observe("landed-before", pathlib.Path("landed"))
+          generated = subprocess.run([sys.executable, "host/feature_tracker.py", "--write"],
+              cwd="landed", capture_output=True, text=True, encoding="utf-8")
+          print("FT_GENERATOR_OUTCOME " + json.dumps({"returncode": generated.returncode,
+              "stderr": generated.stderr, "stdout_bytes": len(generated.stdout.encode("utf-8"))}), flush=True)
+          if generated.returncode:
+              print(generated.stdout, flush=True)
+              raise RuntimeError("feature tracker generation failed")
+          after = observe("landed-after", pathlib.Path("landed"))
+          print("FT_DIFFERENTIAL " + json.dumps({
+              "resolved": sorted(set(before["failures"]) - set(after["failures"])),
+              "remaining_present_at_baseline": sorted(set(after["failures"]) & set(baseline["failures"])),
+              "new_after_generation": sorted(set(after["failures"]) - set(baseline["failures"]))}, sort_keys=True), flush=True)
+          for name in ("feature-tracker.json", "feature-tracker.html"):
+              raw = (pathlib.Path("landed") / name).read_bytes()
+              encoded = base64.b64encode(raw).decode("ascii")
+              meta = {"path": name, "bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest(),
+                      "git_blob": hashlib.sha1(b"blob " + str(len(raw)).encode("ascii") + b"\0" + raw).hexdigest()}
+              print("FT_EXPORT_BEGIN " + json.dumps(meta, sort_keys=True), flush=True)
+              chunks = [encoded[index:index + 4096] for index in range(0, len(encoded), 4096)]
+              for index, chunk in enumerate(chunks):
+                  print("FT_EXPORT_CHUNK " + json.dumps({"path": name, "index": index, "base64": chunk}, sort_keys=True), flush=True)
+              print("FT_EXPORT_END " + json.dumps({"path": name, "chunks": len(chunks)}, sort_keys=True), flush=True)
+          if set(after["failures"]) - set(baseline["failures"]):
+              raise RuntimeError("generated projection leaves a failure absent from baseline")
+          if "golden json matches projection" in after["failures"]:
+              raise RuntimeError("generated projection is still stale")
+          
