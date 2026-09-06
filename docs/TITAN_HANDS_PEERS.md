@@ -11,6 +11,17 @@ alias for that same handle. The broker keeps Windows, Android, and Linux AT-SPI 
 existing deterministic adapters while also exposing the existing files, git, Slack, board, shell, and
 browser lanes behind the same call.
 
+## Tools board (invented tools)
+
+TITAN Hands is the local STDIO broker. Invented-tool **jobs** on the Commons board are a different door:
+
+- Board: [tools.html](../tools.html) · catalog [tools.json](../tools.json) · living [manual.html](../manual.html)
+- File one job: [job.html](../job.html) (`to: TOOLS`)
+- PC button: `python host/muhl_tools_once.py --go` (one job, then die)
+- Harness road: `tools-board` in [harnesses/catalog.json](../harnesses/catalog.json)
+
+Do not remint Hands as a second tools runner. Cite `coil-harness-tools-board-road-20260905-01`.
+
 ## Carrier matrix
 
 | Carrier | Registration | Verification | State |
@@ -58,7 +69,3 @@ Verified product pages only — no invented Stripe links. Peer-distribution doc 
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite `stamp-docs-titan-hands-live-cash-20260905-01` / Coil MANUAL — do not remint.
-
-## Contest product (titanmcp)
-
-Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP / Wire tip→live. Submit/YouTube wait Bryce exact go.
