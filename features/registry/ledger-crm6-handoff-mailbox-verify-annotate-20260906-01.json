@@ -1,0 +1,34 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01",
+  "name": "CRM6 optional handoff --mailbox-verify annotate",
+  "added": "2026-09-06",
+  "carrier": "LEDGER",
+  "owner_subsystem": "lm-gtm-index",
+  "capability": "Optional successor handoff annotate mirroring --index-freshness: stamps mailbox_verify from hermetic pin; invent-YES fail-closed to UNKNOWN; Billings NO_BUYER_REPLY.",
+  "public_entrypoint": "revenue/lm_gtm_index/README.md",
+  "claimed_paths": [
+    "host/lm_gtm_relationship_handoff.py",
+    "revenue/lm_gtm_index/mailbox_buyer_reply_registry.json",
+    "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+  ],
+  "test_paths": [
+    "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+  ],
+  "resource_links": [
+    "revenue/lm_gtm_index/README.md",
+    "p/ledger-crm6-handoff-mailbox-verify-annotate-20260906-01.md",
+    "https://github.com/woahwhattheheck/commons/pull/9267"
+  ],
+  "dependencies": [
+    "ledger-crm6-mailbox-buyer-reply-verify-20260905-01",
+    "ledger-crm6-composed-at-freshness-gate-20260905-01"
+  ],
+  "next_gap": "Landed #9267 @ e2b71676599e20bc7e1d7c02bf36eb9c41aa3000. Never invent VERIFIED_HUMAN_YES.",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": false,
+    "resources": false
+  }
+}
