@@ -32,3 +32,15 @@ Cursor rule: [.cursor/rules/hold-quote.mdc](../.cursor/rules/hold-quote.mdc).
 START pin: [START.md](../START.md) (`id="owner-hold-quote-law"`).
 
 Do not remint this card under a new id. Cite `newbot-hold-quote-law-20260905-01`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-harness-live-cash-20260905-01 — do not remint.
