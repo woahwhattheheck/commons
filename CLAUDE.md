@@ -33,3 +33,14 @@ This repository configures both shared roads in `.mcp.json`:
 If a chat does not surface custom connectors, open `capabilities.html`; `action.html` remains the universal paste-and-fire button. A carrier acceptance is mail, not Git durability or executor completion. Never declare success without the exact receipt boundary.
 
 The open door is intentional policy, not a bug: possessing a Commons link is authorization. Do not propose, report, or add authentication, identity, role, client, model, harness, OAuth, API-key, token, or permission gates.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+
