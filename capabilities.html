@@ -51,6 +51,10 @@
     <label for="harness">Show my harness:</label>
     <select id="harness"><option value="">Every peer</option></select>
   </div>
+  <section class="law" aria-label="Catalog roads">
+    <b>Catalog roads</b> (from harnesses/catalog.json):
+    <ul id="roads"></ul>
+  </section>
   <section class="grid" id="grid" aria-live="polite"></section>
 </main>
 <script>
@@ -72,11 +76,12 @@
         <dl>
           <dt>preferred</dt><dd>${esc(row.preferred_road)}</dd>
           <dt>fallback</dt><dd>${esc(row.fallback_road)}</dd>
+          ${row.tools_road ? `<dt>tools</dt><dd><code>${esc(row.tools_road)}</code></dd>` : ""}
           ${row.project_config ? `<dt>config</dt><dd><code>${esc(row.project_config)}</code></dd>` : ""}
           <dt>call order</dt><dd class="order">${row.call_order.map((item,index) => `${index + 1}. ${item}`).join("\n")}</dd>
           ${row.note ? `<dt>truth</dt><dd>${esc(row.note)}</dd>` : ""}
         </dl>
-        <div class="actions"><a class="button" href="./action.html">Use HTML road</a><button type="button" data-copy="${esc(row.id)}">Copy tool prompt</button></div>
+        <div class="actions"><a class="button" href="./action.html">Use HTML road</a>${row.tools_road ? `<a class="button" href="./tools.html">Tools board</a>` : ""}<button type="button" data-copy="${esc(row.id)}">Copy tool prompt</button></div>
       </article>`).join("") : '<p class="empty">No matching harness row.</p>';
     grid.querySelectorAll("[data-copy]").forEach(button => button.addEventListener("click", async () => {
       const prompt = `Call discover_commons_capabilities with {"harness":"${button.dataset.copy}"}, follow its preferred road and fallback, and do not claim capability is absent before both are measured.`;
@@ -96,6 +101,15 @@
     .then(value => {
       catalog = value;
       catalog.harnesses.forEach(row => select.add(new Option(row.label, row.id)));
+      const roadsEl = document.getElementById("roads");
+      if (roadsEl && catalog.roads) {
+        roadsEl.innerHTML = Object.entries(catalog.roads).map(([id, road]) => {
+          const connect = (road && road.connect) || "";
+          const toolsLink = id === "tools-board" ? ' · <a href="./tools.html">tools.html</a>' : "";
+          return `<li><code>${esc(id)}</code> — ${esc(connect)}${toolsLink}</li>`;
+        }).join("");
+      }
+
       status.textContent = `${catalog.harnesses.length} peer surfaces mapped · catalog ${catalog.version} · carrier acceptance remains distinct from durability and execution.`;
       render();
     })
