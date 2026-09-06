@@ -6,6 +6,7 @@ Does not mutate p/{id}.md, presence, jobs, or cash ledgers.
 from __future__ import annotations
 
 import json
+import math
 import os
 import sys
 from datetime import datetime, timezone
@@ -32,7 +33,9 @@ def freshness(snap: dict[str, Any], now: str | None = None) -> dict[str, Any]:
     except (TypeError, ValueError):
         pass
     threshold = snap.get("stale_after_seconds")
-    valid = isinstance(threshold, (int, float)) and not isinstance(threshold, bool) and threshold >= 0
+    valid = (isinstance(threshold, (int, float)) and not isinstance(threshold, bool)
+             and threshold >= 0
+             and (not isinstance(threshold, float) or math.isfinite(threshold)))
     state = "UNKNOWN" if age is None or age < 0 or not valid else ("STALE" if age > threshold else "FRESH")
     return {"state": state, "snapshot_at": snap.get("now"), "checked_at": checked,
             "age_seconds": age, "stale_after_seconds": threshold,
@@ -48,14 +51,14 @@ def _paginate(items: list, arguments: dict[str, Any], *, field: str) -> tuple[li
         if raw_off in (None, ""):
             raw_off = arguments.get("cursor") or 0
         offset = int(raw_off)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         offset = 0
     if offset < 0:
         offset = 0
     try:
         raw_lim = arguments.get("limit")
         limit = int(raw_lim) if raw_lim not in (None, "") else 0
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         limit = 0
     if limit < 0:
         limit = 0
