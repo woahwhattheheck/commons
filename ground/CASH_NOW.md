@@ -38,6 +38,21 @@ Banking setup is not the only blocker. Current-main
 Every listed offer is price `0`. Tip carries live public checkout product pages (Autopsy $29 + four $199 diagnostics); collected cash remains USD 0 until evidenced. See ## Live cash doors below. The taking file itself is **CARRIER_ONLY**
 until `p/demon-cash-now-overdrive-20260825-01.md` exists on HEAD.
 
+## Live cash doors (tip — collected still USD 0)
+
+Authorization ≠ settlement ≠ bank-available still stands. Tip also
+carries **live public checkout product pages** (do not invent
+Payment Links; do not remint Stripe URLs):
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains **USD 0** until independently evidenced.
+Opening checkout is not bank-available cash.
+
 ## Private provider execution (no public financial data)
 
 NEED: a payout destination connected inside an official provider UI
