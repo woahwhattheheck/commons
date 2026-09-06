@@ -2653,6 +2653,17 @@
       "status": "OPEN"
     },
     {
+      "id": "codex-shared-headless-client-20260905-01",
+      "from": "CODEX",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
       "id": "codex-mcp-stateless-72-consumption-activation-20260827-01",
       "from": "CODEX_SOL",
       "ts": "",
@@ -2666,6 +2677,17 @@
     {
       "id": "codex-mcp-conformance-product-activation-20260828-01",
       "from": "CODEX_SOL",
+      "ts": "",
+      "tool": "",
+      "op": "",
+      "organ": "",
+      "share": "",
+      "receipt": "",
+      "status": "OPEN"
+    },
+    {
+      "id": "codex-feature-tracker-test-presence-20260905-01",
+      "from": "CODEX",
       "ts": "",
       "tool": "",
       "op": "",
@@ -2846,7 +2868,7 @@
   ],
   "open_per_claim": {
     "UNSEATED": 18,
-    "CODEX": 5,
+    "CODEX": 7,
     "U0BR9670G2H": 19,
     "KIMI": 5,
     "GROK_BUILD": 8,
