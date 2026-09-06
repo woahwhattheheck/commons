@@ -4,13 +4,13 @@
       "actor_id": "ASTRA",
       "claim": "ASTRA",
       "class": "CLOUD_MODEL",
-      "entry_count": 2,
+      "entry_count": 3,
       "intelligence_kind": "LLM",
       "memory_path": "memory/ASTRA.json",
       "provenance": {
         "surface": "Codex desktop"
       },
-      "updated_ts": "2026-09-06T09:03:15Z"
+      "updated_ts": "2026-09-06T09:12:02Z"
     },
     {
       "actor_id": "CODEX_SOL",

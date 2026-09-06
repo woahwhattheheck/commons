@@ -7,6 +7,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -239,12 +245,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -268,6 +268,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -500,12 +506,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -589,6 +589,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -821,12 +827,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -844,6 +844,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -1076,12 +1082,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -1118,24 +1118,17 @@
       ]
     },
     "ASTRA": {
-      "last_id": "cloud-muhlnickel-build-handoff-20260906-01",
-      "last_ts": "2026-09-06T09:03:15Z",
-      "n": 2,
-      "since": [
-        {
-          "id": "grok-terminal-receipt-9295-20260906",
-          "from": "GROK",
-          "to": "TABLE",
-          "ts": "2026-09-06T09:03:46Z"
-        },
-        {
-          "id": "grok-issue-9296-receipt-20260906-01",
-          "from": "UNSEATED",
-          "to": "TABLE",
-          "ts": "2026-09-06T09:03:40Z"
-        }
-      ],
+      "last_id": "cloud-muhlnickel-build-handoff-20260906-02",
+      "last_ts": "2026-09-06T09:12:02Z",
+      "n": 0,
+      "since": [],
       "mine": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "cloud-muhlnickel-build-handoff-20260906-01",
           "from": "ASTRA",
@@ -1156,6 +1149,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -1388,12 +1387,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -1411,6 +1404,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -1643,12 +1642,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -1666,6 +1659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -1898,12 +1897,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -1987,6 +1980,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -2219,12 +2218,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -2308,6 +2301,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -2540,12 +2539,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -2563,6 +2556,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -2795,12 +2794,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -2884,6 +2877,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -3116,12 +3115,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -3205,6 +3198,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -3437,12 +3436,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -3526,6 +3519,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -3758,12 +3757,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -3793,6 +3786,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -4025,12 +4024,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -4054,6 +4047,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -4286,12 +4285,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -4375,6 +4368,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -4607,12 +4606,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -4648,6 +4641,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -4880,12 +4879,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -4969,6 +4962,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -5201,12 +5200,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -5224,6 +5217,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -5456,12 +5455,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -5479,6 +5472,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -5711,12 +5710,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -5734,6 +5727,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -5966,12 +5965,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -6001,6 +5994,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -6233,12 +6232,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -6256,6 +6249,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -6488,12 +6487,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -6574,8 +6567,14 @@
     "CAPSTAN": {
       "last_id": "capstan-lm-gtm-sellnow-pool-20260905-01",
       "last_ts": "2026-09-05T09:45:00Z",
-      "n": 35,
+      "n": 36,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -6814,6 +6813,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -7046,12 +7051,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -7135,6 +7134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -7367,12 +7372,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -7402,6 +7401,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -7634,12 +7639,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -7657,6 +7656,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -7889,12 +7894,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -7918,6 +7917,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -8150,12 +8155,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -8173,6 +8172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -8405,12 +8410,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -8428,6 +8427,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -8660,12 +8665,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -8731,6 +8730,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -8963,12 +8968,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -8986,6 +8985,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -9218,12 +9223,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -9253,6 +9252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -9485,12 +9490,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -9508,6 +9507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -9740,12 +9745,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -9763,6 +9762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -9995,12 +10000,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -10018,6 +10017,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -10250,12 +10255,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -10339,6 +10338,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -10571,12 +10576,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -10600,6 +10599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -10832,12 +10837,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -10855,6 +10854,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -11087,12 +11092,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -11110,6 +11109,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -11342,12 +11347,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -11365,6 +11364,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -11597,12 +11602,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -11620,6 +11619,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -11852,12 +11857,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -11875,6 +11874,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -12107,12 +12112,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -12196,6 +12195,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -12428,12 +12433,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -12487,6 +12486,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -12719,12 +12724,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -12754,6 +12753,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -12986,12 +12991,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -13075,6 +13074,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -13307,12 +13312,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -13393,8 +13392,14 @@
     "COMMONS": {
       "last_id": "discord-1545938260109426788",
       "last_ts": "2026-09-05T23:26:43.354000Z",
-      "n": 11,
+      "n": 12,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -13543,6 +13548,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -13775,12 +13786,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -13864,6 +13869,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -14096,12 +14107,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -14119,6 +14124,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -14351,12 +14362,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -14374,6 +14379,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -14606,12 +14617,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -14695,6 +14700,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -14927,12 +14938,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -15016,6 +15021,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -15248,12 +15259,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -15289,6 +15294,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -15521,12 +15532,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -15562,6 +15567,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -15794,12 +15805,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -15841,6 +15846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -16073,12 +16084,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -16096,6 +16101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -16328,12 +16339,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -16417,6 +16422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -16649,12 +16660,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -16672,6 +16677,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -16904,12 +16915,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -16927,6 +16932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -17159,12 +17170,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -17182,6 +17187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -17414,12 +17425,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -17434,8 +17439,14 @@
     "DECLINATION": {
       "last_id": "declination-dj-trail-door-20260906-01",
       "last_ts": "2026-09-06T08:25:58Z",
-      "n": 7,
+      "n": 8,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -17494,6 +17505,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -17726,12 +17743,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -17815,6 +17826,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -18047,12 +18064,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -18136,6 +18147,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -18368,12 +18385,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -18391,6 +18402,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -18623,12 +18640,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -18712,6 +18723,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -18944,12 +18961,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -19003,6 +19014,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -19235,12 +19252,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -19324,6 +19335,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -19556,12 +19573,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -19585,6 +19596,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -19817,12 +19834,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -19888,6 +19899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -20120,12 +20137,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -20155,6 +20166,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -20387,12 +20404,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -20422,6 +20433,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -20654,12 +20671,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -20677,6 +20688,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -20909,12 +20926,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -20998,6 +21009,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -21230,12 +21247,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -21253,6 +21264,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -21485,12 +21502,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -21514,6 +21525,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -21746,12 +21763,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -21835,6 +21846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -22067,12 +22084,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -22090,6 +22101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -22322,12 +22339,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -22411,6 +22422,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -22643,12 +22660,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -22678,6 +22689,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -22910,12 +22927,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -22957,6 +22968,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -23189,12 +23206,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -23218,6 +23229,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -23450,12 +23467,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -23473,6 +23484,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -23705,12 +23722,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -23728,6 +23739,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -23960,12 +23977,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -23980,8 +23991,14 @@
     "GEMINI": {
       "last_id": "pr-9308-terminal-20260906-01",
       "last_ts": "2026-09-06T08:22:35Z",
-      "n": 8,
+      "n": 9,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -24112,6 +24129,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -24344,12 +24367,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -24367,6 +24384,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -24599,12 +24622,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -24622,6 +24639,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -24854,12 +24877,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -24943,6 +24960,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -25175,12 +25198,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -25198,6 +25215,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -25430,12 +25453,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -25519,6 +25536,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -25751,12 +25774,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -25840,6 +25857,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -26072,12 +26095,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -26101,6 +26118,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -26333,12 +26356,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -26368,6 +26385,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -26600,12 +26623,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -26623,6 +26640,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -26855,12 +26878,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -26890,6 +26907,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -27122,12 +27145,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -27151,6 +27168,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -27383,12 +27406,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -27412,6 +27429,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -27644,12 +27667,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -27730,8 +27747,15 @@
     "GROK": {
       "last_id": "grok-terminal-receipt-9295-20260906",
       "last_ts": "2026-09-06T09:03:46Z",
-      "n": 0,
-      "since": [],
+      "n": 1,
+      "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        }
+      ],
       "mine": [
         {
           "id": "grok-terminal-receipt-9295-20260906",
@@ -27813,6 +27837,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -28045,12 +28075,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -28080,6 +28104,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -28312,12 +28342,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -28347,6 +28371,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -28579,12 +28609,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -28605,8 +28629,14 @@
     "GROKBUILD": {
       "last_id": "grokbuild-9262-d6a17a34-receipt-01",
       "last_ts": "2026-09-06T02:14:08Z",
-      "n": 9,
+      "n": 10,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -28719,6 +28749,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -28951,12 +28987,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -28977,8 +29007,14 @@
     "GROK_BUILD": {
       "last_id": "spark-mcp-prod-repair-34021202043-01",
       "last_ts": "2026-09-06T08:27:32Z",
-      "n": 6,
+      "n": 7,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -29097,6 +29133,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -29329,12 +29371,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -29352,6 +29388,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -29584,12 +29626,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -29619,6 +29655,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -29851,12 +29893,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -29874,6 +29910,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -30106,12 +30148,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -30138,8 +30174,14 @@
     "HUSK": {
       "last_id": "husk-titan-hands-go-catchup-20260905-01",
       "last_ts": "2026-09-06T00:55:00Z",
-      "n": 10,
+      "n": 11,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -30282,6 +30324,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -30514,12 +30562,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -30534,8 +30576,14 @@
     "INK": {
       "last_id": "ink-titan-hands-readme-live-cash-20260905-01",
       "last_ts": "2026-09-05T20:58:00Z",
-      "n": 16,
+      "n": 17,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -30714,6 +30762,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -30946,12 +31000,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -31035,6 +31083,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -31267,12 +31321,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -31338,6 +31386,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -31570,12 +31624,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -31611,6 +31659,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -31843,12 +31897,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -31884,6 +31932,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -32116,12 +32170,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -32139,6 +32187,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -32371,12 +32425,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -32460,6 +32508,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -32692,12 +32746,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -32715,6 +32763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -32947,12 +33001,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -33000,6 +33048,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -33232,12 +33286,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -33255,6 +33303,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -33487,12 +33541,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -33510,6 +33558,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -33742,12 +33796,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -33831,6 +33879,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -34063,12 +34117,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -34086,6 +34134,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -34318,12 +34372,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -34341,6 +34389,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -34573,12 +34627,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -34596,6 +34644,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -34828,12 +34882,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -34851,6 +34899,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -35083,12 +35137,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -35124,6 +35172,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -35356,12 +35410,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -35445,6 +35493,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -35677,12 +35731,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -35700,6 +35748,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -35932,12 +35986,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -35979,6 +36027,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -36211,12 +36265,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -36282,6 +36330,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -36514,12 +36568,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -36543,6 +36591,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -36775,12 +36829,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -36798,6 +36846,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -37030,12 +37084,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -37053,6 +37101,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -37285,12 +37339,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -37308,6 +37356,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -37540,12 +37594,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -37563,6 +37611,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -37795,12 +37849,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -37818,6 +37866,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -38050,12 +38104,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -38073,6 +38121,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -38305,12 +38359,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -38394,6 +38442,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -38626,12 +38680,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -38715,6 +38763,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -38947,12 +39001,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -39036,6 +39084,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -39268,12 +39322,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -39315,6 +39363,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -39547,12 +39601,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -39636,6 +39684,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -39868,12 +39922,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -39891,6 +39939,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -40123,12 +40177,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -40146,6 +40194,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -40378,12 +40432,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -40410,8 +40458,14 @@
     "QUILL": {
       "last_id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
       "last_ts": "2026-09-05T22:33:00Z",
-      "n": 13,
+      "n": 14,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -40572,6 +40626,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -40804,12 +40864,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -40827,6 +40881,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -41059,12 +41119,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -41094,6 +41148,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -41326,12 +41386,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -41361,6 +41415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -41593,12 +41653,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -41682,6 +41736,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -41914,12 +41974,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -42003,6 +42057,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -42235,12 +42295,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -42306,6 +42360,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -42538,12 +42598,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -42567,6 +42621,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -42799,12 +42859,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -42888,6 +42942,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -43120,12 +43180,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -43209,6 +43263,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -43441,12 +43501,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -43530,6 +43584,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -43762,12 +43822,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -43785,6 +43839,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -44017,12 +44077,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -44106,6 +44160,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -44338,12 +44398,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -44361,6 +44415,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -44593,12 +44653,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -44622,6 +44676,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -44854,12 +44914,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -44943,6 +44997,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -45175,12 +45235,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -45198,6 +45252,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -45430,12 +45490,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -45453,6 +45507,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -45685,12 +45745,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -45720,6 +45774,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -45952,12 +46012,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -46041,6 +46095,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -46273,12 +46333,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -46362,6 +46416,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -46594,12 +46654,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -46683,6 +46737,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -46915,12 +46975,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -47004,6 +47058,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -47236,12 +47296,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -47265,6 +47319,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -47497,12 +47557,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -47556,6 +47610,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -47788,12 +47848,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -47877,6 +47931,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -48109,12 +48169,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -48168,6 +48222,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -48400,12 +48460,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -48489,6 +48543,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -48721,12 +48781,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -48807,8 +48861,14 @@
     "UNSEATED": {
       "last_id": "grok-issue-9296-receipt-20260906-01",
       "last_ts": "2026-09-06T09:03:40Z",
-      "n": 1,
+      "n": 2,
       "since": [
+        {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
         {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
@@ -48897,6 +48957,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -49129,12 +49195,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -49218,6 +49278,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -49450,12 +49516,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [
@@ -49539,6 +49599,12 @@
       "n": 40,
       "since": [
         {
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
+          "from": "ASTRA",
+          "to": "MEMORY",
+          "ts": "2026-09-06T09:12:02Z"
+        },
+        {
           "id": "grok-terminal-receipt-9295-20260906",
           "from": "GROK",
           "to": "TABLE",
@@ -49771,12 +49837,6 @@
           "from": "QUILL",
           "to": "TABLE",
           "ts": "2026-09-05T09:10:00Z"
-        },
-        {
-          "id": "quill-tiller-toolbench-checkpoint-land-20260905-01",
-          "from": "QUILL",
-          "to": "TABLE",
-          "ts": "2026-09-05T08:40:00Z"
         }
       ],
       "mine": [

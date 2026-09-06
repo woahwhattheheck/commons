@@ -359,7 +359,7 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/9312",
    "base_freshness": {
     "base_sha": "aa10d06c2eae12c689f96d4f0647ef009d56f85e",
-    "main_sha": "9f22ee43dc2323196e7d3bfdbc33451e356ae576",
+    "main_sha": "28fc0d7b4721f20deb869ddf79c4562d548bdaff",
     "ahead_by": null,
     "behind_by": null,
     "label": "STALE_BASE"
@@ -375,10 +375,10 @@
    "html_url": "https://github.com/woahwhattheheck/commons/pull/9317",
    "base_freshness": {
     "base_sha": "9f22ee43dc2323196e7d3bfdbc33451e356ae576",
-    "main_sha": "9f22ee43dc2323196e7d3bfdbc33451e356ae576",
+    "main_sha": "28fc0d7b4721f20deb869ddf79c4562d548bdaff",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",

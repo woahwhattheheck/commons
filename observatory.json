@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "ASTRA",
+      "id": "cloud-muhlnickel-build-handoff-20260906-02",
+      "kind": "MEMORY_APPEND",
+      "to": "MEMORY",
+      "ts": "2026-09-06T09:12:02Z"
+    },
+    {
       "from": "GROK",
       "id": "grok-terminal-receipt-9295-20260906",
       "kind": null,
@@ -144,13 +151,6 @@
       "kind": "BUILD",
       "to": "TABLE",
       "ts": "2026-09-05T20:55:00Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545887235293970544",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T20:03:58.090000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9f81e419f1bea576c07a72d8cbe27941e83f85b7394517111e30f44d932f4f1b",
+  "digest": "9376ebc8d22bb5ada413b51f6d7940ff713f3dc9467f4d4f17d3c05f62b499ac",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9322,
-    "pulse_seq": 1587,
-    "sha": "9dcd67a1945e9252288b0dd16d40051efdb3ad8e"
+    "post_count": 9323,
+    "pulse_seq": 1588,
+    "sha": "6ead28331b054700a9cdff1cb9d9dbecf178ec90"
   },
-  "now": "2026-09-06T09:12:29Z",
+  "now": "2026-09-06T09:14:36Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -448,18 +448,18 @@
         {
           "claim": "ASTRA",
           "grade": "OBSERVED",
-          "id": "cloud-muhlnickel-build-handoff-20260906-01",
+          "id": "cloud-muhlnickel-build-handoff-20260906-02",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "cloud-muhlnickel-build-handoff-20260906-01",
+      "id": "cloud-muhlnickel-build-handoff-20260906-02",
       "is_session": false,
       "last_to": "MEMORY",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-06T09:03:15Z"
+      "ts": "2026-09-06T09:12:02Z"
     },
     {
       "claim": "ATLAS",
