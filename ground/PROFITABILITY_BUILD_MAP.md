@@ -60,3 +60,15 @@ The live $45,000 Titan checkout is in `land/sku-muhlnickel-titan-20260826.md`. W
 ## Evidence rule
 
 Every external listing, outreach batch, reply, deposit, delivery, dataset release, license, collaboration, grant submission, and paid outcome gets its own dated receipt with a source link or exact commit. “Planned” never becomes “shipped” without that evidence.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-26 — do not remint.
