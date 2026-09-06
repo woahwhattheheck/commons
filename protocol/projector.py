@@ -726,16 +726,33 @@ def project(
                 "provenance": "PROTOCOL_EVENT",
                 "head_sha": event.get("head_sha") or "",
                 "expected_next": EXPECTED_NEXT.get(UNKNOWN, UNKNOWN),
-                "evidence": list(event.get("evidence") or []),
+                "evidence": [],
             })
+            # Events are already deduplicated and chronologically ordered.
+            # Keep latest known task metadata and retain its full work history.
+            task["last_kind"] = event["kind"]
+            if event["ts"] != UNKNOWN:
+                task["last_ts"] = event["ts"]
+            for field in ("checkpoint", "semantic_area"):
+                if event[field] != UNKNOWN:
+                    task[field] = event[field]
+            if event.get("head_sha"):
+                task["head_sha"] = event["head_sha"]
+            for field, source_field in (("claimed_paths", "claimed_paths"), ("lineage", "parent_ids")):
+                for value in event.get(source_field) or []:
+                    if value not in task[field]:
+                        task[field].append(value)
+            task["evidence"].extend(event.get("evidence") or [])
             if event["kind"] in TERMINAL_EVENT_KINDS:
                 task["state"] = "TERMINAL" if event["kind"] != "RELEASE" else "RELEASED"
                 if event["kind"] == "SUPERSEDED":
                     task["state"] = "SUPERSEDED"
             elif event["kind"] == "BLOCKED":
                 task["state"] = "BLOCKED"
+                task["blocker"] = dict(event["blocker"])
             elif event["kind"] in WORKING_EVENT_KINDS:
                 task["state"] = "WORKING"
+                task["blocker"] = {"type": UNKNOWN, "detail": UNKNOWN}
             if event.get("objective") and event["objective"] != UNKNOWN:
                 task["objective"] = event["objective"]
             if sid != UNKNOWN:
