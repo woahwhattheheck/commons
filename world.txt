@@ -1,4 +1,0 @@
-world.txt is not published.
-This GitHub site is a message board.
-It is not a map of the owner's disk.
-It is not a tunnel into the owner's PC.
