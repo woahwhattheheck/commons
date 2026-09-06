@@ -59,6 +59,7 @@ jobs:
           git merge-base --is-ancestor ee14634ab1ed99d6002d8455f11b0dcb663f4c85 HEAD
           test "$(git rev-parse HEAD:tools.json)" = "1d914f015e75553e4857eb01ab0c3078c93acff3"
           test "$(git rev-parse HEAD:test_coil_tools_json_live_cash.py)" = "0271ead389ac1fa7f169cae3e1a02c77984a3c63"
+          test "$(git rev-parse HEAD:test_digit_mcp_tool_drift_eyebrow.py)" = "d3949f12b85388384e46014028423276f9f436df"
           python3 open_door_guard.py --diff 1667d0adb97ba691a5cfafb5bd144174fb0a18c0^ 1667d0adb97ba691a5cfafb5bd144174fb0a18c0
           python3 test_coil_tools_json_live_cash.py
           git merge-base --is-ancestor 55ad22389764383c71f4659dbb700c7092b2fa7b HEAD
@@ -90,12 +91,26 @@ jobs:
               current = subprocess.check_output(["git", "rev-parse", "origin/main:" + path], text=True).strip()
               assert tested == checked == current, path
               print("READBACK", path, current)
+          for path in ["feature-tracker.json", "feature-tracker.html"]:
+              projected = subprocess.check_output(["git", "rev-parse", "2b7794d2eb5134007d3ea4ba935ab11e7f4f80b0:" + path], text=True).strip()
+              checked = subprocess.check_output(["git", "rev-parse", "HEAD:" + path], text=True).strip()
+              current = subprocess.check_output(["git", "rev-parse", "origin/main:" + path], text=True).strip()
+              assert projected == checked == current, path
+              print("PROJECTED_READBACK", path, current)
+          for path in ["tools.json", "test_coil_tools_json_live_cash.py", "revenue/agent_failure_autopsy/offer.json", "test_digit_mcp_tool_drift_eyebrow.py", "mcp-tool-drift.html"]:
+              checked = subprocess.check_output(["git", "rev-parse", "HEAD:" + path], text=True).strip()
+              current = subprocess.check_output(["git", "rev-parse", "origin/main:" + path], text=True).strip()
+              assert checked == current, path
+              print("NEW_TEST_READBACK", path, current)
+          subprocess.run(["git", "merge-base", "--is-ancestor", "2b7794d2eb5134007d3ea4ba935ab11e7f4f80b0", "origin/main"], check=True)
           subprocess.run(["git", "merge-base", "--is-ancestor", "49dd90b1ac4fa162ce0bf6474069d986415cd0c8", "origin/main"], check=True)
           dirty = subprocess.check_output(["git", "status", "--porcelain=v1", "--untracked-files=all"], text=True).strip()
           assert not dirty, dirty
           main_sha = subprocess.check_output(["git", "rev-parse", "origin/main"], text=True).strip()
           packet = {"outcome": "fixed", "observed_broken": True, "expected_contract": "Published CRM6 freshness implementation did not execute; existing twelve-hour warning needs an executable source-age report.", "changed_paths": paths, "tests": ["Focused CRM6 tests and actual CLI passed in Actions run " + proof_id], "main_sha": main_sha, "readback_verified": True}
           subprocess.run(["python3", "fix_first.py", "--json", json.dumps(packet)], check=True)
+          extra_packet = {"outcome": "fixed", "observed_broken": True, "expected_contract": "Autopsy catalog sku matches canonical offer_id; root-level drift test reads repository HTML", "changed_paths": ["tools.json", "test_coil_tools_json_live_cash.py", "test_digit_mcp_tool_drift_eyebrow.py"], "tests": ["Current audit: cash unittest and drift eyebrow function PASS"], "main_sha": "55ad22389764383c71f4659dbb700c7092b2fa7b", "readback_verified": True}
+          subprocess.run(["python3", "fix_first.py", "--json", json.dumps(extra_packet)], check=True)
           print(json.dumps({"state": "LANDED", "work_sha": "305b07297f5e75a946fe5aab14ad1d87cce5ffea", "main_sha": main_sha, "readback_paths": len(paths), "dirty": False, "cached_test_run": proof_id}))
           PY
           cat > "$RUNNER_TEMP/audit_git_terminal.py" <<'AUDIT_PY'
