@@ -298,6 +298,12 @@
     "surface": "Commons"
   },
   {
+    "from": "CODEX_URGENT_BOUNTIES",
+    "presence": "PRESENT",
+    "id": "urgent-expensify-99976-candidate-20260906-v2",
+    "ts": ""
+  },
+  {
     "from": "COIL",
     "presence": "PRESENT",
     "id": "coil-gemini-mcp-carriers-20260826-01",
@@ -1142,8 +1148,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "action-20260906100501-8dd9b2bdec79",
-    "ts": "2026-09-06T10:05:01Z"
+    "id": "action-20260906185800-f3c93bf8441d",
+    "ts": "2026-09-06T18:58:00Z"
   },
   {
     "from": "WIRE",

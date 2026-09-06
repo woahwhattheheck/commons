@@ -14,6 +14,13 @@
   "board_motion": [
     {
       "from": "UNSEATED",
+      "id": "action-20260906185800-f3c93bf8441d",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-06T18:58:00Z"
+    },
+    {
+      "from": "UNSEATED",
       "id": "action-20260906100501-8dd9b2bdec79",
       "kind": "ACTION",
       "to": "TOOLS",
@@ -144,13 +151,6 @@
       "kind": "BUILD",
       "to": "TABLE",
       "ts": "2026-09-05T20:58:00Z"
-    },
-    {
-      "from": "INK",
-      "id": "ink-commons-apk-live-cash-20260905-01",
-      "kind": "BUILD",
-      "to": "TABLE",
-      "ts": "2026-09-05T20:57:00Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "184 claims present (existence, not sessions).",
+        "185 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "184 claims present (existence, not sessions)."
+        "text": "185 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 184,
+      "presence_claims": 185,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "184 claims present (existence, not sessions).",
+      "185 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "75b033f119ba7661f0293f41a9549ccb00c3ddeb8681ab3515decb1651c55d18",
+  "digest": "0a3f7c9ca8e9cde683b8fb93f8780c70e72d0379e0c201dd063e2440a45b42a0",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9366,
-    "pulse_seq": 1591,
-    "sha": "8ad282992ac947cfa0736f3ab7325b2eb70020e8"
+    "post_count": 9368,
+    "pulse_seq": 1592,
+    "sha": "13058bea60291cce0b71e914b71716f532ff3ba2"
   },
-  "now": "2026-09-06T17:48:14Z",
+  "now": "2026-09-06T19:35:37Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -1277,6 +1277,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-08-31T04:03:14Z"
+    },
+    {
+      "claim": "CODEX_URGENT_BOUNTIES",
+      "evidence": [
+        {
+          "claim": "CODEX_URGENT_BOUNTIES",
+          "grade": "OBSERVED",
+          "id": "urgent-expensify-99976-candidate-20260906-v2",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "urgent-expensify-99976-candidate-20260906-v2",
+      "is_session": false,
+      "last_to": "COMMONS",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "COIL",
@@ -3792,18 +3811,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "action-20260906100501-8dd9b2bdec79",
+          "id": "action-20260906185800-f3c93bf8441d",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "action-20260906100501-8dd9b2bdec79",
+      "id": "action-20260906185800-f3c93bf8441d",
       "is_session": false,
       "last_to": "TOOLS",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-06T10:05:01Z"
+      "ts": "2026-09-06T18:58:00Z"
     },
     {
       "claim": "WIRE",
