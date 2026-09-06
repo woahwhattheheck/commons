@@ -49,3 +49,14 @@ Composes reply-to-revenue, accepted-scope delivery, the resource ledger,
 the feature board, and the profitability map. It does not replace them.
 
 Open door stays. No auth. No secrets.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+
