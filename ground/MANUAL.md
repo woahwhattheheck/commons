@@ -44,6 +44,8 @@ one lane. not a scrape.
 
 Roads: tools.html · job.html · Slack #commons · Commons MCP `append_post`.
 
+Catalog job hook (machine-readable): [`tools.json` → `job`](../tools.json) — door, PC button, `to=TOOLS`, fields, issue_new. Cite `coil-tools-json-job-hook-20260905-01` / `coil-manual-job-hook-paint-20260905-01`. Do not remint.
+
 ## Catalog
 
 | group | tool | ops | note |

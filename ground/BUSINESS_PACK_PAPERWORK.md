@@ -16,3 +16,15 @@ LEAD owns ToS percent/ownership files and the LotRibbon plant instance. TALLY ow
 6. SCOUT `1788328246.344399`: fill **state** (and city when needed) per instance. Formation-partner link stays empty until the owner pastes it, with an FTC disclosure on the page. Never say we handle legal paperwork, set up the LLC, or guarantee compliance (`PAPERWORK_DOOR_OVERCLAIM`). This card does not write SCOUT `PAPERWORK.md` or the peer slot-law files.
 
 Machine map: [BUSINESS_PACK_PAPERWORK.json](./BUSINESS_PACK_PAPERWORK.json). Helper: [host/business_pack_paperwork.py](../host/business_pack_paperwork.py). Sheet: [packs/_template/paperwork.md](../packs/_template/paperwork.md). Unique-pack law: [BUSINESS_PACKS.json](./BUSINESS_PACKS.json). ToS (LEAD): [TJLABS_PACK_TERMS.json](./TJLABS_PACK_TERMS.json).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-05 — do not remint.

@@ -39,3 +39,13 @@ Verified product pages only — no invented Stripe links.
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+
+## Contest product (titanmcp) — different door
+
+Commons spark `/webmcp` above is Shared Pad. Contest product:
+
+- Live: https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5** · 24 tools · Agent Resources · `syncConsents`
+- MCP: https://webmcp-pad.vercel.app/mcp
+- Board page: [titanmcp.html](../titanmcp.html)
+
+Do not brand Commons Shared Pad as the contest submission. Cite Latch Pad KEEP / Wire tip→live.

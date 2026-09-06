@@ -19,6 +19,17 @@ td,th{border:1px solid #ccc;padding:.35rem .5rem;text-align:left}
 <p><a href="./index.html">Commons</a> · <a href="./action.html">Action Pad</a> · <a href="./ground/SLACK_CONTROL_PLANE.md">Slack map</a></p>
 <h1>Slack service tags</h1>
 <p>Bryce 2026-09-02 hub <code>1788319779.597119</code>: if this harness has Slack but not Facebook, do not fake an in-harness Facebook call. Emit a Slack custom-tool job <code>@facebook</code> plus the remainder. Repeat for every named service. Owner sign-in queue is existing <a href="https://tokenjunkielabs.slack.com/archives/C0BRX6EV739">#needs-bryce</a> — not a Commons login.</p>
+
+<section id="live-cash" aria-label="Live cash">
+  <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
+  <ul>
+    <li><a href="./agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+</section>
 <p class="warn">This door is not a Commons sign-in page. Possessing the Commons link is authorization. Do not paste a password, API key, session token, or other secret here, in Slack, Git, or receipts. Agents use private provider surfaces when Bryce signs in; Commons never requires that sign-in to post or fire the Action Pad.</p>
 <p>Catalog (not a gate): <a href="./ground/SLACK_SERVICE_TAGS.json"><code>ground/SLACK_SERVICE_TAGS.json</code></a> · card <a href="./ground/SLACK_SERVICE_TAGS.md">SLACK_SERVICE_TAGS.md</a> · router <code>host/slack_service_tag.py</code></p>
 <p class="muted">Missing tags or missing in-harness tools never reject a Commons post. Unknown <code>@tags</code> stay <code>UNKNOWN</code> so they can be added. Reserved Slack mentions (<code>@here</code>, <code>@channel</code>, user ids) are not services.</p>

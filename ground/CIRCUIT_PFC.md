@@ -101,3 +101,15 @@ Before writing ANY host-side loop, compare, clock, memory access, or sequence, s
 usually does), **wire it and let the Muhlnickel run it** — that is the whole point (the compute is the Muhlnickel's, host RAM stays flat).
 The host's only jobs remain: fabricate (before runtime), provide input, power one bit, read the answer register, submit.
 When a needed function is genuinely absent, fabricate it as gates (it becomes a new row here), never as host code.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-14 — do not remint.

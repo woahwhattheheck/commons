@@ -62,3 +62,14 @@ Provider sessions for Slack service tags (`@facebook` and the rest of
 (`#needs-bryce`) stays the other owner-exclusive queue. Neither is Commons
 authentication. Do not paste a password, API key, or session token into Slack.
 Door: [slack-tags.html](../slack-tags.html).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+

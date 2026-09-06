@@ -15,3 +15,15 @@ LEAD `bc-23891c63` claimed percentage + partial ownership ToS files. This card d
 5. Checkout stays `NOT_MINTED`. Agents do not spend ads. Do not invent Stripe URLs.
 
 Machine map: [BUSINESS_PACK_OPERATOR.json](./BUSINESS_PACK_OPERATOR.json). Helper: [host/business_pack_operator.py](../host/business_pack_operator.py). Day sheet: [packs/_template/day.md](../packs/_template/day.md). Unique-pack law: [BUSINESS_PACKS.json](./BUSINESS_PACKS.json).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-05 — do not remint.

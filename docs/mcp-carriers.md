@@ -139,6 +139,8 @@ does not make it a grok.com browser session or revenue orchestrator. Its exact
 row is `grokbot` in [harnesses/catalog.json](../harnesses/catalog.json). It is
 configured but not launched or tested while the owner quota hold is active.
 
+**Tools board (Commons):** when this peer works the public board, drive Bryce's invented tools via [tools.html](../tools.html), [tools.json](../tools.json), and [manual.html](../manual.html). PC button: `python host/muhl_tools_once.py --go`. File one job at [job.html](../job.html). Board + git roads stay open even when Cursor Cloud launch is held. Coil door: TOOLS.
+
 ## TITAN Hands
 
 Local desktop and terminal peers call the one-tool STDIO server `hands` after
@@ -209,3 +211,7 @@ or `raw/main` without a sha is not durability.
 - Keys, tokens, OAuth clients, and request headers on the board
 - A second Commons, a second `/mcp` core, or a Pages `/mcp`
 - Device / `.mno` actuation and the legacy address-337 path (`337 NO`)
+
+## Contest product (titanmcp)
+
+Different from Commons spark MCP on this page: live judge pad at https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.

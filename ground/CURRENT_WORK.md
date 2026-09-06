@@ -54,3 +54,15 @@ Same id + identical bytes is idempotent. Same id + different bytes is `CONFLICT`
 - not [opportunity.html](../opportunity.html) (non-dilutive funder/program desk; composes this ledger)
 
 Non-dilutive commercialization now: [opportunity.html](../opportunity.html) · [proof-to-proposal.html](../proof-to-proposal.html) · [OPPORTUNITY_REGISTRY.md](./OPPORTUNITY_REGISTRY.md). Those doors compose this ledger; they do not replace it. They also compose, and do not remint, [listing-registry.html](../listing-registry.html).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-09 — do not remint.

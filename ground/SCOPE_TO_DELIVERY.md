@@ -61,3 +61,14 @@ they are not live buyers.
 No login. No secrets on public main. Buyer names, emails, and addresses are
 never filled. Possessing the link is sufficient to read the composer and run
 it against the public fixtures.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+

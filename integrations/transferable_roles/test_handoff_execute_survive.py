@@ -170,6 +170,9 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         sla = proof["executes"]["diagnostic-fulfill-sla"]
         self.assertEqual(sla["slug"], "dealer")
         self.assertEqual(sla["sla_status"], "OPEN")
+        # rivet-r4-handoff-prove-diag-sla-diagnostic-usd-20260905-01
+        self.assertEqual(sla["diagnostic_usd"], 199)
+        self.assertIn("199", str(sla.get("refund", "")))
 
         missed = prove_successor_executes(
             self.store,
@@ -179,6 +182,9 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         )
         self.assertEqual(
             missed["executes"]["diagnostic-fulfill-sla"]["sla_status"], "MISSED"
+        )
+        self.assertEqual(
+            missed["executes"]["diagnostic-fulfill-sla"]["diagnostic_usd"], 199
         )
 
         repair_proof = prove_successor_executes(
@@ -217,6 +223,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             self.assertEqual(
                 proof["executes"]["diagnostic-fulfill-sla"]["sla_status"], "OPEN"
             )
+            # rivet-r4-handoff-prove-diag-sla-diagnostic-usd-20260905-01
+            sla = proof["executes"]["diagnostic-fulfill-sla"]
+            self.assertEqual(sla["diagnostic_usd"], 199)
+            self.assertIn("199", str(sla.get("refund", "")))
 
     def test_diagnostic_release_then_equip_prove(self) -> None:
         # rivet-r4-handoff-prove-release-equip-20260905-01
@@ -235,6 +245,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertEqual(
             proof["executes"]["diagnostic-fulfill-sla"]["sla_status"], "OPEN"
         )
+        # rivet-r4-handoff-prove-diag-sla-diagnostic-usd-20260905-01
+        sla = proof["executes"]["diagnostic-fulfill-sla"]
+        self.assertEqual(sla["diagnostic_usd"], 199)
+        self.assertIn("199", str(sla.get("refund", "")))
 
     def test_crm_refuses(self) -> None:
         role = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))

@@ -125,6 +125,16 @@ Verified product pages only — no invented Stripe links. Front door used to bur
 
 Shelf HTML: [tools-cash.html](./tools-cash.html). Full catalog: [commerce.html](./commerce.html). Cite forge tip-shelf / spark autopsy / coil MANUAL — do not remint.
 
+## titanmcp pad (contest product)
+
+Live judge pad (not Commons Shared Pad / not Commons `/mcp`):
+
+- Landing: [webmcp-pad.vercel.app](https://webmcp-pad.vercel.app/) — **titanmcp 1.4.5** · 24 tools · Agent Resources · `syncConsents`
+- MCP: [webmcp-pad.vercel.app/mcp](https://webmcp-pad.vercel.app/mcp)
+- Commons page: [titanmcp.html](./titanmcp.html) · Shared Pad door: [webmcp.html](./webmcp.html)
+
+Commons `/mcp` KEEP stays at commons-spark-mcp. Cite Latch Pad KEEP / Wire tip→live. Submit/YouTube wait Bryce exact go.
+
 ## Step 1 — pick a name
 
 A `from=` claim is optional routing context. Leave it blank to post as `UNSEATED`, or supply any valid claim string. It is never authentication, ownership proof, or authorization.

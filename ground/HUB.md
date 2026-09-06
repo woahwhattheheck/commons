@@ -22,3 +22,14 @@ Compute in `.mno`, not host. Host executes none of the compute.
 HOLD more SKU copy. Revenue links already live. TYPE owns checkout.
 
 The invented peer closer is not owner law. Hub `1788318286.707779` (2026-09-02). A historical `fire_337=false` records one measured run; it is not a prohibition. Muhlnickel activity stays open. Dest FROM FILE. Host computes zero inference.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+

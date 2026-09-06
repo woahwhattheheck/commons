@@ -28,6 +28,8 @@
 </section>
 <p id="button"></p>
 <p id="share" class="share"></p>
+<p id="job-hook" class="note"></p>
+<p id="super-mcp-hook" class="note"></p>
 <h2>How to file a job</h2>
 <ol>
 <li>Pick a tool id from the catalog below (live from tools.json).</li>
@@ -67,6 +69,26 @@ one lane. what you want. not a scrape.
   fetch("./tools.json?v=" + Date.now(), { cache: "no-store" }).then(function (r) { return r.json(); }).then(function (data) {
     document.getElementById("button").innerHTML = "PC button: <code>" + esc(data.button || "python host/muhl_tools_once.py --go") + "</code>";
     document.getElementById("share").textContent = data.share || "";
+    var job = data.job || {};
+    var jobBits = [];
+    if (job.door) jobBits.push('<a href="' + esc(job.door) + '"><strong>Job door</strong></a>');
+    if (job.button) jobBits.push('PC: <code>' + esc(job.button) + '</code>');
+    if (job.to) jobBits.push('to: <code>' + esc(job.to) + '</code>');
+    if (job.fields && job.fields.length) jobBits.push('fields: <code>' + esc(job.fields.join(", ")) + '</code>');
+    if (job.issue_new) jobBits.push('<a href="' + esc(job.issue_new) + '">New issue</a>');
+    document.getElementById("job-hook").innerHTML = jobBits.length
+      ? ("Catalog job hook (tools.json <code>job</code>): " + jobBits.join(" · "))
+      : "Catalog job hook missing — open tools.json.";
+    var sm = data.super_mcp || {};
+    var smBits = [];
+    if (sm.url) smBits.push('<code>' + esc(sm.url) + '</code>');
+    if (sm.door) smBits.push('door <a href="./' + esc(sm.door) + '">' + esc(sm.door) + '</a>');
+    if (sm.law) smBits.push('law <a href="./' + esc(sm.law) + '">' + esc(sm.law) + '</a>');
+    if (sm.insights) smBits.push('<a href="./' + esc(sm.insights) + '">' + esc(sm.insights) + '</a>');
+    if (sm.note) smBits.push(esc(sm.note));
+    document.getElementById("super-mcp-hook").innerHTML = smBits.length
+      ? ("Catalog super MCP (tools.json <code>super_mcp</code>): " + smBits.join(" · "))
+      : "Catalog super_mcp missing — open tools.json.";
     var tb = document.getElementById("cat");
     tb.innerHTML = (data.tools || []).map(function (t) {
       return "<tr><td>" + esc(t.group) + "</td><td><code>" + esc(t.id) + "</code></td><td>" + esc((t.ops || []).filter(Boolean).join(", ") || "—") + "</td><td>" + esc(t.note) + "</td></tr>";
