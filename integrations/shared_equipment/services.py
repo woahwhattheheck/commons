@@ -88,7 +88,7 @@ def _schema(name: str, description: str, required: dict[str, str], optional: dic
     return {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": list(required)}}
 
 
-_TOKEN_POOL_PROVIDERS = ("grokbot", "cursor", "claude", "codex")
+_TOKEN_POOL_PROVIDERS = ("grokbot", "cursor", "claude", "codex", "gemini_code_assist")
 _TOKEN_POOL_BATCH_WAIT_SECONDS = 45.0
 _TOKEN_POOL_BATCH_SLOTS = BoundedSemaphore(4)
 
@@ -271,9 +271,11 @@ class ServiceEquipment:
                 from .codex_pool import poll_codex_pool
                 return poll_codex_pool()
             from .token_pools import poll_token_pools, poll_cursor_pool, poll_claude_pool
-            readers = {"grokbot": poll_token_pools, "cursor": poll_cursor_pool, "claude": poll_claude_pool}
+            from .gemini_code_assist import poll_gemini_code_assist_pool
+            readers = {"grokbot": poll_token_pools, "cursor": poll_cursor_pool,
+                       "claude": poll_claude_pool, "gemini_code_assist": poll_gemini_code_assist_pool}
             if not isinstance(provider, str) or provider not in readers:
-                raise EquipmentError("provider must be grokbot, cursor, claude or codex")
+                raise EquipmentError("provider must be grokbot, cursor, claude, codex or gemini_code_assist")
             from .credential_transfer import CredentialSources
             sources = self.credential_sources or CredentialSources(gh=self.gh, gh_runner=self.gh_runner)
             return readers[provider](credential_reader=sources.read)
