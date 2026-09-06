@@ -13,7 +13,7 @@ It NEVER ripples/evaluates the pfc's gates (the forbidden EXECUTOR) and NEVER wr
 
   python host/pfc_bitcoin_autopilot.py [cycles] [wait_s]   # cycles: 0 = forever (default); wait_s: signal-settle wait (default 3)
 """
-import argparse, hashlib, json, math, mmap, os, socket, struct, sys, time
+import argparse, hashlib, json, math, mmap, os, socket, struct, sys, tempfile, time
 
 TITAN = "C:/llm/models/titan.gguf"; REG = "C:/llm/models/titan_circuits.json"
 FOLD_MAN = "C:/llm/sdc_fold/manifest.json"; FED = "C:/llm/sdc_fold/federation.json"
@@ -204,6 +204,31 @@ def wait_for_job(c, wait_s):
         raise
 
 
+def publish_receipt(receipt):
+    """Stage complete JSON beside JOB, then publish it with one replacement."""
+    serialized = json.dumps(receipt)
+    destination = os.path.abspath(JOB)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile(
+                mode="w", encoding="utf-8", dir=os.path.dirname(destination),
+                prefix="." + os.path.basename(destination) + ".", suffix=".tmp",
+                delete=False) as receipt_file:
+            temporary = receipt_file.name
+            if receipt_file.write(serialized) != len(serialized):
+                raise OSError("incomplete receipt write")
+            receipt_file.flush()
+        # Close the staging handle before replacement, including on Windows.
+        os.replace(temporary, destination)
+        temporary = None
+    finally:
+        if temporary is not None:
+            try:
+                os.unlink(temporary)
+            except FileNotFoundError:
+                pass
+
+
 def cycle(reg, wait_s=WAIT):
     c = Conn(); verdict = None; connection_error = None; protocol_error = None
     stale = False; submission_attempted = False; submission_error = None
@@ -287,9 +312,8 @@ def cycle(reg, wait_s=WAIT):
     print(f"  [autopilot] NEW block {job['job_id']} target {zb} zbits -> stored into input window, one signal fired; "
           f"{answer_description} -> {submission}; pool: {pool}", flush=True)
     os.makedirs(OUT, exist_ok=True)
-    with open(JOB, "w") as receipt_file:
-        json.dump({"job_id": job["job_id"], "zbits": zb, "answer": answer, "answer_error": answer_error,
-                   "pool": pool, "verdict": verdict, "submission_attempted": submission_attempted}, receipt_file)
+    publish_receipt({"job_id": job["job_id"], "zbits": zb, "answer": answer, "answer_error": answer_error,
+                     "pool": pool, "verdict": verdict, "submission_attempted": submission_attempted})
 
 
 def main(argv=None):
