@@ -176,10 +176,16 @@ class WebmcpPadProductionWorkflowTests(unittest.TestCase):
     def setUp(self) -> None:
         self.text = WORKFLOW.read_text(encoding="utf-8")
 
-    def test_dispatch_only_and_never_targets_commons_mcp(self) -> None:
+    def test_marker_push_and_dispatch_never_target_commons_mcp(self) -> None:
         self.assertIn("workflow_dispatch:", self.text)
         self.assertNotIn("pull_request:", self.text)
-        self.assertNotRegex(self.text, r"(?m)^on:\n(?:  .*\n)*  push:")
+        triggers = self.text.split("\non:\n", 1)[1].split("\nconcurrency:", 1)[0]
+        push = triggers.split("  push:\n", 1)[1].split("  workflow_dispatch:", 1)[0]
+        push_lines = [
+            line.strip() for line in push.splitlines()
+            if line.strip() and not line.lstrip().startswith("#")
+        ]
+        self.assertEqual(push_lines, ["paths:", '- ".wire/trigger-tip-live"'])
         self.assertNotIn("commons-spark-mcp.vercel.app", self.text)
         self.assertIn("refusing to deploy webmcp-pad into commons-spark-mcp", self.text)
         self.assertIn("FORBIDDEN_PROJECT_ID", self.text)
