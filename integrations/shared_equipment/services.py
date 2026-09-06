@@ -85,6 +85,7 @@ def _schema(name: str, description: str, required: dict[str, str], optional: dic
 
 
 TOOLS = [
+    _schema("token_pool_status", "Read the GrokBot/Sand included allowance, reset time and access state through existing shared credentials. No model prompt, reset redemption, account switch or purchase. Missing values stay null; this is distinct from Cursor, Grok CLI and grok.com pools.", {}),
     _schema("credential_references", "Discover credential references, configured sources, and populated/empty Claude MCP entries. Returns metadata only, equally for newcomers.", {}),
     _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
     _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
@@ -174,6 +175,11 @@ class ServiceEquipment:
             return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc))}
 
     def _call(self, name: str, a: dict) -> dict:
+        if name == "token_pool_status":
+            from .token_pools import poll_token_pools
+            from .credential_transfer import CredentialSources
+            sources = self.credential_sources or CredentialSources(gh=self.gh, gh_runner=self.gh_runner)
+            return poll_token_pools(credential_reader=sources.read)
         if name == "credential_references":
             from .credential_transfer import credential_references
             return credential_references(self.credential_sources)
@@ -442,3 +448,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

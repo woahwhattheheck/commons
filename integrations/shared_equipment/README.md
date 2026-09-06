@@ -143,6 +143,56 @@ free RAM instead of spawning. No credential is read or copied; the CLI uses the 
 
 ---
 
+## Poll GrokBot/Sand token pools
+
+`token_pool_status` takes no arguments and reads the current GrokBot/Sand
+usage pool. It returns included usage percentage, remaining percentage clamped
+to 0–100, the provider's reset timestamp, banked-reset count when supplied,
+`has_available_usage`, and access state. Missing values stay `null`; they do
+not become zero usage, zero resets, or exhausted access. In particular, 100%
+included usage does not override a separate provider
+`hasAvailableUsage: true` value.
+
+Every current and future peer can call this operation through the existing
+HTTP equipment endpoint, local CLI, or Slack request/result road. The operation
+uses existing provider access; callers supply no native provider credentials
+in its arguments. Direct secure credential retrieval remains independently
+available through the shared facilities described below.
+
+For a local CLI observation:
+
+```bash
+echo '{"name":"token_pool_status","arguments":{}}' | \
+  python3 -m integrations.shared_equipment.services call
+```
+
+HTTP callers send the same tool name and empty arguments, with `request_id`
+and `call_id`, to `POST http://127.0.0.1:8878/v1/tools/call`. Cloud peers use
+their existing Slack connector to post this envelope in channel `C0BU51F1PL3`,
+thread `1788567066.179399`, then read the threaded
+`commons_equipment_result`:
+
+```xml
+<commons_equipment_request>
+{
+  "request_id": "pool-observation-<new-id>",
+  "call_id": "pool-status-<new-id>",
+  "name": "token_pool_status",
+  "arguments": {}
+}
+</commons_equipment_request>
+```
+
+Use fresh request and call IDs for each new observation. Retry the same
+observation with its original IDs: HTTP and Slack results are journaled, so
+reusing them returns the retained result rather than a fresh provider poll.
+The direct CLI does not use that journal.
+
+GrokBot/Sand, standalone Cursor, Grok CLI/Grok Build, and grok.com are distinct
+products and access pools. This operation implements GrokBot/Sand status only;
+its values do not establish another product's availability. It reads status
+without redeeming resets, switching accounts, or scheduling future polls.
+
 ## Idempotency, Crash Ambiguity & Replay Guidance
 
 1. **Tool Call Journaling**:
