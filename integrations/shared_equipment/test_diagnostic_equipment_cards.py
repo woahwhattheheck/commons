@@ -376,6 +376,34 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertFalse(repair.get("ok"))
         self.assertEqual(repair.get("error"), "role_refused")
 
+    def _assert_open_obligations_cash_card(self, roles: list) -> None:
+        # wedge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        out = self.eq.call("open_obligations_cash_card", {"roles": roles})
+        self.assertTrue(out.get("ok"), out)
+        rows = out["open_obligations"]
+        paid = []
+        for role in roles:
+            names = {
+                str(route.get("name") or "").strip()
+                for route in (role.get("access_routes") or [])
+                if isinstance(route, dict)
+            }
+            if "payment_capability" in names:
+                paid.append(role)
+        expected = {
+            (role["role_id"], ob["id"])
+            for role in paid
+            for ob in role["obligations"]
+            if ob["status"] == "open"
+        }
+        self.assertEqual(
+            {(row["role_id"], row["obligation_id"]) for row in rows}, expected
+        )
+        self.assertTrue(rows)
+        for row in rows:
+            self.assertIs(row.get("payment_capability"), True)
+            self.assertFalse(row["role_id"].startswith("role-synthetic-crm"))
+
     def test_autopsy_cards_survive_transfer(self) -> None:
         # rivet-r4-equipment-cards-survive-handoff-20260905-01
         with tempfile.TemporaryDirectory() as tmp:
@@ -607,6 +635,81 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             store.release(rid, from_session_id="cr-rel-A")
             store.equip(rid, session_id="cr-rel-B", harness="rivet")
             self._assert_diag_contract_receipt_cards(store.get(rid))
+
+    def test_open_obligations_cash_survive_transfer(self) -> None:
+        # wedge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            crm = store.create(json.loads(CRM.read_text(encoding="utf-8")))
+            autopsy = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            diag = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+            for rid, sess_a, sess_b in (
+                (autopsy["role_id"], "cash-a-A", "cash-a-B"),
+                (diag["role_id"], "cash-d-A", "cash-d-B"),
+            ):
+                store.equip(rid, session_id=sess_a, harness="hinge")
+                store.transfer(
+                    rid,
+                    from_session_id=sess_a,
+                    to_session_id=sess_b,
+                    to_harness="rivet",
+                )
+            self._assert_open_obligations_cash_card(
+                [
+                    store.get(crm["role_id"]),
+                    store.get(autopsy["role_id"]),
+                    store.get(diag["role_id"]),
+                ]
+            )
+
+    def test_open_obligations_cash_survive_export_import_equip(self) -> None:
+        # wedge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        packages = []
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            for path, sess in (
+                (CRM, "cash-exp-crm"),
+                (AUTOPSY, "cash-exp-a"),
+                (DIAG, "cash-exp-d"),
+            ):
+                role = store.create(json.loads(path.read_text(encoding="utf-8")))
+                store.equip(role["role_id"], session_id=sess, harness="hinge")
+                packages.append(store.export_package(role["role_id"]))
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            roles = []
+            for i, package in enumerate(packages):
+                imported = fresh.import_package(package)
+                fresh.equip(
+                    imported["role_id"],
+                    session_id=f"cash-imp-{i}",
+                    harness="rivet",
+                    seat="RIVET",
+                )
+                roles.append(fresh.get(imported["role_id"]))
+            self._assert_open_obligations_cash_card(roles)
+
+    def test_open_obligations_cash_survive_release_equip(self) -> None:
+        # wedge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            crm = store.create(json.loads(CRM.read_text(encoding="utf-8")))
+            autopsy = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            diag = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+            for rid, sess_a, sess_b in (
+                (autopsy["role_id"], "cash-rel-a-A", "cash-rel-a-B"),
+                (diag["role_id"], "cash-rel-d-A", "cash-rel-d-B"),
+            ):
+                store.equip(rid, session_id=sess_a, harness="hinge")
+                store.release(rid, from_session_id=sess_a)
+                store.equip(rid, session_id=sess_b, harness="rivet")
+            self._assert_open_obligations_cash_card(
+                [
+                    store.get(crm["role_id"]),
+                    store.get(autopsy["role_id"]),
+                    store.get(diag["role_id"]),
+                ]
+            )
 
 
 if __name__ == "__main__":
