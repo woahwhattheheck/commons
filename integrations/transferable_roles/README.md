@@ -27,6 +27,7 @@ Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
 Autopsy fulfill SLA status: `wedge-autopsy-fulfill-sla-status-20260905-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
+Equipment fulfill SLA cards: `tenon-r4-equipment-fulfill-sla-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
 Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`
 Handoff prove diag SLA: `hinge-r4-handoff-prove-diag-sla-20260905-01`
@@ -250,8 +251,11 @@ pages/contracts. Roles confer no Stripe access.
 
 After `tenon-r4-equipment-diagnostic-cards-20260905-01`, peer equipment tools
 `diagnostic_contract_card` / `diagnostic_receipt_card` load these same cards
-without hand-importing transferable_roles. These local data helpers do not
-change credential retrieval or service access.
+without hand-importing transferable_roles. After
+`tenon-r4-equipment-fulfill-sla-cards-20260905-01`, also
+`diagnostic_fulfill_deadline_card` / `diagnostic_fulfill_sla_card` and
+`autopsy_fulfill_deadline_card` / `autopsy_fulfill_sla_card`. These local data
+helpers do not change credential retrieval or service access.
 
 ## Access route shapes
 
