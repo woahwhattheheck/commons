@@ -25,6 +25,7 @@ Autopsy fulfill CLI: `hinge-r4-autopsy-fulfill-cli-20260905-01`
 Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
 Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
+Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
 Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`
 
@@ -238,6 +239,11 @@ CLI `diagnostic-fulfill-sla --slug … --usable-evidence-at … --as-of …` ret
 `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`, `prove-handoff` also
 proves receipt + fulfill-deadline after transfer. Miss remedy sentence
 lives on the product pages/contracts. Roles confer no Stripe access.
+
+After `tenon-r4-equipment-diagnostic-cards-20260905-01`, peer equipment tools
+`diagnostic_contract_card` / `diagnostic_receipt_card` load these same cards
+without hand-importing transferable_roles. These local data helpers do not
+change credential retrieval or service access.
 
 ## Access route shapes
 
