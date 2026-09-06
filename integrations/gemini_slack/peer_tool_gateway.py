@@ -25,6 +25,7 @@ from typing import Any, Callable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from integrations.shared_equipment.services import CombinedCatalog, redacted
+from integrations.gemini_slack.upstream_turn import UpstreamTurnError, wait_peer_turn
 
 
 DEFAULT_UPSTREAM = "http://127.0.0.1:8777"
@@ -36,6 +37,23 @@ TERMINAL = frozenset({"completed", "error", "cancelled", "interrupted"})
 CALL_OPEN = "<commons_tool_call>"
 CALL_CLOSE = "</commons_tool_call>"
 CALL_RE = re.compile(r"^\s*<commons_tool_call>(.*?)</commons_tool_call>\s*$", re.DOTALL)
+
+# The only upstream-handle metadata that may ride into an event: anything
+# else (from a stale prior event or an UpstreamTurnError's .details) is
+# dropped so it cannot collide with reserved event fields like status/message.
+UPSTREAM_HANDLE_KEYS = (
+    "upstream_request_id",
+    "upstream_status_url",
+    "upstream_status",
+    "upstream_terminal",
+    "upstream_error",
+)
+
+
+def _upstream_handle_fields(source: dict[str, Any] | None) -> dict[str, Any]:
+    if not isinstance(source, dict):
+        return {}
+    return {key: source[key] for key in UPSTREAM_HANDLE_KEYS if key in source}
 
 
 class GatewayError(RuntimeError):
@@ -92,24 +110,26 @@ class UpstreamClient:
     def health(self) -> dict[str, Any]:
         return _get_json(self.base_url + "/health", timeout=10)
 
-    def turn(self, peer: str, message: str) -> str:
-        encoded = base64.b64encode(message.encode("utf-8")).decode("ascii")
-        response = _post_json(
-            self.base_url + "/v1/message",
-            {"peer": peer, "message_utf8_base64": encoded},
-            timeout=700,
+    def turn(
+        self,
+        peer: str,
+        message: str,
+        *,
+        cancelled: Callable[[], bool] | None = None,
+        on_submitted: Callable[[dict[str, Any]], None] | None = None,
+    ) -> str:
+        # Submission is a single async POST that hands back a recoverable
+        # upstream handle; the long wait is a poll loop, not a held socket,
+        # so a lost local process no longer loses the in-flight operation.
+        return wait_peer_turn(
+            self.base_url,
+            peer,
+            message,
+            post_json=_post_json,
+            get_json=_get_json,
+            cancelled=cancelled,
+            on_submitted=on_submitted,
         )
-        if not response.get("ok"):
-            raise GatewayError("upstream peer turn failed")
-        if isinstance(response.get("reply_utf8_base64"), str):
-            try:
-                return base64.b64decode(response["reply_utf8_base64"], validate=True).decode("utf-8")
-            except (ValueError, UnicodeError) as exc:
-                raise GatewayError("upstream reply was not byte-safe UTF-8") from exc
-        reply = response.get("reply")
-        if not isinstance(reply, str):
-            raise GatewayError("upstream returned no reply")
-        return reply
 
 
 class McpCatalog:
@@ -297,16 +317,26 @@ class ToolLoop:
         self.max_steps = max_steps
         self.max_protocol_retries = max_protocol_retries
 
-    def run(self, request_id: str, peer: str, message: str, cancelled=None) -> str:
+    def run(
+        self,
+        request_id: str,
+        peer: str,
+        message: str,
+        cancelled: threading.Event | None = None,
+        on_submitted: Callable[[dict[str, Any]], None] | None = None,
+    ) -> str:
         tools = self.catalog.tools()
         names = {item["name"] for item in tools}
         prompt = _tool_prompt(message, tools)
         tool_calls = 0
         protocol_retries = 0
+        is_cancelled = cancelled.is_set if cancelled is not None else None
         while True:
             if cancelled is not None and cancelled.is_set():
                 raise InterruptedError("request cancelled before next model/tool operation")
-            reply = self.upstream.turn(peer, prompt)
+            reply = self.upstream.turn(
+                peer, prompt, cancelled=is_cancelled, on_submitted=on_submitted
+            )
             if cancelled is not None and cancelled.is_set():
                 raise InterruptedError("request cancelled after in-flight model turn returned")
             call, had_marker = _parse_call(reply)
@@ -466,8 +496,19 @@ class ToolGateway(ThreadingHTTPServer):
         # service write or restart an old conversation automatically.
         for event in list(events._latest.values()):
             if event.get("status") not in TERMINAL:
-                events.append(request_id=event["request_id"], peer=event.get("peer"),
-                    status="interrupted", message="gateway restarted; inspect tool journal before follow-up")
+                events.append(
+                    request_id=event["request_id"],
+                    peer=event.get("peer"),
+                    status="interrupted",
+                    message="gateway restarted; remote work may continue at the retained upstream handle",
+                    **{
+                        **_upstream_handle_fields(event),
+                        # Restart means this process lost track of the turn, not
+                        # that the upstream operation was told to stop.
+                        "upstream_status": "unknown",
+                        "upstream_terminal": False,
+                    },
+                )
 
     @staticmethod
     def normalize_peer(value: Any) -> str:
@@ -520,9 +561,32 @@ class ToolGateway(ThreadingHTTPServer):
 
     def execute(self, request_id: str, peer: str, message: str) -> dict[str, Any]:
         started = time.monotonic()
+        # Latest recoverable upstream handle for this request; carried into
+        # whichever terminal event eventually closes it out, so a lost local
+        # process (or a cancellation) still leaves behind where to look upstream.
+        handle: dict[str, Any] = {}
+
+        def on_submitted(info: dict[str, Any]) -> None:
+            handle.update(
+                upstream_request_id=info.get("upstream_request_id"),
+                upstream_status_url=info.get("upstream_status_url"),
+            )
+            self.events.append(
+                request_id=request_id,
+                peer=peer,
+                status="running",
+                **handle,
+            )
+
         try:
             self.events.append(request_id=request_id, peer=peer, status="running")
-            reply = self.loop.run(request_id, peer, message, self._cancellations.get(request_id))
+            reply = self.loop.run(
+                request_id,
+                peer,
+                message,
+                self._cancellations.get(request_id),
+                on_submitted,
+            )
             raw = reply.encode("utf-8")
             return self._terminal_event(
                 request_id=request_id,
@@ -532,10 +596,22 @@ class ToolGateway(ThreadingHTTPServer):
                 reply=reply,
                 reply_utf8_base64=base64.b64encode(raw).decode("ascii"),
                 reply_bytes=len(raw),
+                **handle,
+            )
+        except UpstreamTurnError as exc:
+            details = _upstream_handle_fields(getattr(exc, "details", None))
+            return self._terminal_event(
+                request_id=request_id,
+                peer=peer,
+                status="error",
+                elapsed_ms=round((time.monotonic() - started) * 1000),
+                error=type(exc).__name__,
+                message=str(exc),
+                **{**handle, **details},
             )
         except InterruptedError as exc:
             return self._terminal_event(request_id=request_id, peer=peer, status="cancelled",
-                elapsed_ms=round((time.monotonic() - started) * 1000), message=str(exc))
+                elapsed_ms=round((time.monotonic() - started) * 1000), message=str(exc), **handle)
         except Exception as exc:
             return self._terminal_event(
                 request_id=request_id,
@@ -544,6 +620,7 @@ class ToolGateway(ThreadingHTTPServer):
                 elapsed_ms=round((time.monotonic() - started) * 1000),
                 error=type(exc).__name__,
                 message=str(exc),
+                **handle,
             )
 
     def _terminal_event(self, **fields) -> dict:
@@ -559,7 +636,8 @@ class ToolGateway(ThreadingHTTPServer):
                 return {"ok": True, "event": event, "already_terminal": True}
             self._cancellations[request_id].set()
             event = self.events.append(request_id=request_id, peer=event.get("peer"),
-                status="cancel_requested", message="cooperative cancellation; in-flight provider turn may finish, then no further tool effects")
+                status="cancel_requested", message="cooperative cancellation; in-flight provider turn may finish, then no further tool effects",
+                **_upstream_handle_fields(event))
             return {"ok": True, "event": event}
 
 class Handler(BaseHTTPRequestHandler):

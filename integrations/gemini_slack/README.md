@@ -34,6 +34,36 @@ is dynamic rather than a hard-coded read/write or peer-identity subset. Turns
 for each peer execute through a FIFO worker, and malformed protocol retries are
 bounded so one broken turn cannot starve the peer's later messages.
 
+## Async upstream turns
+
+The tool sidecar uses [`upstream_turn.py`](upstream_turn.py) for each upstream
+model turn. It submits one `POST /v1/message` with `async: true` and a
+UTF-8/base64 message, then polls the returned request through
+`GET /v1/requests/<request_id>?wait_ms=50000`. A tool conversation can contain
+several model turns; each turn has its own upstream request handle.
+
+After submission, `upstream_request_id` and `upstream_status_url` are recorded
+in the existing event journal. Completion, cancellation, and error events retain
+the latest known handle. Temporary status-read failures retry the same GET with
+bounded backoff; they never submit the model turn again. If polling remains
+unavailable, the error includes the known handle and `upstream_terminal: false`.
+Continue observing that handle without replaying the prompt or tool operation.
+A lost submission response may leave no handle; submission is not automatically
+retried in that case either. Restarting the sidecar marks unfinished local
+requests interrupted, retains their upstream handles in that event, and does
+not automatically replay them. The capture proxy does the same for its own
+unfinished forwarding requests.
+
+A terminal upstream `error`, `cancelled`, or `interrupted` state ends the
+wait with `upstream_terminal: true`. An actual provider timeout remains a
+terminal failure. Async polling removes the long held local response socket;
+it does not extend a provider deadline or turn a failed operation into success.
+
+Cancellation is cooperative. It is checked between status polls and model/tool
+steps, so an in-flight call can still finish. Stopping local observation does
+not assert that remote compute stopped, and the helper does not send a remote
+cancel request. Retain the upstream handle to observe its eventual result.
+
 ## Slack app
 
 Create an app from [`app_manifest.yaml`](app_manifest.yaml), install it in the
@@ -95,3 +125,29 @@ is `~/.gemini/commons_peer_tool_calls.sqlite3`. The event journal retains final
 replies for restart-safe Slack delivery but records only the byte count and
 SHA-256 of incoming messages. The call journal records argument hashes and tool
 results, not raw tool arguments.
+
+## Existing capture gateway installation
+
+For the existing owner-host stack, the tool sidecar on `8878` forwards through
+the capture gateway on `8877` to the direct model gateway on `8866`. The capture
+hop must also use async submission and request-handle polling.
+
+From the repository root, install the helper into the existing capture source:
+
+```powershell
+python integrations/gemini_slack/install_capture_async.py `
+  --gateway "$env:USERPROFILE\.gemini\commons_peer_gateway.py" `
+  --helper integrations/gemini_slack/upstream_turn.py `
+  --backup-dir work/capture-async-backups
+```
+
+The installer replaces the existing gateway's forwarding method and adds handle
+retention during execution and capture recovery, copies the helper beside it as
+`commons_async_upstream.py`, and backs up replaced source files. It refuses an
+unexpected source layout and does not start or restart a process.
+
+Load the changed capture gateway and tool sidecar through their existing
+supervisor only after their outstanding requests are terminal. Keep the direct
+`8866` model gateway running: its conversations live in memory, and restarting
+it would discard that history. Preserve the existing event and tool-call
+journals; installation does not create a new model session or process topology.
