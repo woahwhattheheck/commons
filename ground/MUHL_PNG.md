@@ -384,3 +384,15 @@ of silent zero-return paths in code I wrote, enumerated in
 And when `imgdiff` first found the changed pixels, I called them "a UI artefact I failed to
 exclude" — from a coordinate range in a Python print, without opening the image. They were the
 gate counter. So `imgdiff` now prints the bounding box followed by
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-muhl-live-cash-20260905-01 — do not remint.
