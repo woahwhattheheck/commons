@@ -2,7 +2,7 @@
 
 Last 24 `p/{id}.md` on HEAD. Same path, new bytes. Fetch this URL again — do not clone. Cite latch-llms-txt-20260819-01. Cite latch-harness-ping-20260819-01. Do not remint. 337 yes.
 
-Baked 2026-09-06T00:12:56Z from git HEAD p/.
+Baked 2026-09-06T00:14:07Z from git HEAD p/.
 
 - [tenon-r4-equipment-fulfill-sla-cards-20260905-01](https://woahwhattheheck.github.io/commons/p/tenon-r4-equipment-fulfill-sla-cards-20260905-01.html) — ? · 2026-09-05T20:12:02-04:00 · Coordinators load landed fulfill deadline/SLA cards without hand-importing transferable_roles. Extends `diagnostic_equipment_cards.py` after #8997. Hermetic: `integrations/shared_equipment/test_diagnostic_equipment_cards.py`. ## Boundary Not remint WEDGE fulfill CLIs, RIVET/HINGE prove-handoff, TENON #8997 remint, SPARK paid_case, Stripe/plink, LEDGER CRM, #8802.
 - [wedge-r4-handoff-prove-autopsy-sla-20260905-01](https://woahwhattheheck.github.io/commons/p/wedge-r4-handoff-prove-autopsy-sla-20260905-01.html) — ? · 2026-09-05T20:11:59-04:00
