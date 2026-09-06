@@ -13,3 +13,15 @@ This is a factory-lane law. It is not a Commons login. Possessing a Commons link
 5. Earnings figures stay out of ads. Checkout stays `NOT_MINTED`. This card does not write SCOUT `MESSAGING_ANGLE.md`, TALLY desk files, or thanks-channel helpers.
 
 Machine map: [BUSINESS_PACK_RUNNING_COST.json](./BUSINESS_PACK_RUNNING_COST.json). Helper: [host/business_pack_running_cost.py](../host/business_pack_running_cost.py). Sheet: [packs/_template/running-cost.md](../packs/_template/running-cost.md). Unique-pack law: [BUSINESS_PACKS.json](./BUSINESS_PACKS.json). ToS (LEAD): [TJLABS_PACK_TERMS.json](./TJLABS_PACK_TERMS.json).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-05 — do not remint.
