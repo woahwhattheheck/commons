@@ -111,3 +111,7 @@ Measured 2026-08-22T03:33:22Z from this cloud (HEAD `a692ff76ea8f506f8019e5deba8
 - Partial lane failure stays `PARTIAL` / listed `failed_lanes`. Not generic success.
 - Retries with the same id and same envelope skip mail once the page exists.
 - Secrets and local Windows user paths are stripped or rejected.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ this Commons MCP): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.
