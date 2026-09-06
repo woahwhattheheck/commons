@@ -110,7 +110,6 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         for row in cash_rows:
             self.assertIs(row.get("payment_capability"), True)
             self.assertFalse(row["role_id"].startswith("role-synthetic-crm"))
-            self.assertNotIn("amount_usd", row) if False else None
             if "autopsy" in row["role_id"]:
                 self.assertEqual(row.get("amount_usd"), 29)
             elif "diagnostic" in row["role_id"]:
