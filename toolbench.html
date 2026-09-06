@@ -57,4 +57,18 @@ $('checkpoint').onclick=async()=>{try{const r=await fetch('/api/checkpoint');if(
 for(const [id,path] of [['operations','/api/operations'],['history','/api/history']])$(id).onclick=async()=>{try{$('instrument-output').textContent=JSON.stringify(await api(path),null,2);$('instrument-output').classList.remove('hidden');}catch(e){say(e.message);}};
 refresh();
 </script>
+
+<section id="live-cash">
+  <h2>Live cash</h2>
+  <p>Verified product pages only — no invented Stripe links.</p>
+  <ul>
+    <li><a href="agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p>Shelf: <a href="tools-cash.html">tools-cash.html</a>. Catalog: <a href="commerce.html">commerce.html</a>. Cite spy-html-lims-live-cash-20260905-01 — do not remint.</p>
+</section>
+
 </body></html>
