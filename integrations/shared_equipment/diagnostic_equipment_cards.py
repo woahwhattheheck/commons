@@ -6,6 +6,7 @@ TENON claims:
 - tenon-r4-equipment-advance-obligation-card-20260906-01 (advance obligation)
 - tenon-r4-equipment-open-obligations-card-20260906-01 (full open queue)
 - tenon-r4-equipment-release-equip-cards-20260906-01 (release/equip)
+- tenon-r4-equipment-transfer-role-card-20260906-01 (transfer)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
@@ -140,6 +141,16 @@ def diagnostic_card_tool_schemas() -> list[dict]:
             "Release the current occupant from a transferable role. Pass role; optional from_session_id guard. Import-only RoleStore.release wrap; returns updated role. Does not remint roles.py.",
             {"role": "object"},
             {"from_session_id": "string"},
+        ),
+        _schema(
+            "transfer_role_card",
+            "Transfer occupant on a transferable role to a new session. Pass role + to_session_id + to_harness; optional from_session_id / seat / account_pool. Import-only RoleStore.transfer wrap; returns updated role. Does not remint roles.py.",
+            {"role": "object", "to_session_id": "string", "to_harness": "string"},
+            {
+                "from_session_id": "string",
+                "seat": "string",
+                "account_pool": "string",
+            },
         ),
     ]
 
@@ -461,6 +472,40 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
                 updated = store.release(
                     created["role_id"],
                     from_session_id=args.get("from_session_id"),
+                )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": updated}
+    if name == "transfer_role_card":
+        # tenon-r4-equipment-transfer-role-card-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+            to_session_id = str(args["to_session_id"])
+            to_harness = str(args["to_harness"])
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                updated = store.transfer(
+                    created["role_id"],
+                    to_session_id=to_session_id,
+                    to_harness=to_harness,
+                    from_session_id=args.get("from_session_id"),
+                    seat=args.get("seat"),
+                    account_pool=args.get("account_pool"),
                 )
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
