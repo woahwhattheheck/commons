@@ -376,6 +376,36 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertFalse(repair.get("ok"))
         self.assertEqual(repair.get("error"), "role_refused")
 
+    def _assert_open_obligations_cash_card(self, roles: list) -> None:
+        # hinge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        before = json.dumps(roles, sort_keys=True)
+        out = self.eq.call(
+            "open_obligations_cash_card",
+            {"roles": roles},
+        )
+        self.assertTrue(out.get("ok"), out)
+        rows = out["open_obligations"]
+        self.assertEqual(json.dumps(roles, sort_keys=True), before)
+        cash_roles = [
+            r
+            for r in roles
+            if not str(r.get("role_id", "")).startswith("role-synthetic-crm")
+        ]
+        expected = {
+            (role["role_id"], ob["id"])
+            for role in cash_roles
+            for ob in role.get("obligations", [])
+            if ob.get("status") == "open"
+        }
+        self.assertEqual(
+            {(row["role_id"], row["obligation_id"]) for row in rows},
+            expected,
+        )
+        self.assertTrue(rows)
+        for row in rows:
+            self.assertIs(row.get("payment_capability"), True)
+            self.assertFalse(row["role_id"].startswith("role-synthetic-crm"))
+
     def test_autopsy_cards_survive_transfer(self) -> None:
         # rivet-r4-equipment-cards-survive-handoff-20260905-01
         with tempfile.TemporaryDirectory() as tmp:
@@ -607,6 +637,82 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             store.release(rid, from_session_id="cr-rel-A")
             store.equip(rid, session_id="cr-rel-B", harness="rivet")
             self._assert_diag_contract_receipt_cards(store.get(rid))
+
+    def test_open_obligations_cash_survive_transfer(self) -> None:
+        # hinge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        crm = json.loads(CRM.read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            a = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            d = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+            aid, did = a["role_id"], d["role_id"]
+            store.equip(aid, session_id="oc-A", harness="hinge")
+            store.equip(did, session_id="oc-d-A", harness="hinge")
+            store.transfer(
+                aid,
+                from_session_id="oc-A",
+                to_session_id="oc-B",
+                to_harness="rivet",
+            )
+            store.transfer(
+                did,
+                from_session_id="oc-d-A",
+                to_session_id="oc-d-B",
+                to_harness="rivet",
+            )
+            self._assert_open_obligations_cash_card(
+                [crm, store.get(aid), store.get(did)]
+            )
+
+    def test_open_obligations_cash_survive_export_import_equip(self) -> None:
+        # hinge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        crm = json.loads(CRM.read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            a = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            d = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+            aid, did = a["role_id"], d["role_id"]
+            store.equip(aid, session_id="oc-exp-A", harness="hinge")
+            store.equip(did, session_id="oc-exp-d-A", harness="hinge")
+            pkg_a = store.export_package(aid)
+            pkg_d = store.export_package(did)
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            ia = fresh.import_package(pkg_a)
+            id_ = fresh.import_package(pkg_d)
+            fresh.equip(
+                ia["role_id"],
+                session_id="oc-exp-B",
+                harness="rivet",
+                seat="RIVET",
+            )
+            fresh.equip(
+                id_["role_id"],
+                session_id="oc-exp-d-B",
+                harness="rivet",
+                seat="RIVET",
+            )
+            self._assert_open_obligations_cash_card(
+                [crm, fresh.get(ia["role_id"]), fresh.get(id_["role_id"])]
+            )
+
+    def test_open_obligations_cash_survive_release_equip(self) -> None:
+        # hinge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01
+        crm = json.loads(CRM.read_text(encoding="utf-8"))
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            a = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            d = store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+            aid, did = a["role_id"], d["role_id"]
+            store.equip(aid, session_id="oc-rel-A", harness="hinge")
+            store.equip(did, session_id="oc-rel-d-A", harness="hinge")
+            store.release(aid, from_session_id="oc-rel-A")
+            store.release(did, from_session_id="oc-rel-d-A")
+            store.equip(aid, session_id="oc-rel-B", harness="rivet")
+            store.equip(did, session_id="oc-rel-d-B", harness="rivet")
+            self._assert_open_obligations_cash_card(
+                [crm, store.get(aid), store.get(did)]
+            )
 
 
 if __name__ == "__main__":
