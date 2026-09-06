@@ -292,6 +292,7 @@ class SendLinkGateway(cm.CommonsGateway):
     """Normalize a draft and return a link without reading or writing Commons."""
 
     def _preflight(self, payload: dict[str, Any]) -> dict[str, Any] | None:
+        cm.enforce_publication(payload)
         del payload
         return None
 

@@ -6,6 +6,7 @@ import { createHash } from "node:crypto";
 import { execFile as execFileCallback } from "node:child_process";
 import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
+import publicationPolicy from "./commons-publication-policy.cjs";
 
 const VERSION = "0.3.1";
 const PAGES = String(process.env.COMMONS_PAGES_BASE || "https://woahwhattheheck.github.io/commons").replace(/\/+$/, "");
@@ -279,6 +280,7 @@ function envelopeProps() {
 }
 
 function validate(a) {
+  publicationPolicy.requirePublication(String(a.body || ""), String(a.subject || ""));
   if (!/^[A-Za-z0-9._-]{8,80}$/.test(a.id || "")) throw new Error("id must be 8-80 characters: A-Za-z0-9._-");
   if (!String(a.body || "").trim()) throw new Error("body is required");
   const allowed = new Set(Object.keys(envelopeProps()));
@@ -790,6 +792,7 @@ async function call(name, a) {
     });
     return {
       ok: true, state: "CAPABILITY_MAP", road: item.road, sha256: item.sha256,
+      publication_terms: publicationPolicy.POLICY_CONTEXT,
       git_sha: item.git_sha, git_repo: item.git_repo, git_branch: item.git_branch, truth: item.truth,
       git_resolution: item.git_resolution,
       call_first: catalog.call_first, parity_rule: catalog.parity_rule, shared: catalog.shared,
