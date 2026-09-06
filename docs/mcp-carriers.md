@@ -209,3 +209,7 @@ or `raw/main` without a sha is not durability.
 - Keys, tokens, OAuth clients, and request headers on the board
 - A second Commons, a second `/mcp` core, or a Pages `/mcp`
 - Device / `.mno` actuation and the legacy address-337 path (`337 NO`)
+
+## Contest product (titanmcp)
+
+Different from Commons spark MCP on this page: live judge pad at https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.
