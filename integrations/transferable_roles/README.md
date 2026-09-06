@@ -148,9 +148,10 @@ obligation. Purpose and sibling obligations stay. Allowed statuses:
 `open-obligations` scans every role in the store and returns open rows as
 `{"open_obligations": [...]}` with `role_id`, optional `label`, `purpose`,
 `obligation_id`, `summary`, `next_action`, optional `evidence_pointer` /
-`synthetic`, sorted by `(role_id, obligation_id)`. Paid Autopsy/diagnostic roles
-stamp `payment_capability: true` on those rows. `--cash-only` keeps only those
-paid rows (executable cash queue; CRM rows dropped).
+`synthetic`, sorted by `(role_id, obligation_id)`. Roles routing the named
+`payment_capability` door stamp `payment_capability: true` on those rows.
+`--cash-only` keeps only these marked rows; the default still includes all roles.
+The marker identifies a payment-capability route and does not confirm payment.
 
 `autopsy-case` / `autopsy-receipt-row` gate on tool `autopsy_paid_case` and call
 SPARK `case_from_autopsy_offer` / `receipt_row_from_case` (import-only wrap in
