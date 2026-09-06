@@ -41,6 +41,8 @@ jobs:
             /fix_first.py
             /tools.json
             /test_coil_tools_json_live_cash.py
+            /test_digit_mcp_tool_drift_eyebrow.py
+            /mcp-tool-drift.html
       - name: Run changed behavior and existing CRM6 contracts once
         if: inputs.phase == 'test'
         run: |
@@ -57,6 +59,8 @@ jobs:
           test "$(git rev-parse HEAD:tools.json)" = "1d914f015e75553e4857eb01ab0c3078c93acff3"
           test "$(git rev-parse HEAD:test_coil_tools_json_live_cash.py)" = "0271ead389ac1fa7f169cae3e1a02c77984a3c63"
           python3 test_coil_tools_json_live_cash.py
+          git merge-base --is-ancestor 55ad22389764383c71f4659dbb700c7092b2fa7b HEAD
+          python3 -c 'import runpy; runpy.run_path("test_digit_mcp_tool_drift_eyebrow.py")["test_eyebrow_not_survival_sell"](); print("PASS drift eyebrow assertion")'
           python3 fix_first.py --json '{"outcome":"fixed","observed_broken":true,"expected_contract":"The shared equipment exact catalog test must include newly exposed Autopsy and cash queue tools while retaining every existing tool; cash capability metadata is not proof of payment","changed_paths":["test_grokbot_shared_equipment.py","integrations/shared_equipment/diagnostic_equipment_cards.py","integrations/shared_equipment/test_diagnostic_equipment_cards.py"],"tests":["34002436192: 10 focused tests, 14 exact current-main blobs and clean terminal audit PASS"],"main_sha":"ba951183a6d6bad7f10de4be2b17fcb0eb8d15b6","readback_verified":true}'
       - name: Verify exact tested bytes on current main
         if: inputs.phase == 'audit'
