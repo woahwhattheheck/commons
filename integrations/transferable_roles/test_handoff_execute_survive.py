@@ -146,6 +146,11 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertIn("autopsy-fulfill-validate", proof["executes"])
         self.assertIn("autopsy-fulfill-sla", proof["executes"])
         self.assertEqual(proof["executes"]["autopsy-fulfill-sla"]["amount_usd"], 29)
+        # rivet-r4-handoff-prove-autopsy-release-refund-20260905-01
+        self.assertIn(
+            "refund usd 29",
+            str(proof["executes"]["autopsy-fulfill-sla"].get("refund", "")).lower(),
+        )
         g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
         self.assertEqual(g2["session_id"], "g2-release-sess")
         self.assertEqual(g2["last_run_id"], "g2-release-run")
