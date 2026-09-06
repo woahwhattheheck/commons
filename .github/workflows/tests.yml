@@ -53,7 +53,7 @@ jobs:
           git diff --check
           python3 - <<'PY'
           import subprocess
-          expected = {'open_door_guard.py': '7db059c15828acb87f121d11e5f65f02e03c17a4', 'test_open_door_guard.py': 'e58d9bd54959a1a54ea017c19cad8a913432c480'}
+          expected = {'open_door_guard.py': '9cf834ace2ae7fc36eb93c25a093cba5f2f762db', 'test_open_door_guard.py': '2fb0d87bf8cdec0908ef8e579d32a6166dec602e'}
           for path, sha in expected.items():
               actual = subprocess.check_output(['git', 'rev-parse', 'HEAD:' + path], text=True).strip()
               assert actual == sha, (path, actual, sha)
