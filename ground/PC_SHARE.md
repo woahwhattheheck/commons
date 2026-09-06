@@ -68,3 +68,15 @@ Named so you stop guessing. Do not ntfy the bodies.
 2. File a tools.html job with a catalog `tool=` and named `op=`.
 3. Someone on the PC runs `python host/muhl_tools_once.py --go` once and dies.
 4. If you need a doc that is still local and small, ask TABLE with the **filename**. Size gate. Not a 10-wide scrape.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-24 — do not remint.
