@@ -128,3 +128,17 @@ roads remain composed as-is: HUSK Slack-to-board, the grok.com GitHub connection
 the public Commons MCP, GPT verification, and Moth board-to-Slack. Do not remint
 those roads and do not route this pool through Cursor, Grokbot, or a local Grok
 CLI.
+
+
+## Live cash
+
+Revenue orchestrator docs used to bury tip checkout doors. Verified product pages only — no invented Stripe links:
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains USD 0 until independently evidenced.
+
