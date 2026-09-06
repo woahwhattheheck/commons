@@ -66,15 +66,18 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         sla = proof["executes"]["autopsy-fulfill-sla"]
         self.assertEqual(sla["sla_status"], "OPEN")
         self.assertTrue(sla.get("delivery_due_at"))
+        # wedge-r4-handoff-prove-autopsy-sla-amount-usd-20260905-01
+        self.assertEqual(sla["amount_usd"], 29)
+        self.assertIn("refund usd 29", str(sla.get("refund", "")).lower())
 
         missed = prove_successor_executes(
             self.store,
             rid,
             as_of="2026-09-10T10:00:00-04:00",
         )
-        self.assertEqual(
-            missed["executes"]["autopsy-fulfill-sla"]["sla_status"], "MISSED"
-        )
+        missed_sla = missed["executes"]["autopsy-fulfill-sla"]
+        self.assertEqual(missed_sla["sla_status"], "MISSED")
+        self.assertEqual(missed_sla["amount_usd"], 29)
 
         g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
         self.assertEqual(g2["session_id"], "g2-handoff-sess")
@@ -105,9 +108,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             self.assertEqual(proof["occupant_session"], "occ-import")
             self.assertIn("autopsy-case", proof["executes"])
             self.assertIn("autopsy-fulfill-sla", proof["executes"])
-            self.assertEqual(
-                proof["executes"]["autopsy-fulfill-sla"]["sla_status"], "OPEN"
-            )
+            sla = proof["executes"]["autopsy-fulfill-sla"]
+            self.assertEqual(sla["sla_status"], "OPEN")
+            self.assertEqual(sla["amount_usd"], 29)
+            self.assertIn("refund usd 29", str(sla.get("refund", "")).lower())
             g2 = next(
                 r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2"
             )
@@ -134,6 +138,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertIn("autopsy-fulfill-deadline", proof["executes"])
         self.assertIn("autopsy-fulfill-validate", proof["executes"])
         self.assertIn("autopsy-fulfill-sla", proof["executes"])
+        self.assertEqual(proof["executes"]["autopsy-fulfill-sla"]["amount_usd"], 29)
         g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
         self.assertEqual(g2["session_id"], "g2-release-sess")
         self.assertEqual(g2["last_run_id"], "g2-release-run")
@@ -277,6 +282,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertTrue(proof["ok"])
         self.assertIn("autopsy-case", proof["executes"])
         self.assertIn("autopsy-fulfill-sla", proof["executes"])
+        self.assertEqual(proof["executes"]["autopsy-fulfill-sla"]["amount_usd"], 29)
 
 
 if __name__ == "__main__":
