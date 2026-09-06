@@ -37,16 +37,16 @@ ANALYSIS: Public Commons artifacts may relate to listed open-stack activities, b
 
 - `ground/RINGDELTA.md` sha256 `7ee5fdfda7157294ac1b09ebf44780839d39bb8d6764f3252a766a9d3ede2afe` (2460 bytes)
 - `ground/RINGDELTA.json` sha256 `276817af90a9a3b8f34a1e9d535d299e1a5a7a97e3af7d0f5f3a3df93ba2f910` (1560 bytes)
-- `ringdelta.html` sha256 `f4037662d185da861bfdd5c5607b7dc3520a649da827865fa4f29fa0b554ac8a` (3179 bytes)
+- `ringdelta.html` sha256 `eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218` (3783 bytes)
 - `host/ringdelta.py` sha256 `4262d2cfa81e58026636c240e7878b804781354352cb229e3c14a963ebfbb600` (8543 bytes)
 - `excerpts/20260828/ringdelta_xor8.mno` sha256 `46fb0cf0c46df7d2afa4957ebb01e66af7604cde3583753ab0f5dc1095f606fa` (300 bytes)
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa` (62464 bytes)
-- `distribution.html` sha256 `16b25dc14514e5cd12b7b84812c96b831cdc5544c1718aeec8afab37dd58c9cd` (7320 bytes)
+- `carrier.js` sha256 `5df2a26164edec15288eaa213d8533b2d26f0e7062009dad088a0d1257b01ef4` (63703 bytes)
+- `distribution.html` sha256 `3ab84fcfa02a9e84ea88aaf4d5f66981756aed70a97546f9af4928d63cb09390` (8427 bytes)
 - `host/distribution.py` sha256 `2ae7a466c9c2ba64b59329e404aaa49c2c94973ec5d432d3d907a095ffd0ef92` (29867 bytes)
-- `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)
+- `ground/DISTRIBUTION.md` sha256 `47823a33df0952378ecf9747d7efa0606a45dd4a46182dc359ee6d9a394f37c3` (3212 bytes)
 - `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
 
 ### Public evidence record and required-reading corpus (`evidence-record`, `SHIPPED_ON_MAIN`)
@@ -56,8 +56,8 @@ ANALYSIS: Public Commons artifacts may relate to listed open-stack activities, b
 
 ### Agent swarm datacenter prep and swarm-mail (`agent-swarm`, `SHIPPED_ON_MAIN`)
 
-- `ground/SWARM.md` sha256 `2aa30acbb26761a7be2f06b2a14ae83c924dd1d180231eec06d24a55a85e7a66` (1158 bytes)
-- `swarm-mail.html` sha256 `a0fb49e1a4cf2612688955e5ba0f10a611a2dfa171f9fd214a65d3d7fa788afa` (5118 bytes)
+- `ground/SWARM.md` sha256 `98eef6e6a92a30b0cbd76c44ea200f9e83522c1841cc59ca6d277572940fb88c` (1565 bytes)
+- `swarm-mail.html` sha256 `14ed7af88844c7b3c4e1f907a3ed06f4e7586b09e18f2ae9aa95461983c9f849` (5784 bytes)
 
 ## Stated funding (not expected value)
 
