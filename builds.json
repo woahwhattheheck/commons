@@ -350,39 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 2,
- "open_prs": [
-  {
-   "number": 9003,
-   "author": "woahwhattheheck",
-   "title": "Add evidence-bound Strands Autopsy Agent and one-round revision",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9003",
-   "base_freshness": {
-    "base_sha": "4af942e9acf01598d98c06a327a9b25179093ae3",
-    "main_sha": "adc98ffcf7c75cd2202d76bc0a231d90b751da6b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "CANDIDATE",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  },
-  {
-   "number": 9011,
-   "author": "woahwhattheheck",
-   "title": "wedge-r4-open-obligations-cash-only-20260905-01: open-obligations --cash-only",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9011",
-   "base_freshness": {
-    "base_sha": "adc98ffcf7c75cd2202d76bc0a231d90b751da6b",
-    "main_sha": "adc98ffcf7c75cd2202d76bc0a231d90b751da6b",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "FRESH"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }

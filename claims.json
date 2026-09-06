@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 47,
+  "n": 69,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -351,6 +351,226 @@
       "status": "OPEN",
       "ts": "2026-08-19T11:41:16Z",
       "href": "./p/errata-differential-r1-response-20260819-342.html"
+    },
+    {
+      "id": "type-titanmcp-contest-door-20260905-01",
+      "from": "",
+      "claim": "type-titanmcp-contest-door-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-titanmcp-contest-door-20260905-01.html"
+    },
+    {
+      "id": "type-tipshelf-autopsy-crosslink-20260905-01",
+      "from": "",
+      "claim": "type-tipshelf-autopsy-crosslink-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-tipshelf-autopsy-crosslink-20260905-01.html"
+    },
+    {
+      "id": "type-tipshelf-afterfit-upsell-20260905-01",
+      "from": "",
+      "claim": "type-tipshelf-afterfit-upsell-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-tipshelf-afterfit-upsell-20260905-01.html"
+    },
+    {
+      "id": "type-tips-larger-engagements-20260905-01",
+      "from": "",
+      "claim": "type-tips-larger-engagements-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-tips-larger-engagements-20260905-01.html"
+    },
+    {
+      "id": "type-start-live-cash-20260905-01",
+      "from": "",
+      "claim": "type-start-live-cash-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-start-live-cash-20260905-01.html"
+    },
+    {
+      "id": "type-start-html-live-cash-20260905-01",
+      "from": "",
+      "claim": "type-start-html-live-cash-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-start-html-live-cash-20260905-01.html"
+    },
+    {
+      "id": "type-resources-titanmcp-discovery-20260905-01",
+      "from": "",
+      "claim": "type-resources-titanmcp-discovery-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-resources-titanmcp-discovery-20260905-01.html"
+    },
+    {
+      "id": "type-reply-revenue-convert-doors-20260905-01",
+      "from": "",
+      "claim": "type-reply-revenue-convert-doors-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-reply-revenue-convert-doors-20260905-01.html"
+    },
+    {
+      "id": "type-muhl-paid-next-doors-20260905-01",
+      "from": "",
+      "claim": "type-muhl-paid-next-doors-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-muhl-paid-next-doors-20260905-01.html"
+    },
+    {
+      "id": "type-muhl-free-sample-autopsy-pointer-20260905-01",
+      "from": "",
+      "claim": "type-muhl-free-sample-autopsy-pointer-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-muhl-free-sample-autopsy-pointer-20260905-01.html"
+    },
+    {
+      "id": "type-index-titanmcp-door-btn-20260905-01",
+      "from": "",
+      "claim": "type-index-titanmcp-door-btn-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-index-titanmcp-door-btn-20260905-01.html"
+    },
+    {
+      "id": "type-humans-autopsy-checkout-pointer-20260905-01",
+      "from": "",
+      "claim": "type-humans-autopsy-checkout-pointer-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-humans-autopsy-checkout-pointer-20260905-01.html"
+    },
+    {
+      "id": "type-grounding-live-cash-20260905-01",
+      "from": "",
+      "claim": "type-grounding-live-cash-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-grounding-live-cash-20260905-01.html"
+    },
+    {
+      "id": "type-entry-live-cash-20260905-01",
+      "from": "",
+      "claim": "type-entry-live-cash-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-entry-live-cash-20260905-01.html"
+    },
+    {
+      "id": "type-diagnostic-tipshelf-midladder-20260905-01",
+      "from": "",
+      "claim": "type-diagnostic-tipshelf-midladder-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-diagnostic-tipshelf-midladder-20260905-01.html"
+    },
+    {
+      "id": "type-diagnostic-autopsy-smaller-step-20260905-01",
+      "from": "",
+      "claim": "type-diagnostic-autopsy-smaller-step-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-diagnostic-autopsy-smaller-step-20260905-01.html"
+    },
+    {
+      "id": "type-devpost-fold-packet-20260905-01",
+      "from": "",
+      "claim": "type-devpost-fold-packet-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-devpost-fold-packet-20260905-01.html"
+    },
+    {
+      "id": "type-commercial-tipshelf-midladder-20260905-01",
+      "from": "",
+      "claim": "type-commercial-tipshelf-midladder-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-commercial-tipshelf-midladder-20260905-01.html"
+    },
+    {
+      "id": "type-boards-titanmcp-catalog-20260905-01",
+      "from": "",
+      "claim": "type-boards-titanmcp-catalog-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-boards-titanmcp-catalog-20260905-01.html"
+    },
+    {
+      "id": "type-autopsy-tipshelf-reverse-funnel-20260905-01",
+      "from": "",
+      "claim": "type-autopsy-tipshelf-reverse-funnel-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-autopsy-tipshelf-reverse-funnel-20260905-01.html"
+    },
+    {
+      "id": "type-agents-autopsy-commercial-ladder-20260905-01",
+      "from": "",
+      "claim": "type-agents-autopsy-commercial-ladder-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-agents-autopsy-commercial-ladder-20260905-01.html"
+    },
+    {
+      "id": "type-agent-triage-broader-ladder-20260905-01",
+      "from": "",
+      "claim": "type-agent-triage-broader-ladder-20260905-01",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "",
+      "href": "./p/type-agent-triage-broader-ladder-20260905-01.html"
     },
     {
       "id": "rivet-repair-capsules-implementation-20260904-01",
