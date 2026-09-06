@@ -9,6 +9,7 @@ TENON claims:
 - tenon-r4-equipment-transfer-role-card-20260906-01 (transfer)
 - tenon-r4-equipment-bind-unbind-route-cards-20260906-01 (bind/unbind)
 - tenon-r4-equipment-export-import-package-cards-20260906-01 (export/import)
+- tenon-r4-equipment-inspect-role-card-20260906-01 (inspect)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
@@ -179,6 +180,11 @@ def diagnostic_card_tool_schemas() -> list[dict]:
             "import_role_package_card",
             "Import a portable role package into a fresh store (occupant None; refuse remint if role_id exists). Pass package object. Import-only RoleStore.import_package wrap. Does not remint roles.py.",
             {"package": "object"},
+        ),
+        _schema(
+            "inspect_role_card",
+            "Inspect/normalize a transferable role (schema scrub + drop secret-shaped keys). Pass role object. Import-only RoleStore.inspect wrap; returns scrubbed role. Does not remint roles.py.",
+            {"role": "object"},
         ),
     ]
 
@@ -603,7 +609,6 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "role": updated}
     if name == "export_role_package_card":
-        # tenon-r4-equipment-export-import-package-cards-20260906-01
         roles_mod = _load_transferable_roles_mod("roles")
         try:
             role = args["role"]
@@ -628,7 +633,6 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "package": package}
     if name == "import_role_package_card":
-        # tenon-r4-equipment-export-import-package-cards-20260906-01
         roles_mod = _load_transferable_roles_mod("roles")
         try:
             package = args["package"]
@@ -651,4 +655,29 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "role": adopted}
+    if name == "inspect_role_card":
+        # tenon-r4-equipment-inspect-role-card-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                inspected = store.inspect(created["role_id"])
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": inspected}
     return None
