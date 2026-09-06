@@ -231,6 +231,29 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
             self.assertIs(result["uncertain"], uncertain)
             self.assertEqual("17", result["result"]["retry_after"])
 
+    def test_slack_partial_native_failures_preserve_uncertainty_and_replay(self):
+        for error in ("internal_error", "fatal_error", "channel_not_found"):
+            calls = []
+            def opener(request, **kwargs):
+                calls.append(request)
+                return io.BytesIO(json.dumps({"ok": False, "error": error}).encode())
+            equipment = ServiceEquipment(slack_token_loader=lambda: "fixture", opener=opener)
+            observed = equipment.slack("conversations.history", {"channel": "C-fixture"})
+            self.assertFalse(effect_uncertain(observed))
+            with tempfile.TemporaryDirectory() as root:
+                store = gateway.ToolCallStore(Path(root) / "calls.sqlite3")
+                try:
+                    arguments = {"channel_id": "C-fixture", "text": "Completed fixture operation."}
+                    result = store.execute_journaled("r", "c", "slack_post_message", arguments, equipment.call)
+                    replay = store.execute_journaled("r", "c", "slack_post_message", arguments, equipment.call)
+                    self.assertEqual(result, replay)
+                    self.assertTrue(tool_failed(result))
+                    self.assertEqual(error, result["result"]["error"])
+                    self.assertEqual(error != "channel_not_found", effect_uncertain(result))
+                    self.assertEqual(2, len(calls))
+                finally:
+                    store.close()
+
     def test_github_timeout_is_classified_without_repeating_or_echoing_payload(self):
         def runner(*args, **kwargs):
             raise subprocess.TimeoutExpired("private-command", 90)

@@ -69,6 +69,17 @@ class TransportTests(unittest.TestCase):
         self.assertTrue(body.closed)
         self.assertEqual(1, len(calls))
 
+    def test_malformed_status_on_http_error_preserves_unknown_outcome(self):
+        for status in ([], {}):
+            native = {"ok": True, "run_id": "known", "status": status}
+            raw = json.dumps(native).encode()
+            client, calls = self.client(response=Response(raw, 500))
+            value = client.submit("synthetic")
+            self.assert_unknown(value)
+            self.assertEqual(native, value["native_response"])
+            self.assert_raw(value, raw)
+            self.assertEqual(1, len(calls))
+
     def test_partial_success_and_error_responses_close_and_keep_exact_partial_bytes(self):
         raw = b'{"ok":true,"run_id":"partial"'
         for http_error in (False, True):

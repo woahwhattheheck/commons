@@ -160,7 +160,8 @@ class HeadlessClient:
             declared = _uncertainty(native)
             # A terminal run/cancel reply acknowledges what actually happened.
             # A generic 4xx alone is not proof: a gateway can fail after enqueue.
-            acknowledged = native.get("status") in TERMINAL and (
+            native_status = native.get("status")
+            acknowledged = isinstance(native_status, str) and native_status in TERMINAL and (
                 bool(native.get("run_id") or native.get("request_id"))
                 or native.get("error") == "already_terminal")
             value["uncertain"] = bool(effect and declared is not False and not acknowledged) or declared is True

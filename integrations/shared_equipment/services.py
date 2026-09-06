@@ -188,6 +188,9 @@ class ServiceEquipment:
         if not isinstance(result, dict):
             raise EquipmentError("Slack returned no result object",
                                  code="slack_response_invalid", uncertain=not read_method)
+        # Slack documents these errors as possibly occurring after an effect.
+        if not read_method and result.get("error") in ("internal_error", "fatal_error"):
+            result["uncertain"] = True
         return redacted(result)
 
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
