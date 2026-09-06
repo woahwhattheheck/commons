@@ -7,7 +7,7 @@ Gates on tool `autopsy_fulfillment` and calls landed
 
 `run_deadline` returns delivery_due_at.
 `run_sla_status` compares as_of vs due → OPEN|MISSED + landed offer refund
-miss-remedy (WEDGE leftover after #8999).
+miss-remedy + amount_usd (WEDGE leftovers after #8999 / #9015).
 """
 
 from __future__ import annotations
@@ -67,8 +67,8 @@ def _load_fulfillment_module() -> Any:
     return mod
 
 
-def _load_offer_refund() -> str:
-    """Landed offer.json refund miss-remedy (read-only; no remint)."""
+def _load_offer_cash_fields() -> dict[str, Any]:
+    """Landed offer.json refund + price.amount (read-only; no remint)."""
     path = _ROOT / _OFFER_REL
     if not path.is_file():
         raise RoleError(f"landed offer missing on disk: {_OFFER_REL}")
@@ -82,7 +82,13 @@ def _load_offer_refund() -> str:
     for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
         if forbidden in text:
             raise RoleError(f"offer.refund leaked forbidden token prefix {forbidden}")
-    return text
+    price = data.get("price")
+    if not isinstance(price, dict):
+        raise RoleError("offer.price must be an object")
+    amount = price.get("amount")
+    if not isinstance(amount, (int, float)) or isinstance(amount, bool):
+        raise RoleError("offer.price.amount must be a number")
+    return {"refund": text, "amount_usd": int(amount)}
 
 
 def _parse_aware(stamp: str, label: str) -> datetime:
@@ -127,7 +133,7 @@ def run_sla_status(
     usable_evidence_at: str,
     as_of: str,
 ) -> dict[str, Any]:
-    """OPEN|MISSED Autopsy SLA card vs as_of + landed offer refund miss-remedy.
+    """OPEN|MISSED Autopsy SLA + landed offer refund + amount_usd.
 
     Reuses run_deadline calendar path; does not remint fulfillment.py / offer.json.
     within_one_business_day matches Autopsy report rule: as_of <= delivery_due_at.
@@ -137,12 +143,14 @@ def run_sla_status(
     as_of_dt = _parse_aware(as_of_stamp, "as_of")
     due_dt = _parse_aware(str(base["delivery_due_at"]), "delivery_due_at")
     within = as_of_dt <= due_dt
+    cash = _load_offer_cash_fields()
     out: dict[str, Any] = {
         **base,
         "as_of": as_of_stamp,
         "within_one_business_day": within,
         "sla_status": "OPEN" if within else "MISSED",
-        "refund": _load_offer_refund(),
+        "refund": cash["refund"],
+        "amount_usd": cash["amount_usd"],
     }
     blob = json.dumps(out)
     for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
