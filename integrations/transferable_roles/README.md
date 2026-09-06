@@ -37,6 +37,7 @@ Handoff prove autopsy SLA: `wedge-r4-handoff-prove-autopsy-sla-20260905-01`
 Handoff prove autopsy SLA amount_usd: `wedge-r4-handoff-prove-autopsy-sla-amount-usd-20260905-01`
 Handoff prove release→equip: `rivet-r4-handoff-prove-release-equip-20260905-01`
 Open obligations cash-only: `wedge-r4-open-obligations-cash-only-20260905-01`
+Open obligations cash amount_usd: `wedge-r4-open-obligations-cash-amount-usd-20260906-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -153,6 +154,8 @@ obligation. Purpose and sibling obligations stay. Allowed statuses:
 `obligation_id`, `summary`, `next_action`, optional `evidence_pointer` /
 `synthetic`, sorted by `(role_id, obligation_id)`. Roles routing the named
 `payment_capability` door stamp `payment_capability: true` on those rows.
+Cash rows also stamp `amount_usd` when tools resolve it (autopsy
+`offer.json` `price.amount` / diagnostic `commercial.diagnostic_usd`).
 `--cash-only` keeps only these marked rows; the default still includes all roles.
 The marker identifies a payment-capability route and does not confirm payment.
 

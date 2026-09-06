@@ -152,6 +152,47 @@ def _role_has_payment_capability(role: dict[str, Any]) -> bool:
     return False
 
 
+def _commons_root() -> Path:
+    return Path(__file__).resolve().parents[2]
+
+
+def _role_amount_usd(role: dict[str, Any]) -> int | None:
+    """USD unit price for cash open-obligation rows when tools resolve it.
+
+    autopsy_fulfillment → offer.json price.amount (same source as autopsy SLA).
+    diagnostic_contract / diagnostic_fulfill → commercial.diagnostic_usd.
+    Else None. If a matching tool is present but the landed source is unreadable,
+    raise RoleError (fail-closed so bugs surface).
+    """
+    names: set[str] = set()
+    for tool in role.get("tools") or []:
+        if isinstance(tool, dict) and tool.get("name"):
+            names.add(str(tool["name"]).strip())
+    root = _commons_root()
+    if "autopsy_fulfillment" in names:
+        path = root / "revenue" / "agent_failure_autopsy" / "offer.json"
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            amount = data["price"]["amount"]
+            return int(amount)
+        except Exception as exc:  # noqa: BLE001 — surface offer bugs fail-closed
+            raise RoleError(
+                f"autopsy_fulfillment present but offer amount unreadable: {exc}"
+            ) from exc
+    if "diagnostic_contract" in names or "diagnostic_fulfill" in names:
+        path = root / "revenue" / "dealer_service_lead_rescue" / "contract.json"
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            amount = data["commercial"]["diagnostic_usd"]
+            return int(amount)
+        except Exception as exc:  # noqa: BLE001 — surface contract bugs fail-closed
+            raise RoleError(
+                "diagnostic tools present but commercial.diagnostic_usd "
+                f"unreadable: {exc}"
+            ) from exc
+    return None
+
+
 def normalize_role(raw: dict[str, Any], *, role_id: str | None = None) -> dict[str, Any]:
     if not isinstance(raw, dict):
         raise RoleError("role must be an object")
@@ -268,6 +309,8 @@ class RoleStore:
 
         Rows for roles that route `payment_capability` stamp
         `payment_capability: true` so mixed CRM + paid stores separate cash work.
+        When tools resolve a unit price, cash rows also stamp `amount_usd`
+        (autopsy offer price.amount / diagnostic commercial.diagnostic_usd).
         When cash_only is True, keep only rows with payment_capability is True.
         This marker does not establish that payment has occurred.
         """
@@ -293,6 +336,9 @@ class RoleStore:
                     row["synthetic"] = True
                 if cash:
                     row["payment_capability"] = True
+                    amount = _role_amount_usd(role)
+                    if amount is not None:
+                        row["amount_usd"] = amount
                 rows.append(row)
         rows.sort(key=lambda r: (r["role_id"], r["obligation_id"]))
         if cash_only:
