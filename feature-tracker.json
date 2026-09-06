@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTS_PRESENT": 104
+    "TESTS_PRESENT": 110
   },
   "features": [
     {
@@ -2266,6 +2266,66 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Preserve native outcomes, handles, complete tool responses, and checkpoint revision consistency across existing Commons equipment roads.",
+      "carrier": "CODEX",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/outcomes.py",
+        "integrations/shared_equipment/services.py",
+        "integrations/gemini_slack/peer_tool_gateway.py",
+        "integrations/claude_headless/client.py",
+        "host/toolbench.py",
+        "docs/commons-transport-outcomes.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/outcomes.py",
+        "integrations/shared_equipment/services.py",
+        "integrations/gemini_slack/peer_tool_gateway.py",
+        "integrations/claude_headless/client.py",
+        "host/toolbench.py",
+        "docs/commons-transport-outcomes.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [
+        "ev-deathstar-commons-transport-20260906-01"
+      ],
+      "file": "deathstar-commons-transport-20260906-01.json",
+      "id": "deathstar-commons-transport-20260906-01",
+      "last_change": "2026-09-06T12:20:12Z",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Native transport outcomes and consistent checkpoints",
+      "next_gap": "Live service readback and cloud CI results are recorded in the landing receipt; generic MCP session initialization is outside this port.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "docs/commons-transport-outcomes.md",
+      "receipts": [
+        "ev-deathstar-commons-transport-20260906-01"
+      ],
+      "related": {
+        "boards": false,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "docs/commons-transport-outcomes.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_commons_transport_outcomes.py",
+        "test_claude_client_transport_outcomes.py",
+        "test_toolbench_snapshot_consistency.py",
+        ".github/workflows/commons-transport-regression.yml"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "DIGIT root-level hermetic tests resolve the repo root via Path(__file__).parent, not parents[1] (which escapes the checkout and breaks local/CI reads). Batch #9243 + #9246.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -2870,6 +2930,212 @@
       "superseded_by": "",
       "test_paths": [
         "tests/test_ledger_crm6_composed_at_freshness_gate.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Optional successor handoff annotate mirroring --index-freshness: stamps mailbox_verify from hermetic pin; invent-YES fail-closed to UNKNOWN; Billings NO_BUYER_REPLY.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_relationship_handoff.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_registry.json",
+        "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_relationship_handoff.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_registry.json",
+        "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-mailbox-buyer-reply-verify-20260905-01",
+        "ledger-crm6-composed-at-freshness-gate-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01.json",
+      "id": "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01",
+      "last_change": "2026-09-06",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 optional handoff --mailbox-verify annotate",
+      "next_gap": "Landed #9267 @ e2b71676599e20bc7e1d7c02bf36eb9c41aa3000. Never invent VERIFIED_HUMAN_YES.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "p/ledger-crm6-handoff-mailbox-verify-annotate-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9267"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Thin additive how-to on public lm-gtm-index.html for brief/freshness/mailbox/--mailbox-verify/--send exit 3 + hermetic pins so successors find README-landed doors.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "lm-gtm-index.html",
+        "tests/test_ledger_crm6_html_successor_doors.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "lm-gtm-index.html",
+        "tests/test_ledger_crm6_html_successor_doors.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-composed-at-freshness-gate-20260905-01",
+        "ledger-crm6-mailbox-buyer-reply-verify-20260905-01",
+        "ledger-crm6-handoff-mailbox-verify-annotate-20260906-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-html-successor-doors-20260906-01.json",
+      "id": "ledger-crm6-html-successor-doors-20260906-01",
+      "last_change": "2026-09-06",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 HTML successor doors how-to",
+      "next_gap": "Landed #9268 @ 2ad83fa6112f13cb43f7507b9ab6f53ba363804d. No Autopsy/tip remint.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "lm-gtm-index.html",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "lm-gtm-index.html",
+        "p/ledger-crm6-html-successor-doors-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9268"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_html_successor_doors.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Hermetic mailbox-only pin returning NO_BUYER_REPLY or BUYER_REPLY_OBSERVED from fixtures. Never invents VERIFIED_HUMAN_YES. Billings stays NO_BUYER_REPLY.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_fixtures",
+        "tests/test_ledger_crm6_mailbox_buyer_reply_verify.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/mailbox_buyer_reply_fixtures",
+        "tests/test_ledger_crm6_mailbox_buyer_reply_verify.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-relationship-handoff-20260904-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-mailbox-buyer-reply-verify-20260905-01.json",
+      "id": "ledger-crm6-mailbox-buyer-reply-verify-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 hermetic mailbox buyer-reply verify",
+      "next_gap": "Live Gmail verify remains out of scope; fixtures only. Landed #9237 @ 515d8c3ff6d3f55f0cd04f457cdcd8b373fd7e06.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "p/ledger-crm6-mailbox-buyer-reply-verify-20260905-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9237"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_mailbox_buyer_reply_verify.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Mailbox CLI --send/send exits 3 (refuse transport). state.json contract pins mailbox_verify, handoff_mailbox_verify, mailbox_send=illegal; exits 3.",
+      "carrier": "LEDGER",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/state.json",
+        "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_mailbox_buyer_reply_verify.py",
+        "revenue/lm_gtm_index/state.json",
+        "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
+      ],
+      "dependencies": [
+        "ledger-crm6-mailbox-buyer-reply-verify-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "ledger-crm6-mailbox-send-refuse-state-contract-20260906-01.json",
+      "id": "ledger-crm6-mailbox-send-refuse-state-contract-20260906-01",
+      "last_change": "2026-09-06",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 mailbox --send refuse + state.json contract",
+      "next_gap": "Landed #9269 @ bd7263e382c33c2d0bb12abec733a97622671efa. Never invent VERIFIED_HUMAN_YES.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "revenue/lm_gtm_index/state.json",
+        "p/ledger-crm6-mailbox-send-refuse-state-contract-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9269"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTS_PRESENT"
@@ -5895,6 +6161,61 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "RUNBOOK \u00a710 documents peer equipment paid-case path + receipt bind; hermetic live-echo e2e in test_grokbot_shared_equipment.test_paid_case_equipment_live_e2e chains case_from_autopsy_offer \u2192 grokbot_submit(case) \u2192 receipt_row_from_case(submit_response). No Stripe remint.",
+      "carrier": "SPARK",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_shared_equipment.py",
+        "integrations/grokbot_control/README.md",
+        "features/registry/spark-g2-runbook-equipment-receipt-e2e-20260905-01.json",
+        "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_shared_equipment.py",
+        "integrations/grokbot_control/README.md",
+        "features/registry/spark-g2-runbook-equipment-receipt-e2e-20260905-01.json",
+        "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+      ],
+      "dependencies": [
+        "spark-g2-equipment-paid-case-tools-20260905-01"
+      ],
+      "evidence_ids": [],
+      "file": "spark-g2-runbook-equipment-receipt-e2e-20260905-01.json",
+      "id": "spark-g2-runbook-equipment-receipt-e2e-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "G2 runbook equipment receipt e2e",
+      "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, follow RUNBOOK \u00a710 equipment path and append opaque case_row. No Autopsy plink remint. Hands off #8802.",
+      "owner_subsystem": "grokbot-control",
+      "public_entrypoint": "revenue/agent_failure_autopsy/RUNBOOK.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": true,
+        "resources": true
+      },
+      "resource_links": [
+        "revenue/agent_failure_autopsy/RUNBOOK.md",
+        "test_grokbot_shared_equipment.py",
+        "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_grokbot_shared_equipment.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Sila Moses Lake IATF evidence rail: fixture SILA-ML-01 reads four synthetic batches and 12 unique analytics plus one duplicate through mocked read-only MES/QMS/analytics adapters, emits B001=REVIEW_READY / B002=HOLD_UNIT_MISMATCH / B003=HOLD_SPEC_OOS / B004=HOLD_GENEALOGY_GAP dossiers, logs the duplicate once, denies adapter writes and autonomous disposition, and replays byte-identically. Human disposition is mandatory. Incumbents remain authoritative.",
       "carrier": "CURSOR",
       "chat_ignored": false,
@@ -6662,7 +6983,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 113,
+  "n_features": 119,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
