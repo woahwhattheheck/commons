@@ -15,3 +15,17 @@ If Pages looks smashed or stale: [redundancy-pages-raw.md](./redundancy-pages-ra
 Do not remint an id that is already a file. Do not MCP-PUT `board_ingest.py`. Smash/wipe of `commons.mno` is refused. Substrate / organ / titan / address work is first-class. A receipt that brags 337 or titan was untouched is a skipped lane, not a HEAD rule. Slack `1787629309.162109`. A local `Desktop/MUHL_GO/SESSION_GROUNDING.md` copy is one historical/session-bound specification input; do not use it as a standing never-touch / blanket non-actuation rule. Slack `1787635067.695619`.
 
 Browser door: [head.html](../head.html) — pin raw to the live sha when Pages 404s. Recipe: [redundancy-pages-raw.md](./redundancy-pages-raw.md). Cite PIN. Do not remint `pin-redundancy-pages-raw-20260819-01`.
+
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. HEAD truth docs used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+
