@@ -22,3 +22,14 @@ Cards already on disk: `MUHL_GO/MNO_DS_X_dc.md`, `MUHL_GO/DATACENTER_100GB.md`. 
 ## Law for this line
 
 Host = inject or surface or die. Dest FROM FILE. Ones only rise. Recv/carry/gates not this card. Titan 78 only with owner --go. Cite `specdaddy-dir19-dc-surface-push-20260822-01`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+
