@@ -228,10 +228,10 @@ on:
 permissions:
   contents: read
 concurrency:
-  # Only the latest battery for a branch/PR remains useful. A newer run
-  # supersedes obsolete queued or running work, including pushes to main.
-  group: "${{ github.workflow }}-${{ github.event_name == 'pull_request' && github.event.pull_request.head.label || github.ref }}"
-  cancel-in-progress: true
+  # Finish the active automatic battery; keep its newest pending successor.
+  # Each manual dispatch has its own group and survives later branch pushes.
+  group: "${{ github.workflow }}-${{ github.event_name }}-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.ref }}"
+  cancel-in-progress: false
 jobs:
   battery:
     runs-on: ubuntu-latest
