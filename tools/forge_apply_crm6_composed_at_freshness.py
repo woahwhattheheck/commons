@@ -74,19 +74,20 @@ def composed_at_freshness(
 PARSER_NEEDLE = '    sub.add_parser("brief")\n'
 PARSER_INSERT = '    sub.add_parser("brief")\n    sub.add_parser("freshness")\n'
 
-MAIN_NEEDLE = '''    if args.command == "brief":
-        built = build_index()
-        sys.stdout.write(emit_jsonl([brief_header(built=built), *brief_hot_rows()]))
-        return 0
+# main()'s command handlers live inside try: (8-space indent)
+MAIN_NEEDLE = '''        if args.command == "brief":
+            built = build_index()
+            sys.stdout.write(emit_jsonl([brief_header(built=built), *brief_hot_rows()]))
+            return 0
 '''
-MAIN_INSERT = '''    if args.command == "brief":
-        built = build_index()
-        sys.stdout.write(emit_jsonl([brief_header(built=built), *brief_hot_rows()]))
-        return 0
-    if args.command == "freshness":
-        result = composed_at_freshness()
-        print(canonical_text(result), end="")
-        return 0 if result["status"] == "FRESH" else 2
+MAIN_INSERT = '''        if args.command == "brief":
+            built = build_index()
+            sys.stdout.write(emit_jsonl([brief_header(built=built), *brief_hot_rows()]))
+            return 0
+        if args.command == "freshness":
+            result = composed_at_freshness()
+            print(canonical_text(result), end="")
+            return 0 if result["status"] == "FRESH" else 2
 '''
 
 HANDOFF_NEEDLE = '''    if owner != "UNSEATED":
