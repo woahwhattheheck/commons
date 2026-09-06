@@ -287,6 +287,8 @@ def main():
     if "--go" not in sys.argv:
         print("NEED — python host/muhl_tools_once.py --go")
         print("ONE job. then die. not a poller.")
+        print("File jobs: job.html · catalog: tools.json · board: tools.html")
+        print("Harness road: tools-board (harnesses/catalog.json).")
         return 1
     with ingest.ingest_lock():
         ingest.ingest_ntfy()
