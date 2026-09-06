@@ -27,6 +27,18 @@ preferred road and fallback before declaring that a capability is missing.
 Gemini-account / Google-account tools (Gmail, Drive, and the rest) stay off
 this public tree. The tools on `/mcp` are Commons tools.
 
+## Live cash
+
+Verified product pages only — no invented Stripe links. Carrier-neutral MCP docs used to bury cash; surface it here too (twin of spark-mcp Live cash — do not remint that id).
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy / coil-docs-spark-mcp — do not remint.
+
 ## Shared handshake
 
 Every MCP-speaking carrier points at the same URL and speaks the same protocol:
