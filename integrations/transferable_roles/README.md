@@ -25,10 +25,12 @@ Autopsy fulfill CLI: `hinge-r4-autopsy-fulfill-cli-20260905-01`
 Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
 Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
+Autopsy fulfill SLA status: `wedge-autopsy-fulfill-sla-status-20260905-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
 Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`
 Handoff prove diag SLA: `hinge-r4-handoff-prove-diag-sla-20260905-01`
+Handoff prove autopsy SLA: `wedge-r4-handoff-prove-autopsy-sla-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -169,9 +171,12 @@ refuse.
 landed contract `refund` miss-remedy text. CRM / Autopsy roles refuse.
 
 `prove-handoff` runs landed role-gated executes after transfer/export→import
-(`handoff_execute.prove_successor_executes`). Autopsy + diagnostic contract /
+(`handoff_execute.prove_successor_executes`). Autopsy (case / receipt-row /
+fulfill-deadline / fulfill-validate / fulfill-sla) + diagnostic contract /
 receipt / fulfill-deadline / fulfill-sla when those tools are present (repair
 receipt skipped). CRM refuse. Local helper execution only — no G2/service ops.
+After `wedge-r4-handoff-prove-autopsy-sla-20260905-01`, Autopsy successors also
+prove `autopsy-fulfill-sla` OPEN|MISSED vs `--as-of`.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
