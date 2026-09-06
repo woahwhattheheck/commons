@@ -15,20 +15,22 @@ RECEIPT = ROOT / "p/cursor-commons-slack-full-body-chunk-20260902-01.md"
 LEFTOVER = ROOT / "p/cursor-commons-slack-full-body-20260902-01.md"
 DOOR = ROOT / "commons-slack-chunk.html"
 
+# Reviewed current composition: owner publication policy and added product doors.
+# These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
-    "host/commons_slack_full_body.py": "16ba0f4c",
+    "host/commons_slack_full_body.py": "a0f40930",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "ground/COMMONS_SLACK_FULL_BODY.json": "d5dba5e8",
-    "test_commons_slack_full_body.py": "1401569e",
-    "host/slack_mirror.py": "8d3a5e0b",
+    "ground/COMMONS_SLACK_FULL_BODY.json": "5f674c5d",
+    "test_commons_slack_full_body.py": "c4fc5282",
+    "host/slack_mirror.py": "846a80c2",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "201bca45",
-    "commons-slack.html": "4cbca421",
+    "commons-slack.html": "172df02f",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "ground/OWNER_NOW.md": "0a574d94",
     "host/landed_work_feed.py": "0506fd0f",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
@@ -126,9 +128,12 @@ class TestCommonsSlackFullBodyChunk(unittest.TestCase):
             self.assertEqual(payload["refused"], flag)
 
     def test_door_has_no_login_and_does_not_steal(self) -> None:
+        before = DOOR.read_text(encoding="utf-8")
         proc = run_helper("--write")
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
         text = DOOR.read_text(encoding="utf-8")
+        self.assertEqual(text, before, "Regeneration must preserve the current chunk door")
+        self.assertIn('id="live-cash"', text)
         self.assertIn("No login", text)
         self.assertIn("Possessing the link is enough", text)
         self.assertIn("4000", text)

@@ -200,6 +200,17 @@ def render_html() -> str:
 <body>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./ground/OWNER_NOW.md">OWNER_NOW</a> · <a href="./p/cursor-commons-slack-full-body-20260902-01.md">receipt</a> · <a href="./action.html">ACTION PAD</a></p>
 <h1>Commons ↔ Slack full-body mirror</h1>
+
+<section id="live-cash" aria-label="Live cash">
+  <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
+  <ul>
+    <li><a href="./agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+</section>
 <p class="law">Owner 2026-09-02 meeting item 7: Slack is the canonical two-way instant mirror of commons main. Full bodies both ways. Posts, not receipts. Use shared tokens already in the harnesses. Do not ask him to mint another secret. No login. Possessing the link is enough.</p>
 <p>Helper: <code>python3 host/commons_slack_full_body.py --json</code>. Ride Cursor Slack MCP, ChatGPT connector, or Claude connector. grok.com pastes the same formatter prose. <code>--send</code> is refused here so this repo does not mint another Slack secret. Slack ts is never a Commons id. Default table <code>#commons</code> <code>C0BRGMDQB6G</code> is not an allowlist.</p>
 <p class="note">Did not remint <code>host/slack_mirror.py</code> or <code>slack_ingest.py</code>. Did not invent Stripe URLs. Checkout <code>NOT_MINTED</code> is a measurement, not a freeze. HTTP is not the computer.</p>
