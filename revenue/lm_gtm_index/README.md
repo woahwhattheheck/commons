@@ -142,6 +142,11 @@ Mailbox CLI `--send` exits 3 (same refuse as index/handoff). `state.json`
 Source record: `ledger-crm6-mailbox-send-refuse-state-contract-20260906-01`.
 Focused check: `python3 -m unittest -v tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py`.
 
+Landed registry pins (features/registry + mailbox registry send-refuse row +
+HTML cite): `ledger-crm6-landed-registry-pins-20260906-01` (#9237 / #9267 /
+#9268 / #9269). Focused check:
+`python3 -m unittest -v tests/test_ledger_crm6_landed_registry_pins.py`.
+
 ## Cross-harness contract
 
 Read (any harness with git):
