@@ -37,15 +37,15 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33723638532-billing-lock-20260903-01.md": "0e10dbc1",
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
-    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "05b40e7e",
-    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "27463e23",
-    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "fe1a4c6d",
-    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "9b890dcc",
-    "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "9d35fbb8",
-    "llms_txt.py": "df5bf4c6",
+    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "818b54d2",
+    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "4c82ba79",
+    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "f8686da2",
+    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "485d5705",
+    "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "9b7bc17a",
+    "llms_txt.py": "4f9df46d",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 

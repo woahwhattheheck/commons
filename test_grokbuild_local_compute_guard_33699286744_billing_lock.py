@@ -28,14 +28,14 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33694402730-billing-lock-20260902-01.md": "eb6f1406",
     "p/grokbuild-local-compute-guard-33699601000-billing-lock-20260903-01.md": "da198a83",
     "p/grokbuild-local-compute-guard-33699607453-billing-lock-20260903-01.md": "5d89a9bf",
-    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "05b40e7e",
-    "test_grokbuild_local_compute_guard_33699601000_billing_lock.py": "b99e86c9",
-    "test_grokbuild_local_compute_guard_33699607453_billing_lock.py": "ac1328e4",
+    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "818b54d2",
+    "test_grokbuild_local_compute_guard_33699601000_billing_lock.py": "3c0deb88",
+    "test_grokbuild_local_compute_guard_33699607453_billing_lock.py": "3ce970d8",
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 

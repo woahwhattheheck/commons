@@ -17,14 +17,14 @@ OCCUPANCY = ROOT / "p/cursor-stealable-lanes-occupancy-20260902-01.md"
 READBACK = ROOT / "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md"
 
 KEEP = {
-    "open_door_guard.py": "4b053e43",
-    "test_open_door_guard.py": "70ee5730",
-    ".github/workflows/open-door-guard.yml": "6586644c",
+    "open_door_guard.py": "861958e9",
+    "test_open_door_guard.py": "2fb0d87b",
+    ".github/workflows/open-door-guard.yml": "c2121049",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
-    "test_cursor_stealable_lanes_occupancy_readback.py": "f5b79c75",
-    "test_stealable_lanes_occupancy.py": "387b79d1",
+    "test_cursor_stealable_lanes_occupancy_readback.py": "76ef415d",
+    "test_stealable_lanes_occupancy.py": "2f10a923",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",

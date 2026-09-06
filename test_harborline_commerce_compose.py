@@ -16,9 +16,9 @@ KEEP = {
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    "commerce-agents.html": "e2028ddc",
+    "commerce-agents.html": "62420210",
     ".agents/skills/commerce-agents/SKILL.md": "1f93c4a2",
-    "test_commerce_agents.py": "4c360503",
+    "test_commerce_agents.py": "9505b126",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
     "p/cursor-what-a-pack-is-20260902-01.md": "a4e4dd89",
@@ -28,8 +28,8 @@ KEEP = {
     "host/commerce_agents_same_loop.py": "c90f6e50",
     "packs/desk-website-service-20260902-01/instance.json": "f460d7bc",
     "packs/desk-website-service-20260902-01/checkout.md": "64633e36",
-    "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
-    "autogtm.html": "9d8b3e85",
+    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
+    "autogtm.html": "fab1d536",
 }
 
 

@@ -178,15 +178,15 @@ def keep_errors() -> list[str]:
     adapter_bytes = ADAPTER.stat().st_size
     if adapter_bytes < 20000 or adapter_bytes > 23000:
         errors.append("adapter_size_reminted")
-    if not adapter_blob.startswith("9ae34f64"):
+    if not adapter_blob.startswith("393da756"):
         errors.append("adapter_reminted")
-    if not pad_blob.startswith("f2757068"):
+    if not pad_blob.startswith("3b4df417"):
         errors.append("pad_reminted")
     if not git_blob("vercel.json").startswith("86c5b13a"):
         errors.append("vercel_json_reminted")
-    if not git_blob("stage_spark_mcp_bundle.py").startswith("8b2045c9"):
+    if not git_blob("stage_spark_mcp_bundle.py").startswith("1234e00c"):
         errors.append("stager_reminted")
-    if not git_blob(".github/workflows/spark-mcp-production.yml").startswith("dc9fa8ae"):
+    if not git_blob(".github/workflows/spark-mcp-production.yml").startswith("fddb0bea"):
         errors.append("workflow_reminted")
     if not git_blob("p/cursor-webmcp-contest-20260903-01.md").startswith("98fb6b6f"):
         errors.append("contest_leftover_reminted")

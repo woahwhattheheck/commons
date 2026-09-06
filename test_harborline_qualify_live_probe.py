@@ -13,7 +13,7 @@ HELPER = ROOT / "host/harborline_qualify_live_probe.py"
 
 KEEP = {
     "p/cursor-explee-qualify-clone-20260902-01.md": "aceb4aead",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     "host/explee_autogtm_local.py": "5407261c",
@@ -22,7 +22,7 @@ KEEP = {
     "p/cursor-autogtm-peer-ack-lead-landed-readback-20260902-01.md": "d3be87c2",
     "p/cursor-autogtm-peer-readback-ack-20260902-01.md": "d9d1008e",
     "p/cursor-autogtm-explee-same-loop-20260902-01.md": "c437f4d6",
-    "packs/desk-website-service-20260902-01/door.html": "d3d6fcc7",
+    "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
     "p/cursor-business-pack-harborline-map-pin-lift-pointer-20260902-01.md": "7a8987b5",
 }
 

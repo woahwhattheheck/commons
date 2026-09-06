@@ -17,8 +17,8 @@ ADAPTER = ROOT / "api" / "mcp.py"
 
 KEEP = {
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
-    "webmcp.html": "f2757068",
-    "api/mcp.py": "9ae34f64",
+    "webmcp.html": "3b4df417",
+    "api/mcp.py": "393da756",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "p/cursor-webmcp-judge-url-20260903-01.md": "eb52debf",
     "p/cursor-webmcp-ship-20260903-01.md": "15831799",
@@ -29,10 +29,10 @@ KEEP = {
     "p/cursor-wire-hall-pass-unique-pack-ship-20260902-01.md": "7900eaba",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "5b8edbda",
-    "ground/WIRE_SUPER_MCP.md": "f36de0a5",
-    "hub_pages.py": "c11979b8",
-    "door.js": "cfe5a219",
+    "wire.html": "a3934e26",
+    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
+    "hub_pages.py": "c4e9198a",
+    "door.js": "5bc431b1",
 }
 
 
@@ -50,7 +50,7 @@ class TestCursorWebmcpAdapterKeepLift(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertEqual(ADAPTER.stat().st_size, 21414)
+        self.assertEqual(ADAPTER.stat().st_size, 21973)
         self.assertGreaterEqual(ADAPTER.stat().st_size, 20000)
 
     def test_leftover_unique_pack_tests_pass_after_keep_lift(self) -> None:

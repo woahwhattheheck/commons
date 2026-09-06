@@ -19,19 +19,19 @@ WORKFLOW = ROOT / ".github/workflows/llms-txt.yml"
 
 KEEP = {
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "df5bf4c6",
+    "llms_txt.py": "4f9df46d",
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
     "test_baked_head_json.py": "71a53f96",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
     "p/grokbuild-llms-txt-33723861225-billing-lock-20260903-01.md": "09244cf3",
-    "test_grokbuild_llms_txt_33723861225_billing_lock.py": "ccc7e109",
+    "test_grokbuild_llms_txt_33723861225_billing_lock.py": "1e331148",
     "p/grokbuild-llms-txt-33723638519-billing-lock-20260903-01.md": "98285e08",
-    "test_grokbuild_llms_txt_33723638519_billing_lock.py": "29dbea12",
+    "test_grokbuild_llms_txt_33723638519_billing_lock.py": "1a532d9d",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grokbuild-staleness-alarm-33767754124-billing-lock-20260903-01.md": "49d0ad65",
-    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "58cc517f",
+    "test_grokbuild_staleness_alarm_33767754124_billing_lock.py": "90a6b399",
 }
 
 

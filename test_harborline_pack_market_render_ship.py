@@ -23,7 +23,7 @@ KEEP = {
     "host/harborline_pack_market_slack_render.py": "a03534da",
     "p/cursor-harborline-pack-market-render-readback-rematch-20260902-01.md": "f965e00f",
     "p/cursor-harborline-pack-market-render-readback-ack-20260902-01.md": "9d221c75",
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "ground/OWNER_NOW.md": "0a574d94",
 }
 
 

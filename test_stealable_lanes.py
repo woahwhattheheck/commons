@@ -18,14 +18,14 @@ import stealable_lanes as sl  # noqa: E402
 RECEIPT = ROOT / "p/cursor-stealable-lanes-roles-20260902-01.md"
 
 KEEP = {
-    "lanes.json": "63ceeb60",
+    "lanes.json": "e34b5b84",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
-    "api/mcp.py": "9ae34f64",
-    "ground/OWNER_NOW.md": "59b1fd37",
-    "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "c11979b8",
-    "door.js": "cfe5a219",
+    "api/mcp.py": "393da756",
+    "ground/OWNER_NOW.md": "0a574d94",
+    "autogtm.html": "fab1d536",
+    "hub_pages.py": "c4e9198a",
+    "door.js": "5bc431b1",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }

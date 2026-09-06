@@ -26,16 +26,16 @@ KEEP = {
     "host/path_manifest.py": "dcc94697",
     ".github/workflows/path-manifest.yml": "b29dec8a",
     "architecture/path-manifest.json": "e5ecb24f",
-    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "92d86ab0",
+    "test_grokbuild_path_manifest_33694214802_billing_lock.py": "25cd8c53",
     "p/grokbuild-path-manifest-33694214802-billing-lock-20260902-01.md": "d9331b17",
-    "test_grokbuild_pr8415_path_manifest_33689243555.py": "8a79e28c",
+    "test_grokbuild_pr8415_path_manifest_33689243555.py": "e46d79d5",
     "p/grokbuild-pr8415-path-manifest-33689243555-20260902-01.md": "3c72cd09",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "ee9007eb",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "e82beaab",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
     "p/grokbuild-pr8479-verify-20260902-01.md": "658530be",
     "p/grokbuild-open-door-guard-33699286785-billing-lock-20260902-01.md": "d22e0707",
-    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "b5446273",
+    "test_grokbuild_open_door_guard_33699286785_billing_lock.py": "dd2af89b",
 }
 
 

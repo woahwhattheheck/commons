@@ -16,13 +16,13 @@ SIBLING = ROOT / "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-
 SIBLING_TEST = ROOT / "test_grokbuild_open_door_guard_33689357297_billing_lock.py"
 
 KEEP = {
-    "open_door_guard.py": "4b053e43",
-    "test_open_door_guard.py": "70ee5730",
-    ".github/workflows/open-door-guard.yml": "6586644c",
+    "open_door_guard.py": "861958e9",
+    "test_open_door_guard.py": "2fb0d87b",
+    ".github/workflows/open-door-guard.yml": "c2121049",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "16bf0f2c",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "84aa3f96",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "77a79824",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "5449bc9f",
 }
 
 

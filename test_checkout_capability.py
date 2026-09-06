@@ -59,6 +59,27 @@ class CheckoutCapability(unittest.TestCase):
         self.assertIn("agent-failure-autopsy-29", checkout_first)
         self.assertEqual(len(projected["inert_urls"]), 3)
 
+    def test_seven_digit_fractional_offset_timestamp_keeps_autopsy_chargeable(self):
+        observed = "2026-09-05T09:13:12.9504913+00:00"
+        parsed = capability._timestamp(observed, "autopsy.evidence.observed_at")
+        self.assertEqual(parsed.microsecond, 950491)
+        snapshot = json.loads(
+            (ROOT / "revenue" / "checkout_capability" / "snapshot.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        rail = next(
+            row
+            for row in snapshot["canonical_rails"]
+            if row["sku"] == "agent-failure-autopsy-29"
+        )
+        self.assertEqual(rail["evidence"]["observed_at"], observed)
+        projected = capability.project(snapshot, self._catalog())
+        public = {row["sku"]: row for row in projected["public_rails"]}
+        self.assertIn("agent-failure-autopsy-29", public)
+        self.assertTrue(public["agent-failure-autopsy-29"]["chargeable"])
+        self.assertEqual(public["agent-failure-autopsy-29"]["public"], "EXPOSE_CHECKOUT")
+
     def test_duplicate_urls_never_become_public_anchors(self):
         snapshot = json.loads(
             (ROOT / "revenue" / "checkout_capability" / "snapshot.json").read_text(

@@ -14,12 +14,12 @@ RECEIPT = ROOT / "p/cursor-webmcp-judge-url-20260903-01.md"
 ADAPTER = ROOT / "api/mcp.py"
 
 KEEP = {
-    "api/mcp.py": "9ae34f64",
-    "webmcp.html": "f2757068",
+    "api/mcp.py": "393da756",
+    "webmcp.html": "3b4df417",
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
     "test_webmcp_door.py": "21b6993f",
-    "test_cursor_webmcp_contest.py": "a0664d2d",
+    "test_cursor_webmcp_contest.py": "296060b0",
     "vercel.json": "86c5b13a",
 }
 
@@ -61,8 +61,8 @@ class TestWebmcpJudgeUrl(unittest.TestCase):
         self.assertEqual(packet["mcp_initialize"]["status"], 200)
         self.assertEqual(packet["mcp_initialize"]["name"], "commons")
         self.assertEqual(packet["mcp_initialize"]["version"], "1.4.0")
-        self.assertEqual(packet["adapter_blob"], "9ae34f64")
-        self.assertEqual(packet["pad_blob"], "f2757068")
+        self.assertEqual(packet["adapter_blob"], "393da756")
+        self.assertEqual(packet["pad_blob"], "3b4df417")
         self.assertEqual(packet["contest_receipt"], "98fb6b6f")
         self.assertEqual(packet["vercel_team_token"], "FINDER-FAILED")
         self.assertFalse(packet["second_mcp"])

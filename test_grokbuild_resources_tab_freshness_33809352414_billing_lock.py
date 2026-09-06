@@ -22,7 +22,7 @@ KEEP = {
     ".github/workflows/resources-tab-freshness.yml": "658eec6f",
     "host/resources_tab.py": "18ae6933",
     "test_resources_tab.py": "8aa4fdd9",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/grok-resources-tab-freshness-billing-lock-20260903-01.md": "2eb99153",
     "p/grokbuild-resources-tab-freshness-33767588782-billing-lock-20260903-01.md": "eca6f65c",

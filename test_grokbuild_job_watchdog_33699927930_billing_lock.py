@@ -26,9 +26,9 @@ KEEP = {
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
     "p/grok-build-job-watchdog-33699607332-billing-lock-20260903-01.md": "dd77b53d",
-    "test_grokbuild_job_watchdog_33699607332_billing_lock.py": "25383249",
+    "test_grokbuild_job_watchdog_33699607332_billing_lock.py": "1c92913e",
     "p/grok-build-job-watchdog-33699286811-billing-lock-20260903-01.md": "81092ec2",
-    "test_grokbuild_job_watchdog_33699286811_billing_lock.py": "4989e7b3",
+    "test_grokbuild_job_watchdog_33699286811_billing_lock.py": "fd9d405f",
     "p/grok-build-job-watchdog-33694253472-billing-lock-20260902-01.md": "ad44ca9c",
     "p/grok-build-job-watchdog-33694219006-billing-lock-20260902-01.md": "6adce0fe",
     "p/grok-build-job-watchdog-33694214891-billing-lock-20260902-01.md": "eca76228",
@@ -36,8 +36,8 @@ KEEP = {
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "p/cursor-wire-catalog-marketplace-latch-readback-rematch-20260903-01.md": "f23e1db8",
-    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "6619e83b",
-    "leftover-census.md": "b02dc321",
+    "test_cursor_wire_catalog_marketplace_latch_readback_rematch.py": "c4b3628e",
+    "leftover-census.md": "9a27014b",
     "leftover-census.json": "32d3ee6b",
 }
 

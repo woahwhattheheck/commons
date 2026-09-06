@@ -16,18 +16,18 @@ HELPER = ROOT / "host/harborline_pack_market_render.py"
 KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "host/harborline_pack_market_render.py": "cc9a3320",
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "ground/OWNER_NOW.md": "0a574d94",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
     "p/cursor-owner-now-revenue-readback-20260902-01.md": "3449da29",
-    "owner-now-revenue.html": "1d3f1cdf",
+    "owner-now-revenue.html": "9b1c59fb",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
     "p/cursor-big-things-incoming-shots-20260902-01.md": "60b24eff",
     "p/cursor-big-things-incoming-shots-readback-20260902-01.md": "3cabb764",
     "p/cursor-incoming-models-hub-payload-20260902-01.md": "63aa4736",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "host/harborline_qualify_live_probe.py": "2c1797b2",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
 }
 
 

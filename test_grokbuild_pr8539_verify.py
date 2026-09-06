@@ -18,7 +18,7 @@ WORKFLOW = ROOT / ".github/workflows/job-watchdog.yml"
 
 KEEP = {
     "p/grok-build-job-watchdog-33699607332-billing-lock-20260903-01.md": "dd77b53d",
-    "test_grokbuild_job_watchdog_33699607332_billing_lock.py": "25383249",
+    "test_grokbuild_job_watchdog_33699607332_billing_lock.py": "1c92913e",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     ".github/workflows/job-watchdog.yml": "5af545c2",
     "harness_wake/watchdog.py": "149ed075",

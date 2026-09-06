@@ -15,11 +15,11 @@ ORIGINAL = ROOT / "p/grok-build-llms-txt-billing-lock-20260902-01.md"
 
 KEEP = {
     "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md": "e739b9cd",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "10b10d65",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "88e2182c",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "df5bf4c6",
+    "llms_txt.py": "4f9df46d",
 }
 
 BODY_SHA256 = "28435b5fe13a8af234f3ea96e8d74c914235eef42d568b7a349b812c4456aa64"

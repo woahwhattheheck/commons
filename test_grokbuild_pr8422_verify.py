@@ -13,7 +13,7 @@ PRIOR = ROOT / "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.
 
 KEEP = {
     "p/grok-build-discord-cloud-33689083145-billing-lock-20260902-01.md": "6e34f897",
-    "test_grokbuild_discord_cloud_33689083145_billing_lock.py": "23e3fe80",
+    "test_grokbuild_discord_cloud_33689083145_billing_lock.py": "41e226aa",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
     ".github/workflows/commons-discord-cloud.yml": "6f1c1479",

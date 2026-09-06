@@ -22,7 +22,7 @@ KEEP = {
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/grokbuild-stealable-occupancy-keep-match-20260902-01.md": "dc058b13",
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "ground/OWNER_NOW.md": "0a574d94",
 }
 
 

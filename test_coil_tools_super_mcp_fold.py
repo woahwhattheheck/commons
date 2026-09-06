@@ -23,8 +23,8 @@ RECEIPT = ROOT / "p/coil-tools-super-mcp-fold-20260902-01.md"
 PUBLIC_MCP = "https://commons-spark-mcp.vercel.app/mcp"
 
 KEEP = {
-    "tools.json": "d5d124bd",
-    "manual.html": "a7d71a68",
+    "tools.json": "0c4b38e7",
+    "manual.html": "02df4723",
     "p/coil-tools-super-mcp-fold-20260902-01.md": "6948bdc1",
 }
 

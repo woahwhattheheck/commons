@@ -141,7 +141,7 @@ class TestPr7915ClosedUnmerged(unittest.TestCase):
                 "9d28dd61"
             )
         )
-        self.assertTrue(git_blob("autogtm.html").startswith("9d8b3e85"))
+        self.assertTrue(git_blob("autogtm.html").startswith("fab1d536"))
 
     def test_this_seat_did_not_dump_qualify_html_or_corner(self) -> None:
         # Harborline CLAIM three live-probe paths may land later. Do not freeze

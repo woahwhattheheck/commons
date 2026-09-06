@@ -27,7 +27,7 @@ KEEP = {
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 

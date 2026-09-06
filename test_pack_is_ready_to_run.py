@@ -18,7 +18,7 @@ KEEP = {
     "p/cursor-pack-quality-dictates-tier-20260902-01.md": "f2054b18",
     "host/pack_quality_dictates_tier.py": "74d36b0a",
     "ground/PACK_QUALITY_DICTATES_TIER.json": "fa45160f",
-    "pack-quality-tier.html": "2443aebe",
+    "pack-quality-tier.html": "6484aade",
     "p/cursor-pack-quality-dictates-tier-readback-20260902-01.md": "aa5f6bbd",
     "ground/BUSINESS_PACK_KEEP_SELL.json": "4e0e3eb0",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
@@ -28,12 +28,12 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
-    "host/slack_mirror.py": "8d3a5e0b",
+    "host/slack_mirror.py": "846a80c2",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "hub_pages.py": "c11979b8",
-    "door.js": "cfe5a219",
-    "api/mcp.py": "9ae34f64",
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "hub_pages.py": "c4e9198a",
+    "door.js": "5bc431b1",
+    "api/mcp.py": "393da756",
+    "ground/OWNER_NOW.md": "0a574d94",
 }
 
 

@@ -37,14 +37,14 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33723631022-billing-lock-20260903-01.md": "0a6e7aee",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
-    "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "9d35fbb8",
-    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "9b890dcc",
-    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "fe1a4c6d",
-    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "27463e23",
-    "llms_txt.py": "df5bf4c6",
+    "test_grokbuild_local_compute_guard_33723638532_billing_lock.py": "9b7bc17a",
+    "test_grokbuild_local_compute_guard_33723631022_billing_lock.py": "485d5705",
+    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "f8686da2",
+    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "4c82ba79",
+    "llms_txt.py": "4f9df46d",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 

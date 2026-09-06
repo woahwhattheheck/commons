@@ -25,16 +25,16 @@ KEEP = {
     "test_job_watchdog_land.py": "2f055030",
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
     "p/grokbuild-job-watchdog-33717733947-billing-lock-20260903-01.md": "d83537e6",
-    "test_grokbuild_job_watchdog_33717733947_billing_lock.py": "b4756db1",
+    "test_grokbuild_job_watchdog_33717733947_billing_lock.py": "41597ad7",
     "p/grok-build-job-watchdog-33718131418-billing-lock-20260903-01.md": "716e86bd",
-    "test_grokbuild_job_watchdog_33718131418_billing_lock.py": "67a546e6",
+    "test_grokbuild_job_watchdog_33718131418_billing_lock.py": "198c99ce",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "3f77dce1",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "3c27c51f",
     "p/grok-build-owner-net-33723510040-billing-lock-20260903-01.md": "6a2c8239",
-    "test_grokbuild_owner_net_33723510040_billing_lock.py": "13e008cf",
+    "test_grokbuild_owner_net_33723510040_billing_lock.py": "2ef5c846",
 }
 
 

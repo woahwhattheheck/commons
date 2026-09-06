@@ -17,11 +17,11 @@ SIBLING_TEST = ROOT / "test_grokbuild_open_door_guard_33723631068_billing_lock.p
 TRIGGER = ROOT / "p/grok-build-commons-board-billing-lock-20260903-01.md"
 
 KEEP = {
-    "open_door_guard.py": "4b053e43",
-    "test_open_door_guard.py": "70ee5730",
-    ".github/workflows/open-door-guard.yml": "6586644c",
+    "open_door_guard.py": "861958e9",
+    "test_open_door_guard.py": "2fb0d87b",
+    ".github/workflows/open-door-guard.yml": "c2121049",
     "p/grokbuild-open-door-guard-33723631068-billing-lock-20260903-01.md": "ba9914fd",
-    "test_grokbuild_open_door_guard_33723631068_billing_lock.py": "178d28e8",
+    "test_grokbuild_open_door_guard_33723631068_billing_lock.py": "ae8481c9",
     "p/grok-build-commons-board-billing-lock-20260903-01.md": "c07bf913",
 }
 

@@ -14,7 +14,7 @@ LEFTOVER = ROOT / "p/grok-build-discord-cloud-billing-lock-20260902-01.md"
 KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "commons_discord.py": "f6f1a374",
-    "discord_ingest.py": "51a73262",
+    "discord_ingest.py": "4866672a",
     "test_commons_discord.py": "5881bb78",
     "test_discord_mirror.py": "45043494",
     "infra/discord/test_commons_discord_bridge.py": "9c623e59",
@@ -26,9 +26,9 @@ KEEP = {
     "p/cursor-mcp-get-grounding-readback-20260902-01.md": "4d7bc317",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
-    "hub_pages.py": "c11979b8",
-    "door.js": "cfe5a219",
-    "api/mcp.py": "9ae34f64",
+    "hub_pages.py": "c4e9198a",
+    "door.js": "5bc431b1",
+    "api/mcp.py": "393da756",
 }
 
 

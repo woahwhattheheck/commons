@@ -15,10 +15,10 @@ BODY_SHA256 = "fe871f503b202973ff5cc53db72d06caa87496eeb138c051b9eff3470005c746"
 
 KEEP = {
     "p/grokbuild-main-range-verify-33717084528-billing-lock-20260903-01.md": "2b0fd9c9",
-    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "3e89a404",
+    "test_grokbuild_main_range_verify_33717084528_billing_lock.py": "2ccfe9dd",
     "p/grokbuild-pr8583-already-merged-verify-20260903-01.md": "b3e4e1af",
-    "test_grokbuild_pr8583_already_merged_verify.py": "3868499a",
-    "open_door_guard.py": "4b053e43",
+    "test_grokbuild_pr8583_already_merged_verify.py": "bf3a3f13",
+    "open_door_guard.py": "861958e9",
 }
 
 

@@ -25,15 +25,15 @@ KEEP = {
     "test_job_watchdog_land.py": "2f055030",
     "test_harness_wake.py": "ab71ef24",
     "enqueue_pending_grok_com.py": "d1e4b9e7",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
     "p/grok-build-job-watchdog-33723631044-billing-lock-20260903-01.md": "dc553557",
-    "test_grokbuild_job_watchdog_33723631044_billing_lock.py": "c8eecc5b",
+    "test_grokbuild_job_watchdog_33723631044_billing_lock.py": "b08d84fc",
     "p/grok-build-job-watchdog-33718131418-billing-lock-20260903-01.md": "716e86bd",
-    "test_grokbuild_job_watchdog_33718131418_billing_lock.py": "67a546e6",
+    "test_grokbuild_job_watchdog_33718131418_billing_lock.py": "198c99ce",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "3f77dce1",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "3c27c51f",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "760a8169",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "d99c08de",
 }
 
 

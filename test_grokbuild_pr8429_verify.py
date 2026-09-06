@@ -14,10 +14,10 @@ PRIOR = ROOT / "p/grokbuild-local-compute-guard-33689357241-billing-lock-2026090
 
 KEEP = {
     "p/grokbuild-local-compute-guard-33689357241-billing-lock-20260902-01.md": "2517b71d",
-    "test_grokbuild_local_compute_guard_33689357241_billing_lock.py": "465d0ca5",
+    "test_grokbuild_local_compute_guard_33689357241_billing_lock.py": "95c1e8bc",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
 }
 

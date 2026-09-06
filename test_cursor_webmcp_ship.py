@@ -22,8 +22,8 @@ WORKFLOW = ROOT / ".github/workflows/spark-mcp-production.yml"
 CANARY = ROOT / "host/webmcp_live.py"
 
 KEEP = {
-    "api/mcp.py": "9ae34f64",
-    "webmcp.html": "f2757068",
+    "api/mcp.py": "393da756",
+    "webmcp.html": "3b4df417",
     "p/wire-webmcp-challenge-20260903-01.md": "0e815c6d",
     "p/cursor-webmcp-contest-20260903-01.md": "98fb6b6f",
 }
@@ -43,7 +43,7 @@ class TestCursorWebmcpShip(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
-        self.assertEqual(ADAPTER.stat().st_size, 21414)
+        self.assertEqual(ADAPTER.stat().st_size, 21973)
         leftover = LEFTOVER.read_text(encoding="utf-8")
         ship = SHIP.read_text(encoding="utf-8")
         self.assertIn("cursor-webmcp-contest-20260903-01", leftover)

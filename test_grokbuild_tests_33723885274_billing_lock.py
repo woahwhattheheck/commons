@@ -19,17 +19,17 @@ WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
     "p/grokbuild-tests-33718131413-billing-lock-20260903-01.md": "9fa188cb",
-    "test_grokbuild_tests_33718131413_billing_lock.py": "3d866ea9",
+    "test_grokbuild_tests_33718131413_billing_lock.py": "9239b2ac",
     "p/grokbuild-tests-33718116260-billing-lock-20260903-01.md": "70db3e2a",
-    "test_grokbuild_tests_33718116260_billing_lock.py": "00f983c9",
+    "test_grokbuild_tests_33718116260_billing_lock.py": "312aa0f2",
     "p/grokbuild-leftover-id-census-33723043828-billing-lock-20260903-01.md": "e135862e",
-    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "3f77dce1",
+    "test_grokbuild_leftover_id_census_33723043828_billing_lock.py": "3c27c51f",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
-    "catalog.html": "7eb3ca22",
-    "boards.html": "f9f023e3",
-    "hub_pages.py": "c11979b8",
-    ".github/workflows/tests.yml": "8c2f2301",
-    "open_door_guard.py": "4b053e43",
+    "catalog.html": "97f683f1",
+    "boards.html": "7d046f44",
+    "hub_pages.py": "c4e9198a",
+    ".github/workflows/tests.yml": "67fe2c46",
+    "open_door_guard.py": "861958e9",
     "fix_first.py": "a57aee1c",
 }
 

@@ -21,10 +21,10 @@ WORKFLOW = ROOT / ".github/workflows/local-compute-guard.yml"
 KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "local_compute_guard.py": "6be242af",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
     "test_local_compute_guard.py": "b8d65280",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "41ebb40b",
+    "test_grokbuild_pr8411_verify.py": "b5aa8863",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "host/stealable_lanes.py": "c90284fb",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",

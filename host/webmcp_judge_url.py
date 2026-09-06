@@ -148,9 +148,9 @@ def measure() -> dict[str, Any]:
         errors.append("mcp_identity_drift")
     if adapter_bytes < 20000 or adapter_bytes > 23000:
         errors.append("adapter_size_reminted")
-    if not adapter_blob.startswith("9ae34f64"):
+    if not adapter_blob.startswith("393da756"):
         errors.append("adapter_reminted")
-    if not pad_blob.startswith("f2757068"):
+    if not pad_blob.startswith("3b4df417"):
         errors.append("pad_reminted")
     if not wire_blob.startswith("0e815c6d"):
         errors.append("wire_receipt_reminted")

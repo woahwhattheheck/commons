@@ -35,12 +35,12 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33718131429-billing-lock-20260903-01.md": "ceb14fe0",
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
-    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "fe1a4c6d",
-    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "27463e23",
-    "llms_txt.py": "df5bf4c6",
+    "test_grokbuild_local_compute_guard_33718131429_billing_lock.py": "f8686da2",
+    "test_grokbuild_local_compute_guard_33699944995_billing_lock.py": "4c82ba79",
+    "llms_txt.py": "4f9df46d",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 
