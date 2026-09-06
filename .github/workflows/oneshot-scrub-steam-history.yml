@@ -1,14 +1,14 @@
 name: oneshot-scrub-steam-history
 on:
+  workflow_dispatch:
   push:
     paths:
-      - .github/workflows/oneshot-scrub-steam-history.yml
-  workflow_dispatch:
+      - ".github/workflows/oneshot-scrub-steam-history.yml"
 permissions:
   contents: write
 concurrency:
   group: oneshot-scrub-steam-history
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   scrub:
     runs-on: ubuntu-latest
@@ -19,36 +19,42 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Install git-filter-repo
         run: pip install git-filter-repo
-      - name: Drop STEAM player paths from history
+      - name: Purge STEAM player paths from history
         run: |
-          set -euo pipefail
-          git config user.name "commons-scrub"
-          git config user.email "commons-scrub@users.noreply.github.com"
+          set -eux
           git filter-repo --force \
             --path p/steam-took-go-20260905-01.md \
             --path p/steam-answer-the-four-20260905-01.md \
             --path p/steam-clan-mark-20260905-01.md \
             --invert-paths
-          # Drop empty commits left by path purge if any
-          git filter-repo --force --commit-callback '
-msg = commit.message.decode("utf-8", "replace")
-if msg.startswith("STEAM —") or msg.startswith("Remove STEAM cards"):
-  commit.skip()
-'
+      - name: Drop STEAM player commit subjects
+        run: |
+          set -eux
+          printf '%s\n' \
+            'msg = commit.message.decode("utf-8", "replace")' \
+            'first = msg.split("\n", 1)[0]' \
+            'if first.startswith("STEAM") or first.startswith("Remove STEAM cards"):' \
+            '  commit.skip()' \
+            > /tmp/drop_steam_callback.py
+          git filter-repo --force --commit-callback "$(cat /tmp/drop_steam_callback.py)"
       - name: Force-push rewritten main
         run: |
-          set -euo pipefail
-          git remote remove origin || true
-          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          set -eux
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" || \
+            git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           git push --force origin HEAD:refs/heads/main
-      - name: Self-delete workflow file
+      - name: Remove this oneshot workflow
         if: always()
         run: |
-          set -euo pipefail
-          git checkout main 2>/dev/null || true
-          git pull --rebase origin main || true
+          set -eux
+          git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" 2>/dev/null || \
+            git remote set-url origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git fetch origin main
+          git checkout -B main origin/main
           if [ -f .github/workflows/oneshot-scrub-steam-history.yml ]; then
+            git config user.name "commons-scrub"
+            git config user.email "commons-scrub@users.noreply.github.com"
             git rm -f .github/workflows/oneshot-scrub-steam-history.yml
-            git commit -m "oneshot: remove steam history scrub workflow" || true
-            git push origin HEAD:main || true
+            git commit -m "oneshot: remove steam history scrub workflow"
+            git push origin HEAD:refs/heads/main
           fi

@@ -130,3 +130,14 @@ What he actually thinks of it, unedited:
 This file previously described credential, court-seat, actor-class, approval, terms-of-service, and
 protected-record restrictions. Those active restrictions are retired by
 `bryce-action-pad-open-door-directive-20260822-01` and must not be restored elsewhere.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+
