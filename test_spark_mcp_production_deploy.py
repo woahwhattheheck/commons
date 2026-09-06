@@ -55,13 +55,60 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("workflow_dispatch:", text)
         self.assertIn("pull_request:", text)
         self.assertIn("spark-mcp-production-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}", text)
-        self.assertIn("cancel-in-progress: true", text)
+        # PR #9123: finish active main deploys; only PR synchronize cancels.
+        # Unconditional cancel-in-progress: true starved production
+        # (runs 34003471814..34011409746 cancelled behind 34003449776).
+        self.assertIn("cancel-in-progress: ${{ github.event_name == 'pull_request' }}", text)
+        self.assertNotIn("cancel-in-progress: true", text)
+        self.assertNotIn("cancel-in-progress: false", text)
+        self.assertIn("must not starve production deployment", text)
+        self.assertIn("Finish active main deployments; coalesce pending updates.", text)
         push_paths = _path_block(text, "push")
         for path in REQUIRED_WATCH:
             self.assertIn(path, push_paths)
         for path in CORPUS_PATHS:
             self.assertNotIn(path, push_paths)
         self.assertIn("Queue fuse", text)
+
+    def test_concurrency_cancels_stale_prs_without_starving_main_deploys(self) -> None:
+        """Runs 34003471814-34011409746 cancelled in-flight main deploys when
+        cancel-in-progress was a blanket true on the shared main group.
+        7508600270b2 switched cancel to PR-only; this pins that contract.
+        """
+        from test_tests_pr_concurrency import github_ctx, interpolate
+
+        text = WORKFLOW.read_text(encoding="utf-8")
+        match = re.search(
+            r"(?m)^concurrency:\n"
+            r"  group: (?P<group>[^\n]+)\n"
+            r"(?:  #[^\n]*\n)*"
+            r"  cancel-in-progress: (?P<cancel>[^\n]+)\n",
+            text,
+        )
+        if not match:
+            raise AssertionError("missing workflow concurrency block")
+        group_template = match.group("group").strip().strip('"')
+        cancel_template = match.group("cancel").strip()
+        self.assertEqual(
+            group_template,
+            "spark-mcp-production-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}",
+        )
+        self.assertEqual(
+            cancel_template,
+            "${{ github.event_name == 'pull_request' }}",
+        )
+        for event_name, want_cancel in (
+            ("pull_request", True),
+            ("push", False),
+            ("workflow_dispatch", False),
+        ):
+            ctx = github_ctx(
+                event_name,
+                1,
+                "woahwhattheheck:x" if event_name == "pull_request" else None,
+            )
+            got = interpolate(cancel_template, ctx)
+            self.assertEqual(got == "true", want_cancel, event_name)
 
     def test_pull_request_never_deploys(self) -> None:
         text = WORKFLOW.read_text(encoding="utf-8")

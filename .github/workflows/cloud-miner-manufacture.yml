@@ -38,6 +38,19 @@ jobs:
       - name: Fabricate and check the new container
         run: |
           python3 muhl/cloud_miner/fabricate.py --output "$RUNNER_TEMP/cloud-miner" --check
+      - name: Bind the manufactured address map to the live-job adapter
+        run: |
+          python3 - "$RUNNER_TEMP/cloud-miner/layout.json" <<'PY'
+          import json, pathlib, sys
+          from muhl.cloud_miner.runner import Layout
+          manifest = json.loads(pathlib.Path(sys.argv[1]).read_text())
+          layout = Layout.from_manifest(manifest)
+          for name in ("nonce", "winner_nonce", "win", "exhausted"):
+              layout.state_writes(name, bytes(layout.ram[name]["width"]))
+          print(json.dumps({"schema": layout.schema,
+                            "adapter_layout": "bound",
+                            "live_mining_started": False}))
+          PY
       - name: Record artifact geometry
         run: |
           python3 - "$RUNNER_TEMP/cloud-miner" <<'PY'
