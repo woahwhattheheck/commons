@@ -18,24 +18,44 @@ JOBFILE = "C:/llm/sdc_out/autopilot_job.json"               # wallet result the 
 PORT = 7908
 
 
+def format_receipt(receipt):
+    """Describe recorded answer and submission states without inventing a nonce."""
+    if not isinstance(receipt, dict):
+        return "wallet receipt unavailable (expected an object)"
+    pool = receipt.get("pool", "?"); jid = receipt.get("job_id", "?"); zb = receipt.get("zbits", "?")
+    answer = receipt.get("answer")
+    nonce = answer.get("nonce") if isinstance(answer, dict) else None
+    answer_text = f"nonce={nonce}" if nonce is not None else "answer unavailable"
+    answer_error = receipt.get("answer_error")
+    if answer_error:
+        answer_text += f" ({answer_error})"
+    attempted = receipt.get("submission_attempted")
+    if attempted is True:
+        submission = "submission attempted"
+    elif attempted is False:
+        submission = "submission skipped"
+    elif "submission_attempted" not in receipt:
+        submission = "submission attempted"  # Older receipts were written after an attempt.
+    else:
+        submission = "submission state unavailable"
+    return f"job {jid} · target {zb} zbits · {submission} {answer_text} · pool: {pool}"
+
+
 def snapshot():
     """read the two EXTERNAL files (read-only) and format a state line. Never touches the Muhlnickel."""
-    ans = "no answer file"
     try:
-        with open(SAFEZONE, "rb") as f: b = f.read()
-        if len(b) >= 9:
+        with open(SAFEZONE, "rb") as f: b = f.read(9)
+        if len(b) == 9:
             status, en2, nonce = b[0], struct.unpack_from("<I", b, 1)[0], struct.unpack_from("<I", b, 5)[0]
-            ans = (f"ANSWER  nonce={nonce}  en2={en2}" if status else "empty (pfc has not deposited an answer)")
+            ans = f"status={status} en2={en2} nonce={nonce}"
         else:
-            ans = "empty (0 bytes)"
-    except OSError:
-        pass
+            ans = f"incomplete answer ({len(b)} of 9 bytes)"
+    except OSError as exc:
+        ans = f"answer unavailable ({str(exc) or type(exc).__name__})"
     wallet = "no wallet result yet"
     try:
         with open(JOBFILE, encoding="utf-8") as f: j = json.load(f)
-        pool = j.get("pool", "?"); jid = j.get("job_id", "?"); zb = j.get("zbits", "?")
-        a = j.get("answer", {})
-        wallet = f"job {jid} · target {zb} zbits · submitted nonce={a.get('nonce', 0)} · pool: {pool}"
+        wallet = format_receipt(j)
     except (OSError, ValueError):
         pass
     return f"SAFEZONE (pfc answer):  {ans}\nWALLET (pool result):   {wallet}\n\nupdated {time.strftime('%H:%M:%S')}"
