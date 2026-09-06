@@ -286,10 +286,11 @@ class Bench:
                     db.execute("PRAGMA wal_checkpoint(PASSIVE)")
                 except sqlite3.Error:
                     pass
-                revision = self.revision(db)
                 dest = sqlite3.connect(tmp_path)
                 try:
                     db.backup(dest)
+                    # Read metadata from the copied snapshot, not the live workspace.
+                    revision = self.revision(dest)
                 finally:
                     dest.close()
             data = Path(tmp_path).read_bytes()

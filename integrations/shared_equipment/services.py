@@ -23,10 +23,20 @@ from time import monotonic
 from typing import Any
 
 from commons_publication_policy import require_publication
+from integrations.shared_equipment.outcomes import effect_uncertain, tool_failed
 
 
 class EquipmentError(RuntimeError):
-    pass
+    def __init__(self, message, *, code="equipment_error", uncertain=False, http_status=None):
+        super().__init__(message)
+        self.code = code
+        self.uncertain = uncertain
+        self.http_status = http_status
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
 
 _SECRET_KEYS = re.compile(r"^(authorization|cookie|set-cookie|password|access_token|refresh_token|bot_token|app_token|client_secret|private_key)$", re.I)
@@ -133,7 +143,7 @@ class ServiceEquipment:
         self.gh = gh
         self.slack_token_loader = slack_token_loader or self._load_slack_token
         self.gh_runner = gh_runner or subprocess.run
-        self.opener = opener or urllib.request.urlopen
+        self.opener = opener or urllib.request.build_opener(_NoRedirect()).open
         self.credential_sources = credential_sources
 
     @staticmethod
@@ -166,9 +176,21 @@ class ServiceEquipment:
             with self.opener(request, timeout=30) as response:
                 result = json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
-            return {"ok": False, "error": "slack_http_error", "status": exc.code, "retry_after": exc.headers.get("Retry-After")}
-        except Exception as exc:
-            raise EquipmentError("Slack transport failed; effect may be unknown for writes") from exc
+            status = exc.code
+            retry_after = exc.headers.get("Retry-After") if exc.headers is not None else None
+            exc.close()
+            return {"ok": False, "error": "slack_http_error", "status": status,
+                    "retry_after": retry_after,
+                    "uncertain": not read_method and status not in (401, 403, 429)}
+        except Exception:
+            raise EquipmentError("Slack response unavailable; retain the operation ID before another write",
+                                 code="slack_transport_failed", uncertain=not read_method) from None
+        if not isinstance(result, dict):
+            raise EquipmentError("Slack returned no result object",
+                                 code="slack_response_invalid", uncertain=not read_method)
+        # Slack documents these errors as possibly occurring after an effect.
+        if not read_method and result.get("error") in ("internal_error", "fatal_error"):
+            result["uncertain"] = True
         return redacted(result)
 
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
@@ -180,7 +202,8 @@ class ServiceEquipment:
                 text=True, encoding="utf-8", capture_output=True, timeout=90,
                 creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
         except (OSError, subprocess.TimeoutExpired) as exc:
-            raise EquipmentError("existing gh transport unavailable; write effect may be unknown") from exc
+            raise EquipmentError("existing gh transport unavailable; retain the operation ID before another write",
+                                 code="github_transport_failed", uncertain=method != "GET") from None
         if result.returncode:
             # Provider errors can echo submitted data; return only structured
             # status/message after redaction, never command/environment details.
@@ -189,17 +212,24 @@ class ServiceEquipment:
                 message = redacted(error.get("message", "GitHub request failed"))
             except (ValueError, TypeError):
                 message = "GitHub request failed through existing gh account"
-            raise EquipmentError(str(message))
+            raise EquipmentError(str(message), code="github_request_failed", uncertain=method != "GET")
         if not result.stdout.strip():
             return {}
-        return redacted(json.loads(result.stdout))
+        try:
+            return redacted(json.loads(result.stdout))
+        except (ValueError, TypeError):
+            raise EquipmentError("GitHub returned an invalid response", code="github_response_invalid",
+                                 uncertain=method != "GET") from None
 
     def call(self, name: str, arguments: dict) -> dict:
         try:
             result = self._call(name, arguments)
-            return {"isError": isinstance(result, dict) and result.get("ok") is False, "result": redacted(result)}
+            return {"isError": tool_failed(result), "result": redacted(result),
+                    "uncertain": effect_uncertain(result)}
         except Exception as exc:
-            return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc))}
+            return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc)),
+                    "code": getattr(exc, "code", type(exc).__name__),
+                    "uncertain": bool(getattr(exc, "uncertain", False))}
 
     def _token_pool_batch(self, selected: list[str]) -> dict:
         observed_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
@@ -322,8 +352,18 @@ class ServiceEquipment:
                 p["thread_ts"] = a["thread_ts"]
             result = self.slack("chat.postMessage", p)
             if result.get("ok"):
-                link = self.slack("chat.getPermalink", {"channel": result["channel"], "message_ts": result["ts"]})
-                return {"ok": True, "channel": result["channel"], "ts": result["ts"], "permalink": link.get("permalink"), "text": result.get("message", {}).get("text")}
+                # The message already exists. Optional link lookup cannot erase its handle.
+                message = result.get("message")
+                sent = {"ok": True, "channel": result["channel"], "ts": result["ts"],
+                        "permalink": None, "text": message.get("text") if isinstance(message, dict) else None}
+                try:
+                    link = self.slack("chat.getPermalink", {"channel": result["channel"], "message_ts": result["ts"]})
+                    sent["permalink"] = link.get("permalink")
+                    if not link.get("ok"):
+                        sent["permalink_error"] = redacted(link.get("error", "permalink_unavailable"))
+                except Exception:
+                    sent["permalink_error"] = "permalink_unavailable"
+                return sent
             return result
         repo = _repo(a)
         root = "repos/" + repo

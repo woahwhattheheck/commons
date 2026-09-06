@@ -34,6 +34,8 @@ Statuses: queued | running | completed | error | cancelled | interrupted.
 from __future__ import annotations
 
 import argparse
+import base64
+import http.client
 import json
 import os
 import sys
@@ -56,14 +58,48 @@ def unwrap_run(body: dict[str, Any]) -> dict[str, Any]:
     return body
 
 
+class _NoRedirects(urllib.request.HTTPRedirectHandler):
+    """A response is not an instruction to send the caller's request again."""
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def _uncertainty(value: Any) -> bool | None:
+    """Read native outcome metadata; status words alone are valid observations."""
+    if not isinstance(value, dict):
+        return None
+    if value.get("uncertain") is True:
+        return True
+    error = value.get("error")
+    code = error.get("code") if isinstance(error, dict) else error
+    if isinstance(code, str) and code.lower().endswith("_outcome_unknown"):
+        return True
+    nested = _uncertainty(error)
+    if nested is True:
+        return True
+    if value.get("uncertain") is False or nested is False:
+        return False
+    return None
+
+
+def _utf8_output(out: Any = None) -> Any:
+    stream = sys.stdout if out is None else out
+    if out is None and hasattr(stream, "reconfigure"):
+        stream.reconfigure(encoding="utf-8")
+    return stream
+
+
 class HeadlessClient:
     def __init__(self, base: str = DEFAULT_BASE, timeout: float = 70.0, opener: Callable[..., Any] | None = None) -> None:
         self.base = base.rstrip("/")
         self.timeout = timeout
-        self._opener = opener or urllib.request.urlopen
+        self._opener = opener or urllib.request.build_opener(_NoRedirects()).open
 
     # ---- transport -----------------------------------------------------
     def call(self, method: str, path: str, body: dict[str, Any] | None = None, **query: Any) -> dict[str, Any]:
+        method = method.upper()
+        effect = method not in ("GET", "HEAD", "OPTIONS")
         clean = {k: v for k, v in query.items() if v is not None}
         url = self.base + path + ("?" + urllib.parse.urlencode(clean) if clean else "")
         data = None
@@ -72,24 +108,88 @@ class HeadlessClient:
             data = json.dumps(body or {}, ensure_ascii=False).encode("utf-8")
             headers["Content-Type"] = "application/json; charset=utf-8"
         request = urllib.request.Request(url, data=data, headers=headers, method=method)
+        status = None
+
+        def failure(reason: str, raw: bytes = b"", native: Any = None) -> dict[str, Any]:
+            result = {"ok": False, "error": "submission_outcome_unknown" if effect else reason,
+                      "uncertain": effect, "reason": reason,
+                      "message": "The native response did not establish the request outcome.",
+                      "url": url}
+            if status is not None:
+                result["http_status"] = status
+            if status is not None or raw:
+                result["response_bytes_base64"] = base64.b64encode(raw).decode("ascii")
+            if native is not None:
+                result["native_response"] = native
+            return result
+
         try:
-            with self._opener(request, timeout=self.timeout) as response:
-                raw = response.read().decode("utf-8")
-                status = getattr(response, "status", 200)
-        except urllib.error.HTTPError as exc:
-            raw = exc.read().decode("utf-8", errors="replace")
-            status = exc.code
-        except (OSError, urllib.error.URLError) as exc:
-            return {"ok": False, "error": "unreachable", "message": str(exc), "url": url}
+            try:
+                response = self._opener(request, timeout=self.timeout)
+            except urllib.error.HTTPError as exc:
+                response = exc
+            # HTTPError owns a response body too. Close it even if read fails.
+            with response:
+                status = getattr(response, "status", getattr(response, "code", 200))
+                raw = response.read()
+        except http.client.IncompleteRead as exc:
+            return failure("incomplete_response", exc.partial)
+        except (OSError, urllib.error.URLError, http.client.HTTPException):
+            return failure("unreachable")
         try:
-            value = json.loads(raw) if raw.strip() else {}
+            text = raw.decode("utf-8")
+        except UnicodeError:
+            return failure("invalid_utf8_response", raw)
+        if not text.strip():
+            return failure("empty_response", raw)
+        try:
+            value = json.loads(text)
         except ValueError:
-            value = {"ok": False, "error": "non_json_response", "body": raw[:2000]}
+            return failure("non_json_response", raw)
         if not isinstance(value, dict):
-            value = {"ok": False, "error": "non_object_response", "body": value}
-        value.setdefault("http_status", status)
-        if status >= 400:
-            value.setdefault("ok", False)
+            return failure("non_object_response", raw, value)
+
+        native = dict(value)
+        value["http_status"] = status
+        # Keep the exact provider body and handles while making transport
+        # failure visible outside that body. An HTTP error cannot be success.
+        if status < 200 or status >= 300:
+            value["ok"] = False
+            value["native_response"] = native
+            value["response_bytes_base64"] = base64.b64encode(raw).decode("ascii")
+            declared = _uncertainty(native)
+            # A terminal run/cancel reply acknowledges what actually happened.
+            # A generic 4xx alone is not proof: a gateway can fail after enqueue.
+            native_status = native.get("status")
+            acknowledged = isinstance(native_status, str) and native_status in TERMINAL and (
+                bool(native.get("run_id") or native.get("request_id"))
+                or native.get("error") == "already_terminal")
+            value["uncertain"] = bool(effect and declared is not False and not acknowledged) or declared is True
+            if value["uncertain"]:
+                value.setdefault("error", "submission_outcome_unknown")
+            else:
+                value.setdefault("error", "http_error")
+            return value
+
+        declared = _uncertainty(native)
+        if declared is True:
+            value["ok"] = False
+            value["uncertain"] = True
+            value["native_response"] = native
+            value["response_bytes_base64"] = base64.b64encode(raw).decode("ascii")
+            value.setdefault("error", "submission_outcome_unknown")
+        elif native.get("ok") is False:
+            # The native tool has returned a definite rejection unless it
+            # explicitly describes an uncertain outcome.
+            value["uncertain"] = False
+        elif effect:
+            # Empty/unrelated JSON is not an acknowledgement of an effect.
+            if native.get("ok") is not True:
+                return failure("unacknowledged_response", raw, native)
+            creates_run = path in ("/v1/runs", "/v1/message") or path.endswith("/followup") or (
+                path.startswith("/v1/sessions/") and path.endswith("/runs"))
+            if creates_run and not any(isinstance(native.get(key), str) and native[key].strip() for key in ("run_id", "request_id")):
+                return failure("missing_native_handle", raw, native)
         return value
 
     # ---- operations ----------------------------------------------------
@@ -151,7 +251,7 @@ class HeadlessClient:
 
     def follow(self, run_id: str, after: int = 0, out: Any = None, wait_ms: int = 30_000) -> dict[str, Any]:
         """Print each event line as it arrives; return the final run body."""
-        out = out or sys.stdout
+        out = _utf8_output(out)
         cursor = after
         while True:
             page = self.events(run_id, after=cursor, wait_ms=wait_ms)
@@ -166,7 +266,10 @@ class HeadlessClient:
                 cursor = max(cursor, nxt)
             if not page.get("ok", True):
                 return page
-            run = unwrap_run(self.status(run_id, 0))
+            status = self.status(run_id, 0)
+            if not status.get("ok", True):
+                return status
+            run = unwrap_run(status)
             if run.get("status") in TERMINAL and not page.get("events"):
                 return {"ok": True, "run": run, "next_cursor": cursor}
 
@@ -243,7 +346,7 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None, out: Any = None) -> int:
-    out = out or sys.stdout
+    out = _utf8_output(out)
     args = build_parser().parse_args(argv)
     client = HeadlessClient(args.base)
     if args.command == "health":
@@ -257,7 +360,7 @@ def main(argv: list[str] | None = None, out: Any = None) -> int:
             result = client.followup(args.run_id, prompt, **options)
         else:
             result = client.resume(args.session_id, prompt, **options)
-        if args.wait and result.get("run_id"):
+        if args.wait and result.get("ok") is True and result.get("run_id"):
             result = client.wait(result["run_id"], args.wait)
     elif args.command == "status":
         result = client.wait(args.run_id, args.wait) if args.wait else client.status(args.run_id)
