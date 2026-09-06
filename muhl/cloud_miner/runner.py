@@ -720,7 +720,7 @@ class CloudMiner:
             return RunnerReport(RunnerStatus.EXECUTOR_UNAVAILABLE, why)
 
         if not self.client.connected:
-            self._cancel_current("stratum session is not authorized")
+            self._cancel_current("stratum session is not ready")
             return RunnerReport(
                 RunnerStatus.SESSION_LOST,
                 "no authorized live session; retired work cannot be submitted",

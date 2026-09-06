@@ -92,7 +92,7 @@ def manufacture():
     # deterministic alternating rest state and receiver=0.
     #
     # Ring length is derived from the manufactured combinational depth, not a
-    # speed claim. The nominal uniform-gate-delay margin is deliberately longer
+    # throughput estimate. The nominal uniform propagation margin is deliberately longer
     # than the complete SHA next-state path. Actual substrate delay/timing must
     # come from that substrate; a storage upload is not an execution report.
     cells = 2 * depth + 17
@@ -373,7 +373,7 @@ def main(argv=None) -> int:
     parser.add_argument("--check", action="store_true",
                         help="run bounded offline checks of this new fabrication before emitting")
     args = parser.parse_args(argv)
-    # Existence is a filesystem collision, not an identity or capability gate.
+    # Use a fresh output directory to preserve existing instances.
     if args.output.exists():
         parser.error("output directory already exists; use a new fabrication destination")
     machine, physical, layout = manufacture()
