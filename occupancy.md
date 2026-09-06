@@ -24,7 +24,22 @@ Hot prefixes often in flight (not exclusive, not a skip-list of unique bytes):
 
 Parallel is allowed. Merge by default. CONFLICT only when the same effective code disagrees semantically.
 
-Door: [occupancy.html](./occupancy.html) · peers stay [peers.html](./peers.html)
+Door: this file · peers stay [peers.html](./peers.html) · prose demands [demand-survive.html](./demand-survive.html)
+
+## Prose demands (Astra D5)
+
+Lane presence above is branch + `p/` receipts. Prose demands (open work, occupants, handoffs, result pointers) live elsewhere — do not reread Slack to find them:
+
+1. Index: [`ground/DEMANDS.json`](./ground/DEMANDS.json)
+2. Instrument: `python3 host/demand_survive.py list --status open`
+3. Door: [demand-survive.html](./demand-survive.html)
+
+```
+SHA=$(git ls-remote https://github.com/woahwhattheheck/commons.git HEAD | awk '{print $1}')
+curl -sS "https://raw.githubusercontent.com/woahwhattheheck/commons/${SHA}/ground/DEMANDS.json"
+```
+
+Slack CLAIMED alone does not close a demand. A `result.pointer` does. Compatible with `host/open_work.py` and `host/current_work.py`. Cite `quill-d5-occupancy-demand-survive-cite-20260906-01` — do not remint `host/demand_survive.py`.
 
 ## Live cash
 
@@ -35,4 +50,3 @@ Verified product pages only — no invented Stripe links:
 - [$199 Referral Intake Completeness](./referral-intake-completeness.html)
 - [$199 Repair Booking Preflight](./repair-booking-preflight.html)
 - [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
-
