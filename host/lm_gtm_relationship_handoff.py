@@ -17,6 +17,7 @@ Entry point:
 from __future__ import annotations
 
 import argparse
+import datetime as dt
 import json
 import sys
 from pathlib import Path
@@ -306,6 +307,9 @@ def successor_brief(packet: dict[str, Any]) -> str:
             f"event_ids={','.join(str(item) for item in (relationship.get('event_ids') or []) if item)}"
         ),
     ]
+    freshness = packet.get("index_freshness")
+    if isinstance(freshness, dict):
+        lines.append("index_freshness " + json.dumps(freshness, sort_keys=True))
     for name in FIELD_ORDER:
         lines.append(_format_field(name, fields.get(name)))
     lines.append(f"evidence_chain_count={len(chain_ids)} ids={','.join(chain_ids)}")
@@ -324,6 +328,9 @@ def successor_brief(packet: dict[str, Any]) -> str:
 def relationship_handoff(
     subject_id: str,
     paths: dict[str, Path] | None = None,
+    *,
+    include_index_freshness: bool = False,
+    as_of: dt.datetime | None = None,
 ) -> dict[str, Any]:
     """Compose an evidence-bound relationship handoff for one existing subject."""
     paths = paths or idx.default_paths()
@@ -514,6 +521,14 @@ def relationship_handoff(
     }
     if owner != "UNSEATED":
         packet["owner"] = owner
+    if include_index_freshness:
+        try:
+            packet["index_freshness"] = idx.composed_at_freshness(paths, now=as_of)
+        except idx.IndexError_:
+            packet["index_freshness"] = {
+                "status": "UNKNOWN",
+                "reason": "Saved INDEX timestamp is unavailable or invalid at as_of.",
+            }
     blob = json.dumps(packet, sort_keys=True, ensure_ascii=False)
     idx._assert_no_pii_in_index_blob(blob)
     return packet
@@ -535,6 +550,8 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="emit a PII-free successor paste from the packet (no ledger re-read after compose)",
     )
+    parser.add_argument("--index-freshness", action="store_true", help="include saved INDEX age metadata")
+    parser.add_argument("--as-of", help="timezone-aware time for optional INDEX freshness")
     return parser
 
 
@@ -547,7 +564,11 @@ def main(argv: list[str] | None = None) -> int:
         return 3
     args = build_parser().parse_args(argv)
     try:
-        packet = relationship_handoff(args.subject)
+        packet = relationship_handoff(
+            args.subject,
+            include_index_freshness=args.index_freshness,
+            as_of=idx.parse_time(args.as_of) if args.as_of else None,
+        )
         if args.brief:
             sys.stdout.write(successor_brief(packet))
             return 0

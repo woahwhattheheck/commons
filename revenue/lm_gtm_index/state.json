@@ -12,6 +12,7 @@
   "composed_at": "2026-09-05T09:30:14Z",
   "contract": {
     "append_event": "python3 host/lm_gtm_index.py append-event --subject SUBJECT --id EVENT_ID --body \"NOTE\"",
+    "check_freshness": "python3 host/lm_gtm_index.py freshness",
     "claim": "python3 host/lm_gtm_index.py claim SUBJECT --owner YOU",
     "list_brief": "python3 host/lm_gtm_index.py brief",
     "list_hold": "python3 host/lm_gtm_index.py hold",
