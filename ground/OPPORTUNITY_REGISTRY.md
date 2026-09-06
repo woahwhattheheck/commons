@@ -46,3 +46,15 @@ python3 test_opportunity_registry.py
 Compile is deterministic. It rewrites the public JSON, packets, `opportunity.html`, and `proof-to-proposal.html`.
 
 Linked from [current work](../current-work.html), [distribution](./DISTRIBUTION.md), [profitability](./PROFITABILITY_BUILD_MAP.md), and [proof-to-proposal](./PROOF_TO_PROPOSAL.md).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-19 — do not remint.

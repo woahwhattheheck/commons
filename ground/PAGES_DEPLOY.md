@@ -63,3 +63,15 @@ is `PENDING`, not stale truth. If more of `muhl/` (beyond docs + SEED0) or
 `excerpts/` / `conflicts/` is needed on the Pages URL, add it to the
 allowlist in the workflow on a branch and merge; do not revert to the legacy
 branch build. Do not put `chunks/` back on the except list.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-19 — do not remint.
