@@ -82,3 +82,14 @@ the link is authorization. Blank `from=` still lands as
 Hands off CML PR 2108, SPECTER 2205, JOJO README 2286,
 titan `--go`, SUPERGROK_HEAVY remint, MUHL_RECEIPT_LANE,
 SUBZERO_EXPLORER. titan: **NOT_WRITTEN**.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](../dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](../referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](../repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](../plant-downtime-handoff.html)
+
