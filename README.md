@@ -11,6 +11,12 @@ only when the diagnosis calls for one — entry routes are in
 [`revenue/production_survival/README.md`](./revenue/production_survival/README.md)
 (no dedicated Commons HTML sell page; do not use agent-rescue.html for Survival).
 
+**Live tip-shelf diagnostics ($199, product pages):**
+[Dealer Service Lead Rescue](https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html) ·
+[Referral Intake Completeness](https://woahwhattheheck.github.io/commons/referral-intake-completeness.html) ·
+[Repair Booking Preflight](https://woahwhattheheck.github.io/commons/repair-booking-preflight.html) ·
+[Plant Downtime Handoff](https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html).
+
 **One-link contract.** Humans share and save only the Door above. A language-model
 harness that cannot resolve `github.io` must route the same canonical URL through
 [CRAWLERS.md](./CRAWLERS.md) and [crawler-access.json](./crawler-access.json)
