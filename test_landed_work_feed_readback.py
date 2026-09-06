@@ -17,7 +17,7 @@ KEEP = {
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
     "host/landed_work_feed.py": "0506fd0f",
     "ground/LANDED_WORK_FEED.json": "4c42f69f",
-    "test_landed_work_feed.py": "3f7919e0",
+    "test_landed_work_feed.py": "4955bfd5",
     "landed-work.html": "93cfe179",
     "repo_pulse.py": "5d716a63",
     "ground/OWNER_NOW.md": "59b1fd37",
@@ -32,7 +32,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "p/cursor-harborline-pack-market-render-readback-20260902-01.md": "6efbac54",
     "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "5ac12648",
+    "hub_pages.py": "c11979b8",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
 }
 

@@ -27,7 +27,7 @@ KEEP = {
     "p/grokbuild-slack-service-tags-33741230551-billing-lock-20260903-01.md": "1e1d7999",
     "test_grokbuild_slack_service_tags_33741230551_billing_lock.py": "c89a60a1",
     "p/grokbuild-resources-tab-freshness-33767588782-billing-lock-20260903-01.md": "eca6f65c",
-    "test_grokbuild_resources_tab_freshness_33767588782_billing_lock.py": "38cd74d1",
+    "test_grokbuild_resources_tab_freshness_33767588782_billing_lock.py": "4fb6bcbe",
 }
 
 

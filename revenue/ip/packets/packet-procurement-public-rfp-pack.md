@@ -32,8 +32,8 @@ ANALYSIS: Procurement channel public-rfp-pack is composed from the distribution 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
 - `carrier.js` sha256 `6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa` (62464 bytes)
-- `distribution.html` sha256 `fe19383fdc5a5488ce3ab47f4a387629bdc1bbb558a0ba7859c187379741b790` (7306 bytes)
-- `host/distribution.py` sha256 `1d969c89bfae17912ae8fbb5313873d597aa9e233da1cd31dc980061563121ee` (29601 bytes)
+- `distribution.html` sha256 `16b25dc14514e5cd12b7b84812c96b831cdc5544c1718aeec8afab37dd58c9cd` (7320 bytes)
+- `host/distribution.py` sha256 `2ae7a466c9c2ba64b59329e404aaa49c2c94973ec5d432d3d907a095ffd0ef92` (29867 bytes)
 - `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)
 - `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
 
@@ -44,7 +44,7 @@ ANALYSIS: Procurement channel public-rfp-pack is composed from the distribution 
 - `host/feature_tracker.py` sha256 `cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346` (36840 bytes)
 - `test_feature_tracker.py` sha256 `52382e09fd6c3164a5486cf712050ec5523f58d715c821db3425d55a58d58615` (24900 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `e197ed5b124487329116931946a403d11c1cd42f847b5daae6d60e13aa550382` (11401 bytes)
+- `resources.html` sha256 `a2eb9eaa6c1140dd48c549d4072e1f3fcb452a30763f92a297064e5e831ae75d` (11583 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `845937936841f56d957dfc4ade14b3709eb6140523e2fa6540e916ff7f507334` (123097 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 

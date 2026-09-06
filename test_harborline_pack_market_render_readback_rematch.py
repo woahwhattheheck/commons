@@ -69,7 +69,7 @@ class TestHarborlinePackMarketRenderReadbackRematch(unittest.TestCase):
 
     def test_leftover_hub_pages_keep_unpinned_on_later_main(self) -> None:
         hub = git_blob("hub_pages.py")
-        self.assertTrue(hub.startswith("5ac12648"), hub)
+        self.assertTrue(hub.startswith("c11979b8"), hub)
         self.assertFalse(hub.startswith("14eeedb0"), hub)
         import test_harborline_pack_market_render as leftover
         self.assertNotEqual(leftover.KEEP.get("hub_pages.py"), "14eeedb0")

@@ -20,9 +20,9 @@ BODY_SHA256 = "bc36ce3e49707207f2f971e012d55f15c16d7a9e1f6433fc0b82c68ba4503dff"
 
 KEEP = {
     "p/grok-build-job-watchdog-33718116277-billing-lock-20260903-01.md": "664bd6de",
-    "test_grokbuild_job_watchdog_33718116277_billing_lock.py": "2c979469",
+    "test_grokbuild_job_watchdog_33718116277_billing_lock.py": "c12fa196",
     "p/grok-build-job-watchdog-33717741080-billing-lock-20260903-01.md": "f3afb926",
-    "test_grokbuild_job_watchdog_33717741080_billing_lock.py": "2646b081",
+    "test_grokbuild_job_watchdog_33717741080_billing_lock.py": "3a12f6b9",
     ".github/workflows/job-watchdog.yml": "5af545c2",
     "harness_wake/__main__.py": "a4457781",
     "harness_wake/watchdog.py": "149ed075",

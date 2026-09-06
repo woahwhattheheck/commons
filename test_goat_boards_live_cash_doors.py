@@ -29,6 +29,12 @@ class TestGoatBoardsLiveCashDoors(unittest.TestCase):
         self.assertNotIn("buy.stripe.com", raw)
         self.assertNotIn("donate.stripe.com", raw)
 
+    def test_hub_pages_rebuild_keeps_live_cash_doors(self) -> None:
+        src = (ROOT / "hub_pages.py").read_text(encoding="utf-8")
+        self.assertIn('id="live-cash-doors"', src)
+        self.assertIn('id="sku-agent-failure-autopsy"', src)
+        self.assertIn("Open $29 Autopsy checkout", src)
+
 
 if __name__ == "__main__":
     unittest.main()

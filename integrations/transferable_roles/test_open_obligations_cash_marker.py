@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+"""Hermetic: open-obligations marks payment_capability on cash roles only."""
+
+from __future__ import annotations
+
+import io
+import json
+import tempfile
+import unittest
+from contextlib import redirect_stdout
+from pathlib import Path
+
+from roles import RoleStore
+import cli as roles_cli
+
+FIXTURES = Path(__file__).resolve().parent / "fixtures"
+CRM = FIXTURES / "synthetic_crm_followup_role.json"
+AUTOPSY = FIXTURES / "synthetic_agent_failure_autopsy_role.json"
+DIAG = FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
+
+
+class OpenObligationsCashMarkerTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.store = RoleStore(self._tmp.name)
+
+    def tearDown(self) -> None:
+        self._tmp.cleanup()
+
+    def test_mixed_store_marks_paid_roles_only(self) -> None:
+        crm = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
+        autopsy = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        diagnostic = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+
+        crm_names = {r["name"] for r in crm["access_routes"]}
+        self.assertNotIn("payment_capability", crm_names)
+        self.assertIn(
+            "payment_capability",
+            {r["name"] for r in autopsy["access_routes"]},
+        )
+        self.assertIn(
+            "payment_capability",
+            {r["name"] for r in diagnostic["access_routes"]},
+        )
+
+        rows = self.store.list_open_obligations()
+        by_role: dict[str, list[dict]] = {}
+        for row in rows:
+            by_role.setdefault(row["role_id"], []).append(row)
+
+        for row in by_role[crm["role_id"]]:
+            self.assertNotIn("payment_capability", row)
+        for row in by_role[autopsy["role_id"]]:
+            self.assertIs(row.get("payment_capability"), True)
+        for row in by_role[diagnostic["role_id"]]:
+            self.assertIs(row.get("payment_capability"), True)
+
+    def test_cli_open_obligations_preserves_cash_marker(self) -> None:
+        store_dir = self._tmp.name
+        with redirect_stdout(io.StringIO()):
+            self.assertEqual(
+                roles_cli.main(
+                    ["--store", store_dir, "create", "--file", str(CRM)]
+                ),
+                0,
+            )
+            self.assertEqual(
+                roles_cli.main(
+                    ["--store", store_dir, "create", "--file", str(AUTOPSY)]
+                ),
+                0,
+            )
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = roles_cli.main(["--store", store_dir, "open-obligations"])
+        self.assertEqual(rc, 0)
+        out = json.loads(buf.getvalue())
+        rows = out["open_obligations"]
+        crm_rows = [r for r in rows if r["role_id"].startswith("role-synthetic-crm")]
+        autopsy_rows = [
+            r for r in rows if "autopsy" in r["role_id"]
+        ]
+        self.assertTrue(crm_rows)
+        self.assertTrue(autopsy_rows)
+        for row in crm_rows:
+            self.assertNotIn("payment_capability", row)
+        for row in autopsy_rows:
+            self.assertIs(row.get("payment_capability"), True)
+
+
+if __name__ == "__main__":
+    unittest.main()
