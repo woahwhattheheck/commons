@@ -107,7 +107,7 @@ Unavailable metadata becomes UNKNOWN while the packet remains usable.
 These are descriptive data states and never restrict credentials, service
 tools, peer access, or operations.
 
-Source claim: `ledger-crm6-composed-at-freshness-gate-20260905-01`.
+Source record: `ledger-crm6-composed-at-freshness-gate-20260905-01`.
 Focused check: `python3 -m unittest -v tests/test_ledger_crm6_composed_at_freshness_gate.py`.
 
 ## Cross-harness contract

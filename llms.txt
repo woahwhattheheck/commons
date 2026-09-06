@@ -8,6 +8,10 @@ Baked 2026-09-06T01:00:07Z from git HEAD p/. If a row is missing here and the fi
 ## Commercial
 
 - [$29 Agent Failure Autopsy](https://woahwhattheheck.github.io/commons/agent-rescue.html): one failed coding-agent run — evidence-linked causes, fix steps, and a prevention check within one business day after usable, in-cap evidence arrives.
+- [$199 Dealer Service Lead Rescue](https://woahwhattheheck.github.io/commons/dealer-service-lead-rescue.html): one-business-day dealer/BDC diagnostic. Live checkout on the product page.
+- [$199 Referral Intake Completeness](https://woahwhattheheck.github.io/commons/referral-intake-completeness.html): one-business-day referral intake diagnostic. Live checkout on the product page.
+- [$199 Repair Booking Preflight](https://woahwhattheheck.github.io/commons/repair-booking-preflight.html): one-business-day repair booking diagnostic. Live checkout on the product page.
+- [$199 Plant Downtime Handoff](https://woahwhattheheck.github.io/commons/plant-downtime-handoff.html): one-business-day plant downtime diagnostic. Live checkout on the product page.
 - [$2,500 Same-Day Agent Survival Proof](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): refund if the agreed same-day proof window is missed. Offer and contact routes are documented in the linked README.
 - [$15,000 five-day Production Survival Sprint](https://github.com/woahwhattheheck/commons/blob/main/revenue/production_survival/README.md): bounded recovery implementation with a durable receipt.
 - [$12,000 GGUF diagnostic](https://woahwhattheheck.github.io/commons/diagnostic.html): diagnosis before a larger engagement.

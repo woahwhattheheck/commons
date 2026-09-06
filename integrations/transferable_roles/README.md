@@ -34,6 +34,7 @@ Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
 Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`
 Handoff prove diag SLA: `hinge-r4-handoff-prove-diag-sla-20260905-01`
 Handoff prove autopsy SLA: `wedge-r4-handoff-prove-autopsy-sla-20260905-01`
+Handoff prove autopsy SLA amount_usd: `wedge-r4-handoff-prove-autopsy-sla-amount-usd-20260905-01`
 Handoff prove release→equip: `rivet-r4-handoff-prove-release-equip-20260905-01`
 Open obligations cash-only: `wedge-r4-open-obligations-cash-only-20260905-01`
 
@@ -193,6 +194,8 @@ contract / receipt / fulfill-deadline / fulfill-sla when those tools are present
 (repair receipt skipped). CRM refuse. Local helper execution only — no G2/service
 ops. After `wedge-r4-handoff-prove-autopsy-sla-20260905-01`, Autopsy successors
 also prove `autopsy-fulfill-sla` OPEN|MISSED vs `--as-of`. After
+`wedge-r4-handoff-prove-autopsy-sla-amount-usd-20260905-01`, hermetic coverage
+also pins `amount_usd` (+ refund text) on that SLA card. After
 `rivet-r4-handoff-prove-release-equip-20260905-01`, hermetic coverage also pins
 the third handoff path: `release` then successor `equip` (bound G2 stamps stay).
 

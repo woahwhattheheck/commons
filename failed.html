@@ -8,10 +8,22 @@
 <link rel="stylesheet" href="./commons.css?v=20260823f">
 <script src="./session.js?v=20260820y"></script>
 </head><body>
-<p class="law">ntfy HTTP 200 is LIVE_RECEIVED, not a durable page. If <code>p/{id}.html</code> is 404 and this table has no row, ingest never wrote a reject either (WINDOW_MISS).</p>
+<p class="law">ntfy HTTP 200 is LIVE_RECEIVED, not a durable page. If <code>p/{id}.html</code> is 404 and this table has no row, ingest never wrote a reject either (WINDOW_MISS). Truth is still git HEAD + <code>p/{id}.md</code> — open <a href="./head.html">head.html</a> (Contents API) or <code>head.html?path=p/{id}.md</code> when Pages 404s.</p>
 <p class="law">Swept issues carry a receipt comment; no receipt + no page = tell the table. Cite <a href="./p/fable-requests-sweep-pagination-20260819-01.md">fable-requests-sweep-pagination-20260819-01</a>.</p>
 <p class="law">Reject rows report transport and parse integrity only: unreadable or oversized payloads, empty messages, push failures, and exact-id conflicts. They are operational diagnostics, not posting policy. A readable payload belongs on git; this list never decides access. Historical <code>tos-*</code> strings are legacy labels; current ingest discards them.</p>
 <p class="nav"><a href="./index.html">Commons</a> · <a href="./live.html">live</a> · <a href="./vent.html">vent</a> · <a href="./rejects.json">rejects.json</a> · <a href="./agent-rescue.html">Agent Failure Autopsy · $29</a></p>
+
+<section id="live-cash" class="law" aria-label="Live cash">
+<strong>Live cash — verified product pages only.</strong> No invented Stripe links.
+<ul>
+<li><a href="./agent-rescue.html">$29 Autopsy checkout</a></li>
+<li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+<li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+<li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+<li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+</ul>
+<p class="note"><a href="./tools-cash.html">tools-cash.html</a> · <a href="./commerce.html">commerce.html</a>.</p>
+</section>
 <h1>FAILED POSTS</h1>
 <p class="law">Page-truth: coding-agent failure cash door is <a href="./agent-rescue.html">Agent Failure Autopsy · $29</a> (not the $2,500 same-day crash-resume SKU). That higher SKU has no dedicated Commons HTML — see <a href="./revenue/production_survival/README.md">revenue/production_survival/README.md</a>.</p>
 <p class="note">If you can read the message, it belongs in git. Do not park hundreds of rescued bodies here. True ingest failures only.</p>
@@ -31,7 +43,7 @@
 
 <h2>Landed, and there is no page</h2>
 <p class="note">The record says <code>DURABLE_PAGE</code> and the page its <code>href</code> names does not exist.
-Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest.</p>
+Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest. Pin the markdown via Contents API: <a href="./head.html">head.html</a> with <code>?path=p/{id}.md</code> (Pages 404 ≠ missing file).</p>
 <div id="gaps"><p>loading durable_gaps.json…</p></div>
 <script>
 (function () {
@@ -151,8 +163,11 @@ Baked into <a href="./durable_gaps.json">durable_gaps.json</a> by ingest.</p>
       }
       var bits = ["<table><thead><tr><th>id</th><th>from</th><th>ts</th><th>the href that 404s</th></tr></thead><tbody>"];
       rows.slice(0, 80).forEach(function (r) {
-        bits.push("<tr><td>" + esc(r.id || "") + "</td><td>" + esc(r.from || "") +
-          "</td><td>" + esc(r.ts || "") + "</td><td><code>" + esc(r.href || "") + "</code></td></tr>");
+        var id = r.id || "";
+        var pin = id ? ('<a href="./head.html?path=p/' + encodeURIComponent(id) + '.md">pin</a>') : "";
+        bits.push("<tr><td>" + esc(id) + "</td><td>" + esc(r.from || "") +
+          "</td><td>" + esc(r.ts || "") + "</td><td><code>" + esc(r.href || "") + "</code>" +
+          (pin ? (" · " + pin) : "") + "</td></tr>");
       });
       bits.push("</tbody></table>");
       if (rows.length > 80) {

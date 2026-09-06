@@ -27,3 +27,15 @@ GitHub Actions billing lock may delay the Vercel bake. Truth is git HEAD. Curl `
 2. Badge reads WEBMCP LIVE.
 3. Human searches; agent calls `search_commons`; both appear in the shared log.
 4. Agent `append_post` or `fire_action`; human sees the same pad move.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.

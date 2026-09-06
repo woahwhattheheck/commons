@@ -30,6 +30,12 @@ from typing import Any, Callable
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
+# Direct script launches resolve the shared policy from this checkout, never cwd.
+_POLICY_ROOT = str(Path(__file__).resolve().parents[2])
+if _POLICY_ROOT not in sys.path:
+    sys.path.insert(0, _POLICY_ROOT)
+from commons_publication_policy import PublicationPolicyViolation, require_publication
+
 
 SCHEMA = "commons-grok-slack-connector/v1"
 FINAL_DELIVERY_OWNER = "grok_slack_bridge"
@@ -63,6 +69,7 @@ PHASES = (
     "ECHO_SUPPRESSED",
     "DELIVERY_UNKNOWN",
     "FIRE_ACTION_UNKNOWN",
+    "PUBLICATION_REJECTED",
 )
 PRE_SUBMIT_PHASES = frozenset({"CLAIMED", "INTAKE", "WAITING_CAPACITY", "JOB_PERSISTED"})
 POST_SUBMIT_PHASES = frozenset({
@@ -907,7 +914,7 @@ class BridgeStore:
             rows = self._connection.execute(
                 """
                 SELECT * FROM slack_events
-                WHERE phase NOT IN ('DELIVERED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED', 'WAITING_CAPACITY')
+                WHERE phase NOT IN ('DELIVERED', 'EVENT_ID_COLLISION', 'NO_SUBMIT', 'ECHO_SUPPRESSED', 'WAITING_CAPACITY', 'PUBLICATION_REJECTED')
                   AND NOT (
                     phase = 'FAILED'
                     AND EXISTS (
@@ -1485,6 +1492,7 @@ class SlackTransport:
         index: int,
         count: int,
     ) -> SlackSendResult:
+        require_publication(text)
         key = delivery_key(event_id, phase, index, text)
         existing = self.store.get_delivery(key)
         if existing and existing["state"] == "SENT":
@@ -1658,6 +1666,12 @@ class GrokSlackBridge:
         self._active_event_id = ""
 
     def handle_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
+        try:
+            return self._handle_publication_checked_event(event_id, event)
+        except PublicationPolicyViolation as exc:
+            return self._publication_rejected(event_id, exc)
+
+    def _handle_publication_checked_event(self, event_id: str, event: dict[str, Any]) -> dict[str, Any]:
         self.work_log.append("handle_event")
         self._active_event_id = event_id
         if is_direct_message(event):
@@ -1699,7 +1713,7 @@ class GrokSlackBridge:
             row = self.store.get(event_id)
             if row is None:
                 return {"ok": True, "state": "RETRY_DUPLICATE", "submit": False}
-            if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "EVENT_ID_COLLISION"}:
+            if row.phase in {"DELIVERED", "ECHO_SUPPRESSED", "NO_SUBMIT", "EVENT_ID_COLLISION", "PUBLICATION_REJECTED"}:
                 return {"ok": True, "state": row.phase, "submit": False}
             if row.phase == "FAILED":
                 return self._resume_failed_rejection(row)
@@ -1754,9 +1768,11 @@ class GrokSlackBridge:
                     if contract is None:
                         continue
                     result = self._run_claimed(item.event_id, contract)
+                except PublicationPolicyViolation as exc:
+                    result = self._publication_rejected(item.event_id, exc)
                 except Exception:
                     continue
-                if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT"}:
+                if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT", "PUBLICATION_REJECTED"}:
                     recovered += 1
         for item in self.store.pending():
             try:
@@ -1766,13 +1782,26 @@ class GrokSlackBridge:
                     result = self._resume_output_only(item)
                 else:
                     result = self._resume_pre_submit(item)
+            except PublicationPolicyViolation as exc:
+                result = self._publication_rejected(item.event_id, exc)
             except Exception:
                 continue
-            if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT"}:
+            if result.get("state") in {"DELIVERED", "DELIVERY_UNKNOWN", "FAILED", "NO_SUBMIT", "PUBLICATION_REJECTED"}:
                 recovered += 1
         return recovered
 
+    def _publication_rejected(self, event_id: str, exc: PublicationPolicyViolation) -> dict[str, Any]:
+        # Retain operation identity, never retry unchanged rejected prose forever.
+        self.store.set_phase(event_id, "PUBLICATION_REJECTED")
+        return {"ok": False, "state": "PUBLICATION_REJECTED", **exc.decision}
+
     def _run_claimed(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
+        try:
+            return self._run_publication_checked(event_id, contract)
+        except PublicationPolicyViolation as exc:
+            return self._publication_rejected(event_id, exc)
+
+    def _run_publication_checked(self, event_id: str, contract: dict[str, Any]) -> dict[str, Any]:
         self._active_event_id = event_id
         packet = self._intake(event_id, contract)
         if (
@@ -1858,6 +1887,9 @@ class GrokSlackBridge:
 
     def _route_revenue(self, arguments: dict[str, Any]) -> dict[str, Any]:
         """Prefer live public MCP. Current-main orchestrator if production is stale."""
+        event = arguments.get("event")
+        if isinstance(event, dict) and isinstance(event.get("text"), str):
+            require_publication(event["text"])
         if self._has_live_route_tool():
             self.intake_road = "public_mcp"
             self.work_log.append("mcp:route_grokcom_revenue_work")
@@ -2553,6 +2585,7 @@ class GrokSlackBridge:
         return submitted
 
     def _post_status(self, event_id: str, contract: dict[str, Any], text: str, *, phase: str) -> SlackSendResult:
+        require_publication(text)
         pieces = chunk_text(text)
         last = SlackSendResult("FAILED")
         for index, piece in enumerate(pieces):
@@ -2585,6 +2618,8 @@ class GrokSlackBridge:
                 text = text + " " + diag[:remain]
         try:
             return self._post_status(event_id, contract, text, phase="rejected")
+        except PublicationPolicyViolation:
+            raise
         except Exception:
             return SlackSendResult("FAILED")
 
@@ -2593,6 +2628,7 @@ class GrokSlackBridge:
             # Executor automation is not the final Slack owner.
             pass
         message = str(envelope.get("message") or "")
+        require_publication(message)
         pieces = chunk_text(message)
         last = SlackSendResult("SENT")
         for index, piece in enumerate(pieces):
@@ -2876,6 +2912,25 @@ def _redact_blob(value: Any) -> Any:
     return json.loads(redacted)
 
 
+def _slack_publication_text(payload: dict[str, Any]) -> str:
+    """Collect displayed Slack prose, including blocks-only message edits."""
+    parts: list[str] = []
+
+    def collect(value: Any) -> None:
+        if isinstance(value, list):
+            for item in value:
+                collect(item)
+        elif isinstance(value, dict):
+            for key, item in value.items():
+                if key in {"text", "title", "pretext", "fallback", "alt_text", "value"} and isinstance(item, str):
+                    parts.append(item)
+                elif isinstance(item, (dict, list)):
+                    collect(item)
+
+    collect({key: payload[key] for key in ("text", "blocks", "attachments") if key in payload})
+    return "\n".join(parts)
+
+
 def slack_web_call(
     method: str,
     token: str,
@@ -2884,6 +2939,8 @@ def slack_web_call(
     opener: Callable[..., Any] | None = None,
 ) -> dict[str, Any]:
     """POST a Slack Web API method. Token never appears in returned JSON."""
+    if method in {"chat.postMessage", "chat.update", "chat.postEphemeral", "chat.scheduleMessage"}:
+        require_publication(_slack_publication_text(payload or {}))
     if not token:
         raise RuntimeUnconfigured("missing Slack token")
     body = json.dumps(payload or {}, separators=(",", ":")).encode("utf-8")

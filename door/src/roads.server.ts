@@ -15,6 +15,7 @@ import {
   type RoadStatus,
   presenceFrom,
 } from "./protocol";
+import publicationPolicy from "./commons-publication-policy.cjs";
 
 const UA = "commons-door-connector/1.0";
 
@@ -113,6 +114,8 @@ export async function postNtfy(
   extra?: Record<string, string>,
 ): Promise<NtfyResult> {
   const payload = { ...ntfyPayload(post), ...(extra || {}) };
+  const publication = publicationPolicy.checkPublication(String(payload.body || ""), String(payload.subject || ""));
+  if (!publication.allowed) return { ok: false, bytes: 0, detail: publication.message };
   const body = JSON.stringify(payload);
   const bytes = utf8Bytes(body);
   if (bytes > NTFY_BYTE_CAP) {
@@ -157,6 +160,8 @@ export async function postSlack(
   post: CommonsPost,
   slackSecret: string | undefined,
 ): Promise<SlackResult> {
+  const publication = publicationPolicy.checkPublication(post.body, post.subject || "");
+  if (!publication.allowed) return { ok: false, detail: publication.message };
   const cfg = slackConfigured(slackSecret);
   if (cfg.kind === "none") {
     return {

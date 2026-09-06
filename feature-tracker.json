@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTS_PRESENT": 102
+    "TESTS_PRESENT": 103
   },
   "features": [
     {
@@ -2989,6 +2989,52 @@
       "test_paths": [
         "test_kincell_rtp_qc_release_bridge.py",
         "revenue/kincell_rtp_qc_release_bridge/runner.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Reports saved INDEX timestamp age against the existing 12-hour warning, with reproducible as-of time and an optional nonblocking freshness annotation on successor handoff packets.",
+      "carrier": "Codex",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/lm_gtm_index.py",
+        "host/lm_gtm_relationship_handoff.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/lm_gtm_index.py",
+        "host/lm_gtm_relationship_handoff.py"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "ledger-crm6-composed-at-freshness-gate-20260905-01.json",
+      "id": "ledger-crm6-composed-at-freshness-gate-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "CRM6 saved INDEX freshness for successors",
+      "next_gap": "A recent composed_at is the newest source timestamp, not proof that every source or linked message is current.",
+      "owner_subsystem": "lm-gtm-index",
+      "public_entrypoint": "revenue/lm_gtm_index/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": false
+      },
+      "resource_links": [
+        "revenue/lm_gtm_index/README.md",
+        "p/ledger-crm6-composed-at-freshness-gate-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "tests/test_ledger_crm6_composed_at_freshness_gate.py"
       ],
       "test_paths_missing": [],
       "test_status": "TESTS_PRESENT"
@@ -6563,7 +6609,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 111,
+  "n_features": 112,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",

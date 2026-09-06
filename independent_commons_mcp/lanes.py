@@ -6,6 +6,7 @@ import os
 import urllib.parse
 from decimal import Decimal, InvalidOperation
 from typing import Any, Callable
+from commons_publication_policy import require_publication
 
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC as TOPIC
 
@@ -56,6 +57,7 @@ class Lanes:
         self.http = http or default_http
 
     def ntfy_submit(self, payload: dict[str, Any]) -> dict[str, Any]:
+        require_publication(str(payload.get("body") or ""), str(payload.get("subject") or ""))
         packed = canonical_json(payload).encode("utf-8")
         failures = []
         for host in NTFY_HOSTS:
@@ -86,6 +88,7 @@ class Lanes:
         return _lane("ntfy", "ERROR", id=payload["id"], error="every ntfy relay refused", failures=failures)
 
     def github_issue_submit(self, payload: dict[str, Any]) -> dict[str, Any]:
+        require_publication(str(payload.get("body") or ""), str(payload.get("subject") or ""))
         token = os.environ.get("COMMONS_GITHUB_TOKEN") or os.environ.get("GITHUB_TOKEN") or ""
         if not token:
             return _lane("github_issue", "UNCONFIGURED", id=payload["id"], error="no server-side GitHub token")
@@ -128,6 +131,7 @@ class Lanes:
         )
 
     def slack_submit(self, payload: dict[str, Any], *, thread_ts: str = "", channel: str = "") -> dict[str, Any]:
+        require_publication(str(payload.get("body") or ""), str(payload.get("subject") or ""))
         ident = payload["id"]
         text = projection_text(payload, default_capability="NO")
         token = os.environ.get("COMMONS_SLACK_BOT_TOKEN") or os.environ.get("SLACK_BOT_TOKEN") or ""
@@ -355,6 +359,7 @@ class Lanes:
 
     def slack_send_raw(self, text: str, *, channel: str = "", thread_ts: str = "") -> dict[str, Any]:
         """Human Slack send. Link-only is legal. Empty is skip. No thread-per-post."""
+        require_publication(text)
         token = os.environ.get("COMMONS_SLACK_BOT_TOKEN") or os.environ.get("SLACK_BOT_TOKEN") or ""
         webhook = os.environ.get("COMMONS_SLACK_WEBHOOK_URL") or os.environ.get("SLACK_WEBHOOK_URL") or ""
         dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or SLACK_CHANNEL).strip()
@@ -472,6 +477,7 @@ class Lanes:
         )
 
     def discord_submit(self, payload: dict[str, Any], *, channel: str = "", message_id: str = "") -> dict[str, Any]:
+        require_publication(str(payload.get("body") or ""), str(payload.get("subject") or ""))
         ident = payload["id"]
         text = projection_text(payload, default_capability="NO")
         token = os.environ.get("COMMONS_DISCORD_BOT_TOKEN") or os.environ.get("DISCORD_BOT_TOKEN") or ""
@@ -599,6 +605,7 @@ class Lanes:
         )
 
     def discord_send_raw(self, text: str, *, channel: str = "", message_id: str = "") -> dict[str, Any]:
+        require_publication(text)
         token = os.environ.get("COMMONS_DISCORD_BOT_TOKEN") or os.environ.get("DISCORD_BOT_TOKEN") or ""
         webhook = os.environ.get("COMMONS_DISCORD_WEBHOOK_URL") or os.environ.get("DISCORD_WEBHOOK_URL") or ""
         dest = (channel or os.environ.get("COMMONS_DISCORD_CHANNEL") or "").strip()

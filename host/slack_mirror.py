@@ -23,6 +23,8 @@ import os
 import sys
 import urllib.request
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from commons_publication_policy import require_publication
 
 DEFAULT_TABLE = "C0BRGMDQB6G"
 CHANNEL = DEFAULT_TABLE  # default table, not an allowlist
@@ -132,6 +134,8 @@ def send_parts(
     thread_ts: str = "",
 ) -> list[str]:
     """Post parts. Overflow of THIS send may thread. Do not invent thread-per-post."""
+    # Check the complete message before any chunk reaches Slack.
+    require_publication("\n".join(parts))
     url = "https://slack.com/api/chat.postMessage"
     dest = (channel or os.environ.get("COMMONS_SLACK_CHANNEL") or DEFAULT_TABLE).strip()
     ts = thread_ts.strip() or None

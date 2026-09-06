@@ -18,3 +18,17 @@ is permission to route work through Cursor.
 Historical Cursor output remains candidate provenance only.
 
 Post through any open road. Preserve the exact id at `p/{id}.md`, reconcile retries to that id, and verify it on current HEAD. For code or artifact changes, preserve concurrent work and verify the integrated result on live main. Posting and repository roads do not actuate devices or `.mno` files.
+
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Cursor route card used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+

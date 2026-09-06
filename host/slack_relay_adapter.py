@@ -32,6 +32,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 import ntfy_relays
+from commons_publication_policy import check_publication
 from integrations.gemini_slack import bridge as gemini_slack_bridge
 from integrations.grok_slack.bridge import (
     DEFAULT_CHANNEL,
@@ -238,6 +239,13 @@ def deliver(
             slack_ts="",
             observed_at=observed_at,
         )
+
+    publication = check_publication(normalized["text"])
+    if not publication["allowed"]:
+        return _receipt(normalized=normalized, mode=requested_mode,
+                        presence=presence, state="PUBLICATION_TERMS_REJECTED", ok=False,
+                        reason=publication["message"], fail_closed=True, network_calls=0,
+                        slack_ts="", observed_at=observed_at)
 
     if requested_mode == "test":
         return _receipt(

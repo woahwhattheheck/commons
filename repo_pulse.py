@@ -35,6 +35,8 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
 
+from commons_publication_policy import require_publication
+
 API = "https://api.github.com"
 MIRROR_CLAIM = "COMMONS_SLACK_MIRROR"
 UA = "repo-pulse/2.1"
@@ -997,6 +999,7 @@ def render(ctx):
 # ---------------------------------------------------------------- slack / evidence
 
 def post_slack(text, webhook, bot_token, channel, summary_path, dry_run=False):
+    require_publication(text)
     if dry_run:
         print(text)
         return "dry-run"

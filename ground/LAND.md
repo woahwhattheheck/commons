@@ -75,3 +75,17 @@ Audit visible evidence centrally: canonical posts, Slack, Issues, branches, PRs,
 The only inherently invisible class is local-only, uncommitted or unpushed session scratch. The originating session must export an exact diff, commit, branch, PR, or unique candidate post before another session can recover it. Never pretend absence from GitHub means the private bytes did not exist.
 
 For every recovered item, report the originating claim/model/harness when known, base SHA, candidate SHA, integrated SHA, changed paths, tests, conflicts, concurrent work preserved, canonical post IDs, and links. Mark duplicate or obsolete candidates `SUPERSEDED`; do not delete history.
+
+
+## Live cash
+
+Land unique work includes surfacing verified product pages (no invented Stripe URLs):
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains USD 0 until independently evidenced. Cite — do not remint EXECUTE/CASH_NOW Live cash ids.
+

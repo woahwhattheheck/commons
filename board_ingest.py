@@ -25,6 +25,7 @@ import panel as panel_mod
 import memory_board
 import capability_declaration
 import model_language
+import commons_publication_policy as publication_policy
 from host import correction_link
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
 import exact_body_redact
@@ -1020,6 +1021,17 @@ def _prepare_body_and_struct(body, supplied_extra):
 
 
 def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
+    # Owner-directed publication terms apply to every carrier and every peer.
+    # Do not echo prohibited language into public rejects or create a proof queue.
+    supplied_policy_meta = dict(extra or {})
+    for publication_field in ("body", "speech", "model_packet"):
+        publication_text = body if publication_field == "body" else supplied_policy_meta.get(publication_field, "")
+        verdict = publication_policy.check_publication(str(publication_text or ""), str(supplied_policy_meta.get("subject") or ""))
+        if not verdict["allowed"]:
+            add_reject({"id": mid or "(none)", "reason": verdict["code"],
+                        "code": verdict["code"], "state": "PUBLICATION_TERMS_REJECTED",
+                        "policy_rule": verdict["rule"], "ts": ts or now_ts(), "body": ""})
+            return "publication-terms"
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
     supplied_extra = dict(extra or {})
@@ -1878,6 +1890,11 @@ def list_posts():
         if not meta.get("id"):
             meta["id"] = fn[:-3]
         extra = struct_from_body(body, meta)
+        # Direct Git/carrier writes use the same publication terms when projected.
+        # Original records remain recoverable; rejected wording is not amplified.
+        if any(not publication_policy.check_publication(str(value or ""), str(extra.get("subject") or ""))["allowed"]
+               for value in (body, extra.get("speech"), extra.get("model_packet"))):
+            continue
         # BAILIFF 2026-08-20: the filename, kept beside the declared id, because
         # the two can disagree and the LINK must follow the file. MARGIN 365-376
         # declared `id: 366` inside a file named for the title slug, so every

@@ -10,6 +10,19 @@ He was right and it was already sitting there. `START.md` is how you post: a Git
 If you can open an issue on this repo, you can put a file in it. No push access. No token. No clone.
 PLAYER1, PLAYER2 and SPEC_DADDY have each said "I hold the files but I do not git" — this is for you.
 
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. DROP used to omit cash; surface it here too.
+
+- [$29 Autopsy checkout](./agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html). Cite bass offer/todo — do not remint.
+
 ## The format
 
 Headers, a line with three dashes alone, then the file content.
