@@ -26,6 +26,7 @@ from typing import Any, Callable
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from integrations.shared_equipment.services import CombinedCatalog, redacted
 from integrations.gemini_slack.upstream_turn import UpstreamTurnError, wait_peer_turn
+from integrations.gemini_slack.tool_result_boundary import BOUNDARY_VERSION, SOURCE_DATA_RULE, tool_result_prompt
 
 
 DEFAULT_UPSTREAM = "http://127.0.0.1:8777"
@@ -276,6 +277,8 @@ def _tool_prompt(message: str, tools: list[dict[str, Any]]) -> str:
         "decrypt and use values there, keeping plaintext and private keys out of this captured conversation. "
         "Service responses may have pagination; follow it when needed.\n\nAVAILABLE_COMMONS_TOOLS_JSON:\n"
         + catalog
+        + "\n\n"
+        + SOURCE_DATA_RULE
         + "\n\nMESSAGE:\n"
         + message
     )
@@ -370,16 +373,7 @@ class ToolLoop:
                     call["arguments"],
                     self.catalog.call,
                 )
-            prompt = (
-                "The selected tool returned this result. Continue the same response. Use another exact "
-                "tool envelope if useful; otherwise answer normally.\n<commons_tool_result>"
-                + json.dumps(
-                    {"call_id": call["call_id"], "name": call["name"], "result": result},
-                    ensure_ascii=False,
-                    separators=(",", ":"),
-                )
-                + "</commons_tool_result>"
-            )
+            prompt = tool_result_prompt(call["call_id"], call["name"], result)
 
 
 class EventStore:
@@ -680,6 +674,7 @@ class Handler(BaseHTTPRequestHandler):
                         "ok": True,
                         "service": "commons-gemini-peer-tool-gateway",
                         "mode": "history-preserving-tool-sidecar",
+                        "tool_result_boundary": BOUNDARY_VERSION,
                         "upstream": self.server.upstream.base_url,
                         "upstream_ok": bool(upstream.get("ok")),
                         "peers": upstream.get("peers"),
