@@ -5,9 +5,9 @@ Gates on tool `autopsy_fulfillment` and calls landed
 `revenue/agent_failure_autopsy/fulfillment.py` helpers (`next_business_day`,
 `validate_bundle`) — import-only; do not remint fulfillment.py.
 
-`run_deadline` returns delivery_due_at.
-`run_sla_status` compares as_of vs due → OPEN|MISSED + landed offer refund
-miss-remedy + amount_usd (WEDGE leftovers after #8999 / #9015).
+`run_deadline` returns delivery_due_at + landed offer refund + amount_usd.
+`run_sla_status` compares as_of vs due → OPEN|MISSED and reuses deadline cash
+fields (WEDGE leftovers after #8999 / #9015 / #9041).
 """
 
 from __future__ import annotations
@@ -106,12 +106,22 @@ def _parse_aware(stamp: str, label: str) -> datetime:
     return parsed
 
 
+def _forbid_secrets(blob: str) -> None:
+    for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
+        if forbidden in blob:
+            raise RoleError(f"card leaked forbidden token prefix {forbidden}")
+
+
 def run_deadline(
     role: Mapping[str, Any],
     *,
     usable_evidence_at: str,
-) -> dict[str, str]:
-    """Compute delivery_due_at via landed fulfillment.next_business_day."""
+) -> dict[str, Any]:
+    """Compute delivery_due_at + landed offer cash fields.
+
+    Parity with diagnostic deadline (already stamps diagnostic_usd + refund):
+    Autopsy deadline previously omitted cash; SLA had it after #9015/#9041.
+    """
     require_autopsy_fulfillment_tool(role)
     stamp = str(usable_evidence_at or "").strip()
     if not stamp:
@@ -121,10 +131,15 @@ def run_deadline(
         due = mod.next_business_day(stamp)
     except Exception as exc:  # noqa: BLE001 — map landed errors
         raise RoleError(str(exc)) from exc
-    return {
+    cash = _load_offer_cash_fields()
+    out: dict[str, Any] = {
         "usable_evidence_at": stamp,
         "delivery_due_at": due,
+        "refund": cash["refund"],
+        "amount_usd": cash["amount_usd"],
     }
+    _forbid_secrets(json.dumps(out))
+    return out
 
 
 def run_sla_status(
@@ -133,9 +148,10 @@ def run_sla_status(
     usable_evidence_at: str,
     as_of: str,
 ) -> dict[str, Any]:
-    """OPEN|MISSED Autopsy SLA + landed offer refund + amount_usd.
+    """OPEN|MISSED Autopsy SLA; reuses deadline cash fields.
 
-    Reuses run_deadline calendar path; does not remint fulfillment.py / offer.json.
+    Reuses run_deadline calendar + offer cash path; does not remint
+    fulfillment.py / offer.json.
     within_one_business_day matches Autopsy report rule: as_of <= delivery_due_at.
     """
     base = run_deadline(role, usable_evidence_at=usable_evidence_at)
@@ -143,19 +159,13 @@ def run_sla_status(
     as_of_dt = _parse_aware(as_of_stamp, "as_of")
     due_dt = _parse_aware(str(base["delivery_due_at"]), "delivery_due_at")
     within = as_of_dt <= due_dt
-    cash = _load_offer_cash_fields()
     out: dict[str, Any] = {
         **base,
         "as_of": as_of_stamp,
         "within_one_business_day": within,
         "sla_status": "OPEN" if within else "MISSED",
-        "refund": cash["refund"],
-        "amount_usd": cash["amount_usd"],
     }
-    blob = json.dumps(out)
-    for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
-        if forbidden in blob:
-            raise RoleError(f"sla card leaked forbidden token prefix {forbidden}")
+    _forbid_secrets(json.dumps(out))
     return out
 
 
