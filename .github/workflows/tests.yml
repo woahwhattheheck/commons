@@ -18,18 +18,16 @@ jobs:
           sparse-checkout: |
             /integrations/
             /revenue/
-            /test_grokbot_shared_equipment.py
-      - name: Verify new Autopsy and cash equipment cards and refund remedy
+            /commons_publication_policy.py
+      - name: Verify new Autopsy validation successor cases
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor ba951183a6d6bad7f10de4be2b17fcb0eb8d15b6 HEAD
-          python3 -m unittest -v integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_open_obligations_cash_card integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_case_and_receipt_cards integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_case_receipt_survive_transfer integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_crm_role_refuses test_grokbot_shared_equipment.TestGrokBotSharedEquipment.test_tool_names_and_catalog_extension test_grokbot_shared_equipment.TestGrokBotSharedEquipment.test_role_equipment_route_present
-          python3 -m unittest discover -v -s integrations/transferable_roles -p test_handoff_execute_survive.py -k test_diagnostic_export_import_then_prove
-          python3 integrations/transferable_roles/test_autopsy_sla_cli.py
+          git merge-base --is-ancestor a949e6a5944177bc07774ebfca686797df07f619 HEAD
+          python3 -m unittest -v integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_fulfill_validate_survive_export_import_equip integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_fulfill_validate_survive_release_equip
           git fetch --depth=100 origin main
           python3 - <<'PY'
           import subprocess
-          for path in ["integrations/shared_equipment/diagnostic_equipment_cards.py","integrations/shared_equipment/test_diagnostic_equipment_cards.py","integrations/shared_equipment/role_equipment.json","integrations/shared_equipment/R4_CLAIMS.md","test_grokbot_shared_equipment.py","integrations/transferable_roles/autopsy_fulfill.py","integrations/transferable_roles/test_autopsy_sla_cli.py","integrations/transferable_roles/test_handoff_execute_survive.py","integrations/transferable_roles/R4_CLAIMS_HANDOFF.md","integrations/transferable_roles/README.md","p/hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01.md","p/wedge-autopsy-sla-refund-miss-remedy-20260905-01.md","p/rivet-r4-handoff-prove-diag-export-import-20260905-01.md","p/wedge-r4-equipment-open-obligations-cash-card-20260905-01.md"]:
+          for path in ["integrations/shared_equipment/test_diagnostic_equipment_cards.py","integrations/shared_equipment/R4_CLAIMS.md","p/rivet-r4-equipment-autopsy-validate-survive-handoff-20260905-01.md"]:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
               assert expected == actual,path
@@ -158,4 +156,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit ba951183a6d6bad7f10de4be2b17fcb0eb8d15b6 --required-path integrations/shared_equipment/test_diagnostic_equipment_cards.py
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit a949e6a5944177bc07774ebfca686797df07f619 --required-path integrations/shared_equipment/test_diagnostic_equipment_cards.py
