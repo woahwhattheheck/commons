@@ -38,6 +38,8 @@ class AutopsySlaCliTests(unittest.TestCase):
         self.assertEqual(open_card["delivery_due_at"], "2026-09-07T15:00:00-04:00")
         self.assertEqual(open_card["sla_status"], "OPEN")
         self.assertTrue(open_card["within_one_business_day"])
+        self.assertIn("refund usd 29", str(open_card["refund"]).lower())
+        self.assertIn("one-business-day", str(open_card["refund"]).lower())
 
         edge = run_sla_status(
             role,
@@ -46,6 +48,7 @@ class AutopsySlaCliTests(unittest.TestCase):
         )
         self.assertEqual(edge["sla_status"], "OPEN")
         self.assertTrue(edge["within_one_business_day"])
+        self.assertIn("refund usd 29", str(edge["refund"]).lower())
 
         missed = run_sla_status(
             role,
@@ -54,6 +57,7 @@ class AutopsySlaCliTests(unittest.TestCase):
         )
         self.assertEqual(missed["sla_status"], "MISSED")
         self.assertFalse(missed["within_one_business_day"])
+        self.assertIn("refund usd 29", str(missed["refund"]).lower())
 
     def test_diagnostic_and_crm_refuse(self) -> None:
         diagnostic = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
@@ -96,6 +100,7 @@ class AutopsySlaCliTests(unittest.TestCase):
         out = json.loads(result.stdout)
         self.assertEqual(out["sla_status"], "MISSED")
         self.assertFalse(out["within_one_business_day"])
+        self.assertIn("refund usd 29", str(out["refund"]).lower())
         after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
         self.assertEqual(after, before)
 

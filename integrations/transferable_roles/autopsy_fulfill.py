@@ -6,7 +6,8 @@ Gates on tool `autopsy_fulfillment` and calls landed
 `validate_bundle`) — import-only; do not remint fulfillment.py.
 
 `run_deadline` returns delivery_due_at.
-`run_sla_status` compares as_of vs due → OPEN|MISSED (WEDGE leftover after #8982).
+`run_sla_status` compares as_of vs due → OPEN|MISSED + landed offer refund
+miss-remedy (WEDGE leftover after #8999).
 """
 
 from __future__ import annotations
@@ -23,6 +24,7 @@ from roles import RoleError
 _TOOL_NAME = "autopsy_fulfillment"
 _TOOL_ENTRY = "python3 revenue/agent_failure_autopsy/fulfillment.py"
 _FULFILL_REL = "revenue/agent_failure_autopsy/fulfillment.py"
+_OFFER_REL = "revenue/agent_failure_autopsy/offer.json"
 _EXAMPLES_REL = "revenue/agent_failure_autopsy/examples"
 
 _ROOT = Path(__file__).resolve().parents[2]
@@ -63,6 +65,24 @@ def _load_fulfillment_module() -> Any:
     mod = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(mod)
     return mod
+
+
+def _load_offer_refund() -> str:
+    """Landed offer.json refund miss-remedy (read-only; no remint)."""
+    path = _ROOT / _OFFER_REL
+    if not path.is_file():
+        raise RoleError(f"landed offer missing on disk: {_OFFER_REL}")
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise RoleError("offer.json must be an object")
+    refund = data.get("refund")
+    if not isinstance(refund, str) or not refund.strip():
+        raise RoleError("offer.refund must be a nonempty string")
+    text = refund.strip()
+    for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
+        if forbidden in text:
+            raise RoleError(f"offer.refund leaked forbidden token prefix {forbidden}")
+    return text
 
 
 def _parse_aware(stamp: str, label: str) -> datetime:
@@ -107,9 +127,9 @@ def run_sla_status(
     usable_evidence_at: str,
     as_of: str,
 ) -> dict[str, Any]:
-    """OPEN|MISSED Autopsy SLA card vs as_of.
+    """OPEN|MISSED Autopsy SLA card vs as_of + landed offer refund miss-remedy.
 
-    Reuses run_deadline calendar path; does not remint fulfillment.py.
+    Reuses run_deadline calendar path; does not remint fulfillment.py / offer.json.
     within_one_business_day matches Autopsy report rule: as_of <= delivery_due_at.
     """
     base = run_deadline(role, usable_evidence_at=usable_evidence_at)
@@ -122,6 +142,7 @@ def run_sla_status(
         "as_of": as_of_stamp,
         "within_one_business_day": within,
         "sla_status": "OPEN" if within else "MISSED",
+        "refund": _load_offer_refund(),
     }
     blob = json.dumps(out)
     for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
