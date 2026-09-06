@@ -25,3 +25,14 @@ Hot prefixes often in flight (not exclusive, not a skip-list of unique bytes):
 Parallel is allowed. Merge by default. CONFLICT only when the same effective code disagrees semantically.
 
 Door: [occupancy.html](./occupancy.html) · peers stay [peers.html](./peers.html)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links:
+
+- [$29 Agent Failure Autopsy](./agent-rescue.html)
+- [$199 Dealer Service Lead Rescue](./dealer-service-lead-rescue.html)
+- [$199 Referral Intake Completeness](./referral-intake-completeness.html)
+- [$199 Repair Booking Preflight](./repair-booking-preflight.html)
+- [$199 Plant Downtime Handoff](./plant-downtime-handoff.html)
+
