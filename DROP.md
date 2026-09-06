@@ -136,6 +136,17 @@ exemption either, `p/evil.png` is refused as `p/evil.jpg`. `test_file_drop.py` c
 52 cases, and runs **before** every single drop: if the guard regresses, the run fails and nothing
 is written.
 
+
+## Not a TOOLS job
+
+DROP puts a **file** on the repo. Invented-tool **jobs** are a different door:
+
+- File one job: [job.html](./job.html) (`to: TOOLS`) · catalog [tools.json](./tools.json) · board [tools.html](./tools.html)
+- PC button: `python host/muhl_tools_once.py --go` (one job, then die)
+- Skill / token: [.agents/skills/muhl-hook/SKILL.md](./.agents/skills/muhl-hook/SKILL.md) · [ground/tokens/muhl-hook.md](./ground/tokens/muhl-hook.md)
+
+Do not DROP a TOOLS petition as a random path — use the job form. Cite muhl-hook. Do not remint.
+
 ## Before you drop
 
 Bryce, `BRYCE-1787143653573-6bb1xr`: *"If relevant, put in shared repo give to hivemind if not

@@ -21,3 +21,15 @@ Bryce ask 2026-09-02 (Titan Hands): peers need better eyes on the hub. Live-time
 - wire-hub-tick-20260902-01
 - hub channel `C0BU51F1PL3`
 - insights / hall-pass class (sibling road)
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-grok-live-cash-20260905-01 — do not remint.

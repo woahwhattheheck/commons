@@ -28,6 +28,8 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
+from commons_publication_policy import check_publication
+
 RUNTIME_LOG = Path(os.environ.get("LOCALAPPDATA", str(ROOT))) / "Commons" / "discord-runtime.log"
 
 
@@ -108,6 +110,10 @@ class Journal:
         CREATE TABLE IF NOT EXISTS cursors(
           surface TEXT PRIMARY KEY, value TEXT NOT NULL, updated REAL NOT NULL
         );
+        CREATE TABLE IF NOT EXISTS publication_rejections(
+          event_id TEXT NOT NULL, destination TEXT NOT NULL, rule TEXT NOT NULL,
+          rejected REAL NOT NULL, PRIMARY KEY(event_id,destination)
+        );
         """)
         self.db.commit()
         self.lock = threading.Lock()
@@ -128,14 +134,26 @@ class Journal:
           SELECT e.id,e.source,e.kind,e.native_id,e.payload,e.created
           FROM events e LEFT JOIN deliveries d
             ON d.event_id=e.id AND d.destination=?
-          WHERE d.event_id IS NULL ORDER BY e.created LIMIT ?
-        """, (destination, limit)).fetchall()
+          LEFT JOIN publication_rejections r
+            ON r.event_id=e.id AND r.destination=?
+          WHERE d.event_id IS NULL AND r.event_id IS NULL
+          ORDER BY e.created LIMIT ?
+        """, (destination, destination, limit)).fetchall()
         return [Event(r[0], r[1], r[2], r[3], json.loads(r[4]), r[5]) for r in rows]
 
     def delivered(self, event: Event, destination: str, remote_id: str = "") -> None:
         with self.lock:
             self.db.execute("INSERT OR REPLACE INTO deliveries VALUES(?,?,?,?)",
                             (event.id, destination, remote_id, time.time()))
+            self.db.commit()
+
+    def reject_publication(self, event: Event, destination: str, rule: str) -> None:
+        """Terminal delivery state; never record a rejected message as sent."""
+        with self.lock:
+            self.db.execute(
+                "INSERT OR REPLACE INTO publication_rejections VALUES(?,?,?,?)",
+                (event.id, destination, rule, time.time()),
+            )
             self.db.commit()
 
     def delivery_event_for_canonical(
@@ -247,6 +265,17 @@ def render(event: Event) -> str:
     return f"**[{event.source}] {title}**\n{body[:1600]}\n{url}\n{marker}"[:1999]
 
 
+def allow_publication(event: Event, destination: str, body: str, subject: str = "") -> bool:
+    verdict = check_publication(body, subject)
+    if verdict["allowed"]:
+        return True
+    # Retain only the terminal operation and rule; do not repeat the rejected
+    # content in logs or keep retrying the same publication every poll cycle.
+    JOURNAL.reject_publication(event, destination, verdict["rule"])
+    operational_log(f"publication-rejected destination={destination} rule={verdict['rule']}")
+    return False
+
+
 def deliver_discord() -> None:
     token = env("DISCORD_BOT_TOKEN")
     if not token:
@@ -259,6 +288,8 @@ def deliver_discord() -> None:
         if not channel:
             continue
         body: dict[str, Any] = {"content": render(event)}
+        if not allow_publication(event, "discord", body["content"]):
+            continue
         target = str(event.payload.get("target") or "")
         parent, parent_event = (
             JOURNAL.delivery_event_for_canonical(target, "discord")
@@ -279,8 +310,11 @@ def deliver_slack() -> None:
         if event.source == "slack":
             JOURNAL.delivered(event, "slack", event.native_id)
             continue
+        text = render(event)
+        if not allow_publication(event, "slack", text):
+            continue
         out = request_json("https://slack.com/api/chat.postMessage", token=f"Bearer {token}",
-                           method="POST", body={"channel": channel, "text": render(event)})
+                           method="POST", body={"channel": channel, "text": text})
         if out.get("ok"):
             JOURNAL.delivered(event, "slack", str(out.get("ts", "")))
 
@@ -345,6 +379,8 @@ def deliver_commons_issue(client: Any = None) -> None:
             JOURNAL.delivered(event, "commons-issue", "relay-skip")
             continue
         record = discord_ingest.issue_record(source)
+        if not allow_publication(event, "commons-issue", record.body, record.title):
+            continue
         if hasattr(client, "append_record"):
             remote = client.append_record(record)
             JOURNAL.delivered(event, "commons-issue", remote)

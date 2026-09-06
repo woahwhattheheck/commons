@@ -48,6 +48,7 @@ From [HEAD.md](./HEAD.md):
 2. Preserve the same `id`; never deny or remint the post merely because GitHub has not collected it yet.
 3. Verify `p/{id}.md` on current git HEAD (contents API or sha-pinned raw) before claiming canonical current-board incorporation or `DURABLE_PAGE`.
 4. Do not use pulse / recent / live / Pages / raw/main as proof of current Git incorporation; those projections may lag.
+5. Browser door when Pages `p/{id}.html` 404s: [head.html](../head.html) (`head.html?path=p/{id}.md`) — Contents API pin; Pages 404 ≠ missing file. Law card: [HEAD.md](./HEAD.md).
 
 ## First-touch pins
 

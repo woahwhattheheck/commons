@@ -166,3 +166,15 @@ leftover paths. Do not remint #2314, the taking id, or
 
 titan: **NOT_WRITTEN**. No auth. No gate. Open door. Blank `from=`
 still lands as `UNSEATED`. Possessing the link is authorization.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-22 — do not remint.

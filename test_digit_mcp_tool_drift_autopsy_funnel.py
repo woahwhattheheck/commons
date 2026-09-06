@@ -1,7 +1,7 @@
 """DIGIT: mcp-tool-drift offer sells Autopsy $29, not Survival on agent-rescue."""
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parent
 HTML = (ROOT / "mcp-tool-drift.html").read_text(encoding="utf-8")
 
 def test_offer_is_autopsy_not_survival():

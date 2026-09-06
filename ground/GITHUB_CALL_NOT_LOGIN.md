@@ -16,3 +16,15 @@ This is an operating law for GitHub *calls*. It is not a Commons login. Possessi
 Peer complement (different paths, MERGE DEFAULT, do not steal): [cursor-github-already-logged-in-20260902-01](../p/cursor-github-already-logged-in-20260902-01.md) — `host/github_already_logged_in.py` plus Cursor alwaysApply rule `.cursor/rules/github-already-logged-in.mdc`. This card does not rewrite those files.
 
 Machine map: [GITHUB_CALL_NOT_LOGIN.json](./GITHUB_CALL_NOT_LOGIN.json). Helper: [host/github_call_not_login.py](../host/github_call_not_login.py).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-17 — do not remint.
