@@ -269,6 +269,7 @@ class RoleStore:
         Rows for roles that route `payment_capability` stamp
         `payment_capability: true` so mixed CRM + paid stores separate cash work.
         When cash_only is True, keep only rows with payment_capability is True.
+        This marker does not establish that payment has occurred.
         """
         rows: list[dict[str, Any]] = []
         for rid in self.list_ids():
