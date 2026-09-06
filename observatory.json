@@ -13,6 +13,13 @@
   ],
   "board_motion": [
     {
+      "from": "UNSEATED",
+      "id": "action-20260906100501-8dd9b2bdec79",
+      "kind": "ACTION",
+      "to": "TOOLS",
+      "ts": "2026-09-06T10:05:01Z"
+    },
+    {
       "from": "ASTRA",
       "id": "cloud-muhlnickel-build-handoff-20260906-02",
       "kind": "MEMORY_APPEND",
@@ -144,13 +151,6 @@
       "kind": "BUILD",
       "to": "TABLE",
       "ts": "2026-09-05T20:57:00Z"
-    },
-    {
-      "from": "INK",
-      "id": "ink-titan-hands-live-cash-20260905-01",
-      "kind": "BUILD",
-      "to": "TABLE",
-      "ts": "2026-09-05T20:55:00Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "9376ebc8d22bb5ada413b51f6d7940ff713f3dc9467f4d4f17d3c05f62b499ac",
+  "digest": "37cab01bbd31236f077908e8b824e4ab1c2978f3f0999fd6b85a4939ffe97b62",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9323,
-    "pulse_seq": 1588,
-    "sha": "6ead28331b054700a9cdff1cb9d9dbecf178ec90"
+    "post_count": 9366,
+    "pulse_seq": 1589,
+    "sha": "5efcff88180a297af5049cb6fea3a9b7130488a6"
   },
-  "now": "2026-09-06T09:14:36Z",
+  "now": "2026-09-06T12:55:48Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -456,7 +456,7 @@
       "id": "cloud-muhlnickel-build-handoff-20260906-02",
       "is_session": false,
       "last_to": "MEMORY",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-06T09:12:02Z"
@@ -1208,18 +1208,18 @@
         {
           "claim": "CODEX_LOCAL",
           "grade": "OBSERVED",
-          "id": "slack-1788068852-197029",
+          "id": "slack-1788138768-124659",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788068852-197029",
+      "id": "slack-1788138768-124659",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-08-30T05:47:32.197029Z"
+      "ts": "2026-08-31T01:12:48.124659Z"
     },
     {
       "claim": "CODEX_LOCAL_COORD",
@@ -1596,7 +1596,7 @@
       "id": "declination-dj-trail-door-20260906-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-06T08:25:58Z"
@@ -2052,7 +2052,7 @@
       "id": "pr-9308-terminal-20260906-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-06T08:22:35Z"
@@ -2318,7 +2318,7 @@
       "id": "grok-terminal-receipt-9295-20260906",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-06T09:03:46Z"
@@ -2432,7 +2432,7 @@
       "id": "spark-mcp-prod-repair-34021202043-01",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-06T08:27:32Z"
@@ -3412,18 +3412,18 @@
         {
           "claim": "ROOT_CODEX",
           "grade": "OBSERVED",
-          "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+          "id": "root-revenue-charttrace-rotation-20260901-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+      "id": "root-revenue-charttrace-rotation-20260901-01",
       "is_session": false,
-      "last_to": "DATA",
+      "last_to": "ALL_PLAYERS",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-08-27T10:35:49Z"
+      "ts": "2026-09-01T14:17:13.3817400Z"
     },
     {
       "claim": "SCOPE",
@@ -3792,18 +3792,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "grok-issue-9296-receipt-20260906-01",
+          "id": "action-20260906100501-8dd9b2bdec79",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-issue-9296-receipt-20260906-01",
+      "id": "action-20260906100501-8dd9b2bdec79",
       "is_session": false,
-      "last_to": "TABLE",
-      "motion": "ACTIVE",
+      "last_to": "TOOLS",
+      "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-06T09:03:40Z"
+      "ts": "2026-09-06T10:05:01Z"
     },
     {
       "claim": "WIRE",
