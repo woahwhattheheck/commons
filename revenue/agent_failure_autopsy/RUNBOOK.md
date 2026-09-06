@@ -105,3 +105,48 @@ On the shared-equipment catalog (`GrokBotEquipment`):
 1. `grokbot_case_from_autopsy_offer` — build normalized `case` (local; no `:8881`).
 2. `grokbot_submit` — pass `case` on the run.
 3. `grokbot_receipt_row_from_case` with `submit_response` set to the submit/inspect payload (or call `receipt_from_g2_submit` in Python) — opaque seats `case_row` with `g2_run_id` / optional `g2_session_id`. Default `state` is `UNVERIFIED`; do **not** invent payment evidence. Shape: `SEATS.md` / `seats.json` `case_row_shape`. Append to public `case_rows` only after `REAL_STRIPE_PAYMENT_OBSERVED` + owner authorization.
+
+The following three calls use an already-running control gateway. Replace the
+opaque case reference and `prompt` with the actual private case identifier and
+authorized analysis task. Omit `client_reference_id` when no value is known.
+
+```python
+from integrations.shared_equipment.peers import GrokBotEquipment
+
+equipment = GrokBotEquipment("http://127.0.0.1:8881")
+prompt = "Replace with the authorized analysis task for this case."
+
+# 1. Build the case locally from the checked-in offer.
+built = equipment.call(
+    "grokbot_case_from_autopsy_offer",
+    {"case_ref": "opaque-private-case-id"},
+)
+if not built.get("ok"):
+    raise ValueError("Case builder rejected the input")
+case = built["case"]
+
+# 2. Submit once; async returns the accepted run without waiting for analysis.
+submitted = equipment.call(
+    "grokbot_submit",
+    {"prompt": prompt, "seat": "SPARK", "async": True, "case": case},
+)
+if not submitted.get("run_id"):
+    raise RuntimeError("No run ID returned; inspect the gateway outcome before retrying")
+
+# 3. Bind the returned run/session identifiers into an in-memory receipt row.
+receipt = equipment.call(
+    "grokbot_receipt_row_from_case",
+    {"case": case, "submit_response": submitted},
+)
+if not receipt.get("ok"):
+    raise ValueError("Could not bind the run receipt")
+case_row = receipt["case_row"]  # state remains UNVERIFIED; nothing is appended.
+```
+
+Submit responses include `ok`; inspect may return the raw run record. The
+receipt helper binds their `run_id` and optional `session_id`, so the example
+checks for the run identifier. An accepted or queued run is not completed
+analysis, payment evidence, or a delivered autopsy. Read the run's actual status
+and output with `grokbot_inspect` before recording a fulfillment outcome. After
+an uncertain submit response, reconcile the existing run before submitting the
+same task again.
