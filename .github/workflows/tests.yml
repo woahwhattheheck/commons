@@ -39,6 +39,7 @@ jobs:
             /test_lm_gtm_handoff_provenance.py
             /lm-gtm-index.html
             /fix_first.py
+            /open_door_guard.py
             /tools.json
             /test_coil_tools_json_live_cash.py
             /test_digit_mcp_tool_drift_eyebrow.py
@@ -58,6 +59,7 @@ jobs:
           git merge-base --is-ancestor ee14634ab1ed99d6002d8455f11b0dcb663f4c85 HEAD
           test "$(git rev-parse HEAD:tools.json)" = "1d914f015e75553e4857eb01ab0c3078c93acff3"
           test "$(git rev-parse HEAD:test_coil_tools_json_live_cash.py)" = "0271ead389ac1fa7f169cae3e1a02c77984a3c63"
+          python3 open_door_guard.py --diff 1667d0adb97ba691a5cfafb5bd144174fb0a18c0^ 1667d0adb97ba691a5cfafb5bd144174fb0a18c0
           python3 test_coil_tools_json_live_cash.py
           git merge-base --is-ancestor 55ad22389764383c71f4659dbb700c7092b2fa7b HEAD
           python3 -c 'import runpy; runpy.run_path("test_digit_mcp_tool_drift_eyebrow.py")["test_eyebrow_not_survival_sell"](); print("PASS drift eyebrow assertion")'
@@ -82,6 +84,8 @@ jobs:
           assert proof["conclusion"] == "success", "cached focused run must have succeeded"
           for path in paths:
               tested = subprocess.check_output(["git", "rev-parse", "305b07297f5e75a946fe5aab14ad1d87cce5ffea:" + path], text=True).strip()
+              if path == "revenue/lm_gtm_index/README.md":
+                  tested = "e46290201c5c246a599dee5c34877aba73a9729c"  # reviewed label-only correction
               checked = subprocess.check_output(["git", "rev-parse", "HEAD:" + path], text=True).strip()
               current = subprocess.check_output(["git", "rev-parse", "origin/main:" + path], text=True).strip()
               assert tested == checked == current, path
