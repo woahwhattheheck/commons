@@ -912,6 +912,19 @@ table{font-size:.86rem}
 <header class="hero">
 <p class="note">Opportunity registry · <code>host/opportunity_registry.py</code> · as_of __AS_OF__</p>
 <h1>Verified public technology. Honest non-dilutive doors. Zero invented money.</h1>
+
+<section id="live-cash" aria-label="Live cash">
+  <p><strong>Live cash</strong> — verified product pages only (no invented Stripe links).</p>
+  <ul>
+    <li><a href="./agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p>Full catalog: <a href="./commerce.html">commerce.html</a>. Cite forge tip-shelf / spark autopsy — do not remint.</p>
+</section>
+
 <p class="lead">Commons already shipped TITAN Hands, RINGDELTA, carrier roads, evidence records, agent-swarm prep, and trust-cache reliability. This desk maps those receipts onto public grants, live pilot offers, licensing blockers, procurement channels, and research targets. It composes, and does not remint, the listing registry (offer × surface marketplace copies). It does not file, register, or cash anything.</p>
 </header>
 <section class="panel" aria-labelledby="honest-heading">
@@ -1021,6 +1034,20 @@ def render_proof_html(registry: dict) -> str:
 {items}
 </ul>
 <p class="note">Applicant eligibility UNKNOWN. Submitted 0. Awarded 0. Cash 0.</p>
+
+<section id="live-cash">
+  <h2>Live cash</h2>
+  <p>Verified product pages only — no invented Stripe links.</p>
+  <ul>
+    <li><a href="agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p>Shelf: <a href="tools-cash.html">tools-cash.html</a>. Catalog: <a href="commerce.html">commerce.html</a>. Cite spy-html-money-doors-live-cash-20260905-02 — do not remint.</p>
+</section>
+
 </body>
 </html>
 """.format(items="\n".join(items))
