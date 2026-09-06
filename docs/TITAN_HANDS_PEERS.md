@@ -58,3 +58,7 @@ Verified product pages only — no invented Stripe links. Peer-distribution doc 
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite `stamp-docs-titan-hands-live-cash-20260905-01` / Coil MANUAL — do not remint.
+
+## Contest product (titanmcp)
+
+Live judge pad (≠ Commons Shared Pad / ≠ Commons `/mcp`): https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Cite Latch Pad KEEP / Wire tip→live. Submit/YouTube wait Bryce exact go.
