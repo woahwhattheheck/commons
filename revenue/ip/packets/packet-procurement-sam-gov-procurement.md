@@ -44,7 +44,7 @@ ANALYSIS: Procurement channel sam-gov-procurement is composed from the distribut
 - `host/feature_tracker.py` sha256 `dc90625836149d60020e6368cac9fe59628a277755fdda24c4cb8bc0b1fe6a89` (37164 bytes)
 - `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `58e78e88f5780146cd799dcb840610e30eeae6c2af9d01312aa31242e9aaed86` (12738 bytes)
+- `resources.html` sha256 `1eec22d38a22727745b7b5200350588dd7e3c9dc20a044b2f08d67f267bfe6ad` (12738 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `845937936841f56d957dfc4ade14b3709eb6140523e2fa6540e916ff7f507334` (123097 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 

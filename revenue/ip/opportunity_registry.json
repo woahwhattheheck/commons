@@ -202,8 +202,8 @@
         },
         {
           "path": "swarm-mail.html",
-          "sha256": "14ed7af88844c7b3c4e1f907a3ed06f4e7586b09e18f2ae9aa95461983c9f849",
-          "bytes": 5784
+          "sha256": "4c16eb5d0604738d106692c3b4a99006c7268ab16c501fe042e9f45f6f1b7848",
+          "bytes": 6070
         }
       ]
     },
@@ -266,7 +266,7 @@
         },
         {
           "path": "resources.html",
-          "sha256": "58e78e88f5780146cd799dcb840610e30eeae6c2af9d01312aa31242e9aaed86",
+          "sha256": "1eec22d38a22727745b7b5200350588dd7e3c9dc20a044b2f08d67f267bfe6ad",
           "bytes": 12738
         },
         {

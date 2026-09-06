@@ -57,7 +57,7 @@ ANALYSIS: Public Commons artifacts may relate to listed open-stack activities, b
 ### Agent swarm datacenter prep and swarm-mail (`agent-swarm`, `SHIPPED_ON_MAIN`)
 
 - `ground/SWARM.md` sha256 `98eef6e6a92a30b0cbd76c44ea200f9e83522c1841cc59ca6d277572940fb88c` (1565 bytes)
-- `swarm-mail.html` sha256 `14ed7af88844c7b3c4e1f907a3ed06f4e7586b09e18f2ae9aa95461983c9f849` (5784 bytes)
+- `swarm-mail.html` sha256 `4c16eb5d0604738d106692c3b4a99006c7268ab16c501fe042e9f45f6f1b7848` (6070 bytes)
 
 ## Stated funding (not expected value)
 
