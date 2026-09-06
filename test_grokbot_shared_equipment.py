@@ -228,6 +228,45 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         self.assertFalse(bad.get("ok"))
         self.assertEqual(bad.get("error"), "invalid_case")
 
+    def test_paid_case_equipment_live_e2e(self):
+        """Live echo: case_from_autopsy_offer → submit(case) → receipt bind."""
+        with GrokBotEquipmentFixture() as fx:
+            built = fx.eq.call(
+                "grokbot_case_from_autopsy_offer",
+                {
+                    "case_ref": "opaque-e2e-1",
+                    "client_reference_id": "afa29_x_a_v1",
+                },
+            )
+            self.assertTrue(built.get("ok"))
+            case = built["case"]
+            submitted = fx.eq.call(
+                "grokbot_submit",
+                {
+                    "prompt": "e2e autopsy work",
+                    "seat": "SPARK",
+                    "async": False,
+                    "case": case,
+                },
+            )
+            self.assertEqual(submitted.get("status"), "completed")
+            self.assertEqual(submitted["case"], case)
+            self.assertEqual(submitted["case"]["case_ref"], "opaque-e2e-1")
+            receipt = fx.eq.call(
+                "grokbot_receipt_row_from_case",
+                {"case": case, "submit_response": submitted},
+            )
+            self.assertTrue(receipt.get("ok"))
+            row = receipt["case_row"]
+            self.assertEqual(row["g2_run_id"], submitted["run_id"])
+            self.assertEqual(row["g2_session_id"], submitted["session_id"])
+            self.assertEqual(row["state"], "UNVERIFIED")
+            inspected = fx.eq.call(
+                "grokbot_inspect",
+                {"run_id": submitted["run_id"], "wait_ms": 1000},
+            )
+            self.assertEqual(inspected["case"]["case_ref"], case["case_ref"])
+
     def test_role_equipment_route_present(self):
         import json
 
