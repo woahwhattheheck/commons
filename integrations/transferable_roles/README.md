@@ -27,6 +27,7 @@ Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
 Autopsy fulfill SLA status: `wedge-autopsy-fulfill-sla-status-20260905-01`
 Autopsy SLA refund miss-remedy: `wedge-autopsy-sla-refund-miss-remedy-20260905-01`
+Autopsy SLA amount_usd: `wedge-autopsy-sla-amount-usd-20260905-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 Equipment fulfill SLA cards: `tenon-r4-equipment-fulfill-sla-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
@@ -181,7 +182,9 @@ landed contract `refund` miss-remedy text. CRM / Autopsy roles refuse.
 
 `autopsy-fulfill-sla` compares `--as-of` to Autopsy `delivery_due_at` →
 `sla_status` `OPEN|MISSED` + `within_one_business_day` + landed `offer.json`
-`refund` miss-remedy (after `wedge-autopsy-sla-refund-miss-remedy-20260905-01`).
+`refund` miss-remedy + `amount_usd` from `price.amount` (after
+`wedge-autopsy-sla-refund-miss-remedy-20260905-01` /
+`wedge-autopsy-sla-amount-usd-20260905-01`).
 
 `prove-handoff` runs landed role-gated executes after transfer / export→import /
 release→equip (`handoff_execute.prove_successor_executes`). Autopsy (case /
@@ -273,7 +276,7 @@ helpers do not change credential retrieval or service access.
 
 ## Access route shapes
 
-### G2 — `kind: grokbot_control` (SPARK #8761 / `5154aa8f`)
+### G2 — `kind: grokbot_control` (SPARK G2 #8761 / `5154aa8f`)
 
 Listen: `http://127.0.0.1:8881` (not grok.com `:8788`, not C1 `:8879`).
 Client: `integrations/grokbot_control/client.py` (`GrokBotControlClient`).
