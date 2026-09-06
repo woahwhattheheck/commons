@@ -1,0 +1,24 @@
+{
+  "schema_version": "commons-lm-gtm-index/v1",
+  "kind": "LM_GTM_MAILBOX_FIXTURE",
+  "subject_id": "city-of-billings-bid-1421",
+  "cash_usd": 0,
+  "mode": "HERMETIC",
+  "notes": "Outbound SENT anchors from relationship_handoff_evidence; no inbound buyer reply established.",
+  "messages": [
+    {
+      "id": "gmail:1a06e2cbaa802037",
+      "direction": "outbound",
+      "thread_id": "billings-1421-submission",
+      "ts": "2026-09-04T20:47:00Z",
+      "role": "seller"
+    },
+    {
+      "id": "gmail:1a06e2cc33f8c7aa",
+      "direction": "outbound",
+      "thread_id": "billings-1421-submission",
+      "ts": "2026-09-04T20:47:01Z",
+      "role": "seller"
+    }
+  ]
+}
