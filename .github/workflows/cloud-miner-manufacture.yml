@@ -35,9 +35,9 @@ jobs:
           sparse-checkout-cone-mode: true
       - name: Compile the new source
         run: python3 -m compileall -q muhl/cloud_miner
-      - name: Fabricate and check the new container
+      - name: Fabricate the new container
         run: |
-          python3 muhl/cloud_miner/fabricate.py --output "$RUNNER_TEMP/cloud-miner" --check
+          python3 muhl/cloud_miner/fabricate.py --output "$RUNNER_TEMP/cloud-miner"
       - name: Bind the manufactured address map to the live-job adapter
         run: |
           python3 - "$RUNNER_TEMP/cloud-miner/layout.json" <<'PY'

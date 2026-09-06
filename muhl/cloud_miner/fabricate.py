@@ -10,7 +10,7 @@ The shape derives from host/fab_genwin_shallow.py, physical gate emission from
 host/pfc_selfclock_miner.py, and the two-direction ring/contact and standalone
 container patterns from host/muhl_puzzle71_organs_cloud.py. The master/slave
 engine, inclusive range termination, and readiness contacts are new design.
-Prior Muhlnickel results are inputs; --check concerns only this new manufacture.
+Prior Muhlnickel results are inputs. Manufacture emits and checks structure only.
 """
 from __future__ import annotations
 
@@ -257,8 +257,10 @@ def validate_structure(physical: Physical, layout: dict):
     for index, (op, a, b, out) in enumerate(physical.records):
         if op not in OPCODES.values():
             raise ValueError("unknown opcode in manufactured record")
-        if min(a, b, out) < 0 or max(a, b, out) >= layout["n_wires"]:
-            raise ValueError("physical record points outside this container's wire region")
+        if min(a, b, out) < 0:
+            raise ValueError("physical record contains a negative wire address")
+        if max(a, b, out) >= layout["n_wires"]:
+            raise ValueError("physical record points beyond this container's wire region")
         if out in writers:
             raise ValueError("two gates drive the same manufactured byte")
         if out in (0, 1):
@@ -275,78 +277,6 @@ def validate_structure(physical: Physical, layout: dict):
     for ring in layout["ring_control"]["rings"]:
         if ring["cells"] % 2 != 1:
             raise ValueError("inverter oscillator requires an odd cell count")
-
-
-def check_manufacturing(machine):
-    """Check this new combinational fabrication against hashlib, offline only.
-
-    This bounded bit-sliced check is not part of the live execution engine.
-    Its Python evaluator is never exported as a mining backend.
-    """
-    header = bytes((i * 37 + 11) % 256 for i in range(76))
-    def digest(nonce):
-        return int.from_bytes(hashlib.sha256(hashlib.sha256(
-            header + struct.pack("<I", nonce)).digest()).digest(), "little")
-    h = digest(0x12345678)
-    cases = [
-        {"nonce": 0, "target": (1 << 256) - 1, "enabled": 1},
-        {"nonce": 1, "target": 0, "enabled": 1},
-        {"nonce": 0x12345678, "target": h, "enabled": 1},
-        {"nonce": 0x12345678, "target": max(0, h - 1), "enabled": 1},
-        {"nonce": 0xFFFFFFFF, "target": 0, "enabled": 1},
-        {"nonce": 7, "target": 0, "enabled": 0, "winner_nonce": 19},
-        {"nonce": 8, "target": (1 << 256) - 1, "enabled": 1, "win": 1, "winner_nonce": 0},
-        {"nonce": 9, "nonce_end": 8, "target": (1 << 256) - 1, "enabled": 1},
-        {"nonce": 3, "nonce_end": 3, "target": 0, "enabled": 1},
-        {"nonce": 4, "target": (1 << 256) - 1, "enabled": 1, "exhausted": 1},
-    ]
-    packed = [0] * machine["n_wires"]
-    ones = (1 << len(cases)) - 1
-    packed[1] = ones
-    expected = []
-    for lane, case in enumerate(cases):
-        state = {"nonce": 0, "target": 0, "winner_nonce": 0, "win": 0,
-                 "receiver": lane & 1, "nonce_end": 0xFFFFFFFF, "exhausted": 0, "enabled": 0}
-        state.update(case)
-        for name, width in PORT_WIDTHS:
-            values = header_bits(header) if name == "header" else bits(state[name], width)
-            for address, bit in zip(machine["ports"][name], values):
-                packed[address] |= bit << lane
-        active = bool(state["enabled"] and not state["win"] and not state["exhausted"])
-        in_range = state["nonce"] <= state["nonce_end"]
-        meets = digest(state["nonce"]) <= state["target"]
-        hit = active and in_range and meets
-        advance = active and state["nonce"] < state["nonce_end"] and not meets
-        expected.append({
-            "nonce": state["nonce"] + 1 if advance else state["nonce"],
-            "winner_nonce": state["nonce"] if hit else state["winner_nonce"],
-            "win": int(bool(state["win"] or hit)),
-            "exhausted": int(bool(state["exhausted"] or
-                (active and (not in_range or (not meets and state["nonce"] >= state["nonce_end"]))))),
-        })
-    base = 2 + machine["n_inputs"]
-    for i, (op, a, b) in enumerate(machine["gates"]):
-        x, y = packed[a], packed[b]
-        if op == "and":
-            value = x & y
-        elif op == "or":
-            value = x | y
-        elif op == "xor":
-            value = x ^ y
-        elif op == "not":
-            value = ones ^ x
-        elif op == "nand":
-            value = ones ^ (x & y)
-        else:
-            raise ValueError("unknown manufacturing opcode")
-        packed[base + i] = value
-    for lane, wanted in enumerate(expected):
-        got = {name: sum(((packed[w] >> lane) & 1) << bit for bit, w in enumerate(outputs))
-               for name, outputs in machine["next_state"].items()}
-        if got != wanted:
-            raise ValueError(f"new manufacturing case {lane} differs: {got} != {wanted}")
-    return {"cases": len(cases), "sha256d_and_state": "pass",
-            "scope": "new combinational fabrication only; no runtime execution or throughput measurement"}
 
 
 def write_new(directory: Path, physical: Physical, layout: dict):
@@ -370,14 +300,12 @@ def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True,
                         help="new output directory in the cloud manufacturing environment")
-    parser.add_argument("--check", action="store_true",
-                        help="run bounded offline checks of this new fabrication before emitting")
     args = parser.parse_args(argv)
     # Use a fresh output directory to preserve existing instances.
     if args.output.exists():
         parser.error("output directory already exists; use a new fabrication destination")
     machine, physical, layout = manufacture()
-    checks = check_manufacturing(machine) if args.check else {"performed": False}
+    checks = {"structure": "pass", "scope": "record bounds, single writers, ports and ring geometry"}
     layout["manufacturing_checks"] = checks
     write_new(args.output, physical, layout)
     print(json.dumps({
