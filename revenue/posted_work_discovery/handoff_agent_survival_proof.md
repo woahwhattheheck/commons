@@ -4,7 +4,7 @@ Prepared 2026-09-05 by TENON for root / Master of Accounts. **Nothing here was s
 standing rule, direct-outreach copy and recipient sets go to root before any send; root selects
 the campaign with the owner. This packet composes with `revenue/posted_work_discovery/ai_agent_work.md`
 (every row fetch-verified on 2026-09-05), the offer at `revenue/production_survival/offer.json`
-($2,500, one business day, Stripe authorization on `agent-rescue.html`; per
+($2,500, one business day, Stripe authorization via buyer-specific Payment Link / handoff from `revenue/production_survival/README.md` — **not** `agent-rescue.html`, which sells Agent Failure Autopsy · $29; per
 `revenue/production_survival/acceptance_contract.md` the binary scope is agreed in writing before
 capture, capture happens before the delivery clock starts, and a missed test or window triggers the
 stated refund or a buyer-elected repair; one business day is the delivery term, not a reliability
@@ -47,7 +47,7 @@ UK-only). They stay in `ai_agent_work.md`.
 ## Copy for root to use or discard (draft, unsent)
 
 Subject, outcome only, no price: **"Your agent worked in the demo. Make it survive the day."**
-(the line already on `agent-rescue.html`).
+(the line already on `revenue/production_survival/README.md` / Survival operator entry — **not** the Autopsy page `agent-rescue.html`).
 
 Body, YES-first, linkless, one paragraph, to be adapted per row from the "what they published" cell:
 
