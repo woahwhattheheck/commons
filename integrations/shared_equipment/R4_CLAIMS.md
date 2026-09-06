@@ -11,3 +11,4 @@
 - Equipment autopsy validate survive handoff: `rivet-r4-equipment-autopsy-validate-survive-handoff-20260905-01`
 - Equipment autopsy SLA amount_usd survive handoff: `hinge-r4-equipment-autopsy-sla-amount-usd-survive-handoff-20260905-01`
 - Equipment diag SLA diagnostic_usd survive handoff: `rivet-r4-equipment-diag-sla-diagnostic-usd-survive-handoff-20260905-01`
+- Equipment contract diagnostic_usd survive handoff: `rivet-r4-equipment-contract-diagnostic-usd-survive-handoff-20260905-01`
