@@ -8,3 +8,4 @@
 - Handoff prove release→equip: `rivet-r4-handoff-prove-release-equip-20260905-01`
 - Handoff prove diag export→import: `rivet-r4-handoff-prove-diag-export-import-20260905-01`
 - Handoff prove autopsy export matrix (missing cells): `rivet-r4-handoff-prove-autopsy-export-matrix-20260905-01`
+- Handoff prove diag contract diagnostic_usd: `rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01`

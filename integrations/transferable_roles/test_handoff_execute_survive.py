@@ -164,6 +164,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertTrue(proof["ok"])
         self.assertIn("diagnostic-contract", proof["executes"])
         self.assertEqual(proof["executes"]["diagnostic-contract"]["slug"], "dealer")
+        # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+        self.assertEqual(
+            proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+        )
         # rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01
         self.assertIn("diagnostic-receipt", proof["executes"])
         self.assertEqual(proof["executes"]["diagnostic-receipt"]["slug"], "dealer")
@@ -199,6 +203,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         )
         self.assertTrue(repair_proof["ok"])
         self.assertIn("diagnostic-contract", repair_proof["executes"])
+        # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+        self.assertEqual(
+            repair_proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+        )
         self.assertNotIn("diagnostic-receipt", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-deadline", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-sla", repair_proof["executes"])
@@ -224,6 +232,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             self.assertTrue(proof["ok"])
             self.assertEqual(proof["occupant_session"], "d-exp-B")
             self.assertIn("diagnostic-contract", proof["executes"])
+            # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+            self.assertEqual(
+                proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+            )
             self.assertIn("diagnostic-receipt", proof["executes"])
             self.assertIn("diagnostic-fulfill-deadline", proof["executes"])
             self.assertIn("diagnostic-fulfill-sla", proof["executes"])
@@ -246,6 +258,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertTrue(proof["ok"])
         self.assertEqual(proof["occupant_session"], "d-rel-B")
         self.assertIn("diagnostic-contract", proof["executes"])
+        # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+        self.assertEqual(
+            proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+        )
         self.assertIn("diagnostic-receipt", proof["executes"])
         self.assertIn("diagnostic-fulfill-deadline", proof["executes"])
         self.assertIn("diagnostic-fulfill-sla", proof["executes"])
