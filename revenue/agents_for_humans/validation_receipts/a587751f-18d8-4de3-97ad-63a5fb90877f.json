@@ -1,0 +1,67 @@
+{
+  "schema_version": "agents-for-humans-run/v1",
+  "run_id": "a587751f-18d8-4de3-97ad-63a5fb90877f",
+  "started_at": "2026-09-06T00:03:15.762212+00:00",
+  "source_version": "c43450c9ad084f8e851e2a2c40c0caae19ddf561dff79e4e6aad3cfd4c5ecbf4",
+  "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+  "status": "FAILED_CLOSED",
+  "phases": [
+    {
+      "role": "drafter",
+      "agent_id": "autopsy-drafter-d22f68b63e6a481f81766914936cf059",
+      "input_sha256": "77f71dfd2bd740d9f6a5bf7574bcbe1eae76fc24196ddd2acf6360cbda048cb5",
+      "model_config": {
+        "model_id": "gemini-pro-agent",
+        "max_tokens": 16384
+      },
+      "started_at": "2026-09-06T00:03:15.786801+00:00",
+      "status": "FAILED",
+      "completed_at": "2026-09-06T00:14:18.904182+00:00",
+      "wall_seconds": 663.119829
+    }
+  ],
+  "rounds": [
+    {
+      "round_index": 0,
+      "candidate": null,
+      "draft_report": null,
+      "candidate_sha256": null,
+      "review": null,
+      "status": "FAILED_CLOSED"
+    }
+  ],
+  "intake": null,
+  "candidate": null,
+  "draft_report": null,
+  "review": null,
+  "report": null,
+  "claims": {
+    "buyer_delivery": false,
+    "payment": false,
+    "revenue": false,
+    "fix_executed": false,
+    "replay_executed": false
+  },
+  "case_id": "synthetic-generated-settings-001",
+  "evidence_sha256": "c99105234fb649342b1e0f7eeb029a9ed432f5ca52f6a077a784ac095b062818",
+  "error": {
+    "type": "RuntimeError",
+    "message": "Existing model provider request failed; see sanitized request receipt"
+  },
+  "completed_at": "2026-09-06T00:14:18.908618+00:00",
+  "provider_requests": [
+    {
+      "request_id": "f3251f1c-fe5a-44bd-ba17-2e0ba50728e1",
+      "started_at": "2026-09-06T00:03:15.791149+00:00",
+      "provider": "COMMONS_GEMINI_CODE_ASSIST",
+      "model_id": "gemini-pro-agent",
+      "session_id": "44c3f137-9139-4a04-84b9-72cd03db8c21",
+      "status": "FAILED",
+      "token_usage": null,
+      "token_usage_note": "The existing relay return type does not expose provider usage.",
+      "error_type": "TimeoutError",
+      "completed_at": "2026-09-06T00:14:18.869032+00:00",
+      "wall_seconds": 663.079792
+    }
+  ]
+}
