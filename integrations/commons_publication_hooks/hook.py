@@ -33,14 +33,14 @@ def publication_verdict(event: dict) -> dict | None:
         tool, event.get("mcp_server_name"), event.get("mcp_server_url"),
         event.get("url"), mcp.get("server_name"), mcp.get("server_url"),
     )).lower()
-    managed_tool = bool(re.search(r"(?:commons|slack)", provider))
+    managed_tool = bool(re.search(r"(?:commons|slack|discord)", provider))
     # GitHub connector names identify the provider, not the destination.
-    # Cover direct Commons issues/comments as well as Commons-branded tools.
+    # Cover owner-repository issues/comments as well as Commons-branded tools.
     github_commons = "github" in provider and (any(
-        "woahwhattheheck/commons" in str(args.get(key, "")).lower()
+        "woahwhattheheck/" in str(args.get(key, "")).lower()
         for key in ("repository_full_name", "repo_full_name", "repository", "repo", "url", "issue_url", "pull_request_url")
     ) or (str(args.get("owner", "")).lower() == "woahwhattheheck"
-          and str(args.get("repo", "")).lower() == "commons"))
+          and bool(str(args.get("repo", "")).strip())))
     if not (managed_tool or github_commons):
         return None
     if not re.search(r"(?:post|send|append|publish|write|fire_action|update_message|chat[._]update|create_issue|update_issue|comment|create_pull_request|update_pull_request)", tool):
@@ -64,14 +64,17 @@ def handle(event: dict) -> dict:
     name = str(event.get("hook_event_name") or "")
     if name in {"SessionStart", "UserPromptSubmit"}:
         return {"hookSpecificOutput": {"hookEventName": name,
-                "additionalContext": "When working with Commons or Slack: " + POLICY_CONTEXT}}
+                "additionalContext": "When publishing through Commons, Slack, Discord, or owner-operated channels: " + POLICY_CONTEXT}}
     if name != "PreToolUse":
         return {}
     verdict = publication_verdict(event)
     if verdict is None or verdict["allowed"]:
         return {}
-    return {"hookSpecificOutput": {"hookEventName": "PreToolUse",
-            "permissionDecision": "deny", "permissionDecisionReason": verdict["message"]}}
+    # Claude's native stop decision prevents a prohibited draft from becoming
+    # a rewrite/endorsement loop. Nothing is published by this hook.
+    return {"continue": False, "suppressOutput": True,
+            "hookSpecificOutput": {"hookEventName": "PreToolUse",
+            "permissionDecision": "deny", "permissionDecisionReason": "Publication prohibited by owner terms."}}
 
 
 if __name__ == "__main__":

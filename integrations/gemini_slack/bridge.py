@@ -359,6 +359,16 @@ class GeminiSlackBridge:
             "what you infer. No GPT or Claude relay is involved.\n\nSlack message:\n" + message
         )
 
+    def _publication_rejected(self, event_id: str) -> None:
+        self.store.finish(event_id, "failed")
+        print(json.dumps({
+            "event_id": event_id,
+            "ok": False,
+            "state": "PUBLICATION_REJECTED",
+            "code": "commons_publication_terms",
+            "delivered": False,
+        }, sort_keys=True), file=sys.stderr)
+
     def handle_event(self, event_id: str, event: dict[str, Any]) -> bool:
         if event.get("bot_id") or event.get("subtype"):
             return False
@@ -376,8 +386,7 @@ class GeminiSlackBridge:
         try:
             request_id = self.gateway.submit(peer, self._prompt(message))
         except PublicationPolicyViolation:
-            self.store.finish(event_id, "failed")
-            print("gemini-slack: incoming publication policy rejection", file=sys.stderr)
+            self._publication_rejected(event_id)
             return True
         except Exception as exc:
             self.store.finish(event_id, "failed")
@@ -388,8 +397,7 @@ class GeminiSlackBridge:
         try:
             self._attempt_delivery(delivery, wait=True)
         except PublicationPolicyViolation:
-            self.store.finish(event_id, "failed")
-            print("gemini-slack: outgoing publication policy rejection", file=sys.stderr)
+            self._publication_rejected(event_id)
         except TerminalGatewayError as exc:
             self._notify_terminal_error(delivery, exc)
         except Exception:
@@ -409,9 +417,8 @@ class GeminiSlackBridge:
                 f"Gemini error: {error}",
             )
         except PublicationPolicyViolation:
-            self.store.finish(delivery.event_id, "failed")
-            print("gemini-slack: outgoing publication policy rejection", file=sys.stderr)
-            return True
+            self._publication_rejected(delivery.event_id)
+            return False
         except Exception:
             # Retain the original request ID and pending delivery. Recovery
             # retries only the notification from the existing gateway journal.
@@ -466,9 +473,8 @@ class GeminiSlackBridge:
             try:
                 delivered = self._attempt_delivery(delivery, wait=False)
             except PublicationPolicyViolation:
-                self.store.finish(delivery.event_id, "failed")
-                print("gemini-slack: outgoing publication policy rejection", file=sys.stderr)
-                delivered = True
+                self._publication_rejected(delivery.event_id)
+                delivered = False
             except TerminalGatewayError as exc:
                 delivered = self._notify_terminal_error(delivery, exc)
             except Exception:
