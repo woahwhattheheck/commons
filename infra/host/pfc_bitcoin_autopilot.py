@@ -118,8 +118,8 @@ def cycle(reg):
 
     res = (verdict or {}).get("result"); err = (verdict or {}).get("error")
     zb = 256 - target.bit_length() if job else 0
-    pool = ("ACCEPTED — BLOCK" if res is True else
-            ("above-target/live (%s)" % (err[1] if isinstance(err, list) and len(err) > 1 else err) if res is False else
+    pool = ("ACCEPTED — SHARE" if res is True else
+            ("REJECTED (%s)" % (err[1] if isinstance(err, list) and len(err) > 1 else err) if res is False else
              "no-reply"))
     print(f"  [autopilot] NEW block {job['job_id']} target {zb} zbits -> stored into input window, one signal fired; "
           f"answer read from external file [status={status} en2={en2v} nonce={nonce}] -> submitted; pool: {pool}", flush=True)
