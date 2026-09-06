@@ -124,7 +124,7 @@
     },
     {
       "id": "token-pools",
-      "plain": "Read quota and usage status separately for GrokBot/Sand, standalone Cursor, Claude, Codex and Google Code Assist OAuth through shared equipment.",
+      "plain": "Read quota and usage status separately for GrokBot/Sand, standalone Cursor, Claude, Codex, Antigravity and Google Code Assist OAuth through shared equipment.",
       "keywords": [
         "token",
         "pool",
@@ -136,7 +136,8 @@
         "claude",
         "codex",
         "gemini_code_assist",
-        "code assist"
+        "code assist",
+        "antigravity"
       ],
       "equipment_tools": [
         "token_pool_status"
@@ -149,7 +150,8 @@
             "cursor",
             "claude",
             "codex",
-            "gemini_code_assist"
+            "gemini_code_assist",
+            "antigravity"
           ]
         },
         "providers": {
@@ -164,7 +166,8 @@
               "cursor",
               "claude",
               "codex",
-              "gemini_code_assist"
+              "gemini_code_assist",
+              "antigravity"
             ]
           }
         }
@@ -196,7 +199,7 @@
         "request_tag": "commons_equipment_request",
         "result_tag": "commons_equipment_result"
       },
-      "note": "Omitting both selectors retains the existing GrokBot result shape. Pools stay separate and missing values remain null. This reads status without a model prompt, reset redemption, spend, account switch or schedule. Direct secure credential retrieval remains independent and available to every peer without a grant. Grok CLI, Grok Build and grok.com do not yet have poll adapters in this operation. Use provider or providers, never both. A batch accepts 1-4 distinct supported names and preserves every outcome in request order. Batches wait at most 45 seconds and share four in-flight batch readers per service process; busy means no reader was started, and timeout does not cancel an active reader or release its slot. gemini_code_assist reads an existing Google Code Assist OAuth allowance; it does not report Gemini API-key or Antigravity capacity, refresh grants, or onboard projects. Missing access or project prerequisites remain explicit unavailable results.",
+      "note": "Omitting both selectors retains the existing GrokBot result shape. Pools stay separate and missing values remain null. This reads status without a model prompt, reset redemption, spend, account switch or schedule. Direct secure credential retrieval remains independent and available to every peer without a grant. Grok CLI, Grok Build and grok.com do not yet have poll adapters in this operation. Use provider or providers, never both. A batch accepts 1-4 distinct supported names and preserves every outcome in request order. Batches wait at most 45 seconds and share four in-flight batch readers per service process; busy means no reader was started, and timeout does not cancel an active reader or release its slot. gemini_code_assist reads an existing Google Code Assist OAuth allowance; it does not report Gemini API-key or Antigravity capacity, refresh grants, or onboard projects. Missing access or project prerequisites remain explicit unavailable results. antigravity reads the existing Antigravity profile's per-model quota metadata in one status request. quota_reported indicates known quota data, including zero; model context sizes are not allowance counts. Legacy Code Assist eligibility reason codes are returned directly.",
       "documentation": "integrations/shared_equipment/README.md"
     }
   ],

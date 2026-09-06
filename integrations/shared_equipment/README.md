@@ -219,6 +219,14 @@ queued at the deadline are retained. This bounds batch waiting and reader
 concurrency; the adapters' existing transport timeouts remain unchanged, and
 direct single-provider calls retain their existing behavior.
 
+For the existing Antigravity connection, use `{"provider":"antigravity"}` or
+include `antigravity` in a batch. One `fetchAvailableModels` request returns
+per-model quota fractions and reset times through the existing `gemini/profile`
+credential road. `quota_reported` means the response supplied at least one
+valid quota fraction; a reported zero remains zero. Model context limits are
+not allowance counts. Missing quota fields and unknown units stay null, and
+per-model fractions are not summed into a shared token total.
+
 For the separate Google Code Assist OAuth allowance, use
 `{"provider":"gemini_code_assist"}` or include that name in a batch of up to four
 providers. This is distinct from Gemini API-key usage and Antigravity. The
@@ -227,6 +235,9 @@ Code Assist project with `loadCodeAssist`, and reads its quota with
 `retrieveUserQuota`. It never initializes the SDK, onboards an account, creates
 a project, changes authentication, or refreshes a grant. Missing or expired
 grants and missing existing projects produce explicit unavailable results.
+Provider eligibility codes are retained, including `UNSUPPORTED_CLIENT` as
+`provider_client_unsupported`. That code means this client cannot serve the
+account; polling does not change its identity or attempt onboarding.
 
 Every returned bucket remains a separate pool. `remaining_percent` and
 `usage_percent` derive from the provider fraction; `remaining_amount` keeps the
