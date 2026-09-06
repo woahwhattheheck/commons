@@ -32,6 +32,10 @@ class CoilToolsJsonLiveCashTest(unittest.TestCase):
         hrefs = [d.get("href") for d in doors]
         for href in REQUIRED_HREFS:
             self.assertIn(href, hrefs, f"missing {href}")
+        offer_path = ROOT / "revenue" / "agent_failure_autopsy" / "offer.json"
+        offer = json.loads(offer_path.read_text(encoding="utf-8"))
+        autopsy = next(d for d in doors if d["href"] == "./agent-rescue.html")
+        self.assertEqual(autopsy["sku"], offer["offer_id"])
         labels = " ".join(str(d.get("label") or "") for d in doors)
         self.assertIn("$29 Autopsy", labels)
         self.assertIn("$199 dealer diagnostic", labels)
