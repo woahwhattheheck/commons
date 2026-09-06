@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.target_ref }}
-          fetch-depth: 100
+          fetch-depth: 0
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -59,6 +59,398 @@ jobs:
               assert actual == sha, (path, actual, sha)
               print('READBACK', path, actual)
           assert not subprocess.check_output(['git', 'status', '--porcelain'], text=True).strip()
+          PY
+      - name: Verify the repaired Slack chunk reference
+        if: inputs.expected_commit != ''
+        run: |
+          python3 test_commons_slack_full_body_chunk.py
+          git merge-base --is-ancestor c4fddcf3c25ba81b70ee63b05f5d2655e6e7dd0f origin/main
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          path = 'ground/COMMONS_SLACK_FULL_BODY_CHUNK.json'
+          landed = 'c4fddcf3c25ba81b70ee63b05f5d2655e6e7dd0f'
+          actual = subprocess.check_output(['git', 'rev-parse', landed + ':' + path], text=True).strip()
+          assert actual == 'fc09f874c9cb277412f29c77156edbc664e7561e', actual
+          catalog = json.loads(Path(path).read_text())
+          test_blob = subprocess.check_output(['git', 'rev-parse', 'HEAD:test_commons_slack_full_body.py'], text=True).strip()
+          assert catalog['keep_unread']['test_commons_slack_full_body.py'] == test_blob[:8]
+          packet = {'outcome': 'fixed', 'observed_broken': True, 'expected_contract': 'The Slack chunk catalog points at the composed full-body test revision without changing its behavioral coverage.', 'changed_paths': [path], 'tests': ['All6 standalone Slack chunk cases passed in this actual cloud run.', 'Catalog pin matches the actual full-body test Git blob, original repair blob and landed ancestry verified.'], 'main_sha': landed, 'readback_verified': True, 'report_only_sessions': 0, 'unconsumed_findings': 0}
+          subprocess.run(['python3', 'fix_first.py', '--json', json.dumps(packet)], check=True)
+          print('SLACK_CATALOG_COMPOSITION_PASS', actual, test_blob)
+          PY
+      - name: Verify the existing marker deployment test contract
+        if: inputs.expected_commit != ''
+        run: |
+          python3 -m unittest -v test_webmcp_pad_production.WebmcpPadProductionWorkflowTests.test_marker_push_and_dispatch_never_target_commons_mcp
+          git merge-base --is-ancestor 92ee798acf0aaebdc2d328884cb4a58341ac4879 origin/main
+          python3 - <<'PY'
+          import json, subprocess
+          path = 'test_webmcp_pad_production.py'
+          landed = '92ee798acf0aaebdc2d328884cb4a58341ac4879'
+          blob = subprocess.check_output(['git', 'rev-parse', landed + ':' + path], text=True).strip()
+          assert blob == 'd72645822e37a6b15ffa41ed14a39be570cba658', blob
+          packet = {'outcome': 'fixed', 'observed_broken': True, 'expected_contract': 'The production workflow test recognizes the existing owner-authorized marker-only push and explicit dispatch, preserving no-PR and project-target safeguards.', 'changed_paths': [path], 'tests': ['The changed current-main WebMCP deployment test passed in this actual run.', 'Original landed test blob and main ancestry verified.'], 'main_sha': landed, 'readback_verified': True, 'report_only_sessions': 0, 'unconsumed_findings': 0}
+          subprocess.run(['python3', 'fix_first.py', '--json', json.dumps(packet)], check=True)
+          print('WEBMCP_MARKER_CONTRACT_PASS', blob)
+          PY
+      - name: Read back landed CRM6 semantics and run the remaining small and registry cases
+        if: inputs.expected_commit != ''
+        run: |
+          set -euo pipefail
+          # The 67-case CRM6 run34002209092 and tracker run34002697528 already passed.
+          # Preserve current peer additions; this step does not rerun those suites.
+          for ref in 305b07297f5e75a946fe5aab14ad1d87cce5ffea 1667d0adb97ba691a5cfafb5bd144174fb0a18c0 2b7794d2eb5134007d3ea4ba935ab11e7f4f80b0; do
+            git cat-file -e "$ref^{commit}" 2>/dev/null || git fetch --no-tags --depth=1 origin "$ref"
+          done
+          python3 test_coil_tools_json_live_cash.py
+          python3 -c 'import runpy; runpy.run_path("test_digit_mcp_tool_drift_eyebrow.py")["test_eyebrow_not_survival_sell"](); print("PASS drift eyebrow assertion")'
+          python3 -m unittest -v tests/test_ledger_crm6_landed_registry_pins.py
+          python3 - <<'PY'
+          import ast, json, re, subprocess
+          from pathlib import Path
+
+          SOURCE = "305b07297f5e75a946fe5aab14ad1d87cce5ffea"
+          LANDED = "49dd90b1ac4fa162ce0bf6474069d986415cd0c8"
+          DOCUMENTED = "1667d0adb97ba691a5cfafb5bd144174fb0a18c0"
+          PROJECTED = "2b7794d2eb5134007d3ea4ba935ab11e7f4f80b0"
+          FEATURE = "ledger-crm6-composed-at-freshness-gate-20260905-01"
+          main_sha = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          def git(*args):
+              return subprocess.check_output(["git", *args], text=True).strip()
+          def source(ref, path):
+              return subprocess.check_output(["git", "show", ref + ":" + path], text=True)
+          def dump(node):
+              return ast.dump(node, include_attributes=False)
+
+          unchanged = {
+              "host/lm_gtm_index.py": "fb30cf7195901c730598b90a6a834673cee17746",
+              "tests/test_ledger_crm6_composed_at_freshness_gate.py": "525054a481495b12a6e0e1d9a11237101ed3cc3e",
+              "p/ledger-crm6-composed-at-freshness-gate-20260905-01.md": "5386c0c7ca0f9671e97b15479b29867a550d63ff",
+              "features/registry/ledger-crm6-composed-at-freshness-gate-20260905-01.json": "a43bf77c193fc5b20b4481dabf867a957761fbf0",
+          }
+          for path, expected in unchanged.items():
+              assert git("rev-parse", SOURCE + ":" + path) == expected, path
+              actual = git("rev-parse", "HEAD:" + path)
+              assert actual == expected, (path, actual)
+              print("CRM6_EXACT_READBACK", path, actual)
+
+          # The shared state contract now also documents the later mailbox feature.
+          # CRM6 owns this freshness command; unrelated state and contract additions remain live.
+          state_path = "revenue/lm_gtm_index/state.json"
+          assert git("rev-parse", SOURCE + ":" + state_path) == "911b5045e552234ae4bba38ced28daafae65d741"
+          original_state = json.loads(source(SOURCE, state_path))
+          current_state = json.loads(Path(state_path).read_text())
+          assert current_state["contract"]["check_freshness"] == original_state["contract"]["check_freshness"]
+          print("CRM6_FRESHNESS_STATE_CONTRACT_PRESERVED", git("rev-parse", "HEAD:" + state_path))
+
+          # The later mailbox feature is additive in the shared handoff module.
+          # Compare the owned freshness blocks, keyword defaults and CLI wiring.
+          def freshness_nodes(text):
+              functions = {n.name:n for n in ast.parse(text).body if isinstance(n, ast.FunctionDef)}
+              result = {}
+              handoff = functions["relationship_handoff"]
+              defaults = dict(zip((a.arg for a in handoff.args.kwonlyargs), handoff.args.kw_defaults))
+              for name in ("include_index_freshness", "as_of"):
+                  result["default:" + name] = dump(defaults[name])
+              branches = [n for n in handoff.body if isinstance(n, ast.If)
+                          and isinstance(n.test, ast.Name) and n.test.id == "include_index_freshness"]
+              assert len(branches) == 1
+              result["handoff"] = dump(branches[0])
+              brief = functions["successor_brief"]
+              assignments = [n for n in brief.body if isinstance(n, ast.Assign)
+                             and any(isinstance(t, ast.Name) and t.id == "freshness" for t in n.targets)]
+              branches = [n for n in brief.body if isinstance(n, ast.If)
+                          and any(isinstance(t, ast.Name) and t.id == "freshness" for t in ast.walk(n.test))]
+              assert len(assignments) == len(branches) == 1
+              result["brief_assignment"], result["brief_branch"] = dump(assignments[0]), dump(branches[0])
+              for flag in ("--index-freshness", "--as-of"):
+                  calls = [n for n in ast.walk(functions["build_parser"]) if isinstance(n, ast.Call)
+                           and isinstance(n.func, ast.Attribute) and n.func.attr == "add_argument"
+                           and n.args and isinstance(n.args[0], ast.Constant) and n.args[0].value == flag]
+                  assert len(calls) == 1
+                  result["flag:" + flag] = dump(calls[0])
+              calls = [n for n in ast.walk(functions["main"]) if isinstance(n, ast.Call)
+                       and isinstance(n.func, ast.Name) and n.func.id == "relationship_handoff"]
+              assert len(calls) == 1
+              for name in ("include_index_freshness", "as_of"):
+                  keywords = [k for k in calls[0].keywords if k.arg == name]
+                  assert len(keywords) == 1
+                  result["call:" + name] = dump(keywords[0])
+              return result
+          handoff_path = "host/lm_gtm_relationship_handoff.py"
+          assert freshness_nodes(source(SOURCE, handoff_path)) == freshness_nodes(Path(handoff_path).read_text())
+          print("CRM6_FRESHNESS_AST_PRESERVED", git("rev-parse", "HEAD:" + handoff_path),
+                "peer mailbox additions retained; original whole-module run remains historical")
+
+          readme_path = "revenue/lm_gtm_index/README.md"
+          def section(text):
+              matches = re.findall(r"(?ms)^## Saved INDEX freshness\n(.*?)(?=^## |\Z)", text)
+              assert len(matches) == 1
+              return matches[0].strip()
+          assert section(source(DOCUMENTED, readme_path)) == section(Path(readme_path).read_text())
+          print("CRM6_DOCUMENTED_SECTION_PRESERVED", git("rev-parse", "HEAD:" + readme_path))
+
+          old_tracker = json.loads(source(PROJECTED, "feature-tracker.json"))
+          tracker = json.loads(Path("feature-tracker.json").read_text())
+          old_rows = {row["id"]:row for row in old_tracker["features"]}
+          rows = {row["id"]:row for row in tracker["features"]}
+          assert old_rows.keys() <= rows.keys(), sorted(old_rows.keys() - rows.keys())
+          assert old_rows[FEATURE] == rows[FEATURE]
+          def html_row(text):
+              matches = [row for row in re.findall(r"<tr\b[^>]*>.*?</tr>", text, re.S) if FEATURE in row]
+              assert len(matches) == 1
+              return matches[0]
+          assert html_row(source(PROJECTED, "feature-tracker.html")) == html_row(Path("feature-tracker.html").read_text())
+          print("CRM6_PROJECTION_PRESERVED", json.dumps({
+              "previous_rows":len(old_rows), "current_rows":len(rows),
+              "old_ids_preserved":True, "owned_row_preserved":True,
+              "json_blob":git("rev-parse","HEAD:feature-tracker.json"),
+              "html_blob":git("rev-parse","HEAD:feature-tracker.html")}))
+
+          for path in ["tools.json", "test_coil_tools_json_live_cash.py",
+                       "revenue/agent_failure_autopsy/offer.json",
+                       "test_digit_mcp_tool_drift_eyebrow.py", "mcp-tool-drift.html"]:
+              print("CRM6_NEW_CASE_READBACK", path, git("rev-parse", "HEAD:" + path))
+          for landed in (LANDED, DOCUMENTED, PROJECTED,
+                         "ee14634ab1ed99d6002d8455f11b0dcb663f4c85",
+                         "55ad22389764383c71f4659dbb700c7092b2fa7b"):
+              subprocess.run(["git", "merge-base", "--is-ancestor", landed, "HEAD"], check=True)
+          assert not git("status", "--porcelain=v1", "--untracked-files=all")
+
+          packets = [
+              {
+                  "outcome":"fixed", "observed_broken":True,
+                  "expected_contract":"Published CRM6 freshness implementation did not execute; existing twelve-hour warning needs an executable source-age report.",
+                  "changed_paths":list(unchanged) + [state_path, handoff_path, readme_path, "feature-tracker.json", "feature-tracker.html"],
+                  "tests":["Actions34002209092 passed67 focused CRM6 cases and committed INDEX validation.",
+                           "Actions34002697528 regenerated112 tracker rows, preserved111 IDs and passed standalone test_feature_tracker.py.",
+                           "This audit: exact owned source and unchanged freshness AST/documented section/tracker row readback; current peer additions preserved."],
+                  "main_sha":main_sha, "readback_verified":True
+              },
+              {
+                  "outcome":"fixed", "observed_broken":True,
+                  "expected_contract":"The shared equipment exact catalog test must include newly exposed Autopsy and cash queue tools while retaining every existing tool; cash capability metadata is not proof of payment",
+                  "changed_paths":["test_grokbot_shared_equipment.py","integrations/shared_equipment/diagnostic_equipment_cards.py","integrations/shared_equipment/test_diagnostic_equipment_cards.py"],
+                  "tests":["34002436192: 10 focused tests, 14 exact current-main blobs and clean terminal audit PASS"],
+                  "main_sha":"ba951183a6d6bad7f10de4be2b17fcb0eb8d15b6", "readback_verified":True
+              },
+              {
+                  "outcome":"fixed", "observed_broken":True,
+                  "expected_contract":"Autopsy catalog sku matches canonical offer_id; root-level drift test reads repository HTML",
+                  "changed_paths":["tools.json","test_coil_tools_json_live_cash.py","test_digit_mcp_tool_drift_eyebrow.py"],
+                  "tests":["Current audit: cash unittest and explicitly invoked drift eyebrow function PASS"],
+                  "main_sha":main_sha, "readback_verified":True
+              }
+          ]
+          for packet in packets:
+              subprocess.run(["python3", "fix_first.py", "--json", json.dumps(packet)], check=True)
+          print("CRM6_CONSOLIDATED_AUDIT_PASS", json.dumps({
+              "main_sha":main_sha, "landed_sha":LANDED, "cached_67_case_run":34002209092,
+              "new_small_cases":2, "new_registry_cases":3,
+              "fix_first_packets":3, "runtime_suite_repeated":False}))
+          PY
+      - name: Reuse the passed opportunity bake and verify landed receipts
+        if: inputs.expected_commit != ''
+        run: |
+          python3 - <<'PY'
+          import json, subprocess
+          landed = 'a401fbca318c8c27209513ef2c063d4212c97ae4'
+          tested = '3dd84e574e0a5919284ff92316c08ead47e91a75'
+          expected = {"host/opportunity_registry.py":"61c10232b61568c910e1fe083182bb76aee4320b","opportunity.html":"e7ddca7968e943925b912ea1d4a186080c9fa060","revenue/ip/opportunity_registry.json":"3b1886684921432698a4f8c8c13389786ddcd485","revenue/ip/packets/packet-commons-public-license-unknown.md":"7462594c05d99d5de1054f625c271d966d6a2b19","revenue/ip/packets/packet-nlnet-codesupply-ois-2026.md":"e87370cf079918dceb5953a0975da98340b0e861","revenue/ip/packets/packet-nlnet-restack-ois-2026.md":"19ae1e428a076a8425ff2d4b6b4a8342dc59e17d","revenue/ip/packets/packet-nsf-pesose-26-506.md":"3d30c319fb0b6446295571151f927822b5ee2053","revenue/ip/packets/packet-nsf-sbir-sttr-26-510.md":"073fc039da810adef396cf05e4b1fc1ab83fe441","revenue/ip/packets/packet-procurement-gsa-schedule.md":"85fec1ff2560a1e062cad19f822a5f965e6b7d55","revenue/ip/packets/packet-procurement-public-rfp-pack.md":"ead9acf6979964c8c963ef8f1cf70fd12bc41351","revenue/ip/packets/packet-procurement-sam-gov-procurement.md":"d0e5c170ee7a1747e3bb711ccfa93c1895cda750","revenue/ip/packets/packet-research-bitsandbytes-foundation.md":"93dc4f6d7eb2871895600cafe6b4693f57675536","revenue/ip/packets/packet-research-eleutherai-lm-eval-harness.md":"4f3cc2525ce45d2f23ed605ae4d18e4e787ca0bd","revenue/ip/packets/packet-research-ggml-llama-cpp.md":"123ca43d0c3353495d01f07b56efd6f25f1d60ad","revenue/ip/packets/packet-research-hugging-face-hub.md":"0a9a23c8aca589a70fecbe12e9dd9474931cb847","revenue/ip/packets/packet-research-mlcommons-inference.md":"f59c7d56815c30e8d6266fbbafb8b2e5e2e6d151","revenue/ip/packets/packet-research-nvidia-tensorrt-llm.md":"96470409457e97aef5335825fa5a5340a18783ef","revenue/ip/packets/packet-sovereign-tech-fund-rolling.md":"ed722565cac1e832cf3460edafd6d5bf915fa2aa","revenue/ip/packets/packet-titan-hands-activation-hour.md":"6a267145616125ffa707ca0f959c81d3892f6841","revenue/ip/packets/packet-whitebox-advisory-hour.md":"0f56b0eea27eb1009859eaca45e195f4fe4ec1fc","revenue/ip/packets/packet-whitebox-archive-license.md":"e07dbd8af81dbb1effe57c30f6118ef26f0c174c","revenue/ip/packets/packet-whitebox-joint-paper-reproduction.md":"a5c62ee769e432f7c0771912249d1e6665dd3c86","revenue/ip/packets/packet-whitebox-private-evaluation.md":"6ebb77aa9f96a225b228de4c4590704b1197344a","revenue/ip/packets/packet-whitebox-sponsored-benchmark.md":"74575a101fa27ac1114a48e6134abb7b5691c7d0","test_opportunity_registry.py":"fa655605a05da110ff5d25b2755f9e33fa02df91","proof-to-proposal.html":"86aa5da9ea52c092a84e692a141e236bb619f02d"}
+          inputs = {"carrier.js":"d705dffc848e1b4dfc8fb8a3ce6b0647802f8553","distribution.html":"92d8a7cce05734326a4dd3a175ffcb641c1e43d9","docs/TITAN_HANDS.md":"f0cea0dd009bbc63fb6f93e142a2494428fbff11","evidence/README.md":"bbdf2fdd9a971ce5d84b556f784e4249b150e698","excerpts/20260828/ringdelta_xor8.mno":"d1ba9f0321797eafb963bab6e7a806f35e9b398d","features/registry/feature-tracker-20260828-01.json":"04adae2ff83c48422272581f7eb2c85801440e78","ground/03_EVIDENCE_ANNEX.md":"881315c45212c41bd74892b075af24b97fa4d7de","ground/DISTRIBUTION.md":"d67e594295248744eb87d7535ceacb3131522418","ground/FEATURES.md":"b41e7fc5e2d2abff32caa1f340f464dd4cc6b2c8","ground/FEATURE_TRACKER.md":"0076d16807ae1d2f315cc83da6a83432ba67ffdb","ground/RESOURCE_LEDGER.json":"76ab92547c9111cd5524350a2215202c7524edf5","ground/RINGDELTA.json":"799dd3ef5ef19e8b6112a707bf68dc712390e6d0","ground/RINGDELTA.md":"cb1cd479634596aee893302a67f6e14788a6ab94","ground/SWARM.md":"d70f02e238066facc3677fada5caa43126369cdc","ground/TRUST.md":"182ac8aeb75156985f9073e9ec342b590543ebcc","host/distribution.py":"cf93d28991340fb9efa00a37a899627c50d7f9fb","host/feature_tracker.py":"d5b29a776b8934348c89aeeb829db518b2af4a86","host/opportunity_registry.py":"61c10232b61568c910e1fe083182bb76aee4320b","host/resource_ledger.py":"db37296595ac702a0ae7605cca2399f1423b3904","host/ringdelta.py":"3a39aaea8e355b3083a07930b2926539e4d02b8d","host/titan_hands/linux_atspi.py":"ad32dc3cd9ee6c220a145e792db66052be2ab9be","host/titan_hands/one_tool.py":"c4461c16899eeb037b0e27799c398be04597693e","host/trust_cache.py":"b57ef2a5c1e045fcb360098ec8e0f35eb3cf047b","p/bernays-production-survival-operating-system-20260826-01.md":"932df06f38bb0e72bb17313de41340ace754fa79","p/coil-titan-hands-linux-atspi-land-20260827-01.md":"f3cd288a09c0d46ac7b622dcf17eb127b79464e5","p/emissary-titan-hands-features-20260826-01.md":"25abe9abfae9b8b28c08e1e570493220afecf701","p/grok-distribution-layer-20260828-01.md":"fedf2c16085be01a6e5be47c4ed72be7669a58b1","resources.html":"c396e44c2e342c9e1f7453490183af9e4825e2e0","revenue/distribution/channels.json":"c0254ba55f316f9d6619471d14c1dc8c4024947a","revenue/ip/collaboration_targets.json":"830baa1ca1f1566292611421825623fa12320c33","revenue/ip/grants_ledger.json":"2ec1c948a18ab787b6ae635ce34eb51357df4c64","revenue/ip/opportunity_seed.json":"887f36c3df917b79266b2cee81bda141f1f65c0b","revenue/ip/whitebox_collaboration_offers.json":"2beb6bf61d8fb04dc6fb0d74094717db488789b3","revenue/listing_registry/registry.json":"1ba273bbc57fcabf696bc439ff464ab0064e897f","ringdelta.html":"b6da96877b7ccd6142943a57e5699185156c12b9","swarm-mail.html":"e8cdfd84fbea36dc709e5dc5249e66a27c497097","test_feature_tracker.py":"7ee1b9898cdd77fbaa10ed044819e91f6c30132e","test_opportunity_registry.py":"fa655605a05da110ff5d25b2755f9e33fa02df91","titan-hands.html":"36dec29b989c07d4f6a3198dee7ad345d624c227","titan-hour.html":"64e8939d49c512247bb3810e28322a9632ed6661","trust.html":"f1c1853c54b4d9c8142256c414f8e4ad0b30f025"}
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+          for commit in (tested, landed):
+              subprocess.run(['git', 'merge-base', '--is-ancestor', commit, 'origin/main'], check=True)
+          for path, blob in expected.items():
+              assert git('rev-parse', landed + ':' + path) == blob, ('landed_blob', path)
+              assert git('rev-parse', 'HEAD:' + path) == blob, ('current_blob_changed', path)
+          for path, blob in inputs.items():
+              assert git('rev-parse', 'HEAD:' + path) == blob, ('tested_input_changed', path)
+          packet = {
+              'outcome': 'fixed', 'observed_broken': True,
+              'expected_contract': 'Opportunity compilation refreshes actual cited source hashes and sizes while retaining the existing published live-cash sections and packet content.',
+              'changed_paths': ["host/opportunity_registry.py","opportunity.html","revenue/ip/opportunity_registry.json","revenue/ip/packets/packet-commons-public-license-unknown.md","revenue/ip/packets/packet-nlnet-codesupply-ois-2026.md","revenue/ip/packets/packet-nlnet-restack-ois-2026.md","revenue/ip/packets/packet-nsf-pesose-26-506.md","revenue/ip/packets/packet-nsf-sbir-sttr-26-510.md","revenue/ip/packets/packet-procurement-gsa-schedule.md","revenue/ip/packets/packet-procurement-public-rfp-pack.md","revenue/ip/packets/packet-procurement-sam-gov-procurement.md","revenue/ip/packets/packet-research-bitsandbytes-foundation.md","revenue/ip/packets/packet-research-eleutherai-lm-eval-harness.md","revenue/ip/packets/packet-research-ggml-llama-cpp.md","revenue/ip/packets/packet-research-hugging-face-hub.md","revenue/ip/packets/packet-research-mlcommons-inference.md","revenue/ip/packets/packet-research-nvidia-tensorrt-llm.md","revenue/ip/packets/packet-sovereign-tech-fund-rolling.md","revenue/ip/packets/packet-titan-hands-activation-hour.md","revenue/ip/packets/packet-whitebox-advisory-hour.md","revenue/ip/packets/packet-whitebox-archive-license.md","revenue/ip/packets/packet-whitebox-joint-paper-reproduction.md","revenue/ip/packets/packet-whitebox-private-evaluation.md","revenue/ip/packets/packet-whitebox-sponsored-benchmark.md","test_opportunity_registry.py"],
+              'tests': ['Reused 15 passing standalone opportunity cases from GitHub Actions run 34004689847, job 101409644698, on generated commit 3dd84e574e0a5919284ff92316c08ead47e91a75.', 'Actual compile returned 21 opportunities VALID; outgoing registry and packet review found only hash/byte changes, and both live-cash sections were preserved.', 'This audit verified 26 landed/current file blobs, 41 unchanged tested inputs and main ancestry without repeating the passed suite.'],
+              'main_sha': landed, 'readback_verified': True,
+              'report_only_sessions': 0, 'unconsumed_findings': 0,
+          }
+          subprocess.run(['python3', 'fix_first.py', '--json', json.dumps(packet)], check=True)
+          print('OPPORTUNITY_RECEIPT_REFRESH_PASS', json.dumps({'landed': landed, 'reused_run': 34004689847, 'reused_tests': 15, 'exact_files': len(expected), 'exact_inputs': len(inputs)}))
+          PY
+
+      - name: HINGE equipment composition - five new cases and catalog assertion
+        if: inputs.expected_commit != ''
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 -m unittest -v \
+            integrations.shared_equipment.test_prove_handoff_equipment_card.ProveHandoffEquipmentCardTests.test_tool_listed \
+            integrations.shared_equipment.test_prove_handoff_equipment_card.ProveHandoffEquipmentCardTests.test_prove_handoff_card_diagnostic \
+            integrations.shared_equipment.test_prove_handoff_equipment_card.ProveHandoffEquipmentCardTests.test_prove_handoff_card_autopsy \
+            integrations.shared_equipment.test_prove_handoff_equipment_card.ProveHandoffEquipmentCardTests.test_crm_role_refuses \
+            integrations.shared_equipment.test_prove_handoff_equipment_card.ProveHandoffEquipmentCardTests.test_missing_role_refuses
+          python3 -m unittest test_grokbot_shared_equipment.TestGrokBotSharedEquipment.test_tool_names_and_catalog_extension -v
+
+      - name: HINGE current-main composition readback
+        if: inputs.expected_commit != ''
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 - <<'PY'
+          import ast
+          import json
+          import re
+          import subprocess
+          from pathlib import Path
+
+          landed = 'f3c912bd9bbe3b651cc8cbe2687edbc46df6805a'
+          claim = 'hinge-r4-equipment-prove-handoff-card-20260906-01'
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+          def at_landed(path):
+              return git('show', landed + ':' + path)
+          def parsed(source):
+              return ast.parse(source)
+          def dump(node):
+              return ast.dump(node, include_attributes=False)
+          def function(tree, name):
+              return next(n for n in tree.body if isinstance(n, ast.FunctionDef) and n.name == name)
+          def proof_branch(tree):
+              call = function(tree, 'call_diagnostic_card')
+              for node in ast.walk(call):
+                  if isinstance(node, ast.If) and isinstance(node.test, ast.Compare):
+                      if any(isinstance(v, ast.Constant) and v.value == 'prove_handoff_card'
+                             for v in node.test.comparators):
+                          return node
+              raise AssertionError('prove_handoff_card branch missing')
+          def proof_schema(tree):
+              schemas = function(tree, 'diagnostic_card_tool_schemas')
+              return next(n for n in ast.walk(schemas)
+                          if isinstance(n, ast.Call) and n.args
+                          and isinstance(n.args[0], ast.Constant)
+                          and n.args[0].value == 'prove_handoff_card')
+          def expected_catalog(source):
+              tree = parsed(source)
+              method = next(n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)
+                            and n.name == 'test_tool_names_and_catalog_extension')
+              assignment = next(n for n in method.body if isinstance(n, ast.Assign)
+                                and any(isinstance(t, ast.Name) and t.id == 'expected' for t in n.targets))
+              return ast.literal_eval(assignment.value)
+          def route(source):
+              return next(r for r in json.loads(source)['access_routes']
+                          if r['name'] == 'owner_pc_grokbot_control')
+
+          subprocess.run(['git', 'merge-base', '--is-ancestor', landed, 'HEAD'], check=True)
+          path = 'integrations/shared_equipment/diagnostic_equipment_cards.py'
+          before = parsed(at_landed(path))
+          current = parsed(Path(path).read_text())
+          assert dump(proof_branch(current)) == dump(proof_branch(before))
+          assert dump(proof_schema(current)) == dump(proof_schema(before))
+          assert dump(function(current, '_load_transferable_roles_mod')) == dump(function(before, '_load_transferable_roles_mod'))
+          path = 'integrations/shared_equipment/role_equipment.json'
+          old_route, new_route = route(at_landed(path)), route(Path(path).read_text())
+          assert set(old_route['equipment_tools']) <= set(new_route['equipment_tools'])
+          assert 'prove_handoff_card' in new_route['equipment_tools']
+          for field in ('kind', 'base_url', 'pool_id', 'client'):
+              assert old_route[field] == new_route[field]
+          test_path = 'integrations/shared_equipment/test_prove_handoff_equipment_card.py'
+          owned_tests = ('test_tool_listed', 'test_prove_handoff_card_diagnostic',
+                         'test_prove_handoff_card_autopsy', 'test_crm_role_refuses',
+                         'test_missing_role_refuses')
+          def test_methods(source):
+              cls = next(n for n in parsed(source).body if isinstance(n, ast.ClassDef)
+                         and n.name == 'ProveHandoffEquipmentCardTests')
+              return {n.name: n for n in cls.body if isinstance(n, ast.FunctionDef)}
+          original_tests = test_methods(at_landed(test_path))
+          current_tests = test_methods(Path(test_path).read_text())
+          for name in owned_tests:
+              assert dump(current_tests[name]) == dump(original_tests[name]), name
+          slug_assertion = parsed('self.assertEqual(sla.get("slug"), "dealer")').body[0]
+          assert any(dump(node) == dump(slug_assertion)
+                     for node in ast.walk(current_tests['test_prove_handoff_card_diagnostic']))
+          catalog_path = 'test_grokbot_shared_equipment.py'
+          before_names = expected_catalog(at_landed(catalog_path))
+          current_names = expected_catalog(Path(catalog_path).read_text())
+          assert len(before_names) == 31 and before_names <= current_names
+          assert claim in Path('integrations/shared_equipment/R4_CLAIMS.md').read_text()
+          post_path = 'p/' + claim + '.md'
+          original_post, current_post = at_landed(post_path), Path(post_path).read_text()
+          def claim_facts(text):
+              heading = re.search(r'^#\s+(' + re.escape(claim) + r')\s*$', text, re.M)
+              source = re.search(r'CLAIM Slack\s+(C[A-Z0-9]+)\s+ts\s+`([0-9.]+)`', text)
+              assert heading and source and 'Credit HINGE.' in text
+              return heading.group(1), source.groups(), 'HINGE'
+          assert claim_facts(current_post) == claim_facts(original_post)
+          head = git('rev-parse', 'HEAD')
+          print(json.dumps({'hinge_landed_sha': landed, 'current_main_sha': head,
+                            'ancestry': 'PASS', 'owned_schema_and_body': 'PASS',
+                            'all_landed_equipment_names_preserved': True,
+                            'catalog_expected_count': len(current_names),
+                            'prior_unique_slug_assertion_preserved': True,
+                            'focused_tests': '5 HINGE cases plus 1 catalog assertion PASS'}))
+          packet = {'outcome': 'fixed', 'observed_broken': True,
+                    'expected_contract': 'The exact shared-equipment catalog assertion includes every shipped tool while preserving prior HINGE diagnostic slug coverage and concurrent peer tests.',
+                    'changed_paths': ['test_grokbot_shared_equipment.py', test_path],
+                    'tests': ['Current consolidated audit: five HINGE cases and exact catalog assertion PASS; current semantic readback PASS'],
+                    'main_sha': head, 'readback_verified': True}
+          subprocess.run(['python3', 'fix_first.py', '--json', json.dumps(packet)], check=True)
+          PY
+      - name: SPARK paid-case equipment E2E
+        if: inputs.expected_commit != ''
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 -m unittest -v test_grokbot_shared_equipment.TestGrokBotSharedEquipment.test_paid_case_equipment_live_e2e
+
+      - name: Gemini runbook and SPARK E2E landed-source readback
+        if: inputs.expected_commit != ''
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: |
+          python3 - <<'PY'
+          import ast
+          import json
+          import subprocess
+          from pathlib import Path
+
+          landed = '057ab2dc6651497b04eb3866a82e239a8a8c6bf8'
+          expected = {
+              'features/registry/spark-g2-runbook-equipment-receipt-e2e-20260905-01.json': '008a79c960b6e3a965f303a1c855b2e619c01c83',
+              'integrations/grokbot_control/README.md': 'e520fcd6cfec891fecf8b8cda522022069c9290e',
+              'p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md': '73e911daaf3422e7cc3b2dbf595e56e8a139cf14',
+              'revenue/agent_failure_autopsy/RUNBOOK.md': '625e022c18a07fdfdf40f1f60a9ec518425e1e7e',
+              'test_grokbot_shared_equipment.py': 'cff1453c66db0971d346c2a1463fd7075d6afbe0',
+          }
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+          def at_landed(path):
+              return git('show', landed + ':' + path)
+          subprocess.run(['git', 'merge-base', '--is-ancestor', landed, 'HEAD'], check=True)
+          for path, blob in expected.items():
+              assert git('rev-parse', landed + ':' + path) == blob, path
+          test_path = 'test_grokbot_shared_equipment.py'
+          def e2e(source):
+              cls = next(n for n in ast.parse(source).body if isinstance(n, ast.ClassDef)
+                         and n.name == 'TestGrokBotSharedEquipment')
+              method = next(n for n in cls.body if isinstance(n, ast.FunctionDef)
+                            and n.name == 'test_paid_case_equipment_live_e2e')
+              return ast.dump(method, include_attributes=False)
+          assert e2e(Path(test_path).read_text()) == e2e(at_landed(test_path))
+          runbook = 'revenue/agent_failure_autopsy/RUNBOOK.md'
+          marker = '### Peer equipment path (same helpers, no hand-import)'
+          owned_section = at_landed(runbook).split(marker, 1)[1].strip()
+          assert marker in Path(runbook).read_text()
+          assert owned_section in Path(runbook).read_text()
+          print(json.dumps({'pr': 9271, 'landed_sha': landed,
+                            'current_main_sha': git('rev-parse', 'HEAD'),
+                            'landed_blobs_verified': len(expected),
+                            'owned_e2e_body_preserved': True,
+                            'runbook_example_preserved': True,
+                            'focused_echo_e2e': '1 case PASS',
+                            'gemini_source_review_request': '5e47d8d9acc84172837656c18578c579',
+                            'paid_submit_executed': False}))
           PY
       - name: Verify landed ancestry and repair result
         if: inputs.expected_commit != ''
