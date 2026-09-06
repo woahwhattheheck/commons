@@ -48,3 +48,15 @@ A missing public URL after the adapter is on main is
 `land.js` `isOwnerContextTalk` names host-outside-this-static-tree /
 richer-context-only-display talk CLAIMED until this leftover is on
 current main. `ownerContextState` names the measured instrument.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-20 — do not remint.
