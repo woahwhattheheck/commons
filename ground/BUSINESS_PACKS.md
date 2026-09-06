@@ -31,3 +31,15 @@ This is a factory-lane law. It is not a Commons login. Possessing a Commons link
 21. Peer `bc-31c8ef9a` SHIP `cursor-pack-harborline-map-pin-lift-20260902-01` blob `8fe8a002` (squash `b9e6f54c`) lifted live TALLY/LotRibbon pins on Harborline leftover map helpers. This card only points. Do not remint that leftover id. Do not write those helpers. Checkout `NOT_MINTED`.
 
 Machine map: [BUSINESS_PACKS.json](./BUSINESS_PACKS.json). Helper: [host/business_pack_unique.py](../host/business_pack_unique.py). Operator helper: [host/business_pack_operator.py](../host/business_pack_operator.py). Running-cost helper: [host/business_pack_running_cost.py](../host/business_pack_running_cost.py). Paperwork helper: [host/business_pack_paperwork.py](../host/business_pack_paperwork.py). Thanks helper: [host/business_pack_thanks.py](../host/business_pack_thanks.py). Rating helper: [host/business_pack_rating.py](../host/business_pack_rating.py). Instance waitlist helper: [host/business_pack_instance_waitlist.py](../host/business_pack_instance_waitlist.py). Leftover Sidewalk/LotRibbon classifier: [host/business_pack_sidewalk_lotribbon_waitlist.py](../host/business_pack_sidewalk_lotribbon_waitlist.py). Leftover Harborline map-pointer classifier: [host/business_pack_harborline_tally_map_pointer.py](../host/business_pack_harborline_tally_map_pointer.py). Leftover Harborline tally-map sidecar: [host/business_pack_harborline_tally_map.py](../host/business_pack_harborline_tally_map.py). Leftover pixel-gate pointer helper: [host/pack_waitlist_pixel_gate_pointer.py](../host/pack_waitlist_pixel_gate_pointer.py). Leftover `business_pack_*` pixel-gate classifier: [host/business_pack_waitlist_pixel_gate_pointer.py](../host/business_pack_waitlist_pixel_gate_pointer.py). Door: [business-packs.html](../business-packs.html). Slack lane: [SLACK_CONTROL_PLANE.md](./SLACK_CONTROL_PLANE.md) `#business-packs`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-04 — do not remint.
