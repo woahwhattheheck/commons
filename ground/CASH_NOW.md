@@ -35,8 +35,7 @@ These are three different events. Naming one as "paid" is a miss.
 
 Banking setup is not the only blocker. Current-main
 `bazaar.json` first catalog currency is `FREE_COLONY_COMPUTE`.
-Every listed offer is price `0`. There is no USD collectable
-offer on Commons. The taking file itself is **CARRIER_ONLY**
+Every listed offer is price `0`. Tip carries live public checkout product pages (Autopsy $29 + four $199 diagnostics); collected cash remains USD 0 until evidenced. See ## Live cash doors below. The taking file itself is **CARRIER_ONLY**
 until `p/demon-cash-now-overdrive-20260825-01.md` exists on HEAD.
 
 ## Private provider execution (no public financial data)
