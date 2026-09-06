@@ -696,6 +696,7 @@ def project(
             "harness": event["harness"],
             "classification": event["classification"],
             "path": (event.get("claimed_paths") or [UNKNOWN])[0] if event.get("claimed_paths") else UNKNOWN,
+            "claimed_paths": list(event.get("claimed_paths") or []),
             "blocker": (event.get("blocker") or {}).get("type"),
             "cost": event.get("cost"),
             "parse_state": event.get("parse_state"),
