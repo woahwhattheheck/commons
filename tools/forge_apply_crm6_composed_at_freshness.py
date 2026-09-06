@@ -3,6 +3,7 @@
 
 CLAIM ledger-crm6-composed-at-freshness-gate-20260905-01
 Self-deleted by the oneshot workflow after commit.
+Trigger: forge ship 20260905-01.
 """
 from __future__ import annotations
 
