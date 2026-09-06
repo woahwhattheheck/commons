@@ -62,6 +62,8 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
             "grokbot_health",
             "grokbot_case_from_autopsy_offer",
             "grokbot_receipt_row_from_case",
+            "diagnostic_contract_card",
+            "diagnostic_receipt_card",
         }
         self.assertEqual(names, expected)
         catalog = CombinedCatalog(_FakeCommons())
@@ -226,6 +228,8 @@ class TestGrokBotSharedEquipment(unittest.TestCase):
         self.assertIn("grokbot_health", g2["equipment_tools"])
         self.assertIn("grokbot_case_from_autopsy_offer", g2["equipment_tools"])
         self.assertIn("grokbot_receipt_row_from_case", g2["equipment_tools"])
+        self.assertIn("diagnostic_contract_card", g2["equipment_tools"])
+        self.assertIn("diagnostic_receipt_card", g2["equipment_tools"])
 
 
 if __name__ == "__main__":
