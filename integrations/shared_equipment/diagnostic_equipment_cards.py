@@ -34,7 +34,7 @@ def _load_transferable_roles_mod(name: str):
     return importlib.import_module(name)
 
 
-def diagnostic_card_tool_schemas() -> list:
+def diagnostic_card_tool_schemas() -> list[dict]:
     return [
         _schema(
             "diagnostic_contract_card",
@@ -143,7 +143,7 @@ def diagnostic_card_tool_schemas() -> list:
     ]
 
 
-def call_diagnostic_card(name: str, args: dict) -> object:
+def call_diagnostic_card(name: str, args: dict[str, Any]) -&gt; dict[str, Any] | None:
     """Handle diagnostic_*/autopsy_*_card tools; None if unknown."""
     if name == "diagnostic_contract_card":
         roles_mod = _load_transferable_roles_mod("roles")
@@ -254,7 +254,7 @@ def call_diagnostic_card(name: str, args: dict) -> object:
         roles_mod = _load_transferable_roles_mod("roles")
         autopsy_mod = _load_transferable_roles_mod("autopsy_fulfill")
         try:
-            kwargs = {}
+            kwargs: dict[str, Any] = {}
             if args.get("intake") is not None:
                 kwargs["intake"] = str(args["intake"])
             if args.get("report") is not None:
@@ -388,7 +388,7 @@ def call_diagnostic_card(name: str, args: dict) -> object:
                 "error": "missing_argument",
                 "message": "role must be an object",
             }
-        kwargs = {}
+        kwargs: dict[str, Any] = {}
         if args.get("status") is not None:
             kwargs["status"] = str(args["status"])
         if args.get("next_action") is not None:
@@ -425,7 +425,7 @@ def call_diagnostic_card(name: str, args: dict) -> object:
                 "error": "missing_argument",
                 "message": "role must be an object",
             }
-        kwargs = {}
+        kwargs: dict[str, Any] = {}
         if args.get("case_ref") is not None:
             kwargs["case_ref"] = str(args["case_ref"])
         if args.get("usable_evidence_at") is not None:
