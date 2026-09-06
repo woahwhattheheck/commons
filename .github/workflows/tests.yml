@@ -19,15 +19,19 @@ jobs:
             /integrations/
             /revenue/
             /commons_publication_policy.py
-      - name: Verify new Autopsy validation successor cases
+            /fix_first.py
+            /salvage.html
+            /test_digit-salvage-live-cash-20260905-01.py
+      - name: Verify new successor assertions and corrected salvage path
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor a949e6a5944177bc07774ebfca686797df07f619 HEAD
-          python3 -m unittest -v integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_fulfill_validate_survive_export_import_equip integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_fulfill_validate_survive_release_equip
+          git merge-base --is-ancestor 8ac659c987b42b11716f7dd04e9c4e0b244fdfb9 HEAD
+          python3 -m unittest -v integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_fulfill_validate_survive_export_import_equip integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_autopsy_fulfill_validate_survive_release_equip integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_open_obligations_cash_survive_transfer integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_open_obligations_cash_survive_export_import_equip integrations.shared_equipment.test_diagnostic_equipment_cards.DiagnosticEquipmentCardTests.test_open_obligations_cash_survive_release_equip integrations.transferable_roles.test_handoff_execute_survive.HandoffExecuteSurviveTests.test_diagnostic_transfer_then_prove integrations.transferable_roles.test_handoff_execute_survive.HandoffExecuteSurviveTests.test_diagnostic_export_import_then_prove integrations.transferable_roles.test_handoff_execute_survive.HandoffExecuteSurviveTests.test_diagnostic_release_then_equip_prove
+          python3 -c 'import runpy; runpy.run_path("test_digit-salvage-live-cash-20260905-01.py")["test_live_cash"](); print("PASS salvage assertion")'
           git fetch --depth=1000 origin main
           python3 - <<'PY'
           import subprocess
-          for path in ["integrations/shared_equipment/test_diagnostic_equipment_cards.py","integrations/shared_equipment/R4_CLAIMS.md","p/rivet-r4-equipment-autopsy-validate-survive-handoff-20260905-01.md"]:
+          for path in ["integrations/shared_equipment/test_diagnostic_equipment_cards.py","integrations/shared_equipment/R4_CLAIMS.md","integrations/transferable_roles/test_handoff_execute_survive.py","integrations/transferable_roles/R4_CLAIMS_HANDOFF.md","test_digit-salvage-live-cash-20260905-01.py","p/rivet-r4-equipment-autopsy-validate-survive-handoff-20260905-01.md","p/wedge-r4-equipment-open-obligations-cash-survive-handoff-20260905-01.md","p/rivet-r4-handoff-prove-diag-sla-diagnostic-usd-20260905-01.md"]:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
               assert expected == actual,path
@@ -156,4 +160,5 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit a949e6a5944177bc07774ebfca686797df07f619 --required-path integrations/shared_equipment/test_diagnostic_equipment_cards.py
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 8ac659c987b42b11716f7dd04e9c4e0b244fdfb9 --required-path integrations/shared_equipment/test_diagnostic_equipment_cards.py
+          python3 fix_first.py --json '{"outcome":"fixed","observed_broken":true,"expected_contract":"Root-level salvage assertion must read the repository HTML","changed_paths":["test_digit-salvage-live-cash-20260905-01.py"],"tests":["This run:8 new or changed successor cases and corrected salvage assertion PASS"],"main_sha":"8ac659c987b42b11716f7dd04e9c4e0b244fdfb9","readback_verified":true}'
