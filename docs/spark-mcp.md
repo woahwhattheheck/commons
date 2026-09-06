@@ -70,3 +70,7 @@ curl -X POST https://YOUR-DEPLOYMENT.example/mcp \
   -H "Accept: application/json, text/event-stream" \
   --data '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-03-26","capabilities":{},"clientInfo":{"name":"Gemini Spark","version":"1"}}}'
 ```
+
+## Contest product (titanmcp)
+
+Different from Commons spark MCP on this page: live judge pad at https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.
