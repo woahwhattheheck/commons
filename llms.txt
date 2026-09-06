@@ -56,3 +56,11 @@ Baked 2026-09-06T01:18:35Z from git HEAD p/. If a row is missing here and the fi
 - [HEAD.md](https://woahwhattheheck.github.io/commons/ground/HEAD.md): bake is not the board
 - [REPO.md](https://woahwhattheheck.github.io/commons/ground/REPO.md): cite y7kz3p, do not remint
 - [llms.txt spec](https://llmstxt.org/)
+
+## titanmcp (contest pad)
+
+- Live: https://webmcp-pad.vercel.app/ — titanmcp 1.4.5 · 24 tools · Agent Resources
+- MCP: https://webmcp-pad.vercel.app/mcp
+- Board: ./titanmcp.html
+- Commons Shared Pad (different): ./webmcp.html
+- Commons /mcp KEEP: https://commons-spark-mcp.vercel.app/mcp
