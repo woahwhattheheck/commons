@@ -228,10 +228,10 @@ on:
 permissions:
   contents: read
 concurrency:
-  # Finish the active automatic battery; keep its newest pending successor.
+  # New automatic batteries supersede older runs for the same event/ref.
   # Each manual dispatch has its own group and survives later branch pushes.
   group: "${{ github.workflow }}-${{ github.event_name }}-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.ref }}"
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   battery:
     runs-on: ubuntu-latest
