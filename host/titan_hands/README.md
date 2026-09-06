@@ -92,3 +92,17 @@ the exact carrier matrix, probes, and the current Grok.com transport boundary.
 
 Architecture and the exact headless boundary: [ARCHITECTURE.md](./ARCHITECTURE.md).
 Owner-source inheritance and the Grok continuation map: [GROK_HANDOFF.md](./GROK_HANDOFF.md).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Hands host README used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../../referral-intake-completeness.html)
+- [$199 repair diagnostic](../../repair-booking-preflight.html)
+- [$199 plant diagnostic](../../plant-downtime-handoff.html)
+
+Public Hands door: [titan-hands.html](../../titan-hands.html). Full catalog: [commerce.html](../../commerce.html).
+Cite forge tip-shelf / spark autopsy / ink-titan-hands-live-cash — do not remint.
+Claim `ink-titan-hands-readme-live-cash-20260905-01`.
