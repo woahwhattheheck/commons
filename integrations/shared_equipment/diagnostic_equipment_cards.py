@@ -3,6 +3,7 @@
 TENON claims:
 - tenon-r4-equipment-diagnostic-cards-20260905-01 (contract/receipt)
 - tenon-r4-equipment-fulfill-sla-cards-20260905-01 (fulfill deadline/SLA)
+- tenon-r4-equipment-advance-obligation-card-20260906-01 (advance obligation)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
@@ -109,6 +110,16 @@ def diagnostic_card_tool_schemas() -> list[dict]:
             "open_obligations_cash_card",
             "Open obligations for roles with payment_capability metadata; this marker is not proof of payment. Pass roles[] (role objects). Import-only wrap of RoleStore.list_open_obligations(cash_only=True).",
             {"roles": "array"},
+        ),
+        _schema(
+            "advance_obligation_card",
+            "Advance one obligation on a transferable role (status / next_action / evidence_pointer). Pass role object + obligation_id + at least one field. Import-only RoleStore.advance_obligation wrap; returns updated role. Does not remint roles.py or grant credentials.",
+            {"role": "object", "obligation_id": "string"},
+            {
+                "status": "string",
+                "next_action": "string",
+                "evidence_pointer": "string",
+            },
         ),
     ]
 
@@ -311,4 +322,41 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "open_obligations": rows}
+    if name == "advance_obligation_card":
+        # tenon-r4-equipment-advance-obligation-card-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+            obligation_id = str(args["obligation_id"])
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        kwargs: dict[str, Any] = {}
+        if args.get("status") is not None:
+            kwargs["status"] = str(args["status"])
+        if args.get("next_action") is not None:
+            kwargs["next_action"] = str(args["next_action"])
+        if args.get("evidence_pointer") is not None:
+            kwargs["evidence_pointer"] = str(args["evidence_pointer"])
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                updated = store.advance_obligation(
+                    created["role_id"],
+                    obligation_id,
+                    **kwargs,
+                )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": updated}
     return None
