@@ -8,6 +8,7 @@ TENON claims:
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
+- hinge-r4-equipment-prove-handoff-card-20260906-01 (prove-handoff)
 WEDGE claim:
 - wedge-r4-equipment-open-obligations-cash-card-20260905-01 (cash queue)
 Does not remint contracts, receipts, fulfill CLIs, SPARK paid_case, Stripe, or peers remint.
@@ -33,7 +34,7 @@ def _load_transferable_roles_mod(name: str):
     return importlib.import_module(name)
 
 
-def diagnostic_card_tool_schemas() -> list[dict]:
+def diagnostic_card_tool_schemas() -> list:
     return [
         _schema(
             "diagnostic_contract_card",
@@ -128,10 +129,21 @@ def diagnostic_card_tool_schemas() -> list[dict]:
                 "evidence_pointer": "string",
             },
         ),
+        _schema(
+            "prove_handoff_card",
+            "Import-only wrap of handoff_execute.prove_successor_executes; does not remint prove body.",
+            {"role": "object"},
+            {
+                "case_ref": "string",
+                "usable_evidence_at": "string",
+                "slug": "string",
+                "as_of": "string",
+            },
+        ),
     ]
 
 
-def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | None:
+def call_diagnostic_card(name: str, args: dict) -> object:
     """Handle diagnostic_*/autopsy_*_card tools; None if unknown."""
     if name == "diagnostic_contract_card":
         roles_mod = _load_transferable_roles_mod("roles")
@@ -242,7 +254,7 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         roles_mod = _load_transferable_roles_mod("roles")
         autopsy_mod = _load_transferable_roles_mod("autopsy_fulfill")
         try:
-            kwargs: dict[str, Any] = {}
+            kwargs = {}
             if args.get("intake") is not None:
                 kwargs["intake"] = str(args["intake"])
             if args.get("report") is not None:
@@ -376,7 +388,7 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
                 "error": "missing_argument",
                 "message": "role must be an object",
             }
-        kwargs: dict[str, Any] = {}
+        kwargs = {}
         if args.get("status") is not None:
             kwargs["status"] = str(args["status"])
         if args.get("next_action") is not None:
@@ -395,4 +407,41 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "role": updated}
+    if name == "prove_handoff_card":
+        # hinge-r4-equipment-prove-handoff-card-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        handoff_mod = _load_transferable_roles_mod("handoff_execute")
+        try:
+            role = args["role"]
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        kwargs = {}
+        if args.get("case_ref") is not None:
+            kwargs["case_ref"] = str(args["case_ref"])
+        if args.get("usable_evidence_at") is not None:
+            kwargs["usable_evidence_at"] = str(args["usable_evidence_at"])
+        if args.get("slug") is not None:
+            kwargs["diagnostic_slug"] = str(args["slug"])
+        if args.get("as_of") is not None:
+            kwargs["as_of"] = str(args["as_of"])
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                proof = handoff_mod.prove_successor_executes(
+                    store, created["role_id"], **kwargs
+                )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "proof": proof}
     return None
