@@ -96,7 +96,7 @@ def diagnostic_card_tool_schemas() -> list[dict]:
         ),
         _schema(
             "open_obligations_cash_card",
-            "Cash-only open-obligations fulfillment queue. Pass roles[] (role objects). Import-only wrap of RoleStore.list_open_obligations(cash_only=True); does not remint.",
+            "Open obligations for roles with payment_capability metadata; this marker is not proof of payment. Pass roles[] (role objects). Import-only wrap of RoleStore.list_open_obligations(cash_only=True).",
             {"roles": "array"},
         ),
     ]

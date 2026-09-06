@@ -159,12 +159,22 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
     def test_open_obligations_cash_card(self) -> None:
         # wedge-r4-equipment-open-obligations-cash-card-20260905-01
         crm = json.loads(CRM.read_text(encoding="utf-8"))
+        roles = [crm, self.autopsy, self.diag]
+        before = json.dumps(roles, sort_keys=True)
         out = self.eq.call(
             "open_obligations_cash_card",
-            {"roles": [crm, self.autopsy, self.diag]},
+            {"roles": roles},
         )
         self.assertTrue(out.get("ok"), out)
         rows = out["open_obligations"]
+        self.assertEqual(json.dumps(roles, sort_keys=True), before)
+        expected = {
+            (role["role_id"], ob["id"])
+            for role in (self.autopsy, self.diag)
+            for ob in role["obligations"]
+            if ob["status"] == "open"
+        }
+        self.assertEqual({(row["role_id"], row["obligation_id"]) for row in rows}, expected)
         self.assertTrue(rows)
         for row in rows:
             self.assertIs(row.get("payment_capability"), True)
