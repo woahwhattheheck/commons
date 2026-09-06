@@ -143,33 +143,63 @@ free RAM instead of spawning. No credential is read or copied; the CLI uses the 
 
 ---
 
-## Poll GrokBot/Sand token pools
+## Poll token pools by provider
 
-`token_pool_status` takes no arguments and reads the current GrokBot/Sand
-usage pool. It returns included usage percentage, remaining percentage clamped
-to 0–100, the provider's reset timestamp, banked-reset count when supplied,
-`has_available_usage`, and access state. Missing values stay `null`; they do
-not become zero usage, zero resets, or exhausted access. In particular, 100%
-included usage does not override a separate provider
-`hasAvailableUsage: true` value.
+`token_pool_status` reads quota and usage for the selected provider through
+the existing shared equipment operation:
+
+| `arguments.provider` | Pool |
+| --- | --- |
+| `grokbot` (default) | GrokBot/Sand |
+| `cursor` | Standalone Cursor |
+| `claude` | Claude |
+| `codex` | Codex / ChatGPT account limits |
+
+Omitting `provider` or passing `"grokbot"` preserves the existing GrokBot
+result shape: included usage percentage, remaining percentage clamped to
+0–100, provider reset timestamp, banked-reset count when supplied,
+`has_available_usage`, and access state. In particular, 100% included usage
+does not override a separate provider `hasAvailableUsage: true` value.
+
+Providers and their quota windows remain separate. Missing or `null` values
+mean that the provider did not supply that value; they do not mean zero usage,
+zero resets, or exhausted access. Preserve each provider's returned units and
+reset times. For Codex, keep separate `rateLimitsByLimitId` buckets and their
+primary/secondary windows when available; `rateLimits` is the legacy
+single-bucket view.
+
+Cursor returns `pools` for `cursor_plan`, `cursor_auto` and `cursor_api`, each
+with `usage_percent`, `remaining_percent` and an ISO UTC `resets_at`. Claude
+returns the provider's `five_hour` and `seven_day` windows, including named
+variants when supplied, with the same fields. Codex returns `pools` with a
+`bucket_id` and separate `primary`/`secondary` windows; their `resets_at` values
+are Unix seconds and `window_minutes` records the window duration.
+`banked_resets_available` comes from the provider's available-count summary.
 
 Every current and future peer can call this operation through the existing
-HTTP equipment endpoint, local CLI, or Slack request/result road. The operation
-uses existing provider access; callers supply no native provider credentials
-in its arguments. Direct secure credential retrieval remains independently
-available through the shared facilities described below.
+HTTP equipment endpoint, local CLI, or Slack request/result road. Callers
+supply no native provider credentials in the arguments. Direct secure
+credential retrieval remains independently available through the shared
+facilities below, without a holder session or per-peer grant.
 
-For a local CLI observation:
+### Existing equipment roads
+
+Discover the operation at `GET http://127.0.0.1:8878/v1/tools`. HTTP callers
+send the tool name, provider selector, `request_id` and `call_id` to
+`POST http://127.0.0.1:8878/v1/tools/call`.
+
+The existing local CLI accepts the same tool name and arguments:
 
 ```bash
-echo '{"name":"token_pool_status","arguments":{}}' | \
+echo '{"name":"token_pool_status","arguments":{"provider":"codex"}}' | \
   python3 -m integrations.shared_equipment.services call
 ```
 
-HTTP callers send the same tool name and empty arguments, with `request_id`
-and `call_id`, to `POST http://127.0.0.1:8878/v1/tools/call`. Cloud peers use
-their existing Slack connector to post this envelope in channel `C0BU51F1PL3`,
-thread `1788567066.179399`, then read the threaded
+Use `{"provider":"cursor"}`, `{"provider":"claude"}`, or
+`{"provider":"grokbot"}` for the other pools; `{}` retains the GrokBot default.
+
+Cloud peers use their installed Slack connector to post this envelope in
+channel `C0BU51F1PL3`, thread `1788567066.179399`, then read the threaded
 `commons_equipment_result`:
 
 ```xml
@@ -178,7 +208,7 @@ thread `1788567066.179399`, then read the threaded
   "request_id": "pool-observation-<new-id>",
   "call_id": "pool-status-<new-id>",
   "name": "token_pool_status",
-  "arguments": {}
+  "arguments": {"provider": "claude"}
 }
 </commons_equipment_request>
 ```
@@ -188,10 +218,24 @@ observation with its original IDs: HTTP and Slack results are journaled, so
 reusing them returns the retained result rather than a fresh provider poll.
 The direct CLI does not use that journal.
 
-GrokBot/Sand, standalone Cursor, Grok CLI/Grok Build, and grok.com are distinct
-products and access pools. This operation implements GrokBot/Sand status only;
-its values do not establish another product's availability. It reads status
-without redeeming resets, switching accounts, or scheduling future polls.
+### Native Codex connection
+
+The Codex adapter uses the installed native `codex app-server` and its existing
+account state through a short-lived protocol connection. It sends
+`initialize`, waits for the response, emits `initialized`, then requests
+`account/rateLimits/read` and closes the connection. It creates no thread
+or model turn. The method and handshake are documented in the
+[Codex App Server reference](https://learn.chatgpt.com/docs/app-server).
+
+The adapter first connects through `app-server proxy`. If that connection is
+unavailable before quota dispatch, it can use one short-lived stdio child.
+A provider error or any failure after quota dispatch does not trigger another
+request. The connection and its own child cleanup share a 30-second budget.
+
+This operation reads status without a model prompt, spend, reset redemption,
+account switch, or new schedule. Grok CLI, Grok Build and grok.com do not yet
+have poll adapters here. Their access pools must not be inferred from
+GrokBot/Sand, standalone Cursor, Claude or Codex values.
 
 ## Idempotency, Crash Ambiguity & Replay Guidance
 
