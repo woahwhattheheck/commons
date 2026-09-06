@@ -19,3 +19,6 @@ Never invent `VERIFIED_HUMAN_YES`. No CLI remint.
 ## Boundary
 No second CRM. No INDEX remint. Hands off #8802.
 Does not remint #9237 / #9267 / #9268 / #9269 / #9020 mechanisms.
+
+## CI
+Open-door self-squash when GREEN (battery ignore OK).
