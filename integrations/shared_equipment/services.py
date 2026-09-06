@@ -93,7 +93,7 @@ TOOLS = [
     _schema("github_read_file", "Read a UTF-8 source file and resolved blob SHA through the existing gh account. Set ref to pin a version.", {"repository": "string", "path": "string"}, {"ref": "string"}),
     _schema("github_read_issue", "Read a GitHub issue and one comment page; use comment_page for further pages.", {"repository": "string", "issue_number": "integer"}, {"comment_page": "integer"}),
     _schema("github_read_pull_request", "Read PR state, head/base SHAs, changed files and checks. Use page for further file pages.", {"repository": "string", "pull_number": "integer"}, {"page": "integer"}),
-    _schema("github_create_branch", "Create a branch from an exact existing commit SHA. Returns existing matching branch on retry; a different existing head is a conflict.", {"repository": "string", "branch": "string", "base_sha": "string"}),
+    _schema("github_create_branch", "Create a branch from base_ref (default main), resolving its commit internally. base_sha remains a compatible override and also accepts a ref. Returns an existing branch only when its head matches the resolved base; never moves an existing branch.", {"repository": "string", "branch": "string"}, {"base_ref": {"type": "string", "default": "main", "description": "Source branch, tag, ref, or commit; resolved internally. Defaults to main."}, "base_sha": {"type": "string", "description": "Compatibility override for base_ref: an existing commit SHA or ref."}}),
     _schema("github_commit_files", "Commit UTF-8 files to an existing branch, comparing expected_head first. Supply full file contents. Returns commit SHA; never force-updates a ref.", {"repository": "string", "branch": "string", "expected_head": "string", "message": "string"}, {"files": {"type": "array", "items": {"type": "object", "properties": {"path": {"type": "string"}, "content": {"type": "string"}}, "required": ["path", "content"]}}}),
     _schema("github_create_pull_request", "Open a useful PR for existing task work. Returns an existing open PR for the same head/base on retry.", {"repository": "string", "head": "string", "base": "string", "title": "string", "body": "string"}, {"draft": "boolean"}),
     _schema("github_merge_pull_request", "Merge an authorized reviewed PR with expected head SHA. GitHub enforces branch rules. Returns provider result, not an assumed success.", {"repository": "string", "pull_number": "integer", "expected_head": "string"}, {"merge_method": "string"}),
@@ -227,7 +227,27 @@ class ServiceEquipment:
                 "checks": self.github(f"{root}/commits/{sha}/check-runs"),
                 "status": self.github(f"{root}/commits/{sha}/status")}
         if name == "github_create_branch":
-            branch, sha = _string(a, "branch"), _string(a, "base_sha")
+            branch = _string(a, "branch")
+            # A caller names the source; GitHub resolves it. Keep explicit
+            # commit callers compatible, including their existing call shape,
+            # and accept legacy base_sha='main' without an extra peer round trip.
+            if "base_sha" in a:
+                base = _string(a, "base_sha").strip()
+            elif "base_ref" in a:
+                base = _string(a, "base_ref").strip()
+            else:
+                base = "main"
+            if re.fullmatch(r"[0-9a-fA-F]{40}", base):
+                sha = base.lower()
+            else:
+                # The commits endpoint documents heads/... and tags/...;
+                # retain that namespace when given a fully qualified Git ref.
+                if base.startswith(("refs/heads/", "refs/tags/")):
+                    base = base[5:]
+                resolved = self.github(root + "/commits/" + _quote(base))
+                sha = resolved.get("sha") if isinstance(resolved, dict) else None
+                if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-fA-F]{40}", sha):
+                    raise EquipmentError("GitHub did not resolve the source ref to a commit")
             try:
                 found = self.github(root + "/git/ref/heads/" + _quote(branch))
             except EquipmentError:
