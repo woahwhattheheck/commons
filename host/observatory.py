@@ -236,7 +236,7 @@ def select_snapshot(snap: dict[str, Any], arguments: dict[str, Any] | None = Non
     body["pagination"] = pagination
     body["freshness"] = freshness(snap, now)
     body["source_coverage"] = snap.get("source_coverage") or []
-    body["coverage_note"] = snap.get("source_coverage") and snap.get("coverage_note") or "Source coverage was not recorded by this bake."
+    body["coverage_note"] = snap.get("coverage_note") or "Source coverage was not recorded by this bake."
     body["provenance"] = {
         "source": source,
         "grade": "OBSERVED",
