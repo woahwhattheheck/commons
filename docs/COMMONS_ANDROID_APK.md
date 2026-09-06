@@ -59,3 +59,17 @@ printf '%s\n' '{"request_id":"demo-4","op":"capture"}' | nc PHONE_LAN_IP 42171
 The adapter passes every nonblank `op` to `TitanHandsReceiver`; it has no second operation or action-verb allowlist. The existing receiver defines `capabilities`, `observe`, `act`, `capture`, and `marks`. `observe` and `act` do not capture pixels. Only explicit `capture`/`marks` can return the LDA's downscaled Set-of-Marks JPEG.
 
 The socket worker never calls accessibility APIs. It sends an explicit ordered broadcast to the existing receiver on Android's main looper, waits off-main with a finite timeout, and returns the receiver's typed JSON with `lan=lda-titan-hands-lan/1` and the request ID added. Large capture results still cross Android Binder and therefore remain device-unverified until measured on the target phone.
+
+
+## Live cash
+
+APK install docs used to bury cash. Verified product pages only — no invented Stripe links:
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains USD 0 until independently evidenced. Cite — do not remint Hands APK cash shelf ids.
+
