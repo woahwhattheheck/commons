@@ -255,6 +255,31 @@ def build_popen_kwargs(cwd: str, env: dict[str, str], stdin: Any, stdout: Any, s
     return kwargs
 
 
+def validate_owner_configuration(options: dict[str, Any]) -> None:
+    """Keep caller options from skipping the owner's native Claude configuration."""
+    if options.get("bare") not in (None, "", False, []):
+        raise ValueError("bare mode skips owner-configured hooks and memory; run not started")
+    # This field is not forwarded. Reject an explicit opt-out instead of silently
+    # accepting it; the ordinary CLI user/project/local discovery stays in place.
+    if "setting_sources" in options and options["setting_sources"] is not None:
+        sources = options["setting_sources"]
+        if not isinstance(sources, str) or "user" not in {
+            source.strip() for source in sources.split(",")
+        }:
+            raise ValueError("setting_sources must retain user configuration; run not started")
+    for field, _flag, kind in CLI_OPTIONS:
+        if kind != "list":
+            continue
+        value = options.get(field)
+        values = value if isinstance(value, list) else [value]
+        # Variadic values become individual argv tokens. A leading dash could
+        # otherwise turn a tool/path/config value into another CLI option.
+        if any(isinstance(item, str) and item.startswith("-") for item in values):
+            raise ValueError(
+                f"{field} values must not be CLI option tokens; use an explicit path prefix for a dash-prefixed filename"
+            )
+
+
 def build_command(claude_cmd: list[str], run: dict[str, Any]) -> list[str]:
     cmd = list(claude_cmd) + ["-p", "--output-format", "stream-json", "--verbose"]
     if run.get("kind") == "followup":
@@ -262,6 +287,7 @@ def build_command(claude_cmd: list[str], run: dict[str, Any]) -> list[str]:
     else:
         cmd += ["--session-id", run["session_id"]]
     options = run.get("options") or {}
+    validate_owner_configuration(options)
     for field, flag, kind in CLI_OPTIONS:
         value = options.get(field)
         if value in (None, "", False, []):
@@ -731,6 +757,7 @@ class Gateway(ThreadingHTTPServer):
         for alias, field in FIELD_ALIASES.items():
             if alias in payload and field not in options:
                 options[field] = payload[alias]
+        validate_owner_configuration({**payload, **options})
         cwd = str(payload.get("cwd") or os.getcwd())
         session_id = payload.get("session_id")
         kind = "new"
@@ -839,7 +866,11 @@ class Gateway(ThreadingHTTPServer):
                 self._finish(run_id, session_id, "error", error="prompt.txt is missing and the prompt text was not retained; resubmit")
                 return
             files["prompt"].write_text(run["prompt"], encoding="utf-8")
-        command = build_command(self.claude_cmd, run)
+        try:
+            command = build_command(self.claude_cmd, run)
+        except ValueError as exc:
+            self._finish(run_id, session_id, "error", error=f"CLI options rejected before launch: {exc}")
+            return
         env = headless_env(self._env_base, run_id)
         self.store.update_run(run_id, status="starting", started_at=utc_now(), command=command)
         self.store.append_event(run_id, session_id, "gateway", status="starting", payload={"command": command})
