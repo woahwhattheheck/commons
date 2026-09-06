@@ -65,3 +65,15 @@ It is not a remint of Windows or Android.
 
 Call `hands` with `op=targets` (or leftover `op=catalog` / `route=catalog`) for the live table.
 Do not smash `commons.mno`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Hands + Slack `#commons` are the same table; cash doors belong on this first surface too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy / Coil MANUAL — do not remint.
