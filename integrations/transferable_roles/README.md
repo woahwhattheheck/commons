@@ -26,6 +26,7 @@ Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
 Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
 Autopsy fulfill SLA status: `wedge-autopsy-fulfill-sla-status-20260905-01`
+Autopsy SLA refund miss-remedy: `wedge-autopsy-sla-refund-miss-remedy-20260905-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 Equipment fulfill SLA cards: `tenon-r4-equipment-fulfill-sla-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
@@ -177,6 +178,10 @@ refuse.
 `diagnostic-fulfill-sla` gates the same way, then compares `--as-of` to
 `delivery_due_at` → `sla_status` `OPEN|MISSED` + `within_one_business_day` +
 landed contract `refund` miss-remedy text. CRM / Autopsy roles refuse.
+
+`autopsy-fulfill-sla` compares `--as-of` to Autopsy `delivery_due_at` →
+`sla_status` `OPEN|MISSED` + `within_one_business_day` + landed `offer.json`
+`refund` miss-remedy (after `wedge-autopsy-sla-refund-miss-remedy-20260905-01`).
 
 `prove-handoff` runs landed role-gated executes after transfer / export→import /
 release→equip (`handoff_execute.prove_successor_executes`). Autopsy (case /
