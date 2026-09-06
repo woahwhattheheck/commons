@@ -5,5 +5,5 @@ FILES = ['test_digit_grokcom_revenue_live_cash.py', 'test_digit_action_pad_live_
 def test_digit_root_hermetics_use_parent_not_parents1():
     for rel in FILES:
         text = (ROOT / rel).read_text(encoding="utf-8")
-        assert "Path(__file__).resolve().parents[1]" not in text
+        assert "Path(__file__).resolve().parent" not in text
         assert "Path(__file__).resolve().parent" in text
