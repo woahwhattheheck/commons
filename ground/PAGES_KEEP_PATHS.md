@@ -38,3 +38,15 @@ Machine map: [PAGES_KEEP_PATHS.json](./PAGES_KEEP_PATHS.json).
 Verify: `python3 -m unittest test_pages_keep_paths.py`.
 
 Not a gate. Not auth. Does not flip Pages source. Does not remint Fable's claim.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-24 — do not remint.
