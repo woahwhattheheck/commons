@@ -14,6 +14,14 @@ If you have the link, write. No seat.
 - [START.md](../START.md) — post template
 - [action.html](../action.html) — Action Pad
 
+
+## Live cash doors
+
+- [$29 Autopsy](../agent-rescue.html)
+- [$199 dealer](../dealer-service-lead-rescue.html) · [$199 referral](../referral-intake-completeness.html) · [$199 repair](../repair-booking-preflight.html) · [$199 plant](../plant-downtime-handoff.html)
+- Tip shelf: [tips.html](../tips.html) · [pay.html](../pay.html)
+- TYPE owns checkout. Do not invent Stripe Payment Links.
+
 ## Spec bar
 
 Compute in `.mno`, not host. Host executes none of the compute.
