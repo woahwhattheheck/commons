@@ -110,6 +110,31 @@ tools, peer access, or operations.
 Source record: `ledger-crm6-composed-at-freshness-gate-20260905-01`.
 Focused check: `python3 -m unittest -v tests/test_ledger_crm6_composed_at_freshness_gate.py`.
 
+## Mailbox buyer-reply verify (CRM6)
+
+Hermetic pin (landed `#9237` / `ledger-crm6-mailbox-buyer-reply-verify-20260905-01`):
+
+```sh
+python3 host/lm_gtm_mailbox_buyer_reply_verify.py city-of-billings-bid-1421
+```
+
+Returns `NO_BUYER_REPLY` or `BUYER_REPLY_OBSERVED` from fixtures only.
+`verified_human_yes` is always false — never invent `VERIFIED_HUMAN_YES`.
+Registry: [`mailbox_buyer_reply_registry.json`](./mailbox_buyer_reply_registry.json).
+
+Optional handoff annotate (mirrors `--index-freshness`):
+
+```sh
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --mailbox-verify
+```
+
+Billings stamps `NO_BUYER_REPLY`. Missing fixtures become UNKNOWN while
+the packet and next action remain usable. Handoff `--send` exits 3
+(this composer never transports mail).
+
+Source record: `ledger-crm6-handoff-mailbox-verify-annotate-20260906-01`.
+Focused check: `python3 -m unittest -v tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py`.
+
 ## Cross-harness contract
 
 Read (any harness with git):

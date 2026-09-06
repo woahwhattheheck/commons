@@ -12,6 +12,7 @@ Entry point:
   python3 host/lm_gtm_relationship_handoff.py SUBJECT
   python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
   python3 host/lm_gtm_relationship_handoff.py SUBJECT --brief
+  python3 host/lm_gtm_relationship_handoff.py SUBJECT --mailbox-verify
 """
 
 from __future__ import annotations
@@ -25,6 +26,7 @@ from typing import Any
 
 ROOT = Path(__file__).resolve().parents[1]
 HOST = ROOT / "host" / "lm_gtm_index.py"
+MAILBOX_HOST = ROOT / "host" / "lm_gtm_mailbox_buyer_reply_verify.py"
 
 import importlib.util
 
@@ -32,6 +34,13 @@ _SPEC = importlib.util.spec_from_file_location("lm_gtm_index", HOST)
 assert _SPEC and _SPEC.loader
 idx = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(idx)
+
+_MAILBOX_SPEC = importlib.util.spec_from_file_location(
+    "lm_gtm_mailbox_buyer_reply_verify", MAILBOX_HOST
+)
+assert _MAILBOX_SPEC and _MAILBOX_SPEC.loader
+mailbox_verify = importlib.util.module_from_spec(_MAILBOX_SPEC)
+_MAILBOX_SPEC.loader.exec_module(mailbox_verify)
 
 KIND_HANDOFF = "LM_GTM_RELATIONSHIP_HANDOFF"
 KIND_RELATIONSHIP_EVIDENCE = "LM_GTM_RELATIONSHIP_EVIDENCE"
@@ -310,6 +319,9 @@ def successor_brief(packet: dict[str, Any]) -> str:
     freshness = packet.get("index_freshness")
     if isinstance(freshness, dict):
         lines.append("index_freshness " + json.dumps(freshness, sort_keys=True))
+    mailbox = packet.get("mailbox_verify")
+    if isinstance(mailbox, dict):
+        lines.append("mailbox_verify " + json.dumps(mailbox, sort_keys=True))
     for name in FIELD_ORDER:
         lines.append(_format_field(name, fields.get(name)))
     lines.append(f"evidence_chain_count={len(chain_ids)} ids={','.join(chain_ids)}")
@@ -330,6 +342,7 @@ def relationship_handoff(
     paths: dict[str, Path] | None = None,
     *,
     include_index_freshness: bool = False,
+    include_mailbox_verify: bool = False,
     as_of: dt.datetime | None = None,
 ) -> dict[str, Any]:
     """Compose an evidence-bound relationship handoff for one existing subject."""
@@ -529,6 +542,22 @@ def relationship_handoff(
                 "status": "UNKNOWN",
                 "reason": "Saved INDEX timestamp is unavailable or invalid at as_of.",
             }
+    if include_mailbox_verify:
+        try:
+            result = mailbox_verify.verify_mailbox_buyer_reply(subject_id, paths)
+            if result.get("verified_human_yes") is True:
+                raise idx.IndexError_("mailbox verify invent VERIFIED_HUMAN_YES refused")
+            result = dict(result)
+            result["verified_human_yes"] = False
+            packet["mailbox_verify"] = result
+        except idx.IndexError_:
+            packet["mailbox_verify"] = {
+                "status": "UNKNOWN",
+                "verified_human_yes": False,
+                "mode": "HERMETIC",
+                "reason": "Hermetic mailbox fixture unavailable or invalid.",
+                "cash_usd": 0,
+            }
     blob = json.dumps(packet, sort_keys=True, ensure_ascii=False)
     idx._assert_no_pii_in_index_blob(blob)
     return packet
@@ -551,6 +580,11 @@ def build_parser() -> argparse.ArgumentParser:
         help="emit a PII-free successor paste from the packet (no ledger re-read after compose)",
     )
     parser.add_argument("--index-freshness", action="store_true", help="include saved INDEX age metadata")
+    parser.add_argument(
+        "--mailbox-verify",
+        action="store_true",
+        help="include hermetic mailbox buyer-reply verify (never invents VERIFIED_HUMAN_YES)",
+    )
     parser.add_argument("--as-of", help="timezone-aware time for optional INDEX freshness")
     return parser
 
@@ -567,6 +601,7 @@ def main(argv: list[str] | None = None) -> int:
         packet = relationship_handoff(
             args.subject,
             include_index_freshness=args.index_freshness,
+            include_mailbox_verify=args.mailbox_verify,
             as_of=idx.parse_time(args.as_of) if args.as_of else None,
         )
         if args.brief:
