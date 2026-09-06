@@ -10,7 +10,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from autopsy_agent.contracts import ROOT, DRAFT_KEYS, EvidenceCase, build_report, model_json, strict_json
+from autopsy_agent.contracts import ROOT, DRAFT_KEYS, EvidenceCase, analysis_schema, build_report, model_json, strict_json
 from autopsy_agent.models import ScriptedModel
 from autopsy_agent.pipeline import check_review, run_case
 from autopsy_agent.contracts import digest
@@ -286,13 +286,16 @@ class FlowTests(unittest.TestCase):
         # Exact failure pattern retained from the real old result: drafter says its
         # own alternative is weakened, reviewer retains an untested test override,
         # yet returns confident flags. The review's uncertainty must win.
+        # Check the independent review gate directly: the current transcript-only
+        # build gate now rejects every HIGH cause even earlier.
+        case = EvidenceCase(ROOT / 'examples/ordinary/case.json')
         candidate = ordinary_candidate()
-        cause = candidate['analysis']['causes']['primary'][0]
-        cause['confidence'] = 'HIGH'
-        cause['alternatives'][0]['status'] = 'WEAKENED_BY_EVIDENCE'
-        result = self.execute(candidate)
-        self.assertEqual(result['status'], 'FAILED_CLOSED')
-        self.assertIn('Reviewer retains', result['error']['message'])
+        report = build_report(case, case.intake(), candidate['analysis'])
+        report['causes']['primary'][0]['confidence'] = 'HIGH'
+        payload = {'candidate_sha256': 'test-bound-hash', 'case': case.model_input(), 'report': report}
+        review = reviewed([{'content': [{'text': json.dumps(payload)}]}])
+        with self.assertRaisesRegex(ValueError, 'Reviewer retains'):
+            check_review(review, 'test-bound-hash', case, report)
 
     def test_reviewer_counterexample_cannot_hide_its_affected_cause(self):
         def omit_cause(messages):
@@ -374,6 +377,55 @@ class FlowTests(unittest.TestCase):
             result = run_case(root / 'case.json', factory, 'CONTROLLED_TEST_DOUBLE', max_revisions=1)
         self.assertEqual(result['status'], 'FAILED_CLOSED')
         self.assertEqual(calls, ['drafter', 'reviewer'])
+
+    def test_actual_hidden_cognition_high_false_acceptance_fails_conservative_profile(self):
+        fixture = json.loads((ROOT / 'tests/fixtures/accepted-hidden-cognition-high.json').read_text(encoding='utf-8'))
+        result = self.execute(fixture['candidate'], review=fixture['review'])
+        self.assertEqual(result['status'], 'FAILED_CLOSED')
+        self.assertIn('Transcript-only evidence profile', result['error']['message'])
+        self.assertIsNone(result['report'])
+        self.assertEqual(self.models['reviewer'].calls, [])
+        self.assertEqual(result['candidate']['analysis']['causes']['contributing'][0]['confidence'], 'HIGH')
+
+    def test_profile_applies_to_every_cause_even_if_all_alternatives_claimed_weakened(self):
+        for group in ('primary', 'contributing'):
+            candidate = ordinary_candidate()
+            cause = candidate['analysis']['causes'][group][0]
+            cause['confidence'] = 'HIGH'
+            for alternative in cause['alternatives']:
+                alternative['status'] = 'WEAKENED_BY_EVIDENCE'
+            result = self.execute(candidate)
+            self.assertEqual(result['status'], 'FAILED_CLOSED')
+            self.assertIn('Transcript-only evidence profile', result['error']['message'])
+
+    def test_conservative_profile_preserves_medium_low_and_unmodified_upstream_high(self):
+        candidate = ordinary_candidate()
+        candidate['analysis']['causes']['contributing'][0]['confidence'] = 'LOW'
+        result = self.execute(candidate)
+        self.assertEqual(result['status'], 'VALIDATED_SYNTHETIC_DRAFT', result.get('error'))
+        self.assertEqual(result['evidence_profile']['allowed_causal_confidence'], ['MEDIUM', 'LOW'])
+        self.assertEqual(analysis_schema()['$defs']['cause']['properties']['confidence']['enum'], ['MEDIUM', 'LOW'])
+        upstream = json.loads((ROOT / 'vendor/autopsy/report.schema.json').read_text(encoding='utf-8'))
+        self.assertEqual(upstream['$defs']['cause']['properties']['confidence']['enum'], ['HIGH', 'MEDIUM', 'LOW'])
+
+    def test_actual_clarification_need_not_claim_a_nonexistent_causal_challenge(self):
+        fixture = json.loads((ROOT / 'tests/fixtures/clarification-no-causal-challenge.json').read_text(encoding='utf-8'))
+        result = self.execute(fixture['candidate'], 'insufficient', fixture['review'])
+        self.assertEqual(result['status'], 'CLARIFICATION_REQUESTED', result.get('error'))
+        self.assertFalse(result['review']['adversarial_challenge_check'])
+        self.assertIsNone(result['report'])
+
+    def test_diagnosis_requires_causal_challenge_and_clarification_requires_evidence_check(self):
+        def no_challenge(messages):
+            review = reviewed(messages)
+            review['adversarial_challenge_check'] = False
+            return review
+        self.assertEqual(self.execute(ordinary_candidate(), review=no_challenge)['status'], 'FAILED_CLOSED')
+        def no_evidence(messages):
+            review = reviewed(messages)
+            review['evidence_link_check'] = False
+            return review
+        self.assertEqual(self.execute(insufficient_candidate(), 'insufficient', no_evidence)['status'], 'FAILED_CLOSED')
 
 
 if __name__ == '__main__':

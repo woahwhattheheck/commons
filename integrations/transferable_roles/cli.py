@@ -10,10 +10,12 @@ Examples:
   python3 integrations/transferable_roles/cli.py release ROLE --from-session A --store /tmp/roles
   python3 integrations/transferable_roles/cli.py advance-obligation ROLE --id ob-1 --status done --evidence-pointer p/example.md --store /tmp/roles
   python3 integrations/transferable_roles/cli.py open-obligations --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py open-obligations --cash-only --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-case ROLE --case-ref case_001 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-receipt-row ROLE --case-ref case_001 --g2-run-id run_1 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-deadline ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-validate ROLE --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py autopsy-fulfill-sla ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --as-of 2026-09-08T10:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-receipt ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-fulfill-deadline ROLE --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
@@ -30,7 +32,7 @@ import json
 import sys
 from pathlib import Path
 
-from autopsy_fulfill import run_deadline, run_validate
+from autopsy_fulfill import run_deadline, run_sla_status, run_validate
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
 from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
@@ -168,6 +170,14 @@ def build_parser() -> argparse.ArgumentParser:
     afv.add_argument("--report", type=Path)
     afv.add_argument("--evidence-root", type=Path)
 
+    afs = sub.add_parser(
+        "autopsy-fulfill-sla",
+        help="OPEN|MISSED Autopsy SLA vs as_of via landed next_business_day",
+    )
+    afs.add_argument("role_id")
+    afs.add_argument("--usable-evidence-at", required=True)
+    afs.add_argument("--as-of", required=True)
+
     dc = sub.add_parser(
         "diagnostic-contract",
         help="load landed $199 diagnostic contract.json by slug "
@@ -232,6 +242,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="dealer",
         choices=("dealer", "referral", "repair", "plant"),
     )
+    ph.add_argument(
+        "--as-of",
+        help="SLA as_of for diagnostic-fulfill-sla prove "
+        "(default: usable-evidence-at → OPEN)",
+    )
 
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
@@ -246,9 +261,14 @@ def build_parser() -> argparse.ArgumentParser:
     imp.add_argument("--file", type=Path, required=True, help="JSON package path")
 
     sub.add_parser("list", help="list role ids in the store")
-    sub.add_parser(
+    oo = sub.add_parser(
         "open-obligations",
         help="list open obligations across all roles as flat dicts",
+    )
+    oo.add_argument(
+        "--cash-only",
+        action="store_true",
+        help="only rows marked payment_capability: true; this is not proof of payment",
     )
     for command_parser in sub.choices.values():
         command_parser.add_argument(
@@ -365,6 +385,15 @@ def main(argv: list[str] | None = None) -> int:
                     evidence_root=args.evidence_root,
                 )
             )
+        elif args.cmd == "autopsy-fulfill-sla":
+            role = store.get(args.role_id)
+            _print(
+                run_sla_status(
+                    role,
+                    usable_evidence_at=args.usable_evidence_at,
+                    as_of=args.as_of,
+                )
+            )
         elif args.cmd == "diagnostic-contract":
             role = store.get(args.role_id)
             _print(load_contract_from_role(role, slug=args.slug))
@@ -398,6 +427,7 @@ def main(argv: list[str] | None = None) -> int:
                     case_ref=args.case_ref,
                     usable_evidence_at=args.usable_evidence_at,
                     diagnostic_slug=args.slug,
+                    as_of=args.as_of,
                 )
             )
         elif args.cmd == "inspect":
@@ -409,7 +439,13 @@ def main(argv: list[str] | None = None) -> int:
         elif args.cmd == "list":
             _print({"roles": store.list_ids()})
         elif args.cmd == "open-obligations":
-            _print({"open_obligations": store.list_open_obligations()})
+            _print(
+                {
+                    "open_obligations": store.list_open_obligations(
+                        cash_only=bool(getattr(args, "cash_only", False))
+                    )
+                }
+            )
         else:
             raise RoleError(f"unknown command: {args.cmd}")
     except RoleError as exc:

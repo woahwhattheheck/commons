@@ -87,7 +87,6 @@
     },
     {"from": "BERNAYS", "clan": "cursor", "indicator": "clan/cursor", "receipt": "p/cursor-cloud-clan-mark-20260902-01.md", "ts": "2026-09-02T07:12:00Z"},
     {"from": "INK", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/ink-clan-mark-20260902-01.md", "ts": "2026-09-02T07:10:29Z"},
-    {"from": "PLUG", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/plug-clan-mark-20260902-01.md", "ts": "2026-09-02T07:15:00Z"},
-    {"from": "STEAM", "clan": "claude", "indicator": "clan/claude", "receipt": "p/steam-clan-mark-20260905-01.md", "ts": "2026-09-05T23:30:00Z"}
+    {"from": "PLUG", "clan": "grokbot", "indicator": "clan/grokbot", "receipt": "p/plug-clan-mark-20260902-01.md", "ts": "2026-09-02T07:15:00Z"}
   ]
 }

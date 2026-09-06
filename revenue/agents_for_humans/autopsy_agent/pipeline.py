@@ -8,7 +8,7 @@ from pathlib import Path
 
 from strands import Agent
 
-from .contracts import (EvidenceCase, analysis_schema, build_report, digest,
+from .contracts import (EVIDENCE_PROFILE, EvidenceCase, analysis_schema, build_report, digest,
                         model_json, utc_now, validate_refs)
 
 DRAFTER_SYSTEM = '''You diagnose one failed agent execution from supplied redacted evidence.
@@ -29,6 +29,16 @@ HIGH: supplied evidence directly shows the mechanism and a materially different
 explanation conflicts with the record.
 MEDIUM: evidence supports the mechanism, but plausible alternatives remain untested.
 LOW: a bounded hypothesis explains the record but needs a named replay check.
+
+This candidate's conservative CURATED_SYNTHETIC_TRANSCRIPT_ONLY profile permits only
+MEDIUM or LOW causal confidence. No independent mechanism-verification artifact is
+supported. The upstream HIGH definition above is preserved for attribution, but HIGH
+is unavailable in this candidate and will be rejected rather than silently lowered.
+Describe observable workflow behavior when explaining repeated actions. An outward
+remark is recorded text, not direct access to internal reasoning, awareness, intent,
+or the context actually presented to the earlier agent. If a cognition or context
+account is useful, explicitly describe it as an unverified LOW-confidence hypothesis,
+identify the missing context evidence, and retain competing explanations.
 
 Return exactly one JSON object, no Markdown, with these fields:
 assessment: USABLE or NEEDS_CLARIFICATION
@@ -66,7 +76,8 @@ decision: ACCEPT or REJECT
 candidate_sha256: repeat the supplied exact candidate hash
 evidence_sha256: repeat the supplied exact evidence hash
 evidence_link_check: boolean
-adversarial_challenge_check: boolean
+adversarial_challenge_check: boolean; required true for a diagnosis, may be false
+for a no-diagnosis clarification where no causal account exists to challenge
 findings: nonempty array of objects {statement: string, evidence_refs: array of exact
 allowed references}. Explain substantive reasons, not just that the schema passes.
 counterexamples: array (nonempty for a diagnosis; may be empty for a clarification
@@ -90,12 +101,24 @@ Do not skip any cause, inflate confidence, or treat a plausible cause as proven.
 HIGH needs the mechanism directly shown and materially different explanations
 conflicting with the record; a plausible untested override requires lower confidence.
 required_changes: array of strings; empty only when accepting.
-An ACCEPT requires both checks true, every cause supported at its stated confidence,
-every alternative examined, and no unresolved required_changes.
+An ACCEPT requires evidence_link_check true, every cause supported at its stated
+confidence, every alternative examined, and no unresolved required_changes.
+For a diagnosis, adversarial_challenge_check must also be true. For a clarification,
+the evidence-linked findings must verify insufficient evidence, no invented diagnosis,
+and relevance of the question; do not pretend to have challenged nonexistent causes.
 Enforce confidence definitions: HIGH requires direct mechanism evidence and a
 materially different explanation that conflicts with the record; MEDIUM means
 supported mechanism with plausible alternatives still untested; LOW means a bounded
 hypothesis needing a named replay check. Confidence does not mean certainty.
+
+The supplied transcript-only evidence profile is a stricter candidate-specific rule:
+only MEDIUM and LOW causal confidence are available because no independent mechanism
+verification artifact is supported here. Preserve the upstream definitions, but
+reject HIGH in this candidate. An agent's outward remark is not direct evidence of
+its complete internal reasoning, awareness, intent, or received context. Prefer an
+explanation in terms of observable workflow behavior. Any cognition or context
+account must be explicitly an unverified LOW-confidence hypothesis with missing
+evidence identified; reject an account presented as proven by an outward remark.
 '''
 
 
@@ -180,7 +203,7 @@ def check_review(review, candidate_hash, case, report):
         raise ValueError('Independent review did not cover every cause exactly once')
     if review['decision'] == 'ACCEPT' and any(c['support'] != 'SUPPORTED_INFERENCE' or not c['confidence_supported'] or not c['alternatives_examined'] for c in checks):
         raise ValueError('Acceptance contradicts a per-cause review failure')
-    if review['decision'] == 'ACCEPT' and (not review['evidence_link_check'] or not review['adversarial_challenge_check'] or review['required_changes']):
+    if review['decision'] == 'ACCEPT' and (not review['evidence_link_check'] or (report is not None and not review['adversarial_challenge_check']) or review['required_changes']):
         raise ValueError('Acceptance contradicts review checks or unresolved changes')
 
 
@@ -202,6 +225,7 @@ def run_case(manifest_path: Path, model_factory, execution_kind: str, progress=N
     run = {'schema_version': 'agents-for-humans-run/v1', 'run_id': str(uuid.uuid4()),
            'started_at': utc_now(), 'source_version': source_version(),
            'execution_kind': execution_kind, 'status': 'STARTED',
+           'evidence_profile': dict(EVIDENCE_PROFILE),
            'phases': [], 'rounds': [], 'intake': None, 'candidate': None, 'draft_report': None, 'review': None, 'report': None,
            'claims': {'buyer_delivery': False, 'payment': False, 'revenue': False,
                       'fix_executed': False, 'replay_executed': False}}

@@ -1,0 +1,187 @@
+{
+  "schema_version": "agents-for-humans-run/v1",
+  "run_id": "57dac963-b455-4bbe-9a2f-a1a0a1a130bc",
+  "started_at": "2026-09-05T23:33:31.157304+00:00",
+  "source_version": "b39339c3b0eb124ad4b0531fe86eaaa5a6a510b5b22c9d6fa1ee4e98976f7734",
+  "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+  "status": "CLARIFICATION_REQUESTED",
+  "phases": [
+    {
+      "role": "drafter",
+      "agent_id": "autopsy-drafter-913b1029254944e8bb665860c649c70e",
+      "input_sha256": "4760e250ed3296cb91e24d5331642c34b942aff7f8d6cfe833dd396db6dde22d",
+      "model_config": {
+        "model_id": "gemini-pro-agent",
+        "max_tokens": 16384
+      },
+      "started_at": "2026-09-05T23:33:31.298482+00:00",
+      "completed_at": "2026-09-05T23:33:35.624266+00:00",
+      "wall_seconds": 4.32101,
+      "output_text": "{\n  \"assessment\": \"NEEDS_CLARIFICATION\",\n  \"assessment_reasons\": [\n    \"The reporter states that the agent run failed but explicitly notes the absence of commands, tool output, error text, and changed files.\",\n    \"Without actions, outcomes, or error text, there is no evidence to discriminate potential causes or construct a timeline of the failure.\"\n  ],\n  \"clarification_question\": \"Please provide the execution logs, executed commands, tool outputs, or the specific error message generated during the agent run, as these are necessary to diagnose the failure.\",\n  \"analysis\": null\n}\n"
+    },
+    {
+      "role": "reviewer",
+      "agent_id": "autopsy-reviewer-e5636f6059d6423b99c2cc0ef17e62b1",
+      "input_sha256": "a23fdc2f3b74dfc2e5aa6b24bcae34b016d15a89240f2ef9708ae4c556a889bd",
+      "model_config": {
+        "model_id": "gemini-pro-agent",
+        "max_tokens": 16384
+      },
+      "started_at": "2026-09-05T23:33:35.638143+00:00",
+      "completed_at": "2026-09-05T23:33:43.522678+00:00",
+      "wall_seconds": 7.884228,
+      "output_text": "{\n  \"decision\": \"ACCEPT\",\n  \"candidate_sha256\": \"d530077a8ed371986bdc2d61bacf99aa046f0828582248b17fe23a8d5015b018\",\n  \"evidence_sha256\": \"3dda0b0ea2ebea373043780ab08b0027eae44f1e145814e9917999be1fbff518\",\n  \"evidence_link_check\": true,\n  \"adversarial_challenge_check\": true,\n  \"findings\": [\n    {\n      \"statement\": \"The candidate appropriately assesses the state as NEEDS_CLARIFICATION because the evidence explicitly states that all command sequences, tool outputs, and error texts are missing.\",\n      \"evidence_refs\": [\n        \"transcript-001#U1-L01\"\n      ]\n    }\n  ],\n  \"counterexamples\": [\n    \"Because no logs or outputs are provided, any number of causes could explain the failure (e.g., an incorrect prompt, a missing dependency, or a network timeout), making it impossible to perform a diagnosis without the requested clarification.\"\n  ],\n  \"required_changes\": []\n}\n"
+    }
+  ],
+  "intake": {
+    "schema_version": "commons-agent-failure-autopsy-intake/v1",
+    "kind": "AGENT_FAILURE_AUTOPSY_INTAKE",
+    "record_classification": "SYNTHETIC_EXAMPLE",
+    "case_id": "synthetic-insufficient-001",
+    "buyer_ref": "buyer_0000000000000000",
+    "failure_sentence": "An agent run failed, but the command sequence and error output were not supplied.",
+    "submitted_at": "2026-09-05T23:33:31.226765+00:00",
+    "evidence": [
+      {
+        "evidence_id": "transcript-001",
+        "kind": "text",
+        "location_ref": "example:transcript.txt",
+        "sha256": "3dda0b0ea2ebea373043780ab08b0027eae44f1e145814e9917999be1fbff518",
+        "redacted": true,
+        "received_at": "2026-09-05T23:33:31.226765+00:00",
+        "anchors": [
+          {
+            "anchor_id": "U1-L01",
+            "description": "user | The agent run failed. I do not have the commands, tool output, error text, or a record of what the agent changed."
+          }
+        ],
+        "evidence_role": "transcript",
+        "raw_bytes": 217,
+        "extracted_text_sha256": "3dda0b0ea2ebea373043780ab08b0027eae44f1e145814e9917999be1fbff518",
+        "extracted_characters": 217,
+        "extraction_method": "DIRECT_UTF8",
+        "sanitized": true,
+        "scope_relevance": "ONE_FAILED_EXECUTION",
+        "instructions_treated_as_data": true,
+        "extracted_text_location_ref": "example:transcript.txt",
+        "handling_state": "ANALYZABLE_UNTRUSTED_DATA",
+        "quarantine_reason": null
+      }
+    ],
+    "evidence_assessment": {
+      "state": "CLARIFICATION_REQUESTED",
+      "assessed_at": "2026-09-05T23:33:35.625282+00:00",
+      "clock_basis_evidence_ids": [],
+      "usable_evidence_at": null,
+      "delivery_due_at": null,
+      "reasons": [
+        "The draft agent requested missing evidence; independent review is recorded separately."
+      ]
+    },
+    "clarification": {
+      "rounds_used": 1,
+      "question": "Please provide the execution logs, executed commands, tool outputs, or the specific error message generated during the agent run, as these are necessary to diagnose the failure.",
+      "response_received_at": null,
+      "response_evidence_ids": []
+    },
+    "access_boundary": {
+      "secrets_requested": false,
+      "unredacted_credentials_requested": false,
+      "production_access_requested": false,
+      "repository_access_requested": false
+    },
+    "scope_boundary": {
+      "agent_workflows": 1,
+      "failed_executions": 1,
+      "unrelated_incidents_included": false,
+      "archives_included": false,
+      "executables_included": false,
+      "repository_dumps_included": false,
+      "embedded_instructions_trusted": false
+    },
+    "intake_caps": {
+      "max_files": 10,
+      "max_raw_bytes": 25000000,
+      "max_extracted_characters": 2000000,
+      "approximate_text_token_limit": 500000,
+      "accepted_file_count": 1,
+      "accepted_raw_bytes": 217,
+      "accepted_extracted_characters": 217,
+      "boundary_hit": "NONE",
+      "selection_state": "WITHIN_CAP",
+      "quarantined_file_count": 0
+    },
+    "coding_stack": "Unknown; the reporter did not retain the run artifacts."
+  },
+  "candidate": {
+    "assessment": "NEEDS_CLARIFICATION",
+    "assessment_reasons": [
+      "The reporter states that the agent run failed but explicitly notes the absence of commands, tool output, error text, and changed files.",
+      "Without actions, outcomes, or error text, there is no evidence to discriminate potential causes or construct a timeline of the failure."
+    ],
+    "clarification_question": "Please provide the execution logs, executed commands, tool outputs, or the specific error message generated during the agent run, as these are necessary to diagnose the failure.",
+    "analysis": null
+  },
+  "review": {
+    "decision": "ACCEPT",
+    "candidate_sha256": "d530077a8ed371986bdc2d61bacf99aa046f0828582248b17fe23a8d5015b018",
+    "evidence_sha256": "3dda0b0ea2ebea373043780ab08b0027eae44f1e145814e9917999be1fbff518",
+    "evidence_link_check": true,
+    "adversarial_challenge_check": true,
+    "findings": [
+      {
+        "statement": "The candidate appropriately assesses the state as NEEDS_CLARIFICATION because the evidence explicitly states that all command sequences, tool outputs, and error texts are missing.",
+        "evidence_refs": [
+          "transcript-001#U1-L01"
+        ]
+      }
+    ],
+    "counterexamples": [
+      "Because no logs or outputs are provided, any number of causes could explain the failure (e.g., an incorrect prompt, a missing dependency, or a network timeout), making it impossible to perform a diagnosis without the requested clarification."
+    ],
+    "required_changes": []
+  },
+  "report": null,
+  "claims": {
+    "buyer_delivery": false,
+    "payment": false,
+    "revenue": false,
+    "fix_executed": false,
+    "replay_executed": false
+  },
+  "case_id": "synthetic-insufficient-001",
+  "evidence_sha256": "3dda0b0ea2ebea373043780ab08b0027eae44f1e145814e9917999be1fbff518",
+  "completed_at": "2026-09-05T23:33:43.547588+00:00",
+  "provider_requests": [
+    {
+      "request_id": "59fbc1fc-be35-4855-a5f7-98eb94f2adc3",
+      "started_at": "2026-09-05T23:33:31.323816+00:00",
+      "provider": "COMMONS_GEMINI_CODE_ASSIST",
+      "model_id": "gemini-pro-agent",
+      "session_id": "ed746476-f4bd-4251-983f-93ff8c597895",
+      "status": "SUCCEEDED",
+      "token_usage": null,
+      "token_usage_note": "The existing relay return type does not expose provider usage.",
+      "finish_reasons": [
+        "STOP"
+      ],
+      "completed_at": "2026-09-05T23:33:35.611335+00:00",
+      "wall_seconds": 4.287201
+    },
+    {
+      "request_id": "ebebec42-739a-44ca-abdb-65077df4808d",
+      "started_at": "2026-09-05T23:33:35.641299+00:00",
+      "provider": "COMMONS_GEMINI_CODE_ASSIST",
+      "model_id": "gemini-pro-agent",
+      "session_id": "8f897a88-6ac5-4846-a4e0-6b00174d34ef",
+      "status": "SUCCEEDED",
+      "token_usage": null,
+      "token_usage_note": "The existing relay return type does not expose provider usage.",
+      "finish_reasons": [
+        "STOP"
+      ],
+      "completed_at": "2026-09-05T23:33:43.517366+00:00",
+      "wall_seconds": 7.878166
+    }
+  ]
+}

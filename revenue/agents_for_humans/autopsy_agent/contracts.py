@@ -18,6 +18,11 @@ ANALYSIS_KEYS = {'timeline', 'first_meaningful_divergence', 'failure_chain',
                  'causes', 'fixes', 'prevention_check', 'limitations'}
 DRAFT_KEYS = {'first_divergence_ref', 'failure_chain_refs', 'causes', 'fixes',
               'prevention_check', 'limitations'}
+EVIDENCE_PROFILE = {
+    'profile': 'CURATED_SYNTHETIC_TRANSCRIPT_ONLY',
+    'independent_mechanism_verification_supported': False,
+    'allowed_causal_confidence': ['MEDIUM', 'LOW'],
+    'boundary': 'This candidate accepts one transcript and no independent mechanism-verification artifact. HIGH causal confidence is unavailable; the upstream definition remains unchanged.'}
 
 
 def utc_now() -> str:
@@ -114,6 +119,7 @@ class EvidenceCase:
     def model_input(self) -> dict:
         return {'case_id': self.manifest['case_id'],
                 'classification': 'SYNTHETIC_EXAMPLE',
+                'evidence_profile': copy.deepcopy(EVIDENCE_PROFILE),
                 'failure_sentence': self.manifest['failure_sentence'],
                 'coding_stack': self.manifest['coding_stack'],
                 'evidence_sha256': self.sha256,
@@ -179,10 +185,11 @@ def build_report(case: EvidenceCase, intake: dict, analysis: dict) -> dict:
     if not isinstance(analysis['prevention_check'], dict) or analysis['prevention_check'].get('execution_state') != 'PROPOSED_NOT_RUN':
         raise ValueError('This candidate cannot claim that a proposed replay was executed')
     for cause in analysis['causes']['primary'] + analysis['causes']['contributing']:
-        # A necessary condition from RUNBOOK §5, not a proof of causal entailment.
-        # HIGH is inconsistent with a materially plausible alternative left untested.
-        if cause['confidence'] == 'HIGH' and any(a['status'] != 'WEAKENED_BY_EVIDENCE' for a in cause['alternatives']):
-            raise ValueError('HIGH confidence cannot retain a plausible or untested alternative')
+        # Candidate-specific conservative rule, not a change to RUNBOOK §5.
+        # No independent mechanism-verification artifact can be ingested here.
+        # Never silently downgrade a model's confidence to get through validation.
+        if cause['confidence'] not in EVIDENCE_PROFILE['allowed_causal_confidence']:
+            raise ValueError('Transcript-only evidence profile permits MEDIUM or LOW causal confidence; HIGH requires an unsupported independent verification artifact')
 
     def observed(ref, sequence):
         text = case.anchors[ref.split('#', 1)[1]]
@@ -220,6 +227,9 @@ def build_report(case: EvidenceCase, intake: dict, analysis: dict) -> dict:
 
 def analysis_schema() -> dict:
     schema = json.loads((VENDOR / 'report.schema.json').read_text(encoding='utf-8'))
+    schema['$defs']['cause']['properties']['confidence'] = {
+        'enum': list(EVIDENCE_PROFILE['allowed_causal_confidence']),
+        'description': EVIDENCE_PROFILE['boundary']}
     schema['properties']['prevention_check']['oneOf'][1]['properties']['execution_state'] = {'const': 'PROPOSED_NOT_RUN'}
     return {'type': 'object', 'additionalProperties': False,
             'required': sorted(DRAFT_KEYS), '$defs': schema['$defs'],

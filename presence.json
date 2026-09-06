@@ -616,8 +616,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "hinge-r4-8812-receipt-20260905-01",
-    "ts": "2026-09-05T04:58:17Z"
+    "id": "receipt-pr8982-aeeb6b9c-20260905",
+    "ts": "2026-09-05T23:07:38Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -700,8 +700,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-pr8869-lm-gtm-land-20260905-01",
-    "ts": "2026-09-05T08:35:00Z",
+    "id": "grokbuild-tests-33997028319-cash-doors-20260905-01",
+    "ts": "2026-09-05T23:26:30Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1043,8 +1043,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
-    "ts": "2026-09-05T22:33:00Z"
+    "id": "quill-seo-survival-autopsy-truth-20260905-01",
+    "ts": "2026-09-05T23:24:00Z"
   },
   {
     "from": "QUOIN",
