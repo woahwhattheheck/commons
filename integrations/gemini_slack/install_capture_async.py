@@ -46,6 +46,18 @@ def _replace_once(source: str, before: str, after: str) -> str:
 
 def patch_gateway(source: str) -> str:
     tree = ast.parse(source)
+    terminal_marker = "# commons-async-terminal-v1"
+    if terminal_marker not in source:
+        assignments = [node for node in tree.body if isinstance(node, ast.Assign)
+                       and any(isinstance(target, ast.Name) and target.id == "TERMINAL_STATUSES"
+                               for target in node.targets)]
+        if len(assignments) != 1:
+            raise ValueError("Expected the existing capture terminal status set")
+        terminal_lines = source.splitlines(keepends=True)
+        terminal_lines.insert(assignments[0].end_lineno,
+                              f"TERMINAL_STATUSES = TERMINAL_STATUSES | {{'interrupted'}}  {terminal_marker}\n")
+        source = "".join(terminal_lines)
+        tree = ast.parse(source)
     gateways = [node for node in tree.body if isinstance(node, ast.ClassDef)
                 and node.name == "Gateway"]
     if len(gateways) != 1:
