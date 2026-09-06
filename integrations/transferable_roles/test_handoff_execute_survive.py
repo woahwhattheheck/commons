@@ -113,6 +113,31 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             )
             self.assertEqual(g2["session_id"], "g2-export-sess")
 
+    def test_autopsy_release_then_equip_prove(self) -> None:
+        # rivet-r4-handoff-prove-release-equip-20260905-01
+        role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+        rid = role["role_id"]
+        self.store.bind_access_route(
+            rid,
+            route_name="grokbot_control_g2",
+            session_id="g2-release-sess",
+            last_run_id="g2-release-run",
+        )
+        self.store.equip(rid, session_id="rel-A", harness="hinge", seat="HINGE")
+        self.store.release(rid, from_session_id="rel-A")
+        self.store.equip(rid, session_id="rel-B", harness="rivet", seat="RIVET")
+        proof = prove_successor_executes(self.store, rid)
+        self.assertTrue(proof["ok"])
+        self.assertEqual(proof["occupant_session"], "rel-B")
+        self.assertIn("autopsy-case", proof["executes"])
+        self.assertIn("autopsy-receipt-row", proof["executes"])
+        self.assertIn("autopsy-fulfill-deadline", proof["executes"])
+        self.assertIn("autopsy-fulfill-validate", proof["executes"])
+        self.assertIn("autopsy-fulfill-sla", proof["executes"])
+        g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
+        self.assertEqual(g2["session_id"], "g2-release-sess")
+        self.assertEqual(g2["last_run_id"], "g2-release-run")
+
     def test_diagnostic_transfer_then_prove(self) -> None:
         role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
         rid = role["role_id"]
@@ -159,6 +184,24 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertNotIn("diagnostic-receipt", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-deadline", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-sla", repair_proof["executes"])
+
+    def test_diagnostic_release_then_equip_prove(self) -> None:
+        # rivet-r4-handoff-prove-release-equip-20260905-01
+        role = self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
+        rid = role["role_id"]
+        self.store.equip(rid, session_id="d-rel-A", harness="hinge")
+        self.store.release(rid, from_session_id="d-rel-A")
+        self.store.equip(rid, session_id="d-rel-B", harness="rivet")
+        proof = prove_successor_executes(self.store, rid, diagnostic_slug="dealer")
+        self.assertTrue(proof["ok"])
+        self.assertEqual(proof["occupant_session"], "d-rel-B")
+        self.assertIn("diagnostic-contract", proof["executes"])
+        self.assertIn("diagnostic-receipt", proof["executes"])
+        self.assertIn("diagnostic-fulfill-deadline", proof["executes"])
+        self.assertIn("diagnostic-fulfill-sla", proof["executes"])
+        self.assertEqual(
+            proof["executes"]["diagnostic-fulfill-sla"]["sla_status"], "OPEN"
+        )
 
     def test_crm_refuses(self) -> None:
         role = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))
