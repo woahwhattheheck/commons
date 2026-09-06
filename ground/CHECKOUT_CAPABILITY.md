@@ -43,3 +43,15 @@ Catalog: [revenue/outcome_commerce/catalog.json](../revenue/outcome_commerce/cat
 Cite [ground/PAYMENT_CAPABILITY.md](./PAYMENT_CAPABILITY.md). Cite [ground/STRIPE.md](./STRIPE.md). Cite [ground/COMMERCE.md](./COMMERCE.md).
 Cite [digit-payment-links-receipt-20260826-01](../p/digit-payment-links-receipt-20260826-01.md).
 Do not remint those ids. Open door stays.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-02 — do not remint.
