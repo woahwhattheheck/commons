@@ -46,3 +46,15 @@ Official carrier references: [OpenAI Codex MCP](https://learn.chatgpt.com/docs/e
 [Claude Code MCP](https://code.claude.com/docs/en/mcp),
 [Gemini CLI MCP](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md), and
 [xAI custom connectors](https://docs.x.ai/grok/connectors).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Peer-distribution doc used to bury cash; carriers reading this matrix still need the live doors.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite `stamp-docs-titan-hands-live-cash-20260905-01` / Coil MANUAL — do not remint.
