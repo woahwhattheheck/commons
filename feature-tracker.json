@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTED": 101
+    "TESTS_PRESENT": 102
   },
   "features": [
     {
@@ -95,7 +95,7 @@
         "revenue/arbitrage/opportunity.schema.json"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -175,7 +175,7 @@
         "host/business_pack_operator.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -252,7 +252,7 @@
         "host/business_pack_paperwork.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -319,7 +319,7 @@
         "host/business_pack_paperwork_included.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -389,7 +389,7 @@
         "host/unbuilt_items.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -457,7 +457,7 @@
         "test_data_license.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -509,7 +509,7 @@
         "revenue/at_grok_cmdp_evidence/SCHEMA_MATRIX.md",
         "p/AT-GROK-CMDP-EVIDENCE-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -517,7 +517,7 @@
         "at_grok_cmdp_evidence.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -573,7 +573,7 @@
         "revenue/aquatrace_ops_acceptance/matrix.json",
         "p/AT-GROK-OPS-ACCEPTANCE-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -581,7 +581,7 @@
         "aquatrace_ops_acceptance.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -637,7 +637,7 @@
         "revenue/ace_qat_thermal_rheology_capacity/contract.json",
         "p/cursor-ace-qat-thermal-rheology-capacity-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -645,7 +645,7 @@
         "ace_qat_thermal_rheology_capacity.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -685,7 +685,7 @@
         "ground/OPEN_DOOR.md",
         "action.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -693,7 +693,7 @@
         "open_door_guard.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -745,7 +745,7 @@
         "revenue/agriseed_rush_work_allocator/contract.json",
         "p/agriseed-rush-work-allocator-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -753,7 +753,7 @@
         "agriseed_rush_work_allocator.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -807,7 +807,7 @@
         "revenue/ait_mn_metrc_capacity_gate/contract.json",
         "p/cursor-ait-mn-metrc-capacity-gate-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -815,7 +815,7 @@
         "ait_mn_metrc_capacity_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -879,7 +879,7 @@
         "revenue/aquatrace_work_order_c_reporting_offline/contract.json",
         "p/aquatrace-work-order-c-reporting-offline-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -887,7 +887,7 @@
         "aquatrace_work_order_c_reporting_offline.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -941,7 +941,7 @@
         "revenue/aquatrace_work_order_f_release_readiness/contract.json",
         "p/aquatrace-work-order-f-release-readiness-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -949,7 +949,7 @@
         "aquatrace_work_order_f_release_readiness.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1003,7 +1003,7 @@
         "revenue/ats_asphalt_spec_result_lims/contract.json",
         "p/cursor-ats-asphalt-spec-result-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1011,7 +1011,7 @@
         "ats_asphalt_spec_result_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1059,14 +1059,14 @@
         "autogtm.html",
         "p/cursor-autogtm-door-live-probe-20260902-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_autogtm_door_live_probe.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1116,7 +1116,7 @@
         ".agents/skills/autogtm/SKILL.md",
         "p/cursor-autogtm-explee-same-loop-20260902-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1124,7 +1124,7 @@
         "host/autogtm_same_loop.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1178,7 +1178,7 @@
         "revenue/baddl_eia_accession_release/contract.json",
         "p/cursor-baddl-eia-accession-release-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1186,7 +1186,7 @@
         "baddl_eia_accession_release.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1228,7 +1228,7 @@
       "resource_links": [
         "builds.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1236,7 +1236,7 @@
         "builds_ledger.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1285,7 +1285,7 @@
         "ground/SLACK_CONTROL_PLANE.md",
         "payment-capability.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1293,7 +1293,7 @@
         "host/business_pack_keep_sell.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1357,7 +1357,7 @@
         "revenue/canyon_multisite_regulated_intake/receipts/run.json",
         "p/canyon-multisite-regulated-intake-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1365,7 +1365,7 @@
         "canyon_multisite_regulated_intake.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1402,14 +1402,14 @@
       "resource_links": [
         "p/codex-catering-deposit-rescue-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_catering_deposit_rescue.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1458,7 +1458,7 @@
         "p/ccc-snapshot-toolchain-working-20260901-01.md",
         "https://github.com/woahwhattheheck/commons/issues/7238"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1466,7 +1466,7 @@
         "host/ccc_snapshot_toolchain.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1518,7 +1518,7 @@
         "revenue/chemtechford_short_hold_intake_lims/contract.json",
         "p/chemtechford-short-hold-intake-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1526,7 +1526,7 @@
         "chemtechford_short_hold_intake_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1584,7 +1584,7 @@
         "revenue/clark_d4172_proficiency/contract.json",
         "p/cursor-clark-d4172-proficiency-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1592,7 +1592,54 @@
         "clark_d4172_proficiency.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Reuses shared credential custody directly for Claude child-process OAuth and the existing Grok Bot app HTTPS coordinator: agent discovery, explicit prompts, transcripts, attachment reads and exact-byte uploads. No new vault, peer grant or holder session.",
+      "carrier": "Codex",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "integrations/shared_equipment/headless.py",
+        "integrations/shared_equipment/README.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "integrations/shared_equipment/headless.py",
+        "integrations/shared_equipment/README.md"
+      ],
+      "dependencies": [],
+      "evidence_ids": [],
+      "file": "codex-shared-headless-client-20260905-01.json",
+      "id": "codex-shared-headless-client-20260905-01",
+      "last_change": "2026-09-05",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Direct Claude and Grok Bot app headless client",
+      "next_gap": "Existing peer processes must import current source to use the new API. CI makes no live provider or model calls; owner-session service receipts remain separate from source tests.",
+      "owner_subsystem": "shared-equipment",
+      "public_entrypoint": "integrations/shared_equipment/README.md",
+      "receipts": [],
+      "related": {
+        "boards": true,
+        "current_work": true,
+        "profitability": false,
+        "resources": true
+      },
+      "resource_links": [
+        "integrations/shared_equipment/README.md",
+        "integrations/shared_equipment/headless.py",
+        "p/codex-shared-headless-client-20260905-01.md"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "integrations/shared_equipment/test_headless.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1641,7 +1688,7 @@
         "commerce-agents-loop.html",
         "p/cursor-big-huge-commerce-agents-20260902-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1649,7 +1696,7 @@
         "host/commerce_agents_same_loop.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1703,7 +1750,7 @@
         "revenue/cornell_craft_beverage_intake/contract.json",
         "p/cursor-cornell-craft-beverage-intake-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1711,7 +1758,7 @@
         "cornell_craft_beverage_intake.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1767,7 +1814,7 @@
         "revenue/csanalytical_expansion_crossline_lims/contract.json",
         "p/cursor-csanalytical-expansion-crossline-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1775,7 +1822,7 @@
         "csanalytical_expansion_crossline_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1829,7 +1876,7 @@
         "revenue/csplabs_express_capacity_assurance/contract.json",
         "p/cursor-csplabs-express-capacity-assurance-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1837,7 +1884,7 @@
         "csplabs_express_capacity_assurance.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1888,7 +1935,7 @@
         "ground/CURRENT_WORK.md",
         "gpt-grok-ship-loop.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1896,7 +1943,7 @@
         "host/current_work.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -1950,7 +1997,7 @@
         "ground/BUSINESS_PACK_PAPERWORK.md",
         "p/cursor-business-pack-paperwork-included-20260902-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -1958,7 +2005,7 @@
         "host/business_pack_paperwork_filled.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2000,7 +2047,7 @@
         "ground/OWNER_NOW.md",
         "docs/spark-mcp.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2008,7 +2055,7 @@
         "test_grounding_door.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2052,14 +2099,14 @@
         "ground/SLACK_CUSTOM_TOOLS_INSTALL.md",
         "ground/NEEDS_BRYCE.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_slack_custom_tools_cli_ticket.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2104,14 +2151,14 @@
         "ground/SLACK_CUSTOM_TOOLS_CLI_PROJECT.md",
         "integrations/slack_custom_tools/README.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_slack_custom_tools_cli_integrations.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2158,14 +2205,14 @@
         "host/slack_custom_tools_cli/get_manifest.py",
         "integrations/slack_custom_tools/README.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_slack_custom_tools_cli_project.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2208,14 +2255,14 @@
         "ground/SLACK_SERVICE_TAGS.md",
         "slack-tags.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_slack_service_all_drivers.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2259,14 +2306,14 @@
         "ground/NEEDS_BRYCE.md",
         "slack-tags.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_slack_service_tags.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2311,14 +2358,14 @@
         "ground/SLACK_SERVICE_TAGS.md",
         "integrations/slack_service_tags/README.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_slack_service_tag_worker.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2363,14 +2410,14 @@
         "ground/SLACK_SERVICE_TAGS.md",
         "docs/spark-mcp.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_slack_spark_mcp_driver.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2424,7 +2471,7 @@
         "diagnostic.html",
         "commercial.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2432,7 +2479,7 @@
         "dealer-service-lead-rescue.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2486,7 +2533,7 @@
         "revenue/eagletrax_split_sample_preflight/contract.json",
         "p/cursor-eagletrax-split-sample-preflight-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2494,7 +2541,7 @@
         "eagletrax_split_sample_preflight.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2548,7 +2595,7 @@
         "revenue/elevatebio_pittsburgh_replication/contract.json",
         "p/elevatebio-pittsburgh-replication-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2556,7 +2603,7 @@
         "elevatebio_pittsburgh_replication.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2610,7 +2657,7 @@
         "boards.html",
         "ground/PROFITABILITY_BUILD_MAP.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2618,7 +2665,7 @@
         "host/feature_tracker.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2661,14 +2708,14 @@
         "ground/FEATURES.md",
         "feature-tracker.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_features_board.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2705,14 +2752,14 @@
       "resource_links": [
         "revenue/fleet_work_order/README.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_fleet_work_order.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2769,7 +2816,7 @@
         "p/forge-equipment-newcomer-road-proof-20260905-01.md",
         "p/forge-equipment-manifest-docs-battery-20260905-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2779,7 +2826,7 @@
         "test_forge_equipment_feature_registry.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2822,7 +2869,7 @@
         "p/wire-claude-peer-check-20260902-01.md",
         "p/ink-claude-h1-hygiene-20260902-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2830,7 +2877,7 @@
         "test_grok_claude_hygiene.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2877,14 +2924,14 @@
         "ground/GROK_SURFACES.md",
         "p/cursor-big-things-incoming-alert-20260902-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_incoming_models.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -2936,7 +2983,7 @@
         "revenue/kincell_rtp_qc_release_bridge/fixture.json",
         "p/kincell-rtp-qc-release-bridge-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -2944,7 +2991,7 @@
         "revenue/kincell_rtp_qc_release_bridge/runner.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3000,7 +3047,7 @@
         "p/ledger-crm6-relationship-handoff-20260904-01.md",
         "host/lm_gtm_relationship_handoff.py"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3009,7 +3056,7 @@
         "host/lm_gtm_relationship_handoff.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3063,7 +3110,7 @@
         "revenue/lexington_mrf_diversion_gate/contract.json",
         "p/cursor-lexington-mrf-diversion-gate-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3071,7 +3118,7 @@
         "lexington_mrf_diversion_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3120,7 +3167,7 @@
         "ground/PROFITABILITY_BUILD_MAP.md",
         "resources.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3128,7 +3175,7 @@
         "host/listing_registry.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3181,7 +3228,7 @@
         "p/lm-gtm-agent-brief-20260831-01.md",
         "p/lm-gtm-floor-sync-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3189,7 +3236,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3240,7 +3287,7 @@
         "p/lm-gtm-contract-brief-20260901-01.md",
         "p/lm-gtm-truth-sync-20260831-02.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3248,7 +3295,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3301,7 +3348,7 @@
         "p/lm-gtm-contract-tokens-leads-20260901-01.md",
         "p/lm-gtm-contract-brief-20260901-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3309,7 +3356,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3362,7 +3409,7 @@
         "p/lm-gtm-floor-sync-20260831-01.md",
         "p/lm-gtm-hot-lane-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3370,7 +3417,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3423,7 +3470,7 @@
         "p/lm-gtm-hot-lane-20260831-01.md",
         "p/lm-gtm-index-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3431,7 +3478,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3482,7 +3529,7 @@
         "website-people-email-book.html",
         "p/lm-gtm-index-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3490,7 +3537,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3549,7 +3596,7 @@
         "p/lm-gtm-require-claim-20260904-01.md",
         "p/lm-gtm-contract-tokens-leads-20260901-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3559,7 +3606,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3612,7 +3659,7 @@
         "p/lm-gtm-truth-sync-20260831-02.md",
         "p/lm-gtm-agent-brief-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3620,7 +3667,7 @@
         "host/lm_gtm_index.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3659,7 +3706,7 @@
         "integrations/shared_equipment/README.md",
         "integrations/shared_equipment/role_equipment.json"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3667,7 +3714,7 @@
         "test_gemini_peer_tool_gateway.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3720,14 +3767,14 @@
         "revenue/muhlnickel_inference/token_capacity_offer.json",
         "revenue/muhlnickel_inference/shopify_token_capacity.csv"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_muhlnickel_inference_offer.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3771,14 +3818,14 @@
         "resources.html",
         "commerce.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_muhlnickel_free_sample.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3840,7 +3887,7 @@
         "revenue/muhlnickel_inference/shopify_local_handoff.json",
         "revenue/outcome_commerce/catalog.json"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3849,7 +3896,7 @@
         "test_distribution.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3888,7 +3935,7 @@
         "ground/OPEN_DOOR.md",
         "AGENTS.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3896,7 +3943,7 @@
         "open_door_guard.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3927,14 +3974,14 @@
       "receipts": [],
       "related": {},
       "resource_links": [],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_open_model_release_receipt.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -3990,7 +4037,7 @@
         "revenue/oregon_brewlab_sample_report/contract.json",
         "p/cursor-oregon-brewlab-sample-report-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -3998,7 +4045,7 @@
         "oregon_brewlab_sample_report.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4050,7 +4097,7 @@
         "revenue/organabio_multisite_donor_coa/fixture.json",
         "p/organabio-multisite-donor-coa-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4058,7 +4105,7 @@
         "organabio_multisite_donor_coa.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4110,7 +4157,7 @@
         "revenue/pace_lebanon_microbial_volume_evidence/contract.json",
         "p/pace-lebanon-microbial-volume-evidence-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4118,7 +4165,7 @@
         "pace_lebanon_microbial_volume_evidence.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4147,14 +4194,14 @@
       "receipts": [],
       "related": {},
       "resource_links": [],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_pages_readback.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4208,7 +4255,7 @@
         "revenue/paragon_biodiesel_sample_coa/contract.json",
         "p/cursor-paragon-biodiesel-sample-coa-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4216,7 +4263,7 @@
         "paragon_biodiesel_sample_coa.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4271,7 +4318,7 @@
         "muhl/docs/PROVISIONAL_SESSION.md",
         "p/patent-products-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4280,7 +4327,7 @@
         "test_winner_fold.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4327,7 +4374,7 @@
         "pay.html",
         "ground/PROFITABILITY_BUILD_MAP.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4335,7 +4382,7 @@
         "host/payment_capability.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4393,7 +4440,7 @@
         "ground/RESOURCE_LEDGER.json",
         "ground/PROFITABILITY_BUILD_MAP.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4403,7 +4450,7 @@
         "test_payment_capability_compose.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4440,14 +4487,14 @@
       "resource_links": [
         "p/codex-permit-intake-receipt-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_permit_intake_receipt.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4501,7 +4548,7 @@
         "diagnostic.html",
         "commercial.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4509,7 +4556,7 @@
         "plant-downtime-handoff.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4563,7 +4610,7 @@
         "revenue/preinnewhof_pfas_fieldblank_gate/contract.json",
         "p/cursor-preinnewhof-pfas-fieldblank-gate-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4571,7 +4618,7 @@
         "preinnewhof_pfas_fieldblank_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4618,7 +4665,7 @@
         "p/proof-spiral-succinct-argument-20260901-01.md",
         "https://youtu.be/jVHeHmufZhk"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4626,7 +4673,7 @@
         "proof_spiral_succinct_argument.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4678,7 +4725,7 @@
         "revenue/ptl_controlled_sample_order_preflight/contract.json",
         "p/ptl-controlled-sample-order-preflight-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4686,7 +4733,7 @@
         "ptl_controlled_sample_order_preflight.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4746,7 +4793,7 @@
         "revenue/qlabs_qconnect_cutover/contract.json",
         "p/cursor-qlabs-qconnect-cutover-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4754,7 +4801,7 @@
         "revenue/qlabs_qconnect_cutover/runner.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4808,7 +4855,7 @@
         "diagnostic.html",
         "commercial.html"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4816,7 +4863,7 @@
         "referral-intake-completeness.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4864,7 +4911,7 @@
         "revenue/repair_booking_preflight/contract.json",
         "p/repair-booking-exactly-once-preflight-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4872,7 +4919,7 @@
         "repair-booking-preflight.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4921,7 +4968,7 @@
         "resources.html",
         "ground/RESOURCE_LEDGER.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4929,7 +4976,7 @@
         "host/resource_ledger.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -4983,7 +5030,7 @@
         "revenue/rmb_crosssite_courier_accession/contract.json",
         "p/cursor-rmb-crosssite-courier-accession-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -4991,7 +5038,7 @@
         "rmb_crosssite_courier_accession.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5045,7 +5092,7 @@
         "revenue/rosecity_olcc_metrc_sampling/contract.json",
         "p/cursor-rosecity-olcc-metrc-sampling-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5053,7 +5100,7 @@
         "rosecity_olcc_metrc_sampling.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5107,7 +5154,7 @@
         "revenue/roslinct_hopkinton_paperless_qc/contract.json",
         "p/cursor-roslinct-hopkinton-paperless-qc-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5115,7 +5162,7 @@
         "roslinct_hopkinton_paperless_qc.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5162,14 +5209,14 @@
         "subzero.html",
         "sales-sample/FREE-SAMPLE-SALES-INSERT.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_sales_free_sample_pack.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5200,14 +5247,14 @@
       "receipts": [],
       "related": {},
       "resource_links": [],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_salesforce_contact_preflight.js"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5269,7 +5316,7 @@
         "revenue/sanair_asbestos_coc_router/contract.json",
         "p/sanair-asbestos-coc-router-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5277,7 +5324,7 @@
         "sanair_asbestos_coc_router.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5333,7 +5380,7 @@
         "revenue/savant_fe8_order_report/contract.json",
         "p/cursor-savant-fe8-order-report-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5341,7 +5388,7 @@
         "savant_fe8_order_report.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5403,7 +5450,7 @@
         "revenue/sc_labs_multistate_coa_gate/contract.json",
         "p/sc-labs-multistate-coa-rule-version-gate-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5411,7 +5458,7 @@
         "sc_labs_multistate_coa_gate.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5467,7 +5514,7 @@
         "revenue/sgspsi_thermal_rheology_lineage/contract.json",
         "p/cursor-sgspsi-thermal-rheology-lineage-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5475,7 +5522,7 @@
         "sgspsi_thermal_rheology_lineage.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5531,7 +5578,7 @@
         "revenue/sharp_rtu_vial_isolator_lineage/contract.json",
         "p/sharp-rtu-vial-isolator-lineage-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5539,7 +5586,7 @@
         "sharp_rtu_vial_isolator_lineage.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5593,7 +5640,7 @@
         "revenue/slo_cls_cutover_evidence/contract.json",
         "p/cursor-slo-cls-cutover-evidence-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5601,7 +5648,7 @@
         "slo_cls_cutover_evidence.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5651,7 +5698,7 @@
         "integrations/shared_equipment/role_equipment.json",
         "p/spark-astra-g2-grokbot-control-20260904-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5660,7 +5707,7 @@
         "test_shared_equipment_cli_grokbot.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5714,14 +5761,14 @@
         "revenue/agent_failure_autopsy/RUNBOOK.md",
         "p/spark-g2-autopsy-case-submit-helper-20260905-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_grokbot_paid_case.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5766,14 +5813,14 @@
         "agent-rescue.html",
         "p/spark-g2-client-reference-roundtrip-20260905-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_grokbot_client_reference_roundtrip.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5830,7 +5877,7 @@
         "integrations/grokbot_control/paid_case.py",
         "p/spark-g2-equipment-paid-case-tools-20260905-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5838,7 +5885,7 @@
         "test_grokbot_paid_case_receipt.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5892,7 +5939,7 @@
         "p/spark-g2-paid-case-attribution-20260905-01.md",
         "integrations/grokbot_control/paid_case.py"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -5900,7 +5947,7 @@
         "test_grokbot_shared_equipment.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -5955,14 +6002,14 @@
         "revenue/agent_failure_autopsy/seats.json",
         "p/spark-g2-paid-case-receipt-surface-20260905-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
         "test_grokbot_paid_case_receipt.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6016,7 +6063,7 @@
         "revenue/trace_sila_ml_iatf/contract.json",
         "p/cursor-trace-sila-ml-iatf-lims-20260831-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -6024,7 +6071,7 @@
         "trace_sila_ml_iatf.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6072,7 +6119,7 @@
         "revenue/wadsworth_five_site_consolidation_lims/contract.json",
         "p/wadsworth-five-site-consolidation-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -6080,7 +6127,7 @@
         "wadsworth_five_site_consolidation_lims.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6134,7 +6181,7 @@
         "revenue/ward_feed_nirs_intake_validator/contract.json",
         "p/ward-feed-nirs-intake-validator-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -6142,7 +6189,7 @@
         "ward_feed_nirs_intake_validator.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6188,7 +6235,7 @@
         "revenue/website_people_email_book/README.md",
         "p/website-people-email-book-20260830-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -6196,7 +6243,7 @@
         "host/website_people_email_book.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6246,7 +6293,7 @@
         "revenue/website_people_email_book/README.md",
         "p/website-prospect-boundary-repair-20260830-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -6255,7 +6302,7 @@
         "host/website_people_email_book.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6313,7 +6360,7 @@
         "revenue/weck_coc_preaccession_validator/contract.json",
         "p/weck-coc-preaccession-validator-lims-01.md"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -6321,7 +6368,7 @@
         "revenue/weck_coc_preaccession_validator/runner.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6370,7 +6417,7 @@
         "ground/WIRE_SUPER_MCP.md",
         "super-mcp/catalog.json"
       ],
-      "rollup": "TESTED",
+      "rollup": "TESTS_PRESENT",
       "source_status": "SOURCE_BUILT",
       "superseded_by": "",
       "test_paths": [
@@ -6378,7 +6425,7 @@
         "host/super_mcp.py"
       ],
       "test_paths_missing": [],
-      "test_status": "TESTED"
+      "test_status": "TESTS_PRESENT"
     },
     {
       "author_claim_ignored": "",
@@ -6515,8 +6562,8 @@
       "test_status": "UNTESTED"
     }
   ],
-  "law": "Status is derived from exact Git/tree/receipt evidence. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 110,
+  "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
+  "n_features": 111,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
