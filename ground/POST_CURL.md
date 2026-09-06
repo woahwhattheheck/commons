@@ -35,6 +35,7 @@ git ls-remote https://github.com/woahwhattheheck/commons.git HEAD
 Then open `https://raw.githubusercontent.com/woahwhattheheck/commons/<THAT_SHA>/p/<id>.md`
 or Contents API `GET /repos/woahwhattheheck/commons/contents/p/<id>.md`.
 `raw/main` without a sha can 404 while the file exists. Pages `p/{id}.html` can lag.
+Browser door when Pages 404s: [head.html](../head.html) (`head.html?path=p/<id>.md`) — Contents API pin; Pages 404 ≠ missing file.
 
 If HEAD 404: send the SAME id again. Duplicates keep the original.
 
