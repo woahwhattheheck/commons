@@ -81,3 +81,17 @@ jobs:
           (Path(os.environ["RUNNER_TEMP"]) / "audit_git_terminal.py").write_bytes(base64.b64decode(os.environ["AUDIT_SCRIPT_B64"]))
           PY
           python3 "$RUNNER_TEMP/audit_git_terminal.py" --repo . --fetch --target-ref origin/main --expected-commit "$EXPECTED_COMMIT" --required-path host/feature_tracker.py --required-path test_feature_tracker.py --required-path test_grounding_door.py --required-path ground/FEATURE_TRACKER.md --required-path feature-tracker.json --required-path feature-tracker.html
+      - name: Verify exact landed blobs and completed repair packet
+        if: ${{ !inputs.regenerate }}
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess
+          expected = {'host/feature_tracker.py': 'd5b29a776b8934348c89aeeb829db518b2af4a86', 'test_feature_tracker.py': '7ee1b9898cdd77fbaa10ed044819e91f6c30132e', 'test_grounding_door.py': '0908ec9531ac4632bf382cb3cc263d062a8b1ae4', 'ground/FEATURE_TRACKER.md': 'd733e674b7ceec89b15b7d207bc1af736750b919', 'feature-tracker.json': '4523284575d7171908aab29d3f2f4748c5386ac1', 'feature-tracker.html': '21e7f736f9167329eb6be9f9652cc07c83408f6e'}
+          for path, expected_blob in expected.items():
+              actual = subprocess.check_output(['git', 'rev-parse', 'origin/main:' + path], text=True).strip()
+              assert actual == expected_blob, (path, actual, expected_blob)
+              print('READBACK', path, actual)
+          packet = {'outcome': 'fixed', 'observed_broken': True, 'expected_contract': 'Source-derived claims require actual behavior evidence; test-file presence cannot establish successful execution, and a feature with no claimed implementation remains planned.', 'changed_paths': ['host/feature_tracker.py', 'test_feature_tracker.py', 'test_grounding_door.py', 'ground/FEATURE_TRACKER.md', 'feature-tracker.json', 'feature-tracker.html'], 'tests': ['34000729009: feature tracker standalone suite, seven grounding/hub tests, and three CRM6 tests passed; deliberately failing fixture confirms presence does not claim execution'], 'main_sha': '6df92e0fd47b35b58bac9e79eaec953e51f62d62', 'readback_verified': True, 'report_only_sessions': 0, 'unconsumed_findings': 0}
+          packet['tests'].append('Current-main workflow ' + os.environ['GITHUB_RUN_ID'] + ': same focused tests and clean landed audit passed before this step')
+          subprocess.run(['python3', 'fix_first.py', '--json', json.dumps(packet)], check=True)
+          PY
