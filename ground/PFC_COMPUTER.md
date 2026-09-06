@@ -54,3 +54,15 @@ before it carried the standard names (FPGA, memory hierarchy, von Neumann); each
 and measured. Built + verified this session; all numbers in [`PFC_LEVER_DATADUMP.md`](PFC_LEVER_DATADUMP.md). Novel
 mechanisms (fabricated RAM, the bit-address fold as a storage-backed memory tier, the stored-program Muhlnickel) are owed to
 [`PATENT_SUPPORT.md`](PATENT_SUPPORT.md) as they are formalized.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-25 — do not remint.
