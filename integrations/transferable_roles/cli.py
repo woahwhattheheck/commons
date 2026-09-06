@@ -268,7 +268,7 @@ def build_parser() -> argparse.ArgumentParser:
     oo.add_argument(
         "--cash-only",
         action="store_true",
-        help="only rows with payment_capability: true (paid Autopsy/diagnostic queue)",
+        help="only rows marked payment_capability: true; this is not proof of payment",
     )
     for command_parser in sub.choices.values():
         command_parser.add_argument(

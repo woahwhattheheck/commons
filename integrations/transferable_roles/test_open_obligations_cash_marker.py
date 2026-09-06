@@ -92,11 +92,16 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         self.store.create(json.loads(DIAG.read_text(encoding="utf-8")))
 
+        before = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
         all_rows = self.store.list_open_obligations()
         cash_rows = self.store.list_open_obligations(cash_only=True)
         self.assertTrue(all_rows)
         self.assertTrue(cash_rows)
         self.assertLess(len(cash_rows), len(all_rows))
+        self.assertEqual(self.store.list_open_obligations(cash_only=False), all_rows)
+        self.assertEqual(
+            cash_rows, [row for row in all_rows if row.get("payment_capability") is True]
+        )
         for row in cash_rows:
             self.assertIs(row.get("payment_capability"), True)
             self.assertFalse(row["role_id"].startswith("role-synthetic-crm"))
@@ -110,10 +115,25 @@ class OpenObligationsCashMarkerTests(unittest.TestCase):
         self.assertEqual(rc, 0)
         out = json.loads(buf.getvalue())
         cli_rows = out["open_obligations"]
-        self.assertEqual(len(cli_rows), len(cash_rows))
+        self.assertEqual(cli_rows, cash_rows)
         for row in cli_rows:
             self.assertIs(row.get("payment_capability"), True)
+        after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}
+        self.assertEqual(after, before)
 
+
+    def test_cash_only_without_marked_roles_is_empty(self) -> None:
+        crm = json.loads(CRM.read_text(encoding="utf-8"))
+        crm["label"] = "Paid work label is not a payment capability marker"
+        self.store.create(crm)
+        self.assertTrue(self.store.list_open_obligations())
+        self.assertEqual(self.store.list_open_obligations(cash_only=True), [])
+
+        output = io.StringIO()
+        with redirect_stdout(output):
+            result = roles_cli.main(["--store", self._tmp.name, "open-obligations", "--cash-only"])
+        self.assertEqual(result, 0)
+        self.assertEqual(json.loads(output.getvalue())["open_obligations"], [])
 
 if __name__ == "__main__":
     unittest.main()
