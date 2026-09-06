@@ -320,6 +320,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertEqual(receipt_out["card"].get("state"), "UNVERIFIED")
 
     def _assert_diag_fulfill_cards(self, role: dict) -> None:
+        # rivet-r4-equipment-diag-sla-diagnostic-usd-survive-handoff-20260905-01
         due = self.eq.call(
             "diagnostic_fulfill_deadline_card",
             {
@@ -330,6 +331,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(due.get("ok"), due)
         self.assertTrue(due["card"].get("delivery_due_at"))
+        self.assertEqual(due["card"].get("diagnostic_usd"), 199)
         open_card = self.eq.call(
             "diagnostic_fulfill_sla_card",
             {
@@ -341,6 +343,8 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(open_card.get("ok"), open_card)
         self.assertEqual(open_card["card"].get("sla_status"), "OPEN")
+        self.assertEqual(open_card["card"].get("diagnostic_usd"), 199)
+        self.assertIn("199", str(open_card["card"].get("refund", "")))
         missed = self.eq.call(
             "diagnostic_fulfill_sla_card",
             {
@@ -352,6 +356,8 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
+        self.assertEqual(missed["card"].get("diagnostic_usd"), 199)
+        self.assertIn("199", str(missed["card"].get("refund", "")))
 
     def _assert_diag_contract_receipt_cards(self, role: dict) -> None:
         # rivet-r4-equipment-contract-receipt-survive-handoff-20260905-01
