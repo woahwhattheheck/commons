@@ -389,6 +389,9 @@ class _HTMLAdmissionContexts(HTMLParser):
     def handle_pi(self, data):
         self.fragments.append(data)
 
+    def unknown_decl(self, data):
+        self.fragments.append(data)
+
 
 def _admission_contexts(path: str, text: str) -> list[str]:
     if not path.lower().endswith(".html"):
@@ -397,6 +400,8 @@ def _admission_contexts(path: str, text: str) -> list[str]:
     try:
         parser.feed(text)
         parser.close()
+        if parser.rawdata:
+            return [text]
     except Exception:
         # A malformed fragment must not prevent the original source scan.
         return [text]

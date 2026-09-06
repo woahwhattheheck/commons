@@ -212,6 +212,8 @@ def main():
         '<div title="x > y" data-policy="identity required"></div>',
         '<!-- Identity is required before posting. -->',
         '<script>const policy = "identity required";</script>',
+        '<script>const policy = "identity required";',
+        '<![CDATA[identity required]]>',
         '<div data-policy="identity required',
         '<input name="identity" required',
     ):
