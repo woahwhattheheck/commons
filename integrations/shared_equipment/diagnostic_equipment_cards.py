@@ -3,7 +3,9 @@
 TENON claims:
 - tenon-r4-equipment-diagnostic-cards-20260905-01 (contract/receipt)
 - tenon-r4-equipment-fulfill-sla-cards-20260905-01 (fulfill deadline/SLA)
-Does not remint contracts, receipts, fulfill CLIs, Stripe, or peers remint.
+HINGE claim:
+- hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
+Does not remint contracts, receipts, fulfill CLIs, SPARK paid_case, Stripe, or peers remint.
 """
 
 from __future__ import annotations
@@ -70,11 +72,30 @@ def diagnostic_card_tool_schemas() -> list[dict]:
                 "as_of": "string",
             },
         ),
+        _schema(
+            "autopsy_case_card",
+            "Build G2 case dict for an Autopsy transferable role. Pass role + case_ref. Import-only wrap of autopsy_paid.build_g2_case_from_role; does not remint SPARK paid_case or invent Stripe.",
+            {"role": "object", "case_ref": "string"},
+            {"client_reference_id": "string", "sku": "string"},
+        ),
+        _schema(
+            "autopsy_receipt_card",
+            "Build opaque seats case_row for an Autopsy transferable role. Pass role + case_ref. Default state UNVERIFIED. Import-only wrap of autopsy_paid.build_receipt_row_from_role; does not append seats.json or remint SPARK.",
+            {"role": "object", "case_ref": "string"},
+            {
+                "client_reference_id": "string",
+                "sku": "string",
+                "g2_run_id": "string",
+                "g2_session_id": "string",
+                "payment_observed_at": "string",
+                "state": "string",
+            },
+        ),
     ]
 
 
 def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | None:
-    """Handle diagnostic_*/autopsy_fulfill_*_card tools; None if unknown."""
+    """Handle diagnostic_*/autopsy_*_card tools; None if unknown."""
     if name == "diagnostic_contract_card":
         roles_mod = _load_transferable_roles_mod("roles")
         contract_mod = _load_transferable_roles_mod("diagnostic_contract")
@@ -169,6 +190,48 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
                 args["role"],
                 usable_evidence_at=str(args["usable_evidence_at"]),
                 as_of=str(args["as_of"]),
+            )
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "card": card}
+    if name == "autopsy_case_card":
+        roles_mod = _load_transferable_roles_mod("roles")
+        paid_mod = _load_transferable_roles_mod("autopsy_paid")
+        try:
+            card = paid_mod.build_g2_case_from_role(
+                args["role"],
+                case_ref=str(args["case_ref"]),
+                client_reference_id=args.get("client_reference_id"),
+                sku=args.get("sku"),
+            )
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "card": card}
+    if name == "autopsy_receipt_card":
+        roles_mod = _load_transferable_roles_mod("roles")
+        paid_mod = _load_transferable_roles_mod("autopsy_paid")
+        try:
+            card = paid_mod.build_receipt_row_from_role(
+                args["role"],
+                case_ref=str(args["case_ref"]),
+                client_reference_id=args.get("client_reference_id"),
+                sku=args.get("sku"),
+                g2_run_id=args.get("g2_run_id"),
+                g2_session_id=args.get("g2_session_id"),
+                payment_observed_at=args.get("payment_observed_at"),
+                state=str(args.get("state") or "UNVERIFIED"),
             )
         except KeyError as exc:
             return {

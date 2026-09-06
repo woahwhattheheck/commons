@@ -28,6 +28,7 @@ CRM = _FIXTURES / "synthetic_crm_followup_role.json"
 _EVIDENCE = "2026-09-04T15:00:00-04:00"
 _AS_OF_OPEN = "2026-09-04T16:00:00-04:00"
 _AS_OF_MISSED = "2026-09-08T10:00:00-04:00"
+_CASE_REF = "case_001"
 
 
 class DiagnosticEquipmentCardTests(unittest.TestCase):
@@ -132,6 +133,29 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
 
+    def test_autopsy_case_and_receipt_cards(self) -> None:
+        # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
+        case_out = self.eq.call(
+            "autopsy_case_card",
+            {"role": self.autopsy, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(case_out.get("ok"), case_out)
+        case = case_out["card"]
+        self.assertTrue(case.get("case_ref") or case.get("offer_id") or case)
+        receipt_out = self.eq.call(
+            "autopsy_receipt_card",
+            {"role": self.autopsy, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(receipt_out.get("ok"), receipt_out)
+        row = receipt_out["card"]
+        self.assertEqual(row.get("state"), "UNVERIFIED")
+        diag_refuse = self.eq.call(
+            "autopsy_case_card",
+            {"role": self.diag, "case_ref": _CASE_REF},
+        )
+        self.assertFalse(diag_refuse.get("ok"))
+        self.assertEqual(diag_refuse.get("error"), "role_refused")
+
     def test_crm_role_refuses(self) -> None:
         crm = json.loads(CRM.read_text(encoding="utf-8"))
         cases = [
@@ -149,6 +173,14 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 "autopsy_fulfill_deadline_card",
                 {"role": crm, "usable_evidence_at": _EVIDENCE},
             ),
+            (
+                "autopsy_case_card",
+                {"role": crm, "case_ref": _CASE_REF},
+            ),
+            (
+                "autopsy_receipt_card",
+                {"role": crm, "case_ref": _CASE_REF},
+            ),
         ]
         for name, args in cases:
             with self.subTest(name=name):
@@ -165,6 +197,8 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             "diagnostic_fulfill_sla_card",
             "autopsy_fulfill_deadline_card",
             "autopsy_fulfill_sla_card",
+            "autopsy_case_card",
+            "autopsy_receipt_card",
         ):
             self.assertIn(name, names)
 
@@ -195,6 +229,20 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
+
+    def _assert_autopsy_case_receipt_cards(self, role: dict) -> None:
+        # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
+        case_out = self.eq.call(
+            "autopsy_case_card",
+            {"role": role, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(case_out.get("ok"), case_out)
+        receipt_out = self.eq.call(
+            "autopsy_receipt_card",
+            {"role": role, "case_ref": _CASE_REF},
+        )
+        self.assertTrue(receipt_out.get("ok"), receipt_out)
+        self.assertEqual(receipt_out["card"].get("state"), "UNVERIFIED")
 
     def _assert_diag_fulfill_cards(self, role: dict) -> None:
         due = self.eq.call(
@@ -274,6 +322,21 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 seat="RIVET",
             )
             self._assert_autopsy_fulfill_cards(store.get(rid))
+
+    def test_autopsy_case_receipt_survive_transfer(self) -> None:
+        # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="ac-A", harness="hinge")
+            store.transfer(
+                rid,
+                from_session_id="ac-A",
+                to_session_id="ac-B",
+                to_harness="rivet",
+            )
+            self._assert_autopsy_case_receipt_cards(store.get(rid))
 
     def test_diagnostic_cards_survive_transfer(self) -> None:
         # rivet-r4-equipment-cards-survive-handoff-20260905-01
