@@ -38,6 +38,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.autopsy = json.loads(AUTOPSY.read_text(encoding="utf-8"))
 
     def test_contract_card_all_slugs(self) -> None:
+        # rivet-r4-equipment-contract-diagnostic-usd-all-slugs-20260905-01
         for slug in ("dealer", "referral", "repair", "plant"):
             with self.subTest(slug=slug):
                 out = self.eq.call(
@@ -48,7 +49,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 card = out["card"]
                 self.assertEqual(card["slug"], slug)
                 self.assertTrue(card.get("pointer"))
-                self.assertIn("diagnostic_usd", card)
+                self.assertEqual(card["diagnostic_usd"], 199)
 
     def test_receipt_card_landed_slugs(self) -> None:
         for slug in ("dealer", "referral", "plant"):
