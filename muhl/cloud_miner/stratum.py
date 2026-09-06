@@ -30,6 +30,7 @@ import socket
 import struct
 import threading
 import time
+import uuid
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, Callable, Dict, List, Optional, Tuple
@@ -390,6 +391,7 @@ class StratumClient:
         self._closed = threading.Event()
         self._submitted: set = set()
         self._fatal: Optional[BaseException] = None
+        self._preauth_notify: Optional[List[Any]] = None
 
     # ── lifecycle ────────────────────────────────────────────────────────
 
@@ -432,7 +434,8 @@ class StratumClient:
         self._closed.clear()
         self._fatal = None
         self._job_event.clear()
-        session_id = "s%d-%d" % (next(self._session_counter), int(time.time() * 1000))
+        session_id = uuid.uuid4().hex
+        self._preauth_notify = None
         session = SessionState(session_id=session_id, started_at=time.time())
         try:
             sock = socket.create_connection(
@@ -485,6 +488,9 @@ class StratumClient:
             )
         with self._lock:
             session.authorized = True
+            early_notify, self._preauth_notify = self._preauth_notify, None
+            if early_notify is not None:
+                self._handle_notify(early_notify)
         self._emit(
             "session_open",
             {
@@ -654,8 +660,13 @@ class StratumClient:
             return
         with self._lock:
             session = self._session
-            if session is None or session.retired or not session.authorized:
-                return  # a notify arriving before auth belongs to nothing usable
+            if session is None or session.retired:
+                return
+            if not session.authorized:
+                # Pools may notify between subscribe and authorize responses.
+                # Retain the newest job until subscription/auth are complete.
+                self._preauth_notify = list(params)
+                return
             clean = bool(params[8])
             if clean:
                 session.generation += 1
@@ -833,7 +844,6 @@ class StratumClient:
                 detail="policy SHARE_OR_BETTER: %s" % verification.detail,
             )
 
-        self._submitted.add(candidate.key)
         params = [
             self.config.worker_name,
             candidate.job_id,
@@ -845,6 +855,7 @@ class StratumClient:
         try:
             result = self._request("mining.submit", params)
         except StratumProtocolError as exc:
+            self._submitted.add(candidate.key)
             return SubmitOutcome(
                 SubmitStatus.REJECTED, candidate, verification,
                 pool_error=str(exc), detail=str(exc), submitted_at=sent_at,
@@ -855,6 +866,7 @@ class StratumClient:
                 pool_error=str(exc), detail=str(exc), submitted_at=sent_at,
             )
         status = SubmitStatus.ACCEPTED if result is True else SubmitStatus.REJECTED
+        self._submitted.add(candidate.key)
         outcome = SubmitOutcome(
             status, candidate, verification, pool_result=result,
             detail=(
