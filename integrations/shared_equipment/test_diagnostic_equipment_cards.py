@@ -241,12 +241,56 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 "autopsy_receipt_card",
                 {"role": crm, "case_ref": _CASE_REF},
             ),
+            (
+                "prove_handoff_card",
+                {"role": crm},
+            ),
         ]
         for name, args in cases:
             with self.subTest(name=name):
                 out = self.eq.call(name, args)
                 self.assertFalse(out.get("ok"))
                 self.assertEqual(out.get("error"), "role_refused")
+
+    def test_prove_handoff_card_diagnostic(self) -> None:
+        # hinge-r4-equipment-prove-handoff-card-20260906-01
+        out = self.eq.call(
+            "prove_handoff_card",
+            {
+                "role": self.diag,
+                "slug": "dealer",
+                "usable_evidence_at": _EVIDENCE,
+                "as_of": _AS_OF_OPEN,
+            },
+        )
+        self.assertTrue(out.get("ok"), out)
+        proof = out["proof"]
+        self.assertTrue(proof.get("ok"))
+        self.assertIn("diagnostic-contract", proof["executes"])
+        self.assertIn("diagnostic-fulfill-sla", proof["executes"])
+        sla = proof["executes"]["diagnostic-fulfill-sla"]
+        self.assertEqual(sla.get("sla_status"), "OPEN")
+        self.assertEqual(sla.get("slug"), "dealer")
+
+    def test_prove_handoff_card_autopsy(self) -> None:
+        # hinge-r4-equipment-prove-handoff-card-20260906-01
+        out = self.eq.call(
+            "prove_handoff_card",
+            {
+                "role": self.autopsy,
+                "case_ref": _CASE_REF,
+                "usable_evidence_at": _EVIDENCE,
+                "as_of": _AS_OF_OPEN,
+            },
+        )
+        self.assertTrue(out.get("ok"), out)
+        proof = out["proof"]
+        self.assertTrue(proof.get("ok"))
+        self.assertIn("autopsy-case", proof["executes"])
+        self.assertIn("autopsy-fulfill-sla", proof["executes"])
+        self.assertEqual(
+            proof["executes"]["autopsy-fulfill-sla"].get("sla_status"), "OPEN"
+        )
 
     def test_tools_listed(self) -> None:
         names = {t["name"] for t in self.eq.tools()}
@@ -261,6 +305,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             "autopsy_case_card",
             "autopsy_receipt_card",
             "open_obligations_cash_card",
+            "prove_handoff_card",
         ):
             self.assertIn(name, names)
 
