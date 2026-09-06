@@ -298,6 +298,8 @@ def main():
     print("TOOLS_ONCE open=%s receipts=%s" % (len(st["open"]), st["receipts"]))
     if not full:
         print("NONE — no open TOOLS job")
+        print("File one at job.html · catalog: tools.json · board: tools.html")
+        print("Then: python host/muhl_tools_once.py --go")
         print("DIE")
         return 0
     _ts, meta, body = full
