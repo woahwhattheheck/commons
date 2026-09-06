@@ -52,15 +52,24 @@ def send_block(reg, job, en1, en2sz, target):
 SAFEZONE = "C:/llm/sdc_out/pfc_safezone.bin"                 # the answer lands OUTSIDE the pfc; we read only this file
 
 
+class AnswerReadError(OSError):
+    """The external file did not provide a complete nine-byte answer record."""
+
+
 def read_full_answer():
-    """safezone OUT (READ-ONLY): read the EXTERNAL safezone file (never titan / the miner). The Muhlnickel deposits its answer
-    here (§1/§4/§5); the host reads only this. [status:1][en2/group:4 LE][nonce:4 LE]."""
+    """Read the external record only: [status:1][en2/group:4 LE][nonce:4 LE].
+
+    Preserve every complete record's values. Status is not a readiness marker;
+    this byte layout does not provide a job or session freshness identifier.
+    """
     try:
-        with open(SAFEZONE, "rb") as f: b = f.read()
-    except OSError:
-        return 0, 0, 0
-    if len(b) < 9: return 0, 0, 0
-    return b[0], struct.unpack_from("<I", b, 1)[0], struct.unpack_from("<I", b, 5)[0]
+        with open(SAFEZONE, "rb") as answer_file:
+            record = answer_file.read(9)
+    except OSError as exc:
+        raise AnswerReadError("cannot read external answer: %s" % (str(exc) or type(exc).__name__)) from exc
+    if len(record) < 9:
+        raise AnswerReadError("incomplete external answer: expected 9 bytes, read %d" % len(record))
+    return record[0], struct.unpack_from("<I", record, 1)[0], struct.unpack_from("<I", record, 5)[0]
 
 
 class Conn:
@@ -198,6 +207,7 @@ def wait_for_job(c, wait_s):
 def cycle(reg, wait_s=WAIT):
     c = Conn(); verdict = None; connection_error = None; protocol_error = None
     stale = False; submission_attempted = False; submission_error = None
+    answer = None; answer_error = None
     try:
         en1, en2sz, job = receive_job(c)
         nbref = struct.unpack("<I", make_prefix(job, en1, "00" * en2sz)[72:76])[0]
@@ -210,9 +220,14 @@ def cycle(reg, wait_s=WAIT):
             protocol_error = str(exc) or type(exc).__name__
         except OSError as exc:
             connection_error = str(exc) or type(exc).__name__
-        status, en2v, nonce = read_full_answer()                    # READ ONLY the original worker's external answer
+        try:
+            status, en2v, nonce = read_full_answer()                # READ ONLY the external answer bytes
+            answer = {"status": status, "en2": en2v, "nonce": nonce}
+        except AnswerReadError as exc:
+            answer_error = str(exc) or type(exc).__name__
 
-        en2 = "%0*x" % (2 * en2sz, en2v & ((1 << (8 * en2sz)) - 1))
+        if answer is not None:
+            en2 = "%0*x" % (2 * en2sz, en2v & ((1 << (8 * en2sz)) - 1))
         if connection_error is None and protocol_error is None:
             try:
                 # Drain after reading the answer, including for a zero settle wait.
@@ -224,7 +239,8 @@ def cycle(reg, wait_s=WAIT):
             except OSError as exc:
                 connection_error = str(exc) or type(exc).__name__
 
-        if not stale and connection_error is None and protocol_error is None and submission_error is None:
+        if (answer is not None and not stale and connection_error is None
+                and protocol_error is None and submission_error is None):
             deadline = time.monotonic() + 12
             try:
                 submission_attempted = True
@@ -253,6 +269,8 @@ def cycle(reg, wait_s=WAIT):
         pool = "submission-skipped (%s)" % submission_error
     elif stale:
         pool = "stale-job (pool invalidated work before submission)"
+    elif answer_error is not None:
+        pool = "answer-unavailable (%s)" % answer_error
     elif err is not None or res is False:
         pool = "REJECTED (%s)" % (err[1] if isinstance(err, list) and len(err) > 1 else err)
     elif res is True:
@@ -262,11 +280,15 @@ def cycle(reg, wait_s=WAIT):
     else:
         pool = "no-reply"
     submission = "submission attempted" if submission_attempted else "submission skipped"
+    if answer is None:
+        answer_description = "answer unavailable from external file [%s]" % answer_error
+    else:
+        answer_description = f"answer read from external file [status={status} en2={en2v} nonce={nonce}]"
     print(f"  [autopilot] NEW block {job['job_id']} target {zb} zbits -> stored into input window, one signal fired; "
-          f"answer read from external file [status={status} en2={en2v} nonce={nonce}] -> {submission}; pool: {pool}", flush=True)
+          f"{answer_description} -> {submission}; pool: {pool}", flush=True)
     os.makedirs(OUT, exist_ok=True)
     with open(JOB, "w") as receipt_file:
-        json.dump({"job_id": job["job_id"], "zbits": zb, "answer": {"status": status, "en2": en2v, "nonce": nonce},
+        json.dump({"job_id": job["job_id"], "zbits": zb, "answer": answer, "answer_error": answer_error,
                    "pool": pool, "verdict": verdict, "submission_attempted": submission_attempted}, receipt_file)
 
 
