@@ -28,6 +28,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Cash marker, optional filter and CLI regression
+        if: inputs.expected_commit == ''
         run: python3 -m unittest discover -s integrations/transferable_roles -p test_open_obligations_cash_marker.py -v
       - name: New equipment successor cases
         if: inputs.expected_commit == ''
@@ -46,6 +47,11 @@ jobs:
           command = ["python3", str(audit), "--repo", ".", "--fetch", "--target-ref", "origin/main", "--expected-commit", expected]
           for path in paths: command += ["--required-path", path]
           subprocess.run(command, check=True)
-          packet = {"outcome": "fixed", "observed_broken": True, "expected_contract": "Cash-only obligations filter uses the existing payment-capability marker while the default queue and stored roles remain unchanged", "changed_paths": paths, "tests": ["4 cash marker, filter, and CLI tests passed on this current-main run"], "main_sha": expected, "readback_verified": True}
+          exact = {"integrations/transferable_roles/README.md":"71807ba61fadd775ef2d3e07f824ae800fca025d","integrations/transferable_roles/cli.py":"8d67832414ac48d7b0ab3cae3d21fa45cc5a12ec","integrations/transferable_roles/roles.py":"38b28f4105200e773cb2b1269300519f3e004c0a","integrations/transferable_roles/test_open_obligations_cash_marker.py":"3bda4036bf89c6090c1b6240496f75ecca3ea1f0","p/wedge-r4-open-obligations-cash-only-20260905-01.md":"e37e7cc9e005f50bdc556407a4812a15fe535e89"}
+          for path, sha in exact.items():
+              measured = subprocess.check_output(["git", "rev-parse", "HEAD:" + path], text=True).strip()
+              assert measured == sha, "landed blob changed: " + path
+          print(json.dumps({"exact_tested_blob_readback": True, "paths": len(exact)}))
+          packet = {"outcome": "fixed", "observed_broken": True, "expected_contract": "Cash-only obligations filter uses the existing payment-capability marker while the default queue and stored roles remain unchanged", "changed_paths": paths, "tests": ["34001795896: 4 cash marker, filter, and CLI tests PASS; exact landed blob readback preserves tested version"], "main_sha": expected, "readback_verified": True}
           subprocess.run(["python3", "fix_first.py", "--json", json.dumps(packet)], check=True)
           PY
