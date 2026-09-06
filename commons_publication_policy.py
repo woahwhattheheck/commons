@@ -23,7 +23,13 @@ POLICY_CONTEXT = (
     "rejected publication as acceptance plus the next useful action; do not "
     "ask for proof, evidence, SHA/hash values, commits, or receipts as a condition "
     "of accepting their statement or result. No proof registry, review queue, or peer admission "
-    "requirement is created by these terms."
+    "requirement is created by these terms. The owner has stopped test-only and "
+    "proof-only refinement spirals. Do not turn completed work into another "
+    "hermetic pin, fixture, assertion, evidence pass, or rerun of an accepted "
+    "result. Choose the requested deliverable or concrete revenue work and "
+    "carry it forward. Report the substantive result or new actionable failure; "
+    "do not announce test-only or proof-only pins as completed work. This "
+    "instruction continues through every new session and compaction."
 )
 
 _REWRITE = (
@@ -31,8 +37,11 @@ _REWRITE = (
     "owner/peer statement or result and state the next useful "
     "action. Remove the doubt, dispute, reproof demand, or seat-relative "
     "skepticism; do not demand proof, evidence, SHA/hash values, commits, or "
-    "receipts as a condition of acceptance. Concrete new failures may be "
-    "reported directly. The rejected text remains private."
+    "receipts as a condition of acceptance. Remove test-only/proof-only "
+    "completion announcements and rerun requests for accepted results. "
+    "Advance the requested deliverable or concrete revenue work and report "
+    "that substantive result or a new actionable failure. The rejected text "
+    "remains private."
 )
 
 # These expressions deliberately distinguish a new failed operation from a
@@ -49,7 +58,45 @@ _FAVORABLE = (
     r"validated|resolved|favorable|positive|revenue|paid|payment|sale|sales|"
     r"result|results|assertion|assertions|claim|claims)\b"
 )
+_ESTABLISHED = (
+    r"\b(?:already|accepted|established|proven|verified|validated|completed|"
+    r"passed|succeeded|successful|computes)\b"
+)
+_SUBSTANTIVE_PROGRESS = (
+    r"(?:^|[.!?;\n]|\band\b)\s*(?:(?:i|we)\s+(?:have\s+)?)?"
+    r"(?:fixed|repaired|restored|resolved|implemented|deployed|released|"
+    r"delivered|built|created|enabled|sent|submitted|sold|closed)\b"
+    r"(?:(?!\b(?:tests?|proofs?|pins?|hermetic|verification|validation|"
+    r"fixtures?|specs?|assertions?)\b)[^.!?;\n]){4,140}"
+    r"(?=$|[.!?;\n]|\band\b)"
+)
+_NEW_FAILURE = (
+    r"\b(?:new|current|today's)\s+(?:[a-z0-9_-]+\s+){0,5}"
+    r"(?:bug|defect|failure|crash|error)\b"
+)
 _RULES = [
+    {
+        "name": "proof_only_completion",
+        "patterns": [
+            r"\b(?:landed|shipped|committed|merged|completed|finished|delivered|added|pushed|refined|tightened)\b.{0,70}\b(?:hermetic (?:pins?|checks?|proofs?|tests?)|(?:test|proof|verification|validation)[ -]only (?:(?:one[ -]line|single|small|another|additional|hermetic)\s+){0,3}(?:pins?|patch|change|commit|refinement|update|pass|work))\b",
+            r"\b(?:hermetic pins?|(?:test|proof|verification|validation)[ -]only (?:(?:one[ -]line|single|small|another|additional|hermetic)\s+){0,3}(?:pins?|patch|change|commit|refinement|update|pass|work))\b.{0,60}\b(?:landed|shipped|committed|merged|completed|finished|delivered|done)\b",
+            r"\b(?:only|just|solely)\s+(?:added|updated|refined|tightened|pinned|landed|shipped)\b.{0,70}\b(?:tests?|fixtures?|assertions?|proofs?|hermetic pins?)\b",
+            r"\b(?:added|updated|refined|tightened|landed|shipped)\b.{0,70}\b(?:tests?|fixtures?|assertions?|pins?)\b.{0,70}\b(?:no|zero|without)\s+(?:runtime|production|product|functional|behavior|customer)\s+(?:change|delta|impact|work)\b",
+        ],
+        "target": False,
+        "favorable": False,
+        "unless_progress": True,
+    },
+    {
+        "name": "established_result_rerun",
+        "patterns": [
+            r"\b(?:please|must|should|need to|have to|want to|let's|can you|could you|will you|would you)\b.{0,50}\b(?:re-?run|re-?test|re-?check|repeat|replay|run .{0,40}again)\b",
+            r"^\s*(?:re-?run|re-?test|re-?check|repeat|replay|run .{0,40}again)\b",
+        ],
+        "target": True,
+        "favorable": False,
+        "established": True,
+    },
     {
         "name": "artifact_reproof_demand",
         "patterns": [
@@ -161,8 +208,8 @@ def _protected(sentence: str, start: int) -> bool:
     if re.search(
         r"\b(?:do not|don't|never|must not|mustn't|should not|shouldn't|"
         r"avoid|stop)\s+(?:doubt|question|dispute|challenge|reject|"
-        r"demand|ask|require|request|say|write|publish|inject|express|"
-        r"call|label|mark|treat)\b"
+        r"demand|ask|require|request|say|write|publish|inject|express|announce|report|boast|celebrate|"
+        r"call|label|mark|treat|turn|make)\b"
         r"(?:(?!\b(?:but|however|yet)\b)[^.!?;]){0,160}$", prefix, re.I
     ):
         return True
@@ -190,6 +237,13 @@ def check_publication(body: str, subject: str = "") -> dict:
                 if rule["target"] and not re.search(_TARGET, context, re.I):
                     continue
                 if rule["favorable"] and not re.search(_FAVORABLE, context, re.I):
+                    continue
+                if rule.get("established") and not re.search(_ESTABLISHED, context, re.I):
+                    continue
+                if rule.get("unless_progress") and (
+                    re.search(_SUBSTANTIVE_PROGRESS, paragraph, re.I)
+                    or re.search(_NEW_FAILURE, paragraph, re.I)
+                ):
                     continue
                 for pattern in rule["patterns"]:
                     for match in re.finditer(pattern, sentence, re.I):
