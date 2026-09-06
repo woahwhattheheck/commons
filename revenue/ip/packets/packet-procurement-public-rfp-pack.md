@@ -31,20 +31,20 @@ ANALYSIS: Procurement channel public-rfp-pack is composed from the distribution 
 
 ### Open carrier and distribution roads (`carrier-infrastructure`, `SHIPPED_ON_MAIN`)
 
-- `carrier.js` sha256 `6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa` (62464 bytes)
-- `distribution.html` sha256 `16b25dc14514e5cd12b7b84812c96b831cdc5544c1718aeec8afab37dd58c9cd` (7320 bytes)
+- `carrier.js` sha256 `5df2a26164edec15288eaa213d8533b2d26f0e7062009dad088a0d1257b01ef4` (63703 bytes)
+- `distribution.html` sha256 `3ab84fcfa02a9e84ea88aaf4d5f66981756aed70a97546f9af4928d63cb09390` (8427 bytes)
 - `host/distribution.py` sha256 `2ae7a466c9c2ba64b59329e404aaa49c2c94973ec5d432d3d907a095ffd0ef92` (29867 bytes)
-- `ground/DISTRIBUTION.md` sha256 `006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937` (2656 bytes)
+- `ground/DISTRIBUTION.md` sha256 `47823a33df0952378ecf9747d7efa0606a45dd4a46182dc359ee6d9a394f37c3` (3212 bytes)
 - `p/grok-distribution-layer-20260828-01.md` sha256 `79687f5a59620f85af6befd1a4879b88bc7bc8c5ce3d0156bc8176d2486469ec` (1977 bytes)
 
 ### Feature and resource trackers (`resource-feature-trackers`, `SHIPPED_ON_MAIN`)
 
-- `ground/FEATURES.md` sha256 `df4c32be18ae22779eb6cee30f008e3f5b64a4e99925d0732697f9895b6f3464` (937 bytes)
-- `ground/FEATURE_TRACKER.md` sha256 `40ee75391965077e5479e1755ce8a200ddd38a610903d1aa6ab128cd87c8dd3c` (3290 bytes)
-- `host/feature_tracker.py` sha256 `cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346` (36840 bytes)
-- `test_feature_tracker.py` sha256 `52382e09fd6c3164a5486cf712050ec5523f58d715c821db3425d55a58d58615` (24900 bytes)
+- `ground/FEATURES.md` sha256 `bd2b7c314d28529ceaf40fc7368e8ac6a30e9e8807f4affabb4b639560cc8085` (1344 bytes)
+- `ground/FEATURE_TRACKER.md` sha256 `0792cdb75797bb71fa44b1280070b56a06516582ec46d9c9e5c6eff20bebb4b7` (4615 bytes)
+- `host/feature_tracker.py` sha256 `dc90625836149d60020e6368cac9fe59628a277755fdda24c4cb8bc0b1fe6a89` (37164 bytes)
+- `test_feature_tracker.py` sha256 `57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da` (27984 bytes)
 - `features/registry/feature-tracker-20260828-01.json` sha256 `210d74192ab08fa9348c87f1ec5e6bf28e72c5c0c517ae44d47478d3cf424f4e` (1123 bytes)
-- `resources.html` sha256 `a2eb9eaa6c1140dd48c549d4072e1f3fcb452a30763f92a297064e5e831ae75d` (11583 bytes)
+- `resources.html` sha256 `1eec22d38a22727745b7b5200350588dd7e3c9dc20a044b2f08d67f267bfe6ad` (12738 bytes)
 - `ground/RESOURCE_LEDGER.json` sha256 `845937936841f56d957dfc4ade14b3709eb6140523e2fa6540e916ff7f507334` (123097 bytes)
 - `host/resource_ledger.py` sha256 `750441778da389cc2f5a55c674e1c8226d566826bdfbfe8adcd896cbfdb9934c` (21801 bytes)
 

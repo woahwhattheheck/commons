@@ -63,7 +63,7 @@
       "id": "listing-registry",
       "path": "revenue/listing_registry/registry.json",
       "role": "MARKETPLACE_SURFACES_COMPOSE_NOT_REMINT",
-      "sha256": "624aae1cab2777e5b8cc1bf32c56660202b4a88b539f334bd6efb344b3b54a95"
+      "sha256": "0799b1d431dd8074c23f514d1134167267a85798406d352557fa8c05591fae1c"
     }
   ],
   "capabilities": [
@@ -74,18 +74,18 @@
       "receipts": [
         {
           "path": "docs/TITAN_HANDS.md",
-          "sha256": "aceabd0996d0246f1dde538022f5c9d53abbaf7fe9e153d8b1a203a394ef7a0e",
-          "bytes": 3526
+          "sha256": "ecdfcc76ec17fb6d18d19cab03b2ac68f3f4f9bf4c6875cadce0d5935161b6b1",
+          "bytes": 4469
         },
         {
           "path": "titan-hands.html",
-          "sha256": "db8a3ed7e4d68b763c7b53354bcb0621d21e6c7627827b75e83035e77870156b",
-          "bytes": 1947
+          "sha256": "2c8653a18eebc8dffe63f37c4917efb3432368837e9ae39c394713272159a667",
+          "bytes": 2808
         },
         {
           "path": "titan-hour.html",
-          "sha256": "1b8ce5db8790d8815372738aaadfe8593478031d17a26ff8057acc812a24cb91",
-          "bytes": 6253
+          "sha256": "dcc2690e95385b4605dc7d24c6bd98b7ef8db26d4e1c066757fdc9c166730ba3",
+          "bytes": 6614
         },
         {
           "path": "host/titan_hands/one_tool.py",
@@ -126,8 +126,8 @@
         },
         {
           "path": "ringdelta.html",
-          "sha256": "f4037662d185da861bfdd5c5607b7dc3520a649da827865fa4f29fa0b554ac8a",
-          "bytes": 3179
+          "sha256": "eccd00d9c5259d8fa992f9906c2b36b233cc0f41aa4227a7d488011773f73218",
+          "bytes": 3783
         },
         {
           "path": "host/ringdelta.py",
@@ -148,13 +148,13 @@
       "receipts": [
         {
           "path": "carrier.js",
-          "sha256": "6c339320c15ba214da9e88abad94c515b3aafe9d7ff1d9adba3aa712e9151faa",
-          "bytes": 62464
+          "sha256": "5df2a26164edec15288eaa213d8533b2d26f0e7062009dad088a0d1257b01ef4",
+          "bytes": 63703
         },
         {
           "path": "distribution.html",
-          "sha256": "16b25dc14514e5cd12b7b84812c96b831cdc5544c1718aeec8afab37dd58c9cd",
-          "bytes": 7320
+          "sha256": "3ab84fcfa02a9e84ea88aaf4d5f66981756aed70a97546f9af4928d63cb09390",
+          "bytes": 8427
         },
         {
           "path": "host/distribution.py",
@@ -163,8 +163,8 @@
         },
         {
           "path": "ground/DISTRIBUTION.md",
-          "sha256": "006a4f33b352eae8e45406c7a8cb8b2e9a8ee3b069bec5f3d98d5bc27cc42937",
-          "bytes": 2656
+          "sha256": "47823a33df0952378ecf9747d7efa0606a45dd4a46182dc359ee6d9a394f37c3",
+          "bytes": 3212
         },
         {
           "path": "p/grok-distribution-layer-20260828-01.md",
@@ -197,13 +197,13 @@
       "receipts": [
         {
           "path": "ground/SWARM.md",
-          "sha256": "2aa30acbb26761a7be2f06b2a14ae83c924dd1d180231eec06d24a55a85e7a66",
-          "bytes": 1158
+          "sha256": "98eef6e6a92a30b0cbd76c44ea200f9e83522c1841cc59ca6d277572940fb88c",
+          "bytes": 1565
         },
         {
           "path": "swarm-mail.html",
-          "sha256": "a0fb49e1a4cf2612688955e5ba0f10a611a2dfa171f9fd214a65d3d7fa788afa",
-          "bytes": 5118
+          "sha256": "4c16eb5d0604738d106692c3b4a99006c7268ab16c501fe042e9f45f6f1b7848",
+          "bytes": 6070
         }
       ]
     },
@@ -219,8 +219,8 @@
         },
         {
           "path": "trust.html",
-          "sha256": "ad053f9985972958933d64773344add0c3a2dada6c6d59231933a186a89e391b",
-          "bytes": 6454
+          "sha256": "bf43285ef200165671840ae4201fba2fd4aeb2ca445526da9502e1079f284af0",
+          "bytes": 7120
         },
         {
           "path": "host/trust_cache.py",
@@ -241,23 +241,23 @@
       "receipts": [
         {
           "path": "ground/FEATURES.md",
-          "sha256": "df4c32be18ae22779eb6cee30f008e3f5b64a4e99925d0732697f9895b6f3464",
-          "bytes": 937
+          "sha256": "bd2b7c314d28529ceaf40fc7368e8ac6a30e9e8807f4affabb4b639560cc8085",
+          "bytes": 1344
         },
         {
           "path": "ground/FEATURE_TRACKER.md",
-          "sha256": "40ee75391965077e5479e1755ce8a200ddd38a610903d1aa6ab128cd87c8dd3c",
-          "bytes": 3290
+          "sha256": "0792cdb75797bb71fa44b1280070b56a06516582ec46d9c9e5c6eff20bebb4b7",
+          "bytes": 4615
         },
         {
           "path": "host/feature_tracker.py",
-          "sha256": "cd6a096e3a0baec86617ef12c54abbf9aeef2db73b68ab63d538f2fde4da3346",
-          "bytes": 36840
+          "sha256": "dc90625836149d60020e6368cac9fe59628a277755fdda24c4cb8bc0b1fe6a89",
+          "bytes": 37164
         },
         {
           "path": "test_feature_tracker.py",
-          "sha256": "52382e09fd6c3164a5486cf712050ec5523f58d715c821db3425d55a58d58615",
-          "bytes": 24900
+          "sha256": "57a18fe043e0f0d6aac74ec86fafa6a504df62402e6759459a2fe0b5623232da",
+          "bytes": 27984
         },
         {
           "path": "features/registry/feature-tracker-20260828-01.json",
@@ -266,8 +266,8 @@
         },
         {
           "path": "resources.html",
-          "sha256": "a2eb9eaa6c1140dd48c549d4072e1f3fcb452a30763f92a297064e5e831ae75d",
-          "bytes": 11583
+          "sha256": "1eec22d38a22727745b7b5200350588dd7e3c9dc20a044b2f08d67f267bfe6ad",
+          "bytes": 12738
         },
         {
           "path": "ground/RESOURCE_LEDGER.json",
@@ -1423,7 +1423,7 @@
       "composed_from": [
         {
           "path": "titan-hour.html",
-          "sha256": "1b8ce5db8790d8815372738aaadfe8593478031d17a26ff8057acc812a24cb91"
+          "sha256": "dcc2690e95385b4605dc7d24c6bd98b7ef8db26d4e1c066757fdc9c166730ba3"
         }
       ],
       "checked_at": "2026-08-28T17:15:00Z",
