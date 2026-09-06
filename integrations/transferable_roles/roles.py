@@ -263,11 +263,12 @@ class RoleStore:
     def list_ids(self) -> list[str]:
         return sorted(p.stem for p in self.root.glob("*.json"))
 
-    def list_open_obligations(self) -> list[dict[str, Any]]:
+    def list_open_obligations(self, *, cash_only: bool = False) -> list[dict[str, Any]]:
         """Open obligations across all roles — cash-work / fulfillment queue.
 
         Rows for roles that route `payment_capability` stamp
         `payment_capability: true` so mixed CRM + paid stores separate cash work.
+        When cash_only is True, keep only rows with payment_capability is True.
         """
         rows: list[dict[str, Any]] = []
         for rid in self.list_ids():
@@ -293,6 +294,8 @@ class RoleStore:
                     row["payment_capability"] = True
                 rows.append(row)
         rows.sort(key=lambda r: (r["role_id"], r["obligation_id"]))
+        if cash_only:
+            rows = [r for r in rows if r.get("payment_capability") is True]
         return rows
 
     def equip(
