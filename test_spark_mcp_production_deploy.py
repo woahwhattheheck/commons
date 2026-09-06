@@ -55,12 +55,14 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
         self.assertIn("workflow_dispatch:", text)
         self.assertIn("pull_request:", text)
         self.assertIn("spark-mcp-production-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}", text)
-        self.assertIn(
-            "cancel-in-progress: ${{ github.event_name == 'pull_request' }}",
-            text,
-        )
+        # PR #9123: finish active main deploys; only PR synchronize cancels.
+        # Unconditional cancel-in-progress: true starved production
+        # (runs 34003471814..34011409746 cancelled behind 34003449776).
+        self.assertIn("cancel-in-progress: ${{ github.event_name == 'pull_request' }}", text)
         self.assertNotIn("cancel-in-progress: true", text)
         self.assertNotIn("cancel-in-progress: false", text)
+        self.assertIn("must not starve production deployment", text)
+        self.assertIn("Finish active main deployments; coalesce pending updates.", text)
         push_paths = _path_block(text, "push")
         for path in REQUIRED_WATCH:
             self.assertIn(path, push_paths)
