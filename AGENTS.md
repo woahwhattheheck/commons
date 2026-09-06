@@ -199,8 +199,9 @@ There is no report-only completion state.
 
 Agents and humans can buy the existing rungs without waiting for a JavaScript render:
 
-- [$2,500 same-day crash-resume proof](./agent-rescue.html) — refund if the agreed proof window is missed.
-- [$15,000 five-day recovery sprint](./agent-rescue.html) — bounded implementation with a durable receipt.
+- [Agent Failure Autopsy · $29](./agent-rescue.html) — one failed coding-agent run: evidence-linked causes, fix steps, and a prevention check within one business day after usable evidence arrives.
+- [$2,500 same-day crash-resume proof](./revenue/production_survival/README.md) — Survival terms (not the Autopsy page); refund if the agreed proof window is missed.
+- [$15,000 five-day recovery sprint](./revenue/production_survival/README.md) — bounded implementation with a durable receipt (Survival README, not agent-rescue).
 - [$12,000 GGUF diagnostic](./diagnostic.html) — diagnosis before a larger engagement.
 - [$30,000 White Box pilot](./commercial.html) — 30 days for one customer-owned GGUF model family.
 - [$45,000 Muhlnickel / Titan keep-or-build](./land/sku-muhlnickel-titan-20260826.md) — live checkout is recorded in the SKU.
