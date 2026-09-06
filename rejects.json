@@ -1,5 +1,23 @@
 [
   {
+    "id": "discord-1545953866506305548",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-06T00:28:44.209000Z",
+    "body": ""
+  },
+  {
+    "id": "grokbuild-tests-34029682763-keep-autopsy-20260906-01",
+    "reason": "commons_publication_terms",
+    "code": "commons_publication_terms",
+    "state": "PUBLICATION_TERMS_REJECTED",
+    "policy_rule": "unfavorable_finding",
+    "ts": "2026-09-06T12:19:06Z",
+    "body": ""
+  },
+  {
     "id": "unparseable-grtqWQcU4wxV",
     "from": "",
     "to": "",
