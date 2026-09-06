@@ -47,6 +47,7 @@ class LiveCashRegenerationTests(unittest.TestCase):
             )
             self.assert_cash(text, "## Live cash")
             self.assertLessEqual(len(text.encode("utf-8")), 2048)
+            self.assertLessEqual(len((self.root / "change.md").read_bytes()), 2048)
             self.assertIn("newest (truncated)", text)
             self.assertEqual(text.count("RATE p/ "), 1)
             self.assertIn("RATE prs open=3", text)

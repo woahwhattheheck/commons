@@ -624,7 +624,7 @@ def write_change_rate(rows, ts, head=None, n_tips=None, root=None, p_new=None):
         if len(raw) > digest_limit:
             text = raw[:digest_limit - 1].decode("utf-8", errors="ignore").rstrip("\n") + "\n"
     text += CHANGE_LIVE_CASH
-    with open(path, "w", encoding="utf-8") as f:
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
         f.write(text)
     return text
 
