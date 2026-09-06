@@ -48,7 +48,8 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 card = out["card"]
                 self.assertEqual(card["slug"], slug)
                 self.assertTrue(card.get("pointer"))
-                self.assertIn("diagnostic_usd", card)
+                # rivet-r4-equipment-contract-diagnostic-usd-all-slugs-20260905-01
+                self.assertEqual(card.get("diagnostic_usd"), 199)
 
     def test_receipt_card_landed_slugs(self) -> None:
         for slug in ("dealer", "referral", "plant"):
