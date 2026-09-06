@@ -84,6 +84,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertEqual(g2["last_run_id"], "g2-handoff-run")
 
     def test_autopsy_export_import_then_prove(self) -> None:
+        # rivet-r4-handoff-prove-autopsy-export-matrix-20260905-01
         role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         rid = role["role_id"]
         self.store.bind_access_route(
@@ -107,6 +108,12 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             self.assertTrue(proof["ok"])
             self.assertEqual(proof["occupant_session"], "occ-import")
             self.assertIn("autopsy-case", proof["executes"])
+            self.assertIn("autopsy-receipt-row", proof["executes"])
+            receipt = proof["executes"]["autopsy-receipt-row"]
+            self.assertEqual(receipt["state"], "UNVERIFIED")
+            self.assertNotIn("g2_run_id", receipt)
+            self.assertIn("autopsy-fulfill-deadline", proof["executes"])
+            self.assertIn("autopsy-fulfill-validate", proof["executes"])
             self.assertIn("autopsy-fulfill-sla", proof["executes"])
             sla = proof["executes"]["autopsy-fulfill-sla"]
             self.assertEqual(sla["sla_status"], "OPEN")
