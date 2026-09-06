@@ -5,11 +5,14 @@ TENON claims:
 - tenon-r4-equipment-fulfill-sla-cards-20260905-01 (fulfill deadline/SLA)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
+WEDGE claim:
+- wedge-r4-equipment-open-obligations-cash-card-20260905-01 (cash queue)
 Does not remint contracts, receipts, fulfill CLIs, SPARK paid_case, Stripe, or peers remint.
 """
 
 from __future__ import annotations
 
+import tempfile
 from typing import Any
 
 from .services import _schema
@@ -90,6 +93,11 @@ def diagnostic_card_tool_schemas() -> list[dict]:
                 "payment_observed_at": "string",
                 "state": "string",
             },
+        ),
+        _schema(
+            "open_obligations_cash_card",
+            "Open obligations for roles with payment_capability metadata; this marker is not proof of payment. Pass roles[] (role objects). Import-only wrap of RoleStore.list_open_obligations(cash_only=True).",
+            {"roles": "array"},
         ),
     ]
 
@@ -242,4 +250,32 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "card": card}
+    if name == "open_obligations_cash_card":
+        # wedge-r4-equipment-open-obligations-cash-card-20260905-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            roles = args["roles"]
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(roles, list) or not roles:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "roles must be a nonempty array",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                for raw in roles:
+                    if not isinstance(raw, dict):
+                        raise roles_mod.RoleError("each role must be an object")
+                    store.create(raw)
+                rows = store.list_open_obligations(cash_only=True)
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "open_obligations": rows}
     return None
