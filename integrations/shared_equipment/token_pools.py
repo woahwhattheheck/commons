@@ -1,8 +1,8 @@
-"""Read-only GrokBot (Sand) quota adapter.
+"""Read GrokBot, standalone Cursor and Claude quota using existing custody.
 
-Calls the two read-only Sand status methods on the installed Grok Bot 0.43
-client's dashboard endpoint and returns a normalized commons.token_pool_status.v1
-record. Makes no writes, redeems nothing, and performs no retries.
+Uses the installed clients' read-only status interfaces and returns normalized
+commons.token_pool_status.v1 records. Makes no writes, redeems nothing, starts
+no model work and performs no retries.
 """
 
 import json
@@ -12,7 +12,7 @@ import urllib.error
 import urllib.request
 from datetime import datetime, timezone
 
-__all__ = ["poll_token_pools"]
+__all__ = ["poll_token_pools", "poll_cursor_pool", "poll_claude_pool"]
 
 _USAGE_URL = "https://api2.cursor.sh/aiserver.v1.DashboardService/GetSandUsageStatus"
 _ACCESS_URL = "https://api2.cursor.sh/aiserver.v1.DashboardService/GetSandAccessStatus"
@@ -61,16 +61,17 @@ def _response_status(response):
     return None
 
 
-def _call_method(opener, url, credential):
+def _call_method(opener, url, credential, *, http_method="POST", extra_headers=None):
     request = urllib.request.Request(
         url,
-        data=b"{}",
-        method="POST",
+        data=b"{}" if http_method == "POST" else None,
+        method=http_method,
         headers={
             "Content-Type": "application/json",
             "Connect-Protocol-Version": "1",
             "User-Agent": _USER_AGENT,
             "Authorization": "Bearer " + credential,
+            **(extra_headers or {}),
         },
     )
 
@@ -213,9 +214,9 @@ def _build_access_fields(payload):
     }
 
 
-def _resolve_credential(credential_reader):
+def _resolve_credential(credential_reader, reference=_DEFAULT_CREDENTIAL_REFERENCE):
     try:
-        raw = credential_reader(_DEFAULT_CREDENTIAL_REFERENCE)
+        raw = credential_reader(reference)
     except Exception as exc:
         return None, _error(exc)
 
@@ -280,3 +281,73 @@ def poll_token_pools(*, credential_reader, opener=None):
         "usage": usage_result,
         "access": access_result,
     }
+
+
+def _window(pool_id, usage, reset_at):
+    used = _norm_nonneg_finite_number(usage)
+    return {"pool_id": pool_id, "usage_percent": used,
+            "remaining_percent": max(0.0, min(100.0, 100.0 - used)) if used is not None else None,
+            "resets_at": reset_at}
+
+
+def _epoch_millis(value):
+    count = _norm_int_like(value)
+    if count is None or count == 0:
+        return None
+    try:
+        return datetime.fromtimestamp(count / 1000.0, timezone.utc).isoformat().replace("+00:00", "Z")
+    except (ValueError, OverflowError, OSError):
+        return None
+
+
+def _read_pool(provider, source, reference, url, credential_reader, opener,
+               *, http_method="POST", extra_headers=None):
+    result = {"schema": "commons.token_pool_status.v1", "provider": provider,
+              "observed_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+              "source": source, "ok": False, "status": "unavailable", "pools": [], "error": None}
+    credential, error = _resolve_credential(credential_reader, reference)
+    if credential is None:
+        result["error"] = error
+        return result, None
+    payload, error = _call_method(opener or _default_opener, url, credential,
+                                  http_method=http_method, extra_headers=extra_headers)
+    result.update(ok=error is None, status="ok" if error is None else "error", error=error)
+    return result, payload
+
+
+def poll_cursor_pool(*, credential_reader, opener=None):
+    """Read the standalone Cursor account's plan windows using its own grant."""
+    result, payload = _read_pool(
+        "cursor", "GetCurrentPeriodUsage", "vault/cursor/account/access",
+        "https://api2.cursor.sh/aiserver.v1.DashboardService/GetCurrentPeriodUsage",
+        credential_reader, opener, extra_headers={"User-Agent": "CommonsTokenPools/1"})
+    if payload is None:
+        return result
+    usage = payload.get("planUsage")
+    if not isinstance(usage, dict):
+        usage = {}
+    reset_at = _epoch_millis(payload.get("billingCycleEnd"))
+    result["pools"] = [_window(name, usage.get(field), reset_at)
+                       for name, field in (("cursor_plan", "totalPercentUsed"),
+                                           ("cursor_auto", "autoPercentUsed"),
+                                           ("cursor_api", "apiPercentUsed"))]
+    return result
+
+
+def poll_claude_pool(*, credential_reader, opener=None):
+    """Read native Claude OAuth usage; this never starts a model turn."""
+    result, payload = _read_pool(
+        "claude", "/api/oauth/usage", "vault/claude/account/access",
+        "https://api.anthropic.com/api/oauth/usage", credential_reader, opener,
+        http_method="GET", extra_headers={"anthropic-beta": "oauth-2025-04-20",
+                                          "User-Agent": "CommonsTokenPools/1"})
+    if payload is None:
+        return result
+    # Only the provider's utilization/reset windows enter the shared result.
+    for name, window in payload.items():
+        if (isinstance(name, str) and re.fullmatch(r"(?:five_hour|seven_day)(?:_[a-z0-9_]{1,48})?", name)
+                and (window is None or isinstance(window, dict))):
+            window = window or {}
+            result["pools"].append(_window(name, window.get("utilization"),
+                                          _norm_iso_string(window.get("resets_at"))))
+    return result
