@@ -20,11 +20,13 @@ jobs:
       EXPECTED_COMMIT: ${{ inputs.expected_commit }}
       AUDIT_SCRIPT_B64: IyEvdXNyL2Jpbi9lbnYgcHl0aG9uMwoiIiJGYWlsIGNsb3NlZCB1bmxlc3MgR2l0IHdvcmsgaXMgY2xlYW4gYW5kIHRoZSBsYW5kZWQgY29tbWl0IGlzIG9uIHRhcmdldC4iIiIKCmZyb20gX19mdXR1cmVfXyBpbXBvcnQgYW5ub3RhdGlvbnMKCmltcG9ydCBhcmdwYXJzZQppbXBvcnQganNvbgppbXBvcnQgc3VicHJvY2VzcwppbXBvcnQgc3lzCmZyb20gcGF0aGxpYiBpbXBvcnQgUGF0aAoKCmRlZiBnaXQocmVwbzogUGF0aCwgKmFyZ3M6IHN0ciwgY2hlY2s6IGJvb2wgPSBUcnVlKSAtPiBzdHI6CiAgICBwcm9jID0gc3VicHJvY2Vzcy5ydW4oCiAgICAgICAgWyJnaXQiLCAiLUMiLCBzdHIocmVwbyksICphcmdzXSwKICAgICAgICBjaGVjaz1GYWxzZSwKICAgICAgICB0ZXh0PVRydWUsCiAgICAgICAgc3Rkb3V0PXN1YnByb2Nlc3MuUElQRSwKICAgICAgICBzdGRlcnI9c3VicHJvY2Vzcy5QSVBFLAogICAgKQogICAgaWYgY2hlY2sgYW5kIHByb2MucmV0dXJuY29kZSAhPSAwOgogICAgICAgIHJhaXNlIFJ1bnRpbWVFcnJvcihmImdpdCB7JyAnLmpvaW4oYXJncyl9OiB7cHJvYy5zdGRlcnIuc3RyaXAoKX0iKQogICAgcmV0dXJuIHByb2Muc3Rkb3V0LnN0cmlwKCkKCgpkZWYgZXhpc3RzKHJlcG86IFBhdGgsIHJldmlzaW9uOiBzdHIpIC0+IGJvb2w6CiAgICBwcm9jID0gc3VicHJvY2Vzcy5ydW4oCiAgICAgICAgWyJnaXQiLCAiLUMiLCBzdHIocmVwbyksICJjYXQtZmlsZSIsICItZSIsIHJldmlzaW9uXSwKICAgICAgICBjaGVjaz1GYWxzZSwKICAgICAgICBzdGRvdXQ9c3VicHJvY2Vzcy5ERVZOVUxMLAogICAgICAgIHN0ZGVycj1zdWJwcm9jZXNzLkRFVk5VTEwsCiAgICApCiAgICByZXR1cm4gcHJvYy5yZXR1cm5jb2RlID09IDAKCgpkZWYgaXNfYW5jZXN0b3IocmVwbzogUGF0aCwgb2xkZXI6IHN0ciwgbmV3ZXI6IHN0cikgLT4gYm9vbDoKICAgIHByb2MgPSBzdWJwcm9jZXNzLnJ1bigKICAgICAgICBbImdpdCIsICItQyIsIHN0cihyZXBvKSwgIm1lcmdlLWJhc2UiLCAiLS1pcy1hbmNlc3RvciIsIG9sZGVyLCBuZXdlcl0sCiAgICAgICAgY2hlY2s9RmFsc2UsCiAgICAgICAgc3Rkb3V0PXN1YnByb2Nlc3MuREVWTlVMTCwKICAgICAgICBzdGRlcnI9c3VicHJvY2Vzcy5ERVZOVUxMLAogICAgKQogICAgcmV0dXJuIHByb2MucmV0dXJuY29kZSA9PSAwCgoKZGVmIG1haW4oKSAtPiBpbnQ6CiAgICBwYXJzZXIgPSBhcmdwYXJzZS5Bcmd1bWVudFBhcnNlcigpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXJlcG8iLCBkZWZhdWx0PSIuIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tdGFyZ2V0LXJlZiIsIGRlZmF1bHQ9Im9yaWdpbi9tYWluIikKICAgIHBhcnNlci5hZGRfYXJndW1lbnQoIi0tZXhwZWN0ZWQtY29tbWl0IiwgaGVscD0iTGFuZGVkL21lcmdlIGNvbW1pdDsgZGVmYXVsdHMgdG8gSEVBRCIpCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLXJlcXVpcmVkLXBhdGgiLCBhY3Rpb249ImFwcGVuZCIsIGRlZmF1bHQ9W10pCiAgICBwYXJzZXIuYWRkX2FyZ3VtZW50KCItLWZldGNoIiwgYWN0aW9uPSJzdG9yZV90cnVlIikKICAgIGFyZ3MgPSBwYXJzZXIucGFyc2VfYXJncygpCgogICAgcmVwbyA9IFBhdGgoYXJncy5yZXBvKS5yZXNvbHZlKCkKICAgIHJlc3VsdDogZGljdFtzdHIsIG9iamVjdF0gPSB7CiAgICAgICAgInJlcG8iOiBzdHIocmVwbyksCiAgICAgICAgInRhcmdldF9yZWYiOiBhcmdzLnRhcmdldF9yZWYsCiAgICAgICAgImNoZWNrcyI6IHt9LAogICAgICAgICJlcnJvcnMiOiBbXSwKICAgIH0KICAgIGNoZWNrcyA9IHJlc3VsdFsiY2hlY2tzIl0KICAgIGVycm9ycyA9IHJlc3VsdFsiZXJyb3JzIl0KCiAgICB0cnk6CiAgICAgICAgcm9vdCA9IFBhdGgoZ2l0KHJlcG8sICJyZXYtcGFyc2UiLCAiLS1zaG93LXRvcGxldmVsIikpLnJlc29sdmUoKQogICAgICAgIHJlc3VsdFsicmVwbyJdID0gc3RyKHJvb3QpCiAgICAgICAgcmVwbyA9IHJvb3QKCiAgICAgICAgaWYgYXJncy5mZXRjaDoKICAgICAgICAgICAgcmVtb3RlID0gYXJncy50YXJnZXRfcmVmLnNwbGl0KCIvIiwgMSlbMF0KICAgICAgICAgICAgZ2l0KHJlcG8sICJmZXRjaCIsICItLXBydW5lIiwgcmVtb3RlKQogICAgICAgICAgICBjaGVja3NbImZldGNoZWQiXSA9IHJlbW90ZQoKICAgICAgICBkaXJ0eSA9IFtsaW5lIGZvciBsaW5lIGluIGdpdChyZXBvLCAic3RhdHVzIiwgIi0tcG9yY2VsYWluPXYxIiwgIi0tdW50cmFja2VkLWZpbGVzPWFsbCIpLnNwbGl0bGluZXMoKSBpZiBsaW5lXQogICAgICAgIGNoZWNrc1siY2xlYW4iXSA9IG5vdCBkaXJ0eQogICAgICAgIGlmIGRpcnR5OgogICAgICAgICAgICBlcnJvcnMuYXBwZW5kKCJ3b3JrdHJlZSBoYXMgdHJhY2tlZCBvciB1bnRyYWNrZWQgY2hhbmdlcyIpCiAgICAgICAgICAgIHJlc3VsdFsiZGlydHlfZW50cmllcyJdID0gZGlydHkKCiAgICAgICAgaGVhZCA9IGdpdChyZXBvLCAicmV2LXBhcnNlIiwgIkhFQUQiKQogICAgICAgIHJlc3VsdFsiaGVhZCJdID0gaGVhZAogICAgICAgIHJlc3VsdFsiYnJhbmNoIl0gPSBnaXQocmVwbywgImJyYW5jaCIsICItLXNob3ctY3VycmVudCIpIG9yICJERVRBQ0hFRCIKCiAgICAgICAgY2hlY2tzWyJ0YXJnZXRfZXhpc3RzIl0gPSBleGlzdHMocmVwbywgYXJncy50YXJnZXRfcmVmKQogICAgICAgIGlmIG5vdCBjaGVja3NbInRhcmdldF9leGlzdHMiXToKICAgICAgICAgICAgZXJyb3JzLmFwcGVuZChmInRhcmdldCByZWYgZG9lcyBub3QgZXhpc3Q6IHthcmdzLnRhcmdldF9yZWZ9IikKICAgICAgICBlbHNlOgogICAgICAgICAgICB0YXJnZXRfaGVhZCA9IGdpdChyZXBvLCAicmV2LXBhcnNlIiwgYXJncy50YXJnZXRfcmVmKQogICAgICAgICAgICByZXN1bHRbInRhcmdldF9oZWFkIl0gPSB0YXJnZXRfaGVhZAogICAgICAgICAgICBleHBlY3RlZCA9IGFyZ3MuZXhwZWN0ZWRfY29tbWl0IG9yIGhlYWQKICAgICAgICAgICAgaWYgbm90IGV4aXN0cyhyZXBvLCBleHBlY3RlZCk6CiAgICAgICAgICAgICAgICBjaGVja3NbImV4cGVjdGVkX2NvbW1pdF9leGlzdHMiXSA9IEZhbHNlCiAgICAgICAgICAgICAgICBlcnJvcnMuYXBwZW5kKGYiZXhwZWN0ZWQgY29tbWl0IGRvZXMgbm90IGV4aXN0OiB7ZXhwZWN0ZWR9IikKICAgICAgICAgICAgZWxzZToKICAgICAgICAgICAgICAgIGV4cGVjdGVkID0gZ2l0KHJlcG8sICJyZXYtcGFyc2UiLCBleHBlY3RlZCkKICAgICAgICAgICAgICAgIHJlc3VsdFsiZXhwZWN0ZWRfY29tbWl0Il0gPSBleHBlY3RlZAogICAgICAgICAgICAgICAgY2hlY2tzWyJleHBlY3RlZF9jb21taXRfZXhpc3RzIl0gPSBUcnVlCiAgICAgICAgICAgICAgICBjaGVja3NbImxhbmRlZF9hbmNlc3RyeSJdID0gaXNfYW5jZXN0b3IocmVwbywgZXhwZWN0ZWQsIHRhcmdldF9oZWFkKQogICAgICAgICAgICAgICAgaWYgbm90IGNoZWNrc1sibGFuZGVkX2FuY2VzdHJ5Il06CiAgICAgICAgICAgICAgICAgICAgZXJyb3JzLmFwcGVuZCgiZXhwZWN0ZWQgY29tbWl0IGlzIG5vdCBhbiBhbmNlc3RvciBvZiB0YXJnZXQgaGVhZCIpCgogICAgICAgICAgICBwYXRoX3Jlc3VsdHMgPSB7fQogICAgICAgICAgICBmb3IgcmVxdWlyZWRfcGF0aCBpbiBhcmdzLnJlcXVpcmVkX3BhdGg6CiAgICAgICAgICAgICAgICBub3JtYWxpemVkID0gcmVxdWlyZWRfcGF0aC5yZXBsYWNlKCJcXCIsICIvIikubHN0cmlwKCIvIikKICAgICAgICAgICAgICAgIHBhdGhfcmVzdWx0c1tub3JtYWxpemVkXSA9IGV4aXN0cyhyZXBvLCBmInthcmdzLnRhcmdldF9yZWZ9Ontub3JtYWxpemVkfSIpCiAgICAgICAgICAgICAgICBpZiBub3QgcGF0aF9yZXN1bHRzW25vcm1hbGl6ZWRdOgogICAgICAgICAgICAgICAgICAgIGVycm9ycy5hcHBlbmQoZiJyZXF1aXJlZCBwYXRoIG1pc3NpbmcgZnJvbSB0YXJnZXQ6IHtub3JtYWxpemVkfSIpCiAgICAgICAgICAgIGNoZWNrc1sicmVxdWlyZWRfcGF0aHMiXSA9IHBhdGhfcmVzdWx0cwoKICAgICAgICByZXN1bHRbInN0YXRlIl0gPSAiTEFOREVEIiBpZiBub3QgZXJyb3JzIGVsc2UgIlVORklOSVNIRUQiCiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGV4YzoKICAgICAgICBlcnJvcnMuYXBwZW5kKHN0cihleGMpKQogICAgICAgIHJlc3VsdFsic3RhdGUiXSA9ICJVTkZJTklTSEVEIgoKICAgIHByaW50KGpzb24uZHVtcHMocmVzdWx0LCBpbmRlbnQ9Miwgc29ydF9rZXlzPVRydWUpKQogICAgcmV0dXJuIDAgaWYgcmVzdWx0WyJzdGF0ZSJdID09ICJMQU5ERUQiIGVsc2UgMgoKCmlmIF9fbmFtZV9fID09ICJfX21haW5fXyI6CiAgICBzeXMuZXhpdChtYWluKCkpCg==
     steps:
-      - uses: actions/checkout@v4
+      - id: source_checkout
+        uses: actions/checkout@v4
         with:
           ref: ${{ inputs.target_ref }}
           fetch-depth: 0
-      - uses: actions/setup-python@v5
+      - id: python_runtime
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Verify guard behavior and reproduce the original failure
@@ -60,27 +62,69 @@ jobs:
               print('READBACK', path, actual)
           assert not subprocess.check_output(['git', 'status', '--porcelain'], text=True).strip()
           PY
-      - name: Verify the repaired Slack chunk reference
-        if: inputs.expected_commit != ''
+      - name: Verify Slack catalog composition and preserved cash doors
+        if: ${{ !cancelled() && steps.source_checkout.outcome == 'success' && steps.python_runtime.outcome == 'success' && inputs.expected_commit != '' }}
+        env:
+          PYTHONDONTWRITEBYTECODE: '1'
         run: |
+          # Six chunk cases invoke seven full-body cases, which invoke three mirror cases.
           python3 test_commons_slack_full_body_chunk.py
-          git merge-base --is-ancestor c4fddcf3c25ba81b70ee63b05f5d2655e6e7dd0f origin/main
           python3 - <<'PY'
-          import json, subprocess
+          import ast
+          import json
+          import subprocess
           from pathlib import Path
-          path = 'ground/COMMONS_SLACK_FULL_BODY_CHUNK.json'
-          landed = 'c4fddcf3c25ba81b70ee63b05f5d2655e6e7dd0f'
-          actual = subprocess.check_output(['git', 'rev-parse', landed + ':' + path], text=True).strip()
-          assert actual == 'fc09f874c9cb277412f29c77156edbc664e7561e', actual
-          catalog = json.loads(Path(path).read_text())
-          test_blob = subprocess.check_output(['git', 'rev-parse', 'HEAD:test_commons_slack_full_body.py'], text=True).strip()
-          assert catalog['keep_unread']['test_commons_slack_full_body.py'] == test_blob[:8]
-          packet = {'outcome': 'fixed', 'observed_broken': True, 'expected_contract': 'The Slack chunk catalog points at the composed full-body test revision without changing its behavioral coverage.', 'changed_paths': [path], 'tests': ['All6 standalone Slack chunk cases passed in this actual cloud run.', 'Catalog pin matches the actual full-body test Git blob, original repair blob and landed ancestry verified.'], 'main_sha': landed, 'readback_verified': True, 'report_only_sessions': 0, 'unconsumed_findings': 0}
+
+          landed = '680a9177944b1336452b05cd07699010b71fd646'
+          expected = {
+              "ground/COMMONS_SLACK_FULL_BODY.json": "5f674c5d5fbd83f9019f6d898dd7e20248d9c1f2",
+              "ground/COMMONS_SLACK_FULL_BODY_CHUNK.json": "bf55c254d44e0eea0963ab485f20436538784059",
+              "host/commons_slack_full_body.py": "a0f409304b88b8e7b0a8633778e99184713addaf",
+              "host/commons_slack_full_body_chunk.py": "a85d1742d7574a801057606478b698fe9c1c531b",
+              "test_commons_slack_full_body.py": "c4fc5282d29932a65c88410226852e21deb71514",
+              "test_commons_slack_full_body_chunk.py": "3bd83ec3350f0d1cf9fb4dcd6275fa8b1e8ea6a8"
+          }
+          def git(*args):
+              return subprocess.check_output(['git', *args], text=True).strip()
+          subprocess.run(['git', 'merge-base', '--is-ancestor', landed, 'HEAD'], check=True)
+          subprocess.run(['git', 'merge-base', '--is-ancestor',
+                          'c4fddcf3c25ba81b70ee63b05f5d2655e6e7dd0f', 'HEAD'], check=True)
+          for path, blob in expected.items():
+              assert git('rev-parse', landed + ':' + path) == blob, path
+              assert git('hash-object', path) == blob, path
+          for path in ('ground/COMMONS_SLACK_FULL_BODY.json',
+                       'ground/COMMONS_SLACK_FULL_BODY_CHUNK.json'):
+              catalog = json.loads(Path(path).read_text())
+              for source, prefix in catalog['keep_unread'].items():
+                  assert git('hash-object', source).startswith(prefix), source
+          for helper, page in (('host/commons_slack_full_body.py', 'commons-slack.html'),
+                               ('host/commons_slack_full_body_chunk.py', 'commons-slack-chunk.html')):
+              tree = ast.parse(Path(helper).read_text())
+              render = next(n for n in tree.body if isinstance(n, ast.FunctionDef)
+                            and n.name == 'render_html')
+              rendered = ast.literal_eval(render.body[0].value)
+              assert rendered == Path(page).read_text(), page
+              assert 'id="live-cash"' in rendered
+              assert git('hash-object', page) == git('rev-parse', landed + ':' + page), page
+          head = git('rev-parse', 'HEAD')
+          packet = {
+              'outcome': 'fixed', 'observed_broken': True,
+              'expected_contract': 'Slack catalog checks follow reviewed source composition; normal lane-feed updates remain valid; both Slack generators preserve the landed Live cash sections and existing full-body/chunk behavior.',
+              'changed_paths': list(expected),
+              'tests': ['This cloud run: 6 chunk cases PASS, invoking 7 full-body cases PASS and 3 base mirror cases PASS.',
+                        'Exact landed/current source readback, catalog pins, HTML preservation and ancestry PASS.'],
+              'main_sha': head, 'readback_verified': True,
+              'report_only_sessions': 0, 'unconsumed_findings': 0,
+          }
           subprocess.run(['python3', 'fix_first.py', '--json', json.dumps(packet)], check=True)
-          print('SLACK_CATALOG_COMPOSITION_PASS', actual, test_blob)
+          print(json.dumps({'slack_catalog_landed_sha': landed, 'current_main_sha': head,
+                            'changed_blobs_exact': len(expected), 'catalog_pins': 'PASS',
+                            'both_cash_doors_preserved': True,
+                            'test_counts': {'chunk': 6, 'nested_full_body': 7, 'nested_base_mirror': 3},
+                            'superseded_failed_run': 34012452475}))
           PY
       - name: Verify the existing marker deployment test contract
-        if: inputs.expected_commit != ''
+        if: ${{ !cancelled() && steps.source_checkout.outcome == 'success' && steps.python_runtime.outcome == 'success' && inputs.expected_commit != '' }}
         run: |
           python3 -m unittest -v test_webmcp_pad_production.WebmcpPadProductionWorkflowTests.test_marker_push_and_dispatch_never_target_commons_mcp
           git merge-base --is-ancestor 92ee798acf0aaebdc2d328884cb4a58341ac4879 origin/main
@@ -95,7 +139,7 @@ jobs:
           print('WEBMCP_MARKER_CONTRACT_PASS', blob)
           PY
       - name: Read back landed CRM6 semantics and run the remaining small and registry cases
-        if: inputs.expected_commit != ''
+        if: ${{ !cancelled() && steps.source_checkout.outcome == 'success' && steps.python_runtime.outcome == 'success' && inputs.expected_commit != '' }}
         run: |
           set -euo pipefail
           # The 67-case CRM6 run34002209092 and tracker run34002697528 already passed.
@@ -251,7 +295,7 @@ jobs:
               "fix_first_packets":3, "runtime_suite_repeated":False}))
           PY
       - name: Reuse the passed opportunity bake and verify landed receipts
-        if: inputs.expected_commit != ''
+        if: ${{ !cancelled() && steps.source_checkout.outcome == 'success' && steps.python_runtime.outcome == 'success' && inputs.expected_commit != '' }}
         run: |
           python3 - <<'PY'
           import json, subprocess
@@ -281,7 +325,7 @@ jobs:
           PY
 
       - name: HINGE equipment composition - five new cases and catalog assertion
-        if: inputs.expected_commit != ''
+        if: ${{ !cancelled() && steps.source_checkout.outcome == 'success' && steps.python_runtime.outcome == 'success' && inputs.expected_commit != '' }}
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
@@ -293,11 +337,6 @@ jobs:
             integrations.shared_equipment.test_prove_handoff_equipment_card.ProveHandoffEquipmentCardTests.test_missing_role_refuses
           python3 -m unittest test_grokbot_shared_equipment.TestGrokBotSharedEquipment.test_tool_names_and_catalog_extension -v
 
-      - name: HINGE current-main composition readback
-        if: inputs.expected_commit != ''
-        env:
-          PYTHONDONTWRITEBYTECODE: '1'
-        run: |
           python3 - <<'PY'
           import ast
           import json
@@ -398,17 +437,12 @@ jobs:
           subprocess.run(['python3', 'fix_first.py', '--json', json.dumps(packet)], check=True)
           PY
       - name: SPARK paid-case equipment E2E
-        if: inputs.expected_commit != ''
+        if: ${{ !cancelled() && steps.source_checkout.outcome == 'success' && steps.python_runtime.outcome == 'success' && inputs.expected_commit != '' }}
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: |
           python3 -m unittest -v test_grokbot_shared_equipment.TestGrokBotSharedEquipment.test_paid_case_equipment_live_e2e
 
-      - name: Gemini runbook and SPARK E2E landed-source readback
-        if: inputs.expected_commit != ''
-        env:
-          PYTHONDONTWRITEBYTECODE: '1'
-        run: |
           python3 - <<'PY'
           import ast
           import json
