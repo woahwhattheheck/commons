@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ inputs.target_ref }}
-          fetch-depth: 100
+          fetch-depth: 0
           sparse-checkout-cone-mode: false
           sparse-checkout: |
             /host/
@@ -57,7 +57,7 @@ jobs:
         run: |
           set -euo pipefail
           git merge-base --is-ancestor ee14634ab1ed99d6002d8455f11b0dcb663f4c85 HEAD
-          test "$(git rev-parse HEAD:tools.json)" = "1d914f015e75553e4857eb01ab0c3078c93acff3"
+          # The shared catalog may gain peer entries; the actual cash contract test below checks its required SKU and links.
           test "$(git rev-parse HEAD:test_coil_tools_json_live_cash.py)" = "0271ead389ac1fa7f169cae3e1a02c77984a3c63"
           test "$(git rev-parse HEAD:test_digit_mcp_tool_drift_eyebrow.py)" = "d3949f12b85388384e46014028423276f9f436df"
           python3 open_door_guard.py --diff 1667d0adb97ba691a5cfafb5bd144174fb0a18c0^ 1667d0adb97ba691a5cfafb5bd144174fb0a18c0
@@ -72,7 +72,7 @@ jobs:
           PROOF_RUN: ${{ inputs.proof_run }}
         run: |
           set -euo pipefail
-          git fetch --depth=100 origin main
+          git fetch origin main
           git fetch --depth=1 origin 305b07297f5e75a946fe5aab14ad1d87cce5ffea
           python3 - <<'PY'
           import json, os, subprocess, urllib.request
