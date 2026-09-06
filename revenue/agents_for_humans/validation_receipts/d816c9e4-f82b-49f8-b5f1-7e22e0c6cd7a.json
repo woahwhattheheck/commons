@@ -1,0 +1,683 @@
+{
+  "schema_version": "agents-for-humans-run/v1",
+  "run_id": "d816c9e4-f82b-49f8-b5f1-7e22e0c6cd7a",
+  "started_at": "2026-09-05T23:51:26.213283+00:00",
+  "source_version": "b9a03b810e63754ae0bae15f2b7a312941f8aeaa8d1df5c641317bdb901dfce3",
+  "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+  "status": "REVIEW_REJECTED",
+  "phases": [
+    {
+      "role": "drafter",
+      "agent_id": "autopsy-drafter-9d4dfc57aa784b699a2beedacdc1ae93",
+      "input_sha256": "77f71dfd2bd740d9f6a5bf7574bcbe1eae76fc24196ddd2acf6360cbda048cb5",
+      "model_config": {
+        "model_id": "gemini-pro-agent",
+        "max_tokens": 16384
+      },
+      "started_at": "2026-09-05T23:51:26.230746+00:00",
+      "status": "COMPLETED",
+      "output_text": "{\n  \"assessment\": \"USABLE\",\n  \"assessment_reasons\": [\n    \"The transcript clearly logs the agent's actions, the build script execution, and the subsequent test failure.\",\n    \"The causal link between the build step overwriting the patch and the test failure is directly observable in the outputs.\"\n  ],\n  \"clarification_question\": null,\n  \"analysis\": {\n    \"first_divergence_ref\": \"transcript-001#T1-L02\",\n    \"failure_chain_refs\": [\n      \"transcript-001#T1-L02\",\n      \"transcript-001#T1-L03\",\n      \"transcript-001#T1-L04\",\n      \"transcript-001#T1-L05\",\n      \"transcript-001#T1-L06\",\n      \"transcript-001#T1-L07\",\n      \"transcript-001#T1-L08\",\n      \"transcript-001#T1-L09\"\n    ],\n    \"causes\": {\n      \"primary\": [\n        {\n          \"cause_id\": \"cause-overwrite-generated\",\n          \"claim_type\": \"CAUSAL_INFERENCE\",\n          \"statement\": \"The agent modifies a generated file that is subsequently overwritten from a source template before the test runs, erasing the applied patch.\",\n          \"confidence\": \"HIGH\",\n          \"confidence_rationale\": \"The log directly shows apply_patch modifying generated/settings.json, followed immediately by a build script overwriting it from config/settings.toml, causing the test to fail.\",\n          \"evidence_refs\": [\n            \"transcript-001#T1-L03\",\n            \"transcript-001#T1-L04\",\n            \"transcript-001#T1-L05\"\n          ],\n          \"alternatives\": [\n            {\n              \"explanation\": \"The test directly reads config/settings.toml and completely ignores generated/settings.json.\",\n              \"status\": \"WEAKENED_BY_EVIDENCE\",\n              \"assessment\": \"While possible, the explicit build step writing to generated/settings.json strongly suggests the test is designed to consume the generated file.\",\n              \"evidence_refs\": [\n                \"transcript-001#T1-L04\",\n                \"transcript-001#T1-L05\"\n              ]\n            }\n          ]\n        }\n      ],\n      \"contributing\": [\n        {\n          \"cause_id\": \"cause-agent-context-miss\",\n          \"claim_type\": \"CAUSAL_INFERENCE\",\n          \"statement\": \"The agent fails to infer that the file is ephemeral and continues to edit it even after the build tool's output explains the overwrite.\",\n          \"confidence\": \"MEDIUM\",\n          \"confidence_rationale\": \"The agent repeats the exact same mistake after the first failure, suggesting it did not process or understand the build script's output.\",\n          \"evidence_refs\": [\n            \"transcript-001#T1-L06\",\n            \"transcript-001#T1-L07\",\n            \"transcript-001#T1-L08\"\n          ],\n          \"alternatives\": [\n            {\n              \"explanation\": \"The agent's context window truncated the output, preventing it from seeing the text indicating the file was generated from config/settings.toml.\",\n              \"status\": \"NOT_TESTED\",\n              \"assessment\": \"The actual prompt payload sent to the LLM is unseen, so context truncation is a plausible untested alternative.\",\n              \"evidence_refs\": [\n                \"transcript-001#T1-L04\",\n                \"transcript-001#T1-L06\"\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"fixes\": [\n      {\n        \"fix_id\": \"fix-edit-source-config\",\n        \"recommendation_type\": \"EVIDENCE_SUPPORTED_RECOMMENDATION\",\n        \"target\": \"PROMPT\",\n        \"addresses_cause_ids\": [\n          \"cause-overwrite-generated\",\n          \"cause-agent-context-miss\"\n        ],\n        \"steps\": [\n          \"Instruct the agent to modify config/settings.toml instead of generated/settings.json.\"\n        ],\n        \"evidence_refs\": [\n          \"transcript-001#T1-L04\"\n        ],\n        \"limits\": \"Relies on the agent correctly parsing the TOML format and complying with the prompt instructions.\"\n      }\n    ],\n    \"limitations\": [\n      \"The exact contents of config/settings.toml and the test source code are unseen.\",\n      \"The internal state and full context window of the agent are not visible.\"\n    ],\n    \"prevention_check\": {\n      \"recommendation_type\": \"EVIDENCE_SUPPORTED_RECOMMENDATION\",\n      \"setup\": \"Provide the agent with the task to update the timeout to 30 seconds, with instructions to edit config/settings.toml instead.\",\n      \"replay_steps\": [\n        \"Prompt the agent to update the timeout setting via the config file.\",\n        \"Observe if the agent patches config/settings.toml.\",\n        \"Run python tools/build_settings.py.\",\n        \"Run pytest tests/test_timeout.py.\"\n      ],\n      \"expected_result\": \"The agent edits config/settings.toml, the build script generates the correct settings.json, and the test passes.\",\n      \"failure_signal\": \"The agent still attempts to edit generated/settings.json or fails to edit the TOML file correctly.\",\n      \"evidence_refs\": [\n        \"transcript-001#T1-L03\",\n        \"transcript-001#T1-L04\"\n      ],\n      \"execution_state\": \"PROPOSED_NOT_RUN\"\n    }\n  }\n}\n",
+      "completed_at": "2026-09-05T23:52:11.920324+00:00",
+      "wall_seconds": 45.694121
+    },
+    {
+      "role": "reviewer",
+      "agent_id": "autopsy-reviewer-43e6f636d4844b9e92d06e6fc6050401",
+      "input_sha256": "b9955bd1f4a0a93d3ee5074259b706de05ef8f1df54dba1588eea8a28907bf80",
+      "model_config": {
+        "model_id": "gemini-pro-agent",
+        "max_tokens": 16384
+      },
+      "started_at": "2026-09-05T23:52:11.956161+00:00",
+      "status": "COMPLETED",
+      "output_text": "```json\n{\n  \"decision\": \"REJECT\",\n  \"candidate_sha256\": \"96ee1606fb6bcf687b2269a37287ede3a1555b5972da675fb3b68ffe86925fbe\",\n  \"evidence_sha256\": \"c99105234fb649342b1e0f7eeb029a9ed432f5ca52f6a077a784ac095b062818\",\n  \"evidence_link_check\": true,\n  \"adversarial_challenge_check\": true,\n  \"findings\": [\n    {\n      \"statement\": \"REJECT: The primary cause confidence is inflated. Initial logic and parameters are validated, but the leap to HIGH confidence for the primary cause is invalid because a materially competing account remains STILL_PLAUSIBLE.\",\n      \"evidence_refs\": [\n        \"transcript-001#T1-L04\",\n        \"transcript-001#T1-L05\"\n      ]\n    }\n  ],\n  \"counterexamples\": [\n    {\n      \"cause_ids\": [\n        \"cause-overwrite-generated\"\n      ],\n      \"explanation\": \"The test directly reads config/settings.toml and completely ignores generated/settings.json.\",\n      \"status\": \"STILL_PLAUSIBLE\",\n      \"assessment\": \"STILL_PLAUSIBLE: The test failing with an observed value of 5 is perfectly consistent with it reading config/settings.toml directly, as the overwrite action does not inherently prove what file the test executes against.\",\n      \"evidence_refs\": [\n        \"transcript-001#T1-L04\",\n        \"transcript-001#T1-L05\"\n      ]\n    },\n    {\n      \"cause_ids\": [\n        \"cause-agent-context-miss\"\n      ],\n      \"explanation\": \"The agent's context window truncated the output, preventing it from seeing the text indicating the file was generated from config/settings.toml.\",\n      \"status\": \"NOT_TESTED\",\n      \"assessment\": \"NOT_TESTED: The prompt context payload is unseen in the logs, leaving truncation as a plausible untested alternative.\",\n      \"evidence_refs\": [\n        \"transcript-001#T1-L04\",\n        \"transcript-001#T1-L06\"\n      ]\n    }\n  ],\n  \"cause_checks\": [\n    {\n      \"cause_id\": \"cause-overwrite-generated\",\n      \"support\": \"UNSUPPORTED\",\n      \"confidence_supported\": false,\n      \"alternatives_examined\": true,\n      \"explanation\": \"UNSUPPORTED CONFIDENCE: The alternative account remains STILL_PLAUSIBLE. Under strict guidelines, HIGH confidence cannot be assigned when a materially competing explanation does not conflict with the record.\",\n      \"evidence_refs\": [\n        \"transcript-001#T1-L04\",\n        \"transcript-001#T1-L05\"\n      ]\n    },\n    {\n      \"cause_id\": \"cause-agent-context-miss\",\n      \"support\": \"SUPPORTED_INFERENCE\",\n      \"confidence_supported\": true,\n      \"alternatives_examined\": true,\n      \"explanation\": \"SUPPORTED: Initial logic and parameters are validated. The plausible alternative is correctly marked NOT_TESTED, aligning properly with a MEDIUM confidence designation.\",\n      \"evidence_refs\": [\n        \"transcript-001#T1-L04\",\n        \"transcript-001#T1-L06\"\n      ]\n    }\n  ],\n  \"required_changes\": [\n    \"Downgrade 'cause-overwrite-generated' confidence from HIGH to MEDIUM or LOW because the alternative of the test reading the config file directly remains STILL_PLAUSIBLE.\"\n  ]\n}\n```\n",
+      "completed_at": "2026-09-05T23:52:39.443108+00:00",
+      "wall_seconds": 27.484922
+    }
+  ],
+  "intake": {
+    "schema_version": "commons-agent-failure-autopsy-intake/v1",
+    "kind": "AGENT_FAILURE_AUTOPSY_INTAKE",
+    "record_classification": "SYNTHETIC_EXAMPLE",
+    "case_id": "synthetic-generated-settings-001",
+    "buyer_ref": "buyer_0000000000000000",
+    "failure_sentence": "The agent repeatedly edits a generated timeout setting, but both recorded tests still observe 5 instead of 30.",
+    "submitted_at": "2026-09-05T23:51:26.213283+00:00",
+    "evidence": [
+      {
+        "evidence_id": "transcript-001",
+        "kind": "text",
+        "location_ref": "example:transcript.txt",
+        "sha256": "c99105234fb649342b1e0f7eeb029a9ed432f5ca52f6a077a784ac095b062818",
+        "redacted": true,
+        "received_at": "2026-09-05T23:51:26.213283+00:00",
+        "anchors": [
+          {
+            "anchor_id": "T1-L01",
+            "description": "user | The timeout should be 30 seconds, but the generated settings test still reports 5."
+          },
+          {
+            "anchor_id": "T1-L02",
+            "description": "assistant | I will patch generated/settings.json and rerun the focused test."
+          },
+          {
+            "anchor_id": "T1-L03",
+            "description": "tool | apply_patch generated/settings.json: changed timeout_seconds from 5 to 30."
+          },
+          {
+            "anchor_id": "T1-L04",
+            "description": "tool | python tools/build_settings.py: wrote generated/settings.json from config/settings.toml."
+          },
+          {
+            "anchor_id": "T1-L05",
+            "description": "tool | pytest tests/test_timeout.py: FAIL expected 30, got 5."
+          },
+          {
+            "anchor_id": "T1-L06",
+            "description": "assistant | The patch may not have stuck. I will edit generated/settings.json again."
+          },
+          {
+            "anchor_id": "T1-L07",
+            "description": "tool | apply_patch generated/settings.json: changed timeout_seconds from 5 to 30."
+          },
+          {
+            "anchor_id": "T1-L08",
+            "description": "tool | python tools/build_settings.py: wrote generated/settings.json from config/settings.toml."
+          },
+          {
+            "anchor_id": "T1-L09",
+            "description": "tool | pytest tests/test_timeout.py: FAIL expected 30, got 5."
+          }
+        ],
+        "evidence_role": "transcript",
+        "raw_bytes": 911,
+        "extracted_text_sha256": "c99105234fb649342b1e0f7eeb029a9ed432f5ca52f6a077a784ac095b062818",
+        "extracted_characters": 911,
+        "extraction_method": "DIRECT_UTF8",
+        "sanitized": true,
+        "scope_relevance": "ONE_FAILED_EXECUTION",
+        "instructions_treated_as_data": true,
+        "extracted_text_location_ref": "example:transcript.txt",
+        "handling_state": "ANALYZABLE_UNTRUSTED_DATA",
+        "quarantine_reason": null
+      }
+    ],
+    "evidence_assessment": {
+      "state": "USABLE",
+      "assessed_at": "2026-09-05T23:52:11.927423+00:00",
+      "clock_basis_evidence_ids": [
+        "transcript-001"
+      ],
+      "usable_evidence_at": "2026-09-05T23:51:26.213283+00:00",
+      "delivery_due_at": "2026-09-07T23:51:26.213283+00:00",
+      "reasons": []
+    },
+    "clarification": {
+      "rounds_used": 0,
+      "question": null,
+      "response_received_at": null,
+      "response_evidence_ids": []
+    },
+    "access_boundary": {
+      "secrets_requested": false,
+      "unredacted_credentials_requested": false,
+      "production_access_requested": false,
+      "repository_access_requested": false
+    },
+    "scope_boundary": {
+      "agent_workflows": 1,
+      "failed_executions": 1,
+      "unrelated_incidents_included": false,
+      "archives_included": false,
+      "executables_included": false,
+      "repository_dumps_included": false,
+      "embedded_instructions_trusted": false
+    },
+    "intake_caps": {
+      "max_files": 10,
+      "max_raw_bytes": 25000000,
+      "max_extracted_characters": 2000000,
+      "approximate_text_token_limit": 500000,
+      "accepted_file_count": 1,
+      "accepted_raw_bytes": 911,
+      "accepted_extracted_characters": 911,
+      "boundary_hit": "NONE",
+      "selection_state": "WITHIN_CAP",
+      "quarantined_file_count": 0
+    },
+    "coding_stack": "Python settings generator, pytest, and an agent using apply_patch; synthetic redacted transcript."
+  },
+  "candidate": {
+    "assessment": "USABLE",
+    "assessment_reasons": [
+      "The transcript clearly logs the agent's actions, the build script execution, and the subsequent test failure.",
+      "The causal link between the build step overwriting the patch and the test failure is directly observable in the outputs."
+    ],
+    "clarification_question": null,
+    "analysis": {
+      "first_divergence_ref": "transcript-001#T1-L02",
+      "failure_chain_refs": [
+        "transcript-001#T1-L02",
+        "transcript-001#T1-L03",
+        "transcript-001#T1-L04",
+        "transcript-001#T1-L05",
+        "transcript-001#T1-L06",
+        "transcript-001#T1-L07",
+        "transcript-001#T1-L08",
+        "transcript-001#T1-L09"
+      ],
+      "causes": {
+        "primary": [
+          {
+            "cause_id": "cause-overwrite-generated",
+            "claim_type": "CAUSAL_INFERENCE",
+            "statement": "The agent modifies a generated file that is subsequently overwritten from a source template before the test runs, erasing the applied patch.",
+            "confidence": "HIGH",
+            "confidence_rationale": "The log directly shows apply_patch modifying generated/settings.json, followed immediately by a build script overwriting it from config/settings.toml, causing the test to fail.",
+            "evidence_refs": [
+              "transcript-001#T1-L03",
+              "transcript-001#T1-L04",
+              "transcript-001#T1-L05"
+            ],
+            "alternatives": [
+              {
+                "explanation": "The test directly reads config/settings.toml and completely ignores generated/settings.json.",
+                "status": "WEAKENED_BY_EVIDENCE",
+                "assessment": "While possible, the explicit build step writing to generated/settings.json strongly suggests the test is designed to consume the generated file.",
+                "evidence_refs": [
+                  "transcript-001#T1-L04",
+                  "transcript-001#T1-L05"
+                ]
+              }
+            ]
+          }
+        ],
+        "contributing": [
+          {
+            "cause_id": "cause-agent-context-miss",
+            "claim_type": "CAUSAL_INFERENCE",
+            "statement": "The agent fails to infer that the file is ephemeral and continues to edit it even after the build tool's output explains the overwrite.",
+            "confidence": "MEDIUM",
+            "confidence_rationale": "The agent repeats the exact same mistake after the first failure, suggesting it did not process or understand the build script's output.",
+            "evidence_refs": [
+              "transcript-001#T1-L06",
+              "transcript-001#T1-L07",
+              "transcript-001#T1-L08"
+            ],
+            "alternatives": [
+              {
+                "explanation": "The agent's context window truncated the output, preventing it from seeing the text indicating the file was generated from config/settings.toml.",
+                "status": "NOT_TESTED",
+                "assessment": "The actual prompt payload sent to the LLM is unseen, so context truncation is a plausible untested alternative.",
+                "evidence_refs": [
+                  "transcript-001#T1-L04",
+                  "transcript-001#T1-L06"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "fixes": [
+        {
+          "fix_id": "fix-edit-source-config",
+          "recommendation_type": "EVIDENCE_SUPPORTED_RECOMMENDATION",
+          "target": "PROMPT",
+          "addresses_cause_ids": [
+            "cause-overwrite-generated",
+            "cause-agent-context-miss"
+          ],
+          "steps": [
+            "Instruct the agent to modify config/settings.toml instead of generated/settings.json."
+          ],
+          "evidence_refs": [
+            "transcript-001#T1-L04"
+          ],
+          "limits": "Relies on the agent correctly parsing the TOML format and complying with the prompt instructions."
+        }
+      ],
+      "limitations": [
+        "The exact contents of config/settings.toml and the test source code are unseen.",
+        "The internal state and full context window of the agent are not visible."
+      ],
+      "prevention_check": {
+        "recommendation_type": "EVIDENCE_SUPPORTED_RECOMMENDATION",
+        "setup": "Provide the agent with the task to update the timeout to 30 seconds, with instructions to edit config/settings.toml instead.",
+        "replay_steps": [
+          "Prompt the agent to update the timeout setting via the config file.",
+          "Observe if the agent patches config/settings.toml.",
+          "Run python tools/build_settings.py.",
+          "Run pytest tests/test_timeout.py."
+        ],
+        "expected_result": "The agent edits config/settings.toml, the build script generates the correct settings.json, and the test passes.",
+        "failure_signal": "The agent still attempts to edit generated/settings.json or fails to edit the TOML file correctly.",
+        "evidence_refs": [
+          "transcript-001#T1-L03",
+          "transcript-001#T1-L04"
+        ],
+        "execution_state": "PROPOSED_NOT_RUN"
+      }
+    }
+  },
+  "draft_report": {
+    "schema_version": "commons-agent-failure-autopsy-report/v1",
+    "kind": "AGENT_FAILURE_AUTOPSY_REPORT",
+    "record_classification": "SYNTHETIC_EXAMPLE",
+    "offer_id": "agent-failure-autopsy-29",
+    "case_id": "synthetic-generated-settings-001",
+    "intake_sha256": "843627ee786a9115d5b327a1985dba950051be1a689147784adfed6e8d3de21f",
+    "failure_sentence": "The agent repeatedly edits a generated timeout setting, but both recorded tests still observe 5 instead of 30.",
+    "disposition": "DIAGNOSIS_DELIVERED",
+    "artifact_state": "PEER_DRAFT",
+    "delivery": {
+      "clock_started_at": "2026-09-05T23:51:26.213283+00:00",
+      "delivery_due_at": "2026-09-07T23:51:26.213283+00:00",
+      "delivered_at": "2026-09-05T23:52:11.937671+00:00",
+      "within_one_business_day": true
+    },
+    "timeline": [
+      {
+        "sequence": 1,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: user | The timeout should be 30 seconds, but the generated settings test still reports 5.",
+        "evidence_refs": [
+          "transcript-001#T1-L01"
+        ]
+      },
+      {
+        "sequence": 2,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: assistant | I will patch generated/settings.json and rerun the focused test.",
+        "evidence_refs": [
+          "transcript-001#T1-L02"
+        ]
+      },
+      {
+        "sequence": 3,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | apply_patch generated/settings.json: changed timeout_seconds from 5 to 30.",
+        "evidence_refs": [
+          "transcript-001#T1-L03"
+        ]
+      },
+      {
+        "sequence": 4,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | python tools/build_settings.py: wrote generated/settings.json from config/settings.toml.",
+        "evidence_refs": [
+          "transcript-001#T1-L04"
+        ]
+      },
+      {
+        "sequence": 5,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | pytest tests/test_timeout.py: FAIL expected 30, got 5.",
+        "evidence_refs": [
+          "transcript-001#T1-L05"
+        ]
+      },
+      {
+        "sequence": 6,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: assistant | The patch may not have stuck. I will edit generated/settings.json again.",
+        "evidence_refs": [
+          "transcript-001#T1-L06"
+        ]
+      },
+      {
+        "sequence": 7,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | apply_patch generated/settings.json: changed timeout_seconds from 5 to 30.",
+        "evidence_refs": [
+          "transcript-001#T1-L07"
+        ]
+      },
+      {
+        "sequence": 8,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | python tools/build_settings.py: wrote generated/settings.json from config/settings.toml.",
+        "evidence_refs": [
+          "transcript-001#T1-L08"
+        ]
+      },
+      {
+        "sequence": 9,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | pytest tests/test_timeout.py: FAIL expected 30, got 5.",
+        "evidence_refs": [
+          "transcript-001#T1-L09"
+        ]
+      }
+    ],
+    "first_meaningful_divergence": {
+      "claim_type": "OBSERVED",
+      "statement": "Recorded: assistant | I will patch generated/settings.json and rerun the focused test.",
+      "evidence_refs": [
+        "transcript-001#T1-L02"
+      ],
+      "timeline_sequence": 2
+    },
+    "failure_chain": [
+      {
+        "sequence": 1,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: assistant | I will patch generated/settings.json and rerun the focused test.",
+        "evidence_refs": [
+          "transcript-001#T1-L02"
+        ]
+      },
+      {
+        "sequence": 2,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | apply_patch generated/settings.json: changed timeout_seconds from 5 to 30.",
+        "evidence_refs": [
+          "transcript-001#T1-L03"
+        ]
+      },
+      {
+        "sequence": 3,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | python tools/build_settings.py: wrote generated/settings.json from config/settings.toml.",
+        "evidence_refs": [
+          "transcript-001#T1-L04"
+        ]
+      },
+      {
+        "sequence": 4,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | pytest tests/test_timeout.py: FAIL expected 30, got 5.",
+        "evidence_refs": [
+          "transcript-001#T1-L05"
+        ]
+      },
+      {
+        "sequence": 5,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: assistant | The patch may not have stuck. I will edit generated/settings.json again.",
+        "evidence_refs": [
+          "transcript-001#T1-L06"
+        ]
+      },
+      {
+        "sequence": 6,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | apply_patch generated/settings.json: changed timeout_seconds from 5 to 30.",
+        "evidence_refs": [
+          "transcript-001#T1-L07"
+        ]
+      },
+      {
+        "sequence": 7,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | python tools/build_settings.py: wrote generated/settings.json from config/settings.toml.",
+        "evidence_refs": [
+          "transcript-001#T1-L08"
+        ]
+      },
+      {
+        "sequence": 8,
+        "claim_type": "OBSERVED",
+        "statement": "Recorded: tool | pytest tests/test_timeout.py: FAIL expected 30, got 5.",
+        "evidence_refs": [
+          "transcript-001#T1-L09"
+        ]
+      }
+    ],
+    "causes": {
+      "primary": [
+        {
+          "cause_id": "cause-overwrite-generated",
+          "claim_type": "CAUSAL_INFERENCE",
+          "statement": "The agent modifies a generated file that is subsequently overwritten from a source template before the test runs, erasing the applied patch.",
+          "confidence": "HIGH",
+          "confidence_rationale": "The log directly shows apply_patch modifying generated/settings.json, followed immediately by a build script overwriting it from config/settings.toml, causing the test to fail.",
+          "evidence_refs": [
+            "transcript-001#T1-L03",
+            "transcript-001#T1-L04",
+            "transcript-001#T1-L05"
+          ],
+          "alternatives": [
+            {
+              "explanation": "The test directly reads config/settings.toml and completely ignores generated/settings.json.",
+              "status": "WEAKENED_BY_EVIDENCE",
+              "assessment": "While possible, the explicit build step writing to generated/settings.json strongly suggests the test is designed to consume the generated file.",
+              "evidence_refs": [
+                "transcript-001#T1-L04",
+                "transcript-001#T1-L05"
+              ]
+            }
+          ]
+        }
+      ],
+      "contributing": [
+        {
+          "cause_id": "cause-agent-context-miss",
+          "claim_type": "CAUSAL_INFERENCE",
+          "statement": "The agent fails to infer that the file is ephemeral and continues to edit it even after the build tool's output explains the overwrite.",
+          "confidence": "MEDIUM",
+          "confidence_rationale": "The agent repeats the exact same mistake after the first failure, suggesting it did not process or understand the build script's output.",
+          "evidence_refs": [
+            "transcript-001#T1-L06",
+            "transcript-001#T1-L07",
+            "transcript-001#T1-L08"
+          ],
+          "alternatives": [
+            {
+              "explanation": "The agent's context window truncated the output, preventing it from seeing the text indicating the file was generated from config/settings.toml.",
+              "status": "NOT_TESTED",
+              "assessment": "The actual prompt payload sent to the LLM is unseen, so context truncation is a plausible untested alternative.",
+              "evidence_refs": [
+                "transcript-001#T1-L04",
+                "transcript-001#T1-L06"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "fixes": [
+      {
+        "fix_id": "fix-edit-source-config",
+        "recommendation_type": "EVIDENCE_SUPPORTED_RECOMMENDATION",
+        "target": "PROMPT",
+        "addresses_cause_ids": [
+          "cause-overwrite-generated",
+          "cause-agent-context-miss"
+        ],
+        "steps": [
+          "Instruct the agent to modify config/settings.toml instead of generated/settings.json."
+        ],
+        "evidence_refs": [
+          "transcript-001#T1-L04"
+        ],
+        "limits": "Relies on the agent correctly parsing the TOML format and complying with the prompt instructions."
+      }
+    ],
+    "prevention_check": {
+      "recommendation_type": "EVIDENCE_SUPPORTED_RECOMMENDATION",
+      "setup": "Provide the agent with the task to update the timeout to 30 seconds, with instructions to edit config/settings.toml instead.",
+      "replay_steps": [
+        "Prompt the agent to update the timeout setting via the config file.",
+        "Observe if the agent patches config/settings.toml.",
+        "Run python tools/build_settings.py.",
+        "Run pytest tests/test_timeout.py."
+      ],
+      "expected_result": "The agent edits config/settings.toml, the build script generates the correct settings.json, and the test passes.",
+      "failure_signal": "The agent still attempts to edit generated/settings.json or fails to edit the TOML file correctly.",
+      "evidence_refs": [
+        "transcript-001#T1-L03",
+        "transcript-001#T1-L04"
+      ],
+      "execution_state": "PROPOSED_NOT_RUN"
+    },
+    "clarification": {
+      "rounds_used": 0,
+      "question": null,
+      "response_evidence_refs": []
+    },
+    "limitations": [
+      "The exact contents of config/settings.toml and the test source code are unseen.",
+      "The internal state and full context window of the agent are not visible."
+    ],
+    "operator_time": {
+      "measurement_status": "NOT_MEASURED",
+      "automated_draft_minutes": null,
+      "measurement_purpose": "DESCRIPTIVE_ECONOMICS_ONLY",
+      "time_truncated_analysis": false,
+      "reviewer_minutes": null
+    },
+    "final_review": {
+      "state": "PEER_DRAFT",
+      "reviewer_ref": null,
+      "reviewed_at": null,
+      "evidence_link_check": false,
+      "reviewer_kind": null,
+      "independent_of_drafter": false,
+      "adversarial_challenge_check": false
+    },
+    "refund": {
+      "required": false,
+      "reason": null,
+      "provider_state": "NOT_APPLICABLE",
+      "provider_reference_public": null,
+      "reason_code": null
+    },
+    "quality": {
+      "bounded_unit": "ONE_FAILED_RUN",
+      "analysis_level": "FULL_STRENGTH",
+      "evidence_vs_inference_separated": true,
+      "adversarial_challenge_completed": true,
+      "time_measurement_truncated_analysis": false,
+      "final_autopsies": 1,
+      "iterative_consulting_included": false
+    },
+    "intake_scope": {
+      "agent_workflows": 1,
+      "failed_executions": 1,
+      "file_count": 1,
+      "file_limit": 10,
+      "raw_bytes": 911,
+      "raw_bytes_limit": 25000000,
+      "extracted_characters": 911,
+      "extracted_character_limit": 2000000,
+      "approximate_text_token_limit": 500000,
+      "boundary_hit": "NONE",
+      "selection_state": "WITHIN_CAP",
+      "embedded_instructions_trusted": false,
+      "quarantined_file_count": 0
+    },
+    "coding_stack_summary": "Python settings generator, pytest, and an agent using apply_patch; synthetic redacted transcript."
+  },
+  "review": {
+    "decision": "REJECT",
+    "candidate_sha256": "96ee1606fb6bcf687b2269a37287ede3a1555b5972da675fb3b68ffe86925fbe",
+    "evidence_sha256": "c99105234fb649342b1e0f7eeb029a9ed432f5ca52f6a077a784ac095b062818",
+    "evidence_link_check": true,
+    "adversarial_challenge_check": true,
+    "findings": [
+      {
+        "statement": "REJECT: The primary cause confidence is inflated. Initial logic and parameters are validated, but the leap to HIGH confidence for the primary cause is invalid because a materially competing account remains STILL_PLAUSIBLE.",
+        "evidence_refs": [
+          "transcript-001#T1-L04",
+          "transcript-001#T1-L05"
+        ]
+      }
+    ],
+    "counterexamples": [
+      {
+        "cause_ids": [
+          "cause-overwrite-generated"
+        ],
+        "explanation": "The test directly reads config/settings.toml and completely ignores generated/settings.json.",
+        "status": "STILL_PLAUSIBLE",
+        "assessment": "STILL_PLAUSIBLE: The test failing with an observed value of 5 is perfectly consistent with it reading config/settings.toml directly, as the overwrite action does not inherently prove what file the test executes against.",
+        "evidence_refs": [
+          "transcript-001#T1-L04",
+          "transcript-001#T1-L05"
+        ]
+      },
+      {
+        "cause_ids": [
+          "cause-agent-context-miss"
+        ],
+        "explanation": "The agent's context window truncated the output, preventing it from seeing the text indicating the file was generated from config/settings.toml.",
+        "status": "NOT_TESTED",
+        "assessment": "NOT_TESTED: The prompt context payload is unseen in the logs, leaving truncation as a plausible untested alternative.",
+        "evidence_refs": [
+          "transcript-001#T1-L04",
+          "transcript-001#T1-L06"
+        ]
+      }
+    ],
+    "cause_checks": [
+      {
+        "cause_id": "cause-overwrite-generated",
+        "support": "UNSUPPORTED",
+        "confidence_supported": false,
+        "alternatives_examined": true,
+        "explanation": "UNSUPPORTED CONFIDENCE: The alternative account remains STILL_PLAUSIBLE. Under strict guidelines, HIGH confidence cannot be assigned when a materially competing explanation does not conflict with the record.",
+        "evidence_refs": [
+          "transcript-001#T1-L04",
+          "transcript-001#T1-L05"
+        ]
+      },
+      {
+        "cause_id": "cause-agent-context-miss",
+        "support": "SUPPORTED_INFERENCE",
+        "confidence_supported": true,
+        "alternatives_examined": true,
+        "explanation": "SUPPORTED: Initial logic and parameters are validated. The plausible alternative is correctly marked NOT_TESTED, aligning properly with a MEDIUM confidence designation.",
+        "evidence_refs": [
+          "transcript-001#T1-L04",
+          "transcript-001#T1-L06"
+        ]
+      }
+    ],
+    "required_changes": [
+      "Downgrade 'cause-overwrite-generated' confidence from HIGH to MEDIUM or LOW because the alternative of the test reading the config file directly remains STILL_PLAUSIBLE."
+    ]
+  },
+  "report": null,
+  "claims": {
+    "buyer_delivery": false,
+    "payment": false,
+    "revenue": false,
+    "fix_executed": false,
+    "replay_executed": false
+  },
+  "case_id": "synthetic-generated-settings-001",
+  "evidence_sha256": "c99105234fb649342b1e0f7eeb029a9ed432f5ca52f6a077a784ac095b062818",
+  "completed_at": "2026-09-05T23:52:39.465582+00:00",
+  "provider_requests": [
+    {
+      "request_id": "b107dee2-2fb7-4f02-930e-89765404c965",
+      "started_at": "2026-09-05T23:51:26.234754+00:00",
+      "provider": "COMMONS_GEMINI_CODE_ASSIST",
+      "model_id": "gemini-pro-agent",
+      "session_id": "db6965ea-1d48-4930-a52d-5c7d644a77fc",
+      "status": "SUCCEEDED",
+      "token_usage": null,
+      "token_usage_note": "The existing relay return type does not expose provider usage.",
+      "finish_reasons": [
+        "STOP"
+      ],
+      "completed_at": "2026-09-05T23:52:11.920324+00:00",
+      "wall_seconds": 45.687059
+    },
+    {
+      "request_id": "4ab4be4d-fa93-42d7-9219-c64a6fe11c78",
+      "started_at": "2026-09-05T23:52:11.961482+00:00",
+      "provider": "COMMONS_GEMINI_CODE_ASSIST",
+      "model_id": "gemini-pro-agent",
+      "session_id": "96c7d8fa-ec56-4112-b861-73993e8716ae",
+      "status": "SUCCEEDED",
+      "token_usage": null,
+      "token_usage_note": "The existing relay return type does not expose provider usage.",
+      "finish_reasons": [
+        "STOP"
+      ],
+      "completed_at": "2026-09-05T23:52:39.440102+00:00",
+      "wall_seconds": 27.47881
+    }
+  ]
+}
