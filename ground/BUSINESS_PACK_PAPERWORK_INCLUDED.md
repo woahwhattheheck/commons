@@ -9,3 +9,15 @@ Instance Status stays `OWNER_UNSET` / `HOLD_COUNSEL` until the buyer files. Offi
 This card does not remint `cursor-business-pack-paperwork-20260902-01`. It does not write SCOUT `PAPERWORK.md` / `MESSAGING_ANGLE.md`, the state-instance claim, slot-law files, LotRibbon, or desk helpers. Checkout stays `NOT_MINTED`. Not legal advice. Not a Commons seat.
 
 Machine map: [BUSINESS_PACK_PAPERWORK_INCLUDED.json](./BUSINESS_PACK_PAPERWORK_INCLUDED.json). Helper: [host/business_pack_paperwork_included.py](../host/business_pack_paperwork_included.py). Sheet: [packs/_template/paperwork.md](../packs/_template/paperwork.md). Factory law (do not remint): [BUSINESS_PACK_PAPERWORK.json](./BUSINESS_PACK_PAPERWORK.json).
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-06 — do not remint.
