@@ -1,0 +1,29 @@
+name: forge-handoff-mailbox-annotate-oneshot
+on:
+  push:
+    branches: [forge/ledger-crm6-handoff-mailbox-verify-annotate-20260906-01]
+permissions:
+  contents: write
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: forge/ledger-crm6-handoff-mailbox-verify-annotate-20260906-01
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: apply annotate
+        run: python3 tools/forge_apply_handoff_mailbox_annotate.py
+      - name: hermetic test
+        run: python3 -m unittest tests.test_ledger_crm6_handoff_mailbox_verify_annotate -v
+      - name: commit ship and remove oneshot
+        run: |
+          set -euo pipefail
+          rm -f tools/forge_apply_handoff_mailbox_annotate.py
+          rm -f .github/workflows/forge-handoff-mailbox-annotate-oneshot.yml
+          git config user.name forge
+          git config user.email forge@users.noreply.github.com
+          git add -A
+          git diff --cached --quiet && exit 1
+          git commit -m "CRM6: optional handoff --mailbox-verify annotate"
+          git push
