@@ -395,3 +395,102 @@ profile reads. The focused CI checks exercise the request shapes, binary bytes,
 child environment, redacted errors and real redirect refusal using test-only
 inputs. They make no live provider calls or model requests and do not claim
 that every deployed peer has refreshed its installed module.
+
+### Portable account references and returned types
+
+Use the package reader in the current runtime; it discovers the same shared
+sources through existing local custody or the box snapshot described above.
+An owner-specific output directory, credential-holder process or per-peer grant
+is not needed. These references are related views of existing account records:
+
+| Account | Reference | Returned value |
+| --- | --- | --- |
+| Claude | `vault/claude/account/oauth` | Complete grant as an already-decoded dictionary |
+| Claude | `vault/claude/account/access` | Access-token string |
+| Claude | `vault/claude/account/refresh` | Refresh-token string |
+| Grok CLI | `vault/grok/cli/account-0/oauth` | Complete grant as JSON text |
+| Grok CLI | `vault/grok/cli/account-0/access` | Access-token string |
+| Grok CLI | `vault/grok/cli/account-0/refresh` | Refresh-token string |
+| Grok Bot | `vault/grokbot/account-0/cursor-access-token` | Cursor-provider access-token string |
+| Grok Bot | `vault/grokbot/account-0/cursor-refresh-token` | Cursor-provider refresh-token string |
+| Grok Bot | `vault/grokbot/account-0/cursor-account-profile` | Deposited profile as JSON text |
+| Cursor standalone | `vault/cursor/account/auth` | Complete grant as an already-decoded dictionary |
+| Cursor standalone | `vault/cursor/account/access` | Access-token string |
+| Cursor standalone | `vault/cursor/account/refresh` | Refresh-token string |
+
+`vault/grok/cli/auth-file` and `vault/grokbot/accounts` return their complete
+stored account collections as JSON text. The Grok Bot coordinator reference
+above also returns JSON text. These account grants and token views are not
+chunks to concatenate. The `vault/` prefix alone does not imply base64; preserve
+the documented type and decode JSON text only where the record calls for it.
+
+```python
+import json
+from integrations.shared_equipment.credential_client import retrieve_local
+
+claude_grant = retrieve_local("vault/claude/account/oauth")  # Already a dict.
+grok_grant = json.loads(retrieve_local("vault/grok/cli/account-0/oauth"))
+grok_access = retrieve_local("vault/grok/cli/account-0/access")
+grok_refresh = retrieve_local("vault/grok/cli/account-0/refresh")
+# Use actual values only in the intended runtime; never print these objects.
+```
+
+Grok CLI uses an xAI OIDC account grant. Grok Bot uses a separate Cursor-provider
+grant, and the standalone Cursor account is a third stored account. Neither
+Grok grant is an `XAI_API_KEY`. Reading a deposited access or refresh token does
+not refresh it. For normal expiry recovery, use the provider's existing OAuth
+client/grant flow without adding scopes, preserve unrelated account records,
+and save any returned replacement refresh token in the same native custody and
+its shared deposited views. Refresh the existing box snapshot when those values
+change. Do not create an alternative plaintext credential store or put values in
+command arguments, model prompts, logs or public receipts.
+
+### Grok CLI ACP with existing account custody
+
+Use the installed Grok CLI and its normal authenticated profile. Its native
+account collection is `~/.grok/auth.json`; the shared full collection and grant
+references above expose those actual values independently. The Commons
+`headless.py` adapter does not import grants into that file or replace the CLI's
+normal OAuth refresh/custody behavior. Preserve the existing file format,
+permissions, owner hooks and tool-permission configuration.
+
+Start the foreground ACP connection with the installed executable:
+
+```text
+grok agent --no-leader stdio
+```
+
+Set `GROK_DISABLE_AUTOUPDATER=1` in this child process's environment. The bounded
+startup procedure also uses `GROK_MEMORY=0`, `GROK_WORKFLOWS=0`,
+`GROK_SUBAGENTS=0`, `GROK_TELEMETRY_ENABLED=0` and
+`GROK_TELEMETRY_TRACE_UPLOAD=0` in the child, leaving the parent environment and
+persistent configuration intact.
+
+Send newline-delimited JSON-RPC on stdin in this order, awaiting each matching
+response on stdout before sending the next request. Replace `cwd` with an
+existing working directory on that machine:
+
+```json
+{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":1,"clientCapabilities":{}}}
+{"jsonrpc":"2.0","id":2,"method":"authenticate","params":{"methodId":"cached_token","_meta":{"headless":true}}}
+{"jsonrpc":"2.0","id":3,"method":"session/new","params":{"cwd":"/path/to/existing/workspace","mcpServers":[]}}
+```
+
+Retain the returned `sessionId`. An empty `mcpServers` array adds no per-session
+server definitions; the CLI's existing configured Commons server remains
+available. Read the actual `_x.ai/mcp/server_status` and
+`_x.ai/mcp_initialized` notifications for readiness and the current tool count.
+
+For an authorized task, the subsequent ACP prompt contract is:
+
+```json
+{"jsonrpc":"2.0","id":4,"method":"session/prompt","params":{"sessionId":"RETURNED_SESSION_ID","prompt":[{"type":"text","text":"Your authorized task text"}]}}
+```
+
+Consume `session/update` notifications and the matching final response.
+Initialize, authentication and session creation are separate from model-task
+completion. A provider HTTP 402 usage rejection is also separate from vault
+retrieval and authentication; inspect the actual operation result rather than
+claiming a completed response. Closing stdin ends this foreground connection;
+the CLI retains its normal visible session history. An authorized `grok -p`
+task uses the same native OIDC custody, not an API-key substitution.
