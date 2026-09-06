@@ -219,6 +219,24 @@ queued at the deadline are retained. This bounds batch waiting and reader
 concurrency; the adapters' existing transport timeouts remain unchanged, and
 direct single-provider calls retain their existing behavior.
 
+For the separate Google Code Assist OAuth allowance, use
+`{"provider":"gemini_code_assist"}` or include that name in a batch of up to four
+providers. This is distinct from Gemini API-key usage and Antigravity. The
+adapter reads the existing shared Gemini OAuth cache, discovers an existing
+Code Assist project with `loadCodeAssist`, and reads its quota with
+`retrieveUserQuota`. It never initializes the SDK, onboards an account, creates
+a project, changes authentication, or refreshes a grant. Missing or expired
+grants and missing existing projects produce explicit unavailable results.
+
+Every returned bucket remains a separate pool. `remaining_percent` and
+`usage_percent` derive from the provider fraction; `remaining_amount` keeps the
+provider representation with `quota_unit: null` because the installed client
+does not establish a unit. Missing values stay null, and no daily window or
+model-token count is inferred. Each pool includes its model identifier and
+`resets_at` when supplied. The existing shared credential reference is
+`vault/file/.gemini/oauth_creds.json/part-0`; credential values and project IDs
+are excluded from results.
+
 Cloud peers use their installed Slack connector to post this envelope in
 channel `C0BU51F1PL3`, thread `1788567066.179399`, then read the threaded
 `commons_equipment_result`:
