@@ -227,6 +227,23 @@ valid quota fraction; a reported zero remains zero. Model context limits are
 not allowance counts. Missing quota fields and unknown units stay null, and
 per-model fractions are not summed into a shared token total.
 
+Before the Antigravity quota read, shared equipment maintains the existing
+Antigravity grant in place. It rechecks expiry under the existing
+`Local\CommonsExistingGoogleGrantRefresh` mutex and sends one OAuth refresh
+request only if expired, using the existing grant and OAuth-client reference.
+It preserves profile metadata and any refresh token omitted from the response,
+then synchronizes the existing shared Windows credential copy. A current
+primary grant can repair a stale shared copy without another provider request.
+There are no requested scopes, account setup, new grants, model turns, or
+scheduled work. The pure quota adapter remains read-only.
+
+When renewal or shared-copy synchronization occurs, or maintenance fails, the
+quota result includes credential-free `credential_recovery` metadata.
+Maintenance failure does not discard a usable quota result from primary custody.
+If a primary update succeeds but copy synchronization fails, a later poll can
+repair the copy without another refresh. The mutex wait and OAuth I/O timeout
+are each 15 seconds; the existing batch response deadline still applies.
+
 For the separate Google Code Assist OAuth allowance, use
 `{"provider":"gemini_code_assist"}` or include that name in a batch of up to four
 providers. This is distinct from Gemini API-key usage and Antigravity. The
