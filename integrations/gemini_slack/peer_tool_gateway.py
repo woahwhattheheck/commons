@@ -7,6 +7,7 @@ import argparse
 import base64
 import datetime as dt
 import hashlib
+import http.client
 import json
 import os
 import queue
@@ -25,6 +26,7 @@ from typing import Any, Callable
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 from integrations.shared_equipment.services import CombinedCatalog, redacted
+from integrations.shared_equipment.outcomes import effect_uncertain, tool_failed
 from integrations.gemini_slack.upstream_turn import UpstreamTurnError, wait_peer_turn
 from integrations.gemini_slack.tool_result_boundary import BOUNDARY_VERSION, SOURCE_DATA_RULE, tool_result_prompt
 
@@ -58,7 +60,44 @@ def _upstream_handle_fields(source: dict[str, Any] | None) -> dict[str, Any]:
 
 
 class GatewayError(RuntimeError):
-    pass
+    def __init__(self, message, *, code="gateway_error", uncertain=False, native_result=None):
+        super().__init__(message)
+        self.code = code
+        self.uncertain = uncertain
+        self.native_result = native_result
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+_HTTP = urllib.request.build_opener(_NoRedirect())
+
+
+def _response_json(response, expected_id=None):
+    if "text/event-stream" not in response.headers.get("Content-Type", "").lower():
+        return json.loads(response.read().decode("utf-8"))
+    # Multi-line SSE frames are source bytes, not one-JSON-object-per-line.
+    data_lines = []
+    while True:
+        raw = response.readline()
+        if not raw or not raw.strip():
+            if data_lines:
+                try:
+                    value = json.loads("\n".join(data_lines))
+                except ValueError:
+                    value = None
+                data_lines = []
+                if (isinstance(value, dict) and type(value.get("id")) is type(expected_id)
+                        and value.get("id") == expected_id):
+                    return value
+            if not raw:
+                raise ValueError("No correlated event-stream response")
+        else:
+            line = raw.decode("utf-8").rstrip("\r\n")
+            if line.startswith("data:"):
+                data_lines.append(line[5:].removeprefix(" "))
 
 
 def _utc_now() -> str:
@@ -83,25 +122,36 @@ def _post_json(
         headers=request_headers,
         method="POST",
     )
+    effect = payload.get("jsonrpc") != "2.0" or payload.get("method") == "tools/call"
     try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            value = json.loads(response.read().decode("utf-8"))
-    except (OSError, ValueError, urllib.error.URLError) as exc:
-        raise GatewayError(f"POST {url} failed: {exc}") from exc
-    if not isinstance(value, dict):
-        raise GatewayError(f"POST {url} returned a non-object")
-    return value
+        with _HTTP.open(request, timeout=timeout) as response:
+            value = _response_json(response, payload.get("id"))
+        if not isinstance(value, dict):
+            raise ValueError("No result object")
+        return value
+    except urllib.error.HTTPError as exc:
+        status = exc.code
+        exc.close()
+        raise GatewayError("POST response was HTTP " + str(status), code="post_http_error",
+                           uncertain=effect) from None
+    except (OSError, ValueError, urllib.error.URLError, http.client.HTTPException):
+        raise GatewayError("POST response could not be confirmed", code="post_response_unconfirmed",
+                           uncertain=effect) from None
 
 
 def _get_json(url: str, *, timeout: float = 15.0) -> dict[str, Any]:
     try:
-        with urllib.request.urlopen(url, timeout=timeout) as response:
-            value = json.loads(response.read().decode("utf-8"))
-    except (OSError, ValueError, urllib.error.URLError) as exc:
-        raise GatewayError(f"GET {url} failed: {exc}") from exc
-    if not isinstance(value, dict):
-        raise GatewayError(f"GET {url} returned a non-object")
-    return value
+        with _HTTP.open(url, timeout=timeout) as response:
+            value = _response_json(response)
+        if not isinstance(value, dict):
+            raise ValueError("No result object")
+        return value
+    except urllib.error.HTTPError as exc:
+        status = exc.code
+        exc.close()
+        raise GatewayError("GET response was HTTP " + str(status), code="get_http_error") from None
+    except (OSError, ValueError, urllib.error.URLError, http.client.HTTPException):
+        raise GatewayError("GET response could not be read", code="get_response_unavailable") from None
 
 
 class UpstreamClient:
@@ -142,19 +192,31 @@ class McpCatalog:
         self._lock = threading.Lock()
 
     def _rpc(self, method: str, params: dict[str, Any]) -> dict[str, Any]:
+        identifier = uuid.uuid4().hex
         response = _post_json(
             self.url,
-            {"jsonrpc": "2.0", "id": uuid.uuid4().hex, "method": method, "params": params},
+            {"jsonrpc": "2.0", "id": identifier, "method": method, "params": params},
             headers={
                 "Accept": "application/json, text/event-stream",
                 "MCP-Protocol-Version": MCP_PROTOCOL,
             },
         )
-        if response.get("error"):
-            raise GatewayError(f"Commons MCP error: {response['error']}")
+        effect = method == "tools/call"
+        if (response.get("jsonrpc") != "2.0" or type(response.get("id")) is not type(identifier)
+                or response.get("id") != identifier or ("error" in response) == ("result" in response)):
+            raise GatewayError("Commons MCP returned an uncorrelated response",
+                               code="mcp_response_invalid", uncertain=effect)
+        if "error" in response:
+            error = response["error"]
+            code = error.get("code") if isinstance(error, dict) else None
+            uncertain = effect and (effect_uncertain(error) or effect_uncertain(error.get("data") if isinstance(error, dict) else None) or type(code) is not int
+                                    or code not in (-32600, -32601, -32602))
+            raise GatewayError("Commons MCP returned a request error", code="mcp_request_error",
+                               uncertain=uncertain, native_result=response)
         result = response.get("result")
         if not isinstance(result, dict):
-            raise GatewayError("Commons MCP returned no result object")
+            raise GatewayError("Commons MCP returned no result object",
+                               code="mcp_response_invalid", uncertain=effect)
         return result
 
     def tools(self, *, force: bool = False) -> list[dict[str, Any]]:
@@ -234,10 +296,17 @@ class ToolCallStore:
             ).fetchone()
             if row:
                 if row["tool_name"] != name or row["arguments_sha256"] != digest:
-                    return {"error": "call_id_reused_with_different_arguments"}
+                    return {"isError": True, "uncertain": False, "error": "call_id_reused_with_different_arguments"}
                 if row["result_json"]:
-                    return json.loads(row["result_json"])
+                    previous = json.loads(row["result_json"])
+                    if row["state"] == "error" and not tool_failed(previous):
+                        previous.setdefault("isError", True)
+                    if row["state"] == "started" and not effect_uncertain(previous):
+                        previous.update(isError=True, uncertain=True)
+                    return previous
                 return {
+                    "isError": True,
+                    "uncertain": True,
                     "error": "tool_effect_unknown_after_interruption",
                     "call_id": call_id,
                     "reconciliation": "inspect Commons before deciding whether to issue a new call",
@@ -250,10 +319,14 @@ class ToolCallStore:
             result = runner(name, arguments)
             if not isinstance(result, dict):
                 result = {"result": result}
-            state = "completed"
+            state = "started" if effect_uncertain(result) else "error" if tool_failed(result) else "completed"
         except Exception as exc:
-            result = {"error": type(exc).__name__, "message": str(exc)}
-            state = "error"
+            result = {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc)),
+                      "code": getattr(exc, "code", type(exc).__name__),
+                      "uncertain": bool(getattr(exc, "uncertain", False))}
+            if getattr(exc, "native_result", None) is not None:
+                result["result"] = exc.native_result
+            state = "started" if result["uncertain"] else "error"
         encoded = json.dumps(result, ensure_ascii=False, separators=(",", ":"))
         with self._lock, self._db:
             self._db.execute(
@@ -737,8 +810,9 @@ class Handler(BaseHTTPRequestHandler):
                 result = self.server.loop.calls.execute_journaled(
                     "equipment:" + payload["request_id"], payload["call_id"],
                     payload["name"], arguments, self.server.catalog.call)
-                self._send(200, {"ok": True, "request_id": payload["request_id"],
-                    "call_id": payload["call_id"], "result": redacted(result)})
+                self._send(200, {"ok": not tool_failed(result), "request_id": payload["request_id"],
+                    "call_id": payload["call_id"], "result": redacted(result),
+                    "uncertain": effect_uncertain(result)})
             except Exception as exc:
                 self._send(400, {"ok": False, "error": type(exc).__name__, "message": redacted(str(exc))})
             return

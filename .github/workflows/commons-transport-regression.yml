@@ -1,0 +1,59 @@
+name: Commons transport regression
+on:
+  push:
+    branches: [main, codex/deathstar-bounty-fixes-20260906]
+    paths:
+      - integrations/shared_equipment/**
+      - integrations/gemini_slack/**
+      - integrations/claude_headless/client.py
+      - host/toolbench.py
+      - test_commons_transport_outcomes.py
+      - test_claude_client_transport_outcomes.py
+      - test_toolbench_snapshot_consistency.py
+      - .github/workflows/commons-transport-regression.yml
+  pull_request:
+    paths:
+      - integrations/shared_equipment/**
+      - integrations/gemini_slack/**
+      - integrations/claude_headless/client.py
+      - host/toolbench.py
+      - test_commons_transport_outcomes.py
+      - test_claude_client_transport_outcomes.py
+      - test_toolbench_snapshot_consistency.py
+      - .github/workflows/commons-transport-regression.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  regression:
+    name: Transport and checkpoint / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONUTF8: "1"
+      PIP_DISABLE_PIP_VERSION_CHECK: "1"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12"
+      - name: Install existing sealed-transfer test dependency
+        run: python -m pip install --no-cache-dir -r integrations/shared_equipment/requirements-credential-transfer.txt
+      - name: Run port and existing native regressions
+        run: >-
+          python -W error -m unittest -v
+          test_commons_transport_outcomes
+          test_claude_client_transport_outcomes
+          test_toolbench_snapshot_consistency
+          test_gemini_peer_tool_gateway
+          test_gemini_tool_result_boundary
+          test_toolbench
+          test_client
+          test_claude_headless
+          integrations.shared_equipment.test_equipment
