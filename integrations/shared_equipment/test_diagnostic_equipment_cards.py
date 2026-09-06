@@ -133,6 +133,34 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
 
+    def test_autopsy_fulfill_validate_card(self) -> None:
+        # hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01
+        out = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": self.autopsy},
+        )
+        self.assertTrue(out.get("ok"), out)
+        card = out["card"]
+        self.assertIsInstance(card, dict)
+        if "ok" in card:
+            self.assertTrue(card["ok"])
+        for key in ("case_id", "disposition", "artifact_state"):
+            if key in card:
+                self.assertTrue(card[key])
+        crm = json.loads(CRM.read_text(encoding="utf-8"))
+        crm_refuse = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": crm},
+        )
+        self.assertFalse(crm_refuse.get("ok"))
+        self.assertEqual(crm_refuse.get("error"), "role_refused")
+        diag_refuse = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": self.diag},
+        )
+        self.assertFalse(diag_refuse.get("ok"))
+        self.assertEqual(diag_refuse.get("error"), "role_refused")
+
     def test_autopsy_case_and_receipt_cards(self) -> None:
         # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
         case_out = self.eq.call(
@@ -201,6 +229,10 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 {"role": crm, "usable_evidence_at": _EVIDENCE},
             ),
             (
+                "autopsy_fulfill_validate_card",
+                {"role": crm},
+            ),
+            (
                 "autopsy_case_card",
                 {"role": crm, "case_ref": _CASE_REF},
             ),
@@ -224,6 +256,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             "diagnostic_fulfill_sla_card",
             "autopsy_fulfill_deadline_card",
             "autopsy_fulfill_sla_card",
+            "autopsy_fulfill_validate_card",
             "autopsy_case_card",
             "autopsy_receipt_card",
             "open_obligations_cash_card",
@@ -257,6 +290,14 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
+
+    def _assert_autopsy_fulfill_validate_card(self, role: dict) -> None:
+        out = self.eq.call(
+            "autopsy_fulfill_validate_card",
+            {"role": role},
+        )
+        self.assertTrue(out.get("ok"), out)
+        self.assertIsInstance(out["card"], dict)
 
     def _assert_autopsy_case_receipt_cards(self, role: dict) -> None:
         # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
@@ -350,6 +391,21 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 seat="RIVET",
             )
             self._assert_autopsy_fulfill_cards(store.get(rid))
+
+    def test_autopsy_fulfill_validate_survive_transfer(self) -> None:
+        # hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="av-A", harness="hinge")
+            store.transfer(
+                rid,
+                from_session_id="av-A",
+                to_session_id="av-B",
+                to_harness="rivet",
+            )
+            self._assert_autopsy_fulfill_validate_card(store.get(rid))
 
     def test_autopsy_case_receipt_survive_transfer(self) -> None:
         # hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01
