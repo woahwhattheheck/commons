@@ -5,4 +5,4 @@ FILES = ['test_digit-since-you-last-looked-live-cash-20260905-01.py', 'test_digi
 def test_no_parents1_left_in_fixed_set():
     for rel in FILES:
         text = (ROOT / rel).read_text(encoding="utf-8")
-        assert "Path(__file__).resolve().parent" not in text
+        assert "resolve().parents[1]" not in text
