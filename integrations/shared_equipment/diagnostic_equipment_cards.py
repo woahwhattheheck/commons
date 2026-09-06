@@ -4,6 +4,7 @@ TENON claims:
 - tenon-r4-equipment-diagnostic-cards-20260905-01 (contract/receipt)
 - tenon-r4-equipment-fulfill-sla-cards-20260905-01 (fulfill deadline/SLA)
 - tenon-r4-equipment-advance-obligation-card-20260906-01 (advance obligation)
+- tenon-r4-equipment-open-obligations-card-20260906-01 (full open queue)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
@@ -110,6 +111,12 @@ def diagnostic_card_tool_schemas() -> list[dict]:
             "open_obligations_cash_card",
             "Open obligations for roles with payment_capability metadata; this marker is not proof of payment. Pass roles[] (role objects). Import-only wrap of RoleStore.list_open_obligations(cash_only=True).",
             {"roles": "array"},
+        ),
+        _schema(
+            "open_obligations_card",
+            "Open obligations across roles (CRM + paid). Pass roles[]; optional cash_only (default false). Import-only wrap of RoleStore.list_open_obligations. Does not remint WEDGE cash card.",
+            {"roles": "array"},
+            {"cash_only": "boolean"},
         ),
         _schema(
             "advance_obligation_card",
@@ -259,8 +266,8 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
             card = paid_mod.build_g2_case_from_role(
                 args["role"],
                 case_ref=str(args["case_ref"]),
-                client_reference_id=args.get("client_reference_id"),
                 sku=args.get("sku"),
+                client_reference_id=args.get("client_reference_id"),
             )
         except KeyError as exc:
             return {
@@ -322,6 +329,35 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
         return {"ok": True, "open_obligations": rows}
+    if name == "open_obligations_card":
+        # tenon-r4-equipment-open-obligations-card-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            roles = args["roles"]
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(roles, list) or not roles:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "roles must be a nonempty array",
+            }
+        cash_only = bool(args.get("cash_only", False))
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                for raw in roles:
+                    if not isinstance(raw, dict):
+                        raise roles_mod.RoleError("each role must be an object")
+                    store.create(raw)
+                rows = store.list_open_obligations(cash_only=cash_only)
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "open_obligations": rows, "cash_only": cash_only}
     if name == "advance_obligation_card":
         # tenon-r4-equipment-advance-obligation-card-20260906-01
         roles_mod = _load_transferable_roles_mod("roles")
