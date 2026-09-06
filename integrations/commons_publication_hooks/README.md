@@ -19,6 +19,8 @@ and load the terms at session/turn boundaries. Install into an existing client:
 ```text
 python integrations/commons_publication_hooks/install.py --config-dir /path/to/.codex
 python integrations/commons_publication_hooks/install.py --config-dir /path/to/.claude --claude
+python integrations/commons_publication_hooks/install_native.py --config-dir /path/to/.cursor --client cursor
+python integrations/commons_publication_hooks/install_native.py --config-dir /path/to/.gemini --client gemini
 ```
 
 The installer preserves existing active hooks. When Claude's old hooks are
@@ -26,6 +28,36 @@ globally disabled, it retains their disabled configuration beside the new hook
 and enables only the new publication hooks. It starts no daemon, dispatcher,
 model, session or scheduled job. Existing clients pick up native hook config at
 their supported reload boundary.
+
+Cursor and Gemini CLI use `native.py`, which shares the same publication
+selector with the Codex/Claude hook. Cursor's `preToolUse` and
+`beforeMCPExecution` return `permission: deny`; Gemini's `BeforeTool` returns
+`decision: deny` with a private correction. These decisions block only the
+proposed publication, leaving the requested work able to continue. JSON-string
+MCP arguments, provider context, Slack blocks, and direct Commons GitHub
+issue/comment arguments are supported. The adapter never opens transcripts,
+stores submitted text, launches a model, or calls another service.
+
+The native installer retains all existing event entries, disable flags and
+disabled-hook lists. If the client has globally disabled hooks, they remain
+disabled; installing source does not authorize overriding that choice. The
+repository's `.cursor/hooks.json` and `.gemini/settings.json` preserve their
+existing configuration and add the publication hooks for future clients.
+
+Cursor injects the terms at `sessionStart`. Gemini injects them at `SessionStart`
+and `BeforeAgent`. Publication checks execute independently of conversation
+memory, including after compaction. Cursor's compaction hook is observational;
+neither provider documents a context-injection event immediately after every
+same-turn compaction, so these adapters do not invent one. Cursor cloud uses
+the generic `preToolUse` event because `sessionStart` and `beforeMCPExecution`
+are not supported there, and hooks do not run in its early read-only phase.
+Gemini hook execution errors are fail-open under the provider's protocol;
+the supported JSON deny response blocks the matching call. Shell commands
+that perform their own HTTP publication still need a managed service boundary.
+
+Native schemas: [Cursor hooks](https://cursor.com/docs/hooks),
+[Gemini hook reference](https://geminicli.com/docs/hooks/reference/), and
+[Gemini hook configuration](https://geminicli.com/docs/hooks/).
 
 The checks identify explicit publication-language patterns. They do not judge
 the truth of claims, alter provider results, or authenticate peers. Deployment

@@ -6,6 +6,26 @@
         "command": "python3 .cursor/hooks/ship-stop.py",
         "loop_limit": 3
       }
+    ],
+    "sessionStart": [
+      {
+        "command": "python3 integrations/commons_publication_hooks/native.py --client cursor",
+        "timeout": 5
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "python3 integrations/commons_publication_hooks/native.py --client cursor",
+        "timeout": 5,
+        "failClosed": true
+      }
+    ],
+    "beforeMCPExecution": [
+      {
+        "command": "python3 integrations/commons_publication_hooks/native.py --client cursor",
+        "timeout": 5,
+        "failClosed": true
+      }
     ]
   }
 }
