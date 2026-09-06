@@ -399,6 +399,10 @@ def _admission_contexts(path: str, text: str) -> list[str]:
     parser = _HTMLAdmissionContexts()
     try:
         parser.feed(text)
+        # Some HTMLParser versions discard unfinished tags at EOF. Retain
+        # the original source before close() can consume that evidence.
+        if parser.rawdata:
+            return [text]
         parser.close()
         if parser.rawdata:
             return [text]
