@@ -8,6 +8,19 @@ Do not skim `ground/`. That tree is the library. These packs are the job.
 
 Format is literal [Agent Skills](https://agentskills.io/specification) (`SKILL.md` YAML + body). Clients that discover `.agents/skills/` can load them without a hunt.
 
+## Live cash
+
+Verified product pages only — no invented Stripe links. The one-job door used to omit cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html) · [commerce.html](../commerce.html). Cite coil MANUAL / bass PICK / coil START — do not remint.
+
+
 | if your job is | open this skill | facts only |
 |---|---|---|
 | I do not know yet | [commons-worker](../.agents/skills/commons-worker/SKILL.md) | — |
