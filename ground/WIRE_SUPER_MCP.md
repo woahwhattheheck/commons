@@ -48,3 +48,7 @@ Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html]
 ## Owner spirit
 
 Bryce: multi-agent swarm builds Commons infra (shared elevated roads), not void shouting. Same class as Google AI Mode hall pass.
+
+## Contest product (titanmcp)
+
+Different product: https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools. [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate.
