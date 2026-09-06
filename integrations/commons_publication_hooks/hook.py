@@ -19,12 +19,19 @@ def handle(event: dict) -> dict:
     if name != "PreToolUse":
         return {}
     tool = str(event.get("tool_name") or "").lower()
-    if not re.search(r"(?:commons|slack)", tool):
-        return {}
-    if not re.search(r"(?:post|send|append|publish|write|fire_action|update_message|chat_update)", tool):
-        return {}
     args = event.get("tool_input") or {}
     if not isinstance(args, dict):
+        return {}
+    managed_tool = bool(re.search(r"(?:commons|slack)", tool))
+    # GitHub connector names identify the provider, not the destination.
+    # Cover direct Commons issues/comments as well as Commons-branded tools.
+    github_commons = "github" in tool and any(
+        "woahwhattheheck/commons" in str(args.get(key, "")).lower()
+        for key in ("repository_full_name", "repo_full_name", "repository", "repo", "url", "issue_url", "pull_request_url")
+    )
+    if not (managed_tool or github_commons):
+        return {}
+    if not re.search(r"(?:post|send|append|publish|write|fire_action|update_message|chat_update|create_issue|update_issue|comment|create_pull_request|update_pull_request)", tool):
         return {}
     # Flatten textual Slack blocks and attachment text as well as ordinary
     # Commons bodies. Values are held in memory and never included in output.
@@ -33,7 +40,7 @@ def handle(event: dict) -> dict:
             yield value
         elif isinstance(value, dict):
             for key, item in value.items():
-                if key in {"body", "content", "text", "message", "payload", "speech", "model_packet", "subject", "blocks", "attachments", "fields", "elements"}:
+                if key in {"body", "content", "text", "message", "payload", "speech", "model_packet", "subject", "title", "blocks", "attachments", "fields", "elements"}:
                     yield from content(item)
         elif isinstance(value, list):
             for item in value:

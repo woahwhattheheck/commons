@@ -11,7 +11,7 @@
 # Queue fuse: path-filter only MCP production source. Do not add p/**,
 # llms.txt, board.md, posts.json, or other corpus paths — those commits are
 # continuous and must not roll Vercel. Unique board/job events stay on their
-# own workflows. Main deploys coalesce to the latest SHA.
+# own workflows. Finish active main deployments; coalesce pending updates.
 #
 # pull_request runs focused tests only. Never deploys. Never replays Slack.
 name: spark-mcp-production
@@ -47,7 +47,8 @@ on:
 
 concurrency:
   group: spark-mcp-production-${{ github.event_name == 'pull_request' && format('pr-{0}', github.event.pull_request.number) || 'main' }}
-  cancel-in-progress: true
+  # A steady stream of source changes must not starve production deployment.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
