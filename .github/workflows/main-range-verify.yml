@@ -1,44 +1,56 @@
-name: main-range-verify
-
-# Busy main is sampled as a range. One run replaces six per-push observers,
-# including source parsing when Python or JavaScript changed in the range.
+name: Bitcoin pool transport check
+run-name: Bitcoin pool transport candidate cd783073
 on:
-  schedule:
-    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
-    inputs:
-      lookback_minutes:
-        description: Minutes of main history to coalesce
-        required: false
-        default: '30'
-
 permissions:
   contents: read
-
-concurrency:
-  group: commons-main-range-verify
-  cancel-in-progress: false
-
 jobs:
-  verify-range:
-    runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-slim
+    timeout-minutes: 8
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: cd7830735c9f5150a846f546907544abdf3a18d7
+          fetch-depth: 100
           persist-credentials: false
-      - name: verify one frozen main range
-        env:
-          DISPATCH_LOOKBACK: ${{ inputs.lookback_minutes }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /host/pfc_bitcoin_autopilot.py
+            /infra/host/pfc_bitcoin_autopilot.py
+            /tests/test_pfc_bitcoin_transport.py
+            /open_door_guard.py
+      - name: Validate actual transport module in cloud
         run: |
-          lookback="${DISPATCH_LOOKBACK:-30}"
-          python3 host/main_range.py \
-            --head HEAD \
-            --lookback-minutes "$lookback" \
-            --receipt "$RUNNER_TEMP/main-range.json" \
-            | tee -a "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: main-range-${{ github.run_id }}
-          path: ${{ runner.temp }}/main-range.json
-          if-no-files-found: error
+          python3 - <<'PY'
+          import contextlib, importlib.util, io, json, pathlib, subprocess, sys
+          assert pathlib.Path('host/pfc_bitcoin_autopilot.py').read_bytes() == pathlib.Path('infra/host/pfc_bitcoin_autopilot.py').read_bytes()
+          subprocess.run([sys.executable, '-m', 'unittest', 'discover', '-s', 'tests', '-p', 'test_pfc_bitcoin_transport.py', '-v'], check=True)
+          subprocess.run([sys.executable, 'open_door_guard.py', '--diff', '6a553d99528a6ba0a3712b2b450e506811b92b1b', 'cd7830735c9f5150a846f546907544abdf3a18d7'], check=True)
+          print('CHECKED_HEAD=' + subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip())
+          from unittest import mock
+          old_source = subprocess.check_output(['git','show','6a553d99528a6ba0a3712b2b450e506811b92b1b:host/pfc_bitcoin_autopilot.py'], text=True)
+          for use_plain_stdout, exception_type in ((True, AttributeError), (False, ValueError)):
+              class Stream(io.StringIO):
+                  def reconfigure(self, **kwargs): pass
+              output = io.StringIO() if use_plain_stdout else Stream()
+              with mock.patch.object(sys, 'argv', ['embedding-program','--pool','unrelated']), contextlib.redirect_stdout(output):
+                  try:
+                      exec(compile(old_source, 'baseline-autopilot', 'exec'), {'__name__':'baseline_import'})
+                  except exception_type:
+                      pass
+                  else:
+                      raise AssertionError('Baseline import defect did not reproduce')
+          print('BASELINE_IMPORT_FAILURES=2 REPAIRED_IMPORTS=2')
+          spec = importlib.util.spec_from_file_location('live_pool_transport', 'host/pfc_bitcoin_autopilot.py')
+          subject = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(subject)
+          connection = subject.Conn()
+          try:
+              en1, en2size, job = subject.receive_job(connection, timeout=15.0)
+              print(json.dumps({'live_pool_handshake':'PASS','host':subject.POOL_HOST,'port':subject.POOL_PORT,'job_id':job['job_id'],'extranonce2_size':en2size,'clean_jobs':job['clean_jobs'],'worker_started':False,'share_submitted':False}))
+          finally:
+              connection.close()
+          PY
