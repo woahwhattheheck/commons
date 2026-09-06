@@ -366,6 +366,38 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             )
             self._assert_autopsy_case_receipt_cards(store.get(rid))
 
+    def test_autopsy_case_receipt_survive_export_import_equip(self) -> None:
+        # rivet-r4-equipment-autopsy-case-receipt-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="ac-exp-A", harness="hinge")
+            package = store.export_package(rid)
+        with tempfile.TemporaryDirectory() as fresh_dir:
+            fresh = RoleStore(fresh_dir)
+            imported = fresh.import_package(package)
+            fresh.equip(
+                imported["role_id"],
+                session_id="ac-exp-B",
+                harness="rivet",
+                seat="RIVET",
+            )
+            self._assert_autopsy_case_receipt_cards(
+                fresh.get(imported["role_id"])
+            )
+
+    def test_autopsy_case_receipt_survive_release_equip(self) -> None:
+        # rivet-r4-equipment-autopsy-case-receipt-survive-handoff-20260905-01
+        with tempfile.TemporaryDirectory() as tmp:
+            store = RoleStore(tmp)
+            role = store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
+            rid = role["role_id"]
+            store.equip(rid, session_id="ac-rel-A", harness="hinge")
+            store.release(rid, from_session_id="ac-rel-A")
+            store.equip(rid, session_id="ac-rel-B", harness="rivet")
+            self._assert_autopsy_case_receipt_cards(store.get(rid))
+
     def test_diagnostic_cards_survive_transfer(self) -> None:
         # rivet-r4-equipment-cards-survive-handoff-20260905-01
         with tempfile.TemporaryDirectory() as tmp:
