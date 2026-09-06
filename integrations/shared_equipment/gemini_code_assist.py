@@ -195,7 +195,16 @@ def poll_gemini_code_assist_pool(*, credential_reader, project_id_reader=None,
         return unavailable(error["code"], "existing_project", error["http_status"])
     if not isinstance(existing.get("currentTier"), dict):
         tiers = existing.get("ineligibleTiers")
-        if isinstance(tiers, list) and any(isinstance(t, dict) and t.get("reasonCode") == "VALIDATION_REQUIRED" for t in tiers):
+        reason_codes = []
+        if isinstance(tiers, list):
+            for tier in tiers:
+                code = tier.get("reasonCode") if isinstance(tier, dict) else None
+                if isinstance(code, str) and re.fullmatch(r"[A-Z][A-Z0-9_]{0,95}", code) and code not in reason_codes:
+                    reason_codes.append(code)
+        result["provider_reason_codes"] = reason_codes
+        if "UNSUPPORTED_CLIENT" in reason_codes:
+            return unavailable("provider_client_unsupported", "existing_project")
+        if "VALIDATION_REQUIRED" in reason_codes:
             return unavailable("existing_access_validation_required", "existing_project")
         if isinstance(tiers, list) and tiers:
             return unavailable("existing_access_ineligible", "existing_project")
