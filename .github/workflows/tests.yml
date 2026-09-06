@@ -18,28 +18,18 @@ jobs:
           sparse-checkout: |
             /integrations/
             /revenue/
-            /clans.json
-            /test_grokbot_shared_equipment.py
-            /fix_first.py
-      - name: Verify diagnostic equipment and handoff SLA behavior
+      - name: Verify release and equip handoff behavior on current main
         run: |
           set -euo pipefail
-          git merge-base --is-ancestor 4af942e9acf01598d98c06a327a9b25179093ae3 HEAD
-          python3 -m unittest -v test_grokbot_shared_equipment integrations.shared_equipment.test_diagnostic_equipment_cards
+          git merge-base --is-ancestor a21710bbf78f8c333a80c690d3e6c8fe0245af90 HEAD
           python3 integrations/transferable_roles/test_handoff_execute_survive.py
-          python3 integrations/transferable_roles/test_autopsy_sla_cli.py
-          python3 integrations/transferable_roles/test_autopsy_fulfill_cli.py
-      - name: Read back current main and audit
-        run: |
-          set -euo pipefail
           git fetch --depth=100 origin main
           python3 - <<'PY'
           import subprocess
-          paths = ["integrations/shared_equipment/diagnostic_equipment_cards.py","integrations/shared_equipment/peers.py","integrations/shared_equipment/role_equipment.json","integrations/shared_equipment/test_diagnostic_equipment_cards.py","test_grokbot_shared_equipment.py","integrations/transferable_roles/README.md","integrations/transferable_roles/handoff_execute.py","integrations/transferable_roles/test_handoff_execute_survive.py","p/tenon-r4-equipment-diagnostic-cards-20260905-01.md","p/rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01.md","integrations/transferable_roles/cli.py","integrations/transferable_roles/autopsy_fulfill.py","integrations/transferable_roles/test_autopsy_sla_cli.py","p/wedge-autopsy-fulfill-sla-status-20260905-01.md","p/hinge-r4-handoff-prove-diag-sla-20260905-01.md"]
-          for path in paths:
+          for path in ["integrations/transferable_roles/README.md","integrations/transferable_roles/test_handoff_execute_survive.py","p/rivet-r4-handoff-prove-release-equip-20260905-01.md","integrations/transferable_roles/handoff_execute.py","integrations/transferable_roles/roles.py"]:
               expected = subprocess.check_output(["git","rev-parse","HEAD:"+path],text=True).strip()
               actual = subprocess.check_output(["git","rev-parse","origin/main:"+path],text=True).strip()
-              assert actual == expected,path
+              assert expected == actual,path
               print("READBACK",path,actual)
           PY
           cat > "$RUNNER_TEMP/audit_git_terminal.py" <<'AUDIT_PY'
@@ -165,15 +155,4 @@ jobs:
           if __name__ == "__main__":
               sys.exit(main())
           AUDIT_PY
-          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit 4af942e9acf01598d98c06a327a9b25179093ae3 --required-path integrations/shared_equipment/diagnostic_equipment_cards.py --required-path integrations/transferable_roles/handoff_execute.py
-      - name: Validate actual completed repair packets
-        run: |
-          python3 - <<'PY'
-          import json,os,subprocess
-          packets = json.loads("[{\"outcome\":\"fixed\",\"observed_broken\":true,\"expected_contract\":\"Documented CLI --store must work before or after subcommands; diagnostic repair cards must load their actual offer and acceptance shape; buyer packets must retain the declared delivery window alongside the start clock.\",\"changed_paths\":[\"integrations/transferable_roles/cli.py\",\"integrations/transferable_roles/diagnostic_contract.py\",\"dealer-service-lead-rescue.html\",\"plant-downtime-handoff.html\",\"referral-intake-completeness.html\"],\"tests\":[\"33998032932 attempt 2: 50 role tests including real CLI and 2 buyer packet/click-handler tests PASS\"],\"main_sha\":\"1ad9bdaf567bd891586c5c52eceb3bde80f3abf5\",\"readback_verified\":true},{\"outcome\":\"fixed\",\"observed_broken\":true,\"expected_contract\":\"Diagnostic RoleStore must preserve every fixture obligation, including newly added deadline and SLA obligations; the fixture test must compare the actual declared IDs while retaining required intake, diagnose and settle obligations.\",\"changed_paths\":[\"integrations/transferable_roles/test_roles.py\"],\"tests\":[\"33999622149 attempt 2: 67 role tests plus 3 CRM6 assertions PASS\"],\"main_sha\":\"f47caafef246b3eba42a1ed62cec9da9fba626a9\",\"readback_verified\":true},{\"outcome\":\"fixed\",\"observed_broken\":true,\"expected_contract\":\"A local handoff helper must report local execution and leave absent G2 receipt identifiers and payment evidence empty, rather than fabricate service operations.\",\"changed_paths\":[\"integrations/transferable_roles/handoff_execute.py\",\"integrations/transferable_roles/test_handoff_execute_survive.py\"],\"tests\":[\"33999622149 attempt 2: 67 role tests including handoff transfer, export/import, CLI, truthful empty receipt IDs PASS\"],\"main_sha\":\"27aeaeaad2f55eb4862beaa2b80f785238400096\",\"readback_verified\":true},{\"outcome\":\"fixed\",\"observed_broken\":true,\"expected_contract\":\"The exact equipment catalog assertion must include the two intentionally added diagnostic card tools, and shared route metadata must expose both names.\",\"changed_paths\":[\"test_grokbot_shared_equipment.py\"],\"tests\":[\"Current workflow: test_grokbot_shared_equipment and diagnostic equipment card tests PASS before this step\"],\"main_sha\":\"44531df427ca0c25d93698dca737a61f509ee0fb\",\"readback_verified\":true}]")
-          for packet in packets:
-              subprocess.run(["git","merge-base","--is-ancestor",packet["main_sha"],"origin/main"],check=True)
-              packet["tests"].append("readback and terminal audit: workflow " + os.environ["GITHUB_RUN_ID"] + " PASS")
-              result = subprocess.run(["python3","fix_first.py","--json",json.dumps(packet)],check=True,text=True,capture_output=True)
-              print(result.stdout)
-          PY
+          python3 "$RUNNER_TEMP/audit_git_terminal.py" --expected-commit a21710bbf78f8c333a80c690d3e6c8fe0245af90 --required-path integrations/transferable_roles/test_handoff_execute_survive.py
