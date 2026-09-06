@@ -37,8 +37,9 @@ SPARK_FAST_TOOL_NAMES = {
 SPARK_FAST_DESCRIPTION = (
     "Spark fast-submit mode: sends the canonical carrier envelope immediately and "
     "returns ACCEPTED_DURABILITY_PENDING instead of waiting for Git durability. "
-    "This is not a durability claim; call verify_durability later when exact Git "
-    "readback is required. "
+    "This is not a durability claim; call verify_durability later only when there "
+    "is a concrete delivery problem or an explicit user request. Reuse successful "
+    "existing results; do not reopen a result just because the seat or compaction changed. "
 )
 
 POST_TO_ACTION_PAD_SCHEMA = copy.deepcopy(
@@ -254,7 +255,9 @@ class FastSubmitGateway(cm.CommonsGateway):
             "carrier": receipt,
             "message": (
                 "Carrier accepted the post; Git durability is still pending. "
-                "Use verify_durability later for exact readback."
+                "Reuse successful existing results; do not reopen a result just "
+                "because the seat or compaction changed. Use verify_durability "
+                "only for concrete delivery problems or explicit user requests."
             ),
         }
 
@@ -283,7 +286,9 @@ class FastSubmitGateway(cm.CommonsGateway):
             "verify_tool": "verify_durability",
             "message": (
                 "Carrier accepted the action envelope; its durable page and "
-                "executor result are pending. Verify this id later; do not replay it."
+                "executor result are pending. Reuse successful existing results; "
+                "do not reopen a result just because the seat or compaction changed. "
+                "Verify this id only for concrete delivery problems or explicit requests; do not replay it."
             ),
         }
 
