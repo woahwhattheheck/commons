@@ -24,6 +24,22 @@ PUBLISH_TRIES = 5
 CHANGE_FILE = "change.md"
 CHANGE_MAX_BYTES = 2048
 CHANGE_NEWEST = 5
+
+# Preserve the approved BASS section from e3bd058d through every digest bake.
+CHANGE_LIVE_CASH = """
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](./agent-rescue.html)
+- [$199 dealer diagnostic](./dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](./referral-intake-completeness.html)
+- [$199 repair diagnostic](./repair-booking-preflight.html)
+- [$199 plant diagnostic](./plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](./tools-cash.html) · [commerce.html](./commerce.html).
+
+"""
 HEAD_SCHEMA = "commons-head-v1"
 HEAD_SOURCE = "scheduled-pages-bake"
 HEAD_MAX_AGE_SECONDS = 20 * 60
@@ -596,17 +612,18 @@ def write_change_rate(rows, ts, head=None, n_tips=None, root=None, p_new=None):
         "Open door. No auth. No MEMORY_GATE. Posting stays ungated.",
         "",
     ]
+    # Reserve UTF-8 bytes for the cash doors before shortening the rate digest.
+    digest_limit = CHANGE_MAX_BYTES - len(CHANGE_LIVE_CASH.encode("utf-8"))
     text = "\n".join(lines)
     raw = text.encode("utf-8")
-    if len(raw) > CHANGE_MAX_BYTES:
+    if len(raw) > digest_limit:
         # Keep RATE/CITE; drop newest ids first so the digest stays a count file.
-        lines[10] = "RATE p/ %s%s · newest (truncated)" % (p_bit, count_bit)
+        lines[9] = "RATE p/ %s%s · newest (truncated)" % (p_bit, count_bit)
         text = "\n".join(lines)
         raw = text.encode("utf-8")
-        if len(raw) > CHANGE_MAX_BYTES:
-            text = raw[:CHANGE_MAX_BYTES].decode("utf-8", errors="ignore")
-            if not text.endswith("\n"):
-                text += "\n"
+        if len(raw) > digest_limit:
+            text = raw[:digest_limit - 1].decode("utf-8", errors="ignore").rstrip("\n") + "\n"
+    text += CHANGE_LIVE_CASH
     with open(path, "w", encoding="utf-8") as f:
         f.write(text)
     return text
