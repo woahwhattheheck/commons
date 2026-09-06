@@ -65,7 +65,7 @@ class GroundingDoorTests(unittest.TestCase):
         self.assertEqual(len(rows), 1, "feature-tracker.py --write must project the registry row")
         row = rows[0]
         self.assertEqual(row["source_status"], "SOURCE_BUILT")
-        self.assertEqual(row["test_status"], "TESTED")
+        self.assertEqual(row["test_status"], "TESTS_PRESENT")
         self.assertIn("grounding.html", row.get("claimed_paths") or [])
         html = (ROOT / "feature-tracker.html").read_text(encoding="utf-8")
         self.assertIn(FEATURE_ID, html)

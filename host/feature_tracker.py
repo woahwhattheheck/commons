@@ -7,7 +7,7 @@ Projection: feature-tracker.json + feature-tracker.html
 
 Status is derived from git/tree/receipt evidence. Author prose, chat,
 Slack, ntfy 200, an open PR, and a claimed_status field never promote
-SOURCE_BUILT, TESTED, or LIVE. Source and live stay separate. Pages is a bake.
+SOURCE_BUILT, TESTS_PRESENT, or LIVE. Source and live stay separate. Pages is a bake.
 
   python3 host/feature_tracker.py
   python3 host/feature_tracker.py --root .
@@ -58,10 +58,10 @@ EVIDENCE_KINDS = (
 )
 
 SOURCE_STATUSES = ("PLANNED", "SOURCE_BUILT", "DEGRADED")
-TEST_STATUSES = ("UNTESTED", "TESTED", "DEGRADED")
+TEST_STATUSES = ("UNTESTED", "TESTS_PRESENT", "DEGRADED")
 LIVE_STATUSES = ("UNMEASURED", "LIVE", "DEGRADED")
-ROLLUPS = ("PLANNED", "SOURCE_BUILT", "TESTED", "LIVE", "DEGRADED", "SUPERSEDED")
-ROLLUP_SORT = ("LIVE", "TESTED", "SOURCE_BUILT", "DEGRADED", "PLANNED", "SUPERSEDED")
+ROLLUPS = ("PLANNED", "SOURCE_BUILT", "TESTS_PRESENT", "LIVE", "DEGRADED", "SUPERSEDED")
+ROLLUP_SORT = ("LIVE", "TESTS_PRESENT", "SOURCE_BUILT", "DEGRADED", "PLANNED", "SUPERSEDED")
 
 FEATURE_REQUIRED = (
     "schema",
@@ -402,7 +402,7 @@ def derive_feature(feature, evidence, root, snapshot=None):
 
     if tests:
         test_missing = [p for p in tests if not tree.get(p)]
-        test_status = "TESTED" if not test_missing else "DEGRADED"
+        test_status = "TESTS_PRESENT" if not test_missing else "DEGRADED"
     else:
         test_missing = []
         test_status = "UNTESTED"
@@ -455,8 +455,8 @@ def derive_feature(feature, evidence, root, snapshot=None):
         rollup = "DEGRADED"
     elif live == "LIVE":
         rollup = "LIVE"
-    elif test_status == "TESTED":
-        rollup = "TESTED"
+    elif test_status == "TESTS_PRESENT" and source == "SOURCE_BUILT":
+        rollup = "TESTS_PRESENT"
     elif source == "SOURCE_BUILT":
         rollup = "SOURCE_BUILT"
     else:
@@ -514,6 +514,7 @@ def project(root, snapshot=None):
         "schema": SCHEMA_PROJECTION,
         "law": (
             "Status is derived from exact Git/tree/receipt evidence. "
+            "TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. "
             "Source-built is not live. Chat, Slack, ntfy, open PRs, and "
             "claimed_status never promote a feature. HTTP/Pages is a bake."
         ),
@@ -559,7 +560,7 @@ def render_html(projection):
         ).lower()
         sha = html.escape(str(row.get("main_sha") or "—"))
         blobs = html.escape(", ".join(row.get("blob_proof") or []) or "—")
-        tests = "TESTED" if row.get("test_status") == "TESTED" else html.escape(str(row.get("test_status") or ""))
+        tests = html.escape(str(row.get("test_status") or ""))
         entry = str(row.get("public_entrypoint") or "")
         if entry:
             entry_html = '<a href="./%s">%s</a>' % (html.escape(entry, quote=True), html.escape(entry))
@@ -635,7 +636,7 @@ def render_html(projection):
 <style>
 .s-planned{color:#6b6b6b}
 .s-source_built{color:#2f6f9f}
-.s-tested{color:#2b7a4b}
+.s-tests_present{color:#2b7a4b}
 .s-live{color:#1b6b3a;font-weight:700}
 .s-degraded{color:#a45b12}
 .s-superseded{color:#6b6b6b;text-decoration:line-through}
@@ -659,6 +660,7 @@ def render_html(projection):
 <h1>Feature tracker</h1>
 <p class="law">Derived from exact Git/tree/receipt evidence. Never from prose. <a href="./features.html">features.html</a> is the FEATURES board lane — do not remint it. This page is the shipped-state tracker. Law: <a href="./ground/FEATURE_TRACKER.md">ground/FEATURE_TRACKER.md</a>. Instrument: <code>python3 host/feature_tracker.py --write</code>. Proof: <code>python3 test_feature_tracker.py</code>.</p>
 <p>Two columns of truth: <b>source</b> (paths on the tree / cited SHA) and <b>live</b> (only a LIVE_MEASUREMENT evidence row with a 40-character SHA and URL). Pages, pulse, ntfy 200, Slack, chat, and <code>claimed_status</code> do not promote LIVE. HTTP is not the computer.</p>
+<p class="note"><b>TESTS_PRESENT</b> means the listed test files exist. This projection does not execute tests or import their results; test execution is unmeasured here.</p>
 <p class="note">%s · %s valid · %s invalid</p>
 %s
 <div id="ft-controls">
@@ -807,9 +809,9 @@ def self_test():
         by_id = {row["id"]: row for row in proj["features"]}
         assert by_id["planned-feature-20260828-01"]["rollup"] == "PLANNED"
         assert by_id["built-feature-20260828-01"]["source_status"] == "SOURCE_BUILT"
-        assert by_id["built-feature-20260828-01"]["test_status"] == "TESTED"
+        assert by_id["built-feature-20260828-01"]["test_status"] == "TESTS_PRESENT"
         assert by_id["built-feature-20260828-01"]["live_status"] == "UNMEASURED"
-        assert by_id["built-feature-20260828-01"]["rollup"] == "TESTED"
+        assert by_id["built-feature-20260828-01"]["rollup"] == "TESTS_PRESENT"
         assert by_id["built-feature-20260828-01"]["author_claim_ignored"] == "LIVE"
         assert by_id["built-feature-20260828-01"]["chat_ignored"] is True
         assert by_id["missing-feature-20260828-01"]["source_status"] == "DEGRADED"
