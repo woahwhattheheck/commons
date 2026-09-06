@@ -20,6 +20,8 @@ FIXTURES = Path(__file__).resolve().parent / "fixtures"
 CRM = FIXTURES / "synthetic_crm_followup_role.json"
 AUTOPSY = FIXTURES / "synthetic_agent_failure_autopsy_role.json"
 DIAG = FIXTURES / "synthetic_diagnostic_fulfillment_role.json"
+DIAG_CONTRACT = FIXTURES.parents[2] / "revenue/dealer_service_lead_rescue/contract.json"
+DIAG_REFUND = json.loads(DIAG_CONTRACT.read_text(encoding="utf-8"))["commercial"]["refund"]
 
 
 class HandoffExecuteSurviveTests(unittest.TestCase):
@@ -188,7 +190,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertEqual(sla["sla_status"], "OPEN")
         # rivet-r4-handoff-prove-diag-sla-diagnostic-usd-20260905-01
         self.assertEqual(sla["diagnostic_usd"], 199)
-        self.assertIn("199", str(sla.get("refund", "")))
+        self.assertEqual(sla["refund"], DIAG_REFUND)
 
         missed = prove_successor_executes(
             self.store,
@@ -250,7 +252,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             # rivet-r4-handoff-prove-diag-sla-diagnostic-usd-20260905-01
             sla = proof["executes"]["diagnostic-fulfill-sla"]
             self.assertEqual(sla["diagnostic_usd"], 199)
-            self.assertIn("199", str(sla.get("refund", "")))
+            self.assertEqual(sla["refund"], DIAG_REFUND)
 
     def test_diagnostic_release_then_equip_prove(self) -> None:
         # rivet-r4-handoff-prove-release-equip-20260905-01
@@ -276,7 +278,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         # rivet-r4-handoff-prove-diag-sla-diagnostic-usd-20260905-01
         sla = proof["executes"]["diagnostic-fulfill-sla"]
         self.assertEqual(sla["diagnostic_usd"], 199)
-        self.assertIn("199", str(sla.get("refund", "")))
+        self.assertEqual(sla["refund"], DIAG_REFUND)
 
     def test_crm_refuses(self) -> None:
         role = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))

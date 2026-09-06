@@ -42,6 +42,8 @@ class AutopsyFulfillCliTests(unittest.TestCase):
         self.assertIn("delivery_due_at", out)
         # Friday 15:00 ET → Monday same wall clock.
         self.assertTrue(out["delivery_due_at"].startswith("2026-09-07T15:00:00"))
+        self.assertEqual(out["amount_usd"], 29)
+        self.assertIn("refund usd 29", str(out["refund"]).lower())
 
     def test_autopsy_validate_examples(self) -> None:
         role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
@@ -57,7 +59,6 @@ class AutopsyFulfillCliTests(unittest.TestCase):
             require_autopsy_fulfillment_tool(crm)
         with self.assertRaises(RoleError):
             run_deadline(diag, usable_evidence_at="2026-09-04T15:00:00-04:00")
-
 
     def test_documented_commands_run_without_equipping(self) -> None:
         role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
@@ -77,6 +78,8 @@ class AutopsyFulfillCliTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             results.append(json.loads(result.stdout))
         self.assertEqual(results[0]["delivery_due_at"], "2026-09-07T15:00:00-04:00")
+        self.assertEqual(results[0]["amount_usd"], 29)
+        self.assertIn("refund usd 29", str(results[0]["refund"]).lower())
         self.assertTrue(results[1]["ok"])
         self.assertEqual(results[1]["artifact_state"], "PEER_DRAFT")
         after = {p.name: p.read_bytes() for p in Path(self._tmp.name).glob("*.json")}

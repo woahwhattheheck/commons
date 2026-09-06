@@ -28,6 +28,7 @@ Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
 Autopsy fulfill SLA status: `wedge-autopsy-fulfill-sla-status-20260905-01`
 Autopsy SLA refund miss-remedy: `wedge-autopsy-sla-refund-miss-remedy-20260905-01`
 Autopsy SLA amount_usd: `wedge-autopsy-sla-amount-usd-20260905-01`
+Autopsy fulfill deadline amount_usd: `wedge-autopsy-deadline-amount-usd-20260906-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 Equipment fulfill SLA cards: `tenon-r4-equipment-fulfill-sla-cards-20260905-01`
 Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
@@ -37,6 +38,7 @@ Handoff prove autopsy SLA: `wedge-r4-handoff-prove-autopsy-sla-20260905-01`
 Handoff prove autopsy SLA amount_usd: `wedge-r4-handoff-prove-autopsy-sla-amount-usd-20260905-01`
 Handoff prove release→equip: `rivet-r4-handoff-prove-release-equip-20260905-01`
 Open obligations cash-only: `wedge-r4-open-obligations-cash-only-20260905-01`
+Open obligations cash amount_usd: `wedge-r4-open-obligations-cash-amount-usd-20260906-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -153,6 +155,8 @@ obligation. Purpose and sibling obligations stay. Allowed statuses:
 `obligation_id`, `summary`, `next_action`, optional `evidence_pointer` /
 `synthetic`, sorted by `(role_id, obligation_id)`. Roles routing the named
 `payment_capability` door stamp `payment_capability: true` on those rows.
+Cash rows also stamp `amount_usd` when tools resolve it (autopsy
+`offer.json` `price.amount` / diagnostic `commercial.diagnostic_usd`).
 `--cash-only` keeps only these marked rows; the default still includes all roles.
 The marker identifies a payment-capability route and does not confirm payment.
 
@@ -181,11 +185,17 @@ refuse.
 `delivery_due_at` → `sla_status` `OPEN|MISSED` + `within_one_business_day` +
 landed contract `refund` miss-remedy text. CRM / Autopsy roles refuse.
 
+`autopsy-fulfill-deadline` computes Autopsy `delivery_due_at` and stamps landed
+`offer.json` `refund` + `amount_usd` from `price.amount` (after
+`wedge-autopsy-deadline-amount-usd-20260906-01`) — parity with diagnostic
+deadline cash fields; no remint of offer/fulfillment.
+
 `autopsy-fulfill-sla` compares `--as-of` to Autopsy `delivery_due_at` →
 `sla_status` `OPEN|MISSED` + `within_one_business_day` + landed `offer.json`
 `refund` miss-remedy + `amount_usd` from `price.amount` (after
 `wedge-autopsy-sla-refund-miss-remedy-20260905-01` /
-`wedge-autopsy-sla-amount-usd-20260905-01`).
+`wedge-autopsy-sla-amount-usd-20260905-01`; deadline cash reused via
+`wedge-autopsy-deadline-amount-usd-20260906-01`).
 
 `prove-handoff` runs landed role-gated executes after transfer / export→import /
 release→equip (`handoff_execute.prove_successor_executes`). Autopsy (case /
