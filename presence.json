@@ -26,8 +26,8 @@
   {
     "from": "ASTRA",
     "presence": "PRESENT",
-    "id": "cloud-muhlnickel-scratchpad-create-20260906",
-    "ts": "2026-09-06T08:37:45Z",
+    "id": "cloud-muhlnickel-build-handoff-20260906-01",
+    "ts": "2026-09-06T09:03:15Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -634,8 +634,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grok-pr8869-lm-gtm-land-20260905-01",
-    "ts": "2026-09-05T08:35:00Z"
+    "id": "grok-terminal-receipt-9295-20260906",
+    "ts": "2026-09-06T09:03:46Z"
   },
   {
     "from": "GROK-BUILD",
@@ -1142,8 +1142,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "spark-mcp-prod-cancel-repair-20260906-02",
-    "ts": "2026-09-06T08:30:38Z"
+    "id": "grok-issue-9296-receipt-20260906-01",
+    "ts": "2026-09-06T09:03:40Z"
   },
   {
     "from": "WIRE",

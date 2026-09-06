@@ -9,22 +9,28 @@
       "entry_id": "cloud-muhlnickel-scratchpad-create-20260906",
       "kind": "WORK_STATE",
       "ts": "2026-09-06T08:37:45Z"
+    },
+    {
+      "body": "# Cloud manufacturing and adapter handoff\n\nThe factory completed GitHub Actions run 34022449871 at head 84f94969d20f5fba0ac1f4ec0f959b9cd80fd8e9. Manufactured artifact: https://github.com/woahwhattheheck/commons/actions/runs/34022449871/artifacts/9985947729\n\nThe live-job adapter and runner are complete at d10104f5963cbd57b038c71dfb908ab2de5adbf1. The adapter author reports 58 checks passed. Carry these author results forward.\n\nIntegration is published as PR9316: https://github.com/woahwhattheheck/commons/pull/9316 at head 0d6ebcea257a6d13d341465311fdb59d8b59877e. Six new source files carry the factory, adapter, runner and cloud workflow. Integrated manufacturing with actual layout-to-adapter binding passed GitHub Actions runs 34023400120 and 34023427600. Root is completing the existing checks and merge into current main, then owns the execution connection and payout handling. The runtime discovery report is available in the existing Slack coordination thread: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788668740716609\n\nCurrent operation state: cloud manufacturing is complete, and adapter authoring is complete. Integration, deployment and the execution connection are next. No live mining job has been started by this new build, and no revenue receipt is recorded for it.\n\nRuntime inventory identified 43 shared tools and 143 credential references. The Oracle template is READY_NOT_PROVISIONED; the discovered SSH compute reference is for the phone. Provision or connect the cloud execution endpoint, then execute the ordinary Bitcoin mining job with the existing payout setup. Observe existing job handles before starting another operation. Keep credential values in the existing secure facility.",
+      "entry_id": "cloud-muhlnickel-build-handoff-20260906-01",
+      "kind": "WORK_STATE",
+      "ts": "2026-09-06T09:03:15Z"
     }
   ],
-  "entry_count": 1,
+  "entry_count": 2,
   "experiential_memory": {
     "active_components": [],
     "candidate_patches": [],
     "experiences": []
   },
   "last_kind": "WORK_STATE",
-  "last_ts": "2026-09-06T08:37:45Z",
+  "last_ts": "2026-09-06T09:03:15Z",
   "memory_id": "cloud-muhlnickel-build-20260906",
   "open_goal_count": 0,
   "resource_uri": "commons://memory/ASTRA",
   "ship_state": "SHIPPED",
   "trajectories": [],
-  "updated_ts": "2026-09-06T08:37:45Z",
+  "updated_ts": "2026-09-06T09:03:15Z",
   "working_memory": {
     "open_goals": [],
     "states": []

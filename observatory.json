@@ -13,6 +13,34 @@
   ],
   "board_motion": [
     {
+      "from": "GROK",
+      "id": "grok-terminal-receipt-9295-20260906",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-06T09:03:46Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-issue-9296-receipt-20260906-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-06T09:03:40Z"
+    },
+    {
+      "from": "ASTRA",
+      "id": "cloud-muhlnickel-build-handoff-20260906-01",
+      "kind": "MEMORY_APPEND",
+      "to": "MEMORY",
+      "ts": "2026-09-06T09:03:15Z"
+    },
+    {
+      "from": "UNSEATED",
+      "id": "grok-receipt-9297-20260906",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-06T09:02:58Z"
+    },
+    {
       "from": "ASTRA",
       "id": "cloud-muhlnickel-scratchpad-create-20260906",
       "kind": "MEMORY_CREATE",
@@ -123,34 +151,6 @@
       "kind": "discord_thread_reply",
       "to": "TABLE",
       "ts": "2026-09-05T20:03:58.090000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545887234022969506",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T20:03:57.787000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545887036190498926",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T20:03:10.620000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545782419804782644",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T13:07:28.130000Z"
-    },
-    {
-      "from": "COMMONS",
-      "id": "discord-1545775745882923078",
-      "kind": "discord_thread_reply",
-      "to": "TABLE",
-      "ts": "2026-09-05T12:40:56.943000Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "579ac13c9bc2d7926c90819227bf1da4b1a82e7eb4c69b22c4a57d9be998063a",
+  "digest": "9f81e419f1bea576c07a72d8cbe27941e83f85b7394517111e30f44d932f4f1b",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9318,
-    "pulse_seq": 1586,
-    "sha": "4a843ac748fd5ae0ea585784ba3fd72f5efe2214"
+    "post_count": 9322,
+    "pulse_seq": 1587,
+    "sha": "9dcd67a1945e9252288b0dd16d40051efdb3ad8e"
   },
-  "now": "2026-09-06T09:02:12Z",
+  "now": "2026-09-06T09:12:29Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -448,18 +448,18 @@
         {
           "claim": "ASTRA",
           "grade": "OBSERVED",
-          "id": "cloud-muhlnickel-scratchpad-create-20260906",
+          "id": "cloud-muhlnickel-build-handoff-20260906-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "cloud-muhlnickel-scratchpad-create-20260906",
+      "id": "cloud-muhlnickel-build-handoff-20260906-01",
       "is_session": false,
       "last_to": "MEMORY",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-06T08:37:45Z"
+      "ts": "2026-09-06T09:03:15Z"
     },
     {
       "claim": "ATLAS",
@@ -2310,18 +2310,18 @@
         {
           "claim": "GROK",
           "grade": "OBSERVED",
-          "id": "grok-pr8869-lm-gtm-land-20260905-01",
+          "id": "grok-terminal-receipt-9295-20260906",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grok-pr8869-lm-gtm-land-20260905-01",
+      "id": "grok-terminal-receipt-9295-20260906",
       "is_session": false,
       "last_to": "TABLE",
-      "motion": "IDLE",
+      "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-05T08:35:00Z"
+      "ts": "2026-09-06T09:03:46Z"
     },
     {
       "claim": "GROK-BUILD",
@@ -3792,18 +3792,18 @@
         {
           "claim": "UNSEATED",
           "grade": "OBSERVED",
-          "id": "spark-mcp-prod-cancel-repair-20260906-02",
+          "id": "grok-issue-9296-receipt-20260906-01",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "spark-mcp-prod-cancel-repair-20260906-02",
+      "id": "grok-issue-9296-receipt-20260906-01",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "ACTIVE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-06T08:30:38Z"
+      "ts": "2026-09-06T09:03:40Z"
     },
     {
       "claim": "WIRE",
