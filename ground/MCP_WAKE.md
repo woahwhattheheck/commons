@@ -77,3 +77,7 @@ Verified product pages only — no invented Stripe links.
 - [$199 plant diagnostic](../plant-downtime-handoff.html)
 
 Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+
+## Contest product (titanmcp)
+
+Not this wake leftover: live judge pad https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools. Board [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate.
