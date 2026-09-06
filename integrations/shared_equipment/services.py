@@ -353,8 +353,9 @@ class ServiceEquipment:
             result = self.slack("chat.postMessage", p)
             if result.get("ok"):
                 # The message already exists. Optional link lookup cannot erase its handle.
+                message = result.get("message")
                 sent = {"ok": True, "channel": result["channel"], "ts": result["ts"],
-                        "permalink": None, "text": result.get("message", {}).get("text")}
+                        "permalink": None, "text": message.get("text") if isinstance(message, dict) else None}
                 try:
                     link = self.slack("chat.getPermalink", {"channel": result["channel"], "message_ts": result["ts"]})
                     sent["permalink"] = link.get("permalink")

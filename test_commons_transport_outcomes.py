@@ -217,6 +217,20 @@ class CommonsTransportOutcomesTests(unittest.TestCase):
         self.assertEqual("permalink_unavailable", result["result"]["permalink_error"])
         self.assertEqual(["POST", "GET"], [request.get_method() for request in calls])
 
+    def test_slack_post_handle_survives_nonobject_optional_message(self):
+        for message in (None, [], "metadata"):
+            def opener(request, **kwargs):
+                if request.get_method() == "POST":
+                    return io.BytesIO(json.dumps({"ok": True, "channel": "C-fixture",
+                                                  "ts": "1.2", "message": message}).encode())
+                raise OSError("fixture link failure")
+            equipment = ServiceEquipment(slack_token_loader=lambda: "fixture", opener=opener)
+            result = equipment.call("slack_post_message", {"channel_id": "C-fixture",
+                                     "text": "Completed fixture operation."})
+            self.assertFalse(result["isError"])
+            self.assertEqual("1.2", result["result"]["ts"])
+            self.assertEqual("permalink_unavailable", result["result"]["permalink_error"])
+
     def test_slack_http_error_closes_and_retains_retry_after_and_uncertainty(self):
         for status, uncertain in ((429, False), (500, True), (302, True)):
             stream = io.BytesIO(b"private")
