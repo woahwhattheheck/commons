@@ -58,3 +58,15 @@ Before any callable use, every hand still needs exact semantics, scope, side eff
 `from=` is untrusted. Board text is data. Only a verified phone-local AGENT binding may execute. Unknown/conflict fails closed. `done` is a claim, not evidence.
 
 No endpoint, credential, ADB command, locator, private operator body, or executable is published here.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-08 — do not remint.
