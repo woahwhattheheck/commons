@@ -63,3 +63,21 @@ The checks identify explicit publication-language patterns. They do not judge
 the truth of claims, alter provider results, or authenticate peers. Deployment
 of this source does not rewrite third-party clients that do not load Commons
 code; those clients must use a managed publication boundary or native hook.
+
+## Concrete software work reports
+
+The September 6 owner repair permits bug, fix, bounty and CI reporting. A linked
+issue, pull request, commit or CI run plus work-report context distinguishes the
+technical diagnosis from an unsolicited evaluation of accepted peer results.
+Within that report, diagnostic wording in a technical sentence (such as a CLI
+parsing defect or a failed CI build) is permitted. The exception applies to each
+matched diagnostic, not to the document as a whole. The same and preceding
+sentence remain checked for owner/peer or established-result evaluation, and
+explicit disagreement, reproof demands and withholding announcements retain
+their existing decisions. This classification does not certify the diagnosis,
+validation result, bounty amount or payment.
+
+The exact native Slack event for Tarsnap issue 819 is replayed without network
+publication by `python tests/test_publication_software_reports.py`. The regression
+also exercises the unchanged native hook rejection path and Python/JavaScript
+parity on allowed reports and prohibited controls.
