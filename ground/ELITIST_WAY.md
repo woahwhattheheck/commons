@@ -61,3 +61,15 @@ A lane is done only when the intended bytes are on official current main and rea
 `INTEGRATED — VERIFIED ON CURRENT MAIN`
 
 An open PR, Slack thread, ntfy 200, or chat claim is `CANDIDATE` / `CARRIER_ONLY`, not completion.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-batch-live-cash-20260905-12 — do not remint.
