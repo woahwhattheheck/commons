@@ -1,44 +1,66 @@
-name: main-range-verify
-
-# Busy main is sampled as a range. One run replaces six per-push observers,
-# including source parsing when Python or JavaScript changed in the range.
+name: Bitcoin pool-freshness check
+run-name: Bitcoin pool-freshness candidate ea89d0f5
 on:
-  schedule:
-    - cron: '7,22,37,52 * * * *'
   workflow_dispatch:
-    inputs:
-      lookback_minutes:
-        description: Minutes of main history to coalesce
-        required: false
-        default: '30'
-
 permissions:
   contents: read
-
-concurrency:
-  group: commons-main-range-verify
-  cancel-in-progress: false
-
 jobs:
-  verify-range:
-    runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-slim
+    timeout-minutes: 8
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          ref: ea89d0f5350d3161be7eaf49286d121966a9dede
+          fetch-depth: 100
           persist-credentials: false
-      - name: verify one frozen main range
-        env:
-          DISPATCH_LOOKBACK: ${{ inputs.lookback_minutes }}
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /host/pfc_bitcoin_autopilot.py
+            /infra/host/pfc_bitcoin_autopilot.py
+            /tests/test_pfc_bitcoin_*.py
+            /open_door_guard.py
+            /fix_first.py
+      - name: Check pool behavior and exact shipped bytes
         run: |
-          lookback="${DISPATCH_LOOKBACK:-30}"
-          python3 host/main_range.py \
-            --head HEAD \
-            --lookback-minutes "$lookback" \
-            --receipt "$RUNNER_TEMP/main-range.json" \
-            | tee -a "$GITHUB_STEP_SUMMARY"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: main-range-${{ github.run_id }}
-          path: ${{ runner.temp }}/main-range.json
-          if-no-files-found: error
+          python3 - <<'PY'
+          import json, pathlib, subprocess, sys
+          for path, expected in {'host/pfc_bitcoin_autopilot.py': '032d7aab1751a2fa8a17d83a5c2953c89e747e6e', 'infra/host/pfc_bitcoin_autopilot.py': '032d7aab1751a2fa8a17d83a5c2953c89e747e6e', 'tests/test_pfc_bitcoin_transport.py': '8014066eadaf6853d4f59af8e4674fd506ef9904', 'tests/test_pfc_bitcoin_freshness.py': 'a0e6e44b644ecb94913a38102a2b256944ee2b35'}.items():
+              assert subprocess.check_output(['git','hash-object',path],text=True).strip() == expected, path
+          assert pathlib.Path('host/pfc_bitcoin_autopilot.py').read_bytes() == pathlib.Path('infra/host/pfc_bitcoin_autopilot.py').read_bytes()
+          subprocess.run([sys.executable,'-m','unittest','discover','-s','tests','-p','test_pfc_bitcoin_*.py','-v'],check=True)
+          subprocess.run([sys.executable,'open_door_guard.py','--diff','df713b878523f634bd89a977adbb33e4eb0cc852','ea89d0f5350d3161be7eaf49286d121966a9dede'],check=True)
+          print('CHECKED_HEAD=' + subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip())
+          # Exercise the old behavior with the same deterministic network fixture.
+          # Only cloud code runs this; the worker and answer I/O are replaced by fixtures.
+          import contextlib
+          import importlib.util
+          import io
+          import types
+          spec = importlib.util.spec_from_file_location('freshness_regression_fixture','tests/test_pfc_bitcoin_freshness.py')
+          fixtures = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(fixtures)
+          baseline_text = subprocess.check_output(['git','show','0b3c00819cd0e4d0a857d02db3fd8356905ab08e:host/pfc_bitcoin_autopilot.py'],text=True)
+          baseline = types.ModuleType('baseline_freshness')
+          with contextlib.redirect_stdout(io.StringIO()):
+              exec(compile(baseline_text,'baseline-pool-freshness','exec'),baseline.__dict__)
+          case = fixtures.HostFreshnessTests('test_zero_settle_still_drains_before_submission')
+          case.subject = baseline
+          receipt, sock, _ = case.run_cycle(incoming=[fixtures.frame(fixtures.notify(True))],wait_s=0.0)
+          assert receipt['pool'] == 'ACCEPTED — SHARE' and len(sock.sent) == 1
+          assert sock.sent[0]['params'][1] == 'job-A'
+          print('BASELINE_STALE_JOB_SUBMITTED=1; FIXED_REGRESSIONS_SKIP_INVALIDATED_JOB')
+          # Confirm the changed notify parser and drain against the existing live pool.
+          subject = fixtures.load_subject('host/pfc_bitcoin_autopilot.py')
+          connection = subject.Conn()
+          try:
+              _, en2size, job = subject.receive_job(connection,timeout=15.0)
+              stale = subject.wait_for_job(connection,0.1)
+              stale = subject._invalidates_job(connection.drain()) or stale
+              print(json.dumps({'live_pool_notify_and_drain':'PASS','job_id':job['job_id'],'clean_jobs':job['clean_jobs'],'stale_observed':stale,'worker_started':False,'share_submitted':False}))
+          finally:
+              connection.close()
+          
+          PY
