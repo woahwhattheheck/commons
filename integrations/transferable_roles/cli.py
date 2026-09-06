@@ -14,6 +14,7 @@ Examples:
   python3 integrations/transferable_roles/cli.py autopsy-receipt-row ROLE --case-ref case_001 --g2-run-id run_1 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-deadline ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py autopsy-fulfill-validate ROLE --store /tmp/roles
+  python3 integrations/transferable_roles/cli.py autopsy-fulfill-sla ROLE --usable-evidence-at 2026-09-04T15:00:00-04:00 --as-of 2026-09-08T10:00:00-04:00 --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-contract ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-receipt ROLE --slug dealer --store /tmp/roles
   python3 integrations/transferable_roles/cli.py diagnostic-fulfill-deadline ROLE --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 --store /tmp/roles
@@ -30,7 +31,7 @@ import json
 import sys
 from pathlib import Path
 
-from autopsy_fulfill import run_deadline, run_validate
+from autopsy_fulfill import run_deadline, run_sla_status, run_validate
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
 from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
@@ -167,6 +168,14 @@ def build_parser() -> argparse.ArgumentParser:
     afv.add_argument("--intake", type=Path)
     afv.add_argument("--report", type=Path)
     afv.add_argument("--evidence-root", type=Path)
+
+    afs = sub.add_parser(
+        "autopsy-fulfill-sla",
+        help="OPEN|MISSED Autopsy SLA vs as_of via landed next_business_day",
+    )
+    afs.add_argument("role_id")
+    afs.add_argument("--usable-evidence-at", required=True)
+    afs.add_argument("--as-of", required=True)
 
     dc = sub.add_parser(
         "diagnostic-contract",
@@ -363,6 +372,15 @@ def main(argv: list[str] | None = None) -> int:
                     intake=args.intake,
                     report=args.report,
                     evidence_root=args.evidence_root,
+                )
+            )
+        elif args.cmd == "autopsy-fulfill-sla":
+            role = store.get(args.role_id)
+            _print(
+                run_sla_status(
+                    role,
+                    usable_evidence_at=args.usable_evidence_at,
+                    as_of=args.as_of,
                 )
             )
         elif args.cmd == "diagnostic-contract":

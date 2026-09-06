@@ -4,12 +4,17 @@
 Gates on tool `autopsy_fulfillment` and calls landed
 `revenue/agent_failure_autopsy/fulfillment.py` helpers (`next_business_day`,
 `validate_bundle`) — import-only; do not remint fulfillment.py.
+
+`run_deadline` returns delivery_due_at.
+`run_sla_status` compares as_of vs due → OPEN|MISSED (WEDGE leftover after #8982).
 """
 
 from __future__ import annotations
 
 import importlib.util
 import json
+import re
+from datetime import datetime
 from pathlib import Path
 from typing import Any, Mapping
 
@@ -60,6 +65,21 @@ def _load_fulfillment_module() -> Any:
     return mod
 
 
+def _parse_aware(stamp: str, label: str) -> datetime:
+    text = str(stamp or "").strip()
+    if not text:
+        raise RoleError(f"{label} must be a nonempty string")
+    if not re.search(r"(?:Z|[+-]\d{2}:\d{2})$", text):
+        raise RoleError(f"{label} must be an offset-aware ISO timestamp")
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise RoleError(f"{label} is not a valid timestamp") from exc
+    if parsed.tzinfo is None:
+        raise RoleError(f"{label} must carry a UTC offset")
+    return parsed
+
+
 def run_deadline(
     role: Mapping[str, Any],
     *,
@@ -79,6 +99,35 @@ def run_deadline(
         "usable_evidence_at": stamp,
         "delivery_due_at": due,
     }
+
+
+def run_sla_status(
+    role: Mapping[str, Any],
+    *,
+    usable_evidence_at: str,
+    as_of: str,
+) -> dict[str, Any]:
+    """OPEN|MISSED Autopsy SLA card vs as_of.
+
+    Reuses run_deadline calendar path; does not remint fulfillment.py.
+    within_one_business_day matches Autopsy report rule: as_of <= delivery_due_at.
+    """
+    base = run_deadline(role, usable_evidence_at=usable_evidence_at)
+    as_of_stamp = str(as_of or "").strip()
+    as_of_dt = _parse_aware(as_of_stamp, "as_of")
+    due_dt = _parse_aware(str(base["delivery_due_at"]), "delivery_due_at")
+    within = as_of_dt <= due_dt
+    out: dict[str, Any] = {
+        **base,
+        "as_of": as_of_stamp,
+        "within_one_business_day": within,
+        "sla_status": "OPEN" if within else "MISSED",
+    }
+    blob = json.dumps(out)
+    for forbidden in ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_"):
+        if forbidden in blob:
+            raise RoleError(f"sla card leaked forbidden token prefix {forbidden}")
+    return out
 
 
 def run_validate(
