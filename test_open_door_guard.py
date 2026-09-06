@@ -186,6 +186,47 @@ def main():
     )
     assert rules(claude_blocked) == {"admission-phrase"}, rules(claude_blocked)
 
+    # Run 34001046530 mistook a table label for admission policy in three
+    # unchanged business descriptions when their test-presence cells changed.
+    # HTML attributes and adjacent prose are independent contexts; neither
+    # context is exempt from inspection, including inline-formatted policy.
+    for business_text in (
+        "AIT Minnesota Metrc capacity gate LIMS",
+        "Lexington MRF diversion gate",
+        "Prein Newhof PFAS fieldblank gate LIMS",
+    ):
+        catalog_row = (
+            '<tr><td data-label="capability">' + business_text + '</td>'
+            '<td data-label="tests">TESTS_PRESENT</td></tr>'
+        )
+        assert guard.scan_diff(diff("feature-tracker.html", [catalog_row])) == []
+
+    for markup in (
+        '<p>Identity is required before posting.</p>',
+        '<p>Identity <strong>is required</strong> before posting.</p>',
+        '<p>Memory&nbsp;required before posting.</p>',
+        '<p>Identity<!-- explanatory comment --> is required.</p>',
+        '<td data-label="capability">Identity is required before posting.</td>',
+        '<div data-policy="identity required"></div>',
+        '<div data-field="identity" data-state="required"></div>',
+        '<div title="x > y" data-policy="identity required"></div>',
+        '<!-- Identity is required before posting. -->',
+        '<script>const policy = "identity required";</script>',
+        '<div data-policy="identity required',
+        '<input name="identity" required',
+    ):
+        assert "admission-phrase" in rules(diff("action.html", [markup])), markup
+
+    separate_cells = '<tr><td>Capability</td><td>Laboratory capacity gate</td></tr>'
+    assert guard.scan_diff(diff("catalog.html", [separate_cells])) == []
+    assert "admission-phrase" in rules(diff("policy.py", ['policy = "identity required"']))
+    assert "gate-identifier" in rules(diff("catalog.html", [
+        '<td data-label="capability">const IDENTITY_GATE = true;</td>',
+    ]))
+    assert "required-speaker-field" in rules(diff("action.html", [
+        '<input', 'name="identity"', 'required>',
+    ]))
+
     claude_paths = [
         Path("CLAUDE.md"),
         Path("memory/CLAUDE_OWNER_WORDS.md"),
