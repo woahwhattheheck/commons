@@ -361,6 +361,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
 
     def _assert_diag_contract_receipt_cards(self, role: dict) -> None:
         # rivet-r4-equipment-contract-receipt-survive-handoff-20260905-01
+        # rivet-r4-equipment-contract-diagnostic-usd-survive-handoff-20260905-01
         for slug in ("dealer", "referral", "plant"):
             with self.subTest(contract_slug=slug):
                 out = self.eq.call(
@@ -371,7 +372,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 card = out["card"]
                 self.assertEqual(card["slug"], slug)
                 self.assertTrue(card.get("pointer"))
-                self.assertIn("diagnostic_usd", card)
+                self.assertEqual(card.get("diagnostic_usd"), 199)
             with self.subTest(receipt_slug=slug):
                 out = self.eq.call(
                     "diagnostic_receipt_card",
