@@ -2,8 +2,10 @@
 """Prove role-gated executes still run after transfer / export→import handoff.
 
 RIVET claim rivet-r4-handoff-execute-survive-20260905-01 (HINGE peer-assist).
-Import-only wraps of landed autopsy_paid / autopsy_fulfill / diagnostic_contract.
-Does not remint paid_case, fulfillment, diagnostic_fulfill, or peers.py.
+Extend: rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01 — also prove
+diagnostic_receipt + diagnostic_fulfill after handoff.
+Import-only wraps of landed autopsy_paid / autopsy_fulfill / diagnostic_*.
+Does not remint paid_case, fulfillment, diagnostic_fulfill body, or peers.py.
 """
 
 from __future__ import annotations
@@ -14,6 +16,8 @@ from typing import Any
 from autopsy_fulfill import run_deadline, run_validate
 from autopsy_paid import build_g2_case_from_role, build_receipt_row_from_role
 from diagnostic_contract import load_contract_from_role
+from diagnostic_fulfill import run_deadline as run_diagnostic_deadline
+from diagnostic_receipt import load_receipt_from_role
 from roles import RoleError, RoleStore
 
 _FORBIDDEN = ("sk_", "rk_", "whsec_", "prod_", "price_", "plink_")
@@ -84,10 +88,25 @@ def prove_successor_executes(
             role, slug=diagnostic_slug
         )
 
+    if "diagnostic_receipt" in names:
+        # repair has no receipt twin — skip rather than invent / remint
+        if str(diagnostic_slug).strip() != "repair":
+            executes["diagnostic-receipt"] = load_receipt_from_role(
+                role, slug=diagnostic_slug
+            )
+
+    if "diagnostic_fulfill" in names:
+        executes["diagnostic-fulfill-deadline"] = run_diagnostic_deadline(
+            role,
+            slug=diagnostic_slug,
+            usable_evidence_at=usable_evidence_at,
+        )
+
     if not executes:
         raise RoleError(
             f"role {role_id} has no role-gated execute tools "
-            "(autopsy_paid_case / autopsy_fulfillment / diagnostic_contract); "
+            "(autopsy_paid_case / autopsy_fulfillment / diagnostic_contract / "
+            "diagnostic_receipt / diagnostic_fulfill); "
             "refusing prove (CRM / non-execute role)"
         )
 

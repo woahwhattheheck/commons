@@ -108,6 +108,22 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertTrue(proof["ok"])
         self.assertIn("diagnostic-contract", proof["executes"])
         self.assertEqual(proof["executes"]["diagnostic-contract"]["slug"], "dealer")
+        # rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01
+        self.assertIn("diagnostic-receipt", proof["executes"])
+        self.assertEqual(proof["executes"]["diagnostic-receipt"]["slug"], "dealer")
+        self.assertEqual(proof["executes"]["diagnostic-receipt"].get("cash_usd"), 0)
+        self.assertIn("diagnostic-fulfill-deadline", proof["executes"])
+        fulfill = proof["executes"]["diagnostic-fulfill-deadline"]
+        self.assertEqual(fulfill["slug"], "dealer")
+        self.assertTrue(fulfill.get("delivery_due_at"))
+
+        repair_proof = prove_successor_executes(
+            self.store, rid, diagnostic_slug="repair"
+        )
+        self.assertTrue(repair_proof["ok"])
+        self.assertIn("diagnostic-contract", repair_proof["executes"])
+        self.assertNotIn("diagnostic-receipt", repair_proof["executes"])
+        self.assertIn("diagnostic-fulfill-deadline", repair_proof["executes"])
 
     def test_crm_refuses(self) -> None:
         role = self.store.create(json.loads(CRM.read_text(encoding="utf-8")))

@@ -26,6 +26,8 @@ Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
 Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
 Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
+Handoff prove execute survive: `rivet-r4-handoff-execute-survive-20260905-01`
+Handoff prove diag receipt+fulfill: `rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -96,6 +98,10 @@ python3 integrations/transferable_roles/cli.py diagnostic-fulfill-sla role-synth
   --as-of 2026-09-08T10:00:00-04:00 \
   --store /tmp/hinge-roles
 
+python3 integrations/transferable_roles/cli.py prove-handoff role-synthetic-diagnostic-fulfillment-20260905 \
+  --slug dealer --usable-evidence-at 2026-09-04T15:00:00-04:00 \
+  --store /tmp/hinge-roles
+
 python3 integrations/transferable_roles/cli.py export role-synthetic-crm-followup-20260904 \
   --store /tmp/hinge-roles
 
@@ -108,6 +114,7 @@ python3 integrations/transferable_roles/test_diagnostic_contract_cli.py
 python3 integrations/transferable_roles/test_diagnostic_receipt_cli.py
 python3 integrations/transferable_roles/test_diagnostic_fulfill_cli.py
 python3 integrations/transferable_roles/test_diagnostic_sla_cli.py
+python3 integrations/transferable_roles/test_handoff_execute_survive.py
 ```
 
 `--seat` names the occupant (not `role_id`). Optional metadata for G2
@@ -159,6 +166,11 @@ refuse.
 `diagnostic-fulfill-sla` gates the same way, then compares `--as-of` to
 `delivery_due_at` → `sla_status` `OPEN|MISSED` + `within_one_business_day` +
 landed contract `refund` miss-remedy text. CRM / Autopsy roles refuse.
+
+`prove-handoff` runs landed role-gated executes after transfer/export→import
+(`handoff_execute.prove_successor_executes`). Autopsy + diagnostic contract /
+receipt / fulfill-deadline when those tools are present (repair receipt skipped).
+CRM refuse. Local helper execution only — no G2/service ops.
 
 `import` adopts an `export` package into an empty store with the same `role_id`
 (no remint, no overwrite). Occupant is cleared so the importer must `equip`.
@@ -223,7 +235,9 @@ CLI `diagnostic-fulfill-deadline --slug … --usable-evidence-at …` **computes
 `delivery_due_at` via landed `fulfillment.next_business_day` (import-only; not a
 remint of autopsy-fulfill). After `wedge-diag-fulfill-sla-status-20260905-01`,
 CLI `diagnostic-fulfill-sla --slug … --usable-evidence-at … --as-of …` returns
-`sla_status` `OPEN|MISSED` + landed `refund` miss-remedy. Miss remedy sentence
+`sla_status` `OPEN|MISSED` + landed `refund` miss-remedy. After
+`rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01`, `prove-handoff` also
+proves receipt + fulfill-deadline after transfer. Miss remedy sentence
 lives on the product pages/contracts. Roles confer no Stripe access.
 
 After `tenon-r4-equipment-diagnostic-cards-20260905-01`, peer equipment tools
