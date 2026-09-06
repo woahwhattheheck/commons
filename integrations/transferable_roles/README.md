@@ -25,6 +25,7 @@ Autopsy fulfill CLI: `hinge-r4-autopsy-fulfill-cli-20260905-01`
 Diagnostic receipt CLI: `tenon-r4-diagnostic-receipt-cli-20260905-01`
 Diagnostic fulfill deadline: `wedge-diag-fulfill-deadline-cli-20260905-01`
 Diagnostic fulfill SLA status: `wedge-diag-fulfill-sla-status-20260905-01`
+Equipment diagnostic cards: `tenon-r4-equipment-diagnostic-cards-20260905-01`
 
 A **role** carries purpose, knowledge pointers, live obligations, tools, and
 access routes. The current session is an **occupant**. Transfer changes the
@@ -224,6 +225,11 @@ remint of autopsy-fulfill). After `wedge-diag-fulfill-sla-status-20260905-01`,
 CLI `diagnostic-fulfill-sla --slug … --usable-evidence-at … --as-of …` returns
 `sla_status` `OPEN|MISSED` + landed `refund` miss-remedy. Miss remedy sentence
 lives on the product pages/contracts. Roles confer no Stripe access.
+
+After `tenon-r4-equipment-diagnostic-cards-20260905-01`, peer equipment tools
+`diagnostic_contract_card` / `diagnostic_receipt_card` load these same cards
+without hand-importing transferable_roles. These local data helpers do not
+change credential retrieval or service access.
 
 ## Access route shapes
 
