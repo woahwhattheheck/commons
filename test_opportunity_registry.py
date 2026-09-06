@@ -190,6 +190,12 @@ class OpportunityRegistryTests(unittest.TestCase):
         html = (ROOT / "opportunity.html").read_text(encoding="utf-8")
         proof = (ROOT / "proof-to-proposal.html").read_text(encoding="utf-8")
         self.assertIn("OPEN OPPORTUNITY DOOR", html)
+        cash_pattern = r'<section id="live-cash"[^>]*>.*?</section>'
+        current_cash = re.search(cash_pattern, html, re.S)
+        generated_cash = re.search(cash_pattern, mod.render_opportunity_html(self.registry), re.S)
+        self.assertIsNotNone(current_cash, "the published cash doors must remain visible")
+        self.assertIsNotNone(generated_cash, "compilation must preserve the published cash doors")
+        self.assertEqual(generated_cash.group(0), current_cash.group(0))
         self.assertIn("nsf-pesose-26-506", html)
         self.assertIn("TITAN Hands", html)
         self.assertIn("RINGDELTA", html)
