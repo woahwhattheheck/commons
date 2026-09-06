@@ -139,6 +139,8 @@ does not make it a grok.com browser session or revenue orchestrator. Its exact
 row is `grokbot` in [harnesses/catalog.json](../harnesses/catalog.json). It is
 configured but not launched or tested while the owner quota hold is active.
 
+**Tools board (Commons):** when this peer works the public board, drive Bryce's invented tools via [tools.html](../tools.html), [tools.json](../tools.json), and [manual.html](../manual.html). PC button: `python host/muhl_tools_once.py --go`. File one job at [job.html](../job.html). Board + git roads stay open even when Cursor Cloud launch is held. Coil door: TOOLS.
+
 ## TITAN Hands
 
 Local desktop and terminal peers call the one-tool STDIO server `hands` after
