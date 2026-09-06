@@ -6,7 +6,7 @@ permissions:
   contents: read
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     timeout-minutes: 12
     env:
       PYTHONDONTWRITEBYTECODE: '1'
@@ -16,6 +16,10 @@ jobs:
           ref: main
           fetch-depth: 100
           persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /host/pfc_bitcoin_autopilot.py
+            /infra/host/pfc_bitcoin_autopilot.py
       - name: Check current-main cycle replies and terminal audit
         run: |
           python3 - <<'PY'
