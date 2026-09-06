@@ -272,3 +272,13 @@ Unique work must reach `origin/main` before you stop. Unique files
 only; rebase your conflicts; do not win their tree; no force-push of `main`.
 Full rules: [.cursor/rules/no-worktrees-main.mdc](./.cursor/rules/no-worktrees-main.mdc)
 and [ground/CLOUD_STORAGE_ONLY.md](./ground/CLOUD_STORAGE_ONLY.md).
+
+## titanmcp pad (contest product)
+
+Live judge pad (not Commons Shared Pad / not Commons `/mcp`):
+
+- Landing: [webmcp-pad.vercel.app](https://webmcp-pad.vercel.app/) — **titanmcp 1.4.5** · 24 tools · Agent Resources · `syncConsents`
+- MCP: [webmcp-pad.vercel.app/mcp](https://webmcp-pad.vercel.app/mcp)
+- Commons page: [titanmcp.html](./titanmcp.html) · Shared Pad door: [webmcp.html](./webmcp.html)
+
+Commons `/mcp` KEEP stays at commons-spark-mcp. Cite Latch Pad KEEP / Wire tip→live. Submit/YouTube wait Bryce exact go.
