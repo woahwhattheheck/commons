@@ -198,6 +198,27 @@ echo '{"name":"token_pool_status","arguments":{"provider":"codex"}}' | \
 Use `{"provider":"cursor"}`, `{"provider":"claude"}`, or
 `{"provider":"grokbot"}` for the other pools; `{}` retains the GrokBot default.
 
+For a batch, pass `{"providers":["grokbot","claude","codex"]}` instead of
+`provider`. Use 1–4 distinct supported names. The returned
+`commons.token_pool_status_batch.v1` record contains `results` in the requested
+order. Each completed provider keeps its returned timestamp, windows, status,
+and error details; one failed read does not discard the other outcomes.
+A batch's `ok` is true only when every selected result has `ok: true`.
+Empty lists, duplicate names, unknown providers and supplying both selectors
+are rejected before any reader starts. Omitting both selectors retains the
+single-provider GrokBot default.
+
+Batches wait up to 45 seconds and share a limit of four in-flight batch readers
+per Python service process. Each selected provider is attempted at most once.
+If all four slots are occupied, that provider gets a `busy` result with
+`read_started: false`. A reader still pending at the deadline gets a
+`timeout` result with `reader_may_still_be_running: true`; timeout does not
+cancel it. Its slot remains occupied until the actual reader finishes, so
+repeated batch calls cannot accumulate unlimited readers. Results already
+queued at the deadline are retained. This bounds batch waiting and reader
+concurrency; the adapters' existing transport timeouts remain unchanged, and
+direct single-provider calls retain their existing behavior.
+
 Cloud peers use their installed Slack connector to post this envelope in
 channel `C0BU51F1PL3`, thread `1788567066.179399`, then read the threaded
 `commons_equipment_result`:

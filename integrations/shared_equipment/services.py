@@ -15,7 +15,11 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
+from queue import Empty, Queue
+from threading import BoundedSemaphore, Thread
+from time import monotonic
 from typing import Any
 
 from commons_publication_policy import require_publication
@@ -84,8 +88,30 @@ def _schema(name: str, description: str, required: dict[str, str], optional: dic
     return {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": list(required)}}
 
 
+_TOKEN_POOL_PROVIDERS = ("grokbot", "cursor", "claude", "codex")
+_TOKEN_POOL_BATCH_WAIT_SECONDS = 45.0
+_TOKEN_POOL_BATCH_SLOTS = BoundedSemaphore(4)
+
+
+def _token_pool_status_tool() -> dict:
+    tool = _schema(
+        "token_pool_status",
+        "Read provider quota without starting model work or spending/resetting capacity. "
+        "Use provider for one pool or providers for a batch of 1-4 distinct names. "
+        "Batches preserve requested order and each outcome, wait at most 45 seconds, "
+        "and share four active reader slots per process. Missing values stay null. "
+        "Omit both selectors for the original GrokBot result shape.",
+        {},
+        {"provider": {"type": "string", "enum": list(_TOKEN_POOL_PROVIDERS)},
+         "providers": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": True,
+                       "items": {"type": "string", "enum": list(_TOKEN_POOL_PROVIDERS)}}},
+    )
+    tool["inputSchema"]["not"] = {"required": ["provider", "providers"]}
+    return tool
+
+
 TOOLS = [
-    _schema("token_pool_status", "Read a selected provider quota without starting model work or spending/resetting capacity. GrokBot/Sand, Cursor, Claude and Codex remain separate pools. Missing values stay null. Default preserves the GrokBot result shape.", {}, {"provider": {"type": "string", "enum": ["grokbot", "cursor", "claude", "codex"], "default": "grokbot"}}),
+    _token_pool_status_tool(),
     _schema("credential_references", "Discover credential references, configured sources, and populated/empty Claude MCP entries. Returns metadata only, equally for newcomers.", {}),
     _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
     _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
@@ -174,8 +200,72 @@ class ServiceEquipment:
         except Exception as exc:
             return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc))}
 
+    def _token_pool_batch(self, selected: list[str]) -> dict:
+        observed_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        deadline = monotonic() + _TOKEN_POOL_BATCH_WAIT_SECONDS
+        results: list[dict | None] = [None] * len(selected)
+        completed: Queue = Queue()
+        pending: set[int] = set()
+
+        def failure(provider: str, status: str, error_class: str, **fields) -> dict:
+            return {"schema": "commons.token_pool_status.v1", "provider": provider,
+                    "observed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                    "ok": False, "status": status, "pools": [],
+                    "error": {"class": error_class, "code": "token_pool_status_" + status},
+                    **fields}
+
+        def read_one(index: int, provider: str) -> None:
+            try:
+                outcome = self._call("token_pool_status", {"provider": provider})
+                if not isinstance(outcome, dict):
+                    outcome = failure(provider, "error", "UnexpectedPayloadType")
+            except Exception as exc:
+                outcome = failure(provider, "error", type(exc).__name__)
+            finally:
+                # A caller timeout does not cancel the reader or release its slot.
+                _TOKEN_POOL_BATCH_SLOTS.release()
+            completed.put((index, outcome))
+
+        for index, provider in enumerate(selected):
+            if not _TOKEN_POOL_BATCH_SLOTS.acquire(blocking=False):
+                results[index] = failure(provider, "busy", "BatchReadersBusy", read_started=False)
+                continue
+            pending.add(index)
+            try:
+                Thread(target=read_one, args=(index, provider), daemon=True).start()
+            except Exception as exc:
+                _TOKEN_POOL_BATCH_SLOTS.release()
+                pending.remove(index)
+                results[index] = failure(provider, "error", type(exc).__name__, read_started=False)
+
+        while pending:
+            try:
+                # Once the deadline passes, still drain already-queued outcomes.
+                index, outcome = completed.get(timeout=max(0.0, deadline - monotonic()))
+            except Empty:
+                break
+            results[index] = outcome
+            pending.remove(index)
+        for index in pending:
+            results[index] = failure(selected[index], "timeout", "TimeoutError",
+                                     read_started=True, reader_may_still_be_running=True)
+
+        return {"schema": "commons.token_pool_status_batch.v1", "observed_at": observed_at,
+                "ok": all(isinstance(result, dict) and result.get("ok") is True for result in results),
+                "results": results}
+
     def _call(self, name: str, a: dict) -> dict:
         if name == "token_pool_status":
+            if "provider" in a and "providers" in a:
+                raise EquipmentError("Use provider or providers, not both")
+            if "providers" in a:
+                selected = a["providers"]
+                if (not isinstance(selected, list) or not 1 <= len(selected) <= 4
+                        or any(not isinstance(provider, str) or provider not in _TOKEN_POOL_PROVIDERS
+                               for provider in selected)
+                        or len(set(selected)) != len(selected)):
+                    raise EquipmentError("providers must contain 1-4 distinct supported names")
+                return self._token_pool_batch(list(selected))
             provider = a.get("provider", "grokbot")
             if provider == "codex":
                 from .codex_pool import poll_codex_pool
