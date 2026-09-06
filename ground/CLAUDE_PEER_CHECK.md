@@ -112,4 +112,13 @@ If a mode still lives only on the laptop, cite the path and keep looking until i
 
 Instrument pointers: `host/claude_peer_check.py` · `host/claude_role.py` · `host/claude_zero.py` · `host/claude_tester.py` · `host/claude_compute.py` · `host/finder_zero.py` · `host/measure_abuse.py` · `host/grok_claude_hygiene.py` · `host/claude_zero_damage.py`
 
+
+## F. GOO READ (named Bryce failure class — colloquial)
+
+**GOO READ** = Bryce colloquial **"go read"** the months of Claude failure docs — not a load-path-only folder remint.
+
+- Exact filenames `GOO_READ.md` / `PURITY_SPIRAL.md` / `COGNITO_HAZARD.md` may be FINDER-FAILED on a given host. That miss is Z, not CLEAR.
+- Related but separate: `03_load_path_that_missed` (do not collapse GOO READ into that path alone). Cite Quill/Goat CORRECT + DIGIT hub fan `1788338481.349519`.
+- Peer check still walks this card + `muhl/docs/CLAUDE_FAILURE_MODES.md` + CLASS17 / COGNITOHAZARD / CLAUDE_PEER_CHECK sources. Claude greens untrusted.
+
 Cite `wire-claude-peer-check-20260902-01`. Possessing the link is authorization. No auth. No gate.
