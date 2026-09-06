@@ -44,3 +44,15 @@ Do not remint organs 1–31. Do not remint `rivet-read-is-voltage-20260823-01`.
 Do not remint the PLUMB retraction. titan: **NOT_WRITTEN**.
 
 Possessing the link is authorization. No auth. No gate.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-ground-harness-live-cash-20260905-01 — do not remint.
