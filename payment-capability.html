@@ -15,6 +15,7 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
 .checkout-active,.failover-owner-action,.funnel-intake{display:inline-block;border:1px solid #62b879;border-radius:8px;padding:.55rem .75rem;margin:.2rem .2rem 0 0}
 .failover-owner-action,.funnel-intake{border-color:#d0a252}.provider-inert{color:#d0a252}
 .truth{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:.4rem}.truth span{border:1px solid #33333a;padding:.5rem;text-align:center}.truth b{display:block;font:700 1.2rem/1.1 ui-monospace,monospace}
+.money{font:700 1.25rem/1.2 ui-monospace,monospace}
 </style>
 </head>
 <body>
@@ -45,13 +46,50 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
   <p>These open official provider UIs. Agents do not enter credentials, KYC, bank, or OTP.</p>
   <div id="js-owner-actions"><p class="note">Owner actions appear after the registry loads.</p></div>
 </section>
+<section class="panel" id="live-cash-doors" aria-labelledby="live-cash-doors-heading">
+  <h2 id="live-cash-doors-heading">Live diagnostics (product pages)</h2>
+  <p>Optional paid diagnostics already carry live public checkout on their product pages. This rails door surfaces them without embedding Stripe URLs. Cite <code>goat-payment-capability-live-cash-doors-20260905-01</code> and <code>goat-pay-tip-shelf-199-doors-20260905-01</code> — parallel surface, no remint pay/tips/commerce/tools.</p>
+  <div class="grid">
+    <article class="card" id="sku-agent-failure-autopsy">
+      <h3>Agent Failure Autopsy</h3>
+      <p class="money">$29 once</p>
+      <p>One failed coding-agent run. Live checkout stays on the Autopsy page.</p>
+      <p><a class="funnel-intake" href="./agent-rescue.html">Open $29 Autopsy checkout</a></p>
+    </article>
+    <article class="card" id="sku-dealer-service-lead-rescue">
+      <h3>Dealer Service Lead Rescue</h3>
+      <p class="money">$199 once</p>
+      <p>One-business-day dealer/BDC diagnostic. Live checkout stays on the product page.</p>
+      <p><a class="funnel-intake" href="./dealer-service-lead-rescue.html">Open $199 dealer diagnostic</a></p>
+    </article>
+    <article class="card" id="sku-referral-intake-completeness">
+      <h3>Referral Intake Completeness</h3>
+      <p class="money">$199 once</p>
+      <p>One-business-day referral intake diagnostic. Live checkout stays on the product page.</p>
+      <p><a class="funnel-intake" href="./referral-intake-completeness.html">Open $199 referral diagnostic</a></p>
+    </article>
+    <article class="card" id="sku-repair-booking-preflight">
+      <h3>Repair Booking Preflight</h3>
+      <p class="money">$199 once</p>
+      <p>One-business-day repair booking diagnostic. Live checkout stays on the product page.</p>
+      <p><a class="funnel-intake" href="./repair-booking-preflight.html">Open $199 repair diagnostic</a></p>
+    </article>
+    <article class="card" id="sku-plant-downtime-handoff">
+      <h3>Plant Downtime Handoff</h3>
+      <p class="money">$199 once</p>
+      <p>One-business-day plant downtime diagnostic. Live checkout stays on the product page.</p>
+      <p><a class="funnel-intake" href="./plant-downtime-handoff.html">Open $199 plant diagnostic</a></p>
+    </article>
+  </div>
+  <p class="note">Also on <a href="./pay.html#tip-shelf-199">pay.html</a> · <a href="./tips.html#live-cash-doors">tips.html</a>.</p>
+</section>
 <section class="panel">
   <h2>Composed roads</h2>
   <p><a href="./pay.html">pay</a> · <a href="./tips.html">tips</a> · <a href="./commerce.html">catalog</a> · <a href="./reply-to-revenue.html">reply-to-revenue</a> · <a href="./scope-to-delivery.html">accepted-scope delivery</a> · <a href="./ledger.html">resource ledger</a> · <a href="./features.html">features</a> · <a href="./ground/PROFITABILITY_BUILD_MAP.md">profitability map</a></p>
   <p class="note">Machine: <a href="./revenue/payment_capability/registry.json">registry.json</a>. Checkout snapshot remains <a href="./revenue/checkout_capability/snapshot.json">snapshot.json</a>. Catalog terms still win.</p>
 </section>
 <noscript>
-  <p class="panel">JavaScript is off. Read <a href="./revenue/payment_capability/registry.json">registry.json</a>. Stripe is the measured CHARGEABLE rail. PayPal, GitHub Sponsors, and Square stay inert. Cash is USD 0. Contact <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a>.</p>
+  <p class="panel">JavaScript is off. Read <a href="./revenue/payment_capability/registry.json">registry.json</a>. Stripe is the measured CHARGEABLE rail. PayPal, GitHub Sponsors, and Square stay inert. Cash is USD 0. Contact <a href="mailto:tokenjunkielabs@gmail.com">tokenjunkielabs@gmail.com</a>. Live diagnostics: <a href="./agent-rescue.html">Autopsy $29</a> · tip shelf on <a href="./tips.html">tips.html</a>.</p>
 </noscript>
 <script src="./payment-capability.js?v=20260828a"></script>
 </body>
