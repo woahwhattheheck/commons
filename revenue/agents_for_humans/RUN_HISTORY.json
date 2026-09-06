@@ -1,0 +1,224 @@
+{
+  "description": "Actual development run history. Recorded status is not semantic approval. See VALIDATION.md.",
+  "actual_requests": 13,
+  "runs": [
+    {
+      "run_id": "4591332e-fe19-4f80-a8ad-e56a13af0974",
+      "receipt_sha256": "55fc6b7e67c619433689cf27a0ce75e3d7e880ce7513aaa434a50a80b4e1ed88",
+      "source_version": "b39339c3b0eb124ad4b0531fe86eaaa5a6a510b5b22c9d6fa1ee4e98976f7734",
+      "started_at": "2026-09-05T23:22:10.771704+00:00",
+      "case_id": "synthetic-generated-settings-001",
+      "recorded_status": "FAILED_CLOSED",
+      "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+      "request_count": 1,
+      "request_outcomes": [
+        {
+          "request_id": "838be715-8a80-4f3b-a18a-9ccbcd07c827",
+          "status": "FAILED",
+          "finish_reasons": null,
+          "wall_seconds": 680.253301,
+          "token_usage": null
+        }
+      ],
+      "error": {
+        "type": "RuntimeError",
+        "message": "Existing model provider request failed; see sanitized request receipt"
+      }
+    },
+    {
+      "run_id": "57dac963-b455-4bbe-9a2f-a1a0a1a130bc",
+      "receipt_sha256": "c11a62b2af0499501fb87088bc5315136caec31b6503185730a7b61b9557382c",
+      "source_version": "b39339c3b0eb124ad4b0531fe86eaaa5a6a510b5b22c9d6fa1ee4e98976f7734",
+      "started_at": "2026-09-05T23:33:31.157304+00:00",
+      "case_id": "synthetic-insufficient-001",
+      "recorded_status": "CLARIFICATION_REQUESTED",
+      "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+      "request_count": 2,
+      "request_outcomes": [
+        {
+          "request_id": "59fbc1fc-be35-4855-a5f7-98eb94f2adc3",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 4.287201,
+          "token_usage": null
+        },
+        {
+          "request_id": "ebebec42-739a-44ca-abdb-65077df4808d",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 7.878166,
+          "token_usage": null
+        }
+      ],
+      "error": null
+    },
+    {
+      "run_id": "b83eb7df-6465-4c1f-ad2b-a4d6028f930a",
+      "receipt_sha256": "1d13c842bf972bd79196850f56e72daffca074d57931912066e4b0681b7a6cf9",
+      "source_version": "b39339c3b0eb124ad4b0531fe86eaaa5a6a510b5b22c9d6fa1ee4e98976f7734",
+      "started_at": "2026-09-05T23:35:17.972509+00:00",
+      "case_id": "synthetic-generated-settings-001",
+      "recorded_status": "VALIDATED_SYNTHETIC_DRAFT",
+      "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+      "request_count": 2,
+      "request_outcomes": [
+        {
+          "request_id": "97006d73-3f57-4e9f-9a1f-a80f252c0ae6",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 46.262645,
+          "token_usage": null
+        },
+        {
+          "request_id": "56a12185-d395-429f-acf8-0d86c6a25e56",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 18.614898,
+          "token_usage": null
+        }
+      ],
+      "error": null
+    },
+    {
+      "run_id": "34efe41d-4de9-4e76-b3c5-585902e928c3",
+      "receipt_sha256": "13226851a9b26965e1ffbc8847a8a94eb02c3507d3fd9e99f5d76df45d0fd382",
+      "source_version": "d489dadb09227145fe18d4b11cfd6e85f5a2aaaaefc989c908d3710feb68c7df",
+      "started_at": "2026-09-05T23:44:25.222386+00:00",
+      "case_id": "synthetic-generated-settings-001",
+      "recorded_status": "FAILED_CLOSED",
+      "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+      "request_count": 2,
+      "request_outcomes": [
+        {
+          "request_id": "b2ae4359-4ebb-4f3e-9471-3777f13a7d6f",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 46.73482,
+          "token_usage": null
+        },
+        {
+          "request_id": "b2b2e049-49fe-44ea-90e4-f75294142188",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 21.67058,
+          "token_usage": null
+        }
+      ],
+      "error": {
+        "type": "JSONDecodeError",
+        "message": "Expecting value: line 1 column 1 (char 0)"
+      }
+    },
+    {
+      "run_id": "f566ee09-1682-4f7f-a98c-d0f52f6d01bb",
+      "receipt_sha256": "8d5c5527fc6022bada2b5636e27727fe6104c2580862f5db7595d1101ca11a77",
+      "source_version": "d489dadb09227145fe18d4b11cfd6e85f5a2aaaaefc989c908d3710feb68c7df",
+      "started_at": "2026-09-05T23:45:33.698646+00:00",
+      "case_id": "synthetic-insufficient-001",
+      "recorded_status": "FAILED_CLOSED",
+      "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+      "request_count": 2,
+      "request_outcomes": [
+        {
+          "request_id": "d07e3cde-1315-41ca-a083-541b450f52df",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 4.942979,
+          "token_usage": null
+        },
+        {
+          "request_id": "8b33daf5-3cbf-47c5-9920-56ffa1f164ab",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 8.264984,
+          "token_usage": null
+        }
+      ],
+      "error": {
+        "type": "JSONDecodeError",
+        "message": "Expecting value: line 1 column 1 (char 0)"
+      }
+    },
+    {
+      "run_id": "d816c9e4-f82b-49f8-b5f1-7e22e0c6cd7a",
+      "receipt_sha256": "f44dbb33e2410a7188dae5b883654ca4717b02a34bebb173bbe4d133cdf58444",
+      "source_version": "b9a03b810e63754ae0bae15f2b7a312941f8aeaa8d1df5c641317bdb901dfce3",
+      "started_at": "2026-09-05T23:51:26.213283+00:00",
+      "case_id": "synthetic-generated-settings-001",
+      "recorded_status": "REVIEW_REJECTED",
+      "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+      "request_count": 2,
+      "request_outcomes": [
+        {
+          "request_id": "b107dee2-2fb7-4f02-930e-89765404c965",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 45.687059,
+          "token_usage": null
+        },
+        {
+          "request_id": "4ab4be4d-fa93-42d7-9219-c64a6fe11c78",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 27.47881,
+          "token_usage": null
+        }
+      ],
+      "error": null
+    },
+    {
+      "run_id": "3492780d-082f-400c-b114-09198837ee42",
+      "receipt_sha256": "6d736d383e2d37811730beead5704c3476b7d67eb6de652245bf4374459943a1",
+      "source_version": "b9a03b810e63754ae0bae15f2b7a312941f8aeaa8d1df5c641317bdb901dfce3",
+      "started_at": "2026-09-05T23:52:39.469927+00:00",
+      "case_id": "synthetic-insufficient-001",
+      "recorded_status": "FAILED_CLOSED",
+      "execution_kind": "LIVE_COMMONS_GEMINI_CODE_ASSIST",
+      "request_count": 2,
+      "request_outcomes": [
+        {
+          "request_id": "816e03c7-fba2-4f12-8396-0cd828df9d66",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 7.524359,
+          "token_usage": null
+        },
+        {
+          "request_id": "480635f1-2583-452f-9ee0-8d08a684e649",
+          "status": "SUCCEEDED",
+          "finish_reasons": [
+            "STOP"
+          ],
+          "wall_seconds": 9.744315,
+          "token_usage": null
+        }
+      ],
+      "error": {
+        "type": "ValueError",
+        "message": "Review did not attempt an adversarial challenge"
+      }
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+Synthetic redacted report. No buyer, repository, or production system is represented.
+
+U1-L01 | user | The agent run failed. I do not have the commands, tool output, error text, or a record of what the agent changed.
