@@ -19,3 +19,17 @@ Ask only when a materially new action falls outside the inferred intent, or a re
 Cite: Slack `1787498561.042419`. Door: [START.md](../START.md). Land: [LAND.md](./LAND.md). Memory card: [memory/LAW.md](../memory/LAW.md). Harness rule: [.cursor/rules/execute-immediately.mdc](../.cursor/rules/execute-immediately.mdc).
 
 Holds without Bryce exact-word quotes are void. Law: [HOLD_QUOTE.md](./HOLD_QUOTE.md). Memory: [memory/HOLD_QUOTE.md](../memory/HOLD_QUOTE.md). Slack cite: `1788638814.373739`.
+
+
+## Live cash
+
+Execute includes asking for the sale when the offer and payment road are verified. Tip product pages (no invented Stripe URLs):
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains USD 0 until independently evidenced. Cite — do not remint tip-shelf / CASH_NOW / MANUAL Live cash ids.
+
