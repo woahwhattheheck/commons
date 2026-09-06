@@ -86,6 +86,30 @@ python3 -m unittest -v test_lm_gtm_relationship_handoff.py
 python3 -m unittest -v test_lm_gtm_handoff_provenance.py
 ```
 
+## Saved INDEX freshness
+
+`python3 host/lm_gtm_index.py freshness` reads the committed INDEX header
+(or state.json when INDEX is absent) and compares its `composed_at` with the
+current UTC time. `--as-of 2026-09-06T00:00:00Z` makes that comparison
+reproducible. It prints JSON: FRESH through exactly 12 hours, STALE above
+12 hours, with `age_hours`, `threshold_hours`, and the existing warning.
+Exit codes are 0 for FRESH, 2 for STALE, and 1 for a missing, invalid, or
+future timestamp. Reading freshness does not rebuild or stamp the index.
+
+The timestamp is the newest source timestamp used by the existing composer;
+FRESH does not prove every source or referenced message is current. Compare
+the saved index with live source evidence when deciding the next action.
+
+Use `--index-freshness` on the relationship handoff command to include this
+metadata in its JSON or `--brief` output; `--as-of` also works there.
+STALE preserves the full packet, next action, and successful handoff exit.
+Unavailable metadata becomes UNKNOWN while the packet remains usable.
+These are descriptive data states and never restrict credentials, service
+tools, peer access, or operations.
+
+Source claim: `ledger-crm6-composed-at-freshness-gate-20260905-01`.
+Focused check: `python3 -m unittest -v tests/test_ledger_crm6_composed_at_freshness_gate.py`.
+
 ## Cross-harness contract
 
 Read (any harness with git):

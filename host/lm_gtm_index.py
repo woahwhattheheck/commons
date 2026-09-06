@@ -143,6 +143,7 @@ CONTRACT = {
     "read_index": "revenue/lm_gtm_index/INDEX.jsonl",
     "read_state": "revenue/lm_gtm_index/state.json",
     "list_brief": "python3 host/lm_gtm_index.py brief",
+    "check_freshness": "python3 host/lm_gtm_index.py freshness",
     "list_next": "python3 host/lm_gtm_index.py next",
     "list_hot": "python3 host/lm_gtm_index.py hot",
     "list_hold": "python3 host/lm_gtm_index.py hold",
@@ -1256,6 +1257,61 @@ def _add_occupancy_args(parser: argparse.ArgumentParser, *, steal: bool) -> None
     parser.add_argument("--ts")
 
 
+def read_committed_composed_at(paths: dict[str, Path] | None = None) -> str:
+    """Read the saved INDEX timestamp, or state.json when INDEX is absent."""
+    paths = paths or default_paths()
+    rows = load_jsonl(paths["index"])
+    if rows:
+        if rows[0].get("kind") != KIND_HEADER:
+            raise IndexError_("INDEX first row must be its header")
+        stamp = rows[0].get("composed_at")
+    elif paths["state"].exists():
+        stamp = read_object(paths["state"]).get("composed_at")
+    else:
+        raise IndexError_("INDEX/state missing composed_at")
+    if not isinstance(stamp, str) or not stamp.strip():
+        raise IndexError_("INDEX/state missing composed_at")
+    return stamp.strip()
+
+
+def composed_at_freshness(
+    paths: dict[str, Path] | None = None,
+    *,
+    now: dt.datetime | None = None,
+    composed_at_value: str | None = None,
+) -> dict[str, Any]:
+    """Describe timestamp age; this does not grant or restrict any operation."""
+    composed = (
+        read_committed_composed_at(paths)
+        if composed_at_value is None else composed_at_value
+    )
+    if not isinstance(composed, str) or not composed.strip():
+        raise IndexError_("composed_at must be a nonempty timestamp")
+    stamped = parse_time(composed)
+    instant = now if now is not None else dt.datetime.now(dt.timezone.utc)
+    if instant.tzinfo is None or instant.utcoffset() is None:
+        raise IndexError_("as_of must include a timezone")
+    age = instant - stamped
+    if age < dt.timedelta(0):
+        raise IndexError_("composed_at is later than as_of; freshness is unknown")
+    stale = age > STALE_AFTER
+    payload = {
+        "schema_version": SCHEMA_VERSION,
+        "kind": "LM_GTM_COMPOSED_AT_FRESHNESS",
+        "status": "STALE" if stale else "FRESH",
+        "composed_at": composed,
+        "as_of": iso_z(instant),
+        "age_hours": round(age.total_seconds() / 3600.0, 6),
+        "threshold_hours": STALE_AFTER.total_seconds() / 3600.0,
+        "canonical_crm": CANONICAL_CRM,
+        "cash_usd": 0,
+    }
+    if stale:
+        payload["stale_warning"] = STALE_WARNING
+    _assert_no_pii_in_index_blob(json.dumps(payload, sort_keys=True, ensure_ascii=False))
+    return payload
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -1264,6 +1320,8 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("snapshot")
     sub.add_parser("next")
     sub.add_parser("brief")
+    freshness = sub.add_parser("freshness", help="describe saved INDEX age")
+    freshness.add_argument("--as-of", help="timezone-aware time; defaults to current UTC")
     sub.add_parser("sent")
     hot = sub.add_parser("hot")
     hot.add_argument("--brief", action="store_true")
@@ -1325,6 +1383,10 @@ def main(argv: list[str] | None = None) -> int:
             built = build_index()
             sys.stdout.write(emit_jsonl([brief_header(built=built), *brief_hot_rows()]))
             return 0
+        if args.command == "freshness":
+            result = composed_at_freshness(now=parse_time(args.as_of) if args.as_of else None)
+            print(canonical_text(result), end="")
+            return 0 if result["status"] == "FRESH" else 2
         if args.command == "sent":
             sys.stdout.write(emit_jsonl(compact_sent_rows()))
             return 0
