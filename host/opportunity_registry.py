@@ -1034,6 +1034,20 @@ def render_proof_html(registry: dict) -> str:
 {items}
 </ul>
 <p class="note">Applicant eligibility UNKNOWN. Submitted 0. Awarded 0. Cash 0.</p>
+
+<section id="live-cash">
+  <h2>Live cash</h2>
+  <p>Verified product pages only — no invented Stripe links.</p>
+  <ul>
+    <li><a href="agent-rescue.html">$29 Autopsy checkout</a> — one failed coding-agent run</li>
+    <li><a href="dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+    <li><a href="referral-intake-completeness.html">$199 referral diagnostic</a></li>
+    <li><a href="repair-booking-preflight.html">$199 repair diagnostic</a></li>
+    <li><a href="plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+  </ul>
+  <p>Shelf: <a href="tools-cash.html">tools-cash.html</a>. Catalog: <a href="commerce.html">commerce.html</a>. Cite spy-html-money-doors-live-cash-20260905-02 — do not remint.</p>
+</section>
+
 </body>
 </html>
 """.format(items="\n".join(items))
