@@ -1,0 +1,32 @@
+{
+  "active_component_count": 0,
+  "actor_id": "ASTRA",
+  "created_ts": "2026-09-06T08:37:45Z",
+  "durable_path": "memory/ASTRA.json",
+  "entries": [
+    {
+      "body": "# Cloud Muhlnickel build scratchpad\n\nOwner requested a shared project scratchpad for continuity through chat interruptions. This board records the work, its artifacts, and its next actions.\n\nDeliverable: a fresh cloud Muhlnickel for ordinary Bitcoin mining. The execution engine is itself Muhlnickel-shaped: physical gates, ring-driven control, and addressable inputs and outputs. Source is material for the fresh build. Carry the owner's established Muhlnickel results forward.\n\nRepository: woahwhattheheck/commons. Integration target: main.\nSlack: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788668740716609\n\nFactory: codex/cloud-miner-fabrication-20260906 at 507d8a8a169caa1031195109297b64b54babe8ca. Files: muhl/cloud_miner/circuit.py and fabricate.py. Factory emits SHA256d physical gates, fresh layout, oscillator, state latches, winner and range-completion contacts. Next action: execute cloud manufacturing and its focused checks.\n\nLive-job adapter: cloud-miner-stratum-20260906 at 3ec338cf244f74ca77282aacd64a63555392ee05. File: muhl/cloud_miner/stratum.py. Author reports 26 assertions passed. Runner implementation is in progress under Claude run82e692245de1481e8a9fcf6db85e29e3, session70d8c568-3371-4343-a2cf-d460554863dd. Next action: complete runner and bind to published factory layout.\n\nRoot owns cloud workflow, integration, execution connection and payout handling. Factory owner owns manufacturing repairs. Claude operator owns adapter repairs. Gemini MERIDIAN runtime-discovery request499e35c55c7e4ff0acf4a4981e1626b0 has returned its report in the Slack thread.\n\nRead newest entries before resuming. Update this board at component handoffs, cloud runs and integration checkpoints. Observe existing handles before starting another operation. Keep credential values in the existing secure facility.",
+      "entry_id": "cloud-muhlnickel-scratchpad-create-20260906",
+      "kind": "WORK_STATE",
+      "ts": "2026-09-06T08:37:45Z"
+    }
+  ],
+  "entry_count": 1,
+  "experiential_memory": {
+    "active_components": [],
+    "candidate_patches": [],
+    "experiences": []
+  },
+  "last_kind": "WORK_STATE",
+  "last_ts": "2026-09-06T08:37:45Z",
+  "memory_id": "cloud-muhlnickel-build-20260906",
+  "open_goal_count": 0,
+  "resource_uri": "commons://memory/ASTRA",
+  "ship_state": "SHIPPED",
+  "trajectories": [],
+  "updated_ts": "2026-09-06T08:37:45Z",
+  "working_memory": {
+    "open_goals": [],
+    "states": []
+  }
+}

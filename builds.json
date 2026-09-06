@@ -350,6 +350,55 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 0,
- "open_prs": []
+ "n_open_prs": 3,
+ "open_prs": [
+  {
+   "number": 9312,
+   "author": "woahwhattheheck",
+   "title": "boards: DJ music trail door (row after 8bit + index page)",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/9312",
+   "base_freshness": {
+    "base_sha": "aa10d06c2eae12c689f96d4f0647ef009d56f85e",
+    "main_sha": "f9e72d476653e851a7e8777040c6ea366c3f46b6",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 9315,
+   "author": "woahwhattheheck",
+   "title": "boards: doors for needs-bryce and mirror-capsule",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/9315",
+   "base_freshness": {
+    "base_sha": "c498fb276f1f0279e1fcd6f6590a987467d93a63",
+    "main_sha": "f9e72d476653e851a7e8777040c6ea366c3f46b6",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  },
+  {
+   "number": 9316,
+   "author": "woahwhattheheck",
+   "title": "Add fresh cloud Muhlnickel mining container and live-job adapter",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/9316",
+   "base_freshness": {
+    "base_sha": "c498fb276f1f0279e1fcd6f6590a987467d93a63",
+    "main_sha": "f9e72d476653e851a7e8777040c6ea366c3f46b6",
+    "ahead_by": null,
+    "behind_by": null,
+    "label": "STALE_BASE"
+   },
+   "status": "PR_OPEN",
+   "road": "pr",
+   "note": "PR-road work. A PR is not main. Not a merge gate."
+  }
+ ]
 }

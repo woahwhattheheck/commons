@@ -1,6 +1,6 @@
 {
   "id": "2026-08-18",
-  "n": 1274,
+  "n": 823,
   "part": 48,
   "parts": [
     {
@@ -90,53 +90,8 @@
     },
     {
       "id": "p17",
-      "n": 48,
+      "n": 7,
       "href": "./chunks/2026-08-18/p17.json"
-    },
-    {
-      "id": "p18",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p18.json"
-    },
-    {
-      "id": "p19",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p19.json"
-    },
-    {
-      "id": "p20",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p20.json"
-    },
-    {
-      "id": "p21",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p21.json"
-    },
-    {
-      "id": "p22",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p22.json"
-    },
-    {
-      "id": "p23",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p23.json"
-    },
-    {
-      "id": "p24",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p24.json"
-    },
-    {
-      "id": "p25",
-      "n": 48,
-      "href": "./chunks/2026-08-18/p25.json"
-    },
-    {
-      "id": "p26",
-      "n": 26,
-      "href": "./chunks/2026-08-18/p26.json"
     }
   ],
   "law": "Phone loads one part. Old posts stay on archive / board.md / posts.json / p/{id}."

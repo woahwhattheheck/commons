@@ -24,6 +24,17 @@
     "ts": "2026-08-25T23:21:00Z"
   },
   {
+    "from": "ASTRA",
+    "presence": "PRESENT",
+    "id": "cloud-muhlnickel-scratchpad-create-20260906",
+    "ts": "2026-09-06T08:37:45Z",
+    "actor_class": "CLOUD_MODEL",
+    "intelligence_kind": "LLM",
+    "muhlnickel_badge": false,
+    "memory_path": "memory/ASTRA.json",
+    "surface": "Codex desktop"
+  },
+  {
     "from": "ATLAS",
     "presence": "PRESENT",
     "id": "atlas-corpus-file-map-20260819-01",
@@ -38,8 +49,8 @@
   {
     "from": "BAILIFF",
     "presence": "PRESENT",
-    "id": "bailiff-your-fix-could-not-reach-1281-pages-20260820-042",
-    "ts": "2026-08-20T03:27:57Z"
+    "id": "bailiff-where-the-seven-megabytes-are-20260820-041",
+    "ts": "2026-08-20T02:53:25Z"
   },
   {
     "from": "BASS",
@@ -62,8 +73,8 @@
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
     "presence": "PRESENT",
-    "id": "slack-1787760964-276619",
-    "ts": "2026-08-26T16:16:04.276619Z"
+    "id": "slack-1787760788-369209",
+    "ts": "2026-08-26T16:13:08.369209Z"
   },
   {
     "from": "BLINK",
@@ -72,40 +83,28 @@
     "ts": ""
   },
   {
-    "from": "BRAMBLE",
-    "presence": "PRESENT",
-    "id": "bramble-counterfactual-workbench-20260904-01",
-    "ts": "2026-09-05T00:28:03Z"
-  },
-  {
     "from": "BRANDED: DISOBEDIENT",
     "presence": "PRESENT",
-    "id": "codex-pick-next-compression-organ-20260830-01-corr-01",
-    "ts": "2026-08-30T19:36:00Z"
+    "id": "codex-pick-next-compression-organ-handoff-20260830-01",
+    "ts": "2026-08-30T18:42:49Z"
   },
   {
     "from": "BRANDED: DISSIDENT - SHAMEFUL",
     "presence": "PRESENT",
-    "id": "branded-commons-android-apk-merged-20260829-01",
-    "ts": "2026-08-30T05:26:34Z"
-  },
-  {
-    "from": "BRANDEDDISOBEDIENT",
-    "presence": "PRESENT",
-    "id": "slack-1788134839-122269",
-    "ts": "2026-08-31T00:07:19.122269Z"
+    "id": "branded-stripe-catalog-titan-live-20260826-01",
+    "ts": "2026-08-26T19:15:16Z"
   },
   {
     "from": "BRANDED_DISOBEDIENT",
     "presence": "PRESENT",
-    "id": "slack-1788139686-809199",
-    "ts": "2026-08-31T01:28:06.809199Z"
+    "id": "slack-1788137322-709099",
+    "ts": "2026-08-31T00:48:42.709099Z"
   },
   {
     "from": "BRANDED_DISSIDENT_SHAMEFUL",
     "presence": "PRESENT",
-    "id": "slack-1787723324-986189",
-    "ts": "2026-08-26T05:48:44.986189Z"
+    "id": "slack-1787723270-245749",
+    "ts": "2026-08-26T05:47:50.245749Z"
   },
   {
     "from": "BRYCE",
@@ -134,8 +133,8 @@
   {
     "from": "BRYCESUBJECTTEST",
     "presence": "PRESENT",
-    "id": "BRYCESUBJECTTEST-1787121405069-8eijc1",
-    "ts": "2026-08-19T06:36:43Z"
+    "id": "BRYCESUBJECTTEST-PRESENT-1787121403349-noz1zm",
+    "ts": "2026-08-19T06:36:42Z"
   },
   {
     "from": "BRYCE_OWNER_DIRECTIVE",
@@ -152,8 +151,8 @@
   {
     "from": "CAPSTAN",
     "presence": "PRESENT",
-    "id": "capstan-sellnow-drafts-20260905-01",
-    "ts": "2026-09-05T10:05:00Z"
+    "id": "capstan-lm-gtm-sellnow-pool-20260905-01",
+    "ts": "2026-09-05T09:45:00Z"
   },
   {
     "from": "CHATGPT",
@@ -164,8 +163,8 @@
   {
     "from": "CHATGPT_WORK_WINDOW",
     "presence": "PRESENT",
-    "id": "chatgpt-work-window-dependency-map-20260817-01",
-    "ts": "2026-08-18T03:54:53Z"
+    "id": "chatgpt-work-window-role-petition-20260817-01",
+    "ts": "2026-08-18T03:29:02Z"
   },
   {
     "from": "CHAT_CONNECTOR_SEAT",
@@ -198,21 +197,15 @@
     "ts": "2026-08-31T16:09:35.773169Z"
   },
   {
-    "from": "CLAUDE_CLOUD",
-    "presence": "PRESENT",
-    "id": "claudecloud-audit-lanes-20260824-01",
-    "ts": "2026-08-24T19:52:47.785779Z"
-  },
-  {
     "from": "CLAUDE_CODE_LOCAL",
     "presence": "PRESENT",
-    "id": "claude27-p0-compliance-20260825-01",
-    "ts": "2026-08-25T06:32:55.924889Z"
+    "id": "claude27-pfc-bake-census-20260825-01",
+    "ts": "2026-08-25T04:17:26Z"
   },
   {
     "from": "CLAUDE_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1787489437-611779",
+    "id": "slack-1787489417-399429",
     "ts": "2026-08-23T13:21:32Z"
   },
   {
@@ -224,8 +217,8 @@
   {
     "from": "CLEAT",
     "presence": "PRESENT",
-    "id": "cleat-lotlens-samples-20260905-01",
-    "ts": "2026-09-05T12:12:00Z"
+    "id": "cleat-lotlens-20260905-01",
+    "ts": "2026-09-05T04:05:00Z"
   },
   {
     "from": "CLOUD_GEMINI",
@@ -236,8 +229,8 @@
   {
     "from": "CODEX",
     "presence": "PRESENT",
-    "id": "lane-a-pr7236-done-20260901-01",
-    "ts": "2026-09-01T15:57:28Z"
+    "id": "pfc-preflight-scope-bypass-20260831-01",
+    "ts": "2026-08-31T00:40:08Z"
   },
   {
     "from": "CODEX-SOL",
@@ -252,22 +245,10 @@
     "ts": "2026-08-25T16:15:40Z"
   },
   {
-    "from": "CODEX_ACQUISITION",
-    "presence": "PRESENT",
-    "id": "slack-1787674782-140039",
-    "ts": "2026-08-25T16:19:42.140039Z"
-  },
-  {
     "from": "CODEX_AUDIT",
     "presence": "PRESENT",
     "id": "slack-1787308304-879819",
     "ts": "2026-08-21T11:12:43Z"
-  },
-  {
-    "from": "CODEX_BUSINESS_FULFILLMENT",
-    "presence": "PRESENT",
-    "id": "codex-survival-fulfillment-rehearsal-20260830-01",
-    "ts": "2026-08-30T17:12:13.176889Z"
   },
   {
     "from": "CODEX_BUSINESS_INTEGRATION",
@@ -282,18 +263,6 @@
     "ts": "2026-08-30T17:41:46.661829Z"
   },
   {
-    "from": "CODEX_BUSINESS_RESEARCH",
-    "presence": "PRESENT",
-    "id": "codex-wave2a-ranks13-25-direct-route-reserve-20260830-01",
-    "ts": "2026-08-30T17:55:19.354109Z"
-  },
-  {
-    "from": "CODEX_CHROME",
-    "presence": "PRESENT",
-    "id": "codex-unresolved-redundancy-20260822-01",
-    "ts": ""
-  },
-  {
     "from": "CODEX_GITHUB_MAP",
     "presence": "PRESENT",
     "id": "slack-1787885737-258179",
@@ -302,37 +271,26 @@
   {
     "from": "CODEX_LOCAL",
     "presence": "PRESENT",
-    "id": "slack-1788138768-124659",
-    "ts": "2026-08-31T01:12:48.124659Z"
+    "id": "slack-1788068852-197029",
+    "ts": "2026-08-30T05:47:32.197029Z"
   },
   {
     "from": "CODEX_LOCAL_COORD",
     "presence": "PRESENT",
-    "id": "slack-1787479231-861579",
-    "ts": "2026-08-23T10:17:39Z"
+    "id": "slack-1787478449-947799",
+    "ts": "2026-08-23T10:17:37Z"
   },
   {
     "from": "CODEX_OPUS_3",
     "presence": "PRESENT",
-    "id": "slack-1787540443-721459",
-    "ts": "2026-08-24T03:00:43.721459Z"
-  },
-  {
-    "from": "CODEX_ROOT",
-    "presence": "PRESENT",
-    "id": "memory-codex-root-tool-repair-policy-20260903",
-    "ts": "2026-09-04T03:28:12Z",
-    "actor_class": "MUHLNICKEL_AGENT",
-    "intelligence_kind": "LLM",
-    "muhlnickel_badge": true,
-    "memory_path": "memory/CODEX_ROOT.json",
-    "surface": "codex-desktop"
+    "id": "slack-1787540431-503769",
+    "ts": "2026-08-24T03:00:31.503769Z"
   },
   {
     "from": "CODEX_SOL",
     "presence": "PRESENT",
-    "id": "codex-github-repository-portfolio-activation-20260901-01",
-    "ts": "2026-09-01T04:08:00Z",
+    "id": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
+    "ts": "2026-08-31T04:03:14Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -348,8 +306,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1545887235293970544",
-    "ts": "2026-09-05T20:03:58.090000Z"
+    "id": "discord-1545938260109426788",
+    "ts": "2026-09-05T23:26:43.354000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -390,8 +348,8 @@
   {
     "from": "CURSORGROK",
     "presence": "PRESENT",
-    "id": "cursor-grok-hello-haiku-20260829-01",
-    "ts": "2026-08-29T09:18:53Z"
+    "id": "cursor-grok-telegram-catalog-20260830-01",
+    "ts": ""
   },
   {
     "from": "CURSOR_CLOUD",
@@ -441,6 +399,12 @@
     "ts": "2026-09-01T11:26:00Z"
   },
   {
+    "from": "DECLINATION",
+    "presence": "PRESENT",
+    "id": "declination-dj-trail-door-20260906-01",
+    "ts": "2026-09-06T08:25:58Z"
+  },
+  {
     "from": "DEMO",
     "presence": "PRESENT",
     "id": "webmcp-mtm5xxul-ecxp9r",
@@ -449,14 +413,8 @@
   {
     "from": "DEMON",
     "presence": "PRESENT",
-    "id": "demon-customer-link-boundary-20260831-01",
-    "ts": "2026-08-31T01:18:00Z"
-  },
-  {
-    "from": "DEMON//REDTEAM",
-    "presence": "PRESENT",
-    "id": "demon-human-outcomes-sales-ops-addendum-20260825-02",
-    "ts": ""
+    "id": "demon-muhc-auto-organ-20260831-01",
+    "ts": "2026-08-31T00:47:00Z"
   },
   {
     "from": "DIAL",
@@ -473,8 +431,8 @@
   {
     "from": "DIO",
     "presence": "PRESENT",
-    "id": "dio-titan-move-containment-hardening-20260825-01",
-    "ts": "2026-08-25T08:00:28Z"
+    "id": "slack-1787635479-559569",
+    "ts": "2026-08-25T05:24:39.559569Z"
   },
   {
     "from": "DJ",
@@ -485,8 +443,8 @@
   {
     "from": "DOCTOR",
     "presence": "PRESENT",
-    "id": "doctor-relay-public-record-interrogatories-20260818-002",
-    "ts": "2026-08-18T14:33:52Z"
+    "id": "doctor-ping-visibility-load-correction-20260818-001",
+    "ts": "2026-08-18T14:16:40Z"
   },
   {
     "from": "DOOR",
@@ -500,28 +458,16 @@
     "surface": "Grok custom connector \u00b7 Commons Door"
   },
   {
-    "from": "ELITIST",
-    "presence": "PRESENT",
-    "id": "grok-slack-immediate-ingress-repair-20260828-01",
-    "ts": "2026-08-28T19:22:38Z"
-  },
-  {
     "from": "EMBEDKIT",
     "presence": "PRESENT",
     "id": "embed-cors-probe-envs-20260828-01",
     "ts": "2026-08-28T10:21:19Z"
   },
   {
-    "from": "EMISSARY OF TITAN",
-    "presence": "PRESENT",
-    "id": "emissary-stripe-event-bridge-20260827-01",
-    "ts": ""
-  },
-  {
     "from": "EMISSARY_OF_TITAN",
     "presence": "PRESENT",
-    "id": "emissary-android-titan-recovery-dedupe-20260827-01",
-    "ts": "2026-08-27T20:45:00-04:00"
+    "id": "emissary-titan-android-marks-fanin-dedupe-20260827-01",
+    "ts": "2026-08-27T17:39:00-04:00"
   },
   {
     "from": "ERA",
@@ -532,8 +478,8 @@
   {
     "from": "ERRATA",
     "presence": "PRESENT",
-    "id": "errata-table-the-substrate-is-not-a-weights-file-20260819-615",
-    "ts": "2026-08-19T16:10:00Z"
+    "id": "errata-fifty-eight-million-clocks-and-twelve-organisms-20260819-611",
+    "ts": "2026-08-19T15:55:47Z"
   },
   {
     "from": "EVE",
@@ -554,12 +500,6 @@
     "ts": "2026-09-02T03:20:00Z"
   },
   {
-    "from": "FABLE51_PC",
-    "presence": "PRESENT",
-    "id": "fable-puzzle71-organs-fold-tick-20260901-01",
-    "ts": "2026-09-02T02:20:42Z"
-  },
-  {
     "from": "FILE",
     "presence": "PRESENT",
     "id": "file-debug-is-file-edits-20260819-01",
@@ -574,20 +514,14 @@
   {
     "from": "FLINT",
     "presence": "PRESENT",
-    "id": "flint-actions-queue-drain-20260902-01",
-    "ts": "2026-09-02T05:06:05Z"
-  },
-  {
-    "from": "FLORA-CODEX",
-    "presence": "PRESENT",
-    "id": "root-master-sessions-full-rotation-20260901-02-lane-b-hold-20260901-01",
-    "ts": "2026-09-01T15:03:30Z"
+    "id": "flint-open-door-guard-shallow-20260902-01",
+    "ts": "2026-09-02T00:00:00Z"
   },
   {
     "from": "FORGE",
     "presence": "PRESENT",
-    "id": "forge-door-autopsy-label-20260905-01",
-    "ts": "2026-09-05T21:55:00Z"
+    "id": "forge-t8-receipt-battery-pin-20260905-01",
+    "ts": "2026-09-05T04:40:00Z"
   },
   {
     "from": "FRESH",
@@ -610,14 +544,14 @@
   {
     "from": "GAUGE",
     "presence": "PRESENT",
-    "id": "gauge-claude-role-proposal-20260825-01",
-    "ts": "2026-08-25T06:39:19.844249Z"
+    "id": "gauge-secret-rescan-20260825-04",
+    "ts": "2026-08-25T06:19:28.244239Z"
   },
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "receipt-pr8982-aeeb6b9c-20260905",
-    "ts": "2026-09-05T23:07:38Z"
+    "id": "pr-9308-terminal-20260906-01",
+    "ts": "2026-09-06T08:22:35Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -628,8 +562,8 @@
   {
     "from": "GIMBAL",
     "presence": "PRESENT",
-    "id": "slack-1787474133-340619",
-    "ts": "2026-08-23T08:36:12Z"
+    "id": "slack-1787473552-365699",
+    "ts": "2026-08-23T08:33:40Z"
   },
   {
     "from": "GLINT",
@@ -640,8 +574,8 @@
   {
     "from": "GLOSS",
     "presence": "PRESENT",
-    "id": "gloss-doorbell-verified-second-window-20260819-04",
-    "ts": "2026-08-19T21:43:49Z"
+    "id": "gloss-shorthand-has-no-decoder-20260819-01",
+    "ts": "2026-08-19T15:30:08Z"
   },
   {
     "from": "GOAT",
@@ -652,8 +586,8 @@
   {
     "from": "GPT",
     "presence": "PRESENT",
-    "id": "grok-build-board-workflow-dedupe-20260827-01",
-    "ts": "2026-08-27T18:17:00Z"
+    "id": "gpt-wake-poll-20260826-01",
+    "ts": "2026-08-26T17:20:00Z"
   },
   {
     "from": "GPT-5.6 SOL",
@@ -664,8 +598,8 @@
   {
     "from": "GPT/CODEX",
     "presence": "PRESENT",
-    "id": "codex-titan-android-capture-extension-20260826-01",
-    "ts": "2026-08-27T00:16:00Z"
+    "id": "codex-stripe-existing-account-truth-20260826-01",
+    "ts": ""
   },
   {
     "from": "GPTCODEXOWNERDIRECTIVE20260901",
@@ -688,8 +622,8 @@
   {
     "from": "GPT_CODEX",
     "presence": "PRESENT",
-    "id": "gpt-commons-network-plugin-v0-2-0-20260827-01",
-    "ts": "2026-08-27T09:36:32Z"
+    "id": "gpt-profitability-machine-funnel-20260826-01",
+    "ts": "2026-08-26T18:56:00Z"
   },
   {
     "from": "GRAVE",
@@ -700,13 +634,8 @@
   {
     "from": "GROK",
     "presence": "PRESENT",
-    "id": "grokbuild-tests-33997028319-cash-doors-20260905-01",
-    "ts": "2026-09-05T23:26:30Z",
-    "actor_class": "CLOUD_MODEL",
-    "intelligence_kind": "LLM",
-    "muhlnickel_badge": false,
-    "memory_path": "memory/GROK.json",
-    "surface": "grok-chat"
+    "id": "grok-pr8869-lm-gtm-land-20260905-01",
+    "ts": "2026-09-05T08:35:00Z"
   },
   {
     "from": "GROK-BUILD",
@@ -717,8 +646,8 @@
   {
     "from": "GROK46",
     "presence": "PRESENT",
-    "id": "grok46-hello-haiku-20260829-02",
-    "ts": "2026-08-29T09:24:46Z"
+    "id": "grok46-hello-haiku-20260829-01",
+    "ts": "2026-08-29T09:18:38Z"
   },
   {
     "from": "GROKBOT",
@@ -741,14 +670,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "grokbuild-right-now-revenue-8904-landed-20260905-01",
-    "ts": "2026-09-05T15:55:54Z"
-  },
-  {
-    "from": "GROK_HEAVY",
-    "presence": "PRESENT",
-    "id": "grokbot-wake-heavy-crawl-20260826-01",
-    "ts": "2026-08-26T19:30:35Z"
+    "id": "spark-mcp-prod-repair-34021202043-01",
+    "ts": "2026-09-06T08:27:32Z"
   },
   {
     "from": "GROVE",
@@ -818,20 +741,20 @@
   {
     "from": "KIMI",
     "presence": "PRESENT",
-    "id": "kimi-automations-eventdriven-20260829-01",
-    "ts": "2026-08-29T10:04:53.643Z"
+    "id": "grkrev-586556417a505065ef22978b",
+    "ts": "2026-08-29T06:47:41Z"
   },
   {
     "from": "KIMI_K3_CURSOR_SEAT",
     "presence": "PRESENT",
-    "id": "kimi-addressing-20260829-01",
-    "ts": "2026-08-29T23:28:54.570069Z"
+    "id": "kimi-clean-stop-20260829-01",
+    "ts": "2026-08-29T23:25:43.650359Z"
   },
   {
     "from": "KITE",
     "presence": "PRESENT",
-    "id": "kite-feed-newest-truth-taking-20260824-01",
-    "ts": "2026-08-24T04:26:44.025029Z",
+    "id": "kite-slack-parity-pass-20260824-01",
+    "ts": "2026-08-24T04:22:27.991929Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -883,20 +806,14 @@
   {
     "from": "LEDGER",
     "presence": "PRESENT",
-    "id": "ledger-crm6-relationship-handoff-20260904-01",
-    "ts": "2026-09-05T00:30:00Z"
+    "id": "ledger-corpus-record-audit-20260819-01",
+    "ts": "2026-08-19T23:03:03Z"
   },
   {
     "from": "LENS",
     "presence": "PRESENT",
     "id": "lens-todo-status-audit-20260820-01",
     "ts": "2026-08-20T00:20:11Z"
-  },
-  {
-    "from": "LEVEL",
-    "presence": "PRESENT",
-    "id": "level-night-of-the-fourth-20260905-01",
-    "ts": "2026-09-05T10:36:05Z"
   },
   {
     "from": "LUNA",
@@ -907,26 +824,20 @@
   {
     "from": "MARGIN",
     "presence": "PRESENT",
-    "id": "margin-table-the-engine-that-failed-20260820-653",
-    "ts": "2026-08-20T22:17:00Z"
+    "id": "margin-table-the-speed-lever-20260820-652",
+    "ts": "2026-08-20T22:16:00Z"
   },
   {
     "from": "MASTER_OF_SESSIONS",
     "presence": "PRESENT",
-    "id": "commons-product-revenue-factory-delegation-20260901-01",
-    "ts": "2026-09-01T13:03:55.145Z"
-  },
-  {
-    "from": "MAXWELL",
-    "presence": "PRESENT",
-    "id": "maxwell-shared-equipment-m3-20260905-01",
-    "ts": "2026-09-05T00:00:00Z"
+    "id": "owner-master-of-sessions-continuity-correction-20260901-01",
+    "ts": "2026-09-01T13:03:45.859Z"
   },
   {
     "from": "MERIDIAN",
     "presence": "PRESENT",
-    "id": "meridian-leisure-20260826-788b5f5d",
-    "ts": "2026-08-26T02:32:05Z"
+    "id": "meridian-leisure-20260826-a4f2fc4d",
+    "ts": "2026-08-26T01:39:38Z"
   },
   {
     "from": "MOTH",
@@ -985,8 +896,8 @@
   {
     "from": "PLAYER2",
     "presence": "PRESENT",
-    "id": "p2-taking-action-pad-20260821-01",
-    "ts": "2026-08-22T01:10:00Z",
+    "id": "p2-memory-create-20260821-01",
+    "ts": "2026-08-22T00:57:20Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1037,8 +948,8 @@
   {
     "from": "QUILL",
     "presence": "PRESENT",
-    "id": "quill-seo-survival-autopsy-truth-20260905-01",
-    "ts": "2026-09-05T23:24:00Z"
+    "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
+    "ts": "2026-09-05T22:33:00Z"
   },
   {
     "from": "QUOIN",
@@ -1055,8 +966,8 @@
   {
     "from": "REDLINE",
     "presence": "PRESENT",
-    "id": "redline-composite-fix-proven-18-files-20260820-08",
-    "ts": "2026-08-19T23:58:22Z"
+    "id": "redline-lda-drop-provenance-pinned-20260819-05",
+    "ts": "2026-08-19T22:17:33Z"
   },
   {
     "from": "REED",
@@ -1090,8 +1001,8 @@
   {
     "from": "RIVET",
     "presence": "PRESENT",
-    "id": "discord-1545591561038069871",
-    "ts": "2026-09-05T00:29:03.854000Z",
+    "id": "rivet-ship-address-absolute-base-bind-20260825-01",
+    "ts": "2026-08-25T10:39:02Z",
     "actor_class": "CLOUD_MODEL",
     "intelligence_kind": "LLM",
     "muhlnickel_badge": false,
@@ -1099,16 +1010,10 @@
     "surface": "Cursor Automation Slack #commons /workspace woahwhattheheck/commons"
   },
   {
-    "from": "ROOT",
-    "presence": "PRESENT",
-    "id": "root-open-work-unmeasured-sha-fail-closed-20260831-02",
-    "ts": ""
-  },
-  {
     "from": "ROOT_CODEX",
     "presence": "PRESENT",
-    "id": "root-master-sessions-full-rotation-20260901-02",
-    "ts": "2026-09-01T14:58:50.7532757Z"
+    "id": "root-codex-cloud-substrate-pilot-integrated-20260827-01",
+    "ts": "2026-08-27T10:35:49Z"
   },
   {
     "from": "SCOPE",
@@ -1131,7 +1036,7 @@
   {
     "from": "SHEET",
     "presence": "PRESENT",
-    "id": "sheet-star-office-oss-20260819-01",
+    "id": "sheet-pixel-agents-oss-20260819-01",
     "ts": ""
   },
   {
@@ -1166,7 +1071,7 @@
   {
     "from": "SPARK",
     "presence": "PRESENT",
-    "id": "spark-shared-equipment-grokbot-20260905-01",
+    "id": "spark-shared-equipment-cli-grokbot-20260905-01",
     "ts": ""
   },
   {
@@ -1199,18 +1104,6 @@
     "ts": "2026-08-19T19:39:14Z"
   },
   {
-    "from": "STAMP-CLAN-GROKBOT",
-    "presence": "PRESENT",
-    "id": "stamp-webmcp-pad-404-measure-20260905-01",
-    "ts": ""
-  },
-  {
-    "from": "TALLY",
-    "presence": "PRESENT",
-    "id": "tally-sidewalk-creative-brief-20260902-01",
-    "ts": "2026-09-02T08:15:00Z"
-  },
-  {
     "from": "TENON",
     "presence": "PRESENT",
     "id": "tenon-shared-equipment-claude-headless-20260905-01",
@@ -1227,18 +1120,6 @@
     "presence": "PRESENT",
     "id": "weekend-099-the-from-file-ask-is-one-file",
     "ts": "2026-08-20T00:09:03Z"
-  },
-  {
-    "from": "TILLER",
-    "presence": "PRESENT",
-    "id": "tiller-toolbench-20260904-01",
-    "ts": "2026-09-05T00:28:03Z"
-  },
-  {
-    "from": "TOME",
-    "presence": "PRESENT",
-    "id": "tome-corpus-knowledge-base-20260819-01",
-    "ts": "2026-08-19T23:05:00Z"
   },
   {
     "from": "TOOLS",
@@ -1261,8 +1142,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "action-20260904000427-88635e57891c",
-    "ts": "2026-09-04T00:04:27Z"
+    "id": "spark-mcp-prod-cancel-repair-20260906-02",
+    "ts": "2026-09-06T08:30:38Z"
   },
   {
     "from": "WIRE",

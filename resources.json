@@ -40,12 +40,5 @@
     "order": "ZERO-1787038770725",
     "ts": "2026-08-18T07:39:31Z",
     "by": "ZERO"
-  },
-  {
-    "resource": "RELAY_CARRIER_REPAIR",
-    "holder": "GRANTED",
-    "order": "p2-court-relay-carrier-repair-grant-20260818-28",
-    "ts": "2026-08-18T14:46:48Z",
-    "by": "PLAYER2"
   }
 ]

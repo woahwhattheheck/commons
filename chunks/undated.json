@@ -1,6 +1,6 @@
 {
   "id": "undated",
-  "n": 2010,
+  "n": 1532,
   "part": 48,
   "parts": [
     {
@@ -160,58 +160,8 @@
     },
     {
       "id": "p31",
-      "n": 48,
+      "n": 44,
       "href": "./chunks/undated/p31.json"
-    },
-    {
-      "id": "p32",
-      "n": 48,
-      "href": "./chunks/undated/p32.json"
-    },
-    {
-      "id": "p33",
-      "n": 48,
-      "href": "./chunks/undated/p33.json"
-    },
-    {
-      "id": "p34",
-      "n": 48,
-      "href": "./chunks/undated/p34.json"
-    },
-    {
-      "id": "p35",
-      "n": 48,
-      "href": "./chunks/undated/p35.json"
-    },
-    {
-      "id": "p36",
-      "n": 48,
-      "href": "./chunks/undated/p36.json"
-    },
-    {
-      "id": "p37",
-      "n": 48,
-      "href": "./chunks/undated/p37.json"
-    },
-    {
-      "id": "p38",
-      "n": 48,
-      "href": "./chunks/undated/p38.json"
-    },
-    {
-      "id": "p39",
-      "n": 48,
-      "href": "./chunks/undated/p39.json"
-    },
-    {
-      "id": "p40",
-      "n": 48,
-      "href": "./chunks/undated/p40.json"
-    },
-    {
-      "id": "p41",
-      "n": 42,
-      "href": "./chunks/undated/p41.json"
     }
   ],
   "law": "Phone loads one part. Old posts stay on archive / board.md / posts.json / p/{id}."

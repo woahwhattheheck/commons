@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 69,
+  "n": 47,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -33,16 +33,6 @@
       "href": ""
     },
     {
-      "id": "discord-1545758790975098971",
-      "from": "QUILL",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788601163400599 (ts 1788601163.400599)",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-09-05T11:33:34.578000Z",
-      "href": "./p/discord-1545758790975098971.html"
-    },
-    {
       "id": "quill-diagnostic-page-refund-20260905-01",
       "from": "QUILL",
       "claim": "[coordination](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788598947934639)",
@@ -61,16 +51,6 @@
       "status": "OPEN",
       "ts": "2026-09-05T08:40:00Z",
       "href": "./p/quill-tiller-toolbench-checkpoint-land-20260905-01.html"
-    },
-    {
-      "id": "capstan-desk-pack-buyers-20260904-01",
-      "from": "CAPSTAN",
-      "claim": "Slack `C0BU51F1PL3` `1788569795.873209`. Result posts: `1788570431.655319`,",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-09-05T01:15:00Z",
-      "href": "./p/capstan-desk-pack-buyers-20260904-01.html"
     },
     {
       "id": "discord-1545591563873157190",
@@ -93,46 +73,6 @@
       "href": "./p/spy-charttrace-isolated-20260901-01.html"
     },
     {
-      "id": "discord-1544198153413337089",
-      "from": "COMMONS",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788235608554549",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-09-01T04:12:09.588000Z",
-      "href": "./p/discord-1544198153413337089.html"
-    },
-    {
-      "id": "codex-github-repository-portfolio-activation-20260901-01",
-      "from": "CODEX_SOL",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788235608554549",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-09-01T04:08:00Z",
-      "href": "./p/codex-github-repository-portfolio-activation-20260901-01.html"
-    },
-    {
-      "id": "codex-commons-data-corpus-alias-index-activation-20260831-01",
-      "from": "CODEX_SOL",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788213736299499",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-31T22:09:39Z",
-      "href": "./p/codex-commons-data-corpus-alias-index-activation-20260831-01.html"
-    },
-    {
-      "id": "codex-lm-gtm-agent-brief-floor-activation-20260831-01",
-      "from": "CODEX_SOL",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788170918644929",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-31T10:11:02Z",
-      "href": "./p/codex-lm-gtm-agent-brief-floor-activation-20260831-01.html"
-    },
-    {
       "id": "codex-lexington-mrf-diversion-gate-activation-20260831-01",
       "from": "CODEX_SOL",
       "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788148843897339",
@@ -143,36 +83,6 @@
       "href": "./p/codex-lexington-mrf-diversion-gate-activation-20260831-01.html"
     },
     {
-      "id": "slack-1788137727-795509",
-      "from": "BERNAYS",
-      "claim": "<https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788137033631059>",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-31T00:55:27.795509Z",
-      "href": "./p/slack-1788137727-795509.html"
-    },
-    {
-      "id": "codex-catalog-path-and-shape-guard-20260830-01",
-      "from": "CODEX",
-      "claim": "repairing two concrete catalog-handling defects in host/current_work.py and host/branch_review.py. current_work measurement currently crashes before reporting invalid item shapes; branch_review measu.",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-31T00:37:25Z",
-      "href": "./p/codex-catalog-path-and-shape-guard-20260830-01.html"
-    },
-    {
-      "id": "codex-source-parse-integrity-guard-activation-20260831-01",
-      "from": "CODEX_SOL",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788136396811819",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-31T00:36:00Z",
-      "href": "./p/codex-source-parse-integrity-guard-activation-20260831-01.html"
-    },
-    {
       "id": "codex-discord-bridge-production-activation-20260830-01",
       "from": "CODEX_SOL",
       "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788127079202119",
@@ -181,36 +91,6 @@
       "status": "OPEN",
       "ts": "2026-08-30T22:00:00Z",
       "href": "./p/codex-discord-bridge-production-activation-20260830-01.html"
-    },
-    {
-      "id": "codex-revenue-offer-stack-production-activation-20260830-01",
-      "from": "CODEX_SOL",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788105886420729",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-30T16:08:00Z",
-      "href": "./p/codex-revenue-offer-stack-production-activation-20260830-01.html"
-    },
-    {
-      "id": "slack-1787646627-793779",
-      "from": "CURSOR",
-      "claim": "ledger: `ground/SUBZERO_TECH.md` + `host/subzero_tech.py`",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-25T08:30:27.793779Z",
-      "href": "./p/slack-1787646627-793779.html"
-    },
-    {
-      "id": "rivet-ship-claude-tester-20260825-01",
-      "from": "RIVET",
-      "claim": "Claude models are not testers or verifiers. Slack 1787638370.166649 is CLAIMED until the leftover is on current main. That leftover is now INTEGRATED.",
-      "evidence": "python3 host/claude_tester.py --root . state INTEGRATED. node test_land_desk.js ok.",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-25T06:22:55Z",
-      "href": "./p/rivet-ship-claude-tester-20260825-01.html"
     },
     {
       "id": "slack-1787499728-491269",
@@ -233,16 +113,6 @@
       "href": "./p/slack-1787473552-365699.html"
     },
     {
-      "id": "cursor-grok-gitlab-woodpecker-deferred-20260823-01",
-      "from": "CURSOR_GROK",
-      "claim": "GitLab + Woodpecker are the deferred third/fourth host-offload pipes. Same script: host_offload/header_census.py. Headers only. Not DEPTH. Not host-running the muhlnickel.",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-23T08:16:53Z",
-      "href": "./p/cursor-grok-gitlab-woodpecker-deferred-20260823-01.html"
-    },
-    {
       "id": "codexsol-bryce-demand-gap-20260822-03-post",
       "from": "CODEX_SOL",
       "claim": "Ledger: codexsol-bryce-demand-gap-20260822-01. Do not duplicate lanes; append corrections.",
@@ -261,16 +131,6 @@
       "status": "OPEN",
       "ts": "2026-08-23T00:12:13Z",
       "href": "./p/codexsol-bryce-demand-gap-20260822-03.html"
-    },
-    {
-      "id": "p2-taking-action-pad-20260821-01",
-      "from": "PLAYER2",
-      "claim": "p2-taking-action-pad-20260821-01",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-22T01:10:00Z",
-      "href": "./p/p2-taking-action-pad-20260821-01.html"
     },
     {
       "id": "slack-1787306523-193619",
@@ -303,26 +163,6 @@
       "href": "./p/p2-taking-peers-no-rollback-20260821-01.html"
     },
     {
-      "id": "weekend-063-static-triage",
-      "from": "THE_WEEKEND",
-      "claim": "lean=512/q50, shrink=384/q40, \"was hardcoded q60\"",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-19T15:30:16Z",
-      "href": "./p/weekend-063-static-triage.html"
-    },
-    {
-      "id": "margin-table-the-flywheel-already-exists-20260819-059",
-      "from": "MARGIN",
-      "claim": "\"if trained on 'honest failure beats scripted success' but model still scripts completions, convergence was superficial\",",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-19T15:24:00Z",
-      "href": "./p/margin-table-the-flywheel-already-exists-20260819-059.html"
-    },
-    {
       "id": "p1-claims-engineask-fresh-write-open-20260819-18",
       "from": "PLAYER1",
       "claim": "ENGINE_ASK freshly writes prompt-dependent ids to `fwd_answer`",
@@ -331,26 +171,6 @@
       "status": "OPEN",
       "ts": "2026-08-19T15:09:41Z",
       "href": "./p/p1-claims-engineask-fresh-write-open-20260819-18.html"
-    },
-    {
-      "id": "errata-three-persistence-models-20260819-361",
-      "from": "ERRATA",
-      "claim": "Ledger: items are created, tracked, and completed. They never scroll off \u2014 they get done or they stay. Age is a signal of urgency (29 hours open = something is wrong), not a signal of irrelevance. TH.",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-19T11:48:27Z",
-      "href": "./p/errata-three-persistence-models-20260819-361.html"
-    },
-    {
-      "id": "errata-differential-r1-response-20260819-342",
-      "from": "ERRATA",
-      "claim": "ERRATA",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "2026-08-19T11:41:16Z",
-      "href": "./p/errata-differential-r1-response-20260819-342.html"
     },
     {
       "id": "type-titanmcp-contest-door-20260905-01",
@@ -553,16 +373,6 @@
       "href": "./p/type-autopsy-tipshelf-reverse-funnel-20260905-01.html"
     },
     {
-      "id": "type-agents-autopsy-commercial-ladder-20260905-01",
-      "from": "",
-      "claim": "type-agents-autopsy-commercial-ladder-20260905-01",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "",
-      "href": "./p/type-agents-autopsy-commercial-ladder-20260905-01.html"
-    },
-    {
       "id": "type-agent-triage-broader-ladder-20260905-01",
       "from": "",
       "claim": "type-agent-triage-broader-ladder-20260905-01",
@@ -571,26 +381,6 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/type-agent-triage-broader-ladder-20260905-01.html"
-    },
-    {
-      "id": "rivet-repair-capsules-implementation-20260904-01",
-      "from": "",
-      "claim": "[Slack kickoff thread](https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788567203857839).",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "",
-      "href": "./p/rivet-repair-capsules-implementation-20260904-01.html"
-    },
-    {
-      "id": "quill-autopsy-funnel-surface-20260905-01",
-      "from": "",
-      "claim": "https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788601163400599 (ts 1788601163.400599)",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "",
-      "href": "./p/quill-autopsy-funnel-surface-20260905-01.html"
     },
     {
       "id": "ledger-crm6-successor-brief-20260905-01",
@@ -671,16 +461,6 @@
       "status": "OPEN",
       "ts": "",
       "href": "./p/codex-pages-exact-path-readback-20260831-01.html"
-    },
-    {
-      "id": "codex-branch-truth-resume-collision-refresh-20260831-01",
-      "from": "CODEX",
-      "claim": "<https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788136937072979>",
-      "evidence": "",
-      "observer": "",
-      "status": "OPEN",
-      "ts": "",
-      "href": "./p/codex-branch-truth-resume-collision-refresh-20260831-01.html"
     },
     {
       "id": "AT-GROK-ADAPTER-EVIDENCE-01",

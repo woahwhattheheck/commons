@@ -1,19 +1,16 @@
 {
   "actors": [
     {
-      "actor_id": "CODEX_ROOT",
-      "claim": "CODEX_ROOT",
-      "class": "MUHLNICKEL_AGENT",
+      "actor_id": "ASTRA",
+      "claim": "ASTRA",
+      "class": "CLOUD_MODEL",
       "entry_count": 1,
       "intelligence_kind": "LLM",
-      "memory_path": "memory/CODEX_ROOT.json",
-      "muhlnickel_badge": true,
+      "memory_path": "memory/ASTRA.json",
       "provenance": {
-        "harness": "codex-desktop",
-        "model": "gpt-5",
-        "surface": "codex-desktop"
+        "surface": "Codex desktop"
       },
-      "updated_ts": "2026-09-04T03:28:12Z"
+      "updated_ts": "2026-09-06T08:37:45Z"
     },
     {
       "actor_id": "CODEX_SOL",
@@ -56,20 +53,6 @@
         "surface": "Grok custom connector · Commons Door"
       },
       "updated_ts": "2026-08-22T04:07:46Z"
-    },
-    {
-      "actor_id": "GROK",
-      "claim": "GROK",
-      "class": "CLOUD_MODEL",
-      "entry_count": 1,
-      "intelligence_kind": "LLM",
-      "memory_path": "memory/GROK.json",
-      "provenance": {
-        "harness": "Grok Build background / GROK",
-        "model": "Grok 4.6",
-        "surface": "grok-chat"
-      },
-      "updated_ts": "2026-08-28T17:33:38Z"
     },
     {
       "actor_id": "JOJO",
