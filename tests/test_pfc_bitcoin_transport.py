@@ -67,6 +67,10 @@ class ScriptedConnection:
         self.clock.now += wait
         return []
 
+    def drain(self, timeout=1.0):
+        # Submission replies become available only after the cycle sends.
+        return []
+
     def close(self):
         self.closed = True
 

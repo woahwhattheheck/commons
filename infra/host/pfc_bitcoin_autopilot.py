@@ -87,6 +87,30 @@ class Conn:
                 try: out.append(json.loads(ln))
                 except Exception: pass
         return out
+    def drain(self, timeout=1.0):
+        """Read all currently available fragments; bound an always-busy pool."""
+        deadline = time.monotonic() + timeout
+        out = []
+        self.s.settimeout(0.0)
+        while True:
+            if time.monotonic() >= deadline:
+                raise TimeoutError("pool notification drain did not catch up before deadline")
+            while b"\n" in self.buf:
+                if time.monotonic() >= deadline:
+                    raise TimeoutError("pool notification drain did not catch up before deadline")
+                ln, self.buf = self.buf.split(b"\n", 1)
+                if ln.strip():
+                    try: out.append(json.loads(ln))
+                    except Exception: pass
+            if time.monotonic() >= deadline:
+                raise TimeoutError("pool notification drain did not catch up before deadline")
+            try:
+                chunk = self.s.recv(8192)
+            except (socket.timeout, BlockingIOError):
+                return out
+            if not chunk:
+                raise ConnectionError("pool disconnected")
+            self.buf += chunk
     def close(self):
         try: self.s.close()
         except Exception: pass
@@ -94,6 +118,17 @@ class Conn:
 
 class PoolProtocolError(ConnectionError):
     """The existing pool protocol returned an incomplete or failed reply."""
+
+
+def parse_job(params):
+    """Decode one notification without changing the job already routed."""
+    if not isinstance(params, list) or len(params) < 9:
+        raise PoolProtocolError("mining.notify failed: incomplete job parameters")
+    if type(params[8]) is not bool:
+        raise PoolProtocolError("mining.notify failed: clean_jobs must be a boolean")
+    return dict(job_id=params[0], prevhash=params[1], coinb1=params[2], coinb2=params[3],
+                merkle_branch=params[4], version=params[5], nbits=params[6],
+                ntime=params[7], clean_jobs=params[8])
 
 
 def receive_job(c, timeout=15.0):
@@ -123,45 +158,101 @@ def receive_job(c, timeout=15.0):
                     raise PoolProtocolError("mining.authorize failed: %s" % (m.get("error") or m.get("result")))
                 pool_ready = True
             elif m.get("method") == "mining.notify":
-                p = m.get("params")
-                if not isinstance(p, list) or len(p) < 9:
-                    raise PoolProtocolError("mining.notify failed: incomplete job parameters")
-                job = dict(job_id=p[0], prevhash=p[1], coinb1=p[2], coinb2=p[3],
-                           merkle_branch=p[4], version=p[5], nbits=p[6], ntime=p[7], clean_jobs=p[8])
+                job = parse_job(m.get("params"))
     return en1, en2sz, job
 
 
+def _invalidates_job(messages):
+    """Latch every clean notification, including reuse of the routed job ID."""
+    stale = False
+    for message in messages:
+        if not isinstance(message, dict):
+            raise PoolProtocolError("pool sent a non-object message")
+        if message.get("method") == "mining.notify":
+            update = parse_job(message.get("params"))
+            if update["clean_jobs"]:
+                stale = True
+    return stale
+
+
+def wait_for_job(c, wait_s):
+    """Observe invalidations for the entire original signal-settle interval."""
+    deadline = time.monotonic() + wait_s
+    stale = False
+    try:
+        while True:
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return stale
+            # Evaluate every batch even after stale=True, including validation.
+            stale = _invalidates_job(c.lines(wait=min(2.0, remaining))) or stale
+    except OSError:
+        # A broken connection must not make the next worker cycle start early.
+        # PoolProtocolError also follows this path; cycle records its own label.
+        remaining = deadline - time.monotonic()
+        if remaining > 0:
+            time.sleep(remaining)
+        raise
+
+
 def cycle(reg, wait_s=WAIT):
-    c = Conn(); verdict = None; connection_error = None
+    c = Conn(); verdict = None; connection_error = None; protocol_error = None
+    stale = False; submission_attempted = False; submission_error = None
     try:
         en1, en2sz, job = receive_job(c)
         nbref = struct.unpack("<I", make_prefix(job, en1, "00" * en2sz)[72:76])[0]
         target = (nbref & 0xffffff) << (8 * ((nbref >> 24) - 3))
 
-        send_block(reg, job, en1, en2sz, target)                   # BUTTON: send the block one-way, BLIND (reads nothing)
-        time.sleep(wait_s)                                            # the pfc runs (black box, NOT evaluated/monitored)
-        status, en2v, nonce = read_full_answer()                    # READER (separate): read the EXTERNAL file only (never titan)
-
-        en2 = "%0*x" % (2 * en2sz, en2v & ((1 << (8 * en2sz)) - 1)) # submit the pfc's answer on the SAME connection
-        deadline = time.monotonic() + 12
+        send_block(reg, job, en1, en2sz, target)                   # BUTTON: one unchanged job, one signal
         try:
-            c.send({"id": 100, "method": "mining.submit",
-                    "params": [WALLET, job["job_id"], en2, job["ntime"], "%08x" % (nonce & 0xffffffff)]}, timeout=12.0)
-            while verdict is None:
-                remaining = deadline - time.monotonic()
-                if remaining <= 0:
-                    break
-                for m in c.lines(wait=min(2.0, remaining)):
-                    if m.get("id") == 100: verdict = m
+            stale = wait_for_job(c, wait_s)
+        except PoolProtocolError as exc:
+            protocol_error = str(exc) or type(exc).__name__
         except OSError as exc:
             connection_error = str(exc) or type(exc).__name__
+        status, en2v, nonce = read_full_answer()                    # READ ONLY the original worker's external answer
+
+        en2 = "%0*x" % (2 * en2sz, en2v & ((1 << (8 * en2sz)) - 1))
+        if connection_error is None and protocol_error is None:
+            try:
+                # Drain after reading the answer, including for a zero settle wait.
+                stale = _invalidates_job(c.drain()) or stale
+            except PoolProtocolError as exc:
+                protocol_error = str(exc) or type(exc).__name__
+            except TimeoutError as exc:
+                submission_error = str(exc) or type(exc).__name__
+            except OSError as exc:
+                connection_error = str(exc) or type(exc).__name__
+
+        if not stale and connection_error is None and protocol_error is None and submission_error is None:
+            deadline = time.monotonic() + 12
+            try:
+                submission_attempted = True
+                c.send({"id": 100, "method": "mining.submit",
+                        "params": [WALLET, job["job_id"], en2, job["ntime"], "%08x" % (nonce & 0xffffffff)]}, timeout=12.0)
+                while verdict is None:
+                    remaining = deadline - time.monotonic()
+                    if remaining <= 0:
+                        break
+                    for message in c.lines(wait=min(2.0, remaining)):
+                        # Notifications after the send cannot replace its actual verdict.
+                        if isinstance(message, dict) and message.get("id") == 100:
+                            verdict = message
+            except OSError as exc:
+                connection_error = str(exc) or type(exc).__name__
     finally:
         c.close()
 
     res = (verdict or {}).get("result"); err = (verdict or {}).get("error")
     zb = 256 - target.bit_length() if job else 0
-    if connection_error:
+    if protocol_error:
+        pool = "invalid-pool-message (%s)" % protocol_error
+    elif connection_error:
         pool = "connection-lost (%s)" % connection_error
+    elif submission_error:
+        pool = "submission-skipped (%s)" % submission_error
+    elif stale:
+        pool = "stale-job (pool invalidated work before submission)"
     elif err is not None or res is False:
         pool = "REJECTED (%s)" % (err[1] if isinstance(err, list) and len(err) > 1 else err)
     elif res is True:
@@ -170,11 +261,13 @@ def cycle(reg, wait_s=WAIT):
         pool = "invalid-reply"
     else:
         pool = "no-reply"
+    submission = "submission attempted" if submission_attempted else "submission skipped"
     print(f"  [autopilot] NEW block {job['job_id']} target {zb} zbits -> stored into input window, one signal fired; "
-          f"answer read from external file [status={status} en2={en2v} nonce={nonce}] -> submission attempted; pool: {pool}", flush=True)
+          f"answer read from external file [status={status} en2={en2v} nonce={nonce}] -> {submission}; pool: {pool}", flush=True)
     os.makedirs(OUT, exist_ok=True)
-    json.dump({"job_id": job["job_id"], "zbits": zb, "answer": {"status": status, "en2": en2v, "nonce": nonce},
-               "pool": pool, "verdict": verdict}, open(JOB, "w"))
+    with open(JOB, "w") as receipt_file:
+        json.dump({"job_id": job["job_id"], "zbits": zb, "answer": {"status": status, "en2": en2v, "nonce": nonce},
+                   "pool": pool, "verdict": verdict, "submission_attempted": submission_attempted}, receipt_file)
 
 
 def main(argv=None):
