@@ -109,3 +109,7 @@ Cite, do not remint: `codex-sol-spark-mcp-taking-20260825-01`,
 `codex-sol-spark-mcp-integrated-20260825-01`,
 `codex-sol-deploy-spark-mcp-cloud-20260825-01`,
 `wire-gemini-mcp-all-carriers-20260826-01`.
+
+## Contest product (titanmcp)
+
+Different from Commons spark MCP on this page: live judge pad at https://webmcp-pad.vercel.app/ — **titanmcp 1.4.5**, 24 tools, Agent Resources, `syncConsents`. Board: [titanmcp.html](../titanmcp.html). Commons `/mcp` KEEP separate. Cite Latch Pad KEEP / Wire tip→live.
