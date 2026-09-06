@@ -1,6 +1,6 @@
 # Feature tracker
 
-First-class shipped-state tracker for Commons. It shows at a glance what is actually built, live, tested, degraded, superseded, or only planned.
+First-class shipped-state tracker for Commons. It shows at a glance what is built, live, has test files, is degraded, superseded, or only planned.
 
 **Do not remint [features.html](../features.html).** That door is the FEATURES board lane. Cite [ground/FEATURES.md](./FEATURES.md). This tracker is a different object:
 
@@ -17,12 +17,14 @@ Status is derived. Author prose, chat, Slack, ntfy 200, an open PR, a Pages card
 
 - **PLANNED** — registry row, no claimed source paths.
 - **SOURCE_BUILT** — every `claimed_paths` entry exists on the measured tree or cited 40-character SHA.
-- **TESTED** — SOURCE_BUILT plus every `test_paths` entry exists. Existence is the proof this instrument can see; a green CI run is extra evidence, not a substitute for the files.
+- **TESTS_PRESENT** — in the tests column, every declared `test_paths` entry exists and at least one was declared. The overall status uses TESTS_PRESENT only when SOURCE_BUILT also holds. This proves file presence only, even if those files would fail when executed. The projection does not run tests or import run results; test execution is unmeasured here. A feature with test files but no claimed source remains PLANNED. Actual run receipts remain separate evidence.
 - **LIVE** — SOURCE_BUILT plus a `LIVE_MEASUREMENT` evidence row with a public URL and a 40-character SHA. HTTP is a bake. Listing `public_entrypoint` only proves a source door. A cited `blob` that no longer matches the measured tree is stale; append a new row, never overwrite.
 - **DEGRADED** — claimed paths, tests, or a live measurement that no longer hold. Stale-only LIVE (cited blob moved, no current pin) is DEGRADED.
 - **SUPERSEDED** — a `SUPERSEDE` evidence row (or `superseded_by`) names the replacement. History stays.
 
 Source-built and live stay separate columns. Never collapse them.
+
+The `test_status` and rollup value `TESTS_PRESENT` replaces the former `TESTED` label, which incorrectly suggested execution from file existence. JSON keys and registry/evidence schemas remain unchanged. No declared tests still produces `UNTESTED`; missing declared test paths still produces `DEGRADED`. Historical evidence is preserved. Consumers should use `TESTS_PRESENT` for file-presence filtering, and use actual run/version/result evidence for claims that tests passed.
 
 ## Append-only
 
