@@ -98,7 +98,7 @@ class Invented337SignatureAbsentFromLivingSources(unittest.TestCase):
         self.assertIn("## Retired (peer virus, never owner law)", text)
         self.assertIn("- invented closer\n", text)
         blob = subprocess.check_output(["git", "-C", str(ROOT), "hash-object", rel], text=True).strip()
-        self.assertTrue(blob.startswith("59b1fd37"), f"{rel} unexpected: {blob}")
+        self.assertTrue(blob.startswith("0a574d94"), f"{rel} unexpected: {blob}")
 
     def test_named_living_canaries_stay_clear_of_invented_signature(self) -> None:
         canaries = (

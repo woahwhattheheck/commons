@@ -17,10 +17,10 @@ import owner_now_revenue as onr  # noqa: E402
 
 
 KEEP = {
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "ground/OWNER_NOW.md": "0a574d94",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
 }
@@ -56,7 +56,7 @@ class TestOwnerNowRevenue(unittest.TestCase):
         self.assertTrue(match["ok"], match)
         self.assertTrue(match["did_not_remint_owner_card"])
         self.assertTrue(match["did_not_remint_leftover"])
-        self.assertTrue(match["owner_now_blob"].startswith("59b1fd37"))
+        self.assertTrue(match["owner_now_blob"].startswith("0a574d94"))
         self.assertTrue(match["leftover_blob"].startswith("1b3cd631"))
 
     def test_ask_for_sale_on_current_proven_rails(self) -> None:

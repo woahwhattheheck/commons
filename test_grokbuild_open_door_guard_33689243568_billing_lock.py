@@ -16,19 +16,19 @@ PRIOR = ROOT / "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01
 VERIFY_8411 = ROOT / "p/grokbuild-pr8411-verify-20260902-01.md"
 
 KEEP = {
-    "open_door_guard.py": "4b053e43",
-    "test_open_door_guard.py": "70ee5730",
-    ".github/workflows/open-door-guard.yml": "6586644c",
+    "open_door_guard.py": "861958e9",
+    "test_open_door_guard.py": "2fb0d87b",
+    ".github/workflows/open-door-guard.yml": "c2121049",
     "p/grokbuild-open-door-guard-33687124472-billing-lock-20260902-01.md": "b91a85d3",
-    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "77a79824",
+    "test_grokbuild_open_door_guard_33687124472_billing_lock.py": "5449bc9f",
     "p/grokbuild-pr8408-verify-20260902-01.md": "0a594dda",
     "p/grokbuild-pr8411-verify-20260902-01.md": "642dea64",
-    "test_grokbuild_pr8411_verify.py": "41ebb40b",
+    "test_grokbuild_pr8411_verify.py": "b5aa8863",
     "p/grokbuild-pr8413-terminal-20260902-01.md": "bca13858",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "c6fb83fc",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "fbdb4c96",
 }
 
 

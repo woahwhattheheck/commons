@@ -48,8 +48,13 @@ def _timestamp(value: Any, field: str) -> datetime:
         value.endswith("Z") or re.search(r"[+-]\d\d:\d\d$", value)
     ):
         raise CapabilityError("%s must be an offset-aware ISO-8601 timestamp" % field)
+    normalized = value[:-1] + "+00:00" if value.endswith("Z") else value
+    # ISO-8601 allows extra fractional digits; datetime.fromisoformat is
+    # microsecond-capped, so keep the first six digits instead of dropping
+    # a real observed timestamp.
+    normalized = re.sub(r"(\.\d{6})\d+(?=[+-])", r"\1", normalized)
     try:
-        parsed = datetime.fromisoformat(value[:-1] + "+00:00" if value.endswith("Z") else value)
+        parsed = datetime.fromisoformat(normalized)
     except ValueError as exc:
         raise CapabilityError("%s must be a real timestamp" % field) from exc
     if parsed.tzinfo is None or parsed.utcoffset() is None:

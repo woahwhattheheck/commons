@@ -26,7 +26,7 @@ KEEP = {
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 

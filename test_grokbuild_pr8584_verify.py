@@ -21,12 +21,12 @@ WORKFLOW = ROOT / ".github/workflows/harness-wakeup.yml"
 
 KEEP = {
     "p/grokbuild-harness-wakeup-33717474657-billing-lock-20260903-01.md": "f54e1846",
-    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "760a8169",
+    "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "d99c08de",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     ".github/workflows/harness-wakeup.yml": "813043ab",
     "wakeup.py": "7988ceb2",
     "test_wakeup_reliability.py": "aca39ab4",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
 }
 
 

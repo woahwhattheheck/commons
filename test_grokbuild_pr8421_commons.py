@@ -14,11 +14,11 @@ PRIOR = ROOT / "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md"
 
 KEEP = {
     "p/grok-build-llms-txt-33689096471-billing-lock-20260902-01.md": "e739b9cd",
-    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "10b10d65",
+    "test_grokbuild_llms_txt_33689096471_billing_lock.py": "88e2182c",
     "p/grok-build-llms-txt-33687829181-billing-lock-20260902-01.md": "3183564c",
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "df5bf4c6",
+    "llms_txt.py": "4f9df46d",
 }
 
 

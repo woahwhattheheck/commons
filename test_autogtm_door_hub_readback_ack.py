@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parent
 KEEP = {
     "p/cursor-autogtm-door-hub-readback-20260902-01.md": "8c7c170a",
     "p/cursor-autogtm-peer-readback-ack-20260902-01.md": "d9d1008e",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
     "test_autogtm_door_hub.py": "fef0303e",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
     "p/cursor-autogtm-explee-same-loop-20260902-01.md": "c437f4d6",

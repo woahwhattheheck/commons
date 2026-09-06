@@ -18,15 +18,15 @@ NEARBY = ROOT / "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-0
 GOAT = ROOT / "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md"
 
 KEEP = {
-    "open_door_guard.py": "4b053e43",
-    "test_open_door_guard.py": "70ee5730",
-    ".github/workflows/open-door-guard.yml": "6586644c",
+    "open_door_guard.py": "861958e9",
+    "test_open_door_guard.py": "2fb0d87b",
+    ".github/workflows/open-door-guard.yml": "c2121049",
     "p/grokbuild-open-door-guard-33689347393-billing-lock-20260902-01.md": "c845c720",
-    "test_grokbuild_open_door_guard_33689347393_billing_lock.py": "3af59171",
+    "test_grokbuild_open_door_guard_33689347393_billing_lock.py": "c8eed272",
     "p/grokbuild-open-door-guard-33689357297-billing-lock-20260902-01.md": "261c9cf6",
-    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "16bf0f2c",
+    "test_grokbuild_open_door_guard_33689357297_billing_lock.py": "84aa3f96",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "26e769ce",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a36f9fa7",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/latch-hub-eyes-wake-habit-20260902-01.md": "dc83d42c",
 }

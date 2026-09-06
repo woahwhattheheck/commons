@@ -21,8 +21,8 @@ KEEP_UNREAD = {
     "p/grokbuild-pr8365-terminal-20260902-01.md": "212208a2",
     "p/grokbuild-repair-337-living-clear-20260902-01.md": "1884a299",
     "p/grokbuild-owner-now-337-closer-strip-20260902-01.md": "71135011",
-    "ground/OWNER_NOW.md": "59b1fd37",
-    "autogtm.html": "9d8b3e85",
+    "ground/OWNER_NOW.md": "0a574d94",
+    "autogtm.html": "fab1d536",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-owner-now-readback-20260902-01.md": "1b3cd631",
     "p/cursor-owner-now-revenue-20260902-01.md": "fe5ba035",
@@ -49,17 +49,17 @@ class GrokbuildOccupancyLandedWorkKeepLiftTest(unittest.TestCase):
         self.assertNotEqual(
             terminal.KEEP.get("test_landed_work_feed_readback.py"), "cb58ab08"
         )
-        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("f14935fb"))
-        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("4955bfd5"))
+        self.assertTrue(git_blob("test_stealable_lanes.py").startswith("152461e2"))
+        self.assertTrue(git_blob("test_landed_work_feed.py").startswith("275077fe"))
         self.assertTrue(
-            git_blob("test_landed_work_feed_readback.py").startswith("5a0807a9")
+            git_blob("test_landed_work_feed_readback.py").startswith("09933895")
         )
 
     def test_living_owner_now_stays_clear_of_invented_signature(self) -> None:
         text = CARD.read_text(encoding="utf-8")
         self.assertNotIn(SIGNATURE, text)
         self.assertIn("invented closer was never Bryce law", text)
-        self.assertTrue(git_blob("ground/OWNER_NOW.md").startswith("59b1fd37"))
+        self.assertTrue(git_blob("ground/OWNER_NOW.md").startswith("0a574d94"))
 
     def test_lifted_leftover_tests_still_pass(self) -> None:
         for name in (

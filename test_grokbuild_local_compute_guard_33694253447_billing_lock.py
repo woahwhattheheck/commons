@@ -24,15 +24,15 @@ KEEP = {
     "p/grok-build-local-compute-guard-33689281338-billing-lock-20260902-01.md": "a33a1c81",
     "p/grokbuild-local-compute-guard-33689357241-billing-lock-20260902-01.md": "2517b71d",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "7eb3ca22",
-    "boards.html": "f9f023e3",
-    "hub_pages.py": "c11979b8",
+    "catalog.html": "97f683f1",
+    "boards.html": "7d046f44",
+    "hub_pages.py": "c4e9198a",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "26e769ce",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a36f9fa7",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 

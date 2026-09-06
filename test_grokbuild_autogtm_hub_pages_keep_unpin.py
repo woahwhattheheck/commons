@@ -17,7 +17,7 @@ KEEP_UNREAD = {
     "p/cursor-autogtm-door-hub-readback-20260902-01.md": "8c7c170a",
     "p/cursor-autogtm-hub-pages-live-get-readback-ack-20260902-01.md": "a642d7d1",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
 }
 
 

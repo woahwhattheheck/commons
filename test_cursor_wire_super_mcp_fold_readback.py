@@ -17,13 +17,13 @@ LAW = ROOT / "ground/WIRE_SUPER_MCP.md"
 
 KEEP = {
     "p/wire-super-mcp-fold-20260902-01.md": "cc7fda2e",
-    "wire.html": "5b8edbda",
-    "ground/WIRE_SUPER_MCP.md": "f36de0a5",
+    "wire.html": "a3934e26",
+    "ground/WIRE_SUPER_MCP.md": "aecb9b00",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
-    "super-mcp.html": "36687c0c",
+    "super-mcp.html": "7fd9bc0a",
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "7eb3ca22",
+    "catalog.html": "97f683f1",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
     "p/cursor-wire-shared-super-mcp-catalog-readback-20260902-01.md": "593d54bc",
     "p/cursor-wire-super-mcp-marketplace-readback-20260902-01.md": "448eda52",
@@ -34,10 +34,10 @@ KEEP = {
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "p/cursor-big-huge-commerce-agents-readback-20260902-01.md": "2a5ce894",
     "p/cursor-harborline-commerce-compose-keep-lift-readback-20260902-01.md": "7155141f",
-    "api/mcp.py": "9ae34f64",
-    "hub_pages.py": "c11979b8",
-    "door.js": "cfe5a219",
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "api/mcp.py": "393da756",
+    "hub_pages.py": "c4e9198a",
+    "door.js": "5bc431b1",
+    "ground/OWNER_NOW.md": "0a574d94",
 }
 
 

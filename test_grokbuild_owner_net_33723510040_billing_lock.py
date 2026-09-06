@@ -22,7 +22,7 @@ KEEP = {
     "owner_net.py": "941b0d8a",
     "owner.json": "dc6c0592",
     "test_owner_hash.py": "0f0e6870",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
     "fix_first.py": "a57aee1c",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",

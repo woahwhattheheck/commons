@@ -26,8 +26,8 @@ KEEP = {
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
-    "test_grokbuild_local_compute_guard_33689357241_billing_lock.py": "465d0ca5",
+    ".github/workflows/local-compute-guard.yml": "43576548",
+    "test_grokbuild_local_compute_guard_33689357241_billing_lock.py": "95c1e8bc",
 }
 
 

@@ -30,12 +30,12 @@ KEEP = {
     "p/grok-build-janitor-33689280158-billing-lock-20260902-01.md": "4d965d51",
     "p/grokbuild-merged-branch-janitor-33689357601-billing-lock-20260902-01.md": "e2731d89",
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
-    "catalog.html": "7eb3ca22",
-    "boards.html": "f9f023e3",
-    "hub_pages.py": "c11979b8",
+    "catalog.html": "97f683f1",
+    "boards.html": "7d046f44",
+    "hub_pages.py": "c4e9198a",
     "p/cursor-goat-pages-super-mcp-land-readback-20260902-01.md": "f98887bf",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "26e769ce",
+    "test_cursor_goat_pages_super_mcp_land_readback_match.py": "a36f9fa7",
 }
 
 EVENT_8479 = {

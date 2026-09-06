@@ -22,7 +22,7 @@ KEEP = {
     "host/main_range.py": "6acdc3d9",
     "host/main_velocity.py": "b34a1241",
     "test_main_range.py": "2cfa7313",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
     "p/codex-main-range-open-door-repair-20260830-01.md": "bfba0568",
     "p/grokbuild-pr8546-verify-20260903-01.md": "4e4d8003",
     "p/grok-build-job-watchdog-33699286811-billing-lock-20260903-01.md": "81092ec2",

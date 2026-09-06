@@ -12,10 +12,10 @@ CARD = ROOT / "ground/OWNER_NOW.md"
 RECEIPT = ROOT / "p/cursor-owner-now-readback-20260902-01.md"
 
 KEEP = {
-    "ground/OWNER_NOW.md": "59b1fd37",
+    "ground/OWNER_NOW.md": "0a574d94",
     "p/cursor-big-things-incoming-alert-20260902-01.md": "fde94226",
-    "autogtm.html": "9d8b3e85",
-    "hub_pages.py": "c11979b8",
+    "autogtm.html": "fab1d536",
+    "hub_pages.py": "c4e9198a",
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-autogtm-hub-pages-live-get-readback-20260902-01.md": "c2829fc5",
 }

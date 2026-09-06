@@ -24,11 +24,11 @@ KEEP = {
     "p/grokbuild-local-compute-guard-33694243175-billing-lock-20260902-01.md": "c4ee237f",
     "p/grokbuild-local-compute-guard-33694253447-billing-lock-20260902-01.md": "417b7f6a",
     "p/grokbuild-local-compute-guard-33694402730-billing-lock-20260902-01.md": "eb6f1406",
-    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "05b40e7e",
+    "test_grokbuild_local_compute_guard_33694402730_billing_lock.py": "818b54d2",
     "p/grokbuild-pr8525-verify-20260903-01.md": "3e36c93c",
     "local_compute_guard.py": "6be242af",
     "test_local_compute_guard.py": "b8d65280",
-    ".github/workflows/local-compute-guard.yml": "9750c6a1",
+    ".github/workflows/local-compute-guard.yml": "43576548",
 }
 
 

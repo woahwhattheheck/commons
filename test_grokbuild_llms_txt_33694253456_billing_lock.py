@@ -24,13 +24,13 @@ KEEP = {
     "p/grok-build-local-compute-guard-billing-lock-20260902-01.md": "de59bf75",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     ".github/workflows/llms-txt.yml": "d2182a3d",
-    "llms_txt.py": "df5bf4c6",
+    "llms_txt.py": "4f9df46d",
     "owner_pin.py": "76e19209",
     "test_llms_publish.py": "c07317be",
     "test_llms_pulse.py": "e79f7851",
-    "test_grokbuild_llms_txt_billing_lock.py": "b0aeb66d",
-    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "929fa0cb",
-    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "1b613060",
+    "test_grokbuild_llms_txt_billing_lock.py": "075ac9da",
+    "test_grokbuild_llms_txt_33687829181_billing_lock.py": "eff6561c",
+    "test_grokbuild_llms_txt_33689357433_billing_lock.py": "86b0ac75",
 }
 
 

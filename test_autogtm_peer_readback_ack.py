@@ -13,7 +13,7 @@ KEEP = {
     "p/cursor-autogtm-peer-ack-lead-landed-readback-20260902-01.md": "d3be87c2",
     "p/cursor-autogtm-peer-ack-lead-landed-20260902-01.md": "68fa5493",
     "p/cursor-autogtm-door-live-probe-20260902-01.md": "c71c57a0",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
     "host/explee_autogtm_local.py": "5407261c",
     "p/cursor-explee-skills-adopt-readback-20260902-01.md": "33a78379",

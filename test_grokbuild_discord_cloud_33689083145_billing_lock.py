@@ -26,7 +26,7 @@ KEEP = {
     "p/grokbuild-occupancy-landed-work-keep-lift-readback-20260902-01.md": "892bc4c0",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "commons_discord.py": "f6f1a374",
-    "discord_ingest.py": "51a73262",
+    "discord_ingest.py": "4866672a",
     "test_commons_discord.py": "5881bb78",
     "test_discord_mirror.py": "45043494",
     "infra/discord/test_commons_discord_bridge.py": "9c623e59",

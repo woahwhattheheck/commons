@@ -16,20 +16,20 @@ HELPER = ROOT / "host/commerce_agents_same_loop.py"
 KEEP = {
     "p/cursor-big-huge-commerce-agents-20260902-01.md": "fddb5a7c",
     "host/commerce_agents_same_loop.py": "c90f6e50",
-    "test_commerce_agents_same_loop.py": "f27ee805",
+    "test_commerce_agents_same_loop.py": "5abc58a7",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",
     "ground/COMMERCE_AGENTS.json": "ab6f56a8",
-    "commerce-agents.html": "e2028ddc",
+    "commerce-agents.html": "62420210",
     ".agents/skills/commerce-agents/SKILL.md": "1f93c4a2",
-    "test_commerce_agents.py": "4c360503",
+    "test_commerce_agents.py": "9505b126",
     "p/cursor-claude-commerce-agents-readback-20260902-01.md": "0153924f",
     "p/cursor-harborline-commerce-compose-readback-20260902-01.md": "b33e2e24",
     "p/cursor-harborline-commerce-compose-20260902-01.md": "45b7d435",
     "host/harborline_commerce_compose.py": "75128e5d",
     "p/cursor-harborline-commerce-compose-keep-lift-20260902-01.md": "668dd5c4",
     "p/cursor-explee-skills-adopt-20260902-01.md": "20db155c",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
 }
 
 

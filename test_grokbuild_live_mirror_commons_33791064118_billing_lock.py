@@ -18,7 +18,7 @@ PRIOR = ROOT / "p/grok-live-mirror-force-graft-20260828-01.md"
 KEEP = {
     "host/live_mirror.py": "ada86332",
     "test_live_mirror.py": "0fee48fd",
-    "open_door_guard.py": "4b053e43",
+    "open_door_guard.py": "861958e9",
     "fix_first.py": "a57aee1c",
     "p/grok-live-mirror-force-graft-20260828-01.md": "e47c185b",
     "p/grok-live-mirror-force-graft-20260828-01.html": "8410fb03",

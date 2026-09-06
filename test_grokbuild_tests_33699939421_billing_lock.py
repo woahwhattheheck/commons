@@ -19,24 +19,24 @@ ASSOC = ROOT / "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md"
 WORKFLOW = ROOT / ".github/workflows/tests.yml"
 
 KEEP = {
-    ".github/workflows/tests.yml": "8c2f2301",
-    "open_door_guard.py": "4b053e43",
-    "test_open_door_guard.py": "70ee5730",
+    ".github/workflows/tests.yml": "67fe2c46",
+    "open_door_guard.py": "861958e9",
+    "test_open_door_guard.py": "2fb0d87b",
     "fix_first.py": "a57aee1c",
     "p/grokbuild-tests-33694253421-billing-lock-20260902-01.md": "da396946",
-    "test_grokbuild_tests_33694253421_billing_lock.py": "f57a405c",
+    "test_grokbuild_tests_33694253421_billing_lock.py": "cb872444",
     "p/grokbuild-tests-33694246830-billing-lock-20260902-01.md": "b07d6192",
-    "test_grokbuild_tests_33694246830_billing_lock.py": "fb6fc00d",
+    "test_grokbuild_tests_33694246830_billing_lock.py": "a6f9b28c",
     "p/grokbuild-tests-33689281316-billing-lock-20260902-01.md": "3db0ab2e",
-    "test_grokbuild_tests_33689281316_billing_lock.py": "46877a5d",
+    "test_grokbuild_tests_33689281316_billing_lock.py": "31a6eb6e",
     "p/grok-build-llms-txt-33699286770-billing-lock-20260903-01.md": "43c6e5cb",
-    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "ee9007eb",
+    "test_grokbuild_llms_txt_33699286770_billing_lock.py": "e82beaab",
     "p/grok-build-llms-txt-33694402716-billing-lock-20260902-01.md": "6a8728e3",
     "p/admin-owner-marks-20260902-01.md": "cdff4bfb",
     "p/cursor-goat-pages-super-mcp-land-readback-match-20260902-01.md": "865b3c95",
-    "catalog.html": "7eb3ca22",
-    "boards.html": "f9f023e3",
-    "hub_pages.py": "c11979b8",
+    "catalog.html": "97f683f1",
+    "boards.html": "7d046f44",
+    "hub_pages.py": "c4e9198a",
 }
 
 
