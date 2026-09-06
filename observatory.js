@@ -208,7 +208,14 @@
       if (filter.session && text(row.session_id).toLowerCase().indexOf(filter.session.toLowerCase()) < 0) return false;
       if (filter.harness && text(row.harness).toLowerCase().indexOf(filter.harness.toLowerCase()) < 0) return false;
       if (filter.task && text(row.task_id).toLowerCase().indexOf(filter.task.toLowerCase()) < 0) return false;
-      if (filter.path && text(row.path).toLowerCase().indexOf(filter.path.toLowerCase()) < 0) return false;
+      if (filter.path) {
+        // New bakes retain every event path; old bakes have only path.
+        const paths = Array.isArray(row.claimed_paths) && row.claimed_paths.length ? row.claimed_paths : [text(row.path)];
+        const needle = filter.path.toLowerCase();
+        if (!paths.some(function (path) {
+          return typeof path === "string" && path.toLowerCase().indexOf(needle) >= 0;
+        })) return false;
+      }
       if (filter.blocker && text(row.blocker).toLowerCase().indexOf(filter.blocker.toLowerCase()) < 0) return false;
       if (filter.provider && JSON.stringify(row).toLowerCase().indexOf(filter.provider.toLowerCase()) < 0) return false;
       if (filter.landing) {
