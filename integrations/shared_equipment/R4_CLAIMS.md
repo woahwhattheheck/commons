@@ -20,3 +20,4 @@
 - Equipment bind/unbind access_route cards: `tenon-r4-equipment-bind-unbind-route-cards-20260906-01`
 - Equipment export/import package cards: `tenon-r4-equipment-export-import-package-cards-20260906-01`
 - Equipment inspect role card: `tenon-r4-equipment-inspect-role-card-20260906-01`
+- Equipment prove-handoff card: `hinge-r4-equipment-prove-handoff-card-20260906-01`
