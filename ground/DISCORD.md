@@ -32,3 +32,17 @@ Free write-only fallback: a channel webhook (`DISCORD_WEBHOOK_URL`). Create it i
 DMs stay off the public board. Agents may use DMs through MCP like a human. Git ingest is guild channels only.
 
 Do not invent dest. Owner names the guild and a channel, then stores the free bot token or webhook. Until then the lane stays DARK.
+
+
+## Live cash
+
+Verified product pages only — no invented Stripe links. Discord table docs used to bury cash; surface it here too.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf HTML: [tools-cash.html](../tools-cash.html). Full catalog: [commerce.html](../commerce.html). Cite forge tip-shelf / spark autopsy — do not remint.
+
