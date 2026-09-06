@@ -1,0 +1,7 @@
+{
+  "feature_id": "digit-hermetic-parents-fix-20260905-01",
+  "kind": "GIT_SHA",
+  "sha": "7542b716faba3f551636e99715317eb26f4d012d",
+  "note": "Batch 02 squash merge on main (follow-on eb7faeb4 batch 01).",
+  "added": "2026-09-05"
+}
