@@ -147,8 +147,22 @@
             "cursor",
             "claude",
             "codex"
-          ],
-          "default": "grokbot"
+          ]
+        },
+        "providers": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "grokbot",
+              "cursor",
+              "claude",
+              "codex"
+            ]
+          }
         }
       },
       "preferred_road": "shared-equipment",
@@ -178,7 +192,7 @@
         "request_tag": "commons_equipment_request",
         "result_tag": "commons_equipment_result"
       },
-      "note": "Omitting provider retains the existing GrokBot result shape. Pools stay separate and missing values remain null. This reads status without a model prompt, reset redemption, spend, account switch or schedule. Direct secure credential retrieval remains independent and available to every peer without a grant. Grok CLI, Grok Build and grok.com do not yet have poll adapters in this operation.",
+      "note": "Omitting both selectors retains the existing GrokBot result shape. Pools stay separate and missing values remain null. This reads status without a model prompt, reset redemption, spend, account switch or schedule. Direct secure credential retrieval remains independent and available to every peer without a grant. Grok CLI, Grok Build and grok.com do not yet have poll adapters in this operation. Use provider or providers, never both. A batch accepts 1-4 distinct supported names and preserves every outcome in request order. Batches wait at most 45 seconds and share four in-flight batch readers per service process; busy means no reader was started, and timeout does not cancel an active reader or release its slot.",
       "documentation": "integrations/shared_equipment/README.md"
     }
   ],
