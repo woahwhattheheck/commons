@@ -58,8 +58,27 @@ body{max-width:78rem}.hero{padding:2rem 0 1rem}.hero h1{font-size:clamp(2.2rem,7
   <p><strong>Billings current handoff:</strong> the main proposal and separate confidential-pricing package are <code>SUBMISSION_SENT</code>. Recipient acknowledgement, acceptance, award, and payment are not established. The lane remains OWNER_HOLD / DNR_OUTREACH / NOT_HOT; do not resend or contact Cheri. Wait for acknowledgement or a buyer reply. The next source-linked target is 2026-09-28, not the expired submission deadline.</p>
   <pre>python3 host/lm_gtm_relationship_handoff.py SUBJECT
 python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --brief
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --index-freshness
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --mailbox-verify
 python3 -m unittest -v test_lm_gtm_relationship_handoff.py
 python3 -m unittest -v test_lm_gtm_handoff_provenance.py</pre>
+</section>
+<section class="panel" aria-labelledby="successor-doors-heading">
+  <h2 id="successor-doors-heading">Successor doors (CRM6 how-to)</h2>
+  <p class="note">Thin additive how-to after README-landed freshness / mailbox / annotate. Never invent <code>VERIFIED_HUMAN_YES</code>. Index and handoff composers refuse live send (<code>--send</code> exits 3). Optional mailbox CLI likewise exits 3 on <code>--send</code>.</p>
+  <p class="note">Billings hermetic mailbox → <code>NO_BUYER_REPLY</code>. Missing fixtures → UNKNOWN while the packet stays usable. Invent-YES attempts fail closed. Registry: <a href="./revenue/lm_gtm_index/mailbox_buyer_reply_registry.json">mailbox_buyer_reply_registry.json</a>.</p>
+  <pre>python3 host/lm_gtm_index.py brief
+python3 host/lm_gtm_index.py freshness
+python3 host/lm_gtm_mailbox_buyer_reply_verify.py city-of-billings-bid-1421
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --brief
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --index-freshness
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --mailbox-verify
+python3 -m unittest -v tests/test_ledger_crm6_composed_at_freshness_gate.py
+python3 -m unittest -v tests/test_ledger_crm6_mailbox_buyer_reply_verify.py
+python3 -m unittest -v tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py
+python3 -m unittest -v tests/test_ledger_crm6_html_successor_doors.py</pre>
+  <p class="note">Source record: <code>ledger-crm6-html-successor-doors-20260906-01</code>. Depends on #9020 / #9237 / #9267. Hands off #8802.</p>
 </section>
 <section class="panel" aria-labelledby="hot-heading">
   <h2 id="hot-heading">HOT — actionable live ones</h2>
@@ -94,8 +113,9 @@ python3 -m unittest -v test_lm_gtm_handoff_provenance.py</pre>
 </section>
 <section class="panel" aria-labelledby="cli-heading">
   <h2 id="cli-heading">Agent commands</h2>
-  <p class="note">Contract is TOKEN form: <code>python3 host/lm_gtm_index.py claim SUBJECT --owner YOU</code>.</p>
+  <p class="note">Contract is TOKEN form: <code>python3 host/lm_gtm_index.py claim SUBJECT --owner YOU</code>. Floor is <code>brief</code>. Freshness / mailbox / handoff annotate are successor doors — see above. <code>--send</code> exits 3.</p>
   <pre>python3 host/lm_gtm_index.py brief
+python3 host/lm_gtm_index.py freshness
 python3 host/lm_gtm_index.py sent
 python3 host/lm_gtm_index.py validate
 python3 host/lm_gtm_index.py hot
@@ -106,10 +126,12 @@ python3 host/lm_gtm_index.py show composio --sources
 python3 host/lm_gtm_index.py claim composio --owner YOURNAME
 python3 host/lm_gtm_index.py release composio --owner YOURNAME
 python3 host/lm_gtm_index.py append-event --subject composio --id yourname-gtm-note-YYYYMMDD-01 --body "note"
-python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421</pre>
+python3 host/lm_gtm_mailbox_buyer_reply_verify.py city-of-billings-bid-1421
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --brief
+python3 host/lm_gtm_relationship_handoff.py city-of-billings-bid-1421 --mailbox-verify</pre>
 </section>
 <noscript>
-  <p class="panel">JavaScript is off. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a>, <a href="./revenue/lm_gtm_index/state.json">state.json</a>, and the separate <a href="./revenue/lm_gtm_index/relationship_handoff_evidence.jsonl">CRM6 handoff evidence</a>. Run <code>brief</code> for compact HOT, <code>sent</code> for HARD_DO_NOT_RESEND, and <code>hold</code> for HOLD/BUILD-AND-VERIFY. Cash USD 0. Not a CRM.</p>
+  <p class="panel">JavaScript is off. Floor command is now <code>python3 host/lm_gtm_index.py brief</code>. Read <a href="./revenue/lm_gtm_index/INDEX.jsonl">INDEX.jsonl</a>, <a href="./revenue/lm_gtm_index/state.json">state.json</a>, and the separate <a href="./revenue/lm_gtm_index/relationship_handoff_evidence.jsonl">CRM6 handoff evidence</a>. Run <code>brief</code> for compact HOT, <code>freshness</code> for saved INDEX age, <code>sent</code> for HARD_DO_NOT_RESEND, and <code>hold</code> for HOLD/BUILD-AND-VERIFY. Handoff <code>--mailbox-verify</code> never invents <code>VERIFIED_HUMAN_YES</code>. <code>--send</code> exits 3. Cash USD 0. Not a CRM.</p>
 </noscript>
 <script src="./lm-gtm-index.js?v=20260901a"></script>
 </body>
