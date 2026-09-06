@@ -7,6 +7,7 @@ TENON claims:
 - tenon-r4-equipment-open-obligations-card-20260906-01 (full open queue)
 - tenon-r4-equipment-release-equip-cards-20260906-01 (release/equip)
 - tenon-r4-equipment-transfer-role-card-20260906-01 (transfer)
+- tenon-r4-equipment-bind-unbind-route-cards-20260906-01 (bind/unbind)
 HINGE claim:
 - hinge-r4-equipment-autopsy-case-receipt-cards-20260905-01 (case/receipt)
 - hinge-r4-equipment-autopsy-fulfill-validate-card-20260905-01 (validate)
@@ -151,6 +152,22 @@ def diagnostic_card_tool_schemas() -> list[dict]:
                 "seat": "string",
                 "account_pool": "string",
             },
+        ),
+        _schema(
+            "bind_access_route_card",
+            "Stamp durable G2 recover fields onto a named access_route. Pass role + route_name + at least one of session_id|last_run_id|pool_id. Import-only RoleStore.bind_access_route wrap; returns updated role. Does not remint roles.py.",
+            {"role": "object", "route_name": "string"},
+            {
+                "session_id": "string",
+                "last_run_id": "string",
+                "pool_id": "string",
+            },
+        ),
+        _schema(
+            "unbind_access_route_card",
+            "Clear stamped BINDABLE_ROUTE_FIELDS on a named access_route (default session_id+last_run_id). Pass role + route_name; optional fields[]. Import-only RoleStore.unbind_access_route wrap; returns updated role. Does not remint roles.py.",
+            {"role": "object", "route_name": "string"},
+            {"fields": "array"},
         ),
     ]
 
@@ -506,6 +523,75 @@ def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | No
                     from_session_id=args.get("from_session_id"),
                     seat=args.get("seat"),
                     account_pool=args.get("account_pool"),
+                )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": updated}
+    if name == "bind_access_route_card":
+        # tenon-r4-equipment-bind-unbind-route-cards-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+            route_name = str(args["route_name"])
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                updated = store.bind_access_route(
+                    created["role_id"],
+                    route_name=route_name,
+                    session_id=args.get("session_id"),
+                    last_run_id=args.get("last_run_id"),
+                    pool_id=args.get("pool_id"),
+                )
+        except roles_mod.RoleError as exc:
+            return {"ok": False, "error": "role_refused", "message": str(exc)}
+        return {"ok": True, "role": updated}
+    if name == "unbind_access_route_card":
+        # tenon-r4-equipment-bind-unbind-route-cards-20260906-01
+        roles_mod = _load_transferable_roles_mod("roles")
+        try:
+            role = args["role"]
+            route_name = str(args["route_name"])
+        except KeyError as exc:
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "missing %s" % exc,
+            }
+        if not isinstance(role, dict):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "role must be an object",
+            }
+        fields = args.get("fields")
+        if fields is not None and not isinstance(fields, (list, tuple)):
+            return {
+                "ok": False,
+                "error": "missing_argument",
+                "message": "fields must be an array when provided",
+            }
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                store = roles_mod.RoleStore(tmp)
+                created = store.create(role)
+                updated = store.unbind_access_route(
+                    created["role_id"],
+                    route_name=route_name,
+                    fields=fields,
                 )
         except roles_mod.RoleError as exc:
             return {"ok": False, "error": "role_refused", "message": str(exc)}
