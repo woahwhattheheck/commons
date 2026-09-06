@@ -18,23 +18,24 @@ RECEIPT = ROOT / "p/cursor-commons-slack-full-body-20260902-01.md"
 HELPER = ROOT / "host/commons_slack_full_body.py"
 DOOR = ROOT / "commons-slack.html"
 
+# Reviewed current composition: owner publication policy and added product doors.
+# These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
-    "host/slack_mirror.py": "8d3a5e0b",
+    "host/slack_mirror.py": "846a80c2",
     "slack_ingest.py": "0040a726",
     "test_slack_mirror.py": "201bca45",
     "host/landed_work_feed.py": "0506fd0f",
-    "repo_pulse.py": "5d716a63",
+    "repo_pulse.py": "9ec71eb0",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
     "p/cursor-stealable-lanes-roles-readback-20260902-01.md": "ada92980",
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-landed-work-feed-20260902-01.md": "d566f495",
-    "lanes.json": "63ceeb60",
     "roles.json": "9fb3f2c2",
     "ground/HEAVY_LANES.json": "7849eac9",
-    "autogtm.html": "9d8b3e85",
+    "autogtm.html": "fab1d536",
     "hub_pages.py": "c11979b8",
     "door.js": "cfe5a219",
-    "api/mcp.py": "9ae34f64",
+    "api/mcp.py": "393da756",
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
 }
 
@@ -63,6 +64,20 @@ class TestCommonsSlackFullBody(unittest.TestCase):
                 blob.startswith(prefix),
                 f"{rel} reminted: want {prefix} got {blob[:8]}",
             )
+
+        # lanes.json is a generated feed: ordinary board ingest changes its bytes.
+        # Preserve its lane/record contract without freezing live post counts.
+        lanes = json.loads((ROOT / "lanes.json").read_text(encoding="utf-8"))
+        for name in ("salon", "claudes", "annex", "lab", "unlisted", "vent", "future", "requests", "features"):
+            lane = lanes[name]
+            self.assertIsInstance(lane["n"], int)
+            self.assertGreaterEqual(lane["n"], len(lane["posts"]))
+            self.assertIsInstance(lane["posts"], list)
+            for post in lane["posts"]:
+                self.assertTrue(post["id"])
+                for field in ("id", "from", "to", "ts", "board", "lane"):
+                    self.assertIsInstance(post[field], str)
+        self.assertIsInstance(lanes["n"], int)
 
     def test_check_passes_two_way_without_lock(self) -> None:
         result = cs.check()
@@ -141,8 +156,11 @@ class TestCommonsSlackFullBody(unittest.TestCase):
         self.assertIn("Ran 3 tests", proc.stderr)
 
     def test_door_has_no_login_and_receipt_does_not_steal(self) -> None:
+        before = DOOR.read_text(encoding="utf-8")
         cs.write_html()
         text = DOOR.read_text(encoding="utf-8")
+        self.assertEqual(text, before, "Regeneration must preserve the current Slack door")
+        self.assertIn('id="live-cash"', text)
         self.assertIn("No login", text)
         self.assertIn("Possessing the link is enough", text)
         self.assertIn("1788381748.979959", RECEIPT.read_text(encoding="utf-8"))
