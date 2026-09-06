@@ -19,6 +19,21 @@ SHARE_LAW = (
     "White Box fabrication is one-and-done; this site does not start :7862."
 )
 
+# Preserve BASS live-cash doors through ingest (feafc044 / 123756b6).
+LIVE_CASH_HTML = """
+<section id="live-cash" class="law" aria-label="Live cash">
+<strong>Live cash — verified product pages only.</strong> No invented Stripe links.
+<ul>
+<li><a href="./agent-rescue.html">$29 Autopsy checkout</a></li>
+<li><a href="./dealer-service-lead-rescue.html">$199 dealer diagnostic</a></li>
+<li><a href="./referral-intake-completeness.html">$199 referral diagnostic</a></li>
+<li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
+<li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
+</ul>
+<p class="note"><a href="./tools-cash.html">tools-cash.html</a> · <a href="./commerce.html">commerce.html</a>.</p>
+</section>
+"""
+
 DATA_SHEETS = [
     ("18", "cenotaph CENOTPH1", "60.2", "5", "301", "magic CENOTPH1 exact. (b)=1e9 catalog convention → 6.02e10 c/s assumed, not a CENOTAPH-specific timing measurement."),
     ("17", "table mail", "135.2", "5", "676", "9 inboxes. Board TABLE."),
@@ -1395,6 +1410,8 @@ def rebuild_lanes(mod, rows):
             jar,
             feed,
         )
+        if name == "FEATURES":
+            body = LIVE_CASH_HTML + body
         mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, extra))
     return public
 
@@ -2013,7 +2030,7 @@ def rebuild_delta(mod, rows):
         opts,
         _table(("claim", "n since", "last id", "last ts"), rows_html),
     )
-    mod._write(os.path.join(mod.ROOT, "delta.html"), _page(mod, "Commons delta", body, extra))
+    mod._write(os.path.join(mod.ROOT, "delta.html"), _page(mod, "Commons delta", LIVE_CASH_HTML + body, extra))
     return public
 
 
