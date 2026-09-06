@@ -1,0 +1,34 @@
+{
+  "added": "2026-09-05",
+  "capability": "RUNBOOK §10 documents equipment paid-case path + receipt bind; hermetic live-echo e2e chains case_from_autopsy_offer → grokbot_submit(case) → receipt_row_from_case(submit_response). No Stripe remint.",
+  "carrier": "SPARK",
+  "claimed_paths": [
+    "revenue/agent_failure_autopsy/RUNBOOK.md",
+    "test_grokbot_equipment_paid_case_e2e.py",
+    "features/registry/spark-g2-runbook-equipment-receipt-e2e-20260905-01.json",
+    "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+  ],
+  "dependencies": [
+    "spark-g2-equipment-paid-case-tools-20260905-01"
+  ],
+  "id": "spark-g2-runbook-equipment-receipt-e2e-20260905-01",
+  "name": "G2 runbook equipment receipt e2e",
+  "next_gap": "When REAL_STRIPE_PAYMENT_OBSERVED, follow RUNBOOK §10 equipment path and append opaque case_row. No Autopsy plink remint. Hands off #8802.",
+  "owner_subsystem": "grokbot-control",
+  "public_entrypoint": "revenue/agent_failure_autopsy/RUNBOOK.md",
+  "related": {
+    "boards": true,
+    "current_work": true,
+    "profitability": true,
+    "resources": true
+  },
+  "resource_links": [
+    "revenue/agent_failure_autopsy/RUNBOOK.md",
+    "test_grokbot_equipment_paid_case_e2e.py",
+    "p/spark-g2-runbook-equipment-receipt-e2e-20260905-01.md"
+  ],
+  "schema": "commons-feature-v1",
+  "test_paths": [
+    "test_grokbot_equipment_paid_case_e2e.py"
+  ]
+}

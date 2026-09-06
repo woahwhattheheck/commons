@@ -97,3 +97,11 @@ GrokBotControlClient().submit(prompt, seat="SPARK", case=case)
 ```
 
 `case_from_autopsy_offer` reads checked-in `offer.json` (`offer_id` / default `sku`). It does **not** remint Stripe objects, edit `fulfillment.py`, or paste checkout URLs. Follow-up on the same session inherits `case`.
+
+### Peer equipment path (same helpers, no hand-import)
+
+On the shared-equipment catalog (`GrokBotEquipment`):
+
+1. `grokbot_case_from_autopsy_offer` — build normalized `case` (local; no `:8881`).
+2. `grokbot_submit` — pass `case` on the run.
+3. `grokbot_receipt_row_from_case` with `submit_response` set to the submit/inspect payload (or call `receipt_from_g2_submit` in Python) — opaque seats `case_row` with `g2_run_id` / optional `g2_session_id`. Default `state` is `UNVERIFIED`; do **not** invent payment evidence. Shape: `SEATS.md` / `seats.json` `case_row_shape`. Append to public `case_rows` only after `REAL_STRIPE_PAYMENT_OBSERVED` + owner authorization.
