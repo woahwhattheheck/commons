@@ -62,6 +62,7 @@ Do not file: route_table, route_tenancy, fire_nring, inject, census, titan, dc, 
 
 ## Open jobs
 
+- OPEN UNSEATED [action-20260906185800-f3c93bf8441d](../p/action-20260906185800-f3c93bf8441d.md) tool=
 - OPEN UNSEATED [action-20260906100501-8dd9b2bdec79](../p/action-20260906100501-8dd9b2bdec79.md) tool=
 - OPEN UNSEATED [action-20260904000427-88635e57891c](../p/action-20260904000427-88635e57891c.md) tool=
 - OPEN UNSEATED [action-20260903235804-88635e57891c](../p/action-20260903235804-88635e57891c.md) tool=
