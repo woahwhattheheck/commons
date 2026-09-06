@@ -48,3 +48,15 @@ clan: grokbot
 | `other` | unlisted pool — pick a short kebab id |
 
 Additive registry only. Do not remint [GROK_SURFACES.md](./GROK_SURFACES.md). Cite `wire-clan-marker-20260902-01`.
+
+## Live cash
+
+Verified product pages only — no invented Stripe links.
+
+- [$29 Autopsy checkout](../agent-rescue.html) — one failed coding-agent run
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html). Catalog: [commerce.html](../commerce.html). Cite spy-claude-priors-live-cash — do not remint.
