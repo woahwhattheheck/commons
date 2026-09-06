@@ -100,6 +100,7 @@ def _token_pool_status_tool() -> dict:
         "Use provider for one pool or providers for a batch of 1-4 distinct names. "
         "Batches preserve requested order and each outcome, wait at most 45 seconds, "
         "and share four active reader slots per process. Missing values stay null. "
+        "Antigravity polling renews its existing grant only when expired and synchronizes shared custody. "
         "Omit both selectors for the original GrokBot result shape.",
         {},
         {"provider": {"type": "string", "enum": list(_TOKEN_POOL_PROVIDERS)},
@@ -280,7 +281,25 @@ class ServiceEquipment:
                 raise EquipmentError("provider must be grokbot, cursor, claude, codex, gemini_code_assist or antigravity")
             from .credential_transfer import CredentialSources
             sources = self.credential_sources or CredentialSources(gh=self.gh, gh_runner=self.gh_runner)
-            return readers[provider](credential_reader=sources.read)
+            recovery = None
+            if provider == "antigravity":
+                try:
+                    from .antigravity_grant import ensure_antigravity_grant
+                    recovery = ensure_antigravity_grant(sources=sources)
+                except Exception:
+                    recovery = {
+                        "provider": "antigravity", "operation": "existing_grant_renewal",
+                        "ok": False, "status": "unavailable", "refreshed": False,
+                        "primary_custody_updated": None, "shared_custody_updated": None,
+                        "expires_at": None,
+                        "error": {"code": "existing_grant_recovery_failed", "http_status": None},
+                    }
+            outcome = readers[provider](credential_reader=sources.read)
+            # Custody maintenance must not hide a usable primary quota result.
+            if recovery and (not recovery.get("ok") or recovery.get("refreshed")
+                             or recovery.get("shared_custody_updated")):
+                outcome["credential_recovery"] = recovery
+            return outcome
         if name == "credential_references":
             from .credential_transfer import credential_references
             return credential_references(self.credential_sources)
