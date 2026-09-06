@@ -74,7 +74,7 @@ Use `hello@nextdata.com`; do not use the customer demo form.
 
 **Subject:** One-day proof before the AI-platform build
 
-> Your current three-to-four-month contract brief calls for MCP-compatible endpoints, governed data access, policy enforcement, audit logging, tests, and observability. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/agent-rescue.html>) turns one agreed sentence into a no-login, provider-hosted proof using public or synthetic inputs—no credentials or private data.
+> Your current three-to-four-month contract brief calls for MCP-compatible endpoints, governed data access, policy enforcement, audit logging, tests, and observability. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md>) turns one agreed sentence into a no-login, provider-hosted proof using public or synthetic inputs—no credentials or private data.
 >
 > Binary proof idea: can a governed MCP data workflow complete one tool-selection/context-construction path, show a deliberate stop, reset cleanly, and leave a timestamped receipt stating limits—yes or no?
 >
@@ -88,7 +88,7 @@ Use the dedicated Partnerships / Start the Conversation path; do not use the cus
 
 **Subject:** Binary survival proof for one agent workflow
 
-> Your current AI Platform brief names MCP tool design for model comprehension, persistent multi-step workflows, model-upgrade quality checks, rollback semantics, prompt-injection controls, and execution traces. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/agent-rescue.html>) tests one bounded outcome on public or synthetic inputs, with no Drata credentials or private data.
+> Your current AI Platform brief names MCP tool design for model comprehension, persistent multi-step workflows, model-upgrade quality checks, rollback semantics, prompt-injection controls, and execution traces. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md>) tests one bounded outcome on public or synthetic inputs, with no Drata credentials or private data.
 >
 > Binary proof idea: can a multi-step workflow encounter an ambiguous tool result, stop visibly, retry idempotently or reset, and emit a durable receipt without entering a private Drata system—yes or no?
 >
@@ -102,7 +102,7 @@ Use `contact@upvest.co`; do not use the prospective-investment-product customer 
 
 **Subject:** Same-day scoped proof for an MCP workflow
 
-> Your current AI Platform role makes secure MCP connections, scoped access, auditability, reliability, observability, and production evals explicit responsibilities across Operations, Compliance, Growth, and Finance. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/agent-rescue.html>) produces a no-login proof, visible stop path, idempotent recovery/reset path, and limits receipt using public or synthetic inputs—no credentials or private data.
+> Your current AI Platform role makes secure MCP connections, scoped access, auditability, reliability, observability, and production evals explicit responsibilities across Operations, Compliance, Growth, and Finance. The $2,500 Same-Day Agent Survival Proof (<https://woahwhattheheck.github.io/commons/revenue/production_survival/README.md>) produces a no-login proof, visible stop path, idempotent recovery/reset path, and limits receipt using public or synthetic inputs—no credentials or private data.
 >
 > Binary proof idea: can a synthetic cross-tool agent workflow remain inside a stated scope, survive a forced interruption, reset cleanly, and produce a timestamped receipt—yes or no?
 >
