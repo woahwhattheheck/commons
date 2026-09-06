@@ -26,7 +26,7 @@
     "host/commons_slack_full_body.py": "16ba0f4c",
     "p/cursor-commons-slack-full-body-20260902-01.md": "86f4eddc",
     "ground/COMMONS_SLACK_FULL_BODY.json": "d5dba5e8",
-    "test_commons_slack_full_body.py": "d29e1ded",
+    "test_commons_slack_full_body.py": "1401569e",
     "host/slack_mirror.py": "8d3a5e0b",
     "slack_ingest.py": "0040a726",
     "commons-slack.html": "4cbca421",

@@ -84,6 +84,7 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertEqual(g2["last_run_id"], "g2-handoff-run")
 
     def test_autopsy_export_import_then_prove(self) -> None:
+        # rivet-r4-handoff-prove-autopsy-export-matrix-20260905-01
         role = self.store.create(json.loads(AUTOPSY.read_text(encoding="utf-8")))
         rid = role["role_id"]
         self.store.bind_access_route(
@@ -107,6 +108,12 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             self.assertTrue(proof["ok"])
             self.assertEqual(proof["occupant_session"], "occ-import")
             self.assertIn("autopsy-case", proof["executes"])
+            self.assertIn("autopsy-receipt-row", proof["executes"])
+            receipt = proof["executes"]["autopsy-receipt-row"]
+            self.assertEqual(receipt["state"], "UNVERIFIED")
+            self.assertNotIn("g2_run_id", receipt)
+            self.assertIn("autopsy-fulfill-deadline", proof["executes"])
+            self.assertIn("autopsy-fulfill-validate", proof["executes"])
             self.assertIn("autopsy-fulfill-sla", proof["executes"])
             sla = proof["executes"]["autopsy-fulfill-sla"]
             self.assertEqual(sla["sla_status"], "OPEN")
@@ -139,6 +146,11 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertIn("autopsy-fulfill-validate", proof["executes"])
         self.assertIn("autopsy-fulfill-sla", proof["executes"])
         self.assertEqual(proof["executes"]["autopsy-fulfill-sla"]["amount_usd"], 29)
+        # rivet-r4-handoff-prove-autopsy-release-refund-20260905-01
+        self.assertIn(
+            "refund usd 29",
+            str(proof["executes"]["autopsy-fulfill-sla"].get("refund", "")).lower(),
+        )
         g2 = next(r for r in proof["bound_routes"] if r["name"] == "grokbot_control_g2")
         self.assertEqual(g2["session_id"], "g2-release-sess")
         self.assertEqual(g2["last_run_id"], "g2-release-run")
@@ -157,6 +169,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertTrue(proof["ok"])
         self.assertIn("diagnostic-contract", proof["executes"])
         self.assertEqual(proof["executes"]["diagnostic-contract"]["slug"], "dealer")
+        # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+        self.assertEqual(
+            proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+        )
         # rivet-r4-handoff-prove-diag-receipt-fulfill-20260905-01
         self.assertIn("diagnostic-receipt", proof["executes"])
         self.assertEqual(proof["executes"]["diagnostic-receipt"]["slug"], "dealer")
@@ -192,6 +208,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         )
         self.assertTrue(repair_proof["ok"])
         self.assertIn("diagnostic-contract", repair_proof["executes"])
+        # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+        self.assertEqual(
+            repair_proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+        )
         self.assertNotIn("diagnostic-receipt", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-deadline", repair_proof["executes"])
         self.assertIn("diagnostic-fulfill-sla", repair_proof["executes"])
@@ -217,6 +237,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
             self.assertTrue(proof["ok"])
             self.assertEqual(proof["occupant_session"], "d-exp-B")
             self.assertIn("diagnostic-contract", proof["executes"])
+            # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+            self.assertEqual(
+                proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+            )
             self.assertIn("diagnostic-receipt", proof["executes"])
             self.assertIn("diagnostic-fulfill-deadline", proof["executes"])
             self.assertIn("diagnostic-fulfill-sla", proof["executes"])
@@ -239,6 +263,10 @@ class HandoffExecuteSurviveTests(unittest.TestCase):
         self.assertTrue(proof["ok"])
         self.assertEqual(proof["occupant_session"], "d-rel-B")
         self.assertIn("diagnostic-contract", proof["executes"])
+        # rivet-r4-handoff-prove-diag-contract-diagnostic-usd-20260905-01
+        self.assertEqual(
+            proof["executes"]["diagnostic-contract"]["diagnostic_usd"], 199
+        )
         self.assertIn("diagnostic-receipt", proof["executes"])
         self.assertIn("diagnostic-fulfill-deadline", proof["executes"])
         self.assertIn("diagnostic-fulfill-sla", proof["executes"])

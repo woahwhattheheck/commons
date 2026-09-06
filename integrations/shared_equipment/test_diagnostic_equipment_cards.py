@@ -264,12 +264,14 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
             self.assertIn(name, names)
 
     def _assert_autopsy_fulfill_cards(self, role: dict) -> None:
+        # hinge-r4-equipment-autopsy-sla-amount-usd-survive-handoff-20260905-01
         due = self.eq.call(
             "autopsy_fulfill_deadline_card",
             {"role": role, "usable_evidence_at": _EVIDENCE},
         )
         self.assertTrue(due.get("ok"), due)
         self.assertTrue(due["card"].get("delivery_due_at"))
+        self.assertEqual(due["card"].get("amount_usd"), 29)
         open_card = self.eq.call(
             "autopsy_fulfill_sla_card",
             {
@@ -280,6 +282,8 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(open_card.get("ok"), open_card)
         self.assertEqual(open_card["card"].get("sla_status"), "OPEN")
+        self.assertEqual(open_card["card"].get("amount_usd"), 29)
+        self.assertIn("29", str(open_card["card"].get("refund", "")).lower())
         missed = self.eq.call(
             "autopsy_fulfill_sla_card",
             {
@@ -290,6 +294,8 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
+        self.assertEqual(missed["card"].get("amount_usd"), 29)
+        self.assertIn("29", str(missed["card"].get("refund", "")).lower())
 
     def _assert_autopsy_fulfill_validate_card(self, role: dict) -> None:
         out = self.eq.call(
@@ -314,6 +320,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         self.assertEqual(receipt_out["card"].get("state"), "UNVERIFIED")
 
     def _assert_diag_fulfill_cards(self, role: dict) -> None:
+        # rivet-r4-equipment-diag-sla-diagnostic-usd-survive-handoff-20260905-01
         due = self.eq.call(
             "diagnostic_fulfill_deadline_card",
             {
@@ -324,6 +331,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(due.get("ok"), due)
         self.assertTrue(due["card"].get("delivery_due_at"))
+        self.assertEqual(due["card"].get("diagnostic_usd"), 199)
         open_card = self.eq.call(
             "diagnostic_fulfill_sla_card",
             {
@@ -335,6 +343,8 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(open_card.get("ok"), open_card)
         self.assertEqual(open_card["card"].get("sla_status"), "OPEN")
+        self.assertEqual(open_card["card"].get("diagnostic_usd"), 199)
+        self.assertIn("199", str(open_card["card"].get("refund", "")))
         missed = self.eq.call(
             "diagnostic_fulfill_sla_card",
             {
@@ -346,9 +356,12 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
         )
         self.assertTrue(missed.get("ok"), missed)
         self.assertEqual(missed["card"].get("sla_status"), "MISSED")
+        self.assertEqual(missed["card"].get("diagnostic_usd"), 199)
+        self.assertIn("199", str(missed["card"].get("refund", "")))
 
     def _assert_diag_contract_receipt_cards(self, role: dict) -> None:
         # rivet-r4-equipment-contract-receipt-survive-handoff-20260905-01
+        # rivet-r4-equipment-contract-diagnostic-usd-survive-handoff-20260905-01
         for slug in ("dealer", "referral", "plant"):
             with self.subTest(contract_slug=slug):
                 out = self.eq.call(
@@ -359,7 +372,7 @@ class DiagnosticEquipmentCardTests(unittest.TestCase):
                 card = out["card"]
                 self.assertEqual(card["slug"], slug)
                 self.assertTrue(card.get("pointer"))
-                self.assertIn("diagnostic_usd", card)
+                self.assertEqual(card.get("diagnostic_usd"), 199)
             with self.subTest(receipt_slug=slug):
                 out = self.eq.call(
                     "diagnostic_receipt_card",
