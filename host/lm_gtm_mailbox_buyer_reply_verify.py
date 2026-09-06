@@ -11,6 +11,7 @@ Does not remint INDEX.jsonl / events.jsonl. Hands off #8802.
 Entry:
   python3 host/lm_gtm_mailbox_buyer_reply_verify.py SUBJECT
   python3 host/lm_gtm_mailbox_buyer_reply_verify.py city-of-billings-bid-1421
+  --send exits 3 (never transports mail; claim ledger-crm6-mailbox-send-refuse-state-contract-20260906-01)
 """
 from __future__ import annotations
 
@@ -258,7 +259,13 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = build_parser().parse_args(list(sys.argv[1:] if argv is None else argv))
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if "--send" in argv or argv[:1] == ["send"]:
+        sys.stderr.write(
+            "REFUSED live send: mailbox buyer-reply verify never transports mail.\n"
+        )
+        return 3
+    args = build_parser().parse_args(argv)
     try:
         result = verify_mailbox_buyer_reply(args.subject)
         pinned = None

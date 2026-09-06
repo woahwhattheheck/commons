@@ -135,6 +135,13 @@ the packet and next action remain usable. Handoff `--send` exits 3
 Source record: `ledger-crm6-handoff-mailbox-verify-annotate-20260906-01`.
 Focused check: `python3 -m unittest -v tests/test_ledger_crm6_handoff_mailbox_verify_annotate.py`.
 
+Mailbox CLI `--send` exits 3 (same refuse as index/handoff). `state.json`
+`contract` pins `mailbox_verify`, `handoff_mailbox_verify`, and
+`mailbox_send` = `illegal; exits 3`.
+
+Source record: `ledger-crm6-mailbox-send-refuse-state-contract-20260906-01`.
+Focused check: `python3 -m unittest -v tests/test_ledger_crm6_mailbox_send_refuse_state_contract.py`.
+
 ## Cross-harness contract
 
 Read (any harness with git):
