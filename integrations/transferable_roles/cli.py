@@ -232,6 +232,11 @@ def build_parser() -> argparse.ArgumentParser:
         default="dealer",
         choices=("dealer", "referral", "repair", "plant"),
     )
+    ph.add_argument(
+        "--as-of",
+        help="SLA as_of for diagnostic-fulfill-sla prove "
+        "(default: usable-evidence-at → OPEN)",
+    )
 
     i = sub.add_parser("inspect", help="print role record")
     i.add_argument("role_id")
@@ -398,6 +403,7 @@ def main(argv: list[str] | None = None) -> int:
                     case_ref=args.case_ref,
                     usable_evidence_at=args.usable_evidence_at,
                     diagnostic_slug=args.slug,
+                    as_of=args.as_of,
                 )
             )
         elif args.cmd == "inspect":
