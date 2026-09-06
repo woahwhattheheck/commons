@@ -104,6 +104,16 @@ def _normalize(value: dict) -> dict:
 
 def _native_executable(executable) -> str:
     candidate = os.fspath(executable) if executable is not None else shutil.which("codex")
+    if executable is None and os.name == "nt":
+        # Existing desktop services may predate the app's task-specific PATH.
+        # Discover only installed native app binaries; never invoke a shell shim
+        # or install a CLI to answer a quota request.
+        if not candidate or Path(candidate).name.lower() != "codex.exe":
+            local = Path(os.environ.get("LOCALAPPDATA") or Path.home() / "AppData/Local")
+            installed = local / "OpenAI/Codex/bin"
+            choices = [p for p in installed.glob("*/codex.exe") if p.is_file()]
+            if choices:
+                candidate = str(max(choices, key=lambda p: (p.stat().st_mtime_ns, str(p))))
     if not candidate:
         raise _PoolError("codex_executable_unavailable", "FileNotFoundError")
     resolved = shutil.which(candidate)

@@ -227,6 +227,10 @@ account state through a short-lived protocol connection. It sends
 or model turn. The method and handshake are documented in the
 [Codex App Server reference](https://learn.chatgpt.com/docs/app-server).
 
+On Windows services whose PATH lacks the native CLI, the adapter locates the
+newest already-installed `OpenAI/Codex/bin/*/codex.exe` under Local AppData.
+It does not install a runtime or execute a shell shim.
+
 The adapter first connects through `app-server proxy`. If that connection is
 unavailable before quota dispatch, it can use one short-lived stdio child.
 A provider error or any failure after quota dispatch does not trigger another
