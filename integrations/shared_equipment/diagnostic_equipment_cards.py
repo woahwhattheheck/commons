@@ -143,7 +143,7 @@ def diagnostic_card_tool_schemas() -> list[dict]:
     ]
 
 
-def call_diagnostic_card(name: str, args: dict[str, Any]) -&gt; dict[str, Any] | None:
+def call_diagnostic_card(name: str, args: dict[str, Any]) -> dict[str, Any] | None:
     """Handle diagnostic_*/autopsy_*_card tools; None if unknown."""
     if name == "diagnostic_contract_card":
         roles_mod = _load_transferable_roles_mod("roles")
