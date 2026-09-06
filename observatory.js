@@ -44,6 +44,19 @@
     });
   }
 
+  function snapshotStatus(snap) {
+    const status = el("snapshot-status");
+    const sha = snap.head && snap.head.sha ? String(snap.head.sha).slice(0, 12) : "UNKNOWN";
+    const age = (Date.now() - Date.parse(snap.now)) / 1000;
+    const threshold = snap.stale_after_seconds;
+    const known = Number.isFinite(age) && age >= 0 && Number.isFinite(threshold) && threshold >= 0;
+    const freshness = !known ? "FRESHNESS UNKNOWN" : age > threshold ? "STALE SNAPSHOT" : "CURRENT SNAPSHOT";
+    status.className = "note" + (freshness === "CURRENT SNAPSHOT" ? "" : " error");
+    status.textContent = freshness + " · baked " + text(snap.now) +
+      (known ? " · age " + Math.floor(age / 60) + " minutes" : "") +
+      " · head " + sha + " · stale_after=" + text(threshold) + "s. Counts are observations at bake time, not live fleet totals.";
+  }
+
   function cockpit(snap) {
     const lines = el("cockpit-lines");
     lines.textContent = "";
@@ -82,16 +95,7 @@
       div.appendChild(span);
       box.appendChild(div);
     });
-    const status = el("snapshot-status");
-    const sha = snap.head && snap.head.sha ? String(snap.head.sha).slice(0, 12) : "UNKNOWN";
-    const age = (Date.now() - Date.parse(snap.now)) / 1000;
-    const threshold = snap.stale_after_seconds;
-    const known = Number.isFinite(age) && age >= 0 && Number.isFinite(threshold) && threshold >= 0;
-    const freshness = !known ? "FRESHNESS UNKNOWN" : age > threshold ? "STALE SNAPSHOT" : "CURRENT SNAPSHOT";
-    status.className = "note" + (freshness === "CURRENT SNAPSHOT" ? "" : " error");
-    status.textContent = freshness + " · baked " + text(snap.now) +
-      (known ? " · age " + Math.floor(age / 60) + " minutes" : "") +
-      " · head " + sha + " · stale_after=" + text(threshold) + "s. Counts are observations at bake time, not live fleet totals.";
+    snapshotStatus(snap);
     el("coverage-note").textContent = snap.coverage_note || "Source coverage was not recorded by this bake.";
     fillList(el("source-coverage"), snap.source_coverage || [], function (row) {
       const li = document.createElement("li");
@@ -310,25 +314,78 @@
     el("snapshot-status").className = "note error";
   }
 
-  fetch(SOURCE, { cache: "no-store" }).then(function (res) {
-    if (!res.ok) throw new Error("observatory.json HTTP " + res.status);
-    return res.json();
-  }).then(function (snap) {
-    if (!snap || snap.schema !== "commons-observatory/v0.1") {
-      fail("Malformed snapshot: schema is not commons-observatory/v0.1.");
-      return;
+  let snapshot = null;
+  let filters = {};
+  let loading = false;
+  const refreshButton = el("refresh-snapshot");
+  const refreshStatus = el("refresh-status");
+
+  async function refreshSnapshot() {
+    if (loading) return;
+    loading = true;
+    refreshButton.disabled = true;
+    refreshButton.textContent = "Refreshing…";
+    refreshStatus.className = "note";
+    refreshStatus.textContent = "Loading published observatory.json…";
+    const controller = new AbortController();
+    let timedOut = false;
+    const timeout = setTimeout(function () {
+      timedOut = true;
+      controller.abort();
+    }, 15000);
+    try {
+      const res = await fetch(SOURCE, { cache: "no-store", signal: controller.signal });
+      if (!res.ok) throw new Error("observatory.json HTTP " + res.status);
+      const snap = await res.json();
+      if (!snap || snap.schema !== "commons-observatory/v0.1") {
+        throw new Error("Malformed snapshot: schema is not commons-observatory/v0.1.");
+      }
+      paint(snap, filters);
+      snapshot = snap;
+      window.COMMONS_OBSERVATORY = snap;
+      refreshStatus.textContent = "Snapshot loaded. Age updates locally; data changes only when refreshed.";
+    } catch (err) {
+      const detail = timedOut ? "request timed out after 15 seconds" : err.message;
+      let message = "Could not load observatory.json (" + detail + "). ";
+      if (snapshot) {
+        // A malformed new bake may have failed partway through painting.
+        // Restore every section from the last successfully rendered source.
+        paint(snapshot, filters);
+        message += "Showing the last successfully loaded snapshot; its bake time is unchanged.";
+      } else {
+        message += "Open the JSON file directly or try Refresh snapshot. This is a bake, not a live socket.";
+        fail(message);
+      }
+      refreshStatus.className = "note error";
+      refreshStatus.textContent = message;
+    } finally {
+      clearTimeout(timeout);
+      loading = false;
+      refreshButton.disabled = false;
+      refreshButton.textContent = "Refresh snapshot";
     }
-    window.COMMONS_OBSERVATORY = snap;
-    paint(snap, {});
-    el("timeline-filters").addEventListener("submit", function (ev) {
-      ev.preventDefault();
-      const data = new FormData(ev.target);
-      paint(snap, { kind: data.get("kind"), session: data.get("session"), harness: data.get("harness"), klass: data.get("klass"), task: data.get("task"), path: data.get("path"), provider: data.get("provider"), landing: data.get("landing"), blocker: data.get("blocker"), cost: data.get("cost"), revenue: data.get("revenue") });
-    });
-    el("timeline-filters").addEventListener("reset", function () {
-      setTimeout(function () { paint(snap, {}); }, 0);
-    });
-  }).catch(function (err) {
-    fail("Could not load observatory.json (" + err.message + "). Open the JSON file directly. This is a bake, not a live socket.");
+  }
+
+  refreshButton.addEventListener("click", refreshSnapshot);
+  el("timeline-filters").addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    const data = new FormData(ev.target);
+    filters = { kind: data.get("kind"), session: data.get("session"), harness: data.get("harness"), klass: data.get("klass"), task: data.get("task"), path: data.get("path"), provider: data.get("provider"), landing: data.get("landing"), blocker: data.get("blocker"), cost: data.get("cost"), revenue: data.get("revenue") };
+    if (snapshot) paint(snapshot, filters);
   });
+  el("timeline-filters").addEventListener("reset", function () {
+    setTimeout(function () {
+      filters = {};
+      if (snapshot) paint(snapshot, filters);
+    }, 0);
+  });
+
+  function updateAge() {
+    if (snapshot && !document.hidden) snapshotStatus(snapshot);
+  }
+  // Recompute age, never the bake's timestamp, counts, or observations.
+  // There is no automatic network polling or full-page repaint here.
+  setInterval(updateAge, 60000);
+  document.addEventListener("visibilitychange", updateAge);
+  refreshSnapshot();
 })();
