@@ -19,6 +19,7 @@ RUNTIME_FILES = (
     "api/mcp.py",
     "api/owner_context.py",
     "commons_mcp.py",
+    "commons_publication_policy.py",
     "commons_mcp_app.html",
     "webmcp.html",
     "model_language.py",

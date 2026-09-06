@@ -20,6 +20,8 @@ from typing import Any, Callable
 
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from commons_publication_policy import check_publication
 sys.path.insert(0, str(ROOT / "host"))
 
 import slack_service_drivers as drivers  # noqa: E402
@@ -190,6 +192,9 @@ def poll_and_dispatch(
             text = str(msg.get("text") or "")
             if not ts or JOB_MARKER in text:
                 continue
+            if not check_publication(text)["allowed"]:
+                skipped += 1
+                continue
             if not sst.extract_tags(text, cat):
                 continue
             replies_pack = call(
@@ -204,6 +209,10 @@ def poll_and_dispatch(
             for post in posts_for_message(
                 text, channel=channel, ts=ts, connected=conn, catalog=cat
             ):
+                publication = check_publication(str(post.get("text") or ""))
+                if not publication["allowed"]:
+                    errors.append(publication["code"])
+                    continue
                 sent = call(token, "chat.postMessage", post)
                 if not sent.get("ok"):
                     errors.append("post:%s" % (sent.get("error") or "failed"))

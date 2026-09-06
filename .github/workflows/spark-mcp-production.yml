@@ -24,6 +24,7 @@ on:
       - "api/mcp.py"
       - "api/owner_context.py"
       - "commons_mcp.py"
+      - "commons_publication_policy.py"
       - "webmcp.html"
       - "vercel.json"
       - ".vercelignore"

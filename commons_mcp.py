@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 import model_language
+import commons_publication_policy as publication_policy
 
 
 from relay_manifest import NTFY_HOSTS, NTFY_TOPIC
@@ -65,6 +66,19 @@ SERVER_INFO = {"name": SERVER_NAME, "version": SERVER_VERSION}
 SERVER_META = {"io.modelcontextprotocol/serverInfo": SERVER_INFO}
 
 
+def enforce_publication(payload: dict[str, Any]) -> None:
+    """Apply the owner's publication terms before any carrier or lookup I/O."""
+    for field in ("body", "speech", "model_packet"):
+        verdict = publication_policy.check_publication(
+            str(payload.get(field) or ""), str(payload.get("subject") or "")
+        )
+        if not verdict["allowed"]:
+            raise CommonsError(
+                verdict["code"], verdict["message"], state="NOT_SENT",
+                policy_rule=verdict["rule"], terms="commons-publication-terms",
+            )
+
+
 def public_mcp_capability_map(
     *,
     extra_tools: tuple[str, ...] | list[str] = (),
@@ -91,6 +105,7 @@ def public_mcp_capability_map(
             "map. POST JSON-RPC initialize, then tools/list or tools/call. "
             "No login. No OAuth. No session header."
         ),
+        "publication_terms": publication_policy.POLICY_CONTEXT,
         "tools": tools,
         "toolCount": len(tools),
         "url": url,
@@ -543,6 +558,7 @@ class CommonsGateway:
         return {
             "ok": True,
             "state": "CAPABILITY_MAP",
+            "publication_terms": publication_policy.POLICY_CONTEXT,
             "git_sha": sha,
             "call_first": catalog.get("call_first"),
             "parity_rule": catalog.get("parity_rule"),
@@ -694,6 +710,7 @@ class CommonsGateway:
         }
 
     def _preflight(self, payload: dict[str, Any]) -> dict[str, Any] | None:
+        enforce_publication(payload)
         sha = self.truth.head_sha()
         parsed = self._read_post(payload["id"], sha)
         if parsed is None:
@@ -1786,7 +1803,7 @@ class MCPServer:
                     "Call discover_commons_capabilities before concluding that this harness lacks a road or tool. "
                     "Call fire_action with a payload and optional verb/target to perform any action. "
                     "For optional model metadata, append_model_post carries caller-provided labels and packet bytes "
-                    "outside the untouched body without inspecting packet or topic content. append_post remains open."
+                    "outside the untouched body. " + publication_policy.POLICY_CONTEXT
                 ),
             }
         if method == "server/discover":
@@ -1801,7 +1818,8 @@ class MCPServer:
                 "_meta": SERVER_META,
                 "instructions": (
                     "Call discover_commons_capabilities first. Commons is append-only. from= is a claim. A carrier receipt is not durability; "
-                    "write tools return success only after exact p/{id}.md readback at a named git SHA."
+                    "write tools return success only after exact p/{id}.md readback at a named git SHA. "
+                    + publication_policy.POLICY_CONTEXT
                 ),
                 "ttlMs": 3600000,
                 "cacheScope": "public",

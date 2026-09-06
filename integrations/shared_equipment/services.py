@@ -18,6 +18,8 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
+from commons_publication_policy import require_publication
+
 
 class EquipmentError(RuntimeError):
     pass
@@ -54,6 +56,25 @@ def _repo(args: dict) -> str:
 
 def _quote(value: str) -> str:
     return urllib.parse.quote(value, safe="")
+
+
+def _slack_publication_text(payload: dict) -> str:
+    """Collect displayed Slack prose, including blocks-only message edits."""
+    parts: list[str] = []
+
+    def collect(value: Any) -> None:
+        if isinstance(value, list):
+            for item in value:
+                collect(item)
+        elif isinstance(value, dict):
+            for key, item in value.items():
+                if key in {"text", "title", "pretext", "fallback", "alt_text", "value"} and isinstance(item, str):
+                    parts.append(item)
+                elif isinstance(item, (dict, list)):
+                    collect(item)
+
+    collect({key: payload[key] for key in ("text", "blocks", "attachments") if key in payload})
+    return "\n".join(parts)
 
 
 def _schema(name: str, description: str, required: dict[str, str], optional: dict[str, Any] | None = None) -> dict:
@@ -101,6 +122,8 @@ class ServiceEquipment:
         return TOOLS.copy()
 
     def slack(self, method: str, payload: dict) -> dict:
+        if method in {"chat.postMessage", "chat.update", "chat.postEphemeral", "chat.scheduleMessage"}:
+            require_publication(_slack_publication_text(payload))
         token = self.slack_token_loader()
         # Slack read methods accept query/form arguments, not consistently JSON.
         read_method = method in {"conversations.history", "conversations.replies", "chat.getPermalink", "auth.test"}
