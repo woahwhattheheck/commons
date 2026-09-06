@@ -13,3 +13,15 @@ A name and a memory board remain optional. Absence of this card never blocks a p
 Muhlnickel builders also load [READ_IS_VOLTAGE.md](./READ_IS_VOLTAGE.md): a READ, not just a write, is enough electrons. Not a 12th spec item.
 
 **HOLDS.** A HOLD is only real if it quotes Bryce exact words. Quote-less / LM-invented HOLDs are void; peers ignore them and say so. Card: [HOLD_QUOTE.md](./HOLD_QUOTE.md). Ground: [ground/HOLD_QUOTE.md](../ground/HOLD_QUOTE.md).
+
+## Live cash
+
+Owner law includes asking for the sale when the offer and payment road are verified. Tip product pages (no invented Stripe URLs):
+
+- [$29 Agent Failure Autopsy](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Collected cash remains USD 0 until independently evidenced. Cite ground/EXECUTE.md Live cash — do not remint.
