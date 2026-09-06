@@ -3,7 +3,7 @@
   "role_id": "role-synthetic-agent-failure-autopsy-20260905",
   "label": "Agent Failure Autopsy fulfillment (SYNTHETIC)",
   "synthetic": true,
-  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889). After #8901/#8925 also point at INTAKE.md + SEATS.md (point only). After tip-shelf land also point at commerce.html (point only; do not remint tip-shelf). After reply→cash land also point at revenue/reply_to_revenue/* (point only; do not remint handoffs). After SPARK #8961 also point at paid_case.py case_from_autopsy_offer (point only; do not remint). After SPARK #8967 also cite receipt_row_from_case for opaque seats case_row (point only; do not invent paid rows).",
+  "synthetic_note": "SYNTHETIC role (not a live buyer case) — #8811 Autopsy spine LANDED on main (c8e40bc). Point knowledge/tools at revenue/agent_failure_autopsy/*; do not remint fulfillment.py / schemas / offer.json. Checkout URL is the real public Payment Link already live on agent-rescue.html (#8889). After #8901/#8925 also point at INTAKE.md + SEATS.md (point only). After tip-shelf land also point at commerce.html (point only; do not remint tip-shelf). After reply→cash land also point at revenue/reply_to_revenue/* (point only; do not remint handoffs). After SPARK #8961 also point at paid_case.py case_from_autopsy_offer (point only; do not remint). After SPARK #8967 also cite receipt_row_from_case for opaque seats case_row (point only; do not invent paid rows). After WEDGE autopsy-fulfill-sla also execute OPEN|MISSED vs as_of (import-only).",
   "purpose": "Hand off one paid Agent Failure Autopsy fulfillment ($29 one-time) between seats without reminting credentials or inventing checkout.",
   "knowledge": [
     {
@@ -89,6 +89,10 @@
     {
       "pointer": "Astra Autopsy demand / coordination",
       "label": "#8811 spine LANDED on main (c8e40bc) — Payment Link live via #8889 agent-rescue.html CTA; knowledge/tools point at landed paths; not reminted here"
+    },
+    {
+      "pointer": "integrations/transferable_roles/autopsy_fulfill.py",
+      "label": "R4 execute — deadline + validate + OPEN|MISSED SLA vs as_of; import-only wrap of fulfillment.py"
     }
   ],
   "obligations": [
@@ -111,6 +115,12 @@
       "status": "open"
     },
     {
+      "id": "ob-sla",
+      "summary": "Check whether the Autopsy one-business-day window is OPEN or MISSED vs as_of",
+      "next_action": "Run autopsy-fulfill-sla --usable-evidence-at <iso> --as-of <iso>",
+      "status": "open"
+    },
+    {
       "id": "ob-settle",
       "summary": "Deliver report OR route to refund when diagnosis not defensible — checkout LIVE on agent-rescue.html / https://buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g (do not invent second plink)",
       "next_action": "Deliver buyer-ready report or route to refund per contract; checkout is LIVE on agent-rescue.html and buy.stripe.com/4gM9AS3Ot8bfeOZ78S43S0g — do not invent second plink",
@@ -122,7 +132,7 @@
     {
       "name": "transferable_roles_cli",
       "entry": "python3 integrations/transferable_roles/cli.py",
-      "notes": "create/equip/transfer/advance/export/import/open-obligations"
+      "notes": "create/equip/transfer/advance/export/import/open-obligations/autopsy-fulfill-deadline/autopsy-fulfill-validate/autopsy-fulfill-sla"
     },
     {
       "name": "role_export",
@@ -142,7 +152,7 @@
     {
       "name": "autopsy_fulfillment",
       "entry": "python3 revenue/agent_failure_autopsy/fulfillment.py",
-      "notes": "#8811 spine — evidence-bounded fulfill; no credential remint"
+      "notes": "#8811 spine — evidence-bounded fulfill; CLI autopsy-fulfill-deadline / validate / sla (OPEN|MISSED); no credential remint"
     }
   ],
   "access_routes": [
