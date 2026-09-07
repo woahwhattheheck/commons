@@ -112,6 +112,18 @@ jobs:
             --engine-cache "$LAB/reference/engine" \
             --json-output "$RUNNER_TEMP/projection-validation/loader-results.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/loader-tests.log"
+      - name: Empty-lot selected-action fallback tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB="$GITHUB_WORKSPACE/revenue/kaggriculture/cloud-execution-lab"
+          TITAN_SELL_FILE="$LAB/selected_action_sell.py" \
+          TITAN_SELL_SUPPORT_DIR="$LAB" \
+          TITAN_ENGINE_FILE="$LAB/reference/engine/kaggriculture.py" \
+          TITAN_UPSTREAM_DIR="$LAB/reference/engine" \
+          python3 revenue/kaggriculture/cloud-selected-market-checks/test_empty_lot.py \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/empty-lot-tests.log"
       - name: Bind combined results to one source snapshot
         shell: python
         run: |
