@@ -1,0 +1,97 @@
+{
+  "commons_base": "560f718ac6bad2defc9c45ac78f92c9d2e8d9458",
+  "engine": {
+    "commit": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+    "git_blob": "3c202c7ee921da239356789e266b694635103fc4",
+    "path": "kaggle_environments/envs/kaggriculture/kaggriculture.py",
+    "repository": "Kaggle/kaggle-environments"
+  },
+  "files": {
+    "LICENSE": {
+      "bytes": 846,
+      "sha256": "cc6960a5dcf29172e60fce7082d035d571a417ef191ad6b98f949e8023986a59"
+    },
+    "LICENSE-APACHE-2.0.txt": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    "LICENSE-CC-BY-4.0.txt": {
+      "bytes": 18656,
+      "sha256": "9e5f1b3c610b9c2da5c313bf81d577a7d1acec686bdb0384edefa6df0f90cd94"
+    },
+    "LICENSE-MIT.txt": {
+      "bytes": 1098,
+      "sha256": "d124eb5e3916597a9835307ad56334d403bc7e4b642f83216ffc4086e8c8df9b"
+    },
+    "README.md": {
+      "bytes": 5878,
+      "sha256": "c024fbd1799209191eceb548dda9d205d9715582d835d44bddf910e0296b45a6"
+    },
+    "RESULTS.md": {
+      "bytes": 2658,
+      "sha256": "3d1cf5f4d2aaeed2d7ec54277347058a2f98859080381b013953668c69b73d0a"
+    },
+    "build_mechanics.py": {
+      "bytes": 1732,
+      "sha256": "bac6da7665ab96089921e6e3de93507b425d755e8ad246a43345aae189c4f180"
+    },
+    "fixtures/leader-day17.json": {
+      "bytes": 52522,
+      "sha256": "96897d4d3d6f055d490c8bbe1b9f0d62ee482cec127b2405bf2dbc64f1c62cf9"
+    },
+    "fixtures/leader-day9.json": {
+      "bytes": 40057,
+      "sha256": "58256768b05d8c3a786266ef9fe926ae06a7bbb06480955e2731d92bbdc38049"
+    },
+    "forecast.py": {
+      "bytes": 13824,
+      "sha256": "2e75d4742866b66feee816e8ed2f262890593a6d5d5d327821648fc55897c093"
+    },
+    "forecast_events.py": {
+      "bytes": 6480,
+      "sha256": "000a7f5a4285942c6616a05786e0831f757fb69ba6e5fff51a65cb3e914b6d69"
+    },
+    "forecast_market_mechanics.py": {
+      "bytes": 3751,
+      "sha256": "b4b25c99c55dd33f0d8613a4f48866d83d1472205c29c1d3bc049165975979ce"
+    },
+    "results/actual-state-cases.json.gz": {
+      "bytes": 20686,
+      "sha256": "f7fae51ad43d7a537a95108edd720ca91d78284db609c4ea940af8112449322f"
+    },
+    "results/summary.json": {
+      "bytes": 170364,
+      "sha256": "7e4fdfa9778952d2a0f46cc092750c98e3ac802747e919c582d507e4db1d01ec"
+    },
+    "run_cases.py": {
+      "bytes": 2145,
+      "sha256": "2c2bdb75d06ec8262fce321c975d0febff851b25ca91a32c6164a8a59221ae39"
+    },
+    "test_engine_cases.py": {
+      "bytes": 2615,
+      "sha256": "04d007ee8442cd6899ad7c2b33103a027a87f9472d428ea79b38933f5cb7406f"
+    },
+    "test_forecast.py": {
+      "bytes": 6829,
+      "sha256": "5844354585199fd579d5c2bbc73d932c4fe370cfac6e6b7d710261583b90887f"
+    }
+  },
+  "rowan": {
+    "git_blob": "1a60a7c853ce1d49ea368835e4c55f279322e477",
+    "path": "revenue/kaggriculture/cloud-frontier-trace/events.py",
+    "sha256": "000a7f5a4285942c6616a05786e0831f757fb69ba6e5fff51a65cb3e914b6d69"
+  },
+  "schema": 1,
+  "source_read": [
+    "engine market_price and _shape/defaults",
+    "engine _town_consume and interpreter market-before-town ordering",
+    "engine WATER, HARVEST, decay, daily crop refresh and automatic inventory deposit",
+    "ROWAN complete events.py and DECISION_CONDITIONS.md",
+    "original public replay current observations frames224 and430 only for fixtures; future frames not supplied to forecast"
+  ],
+  "tests": {
+    "contract": 10,
+    "engine_comparisons": 3,
+    "games": 0
+  }
+}
