@@ -1453,7 +1453,7 @@ def rebuild_lanes(mod, rows):
         )
         if name == "FEATURES":
             body = LIVE_CASH_HTML + body
-        elif name == "ANNEX":
+        else:
             body = LIVE_CASH_PRODUCTS_HTML + body
         mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, extra))
     return public
