@@ -8,22 +8,28 @@ no hidden episode seed, opponent identity, replay fingerprint, network, or
 external state is used.
 
 `build.py` refuses drift from the selected KAG-COMPOSE SHA-256 and emits the
-standalone `candidate.py`. The initial development pilot used one new seed in
-both seats against KAG-COMPOSE and the hash-pinned Kaito/Igor references. It is
-an explicit-interpreter development result, not a hosted Kaggle score.
+standalone `candidate.py`. Its production-event projection is frozen from
+ROWAN's landed `cloud-frontier-trace/events.py` contract (blob
+`48b3c0df949e13bf4c63ee86f5d5b3a58ec00aec`). Market commitments use a
+single sequential cash ledger: seeds are protected first, then only the exact
+feed deficit is bought at per-unit repriced cost.
 
 ## Current evidence
 
-- 2/2 wins against KAG-COMPOSE; mean margin **+9,793.5**.
-- 0/2 against Kaito; mean margin **-41,809.0**.
-- 0/2 against Igor; mean margin **-37,738.5**.
-- The diagnostic match executed 33 plant, 365 water, 64 fertilize, 302 harvest,
-  and 39 drop actions, reaching 79,866 terminal cash versus 70,135.
-- The first report game replayed with identical scores and trace.
+- Same seed as the merged checkpoint: **+21,501.5** versus KAG-COMPOSE,
+  with the Kaito and Igor gaps reduced to **-22,541.5** and **-21,259.0**.
+- Two additional development seeds: 4/4 wins over the merged checkpoint,
+  mean margin **+8,120.0**.
+- Those additional seeds still lost 0/4 to each strong public reference;
+  Kaito mean margin **-21,415.5**, Igor **-27,495.75**.
+- All 20 selected-policy games completed without agent failures and each
+  report's first game replayed with identical scores and trace.
 
-The public references remain materially stronger. This checkpoint proves that
-the requested production loop is executable and improves the inherited policy
-on the pilot; it does not establish leaderboard readiness or superiority.
+The public references remain materially stronger. These are official-
+interpreter development results, not hosted Kaggle scores or evidence of
+leaderboard leadership. The initially corrected feed-before-seed ledger was
+rejected after losing both same-seed seats to the merged policy by 14,139 mean;
+its bytes are not shipped.
 
 Run the focused source contract:
 
@@ -35,4 +41,3 @@ The official interpreter remains pinned to
 `28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c`. Development compute was run in
 the cloud workspace only. No competition submission or account mutation was
 performed.
-
