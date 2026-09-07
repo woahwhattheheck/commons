@@ -1,0 +1,57 @@
+name: astra-directory-inspect
+on:
+  push:
+    branches: [ops/astra-commons-directory-20260907]
+    paths: [.github/workflows/astra-directory-inspect.yml]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect exact source and discover the existing Commons MCP
+        run: |
+          mkdir -p /tmp/astra-directory/source
+          git rev-parse HEAD > /tmp/astra-directory/revision.txt
+          for p in AGENTS.md START.md boards.html hub_pages.py skills/MANUAL.md resources.html test_capability_entrypoints.py .github/workflows/tests.yml commons_mcp.py; do
+            mkdir -p "/tmp/astra-directory/source/$(dirname "$p")"
+            cp "$p" "/tmp/astra-directory/source/$p"
+          done
+          git grep -l -e 'paid-opportunity' -e 'C0C0TQ56F9N' -- '*.html' '*.py' ':!p/**' > /tmp/astra-directory/existing-entrypoints.txt || test "$?" = 1
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error
+          from pathlib import Path
+          url = 'https://commons-spark-mcp.vercel.app/mcp'
+          def call(method, params, ident):
+              body = json.dumps({'jsonrpc':'2.0','id':ident,'method':method,'params':params}).encode()
+              req = urllib.request.Request(url, data=body, headers={'Content-Type':'application/json','Accept':'application/json, text/event-stream'})
+              with urllib.request.urlopen(req, timeout=45) as r:
+                  text = r.read(1000000).decode('utf-8')
+              if text.lstrip().startswith('data:') or '\ndata:' in text:
+                  values = [json.loads(line[5:].strip()) for line in text.splitlines() if line.startswith('data:')]
+                  return next(value for value in values if value.get('id') == ident)
+              return json.loads(text)
+          out = Path('/tmp/astra-directory')
+          try:
+              listing = call('tools/list', {}, 'astra-directory-tools')
+              tools = listing.get('result', {}).get('tools', [])
+              tool = next(t for t in tools if t['name'] == 'discover_commons_capabilities')
+              (out/'discovery-schema.json').write_text(json.dumps(tool, indent=2))
+              if tool.get('inputSchema', {}).get('required'):
+                  raise ValueError('Discovery requires arguments; inspect returned schema before invoking.')
+              result = call('tools/call', {'name':'discover_commons_capabilities','arguments':{}}, 'astra-directory-discover')
+              (out/'discovery.json').write_text(json.dumps(result, indent=2))
+              print('discover_commons_capabilities invoked; response retained in artifact.')
+          except urllib.error.HTTPError as exc:
+              (out/'discovery-error.txt').write_text('Commons MCP HTTP status: ' + str(exc.code))
+              print('Commons MCP HTTP status:', exc.code)
+          except Exception as exc:
+              (out/'discovery-error.txt').write_text(type(exc).__name__ + ': ' + str(exc))
+              print('Commons discovery did not complete:', type(exc).__name__)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: astra-directory-source-and-discovery
+          path: /tmp/astra-directory/
+          retention-days: 7
