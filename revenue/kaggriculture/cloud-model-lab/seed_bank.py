@@ -65,8 +65,7 @@ def seed(bank_path, seeds, teacher="starter", seat=0, max_steps=400, exclude_see
                 if advancing:
                     adm = constraints.admissible(obs, cfg, seat)
                     cls = EB.situation_class(obs, cfg, seat, adm)
-                    state_text = farmmap.build(obs, cfg, seat) + "\n" + \
-                        prompt_mod.digest(obs, cfg, seat)
+                    state_text = EB.structured_state(obs, cfg, seat)
                     plan = f"{' '.join(str(t) for t in farmer).lower()}: {why}"
                     bank.record(cls, EB.context_of(obs), state_text, turn0,
                                 f"teacher:{teacher}", plan=plan[:120])

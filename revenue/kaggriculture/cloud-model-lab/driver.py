@@ -18,6 +18,7 @@ import exemplars
 import exemplar_bank as EB
 import farmmap
 import prompt as prompt_mod
+import slots
 import static_prefix
 
 DEFAULT = {"farmer": ["PASS"], "hands": [], "market": []}
@@ -25,10 +26,13 @@ DEFAULT = {"farmer": ["PASS"], "hands": [], "market": []}
 
 class ModelDriver:
     def __init__(self, runner, surfaces, max_market=3, constrained=True,
-                 examples="pairs", bank=None):
+                 examples="pairs", bank=None, render="verbose"):
         self.r = runner
         self.examples = examples
         self.bank = bank
+        # "verbose": the original renderer. "slots": every fact declared once with a
+        # typed id, opcode semantics stated once, admissible lists referencing ids.
+        self.render = render
         # "pairs": the six concatenated operator surfaces, cue last.
         # "bank":  1-2 class-matched, action-deduplicated advancing demonstrations
         #          placed immediately before the live state (the ported mechanism).
@@ -53,16 +57,20 @@ class ModelDriver:
         bank_block, self._last_rows = "", []
         if self.examples == "bank" and self.bank is not None:
             cls = EB.situation_class(obs, config, seat, adm)
-            live_lean = EB.lean_state(fmap + "\n" + prompt_mod.digest(obs, config, seat))
+            live_lean = EB.structured_state(obs, config, seat)
             rows = self.bank.for_class(cls, EB.context_of(obs), n=2,
                                        exclude_state=live_lean,
                                        n_hands=len(adm["units"]) - 1)
             self._last_rows = rows
             bank_block = EB.block(rows)
             self._last_cls = cls
-        text = prompt_mod.build(card, adm, self.head, hz=hz, plan=self.plan,
-                                static=self._static, farm_map=fmap,
-                                bank_block=bank_block)
+        if self.render == "slots":
+            text = slots.render(card, adm, hz, plan=self.plan,
+                                bank_block=bank_block, head=self.head or None)
+        else:
+            text = prompt_mod.build(card, adm, self.head, hz=hz, plan=self.plan,
+                                    static=self._static, farm_map=fmap,
+                                    bank_block=bank_block)
         rx = codec.card_regex(adm, max_market=self.max_market) if self.constrained else None
         t_prompt = time.perf_counter() - t0
 
@@ -96,6 +104,7 @@ class ModelDriver:
             "admissible_farmer_ops": [" ".join(str(t) for t in o) for o in adm["units"][0]],
             "_pending": True,
             "examples_mode": self.examples,
+            "render": self.render,
             "situation_class": getattr(self, "_last_cls", None),
             "examples_used": [{"provenance": r["provenance"], "action": r["action"]}
                               for r in getattr(self, "_last_rows", [])],

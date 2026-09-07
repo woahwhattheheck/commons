@@ -48,7 +48,7 @@ def _call(agent, obs, config):
 
 def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
          deriv_cards, eval_cards, max_market=3, out=None, examples="pairs",
-         bank_path=None):
+         bank_path=None, render="verbose", freeze_bank=False):
     warm, warm_label = _load_agent(warmup_spec)
     opp, opp_label = _load_agent(opponent_spec)
     surfaces, prov = exemplars.build(deriv_cards, eval_cards)
@@ -84,8 +84,13 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
     if examples == "bank":
         import exemplar_bank as EB
         bank = EB.Bank(bank_path)
+        if freeze_bank:
+            # A comparison run must not write into the bank it reads: the first arm's
+            # banked rows would otherwise be retrieved by the second, so the arms would
+            # no longer differ by the variable under test alone.
+            bank.record = lambda *a, **k: None
     d = driver_mod.ModelDriver(r, surfaces, max_market=max_market,
-                               examples=examples, bank=bank)
+                               examples=examples, bank=bank, render=render)
     model_turns = 0
     t_start = time.time()
     try:
@@ -157,7 +162,7 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                 if ok and d.bank is not None:
                     import exemplar_bank as EB
                     cls = model_turn.get("situation_class")
-                    state_text = model_turn["prompt"].split("LIVE FARM", 1)[-1]
+                    state_text = EB.structured_state(pre_obs, pre_cfg, seat)
                     d.bank.record(cls, EB.context_of(pre_obs), state_text,
                                   model_turn["action"], "model",
                                   plan=model_turn["action"].get("plan")
@@ -210,10 +215,14 @@ def main():
     ap.add_argument("--examples", default="pairs",
                     choices=("pairs", "bank", "control"))
     ap.add_argument("--bank", default=None)
+    ap.add_argument("--render", default="verbose", choices=("verbose", "slots"))
+    ap.add_argument("--freeze-bank", action="store_true",
+                    help="read the bank but never write to it (for comparison runs)")
     a = ap.parse_args()
     p = play(a.model, a.seed, a.seat, a.from_step, a.turns, a.warmup, a.opponent,
              cards_mod.load(a.deriv_cards), cards_mod.load(a.eval_cards),
-             max_market=a.max_market, out=a.out, examples=a.examples, bank_path=a.bank)
+             max_market=a.max_market, out=a.out, examples=a.examples, bank_path=a.bank,
+             render=a.render, freeze_bank=a.freeze_bank)
     print("\n=== summary ===")
     print(json.dumps(p["summary"], indent=1))
     print(f"money={p['money']:.0f} opponent={p['opponent_money']:.0f} margin={p['margin']:+.0f}")
