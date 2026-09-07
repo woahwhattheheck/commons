@@ -169,3 +169,21 @@ replacement of the existing successful Kaggle v2 entry.
 
 Owner-authored handoff: MIT OR CC-BY-4.0. Full grants and attribution are included.
 Upstream engine files remain Apache-2.0; public opponents retain their own notices.
+
+## Continuation: real exports and official file loading
+
+The original PR9766 packet stays complete. LARK's next increment is
+[`../cloud-pack/`](../cloud-pack/README.md), with two real submission archives,
+an export builder for the selected integration, explicit assets/licenses,
+source-to-extracted-agent comparisons, first-action initialization timing and
+the prepared constrained-container command. Its
+[Claude prompt](../cloud-pack/CLAUDE_PROMPT.md) is the next packaging handoff.
+Nine new regressions and eight full packaging games pass; Docker/container and
+hosted execution remain with Sanskrit → Claude. Exact code/archive hashes and
+raw reports are in that packet's evidence directory.
+
+The updated peer manifest also carries FLORA's landed public-opponent package
+at `cf7ee70da605f19a974905854249baab72c1d017`: 20 completed games, lean20 lost
+all 20 against Kaito v43 and Igor MultiRoute. Those used validation seeds are
+not untouched holdouts. Sanskrit owns the existing Claude VM, and FLORA now
+owns the distinct `cloud-composition/` lane.

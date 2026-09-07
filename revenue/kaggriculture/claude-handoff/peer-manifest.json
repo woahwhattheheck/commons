@@ -304,6 +304,54 @@
       "path": "revenue/kaggriculture/cloud-model-lab",
       "status": "active Claude VM; source location supplied by root, no current-main package independently read by LARK",
       "role": "Integrate source/operator context, drive the existing Claude prompt stream, synthesize experiments, retain hosted-submission ownership."
+    },
+    {
+      "owner": "FLORA",
+      "status": "landed; accepted completed public-opponent benchmark",
+      "path": "revenue/kaggriculture/cloud-opponent-bench",
+      "reference": "cf7ee70da605f19a974905854249baab72c1d017",
+      "pr": 9768,
+      "results": "RESULTS.md",
+      "sources": "UPSTREAM.json",
+      "games": 20,
+      "complete": 20,
+      "lean20_wins": 0,
+      "lean20_losses": 20,
+      "development_seeds": [
+        9000011,
+        9000049,
+        9000061
+      ],
+      "used_validation_seeds": [
+        9000077,
+        9000091
+      ],
+      "qualification": "Accepted peer evidence; these validation seeds are now used. Root and FLORA own the next composition work."
+    },
+    {
+      "owner": "LARK",
+      "status": "new additive export increment; measured local packaging parity",
+      "path": "revenue/kaggriculture/cloud-pack",
+      "revision_resolution": "Use the commit containing this updated manifest; exact source and archive hashes are in cloud-pack/evidence/receipt.json.",
+      "prompt": "CLAUDE_PROMPT.md",
+      "readme": "README.md",
+      "new_tests": 9,
+      "full_packaging_games": 8,
+      "exact_source_export_comparisons": 4,
+      "packaging_seed": 6100003,
+      "exports": {
+        "lean20": {
+          "path": "exports/lean20/submission.tar.gz",
+          "sha256": "9bf553da0ff3c057cbc167150ce5c1c88d8ee18eb031648a4f055fa21532227d",
+          "candidate_sha256": "d9487c031b50ede06a706acc8bcb40e0b5a681d9b5e92c1a1a96492b26c2dd62"
+        },
+        "dispatch_sales": {
+          "path": "exports/dispatch_sales/submission.tar.gz",
+          "sha256": "ec3158cc293c09d958c2f06e04c18c62972013a870bf48b64b0179505495ba6e",
+          "candidate_sha256": "d87fafab8c9267d508533cd04e7ab8fa8e7c5f71414d9935ec4ddd977f0e7f74"
+        }
+      },
+      "pending": "Constrained container and hosted runtime execution by Sanskrit \u2192 Claude; select actual integration from stronger-opponent development before any replacement submit."
     }
   ],
   "public_opponents": [
@@ -357,5 +405,6 @@
       "status": "exploratory mechanism input, not proof of a globally fixed plan"
     }
   ],
-  "next_priority": "Run each peer's missing contract checks and strong-opponent development in the existing Claude VM; select or compose before consuming untouched validation. Use the shared runner only where it avoids duplicate studies."
+  "next_priority": "Sanskrit/root drives existing Claude VM; use peer development and strong public opponents for composition, then export the selected integration through cloud-pack with exact assets/notices, first-action loader parity and constrained-container checks. Existing seed banks and source/result studies remain complete.",
+  "continuation_main_inspected": "e0c36132b6dea404ba8cf8f900181483ecf73095"
 }
