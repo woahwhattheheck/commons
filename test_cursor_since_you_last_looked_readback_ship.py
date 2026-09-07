@@ -30,7 +30,7 @@ KEEP = {
     "p/cursor-harborline-pack-market-render-20260902-01.md": "54c348dc",
     "ground/OWNER_NOW.md": "0a574d94",
     "grounding.html": "491a1623",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
 }
 
 
