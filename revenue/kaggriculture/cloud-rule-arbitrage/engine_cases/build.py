@@ -21,6 +21,8 @@ def build():
     members['SELECTED-SOURCE-MAIN.py']=members['main.py']
     for name in ('main.py','liquidity_cycle.py','market_math.py','cycle_quotes.py'):
         members[name]=(HERE/name).read_bytes()
+    members['t11_policy.py']=members['main.py']
+    members['main.py']=(HERE/'raw_main.py').read_bytes()
     members['T11-NOTICE.md']=(HERE/'NOTICE.md').read_bytes()
     members['LICENSE']=(HERE/'LICENSE').read_bytes()
     members['T11-README.md']=(HERE/'README.md').read_bytes()

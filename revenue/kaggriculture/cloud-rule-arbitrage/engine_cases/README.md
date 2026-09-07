@@ -30,7 +30,10 @@ option with a demonstrated rival-discount counterexample; main.py uses True.
 
 `main.py::agent(obs, cfg=None)` invokes frozen SELL exactly once then applies
 the transform. The relocatable `artifacts/t11-liquidity-research.tar.gz` uses
-that same entrypoint and retains every selected vendor byte and license.
+the official-loader-compatible raw_main.py entrypoint, which delegates to that
+unchanged policy saved as t11_policy.py. It retains every selected vendor byte
+and license. The lazy adapter uses the pinned loader's __raw_path__ to locate
+the policy module; it adds no policy/controller state.
 It is a research artifact, not a promoted or uploaded submission.
 
 `cycle_quotes.sell_rebuy_quote(item, I, q, r, rival_direction="SELL")` exposes
@@ -79,6 +82,7 @@ python panel.py --engine-dir /path/to/engine --runtime /path/to/opponent-runtime
   --seeds NEW_UNUSED_SEEDS --output new-panel --workers 3
 python analyze.py
 python build.py
+python verify_raw.py
 ```
 
 Use existing cloud-frontier-policy/next-panel/prepare.py to prepare the offline

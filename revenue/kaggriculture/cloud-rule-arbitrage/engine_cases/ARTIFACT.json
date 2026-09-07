@@ -1,7 +1,7 @@
 {
   "archive": "artifacts/t11-liquidity-research.tar.gz",
-  "sha256": "b5d7253cff1728fc6df9dd9cc97a64ea8163dbbd0d2c62d6515547e5c0ae766f",
-  "bytes": 191282,
+  "sha256": "7c0820ab86a7679e8c4727c58a5f93a94d8876ed79f5ecada4b59ccf30ea63c7",
+  "bytes": 191563,
   "selected_source_archive_sha256": "5d3a2bf3878808679820ff7f5a5ca7533c41888366c5dcd358f15ff0213f1f10",
   "members": {
     "NOTICE.md": "85007316a0a9b6fd4037bb9fc7128453d8b2036f55cdd52efb5d6004824ec789",
@@ -11,7 +11,7 @@
     "SOURCE-FREEZE.json": "061c3d084ea6f05f83bfd8c7d8d826f6e03cd9c15c91223b7e36ad6f5aa7997d",
     "SOURCE-PINS.json": "207d6d5ff9ab75ba079ef6850830395031ad0a6b079329cea039883bdb881a09",
     "controller.py": "0b4de0527624353585cebc90efe4e0b677b7d419abbd7c245d927a968e0eaed8",
-    "main.py": "8c59d891c4bebba02da21796861bdc1f5f3358505281d5b226a5954c8aa44205",
+    "main.py": "e9562cba565b5f87a8895b737a430096a013dd8d2fff4f1cdaba88276f831423",
     "vendor/base/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
     "vendor/base/NOTICE.txt": "b5577872dce53f4aa213ceeab7578df26a895f391d34ac552db7abb59913550f",
     "vendor/base/arlene.py": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4",
@@ -46,9 +46,10 @@
     "liquidity_cycle.py": "21cde940b10f9cf0d1425a989c71e499e782107b34d25e298cd04c897752470e",
     "market_math.py": "56e8c56edf571f88dab6078857aefeb346923629e5ebfa544488494ca300bf3d",
     "cycle_quotes.py": "7782bcc9351991fd8a0462a55777f47ccf755b69c85325e4a9ef14e4593fb21d",
+    "t11_policy.py": "8c59d891c4bebba02da21796861bdc1f5f3358505281d5b226a5954c8aa44205",
     "T11-NOTICE.md": "65e154acdeb31f9892ec49123a1441e71caa9cdf29cf2481dd6a2b6fd03dca4a",
     "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
-    "T11-README.md": "5395e6878834399fa4b26bc941a72115dfde34e882876dfd4c05fe2eb6adc581",
+    "T11-README.md": "3e82c0ceb89574050d0684ae64b546fc2566df7f8932ed423f7e01ff47bf4b57",
     "T11-SOURCE-FREEZE.json": "00a2b217feef5f2b9daf7e9541e66d27ca315fa6ddd437ec07b212a4b8d59e0a"
   },
   "selection": "research; frozen SELL remains the production default"
