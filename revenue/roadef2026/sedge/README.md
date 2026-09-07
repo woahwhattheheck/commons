@@ -1,3 +1,5 @@
+**Container validation passed:** [GitHub Actions run 34080604676](https://github.com/woahwhattheheck/commons/actions/runs/34080604676) built the exact source ZIP and executed it under Ubuntu 24.04 with networking disabled. See [CONTAINER-VALIDATION.json](CONTAINER-VALIDATION.json) and the updated [two-page method](method.pdf). The ZIP is the preserved original source snapshot; its embedded status notes predate this container result. This page and the separate method PDF carry the current status.
+
 Download [source.zip](source.zip) for the complete buildable directory, including vendored headers and the method note. Extract it before running Make. The files beside this page are also exposed for direct review.
 
 The ZIP includes validation summaries; detailed input fixtures, predicted loads and official checker outputs are in the separate evidence archive. Full validation evidence is saved as `2026-09-07-roadef-validation.zip`; identifier `libfile_4daf3e74ade08191a01bbd4da78c68f9`.
@@ -97,9 +99,10 @@ python3 check_behavior.py --data challenge --checker challenge/checker/src/check
 
 ## Remaining entry work
 
-1. Build and execute the supplied Ubuntu 24.04 Dockerfile in a Docker-capable
-   environment. Docker was not installed in the execution environment used here;
-   native execution is verified, container execution is not yet verified.
+1. Container execution is complete: run 34080604676 built the supplied Ubuntu 24.04
+   Dockerfile and validated setB-01 with networking disabled. It matched all 10,368
+   link/time values within approximately 1.001e-12 and reduced MLU from 0.999998
+   to 0.532975 in 20 seconds. The source ZIP and runtime files remain unchanged.
 2. Establish the actual team member details and obtain the organizer-issued team ID
    through the official registration form. No registration or submission was sent
    by this build session. Check existing registration correspondence before creating another.

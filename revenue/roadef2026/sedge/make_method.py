@@ -59,7 +59,7 @@ p("Seven cases reduce the worst load. Five improve later entries in the sorted v
 p("Independent checks", "h")
 p("All 369,960 predicted link/time values agree with the checker within approximately 1.001e-12. Transition-cost totals match. Further checks cover unequal-branch ECMP, noncontiguous node IDs, maintenance changes, zero budgets, fixed-round repeatability, quoted filenames and SIGTERM. The signal test saved a valid result and exited in approximately 0.017 seconds.")
 p("Execution status and continuation", "h")
-p("Native execution is verified. Docker was unavailable here, so the supplied Ubuntu 24.04 container still needs an execution check. Registration, an actual team ID and final submission remain outstanding. No registration or entry was sent by this build session.")
+p("Native and Ubuntu 24.04 Docker execution are verified. GitHub Actions run 34080604676 built the exact published package and ran setB-01 with networking disabled. The official checker accepted all 10,368 load values (error below 1.001e-12); MLU fell from 0.999998 to 0.532975 in 20 seconds. Actual team registration, team ID and organizer submission remain outstanding.")
 p("Provenance", "h")
 p("Challenge source: d84d319a7fdb8de3b1866830d2eaa2937871e5ae. Networktools: aebafc9ee91891e5d721bb86725e8cf1533877d1. Exact input, source, binary and solution hashes are in benchmark/summary.json. Source, build instructions and retained checker outputs accompany this note.", "small")
 p('<link href="https://roadef.org/challenge/2026/en/">Official challenge and rules</link> | <link href="https://gitlab.com/Orange-OpenSource/network-optimization-tools/challenge-roadef-2026/">Official specification, instances and checker</link>', "small")
