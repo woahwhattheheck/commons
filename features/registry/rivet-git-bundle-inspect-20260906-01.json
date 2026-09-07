@@ -1,0 +1,25 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "rivet-git-bundle-inspect-20260906-01",
+  "name": "Offline Git bundle object recovery",
+  "capability": "Inspect Git bundles and recover complete available objects offline while retaining explicit prerequisites and unresolved deltas.",
+  "owner_subsystem": "handoff-recovery",
+  "carrier": "RIVET / ChatGPT GitHub and Slack connectors",
+  "claimed_paths": [
+    "host/git_bundle_inspect.py",
+    "docs/git-bundle-inspect.md"
+  ],
+  "test_paths": [
+    "test_git_bundle_inspect.py"
+  ],
+  "public_entrypoint": "docs/git-bundle-inspect.md",
+  "dependencies": [
+    "Python 3.10+ standard library"
+  ],
+  "resource_links": [
+    "p/rivet-git-bundle-inspect-20260906-01.md",
+    "https://git-scm.com/docs/gitformat-bundle",
+    "https://git-scm.com/docs/gitformat-pack"
+  ],
+  "next_gap": "Full repository restoration still requires prerequisite history and native Git validation; no live service is claimed."
+}
