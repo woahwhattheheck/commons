@@ -60,7 +60,17 @@ def bind(base: Path, runtime: Path, arm: str, source: Path,
         "from offline import restrict\nrestrict()\n" + adapter.read_text())
 
 
-def prepare(repo: Path, runtime: Path) -> dict:
+def bind_native(base: Path, runtime: Path, arm: str, source: Path) -> None:
+    """Preserve raw_path for an entrypoint that resolves its adjacent files."""
+    pack = load(base / "cloud-pack/pack.py", "_osprey_pack_native")
+    adapter = runtime / (arm + "-adapter.py")
+    pack.write_adapter(adapter, source)
+    adapter.write_text(
+        f"import sys\nsys.path.insert(0,{str(base/'cloud-frontier-policy/next-panel')!r})\n"
+        "from offline import restrict\nrestrict()\n" + adapter.read_text())
+
+
+def prepare(repo: Path, runtime: Path, include_terminal: bool = False) -> dict:
     repo, runtime = repo.resolve(), runtime.resolve()
     if runtime.exists():
         raise FileExistsError("Preserve an existing runtime; choose a fresh destination")
@@ -86,6 +96,15 @@ def prepare(repo: Path, runtime: Path) -> dict:
     adapter.write_text(
         f"import sys\nsys.path.insert(0,{str(base/'cloud-frontier-policy/next-panel')!r})\n"
         "from offline import restrict\nrestrict()\n" + adapter.read_text())
+    if include_terminal:
+        t05 = runtime / "t05"
+        t05.mkdir()
+        own = base / "cloud-terminal-sell"
+        shutil.copyfile(own / "vendor/t05-main.py", t05 / "main.py")
+        shutil.copyfile(own / "vendor/terminal.py", t05 / "terminal.py")
+        shutil.copyfile(base / "cloud-frontier-policy/next-panel/vendor/arlene.py", t05 / "arlene.py")
+        bind_native(base, runtime, "t05", t05 / "main.py")
+        bind_native(base, runtime, "composed", own / "main.py")
     manifest = {
         "policy_pins": PINS, "apex_compile_command": cmd,
         "files": {str(p.relative_to(runtime)): digest(p)
@@ -100,8 +119,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--repo", type=Path, required=True)
     parser.add_argument("--runtime", type=Path, required=True)
+    parser.add_argument("--terminal", action="store_true", help="Also bind T05 and the composed native entrypoints")
     args = parser.parse_args()
-    result = prepare(args.repo, args.runtime)
+    result = prepare(args.repo, args.runtime, args.terminal)
     print(json.dumps({"runtime": str(args.runtime.resolve()),
                       "files": len(result["files"]), "policy_pins": PINS}, indent=2))
 
