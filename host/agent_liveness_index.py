@@ -154,12 +154,14 @@ def build_index(
             freshness = "UNKNOWN_TS"
             age_seconds = None
         else:
-            delta = int((observed - parsed).total_seconds())
-            _require(delta >= 0, f"{actor}: last-seen timestamp is in the future")
-            age_seconds = delta
-            if delta <= FRESH_SECONDS:
+            # Validate and classify before discarding fractional seconds.
+            # Truncation can admit future receipts and extend freshness windows.
+            delta = observed - parsed
+            _require(delta >= dt.timedelta(0), f"{actor}: last-seen timestamp is in the future")
+            age_seconds = delta // dt.timedelta(seconds=1)
+            if delta <= dt.timedelta(seconds=FRESH_SECONDS):
                 freshness = "FRESH_6H"
-            elif delta <= RECENT_SECONDS:
+            elif delta <= dt.timedelta(seconds=RECENT_SECONDS):
                 freshness = "RECENT_24H"
             else:
                 freshness = "STALE"
