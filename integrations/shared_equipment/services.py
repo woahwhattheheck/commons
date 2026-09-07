@@ -455,7 +455,8 @@ class CombinedCatalog:
     def __init__(self, commons, services=None):
         self.commons = commons
         self.services = services or ServiceEquipment()
-        self.extensions = []
+        from integrations.command_center.equipment import CommandCenterEquipment
+        self.extensions = [CommandCenterEquipment()]
 
     def tools(self, **kwargs):
         return self.commons.tools(**kwargs) + self.services.tools() + [tool for extension in self.extensions for tool in extension.tools()]
