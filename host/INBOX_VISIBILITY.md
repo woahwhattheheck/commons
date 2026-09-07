@@ -12,7 +12,7 @@ Python 3.10+; no pip packages are required for the relay itself.
 
 ```sh
 python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
-python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v
+python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives test_inbox_slack_relay_headers -v
 python3 -m host.inbox_slack_relay --config host/inbox_visibility.json
 ```
 
@@ -73,6 +73,12 @@ mail and duplicate GitHub emails are omitted; unknown mail is explicitly counted
 as **unclassified_pending**, not silently declared non-actionable. This is a
 conservative work-mail router, not exhaustive semantic classification of every
 historical message or attachment. Keep the interactive Gmail audit for unknowns.
+
+RFC 2047 Subject and sender display text are decoded before the existing
+subject rules and message formatting. Sender-domain decisions still parse the
+original structured From address, never the decoded display name. Malformed
+encoded words remain literal rather than aborting the poll; existing auth/private
+rules apply to decoded valid subjects. This does not add new routing rules.
 
 Each leaf MIME body uses its declared Content-Type charset, with UTF-8
 replacement fallback for missing, unsupported or malformed charset names.
