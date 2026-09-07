@@ -63,9 +63,12 @@ def inspect_body(raw: bytes, expected: dict) -> dict:
         raise ValueError("replay envelope depth exceeded")
     if value.get("name") != "kaggriculture":
         raise ValueError("unexpected environment")
-    info = value.get("info")
-    if not isinstance(info, dict) or info.get("EpisodeId") != expected["episode_id"]:
-        raise ValueError("episode identity differs or is absent")
+    info = value.get("info", {})
+    if not isinstance(info, dict):
+        raise ValueError("invalid replay metadata")
+    embedded = info.get("EpisodeId")
+    if embedded is not None and str(embedded) != str(expected["episode_id"]):
+        raise ValueError("embedded episode identity differs")
     steps = value["steps"]
     if len(steps) != 720:
         raise ValueError("expected the complete 720-frame public episode")
@@ -84,7 +87,9 @@ def inspect_body(raw: bytes, expected: dict) -> dict:
     if not farm_sets or any(not isinstance(farms, list) or len(farms) != 2 or
                            [f.get("money") for f in farms] != cash for farms in farm_sets):
         raise ValueError("terminal farm money differs from public checkpoint")
-    return {"episode_id": info["EpisodeId"], "steps": len(steps),
+    return {"episode_id": expected["episode_id"], "embedded_episode_id": embedded,
+            "identity_binding": "body_and_request" if embedded is not None else "request_and_checkpoint",
+            "steps": len(steps),
             "statuses": [r["status"] for r in rows], "cash_by_seat": cash,
             "envelope": envelope, "raw_size_bytes": len(raw), "raw_sha256": sha256(raw)}
 
@@ -128,7 +133,7 @@ def fetch_batch(output: Path) -> dict:
                 "workflow_run_id": os.environ.get("GITHUB_RUN_ID"),
                 "workflow_run_attempt": os.environ.get("GITHUB_RUN_ATTEMPT"),
                 "script_sha256": sha256(Path(__file__).read_bytes()),
-                "submission_binding": "Submission IDs are from the cited public checkpoint; body identity and terminal state are independently checked.",
+                "submission_binding": "Submission IDs are from the cited public checkpoint; Present body IDs and terminal state are independently checked; absent body IDs remain explicit.",
                 "limits": "Public replay transport only; no gameplay, private source, policy evaluation, credentials or Kaggle writes.",
                 "results": []}
     shutil.copyfile(__file__, output / "fetch_public.py")
