@@ -26,6 +26,14 @@ def load_file(name, path):
     return module
 
 
+def load_engine(evaluator, engine_cache, engine_loader=None):
+    """Use an explicit bundled loader when supplied; retain the existing default."""
+    options = {'prepare': False}
+    if engine_loader is not None:
+        options['loader'] = engine_loader
+    return evaluator.get_engine(engine_cache, **options)
+
+
 def fixture(*, step=17, seat=0, money=1000, shed=None, orders=None, **configuration):
     """Synthetic public farm + own private stock; no episode seed or replay."""
     config = dict(episodeSteps=720, turnsPerDay=24, shedCapacity=100,
@@ -250,13 +258,15 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--lab', type=Path, default=HERE.parent / 'cloud-execution-lab')
     parser.add_argument('--evaluator', type=Path, default=HERE.parent / 'cloud-eval/evaluate.py')
+    parser.add_argument('--engine-loader', type=Path,
+                        help='Explicit offline loader; omit to keep the evaluator default')
     parser.add_argument('--engine-cache', type=Path, required=True)
     parser.add_argument('--json-output', type=Path)
     args = parser.parse_args()
     global SELLER, EVALUATOR, ENGINE
     EVALUATOR = load_file('wren_existing_evaluator', args.evaluator)
     # Existing evaluator verifies all three pinned blobs before its offline loader.
-    ENGINE, engine_hashes = EVALUATOR.get_engine(args.engine_cache, prepare=False)
+    ENGINE, engine_hashes = load_engine(EVALUATOR, args.engine_cache, args.engine_loader)
     sys.path.insert(0, str(args.lab.resolve()))
     SELLER = load_file('wren_selected_action_sell', args.lab / 'selected_action_sell.py')
     suite = unittest.defaultTestLoader.loadTestsFromTestCase(MarketContractTests)
