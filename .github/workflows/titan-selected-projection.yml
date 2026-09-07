@@ -9,6 +9,8 @@ on:
       - 'revenue/kaggriculture/cloud-eval/**'
       - 'revenue/kaggriculture/20260907-offline-agent/**'
       - 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/ordered_selected_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_ordered_selected_sell.py'
       - 'revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py'
       - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
       - 'revenue/kaggriculture/cloud-execution-lab/test_selected_action_sell.py'
@@ -39,6 +41,8 @@ jobs:
             /revenue/kaggriculture/cloud-eval/
             /revenue/kaggriculture/20260907-offline-agent/
             /revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py
+            /revenue/kaggriculture/cloud-execution-lab/ordered_selected_sell.py
+            /revenue/kaggriculture/cloud-execution-lab/test_ordered_selected_sell.py
             /revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py
             /revenue/kaggriculture/cloud-execution-lab/mechanics.py
             /revenue/kaggriculture/cloud-execution-lab/test_selected_action_sell.py
@@ -47,6 +51,7 @@ jobs:
             /revenue/kaggriculture/cloud-execution-lab/reference/engine/
             /revenue/kaggriculture/cloud-execution-lab/reference/selected-action/
             /revenue/kaggriculture/cloud-execution-lab/reference/decision/
+            /revenue/kaggriculture/cloud-execution-lab/reference/ordered-feasibility/atlas/projection.py
       - name: Record committed test and runtime inputs
         shell: python
         run: |
@@ -124,6 +129,13 @@ jobs:
           TITAN_UPSTREAM_DIR="$LAB/reference/engine" \
           python3 revenue/kaggriculture/cloud-selected-market-checks/test_empty_lot.py \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/empty-lot-tests.log"
+      - name: Joined ordered selected-action SELL tests
+        if: ${{ !cancelled() }}
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest test_ordered_selected_sell -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/joined-wrapper-tests.log"
       - name: Bind combined results to one source snapshot
         shell: python
         run: |
