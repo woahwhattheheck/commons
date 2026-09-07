@@ -17,6 +17,8 @@ def main():
     p.add_argument('--candidate', type=Path, required=True)
     p.add_argument('--runtime', type=Path, required=True)
     p.add_argument('--seeds', required=True)
+    p.add_argument('--opponents',default='arlene,apex')
+    p.add_argument('--seats',default='0,1')
     p.add_argument('--output', type=Path, required=True)
     args = p.parse_args()
     spec = importlib.util.spec_from_file_location('frontier_existing_eval', HERE.parent.parent/'cloud-eval/evaluate.py')
@@ -37,7 +39,9 @@ def main():
     original_unit, original_commit, original_interpreter = engine._apply_unit_action, engine._commit_unit, engine.interpreter
     for seed in map(int, args.seeds.split(',')):
         for opponent, path in parents.items():
-            for seat in (0, 1):
+            if opponent not in args.opponents.split(','):
+                continue
+            for seat in map(int, args.seats.split(',')):
                 diagnostics = [dict(unit_actions=collections.Counter(), unchanged_nonpass=collections.Counter(),
                                     market_units=collections.Counter(), market_cash=collections.Counter()) for _ in range(2)]
                 farm_ids = {}
@@ -53,7 +57,7 @@ def main():
                     diagnostics[player]['unit_actions'][op] += 1
                     if op != 'PASS' and before == (farm, private):
                         diagnostics[player]['unchanged_nonpass'][op] += 1
-                        unchanged_events.append({'step': current_step[0], 'seat':player,'unit':idx,'action':action})
+                        unchanged_events.append({'step': current_step[0], 'seat':player,'unit':idx,'action':action, 'inventory':copy.deepcopy(before[1]['inventories'][idx]), 'tile':copy.deepcopy(before[0]['tiles'][(before[0]['farmer'] if idx==0 else before[0]['hands'][idx-1])[1]][(before[0]['farmer'] if idx==0 else before[0]['hands'][idx-1])[0]])})
                     return result
                 def commit(op, item, price, farm, private, *a, **kw):
                     result = original_commit(op, item, price, farm, private, *a, **kw)
