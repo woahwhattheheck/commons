@@ -63,7 +63,7 @@ class ControllerTests(unittest.TestCase):
     def test_retry_bound_no_input_mutation_and_serializable_state(self):
         obs = observation()
         original = copy.deepcopy(obs)
-        s = c.advance(obs, options={"daily_crops": 0})
+        s = c.advance(obs, options={"daily_crops": 0, "max_attempts": 3})
         for step in range(4):
             obs["step"] = step
             obs["hour"] = step
@@ -74,6 +74,40 @@ class ControllerTests(unittest.TestCase):
         self.assertEqual(c.advance(obs, previous=s), s)
         self.assertEqual(c.advance(original, previous=s)["animal_attempts"], 0)
         self.assertEqual(original, observation())
+
+    def test_installation_intent_finishes_same_target(self):
+        obs = observation()
+        obs["private"]["inventories"] = [{"GOOSE": 1}]
+        obs["farms"][0]["tiles"][2][2] = {"kind": "WEED"}
+        # Force this sole available tile to exercise the full chain.
+        obs["farms"][0]["tiles"] = [["LOCKED"]*6 for _ in range(6)]
+        obs["farms"][0]["tiles"][2][2] = {"kind": "WEED"}
+        jobs, feedback = c.installation_jobs(obs)
+        self.assertEqual(jobs[0]["next_operation"], ["DIG"])
+        obs["farms"][0]["tiles"][2][2] = None
+        jobs, feedback = c.installation_jobs(obs, jobs)
+        self.assertEqual(jobs[0]["next_operation"], ["BUILD_COOP"])
+        obs["farms"][0]["tiles"][2][2] = {"kind": "COOP"}
+        jobs, feedback = c.installation_jobs(obs, jobs)
+        self.assertEqual(jobs[0]["next_operation"], ["PLACE", "GOOSE"])
+        self.assertEqual(feedback, [])
+        obs["farms"][0]["tiles"][2][2]["animal"] = "GOOSE"
+        obs["private"]["inventories"] = [{}]
+        jobs, feedback = c.installation_jobs(obs, jobs)
+        self.assertEqual(jobs, [])
+        self.assertEqual(feedback[0]["outcome"], "installation_completed")
+
+    def test_installation_reservation_and_conflicting_live_state(self):
+        obs = observation()
+        obs["farms"][0]["hands"] = [[2,2]]
+        obs["private"]["inventories"] = [{"GOOSE": 1}, {"GOOSE": 1}]
+        jobs, _ = c.installation_jobs(obs)
+        self.assertNotEqual(jobs[0]["target"], jobs[1]["target"])
+        old = jobs[0]["target"]
+        x,y = old
+        obs["farms"][0]["tiles"][y][x] = {"kind": "PLANT", "crop": "WHEAT"}
+        jobs, _ = c.installation_jobs(obs, jobs)
+        self.assertNotEqual(jobs[0]["target"], old)
 
     def test_class_matched_examples_are_bounded_and_precede_live_state(self):
         s = c.advance(observation(pending=2), options={"daily_crops": 0})

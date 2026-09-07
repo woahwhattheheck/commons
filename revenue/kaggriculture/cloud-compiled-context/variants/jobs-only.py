@@ -261,7 +261,7 @@ def _dispatch(obs, configuration=None):
             d = distance(pos, target)
             if key in claims: return
             job = next((j for j in _PLAN.get("installation_jobs", []) if j["worker"] == index), None)
-            if carried_animal and job and action[0] in ("DIG", "BUILD_COOP", "BUILD_PASTURE", "PLACE") and tuple(target) != tuple(job["target"]): return
+            if carried_animal and job and tuple(target) != tuple(job["target"]): return
             if ending and d + 1 + min(distance(target, p) for p in depot) + 1 > remaining_turns:
                 return
             if d >= turns-hour: return
@@ -621,7 +621,7 @@ def situation_packet(context, state):
 def installation_jobs(obs, previous=None):
     """Own carried-stock intents; commit through DIG/BUILD/PLACE, observe completion.
 
-    New deterministic design. Each carried animal reserves one vacant
+    New deterministic design. Each carried animal reserves one reachable vacant
     compatible tile. Persistent worker identities last one day only; caller resets
     at EOD. Output is advisory data for FLORA; no peer scheduling code is imported.
     """
@@ -667,10 +667,6 @@ def installation_jobs(obs, previous=None):
         if not choices:
             continue
         _, metric, y, x, action, stale = min(choices)
-        if old and old["target"] != [x,y]:
-            feedback.append({"day": day, "step": obs.get("step", 0),
-                             "outcome": "installation_replanned", "worker": worker,
-                             "previous_target": old["target"], "target": [x,y]})
         reserved.add((x,y))
         jobs.append({"worker": worker, "animal": animal, "target": [x,y],
                      "next_operation": [action, animal] if action == "PLACE" else [action],
