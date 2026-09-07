@@ -254,7 +254,8 @@ class ProjectionLedger:
                                 return False
             # Actual final EOD has no sale window and imposes no salvage claim.
             if t == self.last:
-                return cash >= self.cash_min.get((t, 'after_market'), 0)
+                return (all(stock.get(p, 0) >= q for p, q in self.stock_min.items())
+                        and cash >= self.cash_min.get((t, 'after_market'), 0))
             if not phase_ok(t, 'after_market'):
                 return False
             for product in inv:
