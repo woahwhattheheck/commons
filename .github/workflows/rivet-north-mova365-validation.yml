@@ -16,37 +16,35 @@ concurrency:
 
 jobs:
   validate:
-    name: Mova ${{ matrix.label }}
+    name: Mova repair
     runs-on: ubuntu-latest
     timeout-minutes: 20
-    strategy:
-      fail-fast: false
-      max-parallel: 2
-      matrix:
-        include:
-          - label: base
-            sha: 65d9dfb09cbf544edbd0d6ac2954219427f734c7
-          - label: pr365
-            sha: 202127cb7d9b4c6764216ea63e200001dbceea63
     env:
       CI: 'true'
       NEXT_TELEMETRY_DISABLED: '1'
+      MOVA_SHA: 22f182ce0b2732e4039b889ddcba64df9e59db2b
     steps:
-      - name: Checkout public Mova revision without persisted credentials
+      - name: Checkout public repair without persisted credentials
         uses: actions/checkout@v4
         with:
           repository: woahwhattheheck/mova-store
-          ref: ${{ matrix.sha }}
+          ref: 22f182ce0b2732e4039b889ddcba64df9e59db2b
+          fetch-depth: 2
           persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Record provenance
+      - name: Record provenance and exact test-only scope
         shell: bash
         run: |
           mkdir -p /tmp/mova365-results
           git rev-parse HEAD | tee /tmp/mova365-results/head.txt
-          test "$(git rev-parse HEAD)" = '${{ matrix.sha }}'
+          test "$(git rev-parse HEAD)" = "$MOVA_SHA"
+          test "$(git rev-parse HEAD^)" = '202127cb7d9b4c6764216ea63e200001dbceea63'
+          git diff --name-only HEAD^ HEAD | tee /tmp/mova365-results/changed-paths.txt
+          test "$(cat /tmp/mova365-results/changed-paths.txt)" = 'tests/context/CartContext.clearCart.test.tsx'
+          git diff --check HEAD^ HEAD
+          git diff HEAD^ HEAD -- tests/context/CartContext.clearCart.test.tsx > /tmp/mova365-results/repair.patch
           { node --version; npm --version; sha256sum package-lock.json; } | tee /tmp/mova365-results/toolchain.txt
           git status --porcelain | tee /tmp/mova365-results/status-before.txt
       - name: Install exact lockfile without lifecycle scripts
@@ -76,6 +74,29 @@ jobs:
         run: |
           set -o pipefail
           npm run type-check 2>&1 | tee /tmp/mova365-results/types.txt
+      - name: Compare type diagnostics to already executed baseline
+        id: type_delta
+        if: always() && steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          python3 - <<'PY' | tee /tmp/mova365-results/type-delta.txt
+          import collections
+          import pathlib
+          import re
+          text = pathlib.Path('/tmp/mova365-results/types.txt').read_text()
+          errors = re.findall(r'^(.+)\(\d+,\d+\): error (TS\d+):', text, re.MULTILINE)
+          actual = collections.Counter(errors)
+          expected = collections.Counter({
+              ('tests/context/CartContext.test.tsx', 'TS2769'): 1,
+              ('tests/context/CartContext.test.tsx', 'TS7006'): 3,
+          })
+          print('Baseline: run 34073755319, base job 101595833307, pinned main 65d9dfb09cbf544edbd0d6ac2954219427f734c7')
+          print('Observed diagnostics:', dict(actual))
+          if actual != expected:
+              raise SystemExit('Type diagnostics differ from the recorded four-error baseline; inspect raw output.')
+          print('PASS: no added type diagnostics; all four observed errors are in the unchanged baseline test file.')
+          PY
       - name: Lint
         id: lint
         continue-on-error: true
@@ -83,26 +104,31 @@ jobs:
         run: |
           set -o pipefail
           npm run lint 2>&1 | tee /tmp/mova365-results/lint.txt
-      - name: Check added test formatting
+      - name: Check added test formatting without changing source
         id: format
-        if: matrix.label == 'pr365' && steps.install.outcome == 'success'
         continue-on-error: true
         shell: bash
         run: |
-          set -o pipefail
+          set +e
           ./node_modules/.bin/prettier --check tests/context/CartContext.clearCart.test.tsx 2>&1 | tee /tmp/mova365-results/format.txt
+          result=${PIPESTATUS[0]}
+          if [ "$result" -ne 0 ]; then
+            ./node_modules/.bin/prettier tests/context/CartContext.clearCart.test.tsx > /tmp/mova365-results/formatted-test.tsx
+            diff -u tests/context/CartContext.clearCart.test.tsx /tmp/mova365-results/formatted-test.tsx | tee /tmp/mova365-results/format.patch
+          fi
+          exit "$result"
       - name: Record outcomes and unchanged source
         if: always()
         shell: bash
         run: |
-          printf 'revision=%s\ninstall=%s\ncart=%s\ntests=%s\ntypes=%s\nlint=%s\nformat=%s\n' '${{ matrix.sha }}' '${{ steps.install.outcome }}' '${{ steps.cart.outcome }}' '${{ steps.tests.outcome }}' '${{ steps.types.outcome }}' '${{ steps.lint.outcome }}' '${{ steps.format.outcome }}' | tee /tmp/mova365-results/outcomes.txt
+          printf 'revision=%s\ninstall=%s\ncart=%s\ntests=%s\ntypes=%s\ntype_delta=%s\nlint=%s\nformat=%s\n' "$MOVA_SHA" '${{ steps.install.outcome }}' '${{ steps.cart.outcome }}' '${{ steps.tests.outcome }}' '${{ steps.types.outcome }}' '${{ steps.type_delta.outcome }}' '${{ steps.lint.outcome }}' '${{ steps.format.outcome }}' | tee /tmp/mova365-results/outcomes.txt
           git status --porcelain | tee /tmp/mova365-results/status-after.txt
           git diff --exit-code -- package.json package-lock.json context tests
       - name: Save test logs
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: mova365-${{ matrix.label }}-${{ github.run_id }}
+          name: mova365-repair-${{ github.run_id }}
           path: /tmp/mova365-results/
           retention-days: 14
           if-no-files-found: error
@@ -111,6 +137,6 @@ jobs:
         shell: bash
         run: |
           if grep -Eq '=(failure|cancelled)$' /tmp/mova365-results/outcomes.txt; then
-            echo 'At least one recorded check failed. Consult the baseline/head logs; this workflow does not assert the PR introduced every failure.'
+            echo 'At least one recorded check failed. Consult the baseline/head logs; a passing type delta is not a passing project type check.'
             exit 1
           fi
