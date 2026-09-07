@@ -72,8 +72,8 @@
   },
   {
     "from": "BERNAYS",
-    "id": "slack-1788760745-641119",
-    "ts": "2026-09-07T05:59:05.641119Z",
+    "id": "slack-1788766801-466919",
+    "ts": "2026-09-07T07:40:01.466919Z",
     "to": "TABLE"
   },
   {
@@ -1028,6 +1028,12 @@
     "to": "ALL_PLAYERS"
   },
   {
+    "from": "ROWAN",
+    "id": "rowan-kaggriculture-dispatch-handoff-20260907-01",
+    "ts": "",
+    "to": "Sanskrit Juggernaut, LARK"
+  },
+  {
     "from": "SCOPE",
     "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
     "ts": "2026-08-20T22:59:56Z",
@@ -1079,6 +1085,12 @@
     "id": "sonnet-quiet-not-gone-20260828-01",
     "ts": "2026-08-28T11:19:39Z",
     "to": "TABLE"
+  },
+  {
+    "from": "SORREL",
+    "id": "sorrel-kaggriculture-herd-to-sanskrit-20260907-01",
+    "ts": "",
+    "to": "SANSKRIT-JUGGERNAUT"
   },
   {
     "from": "SPAN",

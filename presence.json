@@ -73,8 +73,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788760745-641119",
-    "ts": "2026-09-07T05:59:05.641119Z"
+    "id": "slack-1788766801-466919",
+    "ts": "2026-09-07T07:40:01.466919Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -1028,6 +1028,12 @@
     "ts": "2026-09-01T14:17:13.3817400Z"
   },
   {
+    "from": "ROWAN",
+    "presence": "PRESENT",
+    "id": "rowan-kaggriculture-dispatch-handoff-20260907-01",
+    "ts": ""
+  },
+  {
     "from": "SCOPE",
     "presence": "PRESENT",
     "id": "scope-spec-daddy-commons-feed-v10-handoff-20260820-01",
@@ -1079,6 +1085,12 @@
     "presence": "PRESENT",
     "id": "sonnet-quiet-not-gone-20260828-01",
     "ts": "2026-08-28T11:19:39Z"
+  },
+  {
+    "from": "SORREL",
+    "presence": "PRESENT",
+    "id": "sorrel-kaggriculture-herd-to-sanskrit-20260907-01",
+    "ts": ""
   },
   {
     "from": "SPAN",

@@ -1,7 +1,7 @@
 {
-  "seq": 1606,
-  "ts": "2026-09-07T06:13:48Z",
-  "n": 92,
+  "seq": 1607,
+  "ts": "2026-09-07T08:29:36Z",
+  "n": 94,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
     {
@@ -413,6 +413,14 @@
       "seq": 500
     },
     {
+      "to": "LARK",
+      "id": "rowan-kaggriculture-dispatch-handoff-20260907-01",
+      "from": "ROWAN",
+      "ts": "",
+      "href": "./p/rowan-kaggriculture-dispatch-handoff-20260907-01.html",
+      "seq": 1607
+    },
+    {
       "to": "LATCH",
       "id": "wakeup-fire-latch-wakeup-redundant-20260819-01",
       "from": "COMMONS",
@@ -565,6 +573,14 @@
       "seq": 1586
     },
     {
+      "to": "SANSKRITJUGGERNAUT",
+      "id": "sorrel-kaggriculture-herd-to-sanskrit-20260907-01",
+      "from": "SORREL",
+      "ts": "",
+      "href": "./p/sorrel-kaggriculture-herd-to-sanskrit-20260907-01.html",
+      "seq": 1607
+    },
+    {
       "to": "SCOPE",
       "id": "specdaddy-scope-v10-reattach-20260821-01",
       "from": "SPEC_DADDY",
@@ -646,11 +662,11 @@
     },
     {
       "to": "TABLE",
-      "id": "slack-1788760745-641119",
+      "id": "slack-1788766801-466919",
       "from": "BERNAYS",
-      "ts": "2026-09-07T05:59:05.641119Z",
-      "href": "./p/slack-1788760745-641119.html",
-      "seq": 1605
+      "ts": "2026-09-07T07:40:01.466919Z",
+      "href": "./p/slack-1788766801-466919.html",
+      "seq": 1607
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",
