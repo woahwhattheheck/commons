@@ -11,6 +11,7 @@ import threading
 import time
 from pathlib import Path
 
+from .outcomes import effect_uncertain, tool_failed
 from .services import build_capability_manifest, redacted
 
 OPEN = "<commons_equipment_request>"
@@ -48,6 +49,18 @@ def parse_request(text: str) -> dict | None:
     if not isinstance(value.get("arguments", {}), dict):
         raise ValueError("arguments must be an object")
     return value
+
+
+def terminal_delivery_rejection(delivery: dict) -> bool:
+    """Recognize only a recorded, definitive pre-transport policy rejection."""
+    return (
+        isinstance(delivery, dict)
+        and delivery.get("isError") is True
+        and delivery.get("uncertain") is False
+        and not effect_uncertain(delivery)
+        and delivery.get("error") == "PublicationPolicyViolation"
+        and delivery.get("code") == "commons_publication_terms"
+    )
 
 
 class SlackEquipmentCarrier:
@@ -118,7 +131,13 @@ class SlackEquipmentCarrier:
                 cid + ":" + message["ts"] + ":" + str(index), "slack_post_message",
                 {"channel_id": self.channel, "thread_ts": message.get("thread_ts") or message["ts"], "text": text},
                 self.catalog.services.call)
-            if delivery.get("isError") or delivery.get("result", {}).get("ok") is False:
+            if tool_failed(delivery) or effect_uncertain(delivery):
+                if terminal_delivery_rejection(delivery):
+                    # Retain the journaled rejection and omit remaining parts.
+                    # This is a terminal delivery outcome, never a sent receipt.
+                    return {"request_id": rid, "call_id": cid,
+                        "code": delivery["code"], "part": index,
+                        "parts": len(parts), "delivered_parts": index - 1}
                 raise RuntimeError("equipment result delivery failed; inspect journal before retry")
 
     def once(self):
@@ -137,16 +156,26 @@ class SlackEquipmentCarrier:
             if not cursor:
                 break
             args["cursor"] = cursor
+        terminal_failures = 0
+        last_terminal_failure = None
         for message in sorted(messages, key=lambda m: float(m["ts"])):
-            self.process(message)
+            terminal_failure = self.process(message)
+            if terminal_failure is not None:
+                terminal_failures += 1
+                last_terminal_failure = terminal_failure
+            # The cursor records a handled request, not successful delivery.
+            # Definitive rejected replies remain in the existing tool journal.
             self._save(message["ts"])
+        return {"terminal_delivery_failures": terminal_failures,
+            "last_terminal_delivery_failure": last_terminal_failure}
 
     def run(self):
         while not self._stop.is_set():
             try:
-                self.once()
+                delivery_status = self.once()
                 self.status = {"ok": True, "phase": "polling", "channel_id": self.channel,
-                    "thread_ts": self.thread_ts, "cursor": self.cursor, "time": time.time()}
+                    "thread_ts": self.thread_ts, "cursor": self.cursor, "time": time.time(),
+                    **delivery_status}
             except Exception as exc:
                 self.status = {"ok": False, "phase": "error", "error": type(exc).__name__,
                     "message": redacted(str(exc)), "cursor": self.cursor, "time": time.time()}
