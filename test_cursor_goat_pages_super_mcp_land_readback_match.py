@@ -28,7 +28,7 @@ KEEP = {
     "p/latch-wake-super-mcp-pointer-20260902-01.md": "a35e63c3",
     "p/wire-shared-super-mcp-catalog-20260902-01.md": "b6cb27ef",
     "super-mcp.html": "7fd9bc0a",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
     "door.js": "5bc431b1",
     "p/cursor-claude-commerce-agents-20260902-01.md": "3e48f691",
     "host/commerce_agents.py": "8d2ddf29",

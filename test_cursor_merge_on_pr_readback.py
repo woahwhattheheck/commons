@@ -36,7 +36,7 @@ KEEP = {
     "p/grokbuild-pr8399-commons-slack-readback-20260902-01.md": "aaf290ad",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
     "p/cursor-mcp-get-grounding-readback-20260902-01.md": "4d7bc317",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
     "ground/OWNER_NOW.md": "0a574d94",

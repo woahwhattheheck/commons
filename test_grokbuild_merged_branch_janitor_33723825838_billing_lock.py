@@ -47,7 +47,7 @@ KEEP = {
     "p/grok-build-moving-main-mirror-billing-lock-20260903-01.md": "4550e922",
     "catalog.html": "97f683f1",
     "boards.html": "7d046f44",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
 }
 
 EVENT_8634 = {

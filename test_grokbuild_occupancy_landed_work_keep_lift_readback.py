@@ -34,7 +34,7 @@ KEEP = {
     "test_stealable_lanes_occupancy.py": "2f10a923",
     "test_landed_work_feed.py": "275077fe",
     "test_landed_work_feed_readback.py": "09933895",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
     "autogtm.html": "fab1d536",

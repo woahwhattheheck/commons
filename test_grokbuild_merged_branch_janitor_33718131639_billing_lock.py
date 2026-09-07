@@ -45,7 +45,7 @@ KEEP = {
     "test_grokbuild_harness_wakeup_33717474657_billing_lock.py": "d99c08de",
     "catalog.html": "97f683f1",
     "boards.html": "7d046f44",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
 }
 
 EVENT_8584 = {

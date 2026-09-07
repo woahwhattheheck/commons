@@ -38,7 +38,7 @@ KEEP = {
     "packs/desk-website-service-20260902-01/instance.json": "f460d7bc",
     "packs/desk-website-service-20260902-01/checkout.md": "64633e36",
     "packs/desk-website-service-20260902-01/door.html": "cd2be48f",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
     "door.js": "5bc431b1",
     "ground/OWNER_NOW.md": "0a574d94",
 }
