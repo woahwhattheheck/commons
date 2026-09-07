@@ -1,0 +1,67 @@
+name: ASTRA DOCK T10 pinned source transport
+on:
+  push:
+    branches: [ci/astra-dock-t10-sourcepack-20260907]
+    paths: [.github/workflows/astra-dock-t10-sourcepack.yml]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 8329e78768906dc6e75ca3712e1690adc1ab2148
+          path: commons
+          persist-credentials: false
+          sparse-checkout: |
+            revenue/kaggriculture/cloud-frontier-policy/next-panel
+            revenue/kaggriculture/cloud-frontier-policy/export
+            revenue/kaggriculture/cloud-frontier-policy/vendor
+            revenue/kaggriculture/cloud-eval
+            revenue/kaggriculture/cloud-pack
+      - uses: actions/checkout@v4
+        with:
+          repository: Kaggle/kaggle-environments
+          ref: 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c
+          path: engine
+          persist-credentials: false
+          sparse-checkout: |
+            kaggle_environments/envs/kaggriculture
+      - name: Copy only pinned research inputs and licenses
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p sourcepack/commons/revenue/kaggriculture/cloud-frontier-policy sourcepack/engine
+          for part in next-panel export vendor; do
+            cp -a "commons/revenue/kaggriculture/cloud-frontier-policy/$part" sourcepack/commons/revenue/kaggriculture/cloud-frontier-policy/
+          done
+          for part in cloud-eval cloud-pack; do
+            cp -a "commons/revenue/kaggriculture/$part" sourcepack/commons/revenue/kaggriculture/
+          done
+          for file in kaggriculture.py kaggriculture.json utils.py; do
+            cp "engine/kaggle_environments/envs/kaggriculture/$file" sourcepack/engine/
+          done
+          cp engine/LICENSE sourcepack/engine/LICENSE
+          if test -f commons/LICENSE; then cp commons/LICENSE sourcepack/commons/LICENSE; fi
+          python - <<'PY'
+          import hashlib, json
+          from pathlib import Path
+          root = Path('sourcepack')
+          paths = sorted(p for p in root.rglob('*') if p.is_file())
+          manifest = {
+              'operation_id': 'astra-dock-t10-sourcepack-20260907-01',
+              'commons_ref': '8329e78768906dc6e75ca3712e1690adc1ab2148',
+              'engine_ref': '28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c',
+              'files': {str(p.relative_to(root)): {'sha256': hashlib.sha256(p.read_bytes()).hexdigest(), 'bytes': p.stat().st_size} for p in paths},
+          }
+          (root/'SOURCE_MANIFEST.json').write_text(json.dumps(manifest, indent=2)+'\n')
+          print(json.dumps({'files':len(paths), 'bytes':sum(p.stat().st_size for p in paths)}))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: astra-dock-t10-sourcepack
+          path: sourcepack/
+          if-no-files-found: error
+          retention-days: 1
