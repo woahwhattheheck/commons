@@ -23,8 +23,7 @@ def build(arm, destination):
     for p in sorted((HERE/'vendor').rglob('*')):
         if p.is_file() and '__pycache__' not in str(p) and p.suffix != '.pyc':
             files[str(p.relative_to(HERE))] = p.read_bytes()
-    for name in ('README.md', 'SOURCE-PINS.json', 'NOTICE.md',
-                 'SOURCE-FREEZE.json', 'SELECTION.json', 'RESULTS.md'):
+    for name in ('README.md', 'SOURCE-PINS.json', 'NOTICE.md'):
         files[name] = (HERE/name).read_bytes()
     raw=io.BytesIO()
     with tarfile.open(fileobj=raw,mode='w') as tar:
