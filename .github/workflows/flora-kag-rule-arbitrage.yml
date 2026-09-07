@@ -38,3 +38,4 @@ jobs:
             git fetch --filter=blob:none --depth=100 origin main
             git diff --exit-code HEAD origin/main -- revenue/kaggriculture/cloud-rule-arbitrage .github/workflows/flora-kag-rule-arbitrage.yml
             python .github/scripts/audit_git_terminal.py --target-ref origin/main --expected-commit "$EXPECTED_COMMIT" --required-path revenue/kaggriculture/cloud-rule-arbitrage/candidate.py
+          fi
