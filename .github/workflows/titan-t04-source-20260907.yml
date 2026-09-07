@@ -1,0 +1,73 @@
+name: TITAN T04 pinned source transport
+on:
+  push:
+    branches: [verify/titan-t04-source-20260907]
+    paths: [.github/workflows/titan-t04-source-20260907.yml]
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 8329e78768906dc6e75ca3712e1690adc1ab2148
+          path: source/commons
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/*.py
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/*NOTICE*
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/LICENSE
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/UPSTREAM.json
+            /revenue/kaggriculture/cloud-frontier-policy/export/
+            /revenue/kaggriculture/cloud-frontier-policy/vendor/
+            /revenue/kaggriculture/cloud-pack/*.py
+            /revenue/kaggriculture/cloud-eval/*.py
+            /revenue/kaggriculture/20260907-offline-agent/evaluate.py
+      - uses: actions/checkout@v4
+        with:
+          repository: Kaggle/kaggle-environments
+          ref: 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c
+          path: source/official
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /kaggle_environments/envs/kaggriculture/kaggriculture.py
+            /kaggle_environments/envs/kaggriculture/kaggriculture.json
+            /kaggle_environments/envs/kaggriculture/utils.py
+            /LICENSE
+      - name: Package exact tracked files and manifest
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, pathlib, subprocess, tarfile
+          root = pathlib.Path('source')
+          manifest = {}
+          with tarfile.open('titan-t04-source.tar.gz', 'w:gz') as archive:
+              for repo in ('commons', 'official'):
+                  base = root/repo
+                  paths = subprocess.check_output(['git','ls-files','-z'], cwd=base).decode().split('\0')
+                  for name in paths:
+                      p = base/name
+                      if not name or not p.is_file(): continue
+                      data = p.read_bytes()
+                      key = str(p.relative_to(root))
+                      manifest[key] = {'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
+                      archive.add(p, arcname=key, recursive=False)
+          pathlib.Path('titan-t04-source-manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
+          expected='1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4'
+          assert manifest['commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py']['sha256']==expected
+          print('Manifested source files:', len(manifest))
+          print('Archive SHA256:',hashlib.sha256(pathlib.Path('titan-t04-source.tar.gz').read_bytes()).hexdigest())
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-t04-pinned-source
+          path: |
+            titan-t04-source.tar.gz
+            titan-t04-source-manifest.json
+          if-no-files-found: error
+          retention-days: 30
