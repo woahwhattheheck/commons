@@ -173,7 +173,7 @@ def snapshot(source: Path, output_dir: Path) -> Path:
 def read_manifest(manifest_path: Path) -> tuple[dict[str, Any], Path]:
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as error:
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
         raise BackupError(f"manifest unreadable: {manifest_path}: {error}") from error
     required = {
         "schema_version",
