@@ -48,8 +48,9 @@ def sale_receipts(lots, inventory_at, quote, last_sale):
 
 
 def select_hire(observation, configuration, plans, *, inventory_scenarios,
-                quote, funds_before_hire=None, cash_reserve=0, free_order_slots=1):
-    """Choose one supplied extra-hand plan with positive worst-scenario margin.
+                quote, funds_before_hire=None, cash_reserve=0, free_order_slots=1,
+                objective="worst_case", central_scenario=None, scenario_weights=None):
+    """Choose a plan by conditional incremental OWN cash profit, not game margin.
 
     Plan fields: id, observed_step, jointly_feasible, first_work_step,
     last_work_step, baseline_sales, with_hire_sales, additional_cost.
@@ -59,6 +60,9 @@ def select_hire(observation, configuration, plans, *, inventory_scenarios,
 
     Feasibility is supplied by FLORA's scheduler, not established by this
     calculation. No cash/price result is a guarantee of future execution.
+    Worst-case is the compatibility default, not a proven winning objective.
+    Central and weighted objectives require explicit caller choices; weights are
+    not inferred probabilities. All evaluated plans retain the full profit vector.
     """
     now = int(observation['step'])
     farm = observation['farms'][observation['player']]
@@ -66,11 +70,34 @@ def select_hire(observation, configuration, plans, *, inventory_scenarios,
     last = int(configuration.get('episodeSteps', 720)) - 2
     if turns <= 0 or not inventory_scenarios:
         raise ValueError('Positive day length and explicit scenarios required')
+    names = set(inventory_scenarios)
+    if objective == 'worst_case':
+        if central_scenario is not None or scenario_weights is not None:
+            raise ValueError('Worst-case objective does not use weights or a central scenario')
+        score = lambda profits: min(profits.values())
+    elif objective == 'central_scenario':
+        if central_scenario not in names or scenario_weights is not None:
+            raise ValueError('Name one supplied central scenario, without weights')
+        score = lambda profits: profits[central_scenario]
+    elif objective == 'weighted':
+        if central_scenario is not None or scenario_weights is None or set(scenario_weights) != names:
+            raise ValueError('Supply weights for exactly the provided scenarios')
+        scenario_weights = {k: _number(v) for k, v in scenario_weights.items()}
+        if any(v < 0 for v in scenario_weights.values()) or abs(sum(scenario_weights.values()) - 1) > 1e-9:
+            raise ValueError('Weights must be nonnegative and sum to one')
+        score = lambda profits: sum(scenario_weights[k] * profits[k] for k in profits)
+    else:
+        raise ValueError('Unknown selection objective')
     cost = hire_cost(int(farm['hires_today']), int(configuration.get('farmHandCostMult', 1)))
     funds = _number(farm['money'] if funds_before_hire is None else funds_before_hire)
     reserve = _number(cash_reserve)
     out = {'decision': 'KEEP', 'plan_id': None, 'market_order': None,
-           'hire_cost': cost, 'conditional_margin': None, 'evaluations': []}
+           'hire_cost': cost, 'conditional_own_cash_profit_range': None,
+           'scenario_own_cash_profit': {}, 'selection_own_cash_profit': None,
+           'objective': objective, 'central_scenario': central_scenario,
+           'scenario_weights': scenario_weights,
+           # Compatibility only: the old field NEVER denotes own-minus-rival cash.
+           'conditional_margin': None, 'evaluations': []}
     if free_order_slots < 1 or funds - reserve < cost:
         out['reason'] = 'no_order_slot' if free_order_slots < 1 else 'cash_shortfall'
         return out
@@ -90,17 +117,24 @@ def select_hire(observation, configuration, plans, *, inventory_scenarios,
         if any(l['step'] < now or l['step'] > last for l in lots):
             result['reason'] = 'sale_horizon'; continue
         extra = _number(plan['additional_cost'])
-        margins = {}
+        profits = {}
         for name, inventory_at in inventory_scenarios.items():
             base = sale_receipts(plan['baseline_sales'], inventory_at, quote, last)
             candidate = sale_receipts(plan['with_hire_sales'], inventory_at, quote, last)
-            margins[name] = candidate - base - cost - extra
-        floor = min(margins.values())
-        result.update(reason='evaluated', margins=margins,
-                      conditional_margin=[floor, max(margins.values())])
-        if floor > best:
-            best = floor
+            profits[name] = candidate - base - cost - extra
+        profit_range = [min(profits.values()), max(profits.values())]
+        selected_profit = score(profits)
+        result.update(reason='evaluated', scenario_own_cash_profit=profits,
+                      conditional_own_cash_profit_range=profit_range,
+                      selection_own_cash_profit=selected_profit,
+                      # Deprecated aliases retained for existing integration.
+                      margins=dict(profits), conditional_margin=list(profit_range))
+        if selected_profit > best:
+            best = selected_profit
             out.update(decision='HIRE', plan_id=plan['id'], market_order=['HIRE'],
-                       conditional_margin=result['conditional_margin'])
-    out['reason'] = 'positive_incremental_margin' if best > 0 else 'no_positive_feasible_plan'
+                       scenario_own_cash_profit=dict(profits),
+                       conditional_own_cash_profit_range=list(profit_range),
+                       selection_own_cash_profit=selected_profit,
+                       conditional_margin=list(profit_range))
+    out['reason'] = 'positive_incremental_own_cash_profit' if best > 0 else 'no_positive_feasible_plan'
     return out
