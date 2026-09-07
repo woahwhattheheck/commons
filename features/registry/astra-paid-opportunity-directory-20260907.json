@@ -1,0 +1,32 @@
+{
+  "schema": "commons-feature-v1",
+  "id": "astra-paid-opportunity-directory-20260907",
+  "name": "Paid opportunity channel directory",
+  "capability": "Find the eight existing paid-work Slack homes by name, description or ID, with static fallback and source-specific routing context.",
+  "owner_subsystem": "Commons navigation",
+  "carrier": "Static HTML with optional JavaScript; GitHub Pages",
+  "claimed_paths": [
+    "paid-opportunities.html",
+    "paid-opportunities.js",
+    "docs/paid-opportunities.md",
+    "START.md",
+    "boards.html",
+    "hub_pages.py"
+  ],
+  "test_paths": [
+    "test_paid_opportunities.py",
+    "test_paid_opportunities.js"
+  ],
+  "public_entrypoint": "https://woahwhattheheck.github.io/commons/paid-opportunities.html",
+  "dependencies": [
+    "commons.css",
+    "hub_pages.py"
+  ],
+  "resource_links": [
+    "docs/paid-opportunities.md",
+    "p/paid-opportunity-scout-runbook-20260907-v1.md",
+    "p/astra-paid-opportunity-directory-20260907.md",
+    "https://github.com/woahwhattheheck/commons/pull/9725"
+  ],
+  "next_gap": "Directory delivered. The channel map is a dated source snapshot; future channel changes require reading current coordination. Individual opportunity availability remains in canonical threads."
+}

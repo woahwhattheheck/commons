@@ -14,7 +14,7 @@
     "PLANNED": 0,
     "SOURCE_BUILT": 3,
     "SUPERSEDED": 0,
-    "TESTS_PRESENT": 110
+    "TESTS_PRESENT": 112
   },
   "features": [
     {
@@ -729,6 +729,61 @@
       "test_paths": [
         "test_aquatrace_work_order_f_release_readiness.py",
         "aquatrace_work_order_f_release_readiness.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
+      "capability": "Find the eight existing paid-work Slack homes by name, description or ID, with static fallback and source-specific routing context.",
+      "carrier": "Static HTML with optional JavaScript; GitHub Pages",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "paid-opportunities.html",
+        "paid-opportunities.js",
+        "docs/paid-opportunities.md",
+        "START.md",
+        "boards.html",
+        "hub_pages.py"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "paid-opportunities.html",
+        "paid-opportunities.js",
+        "docs/paid-opportunities.md",
+        "START.md",
+        "boards.html",
+        "hub_pages.py"
+      ],
+      "dependencies": [
+        "commons.css",
+        "hub_pages.py"
+      ],
+      "evidence_ids": [],
+      "file": "astra-paid-opportunity-directory-20260907.json",
+      "id": "astra-paid-opportunity-directory-20260907",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Paid opportunity channel directory",
+      "next_gap": "Directory delivered. The channel map is a dated source snapshot; future channel changes require reading current coordination. Individual opportunity availability remains in canonical threads.",
+      "owner_subsystem": "Commons navigation",
+      "public_entrypoint": "https://woahwhattheheck.github.io/commons/paid-opportunities.html",
+      "receipts": [],
+      "related": {},
+      "resource_links": [
+        "docs/paid-opportunities.md",
+        "p/paid-opportunity-scout-runbook-20260907-v1.md",
+        "p/astra-paid-opportunity-directory-20260907.md",
+        "https://github.com/woahwhattheheck/commons/pull/9725"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_paid_opportunities.py",
+        "test_paid_opportunities.js"
       ],
       "test_paths_missing": [],
       "test_status": "TESTS_PRESENT"
@@ -5071,6 +5126,51 @@
     {
       "author_claim_ignored": "",
       "blob_proof": [],
+      "capability": "Recover available Git bundle objects offline with explicit unresolved deltas and prerequisite history, without claiming repository restoration.",
+      "carrier": "RIVET / ChatGPT GitHub and Slack connectors",
+      "chat_ignored": false,
+      "claimed_paths": [
+        "host/git_bundle_inspect.py",
+        "docs/GIT_BUNDLE_INSPECTOR.md"
+      ],
+      "claimed_paths_missing": [],
+      "claimed_paths_present": [
+        "host/git_bundle_inspect.py",
+        "docs/GIT_BUNDLE_INSPECTOR.md"
+      ],
+      "dependencies": [
+        "Python standard library"
+      ],
+      "evidence_ids": [],
+      "file": "rivet-git-bundle-inspect-20260906-01.json",
+      "id": "rivet-git-bundle-inspect-20260906-01",
+      "last_change": "",
+      "live_status": "UNMEASURED",
+      "main_sha": "",
+      "name": "Offline Git bundle object recovery",
+      "next_gap": "Native Git repository restoration requires the missing prerequisite history; root integration coverage does not certify the complete Commons battery.",
+      "owner_subsystem": "handoff-recovery",
+      "public_entrypoint": "docs/GIT_BUNDLE_INSPECTOR.md",
+      "receipts": [],
+      "related": {},
+      "resource_links": [
+        "evidence/rivet-git-bundle-inspector-20260906.json",
+        "p/rivet-bundle-recovery-ci-20260906-01.md",
+        "https://github.com/woahwhattheheck/commons/pull/9329"
+      ],
+      "rollup": "TESTS_PRESENT",
+      "source_status": "SOURCE_BUILT",
+      "superseded_by": "",
+      "test_paths": [
+        "test_git_bundle_recovery_ci.py",
+        "tests/test_git_bundle_inspect.py"
+      ],
+      "test_paths_missing": [],
+      "test_status": "TESTS_PRESENT"
+    },
+    {
+      "author_claim_ignored": "",
+      "blob_proof": [],
       "capability": "Capacity, lifecycle, condition, authority, and evidence freshness. Cache is not capacity. Secrets are not landed.",
       "carrier": "GROK",
       "chat_ignored": false,
@@ -6983,7 +7083,7 @@
     }
   ],
   "law": "Status is derived from exact Git/tree/receipt evidence. TESTS_PRESENT means test files exist; test execution is unmeasured by this projection. Source-built is not live. Chat, Slack, ntfy, open PRs, and claimed_status never promote a feature. HTTP/Pages is a bake.",
-  "n_features": 119,
+  "n_features": 121,
   "n_invalid": 0,
   "not_this": {
     "builds.html": "permit SOP.",
