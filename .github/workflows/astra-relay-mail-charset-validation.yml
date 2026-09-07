@@ -1,0 +1,206 @@
+name: ASTRA relay MIME charset validation
+on:
+  push:
+    branches: [astra/relay-mail-charset-validation-20260907]
+    paths: [.github/workflows/astra-relay-mail-charset-validation.yml]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: d39b989f842db7c51d06396998b0ccaea09cc305
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            host/inbox_slack_relay.py
+            tests/test_inbox_slack_relay.py
+      - name: Generate MIME regression fixtures
+        shell: bash
+        run: |
+          cat > test_inbox_mail_charset.py <<'PY'
+          """Generated MIME fixtures for the real work-mail relay; no provider requests."""
+          import base64
+          import unittest
+          from host.inbox_slack_relay import mail_body
+
+          def part(text, charset="utf-8", *, mime="text/plain", declared=None, header_name="Content-Type"):
+              payload = {"mimeType": mime, "body": {"data": base64.urlsafe_b64encode(text.encode(charset)).decode().rstrip("=")}}
+              if declared is not False:
+                  label = charset if declared is None else declared
+                  payload["headers"] = [{"name": header_name, "value": f'{mime}; charset="{label}"'}]
+              return payload
+
+          class MailCharsetTests(unittest.TestCase):
+              def test_latin1(self):
+                  text = "Révision du dépôt"
+                  self.assertEqual(mail_body(part(text, "iso-8859-1")), text)
+              def test_windows1252(self):
+                  text = "Review “résumé” — €200"
+                  self.assertEqual(mail_body(part(text, "windows-1252")), text)
+              def test_iso2022jp(self):
+                  text = "登録の締め切り"
+                  self.assertEqual(mail_body(part(text, "iso-2022-jp")), text)
+              def test_unicode_encodings(self):
+                  text = "Review: 日本語 · 中文 · résumé"
+                  for charset in ("utf-8", "utf-16", "utf-16-le", "utf-32"):
+                      with self.subTest(charset=charset):
+                          self.assertEqual(mail_body(part(text, charset)), text)
+              def test_header_names_and_parameters_are_case_insensitive(self):
+                  payload = part("Résumé", "iso-8859-1", header_name="cOnTeNt-TyPe")
+                  payload["headers"][0]["value"] = 'TEXT/PLAIN; format=flowed; CHARSET="ISO-8859-1"'
+                  self.assertEqual(mail_body(payload), "Résumé")
+              def test_missing_and_empty_charset_keep_utf8_default(self):
+                  for declared in (False, ""):
+                      with self.subTest(declared=declared):
+                          self.assertEqual(mail_body(part("Résumé 日本語", declared=declared)), "Résumé 日本語")
+                  payload = part("Résumé")
+                  payload["headers"][0]["value"] = "text/plain; format=flowed"
+                  self.assertEqual(mail_body(payload), "Résumé")
+              def test_unknown_or_non_text_codec_falls_back_to_utf8(self):
+                  for declared in ("not-a-real-charset", "base64_codec", "rot_13", "hex_codec", "idna"):
+                      with self.subTest(declared=declared):
+                          self.assertEqual(mail_body(part("Résumé 日本語", declared=declared)), "Résumé 日本語")
+              def test_invalid_utf8_keeps_replacement_behavior(self):
+                  payload = {"mimeType": "text/plain", "body": {"data": base64.urlsafe_b64encode(b"review:\xff").decode()}}
+                  self.assertEqual(mail_body(payload), "review:\ufffd")
+              def test_invalid_declared_sequence_uses_replacement(self):
+                  payload = part("x", "shift_jis")
+                  payload["body"]["data"] = base64.urlsafe_b64encode(b"review:\x82").decode()
+                  self.assertEqual(mail_body(payload), "review:\ufffd")
+              def test_html_is_decoded_before_text_extraction(self):
+                  payload = part('<html><head><title>omit</title></head><body><p>Révision &amp; dépôt</p><script>omit</script></body></html>', "iso-8859-1", mime="text/html")
+                  self.assertEqual(mail_body(payload), "Révision & dépôt")
+              def test_each_leaf_uses_its_own_charset(self):
+                  payload = {"mimeType": "multipart/mixed", "headers": [{"name": "Content-Type", "value": "multipart/mixed; charset=ascii"}], "parts": [part("Révision", "iso-8859-1"), part("登録", "iso-2022-jp"), part("€200", "windows-1252")]}
+                  self.assertEqual(mail_body(payload), "Révision\n登録\n€200")
+              def test_multipart_alternative_still_prefers_plain_text(self):
+                  payload = {"mimeType": "multipart/alternative", "parts": [part("Révision", "iso-8859-1"), part("<p>duplicate</p>", mime="text/html")]}
+                  self.assertEqual(mail_body(payload), "Révision")
+              def test_nested_alternatives(self):
+                  payload = {"mimeType": "multipart/mixed", "parts": [{"mimeType": "multipart/alternative", "parts": [part("登録", "iso-2022-jp"), part("<p>duplicate</p>", mime="text/html")]}, part("Résumé", "iso-8859-1")]}
+                  self.assertEqual(mail_body(payload), "登録\nRésumé")
+              def test_filename_attachment_is_not_read(self):
+                  payload = part("Révision", "iso-8859-1")
+                  payload["filename"] = "attachment.txt"
+                  self.assertEqual(mail_body(payload), "")
+              def test_stored_attachment_placeholder_unchanged(self):
+                  self.assertEqual(mail_body({"mimeType": "text/plain", "body": {"attachmentId": "fixture"}}), "[Body stored as an attachment; read original in Gmail.]")
+              def test_bad_base64_placeholder_unchanged(self):
+                  self.assertEqual(mail_body({"mimeType": "text/plain", "body": {"data": "a"}}), "[Body decoding failed; read original in Gmail.]")
+              def test_empty_body_unchanged(self):
+                  self.assertEqual(mail_body({"mimeType": "text/plain", "body": {}}), "")
+              def test_non_text_payload_omitted(self):
+                  self.assertEqual(mail_body(part("not text", mime="application/octet-stream")), "")
+
+          if __name__ == "__main__":
+              unittest.main()
+          PY
+      - name: Verify original suite and discriminating baseline controls
+        shell: bash
+        run: |
+          mkdir -p evidence
+          python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee evidence/original-suite.log
+          python3 - <<'PY' 2>&1 | tee evidence/baseline-controls.log
+          import unittest
+          from test_inbox_mail_charset import MailCharsetTests
+          suite = unittest.TestSuite(MailCharsetTests(name) for name in ('test_latin1', 'test_windows1252', 'test_iso2022jp'))
+          result = unittest.TextTestRunner(verbosity=2).run(suite)
+          assert result.testsRun == 3 and len(result.failures) == 3 and not result.errors
+          print('EXPECTED: all three charset controls distinguish the original implementation')
+          PY
+      - name: Apply exact compatible source patch
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib
+          path = Path('host/inbox_slack_relay.py')
+          original = path.read_bytes()
+          blob = hashlib.sha1(b'blob ' + str(len(original)).encode() + b'\0' + original).hexdigest()
+          assert blob == 'f3039831e73c50c2dc70cdbfede5c53a1ce99252', 'Source moved; inspect before applying'
+          text = original.decode('utf-8')
+          old_import = 'from email.utils import parseaddr\n'
+          new_import = 'from email.message import Message\n' + old_import
+          old = '''    try:
+                  raw = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4)).decode("utf-8", errors="replace")
+              except (ValueError, TypeError):
+                  return "[Body decoding failed; read original in Gmail.]"
+          '''
+          new = '''    try:
+                  data = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4))
+              except (ValueError, TypeError):
+                  return "[Body decoding failed; read original in Gmail.]"
+              # Gmail's base64url transport wraps bytes in this MIME part's charset.
+              content_type = Message()
+              for header in payload.get("headers", []):
+                  if header.get("name", "").lower() == "content-type":
+                      content_type["Content-Type"] = header.get("value", "")
+                      break
+              charset = content_type.get_content_charset() or "utf-8"
+              try:
+                  raw = data.decode(charset, errors="replace")
+              except (LookupError, UnicodeError, ValueError):
+                  # Unknown/non-text codecs must not prevent the remaining mail delivery.
+                  raw = data.decode("utf-8", errors="replace")
+          '''
+          assert text.count(old_import) == 1 and text.count(old) == 1
+          path.write_bytes(text.replace(old_import, new_import).replace(old, new).encode('utf-8'))
+          print('Original blob:', blob)
+          PY
+      - name: Execute complete candidate regressions
+        shell: bash
+        run: |
+          python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee evidence/candidate-original-suite.log
+          python3 -m unittest test_inbox_mail_charset -v 2>&1 | tee evidence/candidate-charset-suite.log
+          python3 -m py_compile host/inbox_slack_relay.py test_inbox_mail_charset.py
+          git diff --check
+          git diff -- host/inbox_slack_relay.py > evidence/implementation.patch
+      - name: Retain exact source and receipt
+        shell: bash
+        env:
+          RUN_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, json, os, shutil
+          target = Path('evidence/candidate')
+          (target / 'host').mkdir(parents=True)
+          (target / 'p').mkdir()
+          shutil.copyfile('host/inbox_slack_relay.py', target / 'host/inbox_slack_relay.py')
+          shutil.copyfile('test_inbox_mail_charset.py', target / 'test_inbox_mail_charset.py')
+          receipt = '''# ASTRA relay MIME charset preservation
+
+          Operation: `astra-relay-mail-charset-20260907-01`.
+
+          Preserve multilingual work-mail contents by decoding each leaf using its declared MIME charset. UTF-8 remains the default; unknown or non-text codecs fall back to UTF-8 replacement. Existing HTML extraction, plain-text preference, attachment omission, privacy filters, source-read state, and delivery scheduling remain unchanged.
+
+          Source base: `d39b989f842db7c51d06396998b0ccaea09cc305`; original worker blob `f3039831e73c50c2dc70cdbfede5c53a1ce99252`. ASTRA-VISIBILITY retains original relay implementation credit and F/equipment retains activation ownership.
+
+          Hosted validation: original 24-test suite passes before and after the patch. The original implementation fails each of three generated Latin-1, Windows-1252 and ISO-2022-JP controls. Candidate passes all 18 new test methods, including Unicode variants, codec fallback, HTML, mixed leaf charsets, nested alternatives and attachment/error controls. Compile and diff checks pass. These are offline generated fixtures, not live inbox or activation evidence.
+
+          Replay: `python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v` and `python3 -m unittest test_inbox_mail_charset -v`.
+
+          Run: RUN_LINK
+
+          Final integration and current-main readback are recorded in the linked PR and Slack work thread. No scheduler, credential binding, provider submission, payment, or live delivery change is claimed.
+          '''.replace('RUN_LINK', os.environ['RUN_URL'])
+          (target / 'p/astra-relay-mail-charset-20260907-01.md').write_text(receipt, encoding='utf-8')
+          hashes = {}
+          for path in sorted(target.rglob('*')):
+              if path.is_file():
+                  data = path.read_bytes()
+                  hashes[str(path.relative_to(target))] = {'sha256': hashlib.sha256(data).hexdigest(), 'git_blob': hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest(), 'bytes': len(data)}
+          Path('evidence/manifest.json').write_text(json.dumps(hashes, indent=2) + '\n')
+          print(json.dumps(hashes, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-relay-mail-charset-${{ github.run_id }}
+          path: evidence/
+          retention-days: 30
+          if-no-files-found: error
