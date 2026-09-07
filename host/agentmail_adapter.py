@@ -74,7 +74,7 @@ def _stage(name: str, raw: object) -> dict[str, Any]:
     if not isinstance(raw, dict) or set(raw) != STAGE_KEYS[name]:
         raise AgentMailReceiptError(f"invalid {name} surface")
     state = raw["state"]
-    if state not in STATES[name]:
+    if not isinstance(state, str) or state not in STATES[name]:
         raise AgentMailReceiptError(f"invalid {name} state")
     at = _time(raw["occurred_at"], nullable=True)
     id_key = "provider_inbox_id" if name == "inbox" else "provider_message_id"
@@ -100,7 +100,10 @@ def project_receipt(observation: object) -> dict[str, Any]:
     observed_at = _time(observation["observed_at"])
     agentmail = observation["agentmail_connector_state"]
     gmail = observation["gmail_fallback_state"]
-    if agentmail not in CONNECTOR or gmail not in FALLBACK:
+    if (
+        not isinstance(agentmail, str) or agentmail not in CONNECTOR
+        or not isinstance(gmail, str) or gmail not in FALLBACK
+    ):
         raise AgentMailReceiptError("invalid connector state")
     stages = {name: _stage(name, observation[name]) for name in STAGE_KEYS}
     if agentmail == "UNAVAILABLE":
