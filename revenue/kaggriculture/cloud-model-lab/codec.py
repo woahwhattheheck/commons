@@ -382,3 +382,89 @@ def card_regex(adm, max_market=3):
     plan_re = r'"plan":"[A-Za-z][^"\\\\\\x00-\\x1f]{11,199}",'
     return (r'\{' + plan_re + r'"farmer":' + farmer + r',"hands":' + hands_re
             + r',"market":' + market_re + r"\}")
+
+
+def slot_regex(adm, idle_units, max_slots=4):
+    """A regex over the admissible ops of the IDLE units only.
+
+    Over a route-replay baseline the whole turn is not the model's to author: the
+    tape's working slots carry the schedule. What is genuinely open is the set of
+    slots the baseline's own no-op predicate says the engine will ignore. This
+    binds the decode to exactly those slots and, within each, to that unit's
+    engine-derived admissible set -- so an accepted emission is legal by
+    construction and the CHOICE inside the set is still entirely the model's.
+
+    PASS stays in every alternation: declining a slot must remain expressible, or
+    the grammar would be manufacturing action.
+    """
+    import re as _re
+
+    def _num(cap):
+        return "(?:" + "|".join(str(i) for i in range(1, cap + 1)) + ")"
+
+    def unit_alt(ops, quantities):
+        alts = []
+        for op in ops:
+            if len(op) == 1:
+                alts.append(_re.escape(f'["{op[0]}"]'))
+            elif op[0] == "PLANT":
+                alts.append(_re.escape(f'["PLANT","{op[1]}"]'))
+            else:
+                dom = quantities.get("PICKUP" if op[0] == "PICKUP" else "PLACE_to_shed", {})
+                cap = max(1, int(dom.get(op[1], 1)))
+                alts.append(_re.escape(f'["{op[0]}","{op[1]}",') + _num(cap)
+                            + _re.escape("]"))
+        return "(?:" + "|".join(alts) + ")"
+
+    picked = [i for i in idle_units if i < len(adm["units"])][:max_slots]
+    if not picked:
+        return None
+    parts = []
+    for i in picked:
+        parts.append(_re.escape(f'{{"unit":{i},"op":')
+                     + unit_alt(adm["units"][i], adm["quantities"][i])
+                     + _re.escape("}"))
+    plan_re = r'"plan":"[A-Za-z][^"\\\x00-\x1f]{11,199}",'
+    return r'\{' + plan_re + r'"slots":\[' + ",".join(parts) + r'\]\}'
+
+
+def decode_slots(raw, idle_units, max_slots=4):
+    """Decode exactly one current-turn slot object; reject anything else.
+
+    Returns {"plan": str, "slots": {unit: op}}. A malformed or off-contract
+    emission raises `Rejected` with its reason and is recorded as a rejection --
+    it is never quietly replaced with a claimed model decision.
+    """
+    if not isinstance(raw, str) or not raw.strip():
+        raise Rejected("empty output")
+    blob = _single_json_object(raw)
+    try:
+        obj = json.loads(blob)
+    except Exception as exc:
+        raise Rejected(f"not valid JSON: {exc}")
+    if not isinstance(obj, dict):
+        raise Rejected("top level is not an object")
+    unknown = set(obj) - {"plan", "slots"}
+    if unknown:
+        raise Rejected(f"unknown top-level keys: {sorted(unknown)}")
+    if "slots" not in obj or not isinstance(obj["slots"], list):
+        raise Rejected("no slots array")
+    want = [i for i in idle_units][:max_slots]
+    out = {}
+    for entry in obj["slots"]:
+        if not isinstance(entry, dict) or "unit" not in entry or "op" not in entry:
+            raise Rejected("slot entry is not {unit, op}")
+        u = int(entry["unit"])
+        if u not in want:
+            raise Rejected(f"slot {u} is not an idle slot of this turn")
+        if u in out:
+            raise Rejected(f"slot {u} emitted twice")
+        op = entry["op"]
+        if not isinstance(op, list) or not op or not isinstance(op[0], str):
+            raise Rejected("op is not a token list")
+        out[u] = [op[0]] + [int(t) if isinstance(t, (int, float)) else str(t)
+                            for t in op[1:]]
+    if not out:
+        raise Rejected("no slots decoded")
+    plan = obj.get("plan")
+    return {"plan": str(plan) if isinstance(plan, str) else None, "slots": out}
