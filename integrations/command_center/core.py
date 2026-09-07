@@ -739,7 +739,7 @@ class CommandCenter:
                     (moderation["event_id"], int(moderation["hidden"]), moderation["reason"],
                      moderation["peer"], timestamp))
             summary = {"record_id": record_id} if record is not None else {
-                "event_id": moderation["event_id"], "action": action}
+                "event_id": moderation["event_id"], "hidden": moderation["hidden"]}
             db.execute("""INSERT INTO operations
                 (id,payload_hash,kind,name,runtime,status,started_at,finished_at,summary)
                 VALUES(?,?,?,? ,NULL,'succeeded',?,?,?)""",
