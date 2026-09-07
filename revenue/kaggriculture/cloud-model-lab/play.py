@@ -105,9 +105,11 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                         a = d.act(obs, dict(cfg), seat)
                         model_turns += 1
                         last = d.log[-1]
+                        _hands = "+".join(" ".join(str(t) for t in h)
+                                          for h in last["action"]["hands"]) or "-"
                         print(f"step{step:4d} day{last['day']:2d} h{last['hour']:2d} "
-                              f"{last['action']['farmer']!s:26s} hands={len(last['action']['hands'])} "
-                              f"mkt={last['action']['market']!s:34s} "
+                              f"{last['action']['farmer']!s:22s} hands[{_hands}] "
+                              f"mkt={last['action']['market']!s:28s} "
                               f"{'legal' if last['legal'] else 'ILLEGAL'} "
                               f"{last['timing_s']['model_inference']:5.2f}s"
                               + (f" REJECT[{last['rejected']}]" if last["rejected"] else ""), flush=True)
