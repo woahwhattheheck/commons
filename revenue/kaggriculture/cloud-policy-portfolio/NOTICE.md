@@ -23,3 +23,9 @@ The exact engine and its license came from artifact 10005621438; the unchanged
 loader/evaluator and licensed parents came from artifact 10030763484.
 Source pack ZIP SHA256 `68f78694fa56976fa1476ffd1d1fb6b3bfd4935392dfd0023a170c7efcd35e62`;
 engine ZIP SHA256 `06e526df0a87d1d94e60dd0f2ea380aa099a4f0edd40a604a7c5bd274bd189cc`.
+
+The preserved T13 seed component in `research/t13-seed/` is unchanged source
+`419a674c0d7870beee518bb94f0f9ba8a1f5eb10`, Apache-2.0, with the same frozen
+SELL dependency closure. It is separate from the tested selector. The native
+file-agent loader in `vendor/cloud-pack/` is the unchanged source-pack copy;
+its upstream source manifest and Apache-2.0 license are retained alongside it.

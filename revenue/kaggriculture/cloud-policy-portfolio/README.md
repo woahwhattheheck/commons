@@ -1,16 +1,27 @@
 # TITAN policy portfolio
 
-`main.py::agent(observation, configuration=None)` is the executable entrypoint.
-The current model is a development initialization. `controls.py` exposes the
-frozen controls; `runtime.Portfolio` retains one live controller across its
-declared observation checkpoint. All game-time code uses the Python standard
-library. No external model, account, or network service is used during games.
+`selected.py::agent(observation, configuration=None)` runs the selected frozen
+SELL baseline. `main.py` retains the executable frozen research selector. Its
+conditional validation regressed two wins, so it is not promoted. Both preserve
+one live policy state. The selector uses decision-time observations and a small
+frozen table; all game-time code uses the Python standard library.
 
 Run focused checks with `python -m unittest discover -s . -p 'test_*.py'`.
-Reproduce a panel with `python run_panel.py --panel development --seeds SEED
---arms sell carrot_sell --output results/NAME`. The pinned official interpreter
-and existing process-isolated evaluator are included. Apex requires the C++17
-compile command in `prepare.py`. Results are offline game cash, not money earned
-or hosted competition ratings. Historical held panels retain their original status.
+Decode retained evidence with `python artifacts/decode.py --output /tmp/t14-evidence`.
+The receipt archive contains all panels, paired labels and every searched prefix;
+the trace archive preserves all 191,254 observation/action rows. The decoder's
+manifest verifies bytes. `evidence.py unpack ARCHIVE OUTPUT` restores full JSONL.
+
+For a new, collision-checked development panel, run `python run_panel.py --panel
+development --seeds SEED --arms sell carrot_sell --output results/NAME`. The pinned
+official interpreter and process-isolated evaluator are included. Apex requires
+the C++17 compile command in `prepare.py`; it is only an offline opponent. The
+retained runtime archive also contains the tested Linux binary. Evaluation uses
+one-second action limits and reports the complete agent call.
+
+See `results/SUMMARY.json` for actual cash and W/T/L. The original held panel and
+later observation-conditioned validation remain separate. No historical held
+panel is new validation. These are offline game scores, not hosted ratings or
+money earned. No submission or notebook upload is performed by this package.
 
 See `SOURCE-PINS.json` for exact dependency bytes and `NOTICE.md` for attribution.
