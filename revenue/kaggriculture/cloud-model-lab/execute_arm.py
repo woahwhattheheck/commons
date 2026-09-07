@@ -28,6 +28,7 @@ per-match callable, which is what a stateful arm needs.
 import argparse
 import hashlib
 import importlib.util
+import inspect
 import json
 import os
 import sys
@@ -56,11 +57,21 @@ def load_callable(path, extra_sys_path=()):
             fn = mod.make_agent()
         else:
             fn = mod.agent
+        # Choose the supported call shape without executing a policy. Catching
+        # TypeError around fn(...) would retry errors from inside a stateful arm.
+        signature = inspect.signature(fn)
+        try:
+            signature.bind(None, None)
+        except TypeError:
+            signature.bind(None)
+            with_config = False
+        else:
+            with_config = True
+
         def call(obs, cfg):
-            try:
+            if with_config:
                 return fn(obs, cfg)
-            except TypeError:
-                return fn(obs)
+            return fn(obs)
         return call
 
     return factory, {"path": rp, "sha256": sha,
