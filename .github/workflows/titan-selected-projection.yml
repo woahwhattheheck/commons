@@ -95,10 +95,23 @@ jobs:
           LAB=revenue/kaggriculture/cloud-execution-lab
           python3 revenue/kaggriculture/cloud-selected-market-checks/check_market_contracts.py \
             --lab "$LAB" \
-            --evaluator revenue/kaggriculture/cloud-eval/evaluate.py \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
             --engine-cache "$LAB/reference/engine" \
             --json-output "$RUNNER_TEMP/projection-validation/market-results.json" \
             2>&1 | tee "$RUNNER_TEMP/projection-validation/market-tests.log"
+      - name: Explicit and default offline loader binding tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 revenue/kaggriculture/cloud-selected-market-checks/test_engine_binding.py \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
+            --engine-cache "$LAB/reference/engine" \
+            --json-output "$RUNNER_TEMP/projection-validation/loader-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/loader-tests.log"
       - name: Bind combined results to one source snapshot
         shell: python
         run: |
