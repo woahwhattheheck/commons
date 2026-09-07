@@ -1,0 +1,120 @@
+name: Astra MARLIN opportunity compile preservation (one shot)
+on:
+  push:
+    branches: [work/astra-marlin-opportunity-preserve-20260907]
+    paths: [.github/workflows/astra-marlin-opportunity-preserve-once.yml]
+permissions:
+  contents: write
+jobs:
+  verify-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      REPORT_DIR: ${{ runner.temp }}/astra-marlin-opportunity-preserve
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Reproduce, apply exact repair, and compare regression suites
+        shell: bash
+        run: |
+          mkdir -p "$REPORT_DIR"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+          import textwrap
+
+          report_dir = Path(os.environ['REPORT_DIR'])
+          source = Path('host/opportunity_registry.py')
+          before = source.read_bytes()
+          blob = hashlib.sha1(b'blob ' + str(len(before)).encode() + b'\0' + before).hexdigest()
+          assert blob == '61c10232b61568c910e1fe083182bb76aee4320b', blob
+          runner = textwrap.dedent('''
+              import json, sys, unittest
+              suite = unittest.defaultTestLoader.loadTestsFromName(sys.argv[1])
+              result = unittest.TextTestRunner(verbosity=2).run(suite)
+              print(json.dumps({
+                  'tests': result.testsRun,
+                  'failures': {test.id(): detail for test, detail in result.failures},
+                  'errors': {test.id(): detail for test, detail in result.errors},
+                  'skipped': {test.id(): reason for test, reason in result.skipped},
+              }, sort_keys=True))
+              sys.exit(not result.wasSuccessful())
+          ''')
+          def run_suite(module, label):
+              run = subprocess.run([sys.executable, '-c', runner, module], text=True,
+                                   capture_output=True, timeout=180)
+              (report_dir / (label + '.log')).write_text(run.stdout + run.stderr)
+              result = json.loads(run.stdout)
+              print(label, 'exit', run.returncode, 'tests', result['tests'],
+                    'failures', list(result['failures']), 'errors', list(result['errors']), flush=True)
+              return result
+
+          fresh = 'test_opportunity_registry_compile_preservation'
+          prior = 'test_opportunity_registry'
+          base_new = run_suite(fresh, 'baseline-new')
+          base_prior = run_suite(prior, 'baseline-existing')
+          expected = {fresh + '.OpportunityCompilePreservationTests.' + name for name in (
+              'test_invalid_candidate_preserves_existing_outputs',
+              'test_invalid_candidate_creates_no_outputs',
+              'test_invalid_schema_preserves_existing_outputs',
+          )}
+          assert base_new['tests'] == 6 and not base_new['errors'], base_new
+          assert set(base_new['failures']) == expected, base_new
+          old = b'            registry = compile_registry(root)\n            write_surfaces(root, registry)\n'
+          new = b'            registry = compile_registry(root)\n'
+          assert before.count(old) == 1
+          candidate = before.replace(old, new, 1)
+          marker = b'        result = validate(root, registry, schema)\n'
+          replacement = marker + (
+              b'        if args.command == "compile":\n'
+              b'            # Preserve prior outputs when the candidate fails validation.\n'
+              b'            write_surfaces(root, registry)\n'
+          )
+          assert candidate.count(marker) == 1
+          source.write_bytes(candidate.replace(marker, replacement, 1))
+          fixed_new = run_suite(fresh, 'candidate-new')
+          fixed_prior = run_suite(prior, 'candidate-existing')
+          report = {
+              'base_main': '4287e16bbdaf254306b8d494498b5be235df5240',
+              'runner_commit': os.environ['GITHUB_SHA'],
+              'baseline_source_blob': blob,
+              'candidate_source_sha256': hashlib.sha256(source.read_bytes()).hexdigest(),
+              'baseline_new': base_new, 'baseline_existing': base_prior,
+              'candidate_new': fixed_new, 'candidate_existing': fixed_prior,
+          }
+          (report_dir / 'validation.json').write_text(json.dumps(report, indent=2) + '\n')
+          assert fixed_new['tests'] == 6 and not fixed_new['failures'] and not fixed_new['errors'], fixed_new
+          assert fixed_prior['tests'] == base_prior['tests']
+          assert set(fixed_prior['failures']) <= set(base_prior['failures']), fixed_prior
+          assert set(fixed_prior['errors']) <= set(base_prior['errors']), fixed_prior
+          assert fixed_prior['skipped'] == base_prior['skipped']
+          subprocess.run([sys.executable, '-m', 'py_compile', str(source), fresh + '.py'], check=True)
+          subprocess.run(['git', 'diff', '--check'], check=True)
+          changed = subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines()
+          assert changed == ['host/opportunity_registry.py'], changed
+          diff = subprocess.check_output(['git', 'diff', '--', str(source)], text=True)
+          (report_dir / 'repair.diff').write_text(diff)
+          print(diff)
+          PY
+      - name: Publish tested repair to this branch and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name 'Astra MARLIN'
+          git config user.email 'commons-board@users.noreply.github.com'
+          git rm .github/workflows/astra-marlin-opportunity-preserve-once.yml
+          git add host/opportunity_registry.py
+          git diff --cached --check
+          git commit -m 'fix: validate opportunity compilation before replacing outputs'
+          git push origin HEAD:refs/heads/work/astra-marlin-opportunity-preserve-20260907
+          git rev-parse HEAD | tee "$REPORT_DIR/published-sha.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-marlin-opportunity-preserve-validation
+          path: ${{ runner.temp }}/astra-marlin-opportunity-preserve/
+          retention-days: 30
