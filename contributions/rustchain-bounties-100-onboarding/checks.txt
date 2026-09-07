@@ -1,0 +1,30 @@
+Source: Scottcjn/rustchain-bounties
+Upstream revision: 9ef595b315709cd2c9610a5092b40417288dfa8b
+Environment: isolated Linux Chat runtime; exact connector-read source fixtures, not a full clone
+Python 3.13.5
+
+Before: npm test --offline --ignore-scripts
+Exit: 1
+Error: Missing script: "test"
+
+After (extracted verbatim from proposed Development Setup):
+python3 -m unittest discover -s tests -p 'test_bounty_claimer.py' -v
+Environment: newly created venv --without-pip; PYTHONNOUSERSITE=1
+Exit: 0
+test_claim_bounty_posts_expected_github_comment (test_bounty_claimer.BountyClaimerTests.test_claim_bounty_posts_expected_github_comment) ... ok
+test_claim_bounty_reports_cli_failure_without_raising (test_bounty_claimer.BountyClaimerTests.test_claim_bounty_reports_cli_failure_without_raising) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.001s
+
+OK
+
+Patch checks:
+PASS git diff --check -- CONTRIBUTING.md
+PASS git apply --check contributor-setup.patch against original source
+PASS git apply --reverse round-trip restores original bytes
+PASS only CONTRIBUTING.md differs
+PASS outside Development Setup byte-for-byte unchanged
+PASS all source fixture Git blob IDs match sponsor revision
+
+Limits: no full checkout, full build, other-component suite, live API, real gh claim, or remote fork creation was exercised. The unchanged existing tests are validation of the documentation, not new runtime regression tests.
