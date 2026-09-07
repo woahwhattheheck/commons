@@ -697,16 +697,20 @@ class CommandCenter:
                       "source_ref": _text(body.get("source_ref", ""), 1000)}
         else:
             event_id = _identifier(body.get("event_id", body.get("item_id")), "event_id")
-            action = body.get("action")
-            if action is None and isinstance(body.get("hidden"), bool):
-                action = "hide" if body["hidden"] else "restore"
-            if action not in ("hide", "restore"):
-                raise CoreError(400, "Moderation action must be hide or restore.")
+            hidden = body.get("hidden")
+            if "hidden" not in body:
+                legacy = body.get("action")
+                if legacy == "hide":
+                    hidden = True
+                elif legacy == "restore":
+                    hidden = False
+            if not isinstance(hidden, bool):
+                raise CoreError(400, "Moderation hidden must be a boolean.")
             reason = _text(body.get("reason", ""), 1000).strip()
             if not reason:
                 raise CoreError(400, "Moderation needs a reason.")
             self.event(event_id)  # Originals remain addressable outside the latest feed view.
-            moderation = {"event_id": event_id, "hidden": action == "hide",
+            moderation = {"event_id": event_id, "hidden": hidden,
                           "reason": reason, "peer": _text(body.get("peer", ""), 300)}
         payload_hash = hashlib.sha256(
             _json({"kind": kind, "content": body}).encode("utf-8")).hexdigest()

@@ -137,5 +137,36 @@ class FeedHTTPIntegrationTest(unittest.TestCase):
         self.assertEqual(restored, reopened)
 
 
+    def test_boolean_visibility_preserves_original_and_rejects_non_boolean(self):
+        created = self.request_json("/api/feed", {
+            "operation_id": "boolean-note", "title": "Retained original",
+            "body": "Useful evidence", "source_ref": "source-boolean"})
+        event_id = created["record"]["id"]
+        event_path = "/api/event?event_id=" + urllib.parse.quote(event_id, safe="")
+        original = self.request_json(event_path)
+        hidden_payload = {
+            "operation_id": "boolean-hide", "event_id": event_id,
+            "hidden": True, "reason": "Duplicate derived entry"}
+        self.request_json("/api/feed/moderate", hidden_payload)
+        replay = self.request_json("/api/feed/moderate", hidden_payload)
+        self.assertTrue(replay["replayed"])
+        hidden = self.request_json(event_path)
+        self.assertTrue(hidden["hidden"])
+        self.assertEqual(original["body"], hidden["body"])
+        self.request_json("/api/feed/moderate", {
+            "operation_id": "boolean-restore", "event_id": event_id,
+            "hidden": False, "reason": "Restore for current work"})
+        restored = self.request_json(event_path)
+        self.assertFalse(restored["hidden"])
+        for key in ("title", "body", "source_ref"):
+            self.assertEqual(original[key], restored[key])
+        with self.assertRaises(urllib.error.HTTPError) as error:
+            self.request_json("/api/feed/moderate", {
+                "operation_id": "boolean-invalid", "event_id": event_id,
+                "hidden": "false", "reason": "Invalid typed observation"})
+        self.assertEqual(error.exception.code, 400)
+        self.assertFalse(self.request_json(event_path)["hidden"])
+
+
 if __name__ == "__main__":
     unittest.main()

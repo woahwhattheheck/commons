@@ -57,7 +57,7 @@ class CommandCenterEquipment:
             ("runtime", "Register an existing shared tool gateway.", {"runtime": runtime_schema}, ["runtime"]),
             ("janny", "Assign limited housekeeping responsibility to an existing peer, without changing tool or credential access.", {"peer": {"type": "string"}}, ["peer"]),
             ("note", "Add an operational feed item with its original source link for shared visibility and reversible housekeeping.", {"title": {"type": "string"}, "body": {"type": "string"}, "source_url": {"type": "string"}, "source_ref": {"type": "string"}}, ["title", "body"]),
-            ("moderate", "Hide or restore one item in the derived default feed with a reason, retaining its original.", {"event_id": {"type": "string"}, "action": {"type": "string", "enum": ["hide", "restore"]}, "reason": {"type": "string"}}, ["event_id", "action", "reason"]),
+            ("moderate", "Hide or restore one item in the derived default feed with a reason, retaining its original.", {"event_id": {"type": "string"}, "hidden": {"type": "boolean", "description": "Desired derived-feed visibility: true hides the entry; false restores it."}, "action": {"type": "string", "description": "Legacy hide/restore alias; prefer hidden."}, "reason": {"type": "string"}}, ["event_id", "reason"]),
         ]
         result = []
         for name, description, properties, required in specs:
@@ -65,6 +65,10 @@ class CommandCenterEquipment:
                 properties = {"operation_id": {"type": "string", "description": "Stable ID; repeat exact payload on retry."}, **properties}
                 required = ["operation_id"] + required
             result.append({"name": "command_center_" + name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": required, "additionalProperties": False}})
+        for tool in result:
+            if tool["name"] == "command_center_moderate":
+                tool["inputSchema"]["anyOf"] = [
+                    {"required": ["hidden"]}, {"required": ["action"]}]
         return result
     def call(self, name, arguments):
         if name == "command_center_state":
