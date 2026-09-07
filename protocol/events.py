@@ -161,7 +161,9 @@ def parse_event(raw: Any) -> dict[str, Any]:
         row = _obj(item)
         art = {
             "path": _opt(row.get("path"), maximum=2000),
-            "sha256": _text(row.get("sha256"), maximum=64).lower(),
+            # Retain an extra character so an overlong digest cannot become
+            # a different, apparently valid digest by clipping its suffix.
+            "sha256": _text(row.get("sha256"), maximum=65).lower(),
             "size_bytes": row.get("size_bytes") if isinstance(row.get("size_bytes"), int) and row.get("size_bytes") >= 0 else None,
             "url": _text(row.get("url"), maximum=2000),
             "provider_private": row.get("provider_private") is True,
@@ -220,7 +222,8 @@ def parse_event(raw: Any) -> dict[str, Any]:
         "supersedes": _opt(raw.get("supersedes") or raw.get("superseded_event_id"), maximum=80),
         "attention_reason": _opt(raw.get("attention_reason"), maximum=2000),
         "grok_url": _text(raw.get("grok_url") or raw.get("conversation_url"), maximum=2000),
-        "head_sha": _text(raw.get("head_sha") or raw.get("base_sha"), maximum=40).lower(),
+        # Preserve overlength for the exact-width validation below.
+        "head_sha": _text(raw.get("head_sha") or raw.get("base_sha"), maximum=41).lower(),
         "parse_state": "OK" if kind != UNKNOWN else "PARTIAL",
         "fields_observed": sorted(str(key) for key in raw.keys()),
         "fields_inferred": [],
