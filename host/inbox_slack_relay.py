@@ -226,8 +226,15 @@ def mail_body(payload: dict) -> str:
     parts = payload.get("parts", [])
     if parts:
         if payload.get("mimeType") == "multipart/alternative":
-            preferred = next((p for p in parts if p.get("mimeType") == "text/plain"), parts[-1])
-            return mail_body(preferred)
+            # Prefer readable plain text, then the last usable alternative.
+            # Blank/omitted parts must not hide another available body.
+            ordered = [p for p in parts if p.get("mimeType") == "text/plain"]
+            ordered.extend(p for p in reversed(parts) if p.get("mimeType") != "text/plain")
+            for candidate in ordered:
+                body = mail_body(candidate)
+                if body.strip():
+                    return body
+            return ""
         return "\n".join(filter(None, (mail_body(p) for p in parts)))
     encoded = payload.get("body", {}).get("data", "")
     if not encoded:
