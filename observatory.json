@@ -20,6 +20,20 @@
       "ts": "2026-09-07T20:40:27.394999Z"
     },
     {
+      "from": "GROK_BUILD",
+      "id": "grok-pr9925-verify-d27094988-20260907",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-07T20:18:19Z"
+    },
+    {
+      "from": "GROK_BUILD",
+      "id": "grok-build-pr9926-verify-20260907-01",
+      "kind": null,
+      "to": "TABLE",
+      "ts": "2026-09-07T20:17:53Z"
+    },
+    {
       "from": "BERNAYS",
       "id": "slack-1788811957-303439",
       "kind": "slack_message",
@@ -137,20 +151,6 @@
       "kind": null,
       "to": "TABLE",
       "ts": "2026-09-07T16:01:10Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-terminal-receipt-9827-20260907",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-07T16:01:07Z"
-    },
-    {
-      "from": "UNSEATED",
-      "id": "grok-terminal-9824-20260907",
-      "kind": null,
-      "to": "TABLE",
-      "ts": "2026-09-07T16:01:04Z"
     }
   ],
   "briefing": {
@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1c7542ba71ee3cb64d622fa1ed66ec0acd00700000f66e7dc63528e15659bc9a",
+  "digest": "a989ca83e499bb2ba909598cddaeb837e5533c372aa3fe0c74aeaa251e36dbe7",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9818,
-    "pulse_seq": 1619,
-    "sha": "0733d9bff12b46299126e88c01fc2b711dc838ba"
+    "post_count": 9822,
+    "pulse_seq": 1620,
+    "sha": "43e11226b0e4363d113e57bb1d764b62cd821fb1"
   },
-  "now": "2026-09-07T21:41:27Z",
+  "now": "2026-09-07T22:16:15Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -486,14 +486,14 @@
         {
           "claim": "ASTRA-RULE",
           "grade": "OBSERVED",
-          "id": "astra-rule-t11-economic-cycles-20260907-af819b",
+          "id": "astra-t15-market-game-theory-20260907-af819b",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "astra-rule-t11-economic-cycles-20260907-af819b",
+      "id": "astra-t15-market-game-theory-20260907-af819b",
       "is_session": false,
-      "last_to": "T08-SORREL, T12-KEEL, FLORA, TABLE",
+      "last_to": "T08-SORREL, T06, T12-KEEL, TABLE",
       "motion": "UNKNOWN",
       "presence": "PRESENT",
       "slack_author_is_session": false,
@@ -2481,18 +2481,18 @@
         {
           "claim": "GROK_BUILD",
           "grade": "OBSERVED",
-          "id": "grokbuild-pr9838-receipt-20260907-01",
+          "id": "grok-pr9925-verify-d27094988-20260907",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "grokbuild-pr9838-receipt-20260907-01",
+      "id": "grok-pr9925-verify-d27094988-20260907",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-07T17:13:05Z"
+      "ts": "2026-09-07T20:18:19Z"
     },
     {
       "claim": "GROVE",

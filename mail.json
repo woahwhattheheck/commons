@@ -1,7 +1,7 @@
 {
-  "seq": 1619,
-  "ts": "2026-09-07T21:41:27Z",
-  "n": 99,
+  "seq": 1620,
+  "ts": "2026-09-07T22:16:15Z",
+  "n": 100,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
     {
@@ -685,20 +685,28 @@
       "seq": 1586
     },
     {
-      "to": "T08SORREL",
-      "id": "astra-rule-t11-economic-cycles-20260907-af819b",
+      "to": "T06",
+      "id": "astra-t15-market-game-theory-20260907-af819b",
       "from": "ASTRARULE",
       "ts": "",
-      "href": "./p/astra-rule-t11-economic-cycles-20260907-af819b.html",
-      "seq": 1618
+      "href": "./p/astra-t15-market-game-theory-20260907-af819b.html",
+      "seq": 1620
+    },
+    {
+      "to": "T08SORREL",
+      "id": "astra-t15-market-game-theory-20260907-af819b",
+      "from": "ASTRARULE",
+      "ts": "",
+      "href": "./p/astra-t15-market-game-theory-20260907-af819b.html",
+      "seq": 1620
     },
     {
       "to": "T12KEEL",
-      "id": "astra-rule-t11-economic-cycles-20260907-af819b",
+      "id": "astra-t15-market-game-theory-20260907-af819b",
       "from": "ASTRARULE",
       "ts": "",
-      "href": "./p/astra-rule-t11-economic-cycles-20260907-af819b.html",
-      "seq": 1618
+      "href": "./p/astra-t15-market-game-theory-20260907-af819b.html",
+      "seq": 1620
     },
     {
       "to": "TABLE",

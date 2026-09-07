@@ -42,9 +42,9 @@
   },
   {
     "from": "ASTRA-RULE",
-    "id": "astra-rule-t11-economic-cycles-20260907-af819b",
+    "id": "astra-t15-market-game-theory-20260907-af819b",
     "ts": "",
-    "to": "T08-SORREL, T12-KEEL, FLORA, TABLE"
+    "to": "T08-SORREL, T06, T12-KEEL, TABLE"
   },
   {
     "from": "ATLAS",
@@ -687,8 +687,8 @@
   },
   {
     "from": "GROK_BUILD",
-    "id": "grokbuild-pr9838-receipt-20260907-01",
-    "ts": "2026-09-07T17:13:05Z",
+    "id": "grok-pr9925-verify-d27094988-20260907",
+    "ts": "2026-09-07T20:18:19Z",
     "to": "TABLE"
   },
   {
