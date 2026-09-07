@@ -57,6 +57,13 @@ def tape_pass_window(agent, step, unit, horizon=64):
     return n
 
 
+def errand_id(started, worker, target):
+    """Stable identity for a committed errand: when it started, whose worker, which
+    tile. Two errands cannot share it, and it survives across the turns the errand
+    lives for, which is what a consumer reserves against."""
+    return f"cap-{int(started)}-w{int(worker)}-t{int(target[0])}{int(target[1])}"
+
+
 def turns_until_tape_move(agent, step, unit):
     """How long this worker's POSITION is genuinely free, read off the tape.
 
@@ -188,7 +195,8 @@ class TableChooser:
 
 class PlanOverlay:
     def __init__(self, arlene_mod, chooser, max_steps=MAX_PLAN_STEPS,
-                 deposit=True, last_day=29, min_value=0.0, one_way=False):
+                 deposit=True, last_day=29, min_value=0.0, one_way=False,
+                 storage_aware=False, min_incremental=0.0):
         self.A = arlene_mod
         self.agent = arlene_mod.Agent()
         self.chooser = chooser
@@ -203,6 +211,26 @@ class PlanOverlay:
         # the reset. Goods dropped at the final day's close have no turn left to
         # sell in, so the last day is excluded.
         self.one_way = one_way
+        # Storage-aware admission. The frozen candidate accepts a plan on the gross
+        # output the cap would destroy; that is not the cash it earns. Measured on
+        # 9600011, its +2 own cash is +2 EGG (+84) less 2 WHEAT (-82) -- the cargo
+        # competed with the incumbent's cargo and with shed capacity. When this is
+        # on, a plan must first clear an incremental settlement of the seat's own
+        # economy: ordered transfers, the capacity-bounded end-of-day deposit with
+        # its discarded overflow, the route's own remaining sale reservations, and
+        # dated marginal receipts for both what it adds and what it displaces.
+        self.storage_aware = storage_aware
+        self.min_incremental = min_incremental
+        self.assessments = []
+        # Committed errands, keyed by a stable id. This is BOOKKEEPING only -- it
+        # never influences action selection, so the frozen candidate's play is
+        # byte-for-byte what it was. `self.plans` drives behaviour; this mirrors
+        # what has actually been committed so a consumer can reserve against it.
+        self.errands = {}
+        self._step = 0
+        # Composition inputs, empty by default so the frozen behaviour is unchanged.
+        self.excluded_workers = set()
+        self.blocked_targets = set()
         self.last_day = last_day
         self.min_value = min_value
         self.K = NM.engine()
@@ -212,8 +240,20 @@ class PlanOverlay:
         self.completed = 0
         self.abandoned = 0
 
-    def act(self, obs):
-        base = self.agent.act(obs)
+    def act(self, obs, selected_action=None, excluded_workers=(), blocked_targets=()):
+        """One turn.
+
+        `selected_action` injects an already-chosen base action instead of calling
+        the parent, so a composition never runs two parent controllers.
+        `excluded_workers` and `blocked_targets` keep another producer's hands and
+        tiles disjoint from this one's. All three default to the frozen behaviour.
+        """
+        if excluded_workers:
+            self.excluded_workers = {int(w) for w in excluded_workers}
+        if blocked_targets:
+            self.blocked_targets = {tuple(t) for t in blocked_targets}
+        self._step = int(obs["day"]) * 24 + int(obs["hour"])
+        base = self.agent.act(obs) if selected_action is None else selected_action
         step = int(obs["day"]) * 24 + int(obs["hour"])
         seat = int(obs.get("player", 0))
         farm, priv = obs["farms"][seat], obs["private"]
@@ -246,6 +286,8 @@ class PlanOverlay:
             inv = invs[i] if i < len(invs) else {}
             plan = self.plans.get(i)
             if plan is None:
+                if i in self.excluded_workers:
+                    continue          # another producer owns this worker
                 # Starting a plan: the slot must be free by the baseline's own test,
                 # evaluated where the route actually left the worker.
                 if not self.A._noop(units[i], tiles[y][x], inv, seeds, x, y, board):
@@ -280,27 +322,49 @@ class PlanOverlay:
                     t = self.chooser.choose(card, window, obs)
                 except TypeError:
                     t = self.chooser.choose(card, window)
+                if t is not None and tuple(t["at"]) in self.blocked_targets:
+                    continue          # another producer owns this tile
                 if t is None or t["value_now"] < self.min_value:
                     continue
+                if self.storage_aware:
+                    import storage_value
+                    # credit only the units the output cap would have destroyed;
+                    # the whole harvest still competes for shed capacity
+                    credited = (self.chooser.at_risk(t, obs)
+                                if hasattr(self.chooser, "at_risk") else
+                                int(t.get("units", 0)))
+                    va = storage_value.assess(self.K, obs, cfg, seat, self.agent,
+                                              step, i, t, credited)
+                    self.assessments.append(dict(va, step=step, accepted=None))
+                    if va["incremental"] <= self.min_incremental:
+                        self.assessments[-1]["accepted"] = False
+                        continue
+                    self.assessments[-1]["accepted"] = True
                 plan = {"target": t, "phase": "go", "steps": 0, "home": (x, y),
-                        "started": step, "unit": i, "window": window}
+                        "started": step, "unit": i, "window": window,
+                        "errand_id": errand_id(step, i, t["at"])}
                 self.plans[i] = plan
+                self._commit(plan, t, obs, i, step, seat)
             # Re-read the LIVE tape every turn: a checkpoint switch at 226, 360 or
             # 433 replaces the suffix, so a window computed before it is stale. If
             # the route wants this worker back mid-excursion the plan stops here and
             # the displacement is recorded rather than papered over.
             live = tape_op(self.agent, step, i)
             if live is not None and live != ["PASS"]:
-                self.plans.pop(i, None)
+                gone = self.plans.pop(i, None)
+                if gone:
+                    self._abort(gone.get("errand_id"))
                 self.abandoned += 1
                 self.stranded += run_cards._dist((x, y), plan["home"])
                 continue
             if plan["steps"] >= self.max_steps:
+                self._abort(plan.get("errand_id"))
                 self.plans.pop(i, None)
                 self.abandoned += 1
                 continue
             op = self._next_op(plan, (x, y), inv, board)
             if op is None:
+                self._abort(plan.get("errand_id"))
                 self.plans.pop(i, None)
                 continue
             trial = list(units)
@@ -318,6 +382,13 @@ class PlanOverlay:
                 self.plans.pop(i, None)
                 self.abandoned += 1
                 continue
+            if plan["phase"] == "act":
+                # Capture the lot BEFORE the state advances: `before` is the
+                # pre-harvest simulation, and after the reassignment below its
+                # slot tile shows yield_units already zeroed.
+                tb = before["slots"][i].get("tile") if i < len(before["slots"]) else None
+                plan["_lifted"] = (int(tb.get("yield_units", 0))
+                                   if isinstance(tb, dict) else 0)
             units[i] = op
             before = after
             plan["steps"] += 1
@@ -333,6 +404,10 @@ class PlanOverlay:
                                "effect": after["slots"][i]["kind"],
                                "authored": self.chooser.authored})
             if plan["phase"] == "act":
+                # The lot is now on the worker. Attribute it from the tile this
+                # errand actually lifted -- the animal's yield before the op --
+                # not from whatever the worker happens to be holding.
+                self._realize(plan.get("errand_id"), plan.get("_lifted", 0))
                 if self.one_way:
                     self.plans.pop(i, None)
                     self.completed += 1
@@ -370,10 +445,166 @@ class PlanOverlay:
             return [mv] if mv else None
         return None
 
+    def _commit(self, plan, target, obs, unit, step, seat):
+        """Record a COMMITTED errand. Bookkeeping only; play is unaffected."""
+        inc = 0
+        if hasattr(self.chooser, "at_risk"):
+            try:
+                inc = int(self.chooser.at_risk(target, obs))
+            except Exception:
+                inc = 0
+        tpd = 24
+        self.errands[plan["errand_id"]] = {
+            "errand_id": plan["errand_id"],
+            "worker_index": int(unit),
+            "target": [int(target["at"][0]), int(target["at"][1])],
+            "product": target["product"],
+            # the WHOLE lot the harvest will lift, which is what competes for
+            # capacity; the incremental part is what the output cap would destroy
+            "units_total": int(target.get("units", 0)),
+            "units_incremental": int(inc),
+            "arrival_step": (step // tpd + 1) * tpd - 1,
+            "arrival_kind": "eod_auto" if self.one_way else "worker_deposit",
+            "no_forced_sale_date": True,
+            "status": "pending",
+            "observed_carried_units": 0,
+            "started": int(step),
+            "day": int(obs["day"]),
+            "realized_at_step": None,
+        }
+
+    def _realize(self, errand_id_, units):
+        """The harvest executed: the lot is now carried, attributed from the tile
+        this errand actually lifted rather than from whatever the worker holds."""
+        e = self.errands.get(errand_id_)
+        if e is None or e["status"] != "pending":
+            return
+        e["observed_carried_units"] = int(units)
+        e["units_total"] = int(units)
+        e["units_incremental"] = min(e["units_incremental"], int(units))
+        e["status"] = "carried"
+        e["realized_at_step"] = int(self._step)
+
+    def _abort(self, errand_id_):
+        """Abandoned before the harvest: the reservation is released, not retained
+        as a ghost lot. A lot already carried stays carried."""
+        e = self.errands.get(errand_id_)
+        if e is not None and e["status"] == "pending":
+            e["status"] = "aborted"
+
+    def producer_snapshot(self, obs, selected_action=None, owner="cloud-model-lab-cap"):
+        """COMMITTED errands only, in the arrival-contract producer shape.
+
+        This is not the opportunity list. Every row here corresponds to an errand
+        this overlay has actually committed to and is executing, identified by a
+        stable `errand_id`, with its own lifecycle and its realisation attributed
+        from the tile the harvest lifted. `opportunity_facts` remains separately
+        callable for candidates the overlay merely *would* consider; those are not
+        reservable and can name the same animal more than once.
+
+        A one-way errand keeps its worker after the harvest: the tape plays PASS
+        for the rest of the day by admission, and the cargo rides to the automatic
+        end-of-day deposit. The row therefore stays `carried` until that close,
+        which is exactly the interval a consumer must not double-book the worker in.
+        """
+        seat = int(obs.get("player", 0))
+        step = int(obs["day"]) * 24 + int(obs["hour"])
+        day = int(obs["day"])
+        invs = obs["private"].get("inventories") or []
+        plans = []
+        for e in self.errands.values():
+            if e["day"] != day:
+                continue          # a previous day's lot has already been deposited
+            row = {k: e[k] for k in ("errand_id", "worker_index", "target",
+                                     "product", "units_total", "units_incremental",
+                                     "arrival_step", "arrival_kind",
+                                     "no_forced_sale_date", "status",
+                                     "observed_carried_units")}
+            if row["status"] == "aborted":
+                plans.append({"errand_id": row["errand_id"], "status": "aborted"})
+                continue
+            # Realisation is reported against the observation the caller passed.
+            # A PRE-unit observation for the turn the harvest runs cannot show the
+            # lot yet, and reporting it carried there would claim stock the caller's
+            # own state does not hold; the lot is still pending capacity in that
+            # observation. A POST-unit observation shows it, and then the claim is
+            # checked against what that worker actually holds.
+            w = row["worker_index"]
+            ra = e.get("realized_at_step")
+            held_now = (int(invs[w].get(row["product"], 0))
+                        if w < len(invs) else 0)
+            # On the very turn the harvest runs, the caller may hand us either the
+            # pre-unit observation (the lot has not been lifted in it yet) or the
+            # post-unit one (it has). Distinguish by what that worker actually
+            # holds, rather than assuming which one arrived: a pre-unit view of the
+            # realisation turn is `pending` capacity, not an abort.
+            if ra == step and held_now < row["observed_carried_units"]:
+                ra = step + 1
+            if ra is None or ra > step:
+                row["status"] = "pending"
+                row["observed_carried_units"] = 0
+                row["units_total"] = e["units_total"]
+                row["units_incremental"] = e["units_incremental"]
+            else:
+                held = int(invs[w].get(row["product"], 0)) if w < len(invs) else 0
+                row["observed_carried_units"] = min(row["observed_carried_units"],
+                                                    held)
+                row["units_total"] = row["observed_carried_units"]
+                row["units_incremental"] = min(row["units_incremental"],
+                                               row["units_total"])
+                row["status"] = ("carried" if row["observed_carried_units"]
+                                 else "aborted")
+                if row["status"] == "aborted":
+                    plans.append({"errand_id": row["errand_id"],
+                                  "status": "aborted"})
+                    continue
+            plans.append(row)
+        return {"owner": owner, "observed_step": step, "plans": plans}
+
+    def opportunity_facts(self, obs):
+        """CANDIDATE errands the overlay would consider -- NOT commitments.
+
+        These rows are not reservable: they enumerate what is reachable from each
+        worker's current tile, so the same animal can appear more than once and
+        nothing here is owned. Use `producer_snapshot` for committed output.
+        """
+        import arrival_facts
+        seat = int(obs.get("player", 0))
+        farm, priv = obs["farms"][seat], obs["private"]
+        board = len(farm["tiles"]) or self.A.BOARD
+        out = []
+        pos = [farm["farmer"]] + list(farm.get("hands", []))
+        for i, p in enumerate(pos):
+            x, y = int(p[0]), int(p[1])
+            if not (0 <= x < board and 0 <= y < board):
+                continue
+            tg = run_cards.reachable_targets(obs, seat, (x, y), self.K, board,
+                                             obs["market"]["prices"])
+            for f in arrival_facts.facts_for(self.agent, obs,
+                                             {"shedCapacity": self.A.SHED_CAP},
+                                             seat, tg, self.chooser, self.one_way):
+                out.append(dict(f, unit=i))
+        return out
+
+    def pending_arrivals(self, obs):
+        raise AttributeError(
+            "pending_arrivals returned candidate opportunities, which are not "
+            "reservable and can repeat an animal. Use producer_snapshot(obs) for "
+            "committed errands, or opportunity_facts(obs) for the candidate list.")
+
     def report(self):
+        acc = [a for a in self.assessments if a.get("accepted")]
+        rej = [a for a in self.assessments if a.get("accepted") is False]
         return {"fills": len(self.fills), "completed": self.completed,
+                "storage_aware": self.storage_aware,
+                "plans_priced": len(self.assessments),
+                "plans_accepted_on_value": len(acc),
+                "plans_rejected_on_value": len(rej),
+                "incremental_accepted": round(sum(a["incremental"] for a in acc), 1),
+                "incremental_rejected": round(sum(a["incremental"] for a in rej), 1),
                 "abandoned": self.abandoned,
                 "displacement_left_unrejoined": self.stranded,
                 "open_at_end": len(self.plans),
                 "chooser": self.chooser.label,
+                "skipped_uncertain": getattr(self.chooser, "skipped_uncertain", 0),
                 "authored": self.chooser.authored}

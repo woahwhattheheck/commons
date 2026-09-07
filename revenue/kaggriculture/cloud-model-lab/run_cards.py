@@ -24,8 +24,10 @@ import copy
 import json
 import os
 
-import cards as cards_mod
-import route_cards
+# `cards` and `route_cards` are harvesting-side only. They are imported inside the
+# functions that need them so that importing this module for `reachable_targets`
+# alone -- which is all a packaged agent needs -- pulls in nothing that reaches for
+# the evaluator package.
 
 MAX_TARGETS = 6
 
@@ -78,8 +80,15 @@ def marginal_revenue(K, market, item, units):
     price = _pricer(K)
     total = 0.0
     n = int(inv.get(item, 0))
-    for k in range(int(units)):
-        total += float(price(item, n + k, params))
+    for _ in range(int(units)):
+        p = float(price(item, n, params))
+        total += p
+        # The engine only credits market supply when the sale cleared above the
+        # floor: `_commit_unit` does `if price > 1: market["inventory"][item] += 1`.
+        # Advancing the inventory on a floor sale made every further unit look
+        # cheaper than the engine will actually quote it.
+        if p > 1:
+            n += 1
     return round(total, 1)
 
 
@@ -138,6 +147,8 @@ def reachable_targets(obs, seat, pos, K, board, prices):
 
 
 def harvest(seed, seat, opponent_spec, min_free=1, limit=None):
+    import cards as cards_mod
+    import route_cards
     from kaggle_environments.envs.kaggriculture import kaggriculture as K
     A, arl_id = route_cards.load_arlene()
     opp, opp_id = route_cards.load_agent(opponent_spec)
@@ -206,6 +217,7 @@ def main():
     ap.add_argument("--limit-per-seed", type=int, default=None)
     ap.add_argument("--out", default="results/run-cards.json")
     a = ap.parse_args()
+    import route_cards          # noqa: F401  (CLI path only)
     allc, meta = [], []
     for seed in a.seeds:
         for seat in a.seats:
