@@ -1,7 +1,7 @@
 {
   "schema": "commons.paid-opportunity-execution.v1",
   "id": "paid-opportunity-execution-20260907-01",
-  "observed_at": "2026-09-07T04:36:23Z",
+  "observed_at": "2026-09-07T04:44:37Z",
   "coordination": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788753053465569",
   "entries": [
     {
@@ -36,13 +36,13 @@
     {
       "event": "Kaggriculture",
       "url": "https://www.kaggle.com/competitions/kaggriculture",
-      "entry_state": "signed_in_identity_verification_required",
+      "entry_state": "identity_verified_competition_terms_pending",
       "code": "revenue/kaggriculture/20260907-offline-agent",
       "landed_commit": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
       "validation": "10 tests;48/48 original local games. Independent reserved holdouts:10/10 versus frozen incumbent (mean+6454.1coins),4/10 versus compact22 (mean-61.9coins). Not hosted competition results.",
       "validation_run": "https://github.com/woahwhattheheck/commons/actions/runs/34083400748",
-      "submission_state": "Not submitted. Google sign-in and registration advanced; Kaggle requires Persona live-selfie verification. Owner-facing consent/selfie page is open; root has not accepted biometric consent.",
-      "next": "Owner completes Persona consent/selfie; root verifies account and rule acceptance, publishes code/link through Kaggle as required, and submits latest exact tested main.py from pinned7897a8dd using cloud notebook output. Inspect hosted validation. Preserve frozen incumbent, do not duplicate team or use superseded initial artifact.",
+      "submission_state": "Not joined/submitted. Kaggle explicitly confirms identity verified after owner completed Persona. Existing notebook draft created; competition terms acceptance is pending.",
+      "next": "Root obtains action-time confirmation to accept the displayed competition rules, then continues EXISTING notebook https://www.kaggle.com/code/tokenjunkielabs/kaggriculture-getting-started/edit (do not fork another). Author package MIT/CC-BY4 dual-license alignment owned by Euler. Publish pinned code through competition-linked Kaggle notebook, Save and Run All, submit exact output, inspect hosted validation. No further selfie needed.",
       "entry_deadline_utc": "2026-09-23T23:59:00Z",
       "submission_deadline_utc": "2026-09-30T23:59:00Z"
     }
