@@ -31,8 +31,8 @@
     }
   ],
   "current_package_tests": {
-    "count": 8,
-    "passed": 8,
+    "count": 10,
+    "passed": 10,
     "new_scored_games": 0
   },
   "historical_measurement_tests": {
@@ -58,5 +58,23 @@
     "members": 48
   },
   "readme_hash_correction_commit": "2bcdd15bd1822eecb694bebe9a830ee5b3fb4a50",
-  "scope": "No held evaluation, policy promotion, hosted rank, new spend, owner-PC execution or Kaggle writes."
+  "scope": "No held evaluation, policy promotion, hosted rank, new spend, owner-PC execution or Kaggle writes.",
+  "cli_input_preservation": {
+    "prior_source_commit": "de94bd7c55310eafde3791d5a31c27c4fe731e52",
+    "prior_package_tests_passed": 8,
+    "regression_methods": 2,
+    "input_alias_cases": 6,
+    "prior_source_regression_failures": 6,
+    "repaired_source_regression_failures": 0,
+    "input_types": [
+      "source",
+      "observations"
+    ],
+    "aliases": [
+      "direct",
+      "symlink",
+      "hardlink"
+    ],
+    "new_scored_games": 0
+  }
 }

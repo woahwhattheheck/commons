@@ -103,9 +103,12 @@ observer owns ordinary observation-to-telemetry JSONL processing.
   complete engine trace digests match, with zero telemetry errors. Each actor
   has one gate evaluation, 72 unknown-prefix calls and 647 closed calls.
 
-Eight focused tests cover source facts in both positions, positive synthetic
+Ten focused tests cover source facts in both positions, positive synthetic
 public conditions, numeric parsing, tolerance/malformed inputs, state neutrality,
-lossless action decoding, changed-byte detection and the stateless CLI. The
+lossless action decoding, changed-byte detection and the stateless CLI. Two CLI
+regressions additionally preserve both input types across direct paths, symbolic
+links and hard links. Output/input aliases are rejected before policy loading or
+report writing; the original eight-test source checkpoint remains PR9958. The
 archived initial measurement instrument separately passed 17 focused tests;
 those are historical coverage, not additional current-package tests.
 

@@ -96,6 +96,33 @@ class StatelessTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 diagnose.load_source(source)
 
+    def assert_cli_preserves_input_aliases(self, kind):
+        for alias in ("direct", "symlink", "hardlink"):
+            with self.subTest(input_kind=kind, alias=alias), tempfile.TemporaryDirectory() as temp:
+                root = Path(temp)
+                source, observations = root / "source.py", root / "observations.jsonl"
+                source.write_bytes(SOURCE.read_bytes())
+                observations.write_text(json.dumps({"observation": self.frame()}) + "\n", encoding="utf-8")
+                incoming = source if kind == "source" else observations
+                before = incoming.read_bytes()
+                output = incoming if alias == "direct" else root / "output.json"
+                if alias == "symlink":
+                    output.symlink_to(incoming)
+                elif alias == "hardlink":
+                    output.hardlink_to(incoming)
+                result = subprocess.run([sys.executable, str(Path(diagnose.__file__)),
+                    "--source", str(source), "--observations", str(observations),
+                    "--output", str(output)], capture_output=True, text=True)
+                self.assertEqual(incoming.read_bytes(), before, "CLI changed its input")
+                self.assertEqual(result.returncode, 2)
+                self.assertIn("must not alias", result.stderr)
+
+    def test_cli_preserves_source_aliases(self):
+        self.assert_cli_preserves_input_aliases("source")
+
+    def test_cli_preserves_observation_aliases(self):
+        self.assert_cli_preserves_input_aliases("observations")
+
     def test_stateless_cli_does_not_claim_activation(self):
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp)/"report.json"
