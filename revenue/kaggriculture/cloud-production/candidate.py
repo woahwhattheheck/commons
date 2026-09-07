@@ -14,11 +14,11 @@ ANIMALS = {
     "COW": (400, "PASTURE", 8, 2, 6, "MILK"),
     "SHEEP": (500, "PASTURE", 6, 3, 6, "WOOL"),
 }
-# cost, first yield age, final event age, maximum total units
+# cost, first yield age, final event age, harvest-capacity units
 CROPS = {"WHEAT": (10, 2, 4, 6), "CARROT": (20, 2, 3, 4),
-         "TOMATO": (50, 8, 14, 8), "STRAWBERRY": (100, 10, 16, 8),
+         "TOMATO": (50, 8, 11, 4), "STRAWBERRY": (100, 10, 16, 4),
          "MELON": (80, 10, 12, 6)}
-ONGOING = {"TOMATO": (8, 1, 14), "STRAWBERRY": (10, 2, 16)}
+ONGOING = {"TOMATO": (8, 1, 11), "STRAWBERRY": (10, 2, 16)}
 PRODUCTS = ("WHEAT", "CARROT", "TOMATO", "STRAWBERRY", "MELON",
             "EGG", "MILK", "WOOL", "FERTILIZER")
 SHOPS = {"BAKERY": ["EGG", "WHEAT"], "PIZZA_SHOP": ["MILK", "TOMATO", "WHEAT"],
@@ -138,6 +138,73 @@ def _cfg(configuration, name, default):
     return getattr(configuration, name, default)
 
 
+# Frozen standalone projection of ROWAN events.py at blob
+# 48b3c0df949e13bf4c63ee86f5d5b3a58ec00aec; namespaced because this
+# candidate's CROPS table also carries purchase cost and policy metadata.
+EVENT_CROPS = {'WHEAT': (2,4,0,6), 'CARROT': (2,3,0,4),
+               'TOMATO': (8,8,1,4), 'STRAWBERRY': (10,10,2,4),
+               'MELON': (10,12,0,6)}
+
+
+def production_events(tile, step, turns_per_day=24, episode_steps=720):
+    """Return future EOD crop events under the exact public engine contract."""
+    if tile.get('kind') != 'PLANT':
+        return []
+    first, _, interval, cap = EVENT_CROPS[tile['crop']]
+    if not interval:
+        return []
+    last_action = episode_steps - 2
+    start = tile['planted_day'] + first
+    events = []
+    for event_day in range(start, start + cap * interval, interval):
+        available = event_day * turns_per_day
+        boundary = available - 1
+        if boundary < step or available > last_action:
+            continue
+        events.append({'refresh_step': boundary, 'available_step': available,
+            'care_day': event_day - 1, 'held_capacity': cap,
+            'fertilizer_application_days': [event_day-3, event_day-1],
+            'fertilizer_already_covers': tile.get('fertilized_until_day',-1) >= event_day-1,
+            'fertilizer_bonus_requires_water': True})
+    return events
+
+
+def _fertilizer_window(plant, day, step, turns, steps):
+    """Return only the next unproduced event's uncovered application window."""
+    events = production_events(plant, step, turns, steps)
+    if not events:
+        return None
+    event = events[0]
+    due_in = event['care_day'] - day
+    if not 0 <= due_in <= 2 or event['fertilizer_already_covers']:
+        return None
+    return due_in, event['care_day']
+
+
+def _sale_value(product, qty, market):
+    """Project our sequential SELL fills from the observed inventory curve."""
+    inventory, total = market["inventory"][product], 0
+    for _ in range(max(0, qty)):
+        unit = price(product, inventory, market)
+        total += unit
+        if unit > 1:
+            inventory += 1
+    return total
+
+
+def _product_fill(product, wanted, cash, reserve, market):
+    """Return affordable sequential BUY_PRODUCT quantity and projected cost."""
+    inventory, total, filled = market["inventory"][product], 0, 0
+    for _ in range(max(0, wanted)):
+        unit = price(product, inventory - 1, market)
+        if cash - total - unit < reserve:
+            break
+        total += unit
+        inventory -= 1
+        filled += 1
+    return filled, total
+
+
 def agent(obs, configuration=None):
     if not obs.get("farms"):
         return {"farmer": ["PASS"], "hands": [], "market": []}
@@ -216,12 +283,12 @@ def agent(obs, configuration=None):
         if ending: qty += sum(inv.get(product, 0) for inv in inventories)
         if product == "WHEAT" and not ending: qty = max(0, qty - wheat_keep - 2)
         if product == "FERTILIZER" and not ending:
-            fert_keep = min(8, max(2, math.ceil(sum(p[2]["crop"] == "STRAWBERRY" for p in plants) / 2)))
+            fert_keep = min(4, sum(_fertilizer_window(p[2], day, step, turns, steps) is not None for p in plants))
             qty = max(0, qty - fert_keep)
         if qty: orders.append(["SELL", product, qty])
 
     cash = farm["money"] + sum(
-        qty * prices[p] for op, p, qty in orders if op == "SELL")
+        _sale_value(p, qty, market) for op, p, qty in orders if op == "SELL")
     cash = max(0, cash)
     reserve = 180 + max(2, len(animals)) * prices["WHEAT"]
     quadrants = len(farm["unlocked_quadrants"])
@@ -230,7 +297,7 @@ def agent(obs, configuration=None):
     pressure = len(animals) + pending + len(plants) >= max(8, total_capacity - 8)
     want_land = (policy["expansion"] and quadrants < 4 and day >= land_day
                  and remaining_days > 11 and pressure and cash > reserve + land_cost + 600)
-    if want_land:
+    if want_land and len(orders) < 10:
         orders.append(["BUY_LAND"])
         cash -= land_cost
     can_buy = can_develop and affordable_animal is not None and pending < 4
@@ -238,7 +305,7 @@ def agent(obs, configuration=None):
         qty = min(2, 4-pending, policy["animal_cap"]-len(animals)-pending,
                   max(0, total_capacity-len(animals)-len(plants)-pending),
                   int((cash-reserve)/ANIMALS[affordable_animal][0]))
-        if qty:
+        if qty and len(orders) < 10:
             orders.append(["BUY_ANIMAL", affordable_animal, qty])
             cash -= qty * ANIMALS[affordable_animal][0]
 
@@ -258,18 +325,21 @@ def agent(obs, configuration=None):
         cash -= cost
         a, b = b, a+b
 
-    carried_wheat = sum(inv.get("WHEAT", 0) for inv in inventories)
-    feed_needed = max(0, unfed + min(pending, 3) - carried_wheat - shed.get("WHEAT", 0))
-    if not ending and feed_needed and cash >= prices["WHEAT"]:
-        qty = min(feed_needed + 2, int(cash / max(1, prices["WHEAT"] + 1)))
-        if qty: orders.append(["BUY_PRODUCT", "WHEAT", qty])
-    if choice and len(plants) < crop_cap and seeds.get(choice, 0) < 2 and cash > reserve:
+    if (choice and len(plants) < crop_cap and seeds.get(choice, 0) < 2
+        and cash > reserve and len(orders) < 10):
         seed_qty = min(4, crop_cap-len(plants))
         seed_cost = CROPS[choice][0]
         seed_qty = min(seed_qty, max(0, int((cash-reserve) / max(1, seed_cost))))
         if seed_qty:
             orders.append(["BUY_SEED", choice, seed_qty])
             cash -= seed_qty * seed_cost
+    carried_wheat = sum(inv.get("WHEAT", 0) for inv in inventories)
+    feed_needed = max(0, unfed + min(pending, 3) - carried_wheat - shed.get("WHEAT", 0))
+    if not ending and feed_needed and len(orders) < 10:
+        qty, cost = _product_fill("WHEAT", feed_needed, cash, 30, market)
+        if qty:
+            orders.append(["BUY_PRODUCT", "WHEAT", qty])
+            cash -= cost
 
     claims = set()
     available_shed = dict(shed)
@@ -332,13 +402,9 @@ def agent(obs, configuration=None):
             for x, y, plant in plants:
                 if plant["crop"] not in ONGOING:
                     continue
-                first_event, interval, last_event = ONGOING[plant["crop"]]
-                age = day - plant["planted_day"]
-                next_event = (first_event if age <= first_event else
-                    first_event + interval * math.ceil((age-first_event)/interval))
-                due_in = next_event - age
-                covered = plant.get("fertilized_until_day", -1)
-                if next_event <= last_event and 0 <= due_in <= 2 and covered < day + due_in:
+                window = _fertilizer_window(plant, day, step, turns, steps)
+                if window is not None:
+                    due_in, _ = window
                     needs_fertilizer.append((x, y, due_in, plant["crop"]))
             if carried_fertilizer and not ending:
                 for x, y, due_in, crop in needs_fertilizer:
@@ -432,7 +498,7 @@ def agent(obs, configuration=None):
         for product in PRODUCTS:
             qty = existing.get(product, 0) + deposits[product]
             if product == "FERTILIZER" and remaining_days > 2:
-                keep = min(8, max(2, math.ceil(sum(p[2]["crop"] == "STRAWBERRY" for p in plants) / 2)))
+                keep = min(4, sum(_fertilizer_window(p[2], day, step, turns, steps) is not None for p in plants))
                 qty = max(0, qty - min(deposits[product], keep))
             if qty:
                 sales.append(["SELL", product, qty])
