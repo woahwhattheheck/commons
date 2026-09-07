@@ -88,10 +88,9 @@ All rejected. The model table is the only one that is not negative, and it was
 frozen before the reserved seeds were touched. Model choice is measurably better
 than hand choice on this substrate; the substrate is what has no room.
 
-## Why the worker lane has no room
+## Position safety, and a correction to an earlier claim
 
-One mechanism, confirmed three ways: **Arlene has no spare position-safe worker
-time.**
+
 
 `_noop` answers whether the engine ignores an op *on the tile the worker is
 standing on*. Once a worker is walked away it is answering about the wrong tile,
@@ -101,17 +100,33 @@ after adding a return-to-home leg. The sound admission is a literal-PASS window
 read off the tape, since a PASS is a no-op wherever the worker stands, re-read
 live each turn because a checkpoint switch replaces the suffix.
 
-Under that rule, per game:
+**Correction.** An earlier run of this measurement reported that at every one of
+457 position-safe moments the board held nothing collectable, and that was a
+defect in the instrument, not a fact about the game. `reachable_targets` priced
+each target through `native_motifs.engine()`, which returns the BUNDLED
+`engine_pin.py` -- the unit-phase transition closure, which carries no
+`market_price` at all. Every price lookup raised, the value came back None, and
+the filter dropped the entire target list on every call. The board in fact holds
+animal yield on 451 of 719 turns. Pricing now resolves `market_price` from the
+real engine and the silent drop is removed.
 
-| seed | free slots | PASS window < 3 | window ≥ 3 | of those, board holds nothing collectable |
+Re-measured with that fixed, per game:
+
+| seed | free slots | board has a target | reachable two-way | reachable one-way |
 |---|---:|---:|---:|---:|
-| 9600011 seat 0 | 563 | 337 | 226 | 226 |
-| 9600029 seat 0 | 670 | 439 | 231 | 231 |
+| 9600011 seat 0 | 563 | 562 | 265 | 321 |
+| 9600029 seat 0 | 670 | 669 | 266 | 323 |
 
-Arlene parks a worker precisely when there is no production anywhere to collect;
-when there is, its tape is using that worker. Corrected free-run diagnostics: of
-107 runs of four or more consecutive free turns, 96 allow collect-and-return-to-
-start, 36 the full depot round trip, and 0 a structure fill.
+Two-way is out, act, and back to the tile the route left the worker on, inside a
+literal-PASS window. One-way needs no return: the end-of-day refresh drops every
+carried inventory into the shed regardless of position, respawns the farmer and
+disbands the hands (873-882), so a collection finishing inside the day banks
+itself and the displacement ends at the reset. It requires instead that the tape
+want nothing from that worker for the rest of the day, and it is excluded on the
+final day, whose close has no turn left to sell into.
+
+The worker lane is therefore NOT closed for lack of reachable work. Arms are
+re-running.
 
 Capacity is not the gap either: over full games Arlene strands **no** animals --
 final shed and carried are both empty -- and holds an animal with a matching empty

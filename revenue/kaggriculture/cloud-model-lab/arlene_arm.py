@@ -17,6 +17,13 @@ import os
 import time
 
 import cards as cards_mod
+import native_motifs
+
+
+def NM_engine():
+    return native_motifs.engine()
+
+
 import arlene_motifs
 import arlene_plan
 import route_cards
@@ -93,7 +100,8 @@ def game(seed, seat, opponent, table, overlay, A, arl_id, record_path=False,
                                      max_steps=table.get("max_steps",
                                                          arlene_plan.MAX_PLAN_STEPS),
                                      deposit=table.get("deposit", True),
-                                     min_value=table.get("min_value", 0.0))
+                                     min_value=table.get("min_value", 0.0),
+                                     one_way=table.get("one_way", False))
     else:
         me = arlene_motifs.Overlay(A, table)
     t0 = time.time()
@@ -145,7 +153,7 @@ def main():
     ap.add_argument("--seats", type=int, nargs="+", default=[0, 1])
     ap.add_argument("--opponents", nargs="+", default=["arlene", "apex"])
     ap.add_argument("--motifs", default=None)
-    ap.add_argument("--plan", choices=("greedy",), default=None,
+    ap.add_argument("--plan", choices=("greedy", "cap"), default=None,
                     help="run the bounded worker-reallocation continuation lane "
                          "with the named target chooser instead of a motif table")
     ap.add_argument("--plan-max-steps", type=int, default=arlene_plan.MAX_PLAN_STEPS)
@@ -163,7 +171,10 @@ def main():
     a = ap.parse_args()
     A, arl_id = route_cards.load_arlene()
     if a.plan:
-        table = {"lane": "plan", "chooser": arlene_plan.GreedyChooser(),
+        chooser = (arlene_plan.CapChooser(NM_engine()) if a.plan == "cap"
+                   else arlene_plan.GreedyChooser())
+        table = {"lane": "plan", "chooser": chooser,
+                 "one_way": a.plan == "cap",
                  "max_steps": a.plan_max_steps, "deposit": not a.plan_no_deposit,
                  "min_value": a.plan_min_value, "meta": {"authored": "hand",
                  "provenance": "engine-derived-control"}}

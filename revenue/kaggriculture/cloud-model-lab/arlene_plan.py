@@ -113,6 +113,48 @@ class GreedyChooser:
         return best
 
 
+class CapChooser:
+    """HAND-AUTHORED control aimed at the one loss no later harvest can recover.
+
+    `_daily_refresh_animals` writes yield_units = min(max_held, yield + base +
+    bonus) (827), so a unit produced onto an animal already at its cap is
+    discarded at that refresh. Measured on the intact baseline: 42 units on seed
+    9600011 (38 EGG, 4 MILK) over 24 refreshes, about $1,732 at final prices, and
+    4 units on 9600029. A coverage test that asks "does the route harvest this
+    tile eventually" cannot see any of it -- the units are destroyed first.
+
+    This takes the reachable animal that is closest to overflowing, preferring the
+    one that would lose the most. HARVEST leaves the animal in place (469-472), so
+    nothing is forfeited by taking it early.
+    """
+    label = "hand cap-overflow harvest"
+    authored = "hand"
+
+    def __init__(self, K):
+        self.K = K
+
+    def at_risk(self, t, obs):
+        if t["op"][0] != "HARVEST" or t.get("animal_meta") is None:
+            return 0
+        m = t["animal_meta"]
+        a = self.K.ANIMALS[m["animal"]]
+        since = (int(obs["day"]) + 1) - m["placed_day"] - a["first_yield_day"]
+        if since < 0 or since % a["interval"] != 0:
+            return 0                      # not a production day, nothing to lose
+        add = 1 + (m["pending_care_bonus"] if m["fed_today"] else 0)
+        return max(0, (m["yield_units"] + add) - a["max_held"])
+
+    def choose(self, card, window, obs=None):
+        best, best_lost = None, 0
+        for t in card["targets"]:
+            if t["dist"] + 1 > window:
+                continue
+            lost = self.at_risk(t, obs) if obs is not None else 0
+            if lost > best_lost:
+                best, best_lost = t, lost
+        return best
+
+
 class TableChooser:
     """Replays the target the model chose on a development state of this shape.
 
@@ -146,12 +188,21 @@ class TableChooser:
 
 class PlanOverlay:
     def __init__(self, arlene_mod, chooser, max_steps=MAX_PLAN_STEPS,
-                 deposit=True, last_day=29, min_value=0.0):
+                 deposit=True, last_day=29, min_value=0.0, one_way=False):
         self.A = arlene_mod
         self.agent = arlene_mod.Agent()
         self.chooser = chooser
         self.max_steps = max_steps
         self.deposit = deposit
+        # One-way mode. The end-of-day refresh drops EVERY carried inventory into
+        # the shed regardless of where the worker stands, respawns the farmer and
+        # disbands the hands (873-882), so a collection that finishes inside the
+        # day needs no depot trip and no return to the tile the route left the
+        # worker on. What it does need is for the tape to want nothing from that
+        # worker for the REST of the day, since its position stays displaced until
+        # the reset. Goods dropped at the final day's close have no turn left to
+        # sell in, so the last day is excluded.
+        self.one_way = one_way
         self.last_day = last_day
         self.min_value = min_value
         self.K = NM.engine()
@@ -208,9 +259,18 @@ class PlanOverlay:
                 # hands and drops every carried inventory into the shed -- so goods
                 # carried at day close are banked, not lost, and position after it
                 # is not ours to protect.
-                window = min(tape_pass_window(self.agent, step, i),
-                             turns_left_today)
-                t = self.chooser.choose(card, window)
+                pw = tape_pass_window(self.agent, step, i)
+                if self.one_way:
+                    # the tape must be done with this worker until the reset
+                    window = turns_left_today if pw >= turns_left_today else 0
+                else:
+                    window = min(pw, turns_left_today)
+                if window <= 0:
+                    continue
+                try:
+                    t = self.chooser.choose(card, window, obs)
+                except TypeError:
+                    t = self.chooser.choose(card, window)
                 if t is None or t["value_now"] < self.min_value:
                     continue
                 plan = {"target": t, "phase": "go", "steps": 0, "home": (x, y),
@@ -264,6 +324,10 @@ class PlanOverlay:
                                "effect": after["slots"][i]["kind"],
                                "authored": self.chooser.authored})
             if plan["phase"] == "act":
+                if self.one_way:
+                    self.plans.pop(i, None)
+                    self.completed += 1
+                    continue
                 plan["phase"] = "back"
             elif plan["phase"] == "back" and tuple(after["slots"][i]["pos"]) == \
                     tuple(plan["home"]):

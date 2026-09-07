@@ -39,6 +39,21 @@ def depot_tiles(board):
     return [(h - 1, h - 1), (h, h - 1), (h - 1, h), (h, h)]
 
 
+def _pricer(K):
+    """The engine's own market_price.
+
+    NOT from the bundled transition: `engine_pin.py` carries only the unit-phase
+    closure and has no pricing at all, so asking it silently returned None for
+    every target and the filter below dropped the whole target list. That defect
+    produced a run in which no tile on the board ever looked collectable, on a
+    board where 451 of 719 turns hold animal yield.
+    """
+    if hasattr(K, "market_price"):
+        return K.market_price
+    from kaggle_environments.envs.kaggriculture import kaggriculture as R
+    return R.market_price
+
+
 def marginal_revenue(K, market, item, units):
     """What `units` of `item` would actually fetch, through the ENGINE's own pricing.
 
@@ -53,13 +68,11 @@ def marginal_revenue(K, market, item, units):
     """
     inv = dict(market.get("inventory") or {})
     params = market.get("params")
+    price = _pricer(K)
     total = 0.0
     n = int(inv.get(item, 0))
     for k in range(int(units)):
-        try:
-            total += float(K.market_price(item, n + k, params))
-        except Exception:
-            return None
+        total += float(price(item, n + k, params))
     return round(total, 1)
 
 
@@ -83,7 +96,14 @@ def reachable_targets(obs, seat, pos, K, board, prices):
                         "depot_dist": dep, "units": units, "product": product,
                         "value_now": marginal_revenue(K, market, product, units),
                         "what": f"{t['animal']} holding {units} {product}",
-                        "persists": True})
+                        "persists": True,
+                        # everything the cap test needs, read straight off the tile
+                        "animal_meta": {
+                            "animal": t["animal"], "yield_units": units,
+                            "placed_day": int(t.get("placed_day", 0)),
+                            "fed_today": bool(t.get("fed_today")),
+                            "pending_care_bonus": int(
+                                t.get("pending_care_bonus", 0) or 0)}})
                 if t.get("fertilizer_available"):
                     out.append({
                         "at": [x, y], "op": ["COLLECT_FERTILIZER"], "dist": d,
@@ -106,7 +126,6 @@ def reachable_targets(obs, seat, pos, K, board, prices):
                                     "; HARVEST DESTROYS a non-ongoing crop and "
                                     "forfeits any growth it had left")),
                         "persists": bool(cd["ongoing"])})
-    out = [r for r in out if r["value_now"] is not None]
     out.sort(key=lambda r: (-r["value_now"] / max(1, r["dist"] + 1), r["dist"]))
     return out[:MAX_TARGETS]
 
