@@ -1,4 +1,4 @@
-Current complete continuation: [NEXT-RESULTS.md](NEXT-RESULTS.md), 113 games and two next-candidate archives. The initial checkpoint below is retained for history.
+Current complete continuation: [NEXT-RESULTS.md](NEXT-RESULTS.md), 117 games and two next-candidate archives. The initial checkpoint below is retained for history.
 
 # Frozen candidate generalization and isolated repair
 
@@ -6,7 +6,7 @@ The exact designated archive lost all 16 fresh development games: 8/8 losses to 
 
 | Seed | Opponent | Frozen cash | Opponent cash | Margin |
 |---|---|---:|---:|---:|
-| 9500109 | Arlene | 95699 | 113284 | -17585 |
+| 9500109 | Arlene | 95699 | 117284 | -17585 |
 | 9500109 | Apex | 94896 | 108067 | -13171 |
 | 9500123 | Arlene | 58389 | 80201 | -21812 |
 | 9500123 | Apex | 56384 | 85385 | -29001 |

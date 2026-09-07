@@ -1,4 +1,4 @@
-Current complete continuation: [NEXT-RESULTS.md](NEXT-RESULTS.md), 113 games and two next-candidate archives. The initial checkpoint below is retained for history.
+Current complete continuation: [NEXT-RESULTS.md](NEXT-RESULTS.md), 117 games and two next-candidate archives. The initial checkpoint below is retained for history.
 
 # Frontier next public panel
 

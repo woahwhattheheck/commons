@@ -200,6 +200,26 @@
     "report": "next-candidate-comparison.json.gz"
   },
   {
+    "candidate_payload": {
+      "bytes": 46342,
+      "path": "/workspace/scratch/bd675b797793/next-panel-runtime/export-arlene-baseline/main.py",
+      "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 4,
+    "gzip_bytes": 164828,
+    "gzip_sha256": "57fc22ef21172a6c0d1bed714828ac84b403f06ebb7f127b4a530b2be682dd04",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 7776990,
+    "raw_sha256": "3004a20a9aa0a4618ba4d2c8db12a8acceb206557176451602e36f9e4e349951",
+    "report": "next-export-vs-deployed.json.gz"
+  },
+  {
     "candidate_payload": null,
     "engine_sha256": {
       "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",

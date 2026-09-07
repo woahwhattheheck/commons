@@ -36,7 +36,7 @@ Both archives contain main.py, full Apache-2.0 LICENSE, precise NOTICE and the a
 | exports/arlene-baseline/submission.tar.gz |33908|7dcb73bb0d8bc6d0d003b107fcb47c93f9e77c4d8c64d39fec8bd54d406bb407|1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4|
 | exports/demand-dairy/submission.tar.gz |34435|870b67559cdef9483d10a3e998476530863d4a14880ee17b6cbbafb4c5acf446|a9869234e78f052be2c2b90f4e01901cc89056f19f85032b3b0e756fb7714567|
 
-Accepted cloud-pack.build and verify created both archives and verified extracted bytes against the exact native sources used in complete games. No separate archive replay is claimed. Candidate cold first calls, including official loader execution, were15.868–39.095ms in the fresh panel. Raw actor startup, call CPU, maximum call/RPC, game wall time and RSS are retained; per-game.csv exposes those measurements. Child cumulative CPU counters can include evaluator sampling artifacts; call CPU and wall measurements should be used for comparisons. Archive/framing bytes are included above, not excluded from size claims.
+Accepted cloud-pack.build and verify created both archives and verified extracted bytes against the exact native sources used in complete games. The extracted baseline archive subsequently completed four direct games against deployed TITAN; see the next-selection receipt below. Candidate cold first calls, including official loader execution, were15.868–39.095ms in the fresh panel. Raw actor startup, call CPU, maximum call/RPC, game wall time and RSS are retained; per-game.csv exposes those measurements. Child cumulative CPU counters can include evaluator sampling artifacts; call CPU and wall measurements should be used for comparisons. Archive/framing bytes are included above, not excluded from size claims.
 
 ## Reproduce and inspect
 
@@ -48,6 +48,21 @@ python commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/measure.py
 
 Use arlene-adapter.py for the exact control. These seeds are now consumed; use new seeds for future development. prepare.py and build_experiment.py construct official-loader adapters using the existing evaluator. Agents receive no credential environment; seccomp denies networking and process execution before source loading. Apex is inspected and precompiled outside agent runtime. No second simulator is supplied.
 
-results/per-game.csv contains all113 games, including failures and controls, candidate-seat cash/margin, action counts, market quantities/cash and runtime. results/*.json.gz preserve complete timelines, actions/unchanged effects, terminal state and trace hashes; receipts.json records compressed and uncompressed SHA256 values, exact engine/evaluator/measurement pins and native payload fingerprints where recorded. experiment-summary.json provides descriptive totals; mixed-opponent totals are not paired causal effects.
+results/per-game.csv contains all117 games, including failures and controls, candidate-seat cash/margin, action counts, market quantities/cash and runtime. results/*.json.gz preserve complete timelines, actions/unchanged effects, terminal state and trace hashes; receipts.json records compressed and uncompressed SHA256 values, exact engine/evaluator/measurement pins and native payload fingerprints where recorded. experiment-summary.json provides descriptive totals; mixed-opponent totals are not paired causal effects.
 
 Public source and attribution links must accompany any future public Competition Code/forum sharing. Root/ROWAN owns that account action and should retain its public Kaggle URL; this GitHub publication does not establish that a forum announcement occurred. See ../PUBLIC_CODE_SHARING.md for the previously checked, explicitly scoped rule reading; its old Kaito-specific ready-to-post description does not describe these Arlene artifacts.
+
+## Final native checkpoint: unchanged Arlene recommended
+
+After the reserved protocol completed, the extracted baseline archive played deployed79b407 directly on those same two seeds in both seats. This is a deployed-policy/export comparison, not another untouched-seed claim and not a parameter retuning round. All four games completed719 rounds without either agent failing. Mean candidate-seat margin is+6,816. The frozen artifact happened to produce the same cash as Kaito on these conditions; its exact native SHA16d7f213… was recorded, not substituted with Kaito.
+
+| Seed | Arlene seat | Arlene cash | Deployed cash | Margin | Cold first call ms | Full game wall s |
+|---|---:|---:|---:|---:|---:|---:|
+|9500203|0|83,396|74,131|9,265|19.850|6.163|
+|9500203|1|89,688|85,345|4,343|29.133|7.174|
+|9500217|0|120,170|113,342|6,828|19.531|6.632|
+|9500217|1|120,170|113,342|6,828|24.621|6.624|
+
+Process startup separately ranged58.6–109.5ms; cold first call includes native official-loader initialization. Summed candidate call CPU per complete game was0.308–0.363s. Full-game wall includes both agents, interpreter and measurement. Raw reports retain per-call maxima and RSS; RSS/cumulative child accounting can reflect shared driver sampling and should not be treated as isolated policy memory.
+
+**Recommend unchanged Arlene**: source1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4, native callable `agent`; archive7dcb73bb0d8bc6d0d003b107fcb47c93f9e77c4d8c64d39fec8bd54d406bb407,33,908bytes. Demand-dairy remains a separately attributed research variant. It is not consistently better than Arlene in the reserved comparison, while the legal unchanged foundation is clearly useful against the tested deployed policy and other public sources. This is a disclosed choice among the pretested baseline and derivative, not a claim of a new independent selection-validation set. Root owns next submission designation; no account action occurred.

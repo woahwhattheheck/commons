@@ -96,6 +96,14 @@
     "wins": 12
   },
   {
+    "experiment": "next-export-vs-deployed",
+    "games": 4,
+    "losses": 0,
+    "mean_margin": 6816.0,
+    "ties": 0,
+    "wins": 4
+  },
+  {
     "experiment": "service-diagnostic",
     "games": 1,
     "losses": 1,
