@@ -39,6 +39,23 @@ import copy
 import native_motifs as NM
 
 MAX_FILLS = 4
+# How long an op needs before its value can actually be realised, in DAYS.
+#
+# FEED and CARE set daily flags the end-of-day refresh reads: the product appears
+# at that refresh, then still has to be HARVESTed by a later worker turn and SOLD.
+# On the last day none of that can happen, and FEED additionally burns a carried
+# WHEAT for nothing -- the overlay did exactly that at d28h23 and paid for it.
+# WATER feeds plant growth that has to reach a harvest window and a sale.
+# HARVEST and COLLECT_FERTILIZER put stock in hand the same turn, so they stay
+# available right up to the terminal settlement.
+# Measured, not guessed: a FEED at d28h23 passed a one-day gate and cost exactly
+# $41 -- the ledger shows one WHEAT that was never sold and no other change on
+# either seat. A consuming op needs the WHOLE chain to fit, refresh then a worker
+# turn to harvest then a sale, and the route may not revisit that tile at all. So
+# an op that SPENDS something needs two clear days; a free op needs one.
+REALISATION_DAYS = {"FEED": 2, "PLACE": 2, "PLANT": 2,
+                    "CARE": 1, "WATER": 1,
+                    "HARVEST": 0, "COLLECT_FERTILIZER": 0}
 # The four resources a route tape can consume, and the ops that consume each.
 SEED_OPS = ("PLANT",)
 SHED_OPS = ("PICKUP",)
@@ -185,6 +202,9 @@ class Overlay:
                 op = list(m["op"])
                 if op == units[i] or op[0] == "PASS":
                     continue
+                need = REALISATION_DAYS.get(op[0], 1)
+                if day + need > self.last_day:
+                    continue      # no time left for this op's value to be realised
                 if op[0] == "HARVEST" and day < self.last_day and \
                         harvest_is_destructive(f_farm["tiles"][facts["at"][1]]
                                                [facts["at"][0]], day, self.K):

@@ -120,7 +120,10 @@ def main():
             rows.append(row)
             chosen = (" ".join(f"u{u}:{' '.join(str(t) for t in op)}"
                                for u, op in sorted(row["slots"].items()))
-                      if row["slots"] else f"REJECT[{row['rejected']}]")
+                      if row["slots"]
+                      else f"REJECT[{row['rejected']}"
+                           + (f" | engine: {row['error']}" if row.get("error") else "")
+                           + "]")
             acted = (sum(1 for s in row["engine"]["slots"] if s["acted"])
                      if row["engine"] else 0)
             offered = " ".join(sorted({o["op"][0] for o in row["offered"]}))
