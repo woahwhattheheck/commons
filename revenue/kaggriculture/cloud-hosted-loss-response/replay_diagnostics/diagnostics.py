@@ -308,7 +308,10 @@ def main() -> int:
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument("replay", type=Path)
     p.add_argument("--engine-dir", type=Path, required=True)
-    p.add_argument("--own-seat", type=int, choices=(0, 1), required=True)
+    p.add_argument(
+        "--own-seat", type=int, choices=(0, 1),
+        required=True,
+    )
     p.add_argument("--episode-id", type=int, required=True)
     p.add_argument("--our-submission-id", type=int)
     p.add_argument("--expected-cash", help="own,rival terminal cash from the provider record")
