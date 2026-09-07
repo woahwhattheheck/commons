@@ -1,0 +1,45 @@
+test_abrupt_exit (__main__.ActorTests.test_abrupt_exit) ... ok
+test_crash (__main__.ActorTests.test_crash) ... ok
+test_hard_timeout (__main__.ActorTests.test_hard_timeout) ... ok
+test_independent_seed_repeat (__main__.ActorTests.test_independent_seed_repeat) ... ok
+test_invalid_actions (__main__.ActorTests.test_invalid_actions) ... ok
+test_load_failure (__main__.ActorTests.test_load_failure) ... ok
+test_logs_do_not_break_protocol (__main__.ActorTests.test_logs_do_not_break_protocol) ... ok
+test_one_argument_agent (__main__.ActorTests.test_one_argument_agent) ... ok
+test_packet_size (__main__.ActorTests.test_packet_size) ... ok
+test_partial_frame_timeout (__main__.ActorTests.test_partial_frame_timeout) ... ok
+test_state_persists_only_in_own_process (__main__.ActorTests.test_state_persists_only_in_own_process) ... ok
+test_timeout_resource_measurement (__main__.ActorTests.test_timeout_resource_measurement) ... ERROR
+test_two_argument_agent (__main__.ActorTests.test_two_argument_agent) ... ok
+test_actual_observation_privacy_and_hidden_seed (__main__.OfficialEngineTests.test_actual_observation_privacy_and_hidden_seed) ... ok
+test_agent_crash_has_no_final_score (__main__.OfficialEngineTests.test_agent_crash_has_no_final_score) ... ok
+test_compact_policy_is_read_only_and_isolated (__main__.OfficialEngineTests.test_compact_policy_is_read_only_and_isolated) ... ok
+test_environment_repeatability (__main__.OfficialEngineTests.test_environment_repeatability) ... ok
+test_environment_seed_changes_state (__main__.OfficialEngineTests.test_environment_seed_changes_state) ... ok
+test_opponent_timeout_has_no_final_score (__main__.OfficialEngineTests.test_opponent_timeout_has_no_final_score) ... ok
+test_player_positions (__main__.OfficialEngineTests.test_player_positions) ... ok
+test_terminal_step_and_score (__main__.OfficialEngineTests.test_terminal_step_and_score) ... ok
+test_corrupt_source_is_rejected_before_loading (__main__.SummaryTests.test_corrupt_source_is_rejected_before_loading) ... ok
+test_failures_do_not_become_wins (__main__.SummaryTests.test_failures_do_not_become_wins) ... ok
+test_missing_source_is_not_downloaded (__main__.SummaryTests.test_missing_source_is_not_downloaded) ... ok
+test_no_valid_games_has_no_mean (__main__.SummaryTests.test_no_valid_games_has_no_mean) ... ok
+
+======================================================================
+ERROR: test_timeout_resource_measurement (__main__.ActorTests.test_timeout_resource_measurement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/bd675b797793/kag-bundle/source/revenue/kaggriculture/cloud-eval/test_evaluator.py", line 127, in test_timeout_resource_measurement
+    status = Path(f"/proc/{actor.proc.pid}/status").read_text()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1027, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1013, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/proc/31/status'
+
+----------------------------------------------------------------------
+Ran 25 tests in 4.653s
+
+FAILED (errors=1)
