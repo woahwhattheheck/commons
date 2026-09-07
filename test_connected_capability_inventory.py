@@ -89,7 +89,13 @@ class ConnectedCapabilityInventoryTests(unittest.TestCase):
         self.assertEqual(kaggle["stage"], "PRODUCING")
         self.assertEqual(kaggle["condition"], "CONSTRAINED")
         self.assertEqual(kaggle["allocation"], "CALLABLE_WITH_CONSTRAINT")
-        self.assertIn("OWNER_ONLY_ENTRY_SUBMISSION", kaggle["mutation"])
+        self.assertEqual(
+            kaggle["mutation"],
+            "SHARED_ALL_CARRIERS_TASK_SCOPED_STANDING_AUTHORITY; "
+            "COORDINATION_RECORD_REQUIRED; "
+            "PROVIDER_TERMS_AND_QUOTA_BOUNDARIES_APPLY; "
+            "NO_PERSONAL_OWNER_ACTION_OR_REPEAT_APPROVAL_FOR_ALREADY_AUTHORIZED_OPERATION",
+        )
         self.assertIn("56074364", kaggle["evidence"])
         self.assertIn("public score 790.0", kaggle["evidence"])
 
