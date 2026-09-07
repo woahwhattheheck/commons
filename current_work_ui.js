@@ -79,6 +79,7 @@
       return node;
     }
     function render() {
+      const focusedRow = rows.find(row => row.button === doc.activeElement);
       list.replaceChildren();
       if (!snapshot) { doc.getElementById('cw-count').textContent = ''; return; }
       const query = search.value.trim().toLowerCase();
@@ -112,8 +113,12 @@
         }
         if (initialStatus(item) === 'UNVERIFIED') {
           const button = element('button', row.busy ? 'Checking paths…' : 'Check listed paths', card);
-          button.type = 'button'; button.disabled = !!row.busy;
+          row.button = button;
+          button.type = 'button';
+          // Keep keyboard focus available while preventing duplicate work.
+          button.setAttribute('aria-disabled', String(!!row.busy));
           button.addEventListener('click', async () => {
+            if (row.busy) return;
             const version = epoch, current = snapshot, signal = controller.signal;
             row.busy = true; row.status = 'CHECKING'; row.detail = ''; render();
             try {
@@ -130,6 +135,9 @@
             row.busy = false; render();
           });
         }
+      }
+      if (focusedRow && focusedRow.button && focusedRow.button.isConnected) {
+        focusedRow.button.focus();
       }
     }
     async function reload() {
