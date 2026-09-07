@@ -1,6 +1,6 @@
 {
   "operation_id": "titan-kaggriculture-frontier-20260907-01",
-  "observed_at": "2026-09-07T10:03:13.600469+00:00",
+  "observed_at": "2026-09-07T10:10:29.150715+00:00",
   "status": "SUBMISSION_FOUND",
   "submission_id": 56074364,
   "notebook_url": "https://www.kaggle.com/code/tokenjunkielabs/titan-kaggriculture-frontier-source",
@@ -11,7 +11,7 @@
   "artifact_bytes": 57711,
   "existing_v2_modified": false,
   "provider_create_response_received": true,
-  "next_action": "Read-only validation and hosted episode monitoring; no further submission writes for this operation.",
+  "next_action": "Read-only monitoring for more competitive matches, especially opposite-seat games and actual losses; no submission writes for this operation.",
   "validation_status": "COMPLETE",
   "current_quota": {
     "numToday": 2,
@@ -23,5 +23,19 @@
     61777,
     61777
   ],
-  "competitive_episode_count_observed": 0
+  "competitive_episode_count_observed": 2,
+  "competitive_record": {
+    "wins": 2,
+    "losses": 0,
+    "ties": 0,
+    "seats_observed": [
+      0
+    ]
+  },
+  "public_score": "790.0",
+  "account_user_rank": 3981,
+  "competitive_episode_ids": [
+    106416987,
+    106417872
+  ]
 }
