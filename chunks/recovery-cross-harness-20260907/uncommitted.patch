@@ -1,0 +1,240 @@
+diff --git a/host/branch_review.py b/host/branch_review.py
+index 2f3ef28af..4a292cca1 100644
+--- a/host/branch_review.py
++++ b/host/branch_review.py
+@@ -366,6 +366,11 @@ def measure_root(root):
+     card_text = search_hits.get(DEFAULT_CARD, "")
+     catalog_text = search_hits.get(DEFAULT_CATALOG, "")
+     catalog = load_catalog(catalog_text) if catalog_text else {}
++    packet = catalog.get("packet") or {}
++    pfc = catalog.get("pfc_census") or {}
++    for path in (packet.get("path"), pfc.get("path")):
++        if isinstance(path, str) and path and path not in search_hits:
++            search_hits[path] = _read(root, path)
+     blob = "\n".join(
+         [
+             card_text,
+@@ -375,15 +380,14 @@ def measure_root(root):
+     ).lower()
+     found = [phrase for phrase in REQUIRED_PHRASES if phrase in blob]
+     calibration_hits = [rel for rel in CALIBRATION if _exists(root, rel)]
+-    pfc = catalog.get("pfc_census") or {}
+     facts = {
+         "card_present": bool(card_text) and "branch_review" in card_text.lower(),
+         "catalog_present": bool(catalog) and not catalog.get("error"),
+         "found_phrases": found,
+         "families": catalog.get("families") or [],
+         "branches": catalog.get("branches") or [],
+-        "packet_present": bool(search_hits.get(PACKET_PATH)),
+-        "pfc_census_present": bool(search_hits.get(PFC_CENSUS_PATH)),
++        "packet_present": bool(search_hits.get(packet.get("path") or PACKET_PATH)),
++        "pfc_census_present": bool(search_hits.get(pfc.get("path") or PFC_CENSUS_PATH)),
+         "clearance_retracted": str(pfc.get("clearance_sentence") or "").upper()
+         == "RETRACTED",
+         "retracted_stays_retracted": bool(catalog.get("retracted_stays_retracted")),
+diff --git a/host/current_work.py b/host/current_work.py
+index 01f544671..164a9df8c 100644
+--- a/host/current_work.py
++++ b/host/current_work.py
+@@ -167,16 +167,17 @@ def reconcile_item(item, snapshot):
+         result["executable"] = False
+         result["reason"] = "hazardous device op; not fired from this ledger"
+         return result
+-    if kind == "OWNER_PLATFORM":
+-        result["executable"] = False
+-        result["reason"] = "external owner/platform act"
+-    if snapshot.get("open_prs") and not (
+-        SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed)
+-    ):
++    if snapshot.get("open_prs"):
+         result["status"] = "OPEN"
+         result["reason"] = result.get("reason") or "open PR is not close evidence"
+         return result
+-    if SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed):
++    if kind == "OWNER_PLATFORM":
++        result["executable"] = False
++        result["reason"] = "external owner/platform act"
++    closeable = (
++        SHA_RE.match(main_sha) and bool(claimed) and all(main_paths.get(p) for p in claimed)
++    )
++    if closeable:
+         result["status"] = "CLOSED"
+         result["main_sha"] = main_sha
+         return result
+@@ -229,7 +230,12 @@ def measure_tree(root, main_sha=""):
+         return {"error": catalog["error"], "open_now": [], "items": []}
+     snapshot = {"main_paths": {}, "main_sha": str(main_sha or "")}
+     for item in catalog.get("items") or []:
+-        for path in item.get("claimed_paths") or []:
++        if not isinstance(item, dict):
++            continue
++        claimed_paths = item.get("claimed_paths")
++        if not isinstance(claimed_paths, list):
++            continue
++        for path in claimed_paths:
+             snapshot["main_paths"][path] = os.path.exists(os.path.join(root, path))
+     return project(catalog, snapshot)
+ 
+diff --git a/host/open_work.py b/host/open_work.py
+index 3c998a2af..9523870a6 100644
+--- a/host/open_work.py
++++ b/host/open_work.py
+@@ -211,7 +211,7 @@ def parse_structured_record(text):
+             continue
+         if HELLO_RE.match(stripped) or SENT_USING_RE.search(stripped):
+             hello = True
+-        break
++            break
+     salon = sent_using and hello and not work_ids and not action and not owner
+     return {
+         "id": ident,
+diff --git a/host/sprint_integration.py b/host/sprint_integration.py
+index b7bec0b9e..1ba2002ca 100644
+--- a/host/sprint_integration.py
++++ b/host/sprint_integration.py
+@@ -348,13 +348,30 @@ def teach_line(repo="woahwhattheheck/commons"):
+ def format_slack_lines(scan, repo="woahwhattheheck/commons"):
+     """Compact Slack lines. Teach the rule, then exact PR verdicts with evidence."""
+     lines = [teach_line(repo)]
+-    by_pr = scan.get("by_pr") or {}
+-    prs = {int(p["number"]): p for p in scan.get("prs") or []}
++    by_pr = {}
++    raw_by_pr = scan.get("by_pr") or {}
++    if isinstance(raw_by_pr, dict):
++        for key, info in raw_by_pr.items():
++            try:
++                number = int(key)
++            except (TypeError, ValueError):
++                continue
++            if isinstance(info, dict):
++                by_pr[number] = info
++    prs = {}
++    for pr in scan.get("prs") or []:
++        if not isinstance(pr, dict):
++            continue
++        try:
++            number = int(pr.get("number"))
++        except (TypeError, ValueError):
++            continue
++        prs[number] = pr
+     if by_pr:
+         bits = []
+-        for number in sorted(by_pr, key=lambda n: int(n)):
+-            info = by_pr[str(number)] if str(number) in by_pr else by_pr[number]
+-            pr = prs.get(int(number), {})
++        for number in sorted(by_pr):
++            info = by_pr[number]
++            pr = prs.get(number, {})
+             bits.append("`#%s` *%s* `%s`→`%s`" % (
+                 number,
+                 info.get("verdict") or "CLEAR_TO_MERGE",
+@@ -414,11 +431,19 @@ def _contents_bytes(fetch_json, repo, path, ref):
+ 
+ 
+ def _pr_files(fetch_json, repo, number):
++    try:
++        number = int(number)
++    except (TypeError, ValueError):
++        return {}
++    if number < 1:
++        return {}
+     files = fetch_json("/repos/%s/pulls/%d/files" % (repo, number), per_page=100)
+     if not isinstance(files, list):
+         return {}
+     out = {}
+     for entry in files:
++        if not isinstance(entry, dict):
++            continue
+         path = entry.get("filename") or ""
+         if not path:
+             continue
+@@ -436,7 +461,14 @@ def pulse_scan(fetch_json, repo, head_sha, max_prs=20):
+         pulls = []
+     prs = []
+     for pr in pulls:
+-        number = pr.get("number")
++        if not isinstance(pr, dict):
++            continue
++        try:
++            number = int(pr.get("number"))
++        except (TypeError, ValueError):
++            continue
++        if number < 1:
++            continue
+         base_sha = ((pr.get("base") or {}).get("sha")) or ""
+         head = (pr.get("head") or {}).get("sha") or ""
+         files = _pr_files(fetch_json, repo, number)
+diff --git a/test_branch_review.py b/test_branch_review.py
+index ebc3ebe19..f6e761151 100644
+--- a/test_branch_review.py
++++ b/test_branch_review.py
+@@ -6,6 +6,8 @@ from __future__ import annotations
+ import os
+ import sys
+ import unittest
++import json
++import tempfile
+ 
+ ROOT = os.path.dirname(os.path.abspath(__file__))
+ sys.path.insert(0, os.path.join(ROOT, "host"))
+@@ -160,6 +162,27 @@ class TestBranchReview(unittest.TestCase):
+         self.assertEqual(verdict["state"], "INTEGRATED")
+         self.assertIn("still not the file", verdict["note"])
+ 
++    def test_catalog_selected_artifact_paths_are_measured(self):
++        with open(os.path.join(ROOT, "ground", "BRANCH_REVIEW.json"), encoding="utf-8") as handle:
++            catalog = json.load(handle)
++        catalog["packet"]["path"] = "alternate/packet.json"
++        catalog["pfc_census"]["path"] = "alternate/census.md"
++        with tempfile.TemporaryDirectory() as root:
++            os.makedirs(os.path.join(root, "ground"))
++            os.makedirs(os.path.join(root, "alternate"))
++            with open(os.path.join(ROOT, "ground", "BRANCH_REVIEW.md"), encoding="utf-8") as source:
++                card = source.read()
++            with open(os.path.join(root, "ground", "BRANCH_REVIEW.md"), "w", encoding="utf-8") as handle:
++                handle.write(card)
++            with open(os.path.join(root, "ground", "BRANCH_REVIEW.json"), "w", encoding="utf-8") as handle:
++                json.dump(catalog, handle)
++            for path in ("alternate/packet.json", "alternate/census.md"):
++                with open(os.path.join(root, path), "w", encoding="utf-8") as handle:
++                    handle.write("present")
++            row = measure_root(root)
++        self.assertTrue(row["packet_present"])
++        self.assertTrue(row["pfc_census_present"])
++
+     def test_live_tree_matches_the_report(self):
+         catalog_path = os.path.join(ROOT, "ground", "BRANCH_REVIEW.json")
+         with open(catalog_path, encoding="utf-8") as handle:
+diff --git a/test_current_work.py b/test_current_work.py
+index 24f41c157..8a503ce83 100644
+--- a/test_current_work.py
++++ b/test_current_work.py
+@@ -5,6 +5,7 @@ from __future__ import annotations
+ import json
+ import os
+ import sys
++import tempfile
+ 
+ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "host"))
+ import current_work as cw
+@@ -89,10 +90,20 @@ def test_conflict_same_id():
+     check("same id different bytes CONFLICT", any("CONFLICT" in p for p in problems), problems)
+ 
+ 
++def test_malformed_items_do_not_crash_measurement():
++    with tempfile.TemporaryDirectory() as root:
++        os.makedirs(os.path.join(root, "ground"))
++        with open(os.path.join(root, cw.DEFAULT_CATALOG), "w", encoding="utf-8") as handle:
++            json.dump({"schema": cw.SCHEMA, "items": ["not-an-item", {"claimed_paths": "not-a-list"}]}, handle)
++        row = cw.measure_tree(root)
++    check("malformed items do not crash measurement", isinstance(row, dict), row)
++
++
+ def main():
+     test_self_and_catalog()
+     test_close_rule()
+     test_conflict_same_id()
++    test_malformed_items_do_not_crash_measurement()
+     if FAILED:
+         print("CURRENT WORK TEST: FAIL", len(FAILED), ":", ", ".join(FAILED))
+         return 1

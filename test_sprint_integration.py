@@ -146,6 +146,39 @@ def test_pulse_scan_mock():
     check("pulse slack has verdicts", "COMPOSE_AND_MERGE" in text and "CLEAR_TO_MERGE" in text, text)
 
 
+def test_malformed_rows_preserve_valid_prs():
+    head = "a" * 40
+    calls = []
+
+    def fetch_json(path, **params):
+        calls.append(path)
+        if path.endswith("/pulls"):
+            return [
+                None, "not-a-row", {}, {"number": "invalid"}, {"number": 0},
+                {"number": "7", "base": {"sha": head}, "head": {"sha": "b" * 40}},
+                {"number": 8, "base": {"sha": head}, "head": {"sha": "c" * 40}},
+            ]
+        if path.endswith("/files"):
+            number = path.split("/")[-2]
+            return [None, "not-a-file", {"filename": "pr%s.txt" % number, "sha": "d" * 40}]
+        return None
+
+    scan = si.pulse_scan(fetch_json, "woahwhattheheck/commons", head)
+    check("malformed rows retain valid PRs", [row["number"] for row in scan["prs"]] == [7, 8], scan)
+    check("malformed file rows retain valid paths", scan["prs"][0]["paths"] == ["pr7.txt"], scan)
+    check("valid disjoint PRs remain clear", all(row["verdict"] == "CLEAR_TO_MERGE" for row in scan["by_pr"].values()), scan)
+    before = list(calls)
+    check("invalid PR number returns no files", si._pr_files(fetch_json, "woahwhattheheck/commons", None) == {})
+    check("invalid PR number causes no fetch", calls == before, calls)
+    lines = si.format_slack_lines({
+        "by_pr": {"invalid": {}, "7": {"verdict": "DEDUPED"}, "8": None},
+        "prs": [None, "not-a-row", {"number": "invalid"}, {"number": 7, "head_sha": "b" * 40}],
+    })
+    text = "\n".join(lines)
+    check("Slack rendering retains valid verdict", "`#7` *DEDUPED*" in text, text)
+    check("Slack rendering drops malformed verdict rows", "`#8`" not in text and "invalid" not in text, text)
+
+
 def test_pulse_yml_preserved():
     yml = open(os.path.join(ROOT, ".github/workflows/repo-pulse.yml"), encoding="utf-8").read()
     engine = open(os.path.join(ROOT, "repo_pulse.py"), encoding="utf-8").read()
@@ -172,6 +205,7 @@ def main():
     test_not_stopping()
     test_json_and_text_in_memory()
     test_pulse_scan_mock()
+    test_malformed_rows_preserve_valid_prs()
     test_pulse_yml_preserved()
     if FAILED:
         print("SPRINT INTEGRATION TEST: FAIL", len(FAILED), ":", ", ".join(FAILED))
