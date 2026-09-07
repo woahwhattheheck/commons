@@ -1,0 +1,117 @@
+name: astra-agno-retest
+on:
+  push:
+    branches: [ops/astra-agno-validate-20260907]
+    paths: [.github/workflows/astra-agno-retest.yml]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          name: astra-agno-validation
+          run-id: 34085576097
+          github-token: ${{ github.token }}
+          path: /tmp/agno-prior
+      - name: Apply exact previous candidate and measured repair
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/agno-final
+          echo 'c433d7d6988bf0ede53a1596a8a2dfb644d05eac1e4abe681f3c09bfd8932f6c  /tmp/agno-prior/final.patch' | sha256sum -c -
+          git init /tmp/agno-repo
+          git -C /tmp/agno-repo remote add origin https://github.com/moorcheh-ai/memanto.git
+          git -C /tmp/agno-repo fetch --depth=1 origin 06615f09c536336e629e34589dc125495cba3109
+          git -C /tmp/agno-repo checkout --detach FETCH_HEAD
+          git -C /tmp/agno-repo apply --check /tmp/agno-prior/final.patch
+          git -C /tmp/agno-repo apply /tmp/agno-prior/final.patch
+          git -C /tmp/agno-repo apply --check "$GITHUB_WORKSPACE/p/astra-agno-publish-20260907/fix-after-ruff.patch"
+          git -C /tmp/agno-repo apply "$GITHUB_WORKSPACE/p/astra-agno-publish-20260907/fix-after-ruff.patch"
+      - name: Install SDKs and execute repaired adapter checks
+        working-directory: /tmp/agno-repo
+        run: |
+          set -euo pipefail
+          python -m pip install -e '.[all]' -r examples/migrations/agno-user-memory/requirements-source.txt > /tmp/agno-final/install.log 2>&1
+          python -m pip freeze > /tmp/agno-final/dependencies.txt
+          python - <<'PY'
+          import hashlib, json, os, shutil, subprocess, sys
+          from pathlib import Path
+          out = Path('/tmp/agno-final')
+          example = 'examples/migrations/agno-user-memory'
+          results = {}
+          def run(name, args):
+              try:
+                  p = subprocess.run(args, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=180)
+                  (out / (name + '.log')).write_text(p.stdout)
+                  results[name] = {'command': args, 'returncode': p.returncode}
+              except subprocess.TimeoutExpired:
+                  (out / (name + '.log')).write_text('TIMEOUT\n')
+                  results[name] = {'command': args, 'returncode': None, 'timeout_seconds': 180}
+          run('format', [sys.executable, '-m', 'ruff', 'format', example])
+          run('adapter-tests', [sys.executable, '-m', 'pytest', '-o', 'addopts=', '-q', example + '/tests'])
+          run('upstream-okf', [sys.executable, '-m', 'pytest', '-o', 'addopts=', '-q', 'tests/test_okf.py'])
+          run('ruff', [sys.executable, '-m', 'ruff', 'check', example])
+          run('ruff-format', [sys.executable, '-m', 'ruff', 'format', '--check', example])
+          run('mypy', [sys.executable, '-m', 'mypy', example + '/convert.py', example + '/export_agno.py', example + '/verify_bundle.py'])
+          run('compile', [sys.executable, '-m', 'compileall', '-q', example])
+          subprocess.run(['git', 'add', example], check=True)
+          run('whitespace', ['git', 'diff', '--cached', '--check'])
+          patch = subprocess.check_output(['git', 'diff', '--cached', '--binary'])
+          (out / 'agno-user-memory.patch').write_bytes(patch)
+          shutil.copytree(example, out / 'agno-user-memory', ignore=shutil.ignore_patterns('__pycache__', '.pytest_cache'))
+          summary = {'base': '06615f09c536336e629e34589dc125495cba3109', 'agno_revision': '8f36eaf2d18e91afa7b327eec66a3cd3685dcb87', 'python': sys.version, 'run_url': 'https://github.com/' + os.environ['GITHUB_REPOSITORY'] + '/actions/runs/' + os.environ['GITHUB_RUN_ID'], 'patch_sha256': hashlib.sha256(patch).hexdigest(), 'results': results, 'live_recall': 'NOT RUN', 'full_repository_suite': 'NOT RUN', 'contest_entry': 'NOT SUBMITTED', 'human_onboarding': 'NOT COMPLETED'}
+          (out / 'VALIDATION.json').write_text(json.dumps(summary, indent=2) + '\n')
+          print(json.dumps(summary, indent=2))
+          if any(r['returncode'] != 0 for r in results.values()):
+              raise SystemExit(1)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-agno-final
+          path: /tmp/agno-final/
+          retention-days: 7
+  publish-packet:
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: astra-agno-final
+          path: /tmp/agno-final
+      - name: Publish only patch and validation record to this isolated branch
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, shutil
+          from pathlib import Path
+          source = Path('/tmp/agno-final')
+          record = json.loads((source / 'VALIDATION.json').read_text())
+          assert all(r['returncode'] == 0 for r in record['results'].values())
+          assert hashlib.sha256((source / 'agno-user-memory.patch').read_bytes()).hexdigest() == record['patch_sha256']
+          destination = Path('p/astra-agno-publish-20260907')
+          destination.mkdir(exist_ok=True)
+          for name in ('agno-user-memory.patch', 'VALIDATION.json'):
+              shutil.copyfile(source / name, destination / name)
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add p/astra-agno-publish-20260907/agno-user-memory.patch p/astra-agno-publish-20260907/VALIDATION.json
+          git commit -m 'test: publish exact Agno adapter and passing execution record'
+          git push origin HEAD:refs/heads/ops/astra-agno-validate-20260907
