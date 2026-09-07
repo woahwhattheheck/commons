@@ -1,6 +1,5 @@
 """Use existing cloud-eval; add passive action/transaction diagnostics only."""
 import argparse
-import ast
 import collections
 import copy
 import hashlib
@@ -18,47 +17,28 @@ def main():
     p.add_argument('--candidate', type=Path, required=True)
     p.add_argument('--runtime', type=Path, required=True)
     p.add_argument('--seeds', required=True)
-    p.add_argument('--opponents',default='arlene,apex')
-    p.add_argument('--reference-arlene', action='store_true', help='Passive same-observation parent order diagnostic; adds driver work only')
-    p.add_argument('--seats',default='0,1')
     p.add_argument('--output', type=Path, required=True)
     args = p.parse_args()
     spec = importlib.util.spec_from_file_location('frontier_existing_eval', HERE.parent.parent/'cloud-eval/evaluate.py')
     ev = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = ev
     spec.loader.exec_module(ev)
-    class PanelActor(ev.Actor):
-        def _measure(self, message):
-            if message.get('kind') == 'action' and 'first_call_seconds' not in self.stats:
-                self.stats['first_call_seconds'] = message['call_seconds']
-            return super()._measure(message)
-    ev.Actor = PanelActor
     engine, hashes = ev.get_engine(args.engine_dir)
     candidate = str(args.candidate.resolve())
-    parents = {name: str(args.runtime.resolve()/(name+'-adapter.py')) for name in args.opponents.split(',')}
-    def payload(adapter):
-        tree = ast.parse(Path(adapter).read_text())
-        for node in ast.walk(tree):
-            if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == 'make_agent':
-                path = Path(ast.literal_eval(node.args[0]))
-                return {'path':str(path), 'sha256':ev.sha256(path), 'bytes':path.stat().st_size}
-        return ev.fingerprint(str(adapter))
+    parents = {name: str(args.runtime.resolve()/(name+'-adapter.py')) for name in ('arlene', 'apex', 'frozen')}
     report = {'engine_ref': ev.ENGINE_REF, 'engine_sha256': hashes,
               'evaluator_sha256': ev.sha256(ev.__file__),
               'measurement_sha256': ev.sha256(__file__),
               'candidate': ev.fingerprint(candidate),
-              'candidate_payload': payload(candidate),
               'parents': {n: ev.fingerprint(f) for n, f in parents.items()},
-              'parent_payloads': {n: payload(f) for n, f in parents.items()},
+              'public_opponent': json.loads((HERE/'UPSTREAM.json').read_text()),
               'method': 'Existing process-isolated cloud-eval.play, full 719 rounds. Passive hooks count actual official interpreter calls and successful market commits; no substitute transition logic. Not hosted rating.',
               'runtime_manifest': json.loads((args.runtime/'manifest.json').read_text()),
               'games': []}
     original_unit, original_commit, original_interpreter = engine._apply_unit_action, engine._commit_unit, engine.interpreter
     for seed in map(int, args.seeds.split(',')):
         for opponent, path in parents.items():
-            if opponent not in args.opponents.split(','):
-                continue
-            for seat in map(int, args.seats.split(',')):
+            for seat in (0, 1):
                 diagnostics = [dict(unit_actions=collections.Counter(), unchanged_nonpass=collections.Counter(),
                                     market_units=collections.Counter(), market_cash=collections.Counter()) for _ in range(2)]
                 farm_ids = {}
@@ -66,12 +46,6 @@ def main():
                 final = {}
                 timeline = []
                 unchanged_events = []
-                reference_differences = []
-                reference = None
-                if args.reference_arlene:
-                    refspec = importlib.util.spec_from_file_location('passive_arlene', HERE/'vendor/arlene.py')
-                    reference = importlib.util.module_from_spec(refspec)
-                    refspec.loader.exec_module(reference)
                 def unit(farm, private, idx, action, *a, **kw):
                     player = farm_ids[id(farm)]
                     op = action[0] if isinstance(action, list) and action else 'EMPTY'
@@ -80,7 +54,7 @@ def main():
                     diagnostics[player]['unit_actions'][op] += 1
                     if op != 'PASS' and before == (farm, private):
                         diagnostics[player]['unchanged_nonpass'][op] += 1
-                        unchanged_events.append({'step': current_step[0], 'seat':player,'unit':idx,'action':action, 'inventory':copy.deepcopy(before[1]['inventories'][idx]), 'tile':copy.deepcopy(before[0]['tiles'][(before[0]['farmer'] if idx==0 else before[0]['hands'][idx-1])[1]][(before[0]['farmer'] if idx==0 else before[0]['hands'][idx-1])[0]])})
+                        unchanged_events.append({'step': current_step[0], 'seat':player,'unit':idx,'action':action})
                     return result
                 def commit(op, item, price, farm, private, *a, **kw):
                     result = original_commit(op, item, price, farm, private, *a, **kw)
@@ -93,13 +67,8 @@ def main():
                     if state[0].observation.get('farms'):
                         farm_ids.update({id(f): i for i, f in enumerate(state[0].observation.farms)})
                     current_step[0] = state[0].observation.get('step', 0)
-                    if state[0].observation.get('farms') and (current_step[0] % 24 == 0 or current_step[0] >= 716 or current_step[0] in (225,226,359,360,432,433,576,577)):
+                    if state[0].observation.get('farms') and (current_step[0] % 24 == 0 or current_step[0] >= 716):
                         timeline.append({'step':current_step[0], 'prices':copy.deepcopy(state[0].observation.market), 'shops':copy.deepcopy(state[0].observation.town), 'farms':copy.deepcopy(state[0].observation.farms), 'private':[copy.deepcopy(s.observation.private) for s in state], 'actions':[copy.deepcopy(s.action) for s in state]})
-                    if reference is not None and state[seat].observation.get('farms'):
-                        ref_action = reference.agent(copy.deepcopy(state[seat].observation))
-                        actual_action = state[seat].action
-                        if ref_action != actual_action:
-                            reference_differences.append({'step':current_step[0], 'actual':copy.deepcopy(actual_action), 'parent_same_observation':ref_action, 'shed':copy.deepcopy(state[seat].observation.private['shed'])})
                     result = original_interpreter(state, env)
                     farms = state[0].observation.farms
                     farm_ids.update({id(f): i for i, f in enumerate(farms)})
@@ -111,7 +80,7 @@ def main():
                 engine._apply_unit_action, engine._commit_unit, engine.interpreter = unit, commit, interpreter
                 pair = [candidate, path] if seat == 0 else [path, candidate]
                 game = ev.play(engine, pair, args.engine_dir, ev.LOADER, seed, seat)
-                game.update(reference_differences=reference_differences, reference_method='passive same-observation Arlene' if reference is not None else None, opponent=opponent, diagnostics=diagnostics, terminal=final, timeline=timeline, unchanged_events=unchanged_events)
+                game.update(opponent=opponent, diagnostics=diagnostics, terminal=final, timeline=timeline, unchanged_events=unchanged_events)
                 report['games'].append(game)
                 report['summary'] = ev.summarize(report['games'])
                 args.output.parent.mkdir(parents=True, exist_ok=True)

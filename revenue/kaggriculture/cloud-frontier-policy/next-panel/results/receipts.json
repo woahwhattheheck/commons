@@ -48,6 +48,86 @@
     "report": "arlene-self-control.json.gz"
   },
   {
+    "candidate_payload": {
+      "bytes": 47207,
+      "path": "/workspace/scratch/bd675b797793/next-panel-runtime/carrot-demand-main.py",
+      "sha256": "208d627ebee0fd3a90e9bd26b444274d72255ac636b22147de301fcb7483ca3a"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 24,
+    "gzip_bytes": 889187,
+    "gzip_sha256": "77afbffb7a8abff2cc9a19b793c82645366b102eec8b4279188a1f2caf0b7bd0",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 47354579,
+    "raw_sha256": "efad1a6aea6e7fb6b92f3cc07b807162368facc5e2b2969ba5beeb573e372e6b",
+    "report": "carrot-demand-development.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 47207,
+      "path": "/workspace/scratch/bd675b797793/next-panel-runtime/export-carrot-demand/main.py",
+      "sha256": "208d627ebee0fd3a90e9bd26b444274d72255ac636b22147de301fcb7483ca3a"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 1,
+    "gzip_bytes": 39811,
+    "gzip_sha256": "3e3d5c577ed6286f84036d1b901392f610cf35bfdc908e625060fe45f9e4fee2",
+    "measurement_sha256": "3426ca0d7773bd254fc7b2eaa77eb25bd258f443803c28ae191f7998d004c042",
+    "raw_bytes": 1972985,
+    "raw_sha256": "7ec66848d6d43b8ad321486362cc19ad8301c1056253d4eb71caecc70ff4a02a",
+    "report": "carrot-demand-native-export.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 47207,
+      "path": "/workspace/scratch/bd675b797793/next-panel-runtime/carrot-demand-main.py",
+      "sha256": "208d627ebee0fd3a90e9bd26b444274d72255ac636b22147de301fcb7483ca3a"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 8,
+    "gzip_bytes": 295094,
+    "gzip_sha256": "87650e91ab5c443348806dc34b280d91ee6cba99efb75db30c7779f499f928a8",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 15741617,
+    "raw_sha256": "2bc7860df6f2412fdeb82e40ba602b7facc449cf12061ec33596352007cb57d4",
+    "report": "carrot-demand-reserved.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 47959,
+      "path": "/workspace/scratch/bd675b797793/next-panel-runtime/carrot-opportunity-main.py",
+      "sha256": "0461aeee3da71606f109a9b61a125262064896dc89d7d341d803af38abd642d5"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 8,
+    "gzip_bytes": 295981,
+    "gzip_sha256": "ad5f1dd2d00693d6f83a63f8e1597eeb775e0ba8cabfaa70078c575b23beaf76",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 15754214,
+    "raw_sha256": "8fcb9f8c6b8cf46a2aa44d8a1f3f0ab1334068a22dee31d884d4d7a8f22f6159",
+    "report": "carrot-opportunity-development.json.gz"
+  },
+  {
     "candidate_payload": null,
     "engine_sha256": {
       "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
@@ -218,6 +298,106 @@
     "raw_bytes": 7776990,
     "raw_sha256": "3004a20a9aa0a4618ba4d2c8db12a8acceb206557176451602e36f9e4e349951",
     "report": "next-export-vs-deployed.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 48058,
+      "path": "/workspace/scratch/bd675b797793/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/ordered-shed-main.py",
+      "sha256": "75969124849d58814ac1512e93e267946c77cb7f284616cbd54ed17505ce87aa"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 8,
+    "gzip_bytes": 294985,
+    "gzip_sha256": "c56d6ec457109b04da9ab293e82d474d8ace8b9a8c69282cfa638c33c46f5ae6",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 15725936,
+    "raw_sha256": "818a51a1b6806cf5e6a88c7f221536666c31fc601de9658078f89067290dc2b8",
+    "report": "ordered-shed-development.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 48058,
+      "path": "/workspace/scratch/bd675b797793/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/ordered-shed-main.py",
+      "sha256": "75969124849d58814ac1512e93e267946c77cb7f284616cbd54ed17505ce87aa"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 1,
+    "gzip_bytes": 38795,
+    "gzip_sha256": "d1430b74d9c73fbc14bdac6ca9def8cfe969774cb9704f2f9b999e25de0a5087",
+    "measurement_sha256": "3426ca0d7773bd254fc7b2eaa77eb25bd258f443803c28ae191f7998d004c042",
+    "raw_bytes": 1958151,
+    "raw_sha256": "55049a5b226011b8bc26438a1bb40144e4cfb8f7a38abe58521bf5c2d875e76e",
+    "report": "ordered-shed-order-diagnostic.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 46342,
+      "path": "/workspace/scratch/bd675b797793/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+      "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 16,
+    "gzip_bytes": 594169,
+    "gzip_sha256": "ecb50da6aaa13e29f698cf743c9db642e0dc745dca912869f36855c757944472",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 31661907,
+    "raw_sha256": "e0cc241941e9649d5c6da49e741394e5f77fd13aace7c595e85d8166ab6a5b76",
+    "report": "route-baseline-development-extra.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 46342,
+      "path": "/workspace/scratch/bd675b797793/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+      "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 8,
+    "gzip_bytes": 294843,
+    "gzip_sha256": "cda93083c947eb5e82f01bd469236e96c8755d52dc2349983fbfe52ad3262be9",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 15725996,
+    "raw_sha256": "4fa888efc8508ef661ee21d9441bb78084173eaf1f165e0ad57bcfb7ef441ed4",
+    "report": "route-baseline-development.json.gz"
+  },
+  {
+    "candidate_payload": {
+      "bytes": 46342,
+      "path": "/workspace/scratch/bd675b797793/commons/revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/arlene.py",
+      "sha256": "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4"
+    },
+    "engine_sha256": {
+      "kaggriculture.json": "a82c89c1a2315b93f39775d8e025471a01b738647c9772658368ee6b1b6f4867",
+      "kaggriculture.py": "bc8a54879ef02c7ea64b8b333d6a976f0ea65c4949149d01f463f23bccee653e",
+      "utils.py": "537b627b11784d424147ef57ebb0369b039bf83c9f891e81f10486b1f552334b"
+    },
+    "evaluator_sha256": "e30b3108e0027477ab7ddbc057892a241c41a1f2b38f72caf267477877c4333c",
+    "games": 8,
+    "gzip_bytes": 292085,
+    "gzip_sha256": "d1702d7891ad9b7b8134923bfbe15d0292ca2a5559c002f930ed039860ffee0f",
+    "measurement_sha256": "e0647d1089eefd70dd42840f22970e74982b397ad7d71c55efe11ee30befddc7",
+    "raw_bytes": 15769961,
+    "raw_sha256": "595186bfd8e777d76ba1e25ef792df6074e7d0911bc40b1f5ee0a2f385954477",
+    "report": "route-baseline-reserved.json.gz"
   },
   {
     "candidate_payload": null,

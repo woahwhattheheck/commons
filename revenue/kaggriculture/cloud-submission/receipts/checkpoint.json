@@ -1,6 +1,6 @@
 {
   "operation_id": "titan-kaggriculture-frontier-20260907-01",
-  "observed_at": "2026-09-07T10:10:29.150715+00:00",
+  "observed_at": "2026-09-07T17:05:32.634917+00:00",
   "status": "SUBMISSION_FOUND",
   "submission_id": 56074364,
   "notebook_url": "https://www.kaggle.com/code/tokenjunkielabs/titan-kaggriculture-frontier-source",
@@ -23,19 +23,30 @@
     61777,
     61777
   ],
-  "competitive_episode_count_observed": 2,
+  "competitive_episode_count_observed": 69,
   "competitive_record": {
-    "wins": 2,
-    "losses": 0,
+    "wins": 41,
+    "losses": 28,
     "ties": 0,
     "seats_observed": [
-      0
+      0,
+      1
     ]
   },
-  "public_score": "790.0",
-  "account_user_rank": 3981,
-  "competitive_episode_ids": [
-    106416987,
-    106417872
-  ]
+  "public_score": "1482.4",
+  "account_user_rank": 1861,
+  "by_seat": {
+    "0": {
+      "wins": 25,
+      "losses": 9
+    },
+    "1": {
+      "wins": 16,
+      "losses": 19
+    }
+  },
+  "latest_submission_id": 56074364,
+  "submission_count": 2,
+  "per_game_receipt": "reconcile-1705-summary.json",
+  "raw_receipt": "reconcile-1705-raw.json"
 }

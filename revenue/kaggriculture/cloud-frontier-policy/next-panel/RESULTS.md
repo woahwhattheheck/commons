@@ -1,3 +1,5 @@
+Latest continuation: [ROUTE-RESULTS.md](ROUTE-RESULTS.md), frozen carrot-demand reserved results and separate ordered-shed repair.
+
 Current complete continuation: [NEXT-RESULTS.md](NEXT-RESULTS.md), 117 games and two next-candidate archives. The initial checkpoint below is retained for history.
 
 # Frozen candidate generalization and isolated repair
