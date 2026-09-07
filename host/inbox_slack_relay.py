@@ -10,6 +10,7 @@ import argparse
 import base64
 import hashlib
 import json
+import math
 import os
 import re
 import shutil
@@ -24,7 +25,7 @@ import uuid
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from email.message import Message
-from email.utils import parseaddr
+from email.utils import parseaddr, parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Callable
@@ -83,6 +84,34 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
+def http_retry_after(code: int, headers: Any, host: str) -> int:
+    """Honor provider retry deadlines without capping them to the poll interval."""
+    headers = headers or {}
+    delay = 60 if code == 429 else 0
+    value = headers.get("Retry-After")
+    if value is not None:
+        delay = 60
+        try:
+            value = str(value).strip()
+            if re.fullmatch(r"[0-9]+", value):
+                delay = max(1, int(value))
+            else:
+                deadline = parsedate_to_datetime(value)
+                if deadline.tzinfo is None:
+                    deadline = deadline.replace(tzinfo=UTC)
+                delay = max(1, math.ceil(deadline.timestamp() - time.time()))
+        except (TypeError, ValueError, OverflowError):
+            pass
+    # An exhausted primary budget can coexist with a secondary Retry-After.
+    if host == "api.github.com" and code in {403, 429} and headers.get("X-RateLimit-Remaining") == "0":
+        try:
+            reset = int(headers.get("X-RateLimit-Reset", ""))
+            delay = max(delay, 1, math.ceil(reset - time.time()))
+        except (TypeError, ValueError, OverflowError):
+            delay = max(delay, 60)
+    return delay
+
+
 def request_json(url: str, *, token: str = "", data: dict | None = None,
                  form: bool = False) -> dict | list:
     """Fixed provider URLs only; caller data never controls a destination host."""
@@ -107,10 +136,7 @@ def request_json(url: str, *, token: str = "", data: dict | None = None,
         return json.loads(raw)
     except urllib.error.HTTPError as exc:
         code = exc.code
-        try:
-            retry = min(3600, max(1, int(exc.headers.get("Retry-After", "60")))) if code == 429 else 0
-        except (TypeError, ValueError):
-            retry = 60
+        retry = http_retry_after(code, exc.headers, parsed.hostname or "")
         exc.close()
         raise RelayError(f"http_{code}", uncertain=data is not None and code >= 500, retry_after=retry) from None
     except (OSError, ValueError) as exc:
