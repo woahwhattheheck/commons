@@ -1,7 +1,7 @@
 {
   "schema": "commons.paid-opportunity-execution.v1",
   "id": "paid-opportunity-execution-20260907-01",
-  "observed_at": "2026-09-07T04:19:00Z",
+  "observed_at": "2026-09-07T04:36:23Z",
   "coordination": "https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788753053465569",
   "entries": [
     {
@@ -36,13 +36,13 @@
     {
       "event": "Kaggriculture",
       "url": "https://www.kaggle.com/competitions/kaggriculture",
-      "entry_state": "sign_in_recovery_in_progress",
+      "entry_state": "signed_in_identity_verification_required",
       "code": "revenue/kaggriculture/20260907-offline-agent",
-      "landed_commit": "eda0b5aada832a6b65e8d23305cff813b6f9a1ca",
-      "validation": "8 tests;45/48 local games across6seeds and2seats; not a hosted competition score.",
-      "validation_run": "https://github.com/woahwhattheheck/commons/actions/runs/34081861214",
-      "submission_state": "Not joined/submitted; phone verification returned Unauthenticated, normal Google login restarted.",
-      "next": "Complete legitimate login/phone verification, accept competition rules, publish code/link on Kaggle competition forum per code-sharing rule, submit exact tested main.py and inspect hosted validation. Code improvement remains active; do not create duplicate team.",
+      "landed_commit": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
+      "validation": "10 tests;48/48 original local games. Independent reserved holdouts:10/10 versus frozen incumbent (mean+6454.1coins),4/10 versus compact22 (mean-61.9coins). Not hosted competition results.",
+      "validation_run": "https://github.com/woahwhattheheck/commons/actions/runs/34083400748",
+      "submission_state": "Not submitted. Google sign-in and registration advanced; Kaggle requires Persona live-selfie verification. Owner-facing consent/selfie page is open; root has not accepted biometric consent.",
+      "next": "Owner completes Persona consent/selfie; root verifies account and rule acceptance, publishes code/link through Kaggle as required, and submits latest exact tested main.py from pinned7897a8dd using cloud notebook output. Inspect hosted validation. Preserve frozen incumbent, do not duplicate team or use superseded initial artifact.",
       "entry_deadline_utc": "2026-09-23T23:59:00Z",
       "submission_deadline_utc": "2026-09-30T23:59:00Z"
     }
@@ -54,4 +54,3 @@
     "execution": "This is an outcome/continuation record, not a scheduler or completion claim for unsubmitted competitions."
   }
 }
-
