@@ -217,16 +217,30 @@ def restore(manifest_path: Path, target: Path, bare: bool = False) -> dict[str, 
     target = target.resolve()
     if target.exists():
         raise BackupError(f"refusing to overwrite restore target: {target}")
-    clone_args = ["clone"]
-    if bare:
-        clone_args.append("--bare")
-    clone_args.extend([receipt["bundle"], str(target)])
-    _run(clone_args)
+    expected_refs = _bundle_heads(Path(receipt["bundle"]))
+    # Ordinary clones rename branches into origin/* and omit notes/custom refs.
+    # Mirror into the new target (or its .git directory) to retain every ref.
+    git_dir = target if bare else target / ".git"
+    _run(["clone", "--mirror", "--origin", "origin", receipt["bundle"], str(git_dir)])
+    if not bare:
+        _run(["config", "core.bare", "false"], cwd=target)
+        # A recovered work tree must not acquire mirror-push semantics.
+        _run(["config", "--unset", "remote.origin.mirror"], cwd=target)
+        _run(
+            ["config", "--replace-all", "remote.origin.fetch",
+             "+refs/heads/*:refs/remotes/origin/*"],
+            cwd=target,
+        )
     restored_head = _run(["rev-parse", "HEAD"], cwd=target).stdout.strip()
     if restored_head != receipt["head_sha"]:
         raise BackupError(
             f"restored HEAD {restored_head} != manifest {receipt['head_sha']}"
         )
+    if _repo_heads(target) != expected_refs:
+        raise BackupError("restored ref inventory differs from manifest")
+    if not bare:
+        # Only this newly created target is populated; existing targets are refused.
+        _run(["reset", "--hard", "HEAD"], cwd=target)
     receipt.update(
         {
             "state": "RESTORED",
