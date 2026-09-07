@@ -80,6 +80,4 @@ A loss, invalid game or paired cash/margin regression produces a `loss-traces/` 
 
 The regression module covers market-only transformations, observation immutability, duplicate-shop demand, day/hour and full-shed exceptions, fresh actor statistics, exact pairing, separate cash and margin accounting, invalid/empty/nonfinite rejection, disjoint seed panels, immutable runtime inventories, tied-bank cash preservation, and trace ordering. These unit checks are distinct from complete 720-step games.
 
-Earlier transport and runner attempts, including a failed source-pack export, an assets-path error, and an earlier diagnostic development run, are not the release evidence. A prematurely reported 21/21 test count was corrected in the T09 thread. The release runner added evaluator-contract regressions and used a new freeze rather than overwriting those attempts. No earlier diagnostic run should be pooled into a new evaluation result.
-
 The release operation announced freeze `9bd9e4bd977d7c36de9cc2fd06d0859f7f8c7c3fa4871544732c9f294b717653`. A freeze identifier alone is not evidence that either panel finished. Consult the corresponding completed result files and final receipt before claiming measured outcomes. This README deliberately does not infer scores from a queued, started or partially recorded execution.
