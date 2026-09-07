@@ -56,7 +56,10 @@ def validate(registry: dict[str, Any]) -> list[str]:
         rows = registry.get(field)
         if not isinstance(rows, list) or not rows:
             errors.append(field)
-    for row in registry.get("contact_methods") or []:
+    contacts = registry.get("contact_methods")
+    if not isinstance(contacts, list):
+        contacts = []
+    for row in contacts:
         if not isinstance(row, dict):
             errors.append("contact_methods.$.row")
             continue
@@ -66,7 +69,10 @@ def validate(registry: dict[str, Any]) -> list[str]:
             errors.append("contact_methods.$.url")
         if not isinstance(row.get("preferred"), bool):
             errors.append("contact_methods.$.preferred")
-    for index, row in enumerate(registry.get("capabilities") or []):
+    capabilities = registry.get("capabilities")
+    if not isinstance(capabilities, list):
+        capabilities = []
+    for index, row in enumerate(capabilities):
         if not isinstance(row, dict):
             errors.append("capabilities.%d.row" % index)
             continue
@@ -103,7 +109,16 @@ def validate(registry: dict[str, Any]) -> list[str]:
     for field in ("pulse", "recent", "receipts", "instruction"):
         if not str(continuity.get(field) or "").strip():
             errors.append(f"continuity.{field}")
-    formats = (registry.get("interoperability") or {}).get("formats") or []
+    interoperability = registry.get("interoperability")
+    if not isinstance(interoperability, dict):
+        errors.append("interoperability")
+        interoperability = {}
+    formats = interoperability.get("formats")
+    if not isinstance(formats, list):
+        errors.append("interoperability.formats")
+        formats = []
+    elif any(not isinstance(item, str) for item in formats):
+        errors.append("interoperability.formats")
     for output in OUTPUTS:
         if output not in formats:
             errors.append(f"interoperability.formats:{output}")
