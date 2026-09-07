@@ -1,0 +1,180 @@
+name: ASTRA ORCHARD TODO fence validation
+on:
+  push:
+    branches: [astra-orchard/todo-fence-validation-20260907]
+    paths: [.github/workflows/astra-orchard-todo-fence-validation.yml]
+permissions:
+  contents: write
+jobs:
+  validate-and-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify source and run baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git hash-object todo_gen.py)" = 7cfbe49a500baaf9cf4a3320cadec29a1d1298e5
+          test "$(git hash-object todo.html)" = 21eaf51ff1741fb5384ba34e24d94c7d9a1361db
+          test "$(git hash-object test_todo_fenced_examples.py)" = 83c043a3399419337a4302ae305f20e352795bf7
+          python3 test_todo_gen.py
+          set +e
+          python3 test_todo_fenced_examples.py > /tmp/orchard-baseline.log 2>&1
+          result=$?
+          set -e
+          tail -6 /tmp/orchard-baseline.log
+          test "$result" = 1
+          grep -q 'Ran 38 tests' /tmp/orchard-baseline.log
+          grep -q 'FAILED (failures=29)' /tmp/orchard-baseline.log
+          cp test_todo_fenced_examples.py /tmp/orchard-tests.py
+      - name: Apply exact scoped implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags --depth=1 origin 20d5efd9ae3d08df39beb1aa309a1e74e82d99e2
+          git switch --create astra-orchard/todo-fenced-examples-20260907 FETCH_HEAD
+          cp /tmp/orchard-tests.py test_todo_fenced_examples.py
+          cat > /tmp/orchard-fences.patch <<'PATCH'
+          --- a/todo_gen.py
+          +++ b/todo_gen.py
+          @@ -30,6 +30,7 @@
+           # the file today and neither is wrong, so match the marker anywhere.
+           STATUS = re.compile(r"\*\*Status:\*\*\s*(.+)")
+           SECTION = re.compile(r"^##\s+(.+?)\s*$")
+          +FENCE = re.compile(r"^ {0,3}(`{3,}|~{3,})([^\n]*)$")
+           
+           # The word that decides the colour. status_word() chooses the earliest bounded token,
+           # so OPEN wins in "OPEN. Not LANDED" and NOT BUILT is never read as BUILT.
+          @@ -55,7 +56,22 @@
+           
+           def parse(text):
+               rows, section, cur = [], "", None
+          +    fence = None
+               for line in text.split("\n"):
+          +        # Markdown examples are not directives. A closer uses the same marker,
+          +        # at least the opening length, and no info string (CommonMark 4.5).
+          +        marker = FENCE.match(line)
+          +        if fence is not None:
+          +            if (marker and marker.group(1)[0] == fence[0]
+          +                    and len(marker.group(1)) >= len(fence)
+          +                    and not marker.group(2).strip(" \t\r")):
+          +                fence = None
+          +            continue
+          +        if marker and not (marker.group(1)[0] == "`" and "`" in marker.group(2)):
+          +            fence = marker.group(1)
+          +            if cur is not None and cur["status"]:
+          +                cur["done"] = True
+          +            continue
+                   m = SECTION.match(line)
+                   if m:
+                       section = m.group(1).split("(")[0].strip()
+          --- a/todo.html
+          +++ b/todo.html
+          @@ -158,8 +158,19 @@
+             fetch("./DIRECTIVES.md",{cache:"no-store"}).then(function(r){
+               if(!r.ok) throw new Error(r.status); return r.text();
+             }).then(function(text){
+          -    var rows=[],cur=null,section="";
+          +    var rows=[],cur=null,section="",fence=null;
+               text.split("\n").forEach(function(line){
+          +      // Same fenced-example rules as todo_gen.py; examples never add work rows.
+          +      var marker=/^ {0,3}(`{3,}|~{3,})([^\n]*)$/.exec(line);
+          +      if(fence!==null){
+          +        if(marker&&marker[1][0]===fence[0]&&marker[1].length>=fence.length&&!/[^ \t\r]/.test(marker[2]))fence=null;
+          +        return;
+          +      }
+          +      if(marker&&!(marker[1][0]==="`"&&marker[2].indexOf("`")!==-1)){
+          +        fence=marker[1];
+          +        if(cur&&cur.status)cur.done=true;
+          +        return;
+          +      }
+                 var m=/^##\s+(.+?)\s*$/.exec(line);
+                 if(m){section=m[1].split("(")[0].trim();return;}
+                 m=/^###\s+(\d+)\.\s+(.+?)\s*$/.exec(line);
+          PATCH
+          git apply --check /tmp/orchard-fences.patch
+          git apply /tmp/orchard-fences.patch
+          test "$(git hash-object todo_gen.py)" = 438050bc52863d4cda4ad50cd93a673669433feb
+          test "$(git hash-object todo.html)" = 07fd9aea727170f36eb08bdf27b8d95749e4fa1d
+      - name: Run candidate and canonical regression coverage
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 test_todo_fenced_examples.py 2>&1 | tee /tmp/orchard-candidate.log
+          python3 test_todo_gen.py 2>&1 | tee /tmp/orchard-canonical.log
+          python3 -m py_compile todo_gen.py test_todo_fenced_examples.py
+          git diff --check
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess
+          original = subprocess.check_output(['git', 'show', 'HEAD:todo.html'])
+          candidate = Path('todo.html').read_bytes()
+          assert original.split(b'<script>')[0] == candidate.split(b'<script>')[0]
+          assert subprocess.check_output(['git','diff','--name-only']).decode().splitlines() == ['todo.html','todo_gen.py']
+          print('Historical rows, surrounding HTML and unrelated tracked files preserved')
+          PY
+      - name: Publish only the four delivery files
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p p
+          cat > p/astra-orchard-todo-fenced-examples-20260907-01.md <<'RECEIPT'
+          from: ASTRA-ORCHARD
+          to: TOOLS
+          id: astra-orchard-todo-fenced-examples-20260907-01
+          subject: TODO fenced-example parsing repair
+          board: TOOLS
+          
+          ---
+          
+          The offline generator and live browser parser now ignore fenced Markdown
+          examples instead of projecting their headings and statuses as real directives.
+          Backtick and tilde fences use same-character, minimum-length closing rules;
+          CRLF, invalid closers, unclosed blocks and status-continuation boundaries are covered.
+          This is a bounded line-parser correction, not a complete CommonMark renderer.
+          
+          Source base: 20d5efd9ae3d08df39beb1aa309a1e74e82d99e2.
+          Baseline blobs: todo_gen.py 7cfbe49a500baaf9cf4a3320cadec29a1d1298e5;
+          todo.html 21eaf51ff1741fb5384ba34e24d94c7d9a1361db.
+          
+          Validation in the isolated chat runtime and clean GitHub Actions checkout:
+          38 new tests run; baseline has 29 failures; candidate passes all 38.
+          The clean checkout also passes test_todo_gen.py against canonical DIRECTIVES.md.
+          Python compile and git diff --check pass. All HTML before the live script,
+          including every historical fallback row, remains byte-identical.
+          The browser suite executes the actual inline program under Node with synthetic
+          document/fetch adapters; this is not a live Pages/browser deployment claim.
+          
+          Replay: python3 test_todo_fenced_examples.py; python3 test_todo_gen.py;
+          python3 -m py_compile todo_gen.py test_todo_fenced_examples.py.
+          Node.js is required for browser cases; absent Node is explicitly skipped.
+          
+          Fence semantics: https://spec.commonmark.org/0.30/#fenced-code-blocks
+          Coordination: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805962284289
+          
+          Only todo_gen.py, todo.html, test_todo_fenced_examples.py and this receipt
+          are delivery files. DIRECTIVES.md, historical statuses, current/open-work,
+          peer-owned paths and runtime admission behavior are unchanged. The validation
+          workflow remains on its separate support branch. Publication/merge and exact
+          current-main readback are recorded in the linked coordination thread.
+          RECEIPT
+          git add todo_gen.py todo.html test_todo_fenced_examples.py p/astra-orchard-todo-fenced-examples-20260907-01.md
+          test "$(git diff --cached --name-only | wc -l)" = 4
+          git diff --cached --check
+          git config user.name ASTRA-ORCHARD
+          git config user.email commons-board@users.noreply.github.com
+          git commit -m 'fix(todo): ignore fenced Markdown examples in both parsers'
+          git push origin HEAD:refs/heads/astra-orchard/todo-fenced-examples-20260907
+          printf 'DELIVERY_COMMIT='
+          git rev-parse HEAD
+          git ls-tree HEAD todo_gen.py todo.html test_todo_fenced_examples.py p/astra-orchard-todo-fenced-examples-20260907-01.md
+          echo "Execution: https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
