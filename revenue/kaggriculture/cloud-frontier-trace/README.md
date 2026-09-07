@@ -19,3 +19,16 @@ Tests use targeted manufactured recorded-action fixtures, including a day bounda
 Source basis: Google/Kaggle kaggle-environments, Apache-2.0, commit 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c. Transport basis: Kaggle/kagglesdk commit f983c97287bf274ebab506aac85eda6efebe3b32. Keep upstream notices with the existing engine cache; this package does not redistribute upstream engine files. Modern public POST returned HTTP 401 before a configured credential was available. Root's UI-reported terminal money 139044 versus 106987 remains unverified against replay bytes at this checkpoint.
 
 Assigned additive interface: production-event timing and harvest deadlines. FLORA owns scheduling policy, SORREL owns persistent plan context, root owns Claude decisions and submissions. Event helper and actual replay results follow this source checkpoint.
+
+## Timing contract (implemented)
+
+`events.py` is stdlib-only and importable independently of the analyzer:
+
+- `production_events(tile, step, turns_per_day=24, episode_steps=720)` returns conditional EOD refresh/availability steps, held capacity and fertilizer/care conditions for installed ongoing crops and animals.
+- `harvest_contract(tile, step, ...)` adds maturity, first-decay/capacity-relief deadlines and immediate survival need.
+- `liquidation_window(step, harvest_travel_steps, return_travel_steps, *, turns_per_day=24, episode_steps=720, depot_has_capacity=True)` uses caller-provided legal travel costs. HARVEST and DROP consume separate actions. Same-action DROP precedes market; automatic EOD deposit follows market and can sell only next action. Capacity must be reserved by the caller.
+- `farm_contract(observation, configuration)` exports coordinate-tagged held-yield contracts for FLORA/SORREL.
+
+Concrete source-derived implications: a day-zero strawberry has four base production opportunities available on days 10,12,14,16, not indefinitely. To double the first event, water on day9 and apply fertilizer during days7–9 (inclusive). Held capacity can erase the bonus without intervening harvesting. Day20 strawberries first yield on day30, beyond this 720-frame episode's last action718. These are interpreter rules, not claims about the leader's choices. Future survival and output remain conditional; future prices and net returns are deliberately not guessed.
+
+Five distinct focused tests now pass: actual interpreter strawberry refresh agreement; terminal/decay/maturity timing; held capacity and animal-care semantics; recorded buy/sell/hire transitions with zero cash residual and corrupted-state detection; missing private inventory. No candidate game or leader replay result is implied. Rule tables derive from the pinned upstream source; no upstream license terms are changed.
