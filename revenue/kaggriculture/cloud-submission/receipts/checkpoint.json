@@ -1,6 +1,6 @@
 {
   "operation_id": "titan-kaggriculture-frontier-20260907-01",
-  "observed_at": "2026-09-07T17:05:32.634917+00:00",
+  "observed_at": "2026-09-07T18:04:41.879760+00:00",
   "status": "SUBMISSION_FOUND",
   "submission_id": 56074364,
   "notebook_url": "https://www.kaggle.com/code/tokenjunkielabs/titan-kaggriculture-frontier-source",
@@ -11,42 +11,142 @@
   "artifact_bytes": 57711,
   "existing_v2_modified": false,
   "provider_create_response_received": true,
-  "next_action": "Read-only monitoring for more competitive matches, especially opposite-seat games and actual losses; no submission writes for this operation.",
+  "next_action": "Read-only hourly monitoring of existing 56074364 and 56081391 with backoff; owner freeze on every Kaggle upload and public-notebook write remains in effect.",
   "validation_status": "COMPLETE",
   "current_quota": {
-    "numToday": 2,
-    "numTotal": 2,
-    "numAllowedNow": 3
+    "numAllowedNow": 2,
+    "numToday": 3,
+    "numTotal": 3
   },
   "validation_episode_id": 106416828,
   "validation_rewards": [
     61777,
     61777
   ],
-  "competitive_episode_count_observed": 69,
+  "competitive_episode_count_observed": 71,
   "competitive_record": {
-    "wins": 41,
-    "losses": 28,
+    "losses": 30,
     "ties": 0,
+    "wins": 41,
     "seats_observed": [
       0,
       1
     ]
   },
-  "public_score": "1482.4",
-  "account_user_rank": 1861,
+  "public_score": "1474.4",
+  "account_user_rank": 1401,
   "by_seat": {
     "0": {
-      "wins": 25,
-      "losses": 9
+      "losses": 10,
+      "ties": 0,
+      "wins": 25
     },
     "1": {
-      "wins": 16,
-      "losses": 19
+      "losses": 20,
+      "ties": 0,
+      "wins": 16
     }
   },
-  "latest_submission_id": 56074364,
-  "submission_count": 2,
-  "per_game_receipt": "reconcile-1705-summary.json",
-  "raw_receipt": "reconcile-1705-raw.json"
+  "latest_submission_id": 56081391,
+  "submission_count": 3,
+  "per_game_receipt": "watch-1804-summary.json",
+  "raw_receipt": "watch-1804-raw.json",
+  "monitored_submissions": [
+    {
+      "submission_id": 56081391,
+      "status": "COMPLETE",
+      "public_score": "1714.4",
+      "public_games": 11,
+      "record": {
+        "losses": 0,
+        "ties": 0,
+        "wins": 11
+      },
+      "by_seat": {
+        "0": {
+          "losses": 0,
+          "ties": 0,
+          "wins": 5
+        },
+        "1": {
+          "losses": 0,
+          "ties": 0,
+          "wins": 6
+        }
+      },
+      "validation": [
+        {
+          "agents": [
+            {
+              "reward": 63629,
+              "submissionId": 56081391,
+              "teamId": 16846069,
+              "teamName": "Bryce Muhlnickel"
+            },
+            {
+              "index": 1,
+              "reward": 64273,
+              "submissionId": 56081391,
+              "teamId": 16846069,
+              "teamName": "Bryce Muhlnickel"
+            }
+          ],
+          "createTime": "2026-09-07T17:13:57.610Z",
+          "endTime": "2026-09-07T17:18:24.912Z",
+          "id": 106516488,
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_VALIDATION"
+        }
+      ],
+      "errorDescription": null
+    },
+    {
+      "submission_id": 56074364,
+      "status": "COMPLETE",
+      "public_score": "1474.4",
+      "public_games": 71,
+      "record": {
+        "losses": 30,
+        "ties": 0,
+        "wins": 41
+      },
+      "by_seat": {
+        "0": {
+          "losses": 10,
+          "ties": 0,
+          "wins": 25
+        },
+        "1": {
+          "losses": 20,
+          "ties": 0,
+          "wins": 16
+        }
+      },
+      "validation": [
+        {
+          "agents": [
+            {
+              "reward": 61777,
+              "submissionId": 56074364,
+              "teamId": 16846069,
+              "teamName": "Bryce Muhlnickel"
+            },
+            {
+              "index": 1,
+              "reward": 61777,
+              "submissionId": 56074364,
+              "teamId": 16846069,
+              "teamName": "Bryce Muhlnickel"
+            }
+          ],
+          "createTime": "2026-09-07T10:01:29.534Z",
+          "endTime": "2026-09-07T10:03:07.359Z",
+          "id": 106416828,
+          "state": "COMPLETED",
+          "type": "EPISODE_TYPE_VALIDATION"
+        }
+      ],
+      "errorDescription": null
+    }
+  ]
 }
