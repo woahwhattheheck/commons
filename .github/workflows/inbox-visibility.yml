@@ -1,0 +1,44 @@
+name: Inbox visibility
+on:
+  push:
+    branches: [main]
+    paths:
+      - host/inbox_slack_relay.py
+      - host/inbox_visibility.json
+      - tests/test_inbox_slack_relay.py
+      - .github/workflows/inbox-visibility.yml
+  workflow_dispatch:
+  schedule:
+    - cron: '3,18,33,48 * * * *'
+permissions:
+  contents: read
+concurrency:
+  group: inbox-visibility
+  cancel-in-progress: false
+jobs:
+  poll:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Regression tests
+        run: python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
+      - uses: actions/cache/restore@v4
+        id: ledger
+        with:
+          path: .inbox-state/state.sqlite3
+          key: inbox-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: inbox-state-v1-
+      - name: Poll source inboxes and deliver readable contents
+        env:
+          GH_NOTIFICATIONS_TOKEN: ${{ secrets.GH_NOTIFICATIONS_TOKEN }}
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          GMAIL_AUTHORIZED_USER_JSON: ${{ secrets.GMAIL_AUTHORIZED_USER_JSON }}
+        run: python3 -m host.inbox_slack_relay --state .inbox-state/state.sqlite3
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: .inbox-state/state.sqlite3
+          key: inbox-state-v1-${{ github.run_id }}-${{ github.run_attempt }}
