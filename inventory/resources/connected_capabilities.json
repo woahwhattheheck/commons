@@ -22,7 +22,7 @@
     }
   },
   "component_freshness": {
-    "account_roles": "2026-09-01T23:32:25Z",
+    "account_roles": "2026-09-07T10:02:06Z",
     "github_portfolio": "2026-09-07T04:35:09Z",
     "tool_fleet": "2026-09-07T04:08:47Z"
   },
@@ -538,7 +538,7 @@
       "value": "Higgsfield Google OAuth receipt."
     },
     {
-      "allocation": "DISCOVER_IN_CARRIER",
+      "allocation": "CALLABLE_WITH_CONSTRAINT",
       "authority": "SHARED_ALL_CARRIERS",
       "capacity": "LIVE",
       "condition": "CONSTRAINED",
@@ -546,17 +546,17 @@
         "Kaggriculture",
         "RSNA and other evidence-backed Kaggle competition lanes"
       ],
-      "evidence": "Google account-data sharing receipt names Kaggle; no credential, account identifier, entry, dataset download, submission or acceptance is persisted or claimed.",
-      "freshness": "EMAIL_RECEIPT",
+      "evidence": "Commons PRs #9813, #9814 and #9818 record Kaggle submission 56074364, exactly one matching stable operation, exact 57,711-byte artifact identity, completed validation, two completed public wins, public score 790.0, observed account rank 3981, and contemporaneous quota of two used with three remaining.",
+      "freshness": "PROVIDER_READBACK",
       "holder": "Commons",
       "id": "kaggle-account-binding",
       "kind": "COMPETITION_PLATFORM_ACCOUNT",
-      "last_use": "2026-09-07T04:23:39Z",
+      "last_use": "2026-09-07T10:10:29Z",
       "mutation": "OWNER_ONLY_ENTRY_SUBMISSION_AND_TERMS_ACCEPTANCE",
-      "route_state": "CONNECTOR_DISCOVERY",
-      "source_kind": "EMAIL_RECEIPT",
-      "stage": "REACHABLE",
-      "value": "Fresh provider receipt proves a Google-linked Kaggle account road; competition entry, datasets, quotas and acceptance remain unverified."
+      "route_state": "CALLABLE_WITH_CONSTRAINT",
+      "source_kind": "PROVIDER_API_AND_GITHUB_RECEIPT",
+      "stage": "PRODUCING",
+      "value": "The shared Kaggle route produced one validated TITAN submission, two completed public competitive wins and an exact provider readback without duplicating the operation or changing the public source notebook."
     },
     {
       "allocation": "ACTIVATE_FIRST",
@@ -836,20 +836,20 @@
   ],
   "schema": "commons-connected-capabilities/v1",
   "snapshot": {
-    "base_main_sha": "4da8a89435a5a04ce460ee28c041ed868bb6328a",
-    "observed_at": "2026-09-07T04:35:09Z",
+    "base_main_sha": "42df8480bedf254b121a179ea5c7b2f51747fb1b",
+    "observed_at": "2026-09-07T10:22:14Z",
     "route_rule": "All Commons carriers may consume all shared resources; Claude is the sole owner-handled exception.",
     "secret_rule": "Share account roles, business identity, services, quotas, and routes; never persist passwords, tokens, recovery links, verification links, or payment credentials.",
-    "source_watermark": "2026-09-02T10:06:41Z",
+    "source_watermark": "2026-09-07T07:11:48Z",
     "truth_rule": "Exposure, successful probe, lifecycle stage, condition, authority, mutation, consumption, and value are independent facts."
   },
   "summary": {
-    "activation_or_discovery": 13,
+    "activation_or_discovery": 12,
     "allocation_counts": {
       "ACTIVATE_FIRST": 5,
       "CALLABLE": 6,
-      "CALLABLE_WITH_CONSTRAINT": 9,
-      "DISCOVER_IN_CARRIER": 8,
+      "CALLABLE_WITH_CONSTRAINT": 10,
+      "DISCOVER_IN_CARRIER": 7,
       "OWNER_HANDLED": 1,
       "WAIT_FOR_RESET": 2
     },
@@ -857,7 +857,7 @@
       "OWNER_ONLY": 1,
       "SHARED_ALL_CARRIERS": 30
     },
-    "callable_now": 15,
+    "callable_now": 16,
     "condition_counts": {
       "ACTIVE_UNKNOWN": 8,
       "CONSTRAINED": 14,
@@ -870,8 +870,8 @@
     "stage_counts": {
       "AVAILABLE": 13,
       "EXERCISED": 1,
-      "PRODUCING": 13,
-      "REACHABLE": 4
+      "PRODUCING": 14,
+      "REACHABLE": 3
     },
     "wait_for_reset": 2
   },
@@ -900,8 +900,8 @@
       "vercel": 24
     },
     "automations": {
-      "disabled": 7,
-      "enabled": 7,
+      "disabled": 8,
+      "enabled": 6,
       "total": 14
     },
     "callable_tools": 442,
