@@ -52,9 +52,33 @@ The GitHub Actions workflow produces the exact standalone agent and full
 evaluation report as downloadable artifacts. Existing owner-disk work is
 untouched; tests run in ephemeral cloud compute.
 
-License for this package: CC-BY 4.0. Attribution: TokenJunkieLabs / Bryce Muhlnickel.
-Upstream Kaggle engine source retains its own Apache-2.0 terms and is fetched,
-not republished in this package.
+## Licensing
+
+Owner-authored code, tests and documentation in this package are available
+under **MIT OR CC-BY-4.0**, at the recipient's choice. Both grants are offered;
+the MIT option does not withdraw or alter the existing CC-BY 4.0 grant.
+
+- [MIT license](LICENSE-MIT.txt): an [OSI-approved software license](https://opensource.org/license/mit)
+  permitting commercial use, modification and redistribution under its terms.
+- [CC-BY 4.0 license](LICENSE-CC-BY-4.0.txt): retained for the competition's
+  specified winning-license requirement. Creative Commons permits
+  [alternative dual licensing](https://creativecommons.org/faq/#can-i-enter-into-separate-or-supplemental-agreements-with-users-of-my-work).
+- [Scope and attribution](LICENSE): Bryce Xavier Muhlnickel / TokenJunkieLabs.
+  Third-party material is excluded from these owner-issued grants.
+
+This addresses the distinction between the public-code-sharing requirement
+for an OSI-approved license and the separately stated CC-BY 4.0 winning license.
+It does not represent CC-BY 4.0 itself as an OSI-approved software license.
+Under the current [competition rules](https://www.kaggle.com/competitions/kaggriculture/rules),
+public code must also be shared on the competition forum or a Kaggle notebook.
+The account session handles that publication; a GitHub merge alone is not
+a Kaggle publication or submission receipt.
+
+Upstream Kaggle engine source, specification and seed helper retain their own
+[Apache-2.0 license](https://github.com/Kaggle/kaggle-environments/blob/28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c/LICENSE).
+They are fetched for evaluation, not republished or relicensed by this package.
+Preserve upstream notices when using or redistributing upstream material.
+No competition data or other third-party code is relicensed by this grant.
 
 ## Recorded evaluation
 
