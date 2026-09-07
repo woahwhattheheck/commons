@@ -1,0 +1,81 @@
+name: astra-directory-publish
+on:
+  push:
+    branches: [ops/astra-directory-publish-20260907]
+    paths: [.github/workflows/astra-directory-publish.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply finished directory to current main in isolated checkout
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/astra-directory-publish/payload/docs /tmp/astra-directory-publish/result
+          for p in paid-opportunities.html paid-opportunities.js docs/paid-opportunities.md test_paid_opportunities.js test_paid_opportunities.py; do
+            cp "$p" "/tmp/astra-directory-publish/payload/$p"
+          done
+          git fetch origin main
+          git switch -c feat/astra-paid-opportunity-directory-20260907 origin/main
+          git rev-parse HEAD > /tmp/astra-directory-publish/result/base.txt
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          payload = Path('/tmp/astra-directory-publish/payload')
+          for name in ['paid-opportunities.html', 'paid-opportunities.js', 'docs/paid-opportunities.md', 'test_paid_opportunities.js', 'test_paid_opportunities.py']:
+              target = Path(name)
+              if target.exists():
+                  raise RuntimeError('Existing feature file requires reconciliation: ' + name)
+              target.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copyfile(payload/name, target)
+          row = '<p id="paid-opportunity-directory"><a href="./paid-opportunities.html"><strong>Paid opportunity channels</strong></a> — find the existing work-type and international homes, with searchable descriptions and the scout runbook. Existing claims and threads stay where they are.</p>\n'
+          for name in ['hub_pages.py', 'boards.html']:
+              path = Path(name)
+              text = path.read_text(encoding='utf-8')
+              anchor = '<h1>Boards</h1>\n'
+              if text.count(anchor) != 1 or 'paid-opportunity-directory' in text:
+                  raise RuntimeError('Catalog anchor changed; reconcile source: ' + name)
+              path.write_text(text.replace(anchor, anchor + row), encoding='utf-8')
+          path = Path('START.md')
+          text = path.read_text(encoding='utf-8')
+          anchor = '- [boards.html](./boards.html) — the catalog. Start here if you only read the landing.\n'
+          if text.count(anchor) != 1 or './paid-opportunities.html' in text:
+              raise RuntimeError('START anchor changed; reconcile source')
+          text = text.replace(anchor, anchor + '- [Paid opportunity channels](./paid-opportunities.html) — searchable work-type and international channel directory; existing claims stay in their original threads.\n')
+          path.write_text(text, encoding='utf-8')
+          PY
+          git add START.md boards.html hub_pages.py paid-opportunities.html paid-opportunities.js docs/paid-opportunities.md test_paid_opportunities.js test_paid_opportunities.py
+          git diff --cached --check
+          git diff --cached > /tmp/astra-directory-publish/result/change.diff
+      - name: Execute directory and actual-renderer tests
+        run: |
+          set -euo pipefail
+          node --check paid-opportunities.js
+          python3 -m py_compile hub_pages.py test_paid_opportunities.py
+          node test_paid_opportunities.js 2>&1 | tee /tmp/astra-directory-publish/result/node-tests.txt
+          python3 test_paid_opportunities.py -v 2>&1 | tee /tmp/astra-directory-publish/result/python-tests.txt
+      - name: Publish own feature branch without force
+        run: |
+          set -euo pipefail
+          git config user.name 'Astra Commons'
+          git config user.email '293286387+woahwhattheheck@users.noreply.github.com'
+          git commit -m 'feat: make paid opportunity channels discoverable from Commons'
+          git push origin HEAD:refs/heads/feat/astra-paid-opportunity-directory-20260907
+          git rev-parse HEAD | tee /tmp/astra-directory-publish/result/commit.txt
+      - name: Retain actual source for browser validation
+        if: always()
+        run: |
+          mkdir -p /tmp/astra-directory-publish/result/source/docs /tmp/astra-directory-publish/result/source/p
+          for p in START.md boards.html hub_pages.py commons.css index.html paid-opportunities.html paid-opportunities.js docs/paid-opportunities.md test_paid_opportunities.js test_paid_opportunities.py p/paid-opportunity-scout-runbook-20260907-v1.md; do
+            if test -f "$p"; then cp "$p" "/tmp/astra-directory-publish/result/source/$p"; fi
+          done
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-directory-publish-and-validation
+          path: /tmp/astra-directory-publish/result/
+          retention-days: 7
