@@ -1,0 +1,49 @@
+name: KEEL Mova inbox native checks
+on:
+  push:
+    branches: [review/keel-mova-inbox-20260906]
+    paths: [.github/workflows/keel-mova-inbox.yml]
+permissions:
+  contents: read
+jobs:
+  native-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      CI: "true"
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - name: Read exact fork-only validation source
+        uses: actions/checkout@v4
+        with:
+          repository: woahwhattheheck/mova-store
+          ref: 8f73d4c50e12b0918ed28b3cdf9a9790cf0d4766
+          persist-credentials: false
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Execute pinned native-check harness
+        run: |
+          python3 - <<'WRAPPER'
+          from pathlib import Path
+          import subprocess
+          import sys
+          import textwrap
+          text = Path('.github/workflows/keel-inbox-validation.yml').read_text()
+          start = text.index('          import json\n')
+          end = text.index('          PY\n', start)
+          source = textwrap.dedent(text[start:end])
+          compile(source, 'keel-native-checks.py', 'exec')
+          path = Path('/tmp/keel-native-checks.py')
+          path.write_text(source)
+          raise SystemExit(subprocess.call([sys.executable, str(path)]))
+          WRAPPER
+      - name: Preserve diagnostics and exact changed sources
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: keel-inbox-native-evidence
+          path: keel-evidence/
+          if-no-files-found: error
+          retention-days: 14
