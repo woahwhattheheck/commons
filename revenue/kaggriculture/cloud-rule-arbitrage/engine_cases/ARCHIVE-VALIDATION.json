@@ -1,0 +1,16 @@
+{
+  "cases": 4,
+  "source_archive_action_parity": true,
+  "archive_execution_cwd": "isolated temporary directory",
+  "source_seconds": 0.018491369002731517,
+  "archive_seconds": 0.01077431600424461,
+  "archive_sha256": "b5d7253cff1728fc6df9dd9cc97a64ea8163dbbd0d2c62d6515547e5c0ae766f",
+  "method": "Fresh independent source/archive imports, identical retained DEVELOPMENT observations; no new full games or held replay.",
+  "runtime_files": {
+    "main.py": "8c59d891c4bebba02da21796861bdc1f5f3358505281d5b226a5954c8aa44205",
+    "liquidity_cycle.py": "21cde940b10f9cf0d1425a989c71e499e782107b34d25e298cd04c897752470e",
+    "market_math.py": "56e8c56edf571f88dab6078857aefeb346923629e5ebfa544488494ca300bf3d",
+    "cycle_quotes.py": "7782bcc9351991fd8a0462a55777f47ccf755b69c85325e4a9ef14e4593fb21d"
+  },
+  "post_validation_changes": "README/license packaging only; executable member hashes match the validated source files and held freeze."
+}
