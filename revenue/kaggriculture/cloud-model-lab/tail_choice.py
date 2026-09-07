@@ -33,11 +33,13 @@ import route_cards
 
 def play(seed, seat, opponent_spec, A, force=None):
     """One full game. `force` = (turn, tail_hash) applies that switch at that turn,
-    through the baseline's own `_switch_ok`; None plays Arlene exactly."""
-    opp, opp_id = route_cards.load_agent(opponent_spec)
+    through the baseline's own `_switch_ok`; (turn, "STAY") suppresses whatever
+    switch that one checkpoint would take; None plays Arlene exactly."""
+    import arlene_arm
+    opp, opp_id = arlene_arm.make_opponent(opponent_spec, A)
     env = cards_mod.make_env(seed)
     env.reset(2)
-    mine, theirs = A.Agent(), A.Agent()
+    mine = A.Agent()
     applied, feature = None, None
     while not env.done:
         acts = [None, None]
@@ -47,26 +49,27 @@ def play(seed, seat, opponent_spec, A, force=None):
                 if force is not None:
                     turn, target = force
                     step = int(obs["day"]) * 24 + int(obs["hour"])
-                    if step == turn and target == "STAY":
-                        # Suppress whatever switch Arlene would take here, to test
-                        # the other side of the threshold: when it DOES switch, was
-                        # switching worth it?
-                        for (t, f, thr, tg) in A.DECISIONS:
-                            if t == turn:
-                                feature = A._feature(obs, f)
-                        blocked = mine.cur
-                        acts[i] = None
-                        mine.act(obs)          # let it evaluate, then undo a switch
-                        if mine.cur != blocked:
-                            mine.cur = blocked
-                            applied = "switch suppressed"
-                        else:
-                            applied = "no switch to suppress"
-                    if step == turn and target != "STAY":
-                        feat = next((f for (t, f, _thr, tg) in A.DECISIONS
-                                     if t == turn and tg == target), None)
+                    if step == turn:
+                        feat = next((f for (t, f, _thr, _tg) in A.DECISIONS
+                                     if t == turn), None)
                         feature = A._feature(obs, feat) if feat else None
-                        if target != mine.cur and mine._switch_ok(target, turn):
+                        if target == "STAY":
+                            # Suppress ONLY this checkpoint, for ONE action
+                            # evaluation. Calling act twice let the agent reapply
+                            # the switch on the second call, which is the opposite
+                            # of what this arm is measuring; removing the single
+                            # DECISIONS entry for the duration of one call leaves
+                            # every other checkpoint and the opponent untouched.
+                            kept = A.DECISIONS
+                            A.DECISIONS = tuple(d for d in kept if d[0] != turn)
+                            try:
+                                before_cur = mine.cur
+                                acts[i] = mine.act(obs)
+                            finally:
+                                A.DECISIONS = kept
+                            applied = ("switch suppressed"
+                                       if mine.cur == before_cur else "reapplied")
+                        elif target != mine.cur and mine._switch_ok(target, turn):
                             mine.cur = target
                             applied = True
                         elif target == mine.cur:
@@ -76,8 +79,7 @@ def play(seed, seat, opponent_spec, A, force=None):
                 if acts[i] is None:
                     acts[i] = mine.act(obs)
             else:
-                acts[i] = (theirs.act(obs) if opponent_spec == "arlene"
-                           else route_cards.call(opp, obs, env.configuration))
+                acts[i] = opp(obs, env.configuration)
         env.step(acts)
     farms = env.state[0].observation.farms
     own = float(farms[seat]["money"])

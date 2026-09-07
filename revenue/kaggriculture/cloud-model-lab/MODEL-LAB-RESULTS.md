@@ -46,6 +46,28 @@ model declined it every time. FEED spends a carried WHEAT; the per-seat order
 ledger later showed one such FEED at d28h23 costing exactly $41 of WHEAT that was
 then never sold, with the rival unchanged.
 
+## Rating-relevant result first: W/T/L
+
+Only win/loss/tie changes ratings; coin margin magnitude does not. Candidate
+against its own control, per paired game:
+
+| arm | authored | control W/T/L | candidate W/T/L | pairs changed |
+|---|---|---|---|---:|
+| engine-derived controls | hand | 4/4/0 | 4/0/4 | 4 |
+| upkeep only | hand | 4/4/0 | 4/0/4 | 4 |
+| CARE only | hand | 4/4/0 | 4/4/0 | **0** |
+| E4B slot motifs (development) | model | 4/4/0 | 4/4/0 | **0** |
+| E4B slot motifs (RESERVED) | model | 4/4/0 | 4/4/0 | **0** |
+| one animal bought and installed | hand | 4/4/0 | 4/0/4 | 4 |
+
+Every changed pair is a TIE LOST IN AN ARLENE MIRROR, where the control margin is
+exactly 0 and any perturbation at all breaks it. **Against a different opponent
+(Apex) no arm changed a single win or loss.** So in rating terms the arms that
+spend something are harmful only through self-play ties, and the model table is
+neutral -- confirmed on reserved seeds it was frozen before.
+
+Own cash and margin below diagnose why; they are not the rating.
+
 ## Paired full-game scores
 
 Candidate and control differ by the overlay and nothing else: same seed, same
