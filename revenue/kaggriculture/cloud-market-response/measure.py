@@ -195,7 +195,7 @@ def run(seed, seat, arm, rival, engine_dir, output):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, required=True)
-    parser.add_argument('--seat', type=int, choices=(0, 1), required=True)
+    parser.add_argument('--seat', type=int, choices=(0, 1), default=0)
     parser.add_argument('--arm', choices=('arlene', 'sell', 'response'), required=True)
     parser.add_argument('--opponent', choices=('arlene', 'apex', 'arlene:sale_cadence', 'apex:crop_demand', 'arlene:labor_cadence'), required=True)
     parser.add_argument('--engine-dir', type=Path, required=True)
