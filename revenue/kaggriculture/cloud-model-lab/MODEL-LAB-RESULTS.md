@@ -84,13 +84,7 @@ of these differences is a different town.
 | **E4B slot motifs** | **model** | dev, 8 games | **+0.0** | **+0.0** | 56 |
 | **E4B slot motifs** | **model** | **reserved 9700003/9700019, 8 games** | **+0.0** | **+0.0** | 32 |
 
-All rejected. The model table is the only one that is not negative, and it was
-frozen before the reserved seeds were touched. Model choice is measurably better
-than hand choice on this substrate; the substrate is what has no room.
-
-## Position safety, and a correction to an earlier claim
-
-
+## Position safety
 
 `_noop` answers whether the engine ignores an op *on the tile the worker is
 standing on*. Once a worker is walked away it is answering about the wrong tile,
@@ -100,17 +94,7 @@ after adding a return-to-home leg. The sound admission is a literal-PASS window
 read off the tape, since a PASS is a no-op wherever the worker stands, re-read
 live each turn because a checkpoint switch replaces the suffix.
 
-**Correction.** An earlier run of this measurement reported that at every one of
-457 position-safe moments the board held nothing collectable, and that was a
-defect in the instrument, not a fact about the game. `reachable_targets` priced
-each target through `native_motifs.engine()`, which returns the BUNDLED
-`engine_pin.py` -- the unit-phase transition closure, which carries no
-`market_price` at all. Every price lookup raised, the value came back None, and
-the filter dropped the entire target list on every call. The board in fact holds
-animal yield on 451 of 719 turns. Pricing now resolves `market_price` from the
-real engine and the silent drop is removed.
-
-Re-measured with that fixed, per game:
+Per game:
 
 | seed | free slots | board has a target | reachable two-way | reachable one-way |
 |---|---:|---:|---:|---:|

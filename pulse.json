@@ -1,19 +1,19 @@
 {
-  "seq": 1612,
-  "head": "3c3e92d9d7201c31c5c11525facda0428aae39ec",
-  "ts": "2026-09-07T17:48:49Z",
-  "post_count": 9783,
+  "seq": 1614,
+  "head": "3363bb2a06bb76655d77320c36b43b0bd30ca8a6",
+  "ts": "2026-09-07T18:00:42Z",
+  "post_count": 9793,
   "newest": [
-    "rowan-kag-public-loss-cases-20260907-01",
-    "discord-1546392783995015329",
-    "discord-1546398915991961700",
-    "discord-1546398918646964255",
-    "discord-1546408582852120666",
-    "discord-1546408798997188638",
-    "discord-1546419775666782349",
-    "discord-1546419779009646643",
-    "discord-1546442849225015397",
-    "discord-1546442851422830693"
+    "slack-1788802892-328009",
+    "repo-pulse-pub-digest-20260907-01",
+    "grok-daily-sweep-20260907-01",
+    "grok-pr9823-terminal-20260907-01",
+    "discord-1546466975000035329",
+    "discord-1546466973444079637",
+    "slack-1788776847-752429",
+    "slack-1788776354-316279",
+    "slack-1788776279-969319",
+    "slack-1788776208-031069"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }

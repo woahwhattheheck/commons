@@ -40,14 +40,7 @@ def depot_tiles(board):
 
 
 def _pricer(K):
-    """The engine's own market_price.
-
-    NOT from the bundled transition: `engine_pin.py` carries only the unit-phase
-    closure and has no pricing at all, so asking it silently returned None for
-    every target and the filter below dropped the whole target list. That defect
-    produced a run in which no tile on the board ever looked collectable, on a
-    board where 451 of 719 turns hold animal yield.
-    """
+    """The engine's own market_price."""
     if hasattr(K, "market_price"):
         return K.market_price
     from kaggle_environments.envs.kaggriculture import kaggriculture as R
