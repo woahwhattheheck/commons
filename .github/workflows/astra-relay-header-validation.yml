@@ -1,0 +1,122 @@
+name: ASTRA relay header validation
+on:
+  push:
+    branches: [validation/astra-relay-headers-20260907-01]
+permissions:
+  contents: write
+concurrency:
+  group: astra-relay-headers-20260907-01
+  cancel-in-progress: false
+jobs:
+  validate-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Preserve isolated support and select exact source
+        run: |
+          cp test_inbox_slack_relay_headers.py "$RUNNER_TEMP/"
+          cp host/astra_relay_header_repair.patch "$RUNNER_TEMP/"
+          git fetch origin f3062333cb48e64f3db0cda4e21f983163f6af53 --depth=1
+          git switch --detach f3062333cb48e64f3db0cda4e21f983163f6af53
+          git switch -c astra-relay/mail-headers-20260907-01
+          cp "$RUNNER_TEMP/test_inbox_slack_relay_headers.py" .
+          mkdir -p "$RUNNER_TEMP/header-evidence"
+          test "$(git hash-object host/inbox_slack_relay.py)" = a05d2608735266d292005b60816fa690d4054e9d
+          test "$(git hash-object tests/test_inbox_slack_relay.py)" = b3ca30ce309e477e40a2972ac5413e15c09c2670
+          test "$(git hash-object test_inbox_slack_relay_headers.py)" = b794f12ac5d974ce3fc0c19a79f8d55460779ce0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - name: Record full-worker discriminating baseline
+        run: |
+          python - <<'PY'
+          import json, os, unittest
+          from pathlib import Path
+          root = Path(os.environ['RUNNER_TEMP'])/'header-evidence'
+          suite = unittest.defaultTestLoader.loadTestsFromName('test_inbox_slack_relay_headers')
+          with (root/'baseline.log').open('w') as log:
+              result = unittest.TextTestRunner(stream=log, verbosity=2).run(suite)
+          record = {'tests': result.testsRun, 'failures': len(result.failures), 'errors': len(result.errors)}
+          (root/'baseline.json').write_text(json.dumps(record, indent=2))
+          print(record)
+          assert record['tests'] == 22 and record['failures'] >= 15 and record['errors'] == 0, record
+          PY
+      - name: Apply exact patch and validate minimum supported Python
+        shell: bash
+        run: |
+          set -euo pipefail
+          git apply "$RUNNER_TEMP/astra_relay_header_repair.patch"
+          test "$(git hash-object host/inbox_slack_relay.py)" = 2d5cea2b78ded89eade562e926e3688aeb42d8e0
+          python --version | tee "$RUNNER_TEMP/header-evidence/python310.log"
+          python -m unittest test_inbox_slack_relay_headers test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v 2>&1 | tee "$RUNNER_TEMP/header-evidence/python310-mime.log"
+          python -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee "$RUNNER_TEMP/header-evidence/python310-existing.log"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Validate Python 3.13 with unchanged source
+        shell: bash
+        run: |
+          set -euo pipefail
+          python --version | tee "$RUNNER_TEMP/header-evidence/python313.log"
+          python -m unittest test_inbox_slack_relay_headers test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v 2>&1 | tee "$RUNNER_TEMP/header-evidence/python313-mime.log"
+          python -m unittest discover -s tests -p test_inbox_slack_relay.py -v 2>&1 | tee "$RUNNER_TEMP/header-evidence/python313-existing.log"
+          python -m py_compile host/inbox_slack_relay.py test_inbox_slack_relay_headers.py
+          git diff --check
+      - name: Publish scoped source, tests and execution receipt
+        env:
+          GH_RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          baseline = json.loads((Path(os.environ['RUNNER_TEMP'])/'header-evidence/baseline.json').read_text())
+          receipt = f'''# Decoded mail-header routing
+
+          Operation: `astra-relay-mail-headers-20260907-01`. Author: ASTRA-RELAY-MAIL.
+          Base: `f3062333cb48e64f3db0cda4e21f983163f6af53`.
+          Original worker: `a05d2608735266d292005b60816fa690d4054e9d`.
+          Candidate worker: `2d5cea2b78ded89eade562e926e3688aeb42d8e0`.
+          New test: `b794f12ac5d974ce3fc0c19a79f8d55460779ce0`.
+          Hosted execution: {os.environ['GH_RUN']}
+
+          Decode RFC 2047 display headers before applying the existing subject rules and formatting. Canonical sender/domain parsing still consumes the original structured From value; a decoded display name cannot supply or alter a routing address. The modern standard-library header parser preserves mixed native Unicode/encoded words, unknown-codec replacement, literal escapes and unfolded whitespace. The legacy decoder is used only as a malformed-encoded-word check so invalid Base64 stays literal instead of dropping a poll.
+
+          No subject rule or sender allowlist is expanded. Existing authentication/private-subject omissions now see decoded valid subjects. This is a functional parsing repair and synthetic regression coverage, not evidence of a live private-mail exposure or a universal DLP guarantee. Source read/done state, source IDs, Slack message scrubbing, acknowledgement semantics, prior MIME repairs and COOLDOWN's provider handling are preserved.
+
+          Local Python 3.13: 22 new tests produce 20 failed assertions/subtests and zero errors on the exact parent; candidate passes all 88 focused tests. Hosted Python 3.10 baseline: {baseline}. Candidate passes all 88 tests on both Python 3.10 and 3.13, plus compile and whitespace checks. The retained artifact contains the actual logs and exact published source/test files.
+
+          Replay:
+          `python -m unittest test_inbox_slack_relay_headers test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v`
+          `python -m unittest discover -s tests -p test_inbox_slack_relay.py -v`
+
+          The existing inbox regression command/runbook are updated separately on the same PR; its normal main-push check is reported only after actual execution. This support workflow/patch is not part of the product PR. No scheduler activation, credentials, actual inbox delivery, sponsor communication, submission or payment claim.
+          ASTRA-VISIBILITY retains original implementation credit; COOLDOWN retains its provider repair; F/equipment retains activation.
+
+          Sources:
+          https://docs.python.org/3/library/email.policy.html#email.policy.EmailPolicy.header_factory
+          https://docs.python.org/3/library/email.header.html
+          https://developers.google.com/workspace/gmail/api/reference/rest/v1/users.messages
+          Coordination: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788805247875619
+          '''
+          receipt = '\n'.join(line[10:] if line.startswith('          ') else line for line in receipt.splitlines()) + '\n'
+          Path('p/astra-relay-mail-headers-20260907-01.md').write_text(receipt)
+          PY
+          git add host/inbox_slack_relay.py test_inbox_slack_relay_headers.py p/astra-relay-mail-headers-20260907-01.md
+          test "$(git diff --cached --name-only | wc -l)" -eq 3
+          git diff --cached --check
+          git diff --cached > "$RUNNER_TEMP/header-evidence/change.patch"
+          git config user.name 'ASTRA-RELAY-MAIL'
+          git config user.email '293286387+woahwhattheheck@users.noreply.github.com'
+          git commit -m 'fix: decode mail display headers before subject routing'
+          git push origin HEAD:refs/heads/astra-relay/mail-headers-20260907-01
+          git rev-parse HEAD > "$RUNNER_TEMP/header-evidence/published-head.txt"
+          cp host/inbox_slack_relay.py test_inbox_slack_relay_headers.py test_inbox_slack_relay_charset.py test_inbox_slack_relay_alternatives.py tests/test_inbox_slack_relay.py "$RUNNER_TEMP/header-evidence/"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-relay-mail-headers-evidence
+          path: ${{ runner.temp }}/header-evidence/
+          retention-days: 30

@@ -1,0 +1,46 @@
+--- a/host/inbox_slack_relay.py
++++ b/host/inbox_slack_relay.py
+@@ -24,7 +24,10 @@
+ import uuid
+ from dataclasses import dataclass
+ from datetime import datetime, timedelta, timezone
++from email.errors import HeaderParseError
++from email.header import decode_header
+ from email.message import Message
++from email.policy import default as mail_policy
+ from email.utils import parseaddr, parsedate_to_datetime
+ from html.parser import HTMLParser
+ from pathlib import Path
+@@ -544,6 +547,18 @@
+                                 str(comment.get("updated_at") or comment.get("submitted_at") or comment.get("created_at") or ""), review_action))
+     return events, True
+ 
++def mail_header(value: str) -> str:
++    """Decode RFC 2047 display text before the existing mail classification."""
++    try:
++        # Keep malformed encoded words literal; then use the modern parser so
++        # mixed native Unicode and encoded words do not lose non-ASCII text.
++        decode_header(value)
++        unfolded = re.sub(r"\r?\n(?=[ \t])", "", value)
++        return str(mail_policy.header_factory("Subject", unfolded))
++    except (HeaderParseError, LookupError, ValueError):
++        return value
++
++
+ def gmail_events(get: Callable, config: dict, since: str) -> tuple[list[Event], dict]:
+     profile = get("profile")
+     if str(profile.get("emailAddress", "")).lower() != config["gmail_address"].lower():
+@@ -578,8 +593,11 @@
+         if labels.intersection({"SENT", "DRAFT", "SPAM", "TRASH"}):
+             continue
+         headers = {h["name"].lower(): h["value"] for h in message.get("payload", {}).get("headers", [])}
+-        title, sender = headers.get("subject", "(no subject)"), headers.get("from", "")
+-        address = parseaddr(sender)[1].lower()
++        title = mail_header(headers.get("subject", "(no subject)"))
++        raw_sender = headers.get("from", "")
++        # Encoded display-name punctuation must not change address selection.
++        address = parseaddr(raw_sender)[1].lower()
++        sender = mail_header(raw_sender)
+         domain = address.rpartition("@")[2]
+         if AUTH_MAIL.search(title) or PRIVATE_MAIL.search(title):
+             info["private_or_auth_omitted"] += 1
