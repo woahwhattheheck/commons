@@ -1,5 +1,6 @@
 import importlib.util
 from pathlib import Path
+from types import SimpleNamespace
 import unittest
 
 HERE = Path(__file__).resolve().parent
@@ -80,6 +81,32 @@ class LostProductionTest(unittest.TestCase):
         obs = self.observation({"animal":"COW","yield_units":0}, step=215)
         obs["farms"][0]["hands"] = [[0,0]]; obs["private"]["inventories"] = [{}, {"MILK":3}]
         self.assertEqual(overlay._eh_action(obs, 0), ["PASS"])
+
+    def test_sale_value_reprices_units_and_floor_does_not_advance_inventory(self):
+        market = {"inventory":{"EGG":0}, "params":{}}
+        prices = []
+        old = overlay._eh_price
+        try:
+            overlay._eh_price = lambda item, inventory, market: {0:3, 1:1}.get(inventory, 1)
+            self.assertEqual(overlay._eh_sale_value("EGG", 3, market), 5)
+        finally:
+            overlay._eh_price = old
+
+    def test_future_base_harvest_reserves_shed_capacity(self):
+        obs = self.observation({"animal":"GOOSE", "yield_units":4}, step=215)
+        obs["farms"][0]["hands"] = [[0,0]]
+        base = {"farmer":["PASS"], "hands":[["HARVEST"]], "market":[]}
+        old = getattr(overlay, "_A", None)
+        try:
+            overlay._A = SimpleNamespace(
+                R=[[{"farmer":["PASS"], "hands":[["PASS"]], "market":[]} for _ in range(216)]],
+                cur=0)
+            self.assertEqual(overlay._eh_base_harvest_commitment(obs, base, 215), 4)
+        finally:
+            if old is None:
+                del overlay._A
+            else:
+                overlay._A = old
 
 
 if __name__ == "__main__":

@@ -1097,10 +1097,12 @@ def main(argv=None) -> int:
         schema = _parse_json((root / SCHEMA_PATH).read_text(encoding="utf-8"), "schema")
         if args.command == "compile":
             registry = compile_registry(root)
-            write_surfaces(root, registry)
         else:
             registry = _parse_json((root / REGISTRY_PATH).read_text(encoding="utf-8"), "registry")
         result = validate(root, registry, schema)
+        if args.command == "compile":
+            # Preserve prior outputs when the candidate fails validation.
+            write_surfaces(root, registry)
         if args.command == "list":
             result = {"status": "VALID", "opportunities": registry["opportunities"], "counts": registry["counts"]}
         elif args.command == "due":

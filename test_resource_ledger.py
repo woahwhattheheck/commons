@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788775586.762069")
+        self.assertEqual(catalog["slack_ts"], "1788808367.044779")
         self.assertEqual(
             catalog["source_id"],
-            "codex-kaggle-account-binding-exercised-20260907-01",
+            "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+        )
+        self.assertIn(
+            "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-kaggle-account-binding-exercised-20260907-01",
@@ -263,14 +267,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-kaggle-account-binding-exercised-20260907-01.json",
+            "codex-titan-cloud-sell-scheduler-activation-20260907-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "kaggle-account-binding"
+            current_activation["selected_resource"], "titan-cloud-sell-scheduler"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -563,6 +567,23 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(
             kaggle["last_receipt"],
             "codex-kaggle-account-binding-exercised-20260907-01",
+        )
+        sell = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "titan-cloud-sell-scheduler"
+        )
+        self.assertEqual(sell["capacity"], "LIVE")
+        self.assertEqual(sell["stage"], "PRODUCING")
+        self.assertEqual(sell["condition"], "CONSTRAINED")
+        self.assertEqual(
+            sell["last_receipt"],
+            "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+        )
+        self.assertIn("NO_KAGGLE_PROVIDER_WRITE", sell["authority"])
+        self.assertIn(
+            "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+            sell["exact_safe_probe"],
         )
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],

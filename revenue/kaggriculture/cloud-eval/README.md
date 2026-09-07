@@ -17,7 +17,7 @@ Do not create this build/cache on Bryce's machine.
 ```sh
 cd revenue/kaggriculture/cloud-eval
 python -B evaluate.py --prepare-engine /tmp/kag-engine
-KAG_EVAL_ENGINE_DIR=/tmp/kag-engine python -B test_evaluator.py
+KAG_EVAL_ENGINE_DIR=/tmp/kag-engine python -B -m unittest -v test_evaluator test_final_usage
 python -B evaluate.py --engine-dir /tmp/kag-engine \
   --seeds 2027,6607,104729 --recheck-first --output /tmp/tournament.json
 ```
@@ -52,8 +52,11 @@ its extra game is excluded from the aggregate to avoid double-counting.
 Each game records terminal money scores, player positions, the seed, day-by-day
 bank balances, action/final-state hash, elapsed time, and per-agent decision/RPC
 latency, CPU time, peak resident memory and exit code. Resource values include
-worker startup/import overhead; Linux process readings before cleanup capture
-resource use even when a timed-out call never returned its own measurements.
+worker startup/import overhead. Available Linux process readings before cleanup
+are supplemented by final `wait4` child usage where supported, so a timed-out or
+abruptly exiting call need not lose its last resource measurements.
+`resource_sample` and `final_resource_sample` identify the actual sources;
+[final-usage notes](FINAL_USAGE.md) describe fallback behavior and measured limits.
 
 Agents run in separate fresh persistent processes and working directories.
 Each process receives only its own observation and a copied configuration. The
@@ -100,6 +103,21 @@ cover terminal off-by-one behavior, score semantics, private observations,
 hidden seeds, repeatability, different world seeds, crashes, timeouts, seats, and isolation of the compact policy overrides.
 Fault-injection agents are test fixtures, not benchmark opponents or simulator
 substitutes. No Euler results are reopened or overwritten.
+
+`test_final_usage.py` adds eight real-worker resource and cleanup regressions.
+For the focused resource checks alone, without preparing an engine or running
+any games, use:
+
+```sh
+python -B -m unittest -v test_final_usage test_evaluator.ActorTests.test_timeout_resource_measurement
+```
+
+These cases cover unavailable procfs, final allocation/CPU usage, normal and
+signal exit codes, unavailable/interrupted wait4, and repeated cleanup. The
+[landed validation record](FINAL_USAGE.md#validation) distinguishes these checks
+from the original interpreter tests and earlier tournament results. The manual
+full-test command above includes both test modules; this documentation change
+does not alter the GitHub Actions workflow or claim a new CI execution.
 
 Work order: [KAG-EVAL coordination](https://tokenjunkielabs.slack.com/archives/C0BTB4SUCP9/p1788753053465569).
 License for these new files: CC-BY 4.0. Attribution: TokenJunkieLabs / Bryce

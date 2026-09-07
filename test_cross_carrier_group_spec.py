@@ -14,8 +14,8 @@ SPEC = ROOT / "ground" / "CROSS_CARRIER_GROUP.md"
 RECEIPT = ROOT / "p" / "group-chat-cross-carrier-spec-20260830-01.md"
 PEERS = ROOT / "peers.html"
 TELEGRAM_PIN = ROOT / "p" / "commons-peers-telegram-20260829-01.md"
-# Live blobs when this leftover was named against HEAD 0152b5c2. Do not remint.
-TELEGRAM_HTML_BLOB = "7250c2fec0472a14b7e1e56ec03d7f58b7250fe7"
+# Page includes BLINK's additive Live-cash section from 0f42f409; original pin stays exact.
+TELEGRAM_HTML_BLOB = "c28b412332d1fe185d3079fdda31c18963973913"
 TELEGRAM_PIN_BLOB = "b75cbc844c4e9dcf3af3c545a3f091f85d5af77e"
 NEW_PATHS = (SPEC, RECEIPT)
 

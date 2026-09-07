@@ -54,8 +54,10 @@ def validate_catalog(data):
         return ["catalog is not an object"]
     if data.get("schema") != SCHEMA:
         problems.append("schema must be %s" % SCHEMA)
-    add_work = data.get("add_work") or {}
-    if add_work.get("preferred") != SHIP_LOOP:
+    add_work = data.get("add_work")
+    if not isinstance(add_work, dict):
+        problems.append("add_work must be an object")
+    elif add_work.get("preferred") != SHIP_LOOP:
         problems.append("add_work.preferred must be %s" % SHIP_LOOP)
     items = data.get("items")
     if not isinstance(items, list):
@@ -64,7 +66,9 @@ def validate_catalog(data):
     seen = {}
     for item in items:
         problems.extend(validate_item(item, seen))
-    historical = data.get("historical_directives") or []
+    historical = data.get("historical_directives")
+    if historical is None:
+        historical = []
     if not isinstance(historical, list):
         problems.append("historical_directives must be a list")
         return problems
@@ -82,7 +86,7 @@ def validate_item(item, seen=None):
     if not isinstance(item, dict):
         return ["item is not an object"]
     job_id = str(item.get("id") or "")
-    if not ID_RE.match(job_id):
+    if not ID_RE.fullmatch(job_id):
         problems.append("id must match %s" % ID_RE.pattern)
     elif seen is not None:
         blob = json.dumps(item, sort_keys=True, separators=(",", ":"))
@@ -151,7 +155,10 @@ def reconcile_item(item, snapshot):
     claimed_paths = item.get("claimed_paths")
     if not isinstance(claimed_paths, list):
         claimed_paths = []
-    claimed = [p for p in claimed_paths if isinstance(p, str) and p]
+    claimed = claimed_paths
+    # Invalid entries must not disappear into a smaller, completed claim.
+    if any(not isinstance(p, str) or not p for p in claimed):
+        claimed = []
     chat_ignored = bool(
         snapshot.get("chat_text")
         or snapshot.get("chat_said_done")
@@ -181,12 +188,12 @@ def reconcile_item(item, snapshot):
         result["executable"] = False
         result["reason"] = "external owner/platform act"
     if snapshot.get("open_prs") and not (
-        SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed)
+        SHA_RE.fullmatch(main_sha) and claimed and all(main_paths.get(p) for p in claimed)
     ):
         result["status"] = "OPEN"
         result["reason"] = result.get("reason") or "open PR is not close evidence"
         return result
-    if SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed):
+    if SHA_RE.fullmatch(main_sha) and claimed and all(main_paths.get(p) for p in claimed):
         result["status"] = "CLOSED"
         result["main_sha"] = main_sha
         return result
@@ -205,7 +212,10 @@ def project(catalog, snapshot):
     live = [reconcile_item(item, snapshot) for item in items if isinstance(item, dict)]
     historical = []
     if isinstance(catalog, dict):
-        for row in catalog.get("historical_directives") or []:
+        rows = catalog.get("historical_directives")
+        if not isinstance(rows, list):
+            rows = []
+        for row in rows:
             if isinstance(row, dict):
                 historical.append({
                     "n": row.get("n"),

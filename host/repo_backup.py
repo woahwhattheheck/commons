@@ -96,8 +96,15 @@ def _write_exclusive_json(path: Path, payload: dict[str, Any]) -> None:
     except OSError as error:
         raise BackupError(f"refusing to overwrite {path}: {error}") from error
     try:
-        os.write(fd, text.encode("utf-8"))
+        remaining = memoryview(text.encode("utf-8"))
+        while remaining:
+            written = os.write(fd, remaining)
+            if written <= 0:
+                raise BackupError(f"cannot write {path}: write made no progress")
+            remaining = remaining[written:]
         os.fsync(fd)
+    except OSError as error:
+        raise BackupError(f"cannot write {path}: {error}") from error
     finally:
         os.close(fd)
 
@@ -166,7 +173,7 @@ def snapshot(source: Path, output_dir: Path) -> Path:
 def read_manifest(manifest_path: Path) -> tuple[dict[str, Any], Path]:
     try:
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as error:
+    except (OSError, UnicodeDecodeError, json.JSONDecodeError) as error:
         raise BackupError(f"manifest unreadable: {manifest_path}: {error}") from error
     required = {
         "schema_version",

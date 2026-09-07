@@ -69,7 +69,7 @@ def slack_to_commons(
     errors: list[str] = []
     if not (text or "").strip():
         errors.append("empty-slack-body")
-    if not ID_RE.match(post_id or ""):
+    if not ID_RE.fullmatch(post_id or ""):
         errors.append("id-shape")
     if ts and post_id == ts:
         errors.append("slack-ts-as-commons-id")

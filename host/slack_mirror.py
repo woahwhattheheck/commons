@@ -82,7 +82,9 @@ def metadata_of(text: str) -> dict[str, str]:
 
 
 def chunks(text: str, limit: int = SLACK_LIMIT) -> list[str]:
-    """Split for Slack while preserving every payload character."""
+    """Split losslessly at a positive character limit; reject nonpositive sizes."""
+    if limit <= 0:
+        raise ValueError("limit must be positive")
     if len(text) <= limit:
         return [text]
     out: list[str] = []
@@ -91,7 +93,7 @@ def chunks(text: str, limit: int = SLACK_LIMIT) -> list[str]:
         cut = rest.rfind("\n\n", 0, limit + 1)
         if cut < limit // 2:
             cut = rest.rfind("\n", 0, limit + 1)
-        if cut < limit // 2:
+        if cut <= 0 or cut < limit // 2:
             cut = limit
         out.append(rest[:cut])
         rest = rest[cut:]

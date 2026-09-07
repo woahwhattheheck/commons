@@ -71,20 +71,21 @@
     "inventory/resources/records/codex-github-repository-portfolio-privacy-refresh-20260907-01.json",
     "inventory/resources/records/codex-github-repository-portfolio-live-expansion-20260907-02.json",
     "inventory/resources/records/codex-github-repository-portfolio-live-expansion-20260907-03.json",
-    "inventory/resources/records/codex-kaggle-account-binding-exercised-20260907-01.json"
+    "inventory/resources/records/codex-kaggle-account-binding-exercised-20260907-01.json",
+    "inventory/resources/records/codex-titan-cloud-sell-scheduler-activation-20260907-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788775586.762069",
+  "slack_ts": "1788808367.044779",
   "snapshot": {
-    "base_main_sha": "42df8480bedf254b121a179ea5c7b2f51747fb1b",
-    "observed_at": "2026-09-07T10:22:14Z",
+    "base_main_sha": "4f9def3ac3074c9ea34988dd792869bdbfd35bf1",
+    "observed_at": "2026-09-07T19:13:40Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-kaggle-account-binding-exercised-20260907-01",
+  "source_id": "codex-titan-cloud-sell-scheduler-activation-20260907-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -93,8 +94,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — Kaggle account route exercised by one provider-accepted TITAN submission with exact no-retry and quota boundaries",
+  "subject": "MASTER RESOURCE LEDGER — frozen TITAN cloud SELL scheduler producing for the active T08 composition consumer",
   "supersedes_source_ids": [
+    "codex-titan-cloud-sell-scheduler-activation-20260907-01",
     "codex-kaggle-account-binding-exercised-20260907-01",
     "codex-github-repository-portfolio-live-expansion-20260907-03",
     "codex-github-repository-portfolio-live-expansion-20260907-02",
@@ -1715,6 +1717,28 @@
       "last_used_at": "2026-09-07T10:10:29Z",
       "stale_after": "next provider validation, hosted-episode, score, quota, terms, eligibility or competition-state receipt",
       "priority": 60
+    },
+    {
+      "name": "titan-cloud-sell-scheduler",
+      "kind": "GAME_POLICY_SCHEDULER",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / T08 cloud-titan-composition",
+      "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; FROZEN_HASH_AND_ONE_INSTANCE_PER_ACTOR_MATCH_REQUIRED; NO_KAGGLE_PROVIDER_WRITE",
+      "consumer": "The active T08 cloud-titan-composition lane and later bounded Kaggriculture policy ablations",
+      "value": "A frozen callable SELL controller retained all five held-out baseline wins and converted two baseline ties plus one baseline loss into wins across the fixed eight-game held-out panel.",
+      "next_action": "Let the existing T08 claimant consume the frozen scheduler as one authoritative stateful controller per actor/match; preserve its exact hash and standalone evidence, and do not duplicate games, provider operations, or composition ownership.",
+      "source": "revenue/kaggriculture/cloud-execution-lab; source PR #9877 commit 9f89a2cd75c5c89198caa1617a9e399900553ce3; frozen evidence PR #9892 merge fb527256aa7c3446d640a684c6f6fb7caf9029d0; T08 checkpoint PR #9894 merge 7f92f6c0f4e3961be8109b2e3dc6da3e4e356d9f",
+      "evidence_ts": "2026-09-07T19:05:08Z",
+      "auth_surface": "public current-main source and exact frozen archives; local official-engine evidence only",
+      "exact_safe_probe": "Frozen scheduler SHA-256 32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9; source archive 59,966 bytes SHA-256 a14f9bbc7e10753fef2d5e983e9746e107940d7081b8934fb499561191e9c3c7; development 12W/0T/0L versus 6W/6T/0L baseline; held-out 8W/0T/0L versus 5W/2T/1L baseline; maximum selected action including cold start 0.203147 seconds.",
+      "rate_plan_boundary": "These are fixed local official-engine results, not Kaggle rating movement, future hosted performance, leaderboard superiority, provider quota, submission, prize, payout, revenue, or cash.",
+      "assigned_backlog": "existing T08 composition only; future distinct ablations require their own claim and evidence without changing the frozen standalone arm",
+      "last_receipt": "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+      "last_used_at": "2026-09-07T19:05:44Z",
+      "stale_after": "next scheduler source/hash, evaluator, engine, T08 interface, provider, or hosted-result change",
+      "priority": 93
     },
     {
       "name": "gemini-google-research-fleet",

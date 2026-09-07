@@ -10,6 +10,7 @@ import argparse
 import base64
 import hashlib
 import json
+import math
 import os
 import re
 import shutil
@@ -24,7 +25,7 @@ import uuid
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
 from email.message import Message
-from email.utils import parseaddr
+from email.utils import parseaddr, parsedate_to_datetime
 from html.parser import HTMLParser
 from pathlib import Path
 from typing import Any, Callable
@@ -83,6 +84,34 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
         return None
 
 
+def http_retry_after(code: int, headers: Any, host: str) -> int:
+    """Honor provider retry deadlines without capping them to the poll interval."""
+    headers = headers or {}
+    delay = 60 if code == 429 else 0
+    value = headers.get("Retry-After")
+    if value is not None:
+        delay = 60
+        try:
+            value = str(value).strip()
+            if re.fullmatch(r"[0-9]+", value):
+                delay = max(1, int(value))
+            else:
+                deadline = parsedate_to_datetime(value)
+                if deadline.tzinfo is None:
+                    deadline = deadline.replace(tzinfo=UTC)
+                delay = max(1, math.ceil(deadline.timestamp() - time.time()))
+        except (TypeError, ValueError, OverflowError):
+            pass
+    # An exhausted primary budget can coexist with a secondary Retry-After.
+    if host == "api.github.com" and code in {403, 429} and headers.get("X-RateLimit-Remaining") == "0":
+        try:
+            reset = int(headers.get("X-RateLimit-Reset", ""))
+            delay = max(delay, 1, math.ceil(reset - time.time()))
+        except (TypeError, ValueError, OverflowError):
+            delay = max(delay, 60)
+    return delay
+
+
 def request_json(url: str, *, token: str = "", data: dict | None = None,
                  form: bool = False) -> dict | list:
     """Fixed provider URLs only; caller data never controls a destination host."""
@@ -107,10 +136,7 @@ def request_json(url: str, *, token: str = "", data: dict | None = None,
         return json.loads(raw)
     except urllib.error.HTTPError as exc:
         code = exc.code
-        try:
-            retry = min(3600, max(1, int(exc.headers.get("Retry-After", "60")))) if code == 429 else 0
-        except (TypeError, ValueError):
-            retry = 60
+        retry = http_retry_after(code, exc.headers, parsed.hostname or "")
         exc.close()
         raise RelayError(f"http_{code}", uncertain=data is not None and code >= 500, retry_after=retry) from None
     except (OSError, ValueError) as exc:
@@ -182,7 +208,9 @@ class Providers:
                     "grant_type": "refresh_token", "client_id": grant["client_id"],
                     "client_secret": grant["client_secret"], "refresh_token": grant["refresh_token"]})
                 self.gmail_token = refreshed["access_token"]
-            except (KeyError, ValueError, RelayError):
+            except RelayError as exc:
+                raise RelayError("gmail_existing_grant_unavailable", retry_after=exc.retry_after) from None
+            except (KeyError, ValueError):
                 raise RelayError("gmail_existing_grant_unavailable") from None
         if self.gmail_token:
             return request_json("https://gmail.googleapis.com/gmail/v1/users/me/" + resource +
@@ -688,7 +716,15 @@ def main() -> int:
     try:
         with RunLock(args.state):
             config = json.loads(Path(args.config).read_text(encoding="utf-8"))
-            report = run(config, state, Providers())
+            try:
+                report = run(config, state, Providers())
+            except RelayError as exc:
+                # Initial Slack reads and final health writes are outside the
+                # source loop. Persist their cooldown before releasing the lock.
+                if exc.retry_after > 0:
+                    state.set("retry_after", max(float(state.get("retry_after", "0")),
+                                                 time.time() + exc.retry_after))
+                raise
     except RelayError as exc:
         report = {"observed_at": iso(), "status": "BLOCKED", "error": exc.code}
     except Exception:

@@ -12,6 +12,7 @@ Python 3.10+; no pip packages are required for the relay itself.
 
 ```sh
 python3 -m unittest discover -s tests -p test_inbox_slack_relay.py -v
+python3 -m unittest test_inbox_slack_relay_charset test_inbox_slack_relay_alternatives -v
 python3 -m host.inbox_slack_relay --config host/inbox_visibility.json
 ```
 
@@ -72,6 +73,14 @@ mail and duplicate GitHub emails are omitted; unknown mail is explicitly counted
 as **unclassified_pending**, not silently declared non-actionable. This is a
 conservative work-mail router, not exhaustive semantic classification of every
 historical message or attachment. Keep the interactive Gmail audit for unknowns.
+
+Each leaf MIME body uses its declared Content-Type charset, with UTF-8
+replacement fallback for missing, unsupported or malformed charset names.
+Blank or omitted alternatives fall back to one readable supported body while
+retaining usable plain-text preference; duplicate alternatives are not joined.
+Existing missing-attachment and decoding-error diagnostics remain visible rather
+than being hidden by HTML fallback. The MIME regression suites above use only
+synthetic fixtures and do not poll inboxes or establish live delivery.
 
 Private GitHub notification contents are never copied into these public
 channels. Their aggregate pending count is visible. Private bid artifacts remain

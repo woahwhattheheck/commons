@@ -46,7 +46,8 @@ LISTING_REL = os.path.join("ground", "open-work-listing")
 ID_RE = re.compile(r"^[A-Za-z0-9._-]{8,80}$")
 SHA_RE = re.compile(r"^[0-9a-f]{40}$")
 WORK_MARK_RE = re.compile(
-    r"(?:WORK[ \t]+ORDER|OWNER[ \t]+LAND[ \t]+ORDER)\s*[:=]?\s*`?([A-Za-z0-9._-]{8,80})`?",
+    r"(?:WORK[ \t]+ORDER|OWNER[ \t]+LAND[ \t]+ORDER)\s*[:=]?\s*`?([A-Za-z0-9._-]{8,80})"
+    r"(?![A-Za-z0-9._-])`?",
     re.I,
 )
 SENT_USING_RE = re.compile(r"\*Sent using\*", re.I)
