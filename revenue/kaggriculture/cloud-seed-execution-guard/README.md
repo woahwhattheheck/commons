@@ -44,7 +44,8 @@ mutated. The returned action is a separate copy.
 ## Preservation rule
 
 Only reductions of valid integer BUY_SEED quantities are eligible. A removed
-purchase may occupy its original slot as BUY_SEED with zero quantity or PASS.
+purchase may occupy its original slot as `[]`, BUY_SEED with zero quantity, or PASS.
+For retained purchases, trailing fields must remain byte-equivalent as Python values.
 Unit commands, other action fields, queue length, and all non-seed orders remain
 identical. There is no compaction of slots or movement of later orders.
 
@@ -111,7 +112,9 @@ the guard retains90 savings. Other cases cover repeated hiring, land, animal and
 partial product buys, full sheds, paired scenarios, fixed order limits, existing
 SELL funding, already-executed units, nonmutation and concurrent instances.
 
-VALIDATION.json binds exact executed bytes and engine inputs. These are synthetic
+VALIDATION.json retains the original PR9972 executed bytes and engine inputs.
+COMPATIBILITY-REGRESSION.json binds the current guard after its producer-shape
+compatibility correction. These are synthetic
 current-market fixtures: **zero full games, zero scored seeds**, no hosted rating,
 selection/default change, competition upload, or whole-repository CI claim.
 
@@ -129,3 +132,60 @@ having consumed a not-yet-published external queue implementation is made.
 
 Work thread:
 https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788818307525069
+
+## Published seed-adapter compatibility
+
+The callable consumes the actual proposal dictionary's `action`, not the whole
+proposal packet. LOSS-DELTA's PR9961 producer uses `[]` to remove a seed purchase
+without deleting its slot; partial reductions retain all trailing order fields.
+The gate now accepts those exact shapes. Non-seed orders, unit commands and
+metadata on retained seed orders must still be unchanged.
+
+```python
+from selected_seed_budget import compile_demand, transform
+contract = compile_demand(
+    observation, configuration, selected_action,
+    post_unit_seeds=post_units['private']['seeds'],
+    continuations=actual_complete_selected_continuations,
+    complete=coverage_complete,
+)
+proposal = transform(
+    observation, configuration, selected_action,
+    post_unit_seeds=post_units['private']['seeds'], contract=contract,
+)
+result = gate.transform(
+    observation, configuration, selected_action, proposal['action'],
+    post_units=post_units, scenarios=explicit_named_rival_hypotheses,
+)
+```
+
+The compatibility tests execute the exact producer from merge
+`36ec529659f038725ce325a19c2079a2a5b898b7`, Git blob
+`78bd08b00a8b7fcf934dcf25c54ece51746a5f5e`. The test refuses different producer
+bytes rather than silently relabeling a later source as covered.
+
+```sh
+python "$D/test_seed_adapter.py" \
+  --engine-cache /path/to/existing/engine \
+  --mechanics revenue/kaggriculture/cloud-execution-lab/mechanics.py \
+  --producer revenue/kaggriculture/cloud-selected-seed-budget/selected_seed_budget.py \
+  --report /tmp/seed-guard-compatibility.json
+```
+
+Use `--evaluator` / `--engine-loader` for relocated existing inputs. The separate
+`--guard-file` option supports a source-pinned distinguishing baseline.
+
+**7 new consumer methods pass**, including both-seat empty-purchase positive and
+negative cases and retained-quantity metadata. All22 original methods also pass
+on the corrected guard, including56 unmodified whole-market comparisons. Total
+current methods29; do not count a repeated method as new evidence. The exact old
+PR9972 guard fails4 of these7 consumer methods: it conservatively rejects the
+producer's empty/extended shapes before checking actual effects. No unsafe old
+admission was established. The corrected negative now reaches and fails the
+execution-preservation rule, rather than only an input-shape guard.
+
+`COMPATIBILITY.json`, `COMPATIBILITY-BASELINE.json`, and
+`COMPATIBILITY-REGRESSION.json` retain separate input/source/result bindings.
+The producer, engine, original test suite and market kernel are unchanged.
+No unknown future was padded into a complete continuation. These are bounded
+synthetic consumer checks, not game results or an installed composed policy.

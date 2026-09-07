@@ -46,13 +46,13 @@ def _seed_reductions(selected, proposed, crops):
     for slot, (a, b) in enumerate(zip(old, new)):
         if a == b:
             continue
-        if (not isinstance(a, list) or len(a) != 3 or a[0] != "BUY_SEED"
+        if (not isinstance(a, list) or len(a) < 3 or a[0] != "BUY_SEED"
                 or a[1] not in crops or type(a[2]) is not int or a[2] <= 0):
             raise ValueError("only valid seed purchases may change")
-        if b == ["PASS"]:
+        if b == [] or b == ["PASS"]:
             quantity = 0
-        elif (isinstance(b, list) and len(b) == 3 and b[:2] == a[:2]
-              and type(b[2]) is int):
+        elif (isinstance(b, list) and len(b) == len(a) and b[:2] == a[:2]
+              and b[3:] == a[3:] and type(b[2]) is int):
             quantity = b[2]
         else:
             raise ValueError("changed seed order has invalid shape")
