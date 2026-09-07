@@ -54,8 +54,10 @@ def validate_catalog(data):
         return ["catalog is not an object"]
     if data.get("schema") != SCHEMA:
         problems.append("schema must be %s" % SCHEMA)
-    add_work = data.get("add_work") or {}
-    if add_work.get("preferred") != SHIP_LOOP:
+    add_work = data.get("add_work")
+    if not isinstance(add_work, dict):
+        problems.append("add_work must be an object")
+    elif add_work.get("preferred") != SHIP_LOOP:
         problems.append("add_work.preferred must be %s" % SHIP_LOOP)
     items = data.get("items")
     if not isinstance(items, list):
@@ -64,7 +66,9 @@ def validate_catalog(data):
     seen = {}
     for item in items:
         problems.extend(validate_item(item, seen))
-    historical = data.get("historical_directives") or []
+    historical = data.get("historical_directives")
+    if historical is None:
+        historical = []
     if not isinstance(historical, list):
         problems.append("historical_directives must be a list")
         return problems
@@ -198,7 +202,10 @@ def project(catalog, snapshot):
     live = [reconcile_item(item, snapshot) for item in items if isinstance(item, dict)]
     historical = []
     if isinstance(catalog, dict):
-        for row in catalog.get("historical_directives") or []:
+        rows = catalog.get("historical_directives")
+        if not isinstance(rows, list):
+            rows = []
+        for row in rows:
             if isinstance(row, dict):
                 historical.append({
                     "n": row.get("n"),
