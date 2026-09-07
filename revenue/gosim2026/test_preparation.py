@@ -33,12 +33,13 @@ class AdapterTests(unittest.TestCase):
     def test_gateway_values_and_visual_route_preserved(self):
         config = {"OPENAI_API_KEY": "unit-test-not-a-key", "OPENAI_BASE_URL": "https://gateway.invalid/v1",
                   "MODEL": "organizer-model", "VISUAL_BASE_URL": "https://wrong.invalid",
-                  "VISUAL_MODEL": "wrong", "OTHER": "retained"}
+                  "VISUAL_MODEL": "wrong", "OTHER": "retained", "OPENAI_API_BASE": "https://wrong.invalid"}
         result = adapter.model_environment(config)
         self.assertEqual(result["OPENAI_BASE_URL"], config["OPENAI_BASE_URL"])
         self.assertEqual(result["VISUAL_BASE_URL"], config["OPENAI_BASE_URL"])
         self.assertEqual(result["VISUAL_MODEL"], config["MODEL"])
         self.assertEqual(result["OTHER"], "retained")
+        self.assertEqual(result["OPENAI_API_BASE"], config["OPENAI_BASE_URL"])
         self.assertEqual(result["ARC_OPENAI_API_MODE"], "chat_completions")
         self.assertEqual(config["VISUAL_MODEL"], "wrong")
 

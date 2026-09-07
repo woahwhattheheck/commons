@@ -25,6 +25,8 @@ def model_environment(env: dict[str, str]) -> dict[str, str]:
     missing = [key for key in required if not result.get(key, "").strip()]
     if missing:
         raise ValueError("Missing runner model configuration: " + ", ".join(missing))
+    result["OPENAI_API_BASE"] = result["OPENAI_BASE_URL"]
+    result["OPENAI_KEY"] = result["OPENAI_API_KEY"]
     result["ARC_OPENAI_API_MODE"] = result.get("ARC_OPENAI_API_MODE") or "chat_completions"
     # Visual inference uses the same metered gateway, never a personal endpoint.
     result["VISUAL_API_KEY"] = result["OPENAI_API_KEY"]

@@ -1,7 +1,7 @@
 name: GOSIM ARC preparation
 on:
   push:
-    branches: [main, codex/gosim2026-arc-preparation-20260907]
+    branches: [main]
     paths:
       - 'revenue/gosim2026/**'
       - '.github/workflows/gosim-arc-preparation.yml'
