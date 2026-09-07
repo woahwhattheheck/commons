@@ -30,6 +30,7 @@ HEAD = re.compile(r"^###\s+(\d+)\.\s+(.+?)\s*$")
 # the file today and neither is wrong, so match the marker anywhere.
 STATUS = re.compile(r"\*\*Status:\*\*\s*(.+)")
 SECTION = re.compile(r"^##\s+(.+?)\s*$")
+FENCE = re.compile(r"^ {0,3}(`{3,}|~{3,})([^\n]*)$")
 
 # The word that decides the colour. status_word() chooses the earliest bounded token,
 # so OPEN wins in "OPEN. Not LANDED" and NOT BUILT is never read as BUILT.
@@ -55,10 +56,26 @@ def status_word(status):
 
 def parse(text):
     rows, section, cur = [], "", None
+    fence = None
     for line in text.split("\n"):
+        # Markdown examples are not directives. A closer uses the same marker,
+        # at least the opening length, and no info string (CommonMark 4.5).
+        marker = FENCE.match(line)
+        if fence is not None:
+            if (marker and marker.group(1)[0] == fence[0]
+                    and len(marker.group(1)) >= len(fence)
+                    and not marker.group(2).strip(" \t\r")):
+                fence = None
+            continue
+        if marker and not (marker.group(1)[0] == "`" and "`" in marker.group(2)):
+            fence = marker.group(1)
+            if cur is not None and cur["status"]:
+                cur["done"] = True
+            continue
         m = SECTION.match(line)
         if m:
             section = m.group(1).split("(")[0].strip()
+            cur = None
             continue
         m = HEAD.match(line)
         if m:
