@@ -24,6 +24,38 @@
     "wins": 2
   },
   {
+    "experiment": "carrot-demand-development",
+    "games": 24,
+    "losses": 0,
+    "mean_margin": 3293.5,
+    "ties": 10,
+    "wins": 14
+  },
+  {
+    "experiment": "carrot-demand-native-export",
+    "games": 1,
+    "losses": 0,
+    "mean_margin": 3564.0,
+    "ties": 0,
+    "wins": 1
+  },
+  {
+    "experiment": "carrot-demand-reserved",
+    "games": 8,
+    "losses": 0,
+    "mean_margin": 1848.25,
+    "ties": 2,
+    "wins": 6
+  },
+  {
+    "experiment": "carrot-opportunity-development",
+    "games": 8,
+    "losses": 2,
+    "mean_margin": -567.0,
+    "ties": 2,
+    "wins": 4
+  },
+  {
     "experiment": "dairy-continuation-development",
     "games": 8,
     "losses": 2,
@@ -101,6 +133,46 @@
     "losses": 0,
     "mean_margin": 6816.0,
     "ties": 0,
+    "wins": 4
+  },
+  {
+    "experiment": "ordered-shed-development",
+    "games": 8,
+    "losses": 0,
+    "mean_margin": 1757.0,
+    "ties": 4,
+    "wins": 4
+  },
+  {
+    "experiment": "ordered-shed-order-diagnostic",
+    "games": 1,
+    "losses": 0,
+    "mean_margin": 0.0,
+    "ties": 1,
+    "wins": 0
+  },
+  {
+    "experiment": "route-baseline-development-extra",
+    "games": 16,
+    "losses": 0,
+    "mean_margin": 3690.625,
+    "ties": 8,
+    "wins": 8
+  },
+  {
+    "experiment": "route-baseline-development",
+    "games": 8,
+    "losses": 0,
+    "mean_margin": 1757.0,
+    "ties": 4,
+    "wins": 4
+  },
+  {
+    "experiment": "route-baseline-reserved",
+    "games": 8,
+    "losses": 0,
+    "mean_margin": 604.0,
+    "ties": 4,
     "wins": 4
   },
   {

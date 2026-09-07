@@ -19,6 +19,7 @@ def main():
     p.add_argument('--runtime', type=Path, required=True)
     p.add_argument('--seeds', required=True)
     p.add_argument('--opponents',default='arlene,apex')
+    p.add_argument('--reference-arlene', action='store_true', help='Passive same-observation parent order diagnostic; adds driver work only')
     p.add_argument('--seats',default='0,1')
     p.add_argument('--output', type=Path, required=True)
     args = p.parse_args()
@@ -65,6 +66,12 @@ def main():
                 final = {}
                 timeline = []
                 unchanged_events = []
+                reference_differences = []
+                reference = None
+                if args.reference_arlene:
+                    refspec = importlib.util.spec_from_file_location('passive_arlene', HERE/'vendor/arlene.py')
+                    reference = importlib.util.module_from_spec(refspec)
+                    refspec.loader.exec_module(reference)
                 def unit(farm, private, idx, action, *a, **kw):
                     player = farm_ids[id(farm)]
                     op = action[0] if isinstance(action, list) and action else 'EMPTY'
@@ -88,6 +95,11 @@ def main():
                     current_step[0] = state[0].observation.get('step', 0)
                     if state[0].observation.get('farms') and (current_step[0] % 24 == 0 or current_step[0] >= 716 or current_step[0] in (225,226,359,360,432,433,576,577)):
                         timeline.append({'step':current_step[0], 'prices':copy.deepcopy(state[0].observation.market), 'shops':copy.deepcopy(state[0].observation.town), 'farms':copy.deepcopy(state[0].observation.farms), 'private':[copy.deepcopy(s.observation.private) for s in state], 'actions':[copy.deepcopy(s.action) for s in state]})
+                    if reference is not None and state[seat].observation.get('farms'):
+                        ref_action = reference.agent(copy.deepcopy(state[seat].observation))
+                        actual_action = state[seat].action
+                        if ref_action != actual_action:
+                            reference_differences.append({'step':current_step[0], 'actual':copy.deepcopy(actual_action), 'parent_same_observation':ref_action, 'shed':copy.deepcopy(state[seat].observation.private['shed'])})
                     result = original_interpreter(state, env)
                     farms = state[0].observation.farms
                     farm_ids.update({id(f): i for i, f in enumerate(farms)})
@@ -99,7 +111,7 @@ def main():
                 engine._apply_unit_action, engine._commit_unit, engine.interpreter = unit, commit, interpreter
                 pair = [candidate, path] if seat == 0 else [path, candidate]
                 game = ev.play(engine, pair, args.engine_dir, ev.LOADER, seed, seat)
-                game.update(opponent=opponent, diagnostics=diagnostics, terminal=final, timeline=timeline, unchanged_events=unchanged_events)
+                game.update(reference_differences=reference_differences, reference_method='passive same-observation Arlene' if reference is not None else None, opponent=opponent, diagnostics=diagnostics, terminal=final, timeline=timeline, unchanged_events=unchanged_events)
                 report['games'].append(game)
                 report['summary'] = ev.summarize(report['games'])
                 args.output.parent.mkdir(parents=True, exist_ok=True)
