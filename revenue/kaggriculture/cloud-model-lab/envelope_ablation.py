@@ -15,6 +15,13 @@ that varies is the capacity envelope handed to the optimizer:
                   protected at its earliest physical date and phase, which for a
                   one-way errand is this day's close, after market.
   (c) none        no extra reservation. Diagnostic floor, not a proposal.
+  (d) committed   the same dated logic, but the events are this producer's
+                  ACTUALLY committed arrivals -- whole lots at their exact phase --
+                  instead of an upper bound over every animal and worker.
+
+(d) separates accuracy from looseness. If the dated envelope wins by dating
+arrivals correctly, the committed events keep the gain; if it wins by being loose,
+they lose it.
 
 For each choice this records what the optimizer scheduled, what the pinned
 interpreter actually paid for it, which constraint bound, and what the shed
@@ -110,9 +117,14 @@ def run_frame(frame, cfg, seat, base_owner_factory):
     selected = frame["selected_action"]
     reserve = coarse_reserve(obs, seat)
     arms = {}
-    for name in ("none", "coarse", "dated"):
+    for name in ("none", "coarse", "dated", "committed"):
         owner = base_owner_factory()
-        if name == "dated":
+        if name == "committed":
+            import committed_envelope as CE
+            snap = frame.get("producer_snapshot") or {"plans": []}
+            tx = CE.make_committed_sell(owner, lambda: snap)
+            kw = {}
+        elif name == "dated":
             tx = conserved.DatedSelectedActionSell(owner)
             kw = {}
         else:
@@ -163,7 +175,7 @@ def main():
         print(f"step {frame['step']} d{frame['day']}h{frame['hour']:02d}  errand "
               f"{r['status']} {r['units_total']}u total / {r['units_incremental']}u "
               f"incremental, arrival {r['arrival_step']}")
-        for name in ("none", "coarse", "dated"):
+        for name in ("none", "coarse", "dated", "committed"):
             v = arms[name]
             if "error" in v:
                 print(f"    {name:7s} ERROR {v['error']}")
