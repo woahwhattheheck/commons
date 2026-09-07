@@ -2,8 +2,8 @@
 
 Two frozen public source revisions, not three independent opponent families:
 
-- `lonespear/kaggriculture@774b26093ccf4246525517d48420349b841b6e50`, `main_v18.py`, MIT. Source SHA256 `483a1e254c4a08d37d7b049844305c21b8a5e6e993a0a441055565c324c07f72`.
-- `COK-ZhangZiliang/Kaggriculture@7ef67eac458cd9ecd13786063e2e581fbe7403ec`, `main.py`, Apache-2.0 with its unchanged `THIRD_PARTY_NOTICES.md` and license copies. Source SHA256 `b9fca7c168b20db4f45c867fe5a7acb6f69772c6cfffe698e4438d932b13271b`.
+- `lonespear/kaggriculture@774b26093ccf4246525517d48420349b841b6e50`, `main_v18.py`, MIT. Source SHA256 `eb5b5f59a8ec2d40b77cc99d4ffe3b932136fdcf9f6b6e168726b7f07ab47cb0`.
+- `COK-ZhangZiliang/Kaggriculture@7ef67eac458cd9ecd13786063e2e581fbe7403ec`, `main.py`, Apache-2.0 with its unchanged `THIRD_PARTY_NOTICES.md` and license copies. Source SHA256 `56831f3c43c9727d90016b7a7a8d4eb51d1a4c08c1120d58f061d9176e8bc109`.
 
 The source files are not patched. The COK notice distinguishes its new work from older route-table provenance; retain that notice rather than widening its license claim. Commons adapter additions in this directory are Apache-2.0; the preserved loader retains its own bundled license scopes.
 
