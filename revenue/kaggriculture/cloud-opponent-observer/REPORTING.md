@@ -12,8 +12,8 @@ python report.py --input existing-activation.jsonl --output activation-summary.j
 
 Supply one JSON object per line, with `match_id` added by the caller when a file
 contains multiple games. The source identity and schema are checked by the same
-`summarize` function used in `observe.py`. The output preserves per-actor gate
-states, gate/expert transitions, cached-retry counts, observed step coverage,
+`summarize` function used in `observe.py`. The output preserves the opponent's
+branch-selection state, expert transitions, cached-retry counts, observed step coverage,
 telemetry errors and optional expected-action mismatches. It never infers game
 outcomes from activation. A full observed step set remains distinct from a
 validated full game or continuous state trajectory.
