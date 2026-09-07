@@ -140,7 +140,24 @@ def parse_event(raw: Any) -> dict[str, Any]:
     harness = _opt(raw.get("harness"), maximum=200)
     classification = classify_runtime(raw.get("classification") or raw.get("runtime"), harness, tools)
     artifacts = []
-    for item in raw.get("artifacts") or []:
+    artifact_errors = []
+    raw_artifacts = raw.get("artifacts")
+    if raw_artifacts is None:
+        raw_artifacts = []
+    elif not isinstance(raw_artifacts, list):
+        artifact_errors.append({
+            "source": "artifacts", "grade": "UNKNOWN",
+            "detail": "artifacts was not an array",
+            "raw_type": type(raw_artifacts).__name__,
+        })
+        raw_artifacts = []
+    for index, item in enumerate(raw_artifacts):
+        if not isinstance(item, dict):
+            artifact_errors.append({
+                "source": "artifacts", "grade": "UNKNOWN",
+                "detail": "artifact was not an object", "index": index,
+                "raw_type": type(item).__name__,
+            })
         row = _obj(item)
         art = {
             "path": _opt(row.get("path"), maximum=2000),
@@ -223,6 +240,10 @@ def parse_event(raw: Any) -> dict[str, Any]:
         event["evidence"].append({"source": "event", "grade": "OBSERVED", "event_id": event["event_id"]})
     if not isinstance(raw.get("kind"), str) or ("ts" in raw and event["ts"] == UNKNOWN):
         event["parse_state"] = "MALFORMED" if event["parse_state"] == "OK" else event["parse_state"]
+    if artifact_errors:
+        # Bad metadata must not abort the batch or hide the original event.
+        event["parse_state"] = "MALFORMED"
+        event["evidence"].extend(artifact_errors)
     return event
 
 
