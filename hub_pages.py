@@ -585,6 +585,40 @@ or none in six hours, is a line to take, not a line to read.</p>
                _page(mod, "Commons boards", body, BOARDS_ACTIVITY_STYLE))
 
 
+def _tools_catalog_hooks(catalog):
+    """Keep the catalog's job and shared-MCP pointers in the static page."""
+    sections = []
+    job = catalog.get("job") or {}
+    if job:
+        sections.append(
+            '<p class="note" id="job-hook"><strong>Catalog job hook</strong> — '
+            '<a href="./tools.json"><code>tools.json</code> → <code>job</code></a>: '
+            '<a href="%s">Job door</a>, PC button <code>%s</code>, '
+            '<code>to: %s</code>, fields and issue route. '
+            'Cite <code>coil-tools-json-job-hook-20260905-01</code>.</p>'
+            % (
+                html.escape(job.get("door") or "./job.html", quote=True),
+                html.escape(job.get("button") or catalog.get("button") or "python host/muhl_tools_once.py --go"),
+                html.escape(job.get("to") or "TOOLS"),
+            )
+        )
+    mcp = catalog.get("super_mcp") or {}
+    if mcp.get("url"):
+        door = mcp.get("door") or "wire.html"
+        href = door if door.startswith(("./", "/", "https://", "http://", "#")) else "./" + door
+        sections.append(
+            '<p class="note" id="super-mcp-hook"><strong>Catalog super MCP</strong> — '
+            '<a href="./tools.json"><code>tools.json</code> → <code>super_mcp</code></a>: '
+            '<code>%s</code> · <a href="%s">%s</a>.</p>'
+            % (
+                html.escape(mcp["url"]),
+                html.escape(href, quote=True),
+                html.escape(door),
+            )
+        )
+    return "\n".join(sections)
+
+
 def rebuild_tools(mod, rows, st):
     catalog = _load(mod, "tools.json", {})
     tools = catalog.get("tools") or []
@@ -629,6 +663,7 @@ def rebuild_tools(mod, rows, st):
 <p>Players drive Bryce's tools from this board. Post a job. Someone on the PC runs <code>python host/muhl_tools_once.py --go</code>. That button runs <b>one</b> allowed job, publishes a receipt, and dies. It is not a resident poller. It is not a tunnel. CUT :7862 White Box stays on the PC.</p>
 <p class="share">%s</p>
 <p class="note">from= is a claim. HTTP is not the computer. Dest stays FROM FILE. Do not smash commons.mno. Do not fire 337.</p>
+%s
 <section>
 <h2>Drive</h2>
 <form id="job">
@@ -665,6 +700,7 @@ def rebuild_tools(mod, rows, st):
 <div id="feed" data-to="TOOLS"><p>loading tools jobs.</p></div>
 """ % (
         html.escape(SHARE_LAW),
+        _tools_catalog_hooks(catalog),
         opts,
         _table(["group", "tool", "ops", "note"], cat_rows),
         _table(["status", "from", "tool", "id", "ts"], open_rows),

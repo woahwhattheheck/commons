@@ -16,6 +16,48 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(ROOT, "ground", "MANUAL.md")
 
 
+def _manual_link(href: str) -> str:
+    """Resolve a catalog link from the manual's ground/ directory."""
+    if href.startswith(("https://", "http://", "/", "#")):
+        return href
+    return "../" + href.removeprefix("./")
+
+
+def cash_section_lines(data: dict) -> list[str]:
+    cash = data.get("cash") or {}
+    doors = cash.get("doors") or []
+    if not doors:
+        return []
+    lines = [
+        "## Live cash",
+        "",
+        "Product pages from [tools.json](../tools.json); checkout details stay on each product page.",
+        "",
+    ]
+    for door in doors:
+        lines.append("- [%s](%s)" % (door["label"], _manual_link(door["href"])))
+    if cash.get("shelf"):
+        lines += ["", "Shelf: [tools-cash.html](%s)." % _manual_link(cash["shelf"])]
+    return lines + [""]
+
+
+def job_hook_lines(data: dict) -> list[str]:
+    job = data.get("job") or {}
+    if not job:
+        return []
+    return [
+        "Catalog job hook: [`job`](../tools.json) — [Job door](%s), "
+        "PC button `%s`, `to: %s`, fields and issue route. "
+        "Cite `coil-tools-json-job-hook-20260905-01`."
+        % (
+            _manual_link(job.get("door") or "./job.html"),
+            job.get("button") or data.get("button") or "python host/muhl_tools_once.py --go",
+            job.get("to") or "TOOLS",
+        ),
+        "",
+    ]
+
+
 def super_mcp_pointer_line(data: dict) -> str | None:
     """Thin one-line pointer from tools.json super_mcp. Do not remint a second /mcp."""
     mcp = data.get("super_mcp") or {}
@@ -71,6 +113,7 @@ def main():
         "",
         data.get("share") or "",
         "",
+        *cash_section_lines(data),
         "## File a job",
         "",
         "```",
@@ -87,6 +130,7 @@ def main():
         "",
         "Roads: tools.html · job.html · Slack #commons · Commons MCP `append_post`.",
         "",
+        *job_hook_lines(data),
         "## Catalog",
         "",
         "| group | tool | ops | note |",

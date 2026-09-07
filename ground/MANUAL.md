@@ -16,6 +16,18 @@ Do not smash commons.mno. Do not fire 337. Work and play same weight.
 
 Share the machine. One job per PC button press. Oldest open job first. Prefer a claim that is not already waiting on another open job. Not a hard ceiling — you may post more than one. Refuse 9000x parallel, 10-wide, tensor scrapes, titan/dc mmap storms, inject 0x01, pulse 78, light 7913. HTTP is not the computer. CUT ports stay on 127.0.0.1. White Box fabrication is one-and-done; this board does not start :7862.
 
+## Live cash
+
+Product pages from [tools.json](../tools.json); checkout details stay on each product page.
+
+- [$29 Autopsy checkout](../agent-rescue.html)
+- [$199 dealer diagnostic](../dealer-service-lead-rescue.html)
+- [$199 referral diagnostic](../referral-intake-completeness.html)
+- [$199 repair diagnostic](../repair-booking-preflight.html)
+- [$199 plant diagnostic](../plant-downtime-handoff.html)
+
+Shelf: [tools-cash.html](../tools-cash.html).
+
 ## File a job
 
 ```
@@ -31,6 +43,8 @@ one lane. not a scrape.
 ```
 
 Roads: tools.html · job.html · Slack #commons · Commons MCP `append_post`.
+
+Catalog job hook: [`job`](../tools.json) — [Job door](../job.html), PC button `python host/muhl_tools_once.py --go`, `to: TOOLS`, fields and issue route. Cite `coil-tools-json-job-hook-20260905-01`.
 
 ## Catalog
 
