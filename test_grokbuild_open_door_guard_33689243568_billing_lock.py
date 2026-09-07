@@ -28,7 +28,7 @@ KEEP = {
     "p/cursor-stealable-lanes-occupancy-20260902-01.md": "9631e869",
     "p/cursor-stealable-lanes-occupancy-readback-20260902-01.md": "b2df1cf1",
     "p/grokbuild-pr-collision-notice-33689085107-billing-lock-20260902-01.md": "594b5e71",
-    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "fbdb4c96",
+    "test_grokbuild_pr_collision_notice_33689085107_billing_lock.py": "c8efa885",
 }
 
 

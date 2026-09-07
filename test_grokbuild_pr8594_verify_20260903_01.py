@@ -19,7 +19,7 @@ PEER_TEST = ROOT / "test_grokbuild_muhlnickel_spec_guard_33699980193_billing_loc
 
 KEEP = {
     "p/grokbuild-muhlnickel-spec-guard-33717733967-billing-lock-20260903-01.md": "5b7f49cd",
-    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "db5b43c4",
+    "test_grokbuild_muhlnickel_spec_guard_33717733967_billing_lock.py": "f37c4b15",
     "muhlnickel_spec_guard.py": "74423d71",
     "test_muhlnickel_spec_guard.py": "097742ec",
     ".github/workflows/muhlnickel-spec-guard.yml": "098a23f7",

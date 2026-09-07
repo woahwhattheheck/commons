@@ -15,13 +15,13 @@ ORIGINAL = ROOT / "p/cursor-merge-on-pr-readback-20260902-01.md"
 
 KEEP = {
     "p/grokbuild-pr8414-verify-20260902-01.md": "587cc1cf",
-    "test_grokbuild_pr8414_verify.py": "52a2e121",
+    "test_grokbuild_pr8414_verify.py": "a187e9d9",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "a1627617",
+    "test_cursor_merge_on_pr_readback.py": "7deeade3",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
-    "test_merge_on_pr.py": "059a178f",
-    "host/sprint_integration.py": "b7bec0b9",
+    "test_merge_on_pr.py": "3285f989",
+    "host/sprint_integration.py": "1ba2002c",
 }
 
 BODY_SHA256 = "09bccdce5f57eee5da35c6b5b9aca620a8e15ff9a778a4926f9e61d7860ed6c8"

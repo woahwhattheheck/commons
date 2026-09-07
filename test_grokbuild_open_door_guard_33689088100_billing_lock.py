@@ -29,10 +29,10 @@ KEEP = {
     "p/grok-build-llms-txt-billing-lock-20260902-01.md": "cf9c9f40",
     "p/grok-resources-tab-freshness-billing-lock-20260902-01.md": "ac39fe78",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
-    "test_cursor_merge_on_pr_readback.py": "a1627617",
+    "test_cursor_merge_on_pr_readback.py": "7deeade3",
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "host/merge_on_pr.py": "0270094d",
-    "host/sprint_integration.py": "b7bec0b9",
+    "host/sprint_integration.py": "1ba2002c",
     "p/grokbuild-pr8402-verify-20260902-01.md": "3524e382",
 }
 
