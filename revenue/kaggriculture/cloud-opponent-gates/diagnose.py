@@ -98,6 +98,17 @@ def main() -> int:
                         help="JSONL objects with observation; stateless facts only")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
+    for incoming in (args.source, args.observations):
+        if incoming is None:
+            continue
+        try:
+            aliases = args.output.resolve() == incoming.resolve()
+            if args.output.exists() and incoming.exists():
+                aliases = aliases or args.output.samefile(incoming)
+        except (OSError, RuntimeError) as exc:
+            parser.error(f"Cannot verify input/output identity: {type(exc).__name__}")
+        if aliases:
+            parser.error("Report output must not alias a source or observation input")
     namespace = load_source(args.source)
     facts = []
     if args.observations:
