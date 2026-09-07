@@ -146,7 +146,7 @@ class ActorTests(unittest.TestCase):
                 self.assertEqual(self.actor(name).act({}, {}, 1)["kind"], "invalid_action")
 
     def test_logs_do_not_break_protocol(self):
-        self.assertEqual(self.actor("noisy").act({}, {}, 1)["action"], {})
+        self.assertEqual(self.actor("noisy").act({}, {}, 1)["kind"], "action")
 
     def test_load_failure(self):
         self.assertEqual(self.actor("missing").ready["kind"], "load_error")
