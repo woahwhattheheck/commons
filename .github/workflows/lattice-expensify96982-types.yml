@@ -1,0 +1,56 @@
+name: Lattice Expensify 96982 test type repair
+on:
+  push:
+    branches:
+      - review/lattice-expensify96982-types-20260906
+    paths:
+      - reviews/lattice-expensify96982/**
+      - .github/workflows/lattice-expensify96982-types.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    env:
+      STANDALONE_NEW_DOT: 'true'
+      LEFTHOOK: '0'
+      HUSKY: '0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: review
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: Expensify/App
+          ref: 0283d2bebad28796ca74b9506d358232988fe376
+          path: app
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26.5.0'
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: '1.3.14'
+      - name: Verify and restore exact peer candidate
+        run: python3 review/reviews/lattice-expensify96982/run.py restore app evidence
+      - name: Install locked dependencies with normal standalone postinstall
+        working-directory: app
+        timeout-minutes: 15
+        run: |
+          set -o pipefail
+          npm ci --no-audit --no-fund 2>&1 | tee ../evidence/npm-ci.log
+      - name: Repair only the test keys and run serial project checks
+        run: python3 review/reviews/lattice-expensify96982/run.py check app evidence
+      - name: Retain raw diagnostics, replay, and patch
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lattice-expensify96982-type-repair-evidence
+          path: |
+            evidence/**
+            !evidence/*.tsbuildinfo
+          if-no-files-found: error
+          retention-days: 14
