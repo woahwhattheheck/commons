@@ -24,6 +24,8 @@ def simulate(events, group_template, cancel_template):
             event["run_id"],
             event.get("head_label"),
             workflow=WORKFLOW_NAME,
+            pr_number=event.get("pr_number"),
+            ref=event.get("ref"),
         )
         group, cancel = decide(group_template, cancel_template, ctx)
         run = {
@@ -70,12 +72,14 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
             33184047999,
             "woahwhattheheck:grok/tests-pr-head-concurrency-20260828-01",
             workflow=WORKFLOW_NAME,
+            pr_number=4869,
         )
         second = github_ctx(
             "pull_request",
             33184356598,
             "woahwhattheheck:grok/tests-pr-head-concurrency-20260828-01",
             workflow=WORKFLOW_NAME,
+            pr_number=4869,
         )
         g1, c1 = decide(self.group_template, self.cancel_template, first)
         g2, c2 = decide(self.group_template, self.cancel_template, second)
@@ -93,12 +97,14 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
             33184047999,
             "woahwhattheheck:grok/tests-pr-head-concurrency-20260828-01",
             workflow=WORKFLOW_NAME,
+            pr_number=4869,
         )
         b = github_ctx(
             "pull_request",
             33184129806,
             "woahwhattheheck:grok-pixel-unify-agent-layer-20260828-04",
             workflow=WORKFLOW_NAME,
+            pr_number=4870,
         )
         g1, _ = decide(self.group_template, self.cancel_template, a)
         g2, _ = decide(self.group_template, self.cancel_template, b)
@@ -122,11 +128,13 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
                 {
                     "event_name": "pull_request",
                     "run_id": 33184047999,
+                    "pr_number": 4869,
                     "head_label": "woahwhattheheck:grok/tests-pr-head-concurrency-20260828-01",
                 },
                 {
                     "event_name": "pull_request",
                     "run_id": 33184356598,
+                    "pr_number": 4869,
                     "head_label": "woahwhattheheck:grok/tests-pr-head-concurrency-20260828-01",
                 },
                 {"event_name": "workflow_dispatch", "run_id": 5001},
@@ -134,6 +142,7 @@ class MuhlnickelPrConcurrency(unittest.TestCase):
                 {
                     "event_name": "pull_request",
                     "run_id": 33184129806,
+                    "pr_number": 4870,
                     "head_label": "woahwhattheheck:grok-pixel-unify-agent-layer-20260828-04",
                 },
             ],
