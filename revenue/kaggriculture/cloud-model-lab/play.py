@@ -48,7 +48,7 @@ def _call(agent, obs, config):
 
 def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
          deriv_cards, eval_cards, max_market=3, out=None, examples="pairs",
-         bank_path=None, render="verbose", freeze_bank=False):
+         bank_path=None, render="verbose", freeze_bank=False, bank_out=None):
     warm, warm_label = _load_agent(warmup_spec)
     opp, opp_label = _load_agent(opponent_spec)
     surfaces, prov = exemplars.build(deriv_cards, eval_cards)
@@ -80,15 +80,15 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
     env = cards_mod.make_env(seed)
     env.reset(2)
     r = runner_mod.Runner(model_path)
-    bank = None
+    bank, bank_info = None, None
     if examples == "bank":
         import exemplar_bank as EB
-        bank = EB.Bank(bank_path)
-        if freeze_bank:
-            # A comparison run must not write into the bank it reads: the first arm's
-            # banked rows would otherwise be retrieved by the second, so the arms would
-            # no longer differ by the variable under test alone.
-            bank.record = lambda *a, **k: None
+        # READ and WRITE are separate paths. Without bank_out the bank is read-only,
+        # so a comparison arm cannot append rows a later arm would retrieve. A run
+        # that should learn names its output file explicitly.
+        write_to = None if freeze_bank else bank_out
+        bank = EB.Bank(bank_path, write_path=write_to)
+        bank_info = {"read": EB.describe(bank_path), "write": write_to}
     d = driver_mod.ModelDriver(r, surfaces, max_market=max_market,
                                examples=examples, bank=bank, render=render)
     model_turns = 0
@@ -178,7 +178,7 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
         "model_turns": model_turns, "warmup": warm_label, "opponent": opp_label,
         "wall_total_s": round(time.time() - t_start, 1),
         "money": money, "opponent_money": opp_money, "margin": money - opp_money,
-        "settings": r.cfg, "provenance": prov, "turns": d.log,
+        "settings": r.cfg, "provenance": prov, "bank": bank_info, "turns": d.log,
     }
     n = len(d.log)
     legal = sum(1 for x in d.log if x["legal"])
@@ -218,11 +218,14 @@ def main():
     ap.add_argument("--render", default="verbose", choices=("verbose", "slots"))
     ap.add_argument("--freeze-bank", action="store_true",
                     help="read the bank but never write to it (for comparison runs)")
+    ap.add_argument("--bank-out", default=None,
+                    help="file this run's banked model rows are written to; omit to "
+                         "run read-only")
     a = ap.parse_args()
     p = play(a.model, a.seed, a.seat, a.from_step, a.turns, a.warmup, a.opponent,
              cards_mod.load(a.deriv_cards), cards_mod.load(a.eval_cards),
              max_market=a.max_market, out=a.out, examples=a.examples, bank_path=a.bank,
-             render=a.render, freeze_bank=a.freeze_bank)
+             render=a.render, freeze_bank=a.freeze_bank, bank_out=a.bank_out)
     print("\n=== summary ===")
     print(json.dumps(p["summary"], indent=1))
     print(f"money={p['money']:.0f} opponent={p['opponent_money']:.0f} margin={p['margin']:+.0f}")
