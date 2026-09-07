@@ -21,9 +21,9 @@
       "bytes": 5201
     },
     "REPORTING.md": {
-      "git_blob": "969156f10947347c3a36a6f31ae324cc246fe288",
-      "sha256": "fdcddf3547615c6f7f6b8012c5fd671303b446ad18a4dd42afb5b35cf99524cd",
-      "bytes": 2429
+      "git_blob": "1ff010d0468baedd998df1e46314f499a7f692a3",
+      "sha256": "c5951cf5eb2fb968cca88b9bca595ecaef25d2e3a79fbb08d502bc9d79a79516",
+      "bytes": 2440
     }
   },
   "interpretation": "Report aggregation tests only. Existing observer, original-source tests and peer diagnostic games are not rerun."
