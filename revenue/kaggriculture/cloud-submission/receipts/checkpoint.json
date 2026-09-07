@@ -1,6 +1,6 @@
 {
   "operation_id": "titan-kaggriculture-frontier-20260907-01",
-  "observed_at": "2026-09-07T10:01:29.190Z",
+  "observed_at": "2026-09-07T10:03:13.600469+00:00",
   "status": "SUBMISSION_FOUND",
   "submission_id": 56074364,
   "notebook_url": "https://www.kaggle.com/code/tokenjunkielabs/titan-kaggriculture-frontier-source",
@@ -12,10 +12,16 @@
   "existing_v2_modified": false,
   "provider_create_response_received": true,
   "next_action": "Read-only validation and hosted episode monitoring; no further submission writes for this operation.",
-  "validation_status": "PENDING",
+  "validation_status": "COMPLETE",
   "current_quota": {
     "numToday": 2,
     "numTotal": 2,
     "numAllowedNow": 3
-  }
+  },
+  "validation_episode_id": 106416828,
+  "validation_rewards": [
+    61777,
+    61777
+  ],
+  "competitive_episode_count_observed": 0
 }
