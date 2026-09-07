@@ -17,11 +17,20 @@
   const pending = s => /pending|unknown|uncertain|accepted|running|executing|queued|submitted|submitting|dispatching|cancel_requested|paused|awaiting_input|needs_attention|timeout/i.test(s || '');
   const make = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text !== undefined) n.textContent = str(text); return n; };
   const replace = (id, nodes) => $(id).replaceChildren(...nodes);
-  const time = value => { if (!value) return 'Observation time unknown'; const d = new Date(value); return Number.isNaN(d.getTime()) ? str(value) : d.toLocaleString([], {dateStyle:'medium',timeStyle:'short'}); };
-  const observed = r => first(r.observed_at,r.observed_at_utc,r.updated_at,r.started_at);
+  const time = value => { if (!value) return 'Unknown observation time'; const d = new Date(value); return Number.isNaN(d.getTime()) ? 'Unknown observation time' : d.toLocaleString([], {dateStyle:'medium',timeStyle:'short'}); };
+  const observed = r => first(r.observed_at,r.observed_at_utc);
   function safeURL(value) {
     if (typeof value !== 'string' || !value.trim()) return null;
     try { const u = new URL(value, location.origin); return ['http:','https:','codex:'].includes(u.protocol) ? u.href : null; } catch (_) { return null; }
+  }
+  function sessionURL(r) {
+    return typeof r.url === 'string' && /^(https?:\/\/|codex:\/\/)/i.test(r.url.trim()) ? safeURL(r.url) : null;
+  }
+  function sourceLabel(r) {
+    const source = arr(state && state.sources).find(s => s.id === r.source_id);
+    const name = first(typeof r.source === 'string' ? r.source : null,r.source_ref,r.source_id,r.origin,r.path);
+    const freshness = first(r.source_status,source && source.status);
+    return name ? str(name)+(freshness?' · '+str(freshness).replace(/_/g,' '):'') : null;
   }
   function sourceURL(r) {
     const explicit = safeURL(first(r.source_url,r.url,r.html_url,r.web_url,r.permalink,r.display_url,r.source && r.source.url));
@@ -59,8 +68,13 @@
     top.append(title,badge(status(r))); card.append(top);
     const desc = first(r.description,r.summary,r.purpose,r.value && typeof r.value === 'string' ? r.value : null);
     if (desc) card.append(make('p','card-description',str(desc)));
-    card.append(meta([['ID',first(r.id,r.resource_id)],['Observed',time(observed(r))],['Source',typeof r.source === 'string' ? r.source : first(r.source_ref,r.path)]]));
-    const url = sourceURL(r); if (url) card.append(link('Open original ↗',url)); card.append(raw(r)); return card;
+    const details = [['ID',first(r.id,r.resource_id)],['Observed',time(observed(r))],['Source',sourceLabel(r)]];
+    if(r.origin)details.push(['Origin',r.origin]);
+    if(r.telemetry_source)details.push(['Telemetry source',r.telemetry_source]);
+    if(r.source_observed_at)details.push(['Source fetched',time(r.source_observed_at)]);
+    if(r.updated_at && r.updated_at!==observed(r))details.push(['Metadata updated',time(r.updated_at)]);
+    card.append(meta(details));
+    const url = sourceURL(kind==='session VM'?{...r,url:null,html_url:null,web_url:null,permalink:null,display_url:null}:r); if (url) card.append(link('Open original source ↗',url)); card.append(raw(r)); return card;
   }
   function showToast(text) { clearTimeout(toastTimer); $('toast').textContent=text; $('toast').hidden=false; toastTimer=setTimeout(()=>$('toast').hidden=true,5500); }
   function navigate(view) {
@@ -127,8 +141,8 @@
   }
   function renderFocus() {
     const sessions=arr(state&&state.sessions),resources=arr(state&&state.resources),attention=attentionItems();
-    const active=sessions.filter(s=>/^(running|active|in_progress|inprogress|executing|busy)$/i.test(status(s))).length;
-    const stats=[['Active sessions',active,sessions.length+' recorded sessions','◈'],['Resources',resources.length,'Existing inventory records','▦'],['Tool routes',tools.length,'Exposed runtime schemas','⌘'],['Attention',attention.length,'Reported exceptions','◎']];
+    const reportedActive=sessions.filter(s=>/^(active_reported|reported_active|owner_reported_in_use|running|active|in_progress|inprogress|executing|busy)$/i.test(status(s))).length;
+    const stats=[['Recorded sessions',sessions.length,reportedActive+' reported active · actual activity unknown','◈'],['Resources',resources.length,'Existing inventory records','▦'],['Tool routes',tools.length,'Exposed runtime schemas','⌘'],['Attention',attention.length,'Reported exceptions','◎']];
     replace('focus-stats',stats.map(([title,value,note,symbol],i)=>{const c=make('div','stat-card'+(i===3?' attention':'')),top=make('div','stat-top');top.append(make('span','',title),make('span','stat-symbol',symbol));c.append(top,make('div','stat-value',state?value:'—'),make('div','stat-note',state?note:'Observation unavailable'));return c;}));
     $('objective-text').textContent=state?str(first(state.focus&&state.focus.objective,'No current objective recorded.')):'Waiting for the operation state.';
     $('next-action-text').textContent=state?str(first(state.focus&&state.focus.next_action,'Set one concrete next action.')):'The current objective will appear after a successful sync.';
@@ -140,7 +154,7 @@
   }
   function renderFleet() {
     const sessions=arr(state&&state.sessions);$('session-count').textContent=state?sessions.length+' recorded':'Unknown';
-    replace('session-list',sessions.length?sessions.map(s=>{const c=recordCard(s,'session VM');c.className='panel session-card';c.append(meta([['Provider',s.provider],['CPU',s.cpu],['RAM',finite(s.ram_gib)?s.ram_gib+' GiB':null],['GPU',s.gpu],['Workspace',s.workspace]]));if(s.objective)c.append(make('div','session-objective',s.objective));if(sourceURL(s))c.append(link('Open existing session ↗',sourceURL(s),'button button-small button-quiet'));c.append(button('Update record',()=>sessionForm(s)));return c;}):[empty('No session records returned. Existing GPT/Claude VM capacity must be bound to its actual session and route.')]);
+    replace('session-list',sessions.length?sessions.map(s=>{const c=recordCard(s,'session VM');c.className='panel session-card';c.append(meta([['Provider',s.provider],['CPU',s.cpu],['RAM',finite(s.ram_gib)?s.ram_gib.toLocaleString(undefined,{maximumFractionDigits:2})+' GiB':null],['GPU',s.gpu],['Workspace',s.workspace]]));if(s.objective)c.append(make('div','session-objective',s.objective));const existingSessionURL=sessionURL(s);if(existingSessionURL)c.append(link('Open existing session ↗',existingSessionURL,'button button-small button-quiet'));c.append(button('Update record',()=>sessionForm(s)));return c;}):[empty('No session records returned. Existing GPT/Claude VM capacity must be bound to its actual session and route.')]);
     const runtimes=arr(state&&state.runtimes);
     replace('runtime-list',runtimes.length?runtimes.map(r=>{const c=recordCard(r,'runtime');c.append(meta([['Gateway',r.gateway_url],['Schemas',arr(r.tools).length]]));if(r.error)c.append(make('p','source-error',r.error));c.append(button('Inspect tools →',()=>{ $('tool-search').value=str(r.id);renderTools();navigate('tools');}));return c;}):[empty('No runtime catalog returned. Account metadata alone does not make service operations callable here.')]);
   }
@@ -247,7 +261,7 @@
   function runtimeForm(){form('Connect an existing gateway','Register an existing runtime route. Service account metadata alone is not a gateway. No runtime is launched.',[field('id','Runtime ID','',{required:true}),field('label','Runtime label','',{required:true}),field('gateway_url','Existing gateway URL','',{required:true})],v=>{const url=safeURL(v.gateway_url);if(!url||!/^https?:/.test(url))throw new Error('Use an HTTP or HTTPS gateway URL.');return mutate('runtime:'+v.id,'/api/runtimes',{runtime:v},$('dialog-output'));});}
   function budgetForm(){form('Record a budget or quota observation','Measurements stay in their source units. This does not spend, transfer, or allocate provider funds.',[field('id','Observation ID','',{required:true}),field('label','Label','',{required:true}),field('kind','Kind (quota, budget, spend, cash_balance)','quota',{required:true}),field('limit','Limit','',{type:'number'}),field('used','Used','',{type:'number'}),field('balance','Balance (cash_balance only)','',{type:'number'}),field('remaining','Reported remaining','',{type:'number'}),field('committed','Committed','',{type:'number'}),field('unit','Unit (USD, credits, tokens…)','',{required:true}),field('period','Period'),field('source_url','Source URL')],v=>{['limit','used','balance','remaining','committed'].forEach(k=>v[k]=v[k]===''?null:Number(v[k]));v.observed_at=observationTime('budget:'+v.id);return mutate('budget:'+v.id,'/api/budgets',{budget:v},$('dialog-output'));});}
   function jannyForm(){form('Assign an existing peer','This records limited maintenance responsibility, never exclusive access. No model or background service is created.',[field('peer','Existing peer ID',state&&state.janny&&state.janny.peer,{required:true})],v=>mutate('janny','/api/janny',v,$('dialog-output')));}
-  function moderationForm(e){form(e.hidden?'Restore original entry':'Hide from default feed','The original is retained. Use content/evidence criteria; keep genuine failures and useful unfavorable findings visible.',[field('reason','Reason and supporting evidence',e.hidden?'Restore to default view':'',{required:true,multiline:true})],v=>mutate('moderation:'+e.id,'/api/feed/moderate',{event_id:e.id,hidden:!e.hidden,reason:v.reason},$('dialog-output')));}
+  function moderationForm(e){form(e.hidden?'Restore original entry':'Hide from default feed','The original is retained. Use content/evidence criteria; keep genuine failures and useful unfavorable findings visible.',[field('reason','Reason and supporting evidence',e.hidden?'Restore to default view':'',{required:true,multiline:true})],v=>mutate('moderation:'+e.id,'/api/feed/moderate',{event_id:e.id,hidden:!e.hidden,reason:v.reason,peer:str(first(state&&state.janny&&state.janny.peer,'Owner panel'))},$('dialog-output')));}
   function schemaTemplate(schema){const out={};Object.entries(schema.properties||{}).forEach(([key,p])=>{if(p.default!==undefined)out[key]=p.default;else if(arr(schema.required).includes(key))out[key]=p.type==='number'||p.type==='integer'?0:p.type==='boolean'?false:p.type==='array'?[]:p.type==='object'?{}:'';});return out;}
   function validateArgs(value,schema){if(!value||typeof value!=='object'||Array.isArray(value))throw new Error('Arguments must be a JSON object.');arr(schema.required).forEach(k=>{if(!(k in value))throw new Error('Required argument missing: '+k);});Object.entries(value).forEach(([k,v])=>{const p=schema.properties&&schema.properties[k];if(!p)return;const type=p.type;if(typeof type!=='string')return;if(type==='object'&&(v===null||typeof v!=='object'||Array.isArray(v)))throw new Error(k+' must be an object.');if(type==='array'&&!Array.isArray(v))throw new Error(k+' must be an array.');if(['string','number','boolean'].includes(type)&&typeof v!==type)throw new Error(k+' must be '+type+'.');if(type==='integer'&&!Number.isInteger(v))throw new Error(k+' must be an integer.');});}
   $('tool-form').addEventListener('submit',async e=>{e.preventDefault();if(busy)return;const t=tools.find(x=>toolKey(x)===selectedKey);if(!t)return;let args;try{args=JSON.parse($('tool-arguments').value);validateArgs(args,t.schema);$('tool-validation').hidden=true;}catch(error){$('tool-validation').textContent=error.message;$('tool-validation').hidden=false;return;}
