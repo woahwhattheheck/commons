@@ -1020,18 +1020,29 @@ def _prepare_body_and_struct(body, supplied_extra):
     return body, struct_from_body(body, supplied_extra), False
 
 
+def _requires_publication_terms_check(extra):
+    """Return whether the publisher must apply its local prose policy.
+
+    Slack connector issues are source records that have already crossed the
+    bridge's standing private-data boundary. Their body is data, not a control
+    plane for the downstream publisher.
+    """
+    return str((extra or {}).get("carrier") or "").strip().lower() != "slack-connector"
+
+
 def write_post(src, dest, mid, body, ts=None, extra=None, event_id=None):
-    # Owner-directed publication terms apply to every carrier and every peer.
-    # Do not echo prohibited language into public rejects or create a proof queue.
+    # Owner-directed publication terms apply to ordinary publisher inputs.
+    # Slack source data was screened at the bridge boundary and stays byte-exact.
     supplied_policy_meta = dict(extra or {})
-    for publication_field in ("body", "speech", "model_packet"):
-        publication_text = body if publication_field == "body" else supplied_policy_meta.get(publication_field, "")
-        verdict = publication_policy.check_publication(str(publication_text or ""), str(supplied_policy_meta.get("subject") or ""))
-        if not verdict["allowed"]:
-            add_reject({"id": mid or "(none)", "reason": verdict["code"],
-                        "code": verdict["code"], "state": "PUBLICATION_TERMS_REJECTED",
-                        "policy_rule": verdict["rule"], "ts": ts or now_ts(), "body": ""})
-            return "publication-terms"
+    if _requires_publication_terms_check(supplied_policy_meta):
+        for publication_field in ("body", "speech", "model_packet"):
+            publication_text = body if publication_field == "body" else supplied_policy_meta.get(publication_field, "")
+            verdict = publication_policy.check_publication(str(publication_text or ""), str(supplied_policy_meta.get("subject") or ""))
+            if not verdict["allowed"]:
+                add_reject({"id": mid or "(none)", "reason": verdict["code"],
+                            "code": verdict["code"], "state": "PUBLICATION_TERMS_REJECTED",
+                            "policy_rule": verdict["rule"], "ts": ts or now_ts(), "body": ""})
+                return "publication-terms"
     src = as_from(src) or "UNSEATED"
     dest = as_to(dest) or "TABLE"
     supplied_extra = dict(extra or {})

@@ -98,6 +98,24 @@ class BoardBatchDrainTest(unittest.TestCase):
             else:
                 os.environ["GITHUB_EVENT_PATH"] = old_path
 
+    def test_slack_source_data_is_not_rerouted_by_publication_terms(self):
+        self.assertFalse(
+            board_ingest._requires_publication_terms_check(
+                {"carrier": "slack-connector"}
+            )
+        )
+        self.assertFalse(
+            board_ingest._requires_publication_terms_check(
+                {"carrier": " SLACK-CONNECTOR "}
+            )
+        )
+        self.assertTrue(
+            board_ingest._requires_publication_terms_check(
+                {"carrier": "github-issue"}
+            )
+        )
+        self.assertTrue(board_ingest._requires_publication_terms_check({}))
+
     def test_one_issue_run_drains_more_than_old_forty_record_cap(self):
         old = os.environ.get("GITHUB_EVENT_NAME")
         os.environ["GITHUB_EVENT_NAME"] = "issues"
