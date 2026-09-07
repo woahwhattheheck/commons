@@ -8,6 +8,8 @@ so a plan can be about somewhere the units are not currently standing.
 Compression is by grouping only. No tile is dropped because it looked irrelevant.
 """
 
+import os
+
 from constraints import engine
 
 
@@ -200,7 +202,8 @@ def build(obs, config, seat):
                         if shed_wheat else "; buy WHEAT from the market or harvest it"))
         for (x, y), d in animals_on_board:
             lines.append(f"  ({x},{y}) {d}")
-    bal = structure_balance(obs, config, seat)
+    bal = "" if os.environ.get("KAG_NO_STRUCTURE_BALANCE") else \
+        structure_balance(obs, config, seat)
     if bal:
         lines.append("STRUCTURE BALANCE (empty structures vs animals available to fill them)")
         lines.append("  " + bal)

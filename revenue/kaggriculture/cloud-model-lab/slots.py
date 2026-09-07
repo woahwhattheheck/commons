@@ -18,6 +18,8 @@ It is selectable, so an active run is unchanged; effectiveness decides which shi
 with byte count only a tie-break.
 """
 
+import os
+
 from constraints import engine
 import constraints as C
 import prompt as P
@@ -210,7 +212,8 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
                        + ("  fertilizer_ready" if t.get("fertilizer_available") else ""))
 
     import farmmap as _fm
-    _bal = _fm.structure_balance(obs, cfg, seat)
+    _bal = "" if os.environ.get("KAG_NO_STRUCTURE_BALANCE") else \
+        _fm.structure_balance(obs, cfg, seat)
     if _bal:
         out.append("STRUCTURE BALANCE (empty structures vs animals available to fill them)")
         out.append("  " + _bal)
