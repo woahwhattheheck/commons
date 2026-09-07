@@ -25,3 +25,7 @@ The discriminating fixture reserves WHEAT1 and supplies a valid fallback that se
 Fourteen test methods pass on the corrected source, including 28 actual official `_process_market` executions. The exact original seller produces seven failing subtest/assertion results across three terminal-reservation methods; the other eleven methods pass. The suite covers alternate episode length, final-deposit exclusion, before/after cash minima, paired product-buy cost bounds, seed storage, animal capacity, SELL-funded hires, repeated hire and land costs, duplicate sales, reserved slots, and fallback/input nonmutation.
 
 `VALIDATION.json` records the exact tested sources and baseline/candidate counts. These are focused synthetic integration checks: zero full-game panels, no seeds consumed, no hosted rating claim, and no whole-repository CI claim. The frozen standalone scheduler and pure optimizer are unchanged. Ordered non-market projection checks belong to the separate `cloud-selected-projection` component; this patch changes only the terminal stock/cash return condition.
+
+## Empty-lot follow-through
+
+The additive `test_empty_lot.py` suite checks literal-queue feasibility when no non-operating product lot is available to optimize. See [EMPTY-LOT.md](EMPTY-LOT.md) for its standalone environment variables and command, and [EMPTY-LOT-VALIDATION.json](EMPTY-LOT-VALIDATION.json) for the fifteen-method baseline/candidate record. The original fourteen-method suite and its validation record above are retained unchanged.
