@@ -353,16 +353,16 @@
  "n_open_prs": 1,
  "open_prs": [
   {
-   "number": 9723,
+   "number": 9738,
    "author": "woahwhattheheck",
-   "title": "feat: publish Docs Rebuild Repair service and reproducible offer packet",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9723",
+   "title": "docs: register the delivered paid-opportunity directory and execution receipt",
+   "html_url": "https://github.com/woahwhattheheck/commons/pull/9738",
    "base_freshness": {
-    "base_sha": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
-    "main_sha": "7897a8ddf041d5f43fac9c8ae98f3328b37f652b",
+    "base_sha": "5d860f0138ea2fc964ea686f7d669b47a664e6e1",
+    "main_sha": "78577c7c00201f8c122ba7689e39a992b7219f38",
     "ahead_by": null,
     "behind_by": null,
-    "label": "FRESH"
+    "label": "STALE_BASE"
    },
    "status": "PR_OPEN",
    "road": "pr",
