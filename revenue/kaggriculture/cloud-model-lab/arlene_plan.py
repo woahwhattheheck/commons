@@ -396,6 +396,27 @@ class PlanOverlay:
             return [mv] if mv else None
         return None
 
+    def pending_arrivals(self, obs):
+        """Arrival facts for a downstream scheduler: what this overlay will put in
+        the shed and when. See arrival_facts.py for the field contract."""
+        import arrival_facts
+        seat = int(obs.get("player", 0))
+        farm, priv = obs["farms"][seat], obs["private"]
+        board = len(farm["tiles"]) or self.A.BOARD
+        out = []
+        pos = [farm["farmer"]] + list(farm.get("hands", []))
+        for i, p in enumerate(pos):
+            x, y = int(p[0]), int(p[1])
+            if not (0 <= x < board and 0 <= y < board):
+                continue
+            tg = run_cards.reachable_targets(obs, seat, (x, y), self.K, board,
+                                             obs["market"]["prices"])
+            for f in arrival_facts.facts_for(self.agent, obs,
+                                             {"shedCapacity": self.A.SHED_CAP},
+                                             seat, tg, self.chooser, self.one_way):
+                out.append(dict(f, unit=i))
+        return out
+
     def report(self):
         acc = [a for a in self.assessments if a.get("accepted")]
         rej = [a for a in self.assessments if a.get("accepted") is False]
@@ -410,4 +431,5 @@ class PlanOverlay:
                 "displacement_left_unrejoined": self.stranded,
                 "open_at_end": len(self.plans),
                 "chooser": self.chooser.label,
+                "skipped_uncertain": getattr(self.chooser, "skipped_uncertain", 0),
                 "authored": self.chooser.authored}

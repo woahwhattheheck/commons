@@ -80,8 +80,15 @@ def marginal_revenue(K, market, item, units):
     price = _pricer(K)
     total = 0.0
     n = int(inv.get(item, 0))
-    for k in range(int(units)):
-        total += float(price(item, n + k, params))
+    for _ in range(int(units)):
+        p = float(price(item, n, params))
+        total += p
+        # The engine only credits market supply when the sale cleared above the
+        # floor: `_commit_unit` does `if price > 1: market["inventory"][item] += 1`.
+        # Advancing the inventory on a floor sale made every further unit look
+        # cheaper than the engine will actually quote it.
+        if p > 1:
+            n += 1
     return round(total, 1)
 
 

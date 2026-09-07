@@ -96,7 +96,8 @@ def game(seed, seat, opponent, table, overlay, A, arl_id, record_path=False,
     if not overlay:
         me = A.Agent()
     elif isinstance(table, dict) and table.get("lane") == "plan":
-        me = arlene_plan.PlanOverlay(A, table["chooser"],
+        ch = table["chooser"]
+        me = arlene_plan.PlanOverlay(A, ch,
                                      max_steps=table.get("max_steps",
                                                          arlene_plan.MAX_PLAN_STEPS),
                                      deposit=table.get("deposit", True),
@@ -104,6 +105,9 @@ def game(seed, seat, opponent, table, overlay, A, arl_id, record_path=False,
                                      one_way=table.get("one_way", False),
                                      storage_aware=table.get("storage_aware", False),
                                      min_incremental=table.get("min_incremental", 0.0))
+        # the route-aware chooser needs the SAME parent instance the overlay drives
+        if hasattr(ch, "agent"):
+            ch.agent = me.agent
     else:
         me = arlene_motifs.Overlay(A, table)
     t0 = time.time()
@@ -155,7 +159,9 @@ def main():
     ap.add_argument("--seats", type=int, nargs="+", default=[0, 1])
     ap.add_argument("--opponents", nargs="+", default=["arlene", "apex"])
     ap.add_argument("--motifs", default=None)
-    ap.add_argument("--plan", choices=("greedy", "cap", "cap-storage"), default=None,
+    ap.add_argument("--plan",
+                    choices=("greedy", "cap", "cap-storage", "cap-routeaware"),
+                    default=None,
                     help="run the bounded worker-reallocation continuation lane "
                          "with the named target chooser instead of a motif table")
     ap.add_argument("--plan-max-steps", type=int, default=arlene_plan.MAX_PLAN_STEPS)
@@ -175,8 +181,13 @@ def main():
     a = ap.parse_args()
     A, arl_id = route_cards.load_arlene()
     if a.plan:
-        chooser = (arlene_plan.CapChooser(NM_engine())
-                   if a.plan.startswith("cap") else arlene_plan.GreedyChooser())
+        if a.plan == "cap-routeaware":
+            import arrival_facts
+            chooser = arrival_facts.RouteAwareCapChooser(NM_engine())
+        elif a.plan.startswith("cap"):
+            chooser = arlene_plan.CapChooser(NM_engine())
+        else:
+            chooser = arlene_plan.GreedyChooser()
         table = {"lane": "plan", "chooser": chooser,
                  # one_way is the FROZEN behavioural config for the cap arms; the
                  # PlanOverlay constructor default is False, so it is set here
