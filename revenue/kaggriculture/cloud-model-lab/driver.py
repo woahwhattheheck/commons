@@ -94,6 +94,7 @@ class ModelDriver:
             },
             "engine_counters": res["benchmark"],
             "admissible_farmer_ops": [" ".join(str(t) for t in o) for o in adm["units"][0]],
+            "_pending": True,
             "examples_mode": self.examples,
             "situation_class": getattr(self, "_last_cls", None),
             "examples_used": [{"provenance": r["provenance"], "action": r["action"]}

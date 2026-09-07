@@ -318,24 +318,64 @@ def evaluate_turn(obs, config, seat, action):
     before_shed = dict(obs["private"].get("shed", {}))
     before_carried = sum(sum(i.values()) for i in obs["private"].get("inventories", []))
 
-    # Per-op effect: replay each unit op alone against the PRE-turn state, so a
-    # no-op is attributable to that op rather than to an earlier op in the turn.
+    # Per-op effect, attributed JOINTLY: ops are applied in the interpreter's own
+    # order to ONE evolving copy, because a turn's real effect is not the sum of its
+    # ops in isolation. Two units standing on the same PASTURE both "PLACE SHEEP":
+    # replayed alone each installs an animal, but in the real turn the first installs
+    # and the second falls through to the shed deposit branch and merely warehouses
+    # its sheep. Isolated replay credited that as productive work; sequential replay
+    # reports what actually happened.
     effects = []
     board = int(_cfg(config, "boardSize", 10))
     tpd = int(_cfg(config, "turnsPerDay", 24))
     shed_cap = int(_cfg(config, "shedCapacity", 100))
     day = int(obs["day"])
     unit_actions = [action.get("farmer", ["PASS"])] + list(action.get("hands", []))
+    seq_farm = copy.deepcopy(obs["farms"][seat])
+    seq_priv = copy.deepcopy(obs["private"])
+    # The interpreter drops every PLANT for a crop whose joint demand exceeds its
+    # seeds, so the sequential replay must apply the same rule to be faithful.
+    pre_demand = {}
+    for a in unit_actions:
+        if isinstance(a, list) and len(a) >= 2 and a[0] == "PLANT":
+            pre_demand[a[1]] = pre_demand.get(a[1], 0) + 1
+    pre_seeds = obs["private"].get("seeds", {})
+    pre_blocked = {c for c, n in pre_demand.items() if n > pre_seeds.get(c, 0)}
     for i, act in enumerate(unit_actions):
-        farm = copy.deepcopy(obs["farms"][seat])
-        private = copy.deepcopy(obs["private"])
-        before = (copy.deepcopy(farm), copy.deepcopy(private))
+        eff_act = list(act)
+        if len(eff_act) >= 2 and eff_act[0] == "PLANT" and eff_act[1] in pre_blocked:
+            eff_act = ["PASS"]
+        before_f = copy.deepcopy(seq_farm)
+        before_p = copy.deepcopy(seq_priv)
         try:
-            K._apply_unit_action(farm, private, i, list(act), board, day, tpd, shed_cap)
-            changed = (farm, private) != before
+            K._apply_unit_action(seq_farm, seq_priv, i, eff_act, board, day, tpd, shed_cap)
+            changed = (seq_farm, seq_priv) != (before_f, before_p)
         except Exception:
             changed = False
-        effects.append({"unit": i, "action": list(act), "non_no_op": bool(changed)})
+        # What the op did IN CONTEXT, for causal attribution.
+        kind = "none"
+        if changed:
+            pos = (seq_farm["farmer"] if i == 0 else seq_farm["hands"][i - 1])
+            bx, by = int(before_f["farmer"][0] if i == 0 else before_f["hands"][i - 1][0]), \
+                     int(before_f["farmer"][1] if i == 0 else before_f["hands"][i - 1][1])
+            if [int(pos[0]), int(pos[1])] != [bx, by]:
+                kind = "moved"
+            else:
+                t_before = before_f["tiles"][by][bx]
+                t_after = seq_farm["tiles"][by][bx]
+                shed_up = sum(seq_priv["shed"].values()) > sum(before_p["shed"].values())
+                if isinstance(t_after, dict) and "animal" in t_after and not (
+                        isinstance(t_before, dict) and "animal" in t_before):
+                    kind = "installed_animal"
+                elif isinstance(t_before, dict) and t_before.get("kind") == "PLANT" and \
+                        not (isinstance(t_after, dict) and t_after.get("kind") == "PLANT"):
+                    kind = "harvested" if eff_act[0] == "HARVEST" else "destroyed_plant"
+                elif shed_up:
+                    kind = "stored_in_shed"
+                else:
+                    kind = "tile_state_change"
+        effects.append({"unit": i, "action": list(act), "applied": eff_act,
+                        "non_no_op": bool(changed), "effect": kind})
 
     # Joint PLANT budget, exactly as the interpreter computes it.
     demand = {}
@@ -457,6 +497,135 @@ def horizon(obs, config, seat):
 def _live_plants(obs, seat):
     return sum(1 for row in obs["farms"][seat]["tiles"] for t in row
                if isinstance(t, dict) and t.get("kind") == "PLANT")
+
+
+def unit_effects(obs, config, seat, action):
+    """Per-op effects for this seat's unit phase, replayed sequentially.
+
+    This is a faithful replay of the seat's own unit phase -- it touches only this
+    seat's farm and private state and uses the engine's own `_apply_unit_action` in
+    the interpreter's order, with the same atomic PLANT-budget drop. It involves no
+    opponent and no market, so it is not a counterfactual.
+    """
+    return evaluate_turn(obs, config, seat, action)["unit_effects"]
+
+
+def outcome(pre_obs, post_obs, config, seat, action, effects=None):
+    """Classify a turn from the ACTUAL before and after states of the real step.
+
+    `post_obs` is the observation the real interpreter produced, with the real
+    opponent and the real market. Cash, shed, carried goods, installed animals and
+    live plants are all read from it. The per-op attribution in `effects` comes from
+    the seat's own unit-phase replay and says which op caused what.
+
+    Outcomes are graded, not binary:
+      realized_revenue  cash actually rose
+      production        yield, goods or an installed animal actually appeared
+      logistics         carried goods actually reached the shed
+      pending           real work whose payoff has not landed yet -- a structure with
+                        no animal on it, or CARE on an animal not yet fed. Recorded,
+                        not banked.
+      ineffective       an op the engine did not act on in context
+      destructive       an owned live plant was removed without harvesting it
+      blocked           the joint seed budget dropped a PLANT
+    """
+    K = engine()
+    if effects is None:
+        effects = unit_effects(pre_obs, config, seat, action)
+    if not effects:
+        return False, "empty", "no unit actions"
+
+    def board_counts(obs):
+        animals = plants = yields = 0
+        for row in obs["farms"][seat]["tiles"]:
+            for t in row:
+                if not isinstance(t, dict):
+                    continue
+                if "animal" in t:
+                    animals += 1
+                    yields += int(t.get("yield_units", 0))
+                elif t.get("kind") == "PLANT":
+                    plants += 1
+                    yields += int(t.get("yield_units", 0))
+        return animals, plants, yields
+
+    a0, p0, y0 = board_counts(pre_obs)
+    a1, p1, y1 = board_counts(post_obs)
+    money0 = float(pre_obs["farms"][seat]["money"])
+    money1 = float(post_obs["farms"][seat]["money"])
+    shed0 = sum(pre_obs["private"].get("shed", {}).values())
+    shed1 = sum(post_obs["private"].get("shed", {}).values())
+    carried0 = sum(sum(i.values()) for i in pre_obs["private"].get("inventories", []))
+    carried1 = sum(sum(i.values()) for i in post_obs["private"].get("inventories", []))
+
+    demand = {}
+    for e in effects:
+        if len(e["action"]) >= 2 and e["action"][0] == "PLANT":
+            demand[e["action"][1]] = demand.get(e["action"][1], 0) + 1
+    seeds = pre_obs["private"].get("seeds", {})
+    blocked = sorted(c for c, n in demand.items() if n > seeds.get(c, 0))
+    if blocked:
+        return False, "blocked", f"joint seed budget dropped PLANT {blocked}"
+
+    for e in effects:
+        if e["effect"] == "destroyed_plant":
+            return False, "destructive", f"unit{e['unit']} {e['action']} removed a live plant"
+
+    # An op the engine did not act on IN CONTEXT. Sequential effects, not opcode
+    # equality: two units may legitimately both move, both PICKUP or both HARVEST,
+    # and each is judged by what it actually did.
+    ineffective = [e for e in effects if e["action"][0] != "PASS" and not e["non_no_op"]]
+    if ineffective:
+        e = ineffective[0]
+        return False, "ineffective", (f"unit{e['unit']} {e['action']} did nothing in context "
+                                      f"({len(ineffective)} of {len(effects)} ops)")
+
+    for e in effects:
+        if e["action"][0] == "PLACE" and e["effect"] == "stored_in_shed" and \
+                len(e["action"]) > 1 and e["action"][1] in K.ANIMALS:
+            return False, "warehoused", (
+                f"PLACE {e['action'][1]} deposited the animal into the shed instead of "
+                f"installing it; the unit was not on an empty matching structure")
+
+    if money1 > money0:
+        return True, "realized_revenue", f"cash {money1 - money0:+.0f}"
+    if a1 > a0:
+        return True, "production", f"animals installed {a0}->{a1}, cash {money1 - money0:+.0f}"
+    if y1 > y0:
+        return True, "production", f"yield on the board {y0}->{y1}"
+    if carried1 > carried0 or (shed1 > shed0 and carried0 > 0):
+        return True, "logistics", f"goods moved: carried {carried0}->{carried1}, shed {shed0}->{shed1}"
+    if p1 > p0:
+        return True, "production", f"plants on the board {p0}->{p1}"
+
+    ops = [e["action"][0] for e in effects]
+    if any(o in ("BUILD_COOP", "BUILD_PASTURE") for o in ops):
+        return False, "pending", ("structure built with no animal on it yet; it pays only "
+                                  "once an animal is installed and fed")
+    if "CARE" in ops:
+        # CARE is legitimate whether or not FEED happens this turn: the tile may
+        # already be fed_today, or it may be fed later in the day. The engine settles
+        # it at the refresh, when cared_today AND fed_today grant the bonus.
+        fed = []
+        farm = post_obs["farms"][seat]
+        positions = [farm["farmer"]] + list(farm.get("hands", []))
+        for e in effects:
+            if e["action"][0] != "CARE":
+                continue
+            i = e["unit"]
+            p = positions[i] if i < len(positions) else None
+            if p is None:
+                continue
+            t = farm["tiles"][int(p[1])][int(p[0])]
+            fed.append(bool(isinstance(t, dict) and t.get("fed_today")))
+        if fed and all(fed):
+            return True, "production", "cared for an animal already fed today"
+        return False, "pending", ("cared for an animal not yet fed today; the bonus lands at "
+                                 "the refresh only if it is also fed before then")
+    if any(o in ("WATER", "FERTILIZE", "FEED") for o in ops):
+        return True, "production", "tile upkeep applied: " + ",".join(
+            sorted({o for o in ops if o in ("WATER", "FERTILIZE", "FEED")}))
+    return False, "neutral", "movement or storage only"
 
 
 def advanced(obs, config, seat, action):

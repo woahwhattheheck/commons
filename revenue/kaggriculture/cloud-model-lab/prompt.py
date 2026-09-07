@@ -109,6 +109,42 @@ def rules_block(adm):
 TILE_OPS = {"WATER", "HARVEST", "DIG", "FERTILIZE", "FEED", "CARE",
             "COLLECT_FERTILIZER", "BUILD_COOP", "BUILD_PASTURE", "PLANT"}
 
+# What each op actually does, where the engine's behaviour is easy to misread.
+OP_NOTE = {
+    "CARE": ("sets cared_today only; the care bonus is granted at the daily refresh "
+             "ONLY if this animal was ALSO fed today"),
+    "FEED": "consumes 1 WHEAT carried by THIS unit; feeds the animal on its tile",
+    "COLLECT_FERTILIZER": "takes the fertilizer this animal has ready",
+    "DIG": "REMOVES whatever is on this tile, including a healthy plant",
+}
+
+
+def _place_effect(item, obs, seat, unit_idx):
+    """PLACE is conditional: install an animal, or deposit into the shed.
+
+    The engine tries the animal-install branch first -- the unit must stand on a
+    matching UNOCCUPIED structure -- and only falls through to the shed deposit. A
+    flat 'into the shed' label is wrong for the install case, and it is also what a
+    second unit sharing the first unit's pasture actually gets.
+    """
+    from constraints import engine
+    K = engine()
+    farm = obs["farms"][seat]
+    positions = [farm["farmer"]] + list(farm.get("hands", []))
+    p = positions[unit_idx] if unit_idx < len(positions) else farm["farmer"]
+    x, y = int(p[0]), int(p[1])
+    tile = farm["tiles"][y][x]
+    if item in K.ANIMALS:
+        struct = K.ANIMALS[item]["structure"]
+        if isinstance(tile, dict) and tile.get("kind") == struct and "animal" not in tile:
+            return f"INSTALLS the {item} on this empty {struct}"
+        if isinstance(tile, dict) and tile.get("kind") == struct:
+            return (f"this {struct} is already occupied, so this only DEPOSITS the "
+                    f"{item} into the shed as stock")
+        return (f"not standing on an empty {struct}, so this DEPOSITS the {item} into "
+                f"the shed as stock, not onto a pasture")
+    return "deposits what this unit carries into the shed"
+
 
 def accepted_block(adm, obs=None, seat=0):
     """The accepted set, with each tile op annotated by WHAT IT ACTS ON.
@@ -136,9 +172,11 @@ def accepted_block(adm, obs=None, seat=0):
                 rendered.append(f"PICKUP {op[1]} n<={q['PICKUP'].get(op[1], 1)}")
             elif op[0] == "PLACE":
                 rendered.append(f"PLACE {op[1]} n<={q['PLACE_to_shed'].get(op[1], 1)}"
-                                " (from what this unit carries, into the shed)")
+                                f" ({_place_effect(op[1], obs, seat, i)})")
             elif op[0] in TILE_OPS and tgt:
-                rendered.append(" ".join(str(t) for t in op) + f" (acts on {tgt})")
+                note = OP_NOTE.get(op[0])
+                rendered.append(" ".join(str(t) for t in op) + f" (acts on {tgt}"
+                                + (f"; {note}" if note else "") + ")")
             else:
                 rendered.append(" ".join(str(t) for t in op))
         suffix = f"  [standing on {tgt}]" if tgt else ""

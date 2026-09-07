@@ -379,6 +379,6 @@ def card_regex(adm, max_market=3):
     # plan first lets the decode condition the action on it. The plan is
     # model-authored, carried across turns, and stripped before the engine sees the
     # action; it is bounded so it cannot eat the output budget.
-    plan_re = r'"plan":"[^"\\\\]{12,200}",'
+    plan_re = r'"plan":"[^"\\\\\\x00-\\x1f]{12,200}",'
     return (r'\{' + plan_re + r'"farmer":' + farmer + r',"hands":' + hands_re
             + r',"market":' + market_re + r"\}")

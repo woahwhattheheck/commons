@@ -28,8 +28,13 @@ def build(config):
     for a, d in K.ANIMALS.items():
         lines.append(f"  {a:6s} ${d['cost']:3d}  needs {d['structure']:7s}  gives {d['product']:5s}  "
                      f"first age{d['first_yield_day']}d  every {d['interval']}d  hold {d['max_held']}")
-    lines.append("  animals need FEED (costs 1 WHEAT from the unit's hands) and CARE each day; "
-                 "COLLECT_FERTILIZER takes the fertilizer they make.")
+    lines.append("  an animal produces at the daily refresh. FEED costs 1 WHEAT carried by "
+                 "the unit standing on it. CARE alone does nothing: the care bonus is only "
+                 "granted if the animal was FED that same day. Buying a seed is not feed -- "
+                 "seeds are planted, never eaten.")
+    lines.append("  PLACE <animal> INSTALLS it only when the unit stands on an empty matching "
+                 "structure; otherwise it just deposits the animal into the shed as stock. Two "
+                 "units on the same structure cannot both install.")
     lines.append("base sell prices: " + ", ".join(
         f"{k} {v['base']}" for k, v in K.MARKET_PARAMS.items()))
     lines.append("price moves with market inventory: selling a lot pushes a price down, "

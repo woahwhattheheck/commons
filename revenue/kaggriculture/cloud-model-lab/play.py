@@ -10,9 +10,12 @@ authors are the actions the official interpreter executes.
 """
 
 import argparse
+import copy
 import json
 import os
 import time
+
+import constraints
 
 import cards as cards_mod
 import driver as driver_mod
@@ -112,7 +115,53 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                 else:
                     a = _call(opp, obs, cfg)
                 actions.append(a)
+            # POST-INTERPRETER RECORD HOOK. A model turn is banked only after the real
+            # step, classified by what the engine actually did, with before/after facts
+            # and joint causal attribution. Provenance is `model`; a rejected outcome is
+            # recorded in the trace with its reason and NOT banked.
+            pre_obs = copy.deepcopy(dict(env.state[seat].observation))
+            pre_cfg = dict(env.configuration)
+            model_turn = d.log[-1] if (d.log and d.log[-1].get("_pending")) else None
+            # Per-op attribution comes from the seat's own unit-phase replay, taken
+            # BEFORE the step; the outcome itself is read from the state the real
+            # interpreter produces, with the real opponent and the real market.
+            pre_effects = None
+            if model_turn is not None:
+                try:
+                    pre_effects = constraints.unit_effects(
+                        pre_obs, pre_cfg, seat, model_turn["action"])
+                except Exception:
+                    pre_effects = None
             env.step(actions)
+            if model_turn is not None:
+                model_turn.pop("_pending", None)
+                post_obs = copy.deepcopy(dict(env.state[seat].observation))
+                post_obs["farms"] = copy.deepcopy(env.state[0].observation.farms)
+                try:
+                    ok, label, detail = constraints.outcome(
+                        pre_obs, post_obs, pre_cfg, seat, model_turn["action"], pre_effects)
+                except Exception as exc:
+                    ok, label, detail = False, "error", str(exc)
+                model_turn["outcome"] = {"bankable": ok, "label": label, "detail": detail}
+                model_turn["unit_effects"] = pre_effects
+                model_turn["before_after"] = {
+                    "money_before": float(pre_obs["farms"][seat]["money"]),
+                    "money_after": float(post_obs["farms"][seat]["money"]),
+                    "shed_before": {k: v for k, v in pre_obs["private"].get("shed", {}).items() if v},
+                    "shed_after": {k: v for k, v in post_obs["private"].get("shed", {}).items() if v},
+                    "carried_before": sum(sum(i.values()) for i in pre_obs["private"].get("inventories", [])),
+                    "carried_after": sum(sum(i.values()) for i in post_obs["private"].get("inventories", [])),
+                }
+                print(f"        outcome: {label} -- {detail}"
+                      + ("  [BANKED]" if ok and d.bank is not None else ""), flush=True)
+                if ok and d.bank is not None:
+                    import exemplar_bank as EB
+                    cls = model_turn.get("situation_class")
+                    state_text = model_turn["prompt"].split("LIVE FARM", 1)[-1]
+                    d.bank.record(cls, EB.context_of(pre_obs), state_text,
+                                  model_turn["action"], "model",
+                                  plan=model_turn["action"].get("plan")
+                                  or f"{label}: {detail}")
     finally:
         r.close()
 
