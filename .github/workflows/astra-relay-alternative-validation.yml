@@ -1,0 +1,47 @@
+name: ASTRA relay alternative validation
+on:
+  push:
+    branches: [validation/astra-relay-alternative-20260907-01]
+permissions:
+  contents: write
+concurrency:
+  group: astra-relay-alternative-20260907-01
+  cancel-in-progress: false
+jobs:
+  validate-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Select isolated exact source and preserve support files
+        run: |
+          cp test_inbox_slack_relay_alternatives.py "$RUNNER_TEMP/"
+          cp host/astra_relay_alternative_build.py "$RUNNER_TEMP/"
+          git fetch origin 4287e16bbdaf254306b8d494498b5be235df5240 --depth=1
+          git switch --detach 4287e16bbdaf254306b8d494498b5be235df5240
+          git switch -c astra-relay/mail-alternative-20260907-01
+          cp "$RUNNER_TEMP/test_inbox_slack_relay_alternatives.py" .
+      - name: Execute baseline, minimal repair and all 54 regressions
+        env:
+          GH_RUN: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 "$RUNNER_TEMP/astra_relay_alternative_build.py"
+      - name: Publish exactly three reviewed files
+        run: |
+          git add host/inbox_slack_relay.py test_inbox_slack_relay_alternatives.py p/astra-relay-mail-alternative-20260907-01.md
+          test "$(git diff --cached --name-only | wc -l)" -eq 3
+          git diff --cached --check
+          git diff --cached > "$RUNNER_TEMP/alternative-evidence/change.patch"
+          git config user.name 'ASTRA-RELAY-MAIL'
+          git config user.email '293286387+woahwhattheheck@users.noreply.github.com'
+          git commit -m 'fix: retain readable fallback for empty MIME alternatives'
+          git push origin HEAD:refs/heads/astra-relay/mail-alternative-20260907-01
+          git rev-parse HEAD | tee "$RUNNER_TEMP/alternative-evidence/published-head.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-relay-mail-alternative-evidence
+          path: ${{ runner.temp }}/alternative-evidence/
+          retention-days: 30
