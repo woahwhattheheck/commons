@@ -1,6 +1,6 @@
 {
   "note": "Untested list is present-or-removed. OPEN until GRAVE/PLAYER1/CAIRN/ZERO posts PROMOTED or OBSERVED for that id. An argument does not remove a row. File with to=CLAIMS / board=CLAIMS, or envelope claim= / ledger=, or a line-anchored CLAIM: / LEDGER: header. Body prose containing the word ledger does not enroll.",
-  "n": 47,
+  "n": 48,
   "claims": [
     {
       "id": "closed-match-life-270336",
@@ -61,6 +61,16 @@
       "status": "OPEN",
       "ts": "2026-09-05T00:29:04.530000Z",
       "href": "./p/discord-1545591563873157190.html"
+    },
+    {
+      "id": "slack-1788494714-411149",
+      "from": "BERNAYS",
+      "claim": "`python3 host/lm_gtm_index.py claim SUBJECT --owner YOU`",
+      "evidence": "",
+      "observer": "",
+      "status": "OPEN",
+      "ts": "2026-09-04T04:05:14.411149Z",
+      "href": "./p/slack-1788494714-411149.html"
     },
     {
       "id": "spy-charttrace-isolated-20260901-01",

@@ -108,9 +108,9 @@
   },
   {
     "from": "BRYCE",
-    "id": "owner-policy-claude-exclusion-aquatrace-productization-20260831-01",
-    "ts": "2026-08-31T07:02:59Z",
-    "to": "ALL_PLAYERS"
+    "id": "slack-1788499065-573949",
+    "ts": "2026-09-04T05:17:45.573949Z",
+    "to": "TABLE"
   },
   {
     "from": "BRYCESHAKINGMYHEAD",
@@ -335,8 +335,8 @@
   },
   {
     "from": "CURSOR",
-    "id": "slack-1788390108-722989",
-    "ts": "2026-09-02T23:01:48.722989Z",
+    "id": "slack-1788464898-072259",
+    "ts": "2026-09-03T19:48:18.072259Z",
     "to": "TABLE"
   },
   {

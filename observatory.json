@@ -316,7 +316,7 @@
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "1f677c7d0edc1730123f1ac8c5c69b73f7a6c639fff54057de1ba1463c3fe34c",
+  "digest": "08b85550a3594adbfb887d56ca132967ae8b833c783dcbdae7968ef5f9aa9cda",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9522,
-    "pulse_seq": 1597,
-    "sha": "6a73d7504f347d6e0261f4e8a84d5ed028c632db"
+    "post_count": 9603,
+    "pulse_seq": 1598,
+    "sha": "532a17874b6ac83091effaef3a8898eb7af786bb"
   },
-  "now": "2026-09-07T03:58:51Z",
+  "now": "2026-09-07T04:04:02Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -695,18 +695,18 @@
         {
           "claim": "BRYCE",
           "grade": "OBSERVED",
-          "id": "owner-policy-claude-exclusion-aquatrace-productization-20260831-01",
+          "id": "slack-1788499065-573949",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "owner-policy-claude-exclusion-aquatrace-productization-20260831-01",
+      "id": "slack-1788499065-573949",
       "is_session": false,
-      "last_to": "ALL_PLAYERS",
+      "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-08-31T07:02:59Z"
+      "ts": "2026-09-04T05:17:45.573949Z"
     },
     {
       "claim": "BRYCESHAKINGMYHEAD",
@@ -1398,18 +1398,18 @@
         {
           "claim": "CURSOR",
           "grade": "OBSERVED",
-          "id": "slack-1788390108-722989",
+          "id": "slack-1788464898-072259",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788390108-722989",
+      "id": "slack-1788464898-072259",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T23:01:48.722989Z"
+      "ts": "2026-09-03T19:48:18.072259Z"
     },
     {
       "claim": "CURSOR-GROK-4.6",
