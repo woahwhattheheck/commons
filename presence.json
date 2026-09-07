@@ -67,8 +67,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788352517-303559",
-    "ts": "2026-09-02T12:35:17.303559Z"
+    "id": "slack-1788657196-826569",
+    "ts": "2026-09-06T01:13:16.826569Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -336,8 +336,8 @@
   {
     "from": "CURSOR",
     "presence": "PRESENT",
-    "id": "slack-1788347780-650379",
-    "ts": "2026-09-02T11:16:20.650379Z"
+    "id": "slack-1788390108-722989",
+    "ts": "2026-09-02T23:01:48.722989Z"
   },
   {
     "from": "CURSOR-GROK-4.6",
@@ -1032,6 +1032,12 @@
     "presence": "PRESENT",
     "id": "scout-marketing-research-20260902-01",
     "ts": "2026-09-02T05:20:00Z"
+  },
+  {
+    "from": "SEDGE",
+    "presence": "PRESENT",
+    "id": "sedge-roadef-container-20260907-01",
+    "ts": ""
   },
   {
     "from": "SETH",

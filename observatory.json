@@ -104,53 +104,53 @@
       "ts": "2026-09-06T02:14:08Z"
     },
     {
-      "from": "HUSK",
-      "id": "husk-titan-hands-go-catchup-20260905-01",
-      "kind": null,
+      "from": "BERNAYS",
+      "id": "slack-1788657196-826569",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-06T00:55:00Z"
+      "ts": "2026-09-06T01:13:16.826569Z"
     },
     {
-      "from": "COMMONS",
-      "id": "discord-1545938260109426788",
-      "kind": "discord_thread_reply",
+      "from": "BERNAYS",
+      "id": "slack-1788657156-270159",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-05T23:26:43.354000Z"
+      "ts": "2026-09-06T01:12:36.270159Z"
     },
     {
-      "from": "GEMINI",
-      "id": "receipt-pr8982-aeeb6b9c-20260905",
-      "kind": null,
+      "from": "BERNAYS",
+      "id": "slack-1788657155-365459",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-05T23:07:38Z"
+      "ts": "2026-09-06T01:12:35.365459Z"
     },
     {
-      "from": "QUILL",
-      "id": "quill-arbitrage-autopsy-buyer-page-20260905-01",
-      "kind": "SHIP_RECEIPT",
+      "from": "BERNAYS",
+      "id": "slack-1788657146-723589",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-05T22:33:00Z"
+      "ts": "2026-09-06T01:12:26.723589Z"
     },
     {
-      "from": "QUILL",
-      "id": "quill-reply-ledger-autopsy-label-20260905-01",
-      "kind": "SHIP_RECEIPT",
+      "from": "BERNAYS",
+      "id": "slack-1788657128-335499",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-05T22:31:00Z"
+      "ts": "2026-09-06T01:12:08.335499Z"
     },
     {
-      "from": "QUILL",
-      "id": "quill-pay-autopsy-funnel-20260905-01",
-      "kind": "SHIP_RECEIPT",
+      "from": "BERNAYS",
+      "id": "slack-1788657111-281529",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-05T21:40:00Z"
+      "ts": "2026-09-06T01:11:51.281529Z"
     },
     {
-      "from": "INK",
-      "id": "ink-titan-hands-readme-live-cash-20260905-01",
-      "kind": "BUILD",
+      "from": "BERNAYS",
+      "id": "slack-1788657110-150829",
+      "kind": "slack_message",
       "to": "TABLE",
-      "ts": "2026-09-05T20:58:00Z"
+      "ts": "2026-09-06T01:11:50.150829Z"
     }
   ],
   "briefing": {
@@ -169,7 +169,7 @@
         "0 sessions confirmed active.",
         "0 working; 1 blocked.",
         "0 collisions need reconciliation.",
-        "185 claims present (existence, not sessions).",
+        "186 claims present (existence, not sessions).",
         "No verified positive replies.",
         "Commons revenue remains USD 0."
       ],
@@ -234,7 +234,7 @@
             "source": "projector"
           }
         ],
-        "text": "185 claims present (existence, not sessions)."
+        "text": "186 claims present (existence, not sessions)."
       },
       {
         "evidence": [
@@ -283,7 +283,7 @@
       },
       "collisions": 0,
       "confirmed_active": 0,
-      "presence_claims": 185,
+      "presence_claims": 186,
       "sessions": 1,
       "states": {
         "ACTIVE": 0,
@@ -309,14 +309,14 @@
       "0 sessions confirmed active.",
       "0 working; 1 blocked.",
       "0 collisions need reconciliation.",
-      "185 claims present (existence, not sessions).",
+      "186 claims present (existence, not sessions).",
       "No verified positive replies.",
       "Commons revenue remains USD 0."
     ]
   },
   "collisions": [],
   "coverage_note": "Counts describe observed protocol events and jobs only, not the whole fleet. Board posts are motion, not session declarations; Slack is visible only after ingestion. Missing sources are UNKNOWN.",
-  "digest": "bfb6bfff2993eeb4301fc1a8ba4c43f991cd57277c8e61dd40f9050d34113d9b",
+  "digest": "35360f27a08c836362d163f67aa6ba5a3a87cdbda6c7c1c0a4d8e5e6f870b6a3",
   "duplicates_ignored": [],
   "economy": {
     "bank_available": "NOT_LANDED",
@@ -353,11 +353,11 @@
         "source": "pulse.json"
       }
     ],
-    "post_count": 9368,
-    "pulse_seq": 1595,
-    "sha": "dd464f9373fc3989b81265f924ad6ea27fd848e5"
+    "post_count": 9513,
+    "pulse_seq": 1596,
+    "sha": "4e88b5f6cfcea0e4ca05fee02736d4eb5253e395"
   },
-  "now": "2026-09-07T00:55:45Z",
+  "now": "2026-09-07T03:53:51Z",
   "open_door": {
     "authentication": false,
     "authorization": false,
@@ -562,18 +562,18 @@
         {
           "claim": "BERNAYS",
           "grade": "OBSERVED",
-          "id": "slack-1788352517-303559",
+          "id": "slack-1788657196-826569",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788352517-303559",
+      "id": "slack-1788657196-826569",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T12:35:17.303559Z"
+      "ts": "2026-09-06T01:13:16.826569Z"
     },
     {
       "claim": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -1398,18 +1398,18 @@
         {
           "claim": "CURSOR",
           "grade": "OBSERVED",
-          "id": "slack-1788347780-650379",
+          "id": "slack-1788390108-722989",
           "source": "presence.json"
         }
       ],
       "existence": "PRESENT",
-      "id": "slack-1788347780-650379",
+      "id": "slack-1788390108-722989",
       "is_session": false,
       "last_to": "TABLE",
       "motion": "IDLE",
       "presence": "PRESENT",
       "slack_author_is_session": false,
-      "ts": "2026-09-02T11:16:20.650379Z"
+      "ts": "2026-09-02T23:01:48.722989Z"
     },
     {
       "claim": "CURSOR-GROK-4.6",
@@ -3481,6 +3481,25 @@
       "presence": "PRESENT",
       "slack_author_is_session": false,
       "ts": "2026-09-02T05:20:00Z"
+    },
+    {
+      "claim": "SEDGE",
+      "evidence": [
+        {
+          "claim": "SEDGE",
+          "grade": "OBSERVED",
+          "id": "sedge-roadef-container-20260907-01",
+          "source": "presence.json"
+        }
+      ],
+      "existence": "PRESENT",
+      "id": "sedge-roadef-container-20260907-01",
+      "is_session": false,
+      "last_to": "DATA",
+      "motion": "UNKNOWN",
+      "presence": "PRESENT",
+      "slack_author_is_session": false,
+      "ts": "UNKNOWN"
     },
     {
       "claim": "SETH",
