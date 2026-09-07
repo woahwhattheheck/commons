@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const $ = id => document.getElementById(id);
-  const views = ['focus','fleet','resources','tools','access','budget','feed'];
+  const views = ['focus','work','builds','inbox','marketing','fleet','resources','tools','access','budget','feed'];
   let state = null, currentView = 'focus', lastSync = null, syncError = '', refreshing = false;
   let tools = [], selectedKey = '', busy = false, dialogSpec = null, toastTimer;
   const attemptKey = 'commons.command-center.operations.v1';
@@ -22,6 +22,15 @@
   function safeURL(value) {
     if (typeof value !== 'string' || !value.trim()) return null;
     try { const u = new URL(value, location.origin); return ['http:','https:','codex:'].includes(u.protocol) ? u.href : null; } catch (_) { return null; }
+  }
+  function sessionURL(r) {
+    return typeof r.url === 'string' && /^(https?:\/\/|codex:\/\/)/i.test(r.url.trim()) ? safeURL(r.url) : null;
+  }
+  function sourceLabel(r) {
+    const source = arr(state && state.sources).find(s => s.id === r.source_id);
+    const name = first(typeof r.source === 'string' ? r.source : null,r.source_ref,r.source_id,r.origin,r.path);
+    const freshness = first(r.source_status,source && source.status);
+    return name ? str(name)+(freshness?' · '+str(freshness).replace(/_/g,' '):'') : null;
   }
   function sourceURL(r) {
     const explicit = safeURL(first(r.source_url,r.url,r.html_url,r.web_url,r.permalink,r.display_url,r.source && r.source.url));
@@ -59,13 +68,18 @@
     top.append(title,badge(status(r))); card.append(top);
     const desc = first(r.description,r.summary,r.purpose,r.value && typeof r.value === 'string' ? r.value : null);
     if (desc) card.append(make('p','card-description',str(desc)));
-    card.append(meta([['ID',first(r.id,r.resource_id)],['Observed',time(observed(r))],['Source',typeof r.source === 'string' ? r.source : first(r.source_ref,r.path)]]));
-    const url = sourceURL(r); if (url) card.append(link('Open original ↗',url)); card.append(raw(r)); return card;
+    const details = [['ID',first(r.id,r.resource_id)],['Observed',time(observed(r))],['Source',sourceLabel(r)]];
+    if(r.origin)details.push(['Origin',r.origin]);
+    if(r.telemetry_source)details.push(['Telemetry source',r.telemetry_source]);
+    if(r.source_observed_at)details.push(['Source fetched',time(r.source_observed_at)]);
+    if(r.updated_at && r.updated_at!==observed(r))details.push(['Metadata updated',time(r.updated_at)]);
+    card.append(meta(details));
+    const url = sourceURL(kind==='session VM'?{...r,url:null,html_url:null,web_url:null,permalink:null,display_url:null}:r); if (url) card.append(link('Open original source ↗',url)); card.append(raw(r)); return card;
   }
   function showToast(text) { clearTimeout(toastTimer); $('toast').textContent=text; $('toast').hidden=false; toastTimer=setTimeout(()=>$('toast').hidden=true,5500); }
   function navigate(view) {
     if (!views.includes(view)) view='focus'; const changed=currentView!==view; currentView=view;
-    views.forEach(v=>$('view-'+v).hidden=v!==view);
+    views.forEach(v=>{const el=$('view-'+v); if(el) el.hidden=v!==view;});
     document.querySelectorAll('[data-view]').forEach(n=>{ n.classList.toggle('active',n.dataset.view===view); if(n.dataset.view===view)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current'); });
     $('breadcrumb-view').textContent=view[0].toUpperCase()+view.slice(1);
     if(location.hash!=='#'+view) history.replaceState(null,'','#'+view);
@@ -115,7 +129,7 @@
   }
   function sessionStats(records) {
     const machines=records.filter(r=>r.kind==='machine'),sessions=records.filter(r=>r.kind!=='machine');
-    const active=sessions.filter(r=>/^(running|active|in_progress|inprogress|executing|busy)(?:_reported)?$/i.test(status(r).trim().replace(/[\s-]+/g,'_'))).length;
+    const active=sessions.filter(r=>/^(running|active|in_progress|inprogress|executing|busy|owner_reported_in_use|reported_active)(?:_reported)?$/i.test(status(r).trim().replace(/[\s-]+/g,'_'))).length;
     return {sessions:sessions.length,machines:machines.length,active};
   }
   function operationSummary(o) {
@@ -168,7 +182,7 @@
   }
   function renderFleet() {
     const sessions=arr(state&&state.sessions),counts=sessionStats(sessions);$('session-count').textContent=state?counts.sessions+' sessions · '+counts.machines+' '+(counts.machines===1?'machine':'machines')+' · activity is last reported':'Unknown';
-    replace('session-list',sessions.length?sessions.map(s=>{const c=recordCard(s,'session VM');c.className='panel session-card';c.append(meta([['Provider',s.provider],['CPU',s.cpu],['RAM',finite(s.ram_gib)?s.ram_gib.toLocaleString([], {maximumFractionDigits:2})+' GiB':null],['GPU',s.gpu],['Workspace',s.workspace]]));if(s.objective)c.append(make('div','session-objective',s.objective));if(sourceURL(s))c.append(link('Open existing session ↗',sourceURL(s),'button button-small button-quiet'));c.append(button('Update record',()=>sessionForm(s)));return c;}):[empty('No session records returned. Existing GPT/Claude VM capacity must be bound to its actual session and route.')]);
+    replace('session-list',sessions.length?sessions.map(s=>{const c=recordCard(s,'session VM');c.className='panel session-card';c.append(meta([['Provider',s.provider],['CPU',s.cpu],['RAM',finite(s.ram_gib)?s.ram_gib.toLocaleString([], {maximumFractionDigits:2})+' GiB':null],['GPU',s.gpu],['Workspace',s.workspace]]));if(s.objective)c.append(make('div','session-objective',s.objective));const existingSessionURL=sessionURL(s);if(existingSessionURL)c.append(link('Open existing session ↗',existingSessionURL,'button button-small button-quiet'));c.append(button('Update record',()=>sessionForm(s)));return c;}):[empty('No session records returned. Existing GPT/Claude VM capacity must be bound to its actual session and route.')]);
     const runtimes=arr(state&&state.runtimes);
     replace('runtime-list',runtimes.length?runtimes.map(r=>{const c=recordCard(r,'runtime');c.append(meta([['Gateway',r.gateway_url],['Schemas',arr(r.tools).length]]));if(r.error)c.append(make('p','source-error',r.error));c.append(button('Inspect tools →',()=>{ $('tool-search').value=str(r.id);renderTools();navigate('tools');}));return c;}):[empty('No runtime catalog returned. Account metadata alone does not make service operations callable here.')]);
   }
@@ -244,7 +258,7 @@
     renderFocus();renderFleet();renderResources();renderTools();renderAccess();renderBudgets();renderFeed();renderSources();
     $('nav-fleet').textContent=arr(state.sessions).length;$('nav-resources').textContent=arr(state.resources).length;$('nav-tools').textContent=tools.length;$('nav-feed').textContent=arr(state.feed).filter(e=>(!e.hidden||protectedEvent(e))&&!routineRefresh(e)).length;
     $('nav-feed').title='Updates; routine source refreshes are grouped in Feed.';
-    $('footer-sources').textContent=arr(state.sources).length+' source observations · '+arr(state.sources).filter(s=>s.error).length+' reporting errors';connectionState();
+    $('footer-sources').textContent=arr(state.sources).length+' source observations · '+arr(state.sources).filter(s=>s.error).length+' reporting errors';connectionState();window.dispatchEvent(new CustomEvent('commons-state',{detail:state}));
   }
   function observationTime(key){const a=attempts[key];return a&&pending(a.status)&&a.observed_at?a.observed_at:new Date().toISOString();}
   function saveAttempts(){try{sessionStorage.setItem(attemptKey,JSON.stringify(attempts));}catch(_){}}
@@ -287,7 +301,7 @@
   function runtimeForm(){form('Connect an existing gateway','Register an existing runtime route. Service account metadata alone is not a gateway. No runtime is launched.',[field('id','Runtime ID','',{required:true}),field('label','Runtime label','',{required:true}),field('gateway_url','Existing gateway URL','',{required:true})],v=>{const url=safeURL(v.gateway_url);if(!url||!/^https?:/.test(url))throw new Error('Use an HTTP or HTTPS gateway URL.');return mutate('runtime:'+v.id,'/api/runtimes',{runtime:v},$('dialog-output'));});}
   function budgetForm(){form('Record a budget or quota observation','Measurements stay in their source units. This does not spend, transfer, or allocate provider funds.',[field('id','Observation ID','',{required:true}),field('label','Label','',{required:true}),field('kind','Kind (quota, budget, spend, cash_balance)','quota',{required:true}),field('limit','Limit','',{type:'number'}),field('used','Used','',{type:'number'}),field('balance','Balance (cash_balance only)','',{type:'number'}),field('remaining','Reported remaining','',{type:'number'}),field('committed','Committed','',{type:'number'}),field('unit','Unit (USD, credits, tokens…)','',{required:true}),field('period','Period'),field('source_url','Source URL')],v=>{['limit','used','balance','remaining','committed'].forEach(k=>v[k]=v[k]===''?null:Number(v[k]));v.observed_at=observationTime('budget:'+v.id);return mutate('budget:'+v.id,'/api/budgets',{budget:v},$('dialog-output'));});}
   function jannyForm(){form('Assign an existing peer','This records limited maintenance responsibility, never exclusive access. No model or background service is created.',[field('peer','Existing peer ID',state&&state.janny&&state.janny.peer,{required:true})],v=>mutate('janny','/api/janny',v,$('dialog-output')));}
-  function moderationForm(e){form(e.hidden?'Restore original entry':'Hide from default feed','The original is retained. Use content/evidence criteria; keep genuine failures and useful unfavorable findings visible.',[field('reason','Reason and supporting evidence',e.hidden?'Restore to default view':'',{required:true,multiline:true})],v=>mutate('moderation:'+e.id,'/api/feed/moderate',{event_id:e.id,hidden:!e.hidden,reason:v.reason},$('dialog-output')));}
+  function moderationForm(e){form(e.hidden?'Restore original entry':'Hide from default feed','The original is retained. Use content/evidence criteria; keep genuine failures and useful unfavorable findings visible.',[field('reason','Reason and supporting evidence',e.hidden?'Restore to default view':'',{required:true,multiline:true})],v=>mutate('moderation:'+e.id,'/api/feed/moderate',{event_id:e.id,hidden:!e.hidden,reason:v.reason,peer:str(first(state&&state.janny&&state.janny.peer,'Owner panel'))},$('dialog-output')));}
   function schemaTemplate(schema){const out={};Object.entries(schema.properties||{}).forEach(([key,p])=>{if(p.default!==undefined)out[key]=p.default;else if(arr(schema.required).includes(key))out[key]=p.type==='number'||p.type==='integer'?0:p.type==='boolean'?false:p.type==='array'?[]:p.type==='object'?{}:'';});return out;}
   function validateArgs(value,schema){if(!value||typeof value!=='object'||Array.isArray(value))throw new Error('Arguments must be a JSON object.');arr(schema.required).forEach(k=>{if(!(k in value))throw new Error('Required argument missing: '+k);});Object.entries(value).forEach(([k,v])=>{const p=schema.properties&&schema.properties[k];if(!p)return;const type=p.type;if(typeof type!=='string')return;if(type==='object'&&(v===null||typeof v!=='object'||Array.isArray(v)))throw new Error(k+' must be an object.');if(type==='array'&&!Array.isArray(v))throw new Error(k+' must be an array.');if(['string','number','boolean'].includes(type)&&typeof v!==type)throw new Error(k+' must be '+type+'.');if(type==='integer'&&!Number.isInteger(v))throw new Error(k+' must be an integer.');});}
   $('tool-form').addEventListener('submit',async e=>{e.preventDefault();if(busy)return;const t=tools.find(x=>toolKey(x)===selectedKey);if(!t)return;let args;try{args=JSON.parse($('tool-arguments').value);validateArgs(args,t.schema);$('tool-validation').hidden=true;}catch(error){$('tool-validation').textContent=error.message;$('tool-validation').hidden=false;return;}
@@ -303,6 +317,12 @@
   ['close-dialog','cancel-dialog'].forEach(id=>$(id).addEventListener('click',()=>$('form-dialog').close()));
   $('view-fleet').querySelector('.page-heading').append(button('Connect gateway +',runtimeForm,'button button-quiet'));
   window.addEventListener('unhandledrejection',event=>{syncError='Client action error: '+str(event.reason&&event.reason.message||event.reason);connectionState();});
+  window.CommonsPanel={
+    getState:()=>state,getTools:()=>tools,request,navigate,showToast,
+    updateWork:(key,payload,target)=>mutate(key,'/api/work/item',payload,target),
+    callTool:(key,name,args,target,runtime='shared-equipment')=>mutate(key,'/api/tools/call',{runtime_id:runtime,name,arguments:args},target,name),
+    openTool:(name,args={},runtime='shared-equipment')=>{if(busy){showToast('A tool operation is still in flight.');return false;}const t=tools.find(x=>x.name===name&&x.runtime_id===runtime);if(!t){showToast('This tool is not exposed by the selected gateway.');return false;}chooseTool(t);$('tool-arguments').value=JSON.stringify(args,null,2);$('tool-search').value='';renderTools();navigate('tools');return true;}
+  };
   navigate(location.hash.slice(1));renderFocus();renderResources();renderTools();renderAccess();renderBudgets();renderFeed();refresh();
   setInterval(()=>{connectionState();if(!document.hidden)refresh();},30000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(!lastSync||Date.now()-lastSync>30000))refresh();});

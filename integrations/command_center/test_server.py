@@ -74,7 +74,7 @@ class InstalledCatalogTest(unittest.TestCase):
                 return []
         catalog = CombinedCatalog(Empty(), services=Empty())
         names = {tool["name"] for tool in catalog.tools()}
-        self.assertEqual(len({name for name in names if name.startswith("command_center_")}), 8)
+        self.assertEqual(len({name for name in names if name.startswith("command_center_")}), 12)
 
 class FeedHTTPIntegrationTest(unittest.TestCase):
     def setUp(self):

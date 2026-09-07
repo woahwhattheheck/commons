@@ -16,7 +16,7 @@ Deploy only this application runtime to the owner's host; perform source builds 
 
 ## Shared peer road
 
-CombinedCatalog includes eight command_center_* tools. They travel through the existing HTTP and Slack shared-equipment carriers, with the same state as the owner interface. All present and future peers can discover and use them; assigning the janny role changes responsibility only.
+CombinedCatalog includes twelve command_center_* tools. They travel through the existing HTTP and Slack shared-equipment carriers, with the same state as the owner interface. All present and future peers can discover and use them; assigning the janny role changes responsibility only.
 
 The HTTP API exposes GET /api/manifest, /api/state and /api/tools. POST /api/tools/call accepts operation_id, runtime_id, name and arguments. It dispatches the selected exact existing gateway schema. Native task messaging remains an app/harness capability: opening a session link is not a message-delivery receipt.
 
@@ -43,3 +43,15 @@ Assign an existing peer for short housekeeping work: group redundant output, fla
 ## Validation
 
 Cloud workflow command-center runs operation-journal, source-cache, moderation and HTTP contracts plus JavaScript syntax checks. Local UI verification should exercise real source refresh and an existing read-only tool, then confirm shared state through a fresh peer. Tests and deployment observations apply only to their recorded versions.
+
+## Connected work and owner direction
+
+Work, Builds, Inbox and Marketing use GET /api/work. Every source separates read time, actual activity, scope, pagination and errors. Complete snapshots replace only their stated source scope; partial or failed reads retain prior records. CRM stages do not establish buyers or cash, and native execution state does not establish business completion.
+
+Connector-equipped peers call command_center_ingest or POST /api/work/ingest with a stable operation_id, source metadata and selected items. Source requires id, provider, scope, observed_at and explicit coverage. Gmail, Airtable and native tasks remain connector-fed. Keep private configuration and observations outside the repository; import selected snippets and references, never raw responses or credential values.
+
+Direct GitHub/Slack readers use workstreams.config.json in the shared private state directory. Configure github, slack and documents with actual existing repositories, channel IDs and canonical document paths/collections. Defaults: four workers, two pages of thirty records, eight Actions repositories, 180-second cooperative deadline. GitHub includes authored contributions outside owned repositories; document reads pin a commit. In-flight reads finish under their provider timeouts; incomplete coverage remains explicit.
+
+GET /api/work?refresh=1 or command_center_refresh_work starts one bounded read and returns observations with progress. An OS-held lock prevents duplicate collectors across UI/gateway processes. No scheduler is installed. Connector-fed sources refresh through their actual connector-equipped peers and the same ingest API; direct refresh does not impersonate those connectors.
+
+POST /api/work/item or command_center_work_item sets priority, next_action or a prepared job for an exact source_id/item_id. Provider evidence is preserved and prepared packets record not_dispatched. Fleet also exposes actual Gemini submit/inspect/follow-up/cancel routes from the live shared catalog, retaining provider receipts. Native task actions use their actual harness routes.

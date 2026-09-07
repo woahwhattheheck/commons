@@ -49,8 +49,22 @@ class CommandCenterEquipment:
                 "gateway_url": {"type": "string", "description": "Existing HTTP(S) gateway base URL exposing /v1/tools and /v1/tools/call."},
             },
         }
+        source_schema = {
+            "type": "object", "required": ["id", "provider", "observed_at", "coverage"],
+            "description": "Selected source metadata, explicit stable scope and coverage; never raw bodies or credential values.",
+            "properties": {
+                **{key: {"type": "string"} for key in ("id", "provider", "observed_at")},
+                "coverage": {"type": "object", "required": ["complete"], "properties": {
+                    "complete": {"type": "boolean"}, "pagination_remaining": {}, "notes": {}}, "additionalProperties": False},
+                **{key: {} for key in ("label", "sync_mode", "activity_as_of", "scope", "status", "error", "stale_after_seconds", "metadata", "refs", "url")},
+            }, "additionalProperties": False,
+        }
         specs = [
             ("state", "Read the entire operation: canonical resources, service tools, accounts, observed fleet, budgets, focus, and operation outcomes.", {"refresh": {"type": "boolean"}}, []),
+            ("work_state", "Read connected work, source freshness and coverage, owner next actions, and direct refresh progress.", {"refresh": {"type": "boolean"}}, []),
+            ("refresh_work", "Start one bounded read of configured GitHub and Slack sources, retaining previous observations during refresh. No model or new service is started.", {}, []),
+            ("ingest", "Share selected work observations from an actual connector or native task road. Preserve provider timestamps, source scope, pagination and failures. Stable operation IDs make exact retries safe.", {"source": source_schema, "items": {"type": "array", "maxItems": 10000, "items": {"type": "object"}}}, ["source", "items"]),
+            ("work_item", "Record owner priority, next action, or a prepared job against an exact observed work item. A prepared packet is not provider dispatch.", {"source_id": {"type": "string"}, "item_id": {"type": "string"}, "priority": {"type": ["string", "number", "null"]}, "next_action": {"type": ["string", "null"]}, "job": {"type": ["object", "null"]}}, ["source_id", "item_id"]),
             ("focus", "Set the shared objective and next action.", {"objective": {"type": "string"}, "next_action": {"type": "string"}}, ["objective"]),
             ("session", "Record an existing GPT, Claude, or other peer session and observed VM facts. Does not create a provider session.", {"session": session_schema}, ["session"]),
             ("budget", "Record an observed balance, quota, limit, or budget with its source and timestamp.", {"budget": budget_schema}, ["budget"]),
@@ -61,7 +75,7 @@ class CommandCenterEquipment:
         ]
         result = []
         for name, description, properties, required in specs:
-            if name != "state":
+            if name not in {"state", "work_state", "refresh_work"}:
                 properties = {"operation_id": {"type": "string", "description": "Stable ID; repeat exact payload on retry."}, **properties}
                 required = ["operation_id"] + required
             result.append({"name": "command_center_" + name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": required, "additionalProperties": False}})
@@ -71,6 +85,14 @@ class CommandCenterEquipment:
                     {"required": ["hidden"]}, {"required": ["action"]}]
         return result
     def call(self, name, arguments):
+        if name == "command_center_work_state":
+            return self.center.work_state(refresh=bool(arguments.get("refresh", False)))
+        if name == "command_center_refresh_work":
+            return self.center.refresh_work()
+        if name == "command_center_ingest":
+            return self.center.ingest_work(arguments)
+        if name == "command_center_work_item":
+            return {**self.center.update_work(arguments), "status": "completed"}
         if name == "command_center_state":
             from .telemetry import with_host
             return with_host(self.center, self.center.state(refresh=bool(arguments.get("refresh", False))))
