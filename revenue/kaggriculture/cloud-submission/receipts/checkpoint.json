@@ -1,6 +1,6 @@
 {
   "operation_id": "titan-kaggriculture-frontier-20260907-01",
-  "observed_at": "2026-09-07T18:04:41.879760+00:00",
+  "observed_at": "2026-09-07T18:56:41.650179+00:00",
   "status": "SUBMISSION_FOUND",
   "submission_id": 56074364,
   "notebook_url": "https://www.kaggle.com/code/tokenjunkielabs/titan-kaggriculture-frontier-source",
@@ -13,83 +13,38 @@
   "provider_create_response_received": true,
   "next_action": "Read-only hourly monitoring of existing 56074364 and 56081391 with backoff; owner freeze on every Kaggle upload and public-notebook write remains in effect.",
   "validation_status": "COMPLETE",
-  "current_quota": {
-    "numAllowedNow": 2,
-    "numToday": 3,
-    "numTotal": 3
-  },
+  "current_quota": {"numAllowedNow": 2, "numToday": 3, "numTotal": 3},
   "validation_episode_id": 106416828,
-  "validation_rewards": [
-    61777,
-    61777
-  ],
-  "competitive_episode_count_observed": 71,
-  "competitive_record": {
-    "losses": 30,
-    "ties": 0,
-    "wins": 41,
-    "seats_observed": [
-      0,
-      1
-    ]
-  },
-  "public_score": "1474.4",
-  "account_user_rank": 1401,
+  "validation_rewards": [61777, 61777],
+  "competitive_episode_count_observed": 73,
+  "competitive_record": {"losses": 31, "ties": 0, "wins": 42, "seats_observed": [0, 1]},
+  "public_score": "1474.7",
+  "account_user_rank": 732,
   "by_seat": {
-    "0": {
-      "losses": 10,
-      "ties": 0,
-      "wins": 25
-    },
-    "1": {
-      "losses": 20,
-      "ties": 0,
-      "wins": 16
-    }
+    "0": {"losses": 11, "ties": 0, "wins": 26},
+    "1": {"losses": 20, "ties": 0, "wins": 16}
   },
   "latest_submission_id": 56081391,
   "submission_count": 3,
-  "per_game_receipt": "watch-1804-summary.json",
-  "raw_receipt": "watch-1804-raw.json",
+  "per_game_receipt": "watch-1856-summary.json",
+  "raw_receipt": "watch-1856-raw.json",
   "monitored_submissions": [
     {
       "submission_id": 56081391,
       "status": "COMPLETE",
-      "public_score": "1714.4",
-      "public_games": 11,
-      "record": {
-        "losses": 0,
-        "ties": 0,
-        "wins": 11
-      },
+      "errorDescription": null,
+      "public_score": "2176.3",
+      "public_games": 24,
+      "record": {"losses": 2, "ties": 4, "wins": 18},
       "by_seat": {
-        "0": {
-          "losses": 0,
-          "ties": 0,
-          "wins": 5
-        },
-        "1": {
-          "losses": 0,
-          "ties": 0,
-          "wins": 6
-        }
+        "0": {"losses": 1, "ties": 4, "wins": 8},
+        "1": {"losses": 1, "ties": 0, "wins": 10}
       },
       "validation": [
         {
           "agents": [
-            {
-              "reward": 63629,
-              "submissionId": 56081391,
-              "teamId": 16846069,
-              "teamName": "Bryce Muhlnickel"
-            },
-            {
-              "index": 1,
-              "reward": 64273,
-              "submissionId": 56081391,
-              "teamId": 16846069,
-              "teamName": "Bryce Muhlnickel"
-            }
+            {"reward": 63629, "submissionId": 56081391, "teamId": 16846069, "teamName": "Bryce Muhlnickel"},
+            {"index": 1, "reward": 64273, "submissionId": 56081391, "teamId": 16846069, "teamName": "Bryce Muhlnickel"}
           ],
           "createTime": "2026-09-07T17:13:57.610Z",
           "endTime": "2026-09-07T17:18:24.912Z",
@@ -97,47 +52,24 @@
           "state": "COMPLETED",
           "type": "EPISODE_TYPE_VALIDATION"
         }
-      ],
-      "errorDescription": null
+      ]
     },
     {
       "submission_id": 56074364,
       "status": "COMPLETE",
-      "public_score": "1474.4",
-      "public_games": 71,
-      "record": {
-        "losses": 30,
-        "ties": 0,
-        "wins": 41
-      },
+      "errorDescription": null,
+      "public_score": "1474.7",
+      "public_games": 73,
+      "record": {"losses": 31, "ties": 0, "wins": 42},
       "by_seat": {
-        "0": {
-          "losses": 10,
-          "ties": 0,
-          "wins": 25
-        },
-        "1": {
-          "losses": 20,
-          "ties": 0,
-          "wins": 16
-        }
+        "0": {"losses": 11, "ties": 0, "wins": 26},
+        "1": {"losses": 20, "ties": 0, "wins": 16}
       },
       "validation": [
         {
           "agents": [
-            {
-              "reward": 61777,
-              "submissionId": 56074364,
-              "teamId": 16846069,
-              "teamName": "Bryce Muhlnickel"
-            },
-            {
-              "index": 1,
-              "reward": 61777,
-              "submissionId": 56074364,
-              "teamId": 16846069,
-              "teamName": "Bryce Muhlnickel"
-            }
+            {"reward": 61777, "submissionId": 56074364, "teamId": 16846069, "teamName": "Bryce Muhlnickel"},
+            {"index": 1, "reward": 61777, "submissionId": 56074364, "teamId": 16846069, "teamName": "Bryce Muhlnickel"}
           ],
           "createTime": "2026-09-07T10:01:29.534Z",
           "endTime": "2026-09-07T10:03:07.359Z",
@@ -145,8 +77,7 @@
           "state": "COMPLETED",
           "type": "EPISODE_TYPE_VALIDATION"
         }
-      ],
-      "errorDescription": null
+      ]
     }
   ]
 }
