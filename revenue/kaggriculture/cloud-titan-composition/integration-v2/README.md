@@ -71,3 +71,39 @@ midgame cap-plan replay evidence. That actual producer fixture was requested and
 is still needed before a corrected integration panel. No new full games have
 run for this contract. The generic author SELL API and corrected producer source
 will be consumed additively when callable, with fresh unused dev/held seeds.
+
+## Exact FLORA bridge
+
+`FloraBridge(base_owner)` loads the unchanged admitted FLORA candidate, binds its
+route reference to the real authoritative base, and replaces only its parent
+callback with the already-selected action. It constructs no additional Arlene
+instance. `transform(obs, selected_action, blocked_targets=...)` consumes that
+action once; `owned_workers(obs)` lets other unit overlays exclude FLORA's leased
+hands before they act. Do not compose an overlay that ignores those leases.
+
+`producer_snapshot(post_unit_obs, selected_action)` exports actual FLORA rows to
+the common contract. The caller supplies the exact own post-unit state if SELL
+is also using post-unit stock. Mixing pre-unit obligations and post-unit stock
+can double-count a harvest completed this turn. Once the dedicated hand carries
+the product, the exact executor PASSes; the bridge cancels any unharvested
+remainder of the originally planned quantity. Whole observed cargo is separate
+from the producer's conditional `economic_units` valuation.
+
+Three additional tests execute the unchanged FLORA callback and pinned unit
+transition on explicitly synthetic midgame states: selected-action consumption,
+HARVEST into carried stock followed by PASS, target disappearance/abort, and
+partial harvest with cancelled remainder. Nine focused tests pass in total.
+This remains separate from the requested retained actual cap-plan fixture.
+
+## Raw-file packaging
+
+`titan-selected-raw.tar.gz` is an additive variant of the accepted selected
+archive. Only `main.py` changes; all 37 other members remain byte-identical.
+The lazy shim resolves the retained file loader's `configuration['__raw_path__']`
+before importing the unchanged SELL module. Normal imported-module loading uses
+`__file__` as usual. The original archive is preserved.
+
+`python build_raw.py` reproduces the variant. raw-archive-receipt.json records its
+hash and two retained-observation parity cases through the actual pinned
+`cloud-pack/official.py::make_agent` file loader. This is a targeted packaging
+check, not another SIGNAL historical replay or a full game. No policy changed.
