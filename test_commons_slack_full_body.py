@@ -21,9 +21,9 @@ DOOR = ROOT / "commons-slack.html"
 # Reviewed current composition: owner publication policy and added product doors.
 # These are revision pins; behavioral formatter/chunk tests remain below.
 KEEP = {
-    "host/slack_mirror.py": "846a80c2",
+    "host/slack_mirror.py": "3fe0a5d7",
     "slack_ingest.py": "0040a726",
-    "test_slack_mirror.py": "201bca45",
+    "test_slack_mirror.py": "739d5ee8",
     "host/landed_work_feed.py": "0506fd0f",
     "repo_pulse.py": "9ec71eb0",
     "p/cursor-stealable-lanes-roles-20260902-01.md": "5f1ef25f",
@@ -153,7 +153,7 @@ class TestCommonsSlackFullBody(unittest.TestCase):
             check=False,
         )
         self.assertEqual(proc.returncode, 0, msg=proc.stdout + proc.stderr)
-        self.assertIn("Ran 3 tests", proc.stderr)
+        self.assertIn("Ran 7 tests", proc.stderr)
 
     def test_door_has_no_login_and_receipt_does_not_steal(self) -> None:
         before = DOOR.read_text(encoding="utf-8")
