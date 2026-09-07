@@ -1,6 +1,6 @@
 {
   "scope": "revenue/kaggriculture/cloud-route-frontier/",
-  "run_at": "2026-09-07T21:47:25.199957+00:00",
+  "run_at": "2026-09-07T22:01:27.701687+00:00",
   "regressions": {
     "methods": 29,
     "failures": 0,
@@ -22,13 +22,13 @@
   "files": {
     "engine-results.json": {
       "bytes": 3368,
-      "sha256": "2aa499737ea324dac945b752dd2f4a2ce3f389633434370d2da08c32af990c43",
-      "git_blob": "2ae4576acdae5bffe2d30f333c9510e6c1adb2ed"
+      "sha256": "d735d93ba8333d38031df1839bd42f98668c324bd5c2ddbe963fd76402abb8e9",
+      "git_blob": "d8495bca5a0ccfbfc546eb20aa457b8afdeb1745"
     },
     "engine_cases.py": {
-      "bytes": 16168,
-      "sha256": "a080f100ffdbebf026177469faceb32f86198ea9719a2186fb695dca4b25da81",
-      "git_blob": "58ce472ffbff3860776c78f6c4135a437236dcc4"
+      "bytes": 16201,
+      "sha256": "4e4285ae26054624b3c48c9480850c20cc877035a3d403298237253cfa96761a",
+      "git_blob": "b1831fb7cdf5b866783cdf04e7bf36805ff9ab5f"
     },
     "route_frontier.py": {
       "bytes": 12913,
@@ -61,5 +61,20 @@
       "git_blob": "37702189378a465c81d565080cd053376231e7e1"
     }
   },
-  "evidence_packaging": "The retained Base64 is wrapped at 76 columns; decoded gzip and raw trace hashes match executed output."
+  "evidence_packaging": "The retained Base64 is wrapped at 76 columns; decoded gzip and raw trace hashes match executed output.",
+  "ci_follow_through": {
+    "original_pr": 9955,
+    "original_head": "f2232c9077193b76ae4a5133250a0a058f10d915",
+    "original_merge": "a690ae41be6cbc32082f80dae5270af865ae2aa9",
+    "original_failed_run": 34164945877,
+    "original_failed_job": 101874032255,
+    "change": "Rename the evaluator helper to incompatible_splice; preserve all assertions, runtime and repository guard.",
+    "comparison": "Both-position outcomes and the complete decoded trace archive are byte-identical to the retained initial execution.",
+    "raw_trace_sha256": "fc2a5f36a35c941aedb68827dce7f71fdffa2239011d3413d34da215400aee11",
+    "test_methods": 29,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "hosted_followup": "pending publication"
+  }
 }
