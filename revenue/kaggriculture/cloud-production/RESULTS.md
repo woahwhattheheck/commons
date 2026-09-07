@@ -57,5 +57,12 @@ therefore worsened by **16,044** and **8,519**. Holding supply helped the strong
 opponent more than it helped FLORA. No optimistic quote was treated as terminal
 cash, and no forecast or liquidation bytes replaced the selected policy.
 
+Normal full-game actor instrumentation also rejects per-action forecast calls:
+the five treatment reports used 1,438–4,314 candidate calls each, with weighted
+mean call CPU of **12.43–18.76 ms** and observed maxima of **99.01–928.68 ms**.
+No forecast runtime bytes are promoted. A future use must cache by observation
+and realization horizon rather than iterate every intermediate step on every
+action.
+
 Exact terminal scores and report hashes are in
 `results/forecast-liquidation-rejected-development.json`.
