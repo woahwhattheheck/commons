@@ -690,5 +690,6 @@ def agent(obs, configuration=None):
         return deepcopy(_LAST_ACTION)
     _PLAN = advance(obs, configuration, _PLAN)
     action = _dispatch(obs, configuration)
+    action, _PLAN = constrain_orders(action, context, _PLAN)
     _LAST_ACTION = deepcopy(action)
     return action

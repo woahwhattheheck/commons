@@ -260,8 +260,6 @@ def _dispatch(obs, configuration=None):
             key = target if key is None else key
             d = distance(pos, target)
             if key in claims: return
-            job = next((j for j in _PLAN.get("installation_jobs", []) if j["worker"] == index), None)
-            if carried_animal and job and action[0] in ("DIG", "BUILD_COOP", "BUILD_PASTURE", "PLACE") and tuple(target) != tuple(job["target"]): return
             if ending and d + 1 + min(distance(target, p) for p in depot) + 1 > remaining_turns:
                 return
             if d >= turns-hour: return
@@ -475,10 +473,7 @@ def advance(obs, configuration=None, previous=None, options=None):
         return s
     if s and (s["player"] != c["player"] or c["step"] < s["step"]):
         s = None
-    prior_jobs = s.get("installation_jobs", []) if s and s["day"] == c["day"] else []
-    jobs, job_outcomes = installation_jobs(obs, prior_jobs)
     history = list(s["feedback"]) if s else []
-    history.extend(job_outcomes)
     bank = list(s.get("bank", [])) if s else []
     completed_count = s.get("completed_count", 0) if s else 0
     expired_count = s.get("expired_count", 0) if s else 0
@@ -551,7 +546,7 @@ def advance(obs, configuration=None, previous=None, options=None):
              backlog=c["pending"], feed_needed=0 if terminal else feed,
              cash_reserve=0 if terminal else o["labor_reserve"]+feed*(c["prices"]["WHEAT"]+1),
              phase="liquidate" if terminal else "install" if c["pending"] else "maintain" if s["status"] == "completed" else "develop",
-             installation_jobs=jobs, feedback=history[-8:], bank=bank[-8:], completed_count=completed_count, expired_count=expired_count)
+             feedback=history[-8:], bank=bank[-8:], completed_count=completed_count, expired_count=expired_count)
     return s
 
 
@@ -617,67 +612,6 @@ def situation_packet(context, state):
         {"live_state": deepcopy(context), "plan": {k: deepcopy(state[k]) for k in
          ("objective", "phase", "status", "installation_target", "crop_target", "backlog", "feed_needed", "cash_reserve")}}]
 
-
-def installation_jobs(obs, previous=None):
-    """Own carried-stock intents; commit through DIG/BUILD/PLACE, observe completion.
-
-    New deterministic design. Each carried animal reserves one vacant
-    compatible tile. Persistent worker identities last one day only; caller resets
-    at EOD. Output is advisory data for FLORA; no peer scheduling code is imported.
-    """
-    farm = obs["farms"][obs["player"]]
-    tiles, day, hour = farm["tiles"], obs.get("day", 0), obs.get("hour", 0)
-    units = [farm["farmer"], *farm.get("hands", [])]
-    inventories = obs["private"]["inventories"]
-    prior = {j["worker"]: j for j in (previous or [])}
-    reserved, jobs, feedback = set(), [], []
-    for worker, pos in enumerate(units):
-        inv = inventories[worker] if worker < len(inventories) else {}
-        animal = next((a for a in ANIMAL_FIRST if inv.get(a, 0)), None)
-        old = prior.get(worker)
-        if old:
-            x, y = old["target"]
-            tile = tiles[y][x]
-            if isinstance(tile, dict) and tile.get("animal") == old["animal"]:
-                feedback.append({"day": day, "step": obs.get("step", 0),
-                                 "outcome": "installation_completed", "worker": worker,
-                                 "animal": old["animal"], "target": [x,y]})
-                old = None
-        if not animal:
-            continue
-        kind = "COOP" if animal == "GOOSE" else "PASTURE"
-        choices = []
-        for y, row in enumerate(tiles):
-            for x, tile in enumerate(row):
-                if (x,y) in reserved:
-                    continue
-                if tile is None:
-                    action, operations = "BUILD_"+kind, 2
-                elif isinstance(tile, dict) and tile.get("kind") == "WEED":
-                    action, operations = "DIG", 3
-                elif isinstance(tile, dict) and tile.get("kind") == kind and "animal" not in tile:
-                    action, operations = "PLACE", 1
-                else:
-                    continue
-                dist = abs(pos[0]-x)+abs(pos[1]-y)
-                metric = dist+operations
-                stale = (old.get("stale", 0)+1 if old and old["target"] == [x,y] and metric >= old["metric"] else 0)
-                keep = old and old["animal"] == animal and old["target"] == [x,y] and stale < 8
-                choices.append((0 if keep else 1, metric, y, x, action, stale))
-        if not choices:
-            continue
-        _, metric, y, x, action, stale = min(choices)
-        if old and old["target"] != [x,y]:
-            feedback.append({"day": day, "step": obs.get("step", 0),
-                             "outcome": "installation_replanned", "worker": worker,
-                             "previous_target": old["target"], "target": [x,y]})
-        reserved.add((x,y))
-        jobs.append({"worker": worker, "animal": animal, "target": [x,y],
-                     "next_operation": [action, animal] if action == "PLACE" else [action],
-                     "metric": metric, "stale": stale,
-                     "precondition": "own carried animal and vacant compatible target"})
-    return jobs, feedback
-
 _PLAN = None
 _LAST_ACTION = None
 
@@ -690,5 +624,6 @@ def agent(obs, configuration=None):
         return deepcopy(_LAST_ACTION)
     _PLAN = advance(obs, configuration, _PLAN)
     action = _dispatch(obs, configuration)
+    action, _PLAN = constrain_orders(action, context, _PLAN)
     _LAST_ACTION = deepcopy(action)
     return action
