@@ -125,7 +125,7 @@ def money(trace, seat, index=-1):
     return trace.state(index)["farms"][seat]["money"]
 
 
-def rejected(prefix, suffix):
+def incompatible_splice(prefix, suffix):
     try:
         splice(prefix, suffix)
     except Incompatible:
@@ -176,7 +176,7 @@ def run(engine, kernel=None):
         expected["farms"][seat]["farmer"] = list(engine._default_spawn(10))
         drop = rollout("drop-at-shed", expected, [action("DROP", [["SELL", "MILK", 2]])], advance, context=context)
         naive = rollout("incompatible-naive", west.state(), [drop.action()], advance, context=context)
-        assert rejected(west, drop) and money(naive, seat) == 0 < money(drop, seat)
+        assert incompatible_splice(west, drop) and money(naive, seat) == 0 < money(drop, seat)
         recovery = rollout("return-and-drop", west.state(),
                            [action("EAST"), drop.action()], advance, context=context)
         recovered = splice(west, recovery)
@@ -189,7 +189,7 @@ def run(engine, kernel=None):
         plant = rollout("plant", seeded, [action(["PLANT", "WHEAT"])], advance, context=context)
         no_seed = rollout("no-seed-naive", empty_prefix.state(), [plant.action()], advance, context=context)
         x, y = engine._default_spawn(10)
-        assert rejected(empty_prefix, plant)
+        assert incompatible_splice(empty_prefix, plant)
         assert no_seed.state()["farms"][seat]["tiles"][y][x] is None
         assert plant.state()["farms"][seat]["tiles"][y][x]["crop"] == "WHEAT"
         # Mapping order is executable state: the first carried good takes last room.

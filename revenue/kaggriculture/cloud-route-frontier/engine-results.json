@@ -96,8 +96,8 @@
   ],
   "recorded_traces": 34,
   "recorded_transitions": 50,
-  "bound_route_double_call_max_seconds": 0.00016014499999528198,
-  "elapsed_seconds": 0.03476793499999076,
+  "bound_route_double_call_max_seconds": 0.00016597500007264898,
+  "elapsed_seconds": 0.03413144600017404,
   "trace_archive": {
     "file": "engine-traces.json.gz.b64",
     "raw_bytes": 262947,
@@ -107,7 +107,7 @@
   },
   "source_sha256": {
     "route_frontier.py": "f08ed283d1e8de81a91e350d06b353a0a0d90957626d2a277eade9ecac8c7f5c",
-    "engine_cases.py": "a080f100ffdbebf026177469faceb32f86198ea9719a2186fb695dca4b25da81"
+    "engine_cases.py": "4e4285ae26054624b3c48c9480850c20cc877035a3d403298237253cfa96761a"
   },
   "t06_kernel_blob": "d05b35057509ed706679c0c841a81ffba05a9936"
 }
