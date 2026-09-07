@@ -452,3 +452,62 @@ def horizon(obs, config, seat):
         "last_decision_step": last,
         "turns_left_today": (tpd - int(obs["hour"])) if tpd else 0,
     }
+
+
+def _live_plants(obs, seat):
+    return sum(1 for row in obs["farms"][seat]["tiles"] for t in row
+               if isinstance(t, dict) and t.get("kind") == "PLANT")
+
+
+def advanced(obs, config, seat, action):
+    """Did this turn ADVANCE the position? Not merely: did the engine act.
+
+    A state change is not advancement. DIG on a healthy plant changes state, is
+    perfectly legal, and destroys an owned productive asset -- it was banked as a
+    win once and must not be again. So a turn advances only when the engine acted,
+    it destroyed no live plant it did not harvest, and something productive actually
+    moved: cash up, goods gained, or a plant created, watered, fed or cared for.
+    """
+    import copy as _c
+    K = engine()
+    before_plants = _live_plants(obs, seat)
+    r = evaluate_turn(obs, config, seat, action)
+    acted = any(e["non_no_op"] for e in r["unit_effects"])
+    if not acted:
+        return False, "no engine effect"
+
+    ops = [a["action"][0] for a in r["unit_effects"]]
+    tpd = int(_cfg(config, "turnsPerDay", 24))
+    post = _c.deepcopy(obs)
+    # Re-run to read the post-turn board rather than inferring it.
+    obs_a = _c.deepcopy(obs)
+    obs_a["step"] = absolute_step(obs, config)
+    ev = evaluate_turn(obs, config, seat, action)
+    after_plants = before_plants
+    if "DIG" in ops:
+        # DIG removes whatever is on the tile; a live plant lost this way is damage.
+        for e in r["unit_effects"]:
+            if e["action"][0] != "DIG":
+                continue
+            idx = e["unit"]
+            farm = obs["farms"][seat]
+            pos = farm["farmer"] if idx == 0 else farm["hands"][idx - 1]
+            x, y = int(pos[0]), int(pos[1])
+            t = farm["tiles"][y][x]
+            if isinstance(t, dict) and t.get("kind") == "PLANT":
+                return False, f"DIG removed a live {t['crop']} plant"
+
+    gained_goods = ev["carried_after"] + sum(ev["shed_after"].values()) > \
+        ev["carried_before"] + sum(ev["shed_before"].values())
+    productive = any(o in ("WATER", "HARVEST", "PLANT", "FEED", "CARE",
+                           "COLLECT_FERTILIZER", "FERTILIZE", "BUILD_COOP",
+                           "BUILD_PASTURE", "PLACE", "DROP", "PICKUP") for o in ops)
+    if ev["plant_blocked"]:
+        return False, f"PLANT dropped by the joint seed budget: {ev['plant_blocked']}"
+    if ev["money_delta"] > 0:
+        return True, f"cash +{ev['money_delta']:.0f}"
+    if gained_goods:
+        return True, "goods gained"
+    if productive:
+        return True, "productive tile/unit work"
+    return False, "movement only"

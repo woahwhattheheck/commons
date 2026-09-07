@@ -44,15 +44,45 @@ def _call(agent, obs, config):
 
 
 def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
-         deriv_cards, eval_cards, max_market=3, out=None):
+         deriv_cards, eval_cards, max_market=3, out=None, examples="pairs",
+         bank_path=None):
     warm, warm_label = _load_agent(warmup_spec)
     opp, opp_label = _load_agent(opponent_spec)
     surfaces, prov = exemplars.build(deriv_cards, eval_cards)
 
+    if examples == "control":
+        # No inference: the warm-up agent plays the same window, so the segment's
+        # cash change is attributable to the model turns rather than to the window.
+        env2 = cards_mod.make_env(seed)
+        env2.reset(2)
+        n = 0
+        while not env2.done and n < turns + max(0, from_step):
+            acts = []
+            for i in range(2):
+                o = env2.state[i].observation
+                acts.append(_call(warm if i == seat else opp, o, env2.configuration))
+            step_now = int(env2.state[seat].observation.get("step", 0) or 0)
+            env2.step(acts)
+            n += 1
+            if step_now >= from_step + turns - 1:
+                break
+        money = float(env2.state[0].observation.farms[seat]["money"])
+        opp_money = float(env2.state[0].observation.farms[1 - seat]["money"])
+        r_cfg = {"control": True}
+        return {"seed": seed, "seat": seat, "from_step": from_step,
+                "model_turns": 0, "warmup": warm_label, "opponent": opp_label,
+                "money": money, "opponent_money": opp_money,
+                "margin": money - opp_money, "settings": r_cfg, "turns": [],
+                "summary": {"control": True, "model_turns": 0}}
     env = cards_mod.make_env(seed)
     env.reset(2)
     r = runner_mod.Runner(model_path)
-    d = driver_mod.ModelDriver(r, surfaces, max_market=max_market)
+    bank = None
+    if examples == "bank":
+        import exemplar_bank as EB
+        bank = EB.Bank(bank_path)
+    d = driver_mod.ModelDriver(r, surfaces, max_market=max_market,
+                               examples=examples, bank=bank)
     model_turns = 0
     t_start = time.time()
     try:
@@ -63,7 +93,7 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                 cfg = env.configuration
                 if i == seat:
                     step = int(obs.get("step", 0))
-                    if step >= from_step and model_turns < turns:
+                    if step >= from_step and model_turns < turns and examples != "control":
                         a = d.act(obs, dict(cfg), seat)
                         model_turns += 1
                         last = d.log[-1]
@@ -72,7 +102,11 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                               f"mkt={last['action']['market']!s:34s} "
                               f"{'legal' if last['legal'] else 'ILLEGAL'} "
                               f"{last['timing_s']['model_inference']:5.2f}s"
-                              + (f" REJECT[{last['rejected']}]" if last["rejected"] else ""))
+                              + (f" REJECT[{last['rejected']}]" if last["rejected"] else ""), flush=True)
+                        if last.get("examples_used"):
+                            for e in last["examples_used"]:
+                                print(f"        example[{e['provenance']}] {e['action'][:96]}", flush=True)
+                        print(f"        plan: {(last.get('plan') or '')[:150]}", flush=True)
                     else:
                         a = _call(warm, obs, cfg)
                 else:
@@ -124,10 +158,13 @@ def main():
     ap.add_argument("--eval-cards", required=True)
     ap.add_argument("--max-market", type=int, default=3)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--examples", default="pairs",
+                    choices=("pairs", "bank", "control"))
+    ap.add_argument("--bank", default=None)
     a = ap.parse_args()
     p = play(a.model, a.seed, a.seat, a.from_step, a.turns, a.warmup, a.opponent,
              cards_mod.load(a.deriv_cards), cards_mod.load(a.eval_cards),
-             max_market=a.max_market, out=a.out)
+             max_market=a.max_market, out=a.out, examples=a.examples, bank_path=a.bank)
     print("\n=== summary ===")
     print(json.dumps(p["summary"], indent=1))
     print(f"money={p['money']:.0f} opponent={p['opponent_money']:.0f} margin={p['margin']:+.0f}")

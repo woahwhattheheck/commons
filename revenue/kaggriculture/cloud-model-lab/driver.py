@@ -15,6 +15,7 @@ import time
 import codec
 import constraints
 import exemplars
+import exemplar_bank as EB
 import farmmap
 import prompt as prompt_mod
 import static_prefix
@@ -23,9 +24,15 @@ DEFAULT = {"farmer": ["PASS"], "hands": [], "market": []}
 
 
 class ModelDriver:
-    def __init__(self, runner, surfaces, max_market=3, constrained=True):
+    def __init__(self, runner, surfaces, max_market=3, constrained=True,
+                 examples="pairs", bank=None):
         self.r = runner
-        self.head = exemplars.composed_pattern(surfaces)
+        self.examples = examples
+        self.bank = bank
+        # "pairs": the six concatenated operator surfaces, cue last.
+        # "bank":  1-2 class-matched, action-deduplicated advancing demonstrations
+        #          placed immediately before the live state (the ported mechanism).
+        self.head = exemplars.composed_pattern(surfaces) if examples == "pairs" else ""
         self.max_market = max_market
         self.constrained = constrained
         self.log = []
@@ -43,8 +50,19 @@ class ModelDriver:
         if self._static is None:
             self._static = static_prefix.build(config)
         fmap = farmmap.build(obs, config, seat)
+        bank_block, self._last_rows = "", []
+        if self.examples == "bank" and self.bank is not None:
+            cls = EB.situation_class(obs, config, seat, adm)
+            live_lean = EB.lean_state(fmap + "\n" + prompt_mod.digest(obs, config, seat))
+            rows = self.bank.for_class(cls, EB.context_of(obs), n=2,
+                                       exclude_state=live_lean,
+                                       n_hands=len(adm["units"]) - 1)
+            self._last_rows = rows
+            bank_block = EB.block(rows)
+            self._last_cls = cls
         text = prompt_mod.build(card, adm, self.head, hz=hz, plan=self.plan,
-                                static=self._static, farm_map=fmap)
+                                static=self._static, farm_map=fmap,
+                                bank_block=bank_block)
         rx = codec.card_regex(adm, max_market=self.max_market) if self.constrained else None
         t_prompt = time.perf_counter() - t0
 
@@ -76,5 +94,9 @@ class ModelDriver:
             },
             "engine_counters": res["benchmark"],
             "admissible_farmer_ops": [" ".join(str(t) for t in o) for o in adm["units"][0]],
+            "examples_mode": self.examples,
+            "situation_class": getattr(self, "_last_cls", None),
+            "examples_used": [{"provenance": r["provenance"], "action": r["action"]}
+                              for r in getattr(self, "_last_rows", [])],
         })
         return codec.engine_action(action)

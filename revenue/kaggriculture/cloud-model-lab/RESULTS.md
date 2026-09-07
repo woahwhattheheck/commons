@@ -139,3 +139,90 @@ cards (seed stock, shed capacity with the BUY_SEED asymmetry, `watered_today`,
 farmer and hands, unit-phase-before-market in both directions, quantity domains and
 shared-cash market sequencing, the hour-22 vs hour-23 end-of-day difference,
 overflow discard, cash-only terminal reward, and model-input leakage.
+
+## Model-driven play in the official interpreter
+
+`play.py` steps a real episode and hands the seat to E4B for a bounded number of
+real turns. The actions the model authors are the actions the official interpreter
+executes.
+
+### Bounded segments, seed 7700001 seat 0
+
+| run | examples | turns | legal | syntax rejects | non-PASS | mean inference |
+| --- | --- | --- | --- | --- | --- | --- |
+| from step 150 | six concatenated operator pairs, cue last | 14 | 14/14 | 0 | **0** | 19.7 s |
+| from step 150 | same, `plan` moved ahead of the action | 10 | 10/10 | 0 | **0** | 18.6 s |
+| from step 150 | class-matched bank, before the live state | 2 | 2/2 | 0 | 2 | 16.9 s |
+| from step 3, lean20 warm-up | class-matched bank | 2 | 2/2 | 0 | **2** | 29.1 s |
+
+A no-inference control over the identical step-150 window (the warm-up agent playing
+it instead) ends on the same cash, 2990, so the window itself yields nothing; the
+comparison is against that.
+
+The concatenated-pairs arm emitted PASS on all 24 real turns while its authored plan
+described the live tile correctly, so it was reading the state and not acting on it.
+Moving `plan` ahead of the action did not change that on its own: the plan-order
+hypothesis is disconfirmed alone.
+
+### What the ported exemplar bank changed
+
+`exemplar_bank.py` ports the LDA `ExemplarBank` mechanism (LDA
+`54081cd58d2c45b868b4265c3dcb8990aa1cc9b4`): lean (state -> action) rows keyed by a
+situation class, retrieval of the newest 1-2 for that class deduplicated by action
+shape, placed immediately before the live state. Rows are labelled `model` or
+`teacher:<name>`; a teacher row is never presented as a past model success.
+
+Four defects were found and fixed by reading the first two decisions rather than by
+running a longer batch:
+
+1. **The advance predicate counted a state change as advancement.** Decision 1 was
+   `DIG` while standing on the seat's own healthy age-0 CARROT, which the engine
+   executed and which destroyed the plant. `constraints.advanced` now rejects a DIG
+   that removes a live plant, rejects movement-only turns and rejects PLANT requests
+   the joint seed budget drops; on the same card it scores `DROP` + `SELL CARROT 2`
+   as `cash +70` and `DIG` as `DIG removed a live CARROT plant`. That action was not
+   banked.
+2. **The situation class was too brittle to retrieve anything.** Keying on the exact
+   sorted set of admissible op names made `DGL` and `DL` different classes, so a
+   single-farmer deposit turn matched zero rows while the bank held six of exactly
+   that situation. The class is now orthogonal facts -- water/harvest/plant
+   availability, carrying, on-shed-access, dying, ripe, shed-full -- and retrieval
+   relaxes exact+context, exact, then any-unit-count.
+3. **Retrieved rows have to be shape-compatible.** The relaxed pass offered an
+   8-hand action to a one-unit turn, which the output grammar forbids anyway;
+   retrieval now requires the row's hand count to equal the live one.
+4. **Bank rows lacked the `plan` the emitted shape requires**, so the model filled it
+   with `", "`. Rows now carry a plan and the plan field has a minimum length.
+
+The map and accepted set were also corrected: a tile op is annotated with what it
+acts on (`DIG (acts on (4,4) PLANT CARROT age0d ...)`), because the model had read
+`weeds to DIG (3,4)` off the map and dug the plant under it at (4,4); and carried
+goods are now printed as `CARRIED IN HAND (not on the tile)` separately from the tile
+contents.
+
+### The two decisions on a covered situation
+
+Seed 7700001, seat 0, from step 3, lean20 as warm-up and opponent, class
+`u4|can:-|carry|access|safe|unripe|shedroom`, two exact+context teacher rows from
+`cloud-dispatch/candidate.py::agent`:
+
+```
+day0 h3  {"plan":"Expand livestock and start planting high-value crops",
+          "farmer":["PLACE","SHEEP",1],
+          "hands":[["PLACE","SHEEP",1],["NORTH"],["NORTH"]],
+          "market":[["BUY_ANIMAL","COW",1]]}          legal, 39.2 s
+day0 h4  {"plan":"Feed the existing sheep and prepare for expansion",
+          "farmer":["CARE"],
+          "hands":[["CARE"],["BUILD_PASTURE"],["CARE"]],
+          "market":[["BUY_SEED","WHEAT",1]]}          legal, 19.1 s
+```
+
+Both turns author all three channels, are legal with no joint blocks, carry a
+coherent plan across the turn boundary, and are **not** copies of either retrieved
+example (those were `NORTH` and `FEED`). Cash after the two turns is 214 against the
+opponent's 597, which reflects a 400-cost COW purchase inside a two-turn day-0
+window and is not a score: terminal cash is.
+
+Nothing here establishes a win against the pinned public opponents. FLORA's
+`dispatch_balanced` remains the internal reference at 0/8 against Kaito v43 and Igor
+MultiRoute; this lane has not played them.

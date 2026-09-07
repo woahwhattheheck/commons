@@ -61,8 +61,11 @@ def digest(obs, config, seat):
     for i, (label, pos) in enumerate(units):
         x, y = int(pos[0]), int(pos[1])
         held = invs[i] if i < len(invs) else {}
-        held_s = ",".join(f"{k}{v}" for k, v in sorted(held.items()) if v) or "-"
-        lines.append(f"{label} at ({x},{y}) on [{_tile_str(tiles[y][x], day)}] carrying {held_s}")
+        held_s = ",".join(f"{k}{v}" for k, v in sorted(held.items()) if v) or "nothing"
+        # Carried goods are in the unit's hands and are NOT the tile it stands on;
+        # conflating the two is what made a carried CARROT2 read as the age-0 plant.
+        lines.append(f"{label} at ({x},{y}); TILE UNDER IT = [{_tile_str(tiles[y][x], day)}]; "
+                     f"CARRIED IN HAND (not on the tile) = {held_s}")
     seeds = ",".join(f"{k}{v}" for k, v in sorted(priv.get("seeds", {}).items()) if v) or "-"
     lines.append(f"seeds {seeds}")
     shed_s = ",".join(f"{k}{v}" for k, v in sorted(shed.items()) if v) or "-"
@@ -103,20 +106,43 @@ def rules_block(adm):
     return "\n".join(out)
 
 
-def accepted_block(adm):
+TILE_OPS = {"WATER", "HARVEST", "DIG", "FERTILIZE", "FEED", "CARE",
+            "COLLECT_FERTILIZER", "BUILD_COOP", "BUILD_PASTURE", "PLANT"}
+
+
+def accepted_block(adm, obs=None, seat=0):
+    """The accepted set, with each tile op annotated by WHAT IT ACTS ON.
+
+    Without this the model read "weeds to DIG (3,4)" on the map and emitted DIG while
+    standing on its own healthy carrot at (4,4), destroying it. A tile op always acts
+    on the tile the unit occupies, never on the tile the map happens to mention.
+    """
     out = []
     labels = ["farmer"] + [f"hands[{i}]" for i in range(len(adm["units"]) - 1)]
+    targets = []
+    if obs is not None:
+        farm = obs["farms"][seat]
+        day = int(obs["day"])
+        poss = [farm["farmer"]] + list(farm.get("hands", []))
+        for p in poss:
+            x, y = int(p[0]), int(p[1])
+            targets.append(f"({x},{y}) {_tile_str(farm['tiles'][y][x], day)}")
     for i, (label, ops) in enumerate(zip(labels, adm["units"])):
         rendered = []
         q = adm["quantities"][i]
+        tgt = targets[i] if i < len(targets) else None
         for op in ops:
             if op[0] == "PICKUP":
                 rendered.append(f"PICKUP {op[1]} n<={q['PICKUP'].get(op[1], 1)}")
             elif op[0] == "PLACE":
-                rendered.append(f"PLACE {op[1]} n<={q['PLACE_to_shed'].get(op[1], 1)}")
+                rendered.append(f"PLACE {op[1]} n<={q['PLACE_to_shed'].get(op[1], 1)}"
+                                " (from what this unit carries, into the shed)")
+            elif op[0] in TILE_OPS and tgt:
+                rendered.append(" ".join(str(t) for t in op) + f" (acts on {tgt})")
             else:
                 rendered.append(" ".join(str(t) for t in op))
-        out.append(f"{label}: " + " | ".join(rendered))
+        suffix = f"  [standing on {tgt}]" if tgt else ""
+        out.append(f"{label}:{suffix} " + " | ".join(rendered))
 
     def _m(entries):
         return " | ".join(
@@ -183,7 +209,8 @@ def objective_block(obs, config, seat, hz):
     return "\n".join(lines)
 
 
-def build(card, adm, head, hz=None, plan=None, static=None, farm_map=None):
+def build(card, adm, head, hz=None, plan=None, static=None, farm_map=None,
+          bank_block=None):
     """Static rules/economy first, then live state, then objective and plan, then the
     accepted set, and the operator surface with its output cue LAST.
 
@@ -193,6 +220,11 @@ def build(card, adm, head, hz=None, plan=None, static=None, farm_map=None):
     parts = []
     if static:
         parts.append(static)
+    if bank_block:
+        # Source placement (ExemplarBank call site, AgentOrchestrator.kt): the
+        # demonstrations sit immediately BEFORE the live state, so continuing the
+        # pattern is the action for the live state.
+        parts.append(bank_block)
     parts.append(f"LIVE FARM\n{farm_map}" if farm_map else
                  f"STATE\n{digest(obs, cfg, seat)}")
     parts.append(f"HOLDINGS AND MARKET\n{digest(obs, cfg, seat)}")
@@ -202,6 +234,8 @@ def build(card, adm, head, hz=None, plan=None, static=None, farm_map=None):
     parts.append(f"YOUR PLAN SO FAR: {plan}" if plan else
                  "YOUR PLAN SO FAR: none yet -- set one in the plan field.")
     parts.append(f"TURN RULES\n{rules_block(adm)}")
-    parts.append(f"ACCEPTED (the engine acts on exactly these)\n{accepted_block(adm)}")
-    parts.append(head)
+    parts.append("ACCEPTED (the engine acts on exactly these)\n"
+                 + accepted_block(adm, obs, seat))
+    if head:
+        parts.append(head)
     return "\n\n".join(parts) + "\n"
