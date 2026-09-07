@@ -1,0 +1,89 @@
+name: titan-selected-projection
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-selected-projection.yml'
+      - 'revenue/kaggriculture/cloud-selected-projection/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_selected_action_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_engine_semantics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-selected-projection/
+            /revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py
+            /revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py
+            /revenue/kaggriculture/cloud-execution-lab/mechanics.py
+            /revenue/kaggriculture/cloud-execution-lab/test_selected_action_sell.py
+            /revenue/kaggriculture/cloud-execution-lab/test_engine_semantics.py
+            /revenue/kaggriculture/cloud-execution-lab/reference/evaluator/
+            /revenue/kaggriculture/cloud-execution-lab/reference/engine/
+            /revenue/kaggriculture/cloud-execution-lab/reference/selected-action/
+            /revenue/kaggriculture/cloud-execution-lab/reference/decision/
+      - name: Record committed test and runtime inputs
+        shell: python
+        run: |
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / 'projection-validation'
+          out.mkdir()
+          root = Path('revenue/kaggriculture')
+          paths = [p for d in (root/'cloud-selected-projection', root/'cloud-execution-lab')
+                   for p in d.rglob('*') if p.is_file()]
+          files = {}
+          for path in sorted(paths):
+              data = path.read_bytes()
+              files[str(path)] = {'size': len(data), 'sha256': hashlib.sha256(data).hexdigest(),
+                                 'git_blob': hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()}
+          report = {'checkout': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+                    'run_id': os.environ['GITHUB_RUN_ID'], 'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+                    'python': subprocess.check_output(['python3','--version'], text=True).strip(),
+                    'files': files, 'scope': 'focused deterministic tests; no gameplay panels'}
+          (out/'SOURCE-SNAPSHOT.json').write_text(json.dumps(report, indent=2)+'\n')
+      - name: Existing selected-action SELL interface tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest test_selected_action_sell -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/original-seller-tests.log"
+      - name: Projection and ordered-transfer consumer tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 revenue/kaggriculture/cloud-selected-projection/test_projection.py \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
+            --engine-cache "$LAB/reference/engine" \
+            --seller "$LAB/selected_action_sell.py" \
+            --report "$RUNNER_TEMP/projection-validation/projection-results.json" -v \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/projection-tests.log"
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: titan-selected-projection-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/projection-validation/
+          if-no-files-found: error
+          retention-days: 7

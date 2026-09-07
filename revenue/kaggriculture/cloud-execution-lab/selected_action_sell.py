@@ -194,6 +194,10 @@ class ProjectionLedger:
         def phase_ok(t, phase):
             for product, delta in self.events.get((t, phase), []):
                 stock[product] = stock.get(product, 0) + delta
+                # Worker transfers are ordered: a later withdrawal cannot
+                # recover an earlier spill or fund an earlier pickup.
+                if stock[product] < 0 or sum(stock.values()) > self.capacity:
+                    return False
             if any(q < self.stock_min.get(p, 0) for p, q in stock.items()):
                 return False
             if any(stock.get(p, 0) < q for p, q in self.stock_min.items()):
