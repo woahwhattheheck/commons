@@ -1,0 +1,137 @@
+--- a/examples/migrations/agno-user-memory/convert.py
++++ b/examples/migrations/agno-user-memory/convert.py
+@@ -74,6 +74,13 @@
+     if not isinstance(value, str) or not value.strip():
+         raise ValueError(f"{name} must be a nonempty string")
+     return value
++
++
++def _display_text(value: str) -> str:
++    """Keep control sequences out of fields that upstream later writes as YAML."""
++    return value.replace(ENTRY_DELIMITER, "&lt;!-- okf-entry --&gt;").replace(
++        RECORD_MARKER, "&#96;&#96;&#96;agno-record-v1"
++    )
+ 
+ 
+ def render_export(export: dict[str, Any]) -> dict[str, str]:
+@@ -111,12 +118,12 @@
+         digest = hashlib.sha256(identity.encode("ascii")).hexdigest()
+         frontmatter: dict[str, Any] = {
+             "type": "observation",
+-            "title": " ".join(memory.split())[:80],
++            "title": _display_text(" ".join(memory.split()))[:80],
+             "resource": (
+                 f"agno://users/{quote(user_id, safe='')}"
+                 f"/memories/{quote(memory_id, safe='')}"
+             ),
+-            "tags": list(dict.fromkeys(["agno", *topics])),
++            "tags": list(dict.fromkeys(["agno", *(_display_text(t) for t in topics)])),
+             "x_memanto": {
+                 "type": "observation",
+                 "source": "agno",
+@@ -131,8 +138,7 @@
+             frontmatter["x_memanto"]["updated_at"] = updated
+         # Upstream splits on the sentinel even inside prose or a JSON string.
+         # Escape its display spelling; the exact source is in the JSON block.
+-        display = memory.replace(ENTRY_DELIMITER, "&lt;!-- okf-entry --&gt;")
+-        display = display.replace(RECORD_MARKER, "&#96;&#96;&#96;agno-record-v1")
++        display = _display_text(memory)
+         body = f"{display}\n\n{RECORD_MARKER}\n{canonical(record)}\n```"
+         if len(body) > MAX_BODY_CHARS:
+             raise ValueError(f"record {position}: content exceeds lossless size budget")
+--- a/examples/migrations/agno-user-memory/README.md
++++ b/examples/migrations/agno-user-memory/README.md
+@@ -38,7 +38,8 @@
+ python -m pytest -q tests/test_okf.py
+ ```
+ 
+-Dependency installation has not been exercised in the preparation environment.
++Dependency installation was exercised in an isolated Python 3.11 GitHub Actions
++runner on September 7, 2026. See the accompanying validation receipt for results.
+ `requirements-source.txt` pins Agno's source and selects only its SQL extra, not
+ model-provider, `all`, or local-inference extras. Transitive dependencies are not
+ lockfile-pinned. Do not install llama.cpp-related packages or use an owner-PC
+@@ -110,8 +111,8 @@
+ Memanto's supporting-data footer truncates oversized metadata. Keeping the
+ complete record in the body avoids depending on that footer for fidelity.
+ The JSON is deterministic and escapes Markdown control characters. The exact
+-`<!-- okf-entry -->` sentinel is escaped in the display body because the pinned
+-loader splits on that substring. The JSON still reconstructs the original value.
++`<!-- okf-entry -->` sentinel is escaped in displayed text, titles, and tags
++because the pinned loader splits on that substring. The JSON still reconstructs the original value.
+ This is a producer-side compatibility rule, not a change to the upstream loader.
+ 
+ All records are validated before creating a bundle. Duplicate IDs, wrong user
+@@ -148,3 +149,11 @@
+ 
+ Sources: https://github.com/moorcheh-ai/memanto/issues/1609 and the repository's
+ CONTRIBUTING.md. The chat handoff contains detailed source links and gate status.
++
++### Re-export control sequences
++
++Titles, displayed memory text, and projected tags escape the OKF entry delimiter
++and the embedded-record fence marker. Escaping only the initial JSON frontmatter
++is insufficient: Memanto's exporter decodes those strings and serializes them as
++YAML on the next hop. The original title source and original topics remain exact
++in the embedded canonical Agno record; ordinary projected tags are unchanged.
+--- a/examples/migrations/agno-user-memory/tests/test_memanto.py
++++ b/examples/migrations/agno-user-memory/tests/test_memanto.py
+@@ -28,12 +28,24 @@
+         "[retained link](https://example.invalid/source) " * 60,
+     ],
+ )
+-def test_actual_import_export_and_reimport_preserve_source_record(tmp_path, memory):
++@pytest.mark.parametrize(
++    ("topics", "expected_tags"),
++    [
++        (["on", "time"], ["agno", "on", "time"]),
++        (
++            ["<!-- okf-entry -->", "```agno-record-v1"],
++            ["agno", "&lt;!-- okf-entry --&gt;", "&#96;&#96;&#96;agno-record-v1"],
++        ),
++    ],
++)
++def test_actual_import_export_and_reimport_preserve_source_record(
++    tmp_path, memory, topics, expected_tags
++):
+     record = {
+         "memory_id": "same-id",
+         "user_id": "test-user",
+         "memory": memory,
+-        "topics": ["on", "time"],
++        "topics": topics,
+         "created_at": 0,
+         "updated_at": 172800,
+         "input": "Synthetic regression input, not a genuine source archive.",
+@@ -57,7 +69,8 @@
+     assert row["source_ref"] == "agno://users/test-user/memories/same-id"
+     assert row["type"] == "observation"
+     assert row["provenance"] == "imported"
+-    assert row["tags"] == ["agno", "on", "time"]
++    assert row["tags"] == expected_tags
++    assert "<!-- okf-entry -->" not in row["title"]
+     assert recover_record(row["content"]) == record
+     assert len(row["content"]) <= 10_000
+     assert verify(source, bundle)["exact_records_matched"] == 1
+--- a/examples/migrations/agno-user-memory/tests/test_convert.py
++++ b/examples/migrations/agno-user-memory/tests/test_convert.py
+@@ -272,3 +272,19 @@
+     assert report["okf_document_bytes"] == sum(
+         len(path.read_bytes()) for path in output.rglob("*.md")
+     )
++
++
++def test_decoded_projection_fields_do_not_reintroduce_control_sequences():
++    """Re-export serializes decoded fields as YAML, not our escaped JSON."""
++    record = {
++        "memory_id": "control-sequences",
++        "user_id": "alice",
++        "memory": "<!-- okf-entry --> followed by ```agno-record-v1",
++        "topics": ["<!-- okf-entry -->", "```agno-record-v1"],
++    }
++    docs = render_export({"format": FORMAT, "user_id": "alice", "memories": [record]})
++    text = next(iter(docs.values()))
++    metadata = yaml.safe_load(text.split("---\n", 2)[1])
++    assert "<!-- okf-entry -->" not in yaml.safe_dump(metadata)
++    assert "```agno-record-v1" not in yaml.safe_dump(metadata)
++    assert recover_record(text) == record
