@@ -1,0 +1,53 @@
+name: ASTRA GR Dozer 1659 validation
+on:
+  push:
+    branches: [astra/gr-dozer-1659-20260907]
+    paths:
+      - .github/workflows/astra-gr-dozer-1659.yml
+      - contributions/dozer-1659/**
+permissions:
+  contents: read
+concurrency:
+  group: astra-gr-dozer-1659
+  cancel-in-progress: false
+jobs:
+  sql:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout pinned upstream
+        uses: actions/checkout@v4
+        with:
+          repository: getdozer/dozer
+          ref: 8b0b4cc021db089722cb3d48dbe915e8e9c532ec
+          submodules: recursive
+          persist-credentials: false
+      - name: Install native build prerequisites
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y protobuf-compiler libclang-dev libssl-dev pkg-config
+      - name: Record toolchain and source
+        run: |
+          git rev-parse HEAD
+          git submodule status
+          rustc --version
+          cargo --version
+      - name: Cache Rust compilation
+        uses: Swatinem/rust-cache@v2
+        with:
+          shared-key: astra-gr-dozer-8b0b4cc
+      - name: Test upstream selection baseline
+        env:
+          CARGO_TERM_COLOR: never
+          CARGO_BUILD_JOBS: '2'
+        run: |
+          set -o pipefail
+          cargo test --locked -p dozer-sql --lib selection:: -- --nocapture 2>&1 | tee "$RUNNER_TEMP/dozer-baseline.log"
+      - name: Preserve actual validation log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: astra-gr-dozer-baseline-${{ github.run_id }}
+          path: ${{ runner.temp }}/dozer-baseline.log
+          if-no-files-found: warn
+          retention-days: 7
