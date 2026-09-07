@@ -160,7 +160,8 @@ class Actor:
     def __init__(self, spec, cache, loader, rng_seed, startup_timeout=10.0):
         self.spec, self.buffer = spec, bytearray()
         self.stats = {"calls": 0, "call_seconds": [], "rpc_seconds": [], "call_cpu_seconds": 0.0,
-                      "cpu_seconds": 0.0, "peak_rss_kib": 0, "exit_code": None, "resource_sample": "child_rusage"}
+                      "cpu_seconds": 0.0, "peak_rss_kib": 0, "exit_code": None, "resource_sample": "child_rusage",
+                      "final_resource_sample": "unavailable"}
         self.directory = tempfile.TemporaryDirectory(prefix="kag-eval-agent-")
         env = {"PATH": os.defpath, "HOME": self.directory.name, "LANG": "C.UTF-8",
                "PYTHONHASHSEED": str(rng_seed % (2**32)), "PYTHONDONTWRITEBYTECODE": "1"}
@@ -235,6 +236,38 @@ class Actor:
             self.stats["call_cpu_seconds"] += cpu
         return result
 
+    def _wait_with_usage(self, timeout=None):
+        """Reap our worker once, retaining the OS sample even after an RPC timeout."""
+        wait4 = getattr(os, "wait4", None)
+        if wait4 is None or self.proc.returncode is not None:
+            if self.stats["final_resource_sample"] == "unavailable":
+                self.stats["final_resource_sample"] = (
+                    "unavailable:wait4_unsupported" if wait4 is None else "unavailable:already_reaped")
+            return self.proc.wait(timeout=timeout)
+        deadline = None if timeout is None else time.monotonic() + timeout
+        while True:
+            try:
+                pid, status, value = wait4(self.proc.pid, 0 if deadline is None else os.WNOHANG)
+            except InterruptedError:
+                if deadline is not None and time.monotonic() >= deadline:
+                    raise subprocess.TimeoutExpired(self.proc.args, timeout) from None
+                continue
+            except OSError as exc:
+                self.stats["final_resource_sample"] = f"unavailable:wait4_errno_{exc.errno}"
+                return self.proc.wait(timeout=timeout)
+            if pid:
+                # Actor exclusively owns this Popen's reaping. Do not poll()/wait()
+                # beforehand: those consume the status without retaining rusage.
+                self.proc.returncode = os.waitstatus_to_exitcode(status)
+                rss = value.ru_maxrss / 1024 if sys.platform == "darwin" else value.ru_maxrss
+                self._measure({"cpu_seconds": value.ru_utime + value.ru_stime, "peak_rss_kib": rss})
+                self.stats["final_resource_sample"] = "wait4"
+                return self.proc.returncode
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise subprocess.TimeoutExpired(self.proc.args, timeout)
+            time.sleep(min(0.01, remaining))
+
     def close(self):
         if getattr(self, "closed", False):
             return
@@ -254,20 +287,17 @@ class Actor:
                 pass  # Already exited: the last child-reported sample remains available.
         # Kill the process group, including children, before discarding its private directory.
         # Do not wait for a crashed/hung agent to consume another game slot.
-        self.stats["exit_code"] = self.proc.poll()
         if self.proc.stdin:
             self.proc.stdin.close()
         try:
-            self.proc.wait(timeout=0.1)
+            self._wait_with_usage(timeout=0.1)
         except subprocess.TimeoutExpired:
             pass
         try:
             os.killpg(self.proc.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
-        self.proc.wait()
-        if self.stats["exit_code"] is None:
-            self.stats["exit_code"] = self.proc.returncode
+        self.stats["exit_code"] = self._wait_with_usage()
         self.proc.stdout.close()
         self.directory.cleanup()
 
@@ -456,7 +486,7 @@ def main():
               "platform": sys.platform, "resource_usage": usage(),
               "limits": {"action_rpc_seconds": args.action_timeout, "startup_seconds": args.startup_timeout,
                          "game_seconds_between_steps": args.game_timeout, "remaining_overage_time": 0},
-              "method": "Official interpreter with explicit driver; not hosted Kaggle scoring. Decision timings are child-reported; RPC deadlines are parent-enforced. Resource samples combine child rusage with Linux procfs before cleanup. Entry-file hashes do not cover arbitrary agent dependencies.",
+              "method": "Official interpreter with explicit driver; not hosted Kaggle scoring. Decision timings are child-reported; RPC deadlines are parent-enforced. Resource samples combine child rusage, available Linux procfs, and final wait4 usage when supported; actor provenance records the actual sources. Entry-file hashes do not cover arbitrary agent dependencies.",
               "summary": summarize(games), "games": games, "reproducibility": reproducibility}
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile("w", dir=args.output.parent, delete=False) as file:
