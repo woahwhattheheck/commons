@@ -41,12 +41,9 @@ def encode_turn(action):
     )
 
 
-def _first_json_object(text):
-    """The first balanced {...} in the text, string/escape aware."""
-    depth = 0
-    start = None
-    in_str = False
-    esc = False
+def _json_objects(text):
+    """Every balanced top-level {...} in the text, string/escape aware."""
+    out, depth, start, in_str, esc = [], 0, None, False, False
     for i, ch in enumerate(text):
         if in_str:
             if esc:
@@ -66,8 +63,26 @@ def _first_json_object(text):
             if depth:
                 depth -= 1
                 if depth == 0:
-                    return text[start:i + 1]
-    raise Rejected("no balanced JSON object in output")
+                    out.append(text[start:i + 1])
+    return out
+
+
+def _single_json_object(text):
+    """Exactly ONE current-turn object, or a rejection.
+
+    Taking the first balanced object would silently accept an echoed exemplar: the
+    pattern arm did emit a derivation exemplar verbatim, and its output JSON would
+    have parsed cleanly while describing a different card. An emission carrying more
+    than one object is ambiguous about which turn is being played, so it is rejected
+    rather than resolved by a positional guess.
+    """
+    objs = _json_objects(text)
+    if not objs:
+        raise Rejected("no balanced JSON object in output")
+    if len(objs) > 1:
+        raise Rejected(f"{len(objs)} JSON objects emitted; expected exactly one "
+                       f"current-turn object (echoed example?)")
+    return objs[0]
 
 
 def _norm_unit(entry, where):
@@ -126,14 +141,14 @@ def decode_turn(text):
     """Model text -> engine action dict. Raises Rejected with a reason."""
     if not isinstance(text, str) or not text.strip():
         raise Rejected("empty output")
-    blob = _first_json_object(text)
+    blob = _single_json_object(text)
     try:
         obj = json.loads(blob)
     except Exception as exc:
         raise Rejected(f"not valid JSON: {exc}")
     if not isinstance(obj, dict):
         raise Rejected("top level is not an object")
-    unknown = set(obj) - {"farmer", "hands", "market"}
+    unknown = set(obj) - {"farmer", "hands", "market", "plan"}
     if unknown:
         raise Rejected(f"unknown top-level keys: {sorted(unknown)}")
     if "farmer" not in obj:
@@ -147,7 +162,13 @@ def decode_turn(text):
     if not isinstance(market_raw, list):
         raise Rejected("'market' is not a list")
     market = [_norm_market(m, f"market[{i}]") for i, m in enumerate(market_raw)]
-    return {"farmer": farmer, "hands": hands, "market": market}
+    plan = obj.get("plan")
+    if plan is not None and not isinstance(plan, str):
+        raise Rejected("'plan' is not a string")
+    out = {"farmer": farmer, "hands": hands, "market": market}
+    if plan is not None:
+        out["plan"] = plan
+    return out
 
 
 def _in_set(entry, admissible_set):
@@ -171,6 +192,11 @@ def _max_n(adm, key, order):
         if m["order"][0] == order[0] and m["order"][1:] == order[1:2]:
             return m["max_n"]
     return None
+
+
+def engine_action(action):
+    """Strip the model's carried plan: the engine takes only the three turn keys."""
+    return {"farmer": action["farmer"], "hands": action["hands"], "market": action["market"]}
 
 
 def legality(action, adm):
@@ -290,3 +316,69 @@ TIGHT_SCHEMA = {
                              "items": {"type": ["string", "integer"]}}},
     },
 }
+
+
+def card_regex(adm, max_market=3):
+    """A regex over THIS card's admissible set: the applicable constraint, at decode.
+
+    The global `turn_regex` binds only the grammar, so a constrained decode could
+    still be inadmissible. Building the alternation from the engine-derived
+    admissible set makes every accepted emission legal by construction, while
+    leaving the CHOICE inside that set entirely to the model -- code supplies the
+    constraint and decodes the output, it does not pick the op.
+
+    PASS stays in the alternation because the engine admits it; it is never the only
+    option offered when others exist.
+    """
+    import re as _re
+
+    def unit_alt(ops, quantities):
+        alts = []
+        for op in ops:
+            if len(op) == 1:
+                alts.append(_re.escape(f'["{op[0]}"]'))
+            elif op[0] == "PLANT":
+                alts.append(_re.escape(f'["PLANT","{op[1]}"]'))
+            else:
+                dom = quantities.get("PICKUP" if op[0] == "PICKUP" else "PLACE_to_shed", {})
+                cap = max(1, int(dom.get(op[1], 1)))
+                alts.append(_re.escape(f'["{op[0]}","{op[1]}",') + _num(cap) + _re.escape("]"))
+        return "(?:" + "|".join(alts) + ")"
+
+    def _num(cap):
+        return "(?:" + "|".join(str(i) for i in range(1, cap + 1)) + ")"
+
+    orders = []
+    seen = set()
+    for src in ("market", "market_after_full_deposit"):
+        for m in adm[src]:
+            key = tuple(m["order"])
+            if key in seen:
+                continue
+            seen.add(key)
+            if len(m["order"]) == 1:
+                orders.append(_re.escape(f'["{m["order"][0]}"]'))
+            else:
+                cap = max(1, int(m["max_n"]))
+                orders.append(_re.escape(f'["{m["order"][0]}","{m["order"][1]}",')
+                              + _num(cap) + _re.escape("]"))
+    order_alt = "(?:" + "|".join(orders) + ")" if orders else None
+
+    farmer = unit_alt(adm["units"][0], adm["quantities"][0])
+    hands = [unit_alt(adm["units"][i + 1], adm["quantities"][i + 1])
+             for i in range(len(adm["units"]) - 1)]
+    hands_re = r"\[" + ",".join(hands) + r"\]" if hands else r"\[\]"
+    k = min(max_market, adm["max_market_orders"])
+    if order_alt:
+        market_re = r"\[(?:" + order_alt + r"(?:," + order_alt + r"){0," + str(k - 1) + r"})?\]"
+    else:
+        market_re = r"\[\]"
+    # The plan is emitted FIRST. With it last, the model had to commit to the action
+    # before writing a single token of its reasoning, and it emitted PASS on 14/14
+    # real turns while its plan text described the state correctly. Generating the
+    # plan first lets the decode condition the action on it. The plan is
+    # model-authored, carried across turns, and stripped before the engine sees the
+    # action; it is bounded so it cannot eat the output budget.
+    plan_re = r'"plan":"[^"\\\\]{0,200}",'
+    return (r'\{' + plan_re + r'"farmer":' + farmer + r',"hands":' + hands_re
+            + r',"market":' + market_re + r"\}")

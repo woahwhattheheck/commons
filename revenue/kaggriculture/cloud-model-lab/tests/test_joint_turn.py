@@ -242,6 +242,37 @@ def test_no_leakage(card):
           str(c["step"]) not in text.split("STATE")[0] and c["agent"] not in text)
 
 
+def test_absolute_clock(card):
+    """A seat observation without `step` must still report the real clock."""
+    c = copy.deepcopy(card)
+    seat = c["seat"]
+    obs, cfg = c["observation"], c["configuration"]
+    tpd = int(cfg["turnsPerDay"])
+    expected = int(obs["day"]) * tpd + int(obs["hour"])
+    stripped = copy.deepcopy(obs)
+    stripped.pop("step", None)
+    check("clock: derived from day and hour when `step` is absent",
+          constraints.absolute_step(stripped, cfg) == expected,
+          f"got {constraints.absolute_step(stripped, cfg)} want {expected}")
+    last = int(cfg["episodeSteps"]) - 2
+    check("clock: horizon is unchanged by a missing `step`",
+          constraints.horizon(stripped, cfg, seat)["remaining_decisions"]
+          == constraints.horizon(obs, cfg, seat)["remaining_decisions"]
+          == max(0, last - expected + 1),
+          f"stripped={constraints.horizon(stripped, cfg, seat)['remaining_decisions']} "
+          f"want {max(0, last - expected + 1)}")
+    check("clock: end-of-day boundary survives a missing `step`",
+          constraints.turn_rules(stripped, cfg, seat)["end_of_day_this_turn"]
+          == ((expected + 1) % tpd == 0))
+    # evaluate_turn must replay at the right day, not day 0.
+    r = constraints.evaluate_turn(stripped, cfg, seat,
+                                  {"farmer": ["PASS"], "hands": [], "market": []})
+    r2 = constraints.evaluate_turn(obs, cfg, seat,
+                                   {"farmer": ["PASS"], "hands": [], "market": []})
+    check("clock: evaluate_turn replays identically with and without `step`",
+          r["money_after"] == r2["money_after"] and r["shed_after"] == r2["shed_after"])
+
+
 def main():
     base = fixture(steps=(150,))[0]
     h22 = fixture(steps=(6 * 24 + 22,))[0]
@@ -253,6 +284,8 @@ def main():
     test_quantity_domains(base)
     test_end_of_day_and_terminal(h22, h23)
     test_no_leakage(base)
+    seat1 = fixture(seed=9900017, steps=(200,), seat=1)[0]
+    test_absolute_clock(seat1)
     print()
     if FAILURES:
         print(f"{len(FAILURES)} FAILED: {FAILURES}")

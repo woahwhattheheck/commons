@@ -163,14 +163,45 @@ def horizon_block(hz):
     return "\n".join(lines)
 
 
-def build(card, adm, head, hz=None):
-    """head = an operator surface, or the baseline instruction. Constraint leads."""
-    parts = [
-        head,
-        f"STATE\n{digest(card['observation'], card['configuration'], card['seat'])}",
+def objective_block(obs, config, seat, hz):
+    """The actual scored objective, stated on EVERY turn, not only the last one."""
+    money = int(obs["farms"][seat]["money"])
+    other = int(obs["farms"][1 - seat]["money"])
+    shed_units = sum(obs["private"].get("shed", {}).values())
+    carried = sum(sum(i.values()) for i in obs["private"].get("inventories", []))
+    lines = [
+        f"OBJECTIVE: end the episode with more CASH than the opponent. Only cash is "
+        f"scored -- goods in the shed or carried by a unit are worth 0 at the end, so "
+        f"every unit you grow or buy has to be SOLD to count.",
+        f"your cash {money}; opponent cash {other}; you are "
+        f"{'ahead' if money > other else 'behind' if money < other else 'level'} by "
+        f"{abs(money - other)}.",
+        f"unsold: {shed_units} unit(s) in the shed, {carried} carried by units.",
+        f"{hz['remaining_decisions']} decision(s) left (last is step "
+        f"{hz['last_decision_step']}); {hz['turns_left_today']} turn(s) left today.",
     ]
+    return "\n".join(lines)
+
+
+def build(card, adm, head, hz=None, plan=None, static=None, farm_map=None):
+    """Static rules/economy first, then live state, then objective and plan, then the
+    accepted set, and the operator surface with its output cue LAST.
+
+    The static block is byte-identical every turn, so it is a stable reusable prefix.
+    """
+    obs, cfg, seat = card["observation"], card["configuration"], card["seat"]
+    parts = []
+    if static:
+        parts.append(static)
+    parts.append(f"LIVE FARM\n{farm_map}" if farm_map else
+                 f"STATE\n{digest(obs, cfg, seat)}")
+    parts.append(f"HOLDINGS AND MARKET\n{digest(obs, cfg, seat)}")
     if hz is not None:
-        parts.append(f"PLANTS AND HORIZON\n{horizon_block(hz)}")
-    parts.append(f"RULES\n{rules_block(adm)}")
+        parts.append(f"PRODUCTION AND HORIZON\n{horizon_block(hz)}")
+        parts.append(objective_block(obs, cfg, seat, hz))
+    parts.append(f"YOUR PLAN SO FAR: {plan}" if plan else
+                 "YOUR PLAN SO FAR: none yet -- set one in the plan field.")
+    parts.append(f"TURN RULES\n{rules_block(adm)}")
     parts.append(f"ACCEPTED (the engine acts on exactly these)\n{accepted_block(adm)}")
+    parts.append(head)
     return "\n\n".join(parts) + "\n"

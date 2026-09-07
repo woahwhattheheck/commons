@@ -56,6 +56,25 @@ def visible_config(config):
     return {k: config[k] for k in VISIBLE_CONFIG if k in config and config[k] is not None}
 
 
+def absolute_step(obs, config):
+    """The observable absolute clock: day * turnsPerDay + hour.
+
+    A seat's observation does not always carry `step` -- the seat-1 capture
+    s9900017-t200-p1 has day 8 / hour 8 and no `step`, and reading `obs.get("step", 0)`
+    made it look like step 0, which reported 719 remaining decisions instead of 519.
+    day and hour are always present and always player-visible, so they are the source
+    of truth; `step` is used only as a cross-check when present. The hidden episode
+    seed is never consulted.
+    """
+    tpd = int(config.get("turnsPerDay", 24) or 24) if isinstance(config, dict) else 24
+    derived = int(obs["day"]) * tpd + int(obs["hour"])
+    given = obs.get("step")
+    if given is not None and int(given) != derived:
+        # Trust the observable clock; the engine itself derives day/hour from step.
+        return derived
+    return derived
+
+
 def _cfg(config, key, default):
     v = config.get(key, default) if isinstance(config, dict) else default
     return default if v is None else v
@@ -204,7 +223,7 @@ def turn_rules(obs, config, seat):
     """The joint-turn facts, as data. Rendered to the model verbatim, never applied for it."""
     tpd = int(_cfg(config, "turnsPerDay", 24))
     hour = int(obs["hour"])
-    step = int(obs.get("step", 0))
+    step = absolute_step(obs, config)
     episode_steps = int(_cfg(config, "episodeSteps", 720))
     seeds = {k: int(v) for k, v in obs["private"].get("seeds", {}).items()}
     n_hands = len(obs["farms"][seat].get("hands", []))
@@ -270,9 +289,15 @@ def evaluate_turn(obs, config, seat, action):
     from kaggle_environments.utils import structify
 
     obs_a = copy.deepcopy(obs)
+    # The interpreter reads obs0.step directly; a seat observation without `step`
+    # would replay as step 0 (wrong day, wrong end-of-day boundary). Normalise both
+    # replay observations to the observable absolute clock first.
+    step_now = absolute_step(obs, config)
+    obs_a["step"] = step_now
     other = 1 - seat
     obs_b = copy.deepcopy(obs)
     obs_b["player"] = other
+    obs_b["step"] = step_now
     obs_b["private"] = {"shed": {}, "inventories": [{}], "seeds": {}}
     # farms is the shared public list; both observations must alias the same object
     # exactly as the engine does when it fans state out after each step.
@@ -409,7 +434,7 @@ def plant_horizon(tile, day, step, turns_per_day):
 def horizon(obs, config, seat):
     """Production/decay horizon for every owned plant, plus the cash-realization clock."""
     tpd = int(_cfg(config, "turnsPerDay", 24))
-    day, step = int(obs["day"]), int(obs.get("step", 0))
+    day, step = int(obs["day"]), absolute_step(obs, config)
     episode_steps = int(_cfg(config, "episodeSteps", 720))
     farm = obs["farms"][seat]
     plants = []

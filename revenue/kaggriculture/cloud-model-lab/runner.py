@@ -122,6 +122,30 @@ class Runner:
                 "token_count": tok, "benchmark": bench,
                 "constrained": (binder if constrained else False)}
 
+    def ask_regex(self, text, pattern):
+        """Decode bound to an explicit regex -- used for the per-card admissible grammar."""
+        L = self.L
+        conv = self.engine.create_conversation(
+            sampler_config=self.sampler, thinking_config=self.thinking_cfg,
+            max_output_tokens=self.max_output_tokens,
+            constrained_decoding_config=L.ConstrainedDecodingConfig(
+                enable=True, provider=L.LiteRtLmConstraintProviderType.LL_GUIDANCE))
+        t0 = time.perf_counter()
+        try:
+            resp = conv.send_message(text, response_format=L.ResponseFormat.regex(pattern))
+            wall = time.perf_counter() - t0
+            out, err = _response_text(resp), None
+        except Exception as exc:
+            wall = time.perf_counter() - t0
+            out, err = "", f"{type(exc).__name__}: {exc}"
+        bench = self._bench(conv)
+        try:
+            conv.close()
+        except Exception:
+            pass
+        return {"input": text, "output": out, "error": err, "wall_s": wall,
+                "token_count": None, "benchmark": bench, "constrained": "card_regex"}
+
     def tokenize_len(self, text):
         try:
             return len(self.engine.tokenize(text))
