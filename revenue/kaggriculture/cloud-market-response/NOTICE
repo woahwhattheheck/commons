@@ -1,0 +1,23 @@
+T12 market-response research by Commons contributors, 2026.
+
+flow.py and policy.py are new MIT-licensed work. They compose, rather than alter,
+the frozen SELL scheduler in ../cloud-titan-composition/vendor/sell/.
+Keep that directory's LICENSE, NOTICE, source lineage and reference licenses.
+
+vendor/sorrel_adapter.py is an UNMODIFIED copy of SORREL's Apache-2.0 adapter:
+woahwhattheheck/commons@0a1f0ec35e903c4b6052681ecf976705a29ab902
+revenue/kaggriculture/cloud-frontier-decision/execution/scenarios/adapter.py
+SHA256 d90b343162b6092101d6200a851ab07128bb8d829ecb5c50bf73dd1d7a556552.
+Its exact engine constants/quote are injected from the existing frozen seller.
+Apache-2.0 text is in vendor/LICENSE-APACHE-2.0.txt.
+
+vendor/league_variants.py is an UNMODIFIED evaluation-only copy of ASTRA-FLOW's
+revenue/kaggriculture/cloud-opponent-league/variants.py at Commons commit
+41ea491dd130b206b3402f33e1aff356c837aa99, Git blob
+374a23ffb3cf6cc1c67571df74fde9f84467e832. This does not modify or establish
+completion of FLOW's separate league panel. No T09 seeds are consumed here.
+
+The official engine remains Kaggle/kaggle-environments commit
+28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c, Apache-2.0.
+Arlene/Apex retain their existing upstream notices and licenses. They are not
+redistributed in this new directory and must not lose their original notices.
