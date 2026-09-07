@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788808367.044779")
+        self.assertEqual(catalog["slack_ts"], "1788818908.797329")
         self.assertEqual(
             catalog["source_id"],
-            "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+            "codex-commons-operation-command-center-activation-20260907-01",
+        )
+        self.assertIn(
+            "codex-commons-operation-command-center-activation-20260907-01",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-titan-cloud-sell-scheduler-activation-20260907-01",
@@ -267,14 +271,14 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-titan-cloud-sell-scheduler-activation-20260907-01.json",
+            "codex-commons-operation-command-center-activation-20260907-01.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
         self.assertEqual(current_activation["event_id"], catalog["source_id"])
         self.assertEqual(current_activation["event_type"], "RESOURCE_ACTIVATION")
         self.assertEqual(
-            current_activation["selected_resource"], "titan-cloud-sell-scheduler"
+            current_activation["selected_resource"], "commons-operation-command-center"
         )
         slack_cite = "p" + catalog["slack_ts"].replace(".", "")
         self.assertIn(slack_cite, current_activation["evidence"]["slack_claim"])
@@ -585,6 +589,21 @@ class TestResourceLedger(unittest.TestCase):
             "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
             sell["exact_safe_probe"],
         )
+        command_center = next(
+            row
+            for row in catalog["surfaces"]
+            if row["name"] == "commons-operation-command-center"
+        )
+        self.assertEqual(command_center["capacity"], "LIVE")
+        self.assertEqual(command_center["stage"], "PRODUCING")
+        self.assertEqual(command_center["condition"], "CONSTRAINED")
+        self.assertEqual(
+            command_center["last_receipt"],
+            "codex-commons-operation-command-center-activation-20260907-01",
+        )
+        self.assertIn("STABLE_OPERATION_ID", command_center["authority"])
+        self.assertIn("NO_CREDENTIAL_VALUE_DISPLAY", command_center["authority"])
+        self.assertIn("eight command_center_* tools", command_center["value"])
         self.assertEqual(
             [row["priority"] for row in measured["activation_queue"]],
             sorted((row["priority"] for row in measured["activation_queue"]), reverse=True),
