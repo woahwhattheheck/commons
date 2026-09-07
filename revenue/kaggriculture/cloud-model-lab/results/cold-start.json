@@ -1,6 +1,6 @@
 {
- "seed": 8080021,
- "step": 165,
+ "seed": 9600011,
+ "step": 300,
  "baseline": {
   "kind": "file",
   "spec": "../20260907-offline-agent/main.py::agent",
@@ -15,26 +15,32 @@
    "transition": "engine_pin",
    "workers": 1,
    "baseline": "main.py::agent@acf541d46ceb",
-   "cold_to_first_action_s": 0.02,
-   "cold_to_first_action_max_s": 0.045,
-   "import_s": 0.02,
+   "cold_to_first_action_s": 0.024,
+   "cold_to_first_action_max_s": 0.031,
+   "import_s": 0.023,
    "table_import_s": 0.0001,
    "first_call_s": 0.0003,
    "steady_mean_s": 0.0002,
-   "steady_max_s": 0.0004
+   "steady_max_s": 0.0002,
+   "max_action_s": 0.0003,
+   "priced_targets": 1,
+   "pricing_module": "engine_pin"
   },
   "engine package blocked": {
    "samples": 5,
    "transition": "engine_pin",
    "workers": 1,
    "baseline": "main.py::agent@acf541d46ceb",
-   "cold_to_first_action_s": 0.019,
-   "cold_to_first_action_max_s": 0.021,
-   "import_s": 0.019,
+   "cold_to_first_action_s": 0.018,
+   "cold_to_first_action_max_s": 0.02,
+   "import_s": 0.017,
    "table_import_s": 0.0001,
-   "first_call_s": 0.0003,
+   "first_call_s": 0.0002,
    "steady_mean_s": 0.0002,
-   "steady_max_s": 0.0004
+   "steady_max_s": 0.0002,
+   "max_action_s": 0.0003,
+   "priced_targets": 1,
+   "pricing_module": "engine_pin"
   }
  }
 }

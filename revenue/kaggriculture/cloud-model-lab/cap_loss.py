@@ -1,4 +1,9 @@
-"""How much production does the route actually lose to the animal output cap?
+"""How much production does the MEASURED SEAT lose to the animal output cap?
+
+Attribution is explicit. `_end_of_day` runs the animal refresh once per farm, so a
+wrapper on the refresh alone sees both players and can report only a board total,
+which is a figure about neither of them. The owner map is built from the state the
+interpreter holds, and every event carries the seat it belongs to.
 
 `_daily_refresh_animals` writes `yield_units = min(max_held, yield + base + bonus)`
 (kaggriculture.py 827), so a unit produced on a day the animal is already at its
@@ -30,9 +35,22 @@ def measure(seed, seat, opponent_spec):
     env.reset(2)
     me = A.Agent()
     losses = []
+    owners = {}
     orig = K._daily_refresh_animals
+    orig_eod = K._end_of_day
+
+    # `_end_of_day` calls the refresh once per farm, so the wrapper below sees both
+    # players' animals and cannot tell them apart on its own. The owner map is
+    # built here, from the state the interpreter is actually holding, exactly as
+    # the market ledger does it.
+    def end_of_day(state, env_, day):
+        owners.clear()
+        for s_i, f in enumerate(state[0].observation.farms):
+            owners[id(f)] = s_i
+        return orig_eod(state, env_, day)
 
     def refresh(farm, day):
+        seat_of = owners.get(id(farm))
         board = len(farm["tiles"])
         before = {}
         for y in range(board):
@@ -53,11 +71,13 @@ def measure(seed, seat, opponent_spec):
             kept = min(a["max_held"], y0 + base)
             lost = (y0 + base) - kept
             if lost > 0:
-                losses.append({"day": day, "at": [x, y], "animal": an,
+                losses.append({"day": day, "seat": seat_of, "at": [x, y],
+                               "animal": an,
                                "product": a["product"], "yield_before": y0,
                                "max_held": a["max_held"], "would_add": base,
                                "lost": lost})
     K._daily_refresh_animals = refresh
+    K._end_of_day = end_of_day
     try:
         while not env.done:
             acts = [None, None]
@@ -67,20 +87,36 @@ def measure(seed, seat, opponent_spec):
             env.step(acts)
     finally:
         K._daily_refresh_animals = orig
+        K._end_of_day = orig_eod
     farms = env.state[0].observation.farms
     prices = env.state[0].observation.market["prices"]
     own = float(farms[seat]["money"])
-    by_product = Counter()
-    for r in losses:
-        by_product[r["product"]] += r["lost"]
-    value = sum(n * float(prices.get(p, 0)) for p, n in by_product.items())
+    # Split by seat. A total over both farms is not a figure about either player,
+    # and the measured seat's own recoverable loss is smaller still: an event whose
+    # `yield_before` is below `max_held` overflows on an accumulated care bonus, and
+    # no earlier harvest can recover that.
+    def summarise(rows):
+        bp = Counter()
+        for r in rows:
+            bp[r["product"]] += r["lost"]
+        return {"units": sum(r["lost"] for r in rows), "events": len(rows),
+                "by_product": dict(bp),
+                "value_at_final_prices": round(
+                    sum(n * float(prices.get(p, 0)) for p, n in bp.items()), 1),
+                "tiles": Counter(tuple(r["at"]) for r in rows).most_common(6)}
+    mine = [r for r in losses if r["seat"] == seat]
+    theirs_rows = [r for r in losses if r["seat"] == (1 - seat)]
+    unattributed = [r for r in losses if r["seat"] is None]
+    recoverable = [r for r in mine
+                   if r["yield_before"] >= r["max_held"]]
     return {"seed": seed, "seat": seat, "opponent": opp_id, "arlene": arl_id,
             "own_cash": own, "rival_cash": float(farms[1 - seat]["money"]),
-            "units_lost_to_cap": sum(r["lost"] for r in losses),
-            "events": len(losses),
-            "by_product": dict(by_product),
-            "value_at_final_prices": round(value, 1),
-            "tiles": Counter(tuple(r["at"]) for r in losses).most_common(6),
+            "measured_seat": summarise(mine),
+            "opponent_seat": summarise(theirs_rows),
+            "unattributed_events": len(unattributed),
+            # the subset an earlier harvest could actually have taken
+            "measured_seat_recoverable": summarise(recoverable),
+            "both_farms_total_units": sum(r["lost"] for r in losses),
             "losses": losses}
 
 
@@ -97,12 +133,22 @@ def main():
             for opp in a.opponents:
                 r = measure(seed, seat, opp)
                 rows.append(r)
-                print(f"seed {seed} seat {seat} vs {opp:7s}: own {r['own_cash']:9.0f}"
-                      f"  units lost to the cap {r['units_lost_to_cap']:4d} over "
-                      f"{r['events']} refreshes {dict(r['by_product'])}, worth about "
-                      f"{r['value_at_final_prices']:.0f} at final prices", flush=True)
-                if r["tiles"]:
-                    print(f"    worst tiles: {r['tiles']}", flush=True)
+                m, o, rec = (r["measured_seat"], r["opponent_seat"],
+                             r["measured_seat_recoverable"])
+                print(f"seed {seed} seat {seat} vs {opp:7s}: own {r['own_cash']:9.0f}",
+                      flush=True)
+                print(f"    measured seat {m['units']:3d} unit(s) over "
+                      f"{m['events']} refreshes {m['by_product']}, "
+                      f"~{m['value_at_final_prices']:.0f} at final prices", flush=True)
+                print(f"    of which an earlier HARVEST could have taken: "
+                      f"{rec['units']:3d} unit(s) over {rec['events']} refreshes "
+                      f"{rec['by_product']}, ~{rec['value_at_final_prices']:.0f}",
+                      flush=True)
+                print(f"    opponent seat {o['units']:3d} unit(s) "
+                      f"(recorded, not this seat's opportunity); unattributed "
+                      f"{r['unattributed_events']}", flush=True)
+                if m["tiles"]:
+                    print(f"    measured-seat worst tiles: {m['tiles']}", flush=True)
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
     json.dump(rows, open(a.out, "w"), indent=1, default=str)
 
