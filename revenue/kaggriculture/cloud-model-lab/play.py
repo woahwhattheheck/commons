@@ -13,6 +13,8 @@ import argparse
 import copy
 import json
 import os
+import shutil
+import tempfile
 import time
 
 import constraints
@@ -86,9 +88,16 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
         # READ and WRITE are separate paths. Without bank_out the bank is read-only,
         # so a comparison arm cannot append rows a later arm would retrieve. A run
         # that should learn names its output file explicitly.
-        write_to = None if freeze_bank else bank_out
+        # Stage the output OUTSIDE the working tree and publish it on completion, the
+        # same reason run_seed.sh does: a file the repository tracks must not be
+        # rewritten continuously by a long run, or every git operation races it.
+        write_to = None
+        if not freeze_bank and bank_out:
+            staging_dir = tempfile.mkdtemp(prefix="bankout-")
+            write_to = os.path.join(staging_dir, os.path.basename(bank_out))
         bank = EB.Bank(bank_path, write_path=write_to)
-        bank_info = {"read": EB.describe(bank_path), "write": write_to}
+        bank_info = {"read": EB.describe(bank_path), "write": bank_out,
+                     "staged_at": write_to}
     d = driver_mod.ModelDriver(r, surfaces, max_market=max_market,
                                examples=examples, bank=bank, render=render)
     model_turns = 0
@@ -173,6 +182,15 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                                   or f"{label}: {detail}")
     finally:
         r.close()
+        if bank is not None and getattr(bank, "write_path", None) and bank_out:
+            # publish the staged bank into the repository once, at the end
+            try:
+                if os.path.exists(bank.write_path):
+                    os.makedirs(os.path.dirname(bank_out) or ".", exist_ok=True)
+                    shutil.copyfile(bank.write_path, bank_out)
+                shutil.rmtree(os.path.dirname(bank.write_path), ignore_errors=True)
+            except Exception as exc:
+                print(f"[warn] could not publish staged bank: {exc}", flush=True)
 
     final = env.state
     money = float(final[seat].observation.farms[seat]["money"])
