@@ -11,12 +11,33 @@ import json
 from pathlib import Path
 import random
 import sys
+import tempfile
 import unittest
 
 from continuation import ContinuationPlanSelector
 
 SOURCE = Path(__file__).resolve().parents[1] / 'cloud-market-game-theory'
 WholePlanSelector = None
+REFERENCE_COMMIT = '4d97474b0188b0373be1b52b610c0114ceb033c8'
+REFERENCE_BLOBS = {
+    'solver.py': '3a6446d96e8470374dd5b5ba72a8e5c6d41a8ad3',
+    'selector.py': '546b71188fd44dc47cac99623d1967bc81413da7',
+}
+
+
+def source_provenance(path):
+    blobs = {}
+    for name in REFERENCE_BLOBS:
+        body = (path / name).read_bytes()
+        blobs[name] = hashlib.sha1(b'blob ' + str(len(body)).encode()
+                                   + b'\0' + body).hexdigest()
+    matches = blobs == REFERENCE_BLOBS
+    return {
+        'source_commit': REFERENCE_COMMIT if matches else None,
+        'reference_commit': REFERENCE_COMMIT,
+        'reference_source_matches': matches,
+        'source_blobs': blobs,
+    }
 
 
 def load_source(path):
@@ -67,6 +88,24 @@ def new():
 
 
 class ContinuationTests(unittest.TestCase):
+    def test_provenance_binds_only_matching_source(self):
+        actual = source_provenance(SOURCE)
+        expected = actual['source_blobs'] == REFERENCE_BLOBS
+        self.assertEqual(actual['reference_source_matches'], expected)
+        self.assertEqual(actual['source_commit'], REFERENCE_COMMIT if expected else None)
+        self.assertEqual(actual['reference_commit'], REFERENCE_COMMIT)
+
+    def test_changed_source_does_not_reuse_reference_commit(self):
+        with tempfile.TemporaryDirectory() as root:
+            path = Path(root)
+            for name in REFERENCE_BLOBS:
+                (path / name).write_bytes((SOURCE / name).read_bytes() + b'\n')
+            actual = source_provenance(path)
+        self.assertIsNone(actual['source_commit'])
+        self.assertFalse(actual['reference_source_matches'])
+        self.assertEqual(actual['reference_commit'], REFERENCE_COMMIT)
+        self.assertNotEqual(actual['source_blobs'], REFERENCE_BLOBS)
+
     def test_exact_initial_output_matches_selector(self):
         plain = WholePlanSelector(random.Random(0)); wrapped = new()
         self.assertEqual(call(plain, 10, window()), call(wrapped, 10, window()))
@@ -251,10 +290,7 @@ def witness():
     old_skip = call(skip_plain, 12); new_skip = call(skip_wrapped, 12)
     return {
         'scope': 'synthetic consumer invocation sequences using exact T15 runtime; no game or fill claim',
-        'source_commit': '4d97474b0188b0373be1b52b610c0114ceb033c8',
-        'source_blobs': {name: hashlib.sha1(b'blob '+str(len((SOURCE/name).read_bytes())).encode()
-                         +b'\0'+(SOURCE/name).read_bytes()).hexdigest()
-                         for name in ['solver.py', 'selector.py']},
+        **source_provenance(SOURCE),
         'changed_continuation': {'admission_only_market': previous['market'],
                                  'wrapped_market': actual['market'],
                                  'decision': wrapped.last_decision},
