@@ -1,0 +1,51 @@
+name: backup-ref-regressions
+
+on:
+  pull_request:
+    paths:
+      - "host/repo_backup.py"
+      - "test_repo_backup.py"
+      - "test_repo_backup_refs.py"
+      - "open_door_guard.py"
+      - "backups/README.md"
+      - "ground/BACKUP_OPEN_REPO.md"
+      - "AGENTS.md"
+      - ".github/workflows/open-repo-backup.yml"
+      - ".github/workflows/lattice-delta-backup-refs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  restore-regressions:
+    name: restore-regressions (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /host/repo_backup.py
+            /test_repo_backup.py
+            /test_repo_backup_refs.py
+            /open_door_guard.py
+            /AGENTS.md
+            /ground/BACKUP_OPEN_REPO.md
+            /backups/README.md
+            /.github/workflows/open-repo-backup.yml
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Git and Python versions
+        run: |
+          git --version
+          python --version
+      - name: Existing backup contracts and complete ref round trips
+        run: python -m unittest -v test_repo_backup test_repo_backup_refs
