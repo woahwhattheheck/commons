@@ -119,6 +119,60 @@ class AgentMailAdapterTests(unittest.TestCase):
         self.assertNotIn("DO-NOT-ECHO-PRIVATE-CONTENT", result.stdout)
         self.assertEqual(json.loads(result.stdout)["state"], "RECEIPT_REJECTED")
 
+    def test_projection_rejects_non_string_enum_states(self) -> None:
+        paths = (
+            ("agentmail_connector_state",), ("gmail_fallback_state",),
+            ("inbox", "state"), ("outbound", "state"), ("inbound", "state"),
+        )
+        values = (None, False, 0, 1.5, [], ["PRIVATE-SENTINEL"], {}, {"PRIVATE-SENTINEL": True})
+        for path in paths:
+            for value in values:
+                observation = unavailable()
+                target = observation if len(path) == 1 else observation[path[0]]
+                target[path[-1]] = value
+                with self.subTest(path=path, value=value), self.assertRaises(agentmail.AgentMailReceiptError):
+                    agentmail.project_receipt(observation)
+
+    def test_public_validator_rejects_non_string_enum_states(self) -> None:
+        paths = (
+            ("connectors", "agentmail"), ("connectors", "gmail_inbound_fallback"),
+            ("inbox", "state"), ("outbound", "state"), ("inbound", "state"),
+        )
+        values = (None, False, 0, 1.5, [], ["PRIVATE-SENTINEL"], {}, {"PRIVATE-SENTINEL": True})
+        for path in paths:
+            for value in values:
+                receipt = agentmail.project_receipt(unavailable())
+                receipt[path[0]][path[1]] = value
+                with self.subTest(path=path, value=value), self.assertRaises(agentmail.AgentMailReceiptError):
+                    agentmail.validate_public_receipt(receipt)
+
+    def test_cli_rejects_container_enum_states_without_traceback_or_echo(self) -> None:
+        paths = (
+            ("agentmail_connector_state",), ("gmail_fallback_state",),
+            ("inbox", "state"), ("outbound", "state"), ("inbound", "state"),
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            input_path = Path(directory) / "observation.json"
+            for path in paths:
+                for value in (["PRIVATE-SENTINEL"], {"PRIVATE-SENTINEL": True}):
+                    observation = unavailable()
+                    target = observation if len(path) == 1 else observation[path[0]]
+                    target[path[-1]] = value
+                    input_path.write_text(json.dumps(observation), encoding="utf-8")
+                    result = subprocess.run(
+                        [sys.executable, str(ROOT / "host" / "agentmail_adapter.py"), str(input_path)],
+                        capture_output=True, text=True, check=False, timeout=10,
+                    )
+                    with self.subTest(path=path, value=value):
+                        self.assertEqual(result.returncode, 1)
+                        self.assertEqual(result.stderr, "")
+                        self.assertNotIn("PRIVATE-SENTINEL", result.stdout)
+                        self.assertEqual(json.loads(result.stdout), {
+                            "ok": False, "state": "RECEIPT_REJECTED",
+                            "error_type": "AgentMailReceiptError",
+                        })
+
+
 
 if __name__ == "__main__":
     unittest.main()
