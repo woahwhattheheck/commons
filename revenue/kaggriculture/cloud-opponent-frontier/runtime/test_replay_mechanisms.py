@@ -1,6 +1,13 @@
 import copy
+from contextlib import redirect_stderr, redirect_stdout
+import io
+import json
+from pathlib import Path
+import sys
+import tempfile
 import types
 import unittest
+from unittest.mock import patch
 import replay_mechanisms as replay
 
 
@@ -66,6 +73,45 @@ class ReplayTests(unittest.TestCase):
                 module._preempt_shift({'step': 3}, {}, 3)
         self.assertEqual(records['_preempt_shift']['errors'], [{'step': 3, 'type': 'ValueError'}])
         self.assertIs(module._preempt_shift, fail)
+
+
+class ReplayCliTests(unittest.TestCase):
+    def test_cli_requires_valid_player_index(self):
+        base = ['replay', '--policy', 'unused', '--trace', 'unused', '--output', 'unused']
+        for selection in ([], ['--seat', '2'], ['--seat', '-1'], ['--seat', 'invalid']):
+            with self.subTest(selection=selection), patch.object(sys, 'argv', base + selection):
+                with redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:
+                    replay.main()
+                self.assertEqual(error.exception.code, 2)
+
+    def test_cli_replays_both_explicit_player_positions(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            policy, trace = root / 'policy.py', root / 'trace.gz'
+            policy.touch()
+            trace.touch()
+            for seat in (0, 1):
+                output = root / f'report-{seat}.json'
+                report = {'observations': 1, 'exact_action_matches': 1,
+                          'all_actions_match': True,
+                          'hooks': {name: {'changed': []} for name in replay.HOOKS}}
+                argv = ['replay', '--policy', str(policy), '--trace', str(trace),
+                        '--seat', str(seat), '--output', str(output)]
+                with self.subTest(seat=seat), patch.object(sys, 'argv', argv):
+                    with patch.object(replay, 'replay_trace', return_value=report) as run:
+                        with redirect_stdout(io.StringIO()):
+                            replay.main()
+                    run.assert_called_once_with(policy.resolve(), trace.resolve(), seat)
+                    self.assertEqual(json.loads(output.read_text()), report)
+
+    def test_cli_help_describes_game_position(self):
+        text = io.StringIO()
+        with patch.object(sys, 'argv', ['replay', '--help']), redirect_stdout(text):
+            with self.assertRaises(SystemExit) as error:
+                replay.main()
+        self.assertEqual(error.exception.code, 0)
+        self.assertIn('--seat {0,1}', text.getvalue())
+        self.assertIn('Player position whose recorded actions', text.getvalue())
 
 
 if __name__ == '__main__':
