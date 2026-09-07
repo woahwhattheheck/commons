@@ -134,10 +134,13 @@ class RepositoryPortfolioTests(unittest.TestCase):
         path = Path(__file__).resolve().parent / "inventory" / "resources" / "repository_portfolio.json"
         data = json.loads(path.read_text(encoding="utf-8"))
         self.assertEqual(validate(data), data["summary"])
-        self.assertEqual(data["summary"]["accessible_repositories"], 32)
-        self.assertEqual(data["summary"]["public_repositories"], 19)
+        self.assertEqual(data["summary"]["accessible_repositories"], 33)
+        self.assertEqual(data["summary"]["public_repositories"], 20)
         self.assertEqual(data["summary"]["private_repositories"], 13)
-        self.assertEqual(len(data["public_repositories"]), 19)
+        self.assertEqual(len(data["public_repositories"]), 20)
+        app = next(row for row in data["public_repositories"] if row["full_name"] == "woahwhattheheck/App")
+        self.assertEqual(app["head_sha"], "0283d2bebad28796ca74b9506d358232988fe376")
+        self.assertEqual(app["purpose"], "OWNER_FORK_BOUNTY_PR_ROAD")
         self.assertFalse(data["private_aggregate"]["details_persisted"])
 
 
