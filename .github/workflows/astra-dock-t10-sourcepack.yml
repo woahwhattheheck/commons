@@ -5,6 +5,9 @@ on:
     paths: [.github/workflows/astra-dock-t10-sourcepack.yml]
 permissions:
   contents: read
+concurrency:
+  group: astra-dock-t10-sourcepack
+  cancel-in-progress: true
 jobs:
   package:
     runs-on: ubuntu-latest
@@ -21,6 +24,7 @@ jobs:
             revenue/kaggriculture/cloud-frontier-policy/vendor
             revenue/kaggriculture/cloud-eval
             revenue/kaggriculture/cloud-pack
+            revenue/kaggriculture/20260907-offline-agent
       - uses: actions/checkout@v4
         with:
           repository: Kaggle/kaggle-environments
@@ -37,18 +41,23 @@ jobs:
           for part in next-panel export vendor; do
             cp -a "commons/revenue/kaggriculture/cloud-frontier-policy/$part" sourcepack/commons/revenue/kaggriculture/cloud-frontier-policy/
           done
-          for part in cloud-eval cloud-pack; do
+          for part in cloud-eval cloud-pack 20260907-offline-agent; do
             cp -a "commons/revenue/kaggriculture/$part" sourcepack/commons/revenue/kaggriculture/
           done
-          for file in kaggriculture.py kaggriculture.json utils.py; do
+          for file in kaggriculture.py kaggriculture.json; do
             cp "engine/kaggle_environments/envs/kaggriculture/$file" sourcepack/engine/
           done
+          cp engine/kaggle_environments/utils.py sourcepack/engine/utils.py
           cp engine/LICENSE sourcepack/engine/LICENSE
           if test -f commons/LICENSE; then cp commons/LICENSE sourcepack/commons/LICENSE; fi
           python - <<'PY'
           import hashlib, json
           from pathlib import Path
           root = Path('sourcepack')
+          expected = {'kaggriculture.py': '3c202c7ee921da239356789e266b694635103fc4', 'kaggriculture.json': 'b354d06b742fe48402513792253f1a5c29366b20', 'utils.py': '91c8822ee6201ba4a5a8416c7dbe34f95dd61c87'}
+          for name, blob in expected.items():
+              data = (root/'engine'/name).read_bytes()
+              assert hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest() == blob, name
           paths = sorted(p for p in root.rglob('*') if p.is_file())
           manifest = {
               'operation_id': 'astra-dock-t10-sourcepack-20260907-01',
