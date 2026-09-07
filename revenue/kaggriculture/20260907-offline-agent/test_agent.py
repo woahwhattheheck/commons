@@ -1,5 +1,6 @@
 """Offline contract regressions: no dependencies or external accounts."""
 import copy
+import os
 import importlib.util
 import unittest
 from pathlib import Path
@@ -11,7 +12,7 @@ class AgentTests(unittest.TestCase):
     def setUpClass(cls):
         cls.temp=tempfile.TemporaryDirectory(prefix="kaggriculture-tests-")
         cls.engine,_=get_engine(cls.temp.name)
-        cls.path=Path(__file__).with_name("main.py")
+        cls.path=Path(os.environ.get("KAG_AGENT_PATH",str(Path(__file__).with_name("main.py"))))
     @classmethod
     def tearDownClass(cls): cls.temp.cleanup()
     def initial(self):
