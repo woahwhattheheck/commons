@@ -96,8 +96,15 @@ def _write_exclusive_json(path: Path, payload: dict[str, Any]) -> None:
     except OSError as error:
         raise BackupError(f"refusing to overwrite {path}: {error}") from error
     try:
-        os.write(fd, text.encode("utf-8"))
+        remaining = memoryview(text.encode("utf-8"))
+        while remaining:
+            written = os.write(fd, remaining)
+            if written <= 0:
+                raise BackupError(f"cannot write {path}: write made no progress")
+            remaining = remaining[written:]
         os.fsync(fd)
+    except OSError as error:
+        raise BackupError(f"cannot write {path}: {error}") from error
     finally:
         os.close(fd)
 
