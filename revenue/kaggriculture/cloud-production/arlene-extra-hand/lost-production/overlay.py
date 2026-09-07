@@ -86,6 +86,22 @@ def _eh_price(item, inventory, market):
     return max(1, round(base + movement if inventory < anchor else base - movement))
 
 
+def _eh_sale_value(item, units, market):
+    """Current-book proceeds with the engine's per-unit repricing semantics.
+
+    A unit quoted at the price floor earns one dollar but is not admitted to
+    market inventory, so it must not depress later units in this projection.
+    """
+    inventory = int(market["inventory"].get(item, 0))
+    total = 0
+    for _ in range(max(0, int(units))):
+        unit = _eh_price(item, inventory, market)
+        total += unit
+        if unit > 1:
+            inventory += 1
+    return total
+
+
 def _eh_hire_cost(n):
     a, b = 1, 1
     for _ in range(int(n)): a, b = b, a + b
@@ -168,6 +184,18 @@ def _eh_base_harvest_steps(obs, base, work_end):
         return set()
 
 
+def _eh_base_harvest_commitment(obs, base, work_end):
+    """Units the intact route will add before this day's automatic deposit."""
+    claimed = _eh_base_harvest_steps(obs, base, work_end)
+    tiles = obs["farms"][int(obs.get("player", 0))]["tiles"]
+    total = 0
+    for x, y in claimed:
+        tile = tiles[y][x]
+        if isinstance(tile, dict):
+            total += max(0, int(tile.get("yield_units", 0)))
+    return total
+
+
 def _eh_has_future_base_hire(now, work_end):
     try:
         route = _A.R[_A.cur]
@@ -185,7 +213,9 @@ def _eh_choose(obs, base):
     work_end = (now // 24 + 1) * 24 - 1
     if _eh_has_future_base_hire(now, work_end): return None
     base_harvest = _eh_base_harvest_steps(obs, base, work_end); spawn = _eh_spawn_after_base(obs, base)
-    shed_claim = sum(private["shed"].values()) + sum(sum(inv.values()) for inv in private.get("inventories", []))
+    shed_claim = (sum(private["shed"].values())
+                  + sum(sum(inv.values()) for inv in private.get("inventories", []))
+                  + _eh_base_harvest_commitment(obs, base, work_end))
     candidates = []
     for job in _eh_incremental_jobs(obs, work_end):
         base_step = base_harvest.get(job["target"])
@@ -197,7 +227,7 @@ def _eh_choose(obs, base):
             job["economic_units"] = min(job["harvest_units"], 1 + (last_decay - job["deadline"]) // 2)
         distance = _eh_distance(spawn, job["target"]); harvest_step = now + 1 + distance
         if harvest_step > job["deadline"] or shed_claim + job["harvest_units"] > SHED_CAP: continue
-        incremental_value = job["economic_units"] * _eh_price(job["product"], obs["market"]["inventory"][job["product"]], obs["market"])
+        incremental_value = _eh_sale_value(job["product"], job["economic_units"], obs["market"])
         if incremental_value <= wage: continue
         candidates.append(dict(job, start_step=now+1, end_step=harvest_step,
                                value=int(incremental_value-wage), observed_step=now,

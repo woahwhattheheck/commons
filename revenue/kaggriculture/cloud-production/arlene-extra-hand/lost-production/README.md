@@ -11,6 +11,13 @@ after current unit moves. The worker may finish anywhere because end-of-day
 deposit is automatic; terminal-day work is excluded because terminal market
 processing precedes that deposit.
 
+The feasibility gate also reserves every visible unit that Arlene's intact
+same-day route is already scheduled to harvest. Recovered-unit value follows
+the engine's per-unit repricing: a unit sold at the one-dollar floor earns cash
+but does not advance market inventory. These checks prevent the optional hand
+from being justified by shed space or sale proceeds that the base route cannot
+actually realize.
+
 `dated_allocation.py` is a bounded dependency-free executor. Shared stock is
 earmarked once before each dated consumer; a market purchase becomes accessible
 on the following action step, not to an earlier same-turn PICKUP. Optional jobs
@@ -32,3 +39,6 @@ python -m unittest -v test_executor.py
 ```
 
 Exact compact evidence is in `results/development.json`.
+The correctness-hardening replay is in
+`results/development-exact-reserves.json`; it used the same already-spent
+development seeds and preserved every terminal score.
