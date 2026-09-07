@@ -237,6 +237,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        id: checkout
         with:
           # Several live-tree contracts classify exact ancestors and inspect
           # historical source objects. A depth-1 checkout turns those lawful
@@ -244,8 +245,14 @@ jobs:
           fetch-depth: 0
 
       - name: the whole battery, one failure fails the run
+        id: battery
         run: |
           set -u
+          # Capture the checkout before tests can change HEAD. Store only exact
+          # paths and exits; test stdout and environment values stay out.
+          results="$RUNNER_TEMP/commons-battery-results.nul"
+          checkout_sha="$(git rev-parse HEAD)"
+          printf '%s\0%s\0%s\0' 'checkout_sha' "$checkout_sha" '' > "$results"
           fail=0
           # DISCOVERED, NOT LISTED. This was a hand-maintained list of filenames,
           # and on 2026-08-20 three tests landed in one evening that the list did
@@ -276,21 +283,28 @@ jobs:
             # every test runs even after one fails: a single red should not
             # hide the other seven, or the next window fixes one thing at a time
             if python3 "$t"; then
+              rc=0
               echo "ok   $t"
             else
+              rc=$?
               echo "::error::$t FAILED"
               fail=1
             fi
+            printf '%s\0%s\0%s\0' 'python3' "$t" "$rc" >> "$results"
           done
           for t in test_*.js; do
             [ -f "$t" ] || { echo "::warning::no node tests matched"; continue; }
             if node "$t"; then
+              rc=0
               echo "ok   $t"
             else
+              rc=$?
               echo "::error::$t FAILED"
               fail=1
             fi
+            printf '%s\0%s\0%s\0' 'node' "$t" "$rc" >> "$results"
           done
+          printf '%s\0%s\0%s\0' 'battery_complete' '' "$fail" >> "$results"
           exit "$fail"
 
       - name: a test file that vanished is a hole, not a pass
@@ -313,3 +327,21 @@ jobs:
               echo "If this was intentional, say so on the board with the id that authorised it."
             } >> "$GITHUB_STEP_SUMMARY"
           fi
+
+      - name: record checkout-linked battery results
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
+        run: >-
+          python3 host/battery_report.py
+          --results "$RUNNER_TEMP/commons-battery-results.nul"
+          --output "$RUNNER_TEMP/commons-battery-report.json"
+          --summary "$GITHUB_STEP_SUMMARY"
+          --outcome "${{ steps.battery.outcome }}"
+
+      - name: upload checkout-linked battery results
+        if: ${{ always() && steps.checkout.outcome == 'success' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: battery-results-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/commons-battery-report.json
+          if-no-files-found: error
+          retention-days: 14
