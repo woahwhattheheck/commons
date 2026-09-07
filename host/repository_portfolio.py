@@ -46,7 +46,7 @@ def classify(repo: dict[str, Any], canonical_sha: str) -> str:
         if gap > 0:
             return "STALE_MIRROR"
         return "MIRROR_INCONSISTENT"
-    if role in {"HELP_REFERENCE", "SPRINT_REFERENCE"}:
+    if role in {"HELP_REFERENCE", "SPRINT_REFERENCE", "PUBLIC_REFERENCE"}:
         return "REFERENCE"
     raise PortfolioError(f"unsupported public repository role: {role!r}")
 

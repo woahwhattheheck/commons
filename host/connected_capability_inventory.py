@@ -86,16 +86,30 @@ def validate_observations(data: dict[str, Any]) -> None:
     if business != "tokenjunkielabs@gmail.com":
         raise CapabilityInventoryError("shared business Gmail identity is missing")
     tool_fleet = data.get("tool_fleet") or {}
-    if tool_fleet.get("callable_tools") != 405 or tool_fleet.get("connected_app_tools") != 390:
+    if tool_fleet.get("callable_tools") != 442 or tool_fleet.get("connected_app_tools") != 427:
         raise CapabilityInventoryError("tool census does not match the measured harness")
-    if tool_fleet.get("fully_paginated_skills") != 104:
+    if tool_fleet.get("fully_paginated_skills") != 118:
         raise CapabilityInventoryError("skill census does not match the fully paginated list")
     automations = tool_fleet.get("automations") or {}
     if automations.get("total") != automations.get("enabled", 0) + automations.get("disabled", 0):
         raise CapabilityInventoryError("automation totals do not reconcile")
     portfolio = data.get("github_portfolio") or {}
-    if portfolio.get("accessible_repositories") != len(portfolio.get("repositories") or []):
+    total = portfolio.get("accessible_repositories")
+    public = portfolio.get("public_repositories")
+    private = portfolio.get("private_repositories")
+    repositories = portfolio.get("repositories") or []
+    if not all(isinstance(value, int) and not isinstance(value, bool) and value >= 0
+               for value in (total, public, private)):
+        raise CapabilityInventoryError("repository totals must be non-negative integers")
+    if total != public + private:
         raise CapabilityInventoryError("repository total does not reconcile")
+    if len(repositories) != public:
+        raise CapabilityInventoryError("public repository rows do not reconcile")
+    if portfolio.get("private_details_persisted") is not False:
+        raise CapabilityInventoryError("private repository details must not be persisted")
+    for repository in repositories:
+        if not isinstance(repository, dict) or repository.get("visibility") != "public":
+            raise CapabilityInventoryError("repository detail rows must be public")
     _scan_secrets(data)
 
 def compile_catalog(data: dict[str, Any]) -> dict[str, Any]:
@@ -136,6 +150,7 @@ def compile_catalog(data: dict[str, Any]) -> dict[str, Any]:
         },
         "account_roles": copy.deepcopy(data["account_roles"]),
         "tool_fleet": copy.deepcopy(data["tool_fleet"]),
+        "component_freshness": copy.deepcopy(data.get("component_freshness") or {}),
         "github_portfolio": copy.deepcopy(data["github_portfolio"]),
         "providers": providers,
         "durable_evidence": copy.deepcopy(data.get("durable_evidence") or {}),
@@ -153,12 +168,18 @@ def self_test() -> dict[str, Any]:
         "snapshot": {"observed_at": "2026-09-01T00:00:00Z"},
         "account_roles": {"business_gmail": {"address": "tokenjunkielabs@gmail.com"}},
         "tool_fleet": {
-            "callable_tools": 405,
-            "connected_app_tools": 390,
-            "fully_paginated_skills": 104,
-            "automations": {"total": 13, "enabled": 6, "disabled": 7},
+            "callable_tools": 442,
+            "connected_app_tools": 427,
+            "fully_paginated_skills": 118,
+            "automations": {"total": 14, "enabled": 7, "disabled": 7},
         },
-        "github_portfolio": {"accessible_repositories": 0, "repositories": []},
+        "github_portfolio": {
+            "accessible_repositories": 0,
+            "public_repositories": 0,
+            "private_repositories": 0,
+            "private_details_persisted": False,
+            "repositories": [],
+        },
         "providers": [
             {
                 "id": "shared", "kind": "TEST", "capacity": "LIVE",
@@ -218,4 +239,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
