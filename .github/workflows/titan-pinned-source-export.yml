@@ -31,6 +31,8 @@ jobs:
             /revenue/kaggriculture/cloud-frontier-policy/next-panel/NEXT-DISTRIBUTION-NOTICE.txt
             /revenue/kaggriculture/cloud-frontier-policy/next-panel/LICENSE
             /revenue/kaggriculture/cloud-eval/
+            /revenue/kaggriculture/cloud-pack/
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/offline.py
             /revenue/kaggriculture/20260907-offline-agent/
       - name: Export exact committed sources and preserve the existing archive
         shell: python
@@ -57,8 +59,12 @@ jobs:
               "NOTICE.md", "SOURCE-PINS.json",
           )]
           paths += [baseline + name for name in (
-              "vendor", "measure.py", "prepare.py", "carrot_demand.py",
+              "vendor", "measure.py", "prepare.py", "offline.py", "carrot_demand.py",
               "UPSTREAM.json", "NEXT-DISTRIBUTION-NOTICE.txt", "LICENSE",
+          )]
+          paths += [root + "cloud-pack/" + name for name in (
+              "pack.py", "official.py", "upstream", "README.md",
+              "LICENSE", "LICENSE-CC-BY-4.0.txt", "LICENSE-MIT.txt",
           )]
           paths += [root + "cloud-eval", root + "20260907-offline-agent"]
           out = Path(os.environ["RUNNER_TEMP"]) / "titan-source-export"
@@ -100,7 +106,7 @@ jobs:
               raise SystemExit("existing T08 runtime archive differs from its published pin")
           shutil.copyfile(frozen, out / frozen.name)
           manifest = {
-              "schema": "titan.pinned-source-export.v1",
+              "schema": "titan.pinned-source-export.v2",
               "source_commit": actual,
               "workflow_run_id": os.environ["GITHUB_RUN_ID"],
               "workflow_run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
@@ -123,6 +129,31 @@ jobs:
               "limits": "Transport only. No new simulation, candidate selection, hosted rating, or competition submission.",
           }
           (out / "SOURCE-MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+          (out / "REUSE.md").write_text(
+              "# Pinned TITAN source transport\n\n"
+              "This exports existing source bytes, not a new selected policy or benchmark.\n"
+              "Verify the ZIP against its GitHub artifact digest, then verify each archive\n"
+              "and member against SOURCE-MANIFEST.json before using safe extraction.\n\n"
+              "Extract titan-reusable-sources.tar preserving repository-relative paths.\n"
+              "Download the separate engine artifact recorded in the manifest and extract\n"
+              "its engine/ cache. The exported cloud-eval/evaluate.py uses its included\n"
+              "20260907-offline-agent/evaluate.py loader without network preparation.\n\n"
+              "For new runtime adapters, use cloud-pack/pack.py::write_adapter with the\n"
+              "existing cloud-pack/official.py and bundled upstream loading contract.\n"
+              "Arlene is cloud-frontier-policy/next-panel/vendor/arlene.py. Apex is\n"
+              "next-panel/vendor/apex/main.py with its C++ source/include dependencies.\n"
+              "Compile Apex with the existing g++ command in next-panel/prepare.py before\n"
+              "installing its offline.py guard. Do not run the historical prepare.py main\n"
+              "recipe: it also expects older frontier exports/parents outside this pack.\n"
+              "Use only a cloud runtime with an existing compiler; no owner-PC work or\n"
+              "new paid compute is authorized by this archive.\n\n"
+              "The T08 arms live in cloud-titan-composition/arms/. Their controller and\n"
+              "vendor tree are frozen at the manifest source commit. Preserve per-game\n"
+              "fresh state, the official file-loader semantics, and all included licenses.\n"
+              "The separate carrot-cap-checkpoint.tar.gz is copied unchanged, not rebuilt.\n"
+              "No source here changes Kaggle state or authorizes a new submission.\n",
+              encoding="utf-8",
+          )
           print(json.dumps({"source_commit": actual, "files": len(files), "archives": manifest["archives"]}))
       - uses: actions/upload-artifact@v4
         with:
