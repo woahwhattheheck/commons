@@ -194,6 +194,10 @@ class ProjectionLedger:
         def phase_ok(t, phase):
             for product, delta in self.events.get((t, phase), []):
                 stock[product] = stock.get(product, 0) + delta
+                # Worker transfers are ordered: a later withdrawal cannot
+                # recover an earlier spill or fund an earlier pickup.
+                if stock[product] < 0 or sum(stock.values()) > self.capacity:
+                    return False
             if any(q < self.stock_min.get(p, 0) for p, q in stock.items()):
                 return False
             if any(stock.get(p, 0) < q for p, q in self.stock_min.items()):
@@ -206,7 +210,8 @@ class ProjectionLedger:
                 hires = 0
             if not phase_ok(t, 'before_market'):
                 return False
-            market = self.market(t, item, orders.get(t, 0), stock.get(item, 0))
+            market = (copy.deepcopy(self.future.get(t, [])) if item is None else
+                      self.market(t, item, orders.get(t, 0), stock.get(item, 0)))
             if market is None:
                 return False
             for slot, order in enumerate(market[:self.max_orders]):
@@ -254,7 +259,8 @@ class ProjectionLedger:
                                 return False
             # Actual final EOD has no sale window and imposes no salvage claim.
             if t == self.last:
-                return cash >= self.cash_min.get((t, 'after_market'), 0)
+                return (all(stock.get(p, 0) >= q for p, q in self.stock_min.items())
+                        and cash >= self.cash_min.get((t, 'after_market'), 0))
             if not phase_ok(t, 'after_market'):
                 return False
             for product in inv:
@@ -321,6 +327,11 @@ class SelectedActionSell:
                 if slot < len(original_market) and _orders(selected_action)[slot] != original_market[slot]:
                     raise ValueError('Normalization would change a caller-reserved order')
             ledger.future[ledger.now] = copy.deepcopy(_orders(selected_action))
+            # No optimizable lot means the optimizer will not call feasibility.
+            # Validate the literal inherited queue instead of accepting it unchecked.
+            if not any(ledger.shed.get(p, 0) > ledger.stock_min.get(p, 0) for p in PRODUCTS):
+                if not ledger.feasible(None, ()):
+                    raise ValueError('no_certified_feasible_plan')
         except (ValueError, KeyError, TypeError, OverflowError, AttributeError) as error:
             self.diagnostics['reason'] = str(error)
             return copy.deepcopy(fallback)

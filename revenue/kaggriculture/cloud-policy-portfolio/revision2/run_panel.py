@@ -69,7 +69,8 @@ def run_game(job):
             return original_popen(*args, **kwargs)
         ev.subprocess.Popen = observed_popen
         try:
-            result = ev.play(engine, specs, HERE / 'vendor/engine', ev.LOADER, seed, seat)
+            result = ev.play(engine, specs, HERE / 'vendor/engine', ev.LOADER, seed, seat,
+                             startup_timeout=1.0, action_timeout=1.0)
         finally:
             ev.subprocess.Popen = original_popen
     result.update(id=game_id, arm=arm, opponent=opponent, panel=split,

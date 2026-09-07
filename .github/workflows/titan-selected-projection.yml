@@ -1,0 +1,147 @@
+name: titan-selected-projection
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/titan-selected-projection.yml'
+      - 'revenue/kaggriculture/cloud-selected-projection/**'
+      - 'revenue/kaggriculture/cloud-selected-market-checks/**'
+      - 'revenue/kaggriculture/cloud-eval/**'
+      - 'revenue/kaggriculture/20260907-offline-agent/**'
+      - 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/mechanics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_selected_action_sell.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/test_engine_semantics.py'
+      - 'revenue/kaggriculture/cloud-execution-lab/reference/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  focused:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-selected-projection/
+            /revenue/kaggriculture/cloud-selected-market-checks/
+            /revenue/kaggriculture/cloud-eval/
+            /revenue/kaggriculture/20260907-offline-agent/
+            /revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py
+            /revenue/kaggriculture/cloud-execution-lab/selected_sell_core.py
+            /revenue/kaggriculture/cloud-execution-lab/mechanics.py
+            /revenue/kaggriculture/cloud-execution-lab/test_selected_action_sell.py
+            /revenue/kaggriculture/cloud-execution-lab/test_engine_semantics.py
+            /revenue/kaggriculture/cloud-execution-lab/reference/evaluator/
+            /revenue/kaggriculture/cloud-execution-lab/reference/engine/
+            /revenue/kaggriculture/cloud-execution-lab/reference/selected-action/
+            /revenue/kaggriculture/cloud-execution-lab/reference/decision/
+      - name: Record committed test and runtime inputs
+        shell: python
+        run: |
+          import hashlib, json, os, subprocess
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / 'projection-validation'
+          out.mkdir()
+          root = Path('revenue/kaggriculture')
+          roots = ('cloud-selected-projection', 'cloud-execution-lab',
+                   'cloud-selected-market-checks', 'cloud-eval', '20260907-offline-agent')
+          paths = [p for name in roots for p in (root/name).rglob('*') if p.is_file()]
+          files = {}
+          for path in sorted(paths):
+              data = path.read_bytes()
+              files[str(path)] = {'size': len(data), 'sha256': hashlib.sha256(data).hexdigest(),
+                                 'git_blob': hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()}
+          report = {'checkout': subprocess.check_output(['git','rev-parse','HEAD'], text=True).strip(),
+                    'run_id': os.environ['GITHUB_RUN_ID'], 'attempt': os.environ['GITHUB_RUN_ATTEMPT'],
+                    'python': subprocess.check_output(['python3','--version'], text=True).strip(),
+                    'files': files, 'scope': 'focused deterministic tests; no gameplay panels'}
+          (out/'SOURCE-SNAPSHOT.json').write_text(json.dumps(report, indent=2)+'\n')
+      - name: Existing selected-action SELL interface tests
+        working-directory: revenue/kaggriculture/cloud-execution-lab
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m unittest test_selected_action_sell -v 2>&1 | tee "$RUNNER_TEMP/projection-validation/original-seller-tests.log"
+      - name: Projection and ordered-transfer consumer tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 revenue/kaggriculture/cloud-selected-projection/test_projection.py \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
+            --engine-cache "$LAB/reference/engine" \
+            --seller "$LAB/selected_action_sell.py" \
+            --report "$RUNNER_TEMP/projection-validation/projection-results.json" -v \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/projection-tests.log"
+      - name: Existing market-contract consumer tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 revenue/kaggriculture/cloud-selected-market-checks/check_market_contracts.py \
+            --lab "$LAB" \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
+            --engine-cache "$LAB/reference/engine" \
+            --json-output "$RUNNER_TEMP/projection-validation/market-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/market-tests.log"
+      - name: Explicit and default offline loader binding tests
+        if: ${{ !cancelled() }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          LAB=revenue/kaggriculture/cloud-execution-lab
+          python3 revenue/kaggriculture/cloud-selected-market-checks/test_engine_binding.py \
+            --evaluator "$LAB/reference/evaluator/evaluate.py" \
+            --engine-loader "$LAB/reference/evaluator/loader.py" \
+            --engine-cache "$LAB/reference/engine" \
+            --json-output "$RUNNER_TEMP/projection-validation/loader-results.json" \
+            2>&1 | tee "$RUNNER_TEMP/projection-validation/loader-tests.log"
+      - name: Bind combined results to one source snapshot
+        shell: python
+        run: |
+          import json, os, re
+          from pathlib import Path
+          out = Path(os.environ['RUNNER_TEMP']) / 'projection-validation'
+          snapshot = json.loads((out/'SOURCE-SNAPSHOT.json').read_text())
+          projection = json.loads((out/'projection-results.json').read_text())
+          market = json.loads((out/'market-results.json').read_text())
+          seller = 'revenue/kaggriculture/cloud-execution-lab/selected_action_sell.py'
+          expected = snapshot['files'][seller]['sha256']
+          assert expected == projection['seller_sha256'] == market['sources']['selected_action_sell.py']
+          assert projection['engine_sha256'] == market['engine_sha256']
+          assert projection['failures'] == projection['errors'] == 0
+          assert market['successful'] and market['failures'] == market['errors'] == 0
+          text = (out/'original-seller-tests.log').read_text()
+          original = int(re.search(r'Ran (\d+) tests?', text).group(1))
+          report = {'checkout': snapshot['checkout'], 'seller_sha256': expected,
+                    'original_tests': original, 'projection_tests': projection['tests_run'],
+                    'market_tests': market['test_methods'],
+                    'total_tests': original+projection['tests_run']+market['test_methods'],
+                    'projection_cases': projection['differential_cases'],
+                    'projection_transitions': projection['interpreter_transitions'],
+                    'market_cases': market['official_market_cases'],
+                    'same_engine': True, 'full_games': 0}
+          (out/'COMBINED-RESULTS.json').write_text(json.dumps(report, indent=2)+'\n')
+      - uses: actions/upload-artifact@v4
+        if: ${{ always() }}
+        with:
+          name: titan-selected-projection-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/projection-validation/
+          if-no-files-found: error
+          retention-days: 7
