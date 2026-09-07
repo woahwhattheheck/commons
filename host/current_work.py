@@ -155,7 +155,10 @@ def reconcile_item(item, snapshot):
     claimed_paths = item.get("claimed_paths")
     if not isinstance(claimed_paths, list):
         claimed_paths = []
-    claimed = [p for p in claimed_paths if isinstance(p, str) and p]
+    claimed = claimed_paths
+    # Invalid entries must not disappear into a smaller, completed claim.
+    if any(not isinstance(p, str) or not p for p in claimed):
+        claimed = []
     chat_ignored = bool(
         snapshot.get("chat_text")
         or snapshot.get("chat_said_done")
