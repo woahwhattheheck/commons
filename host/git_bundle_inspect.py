@@ -138,7 +138,7 @@ def _header(bundle: bytes, limits: Limits) -> tuple[dict, bytes]:
                 raise BundleError('Capabilities must precede v3 prerequisite/reference lines')
             key, separator, value = line[1:].partition(b'=')
             if key not in (b'object-format', b'filter'):
-                raise BundleError('Unsupported required bundle capability: ' + repr(key))
+                raise BundleError('Unsupported bundle header flag: ' + repr(key))
             name = key.decode('ascii')
             if name in capabilities or not separator or not value:
                 raise BundleError('Duplicate or missing bundle capability value')

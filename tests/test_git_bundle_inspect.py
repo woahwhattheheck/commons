@@ -211,7 +211,7 @@ def test_delta_expansion_limit():
 
 
 def test_unknown_capability_and_promisor_metadata():
-    with pytest.raises(module.BundleError, match='Unsupported required'):
+    with pytest.raises(module.BundleError, match='Unsupported bundle header flag'):
         module.inspect_bundle(bundle([], version=3, capabilities=(b'mystery=1',)))
     manifest, _ = module.inspect_bundle(bundle([], version=3, capabilities=(b'filter=blob:none',)))
     assert manifest['capabilities']['filter'] == 'blob:none'
