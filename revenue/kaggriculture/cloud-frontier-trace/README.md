@@ -34,3 +34,13 @@ Concrete source-derived implications: a day-zero strawberry has four base produc
 Five distinct focused tests now pass: actual interpreter strawberry refresh agreement; terminal/decay/maturity timing; held capacity and animal-care semantics; recorded buy/sell/hire transitions with zero cash residual and corrupted-state detection; missing private inventory. No candidate game or leader replay result is implied. Rule tables derive from the pinned upstream source; no upstream license terms are changed.
 
 `fertilizer_contract(tile, step, ...)` selects the next uncovered realizable ongoing-crop event using the correct refresh day. `summarize.py TRACE --output DIR` generates a compact economic summary, daily cash, exact per-unit cash ledger and compressed full trace. Historical checkpoint notes above retain their original pending status; the current completed replay result supersedes those statuses.
+
+## Raw-verified decision moments
+
+See DECISION_CONDITIONS.md for the actual shop/price/allocation sequence, labor spending versus changed/nonmovement action throughput, tomato/cow cadence and complementary same-tile assignments. Reproduce the detailed context extraction with:
+
+```sh
+python revenue/kaggriculture/cloud-frontier-trace/moments.py replays/episode-106392861.raw replays/analysis.json --engine-dir engine-cache --output moments.json
+```
+
+`results/106392861/decision-cases.json.gz` preserves20 exact original before/after frame pairs for offline candidate regression inputs. `moments.json.gz` contains all instrumented context; `decision-summary.json` retains shop, labor and joint-operation tables. `decision-manifest.json` binds these follow-up files to the unchanged original replay hash. These are observed witnesses and decision conditions to test, not a promoted policy.
