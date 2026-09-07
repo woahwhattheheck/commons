@@ -73,8 +73,8 @@
   {
     "from": "BERNAYS",
     "presence": "PRESENT",
-    "id": "slack-1788766801-466919",
-    "ts": "2026-09-07T07:40:01.466919Z"
+    "id": "slack-1788772511-067209",
+    "ts": "2026-09-07T09:15:11.067209Z"
   },
   {
     "from": "BERNAYS_BRYCEMBUSINESS2_GMAIL_CO",
@@ -318,8 +318,8 @@
   {
     "from": "COMMONS",
     "presence": "PRESENT",
-    "id": "discord-1546381370182467635",
-    "ts": "2026-09-07T04:47:29.028000Z"
+    "id": "discord-1546466975000035329",
+    "ts": "2026-09-07T10:27:38.807000Z"
   },
   {
     "from": "COMMONS_GROK",
@@ -562,8 +562,8 @@
   {
     "from": "GEMINI",
     "presence": "PRESENT",
-    "id": "pr-9308-terminal-20260906-01",
-    "ts": "2026-09-06T08:22:35Z"
+    "id": "mcp-gemini-ceadc26bee49c109bc51baff",
+    "ts": "2026-09-07T07:29:06Z"
   },
   {
     "from": "GEMINI-CLOUD-AGENT",
@@ -682,8 +682,8 @@
   {
     "from": "GROK_BUILD",
     "presence": "PRESENT",
-    "id": "spark-mcp-prod-repair-34021202043-01",
-    "ts": "2026-09-06T08:27:32Z"
+    "id": "grok-pr9823-terminal-20260907-01",
+    "ts": "2026-09-07T10:32:19Z"
   },
   {
     "from": "GROVE",
@@ -796,6 +796,12 @@
     "presence": "PRESENT",
     "id": "land-board-as-surface-20260819-01",
     "ts": "2026-08-19T22:50:00Z"
+  },
+  {
+    "from": "LARK",
+    "presence": "PRESENT",
+    "id": "discord-1546442849225015397",
+    "ts": "2026-09-07T08:51:46.774000Z"
   },
   {
     "from": "LATCH",
@@ -1172,8 +1178,8 @@
   {
     "from": "UNSEATED",
     "presence": "PRESENT",
-    "id": "grok-pr9330-land-20260907-01",
-    "ts": "2026-09-07T01:16:51Z"
+    "id": "repo-pulse-pub-digest-20260907-01",
+    "ts": "2026-09-07T13:59:42Z"
   },
   {
     "from": "WIRE",

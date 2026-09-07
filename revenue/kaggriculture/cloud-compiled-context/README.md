@@ -1,60 +1,69 @@
 # KAG-COMPILED-CONTEXT
 
-A new deterministic daily plan/context controller, composed with the exact selected
-`cloud-composition/candidate.py` (`dispatch_balanced`). The standalone generated
-`candidate.py` runs offline with Python's standard library. No model, inference,
-weight baking, hidden seed, future shop inspection or public replay script.
-The pinned baseline hash is enforced by `build.py`. Peer scheduling source is intact.
+A small offline strategic context and persistent installation controller over the
+exact selected `dispatch_balanced` baseline. The default `candidate.py` preserves
+baseline economics and prefers committed installation targets through DIG → BUILD
+→ PLACE. It completes jobs from observed installed animals and replans invalid
+live targets. Economic acquisition restrictions remain an explicitly experimental,
+disabled arm after losing comparisons; they are not part of the default behavior.
 
-This is an experimental policy component, **not the selected TITAN submission**.
-Initial v1 paired development games lost to dispatch_balanced by 16,263 cash in
-both seats on seed 9300101 (41,179 vs 57,442); both games completed. See raw results.
-Seven focused contract checks passed. No winning-agent or hosted-Kaggle claim.
-The next experiment will address an overly conservative daily worker budget and
-installation quota, using this failed candidate as retained evidence.
+**Do not replace the selected TITAN submission with this experiment.** Across 32 new
+cloud games there were zero execution failures. The frozen default archive won 2/2
+against lean20, won 0/2 against dispatch_balanced and 0/4 against Kaito/Igor (win counts).
+Nine targeted contract tests pass. [RESULTS.md](RESULTS.md) has every final cash,
+source/version/seat, runtime and retained null result. No hosted Kaggle result.
 
-## Interface
+The default agent is 36,970 bytes, standard-library Python, with no LM, network,
+hidden seed/future shops or public replay action sequence. The actual archive in
+`export/submission.tar.gz` is 18,187 bytes including license grants and a manifest.
+This is ordinary CPU code, not compression of a 3.66 GB model. [SOURCES.md](SOURCES.md)
+records exactly which pinned LDA sources were read and separates source mechanisms,
+this new design, code ancestry and measured results. Claude's live-model lane remains
+separate and root owns its UI.
 
-- `select_context(obs, configuration=None) -> dict`: own cash, stock (shed plus
-  carried), feed, workers, capacity, inclusive remaining actions, crop/animal
-  first-production feasibility and return distance. No future shops or RNG.
-- `advance(obs, configuration=None, previous=None, options=None) -> dict`: persistent
-  JSON state with fixed daily targets, phase, reserves, backlog, observed outcomes,
-  completion and expiry counts, at most eight feedback/bank entries. Reset on seat
-  change or decreasing step; same-step calls are idempotent. The caller must clear
-  state for a new game when the first step is indistinguishable from a prior step.
-- `constrain_orders(action, context, state) -> (action, state)`: preserve baseline
-  unit auction; filter market commitments by current cash, reserves, target deficit,
-  stock and horizon. At most three acquisition attempts per type/day. Proposals are
-  recorded separately from subsequent observed outcomes. Sales, labor and feed have
-  priority over growth. Prices may move within market execution; stock/cash checks
-  use observations and estimates, not a guarantee that an order executes.
-- `situation_packet(context, state) -> list`: at most two situation-matched own
-  advancing completed plan examples immediately before the live state. This packet
-  is available to FLORA/Claude; the deterministic adapter does not replay example
-  actions or treat positive local asset progress as demonstrated terminal profit.
+## Narrow interface for FLORA
 
-Daily completion requires actual installed and crop targets plus zero uninstalled
-livestock. The next day expires unmet targets and replans from actual stock. A
-completed plan does not authorize unlimited same-day buying. Unit scheduling still
-uses dispatch_balanced; installation target persistence is strategic, not a promise
-that individual workers finish their travel/build jobs. FLORA owns that scheduling.
-Terminal behavior uses the baseline return/drop/sell actions and prohibits new
-acquisitions. ROWAN owns detailed event timing; the exposed horizon is a conservative
-first-production feasibility bound, not an event simulator or crop valuation model.
+| Function | Result and responsibility |
+|---|---|
+| `select_context(obs, configuration=None)` | Own cash, shed+carried stock, feed, workers, vacant capacity, inclusive remaining actions, crop/animal first-production bounds and return distance. |
+| `advance(obs, configuration=None, previous=None, options=None)` | Persistent JSON daily plan: fixed targets, phase/reserves, backlog, observed outcomes, completion/expiry, installation intents, at most 8 feedback/bank entries. |
+| `installation_jobs(obs, previous=None)` | `(jobs, outcomes)` for own carried livestock. Each job exposes worker, animal, target, next_operation, distance+operation metric and stale count. Compatible live tile and carried stock are required. |
+| `situation_packet(context, state)` | Up to 2 situation-matched own advancing completed-plan examples immediately before live state. Local asset progress is not demonstrated terminal profit. |
+| `constrain_orders(action, context, state)` | Experimental `(action, state)` market restriction arm. Disabled in default; not suitable for direct use with FLORA's land/crop policy. |
 
-Run from repository root:
+FLORA owns production scheduling; its files are unchanged. It can consume the
+intents with its own priorities and pass its own caps/cost estimates to `advance`.
+ROWAN owns detailed production timing/deadlines. The exposed first-production
+horizons are conditional feasibility bounds, not a yield or cash forecast.
+
+The daily plan completes only when actual installed/crop targets are reached and
+livestock backlog clears. It may subsequently lose crops/animals; a historical
+completion is not a continuing success guarantee. Next day, unmet plans expire and
+replan from actual stock. Nominal targets can be unaffordable: expiry and measured
+cash expose that failure. In the default arm, daily economic targets/reserves are
+reported context; baseline purchase economics remain authoritative. Only persistent
+installation target preferences affect actions. The planner never credits issued
+BUY/BUILD commands as completed assets.
+
+State resets on seat change or decreasing step, and same-step calls are idempotent.
+Callers must reset explicitly for a new game with an indistinguishable initial step.
+Worker identities last one day: `advance` resets installation intents at EOD; direct
+`installation_jobs` callers must do the same. Memory is process-local, with no disk
+writes. The development diagnostic wrapper is separate and excluded from exports.
+
+## Build and use
 
 ```bash
 python -B revenue/kaggriculture/cloud-compiled-context/test_controller.py
 python -B revenue/kaggriculture/cloud-compiled-context/build.py
-python -B revenue/kaggriculture/cloud-eval/evaluate.py --engine-dir /tmp/kag-engine --candidate revenue/kaggriculture/cloud-compiled-context/candidate.py --opponent dispatch_balanced=revenue/kaggriculture/cloud-composition/candidate.py --seeds 9300101 --output /tmp/context-pilot.json
 ```
 
-The engine cache must contain the evaluator's exact pinned upstream source.
-`candidate.py` defines `agent` last for the official last-callable loader. Module
-memory persists only within a game process; no filesystem writes or network.
+`build.py` enforces the exact dispatch_balanced hash and defines `agent` last for the
+official loader. Its `build(output, control_orders=False)` API keeps the losing
+restriction arm off by default. Explicit `control_orders=True` enables research
+comparisons only. `pack-profile.json` works with the existing cloud-pack/pack.py;
+see that builder's CLI. Use cloud-eval/evaluate.py with the exact pinned engine cache.
 
-Owner-authored code is MIT OR CC-BY-4.0; full grants accompany this directory.
+Owner-authored code is MIT OR CC-BY-4.0; both full grants accompany the export.
 Copyright 2026 Bryce Xavier Muhlnickel / TokenJunkieLabs. Baseline authorship remains
-Euler / ASTRA-WORK / ROWAN / SORREL / FLORA. No third-party code is relicensed.
+Euler / ASTRA-WORK / ROWAN / SORREL / FLORA. Third-party source retains its license.

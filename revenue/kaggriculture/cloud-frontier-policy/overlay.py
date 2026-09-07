@@ -7,6 +7,29 @@ _FRONTIER_MODE = 'immediate'
 _FRONTIER_STATE = {}
 _PARENT_AGENT = agent
 _FINISHED = ('MILK', 'WOOL', 'EGG', 'STRAWBERRY', 'MELON', 'TOMATO', 'CARROT')
+_ROUTES = {'10c4s_3q': _ACTIONS_10C4S_3Q, '8c6s_3q': _ACTIONS_8C6S_3Q,
+           '6c8s_3q': _ACTIONS_6C8S_3Q,
+           '6c12s_4q_first_yarn': _ACTIONS_6C12S_4Q_FIRST_YARN,
+           '6c12s_4q_second_yarn': _ACTIONS_6C12S_4Q_SECOND_YARN}
+_PREFIX = {(a, b): next((i for i, (x, y) in enumerate(zip(ra, rb)) if x != y), min(len(ra), len(rb)))
+           for a, ra in _ROUTES.items() for b, rb in _ROUTES.items()}
+_ROUTE_STATE = {}
+
+
+def _kawa_actions(obs):
+    """Commit to a route suffix once the issued prefixes diverge."""
+    seat, step = _seat(obs), int(_get(obs, 'step', 0))
+    state = _ROUTE_STATE.get(seat)
+    if state is None or step < state['last_step'] or step == 0:
+        state = {'last_step': -1, 'route': '8c6s_3q', 'blocked_switches': 0}
+        _ROUTE_STATE[seat] = state
+    desired = _kawa_route_label(obs)
+    if _PREFIX[state['route'], desired] >= step:
+        state['route'] = desired
+    elif state['route'] != desired:
+        state['blocked_switches'] += 1
+    state['last_step'] = step
+    return _ROUTES[state['route']]
 
 
 def frontier_agent(obs, configuration=None):
@@ -26,7 +49,7 @@ def frontier_agent(obs, configuration=None):
     action = _v17_room_evac(obs, action, step)
     action = _v17_room_guard(obs, action, step)
     action = _terminal_liquidation(obs, action, step)
-    state['route'] = _kawa_route_label(obs)
+    state['route'] = _ROUTE_STATE[seat]['route']
     if _FRONTIER_MODE == 'parent':
         return _PARENT_AGENT(obs)
     # Feed wheat and fertilizer retain the production plan's own quantities.

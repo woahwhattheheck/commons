@@ -1,9 +1,9 @@
 {
   "schema": "commons-connected-capability-observations/v1",
   "snapshot": {
-    "observed_at": "2026-09-07T04:35:09Z",
-    "base_main_sha": "4da8a89435a5a04ce460ee28c041ed868bb6328a",
-    "source_watermark": "2026-09-02T10:06:41Z",
+    "observed_at": "2026-09-07T10:22:14Z",
+    "base_main_sha": "42df8480bedf254b121a179ea5c7b2f51747fb1b",
+    "source_watermark": "2026-09-07T07:11:48Z",
     "route_rule": "All Commons carriers may consume all shared resources; Claude is the sole owner-handled exception.",
     "truth_rule": "Exposure, successful probe, lifecycle stage, condition, authority, mutation, consumption, and value are independent facts.",
     "secret_rule": "Share account roles, business identity, services, quotas, and routes; never persist passwords, tokens, recovery links, verification links, or payment credentials."
@@ -77,8 +77,8 @@
     },
     "automations": {
       "total": 14,
-      "enabled": 7,
-      "disabled": 7
+      "enabled": 6,
+      "disabled": 8
     },
     "installed_plugins": [
       "Demos",
@@ -100,7 +100,7 @@
     }
   },
   "component_freshness": {
-    "account_roles": "2026-09-01T23:32:25Z",
+    "account_roles": "2026-09-07T10:02:06Z",
     "tool_fleet": "2026-09-07T04:08:47Z",
     "github_portfolio": "2026-09-07T04:35:09Z"
   },
@@ -824,7 +824,7 @@
       "id": "kaggle-account-binding",
       "kind": "COMPETITION_PLATFORM_ACCOUNT",
       "capacity": "LIVE",
-      "stage": "REACHABLE",
+      "stage": "PRODUCING",
       "condition": "CONSTRAINED",
       "authority": "SHARED_ALL_CARRIERS",
       "holder": "Commons",
@@ -833,12 +833,12 @@
         "RSNA and other evidence-backed Kaggle competition lanes"
       ],
       "mutation": "OWNER_ONLY_ENTRY_SUBMISSION_AND_TERMS_ACCEPTANCE",
-      "route_state": "CONNECTOR_DISCOVERY",
-      "value": "Fresh provider receipt proves a Google-linked Kaggle account road; competition entry, datasets, quotas and acceptance remain unverified.",
-      "last_use": "2026-09-07T04:23:39Z",
-      "freshness": "EMAIL_RECEIPT",
-      "source_kind": "EMAIL_RECEIPT",
-      "evidence": "Google account-data sharing receipt names Kaggle; no credential, account identifier, entry, dataset download, submission or acceptance is persisted or claimed."
+      "route_state": "CALLABLE_WITH_CONSTRAINT",
+      "value": "The shared Kaggle route produced one validated TITAN submission, two completed public competitive wins and an exact provider readback without duplicating the operation or changing the public source notebook.",
+      "last_use": "2026-09-07T10:10:29Z",
+      "freshness": "PROVIDER_READBACK",
+      "source_kind": "PROVIDER_API_AND_GITHUB_RECEIPT",
+      "evidence": "Commons PRs #9813, #9814 and #9818 record Kaggle submission 56074364, exactly one matching stable operation, exact 57,711-byte artifact identity, completed validation, two completed public wins, public score 790.0, observed account rank 3981, and contemporaneous quota of two used with three remaining."
     },
     {
       "id": "google-gemini",

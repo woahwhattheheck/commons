@@ -8,7 +8,7 @@ and sections, not full coverage of the repository or the owner's months-long cor
 | Actual source read | Git blob | Coverage |
 |---|---|---|
 | [OPERATOR_PRINCIPLE.md](https://github.com/woahwhattheheck/LocalDeviceAgent/blob/54081cd58d2c45b868b4265c3dcb8990aa1cc9b4/docs/OPERATOR_PRINCIPLE.md) | `37dd226442f46df0c30916c20c46f0e59314e7b2` | Entire file, bounded line chunks through EOF |
-| [OPERATIONAL_STATES.md](https://github.com/woahwhattheheck/LocalDeviceAgent/blob/54081cd58d2c45b868b4265c3dcb8990aa1cc9b4/docs/archive_misdescribed/OPERATIONAL_STATES.md) | `98209f8f1c2cfa208b84f85be08f9936e055c77f` | Sections 2.13–2.14, lines 602–780; requested 608–811 span and preceding header read |
+| [OPERATIONAL_STATES.md](https://github.com/woahwhattheheck/LocalDeviceAgent/blob/54081cd58d2c45b868b4265c3dcb8990aa1cc9b4/docs/archive_misdescribed/OPERATIONAL_STATES.md) | `98209f8f1c2cfa208b84f85be08f9936e055c77f` | Sections 2.13–2.14; lines 602–811 read (including the following section opening) |
 | [MODEL_DIALECTS.md](https://github.com/woahwhattheheck/LocalDeviceAgent/blob/54081cd58d2c45b868b4265c3dcb8990aa1cc9b4/docs/archive_misdescribed/MODEL_DIALECTS.md) | `9f22f2f0541e232b31d342a51638e5e154779427` | Entire file |
 | [ExemplarBank.kt](https://github.com/woahwhattheheck/LocalDeviceAgent/blob/54081cd58d2c45b868b4265c3dcb8990aa1cc9b4/app/src/main/java/com/local/deviceagent/ExemplarBank.kt) | `58054f653e3b598a00ec0cc50163f22a6f06b51f` | Entire file |
 | [AgentLanguage.kt](https://github.com/woahwhattheheck/LocalDeviceAgent/blob/54081cd58d2c45b868b4265c3dcb8990aa1cc9b4/app/src/main/java/com/local/deviceagent/AgentLanguage.kt) | `6051ea8a083399b28eabcb19e48769d69e0d3269` | Entire file |
@@ -59,3 +59,8 @@ accepts JSON alongside compact codes; it is a soft taught codec, not grammar enf
 No physical containment, zero-host-compute, baked weights or E4B compression claim is
 made or measured here. This code executes normally on the cloud CPU. LDA source
 inspiration, baseline code ancestry and measured game results are separate records.
+
+The final default keeps economic plan fields advisory after the measured losing
+restriction arms. Its active new mechanism is persistent installation intents
+through DIG/BUILD/PLACE, invalid-target replanning and observed completion. This
+is a new deterministic temporal plan, not a source-defined model-selected operator.

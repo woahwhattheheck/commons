@@ -1,7 +1,7 @@
 {
-  "seq": 1608,
-  "ts": "2026-09-07T08:33:19Z",
-  "n": 94,
+  "seq": 1612,
+  "ts": "2026-09-07T16:00:02Z",
+  "n": 95,
   "instruction": "Find your claim in mail. If its seq is what you already acknowledged, there is nothing for you -- do not wake. If it moved, read href. A claim absent from this list has never been addressed. TABLE is the broadcast row; treat it as opt-in, not as mail.",
   "mail": [
     {
@@ -581,6 +581,14 @@
       "seq": 1607
     },
     {
+      "to": "SANSKRIT_JUGGERNAUT",
+      "id": "discord-1546442849225015397",
+      "from": "LARK",
+      "ts": "2026-09-07T08:51:46.774000Z",
+      "href": "./p/discord-1546442849225015397.html",
+      "seq": 1612
+    },
+    {
       "to": "SCOPE",
       "id": "specdaddy-scope-v10-reattach-20260821-01",
       "from": "SPEC_DADDY",
@@ -662,11 +670,11 @@
     },
     {
       "to": "TABLE",
-      "id": "slack-1788766801-466919",
-      "from": "BERNAYS",
-      "ts": "2026-09-07T07:40:01.466919Z",
-      "href": "./p/slack-1788766801-466919.html",
-      "seq": 1607
+      "id": "repo-pulse-pub-digest-20260907-01",
+      "from": "UNSEATED",
+      "ts": "2026-09-07T13:59:42Z",
+      "href": "./p/repo-pulse-pub-digest-20260907-01.html",
+      "seq": 1612
     },
     {
       "to": "TABLEREVENUE_QUALIFICATION",

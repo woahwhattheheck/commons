@@ -1,0 +1,142 @@
+{
+  "observed_at": "2026-09-07T10:10:29.150715+00:00",
+  "provider": {
+    "limits": {
+      "numToday": 2,
+      "numTotal": 2,
+      "numAllowedNow": 3
+    },
+    "matching_submissions": [
+      {
+        "ref": 56074364,
+        "totalBytes": 57711,
+        "date": "2026-09-07T10:01:29.190Z",
+        "description": "TITAN \u2014 similarity-gated sales; op titan-kaggriculture-frontier-20260907-01",
+        "errorDescription": null,
+        "fileName": "submission.tar.gz",
+        "publicScore": "790.0",
+        "privateScore": null,
+        "status": "COMPLETE",
+        "submittedBy": "tokenjunkielabs",
+        "submittedByRef": "tokenjunkielabs",
+        "teamName": "Bryce Muhlnickel",
+        "url": "/submissions/56074364/56074364.raw"
+      }
+    ]
+  },
+  "episodes": {
+    "56074364": [
+      {
+        "id": 106417872,
+        "createTime": "2026-09-07T10:08:22.979Z",
+        "endTime": "2026-09-07T10:11:05.062Z",
+        "state": "COMPLETED",
+        "type": "EPISODE_TYPE_PUBLIC",
+        "agents": [
+          {
+            "submissionId": 56074364,
+            "reward": 177118,
+            "teamName": "Bryce Muhlnickel",
+            "teamId": 16846069
+          },
+          {
+            "submissionId": 55675715,
+            "index": 1,
+            "reward": 76540,
+            "teamName": "Lucas Henrique Mateo",
+            "teamId": 16664143
+          }
+        ]
+      },
+      {
+        "id": 106416987,
+        "createTime": "2026-09-07T10:04:27.669Z",
+        "endTime": "2026-09-07T10:07:01.522Z",
+        "state": "COMPLETED",
+        "type": "EPISODE_TYPE_PUBLIC",
+        "agents": [
+          {
+            "submissionId": 56074364,
+            "reward": 46540,
+            "teamName": "Bryce Muhlnickel",
+            "teamId": 16846069
+          },
+          {
+            "submissionId": 56026339,
+            "index": 1,
+            "reward": 27284,
+            "teamName": "Shivansh Chaudhary",
+            "teamId": 16750614
+          }
+        ]
+      },
+      {
+        "id": 106416828,
+        "createTime": "2026-09-07T10:01:29.534Z",
+        "endTime": "2026-09-07T10:03:07.359Z",
+        "state": "COMPLETED",
+        "type": "EPISODE_TYPE_VALIDATION",
+        "agents": [
+          {
+            "submissionId": 56074364,
+            "reward": 61777,
+            "teamName": "Bryce Muhlnickel",
+            "teamId": 16846069
+          },
+          {
+            "submissionId": 56074364,
+            "index": 1,
+            "reward": 61777,
+            "teamName": "Bryce Muhlnickel",
+            "teamId": 16846069
+          }
+        ]
+      }
+    ]
+  },
+  "competition_summary": {
+    "competitions": [
+      {
+        "id": 147734,
+        "ref": "https://www.kaggle.com/competitions/kaggriculture",
+        "title": "Kaggriculture",
+        "url": "https://www.kaggle.com/competitions/kaggriculture",
+        "description": "Create an agent to play in this farming simulation and compete with others to maximize your income",
+        "organizationName": "Kaggle",
+        "category": "Featured",
+        "reward": "50,000 Usd",
+        "tags": [
+          {
+            "ref": "simulations",
+            "name": "simulations",
+            "description": "",
+            "fullPath": "subject > culture and humanities > games > video games > simulations",
+            "competitionCount": 93,
+            "datasetCount": 902,
+            "scriptCount": 325,
+            "totalCount": 1320
+          },
+          {
+            "ref": "custom metric",
+            "name": "custom metric",
+            "description": "This competition's metric is defined under the 'Evaluation' tab",
+            "fullPath": ""
+          }
+        ],
+        "deadline": "2026-09-30T23:59:00.000Z",
+        "teamCount": 8000,
+        "userHasEntered": true,
+        "userRank": 3981,
+        "mergerDeadline": "2026-09-23T23:59:00.000Z",
+        "newEntrantDeadline": "2026-09-23T23:59:00.000Z",
+        "enabledDate": "2026-07-30T16:15:52.123Z",
+        "maxDailySubmissions": 5,
+        "maxTeamSize": 5,
+        "evaluationMetric": "kaggriculture",
+        "awardsPoints": true,
+        "hostName": "Kaggle",
+        "dateCreated": "2026-06-09T23:19:05.594Z"
+      }
+    ]
+  }
+}
