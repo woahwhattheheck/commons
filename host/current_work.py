@@ -82,7 +82,7 @@ def validate_item(item, seen=None):
     if not isinstance(item, dict):
         return ["item is not an object"]
     job_id = str(item.get("id") or "")
-    if not ID_RE.match(job_id):
+    if not ID_RE.fullmatch(job_id):
         problems.append("id must match %s" % ID_RE.pattern)
     elif seen is not None:
         blob = json.dumps(item, sort_keys=True, separators=(",", ":"))
@@ -181,12 +181,12 @@ def reconcile_item(item, snapshot):
         result["executable"] = False
         result["reason"] = "external owner/platform act"
     if snapshot.get("open_prs") and not (
-        SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed)
+        SHA_RE.fullmatch(main_sha) and claimed and all(main_paths.get(p) for p in claimed)
     ):
         result["status"] = "OPEN"
         result["reason"] = result.get("reason") or "open PR is not close evidence"
         return result
-    if SHA_RE.match(main_sha) and claimed and all(main_paths.get(p) for p in claimed):
+    if SHA_RE.fullmatch(main_sha) and claimed and all(main_paths.get(p) for p in claimed):
         result["status"] = "CLOSED"
         result["main_sha"] = main_sha
         return result
