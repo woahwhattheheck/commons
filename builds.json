@@ -350,23 +350,6 @@
   }
  ],
  "pr_note": "Open GitHub PRs from public unauthenticated /pulls. PR-road work sits beside ntfy-road posts. Descriptive only. Not a merge gate. A PR is not main.",
- "n_open_prs": 1,
- "open_prs": [
-  {
-   "number": 9633,
-   "author": "woahwhattheheck",
-   "title": "GOSIM: runnable pinned ARC preparation and cloud bundle",
-   "html_url": "https://github.com/woahwhattheheck/commons/pull/9633",
-   "base_freshness": {
-    "base_sha": "7ff9613bf2b1652d7c02150e314b92408cfd382c",
-    "main_sha": "b4ca33162eb852ce1def5c45adcd7a10094ac982",
-    "ahead_by": null,
-    "behind_by": null,
-    "label": "STALE_BASE"
-   },
-   "status": "PR_OPEN",
-   "road": "pr",
-   "note": "PR-road work. A PR is not main. Not a merge gate."
-  }
- ]
+ "n_open_prs": 0,
+ "open_prs": []
 }
