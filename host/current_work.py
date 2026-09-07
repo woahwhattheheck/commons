@@ -118,7 +118,17 @@ def add_item(catalog, item):
     """Append a peer item. Same id + same bytes is idempotent."""
     if not isinstance(catalog, dict):
         return catalog, ["catalog is not an object"]
-    items = list(catalog.get("items") or [])
+    problems = validate_item(item)
+    if problems:
+        return catalog, problems
+    items = catalog.get("items")
+    if items is None:
+        items = []
+    if not isinstance(items, list):
+        return catalog, ["items must be a list"]
+    # Check every row before duplicate lookup; never discard malformed data.
+    if any(not isinstance(existing, dict) for existing in items):
+        return catalog, ["item is not an object"]
     job_id = str(item.get("id") or "")
     incoming = json.dumps(item, sort_keys=True, separators=(",", ":"))
     for existing in items:
@@ -128,9 +138,6 @@ def add_item(catalog, item):
         if prior == incoming:
             return catalog, []
         return catalog, ["CONFLICT same id different bytes: %s" % job_id]
-    problems = validate_item(item)
-    if problems:
-        return catalog, problems
     updated = dict(catalog)
     updated["items"] = items + [item]
     return updated, []
