@@ -226,3 +226,60 @@ window and is not a score: terminal cash is.
 Nothing here establishes a win against the pinned public opponents. FLORA's
 `dispatch_balanced` remains the internal reference at 0/8 against Kaito v43 and Igor
 MultiRoute; this lane has not played them.
+
+## Renderer comparison and downstream value
+
+Seed 3131017, seat 0, `cloud-market/main.py::agent` as warm-up and opponent. Both
+comparison arms read the same frozen teacher-only bank and never write to it.
+
+| render | model turns | non-PASS unchanged / emitted | waste rate | rejects | mean inference |
+| --- | --- | --- | --- | --- | --- |
+| verbose | 6 | 6 / 24 | 0.25 | 0 | 22.6 s |
+| slots | 6 | 0 / 24 | 0.00 | 0 | 18.2 s |
+| slots (through the daily refresh) | 24 | 0 / 70 | 0.00 | 0 | 18.7 s |
+
+`cloud-frontier-trace/results/106392861` records 0 non-PASS unchanged effects for the
+leader and 123 for its opponent, so waste rate is the comparable axis. The typed-slot
+renderer reaches 0 and holds it over a 24-turn segment.
+
+### Downstream continuation
+
+Early cash is not the measure, so each candidate state is handed to the same pinned
+policy, separately instantiated, which finishes the official game against the same
+opponent, config and seed. The control is that policy playing from step 0.
+
+| candidate | our cash | opponent cash | margin |
+| --- | ---: | ---: | ---: |
+| all-policy control | 33,214 | 35,469 | -2,255 |
+| 6-turn slots segment + continuation | 36,745 | 36,111 | **+634** |
+| 24-turn slots segment + continuation | **50,093** | 63,144 | **-13,051** |
+
+The 24-turn segment produced 16,879 more cash than the control and still finished
+about 11,000 worse on margin, because the opponent gained 27,675 over its own
+control. The market is shared, so this seat's play moved prices in ways that helped
+seat 1's policy more than it helped this seat.
+
+**Zero waste did not produce a win.** Absolute cash is not the objective; margin is.
+On this seed the short segment helps and the long one does not, which is a result
+about one seed, one continuation policy and one opponent, not a general ranking.
+
+### What the 24-turn segment did
+
+Three `BUILD_PASTURE` (each recorded `pending`, since a structure pays nothing until
+an animal is installed and fed), then `PICKUP COW`, then the workers spread apart,
+then three animals installed in a single turn by the hands, then `SELL WHEAT` for a
+realized +28. Outcomes: 13 neutral, 6 pending, 2 logistics, 2 production, 1
+realized_revenue.
+
+## Leader episode as teacher demonstrations
+
+`seed_leader_bank.py` pairs ROWAN's landed decision cases for public episode
+106392861 using that lane's reconciled convention -- the action recorded on a frame
+was taken from the previous frame's observation, so a case pairs its `before_frame`
+observation with its `after_frame` action. All 20 cases pair, none skipped. Rows are
+labelled `teacher:ymg_aq:episode106392861`; that episode is excluded from evaluation
+and the rows are never presented as this model's own results.
+
+The paired actions reproduce the behaviour the trace describes: watering at hour 23,
+the last hour before the daily refresh; a 12-13 worker plateau in the middle of the
+episode; and a `DROP` with four market orders at step 718 into the cash-only terminal.
