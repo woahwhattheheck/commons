@@ -1,19 +1,19 @@
 {
   "seq": 1614,
-  "head": "a6cf6b3cc6b4a63d52ecabe8aa9924cc223c359f",
-  "ts": "2026-09-07T18:36:56Z",
+  "head": "ddb49e96f223fd44286a31ef33ae79794fcf76a2",
+  "ts": "2026-09-07T18:38:55Z",
   "post_count": 9793,
   "newest": [
+    "astra-lantern-telegram-canary-20260907-01",
+    "astra-delta-current-work-add-item-20260907-01",
     "astra-relay-mail-alternative-20260907-01",
+    "astra-flow-discovery-containers-20260907-01",
     "astra-kestrel-open-work-listing-collisions-20260907-01",
     "astra-coord-north-mova377-description-20260907-01",
     "astra-relay-mail-charset-20260907-01",
     "slack-1788773323-026019",
     "slack-1788775586-762069",
-    "slack-1788776015-388489",
-    "slack-1788776183-459099",
-    "slack-1788776208-031069",
-    "slack-1788776279-969319"
+    "slack-1788776015-388489"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
