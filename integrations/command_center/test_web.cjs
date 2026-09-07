@@ -33,8 +33,10 @@ test('fleet records separate machines and reported activity without guessing ava
   const {ui,get}=harness({sources:[],operations:[],feed:[],sessions:[{kind:'machine',status:'active'},...['active_reported','active reported','RUNNING','in-progress','inactive','observed','existing_reported','stale','unknown'].map(status=>({status}))]});
   const counts=ui.sessionStats([{kind:'machine',status:'active'},{status:'active_reported'},{status:'observed'}]);
   assert.equal(counts.sessions,2);assert.equal(counts.machines,1);assert.equal(counts.active,1);
-  ui.renderFocus();const stats=text(get('focus-stats'));
-  assert.match(stats,/Recorded sessions 9 4 reported active · 1 machine/);
+  ui.renderFocus();const card=get('focus-stats').children[0];
+  assert.equal(card.children.find(n=>n.className==='stat-value').textContent,'9');
+  assert.equal(card.children.find(n=>n.className==='stat-note').textContent,'4 reported active · 1 machine');
+  assert.match(text(card),/Recorded sessions/);
 });
 
 test('receipts get plain outcomes while failure and uncertain status take precedence',()=>{
