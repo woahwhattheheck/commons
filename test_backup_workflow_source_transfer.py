@@ -2,6 +2,7 @@
 """Keep backup CI independent of unrelated Windows-incompatible tree paths."""
 from __future__ import annotations
 
+import os
 from pathlib import Path
 import re
 import shlex
@@ -71,11 +72,14 @@ class BackupWorkflowSourceTests(unittest.TestCase):
 
     @staticmethod
     def git(repo: Path, *args: str, data: bytes | None = None) -> bytes:
-        return subprocess.run(
-            ["git", *args], cwd=repo, input=data, check=True, capture_output=True,
-        ).stdout
+        completed = subprocess.run(
+            ["git", *args], cwd=repo, input=data, check=False, capture_output=True,
+        )
+        if completed.returncode:
+            raise AssertionError(f"git {args!r} failed: {completed.stderr.decode('utf-8', errors='replace')}")
+        return completed.stdout
 
-    def test_archive_preserves_commit_bytes_and_excludes_incompatible_paths(self) -> None:
+    def test_archive_preserves_commit_bytes_and_excludes_unrelated_paths(self) -> None:
         paths = self.archive_paths()
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -93,19 +97,23 @@ class BackupWorkflowSourceTests(unittest.TestCase):
                 path.write_bytes(expected[name])
             self.git(source, "add", "--", *paths)
             self.git(source, "commit", "-m", "source fixture")
-            # Build the unrelated invalid-on-Windows path as Git objects only;
-            # never create that filename on either runner's filesystem.
+            # The producer runs on Ubuntu, where Git can archive a tree with
+            # Windows-incompatible names. Windows still checks exact archive
+            # bytes with a portable unrelated name; it only consumes the real
+            # Ubuntu-produced artifact in this workflow.
+            unrelated_name = '"2026-09-0.html' if os.name != "nt" else "unrelated-board-page.html"
+            unrelated_path = f"d/{unrelated_name}"
             blob = self.git(source, "hash-object", "-w", "--stdin", data=b"unrelated\n").strip()
             tree = self.git(
                 source, "mktree", "-z",
-                data=b'100644 blob ' + blob + b'\t"2026-09-0.html\0',
+                data=b"100644 blob " + blob + b"\t" + unrelated_name.encode("utf-8") + b"\0",
             ).strip()
             entries = self.git(source, "ls-tree", "-z", "HEAD")
             root_tree = self.git(source, "mktree", "-z", data=entries + b"040000 tree " + tree + b"\td\0").strip()
             commit = self.git(source, "commit-tree", root_tree.decode(), "-p", "HEAD", "-m", "unrelated tree path").strip()
             self.git(source, "update-ref", "HEAD", commit.decode())
             tree_paths = self.git(source, "ls-tree", "-r", "--name-only", "-z", "HEAD")
-            self.assertIn(b'd/"2026-09-0.html\0', tree_paths)
+            self.assertIn(unrelated_path.encode("utf-8") + b"\0", tree_paths)
             # A dirty working copy must not substitute for the committed source.
             (source / paths[0]).write_bytes(b"uncommitted replacement\r\n")
             archive_path = root / "source.tar"
@@ -114,7 +122,7 @@ class BackupWorkflowSourceTests(unittest.TestCase):
                 actual = {member.name: archive.extractfile(member).read()
                           for member in archive.getmembers() if member.isfile()}
             self.assertEqual(actual, expected)
-            self.assertNotIn('d/"2026-09-0.html', actual)
+            self.assertNotIn(unrelated_path, actual)
             self.assertNotIn(".git/config", actual)
 
 

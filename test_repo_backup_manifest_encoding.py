@@ -69,7 +69,7 @@ class BackupManifestEncodingTests(unittest.TestCase):
         self.manifest.write_text(json.dumps(payload, ensure_ascii=False), encoding="utf-8")
         actual, actual_bundle = repo_backup.read_manifest(self.manifest)
         self.assertEqual(actual, payload)
-        self.assertEqual(actual_bundle, bundle)
+        self.assertEqual(actual_bundle, bundle.resolve())
 
     def test_missing_and_malformed_json_keep_existing_error_path(self) -> None:
         with self.assertRaises(repo_backup.BackupError) as missing:
