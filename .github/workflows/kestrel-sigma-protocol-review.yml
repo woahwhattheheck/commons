@@ -1,0 +1,39 @@
+name: kestrel-sigma-protocol-review
+on:
+  push:
+    branches: ['review/kestrel-sigma-protocol-integration-20260906']
+    paths:
+      - 'ci/kestrel-sigma-protocol-review.py'
+      - '.github/workflows/kestrel-sigma-protocol-review.yml'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  focused-integration:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      GIT_TERMINAL_PROMPT: '0'
+    steps:
+      - name: Fetch exact public review tree without repository credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init replay
+          git -C replay fetch --depth=1 https://github.com/woahwhattheheck/commons.git "$GITHUB_SHA"
+          git -C replay checkout --detach FETCH_HEAD
+          test "$(git -C replay rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Compare actual full-package tests against pinned main
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 replay/ci/kestrel-sigma-protocol-review.py "$RUNNER_TEMP/kestrel-sigma-protocol"
+      - name: Preserve bounded focused results, including baseline failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: kestrel-sigma-protocol-evidence
+          path: |
+            ${{ runner.temp }}/kestrel-sigma-protocol/*.json
+            ${{ runner.temp }}/kestrel-sigma-protocol/*.log
+          retention-days: 15
+          if-no-files-found: error
