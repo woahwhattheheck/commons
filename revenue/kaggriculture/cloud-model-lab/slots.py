@@ -209,6 +209,12 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
                        + ("cared_today" if t.get("cared_today") else "not cared today")
                        + ("  fertilizer_ready" if t.get("fertilizer_available") else ""))
 
+    import farmmap as _fm
+    _bal = _fm.structure_balance(obs, cfg, seat)
+    if _bal:
+        out.append("STRUCTURE BALANCE (empty structures vs animals available to fill them)")
+        out.append("  " + _bal)
+
     out.append("TURN RULES")
     r = adm["rules"]
     plant = ", ".join(f"{k}{v}" for k, v in sorted(r["plant_budget"].items()) if v) or "none"

@@ -370,12 +370,29 @@ def evaluate_turn(obs, config, seat, action):
                 elif isinstance(t_before, dict) and t_before.get("kind") == "PLANT" and \
                         not (isinstance(t_after, dict) and t_after.get("kind") == "PLANT"):
                     kind = "harvested" if eff_act[0] == "HARVEST" else "destroyed_plant"
+                elif isinstance(t_before, dict) and t_before.get("kind") in ("COOP", "PASTURE") \
+                        and "animal" not in t_before and t_after is None:
+                    kind = "removed_structure"
+                elif isinstance(t_before, dict) and t_before.get("kind") == "WEED" \
+                        and t_after is None:
+                    kind = "cleared_weed"
                 elif shed_up:
                     kind = "stored_in_shed"
                 else:
                     kind = "tile_state_change"
+        # Exact pre/post tile under this unit, so a DIG is re-scored from what the
+        # tile WAS and BECAME rather than from worker positions, which do not move on
+        # DIG, WATER, FEED, CARE or HARVEST.
+        try:
+            _p = before_f["farmer"] if i == 0 else before_f["hands"][i - 1]
+            _bx, _by = int(_p[0]), int(_p[1])
+            tile_before = copy.deepcopy(before_f["tiles"][_by][_bx])
+            tile_after = copy.deepcopy(seq_farm["tiles"][_by][_bx])
+        except Exception:
+            tile_before = tile_after = None
         effects.append({"unit": i, "action": list(act), "applied": eff_act,
-                        "non_no_op": bool(changed), "effect": kind})
+                        "non_no_op": bool(changed), "effect": kind,
+                        "tile_before": tile_before, "tile_after": tile_after})
 
     # Joint PLANT budget, exactly as the interpreter computes it.
     demand = {}
@@ -630,9 +647,20 @@ def outcome(pre_obs, post_obs, config, seat, action, effects=None):
         return True, "production", f"plants on the board {p0}->{p1}"
 
     ops = [e["action"][0] for e in effects]
+    razed = [e for e in effects if e["effect"] == "removed_structure"]
+    built = [e for e in effects if e["action"][0] in ("BUILD_COOP", "BUILD_PASTURE")
+             and e["non_no_op"]]
+    if razed and built:
+        return False, "churn", (
+            f"{len(razed)} empty structure(s) removed and {len(built)} built in the same "
+            f"turn; each build costs a worker turn")
+    if razed:
+        return False, "removed_structure", (
+            f"{len(razed)} empty structure(s) removed by DIG, freeing the tile(s)")
     if any(o in ("BUILD_COOP", "BUILD_PASTURE") for o in ops):
-        return False, "pending", ("structure built with no animal on it yet; it pays only "
-                                  "once an animal is installed and fed")
+        return False, "pending", ("structure built with no animal on it yet; it pays once "
+                                  "an animal is installed and fed, which may happen later "
+                                  "in the episode")
     if "CARE" in ops:
         # CARE is legitimate whether or not FEED happens this turn: the tile may
         # already be fed_today, or it may be fed later in the day. The engine settles
