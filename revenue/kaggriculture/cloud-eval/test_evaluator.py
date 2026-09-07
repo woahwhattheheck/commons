@@ -120,16 +120,25 @@ class ActorTests(unittest.TestCase):
         self.assertEqual(actor.act({}, {}, 0.1)["kind"], "timeout")
         self.assertLess(time.monotonic() - before, 1.0)
 
-    @unittest.skipUnless(os.path.isdir("/proc"), "Linux procfs measurement")
+    @unittest.skipUnless(hasattr(os, "wait4") or os.path.isdir("/proc"), "OS child resource measurement")
     def test_timeout_resource_measurement(self):
         actor = self.actor("hungry")
+        initial_rss = actor.report()["peak_rss_kib"]
         self.assertEqual(actor.act({}, {}, 0.2)["kind"], "timeout")
-        status = Path(f"/proc/{actor.proc.pid}/status").read_text()
-        observed = int(next(line for line in status.splitlines() if line.startswith("VmHWM:")).split()[1])
+        try:
+            status = Path(f"/proc/{actor.proc.pid}/status").read_text()
+            observed = int(next(line for line in status.splitlines() if line.startswith("VmHWM:")).split()[1])
+        except OSError:
+            observed = None
         actor.close()
-        self.assertGreaterEqual(actor.report()["peak_rss_kib"], observed)
-        self.assertEqual(actor.report()["resource_sample"], "child_rusage_plus_linux_procfs")
-        self.assertEqual(actor.report()["exit_code"], -9)
+        report = actor.report()
+        if observed is not None:
+            self.assertGreaterEqual(report["peak_rss_kib"], observed)
+            self.assertEqual(report["resource_sample"], "child_rusage_plus_linux_procfs")
+        else:
+            self.assertEqual(report["final_resource_sample"], "wait4")
+            self.assertGreater(report["peak_rss_kib"], initial_rss + 8 * 1024)
+        self.assertEqual(report["exit_code"], -9)
 
     def test_invalid_actions(self):
         for name in ("bad", "nan", "huge"):
