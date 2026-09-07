@@ -29,3 +29,5 @@ jobs:
         run: python3 -m unittest integrations.command_center.test_core integrations.command_center.test_server -v
       - name: Browser source syntax
         run: node --check integrations/command_center/web/app.js
+      - name: Dashboard presentation contracts
+        run: node --test integrations/command_center/test_web.cjs
