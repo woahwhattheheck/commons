@@ -583,9 +583,21 @@ def outcome(pre_obs, post_obs, config, seat, action, effects=None):
     for e in effects:
         if e["action"][0] == "PLACE" and e["effect"] == "stored_in_shed" and \
                 len(e["action"]) > 1 and e["action"][1] in K.ANIMALS:
+            farm_now = pre_obs["farms"][seat]
+            poss = [farm_now["farmer"]] + list(farm_now.get("hands", []))
+            i = e["unit"]
+            label = "farmer" if i == 0 else f"hand{i - 1}"
+            where = ""
+            if i < len(poss):
+                x, y = int(poss[i][0]), int(poss[i][1])
+                t = farm_now["tiles"][y][x]
+                kind = t.get("kind") if isinstance(t, dict) else t
+                occupied = isinstance(t, dict) and "animal" in t
+                where = (f" {label} stood on ({x},{y}) {kind}"
+                         + (" which was already occupied" if occupied else ""))
             return False, "warehoused", (
                 f"PLACE {e['action'][1]} deposited the animal into the shed instead of "
-                f"installing it; the unit was not on an empty matching structure")
+                f"installing it;{where or ' the unit was not on an empty matching structure'}")
 
     if money1 > money0:
         return True, "realized_revenue", f"cash {money1 - money0:+.0f}"
@@ -593,8 +605,14 @@ def outcome(pre_obs, post_obs, config, seat, action, effects=None):
         return True, "production", f"animals installed {a0}->{a1}, cash {money1 - money0:+.0f}"
     if y1 > y0:
         return True, "production", f"yield on the board {y0}->{y1}"
-    if carried1 > carried0 or (shed1 > shed0 and carried0 > 0):
-        return True, "logistics", f"goods moved: carried {carried0}->{carried1}, shed {shed0}->{shed1}"
+    if carried1 > carried0:
+        return True, "logistics", f"goods picked up: carried {carried0}->{carried1}"
+    if shed1 > shed0 and carried1 < carried0:
+        # A deposit moves goods OUT of hands. Requiring the carried count to fall
+        # keeps a market purchase -- which also grows the shed -- from reading as
+        # workers moving goods.
+        return True, "logistics", (f"goods deposited: carried {carried0}->{carried1}, "
+                                   f"shed {shed0}->{shed1}")
     if p1 > p0:
         return True, "production", f"plants on the board {p0}->{p1}"
 

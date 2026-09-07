@@ -119,6 +119,28 @@ OP_NOTE = {
 }
 
 
+MOVES = {"NORTH": (0, -1), "SOUTH": (0, 1), "EAST": (1, 0), "WEST": (-1, 0)}
+
+
+def _move_dest(op, obs, seat, unit_idx):
+    """The tile a move lands on. Movement was rendered as a bare compass word, so a
+    worker sharing another worker's tile could not see where else it could work."""
+    farm = obs["farms"][seat]
+    positions = [farm["farmer"]] + list(farm.get("hands", []))
+    p = positions[unit_idx] if unit_idx < len(positions) else farm["farmer"]
+    dx, dy = MOVES[op]
+    x, y = int(p[0]) + dx, int(p[1]) + dy
+    n = len(farm["tiles"])
+    if not (0 <= x < n and 0 <= y < n):
+        return "off the board"
+    here = [lbl for lbl, q in
+            zip(["farmer"] + [f"hand{k}" for k in range(len(positions) - 1)], positions)
+            if (int(q[0]), int(q[1])) == (x, y)]
+    desc = _tile_str(farm["tiles"][y][x], int(obs["day"]))
+    return (f"to ({x},{y}) {desc}"
+            + (f", where {', '.join(here)} already stands" if here else ""))
+
+
 def _place_effect(item, obs, seat, unit_idx):
     """PLACE is conditional: install an animal, or deposit into the shed.
 
@@ -195,6 +217,8 @@ def accepted_block(adm, obs=None, seat=0):
                     if i in earlier_on_tile else ""
                 rendered.append(" ".join(str(t) for t in op) + f" (acts on {tgt}"
                                 + (f"; {note}" if note else "") + order + ")")
+            elif op[0] in MOVES and obs is not None:
+                rendered.append(f"{op[0]} ({_move_dest(op[0], obs, seat, i)})")
             else:
                 rendered.append(" ".join(str(t) for t in op))
         suffix = f"  [standing on {tgt}]" if tgt else ""

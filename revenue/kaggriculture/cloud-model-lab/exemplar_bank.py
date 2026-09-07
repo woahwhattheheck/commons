@@ -116,9 +116,69 @@ def lean_state(state_text):
     return " . ".join(lines[:8])[:MAX_STATE]
 
 
+def make_baseline(src, dst):
+    """Write a TEACHER-ONLY copy of `src` to `dst` and describe it.
+
+    Independent comparison arms must each start from the same bank and must not be
+    able to hand a later arm an earlier arm's model rows. Building the baseline by
+    omitting model provenance -- rather than trusting a file called "snapshot" -- makes
+    that a property of the data, and the returned hash and counts let a run record the
+    exact bank it started from. No reseeding: the completed teacher rows are reused.
+    """
+    import hashlib
+    kept, omitted = [], 0
+    with open(src) as fh:
+        for ln in fh:
+            ln = ln.strip()
+            if not ln:
+                continue
+            try:
+                row = json.loads(ln)
+            except Exception:
+                continue
+            if str(row.get("provenance", "")).startswith("model"):
+                omitted += 1
+                continue
+            kept.append(ln)
+    os.makedirs(os.path.dirname(dst) or ".", exist_ok=True)
+    body = ("\n".join(kept) + "\n") if kept else ""
+    with open(dst, "w") as fh:
+        fh.write(body)
+    return {"source": src, "path": dst, "rows": len(kept),
+            "model_rows_omitted": omitted,
+            "sha256": hashlib.sha256(body.encode()).hexdigest()}
+
+
+def describe(path):
+    """Row count, model-row count and content hash of a bank file."""
+    import hashlib
+    if not os.path.exists(path):
+        return {"path": path, "rows": 0, "model_rows": 0, "sha256": None}
+    body = open(path, "rb").read()
+    rows = [l for l in body.decode().splitlines() if l.strip()]
+    model = 0
+    for l in rows:
+        try:
+            if str(json.loads(l).get("provenance", "")).startswith("model"):
+                model += 1
+        except Exception:
+            pass
+    return {"path": path, "rows": len(rows), "model_rows": model,
+            "sha256": hashlib.sha256(body).hexdigest()}
+
+
 class Bank:
-    def __init__(self, path):
+    def __init__(self, path, write_path=None):
+        """`path` is READ. `write_path` is WRITTEN.
+
+        They are separate so a run cannot append into the bank another run will read.
+        Passing write_path=None makes the bank read-only: `record` is a no-op, which
+        is what a comparison arm needs. Defaulting write_path to `path` would restore
+        exactly the coupling this separation exists to remove, so it is not the
+        default -- a caller that wants to learn names its output explicitly.
+        """
         self.path = path
+        self.write_path = write_path
         self.rows = []
         if os.path.exists(path):
             with open(path) as fh:
@@ -146,12 +206,21 @@ class Bank:
         # plus a plan exceeds 200 bytes -- which `_hands_of` then silently discarded,
         # so those rows were dead weight. Retrieval is bounded by per-class retention,
         # not by truncating a row's content.
+        if not self.write_path:
+            return          # read-only bank: retrieval only, never learns
         row = {"cls": cls, "ctx": context,
                "state": state_text if isinstance(state_text, str) else str(state_text),
                "action": json.dumps(action, separators=(",", ":")),
                "provenance": provenance, "v": CLASSIFIER_VERSION, "n": len(self.rows)}
         self.rows.append(row)
-        with open(self.path, "a") as fh:
+        os.makedirs(os.path.dirname(self.write_path) or ".", exist_ok=True)
+        if self.write_path != self.path and not os.path.exists(self.write_path):
+            # A learning run's output starts as a copy of what it read, so the output
+            # file is a complete bank rather than only the rows this run added.
+            with open(self.write_path, "w") as fh:
+                for r in self.rows[:-1]:
+                    fh.write(json.dumps(r) + "\n")
+        with open(self.write_path, "a") as fh:
             fh.write(json.dumps(row) + "\n")
         if len(self.rows) > MAX_ROWS:
             self.trim()
@@ -172,7 +241,7 @@ class Bank:
             per[c] = per.get(c, 0) + 1
             kept.append(r)
         self.rows = list(reversed(kept))
-        with open(self.path, "w") as fh:
+        with open(self.write_path or self.path, "w") as fh:
             for r in self.rows:
                 fh.write(json.dumps(r) + "\n")
 
