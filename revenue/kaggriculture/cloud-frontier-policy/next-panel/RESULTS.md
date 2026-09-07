@@ -1,3 +1,5 @@
+Current complete continuation: [NEXT-RESULTS.md](NEXT-RESULTS.md), 113 games and two next-candidate archives. The initial checkpoint below is retained for history.
+
 # Frozen candidate generalization and isolated repair
 
 The exact designated archive lost all 16 fresh development games: 8/8 losses to Arlene v14 (mean margin -21,472), 8/8 losses to Apex v1 (-22,334.25). All completed 719 rounds without runtime failures. This does not reopen the accepted reserved validation or alter the submission. Native loader initialization and process startup are measured separately in per-game.csv; raw games retain successful transaction units/cash, all ineffective-action events, daily full observations and terminal state in compressed JSON.

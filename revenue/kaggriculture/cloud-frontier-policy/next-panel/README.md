@@ -1,3 +1,5 @@
+Current complete continuation: [NEXT-RESULTS.md](NEXT-RESULTS.md), 113 games and two next-candidate archives. The initial checkpoint below is retained for history.
+
 # Frontier next public panel
 
 This additive development panel tests the frozen PR9803 native archive against two different current public notebooks. It does not select or modify the designated submission. Source bodies and full original notebooks are preserved with Apache-2.0 notices and hashes in UPSTREAM.json.
