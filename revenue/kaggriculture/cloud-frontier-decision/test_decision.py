@@ -19,7 +19,7 @@ class DecisionTests(unittest.TestCase):
         r = self.decide()
         self.assertEqual(r['decision'], 'HIRE')  # hour 8, no hour-3 cutoff
         self.assertEqual(r['hire_cost'], 144)
-        self.assertEqual(r['conditional_margin'], [187, 207])
+        self.assertEqual(r['conditional_own_cash_profit_range'], [187, 207])
         self.assertEqual([hire_cost(n) for n in range(5)], [1,1,2,3,5])
         self.assertEqual(hire_cost(11, 3), 432)
 
@@ -32,7 +32,7 @@ class DecisionTests(unittest.TestCase):
         p['baseline_sales'] = [dict(product='STRAWBERRY', quantity=2, step=232)]
         p['with_hire_sales'] += p['baseline_sales']
         r = self.decide(p)
-        self.assertEqual(r['conditional_margin'], [183, 203])
+        self.assertEqual(r['conditional_own_cash_profit_range'], [183, 203])
         # Repricing existing output makes the marginal value 4 less than gross.
 
     def test_lifetime_stale_terminal_and_infeasible(self):
@@ -57,6 +57,30 @@ class DecisionTests(unittest.TestCase):
         self.assertEqual(r['decision'], 'HIRE') # low scenario 167 - 144 still positive
         self.assertEqual(self.decide(dict(self.plan, additional_cost=188))['decision'], 'KEEP')
         self.assertEqual(self.decide(quote=lambda p,i: 1)['decision'], 'KEEP')
+
+    def test_objective_choices_preserve_full_profit_vector(self):
+        # Explicit illustrative scores, not calibrated probabilities.
+        kw = dict(quote=lambda p,i: 20 if i >= 0 else 100)
+        worst = self.decide(**kw)
+        central = self.decide(**kw, objective='central_scenario', central_scenario='high')
+        weighted = self.decide(**kw, objective='weighted', scenario_weights={'low':.1,'high':.9})
+        self.assertEqual(worst['decision'], 'KEEP')
+        self.assertEqual(central['decision'], 'HIRE')
+        self.assertEqual(weighted['decision'], 'HIRE')
+        for r in [worst, central, weighted]:
+            self.assertEqual(r['evaluations'][0]['scenario_own_cash_profit'], {'low':-104,'high':56})
+        self.assertEqual(central['selection_own_cash_profit'], 56)
+        self.assertAlmostEqual(weighted['selection_own_cash_profit'], 40)
+        self.assertEqual(central['conditional_margin'], [-104,56]) # legacy OWN cash alias
+
+    def test_no_implicit_probabilities_or_scenario_names(self):
+        for kw in [dict(objective='weighted'), dict(objective='central_scenario'),
+                   dict(objective='weighted',scenario_weights={'low':1}),
+                   dict(objective='weighted',scenario_weights={'low':-1,'high':2}),
+                   dict(objective='weighted',scenario_weights={'low':1,'high':1}),
+                   dict(objective='weighted',scenario_weights={'low':float('nan'),'high':1}),
+                   dict(objective='unknown')]:
+            with self.assertRaises(ValueError): self.decide(**kw)
 
     def test_batch_is_sequential_not_quantity_times_quote(self):
         lots = [dict(product='MILK',quantity=3,step=5)]
