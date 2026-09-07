@@ -41,7 +41,7 @@ KEEP = {
     "p/grok-build-discord-cloud-33699286743-billing-lock-20260902-01.md": "e8d308ed",
     "catalog.html": "97f683f1",
     "boards.html": "7d046f44",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
 }
 
 EVENT_8528 = {

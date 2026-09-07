@@ -24,7 +24,7 @@ KEEP = {
     "p/goat-pages-super-mcp-land-20260902-01.md": "171e0daaf",
     "catalog.html": "97f683f1",
     "boards.html": "7d046f44",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
     "wire.html": "a3934e26",
     ".github/workflows/tests.yml": "67fe2c46",
     "open_door_guard.py": "861958e9",
