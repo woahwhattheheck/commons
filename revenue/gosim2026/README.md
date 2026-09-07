@@ -25,7 +25,8 @@ Python 3.11+ and network access to public GitHub/PyPI are required for preparati
 The compiler also needs Node.js 20+ and pnpm when it actually generates a web app.
 No model credentials are used by the build or startup checks.
 
-The ZIP root contains `main.py`, `requirements.txt`, ARC's full Python source,
+The ZIP root contains `main.py`, the tested 69-package dependency lock as
+`requirements.txt` (original retained as `requirements.upstream.txt`), ARC's full Python source,
 its exact template gitlink, retained license and a file-hash manifest. In ARC-Bench,
 select Python and upload the ZIP only when that platform's run window permits.
 The published entry shape is:
@@ -82,4 +83,8 @@ Checked 2026-09-07 UTC:
 
 Unresolved external details: gateway access/configuration, published scoring
 weights, interpretation of conflicting submission descriptions, payout/IP terms.
-Startup/package validation is not a replacement for the sponsor-gateway sample run.
+The first cloud run (34081766220) passed 10 contract tests, built the real pinned
+source, installed 69 resolved dependencies, and started ARC 1.2.0 plus its SDK.
+The complete dependency versions from that actual run are now pinned in this
+repository and the upload bundle; subsequent builds recheck them. Startup/package
+validation is not a replacement for the sponsor-gateway sample run.

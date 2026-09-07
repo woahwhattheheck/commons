@@ -70,6 +70,11 @@ class BuildTests(unittest.TestCase):
         self.assertEqual(manifest["model_calls_during_build"], 0)
         self.assertIn("arc-template/catalog.yaml", manifest["files"])
 
+    def test_tested_dependency_lock_is_used_in_upload(self):
+        entries = build.assemble(*self.inputs(), b"", b"openai==3.8.0\n")
+        self.assertEqual(entries["requirements.txt"], b"openai==3.8.0\n")
+        self.assertEqual(entries["requirements.upstream.txt"], b"openai\n")
+
     def test_repeated_packaging_is_byte_identical(self):
         entries = build.assemble(*self.inputs(), b"print('adapter')")
         self.assertEqual(build.zip_bytes(entries), build.zip_bytes(dict(reversed(list(entries.items())))))

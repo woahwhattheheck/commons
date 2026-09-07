@@ -51,7 +51,7 @@ def dependency_lines(data: bytes) -> list[str]:
 
 
 def assemble(arc: dict[str, bytes], templates: dict[str, bytes],
-             adapter: bytes) -> dict[str, bytes]:
+             adapter: bytes, dependency_lock: bytes | None = None) -> dict[str, bytes]:
     entries = {name[4:]: data for name, data in arc.items() if name.startswith("src/")}
     if "main.py" not in entries or "requirements.txt" not in entries:
         raise ValueError("Pinned ARC source layout changed")
@@ -63,6 +63,11 @@ def assemble(arc: dict[str, bytes], templates: dict[str, bytes],
         if name.endswith(("requirements.txt", "pyproject.toml", "package.json")):
             if FORBIDDEN.search(data.decode("utf-8")):
                 raise ValueError("Prohibited dependency declaration")
+    if dependency_lock is not None:
+        if FORBIDDEN.search(dependency_lock.decode("utf-8")):
+            raise ValueError("Prohibited locked dependency")
+        entries["requirements.upstream.txt"] = entries["requirements.txt"]
+        entries["requirements.txt"] = dependency_lock
     entries["arc_cli.py"] = entries.pop("main.py")
     entries["main.py"] = adapter
     entries["LICENSE-ARC"] = arc["LICENSE"]
@@ -112,7 +117,8 @@ def main() -> int:
     args = parser.parse_args()
     entries = assemble(fetch_source(ARC_REPO, ARC_COMMIT),
                        fetch_source(TEMPLATE_REPO, TEMPLATE_COMMIT),
-                       Path(__file__).with_name("adapter.py").read_bytes())
+                       Path(__file__).with_name("adapter.py").read_bytes(),
+                       Path(__file__).with_name("requirements.resolved.txt").read_bytes())
     archive = zip_bytes(entries)
     # Do not overwrite an earlier candidate; each cloud job uses a new artifact.
     with args.output.open("xb") as handle:
