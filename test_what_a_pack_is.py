@@ -27,7 +27,7 @@ KEEP = {
     "p/cursor-merge-on-pr-20260902-01.md": "22b63e25",
     "p/cursor-merge-on-pr-readback-20260902-01.md": "e160b2c3",
     "host/merge_on_pr.py": "0270094d",
-    "host/sprint_integration.py": "b7bec0b9",
+    "host/sprint_integration.py": "1ba2002c",
     "p/grok-build-discord-cloud-billing-lock-readback-20260902-01.md": "e14e443b",
     "p/grok-build-discord-cloud-billing-lock-20260902-01.md": "2e0bfbfb",
     "p/grokbuild-pr8399-commons-slack-readback-20260902-01.md": "aaf290ad",

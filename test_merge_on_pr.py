@@ -15,7 +15,7 @@ CATALOG = ROOT / "ground/MERGE_ON_PR.json"
 DOOR = ROOT / "merge-on-pr.html"
 
 KEEP = {
-    "host/sprint_integration.py": "b7bec0b9",
+    "host/sprint_integration.py": "1ba2002c",
     "ground/SPRINT_INTEGRATION.json": "eba10870",
     "ground/SPRINT_INTEGRATION.md": "8d569755",
     "host/pr7915_closed_unmerged.py": "9d56ea0e",
