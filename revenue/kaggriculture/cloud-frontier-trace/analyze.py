@@ -157,7 +157,9 @@ def audit_transition(engine, ev, before, after, actions, cfg, step, info):
             op = action[0] if isinstance(action, list) and action else "INVALID"
             event = {"kind": "unit", "seat": owners[id(farm)], "worker": idx, "action": action,
                      "changed": old_farm != farm or old_private != private,
-                     "inventory_delta": delta(contents(old_private), contents(private))}
+                     "inventory_delta": delta(contents(old_private), contents(private)),
+                     "seed_delta": delta(old_private.get("seeds", {}), private.get("seeds", {})),
+                     "animals_owned_delta": delta(old_private.get("animals", {}), private.get("animals", {}))}
             if op == "DROP":
                 event["discarded"] = {k: -v for k, v in event["inventory_delta"].items() if v < 0}
             events.append(event)
@@ -262,7 +264,9 @@ def analyze(replay, engine, ev, source=None):
                "actions": actions, "prices_before": before[0]["market"]["prices"],
                "prices_after": after[0]["market"]["prices"],
                "observed_cash_delta": [after[0]["farms"][s]["money"] - before[0]["farms"][s]["money"] for s in range(players)],
-               "farms_after": [farm_snapshot(after[0]["farms"][s]) for s in range(players)]}
+               "farms_after": [farm_snapshot(after[0]["farms"][s]) for s in range(players)],
+               "inventory_before": [copy.deepcopy(o.get("private")) for o in before],
+               "inventory_after": [copy.deepcopy(o.get("private")) for o in after]}
         for seat, action in enumerate(actions):
             for op in [action.get("farmer", ["PASS"]), *action.get("hands", [])]:
                 totals[seat]["requested"][op[0] if isinstance(op, list) and op else "INVALID"] += 1
