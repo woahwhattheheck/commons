@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     env:
-      REPORT_DIR: ${{ runner.temp }}/astra-marlin-opportunity-preserve
+      REPORT_DIR: /tmp/astra-marlin-opportunity-preserve
     steps:
       - uses: actions/checkout@v4
         with:
@@ -116,5 +116,5 @@ jobs:
         if: always()
         with:
           name: astra-marlin-opportunity-preserve-validation
-          path: ${{ runner.temp }}/astra-marlin-opportunity-preserve/
+          path: /tmp/astra-marlin-opportunity-preserve/
           retention-days: 30
