@@ -63,6 +63,15 @@ class ProductionTests(unittest.TestCase):
         self.assertLessEqual(cost, 70)
         self.assertGreater(candidate.price("WHEAT", -qty, market), 0)
 
+    def test_dynamic_crop_cap_uses_observable_worker_capacity(self):
+        plants = [(i, 0, {"kind": "PLANT", "crop": "STRAWBERRY"}) for i in range(6)]
+        animals = [(i, 1, {"animal": "GOOSE"}) for i in range(6)]
+        low = candidate._dynamic_crop_cap(animals, plants, 0, [(0, 0)] * 4, 24, candidate.POLICY)
+        high = candidate._dynamic_crop_cap(animals, plants, 0, [(0, 0)] * 10, 24, candidate.POLICY)
+        self.assertGreater(high, low)
+        self.assertLessEqual(high, candidate.POLICY["crop_cap"])
+        self.assertGreaterEqual(low, len(plants))
+
 
 if __name__ == "__main__":
     unittest.main()

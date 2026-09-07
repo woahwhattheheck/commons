@@ -12,7 +12,9 @@ standalone `candidate.py`. Its production-event projection is frozen from
 ROWAN's landed `cloud-frontier-trace/events.py` contract (blob
 `48b3c0df949e13bf4c63ee86f5d5b3a58ec00aec`). Market commitments use a
 single sequential cash ledger: seeds are protected first, then only the exact
-feed deficit is bought at per-unit repriced cost.
+feed deficit is bought at per-unit repriced cost. Crop capacity is no longer a
+fixed 16: it expands up to 24 only when observable worker effect capacity can
+cover installed animals, crop service, and pending placements.
 
 ## Current evidence
 
@@ -24,12 +26,19 @@ feed deficit is bought at per-unit repriced cost.
   Kaito mean margin **-21,415.5**, Igor **-27,495.75**.
 - All 20 selected-policy games completed without agent failures and each
   report's first game replayed with identical scores and trace.
+- Dynamic crop capacity then beat the shipped checkpoint by **+5,315.75** mean
+  over four paired games on development seeds `9200131` and `9200157`.
+- Across those seeds it improved the worst pinned-reference mean gap from
+  **-45,830.5** to **-36,309.5**. Igor improved to **-19,282.75**, while
+  Kaito worsened from **-21,008.25** to **-36,309.5**.
 
 The public references remain materially stronger. These are official-
 interpreter development results, not hosted Kaggle scores or evidence of
 leaderboard leadership. The initially corrected feed-before-seed ledger was
 rejected after losing both same-seed seats to the merged policy by 14,139 mean;
 its bytes are not shipped.
+An independently tested labor-throttling arm also lost both paired games by
+7,888 mean and is excluded. Dynamic crop capacity is the only promoted arm.
 
 Run the focused source contract:
 

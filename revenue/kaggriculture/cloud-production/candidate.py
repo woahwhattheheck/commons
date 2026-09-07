@@ -40,7 +40,7 @@ PARAMS = {
 }
 # Keep marginal land/labor demand below the costly outer-herd regime.
 # Paired unseen-seed comparison and original incumbent: see ECONOMICS.md.
-POLICY = {'animal_cap': 18, 'max_hands': 12, 'crop_cap': 16, 'forecast_days': 8, 'care': True, 'mixed': True, 'expansion': True}
+POLICY = {'animal_cap': 18, 'max_hands': 12, 'crop_cap': 24, 'forecast_days': 8, 'care': True, 'mixed': True, 'expansion': True}
 
 
 HERD = {'pipeline': True, 'capital_weight': 0.5}
@@ -205,6 +205,22 @@ def _product_fill(product, wanted, cash, reserve, market):
     return filled, total
 
 
+def _dynamic_crop_cap(animals, plants, pending, units, turns, policy):
+    """Bound crop growth from observable daily effect capacity.
+
+    The 0.52 conversion is a policy allowance for productive effects after
+    travel, not an engine constant or a promise that every reserved task lands.
+    """
+    workers = max(1, len(units))
+    ongoing = sum(plant[2].get('crop') in ONGOING for plant in plants)
+    animal_load = len(animals) * 3.2
+    crop_load = 1.45 + 0.65 * ongoing / max(1, len(plants))
+    effect_capacity = workers * turns * 0.52
+    sustainable = int(max(0, effect_capacity - animal_load - pending * 2.0) / crop_load)
+    crop_cap = min(policy['crop_cap'], max(len(plants), 4, sustainable))
+    return crop_cap
+
+
 def agent(obs, configuration=None):
     if not obs.get("farms"):
         return {"farmer": ["PASS"], "hands": [], "market": []}
@@ -254,7 +270,9 @@ def agent(obs, configuration=None):
         horizon, production, demand, future_prices, policy)
 
     total_capacity = len(spots)
-    crop_cap = min(policy["crop_cap"], max(0, total_capacity - len(animals) - pending - 3))
+    service_crop_cap = _dynamic_crop_cap(
+        animals, plants, pending, units, turns, policy)
+    crop_cap = min(service_crop_cap, max(0, total_capacity - len(animals) - pending - 3))
     choice, crop_roi = None, 0
     strawberry_demand = sum("STRAWBERRY" in SHOPS.get(shop, [])
                             for shop in obs.get("town", {}).get("unlocked_shops", []))
