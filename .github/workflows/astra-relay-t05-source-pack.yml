@@ -1,0 +1,51 @@
+name: astra-relay-t05-source-pack
+on:
+  push:
+    branches: [astra-relay-ci/t05-source-pack-20260907-01]
+    paths: [.github/workflows/astra-relay-t05-source-pack.yml]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Read exact Commons source pin
+        uses: actions/checkout@v4
+        with:
+          ref: 8329e78768906dc6e75ca3712e1690adc1ab2148
+          path: commons
+          fetch-depth: 1
+          sparse-checkout: |
+            revenue/kaggriculture/cloud-frontier-policy
+            revenue/kaggriculture/cloud-pack
+            revenue/kaggriculture/cloud-eval
+      - name: Read exact official engine pin
+        uses: actions/checkout@v4
+        with:
+          repository: Kaggle/kaggle-environments
+          ref: 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c
+          path: engine
+          fetch-depth: 1
+          sparse-checkout: |
+            kaggle_environments/envs/kaggriculture
+      - name: Archive committed inputs only
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C commons rev-parse HEAD)" = 8329e78768906dc6e75ca3712e1690adc1ab2148
+          test "$(git -C engine rev-parse HEAD)" = 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c
+          mkdir bundle
+          git -C commons archive --format=tar.gz --prefix=commons/ -o "$PWD/bundle/commons-inputs.tar.gz" HEAD revenue/kaggriculture/cloud-frontier-policy/next-panel revenue/kaggriculture/cloud-frontier-policy/vendor revenue/kaggriculture/cloud-frontier-policy/export revenue/kaggriculture/cloud-pack revenue/kaggriculture/cloud-eval
+          git -C engine archive --format=tar.gz --prefix=engine/ -o "$PWD/bundle/engine-inputs.tar.gz" HEAD kaggle_environments/envs/kaggriculture LICENSE
+          git -C commons ls-tree -r HEAD -- revenue/kaggriculture/cloud-frontier-policy/next-panel revenue/kaggriculture/cloud-frontier-policy/vendor revenue/kaggriculture/cloud-frontier-policy/export revenue/kaggriculture/cloud-pack revenue/kaggriculture/cloud-eval > bundle/commons-git-blobs.txt
+          git -C engine ls-tree -r HEAD -- kaggle_environments/envs/kaggriculture LICENSE > bundle/engine-git-blobs.txt
+          printf '%s\n' 'Commons: 8329e78768906dc6e75ca3712e1690adc1ab2148' 'Kaggle engine: 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c' 'Source export only; no simulations, model work, credentials or Kaggle writes.' > bundle/PROVENANCE.txt
+          (cd bundle && sha256sum commons-inputs.tar.gz engine-inputs.tar.gz commons-git-blobs.txt engine-git-blobs.txt PROVENANCE.txt > SHA256SUMS)
+      - name: Return source archive to cloud builder
+        uses: actions/upload-artifact@v4
+        with:
+          name: astra-relay-t05-source-pack
+          path: bundle/
+          if-no-files-found: error
+          retention-days: 7
