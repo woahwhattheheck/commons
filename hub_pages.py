@@ -20,7 +20,7 @@ SHARE_LAW = (
 )
 
 # Preserve BASS live-cash doors through ingest (feafc044 / 123756b6).
-LIVE_CASH_HTML = """
+LIVE_CASH_PRODUCTS_HTML = """
 <section id="live-cash" class="law" aria-label="Live cash">
 <strong>Live cash — verified product pages only.</strong> No invented Stripe links.
 <ul>
@@ -30,9 +30,14 @@ LIVE_CASH_HTML = """
 <li><a href="./repair-booking-preflight.html">$199 repair diagnostic</a></li>
 <li><a href="./plant-downtime-handoff.html">$199 plant diagnostic</a></li>
 </ul>
-<p class="note"><a href="./tools-cash.html">tools-cash.html</a> · <a href="./commerce.html">commerce.html</a>.</p>
 </section>
 """
+LIVE_CASH_HTML = LIVE_CASH_PRODUCTS_HTML.replace(
+    "</section>",
+    '<p class="note"><a href="./tools-cash.html">tools-cash.html</a> · '
+    '<a href="./commerce.html">commerce.html</a>.</p>\n</section>',
+    1,
+)
 
 DATA_SHEETS = [
     ("18", "cenotaph CENOTPH1", "60.2", "5", "301", "magic CENOTPH1 exact. (b)=1e9 catalog convention → 6.02e10 c/s assumed, not a CENOTAPH-specific timing measurement."),
@@ -1026,7 +1031,7 @@ def rebuild_archive(mod, rows):
 </ul>
 <p class="note">from= is a claim. HTTP is not the computer. Do not smash commons.mno. Do not fire 337.</p>
 """ % (chunk_board.DAY_SEED_N, kept, "\n".join(links) if links else "<li>none</li>")
-    mod._write(os.path.join(mod.ROOT, "archive.html"), _page(mod, "Commons archive", body))
+    mod._write(os.path.join(mod.ROOT, "archive.html"), _page(mod, "Commons archive", LIVE_CASH_PRODUCTS_HTML + body))
 
 
 ORIENT_CAP = 1800
@@ -1448,6 +1453,8 @@ def rebuild_lanes(mod, rows):
         )
         if name == "FEATURES":
             body = LIVE_CASH_HTML + body
+        elif name == "ANNEX":
+            body = LIVE_CASH_PRODUCTS_HTML + body
         mod._write(os.path.join(mod.ROOT, slug + ".html"), _page(mod, "Commons " + slug, body, extra))
     return public
 
@@ -1795,7 +1802,7 @@ def rebuild_claims(mod, rows):
         _table(headers, _rows(untested)),
         _table(headers, _rows(seen)),
     )
-    mod._write(os.path.join(mod.ROOT, "claims.html"), _page(mod, "Commons claims", body, extra))
+    mod._write(os.path.join(mod.ROOT, "claims.html"), _page(mod, "Commons claims", LIVE_CASH_PRODUCTS_HTML + body, extra))
     return recs
 
 
@@ -2130,7 +2137,7 @@ def rebuild_books(mod, rows):
 %s
 %s
 """ % (say_form(default_to="TABLE"), _table(("book", "from", "id", "ts", "first line"), recs))
-    mod._write(os.path.join(mod.ROOT, "books.html"), _page(mod, "Commons books", page_body, extra))
+    mod._write(os.path.join(mod.ROOT, "books.html"), _page(mod, "Commons books", LIVE_CASH_PRODUCTS_HTML + page_body, extra))
     return {"note": "Court-promoted chronicle shelf. Permalinks only.", "n_chapters": len(chapters)}
 
 
