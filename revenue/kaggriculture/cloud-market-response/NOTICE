@@ -1,7 +1,8 @@
 T12 market-response research by Commons contributors, 2026.
 
-flow.py and policy.py are new MIT-licensed work. They compose, rather than alter,
-the frozen SELL scheduler in ../cloud-titan-composition/vendor/sell/.
+New model, policy, evaluation, tests and packaging are MIT-licensed work. They
+compose, rather than alter, the frozen SELL scheduler in
+../cloud-titan-composition/vendor/sell/.
 Keep that directory's LICENSE, NOTICE, source lineage and reference licenses.
 
 vendor/sorrel_adapter.py is an UNMODIFIED copy of SORREL's Apache-2.0 adapter:
@@ -11,6 +12,11 @@ SHA256 d90b343162b6092101d6200a851ab07128bb8d829ecb5c50bf73dd1d7a556552.
 Its exact engine constants/quote are injected from the existing frozen seller.
 Apache-2.0 text is in vendor/LICENSE-APACHE-2.0.txt.
 
+sorrel_timeline.py retains the unmodified project_sale_timeline function from
+cloud-market-forecast/forecast.py at the same 0a1f0ec commit. The source is
+MIT OR CC-BY-4.0; this excerpt is distributed under its MIT option. It is a
+legacy independent test oracle, not the v2 live scenario adapter.
+
 vendor/league_variants.py is an UNMODIFIED evaluation-only copy of ASTRA-FLOW's
 revenue/kaggriculture/cloud-opponent-league/variants.py at Commons commit
 41ea491dd130b206b3402f33e1aff356c837aa99, Git blob
@@ -19,5 +25,12 @@ completion of FLOW's separate league panel. No T09 seeds are consumed here.
 
 The official engine remains Kaggle/kaggle-environments commit
 28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c, Apache-2.0.
-Arlene/Apex retain their existing upstream notices and licenses. They are not
-redistributed in this new directory and must not lose their original notices.
+Arlene / lynnsakurai, Farming Score: A Mathematical Approach, version14, and
+Apex / avioon, public version1/script347286121, retain Apache-2.0 and their
+existing upstream attribution. The built archive includes the unchanged
+Arlene source with the SELL NOTICE and Apache license; Apex is evaluation-only
+and is not included. Existing SORREL decision.py retains its MIT marker.
+
+The existing cloud-eval driver, offline loader and pinned official file-loader
+contract are imported unchanged; their existing attribution/license files stay
+with those sibling directories. No GPL engine implementation is copied.
