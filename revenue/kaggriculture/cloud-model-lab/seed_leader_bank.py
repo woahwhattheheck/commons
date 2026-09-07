@@ -6,19 +6,17 @@ transitions). Each case carries a frame with an observation and an action.
 
 Two things this file will not do:
 
-  * It will not bank a row until the frame alignment is VERIFIED against the engine.
-    The kaggle-environments recording convention is not obvious -- a recorded step's
-    observation already reflects that step's action -- so the pairing is checked by
-    applying the candidate action to the candidate observation and comparing the
-    result to the following frame. Rows are banked only for the alignment that
-    reconciles.
+  * It uses ROWAN's already reconciled frame convention rather than inferring one.
+    In cloud-frontier-trace/analyze.py the action recorded on a frame was taken from
+    the previous frame's observation, so a case pairs its before_frame observation
+    with its after_frame action, and each case's own action_step is checked against
+    both frames before a row is written.
   * It will not present these as this model's own successes. Every row is labelled
     `teacher:ymg_aq:episode106392861`, and the bank's injected header states teacher
     provenance. Episode 106392861 is kept out of evaluation.
 """
 
 import argparse
-import copy
 import gzip
 import json
 import os
@@ -40,63 +38,39 @@ def load_cases(repo_root, ref="origin/main"):
     return json.loads(gzip.decompress(blob))
 
 
-def _apply_unit_phase(obs, config, seat, action):
-    """Replay just the seat's unit phase, as the interpreter orders it."""
-    K = engine()
-    farm = copy.deepcopy(obs["farms"][seat])
-    priv = copy.deepcopy(obs["private"])
-    board = int(config.get("boardSize", 10) or 10)
-    tpd = int(config.get("turnsPerDay", 24) or 24)
-    cap = int(config.get("shedCapacity", 100) or 100)
-    day = int(obs["day"])
-    units = [action.get("farmer", ["PASS"])] + list(action.get("hands") or [])
-    demand = {}
-    for a in units:
-        if isinstance(a, list) and len(a) >= 2 and a[0] == "PLANT":
-            demand[a[1]] = demand.get(a[1], 0) + 1
-    seeds = priv.get("seeds", {})
-    blocked = {c for c, n in demand.items() if n > seeds.get(c, 0)}
-    for i, a in enumerate(units):
-        eff = list(a)
-        if len(eff) >= 2 and eff[0] == "PLANT" and eff[1] in blocked:
-            eff = ["PASS"]
-        try:
-            K._apply_unit_action(farm, priv, i, eff, board, day, tpd, cap)
-        except Exception:
-            pass
-    return farm, priv
+def pair(case):
+    """(observation, action) for one case, using ROWAN's reconciled convention.
 
+    cloud-frontier-trace/analyze.py walks frames with
 
-def verify_alignment(cases, config, seat=0, sample=25):
-    """Which frame pairing reconciles: does frame[k]'s action produce frame[k+1]?
+        before  = observations(frames[index - 1])
+        after   = observations(frames[index])
+        actions = frame_rows(frames[index])[seat].action
+        step    = before[0]["step"]
 
-    Returns the offset that matches, or None. Positions are compared because they are
-    the least ambiguous consequence of a unit phase.
+    so the action recorded ON a frame was taken FROM the previous frame's
+    observation. A case therefore pairs its before_frame's observation with its
+    AFTER_frame's action, and case 0 confirms it: action_step 71,
+    before_frame.observation.step 71, after_frame.observation.step 72.
+
+    Offsets are not inferred from worker positions. FEED, CARE, WATER and HARVEST
+    leave every worker where it stood, so positions cannot discriminate the pairing
+    and would silently accept the wrong one.
     """
-    for offset in (0, -1):
-        agree = total = 0
-        for case in cases[:sample]:
-            frames = case.get("before_frame") or []
-            if len(frames) < 2:
-                continue
-            a_idx = 0 if offset == 0 else 1
-            o_idx = 0
-            act = frames[a_idx].get("action")
-            obs = frames[o_idx].get("observation")
-            nxt = frames[1].get("observation")
-            if not (act and obs and nxt):
-                continue
-            farm, _ = _apply_unit_phase(obs, config, seat, act)
-            got = [list(map(int, farm["farmer"]))] + [list(map(int, p)) for p in farm.get("hands", [])]
-            want = [list(map(int, nxt["farms"][seat]["farmer"]))] + \
-                   [list(map(int, p)) for p in nxt["farms"][seat].get("hands", [])]
-            total += 1
-            if got == want:
-                agree += 1
-        if total and agree / total > 0.9:
-            return {"offset": offset, "agreement": round(agree / total, 3),
-                    "checked": total}
-    return None
+    before = case.get("before_frame") or []
+    after = case.get("after_frame") or []
+    if not before or not after:
+        return None
+    obs = before[0].get("observation")
+    act = after[0].get("action")
+    if not obs or not act:
+        return None
+    step = case.get("action_step")
+    if obs.get("step") != step:
+        return None                       # not the frame this case names
+    if after[0].get("observation", {}).get("step") not in (None, step + 1):
+        return None                       # after-frame is not the next transition
+    return obs, act
 
 
 def build(repo_root, out_bank, seat=0, ref="origin/main", limit=None):
@@ -104,23 +78,15 @@ def build(repo_root, out_bank, seat=0, ref="origin/main", limit=None):
     cases = data.get("cases") or []
     config = {"boardSize": 10, "turnsPerDay": 24, "shedCapacity": 100,
               "maxMarketOrdersPerTurn": 10, "episodeSteps": 720}
-    align = verify_alignment(cases, config, seat)
-    if not align:
-        raise SystemExit("frame alignment did not reconcile against the engine; "
-                         "no rows banked")
+
     bank = EB.Bank(out_bank, write_path=out_bank)
     banked = skipped = 0
     for case in (cases[:limit] if limit else cases):
-        frames = case.get("before_frame") or []
-        if not frames:
+        paired = pair(case)
+        if paired is None:
+            skipped += 1
             continue
-        idx = 0 if align["offset"] == 0 else 1
-        if idx >= len(frames):
-            continue
-        obs = frames[0].get("observation")
-        act = frames[idx].get("action")
-        if not obs or not act:
-            continue
+        obs, act = paired
         turn = {"farmer": list(act.get("farmer") or ["PASS"]),
                 "hands": [list(h) for h in (act.get("hands") or [])],
                 "market": [list(m) for m in (act.get("market") or [])]}
@@ -134,7 +100,9 @@ def build(repo_root, out_bank, seat=0, ref="origin/main", limit=None):
         bank.record(cls, EB.context_of(obs), state, turn, PROVENANCE,
                     plan=f"leader episode 106392861 step {case.get('action_step')}")
         banked += 1
-    return {"alignment": align, "banked": banked, "skipped": skipped,
+    return {"convention": "before_frame.observation -> after_frame.action "
+                          "(cloud-frontier-trace/analyze.py)",
+            "cases": len(cases), "banked": banked, "skipped": skipped,
             "bank": EB.describe(out_bank), "provenance": PROVENANCE}
 
 
