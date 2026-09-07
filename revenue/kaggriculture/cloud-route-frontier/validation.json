@@ -1,0 +1,65 @@
+{
+  "scope": "revenue/kaggriculture/cloud-route-frontier/",
+  "run_at": "2026-09-07T21:47:25.199957+00:00",
+  "regressions": {
+    "methods": 29,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0,
+    "enumerated_frontier_sets": 126
+  },
+  "commands": [
+    "T06_KERNEL_FILE=../search_kernel.py python -m unittest -v test_route_frontier",
+    "python engine_cases.py --engine-dir ../engine/engine --kernel-file ../search_kernel.py",
+    "python -m py_compile route_frontier.py engine_cases.py test_route_frontier.py"
+  ],
+  "engine_artifact": 10005621438,
+  "t06_git_blob": "d05b35057509ed706679c0c841a81ffba05a9936",
+  "full_games": 0,
+  "new_game_seeds": [],
+  "default_policy_changed": false,
+  "hosted_ci": "not measured by this local receipt",
+  "files": {
+    "engine-results.json": {
+      "bytes": 3368,
+      "sha256": "2aa499737ea324dac945b752dd2f4a2ce3f389633434370d2da08c32af990c43",
+      "git_blob": "2ae4576acdae5bffe2d30f333c9510e6c1adb2ed"
+    },
+    "engine_cases.py": {
+      "bytes": 16168,
+      "sha256": "a080f100ffdbebf026177469faceb32f86198ea9719a2186fb695dca4b25da81",
+      "git_blob": "58ce472ffbff3860776c78f6c4135a437236dcc4"
+    },
+    "route_frontier.py": {
+      "bytes": 12913,
+      "sha256": "f08ed283d1e8de81a91e350d06b353a0a0d90957626d2a277eade9ecac8c7f5c",
+      "git_blob": "5a08c7a016d0576a38454ac70af98621b26398ca"
+    },
+    "LICENSE": {
+      "bytes": 11357,
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+      "git_blob": "261eeb9e9f8b2b4b0d119366dda99c6fd7d35c64"
+    },
+    "NOTICE.md": {
+      "bytes": 1232,
+      "sha256": "d5f6adca97d308d44483087312bde7cf0aeffaac12dd9f4cc9517456fe3472cf",
+      "git_blob": "f9a4b1fa6733f9621cb5c89742a7971a86c0a7d4"
+    },
+    "README.md": {
+      "bytes": 9867,
+      "sha256": "e31b41492b1869cfd9bc9feee6b4a4e11c3830419ad16c6e15557157e501b1a6",
+      "git_blob": "0b4d39d0a97c8c1049ed6c0a28ac96a34dc1a2af"
+    },
+    "engine-traces.json.gz.b64": {
+      "bytes": 5066,
+      "sha256": "94bdbabe8cf81e0db66f6ac87ea62563bf435ea5ae8b7dc64d7a7f226d1d524c",
+      "git_blob": "064178932bf729a0f7f57e3f5485fc69f189520d"
+    },
+    "test_route_frontier.py": {
+      "bytes": 13829,
+      "sha256": "847e70d341376d302e467166d1aeda88c535084371e1dec64ae83353f153737a",
+      "git_blob": "37702189378a465c81d565080cd053376231e7e1"
+    }
+  },
+  "evidence_packaging": "The retained Base64 is wrapped at 76 columns; decoded gzip and raw trace hashes match executed output."
+}
