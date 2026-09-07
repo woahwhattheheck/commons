@@ -124,7 +124,7 @@ def main() -> None:
     jest = json.loads((OUT/'jest-results.json').read_text()) if (OUT/'jest-results.json').exists() else {}
     common.result('all-three-focused-project-jest-suites',
                   cp.returncode == 0 and jest.get('numTotalTests') == 47 and jest.get('numPassedTests') == 47,
-                  exit=cp.returncode, total=jest.get('numTotalTests'), passed=jest.get('numPassedTests'), selected=selected)
+                  exit=cp.returncode, total=jest.get('numTotalTests'), passed_count=jest.get('numPassedTests'), selected=selected)
     cp = common.command(['bun','scripts/lint.ts','--no-cache','--show-warnings',SOURCE,TEST], 'final-affected-lint', timeout=900)
     common.result('affected-project-lint-frozen-baseline',cp.returncode == 0,exit=cp.returncode)
     cp = common.command(['node','node_modules/cspell/bin.mjs','--no-progress',SOURCE,TEST], 'final-affected-spell')
