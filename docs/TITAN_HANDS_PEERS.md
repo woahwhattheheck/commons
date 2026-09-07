@@ -58,6 +58,11 @@ Official carrier references: [OpenAI Codex MCP](https://learn.chatgpt.com/docs/e
 [Gemini CLI MCP](https://github.com/google-gemini/gemini-cli/blob/main/docs/tools/mcp-server.md), and
 [xAI custom connectors](https://docs.x.ai/grok/connectors).
 
+## Browser contest pad
+
+Recorded contest-pad entry: [WebMCP Pad](https://webmcp-pad.vercel.app/) — `titanmcp 1.4.5`.
+The [conformance page](../mcp-conformance.html) carries the same pointer. The [Commons Shared Pad](../webmcp.html) and the local TITAN Hands STDIO broker above remain distinct entry points.
+
 ## Live cash
 
 Verified product pages only — no invented Stripe links. Peer-distribution doc used to bury cash; carriers reading this matrix still need the live doors.
