@@ -306,7 +306,6 @@ def main() -> int:
     f.add_argument("--runtime", type=Path, required=True)
     f.add_argument("--output", type=Path, required=True)
     r = sub.add_parser("run")
-    r.add_argument("--runtime", type=Path, required=True)
     r.add_argument("--freeze", type=Path, required=True)
     r.add_argument("--panel", choices=PANELS, required=True)
     r.add_argument("--runtime", type=Path, required=True)
