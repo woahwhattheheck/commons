@@ -33,7 +33,7 @@ A separate differential comparison of 450 complete normalized records passed unc
 These are exact-parser-module results, not a claim that package-level projector initialization or the complete repository battery ran in the isolated environment. The normal repository command is `python -m unittest -v test_protocol_digest_width`; integration and CI receipts belong to the accompanying pull request.
 
 Candidate events.py Git blob: `bd799f07a91e786683c2b1fcb75f273bd2c0af1a`.
-Regression-test Git blob: `0d6e341caa26b169abbd1fb8fe80d862c8345e8c`.
+Initial regression-test Git blob: `0d6e341caa26b169abbd1fb8fe80d862c8345e8c`.
 
 ## Coordination
 
@@ -44,8 +44,12 @@ Exact scope is protocol/events.py, the new root test, and this receipt. No peer 
 
 ## Integration follow-up
 
-Initial head `1c7b8032eb4aa47aca3705ddef252e85b1ed7137` received six successful checks, but the full test run `34074390518`, job `101597578327`, failed: 1,348 tests ran with one failure. All fourteen digest-specific methods passed. The remaining failure was this PR's unrelated-tools assertion: it expected 2,000 characters; the full battery returned 1,000. The isolated parser had returned 2,000. The origin of that environment-dependent difference has not been established.
+The initial test run `34074390518`, job `101597578327`, at head `1c7b8032eb4aa47aca3705ddef252e85b1ed7137` failed. The raw log excerpt verifies that this regression module ran 15 tests with one failure; all fourteen digest-specific methods passed. The failure was this PR's unrelated-tools assertion: it expected 2,000 characters; CI returned 1,000. The isolated parser had returned 2,000. The origin of that environment-dependent difference has not been established.
 
 Corrected the compatibility test to compare unrelated normalized text/tool fields with and without malformed digests in the same environment, for both short and overlong tool names. This verifies the repair's preservation contract without imposing a new tool-string cap. No digest rejection assertion was removed or relaxed; no runtime code was changed for this CI follow-up.
 
-Amended regression-test Git blob: `db5d3ea7fd6948538fff042c3cc2d9fb1243d5ff`. Initial test blob above is retained as historical evidence, not the current file hash. Fresh isolated runs reproduced the original parser's 29 failures and the candidate's 15/15 pass; the 450-record compatibility comparison and Python compilation also passed again. Repository results are recorded in the PR; the initial failed run is not a green integration result.
+Amended regression-test Git blob: `db5d3ea7fd6948538fff042c3cc2d9fb1243d5ff`, published in `d5674fc402ecfbd40fc1ac44d8e3e261106cf38d`. The initial test blob above is historical, not the current file hash. Fresh isolated runs reproduced the original parser's 29 failures and the candidate's 15/15 pass; the 450-record compatibility comparison and Python compilation passed again. Repository results are recorded in PR #9334; the initial failed run is not a green integration result.
+
+### CI evidence correction
+
+A previous version quoted 1,348 tests from a connector-rendered summary. That aggregate is withdrawn: fresh raw job metadata and the checked-in `.github/workflows/tests.yml` show the `the whole battery` shell loop running root modules separately, and the retrieved log excerpt supports the module-level count above, not a verified aggregate. The workflow already skips a maintained list of known-red modules; this change did not edit that list or the workflow. The raw excerpt is not a claim to have read every byte of the complete job log. The current PR discussion records later-head workflow state separately.
