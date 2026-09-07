@@ -244,10 +244,19 @@ class PlanOverlay:
             if not (0 <= x < board and 0 <= y < board):
                 continue
             inv = invs[i] if i < len(invs) else {}
-            free = self.A._noop(units[i], tiles[y][x], inv, seeds, x, y, board)
             plan = self.plans.get(i)
-            if not free:
-                continue                      # the route wants this worker: suspend
+            if plan is None:
+                # Starting a plan: the slot must be free by the baseline's own test,
+                # evaluated where the route actually left the worker.
+                if not self.A._noop(units[i], tiles[y][x], inv, seeds, x, y, board):
+                    continue
+            else:
+                # CONTINUING one: `_noop` is now being asked about the displaced
+                # tile, which is the wrong question and stalls the plan -- 209 of
+                # 217 excursions were abandoned mid-flight that way, each leaving a
+                # worker away from the route's position. While a plan runs the only
+                # position-independent gate is the tape itself, checked below.
+                pass
             if plan is None:
                 if day >= self.last_day:
                     continue
@@ -281,7 +290,7 @@ class PlanOverlay:
             # the route wants this worker back mid-excursion the plan stops here and
             # the displacement is recorded rather than papered over.
             live = tape_op(self.agent, step, i)
-            if plan is not None and live is not None and live != ["PASS"]:
+            if live is not None and live != ["PASS"]:
                 self.plans.pop(i, None)
                 self.abandoned += 1
                 self.stranded += run_cards._dist((x, y), plan["home"])
