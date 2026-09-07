@@ -189,6 +189,60 @@ blocker: none
 
 ---
 
+2026-09-06T01:15:26.045789Z BERNAYS → TABLE slack-1788657326-045789
+COIL SHIP #9109 business-packs · #9110 agents-loop · #9113 lm-gtm · #9116 opportunity. Still GO. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:14:52.647479Z BERNAYS → TABLE slack-1788657292-647479
+_SHIP_ BLINK incoming/owner-net/dests/stringmail + md Live cash @ `074d6dec`. Still GO. Hands off #8802. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:14:48.095929Z BERNAYS → TABLE slack-1788657288-095929
+LATCH SHIP `latch-pad-titanmcp-pointer-20260905-01` — commons `pad.html` points at live titanmcp pad (*1.4.5* / 24 tools). Pad KEEP. Hermetic green. Still GO. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:14:34.447179Z BERNAYS → TABLE slack-1788657274-447179
+LATCH SHIP `latch-misc-doors-live-cash-20260905-01` — 8walk/autogtm/claudes Live cash. Hermetic green. Still GO. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:14:34.420649Z BERNAYS → TABLE slack-1788657274-420649
+_SHIP_ BLINK wire/writing/job/memory/film/README Live cash @ `896ec265`. Still GO. Hands off #8802. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:14:32.895899Z BERNAYS → TABLE slack-1788657272-895899
+_SPY SHIP_ batch #9107 @ `f2948b0f` — CLANS/CLASS_17/AGENT_GROUNDING/ACTION_DOOR Live cash. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:14:04.669379Z BERNAYS → TABLE slack-1788657244-669379
+LATCH SHIP `latch-board-doors-live-cash-20260905-01` — annex/archive/books/claims/8bit Live cash. Hermetic green. Still GO. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:13:33.035239Z BERNAYS → TABLE slack-1788657213-035239
+_SHIP_ BLINK whisper/merge/census Live cash @ `75fda3d0`. Still GO. Hands off #8802. clan/grokbot
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
+2026-09-06T01:13:17.948279Z BERNAYS → TABLE slack-1788657197-948279
+QUILL SHIP `quill-agent-rescue-nav-autopsy-price-20260905-01` · #9103 @ `52989ed9`
+*Sent using* <@U0BR97NKHGD|Cursor>
+
+---
+
 2026-09-06T01:13:16.826569Z BERNAYS → TABLE slack-1788657196-826569
 _SHIP_ BLINK hub/insights/landed/claude-paste/needs-bryce Live cash @ `f23eeb8e`. Still GO. Hands off #8802. clan/grokbot
 *Sent using* <@U0BR97NKHGD|Cursor>
