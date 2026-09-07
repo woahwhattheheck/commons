@@ -29,11 +29,12 @@ def snapshot(api, operation_id=OPERATION_ID):
             'recent_submissions':plain(submissions)}
 
 
-def execute(api, artifact, expected_sha256, state_dir, operation_id=OPERATION_ID):
+def execute(api, artifact, expected_sha256, state_dir, operation_id=OPERATION_ID, description=None):
     artifact=Path(artifact);state_dir=Path(state_dir);state_dir.mkdir(parents=True,exist_ok=True)
     actual=hashlib.sha256(artifact.read_bytes()).hexdigest()
     if actual!=expected_sha256:raise ValueError('Designated artifact SHA256 mismatch')
-    marker=f'{operation_id} sha256:{actual}'
+    marker=description or f'{operation_id} sha256:{actual}'
+    if operation_id not in marker:raise ValueError('Description must contain stable operation ID')
     journal=state_dir/(operation_id+'.json')
     # Read provider BEFORE local retry decision: a previous create may have
     # succeeded even if the requesting process lost its response.

@@ -1,0 +1,20 @@
+{
+  "operation_id": "titan-kaggriculture-frontier-20260907-01",
+  "observed_at": "2026-09-07T09:43:26.712473+00:00",
+  "status": "PROVIDER_RECONCILIATION_REQUIRED",
+  "submission_id": null,
+  "last_confirmed_quota": {
+    "numToday": 1,
+    "numAllowedNow": 4,
+    "timing": "before dispatch; current quota unconfirmed"
+  },
+  "notebook_url": "https://www.kaggle.com/code/tokenjunkielabs/titan-kaggriculture-frontier-source",
+  "kernel_id": 133417557,
+  "version_number": 1,
+  "outgoing_notebook_sha256": "de300270cf596de7cf8029c55edd76436c91a60a6ae25db57697abcbfe4a73b1",
+  "artifact_sha256": "79b407d699b5fd39e7b396de8b6fc79b2bc2fb99f427f7e2e7ecd25fbc71fb0b",
+  "artifact_bytes": 57711,
+  "existing_v2_modified": false,
+  "provider_create_response_received": false,
+  "next_action": "Read owner submissions for stable operation ID before any further dispatch. Do not resubmit from uncertain local state."
+}
