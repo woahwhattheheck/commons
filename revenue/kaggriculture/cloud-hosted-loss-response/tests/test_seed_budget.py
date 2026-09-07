@@ -1,14 +1,32 @@
 # SPDX-License-Identifier: Apache-2.0
 """Suffix-budget properties and actual hosted-observation regressions."""
+import argparse
 import base64
 from copy import deepcopy
 import gzip
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
 import unittest
+import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+REPLAY_DIR = ROOT.parent / 'cloud-frontier-trace/results/t13-public-inputs'
+
+def public_cases():
+    pins = [(106541578, 1, '664393c37fc132c75d9d20d0be53ef76a0188ae333852a35430b1ff7fe648375'),
+            (106540665, 0, '410e9dc42ffabd02118a5782bc077156f952a094ad2669f64ce85941fd5bd94a')]
+    for episode, seat, expected_hash in pins:
+        raw = gzip.decompress(base64.b64decode((REPLAY_DIR / f'{episode}.raw.gz.b64').read_text()))
+        if hashlib.sha256(raw).hexdigest() != expected_hash:
+            raise ValueError('Unexpected public replay bytes')
+        replay = json.loads(raw)
+        for step, slot, bound, expected in [(600, 2, 8, ['BUY_SEED', 'WHEAT', 2]), (624, 1, 0, [])]:
+            obs = deepcopy(replay['steps'][step][seat]['observation']); obs['step'] = step
+            yield dict(episode=episode, observation=obs, configuration=replay['configuration'],
+                       recorded_action=replay['steps'][step + 1][seat]['action'],
+                       slot=slot, bound=bound, expected_order=expected)
 
 def load(name, path):
     spec = importlib.util.spec_from_file_location(name, path)
@@ -74,14 +92,13 @@ class SeedBudgetTests(unittest.TestCase):
             for stock in range(12):
                 for request in range(12):
                     a = {'market': [['BUY_SEED', 'WHEAT', request]]}
-                    o = b.apply(a, {'WHEAT': 0}, 0, 'a')['market'][0]
+                    o = b.apply(a, {'WHEAT': stock}, 0, 'a')['market'][0]
                     retained = o[2] if o else 0
                     self.assertLessEqual(retained, request)
                     self.assertGreaterEqual(stock + retained, min(demand, stock + request))
 
     def test_actual_public_observation_action_regressions(self):
-        cases = json.loads(gzip.decompress(base64.b64decode((ROOT / 'tests/seed-cases.json.gz.b64').read_text())))
-        for case in cases:
+        for case in public_cases():
             with self.subTest(episode=case['episode'], step=case['observation']['step']):
                 run = entry.make_agent(ROOT, sell=False)
                 calls = []
@@ -102,4 +119,8 @@ class SeedBudgetTests(unittest.TestCase):
                 self.assertEqual(disabled(case['observation'], case['configuration']), calls[0])
 
 if __name__ == '__main__':
-    unittest.main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--replays', type=Path, default=REPLAY_DIR)
+    args, remaining = parser.parse_known_args()
+    REPLAY_DIR = args.replays
+    unittest.main(argv=[sys.argv[0], *remaining])
