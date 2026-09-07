@@ -203,6 +203,10 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
         "wall_total_s": round(time.time() - t_start, 1),
         "money": money, "opponent_money": opp_money, "margin": money - opp_money,
         "settings": r.cfg, "provenance": prov, "bank": bank_info, "turns": d.log,
+        # Render switches that change the prompt but live outside the payload.
+        # Without them a later replay renders a DIFFERENT prompt than the model saw
+        # and cannot prove its state reconstruction (compile_motifs.py).
+        "render_env": {k: os.environ.get(k) for k in ("KAG_NO_STRUCTURE_BALANCE",)},
     }
     n = len(d.log)
     legal = sum(1 for x in d.log if x["legal"])
