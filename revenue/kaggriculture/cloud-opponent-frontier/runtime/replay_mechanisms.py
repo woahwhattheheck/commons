@@ -105,7 +105,13 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--policy', type=Path, required=True)
     parser.add_argument('--trace', type=Path, required=True)
-    parser.add_argument('--seat', type=int, choices=(0, 1), required=True)
+    parser.add_argument(
+        '--seat',
+        type=int,
+        choices=(0, 1),
+        required=True,
+        help='Player position whose recorded actions are replayed (0 or 1).',
+    )
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     report = replay_trace(args.policy.resolve(strict=True), args.trace.resolve(strict=True), args.seat)
