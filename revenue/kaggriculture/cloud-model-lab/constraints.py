@@ -605,8 +605,14 @@ def outcome(pre_obs, post_obs, config, seat, action, effects=None):
         return True, "production", f"animals installed {a0}->{a1}, cash {money1 - money0:+.0f}"
     if y1 > y0:
         return True, "production", f"yield on the board {y0}->{y1}"
-    if carried1 > carried0 or (shed1 > shed0 and carried0 > 0):
-        return True, "logistics", f"goods moved: carried {carried0}->{carried1}, shed {shed0}->{shed1}"
+    if carried1 > carried0:
+        return True, "logistics", f"goods picked up: carried {carried0}->{carried1}"
+    if shed1 > shed0 and carried1 < carried0:
+        # A deposit moves goods OUT of hands. Requiring the carried count to fall
+        # keeps a market purchase -- which also grows the shed -- from reading as
+        # workers moving goods.
+        return True, "logistics", (f"goods deposited: carried {carried0}->{carried1}, "
+                                   f"shed {shed0}->{shed1}")
     if p1 > p0:
         return True, "production", f"plants on the board {p0}->{p1}"
 

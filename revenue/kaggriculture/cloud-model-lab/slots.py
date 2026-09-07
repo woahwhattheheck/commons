@@ -190,6 +190,8 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
                 rendered.append(f"PLACE {op[1]} n<={q['PLACE_to_shed'].get(op[1], 1)}")
             elif op[0] in P.TILE_OPS:
                 rendered.append(f"{' '.join(str(t) for t in op)}@{tid}")
+            elif op[0] in P.MOVES:
+                rendered.append(f"{op[0]}->{P._move_dest(op[0], obs, seat, i)}")
             else:
                 rendered.append(" ".join(str(t) for t in op))
         out.append(f"  {label}: " + " | ".join(rendered))

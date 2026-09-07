@@ -157,9 +157,11 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                     "carried_before": sum(sum(i.values()) for i in pre_obs["private"].get("inventories", [])),
                     "carried_after": sum(sum(i.values()) for i in post_obs["private"].get("inventories", [])),
                 }
+                writable = d.bank is not None and getattr(d.bank, "write_path", None)
                 print(f"        outcome: {label} -- {detail}"
-                      + ("  [BANKED]" if ok and d.bank is not None else ""), flush=True)
-                if ok and d.bank is not None:
+                      + ("  [BANKED]" if ok and writable else
+                         "  [bankable, bank read-only]" if ok else ""), flush=True)
+                if ok and writable:
                     import exemplar_bank as EB
                     cls = model_turn.get("situation_class")
                     state_text = EB.structured_state(pre_obs, pre_cfg, seat)
@@ -176,6 +178,8 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
     payload = {
         "seed": seed, "seat": seat, "from_step": from_step,
         "model_turns": model_turns, "warmup": warm_label, "opponent": opp_label,
+        # the full specs, so a later continuation can re-instantiate these agents
+        "warmup_spec": warmup_spec, "opponent_spec": opponent_spec,
         "wall_total_s": round(time.time() - t_start, 1),
         "money": money, "opponent_money": opp_money, "margin": money - opp_money,
         "settings": r.cfg, "provenance": prov, "bank": bank_info, "turns": d.log,
