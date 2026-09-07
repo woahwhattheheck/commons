@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from adapter import catalog_records, parse_time, utc_now
+from work_export import build_work_items, load_catalog
 
 NATIVE_COMMIT = "54bd539954d67ed82288e0404411c86f6e2fbe7d"
 NATIVE_BRANCH = "codex/command-center-20260907"
@@ -23,7 +24,7 @@ SESSION_KEYS = ("id", "label", "url", "provider", "model", "cpu", "ram_gib", "gp
                 "artifact_transport")
 
 
-def build_adapter(catalog, vm_observation, *, generated_at):
+def build_adapter(catalog, vm_observation, *, generated_at, work_catalog=None):
     """Bind measurements only to their actual runtime; keep other capacity unknown."""
     parse_time(generated_at)
     records = catalog_records(catalog, recorded_at=generated_at)
@@ -66,6 +67,14 @@ def build_adapter(catalog, vm_observation, *, generated_at):
             session["origin"]["measurement_ref"] = "local-vm.json"
             session["origin"]["measurement_record_id"] = vm_observation.get("record_id")
         sessions.append(session)
+    work_items = build_work_items(load_catalog() if work_catalog is None else work_catalog)
+    # Preserve the existing session identity and measurement time during reassignment.
+    t15 = next((item for item in work_items if item.get("lane") == "T15"), None)
+    if t15:
+        for session in sessions:
+            if session["id"] == "gpt-t11-vm":
+                session["label"] = "T15 market game theory (existing T11 VM)"
+                session["objective"] = t15["objective"]
     return {
         "schema_version": "titan.command-center-native.v1",
         "generated_at": generated_at,
@@ -76,6 +85,8 @@ def build_adapter(catalog, vm_observation, *, generated_at):
             "merge_ref": BASE + "core.py",
             "adapter_path": "revenue/kaggriculture/command-center-adapter/adapter.json"},
         "sessions": sessions,
+        "work_schema_version": "titan.work-items.v1",
+        "work_items": work_items,
         "sources": [record for record in records if record["kind"] == "source"],
         "artifacts": [record for record in records if record["kind"] == "artifact"],
         "operations": [record for record in records if record["kind"] == "operation"],
