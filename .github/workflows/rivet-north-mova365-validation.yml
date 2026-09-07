@@ -1,0 +1,116 @@
+name: Rivet North Mova 365 validation
+
+on:
+  push:
+    branches:
+      - rivet-north/mova365-validation-20260906
+    paths:
+      - .github/workflows/rivet-north-mova365-validation.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: rivet-north-mova365-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Mova ${{ matrix.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - label: base
+            sha: 65d9dfb09cbf544edbd0d6ac2954219427f734c7
+          - label: pr365
+            sha: 202127cb7d9b4c6764216ea63e200001dbceea63
+    env:
+      CI: 'true'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout public Mova revision without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          repository: woahwhattheheck/mova-store
+          ref: ${{ matrix.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Record provenance
+        shell: bash
+        run: |
+          mkdir -p /tmp/mova365-results
+          git rev-parse HEAD | tee /tmp/mova365-results/head.txt
+          test "$(git rev-parse HEAD)" = '${{ matrix.sha }}'
+          { node --version; npm --version; sha256sum package-lock.json; } | tee /tmp/mova365-results/toolchain.txt
+          git status --porcelain | tee /tmp/mova365-results/status-before.txt
+      - name: Install exact lockfile without lifecycle scripts
+        id: install
+        shell: bash
+        run: |
+          set -o pipefail
+          npm ci --ignore-scripts --no-audit --no-fund 2>&1 | tee /tmp/mova365-results/install.txt
+      - name: Cart context suites
+        id: cart
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run test -- tests/context --maxWorkers=2 --minWorkers=1 --reporter=verbose 2>&1 | tee /tmp/mova365-results/cart.txt
+      - name: Full frontend test suite
+        id: tests
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run test -- --maxWorkers=2 --minWorkers=1 2>&1 | tee /tmp/mova365-results/tests.txt
+      - name: Type check
+        id: types
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run type-check 2>&1 | tee /tmp/mova365-results/types.txt
+      - name: Lint
+        id: lint
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          npm run lint 2>&1 | tee /tmp/mova365-results/lint.txt
+      - name: Check added test formatting
+        id: format
+        if: matrix.label == 'pr365' && steps.install.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -o pipefail
+          ./node_modules/.bin/prettier --check tests/context/CartContext.clearCart.test.tsx 2>&1 | tee /tmp/mova365-results/format.txt
+      - name: Record outcomes and unchanged source
+        if: always()
+        shell: bash
+        run: |
+          printf 'revision=%s\ninstall=%s\ncart=%s\ntests=%s\ntypes=%s\nlint=%s\nformat=%s\n' '${{ matrix.sha }}' '${{ steps.install.outcome }}' '${{ steps.cart.outcome }}' '${{ steps.tests.outcome }}' '${{ steps.types.outcome }}' '${{ steps.lint.outcome }}' '${{ steps.format.outcome }}' | tee /tmp/mova365-results/outcomes.txt
+          git status --porcelain | tee /tmp/mova365-results/status-after.txt
+          git diff --exit-code -- package.json package-lock.json context tests
+      - name: Save test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mova365-${{ matrix.label }}-${{ github.run_id }}
+          path: /tmp/mova365-results/
+          retention-days: 14
+          if-no-files-found: error
+      - name: Report failed checks honestly
+        if: always()
+        shell: bash
+        run: |
+          if grep -Eq '=(failure|cancelled)$' /tmp/mova365-results/outcomes.txt; then
+            echo 'At least one recorded check failed. Consult the baseline/head logs; this workflow does not assert the PR introduced every failure.'
+            exit 1
+          fi
