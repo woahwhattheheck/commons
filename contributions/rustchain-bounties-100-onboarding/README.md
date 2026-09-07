@@ -50,6 +50,6 @@ git diff --check
 git hash-object CONTRIBUTING.md
 ```
 
-The clone and remote-fork operations above were not executed successfully in the Chat runtime because its network DNS was unavailable. Source reads used the connected GitHub integration; patch application and the documented test command were actually executed locally.
+A full clone was unavailable in the Chat runtime: its attempted GitHub clone failed at DNS resolution. No upstream fork was created. Source reads used the connected GitHub integration; patch application and the documented test command were actually executed locally. The clone/checkout steps above are reviewer reproduction instructions, not claimed execution results.
 
 Supply-chain proof: no dependency changes, installations, blind shell downloads, new runtime code, or external executables are introduced by the upstream patch. Source revision and artifact checksum are pinned above. The target upstream repository's licensing terms continue to apply to the patch.
