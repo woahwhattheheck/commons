@@ -1,7 +1,7 @@
 'use strict';
 (() => {
   const $ = id => document.getElementById(id);
-  const views = ['focus','fleet','resources','tools','access','budget','feed'];
+  const views = ['focus','work','builds','inbox','marketing','fleet','resources','tools','access','budget','feed'];
   let state = null, currentView = 'focus', lastSync = null, syncError = '', refreshing = false;
   let tools = [], selectedKey = '', busy = false, dialogSpec = null, toastTimer;
   const attemptKey = 'commons.command-center.operations.v1';
@@ -79,7 +79,7 @@
   function showToast(text) { clearTimeout(toastTimer); $('toast').textContent=text; $('toast').hidden=false; toastTimer=setTimeout(()=>$('toast').hidden=true,5500); }
   function navigate(view) {
     if (!views.includes(view)) view='focus'; currentView=view;
-    views.forEach(v=>$('view-'+v).hidden=v!==view);
+    views.forEach(v=>{if($('view-'+v))$('view-'+v).hidden=v!==view;});
     document.querySelectorAll('[data-view]').forEach(n=>{ n.classList.toggle('active',n.dataset.view===view); if(n.dataset.view===view)n.setAttribute('aria-current','page');else n.removeAttribute('aria-current'); });
     $('breadcrumb-view').textContent=view[0].toUpperCase()+view.slice(1);
     if(location.hash!=='#'+view) history.replaceState(null,'','#'+view);
@@ -218,7 +218,7 @@
   function render() {
     renderFocus();renderFleet();renderResources();renderTools();renderAccess();renderBudgets();renderFeed();renderSources();
     $('nav-fleet').textContent=arr(state.sessions).length;$('nav-resources').textContent=arr(state.resources).length;$('nav-tools').textContent=tools.length;$('nav-feed').textContent=arr(state.feed).filter(e=>!e.hidden||protectedEvent(e)).length;
-    $('footer-sources').textContent=arr(state.sources).length+' source observations · '+arr(state.sources).filter(s=>s.error).length+' reporting errors';connectionState();
+    $('footer-sources').textContent=arr(state.sources).length+' source observations · '+arr(state.sources).filter(s=>s.error).length+' reporting errors';connectionState();window.dispatchEvent(new CustomEvent('commons-state',{detail:state}));
   }
   function observationTime(key){const a=attempts[key];return a&&pending(a.status)&&a.observed_at?a.observed_at:new Date().toISOString();}
   function saveAttempts(){try{sessionStorage.setItem(attemptKey,JSON.stringify(attempts));}catch(_){}}
@@ -277,6 +277,12 @@
   ['close-dialog','cancel-dialog'].forEach(id=>$(id).addEventListener('click',()=>$('form-dialog').close()));
   $('view-fleet').querySelector('.page-heading').append(button('Connect gateway +',runtimeForm,'button button-quiet'));
   window.addEventListener('unhandledrejection',event=>{syncError='Client action error: '+str(event.reason&&event.reason.message||event.reason);connectionState();});
+  window.CommonsPanel={
+    getState:()=>state,getTools:()=>tools,request,navigate,showToast,
+    updateWork:(key,payload,target)=>mutate(key,'/api/work/item',payload,target),
+    callTool:(key,name,args,target,runtime='shared-equipment')=>mutate(key,'/api/tools/call',{runtime_id:runtime,name,arguments:args},target,name),
+    openTool:(name,args={},runtime='shared-equipment')=>{if(busy){showToast('A tool operation is still in flight.');return false;}const t=tools.find(x=>x.name===name&&x.runtime_id===runtime);if(!t){showToast('This tool is not exposed by the selected gateway.');return false;}chooseTool(t);$('tool-arguments').value=JSON.stringify(args,null,2);$('tool-search').value='';renderTools();navigate('tools');return true;}
+  };
   navigate(location.hash.slice(1));renderFocus();renderResources();renderTools();renderAccess();renderBudgets();renderFeed();refresh();
   setInterval(()=>{connectionState();if(!document.hidden)refresh();},30000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden&&(!lastSync||Date.now()-lastSync>30000))refresh();});

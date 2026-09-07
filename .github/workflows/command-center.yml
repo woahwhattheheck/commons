@@ -26,6 +26,8 @@ jobs:
       - name: Existing Commons admission contract
         run: python3 open_door_guard.py --diff HEAD^ HEAD
       - name: Shared state, operation journal, and HTTP contracts
-        run: python3 -m unittest integrations.command_center.test_core integrations.command_center.test_server -v
+        run: python3 -m unittest integrations.command_center.test_core integrations.command_center.test_server integrations.command_center.test_workstreams integrations.command_center.test_collectors integrations.command_center.test_work_integration -v
       - name: Browser source syntax
-        run: node --check integrations/command_center/web/app.js
+        run: |
+          node --check integrations/command_center/web/app.js
+          node --check integrations/command_center/web/work.js

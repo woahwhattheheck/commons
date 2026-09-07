@@ -9,6 +9,9 @@ from __future__ import annotations
 import hashlib
 import json
 import math
+import os
+import threading
+import uuid
 import re
 import sqlite3
 import time
@@ -167,6 +170,9 @@ class CommandCenter:
         self.state_dir = Path(state_dir)
         self.state_dir.mkdir(parents=True, exist_ok=True)
         self.database = self.state_dir / "command-center.sqlite3"
+        self._work_store = None
+        self._work_store_lock = threading.Lock()
+        self._work_refresh_thread = None
         self.repo = repo
         self.gateway_url = _url(gateway_url, gateway=True)
         self.fetcher = fetcher or self._fetch_http
@@ -185,6 +191,9 @@ class CommandCenter:
                     id TEXT PRIMARY KEY, payload_hash TEXT NOT NULL, kind TEXT NOT NULL,
                     name TEXT NOT NULL, runtime TEXT, status TEXT NOT NULL,
                     started_at TEXT NOT NULL, finished_at TEXT, summary TEXT, error TEXT
+                );
+                CREATE TABLE IF NOT EXISTS work_refresh (
+                    id INTEGER PRIMARY KEY CHECK(id=1), data TEXT NOT NULL
                 );
                 CREATE TABLE IF NOT EXISTS moderation (
                     event_id TEXT PRIMARY KEY, hidden INTEGER NOT NULL,
@@ -882,6 +891,147 @@ class CommandCenter:
                                        ("label", "notes", "updated_at") if key in local}
             by_id[local["id"]] = merged
         return list(by_id.values())
+
+
+    def _work_store_instance(self):
+        # Lazy import avoids a core -> workstreams -> CoreError module cycle.
+        with self._work_store_lock:
+            if self._work_store is None:
+                from .workstreams import WorkstreamStore
+                self._work_store = WorkstreamStore(self.state_dir)
+            return self._work_store
+
+    def _work_refresh_status(self):
+        with self._db() as db:
+            row = db.execute("SELECT data FROM work_refresh WHERE id=1").fetchone()
+        return json.loads(row["data"]) if row else {
+            "status": "idle", "started_at": None, "finished_at": None,
+            "note": "Refresh runs only when requested; no scheduled producer."}
+
+    def _save_work_refresh(self, status):
+        with self._db() as db:
+            db.execute("INSERT INTO work_refresh(id,data) VALUES(1,?) "
+                       "ON CONFLICT(id) DO UPDATE SET data=excluded.data",
+                       (_json(status),))
+
+    def _take_work_refresh_lock(self):
+        # Held by the OS until the worker exits, including in-flight provider
+        # reads. Process exit releases it; no stale-file deletion or TTL race.
+        try:
+            handle = (self.state_dir / "workstreams-refresh.lock").open("a+b")
+            handle.seek(0, 2)
+            if handle.tell() == 0:
+                handle.write(b"\0")
+                handle.flush()
+            handle.seek(0)
+            try:
+                if os.name == "nt":
+                    import msvcrt
+                    msvcrt.locking(handle.fileno(), msvcrt.LK_NBLCK, 1)
+                else:
+                    import fcntl
+                    fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except OSError as exc:
+                handle.close()
+                if exc.errno in (11, 13, 35, 36) or getattr(exc, "winerror", None) in (33, 36):
+                    return None
+                raise
+            return handle
+        except OSError:
+            raise CoreError(503, "Work refresh lock unavailable.") from None
+
+    @staticmethod
+    def _release_work_refresh_lock(handle):
+        try:
+            handle.seek(0)
+            if os.name == "nt":
+                import msvcrt
+                msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+            else:
+                import fcntl
+                fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
+        finally:
+            handle.close()
+
+    def work_state(self, refresh=False):
+        if refresh:
+            self.refresh_work()
+        state = self._work_store_instance().state()
+        state["refresh"] = self._work_refresh_status()
+        return state
+
+    def ingest_work(self, payload):
+        return self._work_store_instance().ingest(payload)
+
+    def update_work(self, payload):
+        return self._work_store_instance().update_work(payload)
+
+    def refresh_work(self):
+        # The lock spans instances/processes that share this state directory.
+        handle = self._take_work_refresh_lock()
+        if handle is None:
+            return {"ok": True, "started": False, "already_running": True,
+                    "refresh": self._work_refresh_status()}
+        started = {"id": "work-refresh-" + uuid.uuid4().hex, "status": "running",
+                   "started_at": _now(), "finished_at": None, "owner_pid": os.getpid(),
+                   "config_path": str(self.state_dir / "workstreams.config.json"),
+                   "read_only": True, "scheduled_producer": False}
+        try:
+            self._save_work_refresh(started)
+            worker = threading.Thread(target=self._run_work_refresh,
+                                      args=(handle, started), daemon=True,
+                                      name="command-center-work-refresh")
+            self._work_refresh_thread = worker
+            worker.start()
+        except Exception:
+            failed = {**started, "status": "failed", "finished_at": _now(),
+                      "error": "work_refresh_start_failed"}
+            self._save_work_refresh(failed)
+            self._release_work_refresh_lock(handle)
+            raise CoreError(503, "Work refresh could not start.") from None
+        return {"ok": True, "started": True, "already_running": False,
+                "refresh": started}
+
+    def _run_work_refresh(self, handle, started):
+        final = {**started}
+        try:
+            path = self.state_dir / "workstreams.config.json"
+            if not path.is_file():
+                final.update(status="not_configured", error="workstreams_config_missing")
+                return
+            if path.stat().st_size > 131072:
+                final.update(status="failed", error="workstreams_config_too_large")
+                return
+            try:
+                config = json.loads(path.read_text(encoding="utf-8-sig"))
+            except (OSError, ValueError):
+                final.update(status="failed", error="workstreams_config_unreadable")
+                return
+            if not isinstance(config, dict):
+                final.update(status="failed", error="workstreams_config_not_object")
+                return
+            _no_secret_fields(config)
+            # Collector checks this deadline before scheduling/source/provider
+            # reads. Already in-flight bounded reads may finish afterwards.
+            config = {**config, "refresh_deadline_seconds":
+                      config.get("refresh_deadline_seconds", 180)}
+            from .collectors import LiveCollectors
+            result = LiveCollectors(self._work_store_instance(), config).collect()
+            sources = result.get("sources", [])
+            errors = sum(bool(source.get("error")) for source in sources)
+            final.update(status="completed_with_errors" if errors else "completed",
+                         source_count=len(sources), sources_with_errors=errors,
+                         items_observed=result.get("items_observed", 0),
+                         error=None, last_collected_at=result.get("observed_at"))
+        except Exception as exc:
+            # Do not persist exception messages, config values or provider results.
+            final.update(status="failed", error="work_refresh_" + type(exc).__name__)
+        finally:
+            final["finished_at"] = _now()
+            try:
+                self._save_work_refresh(final)
+            finally:
+                self._release_work_refresh_lock(handle)
 
     def state(self, refresh=False):
         self._refresh_sources(force=refresh)

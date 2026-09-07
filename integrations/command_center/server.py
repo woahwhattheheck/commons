@@ -13,11 +13,16 @@ WEB = Path(__file__).with_name("web")
 DEFAULT_STATE = Path(os.environ.get("COMMONS_COMMAND_CENTER_STATE", str(Path.home() / ".commons" / "command-center")))
 ROUTES = {"/api/focus": "focus", "/api/sessions": "sessions", "/api/budgets": "budgets", "/api/runtimes": "runtimes", "/api/janny": "janny", "/api/feed": "feed", "/api/feed/moderate": "feed/moderate"}
 MANIFEST = {
-    "name": "Commons command center", "version": "1",
+    "name": "Commons command center", "version": "2",
     "state": "GET /api/state", "refresh": "GET /api/state?refresh=1",
     "tools": "GET /api/tools", "call": "POST /api/tools/call", "event": "GET /api/event?event_id=...",
     "call_shape": {"operation_id": "caller-stable-id", "runtime_id": "shared-equipment", "name": "exact catalog tool name", "arguments": {}},
     "mutations": ROUTES,
+    "work": "GET /api/work; GET /api/work?refresh=1 starts a bounded direct-provider read and returns immediately",
+    "ingest_work": "POST /api/work/ingest: operation_id, source with explicit scope/coverage/observed_at, selected items",
+    "direct_work_refresh": "POST /api/work/refresh; status is included in GET /api/work",
+    "owner_work": "POST /api/work/item: operation_id, source_id, item_id, priority, next_action, optional prepared job",
+    "source_modes": "Direct collectors use existing shared GitHub and Slack service roads. Gmail, Airtable and native task observations are supplied by their actual connector-equipped peers through ingest. A source read does not establish complete fleet coverage or business activity.",
     "sharing": "The human and all current and future Commons peers use the same state and capabilities. Roles coordinate responsibility, never access.",
     "operations": "Reuse the same operation_id and exact payload after a transport interruption. Pending or uncertain is not completion. Reconcile at the provider; never remint an ID to force replay.",
     "credentials": "Direct retrieval remains available through the existing shared secure vault client and credential_retrieve_sealed tool. This panel does not decrypt, record, or display credential values.",
@@ -65,6 +70,8 @@ class Handler(BaseHTTPRequestHandler):
         try:
             if parsed.path == "/api/state":
                 self.send_json(200, with_host(self.server.center, self.server.center.state(refresh=parse_qs(parsed.query).get("refresh") == ["1"])))
+            elif parsed.path == "/api/work":
+                self.send_json(200, self.server.center.work_state(refresh=parse_qs(parsed.query).get("refresh") == ["1"]))
             elif parsed.path == "/api/event":
                 event_id = (parse_qs(parsed.query).get("event_id") or [""])[0]
                 self.send_json(200, self.server.center.event(event_id))
@@ -75,7 +82,7 @@ class Handler(BaseHTTPRequestHandler):
             elif parsed.path == "/health":
                 self.send_json(200, {"ok": True, "service": "commons-command-center"})
             else:
-                names = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "text/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8")}
+                names = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "text/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8"), "/work.js": ("work.js", "text/javascript; charset=utf-8"), "/work.css": ("work.css", "text/css; charset=utf-8")}
                 entry = names.get(parsed.path)
                 if entry is None:
                     self.send_json(404, {"error": "not_found"})
@@ -90,7 +97,7 @@ class Handler(BaseHTTPRequestHandler):
             self.send_json(400, {"error": "invalid_origin"})
             return
         path = urlsplit(self.path).path
-        if path not in ROUTES and path != "/api/tools/call":
+        if path not in ROUTES and path not in {"/api/tools/call", "/api/work/ingest", "/api/work/item", "/api/work/refresh"}:
             self.send_json(404, {"error": "not_found"})
             return
         try:
@@ -104,7 +111,16 @@ class Handler(BaseHTTPRequestHandler):
             payload = json.loads(self.rfile.read(size).decode("utf-8"))
             if not isinstance(payload, dict):
                 raise ValueError("JSON object required")
-            result = self.server.center.call_tool(payload) if path == "/api/tools/call" else self.server.center.mutate(ROUTES[path], payload)
+            if path == "/api/work/ingest":
+                result = self.server.center.ingest_work(payload)
+            elif path == "/api/work/item":
+                result = {**self.server.center.update_work(payload), "status": "completed"}
+            elif path == "/api/work/refresh":
+                if payload:
+                    raise CoreError(400, "Read refresh accepts an empty object.")
+                result = self.server.center.refresh_work()
+            else:
+                result = self.server.center.call_tool(payload) if path == "/api/tools/call" else self.server.center.mutate(ROUTES[path], payload)
             self.send_json(200, result)
         except CoreError as exc:
             self.send_json(exc.status, {"error": str(exc)})
