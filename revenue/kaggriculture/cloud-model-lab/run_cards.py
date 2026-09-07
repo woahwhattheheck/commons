@@ -40,9 +40,23 @@ def depot_tiles(board):
 
 
 def _pricer(K):
-    """The engine's own market_price."""
+    """The engine's own `market_price(item, inventory, params)`.
+
+    Resolved from the caller's module when it provides the API. `engine_pin.py`
+    now bundles it verbatim alongside the unit-phase transition, so a hosted
+    archive does not need `kaggle_environments` importable at runtime to price a
+    candidate; the import below stays as a fallback for a caller that hands in
+    some other module. If nothing provides it the import raises, deliberately: an
+    unavailable price must stay distinguishable from an absent opportunity, never
+    be folded into an empty target list.
+    """
     if hasattr(K, "market_price"):
         return K.market_price
+    try:
+        import engine_pin
+        return engine_pin.market_price
+    except Exception:
+        pass
     from kaggle_environments.envs.kaggriculture import kaggriculture as R
     return R.market_price
 

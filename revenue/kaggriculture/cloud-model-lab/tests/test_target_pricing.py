@@ -62,9 +62,16 @@ def main():
     K = NM.engine()
     board = len(obs["farms"][0]["tiles"])
 
-    check("the bundled transition genuinely has no pricing API",
-          not hasattr(K, "market_price"),
-          "engine_pin carries the unit-phase closure only")
+    from kaggle_environments.envs.kaggriculture import kaggriculture as R
+    check("the bundle provides the pricing API, so a hosted archive needs no "
+          "evaluator package at runtime", hasattr(K, "market_price"),
+          f"{K.__name__}.market_price")
+    quotes = [(item, inv) for item in R.PRODUCTS
+              for inv in (0, 1, 7, 50, 133, 400, 1000, 5000)]
+    off = [(i, n) for i, n in quotes
+           if abs(K.market_price(i, n, None) - R.market_price(i, n, None)) > 1e-9]
+    check(f"bundled market_price matches the engine over {len(quotes)} quotes",
+          not off, str(off[:3]))
 
     tg = run_cards.reachable_targets(obs, 0, (0, 0), K, board,
                                      obs["market"]["prices"])
@@ -77,7 +84,6 @@ def main():
           str(sorted({round(t["value_now"], 1) for t in tg})[:4]))
 
     # the exact interface, against the engine's own quote for the same inputs
-    from kaggle_environments.envs.kaggriculture import kaggriculture as R
     market = obs["market"]
     a = next(t for t in tg if t["op"][0] == "HARVEST")
     inv0 = int(dict(market.get("inventory") or {}).get(a["product"], 0))
@@ -87,20 +93,25 @@ def main():
     check("the price equals market_price(item, inventory, params) summed per unit",
           abs(a["value_now"] - expect) < 1e-6, f"{a['value_now']} vs {expect}")
 
-    # a missing API must be LOUD
-    saved = R.market_price
+    # a missing API must be LOUD. Every provider is removed, since the resolver
+    # now falls back from the caller's module to the bundle to the engine; leaving
+    # any one in place would not exercise the path at all.
+    import engine_pin
+    saved = (R.market_price, engine_pin.market_price)
     try:
         del R.market_price
+        del engine_pin.market_price
         raised = None
         try:
-            run_cards.reachable_targets(obs, 0, (0, 0), K, board,
+            run_cards.reachable_targets(obs, 0, (0, 0), engine_pin, board,
                                         obs["market"]["prices"])
         except Exception as exc:
             raised = f"{type(exc).__name__}: {exc}"
-        check("a missing pricing API raises a diagnostic instead of returning "
-              "an empty target list", raised is not None, raised or "returned quietly")
+        check("with NO provider offering the API the call raises a diagnostic "
+              "instead of returning an empty target list",
+              raised is not None, raised or "returned quietly")
     finally:
-        R.market_price = saved
+        R.market_price, engine_pin.market_price = saved
 
     tg2 = run_cards.reachable_targets(obs, 0, (0, 0), K, board,
                                       obs["market"]["prices"])

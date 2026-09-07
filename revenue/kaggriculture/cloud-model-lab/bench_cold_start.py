@@ -33,6 +33,7 @@ if os.environ.get("NO_ENGINE_PACKAGE"):
     sys.meta_path.insert(0, _Block())
 sys.path.insert(0, os.environ["LAB"])
 import native_motifs as NM
+import run_cards
 t_import = time.time() - T0
 import motifs_table
 t_table = time.time() - T0
@@ -40,20 +41,29 @@ card = json.load(open(os.environ["CARD"]))
 obs, cfg, seat = card["observation"], card["configuration"], card["seat"]
 baseline = json.loads(os.environ["BASELINE"])
 p = NM.Proposer(motifs_table.TABLE)
+K = NM.engine()
+board = len(obs["farms"][seat]["tiles"])
 t0 = time.time()
 act, notes = p.propose(obs, cfg, seat, baseline)
+# Pricing a candidate is part of an action, so the measured action includes it.
+tg = run_cards.reachable_targets(obs, seat, tuple(obs["farms"][seat]["farmer"]),
+                                 K, board, obs["market"]["prices"])
 t_first = time.time() - T0
 first_call = time.time() - t0
 steady = []
 for _ in range(int(os.environ.get("N", "10"))):
     t = time.time()
     p.propose(obs, cfg, seat, baseline)
+    run_cards.reachable_targets(obs, seat, tuple(obs["farms"][seat]["farmer"]),
+                                K, board, obs["market"]["prices"])
     steady.append(time.time() - t)
 print(json.dumps({"t_import": t_import, "t_table": t_table, "t_first": t_first,
                   "first_call_s": first_call,
                   "steady_mean_s": sum(steady) / len(steady),
                   "steady_max_s": max(steady),
                   "transition": NM.engine().__name__,
+                  "priced_targets": len(tg),
+                  "pricing_module": getattr(run_cards._pricer(K), "__module__", "?"),
                   "changed": act != baseline}))
 '''
 
@@ -111,13 +121,18 @@ def main():
             "first_call_s": round(statistics.median(g["first_call_s"] for g in got), 4),
             "steady_mean_s": round(statistics.median(g["steady_mean_s"] for g in got), 4),
             "steady_max_s": round(max(g["steady_max_s"] for g in got), 4),
+            "max_action_s": round(max(max(g["first_call_s"], g["steady_max_s"])
+                                      for g in got), 4),
+            "priced_targets": got[0]["priced_targets"],
+            "pricing_module": got[0]["pricing_module"],
         }
         r = rows[label]
-        print(f"{label:28s} transition={r['transition']:12s} "
+        print(f"{label:28s} transition={r['transition']:10s} "
+              f"pricing={r['pricing_module']:10s} targets={r['priced_targets']:2d}  "
               f"cold->first action {r['cold_to_first_action_s']:.3f}s "
               f"(max {r['cold_to_first_action_max_s']:.3f}s), "
-              f"steady {r['steady_mean_s'] * 1000:.1f}ms "
-              f"(max {r['steady_max_s'] * 1000:.1f}ms)")
+              f"MAX ACTION {r['max_action_s'] * 1000:.1f}ms, "
+              f"steady {r['steady_mean_s'] * 1000:.1f}ms")
     os.makedirs(os.path.dirname(a.out) or ".", exist_ok=True)
     json.dump({"seed": a.seed, "step": a.step, "baseline": base_id, "rows": rows},
               open(a.out, "w"), indent=1)
