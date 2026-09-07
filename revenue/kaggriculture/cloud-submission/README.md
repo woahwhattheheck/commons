@@ -1,24 +1,15 @@
-# TITAN next-submission cloud transport
+# TITAN direct-file submission transport
 
-Stable operation ID: `titan-kaggriculture-frontier-20260907-01`.
+Operation: `titan-kaggriculture-frontier-20260907-01`.
 
-Root's September7 current live rules and Submit Agent readback confirm direct `.py/.zip/.gz/.7z` upload, root `main.py` for archives and last-definition entrypoint. Normal command: `kaggle competitions submit -c kaggriculture -f FILE -m MESSAGE`. There is no notebook commit prerequisite. Root observed4 remaining today, reset in15hours,5daily and2final selections, one account. Those are time-bound UI observations; `readback.py` queries live GetSubmissionLimits and current owner submissions. No competition submission has been performed by this lane.
+The designated 57,711-byte archive at Commons commit `cf88ace1ba45a170fb8ba09986b5f7cb1413381b` has SHA256 `79b407d699b5fd39e7b396de8b6fc79b2bc2fb99f427f7e2e7ecd25fbc71fb0b`. The official direct-file submission call started at 2026-09-07 09:40:34 UTC. No create response or submission ID has been received. The durable journal remains DISPATCH_STARTED: reconcile with provider before any further dispatch. Last confirmed quota was four available before dispatch; current quota is unconfirmed.
 
-The existing source notebook `tokenjunkielabs/tokenjunkielabs-farm-manager`, version347872961, remains intact. Root will designate the exact candidate and archive SHA after LARK's selection. Do not substitute the initially described sales-only candidate: the latest frozen development source is similarity-gated and source/validation/packaging remain LARK's.
+The separate public associated source notebook was created at https://www.kaggle.com/code/tokenjunkielabs/titan-kaggriculture-frontier-source (kernel 133417557, version 1). Kaggle normalized the requested slug from the title. Use the returned URL for readback, not the originally requested slug. The outgoing notebook in disclosure/frontier-source.ipynb has SHA256 `de300270cf596de7cf8029c55edd76436c91a60a6ae25db57697abcbfe4a73b1`. It contains the reviewed concise attribution, upstream notebook URLs, pinned source/archive links, exact source and original LICENSE/NOTICE. The existing farm-manager v2 notebook was not modified. No GPU or paid compute was requested.
 
-`transport.py` checks the designated file hash, looks up the stable operation ID in provider submissions, reads live quota, and records dispatch before calling official `competition_submit`. After any ambiguous result it reads back rather than blindly uploading again. It does not claim server-side idempotency. It uses existing configured client credentials in memory/child environment, never command arguments or receipt data.
+`transport.py` verifies the exact designated archive, reads live quota and owner submissions, and records dispatch before the official client call. It records uncertain outcomes and requires provider reconciliation rather than blind retries. This is a local duplicate guard, not server idempotency. An optional description supports the exact authorized description while requiring the stable operation ID.
 
-`disclosure.py` prepares a separate public Kaggle notebook associated with kaggriculture, displaying all exact archive source and original LICENSE/NOTICE and writing the original archive byte-exact. This is the disclosure root identified under current rules3.6b because the code is already public on Commons. Preparing it does not publish a notebook or submit. Use exact designated artifact and provenance URL. No candidate imports/agent execution occur during disclosure preparation. Actual notebook publication/readback must be recorded separately; the existing v2 notebook is not edited.
+`readback.py` uses ordinary official Kaggle APIs. Credentials stay in the caller's configured runtime; never put them into source, arguments, receipts, or notebook cells. `disclosure.py` builds source disclosure without executing the candidate. Four focused transport/disclosure tests passed at the preparation checkpoint; these do not prove competition acceptance. No LARK games or validation were rerun.
 
-```sh
-python readback.py
-python disclosure.py /cloud/path/submission.tar.gz --sha256 EXACT_DESIGNATED_SHA --source-ref EXACT_SOURCE_URL --output disclosure
-# Once root designates this exact artifact for the single submission:
-python transport.py --artifact /cloud/path/submission.tar.gz --sha256 EXACT_DESIGNATED_SHA --state-dir /cloud/path/operation-state
-```
+Direct file submission does not require a notebook commit. The public notebook is separately associated code disclosure. Rules observations were supplied by root's live September 7 reading; current quota must always come from provider readback.
 
-Official client versions installed in this cloud runtime: kaggle2.2.4, kagglesdk0.1.37. Their source provides `competition_get_submission_limits`, `competition_submissions`, `competition_submit` (start upload → upload → create submission), and `kernels_status`. `competition_get_settings` is host-only and is not used to inspect this competition. Rules/pages use ordinary publicly documented reads, and all active account operations use the normal shared configured credential.
-
-Three targeted tests pass for success/readback deduplication, uncertain-create recovery and artifact hash mismatch. These are mocked transport tests, not proof of provider submission acceptance. Credential request and account readback remain in progress at this checkpoint; the exact candidate archive is not yet designated.
-
-Prepared LARK corrected archive disclosure (not designated/submitted/published by this lane): archive57,711bytes SHA25679b407d699b5fd39e7b396de8b6fc79b2bc2fb99f427f7e2e7ecd25fbc71fb0b, source refcf88ace1ba45a170fb8ba09986b5f7cb1413381b. Native main.py73,418bytes SHA25616d7f213e06c563487e5f613f8c94116a094b36ba46927329cbfc3b4195d461d; final functionlark_frontier_submission_entrypoint. disclosure/ contains the exact source notebook, metadata and member manifest. Four focused tests pass including source/notice preservation without candidate execution. Root designation and provider readback remain separate next steps.
+Actual provider receipts are under receipts/. Source publication succeeded; competition submission validation and first hosted matches remain unconfirmed.
