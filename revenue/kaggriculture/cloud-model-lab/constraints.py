@@ -583,9 +583,21 @@ def outcome(pre_obs, post_obs, config, seat, action, effects=None):
     for e in effects:
         if e["action"][0] == "PLACE" and e["effect"] == "stored_in_shed" and \
                 len(e["action"]) > 1 and e["action"][1] in K.ANIMALS:
+            farm_now = pre_obs["farms"][seat]
+            poss = [farm_now["farmer"]] + list(farm_now.get("hands", []))
+            i = e["unit"]
+            label = "farmer" if i == 0 else f"hand{i - 1}"
+            where = ""
+            if i < len(poss):
+                x, y = int(poss[i][0]), int(poss[i][1])
+                t = farm_now["tiles"][y][x]
+                kind = t.get("kind") if isinstance(t, dict) else t
+                occupied = isinstance(t, dict) and "animal" in t
+                where = (f" {label} stood on ({x},{y}) {kind}"
+                         + (" which was already occupied" if occupied else ""))
             return False, "warehoused", (
                 f"PLACE {e['action'][1]} deposited the animal into the shed instead of "
-                f"installing it; the unit was not on an empty matching structure")
+                f"installing it;{where or ' the unit was not on an empty matching structure'}")
 
     if money1 > money0:
         return True, "realized_revenue", f"cash {money1 - money0:+.0f}"
