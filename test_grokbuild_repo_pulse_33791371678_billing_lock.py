@@ -22,7 +22,7 @@ KEEP = {
     "slack_ingest.py": "0040a726",
     "test_slack_ingest.py": "5c46c3eb",
     "exact_body_redact.py": "6b9fff81",
-    "host/sprint_integration.py": "b7bec0b9",
+    "host/sprint_integration.py": "1ba2002c",
     "open_door_guard.py": "861958e9",
     "p/grok-build-repo-pulse-billing-lock-20260903-01.md": "b6e5953c",
 }
