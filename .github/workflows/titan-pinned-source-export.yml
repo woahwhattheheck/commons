@@ -1,0 +1,132 @@
+name: titan-pinned-source-export
+
+# Transport existing, published bytes to network-isolated cloud builders.
+# No candidate build, game, package install, model call, or Kaggle operation.
+on:
+  push:
+    paths:
+      - ".github/workflows/titan-pinned-source-export.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 7f92f6c0f4e3961be8109b2e3dc6da3e4e356d9f
+          persist-credentials: false
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /revenue/kaggriculture/cloud-titan-composition/
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/vendor/
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/measure.py
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/prepare.py
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/carrot_demand.py
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/UPSTREAM.json
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/NEXT-DISTRIBUTION-NOTICE.txt
+            /revenue/kaggriculture/cloud-frontier-policy/next-panel/LICENSE
+            /revenue/kaggriculture/cloud-eval/
+            /revenue/kaggriculture/20260907-offline-agent/
+      - name: Export exact committed sources and preserve the existing archive
+        shell: python
+        env:
+          SOURCE_REF: 7f92f6c0f4e3961be8109b2e3dc6da3e4e356d9f
+        run: |
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+          import shutil
+          import subprocess
+          import tarfile
+
+          expected = os.environ["SOURCE_REF"]
+          actual = subprocess.check_output(["git", "rev-parse", "HEAD"], text=True).strip()
+          if actual != expected:
+              raise SystemExit("checkout does not match the pinned source commit")
+          root = "revenue/kaggriculture/"
+          composition = root + "cloud-titan-composition/"
+          baseline = root + "cloud-frontier-policy/next-panel/"
+          paths = [composition + name for name in (
+              "arms", "vendor", "build.py", "controller.py", "README.md",
+              "NOTICE.md", "SOURCE-PINS.json",
+          )]
+          paths += [baseline + name for name in (
+              "vendor", "measure.py", "prepare.py", "carrot_demand.py",
+              "UPSTREAM.json", "NEXT-DISTRIBUTION-NOTICE.txt", "LICENSE",
+          )]
+          paths += [root + "cloud-eval", root + "20260907-offline-agent"]
+          out = Path(os.environ["RUNNER_TEMP"]) / "titan-source-export"
+          out.mkdir(parents=True, exist_ok=True)
+          source_tar = out / "titan-reusable-sources.tar"
+          # Same committed-source transport pattern as the COVE backup test job:
+          # git archive reads the commit, never a dirty working-copy substitute.
+          subprocess.run([
+              "git", "archive", "--format=tar", "--output=" + str(source_tar),
+              expected, "--", *paths,
+          ], check=True)
+          with tarfile.open(source_tar, "r:") as archive:
+              files = {}
+              for member in archive.getmembers():
+                  if member.isdir():
+                      continue
+                  if not member.isfile():
+                      raise SystemExit("source archive contains a non-regular member")
+                  stream = archive.extractfile(member)
+                  if stream is None:
+                      raise SystemExit("source archive member could not be read")
+                  data = stream.read()
+                  files[member.name] = {
+                      "size_bytes": len(data),
+                      "sha256": hashlib.sha256(data).hexdigest(),
+                      "git_blob": hashlib.sha1(
+                          b"blob " + str(len(data)).encode() + b"\0" + data
+                      ).hexdigest(),
+                  }
+          if not files:
+              raise SystemExit("source archive is empty")
+          arlene = baseline + "vendor/arlene.py"
+          if files[arlene]["sha256"] != "1dc166ae2bf0c56a44fac4482f469b8812968c4cb32459cb9860f5077897a7d4":
+              raise SystemExit("Arlene source differs from the existing frozen parent")
+          frozen = Path(composition) / "artifacts/carrot-cap-checkpoint.tar.gz"
+          frozen_bytes = frozen.read_bytes()
+          frozen_hash = hashlib.sha256(frozen_bytes).hexdigest()
+          if len(frozen_bytes) != 176423 or frozen_hash != "3cb3ecfecfa614f8af65fcaf36b03dd66d4c2d1665de8dcd6a422c6c2e73b856":
+              raise SystemExit("existing T08 runtime archive differs from its published pin")
+          shutil.copyfile(frozen, out / frozen.name)
+          manifest = {
+              "schema": "titan.pinned-source-export.v1",
+              "source_commit": actual,
+              "workflow_run_id": os.environ["GITHUB_RUN_ID"],
+              "workflow_run_attempt": os.environ["GITHUB_RUN_ATTEMPT"],
+              "source_paths": paths,
+              "archives": {
+                  source_tar.name: {"sha256": hashlib.sha256(source_tar.read_bytes()).hexdigest(),
+                                    "size_bytes": source_tar.stat().st_size},
+                  frozen.name: {"sha256": frozen_hash, "size_bytes": len(frozen_bytes)},
+              },
+              "files": files,
+              "engine_artifact": {
+                  "repository": "woahwhattheheck/commons",
+                  "run_id": 34086864911, "artifact_id": 10005621438,
+                  "size_bytes": 280148,
+                  "sha256": "06e526df0a87d1d94e60dd0f2ea380aa099a4f0edd40a604a7c5bd274bd189cc",
+                  "engine_ref": "28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c",
+                  "cache_subdirectory": "engine",
+                  "note": "Separate existing artifact; use only its pinned engine and loader, not historical policies as current controls.",
+              },
+              "limits": "Transport only. No new simulation, candidate selection, hosted rating, or competition submission.",
+          }
+          (out / "SOURCE-MANIFEST.json").write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps({"source_commit": actual, "files": len(files), "archives": manifest["archives"]}))
+      - uses: actions/upload-artifact@v4
+        with:
+          name: titan-pinned-source-pack-7f92f6c0
+          path: ${{ runner.temp }}/titan-source-export/
+          if-no-files-found: error
+          retention-days: 7
