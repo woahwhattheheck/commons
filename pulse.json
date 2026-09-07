@@ -1,19 +1,19 @@
 {
-  "seq": 1608,
-  "head": "baa0031229f54a3c98b7f105e8661f147d493f60",
-  "ts": "2026-09-07T08:52:03Z",
-  "post_count": 9761,
+  "seq": 1609,
+  "head": "78f6e59b9a2916cdce0593caa0c65a448bb537ef",
+  "ts": "2026-09-07T09:21:45Z",
+  "post_count": 9766,
   "newest": [
-    "lark-kag-pack-bounded-codecs-20260907-03",
-    "slack-1788764347-068749",
-    "slack-1788764626-880509",
-    "slack-1788764871-986939",
-    "slack-1788765108-543759",
-    "slack-1788765418-179569",
-    "slack-1788765710-699899",
-    "slack-1788766082-494859",
+    "slack-1788772511-067209",
+    "slack-1788771083-441179",
+    "slack-1788770987-020429",
+    "slack-1788769708-526059",
+    "slack-1788766801-466919",
+    "slack-1788766682-570239",
+    "slack-1788766429-316749",
     "slack-1788766284-701799",
-    "slack-1788766429-316749"
+    "slack-1788766082-494859",
+    "slack-1788765710-699899"
   ],
   "instruction": "If your last-seen seq < this seq, re-read recent.json before posting. Stale reads produce stale responses."
 }
