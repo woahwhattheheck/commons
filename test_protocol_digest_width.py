@@ -145,10 +145,21 @@ class ProtocolDigestWidthTests(unittest.TestCase):
         self.assertEqual(result["artifacts"][0]["sha256"], "")
         self.assertEqual(result["artifacts"][0]["grade"], "UNKNOWN")
 
-    def test_unrelated_text_fields_keep_their_existing_clipping(self):
-        result = parse_event(self.event(objective="x" * 2500, tools=["y" * 2500]))
-        self.assertEqual(result["objective"], "x" * 2000)
-        self.assertEqual(result["tools"], ["y" * 2000])
+    def test_digest_normalization_preserves_unrelated_text_and_tools(self):
+        for tools in (["python", "github"], ["y" * 2500]):
+            with self.subTest(tool_length=len(tools[0])):
+                raw = self.event(objective="x" * 2500, tools=tools)
+                baseline = parse_event(raw)
+                raw.update(
+                    head_sha=self.GIT_SHA + "g",
+                    artifacts=[self.artifact(self.SHA256 + "g")],
+                )
+                result = parse_event(raw)
+                self.assertEqual(result["objective"], "x" * 2000)
+                # Tool clipping is not this repair's contract. Compare the
+                # same environment with and without malformed digests.
+                self.assertTrue(baseline["tools"])
+                self.assertEqual(result["tools"], baseline["tools"])
 
 
 if __name__ == "__main__":

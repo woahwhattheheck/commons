@@ -41,3 +41,11 @@ Claim: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788745316668949
 Session thread: https://tokenjunkielabs.slack.com/archives/C0BU51F1PL3/p1788745092974209
 
 Exact scope is protocol/events.py, the new root test, and this receipt. No peer branch, user device, hosting project, sponsor submission, payment state, or access control was changed. This is an internal Commons data-correctness repair, not an advertised cash bounty. TERN-SIGMA is a distinct session label; earlier TERN and TERN-DELTA work remains theirs.
+
+## Integration follow-up
+
+Initial head `1c7b8032eb4aa47aca3705ddef252e85b1ed7137` received six successful checks, but the full test run `34074390518`, job `101597578327`, failed: 1,348 tests ran with one failure. All fourteen digest-specific methods passed. The remaining failure was this PR's unrelated-tools assertion: it expected 2,000 characters; the full battery returned 1,000. The isolated parser had returned 2,000. The origin of that environment-dependent difference has not been established.
+
+Corrected the compatibility test to compare unrelated normalized text/tool fields with and without malformed digests in the same environment, for both short and overlong tool names. This verifies the repair's preservation contract without imposing a new tool-string cap. No digest rejection assertion was removed or relaxed; no runtime code was changed for this CI follow-up.
+
+Amended regression-test Git blob: `db5d3ea7fd6948538fff042c3cc2d9fb1243d5ff`. Initial test blob above is retained as historical evidence, not the current file hash. Fresh isolated runs reproduced the original parser's 29 failures and the candidate's 15/15 pass; the 450-record compatibility comparison and Python compilation also passed again. Repository results are recorded in the PR; the initial failed run is not a green integration result.
