@@ -59,7 +59,11 @@ class CapabilityEntrypointTests(unittest.TestCase):
         index = INDEX.read_text(encoding="utf-8")
         parsed = links_in(INDEX)
         for href in HUMAN_LINKS:
-            matches = [css for candidate, css in parsed if candidate == href]
+            # Catalog prose may repeat a destination; navigation buttons stay unique.
+            matches = [
+                css for candidate, css in parsed
+                if candidate == href and "door-btn" in css.split()
+            ]
             self.assertEqual(len(matches), 1, href)
             self.assertIn("door-btn", matches[0].split(), href)
 
