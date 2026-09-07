@@ -1,0 +1,4655 @@
+{
+  "case_count": 2,
+  "cases": [
+    {
+      "case": "leader-day9",
+      "fixture_sha256": "58256768b05d8c3a786266ef9fe926ae06a7bbb06480955e2731d92bbdc38049",
+      "horizon_assumption": "hypothetical planting today: first tomato/strawberry event + one DROP/SELL action; not a purchase/plant recommendation",
+      "input_source": {
+        "compressed_replay_sha256": "91ddc918a18f81ee59467c956986f673ddcba26ef08d6de83d8798ff88bd8d89",
+        "coverage": "Only current public observation; no future frame/action labels in live input",
+        "episode_id": 106392861,
+        "frame": 224,
+        "seat": 0
+      },
+      "result": {
+        "assumptions": {
+          "animal_supply": false,
+          "buffered_harvest_delay_steps": 12,
+          "fertilized_prompt": "daily water and fertilizer coverage assumed available; earliest conditional harvesting",
+          "future_market_buys": false,
+          "hidden_seed": false,
+          "joint_labor_cash_feed_shed_capacity_reserved": false,
+          "maintained_buffered": "daily water, existing fertilizer coverage only; harvest after configured service delay",
+          "new_planting": false,
+          "new_shop_draws": false,
+          "no_future_work": "no further care/harvest/sale; observed flags still apply",
+          "private_inventory_sales": false,
+          "quote": "after scenario crop supply at H, before town consumption at H; not exact trade-order revenue",
+          "ranges": "scenario envelope only, not guaranteed bounds under omitted animal/private-stock trades",
+          "scenario_sales_conditional_on_transport_and_shed_space": true
+        },
+        "frames": [
+          {
+            "demand": {
+              "center_ticks": 0,
+              "center_units": {
+                "CARROT": 0,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 0,
+                "STRAWBERRY": 0,
+                "TOMATO": 0,
+                "WHEAT": 0,
+                "WOOL": 0
+              },
+              "interval": "[observation.step, realization_step)",
+              "new_shop_draws_included": false,
+              "shop_copies": {
+                "FARMERS_MARKET": 1,
+                "PIZZA_SHOP": 2
+              },
+              "shop_ticks": 0,
+              "shop_units": {
+                "CARROT": 0,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 0,
+                "STRAWBERRY": 0,
+                "TOMATO": 0,
+                "WHEAT": 0,
+                "WOOL": 0
+              },
+              "units": {
+                "CARROT": 0,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 0,
+                "STRAWBERRY": 0,
+                "TOMATO": 0,
+                "WHEAT": 0,
+                "WOOL": 0
+              }
+            },
+            "products": {
+              "CARROT": {
+                "current_price": 37,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 2,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 2,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 2,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 2,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 37,
+                  "ceiling": 37,
+                  "floor": 37
+                },
+                "scenario_price_range": [
+                  37,
+                  37
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 2,
+                    "inventory": 9970,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 37,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 2,
+                    "inventory": 9970,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 37,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 2,
+                    "inventory": 9970,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 37,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "EGG": {
+                "current_price": 51,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 51,
+                  "ceiling": 51,
+                  "floor": 51
+                },
+                "scenario_price_range": [
+                  51,
+                  51
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9990,
+                    "inventory_delta": 0,
+                    "price": 51
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9990,
+                    "inventory_delta": 0,
+                    "price": 51
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9990,
+                    "inventory_delta": 0,
+                    "price": 51
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "FERTILIZER": {
+                "current_price": 82,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 82,
+                  "ceiling": 82,
+                  "floor": 82
+                },
+                "scenario_price_range": [
+                  82,
+                  82
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MELON": {
+                "current_price": 271,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 53,
+                      "new_yield_units": 4,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 51,
+                      "new_yield_units": 2,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 49,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 49
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 32,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 32,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 32,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 32,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 271,
+                  "ceiling": 271,
+                  "floor": 271
+                },
+                "scenario_price_range": [
+                  271,
+                  271
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 85,
+                    "inventory": 9990,
+                    "inventory_delta": 0,
+                    "new_yield_units": 4,
+                    "price": 271,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 83,
+                    "inventory": 9990,
+                    "inventory_delta": 0,
+                    "new_yield_units": 2,
+                    "price": 271,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 81,
+                    "inventory": 9990,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 271,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MILK": {
+                "current_price": 199,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 199,
+                  "ceiling": 199,
+                  "floor": 199
+                },
+                "scenario_price_range": [
+                  199,
+                  199
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9980,
+                    "inventory_delta": 0,
+                    "price": 199
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9980,
+                    "inventory_delta": 0,
+                    "price": 199
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9980,
+                    "inventory_delta": 0,
+                    "price": 199
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "STRAWBERRY": {
+                "current_price": 166,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 166,
+                  "ceiling": 166,
+                  "floor": 166
+                },
+                "scenario_price_range": [
+                  166,
+                  166
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9970,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 166,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9970,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 166,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9970,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 166,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "TOMATO": {
+                "current_price": 68,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 68,
+                  "ceiling": 68,
+                  "floor": 68
+                },
+                "scenario_price_range": [
+                  68,
+                  68
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9930,
+                    "inventory_delta": 0,
+                    "price": 68
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9930,
+                    "inventory_delta": 0,
+                    "price": 68
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9930,
+                    "inventory_delta": 0,
+                    "price": 68
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "WHEAT": {
+                "current_price": 36,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 5,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 5,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 5,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 5
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 19,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 19,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 19,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 19,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 36,
+                  "ceiling": 36,
+                  "floor": 36
+                },
+                "scenario_price_range": [
+                  36,
+                  36
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 24,
+                    "inventory": 9889,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 36,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 24,
+                    "inventory": 9889,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 36,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 24,
+                    "inventory": 9889,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 36,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "WOOL": {
+                "current_price": 189,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 189,
+                  "ceiling": 189,
+                  "floor": 189
+                },
+                "scenario_price_range": [
+                  189,
+                  189
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10014,
+                    "inventory_delta": 0,
+                    "price": 189
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10014,
+                    "inventory_delta": 0,
+                    "price": 189
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10014,
+                    "inventory_delta": 0,
+                    "price": 189
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              }
+            },
+            "realization_day": 9,
+            "realization_step": 224
+          },
+          {
+            "demand": {
+              "center_ticks": 8,
+              "center_units": {
+                "CARROT": 8,
+                "EGG": 8,
+                "FERTILIZER": 0,
+                "MELON": 8,
+                "MILK": 8,
+                "STRAWBERRY": 8,
+                "TOMATO": 8,
+                "WHEAT": 8,
+                "WOOL": 8
+              },
+              "interval": "[observation.step, realization_step)",
+              "new_shop_draws_included": false,
+              "shop_copies": {
+                "FARMERS_MARKET": 1,
+                "PIZZA_SHOP": 2
+              },
+              "shop_ticks": 47,
+              "shop_units": {
+                "CARROT": 47,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 94,
+                "STRAWBERRY": 47,
+                "TOMATO": 141,
+                "WHEAT": 141,
+                "WOOL": 0
+              },
+              "units": {
+                "CARROT": 55,
+                "EGG": 8,
+                "FERTILIZER": 0,
+                "MELON": 8,
+                "MILK": 102,
+                "STRAWBERRY": 55,
+                "TOMATO": 149,
+                "WHEAT": 149,
+                "WOOL": 8
+              }
+            },
+            "products": {
+              "CARROT": {
+                "current_price": 37,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 55,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 6,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 2,
+                      "decay_loss_units": 0,
+                      "harvested_units": 8,
+                      "held_units": 0,
+                      "new_yield_units": 6,
+                      "sale_units": 8
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 6,
+                      "held_units": 0,
+                      "new_yield_units": 4,
+                      "sale_units": 6
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 8,
+                  "observed_held": 2,
+                  "sale_possible": 8
+                },
+                "price_scenarios": {
+                  "base": 41,
+                  "ceiling": 42,
+                  "floor": 41
+                },
+                "scenario_price_range": [
+                  41,
+                  42
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 2,
+                    "conditional_crop_sale_units": 8,
+                    "decay_loss_units": 0,
+                    "harvested_units": 8,
+                    "held_units": 0,
+                    "inventory": 9923,
+                    "inventory_delta": -47,
+                    "new_yield_units": 6,
+                    "price": 41,
+                    "sale_units": 8
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 6,
+                    "decay_loss_units": 0,
+                    "harvested_units": 6,
+                    "held_units": 0,
+                    "inventory": 9921,
+                    "inventory_delta": -49,
+                    "new_yield_units": 4,
+                    "price": 41,
+                    "sale_units": 6
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9915,
+                    "inventory_delta": -55,
+                    "new_yield_units": 0,
+                    "price": 42,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 47,
+                "town_center_demand": 8
+              },
+              "EGG": {
+                "current_price": 51,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 8,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 51,
+                  "ceiling": 51,
+                  "floor": 51
+                },
+                "scenario_price_range": [
+                  51,
+                  51
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9982,
+                    "inventory_delta": -8,
+                    "price": 51
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9982,
+                    "inventory_delta": -8,
+                    "price": 51
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9982,
+                    "inventory_delta": -8,
+                    "price": 51
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 8
+              },
+              "FERTILIZER": {
+                "current_price": 82,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 82,
+                  "ceiling": 82,
+                  "floor": 82
+                },
+                "scenario_price_range": [
+                  82,
+                  82
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MELON": {
+                "current_price": 271,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 8,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 23,
+                      "decay_loss_units": 0,
+                      "harvested_units": 72,
+                      "held_units": 0,
+                      "new_yield_units": 23,
+                      "sale_units": 72
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 72,
+                      "held_units": 0,
+                      "new_yield_units": 23,
+                      "sale_units": 72
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 49
+                },
+                "own_supply": {
+                  "care_possible": 40,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 34,
+                      "decay_loss_units": 0,
+                      "harvested_units": 54,
+                      "held_units": 18,
+                      "new_yield_units": 40,
+                      "sale_units": 54
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 54,
+                      "held_units": 15,
+                      "new_yield_units": 37,
+                      "sale_units": 54
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 54,
+                  "observed_held": 32,
+                  "sale_possible": 54
+                },
+                "price_scenarios": {
+                  "base": 133,
+                  "ceiling": 276,
+                  "floor": 133
+                },
+                "scenario_price_range": [
+                  133,
+                  276
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 57,
+                    "conditional_crop_sale_units": 126,
+                    "decay_loss_units": 0,
+                    "harvested_units": 126,
+                    "held_units": 18,
+                    "inventory": 10108,
+                    "inventory_delta": 118,
+                    "new_yield_units": 63,
+                    "price": 133,
+                    "sale_units": 126
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 126,
+                    "decay_loss_units": 0,
+                    "harvested_units": 126,
+                    "held_units": 15,
+                    "inventory": 10108,
+                    "inventory_delta": 118,
+                    "new_yield_units": 60,
+                    "price": 133,
+                    "sale_units": 126
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9982,
+                    "inventory_delta": -8,
+                    "new_yield_units": 0,
+                    "price": 276,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 8
+              },
+              "MILK": {
+                "current_price": 199,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 102,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 256,
+                  "ceiling": 256,
+                  "floor": 256
+                },
+                "scenario_price_range": [
+                  256,
+                  256
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9878,
+                    "inventory_delta": -102,
+                    "price": 256
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9878,
+                    "inventory_delta": -102,
+                    "price": 256
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9878,
+                    "inventory_delta": -102,
+                    "price": 256
+                  }
+                },
+                "shop_copy_demand": 94,
+                "town_center_demand": 8
+              },
+              "STRAWBERRY": {
+                "current_price": 166,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 55,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 40,
+                      "held_units": 0,
+                      "new_yield_units": 40,
+                      "sale_units": 24
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 20,
+                      "new_yield_units": 20,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 74,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 74,
+                      "held_units": 0,
+                      "new_yield_units": 74,
+                      "sale_units": 56
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 37,
+                      "new_yield_units": 37,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 74,
+                  "observed_held": 0,
+                  "sale_possible": 56
+                },
+                "price_scenarios": {
+                  "base": 197,
+                  "ceiling": 197,
+                  "floor": 139
+                },
+                "scenario_price_range": [
+                  139,
+                  197
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 80,
+                    "decay_loss_units": 0,
+                    "harvested_units": 114,
+                    "held_units": 0,
+                    "inventory": 9995,
+                    "inventory_delta": 25,
+                    "new_yield_units": 114,
+                    "price": 139,
+                    "sale_units": 80
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 57,
+                    "inventory": 9915,
+                    "inventory_delta": -55,
+                    "new_yield_units": 57,
+                    "price": 197,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9915,
+                    "inventory_delta": -55,
+                    "new_yield_units": 0,
+                    "price": 197,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 47,
+                "town_center_demand": 8
+              },
+              "TOMATO": {
+                "current_price": 68,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 149,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 88,
+                  "ceiling": 88,
+                  "floor": 88
+                },
+                "scenario_price_range": [
+                  88,
+                  88
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9781,
+                    "inventory_delta": -149,
+                    "price": 88
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9781,
+                    "inventory_delta": -149,
+                    "price": 88
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9781,
+                    "inventory_delta": -149,
+                    "price": 88
+                  }
+                },
+                "shop_copy_demand": 141,
+                "town_center_demand": 8
+              },
+              "WHEAT": {
+                "current_price": 36,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 149,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 5,
+                      "decay_loss_units": 0,
+                      "harvested_units": 30,
+                      "held_units": 0,
+                      "new_yield_units": 25,
+                      "sale_units": 30
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 20,
+                      "held_units": 0,
+                      "new_yield_units": 15,
+                      "sale_units": 20
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 5
+                },
+                "own_supply": {
+                  "care_possible": 65,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 9,
+                      "decay_loss_units": 0,
+                      "harvested_units": 84,
+                      "held_units": 0,
+                      "new_yield_units": 65,
+                      "sale_units": 84
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 56,
+                      "held_units": 0,
+                      "new_yield_units": 37,
+                      "sale_units": 56
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 84,
+                  "observed_held": 19,
+                  "sale_possible": 84
+                },
+                "price_scenarios": {
+                  "base": 39,
+                  "ceiling": 41,
+                  "floor": 37
+                },
+                "scenario_price_range": [
+                  37,
+                  41
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 14,
+                    "conditional_crop_sale_units": 114,
+                    "decay_loss_units": 0,
+                    "harvested_units": 114,
+                    "held_units": 0,
+                    "inventory": 9854,
+                    "inventory_delta": -35,
+                    "new_yield_units": 90,
+                    "price": 37,
+                    "sale_units": 114
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 76,
+                    "decay_loss_units": 0,
+                    "harvested_units": 76,
+                    "held_units": 0,
+                    "inventory": 9816,
+                    "inventory_delta": -73,
+                    "new_yield_units": 52,
+                    "price": 39,
+                    "sale_units": 76
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9740,
+                    "inventory_delta": -149,
+                    "new_yield_units": 0,
+                    "price": 41,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 141,
+                "town_center_demand": 8
+              },
+              "WOOL": {
+                "current_price": 189,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 8,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 198,
+                  "ceiling": 198,
+                  "floor": 198
+                },
+                "scenario_price_range": [
+                  198,
+                  198
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10006,
+                    "inventory_delta": -8,
+                    "price": 198
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10006,
+                    "inventory_delta": -8,
+                    "price": 198
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10006,
+                    "inventory_delta": -8,
+                    "price": 198
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 8
+              }
+            },
+            "realization_day": 17,
+            "realization_step": 409
+          },
+          {
+            "demand": {
+              "center_ticks": 10,
+              "center_units": {
+                "CARROT": 10,
+                "EGG": 10,
+                "FERTILIZER": 0,
+                "MELON": 10,
+                "MILK": 10,
+                "STRAWBERRY": 10,
+                "TOMATO": 10,
+                "WHEAT": 10,
+                "WOOL": 10
+              },
+              "interval": "[observation.step, realization_step)",
+              "new_shop_draws_included": false,
+              "shop_copies": {
+                "FARMERS_MARKET": 1,
+                "PIZZA_SHOP": 2
+              },
+              "shop_ticks": 59,
+              "shop_units": {
+                "CARROT": 59,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 118,
+                "STRAWBERRY": 59,
+                "TOMATO": 177,
+                "WHEAT": 177,
+                "WOOL": 0
+              },
+              "units": {
+                "CARROT": 69,
+                "EGG": 10,
+                "FERTILIZER": 0,
+                "MELON": 10,
+                "MILK": 128,
+                "STRAWBERRY": 69,
+                "TOMATO": 187,
+                "WHEAT": 187,
+                "WOOL": 10
+              }
+            },
+            "products": {
+              "CARROT": {
+                "current_price": 37,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 69,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 6,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 2,
+                      "decay_loss_units": 0,
+                      "harvested_units": 8,
+                      "held_units": 0,
+                      "new_yield_units": 6,
+                      "sale_units": 8
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 6,
+                      "held_units": 0,
+                      "new_yield_units": 4,
+                      "sale_units": 6
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 8,
+                  "observed_held": 2,
+                  "sale_possible": 8
+                },
+                "price_scenarios": {
+                  "base": 42,
+                  "ceiling": 43,
+                  "floor": 42
+                },
+                "scenario_price_range": [
+                  42,
+                  43
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 2,
+                    "conditional_crop_sale_units": 8,
+                    "decay_loss_units": 0,
+                    "harvested_units": 8,
+                    "held_units": 0,
+                    "inventory": 9909,
+                    "inventory_delta": -61,
+                    "new_yield_units": 6,
+                    "price": 42,
+                    "sale_units": 8
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 6,
+                    "decay_loss_units": 0,
+                    "harvested_units": 6,
+                    "held_units": 0,
+                    "inventory": 9907,
+                    "inventory_delta": -63,
+                    "new_yield_units": 4,
+                    "price": 42,
+                    "sale_units": 6
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9901,
+                    "inventory_delta": -69,
+                    "new_yield_units": 0,
+                    "price": 43,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 59,
+                "town_center_demand": 10
+              },
+              "EGG": {
+                "current_price": 51,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 10,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 51,
+                  "ceiling": 51,
+                  "floor": 51
+                },
+                "scenario_price_range": [
+                  51,
+                  51
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9980,
+                    "inventory_delta": -10,
+                    "price": 51
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9980,
+                    "inventory_delta": -10,
+                    "price": 51
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9980,
+                    "inventory_delta": -10,
+                    "price": 51
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 10
+              },
+              "FERTILIZER": {
+                "current_price": 82,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 82,
+                  "ceiling": 82,
+                  "floor": 82
+                },
+                "scenario_price_range": [
+                  82,
+                  82
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10092,
+                    "inventory_delta": 0,
+                    "price": 82
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MELON": {
+                "current_price": 271,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 10,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 23,
+                      "decay_loss_units": 0,
+                      "harvested_units": 72,
+                      "held_units": 0,
+                      "new_yield_units": 23,
+                      "sale_units": 72
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 72,
+                      "held_units": 0,
+                      "new_yield_units": 23,
+                      "sale_units": 72
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 49
+                },
+                "own_supply": {
+                  "care_possible": 40,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 40,
+                      "decay_loss_units": 0,
+                      "harvested_units": 72,
+                      "held_units": 0,
+                      "new_yield_units": 40,
+                      "sale_units": 72
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 72,
+                      "held_units": 0,
+                      "new_yield_units": 40,
+                      "sale_units": 72
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 72,
+                  "observed_held": 32,
+                  "sale_possible": 72
+                },
+                "price_scenarios": {
+                  "base": 96,
+                  "ceiling": 277,
+                  "floor": 96
+                },
+                "scenario_price_range": [
+                  96,
+                  277
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 63,
+                    "conditional_crop_sale_units": 144,
+                    "decay_loss_units": 0,
+                    "harvested_units": 144,
+                    "held_units": 0,
+                    "inventory": 10124,
+                    "inventory_delta": 134,
+                    "new_yield_units": 63,
+                    "price": 96,
+                    "sale_units": 144
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 144,
+                    "decay_loss_units": 0,
+                    "harvested_units": 144,
+                    "held_units": 0,
+                    "inventory": 10124,
+                    "inventory_delta": 134,
+                    "new_yield_units": 63,
+                    "price": 96,
+                    "sale_units": 144
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9980,
+                    "inventory_delta": -10,
+                    "new_yield_units": 0,
+                    "price": 277,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 10
+              },
+              "MILK": {
+                "current_price": 199,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 128,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 266,
+                  "ceiling": 266,
+                  "floor": 266
+                },
+                "scenario_price_range": [
+                  266,
+                  266
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9852,
+                    "inventory_delta": -128,
+                    "price": 266
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9852,
+                    "inventory_delta": -128,
+                    "price": 266
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9852,
+                    "inventory_delta": -128,
+                    "price": 266
+                  }
+                },
+                "shop_copy_demand": 118,
+                "town_center_demand": 10
+              },
+              "STRAWBERRY": {
+                "current_price": 166,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 69,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 80,
+                      "held_units": 0,
+                      "new_yield_units": 80,
+                      "sale_units": 64
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 40,
+                      "new_yield_units": 40,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 114,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 2,
+                      "harvested_units": 114,
+                      "held_units": 0,
+                      "new_yield_units": 114,
+                      "sale_units": 96
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 2,
+                      "harvested_units": 8,
+                      "held_units": 49,
+                      "new_yield_units": 57,
+                      "sale_units": 8
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 114,
+                  "observed_held": 0,
+                  "sale_possible": 96
+                },
+                "price_scenarios": {
+                  "base": 200,
+                  "ceiling": 204,
+                  "floor": 3
+                },
+                "scenario_price_range": [
+                  3,
+                  204
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 160,
+                    "decay_loss_units": 2,
+                    "harvested_units": 194,
+                    "held_units": 0,
+                    "inventory": 10061,
+                    "inventory_delta": 91,
+                    "new_yield_units": 194,
+                    "price": 3,
+                    "sale_units": 160
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 8,
+                    "decay_loss_units": 2,
+                    "harvested_units": 8,
+                    "held_units": 89,
+                    "inventory": 9909,
+                    "inventory_delta": -61,
+                    "new_yield_units": 97,
+                    "price": 200,
+                    "sale_units": 8
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9901,
+                    "inventory_delta": -69,
+                    "new_yield_units": 0,
+                    "price": 204,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 59,
+                "town_center_demand": 10
+              },
+              "TOMATO": {
+                "current_price": 68,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 187,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 106,
+                  "ceiling": 106,
+                  "floor": 106
+                },
+                "scenario_price_range": [
+                  106,
+                  106
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9743,
+                    "inventory_delta": -187,
+                    "price": 106
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9743,
+                    "inventory_delta": -187,
+                    "price": 106
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9743,
+                    "inventory_delta": -187,
+                    "price": 106
+                  }
+                },
+                "shop_copy_demand": 177,
+                "town_center_demand": 10
+              },
+              "WHEAT": {
+                "current_price": 36,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 187,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 5,
+                      "decay_loss_units": 0,
+                      "harvested_units": 30,
+                      "held_units": 0,
+                      "new_yield_units": 25,
+                      "sale_units": 30
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 20,
+                      "held_units": 0,
+                      "new_yield_units": 15,
+                      "sale_units": 20
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 5
+                },
+                "own_supply": {
+                  "care_possible": 65,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 9,
+                      "decay_loss_units": 0,
+                      "harvested_units": 84,
+                      "held_units": 0,
+                      "new_yield_units": 65,
+                      "sale_units": 84
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 56,
+                      "held_units": 0,
+                      "new_yield_units": 37,
+                      "sale_units": 56
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 84,
+                  "observed_held": 19,
+                  "sale_possible": 84
+                },
+                "price_scenarios": {
+                  "base": 40,
+                  "ceiling": 42,
+                  "floor": 39
+                },
+                "scenario_price_range": [
+                  39,
+                  42
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 14,
+                    "conditional_crop_sale_units": 114,
+                    "decay_loss_units": 0,
+                    "harvested_units": 114,
+                    "held_units": 0,
+                    "inventory": 9816,
+                    "inventory_delta": -73,
+                    "new_yield_units": 90,
+                    "price": 39,
+                    "sale_units": 114
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 76,
+                    "decay_loss_units": 0,
+                    "harvested_units": 76,
+                    "held_units": 0,
+                    "inventory": 9778,
+                    "inventory_delta": -111,
+                    "new_yield_units": 52,
+                    "price": 40,
+                    "sale_units": 76
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9702,
+                    "inventory_delta": -187,
+                    "new_yield_units": 0,
+                    "price": 42,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 177,
+                "town_center_demand": 10
+              },
+              "WOOL": {
+                "current_price": 189,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 10,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 199,
+                  "ceiling": 199,
+                  "floor": 199
+                },
+                "scenario_price_range": [
+                  199,
+                  199
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10004,
+                    "inventory_delta": -10,
+                    "price": 199
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10004,
+                    "inventory_delta": -10,
+                    "price": 199
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10004,
+                    "inventory_delta": -10,
+                    "price": 199
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 10
+              }
+            },
+            "realization_day": 19,
+            "realization_step": 457
+          }
+        ],
+        "observation_step": 224,
+        "schema": 1,
+        "scope": "visible existing crops on both farms; known shop copies only"
+      },
+      "wall_seconds": 0.030782145000557648
+    },
+    {
+      "case": "leader-day17",
+      "fixture_sha256": "96897d4d3d6f055d490c8bbe1b9f0d62ee482cec127b2405bf2dbc64f1c62cf9",
+      "horizon_assumption": "hypothetical planting today: first tomato/strawberry event + one DROP/SELL action; not a purchase/plant recommendation",
+      "input_source": {
+        "compressed_replay_sha256": "91ddc918a18f81ee59467c956986f673ddcba26ef08d6de83d8798ff88bd8d89",
+        "coverage": "Only current public observation; no future frame/action labels in live input",
+        "episode_id": 106392861,
+        "frame": 430,
+        "seat": 0
+      },
+      "result": {
+        "assumptions": {
+          "animal_supply": false,
+          "buffered_harvest_delay_steps": 12,
+          "fertilized_prompt": "daily water and fertilizer coverage assumed available; earliest conditional harvesting",
+          "future_market_buys": false,
+          "hidden_seed": false,
+          "joint_labor_cash_feed_shed_capacity_reserved": false,
+          "maintained_buffered": "daily water, existing fertilizer coverage only; harvest after configured service delay",
+          "new_planting": false,
+          "new_shop_draws": false,
+          "no_future_work": "no further care/harvest/sale; observed flags still apply",
+          "private_inventory_sales": false,
+          "quote": "after scenario crop supply at H, before town consumption at H; not exact trade-order revenue",
+          "ranges": "scenario envelope only, not guaranteed bounds under omitted animal/private-stock trades",
+          "scenario_sales_conditional_on_transport_and_shed_space": true
+        },
+        "frames": [
+          {
+            "demand": {
+              "center_ticks": 0,
+              "center_units": {
+                "CARROT": 0,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 0,
+                "STRAWBERRY": 0,
+                "TOMATO": 0,
+                "WHEAT": 0,
+                "WOOL": 0
+              },
+              "interval": "[observation.step, realization_step)",
+              "new_shop_draws_included": false,
+              "shop_copies": {
+                "BRUNCH_SPOT": 1,
+                "FARMERS_MARKET": 1,
+                "ICE_CREAM_SHOP": 1,
+                "PIZZA_SHOP": 2
+              },
+              "shop_ticks": 0,
+              "shop_units": {
+                "CARROT": 0,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 0,
+                "STRAWBERRY": 0,
+                "TOMATO": 0,
+                "WHEAT": 0,
+                "WOOL": 0
+              },
+              "units": {
+                "CARROT": 0,
+                "EGG": 0,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 0,
+                "STRAWBERRY": 0,
+                "TOMATO": 0,
+                "WHEAT": 0,
+                "WOOL": 0
+              }
+            },
+            "products": {
+              "CARROT": {
+                "current_price": 41,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 41,
+                  "ceiling": 41,
+                  "floor": 41
+                },
+                "scenario_price_range": [
+                  41,
+                  41
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9925,
+                    "inventory_delta": 0,
+                    "price": 41
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9925,
+                    "inventory_delta": 0,
+                    "price": 41
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9925,
+                    "inventory_delta": 0,
+                    "price": 41
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "EGG": {
+                "current_price": 51,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 51,
+                  "ceiling": 51,
+                  "floor": 51
+                },
+                "scenario_price_range": [
+                  51,
+                  51
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9976,
+                    "inventory_delta": 0,
+                    "price": 51
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9976,
+                    "inventory_delta": 0,
+                    "price": 51
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9976,
+                    "inventory_delta": 0,
+                    "price": 51
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "FERTILIZER": {
+                "current_price": 50,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 50,
+                  "ceiling": 50,
+                  "floor": 50
+                },
+                "scenario_price_range": [
+                  50,
+                  50
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MELON": {
+                "current_price": 133,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 22,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 22,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 22,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 22,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 133,
+                  "ceiling": 133,
+                  "floor": 133
+                },
+                "scenario_price_range": [
+                  133,
+                  133
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 22,
+                    "inventory": 10108,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 133,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 22,
+                    "inventory": 10108,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 133,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 22,
+                    "inventory": 10108,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 133,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MILK": {
+                "current_price": 203,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 203,
+                  "ceiling": 203,
+                  "floor": 203
+                },
+                "scenario_price_range": [
+                  203,
+                  203
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9976,
+                    "inventory_delta": 0,
+                    "price": 203
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9976,
+                    "inventory_delta": 0,
+                    "price": 203
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9976,
+                    "inventory_delta": 0,
+                    "price": 203
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "STRAWBERRY": {
+                "current_price": 176,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 4,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 4,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 4,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 4,
+                  "observed_held": 4,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 176,
+                  "ceiling": 176,
+                  "floor": 176
+                },
+                "scenario_price_range": [
+                  176,
+                  176
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 4,
+                    "held_units": 0,
+                    "inventory": 9956,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 176,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 4,
+                    "inventory": 9956,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 176,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 4,
+                    "inventory": 9956,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 176,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "TOMATO": {
+                "current_price": 94,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 2,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 2,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 2,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 2,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 94,
+                  "ceiling": 94,
+                  "floor": 94
+                },
+                "scenario_price_range": [
+                  94,
+                  94
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 2,
+                    "inventory": 9766,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 94,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 2,
+                    "inventory": 9766,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 94,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 2,
+                    "inventory": 9766,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 94,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "WHEAT": {
+                "current_price": 42,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 36,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 36,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 36,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 36
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 31,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 31,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 31,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 31,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 42,
+                  "ceiling": 42,
+                  "floor": 42
+                },
+                "scenario_price_range": [
+                  42,
+                  42
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 67,
+                    "inventory": 9701,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 42,
+                    "sale_units": 0
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 67,
+                    "inventory": 9701,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 42,
+                    "sale_units": 0
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 67,
+                    "inventory": 9701,
+                    "inventory_delta": 0,
+                    "new_yield_units": 0,
+                    "price": 42,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "WOOL": {
+                "current_price": 5,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 5,
+                  "ceiling": 5,
+                  "floor": 5
+                },
+                "scenario_price_range": [
+                  5,
+                  5
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10058,
+                    "inventory_delta": 0,
+                    "price": 5
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10058,
+                    "inventory_delta": 0,
+                    "price": 5
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10058,
+                    "inventory_delta": 0,
+                    "price": 5
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              }
+            },
+            "realization_day": 17,
+            "realization_step": 430
+          },
+          {
+            "demand": {
+              "center_ticks": 8,
+              "center_units": {
+                "CARROT": 8,
+                "EGG": 8,
+                "FERTILIZER": 0,
+                "MELON": 8,
+                "MILK": 8,
+                "STRAWBERRY": 8,
+                "TOMATO": 8,
+                "WHEAT": 8,
+                "WOOL": 8
+              },
+              "interval": "[observation.step, realization_step)",
+              "new_shop_draws_included": false,
+              "shop_copies": {
+                "BRUNCH_SPOT": 1,
+                "FARMERS_MARKET": 1,
+                "ICE_CREAM_SHOP": 1,
+                "PIZZA_SHOP": 2
+              },
+              "shop_ticks": 43,
+              "shop_units": {
+                "CARROT": 43,
+                "EGG": 43,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 129,
+                "STRAWBERRY": 129,
+                "TOMATO": 129,
+                "WHEAT": 215,
+                "WOOL": 0
+              },
+              "units": {
+                "CARROT": 51,
+                "EGG": 51,
+                "FERTILIZER": 0,
+                "MELON": 8,
+                "MILK": 137,
+                "STRAWBERRY": 137,
+                "TOMATO": 137,
+                "WHEAT": 223,
+                "WOOL": 8
+              }
+            },
+            "products": {
+              "CARROT": {
+                "current_price": 41,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 51,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 45,
+                  "ceiling": 45,
+                  "floor": 45
+                },
+                "scenario_price_range": [
+                  45,
+                  45
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9874,
+                    "inventory_delta": -51,
+                    "price": 45
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9874,
+                    "inventory_delta": -51,
+                    "price": 45
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9874,
+                    "inventory_delta": -51,
+                    "price": 45
+                  }
+                },
+                "shop_copy_demand": 43,
+                "town_center_demand": 8
+              },
+              "EGG": {
+                "current_price": 51,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 51,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 55,
+                  "ceiling": 55,
+                  "floor": 55
+                },
+                "scenario_price_range": [
+                  55,
+                  55
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9925,
+                    "inventory_delta": -51,
+                    "price": 55
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9925,
+                    "inventory_delta": -51,
+                    "price": 55
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9925,
+                    "inventory_delta": -51,
+                    "price": 55
+                  }
+                },
+                "shop_copy_demand": 43,
+                "town_center_demand": 8
+              },
+              "FERTILIZER": {
+                "current_price": 50,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 50,
+                  "ceiling": 50,
+                  "floor": 50
+                },
+                "scenario_price_range": [
+                  50,
+                  50
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MELON": {
+                "current_price": 133,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 8,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 14,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 14,
+                      "decay_loss_units": 0,
+                      "harvested_units": 36,
+                      "held_units": 0,
+                      "new_yield_units": 14,
+                      "sale_units": 30
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 30,
+                      "held_units": 6,
+                      "new_yield_units": 14,
+                      "sale_units": 30
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 36,
+                  "observed_held": 22,
+                  "sale_possible": 30
+                },
+                "price_scenarios": {
+                  "base": 81,
+                  "ceiling": 150,
+                  "floor": 81
+                },
+                "scenario_price_range": [
+                  81,
+                  150
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 14,
+                    "conditional_crop_sale_units": 30,
+                    "decay_loss_units": 0,
+                    "harvested_units": 36,
+                    "held_units": 0,
+                    "inventory": 10130,
+                    "inventory_delta": 22,
+                    "new_yield_units": 14,
+                    "price": 81,
+                    "sale_units": 30
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 30,
+                    "decay_loss_units": 0,
+                    "harvested_units": 30,
+                    "held_units": 6,
+                    "inventory": 10130,
+                    "inventory_delta": 22,
+                    "new_yield_units": 14,
+                    "price": 81,
+                    "sale_units": 30
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 10100,
+                    "inventory_delta": -8,
+                    "new_yield_units": 0,
+                    "price": 150,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 8
+              },
+              "MILK": {
+                "current_price": 203,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 137,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 270,
+                  "ceiling": 270,
+                  "floor": 270
+                },
+                "scenario_price_range": [
+                  270,
+                  270
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9839,
+                    "inventory_delta": -137,
+                    "price": 270
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9839,
+                    "inventory_delta": -137,
+                    "price": 270
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9839,
+                    "inventory_delta": -137,
+                    "price": 270
+                  }
+                },
+                "shop_copy_demand": 129,
+                "town_center_demand": 8
+              },
+              "STRAWBERRY": {
+                "current_price": 176,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 137,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 20,
+                      "harvested_units": 198,
+                      "held_units": 0,
+                      "new_yield_units": 198,
+                      "sale_units": 174
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 24,
+                      "harvested_units": 64,
+                      "held_units": 43,
+                      "new_yield_units": 119,
+                      "sale_units": 64
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 22,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 114,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 20,
+                      "harvested_units": 118,
+                      "held_units": 0,
+                      "new_yield_units": 114,
+                      "sale_units": 108
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 29,
+                      "harvested_units": 44,
+                      "held_units": 14,
+                      "new_yield_units": 72,
+                      "sale_units": 44
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 4,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 22,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 118,
+                  "observed_held": 4,
+                  "sale_possible": 108
+                },
+                "price_scenarios": {
+                  "base": 192,
+                  "ceiling": 233,
+                  "floor": 1
+                },
+                "scenario_price_range": [
+                  1,
+                  233
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 282,
+                    "decay_loss_units": 40,
+                    "harvested_units": 316,
+                    "held_units": 0,
+                    "inventory": 10101,
+                    "inventory_delta": 145,
+                    "new_yield_units": 312,
+                    "price": 1,
+                    "sale_units": 282
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 108,
+                    "decay_loss_units": 53,
+                    "harvested_units": 108,
+                    "held_units": 57,
+                    "inventory": 9927,
+                    "inventory_delta": -29,
+                    "new_yield_units": 191,
+                    "price": 192,
+                    "sale_units": 108
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 4,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9819,
+                    "inventory_delta": -137,
+                    "new_yield_units": 44,
+                    "price": 233,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 129,
+                "town_center_demand": 8
+              },
+              "TOMATO": {
+                "current_price": 94,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 137,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 56,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 4,
+                      "harvested_units": 58,
+                      "held_units": 0,
+                      "new_yield_units": 56,
+                      "sale_units": 42
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 10,
+                      "harvested_units": 16,
+                      "held_units": 13,
+                      "new_yield_units": 36,
+                      "sale_units": 16
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 1,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 9,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 58,
+                  "observed_held": 2,
+                  "sale_possible": 42
+                },
+                "price_scenarios": {
+                  "base": 218,
+                  "ceiling": 245,
+                  "floor": 179
+                },
+                "scenario_price_range": [
+                  179,
+                  245
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 42,
+                    "decay_loss_units": 4,
+                    "harvested_units": 58,
+                    "held_units": 0,
+                    "inventory": 9671,
+                    "inventory_delta": -95,
+                    "new_yield_units": 56,
+                    "price": 179,
+                    "sale_units": 42
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 16,
+                    "decay_loss_units": 10,
+                    "harvested_units": 16,
+                    "held_units": 13,
+                    "inventory": 9645,
+                    "inventory_delta": -121,
+                    "new_yield_units": 36,
+                    "price": 218,
+                    "sale_units": 16
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 1,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9629,
+                    "inventory_delta": -137,
+                    "new_yield_units": 9,
+                    "price": 245,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 129,
+                "town_center_demand": 8
+              },
+              "WHEAT": {
+                "current_price": 42,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 223,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 17,
+                      "decay_loss_units": 0,
+                      "harvested_units": 147,
+                      "held_units": 0,
+                      "new_yield_units": 111,
+                      "sale_units": 147
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 100,
+                      "held_units": 0,
+                      "new_yield_units": 64,
+                      "sale_units": 100
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 9,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 36
+                },
+                "own_supply": {
+                  "care_possible": 50,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 8,
+                      "decay_loss_units": 0,
+                      "harvested_units": 81,
+                      "held_units": 0,
+                      "new_yield_units": 50,
+                      "sale_units": 81
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 2,
+                      "decay_loss_units": 0,
+                      "harvested_units": 62,
+                      "held_units": 0,
+                      "new_yield_units": 31,
+                      "sale_units": 62
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 18,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 81,
+                  "observed_held": 31,
+                  "sale_possible": 81
+                },
+                "price_scenarios": {
+                  "base": 44,
+                  "ceiling": 48,
+                  "floor": 42
+                },
+                "scenario_price_range": [
+                  42,
+                  48
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 25,
+                    "conditional_crop_sale_units": 228,
+                    "decay_loss_units": 0,
+                    "harvested_units": 228,
+                    "held_units": 0,
+                    "inventory": 9706,
+                    "inventory_delta": 5,
+                    "new_yield_units": 161,
+                    "price": 42,
+                    "sale_units": 228
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 2,
+                    "conditional_crop_sale_units": 162,
+                    "decay_loss_units": 0,
+                    "harvested_units": 162,
+                    "held_units": 0,
+                    "inventory": 9640,
+                    "inventory_delta": -61,
+                    "new_yield_units": 95,
+                    "price": 44,
+                    "sale_units": 162
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 27,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9478,
+                    "inventory_delta": -223,
+                    "new_yield_units": 0,
+                    "price": 48,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 215,
+                "town_center_demand": 8
+              },
+              "WOOL": {
+                "current_price": 5,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 8,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 55,
+                  "ceiling": 55,
+                  "floor": 55
+                },
+                "scenario_price_range": [
+                  55,
+                  55
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10050,
+                    "inventory_delta": -8,
+                    "price": 55
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10050,
+                    "inventory_delta": -8,
+                    "price": 55
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10050,
+                    "inventory_delta": -8,
+                    "price": 55
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 8
+              }
+            },
+            "realization_day": 25,
+            "realization_step": 601
+          },
+          {
+            "demand": {
+              "center_ticks": 10,
+              "center_units": {
+                "CARROT": 10,
+                "EGG": 10,
+                "FERTILIZER": 0,
+                "MELON": 10,
+                "MILK": 10,
+                "STRAWBERRY": 10,
+                "TOMATO": 10,
+                "WHEAT": 10,
+                "WOOL": 10
+              },
+              "interval": "[observation.step, realization_step)",
+              "new_shop_draws_included": false,
+              "shop_copies": {
+                "BRUNCH_SPOT": 1,
+                "FARMERS_MARKET": 1,
+                "ICE_CREAM_SHOP": 1,
+                "PIZZA_SHOP": 2
+              },
+              "shop_ticks": 55,
+              "shop_units": {
+                "CARROT": 55,
+                "EGG": 55,
+                "FERTILIZER": 0,
+                "MELON": 0,
+                "MILK": 165,
+                "STRAWBERRY": 165,
+                "TOMATO": 165,
+                "WHEAT": 275,
+                "WOOL": 0
+              },
+              "units": {
+                "CARROT": 65,
+                "EGG": 65,
+                "FERTILIZER": 0,
+                "MELON": 10,
+                "MILK": 175,
+                "STRAWBERRY": 175,
+                "TOMATO": 175,
+                "WHEAT": 285,
+                "WOOL": 10
+              }
+            },
+            "products": {
+              "CARROT": {
+                "current_price": 41,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 65,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 46,
+                  "ceiling": 46,
+                  "floor": 46
+                },
+                "scenario_price_range": [
+                  46,
+                  46
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9860,
+                    "inventory_delta": -65,
+                    "price": 46
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9860,
+                    "inventory_delta": -65,
+                    "price": 46
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9860,
+                    "inventory_delta": -65,
+                    "price": 46
+                  }
+                },
+                "shop_copy_demand": 55,
+                "town_center_demand": 10
+              },
+              "EGG": {
+                "current_price": 51,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 65,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 55,
+                  "ceiling": 55,
+                  "floor": 55
+                },
+                "scenario_price_range": [
+                  55,
+                  55
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9911,
+                    "inventory_delta": -65,
+                    "price": 55
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9911,
+                    "inventory_delta": -65,
+                    "price": 55
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9911,
+                    "inventory_delta": -65,
+                    "price": 55
+                  }
+                },
+                "shop_copy_demand": 55,
+                "town_center_demand": 10
+              },
+              "FERTILIZER": {
+                "current_price": 50,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 0,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 50,
+                  "ceiling": 50,
+                  "floor": 50
+                },
+                "scenario_price_range": [
+                  50,
+                  50
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10249,
+                    "inventory_delta": 0,
+                    "price": 50
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 0
+              },
+              "MELON": {
+                "current_price": 133,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 10,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 14,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 14,
+                      "decay_loss_units": 0,
+                      "harvested_units": 36,
+                      "held_units": 0,
+                      "new_yield_units": 14,
+                      "sale_units": 36
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 36,
+                      "held_units": 0,
+                      "new_yield_units": 14,
+                      "sale_units": 36
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 36,
+                  "observed_held": 22,
+                  "sale_possible": 36
+                },
+                "price_scenarios": {
+                  "base": 70,
+                  "ceiling": 154,
+                  "floor": 70
+                },
+                "scenario_price_range": [
+                  70,
+                  154
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 14,
+                    "conditional_crop_sale_units": 36,
+                    "decay_loss_units": 0,
+                    "harvested_units": 36,
+                    "held_units": 0,
+                    "inventory": 10134,
+                    "inventory_delta": 26,
+                    "new_yield_units": 14,
+                    "price": 70,
+                    "sale_units": 36
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 36,
+                    "decay_loss_units": 0,
+                    "harvested_units": 36,
+                    "held_units": 0,
+                    "inventory": 10134,
+                    "inventory_delta": 26,
+                    "new_yield_units": 14,
+                    "price": 70,
+                    "sale_units": 36
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 10098,
+                    "inventory_delta": -10,
+                    "new_yield_units": 0,
+                    "price": 154,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 10
+              },
+              "MILK": {
+                "current_price": 203,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 175,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 283,
+                  "ceiling": 283,
+                  "floor": 283
+                },
+                "scenario_price_range": [
+                  283,
+                  283
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9801,
+                    "inventory_delta": -175,
+                    "price": 283
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9801,
+                    "inventory_delta": -175,
+                    "price": 283
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 9801,
+                    "inventory_delta": -175,
+                    "price": 283
+                  }
+                },
+                "shop_copy_demand": 165,
+                "town_center_demand": 10
+              },
+              "STRAWBERRY": {
+                "current_price": 176,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 175,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 20,
+                      "harvested_units": 224,
+                      "held_units": 0,
+                      "new_yield_units": 224,
+                      "sale_units": 200
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 28,
+                      "harvested_units": 64,
+                      "held_units": 52,
+                      "new_yield_units": 132,
+                      "sale_units": 64
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 22,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 132,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 20,
+                      "harvested_units": 136,
+                      "held_units": 0,
+                      "new_yield_units": 132,
+                      "sale_units": 126
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 29,
+                      "harvested_units": 44,
+                      "held_units": 23,
+                      "new_yield_units": 81,
+                      "sale_units": 44
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 4,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 22,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 136,
+                  "observed_held": 4,
+                  "sale_possible": 126
+                },
+                "price_scenarios": {
+                  "base": 208,
+                  "ceiling": 244,
+                  "floor": 1
+                },
+                "scenario_price_range": [
+                  1,
+                  244
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 326,
+                    "decay_loss_units": 40,
+                    "harvested_units": 360,
+                    "held_units": 0,
+                    "inventory": 10107,
+                    "inventory_delta": 151,
+                    "new_yield_units": 356,
+                    "price": 1,
+                    "sale_units": 326
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 108,
+                    "decay_loss_units": 57,
+                    "harvested_units": 108,
+                    "held_units": 75,
+                    "inventory": 9889,
+                    "inventory_delta": -67,
+                    "new_yield_units": 213,
+                    "price": 208,
+                    "sale_units": 108
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 4,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9781,
+                    "inventory_delta": -175,
+                    "new_yield_units": 44,
+                    "price": 244,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 165,
+                "town_center_demand": 10
+              },
+              "TOMATO": {
+                "current_price": 94,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 175,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 88,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 4,
+                      "harvested_units": 90,
+                      "held_units": 0,
+                      "new_yield_units": 88,
+                      "sale_units": 74
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 10,
+                      "harvested_units": 16,
+                      "held_units": 29,
+                      "new_yield_units": 52,
+                      "sale_units": 16
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 1,
+                      "decay_loss_units": 0,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 9,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 90,
+                  "observed_held": 2,
+                  "sale_possible": 74
+                },
+                "price_scenarios": {
+                  "base": 286,
+                  "ceiling": 319,
+                  "floor": 188
+                },
+                "scenario_price_range": [
+                  188,
+                  319
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 74,
+                    "decay_loss_units": 4,
+                    "harvested_units": 90,
+                    "held_units": 0,
+                    "inventory": 9665,
+                    "inventory_delta": -101,
+                    "new_yield_units": 88,
+                    "price": 188,
+                    "sale_units": 74
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 16,
+                    "decay_loss_units": 10,
+                    "harvested_units": 16,
+                    "held_units": 29,
+                    "inventory": 9607,
+                    "inventory_delta": -159,
+                    "new_yield_units": 52,
+                    "price": 286,
+                    "sale_units": 16
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 1,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 0,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9591,
+                    "inventory_delta": -175,
+                    "new_yield_units": 9,
+                    "price": 319,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 165,
+                "town_center_demand": 10
+              },
+              "WHEAT": {
+                "current_price": 42,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 285,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 17,
+                      "decay_loss_units": 0,
+                      "harvested_units": 147,
+                      "held_units": 0,
+                      "new_yield_units": 111,
+                      "sale_units": 147
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 0,
+                      "harvested_units": 100,
+                      "held_units": 0,
+                      "new_yield_units": 64,
+                      "sale_units": 100
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 9,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "observed_held": 36
+                },
+                "own_supply": {
+                  "care_possible": 50,
+                  "conditional": {
+                    "fertilized_prompt": {
+                      "capacity_clipped_units": 8,
+                      "decay_loss_units": 0,
+                      "harvested_units": 81,
+                      "held_units": 0,
+                      "new_yield_units": 50,
+                      "sale_units": 81
+                    },
+                    "maintained_buffered": {
+                      "capacity_clipped_units": 2,
+                      "decay_loss_units": 0,
+                      "harvested_units": 62,
+                      "held_units": 0,
+                      "new_yield_units": 31,
+                      "sale_units": 62
+                    },
+                    "no_future_work": {
+                      "capacity_clipped_units": 0,
+                      "decay_loss_units": 18,
+                      "harvested_units": 0,
+                      "held_units": 0,
+                      "new_yield_units": 0,
+                      "sale_units": 0
+                    }
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 81,
+                  "observed_held": 31,
+                  "sale_possible": 81
+                },
+                "price_scenarios": {
+                  "base": 46,
+                  "ceiling": 49,
+                  "floor": 44
+                },
+                "scenario_price_range": [
+                  44,
+                  49
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "capacity_clipped_units": 25,
+                    "conditional_crop_sale_units": 228,
+                    "decay_loss_units": 0,
+                    "harvested_units": 228,
+                    "held_units": 0,
+                    "inventory": 9644,
+                    "inventory_delta": -57,
+                    "new_yield_units": 161,
+                    "price": 44,
+                    "sale_units": 228
+                  },
+                  "maintained_buffered": {
+                    "capacity_clipped_units": 2,
+                    "conditional_crop_sale_units": 162,
+                    "decay_loss_units": 0,
+                    "harvested_units": 162,
+                    "held_units": 0,
+                    "inventory": 9578,
+                    "inventory_delta": -123,
+                    "new_yield_units": 95,
+                    "price": 46,
+                    "sale_units": 162
+                  },
+                  "no_future_work": {
+                    "capacity_clipped_units": 0,
+                    "conditional_crop_sale_units": 0,
+                    "decay_loss_units": 27,
+                    "harvested_units": 0,
+                    "held_units": 0,
+                    "inventory": 9416,
+                    "inventory_delta": -285,
+                    "new_yield_units": 0,
+                    "price": 49,
+                    "sale_units": 0
+                  }
+                },
+                "shop_copy_demand": 275,
+                "town_center_demand": 10
+              },
+              "WOOL": {
+                "current_price": 5,
+                "guaranteed_future_crop_sales": 0,
+                "known_shop_demand_units": 10,
+                "opponent_public_supply": {
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "observed_held": 0
+                },
+                "own_supply": {
+                  "care_possible": 0,
+                  "conditional": {
+                    "fertilized_prompt": {},
+                    "maintained_buffered": {},
+                    "no_future_work": {}
+                  },
+                  "guaranteed": 0,
+                  "harvest_possible": 0,
+                  "observed_held": 0,
+                  "sale_possible": 0
+                },
+                "price_scenarios": {
+                  "base": 66,
+                  "ceiling": 66,
+                  "floor": 66
+                },
+                "scenario_price_range": [
+                  66,
+                  66
+                ],
+                "scenarios": {
+                  "fertilized_prompt": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10048,
+                    "inventory_delta": -10,
+                    "price": 66
+                  },
+                  "maintained_buffered": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10048,
+                    "inventory_delta": -10,
+                    "price": 66
+                  },
+                  "no_future_work": {
+                    "conditional_crop_sale_units": 0,
+                    "inventory": 10048,
+                    "inventory_delta": -10,
+                    "price": 66
+                  }
+                },
+                "shop_copy_demand": 0,
+                "town_center_demand": 10
+              }
+            },
+            "realization_day": 27,
+            "realization_step": 649
+          }
+        ],
+        "observation_step": 430,
+        "schema": 1,
+        "scope": "visible existing crops on both farms; known shop copies only"
+      },
+      "wall_seconds": 0.04097285500029102
+    }
+  ],
+  "forecast_sha256": "2e75d4742866b66feee816e8ed2f262890593a6d5d5d327821648fc55897c093",
+  "games_run": 0,
+  "python": "3.12.13"
+}
