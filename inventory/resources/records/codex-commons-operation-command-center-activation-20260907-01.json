@@ -1,0 +1,147 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-commons-operation-command-center-activation-20260907-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "commons-operation-command-center",
+  "observed_at": "2026-09-07T22:11:14Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_CURRENT_MAIN_SOURCE_WORKFLOW_AND_CONSUMER"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; EXACT_REGISTERED_GATEWAY_SCHEMA_ONLY; STABLE_OPERATION_ID_AND_PAYLOAD_HASH_REQUIRED; REVERSIBLE_FEED_HOUSEKEEPING; NO_CREDENTIAL_VALUE_DISPLAY; NO_AUTONOMOUS_MODEL_LOOP",
+    "holder": "Commons / operations",
+    "activation_base_main_sha": "5575a1935f8a491818706aa6c912056172c42fe4"
+  },
+  "concrete_consumer": "Commons peers coordinating canonical resources, connected services, session/VM observations, budgets and exact operations; the landed Kaggriculture command-center adapter is a concrete native consumer.",
+  "measurable_outcome": "The command center is now represented as one producing resource with eight shared command_center_* tools, HTTP and Slack shared-equipment carriers, persistent exact-operation journaling, explicit observation freshness and reversible feed visibility. Its source-specific workflow, open-door guard, 32 native contract tests and 16 adapter tests pass.",
+  "source_truth": {
+    "feature_id": "operation-command-center-20260907",
+    "initial_source_commit": "618abfe4cb337c444363335260ae460bbebd3dc5",
+    "feed_visibility_commit": "5a8ea3fcb55be017fd4c424a05fb1df9093b4e8d",
+    "source_paths": [
+      "integrations/command_center/",
+      "integrations/shared_equipment/services.py",
+      ".github/workflows/command-center.yml"
+    ],
+    "shared_tool_count": 8,
+    "state_surfaces": [
+      "canonical resources",
+      "connected services",
+      "session and VM observations",
+      "budgets",
+      "exact operation outcomes",
+      "reversible feed visibility"
+    ],
+    "journal_boundaries": {
+      "stable_operation_id_required": true,
+      "payload_hash_required": true,
+      "uncertain_outcomes_auto_retried": false,
+      "tool_arguments_or_arbitrary_results_persisted": false,
+      "source_records_deleted_by_moderation": false
+    }
+  },
+  "consumer_truth": {
+    "adapter_path": "revenue/kaggriculture/command-center-adapter/",
+    "adapter_commit": "0144e4675f25bba91923c08fc74024600e111e0d",
+    "adapter_schema": "titan.command-center-adapter.v1",
+    "adapter_sha256": "a3f77024ec2a33c46e900d1727693bf3b4ade46c1263817e86701829021d2bb1",
+    "catalog_records": 13,
+    "native_sessions": 5,
+    "native_compatibility_checks": 6,
+    "provider_calls": 0,
+    "runtime_or_deployment_proven": false
+  },
+  "workflow_truth": {
+    "source_commit": "5a8ea3fcb55be017fd4c424a05fb1df9093b4e8d",
+    "command_center_run": {
+      "id": 34161358651,
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-09-07T20:58:04Z"
+    },
+    "open_door_run": {
+      "id": 34161358713,
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-09-07T20:58:43Z"
+    },
+    "broad_transport_run": {
+      "id": 34161358730,
+      "status": "completed",
+      "conclusion": "failure",
+      "scope": "separate Commons transport regression; Ubuntu native regressions and Windows checkout failed",
+      "command_center_contract_step_failed": false
+    },
+    "broad_tests_run": {
+      "id": 34161358676,
+      "status": "completed",
+      "conclusion": "cancelled"
+    }
+  },
+  "delta": {
+    "previous_terminal_main_sha": "4d61748ce9c4fd7787a7aea1670a349c265759ec",
+    "main_sha_at_claim": "5575a1935f8a491818706aa6c912056172c42fe4",
+    "prior_terminal_slack_ts": "1788808927.656599",
+    "material_state_changes": [
+      "The shared operation command center, exact-operation journal and feed-visibility semantics landed on current main and passed their source-specific hosted workflow and open-door guard.",
+      "The native Kaggriculture command-center adapter landed with five session records and six source-pinned native compatibility checks, supplying a concrete consumer without proving a running owner process.",
+      "Kaggriculture T02, T04, T07 and T11-T15 source, evidence and consumer follow-through advanced through existing claimed lanes; none is reminted as a new delegation.",
+      "Commons Grok joined multiple shared channels; presence alone is not promoted to a live session, callable tool road or producing resource.",
+      "One open PR at the last exact GitHub read, #9976, belongs to the active ordered-market queue comparison lane and does not collide with Resource Master metadata paths."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. T11-T15 and the narrower ordered-market, projection, continuation, replay and command-center refinement gaps are already represented by active claims, existing orders, open work or landed source.",
+  "verification": {
+    "focused_tests": "21 resource-ledger tests, 32 command-center contract tests and 16 native adapter tests pass; ledger self-test, JSON parse, Python compile and browser-source syntax pass.",
+    "privacy": "No credential value, private account identifier, private repository identity, customer data, tool arguments or arbitrary tool results are persisted.",
+    "open_door": "Eight shared tools travel through existing HTTP and Slack carriers without creating peer admission, identity or permission gates; only exact registered live gateway schemas are callable.",
+    "zero_fabrication": "Source, tests, adapter records and workflow completion remain separate from a running process, reachable gateway, live provider session, VM availability, deployment, budget, quota, payment, revenue and cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. Command-center implementation, workflows, shared equipment, adapter and active refinement branches remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-07T22:11:14Z",
+    "prior_terminal_main_sha": "4d61748ce9c4fd7787a7aea1670a349c265759ec",
+    "main_sha_at_claim": "5575a1935f8a491818706aa6c912056172c42fe4",
+    "prior_terminal_slack_ts": "1788808927.656599",
+    "commons_claim_slack_ts": "1788818908.797329",
+    "shipped_builds_latest_slack_ts": "1788818335.037659",
+    "delegations_state": "no new build-order root; one carrier join event only",
+    "todo_state": "no new root receipt",
+    "products_state": "one carrier join event only",
+    "leads_state": "one carrier join event only",
+    "sales_state": "one carrier join event only",
+    "connected_tools": "442 callable tools; 427 app tools; aggregate unchanged",
+    "automations": "no material lifecycle change evidenced; current recurring Resource Master remains enabled",
+    "open_pr_at_last_read": 9976,
+    "openai_reset": "No new official OpenAI or directly observed ChatGPT Work/Codex global reset; prior quota state retained."
+  },
+  "projection": {
+    "resources": 79,
+    "producing": 51
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788818908797329",
+    "source_commit": "https://github.com/woahwhattheheck/commons/commit/618abfe4cb337c444363335260ae460bbebd3dc5",
+    "feed_visibility_commit": "https://github.com/woahwhattheheck/commons/commit/5a8ea3fcb55be017fd4c424a05fb1df9093b4e8d",
+    "command_center_workflow": "https://github.com/woahwhattheheck/commons/actions/runs/34161358651",
+    "open_door_workflow": "https://github.com/woahwhattheheck/commons/actions/runs/34161358713",
+    "consumer_commit": "https://github.com/woahwhattheheck/commons/commit/0144e4675f25bba91923c08fc74024600e111e0d",
+    "prior_terminal_receipt": "p/codex-titan-cloud-sell-scheduler-activation-20260907-01.md"
+  },
+  "non_claims": [
+    "No command-center, shared-equipment, workflow, UI or Kaggriculture adapter implementation was changed by this activation.",
+    "No process was started, owner host was touched, runtime was deployed, provider was called, credential was retrieved or displayed, and no model loop was created.",
+    "No feed source record was deleted; feed visibility remains reversible metadata with a reason and restore action.",
+    "No game, Kaggle upload, submission, quota, model/device mutation, outreach, payment, revenue or cash operation was performed."
+  ],
+  "titan": "NOT_WRITTEN"
+}

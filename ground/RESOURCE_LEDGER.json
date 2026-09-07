@@ -72,20 +72,21 @@
     "inventory/resources/records/codex-github-repository-portfolio-live-expansion-20260907-02.json",
     "inventory/resources/records/codex-github-repository-portfolio-live-expansion-20260907-03.json",
     "inventory/resources/records/codex-kaggle-account-binding-exercised-20260907-01.json",
-    "inventory/resources/records/codex-titan-cloud-sell-scheduler-activation-20260907-01.json"
+    "inventory/resources/records/codex-titan-cloud-sell-scheduler-activation-20260907-01.json",
+    "inventory/resources/records/codex-commons-operation-command-center-activation-20260907-01.json"
   ],
   "schema": "commons-resource-ledger/v2",
   "secrets": false,
   "shared_resource_rule": "ALL_CARRIERS_MAY_USE_ALL_SHARED_RESOURCES; CLAUDE_IS_OWNER_HANDLED",
-  "slack_ts": "1788808367.044779",
+  "slack_ts": "1788818908.797329",
   "snapshot": {
-    "base_main_sha": "4f9def3ac3074c9ea34988dd792869bdbfd35bf1",
-    "observed_at": "2026-09-07T19:13:40Z",
+    "base_main_sha": "5575a1935f8a491818706aa6c912056172c42fe4",
+    "observed_at": "2026-09-07T22:11:14Z",
     "privacy_rule": "Shared account identities, service roles, aggregate quotas, reset states, and operating state may be published for Commons routing. Never persist passwords, tokens, API credentials, recovery or verification links, payment credentials, personal legal identity, or private mail contents.",
     "scope": "Anything convertible into Commons capability or value, including Bryce, devices, subscriptions, models, agents, tools, repositories, builds, data, attention, and external roads.",
     "truth_rule": "Capacity, authority, lifecycle stage, and condition are independent. Declared or cached is not live; reset is not permission; activity is not value."
   },
-  "source_id": "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+  "source_id": "codex-commons-operation-command-center-activation-20260907-01",
   "stage_order": [
     "DECLARED",
     "AVAILABLE",
@@ -94,8 +95,9 @@
     "EXERCISED",
     "PRODUCING"
   ],
-  "subject": "MASTER RESOURCE LEDGER — frozen TITAN cloud SELL scheduler producing for the active T08 composition consumer",
+  "subject": "MASTER RESOURCE LEDGER — shared Commons operation command center producing through exact state, journal, tool and adapter contracts",
   "supersedes_source_ids": [
+    "codex-commons-operation-command-center-activation-20260907-01",
     "codex-titan-cloud-sell-scheduler-activation-20260907-01",
     "codex-kaggle-account-binding-exercised-20260907-01",
     "codex-github-repository-portfolio-live-expansion-20260907-03",
@@ -1739,6 +1741,28 @@
       "last_used_at": "2026-09-07T19:05:44Z",
       "stale_after": "next scheduler source/hash, evaluator, engine, T08 interface, provider, or hosted-result change",
       "priority": 93
+    },
+    {
+      "name": "commons-operation-command-center",
+      "kind": "SHARED_OPERATIONS_CONTROL_PLANE",
+      "capacity": "LIVE",
+      "stage": "PRODUCING",
+      "condition": "CONSTRAINED",
+      "holder": "Commons / operations",
+      "authority": "SHARED_ALL_CARRIERS; EXACT_REGISTERED_GATEWAY_SCHEMA_ONLY; STABLE_OPERATION_ID_AND_PAYLOAD_HASH_REQUIRED; REVERSIBLE_FEED_HOUSEKEEPING; NO_CREDENTIAL_VALUE_DISPLAY; NO_AUTONOMOUS_MODEL_LOOP",
+      "consumer": "Commons peers coordinating canonical resources, connected services, session/VM observations, budgets and exact operations; the landed Kaggriculture command-center adapter is a concrete native consumer",
+      "value": "One shared state and operation journal exposed through eight command_center_* tools, HTTP and Slack shared-equipment carriers, with explicit freshness, dedupe, uncertain-result and reversible feed-visibility semantics.",
+      "next_action": "Consume only exact schemas reported by the live registered gateway, preserve stable operation IDs and payload hashes, inspect provider state before retrying uncertain effects, and let the existing command-center branches own later UI/runtime refinements.",
+      "source": "feature operation-command-center-20260907; initial source commit 618abfe4cb337c444363335260ae460bbebd3dc5; feed-visibility refinement 5a8ea3fcb55be017fd4c424a05fb1df9093b4e8d; Kaggriculture native adapter commit 0144e4675f25bba91923c08fc74024600e111e0d",
+      "evidence_ts": "2026-09-07T20:58:43Z",
+      "auth_surface": "public current-main source plus existing shared-equipment HTTP and Slack carriers; loopback owner runtime deployment remains separate",
+      "exact_safe_probe": "32 command-center contract tests and 16 native adapter tests passed locally; GitHub Actions command-center run 34161358651 and open-door run 34161358713 completed successfully for source 5a8ea3fcb55be017fd4c424a05fb1df9093b4e8d; adapter compatibility retains five sessions and six native merge checks.",
+      "rate_plan_boundary": "Source, passing contracts, catalog presence and adapter records do not prove a currently running owner process, reachable gateway, provider session, VM availability, model loop, deployment, budget, quota, payment, revenue or cash.",
+      "assigned_backlog": "current Commons coordination and Kaggriculture adapter consumption; ongoing command-center source/UI refinements remain with their existing branches and claims",
+      "last_receipt": "codex-commons-operation-command-center-activation-20260907-01",
+      "last_used_at": "2026-09-07T20:38:09Z",
+      "stale_after": "next command-center schema, journal, feed-visibility, shared-gateway, adapter, deployment or live-provider-state receipt",
+      "priority": 98
     },
     {
       "name": "gemini-google-research-fleet",
