@@ -23,6 +23,7 @@ import urllib.request
 import uuid
 from dataclasses import dataclass
 from datetime import datetime, timedelta, timezone
+from email.message import Message
 from email.utils import parseaddr
 from html.parser import HTMLParser
 from pathlib import Path
@@ -232,9 +233,21 @@ def mail_body(payload: dict) -> str:
     if not encoded:
         return "[Body stored as an attachment; read original in Gmail.]" if payload.get("body", {}).get("attachmentId") else ""
     try:
-        raw = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4)).decode("utf-8", errors="replace")
+        data = base64.urlsafe_b64decode(encoded + "=" * (-len(encoded) % 4))
     except (ValueError, TypeError):
         return "[Body decoding failed; read original in Gmail.]"
+    # Gmail returns MIME-part bytes, not necessarily UTF-8. Read the leaf's
+    # Content-Type; a container's charset does not override its child parts.
+    mime = Message()
+    for header in payload.get("headers", []):
+        if header.get("name", "").lower() == "content-type":
+            mime["Content-Type"] = header.get("value", "")
+            break
+    try:
+        raw = data.decode(mime.get_content_charset() or "utf-8", errors="replace")
+    except (LookupError, ValueError):
+        # Unknown, malformed, and non-text codec names must not drop work mail.
+        raw = data.decode("utf-8", errors="replace")
     if payload.get("mimeType") == "text/html":
         parser = PlainHTML()
         parser.feed(raw)
