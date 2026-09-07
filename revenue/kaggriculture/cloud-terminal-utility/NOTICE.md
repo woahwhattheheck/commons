@@ -20,8 +20,9 @@ Tests consume, without republishing or modifying:
   The evaluator compiles the unchanged upstream seed helper from the supplied
   cached utils.py. It is not replaced with an invented initializer.
 
-The engine artifact was already published. No export workflow or source fetch
-was started for this component. SciPy is used only as an optional independent
-linear-programming test oracle; production imports only Python's standard
-library. Full engine and dependency license notices remain in their existing
-source locations.
+The engine artifact was already published and was downloaded through the
+existing artifact connector. No new engine export workflow was started. The T15
+solver was read at its pinned GitHub revision. SciPy is used only as an optional
+independent linear-programming test oracle; production imports only Python's
+standard library. Full engine and dependency license notices remain in their
+existing source locations.
