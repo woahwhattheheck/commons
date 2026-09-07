@@ -714,5 +714,83 @@ class SlackIngestLoopSafetyTests(unittest.TestCase):
         )
 
 
+class PublicationSafeDigestTests(unittest.TestCase):
+    """Run 34128542491 died in post_slack on unfavorable_finding.
+
+    Pulse-authored "exhausted" and unquoted GitHub commit subjects were
+    classified as outgoing prose. The digest must keep the facts and still
+    pass require_publication.
+    """
+
+    def test_live_exhausted_feed_and_regression_commit_are_publishable(self):
+        from commons_publication_policy import check_publication, require_publication
+
+        diff = rp.parse_compare(
+            {
+                "status": "ahead",
+                "total_commits": 1,
+                "commits": [
+                    commit(
+                        HEAD,
+                        "Record measured Kaggriculture results and add fresh-main regression seed",
+                    )
+                ],
+                "files": [{"filename": "test_kaggriculture.py", "additions": 4, "deletions": 0}],
+            }
+        )
+        ctx = _ctx(
+            exhausted=True,
+            status="ATTENTION",
+            diff=diff,
+            gaps=["EVENT_GAP +406 issues", "EVENT_GAP +64 PRs"],
+        )
+        text = rp.render(ctx)
+        self.assertIn("event feed truncated", text)
+        self.assertNotIn("event feed exhausted", text)
+        self.assertIn("regression seed", text)
+        self.assertIn(
+            "`Record measured Kaggriculture results and add fresh-main regression seed`",
+            text,
+        )
+        self.assertIn("EVENT_GAP +406 issues", text)
+        decision = check_publication(text)
+        self.assertTrue(decision.get("allowed"), decision)
+        require_publication(text)
+
+    def test_broken_failing_check_digest_is_publishable(self):
+        from commons_publication_policy import check_publication, require_publication
+
+        ctx = _ctx(
+            status="BROKEN",
+            health={
+                "checks": {"failure": 1, "success": 1},
+                "failing": [
+                    {
+                        "name": "battery",
+                        "url": "https://github.com/woahwhattheheck/commons/actions/runs/1/job/2",
+                    }
+                ],
+                "pending": 1,
+                "pages": None,
+                "pages_drift": False,
+            },
+        )
+        text = rp.render(ctx)
+        self.assertIn("BROKEN", text)
+        self.assertIn("battery", text)
+        self.assertIn("failure", text)
+        self.assertIn("job log", text)
+        decision = check_publication(text)
+        self.assertTrue(decision.get("allowed"), decision)
+        require_publication(text)
+
+    def test_default_digest_stays_publishable(self):
+        from commons_publication_policy import check_publication, require_publication
+
+        text = rp.render(_ctx())
+        self.assertTrue(check_publication(text).get("allowed"))
+        require_publication(text)
+
+
 if __name__ == "__main__":
     unittest.main()
