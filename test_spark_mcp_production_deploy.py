@@ -97,18 +97,23 @@ class SparkMcpProductionDeployTests(unittest.TestCase):
             cancel_template,
             "${{ github.event_name == 'pull_request' }}",
         )
-        for event_name, want_cancel in (
-            ("pull_request", True),
-            ("push", False),
-            ("workflow_dispatch", False),
+        # PR identity is stable across synchronize runs, unlike the run ID.
+        for event_name, run_id, pr_number, want_cancel in (
+            ("pull_request", 1, 17, True),
+            ("pull_request", 2, 17, True),
+            ("pull_request", 3, 18, True),
+            ("push", 4, None, False),
+            ("workflow_dispatch", 5, None, False),
         ):
-            ctx = github_ctx(
-                event_name,
-                1,
-                "woahwhattheheck:x" if event_name == "pull_request" else None,
-            )
-            got = interpolate(cancel_template, ctx)
-            self.assertEqual(got == "true", want_cancel, event_name)
+            with self.subTest(event=event_name, run_id=run_id, pr_number=pr_number):
+                ctx = github_ctx(
+                    event_name,
+                    run_id,
+                    "woahwhattheheck:x" if event_name == "pull_request" else None,
+                    pr_number=pr_number,
+                )
+                got = interpolate(cancel_template, ctx)
+                self.assertEqual(got == "true", want_cancel, event_name)
 
     def test_pull_request_never_deploys(self) -> None:
         text = WORKFLOW.read_text(encoding="utf-8")
