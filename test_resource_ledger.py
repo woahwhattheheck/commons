@@ -145,10 +145,14 @@ class TestResourceLedger(unittest.TestCase):
             text = handle.read()
         catalog = load_catalog(text)
         raw = json.loads(text)
-        self.assertEqual(catalog["slack_ts"], "1788754083.404829")
+        self.assertEqual(catalog["slack_ts"], "1788755643.262339")
         self.assertEqual(
             catalog["source_id"],
-            "codex-github-repository-portfolio-privacy-refresh-20260907-01",
+            "codex-github-repository-portfolio-live-expansion-20260907-02",
+        )
+        self.assertIn(
+            "codex-github-repository-portfolio-live-expansion-20260907-02",
+            raw.get("supersedes_source_ids") or [],
         )
         self.assertIn(
             "codex-github-repository-portfolio-privacy-refresh-20260907-01",
@@ -251,7 +255,7 @@ class TestResourceLedger(unittest.TestCase):
             "inventory",
             "resources",
             "records",
-            "codex-github-repository-portfolio-privacy-refresh-20260907-01.json",
+            "codex-github-repository-portfolio-live-expansion-20260907-02.json",
         )
         with open(current_activation_path, encoding="utf-8") as handle:
             current_activation = json.load(handle)
@@ -518,7 +522,7 @@ class TestResourceLedger(unittest.TestCase):
         self.assertEqual(fleet["stage"], "PRODUCING")
         self.assertEqual(
             fleet["last_receipt"],
-            "codex-github-repository-portfolio-privacy-refresh-20260907-01",
+            "codex-github-repository-portfolio-live-expansion-20260907-02",
         )
         office = next(
             row

@@ -51,10 +51,10 @@ class ConnectedCapabilityInventoryTests(unittest.TestCase):
 
     def test_repository_fleet_reconciles_current_public_safe_aggregate(self) -> None:
         fleet = self.catalog["github_portfolio"]
-        self.assertEqual(fleet["accessible_repositories"], 30)
-        self.assertEqual(fleet["public_repositories"], 18)
-        self.assertEqual(fleet["private_repositories"], 12)
-        self.assertEqual(len(fleet["repositories"]), 18)
+        self.assertEqual(fleet["accessible_repositories"], 32)
+        self.assertEqual(fleet["public_repositories"], 19)
+        self.assertEqual(fleet["private_repositories"], 13)
+        self.assertEqual(len(fleet["repositories"]), 19)
         self.assertFalse(fleet["private_details_persisted"])
         self.assertTrue(all(row["visibility"] == "public" for row in fleet["repositories"]))
 
@@ -82,6 +82,14 @@ class ConnectedCapabilityInventoryTests(unittest.TestCase):
         self.assertEqual(tools["fully_paginated_skills"], 118)
         self.assertEqual(sum(tools["skill_groups"].values()), 118)
         self.assertEqual(tools["automations"], {"total": 14, "enabled": 7, "disabled": 7})
+
+    def test_kaggle_binding_is_reachable_but_not_an_entry_claim(self) -> None:
+        rows = {row["id"]: row for row in self.catalog["providers"]}
+        kaggle = rows["kaggle-account-binding"]
+        self.assertEqual(kaggle["stage"], "REACHABLE")
+        self.assertEqual(kaggle["condition"], "CONSTRAINED")
+        self.assertEqual(kaggle["allocation"], "DISCOVER_IN_CARRIER")
+        self.assertIn("OWNER_ONLY_ENTRY_SUBMISSION", kaggle["mutation"])
 
     def test_cursor_has_usable_shared_route(self) -> None:
         rows = {row["id"]: row for row in self.catalog["providers"]}

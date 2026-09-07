@@ -4,7 +4,9 @@
 from __future__ import annotations
 
 import copy
+import json
 import unittest
+from pathlib import Path
 
 from host.repository_portfolio import PortfolioError, classify, validate
 
@@ -127,6 +129,16 @@ class RepositoryPortfolioTests(unittest.TestCase):
         data["summary"]["public_repositories"] += 1
         data["summary"]["reference_repositories"] += 1
         self.assertEqual(validate(data), data["summary"])
+
+    def test_live_projection_reconciles_public_safe_expansion(self) -> None:
+        path = Path(__file__).resolve().parent / "inventory" / "resources" / "repository_portfolio.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        self.assertEqual(validate(data), data["summary"])
+        self.assertEqual(data["summary"]["accessible_repositories"], 32)
+        self.assertEqual(data["summary"]["public_repositories"], 19)
+        self.assertEqual(data["summary"]["private_repositories"], 13)
+        self.assertEqual(len(data["public_repositories"]), 19)
+        self.assertFalse(data["private_aggregate"]["details_persisted"])
 
 
 if __name__ == "__main__":
