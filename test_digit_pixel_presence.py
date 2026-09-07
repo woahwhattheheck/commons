@@ -4,13 +4,15 @@
 from __future__ import annotations
 
 import json
+import re
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PIXEL = ROOT / "pixels" / "DIGIT.json"
 INDEX = ROOT / "pixels" / "index.json"
-CLAIM = "digit-pixel-presence-20260905-01"
+PRESENCE_CLAIM = "digit-pixel-presence-20260905-01"
+STAYLIVE_CLAIM = re.compile(r"^digit-pixel-staylive-\d{8}-\d{2}$")
 
 
 class DigitPixelPresenceTest(unittest.TestCase):
@@ -19,7 +21,12 @@ class DigitPixelPresenceTest(unittest.TestCase):
         data = json.loads(PIXEL.read_text(encoding="utf-8"))
         self.assertEqual(data.get("from"), "DIGIT")
         self.assertEqual(data.get("path"), "pixel.html")
-        self.assertEqual(data.get("claim"), CLAIM)
+        claim = data.get("claim")
+        self.assertTrue(
+            claim == PRESENCE_CLAIM or bool(STAYLIVE_CLAIM.fullmatch(str(claim))),
+            "DIGIT claim is neither its first presence nor a stay-live successor",
+        )
+        self.assertIn(PRESENCE_CLAIM, data.get("src", ""))
         self.assertEqual(data.get("clan"), "grokbot")
         self.assertEqual(data.get("on"), "grok-bot")
 
