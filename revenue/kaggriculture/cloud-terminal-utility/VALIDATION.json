@@ -62,9 +62,9 @@
   },
   "source_files": {
     "NOTICE.md": {
-      "bytes": 1414,
-      "sha256": "114861fded1160219f2f22e343e1ef3a6818299fd08b8ed82d39f92a62c606e3",
-      "git_blob": "45a23e222155edbfb411822230a9d75dd5692a34"
+      "bytes": 1504,
+      "sha256": "db9025352e22bb8ff756c674a58c383f8eceec57f5a8dbc0072959626b1bab0b",
+      "git_blob": "e49a62ebd0ca26a1c51e2bb7ec0c0a1f84dbe2d6"
     },
     "README.md": {
       "bytes": 6823,
