@@ -250,6 +250,20 @@ class CommandCenter:
         result["data"] = json.loads(result["data"]) if result["data"] else None
         return result
 
+    @staticmethod
+    def _source_event_content(source):
+        """Compare operational changes without collector clock/liveness noise."""
+        content = {key: source.get(key) for key in
+                   ("id", "path", "sha", "status", "error", "data")}
+        if source["id"].startswith("runtime:") and isinstance(content["data"], dict):
+            data = {key: value for key, value in content["data"].items()
+                    if key not in ("tools_observed_at", "health_observed_at")}
+            if isinstance(data.get("health"), dict):
+                data["health"] = {key: value for key, value in data["health"].items()
+                                  if key != "uptime_seconds"}
+            content["data"] = data
+        return _json(content)
+
     def _save_source(self, source_id, path, sha, data=None, error=None, missing=False,
                      partial=False):
         previous = self._source(source_id)
@@ -276,7 +290,8 @@ class CommandCenter:
                 (result["id"], result["path"], result["sha"], result["observed_at"],
                  result["attempted_at"], result["status"], result["error"],
                  _json(result["data"]) if result["data"] is not None else None))
-        self._append_source_event(result)
+        if previous is None or self._source_event_content(previous) != self._source_event_content(result):
+            self._append_source_event(result)
         return result
 
     def _append_source_event(self, source):

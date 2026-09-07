@@ -6,6 +6,7 @@ import tempfile
 import unittest
 import urllib.error
 from pathlib import Path
+from unittest.mock import patch
 
 from integrations.command_center.core import CommandCenter, CoreError
 
@@ -24,6 +25,8 @@ class FakeProvider:
         self.tool_names = ["example_echo", "vault_retrieve_sealed"]
         self.result = {"ok": True, "result": {"ok": True, "value": "returned only to caller"}}
         self.adapter_sessions = []
+        self.uptime_seconds = 1
+        self.sha = SHA
 
     def __call__(self, method, url, payload=None):
         self.calls.append((method, url))
@@ -36,7 +39,7 @@ class FakeProvider:
         if url.endswith("/commits/main"):
             if self.fail_head:
                 raise urllib.error.URLError("sensitive transport details")
-            return {"sha": SHA}
+            return {"sha": self.sha}
         if "raw.githubusercontent.com" in url:
             if self.fail_sources:
                 raise TimeoutError("private request detail")
@@ -59,6 +62,7 @@ class FakeProvider:
             if self.fail_health:
                 raise TimeoutError("health request details")
             return {"ok": True, "service": "shared-equipment",
+                    "uptime_seconds": self.uptime_seconds,
                     "sensitive_extra": "not-persisted"}
         raise AssertionError("Unexpected provider request " + url)
 
@@ -169,6 +173,70 @@ class CommandCenterTests(unittest.TestCase):
         self.assertEqual(count, after)
         self.assertEqual("stale", next(s for s in state["sources"]
                                       if s["id"] == "github-main")["status"])
+
+    def test_source_feed_tracks_changes_while_refresh_clocks_keep_advancing(self):
+        def refresh(minute):
+            with patch("integrations.command_center.core._now",
+                       return_value="2026-09-07T01:%02d:00Z" % minute):
+                return self.center.state(refresh=True)
+
+        def events(state):
+            return {event["id"]: event for event in state["feed"]
+                    if event["kind"] == "source"}
+
+        initial = refresh(1)
+        originals = events(initial)
+        self.provider.uptime_seconds = 62
+        unchanged = refresh(2)
+        self.assertEqual(originals, events(unchanged))
+        for source in unchanged["sources"]:
+            self.assertEqual("2026-09-07T01:02:00Z", source["attempted_at"])
+            self.assertEqual("2026-09-07T01:02:00Z", source["observed_at"])
+        runtime = self.center._source("runtime:shared-equipment")
+        self.assertEqual("2026-09-07T01:02:00Z", runtime["data"]["tools_observed_at"])
+        self.assertEqual("2026-09-07T01:02:00Z", runtime["data"]["health_observed_at"])
+        self.assertEqual(62, runtime["data"]["health"]["uptime_seconds"])
+
+        self.provider.tool_names.append("new_shared_tool")
+        changed = refresh(3)
+        added = [event for event_id, event in events(changed).items()
+                 if event_id not in originals]
+        self.assertEqual(1, len(added))
+        self.assertEqual(runtime["id"], added[0]["source_id"])
+        self.assertIn("new_shared_tool", added[0]["snapshot"]["tool_names"])
+
+        self.provider.fail_health = True
+        failed = refresh(4)
+        failed_events = events(failed)
+        self.assertEqual(len(originals) + 2, len(failed_events))
+        failure = next(event for event_id, event in failed_events.items()
+                       if event_id not in events(changed))
+        self.assertEqual("degraded", failure["source_status"])
+        self.assertIn("health:", failure["body"])
+        repeated = refresh(5)
+        self.assertEqual(failed_events, events(repeated))
+        failed_runtime = self.center._source(runtime["id"])
+        self.assertEqual("2026-09-07T01:05:00Z", failed_runtime["attempted_at"])
+
+        self.provider.fail_health = False
+        recovered = refresh(6)
+        recovery = [event for event_id, event in events(recovered).items()
+                    if event_id not in failed_events]
+        self.assertEqual(1, len(recovery))
+        self.assertEqual("live", recovery[0]["source_status"])
+        self.assertEqual(len(originals) + 3, len(events(recovered)))
+        for event_id, original in originals.items():
+            self.assertEqual(original, events(recovered)[event_id])
+
+        # A pinned revision is a useful new original link, even with equal content.
+        self.provider.sha = "b" * 40
+        revision = refresh(7)
+        revision_events = [event for event_id, event in events(revision).items()
+                           if event_id not in events(recovered)]
+        self.assertTrue(revision_events)
+        self.assertNotIn(runtime["id"], {event["source_id"] for event in revision_events})
+        self.assertTrue(all(event["snapshot"]["sha"] == self.provider.sha
+                            for event in revision_events))
 
     def test_state_poll_uses_ttl_and_expired_observation_refreshes(self):
         self.center.state()
@@ -320,6 +388,7 @@ class CommandCenterTests(unittest.TestCase):
         self.center.mutate("feed/moderate", {
             "operation_id": "hide-original", "event_id": original["id"],
             "action": "hide", "reason": "Hide this observation only"})
+        self.provider.fail_sources = True  # A new failure is a distinct observation.
         refreshed = self.center.state(refresh=True)
         latest = next(x for x in refreshed["feed"] if x.get("source_id") == "resource-ledger")
         self.assertNotEqual(original["id"], latest["id"])
