@@ -51,9 +51,13 @@ The CLI selects the recorded game position with `--player-index`; its initial
 `--own-seat` spelling is replaced. The callable's `own_seat` argument and output
 schema remain unchanged. This is a replay-data index, not a Commons identity.
 
-The CLI accepts any explicitly bound two-player episode. It checks EpisodeId and
-terminal cash against the supplied receipt; the provider receipt, not a cash
-match, establishes submission/seat identity. It writes `cash-bridge.json`, the
+The CLI accepts any explicitly bound two-player episode. Embedded EpisodeId, when
+present, is compared as an integer/string identifier, matching the existing T13
+diagnostics contract. Missing embedded identifiers remain null; the separately
+recorded requested_episode_id comes from the provider reference. The CLI does not
+inject that identifier into the raw replay or its trace. Terminal cash is checked
+against the supplied receipt; the provider receipt, not a cash match, establishes
+submission/seat identity. It writes `cash-bridge.json`, the
 complete unchanged analyzer trace as `trace.json.gz`, exact observed before/after
 frames as `observed-witnesses.json.gz`, and a hash manifest. Witnesses are
 observations, not replacement actions or counterfactuals. Existing output
@@ -61,8 +65,8 @@ directories are never overwritten. No opponent program is executed.
 
 ## Validation and current input state
 
-Twenty tests passed in the cloud with Python3.13.5: fourteen arithmetic/error
-controls and six actual pinned-interpreter fixture methods, including the CLI,
+Twenty-two tests passed in the cloud with Python3.13.5: fourteen arithmetic/error
+controls and eight actual pinned-interpreter fixture methods, including the CLI,
 exact frame/hash readback, shared-seat observation normalization, day grouping,
 capital spending, unequal sale volumes and different realized prices. The
 insufficient-funding and sufficient-funding cases are distinct retained controls.

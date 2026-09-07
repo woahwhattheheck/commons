@@ -214,6 +214,40 @@ class OfficialEngineTests(unittest.TestCase):
         self.assertEqual([d["day"] for d in r["daily"]], [0, 1])
         self.assertTrue(r["all_cash_attributed"])
 
+    def test_cli_preserves_string_embedded_episode(self):
+        self.check_external_episode_binding("123")
+
+    def test_cli_keeps_missing_embedded_episode_explicit(self):
+        self.check_external_episode_binding(None)
+
+    def check_external_episode_binding(self, embedded):
+        replay = self.replay([[{}, {}]])
+        if embedded is None:
+            replay["info"].pop("EpisodeId")
+        else:
+            replay["info"]["EpisodeId"] = embedded
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            raw = root / "replay.raw"
+            raw.write_text(json.dumps(replay))
+            cmd = [sys.executable, str(Path(cb.__file__)), str(raw),
+                "--engine-dir", str(self.engine_dir), "--episode-id", "123",
+                "--player-index", "0", "--our-submission-id", "111",
+                "--rival-submission-id", "222", "--expected-cash", "3000,3000",
+                "--provider-source", "synthetic fixture record", "--output", str(root / "result")]
+            done = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            self.assertEqual(done.returncode, 0, done.stderr)
+            bridge = json.loads((root / "result/cash-bridge.json").read_text())
+            self.assertEqual(bridge["requested_episode_id"], 123)
+            self.assertEqual(bridge["episode_id"], embedded)
+            binding = bridge["source"]["provider_binding"]
+            self.assertEqual(binding["requested_episode_id"], 123)
+            self.assertEqual(binding["embedded_episode_id"], embedded)
+            self.assertEqual(binding["source"], "synthetic fixture record")
+            trace = json.loads(gzip.decompress((root / "result/trace.json.gz").read_bytes()))
+            self.assertEqual(trace["episode_id"], embedded)
+            self.assertTrue(bridge["all_cash_attributed"])
+
     def test_cli_writes_bound_hashes_and_exact_frames(self):
         replay = self.replay([[{}, {"market": [["SELL", "WHEAT", 3]]}]])
         with tempfile.TemporaryDirectory() as directory:
