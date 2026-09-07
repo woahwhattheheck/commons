@@ -12,6 +12,8 @@ VARIANTS = {
     'harvest-rescue': ('frozen', 'harvest_rescue.py'),
     'animal-harvest': ('frozen', 'animal_harvest.py'),
     'deferred-milk': ('arlene', 'deferred_milk.py'),
+    'dairy-continuation': ('arlene', 'dairy_continuation.py'),
+    'demand-dairy': ('arlene', 'demand_dairy.py'),
 }
 
 
