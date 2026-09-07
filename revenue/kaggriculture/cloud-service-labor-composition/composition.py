@@ -3,7 +3,10 @@
 
 No source policy is rewritten. Forecasts clone the pinned intact Arlene value
 state, not an arbitrary nested wrapper. The engine is shared read-only code;
-all observed game state is copied by the original component oracles.
+all observed game state is copied by the original component oracles. By default,
+T04 forecasts use the intact-parent continuation (with its current selected
+labor action fixed), not a recursive reoptimization of every future hire. This
+is a conditional model choice, measured in the full-game factorial.
 """
 from __future__ import annotations
 
@@ -17,7 +20,8 @@ class Composition:
 
     def __init__(self, arlene: Any, labor_module: Any, service_module: Any,
                  engine: Any, configuration: Mapping[str, Any] | None = None,
-                 *, service: bool = True, labor: bool = True):
+                 *, service: bool = True, labor: bool = True,
+                 forecast_labor: bool = False):
         self.base = arlene.Agent()
         self.labor_module = labor_module
         self.engine = engine
@@ -26,6 +30,7 @@ class Composition:
         self.hiring = (labor_module.HiringAgent(self.base, engine, mode="reserve",
                                                configuration=self.configuration)
                        if labor else None)
+        self.forecast_labor = forecast_labor
         self.calls = 0
         self.parent_calls = 0
         self.forks = 0
@@ -49,7 +54,10 @@ class Composition:
         """
         self.forks += 1
         base = copy(self.base)
-        if self.hiring is None:
+        # Bound speculative work: default forecasts keep the intact parent
+        # continuation. Actual current hiring remains selected by T10. The
+        # recursive optimization variant is retained explicitly for research.
+        if self.hiring is None or not self.forecast_labor:
             return base.act
         fork = self.labor_module.HiringAgent(
             base, self.engine, mode=self.hiring.mode,
