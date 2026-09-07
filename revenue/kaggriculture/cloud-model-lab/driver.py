@@ -57,7 +57,7 @@ class ModelDriver:
         bank_block, self._last_rows = "", []
         if self.examples == "bank" and self.bank is not None:
             cls = EB.situation_class(obs, config, seat, adm)
-            live_lean = EB.lean_state(fmap + "\n" + prompt_mod.digest(obs, config, seat))
+            live_lean = EB.structured_state(obs, config, seat)
             rows = self.bank.for_class(cls, EB.context_of(obs), n=2,
                                        exclude_state=live_lean,
                                        n_hands=len(adm["units"]) - 1)

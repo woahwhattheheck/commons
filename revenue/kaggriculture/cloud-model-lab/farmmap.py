@@ -65,10 +65,14 @@ def build(obs, config, seat):
     dupes = {xy: ls for xy, ls in shared.items() if len(ls) > 1}
     if dupes:
         for (x, y), ls in dupes.items():
-            lines.append(f"  NOTE {' and '.join(ls)} are all on ({x},{y}): a tile action "
-                         f"(WATER/CARE/FEED/HARVEST/PLACE/DIG/BUILD) resolves for the FIRST "
-                         f"of them only; the others act on the tile it has already changed. "
-                         f"Move them apart to work different tiles.")
+            lines.append(f"  NOTE {' and '.join(ls)} share ({x},{y}). They act in that "
+                         f"order on the tile as the previous one left it. DIFFERENT actions "
+                         f"can all apply -- FEED then CARE on one animal, FERTILIZE then "
+                         f"WATER on one plant (a watered fertilized plant in its window "
+                         f"gains 2 instead of 1), HARVEST of a one-harvest crop then PLANT "
+                         f"on the cleared tile. Repeating the SAME action does nothing once "
+                         f"its flag is set, and a second PLACE of an animal only deposits "
+                         f"into the shed once the structure is occupied.")
     lines.append(f"empty plantable tiles ({len(empty)}): {coords(empty, 24)}")
     if plants:
         lines.append("plants:")

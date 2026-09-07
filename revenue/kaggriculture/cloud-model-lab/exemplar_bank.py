@@ -27,7 +27,6 @@ import os
 MAX_ROWS = 4000
 MAX_PER_CLASS = 20
 MAX_STATE = 320
-MAX_ACTION = 200
 
 # Bumped whenever the outcome classifier changes what counts as a bankable turn.
 # Retrieval serves only rows written under the CURRENT version: a row banked by an
@@ -80,8 +79,39 @@ def context_of(obs):
     return "early" if d < 8 else "mid" if d < 18 else "late"
 
 
+def structured_state(obs, config, seat):
+    """An explicit digest of the decision facts, built from the observation.
+
+    Clipping rendered prose to a byte budget cut mid-token and lost whichever facts
+    happened to sit late in the text. This states the facts a demonstration needs --
+    the clock, cash, shed use and room, seeds, and each worker's position, carried
+    goods and the tile under it -- as fields, so nothing is truncated arbitrarily.
+    """
+    import prompt as P
+    farm = obs["farms"][seat]
+    priv = obs["private"]
+    cap = int(config.get("shedCapacity", 100) or 100)
+    shed = priv.get("shed", {})
+    used = sum(shed.values())
+    invs = priv.get("inventories", [])
+    day, hour = int(obs["day"]), int(obs["hour"])
+    parts = [f"d{day}h{hour}", f"cash{int(farm['money'])}",
+             f"shed{used}/{cap}"]
+    seeds = ",".join(f"{k}{v}" for k, v in sorted(priv.get("seeds", {}).items()) if v)
+    parts.append(f"seeds[{seeds or '-'}]")
+    stock = ",".join(f"{k}{v}" for k, v in sorted(shed.items()) if v)
+    parts.append(f"stock[{stock or '-'}]")
+    units = [("farmer", farm["farmer"])] + [(f"h{i}", p) for i, p in enumerate(farm.get("hands", []))]
+    for i, (label, p) in enumerate(units):
+        x, y = int(p[0]), int(p[1])
+        held = invs[i] if i < len(invs) else {}
+        carry = ",".join(f"{k}{v}" for k, v in sorted(held.items()) if v) or "-"
+        parts.append(f"{label}@({x},{y})carry[{carry}]on[{P._tile_str(farm['tiles'][y][x], day)}]")
+    return " ".join(parts)
+
+
 def lean_state(state_text):
-    """The lean digest an entry stores: the first 8 non-blank lines, capped."""
+    """Legacy text digest, retained for the exclude-self comparison only."""
     lines = [ln.strip() for ln in state_text.splitlines() if ln.strip()]
     return " . ".join(lines[:8])[:MAX_STATE]
 
@@ -111,8 +141,14 @@ class Bank:
             return
         if plan and "plan" not in action:
             action = {"plan": plan, **action}
-        row = {"cls": cls, "ctx": context, "state": lean_state(state_text),
-               "action": json.dumps(action, separators=(",", ":"))[:MAX_ACTION],
+        # The action is stored COMPLETE. Slicing the serialized JSON to a byte budget
+        # produced malformed demonstrations for multi-hand turns -- an 8-hand action
+        # plus a plan exceeds 200 bytes -- which `_hands_of` then silently discarded,
+        # so those rows were dead weight. Retrieval is bounded by per-class retention,
+        # not by truncating a row's content.
+        row = {"cls": cls, "ctx": context,
+               "state": state_text if isinstance(state_text, str) else str(state_text),
+               "action": json.dumps(action, separators=(",", ":")),
                "provenance": provenance, "v": CLASSIFIER_VERSION, "n": len(self.rows)}
         self.rows.append(row)
         with open(self.path, "a") as fh:

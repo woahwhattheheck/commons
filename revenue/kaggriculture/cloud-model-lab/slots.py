@@ -35,7 +35,7 @@ OPCODE_SEMANTICS = [
     " if the animal is ALSO fed that day",
     "COLLECT_FERTILIZER t  takes the fertilizer that animal has ready",
     "FERTILIZE t  spends 1 FERTILIZER from the acting worker's hands",
-    "DIG t        REMOVES whatever is on the tile, a healthy plant included",
+    "DIG t        removes a plant, a weed, or an EMPTY coop/pasture; it does NOT remove an installed animal",
     "BUILD_COOP / BUILD_PASTURE t   needs an EMPTY tile; pays nothing until an animal is"
     " installed on it and fed",
     "PLACE x      installs animal x when the worker stands on an EMPTY matching structure;"
@@ -43,8 +43,7 @@ OPCODE_SEMANTICS = [
     "PICKUP x n   moves n of x from the shed into the worker's hands; shed access tiles only",
     "DROP         moves everything the worker carries into the shed; shed access tiles only",
     "NORTH/SOUTH/EAST/WEST  move one tile; PASS spends the worker's turn",
-    "two workers on one tile: a tile action resolves for the FIRST only; the rest act on"
-    " the tile it has already changed",
+    "ORDER: workers act in order (farmer, then hand0, hand1, ...), each on the tile as the previous workers left it. Sharing a tile is NOT a conflict: FEED then CARE on one animal both apply; FERTILIZE then WATER both apply, and watering a fertilized plant inside its window adds 2 instead of 1; HARVEST of a one-harvest crop clears the tile so a later worker can PLANT there. What does nothing is repeating the SAME action whose flag is already set (a second CARE, a second WATER), or a second PLACE of an animal once the structure is occupied",
 ]
 
 

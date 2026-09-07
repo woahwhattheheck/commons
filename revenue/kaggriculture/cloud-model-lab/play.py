@@ -157,7 +157,7 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
                 if ok and d.bank is not None:
                     import exemplar_bank as EB
                     cls = model_turn.get("situation_class")
-                    state_text = model_turn["prompt"].split("LIVE FARM", 1)[-1]
+                    state_text = EB.structured_state(pre_obs, pre_cfg, seat)
                     d.bank.record(cls, EB.context_of(pre_obs), state_text,
                                   model_turn["action"], "model",
                                   plan=model_turn["action"].get("plan")

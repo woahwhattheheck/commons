@@ -82,7 +82,10 @@ def main():
             check("dying plant is flagged", "DIES at this refresh" in text)
             break
     check("opcode semantics stated", "CARE" in text and "cared_today" in text)
-    check("shared-tile rule stated", "resolves for the FIRST" in text)
+    check("sequential order stated, and not as exclusivity",
+          "workers act in order" in text and "Sharing a tile is NOT a conflict" in text
+          and "resolves for the FIRST only" not in text)
+    check("DIG spares installed animals", "does NOT remove an installed animal" in text)
 
     print()
     if FAIL:

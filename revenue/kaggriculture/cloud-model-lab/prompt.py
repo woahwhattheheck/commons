@@ -115,7 +115,7 @@ OP_NOTE = {
              "ONLY if this animal was ALSO fed today"),
     "FEED": "consumes 1 WHEAT carried by THIS unit; feeds the animal on its tile",
     "COLLECT_FERTILIZER": "takes the fertilizer this animal has ready",
-    "DIG": "REMOVES whatever is on this tile, including a healthy plant",
+    "DIG": "removes a plant, a weed, or an EMPTY coop/pasture; it does NOT remove an installed animal",
 }
 
 
@@ -156,6 +156,18 @@ def accepted_block(adm, obs=None, seat=0):
     out = []
     labels = ["farmer"] + [f"hands[{i}]" for i in range(len(adm["units"]) - 1)]
     targets = []
+    earlier_on_tile = {}
+    if obs is not None:
+        _farm = obs["farms"][seat]
+        _poss = [_farm["farmer"]] + list(_farm.get("hands", []))
+        _labels = ["farmer"] + [f"hands[{k}]" for k in range(len(_poss) - 1)]
+        _seen = {}
+        for _i, _p in enumerate(_poss):
+            _key = (int(_p[0]), int(_p[1]))
+            if _key in _seen:
+                earlier_on_tile[_i] = _seen[_key]
+            else:
+                _seen[_key] = _labels[_i]
     if obs is not None:
         farm = obs["farms"][seat]
         day = int(obs["day"])
@@ -171,12 +183,18 @@ def accepted_block(adm, obs=None, seat=0):
             if op[0] == "PICKUP":
                 rendered.append(f"PICKUP {op[1]} n<={q['PICKUP'].get(op[1], 1)}")
             elif op[0] == "PLACE":
-                rendered.append(f"PLACE {op[1]} n<={q['PLACE_to_shed'].get(op[1], 1)}"
-                                f" ({_place_effect(op[1], obs, seat, i)})")
+                eff = _place_effect(op[1], obs, seat, i)
+                if i in earlier_on_tile and "INSTALLS" in eff:
+                    eff = (f"{earlier_on_tile[i]} is on this tile and acts first; if it "
+                           f"installs here, this only DEPOSITS the {op[1]} into the shed")
+                rendered.append(f"PLACE {op[1]} n<={q['PLACE_to_shed'].get(op[1], 1)} ({eff})")
             elif op[0] in TILE_OPS and tgt:
                 note = OP_NOTE.get(op[0])
+                order = (f"; {earlier_on_tile[i]} acts on this tile first -- a DIFFERENT "
+                         f"action here still applies, the same action again does not") \
+                    if i in earlier_on_tile else ""
                 rendered.append(" ".join(str(t) for t in op) + f" (acts on {tgt}"
-                                + (f"; {note}" if note else "") + ")")
+                                + (f"; {note}" if note else "") + order + ")")
             else:
                 rendered.append(" ".join(str(t) for t in op))
         suffix = f"  [standing on {tgt}]" if tgt else ""
