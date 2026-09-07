@@ -157,6 +157,10 @@ def listing_filename(ident, klass):
     title = str(ident or "")
     klass = str(klass or "open").lower()
     stem = "%s-%s" % (title, klass)
+    # The 80-character bound belongs to work IDs, not derived filenames.
+    # Retain the complete ID so distinct suffixes cannot overwrite one listing.
+    if ID_RE.fullmatch(title) and klass.upper() in CLASSES:
+        return "%s.md" % stem
     if len(stem) > 80:
         keep = 80 - (len(klass) + 1)
         if keep >= 8:
