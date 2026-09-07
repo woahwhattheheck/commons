@@ -1,0 +1,64 @@
+name: kestrel-sigma-expensify99976-replay
+on:
+  push:
+    branches: ['review/kestrel-sigma-expensify99976-transitions-20260906']
+    paths:
+      - '.github/workflows/kestrel-sigma-expensify99976-replay.yml'
+      - 'reviews/kestrel-sigma-expensify99976/**'
+  workflow_dispatch:
+permissions: {}
+jobs:
+  recover-handoff:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      GIT_TERMINAL_PROMPT: '0'
+    steps:
+      - name: Fetch pinned public handoff without repository credentials
+        shell: bash
+        run: |
+          set -euo pipefail
+          git init source
+          git -C source fetch --depth=1 https://github.com/woahwhattheheck/commons.git 2acf8e4e5786f83e37b1a162a2e7d1ee6ad9fb02
+          git -C source checkout --detach FETCH_HEAD
+          test "$(git -C source rev-parse HEAD)" = 2acf8e4e5786f83e37b1a162a2e7d1ee6ad9fb02
+      - name: Verify handoff and archive before inspecting their contents
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import base64, hashlib, io, json, os, pathlib, re, zipfile
+          path = pathlib.Path('source/artifacts/urgent-expensify-99976-candidate-20260906-v2.md')
+          raw = path.read_bytes()
+          blob = hashlib.sha1(b'blob ' + str(len(raw)).encode() + b'\0' + raw).hexdigest()
+          assert blob == '761851746468cf0d18a574eff73c1a22a0dbba35', blob
+          match = re.search(rb'BEGIN_EXPENSIFY_99976_ZIP_BASE64 -->\s*([A-Za-z0-9+/=\r\n]+)', raw)
+          assert match, 'archive marker missing'
+          archive = base64.b64decode(re.sub(rb'\s+', b'', match.group(1)), validate=True)
+          digest = hashlib.sha256(archive).hexdigest()
+          assert len(archive) == 51456, len(archive)
+          assert digest == '57fb4065348f9c40c13eebdabab92d302bb9fff7c738130e3d750c630fe48eba', digest
+          out = pathlib.Path(os.environ['RUNNER_TEMP']) / 'kestrel-sigma-99976-source'
+          out.mkdir(exist_ok=False)
+          (out / 'expensify-99976-handoff-v2.zip').write_bytes(archive)
+          with zipfile.ZipFile(io.BytesIO(archive)) as z:
+              assert z.testzip() is None
+              for entry in z.infolist():
+                  p = pathlib.PurePosixPath(entry.filename)
+                  assert not p.is_absolute() and '..' not in p.parts, entry.filename
+              (out / 'MANIFEST.json').write_bytes(z.read('MANIFEST.json'))
+              names = z.namelist()
+          report = {'source_commit':'2acf8e4e5786f83e37b1a162a2e7d1ee6ad9fb02',
+                    'source_git_blob':blob, 'archive_bytes':len(archive),
+                    'archive_sha256':digest, 'members':names,
+                    'scope':'Handoff byte recovery only. No source edits, test execution, dependency installation or external submission.'}
+          (out / 'recovery.json').write_text(json.dumps(report, indent=2) + '\n')
+          print(json.dumps(report, indent=2))
+          PY
+      - name: Preserve the verified handoff for isolated review
+        uses: actions/upload-artifact@v4
+        with:
+          name: kestrel-sigma-99976-source
+          path: ${{ runner.temp }}/kestrel-sigma-99976-source/
+          retention-days: 15
+          if-no-files-found: error
