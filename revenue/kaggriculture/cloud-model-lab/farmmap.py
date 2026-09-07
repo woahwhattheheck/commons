@@ -8,12 +8,81 @@ so a plan can be about somewhere the units are not currently standing.
 Compression is by grouping only. No tile is dropped because it looked irrelevant.
 """
 
+import os
+
 from constraints import engine
 
 
 def _fmt_tile(tile, day):
     import prompt as P
     return P._tile_str(tile, day)
+
+
+
+def structure_balance(obs, config, seat):
+    """Empty structures with locations, animal stock, and placements already reserved.
+
+    A segment built nine pastures while installing three animals: both renderers list
+    empty pens and shed animals in separate places, so the balance between them has to
+    be inferred by counting two lists. This states it, with the tile ids, what each
+    structure needs, what stock is held in the shed and in workers' hands, what cash
+    affords, and which structures a worker is ALREADY standing on carrying a matching
+    animal, so the same structure is not counted twice.
+
+    Board and price state only. How many structures to hold open, and whether to buy
+    stock or build first, remains the model's decision.
+    """
+    from constraints import engine
+    K = engine()
+    farm = obs["farms"][seat]
+    priv = obs["private"]
+    tiles = farm["tiles"]
+    empty = {"COOP": [], "PASTURE": []}
+    for y, row in enumerate(tiles):
+        for x, t in enumerate(row):
+            if isinstance(t, dict) and t.get("kind") in empty and "animal" not in t:
+                empty[t["kind"]].append((x, y))
+
+    invs = priv.get("inventories", [])
+    positions = [farm["farmer"]] + list(farm.get("hands", []))
+    labels = ["farmer"] + [f"hand{i}" for i in range(len(positions) - 1)]
+    reserved = {}
+    for i, p in enumerate(positions):
+        x, y = int(p[0]), int(p[1])
+        t = tiles[y][x]
+        if not (isinstance(t, dict) and t.get("kind") in empty and "animal" not in t):
+            continue
+        held = invs[i] if i < len(invs) else {}
+        for a, n in held.items():
+            if n and a in K.ANIMALS and K.ANIMALS[a]["structure"] == t["kind"]:
+                reserved[(x, y)] = f"{labels[i]} is on it carrying {a}"
+                break
+
+    shed = priv.get("shed", {})
+    carried = {}
+    for inv in invs:
+        for k, v in inv.items():
+            if k in K.ANIMALS and v:
+                carried[k] = carried.get(k, 0) + int(v)
+    money = int(farm["money"])
+
+    out = []
+    for struct in ("COOP", "PASTURE"):
+        spots = empty[struct]
+        fits = [a for a, d in K.ANIMALS.items() if d["structure"] == struct]
+        in_shed = sum(int(shed.get(a, 0)) for a in fits)
+        in_hand = sum(int(carried.get(a, 0)) for a in fits)
+        if not spots and not in_shed and not in_hand:
+            continue
+        ids = ", ".join(f"({x},{y})" + (f" [{reserved[(x, y)]}]" if (x, y) in reserved else "")
+                        for x, y in spots) or "none"
+        afford = min((money // K.ANIMALS[a]["cost"] for a in fits), default=0)
+        prices = ", ".join("%s $%d" % (a, K.ANIMALS[a]["cost"]) for a in fits)
+        out.append(f"{struct}: {len(spots)} empty at {ids}; stock {in_shed} in shed, "
+                   f"{in_hand} carried; {len(reserved) and sum(1 for k in reserved if k in spots) or 0} "
+                   f"already covered by a worker standing on it; cash {money} buys "
+                   f"{afford} more ({prices})")
+    return " | ".join(out)
 
 
 def build(obs, config, seat):
@@ -133,4 +202,9 @@ def build(obs, config, seat):
                         if shed_wheat else "; buy WHEAT from the market or harvest it"))
         for (x, y), d in animals_on_board:
             lines.append(f"  ({x},{y}) {d}")
+    bal = "" if os.environ.get("KAG_NO_STRUCTURE_BALANCE") else \
+        structure_balance(obs, config, seat)
+    if bal:
+        lines.append("STRUCTURE BALANCE (empty structures vs animals available to fill them)")
+        lines.append("  " + bal)
     return "\n".join(lines)

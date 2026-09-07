@@ -29,12 +29,15 @@ MAX_PER_CLASS = 20
 MAX_STATE = 320
 
 # Bumped whenever the outcome classifier changes what counts as a bankable turn.
+# v3: the end-of-day drop no longer counts as a worker deposit, so rows banked under
+# v2 on an hour-23 turn may credit a transition the engine performed regardless of
+# the action. Those rows are no longer served.
 # Retrieval serves only rows written under the CURRENT version: a row banked by an
 # earlier, looser classifier is a demonstration of something that classifier was
 # wrong about, and serving it feeds that mistake back into the next decision. A
 # four-way duplicate PLACE banked under the old rules was being retrieved and
 # re-taught, which is what this guards against.
-CLASSIFIER_VERSION = 2
+CLASSIFIER_VERSION = 3
 
 
 def situation_class(obs, config, seat, adm):

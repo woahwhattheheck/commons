@@ -37,9 +37,38 @@ def teacher_action(name, obs, config):
         return getattr(mod, fn)(obs)
 
 
+
+def _post_state(obs, config, seat, action):
+    """The observation after the real interpreter applies `action` for `seat`."""
+    import copy as _copy
+    from kaggle_environments.utils import structify
+    K = constraints.engine()
+    obs_a = _copy.deepcopy(obs)
+    obs_a["step"] = constraints.absolute_step(obs, config)
+    other = 1 - seat
+    obs_b = _copy.deepcopy(obs_a)
+    obs_b["player"] = other
+    obs_b["private"] = {"shed": {}, "inventories": [{}], "seeds": {}}
+    states = [None, None]
+    states[seat] = {"observation": obs_a, "action": _copy.deepcopy(action),
+                    "status": "ACTIVE", "reward": 0.0}
+    states[other] = {"observation": obs_b,
+                     "action": {"farmer": ["PASS"], "hands": [], "market": []},
+                     "status": "ACTIVE", "reward": 0.0}
+    state = structify(states)
+    env = structify({"configuration": constraints.visible_config(config),
+                     "done": False, "info": {"seed": 0}})
+    K.interpreter(state, env)
+    post = dict(state[seat].observation)
+    post["farms"] = state[0].observation.farms
+    return post
+
+
 def seed(bank_path, seeds, teacher="starter", seat=0, max_steps=400, exclude_seeds=()):
     K = engine()
-    bank = EB.Bank(bank_path)
+    # write_path is explicit: EB.Bank without one is read-only, so a seeder that
+    # omitted it recorded nothing while still exiting clean.
+    bank = EB.Bank(bank_path, write_path=bank_path)
     banked = 0
     for sd in seeds:
         if sd in exclude_seeds:
@@ -58,10 +87,15 @@ def seed(bank_path, seeds, teacher="starter", seat=0, max_steps=400, exclude_see
                          "hands": [list(h) for h in (act.get("hands") or [])],
                          "market": [list(m) for m in (act.get("market") or [])]}
                 plain = {k: v for k, v in obs.items()}
-                try:
-                    advancing, why = constraints.advanced(plain, cfg, seat, turn0)
-                except Exception:
-                    advancing, why = False, "error"
+                # Classify against the REAL post-step state, the same way play.py
+                # does: apply the turn through the engine, then judge. Errors are
+                # raised, not swallowed -- a silently swallowed AttributeError here
+                # once produced a bank of zero rows while the launcher exited clean.
+                eff = constraints.unit_effects(plain, cfg, seat, turn0)
+                post = _post_state(plain, cfg, seat, turn0)
+                advancing, why, detail = constraints.outcome(
+                    plain, post, cfg, seat, turn0, eff)
+                why = f"{why}: {detail}"
                 if advancing:
                     adm = constraints.admissible(obs, cfg, seat)
                     cls = EB.situation_class(obs, cfg, seat, adm)
