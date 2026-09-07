@@ -1,7 +1,8 @@
 """Read public replay bodies once and preserve lossless, offline-verifiable inputs.
 
-HTTP contract: Kaggle/kaggle-environments, kaggle_environments/api.py,
-Git blob 3b82dcdd701fc8e3cf9f087b82df5a2c1dc6a441. No agent execution.
+HTTP contract: native CompetitionApiService, retained T13 receipt at
+16a2d4a7675c7e27b97bedc00f8073690bf7a763 and KESTREL 1788810125.388659.
+The legacy EpisodeService probe returned HTTP400; no agent execution.
 """
 from __future__ import annotations
 
@@ -17,7 +18,7 @@ import shutil
 import urllib.error
 import urllib.request
 
-ENDPOINT = "https://www.kaggle.com/requests/EpisodeService/GetEpisodeReplay"
+ENDPOINT = "https://api.kaggle.com/v1/competitions.CompetitionApiService/GetEpisodeReplay"
 MAX_BYTES = 256_000_000
 BATCH = (
     {"episode_id": 106567489, "cash_by_seat": [105675, 70683],
@@ -99,7 +100,7 @@ def retrieve_one(expected: dict, output: Path, opener=urllib.request.urlopen) ->
     row = {"requested": expected, "status": "unavailable"}
     try:
         request = urllib.request.Request(
-            ENDPOINT, data=json.dumps({"EpisodeId": expected["episode_id"]}).encode("utf-8"),
+            ENDPOINT, data=json.dumps({"episodeId": expected["episode_id"]}).encode("utf-8"),
             headers={"Content-Type": "application/json", "Accept": "application/json",
                      "Accept-Encoding": "identity"}, method="POST")
         with opener(request, timeout=45) as response:
