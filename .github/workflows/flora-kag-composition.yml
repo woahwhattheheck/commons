@@ -32,6 +32,7 @@ jobs:
           EXPECTED_COMMIT: ${{ github.sha }}
         run: |
           if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            git fetch --quiet --depth=1 origin "${{ github.event.pull_request.base.sha }}"
             git diff --check "${{ github.event.pull_request.base.sha }}" HEAD
           else
             git fetch --filter=blob:none --depth=100 origin main
