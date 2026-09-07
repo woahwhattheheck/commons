@@ -66,6 +66,8 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
     access = {tuple(t) for t in K._shed_access_tiles(n)}
     hz_by_pos = {tuple(p["at"]): p for p in hz["plants"]}
 
+    units = [("farmer", farm["farmer"])] + [(f"hand{i}", p)
+                                            for i, p in enumerate(farm.get("hands", []))]
     out = []
     out.append("RULES AND ECONOMY")
     out.append(f"score = CASH at the end; shed and carried stock score 0. "
@@ -149,7 +151,6 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
     out.append(f"  locked tiles: {', '.join(locked) if locked else 'none'}")
 
     out.append("WORKERS (position, what each carries, and the tile each stands on)")
-    units = [("farmer", farm["farmer"])] + [(f"hand{i}", p) for i, p in enumerate(farm.get("hands", []))]
     shared = {}
     for label, p in units:
         shared.setdefault((int(p[0]), int(p[1])), []).append(label)
@@ -160,6 +161,53 @@ def render(card, adm, hz, plan=None, bank_block=None, head=None):
         also = [l for l in shared[(x, y)] if l != label]
         out.append(f"  {label} on {_tid(x, y)}; carries {held_s}"
                    + (f"; SHARES this tile with {', '.join(also)}" if also else ""))
+
+    # Animals held in the shed produce nothing there, and an installed animal only
+    # pays its care bonus if fed the same day. The verbose renderer stated both; the
+    # slot renderer did not, so a run that bought a cow was never shown the path to
+    # get it onto a pasture, nor which worker could feed it.
+    stock = {a: int(n) for a, n in shed.items() if a in K.ANIMALS and n > 0}
+    if stock:
+        empty_pens = []
+        for y in range(n):
+            for x in range(n):
+                t = tiles[y][x]
+                if isinstance(t, dict) and t.get("kind") in ("COOP", "PASTURE") \
+                        and "animal" not in t:
+                    empty_pens.append((t["kind"], _tid(x, y)))
+        out.append("ANIMALS IN THE SHED (they produce nothing there; to install: PICKUP "
+                   "at a shed access tile, stand on an EMPTY matching structure, PLACE)")
+        for a, cnt in sorted(stock.items()):
+            need = K.ANIMALS[a]["structure"]
+            free = [tid for kind, tid in empty_pens if kind == need]
+            out.append(f"  {a} x{cnt} needs an empty {need}: "
+                       + (", ".join(free) if free else
+                          f"none built yet (BUILD_{need} on an empty tile)"))
+
+    installed = []
+    for y in range(n):
+        for x in range(n):
+            t = tiles[y][x]
+            if isinstance(t, dict) and "animal" in t:
+                installed.append((_tid(x, y), t))
+    if installed:
+        out.append("FEEDING (an installed animal pays its care bonus at the refresh only "
+                   "if FED that same day; FEED spends 1 WHEAT from the hands of the worker "
+                   "standing on it)")
+        holders = []
+        for i, (label, p) in enumerate(units):
+            w = int((invs[i] if i < len(invs) else {}).get("WHEAT", 0))
+            holders.append(f"{label} holds {w} WHEAT")
+        out.append("  " + "; ".join(holders))
+        out.append(f"  shed holds {int(shed.get('WHEAT', 0))} WHEAT"
+                   + ("; PICKUP WHEAT at a shed access tile to carry it to an animal"
+                      if int(shed.get("WHEAT", 0)) else
+                      "; buy WHEAT from the market or harvest it"))
+        for tid, t in installed:
+            out.append(f"  {tid} {t['animal']} yield{t.get('yield_units', 0)} "
+                       + ("fed_today" if t.get("fed_today") else "NOT fed today") + " "
+                       + ("cared_today" if t.get("cared_today") else "not cared today")
+                       + ("  fertilizer_ready" if t.get("fertilizer_available") else ""))
 
     out.append("TURN RULES")
     r = adm["rules"]
