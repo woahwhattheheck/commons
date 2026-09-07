@@ -20,6 +20,6 @@ test_actual_timing_changes_realized_prices (test_cash_bridge.OfficialEngineTests
 test_cli_writes_bound_hashes_and_exact_frames (test_cash_bridge.OfficialEngineTests.test_cli_writes_bound_hashes_and_exact_frames) ... ok
 
 ----------------------------------------------------------------------
-Ran 20 tests in 1.766s
+Ran 20 tests in 1.760s
 
 OK
