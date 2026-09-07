@@ -1,5 +1,6 @@
 """Use existing cloud-eval; add passive action/transaction diagnostics only."""
 import argparse
+import ast
 import collections
 import copy
 import hashlib
@@ -25,14 +26,29 @@ def main():
     ev = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = ev
     spec.loader.exec_module(ev)
+    class PanelActor(ev.Actor):
+        def _measure(self, message):
+            if message.get('kind') == 'action' and 'first_call_seconds' not in self.stats:
+                self.stats['first_call_seconds'] = message['call_seconds']
+            return super()._measure(message)
+    ev.Actor = PanelActor
     engine, hashes = ev.get_engine(args.engine_dir)
     candidate = str(args.candidate.resolve())
-    parents = {name: str(args.runtime.resolve()/(name+'-adapter.py')) for name in ('arlene', 'apex')}
+    parents = {name: str(args.runtime.resolve()/(name+'-adapter.py')) for name in args.opponents.split(',')}
+    def payload(adapter):
+        tree = ast.parse(Path(adapter).read_text())
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute) and node.func.attr == 'make_agent':
+                path = Path(ast.literal_eval(node.args[0]))
+                return {'path':str(path), 'sha256':ev.sha256(path), 'bytes':path.stat().st_size}
+        return ev.fingerprint(str(adapter))
     report = {'engine_ref': ev.ENGINE_REF, 'engine_sha256': hashes,
               'evaluator_sha256': ev.sha256(ev.__file__),
               'measurement_sha256': ev.sha256(__file__),
               'candidate': ev.fingerprint(candidate),
+              'candidate_payload': payload(candidate),
               'parents': {n: ev.fingerprint(f) for n, f in parents.items()},
+              'parent_payloads': {n: payload(f) for n, f in parents.items()},
               'method': 'Existing process-isolated cloud-eval.play, full 719 rounds. Passive hooks count actual official interpreter calls and successful market commits; no substitute transition logic. Not hosted rating.',
               'runtime_manifest': json.loads((args.runtime/'manifest.json').read_text()),
               'games': []}
@@ -70,7 +86,7 @@ def main():
                     if state[0].observation.get('farms'):
                         farm_ids.update({id(f): i for i, f in enumerate(state[0].observation.farms)})
                     current_step[0] = state[0].observation.get('step', 0)
-                    if state[0].observation.get('farms') and (current_step[0] % 24 == 0 or current_step[0] >= 716):
+                    if state[0].observation.get('farms') and (current_step[0] % 24 == 0 or current_step[0] >= 716 or current_step[0] in (225,226,359,360,432,433,576,577)):
                         timeline.append({'step':current_step[0], 'prices':copy.deepcopy(state[0].observation.market), 'shops':copy.deepcopy(state[0].observation.town), 'farms':copy.deepcopy(state[0].observation.farms), 'private':[copy.deepcopy(s.observation.private) for s in state], 'actions':[copy.deepcopy(s.action) for s in state]})
                     result = original_interpreter(state, env)
                     farms = state[0].observation.farms

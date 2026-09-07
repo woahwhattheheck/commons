@@ -33,7 +33,9 @@ def main():
     result = subprocess.run(command, cwd=runtime/'apex', capture_output=True, text=True, check=True)
     (runtime/'compile.txt').write_text(result.stdout+result.stderr)
     targets = {'frozen':runtime/'frozen/main.py','arlene':HERE/'vendor/arlene.py',
-               'apex':runtime/'apex/main.py'}
+               'apex':runtime/'apex/main.py',
+               'kaito':HERE.parent/'vendor/kaito_v43.py',
+               'igor':HERE.parent/'vendor/igor_multiroute.py'}
     for name, path in targets.items():
         adapter = runtime/(name+'-adapter.py')
         pack.write_adapter(adapter, path)
