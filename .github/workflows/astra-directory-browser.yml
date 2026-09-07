@@ -1,0 +1,144 @@
+name: astra-directory-browser
+on:
+  push:
+    branches: [ops/astra-directory-publish-20260907]
+    paths: [.github/workflows/astra-directory-browser.yml]
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: c976ff3e80af7e8d51f18de22fbc11a581914628
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install browser only in the disposable cloud runner
+        run: |
+          python -m pip install playwright==1.57.0
+          python -m playwright install --with-deps chromium
+      - name: Exercise the actual HTML, script and shared stylesheet
+        run: |
+          mkdir -p /tmp/astra-directory-browser
+          git rev-parse HEAD > /tmp/astra-directory-browser/commit.txt
+          python - <<'PY'
+          import functools
+          import http.server
+          import json
+          import threading
+          from pathlib import Path
+          from playwright.sync_api import sync_playwright, expect
+          root = Path.cwd()
+          out = Path('/tmp/astra-directory-browser')
+          class QuietHandler(http.server.SimpleHTTPRequestHandler):
+              def log_message(self, *_args):
+                  pass
+          server = http.server.ThreadingHTTPServer(('127.0.0.1', 0), functools.partial(QuietHandler, directory=str(root)))
+          threading.Thread(target=server.serve_forever, daemon=True).start()
+          url = f'http://127.0.0.1:{server.server_port}/paid-opportunities.html'
+          results = []
+          version = None
+          completed = False
+          def passed(name):
+              results.append(name)
+              print('PASS', name, flush=True)
+          try:
+              with sync_playwright() as p:
+                  browser = p.chromium.launch(headless=True)
+                  version = browser.version
+                  context = browser.new_context(viewport={'width':1280,'height':900})
+                  page = context.new_page()
+                  errors = []
+                  page.on('pageerror', lambda exc: errors.append(str(exc)))
+                  page.goto(url)
+                  page.wait_for_load_state('networkidle')
+                  cards = page.locator('#channel-directory > li:visible')
+                  expect(cards).to_have_count(8)
+                  expect(page.get_by_role('searchbox')).to_be_visible()
+                  expect(page.locator('#channel-count')).to_have_text('8 of 8 channels shown.')
+                  assert page.evaluate('getComputedStyle(document.documentElement).backgroundColor') == 'rgb(10, 10, 11)'
+                  passed('actual page, script and shared stylesheet load; all eight channels visible')
+                  page.screenshot(path=str(out/'desktop.png'), full_page=True)
+                  requests = []
+                  page.on('request', lambda req: requests.append(req.url))
+                  field = page.get_by_role('searchbox')
+                  for query, expected in [('  InTeGrAtIoNs  ','C0C01AXLCGZ'), ('c0c0344tf7w','C0C0344TF7W'), ('ＢＵＧ_bounty','C0BVANHNB26'), ('university','C0BUY3EKMSB')]:
+                      field.fill(query)
+                      expect(cards).to_have_count(1)
+                      expect(cards).to_have_attribute('data-channel', expected)
+                  passed('mixed-case, whitespace-padded, Unicode, alias and exact-ID searches')
+                  field.fill('     ')
+                  expect(cards).to_have_count(8)
+                  passed('whitespace-only query restores all links')
+                  field.fill('<script>not-a-channel</script>')
+                  expect(cards).to_have_count(0)
+                  expect(page.locator('#channel-empty')).to_be_visible()
+                  expect(page.locator('#channel-count')).to_have_text('0 of 8 channels shown.')
+                  passed('no-match case has a visible recovery message and announced count')
+                  page.get_by_role('button', name='Clear search').click()
+                  expect(field).to_be_focused()
+                  expect(field).to_have_value('')
+                  expect(cards).to_have_count(8)
+                  expect(page.locator('#channel-empty')).to_be_hidden()
+                  passed('Clear search restores eight links and keyboard focus')
+                  field.fill('math')
+                  field.press('Enter')
+                  assert page.url == url
+                  expect(cards).to_have_attribute('data-channel', 'C0BV7KHRGF7')
+                  field.press('Tab')
+                  expect(page.get_by_role('button', name='Clear search')).to_be_focused()
+                  passed('Enter does not navigate or submit a claim; keyboard reaches Clear search')
+                  assert requests == [], requests
+                  assert context.cookies() == []
+                  assert page.evaluate('localStorage.length + sessionStorage.length') == 0
+                  passed('filter interactions make no network requests and write no browser state')
+                  context.set_offline(True)
+                  field.fill('connector API')
+                  expect(cards).to_have_attribute('data-channel', 'C0C01AXLCGZ')
+                  passed('filter continues working after network loss')
+                  context.set_offline(False)
+                  page.get_by_role('button', name='Clear search').click()
+                  for width in (320,412,1280):
+                      page.set_viewport_size({'width':width, 'height':915})
+                      metrics = page.evaluate('({scroll:document.documentElement.scrollWidth, client:document.documentElement.clientWidth})')
+                      assert metrics['scroll'] <= metrics['client'], (width,metrics)
+                      expect(cards).to_have_count(8)
+                      if width == 412:
+                          page.evaluate('window.scrollTo(0,0)')
+                          page.screenshot(path=str(out/'mobile.png'), full_page=True)
+                  passed('320px, 412px and 1280px layouts have no horizontal overflow')
+                  assert errors == [], errors
+                  passed('no uncaught browser script errors')
+                  context.close()
+                  nojs = browser.new_context(java_script_enabled=False, viewport={'width':320,'height':915})
+                  static = nojs.new_page()
+                  static.goto(url)
+                  expect(static.locator('#channel-directory > li:visible')).to_have_count(8)
+                  expect(static.locator('#channel-search')).to_be_hidden()
+                  expect(static.locator('#channel-directory a')).to_have_count(8)
+                  assert static.evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth')
+                  passed('JavaScript disabled retains all eight linked cards without dead controls')
+                  nojs.close()
+                  broken = browser.new_context()
+                  broken.route('**/paid-opportunities.html', lambda route: route.fulfill(status=200, content_type='text/html', body=(root/'paid-opportunities.html').read_text().replace('id="channel-query"','id="missing-query"')))
+                  missing = broken.new_page()
+                  missing.goto(url)
+                  expect(missing.locator('#channel-directory > li:visible')).to_have_count(8)
+                  expect(missing.locator('#channel-search')).to_be_hidden()
+                  passed('missing required enhancement input preserves the static directory')
+                  broken.close()
+                  browser.close()
+              completed = True
+          finally:
+              (out/'results.json').write_text(json.dumps({'browser':version,'completed':completed,'passed':len(results),'checks':results},indent=2)+'\n')
+              server.shutdown()
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-directory-browser
+          path: /tmp/astra-directory-browser/
+          retention-days: 7
