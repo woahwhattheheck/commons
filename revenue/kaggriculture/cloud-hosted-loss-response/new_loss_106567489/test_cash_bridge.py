@@ -222,7 +222,7 @@ class OfficialEngineTests(unittest.TestCase):
             raw.write_text(json.dumps(replay))
             cash = [replay["steps"][-1][0]["observation"]["farms"][s]["money"] for s in (0, 1)]
             cmd = [sys.executable, str(Path(cb.__file__)), str(raw), "--engine-dir", str(self.engine_dir),
-                "--episode-id", "123", "--own-seat", "0", "--our-submission-id", "111",
+                "--episode-id", "123", "--player-index", "0", "--our-submission-id", "111",
                 "--rival-submission-id", "222", "--expected-cash", ",".join(map(str, cash)),
                 "--provider-source", "synthetic fixture identity, not an actual provider result",
                 "--output", str(root / "result")]

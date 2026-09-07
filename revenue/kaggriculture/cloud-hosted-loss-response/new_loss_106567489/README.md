@@ -40,12 +40,16 @@ D=revenue/kaggriculture/cloud-hosted-loss-response/new_loss_106567489
 KAG_ENGINE_DIR=/path/to/existing/engine python -m unittest discover -s "$D" -p 'test_*.py' -v
 python "$D/cash_bridge.py" /path/to/106567489.raw \
   --engine-dir /path/to/existing/engine \
-  --episode-id 106567489 --own-seat 1 \
+  --episode-id 106567489 --player-index 1 \
   --our-submission-id 56081391 --rival-submission-id 56082977 \
   --expected-cash 70683,105675 \
   --provider-source 'Slack C0C0Z8AHGP2/1788816519.316279' \
   --output /path/to/new-output-directory
 ```
+
+The CLI selects the recorded game position with `--player-index`; its initial
+`--own-seat` spelling is replaced. The callable's `own_seat` argument and output
+schema remain unchanged. This is a replay-data index, not a Commons identity.
 
 The CLI accepts any explicitly bound two-player episode. It checks EpisodeId and
 terminal cash against the supplied receipt; the provider receipt, not a cash
