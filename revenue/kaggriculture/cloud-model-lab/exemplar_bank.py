@@ -24,7 +24,8 @@ past model success.
 import json
 import os
 
-MAX_ROWS = 400
+MAX_ROWS = 4000
+MAX_PER_CLASS = 20
 MAX_STATE = 320
 MAX_ACTION = 200
 
@@ -117,10 +118,27 @@ class Bank:
         with open(self.path, "a") as fh:
             fh.write(json.dumps(row) + "\n")
         if len(self.rows) > MAX_ROWS:
-            self.rows = self.rows[len(self.rows) // 4:]
-            with open(self.path, "w") as fh:
-                for r in self.rows:
-                    fh.write(json.dumps(r) + "\n")
+            self.trim()
+
+    def trim(self):
+        """Keep the newest MAX_PER_CLASS rows PER CLASS, not the newest overall.
+
+        A global trim drops whole classes: seeding three teachers in sequence, the
+        last one's rows evicted every single-farmer class the first teacher had
+        contributed, leaving 307 rows from one teacher and no coverage for a
+        one-unit turn. Retrieval is per class, so the cap has to be per class too.
+        """
+        kept, per = [], {}
+        for r in reversed(self.rows):
+            c = r.get("cls")
+            if per.get(c, 0) >= MAX_PER_CLASS:
+                continue
+            per[c] = per.get(c, 0) + 1
+            kept.append(r)
+        self.rows = list(reversed(kept))
+        with open(self.path, "w") as fh:
+            for r in self.rows:
+                fh.write(json.dumps(r) + "\n")
 
     @staticmethod
     def _drop_units(cls):
