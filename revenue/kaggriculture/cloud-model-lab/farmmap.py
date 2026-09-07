@@ -55,6 +55,20 @@ def build(obs, config, seat):
     lines.append(f"shed access tiles (DROP/PICKUP work only here): {coords(access)}")
     units = [("farmer", farm["farmer"])] + [(f"hand{i}", p) for i, p in enumerate(farm.get("hands", []))]
     lines.append("units: " + "; ".join(f"{l} at ({int(p[0])},{int(p[1])})" for l, p in units))
+    # Units sharing a tile: a tile op resolves in order, so the second unit's op on
+    # the same tile hits a tile the first has already changed and usually does
+    # nothing. This is state the accepted list cannot show, because that list is
+    # derived per unit in isolation.
+    shared = {}
+    for label, p in units:
+        shared.setdefault((int(p[0]), int(p[1])), []).append(label)
+    dupes = {xy: ls for xy, ls in shared.items() if len(ls) > 1}
+    if dupes:
+        for (x, y), ls in dupes.items():
+            lines.append(f"  NOTE {' and '.join(ls)} are all on ({x},{y}): a tile action "
+                         f"(WATER/CARE/FEED/HARVEST/PLACE/DIG/BUILD) resolves for the FIRST "
+                         f"of them only; the others act on the tile it has already changed. "
+                         f"Move them apart to work different tiles.")
     lines.append(f"empty plantable tiles ({len(empty)}): {coords(empty, 24)}")
     if plants:
         lines.append("plants:")

@@ -48,7 +48,7 @@ def _call(agent, obs, config):
 
 def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
          deriv_cards, eval_cards, max_market=3, out=None, examples="pairs",
-         bank_path=None):
+         bank_path=None, render="verbose"):
     warm, warm_label = _load_agent(warmup_spec)
     opp, opp_label = _load_agent(opponent_spec)
     surfaces, prov = exemplars.build(deriv_cards, eval_cards)
@@ -85,7 +85,7 @@ def play(model_path, seed, seat, from_step, turns, warmup_spec, opponent_spec,
         import exemplar_bank as EB
         bank = EB.Bank(bank_path)
     d = driver_mod.ModelDriver(r, surfaces, max_market=max_market,
-                               examples=examples, bank=bank)
+                               examples=examples, bank=bank, render=render)
     model_turns = 0
     t_start = time.time()
     try:
@@ -210,10 +210,12 @@ def main():
     ap.add_argument("--examples", default="pairs",
                     choices=("pairs", "bank", "control"))
     ap.add_argument("--bank", default=None)
+    ap.add_argument("--render", default="verbose", choices=("verbose", "slots"))
     a = ap.parse_args()
     p = play(a.model, a.seed, a.seat, a.from_step, a.turns, a.warmup, a.opponent,
              cards_mod.load(a.deriv_cards), cards_mod.load(a.eval_cards),
-             max_market=a.max_market, out=a.out, examples=a.examples, bank_path=a.bank)
+             max_market=a.max_market, out=a.out, examples=a.examples, bank_path=a.bank,
+             render=a.render)
     print("\n=== summary ===")
     print(json.dumps(p["summary"], indent=1))
     print(f"money={p['money']:.0f} opponent={p['opponent_money']:.0f} margin={p['margin']:+.0f}")

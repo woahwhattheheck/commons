@@ -28,6 +28,14 @@ MAX_ROWS = 400
 MAX_STATE = 320
 MAX_ACTION = 200
 
+# Bumped whenever the outcome classifier changes what counts as a bankable turn.
+# Retrieval serves only rows written under the CURRENT version: a row banked by an
+# earlier, looser classifier is a demonstration of something that classifier was
+# wrong about, and serving it feeds that mistake back into the next decision. A
+# four-way duplicate PLACE banked under the old rules was being retrieved and
+# re-taught, which is what this guards against.
+CLASSIFIER_VERSION = 2
+
 
 def situation_class(obs, config, seat, adm):
     """The structural class of this turn. Engine-derived shape only, no preference."""
@@ -104,7 +112,7 @@ class Bank:
             action = {"plan": plan, **action}
         row = {"cls": cls, "ctx": context, "state": lean_state(state_text),
                "action": json.dumps(action, separators=(",", ":"))[:MAX_ACTION],
-               "provenance": provenance, "n": len(self.rows)}
+               "provenance": provenance, "v": CLASSIFIER_VERSION, "n": len(self.rows)}
         self.rows.append(row)
         with open(self.path, "a") as fh:
             fh.write(json.dumps(row) + "\n")
@@ -142,10 +150,14 @@ class Bank:
         evaluation card is never handed its own answer.
         """
         relaxed = self._drop_units(cls)
+        def current(r):
+            return r.get("v") == CLASSIFIER_VERSION
         passes = [
-            ("exact+ctx", lambda r: r.get("cls") == cls and r.get("ctx") == context),
-            ("exact", lambda r: r.get("cls") == cls),
-            ("any-unit-count", lambda r: self._drop_units(r.get("cls", "")) == relaxed),
+            ("exact+ctx", lambda r: current(r) and r.get("cls") == cls
+             and r.get("ctx") == context),
+            ("exact", lambda r: current(r) and r.get("cls") == cls),
+            ("any-unit-count", lambda r: current(r)
+             and self._drop_units(r.get("cls", "")) == relaxed),
         ]
         out, seen = [], set()
         for level, pred in passes:
