@@ -1,0 +1,30 @@
+{
+  "schema": "cok-report-validation-v1",
+  "python": "3.13.5",
+  "tests": {
+    "methods": 6,
+    "result": "passed",
+    "new_scored_games": 0,
+    "policy_replays": 0
+  },
+  "observer_base_commit": "e985a162a10c1cec0fe77d1a09b5355f1cf4c50e",
+  "observer_git_blob": "eee78b475e4a9a5e30ac59025e7eeb507d41135b",
+  "files": {
+    "report.py": {
+      "git_blob": "80f875d3bc4bdd5330ad820385c0cd9d8a051e02",
+      "sha256": "ee6df4bcffe0b8741be71d7f4a76d37b313e6e32c396c74fd407682675a1d742",
+      "bytes": 2892
+    },
+    "test_report.py": {
+      "git_blob": "f9ade31ad0f97b503070736b47928a0e976415f8",
+      "sha256": "445e6b292feedeee1005577464f6a1a97b6998ce9917abcec08de9bb442b5950",
+      "bytes": 5201
+    },
+    "REPORTING.md": {
+      "git_blob": "969156f10947347c3a36a6f31ae324cc246fe288",
+      "sha256": "fdcddf3547615c6f7f6b8012c5fd671303b446ad18a4dd42afb5b35cf99524cd",
+      "bytes": 2429
+    }
+  },
+  "interpretation": "Report aggregation tests only. Existing observer, original-source tests and peer diagnostic games are not rerun."
+}
