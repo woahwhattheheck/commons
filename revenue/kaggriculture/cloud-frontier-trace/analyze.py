@@ -159,7 +159,10 @@ def audit_transition(engine, ev, before, after, actions, cfg, step, info):
                      "changed": old_farm != farm or old_private != private,
                      "inventory_delta": delta(contents(old_private), contents(private)),
                      "seed_delta": delta(old_private.get("seeds", {}), private.get("seeds", {})),
-                     "animals_owned_delta": delta(old_private.get("animals", {}), private.get("animals", {}))}
+                     "animals_owned_delta": delta(old_private.get("animals", {}), private.get("animals", {})),
+                     "held_yield_delta": delta(farm_snapshot(old_farm)["held_yield"], farm_snapshot(farm)["held_yield"]),
+                     "installed_crop_delta": delta(farm_snapshot(old_farm)["crops"], farm_snapshot(farm)["crops"]),
+                     "installed_animal_delta": delta(farm_snapshot(old_farm)["animals"], farm_snapshot(farm)["animals"])}
             if op == "DROP":
                 event["discarded"] = {k: -v for k, v in event["inventory_delta"].items() if v < 0}
             events.append(event)
@@ -249,7 +252,7 @@ def analyze(replay, engine, ev, source=None):
     if players != 2:
         raise ValueError("This Kaggriculture analyzer expects two players")
     totals = [{"requested": Counter(), "executed": Counter(), "no_effect": Counter(),
-               "purchases": Counter(), "sales_units": Counter(), "sales_coins": Counter(),
+               "purchases": Counter(), "purchases_by_order": {}, "water_yield": Counter(), "planted_initial_yield": Counter(), "harvested": Counter(), "sales_units": Counter(), "sales_coins": Counter(),
                "production": Counter(), "discarded": Counter(), "capital_spend": Counter(),
                "cash_residual": 0} for _ in first]
     transitions, daily = [], []
@@ -282,12 +285,17 @@ def analyze(replay, engine, ev, source=None):
                     op = event["action"][0] if event["action"] else "INVALID"
                     total["executed" if event["changed"] else "no_effect"][op] += 1
                     total["discarded"].update(event.get("discarded", {}))
+                    if op in ("WATER", "PLANT"):
+                        total["water_yield" if op == "WATER" else "planted_initial_yield"].update({k:v for k,v in event["held_yield_delta"].items() if v>0})
+                    if op == "HARVEST":
+                        total["harvested"].update({k:v for k,v in event["inventory_delta"].items() if v>0})
                 elif kind == "trade" and event["success"]:
                     if event["op"] == "SELL":
                         total["sales_units"][event["item"]] += 1
                         total["sales_coins"][event["item"]] += event["cash_delta"]
                     else:
                         total["purchases"][event["item"]] += 1
+                        total["purchases_by_order"].setdefault(event["op"], Counter())[event["item"]] += 1
                         total["capital_spend"][event["op"]] -= event["cash_delta"]
                 elif kind in ("hire", "land"):
                     total["capital_spend"][kind] -= event["cash_delta"]
@@ -305,6 +313,7 @@ def analyze(replay, engine, ev, source=None):
         before = after
     statuses = Counter(row["audit"]["status"] for row in transitions)
     return {"schema_version": 1, "source": source or {}, "engine_ref": ev.ENGINE_REF,
+        "episode_id": replay.get("info", {}).get("EpisodeId"), "players": replay.get("info", {}).get("TeamNames"),
         "action_alignment": "actions on frame i consume observations from frame i-1",
         "configuration": cfg, "frames": len(frames), "transition_statuses": dict(statuses),
         "opening": [farm_snapshot(first[0]["farms"][s]) for s in range(players)],

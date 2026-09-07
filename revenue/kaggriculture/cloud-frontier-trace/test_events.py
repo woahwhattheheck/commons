@@ -1,6 +1,6 @@
 import unittest
 import test_trace
-from events import production_events, harvest_contract, liquidation_window
+from events import production_events, harvest_contract, liquidation_window, fertilizer_contract
 
 class EventTests(unittest.TestCase):
     @classmethod
@@ -35,6 +35,15 @@ class EventTests(unittest.TestCase):
         self.assertFalse(liquidation_window(718,0,0)['cash_before_terminal'])
         self.assertTrue(liquidation_window(717,0,0)['cash_before_terminal'])
         self.assertEqual(liquidation_window(23,0,20)['earliest_sale_step'],24)
+    def test_fertilizer_coverage_uses_refresh_day(self):
+        tile=self.engine._new_plant('STRAWBERRY',0,24)
+        tile['fertilized_until_day']=9
+        target=fertilizer_contract(tile,9*24)
+        self.assertEqual(target['care_day'],11) # first day10 output is already covered
+        self.assertTrue(target['apply_today_covers_event'])
+        tile['fertilized_until_day']=99
+        self.assertIsNone(fertilizer_contract(tile,9*24))
+
     def test_capacity_and_care(self):
         tile=self.engine._new_plant('TOMATO',0,24);tile['yield_units']=4
         self.assertEqual(harvest_contract(tile,180)['capacity_relief_step'],191)
