@@ -26,12 +26,18 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode
 from urllib.request import Request, urlopen
 
+# Direct script launches resolve the shared policy from this checkout, never cwd.
+_POLICY_ROOT = str(Path(__file__).resolve().parents[2])
+if _POLICY_ROOT not in sys.path:
+    sys.path.insert(0, _POLICY_ROOT)
+from commons_publication_policy import POLICY_CONTEXT, PublicationPolicyViolation, require_publication
+
 
 DEFAULT_GATEWAY_MANIFEST = Path.home() / ".gemini" / "commons_peer_gateway.json"
 DEFAULT_STATE_DB = Path.home() / ".gemini" / "commons_gemini_slack.sqlite3"
 DEFAULT_PEER = "MERIDIAN"
 PEERS = frozenset({"MERIDIAN", "TESSERA"})
-TERMINAL_GATEWAY_STATES = frozenset({"completed", "error"})
+TERMINAL_GATEWAY_STATES = frozenset({"completed", "error", "cancelled", "interrupted"})
 SLACK_TEXT_LIMIT = 3_800
 
 
@@ -40,7 +46,7 @@ class BridgeError(RuntimeError):
 
 
 class TerminalGatewayError(BridgeError):
-    """The Gemini request reached a terminal error and cannot be recovered."""
+    """The Gemini request stopped without a completed reply."""
 
 
 @dataclass(frozen=True)
@@ -312,6 +318,8 @@ class SlackSink:
         self.web_client = web_client
 
     def post(self, channel: str, thread_ts: str, peer: str, text: str) -> None:
+        # Check the whole reply before chunking so no partial refused post escapes.
+        require_publication(text)
         pieces = list(chunks(text)) or ["(empty reply)"]
         for index, piece in enumerate(pieces):
             heading = f"*{peer}*\n" if index == 0 else f"*{peer} (continued)*\n"
@@ -342,7 +350,9 @@ class GeminiSlackBridge:
 
     @staticmethod
     def _prompt(message: str) -> str:
+        require_publication(message)
         return (
+            POLICY_CONTEXT + "\n\n"
             "A person is addressing you through the standalone Commons Slack bridge. "
             "Reply directly to that person for delivery back into the same Slack thread. "
             "You may use your Commons tools when useful; distinguish what you read from "
@@ -365,6 +375,10 @@ class GeminiSlackBridge:
         self.store.remember_peer(channel, thread_ts, peer)
         try:
             request_id = self.gateway.submit(peer, self._prompt(message))
+        except PublicationPolicyViolation:
+            self.store.finish(event_id, "failed")
+            print("gemini-slack: incoming publication policy rejection", file=sys.stderr)
+            return True
         except Exception as exc:
             self.store.finish(event_id, "failed")
             self.sink.post(channel, thread_ts, peer, f"Bridge error: {type(exc).__name__}: {exc}")
@@ -373,13 +387,36 @@ class GeminiSlackBridge:
         delivery = PendingDelivery(event_id, channel, thread_ts, peer, request_id)
         try:
             self._attempt_delivery(delivery, wait=True)
-        except TerminalGatewayError as exc:
-            self.sink.post(channel, thread_ts, peer, f"Gemini error: {exc}")
+        except PublicationPolicyViolation:
             self.store.finish(event_id, "failed")
+            print("gemini-slack: outgoing publication policy rejection", file=sys.stderr)
+        except TerminalGatewayError as exc:
+            self._notify_terminal_error(delivery, exc)
         except Exception:
             # Leave the request pending. The gateway owns the retained reply and
             # recover_pending() will redeliver it after a bridge/Slack outage.
             pass
+        return True
+
+    def _notify_terminal_error(
+        self, delivery: PendingDelivery, error: TerminalGatewayError
+    ) -> bool:
+        try:
+            self.sink.post(
+                delivery.channel,
+                delivery.thread_ts,
+                delivery.peer,
+                f"Gemini error: {error}",
+            )
+        except PublicationPolicyViolation:
+            self.store.finish(delivery.event_id, "failed")
+            print("gemini-slack: outgoing publication policy rejection", file=sys.stderr)
+            return True
+        except Exception:
+            # Retain the original request ID and pending delivery. Recovery
+            # retries only the notification from the existing gateway journal.
+            return False
+        self.store.finish(delivery.event_id, "failed")
         return True
 
     def _attempt_delivery(self, delivery: PendingDelivery, *, wait: bool) -> bool:
@@ -404,7 +441,11 @@ class GeminiSlackBridge:
             if event.get("status") not in TERMINAL_GATEWAY_STATES:
                 return False
         if event.get("status") != "completed":
-            detail = event.get("message") or event.get("error") or "unknown Gemini error"
+            detail = (
+                event.get("message")
+                or event.get("error")
+                or f"Gemini request {event.get('status')}"
+            )
             raise TerminalGatewayError(str(detail))
         if isinstance(event.get("reply_utf8_base64"), str):
             try:
@@ -424,15 +465,12 @@ class GeminiSlackBridge:
         for delivery in self.store.pending():
             try:
                 delivered = self._attempt_delivery(delivery, wait=False)
-            except TerminalGatewayError as exc:
+            except PublicationPolicyViolation:
                 self.store.finish(delivery.event_id, "failed")
-                self.sink.post(
-                    delivery.channel,
-                    delivery.thread_ts,
-                    delivery.peer,
-                    f"Gemini error: {exc}",
-                )
+                print("gemini-slack: outgoing publication policy rejection", file=sys.stderr)
                 delivered = True
+            except TerminalGatewayError as exc:
+                delivered = self._notify_terminal_error(delivery, exc)
             except Exception:
                 # Keep it pending for the next recovery pass. Content remains in
                 # the gateway journal; no duplicate model turn is submitted.

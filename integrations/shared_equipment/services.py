@@ -15,12 +15,28 @@ import sys
 import urllib.error
 import urllib.parse
 import urllib.request
+from datetime import datetime, timezone
 from pathlib import Path
+from queue import Empty, Queue
+from threading import BoundedSemaphore, Thread
+from time import monotonic
 from typing import Any
+
+from commons_publication_policy import require_publication
+from integrations.shared_equipment.outcomes import effect_uncertain, tool_failed
 
 
 class EquipmentError(RuntimeError):
-    pass
+    def __init__(self, message, *, code="equipment_error", uncertain=False, http_status=None):
+        super().__init__(message)
+        self.code = code
+        self.uncertain = uncertain
+        self.http_status = http_status
+
+
+class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
 
 _SECRET_KEYS = re.compile(r"^(authorization|cookie|set-cookie|password|access_token|refresh_token|bot_token|app_token|client_secret|private_key)$", re.I)
@@ -56,6 +72,25 @@ def _quote(value: str) -> str:
     return urllib.parse.quote(value, safe="")
 
 
+def _slack_publication_text(payload: dict) -> str:
+    """Collect displayed Slack prose, including blocks-only message edits."""
+    parts: list[str] = []
+
+    def collect(value: Any) -> None:
+        if isinstance(value, list):
+            for item in value:
+                collect(item)
+        elif isinstance(value, dict):
+            for key, item in value.items():
+                if key in {"text", "title", "pretext", "fallback", "alt_text", "value"} and isinstance(item, str):
+                    parts.append(item)
+                elif isinstance(item, (dict, list)):
+                    collect(item)
+
+    collect({key: payload[key] for key in ("text", "blocks", "attachments") if key in payload})
+    return "\n".join(parts)
+
+
 def _schema(name: str, description: str, required: dict[str, str], optional: dict[str, Any] | None = None) -> dict:
     properties = {k: {"type": v} for k, v in required.items()}
     for k, v in (optional or {}).items():
@@ -63,7 +98,31 @@ def _schema(name: str, description: str, required: dict[str, str], optional: dic
     return {"name": name, "description": description, "inputSchema": {"type": "object", "properties": properties, "required": list(required)}}
 
 
+_TOKEN_POOL_PROVIDERS = ("grokbot", "cursor", "claude", "codex", "gemini_code_assist", "antigravity")
+_TOKEN_POOL_BATCH_WAIT_SECONDS = 45.0
+_TOKEN_POOL_BATCH_SLOTS = BoundedSemaphore(4)
+
+
+def _token_pool_status_tool() -> dict:
+    tool = _schema(
+        "token_pool_status",
+        "Read provider quota without starting model work or spending/resetting capacity. "
+        "Use provider for one pool or providers for a batch of 1-4 distinct names. "
+        "Batches preserve requested order and each outcome, wait at most 45 seconds, "
+        "and share four active reader slots per process. Missing values stay null. "
+        "Antigravity polling renews its existing grant only when expired and synchronizes shared custody. "
+        "Omit both selectors for the original GrokBot result shape.",
+        {},
+        {"provider": {"type": "string", "enum": list(_TOKEN_POOL_PROVIDERS)},
+         "providers": {"type": "array", "minItems": 1, "maxItems": 4, "uniqueItems": True,
+                       "items": {"type": "string", "enum": list(_TOKEN_POOL_PROVIDERS)}}},
+    )
+    tool["inputSchema"]["not"] = {"required": ["provider", "providers"]}
+    return tool
+
+
 TOOLS = [
+    _token_pool_status_tool(),
     _schema("credential_references", "Discover credential references, configured sources, and populated/empty Claude MCP entries. Returns metadata only, equally for newcomers.", {}),
     _schema("credential_retrieve_sealed", "Retrieve an actual credential encrypted to the requester's ephemeral public key. Keep the private key in the requesting runtime; only ciphertext enters this road.", {"credential_ref": "string", "recipient_public_key": "string", "transfer_id": "string", "request_id": "string", "call_id": "string"}),
     _schema("slack_read_channel", "Read a Slack channel using existing workspace access. Follow next_cursor for remaining pages.", {"channel_id": "string"}, {"oldest": "string", "latest": "string", "cursor": "string", "limit": "integer"}),
@@ -72,7 +131,7 @@ TOOLS = [
     _schema("github_read_file", "Read a UTF-8 source file and resolved blob SHA through the existing gh account. Set ref to pin a version.", {"repository": "string", "path": "string"}, {"ref": "string"}),
     _schema("github_read_issue", "Read a GitHub issue and one comment page; use comment_page for further pages.", {"repository": "string", "issue_number": "integer"}, {"comment_page": "integer"}),
     _schema("github_read_pull_request", "Read PR state, head/base SHAs, changed files and checks. Use page for further file pages.", {"repository": "string", "pull_number": "integer"}, {"page": "integer"}),
-    _schema("github_create_branch", "Create a branch from an exact existing commit SHA. Returns existing matching branch on retry; a different existing head is a conflict.", {"repository": "string", "branch": "string", "base_sha": "string"}),
+    _schema("github_create_branch", "Create a branch from base_ref (default main), resolving its commit internally. base_sha remains a compatible override and also accepts a ref. Returns an existing branch only when its head matches the resolved base; never moves an existing branch.", {"repository": "string", "branch": "string"}, {"base_ref": {"type": "string", "default": "main", "description": "Source branch, tag, ref, or commit; resolved internally. Defaults to main."}, "base_sha": {"type": "string", "description": "Compatibility override for base_ref: an existing commit SHA or ref."}}),
     _schema("github_commit_files", "Commit UTF-8 files to an existing branch, comparing expected_head first. Supply full file contents. Returns commit SHA; never force-updates a ref.", {"repository": "string", "branch": "string", "expected_head": "string", "message": "string"}, {"files": {"type": "array", "items": {"type": "object", "properties": {"path": {"type": "string"}, "content": {"type": "string"}}, "required": ["path", "content"]}}}),
     _schema("github_create_pull_request", "Open a useful PR for existing task work. Returns an existing open PR for the same head/base on retry.", {"repository": "string", "head": "string", "base": "string", "title": "string", "body": "string"}, {"draft": "boolean"}),
     _schema("github_merge_pull_request", "Merge an authorized reviewed PR with expected head SHA. GitHub enforces branch rules. Returns provider result, not an assumed success.", {"repository": "string", "pull_number": "integer", "expected_head": "string"}, {"merge_method": "string"}),
@@ -84,7 +143,7 @@ class ServiceEquipment:
         self.gh = gh
         self.slack_token_loader = slack_token_loader or self._load_slack_token
         self.gh_runner = gh_runner or subprocess.run
-        self.opener = opener or urllib.request.urlopen
+        self.opener = opener or urllib.request.build_opener(_NoRedirect()).open
         self.credential_sources = credential_sources
 
     @staticmethod
@@ -101,6 +160,8 @@ class ServiceEquipment:
         return TOOLS.copy()
 
     def slack(self, method: str, payload: dict) -> dict:
+        if method in {"chat.postMessage", "chat.update", "chat.postEphemeral", "chat.scheduleMessage"}:
+            require_publication(_slack_publication_text(payload))
         token = self.slack_token_loader()
         # Slack read methods accept query/form arguments, not consistently JSON.
         read_method = method in {"conversations.history", "conversations.replies", "chat.getPermalink", "auth.test"}
@@ -115,9 +176,21 @@ class ServiceEquipment:
             with self.opener(request, timeout=30) as response:
                 result = json.loads(response.read().decode("utf-8"))
         except urllib.error.HTTPError as exc:
-            return {"ok": False, "error": "slack_http_error", "status": exc.code, "retry_after": exc.headers.get("Retry-After")}
-        except Exception as exc:
-            raise EquipmentError("Slack transport failed; effect may be unknown for writes") from exc
+            status = exc.code
+            retry_after = exc.headers.get("Retry-After") if exc.headers is not None else None
+            exc.close()
+            return {"ok": False, "error": "slack_http_error", "status": status,
+                    "retry_after": retry_after,
+                    "uncertain": not read_method and status not in (401, 403, 429)}
+        except Exception:
+            raise EquipmentError("Slack response unavailable; retain the operation ID before another write",
+                                 code="slack_transport_failed", uncertain=not read_method) from None
+        if not isinstance(result, dict):
+            raise EquipmentError("Slack returned no result object",
+                                 code="slack_response_invalid", uncertain=not read_method)
+        # Slack documents these errors as possibly occurring after an effect.
+        if not read_method and result.get("error") in ("internal_error", "fatal_error"):
+            result["uncertain"] = True
         return redacted(result)
 
     def github(self, endpoint: str, *, method: str = "GET", payload: dict | None = None) -> Any:
@@ -129,7 +202,8 @@ class ServiceEquipment:
                 text=True, encoding="utf-8", capture_output=True, timeout=90,
                 creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
         except (OSError, subprocess.TimeoutExpired) as exc:
-            raise EquipmentError("existing gh transport unavailable; write effect may be unknown") from exc
+            raise EquipmentError("existing gh transport unavailable; retain the operation ID before another write",
+                                 code="github_transport_failed", uncertain=method != "GET") from None
         if result.returncode:
             # Provider errors can echo submitted data; return only structured
             # status/message after redaction, never command/environment details.
@@ -138,19 +212,124 @@ class ServiceEquipment:
                 message = redacted(error.get("message", "GitHub request failed"))
             except (ValueError, TypeError):
                 message = "GitHub request failed through existing gh account"
-            raise EquipmentError(str(message))
+            raise EquipmentError(str(message), code="github_request_failed", uncertain=method != "GET")
         if not result.stdout.strip():
             return {}
-        return redacted(json.loads(result.stdout))
+        try:
+            return redacted(json.loads(result.stdout))
+        except (ValueError, TypeError):
+            raise EquipmentError("GitHub returned an invalid response", code="github_response_invalid",
+                                 uncertain=method != "GET") from None
 
     def call(self, name: str, arguments: dict) -> dict:
         try:
             result = self._call(name, arguments)
-            return {"isError": isinstance(result, dict) and result.get("ok") is False, "result": redacted(result)}
+            return {"isError": tool_failed(result), "result": redacted(result),
+                    "uncertain": effect_uncertain(result)}
         except Exception as exc:
-            return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc))}
+            return {"isError": True, "error": type(exc).__name__, "message": redacted(str(exc)),
+                    "code": getattr(exc, "code", type(exc).__name__),
+                    "uncertain": bool(getattr(exc, "uncertain", False))}
+
+    def _token_pool_batch(self, selected: list[str]) -> dict:
+        observed_at = datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
+        deadline = monotonic() + _TOKEN_POOL_BATCH_WAIT_SECONDS
+        results: list[dict | None] = [None] * len(selected)
+        completed: Queue = Queue()
+        pending: set[int] = set()
+
+        def failure(provider: str, status: str, error_class: str, **fields) -> dict:
+            return {"schema": "commons.token_pool_status.v1", "provider": provider,
+                    "observed_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+                    "ok": False, "status": status, "pools": [],
+                    "error": {"class": error_class, "code": "token_pool_status_" + status},
+                    **fields}
+
+        def read_one(index: int, provider: str) -> None:
+            try:
+                outcome = self._call("token_pool_status", {"provider": provider})
+                if not isinstance(outcome, dict):
+                    outcome = failure(provider, "error", "UnexpectedPayloadType")
+            except Exception as exc:
+                outcome = failure(provider, "error", type(exc).__name__)
+            finally:
+                # A caller timeout does not cancel the reader or release its slot.
+                _TOKEN_POOL_BATCH_SLOTS.release()
+            completed.put((index, outcome))
+
+        for index, provider in enumerate(selected):
+            if not _TOKEN_POOL_BATCH_SLOTS.acquire(blocking=False):
+                results[index] = failure(provider, "busy", "BatchReadersBusy", read_started=False)
+                continue
+            pending.add(index)
+            try:
+                Thread(target=read_one, args=(index, provider), daemon=True).start()
+            except Exception as exc:
+                _TOKEN_POOL_BATCH_SLOTS.release()
+                pending.remove(index)
+                results[index] = failure(provider, "error", type(exc).__name__, read_started=False)
+
+        while pending:
+            try:
+                # Once the deadline passes, still drain already-queued outcomes.
+                index, outcome = completed.get(timeout=max(0.0, deadline - monotonic()))
+            except Empty:
+                break
+            results[index] = outcome
+            pending.remove(index)
+        for index in pending:
+            results[index] = failure(selected[index], "timeout", "TimeoutError",
+                                     read_started=True, reader_may_still_be_running=True)
+
+        return {"schema": "commons.token_pool_status_batch.v1", "observed_at": observed_at,
+                "ok": all(isinstance(result, dict) and result.get("ok") is True for result in results),
+                "results": results}
 
     def _call(self, name: str, a: dict) -> dict:
+        if name == "token_pool_status":
+            if "provider" in a and "providers" in a:
+                raise EquipmentError("Use provider or providers, not both")
+            if "providers" in a:
+                selected = a["providers"]
+                if (not isinstance(selected, list) or not 1 <= len(selected) <= 4
+                        or any(not isinstance(provider, str) or provider not in _TOKEN_POOL_PROVIDERS
+                               for provider in selected)
+                        or len(set(selected)) != len(selected)):
+                    raise EquipmentError("providers must contain 1-4 distinct supported names")
+                return self._token_pool_batch(list(selected))
+            provider = a.get("provider", "grokbot")
+            if provider == "codex":
+                from .codex_pool import poll_codex_pool
+                return poll_codex_pool()
+            from .token_pools import poll_token_pools, poll_cursor_pool, poll_claude_pool
+            from .gemini_code_assist import poll_gemini_code_assist_pool
+            from .antigravity_pool import poll_antigravity_pool
+            readers = {"grokbot": poll_token_pools, "cursor": poll_cursor_pool,
+                       "claude": poll_claude_pool, "gemini_code_assist": poll_gemini_code_assist_pool,
+                       "antigravity": poll_antigravity_pool}
+            if not isinstance(provider, str) or provider not in readers:
+                raise EquipmentError("provider must be grokbot, cursor, claude, codex, gemini_code_assist or antigravity")
+            from .credential_transfer import CredentialSources
+            sources = self.credential_sources or CredentialSources(gh=self.gh, gh_runner=self.gh_runner)
+            recovery = None
+            if provider == "antigravity":
+                try:
+                    from .antigravity_grant import ensure_antigravity_grant
+                    recovery = ensure_antigravity_grant(sources=sources)
+                except Exception:
+                    recovery = {
+                        "provider": "antigravity", "operation": "existing_grant_renewal",
+                        "ok": False, "status": "unavailable", "refreshed": False,
+                        "primary_custody_updated": None, "shared_custody_updated": None,
+                        "expires_at": None,
+                        "error": {"code": "existing_grant_recovery_failed", "http_status": None},
+                    }
+            outcome = readers[provider](credential_reader=sources.read)
+            # Custody maintenance must not hide a usable primary quota result.
+            if recovery and (not recovery.get("ok") or recovery.get("refreshed")
+                             or recovery.get("shared_custody_updated")):
+                outcome["credential_recovery"] = recovery
+            return outcome
         if name == "credential_references":
             from .credential_transfer import credential_references
             return credential_references(self.credential_sources)
@@ -173,8 +352,18 @@ class ServiceEquipment:
                 p["thread_ts"] = a["thread_ts"]
             result = self.slack("chat.postMessage", p)
             if result.get("ok"):
-                link = self.slack("chat.getPermalink", {"channel": result["channel"], "message_ts": result["ts"]})
-                return {"ok": True, "channel": result["channel"], "ts": result["ts"], "permalink": link.get("permalink"), "text": result.get("message", {}).get("text")}
+                # The message already exists. Optional link lookup cannot erase its handle.
+                message = result.get("message")
+                sent = {"ok": True, "channel": result["channel"], "ts": result["ts"],
+                        "permalink": None, "text": message.get("text") if isinstance(message, dict) else None}
+                try:
+                    link = self.slack("chat.getPermalink", {"channel": result["channel"], "message_ts": result["ts"]})
+                    sent["permalink"] = link.get("permalink")
+                    if not link.get("ok"):
+                        sent["permalink_error"] = redacted(link.get("error", "permalink_unavailable"))
+                except Exception:
+                    sent["permalink_error"] = "permalink_unavailable"
+                return sent
             return result
         repo = _repo(a)
         root = "repos/" + repo
@@ -204,7 +393,27 @@ class ServiceEquipment:
                 "checks": self.github(f"{root}/commits/{sha}/check-runs"),
                 "status": self.github(f"{root}/commits/{sha}/status")}
         if name == "github_create_branch":
-            branch, sha = _string(a, "branch"), _string(a, "base_sha")
+            branch = _string(a, "branch")
+            # A caller names the source; GitHub resolves it. Keep explicit
+            # commit callers compatible, including their existing call shape,
+            # and accept legacy base_sha='main' without an extra peer round trip.
+            if "base_sha" in a:
+                base = _string(a, "base_sha").strip()
+            elif "base_ref" in a:
+                base = _string(a, "base_ref").strip()
+            else:
+                base = "main"
+            if re.fullmatch(r"[0-9a-fA-F]{40}", base):
+                sha = base.lower()
+            else:
+                # The commits endpoint documents heads/... and tags/...;
+                # retain that namespace when given a fully qualified Git ref.
+                if base.startswith(("refs/heads/", "refs/tags/")):
+                    base = base[5:]
+                resolved = self.github(root + "/commits/" + _quote(base))
+                sha = resolved.get("sha") if isinstance(resolved, dict) else None
+                if not isinstance(sha, str) or not re.fullmatch(r"[0-9a-fA-F]{40}", sha):
+                    raise EquipmentError("GitHub did not resolve the source ref to a commit")
             try:
                 found = self.github(root + "/git/ref/heads/" + _quote(branch))
             except EquipmentError:
