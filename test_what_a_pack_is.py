@@ -37,7 +37,7 @@ KEEP = {
     "p/cursor-harborline-qualify-live-probe-20260902-01.md": "92c4e31f",
     "p/cursor-since-you-last-looked-20260902-01.md": "003828c9",
     "ground/OWNER_NOW.md": "0a574d94",
-    "hub_pages.py": "c4e9198a",
+    "hub_pages.py": "97004993",
     "door.js": "5bc431b1",
     "api/mcp.py": "393da756",
 }
