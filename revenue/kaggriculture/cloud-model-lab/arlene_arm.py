@@ -39,9 +39,18 @@ def _load(path, name="agent"):
     return mod, {"path": rp, "sha256": sha, "label": f"{os.path.basename(rp)}@{sha[:12]}"}
 
 
+# The exact public opponent bank landed by PR9942 (T07), used read-only from its
+# owner's path. `lonespear-v18-greedy` and `cok-v10` are the two frozen public
+# source revisions in that bank -- two revisions, NOT two independent families.
+BANK = os.path.realpath(os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "..",
+    "cloud-policy-portfolio/revision2/vendor/opponents"))
+
 OPPONENTS = {
     "arlene": None,   # the vendored module itself, a fresh Agent per game
     "apex": "/home/user/work/apex-rt/main.py",
+    "lonespear": os.path.join(BANK, "lonespear-v18-greedy.py"),
+    "cok": os.path.join(BANK, "cok-v10.py"),
 }
 
 
