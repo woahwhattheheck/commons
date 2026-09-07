@@ -172,6 +172,11 @@ class Overlay:
         day = int(obs.get("day", step // 24))
         units = [list(base["farmer"])] + [list(h) for h in base["hands"]]
         pos = [farm["farmer"]] + list(farm.get("hands", []))
+        # The tape's hands list can be longer than the farm's actual hands. The
+        # engine only applies ops for units that exist, so the simulation must see
+        # the same set; the surplus entries are carried through untouched.
+        tail = units[len(pos):]
+        units = units[:len(pos)]
 
         idle = []
         for i, op in enumerate(units):
@@ -243,5 +248,5 @@ class Overlay:
             return base
         out = dict(base)
         out["farmer"] = units[0]
-        out["hands"] = units[1:]
+        out["hands"] = units[1:] + tail
         return out
