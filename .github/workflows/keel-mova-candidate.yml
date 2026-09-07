@@ -1,0 +1,110 @@
+name: KEEL Mova candidate verification
+on:
+  push:
+    branches: [review/keel-mova-inbox-20260906]
+    paths: [.github/workflows/keel-mova-candidate.yml]
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      CI: "true"
+      NEXT_TELEMETRY_DISABLED: "1"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: woahwhattheheck/mova-store
+          ref: a6d377b27ed08488e56c0a2e4b89bded40652e28
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Execute exact candidate and negative control, then prepare style-only patches
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, shutil, subprocess, tempfile
+          root = pathlib.Path.cwd()
+          out = root / 'keel-candidate-evidence'
+          out.mkdir()
+          summary = {'candidate': subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(), 'checks': {}}
+          def run(label, argv, cwd=root):
+              with (out / (label + '.log')).open('w') as log:
+                  log.write('$ ' + ' '.join(argv) + '\n'); log.flush()
+                  try:
+                      code = subprocess.run(argv, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, timeout=360).returncode
+                  except subprocess.TimeoutExpired:
+                      code = 124
+              summary['checks'][label] = {'exit_code': code, 'command': argv}
+              print(label, code, flush=True)
+              print('\n'.join((out / (label + '.log')).read_text(errors='replace').splitlines()[-25:]), flush=True)
+              return code
+          def tests(label, paths, cwd=root):
+              code = run(label, ['npm', 'run', 'test', '--', *paths, '--pool=forks', '--maxWorkers=2', '--minWorkers=1', '--reporter=json', '--outputFile=' + str(out / (label + '.json'))], cwd)
+              report = out / (label + '.json')
+              if report.exists():
+                  data = json.loads(report.read_text())
+                  summary['checks'][label]['counts'] = {k: data.get(k) for k in ['numTotalTests', 'numPassedTests', 'numFailedTests', 'success']}
+                  print('COUNTS', label, summary['checks'][label]['counts'], flush=True)
+              return code
+          def preserve(label, cwd, names):
+              for name in names:
+                  p = cwd / name
+                  dest = out / label / name
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  shutil.copyfile(p, dest)
+              summary[label + '_sha256'] = {name: hashlib.sha256((cwd / name).read_bytes()).hexdigest() for name in names}
+          assert summary['candidate'] == 'a6d377b27ed08488e56c0a2e4b89bded40652e28'
+          if run('install', ['npm', 'ci', '--no-audit', '--no-fund']):
+              raise SystemExit(1)
+          native = 'tests/lib/products-delete-order.test.ts'
+          tests('candidate-regressions', [native])
+          tests('candidate-full-suite', [])
+          run('candidate-typecheck', ['npm', 'run', 'type-check'])
+          run('candidate-lint', ['npm', 'run', 'lint', '--', '--no-cache'])
+          run('regression-file-types', ['npx', '--no-install', 'tsc', '--noEmit', '--skipLibCheck', '--allowJs', '--esModuleInterop', '--moduleResolution', 'bundler', '--module', 'esnext', '--target', 'es2020', native])
+          temporary = pathlib.Path(tempfile.mkdtemp(prefix='keel-controls-'))
+          refs = {
+              'original377': '98fe3e0877250076f8b2ea7b258a3c228cc90cf6',
+              'pr373': '6048476175c1f19951d8dd29fc15cc041a31b8f4',
+              'pr374': '40c86205a8572967f3aaa244388f763bfa46fc27',
+          }
+          for label, sha in refs.items():
+              subprocess.run(['git', 'fetch', '--no-tags', 'origin', sha], check=True)
+              work = temporary / label
+              subprocess.run(['git', 'worktree', 'add', '--detach', str(work), sha], check=True)
+              for name in ['package.json', 'package-lock.json']:
+                  assert (root / name).read_bytes() == (work / name).read_bytes()
+              (work / 'node_modules').symlink_to(root / 'node_modules', target_is_directory=True)
+              if label == 'original377':
+                  shutil.copyfile(root / native, work / native)
+                  tests('original-regression-negative-control', [native], work)
+              else:
+                  name = 'tests/lib/stellar/indexer.test.ts' if label == 'pr373' else 'tests/lib/env-loaders.test.ts'
+                  run(label + '-prettier-write', ['npx', '--no-install', 'prettier', '--write', name], work)
+                  run(label + '-format', ['npx', '--no-install', 'prettier', '--check', name], work)
+                  tests(label + '-focused-tests', [name], work)
+                  preserve(label + '-formatted', work, [name])
+          changed = ['lib/products.js', 'tests/lib/products.test.ts', native]
+          run('candidate-prettier-write', ['npx', '--no-install', 'prettier', '--write', *changed])
+          run('candidate-format', ['npx', '--no-install', 'prettier', '--check', *changed])
+          tests('formatted-regressions', [native])
+          preserve('candidate-formatted', root, changed)
+          (out / 'candidate-format.patch').write_text(subprocess.check_output(['git', 'diff', '--', *changed], text=True))
+          (out / 'summary.json').write_text(json.dumps(summary, indent=2) + '\n')
+          print('FINAL SUMMARY', json.dumps(summary, indent=2), flush=True)
+          # Global failures are reported honestly, even when they predate this patch.
+          unexpected = [v['exit_code'] for k, v in summary['checks'].items() if k != 'original-regression-negative-control']
+          negative = summary['checks']['original-regression-negative-control'].get('counts', {})
+          good_negative = negative.get('numFailedTests') == 3 and negative.get('numPassedTests') == 2
+          raise SystemExit(1 if any(unexpected) or not good_negative else 0)
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: keel-mova-candidate-evidence
+          path: keel-candidate-evidence/
+          if-no-files-found: error
+          retention-days: 14
