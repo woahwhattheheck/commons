@@ -119,6 +119,60 @@ class CurrentWorkBrowser(unittest.TestCase):
         self.assertEqual(self.page.locator("#cw-items").inner_text(), "")
         self.assertIn("No empty-queue or completion claim", self.page.locator("#cw-source").inner_text())
 
+    def hold_path_response(self):
+        self.page.evaluate("""() => {
+          const fixtureFetch = window.fetch;
+          window.pathRequests = 0;
+          window.fetch = async url => {
+            if (!url.includes('/contents/example.py?')) return fixtureFetch(url);
+            window.pathRequests++;
+            return new Promise(resolve => {
+              window.finishPathCheck = status => resolve(new Response('{}', {status}));
+            });
+          };
+        }""")
+
+    def test_keyboard_focus_survives_pending_and_completed_path_check(self):
+        self.hold_path_response()
+        self.load()
+        self.page.get_by_role("button", name="Check listed paths").focus()
+        self.page.keyboard.press("Enter")
+        self.page.wait_for_function("typeof window.finishPathCheck === 'function'")
+        self.assertEqual(self.page.evaluate("document.activeElement.textContent"), "Checking paths…")
+        self.assertEqual(self.page.evaluate("document.activeElement.getAttribute('aria-disabled')"), "true")
+        self.page.keyboard.press("Enter")
+        self.assertEqual(self.page.evaluate("window.pathRequests"), 1)
+        self.page.evaluate("window.finishPathCheck(200)")
+        self.page.wait_for_function("document.querySelector('#cw-items').textContent.includes('CLOSED')")
+        self.assertEqual(self.page.evaluate("document.activeElement.textContent"), "Check listed paths")
+        self.assertEqual(self.page.evaluate("document.activeElement.getAttribute('aria-disabled')"), "false")
+
+    def test_result_does_not_take_focus_back_from_search(self):
+        self.hold_path_response()
+        self.load()
+        self.page.get_by_role("button", name="Check listed paths").focus()
+        self.page.keyboard.press("Enter")
+        self.page.wait_for_function("typeof window.finishPathCheck === 'function'")
+        self.page.locator("#cw-search").fill("café")
+        self.page.evaluate("window.finishPathCheck(200)")
+        self.page.wait_for_function("document.querySelector('#cw-items').textContent.includes('CLOSED')")
+        self.assertEqual(self.page.evaluate("document.activeElement.id"), "cw-search")
+
+    def test_keyboard_focus_survives_failed_path_check_and_retry(self):
+        self.hold_path_response()
+        self.load()
+        self.page.get_by_role("button", name="Check listed paths").focus()
+        self.page.keyboard.press("Enter")
+        self.page.wait_for_function("typeof window.finishPathCheck === 'function'")
+        self.page.evaluate("window.finishPathCheck(429)")
+        self.page.wait_for_function("document.querySelector('#cw-items').textContent.includes('HTTP 429')")
+        self.assertEqual(self.page.evaluate("document.activeElement.textContent"), "Check listed paths")
+        self.page.keyboard.press("Enter")
+        self.page.wait_for_function("window.pathRequests === 2")
+        self.page.evaluate("window.finishPathCheck(200)")
+        self.page.wait_for_function("document.querySelector('#cw-items').textContent.includes('CLOSED')")
+        self.assertEqual(self.page.evaluate("document.activeElement.textContent"), "Check listed paths")
+
     def test_refresh_ignores_an_older_request_even_if_transport_ignores_abort(self):
         self.page.evaluate("""() => {
           const oldSHA = 'a'.repeat(40), newSHA = 'b'.repeat(40);
