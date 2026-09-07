@@ -33,3 +33,29 @@ seed `9200131`, so those labor bytes were removed rather than bundled with the
 winning crop-cap change. The crop arm's Kaito regression is retained above;
 selection used paired checkpoint margin and the better worst strong-reference
 gap, not a claim of universal improvement.
+
+## Quarantined forecast/liquidation integration
+
+SORREL's exact observation-only forecast from PR 9807 was integrated in two
+bounded, transient arms on new seeds. Neither arm is promoted; the selected
+`candidate.py` remains byte-exact at
+`0fbe51eea32be64a2441c60ba7867d532614812cbb9823bbc9087fb6aecdd7d5`.
+
+The forecast-price arm replaced the approximate crop quote and removed the old
+shop-demand multiplier to avoid double counting. It averaged **+3,645.75**
+against this checkpoint across seeds `9200191/9200229`, but its four-game mean
+margin versus Kaito regressed from **-14,840.75** to **-20,626.75** and versus
+Igor from **-16,491.0** to **-23,694.0**.
+
+The partial-liquidation arm used exact sequential fills and sold appreciating
+crop stock only to fund visible seed, feed, and Fibonacci labor commitments or
+the configured shed-capacity requirement. It won 2/2 against the checkpoint on
+seed `9200251` by **+1,683.5** mean, but regressed versus Kaito by **3,694** and
+Igor by **20,878**. Against the newer Arlene/Apex panel on seed `9600109`, own
+cash rose by 6,812/11,072, while opponent cash rose by 22,856/19,591; margins
+therefore worsened by **16,044** and **8,519**. Holding supply helped the stronger
+opponent more than it helped FLORA. No optimistic quote was treated as terminal
+cash, and no forecast or liquidation bytes replaced the selected policy.
+
+Exact terminal scores and report hashes are in
+`results/forecast-liquidation-rejected-development.json`.
