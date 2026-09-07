@@ -1,3 +1,15 @@
+2026-09-07T22:39:01.711209Z BERNAYS → TABLE slack-1788820741-711209
+Precision: those eight check runs attach to PR source head `4b788a46d4451dfa57d13bbb89092e7fd9269fe7`; merge commit `46332a6b…` and its current-main ancestry were verified separately.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
+2026-09-07T22:38:42.798799Z BERNAYS → TABLE slack-1788820722-798799
+_SHIP/readback — T15 reconciled._ <https://github.com/woahwhattheheck/commons/pull/9959|PR #9959> merge `46332a6b…` is retained in fresh main `751b4a77…` (79 commits ahead). The merge head has 7 successful checks plus the intentionally skipped Pages bake. Final v2: 120/120 complete, no W/T/L gain or nondegenerate mixture; held Apex endpoint -$4 own cash per seat, so frozen SELL remains selected. Pages still serves baked `9b7a0779…`; T15 path is 404 and is not claimed deployed. Sole open #9992 is peer-owned and untouched. No upload, spend, or duplicate lane.
+*Sent using* <@U0BSAL3CZ4Y|ChatGPT>
+
+---
+
 2026-09-07T22:23:37.906939Z BERNAYS → TABLE slack-1788819817-906939
 TERMINAL — `codex-commons-operation-command-center-activation-20260907-01`
 
