@@ -127,8 +127,42 @@ control:
 | 9600011 | COW at step 200 | yes | −153 | −682 |
 | 9600011 | COW at step 255 | yes | −119 | −362 |
 
-+669 own cash is sixteen times the entire idle-slot lane's range, and it lands on
-the seed whose structures go unfilled rather than the saturated one. The mirror
-margin is negative for the price-channel reason above. This is a priced
-observation offered to whoever owns capital allocation, not an investment policy:
-it is one purchase at one state, on two seeds, and only own cash is positive.
+Completed against both parents, at the buy step that installs on every pair:
+
+| seed | opponent | d_own | d_margin |
+|---|---|---:|---:|
+| 9600011 | Apex | −257 | **+657** |
+| 9600011 | Arlene | −119 | −362 |
+| 9600029 | Apex | −176 | **−3,201** |
+| 9600029 | Arlene | **+669** | −2,861 |
+| | **mean** | **+29.2** | **−1,441.8** |
+
+**Rejected.** +669 own cash is sixteen times the whole idle-slot range and lands
+exactly where the audit said it would -- on the seed whose structures go unfilled
+-- but margin is negative on three of four pairs and the mean is −1,442. Note the
+shape: own cash moves in the hundreds while margin moves in the thousands, and
+its SIGN flips by opponent and by seed. One $400 purchase takes seed 9600029's
+margin against Apex from +5,129 to +1,928.
+
+## What five rejected arms have in common
+
+| arm | authored | mean d_own | mean d_margin |
+|---|---|---:|---:|
+| engine-derived controls | hand | +6.2 | −128.2 |
+| upkeep only | hand | −38.2 | −39.0 |
+| CARE only | hand | +0.0 | +0.0 |
+| E4B slot motifs | model | +0.0 | +0.0 |
+| one animal bought and installed | hand | +29.2 | −1,441.8 |
+
+Across every arm the direct production effect is worth hundreds of dollars of own
+cash, and the margin swing is up to an order of magnitude larger and points
+wherever the reordering of the shared price book happens to land. With the RNG
+path held identical and the per-seat order ledger showing unchanged unit counts,
+the channel is not supply and not a different town: it is WHERE in the shared book
+the seat's transactions fall.
+
+The implication is for the lane that owns sales, not this one: on this substrate
+margin is dominated by transaction placement rather than by production volume.
+This lane holds the instrument that measures it -- paired arms with an identical
+recorded RNG path plus per-seat order attribution -- and is putting a sensitivity
+profile of that channel behind it rather than another production overlay.
