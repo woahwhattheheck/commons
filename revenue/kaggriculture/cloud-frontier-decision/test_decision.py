@@ -54,7 +54,7 @@ class DecisionTests(unittest.TestCase):
 
     def test_uncertain_or_costly_work_does_not_pass(self):
         r = self.decide(quote=lambda p,i: 1 if i==0 else 166)
-        self.assertEqual(r['decision'], 'HIRE') # low scenario 167 - 144 still positive
+        self.assertEqual(r['decision'], 'KEEP') # floor quote persists: 2 - 144, not 167 - 144
         self.assertEqual(self.decide(dict(self.plan, additional_cost=188))['decision'], 'KEEP')
         self.assertEqual(self.decide(quote=lambda p,i: 1)['decision'], 'KEEP')
 
@@ -81,6 +81,14 @@ class DecisionTests(unittest.TestCase):
                    dict(objective='weighted',scenario_weights={'low':float('nan'),'high':1}),
                    dict(objective='unknown')]:
             with self.assertRaises(ValueError): self.decide(**kw)
+
+    def test_floor_sales_do_not_poison_later_town_recovery(self):
+        lots = [dict(product='STRAWBERRY',quantity=4,step=1),
+                dict(product='STRAWBERRY',quantity=1,step=5)]
+        # First quotes 3,2,1,1; only two units enter supply. Town removes two
+        # before the later sale, which must quote 3, not the buggy 1.
+        self.assertEqual(sale_receipts(lots,lambda p,s:0 if s==1 else -2,
+                                       lambda p,i:max(1,3-i),718),10)
 
     def test_batch_is_sequential_not_quantity_times_quote(self):
         lots = [dict(product='MILK',quantity=3,step=5)]

@@ -133,6 +133,46 @@ def _tile_scenario(tile, x, y, farm, now, end, cfg, scenario, harvest_delay, con
     return snapshots, contract, fertilizer
 
 
+def project_sale_timeline(initial_inventory, sales, horizons, quote, demand_before):
+    """Conditional batches with floor-aware supply and same-unit joint quotes.
+
+    sales maps action step to {seat: quantity}; each product's two seat batches
+    are assumed aligned at one order slot, flattened across that seat's tiles.
+    Actual cross-product order indices are unknown. This is an explicit scenario
+    convention, not an opponent order prediction or a guarantee of revenues.
+    demand_before(step) is cumulative exogenous town consumption before step.
+    """
+    inventory = initial_inventory
+    previous_demand = 0
+    sold = defaultdict(int); admitted = defaultdict(int); cash = defaultdict(int)
+    snapshots = {}; timeline = []
+    for step in sorted(set(sales) | set(horizons)):
+        demand = demand_before(step)
+        inventory -= demand - previous_demand
+        previous_demand = demand
+        quantities = sales.get(step, {})
+        step_supply = defaultdict(int); step_cash = defaultdict(int)
+        for unit in range(max(quantities.values(), default=0)):
+            # Both seats quote before either commit; $1 pays but adds no supply.
+            price = quote(inventory)
+            active = [seat for seat, qty in quantities.items() if unit < qty]
+            for seat in active:
+                sold[seat] += 1; cash[seat] += price; step_cash[seat] += price
+                if price > 1:
+                    admitted[seat] += 1; step_supply[seat] += 1
+            if price > 1:
+                inventory += len(active)
+        if quantities:
+            timeline.append({'step': step, 'sale_units_by_seat': dict(quantities),
+                             'market_supply_units_by_seat': dict(step_supply),
+                             'conditional_cash_by_seat': dict(step_cash)})
+        if step in horizons:
+            snapshots[step] = {'inventory': inventory, 'sale_units_by_seat': dict(sold),
+                               'market_supply_units_by_seat': dict(admitted),
+                               'conditional_cash_by_seat': dict(cash)}
+    return snapshots, timeline
+
+
 def forecast_market(observation, configuration, horizons, *, contracts=None, buffered_harvest_delay=None):
     """Forecast current visible crops on BOTH farms at absolute sale-action steps.
 
@@ -151,6 +191,7 @@ def forecast_market(observation, configuration, horizons, *, contracts=None, buf
     end=max(horizons); totals={name:{h:{p:defaultdict(int) for p in PRODUCTS} for h in horizons} for name in SCENARIOS}
     def zero(): return {name:{h:{p:defaultdict(int) for p in PRODUCTS} for h in horizons} for name in SCENARIOS}
     by_side={'own':zero(),'opponent':zero()}
+    sale_batches={name:{p:defaultdict(Counter) for p in PRODUCTS} for name in SCENARIOS}
     observed_held={'own':Counter(),'opponent':Counter()}
     witnesses=[]
     for seat,farm in enumerate(observation['farms']):
@@ -163,6 +204,12 @@ def forecast_market(observation, configuration, horizons, *, contracts=None, buf
                 for name,scenario in SCENARIOS.items():
                     delay=buffered_harvest_delay if name=='maintained_buffered' else 0
                     snapshots,contract,fertilizer=_tile_scenario(tile,x,y,farm,now,end,cfg,scenario,delay,contracts)
+                    previous_sales = 0
+                    for sale_step, snapshot in snapshots.items():
+                        quantity = snapshot['sale_units'] - previous_sales
+                        if quantity:
+                            sale_batches[name][crop][sale_step][seat] += quantity
+                        previous_sales = snapshot['sale_units']
                     witness['harvest_contract']=contract;witness['fertilizer_contract']=fertilizer
                     witness['scenarios'][name]={str(h):snapshots[h] for h in horizons}
                     for h in horizons:
@@ -171,6 +218,20 @@ def forecast_market(observation, configuration, horizons, *, contracts=None, buf
                                 totals[name][h][crop][key]+=value
                                 by_side[side][name][h][crop][key]+=value
                 witnesses.append(witness)
+    # Price-dependent supply must be replayed at its sale time, not inferred
+    # from cumulative sale counts at a later requested horizon.
+    demand_cache={}
+    def demand_at(step):
+        if step not in demand_cache:
+            demand_cache[step]=public_demand(observation,configuration,step)
+        return demand_cache[step]
+    projected={name:{} for name in SCENARIOS}; sale_timeline={name:{} for name in SCENARIOS}
+    for name in SCENARIOS:
+        for product in PRODUCTS:
+            projected[name][product], sale_timeline[name][product] = project_sale_timeline(
+                observation['market']['inventory'][product], sale_batches[name][product], horizons,
+                lambda inventory, p=product: market_price(p,inventory,observation['market'].get('params')),
+                lambda step, p=product: demand_at(step)['units'][p])
     frames=[]
     for h in horizons:
         demand=public_demand(observation,configuration,h)
@@ -178,9 +239,19 @@ def forecast_market(observation, configuration, horizons, *, contracts=None, buf
         for product in PRODUCTS:
             rows={}
             for name in SCENARIOS:
-                values=dict(totals[name][h][product]); supply=values.get('sale_units',0)
-                inventory=observation['market']['inventory'][product]+supply-demand['units'][product]
-                rows[name]={**values,'conditional_crop_sale_units':supply,'inventory_delta':supply-demand['units'][product],
+                values=dict(totals[name][h][product]); sold=values.get('sale_units',0)
+                projection=projected[name][product][h]
+                supply=sum(projection['market_supply_units_by_seat'].values())
+                inventory=projection['inventory']
+                for side in ('own','opponent'):
+                    seats=[seat for seat in range(len(observation['farms']))
+                           if (seat==observation['player']) == (side=='own')]
+                    by_side[side][name][h][product]['market_supply_units']=sum(
+                        projection['market_supply_units_by_seat'].get(seat,0) for seat in seats)
+                rows[name]={**values,'conditional_crop_sale_units':sold,
+                            'conditional_crop_market_supply_units':supply,
+                            'floor_sale_units':sold-supply,
+                            'inventory_delta':supply-demand['units'][product],
                             'inventory':inventory,'price':market_price(product,inventory,observation['market'].get('params'))}
             prices=[row['price'] for row in rows.values()]
             own={name:dict(by_side['own'][name][h][product]) for name in SCENARIOS}
@@ -198,13 +269,16 @@ def forecast_market(observation, configuration, horizons, *, contracts=None, buf
                                'guaranteed_future_crop_sales':0,'scenarios':rows,
                                'scenario_price_range':[min(prices),max(prices)]}
         frames.append({'realization_step':h,'realization_day':h//cfg['turns'],'demand':demand,'products':products})
-    return {'schema':1,'observation_step':now,'scope':'visible existing crops on both farms; known shop copies only',
-            'frames':frames,'crop_witnesses':witnesses,
+    return {'schema':2,'observation_step':now,'scope':'visible existing crops on both farms; known shop copies only',
+            'frames':frames,'crop_witnesses':witnesses,'conditional_sale_timeline':sale_timeline,
             'assumptions':{'new_shop_draws':False,'hidden_seed':False,'new_planting':False,'animal_supply':False,
                 'private_inventory_sales':False,'future_market_buys':False,
                 'joint_labor_cash_feed_shed_capacity_reserved':False,
                 'buffered_harvest_delay_steps':buffered_harvest_delay,
                 'scenario_sales_conditional_on_transport_and_shed_space':True,
+                'floor_sales_add_market_supply':False,
+                'same_unit_quotes':'both seats use the same pre-commit inventory',
+                'order_alignment':'one aligned batch per product and step; actual cross-product slots unknown',
                 'quote':'after scenario crop supply at H, before town consumption at H; not exact trade-order revenue',
                 'no_future_work':'no further care/harvest/sale; observed flags still apply',
                 'maintained_buffered':'daily water, existing fertilizer coverage only; harvest after configured service delay',

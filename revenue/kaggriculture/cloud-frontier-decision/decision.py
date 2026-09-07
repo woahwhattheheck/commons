@@ -27,10 +27,13 @@ def sale_receipts(lots, inventory_at, quote, last_sale):
     """Reprice a complete paired sale stream against exogenous inventory.
 
     inventory_at(product, step) excludes ALL sales in lots. Prior sales from this
-    stream are added cumulatively; equal-step lots are processed in list order.
+    stream enter cumulative supply only when their executed price exceeds 1;
+    equal-step own lots are processed in list order.
     quote(product, inventory) must use the observation's engine market params.
     Opponent/town trades belong in inventory_at, including chosen scenarios.
-    Returns conditional receipts; it does not forecast a hidden opponent order.
+    Returns conditional single-stream receipts, not a joint order simulation.
+    The engine quotes both seats at the SAME pre-commit inventory per unit;
+    this callback model does not imply one seat front-runs the other.
     """
     supplied = {}
     total = 0
@@ -41,9 +44,12 @@ def sale_receipts(lots, inventory_at, quote, last_sale):
         if step > last_sale:
             raise ValueError('Sale after final action')
         inv = _number(inventory_at(item, step)) + supplied.get(item, 0)
-        for unit in range(qty):
-            total += _number(quote(item, inv + unit))
-        supplied[item] = supplied.get(item, 0) + qty
+        for _ in range(int(qty)):
+            price = _number(quote(item, inv))
+            total += price
+            if price > 1:
+                inv += 1
+                supplied[item] = supplied.get(item, 0) + 1
     return total
 
 
