@@ -167,20 +167,18 @@ class OneBuy:
 
 
 def game(seed, seat, opponent_spec, A, enable, at_step, animal):
-    opp, opp_id = route_cards.load_agent(opponent_spec)
+    # Opponent resolution lives in arlene_arm (it knows the vendored parents), so
+    # both scorers face exactly the same opponents.
+    import arlene_arm
+    opp, opp_id = arlene_arm.make_opponent(opponent_spec, A)
     env = cards_mod.make_env(seed)
     env.reset(2)
     me = OneBuy(A, at_step=at_step, animal=animal, enable=enable)
-    theirs = A.Agent()
     while not env.done:
         acts = [None, None]
         for i in range(2):
             obs = env.state[i].observation
-            if i == seat:
-                acts[i] = me.act(obs)
-            else:
-                acts[i] = (theirs.act(obs) if opponent_spec == "arlene"
-                           else route_cards.call(opp, obs, env.configuration))
+            acts[i] = me.act(obs) if i == seat else opp(obs, env.configuration)
         env.step(acts)
     farms = env.state[0].observation.farms
     own = float(farms[seat]["money"])
