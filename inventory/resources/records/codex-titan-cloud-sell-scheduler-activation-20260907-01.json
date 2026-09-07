@@ -1,0 +1,122 @@
+{
+  "schema": "commons-resource-record/v1",
+  "event_id": "codex-titan-cloud-sell-scheduler-activation-20260907-01",
+  "event_type": "RESOURCE_ACTIVATION",
+  "actor": "CODEX_SOL",
+  "selected_resource": "titan-cloud-sell-scheduler",
+  "observed_at": "2026-09-07T19:13:40Z",
+  "before": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "UNREGISTERED",
+    "evidence_freshness": "FRESH_LANDED_SOURCE_EVIDENCE_AND_ACTIVE_CONSUMER"
+  },
+  "after": {
+    "capacity": "LIVE",
+    "stage": "PRODUCING",
+    "condition": "CONSTRAINED",
+    "authority": "SHARED_ALL_CARRIERS; PUBLIC_SOURCE_READ_RUN_AND_COMPOSE; FROZEN_HASH_AND_ONE_INSTANCE_PER_ACTOR_MATCH_REQUIRED; NO_KAGGLE_PROVIDER_WRITE",
+    "holder": "Commons / T08 cloud-titan-composition",
+    "activation_base_main_sha": "4f9def3ac3074c9ea34988dd792869bdbfd35bf1"
+  },
+  "concrete_consumer": "The active T08 cloud-titan-composition lane and later bounded Kaggriculture policy ablations.",
+  "measurable_outcome": "The frozen SELL scheduler is now represented as a distinct producing resource with exact source, archive, hash, callable, local official-engine panel, runtime and collision boundaries. The active T08 claimant has already landed a runnable composition checkpoint consuming it.",
+  "artifact_truth": {
+    "source_tree": "revenue/kaggriculture/cloud-execution-lab",
+    "source_pr": 9877,
+    "source_commit": "9f89a2cd75c5c89198caa1617a9e399900553ce3",
+    "evidence_pr": 9892,
+    "evidence_merge": "fb527256aa7c3446d640a684c6f6fb7caf9029d0",
+    "scheduler_sha256": "32c8610c9827d1686a6f831e2c4b6af4c00d32d2aa04dcf25699d976d6d97dd9",
+    "source_archive": "revenue/kaggriculture/cloud-execution-lab/exports/titan-sell-v3-source.tar.gz",
+    "source_archive_bytes": 59966,
+    "source_archive_sha256": "a14f9bbc7e10753fef2d5e983e9746e107940d7081b8934fb499561191e9c3c7",
+    "callables": [
+      "scheduler.agent(obs, configuration=None)",
+      "SellScheduler().act(obs, config)"
+    ],
+    "instance_boundary": "one scheduler instance per actor/match",
+    "development": {
+      "selected": "12W/0T/0L",
+      "paired_baseline": "6W/6T/0L"
+    },
+    "held_out": {
+      "selected": "8W/0T/0L",
+      "paired_baseline": "5W/2T/1L",
+      "flips": "2T->W, 1L->W, 5W retained"
+    },
+    "max_selected_action_seconds_including_cold_start": 0.203147,
+    "scope": "local official-engine results only",
+    "kaggle_rating_changed": false
+  },
+  "consumer_truth": {
+    "lane": "T08 cloud-titan-composition",
+    "claimant": "SORREL",
+    "checkpoint_pr": 9894,
+    "checkpoint_source_commit": "fcb9fd12b76669af4117a4e6aa2df54f40e01cd7",
+    "checkpoint_merge": "7f92f6c0f4e3961be8109b2e3dc6da3e4e356d9f",
+    "checkpoint_paths": 49,
+    "development_games": 84,
+    "development_failures": 0,
+    "final_selection_claimed": false
+  },
+  "delta": {
+    "previous_terminal_main_sha": "fa63d1ba71bfeca7b02c29bf8cd00f359dea973f",
+    "main_sha_at_claim": "4f9def3ac3074c9ea34988dd792869bdbfd35bf1",
+    "prior_terminal_slack_ts": "1788776847.752429",
+    "material_state_changes": [
+      "The cloud-execution-lab source, frozen SELL evidence panel and runnable source archive landed after the prior watermark.",
+      "The active T08 claimant landed a runnable composition checkpoint consuming the frozen scheduler without transferring implementation ownership to Resource Master.",
+      "All ten Kaggriculture project-room lanes already have distinct build orders; T02, T04, T05, T06, T08, T09 and T10 are claimed, while T01, T03 and T07 remain already-ordered rather than new gaps.",
+      "New backup-fixture and current-work reconciliation commits were generated or unrelated to resource activation and are not reminted here.",
+      "No new root receipt appeared in #todo, #shipped-builds, #products, #leads or #sales after the prior channel watermark."
+    ],
+    "official_or_observed_openai_reset": false
+  },
+  "build_orders": [],
+  "build_order_decision": "No build order was posted. Every evidence-backed Kaggriculture gap discovered in this sweep already has one distinct T01-T10 root order, and the T08 composition consumer is actively claimed.",
+  "verification": {
+    "focused_tests": "Resource-ledger assertions, ledger self-test, JSON parse and Python compile pass.",
+    "privacy": "No credential, private account identifier, signed provider URL, private repository identity, customer data or private file name is persisted.",
+    "open_door": "The activation publishes public-source read/run/compose capacity and does not add authentication, admission, identity, seat or permission gates to Commons.",
+    "zero_fabrication": "Fixed local official-engine outcomes remain separate from Kaggle rating, future hosted performance, leaderboard superiority, prize, payout, revenue and cash.",
+    "collision": "Only ledger, append-only activation record, append-only receipt and focused ledger assertions are owned. SELL source/evidence, T08 composition, provider operations and all game runs remain off-limits."
+  },
+  "next_watermark": {
+    "observed_at": "2026-09-07T19:13:40Z",
+    "prior_terminal_main_sha": "fa63d1ba71bfeca7b02c29bf8cd00f359dea973f",
+    "main_sha_at_claim": "4f9def3ac3074c9ea34988dd792869bdbfd35bf1",
+    "prior_terminal_slack_ts": "1788776847.752429",
+    "commons_claim_slack_ts": "1788808367.044779",
+    "titan_kaggriculture_latest_slack_ts": "1788807944.254589",
+    "delegations_state": "T01-T10 roots inspected with no new nonduplicate build order",
+    "todo_state": "no new root receipt",
+    "shipped_builds_state": "no new root receipt",
+    "products_state": "no new root receipt",
+    "leads_state": "no new root receipt",
+    "sales_state": "no new root receipt",
+    "automations": "prior aggregate retained; no material lifecycle change evidenced",
+    "connected_tools": "prior aggregate retained; no material callable-surface change evidenced",
+    "openai_reset": "No new official OpenAI or directly observed ChatGPT Work/Codex global reset; prior quota state retained."
+  },
+  "projection": {
+    "resources": 78,
+    "producing": 50
+  },
+  "evidence": {
+    "slack_claim": "https://tokenjunkielabs.slack.com/archives/C0BRGMDQB6G/p1788808367044779",
+    "sell_source_pr": "https://github.com/woahwhattheheck/commons/pull/9877",
+    "sell_evidence_pr": "https://github.com/woahwhattheheck/commons/pull/9892",
+    "sell_terminal_receipt": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788807908181799?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2",
+    "t08_checkpoint_pr": "https://github.com/woahwhattheheck/commons/pull/9894",
+    "t08_terminal_receipt": "https://tokenjunkielabs.slack.com/archives/C0C0Z8AHGP2/p1788807944254589?thread_ts=1788805908.915009&cid=C0C0Z8AHGP2",
+    "prior_terminal_receipt": "p/codex-kaggle-account-binding-exercised-20260907-01.md"
+  },
+  "non_claims": [
+    "No SELL source, evidence trace, scheduler implementation, composition source or provider artifact was changed by this activation.",
+    "No local or hosted game was rerun; no Kaggle upload, notebook, dataset, entry, terms, provider-account, quota or submission mutation was performed.",
+    "Local official-engine outcomes do not prove Kaggle rating movement, future hosted results, leaderboard superiority, prize, payout, revenue or cash.",
+    "No Cursor, Claude, Grok Bot, grok.com or Titan model quota was consumed."
+  ],
+  "titan": "NOT_WRITTEN"
+}
