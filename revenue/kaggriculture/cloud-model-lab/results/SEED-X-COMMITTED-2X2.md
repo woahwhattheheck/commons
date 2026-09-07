@@ -230,3 +230,104 @@ SELL's own figure. Versus COK the same seed: baseline 166,794, committed +900 =
 recovers precisely the cash the speculative envelope costs the cap composition**,
 while keeping the cap production. That is the specific quantity the earlier fixed
 -state ablation predicted would be at stake, measured here on whole games.
+
+## Held panel — 9890101 and 9890119, run after the freeze
+
+2 seeds × 2 seats × 4 opponents = 16 cells, 5 arms, **80 games**, zero failures.
+The freeze manifest was committed before the first held game.
+
+### Rating first
+
+| arm | W/T/L | flips vs control | T→W | →L |
+|---|---|---:|---:|---:|
+| `baseline` | 16/0/0 | — | — | — |
+| `seed` | 16/0/0 | **0** | 0 | 0 |
+| `committed` | 16/0/0 | **0** | 0 | 0 |
+| `combined` | 16/0/0 | **0** | 0 | 0 |
+| `bare` | 16/0/0 | **0** | 0 | 0 |
+
+**No rating change on held either.** As on development, the control wins every
+game, so there was nothing to convert — and equally, nothing was lost.
+
+### Cash
+
+| arm | mean d_own | mean d_rival | mean d_margin |
+|---|---:|---:|---:|
+| `seed` | +225.0 | +0.0 | +225.0 |
+| `committed` | +295.2 | +74.8 | +220.4 |
+| `combined` | **+520.2** | +74.8 | +445.4 |
+| `bare` | −82.8 | +0.1 | −82.9 |
+
+Interaction `d(combined) − d(seed) − d(committed)`: **min +0, max +0, nonzero
+pairs 0**, over all 16 held pairs. RNG path divergent pairs: **0**. Worst single
+action 149 ms.
+
+True independent counts: **10** independent control outcomes, not 16 — both seats
+return byte-identical cash in 6 of 8 (seed, opponent) cells. **3** independent
+opponent lineages. **2** cells finish with the rival on 0 cash.
+
+### Held, against T08's shipping default, cell by cell
+
+Own cash. `frozen SELL` and `T08 conserved` are T08's own arms run here on the
+same seeds; `my base`, `committed`, `combined` are this 2×2.
+
+| seed | seat | opponent | frozen SELL | T08 conserved | my base | committed | combined | combined − SELL |
+|---|---:|---|---:|---:|---:|---:|---:|---:|
+| 9890101 | 0 | apex | 56,258 | 56,358 | 56,358 | 56,510 | 56,750 | **+492** |
+| 9890101 | 0 | arlene | 55,387 | 55,440 | 55,440 | 55,568 | 55,808 | **+421** |
+| 9890101 | 0 | COK | 190,367 | 189,325 | 189,325 | 190,355 | 190,595 | **+228** |
+| 9890101 | 0 | lonespear | 132,343 | 132,146 | 132,146 | 132,343 | 132,583 | **+240** |
+| 9890101 | 1 | apex | 56,258 | 56,358 | 56,358 | 56,510 | 56,750 | **+492** |
+| 9890101 | 1 | arlene | 55,387 | 55,440 | 55,440 | 55,568 | 55,808 | **+421** |
+| 9890101 | 1 | COK | 130,106 | 129,818 | 129,818 | 130,126 | 130,366 | **+260** |
+| 9890101 | 1 | lonespear | 132,343 | 132,146 | 132,146 | 132,343 | 132,583 | **+240** |
+| 9890119 | 0 | apex | 105,385 | 104,970 | 104,970 | 105,485 | 105,725 | **+340** |
+| 9890119 | 0 | arlene | 104,225 | 103,810 | 103,810 | 104,311 | 104,551 | **+326** |
+| 9890119 | 0 | COK | 198,878 | 185,257 | 198,197 | 198,878 | 198,878 | +0 † |
+| 9890119 | 0 | lonespear | 132,401 | 132,355 | 132,355 | 132,373 | 132,613 | **+212** |
+| 9890119 | 1 | apex | 105,385 | 104,970 | 104,970 | 105,485 | 105,725 | **+340** |
+| 9890119 | 1 | arlene | 104,225 | 103,810 | 103,810 | 104,311 | 104,551 | **+326** |
+| 9890119 | 1 | COK | 103,871 | 104,325 | 104,325 | 104,007 | 104,247 | **+376** |
+| 9890119 | 1 | lonespear | 132,401 | 132,355 | 132,355 | 132,373 | 132,613 | **+212** |
+
+† T08's conserved arm diverges from the control's end-of-day RNG path on two days
+in this one cell, so its 185,257 is a different town and its −13,621 is not a
+like-for-like loss. Every other row in this table shares an identical path.
+
+Two things this table establishes independently of any mean:
+
+1. **`my base` reproduces T08's conserved arm's own cash on 15 of 16 held cells**
+   (the exception is the divergent cell above). The composition here is not a
+   re-implementation drifting from T08's — it lands on the same number.
+2. **`combined` is ahead of frozen SELL, the shipping default, on 15 of 16 held
+   cells** and level on the sixteenth, by +212 to +492. The `committed` arm alone
+   sits between −28 and +252 of frozen SELL — it closes the gap the conserved cap
+   composition has to the default and on most cells goes slightly past it.
+
+## What this does and does not establish
+
+**Establishes.** The two switches compose without disturbing each other, measured
+rather than argued: disjoint write sets per turn, an untouched route tape, one
+parent decision per turn, byte-identical `SeedBudget.events` with and without the
+production layer, and an interaction term that is identically zero across all 48
+development and held pairs. On this shard the combined arm never costs a game and
+never costs cash, is ahead of the shipping default on 15 of 16 held cells, and
+stays inside the runtime contract at 162 ms worst action.
+
+**Does not establish.** **Any rating improvement.** 272 games across development,
+held and the two cross-checks produced **zero** W/T/L flips of any kind, in either
+direction, because the control wins every single game on this shard. A cash gain
+with no tie or loss available to convert is not a rating gain, and this is a
+candidate, not a leaderboard improvement.
+
+The gap is the shard, not the arms. This 989xxxx band gives the composed parent a
+win in every cell against every opponent available — the public bank is weaker
+than Arlene, and T07's own smoke found the same. The closest cells are the Arlene
+mirrors (+175 margin on 9890119, +649 on 9890101) and nothing moved them. Testing
+the rating question needs seeds or opponents where the control actually ties or
+loses; T13's own held panel found intact Arlene at 4/4/4 on its band, so such
+seeds exist. Finding them is a new selection job on new seeds, not a re-read of
+these.
+
+Negative combinations remain runnable and none was withheld. Nothing here promotes
+the envelope from case 669, and no completed panel is reinterpreted.
