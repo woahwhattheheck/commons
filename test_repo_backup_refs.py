@@ -184,7 +184,8 @@ class RepoBackupRefTests(unittest.TestCase):
         original_exists = Path.exists
         for bare in (False, True):
             with self.subTest(bare=bare):
-                target = self.root / f"concurrent-target-{bare}"
+                # Match restore() after Windows expands any short temp-path aliases.
+                target = (self.root / f"concurrent-target-{bare}").resolve()
                 raced = False
 
                 def exists_with_concurrent_creator(path):
@@ -196,10 +197,14 @@ class RepoBackupRefTests(unittest.TestCase):
                         (target / "proof.txt").write_text("other work", encoding="utf-8")
                     return existed
 
+                error = None
                 with mock.patch.object(Path, "exists", exists_with_concurrent_creator):
-                    with self.assertRaises(repo_backup.BackupError):
+                    try:
                         repo_backup.restore(manifest, target, bare=bare)
-                self.assertTrue(raced)
+                    except repo_backup.BackupError as caught:
+                        error = caught
+                self.assertTrue(raced, "fixture did not intercept the target existence check")
+                self.assertIsInstance(error, repo_backup.BackupError)
                 self.assertEqual((target / "proof.txt").read_text(encoding="utf-8"), "other work")
                 self.assertFalse((target / ".git").exists())
 
