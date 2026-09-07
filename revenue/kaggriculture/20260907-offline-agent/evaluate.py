@@ -117,11 +117,13 @@ def run(output,seeds):
     with tempfile.TemporaryDirectory(prefix="kaggriculture-source-") as cache:
         engine,hashes=get_engine(cache)
         path=Path(__file__).with_name("main.py")
+        rival_path=Path(__file__).with_name("incumbent_20260907.py")
+        if not rival_path.exists(): rival_path=path
         rivals={
             "official_starter":lambda:lambda obs,cfg:engine.starter_agent(obs),
-            "goose_only":lambda:load_agent(path,{"mixed":False}),
-            "compact_no_expansion":lambda:load_agent(path,{"animal_cap":22,"expansion":False,"max_hands":9}),
-            "no_care":lambda:load_agent(path,{"care":False}),
+            "goose_only":lambda:load_agent(rival_path,{"mixed":False}),
+            "compact_no_expansion":lambda:load_agent(rival_path,{"animal_cap":22,"expansion":False,"max_hands":9}),
+            "no_care":lambda:load_agent(rival_path,{"care":False}),
         }
         results=[]
         for name,factory in rivals.items():
@@ -145,6 +147,7 @@ def run(output,seeds):
                           "mean_bank":statistics.mean(r["bank"][r["seat"]] for r in rows)}
         report={"engine_ref":ENGINE_REF,"engine_sha256":hashes,
                 "agent_sha256":hashlib.sha256(path.read_bytes()).hexdigest(),
+                "opponent_source_sha256":hashlib.sha256(rival_path.read_bytes()).hexdigest(),
                 "method":"Unmodified official interpreter, explicit driver (not hosted Kaggle runner).",
                 "seeds":seeds,"summary":summary,"games":results}
         Path(output).write_text(json.dumps(report,indent=2)+"\n")

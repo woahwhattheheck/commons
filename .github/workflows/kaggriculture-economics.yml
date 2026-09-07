@@ -1,7 +1,7 @@
 name: Kaggriculture economic comparisons
 on:
   push:
-    branches: [build/kaggriculture-economics-20260907]
+    branches: [main, build/kaggriculture-economics-20260907]
     paths:
       - revenue/kaggriculture/20260907-offline-agent/**
       - .github/workflows/kaggriculture-economics.yml

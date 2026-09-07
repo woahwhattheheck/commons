@@ -67,3 +67,18 @@ This establishes the recorded local-interpreter comparison only; it is not an
 independent-opponent tournament or hosted acceptance result. The workflow also
 tests new seeds 37, 211 and 997 after landing, reads fresh main, compares package
 bytes, and runs the repository's terminal audit.
+
+## Current policy improvement
+
+`main.py` now limits the marginal herd to28 animals and10 daily hands. The
+previous45/48 incumbent remains byte-identical and runnable in
+`incumbent_20260907.py`. On separately reserved seeds23,83,449,2027,65537,
+both seats, the selected policy beat that incumbent10/10 (mean+6,454.1coins).
+It did not dominate compact22:4/10 wins, mean-61.9coins. See
+[ECONOMICS.md](ECONOMICS.md) for all candidates, rejected regressions, original
+loss diagnostics, exact cloud runs and limitations. This remains a local
+official-interpreter result, not hosted placement.
+
+`compare.py` reproduces experiments against the frozen incumbent:
+`python compare.py --variants compact_capacity --seeds 23,83,449,2027,65537 --output comparison.json`.
+Experimental `candidate.py` is not the submission file. Submit `main.py` only.

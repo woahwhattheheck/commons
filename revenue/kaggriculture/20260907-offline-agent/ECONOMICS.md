@@ -1,6 +1,7 @@
 # Economic policy comparison — 2026-09-07
 
-The incumbent remains unchanged in `main.py` while candidates are evaluated.
+The promoted standalone is `main.py`; the original45/48 incumbent is preserved
+byte-for-byte as `incumbent_20260907.py`. No original logic was removed.
 All candidates use the same public observations and unmodified pinned official
 interpreter as the incumbent. No runtime network calls, external data or model
 service. This is not Kaggle-hosted evaluation.
@@ -39,3 +40,29 @@ Instrumented comparisons record market-order pressure, unfed-without-buy
 turns and daily prices/land/cash. Those counters are diagnostic, not automatic
 proof that an order was dropped: affordability, ending rules and resource
 state also matter.
+
+## Independent holdout result and promotion
+
+[Run34083074614](https://github.com/woahwhattheheck/commons/actions/runs/34083074614)
+evaluated only the selected capacity28/max10hands policy on the five reserved
+seeds in both seats. Against the unchanged incumbent it won10/10, mean margin
++6,454.1coins, minimum margin+4,012. Against compact22 it won4/10 and lost6/10,
+mean margin-61.9coins, minimum-3,383. This supports improvement over the incumbent,
+not dominance over every opponent. Across development and holdout comparisons
+the selected candidate beat the incumbent16/16, and compact22 in10/16.
+
+Promotion changes only the animal ceiling36→28 and maximum daily hands11→10.
+It keeps expansion, crop choices, feed routing, original price horizon and
+market logic. Failed experimental branches are not in the submitted standalone.
+The frozen incumbent remains runnable; `evaluate.py` now explicitly uses it
+for policy-ablation opponents so the original comparison is not weakened by
+quietly changing both participants. The tests check byte-identical incumbent
+preservation and full-game action equivalence between the selected candidate
+and the standalone.
+
+## Order-pressure finding
+
+In all12 capacity development games both agents reached the10-order cap on22
+turns, but unfed-without-buy diagnostic counts were0. That does not prove every
+possible order state safe; it does mean missing-feed orders were not observed
+as the cause of these losses, and no unmeasured ordering patch was made.

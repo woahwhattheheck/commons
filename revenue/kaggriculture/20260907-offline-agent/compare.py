@@ -38,8 +38,8 @@ def run(output,seeds,variant_names):
     with tempfile.TemporaryDirectory(prefix="kaggriculture-compare-") as cache:
         engine,hashes=get_engine(cache)
         rivals={
-            "incumbent": lambda:load_agent(root/"main.py"),
-            "compact": lambda:load_agent(root/"main.py",{"animal_cap":22,"max_hands":9,"expansion":False}),
+            "incumbent": lambda:load_agent(root/"incumbent_20260907.py"),
+            "compact": lambda:load_agent(root/"incumbent_20260907.py",{"animal_cap":22,"max_hands":9,"expansion":False}),
         }
         for name in variant_names:
             for rival,factory in rivals.items():
@@ -66,7 +66,7 @@ def run(output,seeds,variant_names):
                 "mean_bank":statistics.mean(r["bank"][r["seat"]] for r in rows)}
     report={"source_pin":"28b6d8af3ce73926b3d0fda1410c1ddd8384ab8c","hashes":hashes,
         "candidate_sha256":hashlib.sha256((root/"candidate.py").read_bytes()).hexdigest(),
-        "incumbent_sha256":hashlib.sha256((root/"main.py").read_bytes()).hexdigest(),
+        "incumbent_sha256":hashlib.sha256((root/"incumbent_20260907.py").read_bytes()).hexdigest(),
         "variants":{n:VARIANTS[n] for n in variant_names},"seeds":seeds,"summary":summary,"games":results}
     Path(output).write_text(json.dumps(report,indent=2)+"\n")
     print("COMPARISON "+json.dumps(summary),flush=True)
