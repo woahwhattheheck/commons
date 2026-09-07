@@ -1,0 +1,101 @@
+name: astra-directory-record-scope
+on:
+  push:
+    branches: [ops/astra-directory-publish-20260907]
+    paths: [.github/workflows/astra-directory-record-scope.yml]
+permissions:
+  contents: write
+jobs:
+  record-scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Recover the exact prepared record writer and measure current baseline
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import textwrap
+          from pathlib import Path
+          text = Path('.github/workflows/astra-directory-record.yml').read_text()
+          anchor = '      - name: Add the shipped feature and immutable delivery receipt\n        run: |\n'
+          assert text.count(anchor) == 1
+          script = text.split(anchor, 1)[1].split('      - name:', 1)[0]
+          Path('/tmp/astra-directory-record-writer.sh').write_text(textwrap.dedent(script))
+          PY
+          git fetch --depth=1 origin main
+          git switch --detach origin/main
+          mkdir -p /tmp/astra-directory-record
+          python3 host/feature_tracker.py --write > /tmp/astra-directory-record/baseline-projection.json
+          python3 - <<'PY'
+          import subprocess
+          from pathlib import Path
+          result = subprocess.run(['python3','test_feature_tracker.py'], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+          Path('/tmp/astra-directory-record/baseline-tests.txt').write_text(result.stdout)
+          Path('/tmp/astra-directory-record/baseline-exit.txt').write_text(str(result.returncode))
+          print('Unmodified-tree tracker command exit:', result.returncode)
+          PY
+      - name: Add only the prepared directory record and prove the change is isolated
+        run: |
+          set -euo pipefail
+          bash /tmp/astra-directory-record-writer.sh
+          python3 host/feature_tracker.py --write > /tmp/astra-directory-record/projection-log.txt
+          python3 - <<'PY'
+          import json, re, subprocess
+          from pathlib import Path
+          out = Path('/tmp/astra-directory-record')
+          result = subprocess.run(['python3','test_feature_tracker.py'], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+          (out/'tracker-tests.txt').write_text(result.stdout)
+          def failures(text, code):
+              if code == 0:
+                  return []
+              found = re.search(r'FEATURE TRACKER TEST: FAIL (\d+) : (.+)', text)
+              assert found is not None, 'Unexpected tracker failure, not a classified baseline assertion'
+              names = found.group(2).strip().split(', ')
+              assert len(names) == int(found.group(1))
+              return names
+          baseline = failures((out/'baseline-tests.txt').read_text(), int((out/'baseline-exit.txt').read_text()))
+          observed = failures(result.stdout, result.returncode)
+          assert observed == baseline, {'before':baseline,'after':observed}
+          before = json.loads((out/'baseline-projection.json').read_text())
+          after = json.loads((out/'projection-log.txt').read_text())
+          ident = 'astra-paid-opportunity-directory-20260907'
+          old_rows = {row['id']:row for row in before['features']}
+          new_rows = {row['id']:row for row in after['features']}
+          assert ident not in old_rows
+          assert set(new_rows) == set(old_rows) | {ident}
+          for key, row in old_rows.items():
+              assert new_rows[key] == row, 'Existing feature projection changed: '+key
+          row = new_rows[ident]
+          assert row['source_status'] == 'SOURCE_BUILT'
+          assert row['test_status'] == 'TESTS_PRESENT'
+          assert row['live_status'] == 'UNMEASURED'
+          assert row['rollup'] == 'TESTS_PRESENT'
+          assert not row['claimed_paths_missing'] and not row['test_paths_missing']
+          assert after['n_invalid'] == before['n_invalid']
+          assert after['problems'] == before['problems']
+          report = {'new_feature':ident,'new_row_valid':True,'existing_feature_rows_identical':len(old_rows),'baseline_failures':baseline,'post_change_failures':observed,'full_tracker_command_passed':result.returncode == 0}
+          (out/'scope-validation.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report,indent=2))
+          receipt = Path('p')/(ident+'.md')
+          receipt.write_text(receipt.read_text()+'\n## Registry integration result\n\nThe actual feature-tracker projection adds exactly this one new row. Every prior feature row is byte-for-byte equal as a JSON object before and after the addition. The new row is SOURCE_BUILT / TESTS_PRESENT / UNMEASURED, with no missing source/test paths and no invented LIVE measurement. The full tracker command failed both before and after with the same baseline assertions: '+(', '.join(baseline) if baseline else 'none')+'. No prior evidence, stale LIVE pins or test assertions were rewritten. See the astra-directory-record-scope execution artifact for the paired logs and exact baseline SHA.\n')
+          PY
+          git add features/registry/astra-paid-opportunity-directory-20260907.json p/astra-paid-opportunity-directory-20260907.md feature-tracker.html feature-tracker.json
+          git diff --cached --check
+          git diff --cached --stat | tee /tmp/astra-directory-record/diff-stat.txt
+      - name: Publish the validated additive checkpoint without force
+        run: |
+          set -euo pipefail
+          git config user.name 'Astra Commons'
+          git config user.email '293286387+woahwhattheheck@users.noreply.github.com'
+          git commit -m 'docs: register delivered paid-opportunity directory and execution receipt'
+          git push origin HEAD:refs/heads/feat/astra-directory-registry-20260907
+          git rev-parse HEAD | tee /tmp/astra-directory-record/commit.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: astra-directory-record-scope
+          path: /tmp/astra-directory-record/
+          retention-days: 7
