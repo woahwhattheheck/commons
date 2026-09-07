@@ -17,9 +17,11 @@ test_actual_capital_and_ordered_sale_funding (test_cash_bridge.OfficialEngineTes
 test_actual_different_volumes_complete_bridge (test_cash_bridge.OfficialEngineTests.test_actual_different_volumes_complete_bridge) ... ok
 test_actual_insufficient_sale_funding_retained (test_cash_bridge.OfficialEngineTests.test_actual_insufficient_sale_funding_retained) ... ok
 test_actual_timing_changes_realized_prices (test_cash_bridge.OfficialEngineTests.test_actual_timing_changes_realized_prices) ... ok
+test_cli_keeps_missing_embedded_episode_explicit (test_cash_bridge.OfficialEngineTests.test_cli_keeps_missing_embedded_episode_explicit) ... ok
+test_cli_preserves_string_embedded_episode (test_cash_bridge.OfficialEngineTests.test_cli_preserves_string_embedded_episode) ... ok
 test_cli_writes_bound_hashes_and_exact_frames (test_cash_bridge.OfficialEngineTests.test_cli_writes_bound_hashes_and_exact_frames) ... ok
 
 ----------------------------------------------------------------------
-Ran 20 tests in 1.760s
+Ran 22 tests in 2.954s
 
 OK
