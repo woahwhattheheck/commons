@@ -74,11 +74,14 @@ The executed reference is Commons commit
 | `cloud-market-game-theory/selector.py` | `546b71188fd44dc47cac99623d1967bc81413da7` |
 
 The test runner imports those actual source files, not a mock solver or selector.
-An alternate source location can be supplied explicitly. The local source copies
+An alternate source location can be supplied explicitly. A regenerated witness sets
+`source_commit` to the reference only when both actual input blobs match; changed
+inputs retain their actual hashes with a null source commit and an explicit
+reference mismatch. The local source copies
 matched both published Git blob identities before execution. They are test inputs,
 not vendored or modified files in this component.
 
-**26 focused tests passed** in the cloud runtime. Coverage includes changed and
+**28 focused tests passed** in the cloud runtime. Coverage includes changed and
 unknown continuations, callback isolation/error handling, null keys, exact mixed
 weights and choice preservation, retries, skipped/terminal due dates, stock/slot
 obstructions, all-constituent admission, completed-key retirement, and window
