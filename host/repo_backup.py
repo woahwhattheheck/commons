@@ -218,6 +218,10 @@ def restore(manifest_path: Path, target: Path, bare: bool = False) -> dict[str, 
     if target.exists():
         raise BackupError(f"refusing to overwrite restore target: {target}")
     expected_refs = _bundle_heads(Path(receipt["bundle"]))
+    try:
+        target.mkdir(parents=True)
+    except OSError as error:
+        raise BackupError(f"cannot create new restore target {target}: {error}") from error
     # Ordinary clones rename branches into origin/* and omit notes/custom refs.
     # Mirror into the new target (or its .git directory) to retain every ref.
     git_dir = target if bare else target / ".git"

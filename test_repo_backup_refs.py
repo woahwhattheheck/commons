@@ -179,6 +179,30 @@ class RepoBackupRefTests(unittest.TestCase):
                         repo_backup.restore(manifest, target, bare=bare)
                     self.assertEqual(marker.read_text(encoding="utf-8"), "untouched")
 
+    def test_target_created_during_restore_is_not_overwritten(self) -> None:
+        manifest = self.snapshot()
+        original_exists = Path.exists
+        for bare in (False, True):
+            with self.subTest(bare=bare):
+                target = self.root / f"concurrent-target-{bare}"
+                raced = False
+
+                def exists_with_concurrent_creator(path):
+                    nonlocal raced
+                    existed = original_exists(path)
+                    if path == target and not existed and not raced:
+                        raced = True
+                        target.mkdir()
+                        (target / "proof.txt").write_text("other work", encoding="utf-8")
+                    return existed
+
+                with mock.patch.object(Path, "exists", exists_with_concurrent_creator):
+                    with self.assertRaises(repo_backup.BackupError):
+                        repo_backup.restore(manifest, target, bare=bare)
+                self.assertTrue(raced)
+                self.assertEqual((target / "proof.txt").read_text(encoding="utf-8"), "other work")
+                self.assertFalse((target / ".git").exists())
+
     def test_bad_bundle_is_rejected_before_creating_target(self) -> None:
         manifest = self.snapshot()
         payload = json.loads(manifest.read_text(encoding="utf-8"))
