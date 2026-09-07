@@ -51,7 +51,37 @@ def make_opponent(name, A):
     return call, ident
 
 
-def game(seed, seat, opponent, table, overlay, A, arl_id):
+def game(seed, seat, opponent, table, overlay, A, arl_id, record_path=False,
+         ledger=False):
+    """One full game. `record_path` also records the end-of-day RNG path, which is
+    how a candidate/control pair is told apart: an identical path means the two
+    games share a market world, so any cash difference between them is economic
+    and not a different town."""
+    rec = None
+    book = None
+    if ledger:
+        import ledger as ledger_mod
+        book = {"market": [], "harvest": []}
+        owners = {}
+        K = __import__("kaggle_environments.envs.kaggriculture.kaggriculture",
+                       fromlist=["_commit_unit"])
+        originals = ledger_mod._wrap(K, book, owners)
+        # The owner map must be built from the farm objects the INTERPRETER is
+        # holding. `env.step` re-structifies the state, so ids captured from
+        # `env.state` before the step are stale and every order lands unattributed.
+        # `_process_market` receives the live state, so the map is rebuilt there.
+        _orig_market = K._process_market
+
+        def process_market(state, env_):
+            owners.clear()
+            for s_i, f in enumerate(state[0].observation.farms):
+                owners[id(f)] = s_i
+            return _orig_market(state, env_)
+        K._process_market = process_market
+    if record_path:
+        import market_path
+        rec = market_path.PathRecorder()
+        rec.__enter__()
     env = cards_mod.make_env(seed)
     env.reset(2)
     opp, opp_id = make_opponent(opponent, A)
@@ -68,7 +98,24 @@ def game(seed, seat, opponent, table, overlay, A, arl_id):
     farms = env.state[0].observation.farms
     own = float(farms[seat]["money"])
     rival = float(farms[1 - seat]["money"])
-    return {"seed": seed, "seat": seat, "opponent": opponent,
+    ledger_out = None
+    if book is not None:
+        ledger_mod._unwrap(K, originals)
+        K._process_market = _orig_market
+        agg = {}
+        for r in book["market"]:
+            k = (r["seat"], r["op"], r["item"])
+            e = agg.setdefault(k, {"units": 0, "cash": 0.0})
+            e["units"] += 1
+            e["cash"] += r["price"] * (1 if r["op"] == "SELL" else -1)
+        ledger_out = {f"seat{k[0]}|{k[1]}|{k[2]}": v for k, v in sorted(
+            agg.items(), key=lambda kv: str(kv[0]))}
+    path = None
+    if rec is not None:
+        path = rec.path()
+        rec.__exit__(None, None, None)
+    return {"seed": seed, "seat": seat, "opponent": opponent, "path": path,
+            "ledger": ledger_out,
             "opponent_id": opp_id, "arlene": arl_id,
             "arm": "candidate" if overlay else "control",
             "own_cash": own, "rival_cash": rival, "margin": own - rival,
@@ -88,6 +135,13 @@ def main():
     ap.add_argument("--opponents", nargs="+", default=["arlene", "apex"])
     ap.add_argument("--motifs", required=True)
     ap.add_argument("--label", default=None)
+    ap.add_argument("--ledger", action="store_true",
+                    help="record every executed market order per seat with its unit "
+                         "price, so a rival cash change can be attributed to its own "
+                         "buys and sells rather than asserted")
+    ap.add_argument("--record-path", action="store_true",
+                    help="record the end-of-day RNG path for each arm and report "
+                         "whether the pair shared a market world")
     ap.add_argument("--out", default="results/arlene-arm.json")
     a = ap.parse_args()
     A, arl_id = route_cards.load_arlene()
@@ -97,15 +151,24 @@ def main():
     for seed in a.seeds:
         for seat in a.seats:
             for opp in a.opponents:
-                c = game(seed, seat, opp, table, False, A, arl_id)
-                d = game(seed, seat, opp, table, True, A, arl_id)
+                c = game(seed, seat, opp, table, False, A, arl_id, a.record_path,
+                         a.ledger)
+                d = game(seed, seat, opp, table, True, A, arl_id, a.record_path,
+                         a.ledger)
+                if a.record_path:
+                    import market_path
+                    diff = market_path.diff({"path": c["path"]}, {"path": d["path"]})
+                    c["path_divergent_days"] = d["path_divergent_days"] = len(diff)
+                    d["path_first_divergence"] = diff[0] if diff else None
                 rows.extend([c, d])
                 print(f"seed {seed} seat {seat} vs {opp:7s}  "
                       f"control own {c['own_cash']:9.0f} margin {c['margin']:+9.0f} | "
                       f"candidate own {d['own_cash']:9.0f} margin {d['margin']:+9.0f} | "
                       f"d_own {d['own_cash'] - c['own_cash']:+9.0f} "
                       f"d_margin {d['margin'] - c['margin']:+9.0f} "
-                      f"fills {len(d['fills'])}", flush=True)
+                      f"fills {len(d['fills'])}"
+                      + (f" path_div {d.get('path_divergent_days')}d"
+                         if a.record_path else ""), flush=True)
     def agg(sel):
         c = [r for r in rows if r["arm"] == "control" and sel(r)]
         d = [r for r in rows if r["arm"] == "candidate" and sel(r)]
