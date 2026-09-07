@@ -1,6 +1,8 @@
 {
   "scope": "synthetic consumer invocation sequences using exact T15 runtime; no game or fill claim",
   "source_commit": "4d97474b0188b0373be1b52b610c0114ceb033c8",
+  "reference_commit": "4d97474b0188b0373be1b52b610c0114ceb033c8",
+  "reference_source_matches": true,
   "source_blobs": {
     "solver.py": "3a6446d96e8470374dd5b5ba72a8e5c6d41a8ad3",
     "selector.py": "546b71188fd44dc47cac99623d1967bc81413da7"
