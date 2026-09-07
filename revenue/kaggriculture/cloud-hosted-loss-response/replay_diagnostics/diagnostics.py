@@ -35,7 +35,7 @@ def load_trace_module(path: Path = TRACE_PATH):
 
 
 def _seat(seat: int) -> int:
-    if isinstance(seat, bool) or seat not in (0, 1):
+    if isinstance(seat, bool) or not isinstance(seat, int) or seat not in (0, 1):
         raise ValueError("own_seat must be 0 or 1")
     return seat
 
@@ -56,6 +56,13 @@ def _inventory(private: dict) -> Counter:
 def _difference(before: dict, after: dict) -> dict:
     return {k: after.get(k, 0) - before.get(k, 0)
             for k in sorted(set(before) | set(after)) if after.get(k, 0) != before.get(k, 0)}
+
+
+def _snapshot_differences(left: dict, right: dict, fields: tuple) -> dict:
+    # A missing product and an explicitly recorded zero are equal quantities.
+    return {f: [left[f], right[f]] for f in fields
+            if (Counter(left[f]) != Counter(right[f]) if f == "held_yield"
+                else left[f] != right[f])}
 
 
 def _effects(row: dict, own: int) -> dict:
@@ -98,8 +105,7 @@ def summarize_trace(trace: dict, own_seat: int, *, material_cash: float = 100,
     if opening_margin <= -threshold:
         first["material_deficit"] = {"action_step": None, "phase": "opening", "margin": opening_margin}
     for key, fields in (("portfolio", ("animals", "crops", "land", "hands")), ("held_yield", ("held_yield",))):
-        diffs = {f: [trace["opening"][0][f], trace["opening"][1][f]]
-                 for f in fields if trace["opening"][0][f] != trace["opening"][1][f]}
+        diffs = _snapshot_differences(trace["opening"][0], trace["opening"][1], fields)
         if diffs:
             first[key] = {"frame": 0, "action_step": None, "phase": "opening",
                           "differences_by_seat": copy.deepcopy(diffs)}
@@ -124,7 +130,7 @@ def summarize_trace(trace: dict, own_seat: int, *, material_cash: float = 100,
             first["action"] = {"frame": row["frame"], "action_step": step, "actions": copy.deepcopy(row["actions"])}
         farms = row["farms_after"]
         for key, fields in (("portfolio", ("animals", "crops", "land", "hands")), ("held_yield", ("held_yield",))):
-            diffs = {f: [farms[0][f], farms[1][f]] for f in fields if farms[0][f] != farms[1][f]}
+            diffs = _snapshot_differences(farms[0], farms[1], fields)
             if diffs and first[key] is None:
                 first[key] = {"frame": row["frame"], "action_step": step, "differences_by_seat": copy.deepcopy(diffs)}
         if first["production_event"] is None and row["audit"]["status"] == "RECONCILED":
