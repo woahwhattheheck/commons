@@ -222,18 +222,18 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--engine-dir", type=Path, required=True)
     parser.add_argument("--trace-source", type=Path, default=TRACE_PATH)
     parser.add_argument("--episode-id", type=int, required=True)
-    parser.add_argument("--own-seat", type=int, required=True)
+    parser.add_argument("--player-index", type=int, required=True)
     parser.add_argument("--our-submission-id", type=int, required=True)
     parser.add_argument("--rival-submission-id", type=int, required=True)
     parser.add_argument("--expected-cash", required=True, help="Own,rival order")
-    parser.add_argument("--provider-source", required=True, help="Existing submission/seat receipt")
+    parser.add_argument("--provider-source", required=True, help="Recorded match-result reference")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
     rowan = load_trace_module(args.trace_source)
     replay, source = rowan.load_replay(args.replay)
     if replay.get("info", {}).get("EpisodeId") != args.episode_id:
         raise ValueError("Replay EpisodeId does not match the requested episode")
-    own = seat_index(args.own_seat)
+    own = seat_index(args.player_index)
     expected = [Fraction(v.strip()) for v in args.expected_cash.split(",")]
     if len(expected) != 2:
         raise ValueError("Expected own,rival cash")
