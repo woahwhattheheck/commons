@@ -1,6 +1,6 @@
 # Development results
 
-Candidate SHA-256: `cd414980637d8bfec9b5b445fe68315f70a30e1c1d9fd9c99ee141cbe0ebdc31`
+Candidate SHA-256: `0fbe51eea32be64a2441c60ba7867d532614812cbb9823bbc9087fb6aecdd7d5`
 
 | Opponent | Games | Wins | Mean margin |
 | --- | ---: | ---: | ---: |
@@ -10,6 +10,9 @@ Candidate SHA-256: `cd414980637d8bfec9b5b445fe68315f70a30e1c1d9fd9c99ee141cbe0eb
 | Igor MultiRoute, seed 9200017 | 2 | 0 | -21,259.0 |
 | Kaito v43, seeds 9200047/81 | 4 | 0 | -21,415.5 |
 | Igor MultiRoute, seeds 9200047/81 | 4 | 0 | -27,495.75 |
+| Shipped KAG-PRODUCTION, seeds 9200131/157 | 4 | 2 | +5,315.75 |
+| Kaito v43, seeds 9200131/157 | 4 | 0 | -36,309.5 |
+| Igor MultiRoute, seeds 9200131/157 | 4 | 2 | -19,282.75 |
 
 All 20 scheduled selected-policy games completed without agent failure. Each
 report's first-game reproducibility replay matched terminal scores and trace.
@@ -23,3 +26,10 @@ preserving 30 cash. ROWAN's next-day refresh contract replaces the former
 current-age fertilizer calculation: tomato events end at ages 8/9/10/11,
 fertilizer targets only uncovered future refreshes, and late un-cashable crop
 events are excluded.
+
+The successor makes crop capacity responsive to current workers and observable
+service load. Its separate labor-throttling arm lost 0/2 and -7,888 mean on
+seed `9200131`, so those labor bytes were removed rather than bundled with the
+winning crop-cap change. The crop arm's Kaito regression is retained above;
+selection used paired checkpoint margin and the better worst strong-reference
+gap, not a claim of universal improvement.
