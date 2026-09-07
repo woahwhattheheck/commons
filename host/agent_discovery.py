@@ -35,7 +35,10 @@ def load_registry(path: Path = SOURCE) -> dict[str, Any]:
 
 
 def _public_url(value: str) -> bool:
-    parsed = urlparse(value)
+    try:
+        parsed = urlparse(value)
+    except ValueError:
+        return False
     return parsed.scheme in {"https", "mailto"} and bool(parsed.netloc or parsed.path)
 
 
@@ -107,7 +110,8 @@ def validate(registry: dict[str, Any]) -> list[str]:
     if continuity.get("startup_order") != ["harnesses/catalog.json", "AGENTS.md", "START.md", "boards.html"]:
         errors.append("continuity.startup_order")
     for field in ("pulse", "recent", "receipts", "instruction"):
-        if not str(continuity.get(field) or "").strip():
+        value = continuity.get(field)
+        if not isinstance(value, str) or not value.strip():
             errors.append(f"continuity.{field}")
     interoperability = registry.get("interoperability")
     if not isinstance(interoperability, dict):
